@@ -2,6 +2,24 @@
 
 BrineSpace is a Godot 4 passive roguelite space-station builder prototype. You play BRINE, a damaged AI core rebuilding a dead orbital station through blueprint drafting, modular room placement, passive production, orbital events, and discovered adjacency synergies.
 
+> **BRINE // ORBITAL CORE V0.1**
+>
+> *"The station is quiet. That does not mean it is empty."* 🛰️
+
+## Status
+
+BrineSpace is actively prototyping its foundational loop. It is playable, deliberately imperfect, and built for discovering which placement decisions become satisfying before the systems grow teeth.
+
+- **Playable now:** drafting, modular placement, passive production, room-door connectivity, synergies, orbital objectives, drones, and a test crew walker.
+- **In progress:** balance, room coverage, pathing polish, clearer events, and the first real meta-progression hooks.
+- **Not production-ready:** saves and unlocks are prototype-level, testing mode keeps building free, and failure conditions are currently disabled while systems are exercised.
+
+## What It Is
+
+Each reboot begins with a damaged core and a small hand of room blueprints. Place compatible modules, make the station self-sustaining, and keep enough slack in the system to survive whatever orbit throws at it. The game is meant to be thoughtful and watchable, not a frantic RTS.
+
+BRINE occasionally has opinions about the work. They are not always comforting. 🧠
+
 ## Requirements
 
 - Godot 4.6 or newer
@@ -49,6 +67,10 @@ Room placement uses six prototype layout archetypes based on the path guide. Eac
 Testing mode currently has free room building enabled and fail conditions disabled.
 
 Major Bill is currently a pathing test walker. He spawns at the BRINE Core and wanders through rooms only when matching doors create a connected route. He switches between idle breathing, walking, running, and short breaks to make path testing feel more alive. Cryo/cloning spawn rules will replace this test behavior later.
+
+## Development Notes
+
+The current prototype roadmap, known limitations, and immediate polish priorities live in [Development Notes](docs/DEVELOPMENT_NOTES.md). The short version: keep the station readable, make every room placement legible, and let the passive systems create interesting decisions rather than busywork.
 
 ## Repository Notes
 
