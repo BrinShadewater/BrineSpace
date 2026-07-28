@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/brine_core_base.png" id="1_base"]
+[ext_resource type="Texture2D" path="res://assets/brine_body_temp.png" id="2_body"]
+[ext_resource type="Texture2D" path="res://assets/tank_glow_overlay.png" id="3_glow"]
+[ext_resource type="Texture2D" path="res://assets/tank_glass_overlay_temp.png" id="4_glass"]
+[ext_resource type="Script" path="res://scripts/brine_float_sprite2d.gd" id="5_float"]
+[ext_resource type="Script" path="res://scripts/tank_glow_pulse.gd" id="6_pulse"]
+
+[node name="BRINECoreRoom" type="Node2D"]
+
+[node name="BaseRoom" type="Sprite2D" parent="."]
+position = Vector2(627, 627)
+texture = ExtResource("1_base")
+centered = true
+
+[node name="TankContents" type="Node2D" parent="."]
+
+[node name="BrineBodyTemp" type="Sprite2D" parent="TankContents"]
+position = Vector2(633, 617)
+texture = ExtResource("2_body")
+centered = true
+script = ExtResource("5_float")
+bob_amount = 3.0
+bob_speed = 1.1
+
+[node name="TankGlow" type="Sprite2D" parent="TankContents"]
+position = Vector2(627, 627)
+texture = ExtResource("3_glow")
+centered = true
+script = ExtResource("6_pulse")
+min_alpha = 0.35
+max_alpha = 0.75
+pulse_speed = 0.9
+
+[node name="Bubbles" type="CPUParticles2D" parent="TankContents"]
+position = Vector2(627, 665)
+amount = 32
+lifetime = 3.0
+speed_scale = 0.7
+emission_shape = 2
+emission_rect_extents = Vector2(55, 90)
+direction = Vector2(0, -1)
+spread = 12.0
+gravity = Vector2(0, -18)
+initial_velocity_min = 4.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.25
+scale_amount_max = 0.8
+color = Color(0.55, 0.9, 1, 0.75)
+
+[node name="TankGlassOverlayTemp" type="Sprite2D" parent="."]
+position = Vector2(627, 627)
+texture = ExtResource("4_glass")
+centered = true
+
+[node name="DoorMarkers" type="Node2D" parent="."]
+
+[node name="NorthDoor" type="Marker2D" parent="DoorMarkers"]
+position = Vector2(627, 58)
+
+[node name="SouthDoor" type="Marker2D" parent="DoorMarkers"]
+position = Vector2(627, 1196)
+
+[node name="WestDoor" type="Marker2D" parent="DoorMarkers"]
+position = Vector2(58, 627)
+
+[node name="EastDoor" type="Marker2D" parent="DoorMarkers"]
+position = Vector2(1196, 627)
