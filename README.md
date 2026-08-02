@@ -1,5 +1,7 @@
 # BrineSpace
 
+![Licence](https://img.shields.io/badge/licence-all%20rights%20reserved-lightgrey?style=flat-square) ![Godot](https://img.shields.io/badge/Godot-4.x-478cbf?style=flat-square) ![Shadewater Labs](https://img.shields.io/badge/Shadewater%20Labs-%E2%9A%97%EF%B8%8F-6b4fa2?style=flat-square)
+
 BrineSpace is a Godot 4 passive roguelite space-station builder prototype. You play BRINE, a damaged AI core rebuilding a dead orbital station through blueprint drafting, modular room placement, passive production, orbital events, and discovered adjacency synergies.
 
 > **BRINE // ORBITAL CORE V0.1**
@@ -77,3 +79,9 @@ The current prototype roadmap, known limitations, and immediate polish prioritie
 - Raster art is stored with Git LFS to keep normal Git history lean.
 - Godot import cache, local asset backups, and one-off layout audits are ignored.
 - Game state saves are written to `user://brine_save.json` and are not versioned.
+
+---
+
+## 📄 Licence
+
+All rights reserved. This repository is public so the work can be read and referenced, not relicensed. The code, copy, and creative assets remain © Brin Shadewater / Shadewater Labs. If you want to use something here, ask.
