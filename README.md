@@ -1,4 +1,4 @@
-# BrineSpace
+# 🛰️ BrineSpace
 
 ![Licence](https://img.shields.io/badge/licence-all%20rights%20reserved-lightgrey?style=flat-square) ![Godot](https://img.shields.io/badge/Godot-4.x-478cbf?style=flat-square) ![Shadewater Labs](https://img.shields.io/badge/Shadewater%20Labs-%E2%9A%97%EF%B8%8F-6b4fa2?style=flat-square)
 
@@ -8,7 +8,7 @@ BrineSpace is a Godot 4 passive roguelite space-station builder prototype. You p
 >
 > *"The station is quiet. That does not mean it is empty."* 🛰️
 
-## Status
+## 📡 Status
 
 BrineSpace is actively prototyping its foundational loop. It is playable, deliberately imperfect, and built for discovering which placement decisions become satisfying before the systems grow teeth.
 
@@ -16,20 +16,20 @@ BrineSpace is actively prototyping its foundational loop. It is playable, delibe
 - **In progress:** balance, room coverage, pathing polish, clearer events, and the first real meta-progression hooks.
 - **Not production-ready:** saves and unlocks are prototype-level, testing mode keeps building free, and failure conditions are currently disabled while systems are exercised.
 
-## What It Is
+## 🌌 What It Is
 
 Each reboot begins with a damaged core and a small hand of room blueprints. Place compatible modules, make the station self-sustaining, and keep enough slack in the system to survive whatever orbit throws at it. The game is meant to be thoughtful and watchable, not a frantic RTS.
 
 BRINE occasionally has opinions about the work. They are not always comforting. 🧠
 
-## Requirements
+## 📋 Requirements
 
 - Godot 4.6 or newer
 - Git LFS when cloning from GitHub (`git lfs install`)
 
 Open `project.godot` in Godot and run `res://scenes/main.tscn`.
 
-## Prototype Loop
+## 🔄 Prototype Loop
 
 - Select one of the three blueprint cards in the bottom hand.
 - Click an empty station-grid cell adjacent to an existing room to build it.
@@ -45,7 +45,7 @@ Open `project.godot` in Godot and run `res://scenes/main.tscn`.
 - Mining and salvage drone bays show tiny drones travelling toward the active POI marker and contribute work to matching POIs while powered.
 - Failure opens a Reboot Summary and preserves in-memory meta progression.
 
-## Main Files
+## 📂 Main Files
 
 - `scripts/room_database.gd`: data-driven room card definitions.
 - `scripts/main.gd`: run state, UI, placement, resource cycles, fail/reboot flow.
@@ -56,7 +56,7 @@ Open `project.godot` in Godot and run `res://scenes/main.tscn`.
 - `rooms/`: prototype room art used by the station grid renderer.
 - `character/Major_Bill/`: prototype human sprite rotations and animation frames.
 
-## Current Scope
+## 🎯 Current Scope
 
 This is an early 2D prototype with production-ready room, character, drone, door, UI, and icon assets. The core loop is still deliberately small so drafting, placement, passive production, discovery, and reboot behavior can be iterated quickly.
 
@@ -70,11 +70,11 @@ Testing mode currently has free room building enabled and fail conditions disabl
 
 Major Bill is currently a pathing test walker. He spawns at the BRINE Core and wanders through rooms only when matching doors create a connected route. He switches between idle breathing, walking, running, and short breaks to make path testing feel more alive. Cryo/cloning spawn rules will replace this test behavior later.
 
-## Development Notes
+## 🛠️ Development Notes
 
 The current prototype roadmap, known limitations, and immediate polish priorities live in [Development Notes](docs/DEVELOPMENT_NOTES.md). The short version: keep the station readable, make every room placement legible, and let the passive systems create interesting decisions rather than busywork.
 
-## Repository Notes
+## 📦 Repository Notes
 
 - Raster art is stored with Git LFS to keep normal Git history lean.
 - Godot import cache, local asset backups, and one-off layout audits are ignored.
