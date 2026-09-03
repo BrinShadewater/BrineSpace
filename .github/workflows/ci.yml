@@ -1,0 +1,60 @@
+name: CI
+
+# A script-level gate for a Godot project. Two things it deliberately does NOT do:
+#
+#   - It does not pull Git LFS. The raster art is LFS and a CI run that smudged it
+#     would spend the account's LFS bandwidth quota on every push. Pointer files are
+#     enough to parse scripts and register classes, which is all this checks.
+#   - It does not run the game. No exporter, no scene run, no headless boot yet.
+#
+# What it proves: every .gd file parses, and the project imports without a script
+# error. --check-only exits non-zero on a parse error (verified by mutation on
+# 2026-09-02); --import does not, so its log is grepped instead.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  GODOT_VERSION: 4.6.1-stable
+
+jobs:
+  scripts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout (no LFS smudge on purpose)
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Fetch Godot ${{ env.GODOT_VERSION }} (headless-capable Linux build)
+        run: |
+          curl -sSL -o godot.zip \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}_linux.x86_64" godot
+          chmod +x godot
+          ./godot --version
+      - name: Every GDScript parses (--check-only)
+        run: |
+          set -e
+          fails=0
+          while IFS= read -r f; do
+            if ! ./godot --headless --path . --check-only -s "$f" > check.log 2>&1; then
+              echo "::error file=$f::parse error"
+              grep -i "error" check.log | head -5
+              fails=$((fails+1))
+            fi
+          done < <(git ls-files '*.gd')
+          echo "$(git ls-files '*.gd' | wc -l) script(s) checked, $fails failed"
+          [ "$fails" -eq 0 ]
+      - name: Project imports without script errors
+        run: |
+          ./godot --headless --path . --import > import.log 2>&1 || true
+          if grep -q -E "SCRIPT ERROR|Parse Error" import.log; then
+            echo "::error::import reported script errors"
+            grep -E "SCRIPT ERROR|Parse Error" import.log | head -10
+            exit 1
+          fi
+          echo "import clean"
