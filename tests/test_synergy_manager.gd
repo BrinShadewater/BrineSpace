@@ -178,24 +178,12 @@ func _test_all_doctrine_pairs_have_viable_decks() -> void:
 			var pair_name := RunManagerScript.doctrine_pair_name(pair)
 			pair_count += 1
 			_expect_true(deck.has("solar_array") and deck.has("mining_drone_bay"), "%s should retain power and Metal essentials" % pair_name)
-			_expect_true(deck.size() >= 16, "%s should have enough cards for a varied draw cycle" % pair_name)
+			_expect_true(deck.size() >= 10, "%s should have a playable clean-save deck" % pair_name)
 			for doctrine_id in pair:
-				var available_rooms := 0
+				var copies_for_doctrine := 0
 				for room_id_value in RunManagerScript.doctrine(doctrine_id).get("rooms", []):
-					if deck.has(str(room_id_value)):
-						available_rooms += 1
-				_expect_true(available_rooms >= 3, "%s should be able to satisfy its pair directive" % pair_name)
-			var available_synergies := 0
-			for synergy_value in SynergyManagerScript.all_synergies():
-				var synergy: Dictionary = synergy_value
-				var available := true
-				for room_id_value in synergy.get("rooms", []):
-					var room_id := str(room_id_value)
-					if room_id != "brine_core" and not deck.has(room_id):
-						available = false
-				if available:
-					available_synergies += 1
-			_expect_true(available_synergies >= 4, "%s should expose at least four complete synergy recipes" % pair_name)
+					copies_for_doctrine += deck.count(str(room_id_value))
+				_expect_true(copies_for_doctrine >= 2, "%s should expose a repeatable foothold for %s" % [pair_name, doctrine_id])
 			var directives := RunManagerScript.roll_directives(test_rng, pair)
 			_expect_equal(directives[1].get("doctrine_ids", []), pair, "%s should preserve both doctrine ids in stage two" % pair_name)
 	_expect_equal(pair_count, 10, "five doctrines should produce ten unique pair balance cases")

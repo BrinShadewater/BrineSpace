@@ -10,7 +10,11 @@ const SYNERGIES := [
 		"rooms": ["hydroponics_bay", "life_support"],
 		"bonus": {"oxygen": 1},
 		"effect": "+1 Oxygen per cycle while both rooms are adjacent and connected.",
-		"message": "BRINE recovered a life-support pattern: Closed Air Loop."
+		"message": "BRINE recovered a life-support pattern: Closed Air Loop.",
+		"unlock_room_id": "biodome",
+		"stabilize_cycles": 3,
+		"fx_profile": "flow",
+		"fx_color": "55E6FF"
 	},
 	{
 		"id": "green_commons",
@@ -18,7 +22,11 @@ const SYNERGIES := [
 		"rooms": ["hydroponics_bay", "crew_hab"],
 		"bonus": {"food": 1},
 		"effect": "+1 Food per cycle while living plants are adjacent to crew quarters.",
-		"message": "Crew morale improves near living plants."
+		"message": "Crew morale improves near living plants.",
+		"unlock_room_id": "crew_lounge",
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "73E59A"
 	},
 	{
 		"id": "industrial_chain",
@@ -26,7 +34,11 @@ const SYNERGIES := [
 		"rooms": ["mining_drone_bay", "ore_refinery"],
 		"bonus": {"metal": 2},
 		"effect": "+2 Metal per cycle while drone mining feeds an adjacent refinery.",
-		"message": "Ore processing route optimized."
+		"message": "Ore processing route optimized.",
+		"unlock_room_id": "salvage_drone_bay",
+		"stabilize_cycles": 3,
+		"fx_profile": "logistics",
+		"fx_color": "F1B45B"
 	},
 	{
 		"id": "stable_power_flow",
@@ -34,7 +46,11 @@ const SYNERGIES := [
 		"rooms": ["reactor", "battery_array"],
 		"bonus": {"power": 1},
 		"effect": "+1 Power per cycle while a Battery Array buffers an adjacent Reactor.",
-		"message": "Power surge buffering stabilized."
+		"message": "Power surge buffering stabilized.",
+		"unlock_room_id": "shield_generator",
+		"stabilize_cycles": 3,
+		"fx_profile": "power",
+		"fx_color": "FFD65A"
 	},
 	{
 		"id": "research_pipeline",
@@ -42,7 +58,11 @@ const SYNERGIES := [
 		"rooms": ["research_lab", "data_archive"],
 		"bonus": {"data": 2},
 		"effect": "+2 Data per cycle while a Research Lab is adjacent to a Data Archive.",
-		"message": "Data indexing increased research yield."
+		"message": "Data indexing increased research yield.",
+		"unlock_room_id": "radio_lab",
+		"stabilize_cycles": 3,
+		"fx_profile": "signal",
+		"fx_color": "65A8FF"
 	},
 	{
 		"id": "safe_wake_protocol",
@@ -50,7 +70,11 @@ const SYNERGIES := [
 		"rooms": ["cryo_chamber", "life_support"],
 		"bonus": {},
 		"effect": "Cryo survivors wake faster and more safely with adjacent medical or life support.",
-		"message": "Cryo recovery protocol restored."
+		"message": "Cryo recovery protocol restored.",
+		"unlock_room_id": "clone_lab",
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "61E0D1"
 	},
 	{
 		"id": "containment_sector",
@@ -58,7 +82,11 @@ const SYNERGIES := [
 		"rooms": ["xeno_lab", "quarantine_cell"],
 		"bonus": {},
 		"effect": "Reduces future anomaly spread risk when quarantine borders anomaly research.",
-		"message": "Anomaly spread contained."
+		"message": "Anomaly spread contained.",
+		"unlock_room_id": "anomaly_lab",
+		"stabilize_cycles": 3,
+		"fx_profile": "containment",
+		"fx_color": "B774FF"
 	},
 	{
 		"id": "crew_commons",
@@ -66,7 +94,11 @@ const SYNERGIES := [
 		"rooms": ["crew_hab", "crew_lounge"],
 		"bonus": {"food": 1},
 		"effect": "+1 Food per cycle while crew quarters share a connected commons.",
-		"message": "Crew schedules converge around a shared commons."
+		"message": "Crew schedules converge around a shared commons.",
+		"unlock_room_id": "med_center",
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "7DE29A"
 	},
 	{
 		"id": "field_clinic",
@@ -74,7 +106,11 @@ const SYNERGIES := [
 		"rooms": ["crew_hab", "med_bay"],
 		"bonus": {"integrity": 1},
 		"effect": "+1 Integrity per cycle while medical care is embedded in a crew sector.",
-		"message": "A field clinic comes online beside crew quarters."
+		"message": "A field clinic comes online beside crew quarters.",
+		"unlock_room_id": "med_office",
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "54D8CA"
 	},
 	{
 		"id": "shielded_reactor",
@@ -82,7 +118,11 @@ const SYNERGIES := [
 		"rooms": ["reactor", "shield_generator"],
 		"bonus": {"integrity": 1},
 		"effect": "+1 Integrity per cycle while shielding contains reactor stress.",
-		"message": "Reactor stress falls inside the shield envelope."
+		"message": "Reactor stress falls inside the shield envelope.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "power",
+		"fx_color": "FFB85A"
 	},
 	{
 		"id": "signal_command",
@@ -90,7 +130,11 @@ const SYNERGIES := [
 		"rooms": ["radio_lab", "command_center"],
 		"bonus": {"data": 2},
 		"effect": "+2 Data per cycle while command systems decode radio traffic.",
-		"message": "Command begins resolving patterns in the orbital static."
+		"message": "Command begins resolving patterns in the orbital static.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "signal",
+		"fx_color": "6C9DFF"
 	},
 	{
 		"id": "drone_foundry",
@@ -98,7 +142,11 @@ const SYNERGIES := [
 		"rooms": ["salvage_drone_bay", "maintenance_bay"],
 		"bonus": {"metal": 1, "integrity": 1},
 		"effect": "+1 Metal and +1 Integrity per cycle from recovered drone parts.",
-		"message": "Salvage parts feed directly into station maintenance."
+		"message": "Salvage parts feed directly into station maintenance.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "logistics",
+		"fx_color": "E8D8B2"
 	},
 	{
 		"id": "living_circuit",
@@ -106,7 +154,11 @@ const SYNERGIES := [
 		"rooms": ["bio_lab", "holographic_core"],
 		"bonus": {"biomass": 1, "data": 1},
 		"effect": "+1 Biomass and +1 Data per cycle while living samples inform BRINE's models.",
-		"message": "Organic telemetry begins teaching the holographic core."
+		"message": "Organic telemetry begins teaching the holographic core.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "signal",
+		"fx_color": "B7F06D"
 	},
 	{
 		"id": "biodome_atmosphere",
@@ -114,7 +166,11 @@ const SYNERGIES := [
 		"rooms": ["biodome", "life_support"],
 		"bonus": {"oxygen": 2},
 		"effect": "+2 Oxygen per cycle while life support circulates the biodome canopy.",
-		"message": "The biodome canopy joins the station air loop."
+		"message": "The biodome canopy joins the station air loop.",
+		"unlock_room_id": "bio_lab",
+		"stabilize_cycles": 3,
+		"fx_profile": "flow",
+		"fx_color": "69EDA7"
 	},
 	{
 		"id": "core_relay",
@@ -122,7 +178,11 @@ const SYNERGIES := [
 		"rooms": ["brine_core", "command_center"],
 		"bonus": {"data": 1},
 		"effect": "+1 Data per cycle while command telemetry routes through BRINE.",
-		"message": "BRINE accepts the command center as a trusted relay."
+		"message": "BRINE accepts the command center as a trusted relay.",
+		"unlock_room_id": "holographic_core",
+		"stabilize_cycles": 3,
+		"fx_profile": "signal",
+		"fx_color": "76E6FF"
 	},
 	{
 		"id": "logistics_spine",
@@ -130,7 +190,11 @@ const SYNERGIES := [
 		"rooms": ["storage_bay", "corridor"],
 		"bonus": {"metal": 1},
 		"effect": "+1 Metal per cycle while storage opens directly onto a routing corridor.",
-		"message": "Material traffic stabilizes along a logistics spine."
+		"message": "Material traffic stabilizes along a logistics spine.",
+		"unlock_room_id": "maintenance_bay",
+		"stabilize_cycles": 3,
+		"fx_profile": "logistics",
+		"fx_color": "F0D8A0"
 	},
 	{
 		"id": "medical_network",
@@ -138,7 +202,107 @@ const SYNERGIES := [
 		"rooms": ["med_center", "med_office"],
 		"bonus": {"data": 1, "integrity": 1},
 		"effect": "+1 Data and +1 Integrity per cycle from coordinated medical telemetry.",
-		"message": "Medical records begin predicting station failures."
+		"message": "Medical records begin predicting station failures.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "59DED0"
+	},
+	{
+		"id": "clinical_airlock",
+		"name": "Clinical Airlock",
+		"rooms": ["med_bay", "life_support"],
+		"bonus": {"oxygen": 1, "integrity": 1},
+		"effect": "+1 Oxygen and +1 Integrity per cycle while clinical air is isolated.",
+		"message": "A sterile airlock pattern settles between care and circulation.",
+		"unlock_room_id": "cryo_chamber",
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "6EEBD8"
+	},
+	{
+		"id": "ore_buffer",
+		"name": "Ore Buffer",
+		"rooms": ["mining_drone_bay", "storage_bay"],
+		"bonus": {"metal": 1},
+		"effect": "+1 Metal per cycle while mined ore is buffered beside storage.",
+		"message": "Drone routes begin staging raw ore beside storage.",
+		"unlock_room_id": "ore_refinery",
+		"stabilize_cycles": 3,
+		"fx_profile": "logistics",
+		"fx_color": "DDA85B"
+	},
+	{
+		"id": "load_balancing",
+		"name": "Load Balancing",
+		"rooms": ["solar_array", "reactor"],
+		"bonus": {"power": 1},
+		"effect": "+1 Power per cycle while solar input smooths reactor load.",
+		"message": "BRINE synchronizes the station's two power rhythms.",
+		"unlock_room_id": "battery_array",
+		"stabilize_cycles": 3,
+		"fx_profile": "power",
+		"fx_color": "FFE06B"
+	},
+	{
+		"id": "core_diagnostics",
+		"name": "Core Diagnostics",
+		"rooms": ["brine_core", "research_lab"],
+		"bonus": {"data": 1},
+		"effect": "+1 Data per cycle while researchers decode BRINE telemetry.",
+		"message": "Research instruments find a legible rhythm inside BRINE.",
+		"unlock_room_id": "data_archive",
+		"stabilize_cycles": 3,
+		"fx_profile": "signal",
+		"fx_color": "75C8FF"
+	},
+	{
+		"id": "sterile_observation",
+		"name": "Sterile Observation",
+		"rooms": ["research_lab", "quarantine_cell"],
+		"bonus": {"data": 1},
+		"effect": "+1 Data per cycle while quarantine specimens are observed safely.",
+		"message": "A sterile observation protocol resolves from the quarantine feed.",
+		"unlock_room_id": "xeno_lab",
+		"stabilize_cycles": 3,
+		"fx_profile": "containment",
+		"fx_color": "A982FF"
+	},
+	{
+		"id": "signal_triangulation",
+		"name": "Signal Triangulation",
+		"rooms": ["radio_lab", "research_lab"],
+		"bonus": {"data": 2},
+		"effect": "+2 Data per cycle while laboratory models triangulate radio noise.",
+		"message": "Three faint bearings converge into a navigable signal.",
+		"unlock_room_id": "command_center",
+		"stabilize_cycles": 3,
+		"fx_profile": "signal",
+		"fx_color": "6D8FFF"
+	},
+	{
+		"id": "genomic_triage",
+		"name": "Genomic Triage",
+		"rooms": ["clone_lab", "med_center"],
+		"bonus": {"biomass": 1, "integrity": 1},
+		"effect": "+1 Biomass and +1 Integrity per cycle from predictive genetic care.",
+		"message": "The medical network begins anticipating cellular failure.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "FF8FC7"
+	},
+	{
+		"id": "impossible_model",
+		"name": "Impossible Model",
+		"rooms": ["anomaly_lab", "holographic_core"],
+		"bonus": {"data": 1, "rare_minerals": 1},
+		"effect": "+1 Data and +1 Rare Minerals per cycle while BRINE models the anomaly.",
+		"message": "The holographic core holds a shape that should not remain stable.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "containment",
+		"fx_color": "C16DFF"
 	}
 ]
 
