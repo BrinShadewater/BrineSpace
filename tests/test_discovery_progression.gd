@@ -27,6 +27,10 @@ func _init() -> void:
 	_test_three_functioning_cycles_complete_the_clean_unlock_chain()
 	_test_run_summary_names_new_progression_events()
 	_test_resource_thresholds_do_not_bypass_the_discovery_graph()
+	_test_unknown_card_hint_never_names_partner_or_recipe()
+	_test_known_card_hint_may_name_learned_recipe()
+	_test_cascade_name_stays_generic_until_discovery()
+	_test_toast_queue_preserves_discovery_order()
 	if failures > 0:
 		push_error("Discovery progression tests failed: %d" % failures)
 		quit(1)
@@ -273,6 +277,44 @@ func _test_resource_thresholds_do_not_bypass_the_discovery_graph() -> void:
 	_expect_true(not game.meta.unlocked_room_ids.has("data_archive"), "resource totals must not bypass Core Diagnostics")
 	game.free()
 	_remove_test_save(save_path)
+
+func _test_unknown_card_hint_never_names_partner_or_recipe() -> void:
+	var game = MainScript.new()
+	game.meta.discovered_synergy_ids.clear()
+	var hint := game._card_synergy_hint("hydroponics_bay")
+	_expect_true(not hint.contains("Life Support"), "unknown hint should not name a partner")
+	_expect_true(not hint.contains("Closed Air Loop"), "unknown hint should not name a recipe")
+	_expect_true(hint.contains("EXPERIMENTAL"), "unknown hint should use universal experimental wording")
+	game.free()
+
+func _test_known_card_hint_may_name_learned_recipe() -> void:
+	var game = MainScript.new()
+	game.meta.discovered_synergy_ids = {"closed_air_loop": true}
+	var hint := game._card_synergy_hint("hydroponics_bay")
+	_expect_true(hint.contains("Closed Air Loop"), "learned recipe may appear on its room card")
+	game.free()
+
+func _test_cascade_name_stays_generic_until_discovery() -> void:
+	var game = MainScript.new()
+	if not _require_method(game, "_synergy_display_name"):
+		game.free()
+		return
+	game.meta.discovered_synergy_ids.clear()
+	_expect_equal(game._synergy_display_name("closed_air_loop"), "UNRESOLVED PATTERN", "candidate cascades must not reveal unknown recipe names")
+	game.meta.discovered_synergy_ids["closed_air_loop"] = true
+	_expect_equal(game._synergy_display_name("closed_air_loop"), "Closed Air Loop", "known cascades may use the learned recipe name")
+	game.free()
+
+func _test_toast_queue_preserves_discovery_order() -> void:
+	var game = MainScript.new()
+	if not _require_property(game, "toast_playing") or not _require_property(game, "toast_messages") or not _require_method(game, "_queue_center_toast"):
+		game.free()
+		return
+	game.toast_playing = true
+	game._queue_center_toast("PATTERN DISCOVERED\nFIRST")
+	game._queue_center_toast("PATTERN DISCOVERED\nSECOND")
+	_expect_equal(game.toast_messages, ["PATTERN DISCOVERED\nFIRST", "PATTERN DISCOVERED\nSECOND"], "simultaneous discoveries should retain their order")
+	game.free()
 
 func _remove_test_save(save_path: String) -> void:
 	if FileAccess.file_exists(save_path):

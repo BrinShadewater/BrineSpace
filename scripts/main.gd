@@ -217,6 +217,8 @@ var solar_time_label: Label
 var cascade_toast: PanelContainer
 var cascade_toast_label: Label
 var cascade_toast_tween: Tween
+var toast_messages: Array[String] = []
+var toast_playing := false
 var summary_layer: CanvasLayer
 var summary_panel: PanelContainer
 var summary_title_label: Label
@@ -1109,6 +1111,8 @@ func _doctrine_pair_preview_text() -> String:
 	var possible_synergies: Array[String] = []
 	for synergy_value in SynergyManagerScript.all_synergies():
 		var synergy: Dictionary = synergy_value
+		if not meta.discovered_synergy_ids.has(str(synergy.get("id", ""))):
+			continue
 		var available := true
 		for room_id_value in synergy.get("rooms", []):
 			var room_id := str(room_id_value)
@@ -1125,7 +1129,7 @@ func _doctrine_pair_preview_text() -> String:
 		if second_rooms.has(room_id) and unique_rooms.has(room_id):
 			crossover_names.append(str(RoomDatabaseScript.get_room(room_id).get("display_name", room_id)))
 	var crossover_text := _preview_name_list(crossover_names, 3) if not crossover_names.is_empty() else "complementary pools"
-	return "PAIR PROFILE  ·  %d BLUEPRINTS  ·  %d UNIQUE ROOMS  ·  %d LINK PATTERNS\nCROSSOVER  %s  ·  EARLY ROUTES  %s" % [
+	return "PAIR PROFILE  ·  %d BLUEPRINTS  ·  %d UNIQUE ROOMS  ·  %d LEARNED LINK PATTERNS\nCROSSOVER  %s  ·  LEARNED ROUTES  %s" % [
 		deck.size(),
 		unique_rooms.size(),
 		possible_synergies.size(),
@@ -1411,6 +1415,8 @@ func _start_reboot_cycle() -> void:
 		summary_title_label.text = "Reboot Summary"
 	if cascade_toast_tween != null and cascade_toast_tween.is_valid():
 		cascade_toast_tween.kill()
+	toast_messages.clear()
+	toast_playing = false
 	cascade_toast.visible = false
 	_place_room("brine_core", Vector2i(center_index, center_index), true)
 	_clamp_resource_storage()
@@ -1723,7 +1729,7 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 		run_discovered_synergy_ids.append(synergy_id)
 	var synergy := _synergy_by_id(synergy_id)
 	_log(str(synergy.get("message", "BRINE recovered a functioning room pattern.")))
-	_show_center_toast("PATTERN DISCOVERED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
+	_queue_center_toast("PATTERN DISCOVERED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
 
 func _handle_synergy_stabilization(synergy_id: String) -> void:
 	_award_synergy_stabilization(SynergyManagerScript.get_synergy(synergy_id))
@@ -1743,20 +1749,26 @@ func _award_synergy_stabilization(synergy: Dictionary) -> void:
 			run_decrypted_blueprint_ids.append(unlock_id)
 			var room_name := str(RoomDatabaseScript.get_room(unlock_id).get("display_name", unlock_id))
 			_log("Pattern stabilized: %s. Blueprint decrypted: %s." % [synergy_name, room_name])
-			_show_center_toast("BLUEPRINT DECRYPTED\n%s" % room_name.to_upper())
+			_queue_center_toast("BLUEPRINT DECRYPTED\n%s" % room_name.to_upper())
 		else:
 			_log("Pattern stabilized: %s. Blueprint already present in the archive." % synergy_name)
-			_show_center_toast("PATTERN STABILIZED\n%s" % synergy_name.to_upper())
+			_queue_center_toast("PATTERN STABILIZED\n%s" % synergy_name.to_upper())
 		return
 	var terminal_reward: Dictionary = synergy.get("terminal_reward", {})
 	var research := int(terminal_reward.get("research", 0))
 	if research > 0:
 		meta.add_research_points(research)
 		_log("Pattern stabilized: %s. +%d Research." % [synergy_name, research])
-		_show_center_toast("PATTERN STABILIZED\n+%d RESEARCH" % research)
+		_queue_center_toast("PATTERN STABILIZED\n+%d RESEARCH" % research)
 
 func _synergy_by_id(synergy_id: String) -> Dictionary:
 	return SynergyManagerScript.get_synergy(synergy_id)
+
+func _synergy_display_name(synergy_id: String) -> String:
+	if not meta.discovered_synergy_ids.has(synergy_id):
+		return "UNRESOLVED PATTERN"
+	var synergy := SynergyManagerScript.get_synergy(synergy_id)
+	return str(synergy.get("name", synergy_id.replace("_", " ").capitalize()))
 
 func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) -> void:
 	var new_links: Array = []
@@ -1773,8 +1785,7 @@ func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) 
 	var names: Array[String] = []
 	for link in new_links:
 		_add_to_delta(pulse, link.get("bonus", {}), 1)
-		var link_id := str(link.get("id", ""))
-		names.append(str(link.get("name", "Recovered Link")) if meta.discovered_synergy_ids.has(link_id) else "UNRESOLVED PATTERN")
+		names.append(_synergy_display_name(str(link.get("id", ""))))
 	if new_links.size() > 1:
 		_add_to_delta(pulse, {"data": new_links.size() - 1}, 1)
 	if not pulse.is_empty():
@@ -1821,7 +1832,23 @@ func _show_cascade_toast(cascade_size: int, resonance_gain: int, pulse: Dictiona
 	var pulse_text := ""
 	if not pulse.is_empty():
 		pulse_text = "  ·  PULSE %s" % _format_cost(pulse).to_upper()
-	_show_center_toast("SIGNAL CASCADE x%d\n+%d RESONANCE%s" % [cascade_size, resonance_gain, pulse_text])
+	_queue_center_toast("SIGNAL CASCADE x%d\n+%d RESONANCE%s" % [cascade_size, resonance_gain, pulse_text])
+
+func _queue_center_toast(message: String) -> void:
+	toast_messages.append(message)
+	if not toast_playing:
+		_play_next_center_toast()
+
+func _play_next_center_toast() -> void:
+	if toast_messages.is_empty():
+		toast_playing = false
+		return
+	if cascade_toast == null or cascade_toast_label == null:
+		toast_messages.clear()
+		toast_playing = false
+		return
+	toast_playing = true
+	_show_center_toast(toast_messages.pop_front())
 
 func _show_center_toast(message: String) -> void:
 	if cascade_toast == null or cascade_toast_label == null:
@@ -1839,7 +1866,13 @@ func _show_center_toast(message: String) -> void:
 	cascade_toast_tween.tween_property(cascade_toast, "scale", Vector2.ONE, 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	cascade_toast_tween.chain().tween_interval(1.15)
 	cascade_toast_tween.chain().tween_property(cascade_toast, "modulate:a", 0.0, 0.35)
-	cascade_toast_tween.chain().tween_callback(func(): cascade_toast.visible = false)
+	cascade_toast_tween.chain().tween_callback(_finish_center_toast)
+
+func _finish_center_toast() -> void:
+	if cascade_toast != null:
+		cascade_toast.visible = false
+	toast_playing = false
+	_play_next_center_toast()
 
 func _roll_run_directives() -> void:
 	run_directives = RunManagerScript.roll_directives(rng, selected_doctrines)
@@ -1893,7 +1926,7 @@ func _complete_current_directive() -> void:
 		return
 	var completed_number := directive_index + 1
 	directive_index += 1
-	_show_center_toast("DIRECTIVE %d/%d COMPLETE\n%s" % [completed_number, run_directives.size(), _format_directive_reward(reward).to_upper()])
+	_queue_center_toast("DIRECTIVE %d/%d COMPLETE\n%s" % [completed_number, run_directives.size(), _format_directive_reward(reward).to_upper()])
 	_log("Directive %d/%d received: %s." % [directive_index + 1, run_directives.size(), _current_directive().get("name", "UNKNOWN")])
 
 func _format_directive_reward(reward: Dictionary) -> String:
@@ -2630,6 +2663,17 @@ func _refresh_cards() -> void:
 		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_add_label_panel_style(badge, Color("#08202a"), rarity_color)
 		image_wrap.add_child(badge)
+		if prototype_card_seen_cycle.has(id):
+			var prototype_badge := Label.new()
+			prototype_badge.text = "NEW PROTOTYPE"
+			prototype_badge.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			prototype_badge.position = Vector2(8, 8)
+			prototype_badge.custom_minimum_size = Vector2(112, 22)
+			prototype_badge.add_theme_font_size_override("font_size", 10)
+			prototype_badge.add_theme_color_override("font_color", Color("#d8fff2"))
+			prototype_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			_add_label_panel_style(prototype_badge, Color("#0b3029"), UI_ACCENT_BRIGHT)
+			image_wrap.add_child(prototype_badge)
 		var name_label := Label.new()
 		name_label.text = "■ %s" % room["display_name"]
 		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -2679,19 +2723,19 @@ func _card_synergy_hint(room_id: String) -> String:
 	var best_synergy := {}
 	var best_score := -1
 	for synergy in SynergyManagerScript.all_synergies():
+		var synergy_id := str(synergy.get("id", ""))
+		if not meta.discovered_synergy_ids.has(synergy_id):
+			continue
 		var room_ids: Array = synergy.get("rooms", [])
 		if not room_ids.has(room_id):
 			continue
 		var score := 0
-		if active_synergies.has(synergy["id"]):
+		if active_synergies.has(synergy_id):
 			score = 3
+		elif _connected_synergy_link_count(synergy_id) > 0:
+			score = 2
 		else:
-			for other_id_value in room_ids:
-				var other_id := str(other_id_value)
-				if other_id != room_id and _has_room(other_id):
-					score = maxi(score, 2)
-			if meta.discovered_synergy_ids.has(synergy["id"]):
-				score = maxi(score, 1)
+			score = 1
 		if score > best_score:
 			best_score = score
 			best_synergy = synergy
@@ -2710,8 +2754,8 @@ func _card_synergy_hint(room_id: String) -> String:
 		var active_count := _active_synergy_link_count(str(best_synergy["id"]))
 		if active_count > 0:
 			stack_text = " x%d" % active_count
-		return "LINK%s  %s -> %s" % [stack_text, _join_strings(partner_names, " + "), bonus]
-	return "LINK  undiscovered pattern"
+		return "LINK%s  %s · %s -> %s" % [stack_text, best_synergy.get("name", "LEARNED PATTERN"), _join_strings(partner_names, " + "), bonus]
+	return "LINK  EXPERIMENTAL CONFIGURATION"
 
 func _add_deck_slot() -> void:
 	var slot := PanelContainer.new()
@@ -3344,40 +3388,22 @@ func _refresh_inspector() -> void:
 func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 	var room_id := str(room.get("id", ""))
 	var relevant: Array = []
-	var hidden_synergies: Array = []
+	var unknown_count := 0
 	for synergy in SynergyManagerScript.all_synergies():
-		if synergy.get("rooms", []).has(room_id):
-			if meta.discovered_synergy_ids.has(synergy["id"]):
+		if meta.discovered_synergy_ids.has(synergy["id"]):
+			if synergy.get("rooms", []).has(room_id):
 				relevant.append(synergy)
-			else:
-				hidden_synergies.append(synergy)
+		else:
+			unknown_count += 1
 	lines.append("[color=#%s]SYNERGIES[/color]" % UI_ACCENT_BRIGHT.to_html(false))
-	lines.append("[color=#607784]%d visible / %d undiscovered[/color]" % [relevant.size(), hidden_synergies.size()])
+	lines.append("[color=#607784]%d learned for this room[/color]" % relevant.size())
 	if relevant.is_empty():
 		lines.append("[color=#33515e]No recovered patterns for this room yet.[/color]")
 	for synergy in relevant:
 		lines.append(_format_synergy_line(synergy))
-	if not hidden_synergies.is_empty():
-		lines.append("[color=#405663]UNDISCOVERED[/color]")
-		for synergy in hidden_synergies:
-			lines.append(_format_hidden_synergy_line(synergy, room_id))
-
-func _format_hidden_synergy_line(synergy: Dictionary, room_id: String) -> String:
-	var room_ids: Array = synergy.get("rooms", [])
-	var partner_names: Array[String] = []
-	for id_value in room_ids:
-		var id := str(id_value)
-		if id == room_id:
-			continue
-		var partner := RoomDatabaseScript.get_room(id)
-		var partner_name := str(partner.get("display_name", _prettify_id(id)))
-		if _has_room(id):
-			var color := "#%s" % RoomDatabaseScript.category_color(str(partner.get("category", ""))).to_html(false)
-			partner_name = "[color=%s]%s[/color]" % [color, partner_name]
-		else:
-			partner_name = "[color=#607784]%s[/color]" % partner_name
-		partner_names.append(partner_name)
-	return "[color=#526670]• Unknown pattern[/color]\n[color=#748893]  Try adjacent to: %s[/color]\n[color=#405663]  Effect unrecovered.[/color]" % _join_strings(partner_names, " + ")
+	if unknown_count > 0:
+		lines.append("[color=#405663]UNKNOWN PATTERNS REMAIN: %d[/color]" % unknown_count)
+		lines.append("[color=#405663]Power experimental configurations to recover them.[/color]")
 
 func _format_synergy_line(synergy: Dictionary) -> String:
 	var room_ids: Array = synergy.get("rooms", [])
@@ -3399,7 +3425,9 @@ func _format_synergy_line(synergy: Dictionary) -> String:
 	else:
 		bonus_text = "%s  —  %s" % [bonus_text, synergy.get("effect", "")]
 	var active_count := _active_synergy_link_count(str(synergy["id"]))
-	var status := "ACTIVE LINK x%d" % active_count if active else "KNOWN PATTERN"
+	var status := _synergy_runtime_status(str(synergy["id"]))
+	if active_count > 1:
+		status += " x%d" % active_count
 	return "[color=#c4d1da]• %s[/color]  [color=#%s]%s[/color]\n[color=#8fa3ae]  Adjacent to: %s[/color]\n[color=#8ccf6f]  -> %s[/color]" % [synergy["name"], UI_ACCENT_BRIGHT.to_html(false), status, _join_strings(room_names, " + "), bonus_text]
 
 func _active_synergy_link_count(synergy_id: String) -> int:
@@ -3408,6 +3436,27 @@ func _active_synergy_link_count(synergy_id: String) -> int:
 		if str(link.get("id", "")) == synergy_id:
 			count += 1
 	return count
+
+func _connected_synergy_link_count(synergy_id: String) -> int:
+	var count := 0
+	for link in connected_synergy_links:
+		if str(link.get("id", "")) == synergy_id:
+			count += 1
+	return count
+
+func _synergy_runtime_status(synergy_id: String) -> String:
+	var is_active := _active_synergy_link_count(synergy_id) > 0
+	var is_connected := _connected_synergy_link_count(synergy_id) > 0
+	var is_stabilized := meta.stabilized_synergy_ids.has(synergy_id)
+	if is_active and is_stabilized:
+		return "ACTIVE · STABILIZED"
+	if is_active:
+		var progress := int(synergy_stabilization_progress.get(synergy_id, 1))
+		var required := int(SynergyManagerScript.get_synergy(synergy_id).get("stabilize_cycles", 3))
+		return "ACTIVE · STABILIZING %d/%d" % [progress, required]
+	if is_connected:
+		return "DORMANT · STABILIZED" if is_stabilized else "DORMANT"
+	return "STABILIZED" if is_stabilized else "DISCOVERED"
 
 func _preview_divider() -> String:
 	return "[color=#34434a]────────────────────────[/color]"
@@ -3490,14 +3539,11 @@ func _refresh_archive() -> void:
 	for synergy in SynergyManagerScript.all_synergies():
 		if meta.discovered_synergy_ids.has(synergy["id"]):
 			discovered_count += 1
-			lines.append("%s: %s" % [synergy["name"], _format_cost(synergy.get("bonus", {}))])
-		else:
-			var pair: Array = synergy.get("rooms", [])
-			if pair.size() > 0:
-				lines.append("Unknown pattern: %s + ?" % _prettify_id(pair[0]))
-			else:
-				lines.append("Unknown pattern")
+			lines.append("%s · %s: %s" % [synergy["name"], _synergy_runtime_status(str(synergy["id"])), _format_cost(synergy.get("bonus", {}))])
 	lines.insert(1, "%d/%d recovered" % [discovered_count, SynergyManagerScript.all_synergies().size()])
+	var unknown_count := SynergyManagerScript.all_synergies().size() - discovered_count
+	if unknown_count > 0:
+		lines.append("UNKNOWN PATTERNS REMAIN: %d" % unknown_count)
 	archive_label.text = _join_strings(lines, "\n")
 
 func _prettify_id(id: String) -> String:
