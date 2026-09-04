@@ -306,29 +306,20 @@ const SYNERGIES := [
 	}
 ]
 
-static func evaluate(placed_rooms: Array, occupied: Dictionary, discovered: Dictionary) -> Dictionary:
-	var active := {}
-	var newly_discovered := []
+static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 	var links := []
 	var seen_links := {}
 	for synergy in SYNERGIES:
 		var pairs := _find_adjacent_pairs(synergy["rooms"], occupied)
 		for pair in pairs:
 			_add_link(links, seen_links, synergy, pair)
-		if not pairs.is_empty():
-			active[synergy["id"]] = synergy
-			if not discovered.has(synergy["id"]):
-				newly_discovered.append(synergy)
 	for room in placed_rooms:
 		if room["id"] != "cryo_chamber":
 			continue
 		var safe_wake := _get_synergy("safe_wake_protocol")
 		for neighbor_pos in _adjacent_tagged_cells(room["pos"], occupied, "medical"):
 			_add_link(links, seen_links, safe_wake, [room["pos"], neighbor_pos])
-			active[safe_wake["id"]] = safe_wake
-			if not discovered.has(safe_wake["id"]) and not newly_discovered.has(safe_wake):
-				newly_discovered.append(safe_wake)
-	return {"active": active, "new": newly_discovered, "links": links}
+	return {"links": links}
 
 static func cycle_bonus(active_links) -> Dictionary:
 	var bonus := {}

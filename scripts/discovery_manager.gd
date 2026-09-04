@@ -1,6 +1,15 @@
 extends RefCounted
 class_name DiscoveryManager
 
+static func functioning_links(connected_links: Array, powered_cells: Dictionary) -> Array:
+	var functioning := []
+	for link_value in connected_links:
+		var link: Dictionary = link_value
+		var cells: Array = link.get("cells", [])
+		if cells.size() >= 2 and powered_cells.has(cells[0]) and powered_cells.has(cells[1]):
+			functioning.append(link)
+	return functioning
+
 static func validate_unlock_graph(all_rooms: Dictionary, synergies: Array, foundation_ids: Array) -> PackedStringArray:
 	var errors := PackedStringArray()
 	var reachable := {"brine_core": true}

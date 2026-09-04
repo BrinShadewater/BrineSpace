@@ -11,6 +11,8 @@ func _init() -> void:
 	_test_every_recipe_has_progression_metadata()
 	_test_unlock_graph_reaches_every_room()
 	_test_reward_rooms_continue_or_end_explicitly()
+	_test_both_endpoints_are_required_for_functioning()
+	_test_only_functioning_links_contribute_cycle_bonuses()
 	if failures > 0:
 		push_error("Discovery progression tests failed: %d" % failures)
 		quit(1)
@@ -54,6 +56,18 @@ func _test_reward_rooms_continue_or_end_explicitly() -> void:
 		var reward_id := str(synergy_value.get("unlock_room_id", ""))
 		if not reward_id.is_empty():
 			_expect_true(recipe_rooms.has(reward_id), "%s should participate in a later or terminal recipe" % reward_id)
+
+func _test_both_endpoints_are_required_for_functioning() -> void:
+	var link := {"id": "closed_air_loop", "cells": [Vector2i(1, 1), Vector2i(2, 1)], "bonus": {"oxygen": 1}}
+	var one_powered := {Vector2i(1, 1): true}
+	_expect_equal(DiscoveryManagerScript.functioning_links([link], one_powered).size(), 0, "one powered endpoint should leave a link dormant")
+	var both_powered := {Vector2i(1, 1): true, Vector2i(2, 1): true}
+	_expect_equal(DiscoveryManagerScript.functioning_links([link], both_powered).size(), 1, "two powered endpoints should activate a link")
+
+func _test_only_functioning_links_contribute_cycle_bonuses() -> void:
+	var active := [{"id": "closed_air_loop", "cells": [Vector2i.ZERO, Vector2i.RIGHT], "bonus": {"oxygen": 1}}]
+	_expect_equal(SynergyManagerScript.cycle_bonus(active), {"oxygen": 1}, "active links should contribute their authored bonus")
+	_expect_equal(SynergyManagerScript.cycle_bonus([]), {}, "dormant links should contribute no bonus")
 
 func _expect_equal(actual, expected, message: String) -> void:
 	if actual != expected:

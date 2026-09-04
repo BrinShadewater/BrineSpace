@@ -39,19 +39,18 @@ func _test_repeated_pairs_stack() -> void:
 	_add_room(occupied, "life_support", Vector2i(10, 10))
 	_add_room(occupied, "hydroponics_bay", Vector2i(11, 10))
 	_add_room(occupied, "life_support", Vector2i(12, 10))
-	var result := SynergyManagerScript.evaluate(occupied.values(), occupied, {})
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
 	var links: Array = result["links"]
 	_expect_equal(_count_links(links, "closed_air_loop"), 2, "two Closed Air Loop links should be counted")
 	var bonus := SynergyManagerScript.cycle_bonus(links)
 	_expect_equal(int(bonus.get("oxygen", 0)), 2, "each Closed Air Loop should add Oxygen")
-	_expect_equal(result["new"].size(), 1, "a stacked pattern should only be discovered once")
 
 func _test_multi_link_placement_combines_bonuses() -> void:
 	var occupied := {}
 	_add_room(occupied, "life_support", Vector2i(4, 5))
 	_add_room(occupied, "hydroponics_bay", Vector2i(5, 5))
 	_add_room(occupied, "crew_hab", Vector2i(6, 5))
-	var result := SynergyManagerScript.evaluate(occupied.values(), occupied, {})
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
 	var links: Array = result["links"]
 	_expect_equal(_count_links(links, "closed_air_loop"), 1, "hydroponics should link to life support")
 	_expect_equal(_count_links(links, "green_commons"), 1, "hydroponics should link to crew quarters")
@@ -63,14 +62,14 @@ func _test_cryo_links_to_any_medical_room_once() -> void:
 	var occupied := {}
 	_add_room(occupied, "cryo_chamber", Vector2i(20, 20))
 	_add_room(occupied, "med_bay", Vector2i(20, 21), 2)
-	var result := SynergyManagerScript.evaluate(occupied.values(), occupied, {})
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
 	_expect_equal(_count_links(result["links"], "safe_wake_protocol"), 1, "Cryo should link to a tagged medical neighbor")
 
 func _test_disconnected_pairs_do_not_score() -> void:
 	var occupied := {}
 	_add_room(occupied, "research_lab", Vector2i(3, 3))
 	_add_room(occupied, "data_archive", Vector2i(4, 3))
-	var result := SynergyManagerScript.evaluate(occupied.values(), occupied, {})
+	var result := SynergyManagerScript.evaluate(occupied.values(), occupied)
 	_expect_equal(_count_links(result["links"], "research_pipeline"), 0, "adjacent rooms without matching doors should not link")
 
 func _test_placement_cascade_scores_and_pulses() -> void:

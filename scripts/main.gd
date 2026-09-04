@@ -2,6 +2,7 @@ extends Control
 
 const RoomDatabaseScript := preload("res://scripts/room_database.gd")
 const SynergyManagerScript := preload("res://scripts/synergy_manager.gd")
+const DiscoveryManagerScript := preload("res://scripts/discovery_manager.gd")
 const OrbitManagerScript := preload("res://scripts/orbit_manager.gd")
 const MetaStateScript := preload("res://scripts/meta_state.gd")
 const GridCanvasScript := preload("res://scripts/grid_canvas.gd")
@@ -144,6 +145,7 @@ var had_crew := false
 var corruption := 0
 var orbit_decay := 0
 var active_synergies := {}
+var connected_synergy_links := []
 var active_synergy_links := []
 var resonance_score := 0
 var resonance_tier_index := 0
@@ -1366,6 +1368,7 @@ func _start_reboot_cycle() -> void:
 	corruption = 0
 	orbit_decay = 0
 	active_synergies.clear()
+	connected_synergy_links.clear()
 	active_synergy_links.clear()
 	resonance_score = 0
 	resonance_tier_index = 0
@@ -1594,6 +1597,11 @@ func _apply_room_economy() -> Dictionary:
 			crew_count += 1
 			had_crew = true
 			_log("Clone Lab reports one viable clone crew.")
+	active_synergy_links = DiscoveryManagerScript.functioning_links(connected_synergy_links, powered_room_cells)
+	active_synergies.clear()
+	for link_value in active_synergy_links:
+		var link: Dictionary = link_value
+		active_synergies[str(link.get("id", ""))] = link
 	var bonus := SynergyManagerScript.cycle_bonus(active_synergy_links)
 	if not bonus.is_empty():
 		_add_to_delta(delta, bonus, 1)
@@ -1668,16 +1676,12 @@ func _emit_warnings() -> void:
 		_log("Warning: Corruption approaching maximum.")
 
 func _check_synergies() -> void:
-	var result := SynergyManagerScript.evaluate(placed_rooms, occupied, meta.discovered_synergy_ids)
-	active_synergies = result["active"]
-	active_synergy_links = result.get("links", [])
-	for synergy in result["new"]:
-		meta.discover_synergy(synergy["id"])
-		_log(synergy["message"])
+	var result := SynergyManagerScript.evaluate(placed_rooms, occupied)
+	connected_synergy_links = result.get("links", [])
 
 func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) -> void:
 	var new_links: Array = []
-	for link in active_synergy_links:
+	for link in connected_synergy_links:
 		if previous_link_keys.has(str(link.get("key", ""))):
 			continue
 		if link.get("cells", []).has(cell):
@@ -1716,7 +1720,7 @@ func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) 
 
 func _active_synergy_link_keys() -> Dictionary:
 	var keys := {}
-	for link in active_synergy_links:
+	for link in connected_synergy_links:
 		keys[str(link.get("key", ""))] = true
 	return keys
 
