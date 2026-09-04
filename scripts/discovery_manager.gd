@@ -10,6 +10,36 @@ static func functioning_links(connected_links: Array, powered_cells: Dictionary)
 			functioning.append(link)
 	return functioning
 
+static func advance_cycle(active_links: Array, previous_progress: Dictionary, discovered_ids: Dictionary, stabilized_ids: Dictionary) -> Dictionary:
+	var active_by_id := {}
+	for link_value in active_links:
+		var link: Dictionary = link_value
+		active_by_id[str(link.get("id", ""))] = link
+	var progress := previous_progress.duplicate(true)
+	var new_discoveries: Array[String] = []
+	var new_stabilizations: Array[String] = []
+	for id_value in progress.keys():
+		var id := str(id_value)
+		if not active_by_id.has(id) and not stabilized_ids.has(id):
+			progress[id] = 0
+	for id_value in active_by_id:
+		var id := str(id_value)
+		var link: Dictionary = active_by_id[id]
+		if not discovered_ids.has(id):
+			new_discoveries.append(id)
+		if stabilized_ids.has(id):
+			continue
+		var next_progress := int(progress.get(id, 0)) + 1
+		progress[id] = next_progress
+		if next_progress >= int(link.get("stabilize_cycles", 3)):
+			new_stabilizations.append(id)
+	return {
+		"progress": progress,
+		"new_discovery_ids": new_discoveries,
+		"new_stabilization_ids": new_stabilizations,
+		"active_ids": active_by_id.keys()
+	}
+
 static func validate_unlock_graph(all_rooms: Dictionary, synergies: Array, foundation_ids: Array) -> PackedStringArray:
 	var errors := PackedStringArray()
 	var reachable := {"brine_core": true}

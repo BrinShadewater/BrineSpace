@@ -13,6 +13,9 @@ func _init() -> void:
 	_test_reward_rooms_continue_or_end_explicitly()
 	_test_both_endpoints_are_required_for_functioning()
 	_test_only_functioning_links_contribute_cycle_bonuses()
+	_test_first_functioning_cycle_discovers_and_starts_progress()
+	_test_duplicate_links_advance_once_and_stabilize_on_three()
+	_test_inactive_cycle_resets_unfinished_progress()
 	if failures > 0:
 		push_error("Discovery progression tests failed: %d" % failures)
 		quit(1)
@@ -68,6 +71,33 @@ func _test_only_functioning_links_contribute_cycle_bonuses() -> void:
 	var active := [{"id": "closed_air_loop", "cells": [Vector2i.ZERO, Vector2i.RIGHT], "bonus": {"oxygen": 1}}]
 	_expect_equal(SynergyManagerScript.cycle_bonus(active), {"oxygen": 1}, "active links should contribute their authored bonus")
 	_expect_equal(SynergyManagerScript.cycle_bonus([]), {}, "dormant links should contribute no bonus")
+
+func _test_first_functioning_cycle_discovers_and_starts_progress() -> void:
+	var link := _test_link("closed_air_loop")
+	var result := DiscoveryManagerScript.advance_cycle([link], {}, {}, {})
+	_expect_equal(result["new_discovery_ids"], ["closed_air_loop"], "first functioning cycle should discover the recipe")
+	_expect_equal(int(result["progress"].get("closed_air_loop", 0)), 1, "discovery cycle should count as cycle one")
+
+func _test_duplicate_links_advance_once_and_stabilize_on_three() -> void:
+	var first := _test_link("closed_air_loop")
+	var second := _test_link("closed_air_loop", Vector2i(4, 4))
+	var discovered := {"closed_air_loop": true}
+	var cycle_two := DiscoveryManagerScript.advance_cycle([first, second], {"closed_air_loop": 1}, discovered, {})
+	_expect_equal(int(cycle_two["progress"]["closed_air_loop"]), 2, "duplicate copies should advance one cycle")
+	var cycle_three := DiscoveryManagerScript.advance_cycle([first, second], cycle_two["progress"], discovered, {})
+	_expect_equal(cycle_three["new_stabilization_ids"], ["closed_air_loop"], "third consecutive cycle should stabilize once")
+
+func _test_inactive_cycle_resets_unfinished_progress() -> void:
+	var result := DiscoveryManagerScript.advance_cycle([], {"closed_air_loop": 2}, {"closed_air_loop": true}, {})
+	_expect_equal(int(result["progress"].get("closed_air_loop", 0)), 0, "losing every functioning copy should reset progress")
+
+func _test_link(id: String, origin := Vector2i.ZERO) -> Dictionary:
+	for synergy_value in SynergyManagerScript.all_synergies():
+		if str(synergy_value.get("id", "")) == id:
+			var link: Dictionary = synergy_value.duplicate(true)
+			link["cells"] = [origin, origin + Vector2i.RIGHT]
+			return link
+	return {}
 
 func _expect_equal(actual, expected, message: String) -> void:
 	if actual != expected:

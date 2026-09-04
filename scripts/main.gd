@@ -147,6 +147,9 @@ var orbit_decay := 0
 var active_synergies := {}
 var connected_synergy_links := []
 var active_synergy_links := []
+var synergy_stabilization_progress := {}
+var run_discovered_synergy_ids: Array[String] = []
+var run_stabilized_synergy_ids: Array[String] = []
 var resonance_score := 0
 var resonance_tier_index := 0
 var links_formed := 0
@@ -1370,6 +1373,9 @@ func _start_reboot_cycle() -> void:
 	active_synergies.clear()
 	connected_synergy_links.clear()
 	active_synergy_links.clear()
+	synergy_stabilization_progress.clear()
+	run_discovered_synergy_ids.clear()
+	run_stabilized_synergy_ids.clear()
 	resonance_score = 0
 	resonance_tier_index = 0
 	links_formed = 0
@@ -1553,6 +1559,7 @@ func _advance_cycle() -> void:
 		return
 	cycle += 1
 	last_cycle_delta = _apply_room_economy()
+	_advance_synergy_discovery_cycle()
 	_apply_orbit_event()
 	_apply_life_support()
 	_emit_warnings()
@@ -1679,6 +1686,42 @@ func _check_synergies() -> void:
 	var result := SynergyManagerScript.evaluate(placed_rooms, occupied)
 	connected_synergy_links = result.get("links", [])
 
+func _advance_synergy_discovery_cycle() -> void:
+	var transition := DiscoveryManagerScript.advance_cycle(
+		active_synergy_links,
+		synergy_stabilization_progress,
+		meta.discovered_synergy_ids,
+		{}
+	)
+	synergy_stabilization_progress = transition["progress"]
+	for id_value in transition["new_discovery_ids"]:
+		_handle_synergy_discovery(str(id_value))
+	for id_value in transition["new_stabilization_ids"]:
+		_handle_synergy_stabilization(str(id_value))
+
+func _handle_synergy_discovery(synergy_id: String) -> void:
+	if not meta.discover_synergy(synergy_id):
+		return
+	if not run_discovered_synergy_ids.has(synergy_id):
+		run_discovered_synergy_ids.append(synergy_id)
+	var synergy := _synergy_by_id(synergy_id)
+	_log(str(synergy.get("message", "BRINE recovered a functioning room pattern.")))
+	_show_center_toast("PATTERN DISCOVERED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
+
+func _handle_synergy_stabilization(synergy_id: String) -> void:
+	if run_stabilized_synergy_ids.has(synergy_id):
+		return
+	run_stabilized_synergy_ids.append(synergy_id)
+	var synergy := _synergy_by_id(synergy_id)
+	_log("Pattern stabilized: %s." % str(synergy.get("name", synergy_id)))
+	_show_center_toast("PATTERN STABILIZED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
+
+func _synergy_by_id(synergy_id: String) -> Dictionary:
+	for synergy_value in SynergyManagerScript.all_synergies():
+		if str(synergy_value.get("id", "")) == synergy_id:
+			return synergy_value
+	return {}
+
 func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) -> void:
 	var new_links: Array = []
 	for link in connected_synergy_links:
@@ -1694,7 +1737,8 @@ func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) 
 	var names: Array[String] = []
 	for link in new_links:
 		_add_to_delta(pulse, link.get("bonus", {}), 1)
-		names.append(str(link.get("name", "Recovered Link")))
+		var link_id := str(link.get("id", ""))
+		names.append(str(link.get("name", "Recovered Link")) if meta.discovered_synergy_ids.has(link_id) else "UNRESOLVED PATTERN")
 	if new_links.size() > 1:
 		_add_to_delta(pulse, {"data": new_links.size() - 1}, 1)
 	if not pulse.is_empty():
