@@ -316,7 +316,7 @@ static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 	for room in placed_rooms:
 		if room["id"] != "cryo_chamber":
 			continue
-		var safe_wake := _get_synergy("safe_wake_protocol")
+		var safe_wake := get_synergy("safe_wake_protocol")
 		for neighbor_pos in _adjacent_tagged_cells(room["pos"], occupied, "medical"):
 			_add_link(links, seen_links, safe_wake, [room["pos"], neighbor_pos])
 	return {"links": links}
@@ -331,6 +331,12 @@ static func cycle_bonus(active_links) -> Dictionary:
 
 static func all_synergies() -> Array:
 	return SYNERGIES
+
+static func get_synergy(id: String) -> Dictionary:
+	for synergy in SYNERGIES:
+		if synergy["id"] == id:
+			return synergy
+	return {}
 
 static func _find_adjacent_pairs(room_ids: Array, occupied: Dictionary) -> Array:
 	var pairs := []
@@ -420,9 +426,3 @@ static func _cell_pair_key(a: Vector2i, b: Vector2i) -> String:
 		first = b
 		second = a
 	return "%d,%d-%d,%d" % [first.x, first.y, second.x, second.y]
-
-static func _get_synergy(id: String) -> Dictionary:
-	for synergy in SYNERGIES:
-		if synergy["id"] == id:
-			return synergy
-	return {}

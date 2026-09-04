@@ -3,6 +3,8 @@ extends SceneTree
 const RoomDatabaseScript := preload("res://scripts/room_database.gd")
 const SynergyManagerScript := preload("res://scripts/synergy_manager.gd")
 const DiscoveryManagerScript := preload("res://scripts/discovery_manager.gd")
+const MetaStateScript := preload("res://scripts/meta_state.gd")
+const MainScript := preload("res://scripts/main.gd")
 
 var failures := 0
 
@@ -16,6 +18,15 @@ func _init() -> void:
 	_test_first_functioning_cycle_discovers_and_starts_progress()
 	_test_duplicate_links_advance_once_and_stabilize_on_three()
 	_test_inactive_cycle_resets_unfinished_progress()
+	_test_stabilization_persists_idempotently()
+	_test_old_save_without_stabilization_loads_additively()
+	_test_blueprint_reward_unlocks_and_becomes_next_draw()
+	_test_already_unlocked_reward_does_not_inject_a_duplicate_prototype()
+	_test_terminal_stabilization_grants_research_once()
+	_test_prototype_marker_survives_one_full_cycle_or_clears_on_selection()
+	_test_three_functioning_cycles_complete_the_clean_unlock_chain()
+	_test_run_summary_names_new_progression_events()
+	_test_resource_thresholds_do_not_bypass_the_discovery_graph()
 	if failures > 0:
 		push_error("Discovery progression tests failed: %d" % failures)
 		quit(1)
@@ -98,6 +109,187 @@ func _test_link(id: String, origin := Vector2i.ZERO) -> Dictionary:
 			link["cells"] = [origin, origin + Vector2i.RIGHT]
 			return link
 	return {}
+
+func _test_stabilization_persists_idempotently() -> void:
+	var save_path := "user://brine_discovery_meta_test.json"
+	var meta = MetaStateScript.new()
+	meta.save_path = save_path
+	if not _require_property(meta, "stabilized_synergy_ids") or not _require_method(meta, "stabilize_synergy"):
+		return
+	meta.stabilized_synergy_ids.clear()
+	_expect_true(meta.stabilize_synergy("closed_air_loop"), "first stabilization should persist")
+	_expect_true(not meta.stabilize_synergy("closed_air_loop"), "repeat stabilization should not reward twice")
+	var loaded = MetaStateScript.new()
+	loaded.save_path = save_path
+	loaded.stabilized_synergy_ids.clear()
+	loaded.load_from_disk()
+	_expect_true(loaded.stabilized_synergy_ids.has("closed_air_loop"), "stabilization should survive reload")
+	_remove_test_save(save_path)
+
+func _test_old_save_without_stabilization_loads_additively() -> void:
+	var save_path := "user://brine_old_save_test.json"
+	var file := FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_string(JSON.stringify({
+		"unlocked_room_ids": ["biodome"],
+		"discovered_synergy_ids": ["closed_air_loop"]
+	}))
+	file.close()
+	var meta = MetaStateScript.new()
+	meta.save_path = save_path
+	if not _require_property(meta, "stabilized_synergy_ids"):
+		_remove_test_save(save_path)
+		return
+	meta.stabilized_synergy_ids.clear()
+	meta.load_from_disk()
+	_expect_true(meta.unlocked_room_ids.has("biodome"), "older unlocked rooms should remain unlocked")
+	_expect_true(meta.discovered_synergy_ids.has("closed_air_loop"), "older discoveries should remain learned")
+	_expect_equal(meta.stabilized_synergy_ids, {}, "a missing stabilization field should load as empty")
+	_remove_test_save(save_path)
+
+func _test_blueprint_reward_unlocks_and_becomes_next_draw() -> void:
+	var save_path := "user://brine_prototype_test.json"
+	var game = MainScript.new()
+	game.meta.save_path = save_path
+	if not _require_property(game.meta, "stabilized_synergy_ids") or not _require_property(game, "run_decrypted_blueprint_ids") or not _require_method(game, "_award_synergy_stabilization"):
+		game.free()
+		return
+	game.meta.stabilized_synergy_ids.erase("closed_air_loop")
+	game.meta.unlocked_room_ids.erase("biodome")
+	game.draw_pile.clear()
+	game.discard_pile.assign(["corridor"])
+	game._award_synergy_stabilization(_test_link("closed_air_loop"))
+	_expect_true(game.meta.unlocked_room_ids.has("biodome"), "stabilization should unlock the authored blueprint")
+	_expect_equal(game.draw_pile.back(), "biodome", "prototype should be the next card drawn")
+	_expect_equal(game.run_decrypted_blueprint_ids, ["biodome"], "run summary should record the decrypt")
+	game._refill_hand()
+	_expect_equal(game.hand[0], "biodome", "an empty draw pile should yield the prototype before discard reshuffling")
+	game.free()
+	_remove_test_save(save_path)
+
+func _test_already_unlocked_reward_does_not_inject_a_duplicate_prototype() -> void:
+	var save_path := "user://brine_existing_unlock_test.json"
+	var game = MainScript.new()
+	game.meta.save_path = save_path
+	if not _require_property(game.meta, "stabilized_synergy_ids") or not _require_method(game, "_award_synergy_stabilization"):
+		game.free()
+		return
+	game.meta.stabilized_synergy_ids.erase("closed_air_loop")
+	game.meta.unlocked_room_ids["biodome"] = true
+	game.draw_pile.assign(["corridor"])
+	game._award_synergy_stabilization(_test_link("closed_air_loop"))
+	_expect_true(game.meta.stabilized_synergy_ids.has("closed_air_loop"), "the recipe should still stabilize")
+	_expect_equal(game.draw_pile.count("biodome"), 0, "an older unlock should not inject a duplicate prototype")
+	game.free()
+	_remove_test_save(save_path)
+
+func _test_terminal_stabilization_grants_research_once() -> void:
+	var save_path := "user://brine_terminal_reward_test.json"
+	var game = MainScript.new()
+	game.meta.save_path = save_path
+	if not _require_property(game.meta, "stabilized_synergy_ids") or not _require_method(game, "_award_synergy_stabilization"):
+		game.free()
+		return
+	game.meta.stabilized_synergy_ids.erase("drone_foundry")
+	var research_before: int = int(game.meta.total_research_points)
+	game._award_synergy_stabilization(_test_link("drone_foundry"))
+	game._award_synergy_stabilization(_test_link("drone_foundry"))
+	_expect_equal(game.meta.total_research_points, research_before + 3, "terminal Research should be awarded exactly once")
+	game.free()
+	_remove_test_save(save_path)
+
+func _test_prototype_marker_survives_one_full_cycle_or_clears_on_selection() -> void:
+	var game = MainScript.new()
+	if not _require_property(game, "prototype_card_seen_cycle") or not _require_method(game, "_expire_prototype_markers") or not _require_method(game, "_clear_prototype_marker"):
+		game.free()
+		return
+	game.prototype_card_seen_cycle = {"biodome": 4}
+	game.cycle = 5
+	game._expire_prototype_markers()
+	_expect_true(game.prototype_card_seen_cycle.has("biodome"), "the NEW marker should survive one full following cycle")
+	game.cycle = 6
+	game._expire_prototype_markers()
+	_expect_true(not game.prototype_card_seen_cycle.has("biodome"), "the NEW marker should expire after that following cycle")
+	game.prototype_card_seen_cycle["biodome"] = 6
+	game._clear_prototype_marker("biodome")
+	_expect_true(not game.prototype_card_seen_cycle.has("biodome"), "selecting the prototype should clear its NEW marker")
+	game.free()
+
+func _test_three_functioning_cycles_complete_the_clean_unlock_chain() -> void:
+	var save_path := "user://brine_clean_chain_test.json"
+	var game = MainScript.new()
+	game.meta.save_path = save_path
+	if not _require_property(game.meta, "stabilized_synergy_ids") or not _require_method(game, "_award_synergy_stabilization"):
+		game.free()
+		return
+	game.meta.discovered_synergy_ids.erase("closed_air_loop")
+	game.meta.stabilized_synergy_ids.erase("closed_air_loop")
+	game.meta.unlocked_room_ids.erase("biodome")
+	game.draw_pile.assign(["corridor"])
+	game.active_synergy_links = [_test_link("closed_air_loop")]
+	for _cycle_index in range(3):
+		game._advance_synergy_discovery_cycle()
+	_expect_true(game.meta.discovered_synergy_ids.has("closed_air_loop"), "the recipe should be learned")
+	_expect_true(game.meta.stabilized_synergy_ids.has("closed_air_loop"), "the recipe should be stabilized")
+	_expect_true(game.meta.unlocked_room_ids.has("biodome"), "Biodome should be permanent")
+	_expect_true(game.draw_pile.has("biodome"), "the current run should contain a Biodome prototype")
+	_expect_equal(game.run_discovered_synergy_ids.count("closed_air_loop"), 1, "discovery should be recorded once")
+	_expect_equal(game.run_stabilized_synergy_ids.count("closed_air_loop"), 1, "stabilization should be recorded once")
+	game.free()
+	_remove_test_save(save_path)
+
+func _test_run_summary_names_new_progression_events() -> void:
+	var save_path := "user://brine_discovery_summary_test.json"
+	var game = MainScript.new()
+	game.meta.save_path = save_path
+	if not _require_property(game, "run_decrypted_blueprint_ids"):
+		game.free()
+		return
+	game.summary_layer = CanvasLayer.new()
+	game.summary_text = Label.new()
+	game.summary_title_label = Label.new()
+	game.run_discovered_synergy_ids.assign(["closed_air_loop"])
+	game.run_stabilized_synergy_ids.assign(["closed_air_loop"])
+	game.run_decrypted_blueprint_ids.assign(["biodome"])
+	game._show_reboot_summary("Test run complete.")
+	_expect_true(game.summary_text.text.contains("Patterns discovered: Closed Air Loop"), "summary should name recipes discovered this run")
+	_expect_true(game.summary_text.text.contains("Patterns stabilized: Closed Air Loop"), "summary should name recipes stabilized this run")
+	_expect_true(game.summary_text.text.contains("Blueprints decrypted: Biodome"), "summary should name blueprints decrypted this run")
+	game.summary_text.free()
+	game.summary_title_label.free()
+	game.summary_layer.free()
+	game.free()
+	_remove_test_save(save_path)
+
+func _test_resource_thresholds_do_not_bypass_the_discovery_graph() -> void:
+	var save_path := "user://brine_discovery_bypass_test.json"
+	var game = MainScript.new()
+	game.meta.save_path = save_path
+	game.meta.unlocked_room_ids.erase("clone_lab")
+	game.meta.unlocked_room_ids.erase("data_archive")
+	game.resources["biomass"] = 100
+	game.resources["data"] = 100
+	game._apply_unlocks()
+	_expect_true(not game.meta.unlocked_room_ids.has("clone_lab"), "resource totals must not bypass Safe Wake Protocol")
+	_expect_true(not game.meta.unlocked_room_ids.has("data_archive"), "resource totals must not bypass Core Diagnostics")
+	game.free()
+	_remove_test_save(save_path)
+
+func _remove_test_save(save_path: String) -> void:
+	if FileAccess.file_exists(save_path):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(save_path))
+
+func _require_property(object: Object, property_name: String) -> bool:
+	for property_value in object.get_property_list():
+		if str(property_value.get("name", "")) == property_name:
+			return true
+	_expect_true(false, "%s should expose property %s" % [object.get_class(), property_name])
+	return false
+
+func _require_method(object: Object, method_name: String) -> bool:
+	if object.has_method(method_name):
+		return true
+	_expect_true(false, "%s should expose method %s" % [object.get_class(), method_name])
+	return false
 
 func _expect_equal(actual, expected, message: String) -> void:
 	if actual != expected:

@@ -150,6 +150,8 @@ var active_synergy_links := []
 var synergy_stabilization_progress := {}
 var run_discovered_synergy_ids: Array[String] = []
 var run_stabilized_synergy_ids: Array[String] = []
+var run_decrypted_blueprint_ids: Array[String] = []
+var prototype_card_seen_cycle := {}
 var resonance_score := 0
 var resonance_tier_index := 0
 var links_formed := 0
@@ -1376,6 +1378,8 @@ func _start_reboot_cycle() -> void:
 	synergy_stabilization_progress.clear()
 	run_discovered_synergy_ids.clear()
 	run_stabilized_synergy_ids.clear()
+	run_decrypted_blueprint_ids.clear()
+	prototype_card_seen_cycle.clear()
 	resonance_score = 0
 	resonance_tier_index = 0
 	links_formed = 0
@@ -1444,6 +1448,8 @@ func _refill_hand() -> void:
 			var id := str(draw_pile.pop_back())
 			if not hand.has(id) or attempts == 0:
 				hand.append(id)
+				if prototype_card_seen_cycle.has(id) and int(prototype_card_seen_cycle[id]) < 0:
+					prototype_card_seen_cycle[id] = cycle
 				drawn = true
 				break
 			draw_pile.push_front(id)
@@ -1457,6 +1463,16 @@ func _reshuffle_discard_pile() -> void:
 	discard_pile.clear()
 	draw_pile.shuffle()
 	_log("Blueprint discard pile recycled into the draw stack.", false)
+
+func _clear_prototype_marker(id: String) -> void:
+	prototype_card_seen_cycle.erase(id)
+
+func _expire_prototype_markers() -> void:
+	for room_id_value in prototype_card_seen_cycle.keys():
+		var room_id := str(room_id_value)
+		var first_seen_cycle := int(prototype_card_seen_cycle[room_id])
+		if first_seen_cycle >= 0 and cycle > first_seen_cycle + 1:
+			prototype_card_seen_cycle.erase(room_id)
 
 func _on_grid_clicked(cell: Vector2i) -> void:
 	if menu_open:
@@ -1565,6 +1581,7 @@ func _advance_cycle() -> void:
 	_emit_warnings()
 	_apply_unlocks()
 	_check_directive_progress()
+	_expire_prototype_markers()
 	_refresh_all()
 	if running:
 		_check_fail_conditions()
@@ -1691,7 +1708,7 @@ func _advance_synergy_discovery_cycle() -> void:
 		active_synergy_links,
 		synergy_stabilization_progress,
 		meta.discovered_synergy_ids,
-		{}
+		meta.stabilized_synergy_ids
 	)
 	synergy_stabilization_progress = transition["progress"]
 	for id_value in transition["new_discovery_ids"]:
@@ -1709,18 +1726,37 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 	_show_center_toast("PATTERN DISCOVERED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
 
 func _handle_synergy_stabilization(synergy_id: String) -> void:
-	if run_stabilized_synergy_ids.has(synergy_id):
+	_award_synergy_stabilization(SynergyManagerScript.get_synergy(synergy_id))
+
+func _award_synergy_stabilization(synergy: Dictionary) -> void:
+	var synergy_id := str(synergy.get("id", ""))
+	if synergy_id.is_empty() or not meta.stabilize_synergy(synergy_id):
 		return
-	run_stabilized_synergy_ids.append(synergy_id)
-	var synergy := _synergy_by_id(synergy_id)
-	_log("Pattern stabilized: %s." % str(synergy.get("name", synergy_id)))
-	_show_center_toast("PATTERN STABILIZED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
+	if not run_stabilized_synergy_ids.has(synergy_id):
+		run_stabilized_synergy_ids.append(synergy_id)
+	var synergy_name := str(synergy.get("name", synergy_id))
+	var unlock_id := str(synergy.get("unlock_room_id", ""))
+	if not unlock_id.is_empty():
+		if meta.unlock_room(unlock_id):
+			draw_pile.append(unlock_id)
+			prototype_card_seen_cycle[unlock_id] = -1
+			run_decrypted_blueprint_ids.append(unlock_id)
+			var room_name := str(RoomDatabaseScript.get_room(unlock_id).get("display_name", unlock_id))
+			_log("Pattern stabilized: %s. Blueprint decrypted: %s." % [synergy_name, room_name])
+			_show_center_toast("BLUEPRINT DECRYPTED\n%s" % room_name.to_upper())
+		else:
+			_log("Pattern stabilized: %s. Blueprint already present in the archive." % synergy_name)
+			_show_center_toast("PATTERN STABILIZED\n%s" % synergy_name.to_upper())
+		return
+	var terminal_reward: Dictionary = synergy.get("terminal_reward", {})
+	var research := int(terminal_reward.get("research", 0))
+	if research > 0:
+		meta.add_research_points(research)
+		_log("Pattern stabilized: %s. +%d Research." % [synergy_name, research])
+		_show_center_toast("PATTERN STABILIZED\n+%d RESEARCH" % research)
 
 func _synergy_by_id(synergy_id: String) -> Dictionary:
-	for synergy_value in SynergyManagerScript.all_synergies():
-		if str(synergy_value.get("id", "")) == synergy_id:
-			return synergy_value
-	return {}
+	return SynergyManagerScript.get_synergy(synergy_id)
 
 func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) -> void:
 	var new_links: Array = []
@@ -1871,10 +1907,7 @@ func _format_directive_reward(reward: Dictionary) -> String:
 	return _join_strings(parts) if not parts.is_empty() else "sector stability"
 
 func _apply_unlocks() -> void:
-	if resources["biomass"] >= 100 and meta.unlock_room("clone_lab"):
-		_log("Blueprint unlocked: Clone Lab.")
-	if resources["data"] >= 100 and meta.unlock_room("data_archive"):
-		_log("Blueprint unlocked: Data Archive.")
+	pass
 
 func _check_fail_conditions() -> void:
 	if testing_disable_failures:
@@ -1933,6 +1966,11 @@ func _show_reboot_summary(reason: String, victory := false) -> void:
 		_format_cost(run_earned) if not run_earned.is_empty() else "None"
 	]
 	summary_text.text += "\nPOIs expired: %s" % [_join_strings(expired_pois) if expired_pois.size() > 0 else "None"]
+	summary_text.text += "\nPatterns discovered: %s\nPatterns stabilized: %s\nBlueprints decrypted: %s" % [
+		_join_strings(_synergy_names_for_ids(run_discovered_synergy_ids)) if not run_discovered_synergy_ids.is_empty() else "None",
+		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None",
+		_join_strings(_room_names_for_ids(run_decrypted_blueprint_ids)) if not run_decrypted_blueprint_ids.is_empty() else "None"
+	]
 	summary_layer.visible = true
 	_set_paused(true, false)
 	_log("Run complete: %s" % reason)
@@ -1952,6 +1990,20 @@ func _format_doctrine_mastery_summary(previous_ranks: Dictionary) -> String:
 		var rank_up_text := "  RANK UP" if rank > int(previous_ranks.get(doctrine_id, rank)) else ""
 		parts.append("%s R%d %s%s" % [short_name, rank, progress_text, rank_up_text])
 	return "  ·  ".join(parts)
+
+func _synergy_names_for_ids(ids: Array) -> Array[String]:
+	var names: Array[String] = []
+	for id_value in ids:
+		var synergy := SynergyManagerScript.get_synergy(str(id_value))
+		names.append(str(synergy.get("name", str(id_value).replace("_", " ").capitalize())))
+	return names
+
+func _room_names_for_ids(ids: Array) -> Array[String]:
+	var names: Array[String] = []
+	for id_value in ids:
+		var room_id := str(id_value)
+		names.append(str(RoomDatabaseScript.get_room(room_id).get("display_name", room_id.replace("_", " ").capitalize())))
+	return names
 
 func _refresh_all() -> void:
 	_refresh_resources()
@@ -2820,6 +2872,7 @@ func _load_card_thumbnail(path: String) -> Texture2D:
 func _on_card_pressed(id: String) -> void:
 	if menu_open or not running:
 		return
+	_clear_prototype_marker(id)
 	selected_card_id = id
 	last_preview_room_id = id
 	last_previewing_card = true

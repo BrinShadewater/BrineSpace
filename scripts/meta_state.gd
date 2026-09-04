@@ -5,6 +5,7 @@ const RoomDatabaseScript := preload("res://scripts/room_database.gd")
 
 var unlocked_room_ids := {}
 var discovered_synergy_ids := {}
+var stabilized_synergy_ids := {}
 var total_research_points := 0
 var recovered_memory_ids := {}
 var brine_upgrades := {}
@@ -30,6 +31,13 @@ func discover_synergy(id: String) -> bool:
 	if discovered_synergy_ids.has(id):
 		return false
 	discovered_synergy_ids[id] = true
+	save_to_disk()
+	return true
+
+func stabilize_synergy(id: String) -> bool:
+	if stabilized_synergy_ids.has(id):
+		return false
+	stabilized_synergy_ids[id] = true
 	save_to_disk()
 	return true
 
@@ -71,6 +79,7 @@ func save_to_disk() -> void:
 	var data := {
 		"unlocked_room_ids": unlocked_room_ids.keys(),
 		"discovered_synergy_ids": discovered_synergy_ids.keys(),
+		"stabilized_synergy_ids": stabilized_synergy_ids.keys(),
 		"total_research_points": total_research_points,
 		"recovered_memory_ids": recovered_memory_ids.keys(),
 		"brine_upgrades": brine_upgrades.keys(),
@@ -95,6 +104,8 @@ func load_from_disk() -> void:
 		unlocked_room_ids[str(id)] = true
 	for id in parsed.get("discovered_synergy_ids", []):
 		discovered_synergy_ids[str(id)] = true
+	for id in parsed.get("stabilized_synergy_ids", []):
+		stabilized_synergy_ids[str(id)] = true
 	total_research_points = int(parsed.get("total_research_points", 0))
 	for id in parsed.get("recovered_memory_ids", []):
 		recovered_memory_ids[str(id)] = true
