@@ -5,11 +5,12 @@ const SynergyManagerScript := preload("res://scripts/synergy_manager.gd")
 const OrbitManagerScript := preload("res://scripts/orbit_manager.gd")
 const MetaStateScript := preload("res://scripts/meta_state.gd")
 const GridCanvasScript := preload("res://scripts/grid_canvas.gd")
+const RunManagerScript := preload("res://scripts/run_manager.gd")
 
 const GRID_SIZE := 40
 const CELL_SIZE := 720
 const GRID_PIXEL_SIZE := GRID_SIZE * CELL_SIZE
-const BASE_CYCLE_SECONDS := 10.0
+const BASE_CYCLE_SECONDS := 20.0
 const HAND_SIZE := 3
 const DEFAULT_GRID_ZOOM := 0.855
 const UI_ACCENT := Color("#2d7f6b")
@@ -100,6 +101,13 @@ const BASE_STORAGE_CAPACITY := {
 	"rare_minerals": 10,
 	"integrity": 100
 }
+const RESONANCE_TIERS := [
+	{"name": "DORMANT", "threshold": 0, "reward": {}},
+	{"name": "ALIGNED", "threshold": 30, "reward": {"metal": 4}},
+	{"name": "RESONANT", "threshold": 90, "reward": {"data": 6}},
+	{"name": "HARMONIC", "threshold": 180, "reward": {"rare_minerals": 2}},
+	{"name": "TRANSCENDENT", "threshold": 320, "reward": {"data": 10, "integrity": 5}}
+]
 
 var resources := {
 	"metal": 18,
@@ -116,6 +124,15 @@ var run_earned := {}
 var occupied := {}
 var placed_rooms := []
 var hand := []
+var draw_pile: Array[String] = []
+var discard_pile: Array[String] = []
+var rerolls_remaining := 3
+var selected_doctrines: Array[String] = []
+var pending_doctrines: Array[String] = []
+var run_directives := []
+var directive_index := 0
+var completed_directives: Array[String] = []
+var run_victory := false
 var selected_card_id := ""
 var hovered_card_id := ""
 var selected_rotation := 0
@@ -127,13 +144,19 @@ var had_crew := false
 var corruption := 0
 var orbit_decay := 0
 var active_synergies := {}
+var active_synergy_links := []
+var resonance_score := 0
+var resonance_tier_index := 0
+var links_formed := 0
+var largest_cascade := 0
+var last_cascade_size := 0
 var meta := MetaStateScript.new()
 var orbit := OrbitManagerScript.new()
 var rng := RandomNumberGenerator.new()
 var running := true
 var admin_mode := false
 var testing_free_build := false
-var testing_disable_failures := true
+var testing_disable_failures := false
 var grid_zoom := DEFAULT_GRID_ZOOM
 var paused := false
 var menu_open := false
@@ -163,7 +186,10 @@ var grid_view: Control
 var grid_scroll: ScrollContainer
 var resource_bar: HBoxContainer
 var cycle_label: Label
+var resonance_label: Label
 var hand_box: HBoxContainer
+var hand_count_label: Label
+var reroll_button: Button
 var preview_texture: TextureRect
 var preview_name_label: Label
 var preview_tags_label: Label
@@ -181,8 +207,18 @@ var speed_buttons := []
 var view_mode_button: Button
 var solar_meter: ProgressBar
 var solar_time_label: Label
+var cascade_toast: PanelContainer
+var cascade_toast_label: Label
+var cascade_toast_tween: Tween
+var summary_layer: CanvasLayer
 var summary_panel: PanelContainer
+var summary_title_label: Label
 var summary_text: Label
+var doctrine_layer: CanvasLayer
+var doctrine_buttons := {}
+var doctrine_selection_label: Label
+var doctrine_pair_preview_label: Label
+var doctrine_confirm_button: Button
 var menu_layer: CanvasLayer
 var menu_panel: PanelContainer
 var menu_status_label: Label
@@ -319,6 +355,21 @@ func _build_ui() -> void:
 	top_bar.add_child(cycle_status)
 	cycle_label = cycle_status
 
+	var resonance_chip := PanelContainer.new()
+	resonance_chip.name = "ResonanceChip"
+	resonance_chip.custom_minimum_size = Vector2(166, 54)
+	resonance_chip.tooltip_text = "Placement cascades build Resonance. Stack several links with one room to score faster and unlock tier rewards."
+	_apply_panel_style(resonance_chip, Color("#050d10"), Color("#285849"))
+	top_bar.add_child(resonance_chip)
+	var resonance_status := Label.new()
+	resonance_status.name = "ResonanceLabel"
+	resonance_status.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	resonance_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	resonance_status.add_theme_font_size_override("font_size", 12)
+	resonance_status.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
+	resonance_chip.add_child(resonance_status)
+	resonance_label = resonance_status
+
 	var menu_button := Button.new()
 	menu_button.text = "MENU"
 	menu_button.custom_minimum_size = Vector2(82, 44)
@@ -362,8 +413,8 @@ func _build_ui() -> void:
 	objective_panel.name = "OrbitalObjective"
 	objective_panel.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	objective_panel.offset_left = 24
-	objective_panel.offset_top = -168
-	objective_panel.offset_right = 348
+	objective_panel.offset_top = -224
+	objective_panel.offset_right = 388
 	objective_panel.offset_bottom = -24
 	middle.add_child(objective_panel)
 	_apply_panel_style(objective_panel, Color("#071018"), Color("#152a35"))
@@ -373,6 +424,28 @@ func _build_ui() -> void:
 	objective_text.add_theme_color_override("font_color", Color("#8fa3ae"))
 	objective_panel.add_child(objective_text)
 	orbital_objective_label = objective_text
+
+	var cascade_panel := PanelContainer.new()
+	cascade_panel.name = "CascadeToast"
+	cascade_panel.visible = false
+	cascade_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cascade_panel.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	cascade_panel.offset_left = -235
+	cascade_panel.offset_top = 78
+	cascade_panel.offset_right = 235
+	cascade_panel.offset_bottom = 146
+	_apply_panel_style(cascade_panel, Color("#061b18"), UI_ACCENT_BRIGHT)
+	middle.add_child(cascade_panel)
+	cascade_toast = cascade_panel
+	var cascade_text := Label.new()
+	cascade_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	cascade_text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	cascade_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	cascade_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cascade_text.add_theme_font_size_override("font_size", 15)
+	cascade_text.add_theme_color_override("font_color", Color("#b9f5df"))
+	cascade_panel.add_child(cascade_text)
+	cascade_toast_label = cascade_text
 
 	var viewport_tools := HBoxContainer.new()
 	viewport_tools.name = "ViewportTools"
@@ -664,17 +737,19 @@ func _build_ui() -> void:
 	hand_count.add_theme_font_size_override("font_size", 30)
 	hand_count.add_theme_color_override("font_color", Color("#c4d1da"))
 	draft_status.add_child(hand_count)
+	hand_count_label = hand_count
 	var draft_hint := Label.new()
-	draft_hint.text = "Build or discard\nto draw replacement\nblueprints."
+	draft_hint.text = "Build to draw.\nRMB rerolls one.\nSpent cards recycle."
 	draft_hint.add_theme_font_size_override("font_size", 14)
 	draft_hint.add_theme_color_override("font_color", Color("#536874"))
 	draft_status.add_child(draft_hint)
 	var discard_all_button := Button.new()
-	discard_all_button.text = "DISCARD ALL"
+	discard_all_button.text = "REROLL HAND · 3"
 	discard_all_button.custom_minimum_size = Vector2(150, 38)
 	discard_all_button.pressed.connect(_discard_all_cards)
 	_style_hud_button(discard_all_button, false)
 	draft_status.add_child(discard_all_button)
+	reroll_button = discard_all_button
 	var card_row := HBoxContainer.new()
 	card_row.name = "CardRow"
 	card_row.add_theme_constant_override("separation", 16)
@@ -682,16 +757,24 @@ func _build_ui() -> void:
 	bottom_box.add_child(card_row)
 	hand_box = card_row
 
-	var summary_layer := CanvasLayer.new()
+	summary_layer = CanvasLayer.new()
 	summary_layer.name = "SummaryLayer"
+	summary_layer.layer = 19
+	summary_layer.visible = false
 	add_child(summary_layer)
+	var summary_shade := ColorRect.new()
+	summary_shade.color = Color(0.0, 0.02, 0.04, 0.84)
+	summary_shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	summary_shade.mouse_filter = Control.MOUSE_FILTER_STOP
+	summary_layer.add_child(summary_shade)
+	var summary_center := CenterContainer.new()
+	summary_center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	summary_center.mouse_filter = Control.MOUSE_FILTER_STOP
+	summary_layer.add_child(summary_center)
 	var summary := PanelContainer.new()
 	summary.name = "SummaryPanel"
-	summary.visible = false
-	summary.set_anchors_preset(Control.PRESET_CENTER)
-	summary.position = Vector2(360, 170)
-	summary.custom_minimum_size = Vector2(560, 420)
-	summary_layer.add_child(summary)
+	summary.custom_minimum_size = Vector2(760, 620)
+	summary_center.add_child(summary)
 	_apply_panel_style(summary, Color("#071018"), Color("#1f5260"))
 	summary_panel = summary
 	var summary_vbox := VBoxContainer.new()
@@ -700,6 +783,7 @@ func _build_ui() -> void:
 	summary_title.text = "Reboot Summary"
 	summary_title.add_theme_font_size_override("font_size", 24)
 	summary_vbox.add_child(summary_title)
+	summary_title_label = summary_title
 	var summary_body := Label.new()
 	summary_body.name = "Text"
 	summary_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -711,6 +795,7 @@ func _build_ui() -> void:
 	reboot_button.pressed.connect(_start_reboot_cycle)
 	summary_vbox.add_child(reboot_button)
 
+	_build_doctrine_overlay()
 	_build_menu_overlay()
 
 	tick_timer = Timer.new()
@@ -869,6 +954,224 @@ func _style_hud_progress(progress: ProgressBar) -> void:
 	fill.border_width_top = 1
 	fill.border_width_bottom = 1
 	progress.add_theme_stylebox_override("fill", fill)
+
+func _build_doctrine_overlay() -> void:
+	doctrine_layer = CanvasLayer.new()
+	doctrine_layer.name = "DoctrineLayer"
+	doctrine_layer.layer = 18
+	doctrine_layer.visible = false
+	add_child(doctrine_layer)
+
+	var shade := ColorRect.new()
+	shade.color = Color(0.0, 0.02, 0.04, 0.88)
+	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	shade.mouse_filter = Control.MOUSE_FILTER_STOP
+	doctrine_layer.add_child(shade)
+
+	var center := CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_STOP
+	doctrine_layer.add_child(center)
+
+	var panel := PanelContainer.new()
+	panel.name = "DoctrinePanel"
+	panel.custom_minimum_size = Vector2(930, 690)
+	panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	center.add_child(panel)
+	_apply_panel_style(panel, Color("#071018"), Color("#285849"))
+
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 14)
+	panel.add_child(box)
+	var eyebrow := Label.new()
+	eyebrow.text = "BRINE // REBOOT CONFIGURATION"
+	eyebrow.add_theme_font_size_override("font_size", 12)
+	eyebrow.add_theme_color_override("font_color", Color("#607784"))
+	box.add_child(eyebrow)
+	var title := Label.new()
+	title.text = "Choose Two Station Doctrines"
+	title.add_theme_font_size_override("font_size", 30)
+	title.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
+	box.add_child(title)
+	var intro := Label.new()
+	intro.text = "Your doctrine pair determines this reboot's blueprint deck, combo routes, and mastery bonuses."
+	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	intro.add_theme_font_size_override("font_size", 14)
+	intro.add_theme_color_override("font_color", Color("#9aabb2"))
+	box.add_child(intro)
+
+	var grid := GridContainer.new()
+	grid.columns = 2
+	grid.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	grid.add_theme_constant_override("h_separation", 12)
+	grid.add_theme_constant_override("v_separation", 12)
+	box.add_child(grid)
+	doctrine_buttons.clear()
+	for doctrine_id_value in RunManagerScript.DOCTRINE_ORDER:
+		var doctrine_id := str(doctrine_id_value)
+		var button := Button.new()
+		button.toggle_mode = true
+		button.custom_minimum_size = Vector2(420, 98)
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.focus_mode = Control.FOCUS_NONE
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.pressed.connect(_on_doctrine_button_pressed.bind(doctrine_id))
+		grid.add_child(button)
+		doctrine_buttons[doctrine_id] = button
+
+	var pair_preview := Label.new()
+	pair_preview.custom_minimum_size = Vector2(0, 42)
+	pair_preview.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	pair_preview.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	pair_preview.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	pair_preview.add_theme_font_size_override("font_size", 11)
+	pair_preview.add_theme_color_override("font_color", Color("#6f9c91"))
+	box.add_child(pair_preview)
+	doctrine_pair_preview_label = pair_preview
+
+	var selection_status := Label.new()
+	selection_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	selection_status.add_theme_font_size_override("font_size", 13)
+	selection_status.add_theme_color_override("font_color", Color("#8fa3ae"))
+	box.add_child(selection_status)
+	doctrine_selection_label = selection_status
+	var confirm := Button.new()
+	confirm.text = "BEGIN REBOOT"
+	confirm.custom_minimum_size = Vector2(0, 56)
+	confirm.disabled = true
+	confirm.pressed.connect(_confirm_doctrines)
+	_style_hud_button(confirm, true)
+	box.add_child(confirm)
+	doctrine_confirm_button = confirm
+	var footer := Label.new()
+	footer.text = "Mastery persists between runs. Higher ranks grant starting resources when that doctrine is selected."
+	footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	footer.add_theme_font_size_override("font_size", 11)
+	footer.add_theme_color_override("font_color", Color("#536874"))
+	box.add_child(footer)
+	_refresh_doctrine_overlay()
+
+func _on_doctrine_button_pressed(doctrine_id: String) -> void:
+	if pending_doctrines.has(doctrine_id):
+		pending_doctrines.erase(doctrine_id)
+	elif pending_doctrines.size() < 2:
+		pending_doctrines.append(doctrine_id)
+	_refresh_doctrine_overlay()
+
+func _refresh_doctrine_overlay() -> void:
+	if doctrine_selection_label == null:
+		return
+	for doctrine_id_value in RunManagerScript.DOCTRINE_ORDER:
+		var doctrine_id := str(doctrine_id_value)
+		var button: Button = doctrine_buttons.get(doctrine_id)
+		if button == null:
+			continue
+		var data: Dictionary = RunManagerScript.doctrine(doctrine_id)
+		var mastery := meta.get_doctrine_mastery(doctrine_id)
+		var rank := meta.get_doctrine_rank(doctrine_id)
+		var next_threshold := meta.get_next_doctrine_rank_threshold(doctrine_id)
+		var mastery_text := "MAX" if next_threshold < 0 else "%d/%d" % [mastery, next_threshold]
+		button.text = "%s\n%s\nMASTERY R%d · %s  ·  RANK BONUS %s" % [
+			data["name"],
+			data["description"],
+			rank,
+			mastery_text,
+			_format_cost(data.get("mastery_bonus", {})).to_upper()
+		]
+		button.tooltip_text = "Rank bonus: %s per rank" % _format_cost(data.get("mastery_bonus", {}))
+		var selected := pending_doctrines.has(doctrine_id)
+		button.set_pressed_no_signal(selected)
+		button.disabled = pending_doctrines.size() >= 2 and not selected
+		_style_hud_button(button, selected)
+	doctrine_selection_label.text = "%d/2 SELECTED%s" % [
+		pending_doctrines.size(),
+		"  ·  %s" % RunManagerScript.doctrine_pair_name(pending_doctrines) if not pending_doctrines.is_empty() else ""
+	]
+	if doctrine_pair_preview_label != null:
+		doctrine_pair_preview_label.text = _doctrine_pair_preview_text()
+	doctrine_confirm_button.disabled = pending_doctrines.size() != 2
+
+func _doctrine_pair_preview_text() -> String:
+	if pending_doctrines.size() < 2:
+		return "Select one more doctrine to reveal deck breadth, crossover rooms, and available link patterns." if pending_doctrines.size() == 1 else "Pair profile will reveal deck breadth, crossover rooms, and available link patterns."
+	var deck := RunManagerScript.build_deck(pending_doctrines, meta.unlocked_room_ids)
+	var unique_rooms := {}
+	for room_id_value in deck:
+		unique_rooms[str(room_id_value)] = true
+	var possible_synergies: Array[String] = []
+	for synergy_value in SynergyManagerScript.all_synergies():
+		var synergy: Dictionary = synergy_value
+		var available := true
+		for room_id_value in synergy.get("rooms", []):
+			var room_id := str(room_id_value)
+			if room_id != "brine_core" and not unique_rooms.has(room_id):
+				available = false
+				break
+		if available:
+			possible_synergies.append(str(synergy.get("name", "Unknown Pattern")))
+	var first_rooms: Array = RunManagerScript.doctrine(str(pending_doctrines[0])).get("rooms", [])
+	var second_rooms: Array = RunManagerScript.doctrine(str(pending_doctrines[1])).get("rooms", [])
+	var crossover_names: Array[String] = []
+	for room_id_value in first_rooms:
+		var room_id := str(room_id_value)
+		if second_rooms.has(room_id) and unique_rooms.has(room_id):
+			crossover_names.append(str(RoomDatabaseScript.get_room(room_id).get("display_name", room_id)))
+	var crossover_text := _preview_name_list(crossover_names, 3) if not crossover_names.is_empty() else "complementary pools"
+	return "PAIR PROFILE  ·  %d BLUEPRINTS  ·  %d UNIQUE ROOMS  ·  %d LINK PATTERNS\nCROSSOVER  %s  ·  EARLY ROUTES  %s" % [
+		deck.size(),
+		unique_rooms.size(),
+		possible_synergies.size(),
+		crossover_text,
+		_preview_name_list(possible_synergies, 3)
+	]
+
+func _preview_name_list(names: Array[String], visible_count: int) -> String:
+	var visible_names: Array[String] = []
+	for index in range(mini(names.size(), visible_count)):
+		visible_names.append(names[index])
+	var text := " · ".join(visible_names)
+	if names.size() > visible_count:
+		text += " +%d" % (names.size() - visible_count)
+	return text if not text.is_empty() else "none"
+
+func _show_doctrine_selection() -> void:
+	pending_doctrines.clear()
+	running = false
+	_set_paused(true, false)
+	doctrine_layer.visible = true
+	_refresh_doctrine_overlay()
+
+func _confirm_doctrines() -> void:
+	if pending_doctrines.size() != 2:
+		return
+	selected_doctrines.assign(pending_doctrines)
+	doctrine_layer.visible = false
+	_build_run_deck()
+	_roll_run_directives()
+	_apply_doctrine_mastery_bonuses()
+	_draw_hand()
+	running = true
+	_set_paused(false, false)
+	_log("Reboot doctrines locked: %s." % RunManagerScript.doctrine_pair_name(selected_doctrines), false)
+	_log("Directive 1/3 received: %s." % _current_directive().get("name", "Unknown"))
+	_refresh_all()
+
+func _apply_doctrine_mastery_bonuses() -> void:
+	var total_bonus := {}
+	for doctrine_id_value in selected_doctrines:
+		var doctrine_id := str(doctrine_id_value)
+		var rank := meta.get_doctrine_rank(doctrine_id)
+		if rank <= 0:
+			continue
+		var data: Dictionary = RunManagerScript.doctrine(doctrine_id)
+		_add_to_delta(total_bonus, data.get("mastery_bonus", {}), rank)
+	for key in total_bonus:
+		resources[key] = int(resources.get(key, 0)) + int(total_bonus[key])
+	_clamp_power_reserve()
+	_clamp_resource_storage()
+	if not total_bonus.is_empty():
+		_log("Doctrine mastery supplied %s." % _format_cost(total_bonus), false)
 
 func _build_menu_overlay() -> void:
 	menu_layer = CanvasLayer.new()
@@ -1044,6 +1347,15 @@ func _start_reboot_cycle() -> void:
 	occupied.clear()
 	placed_rooms.clear()
 	hand.clear()
+	draw_pile.clear()
+	discard_pile.clear()
+	rerolls_remaining = 3
+	selected_doctrines.clear()
+	pending_doctrines.clear()
+	run_directives.clear()
+	directive_index = 0
+	completed_directives.clear()
+	run_victory = false
 	selected_card_id = ""
 	selected_rotation = 0
 	selected_room_cell = Vector2i(-1, -1)
@@ -1054,6 +1366,12 @@ func _start_reboot_cycle() -> void:
 	corruption = 0
 	orbit_decay = 0
 	active_synergies.clear()
+	active_synergy_links.clear()
+	resonance_score = 0
+	resonance_tier_index = 0
+	links_formed = 0
+	largest_cascade = 0
+	last_cascade_size = 0
 	completed_pois.clear()
 	expired_pois.clear()
 	power_generated = 0
@@ -1073,14 +1391,19 @@ func _start_reboot_cycle() -> void:
 	test_walker_direction = "south"
 	visual_time_seconds = 0.0
 	orbit = OrbitManagerScript.new()
-	running = true
-	_set_paused(false, false)
-	summary_panel.visible = false
+	running = false
+	_set_paused(true, false)
+	summary_layer.visible = false
+	if summary_title_label != null:
+		summary_title_label.text = "Reboot Summary"
+	if cascade_toast_tween != null and cascade_toast_tween.is_valid():
+		cascade_toast_tween.kill()
+	cascade_toast.visible = false
 	_place_room("brine_core", Vector2i(center_index, center_index), true)
 	_clamp_resource_storage()
 	_center_grid_on_station()
-	_draw_hand()
-	_log("Reboot Cycle started. BRINE Core online, memory lattice unstable.", false)
+	_show_doctrine_selection()
+	_log("Reboot Cycle staged. Select two doctrines to compile the blueprint deck.", false)
 	_refresh_all()
 
 func _draw_hand() -> void:
@@ -1088,47 +1411,43 @@ func _draw_hand() -> void:
 	_refill_hand()
 	selected_card_id = hand[0] if not hand.is_empty() else ""
 
-func _refill_hand() -> void:
-	var candidates: Array[String] = []
-	var rooms := RoomDatabaseScript.all_rooms()
-	for id in rooms:
-		if id == "brine_core":
-			continue
-		if meta.unlocked_room_ids.has(id) and not hand.has(id):
-			var room: Dictionary = rooms[id]
-			var weight := _draft_weight(room)
-			for i in range(weight):
-				candidates.append(id)
-	candidates.shuffle()
-	var attempts := 0
-	while hand.size() < HAND_SIZE and not candidates.is_empty() and attempts < candidates.size() * 2:
-		attempts += 1
-		var id: String = str(candidates.pop_back())
-		if not hand.has(id):
-			hand.append(id)
+func _build_run_deck() -> void:
+	draw_pile = RunManagerScript.build_deck(selected_doctrines, meta.unlocked_room_ids)
+	discard_pile.clear()
+	draw_pile.shuffle()
+	if draw_pile.has("mining_drone_bay"):
+		draw_pile.erase("mining_drone_bay")
+		draw_pile.append("mining_drone_bay")
+	if draw_pile.has("solar_array"):
+		draw_pile.erase("solar_array")
+		draw_pile.append("solar_array")
 
-func _draft_weight(room: Dictionary) -> int:
-	var id := str(room.get("id", ""))
-	var rarity := str(room.get("rarity", "common"))
-	var weight := 8
-	match rarity:
-		"common":
-			weight = 10
-		"uncommon":
-			weight = 5
-		"rare":
-			weight = 2
-		_:
-			weight = 1
-	if room.get("production", {}).has("power"):
-		weight += 7
-	if id == "battery_array":
-		weight += 3
-	if str(room.get("layout", "")) == "layout_dead_south":
-		weight = max(1, weight - 2)
-	if room.get("tags", []).has("corridor"):
-		weight = max(2, weight - 3)
-	return weight
+func _refill_hand() -> void:
+	while hand.size() < HAND_SIZE:
+		if draw_pile.is_empty():
+			_reshuffle_discard_pile()
+		if draw_pile.is_empty():
+			break
+		var attempts := draw_pile.size()
+		var drawn := false
+		while attempts > 0:
+			attempts -= 1
+			var id := str(draw_pile.pop_back())
+			if not hand.has(id) or attempts == 0:
+				hand.append(id)
+				drawn = true
+				break
+			draw_pile.push_front(id)
+		if not drawn:
+			break
+
+func _reshuffle_discard_pile() -> void:
+	if discard_pile.is_empty():
+		return
+	draw_pile.assign(discard_pile)
+	discard_pile.clear()
+	draw_pile.shuffle()
+	_log("Blueprint discard pile recycled into the draw stack.", false)
 
 func _on_grid_clicked(cell: Vector2i) -> void:
 	if menu_open:
@@ -1148,9 +1467,11 @@ func _on_grid_clicked(cell: Vector2i) -> void:
 		return
 	if not testing_free_build:
 		_spend(RoomDatabaseScript.get_room(selected_card_id)["cost"])
-	_place_room(selected_card_id, cell)
+	var built_card_id := selected_card_id
+	_place_room(built_card_id, cell)
 	_clamp_power_reserve()
-	hand.erase(selected_card_id)
+	hand.erase(built_card_id)
+	discard_pile.append(built_card_id)
 	_refill_hand()
 	selected_card_id = hand[0] if not hand.is_empty() else ""
 	selected_rotation = 0
@@ -1200,6 +1521,7 @@ func get_placement_problem(id: String, cell: Vector2i) -> String:
 	return "must connect to an adjacent door."
 
 func _place_room(id: String, cell: Vector2i, free := false) -> void:
+	var previous_link_keys := _active_synergy_link_keys()
 	var room := RoomDatabaseScript.get_room(id).duplicate(true)
 	room["pos"] = cell
 	room["rotation"] = selected_rotation if not free else 0
@@ -1216,7 +1538,11 @@ func _place_room(id: String, cell: Vector2i, free := false) -> void:
 	if test_walker_cell == Vector2i(-1, -1):
 		test_walker_cell = cell
 	_check_synergies()
+	if not free:
+		_resolve_placement_cascade(cell, previous_link_keys)
 	_apply_unlocks()
+	if not free:
+		_check_directive_progress()
 	_center_grid_on_station_deferred()
 
 func _advance_cycle() -> void:
@@ -1228,8 +1554,10 @@ func _advance_cycle() -> void:
 	_apply_life_support()
 	_emit_warnings()
 	_apply_unlocks()
+	_check_directive_progress()
 	_refresh_all()
-	_check_fail_conditions()
+	if running:
+		_check_fail_conditions()
 
 func _apply_room_economy() -> Dictionary:
 	var delta := {}
@@ -1266,7 +1594,7 @@ func _apply_room_economy() -> Dictionary:
 			crew_count += 1
 			had_crew = true
 			_log("Clone Lab reports one viable clone crew.")
-	var bonus := SynergyManagerScript.cycle_bonus(active_synergies)
+	var bonus := SynergyManagerScript.cycle_bonus(active_synergy_links)
 	if not bonus.is_empty():
 		_add_to_delta(delta, bonus, 1)
 	var reserve_after := clampi(available_power, 0, power_capacity)
@@ -1342,9 +1670,157 @@ func _emit_warnings() -> void:
 func _check_synergies() -> void:
 	var result := SynergyManagerScript.evaluate(placed_rooms, occupied, meta.discovered_synergy_ids)
 	active_synergies = result["active"]
+	active_synergy_links = result.get("links", [])
 	for synergy in result["new"]:
 		meta.discover_synergy(synergy["id"])
 		_log(synergy["message"])
+
+func _resolve_placement_cascade(cell: Vector2i, previous_link_keys: Dictionary) -> void:
+	var new_links: Array = []
+	for link in active_synergy_links:
+		if previous_link_keys.has(str(link.get("key", ""))):
+			continue
+		if link.get("cells", []).has(cell):
+			new_links.append(link)
+	if new_links.is_empty():
+		last_cascade_size = 0
+		return
+
+	var pulse := {}
+	var names: Array[String] = []
+	for link in new_links:
+		_add_to_delta(pulse, link.get("bonus", {}), 1)
+		names.append(str(link.get("name", "Recovered Link")))
+	if new_links.size() > 1:
+		_add_to_delta(pulse, {"data": new_links.size() - 1}, 1)
+	if not pulse.is_empty():
+		_apply_delta(pulse)
+		_clamp_power_reserve()
+		_clamp_resource_storage()
+
+	var resonance_gain := 0
+	for combo_index in range(new_links.size()):
+		resonance_gain += 10 * (combo_index + 1)
+	resonance_score += resonance_gain
+	links_formed += new_links.size()
+	last_cascade_size = new_links.size()
+	largest_cascade = maxi(largest_cascade, last_cascade_size)
+	_log("CASCADE x%d: %s. +%d Resonance%s" % [
+		new_links.size(),
+		_join_strings(names, " + "),
+		resonance_gain,
+		" | Pulse: %s" % _format_cost(pulse) if not pulse.is_empty() else ""
+	])
+	_check_resonance_tiers()
+	_show_cascade_toast(new_links.size(), resonance_gain, pulse)
+
+func _active_synergy_link_keys() -> Dictionary:
+	var keys := {}
+	for link in active_synergy_links:
+		keys[str(link.get("key", ""))] = true
+	return keys
+
+func _check_resonance_tiers() -> void:
+	while resonance_tier_index + 1 < RESONANCE_TIERS.size():
+		var next_tier: Dictionary = RESONANCE_TIERS[resonance_tier_index + 1]
+		if resonance_score < int(next_tier["threshold"]):
+			break
+		resonance_tier_index += 1
+		var reward: Dictionary = next_tier.get("reward", {})
+		if not reward.is_empty():
+			_apply_delta(reward)
+			_clamp_power_reserve()
+			_clamp_resource_storage()
+		_log("RESONANCE TIER %s reached. BRINE recovered %s." % [next_tier["name"], _format_cost(reward)])
+
+func _show_cascade_toast(cascade_size: int, resonance_gain: int, pulse: Dictionary) -> void:
+	var pulse_text := ""
+	if not pulse.is_empty():
+		pulse_text = "  ·  PULSE %s" % _format_cost(pulse).to_upper()
+	_show_center_toast("SIGNAL CASCADE x%d\n+%d RESONANCE%s" % [cascade_size, resonance_gain, pulse_text])
+
+func _show_center_toast(message: String) -> void:
+	if cascade_toast == null or cascade_toast_label == null:
+		return
+	if cascade_toast_tween != null and cascade_toast_tween.is_valid():
+		cascade_toast_tween.kill()
+	cascade_toast_label.text = message
+	cascade_toast.visible = true
+	cascade_toast.modulate = Color(1, 1, 1, 0)
+	cascade_toast.scale = Vector2(0.96, 0.96)
+	cascade_toast.pivot_offset = cascade_toast.size * 0.5
+	cascade_toast_tween = create_tween()
+	cascade_toast_tween.set_parallel(true)
+	cascade_toast_tween.tween_property(cascade_toast, "modulate:a", 1.0, 0.12)
+	cascade_toast_tween.tween_property(cascade_toast, "scale", Vector2.ONE, 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	cascade_toast_tween.chain().tween_interval(1.15)
+	cascade_toast_tween.chain().tween_property(cascade_toast, "modulate:a", 0.0, 0.35)
+	cascade_toast_tween.chain().tween_callback(func(): cascade_toast.visible = false)
+
+func _roll_run_directives() -> void:
+	run_directives = RunManagerScript.roll_directives(rng, selected_doctrines)
+	directive_index = 0
+	completed_directives.clear()
+
+func _current_directive() -> Dictionary:
+	if directive_index < 0 or directive_index >= run_directives.size():
+		return {}
+	return run_directives[directive_index]
+
+func _directive_state() -> Dictionary:
+	return {
+		"rooms": maxi(0, placed_rooms.size() - 1),
+		"resonance": resonance_score,
+		"links": active_synergy_links.size(),
+		"synergy_types": active_synergies.size(),
+		"pois": completed_pois.size(),
+		"doctrine_counts": RunManagerScript.count_doctrine_rooms(placed_rooms, selected_doctrines)
+	}
+
+func _check_directive_progress() -> void:
+	if not running:
+		return
+	var directive := _current_directive()
+	if directive.is_empty():
+		return
+	var progress := RunManagerScript.directive_progress(directive, _directive_state())
+	if progress >= int(directive.get("target", 0)):
+		_complete_current_directive()
+		return
+	if cycle > int(directive.get("deadline", 0)):
+		_show_reboot_summary("Directive deadline missed: %s." % directive.get("name", "UNKNOWN DIRECTIVE"), false)
+
+func _complete_current_directive() -> void:
+	var directive := _current_directive()
+	if directive.is_empty():
+		return
+	completed_directives.append(str(directive.get("name", "UNKNOWN DIRECTIVE")))
+	var reward: Dictionary = directive.get("reward", {})
+	var resource_reward: Dictionary = reward.get("resources", {})
+	if not resource_reward.is_empty():
+		_apply_delta(resource_reward)
+		_clamp_power_reserve()
+		_clamp_resource_storage()
+	rerolls_remaining += int(reward.get("rerolls", 0))
+	_log("DIRECTIVE COMPLETE: %s. Reward: %s." % [directive["name"], _format_directive_reward(reward)])
+	if directive_index + 1 >= run_directives.size():
+		run_victory = true
+		_show_reboot_summary("All reconstruction directives complete. BRINE has stabilized this orbital sector.", true)
+		return
+	var completed_number := directive_index + 1
+	directive_index += 1
+	_show_center_toast("DIRECTIVE %d/%d COMPLETE\n%s" % [completed_number, run_directives.size(), _format_directive_reward(reward).to_upper()])
+	_log("Directive %d/%d received: %s." % [directive_index + 1, run_directives.size(), _current_directive().get("name", "UNKNOWN")])
+
+func _format_directive_reward(reward: Dictionary) -> String:
+	var parts: Array[String] = []
+	var resource_reward: Dictionary = reward.get("resources", {})
+	if not resource_reward.is_empty():
+		parts.append(_format_cost(resource_reward))
+	var rerolls := int(reward.get("rerolls", 0))
+	if rerolls > 0:
+		parts.append("%d reroll%s" % [rerolls, "s" if rerolls != 1 else ""])
+	return _join_strings(parts) if not parts.is_empty() else "sector stability"
 
 func _apply_unlocks() -> void:
 	if resources["biomass"] >= 100 and meta.unlock_room("clone_lab"):
@@ -1371,29 +1847,63 @@ func _check_fail_conditions() -> void:
 	if not reason.is_empty():
 		_show_reboot_summary(reason)
 
-func _show_reboot_summary(reason: String) -> void:
+func _show_reboot_summary(reason: String, victory := false) -> void:
 	running = false
-	var award := int(float(max(resources["data"], 0)) / 5.0)
+	run_victory = victory
+	var award := int(float(max(resources["data"], 0)) / 5.0) + int(float(resonance_score) / 50.0)
 	meta.add_research_points(award)
+	var previous_doctrine_ranks := {}
+	for doctrine_id_value in selected_doctrines:
+		var doctrine_id := str(doctrine_id_value)
+		previous_doctrine_ranks[doctrine_id] = meta.get_doctrine_rank(doctrine_id)
+	var mastery_gain := meta.record_run(selected_doctrines, victory, resonance_score)
 	var synergy_names := []
 	for id in meta.discovered_synergy_ids:
 		synergy_names.append(id.replace("_", " ").capitalize())
-	summary_text.text = "%s\n\nCycles survived: %d\nCrew remaining: %d\nResearch awarded: %d\nTotal research: %d\nDiscovered synergies: %s\nUnlocked blueprints: %s" % [
+	if summary_title_label != null:
+		summary_title_label.text = "Station Stabilized" if victory else "Reboot Summary"
+	summary_text.text = "%s\n\nDoctrines: %s\nDirectives completed: %d/%d\nCycles survived: %d\nCrew remaining: %d\nResonance score: %d (%s)\nLinks formed: %d · Best cascade: x%d\nResearch awarded: %d\nDoctrine mastery: %s\nMastery gained: +%d each\nTotal research: %d\nStabilized reboots: %d\nDiscovered synergies: %s" % [
 		reason,
+		RunManagerScript.doctrine_pair_name(selected_doctrines) if not selected_doctrines.is_empty() else "None selected",
+		completed_directives.size(),
+		run_directives.size(),
 		cycle,
 		crew_count,
+		resonance_score,
+		RESONANCE_TIERS[resonance_tier_index]["name"],
+		links_formed,
+		largest_cascade,
 		award,
+		_format_doctrine_mastery_summary(previous_doctrine_ranks),
+		mastery_gain,
 		meta.total_research_points,
-		_join_strings(synergy_names) if synergy_names.size() > 0 else "None",
-		_join_strings(meta.unlocked_room_ids.keys())
+		meta.total_victories,
+		_join_strings(synergy_names) if synergy_names.size() > 0 else "None"
 	]
 	summary_text.text += "\nPOIs completed: %s\nResources earned: %s" % [
 		_join_strings(completed_pois) if completed_pois.size() > 0 else "None",
-		_format_cost(run_earned)
+		_format_cost(run_earned) if not run_earned.is_empty() else "None"
 	]
 	summary_text.text += "\nPOIs expired: %s" % [_join_strings(expired_pois) if expired_pois.size() > 0 else "None"]
-	summary_panel.visible = true
-	_log("Reboot required: %s" % reason)
+	summary_layer.visible = true
+	_set_paused(true, false)
+	_log("Run complete: %s" % reason)
+
+func _format_doctrine_mastery_summary(previous_ranks: Dictionary) -> String:
+	if selected_doctrines.is_empty():
+		return "None"
+	var parts: Array[String] = []
+	for doctrine_id_value in selected_doctrines:
+		var doctrine_id := str(doctrine_id_value)
+		var data := RunManagerScript.doctrine(doctrine_id)
+		var short_name := str(data.get("short_name", doctrine_id.to_upper()))
+		var mastery := meta.get_doctrine_mastery(doctrine_id)
+		var rank := meta.get_doctrine_rank(doctrine_id)
+		var next_threshold := meta.get_next_doctrine_rank_threshold(doctrine_id)
+		var progress_text := "MAX" if next_threshold < 0 else "%d/%d" % [mastery, next_threshold]
+		var rank_up_text := "  RANK UP" if rank > int(previous_ranks.get(doctrine_id, rank)) else ""
+		parts.append("%s R%d %s%s" % [short_name, rank, progress_text, rank_up_text])
+	return "  ·  ".join(parts)
 
 func _refresh_all() -> void:
 	_refresh_resources()
@@ -1411,9 +1921,24 @@ func _refresh_all() -> void:
 func _refresh_orbital_objective() -> void:
 	if orbital_objective_label == null:
 		return
-	var poi_name := orbit.get_current_poi_name().to_upper()
-	var panel_text := orbit.get_panel_text()
-	orbital_objective_label.text = "ORBITAL OBJECTIVE\n%s\n──────────────\n%s\n\nOBJECTIVES     LOG" % [poi_name, panel_text]
+	var directive := _current_directive()
+	if directive.is_empty():
+		orbital_objective_label.text = "RECONSTRUCTION DIRECTIVE\nAWAITING DOCTRINE PAIR\n──────────────\nSelect two doctrines to compile this reboot.\n\nORBIT\n%s" % orbit.get_panel_text()
+		return
+	var directive_state := _directive_state()
+	var deadline := int(directive.get("deadline", 0))
+	var remaining := maxi(0, deadline - cycle)
+	orbital_objective_label.text = "DIRECTIVE %d/%d  ·  LIMIT C%02d\n%s\n%s\nPROGRESS %s  ·  %d CYCLES REMAIN\nREWARD %s\n──────────────\nORBIT  %s" % [
+		directive_index + 1,
+		run_directives.size(),
+		deadline,
+		directive.get("name", "UNKNOWN"),
+		directive.get("briefing", ""),
+		RunManagerScript.directive_progress_text(directive, directive_state),
+		remaining,
+		_format_directive_reward(directive.get("reward", {})).to_upper(),
+		orbit.get_panel_text().replace("\n", "  ·  ")
+	]
 
 func _on_zoom_changed(value: float) -> void:
 	_set_grid_zoom(DEFAULT_GRID_ZOOM * value, false)
@@ -1510,7 +2035,16 @@ func _close_menu() -> void:
 func _refresh_menu_status() -> void:
 	if menu_status_label == null:
 		return
-	menu_status_label.text = "Cycle %03d  |  Integrity %d%%  |  Crew %d  |  View %s" % [cycle, resources.get("integrity", 0), crew_count, "ADMIN" if admin_mode else "NORMAL"]
+	var doctrine_name := RunManagerScript.doctrine_pair_name(selected_doctrines) if not selected_doctrines.is_empty() else "Not selected"
+	var directive_status := "%d/%d" % [mini(directive_index + 1, run_directives.size()), run_directives.size()] if not run_directives.is_empty() else "Not started"
+	menu_status_label.text = "Cycle %03d  |  Integrity %d%%  |  Crew %d  |  View %s\nDoctrines: %s  |  Directive: %s" % [
+		cycle,
+		resources.get("integrity", 0),
+		crew_count,
+		"ADMIN" if admin_mode else "NORMAL",
+		doctrine_name,
+		directive_status
+	]
 	_refresh_display_menu_state()
 
 func _refresh_display_menu_state() -> void:
@@ -1732,6 +2266,13 @@ func _refresh_resources() -> void:
 	var corruption_color := Color.WHITE if corruption < 7 else Color("#ff67b3")
 	_set_resource_chip("corruption", "CORRUPTION\n%d%%" % corruption, corruption_color)
 	cycle_label.text = "%03d\nCYCLE" % cycle
+	var tier: Dictionary = RESONANCE_TIERS[resonance_tier_index]
+	resonance_label.text = "RESONANCE\n%03d  ·  %s" % [resonance_score, tier["name"]]
+	var next_text := "Maximum tier reached"
+	if resonance_tier_index + 1 < RESONANCE_TIERS.size():
+		var next_tier: Dictionary = RESONANCE_TIERS[resonance_tier_index + 1]
+		next_text = "%d to %s" % [int(next_tier["threshold"]) - resonance_score, next_tier["name"]]
+	resonance_label.tooltip_text = "%d active links · %d formed · best cascade x%d · %s" % [active_synergy_links.size(), links_formed, largest_cascade, next_text]
 
 func _critical_color(value: int, normal: Color, warning_at: int, critical_at: int) -> Color:
 	if value <= critical_at:
@@ -1851,7 +2392,7 @@ func _project_cycle_delta() -> Dictionary:
 	var reserve_change := projected_reserve - int(resources["power"])
 	if reserve_change != 0:
 		_add_to_delta(delta, {"power": reserve_change}, 1)
-	var bonus := SynergyManagerScript.cycle_bonus(active_synergies)
+	var bonus := SynergyManagerScript.cycle_bonus(active_synergy_links)
 	_add_to_delta(delta, bonus, 1)
 	if crew_count > 0:
 		_add_to_delta(delta, {"food": crew_count, "oxygen": crew_count}, -1)
@@ -1934,6 +2475,11 @@ func _power_priority(room: Dictionary) -> int:
 			return 60
 
 func _refresh_cards() -> void:
+	if hand_count_label != null:
+		hand_count_label.text = "%d/%d" % [hand.size(), HAND_SIZE]
+	if reroll_button != null:
+		reroll_button.text = "REROLL HAND · %d" % rerolls_remaining
+		reroll_button.disabled = rerolls_remaining <= 0 or not running
 	for child in hand_box.get_children():
 		child.queue_free()
 	for id in hand:
@@ -2020,7 +2566,7 @@ func _refresh_cards() -> void:
 		synergy_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		body.add_child(synergy_label)
 		var footer_label := Label.new()
-		footer_label.text = "LMB BUILD   RMB DISCARD"
+		footer_label.text = "LMB BUILD   RMB REROLL"
 		footer_label.add_theme_font_size_override("font_size", 10)
 		footer_label.add_theme_color_override("font_color", Color("#3f5663"))
 		footer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -2030,21 +2576,41 @@ func _refresh_cards() -> void:
 	_add_deck_slot()
 
 func _card_synergy_hint(room_id: String) -> String:
+	var best_synergy := {}
+	var best_score := -1
 	for synergy in SynergyManagerScript.all_synergies():
 		var room_ids: Array = synergy.get("rooms", [])
 		if not room_ids.has(room_id):
 			continue
+		var score := 0
+		if active_synergies.has(synergy["id"]):
+			score = 3
+		else:
+			for other_id_value in room_ids:
+				var other_id := str(other_id_value)
+				if other_id != room_id and _has_room(other_id):
+					score = maxi(score, 2)
+			if meta.discovered_synergy_ids.has(synergy["id"]):
+				score = maxi(score, 1)
+		if score > best_score:
+			best_score = score
+			best_synergy = synergy
+	if not best_synergy.is_empty():
 		var partner_names: Array[String] = []
-		for other_id_value in room_ids:
+		for other_id_value in best_synergy.get("rooms", []):
 			var other_id := str(other_id_value)
 			if other_id == room_id:
 				continue
 			var other_room := RoomDatabaseScript.get_room(other_id)
 			partner_names.append(str(other_room.get("display_name", _prettify_id(other_id))))
-		var bonus := _format_resource_list(synergy.get("bonus", {}), 14)
+		var bonus := _format_resource_list(best_synergy.get("bonus", {}), 14)
 		if bonus == "None":
-			bonus = str(synergy.get("effect", "special link"))
-		return "LINK  %s -> %s" % [_join_strings(partner_names, " + "), bonus]
+			bonus = "special link"
+		var stack_text := ""
+		var active_count := _active_synergy_link_count(str(best_synergy["id"]))
+		if active_count > 0:
+			stack_text = " x%d" % active_count
+		return "LINK%s  %s -> %s" % [stack_text, _join_strings(partner_names, " + "), bonus]
 	return "LINK  undiscovered pattern"
 
 func _add_deck_slot() -> void:
@@ -2069,7 +2635,7 @@ func _add_deck_slot() -> void:
 		style.content_margin_bottom = 8
 		slot.add_theme_stylebox_override("panel", style)
 	var label := Label.new()
-	label.text = "/////\n20\nIN DECK"
+	label.text = "/////\n%d DRAW\n%d DISCARD" % [draw_pile.size(), discard_pile.size()]
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.add_theme_font_size_override("font_size", 18)
@@ -2204,7 +2770,7 @@ func _load_card_thumbnail(path: String) -> Texture2D:
 	return ImageTexture.create_from_image(image)
 
 func _on_card_pressed(id: String) -> void:
-	if menu_open:
+	if menu_open or not running:
 		return
 	selected_card_id = id
 	last_preview_room_id = id
@@ -2214,7 +2780,7 @@ func _on_card_pressed(id: String) -> void:
 	_refresh_inspector()
 
 func _on_card_hovered(id: String, card: Control) -> void:
-	if menu_open:
+	if menu_open or not running:
 		return
 	if not is_instance_valid(card) or not card is PanelContainer:
 		return
@@ -2247,7 +2813,7 @@ func _on_card_unhovered(id: String, card: Control) -> void:
 	_refresh_inspector()
 
 func _on_card_gui_input(event: InputEvent, id: String) -> void:
-	if menu_open:
+	if menu_open or not running:
 		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -2263,27 +2829,40 @@ func _discard_selected_card() -> void:
 	_discard_card(selected_card_id)
 
 func _discard_card(id: String) -> void:
-	if not hand.has(id):
+	if not running or not hand.has(id):
 		return
+	if rerolls_remaining <= 0:
+		_log("No blueprint rerolls remain. Build from the current hand.", false)
+		return
+	rerolls_remaining -= 1
 	hand.erase(id)
+	discard_pile.append(id)
 	_refill_hand()
 	selected_card_id = hand[0] if not hand.is_empty() else ""
 	hovered_card_id = ""
-	_log("Blueprint discarded: %s." % RoomDatabaseScript.get_room(id).get("display_name", id), false)
+	_log("Blueprint rerolled: %s. %d charge%s remain." % [RoomDatabaseScript.get_room(id).get("display_name", id), rerolls_remaining, "s" if rerolls_remaining != 1 else ""], false)
 	_refresh_all()
 
 func _discard_all_cards() -> void:
-	if hand.is_empty():
+	if not running or hand.is_empty():
 		return
+	if rerolls_remaining <= 0:
+		_log("No blueprint rerolls remain. Build from the current hand.", false)
+		return
+	rerolls_remaining -= 1
+	for id_value in hand:
+		discard_pile.append(str(id_value))
 	hand.clear()
 	selected_card_id = ""
 	hovered_card_id = ""
 	_refill_hand()
 	selected_card_id = hand[0] if not hand.is_empty() else ""
-	_log("Draft hand discarded. Replacement blueprints drawn.", false)
+	_log("Draft hand rerolled. %d charge%s remain." % [rerolls_remaining, "s" if rerolls_remaining != 1 else ""], false)
 	_refresh_all()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if doctrine_layer != null and doctrine_layer.visible:
+		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
 		_toggle_menu()
 		get_viewport().set_input_as_handled()
@@ -2718,8 +3297,16 @@ func _format_synergy_line(synergy: Dictionary) -> String:
 		bonus_text = str(synergy.get("effect", "Special effect restored."))
 	else:
 		bonus_text = "%s  —  %s" % [bonus_text, synergy.get("effect", "")]
-	var status := "ACTIVE LINK" if active else "KNOWN PATTERN"
+	var active_count := _active_synergy_link_count(str(synergy["id"]))
+	var status := "ACTIVE LINK x%d" % active_count if active else "KNOWN PATTERN"
 	return "[color=#c4d1da]• %s[/color]  [color=#%s]%s[/color]\n[color=#8fa3ae]  Adjacent to: %s[/color]\n[color=#8ccf6f]  -> %s[/color]" % [synergy["name"], UI_ACCENT_BRIGHT.to_html(false), status, _join_strings(room_names, " + "), bonus_text]
+
+func _active_synergy_link_count(synergy_id: String) -> int:
+	var count := 0
+	for link in active_synergy_links:
+		if str(link.get("id", "")) == synergy_id:
+			count += 1
+	return count
 
 func _preview_divider() -> String:
 	return "[color=#34434a]────────────────────────[/color]"

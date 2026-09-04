@@ -620,39 +620,21 @@ func _door_edge_center(pos: Vector2i, side: String, cell_size: float) -> Vector2
 			return origin + Vector2(0.0, cell_size * 0.5)
 
 func _draw_synergy_links(main) -> void:
-	if main.active_synergies.is_empty():
+	if main.active_synergy_links.is_empty():
 		return
 	var cell_size := _cell_size()
-	var drawn := {}
-	for synergy in main.active_synergies.values():
-		var room_ids: Array = synergy.get("rooms", [])
-		if room_ids.size() < 2:
+	for link in main.active_synergy_links:
+		var cells: Array = link.get("cells", [])
+		if cells.size() < 2:
 			continue
-		for pos in main.occupied:
-			var room: Dictionary = main.occupied[pos]
-			if not room_ids.has(room.get("id", "")):
-				continue
-			for offset in [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]:
-				var neighbor_pos: Vector2i = pos + offset
-				if not main.occupied.has(neighbor_pos):
-					continue
-				var neighbor: Dictionary = main.occupied[neighbor_pos]
-				if room.get("id", "") == neighbor.get("id", "") or not room_ids.has(neighbor.get("id", "")):
-					continue
-				if not main._placed_rooms_connected(room, neighbor, offset):
-					continue
-				var key := "%s:%s:%s" % [synergy["id"], str(pos), str(neighbor_pos)]
-				var reverse_key := "%s:%s:%s" % [synergy["id"], str(neighbor_pos), str(pos)]
-				if drawn.has(key) or drawn.has(reverse_key):
-					continue
-				drawn[key] = true
-				var edge_center := (Vector2(pos) + Vector2(neighbor_pos) + Vector2.ONE) * cell_size * 0.5
-				var link_color := Color("#4fa38d")
-				draw_circle(edge_center, cell_size * 0.035, Color(link_color.r, link_color.g, link_color.b, 0.20))
-				draw_rect(Rect2(edge_center - Vector2.ONE * cell_size * 0.018, Vector2.ONE * cell_size * 0.036), link_color, false, 2.0)
-				draw_line(edge_center + Vector2(-cell_size * 0.022, 0), edge_center + Vector2(cell_size * 0.022, 0), link_color, 2.0)
-				draw_line(edge_center + Vector2(0, -cell_size * 0.022), edge_center + Vector2(0, cell_size * 0.022), link_color, 2.0)
-				break
+		var pos: Vector2i = cells[0]
+		var neighbor_pos: Vector2i = cells[1]
+		var edge_center := (Vector2(pos) + Vector2(neighbor_pos) + Vector2.ONE) * cell_size * 0.5
+		var link_color := Color("#4fa38d")
+		draw_circle(edge_center, cell_size * 0.035, Color(link_color.r, link_color.g, link_color.b, 0.20))
+		draw_rect(Rect2(edge_center - Vector2.ONE * cell_size * 0.018, Vector2.ONE * cell_size * 0.036), link_color, false, 2.0)
+		draw_line(edge_center + Vector2(-cell_size * 0.022, 0), edge_center + Vector2(cell_size * 0.022, 0), link_color, 2.0)
+		draw_line(edge_center + Vector2(0, -cell_size * 0.022), edge_center + Vector2(0, cell_size * 0.022), link_color, 2.0)
 
 func _draw_room_hologram(main, cell: Vector2i, valid: bool) -> void:
 	var cell_size := _cell_size()
