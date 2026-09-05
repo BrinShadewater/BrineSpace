@@ -14,7 +14,10 @@ const GRID_PIXEL_SIZE := GRID_SIZE * CELL_SIZE
 const BASE_CYCLE_SECONDS := 20.0
 const DISCOVERY_BURST_SECONDS := 1.2
 const HAND_SIZE := 3
+const REROLL_RECOVERY_CYCLES := 4
+const REROLL_RECOVERY_CAP := 3
 const DEFAULT_GRID_ZOOM := 0.855
+const MIN_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.02
 const UI_ACCENT := Color("#2d7f6b")
 const UI_ACCENT_BRIGHT := Color("#4fa38d")
 const UI_ACCENT_DARK := Color("#0d2f2b")
@@ -129,6 +132,7 @@ var hand := []
 var draw_pile: Array[String] = []
 var discard_pile: Array[String] = []
 var rerolls_remaining := 3
+var reroll_recovery_progress := 0
 var selected_doctrines: Array[String] = []
 var pending_doctrines: Array[String] = []
 var run_directives := []
@@ -673,9 +677,9 @@ func _build_ui() -> void:
 	zoom_title.add_theme_color_override("font_color", Color("#4f6470"))
 	zoom_row.add_child(zoom_title)
 	var zoom_control := HSlider.new()
-	zoom_control.min_value = 0.22
+	zoom_control.min_value = MIN_GRID_ZOOM / DEFAULT_GRID_ZOOM
 	zoom_control.max_value = 1.0
-	zoom_control.step = 0.05
+	zoom_control.step = 0.01
 	zoom_control.value = grid_zoom / DEFAULT_GRID_ZOOM
 	zoom_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	zoom_control.value_changed.connect(_on_zoom_changed)
@@ -1490,6 +1494,7 @@ func _start_reboot_cycle() -> void:
 	draw_pile.clear()
 	discard_pile.clear()
 	rerolls_remaining = 3
+	reroll_recovery_progress = 0
 	selected_doctrines.clear()
 	pending_doctrines.clear()
 	run_directives.clear()
@@ -1722,6 +1727,7 @@ func _advance_cycle() -> void:
 		return
 	cycle += 1
 	last_cycle_delta = _apply_room_economy()
+	_advance_draft_recovery()
 	_advance_synergy_discovery_cycle()
 	_apply_orbit_event()
 	_apply_life_support()
@@ -1732,6 +1738,16 @@ func _advance_cycle() -> void:
 	_refresh_all()
 	if running:
 		_check_fail_conditions()
+
+func _advance_draft_recovery() -> void:
+	if rerolls_remaining >= REROLL_RECOVERY_CAP:
+		reroll_recovery_progress = 0
+		return
+	reroll_recovery_progress += 1
+	if reroll_recovery_progress >= REROLL_RECOVERY_CYCLES:
+		reroll_recovery_progress = 0
+		rerolls_remaining += 1
+		_log("Draft buffer reconstructed. One reroll restored.")
 
 func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) -> Dictionary:
 	# Spend shared start-of-cycle inputs once. Outputs become next cycle's inputs.
@@ -2119,6 +2135,8 @@ func _complete_current_directive() -> void:
 		_clamp_power_reserve()
 		_clamp_resource_storage()
 	rerolls_remaining += int(reward.get("rerolls", 0))
+	if rerolls_remaining >= REROLL_RECOVERY_CAP:
+		reroll_recovery_progress = 0
 	_log("DIRECTIVE COMPLETE: %s. Reward: %s." % [directive["name"], _format_directive_reward(reward)])
 	if directive_index + 1 >= run_directives.size():
 		run_victory = true
@@ -2311,7 +2329,7 @@ func _on_zoom_changed(value: float) -> void:
 
 func _set_grid_zoom(value: float, update_slider := true) -> void:
 	var center_ratio := _grid_view_center_ratio()
-	grid_zoom = clamp(value, DEFAULT_GRID_ZOOM * 0.22, DEFAULT_GRID_ZOOM)
+	grid_zoom = clamp(value, MIN_GRID_ZOOM, DEFAULT_GRID_ZOOM)
 	if update_slider and zoom_slider != null:
 		zoom_slider.set_value_no_signal(grid_zoom / DEFAULT_GRID_ZOOM)
 	_apply_grid_zoom()
@@ -2851,6 +2869,9 @@ func _refresh_cards() -> void:
 		hand_count_label.text = "%d/%d" % [hand.size(), HAND_SIZE]
 	if reroll_button != null:
 		reroll_button.text = "REROLL HAND · %d" % rerolls_remaining
+		if rerolls_remaining < REROLL_RECOVERY_CAP:
+			reroll_button.text += "\n+1 IN %dC" % (REROLL_RECOVERY_CYCLES - reroll_recovery_progress)
+		reroll_button.tooltip_text = "Rebuilds one reroll every %d cycles while below %d charges. Directive rewards may exceed this cap." % [REROLL_RECOVERY_CYCLES, REROLL_RECOVERY_CAP]
 		reroll_button.disabled = rerolls_remaining <= 0 or not running
 	for child in hand_box.get_children():
 		child.queue_free()
@@ -3218,6 +3239,8 @@ func _discard_card(id: String) -> void:
 	if rerolls_remaining <= 0:
 		_log("No blueprint rerolls remain. Build from the current hand.", false)
 		return
+	if rerolls_remaining >= REROLL_RECOVERY_CAP:
+		reroll_recovery_progress = 0
 	rerolls_remaining -= 1
 	hand.erase(id)
 	discard_pile.append(id)
@@ -3233,6 +3256,8 @@ func _discard_all_cards() -> void:
 	if rerolls_remaining <= 0:
 		_log("No blueprint rerolls remain. Build from the current hand.", false)
 		return
+	if rerolls_remaining >= REROLL_RECOVERY_CAP:
+		reroll_recovery_progress = 0
 	rerolls_remaining -= 1
 	for id_value in hand:
 		discard_pile.append(str(id_value))

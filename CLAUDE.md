@@ -11,15 +11,15 @@ The thing most likely to cost you an hour:
 > populated-looking directory* with an empty index — so files look absent when they
 > are present, and a commit from that state deletes everything you did not add.
 >
-> Sanity check any checkout with `git ls-files | wc -l` → **615**. To ask whether a
-> file exists, use `git ls-tree -r --name-only origin/main`, not the filesystem.
+> Compare `git ls-files` with `git ls-tree -r --name-only HEAD` to catch an empty or
+> partial index. To ask whether a file exists, use Git's tree, not only the filesystem.
 
 Also:
 
 - **Raster art is Git LFS.** Pointer files are not corruption; do not "repair" them.
-- **Prototype state is deliberate** — failure conditions disabled, free building in
-  testing mode, prototype saves at `user://brine_save.json`. Not bugs.
-- **Do not refactor `scripts/main.gd` (2,952 lines) unasked.** The project is
+- **Normal runs spend costs and enforce failures.** Free builds and disabled
+  failures are isolated fixture options; saves remain at `user://brine_save.json`.
+- **Do not refactor `scripts/main.gd` unasked.** The project is
   optimising for finding what is fun, not for architecture. Propose, don't perform.
 - **Keep `.uid` files paired with their `.gd`.**
 

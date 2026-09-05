@@ -10,6 +10,10 @@ BrineSpace should feel like restoring a silent machine in orbit: build a little,
 
 ## Current Focus
 
+The full-run follow-up is now on local `main`, alongside the remote documentation and CI changes. A matched 30-run automated sweep improved from 12 to 21 completions after adding slow draft recovery, with at least one completed run per doctrine pair. See [Balance Report](BALANCE_REPORT.md) for the full comparison and the remaining discovery droughts; these are bot results, not human completion-rate targets.
+
+Rerolls rebuild one charge every four cycles below a bank of three, and the draft button shows the wait. Directive reward overflow is preserved. A full-run screenshot also exposed the old 22% minimum zoom clipping mature stations; Fit Station now supports a wider overview range.
+
 The September discovery/polish pass completes the 12-foundation → 30-blueprint graph with 25 patterns. Rooms teach their relationships through functioning effects; the journal records knowledge after discovery, never before. Progress and rewards persist independently of winning a run.
 
 Implemented in this pass:
@@ -43,7 +47,7 @@ Remaining priorities:
 - Resonance, doctrine mastery, directives, and reroll rewards are first-pass values and need balance data from complete runs.
 - Directives currently measure room count, active links, distinct active patterns, total Resonance, or balanced development of the selected doctrine pair; orbital and geometric pattern-shape goals are not implemented yet.
 - Borderless mode and unusual aspect ratios still need broader hardware testing. Standard 16:9 layouts have native-render screenshot coverage.
-- The two-step discovery playtest uses a controlled draft order; full-length random runs across all ten doctrine pairs still need pacing/balance data.
+- The two-step discovery playtest uses a controlled draft order. The full-run sweep uses seeded random decks, but its automated player does not strategically suspend rooms or represent a human discovering the game at normal speed. Human pacing data is still needed.
 - Population sprites still use Major Bill's test walker rather than representing every recovered survivor.
 - Motion profiles are procedural and distinguish system families, not bespoke machinery animations for every room.
 - Colorblind and reduced-motion options are not implemented yet. Status text supplements color, but does not replace that accessibility work.

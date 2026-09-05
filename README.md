@@ -40,7 +40,7 @@ Open `project.godot` in Godot and run `res://scenes/main.tscn`. On a fresh check
 - Use the `1x`, `2x`, and `4x` controls to change simulation speed.
 - Selected room cards show a rotated hologram preview before placement; press `R` to rotate it.
 - Building spends the selected blueprint, moves it to the discard pile, and draws a replacement. The discard pile reshuffles when the draw pile is empty.
-- Right-click a card to replace it, or use `REROLL HAND`; both consume one of the run's limited reroll charges.
+- Right-click a card to replace it, or use `REROLL HAND`; both consume one reroll charge. One charge rebuilds every four cycles while the bank is below three. The button shows the countdown; directive rewards may exceed that cap.
 - Rooms need power and their consumable inputs to function. Input-starved rooms stop instead of spending nonexistent supplies. Click a built room to inspect or suspend it; resuming takes effect next cycle.
 - Connected compatible rooms form stackable links only while both rooms function. Repeated copies each contribute their cycle bonus.
 - A placement that completes one or more new links fires an immediate resource pulse and scores a Signal Cascade. Multi-link placements score increasingly more Resonance.
@@ -92,7 +92,9 @@ Run these scripts with `Godot --headless --path . --script res://tests/<name>.gd
 - `test_synergy_manager`: topology, cascades, all ten doctrine-pair decks, directives and mastery.
 - `test_discovery_progression`: the unlock graph, secrecy, three-cycle progression, save compatibility, prototypes and feedback order.
 - `test_polish_gameplay`: water viability, input starvation, forecasts, placement, real power loss, orbit unlock guards, containment and pause effects.
+- `test_run_balance`: recovery from blocked hands, reroll banking, pause/reboot boundaries and expanded-station camera fit.
 - `playtest_polish`: a deterministic paid-build sequence through two blueprint discoveries, prototype reuse, suspension, modal input, responsive layout, expedition and reboot. It controls draft order and time; it is not a random full-run balance sweep.
+- `playtest_balance`: 30 complete seeded runs across all ten doctrine pairs using real shuffled decks and costs. The automated player knows only visible systems and learned recipes. See [Balance Report](docs/BALANCE_REPORT.md) for results, reproduction and limitations.
 
 For native screenshots, omit `--headless` and append `-- --capture-dir=<absolute-output-directory>` to `playtest_polish`. It captures gameplay, menus, 1280/1600/1920/2560 layouts, all six effect profiles, and two motion frames. Add `--viewport-width=2560` after `--` to repeat the full discovery sequence at 2560×1440. Test saves are isolated from `brine_save.json`. Check logs for `ERROR:` as well as the process exit code.
 

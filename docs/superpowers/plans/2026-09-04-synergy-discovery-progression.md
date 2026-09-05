@@ -48,7 +48,7 @@ The three regression suites contain 47 test cases; the real-scene playtest adds 
 
 Reproduce from README's Verification section. Local capture folders are `%TEMP%\brinespace-polish-playtest` and `%TEMP%\brinespace-polish-playtest-2560`; logs use `%TEMP%\brinespace-verified-*` and `%TEMP%\brine-polish-visual-final-*`. Generated artifacts are not committed. Test saves use isolated paths and do not overwrite `brine_save.json`.
 
-The implementation range is `a17a8bb..HEAD` on `codex/synergy-discovery`, including the final polish commit containing this record. The branch remains in its worktree pending the user's integration choice. Full-length random balance runs across all ten doctrine pairs and reduced-motion/colorblind options remain follow-up work, not completed claims.
+The discovery implementation range is `a17a8bb..a8156bc`. The user subsequently approved local integration: it was merged into `main`, remote documentation/CI changes were preserved in `7557f4a`, and the clean discovery worktree was removed after merged-result verification. The follow-up seeded balance sweep is documented in `docs/BALANCE_REPORT.md`. Human normal-speed runs and reduced-motion/colorblind options remain follow-up work, not completed claims.
 
 ## Global Constraints
 

@@ -1,7 +1,8 @@
 # AGENTS.md — 🛰️ working on BrineSpace
 
 A Godot 4.6 passive roguelite station builder. `project.godot` sets
-`run/main_scene="res://scenes/main.tscn"`, config name `BRINE`, viewport 2560×1440.
+`run/main_scene="res://scenes/main.tscn"`, config name `BRINE`, a 1920×1080 design
+viewport and a 1600×900 default window.
 
 Read [`docs/DEVELOPMENT_NOTES.md`](docs/DEVELOPMENT_NOTES.md) before changing
 gameplay — it holds the north star, the current focus, and the known prototype
@@ -23,7 +24,8 @@ reports files as absent that are in fact present, and a `git add` + `commit` fro
 that state records a tree containing only the files you added — i.e. a commit that
 deletes everything else.
 
-**Verify before trusting a checkout:** `git ls-files | wc -l` should report **615**.
+**Verify before trusting a checkout:** compare `git ls-files` with the checked-out
+commit's `git ls-tree -r --name-only HEAD`; the index must not be empty or partial.
 And when you want to know whether a file exists, ask git rather than the filesystem:
 
 ```bash
@@ -38,8 +40,11 @@ never commit a large binary in a way that bypasses LFS.
 
 The README is explicit that this is mid-prototype. Do not "fix" these:
 
-- **Failure conditions are disabled** while systems are exercised.
-- **Testing mode keeps building free.**
+- **Normal runs spend room costs and enforce failure/deadline conditions.**
+- **Only dedicated fixtures opt into free building or disabled failures.** Do not
+  turn those flags on to make a gameplay or balance test pass.
+- **Hidden recipes stay hidden** until functioning rooms discover them. Three
+  consecutive functioning cycles stabilize a pattern and unlock its reward.
 - **Saves and unlocks are prototype-level**, written to `user://brine_save.json`
   and deliberately not versioned.
 
@@ -48,8 +53,8 @@ gameplay call for the owner, not a tidy-up.
 
 ## 🧠 Before refactoring anything
 
-`scripts/main.gd` is **2,952 lines**, `grid_canvas.gd` 900, `room_database.gd` 536.
-That is a lot of monolith and the urge to split it is understandable.
+`scripts/main.gd` is a large monolith, supported by the grid renderer and
+data-driven room, run and discovery modules. The urge to split it is understandable.
 
 Resist it unless asked. The stated north star is *discovering which placement
 decisions become satisfying* — the project is optimising for learning what is fun,
