@@ -1,4 +1,6 @@
-# BrineSpace
+# 🛰️ BrineSpace
+
+![Licence](https://img.shields.io/badge/licence-all%20rights%20reserved-lightgrey?style=flat-square) ![Godot](https://img.shields.io/badge/Godot-4.x-478cbf?style=flat-square) ![Shadewater Labs](https://img.shields.io/badge/Shadewater%20Labs-%E2%9A%97%EF%B8%8F-6b4fa2?style=flat-square)
 
 BrineSpace is a Godot 4 passive roguelite space-station builder prototype. You play BRINE, a damaged AI core rebuilding a dead orbital station through blueprint drafting, modular room placement, passive production, orbital events, and discovered adjacency synergies.
 
@@ -6,7 +8,7 @@ BrineSpace is a Godot 4 passive roguelite space-station builder prototype. You p
 >
 > *"The station is quiet. That does not mean it is empty."* 🛰️
 
-## Status
+## 📡 Status
 
 BrineSpace is actively prototyping its foundational loop. It is playable, deliberately imperfect, and built for discovering which placement decisions become satisfying before the systems grow teeth.
 
@@ -14,20 +16,20 @@ BrineSpace is actively prototyping its foundational loop. It is playable, delibe
 - **In progress:** full-run balance, directive variety, room coverage, population systems, pathing polish, and clearer orbital events.
 - **Not production-ready:** saves and unlocks are prototype-level, progression values are first-pass, and the current run needs broader playtesting across all doctrine pairs.
 
-## What It Is
+## 🌌 What It Is
 
 Each reboot begins by pairing two doctrines around a damaged core. That pair determines the run's blueprint deck and strongest combo routes. Place compatible modules, complete three escalating reconstruction directives, make the station self-sustaining, and keep enough slack in the system to survive whatever orbit throws at it. The game is meant to be thoughtful and watchable, not a frantic RTS.
 
 BRINE occasionally has opinions about the work. They are not always comforting. 🧠
 
-## Requirements
+## 📋 Requirements
 
 - Godot 4.6 or newer
 - Git LFS when cloning from GitHub (`git lfs install`)
 
 Open `project.godot` in Godot and run `res://scenes/main.tscn`. On a fresh checkout, let asset import finish first (or run `Godot --headless --path . --import`).
 
-## Prototype Loop
+## 🔄 Prototype Loop
 
 - A clean save starts with twelve foundational blueprints; experiments uncover the remaining room blueprints.
 - Select two doctrines to compile a focused blueprint deck. The chooser previews deck breadth, crossover rooms, already-learned patterns, and mastery bonuses. Every pair includes basic food and life-support options.
@@ -54,7 +56,7 @@ Open `project.godot` in Godot and run `res://scenes/main.tscn`. On a fresh check
 - Resource collapse or a missed directive deadline ends the run. Victory and failure both open a Reboot Summary and persist earned research, discoveries, and eligible doctrine mastery.
 - After victory, choose **Continue Expedition** to keep the station and its experiments without directive deadlines. Survival systems remain active. **Menu → Conclude Expedition** banks further earned research without repeating victory or mastery rewards.
 
-## Main Files
+## 📂 Main Files
 
 - `scripts/room_database.gd`: data-driven room card definitions.
 - `scripts/main.gd`: run state, UI, placement, resource cycles, fail/reboot flow.
@@ -67,7 +69,7 @@ Open `project.godot` in Godot and run `res://scenes/main.tscn`. On a fresh check
 - `rooms/`: prototype room art used by the station grid renderer.
 - `character/Major_Bill/`: prototype human sprite rotations and animation frames.
 
-## Current Scope
+## 🎯 Current Scope
 
 This is an early 2D prototype with production-ready room, character, drone, door, UI, and icon assets. The core loop is still deliberately small so drafting, placement, passive production, discovery, and reboot behavior can be iterated quickly.
 
@@ -94,12 +96,18 @@ Run these scripts with `Godot --headless --path . --script res://tests/<name>.gd
 
 For native screenshots, omit `--headless` and append `-- --capture-dir=<absolute-output-directory>` to `playtest_polish`. It captures gameplay, menus, 1280/1600/1920/2560 layouts, all six effect profiles, and two motion frames. Add `--viewport-width=2560` after `--` to repeat the full discovery sequence at 2560×1440. Test saves are isolated from `brine_save.json`. Check logs for `ERROR:` as well as the process exit code.
 
-## Development Notes
+## 🛠️ Development Notes
 
 The current prototype roadmap, known limitations, and immediate polish priorities live in [Development Notes](docs/DEVELOPMENT_NOTES.md). The short version: keep the station readable, make every room placement legible, and let the passive systems create interesting decisions rather than busywork.
 
-## Repository Notes
+## 📦 Repository Notes
 
 - Raster art is stored with Git LFS to keep normal Git history lean.
 - Godot import cache, local asset backups, and one-off layout audits are ignored.
 - Game state saves are written to `user://brine_save.json` and are not versioned.
+
+---
+
+## 📄 Licence
+
+All rights reserved. This repository is public so the work can be read and referenced, not relicensed. The code, copy, and creative assets remain © Brin Shadewater / Shadewater Labs. If you want to use something here, ask.
