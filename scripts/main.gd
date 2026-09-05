@@ -12,6 +12,7 @@ const GRID_SIZE := 40
 const CELL_SIZE := 720
 const GRID_PIXEL_SIZE := GRID_SIZE * CELL_SIZE
 const BASE_CYCLE_SECONDS := 20.0
+const DISCOVERY_BURST_SECONDS := 1.2
 const HAND_SIZE := 3
 const DEFAULT_GRID_ZOOM := 0.855
 const UI_ACCENT := Color("#2d7f6b")
@@ -39,7 +40,7 @@ const RESOURCE_TOOLTIPS := {
 	"metal": "Build material for rooms, repairs, and station expansion.",
 	"power": "Reserve energy. Powered rooms consume it each cycle.",
 	"oxygen": "Life support supply consumed by crew.",
-	"water": "Support resource for future hydroponics and bio systems.",
+	"water": "Reclaimed water for advanced bio systems. Hover a learned pattern to inspect its yield.",
 	"food": "Crew survival supply consumed each cycle.",
 	"data": "Research currency for unlocks and recovered memories.",
 	"biomass": "Organic stock for hydroponics, cloning, and bio rooms.",
@@ -134,6 +135,9 @@ var run_directives := []
 var directive_index := 0
 var completed_directives: Array[String] = []
 var run_victory := false
+var expedition_mode := false
+var run_rewards_recorded := false
+var run_awarded_research := 0
 var selected_card_id := ""
 var hovered_card_id := ""
 var selected_rotation := 0
@@ -152,6 +156,7 @@ var run_discovered_synergy_ids: Array[String] = []
 var run_stabilized_synergy_ids: Array[String] = []
 var run_decrypted_blueprint_ids: Array[String] = []
 var prototype_card_seen_cycle := {}
+var discovery_bursts := []
 var resonance_score := 0
 var resonance_tier_index := 0
 var links_formed := 0
@@ -164,7 +169,7 @@ var running := true
 var admin_mode := false
 var testing_free_build := false
 var testing_disable_failures := false
-var grid_zoom := DEFAULT_GRID_ZOOM
+var grid_zoom := DEFAULT_GRID_ZOOM * 0.52
 var paused := false
 var menu_open := false
 var pause_before_menu := false
@@ -179,6 +184,7 @@ var power_capacity := 12
 var unpowered_rooms := []
 var powered_room_cells := {}
 var unpowered_room_cells := {}
+var offline_reasons := {}
 var last_cycle_delta := {}
 var test_walker_cell := Vector2i(-1, -1)
 var test_walker_next_cell := Vector2i(-1, -1)
@@ -191,7 +197,7 @@ var test_walker_direction := "south"
 
 var grid_view: Control
 var grid_scroll: ScrollContainer
-var resource_bar: HBoxContainer
+var resource_bar: Container
 var cycle_label: Label
 var resonance_label: Label
 var hand_box: HBoxContainer
@@ -202,7 +208,11 @@ var preview_name_label: Label
 var preview_tags_label: Label
 var inspector_label: RichTextLabel
 var orbital_objective_label: Label
-var archive_label: Label
+var archive_label: RichTextLabel
+var journal_layer: CanvasLayer
+var journal_button: Button
+var pause_before_journal := false
+var room_operation_button: Button
 var routing_label: Label
 var log_label: RichTextLabel
 var placement_label: Label
@@ -223,6 +233,8 @@ var summary_layer: CanvasLayer
 var summary_panel: PanelContainer
 var summary_title_label: Label
 var summary_text: Label
+var continue_expedition_button: Button
+var end_expedition_button: Button
 var doctrine_layer: CanvasLayer
 var doctrine_buttons := {}
 var doctrine_selection_label: Label
@@ -292,7 +304,10 @@ func _ready() -> void:
 
 func _configure_window_scaling() -> void:
 	var window := get_window()
-	window.content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
+	window.content_scale_size = Vector2i(1920, 1080)
+	window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
+	window.min_size = Vector2i(960, 540)
 
 func _apply_ui_font() -> void:
 	var font := SystemFont.new()
@@ -304,6 +319,7 @@ func _apply_ui_font() -> void:
 	theme = ui_theme
 
 func _process(delta: float) -> void:
+	_update_discovery_bursts(delta)
 	if running and not paused:
 		visual_time_seconds += delta * time_speeds[time_speed_index]
 		_update_test_walker(delta * time_speeds[time_speed_index])
@@ -325,7 +341,7 @@ func _build_ui() -> void:
 	var top_shell := PanelContainer.new()
 	top_shell.name = "TopCommandBar"
 	top_shell.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	top_shell.offset_bottom = 64
+	top_shell.offset_bottom = 104
 	root.add_child(top_shell)
 	_apply_panel_style(top_shell, Color("#060b10"), Color("#15232c"))
 
@@ -335,7 +351,7 @@ func _build_ui() -> void:
 	top_shell.add_child(top_bar)
 
 	var identity := VBoxContainer.new()
-	identity.custom_minimum_size = Vector2(210, 0)
+	identity.custom_minimum_size = Vector2(172, 0)
 	identity.add_theme_constant_override("separation", 0)
 	top_bar.add_child(identity)
 	var title := Label.new()
@@ -345,15 +361,17 @@ func _build_ui() -> void:
 	title.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
 	identity.add_child(title)
 	var subtitle := Label.new()
-	subtitle.text = "ORBITAL CORE  ·  V0.1"
+	subtitle.text = "RECOVER · CONNECT · DISCOVER"
 	subtitle.add_theme_font_size_override("font_size", 10)
 	subtitle.add_theme_color_override("font_color", Color("#536874"))
 	identity.add_child(subtitle)
 
-	var resources_row := HBoxContainer.new()
+	var resources_row := GridContainer.new()
+	resources_row.columns = 6
 	resources_row.name = "Resources"
 	resources_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	resources_row.add_theme_constant_override("separation", 8)
+	resources_row.add_theme_constant_override("h_separation", 6)
+	resources_row.add_theme_constant_override("v_separation", 4)
 	top_bar.add_child(resources_row)
 	resource_bar = resources_row
 
@@ -378,6 +396,14 @@ func _build_ui() -> void:
 	resonance_status.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
 	resonance_chip.add_child(resonance_status)
 	resonance_label = resonance_status
+	var journal := Button.new()
+	journal.text = "JOURNAL [J]"
+	journal.custom_minimum_size = Vector2(130, 44)
+	journal.tooltip_text = "Your recovered patterns and their blueprint rewards. Reading pauses the station."
+	journal.pressed.connect(_toggle_journal)
+	_style_hud_button(journal, false)
+	top_bar.add_child(journal)
+	journal_button = journal
 
 	var menu_button := Button.new()
 	menu_button.text = "MENU"
@@ -389,9 +415,9 @@ func _build_ui() -> void:
 	var middle := Control.new()
 	middle.name = "Center"
 	middle.set_anchors_preset(Control.PRESET_FULL_RECT)
-	middle.offset_top = 72
-	middle.offset_right = -526
-	middle.offset_bottom = -452
+	middle.offset_top = 112
+	middle.offset_right = -438
+	middle.offset_bottom = -344
 	root.add_child(middle)
 
 	var grid_frame := PanelContainer.new()
@@ -422,9 +448,9 @@ func _build_ui() -> void:
 	objective_panel.name = "OrbitalObjective"
 	objective_panel.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	objective_panel.offset_left = 24
-	objective_panel.offset_top = -224
-	objective_panel.offset_right = 388
-	objective_panel.offset_bottom = -24
+	objective_panel.offset_top = -220
+	objective_panel.offset_right = 370
+	objective_panel.offset_bottom = -16
 	middle.add_child(objective_panel)
 	_apply_panel_style(objective_panel, Color("#071018"), Color("#152a35"))
 	var objective_text := Label.new()
@@ -466,8 +492,8 @@ func _build_ui() -> void:
 	viewport_tools.add_theme_constant_override("separation", 10)
 	middle.add_child(viewport_tools)
 	var recenter_button := Button.new()
-	recenter_button.text = "↕ RECENTER"
-	recenter_button.pressed.connect(_center_grid_on_station_deferred)
+	recenter_button.text = "FIT STATION [F]"
+	recenter_button.pressed.connect(_fit_station_view)
 	_style_hud_button(recenter_button, false)
 	viewport_tools.add_child(recenter_button)
 	var view_button := Button.new()
@@ -480,25 +506,25 @@ func _build_ui() -> void:
 	var side_scroll := ScrollContainer.new()
 	side_scroll.name = "SideScroll"
 	side_scroll.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
-	side_scroll.offset_left = -506
-	side_scroll.offset_top = 72
+	side_scroll.offset_left = -426
+	side_scroll.offset_top = 112
 	side_scroll.offset_right = -8
 	side_scroll.offset_bottom = -8
-	side_scroll.custom_minimum_size = Vector2(498, 0)
+	side_scroll.custom_minimum_size = Vector2(418, 0)
 	side_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	side_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	root.add_child(side_scroll)
 
 	var side := VBoxContainer.new()
 	side.name = "SidePanel"
-	side.custom_minimum_size = Vector2(470, 0)
+	side.custom_minimum_size = Vector2(396, 0)
 	side.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	side.add_theme_constant_override("separation", 14)
 	side_scroll.add_child(side)
 
 	var inspector_panel := PanelContainer.new()
 	inspector_panel.name = "PreviewPanel"
-	inspector_panel.custom_minimum_size = Vector2(0, 610)
+	inspector_panel.custom_minimum_size = Vector2(0, 480)
 	side.add_child(inspector_panel)
 	_apply_panel_style(inspector_panel, Color("#071018"), Color("#152a35"))
 	var preview_box := VBoxContainer.new()
@@ -548,27 +574,21 @@ func _build_ui() -> void:
 	var inspector_text := RichTextLabel.new()
 	inspector_text.name = "Text"
 	inspector_text.bbcode_enabled = true
-	inspector_text.scroll_active = false
+	inspector_text.scroll_active = true
 	inspector_text.fit_content = false
-	inspector_text.custom_minimum_size = Vector2(0, 400)
+	inspector_text.custom_minimum_size = Vector2(0, 284)
 	inspector_text.add_theme_color_override("default_color", Color("#8fa3ae"))
 	inspector_text.add_theme_font_size_override("normal_font_size", 13)
 	inspector_text.add_theme_font_size_override("bold_font_size", 14)
 	inspector_text.add_theme_constant_override("line_separation", 2)
 	preview_box.add_child(inspector_text)
 	inspector_label = inspector_text
-
-	var archive_panel := PanelContainer.new()
-	archive_panel.name = "ArchivePanel"
-	archive_panel.visible = false
-	archive_panel.custom_minimum_size = Vector2(0, 190)
-	side.add_child(archive_panel)
-	_apply_panel_style(archive_panel, Color("#071018"), Color("#152a35"))
-	var archive_text := Label.new()
-	archive_text.name = "Text"
-	archive_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	archive_panel.add_child(archive_text)
-	archive_label = archive_text
+	room_operation_button = Button.new()
+	room_operation_button.text = "SELECT A BUILT ROOM TO CONTROL"
+	room_operation_button.custom_minimum_size.y = 34
+	room_operation_button.pressed.connect(_toggle_inspected_room)
+	_style_hud_button(room_operation_button, false)
+	preview_box.add_child(room_operation_button)
 
 	var routing_panel := PanelContainer.new()
 	routing_panel.name = "RoutingPanel"
@@ -656,7 +676,7 @@ func _build_ui() -> void:
 	zoom_control.min_value = 0.22
 	zoom_control.max_value = 1.0
 	zoom_control.step = 0.05
-	zoom_control.value = 1.0
+	zoom_control.value = grid_zoom / DEFAULT_GRID_ZOOM
 	zoom_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	zoom_control.value_changed.connect(_on_zoom_changed)
 	_style_hud_slider(zoom_control)
@@ -724,8 +744,8 @@ func _build_ui() -> void:
 	bottom.name = "BottomHand"
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	bottom.offset_left = 8
-	bottom.offset_right = -526
-	bottom.offset_top = -424
+	bottom.offset_right = -438
+	bottom.offset_top = -332
 	bottom.offset_bottom = -8
 	root.add_child(bottom)
 	_apply_panel_style(bottom, Color("#071018"), Color("#15232c"))
@@ -733,7 +753,7 @@ func _build_ui() -> void:
 	bottom_box.add_theme_constant_override("separation", 18)
 	bottom.add_child(bottom_box)
 	var draft_status := VBoxContainer.new()
-	draft_status.custom_minimum_size = Vector2(160, 0)
+	draft_status.custom_minimum_size = Vector2(148, 0)
 	draft_status.add_theme_constant_override("separation", 12)
 	bottom_box.add_child(draft_status)
 	var blueprint_title := Label.new()
@@ -748,7 +768,7 @@ func _build_ui() -> void:
 	draft_status.add_child(hand_count)
 	hand_count_label = hand_count
 	var draft_hint := Label.new()
-	draft_hint.text = "Build to draw.\nRMB rerolls one.\nSpent cards recycle."
+	draft_hint.text = "Build to draw.\nRMB rerolls one.\nR rotates.\nSpace pauses."
 	draft_hint.add_theme_font_size_override("font_size", 14)
 	draft_hint.add_theme_color_override("font_color", Color("#536874"))
 	draft_status.add_child(draft_hint)
@@ -761,7 +781,7 @@ func _build_ui() -> void:
 	reroll_button = discard_all_button
 	var card_row := HBoxContainer.new()
 	card_row.name = "CardRow"
-	card_row.add_theme_constant_override("separation", 16)
+	card_row.add_theme_constant_override("separation", 12)
 	card_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bottom_box.add_child(card_row)
 	hand_box = card_row
@@ -793,17 +813,31 @@ func _build_ui() -> void:
 	summary_title.add_theme_font_size_override("font_size", 24)
 	summary_vbox.add_child(summary_title)
 	summary_title_label = summary_title
+	var summary_scroll := ScrollContainer.new()
+	summary_scroll.custom_minimum_size = Vector2(740, 480)
+	summary_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	summary_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	summary_vbox.add_child(summary_scroll)
 	var summary_body := Label.new()
 	summary_body.name = "Text"
 	summary_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	summary_body.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	summary_vbox.add_child(summary_body)
+	summary_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	summary_scroll.add_child(summary_body)
 	summary_text = summary_body
+	continue_expedition_button = Button.new()
+	continue_expedition_button.text = "CONTINUE EXPEDITION · KEEP EXPERIMENTING"
+	continue_expedition_button.custom_minimum_size.y = 44
+	continue_expedition_button.pressed.connect(_continue_expedition)
+	_style_hud_button(continue_expedition_button, true)
+	summary_vbox.add_child(continue_expedition_button)
 	var reboot_button := Button.new()
 	reboot_button.text = "Start New Reboot Cycle"
+	reboot_button.custom_minimum_size.y = 40
+	_style_hud_button(reboot_button, false)
 	reboot_button.pressed.connect(_start_reboot_cycle)
 	summary_vbox.add_child(reboot_button)
 
+	_build_journal_overlay()
 	_build_doctrine_overlay()
 	_build_menu_overlay()
 
@@ -963,6 +997,92 @@ func _style_hud_progress(progress: ProgressBar) -> void:
 	fill.border_width_top = 1
 	fill.border_width_bottom = 1
 	progress.add_theme_stylebox_override("fill", fill)
+
+func _build_journal_overlay() -> void:
+	journal_layer = CanvasLayer.new()
+	journal_layer.name = "DiscoveryJournal"
+	journal_layer.layer = 18
+	journal_layer.visible = false
+	add_child(journal_layer)
+	var shade := ColorRect.new()
+	shade.color = Color(0.0, 0.02, 0.04, 0.88)
+	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	journal_layer.add_child(shade)
+	var center := CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	journal_layer.add_child(center)
+	var panel := PanelContainer.new()
+	panel.custom_minimum_size = Vector2(940, 760)
+	_apply_panel_style(panel, Color("#071018"), UI_ACCENT_BRIGHT)
+	center.add_child(panel)
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 18)
+	panel.add_child(body)
+	var title := Label.new()
+	title.text = "BRINE / DISCOVERY JOURNAL"
+	title.add_theme_font_size_override("font_size", 26)
+	title.add_theme_color_override("font_color", Color("#a9e7d4"))
+	body.add_child(title)
+	var subtitle := Label.new()
+	subtitle.text = "Only what you have learned. No hidden recipes.\nKeep connected rooms supplied for 3 consecutive cycles to stabilize a pattern."
+	subtitle.add_theme_color_override("font_color", Color("#92aeb8"))
+	body.add_child(subtitle)
+	archive_label = RichTextLabel.new()
+	archive_label.bbcode_enabled = true
+	archive_label.custom_minimum_size = Vector2(900, 570)
+	archive_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	archive_label.add_theme_font_size_override("normal_font_size", 16)
+	archive_label.add_theme_constant_override("line_separation", 6)
+	body.add_child(archive_label)
+	var close := Button.new()
+	close.text = "RETURN TO STATION  [J / ESC]"
+	close.custom_minimum_size.y = 44
+	close.pressed.connect(_toggle_journal)
+	_style_hud_button(close, false)
+	body.add_child(close)
+	journal_layer.set_meta("close_button", close)
+
+func _journal_is_open() -> bool:
+	return journal_layer != null and journal_layer.visible
+
+func _gameplay_input_blocked() -> bool:
+	return menu_open or _journal_is_open() or (summary_layer != null and summary_layer.visible) or (doctrine_layer != null and doctrine_layer.visible)
+
+func _toggle_journal() -> void:
+	if journal_layer == null:
+		return
+	if _journal_is_open():
+		journal_layer.visible = false
+		_set_paused(pause_before_journal)
+		return
+	if _gameplay_input_blocked():
+		return
+	pause_before_journal = paused
+	journal_layer.visible = true
+	get_viewport().gui_release_focus()
+	var close_button: Button = journal_layer.get_meta("close_button")
+	close_button.grab_focus()
+	_set_paused(true)
+	_refresh_archive()
+
+func _toggle_inspected_room() -> void:
+	if _gameplay_input_blocked() or not running or room_operation_button == null:
+		return
+	var cell: Vector2i = room_operation_button.get_meta("cell", Vector2i(-1, -1))
+	if not occupied.has(cell) or occupied[cell]["id"] == "brine_core":
+		return
+	var room: Dictionary = occupied[cell]
+	room["suspended"] = not room.get("suspended", false)
+	if room["suspended"]:
+		powered_room_cells.erase(cell)
+		offline_reasons[cell] = "SUSPENDED"
+		unpowered_room_cells[cell] = true
+		active_synergy_links = DiscoveryManagerScript.functioning_links(connected_synergy_links, powered_room_cells)
+		active_synergies.clear()
+		for link in active_synergy_links:
+			active_synergies[link["id"]] = link
+	_log("%s %s." % [room["display_name"], "suspended" if room["suspended"] else "scheduled to resume next cycle"], false)
+	_refresh_all()
 
 func _build_doctrine_overlay() -> void:
 	doctrine_layer = CanvasLayer.new()
@@ -1236,6 +1356,12 @@ func _build_menu_overlay() -> void:
 	_add_menu_button(box, "Resume Cycle", _close_menu)
 	_add_menu_button(box, "Recenter Station", _menu_recenter_station)
 	_add_menu_button(box, "Toggle Admin View", _menu_toggle_admin_view)
+	end_expedition_button = Button.new()
+	end_expedition_button.text = "Conclude Expedition · Bank Research"
+	end_expedition_button.custom_minimum_size.y = 44
+	end_expedition_button.pressed.connect(_end_expedition)
+	_style_hud_button(end_expedition_button, false)
+	box.add_child(end_expedition_button)
 	_add_menu_button(box, "Restart Reboot Cycle", _menu_restart_cycle)
 	_add_menu_button(box, "Quit To Desktop", _menu_quit_game)
 	var hint := Label.new()
@@ -1343,6 +1469,8 @@ func _hide_grid_scrollbars() -> void:
 		v_bar.modulate = Color(1, 1, 1, 0)
 
 func _start_reboot_cycle() -> void:
+	if journal_layer != null:
+		journal_layer.visible = false
 	resources = {
 		"metal": 18,
 		"power": 6,
@@ -1355,6 +1483,7 @@ func _start_reboot_cycle() -> void:
 		"integrity": 100
 	}
 	run_earned = {}
+	log_lines.clear()
 	occupied.clear()
 	placed_rooms.clear()
 	hand.clear()
@@ -1367,7 +1496,11 @@ func _start_reboot_cycle() -> void:
 	directive_index = 0
 	completed_directives.clear()
 	run_victory = false
+	expedition_mode = false
+	run_rewards_recorded = false
+	run_awarded_research = 0
 	selected_card_id = ""
+	hovered_card_id = ""
 	selected_rotation = 0
 	selected_room_cell = Vector2i(-1, -1)
 	hover_cell = Vector2i(-1, -1)
@@ -1384,6 +1517,7 @@ func _start_reboot_cycle() -> void:
 	run_stabilized_synergy_ids.clear()
 	run_decrypted_blueprint_ids.clear()
 	prototype_card_seen_cycle.clear()
+	discovery_bursts.clear()
 	resonance_score = 0
 	resonance_tier_index = 0
 	links_formed = 0
@@ -1397,6 +1531,7 @@ func _start_reboot_cycle() -> void:
 	unpowered_rooms.clear()
 	powered_room_cells.clear()
 	unpowered_room_cells.clear()
+	offline_reasons.clear()
 	last_cycle_delta.clear()
 	var center_index := int(float(GRID_SIZE) * 0.5)
 	test_walker_cell = Vector2i(center_index, center_index)
@@ -1481,16 +1616,18 @@ func _expire_prototype_markers() -> void:
 			prototype_card_seen_cycle.erase(room_id)
 
 func _on_grid_clicked(cell: Vector2i) -> void:
-	if menu_open:
+	if _gameplay_input_blocked():
 		return
 	if not running:
 		return
+	if occupied.has(cell):
+		selected_card_id = ""
+		selected_room_cell = cell
+		last_preview_room_id = str(occupied[cell].get("id", ""))
+		last_previewing_card = false
+		_refresh_all()
+		return
 	if selected_card_id.is_empty():
-		if occupied.has(cell):
-			selected_room_cell = cell
-			last_preview_room_id = str(occupied[cell].get("id", ""))
-			last_previewing_card = false
-			_refresh_all()
 		return
 	var problem := get_placement_problem(selected_card_id, cell)
 	if not problem.is_empty():
@@ -1509,14 +1646,14 @@ func _on_grid_clicked(cell: Vector2i) -> void:
 	_refresh_all()
 
 func _on_grid_secondary_clicked(_cell: Vector2i) -> void:
-	if menu_open:
+	if _gameplay_input_blocked():
 		return
 	selected_card_id = ""
 	selected_rotation = 0
 	_refresh_all()
 
 func _on_grid_hovered(cell: Vector2i) -> void:
-	if menu_open:
+	if _gameplay_input_blocked():
 		return
 	if hover_cell == cell:
 		return
@@ -1543,12 +1680,15 @@ func get_placement_problem(id: String, cell: Vector2i) -> String:
 		return "cannot afford %s." % _format_cost(room.get("cost", {}))
 	if placed_rooms.is_empty():
 		return ""
+	var mismatch := ""
 	for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
 		var neighbor_pos: Vector2i = cell + offset
 		if occupied.has(neighbor_pos):
 			if _doors_connect(id, selected_rotation, offset, occupied[neighbor_pos]):
 				return ""
-			return "door does not match adjacent %s." % occupied[neighbor_pos]["display_name"]
+			mismatch = "door does not match adjacent %s. Rotate with R." % occupied[neighbor_pos]["display_name"]
+	if not mismatch.is_empty():
+		return mismatch
 	return "must connect to an adjacent door."
 
 func _place_room(id: String, cell: Vector2i, free := false) -> void:
@@ -1574,7 +1714,8 @@ func _place_room(id: String, cell: Vector2i, free := false) -> void:
 	_apply_unlocks()
 	if not free:
 		_check_directive_progress()
-	_center_grid_on_station_deferred()
+	if free:
+		_center_grid_on_station_deferred()
 
 func _advance_cycle() -> void:
 	if not running:
@@ -1592,65 +1733,98 @@ func _advance_cycle() -> void:
 	if running:
 		_check_fail_conditions()
 
-func _apply_room_economy() -> Dictionary:
+func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) -> Dictionary:
+	# Spend shared start-of-cycle inputs once. Outputs become next cycle's inputs.
 	var delta := {}
-	unpowered_rooms.clear()
-	powered_room_cells.clear()
-	unpowered_room_cells.clear()
+	var working_cells := {}
+	var offline := {}
+	var power_failures := []
+	var input_budget := resources.duplicate()
 	var generation := 0
-	var demand := 0
 	for room in placed_rooms:
-		generation += int(room.get("production", {}).get("power", 0))
-		demand += int(room.get("consumption", {}).get("power", 0))
-	power_capacity = _get_power_capacity()
-	power_generated = generation
-	var available_power: int = generation + max(resources["power"], 0)
+		if not room.get("suspended", false):
+			generation += int(room.get("production", {}).get("power", 0))
+	input_budget["power"] = generation + maxi(int(resources["power"]), 0)
 	var reserve_start := int(resources["power"])
-	var ordered_rooms := _rooms_by_power_priority()
-	for room in ordered_rooms:
-		var room_power_need := int(room.get("consumption", {}).get("power", 0))
-		var powered: bool = available_power >= room_power_need
-		if powered:
-			available_power -= room_power_need
-			powered_room_cells[room["pos"]] = true
-		elif room_power_need > 0:
-			unpowered_rooms.append(room["display_name"])
-			unpowered_room_cells[room["pos"]] = true
+	var added_crew := 0
+	for room in _rooms_by_power_priority():
+		var cell: Vector2i = room["pos"]
+		if room.get("suspended", false):
+			offline[cell] = "SUSPENDED"
 			continue
-		else:
-			powered_room_cells[room["pos"]] = true
+		var missing: Array[String] = []
+		var consumption: Dictionary = room.get("consumption", {})
+		for key in consumption:
+			if int(input_budget.get(key, 0)) < int(consumption[key]):
+				missing.append(str(key).replace("_", " ").to_upper())
+		if not missing.is_empty():
+			offline[cell] = "NEEDS %s" % _join_strings(missing, " + ")
+			if missing.has("POWER"):
+				power_failures.append(room["display_name"])
+			continue
+		if room["id"] == "clone_lab" and crew_count + added_crew >= _get_crew_capacity():
+			offline[cell] = "HABITATS FULL"
+			continue
+		for key in consumption:
+			input_budget[key] = int(input_budget.get(key, 0)) - int(consumption[key])
+		working_cells[cell] = true
 		_add_to_delta(delta, _without_key(room.get("production", {}), "power"), 1)
-		_add_to_delta(delta, _without_key(room.get("consumption", {}), "power"), -1)
+		_add_to_delta(delta, _without_key(consumption, "power"), -1)
 		if room["id"] == "research_lab" and crew_count > 0:
 			_add_to_delta(delta, {"data": 1}, 1)
-		if room["id"] == "clone_lab" and resources["biomass"] > 0 and resources["data"] > 0:
-			crew_count += 1
-			had_crew = true
-			_log("Clone Lab reports one viable clone crew.")
-	active_synergy_links = DiscoveryManagerScript.functioning_links(connected_synergy_links, powered_room_cells)
+		if room["id"] == "clone_lab":
+			added_crew += 1
+	var links := DiscoveryManagerScript.functioning_links(connected_synergy_links, working_cells)
+	var bonus_links := []
+	for link in links:
+		if not known_bonuses_only or meta.discovered_synergy_ids.has(link["id"]):
+			bonus_links.append(link)
+	_add_to_delta(delta, SynergyManagerScript.cycle_bonus(bonus_links), 1)
+	var tick := cycle if simulated_cycle < 0 else simulated_cycle
+	for link in bonus_links:
+		if link["id"] == "safe_wake_protocol" and tick % 3 == 0 and crew_count + added_crew < _get_crew_capacity():
+			added_crew += 1
+			break
+	var used := generation + maxi(reserve_start, 0) - int(input_budget["power"])
+	var final_power := clampi(int(input_budget["power"]) + int(delta.get("power", 0)), 0, _get_power_capacity())
+	delta["power"] = final_power - reserve_start
+	return {"delta": delta, "working_cells": working_cells, "offline": offline,
+		"power_failures": power_failures, "links": links, "generation": generation,
+		"power_used": used, "added_crew": added_crew}
+
+func _apply_room_economy() -> Dictionary:
+	var result := _simulate_room_economy()
+	powered_room_cells = result["working_cells"]
+	offline_reasons = result["offline"]
+	unpowered_room_cells = offline_reasons.duplicate()
+	unpowered_rooms = result["power_failures"]
+	power_generated = result["generation"]
+	power_used = result["power_used"]
+	power_capacity = _get_power_capacity()
+	active_synergy_links = result["links"]
 	active_synergies.clear()
-	for link_value in active_synergy_links:
-		var link: Dictionary = link_value
+	for link in active_synergy_links:
 		active_synergies[str(link.get("id", ""))] = link
-	var bonus := SynergyManagerScript.cycle_bonus(active_synergy_links)
-	if not bonus.is_empty():
-		_add_to_delta(delta, bonus, 1)
-	var reserve_after := clampi(available_power, 0, power_capacity)
-	var reserve_change := reserve_after - reserve_start
-	power_used = max(0, generation + reserve_start - available_power)
-	if reserve_change != 0:
-		_add_to_delta(delta, {"power": reserve_change}, 1)
-	if reserve_start + reserve_change >= power_capacity and generation > demand:
-		_log("Battery reserve full. Surplus Power bled into station heat sinks.")
 	if not unpowered_rooms.is_empty():
 		_log("Power shortage: %s offline this cycle." % _join_strings(unpowered_rooms))
-	if active_synergies.has("safe_wake_protocol") and cycle % 3 == 0:
-		crew_count += 1
+	if int(result["added_crew"]) > 0:
+		crew_count += int(result["added_crew"])
 		had_crew = true
-		_log("Safe Wake Protocol revives a cryo survivor.")
+		_log("Recovery systems welcome %d survivor(s)." % int(result["added_crew"]))
+	if active_synergies.has("containment_sector") and corruption > 0:
+		corruption -= 1
+		_log("Containment Sector filters one level of corruption.")
+	var delta: Dictionary = result["delta"]
 	_apply_delta(delta)
 	_clamp_power_reserve()
 	return delta
+
+func _get_crew_capacity() -> int:
+	var capacity := 2 # Emergency berths aboard the core.
+	for room in placed_rooms:
+		if room["id"] == "crew_hab":
+			capacity += 2
+	return capacity
 
 func _apply_orbit_event() -> void:
 	var event := orbit.advance(cycle, _get_poi_work_capacities())
@@ -1667,13 +1841,13 @@ func _apply_orbit_event() -> void:
 	if event.has("corruption"):
 		corruption += event["corruption"]
 	if event["name"] == "Frozen Escape Pod" and event.get("completed", false):
-		crew_count += 1
-		had_crew = true
-		meta.unlock_room("cryo_chamber")
-		_log("Life Support thaws a survivor from the escape pod. Cryo Chamber blueprint recovered.")
-	if event["name"] == "Solar Flare":
-		if meta.unlock_room("battery_array"):
-			_log("Solar Flare survived. Battery Array blueprint unlocked.")
+		if crew_count < _get_crew_capacity():
+			crew_count += 1
+			had_crew = true
+			_log("Life Support thaws a survivor from the escape pod.")
+		else:
+			_apply_delta({"data": 3})
+			_log("Habitats full. Pod telemetry recovered; its occupant remains in safe stasis.")
 	_clamp_power_reserve()
 
 func _apply_life_support() -> void:
@@ -1728,8 +1902,32 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 	if not run_discovered_synergy_ids.has(synergy_id):
 		run_discovered_synergy_ids.append(synergy_id)
 	var synergy := _synergy_by_id(synergy_id)
+	for link_value in active_synergy_links:
+		var link: Dictionary = link_value
+		if str(link.get("id", "")) != synergy_id:
+			continue
+		var cells: Array = link.get("cells", [])
+		if cells.size() >= 2:
+			var color_text := str(synergy.get("fx_color", "55E6FF")).trim_prefix("#")
+			discovery_bursts.append({
+				"cells": cells.duplicate(),
+				"color": Color("#%s" % color_text),
+				"remaining": DISCOVERY_BURST_SECONDS
+			})
+		break
 	_log(str(synergy.get("message", "BRINE recovered a functioning room pattern.")))
 	_queue_center_toast("PATTERN DISCOVERED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
+
+func _update_discovery_bursts(delta: float) -> void:
+	if discovery_bursts.is_empty():
+		return
+	for index in range(discovery_bursts.size() - 1, -1, -1):
+		var burst: Dictionary = discovery_bursts[index]
+		burst["remaining"] = float(burst.get("remaining", 0.0)) - delta
+		if float(burst["remaining"]) <= 0.0:
+			discovery_bursts.remove_at(index)
+	if grid_view != null:
+		grid_view.queue_redraw()
 
 func _handle_synergy_stabilization(synergy_id: String) -> void:
 	_award_synergy_stabilization(SynergyManagerScript.get_synergy(synergy_id))
@@ -1880,6 +2078,8 @@ func _roll_run_directives() -> void:
 	completed_directives.clear()
 
 func _current_directive() -> Dictionary:
+	if expedition_mode:
+		return {}
 	if directive_index < 0 or directive_index >= run_directives.size():
 		return {}
 	return run_directives[directive_index]
@@ -1963,21 +2163,34 @@ func _check_fail_conditions() -> void:
 
 func _show_reboot_summary(reason: String, victory := false) -> void:
 	running = false
-	run_victory = victory
-	var award := int(float(max(resources["data"], 0)) / 5.0) + int(float(resonance_score) / 50.0)
+	run_victory = run_victory or victory
+	var earned := int(float(max(resources["data"], 0)) / 5.0) + int(float(resonance_score) / 50.0)
+	var award := maxi(0, earned - run_awarded_research)
+	run_awarded_research += award
 	meta.add_research_points(award)
 	var previous_doctrine_ranks := {}
 	for doctrine_id_value in selected_doctrines:
 		var doctrine_id := str(doctrine_id_value)
 		previous_doctrine_ranks[doctrine_id] = meta.get_doctrine_rank(doctrine_id)
-	var mastery_gain := meta.record_run(selected_doctrines, victory, resonance_score)
+	var mastery_gain := 0
+	if not run_rewards_recorded:
+		mastery_gain = meta.record_run(selected_doctrines, victory, resonance_score)
+		run_rewards_recorded = true
 	var synergy_names := []
 	for id in meta.discovered_synergy_ids:
 		synergy_names.append(id.replace("_", " ").capitalize())
 	if summary_title_label != null:
-		summary_title_label.text = "Station Stabilized" if victory else "Reboot Summary"
-	summary_text.text = "%s\n\nDoctrines: %s\nDirectives completed: %d/%d\nCycles survived: %d\nCrew remaining: %d\nResonance score: %d (%s)\nLinks formed: %d · Best cascade: x%d\nResearch awarded: %d\nDoctrine mastery: %s\nMastery gained: +%d each\nTotal research: %d\nStabilized reboots: %d\nDiscovered synergies: %s" % [
+		summary_title_label.text = "Station Stabilized" if victory else ("Expedition Complete" if expedition_mode else "Reboot Summary")
+	if continue_expedition_button != null:
+		continue_expedition_button.visible = victory and not expedition_mode
+	var discoveries := "Patterns discovered: %s\nPatterns stabilized: %s\nBlueprints decrypted: %s" % [
+		_join_strings(_synergy_names_for_ids(run_discovered_synergy_ids)) if not run_discovered_synergy_ids.is_empty() else "None",
+		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None",
+		_join_strings(_room_names_for_ids(run_decrypted_blueprint_ids)) if not run_decrypted_blueprint_ids.is_empty() else "None"
+	]
+	summary_text.text = "%s\n\n%s\n\nDoctrines: %s\nDirectives completed: %d/%d\nCycles survived: %d\nCrew remaining: %d\nResonance score: %d (%s)\nLinks formed: %d · Best cascade: x%d\nResearch awarded: %d\nDoctrine mastery: %s\nMastery gained: +%d each\nTotal research: %d\nStabilized reboots: %d\nDiscovered synergies: %s" % [
 		reason,
+		discoveries,
 		RunManagerScript.doctrine_pair_name(selected_doctrines) if not selected_doctrines.is_empty() else "None selected",
 		completed_directives.size(),
 		run_directives.size(),
@@ -1999,14 +2212,31 @@ func _show_reboot_summary(reason: String, victory := false) -> void:
 		_format_cost(run_earned) if not run_earned.is_empty() else "None"
 	]
 	summary_text.text += "\nPOIs expired: %s" % [_join_strings(expired_pois) if expired_pois.size() > 0 else "None"]
-	summary_text.text += "\nPatterns discovered: %s\nPatterns stabilized: %s\nBlueprints decrypted: %s" % [
-		_join_strings(_synergy_names_for_ids(run_discovered_synergy_ids)) if not run_discovered_synergy_ids.is_empty() else "None",
-		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None",
-		_join_strings(_room_names_for_ids(run_decrypted_blueprint_ids)) if not run_decrypted_blueprint_ids.is_empty() else "None"
-	]
 	summary_layer.visible = true
+	if journal_layer != null:
+		journal_layer.visible = false
 	_set_paused(true, false)
 	_log("Run complete: %s" % reason)
+
+func _continue_expedition() -> void:
+	if not run_victory or expedition_mode or summary_layer == null or not summary_layer.visible:
+		return
+	expedition_mode = true
+	summary_layer.visible = false
+	running = true
+	_set_paused(false)
+	if tick_timer != null:
+		tick_timer.start()
+	_log("Expedition extended. No directive deadlines; life support and orbital hazards remain active.")
+	_refresh_all()
+
+func _end_expedition() -> void:
+	if not expedition_mode or not running:
+		return
+	menu_open = false
+	if menu_layer != null:
+		menu_layer.visible = false
+	_show_reboot_summary("Expedition archived. Your station's discoveries remain with BRINE.")
 
 func _format_doctrine_mastery_summary(previous_ranks: Dictionary) -> String:
 	if selected_doctrines.is_empty():
@@ -2054,6 +2284,9 @@ func _refresh_all() -> void:
 func _refresh_orbital_objective() -> void:
 	if orbital_objective_label == null:
 		return
+	if expedition_mode:
+		orbital_objective_label.text = "OPEN EXPEDITION\nSector secured. Keep experimenting.\n%d learned · %d stabilized this run\n\n%s" % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size(), orbit.get_panel_text().replace("\n", " · ")]
+		return
 	var directive := _current_directive()
 	if directive.is_empty():
 		orbital_objective_label.text = "RECONSTRUCTION DIRECTIVE\nAWAITING DOCTRINE PAIR\n──────────────\nSelect two doctrines to compile this reboot.\n\nORBIT\n%s" % orbit.get_panel_text()
@@ -2061,17 +2294,17 @@ func _refresh_orbital_objective() -> void:
 	var directive_state := _directive_state()
 	var deadline := int(directive.get("deadline", 0))
 	var remaining := maxi(0, deadline - cycle)
-	orbital_objective_label.text = "DIRECTIVE %d/%d  ·  LIMIT C%02d\n%s\n%s\nPROGRESS %s  ·  %d CYCLES REMAIN\nREWARD %s\n──────────────\nORBIT  %s" % [
+	orbital_objective_label.text = "DIRECTIVE %d/%d  ·  LIMIT C%02d\n%s\nPROGRESS %s  ·  %d CYCLES LEFT\nREWARD %s\n\nORBIT  %s" % [
 		directive_index + 1,
 		run_directives.size(),
 		deadline,
 		directive.get("name", "UNKNOWN"),
-		directive.get("briefing", ""),
 		RunManagerScript.directive_progress_text(directive, directive_state),
 		remaining,
 		_format_directive_reward(directive.get("reward", {})).to_upper(),
 		orbit.get_panel_text().replace("\n", "  ·  ")
 	]
+	orbital_objective_label.tooltip_text = str(directive.get("briefing", ""))
 
 func _on_zoom_changed(value: float) -> void:
 	_set_grid_zoom(DEFAULT_GRID_ZOOM * value, false)
@@ -2106,7 +2339,7 @@ func _restore_grid_view_center_deferred(center_ratio: Vector2) -> void:
 	_restore_grid_view_center(center_ratio)
 
 func _toggle_pause() -> void:
-	if menu_open:
+	if _gameplay_input_blocked():
 		return
 	_set_paused(not paused, true)
 
@@ -2144,7 +2377,7 @@ func _toggle_menu() -> void:
 		_open_menu()
 
 func _open_menu() -> void:
-	if menu_layer == null:
+	if menu_layer == null or _gameplay_input_blocked():
 		return
 	menu_open = true
 	pause_before_menu = paused
@@ -2166,6 +2399,8 @@ func _close_menu() -> void:
 		grid_view.queue_redraw()
 
 func _refresh_menu_status() -> void:
+	if end_expedition_button != null:
+		end_expedition_button.visible = expedition_mode and running
 	if menu_status_label == null:
 		return
 	var doctrine_name := RunManagerScript.doctrine_pair_name(selected_doctrines) if not selected_doctrines.is_empty() else "Not selected"
@@ -2315,6 +2550,8 @@ func _cycle_wait_seconds() -> float:
 	return BASE_CYCLE_SECONDS / time_speeds[time_speed_index]
 
 func _update_camera_pan(delta: float) -> void:
+	if _gameplay_input_blocked():
+		return
 	if grid_scroll == null:
 		return
 	var direction := Vector2.ZERO
@@ -2339,6 +2576,11 @@ func _apply_grid_zoom() -> void:
 		grid_view.custom_minimum_size = grid_size_px
 		grid_view.size = grid_size_px
 		grid_view.queue_redraw()
+		# Godot 4.6 caches the largest child in get_minimum_size(), not sort.
+		# Refresh that cache before applying new scroll limits and centering.
+		if grid_scroll != null:
+			grid_scroll.get_minimum_size()
+			grid_scroll.queue_sort()
 	if zoom_label != null:
 		zoom_label.text = "%d%%" % int(round((grid_zoom / DEFAULT_GRID_ZOOM) * 100.0))
 
@@ -2360,6 +2602,17 @@ func _center_grid_on_station() -> void:
 
 func _center_grid_on_station_deferred() -> void:
 	_center_grid_on_station.call_deferred()
+
+func _fit_station_view() -> void:
+	if grid_scroll == null or placed_rooms.is_empty():
+		return
+	var bounds := Rect2(Vector2(placed_rooms[0]["pos"]), Vector2.ONE)
+	for room in placed_rooms:
+		bounds = bounds.merge(Rect2(Vector2(room["pos"]), Vector2.ONE))
+	var usable := grid_scroll.size - Vector2(120, 110)
+	var fit_zoom := minf(usable.x / ((bounds.size.x + 0.6) * CELL_SIZE), usable.y / ((bounds.size.y + 0.6) * CELL_SIZE))
+	_set_grid_zoom(minf(fit_zoom, DEFAULT_GRID_ZOOM * 0.60))
+	_center_grid_on_station_deferred()
 
 func _center_grid_on_station_now() -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
@@ -2384,20 +2637,20 @@ func _refresh_resources() -> void:
 	_set_resource_chip("metal", "METAL\n%d/%d  %+d" % [resources["metal"], _get_resource_capacity("metal"), net.get("metal", 0)], Color("#9aa2a8"))
 	_set_resource_chip("power", "POWER\n%d/%d  %+d" % [resources["power"], power_capacity, net.get("power", 0)], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
 	_set_resource_chip("oxygen", "OXYGEN\n%d/%d  %+d" % [resources["oxygen"], _get_resource_capacity("oxygen"), net.get("oxygen", 0)], _critical_color(resources["oxygen"], Color("#7fd4ff"), 2, 0))
-	_set_resource_chip("water", "WATER\n%d/%d" % [int(resources.get("water", 0)), _get_resource_capacity("water")], Color("#3f72d6"))
+	_set_resource_chip("water", "WATER\n%d/%d  %+d" % [int(resources.get("water", 0)), _get_resource_capacity("water"), net.get("water", 0)], Color("#719bff"))
 	_set_resource_chip("food", "FOOD\n%d/%d  %+d" % [resources["food"], _get_resource_capacity("food"), net.get("food", 0)], _critical_color(resources["food"], Color("#f0903c"), 2, 0))
 	_set_resource_chip("data", "DATA\n%d/%d  %+d" % [resources["data"], _get_resource_capacity("data"), net.get("data", 0)], Color("#4fd0e0"))
 	_set_resource_chip("biomass", "BIOMASS\n%d/%d  %+d" % [resources["biomass"], _get_resource_capacity("biomass"), net.get("biomass", 0)], Color("#5fc46a"))
-	_set_resource_chip("rare", "RARE MINERALS\n%d/%d  %+d" % [resources["rare_minerals"], _get_resource_capacity("rare_minerals"), net.get("rare_minerals", 0)], Color("#b07ff0"))
+	_set_resource_chip("rare", "RARE\n%d/%d  %+d" % [resources["rare_minerals"], _get_resource_capacity("rare_minerals"), net.get("rare_minerals", 0)], Color("#b07ff0"))
 	var integrity_color := Color.WHITE
 	if resources["integrity"] < 10:
 		integrity_color = Color("#ff3b3b")
 	elif resources["integrity"] < 35:
 		integrity_color = Color("#ff9f31")
 	_set_resource_chip("integrity", "INTEGRITY\n%d%%" % resources["integrity"], integrity_color)
-	_set_resource_chip("crew", "CREW\n%d/0" % crew_count, Color.WHITE)
+	_set_resource_chip("crew", "CREW\n%d/%d" % [crew_count, _get_crew_capacity()], Color.WHITE)
 	var corruption_color := Color.WHITE if corruption < 7 else Color("#ff67b3")
-	_set_resource_chip("corruption", "CORRUPTION\n%d%%" % corruption, corruption_color)
+	_set_resource_chip("corruption", "CORRUPTION\n%d/10" % corruption, corruption_color)
 	cycle_label.text = "%03d\nCYCLE" % cycle
 	var tier: Dictionary = RESONANCE_TIERS[resonance_tier_index]
 	resonance_label.text = "RESONANCE\n%03d  ·  %s" % [resonance_score, tier["name"]]
@@ -2421,20 +2674,18 @@ func _set_resource_chip(id: String, text: String, color: Color) -> void:
 	else:
 		var chip := PanelContainer.new()
 		chip.name = "%sChip" % id.capitalize()
-		var min_width := 116
-		if id == "rare" or id == "corruption" or id == "integrity":
-			min_width = 148
-		chip.custom_minimum_size = Vector2(min_width, 54)
+		chip.custom_minimum_size = Vector2(124, 42)
+		chip.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		chip.tooltip_text = str(RESOURCE_TOOLTIPS.get(id, "Station resource."))
 		resource_bar.add_child(chip)
 		resource_chips[id] = chip
 		var row := HBoxContainer.new()
-		row.add_theme_constant_override("separation", 9)
+		row.add_theme_constant_override("separation", 6)
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		chip.add_child(row)
 		var icon := TextureRect.new()
-		icon.custom_minimum_size = Vector2(30, 30)
-		icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		icon.custom_minimum_size = Vector2(24, 24)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -2466,10 +2717,10 @@ func _set_resource_chip(id: String, text: String, color: Color) -> void:
 	chip_style.corner_radius_top_right = 1
 	chip_style.corner_radius_bottom_left = 1
 	chip_style.corner_radius_bottom_right = 1
-	chip_style.content_margin_left = 12
-	chip_style.content_margin_right = 12
-	chip_style.content_margin_top = 6
-	chip_style.content_margin_bottom = 6
+	chip_style.content_margin_left = 6
+	chip_style.content_margin_right = 6
+	chip_style.content_margin_top = 4
+	chip_style.content_margin_bottom = 4
 	chip_panel.add_theme_stylebox_override("panel", chip_style)
 	label.text = text
 	label.add_theme_color_override("font_color", color)
@@ -2511,24 +2762,11 @@ func _resource_icon_bbcode(resource_id: String, icon_size: int = 18) -> String:
 	return RoomDatabaseScript.resource_icon(id)
 
 func _project_cycle_delta() -> Dictionary:
-	var delta := {}
-	var generation := 0
-	var demand := 0
-	for room in placed_rooms:
-		generation += int(room.get("production", {}).get("power", 0))
-		demand += int(room.get("consumption", {}).get("power", 0))
-		_add_to_delta(delta, _without_key(room.get("production", {}), "power"), 1)
-		_add_to_delta(delta, _without_key(room.get("consumption", {}), "power"), -1)
-		if room["id"] == "research_lab" and crew_count > 0:
-			_add_to_delta(delta, {"data": 1}, 1)
-	var projected_reserve := clampi(int(resources["power"]) + generation - demand, 0, _get_power_capacity())
-	var reserve_change := projected_reserve - int(resources["power"])
-	if reserve_change != 0:
-		_add_to_delta(delta, {"power": reserve_change}, 1)
-	var bonus := SynergyManagerScript.cycle_bonus(active_synergy_links)
-	_add_to_delta(delta, bonus, 1)
-	if crew_count > 0:
-		_add_to_delta(delta, {"food": crew_count, "oxygen": crew_count}, -1)
+	var result := _simulate_room_economy(true, cycle + 1)
+	var delta: Dictionary = result["delta"]
+	var projected_crew := crew_count + int(result["added_crew"])
+	if projected_crew > 0:
+		_add_to_delta(delta, {"food": projected_crew, "oxygen": projected_crew}, -1)
 	return delta
 
 func _add_to_delta(delta: Dictionary, values: Dictionary, multiplier: int) -> void:
@@ -2554,7 +2792,8 @@ func _get_power_capacity() -> int:
 func _project_power_demand() -> int:
 	var demand := 0
 	for room in placed_rooms:
-		demand += int(room.get("consumption", {}).get("power", 0))
+		if not room.get("suspended", false):
+			demand += int(room.get("consumption", {}).get("power", 0))
 	return demand
 
 func _get_poi_work_capacities() -> Dictionary:
@@ -2619,14 +2858,14 @@ func _refresh_cards() -> void:
 		var room := RoomDatabaseScript.get_room(id)
 		var category_color := RoomDatabaseScript.category_color(room["category"])
 		var card_slot := Control.new()
-		card_slot.custom_minimum_size = Vector2(286, 382)
+		card_slot.custom_minimum_size = Vector2(286, 296)
 		card_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		card_slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		var card := PanelContainer.new()
 		card.name = "%sCard" % id
-		card.position = Vector2(0, 24)
-		card.size = Vector2(276, 352)
-		card.custom_minimum_size = Vector2(276, 352)
+		card.position = Vector2(0, 14)
+		card.size = Vector2(276, 272)
+		card.custom_minimum_size = Vector2(276, 272)
 		card.mouse_filter = Control.MOUSE_FILTER_STOP
 		card.set_meta("card_id", id)
 		card.set_meta("category_color", category_color)
@@ -2641,7 +2880,7 @@ func _refresh_cards() -> void:
 		body.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		card.add_child(body)
 		var image_wrap := Control.new()
-		image_wrap.custom_minimum_size = Vector2(0, 190)
+		image_wrap.custom_minimum_size = Vector2(0, 106)
 		image_wrap.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		body.add_child(image_wrap)
 		var image := TextureRect.new()
@@ -2760,7 +2999,7 @@ func _card_synergy_hint(room_id: String) -> String:
 func _add_deck_slot() -> void:
 	var slot := PanelContainer.new()
 	slot.name = "DeckSlot"
-	slot.custom_minimum_size = Vector2(230, 328)
+	slot.custom_minimum_size = Vector2(146, 260)
 	slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	var texture_style := _make_texture_stylebox(UI_TERMINAL_PANEL, 16, 12, 12, 12, 12)
 	if texture_style != null:
@@ -2914,7 +3153,7 @@ func _load_card_thumbnail(path: String) -> Texture2D:
 	return ImageTexture.create_from_image(image)
 
 func _on_card_pressed(id: String) -> void:
-	if menu_open or not running:
+	if _gameplay_input_blocked() or not running:
 		return
 	_clear_prototype_marker(id)
 	selected_card_id = id
@@ -2925,7 +3164,7 @@ func _on_card_pressed(id: String) -> void:
 	_refresh_inspector()
 
 func _on_card_hovered(id: String, card: Control) -> void:
-	if menu_open or not running:
+	if _gameplay_input_blocked() or not running:
 		return
 	if not is_instance_valid(card) or not card is PanelContainer:
 		return
@@ -2943,7 +3182,7 @@ func _on_card_hovered(id: String, card: Control) -> void:
 	_refresh_inspector()
 
 func _on_card_unhovered(id: String, card: Control) -> void:
-	if menu_open:
+	if _gameplay_input_blocked():
 		return
 	if not is_instance_valid(card) or not card is PanelContainer:
 		return
@@ -2958,7 +3197,7 @@ func _on_card_unhovered(id: String, card: Control) -> void:
 	_refresh_inspector()
 
 func _on_card_gui_input(event: InputEvent, id: String) -> void:
-	if menu_open or not running:
+	if _gameplay_input_blocked() or not running:
 		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -2974,7 +3213,7 @@ func _discard_selected_card() -> void:
 	_discard_card(selected_card_id)
 
 func _discard_card(id: String) -> void:
-	if not running or not hand.has(id):
+	if _gameplay_input_blocked() or not running or not hand.has(id):
 		return
 	if rerolls_remaining <= 0:
 		_log("No blueprint rerolls remain. Build from the current hand.", false)
@@ -2989,7 +3228,7 @@ func _discard_card(id: String) -> void:
 	_refresh_all()
 
 func _discard_all_cards() -> void:
-	if not running or hand.is_empty():
+	if _gameplay_input_blocked() or not running or hand.is_empty():
 		return
 	if rerolls_remaining <= 0:
 		_log("No blueprint rerolls remain. Build from the current hand.", false)
@@ -3009,10 +3248,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	if doctrine_layer != null and doctrine_layer.visible:
 		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
-		_toggle_menu()
+		if _journal_is_open():
+			_toggle_journal()
+		else:
+			_toggle_menu()
 		get_viewport().set_input_as_handled()
 		return
-	if menu_open:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_J:
+		_toggle_journal()
+		get_viewport().set_input_as_handled()
+		return
+	if _gameplay_input_blocked():
+		return
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F:
+		_fit_station_view()
+		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_SPACE:
 		_toggle_pause()
@@ -3327,6 +3577,12 @@ func _refresh_inspector() -> void:
 	if room.is_empty() and not last_preview_room_id.is_empty():
 		room = RoomDatabaseScript.get_room(last_preview_room_id)
 		previewing_card = last_previewing_card
+	if room_operation_button != null:
+		var can_control: bool = not previewing_card and room.has("pos") and room.get("id", "") != "brine_core"
+		room_operation_button.disabled = not can_control or not running
+		room_operation_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
+		room_operation_button.text = ("RESUME ROOM" if room.get("suspended", false) else "SUSPEND ROOM") if can_control else "SELECT A BUILT ROOM TO CONTROL"
+		room_operation_button.tooltip_text = "Suspended rooms stop production and links. Resuming takes effect next cycle."
 	if room.is_empty():
 		preview_texture.texture = null
 		preview_name_label.text = "No Selection"
@@ -3353,6 +3609,11 @@ func _refresh_inspector() -> void:
 	var preview_lines: Array[String] = []
 	preview_lines.append("[color=#7f929c]CLASS:[/color] [color=#%s]%s[/color]" % [category_hex, str(room.get("category", "")).to_upper()])
 	preview_lines.append("[color=#b9c6cc]%s[/color]" % room.get("description", ""))
+	if not previewing_card and room.has("pos"):
+		var operation := str(offline_reasons.get(room["pos"], "FUNCTIONING" if powered_room_cells.has(room["pos"]) else "AWAITING CYCLE"))
+		preview_lines.append("[color=#f0c67a]%s[/color]" % operation)
+		preview_lines.append("")
+		_append_room_synergy_preview(preview_lines, room)
 	preview_lines.append("")
 	preview_lines.append(_preview_divider())
 	preview_lines.append("[color=#%s]EFFECTS[/color]" % UI_ACCENT_BRIGHT.to_html(false))
@@ -3365,7 +3626,7 @@ func _refresh_inspector() -> void:
 		preview_lines.append("")
 		preview_lines.append(_preview_divider())
 		preview_lines.append("[color=#c85b61]BUILD COST[/color]")
-		preview_lines.append(_format_effect_rows(room.get("cost", {}), "", false))
+		preview_lines.append(_format_effect_rows(room.get("cost", {}), "", false, false))
 	if not room.get("storage", {}).is_empty():
 		preview_lines.append("")
 		preview_lines.append("[color=#7f929c]STORAGE[/color]")
@@ -3375,7 +3636,8 @@ func _refresh_inspector() -> void:
 		preview_lines.append("[color=#ff4d5a]MISSING: %s[/color]" % _format_resource_list(_missing_cost(room.get("cost", {}))))
 	preview_lines.append("")
 	preview_lines.append(_preview_divider())
-	_append_room_synergy_preview(preview_lines, room)
+	if previewing_card:
+		_append_room_synergy_preview(preview_lines, room)
 	var capacities := _get_poi_work_capacities()
 	preview_lines.append("")
 	preview_lines.append(_preview_divider())
@@ -3428,7 +3690,18 @@ func _format_synergy_line(synergy: Dictionary) -> String:
 	var status := _synergy_runtime_status(str(synergy["id"]))
 	if active_count > 1:
 		status += " x%d" % active_count
-	return "[color=#c4d1da]• %s[/color]  [color=#%s]%s[/color]\n[color=#8fa3ae]  Adjacent to: %s[/color]\n[color=#8ccf6f]  -> %s[/color]" % [synergy["name"], UI_ACCENT_BRIGHT.to_html(false), status, _join_strings(room_names, " + "), bonus_text]
+	var result := "[color=#c4d1da]• %s[/color]\n[color=#%s]%s[/color]\n[color=#8fa3ae]%s[/color]\n[color=#8ccf6f]%s[/color]\n[color=#ecc98d]%s[/color]" % [synergy["name"], str(synergy.get("fx_color", "4fa38d")).trim_prefix("#"), status, _join_strings(room_names, " + "), str(synergy.get("effect", bonus_text)), _synergy_reward_text(synergy)]
+	return result
+
+func _synergy_reward_text(synergy: Dictionary) -> String:
+	if not meta.discovered_synergy_ids.has(synergy.get("id", "")):
+		return ""
+	var stabilized := meta.stabilized_synergy_ids.has(synergy["id"])
+	var target := str(synergy.get("unlock_room_id", ""))
+	if not target.is_empty():
+		var name := str(RoomDatabaseScript.get_room(target).get("display_name", target))
+		return "BLUEPRINT %s · %s" % ["DECRYPTED" if stabilized else "AT 3 CYCLES", name]
+	return "RESEARCH %s · +%d" % ["RECOVERED" if stabilized else "AT 3 CYCLES", int(synergy.get("terminal_reward", {}).get("research", 0))]
 
 func _active_synergy_link_count(synergy_id: String) -> int:
 	var count := 0
@@ -3451,17 +3724,17 @@ func _synergy_runtime_status(synergy_id: String) -> String:
 	if is_active and is_stabilized:
 		return "ACTIVE · STABILIZED"
 	if is_active:
-		var progress := int(synergy_stabilization_progress.get(synergy_id, 1))
+		var progress := int(synergy_stabilization_progress.get(synergy_id, 0))
 		var required := int(SynergyManagerScript.get_synergy(synergy_id).get("stabilize_cycles", 3))
 		return "ACTIVE · STABILIZING %d/%d" % [progress, required]
 	if is_connected:
-		return "DORMANT · STABILIZED" if is_stabilized else "DORMANT"
+		return "DORMANT · RESTORE ROOM SUPPLIES"
 	return "STABILIZED" if is_stabilized else "DISCOVERED"
 
 func _preview_divider() -> String:
 	return "[color=#34434a]────────────────────────[/color]"
 
-func _format_effect_rows(values: Dictionary, prefix: String, negative: bool) -> String:
+func _format_effect_rows(values: Dictionary, prefix: String, negative: bool, per_cycle := true) -> String:
 	if values.is_empty():
 		return "[color=#526670]None[/color]"
 	var rows: Array[String] = []
@@ -3484,11 +3757,12 @@ func _format_effect_rows(values: Dictionary, prefix: String, negative: bool) -> 
 			value_color = "#b982ff"
 		elif id == "data":
 			value_color = "#62d6d2"
-		rows.append("%s     [color=%s]%s%d[/color] [color=#8d9ba2]/ cycle[/color]   [color=#526670]%s[/color]" % [
+		rows.append("%s     [color=%s]%s%d[/color] [color=#8d9ba2]%s[/color]   [color=#526670]%s[/color]" % [
 			_resource_icon_bbcode(id, 22),
 			value_color,
 			prefix_text,
 			amount,
+			"/ cycle" if per_cycle else "once",
 			id.replace("_", " ").capitalize()
 		])
 	return _join_strings(rows, "\n")
@@ -3534,17 +3808,32 @@ func _preview_room(room: Dictionary, title: String) -> String:
 	]
 
 func _refresh_archive() -> void:
-	var lines := ["Archive"]
+	if archive_label == null:
+		return
+	var lines: Array[String] = []
 	var discovered_count := 0
-	for synergy in SynergyManagerScript.all_synergies():
+	var stabilized_count := 0
+	# Working, unfinished experiments come first, with stable ID order for ties.
+	var recipes := SynergyManagerScript.all_synergies().duplicate()
+	recipes.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		var a_priority := _active_synergy_link_count(str(a["id"])) > 0 and not meta.stabilized_synergy_ids.has(a["id"])
+		var b_priority := _active_synergy_link_count(str(b["id"])) > 0 and not meta.stabilized_synergy_ids.has(b["id"])
+		return str(a["id"]) < str(b["id"]) if a_priority == b_priority else a_priority)
+	for synergy in recipes:
 		if meta.discovered_synergy_ids.has(synergy["id"]):
 			discovered_count += 1
-			lines.append("%s · %s: %s" % [synergy["name"], _synergy_runtime_status(str(synergy["id"])), _format_cost(synergy.get("bonus", {}))])
-	lines.insert(1, "%d/%d recovered" % [discovered_count, SynergyManagerScript.all_synergies().size()])
+			if meta.stabilized_synergy_ids.has(synergy["id"]):
+				stabilized_count += 1
+			lines.append(_format_synergy_line(synergy) + "\n")
+	lines.push_front("[color=#a9e7d4]%d LEARNED  /  %d STABILIZED  /  %d BLUEPRINTS AVAILABLE[/color]\n" % [discovered_count, stabilized_count, meta.unlocked_room_ids.size()])
+	if discovered_count == 0:
+		lines.append("[color=#a7bac1]An empty record, a station full of possibilities.\n\nConnect different rooms through matching doors. Let them function.\nWatch the rooms themselves for the first sign of a discovery.\n\nStabilized blueprints stay with you across reboots, and a new prototype\nis placed on top of your current draw pile.[/color]\n")
 	var unknown_count := SynergyManagerScript.all_synergies().size() - discovered_count
 	if unknown_count > 0:
-		lines.append("UNKNOWN PATTERNS REMAIN: %d" % unknown_count)
+		lines.append("[color=#718a97]UNKNOWN PATTERNS REMAIN: %d[/color]" % unknown_count)
 	archive_label.text = _join_strings(lines, "\n")
+	if journal_button != null:
+		journal_button.text = "JOURNAL [J]\n%d LEARNED" % discovered_count
 
 func _prettify_id(id: String) -> String:
 	return id.replace("_", " ").capitalize()
@@ -3575,10 +3864,11 @@ func _refresh_placement_status() -> void:
 
 func _refresh_log() -> void:
 	var recent_lines := log_lines.slice(max(0, log_lines.size() - 24), log_lines.size())
+	recent_lines.reverse()
 	if recent_lines.is_empty():
-		log_label.text = "[color=#%s]■ NOTIFICATIONS[/color]                                      [color=#4f6470]0 LOGGED[/color]\n\n[color=#4f6470]No signals logged.[/color]" % UI_ACCENT_BRIGHT.to_html(false)
+		log_label.text = "[color=#%s]■ STATION LOG[/color]\n\n[color=#4f6470]No signals logged.[/color]" % UI_ACCENT_BRIGHT.to_html(false)
 		return
-	var formatted := ["[color=#%s]■ NOTIFICATIONS[/color]                                      [color=#4f6470]%d LOGGED[/color]" % [UI_ACCENT_BRIGHT.to_html(false), recent_lines.size()], ""]
+	var formatted := ["[color=#%s]■ STATION LOG[/color]  [color=#4f6470]LATEST FIRST[/color]" % UI_ACCENT_BRIGHT.to_html(false), ""]
 	for line in recent_lines:
 		var text := str(line)
 		if text.contains("Warning") or text.contains("collapse") or text.contains("critical") or text.contains("shortfall"):

@@ -10,6 +10,22 @@ BrineSpace should feel like restoring a silent machine in orbit: build a little,
 
 ## Current Focus
 
+The September discovery/polish pass completes the 12-foundation → 30-blueprint graph with 25 patterns. Rooms teach their relationships through functioning effects; the journal records knowledge after discovery, never before. Progress and rewards persist independently of winning a run.
+
+Implemented in this pass:
+
+- Three consecutive functioning cycles stabilize a recipe once; duplicate links stack output but do not accelerate discovery.
+- Closed Air Loop reclaims Water so its Biodome prototype is affordable; Biodome Atmosphere recycles Water for the next bio branch.
+- Every doctrine pair gets food and oxygen foundations; selected doctrines retain stronger card weighting.
+- Shared per-cycle input budgets, operation-aware forecasts, limited recovery berths, and an actual corruption-cleaning Containment Sector.
+- Click-to-inspect room suspension, a pausing spoiler-safe journal, a two-row resource HUD, compact cards, fit-station control and scrollable inspector/summary.
+- Optional open expeditions after victory, with a menu cash-out and one-time victory/mastery rewards.
+- Updated/old saves retain existing discoveries and blueprints. Old orbital events no longer shortcut blueprint decryption.
+
+Verification: three headless regression suites plus a real-scene deterministic paid-build playtest pass. The native renderer was inspected at 1280×720, 1600×900, 1920×1080 and 2560×1440, including all six effect profiles, successive motion frames, unknown/discovered/stabilizing/dormant states, journal, prototype and victory screens. The full discovery sequence was captured at both 1600×900 and 2560×1440. See `tests/playtest_polish.gd` for reproduction; generated images/logs are not committed.
+
+Remaining priorities:
+
 - Make room door layouts and character paths match the production layout guide.
 - Keep placement previews, door connections, and synergy feedback immediately readable.
 - Improve the inspector, cards, and objective panels without obscuring the station art.
@@ -26,7 +42,12 @@ BrineSpace should feel like restoring a silent machine in orbit: build a little,
 - Some room variants and door placements need continued visual/layout verification.
 - Resonance, doctrine mastery, directives, and reroll rewards are first-pass values and need balance data from complete runs.
 - Directives currently measure room count, active links, distinct active patterns, total Resonance, or balanced development of the selected doctrine pair; orbital and geometric pattern-shape goals are not implemented yet.
-- Resolution and borderless mode need real-window testing beyond headless validation.
+- Borderless mode and unusual aspect ratios still need broader hardware testing. Standard 16:9 layouts have native-render screenshot coverage.
+- The two-step discovery playtest uses a controlled draft order; full-length random runs across all ten doctrine pairs still need pacing/balance data.
+- Population sprites still use Major Bill's test walker rather than representing every recovered survivor.
+- Motion profiles are procedural and distinguish system families, not bespoke machinery animations for every room.
+- Colorblind and reduced-motion options are not implemented yet. Status text supplements color, but does not replace that accessibility work.
+- Terminal patterns award Research rather than room variants. Three-cycle stabilization and terminal Research rewards still need full-run balance data.
 
 ## Working Agreements
 

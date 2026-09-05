@@ -47,7 +47,7 @@ const DOCTRINES := {
 	}
 }
 
-const ESSENTIAL_BLUEPRINTS := ["solar_array", "mining_drone_bay", "corridor", "corner", "storage_bay"]
+const ESSENTIAL_BLUEPRINTS := ["solar_array", "mining_drone_bay", "corridor", "corner", "storage_bay", "hydroponics_bay", "life_support"]
 
 const PAIR_DIRECTIVE_VARIANTS := [
 	{
@@ -179,6 +179,13 @@ static func build_deck(selected_doctrines: Array, unlocked_room_ids: Dictionary)
 		var copies := 1
 		if str(room.get("rarity", "common")) == "common":
 			copies = 2
+		if room_id in ["hydroponics_bay", "life_support"]:
+			var doctrine_room := false
+			for doctrine_id in selected_doctrines:
+				if doctrine(str(doctrine_id)).get("rooms", []).has(room_id):
+					doctrine_room = true
+			if not doctrine_room:
+				copies = 1
 		if room_id == "corridor":
 			copies = 3
 		for _copy_index in range(copies):

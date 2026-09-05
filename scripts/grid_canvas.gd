@@ -267,7 +267,7 @@ const GRID_PIXEL_SIZE := GRID_SIZE * CELL_SIZE
 
 func _gui_input(event: InputEvent) -> void:
 	var main = _get_main()
-	if main.menu_open:
+	if main._gameplay_input_blocked():
 		accept_event()
 		return
 	if event is InputEventMouseButton and event.pressed and event.shift_pressed:
@@ -313,6 +313,7 @@ func _draw() -> void:
 	for room in main.placed_rooms:
 		_draw_room(room)
 	_draw_synergy_links(main)
+	_draw_discovery_bursts(main)
 	_draw_door_foregrounds(main, true)
 	_draw_humans(main)
 	_draw_door_foregrounds(main, false)
@@ -620,21 +621,112 @@ func _door_edge_center(pos: Vector2i, side: String, cell_size: float) -> Vector2
 			return origin + Vector2(0.0, cell_size * 0.5)
 
 func _draw_synergy_links(main) -> void:
-	if main.active_synergy_links.is_empty():
+	if main.connected_synergy_links.is_empty():
 		return
-	var cell_size := _cell_size()
-	for link in main.active_synergy_links:
+	var cell_size: float = _cell_size()
+	for link_value in main.connected_synergy_links:
+		var link: Dictionary = link_value
+		var synergy_id := str(link.get("id", ""))
+		if not main.meta.discovered_synergy_ids.has(synergy_id):
+			continue
 		var cells: Array = link.get("cells", [])
 		if cells.size() < 2:
 			continue
-		var pos: Vector2i = cells[0]
-		var neighbor_pos: Vector2i = cells[1]
-		var edge_center := (Vector2(pos) + Vector2(neighbor_pos) + Vector2.ONE) * cell_size * 0.5
-		var link_color := Color("#4fa38d")
-		draw_circle(edge_center, cell_size * 0.035, Color(link_color.r, link_color.g, link_color.b, 0.20))
-		draw_rect(Rect2(edge_center - Vector2.ONE * cell_size * 0.018, Vector2.ONE * cell_size * 0.036), link_color, false, 2.0)
-		draw_line(edge_center + Vector2(-cell_size * 0.022, 0), edge_center + Vector2(cell_size * 0.022, 0), link_color, 2.0)
-		draw_line(edge_center + Vector2(0, -cell_size * 0.022), edge_center + Vector2(0, cell_size * 0.022), link_color, 2.0)
+		var color_text := str(link.get("fx_color", "4FA38D")).trim_prefix("#")
+		var link_color := Color("#%s" % color_text)
+		var center_a := (Vector2(cells[0]) + Vector2.ONE * 0.5) * cell_size
+		var center_b := (Vector2(cells[1]) + Vector2.ONE * 0.5) * cell_size
+		if not _is_functioning_link(main.active_synergy_links, link):
+			draw_line(center_a, center_b, Color(link_color.r, link_color.g, link_color.b, 0.18), maxf(1.5, cell_size * 0.006), true)
+			continue
+		_draw_functioning_synergy(link, center_a, center_b, link_color, cell_size, float(main.visual_time_seconds))
+
+func _is_functioning_link(active_links: Array, candidate: Dictionary) -> bool:
+	var candidate_key := str(candidate.get("key", ""))
+	for active_value in active_links:
+		var active: Dictionary = active_value
+		if not candidate_key.is_empty() and str(active.get("key", "")) == candidate_key:
+			return true
+		if str(active.get("id", "")) == str(candidate.get("id", "")) and active.get("cells", []) == candidate.get("cells", []):
+			return true
+	return false
+
+func _draw_functioning_synergy(link: Dictionary, center_a: Vector2, center_b: Vector2, color: Color, cell_size: float, time_seconds: float) -> void:
+	var profile := str(link.get("fx_profile", "flow"))
+	var direction := center_a.direction_to(center_b)
+	var tangent := Vector2(-direction.y, direction.x)
+	var shared_door := center_a.lerp(center_b, 0.5)
+	var line_width := maxf(1.6, cell_size * 0.007)
+	var mote_radius := maxf(2.4, cell_size * 0.013)
+	var pulse_alpha := 0.55 + sin(time_seconds * 4.0) * 0.2
+	var soft_color := Color(color.r, color.g, color.b, 0.22)
+	var bright_color := Color(color.r, color.g, color.b, clampf(pulse_alpha, 0.25, 0.88))
+	draw_line(center_a, center_b, soft_color, maxf(1.5, line_width * 0.34), true)
+	draw_circle(shared_door, cell_size * (0.052 + pulse_alpha * 0.012), Color(color.r, color.g, color.b, pulse_alpha * 0.16))
+	draw_arc(shared_door, cell_size * 0.045, 0.0, TAU, 28, bright_color, maxf(2.0, line_width * 0.45), true)
+	var edge_a := center_a + direction * cell_size * 0.39
+	var edge_b := center_b - direction * cell_size * 0.39
+	var segment_half := tangent * cell_size * 0.10
+	var edge_alpha_a := pulse_alpha
+	var edge_alpha_b := pulse_alpha
+	if profile == "containment":
+		var alternate := 1.0 if sin(time_seconds * 5.0) >= 0.0 else 0.28
+		edge_alpha_a *= alternate
+		edge_alpha_b *= 1.28 - alternate
+	draw_line(edge_a - segment_half, edge_a + segment_half, Color(color.r, color.g, color.b, edge_alpha_a), line_width, true)
+	draw_line(edge_b - segment_half, edge_b + segment_half, Color(color.r, color.g, color.b, edge_alpha_b), line_width, true)
+	draw_circle(edge_a, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_a * 0.38))
+	draw_circle(edge_b, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_b * 0.38))
+	for mote_index in range(2):
+		var phase := _synergy_mote_phase(profile, time_seconds, mote_index)
+		var mote_t := lerpf(0.16, 0.84, phase)
+		var mote_position := center_a.lerp(center_b, mote_t)
+		draw_circle(mote_position, mote_radius * 1.8, Color(color.r, color.g, color.b, 0.08))
+		draw_circle(mote_position, mote_radius, Color(color.r, color.g, color.b, 0.82))
+		draw_circle(mote_position, mote_radius * 0.34, Color(0.94, 1.0, 1.0, 0.92))
+
+func _synergy_mote_phase(profile: String, time_seconds: float, mote_index: int) -> float:
+	var speed := 0.28
+	if profile == "power":
+		speed = 0.72
+	elif profile == "signal":
+		speed = 0.46
+	elif profile == "care":
+		speed = 0.22
+	elif profile == "containment":
+		speed = 0.34
+	var phase := fmod(time_seconds * speed + float(mote_index) * 0.5, 1.0)
+	match profile:
+		"logistics":
+			return floor(phase * 7.0) / 7.0
+		"signal":
+			return 0.5 - cos(phase * TAU) * 0.5
+		"care":
+			var mirrored := fmod(time_seconds * speed, 1.0)
+			return mirrored if mote_index == 0 else 1.0 - mirrored
+		"containment":
+			return 0.24 if int(floor(time_seconds * 4.0)) % 2 == mote_index else 0.76
+		_:
+			return phase
+
+func _draw_discovery_bursts(main) -> void:
+	var cell_size: float = _cell_size()
+	for burst_value in main.discovery_bursts:
+		var burst: Dictionary = burst_value
+		var cells: Array = burst.get("cells", [])
+		if cells.size() < 2:
+			continue
+		var remaining := clampf(float(burst.get("remaining", 0.0)), 0.0, 1.2)
+		var progress := 1.0 - remaining / 1.2
+		var color: Color = burst.get("color", Color("#55E6FF"))
+		var alpha := (1.0 - progress) * 0.88
+		var center_a := (Vector2(cells[0]) + Vector2.ONE * 0.5) * cell_size
+		var center_b := (Vector2(cells[1]) + Vector2.ONE * 0.5) * cell_size
+		var ring_radius := cell_size * lerpf(0.10, 0.42, progress)
+		for center in [center_a, center_b]:
+			draw_arc(center, ring_radius, 0.0, TAU, 48, Color(color.r, color.g, color.b, alpha), maxf(3.0, cell_size * 0.012), true)
+		var shared_door := center_a.lerp(center_b, 0.5)
+		draw_circle(shared_door, cell_size * lerpf(0.12, 0.035, progress), Color(color.r, color.g, color.b, alpha * 0.48))
 
 func _draw_room_hologram(main, cell: Vector2i, valid: bool) -> void:
 	var cell_size := _cell_size()

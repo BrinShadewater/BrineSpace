@@ -10,6 +10,46 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-04-synergy-discovery-progression-design.md`
 
+## Execution Record — 2026-09-04
+
+This ledger tracks the delivered outcomes; the original step-by-step implementation recipe below is retained for provenance. The user's subsequent full gameplay, visual and UI pass expanded Tasks 6–7.
+
+- [x] Task 0: preserved the existing run loop in `d7914a0`.
+- [x] Task 1: authored the twelve-foundation, thirty-blueprint, twenty-five-pattern graph in `be99fe9`.
+- [x] Task 2: separated connected and functioning links in `18f8832`.
+- [x] Task 3: added persistent discovery and three-cycle stabilization in `44719ec`.
+- [x] Task 4: delivered permanent unlocks, next-draw prototypes and terminal Research in `de4a40e`.
+- [x] Task 5: enforced hidden-recipe secrecy and queued feedback in `9e7fea9`.
+- [x] Task 6: delivered and visually inspected all six functioning FX profiles, dormant links and discovery bursts in the final polish commit containing this record.
+- [x] Task 7: completed regression, native-scene playtest, visual matrix and documentation in the final polish commit containing this record.
+
+### Scope refinements from playtesting
+
+- A functioning room now requires consumable inputs as well as power. One shared start-of-cycle budget prevents double-spending and keeps forecasts consistent with operation.
+- Water recovery closes the Biodome progression dead end. All ten doctrine pairs include survival foundations, while doctrine-specific weighting remains.
+- Added room suspension, a pausing learned-only journal, a scalable HUD, compact cards, scrollable inspector/summary, and optional post-victory expeditions with one-time rewards.
+- Reduced persistent FX line/mote scale from the initial proposed values to keep room artwork and doors readable. Discovery bursts still provide a short stronger accent.
+- Used native viewport capture through `playtest_polish.gd` instead of movie export. The harness covers paid builds and a two-step prototype chain, plus staged fixtures for six FX families and victory/expedition transitions.
+- The design viewport is now 1920×1080, opening at 1600×900. Captures also cover 1280×720 and 2560×1440.
+- Added an on-screen camera assertion after screenshot inspection caught large zoom changes centering against stale scroll bounds.
+
+### Verification evidence
+
+All 17 GDScript files in `scripts/` and `tests/` pass Godot 4.6.1 `--check-only`. The main-scene headless smoke test exits `0`. All four test processes exit `0`, with no `SCRIPT ERROR:` or `ERROR:` entries:
+
+```text
+Run-loop tests passed: links, cascades, all doctrine pairs, directives, deck flow, and mastery are valid.
+Discovery progression tests passed.
+Gameplay polish tests passed.
+Scene playtest passed: paid builds, two discoveries, prototype reuse, suspension, journal input, responsive layout, expedition and reboot.
+```
+
+The three regression suites contain 47 test cases; the real-scene playtest adds integration assertions. Native-render runs at both 1600×900 and 2560×1440 passed and captured doctrine selection, unknown candidate, first discovery, stabilizing 2/3, decrypted prototype, expanded active station, dormant room, journal and victory summary. All six motion profiles and successive flow frames were inspected; separate 1280×720 and 1920×1080 layout checks passed. `git diff --check` is clean.
+
+Reproduce from README's Verification section. Local capture folders are `%TEMP%\brinespace-polish-playtest` and `%TEMP%\brinespace-polish-playtest-2560`; logs use `%TEMP%\brinespace-verified-*` and `%TEMP%\brine-polish-visual-final-*`. Generated artifacts are not committed. Test saves use isolated paths and do not overwrite `brine_save.json`.
+
+The implementation range is `a17a8bb..HEAD` on `codex/synergy-discovery`, including the final polish commit containing this record. The branch remains in its worktree pending the user's integration choice. Full-length random balance runs across all ten doctrine pairs and reduced-motion/colorblind options remain follow-up work, not completed claims.
+
 ## Global Constraints
 
 - Undiscovered recipes never expose their name, room pairing, reward, or partner hint in player-facing UI.
