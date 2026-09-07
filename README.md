@@ -11,6 +11,20 @@ modular placement, interdependent production and discovered room synergies.
 *Actual Godot prototype capture, September 6, 2026. This paused room-review scene
 shows the Crew Hab and live game interface; it is not a mockup or a full expedition.*
 
+### A larger station
+
+![A large BrineSpace station viewed at Fit zoom, with many rooms across the ocean floor](docs/screenshots/large-station.png)
+
+*Native large-station performance scene with roughly 100 rooms. This is a
+controlled test layout with injected supplies, not a normal paid expedition or
+a claim of finished large-station performance.*
+
+### Starting screen
+
+![BrineSpace starting screen with BRINE in her tank, New Loop, Settings, Codex and Meta Progression](docs/screenshots/starting-screen.png)
+
+*The actual starting screen, captured from the layered animated title scene.*
+
 ## Restore a station beneath the ocean
 
 Build a little, watch the systems find their rhythm, and decide whether to risk
