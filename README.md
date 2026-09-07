@@ -6,6 +6,31 @@ modular placement, interdependent production and discovered room synergies.
 
 > "The station is quiet. That does not mean it is empty."
 
+![BrineSpace in-game view showing a furnished Crew Hab, seabed, blueprint hand and station controls](docs/screenshots/crew-hab-gameplay.png)
+
+*Actual Godot prototype capture, September 6, 2026. This paused room-review scene
+shows the Crew Hab and live game interface; it is not a mockup or a full expedition.*
+
+## Restore a station beneath the ocean
+
+Build a little, watch the systems find their rhythm, and decide whether to risk
+one more room. Every expansion needs supplies and a way to connect to the station.
+Power keeps machinery running, life support sustains the crew, and drones bring
+back the materials needed to rebuild.
+
+The interesting choices come from placement and dependencies. A useful room can
+also become another demand on a strained system. Discover relationships between
+working rooms, keep them functioning long enough to stabilize their patterns, and
+recover new blueprints without a recipe list spoiling the experiments.
+
+The station also holds its missing people. Expand toward derelict cryo wards,
+repair them into the base, and thaw the architects inside. Rescuing an architect
+adds a named crew member and unlocks that character for future loops.
+
+BrineSpace is designed to be thoughtful and watchable: an open-ended restoration
+game with resource pressure, quiet machinery and an AI core with opinions. You can
+pause to plan. The pressure comes from the station's needs, not rapid clicking.
+
 ## Current checkpoint
 
 The [September 6 handoff](docs/BRINESPACE_HANDOFF_2026-09-06.md) records completed
@@ -42,9 +67,9 @@ git lfs pull
 ```
 
 Use Godot 4.6 (tested locally with 4.6.1). Open `project.godot`, allow imports to
-finish, and run the project with F6/F5 as appropriate: the configured main scene
-is `res://scenes/title_screen.tscn` and gameplay is `res://scenes/main.tscn`.
-Prefer **F5** to exercise title, architect selection and Continue.
+finish, and press **F5** to run the project through title, architect selection and
+Continue. The configured main scene is `res://scenes/title_screen.tscn`;
+gameplay is `res://scenes/main.tscn`.
 
 The viewport is designed at 1920×1080 with a 1600×900 default window. Runtime room
 art uses raw PNG loading; UI resources still need Godot import. LFS pointers are
@@ -90,7 +115,8 @@ review, the complete airlock excursion loop and longer human playtests.
 ## Repository contents
 
 Game code, runtime assets, source provenance, tests, skills and documentation are
-versioned. Raster art uses Git LFS. `.godot/`, local backups and `output/` evidence,
+versioned, including selected in-game screenshots under `docs/screenshots/`.
+Raster art uses Git LFS. `.godot/`, local backups and `output/` evidence,
 review captures, downloaded templates and built executables remain local. Historical
 documents may link to those local evidence paths; they are not hosted downloads.
 
