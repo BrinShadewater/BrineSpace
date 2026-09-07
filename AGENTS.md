@@ -1,12 +1,16 @@
 # AGENTS.md — 🛰️ working on BrineSpace
 
 A Godot 4.6 passive roguelite station builder. `project.godot` sets
-`run/main_scene="res://scenes/main.tscn"`, config name `BRINE`, a 1920×1080 design
+`run/main_scene="res://scenes/title_screen.tscn"`, config name `BrineSpace`, a 1920×1080 design
 viewport and a 1600×900 default window.
 
 Read [`docs/DEVELOPMENT_NOTES.md`](docs/DEVELOPMENT_NOTES.md) before changing
 gameplay — it holds the north star, the current focus, and the known prototype
 limits. [`NOTICE.md`](NOTICE.md) governs rights.
+
+For the consolidated September 6 checkpoint, unfinished acceptance and next
+priorities, start with [`docs/BRINESPACE_HANDOFF_2026-09-06.md`](docs/BRINESPACE_HANDOFF_2026-09-06.md).
+It is a dated snapshot; current code and later owner decisions supersede it.
 
 ## ⚠️ Clone this repo correctly or you will get a broken checkout
 
@@ -40,7 +44,9 @@ never commit a large binary in a way that bypasses LFS.
 
 The README is explicit that this is mid-prototype. Do not "fix" these:
 
-- **Normal runs spend room costs and enforce failure/deadline conditions.**
+- **Normal runs spend room costs and enforce resource failure conditions.**
+  Timed directives and scenario victory were retired at the owner's request;
+  current loops conclude through Conclude Expedition. Do not restore old deadlines.
 - **Only dedicated fixtures opt into free building or disabled failures.** Do not
   turn those flags on to make a gameplay or balance test pass.
 - **Hidden recipes stay hidden** until functioning rooms discover them. Three

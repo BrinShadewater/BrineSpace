@@ -51,8 +51,8 @@ func _run() -> void:
 	_build("solar_array", Vector2i(19, 20), 2)
 	_build("mining_drone_bay", Vector2i(20, 19))
 	_build("hydroponics_bay", Vector2i(21, 20))
-	game._advance_cycle()
-	_build("life_support", Vector2i(22, 20))
+	_cycle_with_drone_returns()
+	_build("life_support", Vector2i(21, 21), 2)
 	_build("solar_array", Vector2i(21, 19))
 	game.selected_card_id = ""
 	game.hover_cell = Vector2i(21, 20)
@@ -61,15 +61,15 @@ func _run() -> void:
 	_drain_feedback()
 	_expect(game.meta.discovered_synergy_ids.is_empty(), "placement alone must not teach a pattern")
 	await _capture("02-unknown-1600")
-	game._advance_cycle()
+	_cycle_with_drone_returns()
 	_expect(game.meta.discovered_synergy_ids.has("closed_air_loop"), "real purchases reveal a functioning pattern")
 	_expect(not game.discovery_bursts.is_empty(), "discovery creates room-local visual feedback")
 	await _capture("03-discovery-1600")
 	_drain_feedback()
-	game._advance_cycle()
+	_cycle_with_drone_returns()
 	_expect(game.synergy_stabilization_progress.get("closed_air_loop", 0) == 2, "second functioning cycle is still stabilizing")
 	await _capture("03b-stabilizing-1600")
-	game._advance_cycle()
+	_cycle_with_drone_returns()
 	_expect(game.meta.unlocked_room_ids.has("biodome"), "three cycles decrypt the real blueprint")
 	_expect(game.draw_pile.back() == "biodome", "the prototype is placed on top of the live deck")
 	game._discard_card(str(game.hand[0]))
@@ -77,15 +77,15 @@ func _run() -> void:
 	await _capture("04-prototype-1600")
 	_drain_feedback()
 	while not game._can_afford(Rooms.get_room("biodome")["cost"]) and game.cycle < 12 and game.running:
-		game._advance_cycle()
-	_build("biodome", Vector2i(22, 21))
+		_cycle_with_drone_returns()
+	_build("biodome", Vector2i(20, 21), 1) # Connect east to Life Support; old location contains a seeded cryo ward.
 	for _tick in range(3):
-		game._advance_cycle()
+		_cycle_with_drone_returns()
 	_expect(game.meta.unlocked_room_ids.has("bio_lab"), "building the prototype starts a second discovery chain")
 	_expect(game.resources["water"] >= 0, "the expanded bio economy remains water-positive")
 	_expect(game.running, "the station survives its two-step discovery chain")
 	game.selected_card_id = ""
-	game.hover_cell = Vector2i(22, 20)
+	game.hover_cell = Vector2i(21, 21)
 	game._refresh_all()
 	game._fit_station_view()
 	_drain_feedback()
@@ -114,11 +114,11 @@ func _run() -> void:
 	game._refresh_inspector()
 	game._toggle_inspected_room()
 	_expect(not game.powered_room_cells.has(Vector2i(21, 20)), "suspension immediately stops a room's functioning effects")
-	game._advance_cycle()
+	_cycle_with_drone_returns()
 	_expect(game._active_synergy_link_count("closed_air_loop") == 0, "a suspended room cannot contribute a link")
 	await _capture("07-dormant-1600")
 	game._toggle_inspected_room()
-	game._advance_cycle()
+	_cycle_with_drone_returns()
 	_expect(game._active_synergy_link_count("closed_air_loop") == 1, "resuming restores a learned pattern on the next cycle")
 	for resolution in [Vector2i(1280, 720), Vector2i(2560, 1440), Vector2i(1920, 1080)]:
 		root.size = resolution
@@ -167,7 +167,24 @@ func _build(id: String, cell: Vector2i, rotation := 0) -> void:
 	if not problem.is_empty():
 		return
 	game._on_grid_clicked(cell)
+	_expect(game.drone_fleet.reserved(cell),"purchased %s reserves its cell" % id)
+	var was_paused: bool = game.paused
+	game.paused = false
+	# This fixture controls economy ticks explicitly; exercise the real builder
+	# between assertions. Full elapsed-time pacing is covered by playtest_balance.
+	for step in range(1200):
+		if game.occupied.has(cell): break
+		game._update_wreck_clearance(0.1)
+	game.paused = was_paused
 	_expect(game.occupied.has(cell), "purchased %s is built" % id)
+
+func _cycle_with_drone_returns() -> void:
+	game._advance_cycle()
+	# The discrete-cycle fixture must wait for earned cargo before spending it.
+	var was_paused: bool = game.paused
+	game.paused = false
+	game._update_wreck_clearance(20.0)
+	game.paused = was_paused
 
 func _settle() -> void:
 	for _frame in range(4):

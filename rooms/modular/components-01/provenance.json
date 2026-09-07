@@ -1,0 +1,32 @@
+{
+  "stage": "pilot_integrated_partial_verified",
+  "verification": {
+    "captures": "output/components-native-02",
+    "log": "output/components-02.log",
+    "four_native_orientations_inspected": true,
+    "passage_samples": 1540,
+    "motion_offline_pause_pass": true,
+    "cleanup_tests": 3,
+    "complete_directional_art": false
+  },
+  "provider": "built-in image_gen",
+  "style_reference": "C:/Users/Alex/.codex/generated_images/01a06da5-a7ef-7d01-a977-fb23e4a353a1/exec-865188c0-1a10-423f-b797-d3be7564f285.png",
+  "requests": [
+    {
+      "name": "growth",
+      "prompt": "Generate a single transparent-background BrineSpace game sprite, not a room. ONE isolated small cluster of three cream mushrooms with short upright stems and varied rounded caps, no soil, tray, roots or container. Compact broad silhouette. This cluster is a camera-facing upright growth layer repeated in cultivation trays. Use the supplied room image only for its painterly pixel-art-inspired worn ivory/charcoal industrial material finish and fixed elevated overhead orthographic camera. Soft light from screen upper left, verticals upright, no perspective convergence. One object centered with generous transparent margin, no ground shadow, no backdrop, no checkerboard painted into image, no UI, no other items. Real transparent alpha PNG. Broad readable shapes at small gameplay scale, selective pixel detail, no photorealism."
+    },
+    {
+      "name": "reservoir",
+      "prompt": "Generate a single transparent-background BrineSpace game sprite, not a room. ONE isolated cylindrical nutrient reservoir: worn ivory circular upper and lower collars, dark teal glass cylinder, subtle glass reflection. Rotationally symmetric body, no side pipes, valve, handles, gauge, scale marks, text, hoses or asymmetrical attachments. Those are separate engine components. No liquid bubbles or active lights. Cylinder base flat and fully visible. Use the supplied room image only for its painterly pixel-art-inspired worn ivory/charcoal industrial material finish and fixed elevated overhead orthographic camera. Soft light from screen upper left, verticals upright, no perspective convergence. One object centered with generous transparent margin, no ground shadow, no backdrop, no checkerboard painted into image, no UI, no other items. Real transparent alpha PNG. Broad readable shapes at small gameplay scale, selective pixel detail, no photorealism."
+    },
+    {
+      "name": "microscope",
+      "prompt": "Generate a single transparent-background BrineSpace game sprite, not a room. ONE isolated small swiveling tabletop microscope, cream chipped enamel and dark steel, viewed elevated from front, short robust angled optical head on upright support and oval base. No table, jars, screen or surrounding equipment. Complete object with base visible. Camera-facing inspection instrument layer. Use the supplied room image only for its painterly pixel-art-inspired worn ivory/charcoal industrial material finish and fixed elevated overhead orthographic camera. Soft light from screen upper left, verticals upright, no perspective convergence. One object centered with generous transparent margin, no ground shadow, no backdrop, no checkerboard painted into image, no UI, no other items. Real transparent alpha PNG. Broad readable shapes at small gameplay scale, selective pixel detail, no photorealism."
+    }
+  ],
+  "registration_note": "Growth/microscope native alpha preserved. Near-invisible exterior alpha specks excluded from display region using alpha>=128 bounds plus 2px margin, not pixel repainting. Tank had opaque checkerboard; authorized edge-connected light-neutral cleanup removed exterior only.",
+  "rotation_note": "Growth is camera-facing organic billboard. Reservoir uses rotationally symmetric body with fixed-camera lighting and separately rotated valve. Surface wear does not physically rotate. Microscope only enabled at facing0; other directions use procedural fallback.",
+  "complete_room_art": false,
+  "main_game_integrated": false
+}

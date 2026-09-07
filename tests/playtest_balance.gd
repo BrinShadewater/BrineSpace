@@ -45,6 +45,8 @@ func _run() -> void:
 	current_scene = game
 	root.size = Vector2i(1600, 900)
 	await process_frame
+	game.set_process(false)
+	game.tick_timer.stop()
 	for first in range(Runs.DOCTRINE_ORDER.size()):
 		for second in range(first + 1, Runs.DOCTRINE_ORDER.size()):
 			var pair: Array = [Runs.DOCTRINE_ORDER[first], Runs.DOCTRINE_ORDER[second]]
@@ -61,11 +63,17 @@ func _run() -> void:
 			push_error("Cannot write balance report: " + output_path)
 			failures += 1
 		else:
-			file.store_string(JSON.stringify({"policy": "curious-builder-v3", "runs": rows}, "\t"))
+			file.store_string(JSON.stringify({"policy": "curious-builder-v5-construction-aware", "runs": rows}, "\t"))
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
 	print("Balance sweep completed: %d runs, %d harness errors." % [rows.size(), failures])
 	quit(1 if failures > 0 else 0)
+
+func _construction_pending() -> bool:
+	if not game.drone_fleet.orders.is_empty(): return true
+	for drone in game.drone_fleet.drones.values():
+		if not drone.order.is_empty(): return true
+	return false
 
 func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	game.meta.unlocked_room_ids.clear()
@@ -93,32 +101,44 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	while game.running and game.cycle < 60:
 		var built := 0
 		for _action in range(3):
+			# Reassess after the paid room becomes operational. Otherwise the old
+			# instant-build policy buys redundant power while its first plant is queued.
+			if _construction_pending(): break
 			var choice := _choose_build()
 			if choice.is_empty():
 				break
-			var count_before: int = game.placed_rooms.size()
 			game._on_card_pressed(choice["id"])
 			game.selected_rotation = choice["rotation"]
 			game._on_grid_clicked(choice["cell"])
-			if game.placed_rooms.size() != count_before + 1:
+			if not game.drone_fleet.reserved(choice["cell"]):
 				push_error("Balance player attempted an invalid paid build")
 				failures += 1
 				break
 			for other_id in choice["neighbors"]:
 				tried_pairs[_pair_key(choice["id"], other_id)] = true
-			row["builds"].append({"cycle": game.cycle, "id": choice["id"], "cell": str(choice["cell"]), "rotation": choice["rotation"]})
-			if row["blueprints"].has(choice["id"]) and not row["prototype_built"].has(choice["id"]):
-				row["prototype_built"][choice["id"]] = game.cycle
+			row["builds"].append({"cycle": game.cycle, "id": choice["id"], "cell": str(choice["cell"]), "rotation": choice["rotation"], "state": "paid_order"})
 			built += 1
 			if not game.running:
 				break
 		if built == 0:
 			row["idle_cycles"] += 1
-			if game.rerolls_remaining > 0 and game.cycle % 2 == 0:
+			if not _construction_pending() and game.rerolls_remaining > 0 and game.cycle % 2 == 0:
 				game._discard_all_cards()
 		if not game.running:
 			break
+		# Simulate the actual time between economy ticks. Construction is not instant.
+		game.paused = false
+		for step in range(200):
+			if not game.running: break
+			game.visual_time_seconds += 0.1
+			game._update_test_walker(0.1)
+			game._update_wreck_clearance(0.1)
+			game.CryoRecovery.advance(game, 0.1)
+		game.paused = true
 		game._advance_cycle()
+		for room in game.placed_rooms:
+			if row["blueprints"].has(room.id) and not row["prototype_built"].has(room.id):
+				row["prototype_built"][room.id] = game.cycle
 		for id in game.run_discovered_synergy_ids:
 			if not row["discoveries"].has(id):
 				row["discoveries"][id] = game.cycle
@@ -186,6 +206,12 @@ func _choose_build() -> Dictionary:
 			if cell.x < 0 or cell.y < 0 or cell.x >= game.GRID_SIZE or cell.y >= game.GRID_SIZE:
 				continue
 			for rotation in range(4):
+				var previous_rotation: int = game.selected_rotation
+				game.selected_rotation = rotation
+				var problem: String = game.get_placement_problem(id, cell)
+				game.selected_rotation = previous_rotation
+				if not problem.is_empty():
+					continue
 				var doors := _doors(id, rotation)
 				var neighbors := []
 				var score := utility

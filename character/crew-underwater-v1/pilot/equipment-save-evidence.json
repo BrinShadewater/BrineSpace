@@ -1,0 +1,18 @@
+{
+  "test": "tests\\test_crew_death_save.gd",
+  "testSha256": "28fafcfb6b7f464cfa833151201f24c7bfdd07a97620ccf33fce393df7a6b78c",
+  "log": "pilot/equipment-save-test.log",
+  "result": "PASS",
+  "verified": [
+    "All three crew retain helmet and exterior medium through disk round-trip",
+    "Exact equipped terminal water-death frame pixels restore for all three",
+    "Exterior checkpoint without helmet rejected without mutating Bill",
+    "Nonboolean helmet field rejected",
+    "Existing dry death and legacy save regressions pass"
+  ],
+  "limits": [
+    "No locker interaction",
+    "No equip/remove animation transition",
+    "No dry equipped movement coverage"
+  ]
+}

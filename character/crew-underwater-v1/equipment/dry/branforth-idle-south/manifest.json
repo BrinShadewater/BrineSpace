@@ -1,0 +1,43 @@
+{
+  "status": "dry_equipment_fitting_pilot",
+  "equipment": "diving-helmet",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "idle-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-south.png"
+      ],
+      "sourceSha256": {
+        "idle-south": "96854e407a5b0c84a7e514ea568a8d68e2181b55634d1d426b178d854785afb9"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    }
+  ]
+}

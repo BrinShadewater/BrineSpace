@@ -1,0 +1,68 @@
+[
+  {
+    "id": "tidal_condenser",
+    "subject": "Tidal Condenser: chilled U-coils, condensate vessels, pump and filter-control skid.",
+    "prompt": "Create one BrineSpace Tidal Condenser room source, 1280x1280 square target. Reference supplies subject identity ONLY: chilled U-coils and brine collection vessels, not its connected painted hull, giant machine proportions, lighting, paths or floor. Fixed near-top-down cutaway chunky detailed pixel art, square aligned walls, all upright equipment faces south. Restored mostly-clean underwater Engineering room with secondary Life Support water-processing function: charcoal steel structure, restrained burnt-orange supports, pale insulated piping and non-emissive muted blue-grey tank glass. Four fully separated equipment skids around broad empty central cross circulation: NW compact bank of three nested U-shaped chilled metal condenser coils on one south-facing skid, curved coils visibly raised above a drip collection tray; NE twin squat glass condensate vessels in one framed skid with calm grey-blue liquid, no bubbles or emission, closed pipes; SW compact filtration/collection pump unit with clear small gauge face and intact insulated hose loop contained on its base; SE condensate monitoring console with a small DARK unlit screen and neatly secured replacement filter cartridges. Equipment complete, distinct silhouette edges independent from walls or other machinery. Keep generous clear floor around each assembly for engine extraction. This is reliable water reclamation, no reactor, no pond, no flooding, no steam plume. Quiet charcoal floor, low shared modular steel pressure hull, flush sealed walls ALL FOUR SIDES, no doorway openings, inserts or socket trim. Engine provides west/east/south tee. No baked glow or signal traces anywhere; coolant/liquid is material color not light. No people, labels, text, UI, logos, stars or orbital imagery. No heavy corrosion, only subtle handling wear. Transparent exterior if possible. Preserve chilled-coil physical identity without filling the entire top half or bridging circulation.",
+    "reference": "rooms/hybrid/tidal_condenser.png (subject only; old hull and emission rejected)",
+    "source": "rooms/underwater/tidal-condenser/tidal_condenser-source-v1.png",
+    "stage": "integrated_initial_native_pass",
+    "primary_department": "Engineering",
+    "secondary_function": "Life Support water processing",
+    "condition": "restored, light handling wear",
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "integration": {
+      "station": true,
+      "cards": true,
+      "gameplay": true,
+      "view": "rooms/underwater/tidal-condenser/tidal_condenser_view.gd",
+      "card": "rooms/underwater/tidal-condenser/tidal_condenser-card-activity-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "complete_acceptance": false,
+      "gameplay": "tests/test_condenser_gameplay.gd plus Nursery and four regression suites pass; output/tidal-condenser/test_*.log",
+      "document": "rooms/underwater/tidal-condenser/INTEGRATION.md",
+      "native_progression": "Paid foundations, three full cycles, earned prototype, paid build and inspector suspension at 3 viewports; GAMEPLAY.md",
+      "additional_evidence": {
+        "walker": "329664 samples, 1728 pairs; output/tidal-condenser/walker.log",
+        "economy": "4 states at base rotation 1600x900; output/tidal-condenser/economy.log",
+        "crossings": "12 arrivals, all 84 sampled frames reviewed; output/tidal-condenser/crossing-review/review.json",
+        "windows_export": "14 source hashes, 28 PNG decodes, 21 visited rooms and 308 transitions; output/production-ten/windows-validation-condenser-v1/verification.json"
+      }
+    },
+    "review": [
+      "Coil and water-vessel identity retained without the old cyan emission.",
+      "Four separated skids and broad circulation; dark console ready for engine effects.",
+      "Wall midpoints still imply recessed panels and tall framing; generated hull not accepted as canonical geometry.",
+      "Mostly monochrome steel with restrained orange brackets; Engineering finish needs native-scale review.",
+      "Enclosed source-floor gaps within skid frames remain a registration concern; preserve raw image."
+    ],
+    "sha256": "b80dab6b00829c8d33f835542b41dbb4bcad150c3ac725b20f79f7ec91558bb7",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-island-v2.png",
+        "sha256": "6ff91554f265a7db977f38f74c139fbfe9db6ea97a3be6ea1f29671fc4140022"
+      }
+    ],
+    "composition_profile": "rooms/underwater/tidal-condenser/tidal-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/tidal-condenser/tidal-composition-v2.json",
+        "sha256": "776bc6a40e79e4cf4a8f8dd7bb21305e059545ed8d37f93de4521582ba27d1c7"
+      }
+    ]
+  }
+]

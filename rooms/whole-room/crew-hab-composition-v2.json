@@ -1,0 +1,101 @@
+{
+  "textures": {
+    "habitation": "res://rooms/production-ten/decor/lounge-support-v2.png"
+  },
+  "furniture": [
+    {
+      "id": "hab_books",
+      "texture": "habitation",
+      "region": [
+        659,
+        155,
+        411,
+        395
+      ],
+      "footprint": [
+        76,
+        -148,
+        70,
+        26
+      ]
+    },
+    {
+      "id": "hab_reading_lamp",
+      "texture": "habitation",
+      "region": [
+        191,
+        69,
+        209,
+        480
+      ],
+      "footprint": [
+        58,
+        -48,
+        18,
+        8
+      ]
+    },
+    {
+      "id": "hab_coat_stand",
+      "texture": "habitation",
+      "region": [
+        764,
+        618,
+        189,
+        515
+      ],
+      "footprint": [
+        -164,
+        108,
+        18,
+        9
+      ],
+      "centers_by_quarter": [
+        [
+          -155,
+          112.5
+        ],
+        [
+          -62,
+          -76
+        ],
+        [
+          155,
+          -112.5
+        ],
+        [
+          52,
+          110
+        ]
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "hab_chair",
+      "offset": [
+        -25,
+        9
+      ],
+      "size": [
+        106,
+        45
+      ],
+      "fill": "6b5546",
+      "edge": "9c8066"
+    },
+    {
+      "host": "hab_desk",
+      "offset": [
+        -8,
+        18
+      ],
+      "size": [
+        112,
+        42
+      ],
+      "fill": "514c43",
+      "edge": "7e7260"
+    }
+  ]
+}

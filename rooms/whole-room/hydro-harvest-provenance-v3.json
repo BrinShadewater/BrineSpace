@@ -1,0 +1,19 @@
+{
+  "prompts": [
+    "Create one isolated low harvest stand sprite for BrineSpace underwater hydroponics. Strict south-facing orthographic cutaway camera looking down 35 degrees; front edge perfectly horizontal, front feet same Y, no diagonal isometric perspective. Compact dark green steel low dolly with four tiny wheels and an off-white rim. Two shallow slatted harvest crates on the support: one containing a few readable leafy lettuce heads, the other mostly empty with folded brown packing paper. Tiny attached side tray supports closed pruning shears and three blank harvest tags. All items physically supported. Wide low silhouette, deliberate crisp pixel-art clusters, restrained pale green and cream horticultural palette, modest highlights, clean lightly handled materials. Readable at 60px wide. TRUE transparent alpha background including gaps, no checkerboard pixels, no shadow or glow outside object. No room, floor, people, text, backdrop or additional furniture. Complete object with generous clear margins.",
+    "Keep this exact south-facing harvest dolly and its proportions, crates, produce and tray. Remove ALL background gradients and glow, replacing with genuine alpha transparency, including holes around handles and wheels. No checkerboard baked pixels, no cast shadow. Return isolated complete cutout with clear margin. Retain sharp pixel-art edges and original object colors.",
+    "Reframe this exact harvest dolly at 75 percent of canvas width, centered with generous fully transparent margins on all four sides. Restore any clipped outer left and right handle tips. Preserve the complete object, colors, south-facing view, crates, leaves, paper, shears, wheels and alpha gaps. TRUE transparent background, no backdrop, no checkerboard, no glow. Do not enlarge or crop."
+  ],
+  "generations": [
+    "exec-8e0535c7-e2c0-4bf5-b9b8-4e12a680e7f0",
+    "exec-06957019-8af7-4bf4-aa44-d53253f09e55",
+    "exec-af0cd77f-b641-4050-9578-60f4265d6980"
+  ],
+  "rejected": [
+    "v1 backdrop",
+    "v2 cropped handle"
+  ],
+  "cleanup": "v3 RGB checkerboard: room_art_pipeline --keep-canvas --clear-gap 330 440 --clear-gap 1100 410. Wrong seed 1120 440 rejected before writing.",
+  "source": "rooms/whole-room/hydro-harvest-source-v3.png",
+  "selected": "rooms/whole-room/hydro-harvest-clean-v3.png"
+}

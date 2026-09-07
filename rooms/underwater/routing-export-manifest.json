@@ -1,0 +1,45 @@
+[
+  {
+    "id": "corridor",
+    "source": "rooms/underwater/straight-source-v1.png",
+    "sha256": "b633b04b9e626e681b9276db7dac72a381e40011977241b6b12ce3356bc2050e",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "integration": {
+      "card": "rooms/underwater/corridor-card-style-v1-0.png",
+      "render_module": "rooms/underwater/corridor_surfaces.gd"
+    },
+    "scope": "Shared routing surface source and card; procedural hull/details owned by renderer"
+  },
+  {
+    "id": "corner",
+    "source": "rooms/underwater/corner-source-v1.png",
+    "sha256": "e71168e2eb6f674031194f6f321bcb63da2c49fb7924c752197939e46dfe8d61",
+    "canonical_ports_nesw": [
+      2,
+      3
+    ],
+    "integration": {
+      "card": "rooms/underwater/corner-card-style-v1-0.png",
+      "render_module": "rooms/underwater/corridor_surfaces.gd"
+    },
+    "scope": "Shared routing surface source and card; procedural hull/details owned by renderer"
+  },
+  {
+    "id": "tee_corridor",
+    "source": "rooms/underwater/straight-source-v1.png",
+    "sha256": "b633b04b9e626e681b9276db7dac72a381e40011977241b6b12ce3356bc2050e",
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "integration": {
+      "card": "rooms/underwater/tee_corridor-card-style-v1-0.png",
+      "render_module": "rooms/underwater/corridor_surfaces.gd"
+    },
+    "scope": "Shared source samples on procedural tee geometry; current selected card. Packaged and visual acceptance pending."
+  }
+]

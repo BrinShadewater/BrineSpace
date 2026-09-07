@@ -1,0 +1,107 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png",
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "med_preparation",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        25,
+        102,
+        72,
+        28
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ],
+      "centers_by_quarter": [
+        [
+          61,
+          116
+        ],
+        [
+          -116,
+          61
+        ],
+        [
+          -61,
+          -116
+        ],
+        [
+          120,
+          80
+        ]
+      ]
+    },
+    {
+      "id": "med_sealed_cooler",
+      "texture": "accessories",
+      "region": [
+        753,
+        115,
+        402,
+        385
+      ],
+      "footprint": [
+        133,
+        55,
+        28,
+        10
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "med_preparation",
+      "offset": [
+        -5,
+        12
+      ],
+      "size": [
+        82,
+        39
+      ],
+      "fill": "94aaa8",
+      "edge": "718f8d"
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          -174,
+          -159
+        ],
+        [
+          29,
+          -159
+        ],
+        [
+          29,
+          -32
+        ],
+        [
+          -174,
+          -32
+        ]
+      ],
+      "fill": "9caead",
+      "edge": "839e9c"
+    }
+  ]
+}

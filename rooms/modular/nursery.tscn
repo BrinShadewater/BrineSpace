@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://rooms/modular/nursery_view.gd" id="1_view"]
+
+[node name="MyceliumNursery" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_view")
+embedded = true

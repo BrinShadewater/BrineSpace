@@ -1,0 +1,69 @@
+[
+  {
+    "id": "solar_array",
+    "subject": "Thermal Power Control: insulated heat exchangers, finned conversion stack, monitoring console and circulation pumps.",
+    "prompt": "Create one individual BrineSpace Thermal Power Control room source, target 1280x1280 square. Reference provides ONLY fixed near-top-down cutaway camera, chunky detailed pixel-art style, south-facing equipment scale and modular low pressure-hull construction. New subject, not batteries. Underwater station Engineering department: raw steel, charcoal insulation and restrained burnt-orange panels, mostly clean restored condition. Four complete separated equipment groups: NW paired insulated vertical heat-exchanger vessels on one low service skid, with broad pale ceramic lagging and dark pipe elbows; NE compact finned thermoelectric conversion stack on a sturdy orange steel chassis; SW low thermal-monitoring console with dark unlit display and physical gauge; SE closed-loop circulation pump skid with two pump housings and contained insulated pipes. Complete silhouettes independent of walls and other groups; every upright front faces screen south, height screen up. Broad empty cross-shaped circulation between groups, giving extraction room for a west/south corner route in engine. Square hull aligned with image edges, NOT isometric diamond. Quiet charcoal floor; sealed low walls on all four sides, no doors or recesses, engine supplies canonical sockets. No pipe bridges across floor aisles, no active glow, no steam, no flames, no solar panels, no reactor core, no stars, no ocean view, no text, no logos, no characters. Mechanical equipment remains legible offline; reserve dark lenses/screens for engine effects. Transparent exterior if possible. Preserve strong material contrast and individually recognizable silhouettes; avoid repetitive battery cabinets.",
+    "reference": "rooms/production-ten/battery_array-source-v1.png (camera/style/materials only)",
+    "source": "rooms/underwater/thermal-control/solar_array-source-v1.png",
+    "stage": "integrated_initial_native_pass",
+    "primary_department": "Engineering",
+    "condition": "restored, mostly clean; local edge wear in generated source",
+    "canonical_ports_nesw": [
+      2,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/underwater/thermal-control/solar_array_view.gd",
+      "card": "rooms/underwater/thermal-control/solar_array-card-group-v2.png"
+    },
+    "verification": {
+      "native": true,
+      "complete_acceptance": false,
+      "scope": "Room fixture at 1280x720,1600x900,2560x1440: four rotations, host motion/offline/pause, containment and 728 aisle samples. 1600 station and native card visually reviewed; neighbor/economy/export pending.",
+      "document": "rooms/underwater/thermal-control/REGISTRATION.md",
+      "additional_evidence": {
+        "walker": "1344 ordered pairs involving solar_array, 159176 samples, zero failures; output/thermal-control/walker.log",
+        "economy": "4 actual economy states and paired frames, base rotation 1600x900; output/thermal-control/economy.log",
+        "crossings": "Both ports x four rotations against Battery; 8 arrivals and all 56 sampled doorway crops reviewed at 1600x900, fixed 30% zoom; output/thermal-control/crossings-review.json",
+        "windows_export": "13 source hashes, 26 PNG decodes, 20 rooms visited and 295 transitions; output/production-ten/windows-validation-adaptations-v1/verification.json"
+      }
+    },
+    "review": [
+      "Distinct heat-exchanger, fin stack, console and twin pump silhouettes; all equipment fronts face south.",
+      "Broad separation supports future registered assemblies; source hull is not canonical geometry.",
+      "Exterior appears opaque white; inspect alpha numerically. No dark-threshold cleanup.",
+      "Floor pixels enclosed between vessel pipes require piecewise silhouette registration; retain source unchanged.",
+      "Localized chipped lagging/edge wear is heavier than requested mostly-clean finish; review at native station scale before accepting.",
+      "Registration v2 splits exchanger manifold, vessels and skid to exclude the central floor aperture; native card reviewed. Small peripheral pipe-loop patches remain. Source unchanged."
+    ],
+    "sha256": "9ff8575d0cb43649ae3ce63ae99b9161a13509790321a178623e0854f2ca8631",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      }
+    ],
+    "composition_profile": "rooms/underwater/thermal-control/thermal-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/thermal-control/thermal-composition-v2.json",
+        "sha256": "129933622a5542919a526667cb1ae23df9c788ea834de98b75a07d16b3a922e4"
+      }
+    ]
+  }
+]

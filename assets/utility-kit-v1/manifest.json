@@ -1,0 +1,847 @@
+{
+  "version": 1,
+  "sources": {
+    "mechanical": {
+      "path": "assets/utility-kit-v1/source/mechanical.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "61f62debe819cb921c5d4b21a6071d17afed745c3894c05e65775550c48da7ad"
+    },
+    "electrical": {
+      "path": "assets/utility-kit-v1/source/electrical.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "f8699a9dc21739c5a2d587a627ac1996a3faf0a1b57bf4588fd14112732beabc"
+    }
+  },
+  "sprites": {
+    "pipe_straight": {
+      "path": "assets/utility-kit-v1/sprites/pipe_straight.png",
+      "family": "pipe",
+      "source": "mechanical",
+      "source_region": [
+        8,
+        160,
+        338,
+        354
+      ],
+      "alpha_trim": [
+        11,
+        41,
+        317,
+        180
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        306,
+        139
+      ],
+      "units_per_pixel": 0.18,
+      "pivot": [
+        153.0,
+        69.5
+      ],
+      "ports": {
+        "west": [
+          1,
+          69
+        ],
+        "east": [
+          303,
+          69
+        ]
+      },
+      "sha256": "9c9f305ce5bcd9738c78a70dc34e99989c2d162447e962406b50065b7ef27c87",
+      "role": "decoration",
+      "collision": false
+    },
+    "pipe_elbow": {
+      "path": "assets/utility-kit-v1/sprites/pipe_elbow.png",
+      "family": "pipe",
+      "source": "mechanical",
+      "source_region": [
+        357,
+        150,
+        581,
+        405
+      ],
+      "alpha_trim": [
+        17,
+        17,
+        212,
+        233
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        195,
+        216
+      ],
+      "units_per_pixel": 0.18,
+      "pivot": [
+        97.5,
+        108.0
+      ],
+      "ports": {
+        "east": [
+          191,
+          73
+        ],
+        "south": [
+          51,
+          214
+        ]
+      },
+      "sha256": "367d09e6c0396813cb5cc585e2cff0d723853bf13e58d29ebadca27df08f19c8",
+      "role": "decoration",
+      "collision": false
+    },
+    "pipe_t": {
+      "path": "assets/utility-kit-v1/sprites/pipe_t.png",
+      "family": "pipe",
+      "source": "mechanical",
+      "source_region": [
+        631,
+        150,
+        934,
+        409
+      ],
+      "alpha_trim": [
+        14,
+        19,
+        286,
+        247
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        272,
+        228
+      ],
+      "units_per_pixel": 0.18,
+      "pivot": [
+        136.0,
+        114.0
+      ],
+      "ports": {
+        "west": [
+          3,
+          74
+        ],
+        "east": [
+          269,
+          74
+        ],
+        "south": [
+          137,
+          223
+        ]
+      },
+      "sha256": "8a8f86125b3e5a118a1616a538bee5ff5c68979e5c0538db4839e4a93f35ff88",
+      "role": "decoration",
+      "collision": false
+    },
+    "pipe_valve": {
+      "path": "assets/utility-kit-v1/sprites/pipe_valve.png",
+      "family": "pipe",
+      "source": "mechanical",
+      "source_region": [
+        954,
+        157,
+        1240,
+        372
+      ],
+      "alpha_trim": [
+        12,
+        19,
+        274,
+        203
+      ],
+      "gap_seeds_source": [
+        [
+          1071,
+          193
+        ],
+        [
+          1113,
+          194
+        ]
+      ],
+      "size": [
+        262,
+        184
+      ],
+      "units_per_pixel": 0.18,
+      "pivot": [
+        131.0,
+        92.0
+      ],
+      "ports": {
+        "west": [
+          4,
+          117
+        ],
+        "east": [
+          258,
+          117
+        ]
+      },
+      "sha256": "f92807ff93072b646469f00748aea465489e5258bc4ace784a639152f8883a06",
+      "role": "decoration",
+      "collision": false
+    },
+    "duct_straight": {
+      "path": "assets/utility-kit-v1/sprites/duct_straight.png",
+      "family": "duct",
+      "source": "mechanical",
+      "source_region": [
+        18,
+        509,
+        304,
+        686
+      ],
+      "alpha_trim": [
+        14,
+        15,
+        273,
+        162
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        259,
+        147
+      ],
+      "units_per_pixel": 0.2,
+      "pivot": [
+        129.5,
+        73.5
+      ],
+      "ports": {
+        "west": [
+          1,
+          78
+        ],
+        "east": [
+          257,
+          78
+        ]
+      },
+      "sha256": "a9f17d52885a5068bdc25db77e039365c148db13aa83f181f72bdecfe30f61ec",
+      "role": "decoration",
+      "collision": false
+    },
+    "duct_elbow": {
+      "path": "assets/utility-kit-v1/sprites/duct_elbow.png",
+      "family": "duct",
+      "source": "mechanical",
+      "source_region": [
+        359,
+        486,
+        583,
+        741
+      ],
+      "alpha_trim": [
+        12,
+        10,
+        213,
+        238
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        201,
+        228
+      ],
+      "units_per_pixel": 0.2,
+      "pivot": [
+        100.5,
+        114.0
+      ],
+      "ports": {
+        "west": [
+          3,
+          74
+        ],
+        "south": [
+          134,
+          224
+        ]
+      },
+      "sha256": "194cca495ba3460f25d1413ce5745dee3b22729e7061fc9df30a123f005fa8b4",
+      "role": "decoration",
+      "collision": false
+    },
+    "duct_t": {
+      "path": "assets/utility-kit-v1/sprites/duct_t.png",
+      "family": "duct",
+      "source": "mechanical",
+      "source_region": [
+        629,
+        510,
+        934,
+        744
+      ],
+      "alpha_trim": [
+        13,
+        15,
+        291,
+        222
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        278,
+        207
+      ],
+      "units_per_pixel": 0.2,
+      "pivot": [
+        139.0,
+        103.5
+      ],
+      "ports": {
+        "west": [
+          3,
+          75
+        ],
+        "east": [
+          275,
+          75
+        ],
+        "south": [
+          136,
+          197
+        ]
+      },
+      "sha256": "8456af5efaa537a21a0b4e1ed355ecdb9cf1dc64e6f948021101db873c874069",
+      "role": "decoration",
+      "collision": false
+    },
+    "duct_grille": {
+      "path": "assets/utility-kit-v1/sprites/duct_grille.png",
+      "family": "duct",
+      "source": "mechanical",
+      "source_region": [
+        976,
+        495,
+        1237,
+        737
+      ],
+      "alpha_trim": [
+        12,
+        12,
+        246,
+        230
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        234,
+        218
+      ],
+      "units_per_pixel": 0.2,
+      "pivot": [
+        117.0,
+        109.0
+      ],
+      "ports": {},
+      "sha256": "26b866e02280ce7d6b241132d6ec6d8b05f15c96e6ccfe6352275ba3fdb12e32",
+      "role": "decoration",
+      "collision": false
+    },
+    "tube_straight": {
+      "path": "assets/utility-kit-v1/sprites/tube_straight.png",
+      "family": "tube",
+      "source": "mechanical",
+      "source_region": [
+        14,
+        912,
+        327,
+        1048
+      ],
+      "alpha_trim": [
+        11,
+        14,
+        301,
+        124
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        290,
+        110
+      ],
+      "units_per_pixel": 0.16,
+      "pivot": [
+        145.0,
+        55.0
+      ],
+      "ports": {
+        "west": [
+          3,
+          54
+        ],
+        "east": [
+          287,
+          54
+        ]
+      },
+      "sha256": "8f31eb0380c2040570afb1fa864c7c260a449a0939aae639d9ab3a92de0eb781",
+      "role": "decoration",
+      "collision": false
+    },
+    "tube_elbow": {
+      "path": "assets/utility-kit-v1/sprites/tube_elbow.png",
+      "family": "tube",
+      "source": "mechanical",
+      "source_region": [
+        358,
+        824,
+        577,
+        1080
+      ],
+      "alpha_trim": [
+        11,
+        12,
+        201,
+        241
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        190,
+        229
+      ],
+      "units_per_pixel": 0.16,
+      "pivot": [
+        95.0,
+        114.5
+      ],
+      "ports": {
+        "east": [
+          187,
+          47
+        ],
+        "south": [
+          53,
+          224
+        ]
+      },
+      "sha256": "945e5b6812b8288673738f338b6cb477f1c640b55b33a0258dfdd516f4999e0f",
+      "role": "decoration",
+      "collision": false
+    },
+    "tube_y": {
+      "path": "assets/utility-kit-v1/sprites/tube_y.png",
+      "family": "tube",
+      "source": "mechanical",
+      "source_region": [
+        600,
+        840,
+        940,
+        1090
+      ],
+      "alpha_trim": [
+        15,
+        15,
+        329,
+        236
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        314,
+        221
+      ],
+      "units_per_pixel": 0.16,
+      "pivot": [
+        157.0,
+        110.5
+      ],
+      "ports": {
+        "west": [
+          5,
+          47
+        ],
+        "east": [
+          310,
+          47
+        ],
+        "south": [
+          158,
+          219
+        ]
+      },
+      "sha256": "29fc7905b1808e341d1dcd9f68cf12aefaca53e658ec632d3e8d5c3aceb8337f",
+      "role": "decoration",
+      "collision": false
+    },
+    "tube_coil": {
+      "path": "assets/utility-kit-v1/sprites/tube_coil.png",
+      "family": "tube",
+      "source": "mechanical",
+      "source_region": [
+        971,
+        846,
+        1228,
+        1082
+      ],
+      "alpha_trim": [
+        15,
+        14,
+        242,
+        222
+      ],
+      "gap_seeds_source": [
+        [
+          1110,
+          962
+        ]
+      ],
+      "size": [
+        227,
+        208
+      ],
+      "units_per_pixel": 0.16,
+      "pivot": [
+        113.5,
+        104.0
+      ],
+      "ports": {
+        "south_west": [
+          31,
+          193
+        ]
+      },
+      "sha256": "c70ee3d102bf1d76feb895f6cb0777a33e13ec14d85d2cdc5844918fd70e7667",
+      "role": "decoration",
+      "collision": false
+    },
+    "power_straight": {
+      "path": "assets/utility-kit-v1/sprites/power_straight.png",
+      "family": "power",
+      "source": "electrical",
+      "source_region": [
+        4,
+        305,
+        395,
+        440
+      ],
+      "alpha_trim": [
+        8,
+        5,
+        391,
+        131
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        383,
+        126
+      ],
+      "units_per_pixel": 0.15,
+      "pivot": [
+        191.5,
+        63.0
+      ],
+      "ports": {
+        "west": [
+          5,
+          53
+        ],
+        "east": [
+          367,
+          53
+        ]
+      },
+      "sha256": "dff041ae68bf99520a583b9c891c250cd3cb513be2fcfef344e4c6780721ecb5",
+      "role": "decoration",
+      "collision": false
+    },
+    "power_elbow": {
+      "path": "assets/utility-kit-v1/sprites/power_elbow.png",
+      "family": "power",
+      "source": "electrical",
+      "source_region": [
+        399,
+        232,
+        609,
+        512
+      ],
+      "alpha_trim": [
+        0,
+        8,
+        199,
+        273
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        199,
+        265
+      ],
+      "units_per_pixel": 0.15,
+      "pivot": [
+        99.5,
+        132.5
+      ],
+      "ports": {
+        "west": [
+          15,
+          48
+        ],
+        "south": [
+          153,
+          254
+        ]
+      },
+      "sha256": "10f0e5144e23331e9fff696686668358b25e0ea5f9bf02102b6402ef8284f17c",
+      "role": "decoration",
+      "collision": false
+    },
+    "power_t": {
+      "path": "assets/utility-kit-v1/sprites/power_t.png",
+      "family": "power",
+      "source": "electrical",
+      "source_region": [
+        610,
+        247,
+        970,
+        545
+      ],
+      "alpha_trim": [
+        2,
+        9,
+        355,
+        287
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        353,
+        278
+      ],
+      "units_per_pixel": 0.15,
+      "pivot": [
+        176.5,
+        139.0
+      ],
+      "ports": {
+        "west": [
+          9,
+          59
+        ],
+        "east": [
+          345,
+          59
+        ],
+        "south": [
+          179,
+          272
+        ]
+      },
+      "sha256": "2f460f45476a206a0d1cb7f33ca97e8f6e719a67eded3b78121d2f701d6349de",
+      "role": "decoration",
+      "collision": false
+    },
+    "power_box": {
+      "path": "assets/utility-kit-v1/sprites/power_box.png",
+      "family": "power",
+      "source": "electrical",
+      "source_region": [
+        972,
+        194,
+        1246,
+        607
+      ],
+      "alpha_trim": [
+        4,
+        11,
+        267,
+        401
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        263,
+        390
+      ],
+      "units_per_pixel": 0.15,
+      "pivot": [
+        131.5,
+        195.0
+      ],
+      "ports": {
+        "south_1": [
+          93,
+          375
+        ],
+        "south_2": [
+          158,
+          377
+        ],
+        "south_3": [
+          227,
+          369
+        ]
+      },
+      "sha256": "5862135deb012bbfcd228edf977fca27b3956d9e517b86bceead2427a8048f0f",
+      "role": "decoration",
+      "collision": false
+    },
+    "wire_straight": {
+      "path": "assets/utility-kit-v1/sprites/wire_straight.png",
+      "family": "wire",
+      "source": "electrical",
+      "source_region": [
+        22,
+        835,
+        398,
+        954
+      ],
+      "alpha_trim": [
+        5,
+        1,
+        370,
+        114
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        365,
+        113
+      ],
+      "units_per_pixel": 0.1,
+      "pivot": [
+        182.5,
+        56.5
+      ],
+      "ports": {
+        "west": [
+          8,
+          46
+        ],
+        "east": [
+          358,
+          46
+        ]
+      },
+      "sha256": "a24653f06fb25e6048c2474bbf21d30ad732b94ab658fb01f1bc4ef20cba68f3",
+      "role": "decoration",
+      "collision": false
+    },
+    "wire_elbow": {
+      "path": "assets/utility-kit-v1/sprites/wire_elbow.png",
+      "family": "wire",
+      "source": "electrical",
+      "source_region": [
+        416,
+        753,
+        619,
+        1040
+      ],
+      "alpha_trim": [
+        1,
+        4,
+        197,
+        277
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        196,
+        273
+      ],
+      "units_per_pixel": 0.1,
+      "pivot": [
+        98.0,
+        136.5
+      ],
+      "ports": {
+        "west": [
+          12,
+          45
+        ],
+        "south": [
+          155,
+          260
+        ]
+      },
+      "sha256": "c95a4d8146fe3e2bed47a16487d0a15b89e4a904d84f1ad8f32b2dc9e55b624a",
+      "role": "decoration",
+      "collision": false
+    },
+    "wire_t": {
+      "path": "assets/utility-kit-v1/sprites/wire_t.png",
+      "family": "wire",
+      "source": "electrical",
+      "source_region": [
+        635,
+        773,
+        955,
+        1046
+      ],
+      "alpha_trim": [
+        4,
+        2,
+        317,
+        272
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        313,
+        270
+      ],
+      "units_per_pixel": 0.1,
+      "pivot": [
+        156.5,
+        135.0
+      ],
+      "ports": {
+        "west": [
+          10,
+          61
+        ],
+        "east": [
+          298,
+          61
+        ],
+        "south": [
+          153,
+          255
+        ]
+      },
+      "sha256": "6ad550ca1ca8bc0f11d1ad90b8d51489558ae09d656855ff5bb7e9b4ab0bd323",
+      "role": "decoration",
+      "collision": false
+    },
+    "wire_coil": {
+      "path": "assets/utility-kit-v1/sprites/wire_coil.png",
+      "family": "wire",
+      "source": "electrical",
+      "source_region": [
+        970,
+        776,
+        1243,
+        1054
+      ],
+      "alpha_trim": [
+        0,
+        8,
+        268,
+        277
+      ],
+      "gap_seeds_source": [],
+      "size": [
+        268,
+        269
+      ],
+      "units_per_pixel": 0.1,
+      "pivot": [
+        134.0,
+        134.5
+      ],
+      "ports": {
+        "south": [
+          240,
+          250
+        ]
+      },
+      "sha256": "61bb3ad94c4c09c1b61bf92686cb473c81d3119a5fd085091ad2e01e3e47885f",
+      "role": "decoration",
+      "collision": false
+    }
+  },
+  "connection_policy": "Authored anchors; rigid modular lengths vary. Validate seams in each placement. No automatic tiling guarantee."
+}

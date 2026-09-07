@@ -1,0 +1,71 @@
+[
+  {
+    "id": "radio_lab",
+    "subject": "Acoustic Communications: listening console, paired transducer calibration cradle, receiver rack, hydrophone service bench.",
+    "prompt": "Create one individual BrineSpace Acoustic Communications room production source, target 1280x1280 square. Use the reference ONLY for chunky pixel-art rendering density, fixed near-top-down cutaway camera, south-facing equipment and brushed-metal pressure-hull construction. Do not copy its screens, antennas, furniture arrangement details or open doors. Underwater station, restored mostly-clean Command/Operations architecture: gunmetal and brushed steel, small deep-red panels, restrained white markings without text. Four distinct separated complete equipment groups around a broad empty cross aisle: NW low listening console with a compact dark waveform screen, tactile frequency knobs, heavy wired headset and push-to-talk handset resting on the console; NE paired squat sealed acoustic transducer canisters on a calibration cradle with compact impedance-testing box, visibly physical precision instruments, no antenna masts; SW sturdy signal processing rack with stacked non-emissive receiver modules, tuning dials, unlit meters and one contained heavy cable spool mounted to the rack; SE compact service bench with one opened circular hydrophone housing, visible concentric piezo rings, hand tools secured on its surface and a small shielded cable termination box. All upright fronts face screen south and height screen up. Keep each full silhouette, accessories and enclosed service routing within its quadrant, separate from walls and all other groups, with empty floor around it for polygon extraction. Strong readable equipment shapes, quieter floors; fewer large screens than Command Center. Square room walls aligned with canvas, not isometric diamond. Low modular pressure hull sealed on all four sides, no recesses, openings, doors or jambs; engine owns east/west sockets. Neutral ambient light, dark unlit screens and lenses; no baked glow, signal beams or holograms. No people, text, labels, UI, logos, stars, orbital maps, satellite dishes or radio whip antennas. Actual transparent exterior if possible. No damage or abandoned grime, only light handling wear.",
+    "reference": "rooms/production-ten/command_center-source-v2.png (camera, materials and rendering only)",
+    "source": "rooms/underwater/acoustic-comms/radio_lab-source-v1.png",
+    "stage": "integrated_initial_native_pass",
+    "primary_department": "Command / Operations",
+    "secondary_function": "Science calibration instruments",
+    "condition": "restored, mostly clean",
+    "canonical_ports_nesw": [
+      1,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/underwater/acoustic-comms/radio_lab_view.gd",
+      "card": "rooms/underwater/acoustic-comms/radio_lab-card-operator-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "complete_acceptance": false,
+      "scope": "Three viewport fixtures: four rotations, host motion/offline/pause, bounds, 728 aisle samples and screen effect containment; four gameplay suites pass",
+      "document": "rooms/underwater/acoustic-comms/INTEGRATION.md",
+      "additional_evidence": {
+        "walker": "1472 pairs, 168872 samples; output/acoustic-comms/walker.log",
+        "economy": "4 real economy states and frame pairs, base rotation at 1600x900; output/acoustic-comms/economy.log",
+        "crossings": "8 arrivals, all 56 sampled doorway crops reviewed; output/acoustic-comms/crossings-review.json",
+        "windows_export": "13 source hashes, 26 PNG decodes, 20 rooms visited and 295 transitions; output/production-ten/windows-validation-adaptations-v1/verification.json"
+      }
+    },
+    "review": [
+      "Four physically distinct separated assemblies; wired headset and hydrophone rings establish signal equipment.",
+      "All fronts south; main east/west aisle clear in source composition.",
+      "Generated red wall-center inserts are not accepted sockets; sample plain wall strips for shared geometry.",
+      "Faint baked waveform on console contradicts requested unlit display; remove or cover registered screen before operating-state acceptance.",
+      "Opaque dark exterior expected; inspect alpha and never threshold dark machinery.",
+      "Headset reads large relative to console; check at native gameplay scale before acceptance.",
+      "Engine screen surface covers generated waveform; plain source strips exclude red wall inserts. Native 512 card and 1600 active station/card/inspector reviewed. Headset remains stylized/overscale; enclosed cable-loop source-floor patches retained."
+    ],
+    "sha256": "647c17e2871eb6fcfa278a5e018fd4e23ef22d49c8252ab1e897c2c07c7f6a4a",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "component_assets": [
+      {
+        "path": "rooms/underwater/acoustic-comms/electronics-bench-v1.png",
+        "sha256": "43de46c853a1bb41a91931375e6ff702baebb3d76ff7a519305ec80540ba1729"
+      },
+      {
+        "path": "rooms/production-ten/decor/command-operator-chair-v1.png",
+        "sha256": "e2a88e9ea0bba09d60dc4ba94699a95aceed9974da7515c5188183a54c1db11b"
+      }
+    ],
+    "composition_profile": "rooms/underwater/acoustic-comms/radio-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/acoustic-comms/radio-composition-v3.json",
+        "sha256": "8536afadd758b55ce1928e1e5f869b6dcfefa3548a23bd365bc973ac8c9660bf"
+      }
+    ]
+  }
+]

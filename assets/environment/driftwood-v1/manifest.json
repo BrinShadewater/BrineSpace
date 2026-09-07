@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "selected_source": "waterlogged-timber-v1.png",
+      "versions": [
+        {
+          "sha256": "ab6290bd402ff72c91280bddc27641b132adf875820b9423d9250d3fead9a20e",
+          "file": "waterlogged-timber-v1.png",
+          "rejection": null
+        }
+      ],
+      "id": "waterlogged-timber",
+      "stage": "integrated; native and isolated packaged review passed; owner approval pending",
+      "kind": "prop"
+    }
+  ],
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "title": "Waterlogged timber study",
+  "native_previews": [
+    {
+      "label": "Native clay/ash comparison at 0.40, 0.50 and 0.65 cell widths",
+      "path": "../../../output/driftwood-v1/terrain-scale.png"
+    },
+    {
+      "label": "Native timber placement in clay silt beside a room",
+      "path": "../../../output/driftwood-station-v1/group-1-1600.png"
+    },
+    {
+      "path": "../../../output/environment-export-v17/captures/debris-waterlogged-timber.png",
+      "label": "Isolated Windows build: waterlogged timber on clay"
+    }
+  ],
+  "runtime_registry": "driftwood_view.gd"
+}

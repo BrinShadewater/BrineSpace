@@ -6,9 +6,19 @@
 # Local design and audit artifacts; source art lives in the asset folders.
 asset_backups/
 outputs/
+/output/
 
 # Local editor and operating-system files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local Python asset-tool caches
+__pycache__/
+*.pyc
+/output/cover-tools/
+
+# Local verified Godot templates and room-validation binaries
+/output/production-ten/export-tools/
+/output/production-ten/windows-validation*/

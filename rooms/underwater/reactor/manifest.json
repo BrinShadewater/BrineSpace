@@ -1,0 +1,62 @@
+[
+  {
+    "id": "reactor",
+    "source": "rooms/underwater/reactor/source-v1.png",
+    "prompt": "Edit this BrineSpace reactor room source to adopt the current underwater Engineering department. Preserve the same three machinery subjects, their exact locations, approximate silhouettes and relative sizes: one central upright cylindrical reactor chamber, a compact cooler in the northwest, and a small control unit in the southeast. Keep south-facing fronts and height screen-up, fixed near-top-down cutaway view, square walls aligned to canvas, broad EMPTY perimeter circulation around the central chamber. Replace the universal cream/ivory enamel with charcoal structural steel and restrained burnt-orange industrial panel sections; show believable steel access seams, welded frames and insulated cooling fittings. Chamber remains cylindrical with a dark amber-tinted inspection window and visible physical internals, NOT a glowing energy ball, magic coil or shrine. Mostly clean restored condition, very light handling wear, no rust wash. Cooler reads as a heavy heat exchanger with metal fins and contained insulated piping; control console has a dark unlit screen and physical controls. Do not add extra machines, loose parts or bridging pipes. Convert the thin ivory walls to low modular steel pressure-hull panels with narrow orange department trim, all four walls fully flush SEALED without doorway gaps, recesses, jambs or midpoint inserts. Engine supplies four sockets and shared geometry. Quiet flat charcoal floor. No active emission anywhere: glass tint and painted orange are non-emissive, all screens and indicators dark. No steam, flames, people, text, labels, stars, orbital imagery or UI. Transparent exterior if possible. Target1280 square, retain full room and complete machine edges. Match original restrained chunky pixel rendering; alter department materials without redesigning the placement or filling the room with texture.",
+    "reference": "rooms/whole-room/reactor-candidate.png",
+    "stage": "integrated_verified_scopes",
+    "primary_department": "Engineering",
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "integration": {
+      "view": "rooms/whole-room/reactor_view.gd",
+      "station": true,
+      "cards": true,
+      "card": "rooms/underwater/reactor/card-v4.png"
+    },
+    "verification": {
+      "complete_acceptance": false,
+      "document": "rooms/underwater/reactor/REGISTRATION.md",
+      "native": true,
+      "viewports": [
+        {
+          "viewport_width": 1280,
+          "pass": true,
+          "reactor_walker_samples": 1616,
+          "log": "output\\reactor-engineering\\station-1280.log"
+        },
+        {
+          "viewport_width": 1600,
+          "pass": true,
+          "reactor_walker_samples": 1616,
+          "log": "output\\reactor-engineering\\station-1600.log"
+        },
+        {
+          "viewport_width": 2560,
+          "pass": true,
+          "reactor_walker_samples": 1616,
+          "log": "output\\reactor-engineering\\station-2560.log"
+        }
+      ],
+      "visual_review": [
+        "512-square native card",
+        "1600 nursery/reactor pair q0 overview"
+      ]
+    },
+    "review": [
+      "Steel/orange non-emissive central chamber, cooler and console composition retained.",
+      "Source exterior is opaque black, not transparent. Engine shell replaces donor hull.",
+      "Card v3 omits the conservative inner pipe-loop floor strip; other fine margins still require review."
+    ],
+    "sha256": "487794fa86f762e5dcdb6ae93b1d1fe3cb29ee5cfad7144e7f44f128111ce7de",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB"
+  }
+]

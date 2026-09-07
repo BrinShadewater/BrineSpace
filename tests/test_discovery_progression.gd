@@ -11,6 +11,7 @@ var failures := 0
 func _init() -> void:
 	_test_foundation_pool_is_intentionally_small()
 	_test_every_recipe_has_progression_metadata()
+	_test_medical_airlock_progression()
 	_test_unlock_graph_reaches_every_room()
 	_test_reward_rooms_continue_or_end_explicitly()
 	_test_both_endpoints_are_required_for_functioning()
@@ -40,11 +41,23 @@ func _init() -> void:
 
 func _test_foundation_pool_is_intentionally_small() -> void:
 	var expected := [
+		"construction_drone_bay",
 		"solar_array", "reactor", "mining_drone_bay", "hydroponics_bay",
 		"life_support", "crew_hab", "research_lab", "storage_bay",
 		"med_bay", "quarantine_cell", "corridor", "corner"
 	]
 	_expect_equal(RoomDatabaseScript.STARTING_UNLOCKS, expected, "clean saves should begin with the authored foundation")
+
+func _test_medical_airlock_progression() -> void:
+	var link := _test_link("clinical_airlock")
+	_expect_equal(link.get("unlock_room_id"),"cryo_chamber","Medical care retains Cryo reward")
+	var progress := {}
+	var discovered := {}
+	for cycle in range(1,4):
+		var result := DiscoveryManagerScript.advance_cycle([link],progress,discovered,{})
+		progress=result.progress
+		discovered["clinical_airlock"]=true
+		_expect_equal(result.new_stabilization_ids,["clinical_airlock"] if cycle==3 else [],"Medical pattern stabilizes only on third functioning cycle")
 
 func _test_every_recipe_has_progression_metadata() -> void:
 	for synergy_value in SynergyManagerScript.all_synergies():

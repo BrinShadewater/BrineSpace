@@ -1,0 +1,17 @@
+{
+  "fixture": "tests/playtest_crew_water.gd",
+  "result": "PASS",
+  "inspected": {
+    "helmet-tread-east-crop.png": "eb054cf02d2afaad9933e87e8f302d3b2da52b36773943c8aa591c27b208e5ae",
+    "helmet-tread-north-crop.png": "690da24ad633421bb5101f32612f7c558e38ce32725809444fcb8d843c32bc12",
+    "helmet-death-3000-crop.png": "0b0db317a89cf589b1c6b331898f50e8abf74e38d425e89b44411a50f0197300"
+  },
+  "scope": "NPC helmet state drives renderer; four tread directions and underwater death captured",
+  "finding": "All crew visible with helmets; large shells remain readable",
+  "limits": [
+    "Fixture equips NPC directly; no locker interaction",
+    "No equipment save-state integration",
+    "No full swim route/collision verification",
+    "Helmet size remains a visual refinement item"
+  ]
+}

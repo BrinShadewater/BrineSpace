@@ -1,0 +1,42 @@
+{
+  "id": "med_office",
+  "brief": "Records symptoms and recovery protocols. Large L-shaped consultation desk on left with sloped monitor and empty chair, right side tall medical record drawers and a small examination stool. Desaturated cream enamel, muted blue upholstery, rubbed desk edges and one repaired cabinet panel. ONLY NORTH SOUTH doors, straight clear central aisle; west/east sealed. Future effect anchor desk monitor. Quiet office, no treatment beds or giant machinery.",
+  "prompt": "Use case: stylized-concept. One square1280 BrineSpace room sprite. Reference supplies ONLY overhead cutaway camera, hull construction, selective pixel detail and quiet slate floor; replace all mining equipment and yellow palette. Worn steel with readable large machinery and sparse purposeful detail. True transparent exterior, not black/checkerboard. No text/UI/people. Keep hull square and centered. Door gaps are centered14 percent width, floor flush to outer wall boundary with no extensions beyond hull and no blocking trim. Base equipment readable offline; localized functioning effects added later. Records symptoms and recovery protocols. Large L-shaped consultation desk on left with sloped monitor and empty chair, right side tall medical record drawers and a small examination stool. Desaturated cream enamel, muted blue upholstery, rubbed desk edges and one repaired cabinet panel. ONLY NORTH SOUTH doors, straight clear central aisle; west/east sealed. Future effect anchor desk monitor. Quiet office, no treatment beds or giant machinery.",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-9f5be7ef-e66e-4ef7-b05c-8c67d6020356.png",
+  "method": "built-in imagegen",
+  "reference_roles": {
+    "path": "rooms/hybrid/mining_drone_bay.png",
+    "inherit": "camera/hull/detail, north-south layout except Radio",
+    "exclude": "drones/yellow palette"
+  },
+  "processing": {
+    "size": 1280,
+    "margin": 8
+  },
+  "source_sha256": "b75d8bfc2191f18f1008df5edea1e266161d3b7c0d9d42421db1ec98d5daa2d3",
+  "output_sha256": "3971544dcb6164e45e36ae19dd7e2ae58033531052156b7e7bfa24852f3de9bc",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "output_size": [
+    1280,
+    1280
+  ],
+  "alpha_bounds": [
+    8,
+    8,
+    1272,
+    1272
+  ],
+  "exterior_sample": [
+    0,
+    0,
+    0,
+    255
+  ],
+  "stage": "normalized-candidate",
+  "review": "north/south openings and clear aisle; opaque black exterior survives normalization (alpha255 at 10,10); extraction and seam check required",
+  "integrated": false,
+  "native_verified": false
+}

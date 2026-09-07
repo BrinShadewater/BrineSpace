@@ -1,0 +1,59 @@
+[
+  {
+    "id": "airlock",
+    "canonical_ports_nesw": [2],
+    "footprint_cells": [1, 1],
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/underwater/airlock-v1/airlock_view.gd",
+      "card": "rooms/underwater/airlock-v4/card-low-cutaway-v1.png"
+    },
+    "source": "rooms/underwater/airlock-v4/wall-source.png",
+    "sha256": "dfebccdf2f6cbca6c409ef17255a33e95c218e254de4fa9fc69a0fd2430ab96e",
+    "component_assets": [
+      {
+        "path": "rooms/underwater/airlock-v4/window.png",
+        "sha256": "aff46df427faa7b3849ba8a0574fb4d13cabc6349e7883fd9e6831e4af89eb81"
+      },
+      {
+        "path": "rooms/underwater/airlock-v4/porthole.png",
+        "sha256": "e24517aab8fe478268d40cd559f61a04a056b01ae8ecbabf99466bfd985d132d"
+      },
+      {
+        "path": "rooms/underwater/airlock-v4/controller.png",
+        "sha256": "9cbc6039af1f5b5cf3390702679e6a68f756b6cc75012a0d8ff01269e2125529"
+      },
+      {
+        "path": "rooms/underwater/airlock-v4/manifold.png",
+        "sha256": "2c6e27a75b2d4550dad5c480b613f49dd2ac5d69099ef39f97ebec1f868c41d0"
+      },
+      {
+        "path": "rooms/underwater/airlock-v4/lamp.png",
+        "sha256": "e83fb4bc5ce4b1c367f15d23d763fb144afbc5c9f676d083790dc2661815ce5b"
+      },
+      {
+        "path": "rooms/underwater/airlock-v4/drain.png",
+        "sha256": "47a90fc13760cfa801a4d509aae3d21401d0d954fb73c755bc0f149b42961aa8"
+      },
+      {
+        "path": "rooms/underwater/airlock-v4/card-low-cutaway-v1.png",
+        "sha256": "395ac16eb5f00b185e53c8fb8600c83a60fe3a668bd73c5b6fe64719687322ae"
+      },
+      {
+        "path": "rooms/underwater/airlock-v1/cutouts.png",
+        "sha256": "ebbe8c23eeedc0b282fa1dda9539495fffb9995ff39042bba095668d117d0df4"
+      }
+    ],
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/airlock-v4/wall-profile.json",
+        "sha256": "31c98f855f1637b6de8ba773ce268f1c63437aa6a1425ae0a74384ce44c431dd"
+      },
+      {
+        "path": "rooms/underwater/airlock-v1/composition.json",
+        "sha256": "d4e2ac6ef9a4180a029aee9c940f011bf65fb053c80419777d96c55c245c2b27"
+      }
+    ]
+  }
+]

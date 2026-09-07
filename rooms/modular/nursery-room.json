@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "mycelium_nursery",
+  "stage": "integrated_verified",
+  "coordinate_system": "ground_xy_screen_up_height",
+  "doors": [1, 2, 3],
+  "props": [
+    {"id": "growth_rack", "kind": "rack", "center": [-108, -100], "footprint": [102, 74]},
+    {"id": "analysis_bench", "kind": "bench", "center": [108, -100], "footprint": [102, 74]},
+    {"id": "irrigation_reservoir", "kind": "tank", "center": [-108, 106], "footprint": [78, 78]},
+    {"id": "nutrient_filter", "kind": "filter", "center": [108, 106], "footprint": [102, 74]}
+  ],
+  "asset_roots": [
+    "res://rooms/modular/art-trial-01/",
+    "res://rooms/modular/components-01/",
+    "res://rooms/modular/materials-01/",
+    "res://rooms/modular/microscope-guided-01/"
+  ],
+  "rotation_policy": {
+    "floor_and_cabinet_surfaces": "rotate_ground_geometry",
+    "microscope": "select_registered_quarter_view",
+    "growth_and_reservoir": "upright_reuse_approximation",
+    "lights": "fixed_screen",
+    "effects": "room_local_anchors"
+  },
+  "limitations": [
+    "Generated microscope contours retain minor guide-relative drift.",
+    "Upright reservoir wear and growth details do not depict distinct physical rear views.",
+    "Single-room acceptance and evidence are tracked in docs/NURSERY_GAMEPLAY_INTEGRATION.md; older room-pack migration remains separate."
+  ]
+}

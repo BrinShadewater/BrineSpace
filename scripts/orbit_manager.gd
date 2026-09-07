@@ -71,8 +71,7 @@ var timer := 0
 var rng := RandomNumberGenerator.new()
 
 func _init() -> void:
-	rng.randomize()
-	_roll_poi()
+	rng.randomize() # Legacy save container; no events on new runs.
 
 func advance(cycle: int, capacities := {}) -> Dictionary:
 	var work_type := str(current_poi.get("work_type", "environment"))

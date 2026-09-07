@@ -1,0 +1,580 @@
+{
+  "name": "major-bill-v2",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "standingHeight": 74,
+  "background": "transparent",
+  "generator": "built-in imagegen",
+  "requiredMovementStates": [
+    "idle",
+    "walk",
+    "run"
+  ],
+  "requiredDirections": [
+    "south",
+    "north",
+    "east",
+    "west"
+  ],
+  "actionChain": [
+    "idle-east",
+    "kneel-east",
+    "repair-east",
+    "stand-east",
+    "idle-east"
+  ],
+  "states": [
+    {
+      "id": "idle-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-south/frame_000.png",
+        "../frames/idle-south/frame_001.png",
+        "../frames/idle-south/frame_002.png",
+        "../frames/idle-south/frame_003.png",
+        "../frames/idle-south/frame_004.png",
+        "../frames/idle-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-south.png"
+      ],
+      "sourceSha256": {
+        "idle-south": "180e9bcb0edd2901add2f7979c9eaaa2aa62acca4298f9291b69d5fbd46eac61"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "idle-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-north/frame_000.png",
+        "../frames/idle-north/frame_001.png",
+        "../frames/idle-north/frame_002.png",
+        "../frames/idle-north/frame_003.png",
+        "../frames/idle-north/frame_004.png",
+        "../frames/idle-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-north.png"
+      ],
+      "sourceSha256": {
+        "idle-north": "019ded7c565ab3be4a58e59786077934c938762c1a0184574565d3c270a5e4c4"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "idle-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-east/frame_000.png",
+        "../frames/idle-east/frame_001.png",
+        "../frames/idle-east/frame_002.png",
+        "../frames/idle-east/frame_003.png",
+        "../frames/idle-east/frame_004.png",
+        "../frames/idle-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-east.png"
+      ],
+      "sourceSha256": {
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "idle-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-west/frame_000.png",
+        "../frames/idle-west/frame_001.png",
+        "../frames/idle-west/frame_002.png",
+        "../frames/idle-west/frame_003.png",
+        "../frames/idle-west/frame_004.png",
+        "../frames/idle-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-west.png"
+      ],
+      "sourceSha256": {
+        "idle-west": "c9da491d80ac06d2bb907932307f2822d4c2ef29d90467b1724ca6991effdea2"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "walk-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-south/frame_000.png",
+        "../frames/walk-south/frame_001.png",
+        "../frames/walk-south/frame_002.png",
+        "../frames/walk-south/frame_003.png",
+        "../frames/walk-south/frame_004.png",
+        "../frames/walk-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-walk-south.png"
+      ],
+      "sourceSha256": {
+        "cleanup-walk-south": "20201363c39b2a9ae44dc959e3dc05494c28ad1e6997a3b764704f05fe62be79"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "walk-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-north/frame_000.png",
+        "../frames/walk-north/frame_001.png",
+        "../frames/walk-north/frame_002.png",
+        "../frames/walk-north/frame_003.png",
+        "../frames/walk-north/frame_004.png",
+        "../frames/walk-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-walk-north.png"
+      ],
+      "sourceSha256": {
+        "cleanup-walk-north": "003ac6f98aad88ef34c05c40de04c88382233db9906b055a97b32775e203ebe7"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette. Authored source pose order: [0, 2, 4, 1, 3, 5]."
+    },
+    {
+      "id": "walk-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-east/frame_000.png",
+        "../frames/walk-east/frame_001.png",
+        "../frames/walk-east/frame_002.png",
+        "../frames/walk-east/frame_003.png",
+        "../frames/walk-east/frame_004.png",
+        "../frames/walk-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-walk-east.png"
+      ],
+      "sourceSha256": {
+        "cleanup-walk-east": "c4759905c509dc26ac3fa6e134be8f3373e960b2752a439e2961a643f6e1bbe0"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "walk-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-west/frame_000.png",
+        "../frames/walk-west/frame_001.png",
+        "../frames/walk-west/frame_002.png",
+        "../frames/walk-west/frame_003.png",
+        "../frames/walk-west/frame_004.png",
+        "../frames/walk-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-walk-west.png"
+      ],
+      "sourceSha256": {
+        "cleanup-walk-west": "e46148dc9d47c8c3284780d5d0339977f095552a893aa89cdbf945a32de9f599"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "run-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-south/frame_000.png",
+        "../frames/run-south/frame_001.png",
+        "../frames/run-south/frame_002.png",
+        "../frames/run-south/frame_003.png",
+        "../frames/run-south/frame_004.png",
+        "../frames/run-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/run-south.png"
+      ],
+      "sourceSha256": {
+        "run-south": "f47e721ac12c42df0303d33f8e27e823fcdd986f05dc4175298d9f8c42077d74"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "run-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-north/frame_000.png",
+        "../frames/run-north/frame_001.png",
+        "../frames/run-north/frame_002.png",
+        "../frames/run-north/frame_003.png",
+        "../frames/run-north/frame_004.png",
+        "../frames/run-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-run-north.png"
+      ],
+      "sourceSha256": {
+        "cleanup-run-north": "381a4b692e551fefcd0776be775e585176e9f6c395c216c8c9ad1d1919097dbe"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette. Authored source pose order: [0, 2, 5, 1, 3, 4]."
+    },
+    {
+      "id": "run-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-east/frame_000.png",
+        "../frames/run-east/frame_001.png",
+        "../frames/run-east/frame_002.png",
+        "../frames/run-east/frame_003.png",
+        "../frames/run-east/frame_004.png",
+        "../frames/run-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-run-east.png"
+      ],
+      "sourceSha256": {
+        "cleanup-run-east": "7732474eec03b2995f9fbaaa72956d98dcb2b2ce35951379a9deeae0eaff0ff1"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "run-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        110,
+        85,
+        105,
+        110,
+        85,
+        105
+      ],
+      "fps": 10.0,
+      "loop": true,
+      "frameFiles": [
+        "../frames/run-west/frame_000.png",
+        "../frames/run-west/frame_001.png",
+        "../frames/run-west/frame_002.png",
+        "../frames/run-west/frame_003.png",
+        "../frames/run-west/frame_004.png",
+        "../frames/run-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-run-west.png"
+      ],
+      "sourceSha256": {
+        "cleanup-run-west": "7b6b451cd036362ee37c3e95e2d6cabf2083719b1153266acd27633794944daa"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "interact-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        180,
+        120,
+        140,
+        260,
+        140,
+        180
+      ],
+      "fps": 5.88235,
+      "loop": false,
+      "frameFiles": [
+        "../frames/interact-east/frame_000.png",
+        "../frames/interact-east/frame_001.png",
+        "../frames/interact-east/frame_002.png",
+        "../frames/interact-east/frame_003.png",
+        "../frames/interact-east/frame_004.png",
+        "../frames/interact-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-interact-east.png",
+        "../generated/idle-east.png"
+      ],
+      "sourceSha256": {
+        "cleanup-interact-east": "4b2f8bc11884a1f1a0ceb12390818014a578bdaf767f222ce7e02ef0dd878a10",
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    },
+    {
+      "id": "kneel-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "../frames/kneel-east/frame_000.png",
+        "../frames/kneel-east/frame_001.png",
+        "../frames/kneel-east/frame_002.png",
+        "../frames/kneel-east/frame_003.png",
+        "../frames/kneel-east/frame_004.png",
+        "../frames/kneel-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/cleanup-repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "5646ae63c4a0db9f0d1673feaed86c4637633e682112549fd6f8b13eb6108ac5",
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033",
+        "cleanup-repair-east": "feab51684ed90231f69a46fa3e0930bc00b8463c7694ccb1a13bae05099e6c36"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette. Endpoints shared with idle and repair."
+    },
+    {
+      "id": "repair-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        160,
+        140,
+        180,
+        140,
+        160,
+        180
+      ],
+      "fps": 6.25,
+      "loop": true,
+      "frameFiles": [
+        "../frames/repair-east/frame_000.png",
+        "../frames/repair-east/frame_001.png",
+        "../frames/repair-east/frame_002.png",
+        "../frames/repair-east/frame_003.png",
+        "../frames/repair-east/frame_004.png",
+        "../frames/repair-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-repair-east.png"
+      ],
+      "sourceSha256": {
+        "cleanup-repair-east": "feab51684ed90231f69a46fa3e0930bc00b8463c7694ccb1a13bae05099e6c36"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette. Authored source pose order: [0, 1, 2, 3, 1, 0]."
+    },
+    {
+      "id": "stand-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "../frames/stand-east/frame_000.png",
+        "../frames/stand-east/frame_001.png",
+        "../frames/stand-east/frame_002.png",
+        "../frames/stand-east/frame_003.png",
+        "../frames/stand-east/frame_004.png",
+        "../frames/stand-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/cleanup-repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "5646ae63c4a0db9f0d1673feaed86c4637633e682112549fd6f8b13eb6108ac5",
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033",
+        "cleanup-repair-east": "feab51684ed90231f69a46fa3e0930bc00b8463c7694ccb1a13bae05099e6c36"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": "kneel-east",
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette. Reversed kneel frames, ending with tool stowed."
+    },
+    {
+      "id": "walk-south-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-south-east/frame_000.png",
+        "../frames/walk-south-east/frame_001.png",
+        "../frames/walk-south-east/frame_002.png",
+        "../frames/walk-south-east/frame_003.png",
+        "../frames/walk-south-east/frame_004.png",
+        "../frames/walk-south-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-south-east.png"
+      ],
+      "sourceSha256": {
+        "walk-south-east": "ee371e855838e98f7a4b4f4d2d755cc77e71700fccf7a3d9a78da513a0a818cb"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    }
+  ],
+  "cleanup": {
+    "opaqueColorsBefore": 42778,
+    "opaqueColorsAfter": 64,
+    "isolatedAlphaPixelsRemoved": 0,
+    "dither": false,
+    "paletteColors": 64
+  },
+  "strideDistanceCells": {
+    "walk": 0.12,
+    "run": 0.168
+  }
+}

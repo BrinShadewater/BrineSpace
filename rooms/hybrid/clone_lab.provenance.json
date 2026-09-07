@@ -1,0 +1,20 @@
+{
+  "id": "clone_lab",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-61df7598-a234-4aee-ae14-b308d44d2aee.png",
+  "method": "built-in imagegen",
+  "prompt": "Use case: stylized-concept. Single BrineSpace game room PNG, overhead cutaway pixel illustration, square 1280 target, actual transparent exterior. Reference 1 (Med Bay) supplies ONLY steel/ceramic materials, camera and selective detail. Reference 2 (Mining Bay) supplies ONLY north/south open doorway construction and quiet clear aisle, NOT yellow palette, drones or paired composition. Same station hull thickness and equipment scale. Quiet dark slate floor, crisp readable large shapes, worn steel, restrained cool accents, no text, people, UI, checkerboard or scenery. Doors are actual floor-filled openings through the outer wall, not floating trim; sealed sides have no door trim. Base equipment is readable without active glow; reserve localized effects for runtime. Biomass is cultivated in a large horizontal oval incubation vessel across the upper interior, pearly translucent glass and muted sea-green fluid, with thick steel cradle. A small preparation bench in lower left and narrow nutrient-filtration cabinet lower right. Asymmetric supporting equipment; no humanoids or anatomy. Condensation at seals and replaced tubing, not random damage. Exactly WEST EAST SOUTH doors, NORTH solid sealed wall. Broad clear T aisle connects doors below the upper vessel. Ignore reference2 north opening: this room has no north door. Future activity anchor is vessel rim and nutrient feed, no baked luminous aura.",
+  "brief": "Biomass is cultivated in a large horizontal oval incubation vessel across the upper interior, pearly translucent glass and muted sea-green fluid, with thick steel cradle. A small preparation bench in lower left and narrow nutrient-filtration cabinet lower right. Asymmetric supporting equipment; no humanoids or anatomy. Condensation at seals and replaced tubing, not random damage. Exactly WEST EAST SOUTH doors, NORTH solid sealed wall. Broad clear T aisle connects doors below the upper vessel. Ignore reference2 north opening: this room has no north door. Future activity anchor is vessel rim and nutrient feed, no baked luminous aura.",
+  "references": [
+    "rooms/hybrid/med_bay.png: camera/materials",
+    "rooms/hybrid/mining_drone_bay.png: door construction"
+  ],
+  "stage": "normalized-candidate",
+  "geometry": "fail: side doorway recesses retain outer wall; needs repair",
+  "integration": {
+    "station": false,
+    "cards": false
+  },
+  "verification": {
+    "native_capture": null
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "status": "dry_equipment_fitting_pilot",
+  "equipment": "diving-helmet",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "walk-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-west.png"
+      ],
+      "sourceSha256": {
+        "walk-west": "afa2f8eabc5b22af3168bea4f8fc4e2d470bb4f84ccefc65459bfc8f10b1dd6f"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    }
+  ]
+}

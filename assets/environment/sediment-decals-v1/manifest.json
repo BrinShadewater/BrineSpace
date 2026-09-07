@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "prompt_records": [
+    "generation-record.json",
+    "revision-record.json"
+  ],
+  "title": "Sediment decal study",
+  "assets": [
+    {
+      "stage": "integrated; native layered review; owner approval pending",
+      "id": "silt-scour",
+      "kind": "effect",
+      "versions": [
+        {
+          "file": "silt-scour-v1.png",
+          "rejection": "Broad paired arcs resemble a ring rather than a short displaced scrape; not accepted for runtime",
+          "sha256": "e458bc44092a6be698c95dd134343b454a4d2a67b68ce0ede37028148d8c7bf8"
+        },
+        {
+          "file": "silt-scour-v2.png",
+          "sha256": "c3509bf05a37c8587aa5bfd48a7d3b90adef5caf4824a98768a7a8193058b632",
+          "rejection": null
+        }
+      ],
+      "selected_source": "silt-scour-v2.png"
+    }
+  ],
+  "runtime_registry": "sediment_decal_view.gd"
+}

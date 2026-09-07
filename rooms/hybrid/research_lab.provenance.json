@@ -1,0 +1,37 @@
+{
+  "id": "research_lab",
+  "brief": "Scientific instruments turn samples into data. A broad angular optical analysis bench spans the upper-left interior, with a large microscope and circular specimen stage; right side has a smaller sloped terminal rack and orderly sample drawers. Matte cream instrument covers contrast dark gunmetal, restrained blue lenses, polished wear at handles. Asymmetric masses, open aisle from south entrance to workstations. Future effect anchor specimen stage.",
+  "prompt": "Use case: stylized-concept. Asset: one BrineSpace room sprite, square 1280 target. Use reference for overhead cutaway camera, worn hull construction and selective pixel illustration treatment, and ONLY SOUTH centered open doorway layout. Completely replace medical furnishings with specified subject. NORTH EAST WEST walls sealed, no false door trim. South doorway is a floor passage through wall not a painted panel. Large readable equipment, quiet dark slate floor, sparse supporting details, same station scale. Genuinely transparent exterior; no black or checkerboard backdrop. No text, UI, logos, characters. Static base readable without active glow; future localized effects separate. Scientific instruments turn samples into data. A broad angular optical analysis bench spans the upper-left interior, with a large microscope and circular specimen stage; right side has a smaller sloped terminal rack and orderly sample drawers. Matte cream instrument covers contrast dark gunmetal, restrained blue lenses, polished wear at handles. Asymmetric masses, open aisle from south entrance to workstations. Future effect anchor specimen stage.",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-06f5df0b-a46a-4cd9-a5ea-5e14e470db68.png",
+  "method": "built-in imagegen",
+  "reference_roles": {
+    "path": "rooms/hybrid/med_bay.png",
+    "inherit": "camera/materials/south-only doors",
+    "exclude": "medical equipment"
+  },
+  "processing": {
+    "tool": "tools/room_art_pipeline.py",
+    "size": 1280,
+    "margin": 8
+  },
+  "source_sha256": "05dbf6b5814fd1c05d479959652b56fc2d68bb8d88be489e92ff8400578c6c4e",
+  "output_sha256": "0e471c242e6042e6733148bf48674381b261bdd8988cb7885c69d736a3c1713b",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "output_size": [
+    1280,
+    1280
+  ],
+  "exterior_sample": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage": "normalized-candidate",
+  "geometry": "south doorway visible, other sides sealed; seam/native checks pending",
+  "art": "distinct focal subject; gameplay scale not verified",
+  "integrated": false
+}

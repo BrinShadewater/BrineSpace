@@ -1,0 +1,125 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png",
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "preparation_island",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        -77,
+        -62,
+        66,
+        28
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ]
+    },
+    {
+      "id": "reagent_trolley",
+      "texture": "accessories",
+      "region": [
+        95,
+        640,
+        468,
+        488
+      ],
+      "footprint": [
+        46,
+        48,
+        32,
+        12
+      ]
+    },
+    {
+      "id": "sample_cooler",
+      "texture": "accessories",
+      "region": [
+        753,
+        115,
+        402,
+        385
+      ],
+      "footprint": [
+        142,
+        50,
+        30,
+        10
+      ]
+    }
+  ],
+  "supported": [
+    {
+      "id": "specimen_tray",
+      "texture": "accessories",
+      "region": [
+        96,
+        186,
+        454,
+        309
+      ],
+      "host": "research_specimens",
+      "anchor": [
+        389,
+        403
+      ],
+      "width": 20
+    }
+  ],
+  "mats": [
+    {
+      "host": "preparation_island",
+      "offset": [
+        -5,
+        8
+      ],
+      "size": [
+        76,
+        30
+      ],
+      "fill": "84969b",
+      "edge": "aab9bc"
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "preparation_island",
+        "source": [
+          1100,
+          1020
+        ]
+      },
+      "via": [
+        [
+          -58,
+          20
+        ]
+      ],
+      "to": {
+        "host": "research_scanner",
+        "source": [
+          505,
+          850
+        ]
+      },
+      "color": "455662",
+      "width": 1.8
+    }
+  ]
+}

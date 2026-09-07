@@ -1,0 +1,95 @@
+{
+  "textures": {
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "xeno_service_cart",
+      "texture": "accessories",
+      "region": [
+        95,
+        640,
+        468,
+        488
+      ],
+      "footprint": [
+        -140,
+        -80,
+        40,
+        16
+      ],
+      "centers_by_quarter": [
+        [
+          -65,
+          -78
+        ],
+        [
+          155,
+          -95
+        ],
+        [
+          65,
+          95
+        ],
+        [
+          -155,
+          100
+        ]
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "xeno_workbench",
+      "offset": [
+        -3,
+        3
+      ],
+      "size": [
+        100,
+        62
+      ],
+      "fill": "899aa3",
+      "edge": "a4b4b9"
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "xeno_vessel",
+        "source": [
+          435,
+          480
+        ]
+      },
+      "via": [
+        [
+          42,
+          -75
+        ],
+        [
+          58,
+          -55
+        ],
+        [
+          166,
+          -55
+        ],
+        [
+          171,
+          -20
+        ]
+      ],
+      "to": {
+        "host": "xeno_scanner",
+        "source": [
+          1090,
+          435
+        ]
+      },
+      "color": "526778",
+      "width": 2
+    }
+  ],
+  "decals": []
+}

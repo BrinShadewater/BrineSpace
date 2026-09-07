@@ -1,0 +1,11 @@
+{
+  "selected_sources": 3,
+  "source_review": "passed: real alpha, single reusable effects, complete exterior silhouettes",
+  "native_log": "output/ambient-water-native.log",
+  "source_audit": "output/ambient-water-v1/source-audit.json",
+  "native_checks": ["rendered motion differs", "frozen time gives identical pixels", "bounded crossfade", "invisible loop wrap", "authoritative pause and speed", "three effects at three resolutions", "unchanged occupancy and resources"],
+  "visual_review": "Final opacity pass reviewed: subtle current and silt, tiny bubble wake, station geometry remains above water. Initial lower-opacity pass was too faint.",
+  "owner_approval": "pending",
+  "packaged_export": "not verified in this pass",
+  "limits": ["three fixed ambient locations", "static source sprites with drift and fade", "no fluid physics, leaks or hazards", "tiny bubbles visible mainly when zoomed in"]
+}

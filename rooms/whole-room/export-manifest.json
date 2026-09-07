@@ -1,0 +1,194 @@
+[
+  {
+    "id": "life_support",
+    "source": "rooms/whole-room/life-support-underwater-source-v1.png",
+    "sha256": "b340afc131371088ac226d61ef989a3f28aff033ef7675b1e2e125cf539cee82",
+    "integration": {
+      "view": "rooms/whole-room/underwater_life_support_view.gd",
+      "card": "rooms/whole-room/life-support-card-mat-v4.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/battery-service-cart-v1.png",
+        "sha256": "4e69bab9b536f725cd937cd0fc1f32653022db6ff4083a8bcf6c31fae3e088e6"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/life-support-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/life-support-composition-v3.json",
+        "sha256": "4c3fb3d258e09bcea693e7dee6803dc4155189f095da9958539f34343e964b39"
+      }
+    ]
+  },
+  {
+    "id": "hydroponics_bay",
+    "source": "rooms/whole-room/hydroponics-candidate.png",
+    "sha256": "5a3e7312a9a28ca2bbe9a0800817639cd65a77555b3e3195e3fe2ab824e8822e",
+    "integration": {
+      "view": "rooms/whole-room/hydroponics_view.gd",
+      "card": "rooms/whole-room/hydroponics-card-harvest-v4.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/whole-room/hydro-potting-trolley-v1.png",
+        "sha256": "700463225ed2e9422c743ed90baf360f7c67b9410950fd7dc7b2e7805cbbf0ac"
+      },
+      {
+        "path": "rooms/whole-room/hydro-harvest-clean-v3.png",
+        "sha256": "fa9f08644cbb903b9fd293e25137f9ffd2269aef789ba3abaec2e7082816f39b"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/hydro-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/hydro-composition-v3.json",
+        "sha256": "92a3dd6b46968676d877cc555c118a397b7fbb8e910ec469f9360a39fc686e0f"
+      }
+    ]
+  },
+  {
+    "id": "reactor",
+    "source": "rooms/underwater/reactor/source-v1.png",
+    "sha256": "487794fa86f762e5dcdb6ae93b1d1fe3cb29ee5cfad7144e7f44f128111ce7de",
+    "integration": {
+      "view": "rooms/whole-room/reactor_view.gd",
+      "card": "rooms/whole-room/reactor-card-mat-v2.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/reactor-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/reactor-composition-v2.json",
+        "sha256": "553b3cf4f6a9b2dc9bd9292cc3820357a5b0d366c283e4e022b2be8ba4cfeae2"
+      }
+    ]
+  },
+  {
+    "id": "med_bay",
+    "source": "rooms/whole-room/med-bay-source-v1.png",
+    "sha256": "50f2bfef97600ccd77cfdebac8c8a003b2a3e5a410012798c1ea4d26ea7d6a6f",
+    "integration": {
+      "view": "rooms/whole-room/med_bay_view.gd",
+      "card": "rooms/whole-room/med-bay-card-foot-v3.png"
+    },
+    "canonical_ports_nesw": [
+      2
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-island-v2.png",
+        "sha256": "6ff91554f265a7db977f38f74c139fbfe9db6ea97a3be6ea1f29671fc4140022"
+      },
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/med-bay-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/med-bay-composition-v2.json",
+        "sha256": "0d0779e3b12047ec443cb2db4a58b3b336256d286f85fab9f04fb61d7f844af8"
+      }
+    ],
+    "activity_review": "Paired treatment beds and separate preparation/supply area. Four-rotation state checks, 72 static depth probes and current-controller entry/return tour pass (12 arrivals, 8 transitions, 699 samples). Postdates Windows v5; station-scale and package review pending."
+  },
+  {
+    "id": "crew_hab",
+    "source": "rooms/whole-room/crew-hab-source-v1.png",
+    "sha256": "9bc8548eae1f1c8bd88a833958824beda87ddd51d49e193a2ea6ddf47d74f7ba",
+    "integration": {
+      "view": "rooms/whole-room/crew_hab_view.gd",
+      "card": "rooms/whole-room/crew-hab-card-mat-v4.png"
+    },
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/lounge-support-v2.png",
+        "sha256": "0031013b88c2feeb40a8c1fce57e1b703615b66e8000ef229b3f9714131f0f6c"
+      },
+      {
+        "path": "rooms/whole-room/hab-drying-rack-clean-v1.png",
+        "sha256": "a922fa5baa92de0be0a3afb94d45f4ebdd0f9fcbb32b5a8ea64dfdc331dccc3d"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/crew-hab-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/crew-hab-composition-v3.json",
+        "sha256": "1fb4c9d1e53d13f983a0c486921094c57d5b6f5b92ebcb5af9e519b46d725f07"
+      }
+    ],
+    "activity_review": "Paired berths, reading area and desk group. Four-rotation current-controller tour: 16 arrivals, 20 transitions, 1617 movement samples. 84 static depth probes. Postdates Windows v5; package and station-scale review pending."
+  },
+  {
+    "id": "mycelium_nursery",
+    "source": "rooms/whole-room/nursery-master.png",
+    "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66",
+    "integration": {
+      "view": "rooms/whole-room/nursery_furnished_view.gd",
+      "card": "rooms/whole-room/nursery-card-substrate-v1.png"
+    },
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "scope": "Selected runtime source/card export coverage; not art acceptance",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "rooms/whole-room/nursery-substrate-stand-v1.png",
+        "sha256": "170af9170d2aafdfb7e119e8c91dc8e18f3fc6fbd45021d581bc66ec7f472f5a"
+      }
+    ],
+    "composition_profile": "rooms/whole-room/nursery-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/whole-room/nursery-composition-v3.json",
+        "sha256": "aed17d9a6e086b3d5b912f63385eb30c77b9c19c757448b4fa12ad7381f53c08"
+      }
+    ],
+    "activity_review": "Central growing rack, preparation bench/trolley and service equipment arrangement. Four-rotation state and 60 static depth probes pass; current-controller tour after production core wake passes 20 arrivals, 24 transitions, 1967 samples. Postdates Windows v6; station-scale/package review pending."
+  }
+]

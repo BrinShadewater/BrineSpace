@@ -1,0 +1,34 @@
+{
+  "provider": "built-in imagegen",
+  "reference": "../components-01/microscope.png",
+  "processing": "Raw outputs preserved, no cleanup or integration; visible checkerboard requires alpha inspection.",
+  "assets": [
+    {
+      "q": 1,
+      "view": "Rotate the physical microscope 90 degrees clockwise on its tabletop as seen from above. Show the opposite side profile from the reference: eyepiece leans toward upper-right, support pillar toward left.",
+      "prompt": "Use case: stylized-concept. Asset type: single directional game prop on genuine transparent RGBA background. Input image is the exact microscope identity and art-style reference. Rotate the physical microscope 90 degrees clockwise on its tabletop as seen from above. Show the opposite side profile from the reference: eyepiece leans toward upper-right, support pillar toward left. Fixed elevated orthographic game camera, unchanged screen-up vertical axis. This is a physical yaw turn, NOT a bitmap rotation or mirror. Preserve one cream worn-enamel microscope, same oval foot, single dark stage with hole, single ocular tube, dark ribbed focus knobs, restrained teal glass. Keep silhouette upright, entire base visible, no floor, no shadow plane, no room, no text, no other objects. Same painterly pixel-inspired edge detail and material scale. Soft light remains from screen upper-left. Center the full isolated object with generous transparent margins.",
+      "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-b201ed1b-ba13-4d9b-bffb-1e6aeca06c74.png",
+      "enabled_in_pilot": false,
+      "status": "withheld",
+      "review": "Opposite frontal silhouette, mirror-like rather than proven quarter turn."
+    },
+    {
+      "q": 2,
+      "view": "Rotate the physical microscope 180 degrees on its tabletop from the reference. Show its rear three-quarter view: rear support pillar closest to camera partially occludes the stage; eyepiece points away toward upper-right.",
+      "prompt": "Use case: stylized-concept. Asset type: single directional game prop on genuine transparent RGBA background. Input image is the exact microscope identity and art-style reference. Rotate the physical microscope 180 degrees on its tabletop from the reference. Show its rear three-quarter view: rear support pillar closest to camera partially occludes the stage; eyepiece points away toward upper-right. Fixed elevated orthographic game camera, unchanged screen-up vertical axis. This is a physical yaw turn, NOT a bitmap rotation or mirror. Preserve one cream worn-enamel microscope, same oval foot, single dark stage with hole, single ocular tube, dark ribbed focus knobs, restrained teal glass. Keep silhouette upright, entire base visible, no floor, no shadow plane, no room, no text, no other objects. Same painterly pixel-inspired edge detail and material scale. Soft light remains from screen upper-left. Center the full isolated object with generous transparent margins.",
+      "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-400fccfa-7c8c-4e94-8a64-d6f463295e2d.png",
+      "enabled_in_pilot": false,
+      "status": "withheld",
+      "review": "Rear request still exposes ocular front and stage; not a dependable 180-degree view."
+    },
+    {
+      "q": 3,
+      "view": "Rotate the physical microscope 270 degrees clockwise on its tabletop from the reference. Show the remaining side/rear-quarter view: support pillar toward right foreground, eyepiece points away toward upper-left. Do not repeat the reference front view.",
+      "prompt": "Use case: stylized-concept. Asset type: single directional game prop on genuine transparent RGBA background. Input image is the exact microscope identity and art-style reference. Rotate the physical microscope 270 degrees clockwise on its tabletop from the reference. Show the remaining side/rear-quarter view: support pillar toward right foreground, eyepiece points away toward upper-left. Do not repeat the reference front view. Fixed elevated orthographic game camera, unchanged screen-up vertical axis. This is a physical yaw turn, NOT a bitmap rotation or mirror. Preserve one cream worn-enamel microscope, same oval foot, single dark stage with hole, single ocular tube, dark ribbed focus knobs, restrained teal glass. Keep silhouette upright, entire base visible, no floor, no shadow plane, no room, no text, no other objects. Same painterly pixel-inspired edge detail and material scale. Soft light remains from screen upper-left. Center the full isolated object with generous transparent margins.",
+      "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-82288a53-0562-4485-8c1f-a1bafb2a9022.png",
+      "enabled_in_pilot": false,
+      "status": "withheld",
+      "review": "Rear-side silhouette improves, but angles and proportions not registered as consistent quarter-turn set."
+    }
+  ]
+}

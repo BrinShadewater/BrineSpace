@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrineSpace — crew and prop depth review</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui;background:#101b20;color:#e2eeeb}
+body{max-width:1640px;margin:24px auto;padding:0 18px}h1{font-size:26px}p{line-height:1.5;max-width:100ch;color:#bbcfcd}
+.controls{display:flex;flex-wrap:wrap;gap:16px;margin:24px 0}label{display:grid;gap:6px}select,button{font:inherit;color:inherit;background:#23383e;padding:10px;border:1px solid #789793;border-radius:4px}
+:focus-visible{outline:3px solid #f1c778;outline-offset:3px}.notice{border-left:3px solid #f1c778;padding:12px;background:#203035}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0;min-width:0}figcaption{padding:10px 0}img{display:block;width:100%;height:auto;image-rendering:pixelated;background:#424d51}a{color:#98ded2}
+#context{max-width:800px;margin-top:24px}#error{color:#ffc08e}small{color:#adc4c0} @media(max-width:750px){.comparison{grid-template-columns:1fr}}
+</style>
+<h1>Crew / prop depth review</h1>
+<p>Four registered props, four room rotations. Compare the native sorted render with deliberately reversed draw order. These are static diagnostic captures, not animation playback.</p>
+<p class="notice" id="scope" aria-live="polite"></p>
+<p class="notice" id="finding" aria-live="polite" hidden></p>
+<div class="controls">
+<label>Prop<select id="subject"><option value="0">Holo calibration cart</option><option value="1">Medical care trolley</option><option value="2">Maintenance repair table</option><option value="3">Crew Hab chair</option></select></label>
+<label>Room rotation<select id="quarter"><option value="0">0°</option><option value="1">90°</option><option value="2">180°</option><option value="3">270°</option></select></label>
+<label>Bill’s pose<select id="pose"><option value="behind">Behind prop</option><option value="front">In front of prop</option><option value="forced-overlap">Forced overlap — non-walkable</option></select></label>
+<button id="next" type="button">Next rotation</button>
+</div>
+<p id="error" role="alert" hidden>Capture unavailable. Keep this page in the repository’s docs folder with its output evidence folders intact.</p>
+<div class="comparison">
+<figure><figcaption>Native sorted rendering</figcaption><a id="normalLink"><img id="normal" alt=""></a></figure>
+<figure><figcaption>Deliberately reversed order — diagnostic only</figcaption><a id="wrongLink"><img id="wrong" alt=""></a></figure>
+</div>
+<figure id="context"><figcaption>Room-context diagnostic (centered on the prop; distant edges may be cropped)</figcaption><a id="contextLink"><img id="room" alt=""></a></figure>
+<p><a id="evidence">Underlying test record</a> · <a href="THREE_CREW_ROOM_REVIEW.md">Scope and retained failures</a></p>
+<small>Native images are 800 × 800 and render the scene at 2× world scale. Display fitting is not normal gameplay zoom. Clicking an image opens the original. No assets or crew positions are changed by this page.</small>
+<script>
+const subjects = [
+ {dir:'holo-cart-depth-v1',id:'holo_calibration_cart',name:'Holo calibration cart'},
+ {dir:'medical-trolley-depth-v1',id:'medical_care_trolley',name:'Medical care trolley'},
+ {dir:'maintenance-table-depth-v1',id:'repair_table',name:'Maintenance repair table'},
+ {dir:'hab-chair-setback-integrated-v1',id:'hab_chair',name:'Crew Hab chair'}
+];
+const el = id => document.getElementById(id);
+function render(){
+ const s=subjects[Number(el('subject').value)], q=Number(el('quarter').value), pose=el('pose').value;
+ const base=`../output/${s.dir}/${s.id}-q${q}-${pose}`;
+ el('error').hidden=true;
+ for(const [id,link,suffix,label] of [['normal','normalLink','.png','Native sorted'],['wrong','wrongLink','-wrong-order.png','Reversed draw order'],['room','contextLink','-full-room.png','Room context']]){
+  el(id).alt=`${label}: ${s.name}, ${q*90} degrees, ${pose}`;
+  el(id).src=base+suffix; el(link).href=base+suffix;
+ }
+ el('evidence').href=`../output/${s.dir}/review.json`;
+ el('scope').textContent=pose==='forced-overlap'
+  ? 'Forced non-walkable probe. This tests ordering sensitivity only; it is not a reachable gameplay pose.'
+  : 'Standable static pose in this room layout. Reversing order changes overlapping pixels. Standability alone does not prove a walking route from the door.';
+ const rearWallFinding=s.id==='hab_chair' && q===3 && pose==='behind';
+ el('finding').hidden=!rearWallFinding;
+ el('finding').textContent=rearWallFinding
+  ? 'Integrated setback: Bill’s upper body no longer projects into the exterior above the wall in this static pose. It still approaches the cap; other characters and animation poses remain unverified. Wall height and character scale are unchanged.' : '';
+}
+for(const id of ['subject','quarter','pose']) el(id).addEventListener('change',render);
+for(const id of ['normal','wrong','room']) el(id).addEventListener('error',()=>{el('error').hidden=false;});
+el('next').addEventListener('click',()=>{el('quarter').value=String((Number(el('quarter').value)+1)%4);render();});
+render();
+</script>
+</html>

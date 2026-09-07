@@ -129,14 +129,16 @@ func _test_orbit_rewards_do_not_bypass_discovery() -> void:
 	var game = _game()
 	game.orbit.current_poi = {"name": "Solar Flare", "work_required": 0, "expire_effect": {"power": 6}}
 	game.orbit.timer = 1
+	var before: Dictionary = game.resources.duplicate(true)
 	game._apply_orbit_event()
+	_expect(game.resources == before and game.orbit.timer == 1, "retired events neither advance nor grant resources")
 	_expect(not game.meta.unlocked_room_ids.has("battery_array"), "a solar flare must not bypass load balancing")
 	_room(game, "life_support", Vector2i(10, 10))
 	game.orbit.current_poi = {"name": "Frozen Escape Pod", "work_required": 1, "work_type": "life_support", "reward": {}}
 	game.orbit.timer = 1
 	game._apply_orbit_event()
 	_expect(not game.meta.unlocked_room_ids.has("cryo_chamber"), "an escape pod must not bypass clinical airlock")
-	_expect(game.crew_count == 1, "the pod still rescues its survivor")
+	_expect(game.crew_count == 0, "retired orbital pods cannot rescue crew")
 	_dispose(game)
 
 func _test_containment_cleans_corruption() -> void:

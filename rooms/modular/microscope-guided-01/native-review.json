@@ -1,0 +1,13 @@
+{
+  "status": "integrated in isolated pilot, provisionally accepted at 1440x1000",
+  "evidence": "output/microscope-guided-native-01/layered-detail-0.png through layered-detail-3.png",
+  "coverage_log": "output/microscope-coverage-01.log",
+  "findings": [
+    "All four views stay upright and show the intended side on the native bench.",
+    "Rear support occludes stage; no front-facing lens substituted for the rear view.",
+    "Cleanup removes exterior checkerboard; no background rectangle visible in native captures.",
+    "Shared full-canvas transform avoids independent tight-fit scale changes.",
+    "Generated silhouettes and base locations still differ slightly from dimensional guides; not pixel-locked art.",
+    "Main-game integration, exhaustive prop-depth checks and other viewport sizes remain unverified."
+  ]
+}

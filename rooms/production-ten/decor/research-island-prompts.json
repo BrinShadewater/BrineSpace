@@ -1,0 +1,16 @@
+{
+  "tool": "builtin image_gen",
+  "reference": {
+    "path": "rooms/production-ten/research_lab-source-v1.png",
+    "role": "science materials and camera only"
+  },
+  "generation": "Create one isolated supporting furniture sprite for an underwater research laboratory in the reference's finely shaded pixel-art style. Reference is STYLE AND CAMERA ONLY, not its room or layout. One modest waist-high white enamel and navy-blue preparation island: small rectangular tabletop with a clear central working area, a compact weighing pad on the right, three small capped sample vials held securely in a rack on the left, one folded paper note. Two shallow drawers and a closed lower cabinet support the entire tabletop, short recessed feet. A slender articulated inspection lamp is CLAMPED to the rear-left corner of this island and arches over its work surface; lamp lens neutral, runtime will add glow. The objects physically rest on the tabletop. This is ONE integrated workspace assembly, no unrelated surrounding props. Fixed orthographic top-down cutaway view, fronts screen south, straight horizontal edges, screen-vertical height, no isometric rotation. Maintained science-department finish, cool white/blue with dark inset hardware. Actual transparent RGBA background, invisible empty pixels, no checkerboard, no room, no floor tile, no text, no characters. Entire assembly visible with generous clear margin.",
+  "alphaCorrection": "Make the white background transparent. Keep the laboratory cabinet and attached lamp exactly as they are. Return a transparent PNG cutout with real alpha, including the open gap underneath the lamp arm and between the cabinet feet. No other changes.",
+  "selected": "research-island-v2.png",
+  "nativeSize": [
+    1312,
+    1199
+  ],
+  "registration": "alpha>=128 bounds (204,9)-(1119,1052), 2px registration margin; no raster postprocessing",
+  "tradeoff": "Alpha correction changed canvas and framing; source v1 coordinates cannot be reused."
+}

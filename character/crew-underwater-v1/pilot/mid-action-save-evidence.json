@@ -1,0 +1,16 @@
+{
+  "scope": "Real disk checkpoint at0.55s in equip/remove for all three crew",
+  "result": "PASS",
+  "checks": [
+    "NPC snapshots including remaining timer and equipment restore exactly",
+    "Rendered frame bytes restore for all three crew",
+    "Contradictory early equipment state rejected without mutation",
+    "Restored actions complete with expected equipment"
+  ],
+  "testSha256": "cdc6029e9edb5ed0b75d8b8f13b5425338d23e19ff9f0744bcc43f39860f3bee",
+  "logSha256": "c9eeded6af524154ffd2c8e2c0e234e67bb263a3e205c9a759eb5fca45771e94",
+  "limits": [
+    "Fixture triggers actions directly",
+    "No locker ownership or geometry validated"
+  ]
+}

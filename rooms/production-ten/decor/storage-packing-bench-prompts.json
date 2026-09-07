@@ -1,0 +1,15 @@
+{
+  "tool": "builtin image_gen",
+  "reference": "rooms/production-ten/storage_bay-source-v1.png",
+  "referenceRole": "camera and gray/yellow logistics materials only",
+  "generation": "Generate one isolated packing-workbench assembly for the BRINE underwater station game's Storage Bay. Reference supplies only its finely shaded pixel-art finish, gray galvanized cargo equipment, muted yellow safety accents, and fixed orthographic top-down cutaway camera. A small waist-high steel packing bench, front facing screen south, visible top and front, axis-aligned horizontal edges. Worktop holds a compact sealed parcel, a handheld inventory scanner in a little cradle, a paper manifest with no readable text, and a roll of yellow securing tape. A slim adjustable work light clamps to the back corner and points down at the worktop. Under the bench are one open bin with folded straps and one closed shallow supply box, positioned unevenly. Four short grounded feet, strong readable silhouette, maintained rather than rusty. This is ONE coherent secondary workspace, not four independent props; do not add crates around it or room walls or floor tile. Actual transparent RGBA background with zero alpha in exterior and furniture gaps. No checkerboard, white backdrop, people, words or logos. Entire lamp and feet visible within margins.",
+  "unlitEdit": "Edit only the lighting and background of this packing bench sprite. Remove all yellow bloom, gray haze, cast floor shadows and background pixels, leaving genuine transparent alpha outside the solid bench, its objects and lamp, including the open area below the lamp arm and between feet. Turn the work light OFF: its lens should be neutral gray with no illumination. Preserve the steel-and-yellow bench, parcel, scanner, manifest, tape roll, strap bin and case, and preserve the original camera and design. No checkerboard, no replacement backdrop. Return a clean transparent PNG cutout; the game will add operating light.",
+  "alphaEdit": "Make the background transparent. Keep the unlit packing bench exactly as it is. Return a PNG with real transparent alpha, including under the lamp and between the feet. No checkerboard pixels or background.",
+  "selectedSource": "storage-packing-bench-v3.png",
+  "registration": "storage-packing-bench-registration-v1.json",
+  "processing": "No raster postprocessing. Alpha-contour vector registration omits low-alpha haze and opens holes into source polygons. Native rendering required for acceptance.",
+  "rejected": [
+    "v1 bright lamp and haze",
+    "v2 RGB checkerboard"
+  ]
+}

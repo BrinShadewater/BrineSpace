@@ -1,0 +1,775 @@
+[
+  {
+    "id": "battery_array",
+    "subject": "Engineering: burnt orange cabinets, charcoal insulated cable housings and raw steel. NW tall modular battery bank with vertical charge-indicator slots on its south face; NE second differently arranged battery bank; SW breaker/control console; SE compact insulated cable distribution assembly. Banks are visibly electrochemical storage, not reactors.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Engineering: burnt orange cabinets, charcoal insulated cable housings and raw steel. NW tall modular battery bank with vertical charge-indicator slots on its south face; NE second differently arranged battery bank; SW breaker/control console; SE compact insulated cable distribution assembly. Banks are visibly electrochemical storage, not reactors.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/battery_array_view.gd",
+      "card": "rooms/production-ten/battery_array-card-bench-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "initial state/route fixture at 1280x720,1600x900,2560x1440",
+      "document": "docs/BATTERY_ARRAY_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Integrated; room-specific native checks passed; packaged follow-up and aesthetic acceptance pending."
+    },
+    "source": "rooms\\production-ten\\battery_array-source-v1.png",
+    "sha256": "3c162fe5df628b951a33dcf3c129cc4e156014e135e8f398ebf7db84703d6501",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Engineering",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\battery_array-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending."
+    ],
+    "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      },
+      {
+        "path": "rooms/production-ten/decor/battery-test-bench-clean-v2.png",
+        "sha256": "6186e65ad77cb78a7aa0581dc5c1043e7d3511ce8936129cc4d58d3255634909"
+      }
+    ],
+    "composition_profile": "rooms/production-ten/decor/battery-composition-v4.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/battery-composition-v4.json",
+        "sha256": "5ac1733b62e6d8357157eda04a3c4cdce09f6348edf4c4d9e0b55c0c364e832c"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  },
+  {
+    "id": "research_lab",
+    "subject": "Science: white ceramic/composite and cobalt blue panels, pale grey floor. NW specimen bench with sealed sample jars and microscope; NE analytical instrument with dark display; SW scanning apparatus with sample stage; SE clean supply cabinet. Ordered sterile analytical equipment.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Science: white ceramic/composite and cobalt blue panels, pale grey floor. NW specimen bench with sealed sample jars and microscope; NE analytical instrument with dark display; SW scanning apparatus with sample stage; SE clean supply cabinet. Ordered sterile analytical equipment.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/research_lab_view.gd",
+      "card": "rooms/production-ten/research_lab-card-services-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "initial per-host states and routes at 1280x720,1600x900,2560x1440",
+      "document": "docs/RESEARCH_LAB_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Activity v2 pairs the back-wall instruments and enlarges the supported preparation work area. Four-rotation route/state fixture and static crew-depth review pass; new package and final composition acceptance pending."
+    },
+    "source": "rooms\\production-ten\\research_lab-source-v1.png",
+    "sha256": "988680f7d611e8b9e4ada3ce777c3fe117ed29f70a1657debe5dbdadc5b1b610",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Science",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\research_lab-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending."
+    ],
+    "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "rooms/production-ten/decor/research-island-v2.png",
+        "sha256": "6ff91554f265a7db977f38f74c139fbfe9db6ea97a3be6ea1f29671fc4140022"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md",
+    "composition_profile": "rooms/production-ten/decor/research-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-composition-v3.json",
+        "sha256": "77f478ef73b6638a3c7686ad1659ab90fe0b9b06d9d958d451000e160b0885c7"
+      }
+    ]
+  },
+  {
+    "id": "maintenance_bay",
+    "subject": "Engineering: burnt orange, charcoal and steel. NW repair station with clamped mechanical part and compact servicing arm; NE tool rack/workbench with clearly recognizable tools; SW secured rack of spare hull panels; SE mobile diagnostic repair cart. Tidy workshop, localized handling wear.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Engineering: burnt orange, charcoal and steel. NW repair station with clamped mechanical part and compact servicing arm; NE tool rack/workbench with clearly recognizable tools; SW secured rack of spare hull panels; SE mobile diagnostic repair cart. Tidy workshop, localized handling wear.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/maintenance_bay_view.gd",
+      "card": "rooms/production-ten/maintenance_bay-card-services-v2.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "initial per-host states and routes at 1280x720,1600x900,2560x1440",
+      "document": "docs/MAINTENANCE_BAY_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Activity v2: larger central rear repair table, task light, compact parts and pressure-service groups; four rotations, 1092 routes and 96 static depth poses pass. New package and station-scale visual acceptance pending."
+    },
+    "source": "rooms\\production-ten\\maintenance_bay-source-v1.png",
+    "sha256": "613fa9535e1f9656d04a42c3db958f1067876afc334777b463195e3f03064d08",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Engineering",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\maintenance_bay-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending."
+    ],
+    "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md",
+    "composition_profile": "rooms/production-ten/decor/maintenance-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/maintenance-composition-v3.json",
+        "sha256": "5c44668189f7828a60727469715a3ba5f2bcbbbe22fbcdbd5dce66dddc3f4571"
+      }
+    ]
+  },
+  {
+    "id": "storage_bay",
+    "subject": "Logistics: neutral grey modular metal, muted yellow handling markings, not orange engineering. NW strapped secured crate stack; NE supply shelving with closed containers; SW compact cargo-handling pallet lift; SE smaller secured supply rack. Empty clear circulation, believable handling access.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Logistics: neutral grey modular metal, muted yellow handling markings, not orange engineering. NW strapped secured crate stack; NE supply shelving with closed containers; SW compact cargo-handling pallet lift; SE smaller secured supply rack. Empty clear circulation, believable handling access.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/storage_bay_view.gd",
+      "card": "rooms/production-ten/storage_bay-card-staging-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "initial static per-host states and routes at 1280x720,1600x900,2560x1440",
+      "document": "docs/STORAGE_BAY_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Activity v5: grouped packing lamp and floor lead, shelf-front clearance correction; 7 assemblies, four rotations and 1456 route samples pass. New package and final visual acceptance pending."
+    },
+    "source": "rooms\\production-ten\\storage_bay-source-v1.png",
+    "sha256": "0a32a31a12a62f5565951ee0e7166d30c012913ace760a30f527b99502af6570",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Logistics",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\storage_bay-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending."
+    ],
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/storage-packing-bench-v3.png",
+        "sha256": "1ada5c0de200853931ffd29b9a6aee650af64ebf24f8058fa8f915a580a21851"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "rooms/production-ten/decor/storage-staging-pallet-v1.png",
+        "sha256": "6cf635dd89b2879a864d908eeb014e4287f006db61f34ec3f5f0a47e99b7e1b7"
+      }
+    ],
+    "composition_profile": "rooms/production-ten/decor/storage-composition-v4.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/storage-composition-v4.json",
+        "sha256": "3d3aa94c9ba5602d7744809117fdb1fec739e9d30057db7ee64040e509876d0e"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  },
+  {
+    "id": "ore_refinery",
+    "subject": "Engineering with localized Logistics: burnt orange heavy steel machines, charcoal floor, yellow transfer markings. NW mineral crusher with contained short input conveyor entirely on its own base; NE closed processing vessels; SW contained sorting conveyor entirely within its own machine base; SE finished mineral collection hopper. No conveyor or pipe across any aisle.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Engineering with localized Logistics: burnt orange heavy steel machines, charcoal floor, yellow transfer markings. NW mineral crusher with contained short input conveyor entirely on its own base; NE closed processing vessels; SW contained sorting conveyor entirely within its own machine base; SE finished mineral collection hopper. No conveyor or pipe across any aisle.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/ore_refinery_view.gd",
+      "card": "rooms/production-ten/ore_refinery-card-transfer-v2.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "initial per-host states/routes/envelopes at 1280x720,1600x900,2560x1440",
+      "document": "docs/ORE_REFINERY_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Activity v2 groups crusher/hopper and nearby assay work surface, with vessels/sorter across the north-south aisle. Four rotations, 728 route samples and 72 static crew-depth probes pass. Postdates Windows v5; station-scale review and package pending."
+    },
+    "source": "rooms\\production-ten\\ore_refinery-source-v1.png",
+    "sha256": "f6b88ce8fe1d69e290da77c8863a78f796b27cf52cefc4dcc65a0c39a371edd8",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Engineering",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\ore_refinery-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending."
+    ],
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/ore-assay-bench-v2.png",
+        "sha256": "6b818f9c6d35c8cf3c173654b1d46dc1817877fe45748a294b906eddf27e1681"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      }
+    ],
+    "composition_profile": "rooms/production-ten/decor/refinery-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/refinery-composition-v3.json",
+        "sha256": "507dbbea1d4ac4752874eb993c4ac59652819ec1cd47166dc150a1b81cf43aa6"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  },
+  {
+    "id": "mining_drone_bay",
+    "subject": "Robotics: precision dark grey metal, muted cyan diagnostics, small yellow handling marks. NW compact UNDERWATER mining ROV in cradle with drill/manipulator and thrusters; NE second ROV servicing cradle with folded service arm; SW closed pressure-rated deployment hatch assembly with lifting frame, entirely within quadrant; SE tether reel and servicing console. No spacecraft or open water in dry room.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Robotics: precision dark grey metal, muted cyan diagnostics, small yellow handling marks. NW compact UNDERWATER mining ROV in cradle with drill/manipulator and thrusters; NE second ROV servicing cradle with folded service arm; SW closed pressure-rated deployment hatch assembly with lifting frame, entirely within quadrant; SE tether reel and servicing console. No spacecraft or open water in dry room.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/mining_drone_bay_view.gd",
+      "card": "assets/drones/fleet-v1/mining-bay-card-cutter-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "per-host states and routes at 1280x720,1600x900,2560x1440; final v2 card consumer at 2560x1440",
+      "document": "docs/MINING_DRONE_BAY_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Native 1280x720: 7 assemblies, four rotations, 728 route samples, state/pause/containment/nonoverlap pass. Card and q1/q3 visually reviewed. Packaged and aesthetic acceptance pending."
+    },
+    "source": "rooms\\production-ten\\mining_drone_bay-source-v1.png",
+    "sha256": "76ca8c800bcbd4fae8baa9e3d228a4fbf8ff55c2c3cf3b4389914a8a66c92d80",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Robotics",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\mining_drone_bay-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending.",
+      "Dark equipment with little cyan; verify grayscale readability at actual zoom. One drilling ROV and one servicing cradle.",
+      "Initial integration: dock-side diagnostics only; hatch remains closed. Legacy cross-hull drone flight suppressed for layered mining bay. V2 card reflects narrowed assemblies after failed aisle-envelope test."
+    ],
+    "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/drones/fleet-v1/atlas-matte-v1.png",
+        "sha256": "01825580fbe892cd290ed3b9583304ba27a7cc86da17937cc7ba1c5bdea03b40"
+      },
+      {
+        "path": "rooms/production-ten/decor/mining-cutter-stand-v1.png",
+        "sha256": "dbd67f90fbeddd108bc973ddce32c71b8e60d2957ff72a0b55223be9c083d6f0"
+      }
+    ],
+    "shared_runtime_assets": "Fleet atlas is registered in component_assets; older art-state evidence does not approve this new renderer.",
+    "composition_profile": "rooms/production-ten/decor/mining-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/mining-composition-v2.json",
+        "sha256": "9275272bd2f548c46056540a59ccfb15f538706418f4cd6659e896ff84a4011d"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  },
+  {
+    "id": "salvage_drone_bay",
+    "subject": "Robotics: precision dark grey metal, muted cyan with yellow recovery details. NW underwater recovery ROV in cradle with broad gripping arms, visibly different from mining drill drone; NE heavy recovery winch and tether spool; SW sorting bench with secured recovered components; SE closed pressure-rated deployment hatch and compact lifting rig. Keep hatch closed and contained, no spacecraft.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Robotics: precision dark grey metal, muted cyan with yellow recovery details. NW underwater recovery ROV in cradle with broad gripping arms, visibly different from mining drill drone; NE heavy recovery winch and tether spool; SW sorting bench with secured recovered components; SE closed pressure-rated deployment hatch and compact lifting rig. Keep hatch closed and contained, no spacecraft.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/salvage_drone_bay_view.gd",
+      "card": "assets/drones/fleet-v1/salvage-bay-card-recovery-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "per-host states, four rotations, topology, routes and effect envelopes at 1280x720,1600x900,2560x1440",
+      "document": "docs/SALVAGE_DRONE_BAY_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Native 1280x720: 5 assemblies, four rotations, 728 routes, state/pause/containment/nonoverlap pass. Card and q3 reviewed; packaged and final visual acceptance pending."
+    },
+    "source": "rooms\\production-ten\\salvage_drone_bay-source-v1.png",
+    "sha256": "f32984de5afeb25334a568c2e33fb6ba08429515b5990d18e5971212c33fba24",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Robotics",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\salvage_drone_bay-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending.",
+      "Initial integration: diagnostic cues only; hatch, crane, claws and unloaded winch remain still. Legacy cross-hull drone flight suppressed for layered salvage bay."
+    ],
+    "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/storage-packing-bench-v3.png",
+        "sha256": "1ada5c0de200853931ffd29b9a6aee650af64ebf24f8058fa8f915a580a21851"
+      },
+      {
+        "path": "assets/drones/fleet-v1/atlas-matte-v1.png",
+        "sha256": "01825580fbe892cd290ed3b9583304ba27a7cc86da17937cc7ba1c5bdea03b40"
+      },
+      {
+        "path": "rooms/production-ten/decor/salvage-recovery-tray-v1.png",
+        "sha256": "1b1f287e7ebcfb0c8c26fca491a40382710d068c0ed262da74fca4c9e4966ddd"
+      }
+    ],
+    "shared_runtime_assets": "Fleet atlas is registered in component_assets; older art-state evidence does not approve this new renderer.",
+    "composition_profile": "rooms/production-ten/decor/salvage-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/salvage-composition-v2.json",
+        "sha256": "45b2150bdbf8e5925ac57f0691ff244222ecd3141d5330b405e7f2ea22a8e5e6"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  },
+  {
+    "id": "crew_lounge",
+    "subject": "Crew Habitation: cream painted metal, muted warm orange textiles, brown synthetic wood and grey floor. NW comfortable couch with attached side table; NE communal dining table with neatly tucked stools; SW food-and-drink station with small coffee/dispenser machine; SE pair of lounge seats with shared game table. No beds. Cozy, lived-in objects clustered on surfaces, no people.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Crew Habitation: cream painted metal, muted warm orange textiles, brown synthetic wood and grey floor. NW comfortable couch with attached side table; NE communal dining table with neatly tucked stools; SW food-and-drink station with small coffee/dispenser machine; SE pair of lounge seats with shared game table. No beds. Cozy, lived-in objects clustered on surfaces, no people.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/crew_lounge_view.gd",
+      "card": "rooms/production-ten/crew_lounge-card-activity-v3.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "per-host states, four rotations, topology and routes at 1280x720,1600x900,2560x1440; rendered-piece effect checks at 1600x900",
+      "document": "docs/CREW_LOUNGE_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Integrated, native checks passed; full-set rollout and owner acceptance pending."
+    },
+    "source": "rooms\\production-ten\\crew_lounge-source-v1.png",
+    "sha256": "0c845390c3ff8e71fc8821f9d02905295a715483e3602ee69fb2ae52e159d67f",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Crew",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      1,
+      2,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms/production-ten/crew_lounge-source-v2.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending.",
+      "V1 southeast chairs face sideways. V2 corrects both chairs south. Dining stools are backless; L-sofa has a sideways return requiring separate registration/review.",
+      "Initial integration uses v2 source with separate rendered furniture pieces, intentional sofa rug, static seating and table, operating galley display."
+    ],
+    "revisions": [
+      {
+        "source": "rooms/production-ten/crew_lounge-source-v2.png",
+        "sha256": "d97f4e05350d7932d8af38629a8222bb2e2a9b8814ddaa201de21e4900cb5e70",
+        "prompt_reference": "rooms/production-ten/correction-prompts.json#crew_lounge"
+      }
+    ],
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/lounge-v1.png",
+        "sha256": "161a7807d6512e930c6f449406ac434a8f6d66eeb491e70960b5ca217efc240c"
+      },
+      {
+        "path": "rooms/production-ten/decor/lounge-support-v2.png",
+        "sha256": "0031013b88c2feeb40a8c1fce57e1b703615b66e8000ef229b3f9714131f0f6c"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  },
+  {
+    "id": "command_center",
+    "subject": "Command and Operations: brushed steel and gunmetal, deep red architectural accents (not all red). NW main broad south-facing operations console with dark sonar display and physical controls; NE station systems console with dark screen; SW compact central-operations table console; SE acoustic communications terminal. Underwater sonar/seabed operations, no star maps, no holographic core. Controlled finished surfaces.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Command and Operations: brushed steel and gunmetal, deep red architectural accents (not all red). NW main broad south-facing operations console with dark sonar display and physical controls; NE station systems console with dark screen; SW compact central-operations table console; SE acoustic communications terminal. Underwater sonar/seabed operations, no star maps, no holographic core. Controlled finished surfaces.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/command_center_view.gd",
+      "card": "rooms/production-ten/command_center-card-chair-v2.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "per-host states, four rotations, topology, routes and screen/aisle envelopes at 1280x720,1600x900,2560x1440",
+      "document": "docs/COMMAND_CENTER_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Native 1280x720, 5 assemblies, four rotations, 1456 routes, state/pause/containment/nonoverlap pass. Card and q3 inspected. Central operations layout, packaged checks and final visual acceptance pending."
+    },
+    "source": "rooms\\production-ten\\command_center-source-v1.png",
+    "sha256": "eb28428348ff55ad6f1929f2862f458a07e68b18ea2354b7cf010bc52685bd9a",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGBA",
+    "primary_department": "Command",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms/production-ten/command_center-source-v2.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending.",
+      "V1 rejected as static base: active sonar screens and open sockets. V2 darkens screens; east/south/west gaps remain. Use equipment only with authoritative shared hull.",
+      "Initial integration uses v2 dark consoles with operating sonar/status overlays. Generated wall gaps are excluded; shared hull owns sockets."
+    ],
+    "revisions": [
+      {
+        "source": "rooms/production-ten/command_center-source-v2.png",
+        "sha256": "40daaedb1b8d2961c0801810161037bafdd62a3259d62abb6f97b5ab625d4ab6",
+        "prompt_reference": "rooms/production-ten/correction-prompts.json#command_center"
+      }
+    ],
+    "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/command-credenza-v1.png",
+        "sha256": "7f1f88deafa827ecc2d25b44b494698e611d81c08f16f5fc171541086238e025"
+      },
+      {
+        "path": "rooms/production-ten/decor/command-operator-chair-v1.png",
+        "sha256": "e2a88e9ea0bba09d60dc4ba94699a95aceed9974da7515c5188183a54c1db11b"
+      }
+    ],
+    "composition_profile": "rooms/production-ten/decor/command-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/command-composition-v3.json",
+        "sha256": "9be2847bfd31b24e4b373f776e66577f4b5047705ec1865177fcfe6de3d2bcee"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  },
+  {
+    "id": "quarantine_cell",
+    "subject": "Security primary, Medical secondary localized to berth: armoured gunmetal, restrained deep red structural details, white/teal berth. NW isolated empty berth inside compact glass observation enclosure; NE dedicated sealed filtration unit with independent pipes; SW observation/diagnostic console; SE sealed protective-equipment cabinet. Humane isolation but controlled access, no blood, no occupant, no purple anomaly glow.",
+    "prompt": "Use case: stylized-concept. Create one individual BrineSpace room production source, target 1280x1280. Reference supplies ONLY chunky pixel-art rendering, fixed near-top-down cutaway camera, south-facing upright equipment and machinery scale, NOT its doors or palette or subjects. Square room, walls parallel image edges, not isometric diamond. Four separate complete equipment assemblies, one in each quadrant with broad empty cross-shaped circulation between them. All fronts face screen south, height screen up. Keep full silhouettes, attached cables and accessories within each quadrant, disconnected from walls and other assemblies for extraction. Quiet flat floor, no grid needed. Maintained mostly clean materials, functional fine detail, strong readable shapes. Shared low modular pressure hull with flush sealed walls on ALL four sides; no openings, recesses, doorframes. Neutral ambient illumination, no baked glow, dark unlit screens and indicator lenses (engine adds operating animation). No people, text, logos, UI, stars or space imagery. Actual transparent exterior if possible. Subject: Security primary, Medical secondary localized to berth: armoured gunmetal, restrained deep red structural details, white/teal berth. NW isolated empty berth inside compact glass observation enclosure; NE dedicated sealed filtration unit with independent pipes; SW observation/diagnostic console; SE sealed protective-equipment cabinet. Humane isolation but controlled access, no blood, no occupant, no purple anomaly glow.",
+    "reference": "rooms/whole-room/life-support-underwater-source-v1.png (camera/style only)",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/production-ten/quarantine_cell_view.gd",
+      "card": "rooms/production-ten/quarantine_cell-card-services-v2.png"
+    },
+    "verification": {
+      "native": true,
+      "scope": "per-host states, four rotations, east/west topology, routes and aisle envelopes at 1280x720,1600x900,2560x1440",
+      "document": "docs/QUARANTINE_CELL_INTEGRATION.md",
+      "complete_acceptance": false,
+      "batch_evidence": [
+        "docs/PRODUCTION_TEN_CONNECTIONS.md",
+        "docs/PRODUCTION_TEN_WALKER_PATHS.md",
+        "docs/PRODUCTION_TEN_ECONOMY_STATES.md",
+        "docs/PRODUCTION_TEN_CROSSINGS.md",
+        "docs/PRODUCTION_TEN_BLOCKED_BOUNDARIES.md",
+        "docs/PRODUCTION_TEN_MIXED_STATION.md",
+        "docs/PRODUCTION_TEN_WINDOWS_EXPORT.md"
+      ],
+      "remaining": "Owner aesthetic acceptance; existing per-room art tradeoffs. Verification is limited to documented fixtures, neighbors, frame samples and Windows debug build.",
+      "organic_composition": "Activity v2: grouped berth/monitor and separate preparation/supply area; four rotations, 728 routes and 72 static depth poses pass. Postdates Windows v5; station-scale review pending."
+    },
+    "source": "rooms\\production-ten\\quarantine_cell-source-v1.png",
+    "sha256": "e150e07902648c8dbd0e63823df83bcfabc60903f2215eda09dc7ee9329c066e",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "primary_department": "Security",
+    "condition": "maintained, mostly clean; generated wear requires visual review",
+    "canonical_ports_nesw": [
+      1,
+      3
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "geometry": {
+      "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
+      "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
+    },
+    "selected_source": "rooms\\production-ten\\quarantine_cell-source-v1.png",
+    "review": [
+      "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending.",
+      "Initial integration: empty berth and gear static; filtration gauge and observation display have operating cues."
+    ],
+    "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/research-island-v2.png",
+        "sha256": "6ff91554f265a7db977f38f74c139fbfe9db6ea97a3be6ea1f29671fc4140022"
+      },
+      {
+        "path": "rooms/production-ten/decor/research-v1.png",
+        "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      }
+    ],
+    "composition_profile": "rooms/production-ten/decor/quarantine-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/quarantine-composition-v3.json",
+        "sha256": "7f0f6a814e21c6f4ed70d1cabcac0a66e19be092756f0a6bc42e46b361c14de4"
+      }
+    ],
+    "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "listening_post",
+    "source": "rooms/underwater/acoustic-comms/radio_lab-source-v1.png",
+    "sha256": "647c17e2871eb6fcfa278a5e018fd4e23ef22d49c8252ab1e897c2c07c7f6a4a",
+    "source_role": "Reused acoustic equipment and existing operator chair; dedicated local arrangement",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/rare-dead-ends/listening_post_view.gd",
+      "card": "rooms/underwater/rare-dead-ends/listening_post-card-group-v1.png"
+    },
+    "composition_profile": "rooms/underwater/rare-dead-ends/listening-composition-v1.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/rare-dead-ends/listening-composition-v1.json",
+        "sha256": "625cf2e99962fbd6ae3e3e1f9f15bfba4a4f0f307c0407ff42928c2ca2063858"
+      }
+    ],
+    "component_assets": [
+      {
+        "path": "rooms/underwater/acoustic-comms/electronics-bench-v1.png",
+        "sha256": "43de46c853a1bb41a91931375e6ff702baebb3d76ff7a519305ec80540ba1729"
+      },
+      {
+        "path": "rooms/production-ten/decor/command-operator-chair-v1.png",
+        "sha256": "e2a88e9ea0bba09d60dc4ba94699a95aceed9974da7515c5188183a54c1db11b"
+      }
+    ]
+  }
+]

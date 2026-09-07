@@ -1,0 +1,454 @@
+{
+  "version": 1,
+  "source": {
+    "path": "assets/riser-wall-kit-style-v2/source/atlas.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "sha256": "82ae827a77a1ac08ee44f0a001e4c9be23a53821d32baffed35315af180b78c1"
+  },
+  "wall_envelope": [
+    -192,
+    -240,
+    384,
+    48
+  ],
+  "reserved_door_bay": [
+    -34,
+    -246,
+    68,
+    58
+  ],
+  "sprites": {
+    "ocean_porthole_small": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/ocean_porthole_small.png",
+      "size": [
+        200,
+        202
+      ],
+      "pivot": [
+        100.0,
+        101.0
+      ],
+      "units_per_pixel": 0.1188118811881188,
+      "recommended_height": 24,
+      "category": "window",
+      "source_region": [
+        36,
+        91,
+        283,
+        345
+      ],
+      "alpha_trim": [
+        29,
+        24,
+        229,
+        226
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "34e4f3f089852de2aabf97388f648663c769b423c1f2647f2828cec358f6d2a0"
+    },
+    "ocean_window_medium": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "size": [
+        316,
+        173
+      ],
+      "pivot": [
+        158.0,
+        86.5
+      ],
+      "units_per_pixel": 0.18497109826589594,
+      "recommended_height": 32,
+      "category": "window",
+      "source_region": [
+        316,
+        109,
+        677,
+        336
+      ],
+      "alpha_trim": [
+        29,
+        24,
+        345,
+        197
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "7f9b33d9e2a154cc0ace825490f5c1ab9f1dfba799b287d742f85383d7ce4378"
+    },
+    "ocean_window_panoramic": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "size": [
+        481,
+        172
+      ],
+      "pivot": [
+        240.5,
+        86.0
+      ],
+      "units_per_pixel": 0.19767441860465115,
+      "recommended_height": 34,
+      "category": "window",
+      "source_region": [
+        700,
+        110,
+        1240,
+        334
+      ],
+      "alpha_trim": [
+        33,
+        24,
+        514,
+        196
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "f92fe5ea1a41298f7d452a4a19338aa29070eb9553c8d84c65230671fee6c25f"
+    },
+    "ocean_window_tall": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "size": [
+        128,
+        220
+      ],
+      "pivot": [
+        64.0,
+        110.0
+      ],
+      "units_per_pixel": 0.18181818181818182,
+      "recommended_height": 40,
+      "category": "window",
+      "source_region": [
+        64,
+        355,
+        240,
+        629
+      ],
+      "alpha_trim": [
+        28,
+        29,
+        156,
+        249
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "36326e032763701bffa6d012f39fbd7969a78df25519eb2652d7558d8a8729cc"
+    },
+    "ocean_twin_portholes": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/ocean_twin_portholes.png",
+      "size": [
+        329,
+        182
+      ],
+      "pivot": [
+        164.5,
+        91.0
+      ],
+      "units_per_pixel": 0.16483516483516483,
+      "recommended_height": 30,
+      "category": "window",
+      "source_region": [
+        316,
+        383,
+        694,
+        620
+      ],
+      "alpha_trim": [
+        32,
+        29,
+        361,
+        211
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "f8a6ef9250afe85f2a6e357e7ae21c5c080fcbaa360880c968d40afdb62652ea"
+    },
+    "hull_infill_panel": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/hull_infill_panel.png",
+      "size": [
+        397,
+        184
+      ],
+      "pivot": [
+        198.5,
+        92.0
+      ],
+      "units_per_pixel": 0.17391304347826086,
+      "recommended_height": 32,
+      "category": "hull",
+      "source_region": [
+        743,
+        384,
+        1199,
+        617
+      ],
+      "alpha_trim": [
+        33,
+        26,
+        430,
+        210
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "5bef8fc968d4b088a31e9f2eaaa6932ae8b7152eae4e07882e1144d5a11bc2d9"
+    },
+    "reinforced_access_panel": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "size": [
+        379,
+        189
+      ],
+      "pivot": [
+        189.5,
+        94.5
+      ],
+      "units_per_pixel": 0.1693121693121693,
+      "recommended_height": 32,
+      "category": "hull",
+      "source_region": [
+        36,
+        653,
+        461,
+        894
+      ],
+      "alpha_trim": [
+        29,
+        30,
+        408,
+        219
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "7f1e54b29a2116ca584aac078c1c753e68dbefeee7a4e15c97fdab79db5d2655"
+    },
+    "small_access_cover": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/small_access_cover.png",
+      "size": [
+        198,
+        189
+      ],
+      "pivot": [
+        99.0,
+        94.5
+      ],
+      "units_per_pixel": 0.14814814814814814,
+      "recommended_height": 28,
+      "category": "hull",
+      "source_region": [
+        517,
+        650,
+        762,
+        893
+      ],
+      "alpha_trim": [
+        32,
+        30,
+        230,
+        219
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "e5eac75b00a42a3bf7e35016abcb702d2aee9105d3a047400be41cb5f6a852fc"
+    },
+    "structural_rib": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/structural_rib.png",
+      "size": [
+        79,
+        219
+      ],
+      "pivot": [
+        39.5,
+        109.5
+      ],
+      "units_per_pixel": 0.182648401826484,
+      "recommended_height": 40,
+      "category": "hull",
+      "source_region": [
+        901,
+        634,
+        1029,
+        905
+      ],
+      "alpha_trim": [
+        35,
+        31,
+        114,
+        250
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "05a7807e752e1d43dd36a438e2b65fda29b89ececbe334eae1cf46709c01c3e2"
+    },
+    "monitor_single": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/monitor_single.png",
+      "size": [
+        169,
+        197
+      ],
+      "pivot": [
+        84.5,
+        98.5
+      ],
+      "units_per_pixel": 0.16243654822335024,
+      "recommended_height": 32,
+      "category": "screen",
+      "source_region": [
+        56,
+        914,
+        272,
+        1164
+      ],
+      "alpha_trim": [
+        29,
+        35,
+        198,
+        232
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "d3d0c58f564c68f56e88803c37d42a87473a1f29f9efb0467bb70f1b46fa8973"
+    },
+    "monitor_dual": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "size": [
+        303,
+        199
+      ],
+      "pivot": [
+        151.5,
+        99.5
+      ],
+      "units_per_pixel": 0.16080402010050251,
+      "recommended_height": 32,
+      "category": "screen",
+      "source_region": [
+        305,
+        919,
+        657,
+        1171
+      ],
+      "alpha_trim": [
+        30,
+        36,
+        333,
+        235
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "e9d224c1b3e7a68627f9d2d8b594e22f2852e552cf8d7561aeff5139feaf25a3"
+    },
+    "status_display_wide": {
+      "path": "assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "size": [
+        480,
+        187
+      ],
+      "pivot": [
+        240.0,
+        93.5
+      ],
+      "units_per_pixel": 0.1711229946524064,
+      "recommended_height": 32,
+      "category": "screen",
+      "source_region": [
+        683,
+        933,
+        1223,
+        1171
+      ],
+      "alpha_trim": [
+        33,
+        34,
+        513,
+        221
+      ],
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "14f9e54c67c9e638601f2ad37c07c32d0612fa1165611b7e2ca800a6537537a0"
+    }
+  },
+  "layouts": {
+    "observation": [
+      [
+        "ocean_window_panoramic",
+        -115,
+        -216
+      ],
+      [
+        "structural_rib",
+        -44,
+        -216
+      ],
+      [
+        "ocean_window_medium",
+        88,
+        -216
+      ],
+      [
+        "ocean_porthole_small",
+        151,
+        -216
+      ]
+    ],
+    "engineering": [
+      [
+        "hull_infill_panel",
+        -120,
+        -216
+      ],
+      [
+        "small_access_cover",
+        -52,
+        -216
+      ],
+      [
+        "monitor_single",
+        67,
+        -216
+      ],
+      [
+        "monitor_dual",
+        130,
+        -216
+      ]
+    ],
+    "science": [
+      [
+        "ocean_window_tall",
+        -163,
+        -216
+      ],
+      [
+        "ocean_twin_portholes",
+        -108,
+        -216
+      ],
+      [
+        "structural_rib",
+        -44,
+        -216
+      ],
+      [
+        "status_display_wide",
+        109,
+        -216
+      ]
+    ]
+  }
+}

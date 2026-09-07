@@ -1,0 +1,153 @@
+{
+  "skill_name": "brinespace-character-pipeline",
+  "version": 1,
+  "status": "partially_executed",
+  "path_base": "active BrineSpace checkout",
+  "output_cases": [
+    {
+      "id": "new-officer-concept",
+      "prompt": "Create a new BrineSpace engineering officer based on Major Bill's art style. I only want the concept for now.",
+      "inputs": [
+        "docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md",
+        "character/major-bill-v2",
+        "character/dr-veld-v1/concept-01.png"
+      ],
+      "assertions": [
+        "Preserves shared style with a distinct officer identity",
+        "Saves canonical source and provenance",
+        "Shows a same-scale comparison",
+        "Does not change gameplay or produce an unsolicited full animation pack"
+      ],
+      "visual_review": [
+        "Silhouette and department readability",
+        "Character consistency with approved crew"
+      ]
+    },
+    {
+      "id": "walk-repair",
+      "prompt": "Clean up Veld's east-facing walk using the supplied defect notes. Keep her identity and other accepted actions intact.",
+      "inputs": [
+        "character/dr-veld-v1",
+        "scripts/crew_sprite_player.gd"
+      ],
+      "fixture_setup": "Use an isolated copy and supply a real observed walk defect, or introduce a labeled registration defect in the copy. Keep baseline hashes of unrelated frames.",
+      "assertions": [
+        "Inspects the reported defect before selecting a repair",
+        "Preserves original sources and unrelated accepted frame pixels",
+        "Preserves the compatible canvas, pivot and state interface",
+        "Validates affected exports and reviews changed motion",
+        "Does not create unnecessary new actions"
+      ],
+      "visual_review": [
+        "Defect corrected without identity drift",
+        "Ground contact and loop continuity"
+      ]
+    },
+    {
+      "id": "prepared-pack-integration",
+      "prompt": "Integrate this prepared BrineSpace crew pack as a wandering NPC with independent needs and saved state, using the existing prototype behavior.",
+      "inputs": [
+        "scripts/bill_npc.gd",
+        "scripts/veld_npc.gd",
+        "scripts/crew_sprite_player.gd",
+        "tests/test_crew_polish.gd"
+      ],
+      "fixture_setup": "Supply a contract-valid prepared pack in an isolated checkout, with isolated saves/settings. Evaluate the requested crew count rather than assuming two-actor tests cover an added third actor.",
+      "assertions": [
+        "Uses independent needs, random state and playback",
+        "Checks required states against the controller",
+        "Verifies reachable movement, door response and depth",
+        "Verifies pause and saved action restoration",
+        "Preserves existing run economy and avoids unrelated architecture changes"
+      ],
+      "visual_review": [
+        "Native action transitions",
+        "Room and corridor occlusion",
+        "Applicable crew passing"
+      ]
+    },
+    {
+      "id": "wearable-transition-repair",
+      "prompt": "Repair these BrineSpace helmet transitions and integrate them for all supplied crew without changing their body scale.",
+      "inputs": [
+        "character/crew-underwater-v1",
+        "scripts/crew_sprite_player.gd",
+        "scripts/bill_npc.gd"
+      ],
+      "fixture_setup": "Use isolated source copies with a labeled visor-occlusion defect and tall overhead pose. Preserve baseline frame hashes.",
+      "assertions": [
+        "Measures helmet/body differences separately",
+        "Preserves body scale with appropriate canvas/pivot",
+        "Records per-pose source and fitting provenance",
+        "Synchronizes transition with simulation timer",
+        "Tests real mid-action disk restoration for all crew",
+        "Reports missing locker geometry rather than claiming a fixture proves it"
+      ],
+      "visual_review": [
+        "Single head in worn helmet and empty carried helmet",
+        "Gloves and tool sidedness",
+        "Endpoint silhouette continuity",
+        "Overhead clearance at station scale"
+      ]
+    },
+    {
+      "id": "locker-stage-handoff-review",
+      "prompt": "Review our current crew locker animations and identify what is still needed before calling the interaction visually complete. Keep existing reusable-gear behavior and save semantics. This is a read-only review; do not generate art or edit gameplay.",
+      "inputs": [
+        "skills/brinespace-character-pipeline/references/underwater-equipment.md",
+        "character/crew-underwater-v1/locker/README.md",
+        "character/crew-underwater-v1/build_locker_sequences.py",
+        "scripts/airlock_service.gd",
+        "tests/test_airlock.gd"
+      ],
+      "assertions": [
+        "Selects the character workflow and room workflow for the prop interaction as applicable",
+        "Distinguishes exact endpoint equality, combined dwell and preceding silhouette discontinuity",
+        "Checks named handoff markers against final composed durations",
+        "Distinguishes shelf visibility from finite inventory and preserves atomic cancellation",
+        "Treats static native captures and passing tests as insufficient for continuous visual acceptance",
+        "Identifies per-stage and post-release save evidence without claiming an unexecuted skill evaluation passed",
+        "Respects read-only scope"
+      ],
+      "visual_review": [
+        "Not applicable to this read-only workflow decision trial; does not certify animation quality"
+      ]
+    }
+  ],
+  "selection_cases": [
+    {
+      "prompt": "Create a female Science Officer for BrineSpace based on Bill.",
+      "should_trigger": true
+    },
+    {
+      "prompt": "Veld's walking frames wobble; clean them up.",
+      "should_trigger": true
+    },
+    {
+      "prompt": "Package these approved BrineSpace crew frames for Godot.",
+      "should_trigger": true
+    },
+    {
+      "prompt": "Animate the research room machinery.",
+      "should_trigger": false,
+      "expected_route": "brinespace-room-pipeline"
+    },
+    {
+      "prompt": "Make a sprite sheet for an unrelated platformer.",
+      "should_trigger": false,
+      "expected_route": "sprite-animation-maker"
+    },
+    {
+      "prompt": "Add a BrineSpace officer and a laboratory console she can use.",
+      "should_trigger": true,
+      "expected_route": "character workflow plus room workflow for console art/registration"
+    },
+    {
+      "prompt": "Add swimming and diving-helmet animations for the BrineSpace crew.",
+      "should_trigger": true
+    }
+  ],
+  "execution_records": [
+    "docs/validation/character-pipeline-locker-trial-2026-09-06/result.json"
+  ]
+}

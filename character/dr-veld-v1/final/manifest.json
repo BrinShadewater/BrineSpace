@@ -1,0 +1,427 @@
+{
+  "name": "dr-veld-v1",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "standingHeight": 74,
+  "background": "transparent",
+  "generator": "built-in imagegen",
+  "requiredMovementStates": [
+    "idle",
+    "walk"
+  ],
+  "requiredDirections": [
+    "south",
+    "north",
+    "east",
+    "west"
+  ],
+  "strideDistanceCells": {
+    "walk": 0.12
+  },
+  "actionChain": [
+    "idle-east",
+    "kneel-east",
+    "repair-east",
+    "stand-east",
+    "idle-east"
+  ],
+  "actionMeaning": {
+    "interact": "scanner reading",
+    "repair": "sample inspection"
+  },
+  "cleanup": {
+    "opaqueColorsBefore": 28358,
+    "opaqueColorsAfter": 64,
+    "isolatedAlphaPixelsRemoved": 0,
+    "dither": false,
+    "paletteColors": 64
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-south/frame_000.png",
+        "../frames/idle-south/frame_001.png",
+        "../frames/idle-south/frame_002.png",
+        "../frames/idle-south/frame_003.png",
+        "../frames/idle-south/frame_004.png",
+        "../frames/idle-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-south.png"
+      ],
+      "sourceSha256": {
+        "idle-south": "b32b056775b9f81f424b82ab9274f069ad4c315982a711214d45a5a0b92cd6b9"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "idle-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-north/frame_000.png",
+        "../frames/idle-north/frame_001.png",
+        "../frames/idle-north/frame_002.png",
+        "../frames/idle-north/frame_003.png",
+        "../frames/idle-north/frame_004.png",
+        "../frames/idle-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-north.png"
+      ],
+      "sourceSha256": {
+        "idle-north": "3cebb3f25da63c55ab4c7bfa6811dea42939f27bb3ef41db890f28df632f3ee9"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "idle-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-east/frame_000.png",
+        "../frames/idle-east/frame_001.png",
+        "../frames/idle-east/frame_002.png",
+        "../frames/idle-east/frame_003.png",
+        "../frames/idle-east/frame_004.png",
+        "../frames/idle-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-east.png"
+      ],
+      "sourceSha256": {
+        "idle-east": "d6f8e0854bbf086e82a36a323794ccb636c7867a7580681da5a7669eeb3eeaa1"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "idle-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        260,
+        220,
+        240,
+        220,
+        240,
+        260
+      ],
+      "fps": 4.16667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/idle-west/frame_000.png",
+        "../frames/idle-west/frame_001.png",
+        "../frames/idle-west/frame_002.png",
+        "../frames/idle-west/frame_003.png",
+        "../frames/idle-west/frame_004.png",
+        "../frames/idle-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/idle-west.png"
+      ],
+      "sourceSha256": {
+        "idle-west": "49571dff89b97b658a5dca1a039eedd7902f18f92a20586266a4e36f9119e664"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "walk-south",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-south/frame_000.png",
+        "../frames/walk-south/frame_001.png",
+        "../frames/walk-south/frame_002.png",
+        "../frames/walk-south/frame_003.png",
+        "../frames/walk-south/frame_004.png",
+        "../frames/walk-south/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-south.png"
+      ],
+      "sourceSha256": {
+        "walk-south": "ba63a955a2de8708ad2534e7268e282224fbbfdae7104a9502e81d01a2126412"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "walk-north",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-north/frame_000.png",
+        "../frames/walk-north/frame_001.png",
+        "../frames/walk-north/frame_002.png",
+        "../frames/walk-north/frame_003.png",
+        "../frames/walk-north/frame_004.png",
+        "../frames/walk-north/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-north.png"
+      ],
+      "sourceSha256": {
+        "walk-north": "f6c0d751ba293701796ffe31bb7b5e3c09c26c48ca83b4de4cc000f1f9749052"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "walk-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-east/frame_000.png",
+        "../frames/walk-east/frame_001.png",
+        "../frames/walk-east/frame_002.png",
+        "../frames/walk-east/frame_003.png",
+        "../frames/walk-east/frame_004.png",
+        "../frames/walk-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-east.png"
+      ],
+      "sourceSha256": {
+        "walk-east": "7dc28d9419cde13fc9319a67f40e64ecf22ca6adf9cada4bff965c85d9949511"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "walk-west",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "../frames/walk-west/frame_000.png",
+        "../frames/walk-west/frame_001.png",
+        "../frames/walk-west/frame_002.png",
+        "../frames/walk-west/frame_003.png",
+        "../frames/walk-west/frame_004.png",
+        "../frames/walk-west/frame_005.png"
+      ],
+      "sources": [
+        "../generated/walk-west.png"
+      ],
+      "sourceSha256": {
+        "walk-west": "afa2f8eabc5b22af3168bea4f8fc4e2d470bb4f84ccefc65459bfc8f10b1dd6f"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "interact-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        180,
+        120,
+        140,
+        260,
+        140,
+        180
+      ],
+      "fps": 5.88235,
+      "loop": false,
+      "frameFiles": [
+        "../frames/interact-east/frame_000.png",
+        "../frames/interact-east/frame_001.png",
+        "../frames/interact-east/frame_002.png",
+        "../frames/interact-east/frame_003.png",
+        "../frames/interact-east/frame_004.png",
+        "../frames/interact-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/interact-east.png",
+        "../generated/idle-east.png"
+      ],
+      "sourceSha256": {
+        "interact-east": "86d928b791b944a105490f410e49f721333f22ce7c209f765f778bad172d2603",
+        "idle-east": "d6f8e0854bbf086e82a36a323794ccb636c7867a7580681da5a7669eeb3eeaa1"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "kneel-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "../frames/kneel-east/frame_000.png",
+        "../frames/kneel-east/frame_001.png",
+        "../frames/kneel-east/frame_002.png",
+        "../frames/kneel-east/frame_003.png",
+        "../frames/kneel-east/frame_004.png",
+        "../frames/kneel-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "8ab43dd9e7166b30a95cac898a310a38b4edf10f7d1e0bdaaa9423ca9cefb0e4",
+        "idle-east": "d6f8e0854bbf086e82a36a323794ccb636c7867a7580681da5a7669eeb3eeaa1",
+        "repair-east": "b14782e40e9e21192e8e9b2ee346d88fcac8807d41b3682284e0a240de278fa6"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "repair-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        160,
+        140,
+        180,
+        140,
+        160,
+        180
+      ],
+      "fps": 6.25,
+      "loop": true,
+      "frameFiles": [
+        "../frames/repair-east/frame_000.png",
+        "../frames/repair-east/frame_001.png",
+        "../frames/repair-east/frame_002.png",
+        "../frames/repair-east/frame_003.png",
+        "../frames/repair-east/frame_004.png",
+        "../frames/repair-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/repair-east.png"
+      ],
+      "sourceSha256": {
+        "repair-east": "b14782e40e9e21192e8e9b2ee346d88fcac8807d41b3682284e0a240de278fa6"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    },
+    {
+      "id": "stand-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "../frames/stand-east/frame_000.png",
+        "../frames/stand-east/frame_001.png",
+        "../frames/stand-east/frame_002.png",
+        "../frames/stand-east/frame_003.png",
+        "../frames/stand-east/frame_004.png",
+        "../frames/stand-east/frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "8ab43dd9e7166b30a95cac898a310a38b4edf10f7d1e0bdaaa9423ca9cefb0e4",
+        "idle-east": "d6f8e0854bbf086e82a36a323794ccb636c7867a7580681da5a7669eeb3eeaa1",
+        "repair-east": "b14782e40e9e21192e8e9b2ee346d88fcac8807d41b3682284e0a240de278fa6"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": "kneel-east",
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "textures": {
+    "airlock": "res://rooms/underwater/airlock-v1/cutouts.png"
+  },
+  "furniture": [
+    {
+      "id": "suit_lockers",
+      "texture": "airlock",
+      "region": [
+        23,
+        38,
+        591,
+        601
+      ],
+      "footprint": [
+        85,
+        -25,
+        70,
+        90
+      ],
+      "pivot": [
+        368,
+        634
+      ],
+      "ground_width": 468,
+      "centers_by_quarter": [
+        [
+          120,
+          20
+        ],
+        [
+          -20,
+          120
+        ],
+        [
+          -98,
+          -15
+        ],
+        [
+          120,
+          -40
+        ]
+      ]
+    },
+    {
+      "id": "outer_hatch",
+      "texture": "airlock",
+      "region": [
+        631,
+        62,
+        596,
+        578
+      ],
+      "footprint": [
+        -58,
+        -133,
+        116,
+        36
+      ],
+      "pivot": [
+        930,
+        635
+      ],
+      "ground_width": 588
+    },
+    {
+      "id": "air_compressor",
+      "texture": "airlock",
+      "region": [
+        102,
+        696,
+        373,
+        419
+      ],
+      "footprint": [
+        -153,
+        -73,
+        60,
+        32
+      ],
+      "pivot": [
+        272,
+        1110
+      ],
+      "ground_width": 327
+    },
+    {
+      "id": "changing_bench",
+      "texture": "airlock",
+      "region": [
+        581,
+        757,
+        623,
+        365
+      ],
+      "footprint": [
+        -153,
+        109,
+        83,
+        24
+      ],
+      "pivot": [
+        892,
+        1118
+      ],
+      "ground_width": 614
+    }
+  ]
+}

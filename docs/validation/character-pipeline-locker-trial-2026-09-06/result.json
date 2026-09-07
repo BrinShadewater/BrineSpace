@@ -1,0 +1,31 @@
+{
+  "case": "locker-stage-handoff-review",
+  "trial": "current-workflow-read-only-1",
+  "status": "executed_partial_scope",
+  "executor": "fresh-context agent /root/locker_workflow_trial",
+  "referenceSha256": "f53b12f3161f494ccc43583618872815c03cabc9cab901a45f409a92768873fc",
+  "expectedAssertionsProvidedToExecutor": false,
+  "filesChangedByExecutor": false,
+  "observed": [
+    "Identified stage-join body/helmet/hand changes and combined-dwell review",
+    "Identified shelf/held silhouette difference and handoff occlusion review",
+    "Preserved reusable gear, timer-driven named events, atomic completion and cancellation",
+    "Separated existing test reports and static captures from continuous visual acceptance",
+    "Reported actual skill files and did not claim rerunning runtime tests",
+    "Inspected all six manifest hashes and durations"
+  ],
+  "limits": [
+    "Single current-workflow trial; no baseline comparison or repeatability result",
+    "No new visual inspection or runtime execution by evaluator",
+    "Room skill was not loaded; mixed-skill selection not demonstrated",
+    "Does not validate all other cases or establish overall skill pass rate"
+  ],
+  "skillsRead": [
+    "installed brinespace-character-pipeline/SKILL.md",
+    "repository skills/brinespace-character-pipeline/SKILL.md",
+    "references/underwater-equipment.md",
+    "references/acceptance.md",
+    "references/animation-contract.md",
+    "references/godot-integration.md"
+  ]
+}

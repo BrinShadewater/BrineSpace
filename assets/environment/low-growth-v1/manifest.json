@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "title": "Low seabed life",
+  "runtime_registry": "low_growth_view.gd",
+  "prompt_records": [
+    "generation-record.json",
+    "revision-record.json"
+  ],
+  "assets": [
+    {
+      "id": "seagrass-rosette",
+      "kind": "prop",
+      "selected_source": "seagrass-rosette-v2.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "seagrass-rosette-v1.png",
+          "sha256": "37d66bc7b96185446c587f5113ba5116133157ccf3ef000f13e0ee4d086615a0",
+          "rejection": "Rejected: broad blades duplicate the existing kelp silhouette"
+        },
+        {
+          "file": "seagrass-rosette-v2.png",
+          "sha256": "0c16bbf49c00ac6dba1057540180ed9693c0e9113303c1c4ca23c67535ef970f",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "encrusting-algae",
+      "kind": "prop",
+      "selected_source": "encrusting-algae-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "encrusting-algae-v1.png",
+          "sha256": "c2f864529ec3ee0ada71db832f6cd556c14e6d7989f59788647f3a32f82fdcc9",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "mussel-bed",
+      "kind": "prop",
+      "selected_source": "mussel-bed-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "versions": [
+        {
+          "file": "mussel-bed-v1.png",
+          "sha256": "00ddc5af160df7d64a73cd6795ca1279e481fe3dc143f92752ca1eda03409a17",
+          "rejection": null
+        }
+      ]
+    }
+  ],
+  "native_previews": [
+    {
+      "path": "../../../output/low-growth-v1/source-sheet.png",
+      "label": "Native source-color review"
+    },
+    {
+      "path": "../../../output/low-growth-v1/group-1-1600.png",
+      "label": "Sparse seagrass at meadow edge"
+    },
+    {
+      "path": "../../../output/low-growth-v1/group-2-1600.png",
+      "label": "Encrusted coral rubble"
+    },
+    {
+      "path": "../../../output/low-growth-v1/group-3-1280.png",
+      "label": "Small shell attachment patch"
+    }
+  ]
+}

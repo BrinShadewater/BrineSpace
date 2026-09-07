@@ -14,10 +14,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="BRINE"
-run/main_scene="res://scenes/main.tscn"
+config/name="BrineSpace"
+config/version="prototype-2026.09.06-menu"
+run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.6")
-config/icon="res://icon.svg"
+config/icon="uid://d11lk0l3870i"
+run/main_scene.menu_validation="res://tests/runtime_generated/menu_recovery.tscn"
+run/main_scene.environment_validation="res://tests/runtime_generated/environment_validation.tscn"
+run/main_scene.room_validation="res://tests/runtime_generated/station.tscn"
 
 [display]
 
@@ -27,6 +31,10 @@ window/size/window_width_override=1600
 window/size/window_height_override=900
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/brine_raw_export/plugin.cfg")
 
 [input]
 

@@ -1,0 +1,117 @@
+{
+  "status": "integrated_provisional_locker_sequence",
+  "frameWidth": 92,
+  "frameHeight": 104,
+  "pivot": [
+    46,
+    98
+  ],
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameCount": 12,
+      "frameFiles": [
+        "../../revisions/bill-pickup-helmet-east-v4/frame_000.png",
+        "../../revisions/bill-pickup-helmet-east-v4/frame_001.png",
+        "../../revisions/bill-pickup-helmet-east-v4/frame_002.png",
+        "../../revisions/bill-pickup-helmet-east-v4/frame_003.png",
+        "../../revisions/bill-pickup-helmet-east-v4/frame_004.png",
+        "../../revisions/bill-pickup-helmet-east-v4/frame_005.png",
+        "../../pilot/bill-equip-helmet-east/frame_000.png",
+        "../../pilot/bill-equip-helmet-east/frame_001.png",
+        "../../pilot/bill-equip-helmet-east/frame_002.png",
+        "../../pilot/bill-equip-helmet-east/frame_003.png",
+        "../../pilot/bill-equip-helmet-east/frame_004.png",
+        "../../pilot/bill-equip-helmet-east/frame_005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        180,
+        160,
+        180,
+        180,
+        80,
+        100,
+        180,
+        220,
+        220,
+        260,
+        240
+      ],
+      "loop": false,
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source": "revisions/bill-pickup-helmet-east-v4/frame_000.png",
+      "sha256": "89f800a890c2b02ed797192c858248c6acfa6de902ab4cc80ec2dff0249b540a"
+    },
+    {
+      "source": "revisions/bill-pickup-helmet-east-v4/frame_001.png",
+      "sha256": "1d175188217ffbb5826ed1bdadf02ddd7cc6fab11fc053e9bbbc7623b6f8b861"
+    },
+    {
+      "source": "revisions/bill-pickup-helmet-east-v4/frame_002.png",
+      "sha256": "2e17c1889e1cbf5a38cc9402cecc52c9fa3620cb44a8a0871a861f9a3da51f53"
+    },
+    {
+      "source": "revisions/bill-pickup-helmet-east-v4/frame_003.png",
+      "sha256": "0b660d1ca8eced36bd058d87754c76bc7654412608da6d1896f8e9bb594855f4"
+    },
+    {
+      "source": "revisions/bill-pickup-helmet-east-v4/frame_004.png",
+      "sha256": "f3004da715f00b7e0e63a32253c1447df969c198f4e18c82d7018c87ec45051a"
+    },
+    {
+      "source": "revisions/bill-pickup-helmet-east-v4/frame_005.png",
+      "sha256": "643496d614ca71865382a395fffbe2b601658c2ac43ec5f3f53ca652ada0eec3"
+    },
+    {
+      "source": "pilot/bill-equip-helmet-east/frame_000.png",
+      "sha256": "643496d614ca71865382a395fffbe2b601658c2ac43ec5f3f53ca652ada0eec3"
+    },
+    {
+      "source": "pilot/bill-equip-helmet-east/frame_001.png",
+      "sha256": "2789b9df03a014fade180f58ccd43fbd9508a8bd577e7cdfee96c950526235be"
+    },
+    {
+      "source": "pilot/bill-equip-helmet-east/frame_002.png",
+      "sha256": "3798a30ba8ad8d9b3b2197b8e5b13f1fa1054c1ba1991cf7229467988fc481cb"
+    },
+    {
+      "source": "pilot/bill-equip-helmet-east/frame_003.png",
+      "sha256": "22a956a86ef57265e1921b65185faf48182f71ebae3b499205f4f898843fb583"
+    },
+    {
+      "source": "pilot/bill-equip-helmet-east/frame_004.png",
+      "sha256": "e586a4f676e88297922a476bc42db6156b56555fad677c991ef7f1ba3041727a"
+    },
+    {
+      "source": "pilot/bill-equip-helmet-east/frame_005.png",
+      "sha256": "009f7b8a5a1b798eb562613d3609c5e1793b1ff1ea5c71044f40aa9d7c785abf"
+    }
+  ],
+  "joinTiming": {
+    "frames": [
+      5,
+      6
+    ],
+    "sourceDurationsMs": [
+      160,
+      180
+    ],
+    "composedDurationsMs": [
+      80,
+      100
+    ],
+    "reason": "One shared held pose, not two sequential full holds."
+  },
+  "limitations": "Candidate pose joins and shelf attachment alignment require visual refinement. Shelf visibility follows handoff markers; equipment commits at whole-action completion and cancellation keeps prior equipment."
+}

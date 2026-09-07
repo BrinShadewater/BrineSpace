@@ -1,0 +1,47 @@
+{
+  "status": "dry_equipment_fitting_pilot",
+  "equipment": "diving-helmet",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "kneel-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/cleanup-repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "5646ae63c4a0db9f0d1673feaed86c4637633e682112549fd6f8b13eb6108ac5",
+        "idle-east": "4336b3998d2ace5201172ab9570101483f074fe56644538daf773a65bd155033",
+        "cleanup-repair-east": "feab51684ed90231f69a46fa3e0930bc00b8463c7694ccb1a13bae05099e6c36"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette. Endpoints shared with idle and repair."
+    }
+  ]
+}

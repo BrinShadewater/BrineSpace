@@ -1,0 +1,47 @@
+{
+  "status": "dry_equipment_fitting_pilot",
+  "equipment": "diving-helmet",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "stand-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        140,
+        140,
+        160,
+        180,
+        180,
+        200
+      ],
+      "fps": 6.0,
+      "loop": false,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "sources": [
+        "../generated/kneel-east.png",
+        "../generated/idle-east.png",
+        "../generated/repair-east.png"
+      ],
+      "sourceSha256": {
+        "kneel-east": "cf82ad0c820d64c4cde596de383bd03f167bd19646ce13c93a6c2cc4beaeba41",
+        "idle-east": "cf2b013c1a7b4043f09c2ffb74eec25ff179fc4f3e3e4645b057ee05779c3f62",
+        "repair-east": "748cf88d29ab91d19e84b33f46ba9d28048222087f2ae2d14a3cb5ae842e9585"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": "kneel-east",
+      "notes": "Reference-generated poses; no mirrored directions. Shared palette and ground baseline. Work endpoints shared."
+    }
+  ]
+}

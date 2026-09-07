@@ -1,0 +1,32 @@
+[
+  {
+    "id": "isolation_vault",
+    "source": "rooms/production-ten/battery_array-source-v1.png",
+    "sha256": "3c162fe5df628b951a33dcf3c129cc4e156014e135e8f398ebf7db84703d6501",
+    "source_role": "Reused reserve-bank and isolator machinery; dedicated local arrangement, not newly generated room art",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/rare-dead-ends/isolation_vault_view.gd",
+      "card": "rooms/underwater/rare-dead-ends/isolation_vault-card-group-v1.png"
+    },
+    "composition_profile": "rooms/underwater/rare-dead-ends/isolation-composition-v1.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/rare-dead-ends/isolation-composition-v1.json",
+        "sha256": "72201d6cb5fb226ccffd13ddf121ce06a8b167fa5bc2a9dca83b240512fee70c"
+      }
+    ],
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/battery-test-bench-clean-v2.png",
+        "sha256": "6186e65ad77cb78a7aa0581dc5c1043e7d3511ce8936129cc4d58d3255634909"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      }
+    ]
+  }
+]

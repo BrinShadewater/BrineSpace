@@ -1,0 +1,32 @@
+{
+  "failures": 0,
+  "results": [
+    {
+      "actor": "res://scripts/bill_npc.gd",
+      "arrived": true,
+      "graphNodes": 1627,
+      "routePoints": 9,
+      "searchMs": 2.319
+    },
+    {
+      "actor": "res://scripts/veld_npc.gd",
+      "arrived": true,
+      "graphNodes": 1627,
+      "routePoints": 9,
+      "searchMs": 2.117
+    },
+    {
+      "actor": "res://scripts/branforth_npc.gd",
+      "arrived": true,
+      "graphNodes": 1627,
+      "routePoints": 9,
+      "searchMs": 2.553
+    }
+  ],
+  "scope": "One equipped in-room route per actor on a five-room station graph; not exterior or concurrent traffic",
+  "sourceSha256": {
+    "scripts\\bill_npc.gd": "a6f712489db142ff479fd2263e1b6417815957f1dd0938381793af43863d0a0f",
+    "tests\\test_crew_water_station.gd": "0a9a51f50875c069a3c5634ce9d20f6ca12f7ee916e7d221262a5088ea4dce23",
+    "tests\\test_crew_medium.gd": "3b039758b98e5d4c0089c37744f9aa18ee1cc9ee12d6e666df13c84eb483ebf9"
+  }
+}

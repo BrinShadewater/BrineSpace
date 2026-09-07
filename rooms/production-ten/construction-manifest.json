@@ -1,0 +1,41 @@
+[
+  {
+    "id": "construction_drone_bay",
+    "source": "assets/drones/fleet-v1/atlas-matte-v1.png",
+    "sha256": "01825580fbe892cd290ed3b9583304ba27a7cc86da17937cc7ba1c5bdea03b40",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "integration": {
+      "view": "rooms/production-ten/construction_drone_bay_view.gd",
+      "card": "rooms/production-ten/construction_drone_bay-card-assembly-v2.png"
+    },
+    "component_assets": [
+      {
+        "path": "assets/drones/fleet-v1/stock-rack-matte-v1.png",
+        "sha256": "d51b0cef9d68dcd15838f536650949cb0adff92745b89a30353582665908828e"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      },
+      {
+        "path": "rooms/production-ten/decor/construction-assembly-trestle-v1.png",
+        "sha256": "56b7476471709c3e3232f8844218ece0f1dc8ee7c274f08c67108bd68c935ab8"
+      }
+    ],
+    "composition_profile": "rooms/production-ten/decor/construction-composition-v2.json",
+    "composition_assets": [
+      {
+        "path": "rooms/production-ten/decor/construction-composition-v2.json",
+        "sha256": "90be3916e98c241fb8f0fffae977d0b37d5224651be0f4af29f323b0f8742db3"
+      }
+    ],
+    "scope": "Initial furnishing integration; native bounds/state/routes passed; full packaged and visual acceptance pending. Existing fleet deployment behavior unchanged."
+  }
+]

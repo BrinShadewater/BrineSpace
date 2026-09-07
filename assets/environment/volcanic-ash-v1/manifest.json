@@ -1,0 +1,37 @@
+{
+  "assets": [
+    {
+      "stage": "integrated; native room-scale reviewed; owner approval pending",
+      "selected_source": "ash-ground-v1.png",
+      "id": "ash-ground",
+      "versions": [
+        {
+          "rejection": null,
+          "sha256": "f3b64062142d7f8205ebbbb6c203321f3aa103b7f2c657f2c823d46b3a6a35e3",
+          "file": "ash-ground-v1.png"
+        }
+      ],
+      "kind": "ground"
+    },
+    {
+      "id": "porous-rocks",
+      "kind": "prop",
+      "stage": "integrated; native room-scale reviewed; owner approval pending",
+      "selected_source": "porous-rocks-v1.png",
+      "versions": [
+        {
+          "rejection": null,
+          "file": "porous-rocks-v1.png",
+          "sha256": "d7090d63f27f208e35e8e4188511cdf6f0b19649911489217c760e2dcc25bb49"
+        }
+      ]
+    }
+  ],
+  "prompt_records": [
+    "generation-record.json",
+    "porous-rock-record.json"
+  ],
+  "title": "Volcanic ash material study",
+  "schema_version": 1,
+  "runtime_registry": "volcanic_ash_view.gd"
+}

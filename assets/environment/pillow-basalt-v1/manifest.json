@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "title": "Pillow basalt study",
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "assets": [
+    {
+      "id": "pillow-basalt",
+      "kind": "prop",
+      "selected_source": "pillow-basalt-v1.png",
+      "versions": [
+        {
+          "file": "pillow-basalt-v1.png",
+          "sha256": "f69c722119c4d34f1d6674e9576ee4e26636c305ea9a27591a5421b2534ee1e0",
+          "rejection": null
+        }
+      ],
+      "stage": "integrated; native station and isolated Windows export verified; owner approval pending"
+    }
+  ],
+  "native_previews": [
+    {
+      "path": "../../../output/pillow-basalt-v1/terrain-scale.png",
+      "label": "Native pillow basalt at three cell widths on pale sediment and dark ash"
+    },
+    {
+      "path": "../../../output/pillow-basalt-station-v1/group-1-1600.png",
+      "label": "Native station: two pillow-basalt outcrops on shell sediment"
+    },
+    {
+      "path": "../../../output/environment-export-v20/captures/rocks-pillow-basalt.png",
+      "label": "Isolated Windows export: pillow basalt on shell sediment"
+    }
+  ],
+  "runtime_registry": "pillow_basalt_view.gd"
+}

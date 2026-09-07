@@ -1,0 +1,42 @@
+{
+  "id": "shield_generator",
+  "brief": "Protects station hull with electromagnetic shielding. One substantial horseshoe-shaped layered field-coil assembly on left, right side a shorter bank of three ceramic insulated capacitors and service console. Copper windings under dark teal steel shrouds, slight heat discoloration near connections, quiet floor. ONLY NORTH SOUTH doors and straight clear central aisle; west/east sealed. Future effect anchors coil tips. Not a reactor sphere, not paired drones, no force-field glow baked into base.",
+  "prompt": "Use case: stylized-concept. One square1280 BrineSpace room sprite. Reference supplies ONLY overhead cutaway camera, hull construction, selective pixel detail and quiet slate floor; replace all mining equipment and yellow palette. Worn steel with readable large machinery and sparse purposeful detail. True transparent exterior, not black/checkerboard. No text/UI/people. Keep hull square and centered. Door gaps are centered14 percent width, floor flush to outer wall boundary with no extensions beyond hull and no blocking trim. Base equipment readable offline; localized functioning effects added later. Protects station hull with electromagnetic shielding. One substantial horseshoe-shaped layered field-coil assembly on left, right side a shorter bank of three ceramic insulated capacitors and service console. Copper windings under dark teal steel shrouds, slight heat discoloration near connections, quiet floor. ONLY NORTH SOUTH doors and straight clear central aisle; west/east sealed. Future effect anchors coil tips. Not a reactor sphere, not paired drones, no force-field glow baked into base.",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-d3becc56-fca1-4f46-a75e-450288140d72.png",
+  "method": "built-in imagegen",
+  "reference_roles": {
+    "path": "rooms/hybrid/mining_drone_bay.png",
+    "inherit": "camera/hull/detail, north-south layout except Radio",
+    "exclude": "drones/yellow palette"
+  },
+  "processing": {
+    "size": 1280,
+    "margin": 8
+  },
+  "source_sha256": "bdfbaa7b0bbae906f0728ceee35d207be20381557c836bf184608eefb7bf6a3f",
+  "output_sha256": "0bc9406706a9e9dafe62b1671746c7517deea341f6e0c9a0d6ef0477831f6956",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "output_size": [
+    1280,
+    1280
+  ],
+  "alpha_bounds": [
+    8,
+    8,
+    1272,
+    1272
+  ],
+  "exterior_sample": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage": "normalized-candidate",
+  "review": "north/south route visible; amber reference leakage and baked coil glow need offline art review",
+  "integrated": false,
+  "native_verified": false
+}

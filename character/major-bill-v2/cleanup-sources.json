@@ -1,0 +1,68 @@
+{
+  "sources": {
+    "walk-south": "b569cd0e-7d7f-459e-816c-92dbfac725ba",
+    "walk-east": "5eb785cf-ca9c-423f-8890-59ed5d277392",
+    "walk-west": "a03c4267-ba37-4086-a801-cbdab5fe06e5",
+    "walk-north": "4ad270ed-8568-4137-b134-42d667ddc0d0",
+    "run-east": "93c6b460-ea38-45a4-b995-d4e422610527",
+    "run-west": "930e94f5-5707-4d6a-9e83-c8efe541efce",
+    "run-north": "a331e460-89ea-47c8-bda3-cc7cdd558840",
+    "repair-east": "6eb140b8-9c3c-4f54-a3e8-13efc12e1eea",
+    "interact-east": "4d7efbc0-4769-4ad1-96af-487ff5ed814b"
+  },
+  "prompts": [
+    {
+      "id": "walk-south",
+      "prompt": "Clean up this SIX-frame south/front-facing walk animation strip for a small game sprite. Preserve exactly six poses in one horizontal row and the character design. Make the SAME head/face/collar and torso width in every frame: visually copy the first head/chest rather than redesigning them. Small fixed palette and clean broad pixel clusters, remove granular noisy highlight texture and stray pixels. Smooth six-phase gait: screen-left boot contact, passing, rise, screen-right boot contact, passing, rise; opposing relaxed arm swing. Both lead feet must be represented. Keep arms near body, consistent limb lengths, minimal torso bob. Brown beard/hair, charcoal pressure suit, dark muted red shoulders; cyan chest lamp on image LEFT, button panel on image RIGHT. Slightly elevated front view. Full body with identical scale, wide equal gutters. Transparent background, no shadows, text, labels, scenery. Landscape 3:1."
+    },
+    {
+      "id": "walk-south-v2",
+      "prompt": "Precise cleanup of SIX-frame walk strip (reference1); reference2 is the character design to preserve. Retain all costume construction: twin vertical harness straps, square throat clasp, segmented belt, oxblood shoulder plates, grey kneepads, chest cyan indicator LEFT and button block RIGHT. Do NOT simplify away the harness or change proportions. Only improve temporal consistency: identical face, hair, beard, head width, torso width and fixed chest hardware every frame. Smooth opposing arm swing and alternating left/right planted feet in a six-phase front-facing walk. Frame4 must have screen-LEFT boot forward, opposite to frame1. Keep reference pixel-art surface character but remove isolated noisy highlights. All six full bodies in one evenly spaced row, same scale/baseline, transparent background, no shadow/text/scene. Landscape 3:1."
+    },
+    {
+      "id": "walk-east",
+      "prompt": "Clean up the six EAST/right-facing WALK frames in reference1 while strictly retaining reference2's Major Bill costume and proportions. ONE row of SIX poses. Temporal consistency: identical head/beard/hair outline, collar, harness and back unit in all six; the torso should behave like a stable rigid form. Keep twin harness straps, oxblood shoulder plate, rectangular back unit, gloves and segmented boots. Smooth six-phase alternating walk with opposite arm swing, two distinct lead legs and restrained vertical bob. Legs pass naturally between contacts; frame6 flows into frame1. Preserve detailed pixel-art style but remove tiny noisy speckles, no redesign or simplified jumpsuit. Same full-body scale, equal spacing, wide gutters. SOLID MAGENTA #FF00FF background, not checkerboard, no shadows/text/scenery. Landscape 3:1."
+    },
+    {
+      "id": "walk-west",
+      "prompt": "Temporal cleanup of Major Bill's SIX WEST/left-facing walk poses. One row of six full-body frames. Keep reference pose sequence and exactly the same left-facing officer costume, segmented grey boots, knee plates, charcoal suit, red shoulder, chest button block, harness and backpack. Make head/beard/hair/collar dimensions identical frame to frame, stable torso and smoother arm swing with two alternating strides. Do not exaggerate motion. Keep same detailed pixel art surface style but consistent broad highlights instead of changing noise. Complete bodies, same scale and baseline, wide equal gutters. Solid magenta #FF00FF background; no shadows/text/checkerboard/scenery. Landscape 3:1."
+    },
+    {
+      "id": "walk-north",
+      "prompt": "Clean temporal consistency in this six-frame NORTH/BACK walk animation. Keep EXACTLY six full-body poses in ONE horizontal row. Preserve Major Bill's charcoal pressure suit, oxblood shoulder patches, rectangular rear unit and segmented grey boots. Identical hair outline, neck/collar, rear-unit dimensions and torso width across poses; no flickering highlights or changing panel seams. Refine alternating foot contacts and smooth opposite arm swing, restrained bob. Keep existing detailed pixel-art identity, do not redesign outfit. Equal scale and spacing, generous gaps, same baseline. Solid magenta #FF00FF background, no text/shadows/scenery. Landscape 3:1."
+    },
+    {
+      "id": "run-south",
+      "prompt": "Clean up this SIX-frame SOUTH/front run loop of Major Bill. Keep six poses in one row, same stocky pressure-suited officer, harness straps, throat clasp, oxblood shoulders, cyan chest light on image left, button panel on right, gloves/boots. Lock head face hair beard and chest hardware across all frames. Refine two alternating running steps, bent elbows moving smoothly opposite knees, no abrupt arm position changes; restrain the knee lift and keep body proportions close to standing reference2. Retain airborne phases, no huge bouncing or changing scale. Pixel art with stable highlights and less grain. Same scale and baseline, equal wide gaps, all limbs visible. Solid magenta #FF00FF background, no text/shadows/scene. Landscape 3:1."
+    },
+    {
+      "id": "run-east",
+      "prompt": "Refine this six-frame EAST/right-facing RUN cycle without replacing the poses. Preserve the six distinct leg/arm configurations exactly, including passing and airborne frames. Fix only shape and texture drift: consistent head size and face, stable torso thickness and backpack, constant arm/leg lengths. Keep posture slightly leaning, not stretched taller than standing Bill in reference2. Preserve detailed charcoal suit, twin harness, red shoulder patch, grey boots/kneepads, cyan chest detail. Clean repeatable pixel highlights, no added noise. Exactly six whole-body poses in one row, same scale, generous equal spacing, magenta #FF00FF background, no labels/shadows/scenery. Landscape 3:1."
+    },
+    {
+      "id": "run-west",
+      "prompt": "Refine six WEST/left-facing RUN frames from reference1. Retain all six distinct original motion poses and their order, don't generate repeated identical steps. Match standing reference2 head size/body proportions. Same head/beard/face and torso thickness each frame, steady backpack/harness dimensions, clean fixed highlights. Preserve grey boots, knee plates, charcoal pressure suit, dark red shoulder patch and left-side chest button panel. Keep smooth bent arm swing through alternating strides and airborne phases; no exaggerated size changes. SIX full-body poses one row, consistent scale, wide equal gutters, solid magenta #FF00FF. Detailed pixel art, no text/shadow/scenery. Landscape 3:1."
+    },
+    {
+      "id": "repair-east",
+      "prompt": "Polish this SIX-frame kneeling repair loop. Major Bill remains in the exact same RIGHT-facing kneel: one knee on ground and one boot forward, torso/face/head/backpack absolutely stable. Right hand holds same short grey spanner in every frame. Replace the large waving swing with a SMALL CONTROLLED RATCHET TURN at knee height: neutral tool angled 20 degrees up, wrist turns toward horizontal, short downward turn, return toward horizontal, 20 degrees up, near neutral. Elbow barely shifts, left glove braces planted knee. Keep same detailed charcoal/oxblood pressure suit, harness, beard and boots. Six full-body poses single row, constant scale/baseline, identical tool length, clean stable highlights, broad pixel clusters. Solid magenta background #FF00FF, no text/shadows/sparks/machine. Landscape 3:1."
+    },
+    {
+      "id": "run-north",
+      "prompt": "Cleanup of SIX NORTH/BACK running poses of Major Bill. Preserve charcoal pressure suit, oxblood shoulders, rectangular compact back unit, hair shape and grey boots. Consistent rigid torso/head/back-unit size and repeatable highlights. Improve running action: alternate left and right push-offs, keep one knee forward and other heel back in flight rather than BOTH heels tucked symmetrically like a jump. Six-phase sequence contact/passing/flight on each foot, opposing elbow swing, subdued vertical bob. Same scale all frames, no outfit redesign. Six full bodies one evenly spaced row, generous gutters, solid magenta #FF00FF background, no text/shadows/scenery. Detailed pixel art matching reference, landscape 3:1."
+    },
+    {
+      "id": "interact-east",
+      "prompt": "Temporal cleanup of six-frame right-facing CONSOLE INTERACTION. Preserve six full-body poses and exact officer design from reference: stocky brown bearded Major Bill, charcoal pressure suit with harness, oxblood shoulder, grey back unit/boots. Feet, legs, torso, face and collar stay still and identical through the action. Only right forearm smoothly lifts, reaches to press at waist height, pauses, retracts, then returns to relaxed stance. No large shoulder thrust, changing height or changing head shape. Stable pixel-art highlights, no tiny speckle noise. One row six evenly spaced poses, generous gutters, same scale/baseline. Magenta #FF00FF background, no console/text/shadow/scenery. Landscape 3:1."
+    },
+    {
+      "id": "walk-south-east",
+      "prompt": "Clean up six-frame SOUTHEAST three-quarter WALK strip of Major Bill. Preserve the six existing poses, direction and detailed costume, brown beard, charcoal harness pressure suit, red shoulders, grey boots and chest hardware. Make head/collar/torso consistently sized, lock facial and equipment details, clean noisy highlights. Smooth opposing arm swing and keep both alternating lead feet, avoiding repeated same-foot steps. Modest natural body bob, whole bodies, identical scale and equal wide gutters. One row six frames on solid magenta #FF00FF; no text/shadows/scenery. Detailed pixel art matching reference, landscape 3:1."
+    }
+  ],
+  "rejected": {
+    "walk-south-initial": "Simplified costume removed harness detail.",
+    "run-south": "Repeated lead foot instead of preserving two strides.",
+    "walk-south-east": "Reduced pose variation; original retained."
+  }
+}

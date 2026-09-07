@@ -1,0 +1,114 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png",
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "bio_preparation",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        -36,
+        -112,
+        72,
+        28
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ]
+    },
+    {
+      "id": "bio_sample_cooler",
+      "texture": "accessories",
+      "region": [
+        753,
+        115,
+        402,
+        385
+      ],
+      "footprint": [
+        47,
+        134,
+        30,
+        10
+      ],
+      "centers_by_quarter": [
+        [
+          62,
+          139
+        ],
+        [
+          -69,
+          140
+        ],
+        [
+          -62,
+          -139
+        ],
+        [
+          139,
+          -62
+        ]
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "bio_preparation",
+      "offset": [
+        -4,
+        2
+      ],
+      "size": [
+        80,
+        34
+      ],
+      "fill": "81948b",
+      "edge": "a4b4a9"
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "bio_preparation",
+        "source": [
+          1100,
+          1020
+        ]
+      },
+      "via": [
+        [
+          40,
+          -81
+        ],
+        [
+          47,
+          -78
+        ]
+      ],
+      "to": {
+        "host": "bio_culture",
+        "source": [
+          728,
+          454
+        ]
+      },
+      "color": "506d60",
+      "width": 2
+    }
+  ],
+  "decals": []
+}

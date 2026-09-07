@@ -37,3 +37,35 @@ apply them; independent agent testing was not performed because execution is inl
 Project source: `skills/brinespace-room-pipeline/`. Discoverable install:
 `C:/Users/Alex/.codex/skills/brinespace-room-pipeline/`. When updating the project
 skill, synchronize the installed files deliberately and re-run validation.
+
+## Art-direction update — 2026-09-05
+
+Pre-edit inline gap check: asked the existing reference material how to distinguish
+shared construction from repeated composition, and what a per-room art brief must
+contain. It specified a hybrid style and reference roles, but supplied neither a
+brief structure nor criteria for purposeful wear and room identity.
+
+Inspected Med Bay and Crew Hab PNGs and their exact provenance prompts before the
+edit. Both use the reactor as their only image reference. Med Bay's paired beds
+are functionally readable; Crew Hab repeats beds, lockers and dining furnishings
+symmetrically. This supports varying composition across the pack, not a universal
+ban on symmetry. These are inline observations, not independent agent trials.
+
+Update adds a routed art-direction reference: shared construction versus variable
+identity, a six-field brief, role-specific reference selection, purposeful detail,
+offline/operating readability, and separate art review findings.
+
+Inline application after editing:
+
+- Med Bay: retain paired treatment beds; symmetry supports the function. Review
+  card-scale readability and geometry independently; no automatic rejection.
+- Crew Hab: preserve readable beds and worn hull, consider varying secondary
+  furnishings in a future revision. A hue change alone would not add identity.
+- Next biological-room brief: specify growth equipment, steel/organic contrast,
+  moisture wear, clear routes and an irrigation anchor; borrow material rendering
+  without borrowing reactor machinery or radial composition.
+
+The reference now supplies decisions for the previously missing brief fields.
+No images were changed in this skill update. Better generation quality remains
+unproven until a new batch and native-size comparison are reviewed. Independent
+forward-testing remains unperformed under the owner's inline execution choice.

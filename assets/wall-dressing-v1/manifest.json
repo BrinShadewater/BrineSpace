@@ -1,0 +1,495 @@
+{
+  "version": 1,
+  "sources": {
+    "analog_clock": {
+      "path": "assets/wall-dressing-v1/source/analog_clock.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "ab633be5e1c70197d2d4cd4a01b0a8ad46c5f1caf910e25d31edf607bf95ff47"
+    },
+    "digital_clock": {
+      "path": "assets/wall-dressing-v1/source/digital_clock.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "73f9b714582f9b20280b0abff6588a2825cfcd303be19d914d67aa976981982d"
+    },
+    "com_handset": {
+      "path": "assets/wall-dressing-v1/source/com_handset.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "80e45add3ec65efdbd2f9bcc9faff871f43e074163a7dde8d08b606e39120b15"
+    },
+    "com_panel": {
+      "path": "assets/wall-dressing-v1/source/com_panel.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "d640420e79e005f5cf24d13c86448d18f6f1a4888be71254b6acf8b8ec4304dd"
+    },
+    "wall_calendar": {
+      "path": "assets/wall-dressing-v1/source/wall_calendar.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "f1a327eb33f3b264a9d4c6dbac87500b9f60a6bbaff888a327726bbc360d9544"
+    },
+    "notice_board": {
+      "path": "assets/wall-dressing-v1/source/notice_board.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "38dca9c7a203b838be314af8d791d24cc3723968211bc39e4b6da3b559079984"
+    },
+    "picture_ocean": {
+      "path": "assets/wall-dressing-v1/source/picture_ocean.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "a7e09a2bf607204201f38acebd116e720bc062280a771d0492e4ebae5a7c958c"
+    },
+    "picture_botanical": {
+      "path": "assets/wall-dressing-v1/source/picture_botanical.png",
+      "size": [
+        1173,
+        1341
+      ],
+      "mode": "RGBA",
+      "sha256": "2ab17ddf58617dfc45b343e16d350db0e4dd815207d9c9139f01d24778cb4bcd"
+    },
+    "poster_diver": {
+      "path": "assets/wall-dressing-v1/source/poster_diver.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "295163ef3247ca2914c1e8991ce49a7eef90b4f4ee01109ee7b0f4330f5d5198"
+    },
+    "poster_marine": {
+      "path": "assets/wall-dressing-v1/source/poster_marine.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "1cdbbe9987b44065d0c119244dd2f328881c677e869e105222003a2cede608b4"
+    },
+    "wall_lamp": {
+      "path": "assets/wall-dressing-v1/source/wall_lamp.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "a7c8df48cff5d8886acea3c93675a9ef978fe9778cd6166345723b0069e722fa"
+    },
+    "emergency_box": {
+      "path": "assets/wall-dressing-v1/source/emergency_box.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "dbd5b972583e31915f4f5957e749bd5ae8e8e5442b9017a97783c02f0be40421"
+    }
+  },
+  "sprites": {
+    "analog_clock": {
+      "path": "assets/wall-dressing-v1/sprites/analog_clock.png",
+      "size": [
+        1052,
+        1088
+      ],
+      "pivot": [
+        526.0,
+        544.0
+      ],
+      "units_per_pixel": 0.022058823529411766,
+      "recommended_height": 24,
+      "category": "time",
+      "source_alpha_bounds": [
+        105,
+        73,
+        1153,
+        1157
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "840dd801b9823d22e88ea34ffa316f513f3292549c34894e878bc9e83047243e"
+    },
+    "digital_clock": {
+      "path": "assets/wall-dressing-v1/sprites/digital_clock.png",
+      "size": [
+        1214,
+        504
+      ],
+      "pivot": [
+        607.0,
+        252.0
+      ],
+      "units_per_pixel": 0.03571428571428571,
+      "recommended_height": 18,
+      "category": "time",
+      "source_alpha_bounds": [
+        122,
+        240,
+        1332,
+        740
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "16f7f52ec5ffc164f465a699215045a7639c7ccec5f46000457bf614b79d236f"
+    },
+    "com_handset": {
+      "path": "assets/wall-dressing-v1/sprites/com_handset.png",
+      "size": [
+        803,
+        1400
+      ],
+      "pivot": [
+        401.5,
+        700.0
+      ],
+      "units_per_pixel": 0.022857142857142857,
+      "recommended_height": 32,
+      "category": "communications",
+      "source_alpha_bounds": [
+        124,
+        68,
+        923,
+        1464
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "24a73d285ae3157179a7e5046532296afd33b3cd71864abd5ab72a0a058687dc"
+    },
+    "com_panel": {
+      "path": "assets/wall-dressing-v1/sprites/com_panel.png",
+      "size": [
+        912,
+        879
+      ],
+      "pivot": [
+        456.0,
+        439.5
+      ],
+      "units_per_pixel": 0.02957906712172924,
+      "recommended_height": 26,
+      "category": "communications",
+      "source_alpha_bounds": [
+        173,
+        176,
+        1081,
+        1051
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "025c55ba0c3691c41300ce66cd6637a77d1ac5007473c349ae08116853502b55"
+    },
+    "wall_calendar": {
+      "path": "assets/wall-dressing-v1/sprites/wall_calendar.png",
+      "size": [
+        808,
+        1015
+      ],
+      "pivot": [
+        404.0,
+        507.5
+      ],
+      "units_per_pixel": 0.029556650246305417,
+      "recommended_height": 30,
+      "category": "paper",
+      "source_alpha_bounds": [
+        225,
+        105,
+        1029,
+        1116
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "39a7c2abf0e721a5e633e3e2cafd114b857b6887c3b13f33edc062083ecd3f47"
+    },
+    "notice_board": {
+      "path": "assets/wall-dressing-v1/sprites/notice_board.png",
+      "size": [
+        1274,
+        745
+      ],
+      "pivot": [
+        637.0,
+        372.5
+      ],
+      "units_per_pixel": 0.040268456375838924,
+      "recommended_height": 30,
+      "category": "paper",
+      "source_alpha_bounds": [
+        133,
+        127,
+        1403,
+        868
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "0b4499ea2c860db5f0b827ca64a2af65ce76aff8c4a644e54e3c0217d09fab25"
+    },
+    "picture_ocean": {
+      "path": "assets/wall-dressing-v1/sprites/picture_ocean.png",
+      "size": [
+        910,
+        613
+      ],
+      "pivot": [
+        455.0,
+        306.5
+      ],
+      "units_per_pixel": 0.03915171288743882,
+      "recommended_height": 24,
+      "category": "picture",
+      "source_alpha_bounds": [
+        315,
+        185,
+        1221,
+        794
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "0d664f0e6fdb9467b0b55c4b813c7d3795efd0d459bbcffaba72c9dc0205c928"
+    },
+    "picture_botanical": {
+      "path": "assets/wall-dressing-v1/sprites/picture_botanical.png",
+      "size": [
+        718,
+        1072
+      ],
+      "pivot": [
+        359.0,
+        536.0
+      ],
+      "units_per_pixel": 0.027985074626865673,
+      "recommended_height": 30,
+      "category": "picture",
+      "source_alpha_bounds": [
+        225,
+        126,
+        939,
+        1194
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "050f1e375b57c12b5c21f5b598fe26ea295b79a92637900bc76416192c0fffc4"
+    },
+    "poster_diver": {
+      "path": "assets/wall-dressing-v1/sprites/poster_diver.png",
+      "size": [
+        777,
+        1408
+      ],
+      "pivot": [
+        388.5,
+        704.0
+      ],
+      "units_per_pixel": 0.022727272727272728,
+      "recommended_height": 32,
+      "category": "poster",
+      "source_alpha_bounds": [
+        124,
+        64,
+        897,
+        1468
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "9f2bcaf7fe7c1865046f201f5bf2985ca525481d5d21d5f654e123685af2b856"
+    },
+    "poster_marine": {
+      "path": "assets/wall-dressing-v1/sprites/poster_marine.png",
+      "size": [
+        758,
+        1457
+      ],
+      "pivot": [
+        379.0,
+        728.5
+      ],
+      "units_per_pixel": 0.02196293754289636,
+      "recommended_height": 32,
+      "category": "poster",
+      "source_alpha_bounds": [
+        135,
+        40,
+        889,
+        1493
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "fda2da4dfb8b6c547850d88cd347757cbc6a0046a7cc4c6edd4f94e7fa38bbcf"
+    },
+    "wall_lamp": {
+      "path": "assets/wall-dressing-v1/sprites/wall_lamp.png",
+      "size": [
+        1148,
+        527
+      ],
+      "pivot": [
+        574.0,
+        263.5
+      ],
+      "units_per_pixel": 0.03415559772296015,
+      "recommended_height": 18,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        196,
+        249,
+        1340,
+        772
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "a597b614bcc2c2d9edd3bfae22c419b2ba8a1f555180aba05b80207f64ec9633"
+    },
+    "emergency_box": {
+      "path": "assets/wall-dressing-v1/sprites/emergency_box.png",
+      "size": [
+        906,
+        930
+      ],
+      "pivot": [
+        453.0,
+        465.0
+      ],
+      "units_per_pixel": 0.030107526881720432,
+      "recommended_height": 28,
+      "category": "fixture",
+      "source_alpha_bounds": [
+        176,
+        149,
+        1078,
+        1075
+      ],
+      "alpha_floor": 128,
+      "layer": "wall_attachment",
+      "projection": "front_facing",
+      "collision": false,
+      "sha256": "5483b54e4858c3afc9370666bc9d3f4a72746f59243c79bc9eebb94df221c877"
+    }
+  },
+  "layouts": {
+    "shared_workplace": [
+      [
+        "analog_clock",
+        -155,
+        -216
+      ],
+      [
+        "com_panel",
+        -96,
+        -216
+      ],
+      [
+        "notice_board",
+        108,
+        -216
+      ]
+    ],
+    "crew_corner": [
+      [
+        "picture_ocean",
+        -145,
+        -216
+      ],
+      [
+        "wall_calendar",
+        -74,
+        -216
+      ],
+      [
+        "picture_botanical",
+        72,
+        -216
+      ],
+      [
+        "wall_lamp",
+        134,
+        -216
+      ]
+    ],
+    "station_services": [
+      [
+        "digital_clock",
+        -147,
+        -216
+      ],
+      [
+        "com_handset",
+        -76,
+        -216
+      ],
+      [
+        "emergency_box",
+        73,
+        -216
+      ],
+      [
+        "poster_diver",
+        118,
+        -216
+      ],
+      [
+        "poster_marine",
+        163,
+        -216
+      ]
+    ]
+  },
+  "wall_envelope": [
+    -192,
+    -240,
+    384,
+    48
+  ],
+  "reserved_door_bay": [
+    -34,
+    -246,
+    68,
+    58
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pressure_control",
+    "source": "rooms/whole-room/life-support-underwater-source-v1.png",
+    "sha256": "b340afc131371088ac226d61ef989a3f28aff033ef7675b1e2e125cf539cee82",
+    "source_role": "Reused pressure/air-handling machinery, dedicated local arrangement",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "integration": {
+      "view": "rooms/underwater/rare-dead-ends/pressure_control_view.gd",
+      "card": "rooms/underwater/rare-dead-ends/pressure_control-card-group-v1.png"
+    },
+    "composition_profile": "rooms/underwater/rare-dead-ends/pressure-composition-v1.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/rare-dead-ends/pressure-composition-v1.json",
+        "sha256": "18bb52f7b8b4f02d086075bfd42894d303eafe346a2095256810042572fa1eb5"
+      }
+    ],
+    "component_assets": [
+      {
+        "path": "rooms/production-ten/decor/battery-service-cart-v1.png",
+        "sha256": "4e69bab9b536f725cd937cd0fc1f32653022db6ff4083a8bcf6c31fae3e088e6"
+      },
+      {
+        "path": "rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      }
+    ]
+  }
+]

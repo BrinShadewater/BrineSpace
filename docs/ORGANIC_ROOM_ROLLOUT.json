@@ -1,0 +1,1003 @@
+{
+  "objective": "All current rooms receive natural, room-specific compositions; pipeline, skill, workflow and bible evolve with verified lessons",
+  "requirements": [
+    "authored activity areas",
+    "supported tabletop/shelf objects",
+    "grounded furniture and appropriate lighting",
+    "floor decoration and purposeful service routing",
+    "native visual review",
+    "four rotations and current actor access",
+    "matching cards and packaged assets"
+  ],
+  "rooms": [
+    {
+      "id": "life_support",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/life-organic-v2-1280",
+        "output/life-organic-audit-v2.log",
+        "output/life-activity-v2.log",
+        "output/life-current-routes-v1.log",
+        "output/life-crew-depth-v1/review.json",
+        "output/life-activity-audit-v2.log",
+        "output/life-activity-audit-v4.log",
+        "output/life-current-routes-v2.log",
+        "output/life-crew-depth-v3/review.json"
+      ],
+      "brief": {
+        "activity": "Air treatment service aisle",
+        "grounded_furniture": "Filter-change cart beside scrubbers; respirator locker on sealed wall",
+        "supported_objects": "Replacement cartridges on cart; calibration meter on existing console",
+        "floor_and_services": "Condensate drain under scrubbers; clipped air hose between valve and cart",
+        "lighting": "Cool task lamp beside inspection panel"
+      },
+      "limitations": "Added a grounded filter-service bench carrying tools, recessed drainage, paired tank controls and a lit maintenance cart. Final v3 profile has seven assemblies and no floor/art bounds overlaps in four rotations. Current-controller tour: 24 arrivals, 32 transitions, 2550 movement samples, zero failures. Depth: 84 poses, all 28 fronts accessible. Card reviewed; room still requires station-scale visual acceptance and remaining room rollout. Postdates Windows v6.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "corridor",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/routing-organic-v1-1280",
+        "output/routing-organic-v1.log",
+        "output/routing-organic-bounds-v1.log",
+        "output/routing-intercom-bounds-v3.log",
+        "output/routing-intercom-negative-v1.err",
+        "output/routing-intercom-routes-v1.log"
+      ],
+      "brief": {
+        "activity": "Clear transit with occasional service recess",
+        "grounded_furniture": "One recessed emergency cabinet in a wide wall segment",
+        "supported_objects": "Wall-fixed intercom and route plate",
+        "floor_and_services": "Edge conduit and narrow drainage strip; no free floor clutter",
+        "lighting": "Low shielded wall lights spaced along travel direction"
+      },
+      "limitations": "Recessed intercom and wall-band conduit added to existing cabinet/grates. 516 fitting bounds samples pass; deliberate invalid fitting exits 1. Current-controller tours pass both identities in four rotations. New cards selected; updated package and full visual review pending.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_phase": "wall_and_floor_detail_native_verified_visual_review_pending"
+    },
+    {
+      "id": "corner",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/routing-organic-v1-1280",
+        "output/routing-organic-v1.log",
+        "output/routing-organic-bounds-v1.log",
+        "output/routing-intercom-bounds-v3.log",
+        "output/routing-intercom-negative-v1.err",
+        "output/routing-intercom-routes-v1.log"
+      ],
+      "brief": {
+        "activity": "Readable turn and protected service corner",
+        "grounded_furniture": "Compact emergency kit in sealed inside corner",
+        "supported_objects": "Wall-mounted directional plate and pressure gauge",
+        "floor_and_services": "Cable cover follows inside edge without cutting the turn",
+        "lighting": "One corner inspection light"
+      },
+      "limitations": "Recessed intercom and wall-band conduit added to existing cabinet/grates. 516 fitting bounds samples pass; deliberate invalid fitting exits 1. Current-controller tours pass both identities in four rotations. New cards selected; updated package and full visual review pending.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_phase": "wall_and_floor_detail_native_verified_visual_review_pending"
+    },
+    {
+      "id": "mycelium_nursery",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/nursery-organic-v1-1280",
+        "output/nursery-organic-audit.log",
+        "output/nursery-activity-v2.log",
+        "output/nursery-activity-audit-v2.log",
+        "output/nursery-crew-depth-v1/review.json",
+        "output/nursery-current-routes-v2.log",
+        "output/nursery-substrate-depth-v2/review.json",
+        "output/nursery-substrate-routes-v1",
+        "rooms/whole-room/nursery-substrate-provenance-v1.json"
+      ],
+      "brief": {
+        "activity": "Cultivation rack and substrate preparation",
+        "grounded_furniture": "Low potting trolley beside growth rack; empty tray stack near collection",
+        "supported_objects": "Sample jars and inoculation tools on work surface",
+        "floor_and_services": "Irrigation line to growth rack and small wet-work grate",
+        "lighting": "Shielded grow-rack service lamp"
+      },
+      "limitations": "Nursery-only source-pixel assemblies repositioned with their effects and local pipes. State, depth and current-controller four-rotation return tour pass. Station-scale and package checks remain pending after Windows v6.",
+      "composition_phase": "activity_layout_revision",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_revision": "nursery-composition-v3/card-substrate-v1: low supply stand with supported substrate bags, scoop, jug and jar. Explicit q1/q3 placements clear filter access; 72 depth poses, 24 accessible fronts and four native route rotations pass."
+    },
+    {
+      "id": "hydroponics_bay",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/hydro-organic-v2-1280",
+        "output/hydro-organic-audit-v2.log",
+        "output/hydro-activity-audit-v1.log",
+        "output/hydro-activity-v1.log",
+        "output/hydro-current-routes-v1.log",
+        "output/hydro-crew-depth-v1/review.json",
+        "output/botanical-charts-routes-v1",
+        "output/hydro-harvest-depth-v1/review.json",
+        "output/hydro-harvest-routes-v1",
+        "rooms/whole-room/hydro-harvest-provenance-v3.json",
+        "output/botanical-shared-wall-v2"
+      ],
+      "brief": {
+        "activity": "Plant tending and nutrient mixing",
+        "grounded_furniture": "Nutrient caddy beside mixing vessel; compact potting bench",
+        "supported_objects": "Pruning tools and seed trays on bench",
+        "floor_and_services": "Drip loops connect bed inlets; grates beneath wet zones",
+        "lighting": "Slim task light beside tending bench"
+      },
+      "limitations": "Shared-wall chart revised; package refresh pending. Prior card review is superseded.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "visual_review": {
+        "card": "rooms/whole-room/hydroponics-card-mat-v2.png",
+        "card_sha256": "0ff4cb2785b48bdf9b62d6271980681cb171918d9054ca05e0a43a60487be57d",
+        "station": "output/room-rollout/windows-catalog40-v2/captures/composition-52-hydroponics_bay.png",
+        "findings": [
+          "Irrigation pipes, valves and covered crossing form one readable growing system.",
+          "Preparation cart supports small tools beside seedling bench.",
+          "The two upper banks remain strongly mirrored and lack a smaller harvesting or supply area."
+        ],
+        "decision": "Add a small supported harvest/supply area and a restrained wall detail; retain useful irrigation geometry."
+      },
+      "composition_revision": "Botanical v4 card: wall chart draws independently of shared-wall shell handoff at x=-52, clear of 72-unit door opening. Prior wall callback omitted the chart beside connected north rooms."
+    },
+    {
+      "id": "reactor",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/reactor-organic-v2-1280",
+        "output/reactor-activity-audit-v2.log",
+        "output/reactor-current-routes-v2.log",
+        "output/reactor-crew-depth-v2/review.json"
+      ],
+      "brief": {
+        "activity": "Controlled power maintenance",
+        "grounded_furniture": "Service trolley near access panel; extinguisher at safe approach",
+        "supported_objects": "Insulated tools secured on trolley top",
+        "floor_and_services": "Protected cable trunk follows reactor edge; service clearance paint",
+        "lighting": "Amber inspection post beside controls"
+      },
+      "limitations": "Larger tool-bearing service bench and task lamp share a work pad; cooler paired with service cylinder. Native current-controller tour v2: 24 arrivals, 32 transitions, 2717 movement samples. Depth v2: 72 poses, all 24 fronts accessible. No floor overlaps; bench-lamp art overhang intentional. Card reviewed; station-scale acceptance remains pending. Postdates Windows v6.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "med_bay",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/med-organic-v2-1280",
+        "output/med-bay-activity-v2.log",
+        "output/med-bay-activity-audit-v2.log",
+        "output/med-bay-crew-depth-v1/review.json",
+        "output/med-bay-current-routes-v1.log"
+      ],
+      "brief": {
+        "activity": "Treatment with reachable supplies",
+        "grounded_furniture": "Narrow bedside cabinet; linen trolley outside bed approach",
+        "supported_objects": "Instrument tray on cabinet; charts at observation console",
+        "floor_and_services": "Small bedside sanitation mat; wall service conduit to equipment",
+        "lighting": "Reading/examination lamp at bed head"
+      },
+      "limitations": "Paired beds, bedside hardware and grouped preparation/supplies integrated. Four-rotation state, 72 static depth and current-controller entry/return checks pass. Station-scale review and packaging remain pending after Windows v5.",
+      "composition_phase": "activity_layout_revision",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "brine_core",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/brine-organic-v1-1280",
+        "output/brine-organic-v1.log",
+        "rooms/underwater/brine-core/renewal-v2/README.md",
+        "output/brine-organic-current-v2.log",
+        "output/brine-organic-current-v2/review-card.png"
+      ],
+      "brief": {
+        "activity": "Observation and diagnostics around BRINE chamber",
+        "grounded_furniture": "Peripheral dual-monitor workstation, diagnostic desk, server and observation pedestal",
+        "supported_objects": "Docked diagnostic tablet and workstation monitors",
+        "floor_and_services": "Workstation mats and concealed chamber services",
+        "lighting": "Pearl chamber focal hierarchy and restrained powered monitor activity"
+      },
+      "limitations": "Ledger reconciled with selected renewal-v2/core-card-v6 and composition.json. Fresh native review passes four rotations, 16 entries/returns, 3569 movement samples, motion/offline/pause and three viewport sizes. Review-only mode preserves the selected card. Full catalog visual acceptance remains pending.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_phase": "renewed_core_native_verified_visual_review_pending"
+    },
+    {
+      "id": "solar_array",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/thermal-organic-v2-1280",
+        "output/thermal-organic-v2.log",
+        "output/thermal-organic-audit-v3.log",
+        "output/thermal-group-audit-v2.log",
+        "output/thermal-group-depth-v2/review.json",
+        "output/thermal-group-routes-v1.log"
+      ],
+      "brief": {
+        "activity": "Thermal servicing and flow monitoring",
+        "grounded_furniture": "Compact pump service cart; spare valve rack",
+        "supported_objects": "Temperature probe and fittings on cart",
+        "floor_and_services": "Insulated coolant loops between vessels; narrow service grate",
+        "lighting": "Industrial inspection lamp near heat exchanger"
+      },
+      "limitations": "Converter grouped with exchangers along sealed north wall, with a rear service link and pressure bottle beside the group. All 24 fronts and 72 depth poses pass; four current-controller tours pass. No raster source replaced. This revision postdates windows-detail-review-v1; further visual acceptance and updated package remain pending.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending"
+    },
+    {
+      "id": "battery_array",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/battery-activity-v2-1280",
+        "output/battery-activity-v2.log",
+        "output/battery-activity-audit-v2.log",
+        "output/battery-group-depth-v4/review.json",
+        "output/battery-group-routes-v4.log",
+        "output/battery-bench-depth-v1/review.json",
+        "output/battery-bench-routes-v1.log",
+        "output/battery-bench-audit-v1.log"
+      ],
+      "brief": {
+        "activity": "Charge monitoring and safe cable servicing",
+        "grounded_furniture": "Insulated cable spool near distribution; small diagnostic stand",
+        "supported_objects": "Meter and protected connector tray on stand",
+        "floor_and_services": "Covered cable run from banks to distribution; bounded access marks",
+        "lighting": "Slim charge-side work light"
+      },
+      "limitations": "Three-area composition replaces four equal corner machines: major banks, paired distribution controls and separate servicing cart/reel. Close actor review and packaging of this latest revision remain pending.",
+      "composition_phase": "supported_test_bench_native_verified_visual_review_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "mining_drone_bay",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/mining-organic-v1-1280",
+        "output/mining-cutter-depth-v2/review.json",
+        "output/mining-cutter-audit-v2.log",
+        "output/drone-detail-routes-v2.log"
+      ],
+      "brief": {
+        "activity": "Drone turnaround before deployment",
+        "grounded_furniture": "Tool trolley beside cradle; spare manipulator support stand",
+        "supported_objects": "Sealed instrument tray on trolley; charging lead secured at cradle",
+        "floor_and_services": "Tether routes from reel to cradle; deployment exclusion marks",
+        "lighting": "Hooded servicing light above cradle work area"
+      },
+      "limitations": "Distinct supported service/recovery prop integrated and reviewed at normal 52% station zoom. All furniture fronts pass in four rotations, and production movement tours pass. Further whole-room composition and updated packaged review remain pending.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "salvage_drone_bay",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/salvage-organic-v1-1280",
+        "output/salvage-recovery-depth-v1/review.json",
+        "output/salvage-recovery-audit-v1.log",
+        "output/drone-detail-routes-v2.log"
+      ],
+      "brief": {
+        "activity": "Recovery sorting and repair",
+        "grounded_furniture": "Low sorting bench beside recovery winch; unequal recovery bins",
+        "supported_objects": "Recovered components on bench; tether gauge in dock",
+        "floor_and_services": "Winch lead follows dock edge; localized drain and sorting bay paint",
+        "lighting": "Adjustable task lamp at sorting bench"
+      },
+      "limitations": "Distinct supported service/recovery prop integrated and reviewed at normal 52% station zoom. All furniture fronts pass in four rotations, and production movement tours pass. Further whole-room composition and updated packaged review remain pending.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "crew_hab",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/hab-organic-v1-1280",
+        "output/hab-organic-audit.log",
+        "output/crew-hab-activity-v2.log",
+        "output/crew-hab-activity-audit-v3.log",
+        "output/crew-hab-crew-depth-v2/review.json",
+        "output/crew-hab-current-routes-v3.log",
+        "output/hab-drying-depth-v1/review.json",
+        "output/hab-drying-routes-v1.log",
+        "rooms/whole-room/crew-hab-card-drying-v2.png"
+      ],
+      "brief": {
+        "activity": "Private resting with small personal traces",
+        "grounded_furniture": "Bedside side table; coat stand near entry",
+        "supported_objects": "Book and cup on bedside surface; folded clothes on shelf",
+        "floor_and_services": "Small offset bedside runner; tucked lamp cable",
+        "lighting": "Warm bedside reading light"
+      },
+      "limitations": "Drying rack with supported jacket, gloves and boots added beside sleeping furniture, with quarter-specific placements. 96 static poses and all 32 fronts pass; four rotated production movement tours pass. Whole-room visual acceptance and updated package remain pending.",
+      "composition_phase": "activity_layout_revision",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "research_lab",
+      "status": "integrated_native_and_packaged_checks_passed_visual_review_pending",
+      "evidence": [
+        "output/production-ten/research-organic-v1",
+        "rooms/production-ten/research_lab-card-organic-v1.png",
+        "output/production-ten/organic-research_lab-final-1280",
+        "output/room-rollout/windows-organic-pilot-v3/verification.json",
+        "output/research-activity-v2.log",
+        "output/research-activity-audit-v2.log",
+        "output/research-crew-depth-v2/review.json",
+        "output/research-services-routes-v1.log",
+        "output/research-services-depth-v2/review.json"
+      ],
+      "brief": {
+        "activity": "Sample preparation and observation",
+        "grounded_furniture": "Small specimen table beside scanner; reagent trolley near bench",
+        "supported_objects": "Vials and notes supported on specimen table; gloves in trolley tray",
+        "floor_and_services": "Instrument leads connect bench and scanner at edges; clean-zone mat",
+        "lighting": "Cool articulated bench lamp"
+      },
+      "remaining": [
+        "Close continuous crew occlusion review",
+        "Owner visual acceptance; improve any remaining isolated-group composition"
+      ],
+      "composition_phase": "scanner_group_and_services_native_verified_visual_review_pending",
+      "limitations": "Paired rear-wall instruments, enlarged preparation station and local trolley lead integrated. Seven assemblies, four rotations, 364 route samples and 84 static crew-depth probes pass. Full station-scale aesthetic review and updated package remain pending.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "cryo_chamber",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/cryo-organic-v2-1280",
+        "output/cryo-organic-audit.log",
+        "output/cryo-organic-recovery.log",
+        "output/cryo-activity-audit-v1.log",
+        "output/cryo-current-routes-v1.log",
+        "output/cryo-crew-depth-v1/review.json"
+      ],
+      "brief": {
+        "activity": "Quiet patient monitoring",
+        "grounded_furniture": "Narrow technician cart beside monitoring console",
+        "supported_objects": "Calibration unit and folded thermal blanket on cart",
+        "floor_and_services": "Short clipped coolant returns behind pods; access stripe",
+        "lighting": "Soft service post light away from pod windows"
+      },
+      "limitations": "Larger supply trolley beside monitoring console; transfer cooler beside compressor; trolley mat now rendered by leaf floor. Recovery wards retain their existing removal of dressing. Four rotations have no overlaps; current-controller tour passes 16 arrivals, 16 transitions, 1350 samples. Depth: 72 poses, all 24 fronts accessible. Visual character remains incomplete; postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "clone_lab",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/clone-organic-v3-1280",
+        "output/clone-activity-audit-v1.log",
+        "output/clone-current-routes-v1.log",
+        "output/clone-crew-depth-v1/review.json"
+      ],
+      "brief": {
+        "activity": "Sterile growth preparation",
+        "grounded_furniture": "Sterile supply trolley beside culture station",
+        "supported_objects": "Sealed growth kits on trolley; log tablet in console dock",
+        "floor_and_services": "Contained fluid feed between vessel and pump; sanitation grate",
+        "lighting": "Shielded white preparation light"
+      },
+      "limitations": "Preparation bench enlarged to readable working scale, positioned between vessel and incubator with matching mat. q1/q3 lamp art overlap inspected in close views; worktop and machinery remain readable. No floor overlap. 60 depth poses pass, all 20 fronts accessible. Current tour: 20 arrivals, 24 transitions, 1933 samples. Broader composition remains incomplete; postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "quarantine_cell",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/quarantine-organic-v1-1280",
+        "output/quarantine-activity-v3.log",
+        "output/quarantine-activity-audit-v2.log",
+        "output/quarantine-crew-depth-v2/review.json",
+        "output/quarantine-services-routes-v2.log",
+        "output/quarantine-surface-hosts-v1.log"
+      ],
+      "brief": {
+        "activity": "Isolated care and observation",
+        "grounded_furniture": "Dedicated bedside cabinet inside berth area; disposal bin near filtration",
+        "supported_objects": "Meal and sealed water on bedside surface; observation tablet outside berth",
+        "floor_and_services": "Separated filtration line and small washable mat",
+        "lighting": "Clinical berth light with observation indicator"
+      },
+      "limitations": "Larger berth beside monitor, smaller dedicated filter, and separate preparation/cabinet group integrated. All rotations, 728 routes, 72 static depth probes and all 24 sampled front clearances pass. Postdates Windows v5; station-scale review and new package pending.",
+      "composition_phase": "observation_lead_and_flush_grates_native_verified_visual_review_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "data_archive",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/archive-organic-v1-1280",
+        "output/archive-activity-audit-v2.log",
+        "output/archive-current-routes-v1.log",
+        "output/archive-crew-depth-v1/review.json"
+      ],
+      "brief": {
+        "activity": "Archive access and repair",
+        "grounded_furniture": "Slim terminal desk and media trolley beside racks",
+        "supported_objects": "Cartridges and service keyboard on desk",
+        "floor_and_services": "Bundled data trunk along rack base; quiet floor except access marks",
+        "lighting": "Small terminal task lamp"
+      },
+      "limitations": "Larger service cart and task lamp grouped below terminal with floor mat. Four rotations have no floor overlaps; small art-bound overlap is cart cable/terminal edge and lamp overhang. Current-controller tour: 24 arrivals, 32 transitions, 2613 samples. Depth: 72 poses, all 24 fronts accessible. Card reviewed; broader visual and station-scale acceptance pending. Postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "ore_refinery",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/organic-ore_refinery-final-1280",
+        "output/room-rollout/windows-organic-engineering-v1/runtime.log",
+        "output/refinery-activity-v2.log",
+        "output/refinery-activity-audit-v2.log",
+        "output/refinery-crew-depth-v1/review.json",
+        "output/refinery-transfer-routes-v2.log"
+      ],
+      "brief": {
+        "activity": "Material intake through contained processing",
+        "grounded_furniture": "Sampling stand beside output; rugged parts trolley",
+        "supported_objects": "Assay cups on sampling stand; tooling on trolley",
+        "floor_and_services": "Hoses connect vessel ports; floor drain and bounded spill tray",
+        "lighting": "Hooded amber inspection light"
+      },
+      "limitations": "Recomposed processing/assay area and vessels/sorter side integrated. Four rotations, 728 routes, 72 static depth probes and all 24 sampled front clearances pass. Postdates Windows v5; station-scale review and package pending.",
+      "composition_phase": "contained_floor_transfer_native_verified_visual_review_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "storage_bay",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/storage-activity-v3-1280",
+        "output/storage-activity-v3.log",
+        "output/storage-activity-audit-v2.log",
+        "output/storage-activity-v5.log",
+        "output/storage-crew-depth-v3/review.json",
+        "output/production-ten/storage-activity-v5-1280",
+        "output/storage-pallet-audit-v1.log",
+        "output/storage-pallet-routes-v1.log",
+        "output/storage-pallet-depth-v1/review.json"
+      ],
+      "brief": {
+        "activity": "Picking and inventory checks",
+        "grounded_furniture": "Low packing table at shelf end; hand pallet jack parked clear",
+        "supported_objects": "Manifest slate and straps on packing surface",
+        "floor_and_services": "Asymmetric bay outlines and wear at crate contact; open picking route",
+        "lighting": "Shelf-end stock-check light"
+      },
+      "limitations": "New generated staging pallet adds bundled hoses, strapped case and netted supplies beside waiting cargo. Selected storage-composition-v4 and card-staging-v1. Native route: 24 arrivals, 32 transitions, 2545 samples. Depth: 96 poses, all 32 fronts accessible. No floor overlaps. New source/component hash declared; full station-scale visual acceptance remains pending.",
+      "composition_phase": "activity_layout_revision",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "biodome",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/biodome-organic-v2-1280",
+        "output/biodome-organic-v2.log",
+        "rooms/underwater/batch-two/biodome-card-organic-v2.png",
+        "output/biodome-propagation-audit-v1.log",
+        "output/biodome-propagation-depth-v1/review.json",
+        "output/biodome-propagation-routes-v1.log",
+        "output/botanical-charts-routes-v1",
+        "output/botanical-shared-wall-v2"
+      ],
+      "brief": {
+        "activity": "Cultivation and observation retreat",
+        "grounded_furniture": "Planting cart at bed edge; small observation perch",
+        "supported_objects": "Seedling trays on cart; field notebook on perch shelf",
+        "floor_and_services": "Curved bed-edge irrigation; localized grate and stepping surface",
+        "lighting": "Low botanical observation fixture"
+      },
+      "limitations": "Shared-wall chart revised; package refresh pending. Prior card review is superseded.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "visual_review": {
+        "card": "rooms/underwater/batch-two/biodome-card-care-v1.png",
+        "card_sha256": "7cadf77d4158be6e250abc0de824d5d689feb0c5493d5fd715fc74ae8fc112d6",
+        "station": "output/botanical-charts-routes-v1/biodome-q3/composition-52-biodome.png",
+        "findings": [
+          "Propagation shelf supports plants, pots and watering supplies; care cart serves the opposite growing area.",
+          "Varied plant silhouettes and enclosed habitats remain legible in the functioning station capture.",
+          "Perimeter services and drains explain tending areas; the center remains accessible.",
+          "Small wall care clipboard remains readable and subordinate to plants in rotated station capture."
+        ],
+        "decision": "Current furnishing composition accepted in native review; updated packaged verification pending."
+      },
+      "composition_revision": "Botanical v4 card: wall chart draws independently of shared-wall shell handoff at x=-52, clear of 72-unit door opening. Prior wall callback omitted the chart beside connected north rooms."
+    },
+    {
+      "id": "xeno_lab",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/xeno-organic-v2-1280",
+        "output/xeno-organic-v2.log",
+        "output/xeno-organic-audit-v2.log",
+        "rooms/underwater/batch-two/xeno_lab-card-organic-v2.png",
+        "output/xeno-activity-audit-v1.log",
+        "output/xeno-current-routes-v2.log",
+        "output/xeno-crew-depth-v2/review.json"
+      ],
+      "brief": {
+        "activity": "Contained nonhuman specimen analysis",
+        "grounded_furniture": "Isolated specimen stand and sealed service cart",
+        "supported_objects": "Sample carriers latched to stand; protected instruments on cart",
+        "floor_and_services": "Dedicated containment hose to vessel; clean boundary marks",
+        "lighting": "Shielded inspection lamp directed at containment"
+      },
+      "limitations": "Larger service trolley beside containment; main workbench moved inward to restore q0 front clearance. Final depth: 60 poses, all 20 fronts accessible. Current tour v2: 12 arrivals, 8 transitions, 682 samples. Full visual acceptance pending.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "anomaly_lab",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/anomaly-organic-v1-1280",
+        "output/anomaly-organic-v1.log",
+        "rooms/underwater/batch-two/anomaly_lab-card-organic-v1.png",
+        "output/anomaly-activity-audit-v1.log",
+        "output/anomaly-current-routes-v1.log",
+        "output/anomaly-crew-depth-v1/review.json"
+      ],
+      "brief": {
+        "activity": "Controlled observation of unstable subject",
+        "grounded_furniture": "Instrument pedestal offset from containment; sparse supply station",
+        "supported_objects": "Recording module fixed to pedestal",
+        "floor_and_services": "Grounding braid connects containment and monitor; restrained exclusion ring",
+        "lighting": "Small monitoring light, anomaly remains focal"
+      },
+      "limitations": "Larger recording cart with task light beside containment; receiver moved inward. No floor overlaps. 72 depth poses pass, all 24 fronts accessible. Current tour: 12 arrivals, 8 transitions, 682 samples. Card reviewed; full visual acceptance pending.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "bio_lab",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/bio-organic-v1-1280",
+        "output/bio-organic-v1.log",
+        "output/bio-organic-audit-v1.log",
+        "rooms/underwater/batch-two/bio_lab-card-organic-v2.png",
+        "output/bio-activity-audit-v1.log",
+        "output/bio-current-routes-v2.log",
+        "output/bio-crew-depth-v2/review.json"
+      ],
+      "brief": {
+        "activity": "Wet sample preparation",
+        "grounded_furniture": "Washable preparation island and reagent cart",
+        "supported_objects": "Pipettes and specimen dishes on island; boxed supplies on shelf",
+        "floor_and_services": "Water return to sink and grated wet area",
+        "lighting": "Articulated preparation lamp"
+      },
+      "limitations": "Larger preparation bench, centrifuge closer to processing area, smaller cold storage with adjacent sample cooler. q1 cooler moved after close review found it hidden by cabinet. Current tour v2: 20 arrivals, 24 transitions, 1943 samples. Depth v2: 72 poses, all 24 fronts accessible. Full visual acceptance remains pending; postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "command_center",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/command-activity-v2-1280",
+        "output/command-activity-v2.log",
+        "output/command-activity-audit-v1.log",
+        "output/command-chair-routes-v1.log",
+        "output/command-chair-depth-v2/review.json"
+      ],
+      "brief": {
+        "activity": "Shared operational decisions",
+        "grounded_furniture": "Small briefing side console; communications accessory stand",
+        "supported_objects": "Headset and paper map on side console; tablet in dock",
+        "floor_and_services": "Covered data leads from central operations to displays; operator floor pad",
+        "lighting": "Restrained console-adjacent task light"
+      },
+      "limitations": "Larger-layout revision groups two smaller consoles into a paired control station and gives planning table stronger scale hierarchy. Further close actor review, secondary surface details and current packaged acceptance remain pending.",
+      "composition_phase": "operator_chair_native_verified_visual_review_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "crew_lounge",
+      "status": "furnishing_visual_review_passed_native_and_packaged_verified",
+      "evidence": [
+        "output/production-ten/lounge-organic-support-v2",
+        "rooms/production-ten/crew_lounge-card-organic-v3.png",
+        "output/production-ten/organic-crew_lounge-final-1280",
+        "output/room-rollout/windows-organic-pilot-v3/verification.json",
+        "output/lounge-activity-v1.log",
+        "output/lounge-activity-audit-v2.log",
+        "output/lounge-current-routes-v2.log",
+        "output/lounge-crew-depth-v2/review.json"
+      ],
+      "brief": {
+        "activity": "Reading, dining and refreshments connected by secondary furniture",
+        "grounded_furniture": "Reading lamp, narrow bookcase, tea trolley and coat stand",
+        "supported_objects": "Drinks tray on dining table; books and ocean print on bookcase; mugs on trolley",
+        "floor_and_services": "One textile anchors seating; lamp lead ends at outlet; clear social circulation",
+        "lighting": "Warm standing reading lamp"
+      },
+      "remaining": [
+        "Close continuous crew occlusion review",
+        "Owner visual acceptance; improve any remaining isolated-group composition"
+      ],
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "limitations": "Visual furnishing review passed for selected activity-v3 card and catalog40-v2 station capture. This is agent review, not owner sign-off or release acceptance.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "visual_review": {
+        "card": "rooms/production-ten/crew_lounge-card-activity-v3.png",
+        "card_sha256": "b4a24bfc9a049ece6319cbe2f37536ed5ca97b2402a7f9c5c6e9cbbe2a9c97f4",
+        "station": "output/room-rollout/windows-catalog40-v2/captures/composition-52-crew_lounge.png",
+        "findings": [
+          "Reading nook joins sofa, rug, side storage and standing lamp into one activity area.",
+          "Dining table and games table carry supported small objects; bookcase has books, picture and plant.",
+          "Tea trolley supports the galley; coat stand sits by games seating, with plants as limited peripheral accents.",
+          "Different furniture sizes and support heights read clearly in the functioning station capture.",
+          "Central circulation remains open and intentional; additional floor clutter would not improve the room."
+        ],
+        "decision": "Accept current furnishing composition; retain existing movement and package evidence."
+      }
+    },
+    {
+      "id": "holographic_core",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/holo-organic-v1-1280",
+        "output/holo-organic-v1.log",
+        "output/holo-organic-audit-v1.log",
+        "output/holo-activity-audit-v1.log",
+        "output/holo-current-routes-v1.log",
+        "output/holo-crew-depth-v1/review.json",
+        "output/holo-group-depth-v2/review.json",
+        "output/holo-group-routes-v2"
+      ],
+      "brief": {
+        "activity": "Projection observation and calibration",
+        "grounded_furniture": "Small calibration console at projection edge",
+        "supported_objects": "Optical calibration tools in console tray",
+        "floor_and_services": "Covered emitter leads and restrained projection perimeter",
+        "lighting": "Small maintenance light subordinate to hologram"
+      },
+      "limitations": "Larger calibration cart paired with relocated calibrator, short service connection and mat. No floor overlaps; small q0 cart cable/upper silhouette overlap reviewed in selected card. 60 depth poses pass, all 20 fronts accessible. Current tour: 24 arrivals, 32 transitions, 2607 samples. Broader visual character remains incomplete; postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_revision": "holo-composition-v3.json: offset calibration cart, raised terminal, perimeter services; first blocked side-entrance candidate rejected. Final native rotations pass. Further visual furnishing remains."
+    },
+    {
+      "id": "maintenance_bay",
+      "status": "integrated_native_and_packaged_checks_passed_visual_review_pending",
+      "evidence": [
+        "output/production-ten/maintenance-organic-v2",
+        "rooms/production-ten/maintenance_bay-card-organic-v2.png",
+        "output/production-ten/organic-maintenance_bay-final-1280",
+        "output/room-rollout/windows-organic-pilot-v3/verification.json",
+        "output/maintenance-activity-v2.log",
+        "output/maintenance-activity-audit-v2.log",
+        "output/maintenance-crew-depth-v1/review.json",
+        "output/maintenance-services-routes-v1"
+      ],
+      "brief": {
+        "activity": "Active repair with reachable tools",
+        "grounded_furniture": "Low repair table, task-light stand and parts trolley",
+        "supported_objects": "Open toolbox on repair table; bolts in trolley bins",
+        "floor_and_services": "Hose from reel to repair station; cable cover and service mat",
+        "lighting": "Adjustable industrial floor task light"
+      },
+      "remaining": [
+        "Close continuous crew occlusion review",
+        "Owner visual acceptance; improve any remaining isolated-group composition"
+      ],
+      "composition_phase": "activity_layout_revision",
+      "limitations": "Activity v2 enlarges the supported repair table between the repair machine and tool wall. Smaller panel/trolley and diagnostics/bottle groups retain access. Four rotations, 1092 routes and 96 static depth probes pass; all 32 sampled front positions standable. Updated package and final station-scale composition review pending.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_revision": "maintenance-composition-v3 / card-services-v2: diagnostics-to-trolley lead below flush crossing cover, bottle hose above floor; four native rotations pass. Furniture geometry unchanged."
+    },
+    {
+      "id": "med_center",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/med-center-organic-v2-1280",
+        "output/med-center-organic-v2.log",
+        "output/med-center-organic-audit-v2.log",
+        "output/center-activity-audit-v2.log",
+        "output/center-current-routes-v1.log",
+        "output/center-crew-depth-v1/review.json",
+        "output/med-center-services-routes-v1"
+      ],
+      "brief": {
+        "activity": "Care preparation supporting treatment",
+        "grounded_furniture": "Supply trolley between treatment support areas; linen cabinet",
+        "supported_objects": "Sterile tray on trolley; charts on nursing counter",
+        "floor_and_services": "Washable waiting pad and clipped equipment services",
+        "lighting": "Clinical workstation light"
+      },
+      "limitations": "Care trolley enlarged and placed beside treatment equipment with authored centers. No floor/art overlaps in final four rotations. 60 depth poses pass, all 20 fronts accessible. Current tour: 16 arrivals, 16 transitions, 1347 samples. This is a focused workstation-scale improvement; full organic composition remains pending.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_revision": "med-center-composition-v3/services-v1: scanner-to-diagnostics service run with covered east crossing. Four native rotations pass; no furniture/collision changes."
+    },
+    {
+      "id": "med_office",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/office-organic-v2-1280",
+        "output/office-group-audit-v1.log",
+        "output/office-group-depth-v2/review.json",
+        "output/office-group-routes-v2.log"
+      ],
+      "brief": {
+        "activity": "Consultation and patient records",
+        "grounded_furniture": "Side credenza beside desk; coat hook and small visitor stand",
+        "supported_objects": "Files and personal cup on credenza; examination supplies on stand",
+        "floor_and_services": "Quiet desk mat and tucked power lead",
+        "lighting": "Warm restrained desk lamp"
+      },
+      "limitations": "Powered station-scale visual review remains; current unpowered view supports grouping only.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "next_visual_revision": "Review room-specific small clinical supplies and physical service details within the new groups.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "visual_review": {
+        "card": "rooms/underwater/batch-two/med_office-card-group-v1.png",
+        "card_sha256": "16087b7e8841d768f1975a76dfb7302cf1c401a45fedb4e58a6827f6e29d6248",
+        "station": "output/room-rollout/windows-catalog40-v2/captures/composition-52-med_office.png",
+        "findings": [
+          "Consultation chairs, table, tablet and reading light form a coherent conversation area.",
+          "Reference books, framed picture and plant soften the office without floor clutter.",
+          "Examination and desk areas remain separate and accessible.",
+          "Current packaged capture is unpowered; lit station appearance remains unreviewed."
+        ],
+        "decision": "Retain composition; review a powered station capture before final acceptance."
+      }
+    },
+    {
+      "id": "radio_lab",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/radio-organic-v1-1280",
+        "output/radio-organic-v1.log",
+        "output/radio-organic-audit-v1.log",
+        "output/radio-activity-audit-v1.log",
+        "output/radio-current-routes-v1.log",
+        "output/radio-crew-depth-v1/review.json",
+        "output/radio-operator-depth-v1/review.json",
+        "output/radio-operator-routes-v1"
+      ],
+      "brief": {
+        "activity": "Signal analysis and communications repair",
+        "grounded_furniture": "Radio service bench and compact cable cart",
+        "supported_objects": "Headphones and test connectors on bench",
+        "floor_and_services": "Coax routes between rack and bench; protected crossing cover",
+        "lighting": "Bench inspection lamp with blue status indicator"
+      },
+      "limitations": "Enlarged electronics bench between smaller receiver and test equipment; direct service cable and resized mat. All four rotations have no floor/art overlaps. 60 depth poses pass, all 20 fronts accessible. Current tour: 16 arrivals, 16 transitions, 1350 samples. Card reviewed; full natural composition remains pending, postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_revision": "radio-composition-v3: listener operator chair reused from Command Center, staggered lower equipment, covered service crossing; 72 depth poses and 24 accessible fronts."
+    },
+    {
+      "id": "shield_generator",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/hull-organic-v1-1280",
+        "output/hull-organic-v1.log",
+        "output/hull-organic-audit-v1.log",
+        "output/shield-activity-audit-v1.log",
+        "output/shield-current-routes-v1.log",
+        "output/shield-crew-depth-v1/review.json",
+        "output/shield-panel-depth-v1/review.json",
+        "output/shield-panel-routes-v1",
+        "rooms/underwater/hull-integrity/panel-cradle-provenance-v2.json"
+      ],
+      "brief": {
+        "activity": "Field calibration and safe component handling",
+        "grounded_furniture": "Calibration trolley near controls; spare emitter cradle",
+        "supported_objects": "Meter and insulated connectors on trolley",
+        "floor_and_services": "Grounding cables link emitters; marked service pads",
+        "lighting": "Shielded industrial task post"
+      },
+      "limitations": "Larger calibration bench, smaller patch rack and injector support the service area. No floor/art overlaps in four rotations. 60 depth poses pass, all 20 fronts accessible. Current tour: 16 arrivals, 16 transitions, 1347 samples. Card reviewed; full natural composition remains pending, postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "composition_revision": "hull-composition-v3: low clamped panel preparation cradle with supported sealant tools, rag and hose, beside injector; native 72 poses/24 accessible fronts and four-rotation routes pass."
+    },
+    {
+      "id": "tidal_condenser",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/tidal-organic-v1-1280",
+        "output/tidal-organic-v1.log",
+        "output/tidal-organic-audit-v1.log",
+        "output/tidal-activity-audit-v1.log",
+        "output/tidal-current-routes-v1.log",
+        "output/tidal-crew-depth-v1/review.json"
+      ],
+      "brief": {
+        "activity": "Condensation collection and pump service",
+        "grounded_furniture": "Valve cart beside pump; sample stand near collection vessel",
+        "supported_objects": "Sample bottles and salinity meter on stand",
+        "floor_and_services": "Intake/return hoses with legible endpoints; wet deck grate",
+        "lighting": "Cool pump inspection light"
+      },
+      "limitations": "Larger sampling bench between coils and tanks with direct service connection; smaller pump/monitor. No floor/art overlaps in four rotations. 60 depth poses pass, all 20 fronts accessible. Current tour: 20 arrivals, 24 transitions, 1931 samples. Card reviewed; full natural composition remains pending, postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "gravity_loom",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/gravity-organic-v2-1280",
+        "output/gravity-organic-v2.log",
+        "output/loom-activity-audit-v1.log",
+        "output/loom-current-routes-v1.log",
+        "output/loom-crew-depth-v1/review.json"
+      ],
+      "brief": {
+        "activity": "Delicate field-thread calibration",
+        "grounded_furniture": "Fine-tool pedestal offset from loom; compact spool cabinet",
+        "supported_objects": "Calibration tools on pedestal; spare spools secured in cabinet",
+        "floor_and_services": "Protected control leads and localized loom boundary marks",
+        "lighting": "Small focused task lamp subordinate to loom"
+      },
+      "limitations": "Larger calibration bench with task light and expanded pad. No floor overlaps; q1/q2 close views confirm circular apparatus stays visibly clear despite bounding-box overlap. 36 depth poses pass, all 12 fronts accessible. Current tour: 24 arrivals, 32 transitions, 2876 samples. Full visual acceptance pending; postdates Windows activity-review-v1.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json"
+    },
+    {
+      "id": "construction_drone_bay",
+      "status": "integrated_native_passed_visual_revision_pending",
+      "evidence": [
+        "output/production-ten/construction-organic-v2-1280",
+        "output/construction-organic-v2.log",
+        "output/construction-organic-audit-v2.log",
+        "output/construction-assembly-audit-v3.log",
+        "output/construction-assembly-depth-v2/review.json",
+        "output/construction-assembly-routes-v1.log"
+      ],
+      "brief": {
+        "activity": "Fabrication drone servicing and paid room assembly",
+        "grounded_furniture": "Compact welding-tool stand beside service cradle; fabrication stock rack on sealed wall",
+        "supported_objects": "Nozzles, insulated tools and fitting trays secured to a bench",
+        "floor_and_services": "Protected power lead to service cradle, contained offcut tray and localized work pad",
+        "lighting": "Shielded inspection lamp subordinate to deployed drone effects"
+      },
+      "limitations": "Deployment hatch grouped with cradle; trolley grouped with fabrication bench; new clamped-panel trestle added beside panel stock. Actual fleet draw bounds replace placeholder bounds. 84 depth poses, all 28 fronts and four production tours pass. New selection postdates windows-detail-review-v1; package and final visual acceptance pending.",
+      "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "next_visual_revision": "Review broader floor character and service connections in the assembled bay.",
+      "composition_phase": "activity_layout_native_verified_visual_revision_pending"
+    },
+    {
+      "id": "airlock",
+      "status": "low_cutaway_integrated_scoped_package_verified",
+      "composition_phase": "low_wall_revision_reviewed_furnishing_acceptance_pending",
+      "evidence": [
+        "rooms/underwater/airlock-v4/card-low-cutaway-v1.png",
+        "rooms/underwater/airlock-v4/README.md",
+        "output/airlock-low-packaged-runtime-v2.log",
+        "output/airlock-station-packaged-tour-v1/station-summary.json",
+        "output/airlock-low-package-v4/verification.json"
+      ],
+      "limitations": "Selected 512-square low-cutaway card matches the native package render byte-for-byte. All four exterior hatch orientations reviewed. Dedicated package v2 passes three-actor equipment and pressure checks; v3 passes single-crew controlled station traversal; v4 passes autonomous 17-room station smoke. These are distinct packages, not one full-catalog or exterior-swimming acceptance run. Further furnishing and owner aesthetic acceptance remain separate."
+    },
+    {
+      "id": "tee_corridor",
+      "status": "current_catalog_added_review_pending",
+      "composition_phase": "current_selection_review_pending",
+      "evidence": [
+        "rooms/underwater/tee_corridor-card-style-v1-0.png"
+      ],
+      "limitations": "New current database identity added to all-room scope. Existing art and gameplay are present; composition, normal-scale review, route evidence and inclusion in the next catalog package need reconciliation."
+    },
+    {
+      "id": "pressure_control",
+      "status": "current_catalog_added_art_integration_pending",
+      "composition_phase": "dedicated_pressure_service_layout_native_verified_visual_review_pending",
+      "limitations": "Dedicated arrangement and perimeter hoses integrated; source machinery reused. Full visual acceptance and current package remain pending.",
+      "evidence": [
+        "output/room-review-inventory-v5.log",
+        "output/rare-room-catalog-routes-v3.log",
+        "output/pressure-group-depth-v2/review.json",
+        "output/pressure-group-routes-v1.log"
+      ]
+    },
+    {
+      "id": "listening_post",
+      "status": "current_catalog_added_art_integration_pending",
+      "composition_phase": "dedicated_listening_station_native_verified_visual_review_pending",
+      "limitations": "Dedicated local profile, equipment grouping and operator chair integrated. Reused source assets documented. Full visual acceptance and current packaged coverage remain pending.",
+      "evidence": [
+        "output/room-review-inventory-v5.log",
+        "output/rare-room-catalog-routes-v3.log",
+        "output/listening-group-depth-v1/review.json",
+        "output/listening-group-routes-v1.log"
+      ]
+    },
+    {
+      "id": "isolation_vault",
+      "status": "current_catalog_added_art_integration_pending",
+      "composition_phase": "dedicated_reserve_service_layout_native_verified_visual_review_pending",
+      "limitations": "Dedicated grouping and perimeter routes integrated; inherited machinery reused honestly. Selected card exists. Full visual acceptance and updated packaged coverage remain pending.",
+      "evidence": [
+        "output/room-review-inventory-v5.log",
+        "output/rare-room-catalog-routes-v3.log",
+        "output/isolation-group-depth-v1/review.json",
+        "output/isolation-group-routes-v1.log"
+      ]
+    }
+  ],
+  "acceptance_note": "Briefs describe intended production work, not implemented assets or accepted compositions.",
+  "packaged_verification": {
+    "evidence": "output\\room-rollout\\windows-catalog40-v2\\verification.json",
+    "scope": "Windows debug controlled traversal of all 40 declared room identities; visual acceptance remains pending",
+    "selected_sources": 40,
+    "source_card_png_decodes": 80,
+    "component_records": 70,
+    "composition_profiles": 36,
+    "arrivals": 60,
+    "transitions": 162,
+    "movement_samples": 12525,
+    "pack_sha256": "4BEE4FC2D92B3D21300A3FFF2A0727F95CD93FB5A014BBD38A1A2CAE706D52C1",
+    "focused_captures": 40,
+    "focused_capture_zoom": 0.52,
+    "focused_decode_evidence": "output\\room-rollout\\windows-catalog40-v2\\focused-capture-decode.json",
+    "subsequent_changes_note": "Maintenance services-v2, Nursery substrate-v1, Biodome care-v4, Hydroponics harvest-v4 and Medical Center services-v1 postdate catalog40-v2; package refresh pending."
+  },
+  "host_reference_audit": {
+    "evidence": "output/dressing-helpers-positive.log",
+    "catalog_rooms": 35,
+    "profiles": 32,
+    "references": 480,
+    "scope": "Live helper script identity, furniture IDs, mats, supported objects and service endpoints in four rotations; not pixel acceptance",
+    "negative_controls": [
+      "output/dressing-helpers-office-negative.log",
+      "output/dressing-helpers-unmapped-negative.log"
+    ],
+    "clinical_regressions": [
+      "output/med-center-helper-cleanup.log",
+      "output/med-office-helper-cleanup.log"
+    ]
+  },
+  "station_scale_review": {
+    "evidence": "docs/ROOM_COMPOSITION_STATION_REVIEW.md",
+    "captured_identities": 40,
+    "zoom": 0.52,
+    "scope": "40 packaged focused captures in windows-catalog40-v1; all decode. Per-room source reviews remain distinct from full packaged visual acceptance.",
+    "next_composition_priorities": [
+      "holographic_core",
+      "radio_lab",
+      "shield_generator"
+    ]
+  },
+  "historical_packaged_verification": [
+    {
+      "evidence": "output/room-rollout/windows-detail-review-v1/verification.json",
+      "scope": "Windows debug controlled traversal of all 35 selected identities; not full visual acceptance, arbitrary-layout or release acceptance",
+      "selected_sources": 35,
+      "source_card_png_decodes": 70,
+      "component_records": 58,
+      "composition_profiles": 32,
+      "arrivals": 53,
+      "transitions": 141,
+      "movement_samples": 10815,
+      "pack_sha256": "B37CFBCF4D5A73704C49F14680F0DD7F848B08EA1AAFBF2C16B965293B2669BE",
+      "focused_captures": 35,
+      "focused_capture_zoom": 0.52,
+      "focused_decode_evidence": "output/room-rollout/windows-detail-review-v1/focused-capture-decode.json"
+    }
+  ],
+  "decoration_refresh": {
+    "inventory": "rooms/decoration-integration/manifest.json",
+    "rooms": 40,
+    "native_render_samples": 320,
+    "station_captures": 28,
+    "active_host_references": 875,
+    "status": "integrated_native_verified",
+    "executable_rebuilt": false
+  }
+}

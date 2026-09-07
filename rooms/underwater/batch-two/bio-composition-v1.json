@@ -1,0 +1,79 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png"
+  },
+  "furniture": [
+    {
+      "id": "bio_preparation",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        -28,
+        -112,
+        56,
+        24
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "bio_preparation",
+      "offset": [
+        -4,
+        2
+      ],
+      "size": [
+        64,
+        32
+      ],
+      "fill": "81948b",
+      "edge": "a4b4a9"
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "bio_preparation",
+        "source": [
+          1100,
+          1020
+        ]
+      },
+      "via": [
+        [
+          40,
+          -81
+        ],
+        [
+          47,
+          -78
+        ]
+      ],
+      "to": {
+        "host": "bio_culture",
+        "source": [
+          728,
+          454
+        ]
+      },
+      "color": "506d60",
+      "width": 2
+    }
+  ],
+  "decals": []
+}

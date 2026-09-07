@@ -1,0 +1,144 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png",
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "quarantine_preparation",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        -62,
+        107,
+        84,
+        32
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ]
+    },
+    {
+      "id": "quarantine_sealed_cooler",
+      "texture": "accessories",
+      "region": [
+        753,
+        115,
+        402,
+        385
+      ],
+      "footprint": [
+        41,
+        117,
+        30,
+        10
+      ],
+      "centers_by_quarter": [
+        [
+          56,
+          122
+        ],
+        [
+          -122,
+          56
+        ],
+        [
+          -56,
+          -122
+        ],
+        [
+          68,
+          84
+        ]
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "quarantine_filter",
+        "source": [
+          1090,
+          470
+        ]
+      },
+      "via": [
+        [
+          168,
+          -165
+        ],
+        [
+          -170,
+          -165
+        ]
+      ],
+      "to": {
+        "host": "quarantine_berth",
+        "source": [
+          148,
+          480
+        ]
+      },
+      "color": "728d91",
+      "width": 2
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          -173,
+          -148
+        ],
+        [
+          49,
+          -148
+        ],
+        [
+          49,
+          -44
+        ],
+        [
+          -173,
+          -44
+        ]
+      ],
+      "fill": "48565a",
+      "edge": "62787a"
+    },
+    {
+      "points": [
+        [
+          -172,
+          90
+        ],
+        [
+          76,
+          90
+        ],
+        [
+          76,
+          156
+        ],
+        [
+          -172,
+          156
+        ]
+      ],
+      "fill": "485255",
+      "edge": "647577"
+    }
+  ]
+}

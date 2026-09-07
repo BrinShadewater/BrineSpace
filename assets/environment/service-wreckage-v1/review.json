@@ -1,0 +1,12 @@
+{
+  "source_review": "passed for four selected sprites; three tank candidates rejected",
+  "native_review": "passed: complete silhouettes, transparent exteriors, subdued station tint, overhead readability, debris beneath corridor",
+  "native_log": "output/service-wreckage-native.log",
+  "regression_log": "output/service-wreckage-rock-regression.log",
+  "audit_report": "output/service-wreckage-v1/source-audit.json",
+  "checks": ["four selected texture loads", "real alpha", "three authored groups at 1280x720, 1600x900, 2560x1440", "actual capture dimensions", "unchanged occupancy", "normal paid construction over debris", "existing rock clearance and persistence"],
+  "visual_evidence_reviewed": ["source-sheet.png", "group-1-1600.png", "group-2-1600.png", "group-3-1280.png", "built-over-1600.png"],
+  "owner_approval": "pending",
+  "packaged_export": "not verified in this pass; existing raw PNG bridge includes environment directory",
+  "limits": ["static fixed scenery", "no new salvage jobs or hazard simulation", "runtime tint makes fine corrosion visible mainly when zoomed in", "source margins vary; full canvases preserved"]
+}

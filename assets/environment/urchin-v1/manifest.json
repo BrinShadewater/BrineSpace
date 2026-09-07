@@ -1,0 +1,41 @@
+{
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "assets": [
+    {
+      "versions": [
+        {
+          "file": "short-spine-urchin-v1.png",
+          "sha256": "5cfd8112b80631578c9a5e1e58cfdea9cdcc8d096b00add0e18debeb88213a83",
+          "rejection": null
+        }
+      ],
+      "id": "short-spine-urchin",
+      "kind": "prop",
+      "selected_source": "short-spine-urchin-v1.png",
+      "stage": "integrated; native and isolated packaged review passed; owner approval pending"
+    }
+  ],
+  "title": "Short-spine urchin study",
+  "schema_version": 1,
+  "native_previews": [
+    {
+      "label": "Native source and tint comparison at 0.15, 0.20 and 0.25 cell canvas widths; not integrated",
+      "path": "../../../output/urchin-v1/organism-scale.png"
+    },
+    {
+      "path": "../../../output/urchin-v1/terrain-scale.png",
+      "label": "Pale sediment and ash at matching scale and runtime tint"
+    },
+    {
+      "path": "../../../output/urchin-station-v1/group-1-1600.png",
+      "label": "Native station placement on pale shoal beside a room"
+    },
+    {
+      "path": "../../../output/environment-export-v12/captures/life-urchin.png",
+      "label": "Isolated Windows debug build: three urchins on shell shoal"
+    }
+  ],
+  "runtime_registry": "urchin_view.gd"
+}

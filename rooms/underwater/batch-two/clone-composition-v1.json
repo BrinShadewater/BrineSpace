@@ -1,0 +1,66 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png"
+  },
+  "furniture": [
+    {
+      "id": "clone_preparation",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        -27,
+        -142,
+        54,
+        24
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ],
+      "centers_by_quarter": [
+        [
+          0,
+          -130
+        ],
+        [
+          139,
+          8
+        ],
+        [
+          0,
+          130
+        ],
+        [
+          -139,
+          -2
+        ]
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "clone_preparation",
+      "offset": [
+        -4,
+        16
+      ],
+      "size": [
+        68,
+        18
+      ],
+      "fill": "91a4a3",
+      "edge": "738b8c"
+    }
+  ]
+}

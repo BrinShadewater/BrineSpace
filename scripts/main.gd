@@ -7,6 +7,9 @@ const OrbitManagerScript := preload("res://scripts/orbit_manager.gd")
 const MetaStateScript := preload("res://scripts/meta_state.gd")
 const GridCanvasScript := preload("res://scripts/grid_canvas.gd")
 const RunManagerScript := preload("res://scripts/run_manager.gd")
+const RunSave := preload("res://scripts/run_save.gd")
+var run_save_path := RunSave.PATH
+var run_save_id := ""
 
 const GRID_SIZE := 40
 const CELL_SIZE := 720
@@ -71,29 +74,25 @@ const RESOURCE_ICON_PATHS := {
 	"freeze": "res://Brine icons/icons_64/status_icon_freeze_snowflake.png",
 	"sensor": "res://Brine icons/icons_64/system_icon_eye_sensor.png"
 }
-const RESOLUTION_OPTIONS := [
-	Vector2i(1280, 720),
-	Vector2i(1600, 900),
-	Vector2i(1920, 1080),
-	Vector2i(2560, 1440)
-]
+const Preferences = preload("res://scripts/title_settings.gd")
 const ROOM_ART_VARIANT_COUNTS := {
-	"battery_array": 3,
-	"corner": 9,
-	"corridor": 6,
+	"battery_array": 1,
+	"corner": 3,
+	"corridor": 3,
+	"tee_corridor": 3,
 	"crew_hab": 4,
-	"crew_lounge": 6,
-	"hydroponics_bay": 4,
+	"crew_lounge": 1,
+	"hydroponics_bay": 1,
 	"life_support": 2,
-	"maintenance_bay": 2,
-	"mining_drone_bay": 2,
-	"reactor": 4,
-	"research_lab": 2,
-	"salvage_drone_bay": 2,
-	"shield_generator": 3,
-	"solar_array": 3,
-	"storage_bay": 5,
-	"xeno_lab": 2
+	"maintenance_bay": 1,
+	"mining_drone_bay": 1,
+	"reactor": 1,
+	"research_lab": 1,
+	"salvage_drone_bay": 1,
+	"shield_generator": 1,
+	"solar_array": 1,
+	"storage_bay": 1,
+	"xeno_lab": 1
 }
 const BASE_STORAGE_CAPACITY := {
 	"metal": 40,
@@ -127,6 +126,14 @@ var resources := {
 }
 var run_earned := {}
 var occupied := {}
+const WreckField := preload("res://scripts/wreck_field.gd")
+var wrecks: Dictionary = {}
+var drone_fleet = preload("res://scripts/drone_fleet.gd").new()
+const CryoRecovery := preload("res://scripts/cryo_recovery.gd")
+var recovered_crew: Array = []
+const Architects := preload("res://scripts/architects.gd")
+var architect_run: Dictionary = {}
+var last_meta_warning := ""
 var placed_rooms := []
 var hand := []
 var draw_pile: Array[String] = []
@@ -144,8 +151,16 @@ var run_rewards_recorded := false
 var run_awarded_research := 0
 var selected_card_id := ""
 var hovered_card_id := ""
+var inspector_selection_key := ""
 var selected_rotation := 0
 var selected_room_cell := Vector2i(-1, -1)
+var guide_box: VBoxContainer
+var guide_label: Label
+var discovery_review_button: Button
+var inspector_focus_button: Button
+var guide_replay := false
+var toast_record_keys := {}
+var current_toast_record := ""
 var hover_cell := Vector2i(-1, -1)
 var cycle := 0
 var crew_count := 0
@@ -190,6 +205,13 @@ var powered_room_cells := {}
 var unpowered_room_cells := {}
 var offline_reasons := {}
 var last_cycle_delta := {}
+const BillNPC = preload("res://scripts/bill_npc.gd")
+var bill_npc = BillNPC.new()
+const VeldNPC = preload("res://scripts/veld_npc.gd")
+var veld_npc = VeldNPC.new()
+const BranforthNPC = preload("res://scripts/branforth_npc.gd")
+var branforth_npc = BranforthNPC.new()
+
 var test_walker_cell := Vector2i(-1, -1)
 var test_walker_next_cell := Vector2i(-1, -1)
 var test_walker_previous_cell := Vector2i(-1, -1)
@@ -245,57 +267,48 @@ var doctrine_selection_label: Label
 var doctrine_pair_preview_label: Label
 var doctrine_confirm_button: Button
 var menu_layer: CanvasLayer
+var pause_pages: Dictionary = {}
+var pause_page := "main"
+var pause_page_title: Label
+var pause_page_opener: Control
 var menu_panel: PanelContainer
 var menu_status_label: Label
-var resolution_buttons: Array[Button] = []
-var borderless_fullscreen_button: Button
+var menu_save_feedback: Label
+var menu_resume_button: Button
+var menu_center: CenterContainer
+var menu_archive: Control
+var menu_section_opener: Control
+var menu_transition: Tween
 var last_preview_room_id := ""
 var last_previewing_card := false
-var last_windowed_resolution := Vector2i(2560, 1440)
 var resource_labels := {}
 var resource_chips := {}
 var resource_icon_rects := {}
 
 var tick_timer: Timer
 var log_lines := []
+var event_history: Array = []
+var construction_button: Button
+var operations_refresh := 0.0
+var journal_tabs: TabBar
+var history_search: LineEdit
+var diagnostics_button: Button
+var history_tools: HBoxContainer
+var history_filter: OptionButton
+var journal_scroll_positions := {}
+var journal_searches := {}
+var menu_workspace := {}
+var journal_last_tab := 0
+var journal_opener: Control
+var inspected_resource := ""
+var camera_pan_remainder := Vector2.ZERO
 var card_textures := {}
 var ui_textures := {}
 var resource_icon_textures := {}
-var room_texture_paths := {
-	"battery_array": "res://rooms/batteryarray.png",
-	"biodome": "res://rooms/biodome.png",
-	"clone_lab": "res://rooms/clonelab.png",
-	"brine_core": "res://rooms/brinecore.png",
-	"crew_hab": "res://rooms/crewhab.png",
-	"cryo_chamber": "res://rooms/cryolab.png",
-	"data_archive": "res://rooms/holographiccore.png",
-	"hydroponics_bay": "res://rooms/hydroponics.png",
-	"life_support": "res://rooms/lifesupport1.png",
-	"mining_drone_bay": "res://rooms/miningdronebay.png",
-	"ore_refinery": "res://rooms/orerefinery.png",
-	"quarantine_cell": "res://rooms/quaratinecell.png",
-	"reactor": "res://rooms/reactor.png",
-	"research_lab": "res://rooms/researchlab2.png",
-	"salvage_drone_bay": "res://rooms/salvagedronebay1.png",
-	"solar_array": "res://rooms/solararray.png",
-	"storage_bay": "res://rooms/storagebay1.png",
-	"med_bay": "res://rooms/medbay.png",
-	"xeno_lab": "res://rooms/xenolab.png",
-	"anomaly_lab": "res://rooms/anomolylab.png",
-	"bio_lab": "res://rooms/biolab.png",
-	"command_center": "res://rooms/commandcenter.png",
-	"corridor": "res://rooms/corridor1.png",
-	"corner": "res://rooms/corner.png",
-	"crew_lounge": "res://rooms/crewlounge1.png",
-	"holographic_core": "res://rooms/holographiccore.png",
-	"maintenance_bay": "res://rooms/maintenancebay.png",
-	"med_center": "res://rooms/medcenter.png",
-	"med_office": "res://rooms/medoffice.png",
-	"radio_lab": "res://rooms/radiolab.png",
-	"shield_generator": "res://rooms/sheildgenerator1.png"
-}
+var room_texture_paths := preload("res://scripts/room_card_art.gd").PATHS
 
 func _ready() -> void:
+	Preferences.initialize(get_window())
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_configure_window_scaling()
 	rng.randomize()
@@ -305,6 +318,12 @@ func _ready() -> void:
 	_load_card_textures()
 	_build_ui()
 	_start_reboot_cycle()
+	get_tree().auto_accept_quit = false
+	if not RunSave.pending.is_empty():
+		var checkpoint: Dictionary = RunSave.pending
+		RunSave.pending = {}
+		if not await RunSave.restore_staged(self, checkpoint):
+			_log("Checkpoint unavailable. A new loop is staged.", false)
 
 func _configure_window_scaling() -> void:
 	var window := get_window()
@@ -326,9 +345,23 @@ func _process(delta: float) -> void:
 	_update_discovery_bursts(delta)
 	if running and not paused:
 		visual_time_seconds += delta * time_speeds[time_speed_index]
+		preload("res://scripts/airlock_cycle.gd").advance(self,delta * time_speeds[time_speed_index])
 		_update_test_walker(delta * time_speeds[time_speed_index])
+		_update_wreck_clearance(delta * time_speeds[time_speed_index])
+		CryoRecovery.advance(self, delta * time_speeds[time_speed_index])
+		Architects.advance_core(self,delta * time_speeds[time_speed_index])
+		if wrecks.has(selected_room_cell) and wrecks[selected_room_cell].kind=="cryo": _refresh_inspector()
 	_update_camera_pan(delta)
 	_refresh_solar_meter()
+	operations_refresh += delta
+	if operations_refresh >= 0.5:
+		operations_refresh = 0.0
+		_refresh_construction_button()
+		if not meta.last_error.is_empty() and meta.last_error != last_meta_warning:
+			_log("PROGRESSION NOT SAVED // " + meta.last_error,true)
+		last_meta_warning = meta.last_error
+		if occupied.has(selected_room_cell) and occupied[selected_room_cell].id in ["mining_drone_bay","salvage_drone_bay"]:
+			_refresh_inspector()
 
 func _build_ui() -> void:
 	var backdrop := ColorRect.new()
@@ -438,6 +471,7 @@ func _build_ui() -> void:
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	grid_frame.add_child(scroll)
 	grid_scroll = scroll
+	scroll.resized.connect(func() -> void: _set_grid_zoom.call_deferred(grid_zoom))
 
 	var grid := GridCanvasScript.new()
 	grid.name = "GridView"
@@ -450,6 +484,7 @@ func _build_ui() -> void:
 
 	var objective_panel := PanelContainer.new()
 	objective_panel.name = "OrbitalObjective"
+	objective_panel.visible = false
 	objective_panel.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	objective_panel.offset_left = 24
 	objective_panel.offset_top = -220
@@ -461,7 +496,18 @@ func _build_ui() -> void:
 	objective_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	objective_text.add_theme_font_size_override("font_size", 13)
 	objective_text.add_theme_color_override("font_color", Color("#8fa3ae"))
-	objective_panel.add_child(objective_text)
+	var objective_box := VBoxContainer.new()
+	objective_panel.add_child(objective_box)
+	objective_box.add_child(objective_text)
+	construction_button = Button.new()
+	construction_button.text = "CONSTRUCTION / 0"
+	_style_hud_button(construction_button, false)
+	construction_button.pressed.connect(func() -> void:
+		if _gameplay_input_blocked(): return
+		_toggle_journal()
+		journal_tabs.current_tab = 6
+		_refresh_archive())
+	objective_box.add_child(construction_button)
 	orbital_objective_label = objective_text
 
 	var cascade_panel := PanelContainer.new()
@@ -485,18 +531,31 @@ func _build_ui() -> void:
 	cascade_text.add_theme_color_override("font_color", Color("#b9f5df"))
 	cascade_panel.add_child(cascade_text)
 	cascade_toast_label = cascade_text
+	cascade_panel.gui_input.connect(func(event: InputEvent) -> void:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not current_toast_record.is_empty():
+			cascade_panel.accept_event()
+			_review_discovery_key(current_toast_record)
+	)
 
 	var viewport_tools := HBoxContainer.new()
 	viewport_tools.name = "ViewportTools"
 	viewport_tools.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	viewport_tools.offset_left = -330
+	viewport_tools.offset_left = -450
 	viewport_tools.offset_top = 18
 	viewport_tools.offset_right = -18
 	viewport_tools.offset_bottom = 58
 	viewport_tools.add_theme_constant_override("separation", 10)
 	middle.add_child(viewport_tools)
+	var find_button := Button.new()
+	find_button.name = "FindRoomButton"
+	find_button.text = "FIND ROOM"
+	find_button.tooltip_text = "Search installed rooms by name, type or problem · Ctrl+F"
+	find_button.pressed.connect(_open_station_search)
+	_style_hud_button(find_button,false)
+	viewport_tools.add_child(find_button)
 	var recenter_button := Button.new()
 	recenter_button.text = "FIT STATION [F]"
+	recenter_button.set_meta("key_hint", "FIT STATION [{Fit station}]")
 	recenter_button.pressed.connect(_fit_station_view)
 	_style_hud_button(recenter_button, false)
 	viewport_tools.add_child(recenter_button)
@@ -516,19 +575,49 @@ func _build_ui() -> void:
 	side_scroll.offset_bottom = -8
 	side_scroll.custom_minimum_size = Vector2(418, 0)
 	side_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
-	side_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
+	side_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	side_scroll.follow_focus = true
+	side_scroll.mouse_force_pass_scroll_events = false
 	root.add_child(side_scroll)
 
 	var side := VBoxContainer.new()
+	guide_box = VBoxContainer.new()
+	guide_label = Label.new()
+	guide_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	guide_label.add_theme_font_size_override("font_size", 15)
+	guide_label.add_theme_color_override("font_color", Color("b9dce5"))
+	guide_box.add_child(guide_label)
+	var skip_guide := Button.new()
+	skip_guide.text = "SKIP GUIDE"
+	skip_guide.custom_minimum_size.y = 40
+	skip_guide.pressed.connect(_finish_guide)
+	preload("res://scripts/title_button_style.gd").apply(skip_guide, 380, 40)
+	guide_box.add_child(skip_guide)
+	side.add_child(guide_box)
+	discovery_review_button = Button.new()
+	discovery_review_button.custom_minimum_size.y = 48
+	discovery_review_button.add_theme_font_size_override("font_size", 15)
+	discovery_review_button.pressed.connect(_review_latest_discovery)
+	preload("res://scripts/title_button_style.gd").apply(discovery_review_button, 380, 48)
+	side.add_child(discovery_review_button)
 	side.name = "SidePanel"
 	side.custom_minimum_size = Vector2(396, 0)
 	side.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	side.add_theme_constant_override("separation", 14)
 	side_scroll.add_child(side)
+	diagnostics_button = Button.new()
+	diagnostics_button.text = "STATION DIAGNOSTICS"
+	diagnostics_button.pressed.connect(func():
+		_toggle_journal()
+		journal_tabs.current_tab = 1
+		_refresh_archive())
+	preload("res://scripts/title_button_style.gd").apply(diagnostics_button, 380, 48)
+	side.add_child(diagnostics_button)
+	construction_button.reparent(side)
 
 	var inspector_panel := PanelContainer.new()
 	inspector_panel.name = "PreviewPanel"
-	inspector_panel.custom_minimum_size = Vector2(0, 480)
+	inspector_panel.custom_minimum_size = Vector2(0, 400)
 	side.add_child(inspector_panel)
 	_apply_panel_style(inspector_panel, Color("#071018"), Color("#152a35"))
 	var preview_box := VBoxContainer.new()
@@ -537,12 +626,12 @@ func _build_ui() -> void:
 	var preview_header := HBoxContainer.new()
 	preview_box.add_child(preview_header)
 	var preview_header_left := Label.new()
-	preview_header_left.text = "■ PREVIEW"
+	preview_header_left.text = "■ INSPECTOR"
 	preview_header_left.add_theme_font_size_override("font_size", 16)
 	preview_header_left.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
 	preview_header.add_child(preview_header_left)
 	var preview_header_right := Label.new()
-	preview_header_right.text = "ANALYSIS"
+	preview_header_right.text = "CLICK TO SELECT"
 	preview_header_right.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	preview_header_right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	preview_header_right.add_theme_font_size_override("font_size", 12)
@@ -552,7 +641,7 @@ func _build_ui() -> void:
 	preview_details.add_theme_constant_override("separation", 14)
 	preview_box.add_child(preview_details)
 	var preview_image := TextureRect.new()
-	preview_image.custom_minimum_size = Vector2(96, 96)
+	preview_image.custom_minimum_size = Vector2(72, 72)
 	preview_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	preview_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	preview_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -580,12 +669,22 @@ func _build_ui() -> void:
 	inspector_text.bbcode_enabled = true
 	inspector_text.scroll_active = true
 	inspector_text.fit_content = false
-	inspector_text.custom_minimum_size = Vector2(0, 284)
+	inspector_text.custom_minimum_size = Vector2(0, 210)
+	inspector_text.mouse_filter = Control.MOUSE_FILTER_STOP
+	inspector_text.mouse_force_pass_scroll_events = false
 	inspector_text.add_theme_color_override("default_color", Color("#8fa3ae"))
-	inspector_text.add_theme_font_size_override("normal_font_size", 13)
-	inspector_text.add_theme_font_size_override("bold_font_size", 14)
+	inspector_text.add_theme_font_size_override("normal_font_size", 17)
+	inspector_text.add_theme_font_size_override("bold_font_size", 18)
 	inspector_text.add_theme_constant_override("line_separation", 2)
 	preview_box.add_child(inspector_text)
+	inspector_focus_button = Button.new()
+	inspector_focus_button.text = "LOCATE ROOM & CONNECTIONS"
+	inspector_focus_button.custom_minimum_size.y = 42
+	inspector_focus_button.add_theme_font_size_override("font_size", 14)
+	inspector_focus_button.pressed.connect(_focus_inspected_room)
+	preload("res://scripts/title_button_style.gd").apply(inspector_focus_button, 380, 42)
+	preview_box.add_child(inspector_focus_button)
+	inspector_text.meta_clicked.connect(_listening_action)
 	inspector_label = inspector_text
 	room_operation_button = Button.new()
 	room_operation_button.text = "SELECT A BUILT ROOM TO CONTROL"
@@ -593,6 +692,9 @@ func _build_ui() -> void:
 	room_operation_button.pressed.connect(_toggle_inspected_room)
 	_style_hud_button(room_operation_button, false)
 	preview_box.add_child(room_operation_button)
+	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
+	airlock_panel.game=self
+	preview_box.add_child(airlock_panel)
 
 	var routing_panel := PanelContainer.new()
 	routing_panel.name = "RoutingPanel"
@@ -724,10 +826,23 @@ func _build_ui() -> void:
 	placement_status.custom_minimum_size = Vector2(0, 56)
 	placement_status.add_theme_color_override("font_color", Color("#9aa8b3"))
 	controls_box.add_child(placement_status)
+	placement_status.visible = false
+	var detail_toggle := Button.new()
+	detail_toggle.text = "VIEW DETAILS / GUIDES [%s]" % Preferences.key_name("Placement guides")
+	detail_toggle.set_meta("key_hint", "VIEW DETAILS / GUIDES [{Placement guides}]")
+	detail_toggle.tooltip_text = "Expand view details. Use the Placement guides hotkey to toggle indicators; physical doorway openings remain visible. Rebind it in Settings."
+	detail_toggle.toggle_mode = true
+	_style_hud_button(detail_toggle, false)
+	controls_box.add_child(detail_toggle)
+	zoom_row.visible = false
+	detail_toggle.toggled.connect(func(expanded: bool) -> void:
+		zoom_row.visible = expanded
+		placement_status.visible = expanded)
 	placement_label = placement_status
 
 	var log_panel := PanelContainer.new()
 	log_panel.name = "NotificationsPanel"
+	log_panel.visible = false # Full event history is available in the Journal.
 	log_panel.custom_minimum_size = Vector2(0, 190)
 	log_panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	side.add_child(log_panel)
@@ -773,6 +888,7 @@ func _build_ui() -> void:
 	hand_count_label = hand_count
 	var draft_hint := Label.new()
 	draft_hint.text = "Build to draw.\nRMB rerolls one.\nR rotates.\nSpace pauses."
+	draft_hint.set_meta("key_hint", "Build to draw.\nRMB rerolls one.\n{Rotate blueprint} rotates.\n{Pause} pauses.")
 	draft_hint.add_theme_font_size_override("font_size", 14)
 	draft_hint.add_theme_color_override("font_color", Color("#536874"))
 	draft_status.add_child(draft_hint)
@@ -801,6 +917,7 @@ func _build_ui() -> void:
 	summary_shade.mouse_filter = Control.MOUSE_FILTER_STOP
 	summary_layer.add_child(summary_shade)
 	var summary_center := CenterContainer.new()
+	summary_center.theme = preload("res://scripts/title_button_style.gd").menu_theme()
 	summary_center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	summary_center.mouse_filter = Control.MOUSE_FILTER_STOP
 	summary_layer.add_child(summary_center)
@@ -811,6 +928,7 @@ func _build_ui() -> void:
 	_apply_panel_style(summary, Color("#071018"), Color("#1f5260"))
 	summary_panel = summary
 	var summary_vbox := VBoxContainer.new()
+	summary_vbox.add_theme_constant_override("separation", 12)
 	summary.add_child(summary_vbox)
 	var summary_title := Label.new()
 	summary_title.text = "Reboot Summary"
@@ -818,12 +936,16 @@ func _build_ui() -> void:
 	summary_vbox.add_child(summary_title)
 	summary_title_label = summary_title
 	var summary_scroll := ScrollContainer.new()
+	summary_scroll.focus_mode = Control.FOCUS_ALL
+	summary_scroll.follow_focus = true
 	summary_scroll.custom_minimum_size = Vector2(740, 480)
 	summary_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	summary_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	summary_vbox.add_child(summary_scroll)
 	var summary_body := Label.new()
 	summary_body.name = "Text"
+	summary_body.add_theme_font_size_override("font_size", 17)
+	summary_body.add_theme_color_override("font_color", Color("bdd5df"))
 	summary_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	summary_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	summary_scroll.add_child(summary_body)
@@ -832,14 +954,18 @@ func _build_ui() -> void:
 	continue_expedition_button.text = "CONTINUE EXPEDITION · KEEP EXPERIMENTING"
 	continue_expedition_button.custom_minimum_size.y = 44
 	continue_expedition_button.pressed.connect(_continue_expedition)
-	_style_hud_button(continue_expedition_button, true)
+	preload("res://scripts/title_button_style.gd").apply(continue_expedition_button, 740, 52, true)
 	summary_vbox.add_child(continue_expedition_button)
 	var reboot_button := Button.new()
 	reboot_button.text = "Start New Reboot Cycle"
 	reboot_button.custom_minimum_size.y = 40
-	_style_hud_button(reboot_button, false)
-	reboot_button.pressed.connect(_start_reboot_cycle)
+	preload("res://scripts/title_button_style.gd").apply(reboot_button, 740, 52)
+	reboot_button.pressed.connect(_choose_restart_architect)
 	summary_vbox.add_child(reboot_button)
+	_add_menu_button(summary_vbox, "Settings", _open_overlay_settings)
+	_add_menu_button(summary_vbox, "Review Discoveries", _review_latest_discovery)
+	summary_layer.set_meta("default_button", reboot_button)
+	_add_menu_button(summary_vbox, "Return to Title", _menu_return_title)
 
 	_build_journal_overlay()
 	_build_doctrine_overlay()
@@ -925,10 +1051,13 @@ func _style_hud_button(button: BaseButton, active := false) -> void:
 		button.add_theme_stylebox_override("hover", hover_style)
 	if pressed_style != null:
 		button.add_theme_stylebox_override("pressed", pressed_style)
-	button.add_theme_color_override("font_color", Color("#83b894") if active else Color("#8a9a9a"))
-	button.add_theme_color_override("font_hover_color", Color("#a8d7b0"))
+	button.add_theme_color_override("font_color", Color("#b0e3cf") if active else Color("#abc5ca"))
+	button.add_theme_color_override("font_hover_color", Color("#d1f2eb"))
 	button.add_theme_color_override("font_pressed_color", Color("#d7f5d2"))
-	button.add_theme_font_size_override("font_size", 12)
+	button.add_theme_font_size_override("font_size", 14)
+
+	button.add_theme_stylebox_override("focus", preload("res://scripts/title_button_style.gd").panel(100, 40, "focus"))
+	button.add_theme_color_override("font_disabled_color", Color("#637f89"))
 
 func _panel_texture_for(panel: PanelContainer) -> String:
 	match panel.name:
@@ -1013,6 +1142,7 @@ func _build_journal_overlay() -> void:
 	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
 	journal_layer.add_child(shade)
 	var center := CenterContainer.new()
+	center.theme = preload("res://scripts/title_button_style.gd").menu_theme()
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	journal_layer.add_child(center)
 	var panel := PanelContainer.new()
@@ -1023,46 +1153,89 @@ func _build_journal_overlay() -> void:
 	body.add_theme_constant_override("separation", 18)
 	panel.add_child(body)
 	var title := Label.new()
-	title.text = "BRINE / DISCOVERY JOURNAL"
+	title.text = "BRINE / STATION JOURNAL"
 	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color("#a9e7d4"))
 	body.add_child(title)
 	var subtitle := Label.new()
-	subtitle.text = "Only what you have learned. No hidden recipes.\nKeep connected rooms supplied for 3 consecutive cycles to stabilize a pattern."
+	subtitle.text = "Recovered patterns, system diagnostics and the loop's recorded failures.\nThe station remembers. Occasionally, that is useful."
 	subtitle.add_theme_color_override("font_color", Color("#92aeb8"))
 	body.add_child(subtitle)
+	journal_tabs = TabBar.new()
+	for tab_title in ["Patterns", "Station Health", "Reserves", "Event History", "Rooms", "Crew", "Construction"]:
+		journal_tabs.add_tab(tab_title)
+	journal_tabs.tab_changed.connect(_journal_tab_changed)
+	body.add_child(journal_tabs)
+	history_tools = HBoxContainer.new()
+	history_tools.add_theme_constant_override("separation", 12)
+	body.add_child(history_tools)
+	history_search = LineEdit.new()
+	history_search.placeholder_text = "Search room, cycle (C03), or message · Ctrl+F"
+	history_search.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	history_search.custom_minimum_size.y = 40
+	history_search.clear_button_enabled = true
+	history_search.max_length = 128
+	history_search.text_submitted.connect(func(_query):
+		if journal_tabs.current_tab!=4: return
+		var matches: Array = preload("res://scripts/station_navigation.gd").rooms(self,history_search.text,_simulate_room_economy(true,cycle+1))
+		if not matches.is_empty(): _locate_diagnostic_room("%d,%d" % [matches[0].pos.x,matches[0].pos.y]))
+	history_search.text_changed.connect(func(_query):
+		journal_searches[journal_tabs.current_tab] = _query
+		_refresh_archive()
+		archive_label.get_v_scroll_bar().set_deferred("value", 0.0))
+	history_search.visible = false
+	history_tools.add_child(history_search)
+	history_filter = OptionButton.new()
+	for category in ["All events", "Problems", "Discoveries", "Construction"]:
+		history_filter.add_item(category)
+	history_filter.item_selected.connect(func(_index):
+		_refresh_archive()
+		archive_label.get_v_scroll_bar().set_deferred("value", 0.0))
+	history_tools.add_child(history_filter)
+	history_tools.visible = false
 	archive_label = RichTextLabel.new()
 	archive_label.bbcode_enabled = true
-	archive_label.custom_minimum_size = Vector2(900, 570)
+	archive_label.focus_mode = Control.FOCUS_ALL
+	archive_label.custom_minimum_size = Vector2(900, 460)
+	archive_label.meta_clicked.connect(_locate_diagnostic_room)
 	archive_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	archive_label.add_theme_font_size_override("normal_font_size", 16)
 	archive_label.add_theme_constant_override("line_separation", 6)
 	body.add_child(archive_label)
 	var close := Button.new()
 	close.text = "RETURN TO STATION  [J / ESC]"
+	close.set_meta("key_hint", "RETURN TO STATION  [{Journal} / ESC]")
 	close.custom_minimum_size.y = 44
 	close.pressed.connect(_toggle_journal)
 	_style_hud_button(close, false)
 	body.add_child(close)
 	journal_layer.set_meta("close_button", close)
+	preload("res://scripts/title_button_style.gd").apply(close, 900, 52)
+	_add_menu_button(body, "Settings", _open_overlay_settings)
 
 func _journal_is_open() -> bool:
 	return journal_layer != null and journal_layer.visible
 
 func _gameplay_input_blocked() -> bool:
-	return menu_open or _journal_is_open() or (summary_layer != null and summary_layer.visible) or (doctrine_layer != null and doctrine_layer.visible)
+	return is_instance_valid(menu_archive) or menu_open or _journal_is_open() or (summary_layer != null and summary_layer.visible) or (doctrine_layer != null and doctrine_layer.visible)
 
 func _toggle_journal() -> void:
 	if journal_layer == null:
 		return
 	if _journal_is_open():
 		journal_layer.visible = false
+		if is_instance_valid(journal_opener) and journal_opener.is_visible_in_tree():
+			journal_opener.grab_focus()
+		else:
+			journal_button.grab_focus()
 		_set_paused(pause_before_journal)
 		return
 	if _gameplay_input_blocked():
 		return
 	pause_before_journal = paused
+	journal_opener = get_viewport().gui_get_focus_owner()
 	journal_layer.visible = true
+	preload("res://scripts/title_settings.gd").apply_menu_text(journal_layer)
 	get_viewport().gui_release_focus()
 	var close_button: Button = journal_layer.get_meta("close_button")
 	close_button.grab_focus()
@@ -1073,6 +1246,13 @@ func _toggle_inspected_room() -> void:
 	if _gameplay_input_blocked() or not running or room_operation_button == null:
 		return
 	var cell: Vector2i = room_operation_button.get_meta("cell", Vector2i(-1, -1))
+	if drone_fleet.sites.has(cell) and not occupied.has(cell):
+		drone_fleet.sites[cell].active = not drone_fleet.sites[cell].active
+		_refresh_all()
+		return
+	if WreckField.blocks(wrecks,cell):
+		_toggle_wreck_work(cell)
+		return
 	if not occupied.has(cell) or occupied[cell]["id"] == "brine_core":
 		return
 	var room: Dictionary = occupied[cell]
@@ -1088,102 +1268,158 @@ func _toggle_inspected_room() -> void:
 	_log("%s %s." % [room["display_name"], "suspended" if room["suspended"] else "scheduled to resume next cycle"], false)
 	_refresh_all()
 
+func _toggle_wreck_work(cell: Vector2i) -> void:
+	if not running or not WreckField.blocks(wrecks,cell):
+		return
+	var wreck: Dictionary = wrecks[cell]
+	if not wreck.active and wreck.kind != "cryo" and not drone_fleet.has_worker("mining" if wreck.kind=="basalt" else "salvage",placed_rooms):
+		_log("A %s Drone Bay is required for this job." % ("Mining" if wreck.kind=="basalt" else "Salvage"),false)
+		return
+	if wreck.kind == "cryo" and not wreck.active:
+		if not CryoRecovery.accessible(self,cell) or WreckField.busy(wrecks,cell): return
+		if not wreck.paid:
+			if resources.get("metal",0)<CryoRecovery.REPAIR_METAL: return
+			resources.metal -= CryoRecovery.REPAIR_METAL
+			wreck.paid = true
+	if wreck.active:
+		wreck.active = false
+	elif WreckField.reachable(occupied,cell) and not WreckField.busy(wrecks,cell):
+		wreck.active = true
+	else:
+		return
+	_log("%s: %s." % [WreckField.NAMES[wreck.kind],("repair scheduled" if wreck.kind=="cryo" else "clearance scheduled") if wreck.active else "work halted; progress retained"],false)
+	_refresh_all()
+
+func _update_wreck_clearance(delta: float) -> void:
+	if not running or paused:
+		return
+	var working: Dictionary = _simulate_room_economy().working_cells
+	var built: Array = drone_fleet.advance(delta,placed_rooms,working,wrecks,int(resources.get("power",0)))
+	if drone_fleet.power_spent > 0:
+		_apply_delta({"power":-drone_fleet.power_spent})
+		_refresh_all()
+	if not drone_fleet.delivered.is_empty():
+		_apply_delta(drone_fleet.delivered)
+		_refresh_all()
+	for order in built:
+		var prior_rotation := selected_rotation
+		selected_rotation = order.rotation
+		_place_room(order.id,order.pos,false,true)
+		selected_rotation = prior_rotation
+	if not built.is_empty(): _refresh_all()
+	var completed := WreckField.advance(wrecks,occupied,delta,drone_fleet.clearance_seconds)
+	for cell in completed:
+		if wrecks[cell].kind == "cryo":
+			# The paid restoration preserves the discovered room, its orientation and occupants.
+			_place_room("cryo_chamber",cell,true)
+			occupied[cell].rotation = wrecks[cell].rotation
+			occupied[cell]["recovered_derelict"] = true
+			occupied[cell].display_name = "Recovered Cryo Ward"
+			_check_synergies()
+			_check_directive_progress()
+			_log("Cryo ward pressure restored. Compartment joined. Its occupants await power and a free berth.",false)
+			continue
+		if wrecks[cell].kind == "basalt":
+			_log("Rock cleared at %s. Construction footprint secured." % cell,false)
+			continue
+		var amount: int = WreckField.YIELDS[wrecks[cell].kind]
+		_log("Wreck cleared at %s. %d metal recovered; storage receives cargo on docking." % [cell,amount],false)
+	if not completed.is_empty():
+		_refresh_all()
+	elif drone_fleet.sites.has(selected_room_cell) or drone_fleet.sites.has(hover_cell):
+		_refresh_inspector()
+	elif occupied.get(selected_room_cell,{}).get("id","") in ["mining_drone_bay","salvage_drone_bay"] or occupied.get(hover_cell,{}).get("id","") in ["mining_drone_bay","salvage_drone_bay"]:
+		_refresh_inspector()
+	elif WreckField.blocks(wrecks,selected_room_cell) or WreckField.blocks(wrecks,hover_cell) or drone_fleet.reserved(selected_room_cell) or drone_fleet.reserved(hover_cell):
+		_refresh_inspector()
+
+func _refresh_wreck_inspector(cell: Vector2i) -> void:
+	var wreck: Dictionary = wrecks[cell]
+	if wreck.kind == "cryo":
+		_refresh_cryo_inspector(cell)
+		return
+	if wreck.kind == "basalt":
+		_refresh_rock_inspector(cell)
+		return
+	var fraction := float(wreck.progress)/WreckField.DURATION
+	var accessible := WreckField.reachable(occupied,cell)
+	var busy := WreckField.busy(wrecks,cell)
+	preview_name_label.text = WreckField.NAMES[wreck.kind]
+	preview_name_label.add_theme_color_override("font_color",Color("c39861"))
+	preview_tags_label.text = "WRECK / 1 CELL / BLOCKS CONSTRUCTION"
+	preview_texture.texture = grid_view.wreck_view.texture(wreck.kind,"wreck")
+	var state: String = drone_fleet.clearance_status(cell,_simulate_room_economy().working_cells) if wreck.active and not paused else "PAUSED" if wreck.progress>0 or wreck.active else "AWAITING DISMANTLING"
+	var has_bay: bool = drone_fleet.has_worker("salvage",placed_rooms)
+	var note := "A Salvage Drone Bay dispatches the cutter. Work begins after arrival."
+	if not has_bay:
+		note = "Requires a Salvage Drone Bay."
+	elif not accessible:
+		note = "Extend the station to a neighboring cell to reach this wreck."
+	elif busy:
+		note = "The salvage rig is assigned elsewhere. Pause that job first."
+	inspector_label.text = "%s\n\nProgress: %d%% / %.0f seconds remaining\nMetal salvage: %d (delivered on docking; storage capacity applies)\n\n%s\n\nNo recoverable occupants. This compartment can only be dismantled. Construction becomes available after the last frame is cleared; normal room costs still apply.\n\n[color=#698782]It held pressure once. I would not ask it twice.[/color]" % [state,roundi(fraction*100),WreckField.DURATION-float(wreck.progress),WreckField.YIELDS[wreck.kind],note]
+	room_operation_button.set_meta("cell",cell)
+	room_operation_button.disabled = not running or (not wreck.active and (not accessible or busy or not has_bay))
+	room_operation_button.text = "PAUSE SALVAGE" if wreck.active else "RESUME SALVAGE" if wreck.progress>0 else "DISMANTLE & SALVAGE"
+	room_operation_button.tooltip_text = "Progress freezes with the game. Metal is awarded once, on completion."
+
+func _refresh_cryo_inspector(cell: Vector2i) -> void:
+	var ward: Dictionary = wrecks[cell]
+	preview_name_label.text = "Recovered Cryo Ward" if ward.cleared else "Derelict Cryo Ward"
+	preview_tags_label.text = "MEDICAL // %d OCCUPIED POD(S) AT DISCOVERY" % ward.pods.size()
+	preview_texture.texture = preload("res://scripts/architect_cryo_art.gd").frame(ward.pods[0].get("architect_id","bill"),0)
+	inspector_focus_button.set_meta("cell",cell)
+	inspector_focus_button.disabled = false
+	var lines: Array[String] = [CryoRecovery.status(self,cell)]
+	if not ward.cleared:
+		lines.append("Repair hull and reconnect utilities: %d Metal, %.0f seconds. Payment is retained through pauses." % [CryoRecovery.REPAIR_METAL,WreckField.DURATION])
+		lines.append("Repair: %d%%. Connect a matching door to reach this ward. One shared exterior rig." % roundi(ward.progress/WreckField.DURATION*100))
+	else:
+		lines.append("Station compartment online when powered. Each thaw takes %.0f seconds and requires food, oxygen and a free berth. Suspension retains progress." % CryoRecovery.WAKE_SECONDS)
+	for pod in ward.pods:
+		lines.append("%s // %s" % [pod.name,"ADDED TO ROSTER" if pod.recovered else "STASIS / thaw %d%%" % roundi(pod.wake/CryoRecovery.WAKE_SECONDS*100)])
+	lines.append("\nCREW ROSTER // RECOVERED SURVIVORS")
+	if recovered_crew.is_empty(): lines.append("No recovered crew recorded.")
+	for member in recovered_crew: lines.append("%s // %s" % [member.name,"ABOARD" if member.alive else "DECEASED"])
+	lines.append("\n[color=#698782]Their clocks stopped. Mine did not.[/color]")
+	inspector_label.text = "\n\n".join(lines)
+	room_operation_button.set_meta("cell",cell)
+	if ward.cleared:
+		room_operation_button.text = "RESUME ROOM" if occupied[cell].get("suspended",false) else "SUSPEND ROOM"
+		room_operation_button.disabled = not running
+	else:
+		room_operation_button.text = "PAUSE REPAIR" if ward.active else "RESUME REPAIR" if ward.paid else "REPAIR & CONNECT // 8 METAL"
+		room_operation_button.disabled = not running or (not ward.active and (not CryoRecovery.accessible(self,cell) or WreckField.busy(wrecks,cell) or (not ward.paid and resources.get("metal",0)<CryoRecovery.REPAIR_METAL)))
+	room_operation_button.tooltip_text = "Repair preserves this compartment and its occupants. Wake progress freezes with pause, suspension, power loss or full berths."
+
+func _refresh_rock_inspector(cell: Vector2i) -> void:
+	var rock: Dictionary = wrecks[cell]
+	var accessible := WreckField.reachable(occupied,cell)
+	var busy := WreckField.busy(wrecks,cell)
+	preview_name_label.text = "Basalt Outcrop"
+	preview_name_label.add_theme_color_override("font_color",Color("a7b5ab"))
+	preview_tags_label.text = "ROCK / 1 CELL / BLOCKS CONSTRUCTION"
+	preview_texture.texture = grid_view.rock_view.texture()
+	var state: String = drone_fleet.clearance_status(cell,_simulate_room_economy().working_cells) if rock.active and not paused else "PAUSED" if rock.progress>0 or rock.active else "AWAITING EXCAVATION"
+	var has_bay: bool = drone_fleet.has_worker("mining",placed_rooms)
+	var note := "A Mining Drone Bay dispatches the drill. Work begins after arrival."
+	if not has_bay:
+		note = "Requires a Mining Drone Bay."
+	elif not accessible:
+		note = "Extend the station to a neighboring cell to reach this rock."
+	elif busy:
+		note = "The salvage rig is assigned elsewhere. Pause that job first."
+	inspector_label.text = "%s\n\nProgress: %d%% / %.0f seconds remaining\n\n%s\n\nBreak and remove this section before building here. Neighboring rock remains in place. Excavation recovers 4 Metal, delivered on docking. The drill returns to recharge from station Power; cuts remain between trips. Normal room costs apply after clearance.\n\n[color=#698782]The ocean placed this here. It neglected to file a permit.[/color]" % [state,roundi(float(rock.progress)/WreckField.DURATION*100),WreckField.DURATION-float(rock.progress),note]
+	room_operation_button.set_meta("cell",cell)
+	room_operation_button.disabled = not running or (not rock.active and (not accessible or busy or not has_bay))
+	room_operation_button.text = "PAUSE EXCAVATION" if rock.active else "RESUME EXCAVATION" if rock.progress>0 else "BREAK & CLEAR ROCK"
+	room_operation_button.tooltip_text = "A Mining Drone clears this cell. Progress freezes with the game."
+
 func _build_doctrine_overlay() -> void:
+	# Empty compatibility layer for older scene consumers; selection is retired.
 	doctrine_layer = CanvasLayer.new()
-	doctrine_layer.name = "DoctrineLayer"
-	doctrine_layer.layer = 18
 	doctrine_layer.visible = false
 	add_child(doctrine_layer)
-
-	var shade := ColorRect.new()
-	shade.color = Color(0.0, 0.02, 0.04, 0.88)
-	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
-	shade.mouse_filter = Control.MOUSE_FILTER_STOP
-	doctrine_layer.add_child(shade)
-
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	center.mouse_filter = Control.MOUSE_FILTER_STOP
-	doctrine_layer.add_child(center)
-
-	var panel := PanelContainer.new()
-	panel.name = "DoctrinePanel"
-	panel.custom_minimum_size = Vector2(930, 690)
-	panel.mouse_filter = Control.MOUSE_FILTER_STOP
-	center.add_child(panel)
-	_apply_panel_style(panel, Color("#071018"), Color("#285849"))
-
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 14)
-	panel.add_child(box)
-	var eyebrow := Label.new()
-	eyebrow.text = "BRINE // REBOOT CONFIGURATION"
-	eyebrow.add_theme_font_size_override("font_size", 12)
-	eyebrow.add_theme_color_override("font_color", Color("#607784"))
-	box.add_child(eyebrow)
-	var title := Label.new()
-	title.text = "Choose Two Station Doctrines"
-	title.add_theme_font_size_override("font_size", 30)
-	title.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
-	box.add_child(title)
-	var intro := Label.new()
-	intro.text = "Your doctrine pair determines this reboot's blueprint deck, combo routes, and mastery bonuses."
-	intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	intro.add_theme_font_size_override("font_size", 14)
-	intro.add_theme_color_override("font_color", Color("#9aabb2"))
-	box.add_child(intro)
-
-	var grid := GridContainer.new()
-	grid.columns = 2
-	grid.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	grid.add_theme_constant_override("h_separation", 12)
-	grid.add_theme_constant_override("v_separation", 12)
-	box.add_child(grid)
-	doctrine_buttons.clear()
-	for doctrine_id_value in RunManagerScript.DOCTRINE_ORDER:
-		var doctrine_id := str(doctrine_id_value)
-		var button := Button.new()
-		button.toggle_mode = true
-		button.custom_minimum_size = Vector2(420, 98)
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.focus_mode = Control.FOCUS_NONE
-		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		button.pressed.connect(_on_doctrine_button_pressed.bind(doctrine_id))
-		grid.add_child(button)
-		doctrine_buttons[doctrine_id] = button
-
-	var pair_preview := Label.new()
-	pair_preview.custom_minimum_size = Vector2(0, 42)
-	pair_preview.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	pair_preview.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	pair_preview.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	pair_preview.add_theme_font_size_override("font_size", 11)
-	pair_preview.add_theme_color_override("font_color", Color("#6f9c91"))
-	box.add_child(pair_preview)
-	doctrine_pair_preview_label = pair_preview
-
-	var selection_status := Label.new()
-	selection_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	selection_status.add_theme_font_size_override("font_size", 13)
-	selection_status.add_theme_color_override("font_color", Color("#8fa3ae"))
-	box.add_child(selection_status)
-	doctrine_selection_label = selection_status
-	var confirm := Button.new()
-	confirm.text = "BEGIN REBOOT"
-	confirm.custom_minimum_size = Vector2(0, 56)
-	confirm.disabled = true
-	confirm.pressed.connect(_confirm_doctrines)
-	_style_hud_button(confirm, true)
-	box.add_child(confirm)
-	doctrine_confirm_button = confirm
-	var footer := Label.new()
-	footer.text = "Mastery persists between runs. Higher ranks grant starting resources when that doctrine is selected."
-	footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	footer.add_theme_font_size_override("font_size", 11)
-	footer.add_theme_color_override("font_color", Color("#536874"))
-	box.add_child(footer)
-	_refresh_doctrine_overlay()
 
 func _on_doctrine_button_pressed(doctrine_id: String) -> void:
 	if pending_doctrines.has(doctrine_id):
@@ -1205,7 +1441,7 @@ func _refresh_doctrine_overlay() -> void:
 		var rank := meta.get_doctrine_rank(doctrine_id)
 		var next_threshold := meta.get_next_doctrine_rank_threshold(doctrine_id)
 		var mastery_text := "MAX" if next_threshold < 0 else "%d/%d" % [mastery, next_threshold]
-		button.text = "%s\n%s\nMASTERY R%d · %s  ·  RANK BONUS %s" % [
+		button.text = "%s\n%s\nRANK %d · MASTERY %s\nPER RANK  %s" % [
 			data["name"],
 			data["description"],
 			rank,
@@ -1217,6 +1453,7 @@ func _refresh_doctrine_overlay() -> void:
 		button.set_pressed_no_signal(selected)
 		button.disabled = pending_doctrines.size() >= 2 and not selected
 		_style_hud_button(button, selected)
+		button.add_theme_font_size_override("font_size", 15)
 	doctrine_selection_label.text = "%d/2 SELECTED%s" % [
 		pending_doctrines.size(),
 		"  ·  %s" % RunManagerScript.doctrine_pair_name(pending_doctrines) if not pending_doctrines.is_empty() else ""
@@ -1224,6 +1461,10 @@ func _refresh_doctrine_overlay() -> void:
 	if doctrine_pair_preview_label != null:
 		doctrine_pair_preview_label.text = _doctrine_pair_preview_text()
 	doctrine_confirm_button.disabled = pending_doctrines.size() != 2
+	doctrine_confirm_button.text = "BEGIN REBOOT" if pending_doctrines.size() == 2 else "SELECT %d MORE DOCTRINE%s" % [2 - pending_doctrines.size(), "S" if pending_doctrines.is_empty() else ""]
+	if pending_doctrines.size() == 2:
+		doctrine_selection_label.text += "  ·  Select either doctrine again to change the pair."
+	preload("res://scripts/title_settings.gd").apply_menu_text(doctrine_layer)
 
 func _doctrine_pair_preview_text() -> String:
 	if pending_doctrines.size() < 2:
@@ -1271,25 +1512,20 @@ func _preview_name_list(names: Array[String], visible_count: int) -> String:
 	return text if not text.is_empty() else "none"
 
 func _show_doctrine_selection() -> void:
-	pending_doctrines.clear()
-	running = false
-	_set_paused(true, false)
-	doctrine_layer.visible = true
-	_refresh_doctrine_overlay()
+	# Compatibility entry point: new loops no longer choose doctrines.
+	_confirm_doctrines()
 
 func _confirm_doctrines() -> void:
-	if pending_doctrines.size() != 2:
-		return
-	selected_doctrines.assign(pending_doctrines)
-	doctrine_layer.visible = false
+	selected_doctrines.clear()
+	pending_doctrines.clear()
+	run_directives.clear()
+	directive_index = 0
+	doctrine_layer.hide()
+	expedition_mode = true
 	_build_run_deck()
-	_roll_run_directives()
-	_apply_doctrine_mastery_bonuses()
 	_draw_hand()
 	running = true
 	_set_paused(false, false)
-	_log("Reboot doctrines locked: %s." % RunManagerScript.doctrine_pair_name(selected_doctrines), false)
-	_log("Directive 1/3 received: %s." % _current_directive().get("name", "Unknown"))
 	_refresh_all()
 
 func _apply_doctrine_mastery_bonuses() -> void:
@@ -1322,28 +1558,37 @@ func _build_menu_overlay() -> void:
 	menu_layer.add_child(shade)
 	var center := CenterContainer.new()
 	center.name = "MenuCenter"
+	center.theme = preload("res://scripts/title_button_style.gd").menu_theme()
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	center.mouse_filter = Control.MOUSE_FILTER_STOP
 	menu_layer.add_child(center)
+	menu_center = center
 	var panel := PanelContainer.new()
 	panel.name = "PauseMenu"
-	panel.custom_minimum_size = Vector2(560, 650)
+	panel.custom_minimum_size = Vector2(620, 580)
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	center.add_child(panel)
-	_apply_panel_style(panel, Color("#071018"), Color("#1f5260"))
+	_apply_panel_style(panel, Color("#10232e"), Color("#3c6b7d"))
 	menu_panel = panel
+	var menu_scroll := ScrollContainer.new()
+	menu_scroll.custom_minimum_size = Vector2(570, 540)
+	menu_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	menu_scroll.follow_focus = true
+	panel.add_child(menu_scroll)
 	var box := VBoxContainer.new()
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 10)
-	panel.add_child(box)
+	menu_scroll.add_child(box)
 	var title := Label.new()
 	title.text = "BRINE"
 	title.add_theme_font_size_override("font_size", 34)
 	title.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
 	box.add_child(title)
 	var subtitle := Label.new()
-	subtitle.text = "REBOOT CYCLE CONTROL"
-	subtitle.add_theme_font_size_override("font_size", 12)
-	subtitle.add_theme_color_override("font_color", Color("#536874"))
+	subtitle.text = "PAUSED"
+	pause_page_title = subtitle
+	subtitle.add_theme_font_size_override("font_size", 15)
+	subtitle.add_theme_color_override("font_color", Color("#8daab6"))
 	box.add_child(subtitle)
 	var status := Label.new()
 	status.text = ""
@@ -1356,83 +1601,72 @@ func _build_menu_overlay() -> void:
 	separator.text = "────────────────────────────"
 	separator.add_theme_color_override("font_color", Color("#18313c"))
 	box.add_child(separator)
-	_add_menu_display_options(box)
-	_add_menu_button(box, "Resume Cycle", _close_menu)
-	_add_menu_button(box, "Recenter Station", _menu_recenter_station)
-	_add_menu_button(box, "Toggle Admin View", _menu_toggle_admin_view)
+	for id in ["main", "station", "exit"]:
+		var page := VBoxContainer.new()
+		page.name = "PausePage_" + id
+		page.add_theme_constant_override("separation", 12)
+		page.visible = id == "main"
+		box.add_child(page)
+		pause_pages[id] = page
+	var primary: VBoxContainer = pause_pages.main
+	_add_menu_button(primary, "Resume Cycle", _close_menu)
+	_add_menu_button(primary, "Save Game", _menu_save_game)
+	_add_menu_button(primary, "Settings", _open_shared_menu.bind("settings"))
+	_add_menu_button(primary, "Station & Archives", _show_pause_page.bind("station"))
+	_add_menu_button(primary, "End or Leave Loop", _show_pause_page.bind("exit"))
+	var station: VBoxContainer = pause_pages.station
+	_add_menu_button(station, "Codex", _open_shared_menu.bind("codex"))
+	_add_menu_button(station, "Meta Progression", _open_shared_menu.bind("progression"))
+	_add_menu_button(station, "Recenter Station", _menu_recenter_station)
+	_add_menu_button(station, "Replay First-loop Guide", _replay_guide)
+	if OS.is_debug_build():
+		_add_menu_button(station, "Toggle Admin View", _menu_toggle_admin_view)
+	_add_menu_button(station, "Back", _pause_page_back)
+	var exits: VBoxContainer = pause_pages.exit
+	_add_menu_button(exits, "Save & Return to Title", _menu_return_title)
+	_add_menu_button(exits, "Save & Quit", _menu_quit_game)
+	_add_menu_button(exits, "Restart Reboot Cycle", _menu_restart_cycle)
 	end_expedition_button = Button.new()
-	end_expedition_button.text = "Conclude Expedition · Bank Research"
-	end_expedition_button.custom_minimum_size.y = 44
+	end_expedition_button.text = "Conclude Expedition / Bank Research"
 	end_expedition_button.pressed.connect(_end_expedition)
-	_style_hud_button(end_expedition_button, false)
-	box.add_child(end_expedition_button)
-	_add_menu_button(box, "Restart Reboot Cycle", _menu_restart_cycle)
-	_add_menu_button(box, "Quit To Desktop", _menu_quit_game)
+	preload("res://scripts/title_button_style.gd").apply(end_expedition_button, 480, 54)
+	exits.add_child(end_expedition_button)
+	_add_menu_button(exits, "Back", _pause_page_back)
+	menu_save_feedback = Label.new()
+	menu_save_feedback.name = "SaveFeedback"
+	menu_save_feedback.text = ""
+	menu_save_feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	menu_save_feedback.add_theme_font_size_override("font_size", 15)
+	menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
+	box.add_child(menu_save_feedback)
 	var hint := Label.new()
-	hint.text = "ESC toggles this menu. Space pauses time."
-	hint.add_theme_font_size_override("font_size", 11)
-	hint.add_theme_color_override("font_color", Color("#536874"))
+	hint.text = "ESC / Back"
+	hint.tooltip_text = "Escape returns from a submenu, then closes the pause menu."
+	hint.add_theme_font_size_override("font_size", 14)
+	hint.add_theme_color_override("font_color", Color("#8daab6"))
 	box.add_child(hint)
-
-func _add_menu_display_options(parent: Control) -> void:
-	var section_title := Label.new()
-	section_title.text = "DISPLAY"
-	section_title.add_theme_font_size_override("font_size", 13)
-	section_title.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
-	parent.add_child(section_title)
-
-	var resolution_label := Label.new()
-	resolution_label.text = "RESOLUTION"
-	resolution_label.add_theme_color_override("font_color", Color("#8fa3ae"))
-	parent.add_child(resolution_label)
-	var preset_grid := GridContainer.new()
-	preset_grid.columns = 2
-	preset_grid.add_theme_constant_override("h_separation", 8)
-	preset_grid.add_theme_constant_override("v_separation", 8)
-	parent.add_child(preset_grid)
-	resolution_buttons.clear()
-	for i in range(RESOLUTION_OPTIONS.size()):
-		var resolution: Vector2i = RESOLUTION_OPTIONS[i]
-		var button := Button.new()
-		button.text = "%d x %d" % [resolution.x, resolution.y]
-		button.toggle_mode = true
-		button.custom_minimum_size = Vector2(250, 38)
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.focus_mode = Control.FOCUS_NONE
-		button.pressed.connect(_on_resolution_button_pressed.bind(i))
-		_style_hud_button(button, i == _closest_resolution_option())
-		preset_grid.add_child(button)
-		resolution_buttons.append(button)
-
-	var fullscreen := Button.new()
-	fullscreen.name = "BorderlessFullscreen"
-	fullscreen.text = "BORDERLESS FULLSCREEN: OFF"
-	fullscreen.toggle_mode = true
-	fullscreen.custom_minimum_size = Vector2(0, 44)
-	fullscreen.focus_mode = Control.FOCUS_NONE
-	fullscreen.pressed.connect(_on_borderless_fullscreen_button_pressed)
-	_style_hud_button(fullscreen, false)
-	parent.add_child(fullscreen)
-
-	var separator := Label.new()
-	separator.text = "────────────────────────────"
-	separator.add_theme_color_override("font_color", Color("#18313c"))
-	parent.add_child(separator)
-	borderless_fullscreen_button = fullscreen
 
 func _add_menu_button(parent: Control, text: String, callable: Callable) -> void:
 	var button := Button.new()
 	button.text = text
+	button.name = text.replace(" ", "")
+	button.tooltip_text = {
+		"Save Game": "Records the active loop. Continue restores it paused from the title screen.",
+		"Save & Return to Title": "Records the active loop before opening the title screen.",
+		"Save & Quit": "Records the active loop before closing the game.",
+		"Restart Reboot Cycle": "Records this attempt before starting a new loop.",
+		"Recenter Station": "Fits the station into view without changing its rooms."
+	}.get(text, "")
 	button.custom_minimum_size = Vector2(0, 54)
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	button.focus_mode = Control.FOCUS_NONE
+	button.focus_mode = Control.FOCUS_ALL
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	button.pressed.connect(callable)
-	if text == "Restart Reboot Cycle" or text == "Quit To Desktop":
-		_style_danger_button(button)
-	else:
-		_style_hud_button(button, text == "Resume Cycle")
+	button.add_theme_font_size_override("font_size", 17)
+	preload("res://scripts/title_button_style.gd").apply(button, 480, 54, text == "Resume Cycle")
 	parent.add_child(button)
+	if text == "Resume Cycle":
+		menu_resume_button = button
 
 func _style_danger_button(button: BaseButton) -> void:
 	var style := StyleBoxFlat.new()
@@ -1473,6 +1707,10 @@ func _hide_grid_scrollbars() -> void:
 		v_bar.modulate = Color(1, 1, 1, 0)
 
 func _start_reboot_cycle() -> void:
+	if menu_save_feedback != null:
+		menu_save_feedback.text = "Record this loop to continue it from the title screen."
+		menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
+	run_save_id = "%s-%s" % [Time.get_unix_time_from_system(), Time.get_ticks_usec()]
 	if journal_layer != null:
 		journal_layer.visible = false
 	resources = {
@@ -1488,8 +1726,23 @@ func _start_reboot_cycle() -> void:
 	}
 	run_earned = {}
 	log_lines.clear()
+	event_history.clear()
+	journal_scroll_positions.clear()
+	journal_searches.clear()
+	menu_workspace.clear()
+	inspected_resource = ""
+	if history_search != null:
+		history_search.text = ""
+		history_filter.select(0)
+		archive_label.get_v_scroll_bar().set_deferred("value", 0.0)
 	occupied.clear()
 	placed_rooms.clear()
+	wrecks = WreckField.initial()
+	architect_run=Architects.begin(self)
+	for resource_id in Architects.starting_supplies(architect_run.selected):
+		resources[resource_id] += Architects.STARTING_SUPPLIES[architect_run.selected][resource_id]
+	drone_fleet.restore(null)
+	recovered_crew.clear()
 	hand.clear()
 	draw_pile.clear()
 	discard_pile.clear()
@@ -1539,6 +1792,9 @@ func _start_reboot_cycle() -> void:
 	offline_reasons.clear()
 	last_cycle_delta.clear()
 	var center_index := int(float(GRID_SIZE) * 0.5)
+	bill_npc = BillNPC.new()
+	veld_npc = VeldNPC.new()
+	branforth_npc = BranforthNPC.new()
 	test_walker_cell = Vector2i(center_index, center_index)
 	test_walker_next_cell = Vector2i(-1, -1)
 	test_walker_previous_cell = Vector2i(-1, -1)
@@ -1556,13 +1812,15 @@ func _start_reboot_cycle() -> void:
 	if cascade_toast_tween != null and cascade_toast_tween.is_valid():
 		cascade_toast_tween.kill()
 	toast_messages.clear()
+	toast_record_keys.clear()
+	current_toast_record = ""
 	toast_playing = false
 	cascade_toast.visible = false
 	_place_room("brine_core", Vector2i(center_index, center_index), true)
 	_clamp_resource_storage()
 	_center_grid_on_station()
 	_show_doctrine_selection()
-	_log("Reboot Cycle staged. Select two doctrines to compile the blueprint deck.", false)
+	_log("Station systems restored. The water is still outside. For now.", false)
 	_refresh_all()
 
 func _draw_hand() -> void:
@@ -1573,13 +1831,13 @@ func _draw_hand() -> void:
 func _build_run_deck() -> void:
 	draw_pile = RunManagerScript.build_deck(selected_doctrines, meta.unlocked_room_ids)
 	discard_pile.clear()
-	draw_pile.shuffle()
-	if draw_pile.has("mining_drone_bay"):
-		draw_pile.erase("mining_drone_bay")
-		draw_pile.append("mining_drone_bay")
-	if draw_pile.has("solar_array"):
-		draw_pile.erase("solar_array")
-		draw_pile.append("solar_array")
+	_shuffle_draw_pile()
+	# Stage existing foundation copies, without adding cards or revealing locks.
+	# pop_back deals power, extraction and food first, then oxygen and a corridor.
+	for id in ["corridor", "life_support", "hydroponics_bay", "mining_drone_bay", "solar_array"]:
+		if draw_pile.has(id):
+			draw_pile.erase(id)
+			draw_pile.append(id)
 
 func _refill_hand() -> void:
 	while hand.size() < HAND_SIZE:
@@ -1607,8 +1865,16 @@ func _reshuffle_discard_pile() -> void:
 		return
 	draw_pile.assign(discard_pile)
 	discard_pile.clear()
-	draw_pile.shuffle()
+	_shuffle_draw_pile()
 	_log("Blueprint discard pile recycled into the draw stack.", false)
+
+func _shuffle_draw_pile() -> void:
+	# Use the saved RNG instead of the unsaved global random stream.
+	for index in range(draw_pile.size() - 1, 0, -1):
+		var other := rng.randi_range(0, index)
+		var card := draw_pile[index]
+		draw_pile[index] = draw_pile[other]
+		draw_pile[other] = card
 
 func _clear_prototype_marker(id: String) -> void:
 	prototype_card_seen_cycle.erase(id)
@@ -1624,6 +1890,23 @@ func _on_grid_clicked(cell: Vector2i) -> void:
 	if _gameplay_input_blocked():
 		return
 	if not running:
+		return
+	if drone_fleet.sites.has(cell) and drone_fleet.sites[cell].discovered and not occupied.has(cell) and (drone_fleet.sites[cell].units>0 or selected_card_id.is_empty()):
+		selected_card_id = ""
+		selected_room_cell = cell
+		_refresh_all()
+		return
+	if drone_fleet.reserved(cell):
+		selected_card_id = ""
+		selected_room_cell = cell
+		_refresh_all()
+		return
+	if WreckField.blocks(wrecks,cell):
+		selected_card_id = ""
+		selected_room_cell = cell
+		last_preview_room_id = ""
+		last_previewing_card = false
+		_refresh_all()
 		return
 	if occupied.has(cell):
 		selected_card_id = ""
@@ -1663,21 +1946,21 @@ func _on_grid_hovered(cell: Vector2i) -> void:
 	if hover_cell == cell:
 		return
 	hover_cell = cell
-	if occupied.has(cell):
-		last_preview_room_id = str(occupied[cell].get("id", ""))
-		last_previewing_card = false
 	_refresh_placement_status()
-	_refresh_inspector()
 	grid_view.queue_redraw()
 
 func _can_place(id: String, cell: Vector2i) -> bool:
 	return get_placement_problem(id, cell).is_empty()
 
 func get_placement_problem(id: String, cell: Vector2i) -> String:
+	if drone_fleet.reserved(cell): return "construction already scheduled here."
+	if drone_fleet.Sites.blocks(drone_fleet.sites,cell): return "resource deposit occupies this cell. Select it to inspect extraction."
 	if cell.x < 0 or cell.y < 0 or cell.x >= GRID_SIZE or cell.y >= GRID_SIZE:
 		return "outside station grid."
 	if occupied.has(cell):
 		return "cell already contains %s." % occupied[cell]["display_name"]
+	if WreckField.blocks(wrecks,cell):
+		return "rock occupies this cell. Select it to break and clear." if wrecks[cell].kind == "basalt" else "wreckage occupies this cell. Select it to dismantle and salvage."
 	var room := RoomDatabaseScript.get_room(id)
 	if room.is_empty():
 		return "unknown blueprint."
@@ -1696,7 +1979,14 @@ func get_placement_problem(id: String, cell: Vector2i) -> String:
 		return mismatch
 	return "must connect to an adjacent door."
 
-func _place_room(id: String, cell: Vector2i, free := false) -> void:
+func _place_room(id: String, cell: Vector2i, free := false, construction_complete := false) -> void:
+	if not free and drone_fleet.Sites.blocks(drone_fleet.sites,cell): return
+	if not free and WreckField.blocks(wrecks,cell):
+		return
+	if not free and not testing_free_build and not construction_complete:
+		drone_fleet.enqueue(id,cell,selected_rotation)
+		_log("Construction scheduled: %s. Materials reserved." % RoomDatabaseScript.get_room(id).display_name,false)
+		return
 	var previous_link_keys := _active_synergy_link_keys()
 	var room := RoomDatabaseScript.get_room(id).duplicate(true)
 	room["pos"] = cell
@@ -1727,9 +2017,12 @@ func _advance_cycle() -> void:
 		return
 	cycle += 1
 	last_cycle_delta = _apply_room_economy()
+	preload("res://scripts/listening_post.gd").tick(self)
+	preload("res://scripts/local_incidents.gd").seed(self)
+	preload("res://scripts/rare_branch_control.gd").tick(self)
+	preload("res://scripts/local_incidents.gd").resolve(self)
 	_advance_draft_recovery()
 	_advance_synergy_discovery_cycle()
-	_apply_orbit_event()
 	_apply_life_support()
 	_emit_warnings()
 	_apply_unlocks()
@@ -1758,13 +2051,16 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 	var input_budget := resources.duplicate()
 	var generation := 0
 	for room in placed_rooms:
-		if not room.get("suspended", false):
+		if not room.get("suspended", false) and not preload("res://scripts/rare_branch_control.gd").offline(room):
 			generation += int(room.get("production", {}).get("power", 0))
 	input_budget["power"] = generation + maxi(int(resources["power"]), 0)
 	var reserve_start := int(resources["power"])
 	var added_crew := 0
 	for room in _rooms_by_power_priority():
 		var cell: Vector2i = room["pos"]
+		if preload("res://scripts/rare_branch_control.gd").offline(room):
+			offline[cell]="ISOLATED" if room.get("isolated",false) else "FLOODED"
+			continue
 		if room.get("suspended", false):
 			offline[cell] = "SUSPENDED"
 			continue
@@ -1784,7 +2080,9 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 		for key in consumption:
 			input_budget[key] = int(input_budget.get(key, 0)) - int(consumption[key])
 		working_cells[cell] = true
-		_add_to_delta(delta, _without_key(room.get("production", {}), "power"), 1)
+		if room.get("flooded",false) and room.get("flood_compatible",false):_add_to_delta(delta,{"biomass":2},1)
+		if room.id not in ["mining_drone_bay","salvage_drone_bay"]:
+			_add_to_delta(delta, _without_key(room.get("production", {}), "power"), 1)
 		_add_to_delta(delta, _without_key(consumption, "power"), -1)
 		if room["id"] == "research_lab" and crew_count > 0:
 			_add_to_delta(delta, {"data": 1}, 1)
@@ -1799,6 +2097,10 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 	var tick := cycle if simulated_cycle < 0 else simulated_cycle
 	for link in bonus_links:
 		if link["id"] == "safe_wake_protocol" and tick % 3 == 0 and crew_count + added_crew < _get_crew_capacity():
+			var finite_ward := false
+			for cell in link.get("cells",[]):
+				if occupied.has(cell) and occupied[cell].get("recovered_derelict",false): finite_ward=true
+			if finite_ward: continue # Occupants are released once by their emergence sequence.
 			added_crew += 1
 			break
 	var used := generation + maxi(reserve_start, 0) - int(input_budget["power"])
@@ -1810,6 +2112,13 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 
 func _apply_room_economy() -> Dictionary:
 	var result := _simulate_room_economy()
+	drone_fleet.synchronize(placed_rooms)
+	for room in placed_rooms:
+		var cell: Vector2i = room.pos
+		var before: String = str(offline_reasons.get(cell, "FUNCTIONING"))
+		var after: String = str(result.offline.get(cell, "FUNCTIONING"))
+		if before != after:
+			_log("%s at %s: %s -> %s" % [room.display_name, cell, before, after], false)
 	powered_room_cells = result["working_cells"]
 	offline_reasons = result["offline"]
 	unpowered_room_cells = offline_reasons.duplicate()
@@ -1843,28 +2152,8 @@ func _get_crew_capacity() -> int:
 	return capacity
 
 func _apply_orbit_event() -> void:
-	var event := orbit.advance(cycle, _get_poi_work_capacities())
-	if not event.get("triggered", false):
-		return
-	if event.get("completed", false):
-		completed_pois.append(event["name"])
-	else:
-		expired_pois.append(event["name"])
-	_log(event.get("message", "An orbital event passes over BRINE."))
-	_apply_delta(event.get("effect", {}))
-	if event.has("damage"):
-		resources["integrity"] -= event["damage"]
-	if event.has("corruption"):
-		corruption += event["corruption"]
-	if event["name"] == "Frozen Escape Pod" and event.get("completed", false):
-		if crew_count < _get_crew_capacity():
-			crew_count += 1
-			had_crew = true
-			_log("Life Support thaws a survivor from the escape pod.")
-		else:
-			_apply_delta({"data": 3})
-			_log("Habitats full. Pod telemetry recovered; its occupant remains in safe stasis.")
-	_clamp_power_reserve()
+	# Legacy entry point retained for old fixtures; orbital POIs are retired.
+	pass
 
 func _apply_life_support() -> void:
 	if crew_count <= 0:
@@ -1876,6 +2165,15 @@ func _apply_life_support() -> void:
 	if resources["food"] < 0 or resources["oxygen"] < 0:
 		var deaths := 1
 		crew_count = max(crew_count - deaths, 0)
+		# Existing anonymous crew are counted too; record named losses only when needed.
+		var alive_recovered := 0
+		for member in recovered_crew: alive_recovered += int(member.alive)
+		if alive_recovered>crew_count:
+			for member in recovered_crew:
+				if member.alive:
+					member.alive=false
+					if member.has("architect_id"): Architects.actor_for(self,member.architect_id).die()
+					break
 		resources["integrity"] -= 5
 		_log("Crew life support collapse. One crew lost, station integrity damaged.")
 
@@ -1931,8 +2229,8 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 				"remaining": DISCOVERY_BURST_SECONDS
 			})
 		break
-	_log(str(synergy.get("message", "BRINE recovered a functioning room pattern.")))
-	_queue_center_toast("PATTERN DISCOVERED\n%s" % str(synergy.get("name", synergy_id)).to_upper())
+	_log("Pattern discovered: %s. %s" % [synergy.get("name", "Recovered pattern"), synergy.get("message", "BRINE recovered a functioning room pattern.")])
+	_queue_center_toast("PATTERN DISCOVERED\n%s\nClick to review · Saved in Archive" % str(synergy.get("name", synergy_id)).to_upper(), "synergy:" + synergy_id)
 
 func _update_discovery_bursts(delta: float) -> void:
 	if discovery_bursts.is_empty():
@@ -1963,7 +2261,7 @@ func _award_synergy_stabilization(synergy: Dictionary) -> void:
 			run_decrypted_blueprint_ids.append(unlock_id)
 			var room_name := str(RoomDatabaseScript.get_room(unlock_id).get("display_name", unlock_id))
 			_log("Pattern stabilized: %s. Blueprint decrypted: %s." % [synergy_name, room_name])
-			_queue_center_toast("BLUEPRINT DECRYPTED\n%s" % room_name.to_upper())
+			_queue_center_toast("BLUEPRINT DECRYPTED\n%s\nClick to review · Saved in Archive" % room_name.to_upper(), "room:" + unlock_id)
 		else:
 			_log("Pattern stabilized: %s. Blueprint already present in the archive." % synergy_name)
 			_queue_center_toast("PATTERN STABILIZED\n%s" % synergy_name.to_upper())
@@ -2048,7 +2346,13 @@ func _show_cascade_toast(cascade_size: int, resonance_gain: int, pulse: Dictiona
 		pulse_text = "  ·  PULSE %s" % _format_cost(pulse).to_upper()
 	_queue_center_toast("SIGNAL CASCADE x%d\n+%d RESONANCE%s" % [cascade_size, resonance_gain, pulse_text])
 
-func _queue_center_toast(message: String) -> void:
+func _queue_center_toast(message: String, record_key := "") -> void:
+	if toast_messages.has(message):
+		return
+	if toast_messages.size() >= 3:
+		toast_record_keys.erase(toast_messages.pop_front())
+	if not record_key.is_empty():
+		toast_record_keys[message] = record_key
 	toast_messages.append(message)
 	if not toast_playing:
 		_play_next_center_toast()
@@ -2070,7 +2374,17 @@ func _show_center_toast(message: String) -> void:
 	if cascade_toast_tween != null and cascade_toast_tween.is_valid():
 		cascade_toast_tween.kill()
 	cascade_toast_label.text = message
+	current_toast_record = str(toast_record_keys.get(message, ""))
+	toast_record_keys.erase(message)
+	cascade_toast.mouse_filter = Control.MOUSE_FILTER_STOP if not current_toast_record.is_empty() else Control.MOUSE_FILTER_IGNORE
 	cascade_toast.visible = true
+	if Preferences.reduced_motion:
+		cascade_toast.modulate = Color.WHITE
+		cascade_toast.scale = Vector2.ONE
+		cascade_toast_tween = create_tween()
+		cascade_toast_tween.tween_interval(3.5 if not current_toast_record.is_empty() else 2.0)
+		cascade_toast_tween.tween_callback(_finish_center_toast)
+		return
 	cascade_toast.modulate = Color(1, 1, 1, 0)
 	cascade_toast.scale = Vector2(0.96, 0.96)
 	cascade_toast.pivot_offset = cascade_toast.size * 0.5
@@ -2078,7 +2392,7 @@ func _show_center_toast(message: String) -> void:
 	cascade_toast_tween.set_parallel(true)
 	cascade_toast_tween.tween_property(cascade_toast, "modulate:a", 1.0, 0.12)
 	cascade_toast_tween.tween_property(cascade_toast, "scale", Vector2.ONE, 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	cascade_toast_tween.chain().tween_interval(1.15)
+	cascade_toast_tween.chain().tween_interval(3.5 if not current_toast_record.is_empty() else 1.15)
 	cascade_toast_tween.chain().tween_property(cascade_toast, "modulate:a", 0.0, 0.35)
 	cascade_toast_tween.chain().tween_callback(_finish_center_toast)
 
@@ -2094,11 +2408,7 @@ func _roll_run_directives() -> void:
 	completed_directives.clear()
 
 func _current_directive() -> Dictionary:
-	if expedition_mode:
-		return {}
-	if directive_index < 0 or directive_index >= run_directives.size():
-		return {}
-	return run_directives[directive_index]
+	return {} # Timed reconstruction directives are retired.
 
 func _directive_state() -> Dictionary:
 	return {
@@ -2180,6 +2490,7 @@ func _check_fail_conditions() -> void:
 		_show_reboot_summary(reason)
 
 func _show_reboot_summary(reason: String, victory := false) -> void:
+	RunSave.clear_run(run_save_id, run_save_path)
 	running = false
 	run_victory = run_victory or victory
 	var earned := int(float(max(resources["data"], 0)) / 5.0) + int(float(resonance_score) / 50.0)
@@ -2190,9 +2501,8 @@ func _show_reboot_summary(reason: String, victory := false) -> void:
 	for doctrine_id_value in selected_doctrines:
 		var doctrine_id := str(doctrine_id_value)
 		previous_doctrine_ranks[doctrine_id] = meta.get_doctrine_rank(doctrine_id)
-	var mastery_gain := 0
 	if not run_rewards_recorded:
-		mastery_gain = meta.record_run(selected_doctrines, victory, resonance_score)
+		meta.record_run([], victory, resonance_score)
 		run_rewards_recorded = true
 	var synergy_names := []
 	for id in meta.discovered_synergy_ids:
@@ -2206,31 +2516,26 @@ func _show_reboot_summary(reason: String, victory := false) -> void:
 		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None",
 		_join_strings(_room_names_for_ids(run_decrypted_blueprint_ids)) if not run_decrypted_blueprint_ids.is_empty() else "None"
 	]
-	summary_text.text = "%s\n\n%s\n\nDoctrines: %s\nDirectives completed: %d/%d\nCycles survived: %d\nCrew remaining: %d\nResonance score: %d (%s)\nLinks formed: %d · Best cascade: x%d\nResearch awarded: %d\nDoctrine mastery: %s\nMastery gained: +%d each\nTotal research: %d\nStabilized reboots: %d\nDiscovered synergies: %s" % [
-		reason,
-		discoveries,
-		RunManagerScript.doctrine_pair_name(selected_doctrines) if not selected_doctrines.is_empty() else "None selected",
-		completed_directives.size(),
-		run_directives.size(),
-		cycle,
-		crew_count,
-		resonance_score,
-		RESONANCE_TIERS[resonance_tier_index]["name"],
-		links_formed,
-		largest_cascade,
-		award,
-		_format_doctrine_mastery_summary(previous_doctrine_ranks),
-		mastery_gain,
-		meta.total_research_points,
-		meta.total_victories,
-		_join_strings(synergy_names) if synergy_names.size() > 0 else "None"
-	]
-	summary_text.text += "\nPOIs completed: %s\nResources earned: %s" % [
-		_join_strings(completed_pois) if completed_pois.size() > 0 else "None",
-		_format_cost(run_earned) if not run_earned.is_empty() else "None"
-	]
-	summary_text.text += "\nPOIs expired: %s" % [_join_strings(expired_pois) if expired_pois.size() > 0 else "None"]
+	summary_text.text = "%s\n\n%s\n\nCycles survived: %d\nCrew remaining: %d\nResonance: %d\nLinks formed: %d / Best cascade: x%d\nResearch awarded: %d\nTotal research: %d" % [reason, discoveries, cycle, crew_count, resonance_score, links_formed, largest_cascade, award, meta.total_research_points]
+	summary_text.text += "\nResources earned: %s" % (_format_cost(run_earned) if not run_earned.is_empty() else "None")
 	summary_layer.visible = true
+	var ranks_gained: Array[String] = []
+	for id in previous_doctrine_ranks:
+		if meta.get_doctrine_rank(id) > int(previous_doctrine_ranks[id]):
+			ranks_gained.append("%s → rank %d" % [RunManagerScript.doctrine(id).name, meta.get_doctrine_rank(id)])
+	var pattern_research := 0
+	for id in run_stabilized_synergy_ids:
+		pattern_research += int(SynergyManagerScript.get_synergy(id).get("terminal_reward", {}).get("research", 0))
+	var retained := "WHAT SURVIVES\nNew patterns: %d / Stabilized: %d / New blueprints: %d\nResearch banked: %d from score / %d from patterns\nLearned patterns and unlocked blueprints remain in your profile.\n\n" % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size(), run_decrypted_blueprint_ids.size(), run_awarded_research, pattern_research]
+	summary_text.text = "OUTCOME // " + reason + "\n\n" + retained + "RUN RECORD\n" + summary_text.text.trim_prefix(reason + "\n\n")
+	_refresh_learning_ui()
+	preload("res://scripts/title_settings.gd").apply_menu_text(summary_layer)
+	if is_instance_valid(continue_expedition_button) and continue_expedition_button.visible:
+		continue_expedition_button.grab_focus()
+	elif summary_layer.has_meta("default_button"):
+		var default_button := summary_layer.get_meta("default_button") as Button
+		if is_instance_valid(default_button):
+			default_button.grab_focus()
 	if journal_layer != null:
 		journal_layer.visible = false
 	_set_paused(true, false)
@@ -2245,7 +2550,7 @@ func _continue_expedition() -> void:
 	_set_paused(false)
 	if tick_timer != null:
 		tick_timer.start()
-	_log("Expedition extended. No directive deadlines; life support and orbital hazards remain active.")
+	_log("Expedition extended. No directive deadlines; life support remains active.")
 	_refresh_all()
 
 func _end_expedition() -> void:
@@ -2286,12 +2591,81 @@ func _room_names_for_ids(ids: Array) -> Array[String]:
 		names.append(str(RoomDatabaseScript.get_room(room_id).get("display_name", room_id.replace("_", " ").capitalize())))
 	return names
 
+func _finish_guide() -> void:
+	meta.guide_completed = true
+	meta.save_to_disk()
+	_refresh_learning_ui()
+
+func _replay_guide() -> void:
+	guide_replay = true
+	meta.guide_completed = false
+	meta.save_to_disk()
+	_close_menu()
+	_refresh_learning_ui()
+
+func _refresh_learning_ui() -> void:
+	if guide_box == null:
+		return
+	guide_box.visible = running and not meta.guide_completed
+	guide_label.max_lines_visible = 3
+	guide_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	guide_label.text = preload("res://scripts/station_ui_insights.gd").guide(self)
+	if not guide_replay and not meta.guide_completed and not run_stabilized_synergy_ids.is_empty():
+		_finish_guide()
+		return
+	discovery_review_button.visible = not meta.unread_records.is_empty()
+	discovery_review_button.text = "ARCHIVE // %d NEW · REVIEW" % meta.unread_records.size()
+
+func _review_latest_discovery() -> void:
+	var key := "" if meta.unread_records.is_empty() else str(meta.unread_records.keys().back())
+	_review_discovery_key(key)
+
+func _review_discovery_key(key: String) -> void:
+	var section := "progression" if key.begins_with("mastery:") else "codex"
+	if _gameplay_input_blocked() and not menu_open:
+		_open_overlay_settings()
+	else:
+		if not menu_open:
+			_open_menu()
+		_open_shared_menu(section)
+	if not is_instance_valid(menu_archive):
+		return
+	menu_archive.show_section(section)
+	if section == "codex" and not key.is_empty():
+		var id := key.get_slice(":", 1)
+		var synergy := key.begins_with("synergy:")
+		menu_archive.codex_tabs.current_tab = 1 if synergy else 0
+		menu_archive.search.text = str(SynergyManagerScript.get_synergy(id).get("name", "")) if synergy else str(RoomDatabaseScript.get_room(id).get("display_name", ""))
+		menu_archive._populate_cards()
+	if section == "codex":
+		meta.mark_reviewed(key)
+		menu_archive._populate_cards()
+	_refresh_learning_ui()
+
+func _focus_inspected_room() -> void:
+	var cell: Vector2i = inspector_focus_button.get_meta("cell", Vector2i(-1, -1))
+	if not occupied.has(cell) and not WreckField.blocks(wrecks,cell) and not drone_fleet.reserved(cell):
+		return
+	selected_card_id = ""
+	hovered_card_id = ""
+	selected_room_cell = cell
+	hover_cell = cell
+	var center := (Vector2(cell) + Vector2.ONE * 0.5) * get_cell_size()
+	grid_scroll.scroll_horizontal = maxi(0, int(center.x - grid_scroll.size.x * 0.5))
+	grid_scroll.scroll_vertical = maxi(0, int(center.y - grid_scroll.size.y * 0.5))
+	grid_view.queue_redraw()
+
 func _refresh_all() -> void:
+	_refresh_learning_ui()
+	Preferences.apply_key_hints(self)
 	_refresh_resources()
 	_refresh_cards()
 	_refresh_inspector()
 	_refresh_orbital_objective()
-	_refresh_archive()
+	if _journal_is_open():
+		_refresh_archive()
+	elif journal_button != null:
+		journal_button.text = "JOURNAL [%s]\n%d LEARNED" % [Preferences.key_name("Journal"), meta.discovered_synergy_ids.size()]
 	_refresh_routing()
 	_refresh_placement_status()
 	_refresh_log()
@@ -2302,34 +2676,18 @@ func _refresh_all() -> void:
 func _refresh_orbital_objective() -> void:
 	if orbital_objective_label == null:
 		return
-	if expedition_mode:
-		orbital_objective_label.text = "OPEN EXPEDITION\nSector secured. Keep experimenting.\n%d learned · %d stabilized this run\n\n%s" % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size(), orbit.get_panel_text().replace("\n", " · ")]
-		return
-	var directive := _current_directive()
-	if directive.is_empty():
-		orbital_objective_label.text = "RECONSTRUCTION DIRECTIVE\nAWAITING DOCTRINE PAIR\n──────────────\nSelect two doctrines to compile this reboot.\n\nORBIT\n%s" % orbit.get_panel_text()
-		return
-	var directive_state := _directive_state()
-	var deadline := int(directive.get("deadline", 0))
-	var remaining := maxi(0, deadline - cycle)
-	orbital_objective_label.text = "DIRECTIVE %d/%d  ·  LIMIT C%02d\n%s\nPROGRESS %s  ·  %d CYCLES LEFT\nREWARD %s\n\nORBIT  %s" % [
-		directive_index + 1,
-		run_directives.size(),
-		deadline,
-		directive.get("name", "UNKNOWN"),
-		RunManagerScript.directive_progress_text(directive, directive_state),
-		remaining,
-		_format_directive_reward(directive.get("reward", {})).to_upper(),
-		orbit.get_panel_text().replace("\n", "  ·  ")
-	]
-	orbital_objective_label.tooltip_text = str(directive.get("briefing", ""))
+	orbital_objective_label.text = "STATION RESTORATION\n%d learned / %d stabilized this loop\n\nRestore rooms. Sustain the crew.\nKeep useful patterns functioning." % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size()]
+	var learning: Array[String] = preload("res://scripts/station_ui_insights.gd").learning(self)
+	if not learning.is_empty():
+		orbital_objective_label.text = "PATTERN WATCH\n" + learning[0] + ("\n+%d more in Journal / Patterns" % (learning.size()-1) if learning.size()>1 else "")
+	orbital_objective_label.tooltip_text = "Patterns stabilize after three consecutive functioning cycles."
 
 func _on_zoom_changed(value: float) -> void:
 	_set_grid_zoom(DEFAULT_GRID_ZOOM * value, false)
 
-func _set_grid_zoom(value: float, update_slider := true) -> void:
-	var center_ratio := _grid_view_center_ratio()
-	grid_zoom = clamp(value, MIN_GRID_ZOOM, DEFAULT_GRID_ZOOM)
+func _set_grid_zoom(value: float, update_slider := true, target_center := Vector2.INF) -> void:
+	var center_ratio := _grid_view_center_ratio() if target_center == Vector2.INF else target_center
+	grid_zoom = clampf(value, _minimum_map_zoom(), DEFAULT_GRID_ZOOM)
 	if update_slider and zoom_slider != null:
 		zoom_slider.set_value_no_signal(grid_zoom / DEFAULT_GRID_ZOOM)
 	_apply_grid_zoom()
@@ -2397,22 +2755,39 @@ func _toggle_menu() -> void:
 func _open_menu() -> void:
 	if menu_layer == null or _gameplay_input_blocked():
 		return
+	menu_workspace = preload("res://scripts/workspace_state.gd").capture(self)
 	menu_open = true
+	_show_pause_page("main")
 	pause_before_menu = paused
+	menu_resume_button.text = "Return to Station · Paused" if pause_before_menu else "Resume Cycle"
 	_set_paused(true, false)
 	menu_layer.visible = true
+	if menu_transition and menu_transition.is_running():
+		menu_transition.kill()
+	menu_center.modulate.a = 1.0
+	if not Preferences.reduced_motion:
+		menu_center.modulate.a = 0.0
+		menu_transition = create_tween()
+		menu_transition.tween_property(menu_center, "modulate:a", 1.0, 0.16)
+	Preferences.apply_menu_text(menu_center)
+	menu_resume_button.grab_focus()
 	_refresh_menu_status()
 	_refresh_all()
 	if grid_view != null:
 		grid_view.queue_redraw()
 
 func _close_menu() -> void:
+	if is_instance_valid(menu_archive):
+		menu_archive._close()
+		return
 	if menu_layer == null:
 		return
 	menu_open = false
 	_set_paused(pause_before_menu, false)
 	menu_layer.visible = false
 	_refresh_all()
+	preload("res://scripts/workspace_state.gd").restore(self,menu_workspace)
+	if menu_workspace.get("camera_center") is Vector2: _restore_grid_view_center(menu_workspace.camera_center)
 	if grid_view != null:
 		grid_view.queue_redraw()
 
@@ -2421,92 +2796,56 @@ func _refresh_menu_status() -> void:
 		end_expedition_button.visible = expedition_mode and running
 	if menu_status_label == null:
 		return
-	var doctrine_name := RunManagerScript.doctrine_pair_name(selected_doctrines) if not selected_doctrines.is_empty() else "Not selected"
-	var directive_status := "%d/%d" % [mini(directive_index + 1, run_directives.size()), run_directives.size()] if not run_directives.is_empty() else "Not started"
-	menu_status_label.text = "Cycle %03d  |  Integrity %d%%  |  Crew %d  |  View %s\nDoctrines: %s  |  Directive: %s" % [
-		cycle,
-		resources.get("integrity", 0),
-		crew_count,
-		"ADMIN" if admin_mode else "NORMAL",
-		doctrine_name,
-		directive_status
-	]
-	_refresh_display_menu_state()
+	menu_status_label.text = "Cycle %03d  |  Integrity %d%%  |  Crew %d  |  View %s" % [cycle, resources.get("integrity", 0), crew_count, "ADMIN" if admin_mode else "NORMAL"]
+	if not meta.last_error.is_empty():
+		menu_status_label.text += "\nPROGRESSION NOT SAVED // " + meta.last_error
 
-func _refresh_display_menu_state() -> void:
-	var active_resolution := _closest_resolution_option()
-	for i in range(resolution_buttons.size()):
-		var button := resolution_buttons[i]
-		if button == null:
-			continue
-		var active := i == active_resolution and not _is_borderless_fullscreen()
-		button.set_pressed_no_signal(active)
-		_style_hud_button(button, active)
-	if borderless_fullscreen_button != null:
-		var fullscreen := _is_borderless_fullscreen()
-		borderless_fullscreen_button.set_pressed_no_signal(fullscreen)
-		borderless_fullscreen_button.text = "BORDERLESS FULLSCREEN: ON" if fullscreen else "BORDERLESS FULLSCREEN: OFF"
-		_style_hud_button(borderless_fullscreen_button, fullscreen)
-
-func _closest_resolution_option() -> int:
-	var current_size := DisplayServer.window_get_size()
-	var best_index := 0
-	var best_distance := INF
-	for i in range(RESOLUTION_OPTIONS.size()):
-		var resolution: Vector2i = RESOLUTION_OPTIONS[i]
-		var distance := absf(float(resolution.x - current_size.x)) + absf(float(resolution.y - current_size.y))
-		if distance < best_distance:
-			best_distance = distance
-			best_index = i
-	return best_index
-
-func _on_resolution_button_pressed(index: int) -> void:
-	if index < 0 or index >= RESOLUTION_OPTIONS.size():
+func _open_shared_menu(section: String) -> void:
+	if not menu_open or is_instance_valid(menu_archive):
 		return
-	last_windowed_resolution = RESOLUTION_OPTIONS[index]
-	_apply_window_resolution(RESOLUTION_OPTIONS[index])
-	_refresh_menu_status()
-
-func _apply_window_resolution(window_size_value: Vector2i) -> void:
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-	await get_tree().process_frame
-	DisplayServer.window_set_size(window_size_value)
-	get_window().size = window_size_value
-	var screen_size := DisplayServer.screen_get_size(DisplayServer.window_get_current_screen())
-	var window_position := Vector2i(
-		maxi(0, int((screen_size.x - window_size_value.x) * 0.5)),
-		maxi(0, int((screen_size.y - window_size_value.y) * 0.5))
+	menu_section_opener = get_viewport().gui_get_focus_owner()
+	menu_archive = preload("res://scripts/title_archive.gd").new()
+	menu_archive.meta_state = meta
+	menu_archive.mode = section
+	menu_archive.in_game = true
+	menu_center.hide()
+	menu_layer.add_child(menu_archive)
+	menu_archive.closed.connect(func() -> void:
+		menu_archive = null
+		menu_center.show()
+		Preferences.apply_menu_text(menu_center)
+		if is_instance_valid(menu_section_opener):
+			menu_section_opener.grab_focus()
+		else:
+			menu_resume_button.grab_focus()
 	)
-	DisplayServer.window_set_position(window_position)
-	get_window().position = window_position
-	if menu_open:
-		_refresh_menu_status()
 
-func _on_borderless_fullscreen_button_pressed() -> void:
-	var enabled := not _is_borderless_fullscreen()
-	if enabled:
-		var screen := DisplayServer.window_get_current_screen()
-		var screen_position := DisplayServer.screen_get_position(screen)
-		var screen_size := DisplayServer.screen_get_size(screen)
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-		DisplayServer.window_set_position(screen_position)
-		DisplayServer.window_set_size(screen_size)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-		_apply_window_resolution(last_windowed_resolution)
-	_refresh_menu_status()
-
-func _is_borderless_fullscreen() -> bool:
-	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		return true
-	if not DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_BORDERLESS):
-		return false
-	var screen_size := DisplayServer.screen_get_size(DisplayServer.window_get_current_screen())
-	var window_size := DisplayServer.window_get_size()
-	return window_size.x >= screen_size.x and window_size.y >= screen_size.y
+func _open_overlay_settings() -> void:
+	if not doctrine_layer.visible and not journal_layer.visible and not summary_layer.visible:
+		_open_menu()
+		_open_shared_menu("settings")
+		return
+	if is_instance_valid(menu_archive):
+		return
+	var source: CanvasLayer = doctrine_layer if doctrine_layer.visible else (journal_layer if journal_layer.visible else summary_layer)
+	var opener := get_viewport().gui_get_focus_owner()
+	source.hide()
+	menu_archive = preload("res://scripts/title_archive.gd").new()
+	menu_archive.meta_state = meta
+	menu_archive.mode = "settings"
+	menu_archive.in_game = true
+	menu_layer.show()
+	menu_center.hide()
+	menu_layer.add_child(menu_archive)
+	menu_archive.closed.connect(func() -> void:
+		menu_archive = null
+		menu_layer.hide()
+		menu_center.show()
+		source.show()
+		Preferences.apply_menu_text(source)
+		if is_instance_valid(opener):
+			opener.grab_focus()
+	)
 
 func _menu_recenter_station() -> void:
 	_center_grid_on_station_deferred()
@@ -2518,14 +2857,70 @@ func _menu_toggle_admin_view() -> void:
 	_refresh_menu_status()
 	_refresh_all()
 
-func _menu_restart_cycle() -> void:
-	menu_open = false
-	if menu_layer != null:
+func _choose_restart_architect() -> void:
+	var opener := get_viewport().gui_get_focus_owner()
+	var layer := CanvasLayer.new()
+	layer.layer = 100
+	var picker = preload("res://scripts/architect_selection.gd").new()
+	picker.meta_state = meta
+	layer.add_child(picker)
+	add_child(layer)
+	picker.closed.connect(func():
+		layer.queue_free()
+		if menu_open: _show_pause_page("exit")
+		elif is_instance_valid(opener): opener.grab_focus()
+	)
+	picker.chosen.connect(func(_id: String):
+		layer.queue_free()
+		menu_open = false
 		menu_layer.visible = false
-	_start_reboot_cycle()
+		_start_reboot_cycle()
+	)
+
+func _menu_restart_cycle() -> void:
+	if running and not _save_active_loop(): return
+	_choose_restart_architect()
 
 func _menu_quit_game() -> void:
-	get_tree().quit()
+	if not running or _save_active_loop():
+		get_tree().quit()
+	else:
+		_open_menu()
+		menu_status_label.text = RunSave.last_error if not RunSave.last_error.is_empty() else meta.last_error
+
+func _save_active_loop() -> bool:
+	var error := RunSave.write(self, run_save_path)
+	if error != OK:
+		menu_save_feedback.text = "SAVE FAILED // " + RunSave.last_error
+		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
+		return false
+	if meta.save_to_disk() != OK:
+		menu_save_feedback.text = "LOOP RECORDED / PROGRESSION NOT SAVED // " + meta.last_error
+		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
+		return false
+	menu_save_feedback.text = "LOOP RECORDED // Cycle %03d. Continue is available on the title screen." % cycle
+	menu_save_feedback.add_theme_color_override("font_color", Color("91e2dd"))
+	return true
+
+func _menu_save_game() -> void:
+	_save_active_loop()
+
+func _menu_return_title() -> void:
+	if running and not _save_active_loop():
+		return
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+
+func _notification(what: int) -> void:
+	if get_meta("restoring_checkpoint",false):
+		if what == NOTIFICATION_WM_CLOSE_REQUEST: get_tree().quit()
+		return
+	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT and Preferences.pause_unfocused and running and not paused:
+		_set_paused(true, false)
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_menu_quit_game()
+
+func _exit_tree() -> void:
+	get_tree().auto_accept_quit = true
 
 func _toggle_admin_view_button() -> void:
 	admin_mode = not admin_mode
@@ -2548,19 +2943,23 @@ func _refresh_solar_meter() -> void:
 	var left: float = clampf(float(tick_timer.time_left), 0.0, wait)
 	var progress: float = 1.0 - (left / wait)
 	solar_meter.value = progress
-	if paused:
-		solar_time_label.text = "HOLD"
-	else:
-		solar_time_label.text = "%02ds" % int(ceil(left))
+	var caption: String = "HOLD" if paused else "%02ds" % int(ceil(left))
+	if solar_time_label.text != caption:
+		solar_time_label.text = caption
 
 func _set_time_speed(index: int) -> void:
+	var remaining_fraction := 1.0
+	if tick_timer != null and not tick_timer.is_stopped():
+		remaining_fraction = clampf(tick_timer.time_left / maxf(tick_timer.wait_time, 0.01), 0.0, 1.0)
 	time_speed_index = clampi(index, 0, time_speeds.size() - 1)
 	for i in range(speed_buttons.size()):
 		speed_buttons[i].set_pressed_no_signal(i == time_speed_index)
 		_style_hud_button(speed_buttons[i], i == time_speed_index)
 	if tick_timer != null:
-		tick_timer.wait_time = _cycle_wait_seconds()
-		tick_timer.start()
+		var duration := _cycle_wait_seconds()
+		tick_timer.start(maxf(0.001, duration * remaining_fraction))
+		# start(time) changes wait_time too; subsequent cycles need the full duration.
+		tick_timer.wait_time = duration
 		tick_timer.paused = paused
 	_log("Time speed set to %dx." % int(time_speeds[time_speed_index]), false)
 
@@ -2569,26 +2968,36 @@ func _cycle_wait_seconds() -> float:
 
 func _update_camera_pan(delta: float) -> void:
 	if _gameplay_input_blocked():
+		camera_pan_remainder = Vector2.ZERO
 		return
 	if grid_scroll == null:
 		return
 	var direction := Vector2.ZERO
-	if Input.is_key_pressed(KEY_A):
+	if Input.is_key_pressed(int(Preferences.keys["Pan left"])):
 		direction.x -= 1.0
-	if Input.is_key_pressed(KEY_D):
+	if Input.is_key_pressed(int(Preferences.keys["Pan right"])):
 		direction.x += 1.0
-	if Input.is_key_pressed(KEY_W):
+	if Input.is_key_pressed(int(Preferences.keys["Pan up"])):
 		direction.y -= 1.0
-	if Input.is_key_pressed(KEY_S):
+	if Input.is_key_pressed(int(Preferences.keys["Pan down"])):
 		direction.y += 1.0
 	if direction == Vector2.ZERO:
+		camera_pan_remainder = Vector2.ZERO
 		return
-	direction = direction.normalized()
-	var speed := 1050.0
-	grid_scroll.scroll_horizontal += int(direction.x * speed * delta)
-	grid_scroll.scroll_vertical += int(direction.y * speed * delta)
+	_pan_grid(direction, delta)
+
+func _pan_grid(direction: Vector2, delta: float) -> void:
+	var travel := direction.normalized() * 1050.0 * delta + camera_pan_remainder
+	var pixels := Vector2i(int(travel.x), int(travel.y))
+	camera_pan_remainder = travel - Vector2(pixels)
+	grid_scroll.scroll_horizontal += pixels.x
+	grid_scroll.scroll_vertical += pixels.y
 
 func _apply_grid_zoom() -> void:
+	grid_zoom = maxf(grid_zoom, _minimum_map_zoom())
+	if zoom_slider != null:
+		zoom_slider.min_value = _minimum_map_zoom() / DEFAULT_GRID_ZOOM
+		zoom_slider.set_value_no_signal(grid_zoom / DEFAULT_GRID_ZOOM)
 	if grid_view != null:
 		var grid_size_px := Vector2(GRID_SIZE * get_cell_size(), GRID_SIZE * get_cell_size())
 		grid_view.custom_minimum_size = grid_size_px
@@ -2629,8 +3038,9 @@ func _fit_station_view() -> void:
 		bounds = bounds.merge(Rect2(Vector2(room["pos"]), Vector2.ONE))
 	var usable := grid_scroll.size - Vector2(120, 110)
 	var fit_zoom := minf(usable.x / ((bounds.size.x + 0.6) * CELL_SIZE), usable.y / ((bounds.size.y + 0.6) * CELL_SIZE))
-	_set_grid_zoom(minf(fit_zoom, DEFAULT_GRID_ZOOM * 0.60))
-	_center_grid_on_station_deferred()
+	# Fit uses its destination immediately; preserving the old center first can
+	# rebuild a different visible room set before the deferred station centering.
+	_set_grid_zoom(minf(fit_zoom, DEFAULT_GRID_ZOOM * 0.60),true,bounds.get_center()/float(GRID_SIZE))
 
 func _center_grid_on_station_now() -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
@@ -2650,7 +3060,8 @@ func _center_grid_on_station_now() -> void:
 	grid_scroll.scroll_vertical = int(clamp(target_pixel.y - viewport_size.y * 0.5, 0.0, max(GRID_SIZE * get_cell_size() - viewport_size.y, 0.0)))
 
 func _refresh_resources() -> void:
-	var net := _project_cycle_delta()
+	var forecast := _simulate_room_economy(true, cycle + 1)
+	var net := _project_cycle_delta(forecast)
 	power_capacity = _get_power_capacity()
 	_set_resource_chip("metal", "METAL\n%d/%d  %+d" % [resources["metal"], _get_resource_capacity("metal"), net.get("metal", 0)], Color("#9aa2a8"))
 	_set_resource_chip("power", "POWER\n%d/%d  %+d" % [resources["power"], power_capacity, net.get("power", 0)], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
@@ -2677,6 +3088,18 @@ func _refresh_resources() -> void:
 		var next_tier: Dictionary = RESONANCE_TIERS[resonance_tier_index + 1]
 		next_text = "%d to %s" % [int(next_tier["threshold"]) - resonance_score, next_tier["name"]]
 	resonance_label.tooltip_text = "%d active links · %d formed · best cascade x%d · %s" % [active_synergy_links.size(), links_formed, largest_cascade, next_text]
+	for key in net:
+		var chip_id: String = "rare" if key == "rare_minerals" else str(key)
+		if resource_chips.has(chip_id):
+			resource_chips[chip_id].tooltip_text = _reserve_forecast(str(key), int(net[key])) + "\nClick or press Enter for room contributions. Estimates can change with events and inputs."
+	if diagnostics_button != null:
+		var risk: Dictionary = forecast.offline
+		var suspended := 0
+		for reason in risk.values():
+			if reason == "SUSPENDED":
+				suspended += 1
+		diagnostics_button.text = "DIAGNOSTICS · %d ALERTS · %d HELD" % [risk.size() - suspended, suspended]
+		diagnostics_button.tooltip_text = "Forecast room interruptions, locate affected rooms, and inspect reserves."
 
 func _critical_color(value: int, normal: Color, warning_at: int, critical_at: int) -> Color:
 	if value <= critical_at:
@@ -2697,6 +3120,20 @@ func _set_resource_chip(id: String, text: String, color: Color) -> void:
 		chip.tooltip_text = str(RESOURCE_TOOLTIPS.get(id, "Station resource."))
 		resource_bar.add_child(chip)
 		resource_chips[id] = chip
+		var resource_id: String = "rare_minerals" if id == "rare" else id
+		if BASE_STORAGE_CAPACITY.has(resource_id) or resource_id=="crew":
+			chip.tooltip_text += "\nClick or press Enter for the crew roster." if resource_id=="crew" else "\nClick or press Enter for room contributions."
+			chip.focus_mode = Control.FOCUS_ALL
+			chip.mouse_entered.connect(func(): chip.self_modulate = Color("b4fff1"))
+			chip.mouse_exited.connect(func():
+				if not chip.has_focus(): chip.self_modulate = Color.WHITE)
+			chip.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+			chip.focus_entered.connect(func(): chip.self_modulate = Color("b4fff1"))
+			chip.focus_exited.connect(func(): chip.self_modulate = Color.WHITE)
+			chip.gui_input.connect(func(event: InputEvent):
+				if (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT) or event.is_action_pressed("ui_accept"):
+					chip.accept_event()
+					_open_resource_details(resource_id, chip))
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 6)
 		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -2722,7 +3159,7 @@ func _set_resource_chip(id: String, text: String, color: Color) -> void:
 		var icon_rect: TextureRect = resource_icon_rects[id]
 		icon_rect.texture = _resource_icon_texture(id)
 	var chip_panel: PanelContainer = resource_chips[id]
-	var chip_style := StyleBoxFlat.new()
+	var chip_style: StyleBoxFlat = chip_panel.get_theme_stylebox("panel") as StyleBoxFlat if chip_panel.has_theme_stylebox_override("panel") else StyleBoxFlat.new()
 	chip_style.bg_color = Color("#050d10")
 	var color_hex := color.to_html(false)
 	var warning_state := text.contains(" -") or color_hex == "ff3b3b" or color_hex == "ff9f31"
@@ -2779,9 +3216,10 @@ func _resource_icon_bbcode(resource_id: String, icon_size: int = 18) -> String:
 		return "[img=%dx%d]%s[/img]" % [icon_size, icon_size, str(RESOURCE_ICON_PATHS[id])]
 	return RoomDatabaseScript.resource_icon(id)
 
-func _project_cycle_delta() -> Dictionary:
-	var result := _simulate_room_economy(true, cycle + 1)
-	var delta: Dictionary = result["delta"]
+func _project_cycle_delta(forecast: Dictionary = {}) -> Dictionary:
+	var result: Dictionary = _simulate_room_economy(true, cycle + 1) if forecast.is_empty() else forecast
+	# Crew upkeep belongs to the projection, never to the shared room result.
+	var delta: Dictionary = result["delta"].duplicate()
 	var projected_crew := crew_count + int(result["added_crew"])
 	if projected_crew > 0:
 		_add_to_delta(delta, {"food": projected_crew, "oxygen": projected_crew}, -1)
@@ -2892,6 +3330,7 @@ func _refresh_cards() -> void:
 		card.set_meta("category_color", category_color)
 		card.set_meta("rest_position", card.position)
 		card.set_meta("affordable", _can_afford(room.get("cost", {})))
+		card.tooltip_text = _blueprint_decision(room)
 		_apply_card_style(card, category_color, selected_card_id == id, _can_afford(room.get("cost", {})))
 		card.mouse_entered.connect(_on_card_hovered.bind(id, card))
 		card.mouse_exited.connect(_on_card_unhovered.bind(id, card))
@@ -2901,13 +3340,15 @@ func _refresh_cards() -> void:
 		body.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		card.add_child(body)
 		var image_wrap := Control.new()
-		image_wrap.custom_minimum_size = Vector2(0, 106)
+		image_wrap.custom_minimum_size = Vector2(0, 92)
 		image_wrap.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		body.add_child(image_wrap)
 		var image := TextureRect.new()
 		image.set_anchors_preset(Control.PRESET_FULL_RECT)
 		image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		if id in ["airlock", "construction_drone_bay", "mycelium_nursery", "life_support", "hydroponics_bay", "reactor", "med_bay", "crew_hab", "cryo_chamber", "clone_lab", "data_archive", "biodome", "xeno_lab", "med_office","med_center","holographic_core","bio_lab","anomaly_lab", "battery_array", "research_lab", "maintenance_bay", "storage_bay", "ore_refinery", "mining_drone_bay", "salvage_drone_bay", "crew_lounge", "command_center", "quarantine_cell", "solar_array", "radio_lab", "shield_generator", "tidal_condenser", "gravity_loom", "brine_core", "corridor", "corner", "tee_corridor", "pressure_control", "listening_post", "isolation_vault"]:
+			image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		image.texture = card_textures.get(id)
 		image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		image.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -2937,7 +3378,7 @@ func _refresh_cards() -> void:
 		var name_label := Label.new()
 		name_label.text = "■ %s" % room["display_name"]
 		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		name_label.add_theme_font_size_override("font_size", 17)
+		name_label.add_theme_font_size_override("font_size", 20)
 		name_label.add_theme_color_override("font_color", Color("#f2f7fb"))
 		name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		body.add_child(name_label)
@@ -2946,7 +3387,7 @@ func _refresh_cards() -> void:
 		output_label.fit_content = true
 		output_label.scroll_active = false
 		output_label.text = _primary_output_line(room)
-		output_label.add_theme_font_size_override("normal_font_size", 13)
+		output_label.add_theme_font_size_override("normal_font_size", 15)
 		output_label.add_theme_color_override("default_color", Color("#8fa3ae"))
 		output_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		body.add_child(output_label)
@@ -2955,7 +3396,7 @@ func _refresh_cards() -> void:
 		cost_label.fit_content = true
 		cost_label.scroll_active = false
 		cost_label.text = "[color=#607784]COST[/color]  %s" % _format_resource_list(room.get("cost", {}), 14)
-		cost_label.add_theme_font_size_override("normal_font_size", 11)
+		cost_label.add_theme_font_size_override("normal_font_size", 15)
 		cost_label.add_theme_color_override("default_color", Color("#607784") if _can_afford(room.get("cost", {})) else Color("#ff6c75"))
 		cost_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		body.add_child(cost_label)
@@ -2968,10 +3409,12 @@ func _refresh_cards() -> void:
 		synergy_label.add_theme_font_size_override("normal_font_size", 10)
 		synergy_label.add_theme_color_override("default_color", Color("#6f9f8f"))
 		synergy_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		synergy_label.visible = false # Full known links live in the clicked inspector.
 		body.add_child(synergy_label)
 		var footer_label := Label.new()
-		footer_label.text = "LMB BUILD   RMB REROLL"
-		footer_label.add_theme_font_size_override("font_size", 10)
+		footer_label.text = "CLICK TO SELECT" if _can_afford(room.get("cost", {})) else "SHORT: " + _format_cost(_missing_cost(room.get("cost", {})))
+		footer_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		footer_label.add_theme_font_size_override("font_size", 12)
 		footer_label.add_theme_color_override("font_color", Color("#3f5663"))
 		footer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		body.add_child(footer_label)
@@ -3189,13 +3632,10 @@ func _on_card_hovered(id: String, card: Control) -> void:
 		return
 	if not is_instance_valid(card) or not card is PanelContainer:
 		return
-	hovered_card_id = id
-	last_preview_room_id = id
-	last_previewing_card = true
 	card.pivot_offset = card.size * 0.5
 	var rest_position: Vector2 = card.get_meta("rest_position", card.position)
-	card.position = rest_position + Vector2(0, -22)
-	card.scale = Vector2(1.035, 1.035)
+	card.position = rest_position if Preferences.reduced_motion else rest_position + Vector2(0, -14)
+	card.scale = Vector2.ONE if Preferences.reduced_motion else Vector2(1.02, 1.02)
 	var color: Color = card.get_meta("category_color", UI_ACCENT_BRIGHT)
 	var affordable: bool = card.get_meta("affordable", true)
 	_apply_card_style(card, color.lightened(0.18), true, affordable)
@@ -3269,35 +3709,83 @@ func _discard_all_cards() -> void:
 	_log("Draft hand rerolled. %d charge%s remain." % [rerolls_remaining, "s" if rerolls_remaining != 1 else ""], false)
 	_refresh_all()
 
+func _input(event: InputEvent) -> void:
+	if menu_archive != null:
+		return
+	if event is InputEventKey and event.pressed and not event.echo and event.ctrl_pressed and event.keycode==KEY_F and not _gameplay_input_blocked():
+		_open_station_search()
+		get_viewport().set_input_as_handled()
+		return
+	if _journal_is_open() and event is InputEventKey and event.pressed and not event.echo:
+		if event.ctrl_pressed and event.keycode == KEY_F:
+			journal_tabs.current_tab = 3 if journal_tabs.current_tab==3 else 4
+			history_search.grab_focus()
+			history_search.select_all()
+			get_viewport().set_input_as_handled()
+			return
+		if event.keycode == KEY_ESCAPE and history_search.has_focus() and not history_search.text.is_empty():
+			history_search.text = ""
+			_refresh_archive()
+			archive_label.get_v_scroll_bar().set_deferred("value", 0.0)
+			get_viewport().set_input_as_handled()
+			return
+	var scope: Node = null
+	if menu_open:
+		scope = menu_center
+	elif summary_layer != null and summary_layer.visible:
+		scope = summary_layer
+	elif doctrine_layer != null and doctrine_layer.visible:
+		scope = doctrine_layer
+	elif _journal_is_open():
+		scope = journal_layer
+	if scope != null:
+		preload("res://scripts/title_button_style.gd").contain_tab(event, scope)
+
 func _unhandled_input(event: InputEvent) -> void:
+	if is_instance_valid(menu_archive):
+		return
 	if doctrine_layer != null and doctrine_layer.visible:
+		if event.is_action_pressed("ui_cancel"):
+			_menu_return_title()
+			get_viewport().set_input_as_handled()
 		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
 		if _journal_is_open():
 			_toggle_journal()
+		elif summary_layer.visible:
+			_menu_return_title()
+		elif menu_open and pause_page != "main":
+			_pause_page_back()
 		else:
 			_toggle_menu()
 		get_viewport().set_input_as_handled()
 		return
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_J:
+	if Preferences.pressed(event, "Journal"):
 		_toggle_journal()
 		get_viewport().set_input_as_handled()
 		return
 	if _gameplay_input_blocked():
 		return
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F:
+	if Preferences.pressed(event, "Placement guides"):
+		Preferences.placement_guides = not Preferences.placement_guides
+		Preferences.save(get_window())
+		grid_view.queue_redraw()
+		_refresh_placement_status()
+		get_viewport().set_input_as_handled()
+		return
+	if Preferences.pressed(event, "Fit station"):
 		_fit_station_view()
 		get_viewport().set_input_as_handled()
 		return
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_SPACE:
+	if Preferences.pressed(event, "Pause"):
 		_toggle_pause()
 		get_viewport().set_input_as_handled()
 		return
-	if event.is_action_pressed("rotate_room"):
+	if Preferences.pressed(event, "Rotate blueprint"):
 		_rotate_selected_room()
 		get_viewport().set_input_as_handled()
 		return
-	if event.is_action_pressed("toggle_admin_mode"):
+	if Preferences.pressed(event, "Admin view") and OS.is_debug_build():
 		admin_mode = not admin_mode
 		_log("Admin topology overlay %s." % ("enabled" if admin_mode else "hidden"), false)
 		_refresh_all()
@@ -3305,9 +3793,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton and event.pressed and event.shift_pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_set_grid_zoom(grid_zoom + 0.05)
+			_set_grid_zoom(grid_zoom + Preferences.zoom_step())
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_set_grid_zoom(grid_zoom - 0.05)
+			_set_grid_zoom(grid_zoom - Preferences.zoom_step())
 
 func _rotate_selected_room() -> void:
 	if selected_card_id.is_empty():
@@ -3365,38 +3853,49 @@ func get_room_layout(room: Dictionary) -> Dictionary:
 	return RoomDatabaseScript.get_layout(room.get("layout", "cross"))
 
 func _update_test_walker(delta: float) -> void:
-	if not occupied.has(test_walker_cell):
+	if not occupied.has(test_walker_cell) or grid_view == null:
 		return
-	if test_walker_state == "idle":
-		test_walker_break_timer -= delta
-		if test_walker_break_timer > 0.0:
-			return
-	if test_walker_next_cell == Vector2i(-1, -1) or not occupied.has(test_walker_next_cell):
-		test_walker_next_cell = _choose_walker_next_cell(test_walker_cell)
-		test_walker_progress = 0.0
-		if test_walker_next_cell == Vector2i(-1, -1):
-			test_walker_state = "idle"
-			test_walker_break_timer = 0.8
-			return
-		test_walker_direction = _direction_for_offset(test_walker_next_cell - test_walker_cell)
-		_choose_walker_motion_state()
-	test_walker_progress += delta * test_walker_speed
-	if test_walker_progress >= 1.0:
+	var previous_status := _walker_status()
+	var previous_veld_status := _veld_status()
+	var previous_branforth_status := _branforth_status()
+	for actor in [bill_npc, veld_npc, branforth_npc]:
+		var architect_id := "bill" if actor==bill_npc else "veld" if actor==veld_npc else "branforth"
+		if not Architects.present(self,architect_id): continue
+		actor.avoidance_position = Vector2.INF
+		actor.avoidance_positions.clear()
+		for peer in [bill_npc, veld_npc, branforth_npc]:
+			if peer != actor and peer.active: actor.avoidance_positions.append(peer.foot)
+		if actor != bill_npc: actor.room_cache = bill_npc.room_cache
+		preload("res://scripts/airlock_service.gd").check_service(self,actor)
+		actor.update(self, delta)
+	if delta > 0:
+		preload("res://scripts/crew_passage.gd").update([bill_npc,veld_npc,branforth_npc])
+	if bill_npc.active:
 		test_walker_previous_cell = test_walker_cell
-		test_walker_cell = test_walker_next_cell
-		test_walker_progress = 0.0
-		if rng.randf() < 0.07:
-			test_walker_state = "idle"
-			test_walker_break_timer = rng.randf_range(0.20, 0.75)
-			test_walker_next_cell = Vector2i(-1, -1)
-		else:
-			test_walker_next_cell = _choose_walker_next_cell(test_walker_cell)
-			if test_walker_next_cell == Vector2i(-1, -1):
-				test_walker_state = "idle"
-				test_walker_break_timer = rng.randf_range(0.35, 1.0)
-			else:
-				test_walker_direction = _direction_for_offset(test_walker_next_cell - test_walker_cell)
-				_choose_walker_motion_state()
+		test_walker_cell = bill_npc.cell_at(bill_npc.foot)
+		test_walker_next_cell = Vector2i(-1, -1)
+		test_walker_state = bill_npc.animation_state()
+		test_walker_direction = bill_npc.direction
+		if _walker_status() != previous_status or _veld_status() != previous_veld_status or _branforth_status() != previous_branforth_status:
+			_refresh_placement_status()
+
+func has_dr_veld() -> bool:
+	return veld_npc.active and occupied.has(veld_npc.cell_at(veld_npc.foot))
+
+func get_dr_veld_position() -> Vector2:
+	return (veld_npc.foot / 384.0 - Vector2(0, 0.038)) * get_cell_size()
+
+func _veld_status() -> String:
+	return "%s | hunger %d / fatigue %d" % [veld_npc.activity, roundi(veld_npc.needs.hunger), roundi(veld_npc.needs.fatigue)]
+
+func has_chief_branforth() -> bool:
+	return branforth_npc.active and occupied.has(branforth_npc.cell_at(branforth_npc.foot))
+
+func get_chief_branforth_position() -> Vector2:
+	return (branforth_npc.foot / 384.0 - Vector2(0, 0.038)) * get_cell_size()
+
+func _branforth_status() -> String:
+	return "%s | hunger %d / fatigue %d" % [branforth_npc.activity, roundi(branforth_npc.needs.hunger), roundi(branforth_npc.needs.fatigue)]
 
 func _choose_walker_motion_state() -> void:
 	if rng.randf() < 0.22:
@@ -3425,11 +3924,14 @@ func _connected_neighbor_cells(cell: Vector2i) -> Array:
 	return neighbors
 
 func _placed_rooms_connected(room: Dictionary, neighbor: Dictionary, offset: Vector2i) -> bool:
+	if room.get("branch_owner",Vector2i(-1,-1))!=neighbor.get("branch_owner",Vector2i(-1,-1)):return false
 	var side := _side_from_offset(offset)
 	var opposite := _opposite_side(side)
 	return get_room_doors(room).has(side) and get_room_doors(neighbor).has(opposite)
 
 func get_test_walker_position() -> Vector2:
+	if bill_npc.active:
+		return (bill_npc.foot / 384.0 - Vector2(0, 0.038)) * get_cell_size()
 	if test_walker_next_cell == Vector2i(-1, -1) or not occupied.has(test_walker_next_cell):
 		return _room_idle_anchor(test_walker_cell)
 	var offset := test_walker_next_cell - test_walker_cell
@@ -3448,6 +3950,8 @@ func get_test_walker_position() -> Vector2:
 	return _sample_polyline(_dedupe_path_points(path_points), test_walker_progress)
 
 func get_test_walker_direction() -> String:
+	if bill_npc.active:
+		return bill_npc.direction
 	if test_walker_next_cell == Vector2i(-1, -1):
 		return test_walker_direction
 	return _direction_for_offset(test_walker_next_cell - test_walker_cell)
@@ -3465,7 +3969,7 @@ func get_test_walker_state() -> String:
 	return test_walker_state
 
 func has_test_walker() -> bool:
-	return occupied.has(test_walker_cell)
+	return occupied.has(test_walker_cell) and (architect_run.is_empty() or bill_npc.active)
 
 func _cell_center(cell: Vector2i) -> Vector2:
 	var cell_size := get_cell_size()
@@ -3548,6 +4052,18 @@ func _perimeter_points_between(cell: Vector2i, from_side: String, to_side: Strin
 	var index := from_index
 	for i in range(count + 1):
 		points.append(_perimeter_walk_anchor(cell, str(order[index])))
+		if i < count and occupied.get(cell, {}).get("id", "") == "gravity_loom":
+			# The broad low ring needs a square perimeter, not diagonal chords.
+			var next_index: int = (index + step + order.size()) % order.size()
+			var directions := [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+			points.append(_cell_center(cell) + (directions[index] + directions[next_index]) * get_cell_size() * 0.30)
+		if i < count and occupied.get(cell, {}).get("id", "") == "reactor":
+			# The south-facing chamber needs a corner waypoint: a straight
+			# diagonal between cardinal anchors clips its ground footprint once
+			# the rendered crew foot offset is included.
+			var next_index: int = (index + step + order.size()) % order.size()
+			var directions := [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+			points.append(_cell_center(cell) + (directions[index] + directions[next_index]) * get_cell_size() * 0.20)
 		index = (index + step + order.size()) % order.size()
 	return points
 
@@ -3586,14 +4102,66 @@ func get_current_poi_name() -> String:
 func get_current_poi_progress() -> float:
 	return orbit.get_current_poi_progress()
 
+func _refresh_harvest_inspector(cell: Vector2i) -> void:
+	var site: Dictionary = drone_fleet.sites[cell]
+	preview_name_label.text = drone_fleet.Sites.NAMES[site.kind]
+	preview_tags_label.text = "SURVEYED / FINITE RESOURCE / " + ("DEPLETED" if site.units==0 else "EXTRACTION")
+	preview_texture.texture = grid_view.harvest_site_art.texture("mining" if site.kind=="mining" else "frame")
+	var remaining := {}
+	for key in drone_fleet.Sites.LOADS[site.kind]: remaining[key] = drone_fleet.Sites.LOADS[site.kind][key]*site.units
+	var status := "WAITING FOR A REACHABLE DRONE"
+	if site.units==0: status = "DEPLETED / footprint available for construction"
+	elif not site.active: status = "EXTRACTION PAUSED / progress retained"
+	elif not drone_fleet.has_worker(site.kind,placed_rooms): status = "REQUIRES " + ("MINING" if site.kind=="mining" else "SALVAGE") + " DRONE BAY"
+	else:
+		for drone in drone_fleet.drones.values():
+			if drone.job=="harvest" and Vector2i(drone.target)==cell:
+				status = drone_fleet.battery_status(drone.home,int(resources.power),powered_room_cells.has(drone.home),paused)
+				break
+	inspector_label.text = "%s\n\nRemaining: %s\nLoads: %d / %d\nCurrent load: %d%%\n\nDrones choose the nearest reachable surveyed site. Extraction stops when its material is gone. Cargo enters storage at the bay; storage limits apply. Expand the station to survey farther seabed.\n\n[color=#698782]I have counted what remains. It is not an inexhaustible number.[/color]" % [status,_format_cost(remaining),site.units,site.capacity,roundi(site.progress/6.0*100)]
+	room_operation_button.set_meta("cell",cell)
+	room_operation_button.disabled = not running or site.units==0
+	room_operation_button.text = "DEPOSIT EXHAUSTED" if site.units==0 else "PAUSE EXTRACTION" if site.active else "RESUME EXTRACTION"
+	room_operation_button.tooltip_text = "Pause this target without losing extracted material or partial work."
+
 func _refresh_inspector() -> void:
+	if inspector_label == null: return
+	hovered_card_id = "" # Discard legacy checkpoint hover state; inspection is click-based.
+	var key := "%s:%s" % [selected_card_id,selected_room_cell]
+	var scroll_value: float = inspector_label.get_v_scroll_bar().value if key == inspector_selection_key else 0.0
+	inspector_selection_key = key
+	_refresh_inspector_contents()
+	inspector_label.get_v_scroll_bar().set_deferred("value",scroll_value)
+
+func _refresh_inspector_contents() -> void:
+	inspector_focus_button.disabled = true
+	if hovered_card_id.is_empty() and selected_card_id.is_empty():
+		var site_cell: Vector2i = selected_room_cell
+		if drone_fleet.sites.has(site_cell) and drone_fleet.sites[site_cell].discovered and not occupied.has(site_cell):
+			_refresh_harvest_inspector(site_cell)
+			return
+	if hovered_card_id.is_empty() and selected_card_id.is_empty():
+		var order_cell: Vector2i = selected_room_cell
+		var order: Dictionary = drone_fleet.order_at(order_cell)
+		if not order.is_empty():
+			var blueprint := RoomDatabaseScript.get_room(order.id)
+			preview_name_label.text = blueprint.display_name
+			preview_texture.texture = card_textures.get(order.id)
+			preview_tags_label.text = "CONSTRUCTION / MATERIALS PAID"
+			inspector_label.text = drone_fleet.construction_status(order_cell,_simulate_room_economy().working_cells)+"\n\nThe footprint is reserved. This room joins the station when assembly finishes.\n\nThe Core carries an emergency builder. Powered Construction Drone Bays add dedicated builders."
+			room_operation_button.text = "CONSTRUCTION IN PROGRESS"
+			room_operation_button.disabled = true
+			return
+	if hovered_card_id.is_empty() and selected_card_id.is_empty():
+		var wreck_cell := selected_room_cell
+		if not occupied.has(wreck_cell) and WreckField.blocks(wrecks,wreck_cell):
+			_refresh_wreck_inspector(wreck_cell)
+			return
 	var room := {}
 	var previewing_card := false
 	if not hovered_card_id.is_empty():
 		room = RoomDatabaseScript.get_room(hovered_card_id)
 		previewing_card = true
-	elif occupied.has(hover_cell):
-		room = occupied[hover_cell]
 	elif not selected_card_id.is_empty():
 		room = RoomDatabaseScript.get_room(selected_card_id)
 		previewing_card = true
@@ -3602,6 +4170,9 @@ func _refresh_inspector() -> void:
 	if room.is_empty() and not last_preview_room_id.is_empty():
 		room = RoomDatabaseScript.get_room(last_preview_room_id)
 		previewing_card = last_previewing_card
+	if not previewing_card and room.get("recovered_derelict",false):
+		_refresh_cryo_inspector(room.pos)
+		return
 	if room_operation_button != null:
 		var can_control: bool = not previewing_card and room.has("pos") and room.get("id", "") != "brine_core"
 		room_operation_button.disabled = not can_control or not running
@@ -3614,12 +4185,12 @@ func _refresh_inspector() -> void:
 		preview_tags_label.text = "SYSTEM IDLE"
 		preview_name_label.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
 		inspector_label.text = _join_strings([
-			"[color=#70848a]Hover a room or card for analysis.[/color]",
+			"[color=#70848a]Click a room, construction site or blueprint to inspect it.[/color]",
 			"[color=#70848a]Station integrity:[/color] [color=#c9d3ce]%d%%[/color]" % resources["integrity"],
 			"",
 			_preview_divider(),
 			"",
-			"[color=#34484b]BRINE waits in low orbit. Select a module to read its pattern.[/color]",
+			"[color=#34484b]BRINE waits beneath the water. Select a module to read its pattern.[/color]",
 			"",
 			_preview_divider()
 		], "\n")
@@ -3636,16 +4207,22 @@ func _refresh_inspector() -> void:
 	preview_lines.append("[color=#b9c6cc]%s[/color]" % room.get("description", ""))
 	if not previewing_card and room.has("pos"):
 		var operation := str(offline_reasons.get(room["pos"], "FUNCTIONING" if powered_room_cells.has(room["pos"]) else "AWAITING CYCLE"))
-		preview_lines.append("[color=#f0c67a]%s[/color]" % operation)
+		preview_lines.append("[color=#f0c67a]CURRENT STATUS // %s[/color]" % operation)
+		preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(operation))
+		var forecast := _simulate_room_economy(true, cycle + 1)
+		preview_lines.append("[color=#9fdfdc]NEXT CYCLE FORECAST // %s[/color]" % str(forecast.offline.get(room.pos, "INPUTS AVAILABLE")))
+		preview_lines.append("Forecast uses current shared inputs and learned bonuses; events can change the outcome.")
 		preview_lines.append("")
-		_append_room_synergy_preview(preview_lines, room)
 	preview_lines.append("")
 	preview_lines.append(_preview_divider())
-	preview_lines.append("[color=#%s]EFFECTS[/color]" % UI_ACCENT_BRIGHT.to_html(false))
-	preview_lines.append(_format_effect_rows(room.get("production", {}), "+", false))
+	preview_lines.append("[color=#%s]%s[/color]" % [UI_ACCENT_BRIGHT.to_html(false),"CARGO / EXTRACTION LOAD" if room.id in ["mining_drone_bay","salvage_drone_bay"] else "BASE OUTPUT / FUNCTIONING CYCLE"])
+	preview_lines.append(_format_effect_rows(room.get("production", {}), "+", false,room.id not in ["mining_drone_bay","salvage_drone_bay"]))
+	if room.id in ["mining_drone_bay","salvage_drone_bay"]:
+		preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused))
+		preview_lines.append("Extracts one load per 6 seconds from a finite surveyed site. Cargo enters storage on return. Battery supports 12 seconds of extraction; 1 station Power restores 6 seconds at the bay. Keep an exterior route open.")
 	if not room.get("consumption", {}).is_empty():
 		preview_lines.append("")
-		preview_lines.append("[color=#c85b61]DRAWS[/color]")
+		preview_lines.append("[color=#c85b61]REQUIRED INPUT / CYCLE[/color]")
 		preview_lines.append(_format_effect_rows(room.get("consumption", {}), "-", true))
 	if previewing_card:
 		preview_lines.append("")
@@ -3661,16 +4238,18 @@ func _refresh_inspector() -> void:
 		preview_lines.append("[color=#ff4d5a]MISSING: %s[/color]" % _format_resource_list(_missing_cost(room.get("cost", {}))))
 	preview_lines.append("")
 	preview_lines.append(_preview_divider())
-	if previewing_card:
-		_append_room_synergy_preview(preview_lines, room)
-	var capacities := _get_poi_work_capacities()
+	_append_room_synergy_preview(preview_lines, room)
 	preview_lines.append("")
 	preview_lines.append(_preview_divider())
 	preview_lines.append("[color=#596d77]%s[/color]" % _room_flavor_line(room))
 	preview_lines.append("")
-	preview_lines.append("[color=#4f6470]%s[/color]" % orbit.get_panel_text().replace("\n", "  ·  "))
-	preview_lines.append("[color=#607784]Capacity: Mining %d | Salvage %d | Life %d[/color]" % [capacities.get("mining", 0), capacities.get("salvage", 0), capacities.get("life_support", 0)])
+	if not previewing_card and room.get("id","")=="listening_post":preview_lines.append(preload("res://scripts/listening_post.gd").inspector(self,room))
+	if not previewing_card and room.get("id","") in ["pressure_control","isolation_vault"]:preview_lines.append(preload("res://scripts/rare_branch_control.gd").inspector(self,room))
+	if not previewing_card and room.get("local_incident",false):preview_lines.append("[color=#e6aa72]LOCAL CONTAINMENT FAULT[/color]\n[url=repair:%d:%d]Repair containment — 2 Metal[/url]" % [room.pos.x,room.pos.y])
+	if room.get("tags",[]).has("containment_risk"):preview_lines.append("Containment fault risk: a functioning risk room can develop a local fault every 8 cycles. Uncontained faults spread through connected doors and damage Integrity. Repair costs 2 Metal per room.")
 	inspector_label.text = _join_strings(preview_lines, "\n")
+	inspector_focus_button.disabled = previewing_card or not room.has("pos")
+	inspector_focus_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
 
 func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 	var room_id := str(room.get("id", ""))
@@ -3687,6 +4266,17 @@ func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 	if relevant.is_empty():
 		lines.append("[color=#33515e]No recovered patterns for this room yet.[/color]")
 	for synergy in relevant:
+		if room.has("pos"):
+			var local_count := 0
+			var connected_here := false
+			for link in connected_synergy_links:
+				if link.id == synergy.id and link.get("cells", []).has(room.pos):
+					connected_here = true
+			for link in active_synergy_links:
+				if link.id == synergy.id and link.get("cells", []).has(room.pos):
+					local_count += 1
+			lines.append("[color=#9fdfdc]%s[/color]" % ("FUNCTIONING AT THIS ROOM" if local_count > 0 else ("CONNECTED HERE · CHECK BOTH PARTNERS' INPUTS" if connected_here else "NOT CONNECTED HERE · MATCH THE PARTNER'S DOORS")))
+			lines.append("[color=#8fa3ae]Station-wide pattern record:[/color]")
 		lines.append(_format_synergy_line(synergy))
 	if unknown_count > 0:
 		lines.append("[color=#405663]UNKNOWN PATTERNS REMAIN: %d[/color]" % unknown_count)
@@ -3835,6 +4425,16 @@ func _preview_room(room: Dictionary, title: String) -> String:
 func _refresh_archive() -> void:
 	if archive_label == null:
 		return
+	if journal_button != null:
+		journal_button.text = "JOURNAL [%s]\n%d LEARNED" % [Preferences.key_name("Journal"), meta.discovered_synergy_ids.size()]
+	if journal_tabs != null:
+		history_search.visible = journal_tabs.current_tab in [3,4]
+		history_tools.visible = journal_tabs.current_tab in [3,4]
+		history_filter.visible = journal_tabs.current_tab == 3
+		history_search.placeholder_text = "Search name, type or problem (e.g. needs power) · Enter to locate" if journal_tabs.current_tab==4 else "Search room, cycle (C03), or message · Ctrl+F"
+		if journal_tabs.current_tab > 0:
+			_refresh_diagnostics_page()
+			return
 	var lines: Array[String] = []
 	var discovered_count := 0
 	var stabilized_count := 0
@@ -3850,15 +4450,16 @@ func _refresh_archive() -> void:
 			if meta.stabilized_synergy_ids.has(synergy["id"]):
 				stabilized_count += 1
 			lines.append(_format_synergy_line(synergy) + "\n")
+	lines.append_array(preload("res://scripts/station_ui_insights.gd").learning(self))
 	lines.push_front("[color=#a9e7d4]%d LEARNED  /  %d STABILIZED  /  %d BLUEPRINTS AVAILABLE[/color]\n" % [discovered_count, stabilized_count, meta.unlocked_room_ids.size()])
 	if discovered_count == 0:
 		lines.append("[color=#a7bac1]An empty record, a station full of possibilities.\n\nConnect different rooms through matching doors. Let them function.\nWatch the rooms themselves for the first sign of a discovery.\n\nStabilized blueprints stay with you across reboots, and a new prototype\nis placed on top of your current draw pile.[/color]\n")
 	var unknown_count := SynergyManagerScript.all_synergies().size() - discovered_count
 	if unknown_count > 0:
 		lines.append("[color=#718a97]UNKNOWN PATTERNS REMAIN: %d[/color]" % unknown_count)
-	archive_label.text = _join_strings(lines, "\n")
+	_set_journal_text(_join_strings(lines, "\n"))
 	if journal_button != null:
-		journal_button.text = "JOURNAL [J]\n%d LEARNED" % discovered_count
+		journal_button.text = "JOURNAL [%s]\n%d LEARNED" % [Preferences.key_name("Journal"), discovered_count]
 
 func _prettify_id(id: String) -> String:
 	return id.replace("_", " ").capitalize()
@@ -3873,19 +4474,25 @@ func _refresh_routing() -> void:
 		lines.append("%s P%d: %s (%d)" % [state, _power_priority(room), room["display_name"], need])
 	if lines.size() == 2:
 		lines.append("No powered rooms beyond passive generation.")
+	lines.append(preload("res://scripts/station_ui_insights.gd").power_demand(self))
 	routing_label.text = _join_strings(lines, "\n")
 
 func _refresh_placement_status() -> void:
 	if selected_card_id.is_empty():
+		placement_label.tooltip_text = ""
 		placement_label.text = "■ %s     VIEW: %s\nMajor Bill: %s" % ["HALTED" if paused else "RUNNING", "ADMIN" if admin_mode else "NORMAL", _walker_status()]
+		if has_dr_veld(): placement_label.text += "\nDr. Veld: " + _veld_status()
+		if has_chief_branforth(): placement_label.text += "\nChief Branforth: " + _branforth_status()
 		return
 	var room := RoomDatabaseScript.get_room(selected_card_id)
 	var problem := get_placement_problem(selected_card_id, hover_cell)
 	var doors := _room_doors(selected_card_id, selected_rotation)
 	if problem.is_empty():
-		placement_label.text = "PLACING: %s\nDoors: %s     R rotates blueprint" % [room["display_name"], _join_strings(doors)]
+		placement_label.text = "PLACING: %s\nDoors: %s     %s rotates blueprint" % [room["display_name"], _join_strings(doors), Preferences.key_name("Rotate blueprint")]
 	else:
 		placement_label.text = "BLOCKED: %s\n%s" % [room["display_name"], problem]
+	placement_label.text += "\n" + _placement_connections(selected_card_id, hover_cell)
+	placement_label.tooltip_text = _blueprint_decision(room)
 
 func _refresh_log() -> void:
 	var recent_lines := log_lines.slice(max(0, log_lines.size() - 24), log_lines.size())
@@ -3905,6 +4512,222 @@ func _refresh_log() -> void:
 		else:
 			formatted.append("[color=#94a2a0]%s[/color]" % text)
 	log_label.text = _join_strings(formatted, "\n")
+
+func _reserve_forecast(key: String, change: int) -> String:
+	var reserve := int(resources.get(key, 0))
+	var outlook := "No depletion at this rate"
+	if reserve <= 0:
+		outlook = "Reserve currently empty"
+	if change < 0:
+		outlook = "~%d cycles to empty at this rate" % ceili(float(maxi(reserve, 0)) / -change)
+	var next := clampi(reserve + change, 0, _get_resource_capacity(key))
+	return "%s: %d stored · %+d / cycle · next reserve %d\n%s" % [key.replace("_", " ").capitalize(), reserve, change, next, outlook]
+
+func _blueprint_decision(room: Dictionary) -> String:
+	var missing := _missing_cost(room.get("cost", {}))
+	var affordability := "Build cost available" if missing.is_empty() else "Short: " + _format_cost(missing)
+	if room.id in ["mining_drone_bay","salvage_drone_bay"]:
+		return "%s\nCargo per extracted load: %s\nRequires a surveyed finite deposit and exterior route. Bay upkeep: 1 Power/cycle; battery recharge uses additional stored Power." % [affordability,_format_cost(room.production)]
+	return "%s\nRequired each functioning cycle: %s\nBase output each functioning cycle: %s\nShared inputs determine operation. Select to inspect learned patterns." % [affordability, _format_cost(room.get("consumption", {})), _format_cost(room.get("production", {}))]
+
+func _placement_connections(room_id: String, cell: Vector2i) -> String:
+	var matches := 0
+	var mismatches := 0
+	var learned: Array[String] = []
+	for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+		var neighbor_cell: Vector2i = cell + offset
+		if not occupied.has(neighbor_cell):
+			continue
+		var neighbor: Dictionary = occupied[neighbor_cell]
+		if not _doors_connect(room_id, selected_rotation, offset, neighbor):
+			mismatches += 1
+			continue
+		matches += 1
+		for recipe in SynergyManagerScript.all_synergies():
+			if not meta.discovered_synergy_ids.has(recipe.id):
+				continue
+			var partners: Array = recipe.get("rooms", [])
+			if partners.size() == 2 and room_id != str(neighbor.id) and partners.has(room_id) and partners.has(neighbor.id) and not learned.has(str(recipe.name)):
+				learned.append(str(recipe.name))
+	var result := "%d door matches · %d unmatched neighbors" % [matches, mismatches]
+	if not learned.is_empty():
+		result += "\nKnown links: " + ", ".join(learned) + " · requires both rooms functioning"
+	return result
+
+func _locate_diagnostic_room(value: Variant) -> void:
+	if str(value).begins_with("resource:"):
+		inspected_resource = str(value).trim_prefix("resource:")
+		journal_tabs.current_tab = 2
+		_refresh_archive()
+		return
+	if str(value) == "all_resources":
+		inspected_resource = ""
+		_refresh_archive()
+		archive_label.get_v_scroll_bar().set_deferred("value", 0.0)
+		return
+	var resume_room := str(value).begins_with("resume:")
+	var parts := str(value).trim_prefix("resume:").split(",")
+	if parts.size() != 2 or not parts[0].is_valid_int() or not parts[1].is_valid_int():
+		return
+	var cell := Vector2i(int(parts[0]), int(parts[1]))
+	if not occupied.has(cell) and not drone_fleet.reserved(cell):
+		return
+	if _journal_is_open(): _toggle_journal()
+	selected_card_id = ""
+	hovered_card_id = ""
+	selected_room_cell = cell
+	hover_cell = cell
+	_refresh_inspector()
+	inspector_focus_button.set_meta("cell", cell)
+	_focus_inspected_room()
+	if resume_room and occupied.has(cell) and occupied[cell].get("suspended",false): _toggle_inspected_room()
+
+func _open_resource_details(resource_id: String, opener: Control) -> void:
+	if _gameplay_input_blocked() or (not BASE_STORAGE_CAPACITY.has(resource_id) and resource_id!="crew"):
+		return
+	inspected_resource = "" if resource_id=="crew" else resource_id
+	opener.grab_focus()
+	_toggle_journal()
+	journal_tabs.current_tab = 5 if resource_id=="crew" else 2
+	_refresh_archive()
+	archive_label.get_v_scroll_bar().set_deferred("value", 0.0)
+
+func _resource_contribution_lines(resource_id: String, forecast: Dictionary) -> Array[String]:
+	var lines: Array[String] = ["\n[b]ROOM CONTRIBUTIONS // BASE RATES[/b]"]
+	for room in placed_rooms:
+		var produced := int(room.get("production", {}).get(resource_id, 0))
+		var consumed := int(room.get("consumption", {}).get(resource_id, 0))
+		if produced == 0 and consumed == 0:
+			continue
+		var cell: Vector2i = room.pos
+		var status: String = str(forecast.offline.get(cell, "INPUTS AVAILABLE"))
+		lines.append("[url=%d,%d]%s · %s[/url]\nBase output +%d · required input %d / cycle\nForecast: %s\n" % [cell.x, cell.y, room.display_name, cell, produced, consumed, status])
+	if lines.size() == 1:
+		lines.append("No installed rooms have base rates for this resource.")
+	if resource_id in ["food", "oxygen"]:
+		lines.append("Projected crew upkeep: %d / cycle" % (crew_count + int(forecast.added_crew)))
+	lines.append("Base rates describe each room, not a second net forecast. Operation, learned bonuses, special effects and storage limits are reflected in the reserve estimate above.")
+	return lines
+
+func _journal_tab_changed(index: int) -> void:
+	if archive_label == null:
+		return
+	journal_scroll_positions[journal_last_tab] = archive_label.get_v_scroll_bar().value
+	if journal_last_tab in [3,4]: journal_searches[journal_last_tab] = history_search.text
+	journal_last_tab = index
+	history_search.set_block_signals(true)
+	history_search.text = str(journal_searches.get(index,""))
+	history_search.set_block_signals(false)
+	_refresh_archive()
+	archive_label.get_v_scroll_bar().set_deferred("value", float(journal_scroll_positions.get(index, 0.0)))
+
+func _set_journal_text(value: String) -> void:
+	if archive_label.text == value:
+		return
+	var position := archive_label.get_v_scroll_bar().value
+	archive_label.text = value
+	archive_label.get_v_scroll_bar().set_deferred("value", position)
+
+func _history_matches_category(line: String) -> bool:
+	var text := line.to_lower()
+	match history_filter.selected:
+		1:
+			for token in ["warning", "shortage", "shortfall", "needs ", "collapse", "critical", "rejected", "run complete"]:
+				if text.contains(token): return true
+			return false
+		2:
+			return text.contains("pattern") or text.contains("blueprint decrypted") or text.contains("resonance tier")
+		3:
+			return text.contains("built ") or text.contains("cleared at") or text.contains("suspended") or text.contains("resume next cycle")
+	return true
+
+func _refresh_diagnostics_page() -> void:
+	var lines: Array[String] = []
+	match journal_tabs.current_tab:
+		1:
+			lines.append("[b]STATION HEALTH // NEXT CYCLE[/b]\nCurrent supplies and learned patterns. Select a room to locate it.\n")
+			var forecast: Dictionary = _simulate_room_economy(true, cycle + 1)
+			var priorities: Array[String] = preload("res://scripts/station_ui_insights.gd").priorities(self,forecast)
+			if not priorities.is_empty():
+				lines.append("[color=#efb777][b]FIRST PRIORITIES[/b]\n" + "\n\n".join(priorities) + "[/color]\n\nALL INTERRUPTIONS\n")
+			var alerts := 0
+			var ordered_rooms := placed_rooms.duplicate()
+			ordered_rooms.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+				var a_held: bool = forecast.offline.get(a.pos, "") == "SUSPENDED"
+				var b_held: bool = forecast.offline.get(b.pos, "") == "SUSPENDED"
+				return not a_held if a_held != b_held else str(a.display_name) < str(b.display_name))
+			for room in ordered_rooms:
+				var cell: Vector2i = room.pos
+				if not forecast.offline.has(cell):
+					continue
+				alerts += 1
+				var reason: String = str(forecast.offline[cell])
+				var remedy: String = preload("res://scripts/station_ui_insights.gd").remedy(reason)
+				if reason == "SUSPENDED":
+					remedy = "Select this room, then choose Resume Room. Operation is evaluated next cycle."
+				lines.append("[url=%d,%d][color=#efb777]%s · %s[/color][/url]\nObserved: %s\nForecast: %s\n%s\n" % [cell.x, cell.y, room.display_name, cell, str(offline_reasons.get(cell, "FUNCTIONING" if powered_room_cells.has(cell) else "AWAITING CYCLE")), reason, remedy])
+				lines.append(preload("res://scripts/station_navigation.gd").actions(cell,reason)+"\n")
+			if alerts == 0:
+				lines.append("No room interruptions forecast. A rare interval of competence.")
+			lines.append("\nSUPPLY WATCH")
+			var net := _project_cycle_delta()
+			for key in net:
+				if int(net[key]) < 0:
+					lines.append(_reserve_forecast(str(key), int(net[key])))
+		2:
+			lines.append("[b]RESERVES // PROJECTED NEXT CYCLE[/b]\nIncludes crew upkeep and learned bonuses. Storage caps apply.\nEstimates only: events and changing inputs can alter these rates.\n")
+			var forecast := _simulate_room_economy(true, cycle + 1)
+			var net := _project_cycle_delta(forecast)
+			if inspected_resource.is_empty() or inspected_resource == "power":
+				lines.append("\n" + preload("res://scripts/station_ui_insights.gd").power_demand(self) + "\n")
+			if not inspected_resource.is_empty():
+				lines.append("[url=all_resources]SHOW ALL RESERVES[/url]\n")
+				lines.append(_reserve_forecast(inspected_resource, int(net.get(inspected_resource, 0))))
+				lines.append_array(_resource_contribution_lines(inspected_resource, forecast))
+			else:
+				for key in BASE_STORAGE_CAPACITY:
+					lines.append(_reserve_forecast(str(key), int(net.get(key, 0))) + "\n")
+			lines.append("Estimates hold current rates constant. Shared-input shortages, crew changes, events and undiscovered effects can change these rates. An empty reserve is not itself a prediction of the run's outcome.")
+		3:
+			lines.append("[b]EVENT HISTORY // LATEST FIRST[/b]\nLast 1,000 events from this loop; retained in checkpoints.\n")
+			var query := history_search.text.strip_edges().to_lower()
+			var found := 0
+			for i in range(event_history.size() - 1, -1, -1):
+				var line := str(event_history[i])
+				if _history_matches_category(line) and (query.is_empty() or line.to_lower().contains(query)):
+					lines.append(line.replace("[", "[lb]"))
+					found += 1
+			if found == 0:
+				lines.append("No matching records. Clear the search and choose All events to inspect the full retained history.")
+			lines.insert(1, "%d matching / %d retained · Escape clears the focused search" % [found, event_history.size()])
+		4:
+			var forecast := _simulate_room_economy(true, cycle + 1)
+			var rooms: Array = preload("res://scripts/station_navigation.gd").rooms(self,history_search.text,forecast)
+			lines.append("[b]INSTALLED ROOMS // %d OF %d[/b]\nSearch name, type or problem. Select a result to locate it.\n" % [rooms.size(),placed_rooms.size()])
+			for room in rooms:
+				var cell: Vector2i = room.pos
+				var reason: String = str(forecast.offline.get(cell,"INPUTS AVAILABLE"))
+				lines.append("[url=%d,%d]%s · %s[/url]\n%s · Forecast: %s\n%s\n" % [cell.x,cell.y,room.display_name,cell,room.category,reason,preload("res://scripts/station_navigation.gd").actions(cell,reason)])
+			if rooms.is_empty(): lines.append("No installed rooms match. Try a room name, department or NEEDS resource.")
+		5:
+			lines.append("[b]CREW ROSTER // %d / %d BERTHS[/b]\nRecovered occupants join after their wake sequence completes.\n" % [crew_count,_get_crew_capacity()])
+			var named_alive := 0
+			for member in recovered_crew:
+				named_alive += int(member.alive)
+				var origin_text := "Awakened in BRINE Core." if member.id=="core_architect" else "Recovered from cryo ward %s." % member.origin
+				lines.append("[url=%d,%d]%s[/url] // %s\n%s\n" % [member.origin.x,member.origin.y,member.name,"ABOARD" if member.alive else "DECEASED",origin_text])
+			if recovered_crew.is_empty(): lines.append("No recovered survivors recorded. The sealed wards remain quiet.\n")
+			if crew_count>named_alive: lines.append("Other station crew: %d\n" % (crew_count-named_alive))
+			for cell in wrecks:
+				var ward: Dictionary = wrecks[cell]
+				if ward.kind!="cryo": continue
+				var waiting := 0
+				for pod in ward.pods: waiting += int(not pod.recovered)
+				lines.append("Ward %s // %d in stasis // %s" % [cell,waiting,CryoRecovery.status(self,cell)])
+		6:
+			lines.append("[b]CONSTRUCTION QUEUE[/b]\nSelect a paid order to locate its footprint. Closing this journal restores the previous pause state.\n")
+			lines.append_array(preload("res://scripts/station_ui_insights.gd").construction(self))
+	_set_journal_text("\n".join(lines))
 
 func _format_cost(cost: Dictionary) -> String:
 	if cost.is_empty():
@@ -3943,6 +4766,8 @@ func _format_storage(storage: Dictionary) -> String:
 	return _join_strings(parts)
 
 func _walker_status() -> String:
+	if bill_npc.active:
+		return "%s | hunger %d / fatigue %d" % [bill_npc.activity, roundi(bill_npc.needs.hunger), roundi(bill_npc.needs.fatigue)]
 	if not has_test_walker():
 		return "not spawned"
 	if test_walker_state == "idle":
@@ -3986,6 +4811,9 @@ func _has_room(id: String) -> bool:
 	return false
 
 func _log(message: String, show_in_panel := true) -> void:
+	event_history.append("[C%02d] %s" % [cycle, message])
+	if event_history.size() > 1000:
+		event_history.pop_front()
 	if show_in_panel:
 		log_lines.append("[C%02d] %s" % [cycle, message])
 		if log_lines.size() > 80:
@@ -3999,3 +4827,63 @@ func _on_tick_timer_timeout() -> void:
 
 func get_visual_time_seconds() -> float:
 	return visual_time_seconds
+
+func _refresh_construction_button() -> void:
+	if not is_instance_valid(construction_button): return
+	var count: int = drone_fleet.orders.size()
+	var blocked := 0
+	for drone in drone_fleet.drones.values():
+		if drone.order.is_empty(): continue
+		count += 1
+		if not drone.bootstrap and not powered_room_cells.has(drone.home): blocked += 1
+	var caption := "CONSTRUCTION / %d%s" % [count, " / %d OFFLINE" % blocked if blocked>0 else (" / PAUSED" if paused and count>0 else "")]
+	if construction_button.text != caption: construction_button.text = caption
+	construction_button.tooltip_text = "Paid orders, builder phases and blocked jobs. Select an order to locate its footprint."
+
+func _minimum_map_zoom() -> float:
+	if grid_scroll == null: return MIN_GRID_ZOOM
+	return maxf(MIN_GRID_ZOOM, maxf(grid_scroll.size.x,grid_scroll.size.y) / (GRID_SIZE * float(CELL_SIZE)))
+
+func _show_pause_page(id: String) -> void:
+	if not pause_pages.has(id): return
+	if id != "main": pause_page_opener = get_viewport().gui_get_focus_owner()
+	pause_page = id
+	for key in pause_pages: pause_pages[key].visible = key == id
+	pause_page_title.text = {"main":"PAUSED", "station":"STATION & ARCHIVES", "exit":"END OR LEAVE LOOP"}[id]
+	for child in pause_pages[id].get_children():
+		if child is Button and child.visible and not child.disabled:
+			child.grab_focus()
+			break
+
+func _pause_page_back() -> void:
+	_show_pause_page("main")
+	if is_instance_valid(pause_page_opener) and pause_page_opener.is_visible_in_tree():
+		pause_page_opener.grab_focus()
+
+func _listening_action(value: Variant) -> void:
+	var parts:=str(value).split(":")
+	if parts.size()==3 and parts[0]=="repair":
+		preload("res://scripts/local_incidents.gd").repair(self,Vector2i(int(parts[1]),int(parts[2])))
+		_refresh_all()
+		return
+	if parts.size()>=4 and parts[0]=="branch":
+		var cell:=Vector2i(int(parts[1]),int(parts[2]))
+		if not occupied.has(cell) or occupied[cell].id not in ["pressure_control","isolation_vault"]:return
+		var control=preload("res://scripts/rare_branch_control.gd")
+		if parts[3]=="select" and parts.size()==8:control.select(self,occupied[cell],Vector2i(int(parts[4]),int(parts[5])),Vector2i(int(parts[6]),int(parts[7])))
+		elif parts[3]=="commit":
+			if not control.commit(self,occupied[cell]):_log("Branch operation unavailable: check power, crew and current connections.",false)
+		elif parts[3]=="release":control.release(self,occupied[cell])
+		_refresh_all()
+		return
+	if parts.size()!=4 or parts[0]!="listen":return
+	if preload("res://scripts/listening_post.gd").begin(self,Vector2i(int(parts[1]),int(parts[2])),parts[3]):
+		_refresh_all()
+
+func _open_station_search() -> void:
+	if _gameplay_input_blocked(): return
+	_toggle_journal()
+	journal_tabs.current_tab = 4
+	_refresh_archive()
+	history_search.grab_focus()
+	history_search.select_all()

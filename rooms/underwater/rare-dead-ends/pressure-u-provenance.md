@@ -1,0 +1,12 @@
+# pressure installation
+
+Built-in image generation, 2026-09-06. Style reference: listening-u-source-v1.png. Original v1 retained; rejected for baked checkerboard background. Alpha v2 is a generated background-removal revision. Room previews are native Godot compositions, not gameplay registration.
+
+## Original prompt
+Create one isolated connected U-shaped room-scale installation for BRINE underwater station game. Match the reference's painted game-sprite material quality, camera, scale, outline, U silhouette, and open bottom/south aisle. Single physically joined chassis, no isolated props. Transparent exterior AND transparent central well, no floor or room walls. Steep top-down three-quarter cutaway, horizontal axes horizontal, front faces facing south, no isometric diamond. Near-square 1280 composition, machinery nearly fills canvas with small margins. Long side arms, rear bank, spacious open center, nothing across bottom entrance. Maintained steel, readable selective details, restrained light, no rust. PRESSURE CONTROL CHAMBER: industrial engineering steel, large connected rear bank of cylindrical pressure accumulators, paired stout compressors, oversized central mechanical pressure gauge, branching heavy flanged pipes, brass valves, cyan water-level sight glasses. Side arms are continuous waist-high pump manifolds and valve benches with integrated cabinets, hose cradles and flow meters. Muted blue teal machinery and small amber warning lights. Clearly a massive hydraulic pressure regulation installation, not a computer room. Use reference solely for shared camera and U composition.
+
+## Alpha repair prompt
+Remove ONLY the white/light grey checkerboard background from this exact asset. Return genuinely transparent RGBA PNG with alpha zero outside the machinery AND in the large open central U well connected to bottom. Preserve the machinery, colors, shape, proportions and all details exactly. Do not draw a checkerboard or any replacement background. This is an alpha background removal edit only.
+
+## Cleanup and verification
+The generated alpha v2 revision still had an opaque background and was rejected. Final clean-v3 uses the existing room_art_pipeline.py exterior-connected neutral-background cleanup with --keep-canvas on source-v1. Canvas remains 1254 square. Native room composition inspected at 900 square: open south doorway, clear central well, no checkerboard background. No runtime registration or navigation changes.

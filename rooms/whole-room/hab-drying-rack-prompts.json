@@ -1,0 +1,43 @@
+{
+  "stage": "integrated_native_verified_station_scale_review_pending",
+  "original_prompt": "Create one isolated game sprite for BrineSpace, a maintained but worn underwater science-fiction station. A compact LOW dark steel boot-drying rack: two pairs of heavy work boots on its lower drip tray, one folded faded olive work jacket and a pair of insulated gloves resting on the narrow upper shelf, a small vent grille and muted amber status lens. Asymmetric everyday crew belongings, believable supports and weight, no people. Horizontal front edge, SOUTH-FACING orthographic cutaway camera looking down about 35 degrees, visible top surfaces, vertical sides vertical, no isometric diamond rotation. Serious retro industrial game equipment with crisp detailed pixel-art-adjacent raster surfaces, dark graphite metal, worn leather, desaturated olive fabric, restrained warm accents. Entire small assembled rack visible, true transparent background with generous margin, no surrounding floor, walls or scene, no text, no labels, no external cast shadow. Clearly distinct boots and folded fabric readable when reduced to a small game prop. One assembled rack only, square PNG.",
+  "rejected_source": "rooms/whole-room/hab-drying-rack-rejected-v1.png",
+  "reason": "Diagonal shelf fronts do not match south-facing room camera; not integrated.",
+  "camera_corrected_source": "rooms/whole-room/hab-drying-rack-source-v2.png",
+  "review": "v1 camera rejected. v2 and v3 opaque checkerboard rejected for direct use. v3 cleaned using reviewed light-neutral flood seeds (630,555) and (220,650), plus exterior removal; source canvas retained. Native q0 card and q1/q3 crew-depth views inspected. Final station-scale and packaged review pending.",
+  "outputs": [
+    {
+      "path": "rooms/whole-room/hab-drying-rack-rejected-v1.png",
+      "sha256": "bedbcf3c616d77ddebf29437cb2f2732a54afd442daecb28ae9c53eb1853d632"
+    },
+    {
+      "path": "rooms/whole-room/hab-drying-rack-source-v2.png",
+      "sha256": "048439fa64aced7151d16b2da7963b1fc4ed5e4f3f04bae0405ac9c04534a712"
+    },
+    {
+      "path": "rooms/whole-room/hab-drying-rack-source-v3.png",
+      "sha256": "ba3012122ebdba7df963244119a5c7f1676bce169c0def18773eb6c6b32d78b4"
+    },
+    {
+      "path": "rooms/whole-room/hab-drying-rack-clean-v1.png",
+      "sha256": "a922fa5baa92de0be0a3afb94d45f4ebdd0f9fcbb32b5a8ea64dfdc331dccc3d"
+    }
+  ],
+  "alpha_edit_prompt": "Remove the white/light-gray checkerboard background from this image. It is NOT part of the object. Output an actual RGBA PNG with transparent alpha=0 everywhere outside the dark boot-drying rack AND in all open gaps between the shelves, vertical supports, boots, and jacket. Preserve the rack, boots, jacket, gloves, front-facing camera and materials exactly. Do not draw a checkerboard or any replacement background. No new object, no floor, no shadow, no text. This is a precise background-removal edit; transparency must be encoded in the file.",
+  "cleanup": {
+    "tool": "tools/room_art_pipeline.py",
+    "gap_seeds": [
+      [
+        630,
+        555
+      ],
+      [
+        220,
+        650
+      ]
+    ],
+    "keep_canvas": true,
+    "source": "rooms/whole-room/hab-drying-rack-source-v3.png",
+    "output": "rooms/whole-room/hab-drying-rack-clean-v1.png"
+  }
+}

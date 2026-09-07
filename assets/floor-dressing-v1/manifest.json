@@ -1,0 +1,515 @@
+{
+  "version": 1,
+  "source": {
+    "path": "assets/floor-dressing-v1/source/atlas.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGB",
+    "sha256": "6272de45ef4dd3ca69fd36d5895aa5ed212e444e7d38d06cf73b2fcb0ddc73b9"
+  },
+  "sprites": {
+    "engineering_access_plate": {
+      "path": "assets/floor-dressing-v1/sprites/engineering_access_plate.png",
+      "size": [
+        183,
+        185
+      ],
+      "pivot": [
+        91.5,
+        92.5
+      ],
+      "units_per_pixel": 0.17486338797814208,
+      "department": "engineering",
+      "placement": "beside machinery service access",
+      "source_region": [
+        78,
+        80,
+        285,
+        289
+      ],
+      "alpha_trim": [
+        11,
+        12,
+        194,
+        197
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "14ca0badac24209cfc1e47fc30d5ce5ea4dac632e4fd5103c0ab6c7f9a3a0ed3"
+    },
+    "linear_drain": {
+      "path": "assets/floor-dressing-v1/sprites/linear_drain.png",
+      "size": [
+        252,
+        80
+      ],
+      "pivot": [
+        126.0,
+        40.0
+      ],
+      "units_per_pixel": 0.18253968253968253,
+      "department": "wet_service",
+      "placement": "beside wet equipment or along a service edge",
+      "source_region": [
+        345,
+        132,
+        620,
+        238
+      ],
+      "alpha_trim": [
+        12,
+        12,
+        264,
+        92
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "ceb723568c088554f88a627c3ed3da31ed4619ae571caa9e3d8588093b219dd2"
+    },
+    "inspection_hatch": {
+      "path": "assets/floor-dressing-v1/sprites/inspection_hatch.png",
+      "size": [
+        193,
+        194
+      ],
+      "pivot": [
+        96.5,
+        97.0
+      ],
+      "units_per_pixel": 0.17616580310880828,
+      "department": "engineering",
+      "placement": "clear maintenance access",
+      "source_region": [
+        671,
+        76,
+        887,
+        291
+      ],
+      "alpha_trim": [
+        12,
+        10,
+        205,
+        204
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "de9f5ff70e4388eaa218451b9897f829cc8b19a8c8de81f6d398b44b4e76b370"
+    },
+    "tread_service_mat": {
+      "path": "assets/floor-dressing-v1/sprites/tread_service_mat.png",
+      "size": [
+        217,
+        138
+      ],
+      "pivot": [
+        108.5,
+        69.0
+      ],
+      "units_per_pixel": 0.2119815668202765,
+      "department": "engineering",
+      "placement": "operator stance beside a machine",
+      "source_region": [
+        955,
+        104,
+        1194,
+        266
+      ],
+      "alpha_trim": [
+        11,
+        12,
+        228,
+        150
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "6d9a431d457c244aff257df5e2fff456f05030db01f0d18e81a179d9ec495b05"
+    },
+    "medical_bedside_mat": {
+      "path": "assets/floor-dressing-v1/sprites/medical_bedside_mat.png",
+      "size": [
+        217,
+        161
+      ],
+      "pivot": [
+        108.5,
+        80.5
+      ],
+      "units_per_pixel": 0.20276497695852536,
+      "department": "medical",
+      "placement": "beside a bed or examination station",
+      "source_region": [
+        58,
+        387,
+        298,
+        573
+      ],
+      "alpha_trim": [
+        12,
+        11,
+        229,
+        172
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "dab56afe62b934851872dbb4fee6b02638df6776b24e189e4a8f844b43629520"
+    },
+    "lab_access_panel": {
+      "path": "assets/floor-dressing-v1/sprites/lab_access_panel.png",
+      "size": [
+        197,
+        185
+      ],
+      "pivot": [
+        98.5,
+        92.5
+      ],
+      "units_per_pixel": 0.17258883248730963,
+      "department": "science",
+      "placement": "beneath a sealed lab service connection",
+      "source_region": [
+        373,
+        374,
+        593,
+        584
+      ],
+      "alpha_trim": [
+        12,
+        13,
+        209,
+        198
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "94d0020d419a8036dd75f4b1656870834614cb5b691c8cc3081eaa15b572ae45"
+    },
+    "boot_scrub_tray": {
+      "path": "assets/floor-dressing-v1/sprites/boot_scrub_tray.png",
+      "size": [
+        223,
+        139
+      ],
+      "pivot": [
+        111.5,
+        69.5
+      ],
+      "units_per_pixel": 0.16143497757847533,
+      "department": "medical",
+      "placement": "decontamination preparation area",
+      "source_region": [
+        655,
+        402,
+        902,
+        565
+      ],
+      "alpha_trim": [
+        12,
+        12,
+        235,
+        151
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "268bef20c249e18af97d6641a325495711be0de307c84cb4b7b59770cc1a47f7"
+    },
+    "specimen_alignment_ring": {
+      "path": "assets/floor-dressing-v1/sprites/specimen_alignment_ring.png",
+      "size": [
+        213,
+        209
+      ],
+      "pivot": [
+        106.5,
+        104.5
+      ],
+      "units_per_pixel": 0.26291079812206575,
+      "department": "science",
+      "placement": "around a work area without covering the floor",
+      "source_region": [
+        951,
+        365,
+        1185,
+        597
+      ],
+      "alpha_trim": [
+        11,
+        11,
+        224,
+        220
+      ],
+      "gap_seeds_source": [
+        [
+          1068,
+          480
+        ],
+        [
+          981,
+          450
+        ],
+        [
+          1135,
+          413
+        ],
+        [
+          1135,
+          547
+        ],
+        [
+          1001,
+          547
+        ]
+      ],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "e0672322375ee3ef70cbff8ce41708ffcf759ed039bdd74f5068557ed5dac1dd"
+    },
+    "cargo_corner_markings": {
+      "path": "assets/floor-dressing-v1/sprites/cargo_corner_markings.png",
+      "size": [
+        213,
+        177
+      ],
+      "pivot": [
+        106.5,
+        88.5
+      ],
+      "units_per_pixel": 0.30985915492957744,
+      "department": "cargo",
+      "placement": "around a cargo staging position",
+      "source_region": [
+        62,
+        681,
+        299,
+        879
+      ],
+      "alpha_trim": [
+        12,
+        10,
+        225,
+        187
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "2f1c32c4e70672eafac5dd92c75ff1122d7eb09cfa76e47de14917c8e7ed0f61"
+    },
+    "pallet_alignment_plate": {
+      "path": "assets/floor-dressing-v1/sprites/pallet_alignment_plate.png",
+      "size": [
+        190,
+        184
+      ],
+      "pivot": [
+        95.0,
+        92.0
+      ],
+      "units_per_pixel": 0.2,
+      "department": "cargo",
+      "placement": "beneath a supported pallet",
+      "source_region": [
+        370,
+        677,
+        583,
+        884
+      ],
+      "alpha_trim": [
+        11,
+        11,
+        201,
+        195
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "51d9470af03b2f5e71408490f3f282cd2546d3a86d23b47c514cf274b53e9f57"
+    },
+    "threshold_tread_strip": {
+      "path": "assets/floor-dressing-v1/sprites/threshold_tread_strip.png",
+      "size": [
+        237,
+        63
+      ],
+      "pivot": [
+        118.5,
+        31.5
+      ],
+      "units_per_pixel": 0.22784810126582278,
+      "department": "operations",
+      "placement": "flush threshold detail clear of door leaves",
+      "source_region": [
+        639,
+        743,
+        899,
+        829
+      ],
+      "alpha_trim": [
+        11,
+        10,
+        248,
+        73
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "857cf930b73ac742501bd8297a85316cdcb8477e4c48c44269548307afc360f1"
+    },
+    "briefing_zone_mat": {
+      "path": "assets/floor-dressing-v1/sprites/briefing_zone_mat.png",
+      "size": [
+        241,
+        156
+      ],
+      "pivot": [
+        120.5,
+        78.0
+      ],
+      "units_per_pixel": 0.24896265560165975,
+      "department": "command",
+      "placement": "beneath a briefing group",
+      "source_region": [
+        943,
+        694,
+        1208,
+        875
+      ],
+      "alpha_trim": [
+        11,
+        11,
+        252,
+        167
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "920f28e02bc7813502bc348545b65a6711760acf3f5f7c0356ec70a586d69394"
+    },
+    "woven_bedside_rug": {
+      "path": "assets/floor-dressing-v1/sprites/woven_bedside_rug.png",
+      "size": [
+        222,
+        135
+      ],
+      "pivot": [
+        111.0,
+        67.5
+      ],
+      "units_per_pixel": 0.24324324324324326,
+      "department": "habitation",
+      "placement": "bedside or reading nook",
+      "source_region": [
+        53,
+        990,
+        299,
+        1149
+      ],
+      "alpha_trim": [
+        12,
+        11,
+        234,
+        146
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "c8e7a8ccf0f7b6aa1268a10d8fd8b3cff4831a75da86213e97dc69b16c7e7c7c"
+    },
+    "oval_braided_rug": {
+      "path": "assets/floor-dressing-v1/sprites/oval_braided_rug.png",
+      "size": [
+        227,
+        157
+      ],
+      "pivot": [
+        113.5,
+        78.5
+      ],
+      "units_per_pixel": 0.24669603524229075,
+      "department": "habitation",
+      "placement": "beneath a small seating group",
+      "source_region": [
+        344,
+        977,
+        597,
+        1158
+      ],
+      "alpha_trim": [
+        12,
+        11,
+        239,
+        168
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "827d4fc07aac3c0ec3317aa7daafe7424f16466505a9d63d255b9b8222400466"
+    },
+    "plant_drip_tray": {
+      "path": "assets/floor-dressing-v1/sprites/plant_drip_tray.png",
+      "size": [
+        227,
+        141
+      ],
+      "pivot": [
+        113.5,
+        70.5
+      ],
+      "units_per_pixel": 0.21145374449339208,
+      "department": "cultivation",
+      "placement": "beneath plant containers",
+      "source_region": [
+        635,
+        990,
+        886,
+        1155
+      ],
+      "alpha_trim": [
+        11,
+        11,
+        238,
+        152
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "2822e7bf6afc4570bc66602c40178093a11350b7321de8e68c5653739e03acba"
+    },
+    "irrigation_drain_tiles": {
+      "path": "assets/floor-dressing-v1/sprites/irrigation_drain_tiles.png",
+      "size": [
+        264,
+        92
+      ],
+      "pivot": [
+        132.0,
+        46.0
+      ],
+      "units_per_pixel": 0.2196969696969697,
+      "department": "cultivation",
+      "placement": "along growing equipment service edge",
+      "source_region": [
+        925,
+        1014,
+        1215,
+        1130
+      ],
+      "alpha_trim": [
+        13,
+        11,
+        277,
+        103
+      ],
+      "gap_seeds_source": [],
+      "layer": "floor_under_actors",
+      "collision": false,
+      "sha256": "86e89b5ba9424a144400d4292182858fd7e7af339bf96123b9bc348298dd912f"
+    }
+  }
+}

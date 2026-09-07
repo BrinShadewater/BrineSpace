@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "rooms": [
+    {
+      "id": "airlock",
+      "view": "res://rooms/underwater/airlock-v1/airlock_view.gd",
+      "card": "res://rooms/decoration-integration/airlock.png",
+      "card_sha256": "e4ad63667c8c73bf0092d5ff8e4fb117f403058fdc15bb262ea60c509b77c5e7",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "anomaly_lab",
+      "view": "res://rooms/underwater/batch-two/anomaly_lab_view.gd",
+      "card": "res://rooms/decoration-integration/anomaly_lab.png",
+      "card_sha256": "c4f4de4e092c0b91aa60fe6287650126ad964553c5c5195ab5099c38849b17ab",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "battery_array",
+      "view": "res://rooms/production-ten/battery_array_view.gd",
+      "card": "res://rooms/decoration-integration/battery_array.png",
+      "card_sha256": "1deae04d7d02e0507d071442d01d94f4129e67125ccccc871e3666f44e5312c8",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "bio_lab",
+      "view": "res://rooms/underwater/batch-two/bio_lab_view.gd",
+      "card": "res://rooms/decoration-integration/bio_lab.png",
+      "card_sha256": "d039ca11e562f19bb038b4f0b4749d38c7a043c346fc76ba47da53e1134c9548",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "biodome",
+      "view": "res://rooms/underwater/batch-two/biodome_view.gd",
+      "card": "res://rooms/decoration-integration/biodome.png",
+      "card_sha256": "6a70d00f2ea4058a2e1c4b4d3ab69237dfe21b819377bfe0d80ca5a4a5f24fe4",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "brine_core",
+      "view": "res://rooms/underwater/brine-core/brine_core_view.gd",
+      "card": "res://rooms/decoration-integration/brine_core.png",
+      "card_sha256": "633b5d53d9673beff4ed9350c5f3e19e3bdbc7998a6a4174ab3f3ed2e09fa597",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "clone_lab",
+      "view": "res://rooms/underwater/batch-two/clone_lab_view.gd",
+      "card": "res://rooms/decoration-integration/clone_lab.png",
+      "card_sha256": "b986dbefed12983d9114b82349628cb5bc663a1bcb6d774380a1084f1c0f586b",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "command_center",
+      "view": "res://rooms/production-ten/command_center_view.gd",
+      "card": "res://rooms/decoration-integration/command_center.png",
+      "card_sha256": "7d25e02a700267405455e584f81243b5126f12be3fadfa9ade0f47f309270067",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "construction_drone_bay",
+      "view": "res://rooms/production-ten/construction_drone_bay_view.gd",
+      "card": "res://rooms/decoration-integration/construction_drone_bay.png",
+      "card_sha256": "0b845516eedc37d1c86f80df361f0ba69c874f8c345fe6cde496467cf326d523",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "corner",
+      "view": "corridor",
+      "card": "res://rooms/decoration-integration/corner.png",
+      "card_sha256": "666a35cc16a18f8be55b9a8f426f9102ce1944ef8fc91b0d5036a29185025937",
+      "placement": "Existing hull call-point/emergency mounts and flush edge drains; actual hull rotation"
+    },
+    {
+      "id": "corridor",
+      "view": "corridor",
+      "card": "res://rooms/decoration-integration/corridor.png",
+      "card_sha256": "16d8fd200ed4c77676a44db2d7d3d7ca22c169405e4972ff45ed48980da58376",
+      "placement": "Existing hull call-point/emergency mounts and flush edge drains; actual hull rotation"
+    },
+    {
+      "id": "crew_hab",
+      "view": "res://rooms/whole-room/crew_hab_view.gd",
+      "card": "res://rooms/decoration-integration/crew_hab.png",
+      "card_sha256": "c47c712bad9d26d8a486a9f57020185fe1c4113f965357cd0194324acd34a560",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "crew_lounge",
+      "view": "res://rooms/production-ten/crew_lounge_view.gd",
+      "card": "res://rooms/decoration-integration/crew_lounge.png",
+      "card_sha256": "48ba244d5ed6331cb3a72d8e223e3518db594d79c853e1ef83acdaa13da732b3",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "cryo_chamber",
+      "view": "res://rooms/underwater/batch-two/cryo_chamber_view.gd",
+      "card": "res://rooms/decoration-integration/cryo_chamber.png",
+      "card_sha256": "4abd860be67adb953e5ba87d72a72d4e084c5d1230514f64ca5c5d6c4a07d16b",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "data_archive",
+      "view": "res://rooms/underwater/batch-two/data_archive_view.gd",
+      "card": "res://rooms/decoration-integration/data_archive.png",
+      "card_sha256": "f851fa823aa594e63dd1ef07e12b43c64b4b3ad9612f8e429c7f2b404626b0fd",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "gravity_loom",
+      "view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd",
+      "card": "res://rooms/decoration-integration/gravity_loom.png",
+      "card_sha256": "5bd47e4f0a90df7822a46ab4b7d83e32f1f5c2681d6a7ff1c613a774c70776db",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "holographic_core",
+      "view": "res://rooms/underwater/batch-two/holographic_core_view.gd",
+      "card": "res://rooms/decoration-integration/holographic_core.png",
+      "card_sha256": "f2c69cf50bc75fb596d354ac99a442cfa9f654e00bf2fb00e99e8a5c63fe5c0a",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "hydroponics_bay",
+      "view": "res://rooms/whole-room/hydroponics_view.gd",
+      "card": "res://rooms/decoration-integration/hydroponics_bay.png",
+      "card_sha256": "67526eb6d94dc8ecab920bf692ad62daf74187708557f4001dac38f200558b17",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "isolation_vault",
+      "view": "res://rooms/underwater/rare-dead-ends/isolation_vault_view.gd",
+      "card": "res://rooms/decoration-integration/isolation_vault.png",
+      "card_sha256": "4a46ced7139721d452a8ebb014fc74299399544d78a8cb16da9c1d25875ea1bc",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "life_support",
+      "view": "res://rooms/whole-room/underwater_life_support_view.gd",
+      "card": "res://rooms/decoration-integration/life_support.png",
+      "card_sha256": "bc7debd3068ed3dc8436aabdd7da0d2192456e957df4ea77065079d23c935649",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "listening_post",
+      "view": "res://rooms/underwater/rare-dead-ends/listening_post_view.gd",
+      "card": "res://rooms/decoration-integration/listening_post.png",
+      "card_sha256": "101ab1703c5eb2848a432200db94db2a0bf68873ae9c829be5f815184b96e79c",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "maintenance_bay",
+      "view": "res://rooms/production-ten/maintenance_bay_view.gd",
+      "card": "res://rooms/decoration-integration/maintenance_bay.png",
+      "card_sha256": "ff51686912b2e4dd5c8f5d159b6ac23070d823bf1bda8a1798ad538c4586d490",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "med_bay",
+      "view": "res://rooms/whole-room/med_bay_view.gd",
+      "card": "res://rooms/decoration-integration/med_bay.png",
+      "card_sha256": "75bb74b4eed5d59af3c333b50a7d3e5284803147a5eae3243ae235135520db33",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "med_center",
+      "view": "res://rooms/underwater/batch-two/med_center_view.gd",
+      "card": "res://rooms/decoration-integration/med_center.png",
+      "card_sha256": "69491dbb9b11b0ad932e725af4902d9071d31085c9bf6518a29b717fd0b7054a",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "med_office",
+      "view": "res://rooms/underwater/batch-two/med_office_view.gd",
+      "card": "res://rooms/decoration-integration/med_office.png",
+      "card_sha256": "5c0349d639d370b86c69ad7e2b162fb1a5e2cd03d7225345377c3f0f78e4982f",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "mining_drone_bay",
+      "view": "res://rooms/production-ten/mining_drone_bay_view.gd",
+      "card": "res://rooms/decoration-integration/mining_drone_bay.png",
+      "card_sha256": "967665bd49bebef1b7d170994bd6a5e5ce3f0e543221d8eaed039a961e2b2d14",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "mycelium_nursery",
+      "view": "res://rooms/whole-room/nursery_furnished_view.gd",
+      "card": "res://rooms/decoration-integration/mycelium_nursery.png",
+      "card_sha256": "920742ea4c66db3cfe25738baef2bdb7bfb4bb2c4a6fee90a7f105feb5bce597",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "ore_refinery",
+      "view": "res://rooms/production-ten/ore_refinery_view.gd",
+      "card": "res://rooms/decoration-integration/ore_refinery.png",
+      "card_sha256": "69cf6da1c923c40619d5abde13ec9b9086c9b923b79d519e0c6507557aa21c90",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "pressure_control",
+      "view": "res://rooms/underwater/rare-dead-ends/pressure_control_view.gd",
+      "card": "res://rooms/decoration-integration/pressure_control.png",
+      "card_sha256": "b6c579bfb835446833de9e9730fc3d844419e2b559171ac4f1bb0ffeaf3c8496",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "quarantine_cell",
+      "view": "res://rooms/production-ten/quarantine_cell_view.gd",
+      "card": "res://rooms/decoration-integration/quarantine_cell.png",
+      "card_sha256": "a05200029d16ec1e3c32f58c86dd25b1fc22e3eb85023e7fe7a9e91ee76d2e79",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "radio_lab",
+      "view": "res://rooms/underwater/acoustic-comms/radio_lab_view.gd",
+      "card": "res://rooms/decoration-integration/radio_lab.png",
+      "card_sha256": "17c06aaebbb312a49b36b69dcd83e87f289992ead55d28267091bac37562a0bf",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "reactor",
+      "view": "res://rooms/whole-room/reactor_view.gd",
+      "card": "res://rooms/decoration-integration/reactor.png",
+      "card_sha256": "ba27195158dabf2fc3ccd12e49230fbc7f90404b081070340a9f4acde2ec2955",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "research_lab",
+      "view": "res://rooms/production-ten/research_lab_view.gd",
+      "card": "res://rooms/decoration-integration/research_lab.png",
+      "card_sha256": "8981195121bba9ae59e8840866444d9bcdf0927a4f7c3cd05ff15c54c968002a",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "salvage_drone_bay",
+      "view": "res://rooms/production-ten/salvage_drone_bay_view.gd",
+      "card": "res://rooms/decoration-integration/salvage_drone_bay.png",
+      "card_sha256": "0cfd4dade304b192412d4b4c1c42761d50c3db0d34d75621427e5d581141c7c4",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "shield_generator",
+      "view": "res://rooms/underwater/hull-integrity/shield_generator_view.gd",
+      "card": "res://rooms/decoration-integration/shield_generator.png",
+      "card_sha256": "ae8663887f00d0b92a6bd683cf4351c4bc44b3c7d550d7a95615080e25415a8d",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "solar_array",
+      "view": "res://rooms/underwater/thermal-control/solar_array_view.gd",
+      "card": "res://rooms/decoration-integration/solar_array.png",
+      "card_sha256": "e8bb7c32d4d6d6b488246aa5051d5bb9502d717e00caefa092f725a65caff3a8",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "storage_bay",
+      "view": "res://rooms/production-ten/storage_bay_view.gd",
+      "card": "res://rooms/decoration-integration/storage_bay.png",
+      "card_sha256": "e70ffab810c6847684a1edda8be62852c575e8f1781610bec0d01a8fb5aff094",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "tee_corridor",
+      "view": "corridor",
+      "card": "res://rooms/decoration-integration/tee_corridor.png",
+      "card_sha256": "356a8a511247c3579b04878aa75c4ba1f32133785615dcd1607d6f1c2fe4bc9b",
+      "placement": "Existing hull call-point/emergency mounts and flush edge drains; actual hull rotation"
+    },
+    {
+      "id": "tidal_condenser",
+      "view": "res://rooms/underwater/tidal-condenser/tidal_condenser_view.gd",
+      "card": "res://rooms/decoration-integration/tidal_condenser.png",
+      "card_sha256": "35062207d9dbf3169816566c05835d02ee15baf1448d959c2b3db30f649049d4",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    },
+    {
+      "id": "xeno_lab",
+      "view": "res://rooms/underwater/batch-two/xeno_lab_view.gd",
+      "card": "res://rooms/decoration-integration/xeno_lab.png",
+      "card_sha256": "ce960031405d3bf8ebf7deec8389b5a945ea42d8283b9f860187c7a62f0f3273",
+      "placement": "Existing room mats and service mounts; north low-hull segments split by real door geometry"
+    }
+  ],
+  "asset_dependencies": [
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/engineering_access_plate.png",
+      "sha256": "de883022afc9327dd101ddcc1922ebedc5279d6e141783a5f6250e4a92470e6d"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/linear_drain.png",
+      "sha256": "83526f4ff5e0035bce2d79b3578dfab66bca4153abfe10b20f6506b80e072166"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/inspection_hatch.png",
+      "sha256": "3f1fec4a3fe178a2c48e9a2079cab225871de428e26e552e4c363c1cce5d608b"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/tread_service_mat.png",
+      "sha256": "def513af5f2afc9d5a61605227cd95df232064d454a416c485d45f51bdb0c4e7"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/medical_bedside_mat.png",
+      "sha256": "f2f965d8fec032a054c9131c3b90a2210b6415fc24ac366d9b8588e55b74b994"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/lab_access_panel.png",
+      "sha256": "512b317e9a6b684a371502d370e0cc12d37106330b2e68f4f5f743fea6661335"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/boot_scrub_tray.png",
+      "sha256": "952e4fd86e3003d0be7c7fd8aedce820c3f6d3dc884caa81afd0313fc925894c"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/specimen_alignment_ring.png",
+      "sha256": "2c6a9c402b1acc40fbe14a1f75b25b20e03898215290f1ae93af385fdc5a0dc7"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/cargo_corner_markings.png",
+      "sha256": "db0f8395012731b094d697cf4cb56ec1169dd9d23a5ca49c85d371c324933760"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/pallet_alignment_plate.png",
+      "sha256": "e4463c7d0a2a9038aa5acf957e2d45991829d3a62fee4aafc4c8c258c4af678c"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/threshold_tread_strip.png",
+      "sha256": "abf423ac2f9a2713c5ede61f76185b34a18774198d1cb5f8a94ec68078360ad7"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/briefing_zone_mat.png",
+      "sha256": "ded190d4bcfafd0429c5e382f63d4221995c01db066aa166719c61c495f744ba"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/woven_bedside_rug.png",
+      "sha256": "067399c11907aedbd3ec8a9d33cfe8bac041851c5ea631c0c45ba0c5515ac97a"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/oval_braided_rug.png",
+      "sha256": "96198edbb9b36bfa113b6dba5bd2b9447b3d152556c1dc20c900a6956bbea9e1"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/plant_drip_tray.png",
+      "sha256": "e017badf3aba334de697c2c5453094462c9f31f0737e22555590a57e8ba957bf"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/sprites/irrigation_drain_tiles.png",
+      "sha256": "558a71497ceb0828e2d0e7b8f080aec44d1ef32b4f0ea010a0a189d33af12f53"
+    },
+    {
+      "path": "res://assets/floor-dressing-style-v2/manifest.json",
+      "sha256": "627a5edc64879be1f54a114b905542c9bd8fa4e13f6f51983a2fc26888963098"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/wire_straight.png",
+      "sha256": "5925a5528194b6f141360d84fd76fb84a9115b5408f2897b4c577bb6fd3be2d0"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/wire_elbow.png",
+      "sha256": "407b52e38a513d191704ccd3f4987df6db6070efc6c0678807386880183f50fa"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/wire_t.png",
+      "sha256": "33d6a06423241988823b1b134bcee467fc620de2382ff40ce7ec49287ae5cc27"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/cable_straight.png",
+      "sha256": "6a5b7268585cacdfe104b2f0d9a523054fa1e0979fa48f371e3e92615b43e7a9"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/cable_elbow.png",
+      "sha256": "72570b6588feea9f24f255013387c0b9c1e191d72e66f97f3d370ea95c179b80"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/cable_t.png",
+      "sha256": "169e8b779b35e37e491eb6e8647228c454b045ea5e66b756b3c14cf3be101a78"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/mat_straight.png",
+      "sha256": "9ae5ea058f8f48e52360ff43e9d5a7ac4d4d65011b987e6aef461de86b486c68"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/mat_elbow.png",
+      "sha256": "848973db15ef6721d2c919487603c72fb95eefd2bd0ccf612d619cf21229ba66"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/mat_t.png",
+      "sha256": "761b0d7f2638882954556e86a8dd698d05b873d68d5b5f5ad03d3eb4bd1061e2"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/pipe_straight.png",
+      "sha256": "ab1b5159b633099e21254cb3799d2279a9c6ecb9bd18c8960fcad0924e044f56"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/pipe_elbow.png",
+      "sha256": "7d9f74416c086310b2266fc5f53f82be0e650b8c3625aeaf5b581b8ff2af6406"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/pipe_channel.png",
+      "sha256": "681ad35dcac95a2bbba036f82d45356e0e8514f86b84ea9a8f502f64bedba72c"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/sprites/pipe_channel_cover.png",
+      "sha256": "31647378e2a5a2a07dfa203c54247c04ec72b8573e9f7cdcc0bf5085429d7ebe"
+    },
+    {
+      "path": "res://assets/floor-utilities-style-v2/manifest.json",
+      "sha256": "85d4f0403a9e24e52c10f5067a23264236a18754277c8477f18d7b5164c8243e"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/analog_clock.png",
+      "sha256": "3dea8541fb24f67471fbc3e2e991e4411bff5c599fab39dac0135f0f2a3874f9"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/digital_clock.png",
+      "sha256": "89bb124a284f7ef9dc92795748fb1c51e09218120cdeb3d05c2fee7611b2d946"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/com_handset.png",
+      "sha256": "73410b393d52738509519c8864fc7145d0106189db9e6b55f1263ce2d8d3f10f"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/com_panel.png",
+      "sha256": "c7a7cfbb1b1f87687273673d1c1a3b8bb52eac89fc83646060ac94090f0a998c"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/wall_calendar.png",
+      "sha256": "79a92ba474b798743ef06d73e4ca75b1ba1401ccca3cf005b725419ebb8bb405"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "sha256": "615714fcbc9f7140683f308b55f176e36df3b2e2cf7c3318d958c0866fe2c448"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/picture_ocean.png",
+      "sha256": "4883f303630aeaa6147e7a6b7153a6599593863dcd5b5089e5b697e9149b2f60"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/picture_botanical.png",
+      "sha256": "e04b9b511f6a560970a99701674d4e299596500239da9f452669d607e6381725"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/poster_diver.png",
+      "sha256": "3d4571fb703ffa079649c4f306caddf50e8d39b882dc996573ec4394af74785a"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/poster_marine.png",
+      "sha256": "8b8acdd544fd5e6870cf8e826e925626b067bafafa8407a9da799c42c9a24e67"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/wall_lamp.png",
+      "sha256": "f05842ce5a8dcafd2cc0d57208b8c703f21d539c3322379159426e38d46e445d"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/emergency_box.png",
+      "sha256": "1c9593eb817c19455d0962b92e55ba0b99bba398c9203a3783545ed3fc29dfe4"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/pressure_gauge.png",
+      "sha256": "83f6558dd81704d40e5c1f488a1b397858d9ace9e50a846308294008424d26c9"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/station_map.png",
+      "sha256": "bd70ee35c71270ee34c3d561aea120e4fa37652bf7a7ea71b8beaa780c98a38c"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/fire_extinguisher.png",
+      "sha256": "3d2f5bd65658f7e679abb2f0ec581011054a0c97960a4bb8dadb2c6ba9007049"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/oxygen_masks.png",
+      "sha256": "cc295083b24f35f5c09fb5f54898eeb7c406747b46e43d10c1c34cb73faeccf5"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/key_rack.png",
+      "sha256": "f66ba2206b88f35b98b9b460dc7ef76eb87bb831500c22d2335f7d6220fc3b2c"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/tool_rack.png",
+      "sha256": "eb3a3b64656b78416f34c5ee9dc380a4e7ff76679f3178d4a840ffd7643bf16a"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/wall_planter.png",
+      "sha256": "5bf350c4a1f6fe5ba2d96575fc07ced89574ae764d7b4d20acccc788a25f36c3"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/pennant.png",
+      "sha256": "f9a0671673b79ef79ab2169c0c21a427904a5de51fbc7215a97200db622ca9ab"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/vent_fan.png",
+      "sha256": "e71bb71e01994f075cd06bc4841325155ba66db37271f5ccc8f9d574e6fc5e1c"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/alarm_beacon.png",
+      "sha256": "b5297a7cd6b4d5b7146d583beeac12b34ec18d5095e3804aafeb53fea0abfa91"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/sample_display.png",
+      "sha256": "fc97f982a2dc4c5d46aa35371189f13647efdb96ed1c43bc9027c8038e2001c1"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/sprites/coat_hooks.png",
+      "sha256": "949386a375447431bea8439c7d36951e8c1793a4b28c861d8048342dd1ff369a"
+    },
+    {
+      "path": "res://assets/wall-dressing-style-v2/manifest.json",
+      "sha256": "2bcbf9d8f88e436071de7e8fe49c72b988428395badc29e8d69549d5ee28abfe"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/ocean_porthole_small.png",
+      "sha256": "34e4f3f089852de2aabf97388f648663c769b423c1f2647f2828cec358f6d2a0"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",
+      "sha256": "7f9b33d9e2a154cc0ace825490f5c1ab9f1dfba799b287d742f85383d7ce4378"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",
+      "sha256": "f92fe5ea1a41298f7d452a4a19338aa29070eb9553c8d84c65230671fee6c25f"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",
+      "sha256": "36326e032763701bffa6d012f39fbd7969a78df25519eb2652d7558d8a8729cc"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/ocean_twin_portholes.png",
+      "sha256": "f8a6ef9250afe85f2a6e357e7ae21c5c080fcbaa360880c968d40afdb62652ea"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/hull_infill_panel.png",
+      "sha256": "5bef8fc968d4b088a31e9f2eaaa6932ae8b7152eae4e07882e1144d5a11bc2d9"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/reinforced_access_panel.png",
+      "sha256": "7f1e54b29a2116ca584aac078c1c753e68dbefeee7a4e15c97fdab79db5d2655"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/small_access_cover.png",
+      "sha256": "e5eac75b00a42a3bf7e35016abcb702d2aee9105d3a047400be41cb5f6a852fc"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/structural_rib.png",
+      "sha256": "05a7807e752e1d43dd36a438e2b65fda29b89ececbe334eae1cf46709c01c3e2"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/monitor_single.png",
+      "sha256": "d3d0c58f564c68f56e88803c37d42a87473a1f29f9efb0467bb70f1b46fa8973"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/monitor_dual.png",
+      "sha256": "e9d224c1b3e7a68627f9d2d8b594e22f2852e552cf8d7561aeff5139feaf25a3"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/sprites/status_display_wide.png",
+      "sha256": "14f9e54c67c9e638601f2ad37c07c32d0612fa1165611b7e2ca800a6537537a0"
+    },
+    {
+      "path": "res://assets/riser-wall-kit-style-v2/manifest.json",
+      "sha256": "a57320c4edcba7432567ac03e6e9d804e56ede3f8f56fc6ec50e907ff211a8ba"
+    }
+  ],
+  "notes": [
+    "Selected appropriate props from revised libraries; not every library prop fits current low walls.",
+    "Floor art remains below actors and furniture; wall mounting uses solid segments, never doorway bays.",
+    "No navigation, collision, room costs, save or unlock changes.",
+    "Runtime helpers use raw PNG byte loading. Export presets include *.png and *.json."
+  ]
+}

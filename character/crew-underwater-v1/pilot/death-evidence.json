@@ -1,0 +1,22 @@
+{
+  "scope": "grounded-death-three-crew",
+  "reviewer": "Codex agent",
+  "files": {
+    "scripts/bill_npc.gd": "ffe25488002785a2be38f531d340f5b17ef5aa623827c8d771c1f730212b3f8d",
+    "scripts/grid_canvas.gd": "b18c8117aabc341514e7d3408c4916a191c1eb0ceaf217e093fd3215f00bba2f",
+    "scripts/crew_sprite_player.gd": "e799874a3dfea3ae0c45e8c49e74a64c43a61d3c41ebc5ecfe22a5d8ba02b51c",
+    "tests/test_crew_death_pack.gd": "9b66708f1c1fce54429a6e00e3d87494f2520f4190079c4bdc54573f33ea757d",
+    "tests/test_crew_death_save.gd": "3e4f7bfa8f86ece89453028af8294fdf88bdf0d868734cbe4c769754cc515bfb",
+    "tests/playtest_crew_death.gd": "158ba806c503535b01096eae206fa7b604d2662efb8023c8639954affcba10ed"
+  },
+  "checks": [
+    "CREW DEATH PACK: 0 failures",
+    "CREW DEATH SAVE: PASS",
+    "CREW DEATH NATIVE: PASS"
+  ],
+  "limitations": [
+    "no named-NPC mortality trigger",
+    "single-room native visual sample",
+    "underwater death separate and pending"
+  ]
+}

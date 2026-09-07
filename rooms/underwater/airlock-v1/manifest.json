@@ -1,0 +1,31 @@
+[
+  {
+    "id": "airlock",
+    "source": "rooms/underwater/airlock-v1/source.png",
+    "sha256": "88039f54da45240bba6b9676ce4742a9f95599ed0ab0de63a42ab5f432ec6db2",
+    "component_assets": [
+      {
+        "path": "rooms/underwater/airlock-v1/cutouts.png",
+        "sha256": "ebbe8c23eeedc0b282fa1dda9539495fffb9995ff39042bba095668d117d0df4"
+      },
+      {
+        "path": "rooms/underwater/airlock-v1/card-v3.png",
+        "sha256": "8b0ef8a10ad552009380b47be43cd9bf82928d8959003995e07c573c5d94fc52"
+      }
+    ],
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/airlock-v1/composition.json",
+        "sha256": "d4e2ac6ef9a4180a029aee9c940f011bf65fb053c80419777d96c55c245c2b27"
+      }
+    ],
+    "integration": {
+      "view": "rooms/underwater/airlock-v1/airlock_view.gd",
+      "card": "rooms/underwater/airlock-v1/card-v3.png"
+    },
+    "canonical_ports_nesw": [
+      2
+    ],
+    "composition_profile": "rooms/underwater/airlock-v1/composition.json"
+  }
+]

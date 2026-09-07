@@ -5,6 +5,133 @@ const RoomDatabaseScript := preload("res://scripts/room_database.gd")
 
 const SYNERGIES := [
 	{
+		"id": "inertial_containment",
+		"name": "Inertial Containment",
+		"rooms": [
+			"anomaly_lab",
+			"shield_generator"
+		],
+		"bonus": {
+			"data": 1
+		},
+		"effect": "+1 Data per functioning cycle.",
+		"message": "The field holds. I am no longer certain what it is holding.",
+		"unlock_room_id": "gravity_loom",
+		"stabilize_cycles": 3,
+		"fx_profile": "containment",
+		"fx_color": "B299CE"
+	},
+	{
+		"id": "mass_sorting",
+		"name": "Mass Sorting",
+		"rooms": [
+			"gravity_loom",
+			"mining_drone_bay"
+		],
+		"bonus": {
+			"metal": 3
+		},
+		"effect": "+3 Metal per functioning cycle.",
+		"message": "The heavier fragments arrive first. Distance has declined to explain itself.",
+		"terminal_reward": {
+			"research": 3
+		},
+		"stabilize_cycles": 3,
+		"fx_profile": "logistics",
+		"fx_color": "B299CE"
+	},
+	{
+		"id": "geometric_echo",
+		"name": "Geometric Echo",
+		"rooms": [
+			"gravity_loom",
+			"holographic_core"
+		],
+		"bonus": {
+			"data": 3
+		},
+		"effect": "+3 Data per functioning cycle.",
+		"message": "The model has acquired an extra angle. I have checked the room twice.",
+		"terminal_reward": {
+			"research": 3
+		},
+		"stabilize_cycles": 3,
+		"fx_profile": "signal",
+		"fx_color": "B299CE"
+	},
+	{
+		"id": "thermal_reclamation",
+		"name": "Thermal Reclamation",
+		"rooms": ["reactor", "life_support"],
+		"bonus": {"water": 1},
+		"effect": "+1 Water per functioning cycle.",
+		"message": "The heat was escaping. I have found another use for it.",
+		"unlock_room_id": "tidal_condenser",
+		"stabilize_cycles": 3,
+		"fx_profile": "flow",
+		"fx_color": "79B7C5"
+	},
+	{
+		"id": "nutrient_mist",
+		"name": "Nutrient Mist",
+		"rooms": ["tidal_condenser", "hydroponics_bay"],
+		"bonus": {"food": 1},
+		"effect": "+1 Food per functioning cycle.",
+		"message": "The roots have stopped rationing moisture. I have not.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "flow",
+		"fx_color": "79B7C5"
+	},
+	{
+		"id": "chilled_cells",
+		"name": "Chilled Cells",
+		"rooms": ["tidal_condenser", "battery_array"],
+		"bonus": {"power": 1},
+		"effect": "+1 Power per functioning cycle.",
+		"message": "The cells run cooler. Their failure estimates remain estimates.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "power",
+		"fx_color": "79B7C5"
+	},
+	{
+		"id": "substrate_recovery",
+		"name": "Substrate Recovery",
+		"rooms": ["hydroponics_bay", "quarantine_cell"],
+		"bonus": {"biomass": 1},
+		"effect": "+1 Biomass per functioning cycle from recovered cultivation substrate.",
+		"message": "The discarded cultures are still growing. I have revised the disposal protocol.",
+		"unlock_room_id": "mycelium_nursery",
+		"stabilize_cycles": 3,
+		"fx_profile": "flow",
+		"fx_color": "79B7A3"
+	},
+	{
+		"id": "culture_exchange",
+		"name": "Culture Exchange",
+		"rooms": ["mycelium_nursery", "bio_lab"],
+		"bonus": {"biomass": 1},
+		"effect": "+1 Biomass per functioning cycle from shared cultures.",
+		"message": "The cultures have exchanged more information than the lab reports acknowledge.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "flow",
+		"fx_color": "79B7A3"
+	},
+	{
+		"id": "restorative_culture",
+		"name": "Restorative Culture",
+		"rooms": ["mycelium_nursery", "med_bay"],
+		"bonus": {"integrity": 1},
+		"effect": "+1 Integrity per functioning cycle from restorative cultures.",
+		"message": "The repair cultures have taken hold. I am monitoring where they stop.",
+		"terminal_reward": {"research": 3},
+		"stabilize_cycles": 3,
+		"fx_profile": "care",
+		"fx_color": "79B7A3"
+	},
+	{
 		"id": "closed_air_loop",
 		"name": "Closed Air Loop",
 		"rooms": ["hydroponics_bay", "life_support"],

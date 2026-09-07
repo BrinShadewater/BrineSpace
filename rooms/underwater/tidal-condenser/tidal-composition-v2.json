@@ -1,0 +1,69 @@
+{
+  "textures": {
+    "island": "res://rooms/production-ten/decor/research-island-v2.png"
+  },
+  "furniture": [
+    {
+      "id": "tidal_sampling_bench",
+      "texture": "island",
+      "region": [
+        202,
+        7,
+        919,
+        1047
+      ],
+      "footprint": [
+        -40,
+        -107,
+        80,
+        30
+      ],
+      "lights": [
+        {
+          "at": [
+            650,
+            173
+          ],
+          "radius": 1.1,
+          "color": "c8e9f3"
+        }
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "tidal_sampling_bench",
+      "offset": [
+        -3,
+        1
+      ],
+      "size": [
+        88,
+        36
+      ],
+      "fill": "3c4d4e",
+      "edge": "647775"
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "tidal_sampling_bench",
+        "source": [
+          1100,
+          1020
+        ]
+      },
+      "via": [],
+      "to": {
+        "host": "tidal_tanks",
+        "source": [
+          757,
+          490
+        ]
+      },
+      "color": "263b3e",
+      "width": 2
+    }
+  ]
+}

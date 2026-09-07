@@ -29,6 +29,8 @@ const RESOURCE_ICONS := {
 }
 
 const STARTING_UNLOCKS := [
+	"airlock",
+	"construction_drone_bay",
 	"solar_array",
 	"reactor",
 	"mining_drone_bay",
@@ -40,7 +42,11 @@ const STARTING_UNLOCKS := [
 	"med_bay",
 	"quarantine_cell",
 	"corridor",
-	"corner"
+	"corner",
+	"tee_corridor",
+	"pressure_control",
+	"listening_post",
+	"isolation_vault"
 ]
 
 const LAYOUTS := {
@@ -62,6 +68,19 @@ const LAYOUTS := {
 
 static func all_rooms() -> Dictionary:
 	return {
+		"airlock": {
+			"id":"airlock","display_name":"Diving Airlock","category":"Engineering","rarity":"common",
+			"cost":{"metal":6,"power":1},"size":Vector2i.ONE,"production":{},"consumption":{"power":1},
+			"tags":["airlock","equipment","powered"],"layout":"layout_dead_south","unlocked":true,
+			"description":"Suit lockers and a separate pressure chamber. Flood and equalize before opening the outer hatch; close, drain and restore station pressure before opening the inner door. Only one door can open at a time."
+		},
+		"construction_drone_bay": {
+			"id":"construction_drone_bay", "display_name":"Construction Drone Bay",
+			"category":"Engineering", "rarity":"common", "cost":{"metal":6,"power":1},
+			"size":Vector2i.ONE, "production":{}, "consumption":{"power":1},
+			"tags":["drone","construction","engineering"], "layout":"layout_02_straight",
+			"description":"Houses a fabrication drone. Welds paid room orders into the station. The Core carries an emergency builder.", "unlocked":true
+		},
 		"brine_core": {
 			"id": "brine_core",
 			"display_name": "BRINE Core",
@@ -130,7 +149,7 @@ static func all_rooms() -> Dictionary:
 			"consumption": {"power": 1},
 			"tags": ["drone", "mining", "metal"],
 			"layout": "layout_02_straight",
-			"description": "Dispatches mining drones toward asteroid POIs.",
+			"description": "Extracts Metal from finite mineral deposits and basalt. Battery-powered tools; cargo returns to the bay for unloading and recharge.",
 			"unlocked": true
 		},
 		"salvage_drone_bay": {
@@ -144,11 +163,54 @@ static func all_rooms() -> Dictionary:
 			"consumption": {"power": 1},
 			"tags": ["drone", "salvage", "derelict"],
 			"layout": "layout_02_straight",
-			"description": "Recovers Metal and Data from derelict POIs.",
+			"description": "Extracts Metal and Data from finite scrap piles and dismantles wrecked rooms. Cargo returns to the bay for unloading and recharge.",
 			"unlocked": true
+		},
+		"gravity_loom": {
+			"id": "gravity_loom",
+			"display_name": "Gravity Loom",
+			"category": "Anomaly",
+			"rarity": "rare",
+			"cost": {"metal": 12, "data": 8, "rare_minerals": 3},
+			"size": Vector2i.ONE,
+			"production": {"data": 1, "rare_minerals": 1},
+			"consumption": {"power": 4},
+			"tags": ["science", "anomaly", "containment"],
+			"layout": "layout_06_core",
+			"description": "Sorts matter through a contained distortion. The calibration weights disagree.",
+			"unlocked": false
+		},
+		"tidal_condenser": {
+			"id": "tidal_condenser",
+			"display_name": "Tidal Condenser",
+			"category": "Engineering",
+			"rarity": "uncommon",
+			"cost": {"metal": 7, "data": 2},
+			"size": Vector2i.ONE,
+			"production": {"water": 2},
+			"consumption": {"power": 2},
+			"tags": ["engineering", "water", "condensation"],
+			"layout": "layout_01_tee",
+			"description": "Reclaims Water through chilled coils. The ocean remains on the other side.",
+			"unlocked": false
+		},
+		"mycelium_nursery": {
+			"id": "mycelium_nursery",
+			"display_name": "Mycelium Nursery",
+			"category": "Bio",
+			"rarity": "uncommon",
+			"cost": {"metal": 7, "biomass": 3},
+			"size": Vector2i.ONE,
+			"production": {"food": 3},
+			"consumption": {"power": 1, "biomass": 1},
+			"tags": ["bio", "food"],
+			"layout": "layout_01_tee",
+			"description": "Cultivates edible tissue from Biomass. The trays do not require sunlight.",
+			"unlocked": false
 		},
 		"hydroponics_bay": {
 			"id": "hydroponics_bay",
+			"flood_compatible": true,
 			"display_name": "Hydroponics Bay",
 			"category": "Bio",
 			"rarity": "common",
@@ -372,7 +434,7 @@ static func all_rooms() -> Dictionary:
 			"consumption": {"power": 1},
 			"storage": {"data": 20},
 			"tags": ["core_support", "command", "data"],
-			"layout": "layout_06_core",
+			"layout": "layout_05_cross", # Registered consoles leave central cross aisles.
 			"description": "Auxiliary command node for BRINE's station coordination routines.",
 			"unlocked": true
 		},
@@ -403,6 +465,17 @@ static func all_rooms() -> Dictionary:
 			"layout": "layout_04_corner",
 			"description": "Turns station traffic around a corner.",
 			"unlocked": true
+		},
+		"pressure_control": {"id":"pressure_control","display_name":"Pressure Control Chamber","category":"Engineering","rarity":"rare","cost":{"metal": 12, "data": 4},"size":Vector2i.ONE,"production":{},"consumption":{"power":1},"tags":["rare_control","dead_end"],"layout":"layout_dead_south","description":"Pressure tanks and branch flooding controls.","unlocked":true},
+		"listening_post": {"id":"listening_post","display_name":"Deepwater Listening Post","category":"Science","rarity":"rare","cost":{"metal": 10, "data": 6},"size":Vector2i.ONE,"production":{},"consumption":{"power":1},"tags":["rare_control","dead_end"],"layout":"layout_dead_south","description":"Investigates distant mineral and salvage signals.","unlocked":true},
+		"isolation_vault": {"id":"isolation_vault","display_name":"Emergency Isolation Vault","category":"Engineering","rarity":"rare","cost":{"metal": 14, "data": 4},"size":Vector2i.ONE,"production":{},"consumption":{"power":1},"tags":["rare_control","dead_end"],"layout":"layout_dead_south","description":"Reserve power and emergency branch isolation controls.","unlocked":true},
+		"tee_corridor": {
+			"id": "tee_corridor", "display_name": "T Corridor",
+			"category": "Engineering", "rarity": "uncommon",
+			"cost": {"metal": 3}, "size": Vector2i.ONE,
+			"production": {}, "consumption": {},
+			"tags": ["corridor", "routing"], "layout": "layout_01_tee",
+			"description": "Three-way passage linking station branches.", "unlocked": true
 		},
 		"crew_lounge": {
 			"id": "crew_lounge",
@@ -505,8 +578,13 @@ static func all_rooms() -> Dictionary:
 		}
 	}
 
+static var _lookup_templates: Dictionary = {}
+
 static func get_room(id: String) -> Dictionary:
-	return all_rooms().get(id, {})
+	if _lookup_templates.is_empty():
+		_lookup_templates = all_rooms()
+	# Callers add runtime state and may edit nested rates/tags. Never share templates.
+	return _lookup_templates.get(id, {}).duplicate(true)
 
 static func category_color(category: String) -> Color:
 	return CATEGORY_COLORS.get(category, Color.WHITE)

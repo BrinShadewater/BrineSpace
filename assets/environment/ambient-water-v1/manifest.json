@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "title": "Ambient water",
+  "runtime_registry": "ambient_water_view.gd",
+  "prompt_records": [
+    "generation-record.json"
+  ],
+  "assets": [
+    {
+      "id": "current-ribbon",
+      "kind": "effect",
+      "selected_source": "current-ribbon-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "versions": [
+        {
+          "file": "current-ribbon-v1.png",
+          "sha256": "18ab4f5a64eacfb121b34399535325d3aec670b1ddc76207889b3ecc2545da96",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "silt-fan",
+      "kind": "effect",
+      "selected_source": "silt-fan-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "versions": [
+        {
+          "file": "silt-fan-v1.png",
+          "sha256": "f3b99ef02f8cbecca78cd23a50e15801a5ed1afafe68c0d96aad643673dd2539",
+          "rejection": null
+        }
+      ]
+    },
+    {
+      "id": "microbubble-wake",
+      "kind": "effect",
+      "selected_source": "microbubble-wake-v1.png",
+      "stage": "integrated; native reviewed; owner approval pending",
+      "versions": [
+        {
+          "file": "microbubble-wake-v1.png",
+          "sha256": "b7e36d66667052dac9149c0486099b34c4a37616d953a4cf6952835aa1835274",
+          "rejection": null
+        }
+      ]
+    }
+  ],
+  "native_previews": [
+    {
+      "path": "../../../output/ambient-water-v1/source-and-motion-0.png",
+      "label": "Original sources and runtime opacity"
+    },
+    {
+      "path": "../../../output/ambient-water-v1/effect-1-1600.png",
+      "label": "Current ribbon beside station"
+    },
+    {
+      "path": "../../../output/ambient-water-v1/effect-2-1600.png",
+      "label": "Low drifting silt"
+    },
+    {
+      "path": "../../../output/ambient-water-v1/effect-3-1600.png",
+      "label": "Fine bubble wake"
+    },
+    {
+      "path": "../../../output/ambient-water-v1/room-over-water-1600.png",
+      "label": "Station room draws above water effects"
+    }
+  ]
+}

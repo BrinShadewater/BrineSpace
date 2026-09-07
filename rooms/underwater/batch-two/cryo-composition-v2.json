@@ -1,0 +1,54 @@
+{
+  "textures": {
+    "accessories": "res://rooms/production-ten/decor/research-v1.png"
+  },
+  "furniture": [
+    {
+      "id": "cryo_supply_trolley",
+      "texture": "accessories",
+      "region": [
+        95,
+        640,
+        468,
+        488
+      ],
+      "footprint": [
+        82,
+        29,
+        60,
+        24
+      ]
+    },
+    {
+      "id": "cryo_transfer_cooler",
+      "texture": "accessories",
+      "region": [
+        753,
+        115,
+        402,
+        385
+      ],
+      "footprint": [
+        -58,
+        135,
+        30,
+        10
+      ]
+    }
+  ],
+  "mats": [
+    {
+      "host": "cryo_supply_trolley",
+      "offset": [
+        -4,
+        -3
+      ],
+      "size": [
+        68,
+        31
+      ],
+      "fill": "91a5a4",
+      "edge": "728d91"
+    }
+  ]
+}

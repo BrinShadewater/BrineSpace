@@ -1,0 +1,136 @@
+[
+  {
+    "id": "brine_core",
+    "source": "rooms/underwater/brine-core/source-v1.png",
+    "reference": "rooms/brinecore.png",
+    "prompt": "Create a new underwater BRINE Core room source by revising the reference. Preserve the central upright transparent cylindrical water chamber identity, approximate central location and fixed near-top-down cutaway pixel-art camera, fronts facing screen south and height screen-up. Replace the industrial black casing with smooth PEARL-WHITE CERAMIC cap and base, a few fine brushed-metal seams and restrained aquamarine glass tint. A unique serene and quietly uncanny computer-core aquarium, perfectly symmetric architecture. Remove ALL dense peripheral machinery, glowing floor circuits, corner racks, exposed cables and pipes. Service cables disappear beneath the small central base. One complete freestanding central chamber is the sole focal apparatus, broad empty perimeter circulation. Dark quiet flat slate floor, low pearl-white modular pressure-hull walls fully sealed on all four sides, no openings/recesses/door inserts, no tall corner towers. Engine will supply canonical sockets and shell. Inside tank is clear still water, EMPTY: no person, robot, body, brain, creature, energy beam or particles; an existing character sprite will be composited in-engine and must not be redesigned. Glass should reveal the dark rear inner surface without strong reflections obstructing the future body. Offline donor: NO active cyan light, glow halos, luminous indicators, bubbles, holograms, rays or steam. Non-emissive aquamarine water tint and natural glass highlights only. No religious icons, text, labels, stars, ocean views, UI. Full square room canvas target1280x1280, restrained chunky detailed pixel rendering, transparent exterior if possible. Make pearl ceramic and broad clear glass readily distinguishable at station scale. Do not reproduce the reference's dark machinery style; use it only for camera and central water-chamber identity.",
+    "primary_department": "BRINE / Core",
+    "stage": "integrated_verified_scopes",
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/underwater/brine-core/brine_core_view.gd",
+      "candidate_card": "rooms/underwater/brine-core/card-v3.png",
+      "card": "rooms/underwater/brine-core/renewal-v2/core-card-v6.png"
+    },
+    "canonical_ports_nesw": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "review": [
+      "Pearl ceramic and broad aquamarine glass; peripheral clutter removed.",
+      "Empty central chamber preserves room for the existing character sprite.",
+      "Donor walls too tall and carry midpoint inserts; extract apparatus only and use shared engine shell.",
+      "Glass includes faint floor-like seams; assess behind body at native scale before acceptance.",
+      "No active beam, bubbles or glow halo; engine will own motion.",
+      "512-square candidate card inspected: body fits inside glass and donor tank rectangle is excluded. Native station/effect review remains.",
+      "Owner requests crew-matched slimmer BRINE, subtle floating behind tube glass, occasional bubbles and more computers with doorway/crew clearance. See renewal-v2 record; previous empty-perimeter preference is superseded."
+    ],
+    "verification": {
+      "complete_acceptance": false,
+      "revision": "tank-collar-lettering-v6",
+      "record": "rooms/underwater/brine-core/renewal-v2/README.md",
+      "native_log": "output/brine-collar-v6-final.log",
+      "package": "Not re-exported in this room revision; prior package evidence is historical."
+    },
+    "sha256": "a6acb29e8b095e802982e30861f46b72227fb3db87d351847f0b850d23b9846b",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "body_source": {
+      "path": "rooms/underwater/brine-core/renewal-v2/brine-source-v4-face.png",
+      "sha256": "09bd949d88c38d31b73fb37c99ee891885782837e369ff1442a8807ee5920874",
+      "runtime": {
+        "path": "rooms/underwater/brine-core/renewal-v2/brine-float-v4.png",
+        "sha256": "f19557a0c34dd5e8a4f28088b84b8d3f3eae070d72d8d48c360e5c576e989e35"
+      },
+      "native_size": [
+        1254,
+        1254
+      ],
+      "treatment": "Built-in face-only image edit toward original BRINE portrait; same cleanup and aspect-preserving 74px sprite height. Runtime source rectangle 521,575,210,210 stays below cap throughout float."
+    },
+    "component_assets": [
+      {
+        "path": "rooms/underwater/brine-core/observation-pedestal-v1.png",
+        "sha256": "4bde24e4465968fd6bd2200aa5f00bd0ece506aa9d99f70a65b89c70fa501170"
+      },
+      {
+        "path": "rooms/underwater/brine-core/renewal-v2/computers-cleaned.png",
+        "sha256": "aceec8bd19e8b46f823265da83f03004fa522e854c4fe222a0960fae46762f81"
+      },
+      {
+        "path": "rooms/underwater/brine-core/renewal-v2/brine-float-v4.png",
+        "sha256": "f19557a0c34dd5e8a4f28088b84b8d3f3eae070d72d8d48c360e5c576e989e35"
+      }
+    ],
+    "previous_body_source": {
+      "path": "brinecore-animation/assets/brine_body_temp.png",
+      "sha256": "ca4dd2e4c71326de03452ce5e6938e318ace5e1d0665bcbc743978d8aa45342f",
+      "treatment": "Runtime source-space silhouette polygon; original PNG unchanged"
+    },
+    "composition_profile": "rooms/underwater/brine-core/renewal-v2/composition.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/brine-core/renewal-v2/composition.json",
+        "sha256": "6928048c22c39250d7ae3dceea2b084b012e5a4040048f1bf15680073f72977e"
+      }
+    ],
+    "previous_verification_before_renewal_v2": {
+      "complete_acceptance": false,
+      "native": true,
+      "scope": "Title likeness/card-v3 passes actual1280x720,1600x900 and2560x1440: four rotations, containment, independent body/bubble/light operating/offline comparisons and pause. Native smaller-window crops visually reviewed. Updated export in polish report.",
+      "viewports": [
+        1280,
+        1600,
+        2560
+      ],
+      "windows_export": "windows-34-current-controller-v1: source/card/body component hashes and decodes pass; all 51 physical arrivals in combined layout, 135 transitions, 10377 checked steps.",
+      "crossings": "16 current-controller arrivals; 112 native crops reviewed at actual2560x1440 despite requested1600. Chamber clear; shared collar occlusion separate.",
+      "components": "Body/bubble/light regions independently change only while operating across four rotations; output/brine-core/components.log. Actual capture size must be used, not requested width.",
+      "requested_viewports": [
+        1280,
+        1600,
+        2560
+      ],
+      "viewport_correction": [
+        {
+          "width": 1280,
+          "height": 720,
+          "frames": 49,
+          "checks": "four rotations; body/bubble/light operating/offline; pause and containment"
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "frames": 49,
+          "checks": "four rotations; body/bubble/light operating/offline; pause and containment"
+        }
+      ],
+      "previous_body_verification": "Verified actual1280x720 and1600x900 with windowed enforcement and per-capture dimension assertions; prior actual2560x1440 also passed. Four rotations, assembly and independent body/bubble/light state checks. Old mislabeled runs remain historical."
+    },
+    "previous_body_source_before_renewal_v2": {
+      "path": "rooms/underwater/brine-core/body-title-v1.png",
+      "sha256": "5086773aebc7d53657b481b6995ab1d96a15112e8ea9ef42907dae6a18c7aaf2",
+      "reference": "brineui/title/cover-character.png",
+      "treatment": "Built-in image generation; runtime silhouette excludes generated surrounding haze; source preserved. Placement source center 626,575, scale0.13; body opaque tint."
+    },
+    "previous_body_source_before_face_v4": {
+      "path": "rooms/underwater/brine-core/renewal-v2/brine-source-v3-slim.png",
+      "sha256": "a1033250a79fe13d3655b672c74040593e0775810d5bb3724df1f829532b3a14",
+      "runtime": {
+        "path": "rooms/underwater/brine-core/renewal-v2/brine-float.png",
+        "sha256": "2f7663f76b17e002b34c7b31afd61edf67cb141826bfd341d51b6972aa66cfd4"
+      },
+      "native_size": [
+        1254,
+        1254
+      ],
+      "treatment": "Slim identity edit via built-in imagegen; edge-connected neutral cleanup; aspect-preserving nearest reduction to 74px body in 92px canvas; source preserved."
+    }
+  }
+]

@@ -23,9 +23,9 @@ func _run() -> void:
 	_test_pair_directive_tracks_both_doctrines()
 	_test_all_doctrine_pairs_have_viable_decks()
 	_test_doctrine_pair_preview_exposes_tradeoffs()
-	_test_directive_completion_advances_run()
-	_test_final_directive_stabilizes_station()
-	_test_missed_directive_ends_run()
+	_test_retired_directive_grants_no_rewards()
+	_test_retired_final_directive_keeps_run_active()
+	_test_retired_deadline_keeps_run_active()
 	_test_doctrine_mastery_persists_progress()
 	if failures > 0:
 		push_error("Synergy tests failed: %d" % failures)
@@ -85,9 +85,13 @@ func _test_placement_cascade_scores_and_pulses() -> void:
 	game.resonance_tier_index = 0
 	game.links_formed = 0
 	game.largest_cascade = 0
-	game._place_room("life_support", Vector2i(9, 10))
-	game._place_room("crew_hab", Vector2i(11, 10))
+	# Existing completed rooms are fixture inputs; the new room is first an order.
+	game._place_room("life_support", Vector2i(9, 10), false, true)
+	game._place_room("crew_hab", Vector2i(11, 10), false, true)
 	game._place_room("hydroponics_bay", Vector2i(10, 10))
+	_expect_equal(game.resonance_score,0,"Pending construction cannot score a cascade")
+	var order: Dictionary = game.drone_fleet.orders.pop_front()
+	game._place_room(order.id,order.pos,false,true)
 	_expect_equal(game.resonance_score, 30, "a two-link placement should score a triangular cascade")
 	_expect_equal(game.links_formed, 2, "both new placement links should be recorded")
 	_expect_equal(game.largest_cascade, 2, "best cascade should retain the placement chain size")
@@ -196,7 +200,7 @@ func _test_doctrine_pair_preview_exposes_tradeoffs() -> void:
 	_expect_true(profile.contains("Research Lab"), "pair preview should name shared doctrine rooms")
 	game.free()
 
-func _test_directive_completion_advances_run() -> void:
+func _test_retired_directive_grants_no_rewards() -> void:
 	var game = MainScript.new()
 	game.running = true
 	game.rerolls_remaining = 3
@@ -207,13 +211,13 @@ func _test_directive_completion_advances_run() -> void:
 	]
 	var metal_before := int(game.resources["metal"])
 	game._check_directive_progress()
-	_expect_equal(game.directive_index, 1, "completing a directive should advance the run")
-	_expect_equal(game.completed_directives.size(), 1, "completed directive should be recorded")
-	_expect_equal(game.rerolls_remaining, 4, "directive reward should add a reroll")
-	_expect_equal(int(game.resources["metal"]), metal_before + 2, "directive reward should grant resources")
+	_expect_equal(game.directive_index, 0, "Legacy directives do not advance")
+	_expect_equal(game.completed_directives.size(), 0, "Legacy directives do not record progress")
+	_expect_equal(game.rerolls_remaining, 3, "Legacy directives grant no rerolls")
+	_expect_equal(int(game.resources["metal"]), metal_before, "Legacy directives grant no resources")
 	game.free()
 
-func _test_final_directive_stabilizes_station() -> void:
+func _test_retired_final_directive_keeps_run_active() -> void:
 	var test_save_path := "user://brine_victory_test_save.json"
 	var game = MainScript.new()
 	game.meta.save_path = test_save_path
@@ -227,13 +231,10 @@ func _test_final_directive_stabilizes_station() -> void:
 	game.run_directives = [{"name": "FINAL", "metric": "rooms", "target": 1, "deadline": 5, "reward": {}}]
 	game.running = true
 	game._check_directive_progress()
-	_expect_true(game.run_victory, "completing the final directive should mark the reboot as a victory")
-	_expect_true(not game.running, "victory should stop the active simulation")
-	_expect_equal(game.completed_directives.size(), 1, "the final directive should be included in the summary")
-	_expect_equal(game.summary_title_label.text, "Station Stabilized", "victory should use the stabilized summary title")
-	_expect_equal(game.meta.total_victories, 1, "a stabilized station should persist one victory")
-	_expect_true(game.summary_text.text.contains("INDUSTRY R1 2/5  RANK UP"), "victory summary should expose doctrine rank progress")
-	_expect_true(game.summary_text.text.contains("Stabilized reboots: 1"), "victory summary should expose the persistent win count")
+	_expect_true(not game.run_victory and game.running, "Legacy final directive cannot end the loop")
+	_expect_equal(game.completed_directives.size(), 0, "Legacy directive absent from summary")
+	_expect_equal(game.meta.total_victories, 0, "Legacy directive cannot grant persistent victories")
+	_expect_true(game.meta.doctrine_mastery.is_empty(), "Legacy directive cannot grant mastery")
 	game.summary_text.free()
 	game.summary_title_label.free()
 	game.summary_layer.free()
@@ -241,7 +242,7 @@ func _test_final_directive_stabilizes_station() -> void:
 	if FileAccess.file_exists(test_save_path):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(test_save_path))
 
-func _test_missed_directive_ends_run() -> void:
+func _test_retired_deadline_keeps_run_active() -> void:
 	var test_save_path := "user://brine_deadline_test_save.json"
 	var game = MainScript.new()
 	game.meta.save_path = test_save_path
@@ -253,8 +254,8 @@ func _test_missed_directive_ends_run() -> void:
 	game.cycle = 6
 	game.run_directives = [{"name": "EXPIRED", "metric": "rooms", "target": 4, "deadline": 5, "reward": {}}]
 	game._check_directive_progress()
-	_expect_true(not game.running, "a missed directive deadline should end the run")
-	_expect_true(game.summary_text.text.contains("deadline missed"), "deadline failure should explain the loss")
+	_expect_true(game.running, "Retired deadlines cannot end a run")
+	_expect_true(game.summary_text.text.is_empty(), "Retired deadlines produce no failure summary")
 	game.summary_text.free()
 	game.summary_title_label.free()
 	game.summary_layer.free()

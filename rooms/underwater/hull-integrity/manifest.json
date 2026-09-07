@@ -1,0 +1,69 @@
+[
+  {
+    "id": "shield_generator",
+    "subject": "Hull Integrity Control: structural monitoring, clamped pressure-hull test sample, sealed repair compound injector and patch/clamp rack.",
+    "prompt": "Create an individual BrineSpace Hull Integrity Control room source, target 1280x1280. Reference ONLY for near-top-down cutaway camera, south-facing machinery, chunky detailed pixel-art style and Engineering metal construction; do not copy the workshop equipment. Underwater pressure station, restored mostly clean Engineering department: charcoal steel, restrained burnt-orange chassis panels, pale instrument faces, limited hazard yellow. Four complete separated assemblies around generous empty central cross circulation: NW low structural monitoring console with one large DARK unlit rectangular screen reserved for an engine-drawn hull diagram and a bank of physical strain gauges; NE compact pressure/strain calibration rig with a curved ribbed steel hull sample clamped horizontally between two chunky load actuators, entirely inside its service skid, no robot arm; SW sealed structural repair compound mixing/injection unit with two squat cartridge reservoirs, a small control face and short contained hoses, NO open liquid or spills; SE secured rack holding stacked curved pressure patches, adjustable repair clamps and a neatly coiled heavy reinforced hose, NO loose floor tools. Distinct from battery, reactor and general maintenance rooms. Every upright front faces screen south, height screen up. Keep silhouette edges and supporting components within each quadrant, disconnected from walls and other machines, with clear floor surrounding each for extraction. Shared low square modular pressure hull aligned with image edges, not an isometric diamond; ALL walls flush sealed, no doors, recesses, door lamps or inserts at side midpoints; engine supplies north/south sockets. Quiet plain dark floor. Intact clean metal with subtle handling wear. Neutral ambient light only; dark unlit displays and lenses, NO generated diagram or signal traces on the screen. No energy shield dome, forcefield, blue energy coil, weapon, stars, orbital imagery, text, logo, UI or people. Transparent exterior if possible. Preserve primary equipment readability with controlled detail and functional relationships.",
+    "reference": "rooms/production-ten/maintenance_bay-source-v1.png (camera/style/materials only)",
+    "source": "rooms/underwater/hull-integrity/shield_generator-source-v1.png",
+    "stage": "integrated_initial_native_pass",
+    "primary_department": "Engineering",
+    "condition": "restored, mostly clean; localized edge wear",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "footprint_cells": [
+      1,
+      1
+    ],
+    "integration": {
+      "station": true,
+      "cards": true,
+      "view": "rooms/underwater/hull-integrity/shield_generator_view.gd",
+      "card": "rooms/underwater/hull-integrity/shield_generator-card-panel-v1.png"
+    },
+    "verification": {
+      "native": true,
+      "complete_acceptance": false,
+      "scope": "Three viewport fixtures, four rotations, host motion/offline/pause, bounds, 728 aisle samples and screen effect containment; four gameplay suites pass",
+      "document": "rooms/underwater/hull-integrity/INTEGRATION.md",
+      "additional_evidence": {
+        "walker": "1600 pairs, 178568 samples, zero failures; output/hull-integrity/walker.log",
+        "economy": "4 real economy states, base rotation 1600x900; output/hull-integrity/economy.log",
+        "crossings": "8 arrivals, all 56 sampled crops reviewed; output/hull-integrity/crossings-review.json",
+        "windows_export": "13 source hashes, 26 PNG decodes, 20 rooms visited and 295 transitions; output/production-ten/windows-validation-adaptations-v1/verification.json"
+      }
+    },
+    "review": [
+      "Dark blank console screen is suitable for engine-local hull diagnostics.",
+      "Clamped curved hull sample and patch rack distinguish structural maintenance from generic workshop.",
+      "Four separated south-facing groups leave broad central circulation.",
+      "Generated north/south mechanical wall inserts violate flush-wall request; exclude them from plain wall samples and let canonical engine geometry own boundaries.",
+      "Dark opaque exterior; preserve immutable source and use registered silhouettes, not dark threshold.",
+      "Minor source-floor patches inside loops/frames require registration review; generated condition is more worn than pristine."
+    ],
+    "sha256": "6604bd937fd6d1595caac11ab22ef1ca3864208130b2942d8bdb1d5a0885c49c",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "image_mode": "RGB",
+    "component_assets": [
+      {
+        "path": "rooms/underwater/acoustic-comms/electronics-bench-v1.png",
+        "sha256": "43de46c853a1bb41a91931375e6ff702baebb3d76ff7a519305ec80540ba1729"
+      },
+      {
+        "path": "rooms/underwater/hull-integrity/panel-cradle-clean-v2.png",
+        "sha256": "22a2c7651aed2750071ed84f43c7e00264b0f8a86281eee2e1e4d711a33a56b9"
+      }
+    ],
+    "composition_profile": "rooms/underwater/hull-integrity/hull-composition-v3.json",
+    "composition_assets": [
+      {
+        "path": "rooms/underwater/hull-integrity/hull-composition-v3.json",
+        "sha256": "bf4167d6f465db41747fe4a544ae926b9d87fd94e6ea6347733b24e4032a844e"
+      }
+    ]
+  }
+]

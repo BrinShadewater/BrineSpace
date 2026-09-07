@@ -1,0 +1,37 @@
+{
+  "id": "xeno_lab",
+  "brief": "Scientists study recovered alien wreckage. One unmistakable broken ribbed alien alloy crescent rests diagonally in a low reinforced examination cradle across upper half, with a compact robotic probe beside it; lower left sample case and lower right analysis console, open south access route. Alien object is charcoal iridescent mineral/metal, not flesh; human cradle is worn steel with restrained dull violet sensor accents. Scorching belongs to recovered object; surrounding floor quiet. Future effect anchor probe tip, no floating magical aura.",
+  "prompt": "Use case: stylized-concept. Asset: one BrineSpace room sprite, square 1280 target. Use reference for overhead cutaway camera, worn hull construction and selective pixel illustration treatment, and ONLY SOUTH centered open doorway layout. Completely replace medical furnishings with specified subject. NORTH EAST WEST walls sealed, no false door trim. South doorway is a floor passage through wall not a painted panel. Large readable equipment, quiet dark slate floor, sparse supporting details, same station scale. Genuinely transparent exterior; no black or checkerboard backdrop. No text, UI, logos, characters. Static base readable without active glow; future localized effects separate. Scientists study recovered alien wreckage. One unmistakable broken ribbed alien alloy crescent rests diagonally in a low reinforced examination cradle across upper half, with a compact robotic probe beside it; lower left sample case and lower right analysis console, open south access route. Alien object is charcoal iridescent mineral/metal, not flesh; human cradle is worn steel with restrained dull violet sensor accents. Scorching belongs to recovered object; surrounding floor quiet. Future effect anchor probe tip, no floating magical aura.",
+  "source": "C:\\Users\\Alex\\.codex\\generated_images\\01a06da5-a7ef-7d01-a977-fb23e4a353a1\\exec-6a408c18-effe-4d9c-844e-9da3ef6bd5f2.png",
+  "method": "built-in imagegen",
+  "reference_roles": {
+    "path": "rooms/hybrid/med_bay.png",
+    "inherit": "camera/materials/south-only doors",
+    "exclude": "medical equipment"
+  },
+  "processing": {
+    "tool": "tools/room_art_pipeline.py",
+    "size": 1280,
+    "margin": 8
+  },
+  "source_sha256": "1fc8f29afc588a2fa7caf62580e0e3c688c5cf6de2b6ac5b64fb5f650aa7d547",
+  "output_sha256": "66007c4e87811bc3aa5dc01a5e82d87d56d5f7a995d7d7529d517e36996d3f57",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "output_size": [
+    1280,
+    1280
+  ],
+  "exterior_sample": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage": "normalized-candidate",
+  "geometry": "south doorway visible, other sides sealed; seam/native checks pending",
+  "art": "distinct focal subject; gameplay scale not verified",
+  "integrated": false
+}

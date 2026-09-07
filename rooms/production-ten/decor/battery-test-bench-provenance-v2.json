@@ -1,0 +1,34 @@
+{
+  "prompt": "Create one isolated transparent-background game prop: a compact wide electrical test bench for BrineSpace underwater station. Chunky deliberately pixel-art rendering, near-top-down orthographic cutaway camera looking from south, horizontal front and back edges exactly parallel to image edge, visible broad tabletop and shorter south-facing front apron. No isometric diagonal, no room or floor. Entire object fits with generous transparent margin. Width approximately 1.6 times total visible height. Charcoal steel bench with restrained burnt-orange drawer accents and clean maintained industrial finish. The bench has a firmly attached low rear steel backboard on two brackets: analog voltage meter and four chunky fuse holders mounted on it, red and black test leads hanging from hooks. Work surface contains a small open instrument case, insulated gloves resting together, and one removable battery cell in a cradle. Two shelves below with a neat coil of insulated cable and spare fuse box. Four solid short legs, one small articulated shielded task lamp physically clamped to back corner, neutral unlit cream lens. No text, no people, no external shadow, no checkerboard. Actual alpha transparency. Readable distinct objects and supports at small game scale, no photorealistic tiny detail. One complete wide supported workstation.",
+  "reframe_prompt": "Preserve this exact electrical workbench design and camera. Reframe it smaller on a larger transparent canvas with at least 10 percent empty transparent margin on EVERY side. Complete the lamp hinge at the top and both feet at the bottom so no object touches the image edge. Maintain horizontal parallel tabletop edges, chunky pixel-art treatment, all supported instruments and hanging cables. Actual alpha background, no checkerboard, no floor or shadow.",
+  "source_v1": "battery-test-bench-v1.png",
+  "source_v2": "battery-test-bench-source-v2.png",
+  "selected": "battery-test-bench-clean-v2.png",
+  "cleanup": {
+    "keep_canvas": true,
+    "clear_gap": [
+      [
+        1130,
+        250
+      ],
+      [
+        406,
+        620
+      ],
+      [
+        1154,
+        605
+      ]
+    ]
+  },
+  "findings": [
+    "v1 cropped lamp rejected",
+    "v2 reframed but RGB checkerboard; connected neutral cleanup and three inspected gaps",
+    "cleaned alpha and lamp/feet visually inspected; native composition acceptance separate"
+  ],
+  "hashes": {
+    "battery-test-bench-v1.png": "fb0080c6e995ab1cfd55c3446606d2bd2799bed2ef79250026f651dbec6ba885",
+    "battery-test-bench-source-v2.png": "783bbb378c57ad8e04e22ffd83369603261e38eaeea7f44a32a06e73baaf3fbf",
+    "battery-test-bench-clean-v2.png": "6186e65ad77cb78a7aa0581dc5c1043e7d3511ce8936129cc4d58d3255634909"
+  }
+}

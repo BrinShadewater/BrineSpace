@@ -1,0 +1,43 @@
+{
+  "status": "dry_equipment_fitting_pilot",
+  "equipment": "diving-helmet",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "walk-east",
+      "frameCount": 6,
+      "frameDurationsMs": [
+        170,
+        130,
+        150,
+        170,
+        130,
+        150
+      ],
+      "fps": 6.66667,
+      "loop": true,
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "sources": [
+        "../generated/cleanup-walk-east.png"
+      ],
+      "sourceSha256": {
+        "cleanup-walk-east": "c4759905c509dc26ac3fa6e134be8f3373e960b2752a439e2961a643f6e1bbe0"
+      },
+      "mirroredFrom": null,
+      "reversedFrom": null,
+      "notes": "Reference-generated; no mirroring; shared ground baseline, head-size registration and 64-color non-dithered palette."
+    }
+  ]
+}

@@ -1,0 +1,670 @@
+{
+  "pixelScale": 0.8821621621621621,
+  "scope": "Separate swim and tread cycle bounds per facing, relative to shoulder pivot",
+  "actors": {
+    "bill": {
+      "bare": {
+        "east": [
+          -37.93297297297297,
+          -11.468108108108108,
+          31.757837837837837,
+          19.40756756756757
+        ],
+        "west": [
+          -29.993513513513513,
+          -10.585945945945946,
+          41.46162162162162,
+          20.28972972972973
+        ],
+        "north": [
+          -20.28972972972973,
+          -22.054054054054053,
+          18.525405405405404,
+          51.1654054054054
+        ],
+        "south": [
+          -31.757837837837837,
+          -41.46162162162162,
+          31.757837837837837,
+          26.464864864864865
+        ]
+      },
+      "helmet": {
+        "east": [
+          -37.93297297297297,
+          -20.28972972972973,
+          31.757837837837837,
+          19.40756756756757
+        ],
+        "west": [
+          -29.993513513513513,
+          -20.28972972972973,
+          41.46162162162162,
+          20.28972972972973
+        ],
+        "north": [
+          -20.28972972972973,
+          -22.054054054054053,
+          18.525405405405404,
+          51.1654054054054
+        ],
+        "south": [
+          -31.757837837837837,
+          -41.46162162162162,
+          31.757837837837837,
+          26.464864864864865
+        ]
+      }
+    },
+    "veld": {
+      "bare": {
+        "east": [
+          -48.51891891891892,
+          -14.114594594594594,
+          31.757837837837837,
+          21.171891891891892
+        ],
+        "west": [
+          -24.70054054054054,
+          -14.996756756756756,
+          44.108108108108105,
+          17.643243243243244
+        ],
+        "north": [
+          -28.22918918918919,
+          -20.28972972972973,
+          28.22918918918919,
+          54.69405405405405
+        ],
+        "south": [
+          -27.347027027027025,
+          -44.99027027027027,
+          27.347027027027025,
+          25.5827027027027
+        ]
+      },
+      "helmet": {
+        "east": [
+          -48.51891891891892,
+          -22.054054054054053,
+          31.757837837837837,
+          21.171891891891892
+        ],
+        "west": [
+          -24.70054054054054,
+          -23.818378378378377,
+          44.108108108108105,
+          17.643243243243244
+        ],
+        "north": [
+          -28.22918918918919,
+          -20.28972972972973,
+          28.22918918918919,
+          54.69405405405405
+        ],
+        "south": [
+          -27.347027027027025,
+          -44.99027027027027,
+          27.347027027027025,
+          25.5827027027027
+        ]
+      }
+    },
+    "branforth": {
+      "bare": {
+        "east": [
+          -33.52216216216216,
+          -14.114594594594594,
+          27.347027027027025,
+          16.76108108108108
+        ],
+        "west": [
+          -25.5827027027027,
+          -13.232432432432432,
+          32.64,
+          15.878918918918918
+        ],
+        "north": [
+          -25.5827027027027,
+          -29.111351351351352,
+          24.70054054054054,
+          65.28
+        ],
+        "south": [
+          -22.054054054054053,
+          -42.343783783783785,
+          21.171891891891892,
+          25.5827027027027
+        ]
+      },
+      "helmet": {
+        "east": [
+          -33.52216216216216,
+          -20.28972972972973,
+          27.347027027027025,
+          16.76108108108108
+        ],
+        "west": [
+          -25.5827027027027,
+          -21.171891891891892,
+          32.64,
+          15.878918918918918
+        ],
+        "north": [
+          -25.5827027027027,
+          -29.111351351351352,
+          24.70054054054054,
+          65.28
+        ],
+        "south": [
+          -22.054054054054053,
+          -42.343783783783785,
+          21.171891891891892,
+          25.5827027027027
+        ]
+      }
+    }
+  },
+  "treading": {
+    "bill": {
+      "bare": {
+        "east": [
+          -9.703783783783784,
+          -16.76108108108108,
+          15.878918918918918,
+          39.6972972972973
+        ],
+        "west": [
+          -15.878918918918918,
+          -16.76108108108108,
+          7.939459459459459,
+          40.57945945945946
+        ],
+        "north": [
+          -15.878918918918918,
+          -14.114594594594594,
+          14.996756756756756,
+          41.46162162162162
+        ],
+        "south": [
+          -22.054054054054053,
+          -14.114594594594594,
+          22.054054054054053,
+          42.343783783783785
+        ]
+      },
+      "helmet": {
+        "east": [
+          -9.703783783783784,
+          -20.28972972972973,
+          15.878918918918918,
+          39.6972972972973
+        ],
+        "west": [
+          -15.878918918918918,
+          -20.28972972972973,
+          7.939459459459459,
+          40.57945945945946
+        ],
+        "north": [
+          -15.878918918918918,
+          -19.40756756756757,
+          14.996756756756756,
+          41.46162162162162
+        ],
+        "south": [
+          -22.054054054054053,
+          -19.40756756756757,
+          22.054054054054053,
+          42.343783783783785
+        ]
+      }
+    },
+    "veld": {
+      "bare": {
+        "east": [
+          -6.175135135135135,
+          -16.76108108108108,
+          16.76108108108108,
+          45.87243243243243
+        ],
+        "west": [
+          -21.171891891891892,
+          -16.76108108108108,
+          5.292972972972973,
+          46.75459459459459
+        ],
+        "north": [
+          -15.878918918918918,
+          -14.996756756756756,
+          15.878918918918918,
+          44.108108108108105
+        ],
+        "south": [
+          -17.643243243243244,
+          -15.878918918918918,
+          17.643243243243244,
+          45.87243243243243
+        ]
+      },
+      "helmet": {
+        "east": [
+          -6.175135135135135,
+          -20.28972972972973,
+          16.76108108108108,
+          45.87243243243243
+        ],
+        "west": [
+          -21.171891891891892,
+          -20.28972972972973,
+          6.175135135135135,
+          46.75459459459459
+        ],
+        "north": [
+          -15.878918918918918,
+          -19.40756756756757,
+          15.878918918918918,
+          44.108108108108105
+        ],
+        "south": [
+          -17.643243243243244,
+          -19.40756756756757,
+          17.643243243243244,
+          45.87243243243243
+        ]
+      }
+    },
+    "branforth": {
+      "bare": {
+        "east": [
+          -8.821621621621622,
+          -14.996756756756756,
+          19.40756756756757,
+          43.225945945945945
+        ],
+        "west": [
+          -17.643243243243244,
+          -15.878918918918918,
+          10.585945945945946,
+          43.225945945945945
+        ],
+        "north": [
+          -16.76108108108108,
+          -14.114594594594594,
+          17.643243243243244,
+          43.225945945945945
+        ],
+        "south": [
+          -22.936216216216216,
+          -14.114594594594594,
+          22.936216216216216,
+          44.108108108108105
+        ]
+      },
+      "helmet": {
+        "east": [
+          -8.821621621621622,
+          -20.28972972972973,
+          19.40756756756757,
+          43.225945945945945
+        ],
+        "west": [
+          -17.643243243243244,
+          -20.28972972972973,
+          10.585945945945946,
+          43.225945945945945
+        ],
+        "north": [
+          -16.76108108108108,
+          -19.40756756756757,
+          17.643243243243244,
+          43.225945945945945
+        ],
+        "south": [
+          -22.936216216216216,
+          -19.40756756756757,
+          22.936216216216216,
+          44.108108108108105
+        ]
+      }
+    }
+  },
+  "sourceSha256": {
+    "revisions/bill-swim-east-v2/manifest.json": "c74e0af5eb3b0b9c82f20fa76880e268b0d166be799a1798fe99a93be44ba994",
+    "revisions/bill-swim-east-v2/frame_000.png": "fade11255a72692a3d5bcf2789b391be38fb52e8bd4a660b7fbc42b1a896e3ef",
+    "revisions/bill-swim-east-v2/frame_001.png": "fa22247304a087714f3f1cb821ccf227b962660155f79b8768187eb62802b0f4",
+    "revisions/bill-swim-east-v2/frame_002.png": "f3645873751dc7af4e0d1d2ddec02d57dbe1b24500f38156ace1c937a8800b30",
+    "revisions/bill-swim-east-v2/frame_003.png": "932cc37a4af39567181b309b9b59ab477b4a4ed675210ba41da6ab8f53655e00",
+    "revisions/bill-swim-east-v2/frame_004.png": "e44d733eac87fe737865caec97b0c69f7d1739800c64be7c65ce8aa78345a065",
+    "revisions/bill-swim-east-v2/frame_005.png": "c2f4f41de44dca635cd9c1c68de3f2fa3a9e0761d3779c2055ff66ecaacbcb63",
+    "pilot/bill-tread-east/manifest.json": "904e7df690bd7e4adb70c0cfd4da73b94ca9847b04fe5991b6c71e65144aacb5",
+    "pilot/bill-tread-east/frame_000.png": "e1a38f5bb7cd33b4b9e15ff966d1ab16259c0c855f11ff9473e4ffca41cd0b76",
+    "pilot/bill-tread-east/frame_001.png": "614f483a8a25cf80c710d125e2a4e7ad1bba724f1a9dd856d61b94279860fbbd",
+    "pilot/bill-tread-east/frame_002.png": "c54e7d63eaffbee5a7731a0e1fe47298c2c4b0456e80c72092548451d37d9e22",
+    "pilot/bill-tread-east/frame_003.png": "d981c3eb5e113dce366ed4b4265d0fc55221e4f80b9939844b524573fe6d8c4d",
+    "pilot/bill-tread-east/frame_004.png": "0ad9cbde09ed47e1e9daa46ee115d494794619e808082b16f3124070aab5c43e",
+    "pilot/bill-tread-east/frame_005.png": "090f4a393cfa42013a2431bef0a08147e4033f18925d653bf97a8cc439095f35",
+    "revisions/bill-swim-west-v2/manifest.json": "c96a4961ec73bdf08c5ebda9e20ccddb5cec8340307f36229367992da1b9729c",
+    "revisions/bill-swim-west-v2/frame_000.png": "1522aa3dda6cdef9aa70c6df3a5459167b9ac2da5a6f183ddb90b049c5c42ed0",
+    "revisions/bill-swim-west-v2/frame_001.png": "619f4345d35b85a7d74da041a35f1f1268b2c88880085d9bed56759482eb4595",
+    "revisions/bill-swim-west-v2/frame_002.png": "a5bc16e3bb1726bf4b2016414aef4aa20fad67800d24838d1f015b738d809bc4",
+    "revisions/bill-swim-west-v2/frame_003.png": "780b4bb13c63c6497c77bc041040d3970ac778b464dbedd08692a965a3594282",
+    "revisions/bill-swim-west-v2/frame_004.png": "7386b6b405fa66d55bced9597825d89c637bf9df145dfb54c10c292ccebd6ef1",
+    "revisions/bill-swim-west-v2/frame_005.png": "c102ade2cae8ef1b2926e0b2e395addb867b047c9b35b1a36f99014eacdf2532",
+    "pilot/bill-tread-west/manifest.json": "00fe4394f70ae108b44dd432da87a34823a8f92dee828168b5598fd4c0cd0dcb",
+    "pilot/bill-tread-west/frame_000.png": "769fbae6df6479bb9993e08bcce482ea50d55bfe7fc058d313890e55014a80b5",
+    "pilot/bill-tread-west/frame_001.png": "c80bbd854ab1eb98ae8a72f95f8959795420952db3e1919b9ffe47e60e242eb6",
+    "pilot/bill-tread-west/frame_002.png": "f4285ef79a10597e78337dece3d7c989197d67f1982bd5b6a1b475c6c0cf4c03",
+    "pilot/bill-tread-west/frame_003.png": "c265b4138ce5d87a1019d530ba2e131f9cd526df4e54c2f952700312baea3dce",
+    "pilot/bill-tread-west/frame_004.png": "65da460394442954a5ec72348c3cfaaf979b815b405631e3a5d065d287d05b13",
+    "pilot/bill-tread-west/frame_005.png": "7be701ca05a12a7523c42defb5faa767f78d5c9abf8a8cc215a602db36c63e1c",
+    "revisions/bill-swim-north-v2/manifest.json": "d7d398a6671642cc68e188137211fb776bdc28edf20e50feda37050a31911936",
+    "revisions/bill-swim-north-v2/frame_000.png": "16fa519ea0e5c47243392b2baa542365dd0e9d625c54e047ecfce93c64b27929",
+    "revisions/bill-swim-north-v2/frame_001.png": "bd21722823988fdf5b2f5ac7ab1d5da4e57336c31a3ca03ea8ef9a2e1906e0fe",
+    "revisions/bill-swim-north-v2/frame_002.png": "e0764e3ccc21aa451f1a3f1e21443c13d1b2d86b3ad0b16082b8fa3bf1359de6",
+    "revisions/bill-swim-north-v2/frame_003.png": "a7724bd30864fa4c04646408be601bcee19e949c15e6269b6c2329fae0435fba",
+    "revisions/bill-swim-north-v2/frame_004.png": "3122f6f5a14bfd2b3bc8a301d31b8ce86dfd96da04f5075b6efd2546f166fd1e",
+    "revisions/bill-swim-north-v2/frame_005.png": "2cac8dba1af70b09d2e259edf4e532d4ab7dae57983f7b2e0aca1ae52a9c4036",
+    "pilot/bill-tread-north/manifest.json": "ad671f22d4ac11ed1d8e32db0a6e02ab827276c01d327476e37300ffadebe1df",
+    "pilot/bill-tread-north/frame_000.png": "88b60a52e66986a78e51404fda52465e4b093181c1c8cb8d89de39188336b185",
+    "pilot/bill-tread-north/frame_001.png": "08b5bb893a62de709323a3acbc31406e9f87febcea8f9b4ce576993fd03aa58b",
+    "pilot/bill-tread-north/frame_002.png": "b3d1437bc1e07aaea8ae65b9826003fee65d0cf0ea6eb57d1e87135f05d4325f",
+    "pilot/bill-tread-north/frame_003.png": "b75dcdd789fe4f5e541f56910bb49c594c0d0f0c64190ff9b48fddc99c388c4e",
+    "pilot/bill-tread-north/frame_004.png": "45c7b152e81eb57fd54cda3f24417a3a4e747d96161e7156efddbf8b8332f3da",
+    "pilot/bill-tread-north/frame_005.png": "fbbb5c92c438c931a7af368a116a63bb5cae6d5b25f88dd515ae689f9eb584a7",
+    "revisions/bill-swim-south-v2/manifest.json": "d1a24fd4544917792452154b632afd5d33df6fd8b61e2b06981cdbbc70d299f1",
+    "revisions/bill-swim-south-v2/frame_000.png": "da5b0959dc794cdfe8fb3e919df3bc606d9aa485977d431fdbf4162669047e72",
+    "revisions/bill-swim-south-v2/frame_001.png": "21ed1d8de0943778f168ba1d013b1ef804f3a671c9188a0c8006ffff9e495d56",
+    "revisions/bill-swim-south-v2/frame_002.png": "c886963db57c105962e1109b2160892f86345ad1d392bde5b7d3996020621dd4",
+    "revisions/bill-swim-south-v2/frame_003.png": "ec145e311386ef2f49bffc9b0d4bf5eaef3fe4c9e5724b78bc286b924e9a6702",
+    "revisions/bill-swim-south-v2/frame_004.png": "6f76caf0ff21e1eb8216a59f78bb3b3fd33b9928cd6f2c1bcfeb9291e387527d",
+    "revisions/bill-swim-south-v2/frame_005.png": "841350a6ffd7a287cf84416584d4c555f02894f0f199a4b08c5aa0a5be8d4674",
+    "pilot/bill-tread-south/manifest.json": "fc3c2d83698c3a4657a56748cc2155f1b2de2003d7dc06a0db15d660a6d9c75d",
+    "pilot/bill-tread-south/frame_000.png": "d0b01106a31d923045f0ebc9670e22ad9e7f702530cfcf29200b16926cc0349c",
+    "pilot/bill-tread-south/frame_001.png": "5a1413980308ead26b1be5e669df280856a355cc76e3ca134e43193c0bfbb54b",
+    "pilot/bill-tread-south/frame_002.png": "e61e5c3605d11a5f0f6e0843a5f9e999f30c1b3bb3417b78bf46f291170bee3c",
+    "pilot/bill-tread-south/frame_003.png": "f31a6fa618716c48099a2e41de72d16380faaa3af11c972d003230ccd831e3f4",
+    "pilot/bill-tread-south/frame_004.png": "4f83010a088cc0ab616bf531e0ac68b6902ded97bb2ed1d9e12ee38f61b0a16e",
+    "pilot/bill-tread-south/frame_005.png": "e342d0a0d4d165d14cb769c4e4a1f7c4b930823ca82a5fe7e3ba1d1a2601486c",
+    "revisions/bill-swim-east-v2/helmet/manifest.json": "f3b16405350a6090b7e5235babc05512c7d88af10eefe5fa4d460ef782c33a68",
+    "revisions/bill-swim-east-v2/helmet/frame_000.png": "f83f0a732c436be293a25cdfbee7d38a4578934a5f3c117c1ab8de47d4d75a6e",
+    "revisions/bill-swim-east-v2/helmet/frame_001.png": "0f413314a9a29d2d32edbdf7724c698d3690097c40579d7b633d8f7dc6186a13",
+    "revisions/bill-swim-east-v2/helmet/frame_002.png": "3b86aec09310360905a1a441590e3077d76a9bbeee0ee527e424d6f3e5774752",
+    "revisions/bill-swim-east-v2/helmet/frame_003.png": "49295b2a4477aa90641df6a8f8fcd5821cecf5e351b480ae9d22fc29b7326eb1",
+    "revisions/bill-swim-east-v2/helmet/frame_004.png": "ac7c20b831ab9f8a3860e7793a1ac7b5d2d0f180d6ac6d7307ccfd5fb38aff3c",
+    "revisions/bill-swim-east-v2/helmet/frame_005.png": "e9abb22092e327cf02415b307797b8ee746f460ec4f0499dd694eb63f98e930a",
+    "equipment/fitting/bill-tread-east/manifest.json": "1397555a8e04e5f52c267f2809bd48184e9268f74afb50a43bfab257fb657458",
+    "equipment/fitting/bill-tread-east/frame_000.png": "b1249ec5f768458765a45408d007f4ca5e7bb9e1e212524a978e6ab5163ae451",
+    "equipment/fitting/bill-tread-east/frame_001.png": "f6320f98b1b494b707899116c7e24325e4ec0579843a72d65417883e6ce5f0ee",
+    "equipment/fitting/bill-tread-east/frame_002.png": "8f253332ee95ef8473c101b4d55bb82483aaba92f122367f9b5155525a44c26f",
+    "equipment/fitting/bill-tread-east/frame_003.png": "1ca87265b7c6fb3acaeff879f046d5f64950f3bf7f413fb75920af28813ffd80",
+    "equipment/fitting/bill-tread-east/frame_004.png": "f6fa161137f98907c6f554b7fa858ec39de91d4af016681254222168e6990918",
+    "equipment/fitting/bill-tread-east/frame_005.png": "d4f8acd2b46e3e006ae51af80122ff8c23a4b31dc0e34199f8830f5fb88e31e2",
+    "revisions/bill-swim-west-v2/helmet/manifest.json": "0a75f2070c062c03b292d5a92bab862d5cea1e172bda8bd21901c3c56e6b77d6",
+    "revisions/bill-swim-west-v2/helmet/frame_000.png": "706a352c63a47cafeab47dda60ec3ad1e1d6314830791a712583cfdadf01f0ad",
+    "revisions/bill-swim-west-v2/helmet/frame_001.png": "27a417ba3f00b467451fec62cc904734e377a8964f98b514a28e9b7d19e80759",
+    "revisions/bill-swim-west-v2/helmet/frame_002.png": "ce18a83c3d41e5669f718b6cba5419a35eae8db64a2c232f4e934c58b6e9c242",
+    "revisions/bill-swim-west-v2/helmet/frame_003.png": "49c17d7ff82baf3c737ab61d588079299a730ccddbcdcabb3ef0ecbe3c6f075e",
+    "revisions/bill-swim-west-v2/helmet/frame_004.png": "0a1d83a657072c96e9c12c57967cdd92a5ec6409ea85bda495a1ef201912a45b",
+    "revisions/bill-swim-west-v2/helmet/frame_005.png": "d72f0e9dc45e33d4ae43793da28f350dc64d650575c97af29ff308e17cdad00c",
+    "equipment/fitting/bill-tread-west/manifest.json": "fa42552a9b8858bdf806db8ecd962d4a9dbbcb8c1b40c96d10fae06bdcdbd3f7",
+    "equipment/fitting/bill-tread-west/frame_000.png": "f2d575812aaf60ae90548c914f5a478215aa96250506c46d2ca206e83df5f158",
+    "equipment/fitting/bill-tread-west/frame_001.png": "04c4d464a8c32db1b60e7f0295108760f22ef925f94d836b07126cc3da956bba",
+    "equipment/fitting/bill-tread-west/frame_002.png": "8ff48d133db525616779a2dac176cbff7c0f8590191c3c6654e69bcef13b2ef6",
+    "equipment/fitting/bill-tread-west/frame_003.png": "01bd00e5424a9caf2b4e936b6ec9628dec5ebbce29359eb868fb7f118db6d887",
+    "equipment/fitting/bill-tread-west/frame_004.png": "59fa532568a6d97175dafb72b1111cedc3df110dff834c48fac42abda6e662ec",
+    "equipment/fitting/bill-tread-west/frame_005.png": "fe02d991192779787c6b2b402d31645de9a3a35d91e20452aab47d7f83644301",
+    "revisions/bill-swim-north-v2/helmet/manifest.json": "866dbf706d05d3b4c5b996de163ff59289f576b47412d775a7fddde39b83a9b4",
+    "revisions/bill-swim-north-v2/helmet/frame_000.png": "73bd2dabb9244df1fe6a3f8ff255865add493f7f6edc105209ba695098f48306",
+    "revisions/bill-swim-north-v2/helmet/frame_001.png": "919ad657780dad5540163bb51e7b220dd85be4014892cbb74ccb5c8a7ce3c1bb",
+    "revisions/bill-swim-north-v2/helmet/frame_002.png": "67b28f7359c58a0e5d44b3206609729caf53e95d1a2441c5dad8136ff0e54b82",
+    "revisions/bill-swim-north-v2/helmet/frame_003.png": "19a32b0d231d410bd07cd93d13a2443f889648da4e2bde16b9ae79616ca399b4",
+    "revisions/bill-swim-north-v2/helmet/frame_004.png": "c8980974946378651afb377ac169648a49a1811f796c8759b90401f217152936",
+    "revisions/bill-swim-north-v2/helmet/frame_005.png": "677b14f9816f337c8ae4cb330ce08a80b7d3d8264fc25b6df9c82e78ab9bca5a",
+    "equipment/fitting/bill-tread-north/manifest.json": "84a42d2e5d42cb3a1b245e8c6762ff6af66532d4978758b5e6e6998f92c74fa3",
+    "equipment/fitting/bill-tread-north/frame_000.png": "94692b5685fba9b8f5babc0d7c4d00441b41f5defa2e1732576da60de9e55692",
+    "equipment/fitting/bill-tread-north/frame_001.png": "f4d522449d39d8c49839b69f708850e86f70524fecbcf1bf1a1d963078e541c6",
+    "equipment/fitting/bill-tread-north/frame_002.png": "a0fe1b7334105e0fe5fea238acdf71b3c1b6a65bef9024770bae39ecb71be79d",
+    "equipment/fitting/bill-tread-north/frame_003.png": "29e10cab328924c08b6f7ecc7c16dc85354ac305494c910d46b62f0b62f1e542",
+    "equipment/fitting/bill-tread-north/frame_004.png": "e6d489c0b1be8145af6bbe02ffe263eaa3291501a5070bf36545975b84354089",
+    "equipment/fitting/bill-tread-north/frame_005.png": "54510db050598fb021b512f85a2d6343b181725daf35782666caaa58872ead2e",
+    "revisions/bill-swim-south-v2/helmet/manifest.json": "f48fd5fa419e1251422ae7ec07bf2ff2ef7a443d0bbd3c03b5cb30cee68916d8",
+    "revisions/bill-swim-south-v2/helmet/frame_000.png": "afdb1900db387105b8f8a0cbfffd9945ce729c5236389d7baf808dc718c9efa1",
+    "revisions/bill-swim-south-v2/helmet/frame_001.png": "d1116016084c39621b3a08c68756b532291171acb6f09b35d8f926cc4b167f86",
+    "revisions/bill-swim-south-v2/helmet/frame_002.png": "aa7c03bb0f9311845a8dca6b3347c35c5ceba593ee6212b9d3a23af27fe9b8cb",
+    "revisions/bill-swim-south-v2/helmet/frame_003.png": "a7237b05ea6c0f5e3ad52b92b1b6a2c73c36bfd0080b0745ba65f85a90babfba",
+    "revisions/bill-swim-south-v2/helmet/frame_004.png": "75fd100be4698c70b8cdecbed29c2736f7b3de5c5e9a2e57ea17546a39f4a5c2",
+    "revisions/bill-swim-south-v2/helmet/frame_005.png": "2191f4af4f2b4f59b26f5b09be5d992910d44eaf7e36f77dd5ddbb351096e12d",
+    "equipment/fitting/bill-tread-south/manifest.json": "0ed273cf0ed878101b8eb4b89ddf310d515151c545e2e86622c413ae518acb64",
+    "equipment/fitting/bill-tread-south/frame_000.png": "ed06157af2561cc5f35e86a6c716f4da45665f37bf4dc451e880c7893b2ed114",
+    "equipment/fitting/bill-tread-south/frame_001.png": "afd556afdfc9c969fc48aeef5ff5fe22882f500be58ce3c1742d9c488723818d",
+    "equipment/fitting/bill-tread-south/frame_002.png": "cd4aa11f69eb23e3e2c96e615fbaddfb9adf71cd1ac0e01f2eb2c22aed335ead",
+    "equipment/fitting/bill-tread-south/frame_003.png": "680f7a7bd435c6aec18ffa2686185983f67e3d434d43b91241e3d8836e9210bb",
+    "equipment/fitting/bill-tread-south/frame_004.png": "a2e34719271e2b25c46cd825eb4cfc1a448747b7910768f7ea0745f0111670f1",
+    "equipment/fitting/bill-tread-south/frame_005.png": "c4e52332be0abc6b30ca08d2d5fd1fb19a076f088e2ff0a7c094d016025c1e5a",
+    "revisions/veld-swim-east-v2/manifest.json": "c74e0af5eb3b0b9c82f20fa76880e268b0d166be799a1798fe99a93be44ba994",
+    "revisions/veld-swim-east-v2/frame_000.png": "db5e2e75ec2c23ac6df01fdeb767df31aa090c1f6adfa67b8f2083ecd842e439",
+    "revisions/veld-swim-east-v2/frame_001.png": "923e6c56fb8adb36ad07922689734ce0c189b17654dd177432121a1eb5127fa1",
+    "revisions/veld-swim-east-v2/frame_002.png": "f966c4e0ac57af4cee544833502fdb9d6a962275966ecef268df9785c02c9126",
+    "revisions/veld-swim-east-v2/frame_003.png": "eb208c3c5bfd523f7989bc6325c1f18b7f3e69794c787b1471c11985dbe3abd3",
+    "revisions/veld-swim-east-v2/frame_004.png": "ab5bee3a6ee8f95ff35a4d650187fb3a59742cec75ee5a0766e5609e35f0234e",
+    "revisions/veld-swim-east-v2/frame_005.png": "09c469e7d55d82237ee4072fd3ba47ea054d7603eb8aeb07d4a744f5002227fb",
+    "pilot/veld-tread-east/manifest.json": "904e7df690bd7e4adb70c0cfd4da73b94ca9847b04fe5991b6c71e65144aacb5",
+    "pilot/veld-tread-east/frame_000.png": "b7f0deeed5fb954731c5e8ec78f6c4624619ac35c8b6419955d13fc8c8ee9590",
+    "pilot/veld-tread-east/frame_001.png": "426b3d375306bcaae5dabc69a99ac39ea402796174780a8e9c726bddd96bd57a",
+    "pilot/veld-tread-east/frame_002.png": "a8247b7533d05fb8ca23203b7cd9cf42a646606236680ab13b3c8ad210602d69",
+    "pilot/veld-tread-east/frame_003.png": "009a04bd7d6e5edfc65c05d2abe3ce824d039d60d24d41868657771102821c39",
+    "pilot/veld-tread-east/frame_004.png": "98f6a3554daee89ad9111e2acecf8b161a8c6afb7800f7d7e454889081c3dbbe",
+    "pilot/veld-tread-east/frame_005.png": "dfd5fc5fa82a8b4f293a03bba2e004b1faae49de5d63bdf65286028d0e4867cf",
+    "revisions/veld-swim-west-v2/manifest.json": "c96a4961ec73bdf08c5ebda9e20ccddb5cec8340307f36229367992da1b9729c",
+    "revisions/veld-swim-west-v2/frame_000.png": "bbc71ea0620de8629af01d2a8805768a44747aee74f5c1b5acccb78e8ae181b1",
+    "revisions/veld-swim-west-v2/frame_001.png": "a0e36d89cd94360680c2d961164375d8f3d3b0722565b94b2a4bc24139204b64",
+    "revisions/veld-swim-west-v2/frame_002.png": "13d62844cec9e1d3a6cb14f332715882ca972c83e528a033ca3f1931c81c15e4",
+    "revisions/veld-swim-west-v2/frame_003.png": "27d15746e9fb00935a038b7307e68e38843077625bb119eee89ddf8d536f3cbf",
+    "revisions/veld-swim-west-v2/frame_004.png": "bdae2e94066687f6e74704831badf0032cc99ced82b283cecf4e2354a54cf61e",
+    "revisions/veld-swim-west-v2/frame_005.png": "5a1d05354409d3a8ddc9da800f353583292bd83319dc00a32d1b4818b441d690",
+    "pilot/veld-tread-west/manifest.json": "00fe4394f70ae108b44dd432da87a34823a8f92dee828168b5598fd4c0cd0dcb",
+    "pilot/veld-tread-west/frame_000.png": "98c2e1ff366dea68236b8d2bbbf8d1df048debe758557402b9369de0ab85b37e",
+    "pilot/veld-tread-west/frame_001.png": "98180d8b1a7246dd6f74ba1941cf7912f894cb7c31f5d4078b99294886ee5631",
+    "pilot/veld-tread-west/frame_002.png": "d549cac05d396598a7d7b0a19c8134395ed828c442bba6215f8e90b6db0cb896",
+    "pilot/veld-tread-west/frame_003.png": "3a4ebe08632d94ce6fe5ca2715122d28562b343aae18acc1e94e5faba24ee1fe",
+    "pilot/veld-tread-west/frame_004.png": "cf5637158916645a446be579d9146e8e7b39722ea53bcfe0c4a9d6fffc67291b",
+    "pilot/veld-tread-west/frame_005.png": "653fe71a040cc7a304196c5b418f298f3f860b00223355617d91f3e657e420f0",
+    "pilot/veld-swim-north/manifest.json": "20c61e3ec8ef1c699499a81835e2dd09ef3da70ac79eb314c56e634a863ffc53",
+    "pilot/veld-swim-north/frame_000.png": "09737e39102fdb7163b4a4668512be9db535e1f690e31c399a883e688739bad0",
+    "pilot/veld-swim-north/frame_001.png": "0c7550e36bb380ce28a17374f3554a4bc888bbca4d2a5f9c6a0e88fd50f33558",
+    "pilot/veld-swim-north/frame_002.png": "1ae34225e778ace41b8d1cbafdfc8d78606127a470eb07c7e16e04ec6e1992ff",
+    "pilot/veld-swim-north/frame_003.png": "abc9de096cd77408f2e1b55e729d1a258f12d18d1b3683892227c764c222fb02",
+    "pilot/veld-swim-north/frame_004.png": "1f43c49235a53ad7498c16797205593ad94b65a4bed7c89222b60945c7f25eaa",
+    "pilot/veld-swim-north/frame_005.png": "5dde26f6363b81de434004fc550c694c5b0dfbb64d90a9e54b4321f7f330d397",
+    "pilot/veld-tread-north/manifest.json": "ad671f22d4ac11ed1d8e32db0a6e02ab827276c01d327476e37300ffadebe1df",
+    "pilot/veld-tread-north/frame_000.png": "491ad0ee6a778a87effcc5ef4690d04a842230e4331498cc04c4c0d9a82a14d2",
+    "pilot/veld-tread-north/frame_001.png": "78c41b9cdfed1dffffe4d88c288b22ecbe94d4b63eaf837181299d84c1c2813e",
+    "pilot/veld-tread-north/frame_002.png": "81e2a7929f85a75835e07d9a0033cc5cb9e15834c2579cdb797f17c6335a56bd",
+    "pilot/veld-tread-north/frame_003.png": "8435330246ac8f7743dbff0103a10fbe38ac8ab4230db9d3aa3ef058811e63f3",
+    "pilot/veld-tread-north/frame_004.png": "314fe3740fa6a8ce889e996dbad11a97fb6997e752245f95ab468503860115c9",
+    "pilot/veld-tread-north/frame_005.png": "d5897936cd13488038c04e612574de3af499f05b9281542d7e359b1479109320",
+    "revisions/veld-swim-south-v2/manifest.json": "d1a24fd4544917792452154b632afd5d33df6fd8b61e2b06981cdbbc70d299f1",
+    "revisions/veld-swim-south-v2/frame_000.png": "080962bb577a90da11f259b03dac723f81b8dcdffd00304c89af4aec6f9fdf0c",
+    "revisions/veld-swim-south-v2/frame_001.png": "86c74f985a7390c12c8eb36d04325ab2ea7b99c946010ce530e02b341ed6b936",
+    "revisions/veld-swim-south-v2/frame_002.png": "fd1d6330b874ff5c4ff056d08ea9a7837e9ca0040b8629ab87a6214c35b06d81",
+    "revisions/veld-swim-south-v2/frame_003.png": "5155be3b9631dcdb5fbbcc2e6f04d26b30754f736bfb29dd11a4bb8506452f33",
+    "revisions/veld-swim-south-v2/frame_004.png": "68a1d1ebe096b6ad23050924b49bcfe4574ff7d4a5761678e99e80e2c5f763db",
+    "revisions/veld-swim-south-v2/frame_005.png": "833bbdda80ffebcd2dde2b725440648d00b5f0244f748abc7c1b1882ffc9955b",
+    "revisions/veld-tread-south-v2/manifest.json": "14ce580affd65c97564e4a9ded660fa9855ddddce46d61f7c767b3c064741835",
+    "revisions/veld-tread-south-v2/frame_000.png": "5630e031236bf12cbf4ad901190b0c9c8be36cc0aae9bc542180c11ba80c8f32",
+    "revisions/veld-tread-south-v2/frame_001.png": "e808776f04342278c0c851fc0e24a22e29e464fbbad33150efaf632995e422d6",
+    "revisions/veld-tread-south-v2/frame_002.png": "0948ccdf58b6fce99799bb078ec7c36d54c0619f1b5e8bfb381d5bcc7d35716c",
+    "revisions/veld-tread-south-v2/frame_003.png": "a03a3c910422eac03123e53e53824f448338ba78db00bf3eacc85881dcce0585",
+    "revisions/veld-tread-south-v2/frame_004.png": "5efa2bab08921fce0f3234dcc43a7730b621ad6a5d4f2087acac51a45ff3353f",
+    "revisions/veld-tread-south-v2/frame_005.png": "4d8d5f95145758c6fa140576f78979c52fc725487b93e9a8fbc57bab2c7c81a4",
+    "revisions/veld-swim-east-v2/helmet/manifest.json": "f3b16405350a6090b7e5235babc05512c7d88af10eefe5fa4d460ef782c33a68",
+    "revisions/veld-swim-east-v2/helmet/frame_000.png": "b95c0c5963b931650e1954b0bc42da993c6c77c0dd130f529041b484c67d4ce8",
+    "revisions/veld-swim-east-v2/helmet/frame_001.png": "9d86151b589786db00aa91a1c14aa74730fdae0599f17db454de8972e882b745",
+    "revisions/veld-swim-east-v2/helmet/frame_002.png": "a9ae5a90d2e59df69c0e39eba8f0addac6d974745d4ac0aae7bc00d0e090dc01",
+    "revisions/veld-swim-east-v2/helmet/frame_003.png": "023540f6daf3a2c01359ea9e944ede18ceeacc12970832e5b1c5a9257b17a73b",
+    "revisions/veld-swim-east-v2/helmet/frame_004.png": "e6987c79e28572d4a7cdb4510513f46ef718341025bf4ac923b6dbd6e728c9a7",
+    "revisions/veld-swim-east-v2/helmet/frame_005.png": "c9963d1e84a67535d158348e9915ddb29891168f3b2a11126ca8b459cd427499",
+    "equipment/fitting/veld-tread-east/manifest.json": "1397555a8e04e5f52c267f2809bd48184e9268f74afb50a43bfab257fb657458",
+    "equipment/fitting/veld-tread-east/frame_000.png": "ddf97909f7bd0aebabad35e196b7be5017fa12667a7fd892a1595a4e8cffa960",
+    "equipment/fitting/veld-tread-east/frame_001.png": "58e0951125ba9aa5a142e0e6bb54fccd98ae2012e7865ddf85e1ae6672e78add",
+    "equipment/fitting/veld-tread-east/frame_002.png": "7ec27cc81fc1d28684db749a1725afe46e2ef59807d5d6592de06ddb1bc58ffb",
+    "equipment/fitting/veld-tread-east/frame_003.png": "ef3ec3891b8f57aa6a718dbcbaa60906971c98db92352e592f243002d0bdea63",
+    "equipment/fitting/veld-tread-east/frame_004.png": "65aaf58cf8deee3c8526b5b20a803f320fe0a228a8b4f54fda04b837c4c2be26",
+    "equipment/fitting/veld-tread-east/frame_005.png": "0bcfb4dbd906d0b392d20749b7f53858af943dc5fb5b4eab0b106e7592df13c5",
+    "revisions/veld-swim-west-v2/helmet/manifest.json": "0a75f2070c062c03b292d5a92bab862d5cea1e172bda8bd21901c3c56e6b77d6",
+    "revisions/veld-swim-west-v2/helmet/frame_000.png": "d74fa6697261750bb166fbb4a4b964959653e49c40c1cc844652ca16788dfb0a",
+    "revisions/veld-swim-west-v2/helmet/frame_001.png": "e75e4499d89c9969302b1aef3bd870bd55bf267aede8dabc5412de4227f8a068",
+    "revisions/veld-swim-west-v2/helmet/frame_002.png": "c1a94e8d050a0443bef4caf1386040f9965f10ae0185efa9e1401ac60edc2ba6",
+    "revisions/veld-swim-west-v2/helmet/frame_003.png": "35ff6a10951a06fc58b38dc51e1b07773ed5e1b0a38d0087caa16cd3247a5075",
+    "revisions/veld-swim-west-v2/helmet/frame_004.png": "52a425dd18610758353127e9c00b683d3b5d451ade42e98acbf33181ac860a73",
+    "revisions/veld-swim-west-v2/helmet/frame_005.png": "9cd7615fe6d1cb06c9a7bb222d619062327c4f24229e745de91c6b7a1084cf92",
+    "equipment/fitting/veld-tread-west/manifest.json": "fa42552a9b8858bdf806db8ecd962d4a9dbbcb8c1b40c96d10fae06bdcdbd3f7",
+    "equipment/fitting/veld-tread-west/frame_000.png": "9abd13754cdfaa4fd12dd964de6da56ba366621d6796a6dd4bcc8ac0480088e5",
+    "equipment/fitting/veld-tread-west/frame_001.png": "0c9cd503bf39a200e6d9da535617243f4d3e0245b832e7f36031ea954327055d",
+    "equipment/fitting/veld-tread-west/frame_002.png": "ff92fab9c110345d4855b23119b1d556b0c9413c53650f79f41c3251be533f14",
+    "equipment/fitting/veld-tread-west/frame_003.png": "491640722da36fc7702e6241686c92a39bca8e07edcf9d783204817f682f6fbd",
+    "equipment/fitting/veld-tread-west/frame_004.png": "aef358052bb2d5b698664128972b1e399cfc677f9142d04d2e9d2d1228e833e6",
+    "equipment/fitting/veld-tread-west/frame_005.png": "ad22cff0cf8e0c6ac1e2f71270405e34d42c9b608f4d3597e2725820932798a1",
+    "equipment/fitting/veld-swim-north/manifest.json": "f1870388aa2299a1c8033b1540297fdd755f2982b396b47af069980b1c5518e5",
+    "equipment/fitting/veld-swim-north/frame_000.png": "4781ed0acb047f77888dccf24b983fac102c6b62c5b813aba1884fbe6e242379",
+    "equipment/fitting/veld-swim-north/frame_001.png": "c8eebf72356caa985597531c47652550559e21999d7bbbedd2911840da076255",
+    "equipment/fitting/veld-swim-north/frame_002.png": "22bb02052e47cb8d05817a43f2f640439202b3ecf9327ef2ac440b86ea7f4daf",
+    "equipment/fitting/veld-swim-north/frame_003.png": "8ef2fb7b63280eb688b339c6df4cf44be71dad990fe804f2991e76f6c5b6bcf9",
+    "equipment/fitting/veld-swim-north/frame_004.png": "7eac47af635289f438c51ccafa804c2035120b496025b11f3039616a2e380fa3",
+    "equipment/fitting/veld-swim-north/frame_005.png": "3b90a4852e1d610f426a37ef600ab5474796d4c0b7bdebd8cbbdb3e89b6b2992",
+    "equipment/fitting/veld-tread-north/manifest.json": "84a42d2e5d42cb3a1b245e8c6762ff6af66532d4978758b5e6e6998f92c74fa3",
+    "equipment/fitting/veld-tread-north/frame_000.png": "4e67de18971344c88e5477fc939188725634fbc895af2dac229b9c8eb2a705c3",
+    "equipment/fitting/veld-tread-north/frame_001.png": "a481d95d48cbb5231e74bf213189ecb3d93432ed9c9baf84f826089ae3fab8ca",
+    "equipment/fitting/veld-tread-north/frame_002.png": "b5279946db5dd5b392bf52927f78901ebc6d4f1cf695fbc1b76dfb870220dce5",
+    "equipment/fitting/veld-tread-north/frame_003.png": "4d4e6f1ecce0f53dc3d73a4bcd9320dc78eccf6f03d1c408da003a1fe2a8f878",
+    "equipment/fitting/veld-tread-north/frame_004.png": "4ed4e21bcdc88d262b003d4c8948b5de10589a3989edbd90ba52a6268acb9c40",
+    "equipment/fitting/veld-tread-north/frame_005.png": "77c85e07ba56caaf54edd7e960c8c34b6e35c4edfecd36037fa73919152fbc4d",
+    "revisions/veld-swim-south-v2/helmet/manifest.json": "f48fd5fa419e1251422ae7ec07bf2ff2ef7a443d0bbd3c03b5cb30cee68916d8",
+    "revisions/veld-swim-south-v2/helmet/frame_000.png": "b59d595f69930aadc7751b6a851436a9da8c7b30732083ccc350529bb10ed457",
+    "revisions/veld-swim-south-v2/helmet/frame_001.png": "57460aa6997cd50f1d9ac7594578e06243b8e63dcea1b099129aef9a53b66728",
+    "revisions/veld-swim-south-v2/helmet/frame_002.png": "287b3be05b894ddf04ccd10cd640a89af2f3d3001f9a4549c7a5c9509714e130",
+    "revisions/veld-swim-south-v2/helmet/frame_003.png": "be027f24574749d2af8660cd51955ecd282c0d58003d7b736cad145f2dfbfd5f",
+    "revisions/veld-swim-south-v2/helmet/frame_004.png": "2c628018e6b76da3cee7455dc85dfce9cae6fdc85d987e45257f2f4127aa3b02",
+    "revisions/veld-swim-south-v2/helmet/frame_005.png": "f4afa9ecb143c0a09ddf6fae8c5edee0369eb5a32027d0916642efa881111ed0",
+    "revisions/veld-tread-south-v2/helmet/manifest.json": "eb1e4f86a67747f60cf662cdff98d4a5d4457f0090e46ed6884ab080325444ce",
+    "revisions/veld-tread-south-v2/helmet/frame_000.png": "dce90543bc4bb49a418fdadbf0a3230e867814f3fe4e87580447eabe627b9888",
+    "revisions/veld-tread-south-v2/helmet/frame_001.png": "c407d820b54b64fc2a46c09f94c1f82462cdf78b426effaadbe6df3a7534ca3d",
+    "revisions/veld-tread-south-v2/helmet/frame_002.png": "7840efac2c506b65aaac51fe62346888d19e4f0ac8f1c450051e19678a444067",
+    "revisions/veld-tread-south-v2/helmet/frame_003.png": "16a661c486520767a4eedcdbb33aa4432131a1762e293139bac31d01682c65a9",
+    "revisions/veld-tread-south-v2/helmet/frame_004.png": "a1f031261c569331a21c706a2b9ebe6df466eab71860e1e7bd2195fa4741430a",
+    "revisions/veld-tread-south-v2/helmet/frame_005.png": "0510c57be0dedc29135e25957631bb20ba58a4f73a511bb4b53d6fcf4fbfba82",
+    "revisions/branforth-swim-east-v2/manifest.json": "c74e0af5eb3b0b9c82f20fa76880e268b0d166be799a1798fe99a93be44ba994",
+    "revisions/branforth-swim-east-v2/frame_000.png": "83174fe077b4a15721d3ccf4940d3918e6b8d7a91cb813c9db4aba251f4ea01a",
+    "revisions/branforth-swim-east-v2/frame_001.png": "6897e4bf02f79c22b6d894c2a34d11365e6bc2f6a3c75e44a7fd31add61ae5bc",
+    "revisions/branforth-swim-east-v2/frame_002.png": "926dfce0a57ab5d71b19eacb915a31382ca9a7f8cd02ba5a2e05f8a76c4e08c2",
+    "revisions/branforth-swim-east-v2/frame_003.png": "6150b48166b745d1a8aa2af22ffaa5a39e19c730b4fe19591cf38edaa5dfad32",
+    "revisions/branforth-swim-east-v2/frame_004.png": "1d40d06358d46c60e3746e9adf4ee5ac4debe89b295bc4635924cc943921c06e",
+    "revisions/branforth-swim-east-v2/frame_005.png": "ec3dd68258878ae5167ad10c3f862f690aef51d8b758bf630e93577dc1e3cc8e",
+    "pilot/branforth-tread-east/manifest.json": "904e7df690bd7e4adb70c0cfd4da73b94ca9847b04fe5991b6c71e65144aacb5",
+    "pilot/branforth-tread-east/frame_000.png": "a9b8d969180ade00ef8d7bd020930db842e548edc8d2ef95cc2487616d76b407",
+    "pilot/branforth-tread-east/frame_001.png": "b838123b97cd8cf1a39b6a8ceca0557d2546ce4fb9b84babcb44b3e94d0d9b5b",
+    "pilot/branforth-tread-east/frame_002.png": "268e6e29f7382c3492309a732f2ffe6942fd3614a014b88a2a139b8a2e498d75",
+    "pilot/branforth-tread-east/frame_003.png": "81abf85538ef275242fbec83ad38216baacbeb09a2933a16e44b0404b755e227",
+    "pilot/branforth-tread-east/frame_004.png": "9e3034c81797bf4a4a62e0d0f662d9816c728c0e236cc2766a27d9cef4f36b7c",
+    "pilot/branforth-tread-east/frame_005.png": "8c4a0162cda65f24f738d9240549d4d1ef4f21bcb8aca740a58449661e0be3f4",
+    "revisions/branforth-swim-west-v2/manifest.json": "c96a4961ec73bdf08c5ebda9e20ccddb5cec8340307f36229367992da1b9729c",
+    "revisions/branforth-swim-west-v2/frame_000.png": "730083a6def428fa7e908a4010926fb11dd1ef7359c2f7354b904d6b9bd4fdd4",
+    "revisions/branforth-swim-west-v2/frame_001.png": "00b7deef4730956e7fa67a70b6ed417595471c286312c0f76f7a0b1499b69844",
+    "revisions/branforth-swim-west-v2/frame_002.png": "15d178ed7310b2290deff7ca78734f91b1686c605c6d08319d02a1a30531fbeb",
+    "revisions/branforth-swim-west-v2/frame_003.png": "cfde5010b24e1839f0b046255e0c762f9c02ef3beb8263d3a6551af17ded33d6",
+    "revisions/branforth-swim-west-v2/frame_004.png": "c5f9a28286b59c1abdff676290e36ff06f624e3444f0874050c00b2f66a54a3e",
+    "revisions/branforth-swim-west-v2/frame_005.png": "2ae5d05bf271a424840fda3a669b79a9d7adb7d0507b946c5af7876011b7b34e",
+    "pilot/branforth-tread-west/manifest.json": "00fe4394f70ae108b44dd432da87a34823a8f92dee828168b5598fd4c0cd0dcb",
+    "pilot/branforth-tread-west/frame_000.png": "6f9b2e4b297881e4e657e437d66f58deb55e064eeba7b679e8f744d0c7785be0",
+    "pilot/branforth-tread-west/frame_001.png": "1f51066933d73d187b8b20a92509ffb8331d437b9b19dccf86aee5e9fe1b83a1",
+    "pilot/branforth-tread-west/frame_002.png": "4e375bbfa38ddc2fb2e7f4f0e9d82ab936cc12919a965535aab30ada0a2a41c1",
+    "pilot/branforth-tread-west/frame_003.png": "dc5dd030fc225e8c22e959f8ecc6d53dcc796e052f81439a733df9579c4e6152",
+    "pilot/branforth-tread-west/frame_004.png": "85bf4f180991c81cce99a4de6106d46f7c798567954f302f87a83823450ac8f6",
+    "pilot/branforth-tread-west/frame_005.png": "2240f42ee55d357e37308487a1bafc55773ec7c0780ead8ef5b2a513f1b10a1e",
+    "revisions/branforth-swim-north-v3/manifest.json": "c9ffca0092cda3464e0ddd65bf394dbef05ab8feecb76d054883e1d5322db15a",
+    "revisions/branforth-swim-north-v3/frame_000.png": "708658639b5cd15ca2837df8955cb97cd4f59556964ca4cd6d9c514dacd871a1",
+    "revisions/branforth-swim-north-v3/frame_001.png": "fa497a6678dbb535196240b434f7c35fe6ac799f47b16fefe853d2cfeb7befc0",
+    "revisions/branforth-swim-north-v3/frame_002.png": "c1ce8f04cab25286eff025dbe75c7cfd6c3bec738a3f395da9cb2d50b74693b2",
+    "revisions/branforth-swim-north-v3/frame_003.png": "d331240cc50a1f518526604b7f9f21b163234164ff6e156edc6e6cc48419958a",
+    "revisions/branforth-swim-north-v3/frame_004.png": "177cab3e207cb247da4bead31d70453c177c85ba713001bf4c242d70906189ab",
+    "revisions/branforth-swim-north-v3/frame_005.png": "53f44ca3cbca1992be293f490483197c86a843bd2e3cbc63f0d7fab58bcf4092",
+    "pilot/branforth-tread-north/manifest.json": "ad671f22d4ac11ed1d8e32db0a6e02ab827276c01d327476e37300ffadebe1df",
+    "pilot/branforth-tread-north/frame_000.png": "5693dbee0f8148b70ee9be6a0a8be678fc63a4ddab29e6b3616f52bc45d1578d",
+    "pilot/branforth-tread-north/frame_001.png": "3fca72c153eb12cd043aefb54076975dc6540efc2cb303d6225581f6f8188dbd",
+    "pilot/branforth-tread-north/frame_002.png": "f63b856b21a60bd803dd75ef33b1931972c28a816ecdd906b9b7cf17cf3d77b5",
+    "pilot/branforth-tread-north/frame_003.png": "3a40f89ea1e9df5e7c592fb2c162a64413ff77c56619c585b445126e2a651125",
+    "pilot/branforth-tread-north/frame_004.png": "cfbbbb444307fc9529ad58e44cabb57b9ddbba8b56f58aee70fcb7956745d994",
+    "pilot/branforth-tread-north/frame_005.png": "ffb7ca90c1b089a9f7e3e197f6da152870abb40d3e66ef38ab275cd3ac5dacb0",
+    "revisions/branforth-swim-south-v2/manifest.json": "d1a24fd4544917792452154b632afd5d33df6fd8b61e2b06981cdbbc70d299f1",
+    "revisions/branforth-swim-south-v2/frame_000.png": "5695b2628490cf700ca3205aea626e5fca22827f7145c4b6560569f8ac260e44",
+    "revisions/branforth-swim-south-v2/frame_001.png": "269a2b51cf01135018b9175880071904e2a917770ccd35f90a99773a734e15b4",
+    "revisions/branforth-swim-south-v2/frame_002.png": "8cd80c2d00cd3963edbd1584505941b584f1885e8e9bef2e42aea92d91caa548",
+    "revisions/branforth-swim-south-v2/frame_003.png": "913211fabfe9e87735546b99c292e645e61ea78b45bccd380b95f440546c98f6",
+    "revisions/branforth-swim-south-v2/frame_004.png": "0a1ba3df99815ed2505be6e74e5ac875b5960b982dd419aa5ae94e833cd0e20b",
+    "revisions/branforth-swim-south-v2/frame_005.png": "c859ddc8db321943b94c52373544d78849301c1c936b5f8375c370904ab8b611",
+    "pilot/branforth-tread-south/manifest.json": "fc3c2d83698c3a4657a56748cc2155f1b2de2003d7dc06a0db15d660a6d9c75d",
+    "pilot/branforth-tread-south/frame_000.png": "d4aee12181cd61e3170d027e937eeaca5033e55f9ee6e0f0faf87011f3db054e",
+    "pilot/branforth-tread-south/frame_001.png": "63a88a0f33645029904ecfb27c1f88b47b69b87038965c841f2585f83f148162",
+    "pilot/branforth-tread-south/frame_002.png": "b3c3aa6b9fcf66071fa6a46a567e0e9b64b0e405163b7fb766c2fa35d9e46b7e",
+    "pilot/branforth-tread-south/frame_003.png": "cce051f21fa49acfb76a9f93d7f5ae6e25e8c2b0c36753bbf8f44b6352a70a17",
+    "pilot/branforth-tread-south/frame_004.png": "0b32a3d3b6824a839df6bce6237c5967e08a3fbda9998d1e9745169acba6ec0b",
+    "pilot/branforth-tread-south/frame_005.png": "604a69bcf89ca3836b4c387f5cb04200401b077ce1159188417588d414840e5b",
+    "revisions/branforth-swim-east-v2/helmet/manifest.json": "f3b16405350a6090b7e5235babc05512c7d88af10eefe5fa4d460ef782c33a68",
+    "revisions/branforth-swim-east-v2/helmet/frame_000.png": "ad885073d50f8e3f1c6002cdf5864ceec796601ce29714b48d99e2149a0da298",
+    "revisions/branforth-swim-east-v2/helmet/frame_001.png": "ad6fda52fad728d6565e70c04bb25f70250160f7fb8f0580a8e3617c82339af5",
+    "revisions/branforth-swim-east-v2/helmet/frame_002.png": "97940d154e9a9f4e5c5253286944cc9a2367ab68a6fe3bc8695eea5499966787",
+    "revisions/branforth-swim-east-v2/helmet/frame_003.png": "5f2aed1e5fee965a226a7ecf29ab885eb765960acf8a777566fddc6faf834337",
+    "revisions/branforth-swim-east-v2/helmet/frame_004.png": "5d4f061c9695fbe4327463bfed4e4de0cf555bc1688ac25417417dc800cc87d2",
+    "revisions/branforth-swim-east-v2/helmet/frame_005.png": "af1867edde55ccdfca981d1b9496b8bbff5f71f5b784a0f0f027b40fc2659f09",
+    "equipment/fitting/branforth-tread-east/manifest.json": "1397555a8e04e5f52c267f2809bd48184e9268f74afb50a43bfab257fb657458",
+    "equipment/fitting/branforth-tread-east/frame_000.png": "704e1ed2c5c4e54d953c890d8dc13097aaff5e627ca82f5d42494549d5dab455",
+    "equipment/fitting/branforth-tread-east/frame_001.png": "271bc75459054575ae9ee91261aebcb881b264aafdeedde1b5e29b205308385e",
+    "equipment/fitting/branforth-tread-east/frame_002.png": "bf7be38edd059f28d6921ffab8bbc846c2b1fa01ee87aa8f1d681869f4d4bc62",
+    "equipment/fitting/branforth-tread-east/frame_003.png": "4d9f5f5f4e2dafcd32ba07ab705e3a6706bb902931eb0c5d28bf66875bc55945",
+    "equipment/fitting/branforth-tread-east/frame_004.png": "94bad394d6110cedd685ffaeb518ce05f593404424b7dcb55376e3f50fd6ee14",
+    "equipment/fitting/branforth-tread-east/frame_005.png": "ade2323675836cb7bda1ac2142438a03e478221698add8f150f56898bfb80dfa",
+    "revisions/branforth-swim-west-v2/helmet/manifest.json": "0a75f2070c062c03b292d5a92bab862d5cea1e172bda8bd21901c3c56e6b77d6",
+    "revisions/branforth-swim-west-v2/helmet/frame_000.png": "5b0a5799b77240b4ba6b684b06c828446f57b3e19eec15b385599843e42216e5",
+    "revisions/branforth-swim-west-v2/helmet/frame_001.png": "4879968dcfa262439a955ed5a0432b698d9357b626d6e96b0ed5b4ba6a03ea3a",
+    "revisions/branforth-swim-west-v2/helmet/frame_002.png": "58d4e55050e03c757dae6e2dcd18a3234d3cbf9ec7dd62d46dc90b805485b866",
+    "revisions/branforth-swim-west-v2/helmet/frame_003.png": "466f6ad4919450c60ae2ef13e7a048d161c5ac0553e1744950e1f7f31b91584b",
+    "revisions/branforth-swim-west-v2/helmet/frame_004.png": "ebcdfdb05e4bee2cf64a541f10586e0e2570dd58962b6d7f70a338d5a1ffccd4",
+    "revisions/branforth-swim-west-v2/helmet/frame_005.png": "acc5e63ca87036f5f352a2904b19a502a293f3a10e407d6d18ce3b42b9b0ebd8",
+    "equipment/fitting/branforth-tread-west/manifest.json": "fa42552a9b8858bdf806db8ecd962d4a9dbbcb8c1b40c96d10fae06bdcdbd3f7",
+    "equipment/fitting/branforth-tread-west/frame_000.png": "f146fce91e6706afd99d871c6fd4667f281457cc9f70f132d2cde1eb7366eb45",
+    "equipment/fitting/branforth-tread-west/frame_001.png": "b2761a58088d6505e89a7f8c44118c99ff6f06ac01dda0e10444f75d4d8273af",
+    "equipment/fitting/branforth-tread-west/frame_002.png": "b043957ff9fdbc26d2493b5cc16d59855d3708e3c695968ffb15018851259a9b",
+    "equipment/fitting/branforth-tread-west/frame_003.png": "3787f9788f8aa2723bcaa97d9ad8d50f0b7db08e9ba3eee26c5cc87d57537434",
+    "equipment/fitting/branforth-tread-west/frame_004.png": "594cf8362c45899687bdfaafd89c4f96d8ac70c275e94e6f0e691c3f91df452b",
+    "equipment/fitting/branforth-tread-west/frame_005.png": "3347edd4b337583af654ceb4e77d3e584fd6d90e56506e19e77a1f7efcc4a9ee",
+    "revisions/branforth-swim-north-v3/helmet/manifest.json": "75fe9e97148afd40dc4a5fab3ee9f862f513f59fb4bf92c2876437935259b455",
+    "revisions/branforth-swim-north-v3/helmet/frame_000.png": "fc93ab116f5769a4bf43a0c5f71b0741f8a0cf92b1d4646601738f9fee9ac85a",
+    "revisions/branforth-swim-north-v3/helmet/frame_001.png": "05420138625213b90e1d660183a21de999e852ff06b3b408fdba532c911f0b56",
+    "revisions/branforth-swim-north-v3/helmet/frame_002.png": "b3a75fa278b3357d381edf27a7341fcb82c7c0256f5e686cf0b82cf92601873e",
+    "revisions/branforth-swim-north-v3/helmet/frame_003.png": "055ab125d2ef153e1774809d89ad3afa1138353ea42a63fab66736db99ce52f7",
+    "revisions/branforth-swim-north-v3/helmet/frame_004.png": "33c3ede1728ae8481d0b9b802d684e063739c9388aaf1a221ad62291268384cc",
+    "revisions/branforth-swim-north-v3/helmet/frame_005.png": "3678006ff0f47a85f9515e5c4155d1980b1e8139d7d8b6bf59f3475db4c35e2b",
+    "equipment/fitting/branforth-tread-north/manifest.json": "84a42d2e5d42cb3a1b245e8c6762ff6af66532d4978758b5e6e6998f92c74fa3",
+    "equipment/fitting/branforth-tread-north/frame_000.png": "54253aea11bb9ba91d4cf994dfde7eb8abd4f9fe79c305752eba1eb947019460",
+    "equipment/fitting/branforth-tread-north/frame_001.png": "a071a87219531f8b79c995c5eee1b82a48bb782cae765f179e2f71adfaed3fc1",
+    "equipment/fitting/branforth-tread-north/frame_002.png": "2c720debe6b5156a1b21bd60d7bd981217150cad98c8af1c8c3040969de82b3a",
+    "equipment/fitting/branforth-tread-north/frame_003.png": "65d7cfd3cd13e7b075005b3ee1365535aaec71f8dff1cdf96aace935d544f63f",
+    "equipment/fitting/branforth-tread-north/frame_004.png": "ed2bb896a4137cadc99deddb22431681fea43c0f11c6694958b2be3494d3c682",
+    "equipment/fitting/branforth-tread-north/frame_005.png": "3feac473ae477f1e9199a63e9a0d49810c1b6c9ecb21cd3c37aa822bdcf2b7f4",
+    "revisions/branforth-swim-south-v2/helmet/manifest.json": "f48fd5fa419e1251422ae7ec07bf2ff2ef7a443d0bbd3c03b5cb30cee68916d8",
+    "revisions/branforth-swim-south-v2/helmet/frame_000.png": "8663777b6a2288a02b35a7b2e7ddb5036d95df364bb4f75b198df3f6a075ea18",
+    "revisions/branforth-swim-south-v2/helmet/frame_001.png": "070a8f1a9104afdb8d0cbcdc5d14f5b64857e172a54795b68bbb7a3337903318",
+    "revisions/branforth-swim-south-v2/helmet/frame_002.png": "fe604c1adcd8aabaf8c8ccfb893919e9005e4abf9743d827f0cafdf835b7f2b8",
+    "revisions/branforth-swim-south-v2/helmet/frame_003.png": "3d9c39a47985928a346261e15b5311c446c9074f5ca5eff9ea7fb88df8cf93a0",
+    "revisions/branforth-swim-south-v2/helmet/frame_004.png": "0e7ee26a46f0626f62328446962c169717aba716c93482559483733dbf97520c",
+    "revisions/branforth-swim-south-v2/helmet/frame_005.png": "4ae02d102d30f01cae9b0e66150d0202b05c1516ff2cf1c461e819a28dff07e6",
+    "equipment/fitting/branforth-tread-south/manifest.json": "0ed273cf0ed878101b8eb4b89ddf310d515151c545e2e86622c413ae518acb64",
+    "equipment/fitting/branforth-tread-south/frame_000.png": "72761f4a9924d7d949f001225ded3825c3e262005cb1a95b5966ed32f78738d1",
+    "equipment/fitting/branforth-tread-south/frame_001.png": "d55401a5c8296c464517ad3be3d198f7023643458f214b21260159eb5e9886f8",
+    "equipment/fitting/branforth-tread-south/frame_002.png": "7bc9273a2a6561b509b60f75aede2ebc8b6c700bcdb969fe119e768a8c96a4f4",
+    "equipment/fitting/branforth-tread-south/frame_003.png": "18d007e5967e384aba20d6f40dc92f075c8b1eb284a60835cc6e9640a44ba101",
+    "equipment/fitting/branforth-tread-south/frame_004.png": "2263e930deca8fed9440fb936e5af33de936165eba3cb8c0e8c71ac239b97b53",
+    "equipment/fitting/branforth-tread-south/frame_005.png": "5f236bee5e8b44e86174fd5dfcb94450acaf501ce721b5cac5a0745b55ee4f3b"
+  }
+}
