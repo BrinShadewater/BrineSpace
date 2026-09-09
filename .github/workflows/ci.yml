@@ -2,9 +2,9 @@ name: CI
 
 # A script-level gate for a Godot project. Two things it deliberately does NOT do:
 #
-#   - It does not pull Git LFS. The raster art is LFS and a CI run that smudged it
-#     would spend the account's LFS bandwidth quota on every push. Pointer files are
-#     enough to parse scripts and register classes, which is all this checks.
+#   - It does not pull raster art from Git LFS. Only preloaded OGG audio is fetched;
+#     Godot needs its imported resources to resolve script constants. Raster pointer
+#     import errors are expected and do not establish runtime/art acceptance.
 #   - It does not run the game. No exporter, no scene run, no headless boot yet.
 #
 # What it proves: every .gd file parses, and the project imports without a script
@@ -32,6 +32,8 @@ jobs:
         run: |
           python3 tests/test_release_assert_safety.py
           python3 tests/test_release_manifest.py
+      - name: Fetch preloaded audio only
+        run: git lfs pull --include="assets/audio/suno-v1/*.ogg" --exclude=""
       - name: Fetch Godot ${{ env.GODOT_VERSION }} (headless-capable Linux build)
         run: |
           curl -sSL -o godot.zip \
@@ -40,6 +42,15 @@ jobs:
           mv "Godot_v${GODOT_VERSION}_linux.x86_64" godot
           chmod +x godot
           ./godot --version
+      - name: Import resources before checking script preloads
+        run: |
+          ./godot --headless --path . --import > import.log 2>&1 || true
+          if grep -q -E "SCRIPT ERROR|Parse Error" import.log; then
+            echo "::error::import reported script errors"
+            grep -E "SCRIPT ERROR|Parse Error" import.log | head -10
+            exit 1
+          fi
+          echo "import has no script errors (raster LFS pointers intentionally unfetched)"
       - name: Every GDScript parses (--check-only)
         run: |
           set -e
@@ -53,12 +64,3 @@ jobs:
           done < <(git ls-files '*.gd')
           echo "$(git ls-files '*.gd' | wc -l) script(s) checked, $fails failed"
           [ "$fails" -eq 0 ]
-      - name: Project imports without script errors
-        run: |
-          ./godot --headless --path . --import > import.log 2>&1 || true
-          if grep -q -E "SCRIPT ERROR|Parse Error" import.log; then
-            echo "::error::import reported script errors"
-            grep -E "SCRIPT ERROR|Parse Error" import.log | head -10
-            exit 1
-          fi
-          echo "import clean"

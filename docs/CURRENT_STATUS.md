@@ -1,5 +1,9 @@
 # BrineSpace current status
 
+## Combined polish and release - September 9, 2026
+
+[Combined handoff](FINAL_POLISH_RELEASE_2026-09-09.md): completed local art, animations and reliability work integrated; sprite failure handling, clip duration calculation and title/badge loading polished. Focused source/native checks and actual release New Game/Resume/F8 pass; 10,978 packaged assets checked with zero missing/changed. Source pushed to GitHub. Playable build: builds/BrineSpace-2026-09-09-polished/. See the handoff for package identity and remaining performance/pacing limits.
+
 ## UI, character and build session closed - September 9
 
 [Closeout](SESSION_CLOSEOUT_UI_CHARACTERS_2026-09-09.md): accepted portrait/sidebar decisions added to the bible; character/room skill lessons and installed copies updated; [release workflow](RELEASE_WORKFLOW.md) now distinguishes editor/PCK evidence from actual release gameplay. This session has no remaining active work. Later optimized-release, animation, portrait and room entries below retain their own scope and acceptance. No new build or source-art cleanup during closeout.

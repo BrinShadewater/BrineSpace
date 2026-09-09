@@ -47,7 +47,7 @@ BrineSpace is designed to be thoughtful and watchable: an open-ended restoration
 game with resource pressure, quiet machinery and an AI core with opinions. You can
 pause to plan. The pressure comes from the station's needs, not rapid clicking.
 
-## Current checkpoint â€” September 9, 2026
+## Current checkpoint - September 9, 2026
 
 The [combined polish and release pass](docs/FINAL_POLISH_RELEASE_2026-09-09.md)
 brings together the latest room artwork, portraits, expanded companion animations,
