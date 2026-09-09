@@ -21,8 +21,8 @@ func _input(event: InputEvent) -> void:
 		binding_action = ""
 		_rebuild.call_deferred()
 		return
-	if event.ctrl_pressed or event.alt_pressed or event.meta_pressed or event.shift_pressed or event.keycode in [KEY_TAB, KEY_ENTER, KEY_KP_ENTER, KEY_NONE]:
-		feedback.text = "Choose a single key. Escape, Tab and Enter remain menu controls."
+	if event.ctrl_pressed or event.alt_pressed or event.meta_pressed or event.shift_pressed or event.keycode in [KEY_TAB, KEY_ENTER, KEY_KP_ENTER, KEY_NONE, KEY_F8]:
+		feedback.text = "Choose a single key. Escape, Tab and Enter remain menu controls; F8 opens bug reports."
 		preferences_changed.emit()
 		return
 	for action in Preferences.keys:

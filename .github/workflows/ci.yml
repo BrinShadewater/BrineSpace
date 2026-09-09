@@ -28,6 +28,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: false
+      - name: Runtime image loading survives release exports
+        run: python3 tests/test_release_assert_safety.py
       - name: Fetch Godot ${{ env.GODOT_VERSION }} (headless-capable Linux build)
         run: |
           curl -sSL -o godot.zip \

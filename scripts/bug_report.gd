@@ -17,6 +17,8 @@ const SAVE_FILES := [
 	"brine_loop.save.comms.json", "brine_settings.cfg",
 ]
 
+var owns_session_lock := false
+var was_paused := false
 var last_report_path := ""
 var pending_screenshot: Image = null
 var crashed_at := ""
@@ -29,15 +31,20 @@ var note_field: LineEdit = null
 var button_row: HBoxContainer = null
 
 func _enter_tree() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	if OS.has_feature("editor"):
 		return
+	# A second running copy must not report a crash or remove the first copy's lock.
+	if FileAccess.file_exists(LOCK_PATH):
+		for line in FileAccess.get_file_as_string(LOCK_PATH).split("\n"):
+			if line.begins_with("pid=") and OS.is_process_running(int(line.trim_prefix("pid="))):
+				return
 	_detect_previous_session()
 	_write_lock()
 
 func _exit_tree() -> void:
-	if OS.has_feature("editor"):
-		return
-	_remove_lock()
+	if owns_session_lock:
+		_remove_lock()
 
 func _detect_previous_session() -> void:
 	if not FileAccess.file_exists(LOCK_PATH):
@@ -55,11 +62,15 @@ func _write_lock() -> void:
 	var file := FileAccess.open(LOCK_PATH, FileAccess.WRITE)
 	if file == null:
 		return
-	file.store_string("unix=%d\nstarted=%s\nversion=%s\n" % [
+	file.store_string("pid=%d\nunix=%d\nstarted=%s\nversion=%s\n" % [
+		OS.get_process_id(),
 		int(Time.get_unix_time_from_system()),
 		Time.get_datetime_string_from_system(false, true),
 		str(ProjectSettings.get_setting("application/config/version", "unknown")),
 	])
+
+	file.flush()
+	owns_session_lock = file.get_error() == OK
 
 func _remove_lock() -> void:
 	var dir := DirAccess.open(LOCK_DIR)
@@ -81,7 +92,13 @@ func save_report(note: String, after_crash: bool = false) -> String:
 	files.push_front({"name": "report.txt", "data": summary.to_utf8_buffer()})
 	pending_screenshot = null
 	var stamp := Time.get_datetime_string_from_system(false, true).replace("-", "").replace(":", "").replace(" ", "-")
-	var base := REPORT_DIR + "/brinespace-report-" + stamp
+	var base := REPORT_DIR + "/brinespace-report-" + stamp + "-%d-%d" % [OS.get_process_id(), Time.get_ticks_usec()]
+	var suffix := 0
+	var candidate := base
+	while FileAccess.file_exists(candidate + ".zip") or DirAccess.dir_exists_absolute(candidate):
+		suffix += 1
+		candidate = base + "-%d" % suffix
+	base = candidate
 	if DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(REPORT_DIR)) != OK:
 		push_warning("BugReport: could not create " + REPORT_DIR)
 		return ""
@@ -107,6 +124,8 @@ func _write_zip(path: String, files: Array) -> bool:
 			ok = false
 	if packer.close() != OK:
 		ok = false
+	if not ok:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 	return ok
 
 func _write_folder(path: String, files: Array) -> bool:
@@ -120,8 +139,10 @@ func _write_folder(path: String, files: Array) -> bool:
 		if file == null:
 			continue
 		file.store_buffer(entry.data)
-		written += 1
-	return written > 0
+		file.flush()
+		if file.get_error() == OK:
+			written += 1
+	return written == files.size() and written > 0
 
 func _add_logs(files: Array) -> void:
 	files.append({"name": "logs/current.log", "data": _tail(LOG_DIR + "/godot.log")})
@@ -197,6 +218,8 @@ func _show_crash_overlay(path: String) -> void:
 	_show_overlay("LAST SESSION DID NOT CLOSE NORMALLY", body, false, [["Open folder", _open_report_folder], ["Dismiss", _hide_overlay]])
 
 func _report_contains_dump(path: String) -> bool:
+	if DirAccess.dir_exists_absolute(path):
+		return not DirAccess.get_files_at(path.path_join("crash")).is_empty() if DirAccess.dir_exists_absolute(path.path_join("crash")) else false
 	var reader := ZIPReader.new()
 	if reader.open(path) != OK:
 		return false
@@ -245,16 +268,21 @@ func _build_overlay() -> void:
 	button_row.add_theme_constant_override("separation", 8)
 	button_row.alignment = BoxContainer.ALIGNMENT_END
 	box.add_child(button_row)
+	overlay.visible = false
 	add_child(overlay)
 
 func _show_overlay(title: String, body: String, with_note: bool, buttons: Array) -> void:
 	if overlay == null:
 		_build_overlay()
+	if not overlay.visible:
+		was_paused = get_tree().paused
+		get_tree().paused = true
 	title_label.text = title
 	body_label.text = body
 	note_field.visible = with_note
 	note_field.text = ""
 	for child in button_row.get_children():
+		button_row.remove_child(child)
 		child.queue_free()
 	for spec in buttons:
 		var button := Button.new()
@@ -265,8 +293,10 @@ func _show_overlay(title: String, body: String, with_note: bool, buttons: Array)
 	overlay.visible = true
 
 func _hide_overlay() -> void:
-	if overlay != null:
+	if overlay != null and overlay.visible:
 		overlay.visible = false
+		get_tree().paused = was_paused
+	pending_screenshot = null
 
 func _open_report_folder() -> void:
 	var folder := ProjectSettings.globalize_path(REPORT_DIR)
@@ -291,7 +321,7 @@ func _input(event: InputEvent) -> void:
 		return
 	var texture := get_viewport().get_texture()
 	pending_screenshot = texture.get_image() if texture != null else null
-	_show_overlay("REPORT A BUG", "Saves the game log, your station save and a screenshot into a report you can send to Alex at Shadewater Labs (brinshadewater@gmail.com).", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
+	_show_overlay("REPORT A BUG", "Saves the game log, your last station save and a screenshot into a report you can send to Alex at Shadewater Labs (brinshadewater@gmail.com).", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
 	if note_field != null:
 		note_field.grab_focus()
 

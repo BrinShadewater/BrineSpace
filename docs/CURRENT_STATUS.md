@@ -1,5 +1,9 @@
 # BrineSpace current status
 
+## September 9 Teegly release fix and bug reports
+
+[PR integration](TEEGLY_PR_INTEGRATION_2026-09-09.md): integrates release-safe image loading and F8/unclean-session diagnostic bundles, with newer-loader coverage, pause support, safer report writes and a CI assertion guard. Fixed local Windows release is in `builds/BrineSpace-2026-09-09-fixed/`; detailed verification and limits are recorded in the handoff.
+
 ## September 9 companion personality
 
 [Personality handoff](COMPANION_PERSONALITY_2026-09-09.md): Margot's sit/groom/nap/pet actions, River's head scans/equipment inspection/quiet chirps, and Josh's head gestures/tread pivots/repair watching. Journal > Crew offers Pet Margot and companion Locate links. Action clocks, cooldowns and pending approaches persist through Continue. Native action and companion regression checks pass; owner animation/pacing review remains open. Local source only, no executable rebuilt.

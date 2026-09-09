@@ -60,7 +60,7 @@ static func initialize(window: Window) -> void:
 		var used := {}
 		var valid := true
 		for key in candidate.values():
-			if key <= 0 or key in [KEY_ESCAPE, KEY_TAB, KEY_ENTER, KEY_KP_ENTER] or used.has(key):
+			if key <= 0 or key in [KEY_ESCAPE, KEY_TAB, KEY_ENTER, KEY_KP_ENTER, KEY_F8] or used.has(key):
 				valid = false
 			used[key] = true
 		if valid:
