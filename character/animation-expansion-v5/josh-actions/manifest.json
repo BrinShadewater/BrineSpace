@@ -1,0 +1,734 @@
+{
+  "character": "josh-actions",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "watch-south",
+      "frameFiles": [
+        "frames/watch-south/000.png",
+        "frames/watch-south/001.png",
+        "frames/watch-south/002.png",
+        "frames/watch-south/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "turn-south",
+      "frameFiles": [
+        "frames/turn-south/000.png",
+        "frames/turn-south/001.png",
+        "frames/turn-south/002.png",
+        "frames/turn-south/003.png",
+        "frames/turn-south/004.png"
+      ],
+      "frameDurationsMs": [
+        360,
+        360,
+        360,
+        360,
+        360
+      ],
+      "loop": false
+    },
+    {
+      "id": "watch-west",
+      "frameFiles": [
+        "frames/watch-west/000.png",
+        "frames/watch-west/001.png",
+        "frames/watch-west/002.png",
+        "frames/watch-west/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "turn-west",
+      "frameFiles": [
+        "frames/turn-west/000.png",
+        "frames/turn-west/001.png",
+        "frames/turn-west/002.png",
+        "frames/turn-west/003.png",
+        "frames/turn-west/004.png"
+      ],
+      "frameDurationsMs": [
+        360,
+        360,
+        360,
+        360,
+        360
+      ],
+      "loop": false
+    },
+    {
+      "id": "watch-north",
+      "frameFiles": [
+        "frames/watch-north/000.png",
+        "frames/watch-north/001.png",
+        "frames/watch-north/002.png",
+        "frames/watch-north/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "turn-north",
+      "frameFiles": [
+        "frames/turn-north/000.png",
+        "frames/turn-north/001.png",
+        "frames/turn-north/002.png",
+        "frames/turn-north/003.png",
+        "frames/turn-north/004.png"
+      ],
+      "frameDurationsMs": [
+        360,
+        360,
+        360,
+        360,
+        360
+      ],
+      "loop": false
+    },
+    {
+      "id": "watch-east",
+      "frameFiles": [
+        "frames/watch-east/000.png",
+        "frames/watch-east/001.png",
+        "frames/watch-east/002.png",
+        "frames/watch-east/003.png"
+      ],
+      "frameDurationsMs": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "loop": true
+    },
+    {
+      "id": "turn-east",
+      "frameFiles": [
+        "frames/turn-east/000.png",
+        "frames/turn-east/001.png",
+        "frames/turn-east/002.png",
+        "frames/turn-east/003.png",
+        "frames/turn-east/004.png"
+      ],
+      "frameDurationsMs": [
+        360,
+        360,
+        360,
+        360,
+        360
+      ],
+      "loop": false
+    },
+    {
+      "id": "watch-enter-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-enter-south/000.png",
+        "frames/watch-enter-south/001.png"
+      ]
+    },
+    {
+      "id": "watch-exit-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-exit-south/000.png",
+        "frames/watch-exit-south/001.png"
+      ]
+    },
+    {
+      "id": "turn-enter-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-enter-south/000.png",
+        "frames/turn-enter-south/001.png"
+      ]
+    },
+    {
+      "id": "turn-exit-south",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-exit-south/000.png",
+        "frames/turn-exit-south/001.png"
+      ]
+    },
+    {
+      "id": "watch-enter-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-enter-west/000.png",
+        "frames/watch-enter-west/001.png"
+      ]
+    },
+    {
+      "id": "watch-exit-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-exit-west/000.png",
+        "frames/watch-exit-west/001.png"
+      ]
+    },
+    {
+      "id": "turn-enter-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-enter-west/000.png",
+        "frames/turn-enter-west/001.png"
+      ]
+    },
+    {
+      "id": "turn-exit-west",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-exit-west/000.png",
+        "frames/turn-exit-west/001.png"
+      ]
+    },
+    {
+      "id": "watch-enter-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-enter-north/000.png",
+        "frames/watch-enter-north/001.png"
+      ]
+    },
+    {
+      "id": "watch-exit-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-exit-north/000.png",
+        "frames/watch-exit-north/001.png"
+      ]
+    },
+    {
+      "id": "turn-enter-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-enter-north/000.png",
+        "frames/turn-enter-north/001.png"
+      ]
+    },
+    {
+      "id": "turn-exit-north",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-exit-north/000.png",
+        "frames/turn-exit-north/001.png"
+      ]
+    },
+    {
+      "id": "watch-enter-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-enter-east/000.png",
+        "frames/watch-enter-east/001.png"
+      ]
+    },
+    {
+      "id": "watch-exit-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/watch-exit-east/000.png",
+        "frames/watch-exit-east/001.png"
+      ]
+    },
+    {
+      "id": "turn-enter-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-enter-east/000.png",
+        "frames/turn-enter-east/001.png"
+      ]
+    },
+    {
+      "id": "turn-exit-east",
+      "frameDurationsMs": [
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/turn-exit-east/000.png",
+        "frames/turn-exit-east/001.png"
+      ]
+    },
+    {
+      "id": "torch-enter-south",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-enter-south/000.png",
+        "frames/torch-enter-south/001.png",
+        "frames/torch-enter-south/002.png"
+      ]
+    },
+    {
+      "id": "torch-south",
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/torch-south/000.png",
+        "frames/torch-south/001.png",
+        "frames/torch-south/002.png",
+        "frames/torch-south/003.png"
+      ]
+    },
+    {
+      "id": "torch-exit-south",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-exit-south/000.png",
+        "frames/torch-exit-south/001.png",
+        "frames/torch-exit-south/002.png"
+      ]
+    },
+    {
+      "id": "torch-enter-west",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-enter-west/000.png",
+        "frames/torch-enter-west/001.png",
+        "frames/torch-enter-west/002.png"
+      ]
+    },
+    {
+      "id": "torch-west",
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/torch-west/000.png",
+        "frames/torch-west/001.png",
+        "frames/torch-west/002.png",
+        "frames/torch-west/003.png"
+      ]
+    },
+    {
+      "id": "torch-exit-west",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-exit-west/000.png",
+        "frames/torch-exit-west/001.png",
+        "frames/torch-exit-west/002.png"
+      ]
+    },
+    {
+      "id": "torch-enter-north",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-enter-north/000.png",
+        "frames/torch-enter-north/001.png",
+        "frames/torch-enter-north/002.png"
+      ]
+    },
+    {
+      "id": "torch-north",
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/torch-north/000.png",
+        "frames/torch-north/001.png",
+        "frames/torch-north/002.png",
+        "frames/torch-north/003.png"
+      ]
+    },
+    {
+      "id": "torch-exit-north",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-exit-north/000.png",
+        "frames/torch-exit-north/001.png",
+        "frames/torch-exit-north/002.png"
+      ]
+    },
+    {
+      "id": "torch-enter-east",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-enter-east/000.png",
+        "frames/torch-enter-east/001.png",
+        "frames/torch-enter-east/002.png"
+      ]
+    },
+    {
+      "id": "torch-east",
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/torch-east/000.png",
+        "frames/torch-east/001.png",
+        "frames/torch-east/002.png",
+        "frames/torch-east/003.png"
+      ]
+    },
+    {
+      "id": "torch-exit-east",
+      "frameDurationsMs": [
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/torch-exit-east/000.png",
+        "frames/torch-exit-east/001.png",
+        "frames/torch-exit-east/002.png"
+      ]
+    },
+    {
+      "id": "powerdown-enter-south",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-enter-south/000.png",
+        "frames/powerdown-enter-south/001.png",
+        "frames/powerdown-enter-south/002.png",
+        "frames/powerdown-enter-south/003.png",
+        "frames/powerdown-enter-south/004.png",
+        "frames/powerdown-enter-south/005.png"
+      ]
+    },
+    {
+      "id": "powerdown-south",
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/powerdown-south/000.png",
+        "frames/powerdown-south/001.png"
+      ]
+    },
+    {
+      "id": "powerdown-exit-south",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-exit-south/000.png",
+        "frames/powerdown-exit-south/001.png",
+        "frames/powerdown-exit-south/002.png",
+        "frames/powerdown-exit-south/003.png",
+        "frames/powerdown-exit-south/004.png",
+        "frames/powerdown-exit-south/005.png"
+      ]
+    },
+    {
+      "id": "powerdown-enter-west",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-enter-west/000.png",
+        "frames/powerdown-enter-west/001.png",
+        "frames/powerdown-enter-west/002.png",
+        "frames/powerdown-enter-west/003.png",
+        "frames/powerdown-enter-west/004.png",
+        "frames/powerdown-enter-west/005.png"
+      ]
+    },
+    {
+      "id": "powerdown-west",
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/powerdown-west/000.png",
+        "frames/powerdown-west/001.png"
+      ]
+    },
+    {
+      "id": "powerdown-exit-west",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-exit-west/000.png",
+        "frames/powerdown-exit-west/001.png",
+        "frames/powerdown-exit-west/002.png",
+        "frames/powerdown-exit-west/003.png",
+        "frames/powerdown-exit-west/004.png",
+        "frames/powerdown-exit-west/005.png"
+      ]
+    },
+    {
+      "id": "powerdown-enter-north",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-enter-north/000.png",
+        "frames/powerdown-enter-north/001.png",
+        "frames/powerdown-enter-north/002.png",
+        "frames/powerdown-enter-north/003.png",
+        "frames/powerdown-enter-north/004.png",
+        "frames/powerdown-enter-north/005.png"
+      ]
+    },
+    {
+      "id": "powerdown-north",
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/powerdown-north/000.png",
+        "frames/powerdown-north/001.png"
+      ]
+    },
+    {
+      "id": "powerdown-exit-north",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-exit-north/000.png",
+        "frames/powerdown-exit-north/001.png",
+        "frames/powerdown-exit-north/002.png",
+        "frames/powerdown-exit-north/003.png",
+        "frames/powerdown-exit-north/004.png",
+        "frames/powerdown-exit-north/005.png"
+      ]
+    },
+    {
+      "id": "powerdown-enter-east",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-enter-east/000.png",
+        "frames/powerdown-enter-east/001.png",
+        "frames/powerdown-enter-east/002.png",
+        "frames/powerdown-enter-east/003.png",
+        "frames/powerdown-enter-east/004.png",
+        "frames/powerdown-enter-east/005.png"
+      ]
+    },
+    {
+      "id": "powerdown-east",
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "frameFiles": [
+        "frames/powerdown-east/000.png",
+        "frames/powerdown-east/001.png"
+      ]
+    },
+    {
+      "id": "powerdown-exit-east",
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "frameFiles": [
+        "frames/powerdown-exit-east/000.png",
+        "frames/powerdown-exit-east/001.png",
+        "frames/powerdown-exit-east/002.png",
+        "frames/powerdown-exit-east/003.png",
+        "frames/powerdown-exit-east/004.png",
+        "frames/powerdown-exit-east/005.png"
+      ]
+    }
+  ],
+  "mirrored": false,
+  "sourceSha256": "3a1811a0d10f13e9ea92cb2c3f8b2596cf477e1c313707957e59dde339fe6cc6",
+  "sourceManifest": "../../josh-repair-v4/josh-actions/manifest.json",
+  "paletteColors": 64,
+  "extraction": "Border-connected neutral background removal for robots; magenta key for cat/actions; BOX downsample before binary alpha and shared palette.",
+  "sourceSheets": [
+    "../sources/motion.png",
+    "../sources/personality.png",
+    "../sources/torch-fixed.png"
+  ],
+  "expansionSources": "../sources/"
+}

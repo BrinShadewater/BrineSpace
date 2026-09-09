@@ -107,3 +107,7 @@ scene. Choose tests or audit tools for the changed subsystem from tests/ and too
 read their invocation and scope before running them. Do not equate a headless or
 manifest check with visual acceptance, and do not run unrelated full asset batches
 merely for a documentation change.
+
+For playable exports, follow [docs/RELEASE_WORKFLOW.md](docs/RELEASE_WORKFLOW.md) and
+use the maintained release exporter. Keep editor/PCK checks separate from actual
+release gameplay; release assertions must never contain required side effects.

@@ -37,6 +37,7 @@ func run():
 	# Every action completes without moving its ground anchor and survives a midpoint save.
 	for id in C.IDS:
 		for action in game.companion_actors[id].ACTIONS[id]:
+			if action=="torch":continue # Requires a live paid job; covered by test_companion_repair.gd.
 			var actor=game.companion_actors[id]
 			actor.decision_rng.seed=6200+C.IDS.find(id)
 			actor.start_behavior(action)
@@ -99,6 +100,32 @@ func run():
 		C.advance(game,0.1)
 		if josh.behavior=="watch":break
 	check(josh.behavior=="watch" and josh.activity.contains("repairs"),"Josh arrives to watch repairs")
+	# Josh routes to a live paid hull repair and restores its new torch state.
+	var repair_cell: Vector2i=game.bill_npc.cell_at(game.bill_npc.foot)
+	var repair_room: Dictionary=game.occupied[repair_cell]
+	repair_room.hull_crack=0.2;repair_room.erase("leak_repair");game.resources.metal=20
+	check(preload("res://scripts/hull_repair.gd").request(game,repair_cell),"Queue paid job for Josh assistance")
+	repair_room.leak_repair.worker="bill";repair_room.leak_repair.point=game.bill_npc.foot
+	game.bill_npc.goal="hull-repair";game.bill_npc.goal_cell=repair_cell;game.bill_npc.state="weld"
+	josh.behavior="";josh.behavior_elapsed=0;josh.behavior_duration=0;josh.path.clear()
+	josh.choose_personality(game)
+	check(josh.pending_behavior=="torch","Josh selects reachable paid repair")
+	for step in range(500):
+		C.advance(game,0.1)
+		if josh.behavior=="torch":break
+	check(josh.behavior=="torch","Josh arrives with blowtorch")
+	C.advance(game,1.0)
+	check(preload("res://scripts/companion_repair.gd").multiplier(game,repair_cell)==1.25,"Native helper reaches working range")
+	var torch_save:=Save.capture(game)
+	check(Save.restore(game,torch_save),"Continue during torch repair")
+	game.tick_timer.stop();game.paused=false;josh=game.companion_actors.josh
+	check(josh.behavior=="torch" and josh.behavior_elapsed>=1.0,"Torch survives real checkpoint restore")
+	game.inspector_focus_button.set_meta("cell",repair_cell);game._set_grid_zoom(1.0)
+	await capture("josh-torch")
+	game.occupied[repair_cell].erase("leak_repair")
+	C.advance(game,0.1);C.advance(game,0.6)
+	check(josh.behavior.is_empty(),"Removed repair extinguishes torch and stows")
+	game.bill_npc.goal=""
 	game.bill_npc.state="idle"
 	var rng: int=game.rng.state
 	for step in range(100):C.advance(game,0.1)

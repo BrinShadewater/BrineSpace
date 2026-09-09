@@ -9,6 +9,7 @@ func run() -> void:
 	var seen: Dictionary={}
 	var profiles:=0
 	var references:=0
+	var intentionally_removed: Array=[]
 	var mat_bounds: Array=[]
 	var baked_profiles: Array=[]
 	var check_mats: bool="--check-mat-bounds" in OS.get_cmdline_user_args()
@@ -54,7 +55,7 @@ func run() -> void:
 					# These three q0 renderers explicitly suppress dressing.floor()
 					# and substitute baked perimeter slices for registered furniture.
 					# Their other rotations still exercise every authored host below.
-					if q==0 and entry.id in ["pressure_control","listening_post","isolation_vault"] and property.name=="dressing" and not room.props.is_empty() and room.props.all(func(prop): return prop.has("flush_region")):
+					if q==0 and entry.id in ["pressure_control","listening_post","isolation_vault"] and property.name=="dressing" and room.flush_texture!=null:
 						baked_profiles.append(entry.id+" q0: baked perimeter, dressing suppressed")
 						continue
 					var hosts: Dictionary={}
@@ -81,9 +82,15 @@ func run() -> void:
 					if q==0 and ((negative and profiles==1) or property.name==negative_helper): refs.append("__missing_host_negative_control__")
 					for host in refs:
 						references+=1
-						if not hosts.has(host): failures.append("%s q%d: missing host %s"%[entry.id,q,host])
+						if hosts.has(host): continue
+						var selected: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(room)
+						if selected.has(host) and selected[host]==null:
+							intentionally_removed.append("%s q%d: %s"%[entry.id,q,host])
+						else:
+							failures.append("%s q%d: missing host %s"%[entry.id,q,host])
 	grid.free()
 	if check_mats: print("MAT BOUNDS RECORDS: "+JSON.stringify(mat_bounds))
 	print("BAKED PROFILE EXCEPTIONS: "+JSON.stringify(baked_profiles))
+	print("EXPLICIT LAYOUT REMOVALS: "+JSON.stringify(intentionally_removed))
 	print(JSON.stringify({"scope":"Live catalog runtime views; resolved furniture, mat, supported-object and route host identities for every live Dressing instance in four native rotations; procedural corridors have no dressing profiles; not pixel or export acceptance","catalog_rooms":catalog.size(),"procedural_rooms":procedural,"views":seen.size(),"view_owners":seen,"profiles":profiles,"helpers":helper_names.keys(),"references":references,"errors":failures},"\t"))
 	quit(1 if not failures.is_empty() else 0)

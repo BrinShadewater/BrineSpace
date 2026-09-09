@@ -51,3 +51,18 @@ not proof that an animation was fixed.
 No with/without-skill quality comparison, generation benchmark, or live discovery
 test has been performed. Existing Bill/Veld runtime tests are documented as tools
 for future affected work, not rerun or claimed as new skill-validation evidence.
+
+## September 9 companion closeout update
+
+Added `references/companion-motion.md`, routed it from the maintained entrypoint,
+and added inventory-aware handoff guidance. Lessons come from actual source-facing,
+gutter, robot footprint and camera-focus failures corrected during this session.
+Added a project active-asset registry and read-only binding audit; it reports nine
+animation packs and eight portraits with zero errors. No unrelated art was rebuilt.
+
+Maintained and installed skills both pass `quick_validate.py`; changed files match
+byte-for-byte and their reference links resolve. The validator's missing PyYAML
+dependency was installed only into the closeout output directory. Evidence:
+`output/character-closeout/skill-validation.json` and `bindings.json`.
+This was structural validation and a targeted lesson update, not a new independent
+behavioral or comparative skill-effectiveness evaluation.

@@ -82,6 +82,15 @@ static func draw_crew(canvas,texture: Texture2D,rect: Rect2,foot: Vector2,water:
 		canvas.draw_texture_rect(texture,rect,false)
 		return
 	var swimming: bool=texture.get_meta("crew_water_pose",false)
+	if texture.get_meta("companion_surface",false):
+		# Buoyant companions remain at the surface, even in a full compartment.
+		var fraction:float=float(texture.get_meta("companion_surface_line",73.0))/float(texture.get_height())
+		var line:float=rect.position.y+rect.size.y*fraction
+		var size:=Vector2(texture.get_size())
+		canvas.draw_texture_rect_region(texture,Rect2(rect.position,Vector2(rect.size.x,rect.size.y*fraction)),Rect2(Vector2.ZERO,Vector2(size.x,size.y*fraction)))
+		canvas.draw_texture_rect_region(texture,Rect2(Vector2(rect.position.x,line),Vector2(rect.size.x,rect.size.y*(1-fraction))),Rect2(Vector2(0,size.y*fraction),Vector2(size.x,size.y*(1-fraction))),Color(.35,.7,.73,.48))
+		draw_crew_wake(canvas,Vector2(foot.x,line),texture,clock,10)
+		return
 	if swimming:
 		var submersion := clampf((water-0.55)/0.45,0,1)
 		canvas.draw_texture_rect(texture,rect,false,Color(0.37,0.71,0.74,lerpf(0.70,0.23,submersion)))

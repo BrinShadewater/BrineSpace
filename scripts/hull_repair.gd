@@ -147,7 +147,7 @@ static func advance(game,actor,dt: float) -> bool:
 		actor.direction="north"
 		actor.state="weld" if actor.movement_medium=="dry" and not actor.helmet_equipped else "repair"
 		actor.activity="sealing hull / %d%%" % roundi(float(job.progress)/float(job.duration)*100)
-		job.progress=minf(job.duration,float(job.progress)+dt)
+		job.progress=minf(job.duration,float(job.progress)+dt*preload("res://scripts/companion_repair.gd").multiplier(game,room.pos))
 		if job.progress>=job.duration:
 			room.hull_crack=0.0
 			room.erase("local_incident")

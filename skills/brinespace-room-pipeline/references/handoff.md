@@ -1,5 +1,10 @@
 # Room and environment handoff
 
+## Visual session closeout
+
+Record final room-to-wall selections, shared door-finish policy, decoration visibility in both gameplay and Studio, and any special-room renderer exceptions. Preserve raw sources, exact prompts and future-mount notes. Refresh affected cards after the last render change; write hashes in a dated manifest and keep original review evidence. Sync only the maintained skill references changed by this task into the installed skill; do not overwrite unrelated concurrent guidance.
+
+
 For shared checkouts, read CURRENT_STATUS.md before carrying forward remaining
 work. Other sessions may have replaced risers, doors, cards or directional art.
 Record your batch's scope without overwriting newer acceptance or claiming it was
@@ -42,3 +47,17 @@ This does not require retaining every failed executable indefinitely: under an
 authorized cleanup, follow [storage retention](storage-retention.md), record exact
 binary removals, and label historical packages no longer locally replayable.
 Preserve accepted/current packages and unique source material.
+
+## September 9 room material and declutter lessons
+
+Apply [room materials and declutter](room-materials-and-declutter.md) for crew-scale accessories, shared-atlas structural texture preservation, runtime-only common-prop removal, current Studio wall suppression, final registration/card evidence and manifest/LFS closeout.
+
+## Release assets and runtime reliability
+
+Before changing runtime asset loading, export selection or renderer caching, read
+`docs/RELEASE_ASSET_CONTRACT.md` in the active checkout. Keep image decoding out
+of assertions, verify dynamic and JSON-relative dependencies, and test the actual
+release executable against the selected source bindings. Diagnostic placeholders
+are failures to repair, not accepted art. Preserve native appearance and live
+animation state when caching or culling. A newer source pack is not covered by an
+older executable's acceptance.

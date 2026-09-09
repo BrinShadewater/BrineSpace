@@ -5,6 +5,9 @@ description: Create, animate, repair, package, or integrate BrineSpace crew char
 
 # BrineSpace character pipeline
 
+For nonhuman companions, swimming/flotation, or their animation closeout, read
+[companion motion lessons](references/companion-motion.md).
+
 For everyday crew actions, cargo transitions or their session closeout, read
 [crew-life lessons](references/crew-life.md) for source extraction, furniture
 contact, equipment fitting and checkpoint evidence.

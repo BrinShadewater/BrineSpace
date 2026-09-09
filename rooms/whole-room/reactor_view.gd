@@ -9,7 +9,7 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var img := Image.new()
-	if img.load("res://rooms/underwater/reactor/source-v1.png") != OK: push_error("Failed to load image (rooms/whole-room/reactor_view.gd:12)")
+	preload("res://scripts/safe_image.gd").load_png(img, "res://rooms/underwater/reactor/source-v1.png")
 	life_texture = ImageTexture.create_from_image(img)
 	life_items = [
 		{"id":"reactor_chamber","rect":Rect2(-52,-40,104,80),"pivot":Vector2(619,806),"width":292.0,"outline":[Vector2(474,550),Vector2(483,523),Vector2(505,523),Vector2(505,461),Vector2(519,428),Vector2(548,400),Vector2(591,383),Vector2(643,383),Vector2(687,399),Vector2(716,426),Vector2(734,461),Vector2(734,523),Vector2(753,534),Vector2(766,553),Vector2(766,793),Vector2(753,806),Vector2(487,806),Vector2(474,793)]},

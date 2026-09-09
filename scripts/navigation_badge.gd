@@ -12,7 +12,8 @@ static func create(id: String) -> Control:
 	var badge = load("res://scripts/navigation_badge.gd").new()
 	badge.badge_id = id
 	if not textures.has(id):
-		var image := Image.load_from_file("res://brineui/navigation-badges-v3/%s.png" % id)
+		var image := Image.new()
+		preload("res://scripts/safe_image.gd").load_png(image, "res://brineui/navigation-badges-v3/%s.png" % id)
 		textures[id] = ImageTexture.create_from_image(image)
 	badge.art = textures[id]
 	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE

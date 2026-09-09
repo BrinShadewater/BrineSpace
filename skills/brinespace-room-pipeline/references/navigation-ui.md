@@ -31,3 +31,27 @@ Current implementation/evidence: scripts/navigation_badge.gd,
 tests/test_navigation_badges.gd, docs/NAVIGATION_BADGES_2026-09-08.md.
 Never serialize image-generation data URLs into text logs; use generatedImage
 for display and retain only paths/metadata/prompts in tool text.
+
+
+## Sidebar layout and camera controls
+
+Current owner direction: no sidebar tutorial or Locate Room & Connections action.
+Give the inspector more reading height (520 design pixels at full layout), enlarge
+station controls, and title the lower panel TIME / CYCLE with the live cycle count,
+pause/speed controls and countdown. The top bar still has no duplicate cycle counter.
+Do not restore retired controls simply because internal helpers remain.
+
+Keep the four top buttons equal width with centered badges and separate caption
+space. The reviewed baseline uses a 540-pixel row, 12-pixel gaps, 56-pixel badges
+and 8-pixel upper inset; inspect live dynamic labels rather than treating these
+values as universal for future layouts. Check all sidebar panels together at
+1600x900 and 960x540, including inspector-specific children and long content.
+Let the text area consume the added height; a larger frame with the old text
+height does not improve readability. Trace runtime layout overrides such as the
+airlock panel and resize handlers before changing constructor minimums alone.
+
+When updating a slider's range programmatically, preserve/restore its signal-blocked
+state as well as setting the value without signals. Changing min_value can itself
+emit value_changed and queue a user zoom that cancels startup centering. A startup
+fixture that immediately disables _process can conceal that failure. Let ordinary
+camera processing run and assert the station is visible before manual Fit/Locate.

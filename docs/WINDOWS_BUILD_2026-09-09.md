@@ -1,5 +1,7 @@
 # Windows build handoff
 
+Historical build: superseded by the later fixed and optimized releases. Its editor/PCK smoke and short release launch did not certify release-only decoding; see TEEGLY_PR_INTEGRATION_2026-09-09.md and RELIABILITY_PERFORMANCE_2026-09-09.md for subsequent actual-release acceptance. Use RELEASE_WORKFLOW.md for future builds.
+
 Updated: 2026-09-09 - BrineSpace
 
 ## Objective and acceptance

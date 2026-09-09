@@ -117,7 +117,9 @@ static func spawn(game, id: String, cell: Vector2i) -> bool:
 	for node in nodes:
 		var point: Vector2=actor.graph.get_point_position(node)
 		if actor.spawn_clear(point):
-			actor.foot=point;actor.active=true;actor.arrive();return true
+			actor.foot=point;actor.active=true;actor.arrive()
+			if id=="river":actor.start_behavior("boot")
+			return true
 	return false
 
 static func all_actors(game) -> Array:
@@ -179,7 +181,7 @@ static func can_pet(game, from_journal := false) -> bool:
 	if not game.running or not game.companion_roster.has("margot"):return false
 	if game.paused and not (from_journal and game._journal_is_open() and not game.pause_before_journal):return false
 	var actor = game.companion_actors.margot
-	return actor.active and actor.pet_cooldown<=0 and actor.can_stand(actor.foot)
+	return actor.active and actor.water.mode=="dry" and actor.pet_cooldown<=0 and actor.can_stand(actor.foot)
 
 static func pet_margot(game) -> bool:
 	if not can_pet(game) or not game.companion_actors.margot.pet():return false

@@ -10,7 +10,7 @@ func _init(host, path: String) -> void:
 	profile=JSON.parse_string(FileAccess.get_file_as_string(path))
 	for key in profile.textures:
 		var image := Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(profile.textures[key])) != OK: push_error("Failed to load image (rooms/whole-room/room_dressing.gd:13)")
+		preload("res://scripts/safe_image.gd").load_png(image, profile.textures[key])
 		textures[key]=ImageTexture.create_from_image(image)
 	for item in profile.get("furniture",[]):
 		room.life_items.append(registration(item))
@@ -64,6 +64,7 @@ func draw(prop: Dictionary) -> bool:
 	return true
 
 func draw_supported(host: Dictionary) -> void:
+	if not room.has_meta("layout_editor_preview"): return
 	for item in profile.get("supported",[]):
 		if item.host!=host.id: continue
 		var anchor: Vector2=room.life_point(host,Vector2(item.anchor[0],item.anchor[1]))
@@ -88,6 +89,7 @@ func route_returned_to_tray(route: Dictionary) -> bool:
 	return false
 
 func floor() -> void:
+	if not room.has_meta("layout_editor_preview"): return
 	# Owner preference: leave automatic workstation mats off the walking deck.
 	for route in profile.get("routes",[]):
 		if route_returned_to_tray(route): continue

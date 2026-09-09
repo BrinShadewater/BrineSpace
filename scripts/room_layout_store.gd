@@ -83,6 +83,8 @@ static func apply(room, asset: String) -> bool:
 	copies(room,selected)
 	preload("res://scripts/room_asset_library.gd").apply_variants(room,selected)
 	room.props=room.props.filter(func(prop): return not (selected.has(str(prop.id)) and selected[str(prop.id)]==null))
+	# Common decorations stay in Studio; live rooms contain their specialist equipment only.
+	room.props=room.props.filter(func(prop): return not is_common_decoration(prop))
 	for prop in room.props:
 		var axes=selected.get("flip/"+str(prop.id),[false,false])
 		if not axes is Array or axes.size()!=2: axes=[false,false]
@@ -119,6 +121,12 @@ static func apply(room, asset: String) -> bool:
 
 	room.set_meta("layout_apply_signature",hash([asset,room.quarter,selected,room.props]))
 	return true
+
+static func is_common_decoration(prop: Dictionary) -> bool:
+	if prop.get("registration",{}).get("dressing",false): return true
+	for field in ["id","copy_source","variant_source","portable_id"]:
+		if str(prop.get(field,"")).begins_with("library/common-"): return true
+	return false
 
 static func surface_positions(room: Node) -> Dictionary:
 	if room.has_meta("layout_draft"): return room.get_meta("layout_draft")

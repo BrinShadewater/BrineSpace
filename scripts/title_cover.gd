@@ -4,7 +4,7 @@ const Preferences = preload("res://scripts/title_settings.gd")
 const DESIGN := Vector2(1584, 672)
 var elapsed := 0.0
 var stage: Control
-var character: TextureRect
+var character: Control
 var rear: AmbientLayer
 var front: AmbientLayer
 
@@ -14,11 +14,11 @@ func _ready() -> void:
 	stage = Control.new()
 	stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(stage)
-	var background := _picture("res://brineui/title/cover-stage.png")
+	var background := _picture("res://brineui/title/consistency-v1/background.png")
 	stage.add_child(background)
 	rear = AmbientLayer.new()
 	stage.add_child(rear)
-	character = _picture("res://brineui/title/cover-character.png")
+	character = _character_layer()
 	character.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	stage.add_child(character)
 	front = AmbientLayer.new()
@@ -27,10 +27,40 @@ func _ready() -> void:
 	resized.connect(_layout)
 	_layout()
 
+func _character_layer() -> Control:
+	var layer := Control.new()
+	layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var body := Polygon2D.new()
+	var source := Image.new()
+	var error := preload("res://scripts/safe_image.gd").load_png(source, "res://brineui/title/consistency-v1/cover.png")
+	if error != OK:
+		var fallback := TextureRect.new()
+		fallback.texture = ImageTexture.create_from_image(source)
+		fallback.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		fallback.size = DESIGN
+		fallback.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		layer.add_child(fallback)
+		body.free()
+		return layer
+	body.texture = ImageTexture.create_from_image(source)
+	var outline: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://brineui/title/consistency-v1/character-outline.json"))
+	assert(source.get_size()==Vector2i(outline.sourceSize[0],outline.sourceSize[1]),"Title silhouette must match its registered source")
+	var points := PackedVector2Array()
+	for point in outline.points: points.append(Vector2(point[0],point[1]))
+	body.polygon = points
+	body.uv = points
+	body.antialiased = true
+	body.scale = DESIGN / Vector2(source.get_size())
+	layer.add_child(body)
+	return layer
+
 func _picture(path: String) -> TextureRect:
 	var picture := TextureRect.new()
-	picture.texture = ImageTexture.create_from_image(Image.load_from_file(path))
-	picture.size = picture.texture.get_size()
+	var source := Image.new()
+	preload("res://scripts/safe_image.gd").load_png(source, path)
+	picture.texture = ImageTexture.create_from_image(source)
+	picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	picture.size = DESIGN
 	picture.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	picture.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	return picture

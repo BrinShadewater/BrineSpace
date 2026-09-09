@@ -145,6 +145,16 @@
     {
       "prompt": "Add swimming and diving-helmet animations for the BrineSpace crew.",
       "should_trigger": true
+    },
+    {
+      "prompt": "Make BrineSpace companion portraits match the other selector portraits and add newly recovered characters to the recap.",
+      "should_trigger": true,
+      "expected_route": "comms-portraits and godot-integration; native selector sizing and recovery/checkpoint checks"
+    },
+    {
+      "prompt": "Make the existing BrineSpace Windows game build.",
+      "should_trigger": false,
+      "expected_route": "project RELEASE_WORKFLOW; no character art generation"
     }
   ],
   "execution_records": [

@@ -83,6 +83,9 @@ func save_report(note: String, after_crash: bool = false) -> String:
 	var files: Array = []
 	_add_logs(files)
 	_add_saves(files)
+	if not after_crash: _add_live_snapshot(files)
+	var artwork: Dictionary = preload("res://scripts/safe_image.gd").failures
+	if not artwork.is_empty(): files.append({"name":"diagnostics/artwork.json","data":JSON.stringify(artwork,"\t").to_utf8_buffer()})
 	if pending_screenshot != null and not pending_screenshot.is_empty():
 		files.append({"name": "screenshot.png", "data": pending_screenshot.save_png_to_buffer()})
 	var dumps_found := 0
@@ -178,6 +181,31 @@ func _add_saves(files: Array) -> void:
 		var path: String = "user://" + name
 		if FileAccess.file_exists(path):
 			files.append({"name": "saves/" + name, "data": FileAccess.get_file_as_bytes(path)})
+
+func _build_info() -> Dictionary:
+	if OS.has_feature("editor"):
+		return {"build_id":"unpackaged-source", "note":"Running editable source; release identities apply only to exported builds."}
+	if FileAccess.file_exists("res://build_info.json"):
+		var value = JSON.parse_string(FileAccess.get_file_as_string("res://build_info.json"))
+		if value is Dictionary: return value
+	return {"build_id":"unpackaged-source", "note":"No release manifest has been generated."}
+
+func _add_live_snapshot(files: Array) -> void:
+	var scene := get_tree().current_scene if is_inside_tree() else null
+	var result: Dictionary = {"status":"unavailable", "reason":"no active station"}
+	if scene != null and scene.has_method("capture_bug_report_snapshot"):
+		result = scene.capture_bug_report_snapshot()
+	if result.has("snapshot"):
+		var bytes := var_to_bytes(result.snapshot)
+		result.erase("snapshot")
+		if bytes.size() <= 16 * 1024 * 1024:
+			# Same checksum envelope as RunSave, under a distinct diagnostic name.
+			var data := (bytes.hex_encode().sha256_text()+"\n").to_utf8_buffer()
+			data.append_array(bytes)
+			files.append({"name":"diagnostics/live_station.save","data":data})
+		else:
+			result = {"status":"unavailable", "reason":"snapshot exceeds 16 MiB limit"}
+	files.append({"name":"diagnostics/live_station.json","data":JSON.stringify(result,"\t").to_utf8_buffer()})
 
 func _add_crash_dumps(files: Array) -> int:
 	var base := OS.get_environment("LOCALAPPDATA")
@@ -321,7 +349,7 @@ func _input(event: InputEvent) -> void:
 		return
 	var texture := get_viewport().get_texture()
 	pending_screenshot = texture.get_image() if texture != null else null
-	_show_overlay("REPORT A BUG", "Saves the game log, your last station save and a screenshot into a report you can send to Alex at Shadewater Labs (brinshadewater@gmail.com).", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
+	_show_overlay("REPORT A BUG", "Saves the game log, your last station save, a separate live diagnostic snapshot and a screenshot into a report you can send to Alex at Shadewater Labs (brinshadewater@gmail.com).", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
 	if note_field != null:
 		note_field.grab_focus()
 
@@ -336,6 +364,7 @@ func _on_save_pressed() -> void:
 func _report_text(note: String, after_crash: bool, files: Array, dumps_found: int) -> String:
 	var lines: Array = []
 	lines.append("BrineSpace bug report")
+	lines.append("build: " + JSON.stringify(_build_info()))
 	lines.append("trigger: " + ("previous session did not close normally" if after_crash else "manual (F8)"))
 	lines.append("note: " + (note if not note.is_empty() else "(none)"))
 	lines.append("bundle time: " + Time.get_datetime_string_from_system(false, true))

@@ -53,13 +53,10 @@ static func coverage(point: Vector2, center: Vector2, radius: Vector2) -> float:
 	var irregular := normalized.length()+0.065*sin(angle*5.0+center.x)+0.035*sin(angle*9.0+center.y)
 	return 1.0-smoothstep(0.67,1.0,irregular)
 
-static func material_uv(point: Vector2) -> Vector2:
-	point /= 4.0
-	return Vector2(1.0-absf(fposmod(point.x,2.0)-1.0),1.0-absf(fposmod(point.y,2.0)-1.0))
-
 static func ground_mesh(center: Vector2, radius: Vector2) -> ArrayMesh:
-	# Quarter-cell vertices align with the mirrored material's four-cell spans.
-	# Vertex alpha makes an irregular feathered border, not a rectangular tile edge.
+	# Each authored habitat gets one continuous material field. Mirroring a small
+	# tile made salt veins and sulfur deposits form repeated bilateral diamonds.
+	# The irregular alpha boundary hides the source rectangle without repeating it.
 	var first := ((center-radius*1.15)*4.0).floor()/4.0
 	var last := ((center+radius*1.15)*4.0).ceil()/4.0
 	var columns := roundi((last.x-first.x)*4)+1
@@ -73,7 +70,7 @@ static func ground_mesh(center: Vector2, radius: Vector2) -> ArrayMesh:
 			var at := first+Vector2(x,y)*0.25
 			vertices.append(Vector3(at.x,at.y,0))
 			colors.append(Color(0.49,0.58,0.57,coverage(at,center,radius)))
-			uvs.append(material_uv(at))
+			uvs.append((at-center)/(radius*2.3)+Vector2(0.5,0.5))
 			if x<columns-1 and y<rows-1:
 				var i := y*columns+x
 				indices.append_array(PackedInt32Array([i,i+1,i+columns,i+1,i+columns+1,i+columns]))

@@ -151,7 +151,7 @@ func _init() -> void:
 	spawn_offset = Vector2(48,32)
 	needs = {"hunger":20.0,"fatigue":20.0,"curiosity":65.0,"maintenance":65.0}
 	service_preferences["maintenance"] = ["maintenance_bay","battery_array","pressure_control","life_support","listening_post"]
-	var envelope: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://character/marsh-v1/clearance.json"))
+	var envelope: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://character/animation-expansion-v5/marsh/clearance.json"))
 	swim_clearance=envelope
 	tread_clearance=envelope.duplicate(true)
 

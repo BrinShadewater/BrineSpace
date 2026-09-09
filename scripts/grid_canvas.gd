@@ -184,102 +184,103 @@ var room_texture_variants := {}
 var texture_source_regions := {}
 var star_points: Array[Dictionary] = []
 var room_texture_paths := {
-	"cold_store": "res://assets/large-assets-v1/cards/cold_store.png",
-	"galley": "res://assets/large-assets-v1/cards/galley.png",
-	"salvage_workshop": "res://assets/large-assets-v1/cards/salvage_workshop.png",
-	"observation_room": "res://assets/large-assets-v1/cards/observation_room.png",
-	"current_turbine": "res://assets/large-assets-v1/cards/current_turbine.png",
-	"biomass_digester": "res://assets/large-assets-v1/cards/biomass_digester.png",
-	"heat_recovery": "res://assets/large-assets-v1/cards/heat_recovery.png",
-	"airlock": "res://assets/large-assets-v1/cards/airlock.png",
-	"anomaly_lab": "res://assets/large-assets-v1/cards/anomaly_lab.png",
-	"battery_array": "res://assets/large-assets-v1/cards/battery_array.png",
-	"bio_lab": "res://assets/large-assets-v1/cards/bio_lab.png",
-	"biodome": "res://assets/large-assets-v1/cards/biodome.png",
-	"brine_core": "res://assets/preferred-layouts-v1/cards/brine_core.png",
-	"clone_lab": "res://assets/large-assets-v1/cards/clone_lab.png",
-	"command_center": "res://assets/large-assets-v1/cards/command_center.png",
-	"construction_drone_bay": "res://assets/large-assets-v1/cards/construction_drone_bay.png",
+	"cold_store": "res://assets/room-declutter-v1/cards/cold_store.png",
+	"galley": "res://assets/room-risers-v2/cards/galley.png",
+	"salvage_workshop": "res://assets/room-declutter-v1/cards/salvage_workshop.png",
+	"observation_room": "res://assets/room-risers-v2/cards/observation_room.png",
+	"current_turbine": "res://assets/room-declutter-v1/cards/current_turbine.png",
+	"biomass_digester": "res://assets/room-declutter-v1/cards/biomass_digester.png",
+	"heat_recovery": "res://assets/room-declutter-v1/cards/heat_recovery.png",
+	"airlock": "res://assets/riser-session-closeout/cards/airlock.png",
+	"anomaly_lab": "res://assets/room-declutter-v1/cards/anomaly_lab.png",
+	"battery_array": "res://assets/room-declutter-v1/cards/battery_array.png",
+	"bio_lab": "res://assets/room-declutter-v1/cards/bio_lab.png",
+	"biodome": "res://assets/room-declutter-v1/cards/biodome.png",
+	"brine_core": "res://assets/room-declutter-v1/cards/brine_core.png",
+	"clone_lab": "res://assets/room-declutter-v1/cards/clone_lab.png",
+	"command_center": "res://assets/room-risers-v2/cards/command_center.png",
+	"construction_drone_bay": "res://assets/room-declutter-v1/cards/construction_drone_bay.png",
 	"corner": "res://assets/corridor-polish-v3/cards/corner.png",
 	"corridor": "res://assets/corridor-polish-v3/cards/corridor.png",
-	"crew_hab": "res://assets/large-assets-v1/cards/crew_hab.png",
-	"crew_lounge": "res://assets/large-assets-v1/cards/crew_lounge.png",
-	"cryo_chamber": "res://assets/large-assets-v1/cards/cryo_chamber.png",
-	"data_archive": "res://assets/large-assets-v1/cards/data_archive.png",
-	"gravity_loom": "res://assets/large-assets-v1/cards/gravity_loom.png",
-	"holographic_core": "res://assets/large-assets-v1/cards/holographic_core.png",
-	"hydroponics_bay": "res://assets/large-assets-v1/cards/hydroponics_bay.png",
-	"isolation_vault": "res://assets/large-assets-v1/cards/isolation_vault.png",
-	"life_support": "res://assets/large-assets-v1/cards/life_support.png",
-	"listening_post": "res://assets/large-assets-v1/cards/listening_post.png",
-	"maintenance_bay": "res://assets/large-assets-v1/cards/maintenance_bay.png",
-	"med_bay": "res://assets/large-assets-v1/cards/med_bay.png",
-	"med_center": "res://assets/large-assets-v1/cards/med_center.png",
-	"med_office": "res://assets/large-assets-v1/cards/med_office.png",
-	"mining_drone_bay": "res://assets/large-assets-v1/cards/mining_drone_bay.png",
-	"mycelium_nursery": "res://assets/large-assets-v1/cards/mycelium_nursery.png",
-	"ore_refinery": "res://assets/large-assets-v1/cards/ore_refinery.png",
-	"pressure_control": "res://assets/large-assets-v1/cards/pressure_control.png",
-	"quarantine_cell": "res://assets/large-assets-v1/cards/quarantine_cell.png",
-	"radio_lab": "res://assets/large-assets-v1/cards/radio_lab.png",
-	"reactor": "res://assets/large-assets-v1/cards/reactor.png",
-	"research_lab": "res://assets/large-assets-v1/cards/research_lab.png",
-	"salvage_drone_bay": "res://assets/large-assets-v1/cards/salvage_drone_bay.png",
-	"shield_generator": "res://assets/large-assets-v1/cards/shield_generator.png",
-	"solar_array": "res://assets/large-assets-v1/cards/solar_array.png",
-	"storage_bay": "res://assets/large-assets-v1/cards/storage_bay.png",
+	"crew_hab": "res://assets/room-declutter-v1/cards/crew_hab.png",
+	"crew_lounge": "res://assets/riser-session-closeout/cards/crew_lounge.png",
+	"cryo_chamber": "res://assets/riser-session-closeout/cards/cryo_chamber.png",
+	"data_archive": "res://assets/riser-session-closeout/cards/data_archive.png",
+	"gravity_loom": "res://assets/room-declutter-v1/cards/gravity_loom.png",
+	"holographic_core": "res://assets/room-declutter-v1/cards/holographic_core.png",
+	"hydroponics_bay": "res://assets/room-risers-v2/cards/hydroponics_bay.png",
+	"isolation_vault": "res://assets/room-declutter-v1/cards/isolation_vault.png",
+	"life_support": "res://assets/room-declutter-v1/cards/life_support.png",
+	"listening_post": "res://assets/room-declutter-v1/cards/listening_post.png",
+	"maintenance_bay": "res://assets/room-risers-v2/cards/maintenance_bay.png",
+	"med_bay": "res://assets/room-risers-v2/cards/med_bay.png",
+	"med_center": "res://assets/room-declutter-v1/cards/med_center.png",
+	"med_office": "res://assets/room-declutter-v1/cards/med_office.png",
+	"mining_drone_bay": "res://assets/room-declutter-v1/cards/mining_drone_bay.png",
+	"mycelium_nursery": "res://assets/room-declutter-v1/cards/mycelium_nursery.png",
+	"ore_refinery": "res://assets/room-declutter-v1/cards/ore_refinery.png",
+	"pressure_control": "res://assets/room-declutter-v1/cards/pressure_control.png",
+	"quarantine_cell": "res://assets/room-declutter-v1/cards/quarantine_cell.png",
+	"radio_lab": "res://assets/room-declutter-v1/cards/radio_lab.png",
+	"reactor": "res://assets/riser-session-closeout/cards/reactor.png",
+	"research_lab": "res://assets/riser-session-closeout/cards/research_lab.png",
+	"salvage_drone_bay": "res://assets/room-declutter-v1/cards/salvage_drone_bay.png",
+	"shield_generator": "res://assets/room-declutter-v1/cards/shield_generator.png",
+	"solar_array": "res://assets/room-declutter-v1/cards/solar_array.png",
+	"storage_bay": "res://assets/riser-session-closeout/cards/storage_bay.png",
 	"tee_corridor": "res://assets/corridor-polish-v3/cards/tee_corridor.png",
-	"tidal_condenser": "res://assets/large-assets-v1/cards/tidal_condenser.png",
-	"xeno_lab": "res://assets/large-assets-v1/cards/xeno_lab.png"
+	"tidal_condenser": "res://assets/room-declutter-v1/cards/tidal_condenser.png",
+	"xeno_lab": "res://assets/room-declutter-v1/cards/xeno_lab.png"
 }
 var room_texture_variant_paths := {
-	"current_turbine": ["res://assets/large-assets-v1/cards/current_turbine.png"],
-	"biomass_digester": ["res://assets/large-assets-v1/cards/biomass_digester.png"],
-	"heat_recovery": ["res://assets/large-assets-v1/cards/heat_recovery.png"],
-	"airlock": ["res://assets/large-assets-v1/cards/airlock.png"],
-	"anomaly_lab": ["res://assets/large-assets-v1/cards/anomaly_lab.png"],
-	"battery_array": ["res://assets/large-assets-v1/cards/battery_array.png"],
-	"bio_lab": ["res://assets/large-assets-v1/cards/bio_lab.png"],
-	"biodome": ["res://assets/large-assets-v1/cards/biodome.png"],
-	"brine_core": ["res://assets/preferred-layouts-v1/cards/brine_core.png"],
-	"clone_lab": ["res://assets/large-assets-v1/cards/clone_lab.png"],
-	"command_center": ["res://assets/large-assets-v1/cards/command_center.png"],
-	"construction_drone_bay": ["res://assets/large-assets-v1/cards/construction_drone_bay.png"],
+	"current_turbine": ["res://assets/room-declutter-v1/cards/current_turbine.png"],
+	"biomass_digester": ["res://assets/room-declutter-v1/cards/biomass_digester.png"],
+	"heat_recovery": ["res://assets/room-declutter-v1/cards/heat_recovery.png"],
+	"airlock": ["res://assets/riser-session-closeout/cards/airlock.png"],
+	"anomaly_lab": ["res://assets/room-declutter-v1/cards/anomaly_lab.png"],
+	"battery_array": ["res://assets/room-declutter-v1/cards/battery_array.png"],
+	"bio_lab": ["res://assets/room-declutter-v1/cards/bio_lab.png"],
+	"biodome": ["res://assets/room-declutter-v1/cards/biodome.png"],
+	"brine_core": ["res://assets/room-declutter-v1/cards/brine_core.png"],
+	"clone_lab": ["res://assets/room-declutter-v1/cards/clone_lab.png"],
+	"command_center": ["res://assets/room-risers-v2/cards/command_center.png"],
+	"construction_drone_bay": ["res://assets/room-declutter-v1/cards/construction_drone_bay.png"],
 	"corner": ["res://assets/corridor-polish-v3/cards/corner.png", "res://assets/corridor-polish-v3/cards/corner-1.png", "res://assets/corridor-polish-v3/cards/corner-2.png"],
 	"corridor": ["res://assets/corridor-polish-v3/cards/corridor.png", "res://assets/corridor-polish-v3/cards/corridor-1.png", "res://assets/corridor-polish-v3/cards/corridor-2.png"],
-	"crew_hab": ["res://assets/large-assets-v1/cards/crew_hab.png"],
-	"crew_lounge": ["res://assets/large-assets-v1/cards/crew_lounge.png"],
-	"cryo_chamber": ["res://assets/large-assets-v1/cards/cryo_chamber.png"],
-	"data_archive": ["res://assets/large-assets-v1/cards/data_archive.png"],
-	"gravity_loom": ["res://assets/large-assets-v1/cards/gravity_loom.png"],
-	"holographic_core": ["res://assets/large-assets-v1/cards/holographic_core.png"],
-	"hydroponics_bay": ["res://assets/large-assets-v1/cards/hydroponics_bay.png"],
-	"isolation_vault": ["res://assets/large-assets-v1/cards/isolation_vault.png"],
-	"life_support": ["res://assets/large-assets-v1/cards/life_support.png"],
-	"listening_post": ["res://assets/large-assets-v1/cards/listening_post.png"],
-	"maintenance_bay": ["res://assets/large-assets-v1/cards/maintenance_bay.png"],
-	"med_bay": ["res://assets/large-assets-v1/cards/med_bay.png"],
-	"med_center": ["res://assets/large-assets-v1/cards/med_center.png"],
-	"med_office": ["res://assets/large-assets-v1/cards/med_office.png"],
-	"mining_drone_bay": ["res://assets/large-assets-v1/cards/mining_drone_bay.png"],
-	"mycelium_nursery": ["res://assets/large-assets-v1/cards/mycelium_nursery.png"],
-	"ore_refinery": ["res://assets/large-assets-v1/cards/ore_refinery.png"],
-	"pressure_control": ["res://assets/large-assets-v1/cards/pressure_control.png"],
-	"quarantine_cell": ["res://assets/large-assets-v1/cards/quarantine_cell.png"],
-	"radio_lab": ["res://assets/large-assets-v1/cards/radio_lab.png"],
-	"reactor": ["res://assets/large-assets-v1/cards/reactor.png"],
-	"research_lab": ["res://assets/large-assets-v1/cards/research_lab.png"],
-	"salvage_drone_bay": ["res://assets/large-assets-v1/cards/salvage_drone_bay.png"],
-	"shield_generator": ["res://assets/large-assets-v1/cards/shield_generator.png"],
-	"solar_array": ["res://assets/large-assets-v1/cards/solar_array.png"],
-	"storage_bay": ["res://assets/large-assets-v1/cards/storage_bay.png"],
+	"crew_hab": ["res://assets/room-declutter-v1/cards/crew_hab.png"],
+	"crew_lounge": ["res://assets/riser-session-closeout/cards/crew_lounge.png"],
+	"cryo_chamber": ["res://assets/riser-session-closeout/cards/cryo_chamber.png"],
+	"data_archive": ["res://assets/riser-session-closeout/cards/data_archive.png"],
+	"gravity_loom": ["res://assets/room-declutter-v1/cards/gravity_loom.png"],
+	"holographic_core": ["res://assets/room-declutter-v1/cards/holographic_core.png"],
+	"hydroponics_bay": ["res://assets/room-risers-v2/cards/hydroponics_bay.png"],
+	"isolation_vault": ["res://assets/room-declutter-v1/cards/isolation_vault.png"],
+	"life_support": ["res://assets/room-declutter-v1/cards/life_support.png"],
+	"listening_post": ["res://assets/room-declutter-v1/cards/listening_post.png"],
+	"maintenance_bay": ["res://assets/room-risers-v2/cards/maintenance_bay.png"],
+	"med_bay": ["res://assets/room-risers-v2/cards/med_bay.png"],
+	"med_center": ["res://assets/room-declutter-v1/cards/med_center.png"],
+	"med_office": ["res://assets/room-declutter-v1/cards/med_office.png"],
+	"mining_drone_bay": ["res://assets/room-declutter-v1/cards/mining_drone_bay.png"],
+	"mycelium_nursery": ["res://assets/room-declutter-v1/cards/mycelium_nursery.png"],
+	"ore_refinery": ["res://assets/room-declutter-v1/cards/ore_refinery.png"],
+	"pressure_control": ["res://assets/room-declutter-v1/cards/pressure_control.png"],
+	"quarantine_cell": ["res://assets/room-declutter-v1/cards/quarantine_cell.png"],
+	"radio_lab": ["res://assets/room-declutter-v1/cards/radio_lab.png"],
+	"reactor": ["res://assets/riser-session-closeout/cards/reactor.png"],
+	"research_lab": ["res://assets/riser-session-closeout/cards/research_lab.png"],
+	"salvage_drone_bay": ["res://assets/room-declutter-v1/cards/salvage_drone_bay.png"],
+	"shield_generator": ["res://assets/room-declutter-v1/cards/shield_generator.png"],
+	"solar_array": ["res://assets/room-declutter-v1/cards/solar_array.png"],
+	"storage_bay": ["res://assets/riser-session-closeout/cards/storage_bay.png"],
 	"tee_corridor": ["res://assets/corridor-polish-v3/cards/tee_corridor.png", "res://assets/corridor-polish-v3/cards/tee_corridor-1.png", "res://assets/corridor-polish-v3/cards/tee_corridor-2.png"],
-	"tidal_condenser": ["res://assets/large-assets-v1/cards/tidal_condenser.png"],
-	"xeno_lab": ["res://assets/large-assets-v1/cards/xeno_lab.png"]
+	"tidal_condenser": ["res://assets/room-declutter-v1/cards/tidal_condenser.png"],
+	"xeno_lab": ["res://assets/room-declutter-v1/cards/xeno_lab.png"]
 }
 
 func _ready() -> void:
 	draw_target = self
+	RenderingServer.frame_pre_draw.connect(_align_camera_pixels)
 	for id in range(Surface.size()):
 		var layer := SurfacePass.new()
 		layer.host = self
@@ -485,7 +486,7 @@ func _ready() -> void:
 			room_texture_variants[id] = textures
 	veld_player.load_manifest("res://character/dr-veld-v1/final/manifest.json")
 	branforth_player.load_manifest("res://character/chief-engineer-branforth-v1/final/manifest.json")
-	marsh_player.load_manifest("res://character/marsh-v1/final/manifest.json")
+	marsh_player.load_manifest("res://character/animation-expansion-v5/marsh/manifest.json")
 	var marsh_helmet = CrewSpritePlayer.new()
 	marsh_helmet.load_manifest("res://character/marsh-v1/final/helmet-manifest.json")
 	marsh_player.equipment_frames["diving-helmet"] = marsh_helmet.frames
@@ -845,6 +846,16 @@ func _gui_input(event: InputEvent) -> void:
 
 var last_content_viewport := Rect2()
 
+func _align_camera_pixels() -> void:
+	# ScrollContainer moves in design pixels; fractional window scaling otherwise
+	# changes nearest-neighbor sampling on every pan. Move the entire world by one
+	# shared subpixel correction, leaving room geometry and the UI unchanged.
+	var local := get_transform()
+	var screen := get_viewport().get_stretch_transform() * get_global_transform_with_canvas()
+	var parent_to_screen := screen * local.affine_inverse()
+	local.origin += parent_to_screen.affine_inverse().basis_xform(screen.origin.round() - screen.origin)
+	RenderingServer.canvas_item_set_transform(get_canvas_item(), local)
+
 func _process(_delta: float) -> void:
 	var main = _get_main()
 	var viewport_region := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size)
@@ -950,6 +961,7 @@ func _surface_state() -> Array:
 
 var flood_surfaces: Dictionary = {}
 var visible_draw_rooms: Array = []
+var cull_derelict_drawing := not OS.get_cmdline_user_args().has("--draw-all-derelicts")
 var cull_room_drawing := not OS.get_cmdline_user_args().has("--draw-all-rooms")
 var profile_draw := false
 var draw_profile_usec: Dictionary = {}
@@ -979,14 +991,21 @@ func _draw() -> void:
 			if region.intersects(Rect2(Vector2(room.pos)*cell_size,Vector2.ONE*cell_size)):
 				visible_draw_rooms.append(room)
 	if retain_static_surfaces: preload("res://scripts/flood_visuals.gd").update_surfaces(self,main,visible_draw_rooms,cell_size)
+	var environment_stage := Time.get_ticks_usec() if profile_draw else 0
 	_draw_space_background(grid_pixel_size)
 	_draw_stars()
+	if profile_draw: environment_stage = _profile_draw_stage("env_seabed",environment_stage)
 	_draw_underwater_depth()
+	if profile_draw: environment_stage = _profile_draw_stage("env_haze",environment_stage)
 	_draw_foundations()
 	_draw_foundations(true)
+	if profile_draw: environment_stage = _profile_draw_stage("env_foundations",environment_stage)
 	rock_view.draw_into(draw_target,main.wrecks,cell_size,main.visual_time_seconds,main.selected_room_cell,false)
+	if profile_draw: environment_stage = _profile_draw_stage("env_rocks",environment_stage)
 	wreck_view.draw_into(draw_target,main.wrecks,cell_size,main.visual_time_seconds,main.selected_room_cell,false)
+	if profile_draw: environment_stage = _profile_draw_stage("env_wrecks",environment_stage)
 	_draw_cryo_derelicts(main,cell_size)
+	if profile_draw: environment_stage = _profile_draw_stage("env_cryo",environment_stage)
 	harvest_site_art.draw_into(draw_target,main.drone_fleet.sites,main.occupied,cell_size,main.selected_room_cell)
 	# Exterior ROVs are below every station floor, hull and crew canvas.
 	_draw_drones(main)
@@ -1382,7 +1401,9 @@ func _draw_room(room: Dictionary) -> void:
 		_draw_room_doors(room, rect)
 
 func _draw_cryo_derelicts(main, cell_size: float) -> void:
+	var region := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size).grow(cell_size * 0.5)
 	for cell in main.wrecks:
+		if cull_room_drawing and cull_derelict_drawing and not region.intersects(Rect2(Vector2(cell)*cell_size,Vector2.ONE*cell_size)): continue
 		var ward: Dictionary = main.wrecks[cell]
 		if main.Companions.IDS.has(ward.kind) and not ward.cleared:
 			var room: Dictionary=main.RoomDatabaseScript.get_room(main.Companions.ROOMS[ward.kind]).duplicate(true)
@@ -1496,13 +1517,17 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 				draw_target.draw_rect(Rect2(center - size * 0.5, size), Color("303740"))
 		if not preview and main.occupied.has(pos + offset) and _uses_layered_art(main.occupied[pos + offset]) and not _is_narrow_corridor(main.occupied[pos+offset]) and side in [0, 3]:
 			omitted.append(side)
+	if profile_draw: _profile_detail("doors_"+str(room.id),setup_started)
+	var detail_mark := Time.get_ticks_usec() if profile_draw else 0
 	room_view.configure_embedded(int(room.get("rotation", 0)), sides, not preview and main.powered_room_cells.has(pos), main.get_visual_time_seconds(), omitted)
+	if profile_draw: detail_mark = _profile_detail("configure_"+str(room.id),detail_mark)
 	if main.Companions.is_site(main,pos):
 		var site: Dictionary=main.wrecks[pos]
 		room_view.props=main.Companions.room_props(room_view.props,site.kind)
 		for prop in main.Companions.recovery_props(site.kind,site.recovered):
 			var texture: Texture2D=main.Companions.prop_texture(prop.id) if site.kind=="margot" else main.Companions.container_texture(site.kind,site.opened)
 			room_view.external_actors.append({"position":prop.position,"texture":texture})
+	if profile_draw: detail_mark = _profile_detail("companions_"+str(room.id),detail_mark)
 	room_view.flood_water=0.0 if preview else preload("res://scripts/room_flooding.gd").level(room)
 	room_view.flood_clock=main.get_visual_time_seconds()
 	if room.id=="airlock":
@@ -2426,3 +2451,9 @@ func _layout_light_anchors(room: Dictionary) -> Array:
 
 func _riser_fixtures_visible(room: Dictionary) -> bool:
 	return _get_main().hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not _get_main().occupied.has(room.pos+Vector2i.UP)
+
+func _profile_detail(label: String, started: int) -> int:
+	var now := Time.get_ticks_usec()
+	var key := "setup_"+label
+	draw_profile_usec[key] = int(draw_profile_usec.get(key,0))+now-started
+	return now

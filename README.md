@@ -49,6 +49,11 @@ pause to plan. The pressure comes from the station's needs, not rapid clicking.
 
 ## Current checkpoint â€” September 9, 2026
 
+The [combined polish and release pass](docs/FINAL_POLISH_RELEASE_2026-09-09.md)
+brings together the latest room artwork, portraits, expanded companion animations,
+flood responses and diagnostic/reporting improvements. Animation frame failures
+now retain their timeline slots, and authored clip durations are precomputed.
+
 Start with [current status](docs/CURRENT_STATUS.md) for the latest decisions and
 [development notes](docs/DEVELOPMENT_NOTES.md) for the design direction. BrineSpace
 is a playable prototype; balance, crew animation and longer expeditions are still
@@ -158,3 +163,10 @@ validation executables. No release binaries or player saves are included here.
 
 Source-available, with all rights reserved. See [NOTICE.md](NOTICE.md) for rights
 and reuse terms. Third-party components retain their own licences.
+
+## Build a Windows release
+
+Use `powershell -ExecutionPolicy Bypass -File tools/export_release.ps1` after imports
+and LFS downloads finish. The helper regenerates selected asset dependencies and
+build identity and checks export errors. See [release verification](docs/RELEASE_ASSET_CONTRACT.md)
+for actual executable, packaged asset and visual acceptance checks.

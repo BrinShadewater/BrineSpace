@@ -4,11 +4,19 @@ static var textures: Dictionary={}
 static func texture(kind: String) -> Texture2D:
 	if not textures.has(kind):
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/door-polish-v1/"+kind+"-source.png")) != OK: push_error("Failed to load image (rooms/doors/door_finish.gd)")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://assets/door-polish-v1/"+kind+"-source.png")
 		textures[kind]=ImageTexture.create_from_image(image)
 	return textures[kind]
 
 static func tint(variant: String) -> Color:
+	var room_paints := {
+		"reactor":Color(.61,.63,.64),
+		"cryo_chamber":Color(.77,.89,1.0),
+		"data_archive":Color(.56,.69,.85),
+		"storage_bay":Color(.79,.79,.63),
+		"crew_lounge":Color(.96,.87,.72),
+		"research_lab":Color(.71,.84,.96)}
+	if room_paints.has(variant): return room_paints[variant]
 	return {"bio":Color(.83,.89,.75),"life-support":Color(.78,.9,.9),"engineering":Color(.74,.7,.64),"metal":Color(.62,.68,.78),"brine":Color(1,1,1),"generic":Color(.84,.86,.84)}.get(variant,Color(.84,.86,.84))
 
 static func region(canvas: CanvasItem, tex: Texture2D, target: Rect2, source: Rect2, color: Color, vertical:=false) -> void:

@@ -12,7 +12,7 @@ static func texture(empty: bool) -> Texture2D:
 	var key := "empty" if empty else "occupied"
 	if not textures.has(key):
 		var image := Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/marsh-charging-v1/%s.png" % key)) != OK: push_error("Failed to load image (scripts/marsh_charging_art.gd)")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://assets/marsh-charging-v1/%s.png" % key)
 		textures[key]=ImageTexture.create_from_image(image)
 	return textures[key]
 

@@ -15,7 +15,7 @@ static var hits:=0
 static func texture(path: String) -> Texture2D:
 	if not textures.has(path):
 		var im:=Image.new()
-		if im.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (rooms/whole-room/modular_floor.gd)")
+		preload("res://scripts/safe_image.gd").load_png(im, path)
 		textures[path]=ImageTexture.create_from_image(im)
 	return textures[path]
 static func pilot(id: String) -> bool: return id in ["research_lab", "reactor", "life_support", "crew_hab", "corridor", "corner", "tee_corridor", "hydroponics_bay", "mycelium_nursery", "tidal_condenser", "quarantine_cell", "cryo_chamber", "clone_lab", "med_bay", "storage_bay", "pressure_control", "crew_lounge", "mining_drone_bay", "ore_refinery", "listening_post", "xeno_lab", "maintenance_bay", "bio_lab", "isolation_vault", "current_turbine", "biomass_digester", "heat_recovery", "airlock", "construction_drone_bay", "brine_core", "solar_array", "battery_array", "salvage_drone_bay", "gravity_loom", "data_archive", "biodome", "anomaly_lab", "command_center", "holographic_core", "med_center", "med_office", "radio_lab", "shield_generator", "observation_room", "salvage_workshop", "galley", "cold_store"]
@@ -64,6 +64,21 @@ static var finish_catalog: Dictionary={}
 static func finishes() -> Dictionary:
 	if not finish_catalog.is_empty(): return finish_catalog
 	var result: Dictionary={"Station deck":DECK,"Industrial hallway deck":HALL_TILES,"Quiet hallway panels":HALL_QUIET}
+	result["Engineering access plates"]="res://assets/room-floor-tiles-v3/engineering-access.png"
+	result["Life support drainage panels"]="res://assets/room-floor-tiles-v3/life-support-drainage.png"
+	result["Habitation cork composite"]="res://assets/room-floor-tiles-v3/habitation-composite.png"
+	result["Medical sealed terrazzo"]="res://assets/room-floor-tiles-v4/medical-terrazzo.png"
+	result["Hydroponics slotted decking"]="res://assets/room-floor-tiles-v4/hydroponic-drainage.png"
+	result["Cargo reinforced loading plates"]="res://assets/room-floor-tiles-v4/cargo-anchor.png"
+	result["Data antistatic rubber"]="res://assets/room-floor-tiles-v4/server-rubber.png"
+	result["Galley hex mosaic panels"]="res://assets/room-floor-tiles-v4/galley-hex.png"
+	result["Lounge woven acoustic panels"]="res://assets/room-floor-tiles-v4/lounge-acoustic.png"
+	result["Reactor heatshield ceramics"]="res://assets/room-floor-tiles-v5/reactor-heatshield.png"
+	result["Cryo insulated composite"]="res://assets/room-floor-tiles-v5/cryo-insulated.png"
+	result["Robotics ESD workdeck"]="res://assets/room-floor-tiles-v5/robotics-esd.png"
+	result["Refinery basalt wear plates"]="res://assets/room-floor-tiles-v5/refinery-basalt.png"
+	result["Command precision inlay"]="res://assets/room-floor-tiles-v5/command-inlay.png"
+	result["Observation mineral slate"]="res://assets/room-floor-tiles-v5/observation-slate.png"
 	for row in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/floor-profiles-v1/rooms.json")):
 		var path:=str(row.source)
 		if path in result.values(): continue

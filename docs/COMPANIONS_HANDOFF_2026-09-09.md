@@ -1,5 +1,10 @@
 # Project handoff
 
+> Historical initial River/Josh handoff. The later Margot, portrait, animation and
+> flood integrations are recorded in [the character session closeout](CHARACTER_SESSION_CLOSEOUT_2026-09-09.md).
+> Statements below about pending Margot work and selected v1 packs describe the earlier revision.
+
+
 Updated: September 9, 2026 - Project: Brine Space - Task: River and Josh companions
 
 ## Objective and acceptance

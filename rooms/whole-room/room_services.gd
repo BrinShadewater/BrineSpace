@@ -6,6 +6,7 @@ static func host(props: Array, id: String) -> Rect2:
 	return Rect2()
 
 static func run(canvas: CanvasItem, points: PackedVector2Array, _color: Color, live: bool, art := "cable_straight") -> void:
+	if not preload("res://rooms/whole-room/decoration_props.gd").automatic_floor_art_enabled: return
 	preload("res://rooms/whole-room/decoration_props.gd").service_run(canvas,points,6.0,art)
 	# Solid flush bridge plate wherever a horizontal run crosses the central aisle.
 	for i in range(points.size()-1):

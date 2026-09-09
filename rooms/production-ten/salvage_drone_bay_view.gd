@@ -7,11 +7,16 @@ const FLOOR_CUTOUTS = {
 }
 const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
 var dressing: RefCounted
+var equipment_texture: ImageTexture
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/salvage_drone_bay-source-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/salvage_drone_bay_view.gd:13)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/salvage_drone_bay-source-v1.png")
 	life_texture=ImageTexture.create_from_image(image)
+	# Keep structural wall samples on the original atlas; repaint equipment only.
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/room-consistency-v1/salvage-equipment.png")
+	assert(Vector2(image.get_size())==life_texture.get_size())
+	equipment_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"salvage_rov","rect":Rect2(-156,-143,90,64),"pivot":Vector2(347,585),"width":344.0,"outline":[Vector2(179,256),Vector2(191,253),Vector2(191,224),Vector2(209,216),Vector2(225,220),Vector2(225,174),Vector2(237,163),Vector2(282,163),Vector2(286,141),Vector2(302,133),Vector2(389,133),Vector2(410,145),Vector2(410,162),Vector2(452,163),Vector2(467,177),Vector2(467,216),Vector2(498,217),Vector2(506,239),Vector2(516,275),Vector2(514,319),Vector2(506,332),Vector2(516,346),Vector2(516,528),Vector2(503,552),Vector2(473,554),Vector2(453,579),Vector2(429,585),Vector2(400,562),Vector2(389,550),Vector2(306,550),Vector2(286,575),Vector2(267,584),Vector2(238,568),Vector2(227,550),Vector2(177,552)]},
 		{"id":"salvage_winch","rect":Rect2(66,-143,90,64),"pivot":Vector2(896,562),"width":409.0,"outline":[Vector2(695,293),Vector2(708,235),Vector2(726,229),Vector2(726,199),Vector2(745,188),Vector2(769,172),Vector2(790,172),Vector2(793,151),Vector2(811,151),Vector2(820,146),Vector2(841,148),Vector2(851,158),Vector2(964,157),Vector2(967,151),Vector2(989,151),Vector2(991,188),Vector2(1013,190),Vector2(1030,201),Vector2(1032,222),Vector2(1042,233),Vector2(1045,250),Vector2(1057,243),Vector2(1090,242),Vector2(1101,259),Vector2(1099,340),Vector2(1090,361),Vector2(1093,477),Vector2(1083,497),Vector2(1089,544),Vector2(1077,558),Vector2(1035,557),Vector2(1029,563),Vector2(1002,562),Vector2(996,552),Vector2(800,553),Vector2(793,562),Vector2(750,562),Vector2(743,552),Vector2(705,551),Vector2(697,533)]},
@@ -90,7 +95,7 @@ func draw_registered_prop(prop: Dictionary) -> void:
 		for p in outline:
 			vertices.append(life_point(prop,p))
 			uv.append(p/Vector2(life_texture.get_size()))
-		draw_cached_polygon(vertices,uv,life_texture)
+		draw_cached_polygon(vertices,uv,equipment_texture)
 
 	if not operating: return
 	for mark in effect_marks(prop,machine_clock):

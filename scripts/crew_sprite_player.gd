@@ -55,7 +55,8 @@ func load_manifest(path: String, append: bool = false) -> void:
 		for relative in entry.frameFiles:
 			var image := Image.new()
 			var filename := path.get_base_dir().path_join(relative).simplify_path()
-			if image.load_png_from_buffer(FileAccess.get_file_as_bytes(filename)) != OK: continue
+			# Keep the slot even when art is unavailable: timing and facing use its index.
+			preload("res://scripts/safe_image.gd").load_png(image, filename)
 			var texture := ImageTexture.create_from_image(image)
 			texture.set_meta("crew_frame_92", true)
 			texture.set_meta("crew_water_facing",str(entry.get("facings",[])[row.size()]) if entry.has("facings") else str(entry.id).get_slice("-",str(entry.id).get_slice_count("-")-1))
@@ -66,7 +67,9 @@ func load_manifest(path: String, append: bool = false) -> void:
 			texture.set_meta("crew_pivot", Vector2(float(pivot[0]), float(pivot[1])))
 			row.append(texture)
 		frames[entry.id] = row
-		timing[entry.id] = {"durations": entry.frameDurationsMs, "loop": entry.loop}
+		var seconds := 0.0
+		for duration in entry.frameDurationsMs: seconds += float(duration) / 1000.0
+		timing[entry.id] = {"durations": entry.frameDurationsMs, "loop": entry.loop, "seconds": maxf(seconds, 0.001)}
 
 func load_equipment_manifest(equipment: String, path: String) -> bool:
 	# Equipment shares the base clock; reject a row that cannot match its phases.
@@ -144,6 +147,8 @@ func water_transition(state: String, direction: String, time: float, allowed: bo
 	return clip
 
 func cycle_seconds(key: String) -> float:
+	# Authored clips are immutable after loading; generated clips retain the fallback.
+	if timing[key].has("seconds"): return float(timing[key].seconds)
 	var total := 0.0
 	for duration in timing[key].durations: total += float(duration) / 1000.0
 	return maxf(total, 0.001)

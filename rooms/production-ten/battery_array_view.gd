@@ -10,7 +10,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/battery_array-source-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/battery_array_view.gd:13)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/battery_array-source-v1.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"battery_bank_west","rect":Rect2(-165,-119,114,64),"pivot":Vector2(331,531),"width":390.0,"outline":[Vector2(138,309),Vector2(149,280),Vector2(173,265),Vector2(173,221),Vector2(194,208),Vector2(195,168),Vector2(209,151),Vector2(228,151),Vector2(229,140),Vector2(247,140),Vector2(248,152),Vector2(305,152),Vector2(305,140),Vector2(324,140),Vector2(324,154),Vector2(382,154),Vector2(383,141),Vector2(401,141),Vector2(401,155),Vector2(457,155),Vector2(457,141),Vector2(479,141),Vector2(479,156),Vector2(500,161),Vector2(508,181),Vector2(521,239),Vector2(523,502),Vector2(495,515),Vector2(268,515),Vector2(250,527),Vector2(167,531),Vector2(144,516),Vector2(137,494)]},

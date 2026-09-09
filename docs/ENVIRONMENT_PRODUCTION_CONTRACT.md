@@ -10,9 +10,11 @@ camera. Measure alpha and native dimensions. Preserve original pixels and exact
 prompts; select source revisions explicitly rather than promoting new filenames.
 Record actual rejection reasons and keep unreviewed candidates distinct.
 
-The renderer feathers irregular meshes and uses continuous mirrored world texture
-coordinates. Mirroring joins source edges but may reveal repeated symmetry; it
-does not certify a seamless tile atlas. Decorative rocks and debris imply no
+The renderer feathers irregular meshes and maps one continuous source field over
+each authored habitat patch. This replaced mirrored tiles on September 9 because
+mineral patterns formed repeated bilateral diamonds. Shared shell, ash, clay and
+ripple patches use the same field mapping; source images and prop placement remain
+unchanged. Connected blocker materials retain their own world-space sampling. Decorative rocks and debris imply no
 blockage or salvage reward. Connected basalt blockers and wreck clearance use
 authoritative room-cell occupancy in `scripts/wreck_field.gd`.
 
@@ -97,3 +99,11 @@ The shell-shoal addition extends this to eight packs, 73 preserved PNGs and 49
 runtime textures in `output/environment-export-v4/`. Include both its ledger
 verification and its live texture/capture checks when extending the export
 fixture; merely packaging a new PNG does not demonstrate that its renderer uses it.
+
+## Current game release gate
+
+The debug package counts above describe their dated fixture scopes. For Windows
+Game releases, follow [the runtime asset and release contract](RELEASE_ASSET_CONTRACT.md):
+regenerate selected dependencies, audit immutable packaged bytes outside the
+checkout, and exercise the actual release executable. Retain native environment
+appearance and motion review separately; package integrity does not establish it.

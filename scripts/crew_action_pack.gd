@@ -19,7 +19,7 @@ static func load_into(player, actor: String, root: String = ROOT) -> void:
 				var facing: String=pose.facing
 				var overlay=Image.new()
 				var view: String=("swim-south" if entry.water else "front") if facing=="south" else facing
-				overlay.load_png_from_buffer(FileAccess.get_file_as_bytes(EQUIPMENT+view+"/overlay.png"))
+				preload("res://scripts/safe_image.gd").load_png(overlay,EQUIPMENT+view+"/overlay.png")
 				overlay.resize(17,20,Image.INTERPOLATE_NEAREST)
 				var texture: Texture2D=player.frames[entry.id][i]
 				var body: Image=texture.get_image()

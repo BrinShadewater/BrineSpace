@@ -1,5 +1,28 @@
 # Corridor, riser and floor production contract
 
+## Riser rollout closeout — September 9, 2026
+
+Separate wall decorations are paused in both gameplay and Studio, including airlock attachments. Preserve their assets and saved placements; do not silently restore them. Structural walls, doors and fittings already baked into source art remain. New windows must be separate props, with mounting reservations documented outside the texture.
+
+Match dedicated door finishes through the shared door-finish renderer so closed previews and animated leaves agree. Preserve neutral mixed-room joins and gray corridor joins. Keep the 384 x 60 wall face and 92-unit entry reservation for the 72-unit aperture. Verify room-specific catalog selection, all rotation captures, hidden saved mounts and refreshed card consumers. A special room renderer (such as airlock) must follow the same decoration policy.
+
+After a shared visual change, refresh affected cards and preserve a dated review/manifest. Distinguish captured rotations from visually inspected ones; source-checkout checks do not establish executable acceptance. Current evidence: docs/RISER_SESSION_CLOSEOUT_2026-09-09.md.
+
+
+## Window-free risers — owner direction, September 9, 2026
+
+New riser artwork must leave windows unbaked. Reserve quiet side panels for later independent window wall props, keep central entryways clear, and record proposed mounting rectangles outside the shipped texture. Validate eventual frame fit and furniture occlusion in the intended rotations. The room-risers-v3 gallery and WINDOW_PLACEMENT.md demonstrate this approach. This supersedes the earlier baked-window production choice for new work; existing V2 sources remain installed pending explicit replacement.
+
+
+## Room-specific baked risers (September 9)
+
+The room-risers-v2 pass registers face/cap regions separately, retains a 92-unit
+central reserve for 72-unit doors, and locates baked fittings in side zones.
+Room-specific catalog overrides preserve department fallback. Avoid duplicate
+default Studio decorations over baked fittings; retain explicitly authored mounts.
+Review all rotations and refresh both card bindings. Baked windows are static
+artwork, not transparent environment views or movable window modules.
+
 Owner direction consolidated September 8, 2026. Current project status and later
 owner corrections govern; dated native captures are evidence, not blanket approval.
 

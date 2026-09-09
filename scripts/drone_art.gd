@@ -16,7 +16,7 @@ static func atlas() -> ImageTexture:
 
 static func _decode_matte(path: String) -> ImageTexture:
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (scripts/drone_art.gd:19)")
+	preload("res://scripts/safe_image.gd").load_png(image, path)
 	image.convert(Image.FORMAT_RGBA8)
 	for y in image.get_height():
 		for x in image.get_width():

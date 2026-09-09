@@ -14,7 +14,7 @@ func _init(id: String) -> void:
 	activity_layout=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/activity-layouts.json")).get(id,{})
 	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+id+".json"))
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source)) != OK: push_error("Failed to load image (rooms/full-wall-v1/full_wall_prop.gd)")
+	preload("res://scripts/safe_image.gd").load_png(image, data.source)
 	art=ImageTexture.create_from_image(image)
 	registration=decode_registration(data)
 	for side in ["west","east","south"]:
@@ -22,7 +22,7 @@ func _init(id: String) -> void:
 		if not FileAccess.file_exists(path): continue
 		var side_data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
 		var side_image := Image.new()
-		if side_image.load_png_from_buffer(FileAccess.get_file_as_bytes(side_data.source)) != OK: push_error("Failed to load image (rooms/full-wall-v1/full_wall_prop.gd)")
+		preload("res://scripts/safe_image.gd").load_png(side_image, side_data.source)
 		side_views[side]={"art":ImageTexture.create_from_image(side_image),"registration":decode_registration(side_data)}
 
 func decode_registration(data: Dictionary) -> Dictionary:

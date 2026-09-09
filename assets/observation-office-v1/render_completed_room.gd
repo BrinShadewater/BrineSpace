@@ -27,7 +27,7 @@ func run() -> void:
 	var preview:=Preview.new()
 	preview.room=room
 	var image:=Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/foundation-v1/foundation-silt-v1.png")) != OK: push_error("Failed to load image (assets/observation-office-v1/render_completed_room.gd)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/foundation-v1/foundation-silt-v1.png")
 	preview.foundation=ImageTexture.create_from_image(image)
 	root.add_child(preview)
 	await process_frame

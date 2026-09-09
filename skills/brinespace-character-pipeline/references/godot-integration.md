@@ -126,3 +126,26 @@ Character dialogue: keep authored opinions separate from live resource/activity 
 Room conversations should label observed operation separately from a next-cycle forecast. Snapshot the discussed cell/type for contextual actions, validate it before locating, and do not silently retarget an old reply to the actor's new room. Explain when asking again refreshes status.
 
 Owner-directed compact comms supersedes the expanded popup guidance: visible controls are only Next/X, with side-panel access. Measure auto-dismiss from text completion, not message arrival; test manual reveal, new dialogue after close, queued advance, overlay suspension and the exact visible control count. Do not restore earlier controls merely because their data helpers remain.
+
+
+## Recovery, androids and recap discoveries
+
+Keep permanent unlocks, current-loop physical recovery and selection independent.
+Record first-time successful unlocks for the loop recap; include architects and
+companions, avoid duplicates and do not count an already-unlocked starter again.
+Save that loop record explicitly. Older checkpoints default to no recorded new
+characters, and a new loop clears the record. Exercise recovery, repeat recovery,
+Continue, legacy saves and new-loop reset. Derive accepted IDs from current cast
+registries when extending the roster; do not silently omit a new companion.
+
+Marsh's approved contract is an android, not a human with invisible helmet art:
+no breathing or helmet requirement, powered charging-pod recovery, visible white
+fluid in connected tubes, then wake. Battery return/charging replaces oxygen as
+his tradeoff. Apply this across survival, routing, expeditions, equipment UI,
+forecasts and Save/Continue. Keep battery balance numbers in game data/current
+notes rather than treating today's tuning as a pipeline invariant. Preserve
+partial charge, prepaid power and outage progress. A docked actor must not also
+render as a duplicate floor actor.
+
+For exports, use the checkout's docs/RELEASE_WORKFLOW.md. Native editor success,
+PCK asset validation and actual release gameplay are different evidence scopes.

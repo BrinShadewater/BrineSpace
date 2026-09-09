@@ -106,7 +106,7 @@ static func _resolve_uncached(view: Node, profile: Dictionary) -> Dictionary:
 	result.sort_custom(func(a,b): return float(edits.get("order/"+str(a.id),0))<float(edits.get("order/"+str(b.id),0)))
 	return {"pieces":result,"missing":missing}
 static func draw(view: Node, c: CanvasItem, profile: Dictionary) -> void:
-	if not enabled: return
+	if not enabled or not view.has_meta("layout_editor_preview"): return
 	var resolved:=resolve(view,profile)
 	for piece in resolved.pieces:
 		if preload("res://scripts/room_layout_store.gd").surface_positions(view).get("hidden/"+piece.id,false): continue

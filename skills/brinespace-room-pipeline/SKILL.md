@@ -159,3 +159,6 @@ For all-room floor production and integration, read [floor coverage lessons](ref
 For generated-package retention and disk cleanup, read
 [storage retention](references/storage-retention.md). Preserve source art and
 review evidence separately from disposable executable/package copies.
+
+For sparse-room cleanup, source repaint integration and source-control closeout, read
+[room materials and declutter](references/room-materials-and-declutter.md).

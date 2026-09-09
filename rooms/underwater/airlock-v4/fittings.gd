@@ -8,7 +8,7 @@ static func load_assets() -> void:
 	profile=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/airlock-v4/wall-profile.json"))
 	for key in profile.textures:
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(profile.textures[key])) != OK: push_error("Failed to load image (rooms/underwater/airlock-v4/fittings.gd:10)")
+		preload("res://scripts/safe_image.gd").load_png(image, profile.textures[key])
 		textures[key]=ImageTexture.create_from_image(image)
 
 static func sprite(canvas: CanvasItem,key: String,bounds: Rect2) -> void:
@@ -33,6 +33,6 @@ static func draw_wall(canvas: CanvasItem,_cell:=Vector2i.ZERO) -> void:
 	canvas.draw_rect(Rect2(-192,-196,384,4),Color("1b3039"))
 	canvas.draw_line(Vector2(-188,-194),Vector2(-36,-194),Color("92805b"),1)
 	canvas.draw_line(Vector2(36,-194),Vector2(188,-194),Color("92805b"),1)
-	for item in profile.wall_items:
+	for item in (profile.wall_items if preload("res://rooms/whole-room/decoration_props.gd").WALL_DECORATIONS_ENABLED else []):
 		var r: Array=item.rect
 		sprite(canvas,item.texture,Rect2(Vector2(r[0],r[1])+Riser.MOUNT_SHIFT,Vector2(r[2],r[3])))

@@ -9,7 +9,7 @@ func _ready() -> void:
 	show_actor=false
 	for id in ["bench","tote"]:
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/salvage-workshop-v1/"+id+".png")) != OK: push_error("Failed to load image (rooms/underwater/salvage-workshop-v1/workshop_view.gd)")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/salvage-workshop-v1/"+id+".png")
 		textures[id]=ImageTexture.create_from_image(image)
 		regions[id]=Rect2(image.get_used_rect())
 	rebuild()

@@ -1,7 +1,7 @@
 extends RefCounted
 ## Dimensioned front/edge-on construction with registered concept surfaces.
 const SOURCE := "res://rooms/doors/department-source-v1.png"
-const VARIANTS := ["bio","life-support","engineering","generic","brine","metal"]
+const VARIANTS := ["bio","life-support","engineering","generic","brine","metal","reactor","cryo_chamber","data_archive","storage_bay","crew_lounge","research_lab"]
 static var leaf_art: ImageTexture
 const APERTURE := 72.0
 const SIDE_POST_DEPTH := 16.0 # Same as the canonical wall/socket cap.
@@ -14,6 +14,10 @@ static func side_post_rect(north: bool) -> Rect2:
 	return Rect2(-8,ground_start-SIDE_HEIGHT,16,SIDE_POST_DEPTH+SIDE_HEIGHT)
 
 static func department(room: Dictionary) -> String:
+	# Dedicated paint finishes follow the installed room-specific riser materials.
+	var room_id := str(room.get("id",""))
+	if room_id in ["reactor","cryo_chamber","data_archive","storage_bay","crew_lounge","research_lab"]:
+		return room_id
 	match str(room.get("id","")):
 		"corridor", "corner", "tee_corridor": return "metal"
 		"mycelium_nursery", "hydroponics_bay", "biodome", "biomass_digester": return "bio"

@@ -1,0 +1,134 @@
+{
+  "character": "river",
+  "states": [
+    {
+      "id": "float-south",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "frameFiles": [
+        "frames/float-south/000.png",
+        "frames/float-south/001.png",
+        "frames/float-south/002.png",
+        "frames/float-south/003.png"
+      ]
+    },
+    {
+      "id": "float-idle-south",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        450,
+        450
+      ],
+      "frameFiles": [
+        "frames/float-idle-south/000.png",
+        "frames/float-idle-south/001.png"
+      ]
+    },
+    {
+      "id": "float-west",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "frameFiles": [
+        "frames/float-west/000.png",
+        "frames/float-west/001.png",
+        "frames/float-west/002.png",
+        "frames/float-west/003.png"
+      ]
+    },
+    {
+      "id": "float-idle-west",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        450,
+        450
+      ],
+      "frameFiles": [
+        "frames/float-idle-west/000.png",
+        "frames/float-idle-west/001.png"
+      ]
+    },
+    {
+      "id": "float-north",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "frameFiles": [
+        "frames/float-north/000.png",
+        "frames/float-north/001.png",
+        "frames/float-north/002.png",
+        "frames/float-north/003.png"
+      ]
+    },
+    {
+      "id": "float-idle-north",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        450,
+        450
+      ],
+      "frameFiles": [
+        "frames/float-idle-north/000.png",
+        "frames/float-idle-north/001.png"
+      ]
+    },
+    {
+      "id": "float-east",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "frameFiles": [
+        "frames/float-east/000.png",
+        "frames/float-east/001.png",
+        "frames/float-east/002.png",
+        "frames/float-east/003.png"
+      ]
+    },
+    {
+      "id": "float-idle-east",
+      "loop": true,
+      "water": true,
+      "frameDurationsMs": [
+        450,
+        450
+      ],
+      "frameFiles": [
+        "frames/float-idle-east/000.png",
+        "frames/float-idle-east/001.png"
+      ]
+    }
+  ],
+  "source": "../sources/river.png",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "paletteColors": 64,
+  "mirrored": false
+}

@@ -2,11 +2,16 @@ extends "res://rooms/whole-room/life_support_view.gd"
 ## Underwater acoustic communications with engine-owned signal displays.
 const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
 var dressing: RefCounted
+var equipment_texture: ImageTexture
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/acoustic-comms/radio_lab-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/acoustic-comms/radio_lab_view.gd:8)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/acoustic-comms/radio_lab-source-v1.png")
 	life_texture=ImageTexture.create_from_image(image)
+	# Keep structural wall samples on the original atlas; repaint equipment only.
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/room-consistency-v1/radio-equipment-v2.png")
+	assert(Vector2(image.get_size())==life_texture.get_size())
+	equipment_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"acoustic_listener","rect":Rect2(-165,-143,108,64),"pivot":Vector2(324,472),"width":400.0,"outline":[Vector2(125,258),Vector2(129,237),Vector2(140,210),Vector2(162,197),Vector2(197,190),Vector2(224,197),Vector2(248,211),Vector2(257,211),Vector2(263,193),Vector2(399,192),Vector2(416,211),Vector2(467,211),Vector2(492,236),Vector2(493,276),Vector2(508,292),Vector2(519,326),Vector2(519,412),Vector2(502,438),Vector2(486,451),Vector2(462,471),Vector2(161,470),Vector2(143,451),Vector2(139,377),Vector2(132,355)]},
 		{"id":"acoustic_transducers","rect":Rect2(57,-143,108,64),"pivot":Vector2(916,469),"width":390.0,"outline":[Vector2(722,327),Vector2(725,308),Vector2(733,305),Vector2(737,246),Vector2(755,226),Vector2(758,197),Vector2(778,174),Vector2(810,157),Vector2(831,157),Vector2(844,166),Vector2(869,170),Vector2(889,196),Vector2(895,211),Vector2(934,211),Vector2(945,186),Vector2(974,164),Vector2(996,157),Vector2(1015,160),Vector2(1048,179),Vector2(1071,207),Vector2(1074,228),Vector2(1094,243),Vector2(1102,272),Vector2(1103,311),Vector2(1112,320),Vector2(1105,420),Vector2(1086,443),Vector2(988,449),Vector2(982,468),Vector2(851,469),Vector2(844,450),Vector2(755,448),Vector2(734,434)]},
@@ -63,7 +68,7 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	for p in prop.registration.outline:
 		vertices.append(life_point(prop,p))
 		uv.append(p/Vector2(life_texture.get_size()))
-	draw_cached_polygon(vertices,uv,life_texture)
+	draw_cached_polygon(vertices,uv,equipment_texture)
 
 	if prop.id=="acoustic_listener":
 		# Offline screen surface replaces the faint generated signal trace.

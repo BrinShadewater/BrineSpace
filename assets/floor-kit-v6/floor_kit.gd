@@ -17,7 +17,7 @@ static func polygon(shape: String) -> PackedVector2Array:
 static func corridor(c: CanvasItem, shape: String, light := 1.0) -> void:
 	if deck==null:
 		var im:=Image.new()
-		if im.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/floors-and-details-v5/corridor-deck.png")) != OK: push_error("Failed to load image (assets/floor-kit-v6/floor_kit.gd)")
+		preload("res://scripts/safe_image.gd").load_png(im, "res://assets/floors-and-details-v5/corridor-deck.png")
 		deck=ImageTexture.create_from_image(im)
 	var poly:=polygon(shape)
 	var uv:=PackedVector2Array()

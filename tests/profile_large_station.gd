@@ -26,6 +26,8 @@ func run() -> void:
 	Engine.max_fps = 0
 	measure_render = RenderingServer.has_method("viewport_set_measure_render_time")
 	if measure_render: RenderingServer.call("viewport_set_measure_render_time",root.get_viewport_rid(),true)
+	game.crew_comms.minimize()
+	game.crew_comms.set_process(false)
 	game.set_process(false)
 	game.grid_view.profile_draw = true
 	game.tick_timer.stop()
@@ -35,7 +37,7 @@ func run() -> void:
 	game.drone_fleet.sites.clear()
 	game.drone_fleet.sites_initialized = true
 	game.selected_card_id = ""
-	game.Architects.advance_core(game,7.0)
+	game.Architects.advance_core(game,10.0)
 	for resource in game.resources: game.resources[resource] = 1000
 	game._place_room("construction_drone_bay",Vector2i(15,15),true)
 	var ids := ["reactor","life_support","hydroponics_bay","research_lab","storage_bay","crew_hab","corridor","med_bay"]
@@ -74,6 +76,7 @@ func sample(label: String) -> void:
 	for i in range(30):
 		game._process(1.0/60.0)
 		await frame()
+	assert(not game.paused, "Active profile must advance gameplay")
 	var timings: Array = []
 	var calls := 0.0
 	var simulation_ms := 0.0

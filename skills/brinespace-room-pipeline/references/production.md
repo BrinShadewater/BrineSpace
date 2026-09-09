@@ -215,3 +215,15 @@ Record which binaries must remain replayable; preserve raw art, source snapshots
 manifests, captures and failure explanations independently. Temporary isolated
 copies need an explicit lifecycle; the existing environment-export tool still
 leaves them behind until its cleanup behavior is implemented.
+
+
+## Playable package verification
+
+When building or certifying an exported asset set, read the checkout's
+`docs/RELEASE_WORKFLOW.md`. Follow runtime dependencies rather than excluding
+folders by name: `tools/modular_room_geometry.gd` is used by gameplay and Studio.
+Preserve raw PNG/JSON reads through the release manifest/export plugin; an
+imported texture or clean editor import does not prove the raw file is packaged.
+Keep generated sources and rejected candidates outside the shipped dependency
+set without deleting them from the source archive. Use the current manifest tool
+rather than rebuilding a broad all-resources preset from historical instructions.

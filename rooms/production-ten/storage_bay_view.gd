@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/storage_bay-source-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/storage_bay_view.gd:8)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/storage_bay-source-v1.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"storage_crates","rect":Rect2(-170,105,62,42),"pivot":Vector2(317,530),"width":379.0,"outline":[Vector2(129,158),Vector2(141,125),Vector2(153,112),Vector2(184,112),Vector2(188,108),Vector2(202,109),Vector2(204,112),Vector2(304,112),Vector2(307,108),Vector2(321,110),Vector2(355,112),Vector2(368,125),Vector2(379,152),Vector2(392,146),Vector2(480,147),Vector2(484,206),Vector2(498,211),Vector2(505,232),Vector2(505,512),Vector2(491,530),Vector2(142,530),Vector2(128,516)]},

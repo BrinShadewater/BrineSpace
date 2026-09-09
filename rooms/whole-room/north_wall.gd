@@ -11,7 +11,7 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 	if room_id=="brine_core":
 		if brine_texture==null:
 			var image:=Image.new()
-			if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/brine-riser-v1/source.png")) != OK: push_error("Failed to load image (rooms/whole-room/north_wall.gd)")
+			preload("res://scripts/safe_image.gd").load_png(image, "res://assets/brine-riser-v1/source.png")
 			brine_texture=ImageTexture.create_from_image(image)
 		# Use the upper service face at its own aspect, excluding the tall lower cabinets.
 		canvas.draw_texture_rect_region(brine_texture,Rect2(-192,Riser.TOP,384,Riser.HEIGHT),Rect2(0,100,2007,342))
@@ -22,7 +22,7 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 		Catalog.face(canvas,room_id,Rect2(-192,Riser.TOP,384,Riser.HEIGHT))
 		# Department-specific mounts; windows retain their native aspect ratio.
 		var edits: Dictionary={} if wall_view==null else preload("res://scripts/room_layout_store.gd").surface_positions(wall_view)
-		for item in decorations(room_id,edits):
+		for item in (decorations(room_id,edits) if wall_view!=null and wall_view.has_meta("layout_editor_preview") else []):
 			if edits.get("hidden/"+item.id,false): continue
 			var rect: Rect2=item.rect
 			canvas.draw_rect(Rect2(rect.position+Vector2(2,3),rect.size),Color(0,0,0,.13))
@@ -73,11 +73,14 @@ static func profile(room_id: String) -> Dictionary:
 
 static func decorations(room_id: String, edits: Dictionary={}) -> Array:
 	var result: Array=[]
+	if not Decor.WALL_DECORATIONS_ENABLED: return result
 	if room_id=="airlock": return result
 	var mounts: Array=profile(room_id).mounts
 	for i in range(mounts.size()):
 		var mount: Array=mounts[i]
 		var id: String="riser/"+str(i)+"/"+str(mount[0])
+		# Room-specific faces already contain fittings; retain explicitly placed mounts.
+		if Catalog.catalog().has(room_id) and not edits.has(id): continue
 		var texture: Texture2D=Hull.texture(mount[0]) if Hull.catalog().has(mount[0]) else Fittings.texture(mount[0])
 		var box:=Rect2(Vector2(float(mount[1]),-235)+Riser.MOUNT_SHIFT,Vector2(float(mount[2]),34))
 		var dimensions:=Vector2(texture.get_size())

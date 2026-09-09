@@ -22,7 +22,7 @@ class Canvas extends Node2D:
 		var x:=24
 		for path in ["res://rooms/whole-room/crew-hab-card-activity-v1.png","res://rooms/underwater/corner-card-dressing-v2-0.png"]:
 			var im:=Image.new()
-			if im.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (assets/wall-dressing-style-v1/compare.gd:25)")
+			preload("res://scripts/safe_image.gd").load_png(im, path)
 			var tex:=ImageTexture.create_from_image(im)
 			reference_textures.append(tex)
 			draw_texture_rect(tex,Rect2(x,648,230,230),false)

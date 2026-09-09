@@ -9,7 +9,7 @@ static func catalog() -> Dictionary: return data().sprites
 static func texture(id: String) -> Texture2D:
 	if not textures.has(id):
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://"+catalog()[id].path)) != OK: push_error("Failed to load image (assets/wall-dressing-v2/wall_sprites.gd:12)")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://"+catalog()[id].path)
 		textures[id]=ImageTexture.create_from_image(image)
 	return textures[id]
 static func size(id: String,scale:=1.0) -> Vector2:

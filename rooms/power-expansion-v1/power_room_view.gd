@@ -9,7 +9,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/power-expansion-v1/"+room_id+".png")) != OK: push_error("Failed to load image (rooms/power-expansion-v1/power_room_view.gd)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/power-expansion-v1/"+room_id+".png")
 	machine_texture = ImageTexture.create_from_image(image)
 	machine_region = Rect2(image.get_used_rect())
 	# Register the visible turbine, excluding near-transparent source padding.

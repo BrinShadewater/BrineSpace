@@ -1,5 +1,8 @@
 extends RefCounted
+const WALL_DECORATIONS_ENABLED := false # Owner pause; preserve source art and saved placements.
 ## Reviewed reusable art fitted to existing physical mounts. No new obstacles.
+## Retain the kits for Studio, but retire automatic floor clutter in furnished rooms.
+static var automatic_floor_art_enabled := false
 const Floor = preload("res://assets/floor-dressing-style-v2/floor_dressing.gd")
 const Utilities = preload("res://assets/floor-utilities-style-v2/floor_sprites.gd")
 const Wall = preload("res://assets/wall-dressing-style-v2/wall_sprites.gd")
@@ -13,9 +16,11 @@ static func fit(canvas: CanvasItem, texture: Texture2D, bounds: Rect2, tint := C
 	return destination
 
 static func floor_patch(canvas: CanvasItem, id: String, bounds: Rect2) -> void:
+	if not automatic_floor_art_enabled: return
 	fit(canvas,Floor.texture(id),bounds)
 
 static func service_run(canvas: CanvasItem, points: PackedVector2Array, width := 6.0, id := "cable_straight") -> void:
+	if not automatic_floor_art_enabled: return
 	# Tile floor-only cable art along authored routes; keep endpoints and clearance.
 	var texture := Utilities.texture(id)
 	var tile_length := width*float(texture.get_width())/float(texture.get_height())

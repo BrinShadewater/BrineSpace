@@ -1,0 +1,26 @@
+{
+  "scope": "September 9 companion and Marsh animation closeout; retained crew packs outside this revision are not replaced",
+  "animationRoots": [
+    {"root": "character/animation-expansion-v5", "packs": ["marsh", "river", "river-actions", "josh", "josh-actions", "margot", "margot-actions"]},
+    {"root": "character/companion-water-v1", "packs": ["river", "margot"]}
+  ],
+  "bindings": [
+    {"script": "scripts/companion_npc.gd", "contains": "res://character/animation-expansion-v5"},
+    {"script": "scripts/companion_npc.gd", "contains": "res://character/companion-water-v1/%s/manifest.json"},
+    {"script": "scripts/grid_canvas.gd", "contains": "res://character/animation-expansion-v5/marsh/manifest.json"},
+    {"script": "scripts/marsh_npc.gd", "contains": "res://character/animation-expansion-v5/marsh/clearance.json"}
+  ],
+  "portraits": {
+    "brine": "character/brine-comms-v14/portrait.png",
+    "bill": "character/portraits-lighting-v1/bill.png",
+    "veld": "character/portraits-lighting-v1/veld.png",
+    "branforth": "character/portraits-lighting-v1/branforth.png",
+    "marsh": "character/portraits-backgrounds-v1/marsh.png",
+    "river": "character/companions/river-portrait.png",
+    "josh": "character/companions/josh-portrait.png",
+    "margot": "character/companions/margot-portrait.png"
+  },
+  "retainedLegacy": "Earlier source packs remain for provenance. Marsh's helmet and older secondary states are retained coverage, not new work from this session.",
+  "reviews": ["character/animation-expansion-v5/review.html", "character/companion-water-v1/review.html"],
+  "handoff": "docs/CHARACTER_SESSION_CLOSEOUT_2026-09-09.md"
+}

@@ -169,3 +169,7 @@ September 8 industrial hall floor correction: owner rejected large quiet slabs i
 ## Session closeout
 
 When the owner pauses art production, stop new generation and leave a bounded handoff: completed families, exact unresolved directions, candidate versus installed state, latest evidence and the first useful next action. Preserve concurrent session notes. Reuse existing successful checks for documentation-only closeout; do not rerun bulk exports or imply the ongoing art backlog is complete. September8 wall-asset handoff: `docs/WALL_ASSET_SESSION_CLOSEOUT_2026-09-08.md`.
+
+## September 9 room material and declutter lessons
+
+Apply [room materials and declutter](room-materials-and-declutter.md) for crew-scale accessories, shared-atlas structural texture preservation, runtime-only common-prop removal, current Studio wall suppression, final registration/card evidence and manifest/LFS closeout.

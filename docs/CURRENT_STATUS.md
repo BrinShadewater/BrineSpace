@@ -1,8 +1,108 @@
 # BrineSpace current status
 
+## UI, character and build session closed - September 9
+
+[Closeout](SESSION_CLOSEOUT_UI_CHARACTERS_2026-09-09.md): accepted portrait/sidebar decisions added to the bible; character/room skill lessons and installed copies updated; [release workflow](RELEASE_WORKFLOW.md) now distinguishes editor/PCK evidence from actual release gameplay. This session has no remaining active work. Later optimized-release, animation, portrait and room entries below retain their own scope and acceptance. No new build or source-art cleanup during closeout.
+
+## Art session closed - September 9, 2026
+
+[Closeout](ART_SESSION_CLOSEOUT_2026-09-09.md): selected room/title assets and current dependency integration checked, runtime manifest refreshed to 11,273 files, assets and supporting work staged with verified LFS pointers. Bible and maintained/installed room-pipeline lessons updated. Current 47 card bindings pass and newer riser/animation selections are preserved. Source session closed; generated build metadata stays local, and no executable, commit or push was made by this closeout.
+
+## Reliability session closed — September 9, 2026
+
+[Closeout](SESSION_CLOSEOUT_RELIABILITY_2026-09-09.md) consolidates the merged teegly
+fixes, local reliability/performance work and maintained pipeline lessons. The
+optimized executable uses frozen bindings; newer companion water, animation and
+room-art source milestones below are not jointly accepted in that build. Follow
+[release delivery](RELEASE_ASSET_CONTRACT.md) for the next combined build.
+
+## September 9 character session closed
+
+[Character closeout](CHARACTER_SESSION_CLOSEOUT_2026-09-09.md): all completed portrait and animation selections are bound to the source game. The active registry audits nine packs (355 clips / 1,488 frame references including retained states) and eight portraits with zero errors. Visual bible, character skill/installed mirror and asset pipeline guide updated with observed lessons. Recent native water, dry action, repair and save checks remain passing. Session complete; no executable rebuild or commit/push.
+
+
+## September 9 companion water behavior
+
+[Companion water](COMPANION_WATER_2026-09-09.md): Margot swims from 20% room flooding, River floats from 25%, and Josh shuts down at 50% until water recedes. Four-direction water motion, surface rendering, route restrictions, pause and checkpoint handling are installed. Native flooded-room rescue/routing/save tests and dry-action/repair regressions pass. [Animation gallery](../character/companion-water-v1/review.html). Source only; no executable rebuilt.
+
+## Riser session closed — September 9, 2026
+
+Six new walls remain assigned to reactor, cryo chamber, data archive, storage bay, crew lounge and research lab, now with coordinated door finishes. Separate wall decorations are suppressed in gameplay and Studio, including the airlock; source fittings and saved placements are retained. Seven cards refreshed. [Final review](../assets/riser-session-closeout/review.html) and [handoff](RISER_SESSION_CLOSEOUT_2026-09-09.md). Native 28-rotation captures and focused wall/door checks passed; source checkout only, no executable rebuilt.
+
+
+## September 9 reliability, smaller release and rendering
+
+[Implementation and acceptance](RELIABILITY_PERFORMANCE_2026-09-09.md): safe image fallbacks, exact release IDs and live diagnostic snapshots; 30% smaller data pack; 98-room frame time improves 30.5% fitted and 60.1% close. Native geometry/pixel parity, failure/report checks, 10,300 packed assets and actual release New Game/F8 pass. Build: `builds/BrineSpace-2026-09-09-optimized/`; stable animation bindings used while concurrent animation work continues.
+
+## Room risers V3 — September 9, 2026
+
+Added six window-free risers for reactor, cryo chamber, data archive, storage bay, crew lounge and research lab; catalog overrides and refreshed card bindings installed. Owner direction: future windows are separate wall props. Keep mounting panels and the central door reserve clear. [Review gallery](../assets/room-risers-v3/review.html) includes toggleable guides; [placement notes](../assets/room-risers-v3/WINDOW_PLACEMENT.md) record source/world bounds. Native checks and 24 captures passed; 47 card identities passed. Future prop fit/occlusion needs validation when props are added. No executable rebuilt. See ROOM_RISERS_V3_2026-09-09.md.
+
+
+## September 9 character animation expansion
+
+[Animation expansion](ANIMATION_EXPANSION_2026-09-09.md): Marsh now has dedicated sitting/reading/resting/cargo and distinct swim/tread poses; Margot has directional sit/groom/nap plus stretch/yawn; River and Josh have start/stop/turn transitions, startup and standby. Installed v5 packs preserve prior sources. Asset, checkpoint/pause, real-station companion and repair tests pass; native captures reviewed. [Animated gallery](../character/animation-expansion-v5/review.html). Source checkout only; no executable rebuilt.
+
+## September 9 room-specific riser walls
+
+[Room risers](ROOM_RISERS_2026-09-09.md): six installed wall strips for medical, hydroponics, maintenance, galley, command and observation with baked fittings, static windows and reserved central entries. All 24 native rotations reviewed; adjacency, Studio and card-binding checks pass. Six cards refreshed. Source only; no executable rebuild.
+
+## September 9 floor variants V5
+
+[Six further finishes](FLOOR_VARIANTS_V5_2026-09-09.md) for reactor, cryo, robotics, refinery, command and observation add 96 tile slots to Studio. Sources and six furnished captures reviewed; native texture/rotation and selection/undo/redo checks pass. Two rejected robotics candidates preserved separately. Existing defaults retained; no executable rebuilt.
+
+## September 9 common prop and floor-wire removal
+
+[Room declutter](ROOM_DECLUTTER_2026-09-09.md): live rooms suppress common props/accessories, floor wiring/conduit and decorative overlays; the layout editor retains the assets and saved placements. Specialist equipment positions and sizes are preserved. Native 47-room/four-rotation checks pass; 44 furnished cards refreshed and all 47 card bindings pass. [Gallery](room-declutter-2026-09-09/review.html). Source checkout only; no executable rebuild.
+
+## September 9 Josh tread and blowtorch pass
+
+[Josh torch](JOSH_TORCH_2026-09-09.md): installed neutral charcoal tracked base across Josh movement/actions, plus four-direction torch deploy/weld/stow. Josh assists nearby paid crew hull repairs at +25% progress only while actively welding; costs and job ownership remain with crew. Focused repair, real-station routing/checkpoint/interruption and native sprite tests pass. Review gallery saved; no executable rebuild.
+
 ## September 9 Teegly release fix and bug reports
 
 [PR integration](TEEGLY_PR_INTEGRATION_2026-09-09.md): integrates release-safe image loading and F8/unclean-session diagnostic bundles, with newer-loader coverage, pause support, safer report writes and a CI assertion guard. Fixed local Windows release is in `builds/BrineSpace-2026-09-09-fixed/`; detailed verification and limits are recorded in the handoff.
+
+## September 9 expanded floor variety
+
+[Floor variety](FLOOR_VARIETY_2026-09-09.md): six more selectable finishes for medical, hydroponics, cargo, data, galley and lounge; 96 additional tile slots. Sources and six furnished native captures reviewed; texture/rotation and selection/undo/redo checks pass. Existing room defaults retained. No executable rebuild.
+
+## September 9 room materials and headphone scale
+
+[Room art consistency](ROOM_ART_CONSISTENCY_2026-09-09.md): 16 selected matte source repaints across six room families, smaller radio headsets, and refreshed cards. Owner layouts and the restored BRINE room remain intact. All 47 rooms reviewed in four native rotations; final layout, source, dressing and card checks pass. [Before/after gallery](room-art-consistency-2026-09-09/review.html). Source checkout only; final headset correction awaits owner feedback.
+
+## September 9 additional floor tiles
+
+[Floor additions](FLOOR_TILE_ADDITIONS_2026-09-09.md): three new 4x4 atlases available in Studio's Floor finish selector. Native furnished review, texture/rotation and selection/undo/redo checks pass. Existing defaults retained; per-room adoption remains open. Source only; no executable rebuild.
+
+## September 9 companion white-cutout repair
+
+[Companion extraction repair](COMPANION_EXTRACTION_FIX_2026-09-09.md): River/Josh/Margot now load companion-cleanup-v3. Preserves interior white panels, removes connected exterior backgrounds, and area-downsamples original sources to reduce speckling. All six manifests, extraction regression and native sprite board pass; full personality run is not green amid concurrent room compile/render errors. Before/after gallery saved; no executable rebuild.
+
+## September 9 sprite scale and animation polish
+
+[Sprite polish](SPRITE_POLISH_2026-09-09.md): installed revised adult-proportion Marsh sprites and dedicated idle, consistent 64-color companion packs, and River/Josh action entry/exit clips. Native sprite and companion personality checks pass. Marsh broader test has peer-count failures reproduced with old art; secondary pose sharing remains. Review gallery and native captures saved; continuous browser review was blocked. Source checkout only, no executable rebuild.
+
+## September 9 latest portraits installed
+
+[Portrait installation](PORTRAITS_INSTALLED_2026-09-09.md): all eight latest portraits now load in the game, including the final suit/lighting pass, distinct station backgrounds, Margot realism V3 and BRINE V14. Native selection/comms reviewed at two sizes; bubble test passes. Room-dressing assertions noted separately. Source checkout only; existing executable not rebuilt.
+
+## September 9 title and terrain fixes
+
+[Fixes and before/after review](ART_FIXES_2026-09-09.md): revised title uses BRINE V13 likeness/rendering with matte slate/ivory surroundings and retained float, monitors and Reduced Motion. Eleven habitat patches now use continuous source fields rather than mirrored repeats. Native title, habitat and focused visual regressions pass. Source only; no executable rebuilt.
+
+## September 9 art consistency audit
+
+[Audit and review board](ART_CONSISTENCY_2026-09-09.md): 47 room families / 188 native orientations reviewed; distinct department palettes and owner layouts retained. Owner-selected pixel-textured V2 portraits installed for all seven architects/companions, with proportional Continue portraits. Native UI checks pass at two sizes. Title illustration style and some mirrored habitat ground repeats remain documented follow-ups. Source only; no executable rebuilt.
+
+## September 9 portrait individuality review
+
+[Portrait review](PORTRAIT_INDIVIDUALITY_2026-09-09.md): seven V3 portraits revise underlying anatomy and materials after owner feedback that V1/V2 looked generic. Margot uses her original photo reference. Version comparison saved; runtime portraits unchanged. Owner likeness and final pixel-texture review remain open.
+
+
+## September 9 camera shimmer correction
+
+[Camera handoff](CAMERA_SHIMMER_2026-09-09.md): align the entire rendered world to physical screen pixels to reduce nearest-neighbor shimmer during panning at fractional window scales. Logical camera/input coordinates and sharp filtering are preserved. Native 64-case sampling regression and navigation checks pass; source only, owner motion review pending.
 
 ## September 9 companion personality
 

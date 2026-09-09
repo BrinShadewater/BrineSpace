@@ -131,3 +131,7 @@ Distinguish source, native, package, release and owner approval. Retain historic
 failures without contradictory present-tense status. Update both skill copies
 after comparing them so concurrent additions survive. Put reusable rules here
 and study-specific observations in case notes; avoid appending duplicate rules.
+
+## September 9 verified ground sampling correction
+
+Large salt and sulfur motifs formed bilateral diamonds under mirrored tiling. The current shared habitat mesh maps each authored patch to one continuous source field, keeping its irregular feather mask and prop coordinates. Native source/tint comparisons and eleven-patch unique-UV checks pass; source PNGs remain unchanged. This applies to habitat fields, not connected blocker sampling. See docs/ART_FIXES_2026-09-09.md.

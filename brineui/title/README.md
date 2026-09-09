@@ -1,5 +1,9 @@
 # Animated title screen
 
+## Current September 9 revision
+
+The installed artwork is in `consistency-v1/`: BRINE V13 likeness/rendering, matte slate/ivory laboratory, a native silhouette-clipped character and separate background. Float, monitors and Reduced Motion remain. See that directory's README and `docs/ART_FIXES_2026-09-09.md`. The original-layer workflow below remains for the preserved older cover.
+
 Settings, Codex and Meta Progression are shared with the in-game pause menu.
 See `docs/MENU_SETTINGS.md` for options, persistence and navigation behavior.
 

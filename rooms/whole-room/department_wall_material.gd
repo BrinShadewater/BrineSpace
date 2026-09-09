@@ -9,7 +9,7 @@ static var textures: Dictionary={}
 static func texture(material: String) -> Texture2D:
 	if not textures.has(material):
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(MATERIALS[material].path)) != OK: push_error("Failed to load image (rooms/whole-room/department_wall_material.gd)")
+		preload("res://scripts/safe_image.gd").load_png(image, MATERIALS[material].path)
 		textures[material]=ImageTexture.create_from_image(image)
 	return textures[material]
 static func wall(canvas: CanvasItem,rect: Rect2,horizontal: bool,material: String) -> void:

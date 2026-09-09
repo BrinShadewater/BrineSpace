@@ -111,7 +111,7 @@ func present_current() -> void:
 		portrait.custom_minimum_size=Vector2(150,150)
 		if brine_portrait==null:
 			var image:=Image.new()
-			if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/brine-comms-v13/portrait.png")) != OK: push_error("Failed to load image (scripts/crew_comms.gd)")
+			preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-comms-v14/portrait.png")
 			var framed := AtlasTexture.new()
 			framed.atlas = ImageTexture.create_from_image(image)
 			var crop: Rect2 = bubbles.PORTRAIT_CROP

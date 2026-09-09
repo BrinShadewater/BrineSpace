@@ -6,7 +6,7 @@ static func load_sources() -> Array:
 	var textures: Array = []
 	for path in ["res://rooms/underwater/straight-source-v1.png","res://rooms/underwater/corner-source-v1.png"]:
 		var image := Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (rooms/underwater/corridor_surfaces.gd:8)")
+		preload("res://scripts/safe_image.gd").load_png(image, path)
 		textures.append(ImageTexture.create_from_image(image))
 	return textures
 static func patch(canvas: CanvasItem, points: PackedVector2Array, uv: PackedVector2Array, texture: Texture2D, center: Vector2, q: int, light: float) -> void:
@@ -44,7 +44,7 @@ static func draw_hull(canvas: CanvasItem, hull: PackedVector2Array, floor_poly: 
 	# Current department deck uses the authoritative footprint and existing transform.
 	if current_floor==null:
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/floors-and-details-v5/corridor-deck.png")) != OK: push_error("Failed to load image (rooms/underwater/corridor_surfaces.gd)")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://assets/floors-and-details-v5/corridor-deck.png")
 		current_floor=ImageTexture.create_from_image(image)
 	var floor_texture:=current_floor
 	var floor_uv:=PackedVector2Array()

@@ -1,5 +1,124 @@
 # BRINESPACE — Visual Aesthetic Bible
 
+## Preserve accepted visuals through delivery — September 9, 2026
+
+Rendering optimizations must preserve accepted geometry, dressing, occlusion and
+live animation. Compare close and wide native views; cache structural results
+with layout invalidation while keeping power, doors, actors and clocks live.
+Missing-art placeholders are diagnostic failures, never an art-direction choice.
+
+Tie packaged visual claims to the exact build and selected asset bindings.
+Source-only art accepted after a release remains a separate milestone until it is
+rebuilt and reviewed in that executable. Keep source provenance when reducing
+package size. Follow [the runtime asset and release contract](RELEASE_ASSET_CONTRACT.md);
+these delivery rules do not change the current sparse-room or material direction.
+
+## Character session closeout — September 9, 2026
+
+The selected cast and animation bindings are listed in
+[character/ACTIVE_ASSETS.json](../character/ACTIVE_ASSETS.json). This selection
+supersedes older BRINE V13 / portraits-realism-v2 references below: BRINE uses V14;
+Bill, Veld and Branforth use portraits-lighting-v1; Marsh uses his backgrounds-v1
+portrait; companions use their installed canonical portrait files.
+
+Portrait realism starts with the source: specific faces, believable proportions,
+worn matte materials and coherent directional lighting. A pixel treatment cannot
+repair a generic face or plastic-looking suit. Keep Bill, Veld and Branforth's suits
+muted rather than luminous. Give backgrounds character-specific environmental
+detail while preserving portrait readability and the shared restrained lighting.
+
+River is the compact olive/ivory droid. Josh is a larger muted bluish lavender
+tracked robot: wheels, treads and lower chassis stay neutral charcoal, with upper
+armor carrying the color. Margot retains the reference cat's white/tabby markings
+and green frog bonnet. Her small scale remains readable beside adult-proportioned
+crew. Marsh's standing proportions belong to the same crew scale; never force
+seated, curled, swimming or cargo silhouettes to standing bounding-box height.
+
+Animation extensions must show the requested action: a held case for carrying,
+paw reach/pull for paddling, tracked turns for Josh, and actual torch deploy/work/
+stow. Preserve head/body anchors through motion. Inspect every row's actual facing,
+neutral-base colors and clean transparency; white fur and metal highlights are
+subject pixels, not removable background. Keep authored source corrections and
+reversed/composed transitions distinguishable in provenance.
+
+Current flooded behavior: Margot paddles from 20% room flooding, River floats from
+25%, and Josh goes offline at 50% until water recedes. Buoyant heads remain above
+the surface; dry actions and repair effects stop appropriately. Use a prone cat's
+swimming envelope and an upright droid's chassis footprint, with native prop and
+doorway checks. Surface tint and wakes belong to the renderer, not baked sprite art.
+
+The source-game rollout is complete. [Session handoff](CHARACTER_SESSION_CLOSEOUT_2026-09-09.md)
+separates installed coverage, native checks, legacy states and executable status.
+
+
+## Character portraits and sidebar - session closeout, September 9
+
+Owner direction from this session: prominent close-up faces, enough portrait-window
+coverage to read distinctive features, softer facial shadows followed by restrained
+midtone darkening, and small background bubbles. Match the current peer portrait
+rendering while preserving each character's identity. The supplied BRINE reference
+establishes center-parted dark hair swept into a low bun, pale oval face, blue-gray
+eyes and a blue high-neck suit in a submerged chamber; it is an identity reference,
+not a mandate to replace the cast's rendering style. Chamber effects stay behind
+the face. Painted bubbles/caustics and procedural animation are separate layers.
+
+Marsh is a blond, masculine, humanoid android with a visible metal head plate and
+predominantly white suit. His powered charging pod uses white fluid visibly moving
+through connected tubes before he wakes. No helmet or breathing cues are required;
+periodic charging consumes Power. Keep occupied-pod and walking-actor presentation
+mutually exclusive. Tune battery timing in gameplay data, not in the visual bible.
+
+Companion portraits have the same 160x170 design-pixel selector area as architects,
+with aspect-preserving fit. Check apparent portrait size and face readability in
+native UI, including companion rows reached by scrolling. New character discoveries
+belong beside pattern/blueprint discoveries in the end-of-loop recap; show first-time
+unlocks from this loop, including companions, and preserve them through Continue.
+
+Archive, Diagnostics, Journal and Menu remain in one evenly spaced top-right row.
+Each badge is centered in its button with clear space above its runtime caption.
+Keep the dark petrol/gunmetal and restrained enamel finish. The sidebar tutorial
+and Locate Room & Connections action are retired. The inspector has greater reading
+height (520 design pixels at the full layout), followed by larger station controls
+and TIME / CYCLE with the live counter, countdown and pause/speed controls. Added
+frame height should enlarge the text area. Review the complete sidebar at 1600x900
+and 960x540, including dynamic labels and specialized inspector content.
+
+Selection authority: inspect scripts/crew_comms.gd, Architects.SELECTION_PORTRAITS
+and Companions.portrait before editing. V8/V11/V12/V13 notes below are historical
+checkpoints, not permanent runtime selections. Newer V14, background and suit-lighting
+work is recorded separately; current code shows installation, not owner acceptance
+of every candidate. Do not overwrite newer selections from an older handoff.
+See SESSION_CLOSEOUT_UI_CHARACTERS_2026-09-09.md for scope and release limitations.
+
+
+## Sparse rooms and material consistency — September 9, 2026
+
+Current owner direction supersedes older recommendations to add common occupancy clutter: keep live rooms focused on their large specialist equipment, with open floors. Suppress common props, supported accessories, floor wires/conduits, automatic floor art and separate wall decorations. Preserve the assets and saved authoring data; the newer riser direction also pauses separate wall decorations in Studio. Existing baked structural/specialist details remain. Keep the restored BRINE layout exception.
+
+Match matte material finish while retaining department palettes. Do not replace source highlight correction with blanket darkening or desaturation. Check handheld accessories against an actual crew sprite at native scale: the radio headset revision must carry through both wall directions and shared Listening Post equipment. Machinery size and accessory size are different decisions.
+
+When repainting an equipment atlas, preserve structural hull texture bindings and authoritative world rectangles. Retain original sources, prompts, rejected versions and final registration hashes. Refresh affected cards after final integration, then reconcile current bindings against other sessions. Source integration, captured views, visual review and executable validation are separate acceptance stages.
+
+Implementation and evidence: [room materials](ROOM_ART_CONSISTENCY_2026-09-09.md), [room declutter](ROOM_DECLUTTER_2026-09-09.md), and the maintained [pipeline lessons](../skills/brinespace-room-pipeline/references/room-materials-and-declutter.md).
+
+## Riser rollout closeout — September 9, 2026
+
+Separate wall decorations are paused in both gameplay and Studio, including airlock attachments. Preserve their assets and saved placements; do not silently restore them. Structural walls, doors and fittings already baked into source art remain. New windows must be separate props, with mounting reservations documented outside the texture.
+
+Match dedicated door finishes through the shared door-finish renderer so closed previews and animated leaves agree. Preserve neutral mixed-room joins and gray corridor joins. Keep the 384 x 60 wall face and 92-unit entry reservation for the 72-unit aperture. Verify room-specific catalog selection, all rotation captures, hidden saved mounts and refreshed card consumers. A special room renderer (such as airlock) must follow the same decoration policy.
+
+After a shared visual change, refresh affected cards and preserve a dated review/manifest. Distinguish captured rotations from visually inspected ones; source-checkout checks do not establish executable acceptance. Current evidence: docs/RISER_SESSION_CLOSEOUT_2026-09-09.md.
+
+
+## Window-free risers — owner direction, September 9, 2026
+
+New riser artwork must leave windows unbaked. Reserve quiet side panels for later independent window wall props, keep central entryways clear, and record proposed mounting rectangles outside the shipped texture. Validate eventual frame fit and furniture occlusion in the intended rotations. The room-risers-v3 gallery and WINDOW_PLACEMENT.md demonstrate this approach. This supersedes the earlier baked-window production choice for new work; existing V2 sources remain installed pending explicit replacement.
+
+
+## Cross-family consistency reference - September 9
+
+[Art review board](art-consistency-2026-09-09/review.html) compares the current room families, runtime environments and owner-selected V2 portrait cast. Use deep petrol and steel/slate as shared surroundings, warm ivory for clinical surfaces, sage/jade and muted amber as controlled accents. These are relationships, not a universal palette filter: preserve department, character and habitat identities. Bright functional lights should occupy small areas; restored interiors remain mostly matte, with localized wear on derelict or exposed equipment. BRINE V13 and character/portraits-realism-v2 define the installed close-up portrait rendering. Title key art now uses brineui/title/consistency-v1 with BRINE V13 likeness and restrained slate/ivory materials; see ART_FIXES_2026-09-09.md for native comparisons.
+
 ## Three to four large assets � owner correction, September 9
 
 Rooms should feel uncluttered: retain 3�4 large, readable assets and clear floor space. Fitted wall banks count as one connected asset; do not fill empty areas with extra benches, lamps, carts or bottles. Existing simpler rooms may stay below that count. This supersedes earlier density and blanket modest-scale advice for integrated room layouts; department finishes and door geometry remain authoritative. See [layout correction](LARGE_ASSET_LAYOUTS_2026-09-09.md).
@@ -1978,7 +2097,7 @@ skills/brinespace-room-pipeline/references/storage-retention.md.
 
 ## BRINE comms portrait - September 8 session closeout
 
-Selected artwork: character/brine-comms-v8/portrait.png. Preserve the crew's
+Historical checkpoint artwork: character/brine-comms-v8/portrait.png. See the current selection guidance above. Preserve the crew's
 angular matte pixel rendering, BRINE's short brown bob, blue eyes, navy high-neck
 suit and faint composed smile. She should look calmly suspended in water, with
 buoyant hair and restrained refracted light, rather than sad or standing dry.

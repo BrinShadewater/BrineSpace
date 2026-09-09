@@ -2,11 +2,16 @@ extends "res://rooms/whole-room/life_support_view.gd"
 ## Pressure-hull monitoring and repair machinery; canonical north/south routes.
 const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
 var dressing: RefCounted
+var equipment_texture: ImageTexture
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/hull-integrity/shield_generator-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/hull-integrity/shield_generator_view.gd:8)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/hull-integrity/shield_generator-source-v1.png")
 	life_texture=ImageTexture.create_from_image(image)
+	# Keep structural wall samples on the original atlas; repaint equipment only.
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/room-consistency-v1/shield-equipment.png")
+	assert(Vector2(image.get_size())==life_texture.get_size())
+	equipment_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"hull_monitor","rect":Rect2(-165,-143,108,64),"pivot":Vector2(315,503),"width":405.0,"outline":[Vector2(112,183),Vector2(117,166),Vector2(137,151),Vector2(138,140),Vector2(151,128),Vector2(477,128),Vector2(489,144),Vector2(489,157),Vector2(510,170),Vector2(516,188),Vector2(516,470),Vector2(495,499),Vector2(144,503),Vector2(112,474)]},
 		{"id":"hull_test_rig","rect":Rect2(57,-143,108,64),"pivot":Vector2(934,505),"width":394.0,"outline":[Vector2(739,181),Vector2(751,163),Vector2(767,153),Vector2(766,144),Vector2(779,130),Vector2(829,130),Vector2(841,144),Vector2(841,156),Vector2(1028,156),Vector2(1028,142),Vector2(1040,130),Vector2(1091,130),Vector2(1102,144),Vector2(1102,154),Vector2(1123,170),Vector2(1131,187),Vector2(1131,470),Vector2(1101,502),Vector2(768,505),Vector2(739,476)]},
@@ -65,7 +70,7 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	for p in prop.registration.outline:
 		vertices.append(life_point(prop,p))
 		uv.append(p/Vector2(life_texture.get_size()))
-	draw_cached_polygon(vertices,uv,life_texture)
+	draw_cached_polygon(vertices,uv,equipment_texture)
 
 	if not operating: return
 	for mark in effect_marks(prop,machine_clock):

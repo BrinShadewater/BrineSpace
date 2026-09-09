@@ -15,7 +15,7 @@ func _ready() -> void:
 	set_process_unhandled_key_input(false)
 	show_actor=false
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/observation-room-v1/source-v3.png")) != OK: push_error("Failed to load image (rooms/underwater/observation-room-v1/observation_room_view.gd)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/observation-room-v1/source-v3.png")
 	installation=ImageTexture.create_from_image(image)
 	source_registration=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/observation-room-v1/registration.json"))
 	var region: Array=source_registration.region
@@ -23,7 +23,7 @@ func _ready() -> void:
 	source_origin=Vector2(region[0],region[1])
 	for id in ["wooden-desk","chair-rear","reading-set"]:
 		var item:=Image.new()
-		if item.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/observation-office-v1/"+id+".png")) != OK: push_error("Failed to load image (rooms/underwater/observation-room-v1/observation_room_view.gd)")
+		preload("res://scripts/safe_image.gd").load_png(item, "res://assets/observation-office-v1/"+id+".png")
 		office_textures[id]=ImageTexture.create_from_image(item)
 		office_regions[id]=Rect2(item.get_used_rect())
 	rebuild()

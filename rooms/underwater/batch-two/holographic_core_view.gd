@@ -5,7 +5,7 @@ func _ready() -> void:
 	super._ready()
 	computing_hull=life_texture
 	var source:=Image.new()
-	if source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/holographic_core-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/holographic_core_view.gd:8)")
+	preload("res://scripts/safe_image.gd").load_png(source, "res://rooms/underwater/batch-two/holographic_core-source-v1.png")
 	life_texture=ImageTexture.create_from_image(source)
 	life_items=[
 {"id":"holo_projector","rect":Rect2(-172,-139,98,66),"pivot":Vector2(308,487),"width":356.0,"outline":[Vector2(155,167),Vector2(169,156),Vector2(256,159),Vector2(275,143),Vector2(342,143),Vector2(361,157),Vector2(447,157),Vector2(461,170),Vector2(462,219),Vector2(478,239),Vector2(486,346),Vector2(474,363),Vector2(474,432),Vector2(429,487),Vector2(185,487),Vector2(141,444),Vector2(132,417),Vector2(130,351),Vector2(139,333),Vector2(137,242),Vector2(154,218)]},

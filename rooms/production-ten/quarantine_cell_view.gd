@@ -10,7 +10,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/quarantine_cell-source-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/quarantine_cell_view.gd:13)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/quarantine_cell-source-v1.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"quarantine_berth","rect":Rect2(-165,-128,120,72),"pivot":Vector2(344,513),"width":435.0,"outline":[Vector2(128,247),Vector2(135,233),Vector2(135,191),Vector2(145,177),Vector2(177,175),Vector2(180,144),Vector2(199,105),Vector2(217,100),Vector2(493,100),Vector2(507,125),Vector2(524,130),Vector2(532,147),Vector2(531,230),Vector2(548,238),Vector2(558,270),Vector2(558,421),Vector2(542,440),Vector2(533,485),Vector2(521,499),Vector2(202,498),Vector2(190,511),Vector2(148,513),Vector2(129,499)]},

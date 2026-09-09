@@ -40,8 +40,18 @@ func run():
 	check(get_tree().paused and report.overlay.visible, "Release F8 opens and pauses")
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://release-report.png")
+	var existed: bool = FileAccess.file_exists(game.run_save_path)
+	var checkpoint := FileAccess.get_file_as_bytes(game.run_save_path) if existed else PackedByteArray()
 	var path: String = report.save_report("Release New Game smoke")
 	check(not path.is_empty(), "Release report is written")
+	var zip := ZIPReader.new()
+	check(zip.open(path)==OK, "Release ZIP opens")
+	check(zip.file_exists("diagnostics/live_station.save"), "Release live snapshot is included")
+	check(zip.read_file("report.txt").get_string_from_utf8().contains("brinespace-"), "Release content fingerprint is included")
+	zip.close()
+	check(FileAccess.file_exists(game.run_save_path)==existed, "Report does not create a player checkpoint")
+	if existed: check(FileAccess.get_file_as_bytes(game.run_save_path)==checkpoint,"Report preserves checkpoint bytes")
+	check(preload("res://scripts/safe_image.gd").failures.is_empty(), "Release has no missing-art placeholders")
 	report._hide_overlay()
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png("user://release-game.png")

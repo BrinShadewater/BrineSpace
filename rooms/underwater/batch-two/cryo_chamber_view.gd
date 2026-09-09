@@ -13,10 +13,10 @@ func _ready() -> void:
 	super._ready()
 	for i in range(6):
 		var frame := Image.new()
-		if frame.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-cryo-recovery-v1/bill/wake-%d.png" % i)) != OK: push_error("Failed to load image (rooms/underwater/batch-two/cryo_chamber_view.gd)")
+		preload("res://scripts/safe_image.gd").load_png(frame, "res://assets/material-polish-cryo-recovery-v1/bill/wake-%d.png" % i)
 		wake_frames.append(ImageTexture.create_from_image(frame))
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-cryo-v1/cryo-equipment.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/cryo_chamber_view.gd)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/material-polish-cryo-v1/cryo-equipment.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[]
 	for i in range(2):

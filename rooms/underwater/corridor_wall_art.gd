@@ -11,7 +11,7 @@ static func catalog() -> Dictionary:
 static func texture(id: String) -> Texture2D:
 	if not textures.has(id):
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(catalog()[id].source)) != OK: push_error("Failed to load image (rooms/underwater/corridor_wall_art.gd)")
+		preload("res://scripts/safe_image.gd").load_png(image, catalog()[id].source)
 		textures[id]=ImageTexture.create_from_image(image)
 	return textures[id]
 static func region(id: String, part: String) -> Rect2:

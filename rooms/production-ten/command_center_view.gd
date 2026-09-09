@@ -9,7 +9,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/command_center-source-v2.png")) != OK: push_error("Failed to load image (rooms/production-ten/command_center_view.gd:12)")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/command_center-source-v2.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"command_ops","rect":Rect2(-160,-78,72,42),"pivot":Vector2(355,525),"width":469.0,"outline":[Vector2(124,321),Vector2(132,307),Vector2(129,269),Vector2(127,222),Vector2(132,192),Vector2(138,159),Vector2(154,146),Vector2(192,140),Vector2(194,130),Vector2(538,130),Vector2(553,146),Vector2(565,150),Vector2(570,175),Vector2(587,194),Vector2(590,260),Vector2(586,315),Vector2(590,333),Vector2(590,482),Vector2(577,498),Vector2(513,500),Vector2(499,524),Vector2(251,525),Vector2(239,513),Vector2(239,478),Vector2(226,475),Vector2(208,489),Vector2(176,497),Vector2(146,487),Vector2(129,467)]},

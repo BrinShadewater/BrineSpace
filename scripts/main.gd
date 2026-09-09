@@ -5249,3 +5249,12 @@ func _resize_grid_view() -> void:
 	await get_tree().process_frame
 	# A deliberate fit or focus request takes precedence over automatic resize work.
 	if revision == camera_view_revision: _set_grid_zoom(grid_zoom, true, center)
+
+# Diagnostic capture is separate from the player's checkpoint write path.
+func capture_bug_report_snapshot() -> Dictionary:
+	if not startup_complete or get_meta("restoring_checkpoint",false):
+		return {"status":"unavailable", "reason":"station initialization or restoration in progress"}
+	for member in [bill_npc,veld_npc,branforth_npc,marsh_npc,grid_view,tick_timer]:
+		if not is_instance_valid(member):
+			return {"status":"unavailable", "reason":"station component unavailable"}
+	return {"status":"captured", "snapshot":RunSave.capture(self)}

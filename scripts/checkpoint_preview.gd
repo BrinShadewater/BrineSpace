@@ -40,7 +40,9 @@ func _draw() -> void:
 		draw_rect(rect,color.darkened(0.45))
 		draw_rect(rect,color,false,1.0)
 		if room.get("suspended",false): draw_line(rect.position,rect.end,Color("edab79"),1.0)
-	if portrait: draw_texture_rect(portrait,Rect2(size.x-64,12,56,59.5),false)
+	if portrait:
+		var face_size := portrait.get_size() * (56.0 / maxf(portrait.get_width(),portrait.get_height()))
+		draw_texture_rect(portrait,Rect2(Vector2(size.x-36,size.y*0.5)-face_size*0.5,face_size),false)
 func _panel() -> StyleBoxFlat:
 	var panel := StyleBoxFlat.new()
 	panel.bg_color = Color("0a1d25")
