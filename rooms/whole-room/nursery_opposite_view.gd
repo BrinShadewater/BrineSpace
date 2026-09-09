@@ -16,7 +16,7 @@ var source_items := {
 
 func _ready() -> void:
 	var img := Image.new()
-	assert(img.load("res://rooms/whole-room/nursery-opposite-candidate.png") == OK)
+	if img.load("res://rooms/whole-room/nursery-opposite-candidate.png") != OK: push_error("Failed to load image (rooms/whole-room/nursery_opposite_view.gd:19)")
 	opposite_texture = ImageTexture.create_from_image(img)
 	super._ready()
 

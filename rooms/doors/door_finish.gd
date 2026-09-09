@@ -4,7 +4,7 @@ static var textures: Dictionary={}
 static func texture(kind: String) -> Texture2D:
 	if not textures.has(kind):
 		var image:=Image.new()
-		assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/door-polish-v1/"+kind+"-source.png"))==OK)
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/door-polish-v1/"+kind+"-source.png")) != OK: push_error("Failed to load image (rooms/doors/door_finish.gd)")
 		textures[kind]=ImageTexture.create_from_image(image)
 	return textures[kind]
 

@@ -25,7 +25,7 @@ static func catalog() -> Dictionary:
 static func texture(group: String) -> Texture2D:
 	if not textures.has(group):
 		var image:=Image.new()
-		assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes(catalog()[group].source))==OK)
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(catalog()[group].source)) != OK: push_error("Failed to load image (rooms/whole-room/riser_catalog.gd)")
 		textures[group]=ImageTexture.create_from_image(image)
 	return textures[group]
 

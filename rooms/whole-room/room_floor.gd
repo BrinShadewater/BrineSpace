@@ -21,7 +21,7 @@ static func draw_profile_floor(view: Node, canvas: CanvasItem, center: Vector2, 
 	var path: String=profile.source
 	if not department_grains.has(path):
 		var im:=Image.new()
-		assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK)
+		if im.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (rooms/whole-room/room_floor.gd)")
 		department_grains[path]=ImageTexture.create_from_image(im)
 	var rect:=Rect2(center-Vector2.ONE*192,Vector2.ONE*384)
 	canvas.draw_rect(rect,Color(profile.base_tint) if profile.has("base_tint") else tint)
@@ -54,7 +54,7 @@ static func _lines(canvas: CanvasItem, points: PackedVector2Array, color: Color,
 static func draw_floor(canvas: CanvasItem, center: Vector2, tint := Color("343b45"), seam_color := Color(0.07,0.09,0.11,0.48), seam_stride := 1, material := "steel") -> void:
 	if grain==null:
 		var image := Image.new()
-		assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/playtest-visual-v1/deck-source.png"))==OK)
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/playtest-visual-v1/deck-source.png")) != OK: push_error("Failed to load image (rooms/whole-room/room_floor.gd)")
 		grain = ImageTexture.create_from_image(image)
 	# Keep departmental floor values; the neutral source supplies only quiet plate detail.
 	canvas.draw_rect(Rect2(center-Vector2.ONE*192,Vector2.ONE*384),tint)

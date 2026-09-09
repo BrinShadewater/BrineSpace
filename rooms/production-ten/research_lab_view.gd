@@ -9,7 +9,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v2/research-equipment.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v2/research-equipment.png")) != OK: push_error("Failed to load image (rooms/production-ten/research_lab_view.gd)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"research_specimens","rect":Rect2(-166,-124,98,58),"pivot":Vector2(346,508),"width":358.0,"outline":[Vector2(182,163),Vector2(193,152),Vector2(462,152),Vector2(478,168),Vector2(479,236),Vector2(504,243),Vector2(522,261),Vector2(524,354),Vector2(510,367),Vector2(498,369),Vector2(498,491),Vector2(484,508),Vector2(184,508),Vector2(169,491),Vector2(168,253),Vector2(180,234)]},

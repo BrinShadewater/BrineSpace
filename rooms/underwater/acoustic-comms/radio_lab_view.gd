@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/acoustic-comms/radio_lab-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/acoustic-comms/radio_lab-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/acoustic-comms/radio_lab_view.gd:8)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"acoustic_listener","rect":Rect2(-165,-143,108,64),"pivot":Vector2(324,472),"width":400.0,"outline":[Vector2(125,258),Vector2(129,237),Vector2(140,210),Vector2(162,197),Vector2(197,190),Vector2(224,197),Vector2(248,211),Vector2(257,211),Vector2(263,193),Vector2(399,192),Vector2(416,211),Vector2(467,211),Vector2(492,236),Vector2(493,276),Vector2(508,292),Vector2(519,326),Vector2(519,412),Vector2(502,438),Vector2(486,451),Vector2(462,471),Vector2(161,470),Vector2(143,451),Vector2(139,377),Vector2(132,355)]},

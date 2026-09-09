@@ -27,7 +27,7 @@ func run() -> void:
 	var preview:=Preview.new()
 	preview.room=room
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/foundation-v1/foundation-silt-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/foundation-v1/foundation-silt-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/cold-store-v1/render_completed_room.gd)")
 	preview.foundation=ImageTexture.create_from_image(image)
 	root.add_child(preview)
 	await process_frame

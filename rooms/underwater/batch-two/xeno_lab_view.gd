@@ -6,7 +6,7 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 func _ready() -> void:
 	super._ready()
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-xeno-v1/xeno-equipment.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-xeno-v1/xeno-equipment.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/xeno_lab_view.gd)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"xeno_vessel","rect":Rect2(-39,-141,78,72),"pivot":Vector2(314,499),"width":260.0,"outline":[Vector2(184,341),Vector2(192,326),Vector2(206,319),Vector2(209,305),Vector2(222,293),Vector2(222,174),Vector2(231,151),Vector2(246,137),Vector2(267,128),Vector2(291,119),Vector2(331,118),Vector2(358,128),Vector2(379,139),Vector2(395,158),Vector2(403,178),Vector2(403,292),Vector2(416,302),Vector2(424,320),Vector2(437,330),Vector2(442,344),Vector2(443,486),Vector2(432,498),Vector2(196,499),Vector2(184,487)]},

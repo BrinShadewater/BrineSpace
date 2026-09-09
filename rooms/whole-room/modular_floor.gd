@@ -15,7 +15,7 @@ static var hits:=0
 static func texture(path: String) -> Texture2D:
 	if not textures.has(path):
 		var im:=Image.new()
-		assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK)
+		if im.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (rooms/whole-room/modular_floor.gd)")
 		textures[path]=ImageTexture.create_from_image(im)
 	return textures[path]
 static func pilot(id: String) -> bool: return id in ["research_lab", "reactor", "life_support", "crew_hab", "corridor", "corner", "tee_corridor", "hydroponics_bay", "mycelium_nursery", "tidal_condenser", "quarantine_cell", "cryo_chamber", "clone_lab", "med_bay", "storage_bay", "pressure_control", "crew_lounge", "mining_drone_bay", "ore_refinery", "listening_post", "xeno_lab", "maintenance_bay", "bio_lab", "isolation_vault", "current_turbine", "biomass_digester", "heat_recovery", "airlock", "construction_drone_bay", "brine_core", "solar_array", "battery_array", "salvage_drone_bay", "gravity_loom", "data_archive", "biodome", "anomaly_lab", "command_center", "holographic_core", "med_center", "med_office", "radio_lab", "shield_generator", "observation_room", "salvage_workshop", "galley", "cold_store"]

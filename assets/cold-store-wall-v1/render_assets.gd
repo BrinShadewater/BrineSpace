@@ -19,7 +19,7 @@ func run() -> void:
 		var base: String="res://assets/cold-store-wall-v1/"+id
 		var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(base+".json"))
 		var im:=Image.new()
-		assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source))==OK)
+		if im.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source)) != OK: push_error("Failed to load image (assets/cold-store-wall-v1/render_assets.gd)")
 		root.size=im.get_size()
 		root.content_scale_size=root.size
 		var sprite:=Sprite.new()

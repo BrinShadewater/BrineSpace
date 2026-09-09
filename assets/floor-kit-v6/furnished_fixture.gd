@@ -7,7 +7,7 @@ static func draw_details(c: CanvasItem, center: Vector2) -> void:
 		for name in names:
 			if not name.ends_with(".png") or name.begins_with("corridor-"): continue
 			var im:=Image.new()
-			assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/floor-kit-v6/exports/"+name))==OK)
+			if im.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/floor-kit-v6/exports/"+name)) != OK: push_error("Failed to load image (assets/floor-kit-v6/furnished_fixture.gd)")
 			textures.append(ImageTexture.create_from_image(im))
 	for i in range(textures.size()):
 		var at:=center+Vector2(-140+(i%5)*70,-140+(i/5)*56)

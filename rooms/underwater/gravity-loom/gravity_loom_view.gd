@@ -9,7 +9,7 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/gravity-loom/source-v2.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/gravity-loom/source-v2.png")) != OK: push_error("Failed to load image (rooms/underwater/gravity-loom/gravity_loom_view.gd:12)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[{"id":"loom_apparatus","rect":Rect2(-90,-60,180,120),"pivot":Vector2(626,946),"width":660.0,"outline":[Vector2(297,595),Vector2(309,580),Vector2(334,568),Vector2(349,509),Vector2(378,457),Vector2(416,414),Vector2(459,378),Vector2(512,353),Vector2(567,337),Vector2(568,319),Vector2(585,299),Vector2(657,297),Vector2(681,315),Vector2(687,337),Vector2(741,354),Vector2(795,382),Vector2(840,420),Vector2(875,468),Vector2(902,520),Vector2(918,568),Vector2(941,581),Vector2(957,600),Vector2(957,650),Vector2(943,672),Vector2(918,683),Vector2(901,740),Vector2(872,792),Vector2(833,836),Vector2(787,871),Vector2(736,897),Vector2(687,914),Vector2(680,934),Vector2(660,947),Vector2(591,947),Vector2(572,933),Vector2(566,913),Vector2(510,897),Vector2(456,870),Vector2(412,834),Vector2(374,789),Vector2(347,738),Vector2(333,684),Vector2(310,674),Vector2(297,655)]}]
 	dressing=Dressing.new(self,"res://rooms/underwater/gravity-loom/loom-composition-v2.json")

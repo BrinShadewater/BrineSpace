@@ -9,7 +9,7 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v2/life-equipment.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v2/life-equipment.png")) != OK: push_error("Failed to load image (rooms/whole-room/underwater_life_support_view.gd)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"life_fan","rect":Rect2(-165,-113,108,54),"pivot":Vector2(355,448),"width":326.0,"outline":[Vector2(194,170),Vector2(510,170),Vector2(519,439),Vector2(509,448),Vector2(193,448)]},

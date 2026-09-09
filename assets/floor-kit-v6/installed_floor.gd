@@ -5,7 +5,7 @@ static var draws:=0
 static func texture(name: String) -> Texture2D:
 	if not textures.has(name):
 		var im:=Image.new()
-		assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/floor-kit-v6/exports/"+name+".png"))==OK)
+		if im.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/floor-kit-v6/exports/"+name+".png")) != OK: push_error("Failed to load image (assets/floor-kit-v6/installed_floor.gd)")
 		textures[name]=ImageTexture.create_from_image(im)
 	return textures[name]
 static func stamp(c: CanvasItem, name: String, at: Vector2, q:=0, opacity:=0.65, size_scale:=1.0, mirror:=Vector2.ONE, mirror_center:=Vector2.INF) -> void:

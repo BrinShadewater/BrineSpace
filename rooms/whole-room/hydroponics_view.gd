@@ -10,7 +10,7 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var img := Image.new()
-	assert(img.load("res://rooms/whole-room/hydroponics-candidate.png")==OK)
+	if img.load("res://rooms/whole-room/hydroponics-candidate.png") != OK: push_error("Failed to load image (rooms/whole-room/hydroponics_view.gd:13)")
 	life_texture = ImageTexture.create_from_image(img)
 	life_items = [
 		{"id":"hydro_bed_west","rect":Rect2(-163,-147,106,80),"pivot":Vector2(330,499),"width":348.0,"outline":[Vector2(176,169),Vector2(484,169),Vector2(501,183),Vector2(501,492),Vector2(485,499),Vector2(169,499),Vector2(155,486),Vector2(155,187)]},

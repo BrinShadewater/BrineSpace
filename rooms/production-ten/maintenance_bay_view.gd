@@ -8,7 +8,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/maintenance_bay-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/maintenance_bay-source-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/maintenance_bay_view.gd:11)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"maintenance_repair","rect":Rect2(-167,-122,94,60),"pivot":Vector2(330,518),"width":384.0,"outline":[Vector2(138,221),Vector2(151,201),Vector2(169,201),Vector2(169,172),Vector2(224,172),Vector2(230,188),Vector2(310,186),Vector2(321,176),Vector2(351,173),Vector2(352,164),Vector2(448,141),Vector2(475,148),Vector2(481,171),Vector2(481,198),Vector2(504,199),Vector2(519,215),Vector2(521,500),Vector2(504,518),Vector2(151,518),Vector2(138,500)]},

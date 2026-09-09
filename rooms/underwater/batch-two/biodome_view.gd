@@ -8,7 +8,7 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 func _ready() -> void:
 	super._ready()
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/biodome-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/biodome-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/biodome_view.gd:11)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"biodome_tree","rect":Rect2(-159,-149,94,74),"pivot":Vector2(322,536),"width":294.0,"outline":[Vector2(179,274),Vector2(191,255),Vector2(207,246),Vector2(214,235),Vector2(212,226),Vector2(230,226),Vector2(211,215),Vector2(218,204),Vector2(232,200),Vector2(225,184),Vector2(244,182),Vector2(255,191),Vector2(259,180),Vector2(274,175),Vector2(280,191),Vector2(287,171),Vector2(302,160),Vector2(306,178),Vector2(329,173),Vector2(340,181),Vector2(331,195),Vector2(329,196),Vector2(331,198),Vector2(334,200),Vector2(339,202),Vector2(344,204),Vector2(343,198),Vector2(343,190),Vector2(344,185),Vector2(347,182),Vector2(352,184),Vector2(365,188),Vector2(369,201),Vector2(377,191),Vector2(395,190),Vector2(394,208),Vector2(410,208),Vector2(422,217),Vector2(409,228),Vector2(417,243),Vector2(442,242),Vector2(457,252),Vector2(468,269),Vector2(468,510),Vector2(456,526),Vector2(438,536),Vector2(199,536),Vector2(178,517)]},

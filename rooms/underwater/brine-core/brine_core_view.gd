@@ -28,9 +28,9 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/brine-core/source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/brine-core/source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/brine-core/brine_core_view.gd:30)")
 	life_texture=ImageTexture.create_from_image(image)
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/brine-core/renewal-v2/brine-float-v4.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/brine-core/renewal-v2/brine-float-v4.png")) != OK: push_error("Failed to load image (rooms/underwater/brine-core/brine_core_view.gd:32)")
 	body_texture=ImageTexture.create_from_image(image)
 	life_items=[{"id":"brine_chamber","rect":Rect2(-52,-40,104,80),"pivot":Vector2(626,879),"width":286.0,"outline":[Vector2(512,459),Vector2(517,429),Vector2(538,404),Vector2(570,384),Vector2(603,375),Vector2(649,375),Vector2(686,386),Vector2(718,407),Vector2(737,434),Vector2(743,460),Vector2(743,670),Vector2(760,695),Vector2(770,722),Vector2(770,808),Vector2(757,836),Vector2(730,858),Vector2(690,873),Vector2(648,880),Vector2(603,879),Vector2(562,870),Vector2(525,853),Vector2(500,830),Vector2(484,797),Vector2(484,719),Vector2(493,696),Vector2(511,674)]}]
 	dressing=Dressing.new(self,"res://rooms/underwater/brine-core/renewal-v2/composition.json")

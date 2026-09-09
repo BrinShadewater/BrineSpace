@@ -230,7 +230,7 @@ static func open(host: Node) -> Control:
 func _ready() -> void:
 	thumbnail_placeholder=ImageTexture.create_from_image(Image.create(104,78,false,Image.FORMAT_RGBA8))
 	var foundation_image:=Image.new()
-	assert(foundation_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/foundation-v1/foundation-silt-v1.png"))==OK)
+	if foundation_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/foundation-v1/foundation-silt-v1.png")) != OK: push_error("Failed to load image (scripts/room_layout_editor.gd)")
 	foundation_texture=ImageTexture.create_from_image(foundation_image)
 	apply_studio_theme()
 	process_mode=Node.PROCESS_MODE_ALWAYS

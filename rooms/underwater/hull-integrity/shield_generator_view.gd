@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/hull-integrity/shield_generator-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/hull-integrity/shield_generator-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/hull-integrity/shield_generator_view.gd:8)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"hull_monitor","rect":Rect2(-165,-143,108,64),"pivot":Vector2(315,503),"width":405.0,"outline":[Vector2(112,183),Vector2(117,166),Vector2(137,151),Vector2(138,140),Vector2(151,128),Vector2(477,128),Vector2(489,144),Vector2(489,157),Vector2(510,170),Vector2(516,188),Vector2(516,470),Vector2(495,499),Vector2(144,503),Vector2(112,474)]},

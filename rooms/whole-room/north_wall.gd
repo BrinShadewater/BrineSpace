@@ -11,7 +11,7 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 	if room_id=="brine_core":
 		if brine_texture==null:
 			var image:=Image.new()
-			assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/brine-riser-v1/source.png"))==OK)
+			if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/brine-riser-v1/source.png")) != OK: push_error("Failed to load image (rooms/whole-room/north_wall.gd)")
 			brine_texture=ImageTexture.create_from_image(image)
 		# Use the upper service face at its own aspect, excluding the tall lower cabinets.
 		canvas.draw_texture_rect_region(brine_texture,Rect2(-192,Riser.TOP,384,Riser.HEIGHT),Rect2(0,100,2007,342))

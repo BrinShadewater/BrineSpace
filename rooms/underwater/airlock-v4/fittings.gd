@@ -8,7 +8,7 @@ static func load_assets() -> void:
 	profile=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/airlock-v4/wall-profile.json"))
 	for key in profile.textures:
 		var image:=Image.new()
-		assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes(profile.textures[key]))==OK)
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(profile.textures[key])) != OK: push_error("Failed to load image (rooms/underwater/airlock-v4/fittings.gd:10)")
 		textures[key]=ImageTexture.create_from_image(image)
 
 static func sprite(canvas: CanvasItem,key: String,bounds: Rect2) -> void:

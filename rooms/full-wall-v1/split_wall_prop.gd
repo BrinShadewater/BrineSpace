@@ -12,7 +12,7 @@ func _init(id: String) -> void:
 		for section in specification.sections:
 			var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+id+"-"+direction+"-"+section+".json"))
 			var image := Image.new()
-			assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source))==OK)
+			if image.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source)) != OK: push_error("Failed to load image (rooms/full-wall-v1/split_wall_prop.gd)")
 			sections[direction].append({"registration":decode_registration(data),"texture":ImageTexture.create_from_image(image),"section":section})
 
 func apply(room) -> void:

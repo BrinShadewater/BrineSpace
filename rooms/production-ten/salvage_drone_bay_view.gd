@@ -10,7 +10,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/salvage_drone_bay-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/salvage_drone_bay-source-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/salvage_drone_bay_view.gd:13)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"salvage_rov","rect":Rect2(-156,-143,90,64),"pivot":Vector2(347,585),"width":344.0,"outline":[Vector2(179,256),Vector2(191,253),Vector2(191,224),Vector2(209,216),Vector2(225,220),Vector2(225,174),Vector2(237,163),Vector2(282,163),Vector2(286,141),Vector2(302,133),Vector2(389,133),Vector2(410,145),Vector2(410,162),Vector2(452,163),Vector2(467,177),Vector2(467,216),Vector2(498,217),Vector2(506,239),Vector2(516,275),Vector2(514,319),Vector2(506,332),Vector2(516,346),Vector2(516,528),Vector2(503,552),Vector2(473,554),Vector2(453,579),Vector2(429,585),Vector2(400,562),Vector2(389,550),Vector2(306,550),Vector2(286,575),Vector2(267,584),Vector2(238,568),Vector2(227,550),Vector2(177,552)]},

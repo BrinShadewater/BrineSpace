@@ -6,7 +6,7 @@ func _ready() -> void:
 	# retain Biodome-only routes/supports that reference those removed hosts.
 	dressing=null
 	var source:=Image.new()
-	assert(source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-bio-v2/bio-equipment.png"))==OK)
+	if source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-bio-v2/bio-equipment.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/bio_lab_view.gd)")
 	life_texture=ImageTexture.create_from_image(source)
 	life_items=[
 		{"id":"bio_reactors","rect":Rect2(-160,-125,100,78),"pivot":Vector2(354,459),"width":294.0,"outline":[Vector2(208,337),Vector2(215,221),Vector2(226,204),Vector2(232,204),Vector2(232,185),Vector2(246,166),Vector2(273,157),Vector2(297,159),Vector2(321,174),Vector2(333,176),Vector2(333,159),Vector2(374,159),Vector2(378,178),Vector2(389,177),Vector2(405,165),Vector2(430,157),Vector2(455,161),Vector2(475,176),Vector2(478,202),Vector2(490,205),Vector2(498,223),Vector2(501,437),Vector2(488,459),Vector2(223,459),Vector2(208,444)]},

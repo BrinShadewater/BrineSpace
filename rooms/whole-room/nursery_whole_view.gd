@@ -46,7 +46,7 @@ static func load_source_texture(path: String) -> ImageTexture:
 	var cached: Dictionary = shared_source_textures.get(path,{})
 	if cached.get("modified",-1) == modified: return cached.texture
 	var img := Image.new()
-	assert(img.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) == OK, "Missing whole-room visual master: "+path)
+	if img.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Missing whole-room visual master: "+path)
 	var result := ImageTexture.create_from_image(img)
 	shared_source_textures[path] = {"modified":modified,"texture":result}
 	return result
