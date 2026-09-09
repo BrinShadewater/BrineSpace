@@ -1,5 +1,9 @@
 # BrineSpace current status
 
+## BRINE face executable icon - September 9, 2026
+
+[Icon handoff](APP_ICON_2026-09-09.md): current BRINE portrait assigned to the project and Windows executable. Embedded icons reviewed at native sizes; release title launch passes. Updated playable folder: builds/BrineSpace-2026-09-09-face-icon/. Gameplay unchanged from the polished build.
+
 ## Combined polish and release - September 9, 2026
 
 [Combined handoff](FINAL_POLISH_RELEASE_2026-09-09.md): completed local art, animations and reliability work integrated; sprite failure handling, clip duration calculation and title/badge loading polished. Focused source/native checks and actual release New Game/Resume/F8 pass; 10,978 packaged assets checked with zero missing/changed. Source pushed to GitHub. Playable build: builds/BrineSpace-2026-09-09-polished/. See the handoff for package identity and remaining performance/pacing limits.
