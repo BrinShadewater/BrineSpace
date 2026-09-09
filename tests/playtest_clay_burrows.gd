@@ -25,10 +25,10 @@ func run() -> void:
 	sheet.size=root.size
 	for path in ["res://assets/environment/clay-silt-v1/clay-silt-ground-v1.png","res://assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
 		var source:=Image.new()
-		if source.load(path) != OK: push_error("Failed to load image (tests/playtest_clay_burrows.gd:28)")
+		assert(source.load(path)==OK)
 		sheet.grounds.append(ImageTexture.create_from_image(source))
 	var prop:=Image.new()
-	if prop.load("res://assets/environment/clay-silt-v1/burrow-mouths-v1.png") != OK: push_error("Failed to load image (tests/playtest_clay_burrows.gd:31)")
+	assert(prop.load("res://assets/environment/clay-silt-v1/burrow-mouths-v1.png")==OK)
 	assert(prop.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.prop=ImageTexture.create_from_image(prop)
 	root.add_child(sheet)

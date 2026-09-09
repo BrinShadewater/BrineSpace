@@ -28,14 +28,14 @@ func run() -> void:
 	sheet.size=root.size
 	for path in ["res://assets/environment/shell-shoal-v1/shell-hash-ground-v2.png","res://assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
 		var source:=Image.new()
-		if source.load(path) != OK: push_error("Failed to load image (tests/playtest_sediment_decals.gd:31)")
+		assert(source.load(path)==OK)
 		sheet.grounds.append(ImageTexture.create_from_image(source))
 	var prop:=Image.new()
-	if prop.load("res://assets/environment/mooring-debris-v1/mooring-plate-chain-v1.png") != OK: push_error("Failed to load image (tests/playtest_sediment_decals.gd:34)")
+	assert(prop.load("res://assets/environment/mooring-debris-v1/mooring-plate-chain-v1.png")==OK)
 	assert(prop.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.prop=ImageTexture.create_from_image(prop)
 	var scour:=Image.new()
-	if scour.load("res://assets/environment/sediment-decals-v1/silt-scour-v2.png") != OK: push_error("Failed to load image (tests/playtest_sediment_decals.gd:38)")
+	assert(scour.load("res://assets/environment/sediment-decals-v1/silt-scour-v2.png")==OK)
 	assert(scour.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.scour=ImageTexture.create_from_image(scour)
 	root.add_child(sheet)

@@ -28,7 +28,7 @@ func run() -> void:
 	sheet.size=root.size
 	for path in ["res://assets/environment/red-algae-v1/red-algae-tuft-v1.png","res://assets/environment/low-growth-v1/seagrass-rosette-v2.png","res://assets/environment/sub-biomes-v1/kelp-ribbon-kelp-v1.png"]:
 		var source := Image.new()
-		if source.load(path) != OK: push_error("Failed to load image (tests/playtest_red_algae.gd:31)")
+		assert(source.load(path)==OK)
 		assert(source.detect_alpha()!=Image.ALPHA_NONE)
 		sheet.textures.append(ImageTexture.create_from_image(source))
 	root.add_child(sheet)
