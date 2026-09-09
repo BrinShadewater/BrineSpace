@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-research-analysis-wall",
+  "department": "Research",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Warm grey/ivory composite with dusty desaturated science blue inset housings, charcoal rubber work surfaces and quiet cyan specimen accents. Fine technical construction on rear monitor backs; preserve both microscopes, task surfaces and supported containers. No generic all-sage panels."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/research-analysis-wall.png",
+      "sha256": "6d193f85e772174b44f08a5680e664c2c30344393c434a740c3ffafe1a8d86b3",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v2/research-north.png",
+      "sha256": "e72361bc34f604d2e51e19bc22614a4aa0a9a89f6bfa8b0b961c94bf685ea0b2",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/research-analysis-wall.png",
+  "source_sha256": "a2a8740b4865ea0a18d6095c20fe911615b83b7fe8c0fcc11c49607322b1afac",
+  "export_path": "assets/room-style-polish-v1/exports/research-analysis-wall.png",
+  "export_sha256": "d4dd66048076fe3224cf888470afb180cc914855ccdf73950536e78d38e528f9",
+  "native_canvas_px": [
+    2095,
+    751
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    91.41869918699187
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Warm grey/ivory composite with dusty desaturated science blue inset housings, charcoal rubber work surfaces and quiet cyan specimen accents. Fine technical construction on rear monitor backs; preserve both microscopes, task surfaces and supported containers. No generic all-sage panels.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/research-analysis-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1045,
+            549
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 91.41869918699187,
+  "registration_path": "rooms/full-wall-v1/registrations/side-research-analysis-wall-south.json",
+  "registration_sha256": "12d09ce74cc2b8bc6d276f7664d83ee8007c177d9d9e923557fe0778001d1b58",
+  "prompt_path": "assets/room-style-polish-v1/research-analysis-wall.prompt.txt",
+  "prompt_sha256": "a86bf9a00a790ab8cb68e6bae4593e9d176866a8acb2aaf3641514090b32f760",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

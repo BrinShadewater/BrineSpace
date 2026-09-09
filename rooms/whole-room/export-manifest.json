@@ -190,5 +190,138 @@
       }
     ],
     "activity_review": "Central growing rack, preparation bench/trolley and service equipment arrangement. Four-rotation state and 60 static depth probes pass; current-controller tour after production core wake passes 20 arrivals, 24 transitions, 1967 samples. Postdates Windows v6; station-scale/package review pending."
+  },
+  {
+    "id": "observation_room",
+    "source": "rooms/underwater/observation-room-v1/source-v3.png",
+    "sha256": "fffe927d68156a708b55c5f10bdc41eb5b92c180ca244c483dafb53e1adc83b8",
+    "integration": {
+      "view": "rooms/underwater/observation-room-v1/observation_room_view.gd",
+      "card": "rooms/underwater/observation-room-v1/card.png"
+    },
+    "canonical_ports_nesw": [
+      2
+    ],
+    "fixed_rotation": 0,
+    "scope": "Live furnished room and crew reading/window activities; native tests passed; standalone package not rebuilt",
+    "component_assets": [
+      {
+        "path": "rooms/underwater/observation-room-v1/registration.json",
+        "sha256": "9f7515b0aa6c15333be7fe6ae227b0ffaae3f52f0a489294b642da62e0a36024"
+      },
+      {
+        "path": "assets/observation-office-v1/wooden-desk.png",
+        "sha256": "2a47ec704c37cebca78b699d44a166113d1551cd1c32ba8157cd0354f645d421"
+      },
+      {
+        "path": "assets/observation-office-v1/chair-rear.png",
+        "sha256": "0d6963acabf95458466ff42afc25a06abe2a575c0e68dbad4211985d505af08e"
+      },
+      {
+        "path": "assets/observation-office-v1/reading-set.png",
+        "sha256": "e5655410bfb55b540cec0587654471f37b68c5d470fa2b9e442d5f6d74d891c2"
+      }
+    ],
+    "card_sha256": "e9b5a0444c4f52b966e80d9049f12cdcce1f330600ed458151da451143ed115d"
+  },
+  {
+    "id": "salvage_workshop",
+    "source": "rooms/underwater/salvage-workshop-v1/bench-source.png",
+    "sha256": "174a83e5d5e54ee6d56dbdb124c76a85ba1e55dc8a8a48a1f4780f5cb7792e75",
+    "integration": {
+      "view": "rooms/underwater/salvage-workshop-v1/workshop_view.gd",
+      "card": "rooms/underwater/salvage-workshop-v1/card.png"
+    },
+    "card_sha256": "820fca0f609ed9cf3511b2942f564fb3c3329ee2dc4498dfd437d93d1d0a7b1d",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "fixed_rotation": 0,
+    "component_assets": [
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/bench.png",
+        "sha256": "1343b9d5273b60425eb3ffd36d7ebcc2680d053a65671cdea57f17bd509d2189"
+      },
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/tote.png",
+        "sha256": "e5cedb8498bf44ee52aeb0cb521d985f77551dc2b4c8af860efef3e2a9d7a598"
+      },
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/bench.json",
+        "sha256": "26874b1c9a56b4547aac8aa14d964dbf1f116ec44d9ed037af0608df04e558aa"
+      },
+      {
+        "path": "rooms/underwater/salvage-workshop-v1/tote.json",
+        "sha256": "3f616942ebd9393d1d656b352d97a077cbc087cce516933dae05724f99786522"
+      }
+    ],
+    "scope": "Integrated and native tested; standalone package not rebuilt"
+  },
+  {
+    "id": "galley",
+    "source": "rooms/underwater/galley-v1/kitchen-source.png",
+    "sha256": "582286b2a50936a0f8e606e5de28f20e3cc7185de6c16ae689d2e884f0a47612",
+    "integration": {
+      "view": "rooms/underwater/galley-v1/galley_view.gd",
+      "card": "rooms/underwater/galley-v1/card.png"
+    },
+    "card_sha256": "9819497af7b607030fb96023f9ec8e6216bd93bbae3bfe950eecb39ef2c82f32",
+    "canonical_ports_nesw": [
+      2
+    ],
+    "fixed_rotation": 0,
+    "component_assets": [
+      {
+        "path": "rooms/underwater/galley-v1/kitchen.png",
+        "sha256": "aa422849ee1aa349e5504374e403f167899b207b9d16c0484309b1b5a1977e54"
+      },
+      {
+        "path": "rooms/underwater/galley-v1/serving.png",
+        "sha256": "ff287068776fc533221c2ac89fa481b81b88d0c9f1bdbaca30090e60695bd566"
+      },
+      {
+        "path": "rooms/underwater/galley-v1/kitchen.json",
+        "sha256": "ada81b974b178475bec3ba24b2b7dd6196fa4c04adcc685c5110e4a74bee20b0"
+      },
+      {
+        "path": "rooms/underwater/galley-v1/serving.json",
+        "sha256": "7856edeb3bdbb5d4aebbe7bdc0f99c4252d26e3840c02ba1d7d8d47b87b7fda7"
+      }
+    ],
+    "scope": "Integrated and native tested; standalone package not rebuilt"
+  },
+  {
+    "id": "cold_store",
+    "source": "rooms/underwater/cold-store-v1/fridge-source-v2.png",
+    "sha256": "90f8f45aabcfc7b244ea312104562be71b2c631f8bb45dbc02cfe8d6e46d6892",
+    "integration": {
+      "view": "rooms/underwater/cold-store-v1/cold_store_view.gd",
+      "card": "rooms/underwater/cold-store-v1/card.png"
+    },
+    "card_sha256": "87baed63a99fe02a75a29a21a32be7208e7691cc4e45a2439a4f83f9bcdc1947",
+    "canonical_ports_nesw": [
+      0,
+      2
+    ],
+    "fixed_rotation": 0,
+    "component_assets": [
+      {
+        "path": "rooms/underwater/cold-store-v1/fridge-v2.png",
+        "sha256": "e744e3ab74f26ee2e6315f3cda85e117ef5b20b94a06bbacc18c3d5a20e848a3"
+      },
+      {
+        "path": "rooms/underwater/cold-store-v1/rack-v2.png",
+        "sha256": "40666c8fcab00a5b24bec922fd638bad34f551bad4295acd89b61fdf0f9dfe12"
+      },
+      {
+        "path": "rooms/underwater/cold-store-v1/fridge-v2.json",
+        "sha256": "995f7cba7cfd3be7f3be54f91cd2536d02df6f3e9a95887613b4730c981eb1af"
+      },
+      {
+        "path": "rooms/underwater/cold-store-v1/rack-v2.json",
+        "sha256": "196b4340b6e3c5103d5fb2a1a18767744c3e9a8ba15271f4f4a40e9adaa56345"
+      }
+    ],
+    "scope": "Owner-directed smaller matte V2; native art and routes verified; no standalone rebuild"
   }
 ]

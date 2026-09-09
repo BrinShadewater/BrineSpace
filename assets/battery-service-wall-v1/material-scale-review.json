@@ -1,0 +1,92 @@
+{
+  "asset_id": "battery-service-wall-v1",
+  "department": "Engineering / Battery Array",
+  "condition": "Maintained matte painted hardware and rubber",
+  "attachment_class": "Low self-supporting north-wall bank",
+  "functional_bays": [
+    "Three pack cradles",
+    "Wide inspection mat with test case and gloves",
+    "Two cable trays",
+    "Enclosed diagnostic cabinet"
+  ],
+  "runtime_behavior": "Static uninstalled art; no charging simulation",
+  "camera_and_facing": "Near top-down, north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/battery_array.png",
+      "sha256": "1deae04d7d02e0507d071442d01d94f4129e67125ccccc871e3666f44e5312c8",
+      "role": "Established camera, scale and charcoal/orange identity; exclude old glints"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/ore-sampling-wall-v1/wall.png",
+      "sha256": "cf82ad0161e91963bac0697101e79a461281fa111d1ecbe6afcd6b5cbd809017",
+      "role": "Matte low fitted construction only"
+    }
+  ],
+  "source_path": "assets/battery-service-wall-v1/source-v1.png",
+  "source_sha256": "880ae9e835a02a2a66c2ce343662c138e47a0703f48dfd3e1688a7effc64f171",
+  "export_path": "assets/battery-service-wall-v1/wall.png",
+  "export_sha256": "854c4cd5b3ed3f7bd5dbcb770b5eaa4a0fdeacfec740a81b74f92898e0de86ed",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Battery rack service access",
+    "Operator work area"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Dark pack connectors and rubber cable coverings avoid exposed silver hardware.",
+        "Broad charcoal panels remain quiet; amber indicator is a small static accent without spill."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/battery-service-wall-v1/wall-scale.png",
+      "findings": [
+        "Reviewed at320 units beside furnished Battery Array at equal scale.",
+        "Four unequal task areas preserve useful work space; lower storage rendered as broad handled fronts."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral185 removes baked checkerboard; native light/dark silhouette reviewed.",
+        "Cable centers are backed by trays and remain opaque."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Use unequal task widths and broad lower storage fronts to avoid repeating identical five-bay benches."
+  ],
+  "proposed_display_height_world": 76.93548387096774,
+  "registration_path": "assets/battery-service-wall-v1/registration.json",
+  "registration_sha256": "9ba8ba5384bdeaacf90a9b68a4da0d13858f6b6cf8e5046f1fc150e47cef40e1",
+  "prompt_path": "assets/battery-service-wall-v1/source.prompt.txt",
+  "prompt_sha256": "47a760ed028efe8df82dbfdd9b02669337f68ed95165b1e2295f1ba6ed8e3782",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/battery-service-wall.log": "9fd07522d6206d3957d0ee37c7ddfb5add261616fb41ac18fd97530b6de28e7d",
+    "output/battery-service-wall-v1/wall-scale.png": "dd26b03ca3060227c273550a3c38e33dd1145f52f919e4a2393202be95566363",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

@@ -1,5 +1,8 @@
 extends CanvasLayer
 ## Root-owned overlay: gameplay can stay completely disabled during restoration.
+var heading := "RESTORING STATION"
+var message := "Verifying crew routes. The doors remember."
+var detail: Label
 func _ready() -> void:
 	layer = 100
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -22,13 +25,13 @@ func _ready() -> void:
 	column.add_theme_constant_override("separation",24)
 	center.add_child(column)
 	var title := Label.new()
-	title.text = "RESTORING STATION"
+	title.text = heading
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size",26)
 	title.add_theme_color_override("font_color",Color("7ac4b5"))
 	column.add_child(title)
-	var detail := Label.new()
-	detail.text = "Verifying crew routes. The doors remember."
+	detail = Label.new()
+	detail.text = message
 	detail.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	column.add_child(detail)
 	if not preload("res://scripts/title_settings.gd").reduced_motion:

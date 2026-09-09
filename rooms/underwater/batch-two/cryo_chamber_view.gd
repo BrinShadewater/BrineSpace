@@ -13,10 +13,10 @@ func _ready() -> void:
 	super._ready()
 	for i in range(6):
 		var frame := Image.new()
-		assert(frame.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/derelict-cryo-v1/wake-%d.png" % i))==OK)
+		assert(frame.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-cryo-recovery-v1/bill/wake-%d.png" % i))==OK)
 		wake_frames.append(ImageTexture.create_from_image(frame))
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/cryo_chamber-source-v1.png"))==OK)
+	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-cryo-v1/cryo-equipment.png"))==OK)
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[]
 	for i in range(2):
@@ -40,14 +40,9 @@ func rebuild() -> void:
 	elif cryo_dressing!=null: cryo_dressing.place()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("677975") if not recovery.is_empty() and not recovery.cleared else Color("a9b4b2"),Color(0.20,0.32,0.32,0.13),2,"sealed")
-	RoomFloor.draw_dressing(painter,center,edges,"sealed")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("677975") if not recovery.is_empty() and not recovery.cleared else Color("a9b4b2"),Color(0.20,0.32,0.32,0.13),2,"sealed")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
 	if recovery.is_empty() and cryo_dressing!=null: cryo_dressing.floor()
-	# Quiet short service inlays on 48-unit module boundaries, not a bright grid.
-	for prop in props:
-		if prop.registration.get("dressing",false): continue
-		var at := Vector2(prop.rect.get_center().x,prop.rect.end.y+8)
-		painter.draw_line(at-Vector2(24,0),at+Vector2(24,0),Color(0.31,0.52,0.52,0.28),1)
 	if not recovery.is_empty() and not recovery.cleared:
 		# Localized failed hull seams; the maintained medical palette stays legible.
 		for x in [-168,168]:

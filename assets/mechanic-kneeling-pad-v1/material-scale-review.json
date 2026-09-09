@@ -1,0 +1,82 @@
+{
+  "asset_id": "mechanic-kneeling-pad-v1",
+  "department": "Engineering / Maintenance",
+  "condition": "Maintained matte canvas and fabric",
+  "attachment_class": "Portable floor pad",
+  "functional_bays": [
+    "Charcoal kneeling cushion",
+    "Closed brown tool pouch strapped at north edge"
+  ],
+  "runtime_behavior": "Static art; no kneeling interaction",
+  "camera_and_facing": "Near-top-down, pouch north, cushion south",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/mechanical-tool-wall-v1/wall.png",
+      "sha256": "1c84d84884d39973f297fcb28a7d581273b5a47ba8571d5b0aea9177efce90d5",
+      "role": "Companion material and camera reference"
+    }
+  ],
+  "source_path": "assets/mechanic-kneeling-pad-v1/source-v1.png",
+  "source_sha256": "dc58171f25967fefaa973f6c36e9bc97b6d55f5d8538ad9d58a23170cf45d87f",
+  "export_path": "assets/mechanic-kneeling-pad-v1/pad.png",
+  "export_sha256": "86ead3676598cbd25857526912da1a1340541f2f4fb444e5900b6b4725566609",
+  "native_canvas_px": [
+    1415,
+    1112
+  ],
+  "proposed_display_width_world": 28.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door routes",
+    "Operator movement",
+    "Opening drawers"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Matte olive canvas, charcoal cushion and brown pouch match the tool wall; no exposed shiny buckles."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/mechanic-kneeling-pad-v1/group-scale.png",
+      "findings": [
+        "28-unit pad compared with320-unit wall at1x and2x; small subordinate floor prop.",
+        "Actual occupied kneeling posture and reach remain unverified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "True source alpha registered at128; native light/dark edge review passes."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 20.493506493506494,
+  "registration_path": "assets/mechanic-kneeling-pad-v1/registration.json",
+  "registration_sha256": "4b321628e6a944e5c2185ec688a0fdf2e8846d4a790bd945ea5b717cdea863c4",
+  "prompt_path": "assets/mechanic-kneeling-pad-v1/source.prompt.txt",
+  "prompt_sha256": "2025f2a612f98f1356f681daed21db51fc6b8b85bb53bb8791644de888e1fc3c",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings recorded separately."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/mechanic-kneeling-pad.log": "7c4ec1979cdd9063172a2c8eb2db30942ab0a194e86889e1050416c49f53a6ed",
+    "output/mechanic-kneeling-group.log": "40ae6c4fdd5da28d73c690a9db33a2644f83ace7f85344aff637905582955169",
+    "output/mechanic-kneeling-pad-v1/pad-scale.png": "c41624f1d20bb519e833d19bf474dd85e6b4e9fe698cac019902d5ce7df76a8b",
+    "output/mechanic-kneeling-pad-v1/group-scale.png": "8589ed2b4e88e801897995a0194dff25fe5b5b0a1eaa55b202f2e3fdde5953e5"
+  }
+}

@@ -22,14 +22,10 @@ func _ready() -> void:
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("a4b1a7"),Color(0.18,0.29,0.22,0.16),2,"wet")
-	RoomFloor.draw_dressing(painter,center,edges,"wet")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("a4b1a7"),Color(0.18,0.29,0.22,0.16),2,"wet")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"wet")
 	if dressing!=null: dressing.floor()
 	preload("res://rooms/whole-room/room_services.gd").render(painter,props,"hydro",operating)
-	# Agriculture's moisture-resistant composite finish; quiet service strips
-	# remain beneath machinery and never imply additional walls or routes.
-	for x in [-174.0,174.0]:
-		painter.draw_line(center+Vector2(x,-160),center+Vector2(x,160),Color("567e60"),2.0)
 	_draw_care_chart(center)
 
 func draw_registered_prop(prop: Dictionary) -> void:

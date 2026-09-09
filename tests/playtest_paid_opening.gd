@@ -72,9 +72,11 @@ func run() -> void:
 		cycle_clock = 0.0
 		recording = false
 		var built := build("solar_array",Vector2i(19,20)) and build(kind+"_drone_bay",Vector2i(20,19))
-		built = built and build("hydroponics_bay",Vector2i(21,20)) and build("life_support",Vector2i(20,21))
 		if solar_count == 2:
+			# Fund generation before spending the remaining metal on support rooms.
+			# A salvage bay's smaller first cargo cannot rescue the reverse order.
 			built = built and build("solar_array",Vector2i(19,19))
+		built = built and build("hydroponics_bay",Vector2i(21,20)) and build("life_support",Vector2i(20,21))
 		if not built:
 			failures += 1
 			push_error("Paid economy fixture could not construct its station")
@@ -94,4 +96,12 @@ func run() -> void:
 	var file := FileAccess.open("res://output/paid-opening-full-frame.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify({"scope":"One/two-generator paid opening comparison with Architect awake and full frame updates; controlled blueprints, not human playtesting", "runs":rows},"\t"))
 	print("PAID OPENING %s: %s" % ["PASS" if failures==0 else "FAIL",JSON.stringify(rows)])
+	file.close()
+	# Let the audio server retire persistent playback before the headless tree exits.
+	var music := root.get_node_or_null("StationMusic")
+	if music != null: music.process_mode = Node.PROCESS_MODE_DISABLED
+	preload("res://scripts/audio_shutdown.gd").stop_audio(root)
+	await create_timer(0.2,true,false,true).timeout
+	if music != null: music.queue_free()
+	await process_frame
 	quit(0 if failures==0 else 1)

@@ -929,6 +929,117 @@
         "output/isolation-group-depth-v1/review.json",
         "output/isolation-group-routes-v1.log"
       ]
+    },
+    {
+      "id": "current_turbine",
+      "status": "power_expansion_integrated_native_verified",
+      "evidence": [
+        "rooms/power-expansion-v1/manifest.json",
+        "output/power-review_power_rooms.log",
+        "output/power-playtest_power_expansion.log",
+        "output/power-rooms/",
+        "output/bright-turbine-native.log",
+        "output/power-large-routes.log",
+        "output/power-room-preview-large-v1/"
+      ],
+      "brief": {
+        "activity": "current turbine service station",
+        "grounded_furniture": "Dedicated generated machinery skid and reused supported control console",
+        "floor_and_services": "Recessed service runs and canonical shared hull"
+      },
+      "limitations": "Owner selected original brighter turbine on 2026-09-08. Source and card updated; native four-rotation geometry and operating-state checks pass. Earlier station/package evidence predates this art selection.",
+      "composition_revision": "power-v2-large"
+    },
+    {
+      "id": "biomass_digester",
+      "status": "power_expansion_integrated_native_verified",
+      "evidence": [
+        "rooms/power-expansion-v1/manifest.json",
+        "output/power-review_power_rooms.log",
+        "output/power-playtest_power_expansion.log",
+        "output/power-rooms/",
+        "output/power-large-routes.log",
+        "output/power-room-preview-large-v1/"
+      ],
+      "brief": {
+        "activity": "biomass digester service station",
+        "grounded_furniture": "Dedicated generated machinery skid and reused supported control console",
+        "floor_and_services": "Recessed service runs and canonical shared hull"
+      },
+      "limitations": "Native cards, four rotated door routes and operating/offline cues reviewed; paid full-scene construction, discovery and disk Save/Continue pass. Shared service bench and control console are reused, focal machinery is new. No new exported build; owner final art acceptance separate.",
+      "composition_revision": "power-v2-large"
+    },
+    {
+      "id": "heat_recovery",
+      "status": "power_expansion_integrated_native_verified",
+      "evidence": [
+        "rooms/power-expansion-v1/manifest.json",
+        "output/power-review_power_rooms.log",
+        "output/power-playtest_power_expansion.log",
+        "output/power-rooms/",
+        "output/power-large-routes.log",
+        "output/power-room-preview-large-v1/"
+      ],
+      "brief": {
+        "activity": "heat recovery service station",
+        "grounded_furniture": "Dedicated generated machinery skid and reused supported control console",
+        "floor_and_services": "Recessed service runs and canonical shared hull"
+      },
+      "limitations": "Native cards, four rotated door routes and operating/offline cues reviewed; paid full-scene construction, discovery and disk Save/Continue pass. Shared service bench and control console are reused, focal machinery is new. No new exported build; owner final art acceptance separate.",
+      "composition_revision": "power-v2-large"
+    },
+    {
+      "id": "observation_room",
+      "status": "integrated_native_art_verified",
+      "composition_revision": "squared-darker-v3",
+      "brief": {
+        "activity": "Quiet ocean observation and reading",
+        "grounded_furniture": "Connected north porthole and two inward-facing library returns",
+        "supported_objects": "Books behind shelf rails; cabinet-supported ornaments",
+        "circulation": "South entry and open central floor"
+      },
+      "evidence": [
+        "output/observation-room-v2-art.log",
+        "output/observation-room-gameplay-v3.log"
+      ],
+      "limitations": [
+        "Fixed north-facing orientation; south entrance only",
+        "Static window ocean and lamps; no new crew bonus",
+        "No new standalone export"
+      ]
+    },
+    {
+      "id": "salvage_workshop",
+      "status": "integrated_native_verified",
+      "evidence": [
+        "output/workshop-art.log",
+        "output/workshop-gameplay.log",
+        "output/workshop-economy.log",
+        "rooms/underwater/salvage-workshop-v1/completed-room.png"
+      ],
+      "notes": "Fixed south entrance, bench/shelves/press and delivery tote. Existing character clips plus carried tote overlay. No standalone rebuild."
+    },
+    {
+      "id": "galley",
+      "status": "integrated_native_verified",
+      "evidence": [
+        "output/galley-art.log",
+        "output/galley-gameplay.log",
+        "output/galley-economy.log",
+        "rooms/underwater/galley-v1/completed-room.png"
+      ],
+      "notes": "Fixed south entrance; cooking bank and separate serving counter. Three crew meal approaches. No standalone rebuild."
+    },
+    {
+      "id": "cold_store",
+      "status": "integrated_native_verified",
+      "evidence": [
+        "output/cold-store-art.log",
+        "output/cold-store-gameplay.log",
+        "output/cold-store-economy.log",
+        "rooms/underwater/cold-store-v1/completed-room.png"
+      ],
+      "notes": "Fixed north/south aisle with fridge and ingredient rack. Three crew stock-check approaches; paid galley connection. No standalone rebuild."
     }
   ],
   "acceptance_note": "Briefs describe intended production work, not implemented assets or accepted compositions.",

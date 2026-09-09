@@ -1,5 +1,149 @@
 # BRINESPACE â€” Visual Aesthetic Bible
 
+## Three to four large assets — owner correction, September 9
+
+Rooms should feel uncluttered: retain 3–4 large, readable assets and clear floor space. Fitted wall banks count as one connected asset; do not fill empty areas with extra benches, lamps, carts or bottles. Existing simpler rooms may stay below that count. This supersedes earlier density and blanket modest-scale advice for integrated room layouts; department finishes and door geometry remain authoritative. See [layout correction](LARGE_ASSET_LAYOUTS_2026-09-09.md).
+
+## Fitted retro-industrial interiors - owner references, September 8
+
+Fitted furniture should suit existing activity areas. Where full banks conflict
+with focal machinery or doorways, use shorter functional sections with finished
+ends designed for measured gaps. Keep equipment human-scale and clear worktops;
+do not crop through machinery or hide furniture to manufacture a fit. The Radio
+Lab service-section study establishes static visual fit only; mounting and
+occupied access remain pending.
+
+Directional identity includes the usable working opening, not only handles and
+controls. Inspect sewing-machine throats as well as wheel/needle positions. Keep
+the top-down camera and record independent proportions; four directional images
+do not imply identical physical footprints.
+
+Wall-length assemblies are the preferred room-character device: adjoining human-scale
+functional bays with a shared backing, worktop and service connections. Mix recessed
+screens, tactile switches, cabinets, vents and task surfaces instead of repeating
+the same matching machine pair across departments. Use selected warm cream/olive
+finishes, cyan/green screens and sparse amber indicators while preserving department
+identity, matte materials and modest prop scale. Reference photographs supply
+atmosphere and construction; retain our top-down camera, inward controls, low hull
+and clear doors. Bright lamp matrices are a composition reference, not a brightness
+target. See [the six-image reference brief](ROOM_REFERENCE_DIRECTION_2026-09-08.md).
+
+For side-wall variants, inspect each handle, control strip, faucet and dispenser
+independently: a correct backing does not guarantee inward operator faces. The
+west-galley trial required a separate drink-appliance redraw after other fixtures
+were corrected. Review full wall length at native scale without compressing it.
+
+
+## Matte materials and modest prop scale â€” owner correction, 2026-09-08
+
+Electrical service walls can express equipment through capped pack cradles and
+rubber-covered cables rather than exposed shiny contacts. Allocate width by task:
+a broad inspection mat can sit beside narrow cable storage. The Battery service
+study uses four unequal areas with broad lower storage fronts, preserving variation
+within the shared fitted construction (`assets/battery-service-wall-v1`).
+
+Long notice rails can add personal detail with small clocks, paper and notebooks
+separated by exposed cork. Use thin matte framing instead of oversized shiny
+brackets. A shallow sprite still needs a measured mounting surface; keep existing
+low hull geometry authoritative. See `assets/crew-notice-rail-v1` for the candidate.
+
+Small companion seating should stay subordinate to fitted wall furniture. The
+reading stool uses a26-unit square fabric seat and short matte wood legs beside
+the320-unit reading bank. Preserve room for a crew member to approach it; art
+alone does not establish seating interactions. See `assets/lounge-reading-stool-v1`.
+
+Refinery sampling furniture should use small supported mineral groups with broad
+angular faces and restrained value differences, not glittering ore. Keep large
+processing equipment focal; sampling trays, scales and enclosed analyzers remain
+secondary. The matte tool and stone correction is recorded in
+`assets/ore-sampling-wall-v1`.
+
+The owner explicitly approved the repainted Tidal room and selected it as the
+material and quality reference for other rooms. Use `assets/material-polish-v1/`
+Tidal sources for restrained metal highlights, clear machinery and wall detail.
+Match construction quality and lighting hierarchy while retaining department
+colors; do not clone its layout or give every room its engineering palette.
+This approval does not accept the remaining older wall or prop families.
+
+
+Lounge reading furniture can use low book cubbies, flat game boxes and a compact
+radio to add personal warmth around existing seating. Dark wood should use quiet
+brown planes with sparse grain, avoiding continuous gold edge lines that read as
+varnish. Keep ceramics subdued and supported. The reading-wall study records a
+targeted wood repair in `assets/lounge-reading-wall-v1`.
+
+Cryo support banks should humanize recovery with supported blankets, soft clothing
+and small care equipment while leaving pods as the focal machinery. Quiet warm-grey
+composite and dusty-blue fabric preserve the department's pale identity without
+white glints. Enclose thermal equipment instead of exposing shiny heater coils.
+See `assets/cryo-recovery-wall-v1` for the standalone study and edge repair.
+
+Quarantine support furniture can communicate containment through closed returns
+hatches, sealed cassettes and separated supply storage. Use quiet sage-grey and
+small burgundy accents with dark composite basins and painted spouts; glossy
+glass and chrome are unnecessary. Keep supply and returns tasks visibly distinct.
+The standalone preparation study is in `assets/quarantine-preparation-wall-v1`.
+
+Logistics banks need usable working space between their stored supplies. Preserve
+a clear wrapping surface beside recessed scales and tie-down trays; do not fill
+every bay with crates. Cargo platforms should sit low and remain modest relative
+to the bank. The Storage dispatch study uses a38-unit dolly beside a320-unit wall,
+with dull ochre bumpers, matte cases and woven restraints rather than bright metal.
+
+Science support walls should complement the room's focal instrument through
+specific preparation and storage tasks. The acoustic service study pairs modest
+hydrophone cradles, recording cartridges and rubber cable trays with one small
+calibration instrument, preserving the main sonar console's visual priority.
+See `assets/acoustic-service-wall-v1` for standalone native-scale evidence.
+
+Clinical supply furniture can stay pale without reading as glossy: use molded
+teal grips, quiet cream composite and matte medical-paper packets. Avoid using
+chrome trays or reflective packaging as shorthand for cleanliness. Keep closed
+supplies and returns visually distinct, with a small supported cassette/bandage
+cart beside the relevant treatment task. The medical supply study records
+candidate material/scale review in `assets/medical-supply-wall-v1`.
+
+Crew utility furnishings should communicate domestic tasks through supported
+linens, repair trays and fabric containers. A small hamper complements a fitted
+linen wall; it should remain much narrower than a furniture bay. The current
+standalone study uses a 34-unit hamper beside a 320-unit bank. Keep cream and
+fabric warmth while reducing hardware shine; matte is not synonymous with dark.
+See `assets/crew-linen-wall-v1` for source/native evidence and candidate limits.
+
+For side-wall production, long vertical silhouettes are insufficient: equipment
+must extend along floor depth, with working faces inward. Reject stacked frontal
+elevations. When achieving a low cutaway requires different storage (packed-suit
+drawers instead of hanging lockers), identify the result as a companion design,
+not an exact directional reconstruction. The Airlock side-bank trial records
+this distinction and checks individual access features in both directions.
+
+Working examples from the Reactor/Loom wall pass: broad panel restraint does not
+excuse bright pipe caps or shiny control handles. Review each material separately.
+Precision-service benches can use pale matte worktops and muted ceramic pieces;
+vary silhouette through supported probes, instrument columns and cases while
+retaining shallow construction. This preserves functional identity without
+turning every wall into the same charcoal screen bank. Native evidence and
+candidate status are recorded in `assets/reactor-loom-wall-v1`.
+
+New and revised assets MUST avoid the recurring drift toward shiny product-render
+art. Use broad quiet planes, chunky pixel clusters and restrained mid-tone edge
+steps. Powder-coated steel, fabric and rubber remain visibly matte. Avoid chrome,
+white rim strokes, sparkling bolts, glossy gradients and wet sheen on ordinary
+furniture. Darkening or desaturating a shiny source does not satisfy this rule.
+Preserve department palettes and maintained condition; do not replace shine with
+blanket grime. Glass may retain subdued depth without bright reflected streaks.
+
+Wall length comes from adjoining functional bays, not oversized equipment. Review
+new props at their intended room scale beside established furnishings and crew.
+Keep low hull geometry, doorways and pressure chambers authoritative. Existing
+assets are references for specific roles, not blanket approval of their materials.
+
+The room pipeline's [material and scale review](../skills/brinespace-room-pipeline/references/material-and-scale-review.md)
+records separate material, scale, alpha and integration findings. Refine it during
+each relevant task using concrete failures and verified improvements. New candidate
+art stays agent-reviewed until the owner accepts it; no unrelated bulk restyling
+or scheduled background work is implied.
+
 ## Underwater hull fittings â€” owner direction, 2026-09-06
 
 Everyday wall details can recur across departments: clocks, protected comm panels,
@@ -1680,3 +1824,213 @@ records those exceptions and still checks all other rotations. Native pictures
 are under `output/decoration-integration/` and `output/decoration-station/`.
 New cards are selected in GridCanvas, including all corridor variants. Export
 filters include raw PNG/JSON; no new executable was built during this pass.
+
+## September 8: full-wall installation exception
+
+The owner approved continuous full-wall installations and alternate side-wall
+views for the nine rooms whose rotations can leave only a side wall sealed.
+These authored views face into the room; the south-facing default still applies
+to other props. Keep the door mask unchanged and use source proportions.
+Pressure Control retains its better original installation. Maintenance retains
+the darker refined source. Department color is retained without global muting.
+See skills/brinespace-room-pipeline/references/full-wall-installations.md for the
+reviewed cutout, placement, stateful-prop and native verification workflow.
+
+
+## Fourteen-room wall installation rollout - September 8 owner direction
+
+Create the nine continuous and five door-aware split installations listed in assets/wall-room-rollout-v1/rollout.json. Keep colors slightly darker and restrained while preserving each department material identity. All operator interfaces face into the room; dedicated side and rear art supersedes the generic south-facing convention for these wall banks. Cross-room banks must be authored as supported separate sections around the real doorway and approach, rather than hiding a cut through one continuous machine.
+
+Verified prior-batch lesson: outer silhouette checks alone miss white background trapped inside pipe loops and planter rails. Review those apertures on the native floor, keeping raster source pixels and registration provenance intact. Individual source approval, runtime integration and verified four-rotation acceptance are separate stages.
+
+Pilot evidence: Salvage, Construction and Anomaly now have native-reviewed inward wall banks. Check each appliance separately: initial side sheets kept a lower screen or drawer bank facing south even when upper equipment faced inward. Retain live drones and hatches as separate animated props, reserve their visual space before placing furniture, and remove stale leads after moving their hosts. Do not count a regenerated pair as two newly furnished rooms. See docs/WALL_ROOM_ROLLOUT_2026-09-08.md for remaining scope.
+
+Owner clarification during Radio wall work: we look top-down, and console fronts point into playable floor toward the crew. Upward does not mean facing away from the room or looking from beneath the machinery. Specify wall-side screens and aisle-side hand controls in near-overhead console layouts; camera angle and operator direction are independent. Low-angle towers and rear panels presented as operator fronts are rejected.
+
+Wall-bank mounting correction: equipment intended to attach to a wall must sit flush along its backing flange. A taper or arbitrary floor inset creates a floating installation. Radio now uses straight authored source flanges and the actual inner wall face at 184 units from room center; other furniture clearance remains independent. Verify the visible seam in native top-down views, not only bounding rectangles.
+
+
+## Shield wall installation checkpoint
+Shield Generator side-first sources retained its gunmetal/orange engineering identity and inward controls without a repair generation. Native four-rotation review and production crew routes pass; eight floor details resolve. The replaced injector and panel-cradle hosts needed an explicit full-wall fallback. Check semantic floor anchors even when native placement passes: visual replacement can remove their host IDs. This is one successful source-first case, not proof that every room will need no revisions.
+
+
+## Quarantine retention gate
+The first specimen-bank source copied the patient berth from its subject reference. A focused repair replaced it with vial trays before integration. Native inspection then caught the original berth omitted at q0/q3 despite passing bounds checks. Quarantine now reserves its berth before secondary furniture, and the native review asserts berth presence in every rotation. Explicitly preserve a room-defining apparatus when adding wall art; clearance alone does not establish semantic completeness. Four rotations/two states, eight floor anchors and production routes pass.
+
+
+## Med Center integration finding
+Med Center uses center_dressing rather than dressing or cryo_dressing. Include its profile in active host/service filtering; otherwise native rendering asserts on the omitted medical_station even when placement checks pass. Preserve medical_treatment and medical_imaging first and assert both across rotations. Source review also required darker enamel and transverse side keyboards; explicit across-width wording remains necessary. Native four-rotation review, eight anchors and crew routes passed after correction.
+
+
+## Med Office checkpoint
+Using the corrected Med Center side pair as camera/exposure reference produced inward keyboards without a repair generation while retaining separate office subjects. Preserve office_exam and office_consultation first; office_dressing requires the same host cleanup as center_dressing. The q1 records marking needed scale 0.5 to fit adjacent floor; other rotations keep 0.7. Four-rotation native review, eight anchors and crew routes pass. This is a specific success, not a universal no-revision guarantee.
+
+
+## Biomass source checkpoint
+Biomass required an explicit circular top-lid repair: merely requesting top-down retained tall source tank elevations. Specify circular lids and absence of side walls for vertical cylinders. Its north source has real RGBA transparency; the first south source instead painted an opaque checkerboard. South-v2 repairs that background to white. Inspect mode and alpha per output, even between adjacent generations. These sources remain pending native integration.
+
+
+## Biomass integration checkpoint
+The wall skid replaces power_machine and its fixed service run; the wrapper supplies the new operating lamp while retaining ordinary console behavior. North source uses alpha-to-vector registration; white side/south sources use neutral exterior registration. South wall_contact now places the entire footprint at the canonical inner wall face and native review checks the south coordinate explicitly. The q3 drain fits at scale 0.6. Native four rotations/two states, eight floor anchors and crew routes passed.
+
+
+## Split source registration
+Use tools/register_split_wall_props.py with explicit columns, rows and row-major labels. It chooses actual alpha or neutral exterior registration per source, preserves PNG bytes, refuses existing output directories, and rejects any silhouette touching a cell divider or sheet edge. It does not infer doors or approve art. Life Support north pair registered two separate 712x465 sprites; source camera needed a lying-cartridge repair. Native split integration and remaining directions are pending.
+
+
+## Verified split placement
+Life Support uses split_wall_prop.gd and split-life-support-wall.json: eight independently authored sections, two 128-unit spans per rotation, +/-184 inner-wall mounting and a 112-unit central gap. Each section has its own collision footprint. Original fan/filter art is replaced; tank/console are placed first and asserted present. Active dressing hosts follow surviving props, saved layout overrides apply last, and the wrapper supplies fan motion. Native four-rotation/two-state door/contact/count checks, eight anchors and production crew routes pass. Reuse this two-section contract for remaining cross rooms; keep their subjects and preserved equipment explicit.
+
+
+## Hydroponics source findings
+A side-facing control strip alone did not produce a vertical bank: the first four-cell sheet retained horizontal footprints and top rails. Pair the subject reference with an accepted side-layout reference and explicitly remove old top rails. Hydro side repair then produced tall modules with straight outer rails. All eight directional sections registered without touching dividers. Native integration remains pending; do not count source completion as a verified room.
+
+
+## Hydroponics service-host correction
+Split Hydroponics retains hydro_harvest and hydro_nutrients, with native presence assertions. room_services.gd previously used an empty Rect2 for removed beds and drew phantom irrigation lines to the origin. Skip missing bed hosts; the new wall sections have integrated plumbing. Native four-rotation review, eight anchors and production crew routes pass. Inspect bespoke service renderers as well as dressing profiles when replacing equipment.
+
+
+## Battery split checkpoint
+The split helper reused the eight-section battery source set without geometry changes. battery_breaker and battery_distribution are prioritized and asserted present across all rotations. Standing mats needed scale 0.45 at q1/q3 beside the retained test bench; other poses keep 0.7. Native door/contact/presence checks, eight floor anchors and production crew routes pass. Room card refreshed.
+
+
+Storage directional lesson: check every bin handle and strap buckle as well as console controls. A correct outer rail can conceal south-facing access on individual cargo lids. On side modules, handles belong on the inward left/right lid edges; on south modules, all handles face north. Preserve targeted rejected revisions and register actual dimensions (Storage side sheet 962x1634), without changing raster pixels.
+
+
+Storage integration checkpoint: retain loading lift and loose cargo when replacing wall shelving; attach restraint floor detail to the new cargo bank. Eight anchors and four rotated production routes pass. Source handle-direction review and runtime wall-contact checks are complementary: neither alone establishes acceptance.
+
+
+Command source checkpoint: specifying keyboard strips beside the wall-side displays produced inward side-console working order in the first candidate. North/south outputs use true alpha while the side sheet uses white background; inspect each image independently and select registration by actual alpha. Preserve the original command-table sonar and add source-relative screen feedback when replacing active consoles.
+
+
+Command integration checkpoint: source-relative screen centers differ by direction and module. Preserve the old chart-table/system effects and draw new display marks only while operating with the room machine clock. Four-rotation placement and crew tests pass; rendered pause/offline behavior remains a separate final-audit gate.
+
+
+Completion-audit finding: side-only draft tests missed horizontal rollout banks that accepted out-of-hull saved positions. Apply placement fallback validation to every orientation of each new continuous bank, and test split sections individually. tests/test_wall_rollout_drafts.gd covers all 56 room orientations while preserving saved data. A Godot assertion can leave SceneTree running; inspect errors and enforce runner timeouts rather than accepting process status alone.
+
+
+Final fourteen-room acceptance: bindings audit covers 55 preserved source versions and 74 registration files, not 74 room identities. Native review covers all 56 orientations, floor audit all 112 placements, and draft fallback all poses. New-effect pixel tests crop only animated banks and use the owning pause clock. Restore fixture viewport after game initialization, hide CanvasLayer UI and free nodes before shutdown to avoid misleading captures and teardown errors. See docs/WALL_ROOM_ROLLOUT_ACCEPTANCE_2026-09-08.md.
+
+
+Data Archive follow-up: layout_06_core exposes all four doors even though its legacy source looks enclosed. Derive split-bank geometry from the database and live layout, not the source shell. Keep independent cartridges/index sections and preserve archive_library/archive_terminal effects. Three sheets and eight sections pass native/floor/crew review. Keep this follow-up manifest separate from the completed original fourteen-room scope.
+
+
+Holographic Core follow-up: avoid copying subject identity from a geometry reference; cartridge-like first draft was replaced with three optical processors and a lattice display. Unequal sprite-sheet rows need reviewed native gutter coordinates: register_split_wall_props.py --row-cuts 800 preserves the actual white gap. A cut at 780 is rejected for crossing machinery with no output. Keep strict divider checks, not an exception that crops a machine. Projector/calibrator retained in all four native poses.
+
+
+## Owner-directed riser height and perimeter art refresh — September 8
+Riser faces now project 60 units above the deck baseline, up from48 (+25%). Caps,
+end returns and lights follow the raised assembly; low square-wall thickness,
+room footprints and doorway dimensions remain authoritative. This supersedes
+older restrictions on riser height, not general permission to enlarge walls to
+fit furniture. Square hulls should use department-matched registered material
+strips and corner caps. Flat color wrappers were replaced in eight rooms; full
+catalog evidence and remaining test limits are in RISER_WALL_REFRESH_2026-09-08.md.
+
+### Seed bank directional example - September 8
+
+Four standalone views now exist. Side banks are slim construction variants: west45.36 and east46.76 units deep at320 long. Horizontal banks remain deeper. Quiet sage composite and charcoal fittings carry department identity. Directional silhouette alone does not prove matching inventory: east V1 lost two tins, corrected before export. Record measured differences rather than claiming exact rotation. See assets/botanical-seed-wall-v1/family.json; runtime fit remains unverified.
+
+Seed bank host follow-up: modest standalone size still overlaps three retained Hydroponics props. Open west door is blocked too. See docs/SEED_BANK_HOST_2026-09-08.md. Wall-length art needs measured host and doorway composition, not only native-scale material review.
+
+Short seed sections: sorting55.24 and storage67.84 units deep at136 length. Storage V2 quiets repeated bright lid rims. Shared palette does not guarantee matching module depth; paired host review remains required. See assets/seed-storage-west-section-v1/README.md.
+
+Split seed bank host result:96-unit gap clears72-unit west opening, but retained furniture still overlaps both sections. Doorway composition and furniture fit are independent requirements; see docs/SEED_SECTIONS_HOST_2026-09-08.md.
+
+Seed section relocation proposal retains all six furniture items and clears static overlaps by shifting crops68 units right and nutrients/harvest stand96 right. Applies to west-open configuration only. See docs/SEED_SECTIONS_RELOCATION_2026-09-08.md; service and crew validation remain separate.
+
+Review presentation: gallery now retains contextual host and relocation verdicts separately from material/scale passes, with evidence links and stale evidence warnings. Preserve rejected host evidence alongside later limited proposals; see docs/GALLERY_CONTEXT_REVIEWS_2026-09-08.md.
+
+Seed carrier group: carrier and propagation tray reviewed simultaneously on the north bank. Preserve occupied tabletop zones when adding accessories; include handles and latches in support review. Native support passes, hand access and lifting remain unverified. See assets/seed-packet-carrier-v1/group.json.
+
+Maintenance cleaning bank: use dry dark basin and matte fixtures for the static base; liquid behavior is separate. Washer/drain holes remain opaque over their backing. Record residual highlights honestly after material edits. See assets/parts-cleaning-wall-v1/README.md.
+
+September 8 owner south-wall correction: full-wall banks mounted on the south edge must face north into the room. Review the actual rear casing, seating knee edge, access openings and screen backs; left/right mirroring and a correct backing alone do not establish facing. The Studio batch uses overhead rear views with quiet lower backing. Choose the texture from the actual mounting wall, not quarter number. Source review and ten current south-bank native previews are recorded in docs/STUDIO_OWNER_NOTES_2026-09-08.md; owner acceptance remains pending.
+
+September 8 style-polish review: recent south banks now retain inward silhouettes while separating warm habitation, pale clinical composites, Life Support grey-green, engineering charcoal/orange and communications charcoal/burgundy. Shared material quality does not imply shared cabinet color. Recessed service details belong on rear faces; do not restore outward-facing controls to add detail. Twelve native comparisons beside Bill and ten default south placements are in docs/ROOM_STYLE_POLISH_2026-09-08.md; owner acceptance is pending.
+
+
+## Water and layout-editor presentation - September 8 session closeout
+
+Water heights must read in the room and against crew bodies. Preserve restrained,
+irregular surface texture and broken wakes rather than net-like repetition or a
+round blue character halo. Crack severity and repair feedback should remain legible
+at native scale. The water and dense-rendering records retain test scope and pending
+owner review; optimization alone does not establish final visual acceptance.
+
+The asset tray shows isolated registered artwork on transparency, including while
+loading; no source-sheet rectangle or solid selection block should surround the art.
+Use thin selection outlines and stable thumbnail slots. Clean preview removes editor
+guides, hover/selection and alignment marks while retaining actual room art and light.
+Free placement is an authoring preference, not proof of safe crew or doorway access.
+See LAYOUT_EDITOR_POLISH_2026-09-08.md and WATER_EDITOR_SESSION_CLOSEOUT_2026-09-08.md.
+
+
+## Asset preservation during storage cleanup â€” September 8, 2026
+
+Build retention is separate from visual acceptance. Removing a rejected export
+does not reject the source artwork it contains; an older asset version may remain
+a selected source or reference. Preserve raw sources, prompts, selected art,
+review captures and rejection reasons. Never infer "bad art" from age, filename
+or disk usage. No art direction or image-quality verdict changed during the
+storage cleanup. See STORAGE_CLEANUP_2026-09-08.md and the room-pipeline reference
+skills/brinespace-room-pipeline/references/storage-retention.md.
+
+## BRINE comms portrait - September 8 session closeout
+
+Selected artwork: character/brine-comms-v8/portrait.png. Preserve the crew's
+angular matte pixel rendering, BRINE's short brown bob, blue eyes, navy high-neck
+suit and faint composed smile. She should look calmly suspended in water, with
+buoyant hair and restrained refracted light, rather than sad or standing dry.
+The spacious cylindrical glass tube fills the background with curved reflections
+and cropped pale ivory framing. No exterior room or lower tube rim in this crop.
+Small visible bubbles rise behind her silhouette. Hair and water-light patterns
+are painted in this revision; only bubbles animate. Earlier versions are retained.
+See docs/STUDIO_BRINE_SESSION_CLOSEOUT_2026-09-08.md for evidence and pipeline notes.
+### Wall-asset session closeout - September 8
+
+Production paused at owner request. Consolidated evidence and remaining work: docs/WALL_ASSET_SESSION_CLOSEOUT_2026-09-08.md. Preserve matte department identity, actual measured dimensions and separate static/host/runtime acceptance. Resume from current state rather than regenerating finished families.
+
+
+## Crew life contact and motion - September 8 session lessons
+
+Seated and sleeping crew must visibly occupy their furniture: preserve anatomical
+scale through lowering/rising, place the body on the seat or mattress, and review
+chair-back and bed-footboard depth. Navigation feet may stay at a safe approach
+while a registered visual offset places the body on furniture. Use the current
+retained props in every rotation rather than assuming a baseline sofa remains.
+
+Held cargo must remain coherent through pickup and carrying turns. Preserve
+asymmetric gear, correct actual facing and per-frame helmet/head alignment; do
+not fill missing directions by mirroring bodies. A sealed helmet is not an open
+mouth for meals. Distress cues should read without changing oxygen rules.
+
+These are integration lessons, not owner acceptance of the new poses. The crew
+life review remains pending. See CREW_ANIMATION_SESSION_CLOSEOUT_2026-09-08.md
+and skills/brinespace-character-pipeline/references/crew-life.md.
+
+
+## Tidal-reference material session closeout - September 8
+
+Use Tidal as a finish reference, not a universal cabinet palette. Retain science
+identity with subdued violet fittings and readable specimens behind quiet glass;
+remove neon rims without obscuring contents. Matte housings alone do not establish
+that glass, tools and accessories match. Cryo wall equipment should read as
+refrigeration machinery; human chambers remain individual floor pods, avoiding
+a wall-length capsule that implies shared occupancy.
+
+See ART_MATERIAL_SESSION_CLOSEOUT_2026-09-08.md for installed batches and evidence.
+Batch native review is separate from owner acceptance and current combined-build
+review. Newer directional and department-wall decisions elsewhere still govern.
+
+
+## Navigation UI finish â€” September 8 session closeout
+
+Use dark petrol teal plates with gunmetal borders. Badge pictograms use clean
+satin enamel, crisp silhouettes and restrained bevels; heavy chips, cracks and
+pervasive scratches were rejected. Preserve aged cream for the Codex computer,
+ochre Archive, jade Diagnostics, autumn-orange Journal and blue/ochre/jade Menu.
+These are UI-specific choices, not replacements for department material rules.
+Archive, Diagnostics, Journal and Menu occupy one top-right row with labels below
+the icons. Top resonance/cycle displays are removed; underlying systems remain.
+See NAVIGATION_UI_SESSION_CLOSEOUT_2026-09-08.md for selected sources and evidence.

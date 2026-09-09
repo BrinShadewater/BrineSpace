@@ -79,7 +79,7 @@ func run() -> void:
 	game.set_process(false)
 	game.tick_timer.stop()
 	# Normal recovery entry point supplies the actor; four free fixture corridors test ports.
-	Architects.advance_core(game,7)
+	Architects.advance_core(game,Architects.DURATION)
 	check(game.bill_npc.active and Architects.present(game,"bill"),"Bill must emerge before traversal")
 	for d in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
 		var cell: Vector2i=CELL+d

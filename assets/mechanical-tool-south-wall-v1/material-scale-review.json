@@ -1,0 +1,99 @@
+{
+  "asset_id": "mechanical-tool-south-wall-v1",
+  "department": "Engineering / Maintenance",
+  "condition": "Maintained matte olive and dark tools",
+  "attachment_class": "Low self-supporting south-wall bank",
+  "functional_bays": [
+    "Recessed screwdriver and open-ended spanner trays",
+    "Clear repair mat and latch",
+    "North-access parts drawers",
+    "Closed pouch with north buckles"
+  ],
+  "runtime_behavior": "Static uninstalled directional candidate",
+  "camera_and_facing": "Near-top-down; backing south, operator edge north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/mechanical-tool-wall-v1/wall.png",
+      "sha256": "1c84d84884d39973f297fcb28a7d581273b5a47ba8571d5b0aea9177efce90d5",
+      "role": "North construction and material reference"
+    }
+  ],
+  "source_path": "assets/mechanical-tool-south-wall-v1/source-v3.png",
+  "source_sha256": "995b7fb67372ed022234291fe24a65ae3766d40db20be8cb87b3d9478ee34a8a",
+  "export_path": "assets/mechanical-tool-south-wall-v1/wall.png",
+  "export_sha256": "3ab5ddeab803b807d90ee742470892f91e3fea7b19d8b426eae359b05730673f",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Operator space",
+    "Drawer opening clearance"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V3 replaces bright shafts with dark sleeves and simplifies spanners into plain open-ended tools.",
+        "This changes tool construction; not a material-only pixel lock."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/mechanical-tool-south-wall-v1/wall-final.png",
+      "findings": [
+        "320-unit review beside Maintenance Bay; backing south and working edges north.",
+        "Pouch buckles moved north; actual opening motion and crew reach unverified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral228 exterior registration; complete light/dark silhouette inspected."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 82.76953511374876,
+  "registration_path": "assets/mechanical-tool-south-wall-v1/registration.json",
+  "registration_sha256": "0b5d7681ab016331d2e79fd8e9207d2c3d22d58561aa7e1ddf06cc158e2bedff",
+  "prompt_path": "assets/mechanical-tool-south-wall-v1/source-v3.prompt.txt",
+  "prompt_sha256": "8f8f414cb9d83d9771c485a728fa2859c119f95a247259f7c96559b136dfdab6",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "review_history": [
+    {
+      "source": "source-v1.png",
+      "verdict": "rejected_facing",
+      "reason": "Pouch closure outward"
+    },
+    {
+      "source": "source-v2.png",
+      "verdict": "rejected_materials",
+      "reason": "Bright tool shafts and rings"
+    }
+  ],
+  "evidence_hashes": {
+    "output/mechanical-tool-south-wall-final.log": "af1dae45fb5fd73ee28511cec2ade7da5aa55e16b0f577eca5f73093625c8cad",
+    "output/mechanical-tool-south-wall-v1/wall-final.png": "2b1028961b127a1b6efd562124cd21d48eeb3f0b7c49128a3ac6a3065828eb0a",
+    "assets/mechanical-tool-south-wall-v1/source-v1.png": "03a600a7bdc40d261dda40968476e580b437006aa27cc8ecbaa790013b6119b0",
+    "assets/mechanical-tool-south-wall-v1/source-v2.png": "b889434a4be42dadab841e64a4d77e9b7455753625b11853634f3775f6842430",
+    "assets/mechanical-tool-south-wall-v1/source.prompt.txt": "d450d3362ad4a27060081baf759e346c8261e123a8ae37a750c177e983ef8c6d",
+    "assets/mechanical-tool-south-wall-v1/source-v2.prompt.txt": "beeb750d83d9710ecd9a31159c2d3a5993a09672cf7eb79ad562227030ffaa77"
+  }
+}

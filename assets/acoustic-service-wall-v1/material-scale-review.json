@@ -1,0 +1,94 @@
+{
+  "asset_id": "acoustic-service-wall-v1",
+  "department": "Science / Deepwater Listening Post",
+  "condition": "Maintained matte painted hardware",
+  "attachment_class": "Self-supporting low north-wall bank",
+  "functional_bays": [
+    "Recording cartridges",
+    "Hydrophone cradles",
+    "Calibration bench and headphones",
+    "Signal cable trays",
+    "Test-equipment cabinet and case"
+  ],
+  "runtime_behavior": "Static uninstalled artwork",
+  "camera_and_facing": "Near-top-down orthographic; north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/listening_post.png",
+      "sha256": "101ab1703c5eb2848a432200db94db2a0bf68873ae9c829be5f815184b96e79c",
+      "role": "Room camera, scale and Science identity; exclude old gloss"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/operations-wall-v1/operations-wall.png",
+      "sha256": "624bb9724791320d81d9b18890eaadc2131d0c8af1a72c4f5f62eb8679b4cb3f",
+      "role": "Low bank construction and matte materials only"
+    }
+  ],
+  "source_path": "assets/acoustic-service-wall-v1/source-v1.png",
+  "source_sha256": "dd6569c409efb833a750b8d7ee8751c05428689a8dd3ec03cac0c74cc41c43a9",
+  "export_path": "assets/acoustic-service-wall-v1/wall.png",
+  "export_sha256": "881ae74a25ec4680d7519d7407a9bb5aec60d88ca37135e313ee9d84672f52c9",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Existing sonar console",
+    "Door bays",
+    "Operator circulation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Subdued hydrophone barrels, ceramic caps and rubber headphones; no bright reflected stripes.",
+        "Quiet grey worktop and small teal display without light spill."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/acoustic-service-wall-v1/wall-scale.png",
+      "findings": [
+        "Reviewed at 320 x 55.09 world units beside the furnished Listening Post at equal scale."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "True-alpha source preserved; native export inspected on light/dark grounds.",
+        "Exterior corners alpha 0; supported interiors retain source near-opacity (sample alpha 253/255).",
+        "Cable centers and headphone opening reveal solid supports, not through-holes."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Complement focal instruments with service tasks.",
+    "Backed loops must not be cut as apertures."
+  ],
+  "proposed_display_height_world": 55.088221268478776,
+  "registration_path": "assets/acoustic-service-wall-v1/registration.json",
+  "registration_sha256": "e07402449f6f8059c3cb3d9529359f05619f342cbee7ba31be829b45cc6c96f1",
+  "prompt_path": "assets/acoustic-service-wall-v1/source.prompt.txt",
+  "prompt_sha256": "f747f5a8e220dfec95c387a6d8456c9d83d0cdabb2bd870c6e1138545dc154be",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/acoustic-service-wall-v1/wall-scale.png": "2c54a39feabc716b2a61d7237e5a8ba195e7e8561bf152147f73e67da8e288da",
+    "output/acoustic-service-wall.log": "acc56f2dace7dd9c292f4bdf952e709aa66fc37fc64a44d5ee1c094ce34e7d0c",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

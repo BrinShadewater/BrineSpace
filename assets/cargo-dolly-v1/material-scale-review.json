@@ -1,0 +1,71 @@
+{
+  "asset_id": "cargo-dolly",
+  "department": "Logistics / storage",
+  "condition": "maintained with light handling wear",
+  "attachment_class": "low freestanding wheeled platform",
+  "functional_bays": [
+    "strapped parcel on deck",
+    "folded bottom push handle"
+  ],
+  "runtime_behavior": "static standalone prop; no hauling or unload state installed",
+  "camera_and_facing": "overhead; push handle bottom",
+  "references": [],
+  "source_path": "assets/cargo-dolly-v1/source.png",
+  "source_sha256": "ce36dd8a6d7aa9c73d09f91f6ae080017a479c98fd53ffe1168ee5adca500150",
+  "export_path": "assets/cargo-dolly-v1/cargo-dolly.png",
+  "export_sha256": "839925b68be9af57e3c01b07f9c364415d4b227e79a523c38f86f756d4f1c26a",
+  "native_canvas_px": [
+    1081,
+    1455
+  ],
+  "proposed_display_width_world": 36.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Include wheels and handle in actual floor clearance; no room placement established."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte brown-gray frame, navy pads, dark straps and gray fabric; folded fabric shading remains subordinate at native scale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/cargo-dolly-review.png",
+      "findings": [
+        "36-unit width beside existing furnished room/crew reference.",
+        "Parcel, two restraints and projecting handle remain readable; tiny hardware simplifies."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "True-alpha source; one component decomposed into two polygons around handle aperture.",
+        "Light/dark native review shows clean handle opening, wheel silhouette and retained parcel."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Loaded cargo art must not imply an available empty/unloaded state; record depicted state explicitly."
+  ],
+  "proposed_display_height_world": 52.19746121297602,
+  "registration_path": "assets/cargo-dolly-v1/registration.json",
+  "registration_sha256": "e69a0ffdf4a460a2474e36e511d2f3ae51f7beb2aec0900cd4c5e38875309918",
+  "prompt_path": "assets/cargo-dolly-v1/source.prompt.txt",
+  "prompt_sha256": "ea39426109d37454d0bd6217dbcb0a85e83470ce12175391ee6fcab4ce46ceba",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "depicted_state": "loaded with one secured parcel"
+}

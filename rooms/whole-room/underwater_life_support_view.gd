@@ -9,7 +9,7 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/whole-room/life-support-underwater-source-v1.png"))==OK)
+	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v2/life-equipment.png"))==OK)
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"life_fan","rect":Rect2(-165,-113,108,54),"pivot":Vector2(355,448),"width":326.0,"outline":[Vector2(194,170),Vector2(510,170),Vector2(519,439),Vector2(509,448),Vector2(193,448)]},
@@ -30,7 +30,7 @@ func draw_wall(rect: Rect2, horizontal: bool) -> void:
 		var target := Rect2(top.position+Vector2(cursor,0),Vector2(length,top.size.y)) if horizontal else Rect2(top.position+Vector2(0,cursor),Vector2(top.size.x,length))
 		painter.draw_texture_rect_region(life_texture,target,Rect2(270,72,124,25) if horizontal else Rect2(88,235,29,120))
 		cursor+=length
-	painter.draw_line(top.position,top.position+Vector2(top.size.x,0),Color("bdc7c8"),0.6)
+	painter.draw_line(top.position,top.position+Vector2(top.size.x,0),Color("737f80"),0.6)
 
 func draw_cap(rect: Rect2) -> void:
 	var top := Rect2(rect.position-Vector2(0,3),rect.size)
@@ -38,8 +38,8 @@ func draw_cap(rect: Rect2) -> void:
 	painter.draw_texture_rect_region(life_texture,top,Rect2(90,72,30,24))
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("424c4c"),Color(0.1,0.15,0.16,0.45),2,"wet")
-	RoomFloor.draw_dressing(painter,center,edges,"wet")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("424c4c"),Color(0.1,0.15,0.16,0.45),2,"wet")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"wet")
 	if dressing!=null: dressing.floor()
 	for prop in props:
 		if prop.id not in ["life_filter","life_tank"]: continue

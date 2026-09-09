@@ -45,7 +45,7 @@ func draw_sprite(prop: Dictionary, texture_key: String) -> void:
 		for point in polygon:
 			points.append(room.life_point(prop,point))
 			uv.append(point/Vector2(texture.get_size()))
-		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)
+		room.painter.draw_polygon(points,PackedColorArray([Color(prop.registration.spec.get("tint", "ffffff"))]),uv,texture)
 
 func draw(prop: Dictionary) -> bool:
 	if not prop.registration.get("dressing",false): return false
@@ -81,31 +81,27 @@ func endpoint(spec: Dictionary) -> Vector2:
 	assert(not prop.is_empty(),"Unknown dressing route host: "+str(spec.host))
 	return room.life_point(prop,Vector2(spec.source[0],spec.source[1]))
 
+func route_returned_to_tray(route: Dictionary) -> bool:
+	var edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(room)
+	for endpoint_spec in [route.from,route.to]:
+		if edits.has(str(endpoint_spec.host)) and edits[str(endpoint_spec.host)]==null: return true
+	return false
+
 func floor() -> void:
-	for mat in profile.get("mats",[]):
-		var host := find_prop(mat.host)
-		if host.is_empty(): continue
-		var pad := Rect2(host.rect.position+Vector2(mat.offset[0],mat.offset[1]),Vector2(mat.size[0],mat.size[1]))
-		preload("res://rooms/whole-room/decoration_props.gd").floor_patch(room.painter,preload("res://rooms/whole-room/decoration_props.gd").mat_art(mat.host),pad)
+	# Owner preference: leave automatic workstation mats off the walking deck.
 	for route in profile.get("routes",[]):
+		if route_returned_to_tray(route): continue
 		var points := PackedVector2Array([endpoint(route.from)])
 		for point in route.get("via",[]):
 			points.append(room.Geometry.turn(Vector2(point[0],point[1]),room.quarter))
 		points.append(endpoint(route.to))
-		room.painter.draw_polyline(points,Color(route.color),float(route.width),true)
-	# Flush covers and markings belong to the floor, never the collision list.
-	for decal in profile.get("decals",[]):
-		var points := PackedVector2Array()
-		for point in decal.points:
-			points.append(room.Geometry.turn(Vector2(point[0],point[1]),room.quarter))
-		room.painter.draw_colored_polygon(points,Color(decal.fill))
-		if decal.has("edge"):
-			points.append(points[0])
-			room.painter.draw_polyline(points,Color(decal.edge),1.0,true)
+		preload("res://rooms/whole-room/decoration_props.gd").service_run(room.painter,points,float(route.width))
+	# Authored floor-profile artwork supersedes the old filled-polygon decals.
 	# Exposed leads rest on top of floor finishes; buried services stay below.
 	for route in profile.get("surface_routes",[]):
+		if route_returned_to_tray(route): continue
 		var points := PackedVector2Array([endpoint(route.from)])
 		for point in route.get("via",[]):
 			points.append(room.Geometry.turn(Vector2(point[0],point[1]),room.quarter))
 		points.append(endpoint(route.to))
-		room.painter.draw_polyline(points,Color(route.color),float(route.width),true)
+		preload("res://rooms/whole-room/decoration_props.gd").service_run(room.painter,points,float(route.width))

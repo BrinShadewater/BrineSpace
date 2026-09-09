@@ -1,0 +1,71 @@
+{
+  "asset_id": "crew-listening-east-wall-v1",
+  "department": "Crew recreation",
+  "condition": "Maintained",
+  "attachment_class": "East-wall standing selection counter",
+  "functional_bays": [
+    "Cassette trays",
+    "Player",
+    "Two backed headphone docks",
+    "Album case and fabric pad"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Right backing; left-facing player controls, cabinet pulls and album latch",
+  "references": [
+    {
+      "path": "assets/crew-listening-west-wall-v1/crew-listening-west.png",
+      "sha256": "b11fe1e86a834bb4b334fb106596a04987547e84addef23a399a53ca5edc89cf",
+      "role": "West inventory, materials and corrected headphone scale"
+    }
+  ],
+  "source_path": "assets/crew-listening-east-wall-v1/source.png",
+  "source_sha256": "b5f61b738acd2fe0d7422fc30637c709bb786dbd703875bb97ef864025f1f89b",
+  "export_path": "assets/crew-listening-east-wall-v1/crew-listening-east.png",
+  "export_sha256": "b27993f559ec164fdda143c442025eeaf3432b9f6bf40db66765bbb14e77af06",
+  "native_canvas_px": [
+    1059,
+    1486
+  ],
+  "proposed_display_width_world": 90.31358885017421,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Solid standing cabinet; no seated knee recess or runtime clearance verification"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Matte warm wood and putty with restrained hardware highlights; rust fabric remains readable at native scale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Full 320-unit length reviewed in light/dark columns; player controls, case latch and cabinet pulls face left toward the room."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Transparent exterior reviewed against light/dark backgrounds; headphone docks remain opaque supports."
+      ]
+    },
+    "integration": "not installed",
+    "native_evidence": "output/crew-listening-east-review.png"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/crew-listening-east-wall-v1/registration.json",
+  "registration_sha256": "2192d4ae43eaa5b7bb9f1fd11c10efbce92e62ebd9dd856d727412f724321ff4",
+  "prompt_path": "assets/crew-listening-east-wall-v1/source.prompt.txt",
+  "prompt_sha256": "387d5043d1aa11af77baccf7cc9d60a12d5acc2233f06c4ea6c742d98a5ce2d3",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

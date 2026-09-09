@@ -1,4 +1,5 @@
 extends SceneTree
+const ArchitectPicker = preload("res://scripts/architect_selection.gd")
 
 var failures := 0
 
@@ -19,6 +20,8 @@ func _run() -> void:
 	root.add_child(title)
 	current_scene = title
 	await create_timer(0.5).timeout
+	_check(title.layout_button.position.y >= title.badges.position.y + title.badges.size.y, "Layout Studio sits below archive badges")
+	_check(title.layout_button.get_parent()==title, "Layout Studio is outside central start controls")
 	_check(title.cover.elapsed > 0.0, "Native cover must start animating")
 	_check(title.start_button.has_focus(), "Start must receive keyboard focus")
 	var first: float = title.cover.character.position.y
@@ -30,7 +33,7 @@ func _run() -> void:
 		_check(absf(title.cover.size.x / title.cover.size.y - title.COVER_RATIO) < 0.001, "Cover aspect ratio must be preserved")
 		_check(title.controls.position.y + title.controls.size.y <= title.size.y, "Controls must remain visible")
 		var bar_center: float = (title.cover.position.y + title.cover.size.y + title.size.y) * 0.5
-		_check(absf(title.badges.position.y + title.badges.size.y * 0.5 - bar_center) < 1.0, "Badges must center in the footer")
+		_check(absf((title.badges.position.y + title.layout_button.position.y + title.layout_button.size.y) * 0.5 - bar_center) < 1.0, "Archive and studio group must center in the footer")
 		_check(absf(title.controls.position.y + title.controls.size.y * 0.5 - bar_center) < 1.0, "Primary actions must share the footer center")
 		_check(title.quit_button.position.y > title.settings_button.position.y, "Quit must remain below Settings")
 		if dimensions.x == 1600:
@@ -104,6 +107,16 @@ func _run() -> void:
 	_check(title.archive.mode == "settings", "Settings button must open Settings")
 	_check(title.archive.find_child("Resolution", true, false) != null, "Settings must offer resolution")
 	_check(title.archive.find_child("MasterVolume", true, false) != null, "Settings must offer volume")
+	var music_volume = title.archive.find_child("MusicVolume", true, false)
+	_check(music_volume != null, "Settings must offer independent music volume")
+	for setting in ["EffectsVolume","AmbienceVolume"]:
+		var control = title.archive.find_child(setting,true,false)
+		_check(control != null,"Settings must offer "+setting)
+		if control != null: control.value = 62
+	_check(is_equal_approx(test_preferences.effects_volume,0.62) and is_equal_approx(test_preferences.ambience_volume,0.62),"Audio sliders update both preferences")
+	if music_volume != null:
+		music_volume.value = 37
+		_check(is_equal_approx(test_preferences.music_volume,0.37), "Music slider changes soundtrack preference")
 	var preferences = preload("res://scripts/title_settings.gd")
 	preferences.save_path = "user://brine_settings_test.cfg"
 	var original_volume := AudioServer.get_bus_volume_linear(0)
@@ -168,12 +181,25 @@ func _run() -> void:
 	press.pressed = false
 	Input.parse_input_event(press)
 	await create_timer(1.0).timeout
-	_check(current_scene != title, "Keyboard start must open the game")
+	_check(current_scene == title and title.archive is ArchitectPicker, "Keyboard New Loop opens architect selection")
+	if title.archive is ArchitectPicker:
+		title.archive.confirm.pressed.emit()
+		# Threaded scene loading depends on asset-cache and disk speed, not a fixed second.
+		var deadline:=Time.get_ticks_msec()+20000
+		while current_scene==title and Time.get_ticks_msec()<deadline:
+			await create_timer(0.1).timeout
+	_check(current_scene != title, "Confirming architect must open the game")
 	if current_scene != title:
 		_check(current_scene.scene_file_path == "res://scenes/main.tscn", "Start must open the existing game scene")
 		_check(current_scene.get("doctrine_layer") != null, "Game script must load successfully")
 		if current_scene.get("doctrine_layer") != null:
-			_check(current_scene.doctrine_layer.visible, "Existing doctrine selection must be shown")
-			_check(not current_scene.running, "Run must wait for doctrine selection")
+			_check(not current_scene.doctrine_layer.visible, "Retired doctrine selection stays hidden")
+			_check(current_scene.running, "Confirmed architect starts the open expedition")
+			_check(current_scene.run_directives.is_empty(), "New expedition has no directive deadline")
 	print("TITLE SCREEN: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
+	if is_instance_valid(current_scene): current_scene.queue_free()
+	var music := root.get_node_or_null("StationMusic")
+	if music != null: music.queue_free()
+	await process_frame
+	await create_timer(0.15).timeout
 	quit(failures)

@@ -13,7 +13,9 @@ class RawPNGs extends EditorExportPlugin:
 		for name in DirAccess.get_directories_at(path):
 			if not name.begins_with("."): include_directory(path.path_join(name))
 	func _export_begin(_features: PackedStringArray,_debug: bool,_path: String,_flags: int) -> void:
-		for folder in ["rooms","character","Brine icons","brineui","mining-drone-animation","brinecore-animation","assets/environment","assets/drones"]:
+		# Decoration libraries also read raw PNG bytes. Cover the complete asset
+		# tree so new library folders cannot silently disappear from exports.
+		for folder in ["rooms","character","Brine icons","brineui","mining-drone-animation","brinecore-animation","assets"]:
 			var source: String = "res://"+folder
 			if DirAccess.dir_exists_absolute(source): include_directory(source)
 var exporter: RawPNGs

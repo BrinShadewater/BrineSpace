@@ -34,8 +34,8 @@ func rebuild() -> void:
 	if dressing!=null: dressing.place()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("525c60"),Color(0.17,0.19,0.20,0.35),2)
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("525c60"),Color(0.17,0.19,0.20,0.35),2)
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 	if dressing!=null: dressing.floor()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:
@@ -68,6 +68,7 @@ func effect_marks(prop: Dictionary,time: float) -> Array:
 func is_animated_prop(prop: Dictionary) -> bool: return prop.id in ["salvage_rov","salvage_winch","salvage_sorter"]
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	if prop.id in ["salvage_rov","salvage_hatch"]:
 		return preload("res://rooms/production-ten/drone_prop_bounds.gd").bounds(prop,"salvage")
 	return super.prop_visual_bounds(prop)

@@ -1,0 +1,113 @@
+{
+  "assets": [
+    {
+      "id": "turbine",
+      "room": "current_turbine",
+      "department": "Engineering",
+      "condition": "maintained",
+      "attachment": "self-supporting shallow cabinet bank",
+      "direction": "south-facing horizontal front",
+      "source": "assets/power-wall-v1/turbine-source-v1.png",
+      "source_sha256": "6a97adeef197d063dbc9db5dab03a4f3de7992d32be02e8314f06300d5b3d114",
+      "export": "assets/power-wall-v1/turbine.png",
+      "export_sha256": "9f0e7149eedca610c7a5303078da69beb58fc8e3976adc92dfb149057da842e1",
+      "native_dimensions": [
+        1881,
+        836
+      ],
+      "width_world": 320,
+      "visible_height_world": 84.93,
+      "floor_footprint": null,
+      "references": [
+        {
+          "path": "assets/operations-wall-v1/operations-wall.png",
+          "sha256": "624bb9724791320d81d9b18890eaadc2131d0c8af1a72c4f5f62eb8679b4cb3f",
+          "role": "construction/material style only; candidate, not owner acceptance"
+        },
+        {
+          "path": "rooms/power-expansion-v1/current_turbine-card.png",
+          "sha256": "81c2d20ae7a979f6088fc50f39cb961b3dd984c47406509f8b4fd81c52e0ad63",
+          "role": "existing equipment subject and scale only; no shine inheritance"
+        }
+      ],
+      "review": {
+        "stage": "agent_reviewed_standalone",
+        "materials": "Quiet matte panels, recessed black display and grouped controls; small hardware highlights remain subordinate.",
+        "alpha": "Native transparent export; exterior corner samples zero; backed recesses retained; light/dark board inspected.",
+        "scale_board": "output/power-wall-v1/turbine-scale.png",
+        "scale_board_sha256": "81264ad3dc90b7530a219d3426d06af2bbc809e3a1273d2eee55fd90ad2489f0",
+        "native_log": "output/power-wall-turbine.log",
+        "integration": false,
+        "owner_acceptance": null
+      }
+    },
+    {
+      "id": "heat",
+      "room": "heat_recovery",
+      "department": "Engineering",
+      "condition": "maintained",
+      "attachment": "self-supporting shallow cabinet bank",
+      "direction": "south-facing horizontal front",
+      "source": "assets/power-wall-v1/heat-source-v3.png",
+      "source_sha256": "b78e5073c062eb6cb903cf0b860fd024cac71d001732c1b6b89d78ae0722d4c6",
+      "export": "assets/power-wall-v1/heat.png",
+      "export_sha256": "78e3b98ce6c7169c910ec945200bfefe49e5c0c3e40861c5de33b3b143536c57",
+      "native_dimensions": [
+        1882,
+        836
+      ],
+      "width_world": 320,
+      "visible_height_world": 76.91,
+      "floor_footprint": null,
+      "references": [
+        {
+          "path": "assets/operations-wall-v1/operations-wall.png",
+          "sha256": "624bb9724791320d81d9b18890eaadc2131d0c8af1a72c4f5f62eb8679b4cb3f",
+          "role": "construction/material style only; candidate, not owner acceptance"
+        },
+        {
+          "path": "rooms/power-expansion-v1/heat_recovery-card.png",
+          "sha256": "0f5b59f565198853d32fa4da163f7e17d557a35720943ff030400f687c498701",
+          "role": "existing equipment subject and scale only; no shine inheritance"
+        }
+      ],
+      "review": {
+        "stage": "agent_reviewed_standalone",
+        "materials": "Matte broad cabinet planes; restrained small ochre/rust accents; no active screen glow. Heat V3 replaces reflective rounded ribs with broad plate fins.",
+        "alpha": "Native transparent export; exterior corner samples zero; backed recesses retained; light/dark board inspected.",
+        "scale_board": "output/power-wall-v1/heat-scale.png",
+        "scale_board_sha256": "34016e90b6cb1a4789edb57a4c2ef5907a09ad3ea8cea11bcc1fed0ecebc0fd6",
+        "native_log": "output/power-wall-heat.log",
+        "integration": false,
+        "owner_acceptance": null
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "assets/power-wall-v1/heat-source-v1.png",
+      "sha256": "f1103248620f31524f9a9869904f2d2752eb0cdbc4617541adda9974bd319b6e",
+      "selection": "rejected_materials"
+    },
+    {
+      "path": "assets/power-wall-v1/heat-source-v2.png",
+      "sha256": "cb6978afe5d02ff767afa589990bca0a56c8478b2339ec9b14d3589239a86575",
+      "selection": "rejected_materials"
+    },
+    {
+      "path": "assets/power-wall-v1/heat-source-v3.png",
+      "sha256": "b78e5073c062eb6cb903cf0b860fd024cac71d001732c1b6b89d78ae0722d4c6",
+      "selection": "selected"
+    },
+    {
+      "path": "assets/power-wall-v1/turbine-source-v1.png",
+      "sha256": "6a97adeef197d063dbc9db5dab03a4f3de7992d32be02e8314f06300d5b3d114",
+      "selection": "selected"
+    }
+  ],
+  "generation": "built-in imagegen",
+  "prompts": "prompts.json",
+  "cleanup": "read-only neutral160 vector registration, Godot UV export; sources unchanged",
+  "renderer": "tools/review_registered_wall_asset.gd",
+  "renderer_sha256": "a25eaf3dbb1004dba0fcf02778677045c539083c8cab075c5f0fe0fd44c889d3"
+}

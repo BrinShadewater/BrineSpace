@@ -26,6 +26,10 @@ func changed_state(label: String) -> void:
 	mode(true)
 	await settle()
 func run() -> void:
+	if DisplayServer.get_name() == "headless":
+		push_error("Content pixel comparison requires rendering; run without --headless.")
+		quit(2)
+		return
 	preload("res://scripts/title_settings.gd").save_path = "user://content_parity.cfg"
 	var main = load("res://scenes/main.tscn")
 	game = main.instantiate()
@@ -34,10 +38,13 @@ func run() -> void:
 	root.add_child(game)
 	current_scene = game
 	root.size = Vector2i(1600,900)
+	root.gui_disable_input = true # Native pointer hover must not animate UI between paired captures.
 	game.testing_free_build = true
 	game.testing_disable_failures = true
 	game.set_process(false)
 	game.tick_timer.stop()
+	game.crew_comms.set_process(false)
+	game.crew_comms.minimize()
 	game.selected_card_id = ""
 	game.wrecks.clear()
 	game.drone_fleet.sites.clear()
@@ -52,7 +59,7 @@ func run() -> void:
 	for room in game.placed_rooms:
 		var view = game.grid_view._bill_room_view(room)
 		if view != null and not views.has(view): views.append(view)
-	game.Architects.advance_core(game,7.0)
+	game.Architects.advance_core(game,game.Architects.DURATION)
 	game._set_paused(true,false)
 	game.grid_view.cull_room_drawing = false
 	game._refresh_all()

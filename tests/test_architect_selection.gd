@@ -11,6 +11,8 @@ func check(ok: bool, message: String) -> void:
 func run() -> void:
 	var meta = preload("res://scripts/meta_state.gd").new()
 	meta.save_path = "user://architect_picker_test.meta"
+	meta.unlocked_architect_ids = {"bill":true}
+	meta.selected_architect = "bill"
 	var picker = Picker.new()
 	picker.meta_state = meta
 	root.add_child(picker)
@@ -37,6 +39,7 @@ func run() -> void:
 	preload("res://scripts/title_settings.gd").text_scale = 1.0
 	meta.unlock_architect("veld")
 	meta.unlock_architect("branforth")
+	meta.unlock_architect("marsh")
 	picker = Picker.new()
 	picker.meta_state = meta
 	root.add_child(picker)
@@ -55,7 +58,7 @@ func run() -> void:
 	root.add_child(game)
 	current_scene = game
 	game.tick_timer.stop()
-	game.meta.unlocked_architect_ids = {"bill":true,"veld":true,"branforth":true}
+	game.meta.unlocked_architect_ids = {"bill":true,"veld":true,"branforth":true,"marsh":true}
 	for id in Architects.IDS:
 		game.meta.selected_architect = id
 		game._start_reboot_cycle()
@@ -90,4 +93,7 @@ func run() -> void:
 	for path in [meta.save_path,"user://architect_picker_game.meta","user://architect_picker_game.loop"]:
 		if FileAccess.file_exists(path): DirAccess.remove_absolute(path)
 	print("ARCHITECT SELECTION PASS" if failures == 0 else "ARCHITECT SELECTION FAIL: %d" % failures)
+	var music:=root.get_node_or_null("StationMusic")
+	if music!=null: music.queue_free()
+	await create_timer(0.15).timeout
 	quit(failures)

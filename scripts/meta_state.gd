@@ -15,8 +15,17 @@ var unread_records := {}
 var guide_completed := false
 var unlocked_architect_ids := {"bill":true}
 var selected_architect := "bill"
+var unlocked_companion_ids := {}
+var selected_companion_ids: Array = []
 var last_error := ""
 var recovered_backup := false
+
+func unlock_companion(id: String) -> bool:
+	if id not in ["river","josh","margot"] or unlocked_companion_ids.has(id):return false
+	unlocked_companion_ids[id]=true
+	if save_to_disk()!=OK:
+		unlocked_companion_ids.erase(id);return false
+	return true
 
 func unlock_architect(id: String) -> bool:
 	if not preload("res://scripts/architects.gd").IDS.has(id) or unlocked_architect_ids.has(id): return false
@@ -24,12 +33,19 @@ func unlock_architect(id: String) -> bool:
 	save_to_disk()
 	return true
 
-func select_architect(id: String) -> bool:
+func select_architect(id: String, companions: Variant = null) -> bool:
 	if not unlocked_architect_ids.has(id): return false
+	var previous_companions := selected_companion_ids.duplicate()
+	if companions != null:
+		if not companions is Array:return false
+		for companion in companions:
+			if companion not in ["river","josh","margot"] or not unlocked_companion_ids.has(companion) or companions.count(companion)!=1:return false
+		selected_companion_ids=companions.duplicate()
 	var previous := selected_architect
 	selected_architect=id
 	if save_to_disk() != OK:
 		selected_architect = previous
+		selected_companion_ids=previous_companions
 		return false
 	return true
 
@@ -111,6 +127,8 @@ func save_to_disk() -> Error:
 	var data := {
 		"unlocked_architect_ids":unlocked_architect_ids.keys(),
 		"selected_architect":selected_architect,
+		"unlocked_companion_ids":unlocked_companion_ids.keys(),
+		"selected_companion_ids":selected_companion_ids,
 		"unread_records": unread_records.keys(),
 		"guide_completed": guide_completed,
 		"unlocked_room_ids": unlocked_room_ids.keys(),
@@ -170,6 +188,11 @@ func load_from_disk() -> void:
 		return
 	for id in _saved_ids(parsed, "unlocked_architect_ids"):
 		if preload("res://scripts/architects.gd").IDS.has(id): unlocked_architect_ids[id]=true
+	for id in _saved_ids(parsed,"unlocked_companion_ids"):
+		if id in ["river","josh","margot"]:unlocked_companion_ids[id]=true
+	selected_companion_ids.clear()
+	for id in _saved_ids(parsed,"selected_companion_ids"):
+		if unlocked_companion_ids.has(id) and not selected_companion_ids.has(id):selected_companion_ids.append(id)
 	var selected: String=str(parsed.get("selected_architect","bill"))
 	selected_architect=selected if unlocked_architect_ids.has(selected) else "bill"
 	for key in _saved_ids(parsed, "unread_records"):

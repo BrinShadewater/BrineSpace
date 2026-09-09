@@ -1,5 +1,11 @@
 # Room art direction
 
+Current owner correction (2026-09-08): keep props modest in scale and matte.
+Apply [material and scale review](material-and-scale-review.md) before selecting
+new art. Older reference approval does not authorize glossy highlights, metallic
+sparkle or oversized equipment. Cleanliness and department color remain separate
+from surface gloss.
+
 The checkout's docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md is the current aesthetic
 source. Read it before using this reference. Shared geometry does not imply
 identical finishes: mostly clean describes condition, not a universal lab palette.
@@ -15,7 +21,7 @@ Current owner direction: the station is underwater and partly derelict. Newly
 built/restored habitable interiors should remain mostly clean; discovered rooms
 and exterior hulls may show localized decay, silt and biofouling. The bible's
 underwater condition rules supersede any older whole-station cleanliness default.
-Use intact pale enamel, clean glass, crisp metal and readable functional details.
+Use department-appropriate intact finishes, restrained glass, matte metal and readable functional details.
 Preserve richness through construction, recessed vents, fasteners and shading,
 not blanket scratches, chipped paint or grime. Subtle handling marks are optional.
 Treat heavier damage as an explicit variant, not the default. Older worn reference

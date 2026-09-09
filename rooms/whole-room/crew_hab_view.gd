@@ -36,8 +36,8 @@ func rebuild() -> void:
 	for edge in edges: edge.open=edge.port
 	if dressing!=null: dressing.place()
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("454442"),Color(0.13,0.13,0.12,0.4),2,"warm")
-	RoomFloor.draw_dressing(painter,center,edges,"hab_rug")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("454442"),Color(0.13,0.13,0.12,0.4),2,"warm")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"hab_rug")
 	if dressing!=null: dressing.floor()
 	preload("res://rooms/whole-room/room_services.gd").render(painter,props,"crew",operating)
 func effect_marks(prop: Dictionary,time: float) -> Array:

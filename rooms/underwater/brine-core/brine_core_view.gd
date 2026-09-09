@@ -12,6 +12,7 @@ const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
 var dressing: RefCounted
 func is_animated_prop(prop: Dictionary) -> bool: return prop.id=="brine_chamber"
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	var bounds: Rect2=super.prop_visual_bounds(prop)
 	if prop.id=="brine_chamber":
 		bounds=bounds.merge(Rect2(life_point(prop,NAMEPLATE.position),NAMEPLATE.size*prop.rect.size.x/prop.registration.width))
@@ -36,25 +37,42 @@ func _ready() -> void:
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("303b40"),Color(0.10,0.17,0.19,0.22),2,"sealed")
-	RoomFloor.draw_dressing(painter,center,edges,"sealed")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("303b40"),Color(0.10,0.17,0.19,0.22),2,"sealed")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
 	if dressing!=null: dressing.floor()
+	# Preserve the tank contact shadow without automatic workstation mats.
 	for prop in props:
 		if prop.id=="brine_chamber":
-			preload("res://rooms/whole-room/decoration_props.gd").floor_patch(painter,"specimen_alignment_ring",prop.rect.grow(10))
-	# Flush workstation mats and tank contact shadow add grounding without blockers.
-	for prop in props:
-		if prop.id in ["brine_dual_workstation","brine_diagnostics"]:
-			var pad: Rect2=prop.rect.grow(5)
-			pad.size.y+=12
-			painter.draw_rect(pad,Color(0.07,0.13,0.15,0.5))
-			painter.draw_rect(pad.grow(-2),Color(0.35,0.48,0.48,0.25),false,0.75)
-		elif prop.id=="brine_chamber":
 			var shadow:=PackedVector2Array()
 			for i in range(40):
 				var a:=i*TAU/40.0
 				shadow.append(Vector2(prop.rect.get_center().x,prop.rect.end.y-3)+Vector2(cos(a)*53,sin(a)*12))
 			painter.draw_colored_polygon(shadow,Color(0.025,0.065,0.075,0.20))
+
+func draw_wall(rect: Rect2, horizontal: bool) -> void:
+	super.draw_wall(rect,horizontal)
+	# Unconnected BRINE sockets are closed pressure doors, rather than blank infill.
+	# Open/connected edges are split into short wall spans by shared geometry, so
+	# their animated door renderer takes over without a closed leaf underneath.
+	if (rect.size.x if horizontal else rect.size.y)<383.0: return
+	var center:=rect.get_center()
+	preload("res://rooms/doors/door_finish.gd").low_closed(painter,center,not horizontal,"brine")
+
+static func default_door_parts() -> Array:
+	return [
+		{"rect":Rect2(-42,-9,84,18),"color":"344c4d"},
+		{"rect":Rect2(-36,-7,35,14),"color":"bfc7bf"},
+		{"rect":Rect2(1,-7,35,14),"color":"bfc7bf"},
+		{"rect":Rect2(-34,-5,31,2),"color":"e0e2d8"},
+		{"rect":Rect2(3,-5,31,2),"color":"e0e2d8"},
+		{"rect":Rect2(-33,3,28,2),"color":"739c99"},
+		{"rect":Rect2(5,3,28,2),"color":"739c99"},
+		{"rect":Rect2(-7,-1,3,3),"color":"395b5c"},
+		{"rect":Rect2(4,-1,3,3),"color":"395b5c"},
+		{"rect":Rect2(-42,-10,6,20),"color":"cbd0c6"},
+		{"rect":Rect2(36,-10,6,20),"color":"cbd0c6"},
+		{"rect":Rect2(-40,-2,2,4),"color":"65b7b1"},
+		{"rect":Rect2(38,-2,2,4),"color":"65b7b1"}]
 
 var retain_brine_parts := not OS.get_cmdline_user_args().has("--redraw-brine-parts")
 
@@ -134,10 +152,10 @@ func draw_prop_front(prop: Dictionary) -> void:
 func draw_nameplate(prop: Dictionary) -> void:
 	var scale: float=prop.rect.size.x/prop.registration.width
 	var rect:=Rect2(life_point(prop,NAMEPLATE.position),NAMEPLATE.size*scale)
-	# A flush enamel marking covers the old collar seam beneath the lettering.
-	painter.draw_rect(rect,Color("c9cec5"))
+	# Follow the collar's curved face, without a rectangular sign floating above it.
+	glass_polygon(prop,[Vector2(557,531),Vector2(586,540),Vector2(626,544),Vector2(666,540),Vector2(695,531),Vector2(693,552),Vector2(665,560),Vector2(626,564),Vector2(587,560),Vector2(559,552)],Color("c8ccc3"))
 	var font:=ThemeDB.fallback_font
-	var size:=11
+	var size:=8
 	var text_size:=font.get_string_size("BRINE",HORIZONTAL_ALIGNMENT_LEFT,-1,size)
 	var at:=Vector2(rect.get_center().x-text_size.x*0.5,rect.get_center().y+(font.get_ascent(size)-font.get_descent(size))*0.5)
 	# Printed directly on the pearl upper collar; no separate sign or supports.

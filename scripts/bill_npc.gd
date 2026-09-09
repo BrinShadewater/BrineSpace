@@ -1,27 +1,38 @@
 extends RefCounted
-## Bill's visual NPC simulation. Needs do not spend station resources or affect runs.
+## Shared crew locomotion and activities; room_flooding advances survival and population losses.
 const Geometry = preload("res://tools/modular_room_geometry.gd")
 const Corridor = preload("res://rooms/underwater/corridor_geometry.gd")
+const Life=preload("res://scripts/crew_life.gd")
+const RoomActivity=preload("res://scripts/crew_room_activity.gd")
 const CELL := 384.0
 const STEP := 16
 const INVALID := Vector2i(-1, -1)
 const SERVICES := {
-	"hunger": ["hydroponics_bay", "crew_lounge", "mycelium_nursery"],
+	"hunger": ["galley", "hydroponics_bay", "crew_lounge", "mycelium_nursery"],
 	"fatigue": ["crew_hab", "med_bay", "med_center", "crew_lounge"],
-	"maintenance": ["maintenance_bay", "life_support", "reactor", "storage_bay"]
+	"maintenance": ["cold_store", "maintenance_bay", "life_support", "reactor", "storage_bay", "pressure_control", "listening_post"]
 }
 var needs := {"hunger": 25.0, "fatigue": 15.0, "curiosity": 60.0, "maintenance": 35.0}
 var active := false
 var dead := false
 var movement_medium := "dry"
 var helmet_equipped := false
+var tank_oxygen := 60.0
+var breath_oxygen := 15.0
+var air_recovery:=0.0
+var air_was_low:=false
+var starvation := 0.0
+var flood_speed := 1.0
 var locker_request: Dictionary = {}
+var expedition: Dictionary = {}
 var swim_clearance: Dictionary = {}
 var tread_clearance: Dictionary = {}
+var action_clearance: Dictionary = {}
 var foot := Vector2.ZERO # Station coordinates at canonical 384 units/cell; zoom independent.
 var state := "idle"
 var direction := "south"
 var activity := "looking around"
+var completed_activity: Dictionary={}
 var goal := ""
 var goal_cell := INVALID
 var path := PackedVector2Array()
@@ -32,8 +43,10 @@ var points := {}
 var room_nodes := {}
 var geometry := {}
 var signature := ""
+var hardware_doors_locked:=false
 var visits := {}
 var room_cache := {}
+var layout_geometry_revision:=-1
 var service_preferences: Dictionary = SERVICES.duplicate(true)
 var spawn_offset := Vector2.ZERO
 var decision_rng: RandomNumberGenerator
@@ -44,10 +57,12 @@ var traffic_wait := 0.0
 var traffic_retry := 0.0
 var traffic_activity := ""
 
+func needs_air() -> bool: return true
+
 func set_movement_medium(value: String) -> bool:
 	if dead or value not in ["dry", "flooded", "exterior"]: return false
 	if helmet_action_active() or not locker_request.is_empty(): return false
-	if value == "exterior" and not helmet_equipped: return false
+	if value == "exterior" and needs_air() and not helmet_equipped: return false
 	movement_medium = value
 	return true
 
@@ -96,8 +111,8 @@ static func valid_locker(locker: Variant) -> bool:
 	var point: Vector2 = locker.interaction_point
 	return point.is_finite() and Vector2i(floori(point.x / CELL), floori(point.y / CELL)) == locker.cell and locker.get("facing", "") == "east"
 
-func request_helmet_at_locker(equip: bool, locker: Dictionary) -> bool:
-	if dead or not active or movement_medium != "dry" or helmet_action_active() or helmet_equipped == equip or not stage.is_empty(): return false
+func request_helmet_at_locker(equip: bool, locker: Dictionary, refill := false) -> bool:
+	if dead or not active or movement_medium != "dry" or helmet_action_active() or (helmet_equipped == equip and not refill) or not stage.is_empty(): return false
 	if not valid_locker(locker): return false
 	var point: Vector2 = locker.interaction_point
 	if not can_stand(point): return false
@@ -112,7 +127,7 @@ func request_helmet_at_locker(equip: bool, locker: Dictionary) -> bool:
 	for step in route:
 		if not segment_clear(previous, step): return false
 		previous = step
-	locker_request = {"equip":equip, "locker":locker.duplicate(true)}
+	locker_request = {"refill":refill,"equip":equip, "locker":locker.duplicate(true)}
 	goal = "diving-locker"
 	goal_cell = locker.cell
 	path = route
@@ -136,8 +151,36 @@ func cancel_helmet_action() -> void:
 	timer = 0.0
 	activity = "helmet action interrupted"
 
+func action_elapsed() -> float:
+	var life_elapsed:=Life.elapsed(self)
+	if life_elapsed>=0: return life_elapsed
+	if dead: return -1.0
+	if not expedition.is_empty() and expedition.phase=="pickup": return float(expedition.elapsed)
+	if not expedition.is_empty() and expedition.phase=="unload" and not expedition.cargo.is_empty(): return float(expedition.elapsed)
+	if movement_medium!="dry": return -1.0
+	if state=="weld" and goal=="construction":
+		if timer<0.52: return timer
+		if timer>=9.48: return timer-9.48
+	if stage=="workshop_unload": return 2.0-timer
+	return -1.0
+
 func animation_state() -> String:
-	if dead or movement_medium == "dry": return state
+	var life_pose:=Life.pose(self)
+	if not life_pose.is_empty(): return life_pose
+	if dead: return state
+	if not expedition.is_empty():
+		if expedition.phase=="salvage": return "salvage"
+		if expedition.phase=="pickup": return "swim-pickup"
+		if expedition.phase=="unload": return "idle" if expedition.cargo.is_empty() else "unload"
+		if not expedition.cargo.is_empty(): return "carry" if movement_medium=="dry" else "swim-carry"
+	if movement_medium == "dry":
+		if state=="weld" and goal=="construction":
+			if timer<0.52: return "torch-draw"
+			if timer>=9.48: return "torch-stow"
+		if stage=="workshop_carry": return "carry"
+		if stage=="workshop_unload": return "unload"
+		return state
+	if state == "weld" and action_pose_clear("salvage"): return "salvage"
 	if state == "walk": return "swim"
 	# Retain a horizontal hold where standing upright in water would hit a wall.
 	if not geometry.is_empty() and not swim_segment_clear(foot,foot,direction,direction,true): return "swim"
@@ -145,9 +188,9 @@ func animation_state() -> String:
 
 func die() -> void:
 	if dead: return
+	expedition.clear()
 	dead = true
 	state = "death-ground" if movement_medium == "dry" else "death-water"
-	direction = "east"
 	activity = "deceased"
 	path.clear()
 	goal = ""
@@ -159,43 +202,61 @@ func die() -> void:
 	traffic_activity = ""
 
 func snapshot() -> Dictionary:
-	return {"helmet_equipped": helmet_equipped, "movement_medium": movement_medium, "dead": dead, "active": active, "foot": foot, "state": state, "direction": direction,
+	return {"air_recovery":air_recovery,"air_was_low":air_was_low,"tank_oxygen":tank_oxygen,"breath_oxygen":breath_oxygen,"starvation":starvation,"expedition":expedition.duplicate(true),"helmet_equipped": helmet_equipped, "movement_medium": movement_medium, "dead": dead, "active": active, "foot": foot, "state": state, "direction": direction,
 		"activity": activity, "goal": goal, "goal_cell": goal_cell, "path": path.duplicate(), "locker_request": locker_request.duplicate(true),
 		"timer": timer, "stage": stage, "needs": needs.duplicate(true), "visits": visits.duplicate(true),
 		"traffic_wait": traffic_wait, "traffic_retry": traffic_retry, "traffic_activity": traffic_activity,
 		"decision_rng": decision_rng.state if decision_rng != null else null}
 
-static func valid_snapshot(data: Variant) -> bool:
+static func valid_snapshot(data: Variant, breathes := true) -> bool:
 	if not data is Dictionary: return false
+	if not data.get("air_was_low",false) is bool: return false
+	var recovery: Variant=data.get("air_recovery",0.0)
+	if not (recovery is float or recovery is int) or not is_finite(float(recovery)) or recovery<0 or recovery>3: return false
+	for key in {"tank_oxygen":60.0,"breath_oxygen":15.0,"starvation":90.0}:
+		if data.has(key):
+			if not (data[key] is float or data[key] is int) or not is_finite(float(data[key])) or data[key]<0 or data[key]>{"tank_oxygen":60.0,"breath_oxygen":15.0,"starvation":90.0}[key]: return false
+	if not preload("res://scripts/crew_expedition.gd").valid(data.get("expedition",{})): return false
+	if not data.get("expedition",{}).is_empty() and ((breathes and not data.get("helmet_equipped",false)) or not data.get("active",false)): return false
 	for key in ["active", "foot", "state", "direction", "activity", "goal", "goal_cell", "path", "timer", "stage", "needs", "visits", "decision_rng"]:
 		if not data.has(key): return false
 	if not data.active is bool or not data.foot is Vector2 or not data.foot.is_finite(): return false
 	if not data.goal_cell is Vector2i or not data.path is PackedVector2Array or data.path.size() > 4096: return false
 	if not data.get("movement_medium", "dry") in ["dry", "flooded", "exterior"]: return false
 	if not data.get("helmet_equipped", false) is bool: return false
-	if data.get("movement_medium", "dry") == "exterior" and not data.get("helmet_equipped", false): return false
-	if not data.state in ["idle", "walk", "kneel", "repair", "stand", "interact", "death-ground", "death-water", "equip-helmet", "remove-helmet"]: return false
+	if breathes and data.get("movement_medium", "dry") == "exterior" and not data.get("helmet_equipped", false) and not data.get("dead",false): return false
+	if not data.state in ["idle", "walk", "kneel", "repair", "stand", "interact", "weld", "death-ground", "death-water", "equip-helmet", "remove-helmet"]: return false
+	if data.state=="weld" and (data.goal not in ["construction","hull-repair"] or data.get("movement_medium","dry")!="dry" or data.get("helmet_equipped",false) or not data.path.is_empty()): return false
 	if data.state in ["equip-helmet", "remove-helmet"]:
 		if not data.active or data.get("movement_medium", "dry") != "dry" or data.direction != "east" or not data.path.is_empty() or data.stage != "" or data.goal != "": return false
 		if data.get("helmet_equipped", false) != (data.state == "remove-helmet"): return false
 	if not data.get("dead", false) is bool: return false
 	if data.get("dead", false):
 		var death_state := "death-ground" if data.get("movement_medium", "dry") == "dry" else "death-water"
-		if data.state != death_state or data.direction != "east" or not data.path.is_empty() or data.goal != "" or data.stage != "": return false
+		if data.state != death_state or not data.path.is_empty() or data.goal != "" or data.stage != "": return false
 	elif data.state in ["death-ground", "death-water"]: return false
 	if not data.direction in ["north", "south", "east", "west"]: return false
-	if not data.goal in ["", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker"]: return false
+	if not data.goal in ["", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "flood-retreat"] and not (not breathes and data.goal=="recharge"): return false
 	var request: Variant = data.get("locker_request", {})
 	if not request is Dictionary: return false
 	if data.goal == "diving-locker":
 		if not request.get("equip") is bool or not valid_locker(request.get("locker")): return false
 		if not data.active or data.get("dead", false) or data.state != "walk" or data.stage != "" or data.get("movement_medium", "dry") != "dry": return false
-		if request.equip == data.get("helmet_equipped", false) or data.goal_cell != request.locker.cell or data.path.is_empty(): return false
+		if (request.equip == data.get("helmet_equipped", false) and not request.get("refill",false)) or data.goal_cell != request.locker.cell or data.path.is_empty(): return false
 		if data.path[data.path.size() - 1] != request.locker.interaction_point: return false
 	elif not request.is_empty(): return false
-	if not data.stage in ["", "kneel", "repair", "stand"]: return false
+	if not Life.STAGES.has(data.stage) and not data.stage in ["", "kneel", "repair", "stand", "observation_sit", "observation_read", "observation_rise", "observation_watch", "workshop_inspect", "workshop_work", "workshop_carry", "workshop_unload"]: return false
+	if str(data.stage).begins_with("observation_"):
+		if not data.active or data.state!="idle" or data.direction!="north" or not data.path.is_empty(): return false
+		if data.goal not in ["curiosity","fatigue","maintenance"] and not (data.goal.is_empty() and data.stage=="observation_rise"): return false
+	if str(data.stage).begins_with("workshop_"):
+		if not data.active or data.goal not in ["curiosity","maintenance","fatigue"]: return false
+		if data.stage!="workshop_carry" and not data.path.is_empty(): return false
 	if not data.activity is String or data.activity.length() > 128: return false
 	if not (data.timer is float or data.timer is int) or not is_finite(float(data.timer)) or data.timer < 0 or data.timer > 3600: return false
+	if str(data.stage).begins_with("life_"):
+		if not data.active or data.state!="idle" or not data.path.is_empty() or float(data.timer)>float(Life.STAGES[data.stage]): return false
+		if data.goal.is_empty() and data.stage not in ["life_rise","life_get_up"]: return false
 	if not data.needs is Dictionary or data.needs.size() != 4 or not data.visits is Dictionary or data.visits.size() > 1600: return false
 	for key in ["hunger", "fatigue", "curiosity", "maintenance"]:
 		var value: Variant = data.needs.get(key)
@@ -224,12 +285,18 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 		points.clear()
 		room_nodes.clear()
 		geometry.clear()
+	tank_oxygen = float(data.get("tank_oxygen",60.0))
+	breath_oxygen = float(data.get("breath_oxygen",15.0))
+	starvation = float(data.get("starvation",0.0))
 	dead = data.get("dead", false)
 	movement_medium = data.get("movement_medium", "dry")
 	helmet_equipped = data.get("helmet_equipped", false)
 	locker_request = data.get("locker_request", {}).duplicate(true)
+	expedition = data.get("expedition",{}).duplicate(true)
 	active = data.active
 	foot = data.foot
+	air_recovery=float(data.get("air_recovery",0))
+	air_was_low=bool(data.get("air_was_low",false))
 	state = data.state
 	direction = data.direction
 	activity = data.activity
@@ -246,7 +313,7 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 	if data.decision_rng is int:
 		if decision_rng == null: decision_rng = RandomNumberGenerator.new()
 		decision_rng.state = data.decision_rng
-	if dead or not active: return
+	if dead or not active or not expedition.is_empty(): return
 	# A changed room asset may invalidate an old route. Keep a valid position,
 	# but discard unsafe travel instead of stepping through new furniture.
 	if active and not can_stand(foot):
@@ -279,7 +346,7 @@ func topology(main) -> String:
 		var room: Dictionary = main.occupied[cell]
 		entries.append("%s:%s:%s:%s:%s" % [cell, room.id, room.get("rotation", 0), main.get_room_doors(room),room.get("branch_owner",Vector2i(-1,-1))])
 	entries.sort()
-	return "|".join(entries)
+	return str(hardware_doors_locked)+"/"+"|".join(entries)+"/layouts:"+str(preload("res://scripts/room_layout_store.gd").geometry_revision)
 
 func can_stand(point: Vector2) -> bool:
 	var cell := cell_at(point)
@@ -303,6 +370,7 @@ func can_stand(point: Vector2) -> bool:
 
 var sample_all_segments := OS.get_cmdline_user_args().has("--sample-all-navigation-segments")
 func segment_clear(a: Vector2, b: Vector2) -> bool:
+	if hardware_doors_locked and cell_at(a)!=cell_at(b): return false
 	# Inside one authored room, cell and closed-door half-planes are convex.
 	# Clear endpoints plus the exact blocker sweep below prove the whole segment.
 	# Keep sampling for corridor/legacy shapes and all cell-boundary crossings.
@@ -332,7 +400,15 @@ func segment_clear(a: Vector2, b: Vector2) -> bool:
 				if rect.has_area() and segment_hits_rect(a,b,rect): return false
 	return true
 
-func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing: String = "", treading: bool = false) -> bool:
+func action_pose_clear(action: String) -> bool:
+	if movement_medium=="exterior": return true
+	if action_clearance.is_empty():
+		var actor: String={"veld_npc.gd":"veld","branforth_npc.gd":"branforth"}.get(get_script().resource_path.get_file(),"bill")
+		action_clearance=JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-actions-v1/clearance.json"))[actor]
+	var extent: Array=action_clearance["helmet" if helmet_equipped else "bare"][action+"-"+direction]
+	return swim_segment_clear(foot,foot,direction,direction,false,extent)
+
+func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing: String = "", treading: bool = false, additional_extent: Array = []) -> bool:
 	if previous_facing.is_empty(): previous_facing = direction
 	if swim_clearance.is_empty():
 		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-underwater-v1/swim-clearance.json"))
@@ -347,6 +423,10 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 	for axis in range(2):
 		extent[axis] = minf(extent[axis], profile[previous_facing][axis])
 		extent[axis+2] = maxf(extent[axis+2], profile[previous_facing][axis+2])
+	if not additional_extent.is_empty():
+		for axis in range(2):
+			extent[axis]=minf(extent[axis],additional_extent[axis])
+			extent[axis+2]=maxf(extent[axis+2],additional_extent[axis+2])
 	var footprint := Rect2(Vector2(extent[0],extent[1]),Vector2(extent[2]-extent[0],extent[3]-extent[1]))
 	var swept := Rect2(a+footprint.position,footprint.size).merge(Rect2(b+footprint.position,footprint.size))
 	# Sweep the whole bounding rectangle against registered padded blockers.
@@ -401,6 +481,9 @@ static func segment_hits_rect(a: Vector2,b: Vector2,rect: Rect2) -> bool:
 
 func rebuild(main, staged := false) -> void:
 	if dead: return
+	var revision: int=preload("res://scripts/room_layout_store.gd").geometry_revision
+	if revision!=layout_geometry_revision:
+		room_cache.clear(); layout_geometry_revision=revision
 	cancel_helmet_action()
 	graph.clear()
 	points.clear()
@@ -425,14 +508,17 @@ func rebuild(main, staged := false) -> void:
 		# Fixed recovery furniture is part of geometry, not interchangeable blueprint art.
 		if room.id=="brine_core": key+="/pod:"+str(not main.architect_run.is_empty())
 		if room.get("recovered_derelict",false): key+="/pods:"+str(main.wrecks.get(cell,{}).get("pods",[]).size())
+		if main.wrecks.get(cell,{}).get("kind","") in ["river","josh","margot"]:key+="/companion-container"
 		room_keys[cell] = key
 		var data: Dictionary = room_cache[key].data if room_cache.has(key) else main.grid_view.bill_room_geometry(room, sides)
 		if data.is_empty(): continue
+		data.activity_room = str(room.id)
 		data.open = sides
 		if not data.has("blockers"):
 			data.blockers = []
 			data.blocker_padding = 10.0
-			for prop in data.props: data.blockers.append(prop.rect.grow(10))
+			for prop in data.props:
+				for rect in Geometry.prop_collision_rects(prop): data.blockers.append(rect.grow(10))
 			for edge in data.edges:
 				for rect in Geometry.wall_rects(edge): data.blockers.append(rect.grow(10))
 		if not data.blockers.is_empty():
@@ -523,18 +609,27 @@ func update(main, delta: float) -> void:
 		state = "idle"
 		activity = "route obstructed"
 		return
+	if preload("res://scripts/flood_safety.gd").advance(main,self,delta): return
+	if preload("res://scripts/hull_repair.gd").advance(main,self,delta): return
+	if preload("res://scripts/crew_construction.gd").advance(main,self,delta): return
 	for need in needs:
 		var rate := 0.12 if need == "hunger" else (0.10 if need == "fatigue" else 0.22)
 		needs[need] = minf(100.0, needs[need] + delta * rate)
 	if helmet_action_active():
 		advance_helmet_action(delta)
 		return
-	if not goal.is_empty() and goal not in ["curiosity", "diving-locker"] and not service_available(main, goal_cell):
+	if not goal.is_empty() and (goal not in ["curiosity", "diving-locker"] or geometry.get(goal_cell,{}).get("activity_room","") in ["observation_room","salvage_workshop","galley","cold_store","crew_lounge","crew_hab"]) and not service_available(main, goal_cell):
 		path.clear()
 		goal = ""
 		locker_request.clear()
 		# Stand up before choosing a new destination if work was interrupted.
-		if stage in ["kneel", "repair"]:
+		if stage in ["life_lie","life_sleep"]:
+			stage="life_get_up";state="idle";timer=0.8
+		elif stage in ["life_sit","life_seated"]:
+			stage="life_rise";state="idle";timer=0.8
+		elif stage in ["observation_sit","observation_read"]:
+			stage="observation_rise";state="idle";timer=0.65
+		elif stage in ["kneel", "repair"]:
 			stage = "stand"
 			state = "stand"
 			timer = 1.0
@@ -548,6 +643,36 @@ func update(main, delta: float) -> void:
 	if timer > 0:
 		timer = maxf(0.0, timer - delta)
 		if timer > 0: return
+		if Life.next(self): return
+		if stage=="workshop_inspect":
+			stage="workshop_work"
+			state="interact"
+			activity="sorting recovered components"
+			timer=5.0
+			return
+		if stage=="workshop_work":
+			stage="workshop_pickup"
+			state="idle"
+			timer=0.52
+			return
+		if stage=="workshop_pickup":
+			var target: Vector2=(Vector2(goal_cell)+Vector2.ONE*.5)*CELL+Vector2(-112,144)
+			var target_id:=nearest_in_room(target,goal_cell,false)
+			var start_id:=nearest_in_room(foot,goal_cell,false)
+			path=smooth_route(route_between(start_id,target_id))
+			if not path.is_empty():
+				stage="workshop_carry"
+				state="walk"
+				activity="carrying recovered parts"
+				return
+		if stage == "observation_sit":
+			stage="observation_read"
+			timer=12.0
+			return
+		if stage == "observation_read":
+			stage="observation_rise"
+			timer=0.65
+			return
 		if stage == "kneel":
 			stage = "repair"
 			state = "repair"
@@ -559,6 +684,8 @@ func update(main, delta: float) -> void:
 			timer = 1.0
 			return
 		if not goal.is_empty():
+			if activity in ["checking manifold gauges","monitoring sonar returns","resting beside the berth","resting in the berth"]:
+				completed_activity={"serial":int(completed_activity.get("serial",0))+1,"activity":activity,"cell":goal_cell}
 			needs[goal] = maxf(0.0, float(needs[goal]) - (45.0 if goal != "curiosity" else 65.0))
 		goal = ""
 		locker_request.clear()
@@ -571,7 +698,7 @@ func update(main, delta: float) -> void:
 
 func move(delta: float) -> void:
 	if dead: return
-	var remaining := delta * 46.0
+	var remaining := delta * 46.0 * flood_speed
 	traffic_retry = maxf(0.0, traffic_retry - delta)
 	state = "walk"
 	while remaining > 0 and not path.is_empty():
@@ -701,22 +828,36 @@ func crew_detour_from(start: int, target: int) -> PackedVector2Array:
 func arrive() -> void:
 	if dead: return
 	state = "idle"
+	if goal in ["construction","hull-repair","flood-retreat","recharge"]: return
+	if stage=="workshop_carry":
+		stage="workshop_unload"
+		direction="north"
+		activity="stowing recovered parts"
+		timer=2.0
+		return
 	if goal == "diving-locker":
 		var request := locker_request.duplicate(true)
 		goal = ""
 		locker_request.clear()
 		timer = 0.0
+		if request.get("refill",false):
+			state="idle"
+			timer=5.0
+			activity="refilling oxygen tank"
+			return
 		if request.is_empty() or not begin_helmet_action_at_locker(request.equip, request.locker):
 			activity = "locker approach interrupted"
 		return
 	visits[goal_cell] = int(visits.get(goal_cell, 0)) + 1
+	if begin_room_activity(): return
 	timer = 6.0
 	match goal:
 		"hunger": activity = "taking a meal break"; timer = 9.0
 		"fatigue": activity = "resting"; timer = 12.0
 		"maintenance":
 			activity = "checking equipment"
-			direction = "east"
+			var facing:=equipment_facing(goal_cell,foot-(Vector2(goal_cell)+Vector2.ONE*.5)*CELL)
+			if not facing.is_empty(): direction=facing
 			state = "kneel"
 			stage = "kneel"
 			timer = 1.0
@@ -737,7 +878,7 @@ func choose_goal(main) -> void:
 		if id in ["corridor", "corner", "tee_corridor"]: continue
 		for need in needs:
 			if need != "curiosity" and not service_preferences.get(need, []).has(id): continue
-			if need != "curiosity" and not service_available(main, cell): continue
+			if (need != "curiosity" or id in ["observation_room","salvage_workshop","galley","cold_store","crew_lounge","crew_hab"]) and not service_available(main, cell): continue
 			var score := float(needs[need]) - Vector2(cell - cell_at(foot)).length() * 2.0
 			if need == "curiosity": score -= mini(20, int(visits.get(cell, 0)) * 4)
 			candidates.append({"cell": cell, "need": need, "score": score + npc_rng.randf_range(0, 8)})
@@ -750,12 +891,20 @@ func choose_goal(main) -> void:
 			var swap = targets[i]
 			targets[i] = targets[j]
 			targets[j] = swap
+		var stations:=RoomActivity.stations(geometry[candidate.cell])
+		if geometry[candidate.cell].get("activity_room","")=="observation_room" and int(visits.get(candidate.cell,0))%2==1: stations.reverse()
+		var wants_station: bool=not stations.is_empty() and (candidate.need in ["maintenance","fatigue","curiosity"] or (candidate.need=="hunger" and geometry[candidate.cell].get("activity_room","") in ["galley","crew_lounge"]))
+		if wants_station:
+			var center: Vector2=(Vector2(candidate.cell)+Vector2.ONE*0.5)*CELL
+			targets.sort_custom(func(a,b): return graph.get_point_position(a).distance_squared_to(center+stations[0].point)<graph.get_point_position(b).distance_squared_to(center+stations[0].point))
 		var attempted := 0
 		for target_id in targets:
 			var target := graph.get_point_position(target_id)
 			var local := target - (Vector2(candidate.cell) + Vector2.ONE * 0.5) * CELL
 			if absf(local.x) > 144 or absf(local.y) > 144 or target.distance_to(foot) < 32: continue
-			if candidate.need == "maintenance" and not equipment_spot(candidate.cell, local): continue
+			if wants_station and RoomActivity.at(geometry[candidate.cell],local).is_empty(): continue
+			if wants_station and not spawn_clear(target): continue
+			if candidate.need == "maintenance" and not wants_station and not equipment_spot(candidate.cell, local): continue
 			var route := route_between(start, target_id)
 			attempted += 1
 			if route.is_empty():
@@ -777,13 +926,57 @@ func choose_goal(main) -> void:
 	activity = "waiting for suitable rooms" if path.is_empty() else "stretching his legs"
 	timer = 2.0 if path.is_empty() else 0.0
 
+func begin_room_activity() -> bool:
+	if stage.begins_with("workshop_"): return true
+	if goal not in ["maintenance","fatigue","curiosity","hunger"] or not geometry.has(goal_cell): return false
+	var local:=foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL
+	var station:=RoomActivity.at(geometry[goal_cell],local)
+	if station.is_empty(): return false
+	direction=station.facing
+	if Life.begin(self,station): return true
+	if station.room=="cold_store":
+		stage=""
+		state="idle"
+		activity="checking chilled supplies"
+		timer=6.0
+		return true
+	if station.room=="galley":
+		stage=""
+		state="idle"
+		activity="taking a hot meal break"
+		timer=9.0
+		return true
+	if station.room=="salvage_workshop":
+		stage="workshop_inspect"
+		state="idle"
+		activity="inspecting recovered machinery"
+		timer=2.0
+		return true
+	if station.room=="observation_room":
+		state="idle"
+		stage="observation_sit" if station.mode=="read" else "observation_watch"
+		activity="reading by lamplight" if station.mode=="read" else "watching the ocean"
+		timer=0.65 if station.mode=="read" else 8.0
+		return true
+	stage=""
+	state="interact" if station.room!="crew_hab" else "idle"
+	activity={"pressure_control":"checking manifold gauges","listening_post":"monitoring sonar returns","crew_hab":"resting beside the berth"}[station.room]
+	timer=10.0 if station.room=="crew_hab" else 6.0
+	return true
+
 func equipment_spot(cell: Vector2i, local: Vector2) -> bool:
-	# Existing work animations face east: approach the west edge of a prop.
-	for prop in geometry[cell].props:
-		var rect: Rect2 = prop.rect
-		if local.x < rect.position.x - 10 and local.x > rect.position.x - 34 and local.y >= rect.position.y and local.y <= rect.end.y:
-			return true
-	return false
+	return not equipment_facing(cell,local).is_empty()
+
+func equipment_facing(cell: Vector2i, local: Vector2) -> String:
+	for prop in geometry.get(cell,{}).get("props",[]):
+		var rect: Rect2=prop.rect
+		if local.y>=rect.position.y and local.y<=rect.end.y:
+			if local.x<rect.position.x-10 and local.x>rect.position.x-34: return "east"
+			if local.x>rect.end.x+10 and local.x<rect.end.x+34: return "west"
+		if local.x>=rect.position.x and local.x<=rect.end.x:
+			if local.y<rect.position.y-10 and local.y>rect.position.y-34: return "south"
+			if local.y>rect.end.y+10 and local.y<rect.end.y+34: return "north"
+	return ""
 
 func service_available(main, cell: Vector2i) -> bool:
 	return main.occupied.has(cell) and not main.occupied[cell].get("suspended", false) and main.powered_room_cells.has(cell)
@@ -852,3 +1045,11 @@ func smooth_route(route: PackedVector2Array) -> PackedVector2Array:
 		from = route[farthest]
 		index = farthest + 1
 	return result
+
+func observation_visual_offset() -> Vector2:
+	if stage.begins_with("life_"): return Life.offset(self)
+	var amount:=0.0
+	if stage=="observation_sit": amount=1.0-clampf(timer/0.65,0,1)
+	elif stage=="observation_read": amount=1.0
+	elif stage=="observation_rise": amount=clampf(timer/0.65,0,1)
+	return Vector2(0,8.0*amount)

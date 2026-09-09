@@ -60,17 +60,7 @@ static func wall_art(path: String) -> Array:
 		"quarantine_cell","isolation_vault": return ["com_panel","alarm_beacon"]
 		_: return ["pressure_gauge","small_access_cover"]
 
-static func wall(room, bounds: Rect2, horizontal: bool) -> void:
-	# Low hull strip only: the room geometry already splits it around doors.
-	# Mount on the north face, never rotate upright art onto a side-wall cap.
-	if not horizontal or bounds.position.y > -180 or bounds.size.x < 90: return
-	var panel := Rect2(bounds.position+Vector2(8,-1),Vector2(bounds.size.x-16,10))
-	var choices := wall_art(room.get_script().resource_path)
-	var id: String = choices[0 if bounds.get_center().x<0 else 1]
-	var decoration: Texture2D = Hull.texture(id) if Hull.catalog().has(id) else Wall.texture(id)
-	var mount := Rect2(Vector2(panel.get_center().x-12,panel.position.y),Vector2(24,10))
-	fit(room.painter,decoration,mount)
-	# One slit window fits the low hull; reserved center doorway is untouched.
-	if bounds.size.x>=140:
-		var window := Rect2(Vector2(panel.position.x+5,panel.position.y),Vector2(48,10))
-		fit(room.painter,Hull.texture("ocean_window_panoramic"),window)
+static func wall(_room, _bounds: Rect2, _horizontal: bool) -> void:
+	# Decorations belong to the raised face drawn by north_wall.gd.
+	# Keep the low pressure-hull strip bare in every room and orientation.
+	pass

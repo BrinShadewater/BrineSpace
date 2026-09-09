@@ -48,7 +48,10 @@ func run() -> void:
 		drone["route_wait"] = true
 		check(Insights.construction(game)[0].contains("ROUTE BLOCKED"), "Queue exposes blocked exterior route")
 		drone["route_wait"] = false
-	game._update_wreck_clearance(30.0)
+	# The opening builder must thaw, walk to the doorway and weld the paid order.
+	for frame in range(1200):
+		game._process(0.1)
+		if game.occupied.has(Vector2i(19,20)): break
 	check(not game.drone_fleet.reserved(Vector2i(19,20)), "Completed order leaves queue")
 	check(Insights.learning(game).is_empty(), "Unknown pattern names remain hidden")
 	game.connected_synergy_links = [{"id":"closed_air_loop"}]
@@ -82,7 +85,8 @@ func run() -> void:
 		total_first_support += first_support
 		worst_support = maxi(worst_support,first_support)
 		check(first_support<=3, "Food arrives in opening hand across seeds")
-		check(deck.find("life_support")<5, "Oxygen support arrives in opening five cards")
+		check(deck.find("current_turbine")==3, "Second affordable generator follows the opening hand")
+		check(deck.find("life_support")<6, "Oxygen support arrives in opening six cards")
 		game._draw_hand()
 		check(game.hand.has("solar_array") and game.hand.has("mining_drone_bay"), "Starting draft retains power and extraction")
 	print("DRAFT SAMPLE: 500 full-pool seeds; first life-support/food card mean draw %.2f, worst %d" % [float(total_first_support)/500.0,worst_support])

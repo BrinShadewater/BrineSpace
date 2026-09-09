@@ -29,6 +29,11 @@ const RESOURCE_ICONS := {
 }
 
 const STARTING_UNLOCKS := [
+	"observation_room",
+	"salvage_workshop",
+	"galley",
+	"cold_store",
+	"current_turbine",
 	"airlock",
 	"construction_drone_bay",
 	"solar_array",
@@ -68,6 +73,48 @@ const LAYOUTS := {
 
 static func all_rooms() -> Dictionary:
 	return {
+		"cold_store": {
+			"id":"cold_store", "display_name":"Cold Store", "category":"Engineering", "rarity":"uncommon",
+			"cost":{"metal":8}, "size":Vector2i.ONE, "production":{}, "consumption":{"power":1}, "storage":{"food":40,"biomass":20},
+			"tags":["storage","food","logistics"], "layout":"layout_02_straight", "fixed_rotation":0, "unlocked":true,
+			"description":"Adds 40 Food and 20 Biomass capacity. Refrigeration uses 1 Power per cycle; storage capacity remains during outages. Fixed north/south aisle. I have labelled the containers. Please stop testing the labels by taste."
+		},
+		"galley": {
+			"id":"galley", "display_name":"Galley", "category":"Crew", "rarity":"uncommon",
+			"cost":{"metal":6}, "size":Vector2i.ONE, "production":{"food":4}, "consumption":{"biomass":1,"water":1,"power":1},
+			"tags":["crew","food","cooking"], "layout":"layout_dead_south", "fixed_rotation":0, "unlocked":true,
+			"description":"Cooks 1 stored Biomass with 1 Water and 1 Power into 4 Food per functioning cycle. Crew collect meals at the serving counter. South entrance; fixed orientation. It is technically soup. That is the most specific promise I can make."
+		},
+		"salvage_workshop": {
+			"id":"salvage_workshop", "display_name":"Salvage Workshop", "category":"Engineering", "rarity":"uncommon",
+			"cost":{"metal":8}, "size":Vector2i.ONE, "production":{"rare_minerals":1}, "consumption":{"metal":3,"power":2},
+			"tags":["salvage","workshop","engineering"], "layout":"layout_dead_south", "fixed_rotation":0, "unlocked":true,
+			"description":"Sorts stored Metal into recoverable components: 3 Metal and 2 Power yield 1 Rare Mineral per functioning cycle. South entrance; fixed orientation. The previous owner called these parts irreparable. They were insufficiently patient."
+		},
+		"observation_room": {
+			"id":"observation_room", "display_name":"Observation Room", "category":"Crew", "rarity":"uncommon",
+			"cost":{"metal":6}, "size":Vector2i.ONE, "production":{}, "consumption":{},
+			"tags":["crew","observation","library"], "layout":"layout_dead_south", "fixed_rotation":0, "unlocked":true,
+			"description":"A north-facing ocean porthole between three walls of books. South entrance; fixed orientation. A quiet room with no resource output. The glass is rated for the pressure. The books are less certain."
+		},
+		"current_turbine": {
+			"id":"current_turbine", "display_name":"Current Turbine", "category":"Engineering", "rarity":"common",
+			"cost":{"metal":4}, "size":Vector2i.ONE, "production":{"power":4}, "consumption":{},
+			"tags":["power","engineering","current"], "layout":"layout_03_straight_ew", "unlocked":true,
+			"description":"Generates 4 Power per cycle while its north-facing intake has an open ocean cell. Rotate to aim the intake; rooms, queued construction and uncleared sites block it. The ocean is moving. We may as well invoice it."
+		},
+		"biomass_digester": {
+			"id":"biomass_digester", "display_name":"Biomass Digester", "category":"Bio", "rarity":"uncommon",
+			"cost":{"metal":6,"biomass":2}, "size":Vector2i.ONE, "production":{"power":4}, "consumption":{"biomass":1},
+			"tags":["power","bio","engineering"], "layout":"layout_01_tee", "unlocked":false,
+			"description":"Converts 1 stored Biomass into 4 Power each cycle. Fresh growth becomes fuel next cycle. The distinction between fuel and dinner remains administrative."
+		},
+		"heat_recovery": {
+			"id":"heat_recovery", "display_name":"Heat Recovery Room", "category":"Engineering", "rarity":"uncommon",
+			"cost":{"metal":6,"data":2}, "size":Vector2i.ONE, "production":{}, "consumption":{},
+			"tags":["power","engineering","heat_recovery"], "layout":"layout_05_cross", "unlocked":false,
+			"description":"Reclaims 2 Power per adjacent functioning Reactor, up to 4 per cycle. Shared walls carry the heat; door connections are not required. Most of that heat was being wasted. Some of it was you."
+		},
 		"airlock": {
 			"id":"airlock","display_name":"Diving Airlock","category":"Engineering","rarity":"common",
 			"cost":{"metal":6,"power":1},"size":Vector2i.ONE,"production":{},"consumption":{"power":1},

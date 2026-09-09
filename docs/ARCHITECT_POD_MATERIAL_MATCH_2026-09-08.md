@@ -1,0 +1,9 @@
+# Architect pod material match
+
+Bill, Veld and Branforth now share muted cream pod casings, blue-grey glass and taupe padding via assets/material-polish-cryo-recovery-v1. The occupied-frame consumer selects each architect's six-frame pack from that directory. Generic wards use Bill's pack. Recovered empty pods use the standard matte Cryo equipment donor. The long wall installation has separately been replaced with refrigeration machinery following owner feedback.
+
+All eighteen occupied poses have been visually inspected through the native pod renderer, including Veld and Branforth's twelve poses after the interrupted installation. Their hair/face, suit palette and role details remain recognizable; six-stage progression is retained. Fixed 418x627 frames, pivot and seven-second timing are unchanged. Generated poses are not pixel-identical to originals, so identity and placement were assessed visually, not asserted as exact pixel preservation. No per-frame resizing or interpolation was used.
+
+Twelve paired exports passed with real RGBA transparency and interior frame bounds. The native renderer loaded all eighteen occupied frames and three recovered states without ERROR output. No obvious background blocks or clipping in reviewed poses. Exact prompts, raw white-background sources, vector registration and frame hashes are stored with the packs. Export helpers remain in output; original sources are retained. Evidence: output/art-material-cryo-recovery-v1/matched-frames and matched-frames.log.
+
+This accepts the material matching and native per-frame appearance for this pass. It does not claim newly verified full gameplay recovery, temporal smoothness or executable packaging. The old recovery fixture's title assertion and already-recovered core state remain documented in CRYO_RECOVERY_MATERIAL_AUDIT_2026-09-08.md. Full-game art matching remains unfinished.

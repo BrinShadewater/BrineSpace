@@ -17,6 +17,7 @@ var codex_tab := 0
 var codex_filter: OptionButton
 var codex_tabs: TabBar
 var codex_count: Label
+var codex_hint: Label
 var texture_cache := {}
 const Catalog = preload("res://scripts/codex_catalog.gd")
 var close_button: Button
@@ -103,6 +104,7 @@ func _build() -> void:
 		codex_tabs.focus_mode = Control.FOCUS_ALL
 		codex_tabs.add_tab("ROOMS")
 		codex_tabs.add_tab("SYNERGIES")
+		codex_tabs.add_tab("TRANSMISSIONS")
 		codex_tabs.current_tab = codex_tab
 		codex_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		codex_tabs.tab_changed.connect(func(index: int) -> void:
@@ -121,7 +123,8 @@ func _build() -> void:
 		toolbar.add_child(codex_filter)
 		codex_count = _label("", 16)
 		content.add_child(codex_count)
-		content.add_child(_label("Connect neighboring rooms and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward.", 15))
+		codex_hint = _label("Connect neighboring rooms and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward.", 15)
+		content.add_child(codex_hint)
 	scroll = ScrollContainer.new()
 	scroll.focus_mode = Control.FOCUS_ALL
 	scroll.follow_focus = true
@@ -182,7 +185,7 @@ func _label(text: String, font_size: int = 18) -> Label:
 
 func _layout() -> void:
 	if is_instance_valid(grid):
-		grid.columns = maxi(1, int((size.x - 160) / (340 * preload("res://scripts/title_settings.gd").text_scale))) if mode == "codex" else 1
+		grid.columns = maxi(1, int((size.x - 160) / (340 * preload("res://scripts/title_settings.gd").text_scale))) if mode == "codex" and codex_tab != 2 else 1
 	if is_instance_valid(progression_cards):
 		progression_cards.columns = 2 if size.x >= 1200 else 1
 
@@ -193,6 +196,15 @@ func _populate_cards() -> void:
 		child.queue_free()
 	room_ids.clear()
 	visible_entries.clear()
+	search.visible = codex_tab != 2
+	codex_filter.visible = codex_tab != 2
+	codex_hint.visible = codex_tab != 2
+	if codex_tab == 2:
+		grid.columns = 1
+		preload("res://scripts/transmission_archive.gd").populate(self)
+		codex_count.text = "%d RECORDINGS RECOVERED" % preload("res://scripts/transmission_archive.gd").available(meta_state).size()
+		return
+	_layout()
 	var entries: Array[Dictionary] = Catalog.room_entries(meta_state) if codex_tab == 0 else Catalog.synergy_entries(meta_state)
 	# Partition the catalog without changing the stable numbering of hidden entries.
 	var recovered: Array[Dictionary] = []

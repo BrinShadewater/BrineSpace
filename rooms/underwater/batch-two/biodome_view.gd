@@ -27,15 +27,9 @@ func rebuild() -> void:
 	if dressing!=null: dressing.place()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("a9b2a8"),Color(0.23,0.32,0.25,0.14),2,"wet")
-	RoomFloor.draw_dressing(painter,center,edges,"wet")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("a9b2a8"),Color(0.23,0.32,0.25,0.14),2,"wet")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"wet")
 	if dressing!=null: dressing.floor()
-	for prop in props:
-		if prop.registration.get("dressing",false): continue
-		var at:=Vector2(prop.rect.get_center().x,prop.rect.end.y+8)
-		# Shallow drainage slots belong to floor depth, outside machinery collision.
-		painter.draw_rect(Rect2(at-Vector2(23,1),Vector2(46,2)),Color("788777"))
-		for i in range(8): painter.draw_line(at+Vector2(-20+i*6,-1),at+Vector2(-20+i*6,1),Color("c3c9bd"),1)
 	_draw_care_chart(center)
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:

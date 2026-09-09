@@ -1,0 +1,38 @@
+{
+  "sources": [
+    {
+      "path": "assets/door-polish-v1/low-source.png",
+      "sha256": "798ce273d6c79a759be5d7096431b79385dfa1a4c0020bb46c04a66f8c184145",
+      "prompt": "low.prompt.txt"
+    },
+    {
+      "path": "assets/door-polish-v1/riser-source.png",
+      "sha256": "6acd907ca58979665637cd045e9de01eec7391382b07257c2d6cc9298c105ff8",
+      "prompt": "riser.prompt.txt"
+    }
+  ],
+  "finishes": [
+    "bio",
+    "life-support",
+    "engineering",
+    "generic",
+    "brine"
+  ],
+  "geometry": [
+    "low front",
+    "low side",
+    "raised north",
+    "BRINE default sockets",
+    "airlock inner/outer"
+  ],
+  "aperture_world": 72,
+  "source_pixels": "Unmodified; runtime rectangular UV registration excludes backgrounds.",
+  "review": {
+    "materials": "Native review complete, owner acceptance pending",
+    "dry_frames": 150,
+    "wet_frames": 40,
+    "native_integration": "output/door-polish-v1/integration.log",
+    "physics": "output/door-polish-v1/physics.log",
+    "coverage": "Shared live door renderers and 44 furnished-room cards; corridor card silhouettes retained."
+  }
+}

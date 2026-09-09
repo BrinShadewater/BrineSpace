@@ -1,0 +1,112 @@
+{
+  "asset_id": "filter-service-wall-v1",
+  "department": "Life Support",
+  "condition": "Maintained matte grey-green and paper filter media",
+  "attachment_class": "Low self-supporting north-wall bank",
+  "functional_bays": [
+    "Two spare filter shelves",
+    "Wide inspection tray with filter and brush",
+    "Air-flow test box"
+  ],
+  "runtime_behavior": "Static uninstalled art; no filtration behavior",
+  "camera_and_facing": "Near top-down, north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/life_support.png",
+      "sha256": "4c5cce0336bf3f35cdec1a26979867cc8a74f172955f19a865bf06d7488d6013",
+      "role": "Established camera and department; room comparison requires clean native rerun"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/battery-service-wall-v1/wall.png",
+      "sha256": "854c4cd5b3ed3f7bd5dbcb770b5eaa4a0fdeacfec740a81b74f92898e0de86ed",
+      "role": "Matte low fitted construction only"
+    }
+  ],
+  "source_path": "assets/filter-service-wall-v1/source-v2.png",
+  "source_sha256": "16ecce94bf120b4bfaa9322f4877a6612ab989c2de50768d17970adb07e5b5e0",
+  "export_path": "assets/filter-service-wall-v1/wall.png",
+  "export_sha256": "841789869fb0b6e8d219fb62b83298233cbacb7744c4a0cb1538e87c1e6b4443",
+  "native_canvas_px": [
+    1774,
+    887
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Fan/tank service access",
+    "Operator work area"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 replaces silver brackets with grey-green powder coat and softens filter-paper contrast."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/filter-service-wall-v1/wall-reference-final.png",
+      "findings": [
+        "Clean native320-unit comparison with current furnished Life Support room at1pixel/world unit.",
+        "Filter cassettes, inspection space and test controls remain readable and subordinate to primary room equipment.",
+        "Earlier renderer failure preserved in review_history; no floor code changed by this art task."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral100 source-specific registration removes dark checkerboard.",
+        "Filter media and inspection tray retained; exterior clear on native grounds."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "A printed PASS line does not override accompanying Godot script errors; isolate export review and leave room comparison pending."
+  ],
+  "proposed_display_height_world": 94.21800947867298,
+  "registration_path": "assets/filter-service-wall-v1/registration.json",
+  "registration_sha256": "3b6c7c023bbdff6ac868ca857ae5568c8802c942b94bc5b4ce2d5cbd4915ed88",
+  "prompt_path": "assets/filter-service-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "a4a98c5d3e0c69c16cf163bd597294e4d252190b83caeda1edb33e41acd70468",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "rejected_sources": [
+    {
+      "path": "assets\\filter-service-wall-v1\\source-v1.png",
+      "sha256": "d03c1f37f695263e46e0ae9f57be86f06d5c574a984c3d044a2c7251fd49c6e9",
+      "reason": "Silver brackets and sharply highlighted filter folds"
+    }
+  ],
+  "evidence_hashes": {
+    "output/filter-service-wall.log": "4cc43d01488e5f811c2fc0ca4092a36ab8e5b600f7f5d47d5019bb59ff89c3c4",
+    "output/filter-service-wall-isolated.log": "7cd6c54c534aca15dea039814fa2c2039423014fad8407fbf1def27b1716dd48",
+    "output/filter-service-wall-v1/wall-isolated.png": "49cb3cb83c0f8d850f1cb838341c2127c9d0ccfe1eb88a75960b36202f0d8231",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c",
+    "output/filter-service-wall-reference-final.log": "24215b95f598601d856dabf55f94433d1418703e495aa843a8acd74e5eacecbe",
+    "output/filter-service-wall-v1/wall-reference-final.png": "54b32e918af6447b89f85e12f4ffa1fa41502b31bab173e8bcf7b670e0694cf4",
+    "rooms/floor-profiles-v1/details.gd": "a4cad83c9906a9dd20497a969bb2f73c05cfd5e89726437238d35fa419c220c2"
+  },
+  "review_history": [
+    {
+      "verdict": "partial_isolated_only",
+      "evidence": "output/filter-service-wall-v1/wall-isolated.png",
+      "findings": [
+        "Isolated320-unit light/dark preview reviewed.",
+        "Live room comparison must be rerun: rooms/floor-profiles-v1/details.gd:85 reports undeclared pads; failed capture is not clean acceptance."
+      ]
+    }
+  ]
+}

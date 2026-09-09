@@ -12,8 +12,8 @@ What is included:
 - scenes/BRINECoreRoom.tscn: starter Godot 4 scene.
 
 How to use:
-1. Copy the assets, scripts, and scenes folders into your Godot project root.
-2. Open scenes/BRINECoreRoom.tscn.
+1. Keep the brinecore-animation folder in your Godot project root.
+2. Open brinecore-animation/scenes/BRINECoreRoom.tscn.
 3. You may see double-BRINE because the original base image still has her baked into the tank. This is expected for prototype testing.
 4. Once the motion feels right, replace brine_core_base.png with a cleaned version where BRINE has been removed from the tank.
 5. Replace brine_body_temp.png with a real transparent 4-6 frame idle animation or spritesheet.

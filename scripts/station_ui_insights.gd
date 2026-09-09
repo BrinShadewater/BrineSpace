@@ -1,6 +1,10 @@
 extends RefCounted
 
 static func remedy(status: String) -> String:
+	if status == "INTAKE BLOCKED":
+		return "Clear the ocean cell indicated by the turbine's intake arrow. Rooms, queued construction, wrecks, rock and finite resource deposits obstruct the intake."
+	if status == "NEEDS ACTIVE REACTOR":
+		return "Place or resume a Reactor beside this room. Each adjacent functioning Reactor supplies 2 reclaimed Power, up to 4; a shared wall is enough."
 	if status == "SUSPENDED":
 		return "Resume this room below. It will be evaluated again next cycle."
 	if status == "HABITATS FULL":
@@ -12,18 +16,35 @@ static func remedy(status: String) -> String:
 	return "Room operated last cycle. Keep its inputs supplied. Matching doors enable neighboring synergy patterns."
 
 static func guide(game) -> String:
-	if game.placed_rooms.size() <= 1:
-		var pending: int = game.drone_fleet.orders.size()
-		for drone in game.drone_fleet.drones.values():
-			if not drone.order.is_empty(): pending += 1
-		if pending > 0:
-			return "1 / 4 — CONSTRUCTION QUEUED\nYour purchase reserved a footprint. Resume time to let the fabrication drone assemble it. Rooms produce nothing until construction finishes."
-		return "1 / 4 — BUILD\nSelect a blueprint, then place it beside the core. Rotate its doors to match a neighbor. Purchases use the resources shown on the card."
-	if game.connected_synergy_links.is_empty() and game.run_discovered_synergy_ids.is_empty():
-		return "2 / 4 — CONNECT\nTry different neighboring room types with matching doors. Select a built room to inspect its supplies and highlight its connections."
-	if game.run_discovered_synergy_ids.is_empty() and game.meta.discovered_synergy_ids.is_empty():
-		return "3 / 4 — KEEP IT FUNCTIONING\nLet connected rooms operate for a cycle. Inspect any room marked NEEDS; both partners must function to teach a pattern."
-	return "4 / 4 — STABILIZE\nKeep a discovered pattern functioning for three consecutive cycles. The Codex records what you learn; stabilized rewards survive a reboot."
+	var jobs: Array = game.drone_fleet.orders.duplicate()
+	for drone in game.drone_fleet.drones.values():
+		if not drone.order.is_empty(): jobs.append(drone.order)
+	if not jobs.is_empty():
+		var job: Dictionary = jobs[0]
+		var name: String = game.RoomDatabaseScript.get_room(job.id).display_name
+		return "BUILDING " + name + "\n" + ("Close dialogue or resume time to continue assembly." if game.paused else game.drone_fleet.construction_status(job.pos,game.powered_room_cells)) + "\nMaterials are already paid. Select the site for details."
+	var has_generation := false
+	for room in game.placed_rooms:
+		if room.id != "brine_core" and int(room.get("production",{}).get("power",0)) > 0:
+			has_generation = true
+	if not has_generation:
+		return "FIRST: CONNECT POWER\nChoose a power blueprint and match a door to the Core.\nCheck its cost and intake before placing."
+	var net: Dictionary = game._project_cycle_delta()
+	for key in ["oxygen","power","food","water"]:
+		if int(net.get(key,0)) >= 0: continue
+		if int(game.resources.get(key,0)) + int(net[key]) * 2 > 0: continue
+		var suggestion := "Inspect supply rooms or suspend a competing consumer."
+		for id in game.hand:
+			var card: Dictionary = game.RoomDatabaseScript.get_room(str(id))
+			if int(card.get("production",{}).get(key,0)) > 0 and game._can_afford(card.get("cost",{})):
+				suggestion = "Consider " + str(card.display_name) + " in your hand; check its inputs."
+				break
+		return key.to_upper() + " IS FALLING\n" + suggestion + "\nCurrent rate: %d stored, %+d per cycle." % [game.resources.get(key,0),net[key]]
+	for id in game.run_discovered_synergy_ids:
+		if game.meta.stabilized_synergy_ids.has(id): continue
+		var recipe: Dictionary = game.SynergyManagerScript.get_synergy(str(id))
+		return "STABILIZE: " + str(recipe.name) + "\n%d / 3 consecutive functioning cycles.\nKeep both rooms supplied; an interrupted cycle resets progress." % int(game.synergy_stabilization_progress.get(id,0))
+	return "EXPAND, THEN OBSERVE\nConnect different rooms through matching doors.\nSupply them and run a cycle to see what works."
 
 static func construction(game) -> Array[String]:
 	var lines: Array[String] = []

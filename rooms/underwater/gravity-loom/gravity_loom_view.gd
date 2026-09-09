@@ -16,8 +16,8 @@ func _ready() -> void:
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("303238"),Color(0.13,0.14,0.17,0.25),2,"technical")
-	RoomFloor.draw_dressing(painter,center,edges,"technical")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("303238"),Color(0.13,0.14,0.17,0.25),2,"technical")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"technical")
 	if dressing!=null: dressing.floor()
 
 func draw_registered_prop(prop: Dictionary) -> void:

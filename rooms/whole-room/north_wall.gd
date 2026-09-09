@@ -1,113 +1,91 @@
 extends RefCounted
-## Screen-facing rear wall. Visual only; shared north edges retain the low shell.
-static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO) -> void:
-	if room_id=="airlock":
+## Textured raised hull; end returns exist only at exposed riser boundaries.
+const Riser=preload("res://rooms/whole-room/riser_geometry.gd")
+const Hull=preload("res://assets/riser-wall-kit-style-v2/wall_sprites.gd")
+const Fittings=preload("res://assets/wall-dressing-style-v2/wall_sprites.gd")
+const Decor=preload("res://rooms/whole-room/decoration_props.gd")
+const Catalog=preload("res://rooms/whole-room/riser_catalog.gd")
+static var brine_texture: Texture2D
+
+static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO, adjoining_left := false, adjoining_right := false, wall_view = null) -> void:
+	if room_id=="brine_core":
+		if brine_texture==null:
+			var image:=Image.new()
+			assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/brine-riser-v1/source.png"))==OK)
+			brine_texture=ImageTexture.create_from_image(image)
+		# Use the upper service face at its own aspect, excluding the tall lower cabinets.
+		canvas.draw_texture_rect_region(brine_texture,Rect2(-192,Riser.TOP,384,Riser.HEIGHT),Rect2(0,100,2007,342))
+		canvas.draw_texture_rect_region(brine_texture,Rect2(-196,Riser.CAP_TOP,392,7),Rect2(0,0,2007,100))
+	elif room_id=="airlock":
 		preload("res://rooms/underwater/airlock-v4/fittings.gd").draw_wall(canvas,cell)
-		return
-	var warm := room_id in ["crew_hab","crew_lounge"]
-	var clinical := room_id in ["med_bay","clone_lab","cryo_chamber","research_lab","xeno_lab"]
-	var wet := room_id in ["hydroponics_bay","biodome","underwater_life_support","tidal_condenser"]
-	var face := Color("b4ac96") if warm else Color("839994") if clinical or wet else Color("4d6068")
-	canvas.draw_rect(Rect2(-192,-240,384,48),face)
-	for x in range(-192,192,48):
-		canvas.draw_line(Vector2(x,-236),Vector2(x,-194),face.darkened(.22),1)
-	# Inset enamel panels, warm timber lining and a shadow under the crown.
-	for x in range(-184,184,48):
-		var panel:=Rect2(x,-235,40,34)
-		canvas.draw_rect(panel,face.lightened(.045),false,.7)
-		canvas.draw_line(panel.position+Vector2(1,1),Vector2(panel.end.x-1,panel.position.y+1),face.lightened(.13),.8)
-		canvas.draw_line(Vector2(panel.end.x,panel.position.y),panel.end,face.darkened(.22),1)
-	for y in range(-238,-196):
-		canvas.draw_line(Vector2(-186,y),Vector2(186,y),Color(0,0,0,.10*float(y+238)/42.0),1)
-	if warm:
-		canvas.draw_rect(Rect2(-187,-203,374,6),Color("716751"))
-		for x in range(-184,184,12):
-			canvas.draw_line(Vector2(x,-202),Vector2(x+7,-202),Color("a99a79"),.6)
-	canvas.draw_rect(Rect2(-196,-246,392,7),face.lightened(.2))
-	canvas.draw_line(Vector2(-196,-239),Vector2(196,-239),face.darkened(.4),2)
-	canvas.draw_rect(Rect2(-192,-197,384,5),face.darkened(.4))
-	for x in [-190,187]:
-		canvas.draw_rect(Rect2(x,-239,3,47),face.darkened(.25))
-	for x in [-168,159]:
-		# Small shielded wall lamps with a restrained pool of light.
-		canvas.draw_colored_polygon(PackedVector2Array([Vector2(x,-229),Vector2(x+8,-229),Vector2(x+16,-203),Vector2(x-8,-203)]),Color(1,.86,.57,.075) if warm else Color(.63,.88,.91,.065))
-		canvas.draw_rect(Rect2(x-2,-236,12,10),face.darkened(.45))
-		canvas.draw_rect(Rect2(x,-233,8,4),Color("e3ce91") if warm else Color("afcfc8"))
-		canvas.draw_line(Vector2(x-2,-236),Vector2(x+10,-236),face.lightened(.25),1)
-	if warm:
-		for x in [-128,-88]:
-			canvas.draw_rect(Rect2(x,-231,28,25),Color("69513a"))
-			canvas.draw_rect(Rect2(x+3,-228,22,19),Color("c5bd99"))
-			canvas.draw_rect(Rect2(x+5,-217,18,6),Color("557764"))
-			canvas.draw_circle(Vector2(x+17,-223),3,Color("d4b879"))
-			canvas.draw_colored_polygon(PackedVector2Array([Vector2(x+5,-214),Vector2(x+10,-222),Vector2(x+16,-216),Vector2(x+23,-219),Vector2(x+23,-211),Vector2(x+5,-211)]),Color("426253"))
-			canvas.draw_line(Vector2(x+2,-229),Vector2(x+25,-229),Color("ad9270"),1)
-			canvas.draw_line(Vector2(x+4,-212),Vector2(x+24,-212),Color("8a9a73"),.7)
-		canvas.draw_rect(Rect2(85,-229,52,24),Color("746d56"))
-		for x in [91,107,123]:
-			canvas.draw_rect(Rect2(x,-225,9,14),Color("d1c49f"))
-	elif clinical:
-		canvas.draw_rect(Rect2(-137,-233,55,29),Color("d4dfd5"))
-		canvas.draw_line(Vector2(-110,-231),Vector2(-110,-205),face.darkened(.3),1)
-		canvas.draw_line(Vector2(-116,-219),Vector2(-104,-219),Color("548e80"),3)
-		canvas.draw_line(Vector2(-110,-225),Vector2(-110,-213),Color("548e80"),3)
-		canvas.draw_rect(Rect2(90,-232,25,27),Color("d1d6c3"))
-		for y in range(-226,-207,5):
-			canvas.draw_line(Vector2(94,y),Vector2(110,y),Color("718c89"),1)
 	else:
-		canvas.draw_rect(Rect2(-147,-231,64,25),face.darkened(.4))
-		for x in range(-141,-89,6):
-			canvas.draw_line(Vector2(x,-227),Vector2(x,-211),face.lightened(.15),2)
-		canvas.draw_line(Vector2(65,-219),Vector2(156,-219),Color("293b40"),6)
-		canvas.draw_line(Vector2(65,-221),Vector2(156,-221),Color("87aaa0") if wet else Color("ac9770"),2)
-		canvas.draw_rect(Rect2(93,-232,28,27),face.darkened(.25))
-		canvas.draw_circle(Vector2(107,-219),7,Color("c2cbb6"))
-		canvas.draw_line(Vector2(107,-219),Vector2(110,-223),Color("34494c"),1)
+		Catalog.face(canvas,room_id,Rect2(-192,Riser.TOP,384,Riser.HEIGHT))
+		# Department-specific mounts; windows retain their native aspect ratio.
+		var edits: Dictionary={} if wall_view==null else preload("res://scripts/room_layout_store.gd").surface_positions(wall_view)
+		for item in decorations(room_id,edits):
+			if edits.get("hidden/"+item.id,false): continue
+			var rect: Rect2=item.rect
+			canvas.draw_rect(Rect2(rect.position+Vector2(2,3),rect.size),Color(0,0,0,.13))
+			var flip=edits.get("flip/"+item.id,[false,false])
+			var u0:=1.0 if flip[0] else 0.0
+			var v0:=1.0 if flip[1] else 0.0
+			canvas.draw_polygon(PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)]),PackedColorArray([Color(.73,.79,.78)]),PackedVector2Array([Vector2(u0,v0),Vector2(1-u0,v0),Vector2(1-u0,1-v0),Vector2(u0,1-v0)]),item.texture)
 
-	# Center bay stays independent of the department fittings on either side.
-	if room_id!="airlock" and posmod(cell.x*7+cell.y*11,3)!=1:
-		_window(canvas)
-	# Recessed mounting shadows, bevels and fasteners give fittings thickness.
-	for fitting in ([Rect2(-128,-231,28,25),Rect2(-88,-231,28,25),Rect2(85,-229,52,24)] if warm else [Rect2(-137,-233,55,29),Rect2(90,-232,25,27)] if clinical else [Rect2(-147,-231,64,25),Rect2(93,-232,28,27)]):
-		canvas.draw_line(fitting.position+Vector2(0,1),Vector2(fitting.end.x,fitting.position.y+1),Color(1,1,.9,.3),1)
-		canvas.draw_line(Vector2(fitting.position.x,fitting.end.y+1),fitting.end+Vector2(2,1),Color(0,0,0,.35),2)
-		for x in [fitting.position.x+2,fitting.end.x-2]:
-			canvas.draw_circle(Vector2(x,fitting.position.y+3),.8,Color("d4cbbb"))
-	if warm:
-		for x in [91,107,123]:
-			canvas.draw_circle(Vector2(x+4,-223),1,Color("a46a48"))
-			for y in [-219,-216]:canvas.draw_line(Vector2(x+2,y),Vector2(x+7,y),Color("8d866c"),.6)
-	elif clinical:
-		for x in [-115,-106]:canvas.draw_line(Vector2(x,-212),Vector2(x,-207),Color("647e79"),1.5)
-	else:
-		for x in [73,143]:canvas.draw_rect(Rect2(x,-225,3,11),Color("adb3a0"))
-		for angle in [-2.4,-1.6,-.8,0.0]:
-			var direction:=Vector2(cos(angle),sin(angle))
-			canvas.draw_line(Vector2(107,-219)+direction*4,Vector2(107,-219)+direction*6,Color("34494c"),.7)
+		Catalog.cap(canvas,room_id,Rect2(-196,Riser.CAP_TOP,392,7))
+		canvas.draw_line(Vector2(-192,Riser.TOP+1),Vector2(192,Riser.TOP+1),Color("23363a"),2)
+		canvas.draw_rect(Rect2(-192,-197,384,5),Color("26383b"))
+	for left in [true,false]:
+		if (left and adjoining_left) or (not left and adjoining_right): continue
+		var edge_x := -192.0 if left else 192.0
+		# A continuous structural backing closes transparent bevels and the
+		# different draw offsets used by each room's wall/cap artwork.
+		# Extend beneath the low corner so the two assemblies overlap.
+		var joint_color := Color(profile(room_id).tint).darkened(.22)
+		canvas.draw_rect(Rect2(edge_x-8,Riser.CAP_TOP-3,16,Riser.HEIGHT+17),joint_color)
+		# Reuse the room's actual vertical wall material, extending its corner up.
+		if wall_view!=null:
+			var saved=wall_view.painter
+			wall_view.painter=canvas
+			wall_view.draw_wall(Rect2(edge_x-8,Riser.TOP,16,Riser.HEIGHT),false)
+			wall_view.draw_cap(Rect2(edge_x-8,Riser.CAP_TOP,16,10))
+			wall_view.painter=saved
+		else:
+			canvas.draw_texture_rect(Hull.texture("structural_rib"),Rect2(edge_x-8,Riser.CAP_TOP,16,Riser.HEIGHT+6),false,Color(.68,.76,.77))
+	if wall_view!=null and preload("res://tools/modular_room_geometry.gd").has_port(wall_view.layout[0],0):
+		preload("res://rooms/whole-room/room_door.gd").draw_riser_door(canvas,0.0,brine_texture if room_id=="brine_core" else null,preload("res://rooms/doors/department_door.gd").department({"id":room_id}))
 
-static func _window(canvas: CanvasItem) -> void:
-	var frame:=Rect2(-43,-235,86,35)
-	canvas.draw_style_box(_frame(Color(0,0,0,.3),Color(0,0,0,.15),1),Rect2(-45,-234,90,37))
-	canvas.draw_style_box(_frame(Color("657e80"),Color("253d45"),3),frame)
-	canvas.draw_line(Vector2(-38,-234),Vector2(38,-234),Color("a3b6ae"),1)
-	canvas.draw_line(Vector2(-42,-231),Vector2(-42,-205),Color("8fa5a1"),1)
-	canvas.draw_rect(Rect2(-37,-230,74,25),Color("103a49"))
-	for y in range(-228,-205,3):
-		canvas.draw_line(Vector2(-36,y),Vector2(36,y),Color(.19,.48,.53,float(-205-y)/160.0),3)
-	canvas.draw_colored_polygon(PackedVector2Array([Vector2(-36,-205),Vector2(-36,-211),Vector2(-23,-215),Vector2(-10,-209),Vector2(9,-214),Vector2(36,-210),Vector2(36,-205)]),Color("163f46"))
-	for at in [Vector2(-23,-222),Vector2(18,-217),Vector2(25,-223)]:
-		canvas.draw_colored_polygon(PackedVector2Array([at+Vector2(-3,0),at+Vector2(1,-1),at+Vector2(3,1),at+Vector2(5,-1),at+Vector2(5,2),at+Vector2(1,1)]),Color("608e91"))
-	canvas.draw_line(Vector2(-30,-228),Vector2(-34,-216),Color(.7,.9,.9,.22),2)
-	canvas.draw_line(Vector2(-25,-228),Vector2(-29,-216),Color(.7,.9,.9,.12),1)
-	canvas.draw_rect(Rect2(-1,-231,2,27),Color("607c7f"))
-	canvas.draw_rect(Rect2(-44,-204,88,3),Color("9caeaa"))
-	for x in [-40,40]:
-		for y in [-231,-207]:canvas.draw_circle(Vector2(x,y),1,Color("c3c9b6"))
+static func profile(room_id: String) -> Dictionary:
+	if room_id=="brine_core": return {"tint":"c1c5bb","mounts":[]}
+	# Mount tuples: source, left edge, maximum width. All sit inside the riser.
+	if room_id in ["crew_hab","crew_lounge"]:
+		return {"tint":"ab9b83","mounts":[["picture_ocean",-150,38],["ocean_window_medium",-62,76],["wall_planter",65,34],["analog_clock",132,25]]}
+	if room_id in ["hydroponics_bay","biodome","mycelium_nursery","biomass_digester"]:
+		return {"tint":"899c85","mounts":[["pressure_gauge",-153,28],["ocean_window_panoramic",-79,102],["wall_planter",61,42],["small_access_cover",133,26]]}
+	if room_id in ["med_bay","med_center","med_office","clone_lab","cryo_chamber","quarantine_cell"]:
+		return {"tint":"a3b1ac","mounts":[["emergency_box",-144,32],["ocean_porthole_small",-24,33],["com_panel",98,37]]}
+	if room_id in ["research_lab","xeno_lab","bio_lab","anomaly_lab"]:
+		return {"tint":"8e9ca6","mounts":[["sample_display",-151,43],["ocean_twin_portholes",-40,72],["monitor_single",110,41]]}
+	if room_id in ["listening_post","radio_lab","command_center"]:
+		return {"tint":"768b91","mounts":[["com_handset",-151,26],["ocean_window_panoramic",-71,103],["status_display_wide",84,61]]}
+	if room_id in ["brine_core","holographic_core","data_archive","gravity_loom","isolation_vault"]:
+		return {"tint":"7e8998","mounts":[["reinforced_access_panel",-148,42],["monitor_dual",-37,72],["com_panel",112,32]]}
+	return {"tint":"7c8988","mounts":[["tool_rack",-154,45],["ocean_porthole_small",-31,33],["pressure_gauge",64,27],["small_access_cover",129,28]]}
 
-static func _frame(fill: Color, edge: Color, border: int) -> StyleBoxFlat:
-	var box:=StyleBoxFlat.new()
-	box.bg_color=fill
-	box.border_color=edge
-	box.set_border_width_all(border)
-	box.set_corner_radius_all(4)
-	return box
+static func decorations(room_id: String, edits: Dictionary={}) -> Array:
+	var result: Array=[]
+	if room_id=="airlock": return result
+	var mounts: Array=profile(room_id).mounts
+	for i in range(mounts.size()):
+		var mount: Array=mounts[i]
+		var id: String="riser/"+str(i)+"/"+str(mount[0])
+		var texture: Texture2D=Hull.texture(mount[0]) if Hull.catalog().has(mount[0]) else Fittings.texture(mount[0])
+		var box:=Rect2(Vector2(float(mount[1]),-235)+Riser.MOUNT_SHIFT,Vector2(float(mount[2]),34))
+		var dimensions:=Vector2(texture.get_size())
+		dimensions*=minf(box.size.x/dimensions.x,box.size.y/dimensions.y)
+		var rect:=Rect2(box.get_center()-dimensions/2,dimensions)
+		var value=edits.get(id)
+		if value is Array and value.size()==2: rect.position=Vector2(value[0],value[1])
+		result.append({"id":id,"asset":str(mount[0]),"texture":texture,"rect":rect})
+	result=preload("res://scripts/room_layout_store.gd").surface_copies(result,edits)
+	result.sort_custom(func(a,b): return float(edits.get("order/"+str(a.id),0))<float(edits.get("order/"+str(b.id),0)))
+	return result.filter(func(item): return not (edits.has(item.id) and edits[item.id]==null))

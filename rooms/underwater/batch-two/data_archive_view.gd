@@ -31,8 +31,8 @@ func _ready() -> void:
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("3b4650"),Color(0.08,0.13,0.17,0.24),2,"technical")
-	RoomFloor.draw_dressing(painter,center,edges,"technical")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("3b4650"),Color(0.08,0.13,0.17,0.24),2,"technical")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"technical")
 	if dressing!=null: dressing.floor()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:

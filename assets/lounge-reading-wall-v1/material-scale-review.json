@@ -1,0 +1,100 @@
+{
+  "asset_id": "lounge-reading-wall-v1",
+  "department": "Habitation / Crew Lounge",
+  "condition": "Maintained matte dark wood and cloth",
+  "attachment_class": "Low self-supporting north-wall bank",
+  "functional_bays": [
+    "Book cubbies",
+    "Board-game boxes and drawers",
+    "Reading counter and pouch",
+    "Compact radio",
+    "Cloth and ceramic mugs"
+  ],
+  "runtime_behavior": "Static standalone decorative art",
+  "camera_and_facing": "Near top-down orthographic, north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/crew_lounge.png",
+      "sha256": "48ba244d5ed6331cb3a72d8e223e3518db594d79c853e1ef83acdaa13da732b3",
+      "role": "Established scale, camera and warm habitation identity"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/crew-linen-wall-v1/wall.png",
+      "sha256": "e0e8c430116bce333b69724b7baf9c7944684316980bdcfd82e3b481a324e0f1",
+      "role": "Fitted construction only; exclude bright trim"
+    }
+  ],
+  "source_path": "assets/lounge-reading-wall-v1/source-v2.png",
+  "source_sha256": "3c2c54a4701273823c9b02b5ccb8235187984b31dce15b49857df98867136778",
+  "export_path": "assets/lounge-reading-wall-v1/wall.png",
+  "export_sha256": "7444b64af268d4b067345422a026a25b4c20b950a48f324b5a678e317fdb9c02",
+  "native_canvas_px": [
+    1774,
+    887
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Existing lounge seating",
+    "Door bays",
+    "Access to book and game storage"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 removes long gold wood-edge strokes and reduces grain.",
+        "Cream mugs retain modest rim contrast but no dominant specular streak at native scale; warm palette retained."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/lounge-reading-wall-v1/wall-scale.png",
+      "findings": [
+        "Reviewed at320 units beside current furnished Lounge at equal scale; book/game/radio groups readable."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Source-specific neutral180 removes opaque checkerboard; light/dark native silhouette reviewed.",
+        "Cubbies and mug handle centers are backed by furniture, not through-holes."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Wood can retain warmth while replacing long bright edge lines with muted planes.",
+    "Review small ceramic separately from cabinetry; do not infer matte from brown palette."
+  ],
+  "proposed_display_height_world": 61.781231320980275,
+  "registration_path": "assets/lounge-reading-wall-v1/registration.json",
+  "registration_sha256": "c0dc74b812575143497190a09f5fb57fe9d799f44147391144cb121229e59c96",
+  "prompt_path": "assets/lounge-reading-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "272179c25cc082279def0ebbccf34b47e2717b0b0200dfe15836f6740b8eb27a",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "rejected_sources": [
+    {
+      "path": "assets/lounge-reading-wall-v1/source-v1.png",
+      "sha256": "80e62f9fa6f73ab57a61ecc5e88fcde1b20b6ac10ef7c6ba269289e2485da2d5",
+      "reason": "Gold wood-edge lines, dense grain and bright mug treatment"
+    }
+  ],
+  "evidence_hashes": {
+    "output/lounge-reading-wall.log": "faee45a45f671f00a15105dce0e4ce0cb815ea112c7a445d1759311a6b083a1c",
+    "output/lounge-reading-wall-v1/wall-scale.png": "b7304f26a6656811fdb59bde6d1924b565a19de7232cf2a040f520e0c351919f",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

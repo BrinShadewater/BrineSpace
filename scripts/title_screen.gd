@@ -20,6 +20,7 @@ var status: Label
 var starting := false
 var meta_state = preload("res://scripts/meta_state.gd").new()
 var badges: HBoxContainer
+var layout_button: Button
 var codex_button: Button
 var progression_button: Button
 var archive: Control
@@ -30,6 +31,8 @@ var error_label: Label
 
 func _ready() -> void:
 	preload("res://scripts/title_settings.gd").initialize(get_window())
+	get_tree().auto_accept_quit = false
+	preload("res://scripts/station_music.gd").ensure(self)
 	get_window().min_size = Vector2i(960, 540)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	var font := SystemFont.new()
@@ -94,10 +97,14 @@ func _ready() -> void:
 	start_button = _button("NEW LOOP", true)
 	start_button.tooltip_text = "Start a fresh loop. Your previous checkpoint remains until you save the new loop."
 	start_button.pressed.connect(_choose_architect)
+	layout_button = _button("ROOM LAYOUT STUDIO", false)
+	controls.remove_child(layout_button)
+	add_child(layout_button)
+	layout_button.pressed.connect(func(): preload("res://scripts/room_layout_editor.gd").open(self))
 	quit_button = _button("QUIT", false)
 	controls.remove_child(quit_button)
 	add_child(quit_button)
-	quit_button.pressed.connect(func() -> void: get_tree().quit())
+	quit_button.pressed.connect(func() -> void: preload("res://scripts/audio_shutdown.gd").request(self))
 	settings_button = _button("SETTINGS", false)
 	controls.remove_child(settings_button)
 	add_child(settings_button)
@@ -164,8 +171,10 @@ func _layout() -> void:
 	about_button.size = settings_button.size
 	error_label.position = Vector2(48, 12)
 	error_label.size = Vector2(size.x - 96, 64)
-	badges.position = Vector2(size.x - 516, center_y - 92)
+	badges.position = Vector2(size.x - 516, center_y - 122)
 	badges.size = Vector2(468, 184)
+	layout_button.position = badges.position + Vector2(0, 196)
+	layout_button.size = Vector2(468, 48)
 	queue_redraw()
 
 func _draw() -> void:
@@ -192,11 +201,8 @@ func _badge(caption: String, icon_path: String, detail: String) -> Button:
 	box.offset_top = 16
 	box.offset_bottom = -16
 	box.alignment = BoxContainer.ALIGNMENT_CENTER
-	var icon := TextureRect.new()
-	icon.texture = CODEX_BADGE if icon_path.ends_with("codex-badge.svg") else PROGRESSION_BADGE
+	var icon = preload("res://scripts/navigation_badge.gd").create("codex" if icon_path.ends_with("codex-badge.svg") else "archive")
 	icon.custom_minimum_size = Vector2(80, 80)
-	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_child(icon)
 	for text in [caption, detail]:
@@ -219,11 +225,11 @@ func _open_archive(kind: String, opener: Button) -> void:
 	archive.meta_state = meta_state
 	archive.mode = kind
 	add_child(archive)
-	for button in [start_button, quit_button, codex_button, progression_button, continue_button, settings_button, about_button]:
+	for button in [start_button, quit_button, codex_button, progression_button, continue_button, settings_button, about_button, layout_button]:
 		button.disabled = true
 	archive.closed.connect(func() -> void:
 		archive = null
-		for button in [start_button, quit_button, codex_button, progression_button, continue_button, settings_button, about_button]:
+		for button in [start_button, quit_button, codex_button, progression_button, continue_button, settings_button, about_button, layout_button]:
 			button.disabled = false
 		archive_opener.grab_focus()
 		_refresh_unread_badges()
@@ -281,18 +287,15 @@ func _start_game(continuing := false) -> void:
 	progression_button.disabled = true
 	about_button.disabled = true
 	status.text = "RESTORING STATION INTERFACE..."
-	var fade := ColorRect.new()
-	fade.color = Color("07151f")
-	fade.modulate.a = 0.0
-	add_child(fade)
-	fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	if not preload("res://scripts/title_settings.gd").reduced_motion:
-		await create_tween().tween_property(fade, "modulate:a", 1.0, 0.24).finished
-	else:
-		await get_tree().process_frame
-	var error := get_tree().change_scene_to_file(GAME_SCENE)
+	var loading := preload("res://scripts/loading_transition.gd").new()
+	get_tree().root.add_child(loading)
+	var scene: PackedScene = await loading.prepare_scene(GAME_SCENE)
+	var error := ERR_CANT_OPEN
+	if scene != null:
+		loading.finish_after_scene_change()
+		error = get_tree().change_scene_to_packed(scene)
 	if error != OK:
-		fade.queue_free()
+		loading.queue_free()
 		starting = false
 		start_button.disabled = false
 		quit_button.disabled = false
@@ -304,3 +307,7 @@ func _start_game(continuing := false) -> void:
 		error_label.text = "INTERFACE UNAVAILABLE. RETRY."
 		start_button.grab_focus()
 		push_error("Could not open station scene: %s" % error)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		preload("res://scripts/audio_shutdown.gd").request(self)

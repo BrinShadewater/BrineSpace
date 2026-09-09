@@ -1,0 +1,134 @@
+{
+  "character": "river",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "pivot": [
+    46,
+    86
+  ],
+  "strideDistanceCells": {
+    "walk": 0.1
+  },
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "frames/idle-south/frame_000.png",
+        "frames/idle-south/frame_001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "frames/walk-south/frame_000.png",
+        "frames/walk-south/frame_001.png",
+        "frames/walk-south/frame_002.png",
+        "frames/walk-south/frame_003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "frames/idle-west/frame_000.png",
+        "frames/idle-west/frame_001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "frames/walk-west/frame_000.png",
+        "frames/walk-west/frame_001.png",
+        "frames/walk-west/frame_002.png",
+        "frames/walk-west/frame_003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "frames/idle-north/frame_000.png",
+        "frames/idle-north/frame_001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "frames/walk-north/frame_000.png",
+        "frames/walk-north/frame_001.png",
+        "frames/walk-north/frame_002.png",
+        "frames/walk-north/frame_003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "frames/idle-east/frame_000.png",
+        "frames/idle-east/frame_001.png"
+      ],
+      "frameDurationsMs": [
+        650,
+        650
+      ],
+      "loop": true
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "frames/walk-east/frame_000.png",
+        "frames/walk-east/frame_001.png",
+        "frames/walk-east/frame_002.png",
+        "frames/walk-east/frame_003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    }
+  ],
+  "source": "sources/motion.png",
+  "rowDirections": [
+    "south",
+    "west",
+    "north",
+    "east"
+  ],
+  "mirrored": false
+}

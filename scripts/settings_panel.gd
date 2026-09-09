@@ -53,6 +53,9 @@ func _defaults(section: String) -> void:
 	match section:
 		"AUDIO":
 			Preferences.muted = false
+			Preferences.music_volume = 1.0
+			Preferences.effects_volume = 1.0
+			Preferences.ambience_volume = 1.0
 			Preferences.mute_unfocused = false
 			AudioServer.set_bus_volume_linear(0, 1.0)
 		"CONTROLS & PAUSE":
@@ -64,7 +67,7 @@ func _defaults(section: String) -> void:
 			Preferences.text_scale = 1.0
 			Preferences.reduced_motion = false
 			Preferences.placement_guides = true
-			Preferences.raised_walls = false
+			Preferences.raised_walls = true
 			Preferences.tooltip_delay = 0.5
 		"DISPLAY":
 			_preview_display(func() -> void:
@@ -198,6 +201,9 @@ func _ready() -> void:
 		AudioServer.set_bus_volume_linear(0, value / 100.0)
 	)
 	_toggle(audio, "MasterMute", "Mute all audio", Preferences.muted, func(enabled: bool) -> void: Preferences.muted = enabled)
+	_slider(audio, "MusicVolume", "Music volume", 0, 100, 1, Preferences.music_volume * 100, "%", func(value: float) -> void: Preferences.music_volume = value / 100.0)
+	_slider(audio, "EffectsVolume", "Effects volume", 0, 100, 1, Preferences.effects_volume * 100, "%", func(value: float) -> void: Preferences.effects_volume = value / 100.0)
+	_slider(audio, "AmbienceVolume", "Ambience volume", 0, 100, 1, Preferences.ambience_volume * 100, "%", func(value: float) -> void: Preferences.ambience_volume = value / 100.0)
 	_toggle(audio, "MuteUnfocused", "Mute when unfocused", Preferences.mute_unfocused, func(enabled: bool) -> void: Preferences.mute_unfocused = enabled)
 	audio.add_child(_label("Muting preserves the volume level. Background muting ends when you return to the game.", 15))
 	var controls := _section("CONTROLS & PAUSE")
@@ -217,6 +223,7 @@ func _ready() -> void:
 		)
 		controls.add_child(binding)
 	var access := _section("ACCESSIBILITY")
+	_toggle(access, "RaisedWalls", "Raised room walls", Preferences.raised_walls, func(enabled: bool) -> void: Preferences.raised_walls = enabled)
 	_toggle(access, "PlacementGuides", "Placement door indicators", Preferences.placement_guides, func(enabled: bool) -> void: Preferences.placement_guides = enabled)
 	_toggle(access, "ReducedMotion", "Reduced motion", Preferences.reduced_motion, func(enabled: bool) -> void: Preferences.reduced_motion = enabled)
 	access.add_child(_label("Pauses the title cover and removes menu fades. Gameplay timing is unchanged.", 15))

@@ -193,3 +193,19 @@ Moving a scanner changes the neighbouring work area even when only one footprint
 ### Review current sockets and preserve texture ownership
 Use --review-rooms=id,id with tests/playtest_production_ten_station.gd to derive canonical doors from current RoomDatabase layouts, then exercise all four rotations. Unknown room/layout/door names fail explicitly; catalog-review-negative-v2 exits 1 for the requested unknown ID. The v1 negative attempt failed during startup while main.gd was temporarily invalid UTF-8; it is not rejection evidence. Current source had been corrected before any byte repair was written here.
 The three rare room views previously discarded their Dressing helper while retaining its registered props, causing wrong-atlas image fragments. Preserve the helper when retaining those props. rare-room-catalog-routes-v3 passes all three rooms in four rotations and q0 captures were inspected. This restores texture ownership only: generic positions and inherited service routing still need authored room-specific layouts. Earlier v1 captures also contained an inspector layout-API error; the current worktree had already corrected that call before v2.
+
+
+## Owner-authorized riser and square-wall refresh
+The September 8 owner request raises riser faces from 48 to 60 world units. This
+explicitly supersedes the earlier low-riser restriction for this projection only;
+it does not enlarge deck bounds or door apertures. Keep face, cap, end returns,
+Airlock fittings and mounted lights tied to the shared riser geometry. Inspect
+adjacent/stepped rooms and the power-off shading above the deck cell.
+For wall audits, trace the defining draw_wall method through inherited scripts;
+Godot method lists can include inherited methods. A registered furniture list
+cannot prove the hull uses artwork: inspect delegated wall and cap drawing too.
+Use independent, reviewed material crops for source-less room wrappers rather
+than flat colored stand-ins. Review the whole catalog in all four rotations.
+Give captures --output directories and compact card framing with room for the
+raised cap; foundation study framing makes draft thumbnails unnecessarily small.
+Evidence: docs/RISER_WALL_REFRESH_2026-09-08.md in the project.

@@ -6,7 +6,7 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 func _ready() -> void:
 	super._ready()
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/xeno_lab-source-v1.png"))==OK)
+	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-xeno-v1/xeno-equipment.png"))==OK)
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"xeno_vessel","rect":Rect2(-39,-141,78,72),"pivot":Vector2(314,499),"width":260.0,"outline":[Vector2(184,341),Vector2(192,326),Vector2(206,319),Vector2(209,305),Vector2(222,293),Vector2(222,174),Vector2(231,151),Vector2(246,137),Vector2(267,128),Vector2(291,119),Vector2(331,118),Vector2(358,128),Vector2(379,139),Vector2(395,158),Vector2(403,178),Vector2(403,292),Vector2(416,302),Vector2(424,320),Vector2(437,330),Vector2(442,344),Vector2(443,486),Vector2(432,498),Vector2(196,499),Vector2(184,487)]},
@@ -25,13 +25,9 @@ func rebuild() -> void:
 	if dressing!=null: dressing.place()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("a4b0ba"),Color(0.22,0.30,0.39,0.15),2,"sealed")
-	RoomFloor.draw_dressing(painter,center,edges,"sealed")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("a4b0ba"),Color(0.22,0.30,0.39,0.15),2,"sealed")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
 	if dressing!=null: dressing.floor()
-	for prop in props:
-		if prop.registration.get("dressing",false): continue
-		var at:=Vector2(prop.rect.get_center().x,prop.rect.end.y+8)
-		painter.draw_line(at-Vector2(22,0),at+Vector2(22,0),Color("657e9b"),1)
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:
 	var top:=Rect2(rect.position-Vector2(0,3),rect.size)

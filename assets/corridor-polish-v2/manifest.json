@@ -1,0 +1,19 @@
+{
+  "source": "res://assets/hallway-floor-tiles-v2/source.png",
+  "source_provenance": "res://assets/hallway-floor-tiles-v2/manifest.json",
+  "floor_patterns": 9,
+  "themes": [
+    "transit",
+    "utility",
+    "observation"
+  ],
+  "shapes": [
+    "corridor",
+    "corner",
+    "tee_corridor"
+  ],
+  "wall_fix": "Concave side returns start at the hull vertex; convex returns retain 35-unit lift",
+  "floor_contract": "24-unit modules, matching entrance service lanes, unique per-shape borders, variant-specific interiors; explicit saved floor edits retained",
+  "review": "output/corridor-polish-v2/index.html",
+  "acceptance": "Native visual inspection complete; owner review pending"
+}

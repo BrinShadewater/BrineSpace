@@ -1,0 +1,71 @@
+{
+  "asset_id": "crew-listening-west-wall-v1",
+  "department": "Crew recreation",
+  "condition": "Maintained",
+  "attachment_class": "West-wall standing selection counter",
+  "functional_bays": [
+    "Cassette trays",
+    "Player",
+    "Two backed headphone docks",
+    "Album case and fabric pad"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Left backing, right cabinet pulls, right player controls and album latch",
+  "references": [
+    {
+      "path": "assets/crew-listening-wall-v1/crew-listening-wall.png",
+      "sha256": "d2ac90c740e6daf6f1ed9364168333e54857593c7beee746c3bc0cb49d7c7017",
+      "role": "Canonical north inventory and materials"
+    }
+  ],
+  "source_path": "assets/crew-listening-west-wall-v1/source.png",
+  "source_sha256": "d92f761415fc2df41e9ff8548712c8477d94db60b59b3dafea8a44035ecde402",
+  "export_path": "assets/crew-listening-west-wall-v1/crew-listening-west.png",
+  "export_sha256": "b11fe1e86a834bb4b334fb106596a04987547e84addef23a399a53ca5edc89cf",
+  "native_canvas_px": [
+    1059,
+    1485
+  ],
+  "proposed_display_width_world": 92.03638908327501,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Solid cabinet, no seated knee recess; visual depth differs from north"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Warm matte wood/putty with quiet fabric; connector detail remains small."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Full320-unit length and92.04-unit visual depth. V2 reduces headphone sets within docks and corrects player controls. Proportions differ from north; not an exact rotation."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral185 removes checkerboard; full-length light/dark columns and backed docks inspected."
+      ]
+    },
+    "native_evidence": "output/crew-listening-west-review.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/crew-listening-west-wall-v1/registration.json",
+  "registration_sha256": "9c84e5d5f517348c835a0250dad83de4b29d79c867731ef157904465fc3dd67b",
+  "prompt_path": "assets/crew-listening-west-wall-v1/source.prompt.txt",
+  "prompt_sha256": "ac3f73489eaaf4b4c4775288ab89484a3bcbfc0caa166f999dfc3efd330fb071",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

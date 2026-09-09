@@ -6,10 +6,12 @@ modular placement, interdependent production and discovered room synergies.
 
 > "The station is quiet. That does not mean it is empty."
 
-![BrineSpace in-game view showing a furnished Crew Hab, seabed, blueprint hand and station controls](docs/screenshots/crew-hab-gameplay.png)
+![BrineSpace showing BRINE Core, underwater derelicts, blueprint cards and the station interface](docs/screenshots/station-gameplay-2026-09-09.png)
 
-*Actual Godot prototype capture, September 6, 2026. This paused room-review scene
-shows the Crew Hab and live game interface; it is not a mockup or a full expedition.*
+*Native Godot capture, September 9, 2026. This paused UI verification scene shows
+BRINE Core and the current interface; it is not a full expedition.*
+
+Rooms use authored layouts with larger equipment and restrained clutter. Raised walls start enabled; change **Raised room walls** in settings to use low walls. See the [room layout direction](docs/LARGE_ASSET_LAYOUTS_2026-09-09.md).
 
 ### A larger station
 
@@ -45,29 +47,41 @@ BrineSpace is designed to be thoughtful and watchable: an open-ended restoration
 game with resource pressure, quiet machinery and an AI core with opinions. You can
 pause to plan. The pressure comes from the station's needs, not rapid clicking.
 
-## Current checkpoint
+## Current checkpoint â€” September 9, 2026
 
-The [September 6 handoff](docs/BRINESPACE_HANDOFF_2026-09-06.md) records completed
-work, unfinished acceptance, evidence and ordered next priorities. The source
-project is newer than the last combined validated Windows package. This repository
-checkpoint is not a release or a claim that all current systems passed together.
+Start with [current status](docs/CURRENT_STATUS.md) for the latest decisions and
+[development notes](docs/DEVELOPMENT_NOTES.md) for the design direction. BrineSpace
+is a playable prototype; balance, crew animation and longer expeditions are still
+being evaluated.
 
-- 40 room identities with registered furniture, low underwater hulls, matching
-  doors, rotations, operating effects and refreshed decoration/card artwork.
-- Three architects: Major Bill, Dr. Veld and Chief Engineer Branforth. The selected
-  starter wakes in BRINE Core; connected derelict cryo recovery unlocks the others.
-- Mining, Salvage and Construction drones, finite deposits/scrap, cargo delivery,
-  battery charging, paid construction and clearance.
-- A Diving Airlock with lockers and an interlocked flooding/draining chamber.
-  Actual crew chamber transit, exterior excursions and full suit changing remain
-  unfinished. Swimming and equipment animations are still visually provisional.
-- Layered animated title, shared settings/Codex, Save/Continue recovery, station
-  search, construction queue, health priorities and resource/charge feedback.
-- Authored seabed habitats, wreckage and composed exterior sites.
+- **47 room identities** with matching doors, four rotations, operating effects
+  and authored furniture layouts. Most furnished rooms favor three or four large
+  assets; BRINE Core keeps its more elaborate arrangement.
+- **Four architects:** Major Bill, Dr. Veld, Chief Engineer Branforth and Marsh.
+  Recover them to unlock future selection. Marsh is an android powered by a
+  rechargeable battery; his derelict charging chamber has its own recovery sequence.
+- **Three optional companions:** River, Josh and Margot. Find and restore their
+  derelicts, unlock future selection, and watch their individual behaviors. River
+  and Josh are robots; Margot is a cat you can approach and pet.
+- **Working station systems:** paid drone construction, mining and salvage,
+  finite deposits, cargo delivery, power demand and battery charging.
+- **Underwater hazards:** room flooding, crew breathing and swimming, hull repairs,
+  and an interlocked airlock for exterior excursions. Marsh needs charge rather
+  than oxygen.
+- **Readable planning tools:** placement feedback, resource forecasts, station
+  search, diagnostics, a room inspector and a local Room Layout Studio.
+- **A paced introduction and dialogue:** the loading introduction waits for
+  Continue, and conversations pause the simulation until dismissed.
+- **Save/Continue and expedition recaps:** preserve the station, recovered crew,
+  companion progress and discoveries between sessions.
 
 Current runs are open-ended. Starting doctrines, timed reconstruction directives
 and legacy orbital POIs are retired. Construction costs, resource failures and
 hidden recipe discovery remain active. Conclude Expedition banks the loop.
+
+A [Windows build was verified on September 9](docs/WINDOWS_BUILD_2026-09-09.md).
+It is a local dated package, not a download published in this repository; later
+source changes include companion personality work.
 
 ## Run locally
 
@@ -85,18 +99,19 @@ finish, and press **F5** to run the project through title, architect selection a
 Continue. The configured main scene is `res://scenes/title_screen.tscn`;
 gameplay is `res://scenes/main.tscn`.
 
-The viewport is designed at 1920×1080 with a 1600×900 default window. Runtime room
+The viewport is designed at 1920Ã—1080 with a 1600Ã—900 default window. Runtime room
 art uses raw PNG loading; UI resources still need Godot import. LFS pointers are
 not usable image files, so finish the LFS download before diagnosing missing art.
 
 ## Play loop
 
-1. Start a New Loop with an unlocked architect and recover the starter from BRINE.
+1. Start a New Loop with an unlocked architect and optional unlocked companion.
+   Read the introduction, press Continue, and recover the starter from BRINE.
 2. Draft and rotate blueprints, pay construction costs and connect matching doors.
 3. Supply power, food, oxygen and other room inputs; inspect shortages and reserves.
 4. Discover functioning room links and maintain three consecutive functioning
    cycles to stabilize patterns and unlock rewards. Hidden recipes stay hidden.
-5. Recover wrecks/architects, harvest finite sites and expand at a sustainable pace.
+5. Recover architects and companions, harvest finite sites and expand sustainably.
 6. Save/Continue or use Conclude Expedition to bank the loop. Resource collapse
    remains a failure condition; there is no directive deadline or scenario victory.
 
@@ -122,9 +137,10 @@ rewrites or disabling normal costs/failures to make tests pass.
 Tests are under `tests/`; dedicated native capture/export tools are under `tools/`.
 Use each report's specific fixture and completion criteria. Native screenshot
 fixtures require rendering, while logic checks can run headless. A launched debug
-executable does not prove its validation fixture ran. Current priorities are one
-frozen integrated package, reproducible multi-crew traffic, continuous animation
-review, the complete airlock excursion loop and longer human playtests.
+executable does not prove its validation fixture ran. The September 9 maintenance pass covers 18 regression suites and native UI checks;
+see its [scope and performance limits](docs/MAINTENANCE_2026-09-09.md). Remaining
+acceptance includes sustained multi-crew traffic, companion animation/pacing,
+dense-station performance and longer human playtests under normal resource costs.
 
 ## Repository contents
 
@@ -138,6 +154,7 @@ Do not blindly stage generated capture trees. Export presets may refer to local
 validation templates under `output/`; install/configure those before rebuilding
 validation executables. No release binaries or player saves are included here.
 
-## 📄 Licence
+## ðŸ“„ Licence
 
-All rights reserved. This repository is public so the work can be read and referenced, not relicensed. The code, copy, and creative assets remain © Brin Shadewater / Shadewater Labs. If you want to use something here, ask.
+Source-available, with all rights reserved. See [NOTICE.md](NOTICE.md) for rights
+and reuse terms. Third-party components retain their own licences.

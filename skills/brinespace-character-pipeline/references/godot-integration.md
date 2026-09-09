@@ -108,3 +108,21 @@ On Windows, wait for a GUI Godot process to finish and read its log rather than
 assuming the shell returning means the test completed. Fixtures should set their
 isolated preferences before scene initialization. Package/export verification is
 separate and needed only when packaging is in the requested scope.
+
+Installation activity: derive operator-side approaches from current prop bounds, allow alternate positions along that edge, and let the existing navigation graph prove reachability. Use a doorway-side start for a doorway approach fixture; arbitrary farthest nodes can be isolated pockets. Preserve authored direction coverage: east interaction is not a four-direction work pack, and standing rest is not seated rest. Save ordinary action fields and check disk restoration plus service interruption. See docs/CREW_ROOM_ACTIVITY_2026-09-08.md.
+
+Portrait comms: keep the panel within station-view bounds rather than over the HUD. Separate session history from persistent speed preferences; replay must not append duplicate history. Gate generic discovery dialogue after accepted discovery and never disclose hidden recipes. Warn on low AND declining reserves, not unused zero stock. Bound ambient cadence and event duplicates. Check both small-window containment and contextual event state. See docs/CREW_COMMS_2026-09-08.md.
+
+Completion dialogue must consume an explicit successful activity event, not infer success from changed status text. Test natural timer completion against a power-interruption negative control. Persistent comms archives use validated bounded entries and temporary-file replacement; preserve malformed originals. Derive fixture archive paths from isolated run-save paths so tests never alter player history.
+
+Interactive comms: distinguish fresh scene startup, Continue, and in-scene loop restart; reset transient dialogue keys on restart while retaining archives. Consume crew clicks before room selection only when no blueprint is selected, using the rendered foot/body scale. Test construction precedence, absent/dead actors, pending-report retention, reply reveal timing, and expanded panel containment at the minimum window size. Read contextual replies from current actor/room and resource forecast state; do not expose hidden recipes.
+
+Contact pickers must refresh available living actors when opened and revalidate on selection. Switching manual contacts should preserve pending reports. Queue priority should preserve arrival order among urgent reports and avoid replacing the message being read; test these independently from the visual urgency cue.
+
+Closing a conversation should distinguish minimizing from discarding queued events. Verify that hidden typewriter progress stays fixed, the inbox respects overlay and viewport bounds, and contextual journal navigation restores the prior pause state. Describe scene-local unread retention separately from persistent displayed history.
+
+Character dialogue: keep authored opinions separate from live resource/activity values. Room flavor must not imply machinery is operational unless that state is checked. Preserve a definition fallback for rooms without authored lines, verify numeric substitution for every speaker, and distinguish writing review from runtime tests.
+
+Room conversations should label observed operation separately from a next-cycle forecast. Snapshot the discussed cell/type for contextual actions, validate it before locating, and do not silently retarget an old reply to the actor's new room. Explain when asking again refreshes status.
+
+Owner-directed compact comms supersedes the expanded popup guidance: visible controls are only Next/X, with side-panel access. Measure auto-dismiss from text completion, not message arrival; test manual reveal, new dialogue after close, queued advance, overlay suspension and the exact visible control count. Do not restore earlier controls merely because their data helpers remain.

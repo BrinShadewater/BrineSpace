@@ -35,7 +35,7 @@ func capture_mature_station() -> void:
 		expect(game.grid_view._room_light_target(game.occupied[cells[2]])==0,"Power-starved room darkens")
 		expect(neighbor==room_pixels(cells[1]).get_data(),"Neighbor pixels unchanged by another room's lighting")
 		var anchors: Array = game.grid_view.RoomLighting.ANCHORS
-		expect(anchors==[Vector2(-110,-188),Vector2(110,-188)],"Two fixed north sconces independent of rotation")
+		expect(anchors==[Vector2(-110,preload("res://rooms/whole-room/riser_geometry.gd").CAP_TOP+3),Vector2(110,preload("res://rooms/whole-room/riser_geometry.gd").CAP_TOP+3)],"Two fixed north sconces independent of rotation")
 		for anchor in anchors:
 			expect(absf(anchor.x)-10>36 and absf(anchor.x)+10<184,"Fixture clears north door and corners")
 		game.grid_view.room_light_levels[cells[2]] = 1.0

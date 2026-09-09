@@ -44,13 +44,15 @@ static func busy(game,cell: Vector2i,requester=null) -> bool:
 		if actor.helmet_action_active() and actor.cell_at(actor.foot)==cell: return true
 	return false
 
-static func request(game,id: String,cell: Vector2i) -> bool:
+static func request(game,id: String,cell: Vector2i, refill := false) -> bool:
 	if not Architects.IDS.has(id) or not Architects.present(game,id) or not ready(game,cell): return false
 	var actor=Architects.actor_for(game,id)
+	if not actor.needs_air(): return false
+	if not actor.expedition.is_empty(): return false
 	if busy(game,cell,actor) or not actor.locker_request.is_empty(): return false
 	if actor.topology(game)!=actor.signature: actor.rebuild(game)
 	var target:=locker(game,cell)
-	if target.is_empty() or not actor.request_helmet_at_locker(not actor.helmet_equipped,target): return false
+	if target.is_empty() or not actor.request_helmet_at_locker(actor.helmet_equipped if refill else not actor.helmet_equipped,target,refill): return false
 	game._log("%s: diving locker assigned. Check the seal twice." % Architects.NAMES[id],false)
 	return true
 

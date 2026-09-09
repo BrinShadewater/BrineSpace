@@ -1,0 +1,60 @@
+{
+  "asset_id": "galley-south-wall",
+  "department": "Crew / habitation",
+  "condition": "maintained",
+  "attachment_class": "self-supporting cabinet against sealed south wall",
+  "camera_and_facing": "overhead; backing bottom; controls and drawer handles top",
+  "references": [
+    {
+      "path": "assets/galley-wall-v1/galley-wall.png",
+      "sha256": "0db554ebe8d835f106c6a264e8f27551ce5ed675c6e2a0fe686cf64f94f930b0",
+      "role": "candidate galley subject/material reference, not directional geometry or owner acceptance"
+    }
+  ],
+  "source_path": "assets/galley-south-wall-v1/source-v3.png",
+  "source_sha256": "1f72d4e14573c7026c7a75168d4c3286e0cc68dee2169db3f552f96af451fbc0",
+  "export_path": "assets/galley-south-wall-v1/galley-south-wall.png",
+  "export_sha256": "ef46454be397902399b572b3767a62deb205f45a4ff59e807a744d0702996c3a",
+  "native_canvas_px": [
+    2006,
+    784
+  ],
+  "proposed_display_width_world": 328,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Requires uninterrupted south wall; actual collision and routes pending."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte putty and chestnut; restrained controls and quiet glazing."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/galley-south-wall-review.png",
+      "findings": [
+        "328-unit width beside furnished room and crew reference.",
+        "Top handles and cooker controls, bottom backing; basin tap projects up, cups above boiler.",
+        "Small tap simplifies at scale; no enlargement to expose detail."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "RGB source; exterior-neutral vector registration at minimum110 and spread22; one polygon.",
+        "Light/dark review shows no visible checkerboard and intact pale interiors."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "South candidate retained north backing despite correct cooking controls; audit backing and touchpoints separately.",
+    "V2 omitted boiler nozzle; focused V3 restored it."
+  ]
+}

@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/tidal-condenser/tidal_condenser-source-v1.png"))==OK)
+	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v1/tidal-equipment.png"))==OK)
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"tidal_coils","rect":Rect2(-165,-143,108,64),"pivot":Vector2(348,510),"width":419.0,"outline":[Vector2(140,174),Vector2(163,172),Vector2(164,180),Vector2(191,179),Vector2(204,160),Vector2(222,155),Vector2(247,157),Vector2(260,171),Vector2(431,171),Vector2(445,156),Vector2(477,158),Vector2(492,174),Vector2(511,174),Vector2(514,185),Vector2(538,189),Vector2(550,204),Vector2(558,475),Vector2(543,505),Vector2(490,510),Vector2(477,497),Vector2(215,497),Vector2(201,510),Vector2(157,510),Vector2(140,491)]},
@@ -24,8 +24,8 @@ func rebuild() -> void:
 	if dressing!=null: dressing.place()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("41474a"),Color(0.17,0.19,0.20,0.35),2,"wet")
-	RoomFloor.draw_dressing(painter,center,edges,"wet")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("41474a"),Color(0.17,0.19,0.20,0.35),2,"wet")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"wet")
 	if dressing!=null: dressing.floor()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:

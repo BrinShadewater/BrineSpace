@@ -1,0 +1,5167 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/current_turbine.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"power_machine"
+					],
+					"purpose": "turbine bearing inspection",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"current_turbine_service_bench"
+					],
+					"purpose": "service bench footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/power-expansion-v1/power_room_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "current_turbine",
+			"machinery": [
+				{
+					"id": "power_machine",
+					"rect": [
+						-125.0,
+						84.0,
+						250.0,
+						88.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						61.0,
+						-128.0,
+						88.0,
+						58.0
+					]
+				},
+				{
+					"id": "current_turbine_service_bench",
+					"rect": [
+						-137.0,
+						-106.0,
+						64.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/power-expansion-v1/current_turbine_view.gd"
+		},
+		"layered": true,
+		"room": "current_turbine",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "power_machine",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "current_turbine_service_bench",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/power-expansion-v1/current_turbine_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/biomass_digester.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"power_machine"
+					],
+					"purpose": "digestate washdown outlet",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"biomass_digester_service_bench"
+					],
+					"purpose": "sampling service isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/power-expansion-v1/power_room_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "biomass_digester",
+			"machinery": [
+				{
+					"id": "power_machine",
+					"rect": [
+						-110.0,
+						24.0,
+						220.0,
+						88.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						61.0,
+						-128.0,
+						88.0,
+						58.0
+					]
+				},
+				{
+					"id": "biomass_digester_service_bench",
+					"rect": [
+						-137.0,
+						-106.0,
+						64.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/power-expansion-v1/biomass_digester_view.gd"
+		},
+		"layered": true,
+		"room": "biomass_digester",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "power_machine",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "biomass_digester_service_bench",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/power-expansion-v1/biomass_digester_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/heat_recovery.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"power_machine"
+					],
+					"purpose": "heat exchanger service isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"heat_recovery_service_bench"
+					],
+					"purpose": "maintenance footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/power-expansion-v1/power_room_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "heat_recovery",
+			"machinery": [
+				{
+					"id": "power_machine",
+					"rect": [
+						-135.0,
+						24.0,
+						270.0,
+						88.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						61.0,
+						-128.0,
+						88.0,
+						58.0
+					]
+				},
+				{
+					"id": "heat_recovery_service_bench",
+					"rect": [
+						-137.0,
+						-106.0,
+						64.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/power-expansion-v1/heat_recovery_view.gd"
+		},
+		"layered": true,
+		"room": "heat_recovery",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "power_machine",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "heat_recovery_service_bench",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/power-expansion-v1/heat_recovery_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/airlock.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-straight",
+					"hosts": [
+						"changing_bench"
+					],
+					"purpose": "wet suit runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"air_compressor"
+					],
+					"purpose": "compressor inspection",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/airlock-v1/airlock_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "airlock",
+			"machinery": [
+				{
+					"id": "suit_lockers",
+					"rect": [
+						85.0,
+						-25.0,
+						70.0,
+						90.0
+					]
+				},
+				{
+					"id": "outer_hatch",
+					"rect": [
+						-36.0,
+						-190.0,
+						72.0,
+						12.0
+					]
+				},
+				{
+					"id": "air_compressor",
+					"rect": [
+						-153.0,
+						-73.0,
+						60.0,
+						32.0
+					]
+				},
+				{
+					"id": "changing_bench",
+					"rect": [
+						-153.0,
+						109.0,
+						83.0,
+						24.0
+					]
+				},
+				{
+					"id": "pressure_chamber",
+					"rect": [
+						-60.0,
+						-184.0,
+						120.0,
+						220.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/underwater/airlock-v1/airlock_view.gd"
+		},
+		"layered": true,
+		"room": "airlock",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "suit_lockers",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "outer_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "air_compressor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "changing_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "pressure_chamber",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/airlock-v1/airlock_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/construction_drone_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "robotics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"construction_assembly_trestle"
+					],
+					"purpose": "assembly staging boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"construction_hatch"
+					],
+					"purpose": "launch service restraint",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/mining_drone_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "construction_drone_bay",
+			"machinery": [
+				{
+					"id": "construction_rov",
+					"rect": [
+						-156.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_bench",
+					"rect": [
+						66.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_hatch",
+					"rect": [
+						-156.0,
+						-12.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_panels",
+					"rect": [
+						66.0,
+						79.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_parts_trolley",
+					"rect": [
+						98.0,
+						-45.0,
+						46.0,
+						16.0
+					]
+				},
+				{
+					"id": "construction_inspection_light",
+					"rect": [
+						158.0,
+						-30.0,
+						14.0,
+						8.0
+					]
+				},
+				{
+					"id": "construction_assembly_trestle",
+					"rect": [
+						80.0,
+						25.0,
+						72.0,
+						26.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/robotics-service.png",
+			"source_sha256": "1b28908a73cecc263b2e4f70b122d5a3b0ce57ea1822700dccc12fb2741220f7",
+			"view": "res://rooms/production-ten/construction_drone_bay_view.gd"
+		},
+		"layered": true,
+		"room": "construction_drone_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "construction_rov",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "construction_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "construction_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "construction_panels",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "construction_parts_trolley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "construction_inspection_light",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "construction_assembly_trestle",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/production-ten/construction_drone_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/brine_core.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "brine",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"brine_chamber"
+					],
+					"purpose": "chamber inspection port",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"brine_server"
+					],
+					"purpose": "recessed server service entry",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/brine-core/brine_core_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "brine_core",
+			"machinery": [
+				{
+					"id": "brine_chamber",
+					"rect": [
+						-52.0,
+						-40.0,
+						104.0,
+						80.0
+					]
+				},
+				{
+					"id": "brine_observation_pedestal",
+					"rect": [
+						97.0,
+						69.0,
+						24.0,
+						12.0
+					]
+				},
+				{
+					"id": "brine_dual_workstation",
+					"rect": [
+						72.0,
+						-123.0,
+						94.0,
+						30.0
+					]
+				},
+				{
+					"id": "brine_diagnostics",
+					"rect": [
+						-158.0,
+						112.0,
+						64.0,
+						30.0
+					]
+				},
+				{
+					"id": "brine_server",
+					"rect": [
+						132.0,
+						125.0,
+						32.0,
+						26.0
+					]
+				}
+			],
+			"opacity": 0.16,
+			"source": "res://assets/department-floors-v2/brine-ceramic.png",
+			"source_sha256": "68e3d511374255d724cde2bda5e08d3bc2ff5f8708fc9c4d5b88305efd031c67",
+			"view": "res://rooms/underwater/brine-core/brine_core_view.gd"
+		},
+		"layered": true,
+		"room": "brine_core",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "brine_chamber",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_observation_pedestal",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_dual_workstation",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_diagnostics",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "brine_server",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/brine-core/brine_core_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/solar_array.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"thermal_pumps"
+					],
+					"purpose": "coolant service access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"thermal_service_table"
+					],
+					"purpose": "operator footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/thermal-control/solar_array_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "solar_array",
+			"machinery": [
+				{
+					"id": "thermal_exchangers",
+					"rect": [
+						-165.0,
+						-126.059692382813,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "thermal_converter",
+					"rect": [
+						-31.0,
+						-126.847457885742,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "thermal_monitor",
+					"rect": [
+						-165.0,
+						79.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "thermal_pumps",
+					"rect": [
+						57.0,
+						79.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "thermal_service_table",
+					"rect": [
+						97.0,
+						3.0,
+						64.0,
+						22.0
+					]
+				},
+				{
+					"id": "thermal_pressure_bottle",
+					"rect": [
+						85.0,
+						-104.5,
+						26.0,
+						9.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/underwater/thermal-control/solar_array_view.gd"
+		},
+		"layered": true,
+		"room": "solar_array",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "thermal_exchangers",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "thermal_converter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "thermal_monitor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "thermal_pumps",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "thermal_service_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "thermal_pressure_bottle",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/thermal-control/solar_array_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/reactor.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"reactor_cooler"
+					],
+					"purpose": "coolant maintenance outlet",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"reactor_console"
+					],
+					"purpose": "console floor access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/reactor_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "reactor",
+			"machinery": [
+				{
+					"id": "reactor_chamber",
+					"rect": [
+						-52.0,
+						-40.0,
+						104.0,
+						80.0
+					]
+				},
+				{
+					"id": "reactor_cooler",
+					"rect": [
+						-164.0,
+						-150.0,
+						70.0,
+						54.0
+					]
+				},
+				{
+					"id": "reactor_console",
+					"rect": [
+						94.0,
+						119.0,
+						70.0,
+						34.0
+					]
+				},
+				{
+					"id": "reactor_service_table",
+					"rect": [
+						-164.0,
+						111.0,
+						76.0,
+						26.0
+					]
+				},
+				{
+					"id": "reactor_task_lamp",
+					"rect": [
+						-78.0,
+						121.0,
+						14.0,
+						8.0
+					]
+				},
+				{
+					"id": "reactor_service_cylinder",
+					"rect": [
+						-82.0,
+						-117.0,
+						24.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/whole-room/reactor_view.gd"
+		},
+		"layered": true,
+		"room": "reactor",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "reactor_chamber",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reactor_cooler",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reactor_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reactor_service_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reactor_task_lamp",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reactor_service_cylinder",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/whole-room/reactor_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/battery_array.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"battery_distribution"
+					],
+					"purpose": "distribution service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"battery_test_bench"
+					],
+					"purpose": "electrical test footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/battery_array_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "battery_array",
+			"machinery": [
+				{
+					"id": "battery_bank_west",
+					"rect": [
+						-165.0,
+						-119.0,
+						114.0,
+						64.0
+					]
+				},
+				{
+					"id": "battery_bank_east",
+					"rect": [
+						51.0,
+						45.0,
+						114.0,
+						64.0
+					]
+				},
+				{
+					"id": "battery_breaker",
+					"rect": [
+						-168.0,
+						62.0,
+						72.0,
+						44.0
+					]
+				},
+				{
+					"id": "battery_distribution",
+					"rect": [
+						-90.0,
+						110.0,
+						58.0,
+						36.0
+					]
+				},
+				{
+					"id": "battery_test_bench",
+					"rect": [
+						67.0,
+						-80.0,
+						96.0,
+						26.0
+					]
+				},
+				{
+					"id": "battery_cable_reel",
+					"rect": [
+						45.0,
+						-140.0,
+						28.0,
+						12.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/production-ten/battery_array_view.gd"
+		},
+		"layered": true,
+		"room": "battery_array",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "battery_bank_west",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "battery_bank_east",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "battery_breaker",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "battery_distribution",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "battery_test_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "battery_cable_reel",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/production-ten/battery_array_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/mining_drone_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "robotics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"mining_hatch"
+					],
+					"purpose": "recovery restraint",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_drone-service-wall"
+					],
+					"purpose": "flush service wall access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/mining_drone_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "mining_drone_bay",
+			"machinery": [
+				{
+					"id": "mining_rov",
+					"rect": [
+						67.0,
+						-132.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "mining_hatch",
+					"rect": [
+						67.0,
+						86.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "mining_component_table",
+					"rect": [
+						89.0,
+						6.0,
+						64.0,
+						22.0
+					]
+				},
+				{
+					"id": "full_wall_drone-service-wall",
+					"rect": [
+						-174.0,
+						-164.0,
+						104.560409545898,
+						328.0
+					]
+				},
+				{
+					"id": "mining_inspection_lamp",
+					"rect": [
+						45.3999938964844,
+						51.7000007629395,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/robotics-service.png",
+			"source_sha256": "1b28908a73cecc263b2e4f70b122d5a3b0ce57ea1822700dccc12fb2741220f7",
+			"view": "res://rooms/full-wall-v1/mining_drone_bay_view.gd"
+		},
+		"layered": true,
+		"room": "mining_drone_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "mining_rov",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "mining_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_drone-service-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "mining_component_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "mining_inspection_lamp",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/mining_drone_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/salvage_drone_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "robotics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"salvage_sorter"
+					],
+					"purpose": "sorting transfer boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"salvage_winch"
+					],
+					"purpose": "winch service restraint",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/salvage_drone_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "salvage_drone_bay",
+			"machinery": [
+				{
+					"id": "salvage_rov",
+					"rect": [
+						-156.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_winch",
+					"rect": [
+						66.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_sorter",
+					"rect": [
+						-162.0,
+						98.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_hatch",
+					"rect": [
+						66.0,
+						23.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_intake_bench",
+					"rect": [
+						-134.0,
+						-1.0,
+						76.0,
+						26.0
+					]
+				},
+				{
+					"id": "salvage_recovery_tray",
+					"rect": [
+						91.0,
+						120.0,
+						56.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/robotics-service.png",
+			"source_sha256": "1b28908a73cecc263b2e4f70b122d5a3b0ce57ea1822700dccc12fb2741220f7",
+			"view": "res://rooms/production-ten/salvage_drone_bay_view.gd"
+		},
+		"layered": true,
+		"room": "salvage_drone_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "salvage_rov",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "salvage_winch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "salvage_sorter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "salvage_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "salvage_intake_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "salvage_recovery_tray",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/production-ten/salvage_drone_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/gravity_loom.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "anomaly",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"loom_apparatus"
+					],
+					"purpose": "apparatus calibration port",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"loom_calibration_bench"
+					],
+					"purpose": "calibration supply entry",
+					"rotations": {
+						"2": {
+							"stand_off": 32.0
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "gravity_loom",
+			"machinery": [
+				{
+					"id": "loom_apparatus",
+					"rect": [
+						-90.0,
+						-60.0,
+						180.0,
+						120.0
+					]
+				},
+				{
+					"id": "loom_calibration_bench",
+					"rect": [
+						-166.0,
+						115.0,
+						84.0,
+						30.0
+					]
+				},
+				{
+					"id": "loom_task_light",
+					"rect": [
+						-70.0,
+						135.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/anomaly-floor.png",
+			"source_sha256": "15af18a8de4ec0f346130ef8582e5d117badb7fc63aa305976e7ce1c93e3052a",
+			"view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd"
+		},
+		"layered": true,
+		"room": "gravity_loom",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "loom_apparatus",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "loom_calibration_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "loom_task_light",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/tidal_condenser.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"tidal_pump"
+					],
+					"purpose": "condensate service outlet",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"tidal_tanks"
+					],
+					"purpose": "tank drain isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/tidal-condenser/tidal_condenser_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "tidal_condenser",
+			"machinery": [
+				{
+					"id": "tidal_coils",
+					"rect": [
+						-165.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "tidal_tanks",
+					"rect": [
+						57.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "tidal_pump",
+					"rect": [
+						-165.0,
+						93.0,
+						84.0,
+						52.0
+					]
+				},
+				{
+					"id": "tidal_monitor",
+					"rect": [
+						81.0,
+						94.0,
+						84.0,
+						52.0
+					]
+				},
+				{
+					"id": "tidal_sampling_bench",
+					"rect": [
+						-40.0,
+						-107.0,
+						80.0,
+						30.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/underwater/tidal-condenser/tidal_condenser_view.gd"
+		},
+		"layered": true,
+		"room": "tidal_condenser",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "tidal_coils",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "tidal_tanks",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "tidal_pump",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "tidal_monitor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "tidal_sampling_bench",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/tidal-condenser/tidal_condenser_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/mycelium_nursery.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "agriculture",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-end_cap",
+					"hosts": [
+						"filter"
+					],
+					"purpose": "filter washdown terminus",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"bench"
+					],
+					"purpose": "substrate preparation footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/nursery_furnished_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "mycelium_nursery",
+			"machinery": [
+				{
+					"id": "bench",
+					"rect": [
+						-165.015502929688,
+						96.4651184082031,
+						118.031005859375,
+						47.069766998291
+					]
+				},
+				{
+					"id": "filter",
+					"rect": [
+						62.1240310668945,
+						38.7906951904297,
+						113.751937866211,
+						52.4186019897461
+					]
+				},
+				{
+					"id": "nursery_supply_trolley",
+					"rect": [
+						-164.0,
+						39.0,
+						44.0,
+						16.0
+					]
+				},
+				{
+					"id": "nursery_substrate_stand",
+					"rect": [
+						38.0,
+						131.0,
+						52.0,
+						20.0
+					]
+				},
+				{
+					"id": "full_wall_mycelium-cultivation-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						132.452926635742
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/agriculture-floor.png",
+			"source_sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee",
+			"view": "res://rooms/full-wall-v1/mycelium_nursery_view.gd"
+		},
+		"layered": true,
+		"room": "mycelium_nursery",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_mycelium-cultivation-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "filter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "nursery_substrate_stand",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "nursery_supply_trolley",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/mycelium_nursery_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/hydroponics_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "agriculture",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-straight",
+					"hosts": [
+						"hydro_nutrients"
+					],
+					"purpose": "nutrient service runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"hydro_bed_west"
+					],
+					"purpose": "irrigation isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/hydroponics_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "hydroponics_bay",
+			"machinery": [
+				{
+					"id": "hydro_bed_west",
+					"rect": [
+						-163.0,
+						-147.0,
+						106.0,
+						80.0
+					]
+				},
+				{
+					"id": "hydro_bed_east",
+					"rect": [
+						57.0,
+						-147.0,
+						106.0,
+						80.0
+					]
+				},
+				{
+					"id": "hydro_nutrients",
+					"rect": [
+						-160.0,
+						55.0,
+						66.0,
+						44.0
+					]
+				},
+				{
+					"id": "hydro_harvest",
+					"rect": [
+						77.0,
+						104.0,
+						88.0,
+						48.0
+					]
+				},
+				{
+					"id": "hydro_potting_trolley",
+					"rect": [
+						9.0,
+						124.0,
+						56.0,
+						22.0
+					]
+				},
+				{
+					"id": "hydro_harvest_stand",
+					"rect": [
+						-155.0,
+						133.0,
+						65.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/agriculture-floor.png",
+			"source_sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee",
+			"view": "res://rooms/whole-room/hydroponics_view.gd"
+		},
+		"layered": true,
+		"room": "hydroponics_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "hydro_bed_west",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_bed_east",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_nutrients",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_harvest",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_potting_trolley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_harvest_stand",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/whole-room/hydroponics_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/life_support.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"life_filter"
+					],
+					"purpose": "filter purge outlet",
+					"rotations": {
+						"1": {
+							"scale": 0.6
+						},
+						"2": {
+							"scale": 0.6
+						}
+					},
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"life_tank"
+					],
+					"purpose": "fluid service isolation",
+					"rotations": {
+						"1": {
+							"scale": 0.4
+						},
+						"2": {
+							"scale": 0.4
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/underwater_life_support_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "life_support",
+			"machinery": [
+				{
+					"id": "life_fan",
+					"rect": [
+						-165.0,
+						-113.0,
+						108.0,
+						54.0
+					]
+				},
+				{
+					"id": "life_filter",
+					"rect": [
+						57.0,
+						-151.0,
+						108.0,
+						78.0
+					]
+				},
+				{
+					"id": "life_tank",
+					"rect": [
+						-165.0,
+						107.0,
+						74.0,
+						42.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						-80.0,
+						111.0,
+						60.0,
+						38.0
+					]
+				},
+				{
+					"id": "life_service_cart",
+					"rect": [
+						83.0,
+						108.0,
+						56.0,
+						24.0
+					]
+				},
+				{
+					"id": "life_pressure_bottle",
+					"rect": [
+						148.0,
+						96.0,
+						24.0,
+						8.0
+					]
+				},
+				{
+					"id": "life_filter_bench",
+					"rect": [
+						-157.0,
+						47.0,
+						64.0,
+						26.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/whole-room/underwater_life_support_view.gd"
+		},
+		"layered": true,
+		"room": "life_support",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "life_fan",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_filter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_tank",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_service_cart",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_pressure_bottle",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_filter_bench",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/whole-room/underwater_life_support_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/crew_hab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "crew",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"hab_desk"
+					],
+					"purpose": "quiet flush utility access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-access_hatch",
+					"hosts": [
+						"full_wall_crew-hab-berth-wall"
+					],
+					"purpose": "compact berth ventilation hatch within the narrow service strip",
+					"rotations": {
+						"2": {
+							"stand_off": 48.0
+						}
+					},
+					"scale": 0.4
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/crew_hab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "crew_hab",
+			"machinery": [
+				{
+					"id": "hab_desk",
+					"rect": [
+						-132.0,
+						100.0,
+						96.0,
+						54.0
+					]
+				},
+				{
+					"id": "hab_coat_stand",
+					"rect": [
+						-164.0,
+						108.0,
+						18.0,
+						9.0
+					]
+				},
+				{
+					"id": "full_wall_crew-hab-berth-wall",
+					"rect": [
+						-146.776275634766,
+						-174.0,
+						293.552551269531,
+						134.0
+					]
+				},
+				{
+					"id": "hab_berth_west",
+					"rect": [
+						48.3131256103516,
+						52.3434295654297,
+						62.0,
+						92.0
+					]
+				},
+				{
+					"id": "hab_reading_lamp",
+					"rect": [
+						156.0,
+						-50.660285949707,
+						18.0,
+						8.0
+					]
+				},
+				{
+					"id": "hab_drying_rack",
+					"rect": [
+						120.0,
+						43.4024200439453,
+						54.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/habitation-composite.png",
+			"source_sha256": "6d61be8c35cd3a10cd7d7021d10fcd2e0df97a9eb3e71c1ad67c6e4309d69b58",
+			"view": "res://rooms/full-wall-v1/crew_hab_view.gd"
+		},
+		"layered": true,
+		"room": "crew_hab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_crew-hab-berth-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_desk",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_berth_west",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_drying_rack",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_coat_stand",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_reading_lamp",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/crew_hab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/research_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_research-analysis-wall"
+					],
+					"purpose": "analysis wall service access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"reagent_trolley"
+					],
+					"purpose": "clean sample transfer boundary",
+					"scale": 0.6
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/research_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "research_lab",
+			"machinery": [
+				{
+					"id": "research_scanner",
+					"rect": [
+						-162.0,
+						22.0,
+						106.0,
+						68.0
+					]
+				},
+				{
+					"id": "preparation_island",
+					"rect": [
+						39.0,
+						60.0,
+						88.0,
+						34.0
+					]
+				},
+				{
+					"id": "reagent_trolley",
+					"rect": [
+						139.0,
+						88.0,
+						30.0,
+						12.0
+					]
+				},
+				{
+					"id": "full_wall_research-analysis-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						123.642807006836
+					]
+				},
+				{
+					"id": "sample_cooler",
+					"rect": [
+						144.0,
+						-17.2686576843262,
+						30.0,
+						10.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/research_lab_view.gd"
+		},
+		"layered": true,
+		"room": "research_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_research-analysis-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "research_scanner",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "preparation_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reagent_trolley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "sample_cooler",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/research_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/cryo_chamber.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"cryo_pod_0"
+					],
+					"purpose": "pod coolant isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_cryo-support-wall"
+					],
+					"purpose": "cryo control service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/cryo_chamber_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "cryo_chamber",
+			"machinery": [
+				{
+					"id": "cryo_console",
+					"rect": [
+						70.0,
+						99.0,
+						84.0,
+						57.0
+					]
+				},
+				{
+					"id": "cryo_supply_trolley",
+					"rect": [
+						82.0,
+						29.0,
+						60.0,
+						24.0
+					]
+				},
+				{
+					"id": "cryo_transfer_cooler",
+					"rect": [
+						-58.0,
+						135.0,
+						30.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_cryo-support-wall",
+					"rect": [
+						-174.0,
+						-164.0,
+						90.2082901000977,
+						328.0
+					]
+				},
+				{
+					"id": "cryo_pod_0",
+					"rect": [
+						47.4259338378906,
+						-144.101852416992,
+						62.0,
+						90.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/cryo_chamber_view.gd"
+		},
+		"layered": true,
+		"room": "cryo_chamber",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_cryo-support-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "cryo_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "cryo_pod_0",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "cryo_supply_trolley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "cryo_transfer_cooler",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/cryo_chamber_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/clone_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-end_cap",
+					"hosts": [
+						"clone_nutrients"
+					],
+					"purpose": "nutrient handling runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"clone_console"
+					],
+					"purpose": "console service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/clone_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "clone_lab",
+			"machinery": [
+				{
+					"id": "clone_nutrients",
+					"rect": [
+						-151.0,
+						96.0,
+						78.0,
+						59.0
+					]
+				},
+				{
+					"id": "clone_console",
+					"rect": [
+						67.0,
+						99.0,
+						94.0,
+						56.0
+					]
+				},
+				{
+					"id": "full_wall_clone-growth-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						129.663909912109
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/clone_lab_view.gd"
+		},
+		"layered": true,
+		"room": "clone_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_clone-growth-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "clone_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "clone_nutrients",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/clone_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/quarantine_cell.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"quarantine_preparation"
+					],
+					"purpose": "clean preparation boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"quarantine_filter"
+					],
+					"purpose": "sealed filter service",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/quarantine_cell_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "quarantine_cell",
+			"machinery": [
+				{
+					"id": "quarantine_berth",
+					"rect": [
+						-165.0,
+						-128.0,
+						120.0,
+						72.0
+					]
+				},
+				{
+					"id": "quarantine_filter",
+					"rect": [
+						92.0,
+						-133.0,
+						70.0,
+						52.0
+					]
+				},
+				{
+					"id": "quarantine_monitor",
+					"rect": [
+						-28.0,
+						-105.0,
+						72.0,
+						44.0
+					]
+				},
+				{
+					"id": "quarantine_cabinet",
+					"rect": [
+						-166.0,
+						106.0,
+						74.0,
+						46.0
+					]
+				},
+				{
+					"id": "quarantine_preparation",
+					"rect": [
+						-62.0,
+						107.0,
+						84.0,
+						32.0
+					]
+				},
+				{
+					"id": "quarantine_sealed_cooler",
+					"rect": [
+						41.0,
+						117.0,
+						30.0,
+						10.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/production-ten/quarantine_cell_view.gd"
+		},
+		"layered": true,
+		"room": "quarantine_cell",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "quarantine_berth",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_filter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_monitor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_cabinet",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_preparation",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "quarantine_sealed_cooler",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/production-ten/quarantine_cell_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/data_archive.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "data",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"archive_rack_0"
+					],
+					"purpose": "rack service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"archive_terminal"
+					],
+					"purpose": "terminal inspection access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/data_archive_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "data_archive",
+			"machinery": [
+				{
+					"id": "archive_rack_0",
+					"rect": [
+						-143.0,
+						-99.8842163085938,
+						58.0,
+						60.0
+					]
+				},
+				{
+					"id": "archive_rack_1",
+					"rect": [
+						85.0,
+						-99.8842163085938,
+						58.0,
+						60.0
+					]
+				},
+				{
+					"id": "archive_library",
+					"rect": [
+						-154.0,
+						101.0,
+						84.0,
+						55.0
+					]
+				},
+				{
+					"id": "archive_terminal",
+					"rect": [
+						84.0,
+						46.0,
+						80.0,
+						50.0
+					]
+				},
+				{
+					"id": "archive_service_cart",
+					"rect": [
+						94.0,
+						136.0,
+						60.0,
+						24.0
+					]
+				},
+				{
+					"id": "archive_task_lamp",
+					"rect": [
+						70.0,
+						137.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/data-access.png",
+			"source_sha256": "b9534688a8d4bd27e1ffbf09a8b48235aa5298f957a2ca64d61caf81959123e9",
+			"view": "res://rooms/underwater/batch-two/data_archive_view.gd"
+		},
+		"layered": true,
+		"room": "data_archive",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "archive_rack_0",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_rack_1",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_library",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_terminal",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_service_cart",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "archive_task_lamp",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/batch-two/data_archive_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/ore_refinery.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_ore-refinery-wall"
+					],
+					"purpose": "refinery maintenance access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"refinery_pressure_unit"
+					],
+					"purpose": "process isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/ore_refinery_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "ore_refinery",
+			"machinery": [
+				{
+					"id": "refinery_sorter",
+					"rect": [
+						84.0,
+						37.0,
+						80.0,
+						50.0
+					]
+				},
+				{
+					"id": "refinery_pressure_unit",
+					"rect": [
+						54.0,
+						-20.0,
+						24.0,
+						8.0
+					]
+				},
+				{
+					"id": "full_wall_ore-refinery-wall",
+					"rect": [
+						-174.0,
+						-148.020309448242,
+						120.0,
+						296.040618896484
+					]
+				},
+				{
+					"id": "refinery_vessels",
+					"rect": [
+						71.8753204345703,
+						-125.730285644531,
+						98.0,
+						60.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/ore_refinery_view.gd"
+		},
+		"layered": true,
+		"room": "ore_refinery",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_ore-refinery-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "refinery_vessels",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "refinery_sorter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "refinery_pressure_unit",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/ore_refinery_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/storage_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "logistics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"storage_lift"
+					],
+					"purpose": "loading transfer boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"storage_secured_rack"
+					],
+					"purpose": "rack restraint socket",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/storage_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "storage_bay",
+			"machinery": [
+				{
+					"id": "storage_crates",
+					"rect": [
+						-170.0,
+						105.0,
+						62.0,
+						42.0
+					]
+				},
+				{
+					"id": "storage_shelves",
+					"rect": [
+						84.0,
+						-142.352935791016,
+						88.0,
+						56.0
+					]
+				},
+				{
+					"id": "storage_lift",
+					"rect": [
+						-100.0,
+						94.0,
+						66.0,
+						50.0
+					]
+				},
+				{
+					"id": "storage_secured_rack",
+					"rect": [
+						116.0,
+						-48.0,
+						52.0,
+						36.0
+					]
+				},
+				{
+					"id": "storage_packing_bench",
+					"rect": [
+						43.0,
+						91.0,
+						62.0,
+						24.0
+					]
+				},
+				{
+					"id": "storage_waiting_case",
+					"rect": [
+						-145.0,
+						-109.0,
+						34.0,
+						14.0
+					]
+				},
+				{
+					"id": "storage_task_light",
+					"rect": [
+						108.0,
+						91.0,
+						14.0,
+						8.0
+					]
+				},
+				{
+					"id": "storage_staging_pallet",
+					"rect": [
+						-130.0,
+						-57.0,
+						60.0,
+						25.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/storage-load-deck.png",
+			"source_sha256": "95aaf0bb8c3987d4855d6c56510e83e887f57b84f3bcd5d77340c029a18f4fa0",
+			"view": "res://rooms/production-ten/storage_bay_view.gd"
+		},
+		"layered": true,
+		"room": "storage_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "storage_crates",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_shelves",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_lift",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_secured_rack",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_packing_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_waiting_case",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_task_light",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_staging_pallet",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/production-ten/storage_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"med_preparation"
+					],
+					"purpose": "sterile preparation boundary",
+					"rotations": {
+						"1": {
+							"scale": 0.35,
+							"stand_off": 10.0
+						},
+						"3": {
+							"scale": 0.35,
+							"stand_off": 10.0
+						}
+					},
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_medical-treatment-wall"
+					],
+					"purpose": "treatment wall service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/med_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_bay",
+			"machinery": [
+				{
+					"id": "med_supply",
+					"rect": [
+						106.0,
+						105.0,
+						60.0,
+						42.0
+					]
+				},
+				{
+					"id": "med_preparation",
+					"rect": [
+						25.0,
+						102.0,
+						72.0,
+						28.0
+					]
+				},
+				{
+					"id": "med_sealed_cooler",
+					"rect": [
+						133.0,
+						55.0,
+						28.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_medical-treatment-wall",
+					"rect": [
+						-162.79248046875,
+						-174.0,
+						325.5849609375,
+						134.0
+					]
+				},
+				{
+					"id": "med_bed_0",
+					"rect": [
+						-168.704925537109,
+						32.7868957519531,
+						86.0,
+						56.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/med_bay_view.gd"
+		},
+		"layered": true,
+		"room": "med_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_medical-treatment-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_bed_0",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_preparation",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_supply",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_sealed_cooler",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/med_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/biodome.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "agriculture",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-straight",
+					"hosts": [
+						"biodome_aquatic"
+					],
+					"purpose": "aquatic servicing runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"biodome_processor"
+					],
+					"purpose": "fluid service isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/biodome_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "biodome",
+			"machinery": [
+				{
+					"id": "biodome_tree",
+					"rect": [
+						-159.0,
+						-133.782318115234,
+						94.0,
+						74.0
+					]
+				},
+				{
+					"id": "biodome_ferns",
+					"rect": [
+						51.0,
+						-121.0,
+						106.0,
+						76.0
+					]
+				},
+				{
+					"id": "biodome_aquatic",
+					"rect": [
+						-158.0,
+						72.0,
+						96.0,
+						66.0
+					]
+				},
+				{
+					"id": "biodome_processor",
+					"rect": [
+						58.0,
+						74.0,
+						108.0,
+						80.0
+					]
+				},
+				{
+					"id": "biodome_cultivation_cart",
+					"rect": [
+						-154.0,
+						15.0,
+						54.0,
+						20.0
+					]
+				},
+				{
+					"id": "biodome_propagation_shelf",
+					"rect": [
+						84.0,
+						12.0,
+						64.0,
+						24.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/agriculture-floor.png",
+			"source_sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee",
+			"view": "res://rooms/underwater/batch-two/biodome_view.gd"
+		},
+		"layered": true,
+		"room": "biodome",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "biodome_tree",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "biodome_ferns",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "biodome_aquatic",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "biodome_processor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "biodome_cultivation_cart",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "biodome_propagation_shelf",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/batch-two/biodome_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/xeno_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_xeno-containment-wall"
+					],
+					"purpose": "containment inspection access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"xeno_service_cart"
+					],
+					"purpose": "specimen transfer boundary",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/xeno_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "xeno_lab",
+			"machinery": [
+				{
+					"id": "xeno_samples",
+					"rect": [
+						-160.0,
+						67.0,
+						94.0,
+						68.0
+					]
+				},
+				{
+					"id": "xeno_workbench",
+					"rect": [
+						66.0,
+						84.0,
+						94.0,
+						70.0
+					]
+				},
+				{
+					"id": "full_wall_xeno-containment-wall",
+					"rect": [
+						-163.815002441406,
+						-174.0,
+						327.630004882813,
+						134.0
+					]
+				},
+				{
+					"id": "xeno_service_cart",
+					"rect": [
+						-108.0,
+						8.13674926757813,
+						50.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/xeno_lab_view.gd"
+		},
+		"layered": true,
+		"room": "xeno_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "xeno_scanner",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_xeno-containment-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_workbench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_samples",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_service_cart",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/xeno_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/anomaly_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"base_tint": "35323c",
+			"condition": "maintained",
+			"department": "anomaly",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"anomaly_platform"
+					],
+					"purpose": "platform inspection access",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"anomaly_diagnostics"
+					],
+					"purpose": "diagnostic service entry",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/xeno_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "anomaly_lab",
+			"machinery": [
+				{
+					"id": "anomaly_platform",
+					"rect": [
+						-54.0,
+						-135.0,
+						108.0,
+						86.0
+					]
+				},
+				{
+					"id": "anomaly_diagnostics",
+					"rect": [
+						65.0,
+						-10.0,
+						100.0,
+						72.0
+					]
+				},
+				{
+					"id": "anomaly_capacitors",
+					"rect": [
+						-159.0,
+						70.0,
+						98.0,
+						66.0
+					]
+				},
+				{
+					"id": "anomaly_receiver",
+					"rect": [
+						62.0,
+						96.0,
+						100.0,
+						62.0
+					]
+				},
+				{
+					"id": "anomaly_recording_cart",
+					"rect": [
+						-118.0,
+						-72.0,
+						56.0,
+						24.0
+					]
+				},
+				{
+					"id": "anomaly_task_light",
+					"rect": [
+						-157.0,
+						-64.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/anomaly-floor.png",
+			"source_sha256": "15af18a8de4ec0f346130ef8582e5d117badb7fc63aa305976e7ce1c93e3052a",
+			"view": "res://rooms/underwater/batch-two/anomaly_lab_view.gd"
+		},
+		"layered": true,
+		"room": "anomaly_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "anomaly_platform",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_diagnostics",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_capacitors",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_receiver",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_recording_cart",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_task_light",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/batch-two/anomaly_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/bio_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"bio_centrifuge"
+					],
+					"purpose": "sealed processing service",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"bio_cold_storage"
+					],
+					"purpose": "cold storage maintenance",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/biodome_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "bio_lab",
+			"machinery": [
+				{
+					"id": "bio_centrifuge",
+					"rect": [
+						-160.0,
+						49.0,
+						78.0,
+						60.0
+					]
+				},
+				{
+					"id": "bio_cold_storage",
+					"rect": [
+						94.0,
+						101.0,
+						68.0,
+						54.0
+					]
+				},
+				{
+					"id": "bio_sample_cooler",
+					"rect": [
+						47.0,
+						134.0,
+						30.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_bio-culture-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						120.160667419434
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/bio_lab_view.gd"
+		},
+		"layered": true,
+		"room": "bio_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_bio-culture-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bio_centrifuge",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bio_cold_storage",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bio_sample_cooler",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/bio_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/command_center.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "command",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"command_systems"
+					],
+					"purpose": "command systems service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"command_chart_credenza"
+					],
+					"purpose": "recessed chart station supply",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/command_center_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "command_center",
+			"machinery": [
+				{
+					"id": "command_ops",
+					"rect": [
+						-160.0,
+						-78.0,
+						72.0,
+						42.0
+					]
+				},
+				{
+					"id": "command_systems",
+					"rect": [
+						-158.0,
+						-144.341094970703,
+						80.0,
+						40.0
+					]
+				},
+				{
+					"id": "command_table",
+					"rect": [
+						-145.0,
+						80.0,
+						114.0,
+						66.0
+					]
+				},
+				{
+					"id": "command_comms",
+					"rect": [
+						64.0,
+						-120.0,
+						96.0,
+						58.0
+					]
+				},
+				{
+					"id": "command_chart_credenza",
+					"rect": [
+						103.0,
+						42.0,
+						58.0,
+						20.0
+					]
+				},
+				{
+					"id": "command_operator_chair",
+					"rect": [
+						112.0,
+						100.0,
+						38.0,
+						14.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/command-gunmetal.png",
+			"source_sha256": "286b5045e72dced150779a38d391835660e4ebf86b7d2bccf9c090b350d50852",
+			"view": "res://rooms/production-ten/command_center_view.gd"
+		},
+		"layered": true,
+		"room": "command_center",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "command_ops",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_systems",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_comms",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_chart_credenza",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_operator_chair",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/production-ten/command_center_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/pressure_control.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"flush_left",
+						"life_tank"
+					],
+					"purpose": "pressure line isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"flush_right",
+						"life_console"
+					],
+					"purpose": "pressure console inspection",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/rare-dead-ends/pressure_control_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "pressure_control",
+			"machinery": [
+				{
+					"id": "flush_back",
+					"rect": [
+						-174.0,
+						-174.0,
+						348.0,
+						150.0
+					]
+				},
+				{
+					"id": "flush_left",
+					"rect": [
+						-174.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "flush_right",
+					"rect": [
+						82.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/full-wall-v1/pressure_control_view.gd"
+		},
+		"layered": true,
+		"room": "pressure_control",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "flush_back",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_left",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_right",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/pressure_control_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/listening_post.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "acoustic",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_deepwater-listening-wall",
+						"flush_left",
+						"acoustic_listener"
+					],
+					"purpose": "hydrophone service access",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"full_wall_deepwater-listening-wall",
+						"flush_right",
+						"acoustic_receiver"
+					],
+					"purpose": "isolated signal feed",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/rare-dead-ends/listening_post_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "listening_post",
+			"machinery": [
+				{
+					"id": "flush_left",
+					"rect": [
+						-174.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "flush_right",
+					"rect": [
+						82.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "full_wall_deepwater-listening-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						101.762985229492
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v5/acoustic-floor.png",
+			"source_sha256": "4e93f398ffa4cda776f1a202f32265220930de8d7d61f47f25d1eec94720e5da",
+			"view": "res://rooms/full-wall-v1/listening_post_view.gd"
+		},
+		"layered": true,
+		"room": "listening_post",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "flush_back",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_left",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_right",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/listening_post_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/isolation_vault.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "command",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"full_wall_emergency-isolation-wall"
+					],
+					"purpose": "sealed vault isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_emergency-isolation-wall"
+					],
+					"purpose": "emergency control inspection",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/rare-dead-ends/isolation_vault_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "isolation_vault",
+			"machinery": [
+				{
+					"id": "flush_left",
+					"rect": [
+						-174.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "flush_right",
+					"rect": [
+						82.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "full_wall_emergency-isolation-wall",
+					"rect": [
+						-162.176559448242,
+						-174.0,
+						324.353118896484,
+						134.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/command-gunmetal.png",
+			"source_sha256": "286b5045e72dced150779a38d391835660e4ebf86b7d2bccf9c090b350d50852",
+			"view": "res://rooms/full-wall-v1/isolation_vault_view.gd"
+		},
+		"layered": true,
+		"room": "isolation_vault",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "flush_left",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_right",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_emergency-isolation-wall",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/isolation_vault_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/crew_lounge.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "crew",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"lounge_galley"
+					],
+					"purpose": "galley utility inspection",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-access_hatch",
+					"hosts": [
+						"full_wall_crew-lounge-built-in"
+					],
+					"purpose": "built-in ventilation access",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/crew_lounge_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "crew_lounge",
+			"machinery": [
+				{
+					"id": "lounge_galley",
+					"rect": [
+						-164.0,
+						99.0,
+						82.0,
+						52.0
+					]
+				},
+				{
+					"id": "lounge_games",
+					"rect": [
+						80.0,
+						47.0,
+						82.0,
+						50.0
+					]
+				},
+				{
+					"id": "tea_trolley",
+					"rect": [
+						-75.0,
+						120.0,
+						44.0,
+						18.0
+					]
+				},
+				{
+					"id": "coat_stand",
+					"rect": [
+						161.0,
+						141.5,
+						18.0,
+						9.0
+					]
+				},
+				{
+					"id": "full_wall_crew-lounge-built-in",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						116.365608215332
+					]
+				},
+				{
+					"id": "decor_lounge_0",
+					"rect": [
+						-156.0,
+						44.6271209716797,
+						24.0,
+						8.0
+					]
+				},
+				{
+					"id": "decor_lounge_1",
+					"rect": [
+						48.0,
+						52.1160125732422,
+						25.0,
+						9.0
+					]
+				},
+				{
+					"id": "reading_lamp",
+					"rect": [
+						-84.0,
+						44.8229675292969,
+						23.0,
+						8.0
+					]
+				},
+				{
+					"id": "book_console",
+					"rect": [
+						48.0,
+						144.586364746094,
+						62.0,
+						23.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/habitation-composite.png",
+			"source_sha256": "6d61be8c35cd3a10cd7d7021d10fcd2e0df97a9eb3e71c1ad67c6e4309d69b58",
+			"view": "res://rooms/full-wall-v1/crew_lounge_view.gd"
+		},
+		"layered": true,
+		"room": "crew_lounge",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_crew-lounge-built-in",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "lounge_galley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "book_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "lounge_games",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "tea_trolley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reading_lamp",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "coat_stand",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "decor_lounge_1",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "decor_lounge_0",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/crew_lounge_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/holographic_core.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "data",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"holo_compute"
+					],
+					"purpose": "compute service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"holo_calibrator"
+					],
+					"purpose": "calibrator floor access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/data_archive_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "holographic_core",
+			"machinery": [
+				{
+					"id": "holo_projector",
+					"rect": [
+						-172.0,
+						-139.0,
+						98.0,
+						66.0
+					]
+				},
+				{
+					"id": "holo_compute",
+					"rect": [
+						70.0,
+						-139.0,
+						84.0,
+						62.0
+					]
+				},
+				{
+					"id": "holo_calibrator",
+					"rect": [
+						-165.0,
+						45.0,
+						70.0,
+						50.0
+					]
+				},
+				{
+					"id": "holo_terminal",
+					"rect": [
+						66.0,
+						50.0,
+						96.0,
+						52.0
+					]
+				},
+				{
+					"id": "holo_calibration_cart",
+					"rect": [
+						-92.0,
+						87.0,
+						56.0,
+						24.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/data-access.png",
+			"source_sha256": "b9534688a8d4bd27e1ffbf09a8b48235aa5298f957a2ca64d61caf81959123e9",
+			"view": "res://rooms/underwater/batch-two/holographic_core_view.gd"
+		},
+		"layered": true,
+		"room": "holographic_core",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "holo_projector",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "holo_compute",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "holo_calibrator",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "holo_terminal",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "holo_calibration_cart",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/batch-two/holographic_core_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/maintenance_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"maintenance_diagnostics"
+					],
+					"purpose": "diagnostic operator footing",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_maintenance-repair-wall"
+					],
+					"purpose": "repair wall maintenance access",
+					"rotations": {
+						"2": {
+							"stand_off": 42.0
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/maintenance_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "maintenance_bay",
+			"machinery": [
+				{
+					"id": "maintenance_panels",
+					"rect": [
+						-166.0,
+						107.0,
+						70.0,
+						44.0
+					]
+				},
+				{
+					"id": "maintenance_diagnostics",
+					"rect": [
+						65.0,
+						90.0,
+						64.0,
+						42.0
+					]
+				},
+				{
+					"id": "parts_trolley",
+					"rect": [
+						-82.0,
+						121.0,
+						44.0,
+						16.0
+					]
+				},
+				{
+					"id": "air_service_bottle",
+					"rect": [
+						145.0,
+						112.0,
+						26.0,
+						9.0
+					]
+				},
+				{
+					"id": "full_wall_maintenance-repair-wall",
+					"rect": [
+						-138.705062866211,
+						-174.0,
+						277.410125732422,
+						134.0
+					]
+				},
+				{
+					"id": "repair_task_light",
+					"rect": [
+						-62.5999984741211,
+						51.6999969482422,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/maintenance_bay_view.gd"
+		},
+		"layered": true,
+		"room": "maintenance_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_maintenance-repair-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "maintenance_panels",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "maintenance_diagnostics",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "repair_task_light",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "parts_trolley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "air_service_bottle",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/maintenance_bay_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_center.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"medical_station"
+					],
+					"purpose": "clean station boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"medical_imaging"
+					],
+					"purpose": "imaging service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/med_center_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_center",
+			"machinery": [
+				{
+					"id": "medical_treatment",
+					"rect": [
+						-153.0,
+						-147.0,
+						82.0,
+						82.0
+					]
+				},
+				{
+					"id": "medical_imaging",
+					"rect": [
+						68.0,
+						-138.979309082031,
+						88.0,
+						84.0
+					]
+				},
+				{
+					"id": "medical_supplies",
+					"rect": [
+						-158.0,
+						94.0,
+						96.0,
+						64.0
+					]
+				},
+				{
+					"id": "medical_station",
+					"rect": [
+						64.0,
+						86.0,
+						98.0,
+						74.0
+					]
+				},
+				{
+					"id": "medical_care_trolley",
+					"rect": [
+						-70.0,
+						-52.0,
+						48.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/underwater/batch-two/med_center_view.gd"
+		},
+		"layered": true,
+		"room": "med_center",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "medical_treatment",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "medical_imaging",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "medical_supplies",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "medical_station",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "medical_care_trolley",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/batch-two/med_center_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_office.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"office_exam"
+					],
+					"purpose": "exam equipment service",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"office_records"
+					],
+					"purpose": "record cart stopping zone",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/med_office_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_office",
+			"machinery": [
+				{
+					"id": "office_desk",
+					"rect": [
+						-159.0,
+						-142.0,
+						98.0,
+						70.0
+					]
+				},
+				{
+					"id": "office_records",
+					"rect": [
+						79.0,
+						-127.309280395508,
+						66.0,
+						64.0
+					]
+				},
+				{
+					"id": "office_exam",
+					"rect": [
+						-157.0,
+						30.0,
+						90.0,
+						82.0
+					]
+				},
+				{
+					"id": "office_consultation",
+					"rect": [
+						70.0,
+						46.0,
+						88.0,
+						72.0
+					]
+				},
+				{
+					"id": "office_reference_shelf",
+					"rect": [
+						110.0,
+						-19.0,
+						52.0,
+						20.0
+					]
+				},
+				{
+					"id": "office_reading_lamp",
+					"rect": [
+						45.0,
+						79.0,
+						18.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/underwater/batch-two/med_office_view.gd"
+		},
+		"layered": true,
+		"room": "med_office",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "office_desk",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "office_records",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "office_exam",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "office_consultation",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "office_reference_shelf",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "office_reading_lamp",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/batch-two/med_office_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/radio_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "acoustic",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"acoustic_receiver"
+					],
+					"purpose": "receiver signal service",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"acoustic_electronics_bench"
+					],
+					"purpose": "electronics bench access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/acoustic-comms/radio_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "radio_lab",
+			"machinery": [
+				{
+					"id": "acoustic_listener",
+					"rect": [
+						-165.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "acoustic_transducers",
+					"rect": [
+						57.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "acoustic_receiver",
+					"rect": [
+						-165.0,
+						63.0,
+						80.0,
+						54.0
+					]
+				},
+				{
+					"id": "acoustic_bench",
+					"rect": [
+						83.0,
+						48.0,
+						82.0,
+						54.0
+					]
+				},
+				{
+					"id": "acoustic_electronics_bench",
+					"rect": [
+						-46.0,
+						112.0,
+						86.0,
+						30.0
+					]
+				},
+				{
+					"id": "acoustic_operator_chair",
+					"rect": [
+						-139.0,
+						-52.0,
+						38.0,
+						14.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v5/acoustic-floor.png",
+			"source_sha256": "4e93f398ffa4cda776f1a202f32265220930de8d7d61f47f25d1eec94720e5da",
+			"view": "res://rooms/underwater/acoustic-comms/radio_lab_view.gd"
+		},
+		"layered": true,
+		"room": "radio_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "acoustic_listener",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "acoustic_transducers",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "acoustic_receiver",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "acoustic_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "acoustic_electronics_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "acoustic_operator_chair",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/acoustic-comms/radio_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/shield_generator.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"hull_injector"
+					],
+					"purpose": "hull treatment supply isolation",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"hull_panel_cradle"
+					],
+					"purpose": "replacement panel staging",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/hull-integrity/shield_generator_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "shield_generator",
+			"machinery": [
+				{
+					"id": "hull_monitor",
+					"rect": [
+						-165.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "hull_test_rig",
+					"rect": [
+						57.0,
+						-141.208114624023,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "hull_injector",
+					"rect": [
+						-165.0,
+						92.0,
+						84.0,
+						54.0
+					]
+				},
+				{
+					"id": "hull_patch_rack",
+					"rect": [
+						80.0,
+						100.0,
+						84.0,
+						54.0
+					]
+				},
+				{
+					"id": "hull_calibration_bench",
+					"rect": [
+						80.0,
+						-8.0,
+						84.0,
+						32.0
+					]
+				},
+				{
+					"id": "hull_panel_cradle",
+					"rect": [
+						-162.0,
+						-3.0,
+						84.0,
+						24.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/underwater/hull-integrity/shield_generator_view.gd"
+		},
+		"layered": true,
+		"room": "shield_generator",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "hull_monitor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hull_test_rig",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hull_injector",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hull_patch_rack",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hull_calibration_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hull_panel_cradle",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/hull-integrity/shield_generator_view.gd"
+	}
+]

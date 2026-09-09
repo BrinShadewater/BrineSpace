@@ -1,0 +1,88 @@
+{
+  "asset_id": "crew-notice-rail-v1",
+  "department": "Habitation / Crew Hab",
+  "condition": "Maintained matte wood, cork and paper",
+  "attachment_class": "Shallow mounted rail; host fit unverified",
+  "functional_bays": [
+    "Small analogue clock",
+    "Three paper notices and ocean postcard",
+    "Two notebook cases on supported ledge"
+  ],
+  "runtime_behavior": "Static decorative art; clock does not track game time",
+  "camera_and_facing": "North fitting with shallow top plane, front facing south",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/crew_hab.png",
+      "sha256": "c47c712bad9d26d8a486a9f57020185fe1c4113f965357cd0194324acd34a560",
+      "role": "Established camera, accessory scale and warm identity"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/wall-dressing-style-v2/sprites/notice_board.png",
+      "sha256": "615714fcbc9f7140683f308b55f176e36df3b2e2cf7c3318d958c0866fe2c448",
+      "role": "Paper/cork subject only; exclude shiny framing"
+    }
+  ],
+  "source_path": "assets/crew-notice-rail-v1/source-v1.png",
+  "source_sha256": "b1b594c23dcba3a596b91554045b0a2be4bdf50a842891f129a2a0dab18ad9b8",
+  "export_path": "assets/crew-notice-rail-v1/rail.png",
+  "export_sha256": "512b64eebd1576a2b81ce3fba1570f543f63cfc34152ea2a2685494b61454cb8",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 240.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Existing low hull height; never raise walls",
+    "Requires measured mounting surface or furniture backing"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Muted wood/cork, uncoated paper and dark pins; no chrome framing."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Reviewed at240 x25.50 world units alongside furnished Crew Hab. Fine paper marks are decorative."
+      ],
+      "evidence": "output/crew-notice-rail-v1/rail-scale.png"
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Opaque white exterior removed at source-specific neutral228; light/dark silhouette reviewed."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Shallow aspect ratio does not prove fit on the current low hull; host height remains a separate placement gate."
+  ],
+  "proposed_display_height_world": 25.504407443682663,
+  "registration_path": "assets/crew-notice-rail-v1/registration.json",
+  "registration_sha256": "1ba7797e25d5088fc0e66fc96d38b749030c677850695125f9c601434c6fbc7c",
+  "prompt_path": "assets/crew-notice-rail-v1/source.prompt.txt",
+  "prompt_sha256": "cfd8ec89e7e2a84a37d6be72a0274381d72fd45a92ba6cf058c156a140b2b223",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/crew-notice-rail.log": "985484c7563df822979e395ca190440aa4adc7b23a6c3ececcaae439125c1b94",
+    "output/crew-notice-rail-v1/rail-scale.png": "7f6421298db7f065a8165fdbff5462d8c10301d056d48fb17f8b244edd8a2af7",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

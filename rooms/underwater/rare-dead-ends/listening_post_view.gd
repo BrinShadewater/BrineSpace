@@ -41,22 +41,29 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 			{"id":"flush_back","rect":Rect2(-174,-174,348,150),"sort_y":-24.0,"center":Vector2.ZERO,"registration":{},"flush_region":Rect2(0,0,1,0.45)},
 			{"id":"flush_left","rect":Rect2(-174,-24,92,190),"sort_y":166.0,"center":Vector2.ZERO,"registration":{},"flush_region":Rect2(0,0.45,0.28,0.55)},
 			{"id":"flush_right","rect":Rect2(82,-24,92,190),"sort_y":166.0,"center":Vector2.ZERO,"registration":{},"flush_region":Rect2(0.72,0.45,0.28,0.55)}]
+		for prop in props:
+			prop.movable_region=prop.flush_region
+			prop.erase("flush_region")
+			prop.movable_default_rect=prop.rect
 
 func draw_registered_prop(prop: Dictionary) -> void:
-	if not prop.has("flush_region"):
+	if not prop.has("movable_region"):
 		super.draw_registered_prop(prop)
 		return
-	var region: Rect2=prop.flush_region
-	painter.draw_texture_rect_region(flush_texture,Rect2(Vector2(-184,-196)+region.position*368,region.size*368),Rect2(flush_bounds.position+region.position*flush_bounds.size,region.size*flush_bounds.size))
+	var region: Rect2=prop.movable_region
+	painter.draw_texture_rect_region(flush_texture,prop_visual_bounds(prop),Rect2(flush_bounds.position+region.position*flush_bounds.size,region.size*flush_bounds.size))
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
-	if prop.has("flush_region"):
-		var region: Rect2=prop.flush_region
-		return Rect2(Vector2(-184,-196)+region.position*368,region.size*368)
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
+	if prop.has("movable_region"):
+		var region: Rect2=prop.movable_region
+		var base: Rect2=prop.movable_default_rect
+		var scale_value: float=prop.rect.size.x/base.size.x
+		return Rect2(prop.rect.position+(Vector2(-184,-196)+region.position*368-base.position)*scale_value,region.size*368*scale_value)
 	return super.prop_visual_bounds(prop)
 
 func is_animated_prop(prop: Dictionary) -> bool:
-	if prop.has("flush_region"): return false
+	if prop.has("movable_region"): return false
 	return super.is_animated_prop(prop)
 
 func draw_room_floor(center: Vector2) -> void:

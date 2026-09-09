@@ -28,8 +28,8 @@ func rebuild() -> void:
 	for edge in edges: edge.open=edge.port
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("424648"),Color(0.12,0.14,0.15,0.4),2)
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("424648"),Color(0.12,0.14,0.15,0.4),2)
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 
 	if dressing!=null: dressing.floor()
 

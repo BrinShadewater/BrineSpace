@@ -1,0 +1,111 @@
+{
+  "asset_id": "brine-corner-analysis-ne",
+  "department": "BRINE / Core",
+  "condition": "Maintained; quiet matte ceramic and subdued glass",
+  "attachment_class": "northeast corner fitted furniture",
+  "functional_bays": [
+    "Sample cartridges",
+    "Sealed centrifuge",
+    "Diagnostic monitors",
+    "Membrane oxygenators",
+    "Coolant heat exchanger"
+  ],
+  "runtime_behavior": "Decorative service furniture; no new simulation behavior",
+  "camera_and_facing": "Axial overhead NE corner; inward south and west controls",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/brine-corner-service-v2/source.png",
+      "sha256": "afedf7612eb1d8ddc04cc58c5712af7a2005ef307c56fa350611f527d7edaa31",
+      "role": "Matching companion corner material and geometry"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/underwater/brine-core/source-v1.png",
+      "sha256": "a6acb29e8b095e802982e30861f46b72227fb3db87d351847f0b850d23b9846b",
+      "role": "BRINE departmental palette"
+    }
+  ],
+  "source_path": "assets/brine-corner-analysis-v1/source.png",
+  "source_sha256": "602c4ed9c102fa9c74d832eeb9f3fcfda33d7c62828350edbc3eff131e58b488",
+  "export_path": "assets/brine-corner-analysis-v1/asset.png",
+  "export_sha256": "1e54f1e04ee6995576bbe29c51210d7fe3bac9d880166624c25088a5e5ca800f",
+  "native_canvas_px": [
+    1254,
+    1254
+  ],
+  "proposed_display_width_world": 128.0,
+  "proposed_ground_footprint_world": [
+    128,
+    118.76288659793815
+  ],
+  "placement_exclusions": [
+    "North and west doors",
+    "Central chamber",
+    "Existing peripheral furniture"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native pearl ceramic and aquamarine match BRINE and the NW companion; distinct equipment remains readable at 128 units."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/brine-room-renewal-2026-09-08/room.png",
+      "findings": [
+        "128-unit wide L remains peripheral to the central chamber."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Native registered export reviewed; exterior and inner notch transparent, ceramic body retained."
+      ],
+      "probes": {
+        "outside": {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        "inner_notch": {
+          "point": [
+            500,
+            800
+          ],
+          "alpha": 0
+        },
+        "ceramic_body": {
+          "point": [
+            1000,
+            700
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "studio_library",
+      "evidence": "output/brine-room-renewal-2026-09-08/review.log",
+      "findings": [
+        "Available in BRINE default tray. NE fixture replaces the existing dual workstation for clearance; authored room and personal layouts are unchanged."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 118.76288659793815,
+  "registration_path": "assets/brine-corner-analysis-v1/registration.json",
+  "registration_sha256": "eec81495168d2c98bc4158274140586793ae8396346e3f433be05d24b227d70a",
+  "prompt_path": "assets/brine-corner-analysis-v1/source.prompt.txt",
+  "prompt_sha256": "397d9081b6da67eb698ea05927e8b5577fdcce7122b1e04b73a6c843d26c0b80",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

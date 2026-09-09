@@ -9,6 +9,7 @@ const MainScript := preload("res://scripts/main.gd")
 var failures := 0
 
 func _init() -> void:
+	_test_new_room_patterns()
 	_test_foundation_pool_is_intentionally_small()
 	_test_every_recipe_has_progression_metadata()
 	_test_medical_airlock_progression()
@@ -41,10 +42,12 @@ func _init() -> void:
 
 func _test_foundation_pool_is_intentionally_small() -> void:
 	var expected := [
+		"observation_room", "salvage_workshop", "galley", "cold_store", "current_turbine", "airlock",
 		"construction_drone_bay",
 		"solar_array", "reactor", "mining_drone_bay", "hydroponics_bay",
 		"life_support", "crew_hab", "research_lab", "storage_bay",
-		"med_bay", "quarantine_cell", "corridor", "corner"
+		"med_bay", "quarantine_cell", "corridor", "corner", "tee_corridor",
+		"pressure_control", "listening_post", "isolation_vault"
 	]
 	_expect_equal(RoomDatabaseScript.STARTING_UNLOCKS, expected, "clean saves should begin with the authored foundation")
 
@@ -355,3 +358,34 @@ func _expect_true(condition: bool, message: String) -> void:
 	if not condition:
 		failures += 1
 		push_error(message)
+
+func _test_new_room_patterns() -> void:
+	for id in ["chilled_air_recovery","shared_table","field_notes"]:
+		var recipe: Dictionary = SynergyManagerScript.get_synergy(id)
+		var first: Dictionary = RoomDatabaseScript.get_room(recipe.rooms[0]).duplicate(true)
+		var second: Dictionary = RoomDatabaseScript.get_room(recipe.rooms[1]).duplicate(true)
+		first.pos = Vector2i(10,10)
+		second.pos = Vector2i(10,11)
+		first.rotation = 0
+		var links: Array = []
+		for rotation in range(4):
+			if second.has("fixed_rotation") and rotation != int(second.fixed_rotation): continue
+			second.rotation = rotation
+			links = SynergyManagerScript.evaluate([first,second],{first.pos:first,second.pos:second}).links
+			if not links.is_empty(): break
+		_expect_true(not links.is_empty(),id + " has a legal matching-door layout")
+		if links.is_empty(): continue
+		_expect_equal(links[0].id,id,"New pair selects the expected recipe")
+		var offline := DiscoveryManagerScript.functioning_links(links,{first.pos:true})
+		_expect_true(offline.is_empty(),"Both new partners must function")
+		var active := DiscoveryManagerScript.functioning_links(links,{first.pos:true,second.pos:true})
+		var state := DiscoveryManagerScript.advance_cycle(active,{}, {}, {})
+		_expect_true(state.new_discovery_ids.has(id),"First functioning cycle reveals new pattern")
+		_expect_true(state.new_stabilization_ids.is_empty(),"New pattern does not stabilize early")
+		state = DiscoveryManagerScript.advance_cycle(active,state.progress,{id:true},{})
+		state = DiscoveryManagerScript.advance_cycle([],state.progress,{id:true},{})
+		_expect_equal(state.progress[id],0,"Interrupted new pattern resets progress")
+		for cycle in range(3): state = DiscoveryManagerScript.advance_cycle(active,state.progress,{id:true},{})
+		_expect_true(state.new_stabilization_ids.has(id),"Three consecutive functioning cycles stabilize new pattern")
+		second.pos = Vector2i(10,12)
+		_expect_true(SynergyManagerScript.evaluate([first,second],{first.pos:first,second.pos:second}).links.is_empty(),"Separated new partners do not link")

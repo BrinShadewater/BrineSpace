@@ -1,0 +1,92 @@
+{
+  "asset_id": "mechanical-tool-west-wall-v1",
+  "department": "Engineering / Maintenance",
+  "condition": "Matte olive paint and dark tools",
+  "attachment_class": "Low self-supporting west bank",
+  "functional_bays": [
+    "North tool trays",
+    "Central repair mat",
+    "South pouch and east-access storage"
+  ],
+  "runtime_behavior": "Static uninstalled art",
+  "camera_and_facing": "Near-top-down; left backing, east access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/mechanical-tool-south-wall-v1/wall.png",
+      "sha256": "3ab5ddeab803b807d90ee742470892f91e3fea7b19d8b426eae359b05730673f",
+      "role": "Matte tools and construction reference"
+    }
+  ],
+  "source_path": "assets/mechanical-tool-west-wall-v1/source-v2.png",
+  "source_sha256": "b2d71a7cee614d1ddf132f90f7075aac2510235a7d3c34ec9ac3b76917d30eab",
+  "export_path": "assets/mechanical-tool-west-wall-v1/wall.png",
+  "export_sha256": "10fcd282692ef9b2d01a47f9045aadb2e62a41df7ccbc4873ec6499ceedf158f",
+  "native_canvas_px": [
+    1086,
+    1448
+  ],
+  "proposed_display_width_world": 70.46757164404224,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Drawer reach",
+    "Crew circulation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Dark tool faces and quiet olive cabinets retained; closed pouch supported."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/mechanical-tool-west-wall-v1/wall-final.png",
+      "findings": [
+        "Full320-unit length reviewed without compression; visible depth70.47.",
+        "V1 depth102.13 rejected; V2 redraw narrows construction and right drawer strip."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 lost source alpha; neutral150 registration removes baked checkerboard and rear-rail fleck.",
+        "Light/dark complete silhouette and segmented detail inspected; source colors unchanged."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/mechanical-tool-west-wall-v1/registration.json",
+  "registration_sha256": "207dfbf2b5bd46406d4c47d6dc24788392725e0b1b30f7131a6affe18ef619df",
+  "prompt_path": "assets/mechanical-tool-west-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "476ae94f5d7455bb60dd053254155271c33864586cc46c00bda78371fd92921f",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual review separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "review_history": [
+    {
+      "source": "source-v1.png",
+      "reason": "Too deep at102.13 units; retained with true-alpha registration"
+    },
+    {
+      "registration": "registration-neutral180.json",
+      "reason": "Rear-edge background fleck; superseded by150"
+    }
+  ],
+  "evidence_hashes": {
+    "output/mechanical-tool-west-wall-final.log": "492b1edc565d16b8d2dffd6552d6c48a413ef192bcce895960f3e79fa078375c",
+    "output/mechanical-tool-west-wall-v1/wall-final.png": "5454facbbbe3c74e86b5d77ad4bdcf5a047bcfabe2b5c832e008df61af81f453"
+  }
+}

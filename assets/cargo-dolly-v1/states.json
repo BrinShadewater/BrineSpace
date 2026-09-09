@@ -1,0 +1,47 @@
+{
+  "family": "cargo-dolly",
+  "states": {
+    "loaded": {
+      "export": "assets/cargo-dolly-v1/cargo-dolly.png",
+      "sha256": "839925b68be9af57e3c01b07f9c364415d4b227e79a523c38f86f756d4f1c26a",
+      "native_canvas_px": [
+        1081,
+        1455
+      ]
+    },
+    "empty": {
+      "export": "assets/cargo-dolly-empty-v1/cargo-dolly-empty.png",
+      "sha256": "807e1e05c34c62dca744247438355500bd6c063a8897e4ffc42f2f9bc0549475",
+      "native_canvas_px": [
+        1081,
+        1455
+      ]
+    }
+  },
+  "proposed_shared_source_region": [
+    186,
+    199,
+    710,
+    1031
+  ],
+  "proposed_world_width": 36,
+  "registered_bounds_delta_empty_minus_loaded": [
+    0,
+    0,
+    1,
+    3
+  ],
+  "runtime_transition_verified": false,
+  "static_pair_review": {
+    "verdict": "pass_agent_review_at_proposed_scale",
+    "board": "output/cargo-dolly-state-review.png",
+    "board_sha256": "3aa83d3bb097acfe1e58c2a476322006f9702bc6deea8370651823d448dffba0",
+    "group": "assets/cargo-dolly-v1/state-review-group.json",
+    "metrics": "assets/cargo-dolly-v1/state-silhouette-review.json",
+    "findings": [
+      "Both states use one710x1031 source region and36-unit width; no independent crop or rescaling.",
+      "Native and2x pair visually consistent; texture and hardware pixels are not locked.",
+      "Silhouette overlap0.99068 at alpha128; live switching and collision not verified."
+    ]
+  }
+}

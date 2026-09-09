@@ -1,0 +1,81 @@
+{
+  "asset_id": "observation-chart-west-wall-v1",
+  "department": "Habitation / Observation",
+  "condition": "Matte wood and paper",
+  "attachment_class": "Low west-backed counter",
+  "functional_bays": [
+    "North folders and map storage",
+    "Central plotting surface",
+    "South rolls and closed sleeve"
+  ],
+  "runtime_behavior": "Static standing counter; no drawer animation",
+  "camera_and_facing": "Near-top-down; west backing, east pulls and sleeve closure",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/observation-chart-south-wall-v1/wall.png",
+      "sha256": "53cd02839da30b03549494b92eaf152d2b0c55f5904b88ca9c77bfee49bd47d6",
+      "role": "Chart-counter materials and subjects"
+    }
+  ],
+  "source_path": "assets/observation-chart-west-wall-v1/source-v1.png",
+  "source_sha256": "7a252702ea2aa4a67a82ae3c476540f11b8723bd9aec6d5582b5f8058baf1111",
+  "export_path": "assets/observation-chart-west-wall-v1/wall.png",
+  "export_sha256": "5d313e3214f438175e0d0ed1ec0d0afa036beb5a3f3394e12887bb2ef79652ec",
+  "native_canvas_px": [
+    992,
+    1586
+  ],
+  "proposed_display_width_world": 74.00927766732936,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Operator access",
+    "Porthole sightline"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Quiet brown wood and pale paper; charcoal weights and pulls remain restrained."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/observation-chart-west-wall-v1/wall-scale.png",
+      "findings": [
+        "Full320-unit length and74.01-unit depth reviewed; right-facing pulls and sleeve closure.",
+        "Storage panels reconstructed for side view; exact drawer correspondence and opening motion not established."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral150 removes baked checkerboard; complete light/dark silhouette and segmented edges inspected."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 320.0,
+  "registration_path": "assets/observation-chart-west-wall-v1/registration.json",
+  "registration_sha256": "962c3ea2da27d26ff29bd0347be743fde33b1ea9ad123c5d9cf1dc9745feb82f",
+  "prompt_path": "assets/observation-chart-west-wall-v1/source.prompt.txt",
+  "prompt_sha256": "0a8148d8c81c7c912229ee14b5a7648d123211024bbbf192dc3e4c655d569430",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/observation-chart-west-wall.log": "7101cb64fda7fed20842d327948f251dbe055d1891167696824b11570e647d83",
+    "output/observation-chart-west-wall-v1/wall-scale.png": "929decd0ca2ab12a1ea5acccb7e690c4d11be31d051481c2b1e5c1c14203058c"
+  }
+}

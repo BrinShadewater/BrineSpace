@@ -1,0 +1,141 @@
+{
+  "rooms": [
+    "tidal_condenser",
+    "biodome",
+    "solar_array"
+  ],
+  "source_processing": "Source pixels unchanged; vector exterior/aperture registrations only.",
+  "selected": [
+    {
+      "source": "assets/full-wall-expansion-v2/biodome-habitat-wall.png",
+      "sha256": "30caf5a8763f694702f851985aca29313e77bc11988c46ce20e89dd94243aa1f",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "assets/full-wall-expansion-v2/biodome-habitat-wall-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/biodome.png",
+      "sha256": "7516c5761e2963941ffd58f7d10a5b855a00d64016d091462eb217b729594674",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "assets/full-wall-expansion-v2/biodome-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/solar_array.png",
+      "sha256": "c5f2da9f1ded718fb945e1a6cc9aa2a50bd927c21ba483ffafc6e0abc8a90e5f",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "assets/full-wall-expansion-v2/solar_array-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/thermal-control-wall-south.png",
+      "sha256": "e58c5bbaef2547eba105800126fbf706f4f76e137a491576e7756d7846b12a84",
+      "dimensions": [
+        1966,
+        800
+      ],
+      "prompt": "assets/full-wall-expansion-v2/thermal-control-wall-south-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/thermal-control-wall.png",
+      "sha256": "d409839a247b24e0d248eecd02c88c5ad5620f2dd4d2cc96258705f054ec19a6",
+      "dimensions": [
+        1965,
+        800
+      ],
+      "prompt": "assets/full-wall-expansion-v2/thermal-control-wall-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/tidal-condensation-wall-south.png",
+      "sha256": "1f10870dfc98cb1d325f4764a289e55e68ce1f1d8c3bc39f4ecfafba92e4a2ac",
+      "dimensions": [
+        1466,
+        1073
+      ],
+      "prompt": "assets/full-wall-expansion-v2/tidal-condensation-wall-south-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/tidal-condensation-wall.png",
+      "sha256": "c03f0aa811b3736bbbe269aa3b13fee2cfe18196ba6c67527189f772443cd68f",
+      "dimensions": [
+        1466,
+        1073
+      ],
+      "prompt": "assets/full-wall-expansion-v2/tidal-condensation-wall-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/tidal_condenser.png",
+      "sha256": "43e5d07e879e66df9d162e37ee3e3ee45e3228447ec5db68f7c0449f87478708",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "assets/full-wall-expansion-v2/tidal_condenser-prompt.txt"
+    }
+  ],
+  "rejected": [
+    {
+      "source": "assets/full-wall-expansion-v2/biodome-habitat-wall-rejected-bright.png",
+      "sha256": "a00257f0ad37f443fcad86aff5823586b1b3e91b7067bea9b1ecd8e51965a30b",
+      "dimensions": [
+        2207,
+        712
+      ],
+      "prompt": "assets/full-wall-expansion-v2/biodome-habitat-wall-rejected-bright-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/tidal-south-rejected-gauge.png",
+      "sha256": "e3a58ce89508297ab403c5337df5b3f09749015b7b3ecbebb526720047fb53eb",
+      "dimensions": [
+        1466,
+        1073
+      ],
+      "prompt": "assets/full-wall-expansion-v2/tidal-south-rejected-gauge-prompt.txt"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/tidal_condenser-rejected-monitor.png",
+      "sha256": "2dc70348115f2016c98965115eb61e07aa9c362a12d19bde3b81201c0650dfb7",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt": "assets/full-wall-expansion-v2/tidal_condenser-rejected-monitor-prompt.txt"
+    }
+  ],
+  "cards": [
+    {
+      "source": "assets/full-wall-expansion-v2/cards/biodome.png",
+      "sha256": "900478654f89fa791a0da0003e355412850124fdc462c80ec8bf6c1f39672c00",
+      "method": "Native default orientation, unpowered, scale 1.16"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/cards/solar_array.png",
+      "sha256": "078b96eb064ad49686f14869a7659b0e28ecb9e3b517d1f223808ed04e655f15",
+      "method": "Native default orientation, unpowered, scale 1.16"
+    },
+    {
+      "source": "assets/full-wall-expansion-v2/cards/tidal_condenser.png",
+      "sha256": "0c1c7eab9a18410f6636385fee89f5ee864df6ce6271026ba47a41ea63ba3275",
+      "method": "Native default orientation, unpowered, scale 1.16"
+    }
+  ],
+  "registrations": [
+    "rooms/full-wall-v1/registrations/biodome-habitat-wall.json",
+    "rooms/full-wall-v1/registrations/side-biodome-habitat-wall-east.json",
+    "rooms/full-wall-v1/registrations/side-biodome-habitat-wall-west.json",
+    "rooms/full-wall-v1/registrations/side-thermal-control-wall-east.json",
+    "rooms/full-wall-v1/registrations/side-thermal-control-wall-south.json",
+    "rooms/full-wall-v1/registrations/side-thermal-control-wall-west.json",
+    "rooms/full-wall-v1/registrations/side-tidal-condensation-wall-east.json",
+    "rooms/full-wall-v1/registrations/side-tidal-condensation-wall-south.json",
+    "rooms/full-wall-v1/registrations/side-tidal-condensation-wall-west.json",
+    "rooms/full-wall-v1/registrations/thermal-control-wall.json",
+    "rooms/full-wall-v1/registrations/tidal-condensation-wall.json"
+  ]
+}

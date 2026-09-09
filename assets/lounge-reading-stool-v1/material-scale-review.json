@@ -1,0 +1,105 @@
+{
+  "asset_id": "lounge-reading-stool-v1",
+  "department": "Habitation / Crew Lounge",
+  "condition": "Maintained woven rust cloth and matte walnut",
+  "attachment_class": "Freestanding backless stool",
+  "functional_bays": [
+    "Fabric seat",
+    "Low wooden frame and legs"
+  ],
+  "runtime_behavior": "Static candidate; no seated-crew interaction",
+  "camera_and_facing": "Near top-down, square seat, shallow legs toward bottom",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/lounge-reading-wall-v1/wall.png",
+      "sha256": "7444b64af268d4b067345422a026a25b4c20b950a48f324b5a678e317fdb9c02",
+      "role": "Companion warm matte palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/crew_lounge.png",
+      "sha256": "48ba244d5ed6331cb3a72d8e223e3518db594d79c853e1ef83acdaa13da732b3",
+      "role": "Established furniture scale and camera"
+    }
+  ],
+  "source_path": "assets/lounge-reading-stool-v1/source-v1.png",
+  "source_sha256": "e18a0f3bca7963f329e297e969dacf0582646eddffca6d8e1d1c7dd0b4f50b22",
+  "export_path": "assets/lounge-reading-stool-v1/stool.png",
+  "export_sha256": "6316c13581d39f836c5af00319dc970cb267fcd0408a18e78d7a6bdb89836774",
+  "native_canvas_px": [
+    1254,
+    1254
+  ],
+  "proposed_display_width_world": 26.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door routes",
+    "Book cabinet access",
+    "Seat approach clearance"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Seat reads dry woven cloth, with matte brown frame and no polished hardware."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/lounge-reading-stool-v1/stool-scale.png",
+      "findings": [
+        "26-unit width compared with existing Lounge seats at equal scale. Fabric detail simplifies; seat and leg gap remain readable."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "True-alpha source registered read-only. Transparent exterior and between-leg opening inspected on light/dark grounds."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Keep seating size tied to existing crew furniture, not enlarged texture visibility."
+  ],
+  "proposed_display_height_world": 25.95047619047619,
+  "registration_path": "assets/lounge-reading-stool-v1/registration.json",
+  "registration_sha256": "981d89f23870fd814373e313f160fcdcce0f487cbe6515eed83b56c427fc36bc",
+  "prompt_path": "assets/lounge-reading-stool-v1/source.prompt.txt",
+  "prompt_sha256": "6080b08602db0836d17e5b415277ffa27cb52fcfca26838712b5bab8453a489e",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/lounge-reading-stool.log": "5ff23525eacecc902108738f838dcb489023a080888fbdfebb08e28f51ab00eb",
+    "output/lounge-reading-stool-v1/stool-scale.png": "205edf560aa18373d7bf1578fab3045f1070c0e964b54d9effc056372450802a",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  },
+  "alpha_probes": [
+    {
+      "xy": [
+        625,
+        820
+      ],
+      "alpha": 0,
+      "role": "Between legs"
+    },
+    {
+      "xy": [
+        625,
+        500
+      ],
+      "alpha": 253,
+      "role": "Seat retained"
+    }
+  ]
+}

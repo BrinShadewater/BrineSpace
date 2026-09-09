@@ -33,8 +33,8 @@ func rebuild() -> void:
 	if dressing!=null: dressing.place()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("525c60"),Color(0.17,0.19,0.20,0.35),2,"technical")
-	RoomFloor.draw_dressing(painter,center,edges,"technical")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("525c60"),Color(0.17,0.19,0.20,0.35),2,"technical")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"technical")
 	if dressing!=null: dressing.floor()
 	preload("res://rooms/whole-room/room_services.gd").identity_details(painter,props,"command",operating)
 

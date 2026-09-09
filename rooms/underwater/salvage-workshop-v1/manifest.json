@@ -1,0 +1,33 @@
+{
+  "id": "salvage_workshop",
+  "source": "rooms/underwater/salvage-workshop-v1/bench-source.png",
+  "sha256": "174a83e5d5e54ee6d56dbdb124c76a85ba1e55dc8a8a48a1f4780f5cb7792e75",
+  "integration": {
+    "view": "rooms/underwater/salvage-workshop-v1/workshop_view.gd",
+    "card": "rooms/underwater/salvage-workshop-v1/card.png"
+  },
+  "card_sha256": "820fca0f609ed9cf3511b2942f564fb3c3329ee2dc4498dfd437d93d1d0a7b1d",
+  "canonical_ports_nesw": [
+    2
+  ],
+  "fixed_rotation": 0,
+  "component_assets": [
+    {
+      "path": "rooms/underwater/salvage-workshop-v1/bench.png",
+      "sha256": "1343b9d5273b60425eb3ffd36d7ebcc2680d053a65671cdea57f17bd509d2189"
+    },
+    {
+      "path": "rooms/underwater/salvage-workshop-v1/tote.png",
+      "sha256": "e5cedb8498bf44ee52aeb0cb521d985f77551dc2b4c8af860efef3e2a9d7a598"
+    },
+    {
+      "path": "rooms/underwater/salvage-workshop-v1/bench.json",
+      "sha256": "26874b1c9a56b4547aac8aa14d964dbf1f116ec44d9ed037af0608df04e558aa"
+    },
+    {
+      "path": "rooms/underwater/salvage-workshop-v1/tote.json",
+      "sha256": "3f616942ebd9393d1d656b352d97a077cbc087cce516933dae05724f99786522"
+    }
+  ],
+  "scope": "Integrated and native tested; standalone package not rebuilt"
+}

@@ -168,6 +168,19 @@ static func props(layout: Array) -> Array:
 				"sort_y": center.y + size.y * 0.5, "room": room.kind})
 	return result
 
+static func prop_collision_rects(prop: Dictionary) -> Array[Rect2]:
+	# Registered corner furniture has open notches; its image bounds are not a solid block.
+	var result: Array[Rect2]=[]
+	var rect: Rect2=prop.rect
+	var flip: Vector2=prop.get("layout_flip",Vector2.ONE)
+	for box in prop.get("collision_boxes",[]):
+		var local:=Rect2(box[0],box[1],box[2],box[3])
+		if flip.x<0: local.position.x=1.0-local.end.x
+		if flip.y<0: local.position.y=1.0-local.end.y
+		result.append(Rect2(rect.position+local.position*rect.size,local.size*rect.size))
+	if result.is_empty(): result.append(rect)
+	return result
+
 static func can_stand(point: Vector2, layout: Array, furnishings: Array, structure: Array) -> bool:
 	var inside := false
 	for room in layout:
@@ -180,6 +193,6 @@ static func can_stand(point: Vector2, layout: Array, furnishings: Array, structu
 			if rect.grow(RADIUS).has_point(point):
 				return false
 	for prop in furnishings:
-		if prop.rect.grow(RADIUS).has_point(point):
-			return false
+		for rect in prop_collision_rects(prop):
+			if rect.grow(RADIUS).has_point(point): return false
 	return true

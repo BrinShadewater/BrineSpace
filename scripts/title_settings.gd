@@ -5,9 +5,12 @@ static var initialized := false
 static var window_size := Vector2i(1600, 900)
 static var reduced_motion := false
 static var placement_guides := true
-static var raised_walls := false
+static var raised_walls := true
 static var fps_cap := 0
 static var muted := false
+static var music_volume := 1.0
+static var effects_volume := 1.0
+static var ambience_volume := 1.0
 static var mute_unfocused := false
 static var pause_unfocused := false
 static var zoom_sensitivity := 1.0
@@ -42,6 +45,7 @@ static func initialize(window: Window) -> void:
 		window.focus_entered.connect(_on_focus.bind(true))
 		window.focus_exited.connect(_on_focus.bind(false))
 	var config := ConfigFile.new()
+	raised_walls = true
 	if config.load(save_path) != OK:
 		window_size = window.size
 		apply_runtime(window)
@@ -61,14 +65,18 @@ static func initialize(window: Window) -> void:
 			used[key] = true
 		if valid:
 			keys = candidate
-	# The owner retained low walls everywhere; ignore the retired study preference.
-	raised_walls = false
+	# Migrate the retired forced-low setting to the new owner-directed default.
+	# A new explicit choice remains persistent after this migration.
+	raised_walls = bool(config.get_value("display", "riser_walls_enabled", true))
 	placement_guides = bool(config.get_value("accessibility", "placement_guides", true))
 	reduced_motion = bool(config.get_value("accessibility", "reduced_motion", false))
 	fps_cap = int(config.get_value("display", "fps_cap", 0))
 	if fps_cap not in [0, 30, 60, 120, 144, 240]:
 		fps_cap = 0
 	muted = bool(config.get_value("audio", "muted", false))
+	music_volume = clampf(float(config.get_value("audio", "music_volume", 1.0)), 0.0, 1.0)
+	effects_volume = clampf(float(config.get_value("audio", "effects_volume", 1.0)), 0.0, 1.0)
+	ambience_volume = clampf(float(config.get_value("audio", "ambience_volume", 1.0)), 0.0, 1.0)
 	mute_unfocused = bool(config.get_value("audio", "mute_unfocused", false))
 	pause_unfocused = bool(config.get_value("controls", "pause_unfocused", false))
 	zoom_sensitivity = clampf(float(config.get_value("controls", "zoom_sensitivity", 1.0)), 0.5, 2.0)
@@ -156,8 +164,12 @@ static func save(window: Window) -> Error:
 	config.set_value("accessibility", "reduced_motion", reduced_motion)
 	config.set_value("accessibility", "placement_guides", placement_guides)
 	config.set_value("display", "raised_walls", raised_walls)
+	config.set_value("display", "riser_walls_enabled", raised_walls)
 	config.set_value("display", "fps_cap", fps_cap)
 	config.set_value("audio", "muted", muted)
+	config.set_value("audio", "music_volume", music_volume)
+	config.set_value("audio", "effects_volume", effects_volume)
+	config.set_value("audio", "ambience_volume", ambience_volume)
 	config.set_value("audio", "mute_unfocused", mute_unfocused)
 	config.set_value("controls", "pause_unfocused", pause_unfocused)
 	config.set_value("controls", "zoom_sensitivity", zoom_sensitivity)

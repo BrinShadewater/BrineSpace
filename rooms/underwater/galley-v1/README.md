@@ -1,0 +1,21 @@
+# Galley
+
+Crew department, secondary food production; maintained warm cream enamel, walnut and steel. A pantry/stove/sink bank anchors the north wall; a smaller self-service counter stands southeast with a clear south entrance and kitchen approach. Hood light and stove indicator are the operating anchors.
+
+Build cost: 6 Metal. Fixed south entrance. Each functioning cycle consumes 1 stored Biomass, 1 Water and 1 Power to produce 4 Food. This differs from the Mycelium Nursery by trading Water for greater output. Connected functioning Hydroponics discovers Fresh Provisions (+1 Food/cycle); three functioning cycles stabilize its research reward. Crew meal breaks satisfy existing hunger, without another resource award or staffing requirement.
+
+## Source and processing
+Kitchen source: 1774×887 RGB. Serving source: 1586×992 RGB. Both have baked checkerboards; original pixels remain unchanged. Read-only exterior-neutral vector registration uses neutral_min=110, keeps the connected assembly, and native Godot rendering writes real-alpha kitchen.png and serving.png. JSONs retain original hashes and polygons. Rebuild with render_assets.gd. Native cutouts and final room were visually reviewed. Small source handling marks remain.
+
+## Kitchen prompt
+Create ONE reusable GALLEY KITCHEN installation sprite for BrineSpace underwater station. Reference provides painterly pixel-art rendering, muted warm crew department materials and straight-on elevated orthographic SOUTH camera only. Do NOT reproduce library, window, room, hull, floor or checkerboard. Wide compact north-wall kitchen bank: tall pantry cabinet on LEFT with glass-front jars and restrained packaged supplies; central cream enamel stove/oven under modest steel extraction hood, lidded soup pot on hob; stainless preparation surface and deep small sink on RIGHT; tidy hanging utensils, warm shaded task lighting. Muted warm cream cabinetry, dark walnut trim, brushed steel working surfaces, restrained burnt-orange handles, mostly maintained with subtle handling marks. Practical lived-in submarine mess kitchen, not luxury domestic kitchen, no big neon screens. All working faces south, perfectly level horizontal edges, no diagonal yaw. ONE connected installation about 2:1 aspect, complete silhouette and margins. Genuine transparent alpha exterior and gaps, no floor, walls, text, people or shadows outside object. Rich readable large shapes at small game scale, detailed construction without blanket grime.
+
+Reference: rooms/underwater/observation-room-v1/source-v3.png supplies style/material/camera only.
+
+## Serving counter prompt
+ONE standalone compact SERVING COUNTER for BrineSpace underwater station galley. Reference supplies warm cream enamel, dark walnut and steel materials, rendering and camera ONLY. Short waist-high rectangular cabinet, warm cream front panels in dark walnut frame, brushed steel countertop. On top: three neatly prepared metal meal trays with modest bowls of green vegetable stew, a compact insulated beverage urn on LEFT and neatly stacked mugs on RIGHT. A believable self-service station for three crew, no giant buffet, no extra furniture or people. Straight-on elevated orthographic SOUTH camera with level horizontal front, no diagonal yaw. Painterly pixel-art construction at small game scale, muted warm palette, mostly maintained, restrained highlights, no text. Complete isolated silhouette with all feet, centered with margins, genuine transparent alpha background, NO painted checkerboard, floor, walls or exterior shadow. Single counter about 1.6:1 wide to high.
+
+Reference: kitchen-source.png supplies style/material/camera only.
+
+## Verification
+tools/review_galley.gd tests bounds, collision, operating animation and frozen/offline images. tests/test_galley.gd covers paid construction, entry/deck, Save/Continue, all three crew's meal routes/completion, disk snapshots, zero-time freeze and suspension; three viewport captures. tests/test_galley_economy.gd covers shared inputs, shortages, delayed availability of new growth, connected discovery, hidden forecast and stabilization. Native completed room includes riser/foundations. Crew reuse north idle art; no new eating animation sheet. No standalone package rebuilt. See docs/GALLEY_2026-09-08.md.

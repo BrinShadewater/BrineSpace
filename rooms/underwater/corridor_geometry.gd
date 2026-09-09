@@ -31,3 +31,26 @@ static func contains_foot(room: Dictionary, point: Vector2, radius := 7.0) -> bo
 		if absf(sample.x)>192 or absf(sample.y)>192: continue
 		if not Geometry2D.is_point_in_polygon(sample,floor_poly): return false
 	return true
+
+static func foundation_edges(room: Dictionary, south_occupied:=false) -> Array:
+	var result: Array=[]
+	var hull:=hull_for(room.get("id","")=="corner",room.get("id","")=="tee_corridor")
+	var q:=rotation(room)
+	for i in range(hull.size()):
+		var a: Vector2=G.turn(hull[i],q)
+		var b: Vector2=G.turn(hull[(i+1)%hull.size()],q)
+		# The clockwise outline runs right-to-left along screen-south faces.
+		# Tiny bevels remain covered by the hull; support the level load faces.
+		if a.x-b.x<1.0 or absf(a.y-b.y)>0.01: continue
+		if south_occupied and a.y>=191.9: continue
+		result.append(Rect2(b.x,a.y,a.x-b.x,0))
+	return result
+
+static func next_corner_rotation(rooms: Array, orders: Array) -> int:
+	var count:=0
+	for room in rooms:
+		if str(room.get("id",""))=="corner": count+=1
+	for order in orders:
+		if str(order.get("id",""))=="corner": count+=1
+	# West/south and east/south elbows, alternating as corners are commissioned.
+	return 0 if count%2==0 else 3

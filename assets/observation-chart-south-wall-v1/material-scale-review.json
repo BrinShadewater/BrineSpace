@@ -1,0 +1,81 @@
+{
+  "asset_id": "observation-chart-south-wall-v1",
+  "department": "Habitation / Observation",
+  "condition": "Maintained matte wood and paper",
+  "attachment_class": "Low self-supporting south counter",
+  "functional_bays": [
+    "North-access map drawers and folders",
+    "Central chart pencil and weights",
+    "Rolled charts and closed sleeve"
+  ],
+  "runtime_behavior": "Static standing counter; decorative chart only",
+  "camera_and_facing": "Near-top-down; south rear panel, north access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/observation-chart-wall-v1/wall.png",
+      "sha256": "6456e18bad3bb71da7ca329a73feb7d25bffe59e6b0992d23a4db5663efa97ad",
+      "role": "North construction and matte wood reference"
+    }
+  ],
+  "source_path": "assets/observation-chart-south-wall-v1/source-v1.png",
+  "source_sha256": "03676af39dc500b0fa5150792f4243258ac13f79e2934fa750ddb176df7272af",
+  "export_path": "assets/observation-chart-south-wall-v1/wall.png",
+  "export_sha256": "53cd02839da30b03549494b92eaf152d2b0c55f5904b88ca9c77bfee49bd47d6",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Porthole sightline",
+    "Desk and operator clearance"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Dark quiet wood, charcoal pulls and pale paper without varnish glow."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/observation-chart-south-wall-v1/wall-scale.png",
+      "findings": [
+        "320-unit native bank; plain south rear and north drawer access.",
+        "Depth differs from north; furniture reconstruction is not a pixel-locked reverse."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral85 removes dark baked checkerboard; light/dark full silhouette reviewed."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 73.86929948283968,
+  "registration_path": "assets/observation-chart-south-wall-v1/registration.json",
+  "registration_sha256": "debbb02fc2600704d89fa1685a7495468f46a3083848be20f8ed6c469e3eed85",
+  "prompt_path": "assets/observation-chart-south-wall-v1/source.prompt.txt",
+  "prompt_sha256": "c97485187893413e1aa67236314ccccb4f81fcb88e26af2cfb53a09bbd96e16f",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/observation-chart-south-wall.log": "ef091b7c344994198c4cfdd341e380edbed8ddded870b5a5d05a038c6882a6ea",
+    "output/observation-chart-south-wall-v1/wall-scale.png": "366e2c0c0d09525736a31b8404f5c81efe5a4dcd25306095fcaf681e444f4b02"
+  }
+}

@@ -1,0 +1,188 @@
+[
+  {
+    "id": "current_turbine",
+    "source": "res://rooms/power-expansion-v1/current_turbine.png",
+    "sha256": "7fd343efa1b672c42c5fe18401cd2de8cd964cc51207bc0ca7445c3e0b686b39",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "alpha_bounds": [
+      0,
+      21,
+      1239,
+      1200
+    ],
+    "card": {
+      "path": "res://rooms/power-expansion-v1/current_turbine-card.png",
+      "sha256": "81c2d20ae7a979f6088fc50f39cb961b3dd984c47406509f8b4fd81c52e0ad63"
+    },
+    "raw_source": {
+      "path": "res://rooms/power-expansion-v1/current_turbine-bright-source-v1.png",
+      "sha256": "7fd343efa1b672c42c5fe18401cd2de8cd964cc51207bc0ca7445c3e0b686b39"
+    },
+    "component_assets": [
+      {
+        "path": "res://rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "res://rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      },
+      {
+        "path": "res://rooms/whole-room/life-support-candidate.png",
+        "sha256": "f7a070572fc394c948feeb75baf92fcf1717e69e85d763906f3a60599b103857"
+      },
+      {
+        "path": "res://rooms/whole-room/nursery-master.png",
+        "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66"
+      }
+    ],
+    "composition_assets": [
+      {
+        "path": "res://rooms/power-expansion-v1/current_turbine-composition.json",
+        "sha256": "a1a3612429af7e27bb4f6e7106878e07ad0f11dea1da89a9e6ef21ed32e7fa10"
+      }
+    ],
+    "department": "Engineering",
+    "condition": "Maintained charcoal steel with brighter orange generator casing; original owner-preferred source.",
+    "geometry": "250-unit visible turbine at sealed south wall for east/west doors; north/south rotations retain door clearance. Visible source registration Rect2(18,260,1218,652), original source preserved.",
+    "processing": "Original bright RGBA unchanged; renderer uses neutral 0.81 RGB modulation after two successive 10% brightness reductions. Larger composition retained.",
+    "verification": {
+      "station": true,
+      "cards": true,
+      "four_rotation_routes": true,
+      "operating_and_offline": true,
+      "paid_construction": true,
+      "save_continue": true,
+      "packaged_runtime": false,
+      "production_crew_routes": "output/power-turbine-south-routes/"
+    },
+    "visual_review": "2026-09-08 owner requested far-south placement. Native card visually reviewed after source-padding registration correction. 12 rotation/state checks pass and turbine production crew routes pass with zero assertions."
+  },
+  {
+    "id": "biomass_digester",
+    "source": "res://rooms/power-expansion-v1/biomass_digester.png",
+    "sha256": "de9a32f491a6bdee84a4a5f1aa27e76074f6630884607bc8ef44d856b28b432b",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "alpha_bounds": [
+      23,
+      71,
+      1231,
+      1238
+    ],
+    "card": {
+      "path": "res://rooms/power-expansion-v1/biomass_digester-card.png",
+      "sha256": "3c640468c7fff1d4ecda1d897e4585882e94f353c3bf85c0d2e20c981165706c"
+    },
+    "raw_source": {
+      "path": "res://rooms/power-expansion-v1/biomass_digester-source.png",
+      "sha256": "de9a32f491a6bdee84a4a5f1aa27e76074f6630884607bc8ef44d856b28b432b"
+    },
+    "component_assets": [
+      {
+        "path": "res://rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "res://rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      },
+      {
+        "path": "res://rooms/whole-room/life-support-candidate.png",
+        "sha256": "f7a070572fc394c948feeb75baf92fcf1717e69e85d763906f3a60599b103857"
+      },
+      {
+        "path": "res://rooms/whole-room/nursery-master.png",
+        "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66"
+      }
+    ],
+    "composition_assets": [
+      {
+        "path": "res://rooms/power-expansion-v1/biomass_digester-composition.json",
+        "sha256": "525161dff61ad05a62d7ff34f844b41482545566b5224b0c5a99297a9e10888e"
+      }
+    ],
+    "department": "Bio with Engineering power equipment",
+    "condition": "maintained dark machinery with localized handling wear",
+    "geometry": "One 384-unit room; database owns doors; machinery stays south-facing in all four rotations.",
+    "processing": "Native RGBA copied unchanged.",
+    "verification": {
+      "station": true,
+      "cards": true,
+      "four_rotation_routes": true,
+      "operating_and_offline": true,
+      "paid_construction": true,
+      "save_continue": true,
+      "packaged_runtime": false,
+      "production_crew_routes": "output/power-current-routes-v3/"
+    },
+    "visual_review": "2026-09-08 enlarged focal machinery and repositioned workstations. Native cards and focused station captures visually reviewed in output/power-room-preview-large-v1/. All 12 rotation/state checks and production crew routes pass; brighter turbine preserved."
+  },
+  {
+    "id": "heat_recovery",
+    "source": "res://rooms/power-expansion-v1/heat_recovery.png",
+    "sha256": "a0e3e56f520a6d864085619dfdae1bf30594a81aeb158b708e0b9c46a8763247",
+    "native_size": [
+      1635,
+      962
+    ],
+    "alpha_bounds": [
+      35,
+      3,
+      1615,
+      944
+    ],
+    "card": {
+      "path": "res://rooms/power-expansion-v1/heat_recovery-card.png",
+      "sha256": "0f5b59f565198853d32fa4da163f7e17d557a35720943ff030400f687c498701"
+    },
+    "raw_source": {
+      "path": "res://rooms/power-expansion-v1/heat_recovery-source.png",
+      "sha256": "a0e3e56f520a6d864085619dfdae1bf30594a81aeb158b708e0b9c46a8763247"
+    },
+    "component_assets": [
+      {
+        "path": "res://rooms/production-ten/decor/maintenance-support-v1.png",
+        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "res://rooms/production-ten/decor/maintenance-v1.png",
+        "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      },
+      {
+        "path": "res://rooms/whole-room/life-support-candidate.png",
+        "sha256": "f7a070572fc394c948feeb75baf92fcf1717e69e85d763906f3a60599b103857"
+      },
+      {
+        "path": "res://rooms/whole-room/nursery-master.png",
+        "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66"
+      }
+    ],
+    "composition_assets": [
+      {
+        "path": "res://rooms/power-expansion-v1/heat_recovery-composition.json",
+        "sha256": "6ce6c599e1d679641ea3bece5a7322ee0c5b947c62543b8a9f3ff95a54f90972"
+      }
+    ],
+    "department": "Engineering",
+    "condition": "maintained dark machinery with localized handling wear",
+    "geometry": "One 384-unit room; database owns doors; machinery stays south-facing in all four rotations.",
+    "processing": "Native RGBA copied unchanged.",
+    "verification": {
+      "station": true,
+      "cards": true,
+      "four_rotation_routes": true,
+      "operating_and_offline": true,
+      "paid_construction": true,
+      "save_continue": true,
+      "packaged_runtime": false,
+      "production_crew_routes": "output/power-current-routes-v3/"
+    },
+    "visual_review": "2026-09-08 enlarged focal machinery and repositioned workstations. Native cards and focused station captures visually reviewed in output/power-room-preview-large-v1/. All 12 rotation/state checks and production crew routes pass; brighter turbine preserved."
+  }
+]

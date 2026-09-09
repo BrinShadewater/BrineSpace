@@ -1,0 +1,153 @@
+{
+  "owner_direction": "Use owner-approved Tidal room as material and quality reference, improve low-quality wall art; preserve departmental identity.",
+  "style_reference": {
+    "path": "assets/material-polish-v1/tidal-north.png",
+    "sha256": "a07624168121691bddf8754c0db60d522bb6c193564350a33e39d901fae25a79",
+    "role": "Owner-approved material quality; not layout authority"
+  },
+  "assets": [
+    {
+      "path": "assets/material-polish-v2/clone-equipment.png",
+      "sha256": "8488a3a32097de1bcdb1886d88ee3fe80732c9f3096854d86a1adfa2f92d7977",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/clone-equipment.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/clone-north.png",
+      "sha256": "21f35002b754e8b5ab2af2a5b9b0328e473f8ea95bc2725986d1d8a99ccb8295",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/clone-north.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/clone-sides.png",
+      "sha256": "4ce6461b8e302d1e65db7f936d4daf3cbf90f0ac933a4187c3962a0f683559fc",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/clone-sides.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/life-equipment.png",
+      "sha256": "286507a33174541ef1b2eabc570c756e8b33c929e6eef94656d177dbcb860dc9",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/life-equipment.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/life-north.png",
+      "sha256": "89dd9578f48650caaaed30fc0a2b13f38e16d81d359ec039645ec3a98d3a23b9",
+      "size": [
+        1681,
+        936
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/life-north.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/life-sides.png",
+      "sha256": "9c19d89db3d46839a0fbebd7d2622263da10afe13af72eb23f0e4d8df6946065",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/life-sides.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/life-south.png",
+      "sha256": "dafffd9a6ca223793bfc084f567f779900402454bb89f24c3d3b9b9fe3503e9d",
+      "size": [
+        1680,
+        936
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/life-south.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/research-bench.png",
+      "sha256": "ed75c859d5ebf02852085845cc7473fadf707b8ff737a7352b20fcb49a0ea310",
+      "size": [
+        1312,
+        1199
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/research-bench.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/research-equipment.png",
+      "sha256": "fbafa65cf5c402c5bf749d5c93302084100a689edf5a6a5f11104cbec8d35e5f",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/research-equipment.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/research-north.png",
+      "sha256": "e72361bc34f604d2e51e19bc22614a4aa0a9a89f6bfa8b0b961c94bf685ea0b2",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/research-north.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    },
+    {
+      "path": "assets/material-polish-v2/research-sides.png",
+      "sha256": "f43ea3d698c9982295b739540502dd2fbfca6d64a95ad0c28490c0a69868fa8f",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "prompt": "assets/material-polish-v2/research-sides.prompt.txt",
+      "stage": "integrated; source and native material review passed for this batch"
+    }
+  ],
+  "registration": "Read-only neutral exterior vector silhouette and explicit aperture seeds; source pixels unchanged after generation. Atlas sources use existing code-owned UV geometry.",
+  "coverage": [
+    "life_support",
+    "research_lab",
+    "clone_lab"
+  ],
+  "shared_bench_compositions": [
+    "rooms/production-ten/decor/quarantine-composition-v3.json",
+    "rooms/production-ten/decor/research-composition-v3.json",
+    "rooms/underwater/batch-two/bio-composition-v2.json",
+    "rooms/underwater/batch-two/clone-composition-v2.json",
+    "rooms/underwater/tidal-condenser/tidal-composition-v2.json",
+    "rooms/whole-room/med-bay-composition-v2.json"
+  ],
+  "remaining": "Other room wall families, riser decorations, characters, terrain and animation families remain outside this repaint batch.",
+  "verification": {
+    "room_rotation_state_samples": 56,
+    "architecture_rotation_samples": 16,
+    "cards_baked": 7,
+    "visually_inspected": "All seven powered q0 views; all four Life Support, Research and Clone orientations; q0 riser/foundation views for those three and Tidal. Other architecture rotations rendered only.",
+    "limits": "No full-game match claim, no complete animation or offline-light acceptance, no packaged executable rebuild."
+  }
+}

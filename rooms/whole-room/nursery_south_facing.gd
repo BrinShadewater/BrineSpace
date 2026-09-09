@@ -48,12 +48,29 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 		edges = embedded_edge_cache[edge_key].duplicate(true)
 
 func render_into(target: CanvasItem, at: Vector2, world_to_host: float, floor_only := false, include_floor := true) -> void:
+	if not "full_wall" in self and not has_meta("layout_editor_preview"):
+		var asset:=preload("res://scripts/room_layout_store.gd").asset_for(self)
+		if not asset.is_empty(): preload("res://scripts/room_layout_store.gd").apply(self,asset)
+	var saved_origin:=view_origin
+	var saved_scale:=view_scale
+	view_origin=at
+	view_scale=world_to_host
 	painter = target
 	painter.draw_set_transform(at,0,Vector2.ONE*world_to_host)
-	if floor_only: draw_room_floor(Vector2.ZERO)
+	if floor_only:
+		draw_room_floor(Vector2.ZERO)
+		draw_floor_overlays(Vector2.ZERO)
 	else: draw_room_world(include_floor)
 	painter.draw_set_transform(Vector2.ZERO)
 	painter = self
+	view_origin=saved_origin
+	view_scale=saved_scale
+
+func draw_floor_overlays(_center: Vector2) -> void:
+	var profile:=RoomFloor.profile_for(self)
+	if not profile.is_empty():
+		# After mats and service routes, before upright props and crew.
+		preload("res://rooms/floor-profiles-v1/details.gd").draw(self,painter,profile)
 
 func rebuild() -> void:
 	super.rebuild()
@@ -72,6 +89,7 @@ func rebuild() -> void:
 	actor = Vector2.ZERO
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	var points: Array = []
 	for source in prop.registration.outline:
 		points.append(call("life_point",prop,source) if prop.registration.has("rect") else pixel_to_world(source)+prop.art_offset)
@@ -105,8 +123,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	super._unhandled_key_input(event)
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center)
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center)
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 	# Floor service grates follow each south-facing machine's front edge.
 	for prop in props:
 		if prop.center!=center: continue

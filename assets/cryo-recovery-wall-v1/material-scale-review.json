@@ -1,0 +1,118 @@
+{
+  "asset_id": "cryo-recovery-wall-v1",
+  "department": "Cryo / Science",
+  "condition": "Maintained warm-grey composite and dusty-blue fabric",
+  "attachment_class": "Low self-supporting north-wall bank",
+  "functional_bays": [
+    "Folded blankets",
+    "Recovery robe and garment drawers",
+    "Care cassette and slippers on preparation counter",
+    "Monitoring dock and sensor lead",
+    "Enclosed thermal service cabinet"
+  ],
+  "runtime_behavior": "Static standalone art; no recovery simulation",
+  "camera_and_facing": "Near-top-down orthographic; north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/cryo_chamber.png",
+      "sha256": "4abd860be67adb953e5ba87d72a72d4e084c5d1230514f64ca5c5d6c4a07d16b",
+      "role": "Established camera, scale and Cryo palette; exclude reflective pod glass"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/quarantine-preparation-wall-v1/wall.png",
+      "sha256": "c8a14e2df52a9fb34365c429aaae459a5d3c844ab1cc893c6aecfcb9f8891938",
+      "role": "Matte low fitted construction only"
+    }
+  ],
+  "source_path": "assets/cryo-recovery-wall-v1/source-v2.png",
+  "source_sha256": "802820476ad573609659bc878b0a3e258c7d78c10613f485de665b78c5f7c6c4",
+  "export_path": "assets/cryo-recovery-wall-v1/wall.png",
+  "export_sha256": "75c52376e47b2652c00ae5f036c8d92843565e8cdc6c8c1f5f9a3ce8a29791ab",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Pod opening and exit space",
+    "Door bays",
+    "Operator circulation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 removes exterior flecks and reduces bright ivory trim; pale matte identity retained.",
+        "Blue fabric, capped fittings and dark monitor remain restrained."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/cryo-recovery-wall-v1/wall-scale.png",
+      "findings": [
+        "Reviewed at320 units beside current furnished Cryo room at equal world scale.",
+        "Bank remains subordinate to pods; small supported clothing readable."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 opaque checkerboard removed at source-specific neutral175; one continuous vector silhouette.",
+        "Light/dark review confirms cleaned outer rail and retained pale cabinet surfaces."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Repair fringe on the generated silhouette before treating alpha-channel presence as acceptance.",
+    "Keep recovery support furniture subordinate to pod machinery."
+  ],
+  "proposed_display_height_world": 61.67554479418886,
+  "registration_path": "assets/cryo-recovery-wall-v1/registration.json",
+  "registration_sha256": "a37b4b59fe06fb2a9e13cfcb76ab9c0ff46a49258429a4fed8e782bdc93d8a30",
+  "prompt_path": "assets/cryo-recovery-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "57f20772a24bb058c7739669393eba344342d709f39ff2a444a0113a43657b63",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "rejected_sources": [
+    {
+      "path": "assets/cryo-recovery-wall-v1/source-v1.png",
+      "sha256": "12ac4a3585e4fafc9953e83be896e967da7d48742462f3b3be715f39c0f8254f",
+      "reason": "Pale/colored exterior flecks and bright trim"
+    }
+  ],
+  "evidence_hashes": {
+    "output/cryo-recovery-wall.log": "3af6b721e1ebec93bf52aed3f0998ed5964d8bee1691daf98525b40dad19f583",
+    "output/cryo-recovery-wall-v1/wall-scale.png": "650f544ba7e727f25d96dd7a42ca33d2d8d41a0491a2d9ce3001060263a7d438",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  },
+  "alpha_probes": [
+    {
+      "xy": [
+        0,
+        0
+      ],
+      "alpha": 0
+    },
+    {
+      "xy": [
+        1080,
+        220
+      ],
+      "alpha": 255,
+      "role": "Pale rear rail retained"
+    }
+  ]
+}

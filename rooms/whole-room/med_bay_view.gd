@@ -6,7 +6,7 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 func _ready() -> void:
 	super._ready()
 	var img := Image.new()
-	assert(img.load("res://rooms/whole-room/med-bay-source-v1.png")==OK)
+	assert(img.load("res://assets/material-polish-medical-v1/treatment-equipment.png")==OK)
 	life_texture = ImageTexture.create_from_image(img)
 	life_items = []
 	for i in range(2):
@@ -50,6 +50,7 @@ func rebuild() -> void:
 	if dressing!=null: dressing.place()
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	var bounds := super.prop_visual_bounds(prop)
 	for outline in prop.registration.get("extras",[]):
 		for p in outline: bounds = bounds.expand(life_point(prop,p))
@@ -57,12 +58,10 @@ func prop_visual_bounds(prop: Dictionary) -> Rect2:
 
 func draw_room_floor(center: Vector2) -> void:
 	# Large composite panels are two 48-unit modules, with quieter seams.
-	RoomFloor.draw_floor(painter,center,Color("a9b4b2"),Color(0.20,0.32,0.32,0.13),2,"sealed")
-	RoomFloor.draw_dressing(painter,center,edges,"sealed")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("a9b4b2"),Color(0.20,0.32,0.32,0.13),2,"sealed")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
 	if dressing!=null: dressing.floor()
 	preload("res://rooms/whole-room/room_services.gd").identity_details(painter,props,"medical",operating)
-	for x in [-48,48]:
-		painter.draw_line(center+Vector2(x,-144),center+Vector2(x,144),Color(0.31,0.52,0.52,0.22),1)
 
 func draw_registered_prop(prop: Dictionary) -> void:
 	draw_prop_base(prop)

@@ -40,9 +40,17 @@ func _run() -> void:
 	game._on_grid_clicked(Vector2i(19, 20))
 	check(game.drone_fleet.reserved(Vector2i(19,20)), "Paid placement must reserve construction before completion")
 	game.paused = false
-	game._update_wreck_clearance(30.0)
+	# Opening orders now require the architect's real approach and work updates.
+	for frame in range(1200):
+		game._process(.1)
+		if game.placed_rooms.size()==2: break
 	game.paused = true
 	check(game.placed_rooms.size() == 2, "Paid placement fixture should build a room")
+	if game.placed_rooms.size()!=2:
+		print("BUILD DIAGNOSTIC ",game.drone_fleet.orders," hardware=",game.hardware," crew=",game.recovered_crew)
+		for actor in [game.bill_npc,game.veld_npc,game.branforth_npc]: print(actor.activity," active=",actor.active," foot=",actor.foot," goal=",actor.goal)
+		quit(1)
+		return
 	game.cycle = 7
 	game.reroll_recovery_progress = 2
 	game.synergy_stabilization_progress = {"test_pattern": 2}

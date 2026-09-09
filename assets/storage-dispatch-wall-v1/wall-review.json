@@ -1,0 +1,91 @@
+{
+  "asset_id": "storage-dispatch-wall-v1",
+  "department": "Logistics / Storage Bay",
+  "condition": "Maintained matte industrial equipment",
+  "attachment_class": "Self-supporting fitted north bank",
+  "functional_bays": [
+    "Small cases and packing pads",
+    "Recessed scale",
+    "Wrapping worktop and paper holder",
+    "Tie-down trays",
+    "Dispatch drawers and case"
+  ],
+  "runtime_behavior": "Static standalone candidate, not installed",
+  "camera_and_facing": "Near top-down orthographic; north at top",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/storage_bay.png",
+      "sha256": "e70ffab810c6847684a1edda8be62852c575e8f1781610bec0d01a8fb5aff094",
+      "role": "Established room scale, camera and department"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/salvage-workbench-wall-v1/salvage-workbench-wall.png",
+      "sha256": "d7a0e6048fd12ab3c4dd7dfafcdc91c4b06571720c0379b87b9fcc84ac1db880",
+      "role": "Low bank construction only; exclude shiny tools"
+    }
+  ],
+  "source_path": "assets/storage-dispatch-wall-v1/wall-source-v1.png",
+  "source_sha256": "c5d46d47dacc637ed73f29889770b7d9a5749e7e41504ba89def3da82fb93eba",
+  "export_path": "assets/storage-dispatch-wall-v1/wall.png",
+  "export_sha256": "213db4ed431bce0165ffad6896f616d316490cfb743665efc6b90d258ddebfda",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Cargo handling and operator circulation"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Quiet grey tops and dark rubber; restrained ochre trim.",
+        "Uncoated paper and woven straps retain subdued texture."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/storage-dispatch-wall-v1/wall-scale.png",
+      "findings": [
+        "Viewed beside furnished Storage Bay at equal world scale on light/dark grounds."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Opaque generated background removed through source UV registration; original raster unchanged.",
+        "All trays and scale pad are backed and retained."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Leave a clear working surface so the task reads at native scale."
+  ],
+  "proposed_display_height_world": 66.73132880698351,
+  "registration_path": "assets/storage-dispatch-wall-v1/wall.json",
+  "registration_sha256": "9058b0f7c3b5ec9aeb92a77a986c8bc92b1b6f90c9942bdbae96b7523a24c3b2",
+  "prompt_path": "assets/storage-dispatch-wall-v1/wall.prompt.txt",
+  "prompt_sha256": "5f0914af76730c1285939b94836cf7599cb9076d01da0fa81992201f0daae9da",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/storage-dispatch-wall-v1/wall-scale.png": "315359759de37dae217d0769285d4c9636c9d1dbbcd0644306b0cc87b6cebd87",
+    "output/storage-dispatch-wall.log": "4278aba2ee9c71ae122e487f512e3b524e6077ef8796a0b925c818664941acd5",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

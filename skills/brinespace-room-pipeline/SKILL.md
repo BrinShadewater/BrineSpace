@@ -4,6 +4,30 @@ description: Use when generating, repairing, reviewing, or integrating BrineSpac
 ---
 
 # BrineSpace room pipeline
+For directional service counters, short finished-end sections and additive host
+studies, read [fitted service lessons](references/fitted-service-lessons.md).
+
+
+For matching station navigation artwork and UI integration, read
+[navigation UI lessons](references/navigation-ui.md). Its material rules are
+UI-specific; do not apply them universally to room props.
+
+For corridor floors, department risers, default doors and opposite-facing corners,
+read [the corridor/riser contract](references/corridor-riser-contract.md).
+
+For layout-editor tray previews, drag optimization and water-rendering follow-up,
+read [editor and water lessons](references/layout-editor-and-water.md).
+
+For every new or revised prop, apply the owner-directed
+[material and scale review](references/material-and-scale-review.md): matte
+surfaces, restrained highlights and native-scale comparison are explicit gates.
+Record verified corrections in the maintained workflow as each art task progresses.
+
+For the fourteen-room continuous/split wall rollout, read
+[wall-room rollout](references/wall-room-rollout.md).
+
+For full-wall props, side-facing variants, enclosed cutout repairs and relocation,
+read [full-wall installation lessons](references/full-wall-installations.md).
 
 For session consolidation, paused production or a cross-room handoff, read
 [handoff guidance](references/handoff.md). Use current selections and dated
@@ -14,7 +38,7 @@ For underwater hull windows, wall-mounted props and related deck details, read
 wall registration, floor collision, transparency cleanup and native style review.
 
 Produce usable room assets, not just attractive images. Keep geometry authoritative
-and distinguish **generated → cleaned → geometry-validated → integrated → verified**.
+and distinguish **generated â†’ cleaned â†’ geometry-validated â†’ integrated â†’ verified**.
 Track rejected candidates separately; counts at one stage never imply another.
 
 For crew character design, sprite animation, or character-specific NPC integration,
@@ -30,7 +54,11 @@ below apply only when those consumers are in scope.
 ## Establish the contract
 
 Locate the BrineSpace checkout from the active workspace; never assume a drive
-path. Read its AGENTS.md and docs/DEVELOPMENT_NOTES.md. Get room IDs, footprints,
+path. When using an installed snapshot for production, compare it with
+`skills/brinespace-room-pipeline` in that checkout using
+`python <installed-skill>/scripts/check_source_sync.py --source <checkout-skill> --installed <installed-skill>`.
+Use the maintained project references when a difference is reported; do not overwrite
+project work from an older installed snapshot. Read its AGENTS.md and docs/DEVELOPMENT_NOTES.md. Get room IDs, footprints,
 door masks and walkways from scripts/room_database.gd; inspect the renderer's
 coordinate transforms before specifying pixel positions. Existing art can have
 incorrect doors. Inspect actual PNGs, not filenames or thumbnails alone.
@@ -122,3 +150,12 @@ For supported furniture, use the project dressing helper where appropriate and s
 For true-alpha registration, use the read-only `tools/register_alpha_silhouette.py` and the supported-furniture lesson. Keep visual acceptance separate from route and packaged asset checks.
 
 Before packaging profile-based furnishings, run `tools/audit_composition_dependencies.py` with the affected manifests; see the dependency audit lesson.
+
+For all-room floor production and integration, read [floor coverage lessons](references/floor-coverage.md). Reconcile live identities and inherited floor owners; keep per-room source, placement, and native-acceptance stages separate.
+
+
+## Build storage at closeout
+
+For generated-package retention and disk cleanup, read
+[storage retention](references/storage-retention.md). Preserve source art and
+review evidence separately from disposable executable/package copies.

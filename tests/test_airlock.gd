@@ -172,7 +172,7 @@ func run() -> void:
 			game.meta.selected_architect=id
 			game._start_reboot_cycle()
 			game.tick_timer.stop()
-			Architects.advance_core(game,7)
+			Architects.advance_core(game,Architects.DURATION)
 			game.paused=true
 			cell=CORE+[Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT][q]
 			game.wrecks.erase(cell)

@@ -1,0 +1,1439 @@
+{
+  "objective": "All fourteen listed rooms plus continual asset pipeline, skill and bible improvements",
+  "rooms": [
+    {
+      "id": "salvage_drone_bay",
+      "layout": "layout_02_straight",
+      "kind": "continuous",
+      "baseline": "res://rooms/production-ten/salvage_drone_bay_view.gd",
+      "brief": "Recovered-part sorting bench, disassembly tools and supported bins; graphite steel, restrained ochre",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/salvage-disassembly-wall.png",
+          "sha256": "2383105a159f7d31d47c48ba128fdda006020da72a059ef798af042fd3234ee2",
+          "dimensions": [
+            1966,
+            800
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/salvage-disassembly-wall.prompt.txt",
+          "references": [
+            "assets/full-wall-expansion-v2/thermal-control-wall.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
+          "selected": true
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/salvage-side-rejected-fronts.png",
+          "sha256": "8e77469f917f5dca569e1dbb8b409be46001610b6dc7da7e5880118afc48ab1f",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/salvage-side-rejected-fronts.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/salvage-disassembly-wall.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: south-facing monitor and drawer fronts despite vertical bank",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/salvage_drone_bay.png",
+          "sha256": "3ed1ef93843184ab5055255f202bcb138355e6a19dbe549d66928170ef1d33f9",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/salvage_drone_bay.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/salvage-side-rejected-fronts.png",
+            "assets/full-wall-expansion-v2/tidal_condenser.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-pilot-review.log",
+        "previews": "output/wall-rollout-pilot-v2/pilot-q0.png through pilot-q3.png",
+        "floor_anchors": "output/wall-rollout-pilot-anchors.log",
+        "crew_routes": "output/wall-rollout-pilot-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/salvage_drone_bay.png",
+        "card_sha256": "c2648e69ff65a4bbcf2fad92608f672394b3cb5ef5d889b5f67d55ce4cf0090d",
+        "scope": "Authored defaults, four rotations, operating/offline; not packaged export or owner art approval"
+      },
+      "pending": []
+    },
+    {
+      "id": "construction_drone_bay",
+      "layout": "layout_02_straight",
+      "kind": "continuous",
+      "baseline": "res://rooms/production-ten/construction_drone_bay_view.gd",
+      "brief": "Fabrication modules, tool magazine and empty drone assembly cradle; steel with muted construction orange",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/construction-fabrication-wall.png",
+          "sha256": "1c16e5ebb4a28cc820285c7304b2daefddb2a33074f32e4525586acf16f8e512",
+          "dimensions": [
+            1967,
+            800
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/construction-fabrication-wall.prompt.txt",
+          "references": [
+            "assets/full-wall-expansion-v2/thermal-control-wall.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
+          "selected": true
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/construction-side-rejected-lower-fronts.png",
+          "sha256": "38d4e234618911d465b71e25ca431f557cc5c43cbec53a15060e2b410d751da7",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/construction-side-rejected-lower-fronts.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/construction-fabrication-wall.png",
+            "assets/full-wall-expansion-v2/tidal_condenser.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: cutter faces inward but lower magazine drawers/control still face south",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/construction_drone_bay.png",
+          "sha256": "935e7681f6e1295a3ab1fd6373f540b391937b112a7472c3a44c947ae7abd509",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/construction_drone_bay.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/construction-side-rejected-lower-fronts.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-pilot-review.log",
+        "previews": "output/wall-rollout-pilot-v2/pilot-q0.png through pilot-q3.png",
+        "floor_anchors": "output/wall-rollout-pilot-anchors.log",
+        "crew_routes": "output/wall-rollout-pilot-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/construction_drone_bay.png",
+        "card_sha256": "5260ed249351839bebac3af1bcfd1e62fd8b04397adc6b3d4644ad5145e0fb44",
+        "scope": "Authored defaults, four rotations, operating/offline; not packaged export or owner art approval"
+      },
+      "pending": []
+    },
+    {
+      "id": "anomaly_lab",
+      "layout": "layout_dead_south",
+      "kind": "continuous",
+      "baseline": "res://rooms/underwater/batch-two/anomaly_lab_view.gd",
+      "brief": "Shielded irregular specimen chambers and analytical controls; dark technical composite with restrained violet",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/anomaly-containment-wall.png",
+          "sha256": "c9b6112641d2e21f833a63ce903969eda0e79130e315cd642b6d21b065a01985",
+          "dimensions": [
+            1983,
+            793
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/anomaly-containment-wall.prompt.txt",
+          "references": [
+            "rooms/underwater/batch-two/anomaly_lab-source-v1.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
+          "selected": true
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/anomaly-side-rejected-console.png",
+          "sha256": "fde334f624d1c96ba1b4a441e0accf8ea5c8731d6f5ed954fd7a459cc1a9e288",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/anomaly-side-rejected-console.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/anomaly-containment-wall.png",
+            "assets/full-wall-expansion-v2/tidal_condenser.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: lower console drawer fronts face south",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/anomaly_lab.png",
+          "sha256": "c53f1529931feca73dc35f247babd152d5eb21e85fedc56409a7656f1c28856d",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/anomaly_lab.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/anomaly-side-rejected-console.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
+          "selected": true
+        },
+        {
+          "view": "south",
+          "source": "assets/wall-room-rollout-v1/anomaly-containment-wall-south.png",
+          "sha256": "974127356e427728e3bac87a84225415338b0892d5c705cb06adecd3eb817b82",
+          "dimensions": [
+            1983,
+            793
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/anomaly-containment-wall-south.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/anomaly-containment-wall.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-pilot-review.log",
+        "previews": "output/wall-rollout-pilot-v2/pilot-q0.png through pilot-q3.png",
+        "floor_anchors": "output/wall-rollout-pilot-anchors.log",
+        "crew_routes": "output/wall-rollout-pilot-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/anomaly_lab.png",
+        "card_sha256": "6b9bc38a5a6c7163856f88df8ad993ad85e747c99910804c4a95d775351bdb40",
+        "scope": "Authored defaults, four rotations, operating/offline; not packaged export or owner art approval"
+      },
+      "pending": []
+    },
+    {
+      "id": "radio_lab",
+      "layout": "layout_03_straight_ew",
+      "kind": "continuous",
+      "baseline": "res://rooms/underwater/acoustic-comms/radio_lab_view.gd",
+      "brief": "Acoustic receiver, patch bay and transducer calibration housing; charcoal steel and muted burgundy from current room source",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Fixed top-down game camera; left-wall fronts face right into floor, right-wall fronts face left into floor; no exposed cabinet backs toward crew",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/radio-side-rejected-dial.png",
+          "sha256": "b66984e689b9a629af3e075d6f437e93014f84b69d4483c929c2b6c81f62b4c5",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-side-rejected-dial.prompt.txt",
+          "references": [
+            "rooms/underwater/acoustic-comms/radio_lab-source-v1.png",
+            "assets/full-wall-expansion-v2/tidal_condenser.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Rejected: lower calibration dial is on outer/south face; side-first still needs targeted correction",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/radio-side-inward-before-left-correction.png",
+          "sha256": "a63fe0df613ceeb4b3d31f8a7321df1eacaee991e63907777e7979e103df7386",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-side-inward-before-left-correction.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio-side-rejected-dial.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Superseded preview: owner now requests every machine face left; scope clarification pending",
+          "selected": false
+        },
+        {
+          "view": "left-facing",
+          "source": "assets/wall-room-rollout-v1/radio-left-facing-v1.png",
+          "sha256": "ba37a8ef3b88a0d16d8ed323a861f0b2799a6e574d5033d072bc430bc1012629",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-left-facing-v1.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio-side-inward-before-left-correction.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Owner-directed revision: both banks and all operator faces point screen-left; source preview only, not two directional variants",
+          "selected": false
+        },
+        {
+          "view": "up-inward-pair",
+          "source": "assets/wall-room-rollout-v1/radio-up-inward-rejected-camera.png",
+          "sha256": "ac38856777ec55fe5a5b39d0c3da4da6049964dee0a93dc77adb29e6147567dc",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-up-inward-rejected-camera.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio-left-facing-v1.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Rejected: camera tilted below machinery; underside visible, incompatible with elevated game camera",
+          "selected": false
+        },
+        {
+          "view": "up-inward-pair",
+          "source": "assets/wall-room-rollout-v1/radio-up-inward-rejected-fronts.png",
+          "sha256": "6655d82d30e50fb2341789fafa85e7812bc79d894931fea8b558013bb85ccdff",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-up-inward-rejected-fronts.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio-left-facing-v1.png",
+            "assets/full-wall-expansion-v2/tidal_condenser.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Rejected: top planes corrected but readable operator fronts still face lower interior instead of away/up",
+          "selected": false
+        },
+        {
+          "view": "up-inward-pair",
+          "source": "assets/wall-room-rollout-v1/radio-rejected-back-view.png",
+          "sha256": "fba4afeeb7fe84c24d9605324a227450476305e85f466601a8ae67912036fade",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-rejected-back-view.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio-up-inward-rejected-fronts.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Rejected: assistant misread upward as facing direction; owner clarifies top-down camera, console fronts toward playable interior",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/radio-top-down-rejected-panel-direction.png",
+          "sha256": "be79584bfb4b3f3ef9a82d31649592949b3707635cbcebacce93aa3ebd2f59eb",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-top-down-rejected-panel-direction.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio-side-inward-before-left-correction.png",
+            "assets/full-wall-expansion-v2/tidal_condenser.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Top-down camera corrected; console panels still arranged screen above controls, implying south approach; needs transverse operator layout",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/radio_lab.png",
+          "sha256": "0e9edfa446b8e64df0abecf1364bdf8aa432136863085c3f75b7b57e8b753fa9",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio_lab.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio-top-down-rejected-panel-direction.png"
+          ],
+          "stage": "superseded/rejected",
+          "review": "Top-down source candidate: screens/window toward wall, hand controls toward interior across each bank; native review pending",
+          "selected": false
+        },
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/radio-signal-wall.png",
+          "sha256": "215140a22cae1e48694fbbb81f599d42eae606e1933f9c868765f5d89dc2354c",
+          "dimensions": [
+            1981,
+            793
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-signal-wall.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio_lab.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Matched top-down horizontal source; native review pending",
+          "selected": true
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/radio-flush-v2.png",
+          "sha256": "e114ac1a0dc654be3f745b7be32d52163a644f177a9258faa65e4f877ae4224d",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/radio-flush-v2.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/radio_lab.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Straight wall-contact flanges, source preview; pending mounted native validation",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-radio-flush-review.log",
+        "previews": "output/wall-rollout-radio-flush/radio-flush-sides.png",
+        "floor_anchors": "output/wall-rollout-radio-flush-anchors.log",
+        "crew_routes": "output/wall-rollout-radio-flush-routes.log",
+        "scope": "Top-down camera and interior-side controls; default layouts, four rotations. Not packaged export or owner approval.",
+        "card": "assets/wall-room-rollout-v1/cards/radio_lab.png",
+        "card_sha256": "97a804c21f227ca0b95833a742dafcc5fd8dda7f294bf22f7d7b9f29b54f9403",
+        "side_regression": "output/radio-flush-side-regression.log",
+        "wall_contact": "Straight registered source edges x=244 west, x=1292 east. Mounted to canonical inner wall face +/-184 world units."
+      },
+      "owner_correction": "Final clarification: camera looks top down; console fronts face open playable interior where crew stand. Upward is not a direction for operator fronts. Rear-facing and low-angle previews rejected. Banks must sit flush against the wall; straight flanges and canonical wall-face placement supersede inset positions.",
+      "pending": []
+    },
+    {
+      "id": "shield_generator",
+      "layout": "layout_02_straight",
+      "kind": "continuous",
+      "baseline": "res://rooms/underwater/hull-integrity/shield_generator_view.gd",
+      "brief": "Hull reinforcement controls, pressure manifolds and capacitors; heavy steel and restrained amber",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/shield_generator.png",
+          "sha256": "855b234285a52a6d1bbe0cb0cc1b979d29660d5a49144a797784fd5f2efc9b70",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/shield_generator.prompt.txt",
+          "references": [
+            "rooms/underwater/hull-integrity/shield_generator-source-v1.png",
+            "assets/wall-room-rollout-v1/radio-flush-v2.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Source review: inward aisle controls, straight outer flanges, muted engineering palette; registration and native validation pending.",
+          "selected": true
+        },
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/shield-pressure-wall.png",
+          "sha256": "ec74199a686b2d0e51c4c37fa3d59ee68a268f3acefb4d93fbfc217535d62475",
+          "dimensions": [
+            2067,
+            761
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/shield-pressure-wall.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/shield_generator.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Saved horizontal candidate; compare operator deck orientation and footprint at native scale before selection.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-shield-review.log",
+        "anchors": "output/wall-rollout-shield-anchors.log",
+        "routes": "output/wall-rollout-shield-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/shield_generator.png",
+        "card_sha256": "1aed25e1fb44ec9a62142eac07e66400cc3e1614621a0fec1d1705a7ded70edf"
+      },
+      "pending": [],
+      "staging": "assets/wall-room-rollout-v1/shield-staging"
+    },
+    {
+      "id": "quarantine_cell",
+      "layout": "layout_03_straight_ew",
+      "kind": "continuous",
+      "baseline": "res://rooms/production-ten/quarantine_cell_view.gd",
+      "brief": "Sealed specimen storage, sterilization modules and observation controls; gray-green clinical composite",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/quarantine-side-rejected-berth.png",
+          "sha256": "39a224b439579def4055f81caa8c6c8d4bb6b7aa705d7c16c6328dd1ca07a5ea",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/quarantine-side-rejected-berth.prompt.txt",
+          "references": [
+            "rooms/production-ten/quarantine_cell-source-v1.png",
+            "assets/wall-room-rollout-v1/radio-flush-v2.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: reference patient berth copied into intended specimen bench; replace berth with small specimen trays.",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/quarantine_cell.png",
+          "sha256": "0923d6c8127859450ab6ce1ac42d1ef139bbf503cca0493e46322b51c1464cc3",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/quarantine_cell.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/quarantine-side-rejected-berth.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Specimen trays repaired; inward controls and straight flanges retained. Native review pending.",
+          "selected": true
+        },
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/quarantine-specimen-wall.png",
+          "sha256": "da85670d13139faf13bf8dfa4383c300c0eed33fe7d3c3304694417ed0f2ac5b",
+          "dimensions": [
+            1983,
+            793
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/quarantine-specimen-wall.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/quarantine_cell.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Horizontal specimen bank; native review pending.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-quarantine-review.log",
+        "anchors": "output/wall-rollout-quarantine-anchors.log",
+        "routes": "output/wall-rollout-quarantine-routes.log",
+        "preview": "output/wall-rollout-quarantine/four-rotations.png",
+        "card": "assets/wall-room-rollout-v1/cards/quarantine_cell.png",
+        "card_sha256": "466638666cb94ed6b8eddb61cfec76c9adce0f351fe2ce371d6b9ac0993802bd"
+      },
+      "pending": []
+    },
+    {
+      "id": "med_center",
+      "layout": "layout_02_straight",
+      "kind": "continuous",
+      "baseline": "res://rooms/underwater/batch-two/med_center_view.gd",
+      "brief": "Diagnostic and treatment equipment with organized clinical supplies; muted medical enamel and teal",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/med-center-side-rejected-controls.png",
+          "sha256": "4476d50249ea846fb13937ee799a88a7470a63c9dd53c94017384f0ba8aeb057",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/med-center-side-rejected-controls.prompt.txt",
+          "references": [
+            "rooms/underwater/batch-two/med_center-source-v1.png",
+            "assets/wall-room-rollout-v1/radio-flush-v2.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: lower keyboards imply south approach; enamel too pale. Repair transverse inward decks and darken.",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/med_center.png",
+          "sha256": "fd82ee0aa52ae247f36beca7f320bebb82399902e01fe2b7f551555095eeb426",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/med_center.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/med-center-side-rejected-controls.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Darker enamel and transverse aisle keyboards repaired; integration pending.",
+          "selected": true
+        },
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/medical-diagnostic-wall.png",
+          "sha256": "2f009f0f8deb8e74b5ec9a4e3f2e93b52f72f0f4d4d7201d51a13ea54cff4dcc",
+          "dimensions": [
+            1983,
+            793
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/medical-diagnostic-wall.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/med_center.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Horizontal diagnostic counter, muted enamel; integration pending.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-med-center-review.log",
+        "anchors": "output/wall-rollout-med-center-anchors.log",
+        "routes": "output/wall-rollout-med-center-routes.log",
+        "preview": "output/wall-rollout-med-center/four-rotations.png",
+        "card": "assets/wall-room-rollout-v1/cards/med_center.png",
+        "card_sha256": "dcea313b613fe76b77471bdea8ec76ad07718e586a02360801619d042f405661"
+      },
+      "pending": []
+    },
+    {
+      "id": "med_office",
+      "layout": "layout_02_straight",
+      "kind": "continuous",
+      "baseline": "res://rooms/underwater/batch-two/med_office_view.gd",
+      "brief": "Consultation workstation, records and medication cabinets; muted clinical enamel with warm gray storage",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/med_office.png",
+          "sha256": "0ca8488e1a4c71e7c1ed1002225bde74b795ebf2d09f3c187c6ca29cc3aa566a",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/med_office.prompt.txt",
+          "references": [
+            "rooms/underwater/batch-two/med_office-source-v1.png",
+            "assets/wall-room-rollout-v1/med_center.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Office-specific records and communication counters; inward keyboards, native review pending.",
+          "selected": true
+        },
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/medical-records-wall.png",
+          "sha256": "035a2b6388ebfb2f70eea02c7848204a9891878d795dc16121aa38dbf2c18034",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/medical-records-wall.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/med_office.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Horizontal office records counter; native review pending.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-med-office-review.log",
+        "anchors": "output/wall-rollout-med-office-anchors.log",
+        "routes": "output/wall-rollout-med-office-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/med_office.png",
+        "card_sha256": "0bc481e2a21d3ba5467b54d602850492eb8359c5b4c1e8893f1bac8f7156816f"
+      },
+      "pending": []
+    },
+    {
+      "id": "biomass_digester",
+      "layout": "layout_01_tee",
+      "kind": "continuous",
+      "baseline": "res://rooms/power-expansion-v1/biomass_digester_view.gd",
+      "brief": "Feedstock preparation, sealed digestion vessels and filtration; dark green-gray wet machinery",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/biomass-side-rejected-camera.png",
+          "sha256": "52609f77a702e79d59efdd889369df27aa3c9cc2d55a6918b66b5e3f0690526c",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/biomass-side-rejected-camera.prompt.txt",
+          "references": [
+            "rooms/power-expansion-v1/biomass_digester-source.png",
+            "assets/wall-room-rollout-v1/shield_generator.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: tanks copied frontal elevations; regenerate as top-down vessels.",
+          "selected": false
+        },
+        {
+          "view": "west-east",
+          "source": "assets/wall-room-rollout-v1/biomass_digester.png",
+          "sha256": "d6664e966d781aaef5a9210119428758e71efb94fafe70d6e3c1e3f346c2691d",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/biomass_digester.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/biomass-side-rejected-camera.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Top-view circular vessels corrected; native integration pending.",
+          "selected": true
+        },
+        {
+          "view": "north",
+          "source": "assets/wall-room-rollout-v1/biomass-processing-wall.png",
+          "sha256": "67629a04af290772cc6ccdb3415bae05630f9373e5134aecf0ad449eb93c9e4d",
+          "dimensions": [
+            2172,
+            724
+          ],
+          "mode": "RGBA",
+          "prompt": "assets/wall-room-rollout-v1/biomass-processing-wall.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/biomass_digester.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Top-down horizontal source; check native alpha before registration.",
+          "selected": true
+        },
+        {
+          "view": "south",
+          "source": "assets/wall-room-rollout-v1/biomass-processing-wall-south.png",
+          "sha256": "3566f8a90f627a0ba76106bf8308eebd525e591d427c88831da14a4738454901",
+          "dimensions": [
+            2172,
+            724
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/biomass-processing-wall-south.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/biomass-processing-wall.png"
+          ],
+          "stage": "rejected",
+          "review": "North-facing controls for south wall; alpha inspection pending.",
+          "selected": false
+        },
+        {
+          "view": "south",
+          "source": "assets/wall-room-rollout-v1/biomass-processing-wall-south-v2.png",
+          "sha256": "76f59ce2cf023c02a88d47298dd63ed82ac4589c5da020a7c32d7915e588d0f7",
+          "dimensions": [
+            2172,
+            724
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/biomass-processing-wall-south-v2.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/biomass-processing-wall-south.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "White background repair; north-facing controls retained. Native integration pending.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-biomass-review.log",
+        "anchors": "output/wall-rollout-biomass-anchors.log",
+        "routes": "output/wall-rollout-biomass-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/biomass_digester.png",
+        "card_sha256": "4bfcb1a59341b14e440b5cc28bd88002748da05d3928f5c02528c43df87bfc74"
+      },
+      "pending": []
+    },
+    {
+      "id": "life_support",
+      "layout": "layout_05_cross",
+      "kind": "split-door",
+      "baseline": "res://rooms/whole-room/underwater_life_support_view.gd",
+      "brief": "Split scrubber and filtration banks; gray/cyan wet utilities",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north-pair",
+          "source": "assets/wall-room-rollout-v1/life-split-north-rejected-camera.png",
+          "sha256": "267c2e9a6fa453fbcc80e6e3b35072f4347143b334f8fe4e9f9e9391d349aa5c",
+          "dimensions": [
+            1681,
+            936
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/life-split-north-rejected-camera.prompt.txt",
+          "references": [
+            "rooms/whole-room/life-support-underwater-source-v1.png",
+            "assets/wall-room-rollout-v1/shield_generator.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected camera: standing cartridges copied and excessive frontal fascia. Correct top-down geometry.",
+          "selected": false
+        },
+        {
+          "view": "north-pair",
+          "source": "assets/wall-room-rollout-v1/life-support-split-north.png",
+          "sha256": "593ad0f74ab626aed41c749257e17967d1a3ec736ae28a54d1cb0bf29ce976de",
+          "dimensions": [
+            1681,
+            936
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/life-support-split-north.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/life-split-north-rejected-camera.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Separate fan and filter units, top-down correction; runtime pending.",
+          "selected": true
+        },
+        {
+          "view": "west-east-pairs",
+          "source": "assets/wall-room-rollout-v1/life-support-split-sides.png",
+          "sha256": "9b6c6fb94149be942fb39c46324ac4c0bbabcfe36ad6d9587ea112e4378abfb1",
+          "dimensions": [
+            1448,
+            1086
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/life-support-split-sides.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/life-support-split-north.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Four separate sprites with inward controls; native pending.",
+          "selected": true
+        },
+        {
+          "view": "south-pair",
+          "source": "assets/wall-room-rollout-v1/life-support-split-south.png",
+          "sha256": "a6102c9e0fb8d0b9972e8e9f96ad09002eee4ea0210a21a65f869d83e3b60d1f",
+          "dimensions": [
+            1680,
+            936
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/life-support-split-south.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/life-support-split-north.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "North-facing south-wall controls; native pending.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-life-split-review.log",
+        "anchors": "output/wall-rollout-life-split-anchors.log",
+        "routes": "output/wall-rollout-life-split-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/life_support.png",
+        "card_sha256": "dcf1154e91908add7e45c90748bf6d50bdeadbd094e0f570df4db4445727a634"
+      },
+      "pending": [],
+      "staging": [
+        "assets/wall-room-rollout-v1/life-split-staging",
+        "assets/wall-room-rollout-v1/life-split-side-staging",
+        "assets/wall-room-rollout-v1/life-split-south-staging"
+      ]
+    },
+    {
+      "id": "hydroponics_bay",
+      "layout": "layout_05_cross",
+      "kind": "split-door",
+      "baseline": "res://rooms/whole-room/hydroponics_view.gd",
+      "brief": "Split growing beds and nutrient controls; muted green agricultural composite",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north-pair",
+          "source": "assets/wall-room-rollout-v1/hydro-split-north-rejected-tanks.png",
+          "sha256": "fff636cbcd19fe8a84a8be20f3e396271488395205c1c9e2bc32ec1a928981f0",
+          "dimensions": [
+            2172,
+            724
+          ],
+          "mode": "RGBA",
+          "prompt": "assets/wall-room-rollout-v1/hydro-split-north-rejected-tanks.prompt.txt",
+          "references": [
+            "rooms/whole-room/hydroponics-candidate.png",
+            "assets/wall-room-rollout-v1/life-support-split-north.png"
+          ],
+          "stage": "rejected",
+          "review": "Crop bed accepted; standing nutrient tanks need top-down low cartridges.",
+          "selected": false
+        },
+        {
+          "view": "north-pair",
+          "source": "assets/wall-room-rollout-v1/hydro-split-north.png",
+          "sha256": "9420683a091227093f32e9c7890e2ebdd136d8239fca6e767a111f78a3278fe9",
+          "dimensions": [
+            2172,
+            724
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/hydro-split-north.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/hydro-split-north-rejected-tanks.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Low nutrient cartridges corrected; native review pending.",
+          "selected": true
+        },
+        {
+          "view": "west-east-pairs",
+          "source": "assets/wall-room-rollout-v1/hydro-split-sides-rejected-axis.png",
+          "sha256": "a559d7a3bfbc0e22c15bf83373496d58e376f59ea2a4c821510816892fcdb523",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/hydro-split-sides-rejected-axis.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/hydro-split-north.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: wide horizontal silhouettes and top mounting rails instead of vertical side-wall geometry.",
+          "selected": false
+        },
+        {
+          "view": "west-east-pairs",
+          "source": "assets/wall-room-rollout-v1/hydro-split-sides.png",
+          "sha256": "7389e3e3cc57ca03f6a6befe092b30a295450bd4b217c0b4baf64fe5083fc334",
+          "dimensions": [
+            1448,
+            1086
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/hydro-split-sides.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/hydro-split-sides-rejected-axis.png",
+            "assets/wall-room-rollout-v1/life-support-split-sides.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Tall footprints and side rails corrected; native pending.",
+          "selected": true
+        },
+        {
+          "view": "south-pair",
+          "source": "assets/wall-room-rollout-v1/hydro-split-south.png",
+          "sha256": "4d5372b58477699612f2faa77add53e8977c63c4703b92d5c8832cc6c1cdc058",
+          "dimensions": [
+            2172,
+            724
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/hydro-split-south.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/hydro-split-north.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "North-facing controls and bottom flanges; native pending.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-hydro-split-review.log",
+        "anchors": "output/wall-rollout-hydro-split-anchors.log",
+        "routes": "output/wall-rollout-hydro-split-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/hydroponics_bay.png",
+        "card_sha256": "271d21cd8a03e05f0713ba0669c0a92e9a5a7a17ace0e7e6aefa4681c7e08f50"
+      },
+      "pending": [],
+      "staging": [
+        "assets/wall-room-rollout-v1/hydro-split-north-staging",
+        "assets/wall-room-rollout-v1/hydro-split-side-staging",
+        "assets/wall-room-rollout-v1/hydro-split-south-staging"
+      ]
+    },
+    {
+      "id": "battery_array",
+      "layout": "layout_05_cross",
+      "kind": "split-door",
+      "baseline": "res://rooms/production-ten/battery_array_view.gd",
+      "brief": "Split capacitor/battery cabinets and distribution controls; engineering steel with amber",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north-pair",
+          "source": "assets/wall-room-rollout-v1/battery-split-north.png",
+          "sha256": "006f79ee2d146caeb65efb0043608324eebf9feaaea32534fdc40bfacb60062c",
+          "dimensions": [
+            1681,
+            936
+          ],
+          "mode": "RGBA",
+          "prompt": "assets/wall-room-rollout-v1/battery-split-north.prompt.txt",
+          "references": [
+            "rooms/production-ten/battery_array-source-v1.png",
+            "assets/wall-room-rollout-v1/life-support-split-north.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Separate battery/capacitor skids; native pending.",
+          "selected": true
+        },
+        {
+          "view": "west-east-pairs",
+          "source": "assets/wall-room-rollout-v1/battery-split-sides.png",
+          "sha256": "2c2f7fb9e1c73c20878f17a4bee30e4e746e807ccec812850d5c16c597c7f373",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/battery-split-sides.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/battery-split-north.png",
+            "assets/wall-room-rollout-v1/hydro-split-sides.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Vertical bank geometry and inward controls; native pending.",
+          "selected": true
+        },
+        {
+          "view": "south-pair",
+          "source": "assets/wall-room-rollout-v1/battery-split-south.png",
+          "sha256": "6cd8115f1603f19dfd99f6fd711f062d414657f696da1de2e82859dc31c137f3",
+          "dimensions": [
+            1681,
+            936
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/battery-split-south.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/battery-split-north.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "North-facing control panels and south backing flanges; native pending.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-battery-split-review.log",
+        "anchors": "output/wall-rollout-battery-split-anchors.log",
+        "routes": "output/wall-rollout-battery-split-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/battery_array.png",
+        "card_sha256": "d59a741dc236315f025fc6808665e5b140e0a0fb445702a83a2b4e8f9746d17e"
+      },
+      "pending": [],
+      "staging": [
+        "assets/wall-room-rollout-v1/battery-split-north-staging",
+        "assets/wall-room-rollout-v1/battery-split-side-staging",
+        "assets/wall-room-rollout-v1/battery-split-south-staging"
+      ]
+    },
+    {
+      "id": "storage_bay",
+      "layout": "layout_05_cross",
+      "kind": "split-door",
+      "baseline": "res://rooms/production-ten/storage_bay_view.gd",
+      "brief": "Split supported shelving, cargo restraints and inventory counter; load-bearing steel and muted ochre",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north-pair",
+          "source": "assets/wall-room-rollout-v1/storage-split-north.png",
+          "sha256": "dd35fa1e21a32e60223337be27885ef15253fada9bad6b90adf2a3eb9f31b4ac",
+          "dimensions": [
+            1681,
+            936
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/storage-split-north.prompt.txt",
+          "references": [
+            "rooms/production-ten/storage_bay-source-v1.png",
+            "assets/wall-room-rollout-v1/life-support-split-north.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Native four rotations reviewed: flush backing, inward controls/handles, separate door-clear sections.",
+          "selected": true
+        },
+        {
+          "view": "west-east-pairs",
+          "source": "assets/wall-room-rollout-v1/storage-split-sides-rejected-controls.png",
+          "sha256": "7e2f823d7cc75d214ff2c04f915dc03225952dd10464e967e91f9eab5b18c3a0",
+          "dimensions": [
+            962,
+            1635
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/storage-split-sides-rejected-controls.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/storage-split-north.png",
+            "assets/wall-room-rollout-v1/battery-split-sides.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: inventory controls below displays imply south approach; cargo handles also need inward orientation.",
+          "selected": false
+        },
+        {
+          "view": "west-east-pairs",
+          "source": "assets/wall-room-rollout-v1/storage-split-sides.png",
+          "sha256": "0b775a1f2c2c580606f55e84bc331051ce5d38180b2ee5e637b732a30e531c2b",
+          "dimensions": [
+            962,
+            1634
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/storage-split-sides.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/storage-split-sides-rejected-controls.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Native four rotations reviewed: flush backing, inward controls/handles, separate door-clear sections.",
+          "selected": true
+        },
+        {
+          "view": "south-pair",
+          "source": "assets/wall-room-rollout-v1/storage-split-south-rejected-handles.png",
+          "sha256": "366dc71d013f5c0cb35f3a945356da9893b5d61ab4eaa3a38200518b5ed32780",
+          "dimensions": [
+            1681,
+            936
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/storage-split-south-rejected-handles.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/storage-split-north.png"
+          ],
+          "stage": "rejected",
+          "review": "Rejected: three lower inventory handles still face south.",
+          "selected": false
+        },
+        {
+          "view": "south-pair",
+          "source": "assets/wall-room-rollout-v1/storage-split-south.png",
+          "sha256": "5d830724d7a9c4263ee4e834a0d40087b762e70b7f452cb0a55470e3d1e46e66",
+          "dimensions": [
+            1681,
+            936
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/storage-split-south.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/storage-split-south-rejected-handles.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Native four rotations reviewed: flush backing, inward controls/handles, separate door-clear sections.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-storage-split-review.log",
+        "anchors": "output/wall-rollout-storage-split-anchors.log",
+        "routes": "output/wall-rollout-storage-split-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/storage_bay.png",
+        "card_sha256": "713fd1a46b4178bcb88637dcefc4793d6084fabe6756355060ac761e44bfb85d"
+      },
+      "staging": [
+        "assets/wall-room-rollout-v1/storage-split-north-staging",
+        "assets/wall-room-rollout-v1/storage-split-side-staging",
+        "assets/wall-room-rollout-v1/storage-split-south-staging"
+      ],
+      "pending": []
+    },
+    {
+      "id": "command_center",
+      "layout": "layout_05_cross",
+      "kind": "split-door",
+      "baseline": "res://rooms/production-ten/command_center_view.gd",
+      "brief": "Split command console banks, radio coordination and chart station; navy-gray and restrained brass",
+      "condition": "maintained, modest local handling wear",
+      "orientation_contract": "Inward-facing interfaces; dedicated directional art; no raster rotation of upright machinery",
+      "scope": [
+        "source art",
+        "directional registrations",
+        "runtime installation",
+        "floor and dressing anchors",
+        "room card",
+        "native four-rotation visual review",
+        "crew routes"
+      ],
+      "stage": "verified",
+      "sources": [
+        {
+          "view": "north-pair",
+          "source": "assets/wall-room-rollout-v1/command-split-north.png",
+          "sha256": "f419500bf6bd8a798c10ad10b3839a2081b8084042f7fc6ec33a8fa9fe016e73",
+          "dimensions": [
+            1881,
+            836
+          ],
+          "mode": "RGBA",
+          "prompt": "assets/wall-room-rollout-v1/command-split-north.prompt.txt",
+          "references": [
+            "rooms/production-ten/command_center-source-v1.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Four native orientations reviewed: inward keyboards, flush backing, independent sections.",
+          "selected": true
+        },
+        {
+          "view": "west-east-pairs",
+          "source": "assets/wall-room-rollout-v1/command-split-sides.png",
+          "sha256": "d69f1367dac03b22b8606f4f3a4a135fc1b49ba648725beea8304579893a7cbe",
+          "dimensions": [
+            963,
+            1634
+          ],
+          "mode": "RGB",
+          "prompt": "assets/wall-room-rollout-v1/command-split-sides.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/command-split-north.png",
+            "assets/wall-room-rollout-v1/storage-split-sides.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Four native orientations reviewed: inward keyboards, flush backing, independent sections.",
+          "selected": true
+        },
+        {
+          "view": "south-pair",
+          "source": "assets/wall-room-rollout-v1/command-split-south.png",
+          "sha256": "ef35639424e7cc591ef992aa1b047207ccad1f68a2bf5c97d56e9d81fb7c67a6",
+          "dimensions": [
+            1882,
+            836
+          ],
+          "mode": "RGBA",
+          "prompt": "assets/wall-room-rollout-v1/command-split-south.prompt.txt",
+          "references": [
+            "assets/wall-room-rollout-v1/command-split-north.png"
+          ],
+          "stage": "native-reviewed",
+          "review": "Four native orientations reviewed: inward keyboards, flush backing, independent sections.",
+          "selected": true
+        }
+      ],
+      "verification": {
+        "native": "output/wall-rollout-command-split-review.log",
+        "anchors": "output/wall-rollout-command-split-anchors.log",
+        "routes": "output/wall-rollout-command-split-routes.log",
+        "card": "assets/wall-room-rollout-v1/cards/command_center.png",
+        "card_sha256": "c3d09f0f84a473e04da21b4e4846ba8ccd5790d0edae40eab89e99bf5c096f7a"
+      },
+      "staging": [
+        "assets/wall-room-rollout-v1/command-split-north-staging",
+        "assets/wall-room-rollout-v1/command-split-side-staging",
+        "assets/wall-room-rollout-v1/command-split-south-staging"
+      ],
+      "pending": []
+    }
+  ],
+  "workflow_lessons": [
+    {
+      "stage": "pilot verified",
+      "finding": "All three initial vertical pairs left at least one appliance facing south; targeted lower-console edits fixed this",
+      "next_experiment": "Start next room with side-view art and compare correction count; not yet a proven improvement"
+    },
+    {
+      "stage": "pilot verified",
+      "finding": "Relocating fleet props requires reserving their real visual bounds before fitting furniture and filtering their old service routes",
+      "evidence": "Salvage q2 tray overlap caught by expanded review; corrected and four-room regression passes"
+    },
+    {
+      "stage": "pilot verified",
+      "finding": "Actual generated pair dimensions varied from landscape 1536x1024 to portrait 1024x1536; dimension-aware splitting succeeds"
+    },
+    {
+      "stage": "Radio source experiment",
+      "finding": "Starting with side views still placed lower calibration dial on wrong face; one targeted correction remained necessary. No proven reduction in correction rounds."
+    },
+    {
+      "stage": "Radio flush revision",
+      "finding": "Source taper plus generic 174-unit inset created wall gap. Straighten source flange and mount to canonical inner wall face (CELL-WALL)/2=184. Keep mounted visual envelope inside actual hull; never relax all floor-prop bounds."
+    }
+  ],
+  "completion_audit": {
+    "status": "passed",
+    "report": "docs/WALL_ROOM_ROLLOUT_ACCEPTANCE_2026-09-08.md",
+    "native": "output/wall-rollout-final-native.log",
+    "anchors": "output/wall-rollout-final-anchors.log",
+    "drafts": "output/wall-rollout-final-drafts.log",
+    "effects": "output/wall-rollout-final-effects-v3.log",
+    "bindings": "output/wall-rollout-final-bindings.json",
+    "legacy": "output/wall-rollout-final-legacy.log",
+    "visual": "All four final native orientation sheets inspected"
+  }
+}

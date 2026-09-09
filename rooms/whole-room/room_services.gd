@@ -14,13 +14,6 @@ static func run(canvas: CanvasItem, points: PackedVector2Array, _color: Color, l
 		if absf(a.y-b.y)<0.1 and minf(a.x,b.x)<-22 and maxf(a.x,b.x)>22:
 			var cover:=Rect2(Vector2(-22,a.y-6),Vector2(44,12))
 			preload("res://rooms/whole-room/decoration_props.gd").fit(canvas,preload("res://assets/floor-utilities-style-v2/floor_sprites.gd").texture("mat_straight"),cover)
-	for endpoint in [points[0],points[points.size()-1]]:
-		canvas.draw_circle(endpoint,5,Color("273538"))
-		canvas.draw_arc(endpoint,4,0,TAU,16,Color("8c9c94"),1)
-	var junction: Vector2=points[1]
-	canvas.draw_rect(Rect2(junction-Vector2(7,5),Vector2(14,10)),Color("364548"))
-	canvas.draw_rect(Rect2(junction-Vector2(6,4),Vector2(12,8)),Color("74847f"),false,0.8)
-	canvas.draw_circle(junction+Vector2(3,0),1.4,Color("90bb9e") if live else Color("414c49"))
 
 static func render(canvas: CanvasItem, props: Array, kind: String, live: bool) -> void:
 	if kind=="reactor":
@@ -38,6 +31,8 @@ static func render(canvas: CanvasItem, props: Array, kind: String, live: bool) -
 		if tank.size==Vector2.ZERO:return
 		for id in ["hydro_bed_west","hydro_bed_east"]:
 			var bed:=host(props,id)
+			# Replacement wall beds carry their own plumbing; never route to an absent host at the origin.
+			if bed.size==Vector2.ZERO: continue
 			var start:=Vector2(tank.get_center().x,tank.position.y+2)
 			var finish:=Vector2(bed.get_center().x,bed.end.y-2)
 			# Covers protect transverse portions; all runs remain floor-only.
@@ -50,9 +45,6 @@ static func render(canvas: CanvasItem, props: Array, kind: String, live: bool) -
 			var start:=Vector2(furniture.position.x+4,furniture.end.y-3)
 			var socket:=start+Vector2(-10,7)
 			run(canvas,PackedVector2Array([start,socket,socket+Vector2(15,0)]),Color("817361"),live)
-			# Small maintenance/personal tag clipped beside each local socket.
-			canvas.draw_rect(Rect2(socket+Vector2(-3,7),Vector2(6,8)),Color("b6a487"))
-			canvas.draw_line(socket+Vector2(-1,10),socket+Vector2(2,10),Color("615b50"),0.7)
 
 static func identity_details(canvas: CanvasItem, props: Array, kind: String, live: bool) -> void:
 	if kind=="medical":
@@ -60,10 +52,8 @@ static func identity_details(canvas: CanvasItem, props: Array, kind: String, liv
 			if not str(prop.id).begins_with("med_bed_"):continue
 			var bed: Rect2=prop.rect
 			var foot:=Vector2(bed.get_center().x,bed.end.y+7)
-			preload("res://rooms/whole-room/decoration_props.gd").floor_patch(canvas,"medical_bedside_mat",Rect2(foot-Vector2(23,5),Vector2(46,10)))
 			var socket:=Vector2(bed.end.x-3,bed.end.y-3)
 			run(canvas,PackedVector2Array([socket,socket+Vector2(8,0),socket+Vector2(8,-18)]),Color("91aaa5"),live)
-			canvas.draw_line(foot+Vector2(-3,0),foot+Vector2(3,0),Color("d0ded3"),1.8)
 	elif kind=="research":
 		var specimens:=host(props,"research_specimens")
 		var analyzer:=host(props,"research_analyzer")
@@ -75,19 +65,10 @@ static func identity_details(canvas: CanvasItem, props: Array, kind: String, liv
 		for id in ["research_scanner","research_analyzer"]:
 			var equipment:=host(props,id)
 			var mat:=Rect2(equipment.position+Vector2(-4,8),equipment.size+Vector2(8,4))
-			canvas.draw_rect(mat,Color("555467"))
-			canvas.draw_rect(mat.grow(-2),Color("9899ad"),false,0.8)
-			for x in range(6,int(mat.size.x)-6,8):
-				canvas.draw_line(mat.position+Vector2(x,mat.size.y-5),mat.position+Vector2(x+3,mat.size.y-5),Color("b4b8c0"),0.7)
 	elif kind=="command":
 		var table:=host(props,"command_table")
 		if table.size==Vector2.ZERO:return
 		var mat:=Rect2(table.position-Vector2(8,0),table.size+Vector2(16,17))
-		canvas.draw_rect(mat,Color("344b60"))
-		canvas.draw_rect(mat.grow(-3),Color("8b9b99"),false,1.1)
-		var mark:=Vector2(mat.get_center().x,mat.end.y-8)
-		canvas.draw_line(mark-Vector2(12,0),mark+Vector2(12,0),Color("b5ae87"),1.2)
-		canvas.draw_circle(mark,2,Color("b5ae87"))
 		var systems:=host(props,"command_systems")
 		var ops:=host(props,"command_ops")
 		var a:=Vector2(systems.get_center().x,systems.end.y-2)

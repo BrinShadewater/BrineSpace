@@ -1,0 +1,75 @@
+{
+  "asset_id": "seal-maintenance-case-v1",
+  "department": "Engineering",
+  "condition": "Maintained",
+  "attachment_class": "Portable closed case",
+  "functional_bays": [],
+  "runtime_behavior": null,
+  "camera_and_facing": "Overhead shallow cutaway; latches and handle south",
+  "references": [
+    {
+      "path": "assets/pressure-seal-wall-v1/pressure-seal-wall.png",
+      "sha256": "9e19325d885870e0cc33fe3a1641f77aa95e9191bc987d8fb843d1608d7a762d",
+      "role": "Companion palette and construction"
+    }
+  ],
+  "source_path": "assets/seal-maintenance-case-v1/source.png",
+  "source_sha256": "a86a3da77abd41c24f4b043e7299e5a05a29daa18d52ecdcd71887f0db72245e",
+  "export_path": "assets/seal-maintenance-case-v1/seal-maintenance-case.png",
+  "export_sha256": "54d43f7fec03963c80883b1c2a24f7c8f1dfbf97e364c92ce781ecae0a8ea8ca",
+  "native_canvas_px": [
+    1536,
+    1024
+  ],
+  "proposed_display_width_world": 26.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Reserve projected handle and handling space; choose supported placement"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V2 removes extensive pale wear and surrounding glow; slate lid and rubber caps remain readable."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "26-unit case remains portable beside existing furniture; fine ribs simplify."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral185 exterior and explicit handle seed remove baked checkerboard. Handle alpha0 and lid alpha255 verified."
+      ]
+    },
+    "native_evidence": "output/seal-maintenance-case-review.png",
+    "integration": "not installed",
+    "group_evidence": "output/seal-case-bench-group.png",
+    "support_proposal": {
+      "record": "assets/seal-maintenance-case-v1/bench-group.json",
+      "verdict": "pass_static_visual_review",
+      "findings": [
+        "Full visible case bounds including handle fit measured clear mat region; existing tools remain visible. Runtime host attachment and occupied clearance unverified."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 16.4106463878327,
+  "registration_path": "assets/seal-maintenance-case-v1/registration.json",
+  "registration_sha256": "8fa06dc447e118e6f06e87a68549cfbcfa6e9957c7032e1bbe3e84f66567c38e",
+  "prompt_path": "assets/seal-maintenance-case-v1/source.prompt.txt",
+  "prompt_sha256": "1bd1e3e79e79f28e0b58a1cfe4c70bf7b5fcf4373c624926a4b0850ee3c99198",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "depicted_state": "closed"
+}

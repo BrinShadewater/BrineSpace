@@ -1,0 +1,97 @@
+{
+  "asset_id": "drone-component-wall-v1",
+  "department": "Engineering / Construction Drone Bay",
+  "condition": "Maintained matte charcoal and ochre",
+  "attachment_class": "Low self-supporting north-wall bank",
+  "functional_bays": [
+    "Detached gripper jaws in tray",
+    "Empty assembly cradle and supported actuator",
+    "Diagnostic instrument and connector cables"
+  ],
+  "runtime_behavior": "Static uninstalled art; no drone repair animation",
+  "camera_and_facing": "Near top-down, north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/construction_drone_bay.png",
+      "sha256": "0b845516eedc37d1c86f80df361f0ba69c874f8c345fe6cde496467cf326d523",
+      "role": "Established camera, scale and industrial identity; exclude old shine"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/battery-service-wall-v1/wall.png",
+      "sha256": "854c4cd5b3ed3f7bd5dbcb770b5eaa4a0fdeacfec740a81b74f92898e0de86ed",
+      "role": "Low matte construction only; pack subject rejected"
+    }
+  ],
+  "source_path": "assets/drone-component-wall-v1/source-v2.png",
+  "source_sha256": "e61623b3ba5b185b09fbd37977393350e6b9ef707932b0f7e05e8bfd8b8c00ab",
+  "export_path": "assets/drone-component-wall-v1/wall.png",
+  "export_sha256": "cfc75cdfafbe8aed7816b04c8748a02a7d5e258e19b5cbb8fe843c88d672241c",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Drone lift/service routes",
+    "Assembly operator access"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Dark molded jaws and actuator casing retain restrained edge contrast; no exposed polished piston."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/drone-component-wall-v1/wall-scale.png",
+      "findings": [
+        "320-unit wall reviewed beside furnished drone bay at equal scale. Jaw silhouettes and empty cradle remain readable."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral180 source-specific registration; light/dark silhouette reviewed.",
+        "Jaw openings and empty cradle have solid tray backing, retained opaque."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Geometry-only reference labeling does not prevent copied subject silhouettes; inspect each requested component and repair mismatches."
+  ],
+  "proposed_display_height_world": 79.49342425718461,
+  "registration_path": "assets/drone-component-wall-v1/registration.json",
+  "registration_sha256": "da8b61e0d88b9039bde580c4b6e8d8b8cc87863f0a103db9453d5fc948796ccb",
+  "prompt_path": "assets/drone-component-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "84454fba5380119e1460157bf0f76cc9c37d25e1e66a040e9b11925635c69834",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "depicted_state": "Empty assembly cradle; detached components stored",
+  "generation_tool": "built-in imagegen",
+  "rejected_sources": [
+    {
+      "path": "assets\\drone-component-wall-v1\\source-v1.png",
+      "sha256": "6cd80d0299c8d6ae200c13b469a3333b18c6493c13305da5bd539d2168faaad4",
+      "reason": "Inherited battery-pack shapes instead of gripper jaws; actuator bright bands"
+    }
+  ],
+  "evidence_hashes": {
+    "output/drone-component-wall.log": "fe25364ce9233332fb9a1a840f1844324b2067c6f5b585f1290e475479c251e7",
+    "output/drone-component-wall-v1/wall-scale.png": "555dd416467ab2edced5f27aadf17e233e14ee0e1f118d6ae56a10cb042777e4",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

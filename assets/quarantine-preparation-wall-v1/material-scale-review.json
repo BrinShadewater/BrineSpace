@@ -1,0 +1,119 @@
+{
+  "asset_id": "quarantine-preparation-wall-v1",
+  "department": "Quarantine / Science",
+  "condition": "Maintained matte containment furniture",
+  "attachment_class": "Self-supporting low north-wall bank",
+  "functional_bays": [
+    "Closed garment drawers and supported packet",
+    "Recessed wash basin",
+    "Preparation top and closed transfer cassette",
+    "Closed returns hatch",
+    "Filter cabinet"
+  ],
+  "runtime_behavior": "Static standalone artwork; no simulated decontamination or transfer",
+  "camera_and_facing": "Near top-down orthographic, north backing and south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/quarantine_cell.png",
+      "sha256": "206b683cfecde2b3f59d2c4b113d75434d9ee42920805d720db5dd42e4bc8118",
+      "role": "Established room camera, scale, containment palette; exclude old reflections"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/medical-supply-wall-v1/wall.png",
+      "sha256": "06edfb1aeae13bd5350e94bb52e9e156af196f34dfd423bdbca739255bb5de95",
+      "role": "Fitted cabinet construction only; reduce facade height and bright trim"
+    }
+  ],
+  "source_path": "assets/quarantine-preparation-wall-v1/source-v1.png",
+  "source_sha256": "bd7e8532fa511cf54c0723454b984f840f2d850c4793297300e9b3fc44220c47",
+  "export_path": "assets/quarantine-preparation-wall-v1/wall.png",
+  "export_sha256": "c8a14e2df52a9fb34365c429aaae459a5d3c844ab1cc893c6aecfcb9f8891938",
+  "native_canvas_px": [
+    2216,
+    709
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Containment chamber access",
+    "Supply and returns operator clearance"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Sage-grey panels and burgundy cassette show subdued planes; charcoal spout and basin have no chrome reflections.",
+        "No bright screen or light spill; minimal pale edge steps."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/quarantine-preparation-wall-v1/wall-scale.png",
+      "findings": [
+        "320-unit bank viewed beside current furnished room at equal scale. Basin, cassette and hatch remain distinct."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Opaque dark checkerboard registered at source-specific neutral90; corners transparent.",
+        "Basin interior and garment packet retained; no aperture seeds because all recesses have backing.",
+        "Light/dark native review inspected after export."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Containment identity can use closed hatches and subdued burgundy, without shiny glass or warning-symbol clutter.",
+    "Dark checkerboard thresholds must be measured per source."
+  ],
+  "proposed_display_height_world": 64.39961575408262,
+  "registration_path": "assets/quarantine-preparation-wall-v1/registration.json",
+  "registration_sha256": "9bb03e36f5987ad1e44b3d93dd982e6c285177fc192b02827b71b0bd2dba7266",
+  "prompt_path": "assets/quarantine-preparation-wall-v1/source.prompt.txt",
+  "prompt_sha256": "64cafe61acd4ada333fe24c7d434398123b2763c98bceea5b3d49582d2efcede",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/quarantine-preparation-wall.log": "1f653fee24787e95c515d3e6dafe2981e3cea318d1381c79d08ad2089a9d64c2",
+    "output/quarantine-preparation-wall-v1/wall-scale.png": "0477bd3fbd2c669f62f79f7687ade37e097e9d89fd767e9107c45032c0c7afcb",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  },
+  "alpha_probes": [
+    {
+      "xy": [
+        0,
+        0
+      ],
+      "alpha": 0
+    },
+    {
+      "xy": [
+        710,
+        370
+      ],
+      "alpha": 255,
+      "role": "Basin retained"
+    },
+    {
+      "xy": [
+        275,
+        270
+      ],
+      "alpha": 255,
+      "role": "Garment retained"
+    }
+  ]
+}

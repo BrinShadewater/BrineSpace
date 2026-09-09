@@ -27,6 +27,7 @@ func run() -> void:
 	game.paused = false
 	game._update_wreck_clearance(30.0)
 	assert(game.occupied.has(cell) and not game.drone_fleet.reserved(cell),"Builder completes paid room")
+	assert(game.station_sound.voices.has("build_complete"),"Paid construction completion emits its dedicated cue")
 	assert(game.resources==paid,"Construction does not charge twice or award resources")
 	var rock := Vector2i(17,20)
 	game._toggle_wreck_work(rock)
@@ -50,4 +51,12 @@ func run() -> void:
 	old.erase("drone_fleet")
 	assert(preload("res://scripts/run_save.gd").restore(game,old),"Old checkpoints restore without fleet")
 	print("DRONE JOBS PASS: paid construction, reservation, launch timing, clearance, pause, checkpoint and old-save compatibility")
+	game.queue_free()
+	var music = root.get_node_or_null("StationMusic")
+	if music != null: music.queue_free()
+	await process_frame
+	music = root.get_node_or_null("StationMusic")
+	if music != null: music.queue_free()
+	await process_frame
+	await create_timer(0.2).timeout
 	quit()

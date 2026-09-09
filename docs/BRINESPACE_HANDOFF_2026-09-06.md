@@ -1,5 +1,9 @@
 # BrineSpace checkpoint — September 6, 2026
 
+**Later checkpoint:** [September 7 integrated build/playtest](INTEGRATED_BUILD_PLAYTEST_2026-09-07.md)
+supersedes the combined-package and seeded-traffic acceptance status below.
+This document remains the original dated workstream snapshot.
+
 Prepared at the owner's request to stop expanding work and conserve credits.
 This is the starting document for the next session. It consolidates current
 source, selected assets and project evidence; older reports remain historical.

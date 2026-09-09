@@ -1,3 +1,5 @@
+> Full-wall exception: current owner-directed wall installations use authored inward-facing views. See wall-room-rollout.md and full-wall-installations.md; the general south-facing default below applies to other upright props.
+
 # Layered, rotatable room assets
 
 Current owner contract: large props always face south. Rotate sockets and prop

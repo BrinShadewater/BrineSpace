@@ -1,0 +1,40 @@
+{
+  "family": "water-assay",
+  "directions": {
+    "north": {
+      "export": "assets/water-assay-wall-v1/water-assay-wall.png",
+      "sha256": "2a51023914cf6ed06702ec0ea9a9bf48878c0d8f90b93227cae6c2612f08a535",
+      "registration": "assets/water-assay-wall-v1/registration.json",
+      "review": "assets/water-assay-wall-v1/material-scale-review.json",
+      "inward": "south",
+      "world_width": 328
+    },
+    "south": {
+      "export": "assets/water-assay-south-wall-v1/water-assay-south.png",
+      "sha256": "fa3f13d9086b1636b8ec415439f63ec3e2fffccaf691ff7ab38aee1cc4c6319c",
+      "registration": "assets/water-assay-south-wall-v1/registration.json",
+      "review": "assets/water-assay-south-wall-v1/material-scale-review.json",
+      "inward": "north",
+      "world_width": 328
+    },
+    "west": {
+      "export": "assets/water-assay-west-wall-v1/water-assay-west.png",
+      "sha256": "0fd07513231608eec65e456bbe6a9154c6b6e274c0cc7f1877111166797a569a",
+      "registration": "assets/water-assay-west-wall-v1/registration.json",
+      "review": "assets/water-assay-west-wall-v1/material-scale-review.json",
+      "inward": "east",
+      "world_height": 328
+    },
+    "east": {
+      "export": "assets/water-assay-east-wall-v1/water-assay-east.png",
+      "sha256": "3a1878d540d6c8d973039be0ffeec0c3ae7d30a445400bd11e067812ded10b1b",
+      "registration": "assets/water-assay-east-wall-v1/registration.json",
+      "review": "assets/water-assay-east-wall-v1/material-scale-review.json",
+      "inward": "west",
+      "world_height": 328
+    }
+  },
+  "missing_directions": [],
+  "runtime_placement_verified": false,
+  "coverage_scope": "Four standalone directional candidates; reconstructed geometry varies, runtime placements unverified"
+}

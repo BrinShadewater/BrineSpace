@@ -5,6 +5,7 @@ static func seed(game) -> void:
 	for room in game.placed_rooms:
 		if game.powered_room_cells.has(room.pos) and room.get("tags",[]).has("containment_risk"):
 			room["local_incident"]=true
+			room["hull_crack"]=minf(1.0,float(room.get("hull_crack",0))+preload("res://scripts/hull_repair.gd").SEVERITIES[(game.cycle/8-1)%3])
 			game._log("Containment fault at %s. Repair the room or isolate its branch." % room.pos,false)
 			return
 
@@ -26,8 +27,11 @@ static func resolve(game) -> void:
 		game._log("Local containment faults: %d Integrity lost. Repair affected rooms." % damage,false)
 
 static func repair(game,cell: Vector2i) -> bool:
+	if game.occupied.has(cell) and float(game.occupied[cell].get("hull_crack",0))>0:
+		return preload("res://scripts/hull_repair.gd").request(game,cell)
 	if not game.running or not game.occupied.has(cell) or not game.occupied[cell].get("local_incident",false) or int(game.resources.metal)<2:return false
 	game.resources.metal-=2
 	game.occupied[cell].erase("local_incident")
+	game.occupied[cell].hull_crack=0.0
 	game._log("Containment repair completed at %s." % cell,false)
 	return true

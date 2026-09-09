@@ -20,6 +20,9 @@ func run() -> void:
 	game._confirm_doctrines()
 	game.tick_timer.stop()
 	game.set_process(false)
+	# Dialogue deliberately pauses gameplay; dismiss it for active rendering samples.
+	game.crew_comms.minimize()
+	game.crew_comms.set_process(false)
 	game.grid_view.profile_draw = true
 	await sample("small-active")
 	var ids := ["reactor","life_support","hydroponics_bay","research_lab","storage_bay","crew_hab","corridor","med_bay"]
@@ -59,6 +62,7 @@ func sample(label: String) -> void:
 	for frame in range(120):
 		game._process(1.0/60.0)
 		await process_frame
+	assert(game.paused == (label == "expanded-paused"), "Profile sample pause state must match its label")
 	var begin := Time.get_ticks_usec()
 	var cpu := 0.0
 	var draw_totals := {}

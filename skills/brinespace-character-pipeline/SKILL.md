@@ -5,6 +5,13 @@ description: Create, animate, repair, package, or integrate BrineSpace crew char
 
 # BrineSpace character pipeline
 
+For everyday crew actions, cargo transitions or their session closeout, read
+[crew-life lessons](references/crew-life.md) for source extraction, furniture
+contact, equipment fitting and checkpoint evidence.
+
+For comms artwork and procedural portrait effects, read
+[comms portrait guidance](references/comms-portraits.md).
+
 For session consolidation or resuming interrupted animation work, read
 [handoff guidance](references/handoff.md) to reconcile current source coverage,
 transition defects and the limits of native or packaged evidence.

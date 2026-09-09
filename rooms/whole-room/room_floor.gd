@@ -5,6 +5,46 @@ const SEAMS := [-168,-120,-72,-24,24,72,120,168]
 static var grain: ImageTexture
 static var batch_lines := not OS.get_cmdline_user_args().has("--unbatched-floor-lines")
 
+static var floor_profiles: Dictionary={}
+static var department_grains: Dictionary={}
+static func profile_for(view: Node) -> Dictionary:
+	if floor_profiles.is_empty():
+		var rows=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/floor-profiles-v1/rooms.json"))
+		for row in rows: floor_profiles[row.view]=row
+	return floor_profiles.get(view.get_script().resource_path,{})
+
+static func draw_profile_floor(view: Node, canvas: CanvasItem, center: Vector2, tint:=Color("343b45"), seam_color:=Color(0.07,0.09,0.11,0.48), seam_stride:=1, material:="steel") -> void:
+	var profile:=profile_for(view)
+	if profile.is_empty():
+		draw_floor(canvas,center,tint,seam_color,seam_stride,material)
+		return
+	var path: String=profile.source
+	if not department_grains.has(path):
+		var im:=Image.new()
+		assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK)
+		department_grains[path]=ImageTexture.create_from_image(im)
+	var rect:=Rect2(center-Vector2.ONE*192,Vector2.ONE*384)
+	canvas.draw_rect(rect,Color(profile.base_tint) if profile.has("base_tint") else tint)
+	if preload("res://rooms/whole-room/modular_floor.gd").pilot(str(profile.get("id",""))) and preload("res://rooms/whole-room/modular_floor.gd").enabled:
+		preload("res://rooms/whole-room/modular_floor.gd").draw(canvas,preload("res://scripts/room_layout_store.gd").surface_positions(view),false,0,float(profile.opacity),center,1.0,path)
+		return
+	# The source owns its visible panel seams; don't superimpose a second grid.
+	# Door geometry still uses the unchanged 48-unit construction module.
+	var repeats: int=int(profile.get("tile_repeat",2))
+	var tile_size:=rect.size/float(repeats)
+	var edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(view)
+	if edits.keys().any(func(id): return str(id).begins_with("tile/")):
+		var texture: Texture2D=department_grains[path]
+		var source_size:=texture.get_size()/4.0
+		for row in range(repeats*4):
+			for column in range(repeats*4):
+				var cell=edits.get("tile/"+str(column)+"/"+str(row),[column%4,row%4])
+				canvas.draw_texture_rect_region(texture,Rect2(rect.position+Vector2(column,row)*tile_size/4.0,tile_size/4.0),Rect2(Vector2(cell[0],cell[1])*source_size,source_size),Color(1,1,1,float(profile.opacity)))
+		return
+	for row in range(repeats):
+		for column in range(repeats):
+			canvas.draw_texture_rect(department_grains[path],Rect2(rect.position+Vector2(column,row)*tile_size,tile_size),false,Color(1,1,1,float(profile.opacity)))
+
 static func _lines(canvas: CanvasItem, points: PackedVector2Array, color: Color, width: float, antialiased := false) -> void:
 	if batch_lines:
 		canvas.draw_multiline(points,color,width,antialiased)
@@ -13,16 +53,16 @@ static func _lines(canvas: CanvasItem, points: PackedVector2Array, color: Color,
 
 static func draw_floor(canvas: CanvasItem, center: Vector2, tint := Color("343b45"), seam_color := Color(0.07,0.09,0.11,0.48), seam_stride := 1, material := "steel") -> void:
 	if grain==null:
-		var image := Image.create(64,64,false,Image.FORMAT_RGBA8)
-		var rng := RandomNumberGenerator.new()
-		rng.seed = 4848
-		for y in range(64):
-			for x in range(64):
-				var value := rng.randf_range(0.94,1.0)
-				image.set_pixel(x,y,Color(value,value,value))
+		var image := Image.new()
+		assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/playtest-visual-v1/deck-source.png"))==OK)
 		grain = ImageTexture.create_from_image(image)
-	canvas.draw_texture_rect(grain,Rect2(center-Vector2.ONE*192,Vector2.ONE*384),true,tint)
-	_draw_material(canvas,center,tint,material)
+	# Keep departmental floor values; the neutral source supplies only quiet plate detail.
+	canvas.draw_rect(Rect2(center-Vector2.ONE*192,Vector2.ONE*384),tint)
+	canvas.draw_texture_rect(grain,Rect2(center-Vector2.ONE*192,Vector2.ONE*384),false,Color(tint.r*1.5,tint.g*1.5,tint.b*1.5,0.32))
+	if material=="wet": _draw_material(canvas,center,tint,material)
+	if OS.get_cmdline_user_args().has("--floor-kit-review"):
+		preload("res://assets/floor-kit-v6/furnished_fixture.gd").draw_details(canvas,center)
+
 	var seams := PackedVector2Array()
 	for seam in SEAMS:
 		if SEAMS.find(seam)%maxi(1,seam_stride)!=0: continue
@@ -95,24 +135,18 @@ static func _draw_material(canvas: CanvasItem, center: Vector2, tint: Color, mat
 				drain_lines.append_array(PackedVector2Array([center+Vector2(x-3,y),center+Vector2(x+3,y)]))
 			_lines(canvas,drain_lines,Color(.65,.74,.71,.20),1.0)
 
-static func draw_dressing(canvas: CanvasItem, center: Vector2, edges: Array, material := "steel", central_textile := true) -> void:
+static func draw_profile_dressing(view: Node, canvas: CanvasItem, center: Vector2, edges: Array, material:="steel", central_textile:=true) -> void:
+	var profile:=profile_for(view)
+	draw_dressing(canvas,center,edges,material,central_textile,not profile.is_empty())
+	if not profile.is_empty():
+		preload("res://rooms/floor-profiles-v1/modern_details.gd").draw_thresholds(canvas,center,edges)
+
+static func draw_dressing(canvas: CanvasItem, center: Vector2, edges: Array, material := "steel", central_textile := true, profile_details := false) -> void:
 	# Flush decorations are deliberately absent from prop and collision registries.
 	var art = preload("res://rooms/whole-room/decoration_props.gd")
 	if material=="warm" and central_textile:
 		art.floor_patch(canvas,"oval_braided_rug",Rect2(center+Vector2(-64,-26),Vector2(128,82)))
-	elif material=="wet":
-		for x in [-94,94]:
-			art.floor_patch(canvas,"linear_drain",Rect2(center+Vector2(x-15,29),Vector2(30,12)))
-	elif material in ["steel","technical"]:
-		art.floor_patch(canvas,"engineering_access_plate" if material=="steel" else "lab_access_panel",Rect2(center+Vector2(75,-15),Vector2(38,30)))
-	# Draw the boundary of the joined corridor shape, without internal crossing lines.
-	var ink := Color(.70,.74,.65,.25)
-	if material=="steel": ink=Color(.81,.65,.32,.27)
-	if material=="wet" or material=="sealed": ink=Color(.20,.48,.44,.25)
-	var route_lines := PackedVector2Array()
-	for segment in route_outline(center,edges):
-		route_lines.append_array(PackedVector2Array([segment[0],segment[1]]))
-	if not route_lines.is_empty(): _lines(canvas,route_lines,ink,1.25,true)
+	if not profile_details: preload("res://assets/floor-kit-v6/installed_floor.gd").draw(canvas,center,edges,material)
 	# The Hab textile covers the floor paint beneath it.
 	if material=="hab_rug" and central_textile:
 		_draw_hab_rug(canvas,center)

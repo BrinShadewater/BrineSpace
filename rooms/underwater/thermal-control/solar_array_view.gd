@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/thermal-control/solar_array-source-v1.png"))==OK)
+	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v3/thermal-equipment.png"))==OK)
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"thermal_exchangers","rect":Rect2(-165,-143,108,64),"pivot":Vector2(312,553),"width":402.0,"outline":[Vector2(112,551),Vector2(111,394),Vector2(121,379),Vector2(121,254),Vector2(132,221),Vector2(158,213),Vector2(159,180),Vector2(179,154),Vector2(195,149),Vector2(195,132),Vector2(210,114),Vector2(399,114),Vector2(416,128),Vector2(422,151),Vector2(443,161),Vector2(462,186),Vector2(468,213),Vector2(494,223),Vector2(506,249),Vector2(509,379),Vector2(514,396),Vector2(513,551)]},
@@ -17,8 +17,8 @@ func _ready() -> void:
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("424546"),Color(0.12,0.14,0.15,0.4),2)
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("424546"),Color(0.12,0.14,0.15,0.4),2)
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 	if dressing!=null: dressing.floor()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:

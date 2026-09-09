@@ -9,9 +9,10 @@ var phase := 0.0
 var last_time := -1.0
 var started := 0.0
 var last_position := Vector2.ZERO
+var motion := {}
 
 func snapshot() -> Dictionary:
-	return {"key": current_key, "phase": phase, "last_time": last_time, "started": started, "last_position": last_position}
+	return {"key": current_key, "phase": phase, "last_time": last_time, "started": started, "last_position": last_position,"motion":motion.duplicate(true)}
 
 static func valid_snapshot(data: Variant) -> bool:
 	if not data is Dictionary or not data.get("key") is String or data.key.length() > 64: return false
@@ -19,6 +20,12 @@ static func valid_snapshot(data: Variant) -> bool:
 	for field in ["phase", "last_time", "started"]:
 		var value: Variant = data.get(field)
 		if not (value is float or value is int) or not is_finite(float(value)): return false
+	if data.has("motion"):
+		if not data.motion is Dictionary: return false
+		if not data.motion.is_empty():
+			for key in ["state","direction","clip"]:
+				if not data.motion.get(key) is String or data.motion[key].length()>64: return false
+			if not (data.motion.get("started") is float or data.motion.get("started") is int) or not is_finite(float(data.motion.started)) or data.motion.started<0: return false
 	return data.phase >= 0 and data.last_time >= -1 and data.started >= 0
 
 func restore_snapshot(data: Dictionary) -> void:
@@ -28,6 +35,7 @@ func restore_snapshot(data: Dictionary) -> void:
 	last_time = float(data.last_time)
 	started = float(data.started)
 	last_position = data.last_position
+	motion = data.get("motion",{}).duplicate(true)
 
 func load_manifest(path: String, append: bool = false) -> void:
 	# Expansion packs add states without resetting a living actor's playback.
@@ -37,6 +45,7 @@ func load_manifest(path: String, append: bool = false) -> void:
 		timing.clear()
 		strides.clear()
 		current_key = ""
+		motion.clear()
 		last_time = -1.0
 	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
 	if not data is Dictionary: return
@@ -49,6 +58,10 @@ func load_manifest(path: String, append: bool = false) -> void:
 			if image.load_png_from_buffer(FileAccess.get_file_as_bytes(filename)) != OK: continue
 			var texture := ImageTexture.create_from_image(image)
 			texture.set_meta("crew_frame_92", true)
+			texture.set_meta("crew_water_facing",str(entry.get("facings",[])[row.size()]) if entry.has("facings") else str(entry.id).get_slice("-",str(entry.id).get_slice_count("-")-1))
+			texture.set_meta("crew_water_kind",str(entry.id).get_slice("-",0))
+			texture.set_meta("crew_depth_offset",float(entry.get("depthOffsets",[])[row.size()]) if entry.has("depthOffsets") else 0.0)
+			texture.set_meta("crew_water_pose",bool(entry.get("water",false)) or str(entry.id).begins_with("swim-") or str(entry.id).begins_with("tread-") or str(entry.id).begins_with("death-water-"))
 			var pivot: Array = data.get("pivot", [46, 86])
 			texture.set_meta("crew_pivot", Vector2(float(pivot[0]), float(pivot[1])))
 			row.append(texture)
@@ -65,11 +78,21 @@ func load_equipment_manifest(equipment: String, path: String) -> bool:
 		if variant.timing[key] != timing[key]: return false
 		for i in range(frames[key].size()):
 			if variant.frames[key][i].get_meta("crew_pivot") != frames[key][i].get_meta("crew_pivot"): return false
+	if equipment == "diving-helmet":
+		preload("res://scripts/swim_helmet_fit.gd").apply(self, variant, path)
 	if not equipment_frames.has(equipment): equipment_frames[equipment] = {}
 	equipment_frames[equipment].merge(variant.frames, true)
 	return true
 
-func frame(state: String, direction: String, time: float, position_cells: Vector2, equipment: String = "") -> Texture2D:
+func frame(state: String, direction: String, time: float, position_cells: Vector2, equipment: String = "", allow_water_transition: bool = false) -> Texture2D:
+	var transition := water_transition(state,direction,time,allow_water_transition or state=="carry")
+	if not transition.is_empty():
+		var row: Array=frames[transition] if equipment.is_empty() else equipment_frames.get(equipment,{}).get(transition,[])
+		if not row.is_empty():
+			var cursor: float=time-float(motion.started)
+			for i in range(row.size()):
+				cursor-=float(timing[transition].durations[i])/1000.0
+				if cursor<0: return row[i]
 	var key := state + "-" + direction
 	if not frames.has(key): key = "idle-" + direction
 	if not frames.has(key) or frames[key].is_empty(): return null
@@ -99,17 +122,40 @@ func frame(state: String, direction: String, time: float, position_cells: Vector
 		elapsed -= duration
 	return selected.back()
 
+func water_transition(state: String, direction: String, time: float, allowed: bool) -> String:
+	if motion.is_empty():
+		motion={"state":state,"direction":direction,"clip":"","started":time}
+		return ""
+	var clip: String=motion.get("clip","")
+	if not allowed or not state in ["swim","tread","carry","swim-carry"]:
+		motion={"state":state,"direction":direction,"clip":"","started":time}
+		return ""
+	if motion.get("state",state)!=state or motion.get("direction",direction)!=direction:
+		var old_state: String=motion.get("state",state)
+		var old_direction: String=motion.get("direction",direction)
+		clip=""
+		if state=="swim" and old_state=="tread": clip="swim-start-"+direction
+		elif state=="tread" and old_state=="swim": clip="swim-stop-"+direction
+		elif state in ["swim","carry","swim-carry"] and old_state==state and old_direction!=direction: clip=state+"-turn-"+old_direction+"-"+direction
+		motion={"state":state,"direction":direction,"clip":clip,"started":time}
+	if not frames.has(clip) or time-float(motion.get("started",time))>=cycle_seconds(clip):
+		motion["clip"]=""
+		return ""
+	return clip
+
 func cycle_seconds(key: String) -> float:
 	var total := 0.0
 	for duration in timing[key].durations: total += float(duration) / 1000.0
 	return maxf(total, 0.001)
 
-func frame_at_elapsed(key: String, elapsed: float) -> Texture2D:
+func frame_at_elapsed(key: String, elapsed: float, equipment: String = "") -> Texture2D:
 	# Simulation-driven transitions must not advance on the cosmetic visual clock.
 	if not frames.has(key) or frames[key].is_empty(): return null
+	var selected: Array=frames[key] if equipment.is_empty() else equipment_frames.get(equipment,{}).get(key,[])
+	if selected.is_empty(): return null
 	var cursor := clampf(elapsed, 0.0, cycle_seconds(key))
 	for index in range(frames[key].size()):
 		var duration: float = float(timing[key].durations[index]) / 1000.0
-		if cursor < duration: return frames[key][index]
+		if cursor < duration: return selected[index]
 		cursor -= duration
-	return frames[key].back()
+	return selected.back()

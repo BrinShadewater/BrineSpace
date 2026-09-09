@@ -1,0 +1,99 @@
+{
+  "asset_id": "ore-sampling-wall-v1",
+  "department": "Engineering / Ore Refinery",
+  "condition": "Maintained matte sampling furniture",
+  "attachment_class": "Low self-supporting north-wall bank",
+  "functional_bays": [
+    "Three sorting trays",
+    "Recessed scale and sample cup",
+    "Preparation counter, scoop and cassette",
+    "Closed analyzer",
+    "Sealed sample tins and drawers"
+  ],
+  "runtime_behavior": "Static uninstalled art; no assay simulation",
+  "camera_and_facing": "Near top-down orthographic; north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/decoration-integration/ore_refinery.png",
+      "sha256": "69cf6da1c923c40619d5abde13ec9b9086c9b923b79d519e0c6507557aa21c90",
+      "role": "Established camera, scale and charcoal/orange identity; exclude old glints"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/storage-dispatch-wall-v1/wall.png",
+      "sha256": "213db4ed431bce0165ffad6896f616d316490cfb743665efc6b90d258ddebfda",
+      "role": "Low connected bank construction only"
+    }
+  ],
+  "source_path": "assets/ore-sampling-wall-v1/source-v2.png",
+  "source_sha256": "6b40d85cfdc436ef105ec1d1a56853dcef714d1432096cccce83190ec38b4938",
+  "export_path": "assets/ore-sampling-wall-v1/wall.png",
+  "export_sha256": "cf82ad0161e91963bac0697101e79a461281fa111d1ecbe6afcd6b5cbd809017",
+  "native_canvas_px": [
+    2172,
+    724
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door bays",
+    "Material-transfer routes",
+    "Processing-machine service access"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 reduces silver scoop/cup/pull edges and mineral sparkle.",
+        "Broad angular mineral faces and restrained orange panels retain subject distinction."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/ore-sampling-wall-v1/wall-scale.png",
+      "findings": [
+        "320-unit width beside furnished refinery at equal scale; machinery remains focal."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Source-specific neutral180 registration; light/dark silhouette inspected.",
+        "Trays, scoop bowl and sample cup retain solid backing."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Mineral identity should come from broad face/value groups, not glitter."
+  ],
+  "proposed_display_height_world": 67.89753504108265,
+  "registration_path": "assets/ore-sampling-wall-v1/registration.json",
+  "registration_sha256": "92de370c9ff20fce66238dabe5d5550aa255283e2ed9f42bb14952b284a9c4d5",
+  "prompt_path": "assets/ore-sampling-wall-v1/source-v2.prompt.txt",
+  "prompt_sha256": "75e288b2f359121d197eab50e4797cf29cb91ce90dfd3dae196989a9fd5fa90f",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "rejected_sources": [
+    {
+      "path": "assets\\ore-sampling-wall-v1\\source-v1.png",
+      "sha256": "84d67a6c6ea8dfd3714729cdd0c96689dcaa0135f7e71c4f73f8b6f6424481a0",
+      "reason": "Silver tool/cabinet edges and grainy glittering mineral samples"
+    }
+  ],
+  "evidence_hashes": {
+    "output/ore-sampling-wall.log": "cb493d57d7fde065771e74af6e82ce21956b8dd1f207c9ccd64689bd1d0eaa7d",
+    "output/ore-sampling-wall-v1/wall-scale.png": "fa2d6d039d4dc1f7f8a9bb4a71af17659751776a3892e2228d1151cce0fd1716",
+    "tools/review_registered_wall_asset.gd": "25adee112605cd2a2fe372cf7ecd265ba22db232d82e6097a05fae35ea3e657c"
+  }
+}

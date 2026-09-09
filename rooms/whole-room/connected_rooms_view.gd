@@ -9,9 +9,7 @@ var life_items := [
 	{"id":"life_console","rect":Rect2(58,87,104,64),"pivot":Vector2(925,1017),"width":274.0,"outline":[Vector2(800,780),Vector2(1045,780),Vector2(1062,802),Vector2(1062,1016),Vector2(788,1016),Vector2(788,807)]}
 ]
 func _ready() -> void:
-	var img := Image.new()
-	assert(img.load("res://rooms/whole-room/life-support-candidate.png")==OK)
-	life_texture = ImageTexture.create_from_image(img)
+	life_texture = load_source_texture("res://rooms/whole-room/life-support-candidate.png")
 	pair_mode = 1
 	super._ready()
 func rebuild() -> void:
@@ -40,8 +38,8 @@ func draw_room_floor(center: Vector2) -> void:
 	draw_life_floor(center)
 
 func draw_life_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center)
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center)
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 func life_point(prop: Dictionary, p: Vector2) -> Vector2:
 	var r: Dictionary = prop.registration
 	return Vector2(prop.rect.get_center().x,prop.rect.end.y)+(p-r.pivot)*(prop.rect.size.x/r.width)

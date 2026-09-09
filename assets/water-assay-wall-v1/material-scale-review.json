@@ -1,0 +1,73 @@
+{
+  "asset_id": "water-assay-wall-v1",
+  "department": "Science / water quality",
+  "condition": "Maintained",
+  "attachment_class": "Low north-wall cabinet",
+  "functional_bays": [
+    "Sample receipt and bottle storage",
+    "Broad preparation surface and analyzer",
+    "Rinse and sample returns"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Overhead shallow cutaway; south-facing controls and spout",
+  "references": [
+    {
+      "path": "assets\\laboratory-wall-v1\\laboratory-wall.png",
+      "sha256": "bf8585d83a77d7acd7802b9e7bc0f47cfaa659f894e6b92289e2d76b6254a4d4",
+      "role": "Science palette"
+    },
+    {
+      "path": "assets\\material-polish-v1\\tidal-north.png",
+      "sha256": "a07624168121691bddf8754c0db60d522bb6c193564350a33e39d901fae25a79",
+      "role": "Material quality and cutaway"
+    }
+  ],
+  "source_path": "assets/water-assay-wall-v1/source.png",
+  "source_sha256": "e45d38fbda1456b412d254797f9bc63514ceb38866a8db28e38cd72d46f4e543",
+  "export_path": "assets/water-assay-wall-v1/water-assay-wall.png",
+  "export_sha256": "2a51023914cf6ed06702ec0ea9a9bf48878c0d8f90b93227cae6c2612f08a535",
+  "native_canvas_px": [
+    2122,
+    741
+  ],
+  "proposed_display_width_world": 328.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V2 repaint retained faucet reflection; V3 flat-sided replacement removes the central glint. Cream worktop and sage cabinet remain distinct."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Three unequal task zones readable at328 units; open preparation space retained."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral185 exterior registration; dark sink backing retained at alpha255 and exterior alpha0. Dark/light boards inspected."
+      ]
+    },
+    "native_evidence": "output/water-assay-wall-review.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 77.50628456510809,
+  "registration_path": "assets/water-assay-wall-v1/registration.json",
+  "registration_sha256": "f2713dea2774b514400ca35832b073c58764ead76514924107077e3b8c053197",
+  "prompt_path": "assets/water-assay-wall-v1/source.prompt.txt",
+  "prompt_sha256": "23d9091c9e8d042385cefc4b235a3e451c5cba4abf297c94d145be344db2bee1",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "asset_id": "crew-exercise-mat-v1",
+  "department": "Crew recreation",
+  "condition": "Maintained",
+  "attachment_class": "Flat floor mat",
+  "functional_bays": [],
+  "runtime_behavior": null,
+  "camera_and_facing": "Top-down, long axis north-south",
+  "references": [
+    {
+      "path": "assets/crew-exercise-wall-v1/crew-exercise-wall.png",
+      "sha256": "b130edb1e6bb39decc37b245f3ec935ac9bcb8391a4d27557a737079733c1d38",
+      "role": "Olive foam and crew palette"
+    }
+  ],
+  "source_path": "assets/crew-exercise-mat-v1/source.png",
+  "source_sha256": "ae488edd088d80d06098d77aa28d9f82f5033ac336399aaf7244fce7359b6b72",
+  "export_path": "assets/crew-exercise-mat-v1/crew-exercise-mat.png",
+  "export_sha256": "21741378a09fdc534c2af8871074afeaf8b8537d9f192bafb1b3416b72b51dba",
+  "native_canvas_px": [
+    1065,
+    1476
+  ],
+  "proposed_display_width_world": 28.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Occupied exercise and surrounding reach clearance unverified; floor placement is a proposal"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Olive matte surface; fine grain remains but reads quietly at native scale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V1 overly elongated; V2 gives28x57.11 world units versus approximate28x62 brief. Shared-scale view with320-unit cabinet reviewed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral110 registration, exterior alpha0 and mat center alpha255; light/dark silhouette reviewed."
+      ]
+    },
+    "native_evidence": "output/crew-exercise-mat-review.png",
+    "group_evidence": "output/crew-exercise-group.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 57.106529209621996,
+  "registration_path": "assets/crew-exercise-mat-v1/registration.json",
+  "registration_sha256": "673dd3710ec8fa64beb8cbc42bf30d0c2f1837ed5b21eca4a2eb937a5af404bb",
+  "prompt_path": "assets/crew-exercise-mat-v1/source.prompt.txt",
+  "prompt_sha256": "4f0c83d5522915ded9ecceeaddd239f7011cc5599d965ae562295d7d636e56cf",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "depicted_state": "Unrolled"
+}

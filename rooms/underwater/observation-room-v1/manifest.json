@@ -1,0 +1,33 @@
+{
+  "id": "observation_room",
+  "source": "rooms/underwater/observation-room-v1/source-v3.png",
+  "sha256": "fffe927d68156a708b55c5f10bdc41eb5b92c180ca244c483dafb53e1adc83b8",
+  "integration": {
+    "view": "rooms/underwater/observation-room-v1/observation_room_view.gd",
+    "card": "rooms/underwater/observation-room-v1/card.png"
+  },
+  "canonical_ports_nesw": [
+    2
+  ],
+  "fixed_rotation": 0,
+  "scope": "Live furnished room and crew reading/window activities; native tests passed; standalone package not rebuilt",
+  "component_assets": [
+    {
+      "path": "rooms/underwater/observation-room-v1/registration.json",
+      "sha256": "9f7515b0aa6c15333be7fe6ae227b0ffaae3f52f0a489294b642da62e0a36024"
+    },
+    {
+      "path": "assets/observation-office-v1/wooden-desk.png",
+      "sha256": "2a47ec704c37cebca78b699d44a166113d1551cd1c32ba8157cd0354f645d421"
+    },
+    {
+      "path": "assets/observation-office-v1/chair-rear.png",
+      "sha256": "0d6963acabf95458466ff42afc25a06abe2a575c0e68dbad4211985d505af08e"
+    },
+    {
+      "path": "assets/observation-office-v1/reading-set.png",
+      "sha256": "e5655410bfb55b540cec0587654471f37b68c5d470fa2b9e442d5f6d74d891c2"
+    }
+  ],
+  "card_sha256": "e9b5a0444c4f52b966e80d9049f12cdcce1f330600ed458151da451143ed115d"
+}

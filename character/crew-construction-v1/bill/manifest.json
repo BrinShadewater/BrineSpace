@@ -1,0 +1,123 @@
+{
+  "character": "bill",
+  "frameWidth": 92,
+  "frameHeight": 92,
+  "standingHeight": 74,
+  "background": "transparent",
+  "pivot": [
+    46,
+    86
+  ],
+  "states": [
+    {
+      "id": "weld-east",
+      "frameFiles": [
+        "weld-east-000.png",
+        "weld-east-001.png",
+        "weld-east-002.png",
+        "weld-east-003.png",
+        "weld-east-004.png",
+        "weld-east-005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "weld-south",
+      "frameFiles": [
+        "weld-south-000.png",
+        "weld-south-001.png",
+        "weld-south-002.png",
+        "weld-south-003.png",
+        "weld-south-004.png",
+        "weld-south-005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "weld-west",
+      "frameFiles": [
+        "weld-west-000.png",
+        "weld-west-001.png",
+        "weld-west-002.png",
+        "weld-west-003.png",
+        "weld-west-004.png",
+        "weld-west-005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    },
+    {
+      "id": "weld-north",
+      "frameFiles": [
+        "weld-north-000.png",
+        "weld-north-001.png",
+        "weld-north-002.png",
+        "weld-north-003.png",
+        "weld-north-004.png",
+        "weld-north-005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true
+    }
+  ],
+  "source": "source\\bill.png",
+  "sourceSha256": "25a0fa6dc96526f28c0b4ded1ac4d5e4d033e547d12ac8f0433e63b0497fec9f",
+  "authoring": "Generated four-direction source; no mirrored views; chroma removed; nearest resize; feet registered",
+  "rowBounds": [
+    [
+      89,
+      266
+    ],
+    [
+      309,
+      487
+    ],
+    [
+      548,
+      725
+    ],
+    [
+      773,
+      949
+    ]
+  ],
+  "directionRevision": {
+    "source": "source\\bill-direction-v2.png",
+    "sha256": "294a43636c4a3476b0e9996446da69dc5086e1376699ed3a52a721ee2f8c5370",
+    "rows": [
+      "south",
+      "north"
+    ],
+    "reason": "Original forward/backward poses incorrectly aimed the torch sideways; original east/west rows retained."
+  }
+}

@@ -6,10 +6,13 @@ var portrait: Texture2D
 func configure(data: Dictionary) -> void:
 	custom_minimum_size = Vector2(380,84)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	rooms.clear()
+	portrait = null
 	for room in data.get("state",{}).get("placed_rooms",[]):
 		if room is Dictionary and room.get("pos") is Vector2i: rooms.append(room.duplicate(true))
 	var identity: String = str(data.get("architects",{}).get("selected",""))
-	if Architects.NAMES.has(identity): portrait = Architects.portrait(identity)
+	if Architects.NAMES.has(identity): portrait = Architects.selection_portrait(identity)
 	tooltip_text = "Saved station schematic. Only installed rooms are shown."
 	queue_redraw()
 static func summary(data: Dictionary) -> String:
@@ -37,7 +40,7 @@ func _draw() -> void:
 		draw_rect(rect,color.darkened(0.45))
 		draw_rect(rect,color,false,1.0)
 		if room.get("suspended",false): draw_line(rect.position,rect.end,Color("edab79"),1.0)
-	if portrait: draw_texture_rect(portrait,Rect2(size.x-64,8,56,64),false)
+	if portrait: draw_texture_rect(portrait,Rect2(size.x-64,12,56,59.5),false)
 func _panel() -> StyleBoxFlat:
 	var panel := StyleBoxFlat.new()
 	panel.bg_color = Color("0a1d25")

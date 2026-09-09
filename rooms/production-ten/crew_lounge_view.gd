@@ -73,16 +73,19 @@ func rebuild() -> void:
 	for edge in edges: edge.open=edge.port
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("66665f"),Color(0.17,0.19,0.20,0.35),2,"warm")
-	RoomFloor.draw_dressing(painter,center,edges,"warm",false) # Rugs are anchored to seating below.
+	RoomFloor.draw_profile_floor(self,painter,center,Color("66665f"),Color(0.17,0.19,0.20,0.35),2,"warm")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"warm",false) # Rugs are anchored to seating below.
 
 	# The lamp lead follows the furniture edge to an outlet on the sealed wall.
 	for prop in props:
 		if prop.id!="reading_lamp": continue
 		var outlet := Geometry.turn(Vector2(-160,-176),quarter)
 		var cable := PackedVector2Array([life_point(prop,Vector2(194,526)),Geometry.turn(Vector2(-169,-50),quarter),Geometry.turn(Vector2(-169,-168),quarter),outlet])
-		painter.draw_polyline(cable,Color("302b25"),2.0,true)
-		painter.draw_rect(Rect2(outlet-Vector2(3,2),Vector2(6,4)),Color("79766b"))
+		if prop.get("relocated",false):
+			var start := life_point(prop,Vector2(194,526))
+			outlet=Vector2(start.x,-176 if not Geometry.has_port(layout[0],0) else 176)
+			cable=PackedVector2Array([start,outlet])
+		preload("res://rooms/whole-room/decoration_props.gd").service_run(painter,cable,2.0)
 	# A localized pool of light belongs to the reading lamp, below all furniture.
 	for prop in props:
 		if prop.id=="reading_lamp" and operating:

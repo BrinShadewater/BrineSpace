@@ -1,5 +1,11 @@
 # Room and environment handoff
 
+For shared checkouts, read CURRENT_STATUS.md before carrying forward remaining
+work. Other sessions may have replaced risers, doors, cards or directional art.
+Record your batch's scope without overwriting newer acceptance or claiming it was
+tested together. Closeout does not authorize more generation or turn an unfinished
+objective into a completed one.
+
 For a pause, consolidation or credit-limited wrap-up, inventory existing work
 without starting new generation. Check task status before waking collaborators;
 idle work can usually be consolidated from the checkout's current records.
@@ -27,3 +33,12 @@ mirrors to maintained project references and label structural validation honestl
 
 Project example: `docs/BRINESPACE_HANDOFF_2026-09-06.md`. Its counts and priorities
 are a dated checkpoint, not permanent rules for later room catalogs.
+
+
+## Retained evidence versus retained binaries
+
+Keep failed-run logs, captures and package hashes beside successful replay evidence.
+This does not require retaining every failed executable indefinitely: under an
+authorized cleanup, follow [storage retention](storage-retention.md), record exact
+binary removals, and label historical packages no longer locally replayable.
+Preserve accepted/current packages and unique source material.

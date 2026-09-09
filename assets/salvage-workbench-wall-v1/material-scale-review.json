@@ -1,0 +1,63 @@
+{
+  "asset_id": "salvage-workbench-wall",
+  "department": "Engineering / salvage",
+  "condition": "maintained; localized work-surface wear",
+  "attachment_class": "low continuous workbench against sealed north wall",
+  "functional_bays": [
+    "parts storage",
+    "recessed parts sorting",
+    "repair mat and disassembled housing",
+    "bench vise",
+    "electrical test instrument and leads"
+  ],
+  "runtime_behavior": "static standalone art; no repair simulation installed",
+  "camera_and_facing": "overhead; backing top; vise handle and test controls toward bottom",
+  "references": [],
+  "source_path": "assets/salvage-workbench-wall-v1/source.png",
+  "source_sha256": "c27ddae6884f9cefa951f92f5e33509d2a5f3b2e19b4789bd0848d9e6b2a8f68",
+  "export_path": "assets/salvage-workbench-wall-v1/salvage-workbench-wall.png",
+  "export_sha256": "d7a0e6048fd12ab3c4dd7dfafcdc91c4b06571720c0379b87b9fcc84ac1db880",
+  "native_canvas_px": [
+    2006,
+    784
+  ],
+  "proposed_display_width_world": 328,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Uninterrupted north wall required.",
+    "Vise projects into operator edge; clearance and collision need actual placement review."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Dark matte worktop/cabinet planes; local midtone edges distinguish metal parts.",
+        "Small green meter and subdued ochre corners remain subordinate."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/salvage-workbench-wall-review.png",
+      "findings": [
+        "328-unit width reviewed beside furnished room/crew scale.",
+        "Sorting compartments, repair housing, vise and test meter remain distinct; small parts read as grouped contents.",
+        "Quiet worktops separate activity areas."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "True-alpha source registered at128, one polygon.",
+        "Native light/dark review shows clean perimeter, retained dark recesses and vise handle."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Check a protruding vise handle as an operator-clearance concern during placement; alpha acceptance cannot establish clearance."
+  ]
+}

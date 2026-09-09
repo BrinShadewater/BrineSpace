@@ -39,8 +39,8 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	super.draw_registered_prop(prop)
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center)
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center)
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 	for prop in props:
 		if prop.id not in ["reservoir","filter"]: continue
 		var at:=Vector2(prop.rect.get_center().x,prop.rect.end.y+10)

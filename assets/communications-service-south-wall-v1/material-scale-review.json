@@ -1,0 +1,71 @@
+{
+  "asset_id": "communications-service-south-wall-v1",
+  "department": "Communications service",
+  "condition": "Maintained",
+  "attachment_class": "South-wall standing service counter",
+  "functional_bays": [
+    "Three-lead patch panel",
+    "Signal tester and handset",
+    "Repair mat with closed box and test cable",
+    "Three spare connectors and closed case"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "South backing rail; north pull recesses, tester knobs, cord exit and case latches",
+  "references": [
+    {
+      "path": "assets/communications-service-wall-v1/communications-service-wall.png",
+      "sha256": "d7856759990200dbad088b982f7f6d4765d4cd1048849576c264ae3a72785a2e",
+      "role": "North inventory and matte finish"
+    }
+  ],
+  "source_path": "assets/communications-service-south-wall-v1/source.png",
+  "source_sha256": "9c3b49dd35eeaa0d6a1a867e7918ff08f7445d412ae4f2abf03ba40219778fd8",
+  "export_path": "assets/communications-service-south-wall-v1/communications-service-south.png",
+  "export_sha256": "1f5185194d2276472af69599421a7463f9f5476f98b2819c93eb9a832b796839",
+  "native_canvas_px": [
+    1983,
+    793
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Static signals and patch wiring. Reconstructed lower rear profile differs from north; room placement and occupied access unverified."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V3 removes the bright rear-rail stripe and white fastener dots; display subdued. Cable color accents retained."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Full320-unit light/dark review. North-facing knobs and both case latches confirmed; V2 corrected cabinet backing/pulls after V1 corrected fixtures only. Three broad top pulls replace original drawer arrangement."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral185 excludes checkerboard; native and enlarged exterior reviewed with supported cable loops remaining opaque."
+      ]
+    },
+    "integration": "not installed",
+    "native_evidence": "output/communications-service-south-review.png"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 61.70940170940171,
+  "registration_path": "assets/communications-service-south-wall-v1/registration.json",
+  "registration_sha256": "8e321640220a54abba0f3cf4b242f7acd9a3d68c5bc117e8d08a866f2972d4b4",
+  "prompt_path": "assets/communications-service-south-wall-v1/source.prompt.txt",
+  "prompt_sha256": "60fdcb3bb4b1b6fcf2dcd23d21c1fec38b6e40ac9a1c1b5e371f886ae1f40c19",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

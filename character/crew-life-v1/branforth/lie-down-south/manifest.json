@@ -1,0 +1,86 @@
+{
+  "frameWidth": 128,
+  "frameHeight": 128,
+  "pivot": [
+    64,
+    112
+  ],
+  "states": [
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        0,
+        19,
+        38,
+        58,
+        77,
+        96
+      ]
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "frame_005.png",
+        "frame_004.png",
+        "frame_003.png",
+        "frame_002.png",
+        "frame_001.png",
+        "frame_000.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "depthOffsets": [
+        96,
+        77,
+        58,
+        38,
+        19,
+        0
+      ],
+      "derived": "reverse of lie-down-south"
+    }
+  ],
+  "status": "packaged_review_candidate"
+}

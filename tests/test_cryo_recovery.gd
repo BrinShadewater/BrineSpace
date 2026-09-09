@@ -85,6 +85,7 @@ func run() -> void:
 	game.paused=false
 	Cryo.advance(game,4)
 	check(game.crew_count==1 and game.recovered_crew.size()==1,"Finished emergence adds one named survivor")
+	check(game.station_sound.voices.has("crew_awake"),"Actual survivor emergence emits its recovery cue")
 	Cryo.advance(game,100)
 	check(game.crew_count==1 and game.recovered_crew.size()==1,"Exhausted pod never repeats")
 	check(Save.write(game,path)==OK,"Completed recovery saves")
@@ -129,6 +130,13 @@ func run() -> void:
 	check(Save.restore(game,legacy) and game.wrecks.is_empty() and game.recovered_crew.is_empty(),"Legacy saves never seed new derelicts")
 	game.tick_timer.stop()
 	game.free()
+	var music = root.get_node_or_null("StationMusic")
+	if music != null: music.queue_free()
+	await process_frame
+	music = root.get_node_or_null("StationMusic")
+	if music != null: music.queue_free()
+	await process_frame
+	await create_timer(0.2).timeout
 	for suffix in ["",".bak",".tmp",".meta"]:
 		if FileAccess.file_exists(path+suffix): DirAccess.remove_absolute(ProjectSettings.globalize_path(path+suffix))
 	print("CRYO RECOVERY %s" % ("PASS" if failures==0 else "FAIL"))

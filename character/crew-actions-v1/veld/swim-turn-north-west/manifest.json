@@ -1,0 +1,70 @@
+{
+  "frameWidth": 128,
+  "frameHeight": 128,
+  "pivot": [
+    64,
+    64
+  ],
+  "states": [
+    {
+      "id": "swim-turn-north-west",
+      "frameFiles": [
+        "frame_000.png",
+        "frame_001.png",
+        "frame_002.png",
+        "frame_003.png",
+        "frame_004.png",
+        "frame_005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        90,
+        100,
+        100,
+        90,
+        70
+      ],
+      "loop": false,
+      "water": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ]
+    },
+    {
+      "id": "swim-turn-west-north",
+      "frameFiles": [
+        "frame_005.png",
+        "frame_004.png",
+        "frame_003.png",
+        "frame_002.png",
+        "frame_001.png",
+        "frame_000.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        90,
+        100,
+        100,
+        90,
+        70
+      ],
+      "loop": false,
+      "water": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "derived": "reverse of swim-turn-north-west"
+    }
+  ],
+  "status": "integrated_owner_review_pending"
+}

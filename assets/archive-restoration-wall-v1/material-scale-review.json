@@ -1,0 +1,74 @@
+{
+  "asset_id": "archive-restoration-wall-v1",
+  "department": "Archive",
+  "condition": "Maintained",
+  "attachment_class": "Continuous low north-wall cabinet",
+  "functional_bays": [
+    "Cartridge intake",
+    "Reader terminal",
+    "Sorting mat and closed cleaning deck",
+    "Preservation drawers and returns"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Overhead shallow cutaway; operator access south",
+  "references": [
+    {
+      "path": "assets\\archive-wall-v1\\north.png",
+      "sha256": "2ec0360f882e01fc744275725c7fafccb5efe591b9f88b88f79963c49d4d9d78",
+      "role": "Archive subject and palette only"
+    },
+    {
+      "path": "assets\\material-polish-v1\\tidal-north.png",
+      "sha256": "a07624168121691bddf8754c0db60d522bb6c193564350a33e39d901fae25a79",
+      "role": "Material quality and camera"
+    }
+  ],
+  "source_path": "assets/archive-restoration-wall-v1/source.png",
+  "source_sha256": "b882188d5e1b74f08bc44a42f51d7b1ff885a4330edeb1c8272d43e48f1a6712",
+  "export_path": "assets/archive-restoration-wall-v1/archive-restoration-wall.png",
+  "export_sha256": "d2a47905da27abc40c2413fc2cbc8d819fdce5aec8986fe9bda6948071a8e4df",
+  "native_canvas_px": [
+    1920,
+    819
+  ],
+  "proposed_display_width_world": 328.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V2 removes bright continuous trim and bolt glints; paper tabs remain pale."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Four task areas readable at328 units; broad sorting space retained."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral180 exterior registration reviewed on light/dark grounds; exterior alpha0 and backed mat alpha255. Sparse edge antialias detail remains visible in enlarged diagnostic."
+      ]
+    },
+    "native_evidence": "output/archive-restoration-wall-review.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 83.58651188501935,
+  "registration_path": "assets/archive-restoration-wall-v1/registration.json",
+  "registration_sha256": "ba38c81d07b47bd1213909ff0e29b82f47671bf742e60a8494122c4296ce2888",
+  "prompt_path": "assets/archive-restoration-wall-v1/source.prompt.txt",
+  "prompt_sha256": "b896c250a392c4350fe2819365db00842b93e05461dd53a2c04b9b2e84249316",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

@@ -2,7 +2,7 @@ extends RefCounted
 ## Wrecks and rocks occupy placement cells but never join the operational room graph.
 const DURATION := 18.0
 const TYPES := ["engineering", "medical", "habitation", "hydroponics"]
-const NAMES := {"engineering":"Engineering Wreck", "medical":"Medical Wreck", "habitation":"Habitation Wreck", "hydroponics":"Hydroponics Wreck", "basalt":"Basalt Outcrop", "cryo":"Derelict Cryo Ward"}
+const NAMES := {"engineering":"Engineering Wreck", "medical":"Medical Wreck", "habitation":"Habitation Wreck", "hydroponics":"Hydroponics Wreck", "basalt":"Basalt Outcrop", "cryo":"Derelict Cryo Ward", "charging":"Derelict Charging Chamber", "river":"Derelict Garbage Disposal Room", "josh":"Derelict Storage Room", "margot":"Derelict Pet Cryo Ward"}
 const YIELDS := {"engineering":12, "medical":8, "habitation":6, "hydroponics":10, "basalt":4}
 
 static func initial() -> Dictionary:
@@ -37,7 +37,7 @@ static func advance(wrecks: Dictionary, occupied: Dictionary, delta: float, dron
 		var wreck: Dictionary = wrecks[cell]
 		if wreck.cleared or not wreck.active or not reachable(occupied,cell):
 			continue
-		var work_delta: float = delta if drone_work == null or wreck.kind == "cryo" else float(drone_work.get(cell,0.0))
+		var work_delta: float = delta if drone_work == null or wreck.kind in ["cryo","charging","river","josh","margot"] else float(drone_work.get(cell,0.0))
 		wreck.progress = minf(DURATION,float(wreck.progress)+maxf(0.0,work_delta))
 		if wreck.progress >= DURATION:
 			wreck.cleared = true
@@ -60,8 +60,9 @@ static func valid(value: Variant, occupied: Dictionary) -> bool:
 			return false
 		if not w.get("active") is bool or not w.get("cleared") is bool:
 			return false
-		if w.kind == "cryo" and not preload("res://scripts/cryo_recovery.gd").valid_ward(w):
+		if w.kind in ["cryo","charging"] and not preload("res://scripts/cryo_recovery.gd").valid_ward(w):
 			return false
+		if w.kind in ["river","josh","margot"] and not preload("res://scripts/companions.gd").valid_site(w):return false
 		if w.cleared != (w.progress == DURATION) or (w.cleared and w.active):
 			return false
 		if not w.cleared and occupied.has(cell):

@@ -1,0 +1,33 @@
+{
+  "asset": "res://assets/crew-notice-rail-v1/rail.png",
+  "region": [
+    65.0,
+    258.0,
+    2042.0,
+    217.0
+  ],
+  "source_review": "material-scale-review.json",
+  "width": 131.74193548387098,
+  "height": 14,
+  "host_depth": 16,
+  "scope": "Horizontal low-strip size diagnostic; not runtime mounting",
+  "geometry_source": "tools/modular_room_geometry.gd",
+  "renderer_source": "rooms/whole-room/nursery_whole_view.gd",
+  "review": {
+    "verdict": "agent_pass_size_diagnostic",
+    "findings": [
+      "Uniform131.74 x14 silhouette fits schematic16-unit strip with1-unit margins.",
+      "Native clock/notice groups read as decoration; detailed paper marks do not remain legible.",
+      "Strip depth does not establish mounting-plane correctness."
+    ],
+    "owner_acceptance": null,
+    "integration": "not_installed"
+  },
+  "evidence": {
+    "tools/modular_room_geometry.gd": "6b3bf7601961b5c69069067910e1b061e4a2e89d120e3fd672f5ce5d2ce90fac",
+    "rooms/whole-room/nursery_whole_view.gd": "d33db5c8ce59e1a32b60c88147744435f1289f03fb2445218ad40eb2f7ffb903",
+    "tools/review_notice_rail_fit.gd": "07b09fcfd0abc995d7e278c1d1c8c4974f78d3f95321954c22389e02f588bfe7",
+    "output/crew-notice-rail-fit.log": "d57dd4ac02ed13683079e6671787f6dc8d95fd45921b380fe0102c53b5651357",
+    "output/crew-notice-rail-v1/low-strip-fit.png": "6bf94dbafcd97b37e1732080665cd376af0f0c1d61c02949d98bf67a12157c5b"
+  }
+}

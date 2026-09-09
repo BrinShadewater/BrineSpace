@@ -1,5 +1,16 @@
 # Hybrid room art production log
 
+## Corridor/riser production closeout - September 8
+
+Current corridor cards: assets/corridor-polish-v3. Sources: hallway-floor-tiles-v2,
+corridor-wall-variants-v1 and door-polish-v1. Earlier large-slab and mixed-floor
+studies are superseded. Register low-top, upright, cap and return samples separately.
+Carry variants through live rendering, cache keys and both card consumers. Preserve
+original sources/prompts/hashes. Keep 24-unit modules separate from 48-unit editor
+cells. Check dry rotations, default/live doors, wet closing/pause and physics separately.
+See [closeout](CORRIDOR_ART_SESSION_CLOSEOUT_2026-09-08.md) and the maintained
+[skill contract](../skills/brinespace-room-pipeline/references/corridor-riser-contract.md).
+
 ## Complete decoration refresh — 2026-09-06
 
 All 85 unique assets in the five earlier decoration families now have reviewed

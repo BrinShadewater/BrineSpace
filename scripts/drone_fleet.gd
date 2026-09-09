@@ -42,7 +42,7 @@ func hatch_fraction(home: Vector2i) -> float:
 	if drone.phase == "docking": return 1.0-clampf((drone.elapsed-0.85)/0.35,0,1)
 	return 0.0
 
-func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary, station_power: int = 100000) -> Array:
+func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary, station_power: int = 100000, crew_builders := false) -> Array:
 	synchronize(rooms)
 	if not sites_initialized:
 		sites = Sites.seed_sites(rooms,wrecks)
@@ -72,6 +72,16 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 	var completed: Array = []
 	for home in drones:
 		var drone: Dictionary = drones[home]
+		if crew_builders and drone.bootstrap:
+			# Migrate an old emergency-drone job without losing its paid order or work.
+			if not drone.order.is_empty():
+				if drone.phase=="working": drone.order["work"]=minf(10.0,float(drone.elapsed))
+				orders.push_front(drone.order)
+				drone.order={}
+			drone.phase="docked"
+			drone.job=""
+			drone.elapsed=0.0
+			continue
 		# Core's emergency builder prevents power/build bootstrap deadlock.
 		var extractor: bool = drone.kind in ["mining","salvage"]
 		if extractor and not drone.has("battery"): drone["battery"] = BATTERY_CAPACITY
@@ -101,6 +111,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				if drone.get("route_wait",false) or not Vector2(drone.position).is_equal_approx(Vector2(goal)): break
 				drone.phase = "docking" if drone.phase == "returning" else "working"
 				drone.elapsed = 0.0
+				if drone.phase=="working" and drone.job=="construct": drone.elapsed=float(drone.order.get("work",0.0))*(1.0 if drone.bootstrap else .6)
 				drone.erase("route")
 				continue
 			if extractor and drone.phase == "docked" and drone.battery < BATTERY_CAPACITY-0.00001:
@@ -186,6 +197,7 @@ func _dedicated_builder_ready(powered: Dictionary) -> bool:
 	for drone in drones.values():
 		if drone.kind == "construction" and not drone.bootstrap and powered.has(drone.home) and drone.phase == "docked":
 			for order in orders:
+				if not str(order.get("builder","")).is_empty(): continue
 				if not Routes.find_path(drone.home,order.pos,route_blockers).is_empty(): return true
 	return false
 
@@ -194,6 +206,7 @@ func _assign(drone: Dictionary, wrecks: Dictionary, rooms: Array) -> void:
 		if orders.is_empty(): return
 		var chosen := -1
 		for i in range(orders.size()):
+			if not str(orders[i].get("builder","")).is_empty(): continue
 			if not Routes.find_path(drone.home,orders[i].pos,route_blockers).is_empty():
 				chosen = i
 				break
@@ -207,7 +220,7 @@ func _assign(drone: Dictionary, wrecks: Dictionary, rooms: Array) -> void:
 		return
 	for cell in wrecks:
 		var wreck: Dictionary = wrecks[cell]
-		if not wreck.active or wreck.cleared or wreck.kind == "cryo": continue
+		if not wreck.active or wreck.cleared or wreck.kind in ["cryo","charging","river","josh","margot"]: continue
 		if float(clearance_seconds.get(cell,0.0)) >= 18.0-float(wreck.progress): continue
 		if (wreck.kind == "basalt") != (drone.kind == "mining"): continue
 		var claimed := false
@@ -254,6 +267,9 @@ func order_at(cell: Vector2i) -> Dictionary:
 	return {}
 
 func construction_status(cell: Vector2i, powered: Dictionary) -> String:
+	for order in orders:
+		if order.pos==cell and not str(order.get("builder","")).is_empty():
+			return "%s / ASSEMBLING %d%%" % [preload("res://scripts/architects.gd").NAMES[order.builder],roundi(float(order.get("work",0.0))*10)]
 	for drone in drones.values():
 		if drone.order.is_empty() or drone.order.pos != cell: continue
 		if not drone.bootstrap and not powered.has(drone.home): return "BUILDER OFFLINE / awaiting bay power"
@@ -261,7 +277,13 @@ func construction_status(cell: Vector2i, powered: Dictionary) -> String:
 			var duration := 10.0 if drone.bootstrap else 6.0
 			return "ASSEMBLING / %d%%" % roundi(clampf(drone.elapsed/duration,0,1)*100)
 		return "BUILDER " + str(drone.phase).to_upper()
-	return "QUEUED / awaiting builder with a clear route"
+	return "QUEUED / awaiting architect access or a powered builder bay"
+
+func construction_progress(cell: Vector2i) -> float:
+	for d in drones.values():
+		if not d.order.is_empty() and d.order.pos==cell:
+			return clampf(float(d.elapsed)/(10.0 if d.bootstrap else 6.0),0,1) if d.phase=="working" else float(d.order.get("work",0.0))/10.0
+	return float(order_at(cell).get("work",0.0))/10.0
 
 func accrue(home: Vector2i, production: Dictionary) -> void:
 	# Compatibility for older consumers: deposits now own output, never cycle credits.
@@ -365,8 +387,19 @@ static func valid(value: Variant, rooms: Array) -> bool:
 			if d.kind != "construction" or d.job != "construct": return false
 			pending.append(d.order)
 	var reserved_cells := {}
+	var manual_builders := {}
 	for order in pending:
 		if not order is Dictionary or not order.get("pos") is Vector2i or not order.get("rotation") is int: return false
+		if order.has("work") and (not order.work is float or not is_finite(order.work) or order.work<0 or order.work>10): return false
+		if order.has("builder"):
+			if order.builder not in ["bill","veld","branforth","marsh"]: return false
+			if manual_builders.has(order.builder): return false
+			manual_builders[order.builder]=true
+			if not order.get("work_cell") is Vector2i or not occupied.has(order.work_cell): return false
+			if not order.get("work_point") is Vector2 or not order.work_point.is_finite(): return false
+			if Vector2i(floori(order.work_point.x/384),floori(order.work_point.y/384))!=order.work_cell: return false
+			if order.get("facing") not in ["north","east","south","west"]: return false
+			if order.pos-order.work_cell != Routes.STEPS[["north","east","south","west"].find(order.facing)]: return false
 		if order.rotation<0 or order.rotation>3 or preload("res://scripts/room_database.gd").get_room(str(order.get("id",""))).is_empty(): return false
 		var cell: Vector2i = order.pos
 		if cell.x<0 or cell.y<0 or cell.x>=40 or cell.y>=40 or occupied.has(cell) or reserved_cells.has(cell): return false

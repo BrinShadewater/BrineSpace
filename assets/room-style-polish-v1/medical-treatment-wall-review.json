@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-medical-treatment-wall",
+  "department": "Medical",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Warm cream composite and dusty dark teal side housings, warm ochre/orange cloth treatment pad, soft charcoal rubber seals. Quiet medical pale surfaces without white glints; monitor backs have small recessed vents. Preserve the pad and instruments. No generic green steel."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/medical-treatment-wall.png",
+      "sha256": "cdec62fafd965af72133aee9dc3ac26df295000a61165ba786bf33eb33832b45",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-medical-v1/treatment-north.png",
+      "sha256": "4c75077ce8e96bd199dd3c7b9345a7ee62e76da703ad7f01cba8b7217c8a5196",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/medical-treatment-wall.png",
+  "source_sha256": "80342fa8d54aecaa0d00645504ab3ae6d3d775887744c13ea64f0a637db26d98",
+  "export_path": "assets/room-style-polish-v1/exports/medical-treatment-wall.png",
+  "export_sha256": "9ca1c1c9a2267adeebd24bf84f5c85eeea0d3a624fb4ecc2814b83284601fa40",
+  "native_canvas_px": [
+    2097,
+    750
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    75.72874493927125
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Warm cream composite and dusty dark teal side housings, warm ochre/orange cloth treatment pad, soft charcoal rubber seals. Quiet medical pale surfaces without white glints; monitor backs have small recessed vents. Preserve the pad and instruments. No generic green steel.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/medical-treatment-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1049,
+            534
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 75.72874493927125,
+  "registration_path": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-south.json",
+  "registration_sha256": "ba9c4fae8bcdd59297f1e08ed43375e4313108f1f285d7cf7de92df075ae4e18",
+  "prompt_path": "assets/room-style-polish-v1/medical-treatment-wall.prompt.txt",
+  "prompt_sha256": "cf85f01d073416d05419f3f64160115eadeec02b667e48f62b3bc0e008d8738b",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

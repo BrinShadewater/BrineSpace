@@ -21,8 +21,8 @@ func _ready() -> void:
 	actor = Vector2(0,120)
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center)
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center)
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 	if dressing!=null: dressing.floor()
 	preload("res://rooms/whole-room/room_services.gd").render(painter,props,"reactor",operating)
 

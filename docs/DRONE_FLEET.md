@@ -1,5 +1,10 @@
 # Drone fleet implementation
 
+**September 8 opening change:** [Character construction](CHARACTER_CONSTRUCTION_IMPLEMENTATION_2026-09-08.md)
+replaces BRINE's emergency drone with an architect working from an existing room.
+Dedicated drone bays still take unassigned jobs. Old emergency-drone orders retain
+paid work when migrated. The emergency-builder description below is historical.
+
 **Current follow-up:** [Finite harvesting and routes](FINITE_DRONE_HARVEST.md)
 replaces the first pass's renewable sites and direct travel. Historical evidence
 below describes the earlier snapshot unless explicitly updated.

@@ -81,6 +81,9 @@ func run() -> void:
 	game._update_wreck_clearance(100.0)
 	check(game.resources.metal==metal_before,"No duplicate salvage after completion")
 	game.selected_card_id = "corridor"
+	# Current construction uses architects or a dedicated bay, not the retired
+	# bootstrap drone. This fixture advances drone work only.
+	game._place_room("construction_drone_bay",Vector2i(18,20),true)
 	game.selected_rotation = 0
 	game.hand.assign(["corridor"])
 	check(game.get_placement_problem("corridor",cell).is_empty(),"Cleared footprint accepts connected room")

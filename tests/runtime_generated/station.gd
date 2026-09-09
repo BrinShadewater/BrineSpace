@@ -387,6 +387,10 @@ func controlled_tour(return_to_start := false) -> void:
 	var legs: Array=[]
 	var transitions:=0
 	var samples:=0
+	# Stream every peer sample as well as Bill's route, including failed runs.
+	var crew_trace:=FileAccess.open(capture_dir.path_join("whole-crew-trace.jsonl"),FileAccess.WRITE)
+	expect(crew_trace!=null,"Whole-crew trace opens")
+	if crew_trace==null: return
 	tour_progress("before start capture",npc.cell_at(npc.foot))
 	await capture("controlled-tour-start")
 	tour_progress("after start capture",npc.cell_at(npc.foot))
@@ -442,6 +446,7 @@ func controlled_tour(return_to_start := false) -> void:
 			if diagnostic_tail.size()>40: diagnostic_tail.pop_front()
 			diagnostic_tail.back()["crew_before"]=crew_before
 			diagnostic_tail.back()["crew_after"]=tour_crew_trace()
+			crew_trace.store_line(JSON.stringify({"leg":legs.size(),"step":step,"crew":diagnostic_tail.back()["crew_after"]}))
 			expect(before.distance_to(after)<=4.601,"Tour respects production speed; no teleport")
 			expect(npc.traveled_distance()<=4.601,"Tour traveled legs respect production speed")
 			var collision_clear: bool=npc.can_stand(after) and npc.traveled_clear()
@@ -487,6 +492,7 @@ func controlled_tour(return_to_start := false) -> void:
 				break
 		expect(arrived and npc.cell_at(npc.foot)==cell,"Tour physically arrives at target: "+str(cell))
 		if not arrived:
+			crew_trace.flush()
 			var diagnostic:={"id":game.occupied[cell].id,"cell":[cell.x,cell.y],"target":[endpoint.x,endpoint.y],"actual":[npc.foot.x,npc.foot.y],"remaining_path":str(npc.path),"tail":diagnostic_tail,"completed_legs":legs.size(),"controller_sha256":FileAccess.get_sha256("res://scripts/bill_npc.gd")}
 			var failure_file:=FileAccess.open(capture_dir.path_join("controlled-tour-failure.json"),FileAccess.WRITE)
 			failure_file.store_string(JSON.stringify(diagnostic,"\t"))
@@ -504,6 +510,7 @@ func controlled_tour(return_to_start := false) -> void:
 		if "--crew-visit-review" in OS.get_cmdline_user_args() and not captured_near_prop:
 			await capture_crew_visit(cell,"visit-%02d-%s"%[legs.size(),game.occupied[cell].id],-1.0,"arrival fallback; no near-prop sample","")
 	expect(visited.size()==game.placed_rooms.size() and legs.size()==destinations.size(),"Controlled tour covers every room")
+	crew_trace.close()
 	var trace:=FileAccess.open(capture_dir.path_join("controlled-tour-trace.json"),FileAccess.WRITE)
 	trace.store_string(JSON.stringify({"mode":"controlled-tour","delta":0.1,"controller_sha256":FileAccess.get_sha256("res://scripts/bill_npc.gd"),"legs":legs},"\t"))
 	var summary:=FileAccess.open(capture_dir.path_join("station-summary.json"),FileAccess.WRITE)

@@ -1,0 +1,22 @@
+{
+  "source": "character/brine-comms-v2/portrait.png",
+  "references": [
+    "character/brine-comms-v1/portrait.png",
+    "rooms/underwater/brine-core/renewal-v2/core-card-v6.png"
+  ],
+  "prompt": "prompt.txt",
+  "tool": "image_gen.imagegen",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sha256": "8d18fc670579fe067fa768e00ef355ff1078c4638df80e2afd27c967d3f99dd6",
+  "raster_modified": false,
+  "runtime": "scripts/crew_comms.gd",
+  "review": "Agent visual review passes at full size and native comms display at 1600x900 and 960x540; owner acceptance pending.",
+  "native_evidence": [
+    "output/crew-comms/brine-1600.png",
+    "output/crew-comms/brine-960.png"
+  ],
+  "validation": "tests/playtest_crew_comms.gd: COMMS GAME PASS; output/brine-tube-comms.log"
+}

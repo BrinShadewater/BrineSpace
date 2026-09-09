@@ -27,23 +27,11 @@ func exterior_wall_segments(rect: Rect2) -> Array:
 	return result
 
 func draw_steel_wall(rect: Rect2,horizontal: bool) -> void:
-	# Engineering cladding over the same authoritative hull dimensions.
-	var top:=Rect2(rect.position-Vector2(0,3),rect.size)
-	painter.draw_rect(Rect2(top.position+Vector2(0,4),top.size),Color("182d35"))
-	painter.draw_rect(top,Color("536767"))
-	painter.draw_rect(top.grow(-1),Color("657873"))
-	painter.draw_line(top.position,top.position+Vector2(top.size.x,0),Color("9ba898"),1)
-	if not horizontal:
-		painter.draw_line(top.position+Vector2(1,0),top.position+Vector2(1,top.size.y),Color("a2aea1"),1)
-		painter.draw_line(top.position+Vector2(top.size.x-1,0),top.end,Color("243b43"),2)
-	var span:=rect.size.x if horizontal else rect.size.y
-	for offset in range(12,int(span),32):
-		var point:=top.position+(Vector2(offset,0) if horizontal else Vector2(0,offset))
-		painter.draw_line(point,point+(Vector2(0,top.size.y) if horizontal else Vector2(top.size.x,0)),Color("293f46"),1)
+	# Keep exterior hatch exclusions; use registered steel instead of flat bands.
+	preload("res://rooms/whole-room/department_wall_material.gd").wall(painter,rect,horizontal,"engineering")
 
 func draw_cap(rect: Rect2) -> void:
-	painter.draw_rect(rect,Color("2b4148"))
-	painter.draw_rect(rect.grow(-2),Color("76867c"))
+	preload("res://rooms/whole-room/department_wall_material.gd").cap(painter,rect,"engineering")
 
 func chamber_rect() -> Rect2:
 	return CHAMBER
@@ -60,6 +48,7 @@ func turned_rect(rect: Rect2) -> Rect2:
 	return Rect2(Geometry.turn(rect.get_center(),quarter)-size*0.5,size)
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	if prop.id=="pressure_chamber": return prop.rect.grow(5)
 	if prop.id=="outer_hatch": return turned_rect(Rect2(-44,-200,88,24))
 	return super.prop_visual_bounds(prop)
@@ -92,8 +81,8 @@ func rebuild() -> void:
 	var chamber:=turned_rect(chamber_rect())
 	props.append({"id":"pressure_chamber","rect":chamber,"center":Vector2.ZERO,"sort_y":chamber.end.y,"registration":{}})
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("465356"),Color(0.19,0.29,0.29,0.16),2,"steel")
-	RoomFloor.draw_dressing(painter,center,edges,"steel")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("465356"),Color(0.19,0.29,0.29,0.16),2,"steel")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
 	for prop in props:
 		if prop.id=="changing_bench":
 			preload("res://rooms/whole-room/decoration_props.gd").floor_patch(painter,"boot_scrub_tray",Rect2(prop.rect.position-Vector2(4,4),prop.rect.size+Vector2(8,22)))
@@ -101,11 +90,7 @@ func draw_room_floor(center: Vector2) -> void:
 			var start:=Vector2(prop.rect.get_center().x,prop.rect.end.y+3)
 			var end:=Geometry.turn(Vector2(-66,-70),quarter)
 			var elbow:=Vector2(end.x,start.y)
-			for points in [[start,elbow],[elbow,end]]:
-				painter.draw_line(points[0],points[1],Color("172e36"),5)
-				painter.draw_line(points[0],points[1],Color("6c817e"),2)
-			for point in [start,elbow,end]:
-				painter.draw_rect(Rect2(point-Vector2(3,3),Vector2(6,6)),Color("9b885b"))
+			preload("res://rooms/whole-room/decoration_props.gd").service_run(painter,PackedVector2Array([start,elbow,end]),5.0,"pipe_straight")
 func draw_registered_prop(prop: Dictionary) -> void:
 	# Draw with the chamber so its wet-deck pass cannot cover the hatch leaves.
 	if prop.id=="outer_hatch": return
@@ -147,8 +132,9 @@ func draw_chamber() -> void:
 	# The same two-leaf mechanism as the shared doors, registered in room space.
 	for leaf in preload("res://rooms/whole-room/room_door.gd").leaf_rects(cycle_pose.inner):
 		var rect:=turned_rect(Rect2(leaf.position+Vector2(0,35),leaf.size))
-		painter.draw_rect(rect,Color("9ca89b"))
-		painter.draw_rect(rect.grow(-2),Color("475d5b"))
+		var vertical:=quarter%2==1
+		var delta:=rect.get_center()-Geometry.turn(Vector2(0,35),quarter)
+		preload("res://rooms/doors/door_finish.gd").low_leaf(painter,rect,(delta.y if vertical else delta.x)<0,vertical,"life-support")
 	for x in [-39,39]:
 		var point:=Geometry.turn(Vector2(x,35),quarter)
 		painter.draw_circle(point,2,Color("95cfad") if cycle_pose.inner>=1 else Color("df9860"))
@@ -162,6 +148,15 @@ func draw_chamber() -> void:
 	painter.draw_rect(gauge,Color("15272d"))
 	painter.draw_rect(turned_rect(Rect2(-45,14,90*float(cycle_pose.pressure),4)),Color("d5af68"))
 	draw_outer_cutaway()
+	draw_wet_gate("inner",Vector2(0,35),Vector2.DOWN,cycle_pose.inner,water-flood_water,maxf(water,flood_water))
+	draw_wet_gate("outer",Vector2(0,outer_threshold()),Vector2.UP,cycle_pose.outer,water-1.0,water)
+
+var wet_gate_history: Dictionary={}
+func draw_wet_gate(id: String, at: Vector2, direction: Vector2, amount: float, difference: float, water: float) -> void:
+	var fx=preload("res://rooms/doors/door_water.gd")
+	var state: Dictionary=fx.advance(wet_gate_history.get(id,{}),roundi(amount*9),machine_clock)
+	wet_gate_history[id]=state
+	fx.draw(painter,Geometry.turn(at,quarter),Geometry.turn(direction,quarter),amount,difference,water,float(state.closing_until)>machine_clock,machine_clock,1.0)
 
 func outer_threshold() -> float:
 	return -184.0
@@ -174,9 +169,9 @@ func draw_outer_cutaway() -> void:
 	painter.draw_line(Geometry.turn(at+Vector2(-36,5),quarter),Geometry.turn(at+Vector2(36,5),quarter),Color("758780"),1)
 	for leaf in preload("res://rooms/whole-room/room_door.gd").leaf_rects(cycle_pose.outer):
 		var panel:=turned_rect(Rect2(leaf.position+at,leaf.size))
-		painter.draw_rect(panel,Color("9ca89b"))
-		if minf(panel.size.x,panel.size.y)>2:
-			painter.draw_rect(panel.grow(-1),Color("475d5b"))
+		var vertical:=quarter%2==1
+		var delta:=panel.get_center()-Geometry.turn(at,quarter)
+		preload("res://rooms/doors/door_finish.gd").low_leaf(painter,panel,(delta.y if vertical else delta.x)<0,vertical,"life-support")
 	for x in [-40,40]:
 		var jamb:=turned_rect(Rect2(at+Vector2(x-4,-8),Vector2(8,16)))
 		draw_cap(jamb)

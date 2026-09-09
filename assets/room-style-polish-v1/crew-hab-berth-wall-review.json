@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-crew-hab-berth-wall",
+  "department": "Habitation",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Warm dark wood veneer, muted warm cream casing, ochre bedding and brown rubber seals. Preserve the three small berth openings at the TOP edge facing away from viewer; distinguish cloth folds from hard paneling. A few discreet service seams and vents on the rear housing; no cold green industrial cabinet."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/crew-hab-berth-wall.png",
+      "sha256": "5e2c425f6058ce2d2aec560ba852f3aee82a60ebf95f823f0e515242a7b557cf",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/hab-autumn-v1/horizontal.png",
+      "sha256": "afdcf8665efcf7eb88490e7739c9497ee3fbfb398eaac6422e6e56e99260f7bd",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/crew-hab-berth-wall.png",
+  "source_sha256": "24b6169869b46663927f1d0f4438ed54e85129d40e52c571eeca880af8d9c435",
+  "export_path": "assets/room-style-polish-v1/exports/crew-hab-berth-wall.png",
+  "export_sha256": "38e7a343811312933b214cc47b55ad76721d96c641e7eb13a32b33f843fc68d7",
+  "native_canvas_px": [
+    2095,
+    751
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    70.77263581488934
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Warm dark wood veneer, muted warm cream casing, ochre bedding and brown rubber seals. Preserve the three small berth openings at the TOP edge facing away from viewer; distinguish cloth folds from hard paneling. A few discreet service seams and vents on the rear housing; no cold green industrial cabinet.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/crew-hab-berth-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1046,
+            512
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 70.77263581488934,
+  "registration_path": "rooms/full-wall-v1/registrations/side-crew-hab-berth-wall-south.json",
+  "registration_sha256": "c399f2e6b24300313dee0d319400abceb890dcd947a9cde09e6346e21d9b2046",
+  "prompt_path": "assets/room-style-polish-v1/crew-hab-berth-wall.prompt.txt",
+  "prompt_sha256": "a4b6d96820c2050e3e43894a64ca498ce1764f76350c53a10bbc0ce33a36457f",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

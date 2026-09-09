@@ -1,0 +1,60 @@
+{
+  "asset_id": "galley-east-wall",
+  "department": "Crew / habitation",
+  "condition": "maintained",
+  "attachment_class": "self-supporting cabinet against sealed east wall",
+  "camera_and_facing": "overhead; backing right; handles, controls and taps left",
+  "references": [
+    {
+      "path": "assets/galley-west-wall-v1/galley-west-wall.png",
+      "sha256": "c006cb8c7ff368435ba98f8477af8d4a5ebd2c4f3a438ca7cda6b01573c0bcde",
+      "role": "candidate subject/material and opposite-facing fixture reference; not owner acceptance"
+    }
+  ],
+  "source_path": "assets/galley-east-wall-v1/source.png",
+  "source_sha256": "700e1ac3eee257ff9bcaf81a752ec7d4511082a45839843253ff573c0d3fac8e",
+  "export_path": "assets/galley-east-wall-v1/galley-east-wall.png",
+  "export_sha256": "865a9b1fdb1e0583d8594c2852750a75ad09ae2af969af0979c0374872c44a60",
+  "native_canvas_px": [
+    887,
+    1774
+  ],
+  "proposed_display_width_world": 53.57531760435572,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Uninterrupted east wall required; preserve doors and routes."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte warm putty and chestnut; quiet appliance glazing and restrained amber indicators."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/galley-east-wall-review.png",
+      "findings": [
+        "Full328-unit height reviewed beside furnished room/crew scale.",
+        "Backing right, handles and cooker controls left; faucet and boiler tap project left; cups on left."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Raw RGB checkerboard; source-specific exterior-neutral minimum110, maximum channel spread22; one polygon.",
+        "Dark/light native review shows no visible checkerboard; worktop and fixture interiors retained."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Fixture-specific direction brief produced correct east-facing touchpoints on first candidate; owner acceptance remains pending.",
+    "Neutral registration must record actual threshold, not merely method name."
+  ],
+  "proposed_display_height_world": 328
+}

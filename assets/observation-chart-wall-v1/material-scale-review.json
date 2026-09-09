@@ -1,0 +1,82 @@
+{
+  "asset_id": "observation-chart-wall-v1",
+  "department": "Habitation / Observation",
+  "condition": "Maintained matte wood and paper",
+  "attachment_class": "Low self-supporting north-backed counter",
+  "functional_bays": [
+    "Closed map drawers and folders",
+    "Open plotting surface with flat chart pencil and weights",
+    "Three rolled charts and closed document sleeve"
+  ],
+  "runtime_behavior": "Static standing counter; decorative chart, no navigation interaction",
+  "camera_and_facing": "Near-top-down; north backing, south access",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/lounge-reading-recess-v1/wall.png",
+      "sha256": "c8bfdd1353095e3589aceed8143698d1a495572f5ee0bcf7a9c49323b91b0f05",
+      "role": "Matte wood and camera only"
+    }
+  ],
+  "source_path": "assets/observation-chart-wall-v1/source-v1.png",
+  "source_sha256": "c5784931694e73f896692785b5bf8ddad9f783aee0d23a495e9c92d761d97cee",
+  "export_path": "assets/observation-chart-wall-v1/wall.png",
+  "export_sha256": "6456e18bad3bb71da7ca329a73feb7d25bffe59e6b0992d23a4db5663efa97ad",
+  "native_canvas_px": [
+    2216,
+    709
+  ],
+  "proposed_display_width_world": 320.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Porthole sightline",
+    "Door bays",
+    "Existing desk and chair access"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Quiet dark wood without gold varnish lines; paper remains pale without glow."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/observation-chart-wall-v1/wall-final.png",
+      "findings": [
+        "320-unit bank compared with Observation furniture at equal scale.",
+        "Contour lines simplify into decorative chart texture; no readable navigational data."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral140 removes lower base fringe left at180; source color pixels unchanged.",
+        "Registered bounds shift one pixel; final dimensions use revised geometry."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 66.7879368118717,
+  "registration_path": "assets/observation-chart-wall-v1/registration.json",
+  "registration_sha256": "6d34ccb45c33a58a2420438e3649213c5721dfcea312c0f1ffcf92cb132982ee",
+  "prompt_path": "assets/observation-chart-wall-v1/source.prompt.txt",
+  "prompt_sha256": "a2da245c8b8b1c9acba3b1d53c8ea690b5044a2acba1f00466a335767a51e511",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/observation-chart-wall-final.log": "a440e96ff99d9c2657f99995ce42547a26a6f8dedade064defbda8ea410dbbb0",
+    "output/observation-chart-wall-v1/wall-final.png": "273624a0d944fdc77e3f6a0042740d30992c1f7562e57f2828be2577b91ee6ed"
+  }
+}

@@ -31,6 +31,7 @@ func draw_registered_prop(prop: Dictionary) -> void:
 func effect_marks(_prop: Dictionary,_time: float) -> Array: return []
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	# Match the fleet renderer's actual draw sizes, not the placeholder outline.
 	var bounds_helper=preload("res://rooms/production-ten/drone_prop_bounds.gd")
 	var center:=Vector2(prop.rect.get_center().x,prop.rect.end.y-35)

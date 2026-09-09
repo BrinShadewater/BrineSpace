@@ -1,0 +1,69 @@
+{
+  "asset_id": "pressure-seal-wall-v1",
+  "department": "Engineering / pressure maintenance",
+  "condition": "Maintained",
+  "attachment_class": "Continuous low north-wall cabinet",
+  "functional_bays": [
+    "Gasket drawers",
+    "Assembly mat",
+    "Enclosed leak tester",
+    "Lubricant dispenser",
+    "Spare seal cases"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Top-down shallow cutaway, south-facing access and spout",
+  "references": [],
+  "source_path": "assets/pressure-seal-wall-v1/source.png",
+  "source_sha256": "24639361414ed3809bd1d903d5264be8c2a81799839135b72e6f2a0f910171ad",
+  "export_path": "assets/pressure-seal-wall-v1/pressure-seal-wall.png",
+  "export_sha256": "9e19325d885870e0cc33fe3a1641f77aa95e9191bc987d8fb843d1608d7a762d",
+  "native_canvas_px": [
+    2017,
+    780
+  ],
+  "proposed_display_width_world": 328.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "V2 reduces wrench and gauge-rim silver highlights and dispenser sheen; pale gauge faces retained."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "328-unit comparison retains five bays and clear assembly mat; fine O-rings simplify at native size."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral exterior registered at185; backed recesses and window retained. Dark/light boards inspected."
+      ],
+      "samples": {
+        "(180, 330)": 255,
+        "(1160, 360)": 255,
+        "(10, 10)": 0
+      }
+    },
+    "native_evidence": "output/pressure-seal-wall-review.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 76.2711157455683,
+  "registration_path": "assets/pressure-seal-wall-v1/registration.json",
+  "registration_sha256": "6693d0b8fe84c3762776beb4132b2378bbe7fe00aca5a10bad5fdbf456a917aa",
+  "prompt_path": "assets/pressure-seal-wall-v1/source.prompt.txt",
+  "prompt_sha256": "a81bee61996b9254109ac19832d0054d1945d2f385cf9c06622c7d8143b5e77b",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

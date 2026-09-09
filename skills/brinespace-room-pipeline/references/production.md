@@ -191,3 +191,27 @@ Nursery substrate-v1 adds a generated low wheeled stand with supply bags below a
 ### Hydroponics harvest stand — 2026-09-06
 
 Harvest-v1/profile-v3 adds a low produce-crate dolly with packing paper and a supported shears/tags tray beside nutrients. Image revisions rejected a backdrop and a clipped handle before source-v3 cleanup; exact prompts, revisions and reviewed gap seeds are in hydro-harvest-provenance-v3.json. Native card inspected; 72 depth poses/24 accessible fronts and four route rotations pass. Updated station-scale visual and package review remain.
+
+
+## Editor thumbnail consumer
+
+Material replacement consumer audit: check inherited hull/cap UV donors, shared
+dressing and common-tray entries, occupied and empty animation states, and both
+card consumers. Replacing a default-room texture does not update these implicitly.
+Keep diagnostic all-port captures separate from sealed production card bakes.
+Preserve atlas cells and pivots when repainting animations; inspect actual alpha
+and render explicit states. A fixture label does not prove its intended state.
+Project example: docs/ART_MATERIAL_SESSION_CLOSEOUT_2026-09-08.md.
+
+See [editor and water lessons](layout-editor-and-water.md): the tray must render
+registered cutouts on transparency, never expose raw source-sheet backgrounds.
+Native tray review is separate from source-art, card and in-room acceptance.
+
+
+## Generated-package retention
+
+Apply [storage retention](storage-retention.md) when exporting or closing a batch.
+Record which binaries must remain replayable; preserve raw art, source snapshots,
+manifests, captures and failure explanations independently. Temporary isolated
+copies need an explicit lifecycle; the existing environment-export tool still
+leaves them behind until its cleanup behavior is implemented.

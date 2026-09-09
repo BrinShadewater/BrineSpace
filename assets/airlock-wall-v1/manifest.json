@@ -1,0 +1,68 @@
+{
+  "id": "airlock_suit_air_bank",
+  "stage": "cleaned_and_native_scale_reviewed",
+  "selected_source": "assets/airlock-wall-v1/suit-air-bank-source-v2.png",
+  "export": "assets/airlock-wall-v1/suit-air-bank.png",
+  "references": [
+    {
+      "path": "rooms/underwater/cold-store-v1/fridge-source-v2.png",
+      "sha256": "90f8f45aabcfc7b244ea312104562be71b2c631f8bb45dbc02cfe8d6e46d6892",
+      "role": "Matte revision: stepped shading and square construction"
+    },
+    {
+      "path": "rooms/underwater/airlock-v4/card-low-cutaway-v1.png",
+      "sha256": "395ac16eb5f00b185e53c8fb8600c83a60fe3a668bd73c5b6fe64719687322ae",
+      "role": "Existing equipment subject/scale only; older shine excluded"
+    },
+    {
+      "path": "assets/full-wall-props-refined-v2/maintenance-repair-wall.png",
+      "sha256": "bdfad16f9439ecf242e50109f100a39b88718f094003b29ca2adec9037f0d22f",
+      "role": "Continuous assembly and Engineering construction only; gloss and microtexture excluded"
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/airlock-wall-v1/suit-air-bank-source-v1.png",
+      "sha256": "eddc43c6d675e875848351b3c68c7aa177b38113b10f3d1415d88e6c148ff7a5",
+      "dimensions": [
+        1994,
+        789
+      ],
+      "mode": "RGB",
+      "selection": "rejected_materials"
+    },
+    {
+      "path": "assets/airlock-wall-v1/suit-air-bank-source-v2.png",
+      "sha256": "7f21b95585988895809e2b1acafe947b81437778c6b804fea1378bbf5f1b9461",
+      "dimensions": [
+        1994,
+        789
+      ],
+      "mode": "RGB",
+      "selection": "selected"
+    },
+    {
+      "path": "assets/airlock-wall-v1/suit-air-bank.png",
+      "sha256": "28691b9b76886bc52b4a68df296cc5e537213179cd1816b64238e56cb9f499bf",
+      "dimensions": [
+        1994,
+        789
+      ],
+      "mode": "RGBA",
+      "selection": "selected"
+    }
+  ],
+  "registration": "assets/airlock-wall-v1/suit-air-bank.json",
+  "review": "assets/airlock-wall-v1/material-scale-review.json",
+  "prompts": "assets/airlock-wall-v1/prompts.json",
+  "renderer": "tools/review_registered_wall_asset.gd",
+  "renderer_sha256": "d64c5f311642bd9d45ce62d514801932c99561d4b4e63182723c63ebf290984f",
+  "native_log": "output/airlock-wall-material-v2-final.log",
+  "source_guard_log": "output/airlock-wall-source-guard.log",
+  "integration": {
+    "station": false,
+    "cards": false,
+    "packaged": false
+  },
+  "owner_acceptance": null
+}

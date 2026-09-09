@@ -86,7 +86,7 @@ func _run() -> void:
 	game._unhandled_input(key(KEY_P))
 	check(game.paused, "Rebound pause key must drive the real game handler")
 	# This also runs in the exported executable, covering real paid construction
-	# and checkpoint restoration of the in-flight drone job outside the checkout.
+	# and checkpoint restoration of the architect's in-flight job outside the checkout.
 	game.hand.assign(["solar_array"])
 	game.selected_card_id = "solar_array"
 	game.selected_rotation = 2
@@ -96,7 +96,9 @@ func _run() -> void:
 	check(Save.write(game, game.run_save_path) == OK, "In-flight construction checkpoint must write")
 	check(Save.restore(game, Save.read(game.run_save_path)), "In-flight construction checkpoint must restore")
 	game.paused = false
-	game._update_wreck_clearance(30.0)
+	for frame in range(1200):
+		game._process(0.1)
+		if game.occupied.has(Vector2i(19,20)): break
 	game.paused = true
 	check(game.occupied.has(Vector2i(19,20)) and game.resources == paid_resources, "Restored construction must finish without charging twice")
 	game._advance_cycle()

@@ -11,6 +11,8 @@ const PIXEL_SCALE := 368.0 / 1032.0
 var texture: ImageTexture
 var painter: CanvasItem = self
 var embedded := false
+var flood_water := 0.0
+var flood_clock := 0.0
 var external_actor_texture: Texture2D
 var external_actors: Array = []
 var actor_library: Node2D
@@ -37,10 +39,20 @@ var shell_pass := 0 # 0: complete preview, 1: shell only, 2: props/crew only
 func pixel_to_world(p: Vector2) -> Vector2:
 	return (p - SOURCE_REGION.position) * PIXEL_SCALE + INTERIOR.position
 
-func _ready() -> void:
+static var shared_source_textures: Dictionary = {}
+
+static func load_source_texture(path: String) -> ImageTexture:
+	var modified := FileAccess.get_modified_time(path)
+	var cached: Dictionary = shared_source_textures.get(path,{})
+	if cached.get("modified",-1) == modified: return cached.texture
 	var img := Image.new()
-	assert(img.load(SOURCE) == OK, "Missing whole-room visual master")
-	texture = ImageTexture.create_from_image(img)
+	assert(img.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) == OK, "Missing whole-room visual master: "+path)
+	var result := ImageTexture.create_from_image(img)
+	shared_source_textures[path] = {"modified":modified,"texture":result}
+	return result
+
+func _ready() -> void:
+	texture = load_source_texture(SOURCE)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	actor_library = ActorLibrary.new()
 	if embedded:
@@ -199,16 +211,12 @@ func draw_cap(rect: Rect2) -> void:
 	painter.draw_line(top.position,top.position+Vector2(top.size.x,0),Color("fff1d5"),0.7)
 
 func draw_actor() -> void:
-	var shadow := PackedVector2Array()
-	for i in range(24):
-		var angle := float(i)/24.0*TAU
-		shadow.append(actor+Vector2(cos(angle)*6,sin(angle)*2.4))
-	painter.draw_colored_polygon(shadow,Color(0,0,0,0.28))
+	preload("res://scripts/flood_visuals.gd").draw_crew_shadow(painter,actor,flood_water)
 	if external_actor_texture != null:
 		if external_actor_texture.get_meta("major_bill_v2", false) or external_actor_texture.get_meta("crew_frame_92", false):
 			var pixel_scale := 65.28 / 74.0
 			var pivot: Vector2 = external_actor_texture.get_meta("crew_pivot", Vector2(46, 86))
-			painter.draw_texture_rect(external_actor_texture, Rect2(actor - pivot * pixel_scale, external_actor_texture.get_size() * pixel_scale), false)
+			preload("res://scripts/flood_visuals.gd").draw_crew(painter,external_actor_texture,Rect2(actor-pivot*pixel_scale,external_actor_texture.get_size()*pixel_scale),actor,flood_water,flood_clock)
 			return
 		# Source foot baseline is y68, not the padded crop bottom at y74.
 		# Keep source pixel scale but align that baseline with ground/depth/shadow.
@@ -231,12 +239,15 @@ func draw_registered_prop(prop: Dictionary) -> void:
 var retain_shell_queues := not OS.get_cmdline_user_args().has("--rebuild-shell-queues")
 var shell_queues := {}
 var shell_queue_builds := 0
+func draw_floor_overlays(_center: Vector2) -> void:
+	pass
+
 func draw_room_world(include_floor := true) -> void:
 	# Wall assembly is room-space data: zoom changes its draw transform only.
 	# Keep the complete original sorted queue to preserve equal-depth ordering.
 	var shell_key: Array = []
 	if retain_shell_queues and shell_pass==1 and not show_actor and external_actors.is_empty() and not debug and not include_floor:
-		shell_key = [layout,edges,props]
+		shell_key = [layout,edges,props,get_meta("raised_north_visible",false)]
 		if shell_queues.has(shell_key):
 			for item in shell_queues[shell_key]:
 				if item.kind=="wall":
@@ -250,11 +261,13 @@ func draw_room_world(include_floor := true) -> void:
 		for room in layout:
 			var center := Vector2(room.cell)*Geometry.CELL
 			draw_room_floor(center)
+			draw_floor_overlays(center)
 	var queue: Array = []
 	for prop in props:
 		queue.append({"kind":"prop","sort_y":prop.sort_y,"prop":prop})
 	if shell_pass != 2:
 		for edge in edges:
+			if get_meta("raised_north_visible",false) and edge.horizontal and is_equal_approx(edge.center.y,-192.0): continue
 			for rect in Geometry.wall_rects(edge):
 				queue.append({"kind":"wall","sort_y":rect.end.y,"rect":rect,"horizontal":edge.horizontal})
 			for rect in Geometry.jamb_rects(edge):
@@ -269,9 +282,9 @@ func draw_room_world(include_floor := true) -> void:
 					var rect := Rect2(corner-Vector2.ONE*8,Vector2.ONE*16)
 					queue.append({"kind":"cap","sort_y":rect.end.y+0.02,"rect":rect})
 	if show_actor:
-		queue.append({"kind":"actor","sort_y":actor.y})
+		queue.append({"kind":"actor","sort_y":actor.y+(float(external_actor_texture.get_meta("crew_depth_offset",0)) if external_actor_texture!=null else 0.0)})
 	for member in external_actors:
-		queue.append({"kind":"crew","sort_y":member.position.y,"member":member})
+		queue.append({"kind":"crew","sort_y":member.position.y+(float(member.texture.get_meta("crew_depth_offset",0)) if member.texture!=null else 0.0),"member":member})
 	queue.sort_custom(func(a: Dictionary,b: Dictionary)->bool: return float(a.sort_y)<float(b.sort_y))
 	if not shell_key.is_empty() and shell_queues.size()<32:
 		shell_queues[shell_key.duplicate(true)] = queue.duplicate(true)
@@ -297,7 +310,13 @@ func draw_room_world(include_floor := true) -> void:
 				preload("res://rooms/whole-room/decoration_props.gd").wall(self,item.rect,item.horizontal)
 			"cap": draw_cap(item.rect)
 			"prop":
-				draw_registered_prop(item.prop)
+				preload("res://scripts/room_layout_store.gd").draw_flip(self,painter,item.prop,view_origin,view_scale)
+				if not preload("res://scripts/room_layout_store.gd").surface_positions(self).get("hidden/"+str(item.prop.id),false):
+					var artwork: Dictionary=item.prop.duplicate()
+					artwork.id=artwork.get("copy_source",artwork.id)
+					if artwork.get("library_asset",false): preload("res://scripts/room_asset_library.gd").draw(self,artwork)
+					else: draw_registered_prop(artwork)
+				painter.draw_set_transform(view_origin,0,Vector2.ONE*view_scale)
 	if debug:
 		for prop in props:
 			painter.draw_rect(prop.rect,Color("edaf66"),false,0.7)

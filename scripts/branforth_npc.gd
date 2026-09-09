@@ -6,7 +6,7 @@ func _init() -> void:
 	decision_rng.randomize()
 	spawn_offset = Vector2(-48, 32)
 	needs = {"hunger": 20.0, "fatigue": 35.0, "curiosity": 25.0, "maintenance": 80.0}
-	service_preferences["maintenance"] = ["maintenance_bay", "reactor", "battery_array", "ore_refinery", "life_support"]
+	service_preferences["maintenance"] = ["cold_store", "maintenance_bay", "reactor", "battery_array", "ore_refinery", "life_support", "pressure_control", "listening_post"]
 
 func choose_goal(main) -> void:
 	super.choose_goal(main)
@@ -14,6 +14,7 @@ func choose_goal(main) -> void:
 
 func arrive() -> void:
 	super.arrive()
+	if begin_room_activity(): return
 	if goal == "maintenance":
 		activity = "servicing equipment"
 	elif goal == "curiosity":

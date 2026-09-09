@@ -1,0 +1,106 @@
+{
+  "asset_id": "brine-corner-service-nw",
+  "department": "BRINE / Core",
+  "condition": "Maintained; quiet matte ceramic and subdued glass",
+  "attachment_class": "northwest corner fitted furniture",
+  "functional_bays": [
+    "Aquamarine circulation channel",
+    "Sealed filter cassettes",
+    "Recessed water-quality display",
+    "Cartridge storage and inspection surface"
+  ],
+  "runtime_behavior": "Decorative service furniture; no new simulation behavior",
+  "camera_and_facing": "Axial overhead NW corner; north arm faces south, west arm faces east",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/rooms/underwater/brine-core/source-v1.png",
+      "sha256": "a6acb29e8b095e802982e30861f46b72227fb3db87d351847f0b850d23b9846b",
+      "role": "BRINE pearl ceramic, aquamarine glass and camera"
+    }
+  ],
+  "source_path": "assets/brine-corner-service-v1/source.png",
+  "source_sha256": "455f0c89258914d666c42c39efb26b660850470ac7ab60f4110438cf7c67dcdf",
+  "export_path": "assets/brine-corner-service-v1/asset.png",
+  "export_sha256": "c16208d2fe35bd6464270035535cdfa4fd55346528d9cb8fba6eec156878a240",
+  "native_canvas_px": [
+    1254,
+    1254
+  ],
+  "proposed_display_width_world": 128.0,
+  "proposed_ground_footprint_world": [
+    128,
+    118.08029878618115
+  ],
+  "placement_exclusions": [
+    "North and west doors",
+    "Central chamber",
+    "Existing peripheral furniture"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native pearl ceramic and aquamarine match the BRINE chamber; modest peripheral detail."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/brine-corner-service-2026-09-08/room.png",
+      "findings": [
+        "128-unit wide L remains peripheral to the central chamber."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Native registered export reviewed; exterior and inner notch transparent, ceramic body retained."
+      ],
+      "probes": {
+        "outside": {
+          "point": [
+            0,
+            0
+          ],
+          "alpha": 0
+        },
+        "inner_notch": {
+          "point": [
+            800,
+            800
+          ],
+          "alpha": 0
+        },
+        "ceramic_body": {
+          "point": [
+            200,
+            600
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "studio_library",
+      "evidence": "output/brine-corner-service-2026-09-08/review-final.log",
+      "findings": [
+        "BRINE Room Default tray entry and static NW prop/door clearance pass.",
+        "Preview only; existing personal layouts untouched. Conservative rectangular collision bound; no occupied route acceptance."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 118.08029878618115,
+  "registration_path": "assets/brine-corner-service-v1/registration.json",
+  "registration_sha256": "141ef1e872eca30d32a1f7fb29487571191f92ef7d2288576f6239c7db0dec19",
+  "prompt_path": "assets/brine-corner-service-v1/source.prompt.txt",
+  "prompt_sha256": "7bfac559c29ca13f20e79fcf269af4f31946a8971fe7d0d339896ab412e3a7f5",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

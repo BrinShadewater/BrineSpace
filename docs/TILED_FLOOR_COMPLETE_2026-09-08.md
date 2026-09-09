@@ -1,0 +1,9 @@
+# Complete tiled-floor catalog: September 8, 2026
+
+Observation Room, Salvage Workshop, Galley and Cold Store are now in Layout Studio with their current view paths and room asset keys. All 47 profiled room identities enable tiled floor editing. Their existing department materials remain the defaults; no raster art was created or altered.
+
+Native final-four validation passed 16 material comparisons, visible floor changes for each room, undo/redo, save/reload and reset. All four furnished captures were inspected. The comprehensive editor regression suite passed again with the new 47-entry catalog. Evidence: output/tiled-floor-final-four.
+
+A broad composition dependency audit checked 41 existing profiles and reported four pre-existing stale manifest hashes (Quarantine, Life Support, Pressure Control and Tidal Condenser). It found no missing or undeclared textures. These historical composition ledgers were not rewritten as part of the floor rollout; the package source manifest independently hashes its frozen files. See composition-audit.json for exact scope. This audit does not establish new furnishing acceptance.
+
+Windows package: output/tiled-floor-complete-20260908/build/BrineSpace.exe with its adjacent BrineSpace.pck. Godot import and export completed without error lines. Seven exported checks passed with clean exits and no script/error lines: catalog floor painting/persistence, final four rooms, original floor tools, connected station/collision, general editor workflow, menu/save recovery, and music restart. Package hashes remained unchanged across checks. The snapshot records 8,767 input files; build fixtures and export configuration are generated in the frozen source folder. Subsequent checkout edits, including the updated test catalog count and descriptive ledger, are separate from the snapshot. The executable catalog itself contains all 47 entries.

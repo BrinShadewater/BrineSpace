@@ -1,0 +1,54 @@
+{
+  "asset_id": "crew-utility-wall",
+  "department": "Crew / habitation",
+  "condition": "maintained",
+  "attachment_class": "low continuous cabinet against sealed north wall",
+  "camera_and_facing": "overhead; backing top, handles and washer controls bottom",
+  "references": [],
+  "source_path": "assets/crew-utility-wall-v1/source-v2.png",
+  "source_sha256": "2c900d7e08ce3b0da97da99955d72cb2878545b89aca3487ab527e59cb57373f",
+  "export_path": "assets/crew-utility-wall-v1/crew-utility-wall.png",
+  "export_sha256": "d45f3e27fc167b2e652034ab2b43787a1343256e021c766db2c3e0bf532f5e8b",
+  "native_canvas_px": [
+    1983,
+    793
+  ],
+  "proposed_display_width_world": 328,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Requires uninterrupted north wall; collision and routes not established."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "Matte putty/gray-green cabinets and burgundy fabric; dark washer lid without reflection streaks."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/crew-utility-wall-review.png",
+      "findings": [
+        "328-unit width reviewed beside furnished room and crew; approximately70 units tall.",
+        "V2 replaces upright drawer stacks with broad overhead tops and shallow front lips.",
+        "Washer, dryer vents, folded clothing and linen cubbies remain distinct at scale."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "V2 RGB checkerboard excluded through source-specific neutral110/spread22 registration; one polygon.",
+        "Light/dark native review shows no visible exterior checkerboard; pale interiors retained."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Specify broad overhead tops and shallow operator lips for storage rather than stacked drawer faces.",
+    "Directional controls and projection are separate checks."
+  ]
+}

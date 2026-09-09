@@ -6,7 +6,7 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 func _ready() -> void:
 	super._ready()
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/clone_lab-source-v1.png"))==OK)
+	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/material-polish-v2/clone-equipment.png"))==OK)
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"clone_vessel","rect":Rect2(-148,-118,64,65),"pivot":Vector2(338,550),"width":214.0,"outline":[Vector2(316,101),Vector2(361,101),Vector2(393,114),Vector2(416,137),Vector2(430,167),Vector2(430,196),Vector2(421,213),Vector2(421,365),Vector2(437,383),Vector2(445,412),Vector2(445,519),Vector2(428,539),Vector2(402,550),Vector2(272,550),Vector2(246,539),Vector2(233,520),Vector2(233,412),Vector2(241,384),Vector2(253,365),Vector2(254,213),Vector2(246,197),Vector2(249,157),Vector2(266,130),Vector2(289,113)]},
@@ -25,13 +25,9 @@ func rebuild() -> void:
 	if dressing!=null: dressing.place()
 
 func draw_room_floor(center: Vector2) -> void:
-	RoomFloor.draw_floor(painter,center,Color("a9b4b2"),Color(0.20,0.32,0.32,0.13),2,"sealed")
-	RoomFloor.draw_dressing(painter,center,edges,"sealed")
+	RoomFloor.draw_profile_floor(self,painter,center,Color("a9b4b2"),Color(0.20,0.32,0.32,0.13),2,"sealed")
+	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
 	if dressing!=null: dressing.floor()
-	for prop in props:
-		if prop.registration.get("dressing",false): continue
-		var at:=Vector2(prop.rect.get_center().x,prop.rect.end.y+8)
-		painter.draw_line(at-Vector2(24,0),at+Vector2(24,0),Color(0.31,0.52,0.52,0.28),1)
 
 func effect_marks(prop: Dictionary,time: float) -> Array:
 	var marks: Array=[]
@@ -65,3 +61,18 @@ func draw_registered_prop(prop: Dictionary) -> void:
 
 func layout_caption() -> String:
 	return "CLONE LAB / south-facing equipment / %d degrees"%(quarter*90)
+
+# Use this room's repainted structural material, with the existing low hull geometry.
+func draw_wall(rect: Rect2, horizontal: bool) -> void:
+	var top := Rect2(rect.position-Vector2(0,3),rect.size)
+	painter.draw_rect(Rect2(top.position+Vector2(0,4),top.size),Color("202d32"))
+	var span := rect.size.x if horizontal else rect.size.y
+	var cursor := 0.0
+	while cursor<span:
+		var length := minf(48,span-cursor)
+		var target := Rect2(top.position+Vector2(cursor,0),Vector2(length,top.size.y)) if horizontal else Rect2(top.position+Vector2(0,cursor),Vector2(top.size.x,length))
+		painter.draw_texture_rect_region(life_texture,target,Rect2(94,49,123,39) if horizontal else Rect2(40,98,36,114))
+		cursor+=length
+
+func draw_cap(rect: Rect2) -> void:
+	painter.draw_texture_rect_region(life_texture,Rect2(rect.position-Vector2(0,3),rect.size),Rect2(39,45,43,43))

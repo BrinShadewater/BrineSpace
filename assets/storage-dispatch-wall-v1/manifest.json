@@ -1,0 +1,24 @@
+{
+  "stage": "standalone_agent_reviewed",
+  "owner_acceptance": null,
+  "assets": [
+    "wall-review.json",
+    "dolly-review.json"
+  ],
+  "rejected_sources": [
+    {
+      "path": "dolly-source-v1.png",
+      "reason": "Bright case edge diamonds and reflective yellow bumper"
+    }
+  ],
+  "sources": {
+    "dolly-source-v1.png": "b71f24cc3cd192c0432c46f0d80aec7ff648eda8565f6747dad3d0253e44949a",
+    "dolly-source-v2.png": "4d6d5b52839299f9d478c9c3162c11cb0c85d740701ba1a49db8ed060ecbee35",
+    "wall-source-v1.png": "c5d46d47dacc637ed73f29889770b7d9a5749e7e41504ba89def3da82fb93eba"
+  },
+  "prompts": [
+    "wall.prompt.txt",
+    "dolly-v1.prompt.txt",
+    "dolly-v2.prompt.txt"
+  ]
+}

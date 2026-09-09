@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-bio-culture-wall",
+  "department": "Biology",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Quiet warm cream casing, desaturated olive worktop edges and muted teal instrument accents, charcoal nonreflective sample mats. Pale ceramic petri dishes stay pale but not shiny. Distinguish culture vessels, microscope, paper and top tray textures. No generic solid sage cabinet."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/bio-culture-wall.png",
+      "sha256": "a80c8e652306f62bf79178fb84396d0872e6f860276c7888304a1402eb132a56",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-bio-v1/bio-north.png",
+      "sha256": "885434b4bc4cc9e2f52f065449e3ba88691a8b4d803de8ad7998964e2e39d5e6",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/bio-culture-wall.png",
+  "source_sha256": "0aab76e3138159b5704599a9246e744405fd9726c4296dca4f441f77bfe35320",
+  "export_path": "assets/room-style-polish-v1/exports/bio-culture-wall.png",
+  "export_sha256": "ec7c6be787bfa900225c5dc43843225206aa1770a37ab8adc6d17564081e968b",
+  "native_canvas_px": [
+    2095,
+    750
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    93.38891713268936
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Quiet warm cream casing, desaturated olive worktop edges and muted teal instrument accents, charcoal nonreflective sample mats. Pale ceramic petri dishes stay pale but not shiny. Distinguish culture vessels, microscope, paper and top tray textures. No generic solid sage cabinet.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/bio-culture-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1045,
+            540
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Native default south-wall placement visually reviewed."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 93.38891713268936,
+  "registration_path": "rooms/full-wall-v1/registrations/side-bio-culture-wall-south.json",
+  "registration_sha256": "5df7e9da149910a6b0929c327be7ce314dc90a2e059909f07c38a4cbc7303e94",
+  "prompt_path": "assets/room-style-polish-v1/bio-culture-wall.prompt.txt",
+  "prompt_sha256": "5f293c8f2c056cc4eda37dd7008e314593e3557789b400cbccfbedde1e2356e3",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

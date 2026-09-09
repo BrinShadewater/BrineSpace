@@ -1,0 +1,68 @@
+{
+  "asset_id": "water-assay-east-wall-v1",
+  "department": "Science / water quality",
+  "condition": "Maintained",
+  "attachment_class": "East-wall low cabinet",
+  "functional_bays": [
+    "Six samples and ticket cassette",
+    "Filtration and analyzer preparation",
+    "Rinse and returns"
+  ],
+  "runtime_behavior": null,
+  "camera_and_facing": "Right/east backing; analyzer access, case latches, filtration latch and spout left/west",
+  "references": [
+    {
+      "path": "assets/water-assay-west-wall-v1/water-assay-west.png",
+      "sha256": "0fd07513231608eec65e456bbe6a9154c6b6e274c0cc7f1877111166797a569a",
+      "role": "Companion design, inventory and materials"
+    }
+  ],
+  "source_path": "assets/water-assay-east-wall-v1/source.png",
+  "source_sha256": "2049ae7c7467833b4cef3569901d3bd3c5a6868e76422817a8e0d957ec2aa336",
+  "export_path": "assets/water-assay-east-wall-v1/water-assay-east.png",
+  "export_sha256": "3a1878d540d6c8d973039be0ffeec0c3ae7d30a445400bd11e067812ded10b1b",
+  "native_canvas_px": [
+    1094,
+    1438
+  ],
+  "proposed_display_width_world": 77.61465201465201,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [],
+  "review": {
+    "materials": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Quiet cream/sage materials with subdued screen and painted spout."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Full328-unit height,77.61-unit visual width. Complete fixture inventory and inward access reviewed; visual depth differs from west82.30 and must remain aspect-correct."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass_agent_review",
+      "findings": [
+        "Neutral110 removes dark checkerboard; full-length light/dark columns and backed recesses inspected."
+      ]
+    },
+    "native_evidence": "output/water-assay-east-review.png",
+    "integration": "not installed"
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 328.0,
+  "registration_path": "assets/water-assay-east-wall-v1/registration.json",
+  "registration_sha256": "01e74d4e5d3a790b5c58aea48e8c2cd4a99e1fb9ee6092b799bab9709b68b768",
+  "prompt_path": "assets/water-assay-east-wall-v1/source.prompt.txt",
+  "prompt_sha256": "5d671b4f623c7a461fc29591ba166ee87cb9b5392813413db864fb17f805baaf",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

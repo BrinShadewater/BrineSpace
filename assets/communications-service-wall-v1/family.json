@@ -1,0 +1,39 @@
+{
+  "family": "communications-service",
+  "directions": {
+    "north": {
+      "export": "assets/communications-service-wall-v1/communications-service-wall.png",
+      "sha256": "d7856759990200dbad088b982f7f6d4765d4cd1048849576c264ae3a72785a2e",
+      "registration": "assets/communications-service-wall-v1/registration.json",
+      "review": "assets/communications-service-wall-v1/material-scale-review.json",
+      "inward": "south",
+      "world_width": 320
+    },
+    "south": {
+      "export": "assets/communications-service-south-wall-v1/communications-service-south.png",
+      "sha256": "1f5185194d2276472af69599421a7463f9f5476f98b2819c93eb9a832b796839",
+      "registration": "assets/communications-service-south-wall-v1/registration.json",
+      "review": "assets/communications-service-south-wall-v1/material-scale-review.json",
+      "inward": "north",
+      "world_width": 320
+    },
+    "west": {
+      "export": "assets/communications-service-west-wall-v1/communications-service-west.png",
+      "sha256": "345d41bc2e77ba2a9882985699d39fdeb750831aff7f0897b2c28932edf4b0e1",
+      "registration": "assets/communications-service-west-wall-v1/registration.json",
+      "review": "assets/communications-service-west-wall-v1/material-scale-review.json",
+      "inward": "east",
+      "world_height": 320
+    },
+    "east": {
+      "export": "assets/communications-service-east-wall-v1/communications-service-east.png",
+      "sha256": "80edc2c1d6eaf07161b1d4f2598e89e0c266e5241fc4af1f0a6d0f93374d9fa8",
+      "registration": "assets/communications-service-east-wall-v1/registration.json",
+      "review": "assets/communications-service-east-wall-v1/material-scale-review.json",
+      "inward": "west",
+      "world_height": 320
+    }
+  },
+  "runtime_placement_verified": false,
+  "missing_directions": []
+}

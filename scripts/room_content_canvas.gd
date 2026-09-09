@@ -1,6 +1,6 @@
 extends Node2D
 ## Per-room command retention preserves prop/crew depth order without a raster cache.
-const STATE_FIELDS = ["quarter","operating","machine_clock","actor_clock","actor","external_actor_texture","walking","actor_direction","drone_deployed","hatch_open","recovery","architect_pod","cycle_pose"]
+const STATE_FIELDS = ["flood_water","flood_clock","quarter","operating","machine_clock","actor_clock","actor","external_actor_texture","walking","actor_direction","drone_deployed","hatch_open","recovery","architect_pod","cycle_pose","carriers"]
 var draw_origin := Vector2.ZERO
 var draw_scale := 1.0
 var clip_region := Rect2(-100000,-100000,200000,200000)
@@ -9,6 +9,7 @@ var slots: Array = []
 var view_state := {}
 var static_state := {}
 var renderer
+var state_fields: Array[String] = []
 var profile_enabled := false
 var prepare_usec := 0
 var draw_usec := 0
@@ -30,7 +31,11 @@ func submit(view, queue: Array) -> void:
 	draw_usec = 0
 	var expanded: Array = []
 	for item in queue:
-		if item.kind == "prop" and view.has_method("retained_prop_passes"):
+		# Authored wall registrations own their drawing; inherited machinery passes
+		# address the older source atlas and cannot draw these replacement sections.
+		if item.kind == "prop" and (item.prop.get("library_asset",false) or item.prop.get("full_wall",false)):
+			expanded.append(item)
+		elif item.kind == "prop" and view.has_method("retained_prop_passes"):
 			for part in view.retained_prop_passes(item.prop):
 				var entry: Dictionary = item.duplicate()
 				entry.kind = "prop_pass"
@@ -47,15 +52,21 @@ func submit(view, queue: Array) -> void:
 				expanded.append(effect)
 		else: expanded.append(item)
 	queue = expanded
+	if renderer != view:
+		state_fields.clear()
+		for field in STATE_FIELDS:
+			if field in view: state_fields.append(field)
 	renderer = view
 	view_state = {}
-	for field in STATE_FIELDS:
-		if field in view: view_state[field] = view.get(field)
+	for field in state_fields: view_state[field] = view.get(field)
 	# Shared room views are reconfigured for other rooms before child draws run.
 	view_state = view_state.duplicate(true)
 	static_state = view_state.duplicate()
+	static_state.erase("flood_water")
+	static_state.erase("flood_clock")
 	static_state.erase("machine_clock")
 	static_state.erase("actor_clock")
+	static_state.erase("carriers")
 	static_state.erase("actor")
 	static_state.erase("external_actor_texture")
 	static_state.erase("walking")
@@ -96,6 +107,9 @@ func submit(view, queue: Array) -> void:
 			continue
 		var was_hidden := not slot.visible
 		slot.show()
+		if item.kind in ["prop","prop_base","prop_effects","prop_pass"]:
+			preload("res://scripts/flood_visuals.gd").prop_material(slot,item.prop,float(view_state.get("flood_water",0)),float(view_state.get("flood_clock",0)),draw_origin,draw_scale)
+		else: slot.material=null
 		if changed or transform_changed or slot.live or was_hidden:
 			slot.queue_redraw()
 
@@ -103,6 +117,7 @@ func submit(view, queue: Array) -> void:
 
 func paint(slot: DrawSlot) -> void:
 	var started := Time.get_ticks_usec() if profile_enabled else 0
+	if slot.item.has("prop") and slot.item.prop.get("layout_hidden",false): return
 	var saved := {}
 	for field in view_state:
 		saved[field] = renderer.get(field)
@@ -112,8 +127,14 @@ func paint(slot: DrawSlot) -> void:
 	var previous_texture: Texture2D = renderer.external_actor_texture
 	slot.draw_set_transform(draw_origin,0,Vector2.ONE*draw_scale)
 	renderer.painter = slot
+	if slot.item.kind in ["prop","prop_pass","prop_base","prop_effects"]:
+		preload("res://scripts/room_layout_store.gd").draw_flip(renderer,slot,slot.item.prop,draw_origin,draw_scale)
 	match slot.item.kind:
-		"prop": renderer.draw_registered_prop(slot.item.prop)
+		"prop":
+			var artwork: Dictionary=slot.item.prop.duplicate()
+			artwork.id=artwork.get("copy_source",artwork.id)
+			if artwork.get("library_asset",false): preload("res://scripts/room_asset_library.gd").draw(renderer,artwork)
+			else: renderer.draw_registered_prop(artwork)
 		"prop_pass": renderer.call(slot.item.method,slot.item.prop)
 		"prop_base": renderer.draw_prop_base(slot.item.prop)
 		"prop_effects": renderer.draw_prop_animation(slot.item.prop)

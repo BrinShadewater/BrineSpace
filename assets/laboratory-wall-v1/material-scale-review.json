@@ -1,0 +1,68 @@
+{
+  "asset_id": "laboratory-wall",
+  "department": "Science",
+  "condition": "maintained",
+  "attachment_class": "self-supporting continuous cabinet against sealed wall",
+  "camera_and_facing": "overhead cutaway; north backing, controls south into room",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Desktop/images (1).jpg",
+      "sha256": "413ce807d4ad34918d846c95eb29959ef646837b3707c1b778c86d9f5824a8e5",
+      "role": "owner subject reference: tactile laboratory analysis terminal"
+    },
+    {
+      "path": "C:/Users/Alex/Desktop/images.jpg",
+      "sha256": "3694850a07f85d207abaa3370edaeda6dc47f7f719c613e9fdbcb7d89846545d",
+      "role": "owner material and functional bay organization reference"
+    }
+  ],
+  "source_path": "assets/laboratory-wall-v1/source-v2.png",
+  "source_sha256": "fcaab1ae38ed9852d386515df61a8a0ccc2e5d8cb103cd4c1852dbf7ae90973b",
+  "export_path": "assets/laboratory-wall-v1/laboratory-wall.png",
+  "export_sha256": "bf8585d83a77d7acd7802b9e7bc0f47cfaa659f894e6b92289e2d76b6254a4d4",
+  "native_canvas_px": [
+    2121,
+    741
+  ],
+  "proposed_display_width_world": 328,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Requires uninterrupted sealed wall; do not cross doors.",
+    "Ground collision and other orientations not established."
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "V2 removes prominent chamber reflection; matte cabinet planes retained.",
+        "Cream science palette is intentionally lighter than operations olive."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_review_pass",
+      "evidence": "output/laboratory-wall-review.png",
+      "findings": [
+        "Reviewed at 328 world units, approximately 64 units visual height.",
+        "Distinct terminal, chamber, preparation and wash bays; fine controls simplify.",
+        "Command Center provides existing furnishing/crew scale only, not a placement proposal."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_review_pass",
+      "findings": [
+        "V2 raw source is RGB with opaque checkerboard, not alpha.",
+        "Read-only exterior-neutral registration at threshold 195; one polygon; original raster unchanged.",
+        "Godot RGBA export inspected over dark and light grounds; no visible checkerboard or exterior fringe."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Inspect mode again after each edit; a true-alpha input does not guarantee a true-alpha output.",
+    "Material correction and alpha repair require separate review."
+  ]
+}

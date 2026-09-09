@@ -1,0 +1,97 @@
+{
+  "asset_id": "covered-propagation-tray-v1",
+  "department": "Life Support / Hydroponics",
+  "condition": "Matte composite and rubber",
+  "attachment_class": "Portable tabletop tray",
+  "functional_bays": [
+    "Closed opaque lid",
+    "Three backed vent slots"
+  ],
+  "runtime_behavior": "Static closed artwork; contents unknown and no propagation simulation",
+  "camera_and_facing": "Near-top-down; latch south",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/botanical-seed-wall-v1/wall.png",
+      "sha256": "7b37a5ae9c880e162d2a97dd1a8ab4cd8d767bfdf0c3e9c18bd69fe216c80bfd",
+      "role": "Companion camera and matte composite"
+    }
+  ],
+  "source_path": "assets/covered-propagation-tray-v1/source-v2.png",
+  "source_sha256": "565a03c2d2743cb2a935ff9b2987bbf259bbef964bbafbcf271f87eb1ed2fcb2",
+  "export_path": "assets/covered-propagation-tray-v1/tray.png",
+  "export_sha256": "972e8051c23cfacfdf552bab8250584b4bae7ceccb8a796d0f59548509bd7bb9",
+  "native_canvas_px": [
+    1484,
+    1060
+  ],
+  "proposed_display_width_world": 28.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Sorting tray workspace",
+    "Table edge",
+    "Operator reach"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 removes continuous pale bevel lines and simplifies lid shading; terracotta tab remains a small matte accent."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/covered-propagation-tray-v1/tray-scale.png",
+      "findings": [
+        "28-unit native width inspected beside Hydroponics; small portable companion, actual support placement unverified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Neutral228 excludes V2 white exterior; internal backed vents remain opaque. Light/dark outline reviewed."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    },
+    "supported_group": {
+      "verdict": "agent_pass_static_support",
+      "evidence": "output/covered-propagation-tray-v1/group-scale.png",
+      "findings": [
+        "28-unit tray placed at81,17 on clear left worktop beside sorting tray at shared320-unit wall scale.",
+        "No visual overhang or overlap with sorting tray; native and2x reviewed.",
+        "Finger clearance, lifting animation, collision and runtime support attachment unverified."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 17.080459770114942,
+  "registration_path": "assets/covered-propagation-tray-v1/registration.json",
+  "registration_sha256": "43771247e0a541e58f0b0d17ea4334361d4d5ddd7ac142f1af78476c534cd634",
+  "prompt_path": "assets/covered-propagation-tray-v1/source-v2.prompt.txt",
+  "prompt_sha256": "72cacbfa2759bba3a68cad29c8868ac0f023fc57e43e3c9d3b11521d53815448",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "review_history": [
+    {
+      "source": "source-v1.png",
+      "reason": "Bright bevel outlines and glossy lid shading rejected"
+    }
+  ],
+  "evidence_hashes": {
+    "output/covered-propagation-tray.log": "ccf807e10ab97b704ff330e5fa3ffd08f2f07543b118eacd678771e1375daba9",
+    "output/covered-propagation-tray-v1/tray-scale.png": "caf200e9db1e8a117c6e6307bcdcfae604aef22db8bed146898587eb428c033d",
+    "output/seed-propagation-group.log": "40ae6c4fdd5da28d73c690a9db33a2644f83ace7f85344aff637905582955169",
+    "output/covered-propagation-tray-v1/group-scale.png": "2887ebac8041aabd3755e77044490260aa750312f30b751a1d1ed1a88f40b556",
+    "assets/covered-propagation-tray-v1/group.json": "a3c4d5a352b1de58829fa11be8b780b7e4af1903ef3b094249b4081eda3449a0"
+  }
+}

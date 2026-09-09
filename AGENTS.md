@@ -4,13 +4,15 @@ A Godot 4.6 passive roguelite station builder. `project.godot` sets
 `run/main_scene="res://scenes/title_screen.tscn"`, config name `BrineSpace`, a 1920×1080 design
 viewport and a 1600×900 default window.
 
-Read [`docs/DEVELOPMENT_NOTES.md`](docs/DEVELOPMENT_NOTES.md) before changing
-gameplay — it holds the north star, the current focus, and the known prototype
-limits. [`NOTICE.md`](NOTICE.md) governs rights.
+Start with [`docs/CURRENT_STATUS.md`](docs/CURRENT_STATUS.md) for accepted
+direction, the latest recorded acceptance and remaining work. Read the north star
+and relevant implementation notes in [`docs/DEVELOPMENT_NOTES.md`](docs/DEVELOPMENT_NOTES.md)
+before changing gameplay. [`NOTICE.md`](NOTICE.md) governs rights.
 
-For the consolidated September 6 checkpoint, unfinished acceptance and next
-priorities, start with [`docs/BRINESPACE_HANDOFF_2026-09-06.md`](docs/BRINESPACE_HANDOFF_2026-09-06.md).
-It is a dated snapshot; current code and later owner decisions supersede it.
+Dated handoffs and archived notes preserve evidence, not a current task list.
+Later owner decisions govern intended behavior; current code shows implementation,
+and dated test reports establish only the revision and scope they actually tested.
+Update CURRENT_STATUS.md at a meaningful change of direction or acceptance milestone.
 
 ## ⚠️ Clone this repo correctly or you will get a broken checkout
 
@@ -75,7 +77,7 @@ script.
 
 | Path | What it is |
 |---|---|
-| `project.godot`, `scenes/main.tscn` | Entry point |
+| `project.godot`, `scenes/title_screen.tscn` | Project entry point; `scenes/main.tscn` is gameplay |
 | `scripts/` | Game logic — `main`, `grid_canvas`, `room_database`, `orbit_manager`, `synergy_manager`, `meta_state` |
 | `rooms/` | Room definitions and art |
 | `Brine icons/` | Icon set, multiple sizes, with sprite-sheet sources |
@@ -96,3 +98,12 @@ a little haunted, never chirpy:
 > *"I have mapped thirty-seven ways to run out of oxygen. I recommend none of them."*
 
 If you write user-facing text, match that. Do not make BRINE friendly or helpful.
+
+## Run and validate relevant work
+
+Follow README.md's Run locally section: open project.godot with Godot 4.6
+(locally tested with 4.6.1), complete imports, and use F5 for the configured title
+scene. Choose tests or audit tools for the changed subsystem from tests/ and tools/;
+read their invocation and scope before running them. Do not equate a headless or
+manifest check with visual acceptance, and do not run unrelated full asset batches
+merely for a documentation change.

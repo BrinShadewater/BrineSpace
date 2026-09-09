@@ -4,11 +4,15 @@ var game
 var records: Array = []
 var failures := 0
 var measure_render := false
+var output_dir:="res://output/game-pass/baseline"
 func _init() -> void: call_deferred("run")
 func frame() -> void:
 	await process_frame
-	await RenderingServer.frame_post_draw
+	RenderingServer.force_draw()
 func run() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--label="): output_dir="res://output/game-pass/"+arg.trim_prefix("--label=")
+	DirAccess.make_dir_recursive_absolute(output_dir)
 	var prefix := "user://large_render_%d" % OS.get_process_id()
 	Preferences.save_path = prefix+".cfg"
 	game = load("res://scenes/main.tscn").instantiate()
@@ -56,7 +60,7 @@ func run() -> void:
 	game.tick_timer.stop()
 	for action in ["construction","menu-open","menu-close","zoom-fit","zoom-close","save","load"]:
 		await interaction(action)
-	var path := "res://output/large-render-profile.json"
+	var path := output_dir+"/large-render-profile.json"
 	var file := FileAccess.open(path,FileAccess.WRITE)
 	file.store_string(JSON.stringify(records,"\t"))
 	file.close()
@@ -67,7 +71,7 @@ func run() -> void:
 func sample(label: String) -> void:
 	game._set_paused(false,false)
 	game.tick_timer.stop()
-	for i in range(90):
+	for i in range(30):
 		game._process(1.0/60.0)
 		await frame()
 	var timings: Array = []
@@ -80,10 +84,10 @@ func sample(label: String) -> void:
 	var start: int = Time.get_ticks_usec()
 	var rooms_before: int = game.placed_rooms.size()
 	var foot_before: Vector2 = game.bill_npc.foot
-	for i in range(180):
+	for i in range(90):
 		var sim_start := Time.get_ticks_usec()
 		game._process(1.0/60.0)
-		simulation_ms += (Time.get_ticks_usec()-sim_start)/180000.0
+		simulation_ms += (Time.get_ticks_usec()-sim_start)/90000.0
 		for drone in game.drone_fleet.drones.values():
 			if drone.phase != "docked":
 				moving_drone_frames += 1
@@ -92,16 +96,16 @@ func sample(label: String) -> void:
 		var now := Time.get_ticks_usec()
 		timings.append((now-start)/1000.0)
 		start = now
-		accumulate_stages(stages,180.0)
+		accumulate_stages(stages,90.0)
 		if measure_render:
-			render_cpu_ms += float(RenderingServer.call("viewport_get_measured_render_time_cpu",root.get_viewport_rid()))/180.0
-			render_gpu_ms += float(RenderingServer.call("viewport_get_measured_render_time_gpu",root.get_viewport_rid()))/180.0
-		calls += Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)/180.0
+			render_cpu_ms += float(RenderingServer.call("viewport_get_measured_render_time_cpu",root.get_viewport_rid()))/90.0
+			render_gpu_ms += float(RenderingServer.call("viewport_get_measured_render_time_gpu",root.get_viewport_rid()))/90.0
+		calls += Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)/90.0
 	var result := summarize(timings)
 	result.merge({"render_cpu_ms":render_cpu_ms if measure_render else null,"render_gpu_ms":render_gpu_ms if measure_render else null,"simulation_ms":simulation_ms,"stages_ms":stages,"scenario":label,"rooms_start":rooms_before,"rooms_end":game.placed_rooms.size(),"draw_calls":calls,"drone_active_frames":moving_drone_frames,"crew_displacement":game.bill_npc.foot.distance_to(foot_before)})
 	records.append(result)
 	print(JSON.stringify(result))
-	root.get_texture().get_image().save_png("res://output/large-render-"+label+".png")
+	root.get_texture().get_image().save_png(output_dir+"/large-render-"+label+".png")
 func summarize(timings: Array) -> Dictionary:
 	var mean := 0.0
 	for value in timings: mean += value/timings.size()

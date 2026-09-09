@@ -1,0 +1,105 @@
+{
+  "asset_id": "seed-sorting-west-section-v1",
+  "department": "Life Support / Hydroponics",
+  "condition": "Muted matte sage composite",
+  "attachment_class": "Short west-backed counter section",
+  "functional_bays": [
+    "Three packet organizer",
+    "Sorting tray with three seed groups and wooden scoop"
+  ],
+  "runtime_behavior": "Static art",
+  "camera_and_facing": "Near top-down, left backing, right drawer grips",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/botanical-seed-west-wall-v1/wall.png",
+      "sha256": "636b1c6d49ec27d09cd940fc7d1c76e3017e132d0b882feb7c9d1e9360143405",
+      "role": "Department finish and west-facing access"
+    }
+  ],
+  "source_path": "assets/seed-sorting-west-section-v1/source-v2.png",
+  "source_sha256": "89d6bab2e81657d905642917e62f24753f1da86685cb8458a57049bc4db5195e",
+  "export_path": "assets/seed-sorting-west-section-v1/wall.png",
+  "export_sha256": "7b4bc7362d0a578dce1bbc25ac72518d6beeb330d0d845e08f6e85852ecaeb7c",
+  "native_canvas_px": [
+    1024,
+    1536
+  ],
+  "proposed_display_width_world": 55.24400564174894,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Door approaches",
+    "Existing crop and nutrient furniture",
+    "Operator space"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "V2 flattens seed catches and preserves quiet cabinet finish."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/seed-sorting-west-section-v1/wall-final.png",
+      "findings": [
+        "55.24 by136 actual; exceeds45-unit width brief. Retain actual size for host review.",
+        "Purpose-authored sorting section omits tins and cassette; companion storage section outstanding."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "White exterior neutral228 registration inspected on light/dark."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    },
+    "host_study": {
+      "verdict": "layout_rejected",
+      "evidence": "output/seed-sections-host-study.png",
+      "report": "output/seed-sections-host-study.json",
+      "findings": [
+        "96-unit section gap clears72-unit door bay with12-unit axial margins.",
+        "Retained crop, nutrient and harvest furniture still intersect sections; no runtime fit acceptance."
+      ]
+    },
+    "relocation_study": {
+      "verdict": "agent_pass_static_layout",
+      "evidence": "output/seed-sections-relocation-study.png",
+      "report": "output/seed-sections-relocation-study.json",
+      "findings": [
+        "All six original furniture IDs retained; seed rectangles and moved visual bounds have no measured overlaps.",
+        "Crops move68 right; nutrients and harvest stand96 right. West opening clear; other walls closed.",
+        "Crew access, service connections and runtime installation unverified."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 136.0,
+  "registration_path": "assets/seed-sorting-west-section-v1/registration.json",
+  "registration_sha256": "8749798cde9ece371f497858e34f8cb80303ff9db6e1cf048776119cf83c0515",
+  "prompt_path": "assets/seed-sorting-west-section-v1/source-v2.prompt.txt",
+  "prompt_sha256": "d7378056c0436763cd8cda2dff38758a1772ec31d2c18eda5300dababaf980a5",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/seed-sorting-west-section-final.log": "c50bf62c93e290db73be15c3ac1837c097d2bd373f77f223a3afe332955e8eee",
+    "output/seed-sorting-west-section-v1/wall-final.png": "25260039dba50332987808a68ef7508a48b78332fe9ab149dcb72f37f114ff53",
+    "output/seed-sections-host-study.png": "a1dbcddf297b060d0d69d18950644aa35184f70734fc68cfb165fbf9a03d5061",
+    "output/seed-sections-host-study.json": "47a742c7b2844249cba578e5c457837a5723f8bdc8c00143ce365b9c910e9ff8",
+    "output/seed-sections-host-study.log": "2c47be60b50b3c274dc119c02fac688e5c4631e8f30bdf303b741940fd7bfd2d",
+    "output/seed-sections-relocation-study.png": "b6669623f498ad39a81722eab424cece725b8450d25573eba69a63d2a2a7049d",
+    "output/seed-sections-relocation-study.json": "c1399a48aaedfc7f6fcfce2f2ec93845111c0b17ab6812ef04608c5c342ee432",
+    "output/seed-sections-relocation-study.log": "1db506102f9a13e76ab15c0d336a418806ab3bcdbf559ed0d7b7a1ceccf6c5c9"
+  }
+}

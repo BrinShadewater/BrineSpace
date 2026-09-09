@@ -5,6 +5,66 @@ const RoomDatabaseScript := preload("res://scripts/room_database.gd")
 
 const SYNERGIES := [
 	{
+		"id":"chilled_air_recovery", "name":"Chilled Air Recovery", "rooms":["cold_store","life_support"],
+		"bonus":{"oxygen":1}, "effect":"+1 Oxygen per functioning cycle from recovered cold air.",
+		"message":"The cold return air is clean enough to breathe. This was not true of everything in storage.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"flow", "fx_color":"75ABB3"
+	},
+	{
+		"id":"shared_table", "name":"Shared Table", "rooms":["galley","crew_lounge"],
+		"bonus":{"food":1}, "effect":"+1 Food per functioning cycle from coordinated meal service.",
+		"message":"The portions reach the table before they go cold. Attendance remains below the original estimate.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"care", "fx_color":"BFA76C"
+	},
+	{
+		"id":"field_notes", "name":"Field Notes", "rooms":["observation_room","data_archive"],
+		"bonus":{"data":1}, "effect":"+1 Data per functioning cycle from indexed ocean observations.",
+		"message":"The shapes beyond the glass now have catalogue entries. Some of them have changed since filing.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"signal", "fx_color":"7BA7B9"
+	},
+	{
+		"id":"cold_chain", "name":"Cold Chain", "rooms":["cold_store","galley"],
+		"bonus":{"food":1}, "effect":"+1 Food per functioning cycle from organized chilled provisions.",
+		"message":"The ingredients arrive cold and in the correct order. A modest triumph over entropy.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"logistics", "fx_color":"75ABB3"
+	},
+	{
+		"id":"fresh_provisions", "name":"Fresh Provisions", "rooms":["galley","hydroponics_bay"],
+		"bonus":{"food":1}, "effect":"+1 Food per functioning cycle from fresh kitchen provisions.",
+		"message":"The distance between harvest and dinner has decreased. So have the complaints.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"flow", "fx_color":"BFA76C"
+	},
+	{
+		"id":"parts_reclamation", "name":"Parts Reclamation", "rooms":["salvage_workshop","salvage_drone_bay"],
+		"bonus":{"metal":1}, "effect":"+1 Metal per functioning cycle from sorted salvage offcuts.",
+		"message":"The discarded fittings still fit something. I have revised the disposal policy.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"logistics", "fx_color":"B68D55"
+	},
+	{
+		"id":"warm_fermentation", "name":"Warm Fermentation", "rooms":["heat_recovery","biomass_digester"],
+		"bonus":{"water":1}, "effect":"+1 Water per functioning cycle.",
+		"message":"The warm return line has condensed something useful. I checked twice.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"flow", "fx_color":"84938A"
+	},
+	{
+		"id":"cultivated_current", "name":"Cultivated Current", "rooms":["current_turbine","hydroponics_bay"],
+		"bonus":{"biomass":1}, "effect":"+1 Biomass per functioning cycle.",
+		"message":"The circulation has improved the yield. Something in the tanks approves.",
+		"unlock_room_id":"biomass_digester", "stabilize_cycles":3, "fx_profile":"flow", "fx_color":"729278"
+	},
+	{
+		"id":"industrial_heat_capture", "name":"Industrial Heat Capture", "rooms":["reactor","mining_drone_bay"],
+		"bonus":{"metal":1}, "effect":"+1 Metal per functioning cycle.",
+		"message":"The drill housings are warm. That energy still belongs to us.",
+		"unlock_room_id":"heat_recovery", "stabilize_cycles":3, "fx_profile":"power", "fx_color":"A48560"
+	},
+	{
+		"id":"fermentation_feed", "name":"Fermentation Feed", "rooms":["biomass_digester","hydroponics_bay"],
+		"bonus":{"power":1}, "effect":"+1 Power per functioning cycle.",
+		"message":"The trimmings have found a second occupation.",
+		"terminal_reward":{"research":3}, "stabilize_cycles":3, "fx_profile":"power", "fx_color":"87946D"
+	},
+	{
 		"id": "inertial_containment",
 		"name": "Inertial Containment",
 		"rooms": [

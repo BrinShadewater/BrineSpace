@@ -1,5 +1,6 @@
 extends RefCounted
 class_name RunManager
+const TIME_SPEEDS := [1.0, 2.0, 4.0]
 
 const RoomDatabaseScript := preload("res://scripts/room_database.gd")
 
@@ -47,7 +48,7 @@ const DOCTRINES := {
 	}
 }
 
-const ESSENTIAL_BLUEPRINTS := ["solar_array", "mining_drone_bay", "construction_drone_bay", "corridor", "corner", "tee_corridor", "storage_bay", "hydroponics_bay", "life_support"]
+const ESSENTIAL_BLUEPRINTS := ["current_turbine", "solar_array", "mining_drone_bay", "construction_drone_bay", "corridor", "corner", "tee_corridor", "storage_bay", "hydroponics_bay", "life_support"]
 
 const PAIR_DIRECTIVE_VARIANTS := [
 	{

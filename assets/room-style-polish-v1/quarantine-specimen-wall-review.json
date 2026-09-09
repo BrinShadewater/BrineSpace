@@ -1,0 +1,109 @@
+{
+  "asset_id": "polished-south-quarantine-specimen-wall",
+  "department": "Containment",
+  "condition": "Maintained functional equipment; no generalized grime",
+  "attachment_class": "south-wall fitted bank",
+  "functional_bays": [
+    "Dark muted charcoal steel and warm grey sealed panels with sparse burgundy safety tabs, smoked subdued purple specimen windows. Restrained lab-clean equipment, no rust or grime. Keep quarantine bay partitions, sealed glass rims and sample shapes. No large green cabinet."
+  ],
+  "runtime_behavior": "Existing furnishing behavior retained",
+  "camera_and_facing": "Overhead rear view; backing at image bottom, operating side north",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/south-wall-facing-v3/quarantine-specimen-wall.png",
+      "sha256": "8372978eb4bb57a0328c8f12daaa565600d136ffcfbbff92392fc9ff32da25e0",
+      "role": "camera, silhouette and functional layout"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/material-polish-v1/tidal-south.png",
+      "sha256": "7a86d75f6ba13653cbd23eb8f606242ff99620fdbfc4595d8a01e398bb85e24b",
+      "role": "owner-approved material quality; not universal palette"
+    },
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/wall-room-rollout-v1/quarantine-specimen-wall.png",
+      "sha256": "da85670d13139faf13bf8dfa4383c300c0eed33fe7d3c3304694417ed0f2ac5b",
+      "role": "department materials and function; not camera"
+    }
+  ],
+  "source_path": "assets/room-style-polish-v1/quarantine-specimen-wall.png",
+  "source_sha256": "cc48e74ebeee545b43aaad9ad8450a47440da3b0c3e39d244fcea02b112432c4",
+  "export_path": "assets/room-style-polish-v1/exports/quarantine-specimen-wall.png",
+  "export_sha256": "e812f72f30e051794f7ba6e91505bf855ac12f60c2a63fa5e1cc5f5593e7e8c6",
+  "native_canvas_px": [
+    2095,
+    750
+  ],
+  "proposed_display_width_world": 344,
+  "proposed_ground_footprint_world": [
+    344,
+    80.92039034411916
+  ],
+  "placement_exclusions": [
+    "Room doors and existing furnishings; no placement frame or owner layout changes"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "pass",
+      "findings": [
+        "Native comparison reviewed against stable Tidal finish and departmental north source.",
+        "Dark muted charcoal steel and warm grey sealed panels with sparse burgundy safety tabs, smoked subdued purple specimen windows. Restrained lab-clean equipment, no rust or grime. Keep quarantine bay partitions, sealed glass rims and sample shapes. No large green cabinet.",
+        "Construction detail added through recessed service panels; no new machinery or geometry enlargement."
+      ]
+    },
+    "native_scale": {
+      "verdict": "pass",
+      "evidence": "output/room-style-polish-2026-09-08/comparisons/quarantine-specimen-wall.png",
+      "findings": [
+        "Both revisions drawn at 344 world units beside Bill at runtime scale.",
+        "Native comparison is static; no new route acceptance claimed."
+      ]
+    },
+    "alpha": {
+      "verdict": "pass",
+      "findings": [
+        "Source raster unchanged by registration; native polygon export removes neutral exterior.",
+        "All four export corners transparent; named rear-body probe retained."
+      ],
+      "probes": {
+        "corners": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "retained_rear_body": {
+          "point": [
+            1039,
+            555
+          ],
+          "alpha": 255
+        }
+      }
+    },
+    "integration": {
+      "stage": "runtime_registered",
+      "evidence": "output/room-style-polish-2026-09-08/catalog/runtime.json",
+      "findings": [
+        "Selectable tray view; current default chooses another mounting wall."
+      ]
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [
+    "Generic cabinet colors weaken department identity even when facing is correct.",
+    "Pair unchanged camera/geometry with a separate material-quality master and department reference."
+  ],
+  "proposed_display_height_world": 80.92039034411916,
+  "registration_path": "rooms/full-wall-v1/registrations/side-quarantine-specimen-wall-south.json",
+  "registration_sha256": "0b5ac6199f04571fa20f8a2a26e743c3c1864d6844546a924f51fa77dc08fbf6",
+  "prompt_path": "assets/room-style-polish-v1/quarantine-specimen-wall.prompt.txt",
+  "prompt_sha256": "6feb63085cc6c5b5f234f3a559d7c2a5817ebeec0371c708d84f0e06c0094217",
+  "metadata_checks": {
+    "source_mode": "RGB",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "provenance and dimensions only; visual review pending"
+  }
+}

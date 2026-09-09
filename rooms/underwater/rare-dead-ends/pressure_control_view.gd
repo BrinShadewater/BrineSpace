@@ -4,7 +4,7 @@ var flush_bounds: Rect2
 func _ready() -> void:
 	super._ready()
 	var flush_image:=Image.new()
-	assert(flush_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/rare-dead-ends/pressure-u-flush-clean-v1.png"))==OK)
+	assert(flush_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/playtest-visual-v1/pressure-source.png"))==OK)
 	flush_texture=ImageTexture.create_from_image(flush_image)
 	flush_bounds=Rect2(flush_image.get_used_rect())
 	life_items=life_items.filter(func(item):return not item.get("dressing",false))
@@ -49,13 +49,25 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	if not prop.has("flush_region"):
 		super.draw_registered_prop(prop)
 		return
-	var region: Rect2=prop.flush_region
-	painter.draw_texture_rect_region(flush_texture,Rect2(Vector2(-184,-196)+region.position*368,region.size*368),Rect2(flush_bounds.position+region.position*flush_bounds.size,region.size*flush_bounds.size))
+	# Explicit equipment-only regions exclude the rejected generated checkerboard.
+	var source: Rect2
+	var target: Rect2
+	match str(prop.id):
+		"flush_back":
+			source=Rect2(70,12,1114,600)
+			target=Rect2(-174,-196,348,178)
+		"flush_left":
+			source=Rect2(70,612,256,637)
+			target=Rect2(-174,-18,80,190)
+		_:
+			source=Rect2(928,612,256,637)
+			target=Rect2(94,-18,80,190)
+	painter.draw_texture_rect_region(flush_texture,target,source)
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	if prop.has("flush_region"):
-		var region: Rect2=prop.flush_region
-		return Rect2(Vector2(-184,-196)+region.position*368,region.size*368)
+		return Rect2(-174,-196,348,178) if prop.id=="flush_back" else (Rect2(-174,-18,80,190) if prop.id=="flush_left" else Rect2(94,-18,80,190))
 	return super.prop_visual_bounds(prop)
 
 func is_animated_prop(prop: Dictionary) -> bool:

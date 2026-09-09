@@ -1,0 +1,80 @@
+{
+  "asset_id": "observation-chart-folio-v1",
+  "department": "Habitation / Observation",
+  "condition": "Matte canvas and paper",
+  "attachment_class": "Portable tabletop folio",
+  "functional_bays": [
+    "Closed loaded portfolio with cloth tab"
+  ],
+  "runtime_behavior": "Static closed art; no opening or carry interaction",
+  "camera_and_facing": "Near-top-down, spine left, closure right",
+  "references": [
+    {
+      "path": "C:/Users/Alex/Documents/Brine Space/assets/observation-chart-wall-v1/wall.png",
+      "sha256": "6456e18bad3bb71da7ca329a73feb7d25bffe59e6b0992d23a4db5663efa97ad",
+      "role": "Companion palette and camera"
+    }
+  ],
+  "source_path": "assets/observation-chart-folio-v1/source-v1.png",
+  "source_sha256": "66fd8947c5d3573e4f7021033fd22249c531fb539735c426d51918dcef7e38bf",
+  "export_path": "assets/observation-chart-folio-v1/folio.png",
+  "export_sha256": "873b8a7f44cab08a8c949466d6ed28fab07c66fc3ee6feb80b43868baedf8bf8",
+  "native_canvas_px": [
+    1470,
+    1070
+  ],
+  "proposed_display_width_world": 22.0,
+  "proposed_ground_footprint_world": null,
+  "placement_exclusions": [
+    "Chart surface",
+    "Table edge",
+    "Operator work area"
+  ],
+  "review": {
+    "materials": {
+      "verdict": "agent_pass",
+      "findings": [
+        "Quiet olive cloth, brown spine and narrow paper edges; no metal buckle."
+      ]
+    },
+    "native_scale": {
+      "verdict": "agent_pass",
+      "evidence": "output/observation-chart-folio-v1/group-scale.png",
+      "findings": [
+        "22-unit folio lies on clear counter left of map at92,25; native and2x views inspected.",
+        "Supported static arrangement only; crew reach and runtime attachment unverified."
+      ]
+    },
+    "alpha": {
+      "verdict": "agent_pass",
+      "findings": [
+        "True source alpha registered at128; light/dark edge review passes."
+      ]
+    },
+    "integration": {
+      "stage": "not_installed",
+      "evidence": null
+    }
+  },
+  "owner_acceptance": null,
+  "lessons": [],
+  "proposed_display_height_world": 13.11727842435094,
+  "registration_path": "assets/observation-chart-folio-v1/registration.json",
+  "registration_sha256": "5e0298ed64c1c02112d0d4d744549c6d541901340fb6fbde92249189f7677988",
+  "prompt_path": "assets/observation-chart-folio-v1/source.prompt.txt",
+  "prompt_sha256": "c23d4a60ae2c354733f0c9f1ab164ea0f9f5c79068b80b399f238c59e85ce515",
+  "metadata_checks": {
+    "source_mode": "RGBA",
+    "export_alpha_extrema": [
+      0,
+      255
+    ],
+    "scope": "Provenance and dimensions; visual findings separate."
+  },
+  "generation_tool": "built-in imagegen",
+  "evidence_hashes": {
+    "output/observation-chart-folio.log": "8b94efed253e4fc3cd297f8a508dc7ceada3e16728df8cbebc770f03aca9bc32",
+    "output/observation-chart-folio-group.log": "40ae6c4fdd5da28d73c690a9db33a2644f83ace7f85344aff637905582955169",
+    "output/observation-chart-folio-v1/group-scale.png": "b976ccfad9feb0c4435a58d39c2d98286b2eaa62aa5db3828382dfa8144f11c6"
+  }
+}

@@ -65,7 +65,7 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	var checkpoint: Dictionary = game.RunSave.capture(game)
-	var center: Vector2 = game._grid_view_center_ratio()
+	var center: Vector2 = (Vector2(game.Architects.CORE_CELL)+Vector2.ONE*0.5)/float(game.GRID_SIZE)
 	game.journal_searches.clear()
 	game.history_search.text = "changed"
 	game._pan_grid(Vector2.ONE,100)
@@ -73,7 +73,7 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	check(game.history_search.text=="reactor" and game.journal_searches.get(3)=="construction","Continue restores independent queries")
-	check(game._grid_view_center_ratio().distance_to(center)<0.002,"Continue restores camera center after deferred layout")
+	check(game._grid_view_center_ratio().distance_to(center)<0.002,"Continue centers BRINE after deferred layout")
 	game._open_menu()
 	game._close_menu()
 	await process_frame
@@ -83,7 +83,7 @@ func run() -> void:
 	check(game.RunSave.restore(game,checkpoint),"Workspace restores at a different viewport size")
 	await process_frame
 	await process_frame
-	check(game._grid_view_center_ratio().distance_to(center)<0.002,"Continue preserves normalized station location across window sizes")
+	check(game._grid_view_center_ratio().distance_to(center)<0.002,"Continue centers BRINE across window sizes")
 	checkpoint.erase("workspace")
 	check(game.RunSave.restore(game,checkpoint),"Older checkpoints without workspace remain valid")
 	Workspace.restore(game,{"version":1,"tab":"invalid","scrolls":[],"searches":[],"resource":42,"inspector":NAN})
@@ -107,7 +107,8 @@ func run() -> void:
 		await process_frame
 		check(title.continue_button.visible and title.find_child("CheckpointPreview",true,false)!=null,"Continue includes saved station schematic")
 		check(title.controls.position.y+title.controls.size.y<=title.size.y+1,"Continue preview keeps all menu controls onscreen")
-		await RenderingServer.frame_post_draw
+		if DisplayServer.get_name()=="headless": continue
+		RenderingServer.force_draw()
 		root.get_texture().get_image().save_png("res://output/continue-preview-%d.png" % dimensions.x)
 	for suffix in [".cfg",".meta",".meta.bak",".loop",".loop.bak"]:
 		if FileAccess.file_exists(prefix+suffix): DirAccess.remove_absolute(prefix+suffix)

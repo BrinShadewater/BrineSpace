@@ -50,6 +50,7 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	painter.draw_texture_rect_region(flush_texture,Rect2(Vector2(-184,-196)+region.position*368,region.size*368),Rect2(flush_bounds.position+region.position*flush_bounds.size,region.size*flush_bounds.size))
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	if prop.has("flush_region"):
 		var region: Rect2=prop.flush_region
 		return Rect2(Vector2(-184,-196)+region.position*368,region.size*368)
