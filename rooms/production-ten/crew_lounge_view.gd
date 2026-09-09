@@ -6,7 +6,7 @@ var table_tray: Dictionary={}
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/crew_lounge-source-v2.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/crew_lounge-source-v2.png")) != OK: push_error("Failed to load image (rooms/production-ten/crew_lounge_view.gd:9)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"lounge_sofa","rect":Rect2(-165,-135,108,64),"pivot":Vector2(318,540),"width":386.0,"outline":[Vector2(125,149),Vector2(510,149),Vector2(510,540),Vector2(125,540)],"pieces":[[Vector2(125,179),Vector2(137,155),Vector2(419,156),Vector2(436,157),Vector2(433,180),Vector2(433,153),Vector2(461,149),Vector2(485,161),Vector2(482,189),Vector2(505,190),Vector2(510,206),Vector2(510,305),Vector2(497,324),Vector2(240,324),Vector2(239,515),Vector2(228,534),Vector2(136,534),Vector2(125,521)],[Vector2(253,337),Vector2(490,337),Vector2(490,540),Vector2(253,540)]]},
@@ -20,7 +20,7 @@ func _ready() -> void:
 	life_items[2].rect=Rect2(-164,99,82,52)
 	life_items[3].rect=Rect2(80,47,82,50)
 	var decor_image := Image.new()
-	assert(decor_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/decor/lounge-v1.png"))==OK)
+	if decor_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/decor/lounge-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/crew_lounge_view.gd:23)")
 	decor_texture=ImageTexture.create_from_image(decor_image)
 	life_items.append({"id":"decor_lounge_0","rect":Rect2(-132.5,32,25,6),"pivot":Vector2(361.0,499),"width":472.0,"outline":[Vector2(125,172),Vector2(597,172),Vector2(597,499),Vector2(125,499)],"pieces":[[Vector2(125,172),Vector2(597,172),Vector2(597,499),Vector2(125,499)]],"decor":true})
 	life_items.append({"id":"decor_lounge_1","rect":Rect2(-79.0,32,22,6),"pivot":Vector2(934.5,512),"width":431.0,"outline":[Vector2(719,79),Vector2(1150,79),Vector2(1150,512),Vector2(719,512)],"pieces":[[Vector2(719,79),Vector2(1150,79),Vector2(1150,512),Vector2(719,512)]],"decor":true})
@@ -34,7 +34,7 @@ func _ready() -> void:
 	life_items[5].rect=Rect2(141,-48,25,9) # Plant at the dining area's edge.
 	life_items.remove_at(6) # The coat stand now provides the bag's physical home.
 	var support_image := Image.new()
-	assert(support_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/decor/lounge-support-v2.png"))==OK)
+	if support_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/decor/lounge-support-v2.png")) != OK: push_error("Failed to load image (rooms/production-ten/crew_lounge_view.gd:37)")
 	support_texture=ImageTexture.create_from_image(support_image)
 	append_support("reading_lamp",Rect2(-78,-57,23,8),Rect2(191,69,209,480))
 	append_support("book_console",Rect2(-31,-145,62,23),Rect2(659,155,411,395))

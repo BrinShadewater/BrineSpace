@@ -5,7 +5,7 @@ func _ready() -> void:
 	super._ready()
 	science_hull=life_texture
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/anomaly_lab-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/anomaly_lab-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/anomaly_lab_view.gd:8)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"anomaly_platform","rect":Rect2(-54,-135,108,86),"pivot":Vector2(338,507),"width":368.0,"outline":[Vector2(188,179),Vector2(235,179),Vector2(248,186),Vector2(394,186),Vector2(407,179),Vector2(486,179),Vector2(520,211),Vector2(520,266),Vector2(507,280),Vector2(507,384),Vector2(520,403),Vector2(520,474),Vector2(490,506),Vector2(422,507),Vector2(409,496),Vector2(268,496),Vector2(251,507),Vector2(185,507),Vector2(154,476),Vector2(154,407),Vector2(164,390),Vector2(164,270),Vector2(161,257),Vector2(161,211)]},

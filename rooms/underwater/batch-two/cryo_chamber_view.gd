@@ -13,10 +13,10 @@ func _ready() -> void:
 	super._ready()
 	for i in range(6):
 		var frame := Image.new()
-		assert(frame.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/derelict-cryo-v1/wake-%d.png" % i))==OK)
+		if frame.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/derelict-cryo-v1/wake-%d.png" % i)) != OK: push_error("Failed to load image (rooms/underwater/batch-two/cryo_chamber_view.gd:16)")
 		wake_frames.append(ImageTexture.create_from_image(frame))
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/cryo_chamber-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/cryo_chamber-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/cryo_chamber_view.gd:19)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[]
 	for i in range(2):

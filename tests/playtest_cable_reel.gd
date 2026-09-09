@@ -25,10 +25,10 @@ func run() -> void:
 	sheet.size=root.size
 	for path in ["res://assets/environment/shell-shoal-v1/shell-hash-ground-v2.png","res://assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
 		var source:=Image.new()
-		assert(source.load(path)==OK)
+		if source.load(path) != OK: push_error("Failed to load image (tests/playtest_cable_reel.gd:28)")
 		sheet.grounds.append(ImageTexture.create_from_image(source))
 	var prop:=Image.new()
-	assert(prop.load("res://assets/environment/cable-reel-v1/collapsed-cable-reel-v1.png")==OK)
+	if prop.load("res://assets/environment/cable-reel-v1/collapsed-cable-reel-v1.png") != OK: push_error("Failed to load image (tests/playtest_cable_reel.gd:31)")
 	assert(prop.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.prop=ImageTexture.create_from_image(prop)
 	root.add_child(sheet)

@@ -11,7 +11,7 @@ func _ready() -> void:
 	super._ready()
 	cryo_dressing=null # This room replaces the inherited Cryo equipment list.
 	var source:=Image.new()
-	assert(source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/med_center-source-v1.png"))==OK)
+	if source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/med_center-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/med_center_view.gd:14)")
 	life_texture=ImageTexture.create_from_image(source)
 	life_items=[
 		{"id":"medical_treatment","rect":Rect2(-153,-147,82,82),"pivot":Vector2(340,539),"width":274.0,"outline":[Vector2(215,229),Vector2(231,219),Vector2(247,219),Vector2(248,213),Vector2(290,213),Vector2(301,222),Vector2(320,224),Vector2(327,236),Vector2(335,226),Vector2(326,215),Vector2(326,202),Vector2(339,188),Vector2(406,204),Vector2(421,210),Vector2(423,195),Vector2(437,193),Vector2(474,213),Vector2(475,250),Vector2(464,261),Vector2(451,257),Vector2(450,333),Vector2(459,342),Vector2(459,526),Vector2(447,539),Vector2(219,539),Vector2(205,525),Vector2(206,290),Vector2(213,283)]},

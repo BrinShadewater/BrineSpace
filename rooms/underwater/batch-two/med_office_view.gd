@@ -17,7 +17,7 @@ func _ready() -> void:
 	center_dressing=null
 	medical_hull=life_texture
 	var source:=Image.new()
-	assert(source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/med_office-source-v1.png"))==OK)
+	if source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/med_office-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/med_office_view.gd:20)")
 	life_texture=ImageTexture.create_from_image(source)
 	life_items=[
 		{"id":"office_desk","rect":Rect2(-159,-142,98,70),"pivot":Vector2(330,493),"width":266.0,"outline":[Vector2(199,321),Vector2(211,309),Vector2(267,309),Vector2(267,270),Vector2(280,260),Vector2(283,222),Vector2(292,212),Vector2(339,212),Vector2(350,222),Vector2(350,260),Vector2(364,268),Vector2(364,297),Vector2(384,298),Vector2(386,309),Vector2(449,309),Vector2(460,322),Vector2(460,480),Vector2(448,493),Vector2(211,493),Vector2(199,481)]},

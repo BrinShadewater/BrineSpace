@@ -10,7 +10,7 @@ func _init(host, path: String) -> void:
 	profile=JSON.parse_string(FileAccess.get_file_as_string(path))
 	for key in profile.textures:
 		var image := Image.new()
-		assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes(profile.textures[key]))==OK)
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(profile.textures[key])) != OK: push_error("Failed to load image (rooms/whole-room/room_dressing.gd:13)")
 		textures[key]=ImageTexture.create_from_image(image)
 	for item in profile.get("furniture",[]):
 		room.life_items.append(registration(item))

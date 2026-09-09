@@ -6,7 +6,7 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 func _ready() -> void:
 	super._ready()
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/clone_lab-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/clone_lab-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/clone_lab_view.gd:9)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"clone_vessel","rect":Rect2(-148,-118,64,65),"pivot":Vector2(338,550),"width":214.0,"outline":[Vector2(316,101),Vector2(361,101),Vector2(393,114),Vector2(416,137),Vector2(430,167),Vector2(430,196),Vector2(421,213),Vector2(421,365),Vector2(437,383),Vector2(445,412),Vector2(445,519),Vector2(428,539),Vector2(402,550),Vector2(272,550),Vector2(246,539),Vector2(233,520),Vector2(233,412),Vector2(241,384),Vector2(253,365),Vector2(254,213),Vector2(246,197),Vector2(249,157),Vector2(266,130),Vector2(289,113)]},

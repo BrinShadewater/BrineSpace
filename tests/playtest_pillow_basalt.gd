@@ -29,15 +29,15 @@ func run() -> void:
 	sheet.size=root.size
 	for path in ["res://assets/environment/shell-shoal-v1/shell-hash-ground-v2.png","res://assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
 		var source:=Image.new()
-		assert(source.load(path)==OK)
+		if source.load(path) != OK: push_error("Failed to load image (tests/playtest_pillow_basalt.gd:32)")
 		sheet.grounds.append(ImageTexture.create_from_image(source))
 	var prop:=Image.new()
-	assert(prop.load("res://assets/environment/pillow-basalt-v1/pillow-basalt-v1.png")==OK)
+	if prop.load("res://assets/environment/pillow-basalt-v1/pillow-basalt-v1.png") != OK: push_error("Failed to load image (tests/playtest_pillow_basalt.gd:35)")
 	assert(prop.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.prop=ImageTexture.create_from_image(prop)
 	for path in ["res://assets/environment/fractured-rock-v1/fractured-basalt-slab-v1.png","res://assets/environment/volcanic-ash-v1/porous-rocks-v1.png"]:
 		var reference := Image.new()
-		assert(reference.load(path)==OK)
+		if reference.load(path) != OK: push_error("Failed to load image (tests/playtest_pillow_basalt.gd:40)")
 		sheet.references.append(ImageTexture.create_from_image(reference))
 	root.add_child(sheet)
 	for i in range(8): await process_frame

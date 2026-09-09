@@ -40,13 +40,13 @@ func run() -> void:
 	var textures: Array[Texture2D] = []
 	for path in paths:
 		var source := Image.new()
-		assert(source.load(path)==OK)
+		if source.load(path) != OK: push_error("Failed to load image (tests/playtest_clay_silt.gd:43)")
 		textures.append(ImageTexture.create_from_image(source))
 	sheet.ground=textures[0]
 	sheet.debris=textures[1]
 	sheet.stone=textures[2]
 	var porous_image := Image.new()
-	assert(porous_image.load("res://assets/environment/volcanic-ash-v1/porous-rocks-v1.png")==OK)
+	if porous_image.load("res://assets/environment/volcanic-ash-v1/porous-rocks-v1.png") != OK: push_error("Failed to load image (tests/playtest_clay_silt.gd:49)")
 	assert(porous_image.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.porous=ImageTexture.create_from_image(porous_image)
 	root.add_child(sheet)

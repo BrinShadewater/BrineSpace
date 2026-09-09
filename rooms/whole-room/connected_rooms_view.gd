@@ -10,7 +10,7 @@ var life_items := [
 ]
 func _ready() -> void:
 	var img := Image.new()
-	assert(img.load("res://rooms/whole-room/life-support-candidate.png")==OK)
+	if img.load("res://rooms/whole-room/life-support-candidate.png") != OK: push_error("Failed to load image (rooms/whole-room/connected_rooms_view.gd:13)")
 	life_texture = ImageTexture.create_from_image(img)
 	pair_mode = 1
 	super._ready()

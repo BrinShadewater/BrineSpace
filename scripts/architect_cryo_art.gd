@@ -10,7 +10,7 @@ static func frame(id: String, index: int) -> Texture2D:
 		for i in range(6):
 			var path := "res://rooms/derelict-cryo-v1/wake-%d.png" % i if id in ["","bill"] else "res://rooms/architect-cryo-v1/%s/wake-%d.png" % [id,i]
 			var image:=Image.new()
-			assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK)
+			if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (scripts/architect_cryo_art.gd:13)")
 			result.append(ImageTexture.create_from_image(image))
 		frames[id]=result
 	return frames[id][clampi(index,0,5)]
@@ -20,7 +20,7 @@ static func draw(canvas: CanvasItem, rect: Rect2, occupant: Dictionary, tint := 
 	if occupant.get("recovered",false):
 		if empty_texture==null:
 			var image:=Image.new()
-			assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/cryo_chamber-source-v1.png"))==OK)
+			if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/cryo_chamber-source-v1.png")) != OK: push_error("Failed to load image (scripts/architect_cryo_art.gd:23)")
 			empty_texture=ImageTexture.create_from_image(image)
 		var vertices:=PackedVector2Array()
 		var uv:=PackedVector2Array()

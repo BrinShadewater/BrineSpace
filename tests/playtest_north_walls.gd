@@ -74,7 +74,7 @@ func run() -> void:
 	toggle.button_pressed=false
 	assert(not prefs.raised_walls)
 	var saved:=ConfigFile.new()
-	assert(saved.load(prefs.save_path)==OK)
+	if saved.load(prefs.save_path) != OK: push_error("Failed to load image (tests/playtest_north_walls.gd:77)")
 	assert(saved.get_value("display","raised_walls",true)==false)
 	game.grid_view.queue_redraw()
 	await settle()

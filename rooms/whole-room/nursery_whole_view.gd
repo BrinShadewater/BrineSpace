@@ -39,7 +39,7 @@ func pixel_to_world(p: Vector2) -> Vector2:
 
 func _ready() -> void:
 	var img := Image.new()
-	assert(img.load(SOURCE) == OK, "Missing whole-room visual master")
+	if img.load(SOURCE) != OK: push_error("Missing whole-room visual master")
 	texture = ImageTexture.create_from_image(img)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	actor_library = ActorLibrary.new()

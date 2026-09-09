@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/ore_refinery-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/production-ten/ore_refinery-source-v1.png")) != OK: push_error("Failed to load image (rooms/production-ten/ore_refinery_view.gd:8)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"refinery_crusher","rect":Rect2(-164,-115,104,64),"pivot":Vector2(321,576),"width":360.0,"outline":[Vector2(143,245),Vector2(173,213),Vector2(177,198),Vector2(193,191),Vector2(194,180),Vector2(224,174),Vector2(224,139),Vector2(248,112),Vector2(369,112),Vector2(396,137),Vector2(398,174),Vector2(422,175),Vector2(427,190),Vector2(458,190),Vector2(478,207),Vector2(480,225),Vector2(500,244),Vector2(501,489),Vector2(482,507),Vector2(398,507),Vector2(398,559),Vector2(380,576),Vector2(242,576),Vector2(222,559),Vector2(222,507),Vector2(162,507),Vector2(143,489)]},

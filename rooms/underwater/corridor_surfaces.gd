@@ -5,7 +5,7 @@ static func load_sources() -> Array:
 	var textures: Array = []
 	for path in ["res://rooms/underwater/straight-source-v1.png","res://rooms/underwater/corner-source-v1.png"]:
 		var image := Image.new()
-		assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK)
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK: push_error("Failed to load image (rooms/underwater/corridor_surfaces.gd:8)")
 		textures.append(ImageTexture.create_from_image(image))
 	return textures
 static func patch(canvas: CanvasItem, points: PackedVector2Array, uv: PackedVector2Array, texture: Texture2D, center: Vector2, q: int, light: float) -> void:

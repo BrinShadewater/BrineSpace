@@ -17,7 +17,7 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image:=Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/data_archive-source-v1.png"))==OK)
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/batch-two/data_archive-source-v1.png")) != OK: push_error("Failed to load image (rooms/underwater/batch-two/data_archive_view.gd:20)")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[]
 	for i in range(2):

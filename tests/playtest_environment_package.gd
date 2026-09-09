@@ -48,7 +48,7 @@ func run() -> void:
 		assert(FileAccess.file_exists(entry.path),"Packaged raw PNG missing: "+entry.path)
 		assert(FileAccess.get_sha256(entry.path)==entry.sha256,"Packaged source bytes differ: "+entry.path)
 		var image := Image.new()
-		assert(image.load(entry.path)==OK,"Packaged PNG cannot decode: "+entry.path)
+		if image.load(entry.path) != OK: push_error("Packaged PNG cannot decode: "+entry.path)
 		assert(image.get_size()==Vector2i(entry.size[0],entry.size[1]))
 	preload("res://scripts/title_settings.gd").initialized = true
 	root.mode = Window.MODE_WINDOWED
