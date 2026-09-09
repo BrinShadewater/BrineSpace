@@ -13,7 +13,7 @@ Preserve paid construction, failure conditions, hidden discovery, authored layou
 - `scripts/crew_sprite_player.gd` now preserves missing/corrupt frame slots using diagnostic placeholders, keeping subsequent durations, facing and depth metadata aligned. Authored clip duration totals are calculated once during loading; generated clips retain their existing fallback.
 - `scripts/title_cover.gd` and `scripts/navigation_badge.gd` use the safe raw-PNG loader. Missing title art returns a drawable fallback before silhouette geometry uses image dimensions.
 - `tests/test_sprite_loading.gd` and its UID cover failure reporting, preserved timing/pixels/metadata, generated durations and reload invalidation.
-- GitHub source checkpoint: `41a0efdccc167729a4663eaf59ad0774ef8067c7`, pushed to `main` with 1,758 LFS objects (322 MB). CI now imports before script checks and fetches preloaded OGG audio only; the previous pipeline failed to resolve unimported audio/SVG resources.
+- GitHub source checkpoint: `41a0efdccc167729a4663eaf59ad0774ef8067c7`, pushed to `main` with 1,758 LFS objects (322 MB). CI now imports before script checks and fetches the preloaded OGG music/ambience and polished WAV effects only; the previous pipeline failed to resolve unimported audio/SVG resources.
 
 ## Verification
 - Release assertion guard and manifest unit tests: four tests pass. Character registry: nine packs, 355 clips, 1,488 frame references, eight portraits, zero errors.
