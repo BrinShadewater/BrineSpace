@@ -184,7 +184,7 @@ func _add_crash_dumps(files: Array) -> int:
 	return added
 
 func _show_crash_overlay(path: String) -> void:
-	var body := "A bug report was saved as %s. Send the zip to Alex at Shadewater Labs." % path.get_file()
+	var body := "A bug report was saved as %s. Send the zip to Alex at Shadewater Labs (brinshadewater@gmail.com)." % path.get_file()
 	if path.is_empty():
 		body = "A bug report could not be written. The log folder may still help: it is next to the bug_reports folder."
 	elif _report_contains_dump(path):
@@ -286,7 +286,7 @@ func _input(event: InputEvent) -> void:
 		return
 	var texture := get_viewport().get_texture()
 	pending_screenshot = texture.get_image() if texture != null else null
-	_show_overlay("REPORT A BUG", "Saves the game log, your station save and a screenshot into a zip you can send to Alex at Shadewater Labs.", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
+	_show_overlay("REPORT A BUG", "Saves the game log, your station save and a screenshot into a zip you can send to Alex at Shadewater Labs (brinshadewater@gmail.com).", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
 	if note_field != null:
 		note_field.grab_focus()
 
@@ -296,7 +296,7 @@ func _on_save_pressed() -> void:
 	if path.is_empty():
 		_show_overlay("REPORT NOT SAVED", "The report could not be written. Check that the game can write to its user data folder.", false, [["Close", _hide_overlay]])
 		return
-	_show_overlay("REPORT SAVED", "Saved as %s in the bug_reports folder. Send that zip to Alex at Shadewater Labs." % path.get_file(), false, [["Open folder", _open_report_folder], ["Close", _hide_overlay]])
+	_show_overlay("REPORT SAVED", "Saved as %s in the bug_reports folder. Send that zip to Alex at Shadewater Labs (brinshadewater@gmail.com)." % path.get_file(), false, [["Open folder", _open_report_folder], ["Close", _hide_overlay]])
 
 func _report_text(note: String, after_crash: bool, files: Array, dumps_found: int) -> String:
 	var lines: Array = []
