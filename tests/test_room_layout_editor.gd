@@ -49,11 +49,17 @@ func run() -> void:
 	var moved: Dictionary=editor.draft.duplicate(true)
 	editor.undo(); assert(editor.draft==before)
 	editor.redo(); assert(editor.draft==moved)
+	# Studio defaults to free placement, which reports no issues by design, so the
+	# hull and door-lane guards are exercised through the toolbar toggle. Restoring
+	# a draft snapshot also restores the mode it was captured in.
+	editor.free_placement.button_pressed=false
 	editor.draft[editor.selected]=[500,500]; editor.refresh()
 	assert(not editor.issues().is_empty(),"Outside hull is rejected")
 	editor.draft[editor.selected]=[-10,120]; editor.refresh()
 	assert(not editor.issues().is_empty(),"Door blockage is rejected")
-	editor.draft=moved.duplicate(true); editor.refresh()
+	editor.free_placement.button_pressed=true
+	editor.draft=moved.duplicate(true); editor.draft["__free_placement"]=true; editor.refresh()
+	assert(editor.issues().is_empty(),"Free placement reports no issues")
 	editor.layer=1; editor.rebuild_list()
 	assert(editor.entities().size()==64)
 	var floor_before: Dictionary=editor.draft.duplicate(true)
@@ -66,8 +72,10 @@ func run() -> void:
 	assert(not decorations.is_empty(),"Floor decorations selectable")
 	var decoration: Dictionary=decorations[0]
 	var original: Array=editor.draft[decoration.id].duplicate()
+	editor.draft["__free_placement"]=false
 	editor.draft[decoration.id]=[500,500]; editor.refresh()
 	assert(not editor.issues().is_empty(),"Decoration outside hull rejected")
+	editor.draft.erase("__free_placement")
 	editor.draft[decoration.id]=original; editor.refresh()
 	var decor_destination:=Vector2.INF
 	for delta in [Vector2(1,0),Vector2(-1,0),Vector2(0,1),Vector2(0,-1)]:
@@ -136,6 +144,8 @@ func run() -> void:
 	print("LIBRARY ",editor.Library.entries().size()," visible ",editor.library_list.item_count," search ",editor.library_search.text)
 	assert(editor.library_list.item_count>10,"Unused artwork library populated")
 	assert(editor.canvas._can_drop_data(Vector2.ZERO,{"room_library_asset":library_id}),"Canvas accepts art drag payload")
+	# A drop far outside the room is only invalid while placement is constrained.
+	editor.free_placement.button_pressed=false
 	assert(not editor.add_library_asset(library_id,Vector2(500,500)),"Invalid library drop rejected")
 	var library_center:=Vector2.INF
 	for y in [-80,0,40,80,120]:
@@ -213,32 +223,38 @@ func run() -> void:
 	root.get_texture().get_image().save_png("res://output/layout-editor/flips.png")
 	print("FLIP PASS: both axes, undo/redo, disk reload and runtime")
 
-	editor.layer=3; editor.riser_toggle.button_pressed=true; editor.foundation_toggle.button_pressed=true
-	editor.rebuild_list()
-	var wall_items: Array=editor.entities()
-	assert(wall_items.size()==3,"Research riser has three movable fittings")
-	var wall_item: Dictionary=wall_items[0]
-	editor.selected=wall_item.id
-	var wall_before: Array=editor.draft[wall_item.id].duplicate()
-	var wall_press:=InputEventMouseButton.new(); wall_press.button_index=MOUSE_BUTTON_LEFT; wall_press.pressed=true
-	wall_press.position=editor.canvas.size/2+wall_item.rect.get_center()*editor.canvas.factor()
-	editor.canvas_input(wall_press)
-	var wall_motion:=InputEventMouseMotion.new(); wall_motion.position=wall_press.position+Vector2(6,0)*editor.canvas.factor()
-	editor.canvas_input(wall_motion)
-	var wall_release:=InputEventMouseButton.new(); wall_release.button_index=MOUSE_BUTTON_LEFT; wall_release.pressed=false; wall_release.position=wall_motion.position
-	editor.canvas_input(wall_release)
-	assert(absf(editor.draft[wall_item.id][0]-wall_before[0]-6)<0.01,"Riser fitting follows drag")
-	editor.flip_selected(0); editor.save_layout()
-	Store.loaded=false; Store.data={}; editor.load_room(); editor.layer=3
-	assert(absf(editor.draft[wall_item.id][0]-wall_before[0]-6)<0.01,"Riser position survives reload")
-	assert(Store.flip_axes(editor.room,wall_item.id)==Vector2(-1,1))
-	var runtime_mounts: Array=editor.Riser.decorations(str(editor.entries[0].room),Store.positions(editor.entries[0].asset,0))
-	assert(absf(runtime_mounts[0].rect.position.x-wall_before[0]-6)<0.01,"Runtime resolves saved riser positions")
-	editor.selected=wall_item.id; editor.canvas.queue_redraw()
-	await process_frame
-	RenderingServer.force_draw()
-	root.get_texture().get_image().save_png("res://output/layout-editor/riser-editing.png")
-	print("RISER EDITOR PASS: preview toggles, native drag, flip, disk reload and runtime mounts")
+	# Wall decorations are paused by owner decision (decoration_props.gd:2), so the
+	# riser fittings do not exist right now. Keep the coverage behind the same flag:
+	# it runs again the moment the pause is lifted.
+	if preload("res://rooms/whole-room/decoration_props.gd").WALL_DECORATIONS_ENABLED:
+		editor.layer=3; editor.riser_toggle.button_pressed=true; editor.foundation_toggle.button_pressed=true
+		editor.rebuild_list()
+		var wall_items: Array=editor.entities()
+		assert(wall_items.size()==3,"Research riser has three movable fittings")
+		var wall_item: Dictionary=wall_items[0]
+		editor.selected=wall_item.id
+		var wall_before: Array=editor.draft[wall_item.id].duplicate()
+		var wall_press:=InputEventMouseButton.new(); wall_press.button_index=MOUSE_BUTTON_LEFT; wall_press.pressed=true
+		wall_press.position=editor.canvas.size/2+wall_item.rect.get_center()*editor.canvas.factor()
+		editor.canvas_input(wall_press)
+		var wall_motion:=InputEventMouseMotion.new(); wall_motion.position=wall_press.position+Vector2(6,0)*editor.canvas.factor()
+		editor.canvas_input(wall_motion)
+		var wall_release:=InputEventMouseButton.new(); wall_release.button_index=MOUSE_BUTTON_LEFT; wall_release.pressed=false; wall_release.position=wall_motion.position
+		editor.canvas_input(wall_release)
+		assert(absf(editor.draft[wall_item.id][0]-wall_before[0]-6)<0.01,"Riser fitting follows drag")
+		editor.flip_selected(0); editor.save_layout()
+		Store.loaded=false; Store.data={}; editor.load_room(); editor.layer=3
+		assert(absf(editor.draft[wall_item.id][0]-wall_before[0]-6)<0.01,"Riser position survives reload")
+		assert(Store.flip_axes(editor.room,wall_item.id)==Vector2(-1,1))
+		var runtime_mounts: Array=editor.Riser.decorations(str(editor.entries[0].room),Store.positions(editor.entries[0].asset,0))
+		assert(absf(runtime_mounts[0].rect.position.x-wall_before[0]-6)<0.01,"Runtime resolves saved riser positions")
+		editor.selected=wall_item.id; editor.canvas.queue_redraw()
+		await process_frame
+		RenderingServer.force_draw()
+		root.get_texture().get_image().save_png("res://output/layout-editor/riser-editing.png")
+		print("RISER EDITOR PASS: preview toggles, native drag, flip, disk reload and runtime mounts")
+	else:
+		print("RISER EDITOR SKIP: wall decorations paused by owner decision")
 
 	var pan_press:=InputEventMouseButton.new(); pan_press.button_index=MOUSE_BUTTON_MIDDLE; pan_press.pressed=true
 	editor.canvas_input(pan_press)
@@ -251,13 +267,17 @@ func run() -> void:
 	editor.canvas_input(wheel)
 	assert(editor.canvas.to_room(wheel.position).distance_to(anchored)<0.01,"Zoom stays under pointer")
 	editor.fit_view(); assert(editor.pan==Vector2.ZERO and editor.zoom==1.0)
-	var edited_wall: Array=editor.draft[wall_item.id].duplicate()
-	editor.reset_selected(); assert(editor.draft[wall_item.id]==editor.defaults[wall_item.id])
-	editor.undo(); assert(editor.draft[wall_item.id]==edited_wall)
+	# Reset, undo and the Delete guard are not riser-specific; they used a riser
+	# fitting as their subject, which exists only while wall decorations run.
+	var ux_target:="sample_cooler"
+	editor.layer=0; editor.selected=ux_target; editor.selected_many.clear(); editor.refresh()
+	var edited_wall: Array=editor.draft[ux_target].duplicate()
+	editor.reset_selected(); assert(editor.draft[ux_target]==editor.defaults[ux_target])
+	editor.undo(); assert(editor.draft[ux_target]==edited_wall)
 	editor.library_search.grab_focus()
 	var delete_key:=InputEventKey.new(); delete_key.keycode=KEY_DELETE; delete_key.pressed=true
-	editor._input(delete_key); assert(editor.draft[wall_item.id] is Array,"Typing cannot delete artwork")
-	editor.canvas.grab_focus(); editor._input(delete_key); assert(editor.draft[wall_item.id]==null)
+	editor._input(delete_key); assert(editor.draft[ux_target] is Array,"Typing cannot delete artwork")
+	editor.canvas.grab_focus(); editor._input(delete_key); assert(editor.draft[ux_target]==null)
 	editor.undo()
 	root.size=Vector2i(1280,900)
 	await process_frame
@@ -361,11 +381,15 @@ func run() -> void:
 	RenderingServer.force_draw()
 	root.get_texture().get_image().save_png("res://output/layout-editor/expanded-studio.png")
 
-	editor.layer=3; editor.selected_many=[]; editor.selected=editor.entities()[0].id
-	var fittings_before: int=editor.entities().size()
-	editor.duplicate_selected(); assert(editor.entities().size()==fittings_before+1,"Riser fittings duplicate independently")
-	editor.save_layout(); Store.loaded=false; Store.data={}; editor.load_room(); editor.layer=3
-	assert(editor.entities().size()==fittings_before+1,"Duplicated riser fitting persists")
+	# Second riser block; paused by the same owner flag as the first (see above).
+	if preload("res://rooms/whole-room/decoration_props.gd").WALL_DECORATIONS_ENABLED:
+		editor.layer=3; editor.selected_many=[]; editor.selected=editor.entities()[0].id
+		var fittings_before: int=editor.entities().size()
+		editor.duplicate_selected(); assert(editor.entities().size()==fittings_before+1,"Riser fittings duplicate independently")
+		editor.save_layout(); Store.loaded=false; Store.data={}; editor.load_room(); editor.layer=3
+		assert(editor.entities().size()==fittings_before+1,"Duplicated riser fitting persists")
+	else:
+		print("RISER DUPLICATION SKIP: wall decorations paused by owner decision")
 
 	editor.layer=4; editor.riser_toggle.button_pressed=true; editor.rebuild_list()
 	var light: Dictionary=editor.entities()[0]

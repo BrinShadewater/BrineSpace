@@ -20,13 +20,16 @@ func run() -> void:
 	await process_frame
 	await RenderingServer.frame_post_draw
 	assert(game.grid_view.corridor_layout_views.has("corridor"))
+	# September 9 decision: common decorations are Studio dressing only, so a saved
+	# clock reaches the live room's layout and is then filtered out of the render.
 	var corridor=game.grid_view.corridor_layout_views.corridor
-	assert(corridor.props.size()==1 and corridor.props[0].id=="library/common-analog_clock")
+	for prop in corridor.props:
+		assert(not str(prop.id).begins_with("library/common-"),"Corridor drops common decorations")
 	var power=game.grid_view._bill_room_view({"id":"current_turbine"})
-	var found:=false
 	for prop in power.props:
-		if prop.id=="library/common-analog_clock": found=true
-	assert(found,"New catalog room consumes saved asset additions")
+		assert(not str(prop.id).begins_with("library/common-"),"Power room drops common decorations")
+	assert(Store.positions("room-corridor",0).has("library/common-analog_clock"),"The saved addition still loads")
+	assert(Store.is_common_decoration({"id":"library/common-analog_clock"}),"The filter is what removes it")
 	root.get_texture().get_image().save_png("res://output/layout-editor/catalog-runtime.png")
-	print("CATALOG RUNTIME PASS: saved additions visible in corridor and power room")
+	print("CATALOG RUNTIME PASS: saved additions load, common decorations stay out of live corridor and power room")
 	quit()

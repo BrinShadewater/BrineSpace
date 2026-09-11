@@ -138,10 +138,12 @@ func run() -> void:
 	game._fit_station_view(); await process_frame
 	await RenderingServer.frame_post_draw
 	var view=game.grid_view._bill_room_view({"id":"med_bay"})
-	var found:=false
+	# The copied prop is dressing furniture, and dressing stays in Studio: the saved
+	# layout keeps it, and the live room filters it out (room_layout_store.gd:170).
 	for prop in view.props:
-		if prop.id==copied: found=prop.has("portable_view") and prop.sort_y>400
-	assert(found,"Live room renders portable artwork with saved draw order")
+		assert(prop.id!=copied,"Live room drops copied dressing furniture")
+	assert(Store.positions("medical-treatment-wall",0).has(copied),"The copy is still saved")
+	assert(Store.is_common_decoration(Editor.Library.portable_template(Store.positions("medical-treatment-wall",0)["portable/"+copied])),"The dressing filter is what removes it")
 	var live_anchors: Array=game.grid_view._layout_light_anchors({"id":"med_bay","pos":Vector2i(20,20),"rotation":0})
 	assert(live_anchors[0].brightness==0.4)
 	root.get_texture().get_image().save_png("res://output/layout-editor/workflow-runtime.png")
