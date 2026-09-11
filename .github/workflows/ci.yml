@@ -36,6 +36,10 @@ jobs:
         run: |
           python3 tests/test_card_binding_parity.py --self-test
           python3 tests/test_card_binding_parity.py
+      - name: Authored layout keys resolve (art-free, needs no LFS)
+        run: |
+          python3 tests/test_layout_keys.py --self-test
+          python3 tests/test_layout_keys.py
       - name: Fetch preloaded audio only
         run: git lfs pull --include="assets/audio/suno-v1/*.ogg,assets/audio/suno-polish-v1/*.wav" --exclude=""
       - name: Fetch Godot ${{ env.GODOT_VERSION }} (headless-capable Linux build)
