@@ -38,7 +38,7 @@ For underwater hull windows, wall-mounted props and related deck details, read
 wall registration, floor collision, transparency cleanup and native style review.
 
 Produce usable room assets, not just attractive images. Keep geometry authoritative
-and distinguish **generated â†’ cleaned â†’ geometry-validated â†’ integrated â†’ verified**.
+and distinguish **generated → cleaned → geometry-validated → integrated → verified**.
 Track rejected candidates separately; counts at one stage never imply another.
 
 For crew character design, sprite animation, or character-specific NPC integration,

@@ -117,11 +117,11 @@ New riser artwork must leave windows unbaked. Reserve quiet side panels for late
 
 ## Cross-family consistency reference - September 9
 
-[Art review board](art-consistency-2026-09-09/review.html) compares the current room families, runtime environments and owner-selected V2 portrait cast. Use deep petrol and steel/slate as shared surroundings, warm ivory for clinical surfaces, sage/jade and muted amber as controlled accents. These are relationships, not a universal palette filter: preserve department, character and habitat identities. Bright functional lights should occupy small areas; restored interiors remain mostly matte, with localized wear on derelict or exposed equipment. BRINE V13 and character/portraits-realism-v2 define the installed close-up portrait rendering. Title key art now uses brineui/title/consistency-v1 with BRINE V13 likeness and restrained slate/ivory materials; see ART_FIXES_2026-09-09.md for native comparisons.
+[Art review board](art-consistency-2026-09-09/review.html) compares the current room families, runtime environments and owner-selected V2 portrait cast. Use deep petrol and steel/slate as shared surroundings, warm ivory for clinical surfaces, sage/jade and muted amber as controlled accents. These are relationships, not a universal palette filter: preserve department, character and habitat identities. Bright functional lights should occupy small areas; restored interiors remain mostly matte, with localized wear on derelict or exposed equipment. The installed close-up portraits are whatever character/ACTIVE_ASSETS.json and the runtime loaders select (BRINE V14 and character/portraits-lighting-v1 as of the September 9 closeout); do not infer the live selection from this section. Title key art uses brineui/title/likeness-v2/cover.png (the owner-reference likeness, September 9) over the restrained slate/ivory brineui/title/consistency-v1 background; see ART_FIXES_2026-09-09.md and TITLE_LIKENESS_2026-09-09.md for native comparisons.
 
-## Three to four large assets — owner correction, September 9
+## Three to four large assets ï¿½ owner correction, September 9
 
-Rooms should feel uncluttered: retain 3–4 large, readable assets and clear floor space. Fitted wall banks count as one connected asset; do not fill empty areas with extra benches, lamps, carts or bottles. Existing simpler rooms may stay below that count. This supersedes earlier density and blanket modest-scale advice for integrated room layouts; department finishes and door geometry remain authoritative. See [layout correction](LARGE_ASSET_LAYOUTS_2026-09-09.md).
+Rooms should feel uncluttered: retain 3ï¿½4 large, readable assets and clear floor space. Fitted wall banks count as one connected asset; do not fill empty areas with extra benches, lamps, carts or bottles. Existing simpler rooms may stay below that count. This supersedes earlier density and blanket modest-scale advice for integrated room layouts; department finishes and door geometry remain authoritative. See [layout correction](LARGE_ASSET_LAYOUTS_2026-09-09.md).
 
 ## Fitted retro-industrial interiors - owner references, September 8
 
@@ -2037,7 +2037,7 @@ Data Archive follow-up: layout_06_core exposes all four doors even though its le
 Holographic Core follow-up: avoid copying subject identity from a geometry reference; cartridge-like first draft was replaced with three optical processors and a lattice display. Unequal sprite-sheet rows need reviewed native gutter coordinates: register_split_wall_props.py --row-cuts 800 preserves the actual white gap. A cut at 780 is rejected for crossing machinery with no output. Keep strict divider checks, not an exception that crops a machine. Projector/calibrator retained in all four native poses.
 
 
-## Owner-directed riser height and perimeter art refresh — September 8
+## Owner-directed riser height and perimeter art refresh ï¿½ September 8
 Riser faces now project 60 units above the deck baseline, up from48 (+25%). Caps,
 end returns and lights follow the raised assembly; low square-wall thickness,
 room footprints and doorway dimensions remain authoritative. This supersedes

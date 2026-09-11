@@ -41,6 +41,11 @@ def audit():
             with Image.open(path) as im:im.verify()
             portraits[name]={'path':relative,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
         except (OSError,ValueError) as exc:errors.append(relative+': '+str(exc))
+    installed=json.loads((ROOT/'character/installed-portraits.json').read_text())['portraits']
+    if installed!=registry['portraits']:
+        for name in sorted(set(installed)|set(registry['portraits'])):
+            if installed.get(name)!=registry['portraits'].get(name):
+                errors.append('Portrait selection mismatch '+name+': installed-portraits.json='+str(installed.get(name))+' ACTIVE_ASSETS.json='+str(registry['portraits'].get(name)))
     for relative in registry['reviews']:
         if not (ROOT/relative).exists():errors.append('Missing review '+relative)
     result={'errors':errors,'packs':packs,'portraits':portraits,'scope':'Asset integrity and declared source bindings only; native behavior and visual evidence are in the dated handoff.'}
