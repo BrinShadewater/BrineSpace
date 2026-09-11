@@ -52,6 +52,28 @@ func run() -> void:
 		game.powered_room_cells[info[1]] = true
 	game.test_walker_cell = origin
 	game.branforth_npc.decision_rng.seed = 5012
+	# Only the selected architect wakes at the core since the Sept 8 renewal; the
+	# others start sealed in cryo wards. Record the post-rescue crew and place
+	# both architects on clear floor, as tests/test_bill_npc.gd does.
+	game.architect_run = {"selected":"bill"}
+	game.recovered_crew = [{"architect_id":"bill","alive":true,"id":"core_architect","name":game.Architects.NAMES.bill,"origin":game.Architects.CORE_CELL},{"architect_id":"branforth","alive":true,"id":"architect_branforth","name":game.Architects.NAMES.branforth,"origin":game.Architects.CORE_CELL}]
+	var spawn_actors := [game.bill_npc, game.branforth_npc]
+	var spawn_offsets := [Vector2.ZERO, Vector2(100, 0)]
+	for i in range(spawn_actors.size()):
+		var actor = spawn_actors[i]
+		actor.rebuild(game)
+		var want: Vector2 = (Vector2(origin)+Vector2.ONE*0.5)*384.0+spawn_offsets[i]
+		var best := -1
+		var best_distance := INF
+		for point_id in actor.room_nodes.get(origin, []):
+			var point: Vector2 = actor.graph.get_point_position(point_id)
+			if actor.spawn_clear(point) and actor.can_stand(point) and point.distance_squared_to(want) < best_distance:
+				best = point_id
+				best_distance = point.distance_squared_to(want)
+		check(best >= 0, "Fixture finds clear floor for architect %d" % i)
+		if best >= 0:
+			actor.foot = actor.graph.get_point_position(best)
+			actor.active = true
 	game._update_test_walker(0.1)
 	var branforth = game.branforth_npc
 	check(game.has_chief_branforth() and game.has_test_walker(), "Both characters spawn")
@@ -72,8 +94,15 @@ func run() -> void:
 	var v0: Vector2 = branforth.foot
 	for i in range(2400):
 		var old: Vector2 = branforth.foot
+		var old_path: PackedVector2Array = branforth.path.duplicate()
 		game._update_test_walker(0.1)
-		check(branforth.segment_clear(old, branforth.foot), "Branforth movement clears room props and walls")
+		# A frame can pass a path corner: the straight chord then cuts the corner
+		# even though both walked legs are clear (tests/test_bill_npc.gd traces
+		# legs for the same reason). Check the legs through that waypoint.
+		var moved_clear: bool = branforth.segment_clear(old, branforth.foot)
+		if not moved_clear and not old_path.is_empty():
+			moved_clear = branforth.segment_clear(old, old_path[0]) and branforth.segment_clear(old_path[0], branforth.foot)
+		check(moved_clear, "Branforth movement clears room props and walls")
 		check(old.distance_to(branforth.foot) <= 4.601, "Branforth does not teleport")
 		states[branforth.state] = true
 		moved_bill = moved_bill or game.bill_npc.foot.distance_to(b0) > 20

@@ -25,18 +25,28 @@ func _run() -> void:
 	game.pending_doctrines.assign(["industry", "biosphere"])
 	game._confirm_doctrines()
 	game._set_paused(true, false)
-	check(game.guide_box.visible and game.guide_label.text.begins_with("1 / 4"), "New-loop guide must start with paid placement")
+	# The Sept 9 adaptive guide replaced the numbered steps: it opens by asking
+	# for power and reports queued construction as "BUILDING <room>".
+	# The sidebar tutorial box itself was retired in the Sept 9 sidebar pass
+	# (visual bible); the guide text is still maintained and must start here.
+	check(game.guide_label.text.contains("CONNECT POWER"), "New-loop guide must start with connecting power")
 	game.hand.assign(["solar_array"])
 	game.selected_card_id = "solar_array"
 	game.selected_rotation = 2
 	game._on_grid_clicked(Vector2i(19,20))
-	check(game.guide_label.text.contains("CONSTRUCTION"), "Guide must explain pending drone construction")
+	check(game.guide_label.text.contains("BUILDING"), "Guide must explain pending construction")
 	game.paused = false
-	game._update_wreck_clearance(30.0)
+	# Architects build paid orders since the Sept 8 construction pass: finish the
+	# core thaw, then advance crew construction until the room completes.
+	game.Architects.advance_core(game, game.Architects.DURATION)
+	for step in range(900):
+		game._update_test_walker(0.1)
+		game._update_wreck_clearance(0.1)
+		if game.occupied.has(Vector2i(19,20)): break
 	game.paused = true
 	check(game.placed_rooms.size() == 2, "Guide fixture must use a real paid placement")
 	game._refresh_learning_ui()
-	check(not game.guide_label.text.begins_with("1 / 4"), "Guide must respond to placement")
+	check(not game.guide_label.text.contains("CONNECT POWER"), "Guide must respond to placement")
 	game.selected_card_id = ""
 	game.hover_cell = Vector2i(19,20)
 	game.selected_room_cell = game.hover_cell
@@ -85,20 +95,16 @@ func _run() -> void:
 	check(not game.guide_box.visible, "Skip must dismiss the guide")
 	restored.load_from_disk()
 	check(restored.guide_completed, "Skipping the guide must persist")
-	game.meta.doctrine_mastery = {"industry": 1, "biosphere": 1}
 	game.resonance_score = 50
 	game._show_reboot_summary("Station supplies exhausted.", false)
 	check(game.summary_text.text.contains("WHAT SURVIVES") and game.summary_text.text.contains("Station supplies exhausted."), "Summary must explain the outcome and retained rewards")
-	check(game.meta.unread_records.has("mastery:industry"), "A mastery rank gain must be marked unread")
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png("res://output/learning-ui-summary.png")
-	game._review_latest_discovery()
-	await process_frame
-	check(game.menu_archive.mode == "progression", "Summary rank review must open Meta Progression")
-	game.menu_archive._close()
-	await create_timer(0.2).timeout
-	check(game.summary_layer.visible, "Closing rank review must return to the summary")
+	# Doctrine mastery was retired with starting doctrines (DEVELOPMENT_NOTES.md):
+	# runs record no doctrine, so no mastery rank or rank review is produced.
+	check(not game.meta.unread_records.has("mastery:industry"), "Retired doctrine mastery must not create unread records")
+	check(game.summary_layer.visible, "Summary stays open after the outcome is shown")
 	for path in [Preferences.save_path, game.meta.save_path, game.run_save_path]:
 		if FileAccess.file_exists(path):
 			DirAccess.remove_absolute(path)

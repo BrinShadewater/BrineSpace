@@ -167,6 +167,10 @@ func run() -> void:
 		root.size=Vector2i(1600,900)
 	for id in Architects.IDS:
 		if not review_actor.is_empty() and id!=review_actor: continue
+		# Marsh is an android who needs no helmet or Oxygen (Sept 9 battery
+		# direction); AirlockService refuses him by design, so the helmet loop
+		# covers the three human architects.
+		if id=="marsh": continue
 		for q in range(4 if id=="bill" else 1):
 			game.meta.unlocked_architect_ids[id]=true
 			game.meta.selected_architect=id

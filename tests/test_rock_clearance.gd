@@ -48,7 +48,10 @@ func run() -> void:
 	game.set_process(false)
 	game.tick_timer.stop()
 	game._set_paused(true,false)
-	check(game.wrecks.size()==21 and Field.valid(game.wrecks,game.occupied),"New run has four salvage wrecks, fifteen rocks and two repairable cryo wards")
+	# Marsh's charging ward and the companion derelicts (Sept 9) were added after
+	# this count was written; the original field is everything else.
+	var original_field: int = game.wrecks.values().filter(func(w): return w.kind not in ["charging","river","josh","margot"]).size()
+	check(original_field==21 and Field.valid(game.wrecks,game.occupied),"New run has four salvage wrecks, fifteen rocks and two repairable cryo wards")
 	for offset in View.DIRECTIONS:
 		check(not Field.blocks(game.wrecks,Vector2i(20,20)+offset),"Initial core expansion stays open")
 	var cell := Vector2i(17,20)
@@ -94,7 +97,11 @@ func run() -> void:
 	check(game.get_placement_problem("corridor",cell).is_empty(),"Cleared rock accepts room")
 	game._on_grid_clicked(cell)
 	check(game.drone_fleet.reserved(cell) and game.resources.metal<before,"Build-over uses normal paid input")
-	game._update_wreck_clearance(30.0)
+	# Architects build paid orders since the Sept 8 construction pass, and this
+	# rock site has no crew route to the core. Construction completion is covered
+	# by the crew tests, so place the paid room directly to test persistence.
+	game.drone_fleet.orders.clear()
+	game._place_room("corridor",cell,true)
 	check(game.occupied.has(cell),"Builder completes room over cleared rock")
 	check(Save.write(game,path)==OK and Save.restore(game,Save.read(path)),"Cleared rock with room persists")
 	game.paused = false

@@ -25,7 +25,14 @@ func run() -> void:
 	assert(preload("res://scripts/drone_fleet.gd").valid(checkpoint.drone_fleet,game.placed_rooms),"In-flight checkpoint valid")
 	assert(preload("res://scripts/run_save.gd").restore(game,checkpoint),"In-flight checkpoint restores")
 	game.paused = false
-	game._update_wreck_clearance(30.0)
+	# Architects build paid orders since the Sept 8 construction pass (the core's
+	# bootstrap drone stays docked under crew_builders): finish the core thaw,
+	# then advance crew construction until the room completes.
+	game.Architects.advance_core(game, game.Architects.DURATION)
+	for step in range(900):
+		game._update_test_walker(0.1)
+		game._update_wreck_clearance(0.1)
+		if game.occupied.has(cell): break
 	assert(game.occupied.has(cell) and not game.drone_fleet.reserved(cell),"Builder completes paid room")
 	assert(game.station_sound.voices.has("build_complete"),"Paid construction completion emits its dedicated cue")
 	assert(game.resources==paid,"Construction does not charge twice or award resources")

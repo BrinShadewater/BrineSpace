@@ -52,6 +52,28 @@ func run() -> void:
 		game.powered_room_cells[info[1]] = true
 	game.test_walker_cell = origin
 	game.veld_npc.decision_rng.seed = 5012
+	# Only the selected architect wakes at the core since the Sept 8 renewal; the
+	# others start sealed in cryo wards. Record the post-rescue crew and place
+	# both architects on clear floor, as tests/test_bill_npc.gd does.
+	game.architect_run = {"selected":"bill"}
+	game.recovered_crew = [{"architect_id":"bill","alive":true,"id":"core_architect","name":game.Architects.NAMES.bill,"origin":game.Architects.CORE_CELL},{"architect_id":"veld","alive":true,"id":"architect_veld","name":game.Architects.NAMES.veld,"origin":game.Architects.CORE_CELL}]
+	var spawn_actors := [game.bill_npc, game.veld_npc]
+	var spawn_offsets := [Vector2.ZERO, Vector2(100, 0)]
+	for i in range(spawn_actors.size()):
+		var actor = spawn_actors[i]
+		actor.rebuild(game)
+		var want: Vector2 = (Vector2(origin)+Vector2.ONE*0.5)*384.0+spawn_offsets[i]
+		var best := -1
+		var best_distance := INF
+		for point_id in actor.room_nodes.get(origin, []):
+			var point: Vector2 = actor.graph.get_point_position(point_id)
+			if actor.spawn_clear(point) and actor.can_stand(point) and point.distance_squared_to(want) < best_distance:
+				best = point_id
+				best_distance = point.distance_squared_to(want)
+		check(best >= 0, "Fixture finds clear floor for architect %d" % i)
+		if best >= 0:
+			actor.foot = actor.graph.get_point_position(best)
+			actor.active = true
 	game._update_test_walker(0.1)
 	var veld = game.veld_npc
 	check(game.has_dr_veld() and game.has_test_walker(), "Both characters spawn")
@@ -72,8 +94,15 @@ func run() -> void:
 	var v0: Vector2 = veld.foot
 	for i in range(2400):
 		var old: Vector2 = veld.foot
+		var old_path: PackedVector2Array = veld.path.duplicate()
 		game._update_test_walker(0.1)
-		check(veld.segment_clear(old, veld.foot), "Veld movement clears room props and walls")
+		# A frame can pass a path corner: the straight chord then cuts the corner
+		# even though both walked legs are clear (tests/test_bill_npc.gd traces
+		# legs for the same reason). Check the legs through that waypoint.
+		var moved_clear: bool = veld.segment_clear(old, veld.foot)
+		if not moved_clear and not old_path.is_empty():
+			moved_clear = veld.segment_clear(old, old_path[0]) and veld.segment_clear(old_path[0], veld.foot)
+		check(moved_clear, "Veld movement clears room props and walls")
 		check(old.distance_to(veld.foot) <= 4.601, "Veld does not teleport")
 		states[veld.state] = true
 		moved_bill = moved_bill or game.bill_npc.foot.distance_to(b0) > 20
