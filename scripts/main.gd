@@ -3822,16 +3822,7 @@ func _load_resource_icon_textures() -> void:
 			resource_icon_textures[id] = texture
 
 func _load_raw_png_texture(path: String) -> Texture2D:
-	if ResourceLoader.exists(path):
-		var resource := ResourceLoader.load(path)
-		if resource is Texture2D:
-			return resource
-	var image := Image.new()
-	var error := image.load(path)
-	if error != OK:
-		return null
-	var texture := ImageTexture.create_from_image(image)
-	return texture
+	return preload("res://scripts/safe_image.gd").raw_texture(path)
 
 func _load_card_textures() -> void:
 	for id in room_texture_paths:
@@ -3840,15 +3831,7 @@ func _load_card_textures() -> void:
 			card_textures[id] = texture
 
 func _load_card_thumbnail(path: String) -> Texture2D:
-	if ResourceLoader.exists(path):
-		var resource := ResourceLoader.load(path)
-		if resource is Texture2D:
-			return resource
-	var image := Image.new()
-	var error := image.load(path)
-	if error != OK:
-		return null
-	return ImageTexture.create_from_image(image)
+	return preload("res://scripts/safe_image.gd").raw_texture(path)
 
 func _default_card_rotation(id: String) -> int:
 	if id=="corner":

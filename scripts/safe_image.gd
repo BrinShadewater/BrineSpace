@@ -20,6 +20,32 @@ static func load_png(image: Image, path: String) -> Error:
 	image.copy_from(placeholder())
 	return error
 
+static func raw_texture(path: String) -> Texture2D:
+	# Raw bytes first: most rasters use importer="keep"/"skip"
+	# (tools/set_raw_png_import_keep.py) and cannot load through ResourceLoader.
+	# The loader is only the fallback for normal-imported textures whose raw
+	# source is absent. Returns null on failure so callers can choose a fallback.
+	var image := raw_image(path)
+	if image != null:
+		return ImageTexture.create_from_image(image)
+	if ResourceLoader.exists(path):
+		var resource = ResourceLoader.load(path)
+		if resource is Texture2D:
+			return resource
+	return null
+
+static func raw_image(path: String) -> Image:
+	if not FileAccess.file_exists(path):
+		return null
+	var bytes := FileAccess.get_file_as_bytes(path)
+	var image := Image.new()
+	var error := ERR_FILE_UNRECOGNIZED
+	match path.get_extension().to_lower():
+		"png": error = image.load_png_from_buffer(bytes)
+		"jpg", "jpeg": error = image.load_jpg_from_buffer(bytes)
+		"webp": error = image.load_webp_from_buffer(bytes)
+	return image if error == OK and not image.is_empty() else null
+
 static func placeholder() -> Image:
 	var result := Image.create(64,64,false,Image.FORMAT_RGBA8)
 	result.fill(Color(0.24,0.10,0.22,1))
