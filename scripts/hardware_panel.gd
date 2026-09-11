@@ -79,18 +79,22 @@ void fragment() {
 	var column:=VBoxContainer.new(); add_child(column)
 	var heading:=Label.new(); heading.text="STATION CONTROLS"; heading.add_theme_color_override("font_color",Color("c5d6d2")); heading.add_theme_font_size_override("font_size",13); column.add_child(heading)
 	var row:=HBoxContainer.new(); row.add_theme_constant_override("separation",6); column.add_child(row)
-	add_control(row,"power","POWER",Vector2(96,132),"heavy-lever-v1/raised.tres","heavy-lever-v1/lowered.tres","Drag down for power on; up for off. Click or Enter also toggles. Stored reserves remain; crew still consume food and oxygen.")
-	add_control(row,"comms","COMMS",Vector2(86,132),"comms-speaker-v2/idle.tres","comms-speaker-v2/active.tres","Open the comms window")
+	# Full literal paths: tools/build_release_manifest.py expands any quoted
+	# folder-only prefix (in code or comments) into that whole folder; the old
+	# UI-root prefix shipped title-art review files and the owner's likeness
+	# reference photo. Name each control folder in full.
+	add_control(row,"power","POWER",Vector2(96,132),"res://brineui/heavy-lever-v1/raised.tres","res://brineui/heavy-lever-v1/lowered.tres","Drag down for power on; up for off. Click or Enter also toggles. Stored reserves remain; crew still consume food and oxygen.")
+	add_control(row,"comms","COMMS",Vector2(86,132),"res://brineui/comms-speaker-v2/idle.tres","res://brineui/comms-speaker-v2/active.tres","Open the comms window")
 	var grid:=GridContainer.new(); grid.columns=3; grid.add_theme_constant_override("h_separation",8); grid.add_theme_constant_override("v_separation",6); row.add_child(grid)
 	for entry in [["walls","WALLS/BASE","Show or hide room shells and station foundations"],["sprinklers","SPRINKLERS","Visible spray only; fire suppression is not implemented"],["doors","DOORS","Lock/unlock internal crew doors. Drone transfers hold while locked; airlock safety cycles remain separate."],["interior","INT. LIGHTS","Turn room lighting on/off"],["exterior","EXT. LIGHTS","Turn exterior marker lights on/off"],["pumps","PUMPS","Enable powered bilge drainage and water-producing rooms"]]:
 		var prefix: String={"walls":"lever","sprinklers":"lever","doors":"rocker","pumps":"push"}.get(entry[0],"slide")
 		var dimensions:=Vector2(88,60 if entry[0] in ["walls","sprinklers","doors"] else 46)
-		add_control(grid,entry[0],entry[1],dimensions,"industrial-switches-v1/"+prefix+"-off.tres","industrial-switches-v1/"+prefix+"-on.tres",entry[2])
+		add_control(grid,entry[0],entry[1],dimensions,"res://brineui/industrial-switches-v1/"+prefix+"-off.tres","res://brineui/industrial-switches-v1/"+prefix+"-on.tres",entry[2])
 	refresh()
 func add_control(parent, key: String, caption: String, dimensions: Vector2, off: String, on: String, tip: String) -> void:
 	var column:=VBoxContainer.new(); column.add_theme_constant_override("separation",2); parent.add_child(column)
 	var button:=HardwareButton.new(); button.host=self; button.key=key; button.custom_minimum_size=dimensions
-	button.idle=load("res://brineui/"+off); button.engaged=load("res://brineui/"+on); button.tooltip_text=tip
+	button.idle=load(off); button.engaged=load(on); button.tooltip_text=tip
 	button.disabled=false; column.add_child(button)
 	var label:=Label.new(); label.text=caption; label.add_theme_color_override("font_color",Color("bdceca")); label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 	label.add_theme_constant_override("line_spacing",0); label.add_theme_font_size_override("font_size",12); column.add_child(label)
