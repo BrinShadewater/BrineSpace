@@ -64,7 +64,12 @@ func _init() -> void:
 	expect(instance.placed_rooms.is_empty() and instance.resources.metal == 7, "Unaffordable build rejected without spending")
 	instance.resources.data = 2
 	instance._on_grid_clicked(Vector2i(10, 10))
-	expect(instance.placed_rooms.size() == 1 and instance.resources.metal == 0 and instance.resources.data == 0, "Actual build spends 7 Metal and 2 Data")
+	# Paid placement queues an architect-built order since the Sept 8 construction
+	# pass; costs are spent up front. Completion is covered by the crew
+	# construction tests, so place the room directly for the economy checks below.
+	expect(instance.drone_fleet.reserved(Vector2i(10, 10)) and instance.resources.metal == 0 and instance.resources.data == 0, "Actual build spends 7 Metal and 2 Data and queues construction")
+	instance.drone_fleet.orders.clear()
+	add_room(instance, "tidal_condenser", Vector2i(10, 10), instance.selected_rotation)
 	instance.resources.power = 2
 	var before_water: int = instance.resources.water
 	instance._apply_room_economy()

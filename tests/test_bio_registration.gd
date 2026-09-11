@@ -12,7 +12,9 @@ func run() -> void:
 	for q in range(4):
 		view.configure_embedded(q,[],false,0.0)
 		check(view.layout[0].kind==0,"Bio tee kind")
-		check(view.props.size()==4,"Four complete Bio assemblies")
+		# Dressing furniture (bio-composition profile) is appended to props too;
+		# the four main-donor assemblies are what this audit counts.
+		check(view.props.filter(func(p): return not p.registration.get("dressing",false)).size()==4,"Four complete Bio assemblies")
 		for prop in view.props:
 			check(Rect2(-180,-180,360,360).encloses(view.prop_visual_bounds(prop)),"Full bounds: "+str(prop.id))
 			for other in view.props:
