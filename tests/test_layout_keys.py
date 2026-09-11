@@ -15,8 +15,10 @@ ROOT = Path(__file__).resolve().parents[1]
 ROOMS = ROOT / "rooms/full-wall-v1"
 # Prefixes read by room_layout_store.gd, room_asset_library.gd and room_layout_editor.gd.
 PREFIXES = {"size", "flip", "hidden", "order", "copy", "source", "library", "decor", "variant",
-            "variant_extent", "portable", "lighting", "locked", "group"}
-POINT_PREFIXES = {"copy", "library", "decor"}
+            "variant_extent", "portable", "lighting", "locked", "group",
+            # Editor layers: floor tiles/finishes (floor_tile_tools.gd) and light/riser prop ids.
+            "tile", "floor", "light", "riser"}
+POINT_PREFIXES = {"copy", "library", "decor", "light", "riser"}
 
 
 def is_point(value):
