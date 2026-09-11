@@ -32,7 +32,7 @@ func _character_layer() -> Control:
 	layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var body := Polygon2D.new()
 	var source := Image.new()
-	var error := preload("res://scripts/safe_image.gd").load_png(source, "res://brineui/title/consistency-v1/cover.png")
+	var error := preload("res://scripts/safe_image.gd").load_png(source, "res://brineui/title/likeness-v2/cover.png")
 	if error != OK:
 		var fallback := TextureRect.new()
 		fallback.texture = ImageTexture.create_from_image(source)

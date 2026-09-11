@@ -5,6 +5,9 @@ required for a portrait candidate or a documentation-only change.
 
 ## Select the revision and dependencies
 
+For owner-requested uploads after release validation, follow
+[the saved Butler upload procedure](ITCH_UPLOAD_WORKFLOW.md).
+
 Read CURRENT_STATUS.md and the relevant build handoff. Later source work does not
 inherit an older executable's acceptance. In a shared checkout, freeze the selected
 source and runtime bindings when other art/animation work is in progress; name any
