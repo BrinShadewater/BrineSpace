@@ -105,12 +105,16 @@ func refresh() -> void:
 	for key in controls:
 		var entry: Dictionary=controls[key]
 		var enabled: bool=game.hardware.get(key,false)
+		var open: bool=key=="comms" and is_instance_valid(game.crew_comms) and game.crew_comms.panel.visible
+		# Polled every frame for comms visibility; theme overrides and text writes
+		# queue relayout even when unchanged, so apply them only on a state change.
+		if entry.get("applied_state",[])==[enabled,open]: continue
+		entry.applied_state=[enabled,open]
 		entry.button.target=1.0 if enabled else 0.0
 		entry.status.add_theme_color_override("font_color",Color("a8b99a") if enabled else Color("879e9e"))
 		if key=="doors" and enabled: entry.status.add_theme_color_override("font_color",Color("c0a56d"))
 		entry.status.text=("LOCKED" if enabled else "UNLOCKED") if key=="doors" else ("ON" if enabled else "OFF")
 		if key=="comms":
-			var open: bool=is_instance_valid(game.crew_comms) and game.crew_comms.panel.visible
 			entry.button.target=1.0 if open else 0.0
 			entry.status.text="OPEN" if open else "COMMS"
 func _process(_delta: float) -> void: refresh()

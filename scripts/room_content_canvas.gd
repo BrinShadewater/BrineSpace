@@ -1,6 +1,8 @@
 extends Node2D
 ## Per-room command retention preserves prop/crew depth order without a raster cache.
 const STATE_FIELDS = ["flood_water","flood_clock","quarter","operating","machine_clock","actor_clock","actor","external_actor_texture","walking","actor_direction","drone_deployed","hatch_open","recovery","architect_pod","cycle_pose","carriers"]
+const LIVE_STATE_FIELDS = ["flood_water","flood_clock","machine_clock","actor_clock","carriers","actor","external_actor_texture","walking","actor_direction"]
+var reuse_cheap_keys := not OS.get_cmdline_user_args().has("--uncached-slot-keys")
 var draw_origin := Vector2.ZERO
 var draw_scale := 1.0
 var clip_region := Rect2(-100000,-100000,200000,200000)
@@ -26,30 +28,38 @@ class DrawSlot extends Node2D:
 	func _draw() -> void:
 		get_parent().paint(self)
 
+func expanded_prop_entries(view, item: Dictionary) -> Array:
+	# Authored wall registrations own their drawing; inherited machinery passes
+	# address the older source atlas and cannot draw these replacement sections.
+	if item.prop.get("library_asset",false) or item.prop.get("full_wall",false):
+		return [item]
+	if view.has_method("retained_prop_passes"):
+		var parts: Array = []
+		for part in view.retained_prop_passes(item.prop):
+			var entry: Dictionary = item.duplicate()
+			entry.kind = "prop_pass"
+			entry.method = part.method
+			entry.live = part.live
+			parts.append(entry)
+		return parts
+	if view.has_method("draw_prop_base"):
+		var split: Array = []
+		var base: Dictionary = item.duplicate()
+		base.kind = "prop_base"
+		split.append(base)
+		if not item.prop.registration.get("dressing",false):
+			var effect: Dictionary = item.duplicate()
+			effect.kind = "prop_effects"
+			split.append(effect)
+		return split
+	return [item]
+
 func submit(view, queue: Array) -> void:
 	var started := Time.get_ticks_usec() if profile_enabled else 0
 	draw_usec = 0
 	var expanded: Array = []
 	for item in queue:
-		# Authored wall registrations own their drawing; inherited machinery passes
-		# address the older source atlas and cannot draw these replacement sections.
-		if item.kind == "prop" and (item.prop.get("library_asset",false) or item.prop.get("full_wall",false)):
-			expanded.append(item)
-		elif item.kind == "prop" and view.has_method("retained_prop_passes"):
-			for part in view.retained_prop_passes(item.prop):
-				var entry: Dictionary = item.duplicate()
-				entry.kind = "prop_pass"
-				entry.method = part.method
-				entry.live = part.live
-				expanded.append(entry)
-		elif item.kind == "prop" and view.has_method("draw_prop_base"):
-			var base: Dictionary = item.duplicate()
-			base.kind = "prop_base"
-			expanded.append(base)
-			if not item.prop.registration.get("dressing",false):
-				var effect: Dictionary = item.duplicate()
-				effect.kind = "prop_effects"
-				expanded.append(effect)
+		if item.kind == "prop": expanded.append_array(expanded_prop_entries(view,item))
 		else: expanded.append(item)
 	queue = expanded
 	if renderer != view:
@@ -62,15 +72,12 @@ func submit(view, queue: Array) -> void:
 	# Shared room views are reconfigured for other rooms before child draws run.
 	view_state = view_state.duplicate(true)
 	static_state = view_state.duplicate()
-	static_state.erase("flood_water")
-	static_state.erase("flood_clock")
-	static_state.erase("machine_clock")
-	static_state.erase("actor_clock")
-	static_state.erase("carriers")
-	static_state.erase("actor")
-	static_state.erase("external_actor_texture")
-	static_state.erase("walking")
-	static_state.erase("actor_direction")
+	for field in LIVE_STATE_FIELDS: static_state.erase(field)
+	# Cheap slot key: view identity + layout apply serial + the static scalar
+	# values, compared as a flat array instead of deep-walking prop dictionaries.
+	var static_key: Array = [view.get_instance_id(),preload("res://scripts/room_layout_store.gd").apply_serial]
+	for field in state_fields:
+		if field not in LIVE_STATE_FIELDS: static_key.append(view_state[field])
 	while slots.size() < queue.size():
 		var slot := DrawSlot.new()
 		add_child(slot)
@@ -84,11 +91,22 @@ func submit(view, queue: Array) -> void:
 		var next_transform := [draw_origin,draw_scale]
 		var transform_changed: bool = next_transform != slot.draw_transform
 		slot.draw_transform = next_transform
-		var next_key := [view.get_instance_id(),item,static_state]
-		var changed: bool = next_key != slot.key
+		var changed: bool
+		if reuse_cheap_keys and item.kind in ["prop","prop_base","prop_effects","prop_pass"]:
+			# Prop entries are stable Dictionary objects (see _sorted_content_queue);
+			# identity plus the static key covers every invalidating change, with
+			# layout mutations signalled through the store's apply serial.
+			changed = not (is_same(slot.item,item) and slot.key == static_key)
+			if changed:
+				slot.key = static_key.duplicate()
+				slot.item = item
+		else:
+			var next_key := [view.get_instance_id(),item,static_state]
+			changed = next_key != slot.key
+			if changed:
+				slot.key = next_key.duplicate(true)
+				slot.item = item.duplicate(true)
 		if changed:
-			slot.key = next_key.duplicate(true)
-			slot.item = item.duplicate(true)
 			slot.live = true
 			if item.kind in ["prop","prop_base","prop_effects","prop_pass"]:
 				# Unclassified props stay live. BRINE's dressing includes animated screens.

@@ -37,7 +37,7 @@ func run() -> void:
 	for room in game.placed_rooms:
 		var view = game.grid_view._bill_room_view(room)
 		if view != null and not views.has(view): views.append(view)
-	game.Architects.advance_core(game,7.0)
+	game.Architects.advance_core(game,10.0)
 	game._set_paused(true,false)
 	game.grid_view.cull_room_drawing = false
 	game._refresh_all()

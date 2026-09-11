@@ -60,7 +60,10 @@ static func prop_material(slot: Node2D,prop: Dictionary,water: float,clock: floa
 		slot.material.set_shader_parameter("world_scale",parameters[1])
 		slot.material.set_shader_parameter("depth",water)
 		slot.set_meta("flood_parameters",parameters)
-	slot.material.set_shader_parameter("clock",clock)
+	# The clock only changes while unpaused; skip the per-prop uniform upload otherwise.
+	if slot.get_meta("flood_clock",INF)!=clock:
+		slot.material.set_shader_parameter("clock",clock)
+		slot.set_meta("flood_clock",clock)
 
 static func draw_crew_shadow(canvas,foot: Vector2,water: float) -> void:
 	var depth := clampf(water,0,1)
@@ -239,7 +242,16 @@ static func draw_front(canvas,game,rooms: Array,size: float) -> void:
 		var water := float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0))
 		var center: Vector2=(Vector2(room.pos)+Vector2.ONE*0.5)*size
 		var time: float=game.get_visual_time_seconds()
-		draw_door_currents(canvas,game,room,center,scale,time)
+		# Dry stations dominate normal play; skip the per-room door-current state
+		# machine when this room, both drawn-side neighbors, and their wash history
+		# are dry — matching draw_door_currents' own per-direction early-out+erase.
+		var grid=game.grid_view
+		var dry_doors: bool=water<=0.015 \
+			and float(game.occupied.get(room.pos+Vector2i.RIGHT,{}).get("water_level",0))<=0.015 \
+			and float(game.occupied.get(room.pos+Vector2i.DOWN,{}).get("water_level",0))<=0.015 \
+			and not grid.door_wet_history.has([room.pos,room.pos+Vector2i.RIGHT]) \
+			and not grid.door_wet_history.has([room.pos,room.pos+Vector2i.DOWN])
+		if not dry_doors: draw_door_currents(canvas,game,room,center,scale,time)
 		draw_repair_torch(canvas,game,room,center,scale,time)
 		if water<=0.001: continue
 		if room.id not in ["corridor","corner","tee_corridor"]:

@@ -238,6 +238,49 @@ func draw_registered_prop(prop: Dictionary) -> void:
 
 var retain_shell_queues := not OS.get_cmdline_user_args().has("--rebuild-shell-queues")
 var shell_queues := {}
+var reuse_prop_queue := not OS.get_cmdline_user_args().has("--uncached-prop-queue")
+var prop_queue_cache: Array = []
+var prop_queue_sources: Array = []
+var prop_queue_sort_values: Array = []
+var prop_queue_builds := 0
+
+func _sorted_content_queue(live: Array) -> Array:
+	# The prop set and its depth values change only on rebuild or layout apply;
+	# reuse their sorted arrangement (frozen equal-depth order included) and
+	# insert the few live actor/crew entries by depth. Entries stay the same
+	# Dictionary objects across frames, which the content canvas relies on.
+	var valid: bool = prop_queue_sources.size() == props.size()
+	if valid:
+		for i in range(props.size()):
+			if not is_same(prop_queue_sources[i],props[i]) or prop_queue_sort_values[i] != float(props[i].sort_y):
+				valid = false
+				break
+	if not valid:
+		prop_queue_builds += 1
+		prop_queue_sources = []
+		prop_queue_sort_values = []
+		var base: Array = []
+		for prop in props:
+			prop_queue_sources.append(prop)
+			prop_queue_sort_values.append(float(prop.sort_y))
+			base.append({"kind":"prop","sort_y":prop.sort_y,"prop":prop})
+		base.sort_custom(func(a: Dictionary,b: Dictionary)->bool: return float(a.sort_y)<float(b.sort_y))
+		# Pre-expand split passes so the content canvas receives the same stable
+		# Dictionary objects every frame (its cheap slot keys rely on identity).
+		var expanded: Array = []
+		for entry in base:
+			expanded.append_array(retained_content_host.expanded_prop_entries(self,entry))
+		prop_queue_cache = expanded
+	var queue: Array = prop_queue_cache.duplicate()
+	for entry in live:
+		var depth := float(entry.sort_y)
+		var at := queue.size()
+		for j in range(queue.size()):
+			if float(queue[j].sort_y) > depth:
+				at = j
+				break
+		queue.insert(at,entry)
+	return queue
 var shell_queue_builds := 0
 func draw_floor_overlays(_center: Vector2) -> void:
 	pass
@@ -262,6 +305,14 @@ func draw_room_world(include_floor := true) -> void:
 			var center := Vector2(room.cell)*Geometry.CELL
 			draw_room_floor(center)
 			draw_floor_overlays(center)
+	if retained_content_host != null and shell_pass == 2 and reuse_prop_queue:
+		var live: Array = []
+		if show_actor:
+			live.append({"kind":"actor","sort_y":actor.y+(float(external_actor_texture.get_meta("crew_depth_offset",0)) if external_actor_texture!=null else 0.0)})
+		for member in external_actors:
+			live.append({"kind":"crew","sort_y":member.position.y+(float(member.texture.get_meta("crew_depth_offset",0)) if member.texture!=null else 0.0),"member":member})
+		retained_content_host.submit(self,_sorted_content_queue(live))
+		return
 	var queue: Array = []
 	for prop in props:
 		queue.append({"kind":"prop","sort_y":prop.sort_y,"prop":prop})

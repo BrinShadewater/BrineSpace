@@ -1,5 +1,21 @@
 # BrineSpace current status
 
+## Performance pass phases 1+2 — September 11, 2026
+
+[Performance handoff](PERFORMANCE_PASS_2026-09-11.md): phase 1 (retained environment passes, layout-store memoization, door/surface key memos, idempotent hardware panel, flooded quick wins) plus phase 2 (sorted prop-queue caching with pre-expanded stable entries; cheap identity+serial DrawSlot keys replacing per-slot deep dictionary compares). Measured on the same build via opt-out flags: **100-room fit 74.8→61.4 ms (−17.9%)**, 50-room fit −21%, save hitch −43%. All native parity gates pass — content-cache parity's 33 capture pairs verified pixel-identical with a comparator (the GD test alone does not compare pixels) — plus the new environment parity harness and the headless battery (176 preferred orientations, 47 cards, companion water). Five parity fixtures' 7-second thaws corrected to the 10-second pod duration. Dense fit still misses the 60 fps budget; the remaining headroom (render_into internals, painting, GPU) and the owner-decision options (mipmaps, atlasing) are recorded in the handoff, as is a pre-existing sub-perceptual fit-zoom capture variance in two old pixel comparators, reproduced on the unmodified code path. Source only; no executable rebuilt, no commit.
+
+## Bug-fix session — September 10, 2026
+
+[Bug-fix handoff](BUGFIX_SESSION_2026-09-10.md): companion water-mode hysteresis (personality starvation fix) with powerdown-exit wake, flood alerts no longer re-announce on Continue, flood-retreat re-validates its refuge mid-route, correct journal pet-refusal reasons, crew rest restored at crew hab/lounge rotation 2, rotated-door navigation walls corrected in the shared embedded-view path, MetaState fixture isolation (test_marsh_unlock now green), Josh swim-clearance guard, settings-panel crash guard, and test_bill_npc modernized to the post-thaw spawn model. Thirteen affected tests pass, including 176-orientation preferred layouts and 47 card bindings. Source only; owner behavior review pending; no executable rebuilt, no commit.
+
+## Starting-screen facial likeness - September 9, 2026
+
+[Title likeness handoff](TITLE_LIKENESS_2026-09-09.md): BRINE's starting-screen face revised toward the owner's supplied cover reference, preserving the body, stage and floating silhouette. Native 1600/960 layout, float and Reduced Motion checks passed; agent visual review complete. Source only; executable and itch.io build retain the prior title until the next release.
+
+## Butler upload workflow saved - September 9, 2026
+
+Future owner-requested Windows uploads should use the [saved Butler procedure](ITCH_UPLOAD_WORKFLOW.md). Reuse brinshadewater/brinespace:windows. First verified version: 2026-09-09-face-icon, build 1963891. Page remained Restricted; no new gameplay validation implied.
+
 ## BRINE face executable icon - September 9, 2026
 
 [Icon handoff](APP_ICON_2026-09-09.md): current BRINE portrait assigned to the project and Windows executable. Embedded icons reviewed at native sizes; release title launch passes. Updated playable folder: builds/BrineSpace-2026-09-09-face-icon/. Gameplay unchanged from the polished build.
@@ -134,11 +150,11 @@ Companion selector portraits now match architect portrait dimensions. End-of-loo
 
 ## September 9 BRINE layout restored
 
-Owner requested BRINE return to its pre-simplification arrangement. Restored its four authored quarters, original personal BRINE entry and matching card, including the lower workstations, servers and observation pedestal. Other rooms and their saved overrides are unchanged. BRINE is an explicit exception to the 3�4-asset direction. Four native editor/runtime comparisons and card consistency pass; capture reviewed. Evidence: `output/brine-layout-restore/`; no executable rebuilt.
+Owner requested BRINE return to its pre-simplification arrangement. Restored its four authored quarters, original personal BRINE entry and matching card, including the lower workstations, servers and observation pedestal. Other rooms and their saved overrides are unchanged. BRINE is an explicit exception to the 3�4-asset direction. Four native editor/runtime comparisons and card consistency pass; capture reviewed. Evidence: `output/brine-layout-restore/`; no executable rebuilt.
 
 ## September 9 uncluttered large-asset correction
 
-[Layout correction](LARGE_ASSET_LAYOUTS_2026-09-09.md) supersedes the denser pass below: 3�4 major assets per furnished room, with already simpler rooms left sparse. Removed 139 prop instances across 97 orientations; 188 native editor/runtime comparisons match. Updated saved removals with original-file backup, verified 176 native kept-prop lists, and refreshed 44 cards. Local changes only; no executable rebuilt.
+[Layout correction](LARGE_ASSET_LAYOUTS_2026-09-09.md) supersedes the denser pass below: 3�4 major assets per furnished room, with already simpler rooms left sparse. Removed 139 prop instances across 97 orientations; 188 native editor/runtime comparisons match. Updated saved removals with original-file backup, verified 176 native kept-prop lists, and refreshed 44 cards. Local changes only; no executable rebuilt.
 
 ## September 9 Marsh battery tradeoff
 
@@ -146,7 +162,7 @@ Owner requested BRINE return to its pre-simplification arrangement. Restored its
 
 ## September 9 preferred room layouts
 
-[Layout handoff](PREFERRED_LAYOUTS_2026-09-09.md): adopted the owner�s 49 saved orientations unchanged and extended larger equipment/selective clutter removal to the remaining furnished layouts. All 188 Studio entries covered; 176 furnished orientations pass door-route checks. Gameplay now matches free-placement saves, BRINE corner notches have matching collision, and 44 room cards are refreshed. Native editor/runtime parity, live core/recovery-pod routes, Studio workflow and card checks pass. Personal saves unchanged; owner visual review pending, no executable rebuilt.
+[Layout handoff](PREFERRED_LAYOUTS_2026-09-09.md): adopted the owner�s 49 saved orientations unchanged and extended larger equipment/selective clutter removal to the remaining furnished layouts. All 188 Studio entries covered; 176 furnished orientations pass door-route checks. Gameplay now matches free-placement saves, BRINE corner notches have matching collision, and 44 room cards are refreshed. Native editor/runtime parity, live core/recovery-pod routes, Studio workflow and card checks pass. Personal saves unchanged; owner visual review pending, no executable rebuilt.
 
 ## September 9 River and Josh companions
 

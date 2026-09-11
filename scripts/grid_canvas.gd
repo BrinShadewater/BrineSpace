@@ -281,6 +281,13 @@ var room_texture_variant_paths := {
 func _ready() -> void:
 	draw_target = self
 	RenderingServer.frame_pre_draw.connect(_align_camera_pixels)
+	for id in range(Env.size()):
+		var env_layer := EnvPass.new()
+		env_layer.host = self
+		env_layer.pass_id = id
+		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove"][id]
+		add_child(env_layer)
+		env_passes.append(env_layer)
 	for id in range(Surface.size()):
 		var layer := SurfacePass.new()
 		layer.host = self
@@ -882,6 +889,21 @@ class SurfacePass extends Node2D:
 	func _draw() -> void:
 		host._draw_surface(self,pass_id)
 
+# Environment layers below the station surfaces. STATIC_* retain their commands
+# between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
+enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE }
+class EnvPass extends Node2D:
+	var host
+	var pass_id := 0
+	func _draw() -> void:
+		host._draw_environment_pass(self,pass_id)
+var env_passes: Array = []
+var retain_environment := not OS.get_cmdline_user_args().has("--redraw-environment")
+var env_below_key: Array = []
+var env_foundations_key: Array = []
+var env_below_rebuilds := 0
+var env_foundation_rebuilds := 0
+
 var draw_target: CanvasItem
 var surface_passes: Array = []
 var surface_key: Array = []
@@ -889,6 +911,7 @@ var retain_static_surfaces := not OS.get_cmdline_user_args().has("--redraw-stati
 var floor_rebuilds := 0
 var wall_rebuilds := 0
 var retain_doors_lights := not OS.get_cmdline_user_args().has("--redraw-doors-lights")
+var surface_key_all_rooms := OS.get_cmdline_user_args().has("--surface-key-all-rooms")
 var door_surface_key: Array = []
 var light_surface_key: Array = []
 var door_rebuilds := 0
@@ -949,14 +972,19 @@ func _surface_state() -> Array:
 	for room in visible_draw_rooms:
 		if not _uses_layered_art(room): legacy_clock = main.visual_time_seconds
 	# Continuous water depth belongs to the live effect, not cached floor/wall geometry.
+	# Snapshot only the rooms that can currently paint pixels: an off-screen room's
+	# mutation has no visual effect until it scrolls in, and scrolling changes the
+	# visible room list (and therefore this key) anyway. The placed-room count stays
+	# in the key so additions/removals invalidate even before they become visible.
 	var structural_rooms: Array=[]
-	for room in main.placed_rooms:
+	var snapshot_rooms: Array = main.placed_rooms if surface_key_all_rooms else visible_draw_rooms
+	for room in snapshot_rooms:
 		var structural: Dictionary=room.duplicate()
 		structural.erase("water_level")
 		structural.erase("hull_crack")
 		structural.erase("leak_repair")
 		structural_rooms.append(structural)
-	return [main.hardware.duplicate(),_cell_size(),structural_rooms,main.powered_room_cells,rooms,preload("res://scripts/room_layout_store.gd").revision,
+	return [main.hardware.duplicate(),_cell_size(),structural_rooms,main.placed_rooms.size(),main.powered_room_cells,rooms,preload("res://scripts/room_layout_store.gd").revision,
 		preload("res://scripts/title_settings.gd").raised_walls,main.selected_room_cell,main.architect_run.get("core",{}).is_empty(),legacy_clock]
 
 var flood_surfaces: Dictionary = {}
@@ -993,28 +1021,35 @@ func _draw() -> void:
 	if retain_static_surfaces: preload("res://scripts/flood_visuals.gd").update_surfaces(self,main,visible_draw_rooms,cell_size)
 	var environment_stage := Time.get_ticks_usec() if profile_draw else 0
 	_draw_space_background(grid_pixel_size)
-	_draw_stars()
 	if profile_draw: environment_stage = _profile_draw_stage("env_seabed",environment_stage)
-	_draw_underwater_depth()
-	if profile_draw: environment_stage = _profile_draw_stage("env_haze",environment_stage)
-	_draw_foundations()
-	_draw_foundations(true)
-	if profile_draw: environment_stage = _profile_draw_stage("env_foundations",environment_stage)
-	rock_view.draw_into(draw_target,main.wrecks,cell_size,main.visual_time_seconds,main.selected_room_cell,false)
-	if profile_draw: environment_stage = _profile_draw_stage("env_rocks",environment_stage)
-	wreck_view.draw_into(draw_target,main.wrecks,cell_size,main.visual_time_seconds,main.selected_room_cell,false)
-	if profile_draw: environment_stage = _profile_draw_stage("env_wrecks",environment_stage)
-	_draw_cryo_derelicts(main,cell_size)
-	if profile_draw: environment_stage = _profile_draw_stage("env_cryo",environment_stage)
-	harvest_site_art.draw_into(draw_target,main.drone_fleet.sites,main.occupied,cell_size,main.selected_room_cell)
-	# Exterior ROVs are below every station floor, hull and crew canvas.
-	_draw_drones(main)
+	if retain_environment and retain_static_surfaces:
+		# Stars, haze rects and foundations are static between scroll/zoom/room
+		# changes; keep them on retained child passes and revalidate cheap keys.
+		# Requires retained surfaces: direct-painted floors land on the parent
+		# canvas, which composites BELOW these child passes.
+		for env_layer in env_passes: env_layer.show()
+		var below_key: Array=[cell_size,_visible_cell_range(main,cell_size)]
+		if below_key != env_below_key:
+			env_below_key = below_key.duplicate(true)
+			env_passes[Env.STATIC_BELOW].queue_redraw()
+		var foundations_key := _environment_foundations_key(main,cell_size)
+		if foundations_key != env_foundations_key:
+			env_foundations_key = foundations_key.duplicate(true)
+			env_passes[Env.STATIC_FOUNDATIONS].queue_redraw()
+		env_passes[Env.LIVE_LINES].queue_redraw()
+		env_passes[Env.LIVE_ABOVE].queue_redraw()
+		if profile_draw: environment_stage = _profile_draw_stage("env_validation",environment_stage)
+	else:
+		for env_layer in env_passes: env_layer.hide()
+		_draw_stars()
+		if profile_draw: environment_stage = _profile_draw_stage("env_stars",environment_stage)
+		_draw_underwater_depth()
+		if profile_draw: environment_stage = _profile_draw_stage("env_haze",environment_stage)
+		_draw_foundations()
+		_draw_foundations(true)
+		if profile_draw: environment_stage = _profile_draw_stage("env_foundations",environment_stage)
+		_draw_environment_above(main,cell_size,grid_pixel_size)
 	stage_time = _profile_draw_stage("environment", stage_time)
-	if main.admin_mode:
-		for x in range(GRID_SIZE + 1):
-			var c := Color(0.18, 0.28, 0.34, 0.42)
-			draw_target.draw_line(Vector2(x * cell_size, 0), Vector2(x * cell_size, grid_pixel_size), c)
-			draw_target.draw_line(Vector2(0, x * cell_size), Vector2(grid_pixel_size, x * cell_size), c)
 	if not retain_static_surfaces:
 		for layer in surface_passes: layer.hide()
 		surface_key = []
@@ -1040,6 +1075,60 @@ func _draw() -> void:
 	surface_passes[Surface.FOREGROUND].queue_redraw()
 	render_door_cache_active = false
 
+func _draw_environment_above(main, cell_size: float, grid_pixel_size: float) -> void:
+	# Everything the environment draws above the foundations, in the original order.
+	var environment_stage := Time.get_ticks_usec() if profile_draw else 0
+	rock_view.draw_into(draw_target,main.wrecks,cell_size,main.visual_time_seconds,main.selected_room_cell,false)
+	if profile_draw: environment_stage = _profile_draw_stage("env_rocks",environment_stage)
+	wreck_view.draw_into(draw_target,main.wrecks,cell_size,main.visual_time_seconds,main.selected_room_cell,false)
+	if profile_draw: environment_stage = _profile_draw_stage("env_wrecks",environment_stage)
+	_draw_cryo_derelicts(main,cell_size)
+	if profile_draw: environment_stage = _profile_draw_stage("env_cryo",environment_stage)
+	harvest_site_art.draw_into(draw_target,main.drone_fleet.sites,main.occupied,cell_size,main.selected_room_cell)
+	# Exterior ROVs are below every station floor, hull and crew canvas.
+	_draw_drones(main)
+	if main.admin_mode:
+		for x in range(GRID_SIZE + 1):
+			var c := Color(0.18, 0.28, 0.34, 0.42)
+			draw_target.draw_line(Vector2(x * cell_size, 0), Vector2(x * cell_size, grid_pixel_size), c)
+			draw_target.draw_line(Vector2(0, x * cell_size), Vector2(grid_pixel_size, x * cell_size), c)
+
+func _visible_cell_range(main, size: float) -> Array:
+	var visible := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size).grow(size)
+	return [Vector2i((visible.position/size).floor()),Vector2i((visible.end/size).ceil())]
+
+func _environment_foundations_key(main, size: float) -> Array:
+	var key: Array=[size,main.hardware.walls]
+	for room in visible_draw_rooms:
+		key.append([room.pos,room.id,_is_narrow_corridor(room),_foundation_exposed(room.pos)])
+	var region := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size).grow(size)
+	for cell in main.wrecks:
+		if main.occupied.has(cell) or not preload("res://scripts/wreck_field.gd").blocks(main.wrecks,cell): continue
+		if cull_room_drawing and not region.intersects(Rect2(Vector2(cell)*size,Vector2.ONE*size)): continue
+		key.append([cell,main.wrecks[cell].kind])
+	return key
+
+func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
+	draw_target = target
+	var main = _get_main()
+	var cell_size := _cell_size()
+	match pass_id:
+		Env.STATIC_BELOW:
+			_draw_stars()
+			_draw_underwater_depth("rects")
+			env_below_rebuilds += 1
+		Env.LIVE_LINES:
+			_draw_underwater_depth("lines")
+		Env.STATIC_FOUNDATIONS:
+			_draw_foundations(false,"base")
+			_draw_foundations(true,"base")
+			env_foundation_rebuilds += 1
+		Env.LIVE_ABOVE:
+			_draw_foundations(false,"shimmer")
+			_draw_foundations(true,"shimmer")
+			_draw_environment_above(main,cell_size,GRID_SIZE*cell_size)
+	draw_target = self
+
 func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	render_door_cache_active = reuse_frame_doors
 	draw_target = target
@@ -1049,19 +1138,21 @@ func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 
 var foundation_textures: Dictionary = {}
 
-func _draw_underwater_depth() -> void:
+func _draw_underwater_depth(part := "all") -> void:
 	var main = _get_main()
 	var size := _cell_size()
-	var visible := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size).grow(size)
-	var first := Vector2i((visible.position/size).floor())
-	var last := Vector2i((visible.end/size).ceil())
+	var cell_range := _visible_cell_range(main,size)
+	var first: Vector2i = cell_range[0]
+	var last: Vector2i = cell_range[1]
 	var clock: float = main.get_visual_time_seconds()
 	for y in range(first.y,last.y+1):
 		for x in range(first.x,last.x+1):
 			var cell := Vector2(x,y)
-			var distance := cell.distance_to(Vector2(20,20))
-			# Haze affects the seabed only; elevated room art stays crisp.
-			draw_target.draw_rect(Rect2(cell*size,Vector2.ONE*size),Color(0.07,0.20,0.24,clampf(distance*0.004,0.025,0.10)))
+			if part != "lines":
+				var distance := cell.distance_to(Vector2(20,20))
+				# Haze affects the seabed only; elevated room art stays crisp.
+				draw_target.draw_rect(Rect2(cell*size,Vector2.ONE*size),Color(0.07,0.20,0.24,clampf(distance*0.004,0.025,0.10)))
+			if part == "rects": continue
 			if posmod(x*7+y*11,3)!=0: continue
 			var phase := float(x*13+y*17)
 			var points := PackedVector2Array()
@@ -1168,7 +1259,9 @@ func _draw_corridor_foundations(room: Dictionary, size: float) -> void:
 		draw_target.draw_texture_rect_region(texture,Rect2(origin,Vector2(width,height)),Rect2(25,138,1934,596),Color(0.72,0.78,0.80))
 		_draw_foundation_contact(origin,width,height,true)
 
-func _draw_foundations(exterior := false) -> void:
+func _draw_foundations(exterior := false, mode := "full") -> void:
+	# mode "full": everything (single-pass fallback). "base": static geometry only,
+	# for the retained pass. "shimmer": only the animated highlight, for the live pass.
 	if not _get_main().hardware.walls: return
 	var main = _get_main()
 	var size := _cell_size()
@@ -1183,11 +1276,11 @@ func _draw_foundations(exterior := false) -> void:
 			subjects.append({"pos":cell,"id":main.wrecks[cell].kind})
 	for room in subjects:
 		if not exterior and _is_narrow_corridor(room):
-			_draw_corridor_foundations(room,size)
+			if mode != "shimmer": _draw_corridor_foundations(room,size)
 			continue
 		if not _foundation_exposed(room.pos): continue
 		if exterior and room.id=="basalt":
-			_draw_subfloor(room.pos,size,size,true,true)
+			if mode != "shimmer": _draw_subfloor(room.pos,size,size,true,true)
 			continue
 		var variant := _foundation_variant(room.pos)
 		if exterior: variant="weathered"
@@ -1204,12 +1297,14 @@ func _draw_foundations(exterior := false) -> void:
 		var height: float = width*source.size.y/source.size.x
 		var origin := Vector2(room.pos)*size+Vector2((size-width)*0.5,size-size*0.027)
 		if exterior and room.id=="basalt": origin.y= (room.pos.y+0.83)*size
-		_draw_foundation_contact(origin,width,height)
-		_draw_subfloor(room.pos,width,size,exterior,false)
-		draw_target.draw_texture_rect_region(foundation_texture,Rect2(origin,Vector2(width,height)),source,Color(0.72,0.78,0.80))
-		_draw_foundation_contact(origin,width,height,true)
-		var shimmer: float=0.025+0.015*sin(main.get_visual_time_seconds()*0.3+room.pos.x*2.0)
-		draw_target.draw_line(origin+Vector2(width*0.12,size*0.037),origin+Vector2(width*0.77,size*0.037),Color(0.40,0.65,0.64,shimmer),maxf(1.0,size*0.004))
+		if mode != "shimmer":
+			_draw_foundation_contact(origin,width,height)
+			_draw_subfloor(room.pos,width,size,exterior,false)
+			draw_target.draw_texture_rect_region(foundation_texture,Rect2(origin,Vector2(width,height)),source,Color(0.72,0.78,0.80))
+			_draw_foundation_contact(origin,width,height,true)
+		if mode != "base":
+			var shimmer: float=0.025+0.015*sin(main.get_visual_time_seconds()*0.3+room.pos.x*2.0)
+			draw_target.draw_line(origin+Vector2(width*0.12,size*0.037),origin+Vector2(width*0.77,size*0.037),Color(0.40,0.65,0.64,shimmer),maxf(1.0,size*0.004))
 
 func _paint_surface(pass_id: int) -> void:
 	var main = _get_main()
@@ -1856,7 +1951,17 @@ func _compute_door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i) -> i
 		open_amount = (1.0 - progress) / 0.16
 	return maxi(drone_frame,clampi(int(round(open_amount * float(DOOR_OPEN_FRAMES - 1))), 0, DOOR_OPEN_FRAMES - 1))
 
+var drone_frame_cache := {}
+var drone_frame_tick := -1
 func _drone_door_frame(main, cell_a: Vector2i, cell_b: Vector2i) -> int:
+	# Called several times per room per frame from the door/surface state keys;
+	# drones do not move within a frame, so memoise per rendered frame.
+	var tick := Engine.get_process_frames()
+	if drone_frame_tick != tick:
+		drone_frame_tick = tick
+		drone_frame_cache.clear()
+	var memo_key := [cell_a,cell_b]
+	if drone_frame_cache.has(memo_key): return drone_frame_cache[memo_key]
 	var center := (Vector2(cell_a)+Vector2(cell_b))*0.5
 	var amount := 0.0
 	for drone in main.drone_fleet.drones.values():
@@ -1865,25 +1970,32 @@ func _drone_door_frame(main, cell_a: Vector2i, cell_b: Vector2i) -> int:
 		var next := Vector2i(drone.route[0])
 		if not ((previous==cell_a and next==cell_b) or (previous==cell_b and next==cell_a)): continue
 		amount = maxf(amount,clampf((0.34-Vector2(drone.position).distance_to(center))/0.15,0,1))
-	return roundi(amount*float(DOOR_OPEN_FRAMES-1))
+	var frame := roundi(amount*float(DOOR_OPEN_FRAMES-1))
+	drone_frame_cache[memo_key] = frame
+	return frame
+
+var crew_feet_cache := PackedVector2Array()
+var crew_feet_tick := -1
+func _crew_feet(main) -> PackedVector2Array:
+	# Actor positions are stable within a frame; gather them once instead of
+	# re-querying every actor for every door in _door_light_state.
+	var tick := Engine.get_process_frames()
+	if crew_feet_tick == tick: return crew_feet_cache
+	crew_feet_tick = tick
+	crew_feet_cache = PackedVector2Array()
+	var lift := Vector2(0, _cell_size() * 0.038)
+	if main.has_test_walker(): crew_feet_cache.append(main.get_test_walker_position() + lift)
+	if main.has_dr_veld(): crew_feet_cache.append(main.get_dr_veld_position() + lift)
+	if main.has_chief_branforth(): crew_feet_cache.append(main.get_chief_branforth_position() + lift)
+	if main.has_marsh(): crew_feet_cache.append(main.get_marsh_position() + lift)
+	for actor in main.companion_actors.values():
+		if actor.active: crew_feet_cache.append(actor.foot/384.0*_cell_size())
+	return crew_feet_cache
 
 func _nearest_crew_foot(main, center: Vector2) -> Vector2:
 	var nearest := Vector2(-1000000, -1000000)
-	if main.has_test_walker():
-		nearest = main.get_test_walker_position() + Vector2(0, _cell_size() * 0.038)
-	if main.has_dr_veld():
-		var foot: Vector2 = main.get_dr_veld_position() + Vector2(0, _cell_size() * 0.038)
+	for foot in _crew_feet(main):
 		if foot.distance_squared_to(center) < nearest.distance_squared_to(center): nearest = foot
-	if main.has_chief_branforth():
-		var foot: Vector2 = main.get_chief_branforth_position() + Vector2(0, _cell_size() * 0.038)
-		if foot.distance_squared_to(center) < nearest.distance_squared_to(center): nearest = foot
-	if main.has_marsh():
-		var foot: Vector2 = main.get_marsh_position() + Vector2(0, _cell_size() * 0.038)
-		if foot.distance_squared_to(center) < nearest.distance_squared_to(center): nearest = foot
-	for actor in main.companion_actors.values():
-		if not actor.active:continue
-		var foot: Vector2=actor.foot/384.0*_cell_size()
-		if foot.distance_squared_to(center)<nearest.distance_squared_to(center):nearest=foot
 	return nearest
 
 func _door_source_rect(frame_index: int) -> Rect2:

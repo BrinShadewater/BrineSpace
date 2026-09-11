@@ -49,7 +49,9 @@ func run() -> void:
 	editor.dirty=false;editor.rotation_drafts.clear();editor.close_editor()
 	await process_frame
 	Store.data={"room-brine_core/0":{ID:[at.x,at.y]}}
-	if ID.ends_with("-ne"): Store.data["room-brine_core/0"]["brine_dual_workstation"]=null
+	if ID.ends_with("-ne"):
+		Store.data["room-brine_core/0"]["brine_dual_workstation"]=null
+		Store.revision+=1 # Nested in-place edit; invalidate the shared merge cache.
 	root.size=Vector2i(512,512);root.content_scale_size=root.size;root.transparent_bg=true
 	var room=preload("res://rooms/underwater/brine-core/brine_core_view.gd").new();room.embedded=true;root.add_child(room);room.hide()
 	room.architect_pod={"id":"core_architect","architect_id":"bill","wake":0.0,"wake_duration":10.0,"recovered":false}

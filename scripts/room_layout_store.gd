@@ -35,6 +35,30 @@ static func positions(asset: String, q: int) -> Dictionary:
 	var result:=authored_positions(asset,q)
 	result.merge(data.get(key(asset,q),{}).duplicate(true),true)
 	return result
+
+static var reuse_layout_store := not OS.get_cmdline_user_args().has("--uncached-layout-store")
+static var merged_cache: Dictionary={}
+static var merged_cache_revision:=-1
+static var merged_cache_data=null
+static var apply_serial := 0
+static func shared_positions(asset: String, q: int) -> Dictionary:
+	# Read-only merged layout for the per-frame paths (apply, surface drawing).
+	# Callers must never mutate the result; use positions() for an owned copy.
+	if not reuse_layout_store: return positions(asset,q)
+	ensure_loaded()
+	if authored_cache_path!=defaults_path: authored_positions(asset,q) # Reload + bump revision.
+	# Fixtures and capture tools assign `data` wholesale without bumping revision;
+	# the identity check keeps that long-standing shortcut working.
+	if merged_cache_revision!=revision or not is_same(merged_cache_data,data):
+		merged_cache_revision=revision
+		merged_cache_data=data
+		merged_cache={}
+	var cache_key:=key(asset,q)
+	if not merged_cache.has(cache_key):
+		var result: Dictionary=authored_cache.get(cache_key,{}).duplicate(true)
+		result.merge(data.get(cache_key,{}).duplicate(true),true)
+		merged_cache[cache_key]=result
+	return merged_cache[cache_key]
 static func save_layout(asset: String, q: int, positions_to_save: Dictionary) -> Error:
 	ensure_loaded()
 	var next:=data.duplicate(true)
@@ -60,9 +84,18 @@ static func move_prop(prop: Dictionary, at: Vector2) -> void:
 static func apply(room, asset: String) -> bool:
 	room.set_meta("layout_asset",asset)
 	if room.has_meta("layout_editor_preview"): return false
-	var selected:=positions(asset,room.quarter)
-	var signature:=hash([asset,room.quarter,selected,room.props])
-	if room.get_meta("layout_apply_signature",-1)==signature: return false
+	var selected:=shared_positions(asset,room.quarter)
+	# The cheap early-out: (asset, quarter, store revision) determine `selected`,
+	# and the per-prop stamp detects a rebuild that replaced the prop dictionaries
+	# (a rebuild resets positions, so stamped props are exactly the applied ones).
+	var signature:=hash([asset,room.quarter,revision]) if reuse_layout_store else hash([asset,room.quarter,selected,room.props])
+	if room.get_meta("layout_apply_signature",-1)==signature:
+		if not reuse_layout_store: return false
+		var stamped := true
+		for prop in room.props:
+			if prop.get("_layout_stamp",-1)!=signature: stamped=false; break
+		if stamped: return false
+	apply_serial += 1 # Prop dictionaries are about to mutate; retained draw slots key on this.
 	# Only restore props this authoring layer previously removed; dynamic room props stay authoritative.
 	var removed_by_quarter: Dictionary=room.get_meta("layout_removed_ids",{})
 	var originals: Dictionary=room.get_meta("layout_copy_sources",{}).get(room.quarter,{})
@@ -119,7 +152,11 @@ static func apply(room, asset: String) -> bool:
 				resize_prop(prop,[1.0,1.0])
 				move_prop(prop,prop.layout_default)
 
-	room.set_meta("layout_apply_signature",hash([asset,room.quarter,selected,room.props]))
+	if reuse_layout_store:
+		for prop in room.props: prop._layout_stamp=signature
+		room.set_meta("layout_apply_signature",signature)
+	else:
+		room.set_meta("layout_apply_signature",hash([asset,room.quarter,selected,room.props]))
 	return true
 
 static func is_common_decoration(prop: Dictionary) -> bool:
@@ -130,7 +167,8 @@ static func is_common_decoration(prop: Dictionary) -> bool:
 
 static func surface_positions(room: Node) -> Dictionary:
 	if room.has_meta("layout_draft"): return room.get_meta("layout_draft")
-	return positions(str(room.get_meta("layout_asset","")),room.quarter)
+	# Per-frame draw path: shared read-only merge (see shared_positions).
+	return shared_positions(str(room.get_meta("layout_asset","")),room.quarter)
 
 static func resize_prop(prop: Dictionary, value) -> void:
 	if prop.has("flush_region"): return
