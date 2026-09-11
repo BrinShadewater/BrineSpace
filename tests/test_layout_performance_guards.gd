@@ -20,7 +20,9 @@ func run() -> void:
 	await process_frame
 	# Repeated movement retains tray UI state and does not write recovery again.
 	e.library_list.select(2)
-	e.selected="sample_cooler"; e.free_placement.button_pressed=true
+	# sample_cooler is tombstoned in the research defaults since the Sept 9
+	# large-asset layout pass; move a prop that is still placed.
+	e.selected="research_scanner"; e.free_placement.button_pressed=true
 	for i in range(5): e.draft[e.selected][0]+=1; e.refresh()
 	assert(e.library_list.is_selected(2),"Tray selection survives movement")
 	e.dirty=true; e.write_recovery()
