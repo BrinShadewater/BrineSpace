@@ -537,17 +537,8 @@ func _generate_star_points() -> void:
 		star_points.append(point)
 
 func _load_png_texture(path: String) -> Texture2D:
-	if ResourceLoader.exists(path):
-		var resource := ResourceLoader.load(path)
-		if resource is Texture2D:
-			_cache_texture_source_region(resource)
-			return resource
-	var image := Image.new()
-	var error := image.load(path)
-	if error != OK:
-		return null
-	var texture := ImageTexture.create_from_image(image)
-	_cache_texture_source_region(texture, image)
+	var texture: Texture2D = preload("res://scripts/safe_image.gd").raw_texture(path)
+	_cache_texture_source_region(texture)
 	return texture
 
 func _cache_texture_source_region(texture: Texture2D, image: Image = null) -> void:

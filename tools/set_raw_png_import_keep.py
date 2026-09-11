@@ -48,6 +48,15 @@ def main() -> int:
                for entry in json.loads(manifest_path.read_text())["files"]
                if Path(entry["path"]).suffix.lower() in RASTER}
     imported = resource_rasters()
+    # RichTextLabel [img] tags load through ResourceLoader only, so the icons in
+    # main.gd's RESOURCE_ICON_PATHS need the normal texture importer too (the
+    # export plugin also packs their raw bytes for code that reads them raw).
+    main_src = (ROOT / "scripts/main.gd").read_text(encoding="utf-8-sig")
+    icon_block = re.search(r"const RESOURCE_ICON_PATHS := \{(.*?)\n\}", main_src, re.S)
+    if icon_block is None:
+        print("ERROR: RESOURCE_ICON_PATHS not found in scripts/main.gd")
+        return 1
+    imported |= {m[len("res://"):] for m in re.findall(r'"(res://[^"]+)"', icon_block.group(1))}
     tracked = subprocess.run(["git", "ls-files"], cwd=ROOT,
                              capture_output=True, text=True, check=True)
     counts = {"normal": 0, "keep": 0, "skip": 0}
@@ -56,6 +65,11 @@ def main() -> int:
             continue
         if name in imported:
             counts["normal"] += 1
+            sidecar = ROOT / (name + ".import")
+            # A stale keep/skip stub blocks the normal importer; remove it so
+            # Godot regenerates a default texture import on the next scan.
+            if sidecar.exists() and sidecar.read_text(encoding="utf-8") in (KEEP, SKIP):
+                sidecar.unlink()
             continue
         content = KEEP if name in shipped else SKIP
         counts["keep" if name in shipped else "skip"] += 1

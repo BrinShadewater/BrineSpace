@@ -326,12 +326,7 @@ func _room_picture(id: String, height: int) -> TextureRect:
 		var path: String = Art.PATHS.get(id, "")
 		var texture: Texture2D
 		if not path.is_empty():
-			if ResourceLoader.exists(path):
-				texture = ResourceLoader.load(path) as Texture2D
-			if texture == null:
-				var image := Image.new()
-				if image.load(path) == OK:
-					texture = ImageTexture.create_from_image(image)
+			texture = preload("res://scripts/safe_image.gd").raw_texture(path)
 		texture_cache[id] = texture
 	picture.texture = texture_cache[id]
 	return picture
