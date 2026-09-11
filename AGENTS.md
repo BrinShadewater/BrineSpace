@@ -104,7 +104,11 @@ If you write user-facing text, match that. Do not make BRINE friendly or helpful
 Follow README.md's Run locally section: open project.godot with Godot 4.6
 (locally tested with 4.6.1), complete imports, and use F5 for the configured title
 scene. Choose tests or audit tools for the changed subsystem from tests/ and tools/;
-read their invocation and scope before running them. Do not equate a headless or
+`python tools/run_tests.py --subsystem <name>` runs a group from tests/index.json
+with native-only tests routed correctly (`--list` classifies; `--native` runs the
+render-bound lane on a real display). Scope searches to `scripts/ rooms/ tests/
+tools/ docs/ assets/`: `output/` holds hundreds of thousands of generated snapshot
+files, including stale copies of the source tree, and walking it times searches out. Do not equate a headless or
 manifest check with visual acceptance, and do not run unrelated full asset batches
 merely for a documentation change.
 

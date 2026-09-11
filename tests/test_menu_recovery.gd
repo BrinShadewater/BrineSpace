@@ -64,7 +64,12 @@ func _run() -> void:
 	settings._keep_display()
 	await process_frame
 	config.load(Preferences.save_path)
-	check(config.get_value("display", "size") == Vector2i(1280,720), "Keep Changes must persist the new display")
+	if DisplayServer.get_name() != "headless":
+		check(config.get_value("display", "size") == Vector2i(1280,720), "Keep Changes must persist the new display")
+	else:
+		# The headless DisplayServer never applies window resizes; Preferences.save
+		# re-reads the live size, so the persisted value is checked natively only.
+		check(config.get_value("display", "size") == Preferences.window_size, "Keep Changes persists the live window size")
 	settings.find_child("BindPause", true, false).pressed.emit()
 	root.push_input(key(KEY_J), true)
 	check(settings.binding_action == "Pause" and settings.feedback.text.contains("KEY IN USE"), "Binding conflicts must be explained without overwriting another action")

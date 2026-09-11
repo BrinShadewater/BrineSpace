@@ -29,6 +29,13 @@ func _init() -> void:
 	game.placed_rooms[0].water_level = 0.9
 	Alerts.refresh(game)
 	assert(game.messages.size() == 3, "Falling below the hysteresis band rearms the warning")
+	game.placed_rooms = [{"pos": Vector2i(20,20), "water_level": 0.9},{"pos": Vector2i(21,20), "water_level": 0.3}]
+	Alerts.acknowledge_existing(game)
+	Alerts.refresh(game)
+	assert(game.messages.size() == 3, "Restored floods are old news and do not re-announce on resume")
+	game.placed_rooms[1].water_level = 0.6
+	Alerts.refresh(game)
+	assert(game.messages.size() == 4 and game.messages[3].contains("SWIMMING"), "Post-restore stage increases still announce")
 	game.placed_rooms.clear()
 	Alerts.refresh(game)
 	assert(game.flood_alert_button.get_meta("stages").is_empty())

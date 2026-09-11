@@ -8,8 +8,10 @@ func check(ok: bool, message: String) -> void:
 		push_error(message)
 func run() -> void:
 	var game = load("res://scenes/main.tscn").instantiate()
-	game.meta.save_path = "user://checkpoint-isolation.meta"
-	game.run_save_path = "user://checkpoint-isolation.loop"
+	# Per-process paths: a leftover .bak from a previous run would otherwise let
+	# read()'s backup fallback rescue the deliberately corrupted primary below.
+	game.meta.save_path = "user://checkpoint-isolation-%d.meta" % OS.get_process_id()
+	game.run_save_path = "user://checkpoint-isolation-%d.loop" % OS.get_process_id()
 	root.add_child(game)
 	current_scene = game
 	game.set_process(false)
@@ -51,5 +53,7 @@ func run() -> void:
 	backup.store_buffer(backup_bytes)
 	backup.close()
 	check(Save.read(game.run_save_path).get("_recovered_backup",false), "Invalid primary control state falls back to a valid backup")
+	for leftover in [game.run_save_path, game.run_save_path+".bak", game.meta.save_path]:
+		if FileAccess.file_exists(leftover): DirAccess.remove_absolute(leftover)
 	print("CHECKPOINT ISOLATION: ", "PASS" if failures == 0 else "FAIL")
 	quit(failures)

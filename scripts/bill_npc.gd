@@ -411,6 +411,9 @@ func action_pose_clear(action: String) -> bool:
 func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing: String = "", treading: bool = false, additional_extent: Array = []) -> bool:
 	if previous_facing.is_empty(): previous_facing = direction
 	if swim_clearance.is_empty():
+		# Companions never inherit a human diver silhouette: Josh has no swim profile by design,
+		# and Margot/River preload theirs, so this lazy path must not fall back to Bill's.
+		if get_script().resource_path.get_file() == "companion_npc.gd": return false
 		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-underwater-v1/swim-clearance.json"))
 		if not data is Dictionary: return false
 		var actor: String = {"veld_npc.gd":"veld", "branforth_npc.gd":"branforth"}.get(get_script().resource_path.get_file(), "bill")

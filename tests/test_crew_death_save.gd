@@ -25,6 +25,7 @@ func run() -> void:
 	game.architect_run.clear()
 	game.occupied.clear()
 	game.placed_rooms.clear()
+	game.wrecks.clear() # Companion/Marsh derelict sites spawn at the fixture's cells; an uncleared site under a placed room fails checkpoint validation.
 	game.powered_room_cells.clear()
 	var origin := Vector2i(20, 20)
 	for offset in range(3):

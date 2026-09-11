@@ -183,6 +183,14 @@ static func can_pet(game, from_journal := false) -> bool:
 	var actor = game.companion_actors.margot
 	return actor.active and actor.water.mode=="dry" and actor.pet_cooldown<=0 and actor.can_stand(actor.foot)
 
+static func pet_refusal(game) -> String:
+	# Journal copy for a refused pet; mirrors can_pet's checks in their order.
+	if not game.running or (game.paused and not (game._journal_is_open() and not game.pause_before_journal)):return "resume expedition first"
+	var actor = game.companion_actors.margot
+	if actor.water.mode!="dry":return "wait for the water to recede"
+	if actor.pet_cooldown>0:return "give her a moment"
+	return "she is out of reach"
+
 static func pet_margot(game) -> bool:
 	if not can_pet(game) or not game.companion_actors.margot.pet():return false
 	var cell: Vector2i=game.companion_actors.margot.cell_at(game.companion_actors.margot.foot)

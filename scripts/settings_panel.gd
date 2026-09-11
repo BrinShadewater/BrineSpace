@@ -36,6 +36,7 @@ func _input(event: InputEvent) -> void:
 	_rebuild.call_deferred()
 
 func _rebuild() -> void:
+	if get_viewport() == null: return # Deferred rebuild can fire after the panel leaves the tree.
 	var focused := get_viewport().gui_get_focus_owner()
 	var focus_name := focused.name if focused != null else StringName("")
 	if resized.is_connected(_layout):

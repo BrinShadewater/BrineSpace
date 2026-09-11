@@ -266,6 +266,7 @@ static func _finish_restore(game, data: Dictionary) -> void:
 	game.tick_timer.start(maxf(0.01, float(data.timer_left)))
 	game.tick_timer.wait_time = game._cycle_wait_seconds()
 	game._set_paused(true, false)
+	preload("res://scripts/flood_alerts.gd").acknowledge_existing(game)
 	game._refresh_all()
 	preload("res://scripts/workspace_state.gd").restore(game,data.get("workspace"))
 	if is_instance_valid(game.station_sound): game.station_sound.reset_after_restore()

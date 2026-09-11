@@ -1,4 +1,16 @@
 extends RefCounted
+static func acknowledge_existing(game) -> void:
+	# A restored checkpoint's floods are old news: seed announced stages so only
+	# changes after this point alert, instead of re-announcing every wet room on resume.
+	if not is_instance_valid(game.flood_alert_button): return
+	var history := {}
+	var announced := {}
+	for room in game.placed_rooms:
+		var water := float(room.get("water_level",0))
+		history[room.pos]=water
+		announced[room.pos]=3 if water>=0.85 else 2 if water>=0.55 else 1 if water>=0.25 else 0
+	game.flood_alert_button.set_meta("levels",history)
+	game.flood_alert_button.set_meta("stages",announced)
 static func refresh(game) -> void:
 	if not is_instance_valid(game.flood_alert_button): return
 	var critical := 0

@@ -8,6 +8,7 @@ class FakeGame extends RefCounted:
 	var bill_npc={"completed_activity":{},"active":true,"dead":false,"activity":"idle","goal_cell":Vector2i(2,2)}
 	var veld_npc={"completed_activity":{},"active":false,"dead":false,"activity":"idle","goal_cell":Vector2i(2,2)}
 	var branforth_npc={"completed_activity":{},"active":false,"dead":false,"activity":"idle","goal_cell":Vector2i(2,2)}
+	var marsh_npc={"completed_activity":{},"active":false,"dead":false,"activity":"idle","goal_cell":Vector2i(2,2)}
 func _init() -> void: call_deferred("run")
 func run() -> void:
 	var panel=preload("res://scripts/crew_comms.gd").new(); root.add_child(panel); panel.set_process(false)

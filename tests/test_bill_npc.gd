@@ -42,6 +42,23 @@ func run() -> void:
 	game.veld_npc.decision_rng.seed = crew_seed+1
 	game.branforth_npc.decision_rng.seed = crew_seed+2
 	print("CREW FIXTURE SEEDS: station/Bill=",crew_seed," Veld=",crew_seed+1," Branforth=",crew_seed+2)
+	# Awake-start was retired (BRINE renewal, Sept 8): architects wake via pod release
+	# and update only while recovered. This custom station has no core, so record the
+	# post-thaw state and activate Bill directly like sibling fixtures.
+	game.architect_run={"selected":"bill"}
+	game.recovered_crew=[{"architect_id":"bill","alive":true,"id":"core_architect","name":"Major Bill","origin":game.Architects.CORE_CELL}]
+	game.bill_npc.rebuild(game)
+	var spawn_center := (Vector2(origin)+Vector2.ONE*0.5)*384.0
+	var spawn_id := -1
+	var spawn_distance := INF
+	for point_id in game.bill_npc.room_nodes.get(origin,[]):
+		var point: Vector2 = game.bill_npc.graph.get_point_position(point_id)
+		if game.bill_npc.spawn_clear(point) and game.bill_npc.can_stand(point) and point.distance_squared_to(spawn_center)<spawn_distance:
+			spawn_id=point_id
+			spawn_distance=point.distance_squared_to(spawn_center)
+	check(spawn_id>=0,"Fixture finds a spawn-clear node in the origin room")
+	game.bill_npc.foot=game.bill_npc.graph.get_point_position(spawn_id)
+	game.bill_npc.active=true
 	game._update_test_walker(0.1)
 	var npc = game.bill_npc
 	check(npc.active, "Bill spawns on navigable floor")
@@ -127,6 +144,9 @@ func run() -> void:
 		var definition: Dictionary = game.RoomDatabaseScript.get_room(room_id)
 		if not game.grid_view._uses_layered_art(definition) and room_id != "brine_core": continue
 		for q in range(4):
+			# The game never places fixed-rotation rooms rotated (_place_room enforces
+			# it), and their pinned aisle/office furniture assumes the authored doors.
+			if definition.has("fixed_rotation") and q != int(definition.fixed_rotation): continue
 			game.occupied.clear()
 			for offset in [Vector2i.ZERO, Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]:
 				var room: Dictionary = game.RoomDatabaseScript.get_room(room_id if offset == Vector2i.ZERO else "storage_bay").duplicate(true)

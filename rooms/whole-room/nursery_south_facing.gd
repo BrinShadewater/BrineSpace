@@ -24,7 +24,10 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 	if not reuse_embedded_edges:
 		edges = Geometry.edges(layout)
 		for side in range(4):
-			edges[side].open = open_sides.has(side) and Geometry.has_port(layout[0],side)
+			# open_sides already reflects the database door mask at the room's actual
+			# rotation. Views that pin their layout rotation (cold store, galley,
+			# observation, salvage) would otherwise wall over a rotated doorway.
+			edges[side].open = open_sides.has(side)
 		for side in range(3,-1,-1):
 			if omitted_sides.has(side): edges.remove_at(side)
 		return
@@ -37,7 +40,9 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 	if not reuse_embedded_geometry or not embedded_edge_cache.has(edge_key):
 		edges = Geometry.edges(layout)
 		for side in range(4):
-			edges[side].open = open_sides.has(side) and edges[side].port
+			# See above: the game's open_sides is authoritative over the view's
+			# pinned-rotation port mask.
+			edges[side].open = open_sides.has(side)
 		for side in range(3,-1,-1):
 			if omitted_sides.has(side): edges.remove_at(side)
 		if embedded_edge_cache.size() >= 64: embedded_edge_cache.clear()

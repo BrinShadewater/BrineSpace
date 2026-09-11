@@ -5046,7 +5046,7 @@ func _refresh_diagnostics_page() -> void:
 				if companion_roster.has(id) and companion_actors[id].active:
 					var companion_cell: Vector2i=companion_actors[id].cell_at(companion_actors[id].foot)
 					lines.append("[url=%d,%d]LOCATE %s[/url]"%[companion_cell.x,companion_cell.y,Companions.NAMES[id].to_upper()])
-					if id=="margot":lines.append("[url=pet:margot]PET MARGOT[/url]\n" if Companions.can_pet(self,true) else "Pet Margot // %s\n"%("give her a moment" if companion_actors[id].pet_cooldown>0 else "resume expedition first"))
+					if id=="margot":lines.append("[url=pet:margot]PET MARGOT[/url]\n" if Companions.can_pet(self,true) else "Pet Margot // %s\n"%Companions.pet_refusal(self))
 			lines.append("[b]CREW ROSTER // %d / %d BERTHS[/b]\nRecovered occupants join after their wake sequence completes.\n" % [crew_count,_get_crew_capacity()])
 			var named_alive := 0
 			for member in recovered_crew:

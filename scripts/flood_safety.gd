@@ -55,7 +55,20 @@ static func advance(game,actor,dt: float) -> bool:
 	if not actor.expedition.is_empty(): return false
 	var id: String="bill" if actor==game.bill_npc else "veld" if actor==game.veld_npc else "marsh" if actor==game.marsh_npc else "branforth"
 	if actor.goal=="flood-retreat":
-		if not actor.path.is_empty(): actor.move(dt); return true
+		if not actor.path.is_empty():
+			# The swimmer's own transit opens doors that spread water forward, so the
+			# chosen refuge can flood mid-route; re-check it and re-route while air remains.
+			var recheck: float=actor.get_meta("flood_retreat_check",0.0)
+			actor.set_meta("flood_retreat_check",maxf(0,recheck-dt))
+			if recheck<=0:
+				actor.set_meta("flood_retreat_check",1.0)
+				var refuge: Dictionary=game.occupied.get(actor.goal_cell,{})
+				if float(refuge.get("water_level",0))>=0.25 or float(refuge.get("hull_crack",0))>0:
+					var replacement := escape_route(game,actor)
+					if not replacement.is_empty():
+						actor.goal_cell=replacement.cell
+						actor.path=replacement.route
+			actor.move(dt); return true
 		actor.goal=""
 		actor.state="idle"
 		actor.activity="reached flood refuge"

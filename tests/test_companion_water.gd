@@ -40,6 +40,13 @@ func run():
 		game.occupied[cell].water_level=.95;C.advance(game,.1)
 		check(actor.water.afloat() and actor.behavior.is_empty(),"Flood interrupts dry activity "+id)
 		check(not actor.pet(),"No pet interruption while afloat")
+		if id=="margot":
+			game._toggle_journal();game.journal_tabs.current_tab=5;game._refresh_archive()
+			check(game.archive_label.text.contains("wait for the water to recede"),"Journal names the real pet refusal while swimming")
+			game._toggle_journal();game.paused=false
+		game.occupied[cell].water_level=(.18 if id=="margot" else .23);C.advance(game,.1)
+		check(actor.water.afloat(),"Release band keeps "+id+" afloat just below the trigger")
+		game.occupied[cell].water_level=.95;C.advance(game,.1)
 		var traveled:=false
 		# Use actual generated routes and swept sprite clearance within the rescued room.
 		for node in actor.room_nodes[cell]:
@@ -79,8 +86,11 @@ func run():
 	var saved:=Save.capture(game);check(Save.restore(game,saved),"Offline checkpoint restores")
 	game.tick_timer.stop();game.paused=false;josh=game.companion_actors.josh
 	check(josh.water.mode=="offline","Offline mode survives restore")
-	game.occupied[cell].water_level=.49;C.advance(game,.1)
-	check(josh.water.mode=="dry","Josh resumes below waist level")
+	game.occupied[cell].water_level=.48;C.advance(game,.1)
+	check(josh.water.mode=="offline","Release band holds Josh offline just below the trigger")
+	game.occupied[cell].water_level=.44;C.advance(game,.1)
+	check(josh.water.mode=="dry","Josh resumes once water recedes below the release band")
+	check(josh.behavior=="powerdown" and josh.behavior_elapsed>0,"Josh wakes through the standby exit clip")
 	# A flooded destination is excluded from his graph while his own room is dry.
 	var wet:Vector2i=C.CELLS.river;game.occupied[wet].water_level=.8;C.advance(game,.1)
 	for node in josh.room_nodes.get(wet,[]):check(josh.graph.is_point_disabled(node),"Josh excludes flooded route nodes")

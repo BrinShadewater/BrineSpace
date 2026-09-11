@@ -67,5 +67,25 @@ func run():
 		game._update_test_walker(0.1)
 		if actor.tank_oxygen>=59.9: break
 	check(not actor.dead and actor.tank_oxygen>=59.9,"Retreated crew reaches real locker and refills")
+	# A refuge that floods mid-route must be re-routed, not swum into.
+	actor.goal="";actor.path.clear();actor.state="idle"
+	for room in game.placed_rooms: room.water_level=0.95 if room.pos==Vector2i(21,20) else 0.0
+	actor.cancel_helmet_action();actor.locker_request.clear()
+	actor.movement_medium="flooded";actor.direction="west"
+	actor.helmet_equipped=true;actor.tank_oxygen=4
+	actor.set_meta("flood_safety_wait",0.0);actor.set_meta("flood_retreat_check",0.0);actor.set_meta("flood_blocked_warning",false)
+	var desired2 := (Vector2(21,20)+Vector2.ONE*0.5)*384+Vector2(-140,0)
+	var best2 := INF
+	for node in actor.room_nodes.get(Vector2i(21,20),[]):
+		var point: Vector2=actor.graph.get_point_position(node)
+		if actor.swim_segment_clear(point,point,"west") and point.distance_to(desired2)<best2:
+			best2=point.distance_to(desired2)
+			actor.foot=point
+	check(best2<60,"Second retreat repositions near the corridor exit doorway")
+	check(Safety.advance(game,actor,0.1) and actor.goal=="flood-retreat","Second retreat engages")
+	var refuge: Vector2i=actor.goal_cell
+	game.occupied[refuge].water_level=0.95
+	for i in range(4):Safety.advance(game,actor,0.6)
+	check(actor.goal_cell!=refuge and float(game.occupied.get(actor.goal_cell,{}).get("water_level",1))<0.25,"Flooded refuge is re-routed mid-retreat")
 	print("FLOOD RETREAT ","PASS" if failures==0 else "FAIL"," / ",actor.activity," / ",actor.tank_oxygen)
 	quit(0 if failures==0 else 1)

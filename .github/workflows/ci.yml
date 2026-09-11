@@ -32,6 +32,10 @@ jobs:
         run: |
           python3 tests/test_release_assert_safety.py
           python3 tests/test_release_manifest.py
+      - name: Card bindings agree (art-free parity, needs no LFS)
+        run: |
+          python3 tests/test_card_binding_parity.py --self-test
+          python3 tests/test_card_binding_parity.py
       - name: Fetch preloaded audio only
         run: git lfs pull --include="assets/audio/suno-v1/*.ogg,assets/audio/suno-polish-v1/*.wav" --exclude=""
       - name: Fetch Godot ${{ env.GODOT_VERSION }} (headless-capable Linux build)

@@ -52,7 +52,16 @@ func select_architect(id: String, companions: Variant = null) -> bool:
 func mark_reviewed(key: String) -> void:
 	if unread_records.erase(key):
 		save_to_disk()
-var save_path := "user://brine_save.json"
+var save_path := "user://brine_save.json":
+	set(value):
+		# Redirecting the save (fixtures do this) must not leak the previously loaded
+		# profile: reset to defaults and load the new path instead.
+		var changed := save_path != value
+		save_path = value
+		if changed and _profile_loaded:
+			_reset_profile()
+			load_from_disk()
+var _profile_loaded := false
 
 const DOCTRINE_RANK_THRESHOLDS := [0, 2, 5, 9, 14]
 
@@ -60,6 +69,27 @@ func _init() -> void:
 	for id in RoomDatabaseScript.STARTING_UNLOCKS:
 		unlocked_room_ids[id] = true
 	load_from_disk()
+	_profile_loaded = true
+
+func _reset_profile() -> void:
+	unlocked_room_ids = {}
+	for id in RoomDatabaseScript.STARTING_UNLOCKS:
+		unlocked_room_ids[id] = true
+	discovered_synergy_ids = {}
+	stabilized_synergy_ids = {}
+	total_research_points = 0
+	recovered_memory_ids = {}
+	brine_upgrades = {}
+	doctrine_mastery = {}
+	total_victories = 0
+	unread_records = {}
+	guide_completed = false
+	unlocked_architect_ids = {"bill":true}
+	selected_architect = "bill"
+	unlocked_companion_ids = {}
+	selected_companion_ids = []
+	last_error = ""
+	recovered_backup = false
 
 func unlock_room(id: String) -> bool:
 	if unlocked_room_ids.has(id):
