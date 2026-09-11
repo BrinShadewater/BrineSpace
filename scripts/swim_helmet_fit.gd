@@ -1,6 +1,11 @@
 extends RefCounted
 ## Compose swimming equipment once at load time from preserved body/helmet sources.
-const ROOT = "res://character/crew-underwater-v1/"
+# The release-manifest crawler expands any directory literal into every
+# descendant, so a bare tree root here shipped ~750 MB of QA captures and
+# revision sources. Name only what the runtime reads: the fit table and
+# the equipment/ subtree.
+const FIT_TABLE = "res://character/crew-underwater-v1/swim-head-fit.json"
+const EQUIPMENT = "res://character/crew-underwater-v1/equipment/"
 static var head_fits: Dictionary = {}
 
 static func composite_tilted(body: Image, overlay: Image, offset: Vector2, angle: float, head_rect: Rect2i, direction: String) -> void:
@@ -23,13 +28,13 @@ static func composite_tilted(body: Image, overlay: Image, offset: Vector2, angle
 			if color.a>0: body.set_pixel(x,y,body.get_pixel(x,y).blend(color))
 
 static func apply(player, variant, path: String) -> void:
-	if head_fits.is_empty(): head_fits = JSON.parse_string(FileAccess.get_file_as_string(ROOT+"swim-head-fit.json")).clips
+	if head_fits.is_empty(): head_fits = JSON.parse_string(FileAccess.get_file_as_string(FIT_TABLE)).clips
 	var registration_path := path.get_base_dir().path_join("registration.json")
 	var registration := {}
 	if FileAccess.file_exists(registration_path):
 		registration = JSON.parse_string(FileAccess.get_file_as_string(registration_path))
 	elif path.ends_with("equipment/fitting/veld-swim-north/manifest.json"):
-		var legacy: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(ROOT+"equipment/fitting/swim-north-registration.json"))
+		var legacy: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(EQUIPMENT+"fitting/swim-north-registration.json"))
 		var pose: Dictionary = legacy.characters.veld
 		registration = {"overlay":"equipment/north/overlay.png", "frames":[]}
 		for regions in pose.foregroundRects:
@@ -39,7 +44,7 @@ static func apply(player, variant, path: String) -> void:
 		if not str(key).begins_with("swim-"): continue
 		var direction: String = str(key).trim_prefix("swim-")
 		var overlay := Image.new()
-		if overlay.load_png_from_buffer(FileAccess.get_file_as_bytes(ROOT+registration.overlay)) != OK: continue
+		if overlay.load_png_from_buffer(FileAccess.get_file_as_bytes(EQUIPMENT+str(registration.overlay).trim_prefix("equipment/"))) != OK: continue
 		var original_size := overlay.get_size()
 		var scale := 0.75 if direction in ["east", "west"] else 0.85
 		var width_scale := 0.82 if direction in ["east", "west"] else scale

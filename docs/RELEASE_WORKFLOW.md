@@ -28,6 +28,30 @@ JSON-relative frame paths, dynamic directories and imported control resources in
 the manifest. Limit the shipped dependency set without deleting raw generations,
 rejected candidates, prompts or review evidence from the authoring archive.
 
+## Raster import roles (September 11, 2026)
+
+Releases carry each tracked raster in one of three roles, assigned by
+`tools/set_raw_png_import_keep.py` from `assets/runtime-release.json`
+(`tools/export_release.ps1` runs it after the manifest build):
+
+- Rasters referenced by `.tscn`/`.tres` keep the normal texture importer; they
+  ship as imported `.ctex` through a remap, so the pack audit counts them as
+  `remapped`, not `missing`.
+- Manifest rasters get `importer="keep"`: no `.ctex` is generated and Godot's
+  own selected-resources pass ships the raw file byte-identical. The raw-export
+  plugin therefore no longer adds rasters itself (it still adds JSON/SVG/CFG/MD
+  and still verifies every manifest hash).
+- Every other tracked raster gets `importer="skip"`: never imported, never
+  exported.
+
+This removed ~2.4 GB of unread `.ctex` and ~3.4 GB of QA/source rasters per
+release (5.8 GB → 1.2 GB pack). `.import` sidecars are local editor state; after
+adding art or changing the manifest, rerun the tool and let the editor rescan.
+The manifest crawler also no longer scans `addons/` (the export plugin's
+`begins_with("res://rooms")` prefix test was read as a dependency), and
+`scripts/swim_helmet_fit.gd` names only the fit table and `equipment/` subtree
+instead of its whole source tree.
+
 ## Checks that establish different things
 
 - Import/parse and relevant regressions: run the changed subsystem checks. Include

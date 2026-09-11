@@ -68,6 +68,11 @@ def collect(root=ROOT, read_root=None):
     while pending:
         p=pending.pop()
         if p.suffix.lower() not in TEXT: continue
+        if p.relative_to(root).as_posix().startswith('addons/'):
+            # Exporter tooling, not runtime code: its begins_with("res://rooms")
+            # prefix TEST is not a dependency, yet reading it as one pulled the
+            # entire rooms/ tree (~540 MB of sources) into every release.
+            continue
         read_path=(read_root/p.relative_to(root)) if read_root is not None and (read_root/p.relative_to(root)).is_file() else p
         text=read_path.read_text(encoding='utf-8-sig',errors='replace')
         if p.name=='project.godot':
@@ -111,6 +116,7 @@ def main():
     block=s[start:end]
     block=re.sub(r'export_filter="[^"]+"','export_filter="selected_resources"',block)
     block=re.sub(r'include_filter="[^"]*"','include_filter=""',block)
+    block=re.sub(r'exclude_filter="[^"]*"','exclude_filter="output/*,outputs/*,builds/*,asset_backups/*,skills/*,.git/*,tests/*,docs/*"',block)
     block=re.sub(r'^export_files=.*\n','',block,flags=re.M)
     block=block.replace('export_filter="selected_resources"','export_filter="selected_resources"\nexport_files=PackedStringArray('+','.join(json.dumps(x) for x in resources)+')')
     p.write_text(s[:start]+block+s[end:],encoding='utf-8')

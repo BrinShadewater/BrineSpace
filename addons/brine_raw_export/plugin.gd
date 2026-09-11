@@ -28,6 +28,11 @@ class RawPNGs extends EditorExportPlugin:
 			if not FileAccess.file_exists(source) or FileAccess.get_sha256(source) != entry.sha256:
 				push_error("Release manifest is stale: " + source + ". Regenerate before exporting.")
 				continue
+			if source.get_extension().to_lower() in ["png","jpg","jpeg","webp"]:
+				# Shipped rasters carry importer="keep" (tools/set_raw_png_import_keep.py)
+				# and export raw through Godot's own pass; adding them here again
+				# stored every texture twice in the pack.
+				continue
 			# Imported scene/audio/font dependencies are handled by Godot. These
 			# sources are read directly at runtime and must also exist as raw bytes.
 			if source.get_extension().to_lower() in ["png","jpg","jpeg","webp","svg","json","cfg","md"]:

@@ -11,6 +11,8 @@ New-Item -ItemType Directory -Force (Join-Path $releaseRoot 'output') | Out-Null
 $releaseLog = Join-Path $releaseRoot 'output/release-export.log'
 python (Join-Path $releaseRoot 'tools/build_release_manifest.py')
 if ($LASTEXITCODE -ne 0) { throw 'Runtime dependency manifest failed.' }
+python (Join-Path $releaseRoot 'tools/set_raw_png_import_keep.py')
+if ($LASTEXITCODE -ne 0) { throw 'Raster import-role sync failed.' }
 $releaseArgs = @('--headless','--path',('"'+$releaseRoot+'"'),'--export-release','"Windows Game"',('"'+$releaseTarget+'"'),'--log-file',('"'+$releaseLog+'"'))
 $releaseProcess = Start-Process -FilePath $Godot -ArgumentList $releaseArgs -WindowStyle Hidden -PassThru -Wait
 $releaseErrors = @(Select-String -LiteralPath $releaseLog -Pattern 'ERROR:|SCRIPT ERROR|Parse Error')
