@@ -57,7 +57,12 @@ func _init() -> void:
 	expect(instance.placed_rooms.is_empty(),"Missing rare mineral rejects paid build")
 	instance.resources.rare_minerals=3
 	instance._on_grid_clicked(Vector2i(10,10))
-	expect(instance.placed_rooms.size()==1 and instance.resources.metal==0 and instance.resources.data==0 and instance.resources.rare_minerals==0,"Paid loom spends 12 metal 8 data 3 rare")
+	# Paid placement queues an architect-built order since the Sept 8 construction
+	# pass; costs are spent up front. Completion is covered by the crew
+	# construction tests, so place the room directly for the economy checks below.
+	expect(instance.drone_fleet.reserved(Vector2i(10,10)) and instance.resources.metal==0 and instance.resources.data==0 and instance.resources.rare_minerals==0,"Paid loom spends 12 metal 8 data 3 rare and queues construction")
+	instance.drone_fleet.orders.clear()
+	add_room(instance,"gravity_loom",Vector2i(10,10),instance.selected_rotation)
 	instance.resources.power=4
 	instance._apply_room_economy()
 	expect(instance.resources.data==1 and instance.resources.rare_minerals==1 and instance.power_used==4,"Loom produces data and rare using four power")

@@ -44,8 +44,11 @@ func run() -> void:
 					check(not Geometry2D.is_point_in_polygon(Vector2(308,252),PackedVector2Array(quad)),"Ring cover preserves lens centre")
 					for point in quad: check(Geometry2D.is_point_in_polygon(point,PackedVector2Array(prop.registration.outline)),"Ring cover stays on projector")
 			check(Rect2(-180,-180,360,360).encloses(view.prop_visual_bounds(prop)),"Holo complete silhouette fits: "+str(prop.id))
+			# Host art must not collide; a parked dressing cart's bounding box may
+			# graze a host without any art collision, so compare hosts only.
 			for other in view.props:
-				if other.id!=prop.id: check(not view.prop_visual_bounds(prop).intersects(view.prop_visual_bounds(other)),"Holo hosts overlap")
+				if other.id!=prop.id and not prop.registration.get("dressing",false) and not other.registration.get("dressing",false):
+					check(not view.prop_visual_bounds(prop).intersects(view.prop_visual_bounds(other)),"Holo hosts overlap")
 			for t in range(180):
 				for mark in view.effect_marks(prop,t/30.0):
 					for point in mark:

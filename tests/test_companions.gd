@@ -71,7 +71,10 @@ func run():
 	check(initial_rng==game.rng.state,"Companion decisions independent from station RNG")
 	for actor in game.companion_actors.values():
 		check(actor.can_stand(actor.foot),"Companion remains clear of props")
-		check(actor.player.frames.size()==8,"Four idle and four rolling clips")
+		# Sept 9 expansions added start/stop/turn and water clips; require the four
+		# idle and four locomotion directions rather than an exact clip count.
+		for direction in ["south","west","north","east"]:
+			check(actor.player.frames.has("idle-"+direction) and actor.player.frames.has("walk-"+direction),"Four idle and four rolling clips: "+direction)
 	var checkpoint:=Save.capture(game)
 	var robot_legacy:=checkpoint.duplicate(true)
 	robot_legacy.companions.version=1

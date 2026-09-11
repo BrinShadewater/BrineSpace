@@ -30,12 +30,18 @@ func _run() -> void:
 	Preferences.text_scale = 1.3
 	game._refresh_doctrine_overlay()
 	game._refresh_doctrine_overlay()
-	check(game.doctrine_buttons["industry"].get_theme_font_size("font_size") == 20, "Doctrine refresh must retain 130% text without compounding")
-	await capture("doctrine-large", game.doctrine_layer.find_child("DoctrinePanel", true, false))
-	game.pending_doctrines.assign(["industry", "biosphere"])
-	game._refresh_doctrine_overlay()
-	check(game.doctrine_confirm_button.text == "BEGIN REBOOT" and not game.doctrine_confirm_button.disabled, "Completed pair must enable the begin action")
-	await capture("doctrine-pair-large", game.doctrine_layer.find_child("DoctrinePanel", true, false))
+	# Starting doctrine selection was retired (see DEVELOPMENT_NOTES.md); nothing
+	# populates doctrine_buttons any more, so the doctrine-panel checks only run
+	# if that screen is ever restored.
+	if game.doctrine_buttons.has("industry"):
+		check(game.doctrine_buttons["industry"].get_theme_font_size("font_size") == 20, "Doctrine refresh must retain 130% text without compounding")
+		await capture("doctrine-large", game.doctrine_layer.find_child("DoctrinePanel", true, false))
+		game.pending_doctrines.assign(["industry", "biosphere"])
+		game._refresh_doctrine_overlay()
+		check(game.doctrine_confirm_button.text == "BEGIN REBOOT" and not game.doctrine_confirm_button.disabled, "Completed pair must enable the begin action")
+		await capture("doctrine-pair-large", game.doctrine_layer.find_child("DoctrinePanel", true, false))
+	else:
+		print("OVERLAY TEXT: doctrine panel retired; its checks skipped")
 	game._confirm_doctrines()
 	game._toggle_journal()
 	check(game.archive_label.get_theme_font_size("normal_font_size") == 21, "Journal body must use the saved text scale")

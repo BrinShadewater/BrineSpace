@@ -15,6 +15,7 @@ static func ensure_loaded() -> void:
 		if parsed is Dictionary and parsed.get("version",0)==1 and parsed.get("layouts") is Dictionary:
 			if navigation_stamp(data)!=navigation_stamp(parsed.layouts): geometry_revision+=1
 			data=parsed.layouts
+static var reset_warned: Dictionary={} # One placement-reset warning per asset/quarter/prop.
 static func key(asset: String, q: int) -> String: return asset+"/"+str(posmod(q,4))
 static var authored_cache: Dictionary={}
 static var authored_cache_path:=""
@@ -149,6 +150,13 @@ static func apply(room, asset: String) -> bool:
 				var lane := Rect2(-36,-180,72,180) if side==0 else (Rect2(0,-36,180,72) if side==1 else (Rect2(-36,0,72,180) if side==2 else Rect2(-180,-36,180,72)))
 				if prop.rect.intersects(lane): valid=false
 			if not valid:
+				# Silent before 2026-09-11: an authored placement outside the constrained
+				# envelope was reset with no trace, so the layout looked saved but never
+				# appeared. Warn once per prop so a live session does not spam the log.
+				var notice:=key(asset,room.quarter)+"/"+str(prop.id)
+				if not reset_warned.has(notice):
+					reset_warned[notice]=true
+					push_warning("RoomLayoutStore reset "+notice+" to its default: the saved placement falls outside the constrained envelope or blocks a door lane.")
 				resize_prop(prop,[1.0,1.0])
 				move_prop(prop,prop.layout_default)
 

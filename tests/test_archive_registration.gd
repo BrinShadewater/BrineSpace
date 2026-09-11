@@ -7,7 +7,14 @@ func run() -> void:
 	root.add_child(view)
 	var source:=view.life_texture.get_image()
 	var missed:=0
+	var separate_texture_hosts:=0
 	for prop in view.props:
+		# Furnishings use their own texture and source coordinate system; this
+		# audit's apertures belong only to the main room donor (same rule as
+		# test_anomaly_registration.gd).
+		if prop.registration.get("dressing",false):
+			separate_texture_hosts+=1
+			continue
 		var regions:=view.display_regions(prop)
 		var bounds:=Rect2(prop.registration.outline[0],Vector2.ZERO)
 		for p in prop.registration.outline: bounds=bounds.expand(p)

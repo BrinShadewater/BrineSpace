@@ -46,6 +46,9 @@ func run():
 	check(game.resources.oxygen==10,"Marsh consumes no station Oxygen")
 	check(game._project_cycle_delta({"delta":{},"added_crew":0}).get("oxygen",0)==0,"Oxygen forecast excludes Marsh")
 	# Keep the recharge route clear of River's derelict at (20,18).
+	# Margot's recovery derelict now occupies (20,22); an uncleared site under a
+	# placed room makes checkpoint restore reject the station, so clear it first.
+	game.wrecks.erase(preload("res://scripts/companions.gd").CELLS.margot)
 	game._place_room("corridor",Vector2i(20,21),true)
 	game._place_room("crew_hab",Vector2i(20,22),true)
 	game.occupied[Vector2i(20,22)].rotation = 2 # Face its connecting door north.

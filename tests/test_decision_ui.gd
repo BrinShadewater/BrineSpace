@@ -79,7 +79,13 @@ func _run() -> void:
 	game._on_grid_clicked(Vector2i(19,20))
 	check(game.drone_fleet.reserved(Vector2i(19,20)), "Paid placement must first reserve the construction cell")
 	game.paused = false
-	game._update_wreck_clearance(30.0)
+	# Architects build paid orders since the Sept 8 construction pass: finish the
+	# core thaw, then advance crew construction until the room completes.
+	game.Architects.advance_core(game, game.Architects.DURATION)
+	for step in range(900):
+		game._update_test_walker(0.1)
+		game._update_wreck_clearance(0.1)
+		if game.occupied.has(Vector2i(19,20)): break
 	game.paused = true
 	check(game.placed_rooms.size() == 2 and game.resources != before, "Fixture must pay normal room costs")
 	game.selected_card_id = ""
@@ -87,7 +93,9 @@ func _run() -> void:
 	game.hover_cell = game.selected_room_cell
 	game._refresh_inspector()
 	game._toggle_inspected_room()
-	check(game.diagnostics_button.text.contains("0 ALERTS · 1 HELD"), "Deliberately suspended rooms must be separate from supply alerts")
+	# The Sept 8 badge redesign shows only the alert count, which already
+	# excludes deliberately suspended rooms (risk minus suspended in main.gd).
+	check(game.diagnostics_button.text.contains("0 ALERTS"), "Deliberately suspended rooms must be separate from supply alerts")
 	game.diagnostics_button.grab_focus()
 	game.diagnostics_button.pressed.emit()
 	check(game.paused and game.journal_tabs.current_tab == 1, "Diagnostics must open the pausing journal")
