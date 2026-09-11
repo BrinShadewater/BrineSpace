@@ -538,14 +538,11 @@ func issues() -> PackedStringArray:
 		if prop.has("flush_region"): continue
 		if draft.get(str(prop.id))==defaults.get(str(prop.id)) and draft.get("size/"+str(prop.id),[1.0,1.0])==defaults.get("size/"+str(prop.id),[1.0,1.0]): continue
 		var bounds: Rect2=room.prop_visual_bounds(prop)
-		var allowed:=Rect2(-180,-180,360,360)
-		if prop.get("wall_mount",false): allowed=Rect2(-184,-206,368,390)
-		if prop.has("movable_region"): allowed=Rect2(-184,-260,368,444)
-		if not allowed.encloses(bounds): result.append("Keep "+str(prop.id)+" inside the room.")
+		# Same envelope the running station enforces (room_layout_store.gd).
+		if not Store.envelope_for(room,prop).encloses(bounds): result.append("Keep "+str(prop.id)+" inside the room.")
 		for side in range(4):
 			if not Geometry.has_port(room.layout[0],side): continue
-			var lane:=Rect2(-36,-180,72,180) if side==0 else (Rect2(0,-36,180,72) if side==1 else (Rect2(-36,0,72,180) if side==2 else Rect2(-180,-36,180,72)))
-			if prop.rect.intersects(lane): result.append("Leave the door approach clear.")
+			if prop.rect.intersects(Store.door_lane(side)): result.append("Leave the door approach clear.")
 		for other in room.props:
 			if prop.id!=other.id and bounds.intersects(room.prop_visual_bounds(other)): result.append("Move "+str(prop.id)+" clear of "+str(other.id)+".")
 		for helper_name in ["dressing","cryo_dressing"]:
@@ -568,8 +565,7 @@ func issues() -> PackedStringArray:
 			if piece.rect.intersects(room.prop_visual_bounds(prop)): result.append("Keep decorations clear of props.")
 	return result
 
-func door_lane(side: int) -> Rect2:
-	return Rect2(-36,-180,72,180) if side==0 else (Rect2(0,-36,180,72) if side==1 else (Rect2(-36,0,72,180) if side==2 else Rect2(-180,-36,180,72)))
+func door_lane(side: int) -> Rect2: return Store.door_lane(side)
 func entities() -> Array:
 	if layer==0: return room.props
 	if layer in [2,3,4]:
