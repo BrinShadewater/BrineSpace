@@ -14,7 +14,7 @@ for the question of whether to convert the cast.
 |---|---|---|
 | 1. Look | GPT Image 2.5 (Higgsfield) | Only model tested that draws in the rooms' language and keeps identity from a reference |
 | 2. Other directions | PixelLab `create-character-with-4-directions` or `generate-8-rotations-v3` | One request, consistent rotations, native sprite resolution |
-| 3. Motion | PixelLab `animate-with-text-v3`, or `animate-with-skeleton` for exact control | Produces real limb movement; GPT Image cannot |
+| 3. Motion | PixelLab `animate-with-text-v3` | Produces real limb movement in one call; GPT Image cannot. Skeleton control tested and rejected for locomotion — see below |
 | 4. Bake | existing local tooling | Binary alpha, palette, pivot, canvas — unchanged |
 
 ### Step 1 — look
@@ -38,8 +38,22 @@ spaced the frames better than a hand-written six-pose prompt.
 
 Known defects from that run: one frame had a stray black cluster at the foot (repair
 with `inpaint-v3`), and the loop did not close cleanly — the last frame does not return
-to the first. For states that must loop perfectly, prefer `animate-with-skeleton`,
-which takes explicit keypoints.
+to the first.
+
+**Skeleton control was tested and is not the answer for locomotion.**
+`estimate-skeleton` returns 18 labelled joints in normalised coordinates (0.1 of a
+generation), and `animate-with-skeleton` draws from posed joints — but it accepts
+**exactly three frames per call**, a 3-frame window. Driving a six-frame walk therefore
+took two calls (2 generations, against 1 for seven frames by text) and the two halves
+did not share limb logic or lighting, so the join is visible. Frames also came back with
+white outline halos where posed joints pulled the silhouette outside the reference
+shape, and loop closure did not improve (mean first-to-last difference 13.2 versus the
+text run's). My joint deltas — ±0.045 vertical, ±0.03 horizontal — were probably too
+timid for a front-facing walk, so a stronger pose set might do better; that was not
+pursued because the text path already works.
+
+Use `animate-with-skeleton` where an **exact single pose** is needed (a specific repair
+or interact stance), not for cyclic locomotion.
 
 ### Step 4 — bake
 Unchanged and already correct: threshold alpha to binary, scale so the figure is ~65px,
@@ -66,7 +80,9 @@ frames, 437–1,166 colours against your packs' 41–64.
 
 ## Open questions
 
-1. Does `animate-with-skeleton` close the loop cleanly? Untested.
+1. ~~Does `animate-with-skeleton` close the loop cleanly?~~ Tested September 12: no.
+   It is a 3-frame window, costs more, and produced outline artefacts. Rejected for
+   locomotion; retained for exact single poses.
 2. Do PixelLab rotations hold up if given all four step-1 poses as references rather
    than only `south`? Untested, and it may fix the narrow side views.
 3. Conversion scope for the cast remains the owner decision in the art-direction
