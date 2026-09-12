@@ -13,7 +13,7 @@ for the question of whether to convert the cast.
 | step | tool | why that tool |
 |---|---|---|
 | 1. Look | GPT Image 2.5 (Higgsfield) | Only model tested that draws in the rooms' language and keeps identity from a reference |
-| 2. Other directions | PixelLab `create-character-with-4-directions` or `generate-8-rotations-v3` | One request, consistent rotations, native sprite resolution |
+| 2. Other directions | GPT Image 2.5, all four poses in **one** turnaround sheet | Owner review, September 12: only the GPT Image poses were judged good. Both PixelLab rotation routes degraded the character |
 | 3. Motion | PixelLab `animate-with-text-v3` | Produces real limb movement in one call; GPT Image cannot. Skeleton control tested and rejected for locomotion — see below |
 | 4. Bake | existing local tooling | Binary alpha, palette, pivot, canvas — unchanged |
 
@@ -25,10 +25,25 @@ A four-pose turnaround in **one** generation holds identity; four separate
 per-direction generations do not (patches and proportions drift).
 
 ### Step 2 — directions
-PixelLab generates at true sprite size (32–256px) instead of downsampling a large
-painting. Feed the approved front pose as the `south` reference. Caveat observed: its
-side views came out narrow (16px wide against 36px front) and it reinterpreted the
-character rather than copying it, so review rotations against the step-1 art.
+**Use the GPT Image turnaround; do not use PixelLab for rotations.** A single sheet
+containing all four poses holds identity, and in owner review on September 12 only
+those poses were judged good.
+
+Two PixelLab routes were tested against them and both lost quality:
+
+- `create-character-with-4-directions` **drifts from the approved design** — different
+  face, different patch design, a thinner body and boots that were never in the brief.
+  It is a generator that treats references as hints, which is the wrong job. It is also
+  slow: still pending after 25 minutes, against roughly two for a single-reference run.
+- `/rotate` is the technically correct endpoint — synchronous, one call per direction,
+  and it genuinely transforms the supplied sprite rather than inventing one (face,
+  beard, patches, chest light and belt all carried over). Even so, its north view lost
+  the shoulder patches into an invented pale belt band, and the result still reads as a
+  step down from the source art.
+
+Note on the narrow profiles: `/rotate` returned 20px east and 19px west from a source
+whose own west pose was 19px, so it reproduced the reference faithfully. The thin sides
+came from the step-1 turnaround, not from PixelLab — fix them in step 1.
 
 ### Step 3 — motion
 `animate-with-text-v3` took the approved Bill and produced seven 64×64 frames with real
@@ -83,7 +98,8 @@ frames, 437–1,166 colours against your packs' 41–64.
 1. ~~Does `animate-with-skeleton` close the loop cleanly?~~ Tested September 12: no.
    It is a 3-frame window, costs more, and produced outline artefacts. Rejected for
    locomotion; retained for exact single poses.
-2. Do PixelLab rotations hold up if given all four step-1 poses as references rather
-   than only `south`? Untested, and it may fix the narrow side views.
+2. ~~Do PixelLab rotations hold up if given all four step-1 poses as references?~~
+   Moot: rotations are no longer part of the pipeline. The four-reference and
+   mirrored-west experiments were left running and their results are not needed.
 3. Conversion scope for the cast remains the owner decision in the art-direction
    proposal: 501 manifests, 1,495 states, 7,272 frames.
