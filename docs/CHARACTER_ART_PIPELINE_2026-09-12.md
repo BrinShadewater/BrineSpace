@@ -45,6 +45,23 @@ Note on the narrow profiles: `/rotate` returned 20px east and 19px west from a s
 whose own west pose was 19px, so it reproduced the reference faithfully. The thin sides
 came from the step-1 turnaround, not from PixelLab — fix them in step 1.
 
+### Mirror one profile; never generate both
+
+**Rule, learned twice on September 12.** Generate one side view and flip it for the
+other. Do not ask a model for both, and do not ask it to make them match.
+
+- Characters: GPT Image drew the left-facing pose as a three-quarter-from-behind view,
+  19–22px wide against 32–40px for the right-facing one, and an explicit instruction to
+  make the two exact mirror images did not fix it. Flipping the east pose produced
+  identical 32px profiles at no cost.
+- Room side walls: the same failure. Separately generated east and west banks came out
+  as different installations, and the accepted hand-authored pair already differed
+  (`303x974` against `279x979`). See the
+  [mirrored side walls proposal](MIRRORED_SIDE_WALLS_PROPOSAL_2026-09-12.md).
+
+Safe here because the art carries no text and no handedness, and lighting is even from
+above. North and south are never mirrored — a vertical flip is wrong in both cases.
+
 ### Step 3 — motion
 `animate-with-text-v3` took the approved Bill and produced seven 64×64 frames with real
 stride, foot lift and arm swing, preserving face, patches, belt and boots, at one
@@ -72,9 +89,13 @@ or interact stance), not for cyclic locomotion.
 
 ### Step 4 — bake
 Unchanged and already correct: threshold alpha to binary, scale so the figure is ~65px,
-seat the feet on the pivot row, quantize to the pack palette. PixelLab output arrives
-almost pack-ready — 0 soft-alpha pixels on 3 of 4 rotations and on all 7 animation
-frames, 437–1,166 colours against your packs' 41–64.
+seat the feet on the pivot row, quantize to the pack palette.
+
+**Quantize the whole direction set together, not frame by frame**, so all four share one
+palette as a real pack does. Done that way on September 12, the four Bill poses came out
+at 44–59 colours inside a shared 64-colour palette, 0 soft-alpha pixels, figures exactly
+65px tall on the 92x92 canvas with feet on the pivot row — technically registerable
+(`output/higgsfield-pilot-2026-09-12/bill-reimagined/final-poses/`).
 
 ## What was ruled out along the way
 
