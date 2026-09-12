@@ -45,6 +45,26 @@ does not establish that server processing is complete.
 - Local build identity: `brinespace-501dcca927427024`.
 - Evidence: `output/itch-upload/push.log` and `output/itch-upload/HANDOFF.md`.
 
+## Third upload — rebuilt from main, September 12, 2026
+
+- Package: `builds/BrineSpace-2026-09-12-main/`, 1.24 GiB, same six files.
+- Version: `2026-09-12-main`; build `1970435`, patched from `1970381`.
+- Built from a clean tree at `68c6cc4e` (`working_tree_modified: false`), so the
+  download matches the repository rather than an in-progress checkout.
+- Validation before pushing: pack audit `checked=7780 missing=0 changed=0`, and the
+  release smoke fixture reported `0 failures; debug=false` with zero
+  resource-loading errors in the log.
+- Transfer: re-used 99.82% of the previous build; 794.34 KiB patch (99.94% saving).
+  Two same-size builds a day apart cost under a megabyte to ship.
+- Confirmed live: butler status shows `√ #1970435` at version `2026-09-12-main`.
+- Trap hit on the way: `output/production-ten/export-tools/` held only the `.tpz`
+  bundle — the two template executables the presets point at were gone, so the
+  export could not run. They extract from
+  `Godot_v4.6.1-stable_export_templates.tpz` (`templates/windows_debug_x86_64.exe`
+  and `templates/windows_release_x86_64.exe`); verify the bundle against
+  `SHA512-SUMS.txt` first. Export presets depending on files under `output/` is a
+  standing hazard for cleanup passes.
+
 ## Second upload — slim build, September 11, 2026
 
 - Package: `builds/BrineSpace-2026-09-11-slim/` (folder, not a ZIP), 1.24 GiB in
