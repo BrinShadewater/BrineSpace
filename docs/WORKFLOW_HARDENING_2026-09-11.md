@@ -44,11 +44,15 @@ entirely.
 
 ## Open items
 
-1. **`battery_array/1` `full_wall_battery-wall_cells` is reset in game.** Its
-   bounds sit ~4 units above the wall-mount envelope, so `apply()` snaps it back
-   on every draw. Since `1eb3a460` this emits a named `push_warning`. Likely a
-   registration or y-offset correction; do not widen the shared envelope without
-   owner approval.
+1. ~~`battery_array/1` cells section is reset in game.~~ **Withdrawn on
+   September 12 — this was wrong.** The envelope probe compared Studio's old box
+   against the shared one and I read "outside the envelope" as "reset in game".
+   It is not: that placement is the owner's own, saved in free placement, and
+   `apply()` skips the guard entirely in that mode (`room_layout_store.gd:139`).
+   A probe against the real user layout confirms the prop keeps its saved
+   position `[90, -204]` and 1.148 scale, with no warning raised. The lesson is
+   that envelope legality alone says nothing about runtime behaviour; check which
+   placement mode the layout was saved in first.
 2. **`test_camera_pixel_stability` fails 2/64 at 960px, zoom 0.6.** Pre-existing:
    it reproduces at session-start commit `59c1e95a` and on both 4.6.1 and
    4.8-dev5. Cause unknown, not investigated.
