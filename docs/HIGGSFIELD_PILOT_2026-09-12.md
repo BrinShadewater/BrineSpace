@@ -51,6 +51,29 @@ art contract it failed the first gate and GPT Image 2.5 passed it.
    the closest available is 9:16. The registration region has to crop, or the asset is
    authored wider than it should be.
 
+## Character sprite test — four directions, one character
+
+Twelve credits, four walk strips of Major Bill generated from two of his own source
+strips as references, each cut and put through the real 92x92 path (binary alpha,
+feet on the pivot row, 64-colour quantization).
+
+1. **Technically valid**: 42-55 colours, zero soft-alpha pixels. They would pass the
+   pack audit unchanged.
+2. **Sharper at close zoom** than the shipped frames — better head, shoulders and boots.
+3. **Identity drifts between directions.** Shoulder patches moved from red caps
+   (south, north) to upper-arm squares (east, west); east and west read taller and
+   slimmer than south. The shipped set holds one silhouette across all four, so
+   per-direction generation is *less* consistent than what already exists.
+4. **The improvement mostly vanishes at gameplay size.** At the owner's saved fit zoom
+   (0.4446) the character is about 29 pixels tall and the two sets are near
+   indistinguishable (`bill-gameplay-size.png`).
+
+Conclusion: do not re-art the cast. The blur is the fit view, not the source art. If
+close-zoom quality matters, the lever is canvas size — see
+[character canvas proposal](CHARACTER_CANVAS_SIZE_PROPOSAL_2026-09-12.md). A likely
+better use of generation is a single turnaround sheet containing all four directions,
+so the model sees its own other views while drawing them; untested.
+
 ## The side-wall finding
 
 Generating east and west separately produced two different banks. Mirroring one
