@@ -77,6 +77,20 @@ static func write_data(next: Dictionary) -> Error:
 		if navigation_stamp(next)!=navigation_stamp(data): geometry_revision+=1
 		data=next
 	return error
+# One placement envelope, shared by Studio and the live game. The live values are
+# the truth: anything Studio calls legal must survive in the running station.
+# Ordinary props 360x378; wall mounts a full cell (400x400); props with a movable
+# region keep Studio's taller box, which the live guard previously lacked.
+const PROP_ENVELOPE := Rect2(-180,-198,360,378)
+const MOVABLE_PROP_ENVELOPE := Rect2(-184,-260,368,444)
+static func envelope_for(room, prop: Dictionary) -> Rect2:
+	if prop.has("movable_region"): return MOVABLE_PROP_ENVELOPE
+	if prop.get("wall_mount",false):
+		var half: float=(room.Geometry.CELL+room.Geometry.WALL)*0.5
+		return Rect2(-half,-half,half*2,half*2)
+	return PROP_ENVELOPE
+static func door_lane(side: int) -> Rect2:
+	return Rect2(-36,-180,72,180) if side==0 else (Rect2(0,-36,180,72) if side==1 else (Rect2(-36,0,72,180) if side==2 else Rect2(-180,-36,180,72)))
 static func move_prop(prop: Dictionary, at: Vector2) -> void:
 	var shift: Vector2=at-prop.rect.position
 	prop.rect.position=at
@@ -140,15 +154,10 @@ static func apply(room, asset: String) -> bool:
 			if selected.get("__free_placement",true) and Rect2(-240,-300,480,540).intersects(room.prop_visual_bounds(prop)):
 				continue
 			# Constrained layouts retain the directional clearance guard.
-			var envelope := Rect2(-180,-198,360,378)
-			if prop.get("wall_mount",false):
-				var half: float=(room.Geometry.CELL+room.Geometry.WALL)*0.5
-				envelope=Rect2(-half,-half,half*2,half*2)
-			var valid := envelope.encloses(room.prop_visual_bounds(prop))
+			var valid := envelope_for(room,prop).encloses(room.prop_visual_bounds(prop))
 			for side in range(4):
 				if not room.Geometry.has_port(room.layout[0],side): continue
-				var lane := Rect2(-36,-180,72,180) if side==0 else (Rect2(0,-36,180,72) if side==1 else (Rect2(-36,0,72,180) if side==2 else Rect2(-180,-36,180,72)))
-				if prop.rect.intersects(lane): valid=false
+				if prop.rect.intersects(door_lane(side)): valid=false
 			if not valid:
 				# Silent before 2026-09-11: an authored placement outside the constrained
 				# envelope was reset with no trace, so the layout looked saved but never
