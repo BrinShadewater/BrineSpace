@@ -1,5 +1,21 @@
 # BRINESPACE — Visual Aesthetic Bible
 
+## Where placement is enforced — September 11, 2026
+
+Studio and the running station now share one placement envelope, so "legal" means
+one thing: both call `RoomLayoutStore.envelope_for()` and `RoomLayoutStore.door_lane()`
+(`scripts/room_layout_store.gd`). Ordinary props get 360×378, wall mounts a full cell
+(400×400), and props with a movable region the taller 368×444 box. These are
+enforcement bounds, not art direction — the composition rules in section 9 and the
+three-to-four-large-assets correction still govern how a room should look.
+
+Two consequences worth remembering when art appears to go missing. Placements are
+only checked in constrained layouts; Studio defaults to free placement, where nothing
+is rejected. And dressing furniture — anything whose registration carries
+`dressing: true`, plus every `library/common-` decoration — is Studio dressing only
+and is filtered out of live rooms by design, so a clock or a copied dressing prop can
+save correctly and still never render in game.
+
 ## Preserve accepted visuals through delivery — September 9, 2026
 
 Rendering optimizations must preserve accepted geometry, dressing, occlusion and
