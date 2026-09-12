@@ -56,6 +56,9 @@ does not establish that server processing is complete.
 - Transfer: butler re-used 96.49% of the previous build and sent a 30.59 MiB
   patch — a 97.59% saving. Pushing a folder works as well as a ZIP.
 - Evidence: `output/itch-upload/push-2026-09-11-slim.log`.
+- Confirmed live roughly three minutes after the transfer finished: butler status
+  shows `√ #1970381` against version `2026-09-11-slim`. It read as still
+  processing at 60s and 90s, so poll with backoff rather than assuming failure.
 - Pre-flight worth repeating: scan the PCK for `owner-reference`, `head-candidate`,
   `playtest` and `candidate-0` before pushing. Hits are expected and harmless when
   they sit inside provenance JSON that merely names a source file and its hash; a
