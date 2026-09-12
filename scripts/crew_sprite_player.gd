@@ -70,6 +70,41 @@ func load_manifest(path: String, append: bool = false) -> void:
 		var seconds := 0.0
 		for duration in entry.frameDurationsMs: seconds += float(duration) / 1000.0
 		timing[entry.id] = {"durations": entry.frameDurationsMs, "loop": entry.loop, "seconds": maxf(seconds, 0.001)}
+	mirror_declared_directions(data)
+
+func mirror_declared_directions(data: Dictionary) -> void:
+	## Opt-in: a pack declares {"mirrorDirections": {"west": "east"}} to serve one
+	## authored profile on both sides. Authored states always win, and only left/right
+	## may mirror - a vertical flip would put a character's feet above their head.
+	var pairs: Dictionary = data.get("mirrorDirections", {})
+	if pairs.is_empty(): return
+	var pivot: Array = data.get("pivot", [46, 86])
+	for target in pairs:
+		var source := str(pairs[target])
+		if str(target) not in ["east", "west"] or source not in ["east", "west"]: continue
+		for key in frames.keys():
+			if not str(key).ends_with("-" + source): continue
+			var mirrored := str(key).trim_suffix("-" + source) + "-" + str(target)
+			if frames.has(mirrored): continue # Authored art is never replaced.
+			var row: Array = []
+			for texture in frames[key]:
+				# get_image() hands back the live image; flipping it in place would
+				# corrupt the authored frame this mirror is derived from.
+				var image := Image.new()
+				image.copy_from(texture.get_image())
+				image.flip_x()
+				var flipped := ImageTexture.create_from_image(image)
+				for meta in texture.get_meta_list():
+					flipped.set_meta(meta, texture.get_meta(meta))
+				# The pivot reflects about the frame's centre line with the art.
+				var seat: Vector2 = texture.get_meta("crew_pivot", Vector2(float(pivot[0]), float(pivot[1])))
+				flipped.set_meta("crew_pivot", Vector2(float(image.get_width()) - 1.0 - seat.x, seat.y))
+				if str(texture.get_meta("crew_water_facing", "")) == source:
+					flipped.set_meta("crew_water_facing", str(target))
+				flipped.set_meta("crew_mirrored_from", key)
+				row.append(flipped)
+			frames[mirrored] = row
+			timing[mirrored] = timing[key].duplicate(true)
 
 func load_equipment_manifest(equipment: String, path: String) -> bool:
 	# Equipment shares the base clock; reject a row that cannot match its phases.
