@@ -16,6 +16,32 @@ static func entries() -> Dictionary:
 	return catalog
 static func base_id(id: String) -> String: return id.split("#")[0]
 
+# One authored side wall serves both side walls: the opposite wall reuses the same
+# raster with its geometry mirrored about the region's own centre line. The pivot
+# sits on that line, so width, height and outline are unchanged and only an
+# asymmetric interior moves - which is the point, and the part that would break
+# placement and clearance if the art flipped and the polygons did not.
+# Side walls only. A vertical mirror would put a worktop under its cabinets.
+static func mirror_registration(registration: Dictionary) -> Dictionary:
+	var mirrored: Dictionary=registration.duplicate(true)
+	var axis: float=registration.pivot.x*2.0
+	var pieces: Array=[]
+	for polygon in registration.pieces:
+		var points:=PackedVector2Array()
+		# Reversed so mirrored polygons keep the winding of the authored ones.
+		for i in range(polygon.size()-1,-1,-1): points.append(Vector2(axis-polygon[i].x,polygon[i].y))
+		pieces.append(points)
+	mirrored.pieces=pieces
+	mirrored.mirrored=true
+	mirrored.mirror_axis=axis
+	return mirrored
+
+# Mirrored geometry samples the unmirrored source pixel, so the raster flips with
+# the polygons. Every registration draw path routes its UVs through this.
+static func source_uv(registration: Dictionary, point: Vector2) -> Vector2:
+	if not registration.get("mirrored",false): return point
+	return Vector2(float(registration.mirror_axis)-point.x,point.y)
+
 static func family_variants(asset: String) -> Array:
 	var name:=base_id(asset).trim_prefix("library/").trim_prefix("full_wall_").trim_prefix("side-")
 	for direction in ["north","east","south","west"]:
@@ -108,7 +134,7 @@ static func draw(room, prop: Dictionary) -> void:
 		var uv:=PackedVector2Array()
 		for point in polygon:
 			points.append(anchor+(point-reg.pivot)*scale_value)
-			uv.append(point/Vector2(tex.get_size()))
+			uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,tex)
 
 static var portable_views: Dictionary={}

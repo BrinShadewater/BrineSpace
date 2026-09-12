@@ -24,6 +24,31 @@ func _init(id: String) -> void:
 		var side_image := Image.new()
 		preload("res://scripts/safe_image.gd").load_png(side_image, side_data.source)
 		side_views[side]={"art":ImageTexture.create_from_image(side_image),"registration":decode_registration(side_data)}
+	load_mirrored_side(id)
+
+# Opt-in per asset: `side-<id>-side.json` is one authored side wall that serves both
+# side walls, the opposite one mirrored (see docs/MIRRORED_SIDE_WALLS_PROPOSAL_2026-09-12.md).
+# Authored `side-<id>-east/west` art always wins, so adopting this never retires
+# accepted art; an asset converts only when an owner adds the `-side` registration.
+# North and south are never mirrored and are not consulted here.
+func load_mirrored_side(id: String) -> void:
+	if side_views.has("west") and side_views.has("east"): return
+	var path: String="res://rooms/full-wall-v1/registrations/side-"+id+"-side.json"
+	if not FileAccess.file_exists(path): return
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
+	var authored: String=str(data.get("direction","east"))
+	if authored not in ["west","east"]:
+		push_warning("Mirrored side registration "+path+" must declare direction east or west.")
+		return
+	var image := Image.new()
+	preload("res://scripts/safe_image.gd").load_png(image, data.source)
+	var texture := ImageTexture.create_from_image(image)
+	var source: Dictionary=decode_registration(data)
+	var opposite: String="east" if authored=="west" else "west"
+	if not side_views.has(authored): side_views[authored]={"art":texture,"registration":source}
+	if not side_views.has(opposite):
+		# The raster is shared; only the polygons and their UVs are mirrored.
+		side_views[opposite]={"art":texture,"registration":preload("res://scripts/room_asset_library.gd").mirror_registration(source)}
 
 func decode_registration(data: Dictionary) -> Dictionary:
 	var r: Array=data.region
@@ -240,5 +265,5 @@ func draw(room, prop: Dictionary) -> void:
 		var uv := PackedVector2Array()
 		for point in polygon:
 			points.append(anchor+(point-selected.pivot)*scale)
-			uv.append(point/Vector2(texture.get_size()))
+			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(selected,point)/Vector2(texture.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)

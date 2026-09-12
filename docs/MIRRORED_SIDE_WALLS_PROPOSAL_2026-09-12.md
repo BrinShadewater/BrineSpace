@@ -3,7 +3,8 @@
 Owner idea, raised during the Higgsfield pilot: author two pieces per wall asset —
 one wide (north/south) and one side — and mirror the side for the opposite wall,
 instead of authoring east and west separately. **Nothing is implemented.**
-`full_wall_prop.gd` is central to room rendering, so this is propose-first.
+`full_wall_prop.gd` is central to room rendering, so this was propose-first.
+**Implemented for new assets only on 2026-09-12** - see "Owner decision" below.
 
 ## Why it is worth doing
 
@@ -60,7 +61,30 @@ instead of authoring east and west separately. **Nothing is implemented.**
   `test_room_layout_editor`.
 - Studio-versus-live comparison, because the two must agree about the flip.
 
-## Open question for the owner
+## Owner decision, 2026-09-12
 
-Adopt this for new assets only, or also convert existing ones? Converting is where the
-saving is, but it retires authored west art that has already been accepted.
+**New assets only.** The mechanism ships; no existing asset is converted.
+
+An asset opts in by adding one registration, `side-<asset>-side.json`, whose
+`direction` is `east` or `west`. `full_wall_prop.load_mirrored_side()` loads it,
+serves the authored wall from it directly and the opposite wall from
+`RoomAssetLibrary.mirror_registration()`. Authored `side-<asset>-east/west`
+registrations always win, so adopting this never overwrites or retires accepted art.
+
+Mirroring happens in the registration rather than at draw time. The polygons are
+reflected about the region's own centre line, and `RoomAssetLibrary.source_uv()`
+makes the mirrored geometry sample the unmirrored source pixel, so the raster flips
+with the polygons - the failure mode this proposal identified as the crux. The pivot
+sits on that centre line, so width, height, outline and `wall_mount` are unchanged and
+placement is untouched. Every registration draw path routes its UVs through
+`source_uv()`, Studio included, so Studio and the running game cannot disagree.
+North and south are never consulted; only `east` and `west` mirror.
+
+### What a future conversion would also have to do
+
+`default-layouts.json` addresses side registrations as library ids, for example
+`library/side-research-analysis-wall-east` and `-west` at quarters 2 and 3. Retiring
+an authored side file orphans those keys: `tests/test_layout_keys.py` reports
+`names no registration or common asset`, and the props silently vanish from the room.
+A conversion revision therefore has to repoint those layout keys as well as link the
+new registration to the one it supersedes.

@@ -74,5 +74,5 @@ func draw(room, prop: Dictionary) -> void:
 		var uv := PackedVector2Array()
 		for point in polygon:
 			points.append(anchor+(point-reg.pivot)*scale)
-			uv.append(point/Vector2(prop.split_texture.get_size()))
+			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(reg,point)/Vector2(prop.split_texture.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,prop.split_texture)
