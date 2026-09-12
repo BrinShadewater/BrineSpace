@@ -106,6 +106,15 @@ func _run() -> void:
 		root.get_texture().get_image().save_png("res://output/title-continue.png")
 	title.continue_button.pressed.emit()
 	await create_timer(0.5).timeout
+	# The swap plus checkpoint restore normally lands within a few frames, but on a
+	# loaded machine the half second above was not always enough and this flaked.
+	# Keep waiting only until the restored state is actually present; the checks
+	# below still report a genuine failure once the ten seconds run out.
+	var settle_until := Time.get_ticks_msec()+10000
+	while Time.get_ticks_msec()<settle_until:
+		var scene = current_scene
+		if scene!=null and "cycle" in scene and scene.cycle==7 and scene.placed_rooms.size()==2: break
+		await process_frame
 	game = current_scene
 	game.meta.save_path = "user://brine_save_test_meta.json"
 	check(Save.pending.is_empty(), "Continue request must be consumed only once")
