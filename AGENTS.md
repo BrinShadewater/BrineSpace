@@ -112,6 +112,16 @@ files, including stale copies of the source tree, and walking it times searches 
 manifest check with visual acceptance, and do not run unrelated full asset batches
 merely for a documentation change.
 
+Before treating a failing layout or Studio test as a regression, check the owner
+decisions that make the Studio show what the live game hides: dressing and
+`library/common-` decorations are filtered from live rooms, free placement is the
+Studio default (so `issues()` reports nothing until the toggle is off), and wall
+decorations are paused in `rooms/whole-room/decoration_props.gd`. Guard coverage of
+a paused feature behind the same flag instead of deleting it. In fixtures, wait for
+observable state rather than a fixed delay — a fixed wait after a scene swap is the
+known flake pattern — and when a failure is unexplained, print the real per-frame
+state with a temporary probe before editing the test.
+
 For playable exports, follow [docs/RELEASE_WORKFLOW.md](docs/RELEASE_WORKFLOW.md) and
 use the maintained release exporter. Keep editor/PCK checks separate from actual
 release gameplay; release assertions must never contain required side effects.
