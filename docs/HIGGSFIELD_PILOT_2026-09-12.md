@@ -51,6 +51,59 @@ art contract it failed the first gate and GPT Image 2.5 passed it.
    the closest available is 9:16. The registration region has to crop, or the asset is
    authored wider than it should be.
 
+### Follow-up: the engineering bank taken to the game — September 12
+
+The bank was carried through the whole path for the first time — bake, registration,
+and four rotations inside a real room — using the opt-in mirrored side wall
+(`side-<asset>-side.json`, see the [proposal](MIRRORED_SIDE_WALLS_PROPOSAL_2026-09-12.md)).
+One authored east side served both side walls. Evidence and every intermediate raster:
+`output/engineering-bank-pilot-2026-09-12/` (gitignored). Nothing adopted; no source-tree
+writes. Three of the items above need correcting.
+
+**Item 4 is withdrawn: the canvas ratio does not matter.** The subject sits inside the
+frame with margins, and the registration crops to the silhouette's own bounds, so the
+delivered ratio is the subject's, not the canvas's. Measured on three assets:
+
+| asset | canvas | canvas ratio | content ratio after crop |
+|---|---|---|---|
+| side strip | 1520x2688 | 9:16 | 689x2559, **1:3.71** |
+| south bench | 2688x1152 | 21:9 | 2613x675, **3.87:1** |
+| wide north | — | — | 324x101, 3.21:1 |
+
+The authored comparators are 1:3.21 for the research side strip and 3.76:1 for its south
+bench. Ask for the widest ratio available and let the registration crop.
+
+**Item 1 is overstated.** The 1.69M partial-alpha pixels are real, but **96% of them sit
+at alpha 250-253** — effectively opaque, never exactly 255 — and only about 4% is genuine
+edge feathering. A single threshold at 128 produced the correct silhouette with **zero**
+soft-alpha pixels on all three pieces. It is one line in the bake, not a cost worth
+weighing against background removal.
+
+**A gap not on the list: the generations are too light for the room set.** Against the
+accepted `maintenance-repair-wall`, saturation already matched (0.274 against 0.277) but
+luminance did not: the room bank is 66% dark (value at or below 48) with a rust accent
+at (120,24,0), while the generation carried about 12% bright warm cream at 144-168 that
+the room set has none of.
+
+Matching the whole luminance distribution did **not** fix it — in the room the result
+looked unchanged, because the average is not what reads as wrong. What fixed it was
+targeting the structural frame alone: light pixels with weak saturation (V above 0.45,
+S below 0.28 — 18% of the art) taken to charcoal, mid greys brought down slightly, and
+the orange and cyan accents left untouched because they already matched. Worth trying
+as a prompt constraint before generating, and worth keeping as a deterministic pass
+either way, since it costs nothing and preserves the design exactly.
+
+**The south view generated correctly from two references.** The convention — same bench
+seen from the north, so viewed from behind and much more steeply from above, worktop
+dominant, cabinet fronts hidden, plain vented back panel below — came through by passing
+the north piece for subject and an accepted `-south` registration's art for camera
+convention. No invented iconography appeared in that generation.
+
+**Method caution for anyone repeating this.** A room view draws full-wall props through
+its *own* `full_wall` instance. Swapping only `room.props` leaves a pilot asset's
+registration coordinates divided by the room asset's texture size, so the polygons sample
+a different sheet and the bank renders as flat white. Replace `room.full_wall` itself.
+
 ## Character sprite test — four directions, one character
 
 Twelve credits, four walk strips of Major Bill generated from two of his own source
