@@ -14,7 +14,7 @@ for the question of whether to convert the cast.
 |---|---|---|
 | 1. Look | GPT Image 2.5 (Higgsfield) | Only model tested that draws in the rooms' language and keeps identity from a reference |
 | 2. Other directions | GPT Image 2.5, all four poses in **one** turnaround sheet | Owner review, September 12: only the GPT Image poses were judged good. Both PixelLab rotation routes degraded the character |
-| 3. Motion | PixelLab `animate-with-text-v3` | Produces real limb movement in one call; GPT Image cannot. Skeleton control tested and rejected for locomotion — see below |
+| 3. Motion | PixelLab `animate-with-text-v3`, **`enhance_prompt=true`** | Produces real limb movement in one call; GPT Image cannot. The parameter defaults to false and without it there is no stride — see below. Skeleton control tested and rejected for locomotion |
 | 4. Bake | existing local tooling | Binary alpha, palette, pivot, canvas — unchanged |
 
 ### Step 1 — look
@@ -71,6 +71,50 @@ spaced the frames better than a hand-written six-pose prompt.
 Known defects from that run: one frame had a stray black cluster at the foot (repair
 with `inpaint-v3`), and the loop did not close cleanly — the last frame does not return
 to the first.
+
+#### `enhance_prompt=true` is required, not optional — September 12
+
+Retested on the approved east pose. The parameter defaults to **false**, and the
+difference between the two settings is the difference between a walk and a shuffle.
+Measured as the pixel width of the figure's lower third, frame by frame:
+
+| `enhance_prompt` | leg spread across the cycle | invented cyan pixels (source has 2) |
+|---|---|---|
+| `false` (default) | 18, 18, 18, 19, 19, 18, 18 — no stride at all | 2, 2, 26, 92, 72, 25, 93 |
+| `true` | 18, 27, 35, 37, 35, 27, 18 — a clean open-and-close arc | 2, 2, 2, 2, 3, 4, 6 |
+
+With the parameter off, a bare `action` of `"walking"` produced no locomotion and grew a
+cyan glow out of the chest device's cyan strip. Turning it on fixed both. This is the
+"writes its own motion brief" behaviour credited above; it is not the default.
+
+**`frame_count` is controllable** — 4 to 16, must be even — and the endpoint returns
+`frame_count + 1` images. The "seven frames" above was a request for six. Existing
+character sets are 4-frame idles and 6-frame walks, so they can be matched exactly.
+
+**Loop closure did not reproduce as a defect.** Measured as mean per-pixel RGB
+difference, the wrap from last frame to first was 4.98 against a consecutive-frame mean
+of 4.70, a ratio of 1.06. Bill's shipped `Walking/east` measures 1.21 by the same method,
+so this loops more cleanly than the art currently in the game. Why it differs from the
+first run is not established; the configuration differed in both `frame_count` and
+`enhance_prompt`.
+
+Defects in that run: three detached pixels above the head in one frame of seven, and
+nothing in the other six. Removed by discarding every pixel island that is not the
+largest — `inpaint-v3` was not needed. The dark leading leg in mid-stride frames is
+deliberate depth shading, not an artefact.
+
+#### The source pose must be the reimagined one
+
+Animating Bill's **shipped** sprite was tested and fails. At 13x44 pixels inside the
+92x92 canvas there is too little to work from: the model invented a face, broke the
+chest patch into two blocks and replaced the navy torso with mottled slate. The approved
+reimagined pose is 32x65 and came back near pixel-faithful from the same call.
+
+This settles a question the cost estimate depends on. Re-animating the existing cast in
+place is not available; adopting the new animations means adopting the new design, which
+is the owner decision in the art-direction proposal.
+
+Evidence for this section: `output/pixellab-walk-east-2026-09-12/` (gitignored).
 
 **Skeleton control was tested and is not the answer for locomotion.**
 `estimate-skeleton` returns 18 labelled joints in normalised coordinates (0.1 of a
