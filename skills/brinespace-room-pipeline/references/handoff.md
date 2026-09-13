@@ -1,3 +1,5 @@
+> Current owner decision: [top-down and inward-facing contract](top-down-owner-contract.md) supersedes conflicting historical camera guidance below. Read it before production or handoff.
+
 # Room and environment handoff
 
 ## Visual session closeout
@@ -61,3 +63,8 @@ release executable against the selected source bindings. Diagnostic placeholders
 are failures to repair, not accepted art. Preserve native appearance and live
 animation state when caching or culling. A newer source pack is not covered by an
 older executable's acceptance.
+
+
+### Acceptance at closeout
+
+Record owner acceptance separately from native visual review and mechanical tests. Name the accepted source/card revision and the exact exported package, if any. A source-only polish pass does not inherit an older executable's acceptance, and a room material approval does not supersede a newer project-wide camera contract. Retain rejected candidates as provenance without listing them as selected runtime art.

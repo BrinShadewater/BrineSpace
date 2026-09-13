@@ -157,6 +157,40 @@ When the owner requests ongoing pipeline improvement:
   preserving concurrent changes, then validate both and check edited-file parity.
 - Prefer a focused amendment over duplicating an existing lesson.
 
+For a palette-only correction to accepted raster geometry, first test image editing
+as a candidate, then reject it if canvas dimensions drift or unchanged regions cannot
+be proven. A bounded deterministic color-family remap is preferable when it preserves
+the source's shading and can assert zero changed pixels outside the reviewed material
+region. Keep the generated candidate and rejection reason as provenance, preserve the
+original source, write a versioned output, and rerun native placement even when the
+registration polygons are unchanged. Medical Treatment Wall blue upholstery is the
+reference case: `assets/med-bay-directional-v1/treatment-south-blue-v1-review.json`.
+
+When brightness or palette feedback names a wall-length object, resolve every selected directional source that owns that object before editing. Apply one measured transform across the family, then inspect all four live rotations; correcting only side or north art creates a palette jump when the room rotates. If q0 changes, refresh the catalog card and verify every card consumer. Solar Array's September 12 muted-orange correction is the reference case: `assets/solar-directional-v2/orange-brightness-repair.json`.
+
+Do not identify functional indicators by color name alone when muting painted machinery. Define and record a separate exclusion for compact high-value readout pixels, then inspect their native-scale legibility after the surrounding paint changes. Battery Array's directional correction preserves bright amber/yellow indicators while lowering the larger orange shells; its recorded thresholds are in `assets/battery-directional-v2/orange-brightness-repair.json`.
+
+A palette repair cannot satisfy a camera defect. Evaluate projection before promoting a previously muted candidate; Current Turbine's old dark source remained a tall front elevation and was still invalid under the top-down contract. When a generated transparent candidate arrives as RGB with a neutral imitation transparency field, record that failure, remove only edge-connected neutral pixels, then inspect alpha connected components. Remove tiny disconnected generation specks with a bounded reproducible tool before registration so source bounds and review boards describe the real machine.
+
+For opaque generated wall sources, thin white seams can come from filtered texture
+samples just outside a correct polygon rather than an enclosed registration hole.
+Make only the edge-connected neutral background transparent and retain enclosed pale
+trim, gauges and process materials. Apply palette masks by material role: painted
+orange housings may be muted while yellow logistics marks and copper product remain
+distinct. Before native review of a newly introduced texture path, run Godot's
+explicit headless editor import; concurrent asset tasks can enlarge that shared
+queue, so preserve the import log and do not misclassify startup delay as a render
+failure.
+
+A single source may supply four wall directions only after it passes a strict
+orthographic camera gate. Circular lids must remain circular and upright cabinet
+or vessel fronts must be absent. Then exact quarter-turns preserve geometry and
+move a top service surface coherently around the room without invented perspective.
+Reject a polished elevation that merely rotates the original camera defect. Audit
+generated alpha before registration: retain the reviewed dominant silhouette and
+remove disconnected specks with recorded counts and bounds. Cryo Chamber's v2
+directional bank is the reference case.
+
 A full-room crew diagnostic must render the floor pass as well as sorted props, so pads and service leads remain visible. Keep floor-free isolated depth comparisons separate. Check working-side standing space after grouping furniture; nonintersecting prop footprints alone do not establish crew access. For articulated lamps, distinguish deliberate reach above the work surface from overlap with unrelated equipment in rotated views.
 
 For single-entry rooms, compose against the actual sealed walls rather than retaining a four-way empty cross from the source atlas. For straight and tee rooms, apply the same topology rule to effect-envelope checks: test the actual connected aisle in canonical coordinates, not an obsolete four-quadrant art assumption. Pair equipment by workflow and preserve working-face access. A long exposed service line should have a physical reason; prefer a short local connection where that better describes the activity.

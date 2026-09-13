@@ -5,6 +5,20 @@
   "path_base": "active BrineSpace checkout",
   "output_cases": [
     {
+      "id": "complete-local-density-replacement",
+      "prompt": "Repair Bill locally and replace all his animations and states, preserving detail and improving the pipeline.",
+      "inputs": ["docs/BILL_FULL_REPLACEMENT_2026-09-12.md", "tools/bill-art-source-contract.json"],
+      "assertions": [
+        "Inventories the actual consumer including joins and equipment",
+        "Re-extracts original higher-resolution sources and preserves source hashes",
+        "Preserves world size, pivots, timing, water metadata and equipment alignment",
+        "Does not treat palette simplification or final-frame enlargement as added detail",
+        "Updates bindings, clearance, native fixtures, maintained and installed skills and bible",
+        "Reports source gait limitations separately from density and coverage acceptance"
+      ],
+      "visual_review": ["Native same-world-scale bare/equipped animation", "Live room context and source-detail comparison"]
+    },
+    {
       "id": "new-officer-concept",
       "prompt": "Create a new BrineSpace engineering officer based on Major Bill's art style. I only want the concept for now.",
       "inputs": [

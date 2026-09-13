@@ -1,4 +1,1334 @@
+## Gameplay/performance task closed; Claude handoff - September 13, 2026
+
+Owner requested workflow consolidation and closure. Read [the detailed Claude
+handoff](CLAUDE_HANDOFF_2026-09-13.md) for the recent Claude reference point, current
+paid-gameplay fixes, startup/hatch/Studio work, F7/F8/F9 diagnostics, measured gains,
+newer room/character status, checks and next actions. Room and character skill
+references plus targeted installed mirrors, asset workflow and bible now carry the
+lessons. This was a documentation-only closeout: no fresh game-wide validation,
+commit, export or generation. Original power/reserve and west-turbine reports stay
+open; animation polish remains unfinished and paid generation remains prohibited
+without explicit owner approval. No background continuation is intended.
+
+## Room asset workflow session closeout - September 13, 2026
+
+The large/medium room-asset lessons are consolidated in the maintained room-pipeline skill, `docs/ROOM_ART_PRODUCTION.md` and `docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md`. Future batches use one process-specific anchor plus at most one smaller functional universal support, preserve quiet floor, verify both asset IDs and silhouettes in four native orientations, then publish cards and dependency hashes.
+
+The communications furnishing v9 batch closes with six audited assets across Radio Lab, Listening Post and Holographic Core, 12 reviewed native orientations and a passing focused suite at `output/test-runs/20260913-024217-headless`. Owner aesthetic acceptance and a fresh export remain pending. See `docs/ROOM_ASSET_WORKFLOW_CLOSEOUT_2026-09-13.md`.
+
+## BRINE/scale investigation session closed — September 13, 2026
+
+Owner requested workflow consolidation and session closure. Accepted BRINE tube contact is retained; the 47-room scale-pass evidence remains tied to its September 12 revision and later furnishing selections take precedence. Veld's scanning-head report remains unreproduced; Solar dressing assertions and the earlier Salvage approach issue are separate open findings. Maintained/installed skills, asset workflow and visual bible now include source-density, shadow ownership, authored-versus-local layout attribution and report-state diagnosis lessons. See [session closeout](HANDOFF_ART_SCALE_SESSION_CLOSE_2026-09-13.md). Documentation-only closeout; no new generation, export or scheduled continuation.
+
+## Crew animation session closed - September 13, 2026
+
+Owner requested session closure. Animation polish remains unfinished. Do not resume Higgsfield generation or spend credits without explicit owner approval. Existing generated assets and controller work are retained; Veld north seating candidate is unselected after visible sliding in native transitions. See `docs/HANDOFF_CREW_ANIMATION_SESSION_CLOSE_2026-09-13.md` for current coverage, verification and remaining work.
+
+## Communications themed/universal furnishings v9 - September 13, 2026
+
+Radio Lab, Listening Post and Holographic Core now pair a large matte process-specific work surface with one medium neutral support furnishing. The signal-routing console, hydrophone-analysis table and projection-alignment deck replace older centerpieces; a patch-cable organizer, rugged power conditioner and instrument-calibration case extend the reusable family.
+
+All 12 native orientations and three refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-024217-headless`; the focused asset audit reports zero errors. Owner aesthetic acceptance and export remain pending. See `docs/ROOM_FURNISHINGS_V9_2026-09-13.md`.
+
+## Service and logistics themed/universal furnishings v8 - September 13, 2026
+
+Maintenance Bay, Storage Bay and Data Archive now pair a large matte process-specific workstation with one medium neutral support furnishing. The component-rebuild cradle, cargo-sorting island and media-restoration table replace scattered legacy floor clusters; a fastener chest, folded handling dolly and sealed transit case extend the reusable family.
+
+All 12 native orientations and three refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-021608-headless`; the focused asset audit reports zero errors. Owner aesthetic acceptance and export remain pending. See `docs/ROOM_FURNISHINGS_V8_2026-09-13.md`.
+
+## Clinical and biology themed/universal furnishings v7 - September 13, 2026
+
+Life Support, Med Bay and Bio Lab now pair a large matte process-specific workstation with one medium neutral support furnishing. The atmosphere-analysis island, sterile triage island and culture-preparation island replace weaker repeated work pieces; a sealed filter chest, enclosed equipment cart and specimen transit case extend the reusable family.
+
+All 12 native orientations and three refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-014953-headless`; the focused asset audit reports zero errors. Owner aesthetic acceptance and export remain pending. See `docs/ROOM_FURNISHINGS_V7_2026-09-13.md`.
+
+## Utility and science themed/universal furnishings v6 - September 13, 2026
+
+Tidal Condenser, Gravity Loom and Xeno Lab now pair a large matte process-specific workstation with one medium neutral support furnishing. The condensate-analysis island, field-tensor console and sealed assay table replace smaller generic work pieces; a valve-spares locker, diagnostic rack and narrow decontamination caddy extend the reusable family.
+
+All 12 native orientations and three refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-013058-headless`; the focused asset audit reports zero errors. Owner aesthetic acceptance and export remain pending. See `docs/ROOM_FURNISHINGS_V6_2026-09-13.md`.
+
+## Cross-department themed and universal furnishings v5 - September 13, 2026
+
+Reactor, Clone Lab and Biodome now pair a large matte themed workstation with one medium neutral support furnishing. The control-rod inspection bench, genome-preparation island and potting-and-seed island replace smaller generic work pieces; a sealed tool chest, rolling sample trolley and folding supply pallet demonstrate the reusable family across engineering, clinical science and cultivation.
+
+All 12 native orientations and three refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-011605-headless`; the focused asset audit reports zero errors. Owner aesthetic acceptance and export remain pending. See `docs/ROOM_FURNISHINGS_V5_2026-09-13.md`.
+
+## Power-room themed and universal furnishings v4 - September 13, 2026
+
+Current Turbine, Biomass Digester and Heat Recovery no longer repeat the same generic service bench. Each now has a large matte themed work anchor paired with one medium neutral support furnishing: a flow-governor console and instrument cabinet, feedstock-prep island and maintenance trestle, or exchanger manifold and cable caddy.
+
+All 12 native orientations and three refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-010049-headless`; the focused asset and dependency audits report zero errors. Owner aesthetic acceptance and export remain pending. See `docs/ROOM_FURNISHINGS_V4_2026-09-13.md`.
+
+## Themed and universal room furnishings v3 - September 13, 2026
+
+Six additional matte furnishings are integrated across Hydroponics Bay, Ore Refinery, Cryo Chamber, Quarantine Cell, Pressure Control and Isolation Vault. The themed nutrient island, sorting bench and thaw cart reinforce room activity; the neutral parts chest, equipment plinth and task table add sparse station-wide support.
+
+All 24 native orientations and six refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-003920-headless`. The batch remains locally saved with owner aesthetic acceptance and export pending. See `docs/ROOM_FURNISHINGS_V3_2026-09-13.md`.
+
+## Themed and universal room furnishings v2 - September 13, 2026
+
+Six additional rectangular matte furnishings are integrated across Research Lab, Command Center, Medical Center, Crew Hab, Anomaly Lab and Medical Office. Three are themed and three form a neutral station-wide family; the batch is evenly split between large and medium assets. All sources are true-alpha 1254-square rasters with external registrations.
+
+All 24 native orientations and six refreshed cards were visually reviewed. Preferred layouts, card consistency and side-wall variants pass in `output/test-runs/20260913-001455-headless`. The batch remains locally saved with owner aesthetic acceptance and export pending. See `docs/ROOM_FURNISHINGS_V2_2026-09-13.md`.
+
+## Room centerpiece asset pass - September 12, 2026
+
+Twelve new themed furnishings are selected across ten previously sparse rooms: seven large and five medium assets, including ten square or rectangular silhouettes. All selected rasters are true-alpha 1254-square sources with external silhouette registrations. Ten refreshed room cards and 40 native orientation captures were visually reviewed; the batch audit reports zero errors.
+
+Preferred-layout routing passes all 176 furnished orientations after explicit Battery q2 and Storage q2 center corrections. The selected assets, hashes, prompts, rejection record and bounded evidence are in `assets/room-centerpieces-v1/manifest.json` and `docs/ROOM_CENTERPIECE_ASSET_PASS_2026-09-12.md`. Owner aesthetic acceptance and a new export remain pending.
+
+## Current room-art coverage reconciled - September 12, 2026
+
+A fresh current-source native catalog covers all 47 room identities and 167 applicable renders across rotatable and fixed rooms. Four quarter contact sheets were visually reviewed against the entirely top-down, inward-facing contract. The coverage ledger has 47 unique rows, every declared direction, and 47 evidence-linked current-contract review gates. Historical per-direction pending labels remain as provenance. See [coverage audit](ROOM_ART_CURRENT_COVERAGE_AUDIT_2026-09-12.md) and [asset closeout](OWNER_ASSET_STRICT_OVERHEAD_CLOSEOUT_2026-09-12.md). Owner acceptance, packaging, gameplay, character animation/art, and the incomplete Mining sentence remain outside this milestone.
+
+## Crew-relative room art scale pass - September 12, 2026
+
+Owner confirmed an in-game pass across furnishings, machinery, doors and fixtures using existing crew sizes. All 47 identities were natively reviewed against production Bill at 65.28 world units; 153 placements in 22 rooms corrected and 22 cards refreshed. Medical q3 and Mycelium source drawing now honor authored scale. 176 layouts, cryo recovery, 36 native crew-life cases, exact direct/retained parity for changed renderers and 47 card identities pass. Broader Salvage q1 approach failures reproduce before this pass. See [scale handoff](CREW_RELATIVE_ART_SCALE_2026-09-12.md). Source implementation complete; no export or owner visual acceptance claimed.
+
+## Construction drone material review complete - September 12, 2026
+
+The live Construction ROV now receives a matte ochre/graphite transform inside its own shared-atlas rectangle. The atlas bytes, silhouette and articulated UVs remain exact; Mining and Salvage regions are untouched. Docked, travelling and working states were natively reviewed, and the q0 card is refreshed. Drone fleet/jobs/lifecycle, Production Ten connections/walker paths, 176 layouts, 20 side variants and 47 card identities pass. Final integration also moved Med Center q3 stations against its closed wall, restoring both side-door routes. See [Construction repair](CONSTRUCTION_DRONE_BAY_OWNER_MATERIAL_REPAIR_2026-09-12.md) and [asset closeout](OWNER_ASSET_STRICT_OVERHEAD_CLOSEOUT_2026-09-12.md). No gameplay timing, animation geometry, export or owner acceptance.
+
+## Remaining owner room-asset queue closed in source - September 12, 2026
+
+Medical Treatment, Mycelium Cultivation, Crew Lounge, Mining Drone Service and Research Analysis now use exact four-direction turns of their strongest south overhead banks. Blue medical upholstery, stable inventories and inward access carry across every wall. BRINE corner banks sit six world units lower in all quarters. Current Quarantine and Anomaly facing/cutout repairs were independently re-reviewed and retained. Native review, 176 layouts, 20 side variants, 47 card identities and the BRINE route fixture pass. See [asset closeout](OWNER_ASSET_STRICT_OVERHEAD_CLOSEOUT_2026-09-12.md). The incomplete Mining sentence and optional Construction-drone redesign remain owner questions; no character animation, gameplay behavior, export or owner acceptance is claimed.
+
+## Shared equipment floor-contact polish - September 12, 2026
+
+Shared machinery shadows now hug footprints with short directional shade; broad offset mats removed. Native Galley, Cold Store, Salvage and Command reviewed in four rotations; BRINE station fixture passes and custom tube shadow is retained. Representative coverage, no export or owner acceptance. See [report](EQUIPMENT_GROUNDING_2026-09-12.md).
+
+## BRINE tube floor contact accepted - September 12, 2026
+
+Owner reviewed the corrected tube and confirmed it looks better. Retain the tight source-aligned contact shadow and suppression of the duplicate rectangular shadow. This acceptance covers the tube grounding treatment; no new export. See [report](BRINE_TUBE_GROUNDING_2026-09-12.md).
+
+## Battery Array north overhead repair - September 12, 2026
+
+Battery Array q0 now uses shallow overhead cell and distribution banks with four closed cells, three distribution units and three inward-facing gauges. Matte graphite and muted rust replace the former north elevation while the verified q1-q3 family, split frames, collision, placements and gameplay remain unchanged. Native q0 review, exact unchanged-quarter comparison, 176 layouts, 20 side variants, 47 card identities and direct/retained state parity pass. See [Battery owner repair](BATTERY_OWNER_NORTH_REPAIR_2026-09-12.md). Source workspace only; no owner acceptance or export.
+
+## BRINE tube floor contact corrected - September 12, 2026
+
+Tube now owns a tight source-aligned contact shadow; duplicate generic rectangular machinery shadow is suppressed. Native four-direction visual review and BRINE fixture pass. See [report](BRINE_TUBE_GROUNDING_2026-09-12.md). No export or owner acceptance.
+
+## Fire performance and paid-operation pass - September 12, 2026
+
+Fire transitions now preserve unrelated rooms' already-paid operation; a regression reproduced a mining bay losing service after its last reserve unit was spent. Fire updates avoid repeated safe-room scans and unnecessary power checks. Controlled 300-room fire-update timings improved with state parity; no whole-game FPS claim. Power/fire checks, native fire gameplay and the full hazard chain pass. Retired directive-reward tooltip removed. See [pass handoff](FIRE_PERFORMANCE_POLISH_PASS_2026-09-12.md). No art/animation replacement or export; original power-balance and west-turbine reports remain open.
+
+## BRINE floating-tank polish verified - September 12, 2026
+
+Detailed BRINE now has restrained sway, clearer contrast and fading bubbles. Native motion, pause, actual hardware-off, containment, four rotations and three viewport sizes pass. Earlier fixture failures resolved against current startup-power and furniture contracts. See [report](BRINE_RESOLUTION_2026-09-12.md). No export or owner acceptance.
+
+## BRINE tank source resolution - September 12, 2026
+
+Live BRINE now uses detailed original pixels with the same float and placement. Native visual review and containment/pause checks recorded; full room fixture still fails furniture and offline equality checks. See [report](BRINE_RESOLUTION_2026-09-12.md). No export or owner acceptance.
+
+## In-game performance diagnostics - September 12, 2026
+
+F7 now toggles bounded live performance stats; manual F8 reports include timing history with pause/focus markers alongside the live diagnostic station save. Studio moved to F9 to fix its F8 conflict. Collector and native input/report tests pass; overlay reviewed at 1600x900 and 960x540. See [diagnostics handoff](PERFORMANCE_DIAGNOSTICS_2026-09-12.md) for limits and playtest instructions. In-memory history does not survive crashes; no export or overall FPS improvement claimed.
+
+## Cold Store owner asset repair verified - September 12, 2026
+
+Matte blue overhead banks and two central coolers rotate through four layouts. Native crew scale, route, powered frost, retained cache and actual station pause checks pass; selected card is refreshed. See docs/COLD_STORE_OWNER_ASSET_REPAIR_2026-09-12.md. No gameplay/character animation change, export or owner acceptance.
+
+## Galley owner asset repair verified - September 12, 2026
+
+Overhead kitchen/serving and two communal tables rotate through four layouts. Native crew-scale, cooktop direct/retained and actual pause checks recorded; card refreshed. 176 layouts, 20 side variants and 47 cards pass. See docs/GALLEY_OWNER_ASSET_REPAIR_2026-09-12.md. Next: Cold Store blue equipment, scale and central coolers. No export or owner acceptance.
+
+## Salvage owner asset repair verified - September 12, 2026
+
+Overhead bench and tote rotate through four default layouts. Native alpha, retained power transitions and actual station pause verified; selected card refreshed. See docs/SALVAGE_OWNER_ASSET_REPAIR_2026-09-12.md. Next: Galley and mess-hall tables. No export or owner acceptance.
+
+## Observation owner asset repair verified - September 12, 2026
+
+Overhead furnishings now rotate with the room; portholes remain background architecture. Layout, native visual, retained power-transition and actual station pause checks recorded in docs/OBSERVATION_OWNER_ASSET_REPAIR_2026-09-12.md. Next asset queue item: Salvage Workshop. No export or owner acceptance.
+
+## Command owner asset repair reviewed - September 12, 2026
+
+Matching charcoal/red wall, overhead inward table/systems/comms and wall antenna corrections integrated. Native alpha, state/retained and actual pause checks recorded; selected card refreshed. Next: Observation rotation and architectural portholes. See docs/COMMAND_OWNER_ASSET_REPAIR_2026-09-12.md. No export or owner acceptance.
+
+## Performance, bug and polish pass - September 12
+
+Targeted live-state optimization removes repeated floor/wall rebuilds for hatch and fire progress while preserving chamber water invalidation. Native exact pixel comparison passes. Airlock clearance now accepts cleared wrecks and rejects remaining deposits/queued builds; feedback identifies blocker and cell. Fire-alert refresh safely handles absent UI. See [pass report](PERFORMANCE_BUG_POLISH_PASS_2026-09-12.md) for measurements, checks and remaining limits. Dense-station performance is not declared solved; no art/animation replacement or export.
+
+## Owner checklist cross-check correction - September 12
+
+All 45 pasted requests are accounted for in [the checklist audit](OWNER_PLAYTEST_CHECKLIST_AUDIT_2026-09-12.md). Keep the original power/reserve and west-turbine reports unconfirmed, and the separate weak cryopod animation complaint open. Cold mist/tint and staged startup do not close animation-quality work. Other sessions retain art/character scope; reported source repairs are not owner acceptance. This audit ran no new gameplay tests and made no export.
+
+## Command matching wall reviewed - September 12, 2026
+
+Command architecture now matches charcoal/red consoles. Native q0-q3 palette/seams reviewed and card refreshed. Independent table/comms overhead and inward facing remain open. See docs/COMMAND_OWNER_ASSET_REPAIR_2026-09-12.md. No export.
+
+## Tidal owner asset repair verified - September 12, 2026
+
+Overhead wall family, matching riser and independent pump/monitor integrated. Native four-direction, operating, retained parity and real station pause checks pass. Next asset review: Command Center. See docs/TIDAL_OWNER_ASSET_REPAIR_2026-09-12.md. No export or owner acceptance.
+
+## Tidal independent overhead equipment - September 12, 2026
+
+Pump and monitor now use inward overhead variants. Static native q0-q3 reviewed; 176 layouts, 20 side variants and 47 card checks pass. Card refreshed. Operating/pause and retained effect review remain open. See docs/TIDAL_OWNER_ASSET_REPAIR_2026-09-12.md. No export.
+
+## Tidal matching rear wall - September 12, 2026
+
+Tidal now selects grey-blue rear-wall panels and dull-brass pipes through a room-specific riser entry. Native joins/palette reviewed; original geometry retained. Independent pump/monitor overhead and effects remain open. See docs/TIDAL_OWNER_ASSET_REPAIR_2026-09-12.md. No export.
+
+## Tidal Condenser overhead wall family - September 12, 2026
+
+All four walls now share three coil returns, two vessels, three cartridges and console with inward controls. Native q0-q3 reviewed; layout, side and card checks pass. Tidal-specific riser palette and independent pump/monitor remain open. See docs/TIDAL_OWNER_ASSET_REPAIR_2026-09-12.md. No export.
+
+## Construction static equipment repair - September 12, 2026
+
+Fabrication bank, assembly bench, flat panel pallet, circular hatch and square docking deck now use matte overhead art. Native room/dock/hatch state reviews recorded. Drone silhouette retained; material repaint recommended separately. See docs/CONSTRUCTION_DRONE_BAY_OWNER_MATERIAL_REPAIR_2026-09-12.md. Source workspace only; no export or owner acceptance.
+
+## Owner movement polish priority - September 12
+
+Marsh west starts/stops and five-to-seven-unit short steps are integrated and verified. Native short-route joins are planted; full disk Save/Continue during start, stop, short travel and settling preserves pose pixels and clocks. Complete-pack and battery regressions pass in output/test-runs/20260913-021738-headless. The ledger contains 814 selected clips; broader autonomous, north/south transitions and older action/carry continuity remain open. See docs/HANDOFF_MARSH_WEST_TRANSITIONS_2026-09-13.md.
+
+Marsh south idle now matches the replacement walk, completing all four cardinal idle replacements. Fixed registration retains the original two-pose 650/650-ms timing. Native exact-source checks pass across 143 body states, and the south idle/walk/idle review passes 51 samples with both boundary pairs visually reviewed. The source validator reports zero errors and preserves all 211 original frames. Directional starts/stops, other tiny-route distances and older action/run/carry continuity remain open. See docs/HANDOFF_MARSH_SOUTH_IDLE_2026-09-13.md; no owner acceptance or export is claimed.
+
+The owner rejected stiff torsos and unnatural feet. Whole-body weight transfer, opposing arm swing and credible foot contact take priority over preserving rejected gait pixels. Veld is a mature woman without glasses; helmets must fit her poses. Marsh stays helmet-free and Bill is outside this replacement.
+
+All eight Veld and eight Branforth walk variants have bounded native/live review. All four Marsh directions are also selected and reviewed: all 20 targeted walk variants now have bounded native/live review. Broader animation polish remains open. These counts do not close broader animation, identity, seated, start/stop or transition work in the clip ledger, or establish owner acceptance.
+
+Veld uses independent directional video cycles and fitted helmet variants, retaining six-slot timing. East/west strides are 102/108 dense pixels; north/south are 0.12 cells. Each direction passed selected native checks; live approach samples per variant were east 15, west 34, south 53 and north 61. Original 670 frames and 108 manifests remain preserved. See docs/HANDOFF_VELD_VIDEO_WALK_2026-09-12.md.
+
+Branforth uses independent directional sources and authored fitted helmet heads. East/west strides are 106/108 dense pixels; north/south remain 0.128 cells. Corrected west timing is 130/170/150/200/150/100 ms; other directions retain 170/130/150/170/130/150 ms. All directions passed 60 selected native samples. Bare/helmet live fixtures passed all original state-coverage checks: east 32 samples into north kneel, west 47 into north kneel, north 58 continuous into west walk plus three short adjustment episodes, south 11 into east kneel. Asset checks preserve 669 original frames and 108 manifests with zero errors/border touches.
+
+Branforth west reference 02 incorrectly placed the right-hip wrench on the visible anatomical-left side. Corrected reference 03 and video 02 now show the left-hip meter. Retimed support phases and changed-source native/live checks passed. A float/int test mismatch and numeric-format hash churn were diagnosed and corrected; east/north/south regression checks and all 19,259 complete-pack checks pass. Earlier sources and captures remain preserved. See docs/HANDOFF_BRANFORTH_MOTION_2026-09-12.md.
+
+Marsh's east standing reference and completed video 01 preserve his human-looking blond identity, visible right-temple plate, ivory/slate suit and full gloves. Cycle 36-64 is selected with six 150-ms holds and a 96-dense-pixel stride. Asset validation and 60 selected native samples pass. The live fixture captured 32 samples through north kneel, with battery drain preserved and no helmet. Contact sheets were reviewed; this is bounded agent review, not owner acceptance. See docs/HANDOFF_MARSH_MOTION_2026-09-12.md.
+
+
+Marsh west uses independent video 01, cycle 28-52, six 150-ms holds and a 126-dense-pixel stride. Asset validation and selected native checks pass; 25 live samples through north kneel preserve battery drain and helmet-free behavior. Source and live contacts were reviewed. North and south use independent cycles 24-44 and 28-54, six 150-ms holds and axial stride 0.128 cells. Each passed 60 selected native samples; live north captured 29 samples into north kneel and south 33 into south kneel. The combined pack check passed 19,259 checks with zero failures. South kneel is partly occluded by room machinery; this does not accept its contact pose. Broader motion and identity work remain open.
+
+Current continuity work (September 13): all 20 targeted walk variants are selected with bounded native/live review. Veld remains a woman without glasses; fitted helmets preserve each character's identity. Marsh remains helmet-free. Bill is unchanged.
+
+Marsh's four cardinal idles now match the replacement walks. East and west starts/stops and short steps are integrated: east short routes span 3.5-4.5 world units, west 5-7. Six supplemental states contain 30 frames. Art validation reports 146 body states and 706 references, zero errors, and all 211 original source frames preserved. West production short-route joins are visually reviewed. Full disk Save/Continue preserves position, timers, animation clocks and selected texture pixels through east/west start, stop, short travel and settling. Complete-pack and battery checks passed in output/test-runs/20260913-021738-headless; subsequent obstacle/timing repairs passed the battery/Save regression in output/test-runs/20260913-022937-headless (116 route samples).
+
+Remaining work: north/south starts, stops and short steps; other short-route distances and broader autonomous use; older Marsh action/run/carry, Veld carry/seated, and Branforth kneel/carry continuity. North generation was rejected for insufficient Higgsfield credits before a job was created. Its prompt, endpoint hashes and reviewed 155-sample baseline are saved. Local existing-source/controller work remains available.
+
+The selected ledger contains 814 clips. This is an inventory, not a count of clips needing regeneration or proof of complete acceptance. No export or owner acceptance is claimed. Current evidence: docs/HANDOFF_MARSH_WEST_TRANSITIONS_2026-09-13.md, docs/HANDOFF_MARSH_SOUTH_IDLE_2026-09-13.md and docs/HANDOFF_MARSH_NORTH_TRANSITIONS_2026-09-13.md. Earlier dated reports retain historical evidence rather than the current queue.
+
+
+## Construction overhead launch hatch - September 12, 2026
+
+Circular overhead hatch and source-aligned opening integrated. Closed/half/open native states reviewed in four directions, plus room placement. Deployment state/timing unchanged. Cradle camera review and drone decision remain open. See docs/CONSTRUCTION_DRONE_BAY_OWNER_MATERIAL_REPAIR_2026-09-12.md. No export.
+
+## Construction overhead assembly bench - September 12, 2026
+
+The assembly bench now uses an overhead parked-arm companion with controls facing room center. Native q0/q1/q3 reviewed; q2 omits the bench. Cradle/hatch camera review and drone design decision remain open. See docs/CONSTRUCTION_DRONE_BAY_OWNER_MATERIAL_REPAIR_2026-09-12.md. No export.
+
+## Construction panel pallet overhead companion - September 12, 2026
+
+The tall glossy panel rack is replaced by a matte flat-storage pallet in Construction. Live q2 placement reviewed with inward catches and aspect-preserving bounds inside the old maximum size. Four alternate pallet placements now pass native inward-facing/bounds review. Other floor equipment facing remains open. See docs/CONSTRUCTION_DRONE_BAY_OWNER_MATERIAL_REPAIR_2026-09-12.md. No export.
+
+## Construction static equipment material pass - September 12, 2026
+
+Cradle, bench and launch hatch now select a Construction-only matte atlas. Source-region and transparency probes plus q0-q3 native review pass. Original drone source retained. Panel rack and floor-equipment facing review remain open. See docs/CONSTRUCTION_DRONE_BAY_OWNER_MATERIAL_REPAIR_2026-09-12.md. No export.
+
+## Construction material repair in progress - September 12, 2026
+
+Four overhead fabrication-bank directions now use a matte casing repaint. Native mounting reviewed after preserving wall_contact metadata. Roller/spool refinement now passes native review; independent floor equipment remains open; this room is not complete. See docs/CONSTRUCTION_DRONE_BAY_OWNER_MATERIAL_REPAIR_2026-09-12.md. No export.
+
+## Biomass Digester material correction - September 12, 2026
+
+Biomass Digester retains the strong four-direction Biomass Processing wall geometry with orange hardware moved into a muted feedstock-moss family. The shared service console now uses a Biomass-only legibility tint. The supplemental service-bench source has true alpha and lifted matte midtones, eliminating its white exterior field. Native q0-q3 reviewed. See docs/BIOMASS_DIGESTER_OWNER_MATERIAL_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Isolation Vault owner asset correction - September 12, 2026
+
+Isolation Vault now uses the accepted south Emergency Isolation bank through exact turns in north/east/south/west. The obsolete north-only baked perimeter and all Battery Array furnishings inherited by the vault have been removed. The independent Battery Array test-bench source received a matte steel/orange highlight pass without geometry or alpha changes. Native vault q0-q3 and battery-room placement reviewed. See docs/ISOLATION_VAULT_OWNER_ASSET_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Clone Growth Wall overhead family - September 12, 2026
+
+Clone Lab now uses the owner-approved east Clone Growth bank through exact turns in north/east/south/west. The outer service rail stays wall-side while the tissue window, microscope, keyboard and consumables face inward. The former frontal north composition and unrelated shallow south appliance strip remain archived but are no longer live. Native q0-q3 reviewed. See docs/CLONE_LAB_OWNER_OVERHEAD_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Bio Culture Wall overhead family - September 12, 2026
+
+Bio Lab now uses the accepted south overhead microscope bench through exact turns in north/east/south/west. Jar lids, dishes and worktops read from above; microscope eyepieces and work access face inward. Tall trough/front-elevation companions remain archived but are no longer live. Native q0-q3 reviewed. See docs/BIO_LAB_OWNER_OVERHEAD_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Crew Hab three-berth overhead wall - September 12, 2026
+
+Crew Hab now uses the accepted compact three-pod berth bank through exact turns in north/east/south/west. Mattress and pillow access faces inward and sleeping capacity no longer changes by direction. The rejected oversized bed/wardrobe/canopy family and its lamp overlay remain archived but are no longer live. Native q0-q3 reviewed; 176 layouts, 20 side variants, 47 cards and 72 crew-life cases pass. The broader crew-activity run timed out on an unrelated listening_post0bill station-choice assertion and was left to the concurrent gameplay/character work. See docs/CREW_HAB_OWNER_OVERHEAD_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Maintenance Repair Wall overhead repair - September 12, 2026
+
+Maintenance Bay now uses the accepted south overhead tool bench through exact turns in all four directions. Tool grips, vise and drawer handles face inward; tall side/elevated north sources are no longer live. Saturated orange is muted and border-connected neutral background is transparent while steel tools and the yellow cloth remain distinct. Native q0-q3 reviewed. See docs/MAINTENANCE_OWNER_OVERHEAD_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Xeno Containment Wall strict overhead repair - September 12, 2026
+
+Xeno Lab now uses one shallow overhead containment bank through exact quarter turns for north/east/south/west. The sealed specimen lid, scanner, hatch and glove ports remain readable; rear rail stays wall-side and every work edge faces inward. The prior north elevation, unrelated side conversions and unrelated south bank remain archived but are no longer live. Native q0-q3 reviewed; 176 layouts, 20 side variants and 47 cards pass. The separate native base-view Xeno test still reports q1/q2 workbench status-strip failures; its source-aperture audit passes and this wall repair does not claim that operating-effect issue. See docs/XENO_OWNER_OVERHEAD_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Listening Post Deepwater standardization - September 12, 2026
+
+The live Listening Post now uses inward-facing navy/teal/brass Deepwater wall banks in all four orientations. North is an exact 180-degree counterpart of the accepted south bank; the old q0 U installation and bright north pack remain archived but are no longer selected. Listening-only floor equipment replaces saturated red trim with muted brass while preserving geometry, activity anchors, operating effects and the Radio Lab source. Native q0-q3 reviewed; 176 layouts, 20 side variants, 47 cards and native operating-effect checks pass. See docs/LISTENING_OWNER_REPAIR_2026-09-12.md. Source workspace only; no export.
+
+## Cryo Chamber strict overhead walls - September 12, 2026
+
+All four selected Cryo support banks now derive from one strict orthographic
+overhead source. The compressor, two vessel lids, coil, pipes, coolant cylinder,
+terminal, three samples and gas bottle remain, without tall cabinet or cylinder
+fronts rotating around the room. Real-display q0-q3 captures were inspected; 176
+furnished layouts, 20 side variants, 47 card identities and both Cryo recovery
+suites pass. q0 card bindings were refreshed. Concurrent q2 pod selection changed
+after the baseline; this asset pass did not edit pod logic or placement. Evidence:
+CRYO_OWNER_OVERHEAD_REPAIR_2026-09-12.md.
+
+## Ore Refinery owner repair complete - September 12, 2026
+
+All selected wall directions and the independent machinery atlas now share a
+restrained burnt-orange engineering palette. Edge-connected neutral backgrounds
+are transparent, removing the reported white seams while preserving enclosed pale
+trim, gauges, yellow logistics marks, copper billets and ore. Real-display q0-q3
+captures were inspected. 176 furnished layouts, 20 side variants, 47 card
+identities and both production-ten route suites pass. The refreshed q0 card is
+selected by all three consumers. Evidence: REFINERY_OWNER_REPAIR_2026-09-12.md.
+
+## September 12 Current Turbine owner art repair (source only)
+
+North q0 now uses a low overhead companion with an inward elliptical intake instead of the tall frontal source. East, south and west retain their accepted geometry with bright orange paint reduced to muted rust-brown. The arrow, rotation rules and power behavior are unchanged. Built-in generation returned RGB imitation transparency; deterministic cleanup removed the neutral exterior and 25 disconnected alpha specks before registration. Native q0-q3 review, Power Expansion, 176 preferred orientations, 20 side variants and all 47 card identities pass. See [Turbine owner repair](CURRENT_TURBINE_OWNER_REPAIR_2026-09-12.md). No character animation or export work.
+
+## September 12 gameplay startup, hatch and cable follow-up (source only)
+
+BRINE now opens dark, lights and consoles precede pod power, and humans emerge
+with cold mist and a brief blue tint. Airlocks close after departure and reopen
+before reentry; the north exterior hatch is visible while closed. Decorative
+power cables are retired at their render/placement owners, including Data Archive.
+The earlier power/selection and Studio/menu fixes remain. See
+[gameplay handoff](GAMEPLAY_STARTUP_HATCH_HANDOFF_2026-09-12.md) for implementation,
+native evidence, save checks and limits. The original power/turbine playtest build
+is still unidentified; no speculative balance change or new EXE. Other sessions
+retain room art and character animation replacement work.
+
+## September 12 Shield Generator orange correction (source only)
+
+The weak hull cradle remains absent and all four selected Shield wall directions now use restrained rust-brown construction beneath graphite/steel machinery. Compact amber indicators remain legible; geometry, placements and gameplay state are unchanged. The q0 card matches the live room. Native q0-q3 review, 176 preferred orientations, 20 side variants and all 47 card identities pass. See [Shield handoff](SHIELD_ORANGE_HANDOFF_2026-09-12.md). No gameplay, character animation or export work.
+
+## September 12 Battery Array orange correction (source only)
+
+All eight selected split-wall registrations now use a coherent muted family across north, east, south and west. Large orange shells became dark rust-brown while compact amber/yellow indicators remain readable; geometry, inventory and placements are unchanged. The q0 card matches the live room. Native q0-q3 review, 176 preferred orientations, 20 side variants and all 47 card identities pass. The north source still needs a later camera conversion under the top-down owner contract. See [Battery handoff](BATTERY_ORANGE_HANDOFF_2026-09-12.md). No gameplay, character animation or export work.
+
+## September 12 Solar Array orange correction (source only)
+
+The selected north, side and south wall-length sources now use restrained burnt-orange structural accents while preserving their machinery, geometry and shading. The q0 card matches the live room. Native q0-q3 review passes, along with 176 preferred orientations, 20 side variants and all 47 card identities. Explicit Hydroponics stand, Anomaly task-light and Shield cradle removals were also confirmed already effective; Isolation Vault's old q0 flush wings remain open. See [Solar handoff](SOLAR_FACING_HANDOFF_2026-09-12.md) and [removal audit](OWNER_ASSET_REMOVALS_2026-09-12.md). No gameplay, character animation or export work.
+
+## September 12 Studio scale and title preview (source only)
+
+Studio now offers Scale: Bill -> Hidden / Standing / Walking and a Place button.
+The preview uses current Bill art at gameplay scale, respects local clearance and
+does not enter saved layouts. Continue Loop's summary/schematic is on the right.
+Native scale/movement, three-size saved-title and existing editor/menu checks pass.
+See [Studio/menu handoff](GAMEPLAY_STUDIO_MENU_2026-09-12.md). The non-art playtest
+goal continues with startup, airlock presentation and decorative cables. No EXE.
+
+## Veld identity correction selected - September 12
+
+Veld is a woman with medium-brown skin, a silver-streaked dark bun and no glasses,
+including under her fitted helmet. Her original concept controls identity.
+Selected corrections cover all four directions of idle, walk, scanner and
+kneel/sample/stand, plus east helmet donning/removal: 29 body clips and 27
+helmet variants, 348 frames. The ledger records 56 selected corrections;
+278 other Veld variants remain under identity review. The full Veld, Branforth
+and Marsh replacement goal remains open; these counts do not imply completion.
+
+The two helmet transitions use six authored key poses, explicit holds and the
+original twelve-slot timing for each action. Held helmets are empty, the worn
+helmet is fitted, and endpoints exactly match corrected bare/equipped idle.
+The taller frozen transition canvas preserves the overhead lift. Source 01,
+rejected for a duplicated face inside the held helmet, remains beside corrected
+source 02 and both exact prompts. A legacy endpoint overwrite was fixed so
+selected poses cannot silently restore older identity art.
+
+Native selected-source, timing and endpoint checks pass: 170 body / 164 equipped
+states, zero failures. Preservation validation reports 670 original frames and
+108 manifests unchanged, zero errors and no border touches. Evidence:
+output/crew-replacement-2026-09-12/veld/helmet-transition-{selected,validation}.log;
+helmet-transition-study-native/all-phases.png and selected native phase captures.
+The all-phase contact and selected overhead pose were visually inspected.
+Continuous locker pickup/placement and live transition occlusion remain open.
+
+Earlier continuous laboratory work review covers north/east/south, bare and
+helmet-equipped: each bounded run captures 63 frames over 6.2 simulation seconds
+through kneel/sample/stand/walk, retaining equipment and fixed work position.
+Evidence is in live-core-review{,-east,-south,-helmet,-helmet-east,-helmet-south}/
+under the same output directory. West live work, broader activity joins and the
+remaining life, water, death and other action families still require review.
+Per-clip ledger rows retain prior evidence; missing evidence is not proof of a
+required redraw. No export or whole-library visual acceptance is claimed.
+
+Changed: tools/prepare_veld_helmet_transition_body.py, tools/veld_scanner_revision.py,
+tools/rebuild_human_crew_art.py, tests/playtest_human_crew_candidate.gd, Veld selected
+frames, source/review records and the animation ledger. The maintained character
+workflow and installed mirror now require selected endpoint comparisons and
+pivot-aware taller-canvas registration. Bill remains unchanged; Marsh helmet-free.
+
+Native live locker follow-up: the focused Veld airlock test passes 224 travel
+samples, equipment pickup/return, pause, power interruption and disk save/restore.
+Captured phase traces compare the actual runtime texture bytes with the selected
+source. Pickup at 0.321 seconds uses frame 2 with the helmet in her hands and
+shelf hidden. This resolves the apparent empty-hand ambiguity in the small room
+capture; no runtime animation mapping repair was needed. Evidence:
+output/crew-replacement-2026-09-12/veld/helmet-locker-source-trace.log and
+helmet-locker-source-trace-native/*-pose.json / *-actor.png / room captures.
+These are discrete checkpoint captures; continuous locker motion remains open.
+
+Continuous Veld locker review now captures both actions at 0.05-second steps:
+44 pickup captures through 2.15 seconds and 46 removal captures through 2.25
+seconds, including all twelve authored slots in each. Fixed-foot and equipment
+completion checks pass, and runtime texture bytes match selected sources.
+Native phase review found a remaining visual mismatch: the staged shelf helmet
+is larger than the fitted held helmet, causing a size jump at pickup/return.
+Keep live visual acceptance open until the shelf/held size relationship is fixed.
+Evidence: output/crew-replacement-2026-09-12/veld/helmet-locker-continuous.log and
+helmet-locker-continuous-native/{continuous-equip.json,continuous-remove.json,
+handoff-phases.png,continuous-equip.gif,continuous-remove.gif}. That first run's
+summary reused the broad test label; its actual scope is continuous locker motion,
+travel and UI. The fixture now reports mode-specific coverage accurately.
+Next: reconcile the staged shelf helmet with Veld's fitted held source while
+preserving other actors and the shared interaction anchor.
+
+Veld shelf scale correction: AirlockService now derives a 0.6 staged-helmet
+scale from the active/reserved Veld locker request, retaining it while she stands
+at the interaction point after return. Other servicing actors and Studio retain
+the existing default. The shelf base and shared interaction point are unchanged;
+no new save field or gameplay timing was introduced. The held shell is roughly
+12 room units wide at Veld's existing body scale, matching the 12-by-15 shelf draw.
+Changed: scripts/airlock_service.gd, scripts/grid_canvas.gd and
+rooms/underwater/airlock-v1/airlock_view.gd.
+
+The repeated native continuous Veld review passes 223 travel samples, both full
+helmet actions, fixed-foot registration and UI. Native shelf-handoff-contact.png
+was inspected: the previous conspicuous shelf/hand size jump is corrected.
+Evidence: output/crew-replacement-2026-09-12/veld/helmet-locker-fitted-shelf.log and
+helmet-locker-fitted-shelf-native/ captures. This establishes bounded q0 Veld
+locker continuity, not every room rotation or broader animation acceptance.
+Next: resume remaining Veld action-family identity corrections and the broader
+Branforth/Marsh review/replacement queue. Counts remain 50 corrected Veld variants.
+
+East seating identity study: generated canonical female Veld sit-down, seated
+idle and rise sources, registered with one standing-derived anatomical ruler and
+exact corrected standing endpoints. Eighteen bare study frames are prepared by
+tools/prepare_veld_seated_identity.py under the identity folder's
+review/seated-east-body-01/. Registered body contact was inspected. Source 01
+had a baked checkerboard and is rejected for extraction; source 02 uses keyed
+magenta. Both raws and exact prompts are retained. The source idle has two
+authored settling poses with explicit holds, not six independent drawings.
+Fitted equipment, furniture contact and native playback remain to be reviewed;
+these frames are unselected and the 50-variant correction count is unchanged.
+
+East seated fitted study now contains 18 bare and 18 helmet poses with bounded
+collar edits and exact standing/seated/rise joins. Native study checks pass
+original timing and all paired source slots; middle-descent native capture was
+inspected. Evidence: output/crew-replacement-2026-09-12/veld/seated-identity-study.log
+and seated-identity-study-native/page-00-frame-03.png. Added
+prepare_veld_seated_helmet.py and seated-identity fixture modes. The fixture now
+creates the final mode-specific output directory and checks every screenshot
+write; an initial missing-directory run was corrected and rerun successfully.
+The study remains unselected pending furniture contact and selected-pack checks.
+Current correction count stays 50 variants.
+
+East seated sequence selected: sit-down, seated idle and rise now use corrected
+female Veld body art and pose-fitted helmets, adding six variants / 36 frames.
+Totals are 29 body clips + 27 equipment variants = 56 corrected variants,
+348 frames; 278 other Veld variants remain under identity review. All selected
+pixels, original timing and corrected standing/seated joins pass the native
+fixture; the selected endpoint phase was inspected. Preservation validation:
+670 original frames / 108 manifests unchanged, zero errors or border touches.
+Evidence: output/crew-replacement-2026-09-12/veld/seated-identity-{selected,validation}.log
+and seated-identity-selected-native/page-00-frame-05.png. Explicit overrides
+respect per-slot source offsets: only the embedded standing endpoints need the
+smaller crop. Sources, prompts and registration remain preserved.
+
+Current lounge and observation stations request north-facing seated actions;
+this east selection does not claim live chair contact. Next: north-facing seated
+and reading identity replacements, then continuous furniture review. The full
+Veld/Branforth/Marsh goal remains active. Bill unchanged; Marsh helmet-free.
+
+## September 12 gameplay power follow-up (source only)
+
+Drone bays retain service for their paid cycle instead of losing it when a next-cycle
+forecast cannot afford the bay. Prepaid charging continues at zero reserve; pause,
+master-off and the next unfunded cycle still stop it. New loops start with no
+blueprint selected. Power feedback explains battery charge/discharge; turbine
+feedback names the intake cell and blocking object. Focused economy, drone/save,
+native UI and hardware checks pass. No turbine rotation defect reproduced; no balance
+change. Original playtest build/save unidentified. See
+[gameplay handoff](GAMEPLAY_POWER_HANDOFF_2026-09-12.md). No EXE.
+
+## Veld identity correction - owner direction, September 12
+
+Dr. Veld is a woman. Her canonical identity is the original concept at
+character/dr-veld-v1/concept-01.png: silver-streaked dark bun, cobalt Science
+markings and ivory chest panels. She does not wear glasses, including inside
+the fitted helmet. Preserve her face through every direction and action.
+
+Recent generated references drifted from this identity. Prior technical passes
+and selected-source matching do not establish identity acceptance. Reopen Veld
+body and equipment visual review; do not propagate the recent male-looking or
+glasses-bearing source studies. South sample strip01 and fitted heads01 are
+unselected and rejected as identity references. Retain their raw files/prompts
+as provenance. East sample is installed but requires identity correction along
+with affected existing clips. Use the original concept for identity and existing
+frames only for motion/registration. Review bare and helmeted faces together.
+
+## September 12 owner playtest handoff - new room art contract
+
+All room equipment moves to top-down, inward-facing art on every wall. Older
+conflicting north elevations/fixed-facing acceptance is superseded. Slight north
+perspective is allowed only when low and rotation-safe. Observation portholes become
+background wall/riser art. This session is handing off; the broad goal is unfinished.
+
+Start with [room-art/playtest handoff](ROOM_ART_HANDOFF_2026-09-12.md) and
+[top-down direction/workflow](TOP_DOWN_ART_DIRECTION_2026-09-12.md). Raw notes and
+source-selection snapshot are preserved. Power/reserve and turbine behavior are
+owner-reported issues awaiting diagnosis; no playtest fixes were implemented in
+this consolidation. Preserve the concurrent work recorded below.
+
+Future direction accepted: partially procedural maps assembled from authored pieces,
+with a viable starting area, variable mountains/regions and buried discoveries.
+Use reproducible expedition seeds and preserve excavation/discovery state. Keep
+the authored map for testing; generation follows lighting/excavation playtesting.
+See [accepted map direction](LIGHTING_MOUNTAINS_2026-09-12.md#accepted-future-map-generation-direction).
+
+Lighting/mountain session closed on September 12. Accepted decisions, findings,
+verification limits and next steps are consolidated in the
+[session closeout](DERELICT_LIGHTING_MOUNTAIN_SESSION_2026-09-12.md).
+Source changes remain in the working tree; no session commit or EXE export.
+
+## 2026-09-12 - Lighting and excavatable mountain foundation
+
+New loops have broad connected mountains and a buried service-wreck pocket.
+Mining opens reachable exposed sections into tunnels. Dense exterior haze now
+uses station, diver and drone beams with terrain shadows, drilling silt and saved
+survey memory; interiors stay readable. Enemies are deferred. Native visuals,
+shader pixels, paid clearance, save and hardware checks pass. See
+[lighting/mountain handoff](LIGHTING_MOUNTAINS_2026-09-12.md). Source only, no EXE.
+
+Derelict lights now start off. Completed repair removes weathering; lights
+then follow power availability and the interior switch. All six paid-repair
+transitions and material checks pass natively. Mixed repaired-ward wall geometry
+is also fixed. See [derelict handoff](DERELICT_CONDITION_2026-09-12.md). No EXE.
+
+## 2026-09-12 - Autonomous crew conversations (source only)
+
+Nearby available crew now face each other for brief conversations, alternating speaker/listener states before resuming routines. A cooldown keeps exchanges occasional; needs, active jobs and emergencies take priority. Partner/cooldown persist in actor saves. Social and primary-work fixtures passed, and native conversation placement was reviewed. See docs/CREW_SOCIAL_2026-09-12.md. No new talking art or EXE export; deliberate social visits and relationships remain future scope.
+
+## 2026-09-12 - Primary workplaces and autonomous needs (source only)
+
+Owner accepted mostly autonomous crew with a primary workplace, compatible synergy, meals and sleep. Implemented inspector assignment, physical work attendance, +1 Metal/Data specialty bonus, slower matching fatigue, saved assignments and autonomous work/meal/sleep/return. Needs breaks require reachable services so missing facilities do not prevent construction. Marsh retains battery behavior. See docs/CREW_PRIMARY_WORK_2026-09-12.md for changed files and evidence.
+
+Checks: primary routine, 72 room-life cases, diver mining and hull repair passed; native work/eat/sleep captures reviewed. Construction regression remains unresolved: four Branforth directions fail because he waits without a clear route from spawn, including below the needs threshold. Details and probe evidence in the handoff. Automatic mining/repair order generation remains later scope. No EXE rebuilt.
+
+Helmeted crew can now mine surveyed mineral deposits via the Diving Airlock mission selector. Trips use existing tank/range/recall rules and deliver 2 Metal after safe return. Native inspector dispatch, locker fitting, mine/cargo saves and return checks pass; existing salvage regression passes. See [diver mining handoff](DIVER_MINING_2026-09-12.md). Source only; prior hazard EXE predates this addition.
+
+## Three-crew detailed replacements selected - September 12, 2026
+
+Veld east sample inspection and its fitted helmet are now selected; native
+source/timing/endpoints and preservation checks pass. Live workplace review
+remains pending. See CREW_ACTION_REVIEW_2026-09-12.md and the clip ledger.
+
+All twelve directional instrument actions are selected across Veld, Branforth
+and Marsh. Native selected-source checks pass; complete-pack refresh passes
+19,259 checks. Live workplace and repair/life/water/death review remain unfinished.
+
+Branforth west meter action is selected with fitted helmet poses and corrected
+amber-tool endpoints. Native source checks pass; north and wider review remain.
+
+Branforth south diagnostic-meter action is selected with fitted helmet poses.
+Native selected-source checks pass; west/north and broader action review remain.
+
+Veld scanner replacements are selected in all four directions, bare and equipped.
+Native selected-source checks pass; complete-pack refresh passes19,259 checks.
+Branforth remaining diagnostic directions and broad action/live review remain.
+
+Veld west scanner is also selected with authored fitted helmet poses; native
+selected-source checks pass. Veld north and broader three-crew review remain.
+
+Veld south scanner is selected with authored fitted helmet heads. Corrected
+directional pivot registration passes native selected-source checks; original
+sources remain unchanged. North/west role actions and broader review remain.
+
+Marsh controller interactions are selected in all four directions. Native source
+and timing checks pass; complete-pack refresh passes 19,259 checks. Live workplace
+and remaining human/life/repair/water/death visual review are still outstanding.
+
+Marsh south controller interaction is selected with independent idle endpoints.
+Native timing/source checks and six rendered samples passed; original sources
+remain unchanged. West controller is also selected after native source checks; north and broader action review remain.
+
+Veld, Branforth and Marsh use their complete detailed packs. Both humans have
+character-fitted locker pickup/don/removal and all four cargo, seating and sleeping
+directions selected. All 256 rest joins pass. Live lounge and berth review covers
+north-facing activities; other directions have clip checks, not live-room approval.
+
+Marsh east/west walk/run use corrected measured anatomy. All four carry directions
+now alternate legs at their original four-frame timing with distance cadence.
+West walk/run/carry and north/south carry each pass 60 native source comparisons;
+exported filmstrips and axial native sampled stills were inspected. Source checks
+preserve 211 original frames/1 manifest, with no equipment or border errors.
+Marsh has all four draw/weld/stow sequences, isolated from old aliases.
+South reach sequence01 is now selected with deep forward lean and native
+painted-leaf contact. Twelve draw/stow renderer samples and five active poses
+pass. Selected-pack native references, joins and timing checks report zero
+failures; source validation preserves 211 frames/1 manifest with zero errors.
+Marsh east controller interaction is selected, preserving distinct original idle
+endpoints. Native source checks and original-asset validation pass.
+Production navigation/clearance is unchanged.
+Veld east scanner interaction is selected in both bare and fitted-helmet packs.
+All twelve native source comparisons pass; 670 original frames and108manifests
+remain unchanged. Live-workplace review remains.
+Branforth east diagnostic interaction is selected in bare/fitted packs;
+selected-source native checks pass and669originalframes/108manifests are intact.
+Complete-pack refresh:19,259checks,0failures (complete-packs-role-update.log). See
+[action review](CREW_ACTION_REVIEW_2026-09-12.md) for exact evidence and changed files.
+
+Remaining: continuous cargo motion and pickup/unload joins, broader role/work,
+dining/reading, construction, rest and water/death interiors, and full visual
+acceptance. Locker containment/sidebar failures remain separately recorded in the
+[fitted helmet handoff](CREW_FITTED_HELMETS_2026-09-12.md). Skills and the visual bible
+track selected revisions and limitations. Bill is unchanged. No new export.
+
 # BrineSpace current status
+
+Med Center side counters (2026-09-12): low overhead diagnostic banks selected; tool grips and cartridge releases inward. Card refreshed. Native eight screen cases, 176 layouts, 20 variants and 47 card identities pass. Other directions/placement metadata unchanged. See docs/MED_CENTER_OVERHEAD_HANDOFF_2026-09-12.md.
+
+
+Med Office side counters (2026-09-12): low overhead banks selected with inward controls and operating-only screens; default card refreshed. Native eight screen cases, 176 layouts, 20 variant regressions and 47 card identities pass. Other directions/placement metadata unchanged. See docs/MED_OFFICE_OVERHEAD_HANDOFF_2026-09-12.md.
+
+
+Crew Hab west matte (2026-09-12): authored west berth now matches the matte idle/steady operating-lamp treatment. Native direct/retained lamp checks, 176 layouts and 20 variant regressions pass. Other views and placement metadata unchanged. See docs/CREW_HAB_MATTE_HANDOFF_2026-09-12.md.
+
+
+Crew Hab east matte (2026-09-12): berth material repair selected with a separate steady operating lamp. Native direct/retained power and steady-light checks, 176 layouts and 20 variant regressions pass. Other views and placement metadata unchanged. See docs/CREW_HAB_MATTE_HANDOFF_2026-09-12.md.
+
+
+Storage Bay sides (2026-09-12): low overhead cargo/inventory platforms selected with inward releases and operating-only amber console. Both sides reviewed; four direct/retained state cases, 176 layouts and 20 variant regressions pass. North/south pixels and placement metadata unchanged. Owner acceptance and station pause remain open. See docs/STORAGE_SIDE_HANDOFF_2026-09-12.md.
+
+
+Data Archive sides (2026-09-12): low overhead drawers/indexing desks selected with inward controls and operating-only screens. Both walls reviewed; eight direct/retained screen cases, 176 layouts and 20 variant regressions pass. North/south pixels and placement metadata unchanged. Owner acceptance and station pause remain open. See docs/ARCHIVE_SIDE_HANDOFF_2026-09-12.md.
+
+
+Battery Array sides (2026-09-12): low overhead east/west companions selected with inward controls and outer cabling. Both native sides reviewed; 176 layouts and 20 variant regressions pass. North/south pixels and all placement metadata unchanged. Owner aesthetic acceptance remains open. See docs/BATTERY_SIDE_HANDOFF_2026-09-12.md.
+
+
+BRINE south service (2026-09-12): matte idle source and operating-only screen selected; native direct/retained state checks, 176 layouts, 20 variants and 47 card identities pass. Refreshed idle card reviewed. Station pause and owner aesthetic acceptance remain open. See docs/BRINE_CORNER_SIDE_HANDOFF_2026-09-12.md.
+
+
+Salvage matte pair (2026-09-12): north bench and south tote selected; refreshed native card reviewed, 176 layouts and 47 card identities pass. Owner side-view acceptance and alternate south bench selection remain open. See docs/SALVAGE_SIDE_HANDOFF_2026-09-12.md.
+
+
+Cold Store side pair now uses the overhead west fridge and matte east food rack. Native art/card review,176layout routes,20side variants and47card parity pass. See docs/COLD_STORE_SIDE_HANDOFF_2026-09-12.md. Owner visual and retained/pause review remain; no export.
+
+
+Turbine east/west now use the overhead skid source with inward intakes and source-local powered effects. 176 layout routes, 20 side variants and four native temporal effect checks pass. See docs/TURBINE_SIDE_REVISION_2026-09-12.md. Owner aesthetic and retained station pause review remain; no export.
+
+
+BRINE corner-state update (September 12): northwest and northeast banks now use quiet idle art plus operating screen traces. All15screens verified individually in direct and retained renders; layout/variant and card checks pass. Other BRINE painted screens and owner visual acceptance remain. See docs/BRINE_CORNER_SIDE_HANDOFF_2026-09-12.md.
+
+
+Airlock directional update (September 12): south and north locker companions are installed. North mounting now follows exposed, shared and low-wall modes while preserving the helmet handoff. Native Bill q2 service/interlock checks and current headless service/176 layouts pass. Side lockers and exposed shelf-support polish remain; see docs/AIRLOCK_FACING_HANDOFF_2026-09-12.md.
+
+
+Airlock south locker installed q0 with shared helmet/fitting anchor and visible pickup/return attachment. Headless service and176layouts pass; native Veld handoff reviewed, but3sidebar viewport assertions fail. Card refreshed. Other locker directions remain. See docs/AIRLOCK_FACING_HANDOFF_2026-09-12.md.
+
+
+Facing ledger reconciled against fresh RoomDatabase: 47 identities, no missing/duplicate rooms or absent direction entries. This is inventory coverage, not completion; library/live fit, Airlock lockers, BRINE states and owner camera review remain. See docs/FACING_COVERAGE_AUDIT_2026-09-12.md.
+
+
+BRINE NE bank now has inward catches/buttons with its filter and console inventory retained. Native fit and layout/side checks pass; card refreshed. Display states and final camera acceptance remain pending. See docs/BRINE_CORNER_SIDE_HANDOFF_2026-09-12.md.
+
+
+BRINE NW bank now has inward access with six screens/two bottles retained. Native fit and layout/side checks pass; card refreshed. Painted display states, NE arm and owner camera acceptance remain pending. See docs/BRINE_CORNER_SIDE_HANDOFF_2026-09-12.md.
+
+
+BRINE northwest side study rejected: improved inward access but unintended north-arm and instrument changes. Live art retained; tighter repair pending. See docs/BRINE_CORNER_SIDE_HANDOFF_2026-09-12.md.
+
+
+Gravity Loom north service pair installed q2 with doorway gap preserved. Service companions now cover all compass directions; native review, 176 layouts and 20 variants pass. Owner camera acceptance remains open. See docs/GRAVITY_SIDE_HANDOFF_2026-09-12.md.
+
+
+Gravity Loom side control console now installed opposite its calibration bench in q1/q3. Native pair review, 176 layouts and 20 variants pass. North companions remain pending. See docs/GRAVITY_SIDE_HANDOFF_2026-09-12.md.
+
+
+Gravity Loom calibration weights now have an inward side companion, installed east q1 and mirrored west q3. Native review, 176 layouts and 20 variants pass. North and control-console companions remain pending. See docs/GRAVITY_SIDE_HANDOFF_2026-09-12.md.
+
+
+Reactor north service companion installed in q2, replacing its east station. All compass companions now available; native fit, side-variant and 176-layout checks pass. Owner camera acceptance remains open. See docs/REACTOR_SIDE_HANDOFF_2026-09-12.md.
+
+
+Reactor side service station now installed in all four layouts, switching sides around the cooler. Native review and 176 layout checks pass; q0 card refreshed. North companion remains. See docs/REACTOR_SIDE_HANDOFF_2026-09-12.md.
+
+
+New Reactor side-service companion registered and reviewed in east/mirrored-west library views at 120-unit length. Inward access corrected by source edit. Live fit and north companion remain pending. See docs/REACTOR_SIDE_HANDOFF_2026-09-12.md.
+
+
+Shield side valve grips corrected inward with tanks/compartments preserved and quiet screens. Native q0/q2 and refreshed card reviewed; 176 layouts, 20 variants and 47 card bindings pass. Owner side-camera acceptance pending. See docs/SHIELD_SIDE_HANDOFF_2026-09-12.md. Source only.
+
+
+Isolation side machinery revised with all three switchboxes/levers preserved and powered source-local lamps. Native side review, 12 lamp/renderer cases, 176 layouts and 20 variants pass. Owner camera acceptance pending. See docs/ISOLATION_SIDE_HANDOFF_2026-09-12.md. Source only.
+
+
+Listening Post side consoles revised toward overhead view with inward access and quiet screens. Native side review, sonar off/on/temporal checks, 176 layouts and 20 variants pass. Owner camera acceptance remains pending. See docs/LISTENING_SIDE_HANDOFF_2026-09-12.md. Source only.
+
+
+Radio Lab side banks now show overhead worktops, inward handles and dark static screens. Native comparison preserves all prop bounds and q0/q2 views; 176 layouts and side variants pass. Owner side-camera acceptance remains pending. See docs/RADIO_SIDE_HANDOFF_2026-09-12.md.
+
+
+Airlock south check bench now uses inward-facing overhead art. Native review and scoped service/176-layout checks pass; directional suit lockers and side-view owner acceptance remain pending. See docs/AIRLOCK_FACING_HANDOFF_2026-09-12.md. Source only.
+
+
+## Airlock south reserve-air bank corrected - September 12, 2026
+
+q2 overhead bank now faces inward; native review and Airlock/layout checks pass. Other rotations unchanged. See AIRLOCK_FACING_HANDOFF_2026-09-12.md. South check bench, lockers and other rooms continue.
+
+
+## Airlock west reserve-air bank corrected - September 12, 2026
+
+Overhead west bank installed in q3 with inward service access; east library companion reviewed. Other rotations unchanged. Airlock service and 176 layout cases pass. See AIRLOCK_FACING_HANDOFF_2026-09-12.md. Remaining directional art continues.
+
+
+## Airlock locker service restored - September 12, 2026
+
+Moved default lockers clear of wall collisions/disconnected fitting space while retaining scale and helmet attachment. Service suite now passes (Bill four rotations, Veld/Branforth q0), plus 176 layouts and card parity. Native placements/card reviewed. See AIRLOCK_FACING_HANDOFF_2026-09-12.md. Directional art/full catalog continue; no export.
+
+
+## Airlock side check bench installed - September 12, 2026
+
+q1/q3 inward benches fit the furniture envelope and clear chamber; q0/q2 unchanged. Existing baseline locker-service failures remain, with no new final failures. See AIRLOCK_FACING_HANDOFF_2026-09-12.md for exact test scope. No card/export change.
+
+
+## Airlock check-bench side companion - September 12, 2026
+
+New east/mirrored west bench reviewed in library at 100-unit length. Live host drawing and chamber/service clearance still pending; no runtime/card changes. See AIRLOCK_FACING_HANDOFF_2026-09-12.md.
+
+
+## Airlock live directional inventory - September 12, 2026
+
+Four native views confirm modular furnishings relocate without directional art changes. Recorded source regions and helmet/service constraints; side repairs remain required. No production changes. See AIRLOCK_FACING_HANDOFF_2026-09-12.md.
+
+
+## Salvage side bench companions - September 12, 2026
+
+One east source and mirrored west reviewed natively with inward vise, quiet indicator and corrected handle cutout. Library-only; fixed workshop unchanged. See SALVAGE_SIDE_HANDOFF_2026-09-12.md. South host fit and broader catalog remain active.
+
+
+## Corridor directional inventory corrected - September 12, 2026
+
+Existing shared architecture covers straight/corner/junction rotations; 36 raised views visually reviewed with selected full-size checks from 72 native captures. Twelve stale missing-art entries corrected. No production changes. See CORRIDOR_COVERAGE_HANDOFF_2026-09-12.md. Full room and side work continues.
+
+
+## Mycelium side access corrected - September 12, 2026
+
+Both lower cabinets and hanging tools now face inward; native side review and layout/effect checks pass. North/south unchanged. See MYCELIUM_SIDE_HANDOFF_2026-09-12.md. Owner side-perspective acceptance and full catalog remain open.
+
+
+## Galley side companions - September 12, 2026
+
+One overhead east serving source registered and reviewed with mirrored west at existing counter scale. Inward mug handles verified. Library-only; live kitchen, serving layout and cards unchanged. See GALLEY_SIDE_HANDOFF_2026-09-12.md. Full catalog and side feedback continue.
+
+
+## Observation south shelf companion - September 12, 2026
+
+Missing overhead south shelf added to library and reviewed natively. Fixed live north window/south entrance retained; no runtime/card change. See OBSERVATION_SOUTH_HANDOFF_2026-09-12.md. Side feedback and full catalog continue.
+
+
+## Turbine elevated side study rejected - September 12, 2026
+
+Native comparison found weaker intake readability and tower-like construction despite more top surfaces. Preserved study and lessons; live defaults unchanged. See TURBINE_SIDE_REVISION_2026-09-12.md. Side revision and full room catalog remain active.
+
+
+## Listening Post live north idle repair - September 12, 2026
+
+U-shaped console now has quiet electronic displays and unlit strip lamps; powered sonar sweep retained. Native/card review and layout checks pass, placements and other rotations unchanged. See LISTENING_NORTH_HANDOFF_2026-09-12.md. Side review/full catalog continue; no export.
+
+
+## Listening Post north library companion - September 12, 2026
+
+Idle console registered and natively reviewed; live U-shaped q0 and all four views unchanged. Live sweeps remain temporal. Actual U-shaped idle displays and E/W perspective still need review. See LISTENING_NORTH_HANDOFF_2026-09-12.md. No card or export change.
+
+
+## Heat Recovery side companions added - September 12, 2026
+
+One authored east asset supplies mirrored west; both reviewed natively with inward controls. North/south companions retained. All four live views and prop metadata unchanged; no doorway placement change. See HEAT_NORTH_HANDOFF_2026-09-12.md. Full catalog and owner side feedback remain active.
+
+
+## Heat Recovery north companion - September 12, 2026
+
+Matte north library prop registered and natively reviewed at 270-unit width; cable-loop cutout corrected. All four live views unchanged, south default/card retained. East/west companions remain. See HEAT_NORTH_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Shield north reviewed and retained - September 12, 2026
+
+Native north fit/materials reviewed at actual q3; monitor effects verified all four orientations and injector q3. Corrected direction mapping in coverage; source/runtime/card unchanged. See SHIELD_NORTH_REVIEW_2026-09-12.md. Side review/full catalog continue.
+
+
+## Isolation north feedback restored - September 12, 2026
+
+Three source-local status lamps now pulse while powered. Direct/retained native checks and layout suites pass; off images and other powered orientations unchanged. Earlier north feedback gap resolved. See ISOLATION_NORTH_HANDOFF_2026-09-12.md. Side review/full catalog continue; no export.
+
+
+## Isolation north idle-art checkpoint - September 12, 2026
+
+Inactive north bank/card integrated; native review/layout checks pass and other rotations unchanged. q0 flush props show no operating changes; that cue remains under investigation. Other rotations retain battery effects. See ISOLATION_NORTH_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Crew Lounge east repair verified - September 12, 2026
+
+Both side coffee machines open inward; separate galley effects verified in all four orientations. Native views/layout suites pass; north/south art and all prop metadata unchanged. Owner side aesthetic feedback remains open. See LOUNGE_REMAINING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Crew Lounge west coffee station - September 12, 2026
+
+Missing west coffee station restored with inward access; lamp fully framed. North retained after review. Other three rotations and all prop metadata unchanged; layout suites pass. East coffee facing and owner side feedback remain open. See LOUNGE_REMAINING_HANDOFF_2026-09-12.md. No export.
+
+
+## Mycelium operating feedback restored - September 12, 2026
+
+Bench/filter effects now animate in all four orientations; north nozzle pulses restored on dry art. Retained native state checks, off-image parity and layout suites pass. Earlier missing-effect finding resolved; side art review remains. See MYCELIUM_NORTH_HANDOFF_2026-09-12.md. No export.
+
+
+## Mycelium north art checkpoint - September 12, 2026
+
+Dry north cultivation art/card integrated and natively reviewed; layouts/card parity pass, other views unchanged. State captures reveal no active effects because old irrigation targets are absent. Effect wiring remains required; see MYCELIUM_NORTH_HANDOFF_2026-09-12.md. Full catalog remains active; no export.
+
+
+## Radio Lab north idle art - September 12, 2026
+
+North waveform removed from static bank; physical reel, patch cables and headset retained. Card refreshed. Native review, operating captures, 176 layouts and card parity pass; other three rotations RGB-identical. See RADIO_NORTH_HANDOFF_2026-09-12.md. Side review and full catalog remain active; no export.
+
+
+## Cold Store library companions - September 12, 2026
+
+North/south fridge and rack companions registered and reviewed natively at 92-unit width. Fixed playable q0 remains RGB/metadata identical; no card or gameplay rotation change. Prompts, rejected studies and provenance retained. See COLD_STORE_REMAINING_HANDOFF_2026-09-12.md. Full catalog and side-view feedback remain active.
+
+
+## Diving-room floor and material refinement - September 12, 2026
+
+[Deck handoff](AIRLOCK_DECK_2026-09-12.md): fitted anti-slip wet deck with recessed side drains, quieter dry flooring and matte suit lockers integrated. Four native rotations and dry/wet actor visibility reviewed; all airlock route/service checks pass. Cards refreshed. Owner accepted this look at session close. Source only; no executable rebuild. See [session closeout](BILL_AND_AIRLOCK_SESSION_CLOSE_2026-09-12.md) for Bill, airlock and package evidence scopes.
+
+## Side-view feedback and Med Bay checkpoint - September 12, 2026
+
+Owner dislikes side views; exact target/reason remains unconfirmed. Prior native fit is not owner acceptance. Med Bay north idle material and card updated; side candidates stay pending owner review. Layout suites pass; operating-frame evidence captured. See MED_BAY_REMAINING_HANDOFF_2026-09-12.md. Full catalog remains active; no export.
+
+
+## Anomaly Lab four directions reviewed - September 12, 2026
+
+Third side specimen tubes restored, banks seated flush; north retained. Native review, 176 layouts and four-prop operating checks pass in all rotations. North/south unchanged; current card retained. See ANOMALY_REMAINING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Bio Lab four directions reviewed - September 12, 2026
+
+Four side culture trays restored; drawer, lid and microscope access corrected inward. North idle screens/card refreshed. Native review, 176 layouts and centrifuge/storage state checks pass. Prop placements preserved; south unchanged. See BIO_REMAINING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Xeno Lab four directions reviewed - September 12, 2026
+
+Correct inward geometry retained with quiet idle screens and painted markings preserved. Native/card review, 176 layouts and independent state checks pass. Rectangles/IDs unchanged; south unchanged. See XENO_REMAINING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Biodome four directions reviewed - September 12, 2026
+
+Inward aquarium/valve access and dry idle irrigation integrated; side banks seated against walls. Native/card review, 176 routes and tree/aquatic state checks pass. Independent props unchanged; south unchanged. See BIODOME_REMAINING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Ore Refinery four directions reviewed - September 12, 2026
+
+North idle/exterior repaired; side loading/service access corrected with industrial palette retained. Native review, 176 layouts, 47 card bindings and machinery state checks pass. Rectangles/IDs preserved; south unchanged. See REFINERY_REMAINING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Clone Lab four directions reviewed - September 12, 2026
+
+Side cabinet/monitor access, catches and missing instruments corrected; north idle screens repaired. Native review, 176 routes, 47 card bindings and console/nutrient state checks pass. All rectangles/IDs preserved; south unchanged. See CLONE_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Research Lab four directions reviewed - September 12, 2026
+
+Side instrument inventory and inward access corrected; all bounds/IDs preserved, north/south unchanged. Native review, 176 routes and scanner state checks in four rotations pass. See RESEARCH_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Research north idle art reviewed - September 12, 2026
+
+North screen graphics corrected with equipment and bounds preserved. Native q0 and 176 layouts pass; other rotations unchanged. Side studies rejected for inventory drift. See RESEARCH_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Crew Hab directional review complete - September 12, 2026
+
+East open-entry companion integrated; north retained. All inventories/rectangles preserved, other rotations unchanged. Native review, 176 routes and four desk state checks pass. See CREW_HAB_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Crew Hab west berth corrected - September 12, 2026
+
+Fresh open-entry berth integrated with inward storage access and retained shelf inventory. Native review, 176 routes pass; all bounds/IDs and other rotations unchanged. See CREW_HAB_FACING_HANDOFF_2026-09-12.md. East/north and full catalog continue; no export.
+
+
+## Quarantine four directions reviewed - September 12, 2026
+
+North idle/keyboard and side case access/gauge inventory corrected. Native/card review, 176 routes and 47 bindings pass. All bounds/IDs preserved; final side changes leave north/south unchanged. See QUARANTINE_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Quarantine south companion integrated - September 12, 2026
+
+Matching overhead bank now selected q2. Original berth/filter/monitor retained and relocated; other rotations unchanged. Native review, 176 routes and filter/monitor state checks pass. See QUARANTINE_FACING_HANDOFF_2026-09-12.md. Other directions and full catalog continue; no export.
+
+
+## Pressure Control directional review complete - September 12, 2026
+
+Retained side art seated against walls; needle overlays aligned with painted hubs. Native gauge state checks pass in all four rotations, with 176 routes passing. North ledger now names actual custom fitted source. See PRESSURE_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Maintenance directional review complete - September 12, 2026
+
+Side bench access corrected with toolbox/reel retained per bank. Runtime inventory/bounds and north/south unchanged. Native review, 176 routes and four diagnostics state checks pass. See MAINTENANCE_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Maintenance north idle cleanup - September 12, 2026
+
+Running wash water and task-lamp emission removed from idle art. Native review preserves inventory/bounds and other rotations; 176 routes pass. Card refreshed. See MAINTENANCE_FACING_HANDOFF_2026-09-12.md. Side facing and state review remain; no export.
+
+
+## Tidal Condenser directional review complete - September 12, 2026
+
+Side filters face inward, three coil returns restored, frames seated. North retained and accepted south unchanged. Native review, 176 routes and four-rotation pump/monitor state checks pass. See TIDAL_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Solar Array north and state review complete - September 12, 2026
+
+North retained after native review; independent monitor operating/temporal changes verified in four rotations. Fitted banks and pumps remain static. South owner acceptance preserved. See SOLAR_FACING_HANDOFF_2026-09-12.md. Continue Tidal Condenser/full catalog; no export.
+
+
+## Solar Array side inventory corrected - September 12, 2026
+
+Four vents and two pumps restored per side bank; outer frames seated against walls. Native review and 176 routes pass. North/south and independent equipment unchanged. See SOLAR_FACING_HANDOFF_2026-09-12.md. North/state review and full catalog continue; no export.
+
+
+## Biomass Digester four directions reviewed - September 12, 2026
+
+Existing art retained after native facing and wall-fit review. Four localized operating indicators verified off/on and over time. No runtime or raster changes. See BIOMASS_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Mining Drone Bay four directions reviewed - September 12, 2026
+
+North access/idle cleanup and inward side service cabinets integrated. All runtime inventories and rectangles preserved; south unchanged. Native/card review, 176 routes and 47 bindings pass. See MINING_FACING_HANDOFF_2026-09-12.md. Full catalog continues; no export.
+
+
+## Mining Drone Bay missing south companion - September 12, 2026
+
+Overhead service bank integrated q3; original independent equipment sizes and inventory preserved. Native fit/deployment reviewed, 176 routes and lifecycle pass. Other rotations unchanged. See MINING_FACING_HANDOFF_2026-09-12.md. Remaining directions and full catalog continue; no export.
+
+
+## Salvage Drone Bay four directions reviewed - September 12, 2026
+
+North/side sources reviewed and retained; side banks seated10 units outward against walls. Fleet props and north/south views unchanged. Native/card review,176 routes and47 bindings pass. See SALVAGE_DRONE_FACING_HANDOFF_2026-09-12.md. Full catalog continues with Mining Drone Bay; no export.
+
+
+## Salvage Drone Bay missing south companion - September 12, 2026
+
+Overhead disassembly bank installed q3; drone/hatch/winch retained at original sizes and relocated north. Native deployment and winch state checks,176 routes and lifecycle pass. Other rotations unchanged. See SALVAGE_DRONE_FACING_HANDOFF_2026-09-12.md. Other directions and full catalog pending; no export.
+
+
+## Construction Drone Bay four directions reviewed - September 12, 2026
+
+North/side art reviewed and retained; side banks seated10 units outward against walls. Independent fleet props and north/south views unchanged. Native/card review,176 routes and47 bindings pass. See CONSTRUCTION_FACING_HANDOFF_2026-09-12.md. Full catalog continues with Salvage Drone Bay; no export.
+
+
+## Construction Drone Bay missing south companion - September 12, 2026
+
+Overhead fabrication bank installed q3; original drone/hatch/bench retained at original sizes and relocated north. Native docked/deployed review,176 routes and drone lifecycle pass; other rotations unchanged. See CONSTRUCTION_FACING_HANDOFF_2026-09-12.md. Other directions and full catalog pending; no export.
+
+
+## Cryo Chamber four directions reviewed - September 12, 2026
+
+Side terminal/vessel access corrected with sample counts retained; north reviewed and retained. Native/card review confirms all prop bounds unchanged and north/south RGB identity.176 routes and47 card bindings pass. See CRYO_FACING_HANDOFF_2026-09-12.md. Full catalog continues with Construction Drone Bay; no export.
+
+
+## Cryo Chamber missing south companion - September 12, 2026
+
+Overhead machinery installed q3; two pods and compressor retained at original sizes and relocated north, automatic duplicate console suppressed. Other rotations unchanged. Native/state/cache comparison,176 routes and recovery suite pass. See CRYO_FACING_HANDOFF_2026-09-12.md. Other directions and full catalog pending; no export.
+
+
+## Med Center four directions reviewed - September 12, 2026
+
+North/side cartridge access, case hinges/catches, keyboards and idle screens corrected. Native/card review confirms unchanged prop bounds and identical south view.176 routes,20 existing side variants and47 card bindings pass. See MED_CENTER_FACING_HANDOFF_2026-09-12.md. Full catalog continues with Cryo Chamber; no export.
+
+
+## Med Center missing south companion - September 12, 2026
+
+New overhead diagnostic bank installed q3. Treatment/imaging/supplies retained at original sizes and relocated north; other rotations unchanged. Native review,176 routes and two localized operating checks pass. See MED_CENTER_FACING_HANDOFF_2026-09-12.md. Other directions and full catalog remain pending; no export.
+
+
+## Med Office four directions reviewed - September 12, 2026
+
+Side document/storage cues corrected and card refreshed. Native q0/q2 show unchanged prop bounds; north/south renders unchanged.176 routes,20 side variants and47 card bindings pass. All four Med Office directions reviewed; owner acceptance and full catalog remain pending. See MED_OFFICE_FACING_HANDOFF_2026-09-12.md. No export.
+
+
+## Med Office north correction - September 12, 2026
+
+Bottom spacebar, outward clipboard clip and idle consultation symbol corrected. Native comparison confirms all prop bounds unchanged and other rotations RGB-identical;176 routes pass. North/south reviewed, side document/storage cues pending. See MED_OFFICE_FACING_HANDOFF_2026-09-12.md. No export.
+
+
+## Med Office missing south companion - September 12, 2026
+
+Overhead records bank installed q3. Exam, consultation and records stations retained at original sizes and relocated north; other rotations unchanged. Native review,176 routes and localized exam monitor state checks pass. See MED_OFFICE_FACING_HANDOFF_2026-09-12.md. Full catalog remains pending; no export.
+
+
+## Room-facing ledger audit - September 12, 2026
+
+Added read-only consistency audit and corrected12 ledger links/references.113 registered PNG sources pass signature/hash checks.40 directions lack recorded registrations and150 lack direct evidence links; these are ledger gaps, not missing-art or completion totals. See ROOM_FACING_COVERAGE_AUDIT_2026-09-12.md. Full visual catalog goal remains active.
+
+
+## Biodome missing south companion - September 12, 2026
+
+New overhead habitat bank installed q3; separate tree/aquatic units retained at original sizes and moved north. Other rotations unchanged. Native review,176 routes and two localized state checks pass. See BIODOME_FACING_HANDOFF_2026-09-12.md. Full catalog pending; no export.
+
+
+## Holographic remaining directions reviewed - September 12, 2026
+
+Dim north/side optics installed and north seated into riser. Calibrator preserved after auto-placement correction. All footprints unchanged; native/card and six state checks pass, plus176 routes. See HOLO_FACING_HANDOFF_2026-09-12.md. Full catalog pending; no export.
+
+
+## Command side materials reviewed - September 12, 2026
+
+East/west art revised to subdued bronze/red; inward controls and all equipment/bounds preserved. Native and four display-local state checks pass, as do176 routes. All Command directions now reviewed. See STORAGE_COMMAND_FACING_HANDOFF_2026-09-12.md. Full catalog pending; source only.
+
+
+## Command north material and fit - September 12, 2026
+
+Matte north art seated into riser; native/card and localized display motion verified. All collision rectangles and other rotations unchanged.176 routes/47 bindings pass. See STORAGE_COMMAND_FACING_HANDOFF_2026-09-12.md. East/west material pass remains pending; no export.
+
+
+## Data Archive remaining directions reviewed - September 12, 2026
+
+North art seated into riser; side sources reviewed and retained. All collision rectangles, independent equipment and other rotations unchanged. Card refreshed;176 routes/47 bindings pass. See ARCHIVE_FACING_HANDOFF_2026-09-12.md. Full catalog pending; source only.
+
+
+## Storage remaining directions reviewed - September 12, 2026
+
+North art seated into riser; sides reviewed and retained. Lift/crates, collision rectangles and other rotations unchanged. Card refreshed;176 routes/47 bindings pass. See STORAGE_COMMAND_FACING_HANDOFF_2026-09-12.md. Full catalog pending; no export.
+
+
+## Life Support remaining directions reviewed - September 12, 2026
+
+North art seated into riser; east/west source art retained after review. All collision rectangles and other rotations unchanged. Card refreshed;176 routes/47 bindings pass. See LIFE_SUPPORT_FACING_HANDOFF_2026-09-12.md. Full catalog pending; source only.
+
+
+## Hydroponics remaining directions reviewed - September 12, 2026
+
+North art now meets riser; east/west reviewed and retained. All collision rectangles and other rotations unchanged. Card refreshed;176 routes/47 bindings pass. See HYDROPONICS_FACING_HANDOFF_2026-09-12.md. Full catalog pending; source only.
+
+
+## Battery remaining directions reviewed - September 12, 2026
+
+North banks now overlap riser slightly; east/west existing art reviewed and retained. All collision rectangles and other rotations unchanged. Native review,176 routes and47 card bindings pass; card refreshed. See BATTERY_FACING_HANDOFF_2026-09-12.md. Full catalog pending; no export.
+
+
+## Ore Refinery missing south companion - September 12, 2026
+
+New overhead south bank installed in q3. Independent crusher/hopper retained and moved north; other rotations unchanged. Native review,176 routes/188 layout keys pass. See REFINERY_FACING_HANDOFF_2026-09-12.md. Source only; full catalog remains pending.
+
+
+## Holographic Core south bank - September 12, 2026
+
+Inward keyboard/handles and subdued idle optics installed. Native review preserves equipment and bounds; only q2 bank pixels change. 176 routes and localized projector/calibrator state checks pass. See HOLO_FACING_HANDOFF_2026-09-12.md. Full catalog pending; no export.
+
+
+## Storage and Command south banks - September 12, 2026
+
+Storage existing overhead art reviewed and retained. Command controls corrected inward with subdued materials; only q2 bank pixels change. Native review, 176 routes and display-local powered checks pass. See STORAGE_COMMAND_FACING_HANDOFF_2026-09-12.md. Source only; full catalog pending.
+
+
+## Data Archive south service - September 12, 2026
+
+Keyboard spacebar now inward; outward reader lever corrected. Native review preserves all equipment/bounds and other rotations. 176 routes/20 existing variants pass. See ARCHIVE_FACING_HANDOFF_2026-09-12.md. Source only; full catalog pending.
+
+
+## Battery Array south service - September 12, 2026
+
+Overhead battery/distribution banks now face inward. Native comparison preserves all equipment and bounds; other rotations unchanged. 176 routes and 20 existing variants pass. See BATTERY_FACING_HANDOFF_2026-09-12.md. Source only; full catalog remains pending.
+
+
+## Life Support south service access - September 12, 2026
+
+Three overhead filter lids and fan tabs face inward. Native review and176 routes
+pass; only south-bank pixels change. Existing equipment, bounds, other rotations
+and card unchanged. See LIFE_SUPPORT_FACING_HANDOFF_2026-09-12.md. No export.
+
+
+## Hydroponics south service access - September 12, 2026
+
+South nutrient-canister caps now face inward. Native review and176 routes pass;
+only south-bank pixels change, inventory/bounds/other rotations unchanged. Split
+coverage inventory corrected:21 directions already had assets, still awaiting
+review. See HYDROPONICS_FACING_HANDOFF_2026-09-12.md. No export.
+
+
+## BRINE Core south memory service - September 12, 2026
+
+New overhead service bench avoids rotated architect pod. Core/corners unchanged.
+Native occupied-pod review, architect recovery,176 routes and47 card bindings pass.
+Card refreshed; existing corners added to coverage inventory. See
+BRINE_CORE_FACING_HANDOFF_2026-09-12.md. Source checkout only.
+
+
+## Reactor coolant service station - September 12, 2026
+
+New overhead south service station installed on the clear half-wall in each
+rotation. Existing machinery unchanged. Native review and176 routes/188 layout
+keys pass; card refreshed. See REACTOR_FACING_HANDOFF_2026-09-12.md. No export.
+
+
+## Gravity Loom calibration banks - September 12, 2026
+
+New paired south stations flank the doorway with a120-unit gap. Native review
+and176 routes pass; central loom unchanged in all four views. Card refreshed.
+Also aligned two stale Airlock references with its furnished card;47 card bindings
+now pass. See GRAVITY_FACING_HANDOFF_2026-09-12.md. Source checkout, no export.
+
+
+## Listening Post south console - September 12, 2026
+
+Overhead console installed with inward keyboard and matte pipework. Native sweep
+alignment and off/two-time captures verified. 176 routes/20 variants pass; only
+bank changes, other props/rotations/card unchanged. See LISTENING_FACING_HANDOFF_2026-09-12.md.
+
+
+## Emergency Isolation south bank - September 12, 2026
+
+Overhead closed empty chamber with inward supply access installed. Native review
+and comparison show only bank changes; inventory and other rotations preserved.
+176 routes/20 variants pass. See ISOLATION_FACING_HANDOFF_2026-09-12.md. No export.
+
+
+## Mycelium Nursery south bank - September 12, 2026
+
+Overhead four-tray bank installed flush south with inward service tabs. Final
+inventory matches baseline; only bank pixels change. 176 routes/20 variants/188
+layout keys pass. New compare_room_art.py catches inventory and placement changes.
+See MYCELIUM_FACING_HANDOFF_2026-09-12.md. Card unchanged, no export.
+
+
+## Bill and Airlock playable build - September 12, 2026
+
+[Release handoff](BILL_AIRLOCK_RELEASE_2026-09-12.md): builds/BrineSpace-bill-airlock-20260912 contains brinespace-4aae058895cf7c27. Complete Bill journey reviewed; chamber floor no longer hides crew. Native visibility, airlock/expedition, packed-asset and actual-release New Game/F8 checks pass. Selected runtime sources frozen alongside current room/system work. Owner playtest next; no publication.
+
+## Radio Lab south bank - September 12, 2026
+
+New overhead bench selected in q2 with inward controls, clipboard and headset.
+Separate listener/transducers/receiver preserved. Native review, 176 routes and
+20 variants pass; both signal effects verified OFF and at two powered timestamps.
+Other rotations RGB-identical, card unchanged. See RADIO_FACING_HANDOFF_2026-09-12.md.
+
+
+## Anomaly Lab south bank - September 12, 2026
+
+Overhead containment bank installed flush south with inward microscope. Separate
+specimen platform preserved after automatic layout initially omitted it. Native
+review and inventory comparison pass; 176 routes/20 variants pass. Other rotations
+RGB-identical, q0 card unchanged. See ANOMALY_FACING_HANDOFF_2026-09-12.md.
+
+
+## Xeno Lab south bank - September 12, 2026
+
+New overhead containment bank installed q2 with inward catches and forceps grip.
+Native reviewed;176 routes/20 side variants pass. Other rotations RGB-identical,
+q0 card unchanged. Source and prompts in assets/xeno-directional-v1. No export.
+
+## Diving Airlock furnished - September 12, 2026
+
+[Airlock handoff](AIRLOCK_FURNISHING_2026-09-12.md): restored live lockers, compressor and changing bench; added reserve-air/hose rack, equipment-check bench and six wall fittings. All four native room views inspected, active card refreshed. Three-crew/four-rotation airlock checks pass with 1,039 travel samples. Ordinary dressing remains paused elsewhere. Source checkout only; no executable rebuilt.
+
+## Research Lab south bank - September 12, 2026
+
+New overhead research bank has inward eyepieces, visible screen and inward lid
+latches. q2 now selects it instead of east-bank library art; scanner moved clear.
+Native q2 reviewed,176 routes/20 side variants pass; other rotations RGB-identical.
+q0 card unchanged. Evidence: output/research-directional-2026-09-12/verified/.
+
+## Airlock south storage source - September 12, 2026
+
+New overhead two-kit storage bank registered in library. Live trial passed general
+routes but failed the Airlock-specific east-facing helmet handoff. Live placement
+restored; source retained for service-anchor and removable-helmet follow-up.
+Do not treat output/airlock-directional-2026-09-12/after as an adopted layout.
+
+## Cold Store operating cue restored - September 12, 2026
+
+State audit found the side-bank library path skipped its refrigeration pulse.
+Explicit custom drawing restores it. Native OFF/two powered captures differ only
+at the indicator; offline card is RGB-identical. Evidence in
+output/cold-store-state-2026-09-12/. No layout, card or source-art changes.
+
+## Heat Recovery and turbine state verification - September 12, 2026
+
+New matte overhead Heat Recovery skid integrated in its lower work area, preserving
+all four door approaches. Card refreshed; 176 routes pass. Turbine temporal audit
+found shared library rendering bypassed machine effects; explicit custom draw
+flag restores them. Off/two powered timestamps now differ within the machine in
+all four views. Evidence in output/turbine-directional-2026-09-12/states-verified/.
+
+## Fire systems playable build - September 12, 2026
+
+[Release handoff](FIRE_RELEASE_2026-09-12.md): builds/BrineSpace-fire-20260912
+contains brinespace-f04642316baa2ca3. Packed assets and actual release smoke
+checks pass; native captures reviewed. Frozen current art and fire changes.
+Owner playtest pending; existing builds preserved; no publication.
+
+## Turbine follows arrow wall - owner correction, September 12, 2026
+
+Current Turbine now mounts north/east/south/west with its arrow, using new side
+companions and overhead south art. Console clears machinery; arrow remains visible.
+All four native placements reviewed and alignment-checked; 176 routes pass.
+This supersedes the sealed-south-only rule below. No export.
+
+## Current Turbine south skid - September 12, 2026
+
+Overhead inward-facing turbine skid installed against sealed south walls in q0/q2.
+q1/q3 remain RGB-identical. Rotor cue now fits visible intake; refreshed card and
+native review recorded. 176 routes pass. Other sources pending. See
+assets/turbine-directional-v1/README.md. No export.
+
+## Sprinkler feedback - September 12, 2026
+
+Two nozzle spray fans and room-level SPRAYING / NO WATER / NO POWER feedback
+are integrated. Shared inspector status, native captures and pause checks pass.
+Controlled suppression takes 1.6-12.9s depending on fire intensity. See
+[report](SPRINKLER_FEEDBACK_2026-09-12.md). No executable rebuilt.
+
+## Observation owner wall replacement - September 12, 2026
+
+Owner requested the north installation at the wall top, replacing the separate
+riser. Observation now supplies its own upper wall art at y=-258; generic riser
+face/cap/returns are omitted for this room. Side banks connect from y=-104 to170.
+Native preview/card reviewed; 176 routes pass. This supersedes the slight-overlap
+placement below. Evidence: output/observation-directional-2026-09-12/owner-wall-replacement/.
+
+## Observation Room side banks - September 12, 2026
+
+New inward-facing matte side bookcases and flush north porthole-bank placement
+are integrated, preserving the desk and chair. Native q0 and refreshed card
+reviewed; 176 route cases pass. South source remains pending. See
+assets/observation-directional-v1/README.md. No export.
+
+## Electrical pacing check - September 12, 2026
+
+Controlled native repair took 6.2s travel plus 8s work; checks passed. Separate
+six-cycle opening probe charged actual build costs with failures enabled.
+No balance change: natural fault timing in a longer expedition remains untested.
+See [electrical report](ELECTRICAL_FAULTS_2026-09-12.md). No executable rebuilt.
+
+## Salvage Workshop directional companions - September 12, 2026
+
+North bench now overlaps the riser slightly; new overhead southwest tote and
+refreshed card are installed. South bench source is registered as a library option,
+with host fit pending because the default room has a south doorway. Native q0 and
+176 route cases pass. See assets/salvage-directional-v1/README.md. No export.
+
+## Electrical warning and repair - September 12, 2026
+
+[Electrical faults](ELECTRICAL_FAULTS_2026-09-12.md) now warn with sparks at 75%
+heat. Suspension isolates machinery for eight seconds of reachable crew repair.
+Partial work survives Save/Continue; restart remains manual. Focused native,
+headless, save and hull-repair checks pass. No executable rebuilt.
+
+## Bill complete local art replacement - September 12, 2026
+
+Additional [equipment polish](BILL_POLISH_2026-09-12.md): corrected oversized tread helmets in all four directions and their swim start/stop endpoints (32 equipped frames). All bare frames remain identical. Source validation, complete-pack checks and native rendering pass. Source checkout only; no new executable.
+
+[Final handoff](BILL_FULL_REPLACEMENT_2026-09-12.md): `major-bill-v3` replaces all
+175 bare states / 1,134 frame references and 168 helmet states / 1,080 references
+at twice source density and the same world size. Original detail and V4 repairs
+are retained. East/west walks now alternate stance legs, with synchronized helmets
+and calibrated directional strides. All source-preservation/coverage checks,
+11,773 consumer checks, 240 native walk comparisons, native room playback and the
+final all-state render pass succeed. The earlier trial-only status below is superseded.
+
+Maintained/installed pipeline skills, rebuild/validation tools and the visual bible
+are updated. Complete scope, evidence and the separate Cold Store room-test finding
+are in the handoff. No EXE rebuilt.
+
+## Galley inward serving bank � September 12, 2026
+
+New overhead south serving bank and flush north kitchen placement are integrated,
+with a refreshed card. Native q0 review and 176 route cases pass. Mug handles,
+spoons and urn tap face inward. East/west companions remain pending; full catalog
+rollout continues. See assets/galley-directional-v1/README.md. No export.
+
+## Electrical sparks integrated — September 12, 2026
+
+Burning machinery now shows occasional blue-white spark bursts alongside fire.
+Native capture reviewed; asset/rule and native gameplay checks pass. See
+[FIRE_ART_2026-09-12.md](FIRE_ART_2026-09-12.md). No executable rebuilt.
+
+## Cold Store directional side family — September 12, 2026
+
+[Full rollout](ROOM_FACING_ROLLOUT_2026-09-12.md) now includes a previously custom
+room: Cold Store has inward-facing west refrigeration and east storage banks,
+flush wall placement and a refreshed card. Fixed-orientation native review and
+176 route cases pass; north/south source coverage remains pending. No export.
+
+## Fire art integrated — September 12, 2026
+
+[Fire art handoff](FIRE_ART_2026-09-12.md): 24 transparent frames across flame,
+smoke and embers now render in live rooms. Asset checks (37), fire rules (35),
+and native gameplay checks (25) pass. Close/fit views and animated preview
+reviewed. Owner-reported white fringe corrected in flame v2; native checks
+repassed (20260912-022651-native). No executable rebuilt.
+
+## Habitation/biology south banks and Shield installation — September 12, 2026
+
+[Active rollout](ROOM_FACING_ROLLOUT_2026-09-12.md): Crew Hab, Lounge and Biology
+overhead south revisions pass native review; nine other orientations unchanged.
+Shield's new south bank is installed at q1 with clear door access. Preferred routes
+(176) and furniture interactions (72) pass. Catalog reports now include actual
+variant selection and visual/ground rectangles. Full-catalog work continues;
+owner review pending, no executable rebuilt.
+
+## Complete room-facing rollout active — September 12, 2026
+
+Owner accepted the engineering south batch and requested every other room,
+including missing artwork, with ongoing skill/workflow/bible improvements.
+[Full rollout](ROOM_FACING_ROLLOUT_2026-09-12.md) tracks all 47 identities and four
+directions. Medical and Clone south revisions pass native review and routes;
+Shield has a new registered south source with host placement still in progress.
+The remaining catalog is explicitly pending; no executable rebuilt.
+
+## Three more overhead south banks — September 12, 2026
+
+Owner accepted the Tidal pilot. [Next batch](ROOM_FACING_BATCH_2026-09-12.md)
+integrates Pressure Control, Thermal Power Control and Maintenance Bay top-down
+south artwork. Native review complete; nine other rotations pixel-identical,
+176 crew-route cases pass. Maintenance retains its original placement envelope
+to preserve furnishing fallback. New batch awaits owner review; source only.
+
+## First playable fire system — September 12, 2026
+
+[Implementation and tuning](FIRE_SYSTEM_2026-09-12.md): machinery heat warns before local ignition; fires halt room production, grow and damage the hull. Armed sprinklers now perform real suppression using emergency power and stored Water, while 25% flooding extinguishes fire. Crew and companions evacuate through accessible doors and refuse burning destinations. The inspector and a clickable HUD alert expose the hazard. Intensity, heat and purchased sprinkler time persist through Save/Continue; pause freezes simulation and flame animation. Focused headless/native checks and affected flooding, repair, construction, save and hardware regressions pass; owner pacing acceptance remains pending. Source only; no executable rebuilt.
+
+## Wall-art camera clarification and Tidal pilot — September 12, 2026
+
+Owner direction: side banks may sit flush with every appliance facing inward;
+north banks are flush and slightly overlap the riser when overheight; south banks
+face inward but are viewed top-down. The visual bible and room workflow now record
+this contract. [Tidal pilot](ROOM_FACING_REPAIR_2026-09-12.md) installs a top-down
+south bank; earlier rear-elevation studies remain unselected. Native review and
+176 preferred-layout route cases pass. Owner accepted this pilot; remaining room
+revisions continue in the batch above. No executable rebuilt.
+
+## Existing sprite repair trial — September 12, 2026
+
+Owner rejected the simplified V2 treatment as muddy and less detailed, and approved
+a density-only experiment using Bill's original higher-resolution sheets.
+[Density rebake](BILL_DENSITY_REBAKE_2026-09-12.md): all 17 states / 102 frames rebuilt
+at 148px standing height on 184x184 canvases, retaining the exact shipped 64-colour
+palette, poses and timing. Baseline extraction reproduces all shipped frames;
+manifest, source-preservation and standing-height checks pass. A native Godot
+fixture loads all dense frames and captures both packs at the same world size.
+Agent review finds substantially clearer face/equipment detail at close zoom.
+Owner acceptance and full gameplay/equipment integration remain pending; production
+art and bindings are unchanged. Earlier animation and rejected material previews
+are recorded in the [local repair handoff](LOCAL_SPRITE_REPAIR_2026-09-12.md).
+Continuation V4 repairs 49 frames across four idles, five walk head bands, and the
+east-facing interaction, retaining dense detail and the original palette. Idle
+height variation becomes 1px and interaction legs stay planted. Source/pixel checks,
+manifest validation, and 102 native timed frame selections pass. Runs and the
+kneel/repair/stand chain remain unchanged. The underlying side-view stride is still
+unresolved; comparisons await owner motion review. See the density handoff for files.
 
 ## Character art pipeline established — September 12, 2026
 

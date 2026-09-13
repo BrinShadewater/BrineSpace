@@ -43,3 +43,8 @@ Run tests/audit_floor_detail_anchors.gd for all hosts/rotations, with a missing-
 The existing equipment pad beneath a bench is different from an operator footing in front of it. Preserve authored pads and avoid overlapping them with a second mat. Keep registered UV extents and physical scale explicit when fitting compact spaces. Sources did not need regeneration for this pass; the missing work was composition and drawing order.
 
 The native review now supplies real powered/unpowered corridor values, correcting the historical repeated-powered loop. Earlier reports retain that limitation; do not retroactively upgrade their evidence. Use the new revision paths in tools/review_floor_contact_sheets.gd and tests/review_floor_profiles.gd, preserve previous exports, and update selected card mappings only after the new bake succeeds.
+
+
+### Fitted airlock wet deck - September 12, 2026
+
+A pressure-chamber floor should read as a fitted anti-slip insert with recessed longitudinal drains, distinct from the quieter dry preparation deck. Keep the generated source rectangle and its UVs tied to room-local corners so the drain direction rotates with the chamber; swapping only destination width/height leaves the texture facing incorrectly. Preserve the floor-before-actor pass and cycle-water overlay. Review native dry/wet crew visibility and all rotations. Reject glossy equipment candidates even when their silhouette matches; a source filename or a transparent-background prompt does not establish material or alpha quality.

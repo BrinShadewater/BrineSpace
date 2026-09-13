@@ -578,3 +578,56 @@ records those exceptions and still checks all other rotations. Native pictures
 are under `output/decoration-integration/` and `output/decoration-station/`.
 New cards are selected in GridCanvas, including all corridor variants. Export
 filters include raw PNG/JSON; no new executable was built during this pass.
+## Sparse-room centerpiece pass — September 12, 2026
+
+Ten sparse rooms now use a selected large or medium themed asset from `assets/room-centerpieces-v1/`. The batch contains seven large and five medium furnishings; ten of twelve are square or rectangular. The profile owns the collision footprint and quarter-specific center, while the registration JSON owns the source region and alpha pieces. Mark a deliberate walkaround focal piece with `centerpiece`; mark a deliberate secondary placement with `authored_anchor`. Both flags retain the item through full-wall composition filtering, but neither exempts it from route checks.
+
+The accepted density pattern is one strong functional anchor, optionally one smaller support asset, plus existing wall machinery. This adds subject matter without filling every open tile. Native evidence covers 40 room orientations at `output/room-centerpieces-v1/native-v6/`; the refreshed card sheet is `output/room-centerpieces-v1/cards-sheet.png`. Battery q2 and Storage q2 required explicit center corrections before the preferred-layout route fixture passed. Radio q2 required its wrapper to retain the authored centerpiece after split-wall setup.
+
+## Themed and universal furnishings v2 — September 13, 2026
+
+Research Lab, Command Center and Medical Center now carry distinct large/medium work equipment. Crew Hab, Anomaly Lab and Medical Office demonstrate three station-neutral modules: a sealed storage bench, mobile utility cart and modular workbench. Universal means the construction and palette can travel; it does not mean every room should receive a copy. Use these as sparse utility punctuation and preserve the room's primary themed focal subject.
+
+All six sources are matte, rectangular, crew-scale true-alpha assets with external registrations. The neutral family avoids department marks and strong department colors. Native review covers 24 orientations at `output/room-furnishings-v2/native-v3/`. Crew Hab q0 and Command q0 were repositioned after the first route fixture found blocked door approaches. Medical q3 wrappers retain authored dressing records through their special wall-bank reconstruction.
+
+## Themed and universal furnishings v3 — September 13, 2026
+
+Hydroponics Bay, Ore Refinery and Cryo Chamber now use a nutrient island, sorting bench and thaw cart as readable activity anchors. Quarantine Cell, Pressure Control and Isolation Vault use a neutral parts chest, equipment plinth and task table as sparse support furnishings. The refinery bench replaces the older generic sorter rather than duplicating its purpose. Isolation Vault explicitly places its selected dressing after removing inherited battery equipment.
+
+All six sources are matte 1254-square true-alpha assets with external registrations. Native review covers 24 orientations at `output/room-furnishings-v3/native-v2/`; the focused suite passes 176 room orientations, 47 room-card identities and 20 side-wall variants at `output/test-runs/20260913-003920-headless`. Hydroponics and Refinery needed collision and placement corrections after route checks, while special full-wall wrappers now retain only deliberate authored anchors. Owner aesthetic acceptance and a fresh export remain pending.
+
+## Power-room themed and universal furnishings v4 — September 13, 2026
+
+Current Turbine, Biomass Digester and Heat Recovery no longer share the same generic service bench. Each uses one large room-specific work anchor—a flow-governor console, feedstock-prep island or exchanger manifold—and one medium station-neutral support furnishing: an instrument cabinet, maintenance trestle or cable caddy. The primary machinery remains the room focal point; the new pair explains nearby operator work without filling the circulation area.
+
+All six sources are matte 1254-square true-alpha assets with external registrations. Native review covers 12 orientations at `output/room-furnishings-v4/native-v1/`; the focused suite passes 176 room orientations, 47 room-card identities and 20 side-wall variants at `output/test-runs/20260913-010049-headless`. The three owning composition dependency records audit cleanly. Owner aesthetic acceptance and a fresh export remain pending.
+
+## Cross-department themed and universal furnishings v5 — September 13, 2026
+
+Reactor, Clone Lab and Biodome now pair a large process-specific workstation with one medium station-neutral support module. A control-rod inspection bench, genome-preparation island and potting-and-seed island replace smaller generic preparation pieces. The sealed tool chest, rolling sample trolley and folding supply pallet demonstrate neutral reuse across dark engineering, pale clinical and green cultivation interiors.
+
+All six sources are matte 1254-square true-alpha assets with external registrations. Native review covers 12 orientations at `output/room-furnishings-v5/native-v1/`; the focused suite passes 176 room orientations, 47 room-card identities and 20 side-wall variants at `output/test-runs/20260913-011605-headless`. Biodome q3 now retains deliberate authored furnishings through its full-wall reconstruction. Owner aesthetic acceptance and a fresh export remain pending.
+
+## Utility and science themed/universal furnishings v6 — September 13, 2026
+
+Tidal Condenser, Gravity Loom and Xeno Lab now pair a large process-specific work surface with one medium station-neutral support module. A condensate-analysis island, field-tensor console and sealed assay table replace smaller generic pieces. The valve-spares locker, diagnostic rack and narrow decontamination caddy extend the neutral family with distinct footprints while remaining quieter than each room's focal machinery.
+
+All six sources are matte 1254-square true-alpha assets with external registrations. Native review covers 12 orientations at `output/room-furnishings-v6/native-v1/`; the focused suite passes 176 room orientations, 47 room-card identities and 20 side-wall variants at `output/test-runs/20260913-013058-headless`. Directional full-wall filtering retains the authored anchors, and Tidal/Gravity dependency manifests audit cleanly. Owner aesthetic acceptance and a fresh export remain pending.
+
+## Clinical and biology themed/universal furnishings v7 — September 13, 2026
+
+Life Support, Med Bay and Bio Lab now pair a large process-specific work surface with one medium station-neutral support module. An atmosphere-analysis island, sterile triage island and culture-preparation island replace smaller repeated work pieces. The sealed filter chest, enclosed equipment cart and specimen transit case extend the neutral family across dark industrial and pale clinical/science floors.
+
+All six sources are matte 1254-square true-alpha assets with external registrations. Native review covers 12 orientations at `output/room-furnishings-v7/native-v2/`; the focused suite passes 176 room orientations, 47 room-card identities and 20 side-wall variants at `output/test-runs/20260913-014953-headless`. The second native pass moved neutral and clinical furniture out of inherited-machine silhouettes before card baking. Owner aesthetic acceptance and a fresh export remain pending.
+
+## Service and logistics themed/universal furnishings v8 — September 13, 2026
+
+Maintenance Bay, Storage Bay and Data Archive now pair one large process-specific workstation with one medium station-neutral support. The component-rebuild cradle, cargo-sorting island and media-restoration table replace older centerpieces and scattered small support clusters. A fastener drawer chest, folded handling dolly and sealed media transit case extend the universal family with recognizable closed-storage and transport functions.
+
+All six sources are matte 1254-square true-alpha assets with external registrations. Native review covers 12 orientations at `output/room-furnishings-v8/native-v4/`; the focused suite passes 176 room orientations, 47 room-card identities and 20 side-wall variants at `output/test-runs/20260913-021608-headless`. Iterative visual passes moved secondary props away from rotating fixed equipment and removed the final legacy Archive lamp before the cards were baked. Owner aesthetic acceptance and a fresh export remain pending.
+
+## Communications themed/universal furnishings v9 — September 13, 2026
+
+Radio Lab, Listening Post and Holographic Core now pair one large process-specific work surface with one medium station-neutral support. A signal-routing console, hydrophone-analysis table and projection-alignment deck replace the older centerpieces. A patch-cable organizer, rugged power conditioner and instrument-calibration case extend the universal family with closed, generic support functions.
+
+All six sources are matte 1254-square true-alpha assets with external registrations. Native review covers 12 orientations at `output/room-furnishings-v9/native-v5/`; the focused suite passes 176 room orientations, 47 room-card identities and 20 side-wall variants at `output/test-runs/20260913-024217-headless`. Listening Post uses independent centers for two rotations so the small neutral prop keeps visible floor around its silhouette rather than merging with inherited acoustic equipment. Radio Lab's quarter-two full-wall wrapper now retains authored anchors as well as the themed centerpiece. Owner aesthetic acceptance and a fresh export remain pending.

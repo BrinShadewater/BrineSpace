@@ -1,4 +1,84 @@
+## Runtime performance and evidence closeout - September 13, 2026
+
+Use [the Claude handoff](CLAUDE_HANDOFF_2026-09-13.md) to resume the combined game;
+use current selections and later owner decisions instead of replaying historical
+asset queues. Read the room skill's gameplay-preview contract for funded operation,
+static/live invalidation and diagnostic interpretation.
+
+For a rendering optimization, preserve selected asset bytes and phase, fix camera
+and workload, then measure the affected cost and compare identical-state pixels.
+Exercise changed terrain after excavation and room art after rotation, lighting,
+flooding and power transitions. Chamber water still affects floor pixels even when
+other airlock progress is live. A faster cache with stale pixels fails acceptance.
+Keep generated, selected, native-reviewed, owner-accepted and release-verified
+statuses separate. F7/F8 timings help diagnosis but do not prove source quality or
+continuous motion. Terrain retention and reduced room setup remain proposed next
+investigations; no new performance-driven art simplification is adopted.
+
+Report microbenchmark gains as subsystem CPU costs, not global FPS. Preserve
+current paid room service when presenting fire or other hazards. Initialize test
+stations through actual economy rules and keep checkpoints disposable. No broad
+asset batches or gameplay suite are needed for a documentation-only handoff.
+
+## Startup, hatch and removal validation - September 12
+
+Use saved simulation clocks for startup and short release effects. Preserve source
+frame metadata and avoid mutating shared animation textures. Derive physical hatch
+apertures from simulation phases; update save validators and retained render keys.
+Test complete expeditions as well as isolated door movement. Cable removal belongs
+at draw/placement owners and must remain effective with general decoration enabled;
+verify equipment pipes still draw. Settle pending layout callbacks before framing
+native evidence, and inspect captures even when assertions pass. Incoming comms
+may pause a fixture: probe state before editing timing expectations.
+See [the gameplay handoff](GAMEPLAY_STARTUP_HATCH_HANDOFF_2026-09-12.md) and the
+maintained gameplay-preview-contract skill reference for details and limits.
+
+## Studio scale and simulation-state review - September 12
+
+Use Studio's Scale: Bill standing/walking preview for equipment size and depth.
+Place moves it to clear floor without authoring furniture. Check actual rotations
+and walking paths; source pixel height must use the gameplay standing-height and
+pivot metadata. Local preview does not replace an actual live-job journey.
+Use funded current operation for machine service, and label next-cycle forecasts
+separately: spending the last input must not revoke a cycle already paid for.
+Read skills/brinespace-room-pipeline/references/gameplay-preview-contract.md and
+[the evidence handoff](GAMEPLAY_STUDIO_MENU_2026-09-12.md).
+
 # Hybrid room art production log
+
+## Large/medium furnishing batch workflow — September 13, 2026
+
+Use this workflow for the current sparse-room asset program. A batch is a replacement pass over
+a bounded room set, usually three rooms and six assets: one large process-specific work anchor
+and one medium station-neutral support per room. The count is a production unit, not a density
+target. Keep fewer objects when the existing room already has sufficient readable mass.
+
+1. Freeze the room IDs, selected view scripts, current composition profiles, fixed machinery and
+   card bindings before generation. Record which old centerpiece or loose cluster each new anchor
+   replaces so integration cannot accumulate both versions.
+2. Generate each asset separately. Preserve the raw output, exact prompt and rejected candidates.
+   Select matte top-down sources with real transparent exteriors; retain the current 1254-square
+   source size when that is what the generator returns rather than rescaling to a nominal target.
+3. Register source alpha externally. Keep the visual silhouette, grounded collision footprint and
+   depth baseline distinct. A universal prop needs a recognizable generic function, neutral
+   construction and less visual weight than the themed anchor.
+4. Integrate through the room's selected composition profile. Use explicit centers for all four
+   quarters. Full-wall and derived-room wrappers must retain both `centerpiece` and
+   `authored_anchor` records when those flags describe selected furniture.
+5. Run the preferred-layout fixture, then capture all four native views for every room. Inspect
+   actual-size images and a contact sheet. Require each selected asset ID in each runtime view;
+   collision clearance alone does not prove that a prop was retained or reads separately from
+   inherited equipment. Give small neutral pieces visible floor around their silhouettes.
+6. After native review, bake new cards and update the primary card map and every variant/fallback
+   map together. Inspect the card sheet; small props that disappear or merge at card scale need
+   another placement or material pass.
+7. Record source, registration, selected profile and card hashes in the batch manifest and each
+   owning room manifest. Verify PNGs use Git LFS, parse JSON, check targeted hashes, and run the
+   preferred-layout, card-consistency and side-wall fixtures. Run the shared dependency audit and
+   name unrelated stale records without absorbing concurrent work into the batch.
+8. Close with a dated handoff that separates agent visual review, owner aesthetic acceptance and
+   fresh-export verification. Native source-checkout evidence does not establish either of the
+   latter two states.
 
 ## Corridor/riser production closeout - September 8
 
@@ -191,3 +271,50 @@ Mining prompt (original mining room subject plus corrected reactor style referen
 Exterior cleanup and hull normalization, production asset tests, runtime/card
 mapping changes, LFS staging verification, native viewport checks and regression
 suites have not been completed. No claim of in-game acceptance or completed pilot.
+
+
+## Bill and diving-room session close - September 12, 2026
+
+Owner accepted the diving-room floor/material pass. See [session closeout](BILL_AND_AIRLOCK_SESSION_CLOSE_2026-09-12.md). Fit wet-deck textures in room-local coordinates and rotate UVs with geometry; draw floors before crew and retain foreground rails. Preserve service anchors when substituting storage art. Review all four rotations and dry/wet crew visibility, then refresh every card consumer. Keep rejected material candidates separate from selected sources and record actual generated dimensions. Source acceptance and executable acceptance are separate checkpoints; this final deck pass was not exported.
+
+
+## Owner strict-overhead closeout - September 12, 2026
+
+Medical Treatment, Mycelium Cultivation, Crew Lounge, Mining Drone Service and
+Research Analysis now derive all four selected directions from their strongest
+south overhead banks. Exact raster and polygon turns preserve inventory and avoid
+camera drift; original registrations remain in
+`assets/owner-strict-overhead-v1/*/registrations-before`. BRINE corner banks move
+six world units down without resizing. Native review, 176 layouts, 20 side variants,
+47 card identities and the BRINE movement/door fixture pass. See
+[closeout](OWNER_ASSET_STRICT_OVERHEAD_CLOSEOUT_2026-09-12.md).
+
+
+Construction drone material follow-up: a generated yellow/graphite study improved
+the palette but changed the canvas, arm pose, grippers and silhouette, so it remains
+rejected. The selected repair transforms only the Construction rectangle during the
+existing atlas decode. This keeps source bytes, chroma key, fleet neighbors and all
+articulated UVs exact. Always inspect docked, travelling and working states after a
+shared-atlas material change. Evidence is in
+`assets/construction-material-v2/drone-material-review.json`.
+
+
+Catalog-wide closeout lesson: export every current `RoomDatabase` identity from the
+native renderer and inspect contact sheets for each applicable quarter. Reconcile
+that manifest with the coverage ledger. Preserve older direction-stage notes as
+history and record the later current-contract review separately with its exact
+manifest path; file counts and historical “reviewed” labels do not establish the
+current render.
+## Room centerpiece asset pass — September 12, 2026
+
+The current sparse-room pass adds twelve true-alpha furnishings to ten rooms: seven large anchors and five medium support pieces. Ten use square or rectangular silhouette language; the Radio Lab and Listening Post retain an earlier octagonal/oval acoustic pair. Two shape-mismatched candidates are preserved as rejected provenance. Selected sources, registrations, exact prompts, hashes and evidence are indexed in `assets/room-centerpieces-v1/manifest.json` and `assets/room-centerpieces-v1/prompts.md`.
+
+Large or authored medium pieces use explicit quarter-specific centers and remain live through full-wall filtering. `room_dressing.gd` resolves external registration JSON before drawing, so silhouette polygons stay beside their sources rather than being duplicated in every profile. Refresh both card maps after the final composition render. Native review covers all ten rooms in four orientations; route, card and dependency checks remain separate evidence.
+
+## BRINE grounding and crew-scale workflow closeout — September 13
+
+This session restored detailed preserved BRINE pixels with stable registration, polished float motion, and removed the tube's duplicate generic shadow. Owner accepted tube grounding. Shared equipment contacts and a 47-room crew-scale review followed; 153 placements across 22 rooms were corrected and 22 cards refreshed. Those results are scoped to the September 12 revision; later furnishing work and its selected cards govern current art.
+
+Production lessons: inspect source density before regenerating; give custom contact shadows explicit ownership; resize actual source drawing as well as collision, including retained medical props; preserve floor/wall anchors; verify all supported rotations; bake cards without review crew. Save local Studio overrides separately from defaults when attributing edits. Old local overrides cannot identify an owner's latest changes, and a generated gallery is a snapshot.
+
+Evidence: [scale handoff](CREW_RELATIVE_ART_SCALE_2026-09-12.md), [tube acceptance](BRINE_TUBE_GROUNDING_2026-09-12.md), [session closeout](HANDOFF_ART_SCALE_SESSION_CLOSE_2026-09-13.md). Maintained room skill references contain the reusable procedure. No new generation or asset rebuild was needed for this documentation closeout.

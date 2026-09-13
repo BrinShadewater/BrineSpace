@@ -105,3 +105,8 @@ TEEGLY_PR_INTEGRATION_2026-09-09.md records the later release-only assertion fai
 and actual-release harness; RELIABILITY_PERFORMANCE_2026-09-09.md records the newer
 manifest exporter, safe loading, exact release IDs and optimized build. These are
 distinct tested snapshots, not interchangeable acceptance claims.
+
+
+## Enabled autoload and package evidence lesson - September 12, 2026
+
+The dependency collector must normalize enabled autoload paths such as `*res://scripts/example.gd` before resolving them; otherwise minimal exports can omit startup dependencies. Keep the regression in tests/test_release_manifest.py. For the Windows release template tested in the Bill/airlock session, use the actual packaged EXE/PCK and an isolated QA harness rather than assuming `--path` redirects the release. Require the fixture marker, explicit failures and debug=false. See docs/BILL_AIRLOCK_RELEASE_2026-09-12.md for the tested package; the later accepted deck sources are outside that package's evidence.

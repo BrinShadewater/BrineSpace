@@ -1,5 +1,10 @@
 # Character art pipeline: the hybrid that works — September 12, 2026
 
+Historical generation experiment. The owner subsequently chose local repair of
+Bill's existing sources and authorized his full replacement. The selected workflow
+and integration are recorded in [Bill's full replacement](BILL_FULL_REPLACEMENT_2026-09-12.md).
+The experimental conclusions below do not override that later direction.
+
 Tested end to end on Major Bill, September 12. **Nothing is installed; no character
 art in the source tree has changed.** Evidence in
 `output/higgsfield-pilot-2026-09-12/`. This supersedes the character sections of the
@@ -168,3 +173,7 @@ at 44–59 colours inside a shared 64-colour palette, 0 soft-alpha pixels, figur
    mirrored-west experiments were left running and their results are not needed.
 3. Conversion scope for the cast remains the owner decision in the art-direction
    proposal: 501 manifests, 1,495 states, 7,272 frames.
+
+## Later workflow lesson: report-driven diagnosis — September 13
+
+For transient character defects, begin with report time, screenshot and serialized actor/playback state. Inspect current selected source pixels before replacing art. Test the same pose/location through actual room depth drawing; room-local samples and post-event replay do not prove the original full-station event fixed. Settle startup and camera callbacks, inspect captures, and separate diagnostic-script errors from game errors. The Veld missing-head report remains unreproduced; [investigation](VELD_SCANNING_HEAD_INVESTIGATION_2026-09-12.md) records evidence and the next useful capture. This addendum does not revive the historical generation experiment above.

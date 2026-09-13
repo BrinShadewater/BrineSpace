@@ -40,3 +40,24 @@ release executable against the selected source bindings. Diagnostic placeholders
 are failures to repair, not accepted art. Preserve native appearance and live
 animation state when caching or culling. A newer source pack is not covered by an
 older executable's acceptance.
+
+## Unreproduced report closeout — September 13
+
+Separate owner report, captured state, current-source checks, reproduced behavior and suspected cause. Link the preserved report and final valid probes; retain discarded diagnostics with their limitations. Log errors in another renderer are concrete findings but not a causal explanation without evidence. Close an investigation session honestly with the narrow next evidence needed, rather than marking the bug resolved or silently continuing an unrelated repair.
+
+## Performance handoff and closed generation - September 13
+
+When optimizing around animated assets, compare the same selected source, phase,
+route, viewport and active workload. Preserve authored cadence, pivots, equipment
+identity, occlusion and whole-body motion; reducing animation quality is not an
+implicit performance requirement. Room setup, static terrain and repeated state
+work should be measured before blaming sprite density. F7/F8 capture bounded local
+timings with pause/focus context, not visual acceptance of transitions. Passing
+source/geometry checks still requires continuous native review of the actual join.
+
+The owner closed the crew animation session with work unfinished and prohibited
+further Higgsfield generation/credit spending without explicit approval. This is a
+project-specific owner decision; see docs/HANDOFF_CREW_ANIMATION_SESSION_CLOSE_2026-09-13.md.
+Retain existing selected assets and unselected studies. Veld north seating is not
+accepted merely because its mechanical fixture passed. The consolidated continuation
+map is docs/CLAUDE_HANDOFF_2026-09-13.md; use newer CURRENT_STATUS entries if present.

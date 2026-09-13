@@ -287,3 +287,13 @@ For facing-only locomotion changes, inspect whether the player resets its gait. 
 For cross-direction swim review, `character/crew-underwater-v1/build_swim_turn_review.py` compares the current hashed body/equipment selections at equal normalized stroke fractions and anatomical scale. This can expose camera/foreshortening differences that a per-direction loop review hides. Treat them as source defects before changing scale or clearance. Preserve full pivot-relative extents in the comparison so clipping is not mistaken for an anatomy problem.
 
 When selecting a different directional revision, update runtime loading, review selection, phase fixtures, coverage inventory and clearance inputs together. Regenerate envelopes from every selected bare/equipped phase before routing checks; corrected foreshortening can enlarge the body footprint despite unchanged canvas and pivot. Keep source-specific evidence in the revision README, and distinguish a passing furnished-room route from continuous motion acceptance.
+
+
+### Tread helmet polish, September 12, 2026
+
+Fit dense tread equipment to the actual head and visor aperture, not doubled legacy pilot bounds. Re-extract the original helmet cutout at the fitted resolution; preserve body pixels and palette. Review every pose in all four directions and propagate shared tread endpoints into swim start/stop through the source recipe. Record changed-frame hashes so unrelated animation remains demonstrably unchanged. Bill uses 34x36 side/rear helmets and a 36x40 front helmet on the 184px tread canvas; these are Bill-specific registrations, not universal crew dimensions.
+
+
+### Airlock occupied-chamber rendering - September 12, 2026
+
+Keep chamber deck and fill-water drawing in the floor pass. Sorting the entire pressure chamber as a foreground prop paints over its occupant. Keep rail/hatch drawing separate and use chamber-local water depth for the actor, restoring the room water value after drawing. Native visibility regression must compare occupied and empty chamber pixels in all four rotations, both dry and flooded. Before dispatching a native fixture, settle its first rendered layout and rebuild navigation; initial layout geometry registration can otherwise cancel the request. Full journeys use the actual locker and expedition controllers, with source/native and release evidence recorded separately.

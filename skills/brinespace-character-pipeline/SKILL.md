@@ -5,6 +5,9 @@ description: Create, animate, repair, package, or integrate BrineSpace crew char
 
 # BrineSpace character pipeline
 
+For coarse existing sprites, local detail/motion repair, or replacement of a full
+active library, read [source density and replacement](references/source-density.md).
+
 For nonhuman companions, swimming/flotation, or their animation closeout, read
 [companion motion lessons](references/companion-motion.md).
 

@@ -4,6 +4,12 @@ description: Use when generating, repairing, reviewing, or integrating BrineSpac
 ---
 
 # BrineSpace room pipeline
+
+For the Studio standing/walking scale actor, funded-operation previews and saved-loop
+UI checks, read [gameplay preview contracts](references/gameplay-preview-contract.md).
+
+**Current owner direction (September 12 playtest):** read [top-down owner contract](references/top-down-owner-contract.md) first. All room equipment moves to top-down, inward-facing art on every wall; older conflicting camera/acceptance guidance is superseded.
+
 For directional service counters, short finished-end sections and additive host
 studies, read [fitted service lessons](references/fitted-service-lessons.md).
 
@@ -22,6 +28,16 @@ For every new or revised prop, apply the owner-directed
 [material and scale review](references/material-and-scale-review.md): matte
 surfaces, restrained highlights and native-scale comparison are explicit gates.
 Record verified corrections in the maintained workflow as each art task progresses.
+
+For a large/medium furnishing batch, treat the work as a room-composition replacement
+with a fixed closeout contract. Give each room one large process-specific anchor and
+at most one smaller universal support with a visible generic function. Preserve quiet
+floor and inherited focal machinery. Use explicit quarter-specific centers when host
+equipment is asymmetric, and verify both items remain present and visually separate in
+all four production views. Bake cards only after that review, update every card consumer,
+record profile/card/component hashes in the owning manifests, and keep owner acceptance
+separate from agent visual review. The ordered gates live in
+`docs/ROOM_ART_PRODUCTION.md`; the visual intent lives in the aesthetic bible.
 
 For the fourteen-room continuous/split wall rollout, read
 [wall-room rollout](references/wall-room-rollout.md).

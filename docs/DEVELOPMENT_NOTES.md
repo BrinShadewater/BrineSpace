@@ -1,3 +1,16 @@
+## September 12 owner playtest handoff - new room art contract
+
+All room equipment moves to top-down, inward-facing art on every wall. Older
+conflicting north elevations/fixed-facing acceptance is superseded. Slight north
+perspective is allowed only when low and rotation-safe. Observation portholes become
+background wall/riser art. This session is handing off; the broad goal is unfinished.
+
+Start with [room-art/playtest handoff](ROOM_ART_HANDOFF_2026-09-12.md) and
+[top-down direction/workflow](TOP_DOWN_ART_DIRECTION_2026-09-12.md). Raw notes and
+source-selection snapshot are preserved. Power/reserve and turbine behavior are
+owner-reported issues awaiting diagnosis; no playtest fixes were implemented in
+this consolidation. Preserve the concurrent work recorded below.
+
 The fourteen-room wall rollout is complete in the local checkout. Current acceptance: [full report](WALL_ROOM_ROLLOUT_ACCEPTANCE_2026-09-08.md). Earlier incremental statuses below are historical.
 
 The [fourteen-room wall-art rollout](WALL_ROOM_ROLLOUT_2026-09-08.md) has all fourteen rooms integrated with individual native placement and crew checks; the full-set completion audit remains active. Its ledger tracks per-room source, runtime and verification stages.
@@ -37,6 +50,10 @@ BrineSpace should feel like restoring a silent underwater station: build a littl
 > *"I have mapped thirty-seven ways to run out of oxygen. I recommend none of them."* ⚠️
 
 ## Implementation notes and supporting evidence
+
+The [September 12 lighting and mountain foundation](LIGHTING_MOUNTAINS_2026-09-12.md) adds connected excavatable masses, a sealed wreck pocket, dense exterior haze, directional station/diver/drone lights, terrain shadows and saved survey memory. Light is a core mechanic; actual enemies and predator attraction are deferred. Larger formations seed only in new loops.
+
+The [September 12 fire pass](FIRE_SYSTEM_2026-09-12.md) connects machinery heat, local fires, emergency sprinklers and hull damage. It supersedes visual-only sprinklers. Warning lead time, Water costs and damage rates remain provisional pending owner playtest; production, crew routing, flooding, pause and checkpoints share the new fire state.
 
 The [September 8 flooding pass](ROOM_FLOODING_2026-09-08.md) adds continuous room
 water levels, open-door flow, powered drainage and physical crew survival. It

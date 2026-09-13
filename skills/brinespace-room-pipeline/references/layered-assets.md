@@ -1,3 +1,5 @@
+> Current owner decision: [top-down and inward-facing contract](top-down-owner-contract.md) supersedes conflicting historical camera guidance below. Read it before production or handoff.
+
 > Full-wall exception: current owner-directed wall installations use authored inward-facing views. See wall-room-rollout.md and full-wall-installations.md; the general south-facing default below applies to other upright props.
 
 # Layered, rotatable room assets
@@ -122,3 +124,19 @@ both rendered states using an isolated settings path. Restore defaults explicitl
 Capture a connected pair as well as single-room rotations. State which consumers
 are covered: station layers do not automatically update baked cards or study scenes.
 Keep before/after evidence and add concrete lessons after each accepted iteration.
+
+## Fire effects: verified September 12, 2026
+
+Audit actual PNG alpha before calling generated sheets transparent: checkerboard
+can be baked into RGB. Preserve originals and exact prompts. For the authorized
+fire cleanup, palette-specific masks removed neutral/magenta mattes; those
+thresholds are not general prop masks. Translate roots on a shared frame canvas,
+then use one integer nearest-neighbor reduction for every frame. Review all
+frames over light/dark backgrounds, loop wrap and native close/fit scale.
+Simulation time keeps animated effects paused with gameplay. See
+`assets/fire-effects-v1/` and `docs/FIRE_ART_2026-09-12.md` for evidence.
+
+Fire correction: the initial warm-color key left pale checkerboard fringe that
+owner review caught. Remove only exterior-connected pale residue, preserving
+existing gaps and bright cores; filling every enclosed hole restores checkerboard
+inside flame tongues. Review corrected runtime frames on both light and dark.

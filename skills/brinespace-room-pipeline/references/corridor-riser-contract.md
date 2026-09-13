@@ -72,3 +72,8 @@ current controller tests and record failures instead of claiming broad acceptanc
 Current corridor review is `output/corridor-polish-v3/index.html`; corner directions
 are in `output/corner-defaults-v1/index.html`. Preserve earlier rejected or superseded
 studies as evidence. Local files are not a committed backup or tested export.
+
+
+### Catalog versus directional architecture coverage
+
+The standard room catalog renders only one corridor orientation. Use the dedicated corridor wall-variant fixture for four rotations and three finishes; route its card outputs to a fresh review directory to avoid replacing selected cards. Classify shared geometry-rendered architecture separately from missing furniture banks. State which captured frames were visually inspected; a 72-frame manifest alone is not 72 visual approvals.

@@ -149,3 +149,11 @@ render as a duplicate floor actor.
 
 For exports, use the checkout's docs/RELEASE_WORKFLOW.md. Native editor success,
 PCK asset validation and actual release gameplay are different evidence scopes.
+
+## Transient missing-body-part reports — September 13
+
+Read the latest report's note, screenshot and saved actor/playback state before identifying a failing pose. A report submitted after an action can contain a healthy walking frame; do not call it a reproduction. Inspect selected source frames with pivots and standing-height metadata, then compare room/prop/neighbor-wall occlusion and retained versus direct rendering at the same state. A replay from the later checkpoint cannot recover the unknown earlier moment.
+
+Wait on the real startup-complete property and settle layout/camera callbacks before capturing. Verify the pictured room and actor, not merely fixture assertions. Probe only supported clearance keys; errors introduced by diagnostic calls are not production regressions. Record exact sampled poses/locations and invalid or superseded probes separately.
+
+If the defect remains unreproduced, preserve the evidence and avoid speculative asset replacement. For a recurrence, pause while the defect is visible and save an F8 report. The Veld investigation found intact selected scanning art and visible heads in eight room-local samples; it did not prove the original full-station glitch fixed.

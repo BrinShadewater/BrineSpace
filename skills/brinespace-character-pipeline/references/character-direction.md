@@ -6,7 +6,9 @@ its rules into a competing character bible.
 
 Inspect actual approved images and pack documentation:
 
-- `character/major-bill-v2/`: Bill's established pressure-suit family and scale.
+- `character/major-bill-v3/catalog.json`: Bill's selected complete library and
+  density calibration. `character/major-bill-v2/` preserves the original authored
+  pressure-suit sources; its 74px export is not the current Bill density target.
 - `character/dr-veld-v1/concept-01.png` and `character/dr-veld-v1/README.md`:
   Veld's identity and differences from Bill.
 
@@ -32,3 +34,10 @@ guarantee consistent anatomy, direction, scale, or real transparency.
 Concept handoff: canonical art, short identity notes, source/prompt provenance,
 same-scale review, and any unresolved visual issues. Do not claim animation or
 NPC readiness from a turnaround alone.
+
+Veld identity guard: she is a woman, with a silver-streaked dark bun, cobalt
+Science markings and ivory chest panels. No glasses in bare or helmeted poses.
+Use her original concept for identity; recent generated action frames may have
+drifted and are motion references only. Inspect face, hair and eyewear in paired
+bare/equipped views before expanding a batch. Owner correction supersedes prior
+visual-review claims; technical equality to a drifted source is insufficient.

@@ -12,6 +12,8 @@ coverage, not mandatory frame-count targets.
   duration, loop/one-shot behavior, and action meanings.
 - Transition chains and compatible endpoints; locomotion stride distance where
   the player advances frames by movement rather than elapsed time.
+  A full state/direction key may override the state-wide stride when authored gait
+  reach differs; consumers must retain the state-wide fallback for other clips.
 - Source hashes, authoring method, exact prompts for generated sources, build
   settings, and derived/mirrored/reversed-frame provenance.
 
@@ -19,15 +21,19 @@ Extend the current manifest deliberately when needed. Do not replace a working
 schema with a generic engine export example. Keep playback metadata authoritative
 in one place and derive exported timing and previews from it.
 
-Current humanoid defaults: 92 × 92 canvas, (46, 86) foot pivot, 74-pixel standing
-height, 64-color pack palette, binary alpha. These describe existing packs; keep
-them for compatible crew unless the task calls for a different profile. Do not
+Legacy humanoid profile: 92 × 92 canvas, (46, 86) foot pivot, 74-pixel standing
+height, 64-color base palette, binary alpha. Bill's selected `major-bill-v3`
+declares standingHeight 148, with canvas/pivot profiles appropriate to each pose.
+Inspect `character/ACTIVE_ASSETS.json` and the active loader before selecting a
+reference or calibration. Keep legacy profiles for compatible crew. Do not
 stretch individual poses to equal heights or center each frame independently.
 
 Veld uses four-direction idle/walk, east-facing scanner interaction, and
 idle → kneel → repair/sample inspection → stand → idle. Her 12 clips contain
-72 frames. Bill has 17 clips/102 frames, including running and an extra diagonal
-walk. Generate states needed by the requested controller, not the union of both.
+72 frames. Bill's original base had 17 clips/102 frames; his complete selected
+library has 175 bare states/1,134 frame references and 168 equipped states/1,080
+references, including runtime joins. These are coverage counts, not unique authored
+pose counts. Generate states needed by the requested controller, not the union of both.
 Six frames per clip is a current choice, not a smoothness requirement.
 
 ## Production and revision
@@ -44,7 +50,18 @@ an unsolicited pipeline migration.
 
 ## Existing tools
 
-From the checkout root, existing pack rebuilds are:
+From the checkout root, the selected complete Bill rebuild and read-only check are:
+
+```powershell
+python tools/rebuild_bill_art.py
+python tools/validate_bill_art.py
+```
+
+The first writes the new revision from preserved sources; the second checks it.
+The original native migration inventory is frozen in
+`tools/bill-art-source-contract.json`; do not replace it with a dump of the new
+consumer. The historical base-only rebuilds below do not update the selected Bill
+revision:
 
 ```powershell
 python character/dr-veld-v1/build_pack.py

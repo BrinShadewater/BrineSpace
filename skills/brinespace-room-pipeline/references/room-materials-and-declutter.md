@@ -26,3 +26,8 @@ Read CURRENT_STATUS before consolidating concurrent work. Validate active source
 Sync only the lesson additions to the installed room skill, preserving unrelated concurrent guidance. Record staged versus committed versus pushed separately. Leave a concise handoff with accepted decisions, current selections, exact checks and remaining release/owner-review limits. Do not generate more art during closeout.
 
 Evidence: docs/ROOM_ART_CONSISTENCY_2026-09-09.md, docs/ROOM_DECLUTTER_2026-09-09.md and docs/RISER_SESSION_CLOSEOUT_2026-09-09.md.
+
+
+### Owner-requested airlock furnishing exception - September 12, 2026
+
+The airlock explicitly opts its functional furniture into live rendering with `live_furniture` in its composition specs. Ordinary dressing stays filtered. Check the live prop list before diagnosing sparse rooms from old cards; editor-only visibility does not establish runtime furnishing. When relocating an existing assembly, update both the room composition and its entries in `rooms/full-wall-v1/default-layouts.json`, whose positions and scales override the source defaults. Inspect each rotation after those overrides, then refresh the active card binding.
