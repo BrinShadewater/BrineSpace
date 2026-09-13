@@ -11,6 +11,7 @@ var failures:=0
 var movement_samples:=0
 var native:=false
 var review_actor: String=""
+var continuous_locker:=false
 var cell: Vector2i
 func _init() -> void: call_deferred("run")
 func check(value: bool,message: String) -> void:
@@ -33,16 +34,50 @@ func settle() -> void:
 		quit(1)
 func capture(label: String,station:=true) -> void:
 	if not native: return
-	var previous_scroll: int=game.grid_scroll.scroll_vertical
-	game.grid_scroll.scroll_vertical=maxi(0,previous_scroll-roundi(30.0*game.get_cell_size()/384.0))
-	game.grid_view.queue_redraw()
+	# Save/resize can queue station centering. Flush it before selecting the
+	# evidence room, otherwise successful locker checks capture the core instead.
+	await settle()
+	game.inspector_focus_button.set_meta("cell",cell)
+	game._focus_inspected_room()
 	await settle()
 	if station: root.get_texture().get_image().save_png(OUT.path_join(label+"-station.png"))
+	if review_actor=="veld":
+		var actor=Architects.actor_for(game,"veld")
+		if actor.helmet_action_active():
+			var player=game.grid_view.veld_player
+			var key: String=actor.state+"-east"
+			var elapsed: float=player.cycle_seconds(key)-actor.timer
+			var texture: Texture2D=game.grid_view._get_veld_frame_source(game)
+			var index: int=player.frames[key].find(texture)
+			check(index>=0,"Live locker renders selected transition frame")
+			if index>=0:
+				var selected:=Image.new()
+				check(selected.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/dr-veld-v2/frames/bare/%s/%03d.png"%[key,index]))==OK,"Selected locker source loads")
+				check(selected.get_data()==texture.get_image().get_data(),"Live locker pixels match selected source")
+				texture.get_image().save_png(OUT.path_join(label+"-actor.png"))
+			var trace={"state":actor.state,"elapsed":elapsed,"frame":index,"helmet":actor.helmet_equipped,"shelf":Service.helmet_on_shelf(game,cell),"foot":[actor.foot.x,actor.foot.y]}
+			FileAccess.open(OUT.path_join(label+"-pose.json"),FileAccess.WRITE).store_string(JSON.stringify(trace,"\t"))
 	var margin: float=60.0*game.get_cell_size()/384.0
 	var local:=Rect2(Vector2(cell)*game.get_cell_size()-Vector2(0,margin),Vector2.ONE*game.get_cell_size()+Vector2(0,margin))
 	var screen: Rect2=root.get_stretch_transform()*game.grid_view.get_global_transform_with_canvas()*local
 	root.get_texture().get_image().get_region(Rect2i(screen)).save_png(OUT.path_join(label+".png"))
-	game.grid_scroll.scroll_vertical=previous_scroll
+func capture_locker_motion(actor,label: String) -> void:
+	var origin: Vector2=actor.foot
+	var initial_state: String=actor.state
+	var initial_helmet: bool=actor.helmet_equipped
+	var samples: Array=[]
+	for i in range(60):
+		check(actor.foot.distance_to(origin)<0.01,"Locker motion retains interaction position")
+		if actor.helmet_action_active():check(actor.helmet_equipped==initial_helmet,"Equipment changes only at action completion")
+		await capture("continuous-%s-%03d"%[label,i],false)
+		samples.append({"sample":i,"seconds":i*0.05,"state":actor.state,"timer":actor.timer,"helmet":actor.helmet_equipped,"shelf":Service.helmet_on_shelf(game,cell),"foot":[actor.foot.x,actor.foot.y]})
+		if not actor.helmet_action_active():break
+		game.visual_time_seconds+=0.05
+		game._update_test_walker(0.05)
+	check(not actor.helmet_action_active(),"Continuous locker sequence completes")
+	check(actor.helmet_equipped==(initial_state=="equip-helmet"),"Continuous locker reaches requested equipment state")
+	FileAccess.open(OUT.path_join("continuous-"+label+".json"),FileAccess.WRITE).store_string(JSON.stringify(samples,"\t"))
+
 func reach_action(actor) -> void:
 	for i in range(1600):
 		if actor.helmet_action_active(): break
@@ -133,6 +168,7 @@ func run() -> void:
 		if arg.begins_with("--output="): OUT=arg.trim_prefix("--output=")
 		if arg.begins_with("--capture-dir="): OUT=arg.trim_prefix("--capture-dir=").replace("\\","/")
 		if arg.begins_with("--actor="): review_actor=arg.trim_prefix("--actor=")
+		if arg=="--continuous-locker":continuous_locker=true
 	if not review_actor.is_empty() and not review_actor in Architects.IDS:
 		push_error("Unknown Airlock review actor")
 		quit(1)
@@ -150,9 +186,21 @@ func run() -> void:
 	game.meta.save_path=prefix+".meta"
 	game.run_save_path=prefix+".loop"
 	game.Preferences.save_path=prefix+".cfg"
+	# Load the fixture's geometry inputs before any actor snapshots/navigation.
+	# Otherwise the first native draw loads layouts and changes the global
+	# geometry revision, canceling a correctly started locker action mid-test.
+	var layouts=preload("res://scripts/room_layout_store.gd")
+	layouts.path=prefix+".layouts"
+	layouts.loaded=false
+	layouts.ensure_loaded()
+	layouts.authored_positions("airlock",0)
 	root.add_child(game)
 	current_scene=game
 	game.set_process(false)
+	# Native captures yield frames; opening dialogue otherwise pauses the
+	# manually advanced interlock while the main simulation is disabled.
+	game.crew_comms.set_process(false)
+	game.crew_comms.dismiss()
 	game.set_process_input(false)
 	game.set_process_unhandled_input(false)
 	game.set_process_unhandled_key_input(false)
@@ -188,6 +236,11 @@ func run() -> void:
 			var target:=Service.locker(game,cell)
 			check(actor.can_stand(target.interaction_point),"Registered east-facing fitting point is reachable q%d" % q)
 			var view=game.grid_view.airlock_view
+			var present: Array=[]
+			for prop in view.props: present.append(str(prop.id))
+			for required in ["suit_lockers","air_compressor","changing_bench","reserve_air_bank","equipment_check_bench"]:
+				check(required in present,"Live airlock furnishing present q%d: %s" % [q,required])
+			check(preload("res://scripts/room_layout_store.gd").is_common_decoration({"registration":{"dressing":true}}),"Ordinary dressing remains filtered")
 			for prop in view.props:
 				var envelope:=Rect2(-200,-200,400,400) if prop.id in ["outer_hatch","pressure_chamber"] else Rect2(-180,-180,360,360)
 				check(envelope.encloses(view.prop_visual_bounds(prop)),"Airlock prop contained: "+prop.id)
@@ -223,6 +276,12 @@ func run() -> void:
 				game._focus_inspected_room()
 				game.grid_view.room_light_levels[cell]=1.0
 				await capture("%s-q%d-start" % [id,q])
+			if continuous_locker:
+				await capture_locker_motion(actor,"equip")
+				check(Service.request(game,id,cell),"Continuous return request accepted")
+				reach_action(actor)
+				await capture_locker_motion(actor,"remove")
+				continue
 			var before: float=actor.timer
 			check(Service.helmet_on_shelf(game,cell),"Staged helmet visible before pickup")
 			await capture("%s-q%d-shelf-before-grasp" % [id,q])
@@ -294,9 +353,19 @@ func run() -> void:
 			await capture("inspector-%d" % width)
 			var controls=game.find_child("ControlsPanel",true,false)
 			var sidebar=game.find_child("SideScroll",true,false)
-			check(controls.get_global_rect().end.y<=sidebar.get_global_rect().end.y+1,"Locker controls fit within the sidebar viewport")
+			# The inspector scrolls; each actionable control must be reachable.
+			var reachable: Array=[controls]
+			for panel in game.find_children("*","VBoxContainer",true,false):
+				if panel.get_script()==load("res://scripts/airlock_panel.gd"):
+					reachable.append_array([panel.choice,panel.action,panel.refill,panel.cycle_button,panel.expedition_kind,panel.expedition_button])
+			check(reachable.size()==7,"Airlock inspector exposes all six service controls")
+			for control in reachable:
+				sidebar.ensure_control_visible(control)
+				await settle()
+				check(control.is_visible_in_tree() and sidebar.get_global_rect().grow(1).encloses(control.get_global_rect()),"Airlock and time controls can scroll fully into view")
 	game.free()
 	for suffix in [".meta",".meta.bak",".loop",".loop.bak",".cfg"]:
 		if FileAccess.file_exists(prefix+suffix): DirAccess.remove_absolute(ProjectSettings.globalize_path(prefix+suffix))
-	print("AIRLOCK %s: %s, %d travel samples, equipment/return, ten interlock phases, power interruption, pause, disk saves and UI" % ["PASS" if failures==0 else "FAIL","all three architects, four rotations" if review_actor.is_empty() else review_actor+" focused review",movement_samples])
+	var coverage: String="continuous equipment/return, fixed foot and UI" if continuous_locker else "equipment/return, ten interlock phases, power interruption, pause, disk saves and UI"
+	print("AIRLOCK %s: %s, %d travel samples, %s" % ["PASS" if failures==0 else "FAIL","all three architects, four rotations" if review_actor.is_empty() else review_actor+" focused review",movement_samples,coverage])
 	quit(0 if failures==0 else 1)

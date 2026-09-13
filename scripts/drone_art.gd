@@ -6,6 +6,7 @@ const REGIONS := {
 	"construction":Rect2(1060,100,360,390), "cradle":Rect2(85,565,370,320),
 	"bench":Rect2(535,535,450,350), "hatch":Rect2(1070,565,390,340)
 }
+const CONSTRUCTION_REGION := Rect2i(1060,100,360,390)
 static var texture: ImageTexture
 static var stock_texture: ImageTexture
 
@@ -24,19 +25,36 @@ static func _decode_matte(path: String) -> ImageTexture:
 			# Generated matte has small compression/antialias variations.
 			if minf(color.r,color.b)-color.g>0.18:
 				image.set_pixel(x,y,Color(0,0,0,0))
+			elif path==SOURCE and CONSTRUCTION_REGION.has_point(Vector2i(x,y)):
+				image.set_pixel(x,y,_construction_material(color))
 	return ImageTexture.create_from_image(image)
 
-static func draw_asset(painter: CanvasItem, id: String, center: Vector2, width: float, tint := Color.WHITE) -> void:
+static func _construction_material(color: Color) -> Color:
+	# The Construction ROV shares the fleet atlas, so repaint only its source
+	# rectangle at decode time. This preserves its exact silhouette and every
+	# articulated UV while matching the bay's matte graphite/ochre machinery.
+	var hue:=color.h
+	var saturation:=color.s
+	var value:=color.v
+	if hue>=0.025 and hue<=0.13 and saturation>=0.24:
+		hue=lerpf(hue,0.125,0.72)
+		saturation=minf(0.62,saturation*0.82)
+		value*=0.82
+	if value>0.62:
+		value=0.62+(value-0.62)*0.45
+	return Color.from_hsv(hue,saturation,value,color.a)
+
+static func draw_asset(painter: CanvasItem, id: String, center: Vector2, width: float, tint := Color.WHITE, static_atlas: Texture2D = null) -> void:
 	if id == "panels":
 		if stock_texture == null: stock_texture = _decode_matte("res://assets/drones/fleet-v1/stock-rack-matte-v1.png")
 		painter.draw_texture_rect_region(stock_texture,Rect2(center-Vector2(width,width*730/820)*0.5,Vector2(width,width*730/820)),Rect2(220,260,820,730),tint)
 		return
 	var source: Rect2 = REGIONS[id]
 	var size := Vector2(width,width*source.size.y/source.size.x)
-	painter.draw_texture_rect_region(atlas(),Rect2(center-size*0.5,size),source,tint)
+	painter.draw_texture_rect_region(static_atlas if static_atlas != null else atlas(),Rect2(center-size*0.5,size),source,tint)
 
-static func draw_hatch(painter: CanvasItem, center: Vector2, width: float, opened: float) -> void:
-	draw_asset(painter,"hatch",center,width)
+static func draw_hatch(painter: CanvasItem, center: Vector2, width: float, opened: float, static_atlas: Texture2D = null) -> void:
+	draw_asset(painter,"hatch",center,width,Color.WHITE,static_atlas)
 	if opened<=0.0: return
 	var points := PackedVector2Array()
 	for i in range(32):

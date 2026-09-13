@@ -9,15 +9,20 @@ static func variant(room: Dictionary) -> int:
 	var severity := float(room.get("hull_crack",0))
 	return 0 if severity<=0.35 else 1 if severity<=0.7 else 2
 
-static func request(game,cell: Vector2i) -> bool:
+static func leak_rate(room: Dictionary) -> float:
+	return float(room.get("hull_crack",0))*0.04*(0.2 if room.get("hull_patched",false) else 1.0)
+
+static func request(game,cell: Vector2i,patch := false) -> bool:
 	if not game.running or not game.occupied.has(cell): return false
 	var room: Dictionary=game.occupied[cell]
 	if float(room.get("hull_crack",0))<=0 or room.has("leak_repair"): return false
+	if patch and room.get("hull_patched",false): return false
 	var index := variant(room)
-	if int(game.resources.metal)<COSTS[index]: return false
-	game.resources.metal-=COSTS[index]
-	room.leak_repair={"cost":COSTS[index],"duration":SECONDS[index],"progress":0.0,"worker":"","status":"Waiting for reachable crew"}
-	game._log("Hull repair queued at %s. %d Metal reserved." % [cell,COSTS[index]],false)
+	var cost: int=1 if patch else COSTS[index]
+	if int(game.resources.metal)<cost: return false
+	game.resources.metal-=cost
+	room.leak_repair={"cost":cost,"duration":3.0 if patch else SECONDS[index],"progress":0.0,"worker":"","status":"Waiting for reachable crew","patch":patch}
+	game._log("%s queued at %s. %d Metal reserved." % ["Emergency patch" if patch else "Hull repair",cell,cost],false)
 	return true
 
 static func cancel(game,cell: Vector2i) -> bool:
@@ -50,7 +55,9 @@ static func reassign(game,cell: Vector2i,id: String) -> bool:
 static func air_needed(room: Dictionary,job: Dictionary,travel: float,drain := 0.0) -> float:
 	var duration := travel+float(job.duration)-float(job.progress)
 	var water := float(room.get("water_level",0))
-	var rate := maxf(0,float(room.get("hull_crack",0))*0.04-drain)
+	var future := room.duplicate()
+	if not room.get("hull_patched",false): future.hull_crack=minf(1,float(room.get("hull_crack",0))+duration*0.0005)
+	var rate := maxf(0,leak_rate(future)-drain)
 	var projected := minf(1,water+rate*duration)
 	if projected<0.85: return 0.0
 	var until_critical := maxf(0,(0.85-water)/rate) if rate>0 else (0.0 if water>=0.85 else INF)
@@ -149,12 +156,19 @@ static func advance(game,actor,dt: float) -> bool:
 		actor.activity="sealing hull / %d%%" % roundi(float(job.progress)/float(job.duration)*100)
 		job.progress=minf(job.duration,float(job.progress)+dt*preload("res://scripts/companion_repair.gd").multiplier(game,room.pos))
 		if job.progress>=job.duration:
-			room.hull_crack=0.0
-			room.erase("local_incident")
+			var patched: bool=job.get("patch",false)
+			if patched:
+				room.hull_patched=true
+			else:
+				room.hull_crack=0.0
+				room.hull_welded=true
+				room.erase("hull_patched")
+				room.erase("hull_cause")
+				room.erase("local_incident")
 			room.erase("leak_repair")
 			release(actor)
-			actor.activity="hull sealed"
-			game._log("Hull sealed at %s. Pumps must clear the remaining water." % room.pos,false)
+			actor.activity="emergency patch fitted" if patched else "hull sealed"
+			game._log(("Patch fitted at %s. Leak reduced by 80%%; full welding still required." if patched else "Hull sealed at %s. Pumps must clear the remaining water.") % room.pos,false)
 			game._refresh_all()
 		return true
 	if actor.goal=="hull-repair": release(actor)
@@ -162,12 +176,13 @@ static func advance(game,actor,dt: float) -> bool:
 
 static func valid(job: Variant) -> bool:
 	if not job is Dictionary: return false
-	if not job.get("cost") is int or job.cost not in COSTS: return false
+	if job.has("patch") and not job.patch is bool: return false
+	if not job.get("cost") is int or job.cost not in ([1] if job.get("patch",false) else COSTS): return false
 	if not job.get("worker") is String or job.worker not in ["","bill","veld","branforth","marsh"]: return false
 	for key in ["duration","progress"]:
 		if not (job.get(key) is float or job.get(key) is int) or not is_finite(float(job[key])): return false
 	if job.get("preferred","") not in ["","bill","veld","branforth","marsh"]: return false
 	if not job.get("status","") is String or str(job.get("status","")).length()>96: return false
-	if (job.duration not in SECONDS and job.duration!=16.0) or job.progress<0 or job.progress>job.duration: return false
+	if (job.duration!=3.0 if job.get("patch",false) else (job.duration not in SECONDS and job.duration!=16.0)) or job.progress<0 or job.progress>job.duration: return false
 	if not job.worker.is_empty() and (not job.get("point") is Vector2 or not job.point.is_finite()): return false
 	return true

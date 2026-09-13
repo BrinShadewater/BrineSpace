@@ -95,13 +95,23 @@ var side_open_door_prototype := false # Explicit review fixture only; no normal-
 
 func _room_light_target(room: Dictionary) -> float:
 	var main = _get_main()
+	var ward: Dictionary=main.wrecks.get(room.pos,{})
+	if ward.get("kind","") in ["cryo","charging","river","josh","margot"]:
+		if not ward.get("cleared",false): return 0.0
+		# A newly connected ward waits for its first power allocation.
+		if not main.powered_room_cells.has(room.pos) and not main.unpowered_room_cells.has(room.pos) and str(main.offline_reasons.get(room.pos,"")).is_empty(): return 0.0
 	if not main.hardware.power or not main.hardware.interior: return 0.0
-	if room.id=="brine_core" and not main.architect_run.is_empty() and not main.architect_run.core.recovered: return 1.0
+	if room.id=="brine_core" and not main.architect_run.is_empty() and not main.architect_run.core.recovered:
+		return preload("res://scripts/brine_startup.gd").lights(main.architect_run.core,preload("res://scripts/title_settings.gd").reduced_motion)
 	var cell: Vector2i = room.pos
 	var reason := str(main.offline_reasons.get(cell,""))
 	return 1.0 if RoomLighting.has_light_power(main.powered_room_cells.has(cell),reason,main.unpowered_room_cells.has(cell)) else 0.0
 
 func _room_light_level(room: Dictionary) -> float:
+	if room.id=="brine_core" and preload("res://scripts/brine_startup.gd").active(_get_main().architect_run.get("core",{})):
+		return _room_light_target(room)
+	var ward: Dictionary=_get_main().wrecks.get(room.pos,{})
+	if ward.get("kind","") in ["cryo","charging","river","josh","margot"] and not ward.get("cleared",false): return 0.0
 	if room_light_levels.has(room.pos): return float(room_light_levels[room.pos])
 	return _room_light_target(room)
 
@@ -112,6 +122,9 @@ func _advance_room_lights(delta: float) -> void:
 		if not main.occupied.has(cell): room_light_levels.erase(cell)
 	for room in main.placed_rooms:
 		if _uses_layered_art(room):
+			if room.id=="brine_core" and preload("res://scripts/brine_startup.gd").active(main.architect_run.get("core",{})):
+				room_light_levels[room.pos]=_room_light_target(room)
+				continue
 			room_light_levels[room.pos] = move_toward(_room_light_level(room),_room_light_target(room),delta/RoomLighting.FADE_SECONDS)
 
 func _draw_layered_lighting() -> void:
@@ -184,98 +197,98 @@ var room_texture_variants := {}
 var texture_source_regions := {}
 var star_points: Array[Dictionary] = []
 var room_texture_paths := {
-	"cold_store": "res://assets/room-declutter-v1/cards/cold_store.png",
-	"galley": "res://assets/room-risers-v2/cards/galley.png",
-	"salvage_workshop": "res://assets/room-declutter-v1/cards/salvage_workshop.png",
-	"observation_room": "res://assets/room-risers-v2/cards/observation_room.png",
-	"current_turbine": "res://assets/room-declutter-v1/cards/current_turbine.png",
-	"biomass_digester": "res://assets/room-declutter-v1/cards/biomass_digester.png",
-	"heat_recovery": "res://assets/room-declutter-v1/cards/heat_recovery.png",
-	"airlock": "res://assets/riser-session-closeout/cards/airlock.png",
-	"anomaly_lab": "res://assets/room-declutter-v1/cards/anomaly_lab.png",
-	"battery_array": "res://assets/room-declutter-v1/cards/battery_array.png",
-	"bio_lab": "res://assets/room-declutter-v1/cards/bio_lab.png",
-	"biodome": "res://assets/room-declutter-v1/cards/biodome.png",
-	"brine_core": "res://assets/room-declutter-v1/cards/brine_core.png",
-	"clone_lab": "res://assets/room-declutter-v1/cards/clone_lab.png",
-	"command_center": "res://assets/room-risers-v2/cards/command_center.png",
-	"construction_drone_bay": "res://assets/room-declutter-v1/cards/construction_drone_bay.png",
+	"cold_store": "res://assets/cold-store-directional-v1/matte-pair-cards/cold_store.png",
+	"galley": "res://assets/galley-directional-v1/north-matte-cards/galley.png",
+	"salvage_workshop": "res://assets/salvage-directional-v1/matte-pair-cards/salvage_workshop.png",
+	"observation_room": "res://assets/crew-scale-v1/cards/observation_room.png",
+	"current_turbine": "res://assets/room-furnishings-v4/cards/current_turbine.png",
+	"biomass_digester": "res://assets/room-furnishings-v4/cards/biomass_digester.png",
+	"heat_recovery": "res://assets/room-furnishings-v4/cards/heat_recovery.png",
+	"airlock": "res://assets/airlock-directional-v1/south-locker-cards/airlock.png",
+	"anomaly_lab": "res://assets/room-furnishings-v2/cards/anomaly_lab.png",
+	"battery_array": "res://assets/room-centerpieces-v1/cards/battery_array.png",
+	"bio_lab": "res://assets/room-furnishings-v7/cards/bio_lab.png",
+	"biodome": "res://assets/room-furnishings-v5/cards/biodome.png",
+	"brine_core": "res://assets/brine-core-directional-v1/south-idle-cards/brine_core.png",
+	"clone_lab": "res://assets/room-furnishings-v5/cards/clone_lab.png",
+	"command_center": "res://assets/room-furnishings-v2/cards/command_center.png",
+	"construction_drone_bay": "res://assets/construction-directional-v1/cards/construction_drone_bay.png",
 	"corner": "res://assets/corridor-polish-v3/cards/corner.png",
 	"corridor": "res://assets/corridor-polish-v3/cards/corridor.png",
-	"crew_hab": "res://assets/room-declutter-v1/cards/crew_hab.png",
-	"crew_lounge": "res://assets/riser-session-closeout/cards/crew_lounge.png",
-	"cryo_chamber": "res://assets/riser-session-closeout/cards/cryo_chamber.png",
-	"data_archive": "res://assets/riser-session-closeout/cards/data_archive.png",
-	"gravity_loom": "res://assets/room-declutter-v1/cards/gravity_loom.png",
-	"holographic_core": "res://assets/room-declutter-v1/cards/holographic_core.png",
-	"hydroponics_bay": "res://assets/room-risers-v2/cards/hydroponics_bay.png",
-	"isolation_vault": "res://assets/room-declutter-v1/cards/isolation_vault.png",
-	"life_support": "res://assets/room-declutter-v1/cards/life_support.png",
-	"listening_post": "res://assets/room-declutter-v1/cards/listening_post.png",
-	"maintenance_bay": "res://assets/room-risers-v2/cards/maintenance_bay.png",
-	"med_bay": "res://assets/room-risers-v2/cards/med_bay.png",
-	"med_center": "res://assets/room-declutter-v1/cards/med_center.png",
-	"med_office": "res://assets/room-declutter-v1/cards/med_office.png",
-	"mining_drone_bay": "res://assets/room-declutter-v1/cards/mining_drone_bay.png",
-	"mycelium_nursery": "res://assets/room-declutter-v1/cards/mycelium_nursery.png",
-	"ore_refinery": "res://assets/room-declutter-v1/cards/ore_refinery.png",
-	"pressure_control": "res://assets/room-declutter-v1/cards/pressure_control.png",
-	"quarantine_cell": "res://assets/room-declutter-v1/cards/quarantine_cell.png",
-	"radio_lab": "res://assets/room-declutter-v1/cards/radio_lab.png",
-	"reactor": "res://assets/riser-session-closeout/cards/reactor.png",
-	"research_lab": "res://assets/riser-session-closeout/cards/research_lab.png",
-	"salvage_drone_bay": "res://assets/room-declutter-v1/cards/salvage_drone_bay.png",
-	"shield_generator": "res://assets/room-declutter-v1/cards/shield_generator.png",
-	"solar_array": "res://assets/room-declutter-v1/cards/solar_array.png",
-	"storage_bay": "res://assets/riser-session-closeout/cards/storage_bay.png",
+	"crew_hab": "res://assets/room-furnishings-v2/cards/crew_hab.png",
+	"crew_lounge": "res://assets/crew-scale-v1/cards/crew_lounge.png",
+	"cryo_chamber": "res://assets/room-furnishings-v3/cards/cryo_chamber.png",
+	"data_archive": "res://assets/room-furnishings-v8/cards/data_archive.png",
+	"gravity_loom": "res://assets/room-furnishings-v6/cards/gravity_loom.png",
+	"holographic_core": "res://assets/room-furnishings-v9/cards/holographic_core.png",
+	"hydroponics_bay": "res://assets/room-furnishings-v3/cards/hydroponics_bay.png",
+	"isolation_vault": "res://assets/room-furnishings-v3/cards/isolation_vault.png",
+	"life_support": "res://assets/room-furnishings-v7/cards/life_support.png",
+	"listening_post": "res://assets/room-furnishings-v9/cards/listening_post.png",
+	"maintenance_bay": "res://assets/room-furnishings-v8/cards/maintenance_bay.png",
+	"med_bay": "res://assets/room-furnishings-v7/cards/med_bay.png",
+	"med_center": "res://assets/room-furnishings-v2/cards/med_center.png",
+	"med_office": "res://assets/room-furnishings-v2/cards/med_office.png",
+	"mining_drone_bay": "res://assets/mining-directional-v1/cards/mining_drone_bay.png",
+	"mycelium_nursery": "res://assets/crew-scale-v1/cards/mycelium_nursery.png",
+	"ore_refinery": "res://assets/room-furnishings-v3/cards/ore_refinery.png",
+	"pressure_control": "res://assets/room-furnishings-v3/cards/pressure_control.png",
+	"quarantine_cell": "res://assets/room-furnishings-v3/cards/quarantine_cell.png",
+	"radio_lab": "res://assets/room-furnishings-v9/cards/radio_lab.png",
+	"reactor": "res://assets/room-furnishings-v5/cards/reactor.png",
+	"research_lab": "res://assets/room-furnishings-v2/cards/research_lab.png",
+	"salvage_drone_bay": "res://assets/salvage-drone-directional-v1/cards/salvage_drone_bay.png",
+	"shield_generator": "res://assets/room-centerpieces-v1/cards/shield_generator.png",
+	"solar_array": "res://assets/room-centerpieces-v1/cards/solar_array.png",
+	"storage_bay": "res://assets/room-furnishings-v8/cards/storage_bay.png",
 	"tee_corridor": "res://assets/corridor-polish-v3/cards/tee_corridor.png",
-	"tidal_condenser": "res://assets/room-declutter-v1/cards/tidal_condenser.png",
-	"xeno_lab": "res://assets/room-declutter-v1/cards/xeno_lab.png"
+	"tidal_condenser": "res://assets/room-furnishings-v6/cards/tidal_condenser.png",
+	"xeno_lab": "res://assets/room-furnishings-v6/cards/xeno_lab.png"
 }
 var room_texture_variant_paths := {
-	"current_turbine": ["res://assets/room-declutter-v1/cards/current_turbine.png"],
-	"biomass_digester": ["res://assets/room-declutter-v1/cards/biomass_digester.png"],
-	"heat_recovery": ["res://assets/room-declutter-v1/cards/heat_recovery.png"],
-	"airlock": ["res://assets/riser-session-closeout/cards/airlock.png"],
-	"anomaly_lab": ["res://assets/room-declutter-v1/cards/anomaly_lab.png"],
-	"battery_array": ["res://assets/room-declutter-v1/cards/battery_array.png"],
-	"bio_lab": ["res://assets/room-declutter-v1/cards/bio_lab.png"],
-	"biodome": ["res://assets/room-declutter-v1/cards/biodome.png"],
-	"brine_core": ["res://assets/room-declutter-v1/cards/brine_core.png"],
-	"clone_lab": ["res://assets/room-declutter-v1/cards/clone_lab.png"],
-	"command_center": ["res://assets/room-risers-v2/cards/command_center.png"],
-	"construction_drone_bay": ["res://assets/room-declutter-v1/cards/construction_drone_bay.png"],
+	"current_turbine": ["res://assets/room-furnishings-v4/cards/current_turbine.png"],
+	"biomass_digester": ["res://assets/room-furnishings-v4/cards/biomass_digester.png"],
+	"heat_recovery": ["res://assets/room-furnishings-v4/cards/heat_recovery.png"],
+	"airlock": ["res://assets/airlock-directional-v1/south-locker-cards/airlock.png"],
+	"anomaly_lab": ["res://assets/room-furnishings-v2/cards/anomaly_lab.png"],
+	"battery_array": ["res://assets/room-centerpieces-v1/cards/battery_array.png"],
+	"bio_lab": ["res://assets/room-furnishings-v7/cards/bio_lab.png"],
+	"biodome": ["res://assets/room-furnishings-v5/cards/biodome.png"],
+	"brine_core": ["res://assets/brine-core-directional-v1/south-idle-cards/brine_core.png"],
+	"clone_lab": ["res://assets/room-furnishings-v5/cards/clone_lab.png"],
+	"command_center": ["res://assets/room-furnishings-v2/cards/command_center.png"],
+	"construction_drone_bay": ["res://assets/construction-directional-v1/cards/construction_drone_bay.png"],
 	"corner": ["res://assets/corridor-polish-v3/cards/corner.png", "res://assets/corridor-polish-v3/cards/corner-1.png", "res://assets/corridor-polish-v3/cards/corner-2.png"],
 	"corridor": ["res://assets/corridor-polish-v3/cards/corridor.png", "res://assets/corridor-polish-v3/cards/corridor-1.png", "res://assets/corridor-polish-v3/cards/corridor-2.png"],
-	"crew_hab": ["res://assets/room-declutter-v1/cards/crew_hab.png"],
-	"crew_lounge": ["res://assets/riser-session-closeout/cards/crew_lounge.png"],
-	"cryo_chamber": ["res://assets/riser-session-closeout/cards/cryo_chamber.png"],
-	"data_archive": ["res://assets/riser-session-closeout/cards/data_archive.png"],
-	"gravity_loom": ["res://assets/room-declutter-v1/cards/gravity_loom.png"],
-	"holographic_core": ["res://assets/room-declutter-v1/cards/holographic_core.png"],
-	"hydroponics_bay": ["res://assets/room-risers-v2/cards/hydroponics_bay.png"],
-	"isolation_vault": ["res://assets/room-declutter-v1/cards/isolation_vault.png"],
-	"life_support": ["res://assets/room-declutter-v1/cards/life_support.png"],
-	"listening_post": ["res://assets/room-declutter-v1/cards/listening_post.png"],
-	"maintenance_bay": ["res://assets/room-risers-v2/cards/maintenance_bay.png"],
-	"med_bay": ["res://assets/room-risers-v2/cards/med_bay.png"],
-	"med_center": ["res://assets/room-declutter-v1/cards/med_center.png"],
-	"med_office": ["res://assets/room-declutter-v1/cards/med_office.png"],
-	"mining_drone_bay": ["res://assets/room-declutter-v1/cards/mining_drone_bay.png"],
-	"mycelium_nursery": ["res://assets/room-declutter-v1/cards/mycelium_nursery.png"],
-	"ore_refinery": ["res://assets/room-declutter-v1/cards/ore_refinery.png"],
-	"pressure_control": ["res://assets/room-declutter-v1/cards/pressure_control.png"],
-	"quarantine_cell": ["res://assets/room-declutter-v1/cards/quarantine_cell.png"],
-	"radio_lab": ["res://assets/room-declutter-v1/cards/radio_lab.png"],
-	"reactor": ["res://assets/riser-session-closeout/cards/reactor.png"],
-	"research_lab": ["res://assets/riser-session-closeout/cards/research_lab.png"],
-	"salvage_drone_bay": ["res://assets/room-declutter-v1/cards/salvage_drone_bay.png"],
-	"shield_generator": ["res://assets/room-declutter-v1/cards/shield_generator.png"],
-	"solar_array": ["res://assets/room-declutter-v1/cards/solar_array.png"],
-	"storage_bay": ["res://assets/riser-session-closeout/cards/storage_bay.png"],
+	"crew_hab": ["res://assets/room-furnishings-v2/cards/crew_hab.png"],
+	"crew_lounge": ["res://assets/crew-scale-v1/cards/crew_lounge.png"],
+	"cryo_chamber": ["res://assets/room-furnishings-v3/cards/cryo_chamber.png"],
+	"data_archive": ["res://assets/room-furnishings-v8/cards/data_archive.png"],
+	"gravity_loom": ["res://assets/room-furnishings-v6/cards/gravity_loom.png"],
+	"holographic_core": ["res://assets/room-furnishings-v9/cards/holographic_core.png"],
+	"hydroponics_bay": ["res://assets/room-furnishings-v3/cards/hydroponics_bay.png"],
+	"isolation_vault": ["res://assets/room-furnishings-v3/cards/isolation_vault.png"],
+	"life_support": ["res://assets/room-furnishings-v7/cards/life_support.png"],
+	"listening_post": ["res://assets/room-furnishings-v9/cards/listening_post.png"],
+	"maintenance_bay": ["res://assets/room-furnishings-v8/cards/maintenance_bay.png"],
+	"med_bay": ["res://assets/room-furnishings-v7/cards/med_bay.png"],
+	"med_center": ["res://assets/room-furnishings-v2/cards/med_center.png"],
+	"med_office": ["res://assets/room-furnishings-v2/cards/med_office.png"],
+	"mining_drone_bay": ["res://assets/mining-directional-v1/cards/mining_drone_bay.png"],
+	"mycelium_nursery": ["res://assets/crew-scale-v1/cards/mycelium_nursery.png"],
+	"ore_refinery": ["res://assets/room-furnishings-v3/cards/ore_refinery.png"],
+	"pressure_control": ["res://assets/room-furnishings-v3/cards/pressure_control.png"],
+	"quarantine_cell": ["res://assets/room-furnishings-v3/cards/quarantine_cell.png"],
+	"radio_lab": ["res://assets/room-furnishings-v9/cards/radio_lab.png"],
+	"reactor": ["res://assets/room-furnishings-v5/cards/reactor.png"],
+	"research_lab": ["res://assets/room-furnishings-v2/cards/research_lab.png"],
+	"salvage_drone_bay": ["res://assets/salvage-drone-directional-v1/cards/salvage_drone_bay.png"],
+	"shield_generator": ["res://assets/room-centerpieces-v1/cards/shield_generator.png"],
+	"solar_array": ["res://assets/room-centerpieces-v1/cards/solar_array.png"],
+	"storage_bay": ["res://assets/room-furnishings-v8/cards/storage_bay.png"],
 	"tee_corridor": ["res://assets/corridor-polish-v3/cards/tee_corridor.png", "res://assets/corridor-polish-v3/cards/tee_corridor-1.png", "res://assets/corridor-polish-v3/cards/tee_corridor-2.png"],
-	"tidal_condenser": ["res://assets/room-declutter-v1/cards/tidal_condenser.png"],
-	"xeno_lab": ["res://assets/room-declutter-v1/cards/xeno_lab.png"]
+	"tidal_condenser": ["res://assets/room-furnishings-v6/cards/tidal_condenser.png"],
+	"xeno_lab": ["res://assets/room-furnishings-v6/cards/xeno_lab.png"]
 }
 
 func _ready() -> void:
@@ -285,7 +298,13 @@ func _ready() -> void:
 		var env_layer := EnvPass.new()
 		env_layer.host = self
 		env_layer.pass_id = id
-		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove"][id]
+		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvDerelicts","EnvExteriorActors","EnvFog"][id]
+		if id == Env.DERELICTS:
+			var condition_material := ShaderMaterial.new()
+			condition_material.shader = preload("res://scripts/derelict_material.gdshader")
+			condition_material.set_shader_parameter("room_light",0.0)
+			env_layer.material = condition_material
+		if id == Env.FOG: env_layer.material = underwater_visibility.material
 		add_child(env_layer)
 		env_passes.append(env_layer)
 	for id in range(Surface.size()):
@@ -491,32 +510,16 @@ func _ready() -> void:
 				textures.append(texture)
 		if not textures.is_empty():
 			room_texture_variants[id] = textures
-	veld_player.load_manifest("res://character/dr-veld-v1/final/manifest.json")
-	branforth_player.load_manifest("res://character/chief-engineer-branforth-v1/final/manifest.json")
-	marsh_player.load_manifest("res://character/animation-expansion-v5/marsh/manifest.json")
-	var marsh_helmet = CrewSpritePlayer.new()
-	marsh_helmet.load_manifest("res://character/marsh-v1/final/helmet-manifest.json")
-	marsh_player.equipment_frames["diving-helmet"] = marsh_helmet.frames
-	veld_player.load_manifest("res://character/crew-construction-v1/veld/manifest.json",true)
-	branforth_player.load_manifest("res://character/crew-construction-v1/branforth/manifest.json",true)
-	veld_player.load_manifest("res://character/crew-underwater-v1/pilot/veld-death-ground-east/manifest.json", true)
-	branforth_player.load_manifest("res://character/crew-underwater-v1/pilot/branforth-death-ground-east/manifest.json", true)
-	_load_water_pilots(veld_player, "veld")
-	_load_water_pilots(branforth_player, "branforth")
-	_load_dry_helmet_pilots(veld_player, "veld")
-	_load_dry_helmet_pilots(branforth_player, "branforth")
-	_load_helmet_transitions(veld_player, "veld")
-	_load_helmet_transitions(branforth_player, "branforth")
-	preload("res://scripts/crew_action_pack.gd").load_into(veld_player,"veld")
-	preload("res://scripts/crew_action_pack.gd").load_into(branforth_player,"branforth")
-	preload("res://scripts/crew_life.gd").load_into(veld_player,"veld")
-	preload("res://scripts/crew_life.gd").load_into(branforth_player,"branforth")
-	human_sprite = _load_png_texture("res://character/major-bill-v2/rotations/south.png")
+	_load_replacement_crew_animations()
+	human_sprite = _load_png_texture("res://character/major-bill-v3/rotations/south.png")
 	for direction in ["north", "east", "south", "west"]:
-		var texture := _load_png_texture("res://character/major-bill-v2/rotations/%s.png" % direction)
+		var texture := _load_png_texture("res://character/major-bill-v3/rotations/%s.png" % direction)
 		if texture != null:
 			texture.set_meta("major_bill_v2", true)
+			texture.set_meta("crew_pivot", Vector2(92,172))
+			texture.set_meta("crew_standing_height",148.0)
 			human_sprites[direction] = texture
+	human_sprite=human_sprites.get("south",human_sprite)
 	_load_major_bill_animations()
 	_load_drone_assets()
 	_load_brine_core_overlays()
@@ -599,65 +602,42 @@ func _load_human_animation(state: String, base_path: String) -> void:
 			by_direction[direction] = textures
 	human_animations[state] = by_direction
 
+func _load_replacement_crew_animations() -> void:
+	for actor in ["veld","branforth","marsh"]:
+		var base: String=CrewSpritePlayer.REVISION_ROOTS[actor]
+		var catalog: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
+		var player = CrewSpritePlayer.new()
+		for path in catalog.body: player.load_manifest(base+str(path),true)
+		for path in catalog.equipment:
+			if not player.load_equipment_manifest("diving-helmet",base+str(path)):
+				push_error(actor+" equipment profile mismatch: "+str(path))
+		set(actor+"_player",player)
+
 func _load_major_bill_animations() -> void:
-	var base := "res://character/major-bill-v2/final/"
-	var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(base + "manifest.json"))
+	var base := "res://character/major-bill-v3/"
+	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(base + "catalog.json"))
+	var player = CrewSpritePlayer.new()
+	for path in catalog.body: player.load_manifest(base + str(path), true)
+	for path in catalog.equipment:
+		if not player.load_equipment_manifest("diving-helmet", base + str(path)):
+			push_error("Bill equipment profile mismatch: " + str(path))
 	human_animations.clear()
 	human_animation_timing.clear()
-	human_stride_distance = manifest.get("strideDistanceCells", {"walk": 0.12, "run": 0.168})
-	for entry: Dictionary in manifest.states:
-		var key := str(entry.id)
-		var separator := key.find("-")
-		var state := key.substr(0, separator)
-		var direction := key.substr(separator + 1)
-		var textures: Array = []
-		for frame_path: String in entry.frameFiles:
-			var texture := _load_png_texture((base + frame_path).simplify_path())
-			if texture == null:
-				push_error("Missing Major Bill frame: " + frame_path)
-				continue
-			texture.set_meta("major_bill_v2", true)
-			textures.append(texture)
-		if not human_animations.has(state): human_animations[state] = {}
-		human_animations[state][direction] = textures
-		human_animation_timing[key] = {"durations": entry.frameDurationsMs, "loop": entry.loop}
+	human_stride_distance = player.strides.duplicate()
+	human_water_player = player
+	human_equipment_frames = player.equipment_frames
 	human_animation_key = ""
 	human_animation_last_time = -1.0
-	var death_pack = CrewSpritePlayer.new()
-	death_pack.load_manifest("res://character/crew-underwater-v1/pilot/bill-death-ground-east/manifest.json")
-	for texture in death_pack.frames["death-ground-east"]: texture.set_meta("major_bill_v2", true)
-	human_animations["death-ground"] = {"east": death_pack.frames["death-ground-east"]}
-	human_animation_timing["death-ground-east"] = death_pack.timing["death-ground-east"]
-	var water_pack = CrewSpritePlayer.new()
-	water_pack.load_manifest("res://character/crew-construction-v1/bill/manifest.json",true)
-	_load_water_pilots(water_pack, "bill")
-	_load_helmet_transitions(water_pack, "bill")
-	human_equipment_frames = water_pack.equipment_frames
-	var dry_pack = CrewSpritePlayer.new()
-	dry_pack.load_manifest("res://character/major-bill-v2/final/manifest.json")
-	dry_pack.load_manifest("res://character/crew-underwater-v1/pilot/bill-death-ground-east/manifest.json", true)
-	_load_dry_helmet_pilots(dry_pack, "bill")
-	for equipment_id in dry_pack.equipment_frames:
-		if not human_equipment_frames.has(equipment_id): human_equipment_frames[equipment_id] = {}
-		human_equipment_frames[equipment_id].merge(dry_pack.equipment_frames[equipment_id], true)
-	preload("res://scripts/crew_action_pack.gd").load_into(water_pack,"bill")
-	water_pack.frames.merge(dry_pack.frames,false)
-	water_pack.timing.merge(dry_pack.timing,false)
-	water_pack.strides.merge(dry_pack.strides,false)
-	preload("res://scripts/crew_life.gd").load_into(water_pack,"bill")
-	human_water_player=water_pack
-	for equipment in human_equipment_frames.values():
-		for equipped_frames in equipment.values():
-			for texture in equipped_frames: texture.set_meta("major_bill_v2", true)
-	human_stride_distance.merge(water_pack.strides, true)
-	for key in water_pack.frames:
-		var split: int = key.rfind("-")
+	for key in player.frames:
+		var split: int = key.find("-") if key == "walk-south-east" else key.rfind("-")
 		var state: String = key.substr(0, split)
 		var direction: String = key.substr(split + 1)
 		if not human_animations.has(state): human_animations[state] = {}
-		for texture in water_pack.frames[key]: texture.set_meta("major_bill_v2", true)
-		human_animations[state][direction] = water_pack.frames[key]
-		human_animation_timing[key] = water_pack.timing[key]
+		for texture in player.frames[key]: texture.set_meta("major_bill_v2", true)
+		human_animations[state][direction] = player.frames[key]
+		human_animation_timing[key] = player.timing[key]
+	for row in human_equipment_frames.get("diving-helmet",{}).values():
+		for texture in row: texture.set_meta("major_bill_v2", true)
 
 func _load_helmet_transitions(player, actor: String) -> void:
 	for action in ["equip-helmet", "remove-helmet"]:
@@ -729,7 +709,7 @@ func _advance_human_animation(key: String, time_seconds: float, position_cells: 
 			var cycle_seconds := 0.0
 			for duration in human_animation_timing[key].durations:
 				cycle_seconds += float(duration) / 1000.0
-			human_animation_phase += distance / float(human_stride_distance[state]) * cycle_seconds
+			human_animation_phase += distance / float(human_stride_distance.get(key,human_stride_distance[state])) * cycle_seconds
 		else:
 			human_animation_phase = time_seconds - human_animation_started
 	human_animation_last_time = time_seconds
@@ -882,7 +862,8 @@ class SurfacePass extends Node2D:
 
 # Environment layers below the station surfaces. STATIC_* retain their commands
 # between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
-enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE }
+var underwater_visibility = preload("res://scripts/underwater_visibility.gd").new()
+enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, DERELICTS, EXTERIOR_ACTORS, FOG }
 class EnvPass extends Node2D:
 	var host
 	var pass_id := 0
@@ -918,6 +899,8 @@ func _door_light_state() -> void:
 	var lights: Array = [size,preload("res://scripts/room_layout_store.gd").revision,preload("res://scripts/title_settings.gd").raised_walls,main.hardware.walls]
 	for room in visible_draw_rooms:
 		lights.append([room.pos,room.id,_room_light_level(room)])
+		if room.id=="airlock":
+			doors.append([room.pos,"exterior-hatch",room.rotation,preload("res://scripts/airlock_cycle.gd").pose(room).outer,main.hardware.walls,preload("res://scripts/title_settings.gd").raised_walls])
 		for side in ["north","east","south","west"]:
 			var offset := _offset_from_side(side)
 			var neighbor: Vector2i = room.pos+offset
@@ -955,7 +938,9 @@ func _surface_state() -> Array:
 		for offset in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
 			ports.append(_drone_door_frame(main,room.pos,room.pos+offset)>0)
 		var ward: Dictionary = main.wrecks.get(room.pos,{})
-		rooms.append([room.pos,ports,_room_light_level(room),ward.get("cleared",false),ward.get("kind",""),ward.is_empty(),ward.get("pods",[]).size(),preload("res://scripts/wreck_field.gd").blocks(main.wrecks,room.pos+Vector2i.DOWN)])
+		# Chamber water is painted into the floor; aperture and pressure are live.
+		var chamber_water: float=preload("res://scripts/airlock_cycle.gd").pose(room).water if room.id=="airlock" else 0.0
+		rooms.append([room.pos,ports,_room_light_level(room),ward.get("cleared",false),ward.get("kind",""),ward.is_empty(),ward.get("pods",[]).size(),preload("res://scripts/wreck_field.gd").blocks(main.wrecks,room.pos+Vector2i.DOWN),chamber_water])
 	# Deep snapshot of structural state; clocks/actors stay on the live pass.
 	# Light fades rebuild surfaces to preserve per-room pool/seam draw ordering.
 	# Non-layered legacy rooms have no static contract, so keep their floor pass live.
@@ -974,6 +959,10 @@ func _surface_state() -> Array:
 		structural.erase("water_level")
 		structural.erase("hull_crack")
 		structural.erase("leak_repair")
+		# These values are consumed by live chamber/fire effects, not the shell.
+		# Keeping their timers here redraws every visible floor/wall every frame.
+		for field in ["airlock_cycle","fire","fire_water_seconds","electrical_repair_progress"]:
+			structural.erase(field)
 		structural_rooms.append(structural)
 	return [main.hardware.duplicate(),_cell_size(),structural_rooms,main.placed_rooms.size(),main.powered_room_cells,rooms,preload("res://scripts/room_layout_store.gd").revision,
 		preload("res://scripts/title_settings.gd").raised_walls,main.selected_room_cell,main.architect_run.get("core",{}).is_empty(),legacy_clock]
@@ -1029,6 +1018,9 @@ func _draw() -> void:
 			env_passes[Env.STATIC_FOUNDATIONS].queue_redraw()
 		env_passes[Env.LIVE_LINES].queue_redraw()
 		env_passes[Env.LIVE_ABOVE].queue_redraw()
+		env_passes[Env.DERELICTS].queue_redraw()
+		env_passes[Env.EXTERIOR_ACTORS].queue_redraw()
+		env_passes[Env.FOG].queue_redraw()
 		if profile_draw: environment_stage = _profile_draw_stage("env_validation",environment_stage)
 	else:
 		for env_layer in env_passes: env_layer.hide()
@@ -1040,6 +1032,11 @@ func _draw() -> void:
 		_draw_foundations(true)
 		if profile_draw: environment_stage = _profile_draw_stage("env_foundations",environment_stage)
 		_draw_environment_above(main,cell_size,grid_pixel_size)
+		# Keep material-isolated rooms and exterior actors in their normal order
+		# even when the diagnostic flag disables retained environment surfaces.
+		for id in [Env.DERELICTS,Env.EXTERIOR_ACTORS,Env.FOG]:
+			env_passes[id].show()
+			env_passes[id].queue_redraw()
 	stage_time = _profile_draw_stage("environment", stage_time)
 	if not retain_static_surfaces:
 		for layer in surface_passes: layer.hide()
@@ -1073,8 +1070,8 @@ func _draw_environment_above(main, cell_size: float, grid_pixel_size: float) -> 
 	if profile_draw: environment_stage = _profile_draw_stage("env_rocks",environment_stage)
 	wreck_view.draw_into(draw_target,main.wrecks,cell_size,main.visual_time_seconds,main.selected_room_cell,false)
 	if profile_draw: environment_stage = _profile_draw_stage("env_wrecks",environment_stage)
-	_draw_cryo_derelicts(main,cell_size)
-	if profile_draw: environment_stage = _profile_draw_stage("env_cryo",environment_stage)
+
+func _draw_environment_foreground(main, cell_size: float, grid_pixel_size: float) -> void:
 	harvest_site_art.draw_into(draw_target,main.drone_fleet.sites,main.occupied,cell_size,main.selected_room_cell)
 	# Exterior ROVs are below every station floor, hull and crew canvas.
 	_draw_drones(main)
@@ -1118,6 +1115,12 @@ func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
 			_draw_foundations(false,"shimmer")
 			_draw_foundations(true,"shimmer")
 			_draw_environment_above(main,cell_size,GRID_SIZE*cell_size)
+		Env.DERELICTS:
+			_draw_cryo_derelicts(main,cell_size)
+		Env.FOG:
+			underwater_visibility.draw(target,main,cell_size)
+		Env.EXTERIOR_ACTORS:
+			_draw_environment_foreground(main,cell_size,GRID_SIZE*cell_size)
 	draw_target = self
 
 func _draw_surface(target: CanvasItem, pass_id: int) -> void:
@@ -1264,7 +1267,7 @@ func _draw_foundations(exterior := false, mode := "full") -> void:
 		for cell in main.wrecks:
 			if main.occupied.has(cell) or not preload("res://scripts/wreck_field.gd").blocks(main.wrecks,cell): continue
 			if cull_room_drawing and not region.intersects(Rect2(Vector2(cell)*size,Vector2.ONE*size)): continue
-			subjects.append({"pos":cell,"id":main.wrecks[cell].kind})
+			subjects.append({"pos":cell,"id":main.wrecks[cell].kind if preload("res://scripts/wreck_field.gd").visible(main.wrecks,cell) else "basalt"})
 	for room in subjects:
 		if not exterior and _is_narrow_corridor(room):
 			if mode != "shimmer": _draw_corridor_foundations(room,size)
@@ -1324,7 +1327,10 @@ func _paint_surface(pass_id: int) -> void:
 		for room in visible_draw_rooms:
 			if preload("res://scripts/title_settings.gd").raised_walls and _uses_layered_art(room) and not _is_narrow_corridor(room) and not main.occupied.has(room.pos+Vector2i.UP):
 				draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
-				preload("res://rooms/whole-room/north_wall.gd").draw_into(draw_target,room.id,room.pos,_has_raised_wall_at(room.pos+Vector2i.LEFT),_has_raised_wall_at(room.pos+Vector2i.RIGHT),_bill_room_view(room))
+				var north_view = _bill_room_view(room)
+				# Selecting a recovery ward can invalidate the shared view's geometry.
+				north_view.configure_embedded(int(room.get("rotation",0)),[],false,main.get_visual_time_seconds())
+				preload("res://rooms/whole-room/north_wall.gd").draw_into(draw_target,room.id,room.pos,_has_raised_wall_at(room.pos+Vector2i.LEFT),_has_raised_wall_at(room.pos+Vector2i.RIGHT),north_view,false)
 				draw_target.draw_set_transform(Vector2.ZERO)
 		if profile_draw: _profile_draw_stage("walls",stage_time)
 		wall_rebuilds += 1
@@ -1358,10 +1364,17 @@ func _paint_surface(pass_id: int) -> void:
 		for room in visible_draw_rooms:
 			if _uses_layered_art(room):
 				_draw_room(room)
+				if room.id=="brine_core" and _riser_fixtures_visible(room):
+					draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
+					preload("res://rooms/whole-room/north_wall.gd").draw_brine_signals(draw_target,_bill_room_view(room))
+					draw_target.draw_set_transform(Vector2.ZERO)
 		if profile_draw: _profile_draw_stage("live_rooms",stage_time)
 		if retain_static_surfaces: return
+	if pass_id==Surface.FOREGROUND or not retain_static_surfaces:
+		preload("res://scripts/cryo_release_effect.gd").draw(draw_target,main,cell_size)
 	if pass_id==Surface.FOREGROUND:
 		preload("res://scripts/room_flooding.gd").draw(draw_target,main,visible_draw_rooms,cell_size)
+		preload("res://scripts/room_fire.gd").draw(draw_target,main,visible_draw_rooms,cell_size)
 		preload("res://scripts/station_hardware.gd").draw_effects(draw_target,main,visible_draw_rooms,cell_size)
 	if not retain_static_surfaces:
 		_draw_layered_doors(false)
@@ -1494,13 +1507,18 @@ func _draw_cryo_derelicts(main, cell_size: float) -> void:
 		if main.Companions.IDS.has(ward.kind) and not ward.cleared:
 			var room: Dictionary=main.RoomDatabaseScript.get_room(main.Companions.ROOMS[ward.kind]).duplicate(true)
 			room.pos=cell;room.rotation=0
+			var derelict_view = _bill_room_view(room)
+			derelict_view.set_meta("derelict_condition",true)
 			_draw_nursery(room,Rect2(Vector2(cell)*cell_size,Vector2.ONE*cell_size),true)
+			derelict_view.set_meta("derelict_condition",false)
 			continue
 		if ward.kind not in ["cryo","charging"] or ward.cleared: continue
 		cryo_view.recovery = preload("res://scripts/architects.gd").ward_for_display(main,ward)
 		cryo_view.configure_embedded(int(ward.rotation),[],false,main.visual_time_seconds)
 		cryo_view.shell_pass = 0
+		cryo_view.set_meta("derelict_condition",true)
 		cryo_view.render_into(draw_target,(Vector2(cell)+Vector2.ONE*0.5)*cell_size,cell_size/384.0)
+		cryo_view.set_meta("derelict_condition",false)
 		if cell==main.selected_room_cell:
 			draw_target.draw_rect(Rect2(Vector2(cell)*cell_size,Vector2.ONE*cell_size).grow(-2),Color("a9c4bf"),false,2)
 		if ward.progress>0:
@@ -1567,6 +1585,12 @@ func bill_room_geometry(room: Dictionary, open_sides: Array) -> Dictionary:
 	if view == null:
 		return {}
 	view.configure_embedded(int(room.get("rotation", 0)), open_sides, false, 0.0)
+	# Navigation must see the authored furniture before the first render pass.
+	# Legacy embedded views otherwise acquire different locker targets on draw.
+	if not "full_wall" in view and not view.has_meta("layout_editor_preview"):
+		var layouts = preload("res://scripts/room_layout_store.gd")
+		var asset: String = layouts.asset_for(view)
+		if not asset.is_empty(): layouts.apply(view, asset)
 	var main = _get_main()
 	if room.has("pos") and main.Companions.is_site(main,room.pos):
 		var companion_id: String=main.wrecks[room.pos].kind
@@ -1605,7 +1629,10 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 			omitted.append(side)
 	if profile_draw: _profile_detail("doors_"+str(room.id),setup_started)
 	var detail_mark := Time.get_ticks_usec() if profile_draw else 0
+	room_view.set_meta("raised_north_visible",not preview and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP))
 	room_view.configure_embedded(int(room.get("rotation", 0)), sides, not preview and main.powered_room_cells.has(pos), main.get_visual_time_seconds(), omitted)
+	if not preview and room.id=="brine_core" and not main.architect_run.is_empty() and (not main.architect_run.core.recovered or main.cycle==0):
+		room_view.operating=main.hardware.power and preload("res://scripts/brine_startup.gd").screens(main.architect_run.core)
 	if profile_draw: detail_mark = _profile_detail("configure_"+str(room.id),detail_mark)
 	if main.Companions.is_site(main,pos):
 		var site: Dictionary=main.wrecks[pos]
@@ -1619,6 +1646,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	if room.id=="airlock":
 		room_view.cycle_pose=preload("res://scripts/airlock_cycle.gd").pose({} if preview else room)
 		room_view.shelf_helmet_visible = preview or preload("res://scripts/airlock_service.gd").helmet_on_shelf(main, pos)
+		room_view.shelf_helmet_scale = 1.0 if preview else preload("res://scripts/airlock_service.gd").shelf_helmet_scale(main,pos)
 	if room.id in ["mining_drone_bay","salvage_drone_bay","construction_drone_bay"]:
 		room_view.drone_deployed = not preview and main.drone_fleet.deployed(pos)
 		room_view.hatch_open = main.drone_fleet.hatch_fraction(pos) if not preview else 0.0
@@ -1632,11 +1660,11 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	if not preview and main.has_dr_veld():
 		var veld_pos: Vector2 = main.get_dr_veld_position()
 		if Vector2i(floori(veld_pos.x / _cell_size()), floori(veld_pos.y / _cell_size())) == pos:
-			room_view.external_actors.append({"position": (veld_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.veld_npc.observation_visual_offset(), "texture": _get_veld_frame(main)})
+			room_view.external_actors.append({"position": (veld_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.veld_npc.observation_visual_offset()+preload("res://scripts/crew_life.gd").head_alignment(main.veld_npc,veld_player), "texture": _get_veld_frame(main)})
 	if not preview and main.has_chief_branforth():
 		var branforth_pos: Vector2 = main.get_chief_branforth_position()
 		if Vector2i(floori(branforth_pos.x / _cell_size()), floori(branforth_pos.y / _cell_size())) == pos:
-			room_view.external_actors.append({"position": (branforth_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.branforth_npc.observation_visual_offset(), "texture": _get_branforth_frame(main)})
+			room_view.external_actors.append({"position": (branforth_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.branforth_npc.observation_visual_offset()+preload("res://scripts/crew_life.gd").head_alignment(main.branforth_npc,branforth_player), "texture": _get_branforth_frame(main)})
 	if not preview and main.has_marsh():
 		var marsh_pos: Vector2 = main.get_marsh_position()
 		if Vector2i(floori(marsh_pos.x / _cell_size()), floori(marsh_pos.y / _cell_size())) == pos:
@@ -1650,7 +1678,6 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	if profile_draw:
 		draw_profile_usec["detail_room_setup"] = int(draw_profile_usec.get("detail_room_setup",0)) + Time.get_ticks_usec() - setup_started
 	room_view.shell_pass = 0 if preview else (1 if shell_only else 2)
-	room_view.set_meta("raised_north_visible",not preview and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP))
 	if retain_room_contents and retain_static_surfaces and not preview and not floor_only and not shell_only:
 		if not content_canvases.has(pos):
 			var canvas := RoomContents.new()
@@ -1669,8 +1696,9 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	room_view.shell_pass = 0
 	if preview or floor_only:
 		draw_target.draw_set_transform(rect.get_center(),0,Vector2.ONE*_cell_size()/384.0)
-		RoomLighting.draw_pools(draw_target,1.0 if preview else _room_light_level(room),room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
-		RoomLighting.draw_equipment_shadows(draw_target,room_view.props,1.0 if preview else _room_light_level(room),room_view)
+		var light_level: float=0.0 if room_view.get_meta("derelict_condition",false) else (1.0 if preview else _room_light_level(room))
+		RoomLighting.draw_pools(draw_target,light_level,room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
+		RoomLighting.draw_equipment_shadows(draw_target,room_view.props,light_level,room_view)
 		# Compact room previews have no raised riser to support fixture housings.
 		draw_target.draw_set_transform(Vector2.ZERO)
 
@@ -1795,6 +1823,12 @@ func _draw_layered_doors(behind_crew: bool) -> void:
 	if main.has_test_walker(): actor_y = main.get_test_walker_position().y+cell_size*0.038
 	for room in visible_draw_rooms:
 		# East/south traversal owns each undirected connection exactly once.
+		# The airlock's exterior hatch is not a station connection. Keep its
+		# closed north face visible above the raised hull as well as the low sill.
+		if behind_crew and room.id=="airlock" and posmod(int(room.rotation),4)==0 and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls:
+			draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
+			RoomDoor.draw_riser_door(draw_target,preload("res://scripts/airlock_cycle.gd").pose(room).outer,null,"life-support")
+			draw_target.draw_set_transform(Vector2.ZERO)
 		for side in ["north","east","south","west"]:
 			var offset := _offset_from_side(side)
 			var neighbor: Vector2i = room.pos+offset
@@ -2287,7 +2321,7 @@ func _draw_humans(main) -> void:
 	var pos: Vector2 = main.get_test_walker_position()
 	var cell_size := _cell_size()
 	var source_rect := Rect2(Vector2.ZERO, texture.get_size())
-	var pixel_scale := cell_size * 0.17 / 74.0
+	var pixel_scale := cell_size * 0.17 / float(texture.get_meta("crew_standing_height", 74.0))
 	var sprite_size := texture.get_size() * pixel_scale
 	var foot_pos := pos + Vector2(0, cell_size * 0.038)
 	var sprite_rect := Rect2(foot_pos - Vector2(texture.get_meta("crew_pivot", Vector2(46, 86))) * pixel_scale, sprite_size)
@@ -2304,11 +2338,14 @@ func _draw_veld_legacy(main) -> void:
 	if _uses_layered_art(main.occupied.get(cell, {})): return
 	var texture := _get_veld_frame(main)
 	if texture == null: return
-	var pixel_scale := _cell_size() * 0.17 / 74.0
+	var pixel_scale := _cell_size() * 0.17 / float(texture.get_meta("crew_standing_height", 74.0))
 	var foot := pos + Vector2(0, _cell_size() * 0.038)
 	draw_target.draw_texture_rect(texture, Rect2(foot - Vector2(texture.get_meta("crew_pivot", Vector2(46, 86))) * pixel_scale, texture.get_size() * pixel_scale), false)
 
 func _get_veld_frame(main) -> Texture2D:
+	return preload("res://scripts/cryo_release_effect.gd").texture(main,"veld",_get_veld_frame_source(main))
+
+func _get_veld_frame_source(main) -> Texture2D:
 	if main.veld_npc.action_elapsed()>=0:
 		return veld_player.frame_at_elapsed(main.veld_npc.animation_state()+"-"+main.veld_npc.direction,main.veld_npc.action_elapsed(),"diving-helmet" if main.veld_npc.helmet_equipped else "")
 	if main.veld_npc.helmet_action_active():
@@ -2323,11 +2360,14 @@ func _draw_branforth_legacy(main) -> void:
 	if _uses_layered_art(main.occupied.get(cell, {})): return
 	var texture := _get_branforth_frame(main)
 	if texture == null: return
-	var pixel_scale := _cell_size() * 0.17 / 74.0
+	var pixel_scale := _cell_size() * 0.17 / float(texture.get_meta("crew_standing_height", 74.0))
 	var foot := pos + Vector2(0, _cell_size() * 0.038)
 	draw_target.draw_texture_rect(texture, Rect2(foot - Vector2(texture.get_meta("crew_pivot", Vector2(46, 86))) * pixel_scale, texture.get_size() * pixel_scale), false)
 
 func _get_branforth_frame(main) -> Texture2D:
+	return preload("res://scripts/cryo_release_effect.gd").texture(main,"branforth",_get_branforth_frame_source(main))
+
+func _get_branforth_frame_source(main) -> Texture2D:
 	if main.branforth_npc.action_elapsed()>=0:
 		return branforth_player.frame_at_elapsed(main.branforth_npc.animation_state()+"-"+main.branforth_npc.direction,main.branforth_npc.action_elapsed(),"diving-helmet" if main.branforth_npc.helmet_equipped else "")
 	if main.branforth_npc.helmet_action_active():
@@ -2342,14 +2382,21 @@ func _draw_marsh_legacy(main) -> void:
 	if _uses_layered_art(main.occupied.get(cell, {})): return
 	var texture := _get_marsh_frame(main)
 	if texture == null: return
-	var pixel_scale := _cell_size() * 0.17 / 74.0
+	var pixel_scale := _cell_size() * 0.17 / float(texture.get_meta("crew_standing_height", 74.0))
 	var foot := pos + Vector2(0, _cell_size() * 0.038)
 	draw_target.draw_texture_rect(texture, Rect2(foot - Vector2(texture.get_meta("crew_pivot", Vector2(46, 86))) * pixel_scale, texture.get_size() * pixel_scale), false)
 
 func _get_marsh_frame(main) -> Texture2D:
 	if main.marsh_npc.recharge_docked and not main.marsh_npc.dead: return null
 	if main.marsh_npc.action_elapsed()>=0:
-		return marsh_player.frame_at_elapsed(main.marsh_npc.animation_state()+"-"+main.marsh_npc.direction,main.marsh_npc.action_elapsed(),"diving-helmet" if main.marsh_npc.helmet_equipped else "")
+		var pose: String=main.marsh_npc.animation_state()
+		var key: String=pose+"-"+main.marsh_npc.direction
+		var elapsed: float=main.marsh_npc.action_elapsed()
+		if main.marsh_npc.goal=="construction" and pose in ["torch-draw","torch-stow"]:
+			# Construction reserves .52s for each tool handoff; the authored
+			# nonlooping clip keeps its own timing contract and plays in full.
+			elapsed=clampf(elapsed/.52,0.0,1.0)*marsh_player.cycle_seconds(key)
+		return marsh_player.frame_at_elapsed(key,elapsed,"diving-helmet" if main.marsh_npc.helmet_equipped else "")
 	if main.marsh_npc.helmet_action_active():
 		var key: String = main.marsh_npc.state + "-east"
 		return marsh_player.frame_at_elapsed(key, marsh_player.cycle_seconds(key) - main.marsh_npc.timer)
@@ -2378,6 +2425,9 @@ func _water_transition_clear(actor) -> bool:
 	return actor.movement_medium!="dry" and actor.action_pose_clear("transition")
 
 func _get_human_frame(state: String, direction: String) -> Texture2D:
+	return preload("res://scripts/cryo_release_effect.gd").texture(_get_main(),"bill",_get_human_frame_source(state,direction))
+
+func _get_human_frame_source(state: String, direction: String) -> Texture2D:
 	var actor=_get_main().bill_npc
 	if actor.action_elapsed()>=0:
 		return human_water_player.frame_at_elapsed(state+"-"+direction,actor.action_elapsed(),"diving-helmet" if actor.helmet_equipped else "")
@@ -2443,7 +2493,7 @@ func _draw_drones(main) -> void:
 		var anchors := drone_anchors(room)
 		var dock_offset: Vector2 = anchors.dock*cell_size/384.0
 		var hatch_offset: Vector2 = anchors.hatch*cell_size/384.0
-		var pos := (Vector2(drone.position)+Vector2.ONE*0.5)*cell_size
+		var pos: Vector2 = preload("res://scripts/underwater_visibility.gd").drone_position(main,drone)*cell_size
 		var width := cell_size*0.18
 		if drone.phase == "launching":
 			var f := clampf(float(drone.elapsed)/1.2,0,1)
@@ -2457,6 +2507,9 @@ func _draw_drones(main) -> void:
 			var from_home: float = clampf(Vector2(drone.position).distance_to(Vector2(drone.home))/0.30,0,1)
 			pos += hatch_offset*(1.0-from_home)
 		DroneArt.draw_drone(draw_target,drone.kind,pos,width,float(drone.get("clock",0.0)),drone.phase=="working",drone.phase in ["launching","outbound","returning","docking"])
+
+		draw_target.draw_circle(pos+Vector2(-.04,-.015)*cell_size,maxf(1.0,cell_size*.004),Color("b5ddd3"))
+		draw_target.draw_circle(pos+Vector2(.04,-.015)*cell_size,maxf(1.0,cell_size*.004),Color("7ca89b"))
 
 func _get_drone_frame(state: String, direction: String) -> Texture2D:
 	if drone_animations.has(state):

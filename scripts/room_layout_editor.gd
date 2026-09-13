@@ -22,6 +22,11 @@ var object_buttons: Array=[]
 var preview_lights:=true
 var preview_animation:=false
 var preview_clock:=0.0
+var scale_actor = preload("res://scripts/room_scale_preview.gd").new()
+var character_mode: OptionButton
+var character_place: Button
+var character_status: Label
+var placing_character := false
 var lights_toggle: CheckButton
 var animation_toggle: CheckButton
 const Lighting=preload("res://rooms/whole-room/room_lighting.gd")
@@ -173,7 +178,9 @@ class LayoutCanvas extends Control:
 		var level:=1.0 if editor.preview_lights else 0.0
 		Lighting.draw_pools(self,level,white,warm,Lighting.anchors_for(editor.draft,true))
 		Lighting.draw_equipment_shadows(self,editor.room.props,level,editor.room)
+		editor.room.external_actors = editor.scale_actor.members()
 		editor.room.render_into(self,origin(),factor(),false,false)
+		editor.room.external_actors.clear()
 		draw_set_transform(origin(),0,Vector2.ONE*factor())
 		if editor.show_riser: Lighting.draw_fixtures(self,level,white,warm,Lighting.anchors_for(editor.draft,true))
 		draw_set_transform(origin(),0,Vector2.ONE*factor())
@@ -335,6 +342,30 @@ func _ready() -> void:
 	instructions.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	instructions.tooltip_text="Drag empty space to pan. Shift-drag empty space to box-select. Click floor decorations directly to move them. Alt bypasses snapping. Ctrl+G groups; Ctrl+Shift+G ungroups. Ctrl+C / Ctrl+V copies and pastes props. Wheel zooms; Delete returns selection to tray. Shift+R rotates back. Arrow keys nudge; Shift nudges 12 units. Ctrl+S saves all edited room rotations. Ctrl+Z / Ctrl+Y undo and redo."
 	side.add_child(instructions)
+	var character_row := HBoxContainer.new()
+	side.add_child(character_row)
+	var character_label := Label.new(); character_label.text="Scale: Bill"; character_row.add_child(character_label)
+	character_mode = OptionButton.new()
+	for caption in ["Hidden","Standing","Walking"]: character_mode.add_item(caption)
+	character_row.add_child(character_mode)
+	character_mode.tooltip_text="Current Bill artwork at gameplay size. Preview only; never saved as room furniture. Walking respects equipment clearance."
+	character_mode.item_selected.connect(func(value):
+		scale_actor.mode=value
+		placing_character=false
+		character_place.disabled=value==0
+		if value>0:
+			scale_actor.load_art()
+			scale_actor.rebuild(room,str(entries[index].room),quarter)
+		canvas.queue_redraw())
+	character_place=button(character_row,"Place",func():
+		placing_character=true
+		status.text="Click clear floor to place Bill. Preview placement does not change the room.")
+	character_place.disabled=true
+	character_status=Label.new()
+	character_status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	character_status.add_theme_font_size_override("font_size",12)
+	character_status.text="Preview only / same scale as gameplay"
+	side.add_child(character_status)
 	layers=OptionButton.new()
 	for caption in ["Objects", "Floor finish", "Floor decorations", "Wall decorations", "Lights"]: layers.add_item(caption)
 	side.add_child(layers)
@@ -497,6 +528,7 @@ func load_room() -> void:
 	rebuild_list()
 
 func refresh(move_only:=false) -> void:
+	scale_actor.signature.clear()
 	surface_entities.clear()
 	if move_only:
 		# Dragging only translates existing entities; membership and artwork stay fixed.
@@ -611,6 +643,12 @@ func selected_prop() -> Dictionary:
 
 func canvas_input(event: InputEvent) -> void:
 	if comparing: return
+	if placing_character and event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed:
+		if scale_actor.place(canvas.to_room(event.position)):
+			placing_character=false
+			status.text="Bill placed at gameplay scale. Room layout unchanged."
+		else: status.text="No standing clearance here. Choose clear floor."
+		canvas.queue_redraw(); canvas.accept_event(); return
 	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_MIDDLE:
 		panning=event.pressed; pan_button=MOUSE_BUTTON_MIDDLE if event.pressed else MOUSE_BUTTON_NONE; canvas.accept_event(); return
 	if event is InputEventMouseButton and not event.pressed and event.button_index==pan_button:
@@ -1030,6 +1068,11 @@ func reset_selected() -> void:
 		history.append(before); future.clear(); dirty=true; refresh()
 
 func _process(delta: float) -> void:
+	if scale_actor.mode>0 and is_instance_valid(room):
+		scale_actor.rebuild(room,str(entries[index].room),quarter)
+		scale_actor.advance(delta)
+		character_status.text="Preview only / same scale as gameplay" if scale_actor.visible else "No standing clearance in this layout"
+		canvas.queue_redraw()
 	if not (get_viewport().gui_get_focus_owner() is LineEdit) and not confirm.visible and not (recovery_dialog!=null and recovery_dialog.visible) and not Input.is_key_pressed(KEY_CTRL):
 		var direction:=Vector2(float(Input.is_physical_key_pressed(KEY_D))-float(Input.is_physical_key_pressed(KEY_A)),float(Input.is_physical_key_pressed(KEY_S))-float(Input.is_physical_key_pressed(KEY_W)))
 		if direction!=Vector2.ZERO:

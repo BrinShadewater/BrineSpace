@@ -36,7 +36,14 @@ static func step_water(game, dt: float) -> void:
 	var changes := {}
 	var pumps: bool = game.hardware.power and game.hardware.pumps
 	for room in game.placed_rooms:
-		var leak := float(room.get("hull_crack",0.0))*0.04
+		var repair=preload("res://scripts/hull_repair.gd")
+		var severity: float=room.get("hull_crack",0.0)
+		if severity>0 and not room.get("hull_patched",false):
+			var before: int=repair.variant(room)
+			room.hull_crack=minf(1,severity+dt*0.0005)
+			if repair.variant(room)>before:
+				game._log("HULL DETERIORATION // %s at %s. %s." % [room.get("display_name",room.id),room.pos,repair.NAMES[repair.variant(room)]],true)
+		var leak: float=repair.leak_rate(room)
 		if room.get("flooded",false) and room.has("branch_owner"): leak += 0.04
 		var pump := 0.008 if pumps and game.powered_room_cells.has(room.pos) and not room.get("suspended",false) else 0.0
 		levels[room.pos] = clampf(level(room)+(leak-pump)*dt,0,1)
@@ -131,7 +138,9 @@ static func inspector(game,room: Dictionary) -> String:
 	if float(room.get("hull_crack",0))>0:
 		var repairs = preload("res://scripts/hull_repair.gd")
 		var index: int=repairs.variant(room)
-		text += "\n%s / %.1f%% water per second" % [repairs.NAMES[index],float(room.hull_crack)*4]
+		text += "\n%s / %.1f%% water per second" % [repairs.NAMES[index],repairs.leak_rate(room)*100]
+		text += "\nCause: "+str(room.get("hull_cause","existing hull damage"))
+		text += "\nPATCHED / leak reduced 80%; deterioration arrested. Full weld still required." if room.get("hull_patched",false) else "\nUNPATCHED / worsens 3 percentage points per minute."
 		if room.has("leak_repair"):
 			text += "\nRepair / %d%% / Metal allocated" % roundi(float(room.leak_repair.progress)/float(room.leak_repair.duration)*100)
 			text += "\n"+str(room.leak_repair.get("status","Waiting for crew"))
@@ -140,6 +149,7 @@ static func inspector(game,room: Dictionary) -> String:
 			for id in Architects.IDS:
 				if Architects.present(game,id): text += "\n[url=floodassign:%d:%d:%s]Assign %s[/url]" % [room.pos.x,room.pos.y,id,Architects.NAMES[id]]
 		else:
+			if not room.get("hull_patched",false): text += "\n[url=floodpatch:%d:%d]Emergency patch / 1 Metal / 3s crew work[/url]" % [room.pos.x,room.pos.y]
 			text += "\n[url=floodrepair:%d:%d]Send crew to weld — %d Metal / %.0fs work[/url]" % [room.pos.x,room.pos.y,repairs.COSTS[index],repairs.SECONDS[index]]
 
 	for id in Architects.IDS:
@@ -152,6 +162,9 @@ static func inspector(game,room: Dictionary) -> String:
 static func valid_rooms(rooms: Array) -> bool:
 	for room in rooms:
 		if room.has("leak_repair") and not preload("res://scripts/hull_repair.gd").valid(room.leak_repair): return false
+		if room.has("hull_welded") and not room.hull_welded is bool: return false
+		if room.has("hull_patched") and not room.hull_patched is bool: return false
+		if room.has("hull_cause") and (not room.hull_cause is String or room.hull_cause.length()>80): return false
 		for key in ["water_level","hull_crack"]:
 			if not room.has(key): continue
 			if not (room[key] is float or room[key] is int) or not is_finite(float(room[key])) or room[key]<0 or room[key]>1: return false

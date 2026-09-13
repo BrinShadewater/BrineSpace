@@ -22,7 +22,7 @@ static func load_into(player, actor: String, root: String = ROOT) -> void:
 				preload("res://scripts/safe_image.gd").load_png(overlay,EQUIPMENT+view+"/overlay.png")
 				overlay.resize(17,20,Image.INTERPOLATE_NEAREST)
 				var texture: Texture2D=player.frames[entry.id][i]
-				var body: Image=texture.get_image()
+				var body: Image=texture.get_image().duplicate()
 				var center:=Vector2(pose.head[0],pose.head[1])
 				var angle:=deg_to_rad(16.0 if facing=="east" else -16.0) if entry.water and facing in ["east","west"] else 0.0
 				if pose.has("helmetAngle"): angle=deg_to_rad(float(pose.helmetAngle))

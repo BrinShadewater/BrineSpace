@@ -294,6 +294,7 @@ var resource_icon_rects := {}
 var tick_timer: Timer
 var log_lines := []
 var event_history: Array = []
+var fire_alert_button: Button
 var flood_alert_button: Button
 var construction_button: Button
 var operations_refresh := 0.0
@@ -323,6 +324,7 @@ var room_texture_paths := preload("res://scripts/room_card_art.gd").PATHS
 
 var crew_comms
 var comms_button: Button
+var surveyed_water: Dictionary = {}
 var hardware: Dictionary=preload("res://scripts/station_hardware.gd").DEFAULTS.duplicate()
 var hardware_panel
 
@@ -395,6 +397,7 @@ func _process(delta: float) -> void:
 		_refresh_construction_button()
 		if is_instance_valid(guide_box) and guide_box.visible: _refresh_learning_ui()
 		preload("res://scripts/flood_alerts.gd").refresh(self)
+		preload("res://scripts/room_fire.gd").refresh_alert(self)
 		if not meta.last_error.is_empty() and meta.last_error != last_meta_warning:
 			_log("PROGRESSION NOT SAVED // " + meta.last_error,true)
 		last_meta_warning = meta.last_error
@@ -403,7 +406,7 @@ func _process(delta: float) -> void:
 		elif occupied.has(selected_room_cell) and occupied[selected_room_cell].id in ["mining_drone_bay","salvage_drone_bay"]:
 			_refresh_inspector()
 		elif drone_fleet.reserved(selected_room_cell): _refresh_inspector()
-		elif occupied.has(selected_room_cell) and (inspector_had_water or float(occupied[selected_room_cell].get("water_level",0))>0 or float(occupied[selected_room_cell].get("hull_crack",0))>0): _refresh_inspector()
+		elif occupied.has(selected_room_cell) and (occupied[selected_room_cell].has("fire_heat") or occupied[selected_room_cell].has("fire") or inspector_had_water or float(occupied[selected_room_cell].get("water_level",0))>0 or float(occupied[selected_room_cell].get("hull_crack",0))>0): _refresh_inspector()
 
 func _build_ui() -> void:
 	var backdrop := ColorRect.new()
@@ -565,6 +568,18 @@ func _build_ui() -> void:
 			_restore_grid_view_center((Vector2(cell)+Vector2.ONE*0.5)/40.0)
 			_refresh_all())
 	objective_box.add_child(flood_alert_button)
+	fire_alert_button=Button.new()
+	_style_hud_button(fire_alert_button,false)
+	fire_alert_button.modulate=Color("ef987c")
+	fire_alert_button.pressed.connect(func():
+		var cell: Vector2i=fire_alert_button.get_meta("target",Vector2i(-1,-1))
+		if occupied.has(cell):
+			selected_card_id=""
+			selected_room_cell=cell
+			_restore_grid_view_center((Vector2(cell)+Vector2.ONE*0.5)/40.0)
+			_refresh_all())
+	objective_box.add_child(fire_alert_button)
+	fire_alert_button.hide()
 	orbital_objective_label = objective_text
 
 	var cascade_panel := PanelContainer.new()
@@ -684,6 +699,7 @@ func _build_ui() -> void:
 	hardware_panel=preload("res://scripts/hardware_panel.gd").new(); hardware_panel.game=self
 	construction_button.reparent(side)
 	construction_button.hide()
+	fire_alert_button.reparent(side)
 	flood_alert_button.reparent(side)
 	flood_alert_button.hide()
 
@@ -780,6 +796,9 @@ func _build_ui() -> void:
 	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
 	airlock_panel.game=self
 	preview_box.add_child(airlock_panel)
+	var work_panel=preload("res://scripts/crew_work_panel.gd").new()
+	work_panel.game=self
+	preview_box.add_child(work_panel)
 
 	side.add_child(hardware_panel)
 
@@ -1367,7 +1386,7 @@ func _toggle_inspected_room() -> void:
 func _toggle_wreck_work(cell: Vector2i) -> void:
 	if Companions.is_site(self,cell):
 		Companions.toggle(self,cell);return
-	if not running or not WreckField.blocks(wrecks,cell):
+	if not running or not WreckField.blocks(wrecks,cell) or not WreckField.visible(wrecks,cell):
 		return
 	var wreck: Dictionary = wrecks[cell]
 	if not wreck.active and wreck.kind not in ["cryo","charging"] and not drone_fleet.has_worker("mining" if wreck.kind=="basalt" else "salvage",placed_rooms):
@@ -1381,7 +1400,7 @@ func _toggle_wreck_work(cell: Vector2i) -> void:
 			wreck.paid = true
 	if wreck.active:
 		wreck.active = false
-	elif WreckField.reachable(occupied,cell) and not WreckField.busy(wrecks,cell):
+	elif WreckField.reachable(occupied,cell,wrecks) and not WreckField.busy(wrecks,cell):
 		wreck.active = true
 	else:
 		return
@@ -1392,7 +1411,9 @@ func _update_wreck_clearance(delta: float) -> void:
 	if not hardware.power or hardware.doors: return
 	if not running or paused:
 		return
-	var working: Dictionary = _simulate_room_economy().working_cells
+	# Bay operation was paid for at the cycle boundary. A next-cycle forecast
+	# must not revoke that service after the reserve/fuel has been consumed.
+	var working: Dictionary = powered_room_cells
 	var built: Array = drone_fleet.advance(delta,placed_rooms,working,wrecks,int(resources.get("power",0)),true)
 	if drone_fleet.power_spent > 0:
 		_apply_delta({"power":-drone_fleet.power_spent})
@@ -1440,13 +1461,13 @@ func _refresh_wreck_inspector(cell: Vector2i) -> void:
 		_refresh_rock_inspector(cell)
 		return
 	var fraction := float(wreck.progress)/WreckField.DURATION
-	var accessible := WreckField.reachable(occupied,cell)
+	var accessible := WreckField.reachable(occupied,cell,wrecks)
 	var busy := WreckField.busy(wrecks,cell)
 	preview_name_label.text = WreckField.NAMES[wreck.kind]
 	preview_name_label.add_theme_color_override("font_color",Color("c39861"))
 	preview_tags_label.text = "WRECK / 1 CELL / BLOCKS CONSTRUCTION"
 	preview_texture.texture = grid_view.wreck_view.texture(wreck.kind,"wreck")
-	var state: String = drone_fleet.clearance_status(cell,_simulate_room_economy().working_cells) if wreck.active and not paused else "PAUSED" if wreck.progress>0 or wreck.active else "AWAITING DISMANTLING"
+	var state: String = drone_fleet.clearance_status(cell,powered_room_cells) if wreck.active and not paused else "PAUSED" if wreck.progress>0 or wreck.active else "AWAITING DISMANTLING"
 	var has_bay: bool = drone_fleet.has_worker("salvage",placed_rooms)
 	var note := "A Salvage Drone Bay dispatches the cutter. Work begins after arrival."
 	if not has_bay:
@@ -1495,19 +1516,19 @@ func _refresh_cryo_inspector(cell: Vector2i) -> void:
 
 func _refresh_rock_inspector(cell: Vector2i) -> void:
 	var rock: Dictionary = wrecks[cell]
-	var accessible := WreckField.reachable(occupied,cell)
+	var accessible := WreckField.reachable(occupied,cell,wrecks)
 	var busy := WreckField.busy(wrecks,cell)
-	preview_name_label.text = "Basalt Outcrop"
+	preview_name_label.text = "Mountain Section"
 	preview_name_label.add_theme_color_override("font_color",Color("a7b5ab"))
 	preview_tags_label.text = "ROCK / 1 CELL / BLOCKS CONSTRUCTION"
 	preview_texture.texture = grid_view.rock_view.texture()
-	var state: String = drone_fleet.clearance_status(cell,_simulate_room_economy().working_cells) if rock.active and not paused else "PAUSED" if rock.progress>0 or rock.active else "AWAITING EXCAVATION"
+	var state: String = drone_fleet.clearance_status(cell,powered_room_cells) if rock.active and not paused else "PAUSED" if rock.progress>0 or rock.active else "AWAITING EXCAVATION"
 	var has_bay: bool = drone_fleet.has_worker("mining",placed_rooms)
 	var note := "A Mining Drone Bay dispatches the drill. Work begins after arrival."
 	if not has_bay:
 		note = "Requires a Mining Drone Bay."
 	elif not accessible:
-		note = "Extend the station to a neighboring cell to reach this rock."
+		note = "Cut an exposed edge first. The drill needs an open route from its bay."
 	elif busy:
 		note = "The salvage rig is assigned elsewhere. Pause that job first."
 	inspector_label.text = "%s\n\nProgress: %d%% / %.0f seconds remaining\n\n%s\n\nBreak and remove this section before building here. Neighboring rock remains in place. Excavation recovers 4 Metal, delivered on docking. The drill returns to recharge from station Power; cuts remain between trips. Normal room costs apply after clearance.\n\n[color=#698782]The ocean placed this here. It neglected to file a permit.[/color]" % [state,roundi(float(rock.progress)/WreckField.DURATION*100),WreckField.DURATION-float(rock.progress),note]
@@ -1853,6 +1874,8 @@ func _start_reboot_cycle() -> void:
 	occupied.clear()
 	placed_rooms.clear()
 	wrecks = WreckField.initial()
+	surveyed_water.clear()
+	grid_view.underwater_visibility.reset()
 	architect_run=Architects.begin(self)
 	Companions.begin(self)
 	for resource_id in Architects.starting_supplies(architect_run.selected):
@@ -1945,8 +1968,8 @@ func _start_reboot_cycle() -> void:
 func _draw_hand() -> void:
 	hand.clear()
 	_refill_hand()
-	selected_card_id = hand[0] if not hand.is_empty() else ""
-	selected_rotation = _default_card_rotation(selected_card_id)
+	selected_card_id = ""
+	selected_rotation = 0
 
 func _build_run_deck() -> void:
 	draw_pile = RunManagerScript.build_deck(selected_doctrines, meta.unlocked_room_ids)
@@ -2022,6 +2045,7 @@ func _on_grid_clicked(cell: Vector2i) -> void:
 		_refresh_all()
 		return
 	if WreckField.blocks(wrecks,cell):
+		if not WreckField.visible(wrecks,cell): return
 		selected_card_id = ""
 		selected_room_cell = cell
 		last_preview_room_id = ""
@@ -2082,6 +2106,7 @@ func get_placement_problem(id: String, cell: Vector2i) -> String:
 	if occupied.has(cell):
 		return "cell already contains %s." % occupied[cell]["display_name"]
 	if WreckField.blocks(wrecks,cell):
+		if not WreckField.visible(wrecks,cell): return "unexplored mountain interior."
 		return "rock occupies this cell. Select it to break and clear." if wrecks[cell].kind == "basalt" else "wreckage occupies this cell. Select it to dismantle and salvage."
 	var room := RoomDatabaseScript.get_room(id)
 	if room.is_empty():
@@ -2146,6 +2171,7 @@ func _advance_cycle() -> void:
 		return
 	cycle += 1
 	last_cycle_delta = _apply_room_economy()
+	preload("res://scripts/room_fire.gd").cycle(self)
 	preload("res://scripts/transmission_archive.gd").survey_receivers(self)
 	preload("res://scripts/listening_post.gd").tick(self)
 	preload("res://scripts/local_incidents.gd").seed(self)
@@ -2195,6 +2221,9 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 		if not hardware.pumps and int(room.get("production",{}).get("water",0))>0:
 			offline[cell]="PUMPS OFF"
 			continue
+		if preload("res://scripts/room_fire.gd").burning(room):
+			offline[cell] = "FIRE"
+			continue
 		if room.get("suspended", false):
 			offline[cell] = "SUSPENDED"
 			continue
@@ -2227,6 +2256,9 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 		if not hardware.pumps and int(room.get("production",{}).get("water",0))>0:
 			offline[cell]="PUMPS OFF"
 			continue
+		if preload("res://scripts/room_fire.gd").burning(room):
+			offline[cell] = "FIRE"
+			continue
 		if room.get("suspended", false):
 			offline[cell] = "SUSPENDED"
 			continue
@@ -2255,6 +2287,9 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 			continue
 		if not hardware.pumps and int(room.get("production",{}).get("water",0))>0:
 			offline[cell]="PUMPS OFF"
+			continue
+		if preload("res://scripts/room_fire.gd").burning(room):
+			offline[cell] = "FIRE"
 			continue
 		if room.get("suspended", false):
 			offline[cell] = "SUSPENDED"
@@ -2301,6 +2336,7 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 	var used := generation + maxi(reserve_start, 0) - int(input_budget["power"])
 	var final_power := clampi(int(input_budget["power"]) + int(delta.get("power", 0)), 0, _get_power_capacity())
 	delta["power"] = final_power - reserve_start
+	_add_to_delta(delta,preload("res://scripts/crew_primary_work.gd").bonuses(self,working_cells),1)
 	return {"delta": delta, "working_cells": working_cells, "offline": offline, "generator_outputs":generator_outputs,
 		"power_failures": power_failures, "links": links, "generation": generation,
 		"power_used": used, "added_crew": added_crew}
@@ -2310,8 +2346,16 @@ func _turbine_intake_cell(room: Dictionary) -> Vector2i:
 	return Vector2i(room.get("pos", Vector2i.ZERO)) + offsets[posmod(int(room.get("rotation", 0)), 4)]
 
 func _turbine_intake_clear(room: Dictionary) -> bool:
+	return _turbine_intake_problem(room).is_empty()
+
+func _turbine_intake_problem(room: Dictionary) -> String:
 	var intake := _turbine_intake_cell(room)
-	return intake.x >= 0 and intake.y >= 0 and intake.x < GRID_SIZE and intake.y < GRID_SIZE and not occupied.has(intake) and not WreckField.blocks(wrecks, intake) and not drone_fleet.Sites.blocks(drone_fleet.sites, intake) and not drone_fleet.reserved(intake)
+	if intake.x < 0 or intake.y < 0 or intake.x >= GRID_SIZE or intake.y >= GRID_SIZE: return "MAP EDGE"
+	if occupied.has(intake): return "ROOM"
+	if WreckField.blocks(wrecks, intake): return "ROCK" if wrecks[intake].get("kind", "") == "basalt" else "WRECK"
+	if drone_fleet.Sites.blocks(drone_fleet.sites, intake): return "RESOURCE DEPOSIT"
+	if drone_fleet.reserved(intake): return "QUEUED CONSTRUCTION"
+	return ""
 
 func _apply_room_economy() -> Dictionary:
 	var result := _simulate_room_economy()
@@ -3541,7 +3585,7 @@ func _refresh_cards() -> void:
 		reroll_button.text = "REROLL HAND · %d" % rerolls_remaining
 		if rerolls_remaining < REROLL_RECOVERY_CAP:
 			reroll_button.text += "\n+1 IN %dC" % (REROLL_RECOVERY_CYCLES - reroll_recovery_progress)
-		reroll_button.tooltip_text = "Rebuilds one reroll every %d cycles while below %d charges. Directive rewards may exceed this cap." % [REROLL_RECOVERY_CYCLES, REROLL_RECOVERY_CAP]
+		reroll_button.tooltip_text = "Rebuilds one reroll every %d cycles while below %d charges." % [REROLL_RECOVERY_CYCLES, REROLL_RECOVERY_CAP]
 		reroll_button.disabled = rerolls_remaining <= 0 or not running
 	for child in hand_box.get_children():
 		child.queue_free()
@@ -3935,7 +3979,7 @@ func _discard_all_cards() -> void:
 	_refresh_all()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_F8:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_F9 and not _gameplay_input_blocked():
 		preload("res://scripts/room_layout_editor.gd").open(self)
 		get_viewport().set_input_as_handled()
 		return
@@ -4098,6 +4142,7 @@ func _update_test_walker(delta: float) -> void:
 	if grid_view == null:
 		return
 	preload("res://scripts/room_flooding.gd").advance(self,delta)
+	preload("res://scripts/room_fire.gd").advance(self,delta)
 	preload("res://scripts/crew_construction.gd").reconcile(self)
 	var previous_status := _walker_status()
 	var previous_veld_status := _veld_status()
@@ -4105,7 +4150,9 @@ func _update_test_walker(delta: float) -> void:
 	for actor in [bill_npc, veld_npc, branforth_npc, marsh_npc]:
 		var architect_id := "bill" if actor==bill_npc else "veld" if actor==veld_npc else "marsh" if actor==marsh_npc else "branforth"
 		if not Architects.present(self,architect_id): continue
+		preload("res://scripts/fire_safety.gd").refresh(self,actor)
 		if not actor.expedition.is_empty():
+			actor.advance_needs(self,delta)
 			preload("res://scripts/crew_expedition.gd").advance(self,actor,delta)
 			continue
 		actor.avoidance_position = Vector2.INF
@@ -4116,6 +4163,7 @@ func _update_test_walker(delta: float) -> void:
 		preload("res://scripts/airlock_service.gd").check_service(self,actor)
 		actor.hardware_doors_locked=hardware.doors
 		actor.update(self, delta)
+	preload("res://scripts/crew_social.gd").advance(self,delta)
 	Companions.advance(self,delta)
 	if delta > 0:
 		preload("res://scripts/crew_passage.gd").update(Companions.all_actors(self))
@@ -4410,7 +4458,7 @@ func _refresh_inspector_contents() -> void:
 			preview_name_label.text = blueprint.display_name
 			preview_texture.texture = card_textures.get(order.id)
 			preview_tags_label.text = "CONSTRUCTION / MATERIALS PAID"
-			var build_status: String=drone_fleet.construction_status(order_cell,_simulate_room_economy().working_cells)
+			var build_status: String=drone_fleet.construction_status(order_cell,powered_room_cells)
 			if order.has("builder"):
 				var builder=get(str(order.builder)+"_npc")
 				if builder.state!="weld": build_status=Architects.NAMES[order.builder]+" / "+str(builder.activity)
@@ -4483,6 +4531,8 @@ func _refresh_inspector_contents() -> void:
 		preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(operation))
 		var forecast := _simulate_room_economy(true, cycle + 1)
 		preview_lines.append("[color=#9fdfdc]NEXT CYCLE FORECAST // %s[/color]" % str(forecast.offline.get(room.pos, "INPUTS AVAILABLE")))
+		if room.id == "current_turbine":
+			preview_lines.append(preload("res://scripts/station_ui_insights.gd").turbine_intake(self,room))
 		var next_reason := str(forecast.offline.get(room.pos,""))
 		if not next_reason.is_empty() and next_reason != operation:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(next_reason))
@@ -4512,7 +4562,10 @@ func _refresh_inspector_contents() -> void:
 	if not previewing_card and room.get("id","") in ["pressure_control","isolation_vault"]:preview_lines.append(preload("res://scripts/rare_branch_control.gd").inspector(self,room))
 	if not previewing_card and room.get("local_incident",false) and float(room.get("hull_crack",0))<=0:preview_lines.append("[color=#e6aa72]LOCAL CONTAINMENT FAULT[/color]\n[url=repair:%d:%d]Repair containment — 2 Metal[/url]" % [room.pos.x,room.pos.y])
 	if room.get("tags",[]).has("containment_risk"):preview_lines.append("Containment fault risk: a functioning risk room can develop a local fault every 8 cycles. Uncontained faults spread through connected doors and damage Integrity. Repair costs 2 Metal per room.")
-	if not previewing_card: preview_lines.push_front(preload("res://scripts/room_flooding.gd").inspector(self,room))
+	if not previewing_card:
+		preview_lines.push_front(preload("res://scripts/room_flooding.gd").inspector(self,room))
+		var fire_info := preload("res://scripts/room_fire.gd").inspector(self,room)
+		if not fire_info.is_empty(): preview_lines.push_front(fire_info)
 	inspector_label.text = _join_strings(preview_lines, "\n")
 	inspector_focus_button.disabled = previewing_card or not room.has("pos")
 	inspector_focus_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
@@ -4731,7 +4784,7 @@ func _prettify_id(id: String) -> String:
 	return id.replace("_", " ").capitalize()
 
 func _refresh_routing() -> void:
-	var lines := ["Power Routing", "Reserve %d/%d | Used %d/%d" % [resources["power"], _get_power_capacity(), power_used, power_generated]]
+	var lines := ["Power Routing", "Reserve %d/%d | Last cycle: %d generated, %d used" % [resources["power"], _get_power_capacity(), power_generated, power_used]]
 	for room in _rooms_by_power_priority():
 		var need := int(room.get("consumption", {}).get("power", 0))
 		if need <= 0:
@@ -4760,8 +4813,7 @@ func _refresh_placement_status() -> void:
 		placement_label.text = "BLOCKED: %s\n%s" % [room["display_name"], problem]
 	if selected_card_id == "current_turbine":
 		var turbine_preview := {"pos":hover_cell,"rotation":selected_rotation}
-		var intake_names := ["NORTH","EAST","SOUTH","WEST"]
-		placement_label.text += "\nINTAKE %s: %s" % [intake_names[posmod(selected_rotation,4)], "CLEAR" if _turbine_intake_clear(turbine_preview) else "BLOCKED — NO POWER"]
+		placement_label.text += "\n" + preload("res://scripts/station_ui_insights.gd").turbine_intake(self,turbine_preview)
 	placement_label.text += "\n" + _placement_connections(selected_card_id, hover_cell)
 	placement_label.tooltip_text = _blueprint_decision(room)
 	if is_instance_valid(placement_feedback):
@@ -4840,16 +4892,18 @@ func _placement_connections(room_id: String, cell: Vector2i) -> String:
 
 func _inspector_action(value: Variant) -> void:
 	var link := str(value)
-	if link.begins_with("floodcancel:") or link.begins_with("floodassign:"):
+	if link=="fire-sprinklers":
+		preload("res://scripts/station_hardware.gd").set_control(self,"sprinklers",true)
+	elif link.begins_with("floodcancel:") or link.begins_with("floodassign:"):
 		var parts := link.split(":")
 		var cell := Vector2i(int(parts[1]),int(parts[2]))
 		if parts[0]=="floodcancel": preload("res://scripts/hull_repair.gd").cancel(self,cell)
 		elif parts.size()==4: preload("res://scripts/hull_repair.gd").reassign(self,cell,parts[3])
 		_refresh_all()
-	elif link.begins_with("floodrepair:"):
+	elif link.begins_with("floodrepair:") or link.begins_with("floodpatch:"):
 		var parts := link.split(":")
 		var cell := Vector2i(int(parts[1]),int(parts[2]))
-		preload("res://scripts/hull_repair.gd").request(self,cell)
+		preload("res://scripts/hull_repair.gd").request(self,cell,link.begins_with("floodpatch:"))
 		_refresh_all()
 	elif link.begins_with("resource:"):
 		_open_resource_details(link.trim_prefix("resource:"),inspector_focus_button)
@@ -4992,6 +5046,7 @@ func _refresh_diagnostics_page() -> void:
 			var forecast := _simulate_room_economy(true, cycle + 1)
 			var net := _project_cycle_delta(forecast)
 			if inspected_resource.is_empty() or inspected_resource == "power":
+				lines.append("\n" + preload("res://scripts/station_ui_insights.gd").power_balance(self,forecast) + "\n")
 				lines.append("\n" + preload("res://scripts/station_ui_insights.gd").power_demand(self) + "\n")
 			if not inspected_resource.is_empty():
 				lines.append("[url=all_resources]SHOW ALL RESERVES[/url]\n")

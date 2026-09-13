@@ -1,4 +1,18 @@
 extends RefCounted
+const HULL_ATLAS_PATH := "res://assets/hull-damage-v1/hull-96.png"
+static var hull_atlas: Texture2D
+static var hull_atlas_attempted := false
+
+static func draw_hull_decal(canvas,origin: Vector2,scale: float,index: int) -> bool:
+	if not hull_atlas_attempted:
+		hull_atlas_attempted=true
+		var picture := Image.new()
+		if FileAccess.file_exists(HULL_ATLAS_PATH) and picture.load_png_from_buffer(FileAccess.get_file_as_bytes(HULL_ATLAS_PATH))==OK and picture.get_size()==Vector2i(288,192):
+			hull_atlas=ImageTexture.create_from_image(picture)
+	if hull_atlas==null: return false
+	canvas.draw_texture_rect_region(hull_atlas,Rect2(origin+Vector2(-24,-19)*scale,Vector2(48,48)*scale),Rect2(Vector2(index%3,index/3)*96,Vector2(96,96)))
+	return true
+
 const SurfaceShader = preload("res://scripts/flood_surface.gdshader")
 const SubmersionShader = preload("res://scripts/flood_submersion.gdshader")
 const Corridor = preload("res://rooms/underwater/corridor_geometry.gd")
@@ -82,7 +96,7 @@ static func crew_waterline(foot_y: float,water: float,swimming: bool) -> float:
 
 static func draw_crew(canvas,texture: Texture2D,rect: Rect2,foot: Vector2,water: float,clock: float) -> void:
 	if water<=0.001:
-		canvas.draw_texture_rect(texture,rect,false)
+		canvas.draw_texture_rect(texture,rect,false,texture.get_meta("cryo_tint",Color.WHITE))
 		return
 	var swimming: bool=texture.get_meta("crew_water_pose",false)
 	if texture.get_meta("companion_surface",false):
@@ -178,26 +192,41 @@ static func draw_door_currents(canvas,game,room: Dictionary,center: Vector2,scal
 			var alpha := sin(phase*PI)*minf(0.5,absf(difference)*2)*aperture
 			canvas.draw_polyline(PackedVector2Array([point-flow*2*scale-across*5*scale,point,point-flow*2*scale+across*5*scale]),Color(0.56,0.83,0.81,alpha),maxf(0.7,scale),true)
 
-static func draw_leak(canvas,origin: Vector2,scale: float,severity: float,water: float,time: float) -> void:
+static func draw_leak(canvas,origin: Vector2,scale: float,severity: float,water: float,time: float,patched := false) -> void:
 	if severity<=0: return
-	# Stable fractured metal, with a narrow bright bevel against a dark opening.
-	var fracture := PackedVector2Array()
-	var shape: Array
-	if severity<=0.35:
-		shape=[Vector2(-3,-3),Vector2(0,1),Vector2(-2,5),Vector2(0,9)]
-	elif severity<=0.7:
-		shape=[Vector2(-13,0),Vector2(-7,2),Vector2(-3,-1),Vector2(2,4),Vector2(0,9),Vector2(9,7),Vector2(14,9)]
-	else:
-		shape=[Vector2(-8,-5),Vector2(-3,-2),Vector2(-5,2),Vector2(1,5),Vector2(-2,10),Vector2(3,14)]
-		canvas.draw_colored_polygon(PackedVector2Array([origin+Vector2(-6,0)*scale,origin+Vector2(4,3)*scale,origin+Vector2(5,10)*scale,origin+Vector2(-3,12)*scale]),Color(0.025,0.05,0.06,0.95))
-	for point in shape:
-		fracture.append(origin+point*scale)
-	canvas.draw_polyline(fracture,Color(0.035,0.065,0.075,0.95),maxf(1,scale*(1.1+severity*2.1)),true)
-	var bevel := PackedVector2Array()
-	for point in fracture: bevel.append(point+Vector2(1,0)*scale)
-	canvas.draw_polyline(bevel,Color(0.65,0.72,0.68,0.65),maxf(0.7,scale*0.7),true)
-	canvas.draw_polyline(PackedVector2Array([origin+Vector2(-5,2)*scale,origin+Vector2(-11,5)*scale,origin+Vector2(-13,3)*scale]),Color(0.05,0.09,0.10,0.85),maxf(0.8,scale),true)
+	var authored := draw_hull_decal(canvas,origin,scale,3 if patched else (0 if severity<=0.35 else 1 if severity<=0.7 else 2))
+	if not authored:
+		# Stable fractured metal, with a narrow bright bevel against a dark opening.
+		var fracture := PackedVector2Array()
+		var shape: Array
+		if severity<=0.35:
+			shape=[Vector2(-3,-3),Vector2(0,1),Vector2(-2,5),Vector2(0,9)]
+		elif severity<=0.7:
+			shape=[Vector2(-13,0),Vector2(-7,2),Vector2(-3,-1),Vector2(2,4),Vector2(0,9),Vector2(9,7),Vector2(14,9)]
+		else:
+			shape=[Vector2(-8,-5),Vector2(-3,-2),Vector2(-5,2),Vector2(1,5),Vector2(-2,10),Vector2(3,14)]
+			canvas.draw_colored_polygon(PackedVector2Array([origin+Vector2(-6,0)*scale,origin+Vector2(4,3)*scale,origin+Vector2(5,10)*scale,origin+Vector2(-3,12)*scale]),Color(0.025,0.05,0.06,0.95))
+		for point in shape:
+			fracture.append(origin+point*scale)
+		canvas.draw_polyline(fracture,Color(0.035,0.065,0.075,0.95),maxf(1,scale*(1.1+severity*2.1)),true)
+		var bevel := PackedVector2Array()
+		for point in fracture: bevel.append(point+Vector2(1,0)*scale)
+		canvas.draw_polyline(bevel,Color(0.65,0.72,0.68,0.65),maxf(0.7,scale*0.7),true)
+		canvas.draw_polyline(PackedVector2Array([origin+Vector2(-5,2)*scale,origin+Vector2(-11,5)*scale,origin+Vector2(-13,3)*scale]),Color(0.05,0.09,0.10,0.85),maxf(0.8,scale),true)
 	var mouth := origin+Vector2(0,9)*scale
+	if patched and not authored:
+		canvas.draw_rect(Rect2(origin+Vector2(-16,-8)*scale,Vector2(32,28)*scale),Color("667572"))
+		canvas.draw_rect(Rect2(origin+Vector2(-16,-8)*scale,Vector2(32,28)*scale),Color("a1aba0"),false,maxf(1,scale))
+		for bolt in [Vector2(-12,-4),Vector2(12,-4),Vector2(-12,16),Vector2(12,16)]:
+			canvas.draw_circle(origin+bolt*scale,maxf(1,scale*1.5),Color("263e42"))
+	if patched: mouth=origin+Vector2(0,21)*scale
+	if patched or severity<=0.35:
+		canvas.draw_line(mouth,mouth+Vector2(0,12)*scale,Color(0.22,0.48,0.49,0.35),maxf(1,scale*3))
+		var phase := fposmod(time*(0.45 if patched else 0.8),1.0)
+		if phase<0.65:
+			var drop := mouth+Vector2(0,phase*phase*65)*scale
+			canvas.draw_line(drop,drop+Vector2(0,3)*scale,Color(0.68,0.86,0.84,0.7),maxf(0.7,scale),true)
+		return
 	var reach := (19+severity*26)*(1-water*0.30)
 	var impact := mouth+Vector2(6,reach)*scale
 	# A tapered curved stream and broken highlights read as pressurized water.
@@ -253,6 +282,10 @@ static func draw_front(canvas,game,rooms: Array,size: float) -> void:
 			and not grid.door_wet_history.has([room.pos,room.pos+Vector2i.DOWN])
 		if not dry_doors: draw_door_currents(canvas,game,room,center,scale,time)
 		draw_repair_torch(canvas,game,room,center,scale,time)
+		if room.id not in ["corridor","corner","tee_corridor"]:
+			if float(room.get("hull_crack",0))<=0 and room.get("hull_welded",false):
+				draw_hull_decal(canvas,center+Vector2(-70,-184)*scale,scale,4)
+			draw_leak(canvas,center+Vector2(-70,-184)*scale,scale,float(room.get("hull_crack",0)),water,time,bool(room.get("hull_patched",false)))
 		if water<=0.001: continue
 		if room.id not in ["corridor","corner","tee_corridor"]:
 			# Visible water depth on the front cutaway, tied to the same physical height.
@@ -264,7 +297,6 @@ static func draw_front(canvas,game,rooms: Array,size: float) -> void:
 				var x := -180.0+i*9.0
 				surface.append(Vector2(center.x+x*scale,bottom-height+sin(x*0.085+time*1.4)*scale))
 			canvas.draw_polyline(surface,Color(0.48,0.75,0.70,0.65),maxf(1,scale*1.2),true)
-			draw_leak(canvas,center+Vector2(-70,-184)*scale,scale,float(room.get("hull_crack",0)),water,time)
 		var gauge := Rect2(center+Vector2(-175,-170)*scale,Vector2(4,72)*scale)
 		if room.id in ["corridor","corner","tee_corridor"]: gauge=Rect2(center+Vector2(-24,-24)*scale,Vector2(4,48)*scale)
 		canvas.draw_rect(gauge,Color("0a2027"))

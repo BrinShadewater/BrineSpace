@@ -148,8 +148,14 @@ func choose_personality(main) -> void:
 func update(main, delta: float) -> void:
 	if not active or not main.running or main.paused or delta<=0: return
 	if water.advance(self,main,delta):return
+	preload("res://scripts/fire_safety.gd").refresh(main,self)
+	if topology(main)!=signature: rebuild(main)
 	var old_state: String=state
 	var old_direction: String=direction
+	if preload("res://scripts/fire_safety.gd").advance(main,self,delta):
+		behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
+		if water.mode=="dry":locomotion.advance(self,old_state,old_direction,delta)
+		return
 	_advance_companion(main,delta)
 	if water.mode=="dry":locomotion.advance(self,old_state,old_direction,delta)
 	else:activity="swimming" if identity=="margot" else "floating nearby"

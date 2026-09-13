@@ -1,16 +1,32 @@
 {
   "_comment": "Subsystem groups and lane overrides for tools/run_tests.py. Lanes are auto-detected from test source; add an override only when the heuristic is wrong.",
   "subsystems": {
+    "performance-diagnostics": [
+      "test_performance_monitor",
+      "test_performance_reporting"
+    ],
+    "owner-gameplay-playtest": [
+      "test_power_playtest_regressions",
+      "test_studio_character_scale",
+      "test_title_checkpoint_layout",
+      "test_brine_startup",
+      "test_airlock_exterior_hatch",
+      "test_decorative_cable_removal"
+    ],
     "crew": [
+      "test_airlock_clearance",
       "test_airlock",
       "test_architect_recovery",
       "test_architect_selection",
       "test_bill_npc",
+      "test_bill_complete_pack",
+      "test_crew_complete_packs",
       "test_branforth",
       "test_branforth_crew",
       "test_branforth_pack",
       "test_character_mirror",
       "test_crew_comms",
+      "test_crew_social",
       "test_crew_construction",
       "test_crew_death_pack",
       "test_crew_death_save",
@@ -19,10 +35,21 @@
       "test_crew_medium",
       "test_crew_polish",
       "test_crew_room_activity",
+      "test_crew_standing_height",
       "test_crew_swim_packs",
       "test_dr_veld",
       "test_npc_movement_trace",
-      "test_npc_segment_clearance"
+      "test_npc_segment_clearance",
+      "test_airlock_actor_visibility",
+      "test_diver_mining",
+      "test_crew_primary_work"
+    ],
+    "underwater": [
+      "test_underwater_foundation",
+      "test_underwater_shader",
+      "test_rock_clearance",
+      "test_drone_fleet",
+      "test_station_hardware"
     ],
     "gameplay": [
       "test_animation_expansion",
@@ -56,6 +83,7 @@
       "test_observation_room",
       "test_polish_gameplay",
       "test_power_expansion",
+      "test_power_playtest_regressions",
       "test_production_ten_connections",
       "test_production_ten_walker_paths",
       "test_rare_operating_effects",
@@ -113,6 +141,7 @@
       "test_xeno_registration"
     ],
     "render-perf": [
+      "test_live_surface_retention",
       "test_batch_two_resource_uids",
       "test_brine_batch_parity",
       "test_camera_pixel_stability",
@@ -144,7 +173,8 @@
       "test_navigation_badges",
       "test_overlay_text",
       "test_power_demand_ui",
-      "test_title_screen"
+      "test_title_screen",
+      "test_title_checkpoint_layout"
     ],
     "save": [
       "test_bug_report",
@@ -159,6 +189,12 @@
       "test_companions",
       "test_marsh_battery",
       "test_marsh_unlock"
+    ],
+    "fire": [
+      "test_fire_assets",
+      "test_room_fire",
+      "test_fire_gameplay",
+      "test_hazard_chain"
     ],
     "flood-water": [
       "test_companion_water",
@@ -182,6 +218,7 @@
       "test_preferred_room_layouts",
       "test_room_layout_editor",
       "test_room_studio_usability",
+      "test_studio_character_scale",
       "test_simple_room_studio",
       "test_studio_owner_notes"
     ],
@@ -190,6 +227,26 @@
     ]
   },
   "lanes": {
+    "playtest_human_crew_candidate": {
+      "lane": "native",
+      "reason": "Checks and renders all candidate human crew frames; rejects headless readback."
+    },
+    "test_derelict_material": {
+      "lane": "native",
+      "reason": "Checks actual shader pixels, alpha, translation and restored parity."
+    },
+    "playtest_bill_walk_candidate": {
+      "lane": "native",
+      "reason": "selected walk versus independently rebuilt reference, through native distance-driven playback"
+    },
+    "playtest_major_bill": {
+      "lane": "native",
+      "reason": "inherits native room capture helpers"
+    },
+    "playtest_bill_complete_art": {
+      "lane": "native",
+      "reason": "captures every selected Bill frame on the real renderer"
+    },
     "test_bug_report": {
       "lane": "skip",
       "reason": "requires an isolated user-data harness project (see its header); running it in-place writes the real user://brine_save.json"
@@ -218,6 +275,14 @@
     "test_layout_performance_guards": {
       "lane": "native",
       "reason": "rejects headless with exit 2 by design; runs only on a real display"
+    },
+    "test_airlock_actor_visibility": {
+      "lane": "native",
+      "reason": "Compares actual chamber renders with and without a crew sprite in four rotations."
+    },
+    "playtest_crew_walk": {
+      "lane": "native",
+      "reason": "Selected source/station-scale gait rendering and distance-frame parity"
     }
   }
 }

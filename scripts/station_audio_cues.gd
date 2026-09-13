@@ -12,6 +12,7 @@ static func get_stream(kind: String) -> AudioStreamWAV:
 	if kind == "repair": duration = 0.6
 	if kind in ["all_clear","crew_dispatch","crew_awake"]: duration = {"all_clear":0.7,"crew_dispatch":0.4,"crew_awake":1.2}[kind]
 	if kind in ["airlock_pressure","airlock_release","airlock_ready","ui_recall","crew_return"]: duration = {"airlock_pressure":1.5,"airlock_release":0.45,"airlock_ready":0.4,"ui_recall":0.45,"crew_return":0.6}[kind]
+	if kind in ["leak_drip","sprinkler_hiss","electrical_crackle","crack_creak"]: duration={"leak_drip":0.65,"sprinkler_hiss":1.5,"electrical_crackle":0.55,"crack_creak":1.7}[kind]
 	var frames := int(duration*RATE)
 	var data := PackedByteArray()
 	data.resize(frames*2)
@@ -25,6 +26,15 @@ static func get_stream(kind: String) -> AudioStreamWAV:
 		noise = lerpf(noise,raw_noise,0.035)
 		var sample := 0.0
 		match kind:
+			"leak_drip":
+				sample=sin(TAU*(880*t-260*t*t))*exp(-t*18.0)*0.35+noise*exp(-t*22.0)*0.3
+			"sprinkler_hiss":
+				sample=(raw_noise*0.16+noise*0.7)*minf(1,t/0.08)*minf(1,(duration-t)/0.12)*(0.85+0.15*sin(TAU*3*t))
+			"electrical_crackle":
+				var burst := pow(maxf(0,sin(TAU*19*t+sin(TAU*7*t))),12)
+				sample=(raw_noise*0.48+sin(TAU*130*t)*0.04)*burst*sin(PI*u)
+			"crack_creak":
+				sample=(sin(TAU*(82*t-13*t*t))*0.13+sin(TAU*137*t+noise*8)*0.07+noise*0.6)*sin(PI*u)
 			"companion_chirp":
 				var note := t if t<0.20 else t-0.23
 				if note>=0:sample=sin(TAU*(720.0 if t<0.20 else 960.0)*note)*sin(PI*clampf(note/0.19,0,1))*0.18

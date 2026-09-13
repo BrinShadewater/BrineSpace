@@ -7,6 +7,7 @@ class Preview extends Node2D:
 	var foundation: Texture2D
 	var q:=0
 	var compact:=false
+	var scale_actor # Optional review-only production crew; never baked into cards.
 	func _draw() -> void:
 		var anchor:=Vector2(256,290) if compact else Vector2(256,228)
 		var zoom:=1.06 if compact else 0.84
@@ -17,9 +18,14 @@ class Preview extends Node2D:
 		room.configure_embedded(q,[],false,0.0)
 		room.set_meta("raised_north_visible",true)
 		room.render_into(self,anchor,zoom,true)
+		if scale_actor!=null:
+			# render_into applies authored layouts; place against that final geometry.
+			scale_actor.rebuild(room,id,q)
+			room.external_actors=scale_actor.members()
 		draw_set_transform(anchor,0,Vector2.ONE*zoom)
 		preload("res://rooms/whole-room/north_wall.gd").draw_into(self,id,Vector2i.ZERO,false,false,room)
 		room.render_into(self,anchor,zoom,false,false)
+		if scale_actor!=null: room.external_actors.clear()
 func _init() -> void: call_deferred("run")
 func run() -> void:
 	var output_dir: String="res://assets/rare-directional-v1/cards"

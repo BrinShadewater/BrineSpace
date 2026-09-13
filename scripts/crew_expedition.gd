@@ -43,14 +43,16 @@ static func reason(game,id: String,cell: Vector2i) -> String:
 	if actor.needs_air() and actor.tank_oxygen < 55: return "Refill the helmet tank at the diving locker before dispatch."
 	if actor.helmet_action_active() or not actor.locker_request.is_empty() or not actor.stage.is_empty(): return "Wait for the current crew action."
 	if Cycle.state(game.occupied[cell]).phase != "dry": return "Drain the chamber before dispatch."
-	if not Cycle.exterior_clear(game,game.occupied[cell]): return "Clear the exterior hatch approach."
+	var obstruction:=Cycle.exterior_problem(game,game.occupied[cell])
+	if not obstruction.is_empty(): return obstruction
 	if actor.needs_air() and int(game.resources.oxygen) < OXYGEN_COST: return "Reserve 2 Oxygen for the complete outward and return trip."
 	for other in Architects.IDS:
 		var peer = Architects.actor_for(game,other)
 		if not peer.expedition.is_empty() and peer.expedition.home == cell: return "Airlock reserved by another expedition."
 	return ""
 
-static func dispatch(game,id: String,cell: Vector2i) -> bool:
+static func dispatch(game,id: String,cell: Vector2i,kind := "salvage") -> bool:
+	if kind not in ["mining","salvage"]: return false
 	if not reason(game,id,cell).is_empty(): return false
 	var actor = Architects.actor_for(game,id)
 	actor.rebuild(game)
@@ -75,7 +77,7 @@ static func dispatch(game,id: String,cell: Vector2i) -> bool:
 	candidates.sort_custom(func(x,y): return Vector2(x).distance_squared_to(Vector2(outside)) < Vector2(y).distance_squared_to(Vector2(outside)))
 	for candidate in candidates:
 		var site: Dictionary = game.drone_fleet.sites[candidate]
-		if site.kind != "salvage" or not site.discovered or not site.active or site.units <= 0 or reserved(game,candidate): continue
+		if site.kind != kind or not site.discovered or not site.active or site.units <= 0 or reserved(game,candidate): continue
 		sea = Routes.find_path(outside,candidate,blocked,true)
 		if not sea.is_empty() and (float(sea.size())*384.0+314.0)*2.0/72.0+18.0 <= (actor.tank_oxygen if actor.needs_air() else actor.battery*actor.BATTERY_SECONDS/100.0-30.0):
 			target = candidate
@@ -86,7 +88,7 @@ static func dispatch(game,id: String,cell: Vector2i) -> bool:
 	if actor.needs_air(): game.resources.oxygen -= OXYGEN_COST
 	actor.path.clear()
 	actor.goal = ""
-	actor.expedition = {"phase":"approach","home":cell,"target":target,"route":route,"sea_route":sea_route,"elapsed":0.0,"cargo":{},"recall":false}
+	actor.expedition = {"kind":kind,"phase":"approach","home":cell,"target":target,"route":route,"sea_route":sea_route,"elapsed":0.0,"cargo":{},"recall":false}
 	game.play_station_sound("crew_dispatch",Vector2(cell))
 	game._log("Marsh dispatched without breathing gear. Watch his battery; his pod is the return destination after unloading." if not actor.needs_air() else "%s dispatched. Tank endurance: 60 seconds underwater. Watch the return distance. Cargo is credited only after safe return." % Architects.NAMES[id],false)
 	game._refresh_all()
@@ -128,7 +130,7 @@ static func advance(game,actor,delta: float) -> void:
 			request_recall(game,actor)
 			actor.returning_to_pod=true
 			game._log("Marsh recalled: battery reserve is needed for the return to his charging pod.",true)
-	actor.activity = "expedition / " + e.phase
+	actor.activity = ("mining" if e.get("kind","salvage")=="mining" else "salvage")+" expedition / " + ("extracting minerals" if e.phase=="salvage" and e.get("kind","salvage")=="mining" else str(e.phase))
 	if not game.occupied.has(e.home):
 		actor.activity = "return airlock missing / awaiting recovery"
 		return
@@ -152,7 +154,8 @@ static func advance(game,actor,delta: float) -> void:
 				actor.set_movement_medium("exterior")
 				set_route(e,"leave",PackedVector2Array([point(room,Vector2(0,-384))]))
 		"leave":
-			if move(actor,e,delta): set_route(e,"outbound",e.sea_route.duplicate())
+			if move(actor,e,delta) and Cycle.seal_departure(game,e.home):
+				set_route(e,"outbound",e.sea_route.duplicate())
 		"outbound":
 			if e.recall:
 				var back := PackedVector2Array()
@@ -172,15 +175,16 @@ static func advance(game,actor,delta: float) -> void:
 			if e.elapsed >= 0.52 or e.recall:
 				if not e.recall and game.drone_fleet.sites.has(e.target):
 					var site: Dictionary = game.drone_fleet.sites[e.target]
-					if site.units > 0 and site.active:
+					if site.units > 0 and site.active and site.kind==e.get("kind","salvage"):
 						site.units -= 1
-						e.cargo = game.drone_fleet.Sites.LOADS.salvage.duplicate()
+						e.cargo = game.drone_fleet.Sites.LOADS[e.get("kind","salvage")].duplicate()
 				var back: PackedVector2Array = e.sea_route.duplicate()
 				back.reverse()
 				set_route(e,"return",back)
 		"return":
 			if move(actor,e,delta): set_route(e,"entry",PackedVector2Array([point(room,Vector2(0,-70))]))
 		"entry":
+			Cycle.open_for_return(game,e.home)
 			if Cycle.state(room).phase != "exterior": return
 			if move(actor,e,delta) and Cycle.request(game,e.home,false):
 				e.phase = "drain"
@@ -201,17 +205,19 @@ static func advance(game,actor,delta: float) -> void:
 				if recovered: game.play_station_sound("cargo",Vector2(e.home))
 				else: game.play_station_sound("crew_return",Vector2(e.home))
 				game._clamp_resource_storage()
+				var cargo_label: String="Minerals" if e.get("kind","salvage")=="mining" else "Salvage"
 				actor.expedition.clear()
 				actor.state = "idle"
 				actor.timer = 1.0
 				actor.activity = "returned safely from exterior"
 				if recovered: preload("res://scripts/transmission_archive.gd").recover(game,"survey")
-				game._log("Exterior crew returned through a dry chamber. " + ("Salvage delivered to storage." if recovered else "No cargo recovered."),false)
+				game._log("Exterior crew returned through a dry chamber. " + (cargo_label+" delivered to storage." if recovered else "No cargo recovered."),false)
 				game._refresh_all()
 
 static func valid(e: Variant) -> bool:
 	if not e is Dictionary: return false
 	if e.is_empty(): return true
+	if e.get("kind","salvage") not in ["mining","salvage"]: return false
 	if not PHASES.has(e.get("phase")) or not e.get("recall") is bool: return false
 	for key in ["home","target"]:
 		if not e.get(key) is Vector2i or e[key].x<0 or e[key].y<0 or e[key].x>=40 or e[key].y>=40: return false
@@ -222,7 +228,7 @@ static func valid(e: Variant) -> bool:
 	if not e.get("elapsed") is float or not is_finite(e.elapsed) or e.elapsed<0 or e.elapsed>7: return false
 	if not e.get("cargo") is Dictionary: return false
 	if not e.cargo.is_empty() and not e.phase in ["return","entry","drain","exit","unload"]: return false
-	return e.cargo.is_empty() or e.cargo == {"metal":1,"data":1}
+	return e.cargo.is_empty() or e.cargo == preload("res://scripts/harvest_sites.gd").LOADS[e.get("kind","salvage")]
 
 static func valid_crew_rooms(crew: Variant,rooms: Array) -> bool:
 	if crew == null: return true # Legacy checkpoint without crew simulation.
@@ -240,7 +246,9 @@ static func valid_crew_rooms(crew: Variant,rooms: Array) -> bool:
 				found = true
 				var phase: String = Cycle.state(room).phase
 				if e.phase in ["approach","enter","exit","unload"] and phase != "dry": return false
-				if e.phase in ["leave","outbound","salvage","pickup","return","entry"] and phase != "exterior": return false
+				if e.phase=="leave" and phase!="exterior": return false
+				if e.phase in ["outbound","salvage","pickup","return"] and phase not in ["exterior","sealing_departed","sealed_exterior"]: return false
+				if e.phase=="entry" and phase not in ["exterior","sealing_departed","sealed_exterior","opening_outer"]: return false
 		if not found: return false
 	return true
 

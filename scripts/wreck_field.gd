@@ -14,12 +14,42 @@ static func initial() -> Dictionary:
 	for cell in [Vector2i(17,19),Vector2i(17,20),Vector2i(17,21),Vector2i(16,20),Vector2i(16,21),Vector2i(23,19),Vector2i(23,20),Vector2i(23,21),Vector2i(24,19),Vector2i(19,17),Vector2i(20,17),Vector2i(21,17),Vector2i(20,23),Vector2i(21,23),Vector2i(21,24)]:
 		result[cell] = {"kind":"basalt", "progress":0.0, "active":false, "cleared":false}
 	preload("res://scripts/cryo_recovery.gd").seed(result)
+	# Broad solid sections can be cut into, leaving tunnels and interior pockets.
+	for x in range(11,17):
+		for y in range(18,24):
+			if (x==11 and y in [18,23]) or (x==16 and y==23): continue
+			var cell := Vector2i(x,y)
+			if not result.has(cell): result[cell] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
+	# A sealed service pocket becomes identifiable only after an approach is cut.
+	result[Vector2i(13,21)] = {"kind":"engineering","progress":0.0,"active":false,"cleared":false,"buried":true}
+	for x in range(24,29):
+		for y in range(17,22):
+			if x==28 and y in [17,21]: continue
+			var cell := Vector2i(x,y)
+			if not result.has(cell): result[cell] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
 	return result
+
+static func exposed(wrecks: Dictionary, cell: Vector2i) -> bool:
+	for offset in [Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
+		if not blocks(wrecks,cell+offset): return true
+	return false
+
+static func visible(wrecks: Dictionary, cell: Vector2i) -> bool:
+	return not wrecks.get(cell,{}).get("buried",false) or exposed(wrecks,cell)
 
 static func blocks(wrecks: Dictionary, cell: Vector2i) -> bool:
 	return wrecks.has(cell) and not wrecks[cell].cleared
 
-static func reachable(occupied: Dictionary, cell: Vector2i) -> bool:
+static func reachable(occupied: Dictionary, cell: Vector2i, wrecks: Dictionary = {}) -> bool:
+	if wrecks.has(cell) and (wrecks[cell].kind=="basalt" or wrecks[cell].get("buried",false)):
+		if not exposed(wrecks,cell): return false
+		var blocked := {}
+		for room_cell in occupied: blocked[room_cell]=true
+		for at in wrecks:
+			if blocks(wrecks,at): blocked[at] = true
+		for home in occupied:
+			if not preload("res://scripts/drone_routes.gd").find_path(home,cell,blocked).is_empty(): return true
+		return false
 	for offset in [Vector2i.LEFT,Vector2i.RIGHT,Vector2i.UP,Vector2i.DOWN]:
 		if occupied.has(cell+offset):
 			return true
@@ -35,7 +65,7 @@ static func advance(wrecks: Dictionary, occupied: Dictionary, delta: float, dron
 	var completed := []
 	for cell in wrecks:
 		var wreck: Dictionary = wrecks[cell]
-		if wreck.cleared or not wreck.active or not reachable(occupied,cell):
+		if wreck.cleared or not wreck.active or not reachable(occupied,cell,wrecks):
 			continue
 		var work_delta: float = delta if drone_work == null or wreck.kind in ["cryo","charging","river","josh","margot"] else float(drone_work.get(cell,0.0))
 		wreck.progress = minf(DURATION,float(wreck.progress)+maxf(0.0,work_delta))
@@ -60,6 +90,7 @@ static func valid(value: Variant, occupied: Dictionary) -> bool:
 			return false
 		if not w.get("active") is bool or not w.get("cleared") is bool:
 			return false
+		if not w.get("buried",false) is bool: return false
 		if w.kind in ["cryo","charging"] and not preload("res://scripts/cryo_recovery.gd").valid_ward(w):
 			return false
 		if w.kind in ["river","josh","margot"] and not preload("res://scripts/companions.gd").valid_site(w):return false

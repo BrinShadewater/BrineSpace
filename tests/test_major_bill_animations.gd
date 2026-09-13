@@ -27,7 +27,7 @@ func run() -> void:
 		check(frames.size() == int(entry.frameCount), key + " count")
 		var elapsed := 0.0
 		for i in range(frames.size()):
-			check(frames[i].get_size() == Vector2(92, 92), key + " canvas")
+			check(frames[i].get_size() == Vector2(184, 184), key + " dense canvas")
 			check(frames[i].get_meta("major_bill_v2", false), key + " renderer geometry tag")
 			var milliseconds := float(entry.frameDurationsMs[i])
 			check(grid._human_frame_index(key, (elapsed + milliseconds * 0.5) / 1000.0) == i, key + " duration selection")

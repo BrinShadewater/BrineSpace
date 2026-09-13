@@ -151,7 +151,7 @@ func paint(slot: DrawSlot) -> void:
 		"prop":
 			var artwork: Dictionary=slot.item.prop.duplicate()
 			artwork.id=artwork.get("copy_source",artwork.id)
-			if artwork.get("library_asset",false): preload("res://scripts/room_asset_library.gd").draw(renderer,artwork)
+			if artwork.get("library_asset",false) and not artwork.get("custom_library_draw",false): preload("res://scripts/room_asset_library.gd").draw(renderer,artwork)
 			else: renderer.draw_registered_prop(artwork)
 		"prop_pass": renderer.call(slot.item.method,slot.item.prop)
 		"prop_base": renderer.draw_prop_base(slot.item.prop)

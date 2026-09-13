@@ -29,6 +29,11 @@ var title_label: Label = null
 var body_label: Label = null
 var note_field: LineEdit = null
 var button_row: HBoxContainer = null
+var performance_monitor: Node
+
+func _ready() -> void:
+	performance_monitor=preload("res://scripts/performance_monitor.gd").new()
+	add_child(performance_monitor)
 
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -84,6 +89,8 @@ func save_report(note: String, after_crash: bool = false) -> String:
 	_add_logs(files)
 	_add_saves(files)
 	if not after_crash: _add_live_snapshot(files)
+	if not after_crash and is_instance_valid(performance_monitor):
+		files.append({"name":"diagnostics/performance.json","data":JSON.stringify(performance_monitor.snapshot(),"\t").to_utf8_buffer()})
 	var artwork: Dictionary = preload("res://scripts/safe_image.gd").failures
 	if not artwork.is_empty(): files.append({"name":"diagnostics/artwork.json","data":JSON.stringify(artwork,"\t").to_utf8_buffer()})
 	if pending_screenshot != null and not pending_screenshot.is_empty():
@@ -336,6 +343,10 @@ func _input(event: InputEvent) -> void:
 		return
 	var key := event as InputEventKey
 	if not key.pressed or key.echo:
+		return
+	if key.keycode==KEY_F7 and is_instance_valid(performance_monitor):
+		get_viewport().set_input_as_handled()
+		performance_monitor.toggle_overlay()
 		return
 	if key.keycode == KEY_ESCAPE and overlay != null and overlay.visible:
 		get_viewport().set_input_as_handled()

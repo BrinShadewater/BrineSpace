@@ -7,9 +7,9 @@ var game
 func check(ok: bool,message: String):
 	if not ok: failures+=1; push_error(message)
 func _init(): call_deferred("run")
-func capture(label: String):
+func capture(label: String,zoom := 0.8):
 	if DisplayServer.get_name()=="headless": return
-	game._set_grid_zoom(0.8,true,(Vector2(20,20)+Vector2.ONE*0.5)/40.0)
+	game._set_grid_zoom(zoom,true,(Vector2(20,20)+Vector2.ONE*0.5)/40.0)
 	game.selected_card_id=""
 	game.selected_room_cell=Vector2i(20,20)
 	preload("res://scripts/flood_alerts.gd").refresh(game)
@@ -79,7 +79,7 @@ func run():
 		room.hull_crack=Repairs.SEVERITIES[i]
 		room.water_level=0
 		Flood.step_water(game,0.1)
-		check(is_equal_approx(room.water_level,Repairs.SEVERITIES[i]*0.004),"Variant leak rate")
+		check(is_equal_approx(room.water_level,(Repairs.SEVERITIES[i]+0.00005)*0.004),"Variant leak rate")
 		check(Repairs.variant(room)==i,"Variant severity classification")
 		room.water_level=0.35
 		game.bill_npc.foot=(Vector2(cell)+Vector2.ONE*0.5)*384+Vector2(-85,105)
@@ -135,6 +135,43 @@ func run():
 	room.water_level=0
 	preload("res://scripts/flood_alerts.gd").refresh(game)
 	check(game.flood_alert_button.text=="FLOOD / CLEAR","Alert clears when station is dry")
+	room.hull_crack=0.5
+	actor.breath_oxygen=15
+	actor.foot=repair_foot
+	actor.goal=""
+	actor.path.clear()
+	game.resources.metal=20
+	check(Repairs.request(game,cell,true) and game.resources.metal==19,"Emergency patch reserves one Metal")
+	check(Repairs.valid(room.leak_repair),"Patch job validates for saving")
+	for i in range(600):
+		game._update_test_walker(0.1)
+		if not room.has("leak_repair"): break
+	check(room.get("hull_patched",false) and room.hull_crack>=0.5,"Crew patch leaves structural damage")
+	check(is_equal_approx(Repairs.leak_rate(room),float(room.hull_crack)*0.008),"Patch reduces inflow by eighty percent")
+	var patched_severity: float=room.hull_crack
+	Flood.step_water(game,10)
+	check(room.hull_crack==patched_severity,"Patch arrests gradual deterioration")
+	check(not Repairs.request(game,cell,true),"Already patched hull refuses duplicate patch")
+	check(Flood.valid_rooms([room]),"Patched hull validates for saving")
+	var patch_save: Dictionary=Save.capture(game)
+	check(not patch_save.is_empty(),"Patched hull checkpoint can be captured")
+	room.water_level=0.35
+	await capture("emergency-patch")
+	room.water_level=0
+	check(Repairs.request(game,cell),"Patched damage accepts permanent repair")
+	for i in range(600):
+		game._update_test_walker(0.1)
+		if not room.has("leak_repair"): break
+	check(room.hull_crack==0 and not room.has("hull_patched"),"Permanent repair removes patch and seals hull")
+	check(room.get("hull_welded",false),"Permanent weld leaves cosmetic scar")
+	await capture("weld-scar")
+	if DisplayServer.get_name()!="headless": check(preload("res://scripts/flood_visuals.gd").hull_atlas!=null,"Authored hull atlas loaded")
+	check(Save.write(game,game.run_save_path)==OK,"Weld scar checkpoint writes")
+	var weld_save := Save.read(game.run_save_path)
+	check(not weld_save.is_empty() and weld_save.state.placed_rooms[0].get("hull_welded",false),"Weld scar survives save encoding")
+	room.hull_crack=0.8
+	room.water_level=0.2
+	await capture("rupture-normal-zoom",0.4)
 	print("HULL REPAIR ","PASS" if failures==0 else "FAIL")
 	DirAccess.remove_absolute(game.run_save_path)
 	DirAccess.remove_absolute(game.meta.save_path)

@@ -177,7 +177,9 @@ static func apply(room, asset: String) -> bool:
 	return true
 
 static func is_common_decoration(prop: Dictionary) -> bool:
-	if prop.get("registration",{}).get("dressing",false): return true
+	var registration: Dictionary=prop.get("registration",{})
+	if registration.get("dressing",false):
+		return not registration.get("spec",{}).get("live_furniture",false)
 	for field in ["id","copy_source","variant_source","portable_id"]:
 		if str(prop.get(field,"")).begins_with("library/common-"): return true
 	return false

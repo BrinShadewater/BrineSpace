@@ -7,7 +7,10 @@ static var clearance: Dictionary={}
 static func clear(actor,action: String) -> bool:
 	if actor.has_method("marsh_pose_clear"):return actor.marsh_pose_clear()
 	if actor.movement_medium=="exterior":return true
-	if clearance.is_empty():clearance=JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-life-v1/clearance.json"))
+	if clearance.is_empty():
+		clearance=JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-life-v1/clearance.json"))
+		for id in ["bill","veld","branforth"]:
+			clearance[id]=JSON.parse_string(FileAccess.get_file_as_string(preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[id]+"clearance.json")).life
 	var id: String={"veld_npc.gd":"veld","branforth_npc.gd":"branforth"}.get(actor.get_script().resource_path.get_file(),"bill")
 	var extent: Array=clearance[id]["helmet" if actor.helmet_equipped else "bare"][action+"-"+actor.direction]
 	return actor.swim_segment_clear(actor.foot,actor.foot,actor.direction,actor.direction,false,extent)
@@ -59,6 +62,18 @@ static func offset(actor) -> Vector2:
 	if actor.stage in ["life_lie","life_sit"]: amount=1.0-actor.timer/0.8
 	elif actor.stage in ["life_get_up","life_rise"]: amount=actor.timer/0.8
 	return (Vector2(station.rest_point)-local)*clampf(amount,0,1)
+
+static func head_alignment(actor,player) -> Vector2:
+	if actor.stage not in ["life_lie","life_sleep","life_get_up"]:return Vector2.ZERO
+	var frames: Array=player.frames.get("sleep-"+actor.direction,[])
+	if frames.is_empty() or not frames[0].has_meta("crew_rest_head_offset"):return Vector2.ZERO
+	var local: Vector2=actor.foot-(Vector2(actor.goal_cell)+Vector2.ONE*.5)*actor.CELL
+	var station: Dictionary=actor.RoomActivity.at(actor.geometry.get(actor.goal_cell,{}),local)
+	if not station.has("rest_head"):return Vector2.ZERO
+	var amount: float=1.0
+	if actor.stage=="life_lie":amount=1.0-actor.timer/0.8
+	elif actor.stage=="life_get_up":amount=actor.timer/0.8
+	return (Vector2(station.rest_head)-Vector2(station.rest_point)-Vector2(frames[0].get_meta("crew_rest_head_offset")))*clampf(amount,0,1)
 
 static func load_into(player,actor: String) -> void:
 	var pack=preload("res://scripts/crew_action_pack.gd")

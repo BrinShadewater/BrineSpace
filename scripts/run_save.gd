@@ -16,6 +16,7 @@ static func capture(game) -> Dictionary:
 		"event_history": game.event_history.duplicate(),
 		"discovered_characters": game.run_discovered_character_ids.duplicate(),
 		"wrecks": game.wrecks.duplicate(true),
+		"surveyed_water":game.surveyed_water.duplicate(),
 		"companions":game.Companions.snapshot(game),
 		"drone_fleet": game.drone_fleet.snapshot(),
 		"recovered_crew": game.recovered_crew.duplicate(true),
@@ -94,8 +95,9 @@ static func _read_one(path: String) -> Dictionary:
 		return {}
 	if not valid_controls(value): return {}
 	if not preload("res://scripts/station_hardware.gd").valid(value.get("hardware",{})): return {}
+	if not preload("res://scripts/underwater_visibility.gd").valid(value.get("surveyed_water",{})): return {}
 	var state: Dictionary = value.state
-	if not state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(state.placed_rooms)): return {}
+	if not state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(state.placed_rooms) or not preload("res://scripts/room_fire.gd").valid_rooms(state.placed_rooms)): return {}
 	if not preload("res://scripts/drone_fleet.gd").valid(value.get("drone_fleet"),state.get("placed_rooms",[])): return {}
 	if not valid_crew(value.get("crew")): return {}
 	if not preload("res://scripts/companions.gd").valid(value.get("companions"),value.get("wrecks",{}),state.placed_rooms):return {}
@@ -177,7 +179,7 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 			return false
 	if not valid_crew(data.get("crew")): return false
 	if not preload("res://scripts/companions.gd").valid(data.get("companions"),data.get("wrecks",{}),data.state.get("placed_rooms",[])):return false
-	if not data.state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(data.state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(data.state.placed_rooms)): return false
+	if not data.state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(data.state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(data.state.placed_rooms) or not preload("res://scripts/room_fire.gd").valid_rooms(data.state.placed_rooms)): return false
 	if not preload("res://scripts/crew_expedition.gd").valid_crew_rooms(data.get("crew"),data.state.placed_rooms): return false
 	for field in FIELDS:
 		if not data.state.has(field) or typeof(data.state[field]) != typeof(game.get(field)):
@@ -194,6 +196,7 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 	if not preload("res://scripts/architects.gd").valid(data.get("architects",{}),data.get("wrecks",{}),data.get("recovered_crew",[])): return false
 	if not preload("res://scripts/cryo_recovery.gd").valid_roster(data.get("recovered_crew",[]),data.get("wrecks",{}),data.state.placed_rooms,data.get("architects",{})): return false
 	if not preload("res://scripts/station_hardware.gd").valid(data.get("hardware",{})): return false
+	if not preload("res://scripts/underwater_visibility.gd").valid(data.get("surveyed_water",{})): return false
 	game.run_discovered_character_ids.clear()
 	var characters: Variant = data.get("discovered_characters", [])
 	if characters is Array:
@@ -203,6 +206,8 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 	game.hardware=preload("res://scripts/station_hardware.gd").restored(data.get("hardware",{}))
 	# Older checkpoints have no wreck field. Never seed obstacles into an old station.
 	game.wrecks = data.get("wrecks",{}).duplicate(true)
+	game.surveyed_water = data.get("surveyed_water",{}).duplicate()
+	game.grid_view.underwater_visibility.reset()
 	game.drone_fleet.restore(data.get("drone_fleet"))
 	game.recovered_crew = data.get("recovered_crew",[]).duplicate(true)
 	game.architect_run=data.get("architects",{}).duplicate(true)

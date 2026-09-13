@@ -9,6 +9,7 @@ func _init() -> void: call_deferred("run")
 func run() -> void:
 	var layouts_path:=""
 	var selected_rooms: PackedStringArray=[]
+	var crew_review:=OS.get_cmdline_user_args().has("--crew")
 	for argument in OS.get_cmdline_user_args():
 		if argument.begins_with("--out="): OUT=argument.trim_prefix("--out=").trim_suffix("/")+"/"
 		if argument.begins_with("--layouts="): layouts_path=argument.trim_prefix("--layouts=")
@@ -37,12 +38,22 @@ func run() -> void:
 			preview.textures=Corridors.Art.load_sources()
 			preview.corner=id=="corner"
 			preview.tee=id=="tee_corridor"
+			if crew_review:
+				preview.scale_actor=preload("res://scripts/room_scale_preview.gd").new()
+				preview.scale_actor.load_art()
+				preview.scale_actor.mode=1
+				preview.scale_actor.visible=true
 			row.view="res://rooms/underwater/corridor_surfaces.gd"
 		else:
 			preview=Baker.Preview.new()
 			preview.compact=true
 			preview.id=id
 			preview.room=grid._bill_room_view(data)
+			if crew_review:
+				preview.scale_actor=preload("res://scripts/room_scale_preview.gd").new()
+				preview.scale_actor.mode=1
+				preview.scale_actor.load_art()
+				preview.scale_actor.foot=Vector2(0,64)
 			assert(preview.room!=null)
 			row.view=preview.room.get_script().resource_path
 		preview.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
@@ -58,8 +69,15 @@ func run() -> void:
 			if not corridor:
 				var props: Array=[]
 				for prop in preview.room.props:
-					props.append({"id":str(prop.id),"full_wall":prop.get("full_wall",false),"side_view":prop.get("side_view","")})
+					var bounds: Rect2=preview.room.prop_visual_bounds(prop)
+					props.append({"id":str(prop.id),"full_wall":prop.get("full_wall",false),"side_view":prop.get("side_view",""),
+						"variant_source":prop.get("variant_source",""),"wall_mount":prop.get("wall_mount",false),
+						"rect":[prop.rect.position.x,prop.rect.position.y,prop.rect.size.x,prop.rect.size.y],
+						"visual_bounds":[bounds.position.x,bounds.position.y,bounds.size.x,bounds.size.y]})
 				row.views.append({"quarter":q,"props":props})
+				if crew_review:
+					row.views[-1].crew_visible=preview.scale_actor.visible
+					row.views[-1].crew_height=65.28
 		preview.queue_free()
 		await process_frame
 		records.append(row)

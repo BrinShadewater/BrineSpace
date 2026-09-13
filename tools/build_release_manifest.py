@@ -78,6 +78,8 @@ def collect(root=ROOT, read_root=None):
         if p.name=='project.godot':
             text='\n'.join(line for line in text.splitlines() if not line.startswith('run/main_scene.'))
         for value in STRINGS.findall(text):
+            # Godot's enabled autoload entries prefix resource paths with '*'.
+            if p.name=='project.godot' and value.startswith('*res://'): value=value[1:]
             if value.startswith('res://') or Path(value).suffix.lower() in EXTENSIONS:
                 reference(value,p)
         if p.suffix=='.gd':

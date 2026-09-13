@@ -8,7 +8,9 @@ class RuntimeAssets(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory)
             files={
-                'project.godot':'run/main_scene="res://scenes/title_screen.tscn"',
+                'project.godot':'run/main_scene="res://scenes/title_screen.tscn"\n[autoload]\nReport="*res://scripts/report.gd"',
+                'scripts/report.gd':'const ICON="res://ui/report.png"',
+                'ui/report.png':'PNG',
                 'scenes/title_screen.tscn':'path="res://scripts/game.gd"',
                 'scripts/game.gd':'const M="res://character/selected/manifest.json"\nconst BUTTONS="res://ui/buttons/"\nconst ROOT="res://"',
                 'character/selected/manifest.json':'{"frameFiles":["frames/one.png"]}',
@@ -24,6 +26,8 @@ class RuntimeAssets(unittest.TestCase):
             self.assertIn('character/selected/frames/one.png',selected)
             self.assertIn('ui/buttons/on.tres',selected)
             self.assertIn('ui/on.png',selected)
+            self.assertIn('scripts/report.gd',selected)
+            self.assertIn('ui/report.png',selected)
             self.assertNotIn('character/rejected/unused.png',selected)
             self.assertNotIn('output/debug.png',selected)
     def test_frozen_script_bindings_override_concurrent_work(self):

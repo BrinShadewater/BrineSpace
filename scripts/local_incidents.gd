@@ -5,6 +5,7 @@ static func seed(game) -> void:
 	for room in game.placed_rooms:
 		if game.powered_room_cells.has(room.pos) and room.get("tags",[]).has("containment_risk"):
 			room["local_incident"]=true
+			room.hull_cause="containment failure"
 			room["hull_crack"]=minf(1.0,float(room.get("hull_crack",0))+preload("res://scripts/hull_repair.gd").SEVERITIES[(game.cycle/8-1)%3])
 			game._log("Containment fault at %s. Repair the room or isolate its branch." % room.pos,false)
 			return

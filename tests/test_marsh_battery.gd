@@ -8,6 +8,44 @@ var game
 func _init():call_deferred("run")
 func check(ok: bool,message: String):
 	if not ok: failures+=1;push_error(message)
+func check_ground_transition_saves() -> void:
+	var baseline: Dictionary=Save.capture(game)
+	var actor=game.marsh_npc
+	var origin:=Vector2.INF
+	for point_id in actor.room_nodes.get(CORE,[]):
+		var point: Vector2=actor.graph.get_point_position(point_id)
+		var target:=point+Vector2(50,0)
+		if actor.cell_at(target)==CORE and actor.spawn_clear(point) and actor.can_stand(point) and actor.can_stand(target) and actor.segment_clear(point,target):
+			origin=point;break
+	check(origin.is_finite(),"Transition save fixture finds a clear east route")
+	if not origin.is_finite():return
+	for phase in ["walk-start","walk-stop","walk-step","walk-step-settling","west-walk-start","west-walk-stop","west-walk-step","west-walk-step-settling"]:
+		var west: bool=phase.begins_with("west-")
+		var action: String=phase.trim_prefix("west-")
+		var pose: String="walk-step" if action.begins_with("walk-step") else action
+		actor=game.marsh_npc
+		actor.foot=origin+Vector2(50,0) if west else origin;actor.direction="west" if west else "east";actor.goal="";actor.stage=""
+		actor.state="walk" if pose=="walk-stop" else "idle"
+		actor.start_elapsed=-1;actor.pose_elapsed=-1;actor.stop_elapsed=-1
+		actor.step_elapsed=-1;actor.west_phase="";actor.short_clock=-1
+		actor.path=PackedVector2Array([actor.foot+Vector2((-1 if west else 1)*((6.0 if west else 4.0) if pose=="walk-step" else (50 if pose=="walk-start" else 8.5)),0)])
+		actor.move((0.75 if west else 0.6) if action=="walk-step-settling" else (0.2 if pose=="walk-step" else (0.15 if pose=="walk-start" else 0.1)))
+		check(actor.animation_state()==pose,"Save begins during "+pose)
+		var foot: Vector2=actor.foot;var clock: float=actor.action_elapsed();var timer: float=actor.timer
+		var pixels: PackedByteArray=game.grid_view._get_marsh_frame(game).get_image().get_data()
+		check(Save.write(game,game.run_save_path)==OK,"Active transition writes to disk")
+		var saved: Dictionary=Save.read(game.run_save_path)
+		check(not saved.is_empty(),"Active transition reads from disk")
+		check(await Save.restore_staged(game,saved),"Continue rebuilds station during "+pose+": "+Save.last_error)
+		game.tick_timer.stop();game.set_process(false);game.paused=true;actor=game.marsh_npc
+		check(actor.foot==foot and is_equal_approx(actor.timer,timer) and is_equal_approx(actor.action_elapsed(),clock) and actor.animation_state()==pose,"Continue preserves transition position, timer and pose")
+		check(game.grid_view._get_marsh_frame(game).get_image().get_data()==pixels,"Continue preserves selected transition texture pixels")
+		actor.update(game,1.0)
+		check(actor.foot==foot and is_equal_approx(actor.action_elapsed(),clock),"Paused Continue freezes transition")
+		game.paused=false;actor.update(game,0.05)
+		check(actor.foot!=foot or not is_equal_approx(actor.action_elapsed(),clock),"Resumed transition advances")
+	check(Save.restore(game,baseline),"Restore original battery fixture after transition saves")
+	game.tick_timer.stop();game.set_process(false);game.paused=false
 func run():
 	game=load("res://scenes/main.tscn").instantiate()
 	var stem="user://marsh_battery_%d"%OS.get_process_id()
@@ -19,6 +57,8 @@ func run():
 	game.Architects.advance_core(game,10)
 	var actor=game.marsh_npc
 	var initial: Vector2=actor.foot
+	await check_ground_transition_saves()
+	actor=game.marsh_npc
 	game.resources.oxygen=0;game.resources.food=50
 	game.occupied[CORE].water_level=1.0
 	for i in range(700):Flood.step_crew(game,actor,"marsh",0.1)

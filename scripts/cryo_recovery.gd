@@ -60,6 +60,9 @@ static func advance(game, delta: float) -> void:
 						game.run_discovered_character_ids.append(pod.architect_id)
 						game._log("ARCHITECT RECOVERED // %s is available for future loops." % pod.name,false)
 				game.recovered_crew.append(member)
+				if pod.get("architect_id","") in ["bill","veld","branforth"]:
+					member["thawed_at"]=game.get_visual_time_seconds()
+					member["thaw_foot"]=preload("res://scripts/architects.gd").actor_for(game,pod.architect_id).foot
 				game.play_station_sound("crew_awake",Vector2(cell))
 				game.crew_count += 1
 				game.had_crew = true
@@ -106,5 +109,8 @@ static func valid_roster(roster: Variant, wrecks: Dictionary, rooms: Array, arch
 		if not member is Dictionary or not member.get("id") is String or not expected.has(member.id): return false
 		if member.get("name")!=expected[member.id].name or member.get("origin")!=expected[member.id].origin or not member.get("alive") is bool: return false
 		if member.get("architect_id","")!=expected[member.id].get("architect_id",""): return false
+		if member.has("thawed_at") or member.has("thaw_foot"):
+			if not member.get("thawed_at") is float or not is_finite(member.thawed_at) or member.thawed_at<0.0: return false
+			if not member.get("thaw_foot") is Vector2 or not member.thaw_foot.is_finite(): return false
 		expected.erase(member.id)
 	return expected.is_empty()

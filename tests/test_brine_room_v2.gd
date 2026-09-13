@@ -20,7 +20,7 @@ func _init() -> void:
 func check(value: bool, message: String) -> void:
 	if not value:
 		failures+=1
-		if failures<15: push_error(message)
+		if failures<100: push_error(message)
 func settle() -> void:
 	for i in range(4): await process_frame
 	await RenderingServer.frame_post_draw
@@ -94,8 +94,12 @@ func run() -> void:
 		game.occupied[CELL].rotation=q
 		actor.rebuild(game)
 		view.configure_embedded(q,[0,1,2,3],true,0)
-		check(view.props.size()==6,"Tank, pod, pedestal and three computer assemblies registered")
+		check(view.props.filter(func(p): return p.id=="brine_chamber").size()==1,"One BRINE chamber registered")
+		check(view.props.filter(func(p): return p.id=="architect_pod").size()==1,"Recovery pod registered")
 		for prop in view.props:
+			# Wall-library furniture has its own mounting/bounds fixtures; it replaced
+			# the historical three standalone computer assemblies.
+			if prop.get("library_asset",false): continue
 			check(Rect2(-180,-180,360,360).encloses(view.prop_visual_bounds(prop)),"Contained furniture q%d: %s" % [q,prop.id])
 		for side in range(4):
 			var d: Vector2=Vector2([Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT][side])
@@ -120,12 +124,13 @@ func run() -> void:
 				steps+=1
 			check(actor.foot.distance_to(actor.graph.get_point_position(return_id))<1,"Return from each entrance reaches tank observation area")
 	var chamber: Dictionary=view.props.filter(func(p): return p.id=="brine_chamber")[0]
-	var used: Rect2=Rect2(view.body_texture.get_image().get_used_rect())
+	var used: Rect2=Rect2(view.body_normalized_rect.position*92.0,view.body_normalized_rect.size*92.0)
+	check(view.body_source_rect.size.y>740,"Float retains detailed source rather than 74-pixel reduction")
 	var glass:=Rect2(555,585,142,190)
 	for i in range(880):
-		var at: Vector2=view.BODY_RECT.position+view.float_offset(i*0.1)
-		var visible:=Rect2(at+used.position*view.BODY_RECT.size/92.0,used.size*view.BODY_RECT.size/92.0)
-		check(glass.encloses(visible),"Entire floating silhouette stays below cap and inside glass")
+		for point in view.body_points(i*0.1):
+			check(glass.has_point(point),"Entire floating and swaying silhouette stays below cap and inside glass")
+	check(view.body_points(0.0,false)==view.body_points(7.0,false),"Offline body pose is stable")
 	var old_visible:=Rect2(Vector2(511,550)+used.position*2.5+Vector2(0,-5),used.size*2.5)
 	check(not glass.encloses(old_visible),"Containment test rejects previous head-through-cap placement")
 	var visible_bubbles:=0
@@ -150,6 +155,7 @@ func run() -> void:
 		await settle()
 		for q in range(4):
 			game.occupied[CELL].rotation=q
+			game.hardware.power=true
 			game.powered_room_cells[CELL]=true
 			game.grid_view.room_light_levels[CELL]=1.0
 			game.visual_time_seconds=0.2
@@ -160,12 +166,15 @@ func run() -> void:
 			var held:=await capture("q%d-paused" % q)
 			check(after.get_data()==held.get_data(),"Pause freezes native room pixels")
 			game.powered_room_cells.erase(CELL)
+			game.hardware.power=false # Startup core has a hardware-power override.
 			await capture("q%d-off-a" % q)
+			check(not view.operating,"Actual startup core is offline")
 			var off:=tank_pixels()
 			game.visual_time_seconds=5.0
 			await capture("q%d-off-b" % q)
 			check(off==tank_pixels(),"Offline float and bubbles stop; crew animation remains independent")
 		game.occupied[CELL].rotation=0
+		game.hardware.power=true
 		game.powered_room_cells[CELL]=true
 		for i in range(36):
 			game.visual_time_seconds=i*0.25

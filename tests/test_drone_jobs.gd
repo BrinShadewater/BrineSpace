@@ -41,11 +41,16 @@ func run() -> void:
 	assert(not game.wrecks[rock].active,"Rock work requires mining bay")
 	game._place_room("mining_drone_bay",rock+Vector2i.RIGHT,true)
 	game.occupied[rock+Vector2i.RIGHT].rotation = 1
+	# New bays begin service when the station pays their first cycle.
+	game._apply_room_economy()
+	assert(game.powered_room_cells.has(rock+Vector2i.RIGHT),"Mining bay has paid operating power")
 	game._toggle_wreck_work(rock)
 	assert(game.wrecks[rock].active,"Mining bay enables rock job")
 	game._update_wreck_clearance(1.0)
 	assert(game.wrecks[rock].progress==0.0,"No drilling before launch and arrival")
-	game._update_wreck_clearance(10.0)
+	for step in range(100):
+		game._update_wreck_clearance(0.1)
+		if game.wrecks[rock].progress>0.0: break
 	assert(game.wrecks[rock].progress>0.0 and not game.wrecks[rock].cleared,"Drone drills after arrival")
 	var before: float = game.wrecks[rock].progress
 	game.paused = true

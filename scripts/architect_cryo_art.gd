@@ -17,6 +17,9 @@ static func frame(id: String, index: int) -> Texture2D:
 	return frames[id][clampi(index,0,5)]
 
 static func draw(canvas: CanvasItem, rect: Rect2, occupant: Dictionary, tint := Color.WHITE) -> void:
+	var opacity := tint.a
+	tint *= Color.WHITE*lerpf(0.16,1.0,float(occupant.get("startup_power",1.0)))
+	tint.a=opacity
 	if occupant.get("charging_pod",false) or occupant.get("architect_id","")=="marsh":
 		preload("res://scripts/marsh_charging_art.gd").draw(canvas,rect,occupant,tint)
 		return

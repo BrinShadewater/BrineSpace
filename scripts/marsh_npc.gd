@@ -1,4 +1,4 @@
-extends "res://scripts/bill_npc.gd"
+extends "res://scripts/marsh_west_motion.gd"
 ## Sealed android: battery replaces breathing; the original pod is his charger.
 const BATTERY_SECONDS := 300.0
 const RETURN_AT := 35.0
@@ -128,7 +128,8 @@ func snapshot() -> Dictionary:
 	return result
 
 static func valid_marsh_snapshot(data: Variant) -> bool:
-	if not preload("res://scripts/bill_npc.gd").valid_snapshot(data,false): return false
+	if not data is Dictionary:return false
+	if not preload("res://scripts/marsh_west_motion.gd").valid_west_short_snapshot(data): return false
 	for key in {"battery":100.0,"charge_credit":CHARGE_PER_POWER,"charge_elapsed":20.0}:
 		var value: Variant=data.get(key,100.0 if key=="battery" else 0.0)
 		if not (value is float or value is int) or not is_finite(float(value)) or value<0 or value>{"battery":100.0,"charge_credit":CHARGE_PER_POWER,"charge_elapsed":20.0}[key]: return false
@@ -151,7 +152,7 @@ func _init() -> void:
 	spawn_offset = Vector2(48,32)
 	needs = {"hunger":20.0,"fatigue":20.0,"curiosity":65.0,"maintenance":65.0}
 	service_preferences["maintenance"] = ["maintenance_bay","battery_array","pressure_control","life_support","listening_post"]
-	var envelope: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://character/animation-expansion-v5/marsh/clearance.json"))
+	var envelope: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://character/marsh-v2/clearance.json"))
 	swim_clearance=envelope
 	tread_clearance=envelope.duplicate(true)
 

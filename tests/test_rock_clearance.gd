@@ -51,15 +51,16 @@ func run() -> void:
 	# Marsh's charging ward and the companion derelicts (Sept 9) were added after
 	# this count was written; the original field is everything else.
 	var original_field: int = game.wrecks.values().filter(func(w): return w.kind not in ["charging","river","josh","margot"]).size()
-	check(original_field==21 and Field.valid(game.wrecks,game.occupied),"New run has four salvage wrecks, fifteen rocks and two repairable cryo wards")
+	check(original_field>60 and Field.valid(game.wrecks,game.occupied),"New run includes broad excavatable formations and valid recovery sites")
 	for offset in View.DIRECTIONS:
 		check(not Field.blocks(game.wrecks,Vector2i(20,20)+offset),"Initial core expansion stays open")
 	var cell := Vector2i(17,20)
 	check(game.get_placement_problem("corridor",cell).contains("rock"),"Rock blocks construction")
 	game._toggle_wreck_work(cell)
-	check(not game.wrecks[cell].active,"Rock cannot be excavated beyond station reach")
+	check(not game.wrecks[cell].active,"Rock cannot be excavated without a mining bay")
 	game._place_room("mining_drone_bay",Vector2i(18,20),true)
 	game.occupied[Vector2i(18,20)].rotation = 1 # Exposed east/west ports face the rock job.
+	game.powered_room_cells[Vector2i(18,20)] = true # Fixture funds the bay; live runs pay at the cycle boundary.
 	game._on_grid_clicked(cell)
 	game.hover_cell = cell
 	game._refresh_inspector()
@@ -78,10 +79,13 @@ func run() -> void:
 	game._place_room("corridor",Vector2i(18,19),true)
 	game._toggle_wreck_work(Vector2i(18,18))
 	check(not game.wrecks[Vector2i(18,18)].active,"Wrecks and rocks share one rig")
+	game.surveyed_water[Vector2i(18,20)]=true
 	check(Save.write(game,path)==OK,"Rock checkpoint writes")
 	var data := Save.read(path)
 	game.wrecks.clear()
+	game.surveyed_water.clear()
 	check(Save.restore(game,data) and game.wrecks[cell].progress==partial and game.wrecks[cell].active,"Rock progress and active job restore")
+	check(game.surveyed_water.has(Vector2i(18,20)),"Survey memory restores alongside cut progress")
 	game.tick_timer.stop()
 	game.paused = false
 	var before: int = game.resources.metal

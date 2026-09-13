@@ -12,14 +12,23 @@ static func stations(data: Dictionary) -> Array:
 			# A berth authored against the west wall pushes its approach outside the
 			# ±144 service band choose_goal walks; approach from the east side instead.
 			if at.x<-144: at=Vector2(rect.end.x+28,rect.get_center().y)
-			result.append({"point":at,"facing":"north","room":id,"mode":"sleep","rest_point":Vector2(rect.get_center().x,rect.end.y-40)})
+			var station: Dictionary={"point":at,"facing":"north","room":id,"mode":"sleep","rest_point":Vector2(rect.get_center().x,rect.end.y-40)}
+			var registration: Dictionary=prop.get("registration",{})
+			if registration.has("pivot") and registration.has("width"):
+				var pillow_source: Vector2=Vector2(270,158) if prop.id=="hab_berth_west" else Vector2(958,158)
+				station.rest_head=Vector2(rect.get_center().x,rect.end.y)+(pillow_source-Vector2(registration.pivot))*(rect.size.x/float(registration.width))
+			result.append(station)
 		if not result.is_empty(): return result
 	if id=="crew_lounge":
 		for prop in data.get("props",[]):
 			if prop.id!="lounge_games": continue
 			var rect: Rect2=prop.rect
+			# Left chair center is x=774.5 in the authored games source (pivot 900,
+			# width 373). Match the renderer's registration instead of an 8-unit inset.
+			var registration: Dictionary=prop.get("registration",{})
+			var seat_x: float=rect.get_center().x+(774.5-float(registration.get("pivot",Vector2(900,1050)).x))*rect.size.x/float(registration.get("width",373.0))
 			for approach in [Vector2(rect.get_center().x,rect.end.y+28),Vector2(rect.position.x-28,rect.get_center().y),Vector2(rect.end.x+28,rect.get_center().y)]:
-				result.append({"point":approach,"facing":"north","room":id,"mode":"sit","rest_point":Vector2(rect.position.x+8,rect.end.y-4)})
+				result.append({"point":approach,"facing":"north","room":id,"mode":"sit","rest_point":Vector2(seat_x,rect.end.y-4)})
 		if result.is_empty():
 			# One authored quarter replaces the games table with a sofa; rest there instead.
 			for prop in data.get("props",[]):
@@ -29,9 +38,9 @@ static func stations(data: Dictionary) -> Array:
 					result.append({"point":approach,"facing":"north","room":id,"mode":"sit","rest_point":Vector2(rect.get_center().x,rect.end.y-8)})
 		return result
 	if id=="cold_store":
-		return [{"point":Vector2(-112,64),"facing":"north","room":id},{"point":Vector2(112,64),"facing":"north","room":id}]
+		return reachable_stations(data,[Vector2(-112,64),Vector2(112,64)])
 	if id=="galley":
-		return [{"point":Vector2(64,144),"facing":"north","room":id},{"point":Vector2(112,144),"facing":"north","room":id}]
+		return reachable_stations(data,[Vector2(64,144),Vector2(112,144)])
 	if id=="salvage_workshop":
 		return [{"point":Vector2(112,16),"facing":"east","room":id}]
 	if id=="observation_room":
@@ -62,6 +71,22 @@ static func stations(data: Dictionary) -> Array:
 				if not _approach_blocked(data,approach): break
 				approach+=outward*12
 			result.append({"point":approach,"facing":facing,"room":id,"prop":prop.id})
+	return result
+
+static func reachable_stations(data: Dictionary,anchors: Array) -> Array:
+	if data.has("reachable_service_stations"):return data.reachable_service_stations
+	var result := []
+	for anchor in anchors:
+		var best := Vector2.INF
+		var distance := INF
+		for y in range(-144,145,16):
+			for x in range(-144,145,16):
+				var point:=Vector2(x,y)
+				if _approach_blocked(data,point):continue
+				var score: float=point.distance_squared_to(anchor)
+				if score<distance:distance=score;best=point
+		if best!=Vector2.INF:result.append({"point":best,"facing":"north","room":data.activity_room})
+	data.reachable_service_stations=result
 	return result
 
 static func _approach_blocked(data: Dictionary, at_point: Vector2) -> bool:

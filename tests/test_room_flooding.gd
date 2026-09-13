@@ -50,7 +50,7 @@ func _init():
 	var room: Dictionary = game.placed_rooms[0]
 	room.hull_crack=0.25
 	Flood.advance(game,10)
-	check(is_equal_approx(room.water_level,0.1),"Minor crack fills gradually")
+	check(absf(room.water_level-0.10101)<0.00001,"Minor crack fills gradually while worsening")
 	room.water_level=0.0
 	room.hull_crack=1.0
 	Flood.advance(game,10)

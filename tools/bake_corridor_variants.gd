@@ -6,6 +6,7 @@ class Card extends Node2D:
 	var corner := false
 	var tee := false
 	var variant := 0
+	var scale_actor # Optional review reference, absent from production card bakes.
 	func _draw() -> void:
 		draw_rect(Rect2(0,0,512,512),Color("09222d"))
 		draw_set_transform(Vector2(256,275),0,Vector2.ONE*1.05)
@@ -17,6 +18,13 @@ class Card extends Node2D:
 			var size := Vector2(16,104) if p.x!=0 else Vector2(104,16)
 			draw_rect(Rect2(p-size/2,size),Color("7f9290"))
 			draw_rect(Rect2(p-size/2,size).grow(-2),Color("536967"))
+		if scale_actor!=null:
+			var members: Array=scale_actor.members()
+			if not members.is_empty():
+				var texture: Texture2D=members[0].texture
+				var factor:=65.28/float(texture.get_meta("crew_standing_height",74.0))
+				var pivot: Vector2=texture.get_meta("crew_pivot",Vector2(46,86))
+				draw_texture_rect(texture,Rect2(Vector2(0,32)-pivot*factor,texture.get_size()*factor),false)
 var suffix := "v3"
 func _init() -> void:
 	for argument in OS.get_cmdline_user_args():

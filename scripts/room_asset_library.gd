@@ -67,7 +67,7 @@ static func apply_variants(room, values: Dictionary) -> void:
 		replacement.rect=Rect2(original.rect.position,replacement.rect.size*factor)
 		replacement.id=id
 		replacement.variant_source=chosen
-		for metadata in ["copy_source","wall_mount","split_wall"]:
+		for metadata in ["copy_source","wall_mount","split_wall","custom_library_draw"]:
 			if original.has(metadata): replacement[metadata]=original[metadata]
 		replacement.sort_y=replacement.rect.end.y
 		room.props[i]=replacement
@@ -93,6 +93,13 @@ static func template(id: String) -> Dictionary:
 	var width: float=all[id].get("width",minf(120.0,120.0*float(r[2])/float(r[3])))
 	var size:=Vector2(width,width*float(r[3])/float(r[2]))
 	var registration: Dictionary={"pieces":pieces,"pivot":Vector2(r[0]+r[2]*0.5,r[1]+r[3]),"width":float(r[2]),"height":float(r[3])}
+	if data.has("operating_screens"): registration.operating_screens=data.operating_screens.duplicate(true)
+	if data.has("operating_screen_color"): registration.operating_screen_color=data.operating_screen_color
+	if data.has("reading_lamp"): registration.reading_lamp=data.reading_lamp.duplicate(true)
+	if data.has("turbine_effects"): registration.turbine_effects=data.turbine_effects.duplicate(true)
+	if data.has("cooktop_ring"): registration.cooktop_ring=data.cooktop_ring.duplicate(true)
+	if data.has("status_point"): registration.status_point=data.status_point.duplicate(true)
+	if data.get("mirror_horizontal",false): registration=mirror_registration(registration)
 	var prop: Dictionary={"id":id,"library_asset":true,"full_wall":true,"rect":Rect2(Vector2.ZERO,size),"center":Vector2.ZERO,"sort_y":size.y,"registration":registration,"library_texture":texture}
 	if data.has("collision_boxes"): prop.collision_boxes=data.collision_boxes.duplicate(true)
 	if data.has("corner"): prop.wall_mount=true; prop.corner=data.corner
@@ -136,6 +143,19 @@ static func draw(room, prop: Dictionary) -> void:
 			points.append(anchor+(point-reg.pivot)*scale_value)
 			uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,tex)
+	draw_operating_screens(room,reg,anchor,scale_value)
+
+static func draw_operating_screens(room, reg: Dictionary, anchor: Vector2, scale_value: float) -> void:
+	if reg.has("operating_screens") and room.operating:
+		for index in range(reg.operating_screens.size()):
+			var screen: Array=reg.operating_screens[index]
+			var trace:=PackedVector2Array()
+			for step in range(9):
+				var point:=Vector2(screen[0]+screen[2]*step/8.0,screen[1]+screen[3]*(0.5+0.22*sin(step*1.7+room.machine_clock*3+index)))
+				point=source_uv(reg,point)
+				trace.append(anchor+(point-reg.pivot)*scale_value)
+			var color:=Color(str(reg.operating_screen_color)) if reg.has("operating_screen_color") else Color(.13,.75,.78,.8)
+			room.painter.draw_polyline(trace,color,maxf(.55,scale_value*1.4))
 
 static var portable_views: Dictionary={}
 static func portable_template(descriptor: Dictionary) -> Dictionary:

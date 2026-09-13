@@ -12,6 +12,9 @@ const SERVICES := {
 	"fatigue": ["crew_hab", "med_bay", "med_center", "crew_lounge"],
 	"maintenance": ["cold_store", "maintenance_bay", "life_support", "reactor", "storage_bay", "pressure_control", "listening_post"]
 }
+var social_partner := ""
+var social_cooldown := 20.0
+var primary_room := Vector2i(-1,-1)
 var needs := {"hunger": 25.0, "fatigue": 15.0, "curiosity": 60.0, "maintenance": 35.0}
 var active := false
 var dead := false
@@ -42,6 +45,8 @@ var graph := AStar2D.new()
 var points := {}
 var room_nodes := {}
 var geometry := {}
+var fire_cells := {}
+var fire_building_navigation := false
 var signature := ""
 var hardware_doors_locked:=false
 var visits := {}
@@ -80,7 +85,8 @@ func begin_helmet_action(equip: bool) -> bool:
 	if helmet_equipped == equip or not path.is_empty() or not stage.is_empty(): return false
 	var actor: String = {"veld_npc.gd":"veld", "branforth_npc.gd":"branforth"}.get(get_script().resource_path.get_file(), "bill")
 	var action := "equip-helmet" if equip else "remove-helmet"
-	var manifest: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-underwater-v1/locker/%s-%s-east/manifest.json" % [actor, action]))
+	var path: String = preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[actor]+"locker/%s-east/manifest.json" % action
+	var manifest: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
 	if not manifest is Dictionary: return false
 	var duration := 0.0
 	for milliseconds in manifest.states[0].frameDurationsMs: duration += float(milliseconds) / 1000.0
@@ -119,7 +125,7 @@ func request_helmet_at_locker(equip: bool, locker: Dictionary, refill := false) 
 	var start := nearest_in_room(foot, cell_at(foot))
 	var target := nearest_in_room(point, locker.cell)
 	if start < 0 or target < 0: return false
-	var route := graph.get_point_path(start, target)
+	var route := route_between(start, target)
 	if route.is_empty(): return false
 	route.append(point)
 	route = smooth_route(route)
@@ -202,7 +208,7 @@ func die() -> void:
 	traffic_activity = ""
 
 func snapshot() -> Dictionary:
-	return {"air_recovery":air_recovery,"air_was_low":air_was_low,"tank_oxygen":tank_oxygen,"breath_oxygen":breath_oxygen,"starvation":starvation,"expedition":expedition.duplicate(true),"helmet_equipped": helmet_equipped, "movement_medium": movement_medium, "dead": dead, "active": active, "foot": foot, "state": state, "direction": direction,
+	return {"social_partner":social_partner,"social_cooldown":social_cooldown,"primary_room":primary_room,"air_recovery":air_recovery,"air_was_low":air_was_low,"tank_oxygen":tank_oxygen,"breath_oxygen":breath_oxygen,"starvation":starvation,"expedition":expedition.duplicate(true),"helmet_equipped": helmet_equipped, "movement_medium": movement_medium, "dead": dead, "active": active, "foot": foot, "state": state, "direction": direction,
 		"activity": activity, "goal": goal, "goal_cell": goal_cell, "path": path.duplicate(), "locker_request": locker_request.duplicate(true),
 		"timer": timer, "stage": stage, "needs": needs.duplicate(true), "visits": visits.duplicate(true),
 		"traffic_wait": traffic_wait, "traffic_retry": traffic_retry, "traffic_activity": traffic_activity,
@@ -210,6 +216,12 @@ func snapshot() -> Dictionary:
 
 static func valid_snapshot(data: Variant, breathes := true) -> bool:
 	if not data is Dictionary: return false
+	var partner = data.get("social_partner","")
+	if not partner is String or partner not in ["","bill","veld","branforth","marsh"]:return false
+	var cooldown = data.get("social_cooldown",20.0)
+	if not (cooldown is float or cooldown is int) or not is_finite(float(cooldown)) or cooldown<0 or cooldown>90:return false
+	var home = data.get("primary_room",Vector2i(-1,-1))
+	if not home is Vector2i or (home!=Vector2i(-1,-1) and (home.x<0 or home.y<0 or home.x>=40 or home.y>=40)):return false
 	if not data.get("air_was_low",false) is bool: return false
 	var recovery: Variant=data.get("air_recovery",0.0)
 	if not (recovery is float or recovery is int) or not is_finite(float(recovery)) or recovery<0 or recovery>3: return false
@@ -222,6 +234,7 @@ static func valid_snapshot(data: Variant, breathes := true) -> bool:
 		if not data.has(key): return false
 	if not data.active is bool or not data.foot is Vector2 or not data.foot.is_finite(): return false
 	if not data.goal_cell is Vector2i or not data.path is PackedVector2Array or data.path.size() > 4096: return false
+	if data.get("goal","")=="social" and (partner.is_empty() or data.get("state","") not in ["idle","interact"] or not data.get("path",PackedVector2Array()).is_empty() or data.get("stage","")!=""):return false
 	if not data.get("movement_medium", "dry") in ["dry", "flooded", "exterior"]: return false
 	if not data.get("helmet_equipped", false) is bool: return false
 	if breathes and data.get("movement_medium", "dry") == "exterior" and not data.get("helmet_equipped", false) and not data.get("dead",false): return false
@@ -236,7 +249,7 @@ static func valid_snapshot(data: Variant, breathes := true) -> bool:
 		if data.state != death_state or not data.path.is_empty() or data.goal != "" or data.stage != "": return false
 	elif data.state in ["death-ground", "death-water"]: return false
 	if not data.direction in ["north", "south", "east", "west"]: return false
-	if not data.goal in ["", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "flood-retreat"] and not (not breathes and data.goal=="recharge"): return false
+	if not data.goal in ["", "social", "primary-work", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "electrical-repair", "flood-retreat", "fire-retreat"] and not (not breathes and data.goal=="recharge"): return false
 	var request: Variant = data.get("locker_request", {})
 	if not request is Dictionary: return false
 	if data.goal == "diving-locker":
@@ -285,6 +298,8 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 		points.clear()
 		room_nodes.clear()
 		geometry.clear()
+	social_partner=data.get("social_partner","");social_cooldown=float(data.get("social_cooldown",20.0))
+	primary_room=data.get("primary_room",Vector2i(-1,-1))
 	tank_oxygen = float(data.get("tank_oxygen",60.0))
 	breath_oxygen = float(data.get("breath_oxygen",15.0))
 	starvation = float(data.get("starvation",0.0))
@@ -370,6 +385,7 @@ func can_stand(point: Vector2) -> bool:
 
 var sample_all_segments := OS.get_cmdline_user_args().has("--sample-all-navigation-segments")
 func segment_clear(a: Vector2, b: Vector2) -> bool:
+	if not preload("res://scripts/fire_safety.gd").segment_safe(self,a,b): return false
 	if hardware_doors_locked and cell_at(a)!=cell_at(b): return false
 	# Inside one authored room, cell and closed-door half-planes are convex.
 	# Clear endpoints plus the exact blocker sweep below prove the whole segment.
@@ -405,6 +421,7 @@ func action_pose_clear(action: String) -> bool:
 	if action_clearance.is_empty():
 		var actor: String={"veld_npc.gd":"veld","branforth_npc.gd":"branforth"}.get(get_script().resource_path.get_file(),"bill")
 		action_clearance=JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-actions-v1/clearance.json"))[actor]
+		action_clearance=JSON.parse_string(FileAccess.get_file_as_string(preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[actor]+"clearance.json")).actions
 	var extent: Array=action_clearance["helmet" if helmet_equipped else "bare"][action+"-"+direction]
 	return swim_segment_clear(foot,foot,direction,direction,false,extent)
 
@@ -419,6 +436,9 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 		var actor: String = {"veld_npc.gd":"veld", "branforth_npc.gd":"branforth"}.get(get_script().resource_path.get_file(), "bill")
 		swim_clearance = data.actors[actor]
 		tread_clearance = data.treading[actor]
+		var revised: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[actor]+"clearance.json"))
+		swim_clearance=revised.swim
+		tread_clearance=revised.tread
 	var profile: Dictionary = (tread_clearance if treading else swim_clearance)["helmet" if helmet_equipped else "bare"]
 	if not profile.has(facing) or not profile.has(previous_facing): return false
 	var extent: Array = profile[facing].duplicate()
@@ -484,6 +504,7 @@ static func segment_hits_rect(a: Vector2,b: Vector2,rect: Rect2) -> bool:
 
 func rebuild(main, staged := false) -> void:
 	if dead: return
+	fire_building_navigation=true
 	var revision: int=preload("res://scripts/room_layout_store.gd").geometry_revision
 	if revision!=layout_geometry_revision:
 		room_cache.clear(); layout_geometry_revision=revision
@@ -572,6 +593,7 @@ func rebuild(main, staged := false) -> void:
 			if points.has(a) and points.has(b) and segment_clear(Vector2(a), Vector2(b)):
 				graph.connect_points(points[a], points[b])
 	signature = topology(main)
+	fire_building_navigation=false
 
 func nearest_in_room(point: Vector2, cell: Vector2i, require_clear := true) -> int:
 	var best := -1
@@ -587,6 +609,7 @@ func nearest_in_room(point: Vector2, cell: Vector2i, require_clear := true) -> i
 func update(main, delta: float) -> void:
 	if dead: return
 	if delta <= 0: return
+	preload("res://scripts/fire_safety.gd").refresh(main,self)
 	if topology(main) != signature: rebuild(main)
 	if not active:
 		var initial: Vector2 = main._room_idle_anchor(main.test_walker_cell) / main.get_cell_size() * CELL + Vector2(0, CELL * 0.038) + spawn_offset
@@ -612,12 +635,15 @@ func update(main, delta: float) -> void:
 		state = "idle"
 		activity = "route obstructed"
 		return
+	advance_needs(main,delta)
+	if preload("res://scripts/fire_safety.gd").advance(main,self,delta): return
 	if preload("res://scripts/flood_safety.gd").advance(main,self,delta): return
 	if preload("res://scripts/hull_repair.gd").advance(main,self,delta): return
-	if preload("res://scripts/crew_construction.gd").advance(main,self,delta): return
-	for need in needs:
-		var rate := 0.12 if need == "hunger" else (0.10 if need == "fatigue" else 0.22)
-		needs[need] = minf(100.0, needs[need] + delta * rate)
+	if preload("res://scripts/electrical_repair.gd").advance(main,self,delta): return
+	# Finish an existing build safely, then take a needed meal/rest before claiming another.
+	if goal=="construction" or not preload("res://scripts/crew_primary_work.gd").break_needed(main,self):
+		if preload("res://scripts/crew_construction.gd").advance(main,self,delta): return
+	if goal=="social":return # Paired conversation clock is advanced once by CrewSocial.
 	if helmet_action_active():
 		advance_helmet_action(delta)
 		return
@@ -689,7 +715,8 @@ func update(main, delta: float) -> void:
 		if not goal.is_empty():
 			if activity in ["checking manifold gauges","monitoring sonar returns","resting beside the berth","resting in the berth"]:
 				completed_activity={"serial":int(completed_activity.get("serial",0))+1,"activity":activity,"cell":goal_cell}
-			needs[goal] = maxf(0.0, float(needs[goal]) - (45.0 if goal != "curiosity" else 65.0))
+			if goal in needs and (goal!="hunger" or (int(main.resources.food)>0 and not helmet_equipped)):
+				needs[goal] = maxf(0.0, float(needs[goal]) - (45.0 if goal != "curiosity" else 65.0))
 		goal = ""
 		locker_request.clear()
 		stage = ""
@@ -831,7 +858,12 @@ func crew_detour_from(start: int, target: int) -> PackedVector2Array:
 func arrive() -> void:
 	if dead: return
 	state = "idle"
-	if goal in ["construction","hull-repair","flood-retreat","recharge"]: return
+	if goal=="primary-work":
+		state="interact";timer=8.0;activity="working at primary workplace"
+		var facing:=equipment_facing(goal_cell,foot-(Vector2(goal_cell)+Vector2.ONE*.5)*CELL)
+		if not facing.is_empty():direction=facing
+		return
+	if goal in ["construction","hull-repair","electrical-repair","flood-retreat","fire-retreat","recharge"]: return
 	if stage=="workshop_carry":
 		stage="workshop_unload"
 		direction="north"
@@ -866,8 +898,21 @@ func arrive() -> void:
 			timer = 1.0
 		_: activity = "looking around"
 
+func advance_needs(main,delta: float) -> void:
+	var matched := false
+	if goal=="primary-work" and path.is_empty() and state=="interact" and main.occupied.has(primary_room):
+		var work=preload("res://scripts/crew_primary_work.gd")
+		matched=not work.reward(work.identity(main,self),main.occupied[primary_room]).is_empty()
+	for need in needs:
+		var rate := 0.12 if need=="hunger" else (0.08 if matched else 0.10) if need=="fatigue" else 0.22
+		needs[need]=minf(100,needs[need]+delta*rate)
+
 func choose_goal(main) -> void:
 	if dead: return
+	if needs_air() and needs.hunger>=65 and helmet_equipped and movement_medium=="dry":
+		for room in main.placed_rooms:
+			if room.id=="airlock" and preload("res://scripts/airlock_service.gd").request(main,preload("res://scripts/crew_primary_work.gd").identity(main,self),room.pos):return
+	if preload("res://scripts/crew_primary_work.gd").choose(main,self):return
 	var npc_rng: RandomNumberGenerator = decision_rng if decision_rng != null else main.rng
 	var start := nearest_in_room(foot, cell_at(foot))
 	if start < 0:
@@ -880,9 +925,11 @@ func choose_goal(main) -> void:
 		var id := str(room.id)
 		if id in ["corridor", "corner", "tee_corridor"]: continue
 		for need in needs:
+			if need=="hunger" and (helmet_equipped or int(main.resources.food)<=0):continue
 			if need != "curiosity" and not service_preferences.get(need, []).has(id): continue
 			if (need != "curiosity" or id in ["observation_room","salvage_workshop","galley","cold_store","crew_lounge","crew_hab"]) and not service_available(main, cell): continue
 			var score := float(needs[need]) - Vector2(cell - cell_at(foot)).length() * 2.0
+			if need in ["hunger","fatigue"] and needs_air() and float(needs[need])>=65:score+=200
 			if need == "curiosity": score -= mini(20, int(visits.get(cell, 0)) * 4)
 			candidates.append({"cell": cell, "need": need, "score": score + npc_rng.randf_range(0, 8)})
 	candidates.sort_custom(func(a, b): return a.score > b.score)
@@ -993,6 +1040,20 @@ func travel_heading(a: Vector2, b: Vector2, fallback: String) -> String:
 	return ("east" if offset.x > 0 else "west") if absf(offset.x) > absf(offset.y) else ("south" if offset.y > 0 else "north")
 
 func route_between(start: int, target: int, avoid_crew: bool = false) -> PackedVector2Array:
+	if not graph.has_point(start) or not graph.has_point(target): return PackedVector2Array()
+	if fire_cells.has(cell_at(graph.get_point_position(target))): return PackedVector2Array()
+	var disabled := []
+	for cell in fire_cells:
+		if cell==cell_at(foot): continue
+		for node in room_nodes.get(cell,[]):
+			if not graph.is_point_disabled(node):
+				graph.set_point_disabled(node,true)
+				disabled.append(node)
+	var route := _route_between_clear(start,target,avoid_crew)
+	for node in disabled: graph.set_point_disabled(node,false)
+	return route
+
+func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> PackedVector2Array:
 	if movement_medium == "dry": return graph.get_point_path(start,target)
 	if not graph.has_point(start) or not graph.has_point(target): return PackedVector2Array()
 	var facings := ["east","south","west","north"]

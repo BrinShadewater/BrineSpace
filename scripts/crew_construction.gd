@@ -38,7 +38,7 @@ static func approach(game,actor,order: Dictionary) -> Dictionary:
 		for node in actor.room_nodes.get(cell,[]):
 			var point: Vector2=actor.graph.get_point_position(node)
 			if point.distance_to(desired)>44 or not actor.can_stand(point): continue
-			var route: PackedVector2Array=actor.graph.get_point_path(start,node)
+			var route: PackedVector2Array=actor.route_between(start,node)
 			if route.is_empty() or not actor.segment_clear(actor.foot,route[0]): continue
 			var distance: float=actor.foot.distance_to(route[0])
 			for i in range(1,route.size()): distance+=route[i-1].distance_to(route[i])
@@ -61,7 +61,7 @@ static func advance(game,actor,delta: float) -> bool:
 		if actor.helmet_equipped or actor.helmet_action_active() or not actor.locker_request.is_empty() or not actor.stage.is_empty() or actor.movement_medium!="dry": return false
 		if not game.running or game.paused or not game.hardware.power or game.hardware.doors: return false
 		var has_bay: bool=game.drone_fleet.drones.values().any(func(d): return d.kind=="construction" and not d.bootstrap)
-		if has_bay and game.drone_fleet._dedicated_builder_ready(game._simulate_room_economy().working_cells): return false
+		if has_bay and game.drone_fleet._dedicated_builder_ready(game.powered_room_cells): return false
 		# One manual builder at a time; dedicated bays can take the other orders.
 		for candidate in game.drone_fleet.orders:
 			if not str(candidate.get("builder","")).is_empty(): return false

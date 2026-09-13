@@ -1,6 +1,8 @@
 extends RefCounted
 
 static func remedy(status: String) -> String:
+	if status == "FIRE":
+		return "Enable sprinklers and maintain emergency power and stored Water. Production resumes after extinction; weld any hull damage."
 	if status == "INTAKE BLOCKED":
 		return "Clear the ocean cell indicated by the turbine's intake arrow. Rooms, queued construction, wrecks, rock and finite resource deposits obstruct the intake."
 	if status == "NEEDS ACTIVE REACTOR":
@@ -102,3 +104,16 @@ static func power_demand(game) -> String:
 	if demand.waiting > 0: message += "\nAdd generation or suspend a competing Power consumer to leave a reserve for drones."
 	if demand.offline > 0: message += "\nRestore offline bay inputs or resume suspended bays before charging."
 	return message
+
+static func power_balance(game, forecast: Dictionary) -> String:
+	var stored := int(game.resources.power)
+	var change := int(forecast.delta.get("power",0))
+	var flow := "Reserve unchanged"
+	if change < 0: flow = "Battery discharge: %d Power" % -change
+	elif change > 0: flow = "Battery charge: %d Power" % change
+	return "POWER // NEXT CYCLE\nGeneration: %d / Requested: %d / Supplied: %d\n%s / Stored: %d -> %d\nReserves cover generation shortfalls automatically. Battery Arrays add capacity; they do not generate Power. Drone and Marsh charging draw from storage between cycles." % [forecast.generation,game._project_power_demand(),forecast.power_used,flow,stored,stored+change]
+
+static func turbine_intake(game, room: Dictionary) -> String:
+	var names := ["NORTH","EAST","SOUTH","WEST"]
+	var reason: String = game._turbine_intake_problem(room)
+	return "INTAKE %s %s: %s" % [names[posmod(int(room.get("rotation",0)),4)],game._turbine_intake_cell(room),"CLEAR / 4 Power per functioning cycle" if reason.is_empty() else "BLOCKED BY " + reason + " / NO POWER"]

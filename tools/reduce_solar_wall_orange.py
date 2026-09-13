@@ -1,0 +1,87 @@
+"""Reduce bright orange across the selected Solar Array directional wall family."""
+
+from __future__ import annotations
+
+import argparse
+import colorsys
+import hashlib
+from pathlib import Path
+
+from PIL import Image
+
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCES = {
+    "thermal-north-muted-v1.png": ROOT / "assets/material-polish-v3/thermal-north.png",
+    "thermal-sides-muted-v1.png": ROOT / "assets/solar-directional-v1/thermal-sides.png",
+    "thermal-south-muted-v1.png": ROOT
+    / "assets/room-facing-repair-v2/thermal-control-wall-south.png",
+}
+DEFAULT_OUTPUT_DIR = ROOT / "assets/solar-directional-v2"
+
+
+def digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def recolor(source_path: Path, output_path: Path, value_scale: float) -> int:
+    source = Image.open(source_path).convert("RGBA")
+    result = source.copy()
+    changed = 0
+
+    for y in range(source.height):
+        for x in range(source.width):
+            red, green, blue, alpha = source.getpixel((x, y))
+            if alpha < 10:
+                continue
+            hue, saturation, value = colorsys.rgb_to_hsv(
+                red / 255.0, green / 255.0, blue / 255.0
+            )
+            if not (0.02 <= hue <= 0.13 and saturation >= 0.35 and value >= 0.20):
+                continue
+
+            # Preserve the source hue, shading, surface texture, and alpha. Lowering
+            # value does the requested brightness correction; the small saturation
+            # reduction keeps orange subordinate to the dark metal wall assembly.
+            recolored = colorsys.hsv_to_rgb(
+                hue,
+                max(0.0, min(1.0, saturation * 0.82)),
+                max(0.0, min(1.0, value * value_scale)),
+            )
+            result.putpixel(
+                (x, y),
+                (*tuple(round(channel * 255) for channel in recolored), alpha),
+            )
+            changed += 1
+
+    if result.size != source.size:
+        raise AssertionError("Canvas dimensions changed")
+    if changed < 50_000:
+        raise AssertionError(f"Unexpectedly small orange mask: {changed} pixels")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if output_path.exists():
+        raise SystemExit(f"Refusing to overwrite {output_path}")
+    result.save(output_path, optimize=True)
+    return changed
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--value-scale", type=float, default=0.72)
+    args = parser.parse_args()
+
+    if not 0.1 <= args.value_scale <= 1.0:
+        raise SystemExit("--value-scale must be between 0.1 and 1.0")
+
+    for output_name, source_path in SOURCES.items():
+        output_path = args.output_dir / output_name
+        changed = recolor(source_path, output_path, args.value_scale)
+        print(
+            f"PASS {output_name} changed={changed} size={Image.open(output_path).size} "
+            f"sha256={digest(output_path)}"
+        )
+
+
+if __name__ == "__main__":
+    main()

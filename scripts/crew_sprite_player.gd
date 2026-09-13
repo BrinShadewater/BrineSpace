@@ -1,4 +1,9 @@
 extends RefCounted
+const REVISION_ROOTS := {
+	"bill":"res://character/major-bill-v3/",
+	"veld":"res://character/dr-veld-v2/",
+	"branforth":"res://character/chief-engineer-branforth-v2/",
+	"marsh":"res://character/marsh-v2/"}
 ## An independent playback clock per crew member; uses raw PNG manifest paths.
 var frames := {}
 var timing := {}
@@ -59,12 +64,16 @@ func load_manifest(path: String, append: bool = false) -> void:
 			preload("res://scripts/safe_image.gd").load_png(image, filename)
 			var texture := ImageTexture.create_from_image(image)
 			texture.set_meta("crew_frame_92", true)
+			if entry.has("restHeadOffset"):texture.set_meta("crew_rest_head_offset",Vector2(entry.restHeadOffset[0],entry.restHeadOffset[1]))
 			texture.set_meta("crew_water_facing",str(entry.get("facings",[])[row.size()]) if entry.has("facings") else str(entry.id).get_slice("-",str(entry.id).get_slice_count("-")-1))
-			texture.set_meta("crew_water_kind",str(entry.id).get_slice("-",0))
+			texture.set_meta("crew_water_kind",str(entry.waterKinds[row.size()]) if entry.has("waterKinds") else str(entry.id).get_slice("-",0))
 			texture.set_meta("crew_depth_offset",float(entry.get("depthOffsets",[])[row.size()]) if entry.has("depthOffsets") else 0.0)
-			texture.set_meta("crew_water_pose",bool(entry.get("water",false)) or str(entry.id).begins_with("swim-") or str(entry.id).begins_with("tread-") or str(entry.id).begins_with("death-water-"))
+			texture.set_meta("crew_water_pose",bool(entry.waterPoses[row.size()]) if entry.has("waterPoses") else (bool(entry.get("water",false)) or str(entry.id).begins_with("swim-") or str(entry.id).begins_with("tread-") or str(entry.id).begins_with("death-water-")))
 			var pivot: Array = data.get("pivot", [46, 86])
 			texture.set_meta("crew_pivot", Vector2(float(pivot[0]), float(pivot[1])))
+			# Source pixels per 65.28 world units. 74 is the legacy pack profile; a pack
+			# authored at higher density declares its own so it lands at the same size.
+			texture.set_meta("crew_standing_height", float(data.get("standingHeight", 74)))
 			row.append(texture)
 		frames[entry.id] = row
 		var seconds := 0.0
@@ -116,7 +125,9 @@ func load_equipment_manifest(equipment: String, path: String) -> bool:
 		if variant.timing[key] != timing[key]: return false
 		for i in range(frames[key].size()):
 			if variant.frames[key][i].get_meta("crew_pivot") != frames[key][i].get_meta("crew_pivot"): return false
-	if equipment == "diving-helmet":
+			if variant.frames[key][i].get_meta("crew_standing_height") != frames[key][i].get_meta("crew_standing_height"): return false
+	var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(path))
+	if equipment == "diving-helmet" and not manifest.get("precomposed",false):
 		preload("res://scripts/swim_helmet_fit.gd").apply(self, variant, path)
 	if not equipment_frames.has(equipment): equipment_frames[equipment] = {}
 	equipment_frames[equipment].merge(variant.frames, true)
@@ -139,7 +150,7 @@ func frame(state: String, direction: String, time: float, position_cells: Vector
 	var selected: Array = frames[key] if equipment.is_empty() else equipment_frames[equipment][key]
 	var distance := last_position.distance_to(position_cells)
 	# Preserve gait fraction on a facing-only turn; actions and teleports reset.
-	if key != current_key and current_key.get_slice("-", 0) == state and strides.has(state) and timing.has(current_key) and timing[current_key].loop and timing[key].loop and time >= last_time and distance <= 0.5:
+	if key != current_key and current_key.get_slice("-", 0) == state and (strides.has(state) or (strides.has(current_key) and strides.has(key))) and timing.has(current_key) and timing[current_key].loop and timing[key].loop and time >= last_time and distance <= 0.5:
 		phase = fmod(phase, cycle_seconds(current_key)) / cycle_seconds(current_key) * cycle_seconds(key)
 		current_key = key
 	if key != current_key or time < last_time or distance > 0.5:
@@ -147,8 +158,8 @@ func frame(state: String, direction: String, time: float, position_cells: Vector
 		phase = 0.0
 		started = time
 	elif time > last_time:
-		if strides.has(state):
-			phase += distance / float(strides[state]) * cycle_seconds(key)
+		if strides.has(state) or strides.has(key):
+			phase += distance / float(strides.get(key,strides.get(state,0.12))) * cycle_seconds(key)
 		else:
 			phase = time - started
 	last_time = time

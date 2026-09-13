@@ -15,6 +15,9 @@ const PRIORITY_EVENTS := ["warning","discovery","terminal","ui_end","ui_failure"
 const ACTIVITY_EVENTS := {"build_complete":[-20.0,2.0,0.65],"build_blocked":[-24.0,15.0,0.5],"launch":[-27.0,4.0,0.8],"footstep":[-25.0,0.6,0.12],"tools":[-27.0,3.0,0.35],"repair":[-27.0,3.0,0.6],"ui_end":[-18.0,4.0,2.0],"ui_failure":[-18.0,4.0,2.0]}
 const UI_EVENTS := {"ui_comms":[-23.0,8.0,0.5],"ui_saved":[-21.0,1.0,0.35]}
 const RECOVERY_EVENTS := {"all_clear":[-23.0,20.0,0.7],"crew_dispatch":[-23.0,2.0,0.4],"crew_awake":[-21.0,5.0,1.2],"airlock_pressure":[-26.0,2.0,1.5],"airlock_release":[-24.0,1.0,0.45],"airlock_ready":[-25.0,2.0,0.4],"ui_recall":[-23.0,2.0,0.45],"crew_return":[-22.0,3.0,0.6]}
+const HAZARD_EVENTS := {"leak_drip":[-21.0,3.5,0.65],"sprinkler_hiss":[-22.0,1.5,1.5],"electrical_crackle":[-23.0,2.8,0.55],"crack_creak":[-21.0,8.0,1.7]}
+var prior_crack_stages := {}
+var hazard_sources := {}
 var clear_pending := false
 var clear_age := 0.0
 const EXPANDED_EVENTS := {"swim":[-25.0,1.0,0.65],"suit":[-28.0,2.5,0.35],"bubbles":[-29.0,6.0,0.85],"mining_work":[-27.0,2.5,1.5],"salvage_work":[-27.0,2.5,1.2],"galley_work":[-29.0,9.0,0.65],"medical_work":[-31.0,12.0,0.9],"lab_work":[-31.0,10.0,1.0],"cultivation_work":[-29.0,10.0,1.4]}
@@ -158,6 +161,8 @@ func reset_after_restore() -> void:
 		voice.player.stop()
 		voice.player.queue_free()
 	voices.clear()
+	prior_crack_stages.clear()
+	hazard_sources.clear()
 	prior_powered = game.powered_room_cells.duplicate()
 	_observe_station(false)
 	clear_pending = false
@@ -171,7 +176,7 @@ static func warning_cue(conditions: Dictionary) -> String:
 
 func event_settings(kind: String) -> Array:
 	if kind=="companion_chirp":return [-30.0,18.0,0.5]
-	for group in [EVENTS,ACTIVITY_EVENTS,UI_EVENTS,RECOVERY_EVENTS,EXPANDED_EVENTS,EQUIPMENT_EVENTS]:
+	for group in [EVENTS,ACTIVITY_EVENTS,UI_EVENTS,RECOVERY_EVENTS,EXPANDED_EVENTS,EQUIPMENT_EVENTS,HAZARD_EVENTS]:
 		if group.has(kind): return group[kind]
 	return []
 
@@ -340,6 +345,37 @@ func _observe_work(audible: bool) -> void:
 				work_cell = cell
 		if not work_kind.is_empty(): play_event(work_kind,work_cell)
 
+func observe_hazards() -> void:
+	if not is_instance_valid(game) or not game.running or game.paused: return
+	const Fire = preload("res://scripts/room_fire.gd")
+	const Hull = preload("res://scripts/hull_repair.gd")
+	var candidates := {}
+	var distances := {}
+	var stages := {}
+	for room in game.placed_rooms:
+		var cell := Vector2(room.pos)
+		var distance := Space.screen_position(game,cell).distance_to(Space.listener_position(game))
+		var stage := Hull.variant(room) if float(room.get("hull_crack",0))>0 else -1
+		stages[room.pos]=stage
+		if stage>int(prior_crack_stages.get(room.pos,stage)):
+			play_event("crack_creak",cell)
+		var kinds := []
+		if Hull.leak_rate(room)>0 and float(room.get("water_level",0))<0.85: kinds.append("leak_drip")
+		if Fire.spraying(game,room): kinds.append("sprinkler_hiss")
+		if Fire.MACHINERY.has(room.id) and Fire.fault(room) and game.hardware.power and not room.get("suspended",false): kinds.append("electrical_crackle")
+		for kind in kinds:
+			if distance<float(distances.get(kind,INF)):
+				candidates[kind]=cell
+				distances[kind]=distance
+	prior_crack_stages=stages
+	hazard_sources=candidates
+	for kind in ["leak_drip","sprinkler_hiss","electrical_crackle"]:
+		if voices.has(kind) and (not candidates.has(kind) or voices[kind].cell!=candidates[kind]):
+			voices[kind].player.stop()
+			voices[kind].player.queue_free()
+			voices.erase(kind)
+		if candidates.has(kind): play_event(kind,candidates[kind])
+
 func _process(delta: float) -> void:
 	elapsed += delta
 	if clear_pending and is_instance_valid(game) and game.running and not game.paused:
@@ -354,6 +390,7 @@ func _process(delta: float) -> void:
 	if observation_time >= 0.2:
 		observation_time = 0.0
 		_observe_station()
+		observe_hazards()
 	var levels := targets()
 	var priority_active := false
 	if Preferences.effects_volume > 0.0 and (not is_instance_valid(game) or (game.running and not game.paused)):
@@ -380,8 +417,9 @@ func _process(delta: float) -> void:
 		var voice: Dictionary = voices[kind]
 		var player = voice.player
 		if player is AudioStreamPlayer2D: Space.configure(player,game,voice.cell)
-		player.stream_paused = is_instance_valid(game) and game.paused and not kind.begins_with("ui_")
-		if not player.stream_paused: voice.age += delta
+		var paused_voice: bool=is_instance_valid(game) and game.paused and not kind.begins_with("ui_")
+		player.stream_paused = paused_voice
+		if not paused_voice: voice.age += delta
 		var settings: Array = event_settings(kind)
 		var limit: float = minf(float(settings[2]),player.stream.get_length())/player.pitch_scale
 		if voice.age >= limit or (is_instance_valid(game) and not game.running and not kind.begins_with("ui_")):

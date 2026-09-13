@@ -1,18 +1,30 @@
 extends "res://tests/playtest_nursery_art.gd"
 
 func run() -> void:
-	capture_dir = "res://character/major-bill-v2/qa/native"
+	capture_dir = "res://output/bill-full-replacement-2026-09-12/rooms"
 	DirAccess.make_dir_recursive_absolute(capture_dir)
 	game = MainScene.instantiate()
+	game.Preferences.save_path="user://bill_art_settings_%d.cfg"%OS.get_process_id()
 	game.meta.save_path = "user://major_bill_meta_fixture_%d.json" % OS.get_process_id()
 	game.run_save_path = "user://major_bill_run_fixture_%d.json" % OS.get_process_id()
 	root.add_child(game)
 	current_scene = game
+	game.set_process(false)
+	game.set_process_input(false)
+	game.set_process_unhandled_input(false)
+	root.gui_disable_input=true
+	root.mode=Window.MODE_WINDOWED
+	root.borderless=false
+	await process_frame
 	root.size = Vector2i(1600, 900)
 	await settle()
 	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
+	game.architect_run.clear()
+	game.bill_npc.active=false
+	game.veld_npc.active=false
+	game.branforth_npc.active=false
 	game.placed_rooms.clear()
 	game.occupied.clear()
 	game.powered_room_cells.clear()
@@ -73,6 +85,7 @@ func run() -> void:
 	await settle()
 	for state in ["idle","walk","run"]:
 		for direction in ["south","north","east","west"]:
+			grid.human_animation_key=""
 			game.test_walker_state = state
 			game.test_walker_direction = direction
 			var offsets := {"south":Vector2i.DOWN,"north":Vector2i.UP,"east":Vector2i.RIGHT,"west":Vector2i.LEFT}
@@ -83,7 +96,10 @@ func run() -> void:
 			await capture("close-"+state+"-"+direction)
 			var before := room_pixels(Vector2i(20,20))
 			before.save_png(capture_dir.path_join(state+"-"+direction+"-a.png"))
-			game.visual_time_seconds += 0.51 if state=="idle" else 0.23
+			if state=="idle":
+				var durations: Array=grid.human_animation_timing["idle-"+direction].durations
+				game.visual_time_seconds += (float(durations[0])+float(durations[1])+float(durations[2])*0.5)/1000.0
+			else: game.visual_time_seconds += 0.23
 			if state!="idle": game.test_walker_progress = 0.035
 			grid.queue_redraw()
 			await settle()

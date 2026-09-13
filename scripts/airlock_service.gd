@@ -2,6 +2,20 @@ extends RefCounted
 const Architects=preload("res://scripts/architects.gd")
 static var shelf_timelines: Dictionary = {}
 
+static func shelf_helmet_scale(game, cell: Vector2i) -> float:
+	# Show the fitted size for the servicing actor, including the returned pose.
+	# Derive this from live crew state so pause/Continue need no new saved field.
+	for id in Architects.IDS:
+		var actor=Architects.actor_for(game,id)
+		if not actor.active or actor.dead:continue
+		if (actor.helmet_action_active() and actor.cell_at(actor.foot)==cell) or (not actor.locker_request.is_empty() and actor.locker_request.locker.cell==cell):
+			return 0.6 if id=="veld" else 1.0
+	var veld=Architects.actor_for(game,"veld")
+	if veld.active and not veld.dead and veld.cell_at(veld.foot)==cell:
+		var target:=locker(game,cell)
+		if not target.is_empty() and veld.foot.distance_to(target.interaction_point)<=12:return 0.6
+	return 1.0
+
 static func helmet_on_shelf(game, cell: Vector2i) -> bool:
 	# Lockers provide reusable gear. A staged spare is visible when not servicing
 	# an actor; active handoffs derive solely from the saved action timer.
@@ -10,7 +24,8 @@ static func helmet_on_shelf(game, cell: Vector2i) -> bool:
 		if not actor.active or actor.dead or not actor.helmet_action_active() or actor.cell_at(actor.foot) != cell: continue
 		var key: String = id + "/" + actor.state
 		if not shelf_timelines.has(key):
-			var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-underwater-v1/locker/%s-%s-east/manifest.json" % [id, actor.state]))
+			var path: String = preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[id]+"locker/%s-east/manifest.json" % actor.state
+			var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(path))
 			var clip: Dictionary = manifest.states[0]
 			var total := 0.0
 			for duration in clip.frameDurationsMs: total += float(duration) / 1000.0
@@ -27,12 +42,17 @@ static func helmet_on_shelf(game, cell: Vector2i) -> bool:
 static func ready(game,cell: Vector2i) -> bool:
 	return game.running and game.occupied.has(cell) and game.occupied[cell].id=="airlock" and not game.occupied[cell].get("suspended",false) and game.powered_room_cells.has(cell)
 
+static func helmet_anchor(prop: Dictionary) -> Vector2:
+	if prop.has("helmet_anchor_uv"):
+		return prop.rect.position+prop.rect.size*prop.helmet_anchor_uv
+	return Vector2(prop.rect.position.x-7,prop.rect.end.y-25)
+
 static func locker(game,cell: Vector2i) -> Dictionary:
 	if not game.occupied.has(cell) or game.occupied[cell].id!="airlock": return {}
 	var geometry: Dictionary=game.grid_view.bill_room_geometry(game.occupied[cell],[])
 	for prop in geometry.props:
 		if prop.id=="suit_lockers":
-			var point: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*384.0+Vector2(prop.rect.position.x-28,prop.rect.end.y+6)
+			var point: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*384.0+helmet_anchor(prop)+Vector2(-21,31)
 			return {"id":"airlock:%d:%d" % [cell.x,cell.y],"cell":cell,"interaction_point":point,"facing":"east"}
 	return {}
 

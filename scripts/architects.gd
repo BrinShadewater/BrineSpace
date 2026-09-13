@@ -122,6 +122,7 @@ static func release(game, occupant: Dictionary, cell: Vector2i) -> bool:
 
 static func advance_core(game, delta: float) -> void:
 	if game.architect_run.is_empty() or not game.running or game.paused: return
+	if not game.hardware.power: return
 	var occupant: Dictionary=game.architect_run.core
 	if occupant.recovered: return
 	# The core pod's initial emergency wake is supplied by the reboot sequence.
@@ -132,6 +133,9 @@ static func advance_core(game, delta: float) -> void:
 		return
 	occupant.recovered=true
 	game.recovered_crew.append({"id":occupant.id,"architect_id":occupant.architect_id,"name":occupant.name,"origin":CORE_CELL,"alive":true})
+	if occupant.architect_id!="marsh":
+		game.recovered_crew.back()["thawed_at"]=game.get_visual_time_seconds()
+		game.recovered_crew.back()["thaw_foot"]=actor_for(game,occupant.architect_id).foot
 	game.crew_count+=1
 	game.had_crew=true
 	game._log("%s awake. Your station has been waiting longer than you have." % occupant.name,false)
@@ -142,7 +146,12 @@ static func pod_for_display(game, occupant: Dictionary) -> Dictionary:
 	var id: String=occupant.get("architect_id","")
 	if id.is_empty(): return result
 	var acquired: bool=false
-	if occupant.get("id","")=="core_architect": result["wake_duration"]=DURATION
+	if occupant.get("id","")=="core_architect":
+		var startup = preload("res://scripts/brine_startup.gd")
+		result["startup_elapsed"]=startup.elapsed(occupant)
+		result["startup_power"]=startup.pod_power(occupant) if game.hardware.power else 0.0
+		result["wake"]=maxf(0.0,float(occupant.wake)-startup.POD_START)
+		result["wake_duration"]=DURATION-startup.POD_START
 	for member in game.recovered_crew:
 		if member.get("architect_id","")==id: acquired=true
 	if acquired: result["recovered"]=true

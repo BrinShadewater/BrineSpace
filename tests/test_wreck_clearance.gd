@@ -29,7 +29,7 @@ func run() -> void:
 	game._set_paused(true,false)
 	var wreck_count := 0
 	for obstacle in game.wrecks.values():
-		wreck_count += int(Field.TYPES.has(obstacle.kind))
+		wreck_count += int(Field.TYPES.has(obstacle.kind) and not obstacle.get("buried",false))
 	check(wreck_count==4,"Four distinct wrecks seed a new run alongside terrain")
 	check(Field.valid(game.wrecks,game.occupied),"Initial wrecks do not overlap station rooms")
 	var cell := Vector2i(18,18)
@@ -37,6 +37,7 @@ func run() -> void:
 	game._toggle_wreck_work(cell)
 	check(not game.wrecks[cell].active,"Cannot salvage beyond adjacent station reach")
 	game._place_room("salvage_drone_bay",Vector2i(18,19),true) # Fixture bay/access; normal runs still pay.
+	game.powered_room_cells[Vector2i(18,19)] = true # Fixture funds the bay; live runs pay at the cycle boundary.
 	game._on_grid_clicked(cell)
 	check(game.selected_room_cell==cell and game.selected_card_id.is_empty(),"Click selects wreck")
 	game.hover_cell = cell
@@ -84,6 +85,7 @@ func run() -> void:
 	# Current construction uses architects or a dedicated bay, not the retired
 	# bootstrap drone. This fixture advances drone work only.
 	game._place_room("construction_drone_bay",Vector2i(18,20),true)
+	game.powered_room_cells[Vector2i(18,20)] = true # Fixture funds the bay; live runs pay at the cycle boundary.
 	game.selected_rotation = 0
 	game.hand.assign(["corridor"])
 	check(game.get_placement_problem("corridor",cell).is_empty(),"Cleared footprint accepts connected room")

@@ -34,22 +34,39 @@ static func set_control(game, key: String, enabled: bool) -> bool:
 	game._refresh_all()
 	return true
 static func draw_effects(canvas, game, rooms: Array, size: float) -> void:
-	if not game.hardware.power: return
 	var time: float=game.get_visual_time_seconds()
 	for room in rooms:
 		var center: Vector2=(Vector2(room.pos)+Vector2.ONE*0.5)*size
-		if game.hardware.exterior:
+		if game.hardware.power and game.hardware.exterior and not room.get("suspended",false) and (game.powered_room_cells.has(room.pos) or room.id=="brine_core"):
 			for direction in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
 				if game.occupied.has(room.pos+direction): continue
 				var housing_visible: bool=game.hardware.walls and (direction!=Vector2i.UP or preload("res://scripts/title_settings.gd").raised_walls)
 				draw_exterior_light(canvas,center,Vector2(direction),size,housing_visible)
 
-		if game.hardware.sprinklers and game.powered_room_cells.has(room.pos) and not str(room.id).begins_with("corridor"):
-			for i in range(28):
-				var phase:=fposmod(time*0.65+float(i)*0.137,1.0)
-				var start:=center+Vector2(sin(i*2.7)*size*0.28,-size*0.25)
-				var drop:=start+Vector2(sin(i*1.7)*size*0.08,phase*size*0.5)
-				canvas.draw_line(drop,drop+Vector2(0,size*0.024),Color(0.55,0.70,0.72,(1-phase)*0.55),maxf(1,size*0.0015))
+		var fire=preload("res://scripts/room_fire.gd")
+		if not fire.burning(room): continue
+		var status: String=fire.sprinkler_status(game,room)
+		var unit := size/384.0
+		var pixel := maxf(1,unit*2)
+		for side in [-1,1]:
+			var nozzle := center+Vector2(side*88,-92)*unit
+			canvas.draw_rect(Rect2(nozzle-Vector2(5,3)*unit,Vector2(10,6)*unit),Color("637c7b"))
+			canvas.draw_rect(Rect2(nozzle-Vector2(2,0)*unit,Vector2(4,4)*unit),Color("b6d4d1") if status=="SPRAYING" else Color("394f53"))
+			if status!="SPRAYING": continue
+			for i in range(22):
+				var phase := fposmod(time*1.2+i*.173+side*.21,1.0)
+				var spread := float(i%11-5)/5.0
+				var drop := nozzle+Vector2(spread*72*phase,phase*165)*unit
+				drop=(drop/pixel).floor()*pixel
+				canvas.draw_rect(Rect2(drop,Vector2(pixel,pixel*2)),Color(.63,.84,.88,.7*(1-phase*.55)))
+		var color := Color("9acbd4") if status=="SPRAYING" else Color("d3a479")
+		var font: Font=ThemeDB.fallback_font
+		var label := "SPRINKLERS / "+status
+		var font_size := maxi(9,roundi(12*unit))
+		var width := font.get_string_size(label,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size).x
+		var position := center+Vector2(-width*.5,125*unit)
+		canvas.draw_rect(Rect2(position-Vector2(5,font_size),Vector2(width+10,font_size+5)),Color(.025,.06,.07,.88))
+		canvas.draw_string(font,position,label,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,color)
 
 static func exterior_mount(center: Vector2, direction: Vector2, size: float) -> Vector2:
 	# Mount to the solid rim, not the empty space below the foundation supports.
@@ -63,7 +80,8 @@ static func exterior_light_radius(size: float) -> float:
 
 static func draw_exterior_light(canvas: CanvasItem, center: Vector2, direction: Vector2, size: float, housing_visible := true) -> void:
 	var lamp:=exterior_mount(center,direction,size)
-	preload("res://rooms/whole-room/radial_light.gd").draw(canvas,lamp,Color(.65,.84,.78,1),exterior_light_radius(size)/112.0,false)
+	# The underwater visibility pass owns illumination and terrain occlusion.
+	# This foreground pass draws only the physical fixture.
 	if not housing_visible: return
 	var tangent:=Vector2(-direction.y,direction.x)
 	var housing:=PackedVector2Array([lamp-tangent*size*0.026-direction*size*0.007,lamp+tangent*size*0.026-direction*size*0.007,lamp+tangent*size*0.026+direction*size*0.009,lamp-tangent*size*0.026+direction*size*0.009])

@@ -25,19 +25,24 @@ func _init() -> void:
 		var turbine := add(game,"current_turbine",Vector2i(10,10),q)
 		check(game._simulate_room_economy().generation==4,"Clear intake produces at rotation %d" % q)
 		var intake: Vector2i = game._turbine_intake_cell(turbine)
+		check(intake == turbine.pos + [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT][q],"Intake independently matches clockwise arrow direction")
 		add(game,"corridor",intake)
+		check(game._turbine_intake_problem(turbine)=="ROOM","Feedback names blocking room")
 		check(game._simulate_room_economy().generation==0,"Occupied intake blocks at rotation %d" % q)
 		game.occupied.erase(intake)
 		game.placed_rooms.pop_back()
 		game.wrecks[intake] = {"cleared":false}
+		check(game._turbine_intake_problem(turbine)=="WRECK","Feedback names blocking wreck")
 		check(game._simulate_room_economy().offline.get(turbine.pos)=="INTAKE BLOCKED","Uncleared site blocks intake")
 		game.wrecks[intake].cleared = true
 		check(game._simulate_room_economy().generation==4,"Cleared site restores intake")
 		game.drone_fleet.sites[intake] = preload("res://scripts/harvest_sites.gd").make_site("mining")
+		check(game._turbine_intake_problem(turbine)=="RESOURCE DEPOSIT","Feedback names blocking deposit")
 		check(game._simulate_room_economy().generation==0,"Finite deposit blocks intake")
 		game.drone_fleet.sites[intake].units = 0
 		check(game._simulate_room_economy().generation==4,"Depleted deposit restores intake")
 		game.drone_fleet.enqueue("corridor",intake,0)
+		check(game._turbine_intake_problem(turbine)=="QUEUED CONSTRUCTION","Feedback names blocking construction")
 		check(game._simulate_room_economy().generation==0,"Paid queue reserves and blocks intake")
 		game.drone_fleet.orders.clear()
 		turbine.suspended = true

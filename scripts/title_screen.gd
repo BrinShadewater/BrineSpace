@@ -27,6 +27,8 @@ var archive: Control
 var archive_opener: Button
 var about_button: Button
 var checkpoint_label: Label
+var checkpoint_panel: PanelContainer
+var checkpoint_preview: Control
 var error_label: Label
 
 func _ready() -> void:
@@ -65,12 +67,30 @@ func _ready() -> void:
 	awakening.add_theme_font_size_override("font_size", 23)
 	awakening.add_theme_color_override("font_color", Color("c3d9d8"))
 	controls.add_child(awakening)
+	checkpoint_panel = PanelContainer.new()
+	checkpoint_panel.name = "SavedLoopPanel"
+	add_child(checkpoint_panel)
+	var checkpoint_style := StyleBoxFlat.new()
+	checkpoint_style.bg_color = Color("091b24")
+	checkpoint_style.border_color = Color("345b6c")
+	checkpoint_style.set_border_width_all(1)
+	checkpoint_style.content_margin_left=12; checkpoint_style.content_margin_right=12
+	checkpoint_style.content_margin_top=12; checkpoint_style.content_margin_bottom=12
+	checkpoint_panel.add_theme_stylebox_override("panel",checkpoint_style)
+	var checkpoint_contents := VBoxContainer.new()
+	checkpoint_contents.add_theme_constant_override("separation",8)
+	checkpoint_panel.add_child(checkpoint_contents)
+	var saved_heading := Label.new()
+	saved_heading.text="CONTINUE LOOP // SAVED STATION"
+	saved_heading.add_theme_font_size_override("font_size",13)
+	saved_heading.add_theme_color_override("font_color",Color("88aebc"))
+	checkpoint_contents.add_child(saved_heading)
 	checkpoint_label = Label.new()
 	checkpoint_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	checkpoint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	checkpoint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	checkpoint_label.add_theme_font_size_override("font_size", 15)
 	checkpoint_label.add_theme_color_override("font_color", Color("aed4dc"))
-	controls.add_child(checkpoint_label)
+	checkpoint_contents.add_child(checkpoint_label)
 	error_label = Label.new()
 	error_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	error_label.add_theme_font_size_override("font_size", 20)
@@ -79,14 +99,16 @@ func _ready() -> void:
 	continue_button = _button("CONTINUE LOOP", false)
 	var checkpoint := RunSave.read(run_save_path)
 	continue_button.visible = not checkpoint.is_empty()
+	checkpoint_panel.visible = continue_button.visible
 	checkpoint_label.visible = continue_button.visible
 	if not checkpoint.is_empty():
 		checkpoint_label.text = preload("res://scripts/checkpoint_preview.gd").summary(checkpoint)
 		var preview := preload("res://scripts/checkpoint_preview.gd").new()
 		preview.name = "CheckpointPreview"
 		preview.configure(checkpoint)
-		controls.add_child(preview)
-		controls.move_child(preview,checkpoint_label.get_index()+1)
+		preview.custom_minimum_size.x = 180
+		checkpoint_preview = preview
+		checkpoint_contents.add_child(preview)
 		if checkpoint.has("saved_at"):
 			checkpoint_label.text += "\nSAVED " + Time.get_datetime_string_from_unix_time(int(checkpoint.saved_at)).replace("T", " ") + " UTC"
 		if checkpoint.get("_recovered_backup", false):
@@ -131,6 +153,7 @@ func _ready() -> void:
 	progression_button.pressed.connect(func() -> void: _open_archive("progression", progression_button))
 	resized.connect(_layout)
 	controls.minimum_size_changed.connect(func() -> void: _layout.call_deferred())
+	checkpoint_panel.minimum_size_changed.connect(func() -> void: _layout.call_deferred())
 	_layout()
 	start_button.grab_focus()
 	_refresh_unread_badges()
@@ -149,12 +172,15 @@ func _button(caption: String, primary: bool) -> Button:
 func _layout() -> void:
 	if not is_instance_valid(cover):
 		return
-	var footer_height := 360.0 if continue_button.visible else 280.0
+	var footer_height := 280.0
 	footer_height = maxf(footer_height, controls.get_combined_minimum_size().y + 32)
 	var cover_height := minf(size.x / COVER_RATIO, maxf(1.0, size.y - footer_height))
 	cover.size = Vector2(cover_height * COVER_RATIO, cover_height)
 	cover.position = Vector2((size.x - cover.size.x) * 0.5, (size.y - cover_height - footer_height) * 0.5)
 	var bar_top := cover.position.y + cover_height
+	if checkpoint_panel.visible:
+		checkpoint_panel.size = Vector2(clampf(size.x*0.25,240.0,380.0),0)
+		checkpoint_panel.position = Vector2(size.x-checkpoint_panel.size.x-24,maxf(12.0,bar_top-checkpoint_panel.size.y-16.0))
 	var center_y := (bar_top + size.y) * 0.5
 	controls.size = Vector2(380, footer_height - 32)
 	controls.position = Vector2((size.x - 380) * 0.5, center_y - controls.size.y * 0.5)

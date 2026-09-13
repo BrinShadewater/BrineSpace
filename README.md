@@ -29,6 +29,11 @@ a claim of finished large-station performance.*
 
 ## Restore a station beneath the ocean
 
+For playtesting, **F7** toggles live performance statistics, **F8** opens the local
+bug reporter, and **F9** opens Room Layout Studio. Manual bug reports include recent
+frame timings and a separate live station snapshot. See the
+[performance diagnostics guide](docs/PERFORMANCE_DIAGNOSTICS_2026-09-12.md) for limits.
+
 Build a little, watch the systems find their rhythm, and decide whether to risk
 one more room. Every expansion needs supplies and a way to connect to the station.
 Power keeps machinery running, life support sustains the crew, and drones bring

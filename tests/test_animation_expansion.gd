@@ -8,6 +8,7 @@ class Fixture extends "res://scripts/companion_npc.gd":
 	func can_stand(_point:Vector2)->bool:return true
 class Game extends RefCounted:
 	var occupied={}
+	var placed_rooms=[]
 	var running=true
 	var paused=false
 	func play_station_sound(_key,_point):pass
@@ -50,7 +51,10 @@ func run():
 				check(actor.locomotion.key=="turn-"+d+"-"+to,"Authored turn selected "+d+to)
 		actor.state="idle";actor.locomotion.advance(actor,"walk",actor.direction,.1)
 		check(actor.locomotion.key.begins_with("move-stop-"),"Braking plays at arrival")
-	var marsh=Player.new();marsh.load_manifest("res://character/animation-expansion-v5/marsh/manifest.json")
+	var marsh=Player.new()
+	var base: String=Player.REVISION_ROOTS.marsh
+	var catalog: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
+	for path in catalog.body:marsh.load_manifest(base+str(path),true)
 	for d in DIRS:
 		for pair in [["sit-idle","weld"],["sleep","death-ground"],["carry","walk"],["swim","tread"]]:
 			check(marsh.frames[pair[0]+"-"+d][0].get_image().get_data()!=marsh.frames[pair[1]+"-"+d][0].get_image().get_data(),"Distinct Marsh activity "+pair[0]+d)

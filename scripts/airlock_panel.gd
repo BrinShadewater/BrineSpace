@@ -11,6 +11,7 @@ var feedback_until:=0
 var cycle_button: Button
 var cycle_status: Label
 var expedition_button: Button
+var expedition_kind: OptionButton
 const Cycle=preload("res://scripts/airlock_cycle.gd")
 func _ready() -> void:
 	choice=OptionButton.new()
@@ -49,14 +50,20 @@ func _ready() -> void:
 	cycle_status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	cycle_status.add_theme_font_size_override("font_size",12)
 	add_child(cycle_status)
+	expedition_kind=OptionButton.new()
+	expedition_kind.add_item("MINE MINERALS // 2 METAL")
+	expedition_kind.add_item("SALVAGE SCRAP // 1 METAL + 1 DATA")
+	expedition_kind.select(1)
+	expedition_kind.item_selected.connect(func(_index): refresh())
+	add_child(expedition_kind)
 	expedition_button = Button.new()
 	game._style_hud_button(expedition_button,false)
 	expedition_button.pressed.connect(func():
 		var id := str(choice.get_item_metadata(choice.selected))
 		var actor = Architects.actor_for(game,id)
 		if not actor.expedition.is_empty(): preload("res://scripts/crew_expedition.gd").request_recall(game,actor)
-		elif not preload("res://scripts/crew_expedition.gd").dispatch(game,id,game.selected_room_cell):
-			status.text = "No surveyed scrap site within tank range. Clear a shorter route or build a closer airlock."
+		elif not preload("res://scripts/crew_expedition.gd").dispatch(game,id,game.selected_room_cell,"mining" if expedition_kind.selected==0 else "salvage"):
+			status.text = "No reachable surveyed %s within return range. Clear a shorter route or build a closer airlock." % ("mineral deposit" if expedition_kind.selected==0 else "scrap pile")
 			feedback_until = Time.get_ticks_msec()+3500
 		refresh()
 	)
@@ -83,9 +90,12 @@ func refresh() -> void:
 	var id:=str(choice.get_item_metadata(choice.selected))
 	var actor=Architects.actor_for(game,id)
 	var expedition_reason := preload("res://scripts/crew_expedition.gd").reason(game,id,cell)
-	expedition_button.text = "RECALL EXPEDITION" if not actor.expedition.is_empty() else ("SALVAGE EXPEDITION // BATTERY" if not actor.needs_air() else "SALVAGE EXPEDITION // 2 OXYGEN")
+	expedition_kind.disabled=not actor.expedition.is_empty()
+	if not actor.expedition.is_empty(): expedition_kind.select(0 if actor.expedition.get("kind","salvage")=="mining" else 1)
+	var mission_label := "MINING" if expedition_kind.selected==0 else "SALVAGE"
+	expedition_button.text = "RECALL EXPEDITION" if not actor.expedition.is_empty() else (mission_label+" EXPEDITION // BATTERY" if not actor.needs_air() else mission_label+" EXPEDITION // 2 OXYGEN")
 	expedition_button.disabled = actor.expedition.is_empty() and not expedition_reason.is_empty()
-	expedition_button.tooltip_text = expedition_reason if not expedition_reason.is_empty() else ("Marsh needs no helmet or Oxygen. Battery reserve limits his trip; return to the charging pod afterward." if not actor.needs_air() else "Recover one finite scrap load. Tank lasts 60 seconds underwater. Return before it empties.")
+	expedition_button.tooltip_text = expedition_reason if not expedition_reason.is_empty() else ("Marsh needs no helmet or Oxygen. Battery reserve limits his trip; return to the charging pod afterward." if not actor.needs_air() else "Recover one finite load from the nearest surveyed site of the selected type. Minerals yield 2 Metal; scrap yields 1 Metal and 1 Data. Cargo arrives after safe return. Tank lasts 60 seconds underwater.")
 	var active_work: bool=actor.helmet_action_active() or not actor.locker_request.is_empty()
 	action.text="RETURN DIVING HELMET" if actor.helmet_equipped else "FIT DIVING HELMET"
 	action.disabled=not actor.needs_air() or not actor.expedition.is_empty() or not Service.ready(game,cell) or not Architects.present(game,id) or not actor.active or actor.dead or active_work or Service.busy(game,cell,actor) or actor.movement_medium!="dry" or not actor.stage.is_empty()
@@ -98,11 +108,13 @@ func refresh() -> void:
 	var room: Dictionary=game.occupied[cell]
 	var pose:=Cycle.pose(room)
 	cycle_button.text="FLOOD & OPEN OUTER HATCH" if pose.phase=="dry" else "CLOSE OUTER HATCH & DRAIN"
-	cycle_button.disabled=not Service.ready(game,cell) or not pose.phase in ["dry","exterior"] or (pose.phase=="dry" and not Cycle.exterior_clear(game,room))
+	cycle_button.disabled=not Service.ready(game,cell) or not pose.phase in ["dry","exterior","sealed_exterior"] or (pose.phase=="dry" and not Cycle.exterior_clear(game,room))
 	if preload("res://scripts/crew_expedition.gd").reserved(game,cell):
 		cycle_button.disabled = true
 		action.disabled = true
 		status.text = actor.activity
 	cycle_status.text="%s\nWater %d%% / pressure %d%%" % [Cycle.LABELS[pose.phase],roundi(pose.water*100),roundi(pose.pressure*100)]
-	if pose.phase=="dry" and not Cycle.exterior_clear(game,room): cycle_status.text+="\nClear the exterior hatch approach."
+	if pose.phase=="dry":
+		var obstruction:=Cycle.exterior_problem(game,room)
+		if not obstruction.is_empty(): cycle_status.text+="\n"+obstruction
 	if not Service.ready(game,cell): cycle_status.text+="\nPOWER OFF / CYCLE HELD"
