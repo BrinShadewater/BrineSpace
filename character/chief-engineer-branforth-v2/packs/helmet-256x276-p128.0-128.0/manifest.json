@@ -1,0 +1,603 @@
+{
+  "name": "chief-engineer-branforth-v2-helmet-256x276-p128.0-128.0",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128.0,
+    128.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.12175675675675675,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "swim-start-north",
+      "frameFiles": [
+        "../../frames/helmet/swim-start-north/000.png",
+        "../../frames/helmet/swim-start-north/001.png",
+        "../../frames/helmet/swim-start-north/002.png",
+        "../../frames/helmet/swim-start-north/003.png",
+        "../../frames/helmet/swim-start-north/004.png",
+        "../../frames/helmet/swim-start-north/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "tread",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-stop-north",
+      "frameFiles": [
+        "../../frames/helmet/swim-stop-north/000.png",
+        "../../frames/helmet/swim-stop-north/001.png",
+        "../../frames/helmet/swim-stop-north/002.png",
+        "../../frames/helmet/swim-stop-north/003.png",
+        "../../frames/helmet/swim-stop-north/004.png",
+        "../../frames/helmet/swim-stop-north/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-north-east",
+      "frameFiles": [
+        "../../frames/helmet/swim-turn-north-east/000.png",
+        "../../frames/helmet/swim-turn-north-east/001.png",
+        "../../frames/helmet/swim-turn-north-east/002.png",
+        "../../frames/helmet/swim-turn-north-east/003.png",
+        "../../frames/helmet/swim-turn-north-east/004.png",
+        "../../frames/helmet/swim-turn-north-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-east-north",
+      "frameFiles": [
+        "../../frames/helmet/swim-turn-east-north/000.png",
+        "../../frames/helmet/swim-turn-east-north/001.png",
+        "../../frames/helmet/swim-turn-east-north/002.png",
+        "../../frames/helmet/swim-turn-east-north/003.png",
+        "../../frames/helmet/swim-turn-east-north/004.png",
+        "../../frames/helmet/swim-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-north-west",
+      "frameFiles": [
+        "../../frames/helmet/swim-turn-north-west/000.png",
+        "../../frames/helmet/swim-turn-north-west/001.png",
+        "../../frames/helmet/swim-turn-north-west/002.png",
+        "../../frames/helmet/swim-turn-north-west/003.png",
+        "../../frames/helmet/swim-turn-north-west/004.png",
+        "../../frames/helmet/swim-turn-north-west/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-west-north",
+      "frameFiles": [
+        "../../frames/helmet/swim-turn-west-north/000.png",
+        "../../frames/helmet/swim-turn-west-north/001.png",
+        "../../frames/helmet/swim-turn-west-north/002.png",
+        "../../frames/helmet/swim-turn-west-north/003.png",
+        "../../frames/helmet/swim-turn-west-north/004.png",
+        "../../frames/helmet/swim-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-west-east",
+      "frameFiles": [
+        "../../frames/helmet/swim-turn-west-east/000.png",
+        "../../frames/helmet/swim-turn-west-east/001.png",
+        "../../frames/helmet/swim-turn-west-east/002.png",
+        "../../frames/helmet/swim-turn-west-east/003.png",
+        "../../frames/helmet/swim-turn-west-east/004.png",
+        "../../frames/helmet/swim-turn-west-east/005.png",
+        "../../frames/helmet/swim-turn-west-east/006.png",
+        "../../frames/helmet/swim-turn-west-east/007.png",
+        "../../frames/helmet/swim-turn-west-east/008.png",
+        "../../frames/helmet/swim-turn-west-east/009.png",
+        "../../frames/helmet/swim-turn-west-east/010.png",
+        "../../frames/helmet/swim-turn-west-east/011.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        45,
+        45,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-north-south",
+      "frameFiles": [
+        "../../frames/helmet/swim-turn-north-south/000.png",
+        "../../frames/helmet/swim-turn-north-south/001.png",
+        "../../frames/helmet/swim-turn-north-south/002.png",
+        "../../frames/helmet/swim-turn-north-south/003.png",
+        "../../frames/helmet/swim-turn-north-south/004.png",
+        "../../frames/helmet/swim-turn-north-south/005.png",
+        "../../frames/helmet/swim-turn-north-south/006.png",
+        "../../frames/helmet/swim-turn-north-south/007.png",
+        "../../frames/helmet/swim-turn-north-south/008.png",
+        "../../frames/helmet/swim-turn-north-south/009.png",
+        "../../frames/helmet/swim-turn-north-south/010.png",
+        "../../frames/helmet/swim-turn-north-south/011.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        45,
+        45,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-turn-south-north",
+      "frameFiles": [
+        "../../frames/helmet/swim-turn-south-north/000.png",
+        "../../frames/helmet/swim-turn-south-north/001.png",
+        "../../frames/helmet/swim-turn-south-north/002.png",
+        "../../frames/helmet/swim-turn-south-north/003.png",
+        "../../frames/helmet/swim-turn-south-north/004.png",
+        "../../frames/helmet/swim-turn-south-north/005.png",
+        "../../frames/helmet/swim-turn-south-north/006.png",
+        "../../frames/helmet/swim-turn-south-north/007.png",
+        "../../frames/helmet/swim-turn-south-north/008.png",
+        "../../frames/helmet/swim-turn-south-north/009.png",
+        "../../frames/helmet/swim-turn-south-north/010.png",
+        "../../frames/helmet/swim-turn-south-north/011.png"
+      ],
+      "frameDurationsMs": [
+        45,
+        60,
+        65,
+        65,
+        60,
+        45,
+        45,
+        60,
+        65,
+        65,
+        60,
+        45
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

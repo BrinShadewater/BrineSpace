@@ -1,0 +1,81 @@
+{
+  "name": "dr-veld-v2-helmet-256x256-p64.0-112.0",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    64.0,
+    112.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.0872972972972973,
+    "walk-west": 0.0872972972972973,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "../../frames/helmet/sleep-east/000.png",
+        "../../frames/helmet/sleep-east/001.png",
+        "../../frames/helmet/sleep-east/002.png",
+        "../../frames/helmet/sleep-east/003.png",
+        "../../frames/helmet/sleep-east/004.png",
+        "../../frames/helmet/sleep-east/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        -28.67027027027027,
+        -6.175135135135136
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "source": "character/marsh-motion-polish-v1/sources/short-step-east-video-02.mp4",
+  "output": "character/marsh-motion-polish-v1/review/short-step-east-root-candidate-02",
+  "state": "walk-step-east",
+  "sourceFrames": [
+    18,
+    26,
+    34,
+    42,
+    50,
+    58,
+    66
+  ],
+  "sourceCycle": [
+    18,
+    66
+  ],
+  "durations": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "sourceSize": [
+    1248,
+    1664
+  ],
+  "fps": 24,
+  "scale": 0.11127933383800151,
+  "position": [
+    66,
+    54
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "limits": [
+    "Unselected root-motion candidate with seven provisional 120-ms poses.",
+    "Only explicit recorded root displacement is subtracted; scale, vertical registration and articulated pixels remain unchanged.",
+    "Native contact and selected idle joins remain pending; do not compress the step to arbitrary tiny routes."
+  ],
+  "rootDisplacementPixels": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      9,
+      0
+    ]
+  ],
+  "rootMotionReview": {
+    "status": "provisional-manual-fit",
+    "method": "Final heel displacement approximately 9 dense pixels. Torso patch matching suggests shifts 0/0/2-3/8-9/10/9/9; smoother root track retains local torso weight transfer.",
+    "uncertaintyPixels": 2,
+    "nominalTravelWorldUnits": 3.9697297297297296,
+    "warning": "Fitting a root track is not independent proof of planted-foot contact; review reconstructed source motion and live exact-distance movement."
+  }
+}

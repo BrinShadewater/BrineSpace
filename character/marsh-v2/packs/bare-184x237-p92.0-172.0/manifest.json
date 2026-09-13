@@ -1,0 +1,185 @@
+{
+  "name": "marsh-v2-bare-184x237-p92.0-172.0",
+  "frameWidth": 184,
+  "frameHeight": 237,
+  "pivot": [
+    92.0,
+    172.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "run": 0.16,
+    "walk": 0.12,
+    "run-east": 0.11027027027027027,
+    "run-north": 0.11027027027027027,
+    "run-south": 0.11027027027027027,
+    "run-west": 0.11027027027027027,
+    "walk-east": 0.11027027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128,
+    "walk-west": 0.14472972972972975,
+    "carry-north": 0.0827027027027027,
+    "carry-south": 0.0827027027027027,
+    "carry-west": 0.0827027027027027,
+    "carry-east": 0.0827027027027027
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "weld-south",
+      "frameFiles": [
+        "../../frames/bare/weld-south/000.png",
+        "../../frames/bare/weld-south/001.png",
+        "../../frames/bare/weld-south/002.png",
+        "../../frames/bare/weld-south/003.png",
+        "../../frames/bare/weld-south/004.png",
+        "../../frames/bare/weld-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-draw-south",
+      "frameFiles": [
+        "../../frames/bare/torch-draw-south/000.png",
+        "../../frames/bare/torch-draw-south/001.png",
+        "../../frames/bare/torch-draw-south/002.png",
+        "../../frames/bare/torch-draw-south/003.png",
+        "../../frames/bare/torch-draw-south/004.png",
+        "../../frames/bare/torch-draw-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-stow-south",
+      "frameFiles": [
+        "../../frames/bare/torch-stow-south/000.png",
+        "../../frames/bare/torch-stow-south/001.png",
+        "../../frames/bare/torch-stow-south/002.png",
+        "../../frames/bare/torch-stow-south/003.png",
+        "../../frames/bare/torch-stow-south/004.png",
+        "../../frames/bare/torch-stow-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

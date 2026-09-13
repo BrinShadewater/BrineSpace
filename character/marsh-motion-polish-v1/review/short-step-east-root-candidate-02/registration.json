@@ -1,0 +1,190 @@
+{
+  "source": "character/marsh-motion-polish-v1/sources/short-step-east-video-02.mp4",
+  "output": "character/marsh-motion-polish-v1/review/short-step-east-root-candidate-02",
+  "state": "walk-step-east",
+  "sourceFrames": [
+    18,
+    26,
+    34,
+    42,
+    50,
+    58,
+    66
+  ],
+  "sourceCycle": [
+    18,
+    66
+  ],
+  "durations": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "sourceSize": [
+    1248,
+    1664
+  ],
+  "fps": 24,
+  "scale": 0.11127933383800151,
+  "position": [
+    66,
+    54
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "limits": [
+    "Unselected root-motion candidate with seven provisional 120-ms poses.",
+    "Only explicit recorded root displacement is subtracted; scale, vertical registration and articulated pixels remain unchanged.",
+    "Native contact and selected idle joins remain pending; do not compress the step to arbitrary tiny routes."
+  ],
+  "rootDisplacementPixels": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      9,
+      0
+    ]
+  ],
+  "rootMotionReview": {
+    "status": "provisional-manual-fit",
+    "method": "Final heel displacement approximately 9 dense pixels. Torso patch matching suggests shifts 0/0/2-3/8-9/10/9/9; smoother root track retains local torso weight transfer.",
+    "uncertaintyPixels": 2,
+    "nominalTravelWorldUnits": 3.9697297297297296,
+    "warning": "Fitting a root track is not independent proof of planted-foot contact; review reconstructed source motion and live exact-distance movement."
+  },
+  "sourceSha256": "88d86e31183a7e096f66578c30dd1aa12cf2ca1786a3b4847df154bb95d71e16",
+  "recipeSha256": "73c073f3a4dd6041ddd4b1cd3402d612fb8cea6b50ead591f496a52cbfcb1048",
+  "records": [
+    {
+      "slot": 0,
+      "sourceFrame": 18,
+      "bounds": [
+        111,
+        77,
+        144,
+        223
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 1,
+      "sourceFrame": 26,
+      "bounds": [
+        111,
+        77,
+        149,
+        223
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 2,
+      "sourceFrame": 34,
+      "bounds": [
+        109,
+        78,
+        162,
+        223
+      ],
+      "rootDisplacementPixels": [
+        2,
+        0
+      ]
+    },
+    {
+      "slot": 3,
+      "sourceFrame": 42,
+      "bounds": [
+        102,
+        77,
+        156,
+        223
+      ],
+      "rootDisplacementPixels": [
+        6,
+        0
+      ]
+    },
+    {
+      "slot": 4,
+      "sourceFrame": 50,
+      "bounds": [
+        105,
+        77,
+        150,
+        221
+      ],
+      "rootDisplacementPixels": [
+        9,
+        0
+      ]
+    },
+    {
+      "slot": 5,
+      "sourceFrame": 58,
+      "bounds": [
+        112,
+        77,
+        147,
+        223
+      ],
+      "rootDisplacementPixels": [
+        9,
+        0
+      ]
+    },
+    {
+      "slot": 6,
+      "sourceFrame": 66,
+      "bounds": [
+        111,
+        76,
+        145,
+        223
+      ],
+      "rootDisplacementPixels": [
+        9,
+        0
+      ]
+    }
+  ],
+  "status": "prepared_selection_tracked_in_ledger"
+}

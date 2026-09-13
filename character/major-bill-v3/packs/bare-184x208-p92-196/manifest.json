@@ -1,0 +1,212 @@
+{
+  "name": "major-bill-v3-bare-184x208-p92-196",
+  "frameWidth": 184,
+  "frameHeight": 208,
+  "pivot": [
+    92,
+    196
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "run": 0.168,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.10567567567567569,
+    "walk-west": 0.10567567567567569
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "../../frames/bare/equip-helmet-east/000.png",
+        "../../frames/bare/equip-helmet-east/001.png",
+        "../../frames/bare/equip-helmet-east/002.png",
+        "../../frames/bare/equip-helmet-east/003.png",
+        "../../frames/bare/equip-helmet-east/004.png",
+        "../../frames/bare/equip-helmet-east/005.png",
+        "../../frames/bare/equip-helmet-east/006.png",
+        "../../frames/bare/equip-helmet-east/007.png",
+        "../../frames/bare/equip-helmet-east/008.png",
+        "../../frames/bare/equip-helmet-east/009.png",
+        "../../frames/bare/equip-helmet-east/010.png",
+        "../../frames/bare/equip-helmet-east/011.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        180.0,
+        160.0,
+        180.0,
+        180.0,
+        80.0,
+        100.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        240.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "take-helmet-from-locker",
+          "frame": 2,
+          "timeMs": 320
+        }
+      ]
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "../../frames/bare/remove-helmet-east/000.png",
+        "../../frames/bare/remove-helmet-east/001.png",
+        "../../frames/bare/remove-helmet-east/002.png",
+        "../../frames/bare/remove-helmet-east/003.png",
+        "../../frames/bare/remove-helmet-east/004.png",
+        "../../frames/bare/remove-helmet-east/005.png",
+        "../../frames/bare/remove-helmet-east/006.png",
+        "../../frames/bare/remove-helmet-east/007.png",
+        "../../frames/bare/remove-helmet-east/008.png",
+        "../../frames/bare/remove-helmet-east/009.png",
+        "../../frames/bare/remove-helmet-east/010.png",
+        "../../frames/bare/remove-helmet-east/011.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        260.0,
+        220.0,
+        220.0,
+        180.0,
+        120.0,
+        100.0,
+        200.0,
+        200.0,
+        260.0,
+        180.0,
+        160.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "events": [
+        {
+          "id": "release-helmet-to-locker",
+          "frame": 10,
+          "timeMs": 1900
+        }
+      ]
+    }
+  ]
+}

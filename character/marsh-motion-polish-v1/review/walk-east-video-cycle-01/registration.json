@@ -1,0 +1,137 @@
+{
+  "source": "character/marsh-motion-polish-v1/sources/walk-east-video-01.mp4",
+  "output": "character/marsh-motion-polish-v1/review/walk-east-video-cycle-01",
+  "state": "walk-east",
+  "sourceFrames": [
+    36,
+    41,
+    45,
+    50,
+    55,
+    59
+  ],
+  "sourceCycle": [
+    36,
+    64
+  ],
+  "durations": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+  ],
+  "sourceSize": [
+    1248,
+    1664
+  ],
+  "fps": 24,
+  "scale": 0.10652173913043478,
+  "position": [
+    62,
+    59
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "limits": [
+    "Fixed anatomical scale, pelvis approximately x624 and ground y1543.",
+    "Independent source cycle 36-64; no per-pose bounding-box normalization.",
+    "Marsh remains helmet-free. Selected with 96 dense pixels per cycle; native and live walk checks recorded in docs/HANDOFF_MARSH_MOTION_2026-09-12.md. Boundary heel measurements do not prove continuous foot locking."
+  ],
+  "sourceSha256": "c714f6b03e27d187d683c8d2c9b61eb9420c7642f79f902daed16e3ad4cc2720",
+  "recipeSha256": "3d65bce1366ca246bfdbf66a7afaab2d593cef3d170d40a7ba6a6f257f13be4e",
+  "records": [
+    {
+      "slot": 0,
+      "sourceFrame": 36,
+      "bounds": [
+        94,
+        75,
+        164,
+        222
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 1,
+      "sourceFrame": 41,
+      "bounds": [
+        99,
+        74,
+        146,
+        223
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 2,
+      "sourceFrame": 45,
+      "bounds": [
+        108,
+        73,
+        152,
+        223
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 3,
+      "sourceFrame": 50,
+      "bounds": [
+        92,
+        75,
+        164,
+        223
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 4,
+      "sourceFrame": 55,
+      "bounds": [
+        97,
+        74,
+        146,
+        220
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 5,
+      "sourceFrame": 59,
+      "bounds": [
+        105,
+        73,
+        151,
+        220
+      ],
+      "rootDisplacementPixels": [
+        0,
+        0
+      ]
+    }
+  ],
+  "status": "prepared_selection_tracked_in_ledger"
+}

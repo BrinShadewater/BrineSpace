@@ -1,0 +1,6169 @@
+{
+  "name": "marsh-v2-bare-184x184-p92.0-172.0",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92.0,
+    172.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "run": 0.16,
+    "walk": 0.12,
+    "run-east": 0.11027027027027027,
+    "run-north": 0.11027027027027027,
+    "run-south": 0.11027027027027027,
+    "run-west": 0.11027027027027027,
+    "walk-east": 0.11027027027027027,
+    "walk-north": 0.128,
+    "walk-south": 0.128,
+    "walk-west": 0.14472972972972975,
+    "carry-north": 0.0827027027027027,
+    "carry-south": 0.0827027027027027,
+    "carry-west": 0.0827027027027027,
+    "carry-east": 0.0827027027027027
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "../../frames/bare/idle-south/000.png",
+        "../../frames/bare/idle-south/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "../../frames/bare/idle-north/000.png",
+        "../../frames/bare/idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "../../frames/bare/idle-east/000.png",
+        "../../frames/bare/idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "../../frames/bare/idle-west/000.png",
+        "../../frames/bare/idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "../../frames/bare/walk-south/000.png",
+        "../../frames/bare/walk-south/001.png",
+        "../../frames/bare/walk-south/002.png",
+        "../../frames/bare/walk-south/003.png",
+        "../../frames/bare/walk-south/004.png",
+        "../../frames/bare/walk-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "../../frames/bare/walk-north/000.png",
+        "../../frames/bare/walk-north/001.png",
+        "../../frames/bare/walk-north/002.png",
+        "../../frames/bare/walk-north/003.png",
+        "../../frames/bare/walk-north/004.png",
+        "../../frames/bare/walk-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "../../frames/bare/walk-east/000.png",
+        "../../frames/bare/walk-east/001.png",
+        "../../frames/bare/walk-east/002.png",
+        "../../frames/bare/walk-east/003.png",
+        "../../frames/bare/walk-east/004.png",
+        "../../frames/bare/walk-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "../../frames/bare/walk-west/000.png",
+        "../../frames/bare/walk-west/001.png",
+        "../../frames/bare/walk-west/002.png",
+        "../../frames/bare/walk-west/003.png",
+        "../../frames/bare/walk-west/004.png",
+        "../../frames/bare/walk-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "run-south",
+      "frameFiles": [
+        "../../frames/bare/run-south/000.png",
+        "../../frames/bare/run-south/001.png",
+        "../../frames/bare/run-south/002.png",
+        "../../frames/bare/run-south/003.png",
+        "../../frames/bare/run-south/004.png",
+        "../../frames/bare/run-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "run-north",
+      "frameFiles": [
+        "../../frames/bare/run-north/000.png",
+        "../../frames/bare/run-north/001.png",
+        "../../frames/bare/run-north/002.png",
+        "../../frames/bare/run-north/003.png",
+        "../../frames/bare/run-north/004.png",
+        "../../frames/bare/run-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "run-east",
+      "frameFiles": [
+        "../../frames/bare/run-east/000.png",
+        "../../frames/bare/run-east/001.png",
+        "../../frames/bare/run-east/002.png",
+        "../../frames/bare/run-east/003.png",
+        "../../frames/bare/run-east/004.png",
+        "../../frames/bare/run-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "run-west",
+      "frameFiles": [
+        "../../frames/bare/run-west/000.png",
+        "../../frames/bare/run-west/001.png",
+        "../../frames/bare/run-west/002.png",
+        "../../frames/bare/run-west/003.png",
+        "../../frames/bare/run-west/004.png",
+        "../../frames/bare/run-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "run",
+        "run",
+        "run",
+        "run",
+        "run",
+        "run"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "weld-north",
+      "frameFiles": [
+        "../../frames/bare/weld-north/000.png",
+        "../../frames/bare/weld-north/001.png",
+        "../../frames/bare/weld-north/002.png",
+        "../../frames/bare/weld-north/003.png",
+        "../../frames/bare/weld-north/004.png",
+        "../../frames/bare/weld-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "weld-east",
+      "frameFiles": [
+        "../../frames/bare/weld-east/000.png",
+        "../../frames/bare/weld-east/001.png",
+        "../../frames/bare/weld-east/002.png",
+        "../../frames/bare/weld-east/003.png",
+        "../../frames/bare/weld-east/004.png",
+        "../../frames/bare/weld-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "weld-west",
+      "frameFiles": [
+        "../../frames/bare/weld-west/000.png",
+        "../../frames/bare/weld-west/001.png",
+        "../../frames/bare/weld-west/002.png",
+        "../../frames/bare/weld-west/003.png",
+        "../../frames/bare/weld-west/004.png",
+        "../../frames/bare/weld-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "repair-south",
+      "frameFiles": [
+        "../../frames/bare/repair-south/000.png",
+        "../../frames/bare/repair-south/001.png",
+        "../../frames/bare/repair-south/002.png",
+        "../../frames/bare/repair-south/003.png",
+        "../../frames/bare/repair-south/004.png",
+        "../../frames/bare/repair-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "repair-north",
+      "frameFiles": [
+        "../../frames/bare/repair-north/000.png",
+        "../../frames/bare/repair-north/001.png",
+        "../../frames/bare/repair-north/002.png",
+        "../../frames/bare/repair-north/003.png",
+        "../../frames/bare/repair-north/004.png",
+        "../../frames/bare/repair-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "repair-east",
+      "frameFiles": [
+        "../../frames/bare/repair-east/000.png",
+        "../../frames/bare/repair-east/001.png",
+        "../../frames/bare/repair-east/002.png",
+        "../../frames/bare/repair-east/003.png",
+        "../../frames/bare/repair-east/004.png",
+        "../../frames/bare/repair-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "repair-west",
+      "frameFiles": [
+        "../../frames/bare/repair-west/000.png",
+        "../../frames/bare/repair-west/001.png",
+        "../../frames/bare/repair-west/002.png",
+        "../../frames/bare/repair-west/003.png",
+        "../../frames/bare/repair-west/004.png",
+        "../../frames/bare/repair-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair",
+        "repair"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "interact-south",
+      "frameFiles": [
+        "../../frames/bare/interact-south/000.png",
+        "../../frames/bare/interact-south/001.png",
+        "../../frames/bare/interact-south/002.png",
+        "../../frames/bare/interact-south/003.png",
+        "../../frames/bare/interact-south/004.png",
+        "../../frames/bare/interact-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "interact-north",
+      "frameFiles": [
+        "../../frames/bare/interact-north/000.png",
+        "../../frames/bare/interact-north/001.png",
+        "../../frames/bare/interact-north/002.png",
+        "../../frames/bare/interact-north/003.png",
+        "../../frames/bare/interact-north/004.png",
+        "../../frames/bare/interact-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "interact-east",
+      "frameFiles": [
+        "../../frames/bare/interact-east/000.png",
+        "../../frames/bare/interact-east/001.png",
+        "../../frames/bare/interact-east/002.png",
+        "../../frames/bare/interact-east/003.png",
+        "../../frames/bare/interact-east/004.png",
+        "../../frames/bare/interact-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "interact-west",
+      "frameFiles": [
+        "../../frames/bare/interact-west/000.png",
+        "../../frames/bare/interact-west/001.png",
+        "../../frames/bare/interact-west/002.png",
+        "../../frames/bare/interact-west/003.png",
+        "../../frames/bare/interact-west/004.png",
+        "../../frames/bare/interact-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact",
+        "interact"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "inspect-south",
+      "frameFiles": [
+        "../../frames/bare/inspect-south/000.png",
+        "../../frames/bare/inspect-south/001.png",
+        "../../frames/bare/inspect-south/002.png",
+        "../../frames/bare/inspect-south/003.png",
+        "../../frames/bare/inspect-south/004.png",
+        "../../frames/bare/inspect-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "inspect-north",
+      "frameFiles": [
+        "../../frames/bare/inspect-north/000.png",
+        "../../frames/bare/inspect-north/001.png",
+        "../../frames/bare/inspect-north/002.png",
+        "../../frames/bare/inspect-north/003.png",
+        "../../frames/bare/inspect-north/004.png",
+        "../../frames/bare/inspect-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "inspect-east",
+      "frameFiles": [
+        "../../frames/bare/inspect-east/000.png",
+        "../../frames/bare/inspect-east/001.png",
+        "../../frames/bare/inspect-east/002.png",
+        "../../frames/bare/inspect-east/003.png",
+        "../../frames/bare/inspect-east/004.png",
+        "../../frames/bare/inspect-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "inspect-west",
+      "frameFiles": [
+        "../../frames/bare/inspect-west/000.png",
+        "../../frames/bare/inspect-west/001.png",
+        "../../frames/bare/inspect-west/002.png",
+        "../../frames/bare/inspect-west/003.png",
+        "../../frames/bare/inspect-west/004.png",
+        "../../frames/bare/inspect-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "salvage-south",
+      "frameFiles": [
+        "../../frames/bare/salvage-south/000.png",
+        "../../frames/bare/salvage-south/001.png",
+        "../../frames/bare/salvage-south/002.png",
+        "../../frames/bare/salvage-south/003.png",
+        "../../frames/bare/salvage-south/004.png",
+        "../../frames/bare/salvage-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "salvage-north",
+      "frameFiles": [
+        "../../frames/bare/salvage-north/000.png",
+        "../../frames/bare/salvage-north/001.png",
+        "../../frames/bare/salvage-north/002.png",
+        "../../frames/bare/salvage-north/003.png",
+        "../../frames/bare/salvage-north/004.png",
+        "../../frames/bare/salvage-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "salvage-east",
+      "frameFiles": [
+        "../../frames/bare/salvage-east/000.png",
+        "../../frames/bare/salvage-east/001.png",
+        "../../frames/bare/salvage-east/002.png",
+        "../../frames/bare/salvage-east/003.png",
+        "../../frames/bare/salvage-east/004.png",
+        "../../frames/bare/salvage-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "salvage-west",
+      "frameFiles": [
+        "../../frames/bare/salvage-west/000.png",
+        "../../frames/bare/salvage-west/001.png",
+        "../../frames/bare/salvage-west/002.png",
+        "../../frames/bare/salvage-west/003.png",
+        "../../frames/bare/salvage-west/004.png",
+        "../../frames/bare/salvage-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage",
+        "salvage"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-pickup-south",
+      "frameFiles": [
+        "../../frames/bare/swim-pickup-south/000.png",
+        "../../frames/bare/swim-pickup-south/001.png",
+        "../../frames/bare/swim-pickup-south/002.png",
+        "../../frames/bare/swim-pickup-south/003.png",
+        "../../frames/bare/swim-pickup-south/004.png",
+        "../../frames/bare/swim-pickup-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-pickup-north",
+      "frameFiles": [
+        "../../frames/bare/swim-pickup-north/000.png",
+        "../../frames/bare/swim-pickup-north/001.png",
+        "../../frames/bare/swim-pickup-north/002.png",
+        "../../frames/bare/swim-pickup-north/003.png",
+        "../../frames/bare/swim-pickup-north/004.png",
+        "../../frames/bare/swim-pickup-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-pickup-east",
+      "frameFiles": [
+        "../../frames/bare/swim-pickup-east/000.png",
+        "../../frames/bare/swim-pickup-east/001.png",
+        "../../frames/bare/swim-pickup-east/002.png",
+        "../../frames/bare/swim-pickup-east/003.png",
+        "../../frames/bare/swim-pickup-east/004.png",
+        "../../frames/bare/swim-pickup-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-pickup-west",
+      "frameFiles": [
+        "../../frames/bare/swim-pickup-west/000.png",
+        "../../frames/bare/swim-pickup-west/001.png",
+        "../../frames/bare/swim-pickup-west/002.png",
+        "../../frames/bare/swim-pickup-west/003.png",
+        "../../frames/bare/swim-pickup-west/004.png",
+        "../../frames/bare/swim-pickup-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "unload-south",
+      "frameFiles": [
+        "../../frames/bare/unload-south/000.png",
+        "../../frames/bare/unload-south/001.png",
+        "../../frames/bare/unload-south/002.png",
+        "../../frames/bare/unload-south/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "unload-north",
+      "frameFiles": [
+        "../../frames/bare/unload-north/000.png",
+        "../../frames/bare/unload-north/001.png",
+        "../../frames/bare/unload-north/002.png",
+        "../../frames/bare/unload-north/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "../../frames/bare/unload-east/000.png",
+        "../../frames/bare/unload-east/001.png",
+        "../../frames/bare/unload-east/002.png",
+        "../../frames/bare/unload-east/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "unload-west",
+      "frameFiles": [
+        "../../frames/bare/unload-west/000.png",
+        "../../frames/bare/unload-west/001.png",
+        "../../frames/bare/unload-west/002.png",
+        "../../frames/bare/unload-west/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-south",
+      "frameFiles": [
+        "../../frames/bare/swim-south/000.png",
+        "../../frames/bare/swim-south/001.png",
+        "../../frames/bare/swim-south/002.png",
+        "../../frames/bare/swim-south/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-north",
+      "frameFiles": [
+        "../../frames/bare/swim-north/000.png",
+        "../../frames/bare/swim-north/001.png",
+        "../../frames/bare/swim-north/002.png",
+        "../../frames/bare/swim-north/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-east",
+      "frameFiles": [
+        "../../frames/bare/swim-east/000.png",
+        "../../frames/bare/swim-east/001.png",
+        "../../frames/bare/swim-east/002.png",
+        "../../frames/bare/swim-east/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-west",
+      "frameFiles": [
+        "../../frames/bare/swim-west/000.png",
+        "../../frames/bare/swim-west/001.png",
+        "../../frames/bare/swim-west/002.png",
+        "../../frames/bare/swim-west/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "tread-south",
+      "frameFiles": [
+        "../../frames/bare/tread-south/000.png",
+        "../../frames/bare/tread-south/001.png",
+        "../../frames/bare/tread-south/002.png",
+        "../../frames/bare/tread-south/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "tread-north",
+      "frameFiles": [
+        "../../frames/bare/tread-north/000.png",
+        "../../frames/bare/tread-north/001.png",
+        "../../frames/bare/tread-north/002.png",
+        "../../frames/bare/tread-north/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "tread-east",
+      "frameFiles": [
+        "../../frames/bare/tread-east/000.png",
+        "../../frames/bare/tread-east/001.png",
+        "../../frames/bare/tread-east/002.png",
+        "../../frames/bare/tread-east/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "tread-west",
+      "frameFiles": [
+        "../../frames/bare/tread-west/000.png",
+        "../../frames/bare/tread-west/001.png",
+        "../../frames/bare/tread-west/002.png",
+        "../../frames/bare/tread-west/003.png"
+      ],
+      "frameDurationsMs": [
+        240.0,
+        240.0,
+        240.0,
+        240.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "tread",
+        "tread",
+        "tread",
+        "tread"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-distress-south",
+      "frameFiles": [
+        "../../frames/bare/swim-distress-south/000.png",
+        "../../frames/bare/swim-distress-south/001.png",
+        "../../frames/bare/swim-distress-south/002.png",
+        "../../frames/bare/swim-distress-south/003.png",
+        "../../frames/bare/swim-distress-south/004.png",
+        "../../frames/bare/swim-distress-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-distress-north",
+      "frameFiles": [
+        "../../frames/bare/swim-distress-north/000.png",
+        "../../frames/bare/swim-distress-north/001.png",
+        "../../frames/bare/swim-distress-north/002.png",
+        "../../frames/bare/swim-distress-north/003.png",
+        "../../frames/bare/swim-distress-north/004.png",
+        "../../frames/bare/swim-distress-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-distress-east",
+      "frameFiles": [
+        "../../frames/bare/swim-distress-east/000.png",
+        "../../frames/bare/swim-distress-east/001.png",
+        "../../frames/bare/swim-distress-east/002.png",
+        "../../frames/bare/swim-distress-east/003.png",
+        "../../frames/bare/swim-distress-east/004.png",
+        "../../frames/bare/swim-distress-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-distress-west",
+      "frameFiles": [
+        "../../frames/bare/swim-distress-west/000.png",
+        "../../frames/bare/swim-distress-west/001.png",
+        "../../frames/bare/swim-distress-west/002.png",
+        "../../frames/bare/swim-distress-west/003.png",
+        "../../frames/bare/swim-distress-west/004.png",
+        "../../frames/bare/swim-distress-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-ground-south",
+      "frameFiles": [
+        "../../frames/bare/death-ground-south/000.png",
+        "../../frames/bare/death-ground-south/001.png",
+        "../../frames/bare/death-ground-south/002.png",
+        "../../frames/bare/death-ground-south/003.png",
+        "../../frames/bare/death-ground-south/004.png",
+        "../../frames/bare/death-ground-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-ground-north",
+      "frameFiles": [
+        "../../frames/bare/death-ground-north/000.png",
+        "../../frames/bare/death-ground-north/001.png",
+        "../../frames/bare/death-ground-north/002.png",
+        "../../frames/bare/death-ground-north/003.png",
+        "../../frames/bare/death-ground-north/004.png",
+        "../../frames/bare/death-ground-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-ground-east",
+      "frameFiles": [
+        "../../frames/bare/death-ground-east/000.png",
+        "../../frames/bare/death-ground-east/001.png",
+        "../../frames/bare/death-ground-east/002.png",
+        "../../frames/bare/death-ground-east/003.png",
+        "../../frames/bare/death-ground-east/004.png",
+        "../../frames/bare/death-ground-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-ground-west",
+      "frameFiles": [
+        "../../frames/bare/death-ground-west/000.png",
+        "../../frames/bare/death-ground-west/001.png",
+        "../../frames/bare/death-ground-west/002.png",
+        "../../frames/bare/death-ground-west/003.png",
+        "../../frames/bare/death-ground-west/004.png",
+        "../../frames/bare/death-ground-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-water-south",
+      "frameFiles": [
+        "../../frames/bare/death-water-south/000.png",
+        "../../frames/bare/death-water-south/001.png",
+        "../../frames/bare/death-water-south/002.png",
+        "../../frames/bare/death-water-south/003.png",
+        "../../frames/bare/death-water-south/004.png",
+        "../../frames/bare/death-water-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-water-north",
+      "frameFiles": [
+        "../../frames/bare/death-water-north/000.png",
+        "../../frames/bare/death-water-north/001.png",
+        "../../frames/bare/death-water-north/002.png",
+        "../../frames/bare/death-water-north/003.png",
+        "../../frames/bare/death-water-north/004.png",
+        "../../frames/bare/death-water-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-water-east",
+      "frameFiles": [
+        "../../frames/bare/death-water-east/000.png",
+        "../../frames/bare/death-water-east/001.png",
+        "../../frames/bare/death-water-east/002.png",
+        "../../frames/bare/death-water-east/003.png",
+        "../../frames/bare/death-water-east/004.png",
+        "../../frames/bare/death-water-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "death-water-west",
+      "frameFiles": [
+        "../../frames/bare/death-water-west/000.png",
+        "../../frames/bare/death-water-west/001.png",
+        "../../frames/bare/death-water-west/002.png",
+        "../../frames/bare/death-water-west/003.png",
+        "../../frames/bare/death-water-west/004.png",
+        "../../frames/bare/death-water-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "kneel-south",
+      "frameFiles": [
+        "../../frames/bare/kneel-south/000.png",
+        "../../frames/bare/kneel-south/001.png",
+        "../../frames/bare/kneel-south/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "kneel",
+        "kneel",
+        "kneel"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "kneel-north",
+      "frameFiles": [
+        "../../frames/bare/kneel-north/000.png",
+        "../../frames/bare/kneel-north/001.png",
+        "../../frames/bare/kneel-north/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "kneel",
+        "kneel",
+        "kneel"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "kneel-east",
+      "frameFiles": [
+        "../../frames/bare/kneel-east/000.png",
+        "../../frames/bare/kneel-east/001.png",
+        "../../frames/bare/kneel-east/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "kneel",
+        "kneel",
+        "kneel"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "kneel-west",
+      "frameFiles": [
+        "../../frames/bare/kneel-west/000.png",
+        "../../frames/bare/kneel-west/001.png",
+        "../../frames/bare/kneel-west/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "kneel",
+        "kneel",
+        "kneel"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "stand-south",
+      "frameFiles": [
+        "../../frames/bare/stand-south/000.png",
+        "../../frames/bare/stand-south/001.png",
+        "../../frames/bare/stand-south/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "stand-north",
+      "frameFiles": [
+        "../../frames/bare/stand-north/000.png",
+        "../../frames/bare/stand-north/001.png",
+        "../../frames/bare/stand-north/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "stand-east",
+      "frameFiles": [
+        "../../frames/bare/stand-east/000.png",
+        "../../frames/bare/stand-east/001.png",
+        "../../frames/bare/stand-east/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "stand-west",
+      "frameFiles": [
+        "../../frames/bare/stand-west/000.png",
+        "../../frames/bare/stand-west/001.png",
+        "../../frames/bare/stand-west/002.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "stand",
+        "stand",
+        "stand"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-down-south",
+      "frameFiles": [
+        "../../frames/bare/sit-down-south/000.png",
+        "../../frames/bare/sit-down-south/001.png",
+        "../../frames/bare/sit-down-south/002.png",
+        "../../frames/bare/sit-down-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-down-north",
+      "frameFiles": [
+        "../../frames/bare/sit-down-north/000.png",
+        "../../frames/bare/sit-down-north/001.png",
+        "../../frames/bare/sit-down-north/002.png",
+        "../../frames/bare/sit-down-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-down-east",
+      "frameFiles": [
+        "../../frames/bare/sit-down-east/000.png",
+        "../../frames/bare/sit-down-east/001.png",
+        "../../frames/bare/sit-down-east/002.png",
+        "../../frames/bare/sit-down-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-down-west",
+      "frameFiles": [
+        "../../frames/bare/sit-down-west/000.png",
+        "../../frames/bare/sit-down-west/001.png",
+        "../../frames/bare/sit-down-west/002.png",
+        "../../frames/bare/sit-down-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "../../frames/bare/lie-down-south/000.png",
+        "../../frames/bare/lie-down-south/001.png",
+        "../../frames/bare/lie-down-south/002.png",
+        "../../frames/bare/lie-down-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "lie",
+        "lie",
+        "lie",
+        "lie"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "lie-down-north",
+      "frameFiles": [
+        "../../frames/bare/lie-down-north/000.png",
+        "../../frames/bare/lie-down-north/001.png",
+        "../../frames/bare/lie-down-north/002.png",
+        "../../frames/bare/lie-down-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "lie",
+        "lie",
+        "lie",
+        "lie"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "lie-down-east",
+      "frameFiles": [
+        "../../frames/bare/lie-down-east/000.png",
+        "../../frames/bare/lie-down-east/001.png",
+        "../../frames/bare/lie-down-east/002.png",
+        "../../frames/bare/lie-down-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "lie",
+        "lie",
+        "lie",
+        "lie"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "lie-down-west",
+      "frameFiles": [
+        "../../frames/bare/lie-down-west/000.png",
+        "../../frames/bare/lie-down-west/001.png",
+        "../../frames/bare/lie-down-west/002.png",
+        "../../frames/bare/lie-down-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "lie",
+        "lie",
+        "lie",
+        "lie"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-rise-south",
+      "frameFiles": [
+        "../../frames/bare/sit-rise-south/000.png",
+        "../../frames/bare/sit-rise-south/001.png",
+        "../../frames/bare/sit-rise-south/002.png",
+        "../../frames/bare/sit-rise-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-rise-north",
+      "frameFiles": [
+        "../../frames/bare/sit-rise-north/000.png",
+        "../../frames/bare/sit-rise-north/001.png",
+        "../../frames/bare/sit-rise-north/002.png",
+        "../../frames/bare/sit-rise-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-rise-east",
+      "frameFiles": [
+        "../../frames/bare/sit-rise-east/000.png",
+        "../../frames/bare/sit-rise-east/001.png",
+        "../../frames/bare/sit-rise-east/002.png",
+        "../../frames/bare/sit-rise-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-rise-west",
+      "frameFiles": [
+        "../../frames/bare/sit-rise-west/000.png",
+        "../../frames/bare/sit-rise-west/001.png",
+        "../../frames/bare/sit-rise-west/002.png",
+        "../../frames/bare/sit-rise-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "../../frames/bare/get-up-south/000.png",
+        "../../frames/bare/get-up-south/001.png",
+        "../../frames/bare/get-up-south/002.png",
+        "../../frames/bare/get-up-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "get",
+        "get",
+        "get",
+        "get"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "get-up-north",
+      "frameFiles": [
+        "../../frames/bare/get-up-north/000.png",
+        "../../frames/bare/get-up-north/001.png",
+        "../../frames/bare/get-up-north/002.png",
+        "../../frames/bare/get-up-north/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "get",
+        "get",
+        "get",
+        "get"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "get-up-east",
+      "frameFiles": [
+        "../../frames/bare/get-up-east/000.png",
+        "../../frames/bare/get-up-east/001.png",
+        "../../frames/bare/get-up-east/002.png",
+        "../../frames/bare/get-up-east/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "get",
+        "get",
+        "get",
+        "get"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "get-up-west",
+      "frameFiles": [
+        "../../frames/bare/get-up-west/000.png",
+        "../../frames/bare/get-up-west/001.png",
+        "../../frames/bare/get-up-west/002.png",
+        "../../frames/bare/get-up-west/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "get",
+        "get",
+        "get",
+        "get"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-idle-south",
+      "frameFiles": [
+        "../../frames/bare/sit-idle-south/000.png",
+        "../../frames/bare/sit-idle-south/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-idle-north",
+      "frameFiles": [
+        "../../frames/bare/sit-idle-north/000.png",
+        "../../frames/bare/sit-idle-north/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-idle-east",
+      "frameFiles": [
+        "../../frames/bare/sit-idle-east/000.png",
+        "../../frames/bare/sit-idle-east/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sit-idle-west",
+      "frameFiles": [
+        "../../frames/bare/sit-idle-west/000.png",
+        "../../frames/bare/sit-idle-west/001.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "read-seated-south",
+      "frameFiles": [
+        "../../frames/bare/read-seated-south/000.png",
+        "../../frames/bare/read-seated-south/001.png",
+        "../../frames/bare/read-seated-south/002.png"
+      ],
+      "frameDurationsMs": [
+        450.0,
+        450.0,
+        450.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "read-seated-north",
+      "frameFiles": [
+        "../../frames/bare/read-seated-north/000.png",
+        "../../frames/bare/read-seated-north/001.png",
+        "../../frames/bare/read-seated-north/002.png"
+      ],
+      "frameDurationsMs": [
+        450.0,
+        450.0,
+        450.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "read-seated-east",
+      "frameFiles": [
+        "../../frames/bare/read-seated-east/000.png",
+        "../../frames/bare/read-seated-east/001.png",
+        "../../frames/bare/read-seated-east/002.png"
+      ],
+      "frameDurationsMs": [
+        450.0,
+        450.0,
+        450.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "read-seated-west",
+      "frameFiles": [
+        "../../frames/bare/read-seated-west/000.png",
+        "../../frames/bare/read-seated-west/001.png",
+        "../../frames/bare/read-seated-west/002.png"
+      ],
+      "frameDurationsMs": [
+        450.0,
+        450.0,
+        450.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sleep-south",
+      "frameFiles": [
+        "../../frames/bare/sleep-south/000.png",
+        "../../frames/bare/sleep-south/001.png"
+      ],
+      "frameDurationsMs": [
+        900.0,
+        900.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sleep-north",
+      "frameFiles": [
+        "../../frames/bare/sleep-north/000.png",
+        "../../frames/bare/sleep-north/001.png"
+      ],
+      "frameDurationsMs": [
+        900.0,
+        900.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "../../frames/bare/sleep-east/000.png",
+        "../../frames/bare/sleep-east/001.png"
+      ],
+      "frameDurationsMs": [
+        900.0,
+        900.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "sleep-west",
+      "frameFiles": [
+        "../../frames/bare/sleep-west/000.png",
+        "../../frames/bare/sleep-west/001.png"
+      ],
+      "frameDurationsMs": [
+        900.0,
+        900.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "eat-south",
+      "frameFiles": [
+        "../../frames/bare/eat-south/000.png",
+        "../../frames/bare/eat-south/001.png",
+        "../../frames/bare/eat-south/002.png",
+        "../../frames/bare/eat-south/003.png",
+        "../../frames/bare/eat-south/004.png",
+        "../../frames/bare/eat-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "eat-north",
+      "frameFiles": [
+        "../../frames/bare/eat-north/000.png",
+        "../../frames/bare/eat-north/001.png",
+        "../../frames/bare/eat-north/002.png",
+        "../../frames/bare/eat-north/003.png",
+        "../../frames/bare/eat-north/004.png",
+        "../../frames/bare/eat-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "eat-east",
+      "frameFiles": [
+        "../../frames/bare/eat-east/000.png",
+        "../../frames/bare/eat-east/001.png",
+        "../../frames/bare/eat-east/002.png",
+        "../../frames/bare/eat-east/003.png",
+        "../../frames/bare/eat-east/004.png",
+        "../../frames/bare/eat-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "eat-west",
+      "frameFiles": [
+        "../../frames/bare/eat-west/000.png",
+        "../../frames/bare/eat-west/001.png",
+        "../../frames/bare/eat-west/002.png",
+        "../../frames/bare/eat-west/003.png",
+        "../../frames/bare/eat-west/004.png",
+        "../../frames/bare/eat-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat",
+        "eat"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "drink-south",
+      "frameFiles": [
+        "../../frames/bare/drink-south/000.png",
+        "../../frames/bare/drink-south/001.png",
+        "../../frames/bare/drink-south/002.png",
+        "../../frames/bare/drink-south/003.png",
+        "../../frames/bare/drink-south/004.png",
+        "../../frames/bare/drink-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "drink-north",
+      "frameFiles": [
+        "../../frames/bare/drink-north/000.png",
+        "../../frames/bare/drink-north/001.png",
+        "../../frames/bare/drink-north/002.png",
+        "../../frames/bare/drink-north/003.png",
+        "../../frames/bare/drink-north/004.png",
+        "../../frames/bare/drink-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "drink-east",
+      "frameFiles": [
+        "../../frames/bare/drink-east/000.png",
+        "../../frames/bare/drink-east/001.png",
+        "../../frames/bare/drink-east/002.png",
+        "../../frames/bare/drink-east/003.png",
+        "../../frames/bare/drink-east/004.png",
+        "../../frames/bare/drink-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "drink-west",
+      "frameFiles": [
+        "../../frames/bare/drink-west/000.png",
+        "../../frames/bare/drink-west/001.png",
+        "../../frames/bare/drink-west/002.png",
+        "../../frames/bare/drink-west/003.png",
+        "../../frames/bare/drink-west/004.png",
+        "../../frames/bare/drink-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "pickup-south",
+      "frameFiles": [
+        "../../frames/bare/pickup-south/000.png",
+        "../../frames/bare/pickup-south/001.png",
+        "../../frames/bare/pickup-south/002.png",
+        "../../frames/bare/pickup-south/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "pickup-north",
+      "frameFiles": [
+        "../../frames/bare/pickup-north/000.png",
+        "../../frames/bare/pickup-north/001.png",
+        "../../frames/bare/pickup-north/002.png",
+        "../../frames/bare/pickup-north/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "../../frames/bare/pickup-east/000.png",
+        "../../frames/bare/pickup-east/001.png",
+        "../../frames/bare/pickup-east/002.png",
+        "../../frames/bare/pickup-east/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "pickup-west",
+      "frameFiles": [
+        "../../frames/bare/pickup-west/000.png",
+        "../../frames/bare/pickup-west/001.png",
+        "../../frames/bare/pickup-west/002.png",
+        "../../frames/bare/pickup-west/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "pickup",
+        "pickup",
+        "pickup",
+        "pickup"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "recover-air-south",
+      "frameFiles": [
+        "../../frames/bare/recover-air-south/000.png",
+        "../../frames/bare/recover-air-south/001.png",
+        "../../frames/bare/recover-air-south/002.png",
+        "../../frames/bare/recover-air-south/003.png",
+        "../../frames/bare/recover-air-south/004.png",
+        "../../frames/bare/recover-air-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "recover-air-north",
+      "frameFiles": [
+        "../../frames/bare/recover-air-north/000.png",
+        "../../frames/bare/recover-air-north/001.png",
+        "../../frames/bare/recover-air-north/002.png",
+        "../../frames/bare/recover-air-north/003.png",
+        "../../frames/bare/recover-air-north/004.png",
+        "../../frames/bare/recover-air-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "recover-air-east",
+      "frameFiles": [
+        "../../frames/bare/recover-air-east/000.png",
+        "../../frames/bare/recover-air-east/001.png",
+        "../../frames/bare/recover-air-east/002.png",
+        "../../frames/bare/recover-air-east/003.png",
+        "../../frames/bare/recover-air-east/004.png",
+        "../../frames/bare/recover-air-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "recover-air-west",
+      "frameFiles": [
+        "../../frames/bare/recover-air-west/000.png",
+        "../../frames/bare/recover-air-west/001.png",
+        "../../frames/bare/recover-air-west/002.png",
+        "../../frames/bare/recover-air-west/003.png",
+        "../../frames/bare/recover-air-west/004.png",
+        "../../frames/bare/recover-air-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover",
+        "recover"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-south",
+      "frameFiles": [
+        "../../frames/bare/carry-south/000.png",
+        "../../frames/bare/carry-south/001.png",
+        "../../frames/bare/carry-south/002.png",
+        "../../frames/bare/carry-south/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-north",
+      "frameFiles": [
+        "../../frames/bare/carry-north/000.png",
+        "../../frames/bare/carry-north/001.png",
+        "../../frames/bare/carry-north/002.png",
+        "../../frames/bare/carry-north/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "../../frames/bare/carry-east/000.png",
+        "../../frames/bare/carry-east/001.png",
+        "../../frames/bare/carry-east/002.png",
+        "../../frames/bare/carry-east/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "carry-west",
+      "frameFiles": [
+        "../../frames/bare/carry-west/000.png",
+        "../../frames/bare/carry-west/001.png",
+        "../../frames/bare/carry-west/002.png",
+        "../../frames/bare/carry-west/003.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-unload-south",
+      "frameFiles": [
+        "../../frames/bare/cargo-unload-south/000.png",
+        "../../frames/bare/cargo-unload-south/001.png",
+        "../../frames/bare/cargo-unload-south/002.png",
+        "../../frames/bare/cargo-unload-south/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "cargo",
+        "cargo",
+        "cargo",
+        "cargo"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-unload-north",
+      "frameFiles": [
+        "../../frames/bare/cargo-unload-north/000.png",
+        "../../frames/bare/cargo-unload-north/001.png",
+        "../../frames/bare/cargo-unload-north/002.png",
+        "../../frames/bare/cargo-unload-north/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "cargo",
+        "cargo",
+        "cargo",
+        "cargo"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-unload-east",
+      "frameFiles": [
+        "../../frames/bare/cargo-unload-east/000.png",
+        "../../frames/bare/cargo-unload-east/001.png",
+        "../../frames/bare/cargo-unload-east/002.png",
+        "../../frames/bare/cargo-unload-east/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "cargo",
+        "cargo",
+        "cargo",
+        "cargo"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "cargo-unload-west",
+      "frameFiles": [
+        "../../frames/bare/cargo-unload-west/000.png",
+        "../../frames/bare/cargo-unload-west/001.png",
+        "../../frames/bare/cargo-unload-west/002.png",
+        "../../frames/bare/cargo-unload-west/003.png"
+      ],
+      "frameDurationsMs": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "cargo",
+        "cargo",
+        "cargo",
+        "cargo"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "equip-helmet-south",
+      "frameFiles": [
+        "../../frames/bare/equip-helmet-south/000.png",
+        "../../frames/bare/equip-helmet-south/001.png",
+        "../../frames/bare/equip-helmet-south/002.png",
+        "../../frames/bare/equip-helmet-south/003.png",
+        "../../frames/bare/equip-helmet-south/004.png",
+        "../../frames/bare/equip-helmet-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "equip-helmet-north",
+      "frameFiles": [
+        "../../frames/bare/equip-helmet-north/000.png",
+        "../../frames/bare/equip-helmet-north/001.png",
+        "../../frames/bare/equip-helmet-north/002.png",
+        "../../frames/bare/equip-helmet-north/003.png",
+        "../../frames/bare/equip-helmet-north/004.png",
+        "../../frames/bare/equip-helmet-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "equip-helmet-east",
+      "frameFiles": [
+        "../../frames/bare/equip-helmet-east/000.png",
+        "../../frames/bare/equip-helmet-east/001.png",
+        "../../frames/bare/equip-helmet-east/002.png",
+        "../../frames/bare/equip-helmet-east/003.png",
+        "../../frames/bare/equip-helmet-east/004.png",
+        "../../frames/bare/equip-helmet-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "equip-helmet-west",
+      "frameFiles": [
+        "../../frames/bare/equip-helmet-west/000.png",
+        "../../frames/bare/equip-helmet-west/001.png",
+        "../../frames/bare/equip-helmet-west/002.png",
+        "../../frames/bare/equip-helmet-west/003.png",
+        "../../frames/bare/equip-helmet-west/004.png",
+        "../../frames/bare/equip-helmet-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip",
+        "equip"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "remove-helmet-south",
+      "frameFiles": [
+        "../../frames/bare/remove-helmet-south/000.png",
+        "../../frames/bare/remove-helmet-south/001.png",
+        "../../frames/bare/remove-helmet-south/002.png",
+        "../../frames/bare/remove-helmet-south/003.png",
+        "../../frames/bare/remove-helmet-south/004.png",
+        "../../frames/bare/remove-helmet-south/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "remove-helmet-north",
+      "frameFiles": [
+        "../../frames/bare/remove-helmet-north/000.png",
+        "../../frames/bare/remove-helmet-north/001.png",
+        "../../frames/bare/remove-helmet-north/002.png",
+        "../../frames/bare/remove-helmet-north/003.png",
+        "../../frames/bare/remove-helmet-north/004.png",
+        "../../frames/bare/remove-helmet-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "remove-helmet-east",
+      "frameFiles": [
+        "../../frames/bare/remove-helmet-east/000.png",
+        "../../frames/bare/remove-helmet-east/001.png",
+        "../../frames/bare/remove-helmet-east/002.png",
+        "../../frames/bare/remove-helmet-east/003.png",
+        "../../frames/bare/remove-helmet-east/004.png",
+        "../../frames/bare/remove-helmet-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "remove-helmet-west",
+      "frameFiles": [
+        "../../frames/bare/remove-helmet-west/000.png",
+        "../../frames/bare/remove-helmet-west/001.png",
+        "../../frames/bare/remove-helmet-west/002.png",
+        "../../frames/bare/remove-helmet-west/003.png",
+        "../../frames/bare/remove-helmet-west/004.png",
+        "../../frames/bare/remove-helmet-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        "remove"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-draw-north",
+      "frameFiles": [
+        "../../frames/bare/torch-draw-north/000.png",
+        "../../frames/bare/torch-draw-north/001.png",
+        "../../frames/bare/torch-draw-north/002.png",
+        "../../frames/bare/torch-draw-north/003.png",
+        "../../frames/bare/torch-draw-north/004.png",
+        "../../frames/bare/torch-draw-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-draw-east",
+      "frameFiles": [
+        "../../frames/bare/torch-draw-east/000.png",
+        "../../frames/bare/torch-draw-east/001.png",
+        "../../frames/bare/torch-draw-east/002.png",
+        "../../frames/bare/torch-draw-east/003.png",
+        "../../frames/bare/torch-draw-east/004.png",
+        "../../frames/bare/torch-draw-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-draw-west",
+      "frameFiles": [
+        "../../frames/bare/torch-draw-west/000.png",
+        "../../frames/bare/torch-draw-west/001.png",
+        "../../frames/bare/torch-draw-west/002.png",
+        "../../frames/bare/torch-draw-west/003.png",
+        "../../frames/bare/torch-draw-west/004.png",
+        "../../frames/bare/torch-draw-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-stow-north",
+      "frameFiles": [
+        "../../frames/bare/torch-stow-north/000.png",
+        "../../frames/bare/torch-stow-north/001.png",
+        "../../frames/bare/torch-stow-north/002.png",
+        "../../frames/bare/torch-stow-north/003.png",
+        "../../frames/bare/torch-stow-north/004.png",
+        "../../frames/bare/torch-stow-north/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-stow-east",
+      "frameFiles": [
+        "../../frames/bare/torch-stow-east/000.png",
+        "../../frames/bare/torch-stow-east/001.png",
+        "../../frames/bare/torch-stow-east/002.png",
+        "../../frames/bare/torch-stow-east/003.png",
+        "../../frames/bare/torch-stow-east/004.png",
+        "../../frames/bare/torch-stow-east/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "torch-stow-west",
+      "frameFiles": [
+        "../../frames/bare/torch-stow-west/000.png",
+        "../../frames/bare/torch-stow-west/001.png",
+        "../../frames/bare/torch-stow-west/002.png",
+        "../../frames/bare/torch-stow-west/003.png",
+        "../../frames/bare/torch-stow-west/004.png",
+        "../../frames/bare/torch-stow-west/005.png"
+      ],
+      "frameDurationsMs": [
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch",
+        "torch"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-south",
+      "frameFiles": [
+        "../../frames/bare/swim-carry-south/000.png",
+        "../../frames/bare/swim-carry-south/001.png",
+        "../../frames/bare/swim-carry-south/002.png",
+        "../../frames/bare/swim-carry-south/003.png",
+        "../../frames/bare/swim-carry-south/004.png",
+        "../../frames/bare/swim-carry-south/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-north",
+      "frameFiles": [
+        "../../frames/bare/swim-carry-north/000.png",
+        "../../frames/bare/swim-carry-north/001.png",
+        "../../frames/bare/swim-carry-north/002.png",
+        "../../frames/bare/swim-carry-north/003.png",
+        "../../frames/bare/swim-carry-north/004.png",
+        "../../frames/bare/swim-carry-north/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-east",
+      "frameFiles": [
+        "../../frames/bare/swim-carry-east/000.png",
+        "../../frames/bare/swim-carry-east/001.png",
+        "../../frames/bare/swim-carry-east/002.png",
+        "../../frames/bare/swim-carry-east/003.png",
+        "../../frames/bare/swim-carry-east/004.png",
+        "../../frames/bare/swim-carry-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-west",
+      "frameFiles": [
+        "../../frames/bare/swim-carry-west/000.png",
+        "../../frames/bare/swim-carry-west/001.png",
+        "../../frames/bare/swim-carry-west/002.png",
+        "../../frames/bare/swim-carry-west/003.png",
+        "../../frames/bare/swim-carry-west/004.png",
+        "../../frames/bare/swim-carry-west/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0,
+        180.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "source": "character/marsh-motion-polish-v1",
+  "sha256": {
+    "walk-start-west-000.png": "50269890c9a860d371ae3884b1f9b7939fdba59c7afaef1c20a96bc8495a39a3",
+    "walk-start-west-001.png": "dfa6847b663606452f31a0e31323292f2ab42390bc45e414390499ee2b4372df",
+    "walk-start-west-002.png": "8339d766874e8fa3be598164095c667864c04e65fae3322b16a98157e0c565fa",
+    "walk-start-west-003.png": "8200999d44aa16ef238f16d22b31c2a539557d95aaa2de968b16696bbb14af02",
+    "walk-stop-west-000.png": "9b0c8eef8d0d5995a6bb847ca3f16bbc4488ae7170e2e46a7abc447dd858a823",
+    "walk-stop-west-001.png": "411e46f5a7d535ad142edaf9c59474452ad8df587b206366e5adf3780a08f155",
+    "walk-stop-west-002.png": "d2c38143982943010077a507b04e4df35e93215ef94528705c7b88535df6751d",
+    "walk-stop-west-003.png": "b00e6b98a5a164ed16bf22d2096983aeafaddc40abab2dc8ec68906466c8c6d5",
+    "walk-step-west-000.png": "eadb00028e44b40b2ad1e0594cf54e4ad2afd689e2973655cb338031d1e08bf9",
+    "walk-step-west-001.png": "0374d28e934f17a401f7b86d5e799c0f034a5c9ba19c62b4e53d7ac50316082e",
+    "walk-step-west-002.png": "739b01200ea64416bde63f3c3c3e11bb6d1bd05543ee066f7a5ba7b9c2e0b5dc",
+    "walk-step-west-003.png": "48964948d3ee913e0846c44fea9734306eb439f3bd6caccee434eb658c756237",
+    "walk-step-west-004.png": "7af33db6a664a4ae0b3a581a9f3960c2edf99c7ce6c479b2bf47280f399d3879",
+    "walk-step-west-005.png": "b8e9b99c7b95ee1505073fe2192b5a5960f171b060476727c8fe263280cb2cac",
+    "walk-step-west-006.png": "7ae78ce2d6d55bef2cce096c290e2f6245a00d996e4757a711daadb0f624e626"
+  },
+  "inputs": {
+    "start": {
+      "recipe": "character/marsh-motion-polish-v1/start-west-candidate-recipe.json",
+      "recipeSha256": "d19edd2ef9b5267b9272316964e6229b31e51c1a017c543d286345ed420d1434",
+      "source": "character/marsh-motion-polish-v1/sources/start-stop-west-video-01.mp4",
+      "sourceSha256": "cb675273aa742426aa501caba3d68611e9b42faee7aa594d52a131c68ffcf017",
+      "selectionManifest": "character/marsh-motion-polish-v1/review/start-west-video-candidate-01/trial-manifest.json",
+      "selectionManifestSha256": "fdcbdbada6c57f5bbcade85a37a6e7a3bdc59ffd81205a4aa63753df2e60bd70",
+      "extractionDurationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "selectedDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    "stop": {
+      "recipe": "character/marsh-motion-polish-v1/stop-west-candidate-recipe.json",
+      "recipeSha256": "6db756fc2646b2f539a67f62cfa7a4a9bbb6c5a2fe7b451981111a18946c4281",
+      "source": "character/marsh-motion-polish-v1/sources/start-stop-west-video-01.mp4",
+      "sourceSha256": "cb675273aa742426aa501caba3d68611e9b42faee7aa594d52a131c68ffcf017",
+      "selectionManifest": "character/marsh-motion-polish-v1/review/stop-west-video-candidate-01/trial-manifest.json",
+      "selectionManifestSha256": "d968ca819aed73c8d0a25f7fb4a1d37db206109e0775498fcde191fcad803719",
+      "extractionDurationsMs": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "selectedDurationsMs": [
+        100,
+        100,
+        100,
+        100
+      ]
+    },
+    "step": {
+      "recipe": "character/marsh-motion-polish-v1/short-step-west-candidate-recipe.json",
+      "recipeSha256": "7aeabb7991bacdd43c09d079384231ff95bbc6cbad0d494b50af3009b945885c",
+      "source": "character/marsh-motion-polish-v1/sources/short-step-west-video-03.mp4",
+      "sourceSha256": "79b780482db8a408dddb2e66e1280bf4a5385686589a823cd032a14ef1284fab",
+      "selectionManifest": "character/marsh-motion-polish-v1/review/short-step-west-candidate-03/trial-manifest.json",
+      "selectionManifestSha256": "3fae1e4512127ceea6ca6d507d03a64d065c19eca8fa2607ee2eddf1f8c6560d",
+      "extractionDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "selectedDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    }
+  },
+  "scope": "West dry empty-goal starts/stops and five-to-seven-unit short steps"
+}

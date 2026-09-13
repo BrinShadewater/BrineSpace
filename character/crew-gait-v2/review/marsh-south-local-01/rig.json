@@ -1,0 +1,144 @@
+{
+  "status": "selected_motion_revision",
+  "sourcePixelSha256": "c3768adc738e954af4012f7d3c47b69318f473a1e5de5c5d95d6b071e57941e1",
+  "recipe": {
+    "projection": "axial",
+    "direction": "south",
+    "sourceClip": "walk-south",
+    "sourceFrame": 0,
+    "travel": 36,
+    "durations": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150
+    ],
+    "bodyBob": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "solePath": [
+      172,
+      168,
+      164,
+      160,
+      156,
+      164
+    ],
+    "legs": {
+      "left": {
+        "box": [
+          68,
+          121,
+          93,
+          184
+        ]
+      },
+      "right": {
+        "box": [
+          93,
+          121,
+          116,
+          184
+        ]
+      }
+    }
+  },
+  "joints": [
+    {
+      "left": {
+        "phase": 0,
+        "soleActual": 172,
+        "soleTarget": 172,
+        "projectedLength": 51
+      },
+      "right": {
+        "phase": 3,
+        "soleActual": 160,
+        "soleTarget": 160,
+        "projectedLength": 39
+      }
+    },
+    {
+      "left": {
+        "phase": 1,
+        "soleActual": 168,
+        "soleTarget": 168,
+        "projectedLength": 48
+      },
+      "right": {
+        "phase": 4,
+        "soleActual": 156,
+        "soleTarget": 156,
+        "projectedLength": 36
+      }
+    },
+    {
+      "left": {
+        "phase": 2,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      },
+      "right": {
+        "phase": 5,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      }
+    },
+    {
+      "left": {
+        "phase": 3,
+        "soleActual": 160,
+        "soleTarget": 160,
+        "projectedLength": 39
+      },
+      "right": {
+        "phase": 0,
+        "soleActual": 172,
+        "soleTarget": 172,
+        "projectedLength": 51
+      }
+    },
+    {
+      "left": {
+        "phase": 4,
+        "soleActual": 156,
+        "soleTarget": 156,
+        "projectedLength": 36
+      },
+      "right": {
+        "phase": 1,
+        "soleActual": 168,
+        "soleTarget": 168,
+        "projectedLength": 48
+      }
+    },
+    {
+      "left": {
+        "phase": 5,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      },
+      "right": {
+        "phase": 2,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      }
+    }
+  ],
+  "strideDistanceCells": 0.0827027027027027,
+  "checks": {
+    "projectedSoleErrorPx": 0
+  },
+  "editedSource": null
+}

@@ -1,0 +1,142 @@
+{
+  "status": "source_revision_selection_recorded_separately",
+  "source": "character/crew-action-detail-v2/sources/veld-pickup-south-candidate-01.png",
+  "sha256": "a7bb93d00a7c73c1ee3f4cb59749084baa8320cbb0c71856aad3fe7649e17d6e",
+  "rig": {
+    "projection": "axial",
+    "direction": "south",
+    "travel": 36,
+    "durations": [
+      140,
+      140,
+      140,
+      140,
+      140,
+      140
+    ],
+    "bodyBob": [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "solePath": [
+      172,
+      168,
+      164,
+      160,
+      156,
+      164
+    ],
+    "legs": {
+      "left": {
+        "box": [
+          52,
+          121,
+          92,
+          184
+        ]
+      },
+      "right": {
+        "box": [
+          92,
+          121,
+          132,
+          184
+        ]
+      }
+    }
+  },
+  "joints": [
+    {
+      "left": {
+        "phase": 0,
+        "soleActual": 172,
+        "soleTarget": 172,
+        "projectedLength": 51
+      },
+      "right": {
+        "phase": 3,
+        "soleActual": 160,
+        "soleTarget": 160,
+        "projectedLength": 39
+      }
+    },
+    {
+      "left": {
+        "phase": 1,
+        "soleActual": 168,
+        "soleTarget": 168,
+        "projectedLength": 48
+      },
+      "right": {
+        "phase": 4,
+        "soleActual": 156,
+        "soleTarget": 156,
+        "projectedLength": 36
+      }
+    },
+    {
+      "left": {
+        "phase": 2,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      },
+      "right": {
+        "phase": 5,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      }
+    },
+    {
+      "left": {
+        "phase": 3,
+        "soleActual": 160,
+        "soleTarget": 160,
+        "projectedLength": 39
+      },
+      "right": {
+        "phase": 0,
+        "soleActual": 172,
+        "soleTarget": 172,
+        "projectedLength": 51
+      }
+    },
+    {
+      "left": {
+        "phase": 4,
+        "soleActual": 156,
+        "soleTarget": 156,
+        "projectedLength": 36
+      },
+      "right": {
+        "phase": 1,
+        "soleActual": 168,
+        "soleTarget": 168,
+        "projectedLength": 48
+      }
+    },
+    {
+      "left": {
+        "phase": 5,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      },
+      "right": {
+        "phase": 2,
+        "soleActual": 164,
+        "soleTarget": 164,
+        "projectedLength": 43
+      }
+    }
+  ],
+  "checks": {
+    "projectedSoleErrorPx": 0
+  },
+  "limitations": "Image-space registration, not world-space contact proof"
+}

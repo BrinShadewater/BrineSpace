@@ -1,0 +1,42 @@
+{
+  "status": "unselected-short-step-contact-study",
+  "standingHeight": 148,
+  "worldStandingHeight": 65.28,
+  "direction": "west",
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "limits": [
+    "Provisional support-foot tracking +/-3 dense pixels; sole overlap obscures support handoff.",
+    "Travel advances during catch-up; verify continuous native motion before selection."
+  ],
+  "transitions": {
+    "step": {
+      "recipe": "character/marsh-motion-polish-v1/short-step-west-candidate-recipe.json",
+      "travelPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        14
+      ],
+      "durationMs": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "uncertaintyPixels": 3
+    }
+  }
+}

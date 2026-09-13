@@ -1,0 +1,89 @@
+{
+  "source": "character/marsh-motion-polish-v1/sources/start-stop-east-video-01.mp4",
+  "output": "character/marsh-motion-polish-v1/review/start-east-video-candidate-01",
+  "state": "walk-start-east",
+  "sourceFrames": [
+    14,
+    18,
+    22,
+    26
+  ],
+  "sourceCycle": [
+    12,
+    28
+  ],
+  "durations": [
+    100,
+    100,
+    100,
+    100
+  ],
+  "sourceSize": [
+    1248,
+    1664
+  ],
+  "fps": 24,
+  "scale": 0.11307692307692307,
+  "position": [
+    61,
+    54
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    224
+  ],
+  "limits": [
+    "Unselected transition study, not a gait loop. Fixed scale and translation.",
+    "Endpoints must join selected idle and walk; do not hold a planted pose while translating the actor.",
+    "Timing and distance profile remain provisional until endpoint and live review."
+  ],
+  "sourceSha256": "977557be632255d5a5936bef5998707e93debb8369e02770cb537ced9ccd4519",
+  "recipeSha256": "c036367bb3e9d2904caa3a3d7b3d8fa1e0c33d34a6b8f5cf33221f8003027e59",
+  "records": [
+    {
+      "slot": 0,
+      "sourceFrame": 14,
+      "bounds": [
+        112,
+        78,
+        146,
+        224
+      ]
+    },
+    {
+      "slot": 1,
+      "sourceFrame": 18,
+      "bounds": [
+        110,
+        78,
+        153,
+        222
+      ]
+    },
+    {
+      "slot": 2,
+      "sourceFrame": 22,
+      "bounds": [
+        106,
+        77,
+        162,
+        221
+      ]
+    },
+    {
+      "slot": 3,
+      "sourceFrame": 26,
+      "bounds": [
+        100,
+        79,
+        164,
+        223
+      ]
+    }
+  ],
+  "status": "prepared_selection_tracked_in_ledger"
+}

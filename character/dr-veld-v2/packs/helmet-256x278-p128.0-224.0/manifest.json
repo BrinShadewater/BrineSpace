@@ -1,0 +1,129 @@
+{
+  "name": "dr-veld-v2-helmet-256x278-p128.0-224.0",
+  "frameWidth": 256,
+  "frameHeight": 278,
+  "pivot": [
+    128.0,
+    224.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.0872972972972973,
+    "walk-west": 0.0872972972972973,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "sit-down-east",
+      "frameFiles": [
+        "../../frames/helmet/sit-down-east/000.png",
+        "../../frames/helmet/sit-down-east/001.png",
+        "../../frames/helmet/sit-down-east/002.png",
+        "../../frames/helmet/sit-down-east/003.png",
+        "../../frames/helmet/sit-down-east/004.png",
+        "../../frames/helmet/sit-down-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ]
+    },
+    {
+      "id": "sit-rise-east",
+      "frameFiles": [
+        "../../frames/helmet/sit-rise-east/000.png",
+        "../../frames/helmet/sit-rise-east/001.png",
+        "../../frames/helmet/sit-rise-east/002.png",
+        "../../frames/helmet/sit-rise-east/003.png",
+        "../../frames/helmet/sit-rise-east/004.png",
+        "../../frames/helmet/sit-rise-east/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ]
+    }
+  ]
+}

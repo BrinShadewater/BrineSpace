@@ -1,0 +1,52 @@
+{
+  "status": "selected_source_native_verified_live_context_pending",
+  "checks": {
+    "sixFramesPerClip": true,
+    "exactIdleEndpoints": true,
+    "exactKneelSampleStandJoins": true
+  },
+  "originalTiming": {
+    "kneel-south": {
+      "durations": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "seconds": 0.52
+    },
+    "stand-south": {
+      "durations": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "seconds": 0.52
+    },
+    "repair-south": {
+      "durations": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "seconds": 0.84
+    }
+  },
+  "visualReview": "Agent inspected all 18 bare-body source poses together; corrected female identity, shared standing-derived scale and planted boot registration. No temporal/native acceptance yet.",
+  "remaining": [
+    "Continuous live workplace motion and occlusion",
+    "Remaining west/north sample chains"
+  ],
+  "nativeEvidence": "output/crew-replacement-2026-09-12/veld/identity-south-sample-chain-selected.log"
+}

@@ -1,0 +1,74 @@
+{
+  "name": "major-bill-v3-bare-208x184-p86-88",
+  "frameWidth": 208,
+  "frameHeight": 184,
+  "pivot": [
+    86,
+    88
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "run": 0.168,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.10567567567567569,
+    "walk-west": 0.10567567567567569
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "swim-west",
+      "frameFiles": [
+        "../../frames/bare/swim-west/000.png",
+        "../../frames/bare/swim-west/001.png",
+        "../../frames/bare/swim-west/002.png",
+        "../../frames/bare/swim-west/003.png",
+        "../../frames/bare/swim-west/004.png",
+        "../../frames/bare/swim-west/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

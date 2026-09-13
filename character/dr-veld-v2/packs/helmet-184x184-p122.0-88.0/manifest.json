@@ -1,0 +1,79 @@
+{
+  "name": "dr-veld-v2-helmet-184x184-p122.0-88.0",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    122.0,
+    88.0
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12,
+    "swim": 0.16,
+    "swim-carry": 0.16,
+    "walk": 0.12,
+    "walk-east": 0.11716216216216217,
+    "walk-west": 0.12405405405405405,
+    "carry-east": 0.0872972972972973,
+    "carry-west": 0.07351351351351351,
+    "carry-south": 0.0827027027027027,
+    "carry-north": 0.0827027027027027,
+    "walk-south": 0.12,
+    "walk-north": 0.12
+  },
+  "precomposed": true,
+  "states": [
+    {
+      "id": "death-water-east",
+      "frameFiles": [
+        "../../frames/helmet/death-water-east/000.png",
+        "../../frames/helmet/death-water-east/001.png",
+        "../../frames/helmet/death-water-east/002.png",
+        "../../frames/helmet/death-water-east/003.png",
+        "../../frames/helmet/death-water-east/004.png",
+        "../../frames/helmet/death-water-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180.0,
+        180.0,
+        220.0,
+        220.0,
+        260.0,
+        500.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "death",
+        "death",
+        "death",
+        "death",
+        "death",
+        "death"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}
