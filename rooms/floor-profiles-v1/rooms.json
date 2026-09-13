@@ -207,10 +207,10 @@
     "floor_owner": "res://rooms/underwater/airlock-v1/airlock_view.gd",
     "department": "life_support",
     "condition": "maintained",
-    "source": "res://assets/department-floors-v1/wet-drainage.png",
-    "source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
-    "opacity": 0.42,
-    "floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+    "source": "res://assets/airlock-deck-v1/dry-deck-source.png",
+    "source_sha256": "ee385b7b61f8566fd9c7e3e3538b7c8c5d5c7f32fb72903edaafdd0d4fae49cd",
+    "opacity": 0.85,
+    "floor_stage": "Airlock deck revision: native four-rotation review, September 12, 2026",
     "detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
     "machinery": [
       {
@@ -278,8 +278,8 @@
       }
     ],
     "acceptance": {
-      "card": "res://assets/floor-details-v3/cards/airlock.png",
-      "review": "res://output/floor-details-v3/review.json",
+      "card": "res://assets/airlock-deck-v1/card.png",
+      "review": "res://output/airlock-deck-20260912/final",
       "visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560",
       "missing_assets": []
     }
@@ -2790,24 +2790,6 @@
     "floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
     "detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
     "machinery": [
-      {
-        "id": "flush_left",
-        "rect": [
-          -174.0,
-          -24.0,
-          92.0,
-          190.0
-        ]
-      },
-      {
-        "id": "flush_right",
-        "rect": [
-          82.0,
-          -24.0,
-          92.0,
-          190.0
-        ]
-      },
       {
         "id": "full_wall_emergency-isolation-wall",
         "rect": [

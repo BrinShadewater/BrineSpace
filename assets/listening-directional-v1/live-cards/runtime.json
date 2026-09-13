@@ -1,0 +1,101 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/listening_post.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "acoustic",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_deepwater-listening-wall",
+						"flush_left",
+						"acoustic_listener"
+					],
+					"purpose": "hydrophone service access",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"full_wall_deepwater-listening-wall",
+						"flush_right",
+						"acoustic_receiver"
+					],
+					"purpose": "isolated signal feed",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/rare-dead-ends/listening_post_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "listening_post",
+			"machinery": [
+				{
+					"id": "flush_left",
+					"rect": [
+						-174.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "flush_right",
+					"rect": [
+						82.0,
+						-24.0,
+						92.0,
+						190.0
+					]
+				},
+				{
+					"id": "full_wall_deepwater-listening-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						101.762985229492
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v5/acoustic-floor.png",
+			"source_sha256": "4e93f398ffa4cda776f1a202f32265220930de8d7d61f47f25d1eec94720e5da",
+			"view": "res://rooms/full-wall-v1/listening_post_view.gd"
+		},
+		"layered": true,
+		"room": "listening_post",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "flush_back",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_left",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "flush_right",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/listening_post_view.gd"
+	}
+]

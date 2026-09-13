@@ -1,0 +1,75 @@
+{
+  "textures": {
+    "support": "res://assets/material-polish-v4/maintenance-support.png",
+    "accessories": "res://rooms/production-ten/decor/maintenance-v1.png",
+    "current_flow_governor": "res://assets/room-furnishings-v4/current-flow-governor.png",
+    "universal_instrument_cabinet": "res://assets/room-furnishings-v4/universal-instrument-cabinet.png"
+  },
+  "furniture": [
+    {
+      "id": "current_flow_governor",
+      "texture": "current_flow_governor",
+      "registration": "res://assets/room-furnishings-v4/current-flow-governor-registration.json",
+      "footprint": [
+        -50,
+        -14,
+        100,
+        28
+      ],
+      "ground_width": 1212,
+      "centers_by_quarter": [
+        [
+          -72,
+          92
+        ],
+        [
+          -91,
+          -62
+        ],
+        [
+          -72,
+          -92
+        ],
+        [
+          91,
+          -62
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_instrument_cabinet",
+      "texture": "universal_instrument_cabinet",
+      "registration": "res://assets/room-furnishings-v4/universal-instrument-cabinet-registration.json",
+      "footprint": [
+        -29,
+        -11,
+        58,
+        22
+      ],
+      "ground_width": 1092,
+      "centers_by_quarter": [
+        [
+          132,
+          28
+        ],
+        [
+          -116,
+          82
+        ],
+        [
+          92,
+          -92
+        ],
+        [
+          116,
+          82
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": []
+}

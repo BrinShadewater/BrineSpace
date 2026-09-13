@@ -1,0 +1,16 @@
+{
+  "stage": "integrated-station-power-animation-pause-reviewed",
+  "source": "riser-idle.png",
+  "raw": "exec-6a3800f2-614a-40a1-8654-fa47c393325e.png",
+  "prompt": "riser-idle-prompt.json",
+  "review": "Both wall screen apertures retained as quiet dark glass. Cap, panel divisions, vent stripe and lower cabinets preserved visually; no pixel identity claim.",
+  "remaining": "Real adjacent-room visual review, other BRINE painted displays and owner visual acceptance remain.",
+  "actual_size": [
+    2007,
+    784
+  ],
+  "implementation": "north_wall uses idle texture; draw_brine_signals separated from cached wall via include_signals=false in grid WALL pass. Grid LIVE draws signals only when riser fixtures visible. Direct preview defaults to signals included.",
+  "checks": "Two screens times direct/retained-content fixtures:4active/temporal cases pass output/brine-riser-state-2026-09-12/checks.json.176layouts/20variants pass20260912-133311-headless; native direct on-a/card reviewed;47card parity passes.",
+  "station_checks": "output/brine-station-wall-2026-09-12/checks.json: both screens change with power and time; both remain pixel-identical during explicit paused process step. Cached wall rebuild count stays 5 across on-a, on-b and paused. Native on-a station image visually reviewed. Capture exits 0.",
+  "visibility_checks": "Native visibility fixture exits 0: raised and raised-again true; low, wall hardware off and synthetic occupied north-neighbor guard false. Low-wall screenshot visually reviewed. Synthetic neighbor is guard coverage, not realistic adjacent-room layout acceptance. Existing environment texture errors appear in capture log."
+}

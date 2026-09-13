@@ -66,6 +66,8 @@ func render_into(target: CanvasItem, at: Vector2, world_to_host: float, floor_on
 		draw_room_floor(Vector2.ZERO)
 		draw_floor_overlays(Vector2.ZERO)
 	else: draw_room_world(include_floor)
+	if get_meta("derelict_condition",false) and not floor_only:
+		preload("res://scripts/derelict_condition.gd").wall_wear(self)
 	painter.draw_set_transform(Vector2.ZERO)
 	painter = self
 	view_origin=saved_origin

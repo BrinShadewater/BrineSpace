@@ -1,0 +1,27 @@
+{
+  "room": "salvage_drone_bay",
+  "sources": [
+    {
+      "registration": "rooms/full-wall-v1/registrations/salvage-disassembly-wall.json",
+      "source": "res://assets/room-consistency-v1/salvage-north.png",
+      "sha256": "82044b7bf8b160d6c6064b5803cdd02d583e07e28848916906a4a90c3bd219a1"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-salvage-disassembly-wall-east.json",
+      "source": "res://assets/room-consistency-v1/salvage-sides.png",
+      "sha256": "2a282891c6f04df70ee776bc7484ac5922a7e79209ff0c841a969696df97f0bf"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-salvage-disassembly-wall-west.json",
+      "source": "res://assets/room-consistency-v1/salvage-sides.png",
+      "sha256": "2a282891c6f04df70ee776bc7484ac5922a7e79209ff0c841a969696df97f0bf"
+    }
+  ],
+  "native_evidence": "output/salvage-drone-directional-2026-09-12/side-seated/runtime.json",
+  "comparison": "output/salvage-drone-directional-2026-09-12/side-comparison.json",
+  "mounting_evidence": "output/salvage-drone-directional-2026-09-12/mounting-checks.json",
+  "card": "res://assets/salvage-drone-directional-v1/cards/salvage_drone_bay.png",
+  "review": "North and side sources retained after visual review. North front controls/tool storage face room; sides depict inward cabinet control/tool/drawer faces and three distinct sorting streams. Added side wall_contact to close10-unit gap; unchanged dimensions, all independent fleet props unchanged. Native q0/q2 and card reviewed; q1/q3 RGB identical.",
+  "checks": "176 furnished routes,20 existing side variants and47 card bindings pass. Raster, live effects and fleet behavior unchanged.",
+  "remaining": "All four Salvage Drone Bay directions reviewed; owner acceptance/full catalog pending. Mining Drone Bay baseline captured next."
+}

@@ -17,7 +17,7 @@ func _ready() -> void:
 		{"id":"life_tank","rect":Rect2(-165,107,74,42),"pivot":Vector2(330,1015),"width":370.0,"outline":[Vector2(244,742),Vector2(405,742),Vector2(405,734),Vector2(453,734),Vector2(454,742),Vector2(474,742),Vector2(486,761),Vector2(486,780),Vector2(511,787),Vector2(513,1003),Vector2(500,1015),Vector2(195,1015),Vector2(195,958),Vector2(146,958),Vector2(146,882),Vector2(238,880),Vector2(238,755)]},
 		{"id":"life_console","rect":Rect2(-80,111,60,38),"pivot":Vector2(925,1020),"width":274.0,"outline":[Vector2(808,773),Vector2(1034,773),Vector2(1045,785),Vector2(1045,807),Vector2(1062,817),Vector2(1062,1010),Vector2(1050,1020),Vector2(788,1020),Vector2(788,811),Vector2(803,807)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/whole-room/life-support-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/whole-room/life-support-composition-v5.json")
 	rebuild()
 
 func draw_wall(rect: Rect2, horizontal: bool) -> void:

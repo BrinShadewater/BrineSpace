@@ -12,8 +12,17 @@ func _init(host, path: String) -> void:
 		var image := Image.new()
 		preload("res://scripts/safe_image.gd").load_png(image, profile.textures[key])
 		textures[key]=ImageTexture.create_from_image(image)
-	for item in profile.get("furniture",[]):
+	var resolved_furniture: Array=[]
+	for raw_item in profile.get("furniture",[]):
+		var item: Dictionary=raw_item.duplicate(true)
+		if item.has("registration"):
+			var indexed=JSON.parse_string(FileAccess.get_file_as_string(item.registration))
+			assert(indexed is Dictionary and indexed.has("region") and indexed.has("pieces"),"Invalid dressing registration: "+str(item.registration))
+			item.region=indexed.region
+			item.pieces=indexed.pieces
+		resolved_furniture.append(item)
 		room.life_items.append(registration(item))
+	profile.furniture=resolved_furniture
 
 func registration(item: Dictionary) -> Dictionary:
 	var r: Array=item.region

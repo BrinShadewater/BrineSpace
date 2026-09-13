@@ -1,0 +1,361 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/gravity_loom.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "anomaly",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"loom_apparatus"
+					],
+					"purpose": "apparatus calibration port",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"loom_calibration_bench"
+					],
+					"purpose": "calibration supply entry",
+					"rotations": {
+						"2": {
+							"stand_off": 32.0
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "gravity_loom",
+			"machinery": [
+				{
+					"id": "loom_apparatus",
+					"rect": [
+						-90.0,
+						-60.0,
+						180.0,
+						120.0
+					]
+				},
+				{
+					"id": "loom_calibration_bench",
+					"rect": [
+						-166.0,
+						115.0,
+						84.0,
+						30.0
+					]
+				},
+				{
+					"id": "loom_task_light",
+					"rect": [
+						-70.0,
+						135.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/anomaly-floor.png",
+			"source_sha256": "15af18a8de4ec0f346130ef8582e5d117badb7fc63aa305976e7ce1c93e3052a",
+			"view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd"
+		},
+		"layered": true,
+		"room": "gravity_loom",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "loom_apparatus",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "gravity_tensor_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_diagnostic_rack",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "library/side-gravity-weights-south",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "library/side-gravity-control-south",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/tidal_condenser.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"tidal_pump"
+					],
+					"purpose": "condensate service outlet",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"full_wall_tidal-condensation-wall"
+					],
+					"purpose": "tank drain isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/tidal-condenser/tidal_condenser_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "tidal_condenser",
+			"machinery": [
+				{
+					"id": "tidal_coils",
+					"rect": [
+						-165.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "tidal_tanks",
+					"rect": [
+						57.0,
+						-143.0,
+						108.0,
+						64.0
+					]
+				},
+				{
+					"id": "tidal_pump",
+					"rect": [
+						-165.0,
+						93.0,
+						84.0,
+						52.0
+					]
+				},
+				{
+					"id": "tidal_monitor",
+					"rect": [
+						81.0,
+						94.0,
+						84.0,
+						52.0
+					]
+				},
+				{
+					"id": "tidal_sampling_bench",
+					"rect": [
+						-40.0,
+						-107.0,
+						80.0,
+						30.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/full-wall-v1/tidal_condenser_view.gd"
+		},
+		"layered": true,
+		"room": "tidal_condenser",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "tidal_pump",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "tidal_monitor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "tidal_analysis_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_valve_locker",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_tidal-condensation-wall",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/tidal_condenser_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/xeno_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_xeno-containment-wall"
+					],
+					"purpose": "containment inspection access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"xeno_service_cart"
+					],
+					"purpose": "specimen transfer boundary",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/xeno_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "xeno_lab",
+			"machinery": [
+				{
+					"id": "xeno_samples",
+					"rect": [
+						-160.0,
+						67.0,
+						94.0,
+						68.0
+					]
+				},
+				{
+					"id": "xeno_workbench",
+					"rect": [
+						66.0,
+						84.0,
+						94.0,
+						70.0
+					]
+				},
+				{
+					"id": "full_wall_xeno-containment-wall",
+					"rect": [
+						-163.815002441406,
+						-174.0,
+						327.630004882813,
+						134.0
+					]
+				},
+				{
+					"id": "xeno_service_cart",
+					"rect": [
+						-108.0,
+						8.13674926757813,
+						50.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/xeno_lab_view.gd"
+		},
+		"layered": true,
+		"room": "xeno_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "xeno_scanner",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_assay_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_decon_caddy",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_xeno-containment-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_workbench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "xeno_samples",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/xeno_lab_view.gd"
+	}
+]

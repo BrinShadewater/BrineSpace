@@ -4,7 +4,19 @@ var full_wall = preload("res://rooms/full-wall-v1/full_wall_prop.gd").new("quara
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+	var retained: Array=[]
+	if quarter==2:
+		for prop in props:
+			var spec: Dictionary=prop.get("registration",{}).get("spec",{})
+			if prop.id in ["quarantine_berth","quarantine_filter","quarantine_monitor"] or spec.get("centerpiece",false) or spec.get("authored_anchor",false): retained.append(prop.duplicate(true))
 	full_wall.apply(self)
+	if quarter==2:
+		props=props.filter(func(prop): return full_wall.owns(prop))
+		for prop in retained:
+			var stations={"quarantine_berth":Vector2(47,-100),"quarantine_filter":Vector2(-157,-105),"quarantine_monitor":Vector2(-49,-100)}
+			if stations.has(prop.id): prop.rect.position=stations[prop.id]
+			prop.sort_y=prop.rect.end.y
+			props.append(prop)
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)

@@ -1,0 +1,163 @@
+{
+  "textures": {
+    "bench": "res://rooms/underwater/acoustic-comms/electronics-bench-v1.png",
+    "chair": "res://rooms/production-ten/decor/command-operator-chair-v1.png",
+    "centerpiece": "res://assets/room-centerpieces-v1/listening-hydrophone-table.png",
+    "listening_hydrophone_analysis_table": "res://assets/room-furnishings-v9/listening-hydrophone-analysis-table.png",
+    "universal_rugged_power_conditioner": "res://assets/room-furnishings-v9/universal-rugged-power-conditioner.png"
+  },
+  "furniture": [
+    {
+      "id": "listening_hydrophone_analysis_table",
+      "texture": "listening_hydrophone_analysis_table",
+      "registration": "res://assets/room-furnishings-v9/listening-hydrophone-analysis-table-registration.json",
+      "footprint": [
+        -55,
+        -18,
+        110,
+        36
+      ],
+      "ground_width": 1215,
+      "centers_by_quarter": [
+        [
+          0,
+          38
+        ],
+        [
+          -38,
+          0
+        ],
+        [
+          0,
+          -38
+        ],
+        [
+          38,
+          0
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_rugged_power_conditioner",
+      "texture": "universal_rugged_power_conditioner",
+      "registration": "res://assets/room-furnishings-v9/universal-rugged-power-conditioner-registration.json",
+      "footprint": [
+        -30,
+        -13,
+        60,
+        26
+      ],
+      "ground_width": 1190,
+      "centers_by_quarter": [
+        [
+          112,
+          110
+        ],
+        [
+          55,
+          -55
+        ],
+        [
+          -112,
+          -110
+        ],
+        [
+          130,
+          -105
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": [
+    {
+      "from": {
+        "host": "acoustic_listener",
+        "source": [
+          508,
+          430
+        ]
+      },
+      "to": {
+        "host": "acoustic_receiver",
+        "source": [
+          126,
+          982
+        ]
+      },
+      "via": [
+        [
+          -173,
+          -55
+        ],
+        [
+          -173,
+          22
+        ]
+      ],
+      "color": "35494f",
+      "width": 2.2
+    },
+    {
+      "from": {
+        "host": "acoustic_transducers",
+        "source": [
+          744,
+          444
+        ]
+      },
+      "to": {
+        "host": "acoustic_listener",
+        "source": [
+          500,
+          440
+        ]
+      },
+      "via": [
+        [
+          50,
+          -161
+        ],
+        [
+          -55,
+          -161
+        ]
+      ],
+      "color": "35494f",
+      "width": 2.2
+    },
+    {
+      "from": {
+        "host": "acoustic_receiver",
+        "source": [
+          465,
+          1040
+        ]
+      },
+      "to": {
+        "host": "acoustic_electronics_bench",
+        "source": [
+          280,
+          930
+        ]
+      },
+      "via": [
+        [
+          -60,
+          54
+        ],
+        [
+          -60,
+          112
+        ]
+      ],
+      "color": "35494f",
+      "width": 2.2
+    }
+  ],
+  "decals": []
+}

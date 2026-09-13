@@ -1,0 +1,160 @@
+{
+  "operation": "Exact north/east/south/west turns from each current owner-preferred south overhead source",
+  "families": {
+    "medical-treatment-wall": {
+      "canonical_registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-south.json",
+      "canonical_source": "assets/med-bay-directional-v1/treatment-south-blue-v1.png",
+      "canonical_source_sha256": "cf2ba5215191f07557935ff03952f2f305a872cd3a114826c5db008e1d441feb",
+      "source_size": [
+        2097,
+        750
+      ],
+      "directions": {
+        "north": {
+          "source": "assets/owner-strict-overhead-v1/medical-treatment-wall/north.png",
+          "sha256": "4a126cee2e86d83fac75170cd0e1e631a86cdcd9021d29dcdadc7ba7a40e5fa3",
+          "registration": "rooms/full-wall-v1/registrations/medical-treatment-wall.json"
+        },
+        "east": {
+          "source": "assets/owner-strict-overhead-v1/medical-treatment-wall/east.png",
+          "sha256": "1121047afc00d82845cfca0d82b62d9d6c346e206a30b836228f8070a7e64285",
+          "registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-east.json"
+        },
+        "south": {
+          "source": "assets/owner-strict-overhead-v1/medical-treatment-wall/south.png",
+          "sha256": "cf2ba5215191f07557935ff03952f2f305a872cd3a114826c5db008e1d441feb",
+          "registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-south.json"
+        },
+        "west": {
+          "source": "assets/owner-strict-overhead-v1/medical-treatment-wall/west.png",
+          "sha256": "a8f12513e7e1d829094ade307bc74c51b4dba8e0f313fd3147e86f269a40479c",
+          "registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-west.json"
+        }
+      }
+    },
+    "mycelium-cultivation-wall": {
+      "canonical_registration": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-south.json",
+      "canonical_source": "assets/mycelium-directional-v1/mycelium-south.png",
+      "canonical_source_sha256": "a80b0cf69ff287a14274292baafd9aef3d2763b4d66200dc7486334872f4e16c",
+      "source_size": [
+        2094,
+        751
+      ],
+      "directions": {
+        "north": {
+          "source": "assets/owner-strict-overhead-v1/mycelium-cultivation-wall/north.png",
+          "sha256": "3cda6dacf90c01e04bc2aec7e7d49fb52c8fe2f4523918e325655c37764014e9",
+          "registration": "rooms/full-wall-v1/registrations/mycelium-cultivation-wall.json"
+        },
+        "east": {
+          "source": "assets/owner-strict-overhead-v1/mycelium-cultivation-wall/east.png",
+          "sha256": "c88b79867310d0b5b651f16638d23f58e7a58a3af13c5d5ac26918ad8a38dcd5",
+          "registration": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-east.json"
+        },
+        "south": {
+          "source": "assets/owner-strict-overhead-v1/mycelium-cultivation-wall/south.png",
+          "sha256": "0d1d853d59ee807f19d49231031b9430504d45898a12b394c816d2da2061fdb0",
+          "registration": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-south.json"
+        },
+        "west": {
+          "source": "assets/owner-strict-overhead-v1/mycelium-cultivation-wall/west.png",
+          "sha256": "6d901bdf6db3483e2ea09cecb9bf7dfdb9bb9e976a5b2e4c54b4ad4fd2ac22fe",
+          "registration": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-west.json"
+        }
+      }
+    },
+    "crew-lounge-built-in": {
+      "canonical_registration": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-south.json",
+      "canonical_source": "assets/room-facing-repair-v4/crew-lounge-built-in-south.png",
+      "canonical_source_sha256": "b2a042066e49e1c805020d331d79bfd21eac79e4f9232ed1bdd144d42d24d50b",
+      "source_size": [
+        2097,
+        750
+      ],
+      "directions": {
+        "north": {
+          "source": "assets/owner-strict-overhead-v1/crew-lounge-built-in/north.png",
+          "sha256": "32092866028efbd035b3e6888d7665bcbcc0bb71efffcb86643b9c0caf3faa8e",
+          "registration": "rooms/full-wall-v1/registrations/crew-lounge-built-in.json"
+        },
+        "east": {
+          "source": "assets/owner-strict-overhead-v1/crew-lounge-built-in/east.png",
+          "sha256": "6c8a99c8ab3eba6be131546995bae80617906d8ccf7b2d83ff1503beda82fb61",
+          "registration": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-east.json"
+        },
+        "south": {
+          "source": "assets/owner-strict-overhead-v1/crew-lounge-built-in/south.png",
+          "sha256": "16e83a88574cda2062c892fb023b5b93d8b50cfae0947b8c5fe2aa0e0f3a36f2",
+          "registration": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-south.json"
+        },
+        "west": {
+          "source": "assets/owner-strict-overhead-v1/crew-lounge-built-in/west.png",
+          "sha256": "d0aa9170eab1d3b06208b2a37bb532b947d03a2317604cf257f6b65145d7a399",
+          "registration": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-west.json"
+        }
+      }
+    },
+    "drone-service-wall": {
+      "canonical_registration": "rooms/full-wall-v1/registrations/side-drone-service-wall-south.json",
+      "canonical_source": "assets/mining-directional-v1/mining-south.png",
+      "canonical_source_sha256": "c85af5d3f589f4af66289cdedd719108d9ffa2d41446798b9073b51c68319640",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "directions": {
+        "north": {
+          "source": "assets/owner-strict-overhead-v1/drone-service-wall/north.png",
+          "sha256": "3be20ee9b56a1b3b9eeb0d04768fde2fd83256d0c966e372dd9fc55a3ceec51f",
+          "registration": "rooms/full-wall-v1/registrations/drone-service-wall.json"
+        },
+        "east": {
+          "source": "assets/owner-strict-overhead-v1/drone-service-wall/east.png",
+          "sha256": "34d6ddcc11619a216a4ada233c25aaed7ed72734340bc3712045bb0d86a42d37",
+          "registration": "rooms/full-wall-v1/registrations/side-drone-service-wall-east.json"
+        },
+        "south": {
+          "source": "assets/owner-strict-overhead-v1/drone-service-wall/south.png",
+          "sha256": "9868f2edb30b07b1a98475fb9690822a2f4e0068c40a5e6d41a3208e7dbc86b1",
+          "registration": "rooms/full-wall-v1/registrations/side-drone-service-wall-south.json"
+        },
+        "west": {
+          "source": "assets/owner-strict-overhead-v1/drone-service-wall/west.png",
+          "sha256": "a3f204f0994f4cfe8f6d78af4a245b404fb5985f0d4ef334c6789a8c35938e1e",
+          "registration": "rooms/full-wall-v1/registrations/side-drone-service-wall-west.json"
+        }
+      }
+    },
+    "research-analysis-wall": {
+      "canonical_registration": "rooms/full-wall-v1/registrations/side-research-analysis-wall-south.json",
+      "canonical_source": "assets/research-directional-v1/research-south.png",
+      "canonical_source_sha256": "e76b6b21c295ba6776ca149764a229ed683f6b39b9fdb83a3ab18785c90b3726",
+      "source_size": [
+        2095,
+        751
+      ],
+      "directions": {
+        "north": {
+          "source": "assets/owner-strict-overhead-v1/research-analysis-wall/north.png",
+          "sha256": "92732949293224c40f94480cd692f23cfd6a242c773e9cb9bffbab6909fbd5cd",
+          "registration": "rooms/full-wall-v1/registrations/research-analysis-wall.json"
+        },
+        "east": {
+          "source": "assets/owner-strict-overhead-v1/research-analysis-wall/east.png",
+          "sha256": "96acf4e7347d4c03e8f43fff40051d3952a8fef4bba5005807d29bf3aed47b5e",
+          "registration": "rooms/full-wall-v1/registrations/side-research-analysis-wall-east.json"
+        },
+        "south": {
+          "source": "assets/owner-strict-overhead-v1/research-analysis-wall/south.png",
+          "sha256": "6a0cc2f158355043c0828f71bd6714467005554af2cd2a7b0f888af6a5b60601",
+          "registration": "rooms/full-wall-v1/registrations/side-research-analysis-wall-south.json"
+        },
+        "west": {
+          "source": "assets/owner-strict-overhead-v1/research-analysis-wall/west.png",
+          "sha256": "ef1946a98478eae0e2c636d6f5ebf7a34975ebfd612c984e1f900d618fcc7424",
+          "registration": "rooms/full-wall-v1/registrations/side-research-analysis-wall-west.json"
+        }
+      }
+    }
+  }
+}

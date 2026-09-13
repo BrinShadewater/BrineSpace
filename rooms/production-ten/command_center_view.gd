@@ -1,4 +1,47 @@
 extends "res://rooms/whole-room/life_support_view.gd"
+var overhead_textures: Dictionary = {}
+func _overhead_turn(prop: Dictionary) -> int:
+	var center: Vector2=prop.rect.get_center()-prop.get("center",Vector2.ZERO)
+	if absf(center.x)>absf(center.y): return 3 if center.x<0 else 1
+	return 0 if center.y<0 else 2
+func _overhead_texture(prop: Dictionary) -> ImageTexture:
+	var key := "%s-%s"%[str(prop.id).trim_prefix("command_"),["down","left","up","right"][_overhead_turn(prop)]]
+	if not overhead_textures.has(key): overhead_textures[key]=load_source_texture("res://assets/command-owner-v2/%s.png"%key)
+	return overhead_textures[key]
+func _overhead_bounds(prop: Dictionary) -> Rect2:
+	var size := Vector2(_overhead_texture(prop).get_size())
+	var limit := Vector2(114,76) if prop.id=="command_table" else Vector2(96,64)
+	if prop.id=="command_systems": limit=Vector2(80,48)
+	if _overhead_turn(prop)%2==1: limit=Vector2(limit.y,limit.x)
+	size*=minf(limit.x/size.x,limit.y/size.y)
+	return Rect2(prop.rect.get_center()-size*0.5,size)
+func _overhead_point(prop: Dictionary, point: Vector2) -> Vector2:
+	var p := point
+	match _overhead_turn(prop):
+		1:p=Vector2(1.0-point.y,point.x)
+		2:p=Vector2(1.0-point.x,1.0-point.y)
+		3:p=Vector2(point.y,1.0-point.x)
+	var bounds := _overhead_bounds(prop)
+	return bounds.position+p*bounds.size
+func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.id in ["command_table","command_comms","command_systems"]: return _overhead_bounds(prop)
+	return super.prop_visual_bounds(prop)
+func _draw_overhead(prop: Dictionary) -> void:
+	painter.draw_texture_rect(_overhead_texture(prop),_overhead_bounds(prop),false)
+	if not operating:return
+	if prop.id=="command_table":
+		var center := Vector2(0.53,0.55)
+		var radius := Vector2(0.11,0.175)
+		for segment in range(24):
+			var a := TAU*segment/24.0
+			var b := TAU*(segment+1)/24.0
+			painter.draw_line(_overhead_point(prop,center+Vector2(cos(a),sin(a))*radius),_overhead_point(prop,center+Vector2(cos(b),sin(b))*radius),Color("90bec6"),1.0,true)
+		painter.draw_line(_overhead_point(prop,center),_overhead_point(prop,center+Vector2(cos(machine_clock*1.4),sin(machine_clock*1.4))*radius),Color("90bec6"),1.0,true)
+	else:
+		for row in range(3):
+			var y := 0.28+row*0.09
+			var left := 0.31 if prop.id=="command_systems" else 0.16
+			painter.draw_line(_overhead_point(prop,Vector2(left,y)),_overhead_point(prop,Vector2(left+0.18+0.04*sin(machine_clock*2+row),y)),Color("90bec6"),1.0,true)
 ## Underwater operations consoles with host-local sonar and system displays.
 const FLOOR_CUTOUTS = {
 	"command_ops":[[Vector2(565,150),Vector2(553,146),Vector2(538,130),Vector2(194,130),Vector2(192,140),Vector2(154,146),Vector2(138,159),Vector2(137.818,160),Vector2(183,160),Vector2(567,160)],[Vector2(567,160),Vector2(183,160),Vector2(183.75,166),Vector2(568.2,166)],[Vector2(136.727,166),Vector2(165,166),Vector2(183,160),Vector2(137.818,160)],[Vector2(570,175),Vector2(568.2,166),Vector2(183.75,166),Vector2(185,176),Vector2(570.895,176)],[Vector2(134.909,176),Vector2(158.684,176),Vector2(165,166),Vector2(136.727,166)],[Vector2(570.895,176),Vector2(185,176),Vector2(172,185),Vector2(578.947,185)],[Vector2(133.273,185),Vector2(153,185),Vector2(158.684,176),Vector2(134.909,176)],[Vector2(587,194),Vector2(578.947,185),Vector2(172,185),Vector2(170,248),Vector2(589.455,248)],[Vector2(132,192),Vector2(127,222),Vector2(128.106,248),Vector2(151.031,248),Vector2(153,185),Vector2(133.273,185)],[Vector2(589.455,248),Vector2(170,248),Vector2(170.517,249),Vector2(589.5,249)],[Vector2(128.149,249),Vector2(151,249),Vector2(151.031,248),Vector2(128.106,248)],[Vector2(590,260),Vector2(589.5,249),Vector2(170.517,249),Vector2(181.897,271),Vector2(589.2,271)],[Vector2(129,269),Vector2(129.158,271),Vector2(160,271),Vector2(151,249),Vector2(128.149,249)],[Vector2(589.2,271),Vector2(181.897,271),Vector2(185,277),Vector2(588.764,277)],[Vector2(129.632,277),Vector2(166.3,277),Vector2(160,271),Vector2(129.158,271)],[Vector2(588.764,277),Vector2(185,277),Vector2(181,291),Vector2(587.745,291)],[Vector2(130.737,291),Vector2(181,291),Vector2(166.3,277),Vector2(129.632,277)],[Vector2(146,487),Vector2(176,497),Vector2(208,489),Vector2(226,475),Vector2(239,478),Vector2(239,513),Vector2(251,525),Vector2(499,524),Vector2(513,500),Vector2(577,498),Vector2(590,482),Vector2(590,333),Vector2(586,315),Vector2(587.745,291),Vector2(181,291),Vector2(130.737,291),Vector2(132,307),Vector2(124,321),Vector2(129,467)]],
@@ -17,7 +60,7 @@ func _ready() -> void:
 		{"id":"command_table","rect":Rect2(-145,80,114,66),"pivot":Vector2(333,1069),"width":421.0,"outline":[Vector2(124,913),Vector2(129,830),Vector2(138,774),Vector2(154,746),Vector2(183,730),Vector2(208,724),Vector2(232,733),Vector2(243,756),Vector2(255,751),Vector2(270,745),Vector2(299,746),Vector2(303,739),Vector2(370,740),Vector2(378,752),Vector2(386,752),Vector2(392,741),Vector2(409,742),Vector2(419,752),Vector2(432,745),Vector2(474,746),Vector2(487,759),Vector2(488,780),Vector2(516,780),Vector2(536,800),Vector2(541,1018),Vector2(532,1040),Vector2(507,1067),Vector2(238,1069),Vector2(220,1058),Vector2(203,1064),Vector2(173,1064),Vector2(153,1056),Vector2(143,1038),Vector2(133,979),Vector2(123,974)]},
 		{"id":"command_comms","rect":Rect2(64,-120,96,58),"pivot":Vector2(933,1040),"width":408.0,"outline":[Vector2(731,862),Vector2(741,846),Vector2(751,845),Vector2(753,809),Vector2(765,800),Vector2(777,785),Vector2(800,784),Vector2(803,768),Vector2(815,762),Vector2(971,762),Vector2(978,766),Vector2(1007,762),Vector2(1017,741),Vector2(1074,737),Vector2(1078,680),Vector2(1085,677),Vector2(1090,737),Vector2(1100,746),Vector2(1108,786),Vector2(1122,813),Vector2(1138,841),Vector2(1138,884),Vector2(1126,903),Vector2(1122,970),Vector2(1109,996),Vector2(1087,1008),Vector2(1077,1027),Vector2(1063,1039),Vector2(762,1038),Vector2(732,1008)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/production-ten/decor/command-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/production-ten/decor/command-composition-v4.json")
 	rebuild()
 
 func rebuild() -> void:
@@ -81,6 +124,9 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 
 func draw_registered_prop(prop: Dictionary) -> void:
 	if dressing!=null and dressing.draw(prop): return
+	if prop.id in ["command_table","command_comms","command_systems"]:
+		_draw_overhead(prop)
+		return
 	for outline in FLOOR_CUTOUTS.get(prop.id,[prop.registration.outline]):
 		var vertices := PackedVector2Array()
 		var uv := PackedVector2Array()

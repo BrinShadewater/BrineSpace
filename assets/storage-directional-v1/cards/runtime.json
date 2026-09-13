@@ -1,0 +1,148 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/storage_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "logistics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"storage_lift"
+					],
+					"purpose": "loading transfer boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"full_wall_storage-wall_cargo"
+					],
+					"purpose": "rack restraint socket",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/storage_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "storage_bay",
+			"machinery": [
+				{
+					"id": "storage_crates",
+					"rect": [
+						-170.0,
+						105.0,
+						62.0,
+						42.0
+					]
+				},
+				{
+					"id": "storage_shelves",
+					"rect": [
+						84.0,
+						-142.352935791016,
+						88.0,
+						56.0
+					]
+				},
+				{
+					"id": "storage_lift",
+					"rect": [
+						-100.0,
+						94.0,
+						66.0,
+						50.0
+					]
+				},
+				{
+					"id": "storage_secured_rack",
+					"rect": [
+						116.0,
+						-48.0,
+						52.0,
+						36.0
+					]
+				},
+				{
+					"id": "storage_packing_bench",
+					"rect": [
+						43.0,
+						91.0,
+						62.0,
+						24.0
+					]
+				},
+				{
+					"id": "storage_waiting_case",
+					"rect": [
+						-145.0,
+						-109.0,
+						34.0,
+						14.0
+					]
+				},
+				{
+					"id": "storage_task_light",
+					"rect": [
+						108.0,
+						91.0,
+						14.0,
+						8.0
+					]
+				},
+				{
+					"id": "storage_staging_pallet",
+					"rect": [
+						-130.0,
+						-57.0,
+						60.0,
+						25.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/storage-load-deck.png",
+			"source_sha256": "95aaf0bb8c3987d4855d6c56510e83e887f57b84f3bcd5d77340c029a18f4fa0",
+			"view": "res://rooms/full-wall-v1/storage_bay_view.gd"
+		},
+		"layered": true,
+		"room": "storage_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_storage-wall_cargo",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_storage-wall_inventory",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "storage_crates",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "storage_lift",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/storage_bay_view.gd"
+	}
+]

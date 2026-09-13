@@ -11,7 +11,7 @@
       "cards": true,
       "view": "rooms/underwater/gravity-loom/gravity_loom_view.gd",
       "candidate_card": "rooms/underwater/gravity-loom/card-v1.png",
-      "card": "rooms/underwater/gravity-loom/gravity_loom-card-mat-v3.png"
+      "card": "assets/room-furnishings-v6/cards/gravity_loom.png"
     },
     "canonical_ports_nesw": [
       0,
@@ -33,7 +33,8 @@
       "walker": "output/gravity-loom/walker-v3.log: 3136 ordered pairs involving Loom across 25 identities; 892032 legacy-helper route samples, zero failures. Square corner waypoints added after v2 collisions.",
       "walker_scope_correction": "892032 samples cover the retained legacy perimeter path helper. Current Bill NPC uses its navigation graph; this is not full current-controller route acceptance.",
       "windows_export": "windows-validation-v1: 11 selected room sources plus 6 supporting Battery Arrays; current Bill controlled tour physically reaches all 17 rooms, 43 transitions and 3278 checked steps from external cwd. Windows debug only.",
-      "crossings": "crossings-v2: current Bill graph/controller; 16 arrivals and 112 native frames reviewed. No apparatus intrusion; shared horizontal collar occlusion remains a separate art concern."
+      "crossings": "crossings-v2: current Bill graph/controller; 16 arrivals and 112 native frames reviewed. No apparatus intrusion; shared horizontal collar occlusion remains a separate art concern.",
+      "furnishing_v6": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v6/manifest.json; owner acceptance pending."
     },
     "review": [
       "Central segmented apparatus with four calibration modules, unlit slots and resting mineral fragments.",
@@ -66,14 +67,38 @@
       {
         "path": "rooms/production-ten/decor/maintenance-support-v1.png",
         "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/room-furnishings-v6/gravity-tensor-console.png",
+        "sha256": "3008da62675514ca3cf4f2471f8b43a2122922c29717b0948df63c3f02f9b473"
+      },
+      {
+        "path": "assets/room-furnishings-v6/universal-diagnostic-rack.png",
+        "sha256": "347f4eda6617329a3c517b251b0c46f20e0b21588e90487781157527d3ed1538"
+      },
+      {
+        "path": "assets/room-furnishings-v6/gravity-tensor-console-registration.json",
+        "sha256": "4b68f3f57af29e37658b4d99ed75b954ad272bed1ce91924f36806b2e5de628c"
+      },
+      {
+        "path": "assets/room-furnishings-v6/universal-diagnostic-rack-registration.json",
+        "sha256": "2d7ede7a46abbdd4d7768bd8621b1af95d6573dd0e10661cf722f0a714f5265f"
       }
     ],
-    "composition_profile": "rooms/underwater/gravity-loom/loom-composition-v2.json",
+    "composition_profile": "rooms/underwater/gravity-loom/loom-composition-v3.json",
     "composition_assets": [
       {
-        "path": "rooms/underwater/gravity-loom/loom-composition-v2.json",
-        "sha256": "e677677d94b8719ce56a8271d6889af639e437eee81abeabbbb7b591baec1822"
+        "path": "rooms/underwater/gravity-loom/loom-composition-v3.json",
+        "sha256": "e447e4c88ad98f6855fc00d2bed7565d78a7efaf8174d150ad65a27e3a1ca10c"
       }
-    ]
+    ],
+    "card": {
+      "path": "assets/room-furnishings-v6/cards/gravity_loom.png",
+      "sha256": "7bb2c60bfd547e4ef4f8e37f37ecb2ff0509c31f84f425d9de27a8006d54d33f"
+    }
   }
 ]

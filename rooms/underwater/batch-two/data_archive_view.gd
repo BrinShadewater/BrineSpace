@@ -27,7 +27,7 @@ func _ready() -> void:
 		life_items.append({"id":"archive_rack_"+str(i),"rect":Rect2(-143 if i==0 else 85,-135,58,60),"pivot":Vector2(298+dx,580),"width":190.0,"outline":outline,"source_dx":dx})
 	life_items.append({"id":"archive_library","rect":Rect2(-154,101,84,55),"pivot":Vector2(307,1071),"width":208.0,"outline":[Vector2(218,810),Vector2(397,810),Vector2(411,824),Vector2(411,1058),Vector2(400,1071),Vector2(215,1071),Vector2(203,1058),Vector2(203,827)]})
 	life_items.append({"id":"archive_terminal","rect":Rect2(84,46,80,50),"pivot":Vector2(919,1073),"width":252.0,"outline":[Vector2(812,851),Vector2(1030,851),Vector2(1044,865),Vector2(1044,1062),Vector2(1033,1073),Vector2(805,1073),Vector2(793,1061),Vector2(793,869)]})
-	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/archive-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/archive-composition-v4.json")
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:

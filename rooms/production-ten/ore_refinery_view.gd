@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/ore_refinery-source-v1.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/ore_refinery-source-v2.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"refinery_crusher","rect":Rect2(-164,-115,104,64),"pivot":Vector2(321,576),"width":360.0,"outline":[Vector2(143,245),Vector2(173,213),Vector2(177,198),Vector2(193,191),Vector2(194,180),Vector2(224,174),Vector2(224,139),Vector2(248,112),Vector2(369,112),Vector2(396,137),Vector2(398,174),Vector2(422,175),Vector2(427,190),Vector2(458,190),Vector2(478,207),Vector2(480,225),Vector2(500,244),Vector2(501,489),Vector2(482,507),Vector2(398,507),Vector2(398,559),Vector2(380,576),Vector2(242,576),Vector2(222,559),Vector2(222,507),Vector2(162,507),Vector2(143,489)]},
@@ -13,7 +13,9 @@ func _ready() -> void:
 		{"id":"refinery_sorter","rect":Rect2(84,37,80,50),"pivot":Vector2(320,1095),"width":366.0,"outline":[Vector2(174,733),Vector2(299,733),Vector2(306,719),Vector2(353,719),Vector2(360,728),Vector2(421,728),Vector2(434,742),Vector2(456,744),Vector2(458,766),Vector2(485,771),Vector2(499,791),Vector2(502,1074),Vector2(482,1095),Vector2(157,1095),Vector2(137,1078),Vector2(137,790),Vector2(152,771),Vector2(171,766)]},
 		{"id":"refinery_hopper","rect":Rect2(-154,-4,80,52),"pivot":Vector2(938,1095),"width":338.0,"outline":[Vector2(772,791),Vector2(791,768),Vector2(808,766),Vector2(809,746),Vector2(823,733),Vector2(1053,733),Vector2(1069,747),Vector2(1070,765),Vector2(1090,772),Vector2(1105,791),Vector2(1107,1074),Vector2(1088,1095),Vector2(790,1095),Vector2(769,1075)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/production-ten/decor/refinery-composition-v3.json")
+	# The new assay/sorting bench owns this activity and replaces the older generic sorter block.
+	life_items=life_items.filter(func(item): return item.id!="refinery_sorter")
+	dressing=Dressing.new(self,"res://rooms/production-ten/decor/refinery-composition-v4.json")
 	rebuild()
 
 func rebuild() -> void:

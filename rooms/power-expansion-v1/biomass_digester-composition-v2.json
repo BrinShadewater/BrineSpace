@@ -1,0 +1,75 @@
+{
+  "textures": {
+    "support": "res://assets/biomass-material-v2/biomass-service-support-matte-v1.png",
+    "accessories": "res://rooms/production-ten/decor/maintenance-v1.png",
+    "biomass_feedstock_island": "res://assets/room-furnishings-v4/biomass-feedstock-island.png",
+    "universal_maintenance_trestle": "res://assets/room-furnishings-v4/universal-maintenance-trestle.png"
+  },
+  "furniture": [
+    {
+      "id": "biomass_feedstock_island",
+      "texture": "biomass_feedstock_island",
+      "registration": "res://assets/room-furnishings-v4/biomass-feedstock-island-registration.json",
+      "footprint": [
+        -50,
+        -16,
+        100,
+        32
+      ],
+      "ground_width": 1237,
+      "centers_by_quarter": [
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_maintenance_trestle",
+      "texture": "universal_maintenance_trestle",
+      "registration": "res://assets/room-furnishings-v4/universal-maintenance-trestle-registration.json",
+      "footprint": [
+        -30,
+        -12,
+        60,
+        24
+      ],
+      "ground_width": 1152,
+      "centers_by_quarter": [
+        [
+          90,
+          -92
+        ],
+        [
+          90,
+          -92
+        ],
+        [
+          90,
+          -92
+        ],
+        [
+          90,
+          -92
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": []
+}

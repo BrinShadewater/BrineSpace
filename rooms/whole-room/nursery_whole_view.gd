@@ -214,7 +214,7 @@ func draw_actor() -> void:
 	preload("res://scripts/flood_visuals.gd").draw_crew_shadow(painter,actor,flood_water)
 	if external_actor_texture != null:
 		if external_actor_texture.get_meta("major_bill_v2", false) or external_actor_texture.get_meta("crew_frame_92", false):
-			var pixel_scale := 65.28 / 74.0
+			var pixel_scale := 65.28 / float(external_actor_texture.get_meta("crew_standing_height", 74.0))
 			var pivot: Vector2 = external_actor_texture.get_meta("crew_pivot", Vector2(46, 86))
 			preload("res://scripts/flood_visuals.gd").draw_crew(painter,external_actor_texture,Rect2(actor-pivot*pixel_scale,external_actor_texture.get_size()*pixel_scale),actor,flood_water,flood_clock)
 			return
@@ -305,6 +305,8 @@ func draw_room_world(include_floor := true) -> void:
 			var center := Vector2(room.cell)*Geometry.CELL
 			draw_room_floor(center)
 			draw_floor_overlays(center)
+			if get_meta("derelict_condition",false):
+				preload("res://scripts/derelict_condition.gd").floor_wear(painter,center)
 	if retained_content_host != null and shell_pass == 2 and reuse_prop_queue:
 		var live: Array = []
 		if show_actor:
@@ -365,7 +367,7 @@ func draw_room_world(include_floor := true) -> void:
 				if not preload("res://scripts/room_layout_store.gd").surface_positions(self).get("hidden/"+str(item.prop.id),false):
 					var artwork: Dictionary=item.prop.duplicate()
 					artwork.id=artwork.get("copy_source",artwork.id)
-					if artwork.get("library_asset",false): preload("res://scripts/room_asset_library.gd").draw(self,artwork)
+					if artwork.get("library_asset",false) and not artwork.get("custom_library_draw",false): preload("res://scripts/room_asset_library.gd").draw(self,artwork)
 					else: draw_registered_prop(artwork)
 				painter.draw_set_transform(view_origin,0,Vector2.ONE*view_scale)
 	if debug:

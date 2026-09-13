@@ -1,0 +1,121 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/holographic_core.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "data",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"full_wall_holo-wall_optics"
+					],
+					"purpose": "compute service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"holo_calibrator"
+					],
+					"purpose": "calibrator floor access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/data_archive_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "holographic_core",
+			"machinery": [
+				{
+					"id": "holo_projector",
+					"rect": [
+						-172.0,
+						-139.0,
+						98.0,
+						66.0
+					]
+				},
+				{
+					"id": "holo_compute",
+					"rect": [
+						70.0,
+						-139.0,
+						84.0,
+						62.0
+					]
+				},
+				{
+					"id": "holo_calibrator",
+					"rect": [
+						-165.0,
+						45.0,
+						70.0,
+						50.0
+					]
+				},
+				{
+					"id": "holo_terminal",
+					"rect": [
+						66.0,
+						50.0,
+						96.0,
+						52.0
+					]
+				},
+				{
+					"id": "holo_calibration_cart",
+					"rect": [
+						-92.0,
+						87.0,
+						56.0,
+						24.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/data-access.png",
+			"source_sha256": "b9534688a8d4bd27e1ffbf09a8b48235aa5298f957a2ca64d61caf81959123e9",
+			"view": "res://rooms/full-wall-v1/holographic_core_view.gd"
+		},
+		"layered": true,
+		"room": "holographic_core",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_holo-wall_optics",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_holo-wall_control",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "holo_projector",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "holo_calibrator",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/holographic_core_view.gd"
+	}
+]

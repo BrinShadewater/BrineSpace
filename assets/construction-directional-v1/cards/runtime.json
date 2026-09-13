@@ -1,0 +1,140 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/construction_drone_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "robotics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"construction_assembly_trestle",
+						"full_wall_construction-fabrication-wall"
+					],
+					"purpose": "assembly staging boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"construction_hatch"
+					],
+					"purpose": "launch service restraint",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/mining_drone_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "construction_drone_bay",
+			"machinery": [
+				{
+					"id": "construction_rov",
+					"rect": [
+						-156.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_bench",
+					"rect": [
+						66.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_hatch",
+					"rect": [
+						-156.0,
+						-12.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_panels",
+					"rect": [
+						66.0,
+						79.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "construction_parts_trolley",
+					"rect": [
+						98.0,
+						-45.0,
+						46.0,
+						16.0
+					]
+				},
+				{
+					"id": "construction_inspection_light",
+					"rect": [
+						158.0,
+						-30.0,
+						14.0,
+						8.0
+					]
+				},
+				{
+					"id": "construction_assembly_trestle",
+					"rect": [
+						80.0,
+						25.0,
+						72.0,
+						26.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/robotics-service.png",
+			"source_sha256": "1b28908a73cecc263b2e4f70b122d5a3b0ce57ea1822700dccc12fb2741220f7",
+			"view": "res://rooms/full-wall-v1/construction_drone_bay_view.gd"
+		},
+		"layered": true,
+		"room": "construction_drone_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "construction_rov",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "construction_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_construction-fabrication-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "construction_bench",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/construction_drone_bay_view.gd"
+	}
+]

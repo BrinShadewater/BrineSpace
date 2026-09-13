@@ -1,0 +1,24 @@
+{
+  "room": "observation_room",
+  "direction": "south",
+  "stage": "library-installed-native-reviewed",
+  "source": "assets/observation-directional-v1/shelves-south.png",
+  "sha256": "fcd96ac1d5a9ee12362d24eeb3db237b7c9575a665545e09c9e2d1a5bc3dcbd4",
+  "dimensions": [
+    1881,
+    836
+  ],
+  "original": "exec-47473253-8ccb-47a4-b466-f07c3c4b5a8c.png",
+  "registration": "rooms/full-wall-v1/registrations/side-observation-shelves-south.json",
+  "registration_sha256": "88de40c9b4f379da1353571b6c49debd70a6bcb287cecb837cb09d3da692bfbf",
+  "native_evidence": "output/observation-south-2026-09-12/companion/native.png",
+  "display_width": 274,
+  "findings": [
+    "North/top access handles, closed lower/back rail, top display recesses.",
+    "Two groups of three books, one ammonite and one rock; prompt requested three groups, actual design recorded.",
+    "Native library rendering reviewed; neutral background excluded by vector registration."
+  ],
+  "scope": "Library companion only; fixed live q0 north window/south doorway, runtime and card bindings unmodified.",
+  "owner_acceptance": false,
+  "tests": "output/observation-south-2026-09-12/tests.log"
+}

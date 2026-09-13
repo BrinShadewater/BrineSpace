@@ -18,7 +18,7 @@ func _ready() -> void:
 		{"id":"battery_breaker","rect":Rect2(-168,62,72,44),"pivot":Vector2(352,1046),"width":429.0,"outline":[Vector2(172,713),Vector2(465,713),Vector2(466,703),Vector2(499,703),Vector2(511,720),Vector2(516,848),Vector2(543,848),Vector2(549,884),Vector2(565,896),Vector2(567,915),Vector2(550,932),Vector2(551,978),Vector2(564,990),Vector2(560,1016),Vector2(542,1024),Vector2(518,1044),Vector2(170,1046),Vector2(161,1028),Vector2(146,983),Vector2(138,955),Vector2(147,927),Vector2(145,810),Vector2(153,779),Vector2(169,773)]},
 		{"id":"battery_distribution","rect":Rect2(-90,110,58,36),"pivot":Vector2(920,1048),"width":341.0,"outline":[Vector2(751,809),Vector2(768,783),Vector2(785,764),Vector2(833,764),Vector2(847,754),Vector2(951,752),Vector2(980,765),Vector2(1022,765),Vector2(1047,798),Vector2(1075,807),Vector2(1091,833),Vector2(1091,981),Vector2(1077,1010),Vector2(1056,1021),Vector2(1045,1038),Vector2(863,1048),Vector2(849,1033),Vector2(752,1033)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/production-ten/decor/battery-composition-v4.json")
+	dressing=Dressing.new(self,"res://rooms/production-ten/decor/battery-composition-v5.json")
 	rebuild()
 
 func rebuild() -> void:

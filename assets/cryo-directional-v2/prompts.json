@@ -1,0 +1,24 @@
+{
+  "reference": "assets/cryo-directional-v1/cryo-south.png",
+  "attempts": [
+    {
+      "output": "assets/cryo-directional-v2/raw/north-overhead-rejected-elevation-v1.png",
+      "sha256": "d5df2e4290e8ba2a23abdec1a2810264d0374d6255f26c201f9190a2fd898d4f",
+      "disposition": "rejected",
+      "reason": "Preserved tall vessel bodies, cabinet fronts and a frontal appliance projection despite the requested camera correction.",
+      "prompt_summary": "Preserve the full cryogenic inventory and medical palette while rebuilding the north wall bank as strict orthographic overhead, with controls facing south and transparent exterior."
+    },
+    {
+      "output": "assets/cryo-directional-v2/raw/north-overhead-v1.png",
+      "sha256": "6852eac26b666b1af73eb9ce38c1f945eac24d972a4e0377f790fe3179410d4c",
+      "disposition": "selected after alpha cleanup",
+      "reason": "Shows circular vessel lids, shallow compressor and control footprints, folded coil and top-facing service surfaces without upright equipment fronts.",
+      "prompt_summary": "Camera correction from the accepted south inventory: true bird's-eye orthographic view, top lids and shallow footprints only; no cylinder sidewalls, cabinet fronts, vertical monitor faces or isometric projection. Preserve compressor, two vessels, coil, pipes, blue coolant cylinder, terminal, three samples and gas bottle in matte grey-ivory, charcoal, subdued brass and muted blue."
+    }
+  ],
+  "cleanup": {
+    "selected_output": "assets/cryo-directional-v2/north-overhead-v1.png",
+    "sha256": "44ff7986f6c2b3d95da72734c7df27ace71e2ac7e2c4b3500da5375fd797b33b",
+    "rule": "Keep the single reviewed 693759-pixel connected silhouette and remove 5100 disconnected generated alpha pixels across 1623 speck components."
+  }
+}

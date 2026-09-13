@@ -5,6 +5,12 @@ var full_wall = preload("res://rooms/full-wall-v1/split_wall_prop.gd").new("holo
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
 	full_wall.apply(self)
+	# Keep the established calibrator station when north art frees floor space.
+	if q==0:
+		for prop in props:
+			if prop.id=="holo_calibrator":
+				prop.rect.position=Vector2(47.7307739257813,51.4230804443359)
+				prop.sort_y=prop.rect.end.y
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)

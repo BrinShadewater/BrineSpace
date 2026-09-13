@@ -1,0 +1,35 @@
+{
+  "date": "2026-09-12",
+  "request": "After removing the weak hull cradle, reduce orange on the remaining Shield Generator objects.",
+  "method": "Deterministic HSV palette correction across every selected wall source; geometry, alpha, shading and non-orange pixels preserved.",
+  "parameters": {
+    "hue_range": [0.015, 0.13],
+    "minimum_saturation": 0.35,
+    "minimum_value": 0.18,
+    "saturation_scale": 0.78,
+    "value_scale": 0.68,
+    "preserved_indicator_rule": "hue >= 0.095, saturation >= 0.62, value >= 0.68"
+  },
+  "outputs": {
+    "shield-north-muted-v1.png": {
+      "source": "res://assets/room-consistency-v1/shield-north.png",
+      "changed_pixels": 102878,
+      "sha256": "cfdea5a6f239d9598489981d8cf2ff7762de8b4f4913752fc89c34129ada9542"
+    },
+    "shield-sides-muted-v1.png": {
+      "source": "res://assets/shield-directional-v1/shield-sides-overhead.png",
+      "changed_pixels": 83702,
+      "sha256": "0710f3a2d0304dcf17aaef50869031317f1003a80bc93cb50b9689970fdda781"
+    },
+    "shield-south-muted-v1.png": {
+      "source": "res://assets/room-facing-repair-v3/shield-pressure-wall-south.png",
+      "changed_pixels": 111801,
+      "sha256": "a3276bfce9bd35e575cc95755affc7b8261437e268609839bcbc9d8068c9952c"
+    }
+  },
+  "card": {
+    "path": "res://assets/shield-directional-v2/cards/shield_generator.png",
+    "sha256": "14e0ad2b7fea808677dce525604d036a0381a4b2eb8dabe631c7616b73fb5ecb"
+  },
+  "review": "Accepted for source selection after native q0-q3 review. Orange construction is subordinate to graphite machinery and compact amber readouts remain legible."
+}

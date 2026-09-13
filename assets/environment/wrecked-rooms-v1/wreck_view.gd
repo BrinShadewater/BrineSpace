@@ -16,6 +16,7 @@ func texture(kind: String, stage: String) -> Texture2D:
 
 func draw_into(canvas: CanvasItem, wrecks: Dictionary, cell_size: float, time: float, selected: Vector2i, show_work_effects := true) -> void:
 	for cell in wrecks:
+		if not Field.visible(wrecks,cell): continue
 		var w: Dictionary = wrecks[cell]
 		if w.kind in ["basalt", "cryo", "charging", "river", "josh", "margot"]:
 			continue # Connected terrain is drawn by RockView, without a hull foundation.

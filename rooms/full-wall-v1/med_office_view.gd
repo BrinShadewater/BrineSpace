@@ -4,7 +4,28 @@ var full_wall = preload("res://rooms/full-wall-v1/full_wall_prop.gd").new("medic
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+	var retained: Array=[]
+	if q==3:
+		for prop in props:
+			var spec: Dictionary=prop.get("registration",{}).get("spec",{})
+			if prop.id in ["office_exam","office_consultation","office_records"] or spec.get("centerpiece",false) or spec.get("authored_anchor",false): retained.append(prop.duplicate(true))
 	full_wall.apply(self)
+	if q==3 and not retained.is_empty():
+		var bank: Array=[]
+		for prop in props:
+			if full_wall.owns(prop): bank.append(prop)
+		var stations={"office_exam":Vector2(-157,-80),"office_records":Vector2(-38,-70),"office_consultation":Vector2(65,-90)}
+		for prop in retained:
+			var authored: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.asset_id,quarter)
+			preload("res://scripts/room_layout_store.gd").resize_prop(prop,authored.get("size/"+str(prop.id),[1.0,1.0]))
+			var saved=authored.get(str(prop.id))
+			if saved is Array and saved.size()==2:
+				prop.rect.position=Vector2(saved[0],saved[1])
+			elif stations.has(prop.id):
+				prop.rect.position=stations[prop.id]
+			prop.sort_y=prop.rect.end.y
+			bank.append(prop)
+		props=bank
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
@@ -18,6 +39,6 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	super.draw_registered_prop(prop)
 
 func is_animated_prop(prop: Dictionary) -> bool:
-	if full_wall.owns(prop): return false
+	if full_wall.owns(prop): return prop.registration.has("operating_screens")
 	return super.is_animated_prop(prop)
 

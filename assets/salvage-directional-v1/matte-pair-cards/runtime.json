@@ -1,0 +1,46 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/maintenance_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "workbench with integrated repair press and parts shelving; floor tote",
+			"details": [],
+			"floor_owner": "res://rooms/underwater/salvage-workshop-v1/workshop_view.gd",
+			"floor_stage": "integrated; native card, completed room and three viewport captures",
+			"id": "salvage_workshop",
+			"machinery": [],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/underwater/salvage-workshop-v1/workshop_view.gd"
+		},
+		"layered": true,
+		"room": "salvage_workshop",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "tote",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/salvage-workshop-v1/workshop_view.gd"
+	}
+]

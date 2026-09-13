@@ -1,0 +1,130 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/reactor.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"reactor_cooler"
+					],
+					"purpose": "coolant maintenance outlet",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"reactor_console"
+					],
+					"purpose": "console floor access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/reactor_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "reactor",
+			"machinery": [
+				{
+					"id": "reactor_chamber",
+					"rect": [
+						-52.0,
+						-40.0,
+						104.0,
+						80.0
+					]
+				},
+				{
+					"id": "reactor_cooler",
+					"rect": [
+						-164.0,
+						-150.0,
+						70.0,
+						54.0
+					]
+				},
+				{
+					"id": "reactor_console",
+					"rect": [
+						94.0,
+						119.0,
+						70.0,
+						34.0
+					]
+				},
+				{
+					"id": "reactor_service_table",
+					"rect": [
+						-164.0,
+						111.0,
+						76.0,
+						26.0
+					]
+				},
+				{
+					"id": "reactor_task_lamp",
+					"rect": [
+						-78.0,
+						121.0,
+						14.0,
+						8.0
+					]
+				},
+				{
+					"id": "reactor_service_cylinder",
+					"rect": [
+						-82.0,
+						-117.0,
+						24.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/whole-room/reactor_view.gd"
+		},
+		"layered": true,
+		"room": "reactor",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "reactor_chamber",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reactor_cooler",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reactor_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "library/side-reactor-service-south",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/whole-room/reactor_view.gd"
+	}
+]

@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "prompt_record": "assets/room-centerpieces-v1/prompts.md",
+  "native_evidence": "output/room-centerpieces-v1/native-v6/runtime.json",
+  "native_contact_sheet": "output/room-centerpieces-v1/native-v6-contact-sheet.jpg",
+  "card_contact_sheet": "output/room-centerpieces-v1/cards-sheet.png",
+  "verification": {
+    "native_rooms": 10,
+    "native_orientations": 40,
+    "selected_assets": 12,
+    "large_assets": 7,
+    "medium_assets": 5,
+    "square_or_rectangular_assets": 10,
+      "route_evidence": "output/test-runs/20260912-234904-headless"
+  },
+  "rooms": [
+    {
+      "room": "maintenance_bay",
+      "centerpiece": "maintenance_repair_gantry",
+      "size_class": "large",
+      "shape": "rectangular-open-frame",
+      "source_profile": "rooms/production-ten/decor/maintenance-composition-v3.json",
+      "selected_profile": "rooms/production-ten/decor/maintenance-composition-v4.json",
+      "asset": "assets/room-centerpieces-v1/maintenance-repair-gantry.png",
+      "asset_sha256": "716a8fb1b622d489685b22b41a78551e14c84030c027c47533f345ce530988f4",
+      "registration": "assets/room-centerpieces-v1/maintenance-repair-gantry-registration.json",
+      "registration_sha256": "7db32e1439bdf804b3c8bfdc8cd93219e4c26d409b36fcf5124f08c666139d93",
+      "centers_by_quarter": [
+        [
+          0,
+          35
+        ],
+        [
+          0,
+          35
+        ],
+        [
+          0,
+          35
+        ],
+        [
+          0,
+          35
+        ]
+      ],
+      "footprint": [
+        -60,
+        11,
+        120,
+        48
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "data_archive",
+      "centerpiece": "archive_index_island",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/underwater/batch-two/archive-composition-v2.json",
+      "selected_profile": "rooms/underwater/batch-two/archive-composition-v3.json",
+      "asset": "assets/room-centerpieces-v1/archive-index-island.png",
+      "asset_sha256": "a141bbad1b8bc2f0f9e289498bd5dc7af28a8f980f251c6f1c7b7a2e582e9944",
+      "registration": "assets/room-centerpieces-v1/archive-index-island-registration.json",
+      "registration_sha256": "84ad8a7cb0f7a292b6c1078c665d54c05f780fbadefa17ca5d4689150a0bbae0",
+      "centers_by_quarter": [
+        [
+          0,
+          28
+        ],
+        [
+          0,
+          28
+        ],
+        [
+          0,
+          28
+        ],
+        [
+          0,
+          28
+        ]
+      ],
+      "footprint": [
+        -58,
+        9,
+        116,
+        38
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "radio_lab",
+      "centerpiece": "radio_signal_console",
+      "size_class": "large",
+      "shape": "octagonal",
+      "source_profile": "rooms/underwater/acoustic-comms/radio-composition-v3.json",
+      "selected_profile": "rooms/underwater/acoustic-comms/radio-composition-v4.json",
+      "asset": "assets/room-centerpieces-v1/radio-signal-console.png",
+      "asset_sha256": "66b2dd6b6addffee07e5d106b8df8da29753c7fc696a62d151a064a1d80c8af6",
+      "registration": "assets/room-centerpieces-v1/radio-signal-console-registration.json",
+      "registration_sha256": "766b0321be1bbd2156f296635ca1592db6d03f22b6d95a081130a4df8a6d3237",
+      "centers_by_quarter": [
+        [
+          0,
+          30
+        ],
+        [
+          0,
+          30
+        ],
+        [
+          0,
+          30
+        ],
+        [
+          0,
+          30
+        ]
+      ],
+      "footprint": [
+        -55,
+        12,
+        110,
+        36
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "listening_post",
+      "centerpiece": "listening_hydrophone_table",
+      "size_class": "large",
+      "shape": "oval",
+      "source_profile": "rooms/underwater/rare-dead-ends/listening-composition-v1.json",
+      "selected_profile": "rooms/underwater/rare-dead-ends/listening-composition-v2.json",
+      "asset": "assets/room-centerpieces-v1/listening-hydrophone-table.png",
+      "asset_sha256": "c4ea6d717cd7631962f0dfec1a957d5b0f1f26e4ccebed78afe84ec4fc513719",
+      "registration": "assets/room-centerpieces-v1/listening-hydrophone-table-registration.json",
+      "registration_sha256": "1d13aa5fa806ae81999a9c8b37710e5a6f416b7e0d429911b828d93ccc4406c9",
+      "centers_by_quarter": [
+        [
+          0,
+          32
+        ],
+        [
+          0,
+          32
+        ],
+        [
+          0,
+          32
+        ],
+        [
+          0,
+          32
+        ]
+      ],
+      "footprint": [
+        -59,
+        13,
+        118,
+        38
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "storage_bay",
+      "centerpiece": "storage_cargo_carousel",
+      "size_class": "large",
+      "shape": "square-turntable",
+      "source_profile": "rooms/production-ten/decor/storage-composition-v4.json",
+      "selected_profile": "rooms/production-ten/decor/storage-composition-v5.json",
+      "asset": "assets/room-centerpieces-v1/storage-cargo-carousel.png",
+      "asset_sha256": "969814932daa9942b89393cc829f68645001e493faf1cd11254d3d53145497ac",
+      "registration": "assets/room-centerpieces-v1/storage-cargo-carousel-registration.json",
+      "registration_sha256": "574160ed8e301acb506060629983105b892577ecb8a949047424ed86f05c11fe",
+      "centers_by_quarter": [
+        [
+          0,
+          42
+        ],
+        [
+          0,
+          42
+        ],
+        [
+          -100,
+          55
+        ],
+        [
+          0,
+          42
+        ]
+      ],
+      "footprint": [
+        -60,
+        20,
+        120,
+        44
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "battery_array",
+      "centerpiece": "battery_charge_equalizer",
+      "size_class": "large",
+      "shape": "square",
+      "source_profile": "rooms/production-ten/decor/battery-composition-v4.json",
+      "selected_profile": "rooms/production-ten/decor/battery-composition-v5.json",
+      "asset": "assets/room-centerpieces-v1/battery-charge-equalizer.png",
+      "asset_sha256": "76b5ea2c36dbcc078ff149f37327054ad03cd64258dd91c2f42a572b2ba9a246",
+      "registration": "assets/room-centerpieces-v1/battery-charge-equalizer-registration.json",
+      "registration_sha256": "4cc8017f5d76ec015a399b7c5c9035896d07b92cb0a63080bbd6633434bb068e",
+      "footprint": [
+        -55,
+        13,
+        110,
+        44
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "battery_array",
+      "centerpiece": "battery_capacitor_dolly",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/production-ten/decor/battery-composition-v4.json",
+      "selected_profile": "rooms/production-ten/decor/battery-composition-v5.json",
+      "asset": "assets/room-centerpieces-v1/battery-capacitor-dolly.png",
+      "asset_sha256": "1a61333be9477241a3d7920c2265cbb047ddb6569aeb0fca08af363263cea50a",
+      "registration": "assets/room-centerpieces-v1/battery-capacitor-dolly-registration.json",
+      "registration_sha256": "668632dbf4894d3b75492a64318e11350767511208f3ead53c69c2c82788ec87",
+      "footprint": [
+        -156,
+        -81,
+        72,
+        28
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "solar_array",
+      "centerpiece": "solar_conversion_island",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/underwater/thermal-control/thermal-composition-v2.json",
+      "selected_profile": "rooms/underwater/thermal-control/thermal-composition-v3.json",
+      "asset": "assets/room-centerpieces-v1/solar-conversion-island.png",
+      "asset_sha256": "c2068b9600159e73c0d294e4f5b2aba02b4eaf63f9213c391fa852e5f6efaa63",
+      "registration": "assets/room-centerpieces-v1/solar-conversion-island-registration.json",
+      "registration_sha256": "241d10c3adc25d9133477ecea3a5f210128a92d8e4744388d4e03ef2faf551ef",
+      "footprint": [
+        -62,
+        11,
+        124,
+        42
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "solar_array",
+      "centerpiece": "solar_junction_cart",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/underwater/thermal-control/thermal-composition-v2.json",
+      "selected_profile": "rooms/underwater/thermal-control/thermal-composition-v3.json",
+      "asset": "assets/room-centerpieces-v1/solar-junction-cart.png",
+      "asset_sha256": "cac9e56d39928b94963f1c87c78e481d58cbf1ec31f01bd83dfe658a6b7cde91",
+      "registration": "assets/room-centerpieces-v1/solar-junction-cart-registration.json",
+      "registration_sha256": "078f2ee25ea7859e77c62891d9904c20d22bd7d3a75f8f568bd4c766fcc2ab42",
+      "footprint": [
+        -150,
+        78,
+        74,
+        26
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "shield_generator",
+      "centerpiece": "shield_emitter_bench",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/underwater/hull-integrity/hull-composition-v3.json",
+      "selected_profile": "rooms/underwater/hull-integrity/hull-composition-v4.json",
+      "asset": "assets/room-centerpieces-v1/shield-emitter-bench.png",
+      "asset_sha256": "e671e79fcb32f1521e0094f6296cb3e3f97cc7d9a8ffcc59a512e908c6ae3976",
+      "registration": "assets/room-centerpieces-v1/shield-emitter-bench-registration.json",
+      "registration_sha256": "4174eb652524d8e95bd920aaa31901b67e91e17cef7044369b605bd0856edf6d",
+      "footprint": [
+        -41,
+        37,
+        82,
+        26
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "life_support",
+      "centerpiece": "life_scrubber_trolley",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/whole-room/life-support-composition-v3.json",
+      "selected_profile": "rooms/whole-room/life-support-composition-v4.json",
+      "asset": "assets/room-centerpieces-v1/life-support-scrubber-trolley.png",
+      "asset_sha256": "3354d13c17931c973680a3bd48e45ecc34fd606ab285c2af44a7c502fda53467",
+      "registration": "assets/room-centerpieces-v1/life-support-scrubber-trolley-registration.json",
+      "registration_sha256": "da999353e917c0302ca16c3d578716ffb2b16e5bb79b5bf2b94a558fe3afff64",
+      "footprint": [
+        60,
+        58,
+        70,
+        26
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "holographic_core",
+      "centerpiece": "holo_calibration_block",
+      "size_class": "medium",
+      "shape": "square",
+      "source_profile": "rooms/underwater/batch-two/holo-composition-v3.json",
+      "selected_profile": "rooms/underwater/batch-two/holo-composition-v4.json",
+      "asset": "assets/room-centerpieces-v1/holo-calibration-block.png",
+      "asset_sha256": "0435ade3e68d6bd1c3ba1f7867745ccffe3df5193e456f10c8762902acff9dac",
+      "registration": "assets/room-centerpieces-v1/holo-calibration-block-registration.json",
+      "registration_sha256": "e755540e66675a49b830278ea4b8e8548b0084aa6ce739967b9a57708cb1c1db",
+      "footprint": [
+        -36,
+        -13,
+        72,
+        26
+      ],
+      "agent_visual_review": "native-reviewed-40-views",
+      "owner_acceptance": false
+    }
+  ],
+  "rejected": [
+    {
+      "asset": "assets/room-centerpieces-v1/rejected-shield-coil-round.png",
+      "reason": "Round coil silhouette conflicts with the requested square/rectangular shape language."
+    },
+    {
+      "asset": "assets/room-centerpieces-v1/rejected-holo-triangular.png",
+      "reason": "Triangular plinth silhouette conflicts with the requested square/rectangular shape language."
+    }
+  ]
+}

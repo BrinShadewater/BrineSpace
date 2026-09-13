@@ -1,0 +1,109 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/research_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_research-analysis-wall"
+					],
+					"purpose": "analysis wall service access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"reagent_trolley"
+					],
+					"purpose": "clean sample transfer boundary",
+					"scale": 0.6
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/research_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "research_lab",
+			"machinery": [
+				{
+					"id": "research_scanner",
+					"rect": [
+						-162.0,
+						22.0,
+						106.0,
+						68.0
+					]
+				},
+				{
+					"id": "preparation_island",
+					"rect": [
+						39.0,
+						60.0,
+						88.0,
+						34.0
+					]
+				},
+				{
+					"id": "reagent_trolley",
+					"rect": [
+						139.0,
+						88.0,
+						30.0,
+						12.0
+					]
+				},
+				{
+					"id": "full_wall_research-analysis-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						123.642807006836
+					]
+				},
+				{
+					"id": "sample_cooler",
+					"rect": [
+						144.0,
+						-17.2686576843262,
+						30.0,
+						10.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/research_lab_view.gd"
+		},
+		"layered": true,
+		"room": "research_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_research-analysis-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "research_scanner",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/research_lab_view.gd"
+	}
+]

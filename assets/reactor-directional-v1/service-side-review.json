@@ -1,0 +1,37 @@
+{
+  "room": "reactor",
+  "stage": "integrated-native-reviewed",
+  "source": "assets/reactor-directional-v1/service-side.png",
+  "sha256": "a26baec6d16c98c4bab2e3e241e4991a7c3c41a43aaec9d2e5e3bdf8828b837a",
+  "dimensions": [
+    852,
+    1846
+  ],
+  "original": "exec-954e794f-9999-481c-9f66-9268264cd78e.png",
+  "registration": "rooms/full-wall-v1/registrations/side-reactor-service-side.json",
+  "authored_direction": "east",
+  "companion": "west via Library.mirror_registration",
+  "length": 120,
+  "width": 36.883116883116884,
+  "evidence": "output/core-power-facing-2026-09-12/reactor-companions",
+  "owner_acceptance": false,
+  "findings": [
+    "Two filters, three cartridges, valve and case retained.",
+    "First study access pointed up; image edit corrected valve/grips/pulls/latches left inward.",
+    "Both companions reviewed at native length120.",
+    "No live layout, card or rendering code changed."
+  ],
+  "live_evidence": "output/reactor-side-live-2026-09-12",
+  "placements": {
+    "east_quarters": [
+      0,
+      3
+    ],
+    "west_quarters": [
+      1
+    ]
+  },
+  "tests": [
+    "176 preferred layouts passed"
+  ]
+}

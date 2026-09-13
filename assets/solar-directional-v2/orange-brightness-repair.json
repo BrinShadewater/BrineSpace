@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-12",
+  "request": "Reduce the Solar Array wall-length art's overly bright orange.",
+  "method": "Deterministic HSV palette correction; geometry, alpha, shading, and non-orange pixels preserved.",
+  "parameters": {
+    "hue_range": [0.02, 0.13],
+    "minimum_saturation": 0.35,
+    "minimum_value": 0.2,
+    "saturation_scale": 0.82,
+    "value_scale": 0.72
+  },
+  "outputs": {
+    "thermal-north-muted-v1.png": {
+      "source": "res://assets/material-polish-v3/thermal-north.png",
+      "changed_pixels": 142160,
+      "sha256": "082f7550e7383d89fdefbf0f007a4bae312c85d445593bb7adcce6e89bec85f5"
+    },
+    "thermal-sides-muted-v1.png": {
+      "source": "res://assets/solar-directional-v1/thermal-sides.png",
+      "changed_pixels": 103947,
+      "sha256": "18acb57dbb7dd6ca30149f18e192d455cc144c728f20b6984112bd99653df4f8"
+    },
+    "thermal-south-muted-v1.png": {
+      "source": "res://assets/room-facing-repair-v2/thermal-control-wall-south.png",
+      "changed_pixels": 125267,
+      "sha256": "b1c9e2825e5b43b4b852d188f28c5e902dbf4a0149429e660b321339368a3c63"
+    }
+  },
+  "review": "Accepted for source selection after four-rotation native review. Engineering orange remains readable as a structural accent beneath gray machinery."
+}

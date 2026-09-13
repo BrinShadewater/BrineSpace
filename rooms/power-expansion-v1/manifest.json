@@ -14,8 +14,8 @@
       1200
     ],
     "card": {
-      "path": "res://rooms/power-expansion-v1/current_turbine-card.png",
-      "sha256": "81c2d20ae7a979f6088fc50f39cb961b3dd984c47406509f8b4fd81c52e0ad63"
+      "path": "res://assets/room-furnishings-v4/cards/current_turbine.png",
+      "sha256": "35e89ed6c4799d4a449521ced740805c71b9981151bb4c55569cd2ebddaefbc9"
     },
     "raw_source": {
       "path": "res://rooms/power-expansion-v1/current_turbine-bright-source-v1.png",
@@ -37,12 +37,32 @@
       {
         "path": "res://rooms/whole-room/nursery-master.png",
         "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66"
+      },
+      {
+        "path": "res://assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/current-flow-governor.png",
+        "sha256": "9085330a3065c9cf3d84a10c4d6c814917d0a46042c9c1c56f7b5af33c93548e"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/universal-instrument-cabinet.png",
+        "sha256": "42300701cf18ed07d091646b528ea561f008663103ecef2760c6e4e87988ca10"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/current-flow-governor-registration.json",
+        "sha256": "48f527b6300ff5f9f46ca1dd2e0a8d0dc7b20c7430442daff886850f1fde2d88"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/universal-instrument-cabinet-registration.json",
+        "sha256": "64a51e7a615b871dd166b52ca309431c9e71f01745e953b549ce6e5f432c3d91"
       }
     ],
     "composition_assets": [
       {
-        "path": "res://rooms/power-expansion-v1/current_turbine-composition.json",
-        "sha256": "a1a3612429af7e27bb4f6e7106878e07ad0f11dea1da89a9e6ef21ed32e7fa10"
+        "path": "res://rooms/power-expansion-v1/current_turbine-composition-v2.json",
+        "sha256": "3b0e8dd7cccea1322ad27470f2973326b2e00c4135fcd05aaf15cdaafd9a86ce"
       }
     ],
     "department": "Engineering",
@@ -57,7 +77,8 @@
       "paid_construction": true,
       "save_continue": true,
       "packaged_runtime": false,
-      "production_crew_routes": "output/power-turbine-south-routes/"
+      "production_crew_routes": "output/power-turbine-south-routes/",
+      "furnishing_v4": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v4/manifest.json; owner acceptance pending."
     },
     "visual_review": "2026-09-08 owner requested far-south placement. Native card visually reviewed after source-padding registration correction. 12 rotation/state checks pass and turbine production crew routes pass with zero assertions."
   },
@@ -76,8 +97,8 @@
       1238
     ],
     "card": {
-      "path": "res://rooms/power-expansion-v1/biomass_digester-card.png",
-      "sha256": "3c640468c7fff1d4ecda1d897e4585882e94f353c3bf85c0d2e20c981165706c"
+      "path": "res://assets/room-furnishings-v4/cards/biomass_digester.png",
+      "sha256": "3492a33db1c7b5da0396ee42dfdfe310e72f55dd1e6e65dafccc732234c9ebba"
     },
     "raw_source": {
       "path": "res://rooms/power-expansion-v1/biomass_digester-source.png",
@@ -85,8 +106,8 @@
     },
     "component_assets": [
       {
-        "path": "res://rooms/production-ten/decor/maintenance-support-v1.png",
-        "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+        "path": "res://assets/biomass-material-v2/biomass-service-support-matte-v1.png",
+        "sha256": "79f844580cceafdb19a28f018dc95fb643e46802770bd68b84d576e97403f3ac"
       },
       {
         "path": "res://rooms/production-ten/decor/maintenance-v1.png",
@@ -99,12 +120,28 @@
       {
         "path": "res://rooms/whole-room/nursery-master.png",
         "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/biomass-feedstock-island.png",
+        "sha256": "0ceaa44c87aec72612cff6d6d49098d19712cae11fcb0548039ef26ed61f6a25"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/universal-maintenance-trestle.png",
+        "sha256": "5567e7826c71f76bd10980af02de36445fb58eef95370f37eb710eb28bbc0bb7"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/biomass-feedstock-island-registration.json",
+        "sha256": "a0b360205eecaff111788b48049e5b1e1fffad85fab809280993160f341f343c"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/universal-maintenance-trestle-registration.json",
+        "sha256": "8a6994475bb705e2597f9acb5a462650c4853937deb9d44b149e5dbdb2b4a69e"
       }
     ],
     "composition_assets": [
       {
-        "path": "res://rooms/power-expansion-v1/biomass_digester-composition.json",
-        "sha256": "525161dff61ad05a62d7ff34f844b41482545566b5224b0c5a99297a9e10888e"
+        "path": "res://rooms/power-expansion-v1/biomass_digester-composition-v2.json",
+        "sha256": "3e004e61e6f91893a7bd7f67bbd828fa7dc8979fe1685ddc852f5f4dcb7f4297"
       }
     ],
     "department": "Bio with Engineering power equipment",
@@ -119,7 +156,8 @@
       "paid_construction": true,
       "save_continue": true,
       "packaged_runtime": false,
-      "production_crew_routes": "output/power-current-routes-v3/"
+      "production_crew_routes": "output/power-current-routes-v3/",
+      "furnishing_v4": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v4/manifest.json; owner acceptance pending."
     },
     "visual_review": "2026-09-08 enlarged focal machinery and repositioned workstations. Native cards and focused station captures visually reviewed in output/power-room-preview-large-v1/. All 12 rotation/state checks and production crew routes pass; brighter turbine preserved."
   },
@@ -138,8 +176,8 @@
       944
     ],
     "card": {
-      "path": "res://rooms/power-expansion-v1/heat_recovery-card.png",
-      "sha256": "0f5b59f565198853d32fa4da163f7e17d557a35720943ff030400f687c498701"
+      "path": "res://assets/room-furnishings-v4/cards/heat_recovery.png",
+      "sha256": "4e07bef2c05aca655f5fbdc978a74eaaf85e308641d7e453bb696496eb32c0f8"
     },
     "raw_source": {
       "path": "res://rooms/power-expansion-v1/heat_recovery-source.png",
@@ -161,12 +199,32 @@
       {
         "path": "res://rooms/whole-room/nursery-master.png",
         "sha256": "002c922cc19695b133626827f1ef89accce5e9a82c0c8450803f58d29de5ba66"
+      },
+      {
+        "path": "res://assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/heat-exchanger-manifold.png",
+        "sha256": "8becd0261652673f967a98322980474ab0ba1c2925c8d74b4cbb602d3dbcba8f"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/universal-cable-caddy.png",
+        "sha256": "65e9a51871316be91a6c7e0b714240dbd8075e0f26e32569d4ac35ec7fe8c865"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/heat-exchanger-manifold-registration.json",
+        "sha256": "8870c2673c4e2a45f28eb203d3921493d3fbb566a744637204a2cfa174bda353"
+      },
+      {
+        "path": "res://assets/room-furnishings-v4/universal-cable-caddy-registration.json",
+        "sha256": "ca7338ce4a2a5511d23b99d987908242db8bc27fa6a48d806f31ee381732d932"
       }
     ],
     "composition_assets": [
       {
-        "path": "res://rooms/power-expansion-v1/heat_recovery-composition.json",
-        "sha256": "6ce6c599e1d679641ea3bece5a7322ee0c5b947c62543b8a9f3ff95a54f90972"
+        "path": "res://rooms/power-expansion-v1/heat_recovery-composition-v2.json",
+        "sha256": "ef2fbfe8b06eabd4caa60383e6f6e3b930c60095f046667e7eec40f706a9f3c7"
       }
     ],
     "department": "Engineering",
@@ -181,7 +239,8 @@
       "paid_construction": true,
       "save_continue": true,
       "packaged_runtime": false,
-      "production_crew_routes": "output/power-current-routes-v3/"
+      "production_crew_routes": "output/power-current-routes-v3/",
+      "furnishing_v4": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v4/manifest.json; owner acceptance pending."
     },
     "visual_review": "2026-09-08 enlarged focal machinery and repositioned workstations. Native cards and focused station captures visually reviewed in output/power-room-preview-large-v1/. All 12 rotation/state checks and production crew routes pass; brighter turbine preserved."
   }

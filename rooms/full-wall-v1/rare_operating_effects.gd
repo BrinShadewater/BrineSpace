@@ -14,13 +14,19 @@ static func marks(room, prop: Dictionary, listening: bool) -> Array:
 		center=Vector2(0.5,0.33 if prop.id=="flush_back" else 0.43)
 		radius=Vector2(box.size.x*0.095,box.size.y*(0.22 if prop.id=="flush_back" else 0.23))
 		if vertical:
-			center=Vector2(0.76 if side=="west" else 0.24,0.29)
-			radius=Vector2(box.size.x*0.065,box.size.y*0.035)
+			# Overhead companions: source glass hubs (462,242)/(1073,242).
+			center=Vector2(0.50558,0.31436) if side=="west" else Vector2(0.49630,0.31690)
+			radius=Vector2(box.size.x*0.17,box.size.y*0.04)
+		elif side=="south":
+			# Overhead companion: sweep stays inside the central glass disc.
+			center=Vector2(0.5,0.55)
+			radius=Vector2(box.size.x*0.06,box.size.y*0.25)
 	else:
 		center=Vector2(0.5,0.59 if prop.id=="flush_back" else 0.44)
 		radius=Vector2.ONE*box.size.x*0.042
 		if vertical:
-			center=Vector2(0.72 if side=="west" else 0.28,0.49)
+			# Painted pressure-dial hubs are at source (530,443)/(1007,443).
+			center=Vector2(0.853 if side=="west" else 0.155,0.432)
 			radius=Vector2(box.size.x*0.09,box.size.y*0.029)
 	center=box.position+center*box.size
 	var angle: float=room.machine_clock*0.55 if listening else -1.0+0.10*sin(room.machine_clock*0.7)

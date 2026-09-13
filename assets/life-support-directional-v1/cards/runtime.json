@@ -1,0 +1,155 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/life_support.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-equipment_entry",
+					"hosts": [
+						"full_wall_life-support-wall_filter"
+					],
+					"purpose": "filter purge outlet",
+					"rotations": {
+						"1": {
+							"scale": 0.6
+						},
+						"2": {
+							"scale": 0.6
+						}
+					},
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"life_tank"
+					],
+					"purpose": "fluid service isolation",
+					"rotations": {
+						"1": {
+							"scale": 0.4
+						},
+						"2": {
+							"scale": 0.4
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/underwater_life_support_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "life_support",
+			"machinery": [
+				{
+					"id": "life_fan",
+					"rect": [
+						-165.0,
+						-113.0,
+						108.0,
+						54.0
+					]
+				},
+				{
+					"id": "life_filter",
+					"rect": [
+						57.0,
+						-151.0,
+						108.0,
+						78.0
+					]
+				},
+				{
+					"id": "life_tank",
+					"rect": [
+						-165.0,
+						107.0,
+						74.0,
+						42.0
+					]
+				},
+				{
+					"id": "life_console",
+					"rect": [
+						-80.0,
+						111.0,
+						60.0,
+						38.0
+					]
+				},
+				{
+					"id": "life_service_cart",
+					"rect": [
+						83.0,
+						108.0,
+						56.0,
+						24.0
+					]
+				},
+				{
+					"id": "life_pressure_bottle",
+					"rect": [
+						148.0,
+						96.0,
+						24.0,
+						8.0
+					]
+				},
+				{
+					"id": "life_filter_bench",
+					"rect": [
+						-157.0,
+						47.0,
+						64.0,
+						26.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/wet-drainage.png",
+			"source_sha256": "756129f8685ebfc26b891c60f45bc6d5bda7c1b87921f1a588089ba494038fb4",
+			"view": "res://rooms/full-wall-v1/life_support_view.gd"
+		},
+		"layered": true,
+		"room": "life_support",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_life-support-wall_fan",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_life-support-wall_filter",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "life_tank",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "life_console",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/life_support_view.gd"
+	}
+]

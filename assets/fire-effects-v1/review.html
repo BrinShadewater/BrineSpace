@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BrineSpace · Fire effects</title>
+<style>
+:root{color-scheme:dark;font:15px/1.5 Consolas,monospace;color:#c3cbc4;background:#081317}*{box-sizing:border-box}body{margin:0;padding:30px;max-width:1440px;margin:auto}header{border-bottom:1px solid #385052;padding-bottom:20px;margin-bottom:24px}h1{font-size:27px;letter-spacing:2px;font-weight:500;color:#d2b78e;margin:0}p{margin:7px 0;color:#8faaa7}.tag{font-size:12px;letter-spacing:2px;color:#78a99a}main{display:grid;grid-template-columns:minmax(480px,1.8fr) minmax(260px,1fr);gap:24px}.stage,.panel{border:1px solid #30494d;background:#102126;border-radius:5px;overflow:hidden}.stage canvas{display:block;width:100%;image-rendering:pixelated}figcaption{padding:12px 18px;border-top:1px solid #30494d;color:#95afaa}.panel{padding:20px}h2{font-size:16px;color:#d2b78e;font-weight:500;margin:0 0 12px}button,a{font:inherit}button{border:1px solid #597471;background:#1b3337;color:#d9d8bc;padding:8px 14px;cursor:pointer;border-radius:3px}button:hover{background:#294b4e}label{display:block;margin:15px 0}input[type=range]{width:100%;accent-color:#d69253}input[type=checkbox]{accent-color:#c1925c}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.layers{display:flex;gap:18px}.layers label{margin:5px 0}.status{font-size:12px;color:#84a59c;min-height:1.6em}.sprites{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}.sprite{border:1px solid #30494d;background:#102126;border-radius:4px;padding:18px;text-align:center}.sprite canvas{width:192px;height:256px;max-width:100%;image-rendering:pixelated;background:#1c3037}.sprite.light canvas{background:#c4c6bb}a{color:#b9c9ba;text-underline-offset:4px}.links{font-size:12px;display:flex;gap:18px;justify-content:center;margin-top:10px}footer{margin-top:22px;border-top:1px solid #30494d;padding-top:18px;font-size:12px;color:#90aaa4}@media(max-width:850px){body{padding:16px}main{grid-template-columns:1fr}.sprites{gap:8px}.sprite{padding:8px}.sprite canvas{width:100%;height:auto}.links{flex-direction:column;gap:4px}}
+</style>
+<header><div class="tag">BRINESPACE / EFFECTS STUDY</div><h1>Fire &amp; electrical effects</h1><p>Authored pixel sprites against the existing reactor. Native game integration uses these same atlases.</p></header>
+<main>
+ <section class="stage"><canvas id="room" width="768" height="620" aria-label="Animated fire on the existing reactor room artwork"></canvas><figcaption>“The compartment is still here. I suggest we keep it that way.”</figcaption></section>
+ <section class="panel"><h2>Playback</h2><div class="row"><button id="play">Pause</button><button id="step">Next frame</button><button id="reset">Restart</button></div><label>Intensity <output id="amount">70%</output><input id="intensity" aria-label="Fire intensity" type="range" min="12" max="100" value="70"></label><label>Speed <select id="speed"><option value="0.5">Half speed</option><option value="1" selected>Normal</option><option value="0.25">Quarter speed</option></select></label><h2>Layers</h2><div class="layers"><label><input id="flame" type="checkbox" checked> Flame</label><label><input id="smoke" type="checkbox" checked> Smoke</label><label><input id="embers" type="checkbox" checked> Embers</label><label><input id="sparks" type="checkbox" checked> Sparks</label></div><label><input id="light" type="checkbox"> Light sprite backdrop</label><p class="status" id="status">Loading sprites…</p><h2 style="margin-top:25px">Art notes</h2><p>Small copper-orange flame folds, warm ivory cores, charcoal smoke and sparse cinders. No baked glow halo.</p><p>Eight frames per layer. Shared base point, real transparency and crisp nearest-neighbor scaling.</p><p>Use half speed and frame stepping to inspect the return from frame 8 to frame 1.</p></section>
+</main>
+<section class="sprites">
+ <article class="sprite"><h2>Flame</h2><canvas id="flame-view" width="96" height="128"></canvas><div class="links"><a href="flame-96x128-v2.png" download>Game atlas</a><a href="flame-atlas-v2.png" download>Full-size atlas</a></div></article>
+ <article class="sprite"><h2>Smoke</h2><canvas id="smoke-view" width="96" height="128"></canvas><div class="links"><a href="smoke-96x128.png" download>Game atlas</a><a href="smoke-atlas.png" download>Full-size atlas</a></div></article>
+ <article class="sprite"><h2>Embers</h2><canvas id="embers-view" width="96" height="128"></canvas><div class="links"><a href="embers-96x128.png" download>Game atlas</a><a href="embers-atlas.png" download>Full-size atlas</a></div></article>
+</section>
+<footer><a href="contact-sheet-v2.png">Light/dark frame sheet</a> · <a href="manifest.json">Atlas manifest</a> · <a href="prompts.json">Generation prompts</a><p>Generated with the built-in image tool; locally cleaned and registered with permission. Source artwork is preserved. Final style and pacing remain open to owner review.</p></footer>
+<script>
+const $=id=>document.getElementById(id), ctx=$('room').getContext('2d');
+let t=0,playing=true,last=0,loaded=false;const images={};
+const sources={reactor:'../../rooms/underwater/reactor/card-v4.png',flame:'flame-96x128-v2.png',smoke:'smoke-96x128.png',embers:'embers-96x128.png',sparks:'../electrical-sparks-v1/sparks-96x128.png'};
+function drawSprite(c,kind,x,y,scale,phase=0,opacity=1){const fps=kind==='smoke'?6:kind==='sparks'?12:8;const clock=kind==='sparks'?(t+.87)%2.8:t;if(kind==='sparks'&&clock>=8/12)return;const f=(Math.floor(clock*fps)+phase)%8;c.globalAlpha=opacity;c.drawImage(images[kind],(f%4)*96,Math.floor(f/4)*128,96,128,Math.round(x-48*scale),Math.round(y-118*scale),96*scale,128*scale);c.globalAlpha=1;}
+function draw(){if(!loaded)return;ctx.imageSmoothingEnabled=false;ctx.fillStyle='#0b1c22';ctx.fillRect(0,0,768,620);const size=560,x=104,y=24;ctx.drawImage(images.reactor,x,y,size,size);const heat=+$('intensity').value/100,unit=size/384,s=unit*(.55+heat*.65),px=x+size*.5,py=y+size*.4;
+ if($('smoke').checked)drawSprite(ctx,'smoke',px,py-18*unit,s*1.25,3,.64);
+ if($('flame').checked){if(heat>.4)drawSprite(ctx,'flame',px-23*unit,py-3*unit,s*.76,6);if(heat>.7)drawSprite(ctx,'flame',px+24*unit,py+3*unit,s*.72,0);drawSprite(ctx,'flame',px,py,s,3);}
+ if($('embers').checked)drawSprite(ctx,'embers',px,py,s*1.1,3,.85);
+ if($('sparks').checked)drawSprite(ctx,'sparks',px+26*unit,py+20*unit,unit*.9);
+ for(const kind of ['flame','smoke','embers']){const c=$(kind+'-view').getContext('2d');c.imageSmoothingEnabled=false;c.clearRect(0,0,96,128);drawSprite(c,kind,48,118,1);}
+ $('status').textContent=`${playing?'Playing':'Paused'} / flame frame ${Math.floor(t*8)%8+1} of 8`;}
+function tick(now){if(last&&playing)t+=(now-last)/1000*+$('speed').value;last=now;draw();requestAnimationFrame(tick);}
+$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Pause':'Play';draw();};
+$('step').onclick=()=>{playing=false;$('play').textContent='Play';t=(Math.floor(t*8)+1)/8;draw();};
+$('reset').onclick=()=>{t=0;draw();};$('intensity').oninput=()=>{$('amount').textContent=$('intensity').value+'%';draw();};
+$('light').onchange=()=>document.querySelectorAll('.sprite').forEach(e=>e.classList.toggle('light',$('light').checked));
+Promise.all(Object.entries(sources).map(([key,path])=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{images[key]=image;resolve();};image.onerror=()=>reject(new Error(path));image.src=path;}))).then(()=>{loaded=true;requestAnimationFrame(tick);}).catch(e=>$('status').textContent='Could not load '+e.message);
+</script>
+</html>

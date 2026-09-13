@@ -13,7 +13,7 @@ func _ready() -> void:
 		{"id":"thermal_monitor","rect":Rect2(-165,79,108,64),"pivot":Vector2(321,1064),"width":370.0,"outline":[Vector2(134,931),Vector2(133,823),Vector2(143,800),Vector2(173,794),Vector2(176,750),Vector2(190,733),Vector2(465,731),Vector2(482,746),Vector2(484,815),Vector2(497,817),Vector2(505,833),Vector2(505,1048),Vector2(491,1064),Vector2(167,1064),Vector2(153,1049),Vector2(152,950)]},
 		{"id":"thermal_pumps","rect":Rect2(57,79,108,64),"pivot":Vector2(889,1068),"width":422.0,"outline":[Vector2(676,1037),Vector2(678,1002),Vector2(683,815),Vector2(701,808),Vector2(707,776),Vector2(728,757),Vector2(749,750),Vector2(1028,750),Vector2(1053,767),Vector2(1066,792),Vector2(1068,815),Vector2(1088,815),Vector2(1095,841),Vector2(1098,1049),Vector2(1076,1067),Vector2(1027,1067),Vector2(1019,1057),Vector2(771,1057),Vector2(763,1068),Vector2(701,1068)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/thermal-control/thermal-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/thermal-control/thermal-composition-v3.json")
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:

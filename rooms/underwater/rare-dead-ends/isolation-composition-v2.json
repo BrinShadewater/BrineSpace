@@ -1,0 +1,171 @@
+{
+  "textures": {
+    "cart": "res://rooms/production-ten/decor/battery-test-bench-clean-v2.png",
+    "reel": "res://rooms/production-ten/decor/maintenance-v1.png",
+    "universal_task_table": "res://assets/room-furnishings-v3/universal-task-table.png"
+  },
+  "furniture": [
+    {
+      "id": "universal_task_table",
+      "texture": "universal_task_table",
+      "registration": "res://assets/room-furnishings-v3/universal-task-table-registration.json",
+      "footprint": [
+        -48,
+        32,
+        96,
+        28
+      ],
+      "ground_width": 1130,
+      "centers_by_quarter": [
+        [
+          0,
+          46
+        ],
+        [
+          0,
+          46
+        ],
+        [
+          0,
+          46
+        ],
+        [
+          0,
+          46
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "battery_bank_west",
+        "source": [
+          495,
+          515
+        ]
+      },
+      "to": {
+        "host": "battery_bank_east",
+        "source": [
+          1066,
+          492
+        ]
+      },
+      "via": [
+        [
+          -173,
+          -50
+        ],
+        [
+          -173,
+          50
+        ]
+      ],
+      "color": "3a494e",
+      "width": 3
+    },
+    {
+      "from": {
+        "host": "battery_bank_west",
+        "source": [
+          495,
+          515
+        ]
+      },
+      "to": {
+        "host": "battery_breaker",
+        "source": [
+          542,
+          1024
+        ]
+      },
+      "via": [
+        [
+          -112,
+          -165
+        ],
+        [
+          109,
+          -165
+        ]
+      ],
+      "color": "3a494e",
+      "width": 3
+    },
+    {
+      "from": {
+        "host": "battery_breaker",
+        "source": [
+          542,
+          1024
+        ]
+      },
+      "to": {
+        "host": "battery_distribution",
+        "source": [
+          1045,
+          1038
+        ]
+      },
+      "via": [
+        [
+          169,
+          -74
+        ],
+        [
+          169,
+          -8
+        ]
+      ],
+      "color": "3a494e",
+      "width": 3
+    },
+    {
+      "from": {
+        "host": "battery_distribution",
+        "source": [
+          1045,
+          1038
+        ]
+      },
+      "to": {
+        "host": "battery_test_bench",
+        "source": [
+          1190,
+          800
+        ]
+      },
+      "via": [
+        [
+          169,
+          24
+        ],
+        [
+          169,
+          88
+        ]
+      ],
+      "color": "3a494e",
+      "width": 3
+    }
+  ],
+  "decals": [],
+  "mats": [
+    {
+      "host": "battery_test_bench",
+      "offset": [
+        -4,
+        -3
+      ],
+      "size": [
+        102,
+        34
+      ],
+      "fill": "363f41",
+      "edge": "76807a"
+    }
+  ]
+}

@@ -361,7 +361,7 @@ func draw_actor() -> void:
 	paint_ellipse(actor + Vector2(0, -1), Vector2(10, 4), Color(0, 0, 0, 0.3))
 	if external_actor_texture != null:
 		if external_actor_texture.get_meta("major_bill_v2", false):
-			var pixel_scale := 65.28 / 74.0
+			var pixel_scale := 65.28 / float(external_actor_texture.get_meta("crew_standing_height", 74.0))
 			var pivot: Vector2 = external_actor_texture.get_meta("crew_pivot", Vector2(46, 86))
 			painter.draw_texture_rect(external_actor_texture, Rect2(actor - pivot * pixel_scale, external_actor_texture.get_size() * pixel_scale), false)
 			return

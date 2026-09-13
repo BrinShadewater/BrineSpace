@@ -1,0 +1,28 @@
+{
+  "room": "isolation_vault",
+  "status": "integrated and native-reviewed",
+  "evidence": "output/isolation-owner-repair-2026-09-12/candidate-native",
+  "directions_reviewed": [
+    "north",
+    "east",
+    "south",
+    "west"
+  ],
+  "card": "assets/isolation-directional-v1/north-cards/isolation_vault.png",
+  "card_sha256": "7c24e2553d28bbbd550d457ca34b43af7c9e8d0562573c3c90902926a566be87",
+  "removed_runtime_assets": [
+    "isolation-u-flush-clean-v1 baked perimeter",
+    "battery_bank_west",
+    "battery_bank_east",
+    "battery_breaker",
+    "battery_distribution",
+    "battery_test_bench",
+    "battery_cable_reel"
+  ],
+  "findings": [
+    "Every wall uses the owner-approved south Emergency Isolation bank.",
+    "The sealed chamber and supply access face inward through exact quarter turns.",
+    "The vault borrowed its battery furnishings by inheriting Battery Array; that accidental layer is removed.",
+    "The Battery Array test-bench source received a separate matte highlight pass for any remaining consumer."
+  ]
+}

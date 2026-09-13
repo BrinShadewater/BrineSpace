@@ -18,7 +18,7 @@ func _ready() -> void:
 		{"id":"acoustic_receiver","rect":Rect2(-165,63,80,54),"pivot":Vector2(312,1052),"width":380.0,"outline":[Vector2(126,815),Vector2(138,787),Vector2(159,784),Vector2(160,777),Vector2(193,777),Vector2(193,733),Vector2(204,718),Vector2(461,716),Vector2(477,733),Vector2(479,783),Vector2(493,792),Vector2(503,813),Vector2(503,1013),Vector2(481,1042),Vector2(465,1052),Vector2(193,1051),Vector2(176,1036),Vector2(176,995),Vector2(142,995),Vector2(130,982),Vector2(121,895)]},
 		{"id":"acoustic_bench","rect":Rect2(83,48,82,54),"pivot":Vector2(926,1065),"width":417.0,"outline":[Vector2(720,1010),Vector2(721,830),Vector2(734,798),Vector2(751,783),Vector2(852,783),Vector2(862,768),Vector2(879,755),Vector2(901,758),Vector2(921,773),Vector2(940,784),Vector2(1078,784),Vector2(1096,801),Vector2(1100,832),Vector2(1117,840),Vector2(1135,864),Vector2(1137,928),Vector2(1124,950),Vector2(1108,960),Vector2(1105,1038),Vector2(1086,1063),Vector2(753,1065),Vector2(733,1044)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/acoustic-comms/radio-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/acoustic-comms/radio-composition-v5.json")
 	rebuild()
 
 func rebuild() -> void:

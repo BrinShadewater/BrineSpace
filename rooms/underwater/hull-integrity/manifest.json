@@ -32,7 +32,8 @@
         "economy": "4 real economy states, base rotation 1600x900; output/hull-integrity/economy.log",
         "crossings": "8 arrivals, all 56 sampled crops reviewed; output/hull-integrity/crossings-review.json",
         "windows_export": "13 source hashes, 26 PNG decodes, 20 rooms visited and 295 transitions; output/production-ten/windows-validation-adaptations-v1/verification.json"
-      }
+      },
+      "centerpiece_asset_pass": "Native four-orientation review and route evidence recorded in docs/ROOM_CENTERPIECE_ASSET_PASS_2026-09-12.md; owner acceptance pending."
     },
     "review": [
       "Dark blank console screen is suitable for engine-local hull diagnostics.",
@@ -56,13 +57,21 @@
       {
         "path": "rooms/underwater/hull-integrity/panel-cradle-clean-v2.png",
         "sha256": "22a2c7651aed2750071ed84f43c7e00264b0f8a86281eee2e1e4d711a33a56b9"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/shield-emitter-bench.png",
+        "sha256": "e671e79fcb32f1521e0094f6296cb3e3f97cc7d9a8ffcc59a512e908c6ae3976"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/shield-emitter-bench-registration.json",
+        "sha256": "4174eb652524d8e95bd920aaa31901b67e91e17cef7044369b605bd0856edf6d"
       }
     ],
-    "composition_profile": "rooms/underwater/hull-integrity/hull-composition-v3.json",
+    "composition_profile": "rooms/underwater/hull-integrity/hull-composition-v4.json",
     "composition_assets": [
       {
-        "path": "rooms/underwater/hull-integrity/hull-composition-v3.json",
-        "sha256": "bf4167d6f465db41747fe4a544ae926b9d87fd94e6ea6347733b24e4032a844e"
+        "path": "rooms/underwater/hull-integrity/hull-composition-v4.json",
+        "sha256": "3bd3900045c04716f5d7cbad9543b0e33bbb5c9a5e5e6bed25325bf820118608"
       }
     ]
   }

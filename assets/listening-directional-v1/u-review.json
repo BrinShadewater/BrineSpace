@@ -1,0 +1,39 @@
+{
+  "room": "listening_post",
+  "stage": "integrated-native-reviewed",
+  "source": "assets/listening-directional-v1/listening-u-idle.png",
+  "sha256": "2c85a28e7f51f743424b5f174ce5bebea30678a2248e1a03dc5872e1c29f8a0f",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "original": "exec-4f6923a7-f680-46d8-806e-836a4b837f09.png",
+  "rejected_study": {
+    "source": "listening-u-idle-study.png",
+    "original": "exec-3dae5743-c6a4-4a31-9486-7ff1a0ccad56.png",
+    "reason": "Opaque RGB checkerboard, not alpha"
+  },
+  "registration": "assets/listening-directional-v1/listening-u-idle-registration.json",
+  "method": "Read-only neutral-exterior vector registration, clipped into original three source regions; raster unchanged",
+  "frame": [
+    60,
+    0,
+    1133,
+    1254
+  ],
+  "runtime": "rooms/full-wall-v1/listening_post_view.gd",
+  "evidence": "output/listening-u-idle-2026-09-12",
+  "checks": [
+    "176 furnished orientations",
+    "20 side variants",
+    "47 card identities",
+    "All prop metadata unchanged; q1/q2/q3 RGB unchanged",
+    "Off/on temporal delta all four; q0 sonar sweep natively reviewed"
+  ],
+  "limits": [
+    "Owner aesthetic acceptance pending",
+    "Riser-wall screens unchanged",
+    "Single inherited sonar sweep retained; other source screens now idle glass",
+    "Concurrent crew frame warning observed during capture, outside this room change"
+  ]
+}

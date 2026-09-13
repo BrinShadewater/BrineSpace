@@ -16,7 +16,7 @@ func _ready() -> void:
 		{"id":"maintenance_panels","rect":Rect2(-166,107,70,44),"pivot":Vector2(308,1108),"width":346.0,"outline":[Vector2(135,799),Vector2(152,777),Vector2(160,777),Vector2(161,699),Vector2(171,689),Vector2(184,694),Vector2(190,707),Vector2(380,706),Vector2(386,691),Vector2(405,691),Vector2(414,705),Vector2(415,734),Vector2(436,735),Vector2(439,712),Vector2(453,713),Vector2(461,731),Vector2(464,777),Vector2(475,788),Vector2(480,1089),Vector2(464,1108),Vector2(151,1108),Vector2(136,1092)]},
 		{"id":"maintenance_diagnostics","rect":Rect2(65,90,64,42),"pivot":Vector2(929,1068),"width":276.0,"outline":[Vector2(792,798),Vector2(802,777),Vector2(825,777),Vector2(829,744),Vector2(846,733),Vector2(846,707),Vector2(861,697),Vector2(981,697),Vector2(997,710),Vector2(1000,734),Vector2(1015,741),Vector2(1018,777),Vector2(1043,779),Vector2(1057,793),Vector2(1067,826),Vector2(1066,955),Vector2(1051,967),Vector2(1050,1046),Vector2(1036,1068),Vector2(1011,1068),Vector2(995,1047),Vector2(845,1047),Vector2(832,1066),Vector2(804,1066),Vector2(792,1047)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/production-ten/decor/maintenance-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/production-ten/decor/maintenance-composition-v5.json")
 
 	rebuild()
 
@@ -74,4 +74,3 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	if not operating: return
 	for mark in effect_marks(prop,machine_clock):
 		painter.draw_line(life_point(prop,mark[0]),life_point(prop,mark[1]),Color("e2bd82"),1.15,true)
-

@@ -13,7 +13,7 @@ func texture() -> Texture2D:
 	return surface
 
 static func is_rock(field: Dictionary, cell: Vector2i) -> bool:
-	return Field.blocks(field,cell) and field[cell].kind == "basalt"
+	return Field.blocks(field,cell) and (field[cell].kind == "basalt" or not Field.visible(field,cell))
 
 static func connections(field: Dictionary, cell: Vector2i) -> int:
 	var mask := 0

@@ -21,7 +21,7 @@
       "station": true,
       "cards": true,
       "view": "rooms/underwater/acoustic-comms/radio_lab_view.gd",
-      "card": "rooms/underwater/acoustic-comms/radio_lab-card-operator-v1.png"
+      "card": "assets/room-furnishings-v9/cards/radio_lab.png"
     },
     "verification": {
       "native": true,
@@ -33,7 +33,9 @@
         "economy": "4 real economy states and frame pairs, base rotation at 1600x900; output/acoustic-comms/economy.log",
         "crossings": "8 arrivals, all 56 sampled doorway crops reviewed; output/acoustic-comms/crossings-review.json",
         "windows_export": "13 source hashes, 26 PNG decodes, 20 rooms visited and 295 transitions; output/production-ten/windows-validation-adaptations-v1/verification.json"
-      }
+      },
+      "centerpiece_asset_pass": "Native four-orientation review and route evidence recorded in docs/ROOM_CENTERPIECE_ASSET_PASS_2026-09-12.md; owner acceptance pending.",
+      "furnishing_v9": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v9/manifest.json; owner acceptance pending."
     },
     "review": [
       "Four physically distinct separated assemblies; wired headset and hydrophone rings establish signal equipment.",
@@ -58,14 +60,42 @@
       {
         "path": "rooms/production-ten/decor/command-operator-chair-v1.png",
         "sha256": "e2a88e9ea0bba09d60dc4ba94699a95aceed9974da7515c5188183a54c1db11b"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/radio-signal-console.png",
+        "sha256": "66b2dd6b6addffee07e5d106b8df8da29753c7fc696a62d151a064a1d80c8af6"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/radio-signal-console-registration.json",
+        "sha256": "766b0321be1bbd2156f296635ca1592db6d03f22b6d95a081130a4df8a6d3237"
+      },
+      {
+        "path": "assets/room-furnishings-v9/radio-signal-routing-console.png",
+        "sha256": "5197474cc6f8ae82a4725d739680c8ddcaa7e804b25e1f08c1c26dcfe91c74f9"
+      },
+      {
+        "path": "assets/room-furnishings-v9/universal-patch-cable-organizer-chest.png",
+        "sha256": "09bffc9adefdd3c3c66a2fdd2f0f6161ec6d462716a0426eef30e5e71d1f10b9"
+      },
+      {
+        "path": "assets/room-furnishings-v9/radio-signal-routing-console-registration.json",
+        "sha256": "4c826a4f5b5f184ab5d32429025eda8ee991412b0aa4e22c2a21b87aa0d99404"
+      },
+      {
+        "path": "assets/room-furnishings-v9/universal-patch-cable-organizer-chest-registration.json",
+        "sha256": "5ef687f9072703d385ef747967c4697f14cb88aa7755bfa27fd5b870634a3ace"
       }
     ],
-    "composition_profile": "rooms/underwater/acoustic-comms/radio-composition-v3.json",
+    "composition_profile": "rooms/underwater/acoustic-comms/radio-composition-v5.json",
     "composition_assets": [
       {
-        "path": "rooms/underwater/acoustic-comms/radio-composition-v3.json",
-        "sha256": "8536afadd758b55ce1928e1e5f869b6dcfefa3548a23bd365bc973ac8c9660bf"
+        "path": "rooms/underwater/acoustic-comms/radio-composition-v5.json",
+        "sha256": "d79a365d5110bc8cf277253d0815bbb48f1f8ffcc08ff69d490178618506b3ba"
       }
-    ]
+    ],
+    "card": {
+      "path": "assets/room-furnishings-v9/cards/radio_lab.png",
+      "sha256": "c000ce6b52e4ff99f314d1dd293c31aa4e22e43f2c9543397b4343524d590917"
+    }
   }
 ]

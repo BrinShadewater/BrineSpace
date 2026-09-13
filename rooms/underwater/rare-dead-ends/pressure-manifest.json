@@ -11,11 +11,11 @@
       "view": "rooms/underwater/rare-dead-ends/pressure_control_view.gd",
       "card": "rooms/underwater/rare-dead-ends/pressure_control-card-group-v1.png"
     },
-    "composition_profile": "rooms/underwater/rare-dead-ends/pressure-composition-v1.json",
+    "composition_profile": "rooms/underwater/rare-dead-ends/pressure-composition-v2.json",
     "composition_assets": [
       {
-        "path": "rooms/underwater/rare-dead-ends/pressure-composition-v1.json",
-        "sha256": "18bb52f7b8b4f02d086075bfd42894d303eafe346a2095256810042572fa1eb5"
+        "path": "rooms/underwater/rare-dead-ends/pressure-composition-v2.json",
+        "sha256": "dcaa6b068f3acd15e8a6d2c2d16ec58b36d1ed227f01b8b08ae1c5f62ad0de6c"
       }
     ],
     "component_assets": [
@@ -26,7 +26,22 @@
       {
         "path": "rooms/production-ten/decor/maintenance-support-v1.png",
         "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/room-furnishings-v3/universal-equipment-plinth.png",
+        "sha256": "971061d4463249a698fc911cb0a58199ec175f5f71f3009a3207bfd88369c698"
+      },
+      {
+        "path": "assets/room-furnishings-v3/universal-equipment-plinth-registration.json",
+        "sha256": "cc6812dc2159871b7f5f24d48b2b306e726b921be1d6132e6ae207f2adaccf1e"
       }
-    ]
+    ],
+    "verification": {
+      "furnishing_v3": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v3/manifest.json; owner acceptance pending."
+    }
   }
 ]

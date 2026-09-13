@@ -1,14 +1,18 @@
 extends "res://rooms/underwater/acoustic-comms/radio_lab_view.gd"
 var flush_texture: ImageTexture
 var flush_bounds: Rect2
+var use_legacy_flush := true
 func _ready() -> void:
 	super._ready()
+	var equipment_image:=Image.new()
+	preload("res://scripts/safe_image.gd").load_png(equipment_image,"res://assets/listening-directional-v2/listening-equipment.png")
+	equipment_texture=ImageTexture.create_from_image(equipment_image)
 	var flush_image:=Image.new()
 	preload("res://scripts/safe_image.gd").load_png(flush_image, "res://rooms/underwater/rare-dead-ends/listening-u-flush-clean-v1.png")
 	flush_texture=ImageTexture.create_from_image(flush_image)
 	flush_bounds=Rect2(flush_image.get_used_rect())
 	life_items=life_items.filter(func(item):return not item.get("dressing",false))
-	dressing=Dressing.new(self,"res://rooms/underwater/rare-dead-ends/listening-composition-v1.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/rare-dead-ends/listening-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:
@@ -36,7 +40,7 @@ func rebuild() -> void:
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
-	if quarter==0 and flush_texture!=null:
+	if quarter==0 and flush_texture!=null and use_legacy_flush:
 		props=[
 			{"id":"flush_back","rect":Rect2(-174,-174,348,150),"sort_y":-24.0,"center":Vector2.ZERO,"registration":{},"flush_region":Rect2(0,0,1,0.45)},
 			{"id":"flush_left","rect":Rect2(-174,-24,92,190),"sort_y":166.0,"center":Vector2.ZERO,"registration":{},"flush_region":Rect2(0,0.45,0.28,0.55)},
@@ -68,7 +72,7 @@ func is_animated_prop(prop: Dictionary) -> bool:
 
 func draw_room_floor(center: Vector2) -> void:
 	var saved_dressing=dressing
-	if quarter==0 and flush_texture!=null: dressing=null
+	if quarter==0 and flush_texture!=null and use_legacy_flush: dressing=null
 	super.draw_room_floor(center)
 	dressing=saved_dressing
 	# Flush aisle access, outside the baked perimeter furniture.

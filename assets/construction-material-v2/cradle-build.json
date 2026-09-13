@@ -1,0 +1,56 @@
+{
+  "status": "rejected docked fit; not installed",
+  "alpha_crop": [
+    152,
+    173,
+    1193,
+    959
+  ],
+  "gap_probes": [
+    [
+      390,
+      550
+    ],
+    [
+      950,
+      550
+    ]
+  ],
+  "pad_probe": [
+    670,
+    550
+  ],
+  "outputs": {
+    "down": {
+      "size": [
+        1041,
+        786
+      ],
+      "sha256": "6a9b5519632a32bf6275fb086d8af4a735c7415a799df4cf74170f3daf9b0621"
+    },
+    "right": {
+      "size": [
+        786,
+        1041
+      ],
+      "sha256": "975ac81c26b433006622b9e92592fe369731ce202b6a00b2b96607af94023b62"
+    },
+    "up": {
+      "size": [
+        1041,
+        786
+      ],
+      "sha256": "4b52d7067e1f562ac5c2511ed5c92c7cbb56185eb743d0a395d2235ef0109ad2"
+    },
+    "left": {
+      "size": [
+        786,
+        1041
+      ],
+      "sha256": "33cf1d5e11b6a0e7d03387218c69aca501ea2a7b30b0eb1ada8781f4b064589e"
+    }
+  },
+  "native": "output/construction-owner-repair-2026-09-12/cradle-candidate/empty-docked.png",
+  "finding": "Side-facing variants shrink to roughly 59 units wide under the old height limit; drone overhangs support rails.",
+  "next": "Generate nearly square support deck within current envelope and verify empty/docked before integration."
+}

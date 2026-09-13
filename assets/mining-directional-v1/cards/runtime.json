@@ -1,0 +1,115 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/mining_drone_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "robotics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"mining_hatch"
+					],
+					"purpose": "recovery restraint",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_drone-service-wall"
+					],
+					"purpose": "flush service wall access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/mining_drone_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "mining_drone_bay",
+			"machinery": [
+				{
+					"id": "mining_rov",
+					"rect": [
+						67.0,
+						-132.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "mining_hatch",
+					"rect": [
+						67.0,
+						86.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "mining_component_table",
+					"rect": [
+						89.0,
+						6.0,
+						64.0,
+						22.0
+					]
+				},
+				{
+					"id": "full_wall_drone-service-wall",
+					"rect": [
+						-174.0,
+						-164.0,
+						104.560409545898,
+						328.0
+					]
+				},
+				{
+					"id": "mining_inspection_lamp",
+					"rect": [
+						45.3999938964844,
+						51.7000007629395,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/robotics-service.png",
+			"source_sha256": "1b28908a73cecc263b2e4f70b122d5a3b0ce57ea1822700dccc12fb2741220f7",
+			"view": "res://rooms/full-wall-v1/mining_drone_bay_view.gd"
+		},
+		"layered": true,
+		"room": "mining_drone_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "mining_rov",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "mining_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_drone-service-wall",
+						"registered": true,
+						"side_view": "west"
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/mining_drone_bay_view.gd"
+	}
+]

@@ -1,0 +1,131 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"med_preparation"
+					],
+					"purpose": "sterile preparation boundary",
+					"rotations": {
+						"1": {
+							"scale": 0.35,
+							"stand_off": 10.0
+						},
+						"3": {
+							"scale": 0.35,
+							"stand_off": 10.0
+						}
+					},
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_medical-treatment-wall"
+					],
+					"purpose": "treatment wall service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/med_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_bay",
+			"machinery": [
+				{
+					"id": "med_supply",
+					"rect": [
+						106.0,
+						105.0,
+						60.0,
+						42.0
+					]
+				},
+				{
+					"id": "med_preparation",
+					"rect": [
+						25.0,
+						102.0,
+						72.0,
+						28.0
+					]
+				},
+				{
+					"id": "med_sealed_cooler",
+					"rect": [
+						133.0,
+						55.0,
+						28.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_medical-treatment-wall",
+					"rect": [
+						-162.79248046875,
+						-174.0,
+						325.5849609375,
+						134.0
+					]
+				},
+				{
+					"id": "med_bed_0",
+					"rect": [
+						-168.704925537109,
+						32.7868957519531,
+						86.0,
+						56.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/med_bay_view.gd"
+		},
+		"layered": true,
+		"room": "med_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_medical-treatment-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_console",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_bed_0",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "med_supply",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/med_bay_view.gd"
+	}
+]

@@ -1,0 +1,113 @@
+{
+  "textures": {
+    "accessories": "res://assets/material-polish-science-v2/research-accessories.png",
+    "xeno_assay_table": "res://assets/room-furnishings-v6/xeno-assay-table.png",
+    "universal_decon_caddy": "res://assets/room-furnishings-v6/universal-decon-caddy.png"
+  },
+  "furniture": [
+    {
+      "id": "xeno_assay_table",
+      "texture": "xeno_assay_table",
+      "registration": "res://assets/room-furnishings-v6/xeno-assay-table-registration.json",
+      "footprint": [
+        -46,
+        -14,
+        92,
+        28
+      ],
+      "ground_width": 1230,
+      "centers_by_quarter": [
+        [
+          -92,
+          -44
+        ],
+        [
+          -70,
+          0
+        ],
+        [
+          90,
+          35
+        ],
+        [
+          45,
+          -85
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_decon_caddy",
+      "texture": "universal_decon_caddy",
+      "registration": "res://assets/room-furnishings-v6/universal-decon-caddy-registration.json",
+      "footprint": [
+        -15,
+        -22,
+        30,
+        44
+      ],
+      "ground_width": 776,
+      "centers_by_quarter": [
+        [
+          118,
+          105
+        ],
+        [
+          -112,
+          105
+        ],
+        [
+          -112,
+          -95
+        ],
+        [
+          118,
+          105
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": [
+    {
+      "from": {
+        "host": "xeno_vessel",
+        "source": [
+          435,
+          480
+        ]
+      },
+      "via": [
+        [
+          42,
+          -75
+        ],
+        [
+          58,
+          -55
+        ],
+        [
+          166,
+          -55
+        ],
+        [
+          171,
+          -20
+        ]
+      ],
+      "to": {
+        "host": "xeno_scanner",
+        "source": [
+          1090,
+          435
+        ]
+      },
+      "color": "526778",
+      "width": 2
+    }
+  ],
+  "decals": []
+}

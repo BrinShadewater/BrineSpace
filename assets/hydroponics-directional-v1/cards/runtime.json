@@ -1,0 +1,132 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/hydroponics_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "agriculture",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-straight",
+					"hosts": [
+						"hydro_nutrients",
+						"full_wall_hydroponics-wall_nursery"
+					],
+					"purpose": "nutrient service runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"hydro_bed_west",
+						"full_wall_hydroponics-wall_nursery"
+					],
+					"purpose": "irrigation isolation",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/hydroponics_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "hydroponics_bay",
+			"machinery": [
+				{
+					"id": "hydro_bed_west",
+					"rect": [
+						-163.0,
+						-147.0,
+						106.0,
+						80.0
+					]
+				},
+				{
+					"id": "hydro_bed_east",
+					"rect": [
+						57.0,
+						-147.0,
+						106.0,
+						80.0
+					]
+				},
+				{
+					"id": "hydro_nutrients",
+					"rect": [
+						-160.0,
+						55.0,
+						66.0,
+						44.0
+					]
+				},
+				{
+					"id": "hydro_harvest",
+					"rect": [
+						77.0,
+						104.0,
+						88.0,
+						48.0
+					]
+				},
+				{
+					"id": "hydro_potting_trolley",
+					"rect": [
+						9.0,
+						124.0,
+						56.0,
+						22.0
+					]
+				},
+				{
+					"id": "hydro_harvest_stand",
+					"rect": [
+						-155.0,
+						133.0,
+						65.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/agriculture-floor.png",
+			"source_sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee",
+			"view": "res://rooms/full-wall-v1/hydroponics_bay_view.gd"
+		},
+		"layered": true,
+		"room": "hydroponics_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_hydroponics-wall_crops",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_hydroponics-wall_nursery",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_nutrients",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hydro_harvest",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/hydroponics_bay_view.gd"
+	}
+]

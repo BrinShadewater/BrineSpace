@@ -1,0 +1,28 @@
+{
+  "selected": {
+    "refinery-north.png": {
+      "sha256": "c887e52690279460bda2575948df64d9911c91bfccea5d525bb0b27ec0e7109f",
+      "generated_original": "exec-3e6eb33a-29e5-4f02-806f-420e2a23e20a.png"
+    },
+    "refinery-sides.png": {
+      "sha256": "d6332983c7e681b23818275fcaef0de16576bbff75eea0e8409af9047846d5da",
+      "generated_original": "exec-e4f882b4-f288-473c-8f02-dae8aea5d046.png"
+    }
+  },
+  "rejected": {
+    "refinery-north-rejected-v1.png": "Incorrect white machine palette; never installed.",
+    "refinery-north-study-v2.png": "Palette restored but lamps/ingots still too bright.",
+    "refinery-sides-study-v1.png": "Furnace access corrected but hopper gate and outer drawers still misdirected."
+  },
+  "native_review": "West q0, north q1, east q2 reviewed; south q3 unchanged. Four ingots and twin cooling fans retained per bank. Inward service handles, hopper access and lower drawers.",
+  "verification": {
+    "all_prop_rectangles_and_ids": "unchanged",
+    "independent_visual_bounds": "unchanged",
+    "south_rgb": "identical",
+    "layouts": 176,
+    "side_variants": 20,
+    "card_identities": 47,
+    "states": "Vessels q0, sorters q0/q1/q2, crushers q1/q2/q3 active and temporal; q3 hopper and all banks static.",
+    "evidence": "output/refinery-remaining-2026-09-12/final/runtime.json"
+  }
+}

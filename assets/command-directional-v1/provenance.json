@@ -1,0 +1,18 @@
+{
+  "source": "assets/command-directional-v1/command-south.png",
+  "sha256": "04eb12cb9e959cb98d17ef3d5d82fd630eb564b0e05b7b2ca0f5638c20ef4be7",
+  "dimensions": [
+    1882,
+    836
+  ],
+  "reference": "assets/wall-room-rollout-v1/command-split-south.png",
+  "prompts": [
+    "prompt-v1.txt",
+    "prompt-v2.txt"
+  ],
+  "rejected": "command-south-v1-rejected.png: corrected controls but too glossy gold/red.",
+  "method": "Built-in image edits; read-only vector registration, original proportional split frames retained.",
+  "review": "Inward spacebars and comms button row. Matte bronze, subdued red and dim blue screens. Native q2 only bank pixels change; equipment and bounds retained, other rotations RGB identical.",
+  "evidence": "output/command-directional-2026-09-12/comparison.json",
+  "tests": "176 routes and 20 existing side variants pass. Off and two powered times show local changes in each south display; state-checks.json and powered native review pass."
+}

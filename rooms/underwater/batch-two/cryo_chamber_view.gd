@@ -26,7 +26,7 @@ func _ready() -> void:
 		life_items.append({"id":"cryo_pod_"+str(i),"rect":Rect2(-143 if i==0 else 81,-147,62,90),"pivot":Vector2(350+dx,548),"width":216.0,"outline":outline,"gauge":Vector2(350+dx,479)})
 	life_items.append({"id":"cryo_compressor","rect":Rect2(-160,99,96,57),"pivot":Vector2(344,1018),"width":340.0,"outline":[Vector2(239,727),Vector2(496,727),Vector2(508,740),Vector2(508,1001),Vector2(493,1018),Vector2(250,1018),Vector2(236,1001),Vector2(235,966),Vector2(189,966),Vector2(176,948),Vector2(176,801),Vector2(187,784),Vector2(195,784),Vector2(195,762),Vector2(207,748),Vector2(235,748)]})
 	life_items.append({"id":"cryo_console","rect":Rect2(70,99,84,57),"pivot":Vector2(895,1015),"width":245.0,"outline":[Vector2(787,783),Vector2(910,783),Vector2(916,789),Vector2(1001,789),Vector2(1010,799),Vector2(1010,906),Vector2(1016,911),Vector2(1016,940),Vector2(1008,944),Vector2(1008,1005),Vector2(993,1015),Vector2(785,1015),Vector2(773,1004),Vector2(773,802)]})
-	cryo_dressing=CryoDressing.new(self,"res://rooms/underwater/batch-two/cryo-composition-v2.json")
+	cryo_dressing=CryoDressing.new(self,"res://rooms/underwater/batch-two/cryo-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:
@@ -44,9 +44,6 @@ func draw_room_floor(center: Vector2) -> void:
 	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
 	if recovery.is_empty() and cryo_dressing!=null: cryo_dressing.floor()
 	if not recovery.is_empty() and not recovery.cleared:
-		# Localized failed hull seams; the maintained medical palette stays legible.
-		for x in [-168,168]:
-			painter.draw_polyline(PackedVector2Array([Vector2(x,-130),Vector2(x-5,-80),Vector2(x+3,-56),Vector2(x,-20)]),Color("66584c"),3)
 		painter.draw_string(ThemeDB.fallback_font,Vector2(-140,175),"SEALED // REPAIRABLE",HORIZONTAL_ALIGNMENT_LEFT,-1,12,Color("bcb59c"))
 
 func effect_marks(prop: Dictionary,time: float) -> Array:

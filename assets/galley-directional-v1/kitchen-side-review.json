@@ -1,0 +1,22 @@
+{
+  "stage": "library-installed-native-reviewed",
+  "source": "kitchen-side.png",
+  "raw": "exec-31d1bbf7-2fc1-4a6f-a05a-3577b6a3d147.png",
+  "sha256": "a79f26e32b9dd9a5b518c44ffc3aab6941b21b17a519fa30e822d90648959461",
+  "registration": "rooms/full-wall-v1/registrations/side-galley-kitchen-side.json",
+  "world_size": [
+    55.6786703601108,
+    300
+  ],
+  "review": "East and mirrored west reviewed natively. Three jars, two-ring cooktop with inward saucepan handle, inward knife handle, outer faucet curving inward and inward cabinet pulls. Quiet matte source. White exterior excluded by vectors; saucepan handle aperture seeded397,495.",
+  "evidence": "output/galley-side-2026-09-12/kitchen-companions/native.png",
+  "remaining": "Final host composition and live layout selection; explicit pause review remains.",
+  "host_review": {
+    "layout": "kitchen-side-host-layout.json",
+    "evidence": "output/galley-kitchen-host-2026-09-12/native/images/galley-q0.png",
+    "access": "output/galley-kitchen-host-2026-09-12/access.log",
+    "findings": "Native east host reviewed; flush wall bank and existing south serving counter clear. Production collision graph reaches three inward approach points from entrance. Fixed q0 view tested four times, not four distinct orientations. Composition sparse; alternate candidate only.",
+    "remaining": "Operating detail and final composition before live default selection."
+  },
+  "operating_review": "cooktop_ring source529,644 radius44; room custom_library_draw preserved across variant replacement. Direct and retained off/on-a/on-b native captures exit0; active and temporal crops pass both renderers. Retained on-a reviewed.20side variants pass20260912-140448-headless."
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "candidate-host-native-access-and-state-reviewed",
+  "source": "bench-south-split.png",
+  "raw": "exec-4bd3a601-fa62-4463-9904-83820a12b44d.png",
+  "actual_size": [
+    2172,
+    724
+  ],
+  "prompts": [
+    "bench-south-split-prompt.json",
+    "bench-south-split-access-prompt.json"
+  ],
+  "native": "output/salvage-south-host-2026-09-12/native/images/salvage_workshop-q0.png",
+  "review": "Two finished120-unit sections reviewed with96-unit gap. Teardown housing/rotor/bearings retained left; three loaded bins/oil can/vise right. Repaired bin pulls toward north/inward. Quiet tool housings; fine metallic detail remains busy at native scale.",
+  "remaining": "Candidate not selected live; fixed north default preserved. Material polish and owner aesthetic acceptance remain.",
+  "host_layout": "south-host-layout.json",
+  "host": "Candidate replaces north bench with teardown south-west and sorting south-east,120units each,116unit clear gap. Tote moved to[-166,35]. Main bench semantic ID retained through variant. Native furnished candidate reviewed.",
+  "checks": "bench-access.log exit0: production crew collision/segment graph reaches both bench fronts[-112,96],[112,96] from south entrance. Fixed q0 view exercised four times by rotation loop, not four distinct orientations.",
+  "state_review": "Direct and retained off/on-a/on-b captures verified: indicator active and temporal differences in crop[170,465,184,479], checks.json under output/salvage-south-state-2026-09-12. Fixed clock comparisons are not pause/resume proof. Variant regression20 passes20260912-131302-headless."
+}

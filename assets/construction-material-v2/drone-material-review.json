@@ -1,0 +1,32 @@
+{
+  "asset": "construction-drone-material-v1",
+  "stage": "selected runtime material transform and native reviewed",
+  "source": "assets/drones/fleet-v1/atlas-matte-v1.png",
+  "source_sha256": "01825580fbe892cd290ed3b9583304ba27a7cc86da17937cc7ba1c5bdea03b40",
+  "source_region": [1060, 100, 360, 390],
+  "selection": {
+    "implementation": "scripts/drone_art.gd::_construction_material",
+    "method": "region-local HSV material transform during existing chroma-key decode",
+    "geometry_changed": false,
+    "articulated_uv_changed": false,
+    "other_fleet_regions_changed": false,
+    "finding": "Muted ochre and graphite retain the exact recognizable ROV and every animated UV while reducing orange gloss and white sparkle."
+  },
+  "rejected_candidate": {
+    "path": "assets/construction-material-v2/drone-rejected-silhouette-drift.png",
+    "sha256": "ebc567eca51b216045c4c7d63eb102aca7e1a3588950e11efadda148b6d7b82a",
+    "size": [1205, 1306],
+    "reason": "Useful material direction, but generation changed the canvas, silhouette, arm pose and grippers."
+  },
+  "verification": {
+    "room_directions": "output/construction-owner-repair-2026-09-12/drone-material/native",
+    "state_sheet": "output/construction-owner-repair-2026-09-12/drone-material/states/docked-travelling-working.png",
+    "state_sheet_sha256": "4a6ef886a3329067697436164b1ef0c5a3c2b29eaaa0022d21495b880b102f00",
+    "states_reviewed": ["docked", "travelling", "articulated working"],
+    "functional_run": "output/test-runs/20260912-222504-headless",
+    "functional_passes": ["drone fleet", "drone jobs", "drone lifecycle", "production-ten connections", "production-ten walker paths", "47 card identities"],
+    "final_art_run": "output/test-runs/20260912-223410-headless",
+    "final_art_passes": ["176 furnished orientations", "20 side variants", "47 card identities"]
+  },
+  "owner_acceptance": null
+}

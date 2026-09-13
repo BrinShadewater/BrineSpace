@@ -32,7 +32,8 @@
         "economy": "4 actual economy states and paired frames, base rotation 1600x900; output/thermal-control/economy.log",
         "crossings": "Both ports x four rotations against Battery; 8 arrivals and all 56 sampled doorway crops reviewed at 1600x900, fixed 30% zoom; output/thermal-control/crossings-review.json",
         "windows_export": "13 source hashes, 26 PNG decodes, 20 rooms visited and 295 transitions; output/production-ten/windows-validation-adaptations-v1/verification.json"
-      }
+      },
+      "centerpiece_asset_pass": "Native four-orientation review and route evidence recorded in docs/ROOM_CENTERPIECE_ASSET_PASS_2026-09-12.md; owner acceptance pending."
     },
     "review": [
       "Distinct heat-exchanger, fin stack, console and twin pump silhouettes; all equipment fronts face south.",
@@ -56,13 +57,33 @@
       {
         "path": "rooms/production-ten/decor/maintenance-v1.png",
         "sha256": "206a52665d639488ab399dfd0e5b8ea67a807b1bed45159e352cc8bf7143269b"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/solar-conversion-island.png",
+        "sha256": "c2068b9600159e73c0d294e4f5b2aba02b4eaf63f9213c391fa852e5f6efaa63"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/solar-junction-cart.png",
+        "sha256": "cac9e56d39928b94963f1c87c78e481d58cbf1ec31f01bd83dfe658a6b7cde91"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/solar-conversion-island-registration.json",
+        "sha256": "241d10c3adc25d9133477ecea3a5f210128a92d8e4744388d4e03ef2faf551ef"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/solar-junction-cart-registration.json",
+        "sha256": "078f2ee25ea7859e77c62891d9904c20d22bd7d3a75f8f568bd4c766fcc2ab42"
       }
     ],
-    "composition_profile": "rooms/underwater/thermal-control/thermal-composition-v2.json",
+    "composition_profile": "rooms/underwater/thermal-control/thermal-composition-v3.json",
     "composition_assets": [
       {
-        "path": "rooms/underwater/thermal-control/thermal-composition-v2.json",
-        "sha256": "129933622a5542919a526667cb1ae23df9c788ea834de98b75a07d16b3a922e4"
+        "path": "rooms/underwater/thermal-control/thermal-composition-v3.json",
+        "sha256": "727e35a6c67c7db5d34d822f49c9cef88de8950538505a96ec9d9b28f974f528"
       }
     ]
   }

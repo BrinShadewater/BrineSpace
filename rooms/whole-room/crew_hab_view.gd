@@ -13,7 +13,7 @@ func _ready() -> void:
 		{"id":"hab_desk","rect":Rect2(-132,100,96,54),"pivot":Vector2(292,1039),"width":277.0,"outline":[Vector2(171,797),Vector2(413,797),Vector2(430,813),Vector2(430,1037),Vector2(338,1037),Vector2(336,948),Vector2(321,948),Vector2(321,1039),Vector2(253,1039),Vector2(253,948),Vector2(177,948),Vector2(176,1039),Vector2(156,1039),Vector2(156,814)]},
 		{"id":"hab_chair","rect":Rect2(82,-76,76,50),"pivot":Vector2(966,1064),"width":275.0,"outline":[Vector2(860,800),Vector2(1003,800),Vector2(1020,818),Vector2(1028,858),Vector2(1082,868),Vector2(1102,889),Vector2(1102,1051),Vector2(1088,1064),Vector2(839,1064),Vector2(828,1049),Vector2(829,870),Vector2(846,849),Vector2(846,818)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/whole-room/crew-hab-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/whole-room/crew-hab-composition-v4.json")
 	rebuild()
 func rebuild() -> void:
 	super.rebuild()

@@ -1,0 +1,196 @@
+{
+  "textures": {
+    "bench": "res://rooms/underwater/acoustic-comms/electronics-bench-v1.png",
+    "chair": "res://rooms/production-ten/decor/command-operator-chair-v1.png",
+    "centerpiece": "res://assets/room-centerpieces-v1/radio-signal-console.png",
+    "radio_signal_routing_console": "res://assets/room-furnishings-v9/radio-signal-routing-console.png",
+    "universal_patch_cable_organizer": "res://assets/room-furnishings-v9/universal-patch-cable-organizer-chest.png"
+  },
+  "furniture": [
+    {
+      "id": "radio_signal_routing_console",
+      "texture": "radio_signal_routing_console",
+      "registration": "res://assets/room-furnishings-v9/radio-signal-routing-console-registration.json",
+      "footprint": [
+        -55,
+        -18,
+        110,
+        36
+      ],
+      "ground_width": 1215,
+      "centers_by_quarter": [
+        [
+          0,
+          34
+        ],
+        [
+          -34,
+          0
+        ],
+        [
+          0,
+          -34
+        ],
+        [
+          34,
+          0
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_patch_cable_organizer",
+      "texture": "universal_patch_cable_organizer",
+      "registration": "res://assets/room-furnishings-v9/universal-patch-cable-organizer-chest-registration.json",
+      "footprint": [
+        -30,
+        -13,
+        60,
+        26
+      ],
+      "ground_width": 1195,
+      "centers_by_quarter": [
+        [
+          -112,
+          110
+        ],
+        [
+          -110,
+          -112
+        ],
+        [
+          -115,
+          62
+        ],
+        [
+          110,
+          112
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "surface_routes": [
+    {
+      "from": {
+        "host": "acoustic_receiver",
+        "source": [
+          465,
+          1040
+        ]
+      },
+      "via": [
+        [
+          -67,
+          108
+        ],
+        [
+          -62,
+          136
+        ]
+      ],
+      "to": {
+        "host": "acoustic_electronics_bench",
+        "source": [
+          280,
+          930
+        ]
+      },
+      "color": "22292c",
+      "width": 2
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "acoustic_listener",
+        "source": [
+          486,
+          451
+        ]
+      },
+      "via": [
+        [
+          -44,
+          -87
+        ],
+        [
+          -44,
+          -165
+        ],
+        [
+          47,
+          -165
+        ],
+        [
+          47,
+          -89
+        ]
+      ],
+      "to": {
+        "host": "acoustic_transducers",
+        "source": [
+          755,
+          448
+        ]
+      },
+      "color": "35464b",
+      "width": 3
+    },
+    {
+      "from": {
+        "host": "acoustic_transducers",
+        "source": [
+          1086,
+          443
+        ]
+      },
+      "via": [
+        [
+          174,
+          -71
+        ],
+        [
+          174,
+          80
+        ]
+      ],
+      "to": {
+        "host": "acoustic_bench",
+        "source": [
+          1105,
+          1038
+        ]
+      },
+      "color": "303c40",
+      "width": 3
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          168,
+          -23
+        ],
+        [
+          180,
+          -23
+        ],
+        [
+          180,
+          23
+        ],
+        [
+          168,
+          23
+        ]
+      ],
+      "fill": "293337",
+      "edge": "526065"
+    }
+  ]
+}

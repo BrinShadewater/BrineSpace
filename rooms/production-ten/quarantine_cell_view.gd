@@ -18,7 +18,7 @@ func _ready() -> void:
 		{"id":"quarantine_monitor","rect":Rect2(-28,-105,72,44),"pivot":Vector2(324,1077),"width":404.0,"outline":[Vector2(125,846),Vector2(137,830),Vector2(179,822),Vector2(192,796),Vector2(202,786),Vector2(203,740),Vector2(216,734),Vector2(245,736),Vector2(251,751),Vector2(430,751),Vector2(448,770),Vector2(448,788),Vector2(504,788),Vector2(515,802),Vector2(515,861),Vector2(522,879),Vector2(523,1034),Vector2(510,1052),Vector2(437,1055),Vector2(428,1076),Vector2(285,1077),Vector2(274,1062),Vector2(182,1064),Vector2(141,1057),Vector2(126,1042)]},
 		{"id":"quarantine_cabinet","rect":Rect2(-166,106,74,46),"pivot":Vector2(927,1091),"width":407.0,"outline":[Vector2(730,913),Vector2(737,888),Vector2(737,751),Vector2(753,726),Vector2(1050,725),Vector2(1069,745),Vector2(1073,814),Vector2(1103,816),Vector2(1118,832),Vector2(1128,891),Vector2(1124,1002),Vector2(1114,1018),Vector2(1080,1028),Vector2(1080,1067),Vector2(1062,1089),Vector2(749,1091),Vector2(730,1072)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/production-ten/decor/quarantine-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/production-ten/decor/quarantine-composition-v4.json")
 	rebuild()
 
 func rebuild() -> void:

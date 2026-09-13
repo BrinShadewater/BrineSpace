@@ -14,7 +14,7 @@ func _ready() -> void:
 		{"id":"bio_centrifuge","rect":Rect2(-160,49,78,60),"pivot":Vector2(335,1049),"width":259.0,"outline":[Vector2(208,765),Vector2(220,742),Vector2(235,740),Vector2(240,723),Vector2(258,718),Vector2(435,718),Vector2(455,731),Vector2(465,756),Vector2(464,1027),Vector2(449,1049),Vector2(220,1049),Vector2(207,1033)]},
 		{"id":"bio_cold_storage","rect":Rect2(94,101,68,54),"pivot":Vector2(906,1054),"width":282.0,"outline":[Vector2(773,696),Vector2(786,676),Vector2(800,674),Vector2(1018,674),Vector2(1033,688),Vector2(1042,711),Vector2(1047,1033),Vector2(1035,1054),Vector2(779,1054),Vector2(765,1039),Vector2(766,850),Vector2(773,845)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/bio-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/bio-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:

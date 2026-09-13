@@ -42,24 +42,29 @@ static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: floa
 	var hull := PackedVector2Array([Vector2(-180,-180),Vector2(180,-180),Vector2(180,180),Vector2(-180,180)])
 	for prop in props:
 		if prop.get("layout_hidden",false): continue
+		# Some round installations author their contact shadow against source art.
+		# Do not add a second rectangular footprint shadow underneath them.
+		if prop.get("registration",{}).get("owns_contact_shadow",false): continue
 		var rect: Rect2 = prop.get("rect",Rect2())
 		if rect.size.x < 18 or rect.size.y < 12: continue
 		var rise := 12.0
 		if view != null:
 			var visual: Rect2 = view.prop_visual_bounds(prop)
 			rise=clampf(visual.size.y-rect.size.y,8.0,85.0)
-		# Fixed northwest key light: tall props throw longer southeast shadows.
+		# A short directional shade stays joined to the installation. Sprite height
+		# is not a physical light distance: long offsets made furniture hover.
 		for penumbra in range(3):
-			var offset := Vector2(0.32,0.52)*(rise+float(penumbra)*4.0)
+			var offset := Vector2(0.32,0.52)*(minf(rise*0.12,5.0)+float(penumbra))
 			var projected := PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end+offset,Vector2(rect.position.x,rect.end.y)+offset])
 			for clipped in Geometry2D.intersect_polygons(projected,hull):
-				canvas.draw_colored_polygon(clipped,Color(0.015,0.025,0.04,(0.025+0.02*level)))
-		# Broad, low-opacity penumbra stays inside the room's pressure hull.
+				canvas.draw_colored_polygon(clipped,Color(0.015,0.025,0.04,(0.018+0.012*level)))
+		# Concentric contact bands touch every edge instead of forming an offset
+		# dark mat below the object. Keep a stronger core and a restrained fringe.
 		for band in range(3):
-			var spread := float(3-band)*2.0
-			var shade := Rect2(rect.position+Vector2(-spread,4),rect.size+Vector2(spread*2,8+spread))
+			var spread := float(3-band)*0.7
+			var shade := rect.grow(spread)
 			shade=shade.intersection(Rect2(-180,-180,360,360))
-			if shade.has_area(): canvas.draw_rect(shade,Color(0.015,0.025,0.03,0.045+0.025*level))
+			if shade.has_area(): canvas.draw_rect(shade,Color(0.015,0.025,0.03,(0.025+float(band)*0.018)*(0.8+0.2*level)))
 
 static func riser_edits(edits: Dictionary) -> Dictionary:
 	# Promote saved low-mount offsets before studio defaults can mask them.

@@ -17,7 +17,7 @@ static func sprite(canvas: CanvasItem,key: String,bounds: Rect2) -> void:
 	size*=minf(bounds.size.x/size.x,bounds.size.y/size.y)
 	canvas.draw_texture_rect(textures[key],Rect2(bounds.get_center()-size*0.5,size),false)
 
-static func draw_wall(canvas: CanvasItem,_cell:=Vector2i.ZERO) -> void:
+static func draw_wall(canvas: CanvasItem,_cell:=Vector2i.ZERO,wall_view=null) -> void:
 	load_assets()
 	# Pressure hull: structural ribs, steel panels and fixed maintenance conduits.
 	canvas.draw_rect(Rect2(-192,Riser.TOP,384,Riser.HEIGHT),Color("354b54"))
@@ -33,6 +33,13 @@ static func draw_wall(canvas: CanvasItem,_cell:=Vector2i.ZERO) -> void:
 	canvas.draw_rect(Rect2(-192,-196,384,4),Color("1b3039"))
 	canvas.draw_line(Vector2(-188,-194),Vector2(-36,-194),Color("92805b"),1)
 	canvas.draw_line(Vector2(36,-194),Vector2(188,-194),Color("92805b"),1)
-	for item in (profile.wall_items if preload("res://rooms/whole-room/decoration_props.gd").WALL_DECORATIONS_ENABLED else []):
+	# Owner-requested airlock furnishings are part of this room's architecture.
+	# Keep the global pause on optional decoration in other rooms unchanged.
+	for item in profile.wall_items:
 		var r: Array=item.rect
-		sprite(canvas,item.texture,Rect2(Vector2(r[0],r[1])+Riser.MOUNT_SHIFT,Vector2(r[2],r[3])))
+		var bounds:=Rect2(Vector2(r[0],r[1])+Riser.MOUNT_SHIFT,Vector2(r[2],r[3]))
+		var covered:=false
+		if wall_view!=null:
+			for prop in wall_view.props:
+				if prop.has("wall_art_rect") and prop.wall_art_rect.intersects(bounds): covered=true
+		if not covered: sprite(canvas,item.texture,bounds)

@@ -2,6 +2,55 @@ extends "res://rooms/whole-room/life_support_view.gd"
 ## Chilled coils and water recovery; source assemblies with canonical tee routes.
 const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
 var dressing: RefCounted
+var equipment_textures: Dictionary = {}
+
+func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.id in ["tidal_pump","tidal_monitor"]: return _equipment_bounds(prop)
+	return super.prop_visual_bounds(prop)
+
+func _equipment_turn(prop: Dictionary) -> int:
+	var center: Vector2 = prop.rect.get_center() - prop.get("center",Vector2.ZERO)
+	if absf(center.x)>absf(center.y): return 3 if center.x<0 else 1
+	return 0 if center.y<0 else 2
+
+func _equipment_texture(prop: Dictionary) -> ImageTexture:
+	var name := str(prop.id).trim_prefix("tidal_")
+	var key := "%s-%s" % [name,["down","left","up","right"][_equipment_turn(prop)]]
+	if not equipment_textures.has(key):
+		equipment_textures[key]=load_source_texture("res://assets/tidal-owner-v2/%s.png" % key)
+	return equipment_textures[key]
+
+func _equipment_bounds(prop: Dictionary) -> Rect2:
+	var size := Vector2(_equipment_texture(prop).get_size())
+	var limit := Vector2(84,62)
+	if _equipment_turn(prop)%2==1: limit=Vector2(62,84)
+	size*=minf(limit.x/size.x,limit.y/size.y)
+	return Rect2(prop.rect.get_center()-size*0.5,size)
+
+func _equipment_point(prop: Dictionary, point: Vector2) -> Vector2:
+	var p := point
+	match _equipment_turn(prop):
+		1: p=Vector2(1.0-point.y,point.x)
+		2: p=Vector2(1.0-point.x,1.0-point.y)
+		3: p=Vector2(point.y,1.0-point.x)
+	var bounds := _equipment_bounds(prop)
+	return bounds.position+p*bounds.size
+
+func _draw_equipment(prop: Dictionary) -> void:
+	painter.draw_texture_rect(_equipment_texture(prop),_equipment_bounds(prop),false)
+	if prop.id=="tidal_pump":
+		# Replace the baked needle area, keeping the source rim and tick marks.
+		var hub := _equipment_point(prop,Vector2(0.818,0.201))
+		var scale := _equipment_bounds(prop).size.length()/Vector2(759,560).length()
+		painter.draw_circle(hub,37.0*scale,Color("c7ccc5"))
+		var angle := -1.2+sin(machine_clock*2)*0.4 if operating else -1.2
+		var tip := Vector2(0.818,0.201)+Vector2(cos(angle)*31.0/759.0,sin(angle)*31.0/560.0)
+		painter.draw_line(hub,_equipment_point(prop,tip),Color("293537"),1.0,true)
+		painter.draw_circle(hub,1.1,Color("354345"))
+	elif operating:
+		for row in range(3):
+			var y := 0.19+row*0.07
+			painter.draw_line(_equipment_point(prop,Vector2(0.11,y)),_equipment_point(prop,Vector2(0.23+0.025*sin(machine_clock*2+row),y)),Color("88bdc5"),1.0,true)
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
@@ -13,7 +62,7 @@ func _ready() -> void:
 		{"id":"tidal_pump","rect":Rect2(-165,93,84,52),"pivot":Vector2(326,1054),"width":372.0,"outline":[Vector2(140,1024),Vector2(143,829),Vector2(156,817),Vector2(174,817),Vector2(176,829),Vector2(189,827),Vector2(194,812),Vector2(214,799),Vector2(242,798),Vector2(264,811),Vector2(277,831),Vector2(304,824),Vector2(457,824),Vector2(469,813),Vector2(489,815),Vector2(495,830),Vector2(508,845),Vector2(512,1036),Vector2(494,1053),Vector2(466,1053),Vector2(456,1040),Vector2(194,1040),Vector2(183,1054),Vector2(154,1053)]},
 		{"id":"tidal_monitor","rect":Rect2(81,94,84,52),"pivot":Vector2(932,1055),"width":373.0,"outline":[Vector2(746,1028),Vector2(746,853),Vector2(759,837),Vector2(769,819),Vector2(790,820),Vector2(801,812),Vector2(1068,812),Vector2(1080,823),Vector2(1080,837),Vector2(1097,842),Vector2(1112,860),Vector2(1118,1018),Vector2(1110,1048),Vector2(1074,1054),Vector2(1063,1042),Vector2(799,1042),Vector2(788,1055),Vector2(760,1054)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/tidal-condenser/tidal-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/tidal-condenser/tidal-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:
@@ -63,6 +112,9 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 
 func draw_registered_prop(prop: Dictionary) -> void:
 	if dressing!=null and dressing.draw(prop): return
+	if prop.id in ["tidal_pump","tidal_monitor"]:
+		_draw_equipment(prop)
+		return
 	var vertices := PackedVector2Array()
 	var uv := PackedVector2Array()
 	for p in prop.registration.outline:

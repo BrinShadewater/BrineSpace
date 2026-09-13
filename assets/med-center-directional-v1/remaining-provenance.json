@@ -1,0 +1,31 @@
+{
+  "room": "med_center",
+  "directions": [
+    "north",
+    "east",
+    "west"
+  ],
+  "sources": [
+    {
+      "registration": "rooms/full-wall-v1/registrations/medical-diagnostic-wall.json",
+      "source": "res://assets/med-center-directional-v1/med-center-north.png",
+      "sha256": "73b9c2fd0f5c28644a085c5c8421cd38c0c6cc3009266a59529d3ad5791abc95"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-medical-diagnostic-wall-east.json",
+      "source": "res://assets/med-center-directional-v1/med-center-sides.png",
+      "sha256": "c77a1793e52788b10761583ece6a57d2f39945d629d2e7067b52b5fd52ec4915"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-medical-diagnostic-wall-west.json",
+      "source": "res://assets/med-center-directional-v1/med-center-sides.png",
+      "sha256": "c77a1793e52788b10761583ece6a57d2f39945d629d2e7067b52b5fd52ec4915"
+    }
+  ],
+  "native_evidence": "output/med-center-directional-2026-09-12/remaining-final/runtime.json",
+  "comparison": "output/med-center-directional-2026-09-12/remaining-comparison.json",
+  "card": "res://assets/med-center-directional-v1/cards/med_center.png",
+  "review": "Native q0/q1/q2 and card reviewed. North bottom spacebar and cartridge releases, top hinge/hoses. Side inward spacebars/catches and horizontal cartridge release ends; hinges/hoses outward. Quiet standby screens; all instruments and sample inventory preserved. All prop IDs, rectangles and visual bounds unchanged; q3 RGB identical.",
+  "checks": "176 furnished crew routes,20 existing side-variant checks and47 card binding identities pass. Static art repair; live equipment anchors unchanged.",
+  "remaining": "All four Med Center directions now reviewed; owner acceptance and full catalog remain pending. Next Cryo Chamber baseline in output/cryo-directional-2026-09-12/before."
+}

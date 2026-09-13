@@ -1,0 +1,23 @@
+{
+  "stage": "integrated-native-layout-reviewed",
+  "source": "assets/battery-directional-v1/side-overhead.png",
+  "sha256": "aee5d67a4c1bfdef17dbc4cf2dd5c1242898f929d2497c9c1645588e74343023",
+  "dimensions": [
+    1295,
+    1215
+  ],
+  "raw": "exec-77a2e5bc-b44a-4a29-8d82-7acd4d53ddcf.png",
+  "rejected_study": "side-overhead-study.png",
+  "review": "New low overhead companion design: four closed battery cases, three distribution units, three gauges and four switches total. Inward left controls on authored east; west reflected with source-aware UVs. Matte tops, narrow outer cable channel, finished section ends. Both native sides reviewed.",
+  "registrations": [
+    "rooms/full-wall-v1/registrations/battery-wall-east-cells.json",
+    "rooms/full-wall-v1/registrations/battery-wall-east-distribution.json",
+    "rooms/full-wall-v1/registrations/battery-wall-west-cells.json",
+    "rooms/full-wall-v1/registrations/battery-wall-west-distribution.json"
+  ],
+  "geometry": "Contained to prior section aspect, aligned to outer backing edge before west reflection; all prop metadata matches baseline.",
+  "comparison": "output/battery-overhead-2026-09-12/comparison.json",
+  "validation": "Native baseline and installed four-direction captures exit 0. 176 preferred layouts and existing 20 side-variant regressions PASS 20260912-150326-headless. New battery mirroring visually verified in q1/q3; the 20-variant test is regression coverage, not specific new-art acceptance.",
+  "card": "q0 unchanged by pixel comparison; existing card retained.",
+  "remaining": "Owner camera/material acceptance and broader directional rollout remain open."
+}

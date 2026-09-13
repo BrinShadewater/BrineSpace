@@ -1,0 +1,2330 @@
+{
+  "objective": "All rooms: correct existing wall banks and create missing wall artwork; four-direction inward access, north riser overlap, south top-down camera.",
+  "inventory_basis": "47 RoomDatabase identities from native catalog; current full-wall registration files inspected September 12",
+  "rooms": [
+    {
+      "room": "cold_store",
+      "name": "Cold Store",
+      "view": "res://rooms/underwater/cold-store-v1/cold_store_view.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": null,
+          "stage": "library-installed-native-reviewed",
+          "assets": [
+            {
+              "subject": "fridge",
+              "direction": "north",
+              "registration": "rooms/full-wall-v1/registrations/cold-store-fridge.json",
+              "source": "rooms/underwater/cold-store-v1/fridge-v2.png",
+              "sha256": "e744e3ab74f26ee2e6315f3cda85e117ef5b20b94a06bbacc18c3d5a20e848a3",
+              "native_size": [
+                1189,
+                1323
+              ],
+              "display_width": 92,
+              "stage": "library-installed-native-reviewed"
+            },
+            {
+              "subject": "rack",
+              "direction": "north",
+              "registration": "rooms/full-wall-v1/registrations/cold-store-rack.json",
+              "source": "rooms/underwater/cold-store-v1/rack-v2.png",
+              "sha256": "40666c8fcab00a5b24bec922fd638bad34f551bad4295acd89b61fdf0f9dfe12",
+              "native_size": [
+                1122,
+                1402
+              ],
+              "display_width": 92,
+              "stage": "library-installed-native-reviewed"
+            }
+          ],
+          "evidence": "output/cold-store-remaining-2026-09-12/companions/runtime.json",
+          "note": "Reusable companion art; fixed gameplay q0 retains side banks and both doors."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-cold-store-rack-east.json",
+          "source": "res://assets/cold-store-directional-v1/rack-east.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0
+        },
+        "south": {
+          "registration": null,
+          "source": null,
+          "stage": "library-installed-native-reviewed",
+          "assets": [
+            {
+              "subject": "fridge",
+              "direction": "south",
+              "registration": "rooms/full-wall-v1/registrations/side-cold-store-fridge-south.json",
+              "source": "assets/cold-store-directional-v1/fridge-south.png",
+              "sha256": "49fcd0282edbe6a2ce7bb006dd7ba0909ed22685ff8f308cc0cc8bad9f13202a",
+              "native_size": [
+                1635,
+                962
+              ],
+              "display_width": 92,
+              "stage": "library-installed-native-reviewed"
+            },
+            {
+              "subject": "rack",
+              "direction": "south",
+              "registration": "rooms/full-wall-v1/registrations/side-cold-store-rack-south.json",
+              "source": "assets/cold-store-directional-v1/rack-south.png",
+              "sha256": "eed00736e1d20d2dd54ab80aeedbed4b36fbca14dcc8009a279ea9f36d1011fe",
+              "native_size": [
+                1682,
+                935
+              ],
+              "display_width": 92,
+              "stage": "library-installed-native-reviewed"
+            }
+          ],
+          "evidence": "output/cold-store-remaining-2026-09-12/companions/runtime.json",
+          "note": "Reusable companion art; fixed gameplay q0 retains side banks and both doors."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-cold-store-fridge-west.json",
+          "source": "res://assets/cold-store-directional-v1/fridge-west.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0
+        }
+      },
+      "scope_note": "North/south fridge and rack companions registered and natively reviewed at 92-unit width in asset library. Existing fixed q0 layout is RGB and prop-metadata identical; no alternate rotations enabled. Side aesthetic feedback remains unresolved.",
+      "west_overhead_review": "assets/cold-store-directional-v1/fridge-west-overhead-review.json",
+      "east_matte_review": "assets/cold-store-directional-v1/rack-east-matte-review.json",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "galley",
+      "name": "Galley",
+      "view": "res://rooms/underwater/galley-v1/galley_view.gd",
+      "asset": null,
+      "category": "Crew",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://assets/galley-directional-v1/kitchen-north-matte.png",
+          "stage": "integrated-native-layout-and-card-reviewed",
+          "quarter": 0,
+          "note": "Existing inward kitchen moved flush, slight riser overlap; retained live indicator.",
+          "evidence": "assets/galley-directional-v1/kitchen-north-matte-review.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-galley-serving-side.json",
+          "source": "res://assets/galley-directional-v1/serving-side.png",
+          "stage": "library-installed-native-reviewed",
+          "mirrored": false,
+          "evidence": "output/galley-side-2026-09-12/companions/native.png",
+          "note": "One authored east library item; mirror horizontally for west. Fixed live default untouched."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-galley-serving-south.json",
+          "source": "res://assets/galley-directional-v1/serving-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-galley-serving-side.json",
+          "source": "res://assets/galley-directional-v1/serving-side.png",
+          "stage": "library-installed-native-reviewed",
+          "mirrored": true,
+          "evidence": "output/galley-side-2026-09-12/companions/native.png",
+          "note": "One authored east library item; mirror horizontally for west. Fixed live default untouched."
+        }
+      },
+      "scope_note": "Fixed playable orientation retained. East/west serving companion available as one library asset plus horizontal flip; north kitchen and south serving default unchanged.",
+      "kitchen_companions": {
+        "side": "assets/galley-directional-v1/kitchen-side-review.json",
+        "south": "assets/galley-directional-v1/kitchen-south-review.json",
+        "south_split": "assets/galley-directional-v1/kitchen-south-split-review.json",
+        "scope": "Library companions and alternate host studies; fixed live north kitchen unchanged."
+      },
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "salvage_workshop",
+      "name": "Salvage Workshop",
+      "view": "res://rooms/underwater/salvage-workshop-v1/workshop_view.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://assets/salvage-directional-v1/bench-north-matte.png",
+          "stage": "integrated-native-state-reviewed",
+          "quarter": 0,
+          "note": "Retained north bench moved 31 units toward riser.",
+          "evidence": "assets/salvage-directional-v1/bench-north-matte-review.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-salvage-bench-side.json",
+          "source": "res://assets/salvage-directional-v1/bench-side.png",
+          "stage": "library-installed-native-reviewed",
+          "mirrored": false,
+          "evidence": "output/salvage-side-2026-09-12/companions/native.png",
+          "note": "One authored east library bench, horizontal flip for west; inward vise native-reviewed. Fixed default unchanged."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-salvage-bench-south.json",
+          "source": "res://assets/salvage-directional-v1/bench-south.png",
+          "stage": "candidate-host-native-access-and-state-reviewed",
+          "note": "Split south candidate fits entrance/tote; work-edge routes and direct/retained indicator checks pass. Candidate not selected default; material/owner review open.",
+          "candidate_review": "assets/salvage-directional-v1/south-split-review.json",
+          "evidence": "output/salvage-south-host-2026-09-12/native/runtime.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-salvage-bench-side.json",
+          "source": "res://assets/salvage-directional-v1/bench-side.png",
+          "stage": "library-installed-native-reviewed",
+          "mirrored": true,
+          "evidence": "output/salvage-side-2026-09-12/companions/native.png",
+          "note": "One authored east library bench, horizontal flip for west; inward vise native-reviewed. Fixed default unchanged."
+        }
+      },
+      "scope_note": "Fixed playable orientation preserved. Matte north bench and south tote installed. East/west companions available in library; alternate split south bench host verified but not selected.",
+      "ancillary_assets": [
+        {
+          "source": "res://assets/salvage-directional-v1/tote-south-matte.png",
+          "registration": "rooms/full-wall-v1/registrations/side-salvage-tote-south.json",
+          "stage": "integrated-native-card-and-layout-reviewed",
+          "quarter": 0,
+          "evidence": "assets/salvage-directional-v1/tote-south-matte-review.json"
+        }
+      ],
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "observation_room",
+      "name": "Observation Room",
+      "view": "res://rooms/underwater/observation-room-v1/observation_room_view.gd",
+      "asset": null,
+      "category": "Crew",
+      "directions": {
+        "north": {
+          "registration": "rooms/underwater/observation-room-v1/registration.json",
+          "source": "res://rooms/underwater/observation-room-v1/source-v3.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "note": "Owner revision: source top at y=-258 replaces generic riser entirely; native reviewed. Side banks rejoined."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-observation-shelves-east.json",
+          "source": "res://assets/observation-directional-v1/shelves-east.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-observation-shelves-south.json",
+          "source": "res://assets/observation-directional-v1/shelves-south.png",
+          "stage": "library-installed-native-reviewed",
+          "evidence": "output/observation-south-2026-09-12/companion/native.png",
+          "note": "Library-only overhead shelf, north access edge; south doorway remains open in fixed default."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-observation-shelves-west.json",
+          "source": "res://assets/observation-directional-v1/shelves-west.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0
+        }
+      },
+      "scope_note": "Fixed playable orientation; north window replacement and side banks retained. South shelf companion available in library; default south entrance preserved. Owner side feedback remains open.",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "current_turbine",
+      "name": "Current Turbine",
+      "view": "res://rooms/power-expansion-v1/current_turbine_view.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://rooms/power-expansion-v1/current_turbine.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-current-turbine-east.json",
+          "source": "res://assets/turbine-directional-v3/east-overhead-clean.png",
+          "stage": "integrated-native-temporal-and-route-reviewed",
+          "quarter": 1,
+          "mirrored": false,
+          "evidence": "assets/turbine-directional-v3/east-clean-review.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-current-turbine-south.json",
+          "source": "res://assets/turbine-directional-v1/turbine-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-current-turbine-west.json",
+          "source": "res://assets/turbine-directional-v3/east-overhead-clean.png",
+          "stage": "integrated-native-temporal-and-route-reviewed",
+          "quarter": 3,
+          "mirrored": true,
+          "evidence": "assets/turbine-directional-v3/east-clean-review.json"
+        }
+      },
+      "scope_note": "Owner correction: machinery follows arrow wall in all four rotations. North original, new east/south/west companions; native four-wall review and alignment pass.",
+      "owner_feedback": "Owner dislikes side views; turbine was the most recent explicitly named room, but exact target and objection remain unconfirmed. Previous native review is technical evidence, not owner acceptance.",
+      "side_revision_candidate": {
+        "source": "assets/turbine-directional-v2/turbine-east-readable.png",
+        "native": "output/turbine-readable-2026-09-12/candidate-corrected/current_turbine-q1.png",
+        "stage": "uninstalled-native-reviewed-candidate",
+        "note": "Broader inward intake exposes rotor; user aesthetic feedback pending. Installed arrow-wall routing preserved."
+      },
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "biomass_digester",
+      "name": "Biomass Digester",
+      "view": "res://rooms/full-wall-v1/biomass_digester_view.gd",
+      "asset": "biomass-processing-wall",
+      "category": "Bio",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/biomass-processing-wall.json",
+          "source": "res://assets/room-consistency-v1/biomass-north.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/biomass-directional-2026-09-12/before/runtime.json",
+          "state_evidence": "output/biomass-directional-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-biomass-processing-wall-east.json",
+          "source": "res://assets/room-consistency-v1/biomass-sides.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/biomass-directional-2026-09-12/before/runtime.json",
+          "state_evidence": "output/biomass-directional-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-biomass-processing-wall-south.json",
+          "source": "res://assets/room-consistency-v1/biomass-south.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/biomass-directional-2026-09-12/before/runtime.json",
+          "state_evidence": "output/biomass-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-biomass-processing-wall-west.json",
+          "source": "res://assets/room-consistency-v1/biomass-sides.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/biomass-directional-2026-09-12/before/runtime.json",
+          "state_evidence": "output/biomass-directional-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "heat_recovery",
+      "name": "Heat Recovery Room",
+      "view": "res://rooms/power-expansion-v1/heat_recovery_view.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/heat-recovery.json",
+          "source": "res://assets/heat-recovery-directional-v1/heat-north.png",
+          "stage": "library-installed-native-reviewed",
+          "evidence": "output/heat-north-2026-09-12/companions-final/runtime.json",
+          "note": "Reusable north companion; four-door live room keeps existing south-facing lower-work-area installation."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-heat-recovery-side.json",
+          "source": "res://assets/heat-recovery-directional-v1/heat-side.png",
+          "stage": "library-installed-native-reviewed",
+          "mirrored": false,
+          "evidence": "output/heat-side-2026-09-12/companions/runtime.json",
+          "note": "Single authored east side; west via mirrored registration. Reusable companion, live room retains south skid. Owner side aesthetic feedback open."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-heat-recovery-south.json",
+          "source": "res://assets/heat-recovery-directional-v1/heat-south.png",
+          "stage": "native-reviewed-interior-installation",
+          "quarters": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "note": "Cross-door room uses lower work area, not continuous wall mounting."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-heat-recovery-side.json",
+          "source": "res://assets/heat-recovery-directional-v1/heat-side.png",
+          "stage": "library-installed-native-reviewed",
+          "mirrored": true,
+          "evidence": "output/heat-side-2026-09-12/companions/runtime.json",
+          "note": "Single authored east side; west via mirrored registration. Reusable companion, live room retains south skid. Owner side aesthetic feedback open."
+        }
+      },
+      "scope_note": "North, south and mirrored side companions now available and natively reviewed. Four-door live room retains existing south-facing lower-work-area installation. Owner side aesthetic feedback remains open.",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "airlock",
+      "name": "Diving Airlock",
+      "view": "res://rooms/underwater/airlock-v1/airlock_view.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-suit-storage-north.json",
+          "source": "res://assets/airlock-directional-v1/suit-storage-north-matte.png",
+          "stage": "wall-mounted-shared-wall-native-reviewed",
+          "evidence": "output/airlock-north-mounted-2026-09-12/native/runtime.json",
+          "note": "Exposed top and shared-wall edge use separate projection heights. Native shared-wall Bill q2 passes and reviewed. Exposed support/disabled-riser settings and owner acceptance remain.",
+          "candidate_review": "assets/airlock-directional-v1/suit-storage-north-review.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-suit-storage-side.json",
+          "source": "res://assets/airlock-directional-v1/suit-storage-side-overhead.png",
+          "stage": "integrated-native-service-reviewed-support-polish-pending",
+          "evidence": "output/airlock-side-live-2026-09-12/native/runtime.json",
+          "note": "Inward kit companion installed; Bill native service passes. Support bracket and owner camera acceptance remain. West mirrors east source.",
+          "candidate_review": "assets/airlock-directional-v1/suit-storage-side-review.json",
+          "quarter": 3
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-suit-storage-south-empty-tray.json",
+          "source": "res://assets/airlock-directional-v1/suit-storage-south-empty-tray.png",
+          "stage": "integrated-service-reviewed-owner-review-pending",
+          "note": "South locker q0 and helmet grasp/release reviewed. Native Veld sidebar follow-up passes after testing scroll reachability; see output/airlock-sidebar-check-2026-09-12/validation.log. Shelf polish and owner acceptance remain.",
+          "evidence": "output/airlock-south-locker-live-2026-09-12/final/runtime.json",
+          "quarter": 0
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-suit-storage-side.json",
+          "source": "res://assets/airlock-directional-v1/suit-storage-side-overhead.png",
+          "stage": "integrated-native-service-reviewed-support-polish-pending",
+          "evidence": "output/airlock-side-live-2026-09-12/native/runtime.json",
+          "note": "Inward kit companion installed; Bill native service passes. Support bracket and owner camera acceptance remain. West mirrors east source.",
+          "candidate_review": "assets/airlock-directional-v1/suit-storage-side-review.json",
+          "quarter": 1
+        }
+      },
+      "scope_note": "Existing modular furnishings and rotating chamber inventoried; not absent art. Directional service props remain needed. Preserve separate helmet attachment and functional reachability; earlier south draft remains uninstalled.",
+      "ancillary_assets": [
+        {
+          "source": "res://assets/airlock-directional-v1/check-bench-side.png",
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-check-bench-side.json",
+          "stage": "integrated-native-and-service-reviewed",
+          "evidence": "output/airlock-check-bench-2026-09-12/final/runtime.json",
+          "note": "q1/q3 side benches installed. Locker placement failures resolved; see locker-fit-review.json for exact actor/rotation coverage."
+        },
+        {
+          "source": "res://assets/airlock-directional-v1/reserve-air-side.png",
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-reserve-air-side.json",
+          "stage": "west-installed-east-library-native-reviewed",
+          "quarter": 3,
+          "evidence": "output/airlock-reserve-side-2026-09-12/live/runtime.json",
+          "note": "Reserve-air bank only. West mirrored/inward installed; east library available. Other unresolved furniture directions remain."
+        },
+        {
+          "source": "res://assets/airlock-directional-v1/reserve-air-south.png",
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-reserve-air-south.json",
+          "stage": "integrated-native-reviewed",
+          "quarter": 2,
+          "evidence": "output/airlock-reserve-south-2026-09-12/live/runtime.json",
+          "note": "South reserve-air bank only; see separate check-bench record. Directional suit storage remains pending."
+        },
+        {
+          "source": "res://assets/airlock-directional-v1/check-bench-south.png",
+          "registration": "rooms/full-wall-v1/registrations/side-airlock-check-bench-south.json",
+          "stage": "integrated-native-reviewed",
+          "quarter": 2,
+          "evidence": "output/airlock-bench-south-2026-09-12/live/runtime.json",
+          "note": "South equipment-check bench only; directional suit lockers remain pending."
+        }
+      ],
+      "service_fit_review": "assets/airlock-directional-v1/locker-fit-review.json",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "construction_drone_bay",
+      "name": "Construction Drone Bay",
+      "view": "res://rooms/full-wall-v1/construction_drone_bay_view.gd",
+      "asset": "construction-fabrication-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/construction-fabrication-wall.json",
+          "source": "res://assets/wall-room-rollout-v1/construction-fabrication-wall.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "quarter": 1,
+          "evidence": "assets/construction-directional-v1/remaining-provenance.json",
+          "note": "Existing inward-facing art retained; side banks moved10 units outward to wall contact, all independent props unchanged. North fit reviewed."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-construction-fabrication-wall-east.json",
+          "source": "res://assets/wall-room-rollout-v1/construction_drone_bay.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "quarter": 2,
+          "evidence": "assets/construction-directional-v1/remaining-provenance.json",
+          "note": "Existing inward-facing art retained; side banks moved10 units outward to wall contact, all independent props unchanged. North fit reviewed."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-construction-fabrication-wall-south.json",
+          "source": "res://assets/construction-directional-v1/construction-south.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 3,
+          "evidence": "assets/construction-directional-v1/provenance.json",
+          "note": "New overhead fabrication bank; original drone/hatch/bench retained at original sizes and relocated north. Other rotations unchanged; deployment visuals verified."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-construction-fabrication-wall-west.json",
+          "source": "res://assets/wall-room-rollout-v1/construction_drone_bay.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "quarter": 0,
+          "evidence": "assets/construction-directional-v1/remaining-provenance.json",
+          "note": "Existing inward-facing art retained; side banks moved10 units outward to wall contact, all independent props unchanged. North fit reviewed."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "brine_core",
+      "name": "BRINE Core",
+      "view": "res://rooms/underwater/brine-core/brine_core_view.gd",
+      "asset": null,
+      "category": "Core",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": null,
+          "stage": "existing-live-corner-inventoried-facing-review-pending",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/brine-corner-service-nw.json",
+            "rooms/full-wall-v1/registrations/brine-corner-analysis-ne.json"
+          ],
+          "sources": [
+            "res://assets/brine-core-directional-v1/corner-nw-inward.png",
+            "res://assets/brine-core-directional-v1/corner-ne-inward.png"
+          ],
+          "note": "Both corner sources repainted during side-access repairs; north functional inventories retained, final north state/camera review pending."
+        },
+        "east": {
+          "registration": null,
+          "source": "res://assets/brine-core-directional-v1/corner-ne-inward.png",
+          "stage": "integrated-facing-correction-state-review-pending",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/brine-corner-analysis-ne.json"
+          ],
+          "sources": [
+            "res://assets/brine-core-directional-v1/corner-ne-inward.png"
+          ],
+          "note": "NE side access corrected with two four-roll cassettes and both side consoles retained. Painted display states and owner camera acceptance pending.",
+          "evidence": "output/brine-ne-side-2026-09-12/native/runtime.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-brine-memory-service-south.json",
+          "source": "res://assets/brine-core-directional-v1/brine-service-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/brine-core-directional-2026-09-12/after/runtime.json",
+          "note": "New inward memory-service bank; opposite architect pod in lower quadrants. Original core/corners unchanged; card refreshed."
+        },
+        "west": {
+          "registration": null,
+          "source": "res://assets/brine-core-directional-v1/corner-nw-inward.png",
+          "stage": "integrated-facing-correction-state-review-pending",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/brine-corner-service-nw.json"
+          ],
+          "sources": [
+            "res://assets/brine-core-directional-v1/corner-nw-inward.png"
+          ],
+          "note": "NW west-arm access corrected inward with six screens and two bottles retained. Painted operation traces and owner camera review remain pending.",
+          "evidence": "output/brine-corner-side-2026-09-12/after/runtime.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "nw_state_review": "assets/brine-core-directional-v1/corner-nw-idle-review.json",
+      "ne_state_review": "assets/brine-core-directional-v1/corner-ne-idle-review.json",
+      "south_service_idle_review": "assets/brine-core-directional-v1/service-south-idle-review.json",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "solar_array",
+      "name": "Solar Array",
+      "view": "res://rooms/full-wall-v1/solar_array_view.gd",
+      "asset": "thermal-control-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/thermal-control-wall.json",
+          "source": "res://assets/material-polish-v3/thermal-north.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/solar-directional-2026-09-12/seated/runtime.json",
+          "state_evidence": "output/solar-directional-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-thermal-control-wall-east.json",
+          "source": "res://assets/solar-directional-v1/thermal-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/solar-directional-2026-09-12/seated/runtime.json",
+          "state_evidence": "output/solar-directional-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-thermal-control-wall-south.json",
+          "source": "res://assets/room-facing-repair-v2/thermal-control-wall-south.png",
+          "stage": "owner-accepted",
+          "state_evidence": "output/solar-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-thermal-control-wall-west.json",
+          "source": "res://assets/solar-directional-v1/thermal-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/solar-directional-2026-09-12/seated/runtime.json",
+          "state_evidence": "output/solar-directional-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "reactor",
+      "name": "Reactor",
+      "view": "res://rooms/whole-room/reactor_view.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/side-reactor-service-north.json",
+          "source": "res://assets/reactor-directional-v1/service-north.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 2,
+          "evidence": "output/reactor-north-2026-09-12/live/runtime.json",
+          "note": "North service companion selected in q2 in place of east station; controls south/inward. Native fit reviewed; owner camera acceptance pending."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-reactor-service-side.json",
+          "source": "res://assets/reactor-directional-v1/service-side.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/reactor-side-live-2026-09-12/native/runtime.json",
+          "note": "Side service station selected east q0/q3 and mirrored west q1; q2 now selects north companion. Original machinery preserved."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-reactor-service-south.json",
+          "source": "res://assets/reactor-directional-v1/reactor-south-v1.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/reactor-directional-2026-09-12/after/runtime.json",
+          "note": "New short service station beside south door in every rotation; q0 southwest, others southeast. Existing machinery preserved; card refreshed."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-reactor-service-side.json",
+          "source": "res://assets/reactor-directional-v1/service-side.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/reactor-side-live-2026-09-12/native/runtime.json",
+          "note": "Side service station selected east q0/q3 and mirrored west q1; q2 now selects north companion. Original machinery preserved."
+        }
+      },
+      "scope_note": "Service companions available in all four compass directions. Live north q2, east q0/q3, west q1, south all quarters. Owner camera acceptance remains pending.",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "battery_array",
+      "name": "Battery Array",
+      "view": "res://rooms/full-wall-v1/battery_array_view.gd",
+      "asset": "battery-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/battery-wall.json",
+          "source": "res://assets/wall-room-rollout-v1/battery-split-north.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/battery-wall-north-cells.json",
+            "rooms/full-wall-v1/registrations/battery-wall-north-distribution.json"
+          ],
+          "sources": [
+            "res://assets/wall-room-rollout-v1/battery-split-north.png"
+          ],
+          "note": "Native reviewed, 22-unit art-only rise into riser; collision footprint unchanged.",
+          "evidence": "assets/battery-directional-v1/remaining-directions-review.json"
+        },
+        "east": {
+          "registration": null,
+          "source": "res://assets/battery-directional-v1/side-overhead.png",
+          "stage": "integrated-native-layout-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/battery-wall-east-cells.json",
+            "rooms/full-wall-v1/registrations/battery-wall-east-distribution.json"
+          ],
+          "sources": [
+            "res://assets/battery-directional-v1/side-overhead.png"
+          ],
+          "note": "Low overhead companion; four cases, three distribution units, inward controls and outer cabling. Preserved placement metadata.",
+          "evidence": "assets/battery-directional-v1/side-overhead-review.json",
+          "mirrored": false
+        },
+        "south": {
+          "registration": null,
+          "source": "res://assets/battery-directional-v1/battery-south.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/battery-wall-south-cells.json",
+            "rooms/full-wall-v1/registrations/battery-wall-south-distribution.json"
+          ],
+          "sources": [
+            "res://assets/battery-directional-v1/battery-south.png"
+          ],
+          "note": "Existing split-section sources located from family registrations; existence does not establish direction or native acceptance.",
+          "evidence": "output/battery-directional-2026-09-12/comparison.json",
+          "notes": "Four closed battery modules and three distribution units overhead; inward service controls, outer cable runs. Native q2 only bank pixels change; inventory and bounds unchanged."
+        },
+        "west": {
+          "registration": null,
+          "source": "res://assets/battery-directional-v1/side-overhead.png",
+          "stage": "integrated-native-layout-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/battery-wall-west-cells.json",
+            "rooms/full-wall-v1/registrations/battery-wall-west-distribution.json"
+          ],
+          "sources": [
+            "res://assets/battery-directional-v1/side-overhead.png"
+          ],
+          "note": "Low overhead companion; four cases, three distribution units, inward controls and outer cabling. Preserved placement metadata.",
+          "evidence": "assets/battery-directional-v1/side-overhead-review.json",
+          "mirrored": true
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "mining_drone_bay",
+      "name": "Mining Drone Bay",
+      "view": "res://rooms/full-wall-v1/mining_drone_bay_view.gd",
+      "asset": "drone-service-wall",
+      "category": "Drone",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/drone-service-wall.json",
+          "source": "res://assets/mining-directional-v1/mining-north.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/mining-directional-2026-09-12/remaining-final/runtime.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-drone-service-wall-east.json",
+          "source": "res://assets/mining-directional-v1/mining-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/mining-directional-2026-09-12/remaining-final/runtime.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-drone-service-wall-south.json",
+          "source": "res://assets/mining-directional-v1/mining-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/mining-directional-2026-09-12/verified/runtime.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-drone-service-wall-west.json",
+          "source": "res://assets/mining-directional-v1/mining-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/mining-directional-2026-09-12/remaining-final/runtime.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "salvage_drone_bay",
+      "name": "Salvage Drone Bay",
+      "view": "res://rooms/full-wall-v1/salvage_drone_bay_view.gd",
+      "asset": "salvage-disassembly-wall",
+      "category": "Drone",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/salvage-disassembly-wall.json",
+          "source": "res://assets/room-consistency-v1/salvage-north.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "quarter": 1,
+          "evidence": "assets/salvage-drone-directional-v1/remaining-provenance.json",
+          "note": "Inward cabinet art retained; side mounting corrected10 units outward with dimensions/fleet props unchanged. North native review passed."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-salvage-disassembly-wall-east.json",
+          "source": "res://assets/room-consistency-v1/salvage-sides.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "quarter": 2,
+          "evidence": "assets/salvage-drone-directional-v1/remaining-provenance.json",
+          "note": "Inward cabinet art retained; side mounting corrected10 units outward with dimensions/fleet props unchanged. North native review passed."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-salvage-disassembly-wall-south.json",
+          "source": "res://assets/salvage-drone-directional-v1/salvage-south.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 3,
+          "evidence": "assets/salvage-drone-directional-v1/provenance.json",
+          "note": "New overhead disassembly bank. Drone/hatch/winch retained at original sizes, relocated north; deployment and winch effects verified. Other rotations unchanged."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-salvage-disassembly-wall-west.json",
+          "source": "res://assets/room-consistency-v1/salvage-sides.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "quarter": 0,
+          "evidence": "assets/salvage-drone-directional-v1/remaining-provenance.json",
+          "note": "Inward cabinet art retained; side mounting corrected10 units outward with dimensions/fleet props unchanged. North native review passed."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "gravity_loom",
+      "name": "Gravity Loom",
+      "view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd",
+      "asset": null,
+      "category": "Anomaly",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://assets/gravity-directional-v1/gravity-north-pair.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/side-gravity-weights-north.json",
+            "rooms/full-wall-v1/registrations/side-gravity-control-north.json"
+          ],
+          "quarter": 2,
+          "evidence": "output/gravity-north-2026-09-12/native/runtime.json",
+          "note": "North weights/control pair installed q2; inward access, preserved inventory and central apparatus. Owner camera acceptance pending."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-gravity-weights-side.json",
+          "source": "res://assets/gravity-directional-v1/weights-side.png",
+          "stage": "weights-and-control-integrated-native-reviewed",
+          "evidence": "output/gravity-control-side-2026-09-12/native/runtime.json",
+          "note": "Weights/control pair installed on opposite sides in q1/q3, inward access reviewed. Owner camera acceptance remains pending.",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/side-gravity-weights-side.json",
+            "rooms/full-wall-v1/registrations/side-gravity-control-side.json"
+          ],
+          "sources": [
+            "res://assets/gravity-directional-v1/weights-side.png",
+            "res://assets/gravity-directional-v1/control-side.png"
+          ]
+        },
+        "south": {
+          "registration": null,
+          "source": "res://assets/gravity-directional-v1/gravity-south-pair.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/side-gravity-weights-south.json",
+            "rooms/full-wall-v1/registrations/side-gravity-control-south.json"
+          ],
+          "evidence": "output/gravity-directional-2026-09-12/after/runtime.json",
+          "note": "South weights/control pair retained q0. q1/q3 use side pair; q2 uses north pair."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-gravity-weights-side.json",
+          "source": "res://assets/gravity-directional-v1/weights-side.png",
+          "stage": "weights-and-control-integrated-native-reviewed",
+          "evidence": "output/gravity-control-side-2026-09-12/native/runtime.json",
+          "note": "Weights/control pair installed on opposite sides in q1/q3, inward access reviewed. Owner camera acceptance remains pending.",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/side-gravity-weights-side.json",
+            "rooms/full-wall-v1/registrations/side-gravity-control-side.json"
+          ],
+          "sources": [
+            "res://assets/gravity-directional-v1/weights-side.png",
+            "res://assets/gravity-directional-v1/control-side.png"
+          ]
+        }
+      },
+      "scope_note": "Calibration/control companions available in all compass directions: south q0, paired east/west q1/q3, north q2. Owner camera acceptance remains open.",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "tidal_condenser",
+      "name": "Tidal Condenser",
+      "view": "res://rooms/full-wall-v1/tidal_condenser_view.gd",
+      "asset": "tidal-condensation-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/tidal-condensation-wall.json",
+          "source": "res://assets/material-polish-v1/tidal-north.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/tidal-directional-2026-09-12/final/runtime.json",
+          "state_evidence": "output/tidal-directional-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-tidal-condensation-wall-east.json",
+          "source": "res://assets/tidal-directional-v1/tidal-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/tidal-directional-2026-09-12/final/runtime.json",
+          "state_evidence": "output/tidal-directional-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-tidal-condensation-wall-south.json",
+          "source": "res://assets/room-facing-repair-v1/tidal-south-topdown-v3.png",
+          "stage": "owner-accepted",
+          "state_evidence": "output/tidal-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-tidal-condensation-wall-west.json",
+          "source": "res://assets/tidal-directional-v1/tidal-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/tidal-directional-2026-09-12/final/runtime.json",
+          "state_evidence": "output/tidal-directional-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "mycelium_nursery",
+      "name": "Mycelium Nursery",
+      "view": "res://rooms/full-wall-v1/mycelium_nursery_view.gd",
+      "asset": "mycelium-cultivation-wall",
+      "category": "Bio",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/mycelium-cultivation-wall.json",
+          "source": "res://assets/mycelium-directional-v1/mycelium-north-idle.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/mycelium-north-2026-09-12/after/runtime.json",
+          "state_evidence": "output/mycelium-north-2026-09-12/final-state-checks.json",
+          "note": "Dry static art plus live north nozzle pulses. Surviving bench/filter effects verified in all orientations; off renders unchanged."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-east.json",
+          "source": "res://assets/mycelium-directional-v1/mycelium-sides.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/mycelium-side-review-2026-09-12/after/runtime.json",
+          "note": "Inward lower cabinet handles and tools corrected; native side and retained effects reviewed. Owner perspective acceptance pending."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-south.json",
+          "source": "res://assets/mycelium-directional-v1/mycelium-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/mycelium-directional-2026-09-12/verified/runtime.json",
+          "note": "Four populated trays, closed nutrient reservoir, inward service tabs. Bank ends y184; only bank pixels change, inventory and other rotations unchanged."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-mycelium-cultivation-wall-west.json",
+          "source": "res://assets/mycelium-directional-v1/mycelium-sides.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/mycelium-side-review-2026-09-12/after/runtime.json",
+          "note": "Inward lower cabinet handles and tools corrected; native side and retained effects reviewed. Owner perspective acceptance pending."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "hydroponics_bay",
+      "name": "Hydroponics Bay",
+      "view": "res://rooms/full-wall-v1/hydroponics_bay_view.gd",
+      "asset": "hydroponics-wall",
+      "category": "Bio",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/hydroponics-wall.json",
+          "source": "res://assets/wall-room-rollout-v1/hydro-split-north.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/hydroponics-wall-north-crops.json",
+            "rooms/full-wall-v1/registrations/hydroponics-wall-north-nursery.json"
+          ],
+          "sources": [
+            "res://assets/wall-room-rollout-v1/hydro-split-north.png"
+          ],
+          "note": "Source retained; native reviewed with -22 art-only riser overlap. Inward gauges/caps, three mature channels and two seedling trays.",
+          "evidence": "assets/hydroponics-directional-v1/remaining-directions-review.json"
+        },
+        "east": {
+          "registration": null,
+          "source": null,
+          "stage": "existing-art-native-reviewed-retained",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/hydroponics-wall-east-crops.json",
+            "rooms/full-wall-v1/registrations/hydroponics-wall-east-nursery.json"
+          ],
+          "sources": [
+            "res://assets/wall-room-rollout-v1/hydro-split-sides.png"
+          ],
+          "note": "Source/native reviewed: controls and nutrient service toward left room interior.",
+          "evidence": "assets/hydroponics-directional-v1/remaining-directions-review.json"
+        },
+        "south": {
+          "registration": null,
+          "source": "res://assets/hydroponics-directional-v1/hydroponics-south.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/hydroponics-wall-south-crops.json",
+            "rooms/full-wall-v1/registrations/hydroponics-wall-south-nursery.json"
+          ],
+          "sources": [
+            "res://assets/hydroponics-directional-v1/hydroponics-south.png"
+          ],
+          "note": "Inward nutrient service caps; populated crop/seedling channels retained. Existing frames, all prop IDs and other rotations unchanged.",
+          "evidence": "output/hydroponics-directional-2026-09-12/after/runtime.json"
+        },
+        "west": {
+          "registration": null,
+          "source": null,
+          "stage": "existing-art-native-reviewed-retained",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/hydroponics-wall-west-crops.json",
+            "rooms/full-wall-v1/registrations/hydroponics-wall-west-nursery.json"
+          ],
+          "sources": [
+            "res://assets/wall-room-rollout-v1/hydro-split-sides.png"
+          ],
+          "note": "Source/native reviewed: controls and nutrient service toward right room interior.",
+          "evidence": "assets/hydroponics-directional-v1/remaining-directions-review.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "life_support",
+      "name": "Life Support",
+      "view": "res://rooms/full-wall-v1/life_support_view.gd",
+      "asset": "life-support-wall",
+      "category": "Bio",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/life-support-wall.json",
+          "source": "res://assets/material-polish-v2/life-north.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/life-support-wall-north-fan.json",
+            "rooms/full-wall-v1/registrations/life-support-wall-north-filter.json"
+          ],
+          "sources": [
+            "res://assets/material-polish-v2/life-north.png"
+          ],
+          "note": "Existing source retained; -22 art-only riser overlap reviewed natively. Inward fan controls and filter gauges.",
+          "evidence": "assets/life-support-directional-v1/remaining-directions-review.json"
+        },
+        "east": {
+          "registration": null,
+          "source": null,
+          "stage": "existing-art-native-reviewed-retained",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/life-support-wall-east-fan.json",
+            "rooms/full-wall-v1/registrations/life-support-wall-east-filter.json"
+          ],
+          "sources": [
+            "res://assets/material-polish-v2/life-sides.png"
+          ],
+          "note": "Existing source/native reviewed: controls and filter service toward left room interior, fixed pipe on outer right.",
+          "evidence": "assets/life-support-directional-v1/remaining-directions-review.json"
+        },
+        "south": {
+          "registration": null,
+          "source": "res://assets/life-support-directional-v1/life-south.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/life-support-wall-south-fan.json",
+            "rooms/full-wall-v1/registrations/life-support-wall-south-filter.json"
+          ],
+          "sources": [
+            "res://assets/life-support-directional-v1/life-south.png"
+          ],
+          "note": "Three closed overhead filter lids and fan tabs inward. Prior frames preserved; only south-bank pixels change, existing equipment and other rotations unchanged.",
+          "evidence": "output/life-support-directional-2026-09-12/after/runtime.json"
+        },
+        "west": {
+          "registration": null,
+          "source": null,
+          "stage": "existing-art-native-reviewed-retained",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/life-support-wall-west-fan.json",
+            "rooms/full-wall-v1/registrations/life-support-wall-west-filter.json"
+          ],
+          "sources": [
+            "res://assets/material-polish-v2/life-sides.png"
+          ],
+          "note": "Existing source/native reviewed: controls and filter service toward right room interior, fixed pipe on outer left.",
+          "evidence": "assets/life-support-directional-v1/remaining-directions-review.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "crew_hab",
+      "name": "Crew Hab",
+      "view": "res://rooms/full-wall-v1/crew_hab_view.gd",
+      "asset": "crew-hab-berth-wall",
+      "category": "Crew",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/crew-hab-berth-wall.json",
+          "source": "res://assets/hab-autumn-v1/horizontal.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/crew-hab-directional-2026-09-12/east-final/runtime.json",
+          "state_evidence": "output/crew-hab-directional-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-crew-hab-berth-wall-east.json",
+          "source": "res://assets/crew-hab-directional-v1/east-matte-idle.png",
+          "stage": "integrated-native-state-layout-reviewed",
+          "evidence": "assets/crew-hab-directional-v1/east-matte-idle-review.json",
+          "state_evidence": "output/hab-east-matte-2026-09-12/checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-crew-hab-berth-wall-south.json",
+          "source": "res://assets/room-facing-repair-v4/crew-hab-berth-wall-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2,
+          "state_evidence": "output/crew-hab-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-crew-hab-berth-wall-west.json",
+          "source": "res://assets/crew-hab-directional-v1/west-matte-idle.png",
+          "stage": "integrated-native-state-layout-reviewed",
+          "evidence": "assets/crew-hab-directional-v1/west-matte-idle-review.json",
+          "state_evidence": "output/hab-west-matte-2026-09-12/checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "research_lab",
+      "name": "Research Lab",
+      "view": "res://rooms/full-wall-v1/research_lab_view.gd",
+      "asset": "research-analysis-wall",
+      "category": "Science",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/research-analysis-wall.json",
+          "source": "res://assets/research-directional-v1/research-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/research-remaining-2026-09-12/north-final/runtime.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-research-analysis-wall-east.json",
+          "source": "res://assets/research-directional-v1/research-east.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1,
+          "evidence": "output/research-remaining-2026-09-12/sides-final/runtime.json",
+          "state_evidence": "output/research-remaining-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-research-analysis-wall-south.json",
+          "source": "res://assets/research-directional-v1/research-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-research-analysis-wall-west.json",
+          "source": "res://assets/research-directional-v1/research-west.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 3,
+          "evidence": "output/research-remaining-2026-09-12/sides-final/runtime.json",
+          "state_evidence": "output/research-remaining-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "cryo_chamber",
+      "name": "Cryo Chamber",
+      "view": "res://rooms/full-wall-v1/cryo_chamber_view.gd",
+      "asset": "cryo-support-wall",
+      "category": "Medical",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/cryo-support-wall.json",
+          "source": "res://assets/cryo-machinery-v1/cryo-machinery.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "quarter": 1,
+          "evidence": "assets/cryo-directional-v1/remaining-provenance.json",
+          "note": "North retained after native review; side terminal controls/vessel catches/sample tabs corrected inward. All bounds unchanged."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-east.json",
+          "source": "res://assets/cryo-directional-v1/cryo-sides.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 2,
+          "evidence": "assets/cryo-directional-v1/remaining-provenance.json",
+          "note": "North retained after native review; side terminal controls/vessel catches/sample tabs corrected inward. All bounds unchanged."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-south.json",
+          "source": "res://assets/cryo-directional-v1/cryo-south.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 3,
+          "evidence": "assets/cryo-directional-v1/provenance.json",
+          "note": "New south support machinery. Two pods and compressor retained at original sizes, relocated north; automatic console duplicate suppressed. Other rotations unchanged."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-west.json",
+          "source": "res://assets/cryo-directional-v1/cryo-sides.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 0,
+          "evidence": "assets/cryo-directional-v1/remaining-provenance.json",
+          "note": "North retained after native review; side terminal controls/vessel catches/sample tabs corrected inward. All bounds unchanged."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "clone_lab",
+      "name": "Clone Lab",
+      "view": "res://rooms/full-wall-v1/clone_lab_view.gd",
+      "asset": "clone-growth-wall",
+      "category": "Medical",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/clone-growth-wall.json",
+          "source": "res://assets/clone-directional-v1/clone-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/clone-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/clone-remaining-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-clone-growth-wall-east.json",
+          "source": "res://assets/clone-directional-v1/clone-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1,
+          "evidence": "output/clone-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/clone-remaining-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-clone-growth-wall-south.json",
+          "source": "res://assets/room-facing-repair-v3/clone-growth-wall-south.png",
+          "stage": "native-reviewed-default-installed"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-clone-growth-wall-west.json",
+          "source": "res://assets/clone-directional-v1/clone-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 3,
+          "evidence": "output/clone-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/clone-remaining-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "quarantine_cell",
+      "name": "Quarantine Cell",
+      "view": "res://rooms/full-wall-v1/quarantine_cell_view.gd",
+      "asset": "quarantine-specimen-wall",
+      "category": "Security",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/quarantine-specimen-wall.json",
+          "source": "res://assets/quarantine-directional-v1/quarantine-north.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/quarantine-directional-2026-09-12/north-final/runtime.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-quarantine-specimen-wall-east.json",
+          "source": "res://assets/quarantine-directional-v1/quarantine-east-source.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/quarantine-directional-2026-09-12/sides-final/runtime.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-quarantine-specimen-wall-south.json",
+          "source": "res://assets/quarantine-directional-v1/quarantine-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/quarantine-directional-2026-09-12/final/runtime.json",
+          "state_evidence": "output/quarantine-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-quarantine-specimen-wall-west.json",
+          "source": "res://assets/quarantine-directional-v1/quarantine-west-source.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/quarantine-directional-2026-09-12/sides-final/runtime.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "data_archive",
+      "name": "Data Archive",
+      "view": "res://rooms/full-wall-v1/data_archive_view.gd",
+      "asset": "archive-wall",
+      "category": "Science",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/archive-wall.json",
+          "source": "res://assets/archive-wall-v1/north.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/archive-wall-north-cartridges.json",
+            "rooms/full-wall-v1/registrations/archive-wall-north-index.json"
+          ],
+          "sources": [
+            "res://assets/archive-wall-v1/north.png"
+          ],
+          "note": "Existing source retained; native reviewed with -22 art-only riser overlap. Spacebar and cartridge pulls inward.",
+          "evidence": "assets/archive-directional-v1/remaining-directions-review.json"
+        },
+        "east": {
+          "registration": null,
+          "source": "res://assets/archive-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/archive-wall-east-cartridges.json",
+            "rooms/full-wall-v1/registrations/archive-wall-east-index.json"
+          ],
+          "sources": [
+            "res://assets/archive-directional-v1/side-overhead.png"
+          ],
+          "note": "Low overhead drawers and indexing desk; inward controls, operating-only telemetry. Baseline placement metadata preserved.",
+          "evidence": "assets/archive-directional-v1/side-overhead-review.json",
+          "mirrored": false
+        },
+        "south": {
+          "registration": null,
+          "source": "res://assets/archive-directional-v1/archive-south.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/archive-wall-south-cartridges.json",
+            "rooms/full-wall-v1/registrations/archive-wall-south-index.json"
+          ],
+          "sources": [
+            "res://assets/archive-directional-v1/archive-south.png"
+          ],
+          "note": "Native south reviewed: inward keyboard spacebar and corrected reader access. All prop inventory/bounds preserved, other rotations RGB identical.",
+          "evidence": "output/archive-directional-2026-09-12/comparison.json"
+        },
+        "west": {
+          "registration": null,
+          "source": "res://assets/archive-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/archive-wall-west-cartridges.json",
+            "rooms/full-wall-v1/registrations/archive-wall-west-index.json"
+          ],
+          "sources": [
+            "res://assets/archive-directional-v1/side-overhead.png"
+          ],
+          "note": "Low overhead drawers and indexing desk; inward controls, operating-only telemetry. Baseline placement metadata preserved.",
+          "evidence": "assets/archive-directional-v1/side-overhead-review.json",
+          "mirrored": true
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "ore_refinery",
+      "name": "Ore Refinery",
+      "view": "res://rooms/full-wall-v1/ore_refinery_view.gd",
+      "asset": "ore-refinery-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/ore-refinery-wall.json",
+          "source": "res://assets/refinery-directional-v1/refinery-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1,
+          "evidence": "output/refinery-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/refinery-remaining-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-ore-refinery-wall-east.json",
+          "source": "res://assets/refinery-directional-v1/refinery-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2,
+          "evidence": "output/refinery-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/refinery-remaining-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-ore-refinery-wall-south.json",
+          "source": "res://assets/refinery-directional-v1/refinery-south.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 3,
+          "note": "New overhead companion installed q3; crusher/hopper retained at same size and relocated north. Other rotations unchanged.",
+          "evidence": "output\\refinery-directional-2026-09-12\\installed-comparison.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-ore-refinery-wall-west.json",
+          "source": "res://assets/refinery-directional-v1/refinery-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/refinery-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/refinery-remaining-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "storage_bay",
+      "name": "Storage Bay",
+      "view": "res://rooms/full-wall-v1/storage_bay_view.gd",
+      "asset": "storage-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/storage-wall.json",
+          "source": "res://assets/wall-room-rollout-v1/storage-split-north.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/storage-wall-north-cargo.json",
+            "rooms/full-wall-v1/registrations/storage-wall-north-inventory.json"
+          ],
+          "sources": [
+            "res://assets/wall-room-rollout-v1/storage-split-north.png"
+          ],
+          "note": "Existing source retained; -22 art-only riser overlap reviewed. Handles and inventory controls toward room.",
+          "evidence": "assets/storage-directional-v1/remaining-directions-review.json"
+        },
+        "east": {
+          "registration": null,
+          "source": "res://assets/storage-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/storage-wall-east-cargo.json",
+            "rooms/full-wall-v1/registrations/storage-wall-east-inventory.json"
+          ],
+          "sources": [
+            "res://assets/storage-directional-v1/side-overhead.png"
+          ],
+          "note": "Low overhead cargo/inventory platforms; inward handles, releases and controls. Operating-only amber console; baseline placement metadata preserved.",
+          "evidence": "assets/storage-directional-v1/side-overhead-review.json",
+          "mirrored": false
+        },
+        "south": {
+          "registration": null,
+          "source": null,
+          "stage": "existing-art-native-reviewed-retained",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/storage-wall-south-cargo.json",
+            "rooms/full-wall-v1/registrations/storage-wall-south-inventory.json"
+          ],
+          "sources": [
+            "res://assets/wall-room-rollout-v1/storage-split-south.png"
+          ],
+          "note": "Existing overhead art retained: all crate handles and inventory controls face inward. Native q2 reviewed; cargo/inventory banks at south edge with 96-unit doorway gap. Separate lift and crates present.",
+          "evidence": "output/storage-directional-2026-09-12/before/runtime.json"
+        },
+        "west": {
+          "registration": null,
+          "source": "res://assets/storage-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/storage-wall-west-cargo.json",
+            "rooms/full-wall-v1/registrations/storage-wall-west-inventory.json"
+          ],
+          "sources": [
+            "res://assets/storage-directional-v1/side-overhead.png"
+          ],
+          "note": "Low overhead cargo/inventory platforms; inward handles, releases and controls. Operating-only amber console; baseline placement metadata preserved.",
+          "evidence": "assets/storage-directional-v1/side-overhead-review.json",
+          "mirrored": true
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "med_bay",
+      "name": "Med Bay",
+      "view": "res://rooms/full-wall-v1/med_bay_view.gd",
+      "asset": "medical-treatment-wall",
+      "category": "Medical",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/medical-treatment-wall.json",
+          "source": "res://assets/med-bay-directional-v1/treatment-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/med-bay-remaining-2026-09-12/west-fit-check/runtime.json",
+          "state_evidence": "output/med-bay-remaining-2026-09-12/corrected-state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-east.json",
+          "source": "res://assets/med-bay-directional-v1/treatment-sides.png",
+          "stage": "integrated-owner-side-review-pending",
+          "quarter": 1,
+          "evidence": "output/med-bay-remaining-2026-09-12/west-fit-check/runtime.json",
+          "state_evidence": "output/med-bay-remaining-2026-09-12/corrected-state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-south.json",
+          "source": "res://assets/room-facing-repair-v3/medical-treatment-wall-south.png",
+          "stage": "native-reviewed-default-installed"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-treatment-wall-west.json",
+          "source": "res://assets/med-bay-directional-v1/treatment-sides.png",
+          "stage": "integrated-owner-side-review-pending",
+          "quarter": 3,
+          "evidence": "output/med-bay-remaining-2026-09-12/west-fit-check/runtime.json",
+          "note": "Original inventory restored; corrected native powered frame reviewed and temporal effects verified. Side visual feedback unresolved.",
+          "state_evidence": "output/med-bay-remaining-2026-09-12/corrected-state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "biodome",
+      "name": "Biodome",
+      "view": "res://rooms/full-wall-v1/biodome_view.gd",
+      "asset": "biodome-habitat-wall",
+      "category": "Bio",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/biodome-habitat-wall.json",
+          "source": "res://assets/biodome-directional-v1/biodome-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1,
+          "evidence": "output/biodome-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/biodome-remaining-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-biodome-habitat-wall-east.json",
+          "source": "res://assets/biodome-directional-v1/biodome-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2,
+          "evidence": "output/biodome-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/biodome-remaining-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-biodome-habitat-wall-south.json",
+          "source": "res://assets/biodome-directional-v1/biodome-south.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 3,
+          "note": "New overhead habitat companion installed q3. Separate tree/aquatic units preserved and relocated north; other rotations unchanged.",
+          "evidence": "assets/biodome-directional-v1/provenance.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-biodome-habitat-wall-west.json",
+          "source": "res://assets/biodome-directional-v1/biodome-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/biodome-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/biodome-remaining-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "xeno_lab",
+      "name": "Xeno Lab",
+      "view": "res://rooms/full-wall-v1/xeno_lab_view.gd",
+      "asset": "xeno-containment-wall",
+      "category": "Anomaly",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/xeno-containment-wall.json",
+          "source": "res://assets/xeno-directional-v1/xeno-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/xeno-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/xeno-remaining-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-xeno-containment-wall-east.json",
+          "source": "res://assets/xeno-directional-v1/xeno-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1,
+          "evidence": "output/xeno-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/xeno-remaining-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-xeno-containment-wall-south.json",
+          "source": "res://assets/xeno-directional-v1/xeno-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-xeno-containment-wall-west.json",
+          "source": "res://assets/xeno-directional-v1/xeno-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 3,
+          "evidence": "output/xeno-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/xeno-remaining-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "anomaly_lab",
+      "name": "Anomaly Lab",
+      "view": "res://rooms/full-wall-v1/anomaly_lab_view.gd",
+      "asset": "anomaly-containment-wall",
+      "category": "Anomaly",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/anomaly-containment-wall.json",
+          "source": "res://assets/wall-room-rollout-v1/anomaly-containment-wall.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/anomaly-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/anomaly-remaining-2026-09-12/state-checks.json",
+          "note": "Existing north retained after native facing/material review."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-anomaly-containment-wall-east.json",
+          "source": "res://assets/anomaly-directional-v1/anomaly-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1,
+          "evidence": "output/anomaly-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/anomaly-remaining-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-anomaly-containment-wall-south.json",
+          "source": "res://assets/anomaly-directional-v1/anomaly-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/anomaly-directional-2026-09-12/verified/runtime.json",
+          "note": "Overhead closed vessels and inward microscope; bank ends y184. Separate functional platform retained. Other rotations unchanged."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-anomaly-containment-wall-west.json",
+          "source": "res://assets/anomaly-directional-v1/anomaly-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 3,
+          "evidence": "output/anomaly-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/anomaly-remaining-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "bio_lab",
+      "name": "Bio Lab",
+      "view": "res://rooms/full-wall-v1/bio_lab_view.gd",
+      "asset": "bio-culture-wall",
+      "category": "Bio",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/bio-culture-wall.json",
+          "source": "res://assets/bio-directional-v1/bio-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/bio-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/bio-remaining-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-bio-culture-wall-east.json",
+          "source": "res://assets/bio-directional-v1/bio-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1,
+          "evidence": "output/bio-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/bio-remaining-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-bio-culture-wall-south.json",
+          "source": "res://assets/room-facing-repair-v4/bio-culture-wall-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-bio-culture-wall-west.json",
+          "source": "res://assets/bio-directional-v1/bio-sides.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 3,
+          "evidence": "output/bio-remaining-2026-09-12/final/runtime.json",
+          "state_evidence": "output/bio-remaining-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "command_center",
+      "name": "Command Center",
+      "view": "res://rooms/full-wall-v1/command_center_view.gd",
+      "asset": "command-wall",
+      "category": "Core",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://assets/command-directional-v1/command-north.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/command-wall-north-comms.json",
+            "rooms/full-wall-v1/registrations/command-wall-north-operations.json"
+          ],
+          "sources": [
+            "res://assets/command-directional-v1/command-north.png"
+          ],
+          "note": "Matte bronze/red revision and -22 riser seating. Native/card and localized display animation reviewed; collision unchanged.",
+          "evidence": "assets/command-directional-v1/north-provenance.json"
+        },
+        "east": {
+          "registration": null,
+          "source": "res://assets/command-directional-v1/command-sides.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/command-wall-east-comms.json",
+            "rooms/full-wall-v1/registrations/command-wall-east-operations.json"
+          ],
+          "sources": [
+            "res://assets/command-directional-v1/command-sides.png"
+          ],
+          "note": "Matte bronze/red revision with inward control strips retained. Native and localized display motion reviewed; inventory/bounds unchanged.",
+          "evidence": "assets/command-directional-v1/sides-provenance.json"
+        },
+        "south": {
+          "registration": null,
+          "source": "res://assets/command-directional-v1/command-south.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/command-wall-south-comms.json",
+            "rooms/full-wall-v1/registrations/command-wall-south-operations.json"
+          ],
+          "sources": [
+            "res://assets/command-directional-v1/command-south.png"
+          ],
+          "note": "Inward keyboard spacebars/comms controls, subdued bronze/red. Native q2 reviewed; only bank pixels changed, all equipment/bounds retained; off and two powered times checked within each display.",
+          "evidence": "output/command-directional-2026-09-12/comparison.json",
+          "state_evidence": "output/command-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": null,
+          "source": "res://assets/command-directional-v1/command-sides.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/command-wall-west-comms.json",
+            "rooms/full-wall-v1/registrations/command-wall-west-operations.json"
+          ],
+          "sources": [
+            "res://assets/command-directional-v1/command-sides.png"
+          ],
+          "note": "Matte bronze/red revision with inward control strips retained. Native and localized display motion reviewed; inventory/bounds unchanged.",
+          "evidence": "assets/command-directional-v1/sides-provenance.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "corridor",
+      "name": "Corridor",
+      "view": "res://rooms/underwater/corridor_surfaces.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "east": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "south": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "west": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        }
+      },
+      "scope_note": "Preserve owner-cleared corridors. Existing shared architecture reviewed across four rotations and three finishes. No new furniture or production art changes.",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "corner",
+      "name": "Corner Corridor",
+      "view": "res://rooms/underwater/corridor_surfaces.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "east": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "south": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "west": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        }
+      },
+      "scope_note": "Preserve owner-cleared corridors. Existing shared architecture reviewed across four rotations and three finishes. No new furniture or production art changes.",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "pressure_control",
+      "name": "Pressure Control Chamber",
+      "view": "res://rooms/full-wall-v1/pressure_control_view.gd",
+      "asset": "pressure-manifold-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://assets/room-consistency-v1/pressure-fitted.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/pressure-directional-2026-09-12/final/runtime.json",
+          "implementation": "rooms/underwater/rare-dead-ends/pressure_control_view.gd",
+          "note": "q0 preserves flush_back/left/right; generic north registration not selected",
+          "state_evidence": "output/pressure-directional-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-pressure-manifold-wall-east.json",
+          "source": "res://assets/room-consistency-v1/pressure-sides.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/pressure-directional-2026-09-12/final/runtime.json",
+          "state_evidence": "output/pressure-directional-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-pressure-manifold-wall-south.json",
+          "source": "res://assets/room-facing-repair-v2/pressure-manifold-wall-south.png",
+          "stage": "owner-accepted",
+          "state_evidence": "output/pressure-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-pressure-manifold-wall-west.json",
+          "source": "res://assets/room-consistency-v1/pressure-sides.png",
+          "stage": "existing-art-native-reviewed-retained",
+          "evidence": "output/pressure-directional-2026-09-12/final/runtime.json",
+          "state_evidence": "output/pressure-directional-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "listening_post",
+      "name": "Deepwater Listening Post",
+      "view": "res://rooms/full-wall-v1/listening_post_view.gd",
+      "asset": "deepwater-listening-wall",
+      "category": "Science",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/deepwater-listening-wall.json",
+          "source": "res://assets/listening-directional-v1/listening-north-idle.png",
+          "stage": "library-installed-native-reviewed",
+          "evidence": "output/listening-north-review-2026-09-12/companions/native.png",
+          "note": "Library-only north companion. Live q0 retains original U-shaped flush bank; all four live views unchanged. Owner aesthetic acceptance pending.",
+          "live_default": {
+            "source": "res://assets/listening-directional-v1/listening-u-idle.png",
+            "stage": "integrated-native-reviewed",
+            "evidence": "output/listening-u-idle-2026-09-12",
+            "note": "U-shaped idle repair; original three prop placements preserved; operating sonar sweep retained."
+          }
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-deepwater-listening-wall-east.json",
+          "source": "res://assets/listening-directional-v1/listening-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/listening-side-review-2026-09-12/after/runtime.json",
+          "state_evidence": "output/listening-side-review-2026-09-12/state-checks.json",
+          "note": "Overhead low-console companion; inward keyboard/cup/handles, dark static screens and aligned live sonar. Owner camera acceptance pending."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-deepwater-listening-wall-south.json",
+          "source": "res://assets/listening-directional-v1/listening-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/listening-directional-2026-09-12/after/runtime.json",
+          "note": "Inward keyboard spacebar/cup handles, dim matte console. Sonar sweep aligned and temporal-tested. Only bank changes; inventory and other rotations identical."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-deepwater-listening-wall-west.json",
+          "source": "res://assets/listening-directional-v1/listening-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/listening-side-review-2026-09-12/after/runtime.json",
+          "state_evidence": "output/listening-side-review-2026-09-12/state-checks.json",
+          "note": "Overhead low-console companion; inward keyboard/cup/handles, dark static screens and aligned live sonar. Owner camera acceptance pending."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "isolation_vault",
+      "name": "Emergency Isolation Vault",
+      "view": "res://rooms/full-wall-v1/isolation_vault_view.gd",
+      "asset": "emergency-isolation-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/emergency-isolation-wall.json",
+          "source": "res://assets/isolation-directional-v1/isolation-north-idle.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/isolation-north-2026-09-12/after/runtime.json",
+          "state_evidence": "output/isolation-north-2026-09-12/effects-checks.json",
+          "note": "North status lamps have source-local powered pulses; direct and retained native checks pass, off art unchanged."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-emergency-isolation-wall-east.json",
+          "source": "res://assets/isolation-directional-v1/isolation-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/isolation-side-review-2026-09-12/after/runtime.json",
+          "state_evidence": "output/isolation-side-review-2026-09-12/state-checks.json",
+          "note": "Lower-profile companion with three switchboxes/three inward levers, dark static lamps and independent powered pulses. Owner camera acceptance pending."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-emergency-isolation-wall-south.json",
+          "source": "res://assets/isolation-directional-v1/isolation-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/isolation-directional-2026-09-12/after/runtime.json",
+          "note": "Closed empty chamber and supply inventory preserved, catches/pickup ends inward. Only bank pixels change; other rotations and prop inventory unchanged."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-emergency-isolation-wall-west.json",
+          "source": "res://assets/isolation-directional-v1/isolation-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/isolation-side-review-2026-09-12/after/runtime.json",
+          "state_evidence": "output/isolation-side-review-2026-09-12/state-checks.json",
+          "note": "Lower-profile companion with three switchboxes/three inward levers, dark static lamps and independent powered pulses. Owner camera acceptance pending."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "tee_corridor",
+      "name": "T Corridor",
+      "view": "res://rooms/underwater/corridor_surfaces.gd",
+      "asset": null,
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "east": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "south": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        },
+        "west": {
+          "registration": null,
+          "source": "res://rooms/underwater/corridor_surfaces.gd",
+          "stage": "existing-shared-architecture-rotation-reviewed",
+          "evidence": "output/corridor-coverage-2026-09-12/native/review.json",
+          "note": "Shared geometry-rendered architecture, not a missing furniture bank. Four rotations/three finishes reviewed in raised-wall contact sheets; 72 raised/low captures produced across three shapes. Not owner aesthetic acceptance."
+        }
+      },
+      "scope_note": "Preserve owner-cleared corridors. Existing shared architecture reviewed across four rotations and three finishes. No new furniture or production art changes.",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "crew_lounge",
+      "name": "Crew Lounge",
+      "view": "res://rooms/full-wall-v1/crew_lounge_view.gd",
+      "asset": "crew-lounge-built-in",
+      "category": "Crew",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/crew-lounge-built-in.json",
+          "source": "res://assets/full-wall-props-autumn-v1/crew-lounge-built-in.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/crew-lounge-review-2026-09-12/final/runtime.json",
+          "note": "Existing warm furnishing source retained after native review.",
+          "state_evidence": "output/crew-lounge-review-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-east.json",
+          "source": "res://assets/lounge-directional-v1/lounge-east-coffee.png",
+          "stage": "integrated-owner-side-review-pending",
+          "note": "Brewing cavity faces inward left. Cup is single-handled; requested handleless edit was not literally followed, actual result recorded.",
+          "quarter": 1,
+          "evidence": "output/crew-lounge-review-2026-09-12/final/runtime.json",
+          "state_evidence": "output/crew-lounge-review-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-south.json",
+          "source": "res://assets/room-facing-repair-v4/crew-lounge-built-in-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 2
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-crew-lounge-built-in-west.json",
+          "source": "res://assets/lounge-directional-v1/lounge-west-coffee.png",
+          "stage": "integrated-owner-side-review-pending",
+          "quarter": 3,
+          "evidence": "output/crew-lounge-review-2026-09-12/final/runtime.json",
+          "note": "Missing coffee station restored; inward pot access, lamp retained without clipping. Native fit reviewed; owner side feedback unresolved.",
+          "state_evidence": "output/crew-lounge-review-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "holographic_core",
+      "name": "Holographic Core",
+      "view": "res://rooms/full-wall-v1/holographic_core_view.gd",
+      "asset": "holo-wall",
+      "category": "Science",
+      "directions": {
+        "north": {
+          "registration": null,
+          "source": "res://assets/holo-directional-v1/holo-north.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/holo-wall-north-control.json",
+            "rooms/full-wall-v1/registrations/holo-wall-north-optics.json"
+          ],
+          "sources": [
+            "res://assets/holo-directional-v1/holo-north.png"
+          ],
+          "note": "Dim idle optical markings and inward controls; native/card review with original equipment/footprints preserved. North art overlaps riser.",
+          "evidence": "assets/holo-directional-v1/remaining-provenance.json"
+        },
+        "east": {
+          "registration": null,
+          "source": "res://assets/holo-directional-v1/holo-sides.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/holo-wall-east-control.json",
+            "rooms/full-wall-v1/registrations/holo-wall-east-optics.json"
+          ],
+          "sources": [
+            "res://assets/holo-directional-v1/holo-sides.png"
+          ],
+          "note": "Dim idle optical markings and inward controls; native/card review with original equipment/footprints preserved. North art overlaps riser.",
+          "evidence": "assets/holo-directional-v1/remaining-provenance.json"
+        },
+        "south": {
+          "registration": null,
+          "source": "res://assets/holo-directional-v1/holo-south.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/holo-wall-south-control.json",
+            "rooms/full-wall-v1/registrations/holo-wall-south-optics.json"
+          ],
+          "sources": [
+            "res://assets/holo-directional-v1/holo-south.png"
+          ],
+          "note": "Overhead inward keyboard and handles; dim static optics. Native q2 reviewed, original equipment/bounds preserved. Live projector/calibrator verified separately.",
+          "evidence": "output\\holo-directional-2026-09-12\\comparison.json",
+          "state_evidence": "output\\holo-directional-2026-09-12\\state-checks.json"
+        },
+        "west": {
+          "registration": null,
+          "source": "res://assets/holo-directional-v1/holo-sides.png",
+          "stage": "integrated-native-reviewed",
+          "registrations": [
+            "rooms/full-wall-v1/registrations/holo-wall-west-control.json",
+            "rooms/full-wall-v1/registrations/holo-wall-west-optics.json"
+          ],
+          "sources": [
+            "res://assets/holo-directional-v1/holo-sides.png"
+          ],
+          "note": "Dim idle optical markings and inward controls; native/card review with original equipment/footprints preserved. North art overlaps riser.",
+          "evidence": "assets/holo-directional-v1/remaining-provenance.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "maintenance_bay",
+      "name": "Maintenance Bay",
+      "view": "res://rooms/full-wall-v1/maintenance_bay_view.gd",
+      "asset": "maintenance-repair-wall",
+      "category": "Engineering",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/maintenance-repair-wall.json",
+          "source": "res://assets/maintenance-directional-v1/maintenance-north.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/maintenance-directional-2026-09-12/north-final/runtime.json",
+          "state_evidence": "output/maintenance-directional-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-maintenance-repair-wall-east.json",
+          "source": "res://assets/maintenance-directional-v1/maintenance-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/maintenance-directional-2026-09-12/sides-final/runtime.json",
+          "state_evidence": "output/maintenance-directional-2026-09-12/state-checks.json"
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-maintenance-repair-wall-south.json",
+          "source": "res://assets/room-facing-repair-v2/maintenance-repair-wall-south.png",
+          "stage": "owner-accepted",
+          "state_evidence": "output/maintenance-directional-2026-09-12/state-checks.json"
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-maintenance-repair-wall-west.json",
+          "source": "res://assets/maintenance-directional-v1/maintenance-sides.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/maintenance-directional-2026-09-12/sides-final/runtime.json",
+          "state_evidence": "output/maintenance-directional-2026-09-12/state-checks.json"
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "med_center",
+      "name": "Med Center",
+      "view": "res://rooms/full-wall-v1/med_center_view.gd",
+      "asset": "medical-diagnostic-wall",
+      "category": "Medical",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/medical-diagnostic-wall.json",
+          "source": "res://assets/med-center-directional-v1/med-center-north.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 1,
+          "evidence": "assets/med-center-directional-v1/remaining-provenance.json",
+          "note": "Inward case catches, keyboard spacebar and cartridge releases; outer hinges/hoses and idle screens. All bounds unchanged."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-diagnostic-wall-east.json",
+          "source": "res://assets/med-center-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-card-reviewed",
+          "quarter": 2,
+          "evidence": "assets/med-center-directional-v1/side-overhead-review.json",
+          "note": "Low overhead diagnostic counter with inward instrument grips and cartridge releases; source-local operating screens. Placement metadata unchanged.",
+          "mirrored": false
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-diagnostic-wall-south.json",
+          "source": "res://assets/med-center-directional-v1/med-center-south.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 3,
+          "evidence": "assets/med-center-directional-v1/provenance.json",
+          "note": "New overhead diagnostic bank; independent treatment/imaging/supplies retained at original sizes, relocated north. Other rotations unchanged."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-diagnostic-wall-west.json",
+          "source": "res://assets/med-center-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-card-reviewed",
+          "quarter": 0,
+          "evidence": "assets/med-center-directional-v1/side-overhead-review.json",
+          "note": "Low overhead diagnostic counter with inward instrument grips and cartridge releases; source-local operating screens. Placement metadata unchanged.",
+          "mirrored": true
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "med_office",
+      "name": "Med Office",
+      "view": "res://rooms/full-wall-v1/med_office_view.gd",
+      "asset": "medical-records-wall",
+      "category": "Medical",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/medical-records-wall.json",
+          "source": "res://assets/med-office-directional-v1/med-office-north.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 1,
+          "evidence": "assets/med-office-directional-v1/north-provenance.json",
+          "note": "Inward bottom spacebar and outward clipboard clip corrected; idle consultation symbol. All bounds and other directions unchanged."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-records-wall-east.json",
+          "source": "res://assets/med-office-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-card-reviewed",
+          "quarter": 2,
+          "evidence": "assets/med-office-directional-v1/side-overhead-review.json",
+          "note": "Low overhead four-bay records counter; inward access, operating-only screens, all original prop metadata preserved.",
+          "mirrored": false
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-records-wall-south.json",
+          "source": "res://assets/med-office-directional-v1/med-office-south.png",
+          "stage": "integrated-native-reviewed",
+          "quarter": 3,
+          "evidence": "assets/med-office-directional-v1/provenance.json",
+          "note": "New south overhead records bank; all three independent stations preserved and relocated north; other rotations unchanged."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-medical-records-wall-west.json",
+          "source": "res://assets/med-office-directional-v1/side-overhead.png",
+          "stage": "integrated-native-state-layout-card-reviewed",
+          "quarter": 0,
+          "evidence": "assets/med-office-directional-v1/side-overhead-review.json",
+          "note": "Low overhead four-bay records counter; inward access, operating-only screens, all original prop metadata preserved.",
+          "mirrored": true
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "radio_lab",
+      "name": "Radio Lab",
+      "view": "res://rooms/full-wall-v1/radio_lab_view.gd",
+      "asset": "radio-signal-wall",
+      "category": "Science",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/radio-signal-wall.json",
+          "source": "res://assets/radio-directional-v1/radio-north-idle.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 0,
+          "evidence": "output/radio-north-2026-09-12/after/runtime.json",
+          "state_evidence": "output/radio-north-2026-09-12/state-checks.json"
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-radio-signal-wall-east.json",
+          "source": "res://assets/radio-directional-v1/radio-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/radio-side-review-2026-09-12/after/runtime.json",
+          "note": "Overhead worktop companion, inward handles and quiet screens. Native fit reviewed; owner side-camera acceptance pending."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-radio-signal-wall-south.json",
+          "source": "res://assets/radio-directional-v1/radio-south.png",
+          "stage": "integrated-native-reviewed",
+          "evidence": "output/radio-directional-2026-09-12/verified/runtime.json",
+          "note": "q2 selected south bank; inward control rows and clipboard, rear cable rail. Separate signal equipment preserved. Other rotations identical."
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-radio-signal-wall-west.json",
+          "source": "res://assets/radio-directional-v1/radio-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "evidence": "output/radio-side-review-2026-09-12/after/runtime.json",
+          "note": "Overhead worktop companion, inward handles and quiet screens. Native fit reviewed; owner side-camera acceptance pending."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    },
+    {
+      "room": "shield_generator",
+      "name": "Shield Generator",
+      "view": "res://rooms/full-wall-v1/shield_generator_view.gd",
+      "asset": "shield-pressure-wall",
+      "category": "Security",
+      "directions": {
+        "north": {
+          "registration": "rooms/full-wall-v1/registrations/shield-pressure-wall.json",
+          "source": "res://assets/room-consistency-v1/shield-north.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 3,
+          "evidence": "output/shield-review-2026-09-12/native/runtime.json",
+          "state_evidence": "output/shield-review-2026-09-12/state-checks.json",
+          "note": "Existing north source retained after native fitting/material review. Independent monitor/injector effects verified."
+        },
+        "east": {
+          "registration": "rooms/full-wall-v1/registrations/side-shield-pressure-wall-east.json",
+          "source": "res://assets/shield-directional-v1/shield-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "quarter": 2,
+          "evidence": "output/shield-side-review-2026-09-12/after/runtime.json",
+          "note": "Three valve grips point inward; two tanks and three shield compartments retained. Dark static screens. Owner camera acceptance pending."
+        },
+        "south": {
+          "registration": "rooms/full-wall-v1/registrations/side-shield-pressure-wall-south.json",
+          "source": "res://assets/room-facing-repair-v3/shield-pressure-wall-south.png",
+          "stage": "native-reviewed-default-installed",
+          "quarter": 1
+        },
+        "west": {
+          "registration": "rooms/full-wall-v1/registrations/side-shield-pressure-wall-west.json",
+          "source": "res://assets/shield-directional-v1/shield-sides-overhead.png",
+          "stage": "integrated-owner-side-review-pending",
+          "quarter": 0,
+          "evidence": "output/shield-side-review-2026-09-12/after/runtime.json",
+          "note": "Three valve grips point inward; two tanks and three shield compartments retained. Dark static screens. Owner camera acceptance pending."
+        }
+      },
+      "scope_note": "Full facing and fit review, including missing banks; preserve functioning central equipment",
+      "current_contract_review": "agent-native-reviewed-current-catalog",
+      "current_contract_evidence": "output/owner-asset-completion-audit-2026-09-12/current-catalog/runtime.json"
+    }
+  ],
+  "latest_owner_side_feedback": "Side-view dissatisfaction reported; do not infer acceptance from correct facing or native fit. Clarification pending on affected asset and visual issue.",
+  "active_direction_contract": "docs/TOP_DOWN_ART_DIRECTION_2026-09-12.md",
+  "owner_playtest_handoff": "docs/ROOM_ART_HANDOFF_2026-09-12.md",
+  "acceptance_note": "Historical direction stages and evidence retained. They do not establish acceptance under the September 12 fully top-down inward-facing owner decision."
+}

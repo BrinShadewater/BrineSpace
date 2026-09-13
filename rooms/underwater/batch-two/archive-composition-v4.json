@@ -1,0 +1,77 @@
+{
+  "textures": {
+    "cart": "res://rooms/underwater/batch-two/archive-service-cart-v1.png",
+    "support": "res://assets/material-polish-v4/maintenance-support.png",
+    "centerpiece": "res://assets/room-centerpieces-v1/archive-index-island.png",
+    "archive_media_restoration_table": "res://assets/room-furnishings-v8/data-archive-media-restoration-table.png",
+    "universal_sealed_media_transit_case": "res://assets/room-furnishings-v8/universal-sealed-media-transit-case.png"
+  },
+  "furniture": [
+    {
+      "id": "archive_media_restoration_table",
+      "texture": "archive_media_restoration_table",
+      "registration": "res://assets/room-furnishings-v8/data-archive-media-restoration-table-registration.json",
+      "footprint": [
+        -54,
+        -17,
+        108,
+        34
+      ],
+      "ground_width": 1210,
+      "centers_by_quarter": [
+        [
+          0,
+          30
+        ],
+        [
+          -30,
+          0
+        ],
+        [
+          0,
+          -30
+        ],
+        [
+          30,
+          0
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_sealed_media_transit_case",
+      "texture": "universal_sealed_media_transit_case",
+      "registration": "res://assets/room-furnishings-v8/universal-sealed-media-transit-case-registration.json",
+      "footprint": [
+        -30,
+        -13,
+        60,
+        26
+      ],
+      "ground_width": 1185,
+      "centers_by_quarter": [
+        [
+          110,
+          -45
+        ],
+        [
+          45,
+          110
+        ],
+        [
+          -110,
+          45
+        ],
+        [
+          -45,
+          -110
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": []
+}

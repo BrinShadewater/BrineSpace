@@ -1,0 +1,64 @@
+{
+  "source": "assets/cryo-directional-v2/north-overhead-v1.png",
+  "source_sha256": "44ff7986f6c2b3d95da72734c7df27ace71e2ac7e2c4b3500da5375fd797b33b",
+  "camera": "strict orthographic overhead",
+  "facing_rule": "North source controls face south; exact 90/180 degree rotations move that working edge inward on every wall without perspective drift.",
+  "directions": [
+    {
+      "direction": "north",
+      "rotation_degrees": 0,
+      "source": "res://assets/cryo-directional-v2/cryo-north.png",
+      "sha256": "44ff7986f6c2b3d95da72734c7df27ace71e2ac7e2c4b3500da5375fd797b33b",
+      "registration": "rooms/full-wall-v1/registrations/cryo-support-wall.json",
+      "region": [
+        51.0,
+        174.0,
+        2070.0,
+        350.0
+      ],
+      "pieces": 11
+    },
+    {
+      "direction": "east",
+      "rotation_degrees": -90,
+      "source": "res://assets/cryo-directional-v2/cryo-east.png",
+      "sha256": "b563312b9017cc313d04f2d40aa29220d346a1855d1688b17f17eaba69aeb53e",
+      "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-east.json",
+      "region": [
+        200.0,
+        51.0,
+        350.0,
+        2070.0
+      ],
+      "pieces": 6
+    },
+    {
+      "direction": "south",
+      "rotation_degrees": 180,
+      "source": "res://assets/cryo-directional-v2/cryo-south.png",
+      "sha256": "c044e0f1e30bc7616a7fbddecbd99f4b52676a2ae3a4b32610f39e66c4a35615",
+      "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-south.json",
+      "region": [
+        51.0,
+        200.0,
+        2070.0,
+        350.0
+      ],
+      "pieces": 11
+    },
+    {
+      "direction": "west",
+      "rotation_degrees": 90,
+      "source": "res://assets/cryo-directional-v2/cryo-west.png",
+      "sha256": "c3b310baa14adc29f4e8176a5568d855c897e7ac7c4cc80e109da13f7ad8af6b",
+      "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-west.json",
+      "region": [
+        174.0,
+        51.0,
+        350.0,
+        2070.0
+      ],
+      "pieces": 6
+    }
+  ]
+}

@@ -5,6 +5,9 @@ var full_wall = preload("res://rooms/full-wall-v1/full_wall_prop.gd").new("shiel
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
 	full_wall.apply(self)
+	# The room's selected directional variant must follow the wall-family rebuild.
+	if quarter==1:
+		preload("res://scripts/room_layout_store.gd").apply(self,"room-shield_generator")
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)

@@ -1,0 +1,106 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/bio_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-pipe_cap",
+					"hosts": [
+						"bio_centrifuge"
+					],
+					"purpose": "sealed processing service",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"bio_cold_storage"
+					],
+					"purpose": "cold storage maintenance",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/biodome_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "bio_lab",
+			"machinery": [
+				{
+					"id": "bio_centrifuge",
+					"rect": [
+						-160.0,
+						49.0,
+						78.0,
+						60.0
+					]
+				},
+				{
+					"id": "bio_cold_storage",
+					"rect": [
+						94.0,
+						101.0,
+						68.0,
+						54.0
+					]
+				},
+				{
+					"id": "bio_sample_cooler",
+					"rect": [
+						47.0,
+						134.0,
+						30.0,
+						10.0
+					]
+				},
+				{
+					"id": "full_wall_bio-culture-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						120.160667419434
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/bio_lab_view.gd"
+		},
+		"layered": true,
+		"room": "bio_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_bio-culture-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bio_centrifuge",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bio_cold_storage",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/bio_lab_view.gd"
+	}
+]

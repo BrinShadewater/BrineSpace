@@ -1,0 +1,333 @@
+{
+  "textures": {
+    "trolley": "res://rooms/whole-room/hydro-potting-trolley-v1.png",
+    "propagation": "res://rooms/underwater/batch-two/biodome-propagation-shelf-v1.png",
+    "biodome_potting_island": "res://assets/room-furnishings-v5/biodome-potting-island.png",
+    "universal_supply_pallet": "res://assets/room-furnishings-v5/universal-supply-pallet.png"
+  },
+  "furniture": [
+    {
+      "id": "biodome_potting_island",
+      "texture": "biodome_potting_island",
+      "registration": "res://assets/room-furnishings-v5/biodome-potting-island-registration.json",
+      "footprint": [
+        -48,
+        -15,
+        96,
+        30
+      ],
+      "ground_width": 1236,
+      "centers_by_quarter": [
+        [
+          -124,
+          25
+        ],
+        [
+          -25,
+          -124
+        ],
+        [
+          124,
+          -9
+        ],
+        [
+          -95,
+          30
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_supply_pallet",
+      "texture": "universal_supply_pallet",
+      "registration": "res://assets/room-furnishings-v5/universal-supply-pallet-registration.json",
+      "footprint": [
+        -30,
+        -11,
+        60,
+        22
+      ],
+      "ground_width": 1152,
+      "centers_by_quarter": [
+        [
+          116,
+          24
+        ],
+        [
+          -24,
+          116
+        ],
+        [
+          -116,
+          -24
+        ],
+        [
+          105,
+          30
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": [
+    {
+      "from": {
+        "host": "biodome_tree",
+        "source": [
+          190,
+          515
+        ]
+      },
+      "via": [
+        [
+          -170,
+          -70
+        ],
+        [
+          -174,
+          -25
+        ],
+        [
+          -168,
+          43
+        ]
+      ],
+      "to": {
+        "host": "biodome_aquatic",
+        "source": [
+          180,
+          1005
+        ]
+      },
+      "color": "536958",
+      "width": 3
+    },
+    {
+      "from": {
+        "host": "biodome_ferns",
+        "source": [
+          1065,
+          510
+        ]
+      },
+      "via": [
+        [
+          172,
+          -61
+        ],
+        [
+          174,
+          -8
+        ],
+        [
+          169,
+          45
+        ]
+      ],
+      "to": {
+        "host": "biodome_processor",
+        "source": [
+          1080,
+          1014
+        ]
+      },
+      "color": "58675a",
+      "width": 3
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          159,
+          -37
+        ],
+        [
+          176,
+          -37
+        ],
+        [
+          176,
+          18
+        ],
+        [
+          159,
+          18
+        ]
+      ],
+      "fill": "7c897a",
+      "edge": "a1aa98"
+    },
+    {
+      "points": [
+        [
+          162,
+          -32
+        ],
+        [
+          173,
+          -32
+        ],
+        [
+          173,
+          -30
+        ],
+        [
+          162,
+          -30
+        ]
+      ],
+      "fill": "566758"
+    },
+    {
+      "points": [
+        [
+          162,
+          -26
+        ],
+        [
+          173,
+          -26
+        ],
+        [
+          173,
+          -24
+        ],
+        [
+          162,
+          -24
+        ]
+      ],
+      "fill": "566758"
+    },
+    {
+      "points": [
+        [
+          162,
+          -20
+        ],
+        [
+          173,
+          -20
+        ],
+        [
+          173,
+          -18
+        ],
+        [
+          162,
+          -18
+        ]
+      ],
+      "fill": "566758"
+    },
+    {
+      "points": [
+        [
+          162,
+          -14
+        ],
+        [
+          173,
+          -14
+        ],
+        [
+          173,
+          -12
+        ],
+        [
+          162,
+          -12
+        ]
+      ],
+      "fill": "566758"
+    },
+    {
+      "points": [
+        [
+          162,
+          -8
+        ],
+        [
+          173,
+          -8
+        ],
+        [
+          173,
+          -6
+        ],
+        [
+          162,
+          -6
+        ]
+      ],
+      "fill": "566758"
+    },
+    {
+      "points": [
+        [
+          162,
+          -2
+        ],
+        [
+          173,
+          -2
+        ],
+        [
+          173,
+          0
+        ],
+        [
+          162,
+          0
+        ]
+      ],
+      "fill": "566758"
+    },
+    {
+      "points": [
+        [
+          162,
+          4
+        ],
+        [
+          173,
+          4
+        ],
+        [
+          173,
+          6
+        ],
+        [
+          162,
+          6
+        ]
+      ],
+      "fill": "566758"
+    },
+    {
+      "points": [
+        [
+          162,
+          10
+        ],
+        [
+          173,
+          10
+        ],
+        [
+          173,
+          12
+        ],
+        [
+          162,
+          12
+        ]
+      ],
+      "fill": "566758"
+    }
+  ]
+}

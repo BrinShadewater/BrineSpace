@@ -20,6 +20,7 @@ static func floor_patch(canvas: CanvasItem, id: String, bounds: Rect2) -> void:
 	fit(canvas,Floor.texture(id),bounds)
 
 static func service_run(canvas: CanvasItem, points: PackedVector2Array, width := 6.0, id := "cable_straight") -> void:
+	if id.begins_with("cable_"): return # Owner removal, independent of the general decoration toggle.
 	if not automatic_floor_art_enabled: return
 	# Tile floor-only cable art along authored routes; keep endpoints and clearance.
 	var texture := Utilities.texture(id)

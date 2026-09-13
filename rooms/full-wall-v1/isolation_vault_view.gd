@@ -12,9 +12,7 @@ func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	return super.prop_visual_bounds(prop)
 
 func draw_registered_prop(prop: Dictionary) -> void:
-	if full_wall.owns(prop):
-		full_wall.draw(self,prop)
-		return
+	if full_wall.owns(prop): full_wall.draw(self,prop); return
 	super.draw_registered_prop(prop)
 
 func is_animated_prop(prop: Dictionary) -> bool:

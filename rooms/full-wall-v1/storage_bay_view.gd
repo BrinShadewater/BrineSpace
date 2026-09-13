@@ -18,6 +18,6 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	super.draw_registered_prop(prop)
 
 func is_animated_prop(prop: Dictionary) -> bool:
-	if full_wall.owns(prop): return false
+	if full_wall.owns(prop): return prop.registration.has("operating_screens")
 	return super.is_animated_prop(prop)
 

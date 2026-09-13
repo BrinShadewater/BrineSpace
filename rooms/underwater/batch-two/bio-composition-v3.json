@@ -1,0 +1,60 @@
+{
+  "textures": {
+    "island": "res://assets/material-polish-v2/research-bench.png",
+    "accessories": "res://assets/material-polish-science-v2/research-accessories.png",
+    "bio_culture_preparation_island": "res://assets/room-furnishings-v7/bio-lab-culture-preparation-island.png",
+    "universal_specimen_transit_case": "res://assets/room-furnishings-v7/universal-specimen-transit-case.png"
+  },
+  "furniture": [
+    {
+      "id": "bio_culture_preparation_island",
+      "texture": "bio_culture_preparation_island",
+      "registration": "res://assets/room-furnishings-v7/bio-lab-culture-preparation-island-registration.json",
+      "footprint": [
+        -52,
+        -16,
+        104,
+        32
+      ],
+      "ground_width": 1215,
+      "centers_by_quarter": [
+        [
+          0,
+          18
+        ],
+        [
+          -18,
+          0
+        ],
+        [
+          0,
+          -18
+        ],
+        [
+          18,
+          0
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_specimen_transit_case",
+      "texture": "universal_specimen_transit_case",
+      "registration": "res://assets/room-furnishings-v7/universal-specimen-transit-case-registration.json",
+      "footprint": [
+        -29,
+        -12,
+        58,
+        24
+      ],
+      "ground_width": 1185,
+      "centers_by_quarter": [[110, -42], [26, 110], [-110, 42], [-26, -110]],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": [],
+  "decals": []
+}

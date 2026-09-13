@@ -1,0 +1,27 @@
+# Room furnishings v3 prompts
+
+This file preserves the exact six prompts submitted for the batch.
+
+## Hydroponics nutrient island
+
+Create one isolated 2D game prop sprite for BrineSpace: a LARGE RECTANGULAR NUTRIENT PREPARATION ISLAND for an underwater Hydroponics Bay. Fixed near-top-down cutaway camera, chunky detailed pixel art, screen-facing south operator edge, height screen-up. Broad low rectangle with two sealed nutrient mixing basins, removable square lids, a compact dosing manifold, physical valve knobs, clipped sample cups, and contained short hoses. Life-support/agriculture palette: muted sea-green enamel, dark charcoal composite, pale ceramic, restrained brass fittings and tiny dark teal lenses. Crew-scale, matte powder coat and rubber, sparse highlights, maintained with light handling wear. No plants growing from it, no room, wall, floor, people, text, labels, logos, UI, bloom, steam, baked glow, checkerboard, or shadow plane. Actual transparent alpha with generous clear margin. Square canvas.
+
+## Refinery assay bench
+
+Create one isolated 2D game prop sprite for BrineSpace: a LARGE RECTANGULAR MINERAL ASSAY SORTING BENCH for an Ore Refinery. Fixed near-top-down cutaway camera, chunky detailed pixel art, screen-facing south operator edge, height screen-up. Broad low rectangle with a short recessed sample conveyor, three dark ore trays, a compact crusher jaw behind a safety guard, physical calibration knobs, a dust collection drawer, and contained power conduit. Engineering palette: charcoal steel, raw dark metal, restrained burnt-orange panels, muted yellow safety tabs, no bright chrome. Crew-scale, matte worn powder coat, sparse highlights, localized mineral dust. No furnace, flames, room, wall, floor, people, text, logos, UI, bloom, active glow, checkerboard, or shadow plane. Actual transparent alpha with generous clear margin. Square canvas.
+
+## Cryo thaw cart
+
+Create one isolated 2D game prop sprite for BrineSpace: a MEDIUM RECTANGULAR THAW-SUPPORT CART for a Cryo Chamber. Fixed near-top-down cutaway camera, chunky detailed pixel art, screen-facing south operator edge, height screen-up. Low wheeled rectangle with two sealed thermal-fluid canisters, a folded warming blanket in a recessed tray, compact physical temperature gauges, clipped insulated tubing, corner bumpers, and a south push handle. Cryo/medical palette: cool blue-grey steel, muted cyan enamel, pale ceramic, charcoal rubber, restrained frost residue only at fittings. Crew-scale, matte surfaces, sparse highlights, maintained condition. No pod, patient, room, wall, floor, people, text, logos, UI, vapor, glow, checkerboard, or shadow plane. Actual transparent alpha with generous clear margin. Square canvas.
+
+## Universal task table
+
+Create one isolated 2D game prop sprite for BrineSpace: a UNIVERSAL MEDIUM FOLD-OUT TASK TABLE that can fit any underwater station room. Fixed near-top-down cutaway camera, chunky detailed pixel art, screen-facing south operator edge, height screen-up. Low rectangular dark composite tabletop on chunky folding steel legs, with one recessed clamp rail, two neutral magnetic trays, corner bumpers, and a folded cable secured beneath the top. No department symbols, labels, specialist samples, or department color. Palette: neutral charcoal, mid-grey steel, muted off-white inserts and tiny brass fasteners. Crew-scale, matte powder coat, rubber and unpolished steel, sparse highlights, light handling wear. No wall, floor, room, people, text, logos, UI, glow, checkerboard, or shadow plane. Actual transparent alpha with generous clear margin. Square canvas.
+
+## Universal parts chest
+
+Create one isolated 2D game prop sprite for BrineSpace: a UNIVERSAL MEDIUM SEALED PARTS CHEST that can fit any underwater station room. Fixed near-top-down cutaway camera, chunky detailed pixel art, screen-facing south operator edge, height screen-up. Low wide rectangular pressure-rated chest with two square top lids, recessed pulls, four corner latches, a narrow rubber bumper, short feet, and one small blank inventory plate without text. No department symbols, cargo labels, specialist tools, or department color. Palette: neutral charcoal, mid-grey steel, muted off-white lid inserts, tiny brass latch pins. Crew-scale, matte surfaces, sparse highlights, maintained with light scuffs. No wall, floor, room, people, text, logos, UI, glow, checkerboard, or shadow plane. Actual transparent alpha with generous clear margin. Square canvas.
+
+## Universal equipment plinth
+
+Create one isolated 2D game prop sprite for BrineSpace: a UNIVERSAL LARGE MODULAR EQUIPMENT PLINTH that can fit any underwater station room. Fixed near-top-down cutaway camera, chunky detailed pixel art, screen-facing south operator edge, height screen-up. Broad low rectangular deck with a dark central mounting plate, symmetric bolt grid, two recessed universal power/data sockets, four corner bumpers, shallow side access boxes, and a south service drawer. No installed specialist machine, department symbols, labels, or department color. Palette: neutral charcoal, mid-grey steel, muted off-white panels, tiny brass fasteners and restrained yellow corner tabs. Crew-scale, matte powder coat and rubber, sparse highlights, maintained with light handling wear. No wall, floor, room, people, text, logos, UI, glow, checkerboard, or shadow plane. Actual transparent alpha with generous clear margin. Square canvas.

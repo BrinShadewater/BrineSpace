@@ -13,7 +13,7 @@ func _ready() -> void:
 		{"id":"anomaly_capacitors","rect":Rect2(-159,70,98,66),"pivot":Vector2(326,1035),"width":306.0,"outline":[Vector2(188,789),Vector2(448,789),Vector2(464,804),Vector2(464,821),Vector2(474,835),Vector2(478,1020),Vector2(465,1035),Vector2(185,1035),Vector2(173,1020),Vector2(173,849),Vector2(181,832),Vector2(181,800)]},
 		{"id":"anomaly_receiver","rect":Rect2(62,96,100,62),"pivot":Vector2(931,1021),"width":304.0,"outline":[Vector2(801,850),Vector2(1060,850),Vector2(1075,862),Vector2(1082,881),Vector2(1083,1007),Vector2(1070,1021),Vector2(793,1021),Vector2(779,1006),Vector2(779,885),Vector2(787,866)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/anomaly-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/anomaly-composition-v3.json")
 	rebuild()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:

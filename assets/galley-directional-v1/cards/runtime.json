@@ -1,0 +1,46 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/crew_hab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "crew",
+			"detail_stage": "kitchen bank and supported self-service counter",
+			"details": [],
+			"floor_owner": "res://rooms/underwater/galley-v1/galley_view.gd",
+			"floor_stage": "integrated; native card, completed room and three viewport captures",
+			"id": "galley",
+			"machinery": [],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/habitation-composite.png",
+			"source_sha256": "6d61be8c35cd3a10cd7d7021d10fcd2e0df97a9eb3e71c1ad67c6e4309d69b58",
+			"view": "res://rooms/underwater/galley-v1/galley_view.gd"
+		},
+		"layered": true,
+		"room": "galley",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "kitchen",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "serving",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/galley-v1/galley_view.gd"
+	}
+]

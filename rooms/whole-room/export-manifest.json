@@ -5,7 +5,7 @@
     "sha256": "b340afc131371088ac226d61ef989a3f28aff033ef7675b1e2e125cf539cee82",
     "integration": {
       "view": "rooms/whole-room/underwater_life_support_view.gd",
-      "card": "rooms/whole-room/life-support-card-mat-v4.png"
+      "card": "assets/room-furnishings-v7/cards/life_support.png"
     },
     "canonical_ports_nesw": [
       0,
@@ -22,15 +22,46 @@
       {
         "path": "rooms/production-ten/decor/maintenance-support-v1.png",
         "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/life-support-scrubber-trolley.png",
+        "sha256": "3354d13c17931c973680a3bd48e45ecc34fd606ab285c2af44a7c502fda53467"
+      },
+      {
+        "path": "assets/room-furnishings-v7/life-support-atmosphere-analysis-island.png",
+        "sha256": "772dbf4c9d5701212dfae22ec1b9195ca391f8d78c2da921866cca33ca4bb236"
+      },
+      {
+        "path": "assets/room-furnishings-v7/universal-sealed-filter-cassette-chest.png",
+        "sha256": "94cca47f142229201aca141d3e7f42fce85361b5086ed75d78add000d2dd12a3"
+      },
+      {
+        "path": "assets/room-furnishings-v7/life-support-atmosphere-analysis-island-registration.json",
+        "sha256": "8b0825d6ee48299e8ce2ffa22ab42b5e3321ea8ba5eb136bd6a1fa21b32b69d0"
+      },
+      {
+        "path": "assets/room-furnishings-v7/universal-sealed-filter-cassette-chest-registration.json",
+        "sha256": "e72ce90a04819456fd535089601091164578b2d32ee51bafc680a2549125e487"
       }
     ],
-    "composition_profile": "rooms/whole-room/life-support-composition-v3.json",
+    "composition_profile": "rooms/whole-room/life-support-composition-v5.json",
     "composition_assets": [
       {
-        "path": "rooms/whole-room/life-support-composition-v3.json",
-        "sha256": "4c3fb3d258e09bcea693e7dee6803dc4155189f095da9958539f34343e964b39"
+        "path": "rooms/whole-room/life-support-composition-v5.json",
+        "sha256": "4240a824d97a636f33c91af1b1bd775794e5f0fd8d49d542bdc8518a389d0533"
       }
-    ]
+    ],
+    "card": {
+      "path": "assets/room-furnishings-v7/cards/life_support.png",
+      "sha256": "54bfa4245c68609a9f7c4c5cf67cb4a6e37c913015460876b9e7c490d656e198"
+    },
+    "verification": {
+      "furnishing_v7": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v7/manifest.json; owner acceptance pending."
+    }
   },
   {
     "id": "hydroponics_bay",
@@ -84,15 +115,42 @@
       {
         "path": "rooms/production-ten/decor/maintenance-support-v1.png",
         "sha256": "4faaa6d321768bbe61218e3881f9af1083464c4ec06be9edf14895ad36e6f89f"
+      },
+      {
+        "path": "assets/material-polish-v4/maintenance-support.png",
+        "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
+      },
+      {
+        "path": "assets/room-furnishings-v5/reactor-control-rod-bench.png",
+        "sha256": "306c0018588f228c490211e31943ded0e7013c4c729f3bc224e0c5fcc981a680"
+      },
+      {
+        "path": "assets/room-furnishings-v5/universal-tool-chest.png",
+        "sha256": "9afd897a0a14bd9d916e941135e55df083219abf806d5257d674745dfbffa6b7"
+      },
+      {
+        "path": "assets/room-furnishings-v5/reactor-control-rod-bench-registration.json",
+        "sha256": "3bebff6038c28403156883596609420f85591f12d69efa2c40037ae66c1b90f2"
+      },
+      {
+        "path": "assets/room-furnishings-v5/universal-tool-chest-registration.json",
+        "sha256": "a3b1c7dc2e0027224313c74c1046e3841b6247a30c9a7e7b99708b8cf404077a"
       }
     ],
-    "composition_profile": "rooms/whole-room/reactor-composition-v2.json",
+    "composition_profile": "rooms/whole-room/reactor-composition-v3.json",
     "composition_assets": [
       {
-        "path": "rooms/whole-room/reactor-composition-v2.json",
-        "sha256": "553b3cf4f6a9b2dc9bd9292cc3820357a5b0d366c283e4e022b2be8ba4cfeae2"
+        "path": "rooms/whole-room/reactor-composition-v3.json",
+        "sha256": "df5c81c90b1b64375542098381e95cb7dedc529cd5b77698880f1a0dce2d59d4"
       }
-    ]
+    ],
+    "card": {
+      "path": "assets/room-furnishings-v5/cards/reactor.png",
+      "sha256": "a19cf19293f51f8d854dcfc38403def00f9c528550e195186b03226060ee080e"
+    },
+    "verification": {
+      "furnishing_v5": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v5/manifest.json; owner acceptance pending."
+    }
   },
   {
     "id": "med_bay",
@@ -100,7 +158,7 @@
     "sha256": "50f2bfef97600ccd77cfdebac8c8a003b2a3e5a410012798c1ea4d26ea7d6a6f",
     "integration": {
       "view": "rooms/whole-room/med_bay_view.gd",
-      "card": "rooms/whole-room/med-bay-card-foot-v3.png"
+      "card": "assets/room-furnishings-v7/cards/med_bay.png"
     },
     "canonical_ports_nesw": [
       2
@@ -114,16 +172,47 @@
       {
         "path": "rooms/production-ten/decor/research-v1.png",
         "sha256": "64a55d7bcf02204a70737c61f5ff38a442af64bb272b5c1f103b82bb3338b577"
+      },
+      {
+        "path": "assets/material-polish-v2/research-bench.png",
+        "sha256": "ed75c859d5ebf02852085845cc7473fadf707b8ff737a7352b20fcb49a0ea310"
+      },
+      {
+        "path": "assets/material-polish-science-v2/research-accessories.png",
+        "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
+      },
+      {
+        "path": "assets/room-furnishings-v7/med-bay-sterile-triage-island.png",
+        "sha256": "47733be1d52a6093f2dc308f2083070881b868fdcaff1b16a2fe535a4695c1d9"
+      },
+      {
+        "path": "assets/room-furnishings-v7/universal-enclosed-equipment-cart.png",
+        "sha256": "6cde01e7368e3df60e1ac5bba9b6dce5884be64bff6fcca0ef77679e4ba3192d"
+      },
+      {
+        "path": "assets/room-furnishings-v7/med-bay-sterile-triage-island-registration.json",
+        "sha256": "0dd2f344adc004ce82e8f21faf2134f8ecd135f4eca51deee3af9ded410e1a14"
+      },
+      {
+        "path": "assets/room-furnishings-v7/universal-enclosed-equipment-cart-registration.json",
+        "sha256": "503d386d2d9bbdabf9b7a90e70416089c80bffc0fca05c5c212f8d5bb586a383"
       }
     ],
-    "composition_profile": "rooms/whole-room/med-bay-composition-v2.json",
+    "composition_profile": "rooms/whole-room/med-bay-composition-v3.json",
     "composition_assets": [
       {
-        "path": "rooms/whole-room/med-bay-composition-v2.json",
-        "sha256": "0d0779e3b12047ec443cb2db4a58b3b336256d286f85fab9f04fb61d7f844af8"
+        "path": "rooms/whole-room/med-bay-composition-v3.json",
+        "sha256": "49685eb4f50cbc3fead04fba62c4a22a18714c3855887431cbf271bb08128ed6"
       }
     ],
-    "activity_review": "Paired treatment beds and separate preparation/supply area. Four-rotation state checks, 72 static depth probes and current-controller entry/return tour pass (12 arrivals, 8 transitions, 699 samples). Postdates Windows v5; station-scale and package review pending."
+    "activity_review": "Paired treatment beds and separate preparation/supply area. Four-rotation state checks, 72 static depth probes and current-controller entry/return tour pass (12 arrivals, 8 transitions, 699 samples). Postdates Windows v5; station-scale and package review pending.",
+    "card": {
+      "path": "assets/room-furnishings-v7/cards/med_bay.png",
+      "sha256": "e0f4326c05bca87ff61285b1c5800185731801c6ff822454bb213720d9f92a77"
+    },
+    "verification": {
+      "furnishing_v7": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v7/manifest.json; owner acceptance pending."
+    }
   },
   {
     "id": "crew_hab",

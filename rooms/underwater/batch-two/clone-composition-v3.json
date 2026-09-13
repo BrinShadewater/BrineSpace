@@ -1,0 +1,75 @@
+{
+  "textures": {
+    "island": "res://assets/material-polish-v2/research-bench.png",
+    "clone_genome_island": "res://assets/room-furnishings-v5/clone-genome-island.png",
+    "universal_sample_trolley": "res://assets/room-furnishings-v5/universal-sample-trolley.png"
+  },
+  "furniture": [
+    {
+      "id": "clone_genome_island",
+      "texture": "clone_genome_island",
+      "registration": "res://assets/room-furnishings-v5/clone-genome-island-registration.json",
+      "footprint": [
+        -48,
+        -15,
+        96,
+        30
+      ],
+      "ground_width": 1220,
+      "centers_by_quarter": [
+        [
+          -20,
+          -91
+        ],
+        [
+          126,
+          4
+        ],
+        [
+          0,
+          130
+        ],
+        [
+          -126,
+          -2
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_sample_trolley",
+      "texture": "universal_sample_trolley",
+      "registration": "res://assets/room-furnishings-v5/universal-sample-trolley-registration.json",
+      "footprint": [
+        -27,
+        -11,
+        54,
+        22
+      ],
+      "ground_width": 974,
+      "centers_by_quarter": [
+        [
+          0,
+          30
+        ],
+        [
+          -30,
+          0
+        ],
+        [
+          0,
+          -30
+        ],
+        [
+          30,
+          0
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": []
+}

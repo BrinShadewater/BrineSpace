@@ -1,0 +1,263 @@
+{
+  "version": 4,
+  "prompt_record": "assets/room-furnishings-v4/prompts.md",
+  "status": "integrated-native-reviewed-owner-acceptance-pending",
+  "native_evidence": "output/room-furnishings-v4/native-v1/runtime.json",
+  "native_contact_sheet": "output/room-furnishings-v4/native-v1-contact-sheet.jpg",
+  "card_contact_sheet": "output/room-furnishings-v4/cards-sheet.jpg",
+  "route_evidence": "output/test-runs/20260913-010049-headless",
+  "assets": [
+    {
+      "room": "current_turbine",
+      "id": "current_flow_governor",
+      "scope": "themed",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/power-expansion-v1/current_turbine-composition.json",
+      "selected_profile": "rooms/power-expansion-v1/current_turbine-composition-v2.json",
+      "asset": "assets/room-furnishings-v4/current-flow-governor.png",
+      "asset_sha256": "9085330a3065c9cf3d84a10c4d6c814917d0a46042c9c1c56f7b5af33c93548e",
+      "registration": "assets/room-furnishings-v4/current-flow-governor-registration.json",
+      "registration_sha256": "48f527b6300ff5f9f46ca1dd2e0a8d0dc7b20c7430442daff886850f1fde2d88",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-8ca6e5c3-9dbd-451f-8a7c-7e89ffd1abfc.png",
+      "centers_by_quarter": [
+        [
+          -72,
+          92
+        ],
+        [
+          -91,
+          -62
+        ],
+        [
+          -72,
+          -92
+        ],
+        [
+          91,
+          -62
+        ]
+      ],
+      "footprint": [
+        -50,
+        -14,
+        100,
+        28
+      ],
+      "card": "assets/room-furnishings-v4/cards/current_turbine.png",
+      "card_sha256": "35e89ed6c4799d4a449521ced740805c71b9981151bb4c55569cd2ebddaefbc9",
+      "agent_visual_review": "native-reviewed-12-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "current_turbine",
+      "id": "universal_instrument_cabinet",
+      "scope": "universal",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/power-expansion-v1/current_turbine-composition.json",
+      "selected_profile": "rooms/power-expansion-v1/current_turbine-composition-v2.json",
+      "asset": "assets/room-furnishings-v4/universal-instrument-cabinet.png",
+      "asset_sha256": "42300701cf18ed07d091646b528ea561f008663103ecef2760c6e4e87988ca10",
+      "registration": "assets/room-furnishings-v4/universal-instrument-cabinet-registration.json",
+      "registration_sha256": "64a51e7a615b871dd166b52ca309431c9e71f01745e953b549ce6e5f432c3d91",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-453e0764-9b1b-48b0-92e8-24931bfc5331.png",
+      "centers_by_quarter": [
+        [
+          132,
+          28
+        ],
+        [
+          -116,
+          82
+        ],
+        [
+          92,
+          -92
+        ],
+        [
+          116,
+          82
+        ]
+      ],
+      "footprint": [
+        -29,
+        -11,
+        58,
+        22
+      ],
+      "card": "assets/room-furnishings-v4/cards/current_turbine.png",
+      "card_sha256": "35e89ed6c4799d4a449521ced740805c71b9981151bb4c55569cd2ebddaefbc9",
+      "agent_visual_review": "native-reviewed-12-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "biomass_digester",
+      "id": "biomass_feedstock_island",
+      "scope": "themed",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/power-expansion-v1/biomass_digester-composition.json",
+      "selected_profile": "rooms/power-expansion-v1/biomass_digester-composition-v2.json",
+      "asset": "assets/room-furnishings-v4/biomass-feedstock-island.png",
+      "asset_sha256": "0ceaa44c87aec72612cff6d6d49098d19712cae11fcb0548039ef26ed61f6a25",
+      "registration": "assets/room-furnishings-v4/biomass-feedstock-island-registration.json",
+      "registration_sha256": "a0b360205eecaff111788b48049e5b1e1fffad85fab809280993160f341f343c",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-d10f17e9-fbbe-447c-8c93-7641b18fb08e.png",
+      "centers_by_quarter": [
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ]
+      ],
+      "footprint": [
+        -50,
+        -16,
+        100,
+        32
+      ],
+      "card": "assets/room-furnishings-v4/cards/biomass_digester.png",
+      "card_sha256": "3492a33db1c7b5da0396ee42dfdfe310e72f55dd1e6e65dafccc732234c9ebba",
+      "agent_visual_review": "native-reviewed-12-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "biomass_digester",
+      "id": "universal_maintenance_trestle",
+      "scope": "universal",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/power-expansion-v1/biomass_digester-composition.json",
+      "selected_profile": "rooms/power-expansion-v1/biomass_digester-composition-v2.json",
+      "asset": "assets/room-furnishings-v4/universal-maintenance-trestle.png",
+      "asset_sha256": "5567e7826c71f76bd10980af02de36445fb58eef95370f37eb710eb28bbc0bb7",
+      "registration": "assets/room-furnishings-v4/universal-maintenance-trestle-registration.json",
+      "registration_sha256": "8a6994475bb705e2597f9acb5a462650c4853937deb9d44b149e5dbdb2b4a69e",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-1b178412-0b48-4364-a3ee-13e11cd60ace.png",
+      "centers_by_quarter": [
+        [
+          90,
+          -92
+        ],
+        [
+          90,
+          -92
+        ],
+        [
+          90,
+          -92
+        ],
+        [
+          90,
+          -92
+        ]
+      ],
+      "footprint": [
+        -30,
+        -12,
+        60,
+        24
+      ],
+      "card": "assets/room-furnishings-v4/cards/biomass_digester.png",
+      "card_sha256": "3492a33db1c7b5da0396ee42dfdfe310e72f55dd1e6e65dafccc732234c9ebba",
+      "agent_visual_review": "native-reviewed-12-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "heat_recovery",
+      "id": "heat_exchanger_manifold",
+      "scope": "themed",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/power-expansion-v1/heat_recovery-composition.json",
+      "selected_profile": "rooms/power-expansion-v1/heat_recovery-composition-v2.json",
+      "asset": "assets/room-furnishings-v4/heat-exchanger-manifold.png",
+      "asset_sha256": "8becd0261652673f967a98322980474ab0ba1c2925c8d74b4cbb602d3dbcba8f",
+      "registration": "assets/room-furnishings-v4/heat-exchanger-manifold-registration.json",
+      "registration_sha256": "8870c2673c4e2a45f28eb203d3921493d3fbb566a744637204a2cfa174bda353",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-c3851a0b-4f18-418a-9f21-090bb9dd0816.png",
+      "centers_by_quarter": [
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ]
+      ],
+      "footprint": [
+        -52,
+        -15,
+        104,
+        30
+      ],
+      "card": "assets/room-furnishings-v4/cards/heat_recovery.png",
+      "card_sha256": "4e07bef2c05aca655f5fbdc978a74eaaf85e308641d7e453bb696496eb32c0f8",
+      "agent_visual_review": "native-reviewed-12-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "heat_recovery",
+      "id": "universal_cable_caddy",
+      "scope": "universal",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/power-expansion-v1/heat_recovery-composition.json",
+      "selected_profile": "rooms/power-expansion-v1/heat_recovery-composition-v2.json",
+      "asset": "assets/room-furnishings-v4/universal-cable-caddy.png",
+      "asset_sha256": "65e9a51871316be91a6c7e0b714240dbd8075e0f26e32569d4ac35ec7fe8c865",
+      "registration": "assets/room-furnishings-v4/universal-cable-caddy-registration.json",
+      "registration_sha256": "ca7338ce4a2a5511d23b99d987908242db8bc27fa6a48d806f31ee381732d932",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-23cb9e8c-e857-4010-90b9-e83fd659b0f2.png",
+      "centers_by_quarter": [
+        [
+          92,
+          -92
+        ],
+        [
+          92,
+          -92
+        ],
+        [
+          92,
+          -92
+        ],
+        [
+          92,
+          -92
+        ]
+      ],
+      "footprint": [
+        -31,
+        -11,
+        62,
+        22
+      ],
+      "card": "assets/room-furnishings-v4/cards/heat_recovery.png",
+      "card_sha256": "4e07bef2c05aca655f5fbdc978a74eaaf85e308641d7e453bb696496eb32c0f8",
+      "agent_visual_review": "native-reviewed-12-views",
+      "owner_acceptance": false
+    }
+  ]
+}

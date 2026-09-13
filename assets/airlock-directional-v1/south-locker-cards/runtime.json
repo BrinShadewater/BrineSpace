@@ -1,0 +1,139 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/airlock-deck-v1/card.png",
+				"missing_assets": [],
+				"review": "res://output/airlock-deck-20260912/final",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "life_support",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-straight",
+					"hosts": [
+						"changing_bench"
+					],
+					"purpose": "wet suit runoff",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"air_compressor"
+					],
+					"purpose": "compressor inspection",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/airlock-v1/airlock_view.gd",
+			"floor_stage": "Airlock deck revision: native four-rotation review, September 12, 2026",
+			"id": "airlock",
+			"machinery": [
+				{
+					"id": "suit_lockers",
+					"rect": [
+						85.0,
+						-25.0,
+						70.0,
+						90.0
+					]
+				},
+				{
+					"id": "outer_hatch",
+					"rect": [
+						-36.0,
+						-190.0,
+						72.0,
+						12.0
+					]
+				},
+				{
+					"id": "air_compressor",
+					"rect": [
+						-153.0,
+						-73.0,
+						60.0,
+						32.0
+					]
+				},
+				{
+					"id": "changing_bench",
+					"rect": [
+						-153.0,
+						109.0,
+						83.0,
+						24.0
+					]
+				},
+				{
+					"id": "pressure_chamber",
+					"rect": [
+						-60.0,
+						-184.0,
+						120.0,
+						220.0
+					]
+				}
+			],
+			"opacity": 0.85,
+			"source": "res://assets/airlock-deck-v1/dry-deck-source.png",
+			"source_sha256": "ee385b7b61f8566fd9c7e3e3538b7c8c5d5c7f32fb72903edaafdd0d4fae49cd",
+			"view": "res://rooms/underwater/airlock-v1/airlock_view.gd"
+		},
+		"layered": true,
+		"room": "airlock",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "suit_lockers",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "outer_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "air_compressor",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "changing_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "reserve_air_bank",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "equipment_check_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "pressure_chamber",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/airlock-v1/airlock_view.gd"
+	}
+]

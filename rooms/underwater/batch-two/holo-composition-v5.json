@@ -1,0 +1,187 @@
+{
+  "textures": {
+    "cart": "res://rooms/underwater/batch-two/archive-service-cart-v1.png",
+    "centerpiece_holo_calibration_block": "res://assets/room-centerpieces-v1/holo-calibration-block.png",
+    "holo_projection_alignment_deck": "res://assets/room-furnishings-v9/holographic-core-projection-alignment-deck.png",
+    "universal_instrument_calibration_case": "res://assets/room-furnishings-v9/universal-instrument-calibration-case.png"
+  },
+  "furniture": [
+    {
+      "id": "holo_projection_alignment_deck",
+      "texture": "holo_projection_alignment_deck",
+      "registration": "res://assets/room-furnishings-v9/holographic-core-projection-alignment-deck-registration.json",
+      "footprint": [
+        -54,
+        -18,
+        108,
+        36
+      ],
+      "ground_width": 1210,
+      "centers_by_quarter": [
+        [
+          0,
+          25
+        ],
+        [
+          -25,
+          0
+        ],
+        [
+          0,
+          -25
+        ],
+        [
+          25,
+          0
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_instrument_calibration_case",
+      "texture": "universal_instrument_calibration_case",
+      "registration": "res://assets/room-furnishings-v9/universal-instrument-calibration-case-registration.json",
+      "footprint": [
+        -30,
+        -13,
+        60,
+        26
+      ],
+      "ground_width": 1185,
+      "centers_by_quarter": [
+        [
+          -112,
+          108
+        ],
+        [
+          -108,
+          -112
+        ],
+        [
+          112,
+          -108
+        ],
+        [
+          108,
+          112
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "surface_routes": [
+    {
+      "from": {
+        "host": "holo_calibrator",
+        "source": [
+          425,
+          986
+        ]
+      },
+      "via": [
+        [
+          -109,
+          66
+        ],
+        [
+          -104,
+          97
+        ]
+      ],
+      "to": {
+        "host": "holo_calibration_cart",
+        "source": [
+          117.0,
+          1133.0
+        ]
+      },
+      "color": "405565",
+      "width": 1.8
+    }
+  ],
+  "routes": [
+    {
+      "from": {
+        "host": "holo_projector",
+        "source": [
+          185,
+          487
+        ]
+      },
+      "via": [
+        [
+          -177,
+          -62
+        ],
+        [
+          -177,
+          -14
+        ]
+      ],
+      "to": {
+        "host": "holo_calibrator",
+        "source": [
+          195,
+          1008
+        ]
+      },
+      "color": "3c505d",
+      "width": 3
+    },
+    {
+      "from": {
+        "host": "holo_compute",
+        "source": [
+          1084,
+          472
+        ]
+      },
+      "via": [
+        [
+          171,
+          -48
+        ],
+        [
+          171,
+          4
+        ]
+      ],
+      "to": {
+        "host": "holo_terminal",
+        "source": [
+          1062,
+          1012
+        ]
+      },
+      "color": "354853",
+      "width": 4
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          151,
+          -43
+        ],
+        [
+          164,
+          -43
+        ],
+        [
+          164,
+          -5
+        ],
+        [
+          151,
+          -5
+        ]
+      ],
+      "fill": "29373f",
+      "edge": "50616a"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ func _ready() -> void:
 		{"id":"research_cabinet","rect":Rect2(100,-117,64,42),"pivot":Vector2(915,1035),"width":308.0,"outline":[Vector2(764,690),Vector2(776,675),Vector2(1053,675),Vector2(1069,691),Vector2(1069,1020),Vector2(1057,1035),Vector2(778,1035),Vector2(763,1021)]}
 	]
 	# The sealed rear wall holds paired instruments; the larger prep station sits beside the entry aisle.
-	dressing=Dressing.new(self,"res://rooms/production-ten/decor/research-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/production-ten/decor/research-composition-v4.json")
 
 	rebuild()
 
@@ -94,4 +94,3 @@ func draw_prop_animation(prop: Dictionary) -> void:
 	if not operating: return
 	for mark in effect_marks(prop,machine_clock):
 		painter.draw_line(life_point(prop,mark[0]),life_point(prop,mark[1]),Color("8cd2e8"),1.15,true)
-

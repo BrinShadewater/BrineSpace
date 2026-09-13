@@ -13,7 +13,14 @@ func _init(id: String) -> void:
 			var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+id+"-"+direction+"-"+section+".json"))
 			var image := Image.new()
 			preload("res://scripts/safe_image.gd").load_png(image, data.source)
-			sections[direction].append({"registration":decode_registration(data),"texture":ImageTexture.create_from_image(image),"section":section})
+			var section_registration: Dictionary=decode_registration(data)
+			if data.has("operating_screens"):
+				section_registration.operating_screens=data.operating_screens.duplicate(true)
+			if data.has("operating_screen_color"):
+				section_registration.operating_screen_color=data.operating_screen_color
+			if data.get("mirror_horizontal",false):
+				section_registration=preload("res://scripts/room_asset_library.gd").mirror_registration(section_registration)
+			sections[direction].append({"registration":section_registration,"texture":ImageTexture.create_from_image(image),"section":section})
 
 func apply(room) -> void:
 	# Configuration runs every frame for shared views. Relocate only changed geometry.
@@ -36,11 +43,19 @@ func apply(room) -> void:
 		var along: float=-inner if index==0 else inner-span
 		var position := Vector2(along,-inner if direction=="north" else inner-height) if horizontal else Vector2(-inner if direction=="west" else inner-width,along)
 		kept.append({"id":"full_wall_"+asset_id+"_"+section.section,"full_wall":true,"wall_mount":true,"split_wall":true,"validate_directional_layout":true,"side_view":direction,"rect":Rect2(position,Vector2(width,height)),"sort_y":position.y+height,"registration":reg,"split_texture":section.texture})
+		if direction=="north":
+			kept[-1]["visual_y_offset"]=float(specification.get("north_art_offset",0.0))
 	var candidates: Array=room.props.filter(func(item): return not owns(item) and item.id not in specification.replaces)
 	candidates.sort_custom(func(a,b): return int(a.id in specification.preserve)>int(b.id in specification.preserve))
 	var moved: Array=[]
 	var unplaced: Array=[]
 	for original in candidates:
+		var dressing_spec: Dictionary=original.get("registration",{}).get("spec",{})
+		if dressing_spec.get("centerpiece",false) or dressing_spec.get("authored_anchor",false):
+			# The central installation is an authored anchor. Other furnishings move
+			# around it, and the room route fixture validates actual circulation.
+			kept.append(original)
+			continue
 		var candidate := vacant_placement(room,original,kept)
 		if candidate.is_empty(): unplaced.append(original.id)
 		else:
@@ -69,6 +84,7 @@ func draw(room, prop: Dictionary) -> void:
 	var reg: Dictionary=prop.registration
 	var scale: float=prop.rect.size.x/reg.width
 	var anchor := Vector2(prop.rect.get_center().x,prop.rect.end.y)
+	anchor.y+=float(prop.get("visual_y_offset",0.0))
 	for polygon in reg.pieces:
 		var points := PackedVector2Array()
 		var uv := PackedVector2Array()
@@ -76,3 +92,4 @@ func draw(room, prop: Dictionary) -> void:
 			points.append(anchor+(point-reg.pivot)*scale)
 			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(reg,point)/Vector2(prop.split_texture.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,prop.split_texture)
+	preload("res://scripts/room_asset_library.gd").draw_operating_screens(room,reg,anchor,scale)

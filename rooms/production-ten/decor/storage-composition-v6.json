@@ -1,0 +1,408 @@
+{
+  "textures": {
+    "bench": "res://rooms/production-ten/decor/storage-packing-bench-v3.png",
+    "cargo": "res://rooms/production-ten/storage_bay-source-v1.png",
+    "support": "res://assets/material-polish-v4/maintenance-support.png",
+    "staging": "res://rooms/production-ten/decor/storage-staging-pallet-v1.png",
+    "centerpiece": "res://assets/room-centerpieces-v1/storage-cargo-carousel.png",
+    "storage_cargo_sorting_island": "res://assets/room-furnishings-v8/storage-cargo-sorting-island.png",
+    "universal_folded_handling_dolly": "res://assets/room-furnishings-v8/universal-folded-handling-dolly.png"
+  },
+  "furniture": [
+    {
+      "id": "storage_cargo_sorting_island",
+      "texture": "storage_cargo_sorting_island",
+      "registration": "res://assets/room-furnishings-v8/storage-cargo-sorting-island-registration.json",
+      "footprint": [
+        -55,
+        -18,
+        110,
+        36
+      ],
+      "ground_width": 1210,
+      "centers_by_quarter": [[64, 28], [-64, 28], [-64, 28], [64, 28]],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_folded_handling_dolly",
+      "texture": "universal_folded_handling_dolly",
+      "registration": "res://assets/room-furnishings-v8/universal-folded-handling-dolly-registration.json",
+      "footprint": [
+        -29,
+        -13,
+        58,
+        26
+      ],
+      "ground_width": 1190,
+      "centers_by_quarter": [
+        [
+          110,
+          -60
+        ],
+        [
+          60,
+          110
+        ],
+        [
+          -110,
+          60
+        ],
+        [
+          -60,
+          -110
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "supported": [
+    {
+      "id": "storage_incoming_case",
+      "texture": "cargo",
+      "region": [
+        394,
+        148,
+        85,
+        59
+      ],
+      "pieces": [
+        [
+          [
+            398,
+            150
+          ],
+          [
+            476,
+            150
+          ],
+          [
+            478,
+            205
+          ],
+          [
+            395,
+            205
+          ]
+        ]
+      ],
+      "host": "storage_lift",
+      "anchor": [
+        315,
+        950
+      ],
+      "width": 22
+    }
+  ],
+  "decals": [
+    {
+      "points": [
+        [
+          -174,
+          68
+        ],
+        [
+          -28,
+          68
+        ],
+        [
+          -28,
+          157
+        ],
+        [
+          -174,
+          157
+        ]
+      ],
+      "fill": "454c4e",
+      "edge": "74796b"
+    },
+    {
+      "points": [
+        [
+          118,
+          113
+        ],
+        [
+          132,
+          113
+        ],
+        [
+          132,
+          115
+        ],
+        [
+          120,
+          115
+        ],
+        [
+          120,
+          127
+        ],
+        [
+          118,
+          127
+        ]
+      ],
+      "fill": "96906b"
+    },
+    {
+      "points": [
+        [
+          172,
+          113
+        ],
+        [
+          158,
+          113
+        ],
+        [
+          158,
+          115
+        ],
+        [
+          170,
+          115
+        ],
+        [
+          170,
+          127
+        ],
+        [
+          172,
+          127
+        ]
+      ],
+      "fill": "96906b"
+    },
+    {
+      "points": [
+        [
+          118,
+          161
+        ],
+        [
+          132,
+          161
+        ],
+        [
+          132,
+          159
+        ],
+        [
+          120,
+          159
+        ],
+        [
+          120,
+          147
+        ],
+        [
+          118,
+          147
+        ]
+      ],
+      "fill": "96906b"
+    },
+    {
+      "points": [
+        [
+          172,
+          161
+        ],
+        [
+          158,
+          161
+        ],
+        [
+          158,
+          159
+        ],
+        [
+          170,
+          159
+        ],
+        [
+          170,
+          147
+        ],
+        [
+          172,
+          147
+        ]
+      ],
+      "fill": "96906b"
+    },
+    {
+      "points": [
+        [
+          -161,
+          -147
+        ],
+        [
+          -144,
+          -147
+        ],
+        [
+          -144,
+          -145
+        ],
+        [
+          -161,
+          -145
+        ]
+      ],
+      "fill": "86816a"
+    },
+    {
+      "points": [
+        [
+          -161,
+          -147
+        ],
+        [
+          -159,
+          -147
+        ],
+        [
+          -159,
+          -130
+        ],
+        [
+          -161,
+          -130
+        ]
+      ],
+      "fill": "86816a"
+    },
+    {
+      "points": [
+        [
+          -60,
+          -147
+        ],
+        [
+          -77,
+          -147
+        ],
+        [
+          -77,
+          -145
+        ],
+        [
+          -60,
+          -145
+        ]
+      ],
+      "fill": "86816a"
+    },
+    {
+      "points": [
+        [
+          -60,
+          -147
+        ],
+        [
+          -58,
+          -147
+        ],
+        [
+          -58,
+          -130
+        ],
+        [
+          -60,
+          -130
+        ]
+      ],
+      "fill": "86816a"
+    },
+    {
+      "points": [
+        [
+          -161,
+          -55
+        ],
+        [
+          -144,
+          -55
+        ],
+        [
+          -144,
+          -53
+        ],
+        [
+          -161,
+          -53
+        ]
+      ],
+      "fill": "86816a"
+    },
+    {
+      "points": [
+        [
+          -161,
+          -55
+        ],
+        [
+          -159,
+          -55
+        ],
+        [
+          -159,
+          -72
+        ],
+        [
+          -161,
+          -72
+        ]
+      ],
+      "fill": "86816a"
+    },
+    {
+      "points": [
+        [
+          -60,
+          -55
+        ],
+        [
+          -77,
+          -55
+        ],
+        [
+          -77,
+          -53
+        ],
+        [
+          -60,
+          -53
+        ]
+      ],
+      "fill": "86816a"
+    },
+    {
+      "points": [
+        [
+          -60,
+          -55
+        ],
+        [
+          -58,
+          -55
+        ],
+        [
+          -58,
+          -72
+        ],
+        [
+          -60,
+          -72
+        ]
+      ],
+      "fill": "86816a"
+    }
+  ],
+  "routes": []
+}

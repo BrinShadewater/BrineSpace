@@ -14,7 +14,7 @@ func _ready() -> void:
 		{"id":"clone_nutrients","rect":Rect2(-151,96,78,59),"pivot":Vector2(328,1032),"width":228.0,"outline":[Vector2(227,779),Vector2(429,779),Vector2(441,795),Vector2(442,1019),Vector2(433,1032),Vector2(222,1032),Vector2(215,1018),Vector2(215,802)]},
 		{"id":"clone_console","rect":Rect2(67,99,94,56),"pivot":Vector2(886,1013),"width":254.0,"outline":[Vector2(771,814),Vector2(1001,814),Vector2(1011,829),Vector2(1011,1002),Vector2(1003,1013),Vector2(768,1013),Vector2(758,1002),Vector2(758,830)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/clone-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/clone-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:

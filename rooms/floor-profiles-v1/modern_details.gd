@@ -9,6 +9,8 @@ static func data() -> Dictionary:
 static func texture(id: String) -> Texture2D:
 	var spec: Dictionary=data()[id]
 	return Utility.texture(spec.asset) if spec.kit=="utility" else Floor.texture(spec.asset)
+static func retired_cable(id: String) -> bool:
+	return id.begins_with("cable-") or str(data().get(id,{}).get("asset","")).begins_with("cable_")
 static func bounds(id: String) -> Rect2:
 	var b: Array=data()[id].bounds
 	var box:=Rect2(b[0],b[1],b[2],b[3])
@@ -16,6 +18,7 @@ static func bounds(id: String) -> Rect2:
 	size*=minf(box.size.x/size.x,box.size.y/size.y)
 	return Rect2(box.get_center()-size/2,size)
 static func stamp(c: CanvasItem,id: String,at: Vector2,q:=0,opacity:=0.65,size_scale:=1.0,mirror:=Vector2.ONE,mirror_center:=Vector2.INF) -> void:
+	if retired_cable(id): return
 	var r:=bounds(id)
 	var points:=PackedVector2Array()
 	var center:=at if mirror_center==Vector2.INF else mirror_center

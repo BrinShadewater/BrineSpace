@@ -23,7 +23,10 @@ func _init(id: String) -> void:
 		var side_data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
 		var side_image := Image.new()
 		preload("res://scripts/safe_image.gd").load_png(side_image, side_data.source)
-		side_views[side]={"art":ImageTexture.create_from_image(side_image),"registration":decode_registration(side_data)}
+		var side_registration: Dictionary=decode_registration(side_data)
+		if side_data.get("mirror_horizontal",false):
+			side_registration=preload("res://scripts/room_asset_library.gd").mirror_registration(side_registration)
+		side_views[side]={"art":ImageTexture.create_from_image(side_image),"registration":side_registration}
 	load_mirrored_side(id)
 
 # Opt-in per asset: `side-<id>-side.json` is one authored side wall that serves both
@@ -57,7 +60,11 @@ func decode_registration(data: Dictionary) -> Dictionary:
 		var points := PackedVector2Array()
 		for point in polygon: points.append(Vector2(point[0],point[1]))
 		pieces.append(points)
-	return {"wall_mount":data.has("wall_contact"),"pieces":pieces,"pivot":Vector2(r[0]+r[2]*0.5,r[1]+r[3]),"width":float(r[2]),"height":float(r[3]),"outline":[Vector2(r[0],r[1]),Vector2(r[0]+r[2],r[1]),Vector2(r[0]+r[2],r[1]+r[3]),Vector2(r[0],r[1]+r[3])]}
+	var decoded: Dictionary={"wall_mount":data.has("wall_contact"),"pieces":pieces,"pivot":Vector2(r[0]+r[2]*0.5,r[1]+r[3]),"width":float(r[2]),"height":float(r[3]),"outline":[Vector2(r[0],r[1]),Vector2(r[0]+r[2],r[1]),Vector2(r[0]+r[2],r[1]+r[3]),Vector2(r[0],r[1]+r[3])]}
+	if data.has("reading_lamp"): decoded.reading_lamp=data.reading_lamp.duplicate(true)
+	if data.has("operating_screens"): decoded.operating_screens=data.operating_screens.duplicate(true)
+	if data.has("operating_screen_color"): decoded.operating_screen_color=data.operating_screen_color
+	return decoded
 
 func owns(prop: Dictionary) -> bool:
 	return prop.get("full_wall",false)
@@ -67,7 +74,7 @@ func bounds(prop: Dictionary) -> Rect2:
 	return Rect2(prop.rect.position.x,prop.rect.end.y-height+float(prop.get("visual_y_offset",0.0)),prop.rect.size.x,height)
 
 func apply(room) -> void:
-	if asset_id in ["pressure-manifold-wall","deepwater-listening-wall"] and room.quarter==0:
+	if asset_id=="pressure-manifold-wall" and room.quarter==0:
 		preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
 		return # Retain the accepted q0 originals.
 	for prop in room.props:
@@ -86,7 +93,7 @@ func apply(room) -> void:
 			restore_profiles(room)
 			return
 		source=side_views[side].registration
-	var south_bank: bool=side.is_empty() and north and not south and side_views.has("south")
+	var south_bank: bool=side.is_empty() and not south and side_views.has("south") and (north or (asset_id in ["radio-signal-wall","quarantine-specimen-wall"] and room.quarter==2) or (asset_id in ["ore-refinery-wall","biodome-habitat-wall","medical-records-wall","medical-diagnostic-wall","cryo-support-wall","construction-fabrication-wall","salvage-disassembly-wall","drone-service-wall"] and room.quarter==3))
 	if south_bank: source=side_views.south.registration
 	var width := 344.0
 	if not north: width=minf(width,134.0*source.width/source.height)
@@ -110,7 +117,7 @@ func apply(room) -> void:
 	if asset_id in ["salvage-disassembly-wall","construction-fabrication-wall","anomaly-containment-wall","radio-signal-wall","shield-pressure-wall","quarantine-specimen-wall","medical-diagnostic-wall","medical-records-wall","biomass-processing-wall"]:
 		prop.validate_directional_layout=true
 	# Lift artwork into the low north crown; collision remains on the floor.
-	prop["visual_y_offset"] = -22.0 if not north and side.is_empty() else 0.0
+	prop["visual_y_offset"] = -22.0 if not north and side.is_empty() and not south_bank else 0.0
 	var fleet: String={"drone-service-wall":"mining","salvage-disassembly-wall":"salvage","construction-fabrication-wall":"construction"}.get(asset_id, "")
 	var replaced: Array=[]
 	if "life_items" in room:
@@ -129,6 +136,12 @@ func apply(room) -> void:
 	if fleet in ["salvage","construction"]:
 		initial_props.sort_custom(func(a,b): return int(a.id in [fleet+"_rov",fleet+"_hatch"])>int(b.id in [fleet+"_rov",fleet+"_hatch"]))
 	for existing in initial_props:
+		var dressing_spec: Dictionary=existing.get("registration",{}).get("spec",{})
+		if dressing_spec.get("centerpiece",false) or dressing_spec.get("authored_anchor",false):
+			# Large authored floor installations deliberately interrupt the old
+			# straight-lane heuristic; current route fixtures prove walkaround access.
+			kept.append(existing)
+			continue
 		if asset_id in ["quarantine-specimen-wall","medical-diagnostic-wall","medical-records-wall"]:
 			displaced.append(existing)
 			continue
@@ -267,3 +280,4 @@ func draw(room, prop: Dictionary) -> void:
 			points.append(anchor+(point-selected.pivot)*scale)
 			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(selected,point)/Vector2(texture.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)
+	preload("res://scripts/room_asset_library.gd").draw_operating_screens(room,selected,anchor,scale)

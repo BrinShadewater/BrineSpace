@@ -48,6 +48,7 @@ static func _resolve_uncached(view: Node, profile: Dictionary) -> Dictionary:
 		var spec: Dictionary=source_spec.duplicate(false)
 		var override: Dictionary=spec.get("rotations",{}).get(str(view.quarter),{})
 		for key in override: spec[key]=override[key]
+		if Art.retired_cable(str(spec.asset)): continue
 		var host: Dictionary={}
 		for candidate_id in spec.hosts:
 			for prop in view.props:

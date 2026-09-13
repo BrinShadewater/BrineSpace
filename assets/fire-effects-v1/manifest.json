@@ -1,0 +1,432 @@
+[
+  {
+    "id": "flame",
+    "source": "flame-source-v1.png",
+    "source_sha256": "2c246ae7e9633ddd31b036f7475ca466ca6b44769e6a3c934bc47998db7d50cb",
+    "grid": [
+      4,
+      2
+    ],
+    "source_cell": [
+      384,
+      512
+    ],
+    "runtime_cell": [
+      96,
+      128
+    ],
+    "pivot": [
+      48,
+      118
+    ],
+    "suggested_fps": 8,
+    "frames": [
+      {
+        "frame": 0,
+        "foreground_pixels": 26121,
+        "bounds": [
+          116,
+          158,
+          293,
+          463
+        ],
+        "translation": [
+          -16,
+          10
+        ]
+      },
+      {
+        "frame": 1,
+        "foreground_pixels": 33758,
+        "bounds": [
+          107,
+          75,
+          300,
+          463
+        ],
+        "translation": [
+          -10,
+          10
+        ]
+      },
+      {
+        "frame": 2,
+        "foreground_pixels": 30661,
+        "bounds": [
+          99,
+          137,
+          296,
+          463
+        ],
+        "translation": [
+          -2,
+          10
+        ]
+      },
+      {
+        "frame": 3,
+        "foreground_pixels": 30576,
+        "bounds": [
+          91,
+          112,
+          282,
+          463
+        ],
+        "translation": [
+          2,
+          10
+        ]
+      },
+      {
+        "frame": 4,
+        "foreground_pixels": 32109,
+        "bounds": [
+          107,
+          96,
+          299,
+          444
+        ],
+        "translation": [
+          -16,
+          29
+        ]
+      },
+      {
+        "frame": 5,
+        "foreground_pixels": 35534,
+        "bounds": [
+          105,
+          90,
+          300,
+          444
+        ],
+        "translation": [
+          -9,
+          29
+        ]
+      },
+      {
+        "frame": 6,
+        "foreground_pixels": 31096,
+        "bounds": [
+          99,
+          113,
+          285,
+          443
+        ],
+        "translation": [
+          0,
+          30
+        ]
+      },
+      {
+        "frame": 7,
+        "foreground_pixels": 25936,
+        "bounds": [
+          97,
+          136,
+          275,
+          443
+        ],
+        "translation": [
+          1,
+          30
+        ]
+      }
+    ],
+    "atlas": "flame-atlas-v2.png",
+    "runtime_atlas": "flame-96x128-v2.png",
+    "stage": "integrated and native verified; owner art review pending",
+    "integration": "res://scripts/fire_effects.gd",
+    "atlas_sha256": "64a588d32827bf6347521fea8e629272f48dd88a0bbd218dd29187aef994c178",
+    "runtime_atlas_sha256": "9fec9d7421faa342d722857c07d1906a73ab245a6e7cc0892793c4e92a3502c8",
+    "alpha": "RGBA; binary 0/255; transparent pixels have zero RGB",
+    "revision_note": "Owner flagged white cutout fringe; removed 2855 exterior pale matte pixels, preserving existing gaps and cores. v1 retained."
+  },
+  {
+    "id": "smoke",
+    "source": "smoke-source-v1.png",
+    "source_sha256": "75dc350fac23ace96847de289905d2211ef423adf1379f7d96db02e8474db5e4",
+    "grid": [
+      4,
+      2
+    ],
+    "source_cell": [
+      384,
+      512
+    ],
+    "runtime_cell": [
+      96,
+      128
+    ],
+    "pivot": [
+      48,
+      118
+    ],
+    "suggested_fps": 6,
+    "frames": [
+      {
+        "frame": 0,
+        "foreground_pixels": 11870,
+        "bounds": [
+          148,
+          136,
+          253,
+          472
+        ],
+        "translation": [
+          -3,
+          1
+        ]
+      },
+      {
+        "frame": 1,
+        "foreground_pixels": 17479,
+        "bounds": [
+          120,
+          102,
+          260,
+          472
+        ],
+        "translation": [
+          -4,
+          1
+        ]
+      },
+      {
+        "frame": 2,
+        "foreground_pixels": 22421,
+        "bounds": [
+          108,
+          50,
+          287,
+          472
+        ],
+        "translation": [
+          -3,
+          1
+        ]
+      },
+      {
+        "frame": 3,
+        "foreground_pixels": 26563,
+        "bounds": [
+          84,
+          49,
+          315,
+          472
+        ],
+        "translation": [
+          -1,
+          1
+        ]
+      },
+      {
+        "frame": 4,
+        "foreground_pixels": 24751,
+        "bounds": [
+          72,
+          44,
+          316,
+          468
+        ],
+        "translation": [
+          -3,
+          5
+        ]
+      },
+      {
+        "frame": 5,
+        "foreground_pixels": 18327,
+        "bounds": [
+          84,
+          45,
+          291,
+          468
+        ],
+        "translation": [
+          -4,
+          5
+        ]
+      },
+      {
+        "frame": 6,
+        "foreground_pixels": 13685,
+        "bounds": [
+          116,
+          112,
+          262,
+          468
+        ],
+        "translation": [
+          -2,
+          5
+        ]
+      },
+      {
+        "frame": 7,
+        "foreground_pixels": 11827,
+        "bounds": [
+          136,
+          136,
+          240,
+          468
+        ],
+        "translation": [
+          0,
+          5
+        ]
+      }
+    ],
+    "atlas": "smoke-atlas.png",
+    "runtime_atlas": "smoke-96x128.png",
+    "stage": "integrated and native verified; owner art review pending",
+    "integration": "res://scripts/fire_effects.gd",
+    "atlas_sha256": "affa67b526c773151da7aa47b6e5a9eb779d0f3a06f6dda8bab3b528867f2d31",
+    "runtime_atlas_sha256": "8ea9621347b2cb983547f9372be71986eb9b99d938309cb4a4859c593b379113",
+    "alpha": "RGBA; binary 0/255; transparent pixels have zero RGB"
+  },
+  {
+    "id": "embers",
+    "source": "embers-source-v1.png",
+    "source_sha256": "2195571c01d832d2bf42acf4d1407f9ad7bf08ff0e913667ac4a9810e6e77b92",
+    "grid": [
+      4,
+      2
+    ],
+    "source_cell": [
+      384,
+      512
+    ],
+    "runtime_cell": [
+      96,
+      128
+    ],
+    "pivot": [
+      48,
+      118
+    ],
+    "suggested_fps": 8,
+    "frames": [
+      {
+        "frame": 0,
+        "foreground_pixels": 1879,
+        "bounds": [
+          143,
+          285,
+          255,
+          472
+        ],
+        "translation": [
+          -2,
+          1
+        ]
+      },
+      {
+        "frame": 1,
+        "foreground_pixels": 1886,
+        "bounds": [
+          136,
+          217,
+          266,
+          472
+        ],
+        "translation": [
+          0,
+          1
+        ]
+      },
+      {
+        "frame": 2,
+        "foreground_pixels": 1500,
+        "bounds": [
+          136,
+          177,
+          267,
+          472
+        ],
+        "translation": [
+          -2,
+          1
+        ]
+      },
+      {
+        "frame": 3,
+        "foreground_pixels": 1332,
+        "bounds": [
+          126,
+          123,
+          255,
+          472
+        ],
+        "translation": [
+          -2,
+          1
+        ]
+      },
+      {
+        "frame": 4,
+        "foreground_pixels": 1278,
+        "bounds": [
+          137,
+          115,
+          271,
+          472
+        ],
+        "translation": [
+          0,
+          1
+        ]
+      },
+      {
+        "frame": 5,
+        "foreground_pixels": 1316,
+        "bounds": [
+          128,
+          152,
+          271,
+          472
+        ],
+        "translation": [
+          0,
+          1
+        ]
+      },
+      {
+        "frame": 6,
+        "foreground_pixels": 1187,
+        "bounds": [
+          110,
+          188,
+          253,
+          472
+        ],
+        "translation": [
+          0,
+          1
+        ]
+      },
+      {
+        "frame": 7,
+        "foreground_pixels": 1760,
+        "bounds": [
+          139,
+          264,
+          244,
+          472
+        ],
+        "translation": [
+          0,
+          1
+        ]
+      }
+    ],
+    "atlas": "embers-atlas.png",
+    "runtime_atlas": "embers-96x128.png",
+    "stage": "integrated and native verified; owner art review pending",
+    "integration": "res://scripts/fire_effects.gd",
+    "atlas_sha256": "d639b5b8277ad523ebc0c8a51ea2b5159a22b6dc8adad423cfbb61ac0abafbdf",
+    "runtime_atlas_sha256": "4c9fe3b6507c8a80c3ef84716c17d905583d5eb779df9f623f7e58225bd17f44",
+    "alpha": "RGBA; binary 0/255; transparent pixels have zero RGB"
+  }
+]

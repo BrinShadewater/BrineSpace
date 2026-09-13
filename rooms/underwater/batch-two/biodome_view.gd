@@ -16,7 +16,7 @@ func _ready() -> void:
 		{"id":"biodome_aquatic","rect":Rect2(-158,72,96,66),"pivot":Vector2(316,1039),"width":296.0,"outline":[Vector2(170,781),Vector2(182,759),Vector2(201,746),Vector2(282,746),Vector2(282,735),Vector2(296,724),Vector2(320,724),Vector2(337,735),Vector2(337,746),Vector2(422,746),Vector2(446,757),Vector2(461,779),Vector2(463,1018),Vector2(448,1034),Vector2(429,1039),Vector2(190,1039),Vector2(170,1020)]},
 		{"id":"biodome_processor","rect":Rect2(58,74,108,80),"pivot":Vector2(905,1039),"width":372.0,"outline":[Vector2(722,779),Vector2(730,762),Vector2(738,758),Vector2(738,725),Vector2(750,705),Vector2(772,691),Vector2(795,686),Vector2(818,687),Vector2(844,698),Vector2(860,716),Vector2(870,740),Vector2(870,752),Vector2(881,761),Vector2(888,779),Vector2(889,841),Vector2(895,841),Vector2(895,720),Vector2(905,705),Vector2(922,702),Vector2(1074,702),Vector2(1089,714),Vector2(1092,1014),Vector2(1080,1031),Vector2(1063,1039),Vector2(746,1039),Vector2(722,1021)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/biodome-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/biodome-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:

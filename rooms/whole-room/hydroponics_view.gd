@@ -18,7 +18,7 @@ func _ready() -> void:
 		{"id":"hydro_nutrients","rect":Rect2(-160,55,66,44),"pivot":Vector2(306,1010),"width":275.0,"outline":[Vector2(173,805),Vector2(198,805),Vector2(198,761),Vector2(208,744),Vector2(232,730),Vector2(255,730),Vector2(281,749),Vector2(285,787),Vector2(311,787),Vector2(312,757),Vector2(329,737),Vector2(354,730),Vector2(378,738),Vector2(398,757),Vector2(400,790),Vector2(428,790),Vector2(440,806),Vector2(440,1003),Vector2(427,1010),Vector2(173,1010)]},
 		{"id":"hydro_harvest","rect":Rect2(77,104,88,48),"pivot":Vector2(931,1014),"width":288.0,"outline":[Vector2(804,778),Vector2(1058,778),Vector2(1070,790),Vector2(1077,1001),Vector2(1062,1014),Vector2(797,1014),Vector2(785,1000),Vector2(791,792)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/whole-room/hydro-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/whole-room/hydro-composition-v4.json")
 	rebuild()
 
 func draw_room_floor(center: Vector2) -> void:

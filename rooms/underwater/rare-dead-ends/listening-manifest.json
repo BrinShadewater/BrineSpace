@@ -9,13 +9,13 @@
     ],
     "integration": {
       "view": "rooms/underwater/rare-dead-ends/listening_post_view.gd",
-      "card": "rooms/underwater/rare-dead-ends/listening_post-card-group-v1.png"
+      "card": "assets/room-furnishings-v9/cards/listening_post.png"
     },
-    "composition_profile": "rooms/underwater/rare-dead-ends/listening-composition-v1.json",
+    "composition_profile": "rooms/underwater/rare-dead-ends/listening-composition-v3.json",
     "composition_assets": [
       {
-        "path": "rooms/underwater/rare-dead-ends/listening-composition-v1.json",
-        "sha256": "625cf2e99962fbd6ae3e3e1f9f15bfba4a4f0f307c0407ff42928c2ca2063858"
+        "path": "rooms/underwater/rare-dead-ends/listening-composition-v3.json",
+        "sha256": "6e482ef43fb31ccdc67de2eee89a06a62df0cd9b5720865d9d11d203a04ececc"
       }
     ],
     "component_assets": [
@@ -26,7 +26,34 @@
       {
         "path": "rooms/production-ten/decor/command-operator-chair-v1.png",
         "sha256": "e2a88e9ea0bba09d60dc4ba94699a95aceed9974da7515c5188183a54c1db11b"
+      },
+      {
+        "path": "assets/room-centerpieces-v1/listening-hydrophone-table.png",
+        "sha256": "c4ea6d717cd7631962f0dfec1a957d5b0f1f26e4ccebed78afe84ec4fc513719"
+      },
+      {
+        "path": "assets/room-furnishings-v9/listening-hydrophone-analysis-table.png",
+        "sha256": "a0484c44bc6a3713df4cc9eccc544fa85c48012037cf52d362c7fd3c580cb1f6"
+      },
+      {
+        "path": "assets/room-furnishings-v9/universal-rugged-power-conditioner.png",
+        "sha256": "4e5669019db9671ab41d0744addb0c3d276e6c4d933bee2123491cfdcee6844e"
+      },
+      {
+        "path": "assets/room-furnishings-v9/listening-hydrophone-analysis-table-registration.json",
+        "sha256": "1772746577060092ea9b06f9abdd87c053585984ac4dd9d170bc500c02acd7cf"
+      },
+      {
+        "path": "assets/room-furnishings-v9/universal-rugged-power-conditioner-registration.json",
+        "sha256": "374ca8e06a6ed7399315b82c39b06a8990fdc18d46850cb6f2a9d6053a3bf7f4"
       }
-    ]
+    ],
+    "card": {
+      "path": "assets/room-furnishings-v9/cards/listening_post.png",
+      "sha256": "9aabf01c2eff09cacda3fabb04eaf560e1f4faea8a459eebdae854d870295388"
+    },
+    "verification": {
+      "furnishing_v9": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v9/manifest.json; owner acceptance pending."
+    }
   }
 ]

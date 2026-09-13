@@ -1,0 +1,115 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/mycelium_nursery.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "agriculture",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "drain-end_cap",
+					"hosts": [
+						"filter"
+					],
+					"purpose": "filter washdown terminus",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"bench"
+					],
+					"purpose": "substrate preparation footing",
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/nursery_furnished_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "mycelium_nursery",
+			"machinery": [
+				{
+					"id": "bench",
+					"rect": [
+						-165.015502929688,
+						96.4651184082031,
+						118.031005859375,
+						47.069766998291
+					]
+				},
+				{
+					"id": "filter",
+					"rect": [
+						62.1240310668945,
+						38.7906951904297,
+						113.751937866211,
+						52.4186019897461
+					]
+				},
+				{
+					"id": "nursery_supply_trolley",
+					"rect": [
+						-164.0,
+						39.0,
+						44.0,
+						16.0
+					]
+				},
+				{
+					"id": "nursery_substrate_stand",
+					"rect": [
+						38.0,
+						131.0,
+						52.0,
+						20.0
+					]
+				},
+				{
+					"id": "full_wall_mycelium-cultivation-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						132.452926635742
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/agriculture-floor.png",
+			"source_sha256": "25baab3652d76f97adc245e9ad7ebf2f1762bdfe4072e363d37c14ed12f6f8ee",
+			"view": "res://rooms/full-wall-v1/mycelium_nursery_view.gd"
+		},
+		"layered": true,
+		"room": "mycelium_nursery",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_mycelium-cultivation-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "filter",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "bench",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/mycelium_nursery_view.gd"
+	}
+]

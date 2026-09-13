@@ -1,0 +1,140 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/battery_array.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "engineering",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"battery_distribution",
+						"full_wall_battery-wall_distribution"
+					],
+					"purpose": "distribution service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-standing_mat",
+					"hosts": [
+						"battery_test_bench",
+						"full_wall_battery-wall_distribution"
+					],
+					"purpose": "electrical test footing",
+					"rotations": {
+						"1": {
+							"scale": 0.45
+						},
+						"3": {
+							"scale": 0.45
+						}
+					},
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/battery_array_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "battery_array",
+			"machinery": [
+				{
+					"id": "battery_bank_west",
+					"rect": [
+						-165.0,
+						-119.0,
+						114.0,
+						64.0
+					]
+				},
+				{
+					"id": "battery_bank_east",
+					"rect": [
+						51.0,
+						45.0,
+						114.0,
+						64.0
+					]
+				},
+				{
+					"id": "battery_breaker",
+					"rect": [
+						-168.0,
+						62.0,
+						72.0,
+						44.0
+					]
+				},
+				{
+					"id": "battery_distribution",
+					"rect": [
+						-90.0,
+						110.0,
+						58.0,
+						36.0
+					]
+				},
+				{
+					"id": "battery_test_bench",
+					"rect": [
+						67.0,
+						-80.0,
+						96.0,
+						26.0
+					]
+				},
+				{
+					"id": "battery_cable_reel",
+					"rect": [
+						45.0,
+						-140.0,
+						28.0,
+						12.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/engineering-tread.png",
+			"source_sha256": "e0654dbb646f557a8abd985dd324f286f7ec64cdd62b23b505fc4394336008b0",
+			"view": "res://rooms/full-wall-v1/battery_array_view.gd"
+		},
+		"layered": true,
+		"room": "battery_array",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_battery-wall_cells",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_battery-wall_distribution",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "battery_breaker",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "battery_distribution",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/battery_array_view.gd"
+	}
+]

@@ -1,0 +1,75 @@
+{
+  "textures": {
+    "support": "res://assets/material-polish-v4/maintenance-support.png",
+    "accessories": "res://rooms/production-ten/decor/maintenance-v1.png",
+    "heat_exchanger_manifold": "res://assets/room-furnishings-v4/heat-exchanger-manifold.png",
+    "universal_cable_caddy": "res://assets/room-furnishings-v4/universal-cable-caddy.png"
+  },
+  "furniture": [
+    {
+      "id": "heat_exchanger_manifold",
+      "texture": "heat_exchanger_manifold",
+      "registration": "res://assets/room-furnishings-v4/heat-exchanger-manifold-registration.json",
+      "footprint": [
+        -52,
+        -15,
+        104,
+        30
+      ],
+      "ground_width": 1204,
+      "centers_by_quarter": [
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ],
+        [
+          -70,
+          -92
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_cable_caddy",
+      "texture": "universal_cable_caddy",
+      "registration": "res://assets/room-furnishings-v4/universal-cable-caddy-registration.json",
+      "footprint": [
+        -31,
+        -11,
+        62,
+        22
+      ],
+      "ground_width": 1203,
+      "centers_by_quarter": [
+        [
+          92,
+          -92
+        ],
+        [
+          92,
+          -92
+        ],
+        [
+          92,
+          -92
+        ],
+        [
+          92,
+          -92
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": []
+}

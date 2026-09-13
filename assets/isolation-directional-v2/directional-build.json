@@ -1,0 +1,32 @@
+{
+  "room": "isolation_vault",
+  "source": "assets/isolation-directional-v1/isolation-south.png",
+  "source_sha256": "9872fd8b15d49c8021801b60e1a826e7172ad9e9fed1f2350fdea62b635d59e6",
+  "accepted_source_direction": "south",
+  "source_alpha_bbox": [
+    78,
+    160,
+    2018,
+    548
+  ],
+  "border_neutral_pixels_removed": 822278,
+  "operation": "owner-approved south Emergency Isolation bank plus exact quarter turns",
+  "directions": {
+    "south": {
+      "path": "assets/isolation-directional-v2/south-overhead.png",
+      "sha256": "1da7684e41e0e1575c6db6f842233b40046f3f64559a710d27eeb925f5b4cf17"
+    },
+    "north": {
+      "path": "assets/isolation-directional-v2/north-overhead.png",
+      "sha256": "37c861b60dc5b197fa4028aa4f83e0fa102c39f270e9864b15ce907e476d3572"
+    },
+    "east": {
+      "path": "assets/isolation-directional-v2/east-overhead.png",
+      "sha256": "2db7c159a16e1dd5a159ef88c62586c1bdd451a0fa9baad4ff64114bbb5279bf"
+    },
+    "west": {
+      "path": "assets/isolation-directional-v2/west-overhead.png",
+      "sha256": "74dc2f74ea6426ac547d5aa4f1599ca3f38250008df73c478759b460b51d7062"
+    }
+  }
+}

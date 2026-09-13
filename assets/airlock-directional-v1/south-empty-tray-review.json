@@ -1,0 +1,26 @@
+{
+  "room": "airlock",
+  "stage": "integrated-service-reviewed-native-ui-failures",
+  "source": "assets/airlock-directional-v1/suit-storage-south-empty-tray.png",
+  "original": "exec-5183054a-aebd-4e9f-a331-025b62507dc5.png",
+  "registration": "rooms/full-wall-v1/registrations/side-airlock-suit-storage-south-empty-tray.json",
+  "dimensions": [
+    2172,
+    724
+  ],
+  "evidence": "output/airlock-empty-tray-2026-09-12",
+  "findings": [
+    "Far-left pickup tray is empty; two main stored helmets, two suits and four boots retained.",
+    "Carrying-handle apertures registered from verified neutral seeds (775,149)/(1620,149).",
+    "Native library view at width120 reviewed; no live room or service code changed.",
+    "Current fitting anchor is prop.rect x-28,end.y+6, facing east; rendered helmet uses x-7,end.y-25. New tray must align both before live selection."
+  ],
+  "owner_acceptance": false,
+  "quarter": 0,
+  "live_evidence": "output/airlock-south-locker-live-2026-09-12",
+  "tests": {
+    "headless": "Airlock and176 layouts pass at20260912-122223-headless; Bill4quarters,Veld/Branforth q0",
+    "native": "Veld q0 pickup/return captures reviewed; only3 sidebar-viewport assertions fail",
+    "cards": "47 identities pass"
+  }
+}

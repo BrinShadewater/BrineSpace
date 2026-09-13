@@ -1,0 +1,102 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/gravity_loom.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "anomaly",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"loom_apparatus"
+					],
+					"purpose": "apparatus calibration port",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"loom_calibration_bench"
+					],
+					"purpose": "calibration supply entry",
+					"rotations": {
+						"2": {
+							"stand_off": 32.0
+						}
+					},
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "gravity_loom",
+			"machinery": [
+				{
+					"id": "loom_apparatus",
+					"rect": [
+						-90.0,
+						-60.0,
+						180.0,
+						120.0
+					]
+				},
+				{
+					"id": "loom_calibration_bench",
+					"rect": [
+						-166.0,
+						115.0,
+						84.0,
+						30.0
+					]
+				},
+				{
+					"id": "loom_task_light",
+					"rect": [
+						-70.0,
+						135.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/anomaly-floor.png",
+			"source_sha256": "15af18a8de4ec0f346130ef8582e5d117badb7fc63aa305976e7ce1c93e3052a",
+			"view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd"
+		},
+		"layered": true,
+		"room": "gravity_loom",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "loom_apparatus",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "library/side-gravity-weights-south",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "library/side-gravity-control-south",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/underwater/gravity-loom/gravity_loom_view.gd"
+	}
+]

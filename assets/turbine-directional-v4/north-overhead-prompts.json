@@ -1,0 +1,12 @@
+{
+  "generator": "built-in image generation",
+  "use_case": "stylized-concept then precise-object-edit",
+  "references": {
+    "subject_identity": "res://rooms/power-expansion-v1/current_turbine-bright-source-v1.png",
+    "camera_material_and_skid": "res://assets/turbine-directional-v1/turbine-south.png"
+  },
+  "first_prompt": "Create one new top-down overhead north-wall turbine assembly preserving the ocean-current turbine workflow: intake at left, coupling in the middle, generator at right. Use one wide connected skid, fixed backing along the top edge, and put intake opening, service controls, meter panel, latches and working edges toward the room center at the bottom. Match BrineSpace painterly pixel art with charcoal/gunmetal dominant, muted rust structure, teal-grey impeller and tiny indicators. Genuine transparent alpha; no room, floor, text, people, arrows, white cutouts, checkerboard, bright orange, bloom, chrome or front elevation.",
+  "first_result": "Rejected: preserved the subject but kept a tall circular frontal intake and dominant orange.",
+  "revision_prompt": "Transform the camera/projection and orange finish into a genuine shallow top-down overhead installation. Foreshorten the intake into a wide ellipse facing downward, expose broad top planes, keep the assembly wide/low and preserve intake/coupling/generator inventory. Use charcoal/gunmetal with dark rust-brown structure, tiny indicator lenses and teal-grey impeller. Genuine transparent alpha; no checkerboard, front-facing circular fan, tall facade, isometric yaw, floor, room, text or bloom.",
+  "revision_result": "Selected after deterministic exterior cleanup, removal of 25 disconnected alpha specks, vector registration and native q0 review. Built-in output was RGB with an imitated transparency field despite the prompt."
+}

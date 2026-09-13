@@ -1,0 +1,207 @@
+{
+  "room": "airlock",
+  "stage": "existing-modular-art-inventoried-directional-repair-required",
+  "evidence": "output/airlock-facing-review-2026-09-12/native/runtime.json",
+  "source_hashes": {
+    "rooms/underwater/airlock-v1/composition.json": "5b5ebbe437ce96c9953d44b29209cc6164a7264b1a58f3a936c9bbb744efc740",
+    "rooms/underwater/airlock-v1/airlock_view.gd": "c1541c3456044baef8415556cf599cb0003a5ed5838c971e96de816de1bfa817",
+    "assets/airlock-wall-v1/suit-air-bank.png": "28691b9b76886bc52b4a68df296cc5e537213179cd1816b64238e56cb9f499bf"
+  },
+  "textures": {
+    "airlock": "res://rooms/underwater/airlock-v1/cutouts.png",
+    "service_bank": "res://assets/airlock-wall-v1/suit-air-bank.png"
+  },
+  "furniture": [
+    {
+      "id": "suit_lockers",
+      "texture": "service_bank",
+      "region": [
+        69,
+        93,
+        708,
+        581
+      ],
+      "footprint": [
+        85,
+        -25,
+        70,
+        90
+      ],
+      "pivot": [
+        423,
+        668
+      ],
+      "ground_width": 600,
+      "centers_by_quarter": [
+        [
+          120,
+          20
+        ],
+        [
+          -20,
+          120
+        ],
+        [
+          -98,
+          -15
+        ],
+        [
+          120,
+          -40
+        ]
+      ],
+      "live_furniture": true
+    },
+    {
+      "id": "outer_hatch",
+      "texture": "airlock",
+      "region": [
+        631,
+        62,
+        596,
+        578
+      ],
+      "footprint": [
+        -58,
+        -133,
+        116,
+        36
+      ],
+      "pivot": [
+        930,
+        635
+      ],
+      "ground_width": 588,
+      "live_furniture": true
+    },
+    {
+      "id": "air_compressor",
+      "texture": "airlock",
+      "region": [
+        102,
+        696,
+        373,
+        419
+      ],
+      "footprint": [
+        -153,
+        -10,
+        60,
+        32
+      ],
+      "pivot": [
+        272,
+        1110
+      ],
+      "ground_width": 327,
+      "live_furniture": true,
+      "centers_by_quarter": [
+        [
+          -123,
+          6
+        ],
+        [
+          -10,
+          -104
+        ],
+        [
+          123,
+          -6
+        ],
+        [
+          -10,
+          -104
+        ]
+      ]
+    },
+    {
+      "id": "changing_bench",
+      "texture": "airlock",
+      "region": [
+        581,
+        757,
+        623,
+        365
+      ],
+      "footprint": [
+        -153,
+        109,
+        83,
+        24
+      ],
+      "pivot": [
+        892,
+        1118
+      ],
+      "ground_width": 614,
+      "live_furniture": true
+    },
+    {
+      "id": "reserve_air_bank",
+      "texture": "service_bank",
+      "region": [
+        1200,
+        138,
+        718,
+        536
+      ],
+      "footprint": [
+        -180,
+        -169,
+        104,
+        32
+      ],
+      "pivot": [
+        1559,
+        668
+      ],
+      "ground_width": 718,
+      "live_furniture": true
+    },
+    {
+      "id": "equipment_check_bench",
+      "texture": "service_bank",
+      "region": [
+        775,
+        153,
+        430,
+        515
+      ],
+      "footprint": [
+        78,
+        -169,
+        100,
+        32
+      ],
+      "pivot": [
+        990,
+        668
+      ],
+      "ground_width": 430,
+      "live_furniture": true
+    }
+  ],
+  "native_reviewed": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "findings": [
+    "Pressure chamber geometry rotates; service bays relocate per quarter.",
+    "Furniture art remains front-facing in all quarters; side and south placements are not directionally corrected.",
+    "q0 reserve-air and equipment-check bank occupy north positions and face into room.",
+    "Suit lockers remain front-facing at side placements; removable shelf helmet is an independent runtime attachment."
+  ],
+  "constraints": [
+    "Preserve chamber interlocks, compressor service route and crew service anchors.",
+    "Do not install full-width bank across chamber or entrance.",
+    "Do not bake the removable handoff helmet into new directional sources.",
+    "Current source also includes static decorative helmet artwork; audit separately from removable attachment."
+  ],
+  "next": [
+    "Author directional suit locker and equipment bench as separate props.",
+    "Validate fitted-helmet approach/reachability after any integration, including east-facing case that failed earlier south draft."
+  ],
+  "production_changes": false
+}

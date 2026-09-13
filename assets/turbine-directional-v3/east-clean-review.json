@@ -1,0 +1,29 @@
+{
+  "stage": "integrated-native-temporal-and-route-reviewed",
+  "source": "east-overhead-clean.png",
+  "raw": "exec-5eabf721-0ca7-45d9-bf42-858996ad32aa.png",
+  "sha256": "5ed59db9d4a18621fe10392ef37748284c29674b7383146ee41c4531bbc5f161",
+  "size": [
+    887,
+    1774
+  ],
+  "registration": "east-overhead-registration.json",
+  "review": "White background excluded by read-only vector registration. Native q1 reviewed: low skid reads overhead, intake faces left toward center and machinery remains on east arrow wall. Aspect containment shortens occupied length versus original; orange remains visually stronger than room fixtures. Native capture exits 0.",
+  "evidence": "output/turbine-fresh-2026-09-12/native/current_turbine-q1.png",
+  "remaining": "Retained station pause/state review and owner aesthetic acceptance remain.",
+  "fitted_review": {
+    "registration": "east-fitted-registration.json",
+    "evidence": "output/turbine-fresh-2026-09-12/fitted",
+    "native_exit": 0,
+    "findings": "East and mirrored west native images reviewed at 270 length. West inward intake clear; east artwork crosses wall because saved placement is reapplied after candidate rect resize. Must change source and saved position together. Candidate not installed.",
+    "remaining": "Correct candidate saved layout east placement; source-local effect anchors replacing old bounds UV; geometry/door checks and native powered review."
+  },
+  "positioned_review": {
+    "layout": "fitted-layout.json",
+    "evidence": "output/turbine-fresh-2026-09-12/positioned/runtime.json",
+    "native_exit": 0,
+    "findings": "Candidate layout overrides correct east position to81.38678, west remains-184; both rectangles102.61322x270 fit within hull+-184. Native east image reviewed, inward left intake and arrow wall retained.",
+    "remaining": "Powered source anchors, native east/west state checks, collision/access tests before production selection."
+  },
+  "installed_checks": "176layouts/20variants pass20260912-135713-headless; native installed-a/b exit0; four temporal source-anchor crops pass; west installed-b visually reviewed. q0 card unchanged."
+}

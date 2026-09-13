@@ -1,0 +1,798 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/crew_hab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "crew",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"hab_desk"
+					],
+					"purpose": "quiet flush utility access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-access_hatch",
+					"hosts": [
+						"full_wall_crew-hab-berth-wall"
+					],
+					"purpose": "compact berth ventilation hatch within the narrow service strip",
+					"rotations": {
+						"2": {
+							"stand_off": 48.0
+						}
+					},
+					"scale": 0.4
+				}
+			],
+			"floor_owner": "res://rooms/whole-room/crew_hab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "crew_hab",
+			"machinery": [
+				{
+					"id": "hab_desk",
+					"rect": [
+						-132.0,
+						100.0,
+						96.0,
+						54.0
+					]
+				},
+				{
+					"id": "hab_coat_stand",
+					"rect": [
+						-164.0,
+						108.0,
+						18.0,
+						9.0
+					]
+				},
+				{
+					"id": "full_wall_crew-hab-berth-wall",
+					"rect": [
+						-146.776275634766,
+						-174.0,
+						293.552551269531,
+						134.0
+					]
+				},
+				{
+					"id": "hab_berth_west",
+					"rect": [
+						48.3131256103516,
+						52.3434295654297,
+						62.0,
+						92.0
+					]
+				},
+				{
+					"id": "hab_reading_lamp",
+					"rect": [
+						156.0,
+						-50.660285949707,
+						18.0,
+						8.0
+					]
+				},
+				{
+					"id": "hab_drying_rack",
+					"rect": [
+						120.0,
+						43.4024200439453,
+						54.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/habitation-composite.png",
+			"source_sha256": "6d61be8c35cd3a10cd7d7021d10fcd2e0df97a9eb3e71c1ad67c6e4309d69b58",
+			"view": "res://rooms/full-wall-v1/crew_hab_view.gd"
+		},
+		"layered": true,
+		"room": "crew_hab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "universal_storage_bench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_crew-hab-berth-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_chair",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_desk",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "hab_berth_west",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/crew_hab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/research_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "science",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"full_wall_research-analysis-wall"
+					],
+					"purpose": "analysis wall service access",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"reagent_trolley"
+					],
+					"purpose": "clean sample transfer boundary",
+					"scale": 0.6
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/research_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "research_lab",
+			"machinery": [
+				{
+					"id": "research_scanner",
+					"rect": [
+						-162.0,
+						22.0,
+						106.0,
+						68.0
+					]
+				},
+				{
+					"id": "preparation_island",
+					"rect": [
+						39.0,
+						60.0,
+						88.0,
+						34.0
+					]
+				},
+				{
+					"id": "reagent_trolley",
+					"rect": [
+						139.0,
+						88.0,
+						30.0,
+						12.0
+					]
+				},
+				{
+					"id": "full_wall_research-analysis-wall",
+					"rect": [
+						-164.0,
+						-174.0,
+						328.0,
+						123.642807006836
+					]
+				},
+				{
+					"id": "sample_cooler",
+					"rect": [
+						144.0,
+						-17.2686576843262,
+						30.0,
+						10.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/science-panels.png",
+			"source_sha256": "1c07323270a25358bc2cbdfde26caaf9880d6a751934c3008fc0a145e3dee32e",
+			"view": "res://rooms/full-wall-v1/research_lab_view.gd"
+		},
+		"layered": true,
+		"room": "research_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "research_specimen_island",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_research-analysis-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "research_specimens",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "research_cabinet",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "research_scanner",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/research_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/anomaly_lab.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"base_tint": "35323c",
+			"condition": "maintained",
+			"department": "anomaly",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"anomaly_platform"
+					],
+					"purpose": "platform inspection access",
+					"scale": 1.0
+				},
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"anomaly_diagnostics"
+					],
+					"purpose": "diagnostic service entry",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/xeno_lab_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "anomaly_lab",
+			"machinery": [
+				{
+					"id": "anomaly_platform",
+					"rect": [
+						-54.0,
+						-135.0,
+						108.0,
+						86.0
+					]
+				},
+				{
+					"id": "anomaly_diagnostics",
+					"rect": [
+						65.0,
+						-10.0,
+						100.0,
+						72.0
+					]
+				},
+				{
+					"id": "anomaly_capacitors",
+					"rect": [
+						-159.0,
+						70.0,
+						98.0,
+						66.0
+					]
+				},
+				{
+					"id": "anomaly_receiver",
+					"rect": [
+						62.0,
+						96.0,
+						100.0,
+						62.0
+					]
+				},
+				{
+					"id": "anomaly_recording_cart",
+					"rect": [
+						-118.0,
+						-72.0,
+						56.0,
+						24.0
+					]
+				},
+				{
+					"id": "anomaly_task_light",
+					"rect": [
+						-157.0,
+						-64.0,
+						14.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/floors-and-details-v3/anomaly-floor.png",
+			"source_sha256": "15af18a8de4ec0f346130ef8582e5d117badb7fc63aa305976e7ce1c93e3052a",
+			"view": "res://rooms/full-wall-v1/anomaly_lab_view.gd"
+		},
+		"layered": true,
+		"room": "anomaly_lab",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "anomaly_diagnostics",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_capacitors",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_receiver",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "universal_utility_cart",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_anomaly-containment-wall",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "anomaly_platform",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/anomaly_lab_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/command_center.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "command",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "cable-equipment_entry",
+					"hosts": [
+						"command_systems"
+					],
+					"purpose": "command systems service entry",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"command_chart_credenza",
+						"full_wall_command-wall_operations"
+					],
+					"purpose": "recessed chart station supply",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/command_center_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "command_center",
+			"machinery": [
+				{
+					"id": "command_ops",
+					"rect": [
+						-160.0,
+						-78.0,
+						72.0,
+						42.0
+					]
+				},
+				{
+					"id": "command_systems",
+					"rect": [
+						-158.0,
+						-144.341094970703,
+						80.0,
+						40.0
+					]
+				},
+				{
+					"id": "command_table",
+					"rect": [
+						-145.0,
+						80.0,
+						114.0,
+						66.0
+					]
+				},
+				{
+					"id": "command_comms",
+					"rect": [
+						64.0,
+						-120.0,
+						96.0,
+						58.0
+					]
+				},
+				{
+					"id": "command_chart_credenza",
+					"rect": [
+						103.0,
+						42.0,
+						58.0,
+						20.0
+					]
+				},
+				{
+					"id": "command_operator_chair",
+					"rect": [
+						112.0,
+						100.0,
+						38.0,
+						14.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/command-gunmetal.png",
+			"source_sha256": "286b5045e72dced150779a38d391835660e4ebf86b7d2bccf9c090b350d50852",
+			"view": "res://rooms/full-wall-v1/command_center_view.gd"
+		},
+		"layered": true,
+		"room": "command_center",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": true,
+						"id": "full_wall_command-wall_operations",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_command-wall_comms",
+						"registered": true,
+						"side_view": "north"
+					},
+					{
+						"full_wall": false,
+						"id": "command_systems",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_table",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "command_planning_table",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/command_center_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_center.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"medical_station",
+						"full_wall_medical-diagnostic-wall"
+					],
+					"purpose": "clean station boundary",
+					"scale": 0.7
+				},
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"medical_imaging",
+						"full_wall_medical-diagnostic-wall"
+					],
+					"purpose": "imaging service access",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/med_center_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_center",
+			"machinery": [
+				{
+					"id": "medical_treatment",
+					"rect": [
+						-153.0,
+						-147.0,
+						82.0,
+						82.0
+					]
+				},
+				{
+					"id": "medical_imaging",
+					"rect": [
+						68.0,
+						-138.979309082031,
+						88.0,
+						84.0
+					]
+				},
+				{
+					"id": "medical_supplies",
+					"rect": [
+						-158.0,
+						94.0,
+						96.0,
+						64.0
+					]
+				},
+				{
+					"id": "medical_station",
+					"rect": [
+						64.0,
+						86.0,
+						98.0,
+						74.0
+					]
+				},
+				{
+					"id": "medical_care_trolley",
+					"rect": [
+						-70.0,
+						-52.0,
+						48.0,
+						20.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/med_center_view.gd"
+		},
+		"layered": true,
+		"room": "med_center",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "medical_instrument_trolley",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_medical-diagnostic-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "medical_treatment",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "medical_supplies",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/med_center_view.gd"
+	},
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/med_office.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "medical",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-inspection_plug",
+					"hosts": [
+						"office_exam",
+						"full_wall_medical-records-wall"
+					],
+					"purpose": "exam equipment service",
+					"scale": 1.0
+				},
+				{
+					"asset": "detail-teal_marking",
+					"hosts": [
+						"office_records",
+						"full_wall_medical-records-wall"
+					],
+					"purpose": "record cart stopping zone",
+					"rotations": {
+						"1": {
+							"scale": 0.5
+						}
+					},
+					"scale": 0.7
+				}
+			],
+			"floor_owner": "res://rooms/underwater/batch-two/med_office_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "med_office",
+			"machinery": [
+				{
+					"id": "office_desk",
+					"rect": [
+						-159.0,
+						-142.0,
+						98.0,
+						70.0
+					]
+				},
+				{
+					"id": "office_records",
+					"rect": [
+						79.0,
+						-127.309280395508,
+						66.0,
+						64.0
+					]
+				},
+				{
+					"id": "office_exam",
+					"rect": [
+						-157.0,
+						30.0,
+						90.0,
+						82.0
+					]
+				},
+				{
+					"id": "office_consultation",
+					"rect": [
+						70.0,
+						46.0,
+						88.0,
+						72.0
+					]
+				},
+				{
+					"id": "office_reference_shelf",
+					"rect": [
+						110.0,
+						-19.0,
+						52.0,
+						20.0
+					]
+				},
+				{
+					"id": "office_reading_lamp",
+					"rect": [
+						45.0,
+						79.0,
+						18.0,
+						8.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v1/medical-sealed.png",
+			"source_sha256": "541e947c24d44519840b2f6dfab8112fb55d34673b72247d068198c08e30cf2d",
+			"view": "res://rooms/full-wall-v1/med_office_view.gd"
+		},
+		"layered": true,
+		"room": "med_office",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "universal_workbench",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_medical-records-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "office_exam",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "office_consultation",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/med_office_view.gd"
+	}
+]

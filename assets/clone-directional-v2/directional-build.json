@@ -1,0 +1,32 @@
+{
+  "room": "clone_lab",
+  "source": "assets/clone-directional-v1/clone-sides.png",
+  "source_sha256": "89776b3456e9f4702921263447634e0d1c445a72e50ab2cebea51c5582a20089",
+  "accepted_source_direction": "east",
+  "accepted_source_crop": [
+    910,
+    17,
+    1227,
+    975
+  ],
+  "border_neutral_pixels_removed_before_crop": 1090666,
+  "operation": "owner-approved east bank extraction plus exact quarter turns",
+  "directions": {
+    "east": {
+      "path": "assets/clone-directional-v2/east-overhead.png",
+      "sha256": "35d357afd4f5fbaf8afe7dc4541585266a73824344816658548192a832eae63c"
+    },
+    "north": {
+      "path": "assets/clone-directional-v2/north-overhead.png",
+      "sha256": "0841cf77f1664418eced55cebb083ec2880bfb9a9ecd47c5319d35a47e24f6fe"
+    },
+    "south": {
+      "path": "assets/clone-directional-v2/south-overhead.png",
+      "sha256": "e564b28f542a11a3bf5adcbe40c4cb1984e43b1ca215b19c7e320ecd4e2ad1b6"
+    },
+    "west": {
+      "path": "assets/clone-directional-v2/west-overhead.png",
+      "sha256": "6ae0831407310f6e22c766858379a83195fb3dfed6e2103134990f04825c6f3a"
+    }
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "version": 3,
+  "prompt_record": "assets/room-furnishings-v3/prompts.md",
+  "status": "integrated-native-reviewed-owner-acceptance-pending",
+  "native_evidence": "output/room-furnishings-v3/native-v2/runtime.json",
+  "native_contact_sheet": "output/room-furnishings-v3/native-v2-contact-sheet.jpg",
+  "card_contact_sheet": "output/room-furnishings-v3/cards-sheet.jpg",
+  "route_evidence": "output/test-runs/20260913-003920-headless",
+  "assets": [
+    {
+      "room": "hydroponics_bay",
+      "id": "hydro_nutrient_island",
+      "scope": "themed",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/whole-room/hydro-composition-v3.json",
+      "selected_profile": "rooms/whole-room/hydro-composition-v4.json",
+      "asset": "assets/room-furnishings-v3/hydroponics-nutrient-island.png",
+      "asset_sha256": "6f660c298472ee622ca86f3cb399c0bfd6eedafc3c4453792a3e8da58cdc5a3b",
+      "registration": "assets/room-furnishings-v3/hydroponics-nutrient-island-registration.json",
+      "registration_sha256": "0a673d95ffe8144ef454ca717d9a981582b2e3ed9eec2fc37ccc0c8e899b342a",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-64020c72-25e3-4794-9df4-9179c456adf3.png",
+      "centers_by_quarter": [
+        [
+          -85,
+          35
+        ],
+        [
+          0,
+          40
+        ],
+        [
+          85,
+          -35
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "footprint": [
+        -52,
+        24,
+        104,
+        32
+      ],
+      "card": "assets/room-furnishings-v3/cards/hydroponics_bay.png",
+      "card_sha256": "6da593380e0c94029d773e00e9e040edc79c82ceb15f97f1725c4b99fcdce78d",
+      "agent_visual_review": "native-reviewed-24-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "ore_refinery",
+      "id": "refinery_sorting_bench",
+      "scope": "themed",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/production-ten/decor/refinery-composition-v3.json",
+      "selected_profile": "rooms/production-ten/decor/refinery-composition-v4.json",
+      "asset": "assets/room-furnishings-v3/refinery-assay-bench.png",
+      "asset_sha256": "a811dccb55880ddfda20dcc151871f068376e1ef54da4f7c3125bf680667d59c",
+      "registration": "assets/room-furnishings-v3/refinery-assay-bench-registration.json",
+      "registration_sha256": "81b8acdf2d9776e24ded183190dfd179dc6f272c146a7f6453b8333fc4f93177",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-fe86782b-5358-4ab1-86b1-82ac4949b23b.png",
+      "centers_by_quarter": [
+        [
+          95,
+          100
+        ],
+        [
+          -100,
+          95
+        ],
+        [
+          -95,
+          -100
+        ],
+        [
+          100,
+          -20
+        ]
+      ],
+      "footprint": [
+        47,
+        85,
+        96,
+        30
+      ],
+      "card": "assets/room-furnishings-v3/cards/ore_refinery.png",
+      "card_sha256": "39ac410752a3a5ea770c707eff494502d8df781bcc21e17b1c0f30e227671d33",
+      "agent_visual_review": "native-reviewed-24-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "cryo_chamber",
+      "id": "cryo_thaw_cart",
+      "scope": "themed",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/underwater/batch-two/cryo-composition-v2.json",
+      "selected_profile": "rooms/underwater/batch-two/cryo-composition-v3.json",
+      "asset": "assets/room-furnishings-v3/cryo-thaw-cart.png",
+      "asset_sha256": "0075d10917f82c2088af2c624ccc9b9a5c965298bc4428ae90e8a618658e8e17",
+      "registration": "assets/room-furnishings-v3/cryo-thaw-cart-registration.json",
+      "registration_sha256": "d915445b02c4b785b5abec61d97a5bad72d722cba302e730d662e54ed8138987",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-f2fe8a9e-d7ee-409a-b496-abab1ec82df5.png",
+      "centers_by_quarter": [
+        [
+          86,
+          61
+        ],
+        [
+          -82,
+          62
+        ],
+        [
+          -86,
+          -61
+        ],
+        [
+          82,
+          -62
+        ]
+      ],
+      "footprint": [
+        58,
+        49,
+        56,
+        24
+      ],
+      "card": "assets/room-furnishings-v3/cards/cryo_chamber.png",
+      "card_sha256": "f6b60cf9dbd0e8807e2a27d3cb318f16201d25810f71f9375149b1b4d43b5e2f",
+      "agent_visual_review": "native-reviewed-24-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "quarantine_cell",
+      "id": "universal_parts_chest",
+      "scope": "universal",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/production-ten/decor/quarantine-composition-v3.json",
+      "selected_profile": "rooms/production-ten/decor/quarantine-composition-v4.json",
+      "asset": "assets/room-furnishings-v3/universal-parts-chest.png",
+      "asset_sha256": "7f32dd681db31a90fb78deeb5c5afe0ab8735459549c2bbba85dca3730a8ef83",
+      "registration": "assets/room-furnishings-v3/universal-parts-chest-registration.json",
+      "registration_sha256": "22d28e87342e22ff5f5733eefda32fa940933d5a42677ce6169e822b727d72b4",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-3fef65dc-825b-4014-bb7f-1144fe574fd3.png",
+      "centers_by_quarter": [
+        [
+          81,
+          84
+        ],
+        [
+          -84,
+          81
+        ],
+        [
+          -81,
+          -84
+        ],
+        [
+          84,
+          -81
+        ]
+      ],
+      "footprint": [
+        42,
+        72,
+        78,
+        24
+      ],
+      "card": "assets/room-furnishings-v3/cards/quarantine_cell.png",
+      "card_sha256": "2942fb95074d95229df81a05618b9ed85b4ed43191ec8fa72bddc0f7cffff25a",
+      "agent_visual_review": "native-reviewed-24-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "pressure_control",
+      "id": "universal_equipment_plinth",
+      "scope": "universal",
+      "size_class": "large",
+      "shape": "rectangle",
+      "source_profile": "rooms/underwater/rare-dead-ends/pressure-composition-v1.json",
+      "selected_profile": "rooms/underwater/rare-dead-ends/pressure-composition-v2.json",
+      "asset": "assets/room-furnishings-v3/universal-equipment-plinth.png",
+      "asset_sha256": "971061d4463249a698fc911cb0a58199ec175f5f71f3009a3207bfd88369c698",
+      "registration": "assets/room-furnishings-v3/universal-equipment-plinth-registration.json",
+      "registration_sha256": "cc6812dc2159871b7f5f24d48b2b306e726b921be1d6132e6ae207f2adaccf1e",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-919517bd-3c5e-44ee-a6b1-48ee50dbd957.png",
+      "centers_by_quarter": [
+        [
+          0,
+          42
+        ],
+        [
+          0,
+          42
+        ],
+        [
+          0,
+          42
+        ],
+        [
+          0,
+          42
+        ]
+      ],
+      "footprint": [
+        -56,
+        21,
+        112,
+        42
+      ],
+      "card": "assets/room-furnishings-v3/cards/pressure_control.png",
+      "card_sha256": "71e6555bc335c90c0f39af2119d7477dfd40902672cbf7548d4f8a9d6f3e8755",
+      "agent_visual_review": "native-reviewed-24-views",
+      "owner_acceptance": false
+    },
+    {
+      "room": "isolation_vault",
+      "id": "universal_task_table",
+      "scope": "universal",
+      "size_class": "medium",
+      "shape": "rectangle",
+      "source_profile": "rooms/underwater/rare-dead-ends/isolation-composition-v1.json",
+      "selected_profile": "rooms/underwater/rare-dead-ends/isolation-composition-v2.json",
+      "asset": "assets/room-furnishings-v3/universal-task-table.png",
+      "asset_sha256": "19fa372eb00c895a592086ad3c3d50371188b8079f86eb5f16f11456d8cff5c9",
+      "registration": "assets/room-furnishings-v3/universal-task-table-registration.json",
+      "registration_sha256": "ace592f574ac4a928955633dde5fa3c8f42d4d49c541f7eb761a71396a7e87a6",
+      "generated_source": "C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-8d88d2bb-880d-4a6d-996d-c2d9962c0b92.png",
+      "centers_by_quarter": [
+        [
+          0,
+          46
+        ],
+        [
+          0,
+          46
+        ],
+        [
+          0,
+          46
+        ],
+        [
+          0,
+          46
+        ]
+      ],
+      "footprint": [
+        -48,
+        32,
+        96,
+        28
+      ],
+      "card": "assets/room-furnishings-v3/cards/isolation_vault.png",
+      "card_sha256": "251f1d392d2c018c12e049375d83dc8d4d138cfe8e065028d63b74a21bc4b991",
+      "agent_visual_review": "native-reviewed-24-views",
+      "owner_acceptance": false
+    }
+  ]
+}

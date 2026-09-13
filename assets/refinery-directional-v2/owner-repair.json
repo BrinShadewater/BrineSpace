@@ -1,0 +1,58 @@
+{
+  "operation": "Ore Refinery owner repair",
+  "palette_rule": "Mute saturated orange paint toward burnt orange; retain yellow logistics markings and lower-saturation copper/ore materials.",
+  "cutout_rule": "Make exterior-connected bright-neutral source background transparent, then exclude any overlap from registered geometry.",
+  "sources": [
+    {
+      "source": "assets/refinery-directional-v1/refinery-north.png",
+      "output": "assets/refinery-directional-v2/refinery-north.png",
+      "changed_pixels": 110573,
+      "transparent_exterior_pixels": 822734,
+      "total_pixels": 1572864,
+      "sha256": "8d1d39c818a32fb77d5f9fbf8a12de1ff8c9e464f064f9f6f7c54ced26ead643"
+    },
+    {
+      "source": "assets/refinery-directional-v1/refinery-sides.png",
+      "output": "assets/refinery-directional-v2/refinery-sides.png",
+      "changed_pixels": 80678,
+      "transparent_exterior_pixels": 1038204,
+      "total_pixels": 1572864,
+      "sha256": "dba7c6a77371140570b8763bb764ec3c8784c9b1663127ac8c316ca32ddd93ca"
+    },
+    {
+      "source": "assets/refinery-directional-v1/refinery-south.png",
+      "output": "assets/refinery-directional-v2/refinery-south.png",
+      "changed_pixels": 114358,
+      "transparent_exterior_pixels": 765044,
+      "total_pixels": 1573420,
+      "sha256": "ebc384065a891bcb98d12db4deb459a290794ffbf76f5aaaf43430f7970aae88"
+    }
+  ],
+  "registrations": [
+    {
+      "registration": "rooms/full-wall-v1/registrations/ore-refinery-wall.json",
+      "pieces": 4,
+      "registration_area_delta": 361.836
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-ore-refinery-wall-east.json",
+      "pieces": 1,
+      "registration_area_delta": 158.852
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-ore-refinery-wall-west.json",
+      "pieces": 1,
+      "registration_area_delta": 336.539
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-ore-refinery-wall-south.json",
+      "pieces": 1,
+      "registration_area_delta": 266.091
+    }
+  ],
+  "runtime_install": {
+    "assets/refinery-directional-v1/refinery-north.png": "assets/refinery-directional-v2/refinery-north.png",
+    "assets/refinery-directional-v1/refinery-sides.png": "assets/refinery-directional-v2/refinery-sides.png",
+    "assets/refinery-directional-v1/refinery-south.png": "assets/refinery-directional-v2/refinery-south.png"
+  }
+}

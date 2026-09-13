@@ -1,6 +1,8 @@
 extends "res://rooms/whole-room/life_support_view.gd"
 ## Crew-style BRINE floats behind the chamber's water, reflections and front rim.
 var body_texture: Texture2D
+var body_source_rect: Rect2
+var body_normalized_rect: Rect2
 const BODY_RECT := Rect2(521,575,210,210)
 const NAMEPLATE := Rect2(555,535,142,34)
 var architect_pod: Dictionary = {}:
@@ -10,7 +12,7 @@ var architect_pod: Dictionary = {}:
 		if changed: layout.clear() # Invalidate the shared geometry cache only when furniture changes.
 const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
 var dressing: RefCounted
-func is_animated_prop(prop: Dictionary) -> bool: return prop.id=="brine_chamber"
+func is_animated_prop(prop: Dictionary) -> bool: return prop.id=="brine_chamber" or prop.registration.has("operating_screens")
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	var bounds: Rect2=super.prop_visual_bounds(prop)
@@ -19,6 +21,8 @@ func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	return bounds
 func rebuild() -> void:
 	super.rebuild()
+	for prop in props:
+		if prop.id=="brine_chamber": prop.registration["owns_contact_shadow"]=true
 	if dressing!=null: dressing.place()
 	if not architect_pod.is_empty():
 		var source: Rect2=preload("res://scripts/architects.gd").CORE_POD_RECT
@@ -30,7 +34,11 @@ func _ready() -> void:
 	var image := Image.new()
 	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/brine-core/source-v1.png")
 	life_texture=ImageTexture.create_from_image(image)
-	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/brine-core/renewal-v2/brine-float-v4.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/brine-core/renewal-v2/brine-cleaned-v4.png")
+	body_source_rect=Rect2(image.get_used_rect())
+	# Preserve the old 92-square registration without discarding source detail.
+	var registered_width:=roundf(body_source_rect.size.x*74.0/body_source_rect.size.y)
+	body_normalized_rect=Rect2(Vector2(floorf((92.0-registered_width)/2.0),9.0)/92.0,Vector2(registered_width,74.0)/92.0)
 	body_texture=ImageTexture.create_from_image(image)
 	life_items=[{"id":"brine_chamber","rect":Rect2(-52,-40,104,80),"pivot":Vector2(626,879),"width":286.0,"outline":[Vector2(512,459),Vector2(517,429),Vector2(538,404),Vector2(570,384),Vector2(603,375),Vector2(649,375),Vector2(686,386),Vector2(718,407),Vector2(737,434),Vector2(743,460),Vector2(743,670),Vector2(760,695),Vector2(770,722),Vector2(770,808),Vector2(757,836),Vector2(730,858),Vector2(690,873),Vector2(648,880),Vector2(603,879),Vector2(562,870),Vector2(525,853),Vector2(500,830),Vector2(484,797),Vector2(484,719),Vector2(493,696),Vector2(511,674)]}]
 	dressing=Dressing.new(self,"res://rooms/underwater/brine-core/renewal-v2/composition.json")
@@ -40,14 +48,17 @@ func draw_room_floor(center: Vector2) -> void:
 	RoomFloor.draw_profile_floor(self,painter,center,Color("303b40"),Color(0.10,0.17,0.19,0.22),2,"sealed")
 	RoomFloor.draw_profile_dressing(self,painter,center,edges,"sealed")
 	if dressing!=null: dressing.floor()
-	# Preserve the tank contact shadow without automatic workstation mats.
+	# Source-registered contact shade hugs the ceramic skirt instead of floating
+	# below its front edge. The shared rectangular shadow is disabled for this prop.
 	for prop in props:
 		if prop.id=="brine_chamber":
-			var shadow:=PackedVector2Array()
-			for i in range(40):
-				var a:=i*TAU/40.0
-				shadow.append(Vector2(prop.rect.get_center().x,prop.rect.end.y-3)+Vector2(cos(a)*53,sin(a)*12))
-			painter.draw_colored_polygon(shadow,Color(0.025,0.065,0.075,0.20))
+			for band in range(3):
+				var spread:=float(3-band)*2.0
+				var shadow:=PackedVector2Array()
+				for i in range(64):
+					var a:=i*TAU/64.0
+					shadow.append(life_point(prop,Vector2(627,800)+Vector2(cos(a)*(143+spread),sin(a)*(80+spread))))
+				painter.draw_colored_polygon(shadow,Color(0.018,0.028,0.032,0.10))
 
 func draw_wall(rect: Rect2, horizontal: bool) -> void:
 	super.draw_wall(rect,horizontal)
@@ -75,6 +86,9 @@ static func default_door_parts() -> Array:
 		{"rect":Rect2(38,-2,2,4),"color":"65b7b1"}]
 
 var retain_brine_parts := not OS.get_cmdline_user_args().has("--redraw-brine-parts")
+
+func pod_power() -> float:
+	return float(architect_pod.get("startup_power",1.0))
 
 func retained_prop_passes(prop: Dictionary) -> Array:
 	if not retain_brine_parts:
@@ -113,9 +127,25 @@ func draw_prop_occupant(prop: Dictionary) -> void:
 	if prop.registration.get("dressing",false):
 		if operating: draw_computer_display(prop)
 		return
-	var scale: float=prop.rect.size.x/prop.registration.width
-	var drift := float_offset(machine_clock) if operating else Vector2.ZERO
-	painter.draw_texture_rect(body_texture,Rect2(life_point(prop,BODY_RECT.position+drift),BODY_RECT.size*scale),false,Color(0.79,0.88,0.91))
+	var active:=operating and pod_power()>0.0
+	var tint := Color(0.86,0.93,0.95)*lerpf(0.12,1.0,pod_power())
+	tint.a=1.0
+	var vertices:=PackedVector2Array()
+	for point in body_points(machine_clock,active): vertices.append(life_point(prop,point))
+	var uv:=PackedVector2Array()
+	for corner in [Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]:
+		uv.append((body_source_rect.position+corner*body_source_rect.size)/Vector2(body_texture.get_size()))
+	painter.draw_polygon(vertices,PackedColorArray([tint]),uv,body_texture)
+
+func body_points(time: float, active:=true) -> PackedVector2Array:
+	var rect:=Rect2(BODY_RECT.position+body_normalized_rect.position*BODY_RECT.size,body_normalized_rect.size*BODY_RECT.size)
+	var drift:=float_offset(time) if active else Vector2.ZERO
+	# A slow, one-degree current sway, independent of the vertical float period.
+	var angle:=sin(time*TAU/13.0)*0.017 if active else 0.0
+	var points:=PackedVector2Array()
+	for corner in [Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]:
+		points.append(rect.get_center()+(rect.position+corner*rect.size-rect.get_center()).rotated(angle)+drift)
+	return points
 
 func draw_prop_glass(prop: Dictionary) -> void:
 	# Foreground water and reflections cross the body, rather than sitting behind it.
@@ -124,9 +154,11 @@ func draw_prop_glass(prop: Dictionary) -> void:
 	glass_polygon(prop,[Vector2(665,578),Vector2(671,577),Vector2(692,738),Vector2(686,749)],Color(0.77,0.93,0.94,0.17))
 
 func draw_prop_bubbles(prop: Dictionary) -> void:
-	if operating:
+	if operating and pod_power()>0.0:
+		var phase:=fposmod(machine_clock,9.0)/1.8
+		var fade:=smoothstep(0.0,0.16,phase)*(1.0-smoothstep(0.72,1.0,phase))
 		for mark in effect_marks(prop,machine_clock):
-			painter.draw_circle(life_point(prop,mark[0]),0.6,Color(0.67,0.87,0.89,0.65),false,0.5,true)
+			painter.draw_circle(life_point(prop,mark[0]),lerpf(0.4,0.65,phase),Color(0.67,0.87,0.89,0.65*fade),false,0.5,true)
 
 func draw_prop_front(prop: Dictionary) -> void:
 	# Repaint the real ceramic front lip after the occupant. It is an occluder.
@@ -202,4 +234,3 @@ func effect_marks(prop: Dictionary,time: float) -> Array:
 
 func layout_caption() -> String:
 	return "BRINE CORE / registered chamber and body / %d degrees"%(quarter*90)
-

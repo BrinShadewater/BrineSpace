@@ -34,7 +34,7 @@ func _ready() -> void:
 	life_items[2].outline.insert(4,Vector2(1076,179))
 	life_items[2].outline.insert(5,Vector2(1080,191))
 	life_items.append({"id":"med_supply","rect":Rect2(106,105,60,42),"pivot":Vector2(941,1010),"width":270.0,"outline":[Vector2(831,657),Vector2(1064,657),Vector2(1078,675),Vector2(1077,994),Vector2(1061,1011),Vector2(819,1011),Vector2(807,997),Vector2(809,735),Vector2(821,725)]})
-	dressing=Dressing.new(self,"res://rooms/whole-room/med-bay-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/whole-room/med-bay-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:

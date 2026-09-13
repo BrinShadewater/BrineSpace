@@ -1,0 +1,34 @@
+{
+  "room": "storage_bay",
+  "north": "Existing source retained; -22 art-only riser overlap reviewed. Handles and inventory controls toward room.",
+  "east": "Existing source/native reviewed: cargo handles, strap releases and controls inward to left.",
+  "west": "Existing source/native reviewed: cargo handles, strap releases and controls inward to right.",
+  "collision": "All collision rectangles unchanged in every rotation.",
+  "evidence": "output\\storage-directional-2026-09-12\\north-comparison.json",
+  "sources": {
+    "rooms\\full-wall-v1\\registrations\\storage-wall-north-cargo.json": {
+      "source": "assets\\wall-room-rollout-v1\\storage-split-north.png",
+      "sha256": "dd35fa1e21a32e60223337be27885ef15253fada9bad6b90adf2a3eb9f31b4ac"
+    },
+    "rooms\\full-wall-v1\\registrations\\storage-wall-north-inventory.json": {
+      "source": "assets\\wall-room-rollout-v1\\storage-split-north.png",
+      "sha256": "dd35fa1e21a32e60223337be27885ef15253fada9bad6b90adf2a3eb9f31b4ac"
+    },
+    "rooms\\full-wall-v1\\registrations\\storage-wall-east-cargo.json": {
+      "source": "assets\\wall-room-rollout-v1\\storage-split-sides.png",
+      "sha256": "0b775a1f2c2c580606f55e84bc331051ce5d38180b2ee5e637b732a30e531c2b"
+    },
+    "rooms\\full-wall-v1\\registrations\\storage-wall-east-inventory.json": {
+      "source": "assets\\wall-room-rollout-v1\\storage-split-sides.png",
+      "sha256": "0b775a1f2c2c580606f55e84bc331051ce5d38180b2ee5e637b732a30e531c2b"
+    },
+    "rooms\\full-wall-v1\\registrations\\storage-wall-west-cargo.json": {
+      "source": "assets\\wall-room-rollout-v1\\storage-split-sides.png",
+      "sha256": "0b775a1f2c2c580606f55e84bc331051ce5d38180b2ee5e637b732a30e531c2b"
+    },
+    "rooms\\full-wall-v1\\registrations\\storage-wall-west-inventory.json": {
+      "source": "assets\\wall-room-rollout-v1\\storage-split-sides.png",
+      "sha256": "0b775a1f2c2c580606f55e84bc331051ce5d38180b2ee5e637b732a30e531c2b"
+    }
+  }
+}

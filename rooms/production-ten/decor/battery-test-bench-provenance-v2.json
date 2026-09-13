@@ -3,7 +3,7 @@
   "reframe_prompt": "Preserve this exact electrical workbench design and camera. Reframe it smaller on a larger transparent canvas with at least 10 percent empty transparent margin on EVERY side. Complete the lamp hinge at the top and both feet at the bottom so no object touches the image edge. Maintain horizontal parallel tabletop edges, chunky pixel-art treatment, all supported instruments and hanging cables. Actual alpha background, no checkerboard, no floor or shadow.",
   "source_v1": "battery-test-bench-v1.png",
   "source_v2": "battery-test-bench-source-v2.png",
-  "selected": "battery-test-bench-clean-v2.png",
+  "selected": "battery-test-bench-matte-v1.png",
   "cleanup": {
     "keep_canvas": true,
     "clear_gap": [
@@ -24,11 +24,13 @@
   "findings": [
     "v1 cropped lamp rejected",
     "v2 reframed but RGB checkerboard; connected neutral cleanup and three inspected gaps",
-    "cleaned alpha and lamp/feet visually inspected; native composition acceptance separate"
+    "cleaned alpha and lamp/feet visually inspected; native composition acceptance separate",
+    "matte-v1 compresses steel and burnt-orange highlight peaks without changing geometry or alpha"
   ],
   "hashes": {
     "battery-test-bench-v1.png": "fb0080c6e995ab1cfd55c3446606d2bd2799bed2ef79250026f651dbec6ba885",
     "battery-test-bench-source-v2.png": "783bbb378c57ad8e04e22ffd83369603261e38eaeea7f44a32a06e73baaf3fbf",
-    "battery-test-bench-clean-v2.png": "6186e65ad77cb78a7aa0581dc5c1043e7d3511ce8936129cc4d58d3255634909"
+    "battery-test-bench-clean-v2.png": "6186e65ad77cb78a7aa0581dc5c1043e7d3511ce8936129cc4d58d3255634909",
+    "battery-test-bench-matte-v1.png": "5062f7e0d74e06156ee31656fb269ce2c8395b8ef6acdb503fb866aef5588d19"
   }
 }

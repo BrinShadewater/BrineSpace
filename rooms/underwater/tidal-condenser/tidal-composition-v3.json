@@ -1,0 +1,75 @@
+{
+  "textures": {
+    "island": "res://assets/material-polish-v2/research-bench.png",
+    "tidal_analysis_island": "res://assets/room-furnishings-v6/tidal-analysis-island.png",
+    "universal_valve_locker": "res://assets/room-furnishings-v6/universal-valve-locker.png"
+  },
+  "furniture": [
+    {
+      "id": "tidal_analysis_island",
+      "texture": "tidal_analysis_island",
+      "registration": "res://assets/room-furnishings-v6/tidal-analysis-island-registration.json",
+      "footprint": [
+        -48,
+        -14,
+        96,
+        28
+      ],
+      "ground_width": 1213,
+      "centers_by_quarter": [
+        [
+          0,
+          -92
+        ],
+        [
+          92,
+          0
+        ],
+        [
+          0,
+          92
+        ],
+        [
+          -92,
+          0
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_valve_locker",
+      "texture": "universal_valve_locker",
+      "registration": "res://assets/room-furnishings-v6/universal-valve-locker-registration.json",
+      "footprint": [
+        -29,
+        -11,
+        58,
+        22
+      ],
+      "ground_width": 1210,
+      "centers_by_quarter": [
+        [
+          112,
+          65
+        ],
+        [
+          -65,
+          112
+        ],
+        [
+          -112,
+          -65
+        ],
+        [
+          65,
+          -112
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": []
+}

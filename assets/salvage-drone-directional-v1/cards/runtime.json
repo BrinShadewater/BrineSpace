@@ -1,0 +1,130 @@
+[
+	{
+		"floor_profile": {
+			"acceptance": {
+				"card": "res://assets/floor-details-v3/cards/salvage_drone_bay.png",
+				"missing_assets": [],
+				"review": "res://output/floor-details-v3/review.json",
+				"visual_review": "v3 contact sheets at 384-pixel card width; full station at 1280/1600/2560"
+			},
+			"condition": "maintained",
+			"department": "robotics",
+			"detail_stage": "integrated; four-rotation host/bounds/route and visible-pixel checks passed",
+			"details": [
+				{
+					"asset": "detail-service_marking",
+					"hosts": [
+						"full_wall_salvage-disassembly-wall"
+					],
+					"purpose": "sorting transfer boundary",
+					"scale": 0.6
+				},
+				{
+					"asset": "detail-tie_down",
+					"hosts": [
+						"salvage_winch"
+					],
+					"purpose": "winch service restraint",
+					"scale": 1.0
+				}
+			],
+			"floor_owner": "res://rooms/production-ten/salvage_drone_bay_view.gd",
+			"floor_stage": "integrated and native reviewed: v3 contact sheets, rotation/state renders and three-resolution station",
+			"id": "salvage_drone_bay",
+			"machinery": [
+				{
+					"id": "salvage_rov",
+					"rect": [
+						-156.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_winch",
+					"rect": [
+						66.0,
+						-143.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_sorter",
+					"rect": [
+						-162.0,
+						98.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_hatch",
+					"rect": [
+						66.0,
+						23.0,
+						90.0,
+						64.0
+					]
+				},
+				{
+					"id": "salvage_intake_bench",
+					"rect": [
+						-134.0,
+						-1.0,
+						76.0,
+						26.0
+					]
+				},
+				{
+					"id": "salvage_recovery_tray",
+					"rect": [
+						91.0,
+						120.0,
+						56.0,
+						22.0
+					]
+				}
+			],
+			"opacity": 0.42,
+			"source": "res://assets/department-floors-v2/robotics-service.png",
+			"source_sha256": "1b28908a73cecc263b2e4f70b122d5a3b0ce57ea1822700dccc12fb2741220f7",
+			"view": "res://rooms/full-wall-v1/salvage_drone_bay_view.gd"
+		},
+		"layered": true,
+		"room": "salvage_drone_bay",
+		"rotations": [
+			{
+				"props": [
+					{
+						"full_wall": false,
+						"id": "salvage_rov",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": false,
+						"id": "salvage_hatch",
+						"registered": true,
+						"side_view": ""
+					},
+					{
+						"full_wall": true,
+						"id": "full_wall_salvage-disassembly-wall",
+						"registered": true,
+						"side_view": "west"
+					},
+					{
+						"full_wall": false,
+						"id": "salvage_winch",
+						"registered": true,
+						"side_view": ""
+					}
+				],
+				"quarter": 0
+			}
+		],
+		"view": "res://rooms/full-wall-v1/salvage_drone_bay_view.gd"
+	}
+]

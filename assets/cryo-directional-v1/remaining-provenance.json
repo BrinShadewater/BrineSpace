@@ -1,0 +1,27 @@
+{
+  "room": "cryo_chamber",
+  "sources": [
+    {
+      "registration": "rooms/full-wall-v1/registrations/cryo-support-wall.json",
+      "source": "res://assets/cryo-machinery-v1/cryo-machinery.png",
+      "sha256": "5929ac086fc32ef90885a53bdef9992c8754f7d13be84810098180835d478e05"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-east.json",
+      "source": "res://assets/cryo-directional-v1/cryo-sides.png",
+      "sha256": "34b7ed0bbe91c5585676571aaa7114eda51622eb10764646b56878241c68f6f5"
+    },
+    {
+      "registration": "rooms/full-wall-v1/registrations/side-cryo-support-wall-west.json",
+      "source": "res://assets/cryo-directional-v1/cryo-sides.png",
+      "sha256": "34b7ed0bbe91c5585676571aaa7114eda51622eb10764646b56878241c68f6f5"
+    }
+  ],
+  "native_evidence": "output/cryo-directional-2026-09-12/remaining-verified/runtime.json",
+  "comparison": "output/cryo-directional-2026-09-12/remaining-comparison.json",
+  "card": "res://assets/cryo-directional-v1/cards-final/cryo_chamber.png",
+  "review": "North source retained after source/native q1 review: inward front controls and vessel releases, outer manifold, matte industrial identity. East/west corrected with inward terminal controls, both vessel catches per bank and sample-holder tabs; TWO sample cylinders retained in each side holder. Dim abstract screens. Native q0/q2 and card reviewed. All prop IDs/rectangles/visual bounds unchanged; q1/q3 RGB identical.",
+  "checks": "176 furnished routes,20 existing side variants and47 card binding identities pass. No live effect anchors or cache/recovery code changed.",
+  "rejected": "First generated side candidate replaced one sample cylinder with a handle and misoriented one vessel catch each. Restored counts and corrected catches in selected edit. Initial registration attempt assumed optional wall_contact; corrected to preserve absence. remaining-final and cards are superseded diagnostic outputs; remaining-verified and cards-final are selected.",
+  "remaining": "All four Cryo directions reviewed; owner acceptance and full catalog pending. Construction Drone Bay baseline captured next."
+}

@@ -2,10 +2,80 @@ extends "res://rooms/whole-room/life_support_view.gd"
 const Dressing=preload("res://rooms/whole-room/room_dressing.gd")
 var dressing
 var shelf_helmet_visible := true
+var shelf_helmet_scale := 1.0
 var shelf_helmet: Texture2D
 var cycle_pose: Dictionary=preload("res://scripts/airlock_cycle.gd").pose({})
 const CHAMBER=Rect2(-60,-184,120,220)
 const Fittings=preload("res://rooms/underwater/airlock-v4/fittings.gd")
+static var wet_deck: Texture2D
+
+func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
+	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+	var library=preload("res://scripts/room_asset_library.gd")
+	if quarter==0:
+		for i in range(props.size()):
+			if props[i].id!="suit_lockers": continue
+			var prop: Dictionary=library.template("library/side-airlock-suit-storage-south-empty-tray").duplicate(true)
+			prop.id="suit_lockers"
+			prop.custom_library_draw=true
+			prop.rect.position=Vector2(58,180-prop.rect.size.y)
+			prop.helmet_anchor_uv=Vector2(0.051,-0.80)
+			prop.sort_y=prop.rect.end.y
+			props[i]=prop
+		return
+	if quarter==2:
+		for i in range(props.size()):
+			var id: String=props[i].id
+			if id=="suit_lockers":
+				var locker: Dictionary=library.template("library/side-airlock-suit-storage-north").duplicate(true)
+				locker.id=id
+				locker.custom_library_draw=true
+				locker.rect.position=Vector2(-158,-180)
+				locker.helmet_anchor_uv=Vector2(0.051,1.3)
+				var riser=preload("res://rooms/whole-room/riser_geometry.gd")
+				var raised: bool=get_meta("raised_north_visible",preload("res://scripts/title_settings.gd").raised_walls)
+				var wall_top: float=riser.TOP if raised and not omitted_sides.has(0) else riser.BASE_Y
+				locker.wall_art_rect=Rect2(Vector2(-158,wall_top),locker.rect.size)
+				locker.sort_y=locker.rect.end.y
+				props[i]=locker
+				continue
+			if id not in ["reserve_air_bank","equipment_check_bench"]: continue
+			var asset: String="reserve-air" if id=="reserve_air_bank" else "check-bench"
+			var prop: Dictionary=library.template("library/side-airlock-"+asset+"-south").duplicate(true)
+			prop.id=id
+			prop.rect.position=Vector2(76.0 if id=="reserve_air_bank" else -178.0,180.0-prop.rect.size.y)
+			prop.sort_y=prop.rect.end.y
+			props[i]=prop
+		return
+	if quarter not in [1,3]: return
+	for i in range(props.size()):
+		if props[i].id!="suit_lockers": continue
+		var locker: Dictionary=library.template("library/side-airlock-suit-storage-side").duplicate(true)
+		locker.id="suit_lockers"
+		locker.custom_library_draw=true
+		if quarter==1: locker.registration=library.mirror_registration(locker.registration)
+		locker.rect.position=Vector2(-180,40) if quarter==1 else Vector2(180-locker.rect.size.x,-176)
+		locker.helmet_anchor_uv=Vector2(2.0,0.8) if quarter==1 else Vector2(-0.25,0.8)
+		locker.helmet_tray_uv=Vector2(0.75,0.94) if quarter==1 else Vector2(0.25,0.94)
+		locker.sort_y=locker.rect.end.y
+		props[i]=locker
+	for i in range(props.size()):
+		if props[i].id!="equipment_check_bench": continue
+		var prop: Dictionary=library.template("library/side-airlock-check-bench-side").duplicate(true)
+		prop.id="equipment_check_bench"
+		if quarter==3: prop.registration=library.mirror_registration(prop.registration)
+		prop.rect.position=Vector2(180.0-prop.rect.size.x,76.0) if quarter==1 else Vector2(-180.0,-176.0)
+		prop.sort_y=prop.rect.end.y
+		props[i]=prop
+	if quarter==3:
+		for i in range(props.size()):
+			if props[i].id!="reserve_air_bank": continue
+			var prop: Dictionary=library.template("library/side-airlock-reserve-air-side").duplicate(true)
+			prop.id="reserve_air_bank"
+			prop.registration=library.mirror_registration(prop.registration)
+			prop.rect.position=Vector2(-180.0,76.0)
+			prop.sort_y=prop.rect.end.y
+			props[i]=prop
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:
 	for segment in exterior_wall_segments(rect):
@@ -66,13 +136,7 @@ func rebuild() -> void:
 	edges=Geometry.edges(layout)
 	for edge in edges: edge.open=edge.port
 	if dressing!=null: dressing.place()
-	# Keep the compressor's working group above the east-facing chamber.
-	if quarter==1:
-		for prop in props:
-			if prop.id=="air_compressor":
-				prop.rect.position.y=-122
-				prop.sort_y=prop.rect.end.y
-		keep_props_inside_walls()
+	# The composition owns per-facing service bays, including compressor clearance.
 	for prop in props:
 		if prop.id=="outer_hatch":
 			prop.rect=turned_rect(Rect2(-36,outer_threshold()-6,72,12))
@@ -83,6 +147,7 @@ func rebuild() -> void:
 func draw_room_floor(center: Vector2) -> void:
 	RoomFloor.draw_profile_floor(self,painter,center,Color("465356"),Color(0.19,0.29,0.29,0.16),2,"steel")
 	RoomFloor.draw_profile_dressing(self,painter,center,edges,"steel")
+	draw_chamber_floor()
 	for prop in props:
 		if prop.id=="changing_bench":
 			preload("res://rooms/whole-room/decoration_props.gd").floor_patch(painter,"boot_scrub_tray",Rect2(prop.rect.position-Vector2(4,4),prop.rect.size+Vector2(8,22)))
@@ -92,37 +157,61 @@ func draw_room_floor(center: Vector2) -> void:
 			var elbow:=Vector2(end.x,start.y)
 			preload("res://rooms/whole-room/decoration_props.gd").service_run(painter,PackedVector2Array([start,elbow,end]),5.0,"pipe_straight")
 func draw_registered_prop(prop: Dictionary) -> void:
+	if prop.get("library_asset",false):
+		var artwork: Dictionary=prop
+		if prop.has("wall_art_rect"):
+			artwork=prop.duplicate()
+			artwork.rect=prop.wall_art_rect
+		preload("res://scripts/room_asset_library.gd").draw(self,artwork)
+		if prop.id!="suit_lockers": return
 	# Draw with the chamber so its wet-deck pass cannot cover the hatch leaves.
 	if prop.id=="outer_hatch": return
 	if prop.id=="pressure_chamber":
 		draw_chamber()
 		return
-	if dressing==null or not dressing.draw(prop): return
+	if not prop.get("library_asset",false) and (dressing==null or not dressing.draw(prop)): return
 	if prop.id=="suit_lockers":
 		# Screen-facing attachment follows the fitting point in every room rotation.
-		var at := Vector2(prop.rect.position.x-7, prop.rect.end.y-25)
+		var at: Vector2=preload("res://scripts/airlock_service.gd").helmet_anchor(prop)
+		if prop.has("helmet_anchor_uv"):
+			var support: Rect2=prop.get("wall_art_rect",prop.rect)
+			var tray: Vector2=support.position+support.size*prop.get("helmet_tray_uv",Vector2(0.051,0.52))
+			painter.draw_line(tray,at+Vector2(0,4),Color("293f46"),3)
 		# A shallow side ledge supports the handoff rather than a floating sprite.
 		painter.draw_rect(Rect2(at+Vector2(-12,2),Vector2(22,3)),Color("536767"))
 		painter.draw_line(at+Vector2(-12,2),at+Vector2(10,2),Color("9ba898"),1)
 		painter.draw_line(at+Vector2(-7,5),at+Vector2(10,14),Color("293f46"),2)
 		if shelf_helmet_visible and shelf_helmet != null:
-			painter.draw_texture_rect(shelf_helmet, Rect2(at-Vector2(10,24),Vector2(20,25)),false)
+			var helmet_size:=Vector2(20,25)*shelf_helmet_scale
+			painter.draw_texture_rect(shelf_helmet, Rect2(at+Vector2(-helmet_size.x*0.5,1-helmet_size.y),helmet_size),false)
 	if prop.id=="air_compressor" and operating:
 		var center: Vector2=life_point(prop,Vector2(269,762))
 		painter.draw_line(center,center+Vector2(2,-3),Color("a4c7bc"),0.8)
-func draw_chamber() -> void:
-	var floor_rect:=turned_rect(chamber_rect().grow(-6))
-	painter.draw_rect(floor_rect,Color("283c40"))
-	for y in range(-168,20,32):
-		painter.draw_line(Geometry.turn(Vector2(-51,y),quarter),Geometry.turn(Vector2(51,y),quarter),Color("40565a"),1)
-	for y in [-152,-8]:
-		Fittings.sprite(painter,"drain",turned_rect(Rect2(-13,y-13,26,26)))
+func draw_actor() -> void:
+	var room_water:=flood_water
+	if turned_rect(chamber_rect()).has_point(actor):
+		flood_water=maxf(flood_water,float(cycle_pose.water))
+	super.draw_actor()
+	flood_water=room_water
+
+func draw_chamber_floor() -> void:
+	if wet_deck==null:
+		var image:=Image.new()
+		preload("res://scripts/safe_image.gd").load_png(image,"res://assets/airlock-deck-v1/wet-deck-source.png")
+		wet_deck=ImageTexture.create_from_image(image)
+	var floor_rect:=chamber_rect().grow(-6)
+	var corners:=PackedVector2Array([floor_rect.position,Vector2(floor_rect.end.x,floor_rect.position.y),floor_rect.end,Vector2(floor_rect.position.x,floor_rect.end.y)])
+	for i in range(corners.size()): corners[i]=Geometry.turn(corners[i],quarter)
+	painter.draw_polygon(corners,PackedColorArray([Color.WHITE]),PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]),wet_deck)
 	var water: float=cycle_pose.water
 	if water>0:
 		var depth:=208.0
 		var wet:=Rect2(-54,30-depth*water,108,depth*water)
 		painter.draw_rect(turned_rect(wet),Color(0.08,0.42,0.49,0.48))
 		painter.draw_line(Geometry.turn(wet.position,quarter),Geometry.turn(wet.position+Vector2(wet.size.x,0),quarter),Color("79c5c9"),1.5)
+
+func draw_chamber() -> void:
+	var water: float=cycle_pose.water
 	var rear: float=-190
 	var walls: Array=[Rect2(-64,rear,8,40-rear),Rect2(56,rear,8,40-rear),Rect2(-60,30,24,10),Rect2(36,30,24,10)]
 	walls.append_array([Rect2(-60,-190,24,8),Rect2(36,-190,24,8)])

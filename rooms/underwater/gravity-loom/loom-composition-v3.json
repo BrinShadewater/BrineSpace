@@ -1,0 +1,76 @@
+{
+  "textures": {
+    "bench": "res://rooms/underwater/acoustic-comms/electronics-bench-v1.png",
+    "support": "res://assets/material-polish-v4/maintenance-support.png",
+    "gravity_tensor_console": "res://assets/room-furnishings-v6/gravity-tensor-console.png",
+    "universal_diagnostic_rack": "res://assets/room-furnishings-v6/universal-diagnostic-rack.png"
+  },
+  "furniture": [
+    {
+      "id": "gravity_tensor_console",
+      "texture": "gravity_tensor_console",
+      "registration": "res://assets/room-furnishings-v6/gravity-tensor-console-registration.json",
+      "footprint": [
+        -43,
+        -13,
+        86,
+        26
+      ],
+      "ground_width": 1215,
+      "centers_by_quarter": [
+        [
+          -110,
+          130
+        ],
+        [
+          -130,
+          -110
+        ],
+        [
+          110,
+          -130
+        ],
+        [
+          130,
+          110
+        ]
+      ],
+      "live_furniture": true,
+      "centerpiece": true
+    },
+    {
+      "id": "universal_diagnostic_rack",
+      "texture": "universal_diagnostic_rack",
+      "registration": "res://assets/room-furnishings-v6/universal-diagnostic-rack-registration.json",
+      "footprint": [
+        -28,
+        -10,
+        56,
+        20
+      ],
+      "ground_width": 1190,
+      "centers_by_quarter": [
+        [
+          110,
+          130
+        ],
+        [
+          -130,
+          110
+        ],
+        [
+          -110,
+          -130
+        ],
+        [
+          130,
+          -110
+        ]
+      ],
+      "live_furniture": true,
+      "authored_anchor": true
+    }
+  ],
+  "mats": [],
+  "routes": []
+}

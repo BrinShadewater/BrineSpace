@@ -1,0 +1,41 @@
+{
+  "room": "airlock",
+  "prop": "reserve_air_bank",
+  "source": "assets/airlock-directional-v1/reserve-air-side.png",
+  "sha256": "01d7ce39e3e23cfc3682574999b75aa83ceb3774a3acce769025d9b5ae975204",
+  "dimensions": [
+    751,
+    2095
+  ],
+  "original": "exec-f0a33a1f-5065-4307-97ab-143910cd5468.png",
+  "registration": "rooms/full-wall-v1/registrations/side-airlock-reserve-air-side.json",
+  "authored": "east",
+  "installed": {
+    "direction": "west",
+    "quarter": 3,
+    "mirrored": true,
+    "position": [
+      -180,
+      76
+    ],
+    "length": 104
+  },
+  "east_stage": "library-installed-native-reviewed",
+  "west_stage": "integrated-native-and-service-reviewed",
+  "evidence": "output/airlock-reserve-side-2026-09-12",
+  "findings": [
+    "Three tank shoulders visible from overhead; inward buckles and hose outlet.",
+    "q0/q1/q2 RGB and metadata unchanged; only q3 reserve-air bank changes."
+  ],
+  "checks": [
+    "Airlock suite passes: Bill four rotations, Veld/Branforth q0; interlock/power/pause/save/UI coverage as existing test.",
+    "176 furnished layouts pass.",
+    "Native paired library and q3 host reviewed."
+  ],
+  "owner_acceptance": false,
+  "remaining": [
+    "South reserve-air view",
+    "Directional suit locker art",
+    "Other room directions"
+  ]
+}

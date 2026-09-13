@@ -13,7 +13,7 @@ func _ready() -> void:
 		{"id":"storage_lift","rect":Rect2(-100,94,66,50),"pivot":Vector2(315,1106),"width":327.0,"outline":[Vector2(173,741),Vector2(201,741),Vector2(202,769),Vector2(217,773),Vector2(219,805),Vector2(398,805),Vector2(400,772),Vector2(414,769),Vector2(416,741),Vector2(440,741),Vector2(442,776),Vector2(455,783),Vector2(461,830),Vector2(470,839),Vector2(471,903),Vector2(479,911),Vector2(478,1059),Vector2(458,1074),Vector2(454,1105),Vector2(415,1106),Vector2(409,1094),Vector2(205,1093),Vector2(202,1106),Vector2(167,1105),Vector2(152,1085),Vector2(152,834),Vector2(161,821),Vector2(162,784),Vector2(173,782)]},
 		{"id":"storage_secured_rack","rect":Rect2(116,-66,52,36),"pivot":Vector2(931,1074),"width":292.0,"outline":[Vector2(796,776),Vector2(813,776),Vector2(815,790),Vector2(1051,790),Vector2(1052,776),Vector2(1070,776),Vector2(1075,834),Vector2(1078,848),Vector2(1075,1058),Vector2(1064,1074),Vector2(1038,1074),Vector2(1036,1059),Vector2(825,1059),Vector2(823,1073),Vector2(786,1072),Vector2(785,1050),Vector2(790,840)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/production-ten/decor/storage-composition-v4.json")
+	dressing=Dressing.new(self,"res://rooms/production-ten/decor/storage-composition-v6.json")
 	rebuild()
 
 func rebuild() -> void:
@@ -62,4 +62,3 @@ func draw_registered_prop(prop: Dictionary) -> void:
 		uv.append(p/Vector2(life_texture.get_size()))
 	draw_cached_polygon(vertices,uv,life_texture)
 	if dressing!=null: dressing.draw_supported(prop)
-

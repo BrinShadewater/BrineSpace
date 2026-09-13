@@ -1,0 +1,72 @@
+{
+  "id": "airlock-deck-v1",
+  "sources": [
+    {
+      "path": "assets/airlock-deck-v1/wet-deck-source.png",
+      "dimensions": [
+        887,
+        1774
+      ],
+      "mode": "RGB",
+      "sha256": "1dff6fb44f465ffd5bbc1141a353b9128d6604f795a19336fa57770b8e194484",
+      "selected": true
+    },
+    {
+      "path": "assets/airlock-deck-v1/dry-deck-source.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "ee385b7b61f8566fd9c7e3e3538b7c8c5d5c7f32fb72903edaafdd0d4fae49cd",
+      "selected": true
+    },
+    {
+      "path": "assets/airlock-deck-v1/card.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "2f814f32ba54ab883c304d0d2a8144e7b3191e527cf0fc21af8e4a6db28374f9",
+      "selected": true
+    },
+    {
+      "path": "assets/airlock-deck-v1/compressor-rejected.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "1c12c328dbab408c14793332fa56c531f906f61d8403b3c22dc589fe783fb465",
+      "selected": false
+    }
+  ],
+  "wet_registration": {
+    "rect": [
+      -54,
+      -178,
+      108,
+      208
+    ],
+    "rotation": "Room-local polygon corners and UVs rotate together",
+    "source_processing": "None; original generated pixels retained; native aspect fitted to chamber rectangle (~4% ratio difference)."
+  },
+  "dry_registration": {
+    "profile": "rooms/floor-profiles-v1/rooms.json",
+    "opacity": 0.85,
+    "tiling": "Existing modular floor/editor path retained; generated plate grid varies bay widths, not a literal 4x4."
+  },
+  "locker_source": "assets/airlock-wall-v1/suit-air-bank.png",
+  "locker_registration": "rooms/underwater/airlock-v1/composition.json",
+  "preserved": "Physical footprints, pivots in world placement, doors, service point, fill timing, actor/floor draw order",
+  "rejected": {
+    "compressor-rejected.png": "Still has bright specular highlights; background appears painted. Not cleaned, registered or selected."
+  },
+  "verification": {
+    "routes": "output/test-runs/20260912-090352-headless",
+    "visibility": "output/test-runs/20260912-090403-native",
+    "native_views": "output/airlock-deck-20260912/final"
+  },
+  "packaged": false
+}

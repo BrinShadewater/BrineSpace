@@ -1,0 +1,23 @@
+{
+  "reviewed_at": "2026-09-12",
+  "renderer": "Godot 4.6.1, real-display OpenGL compatibility",
+  "verdict": "pass",
+  "captures": {
+    "q0_west": ["output/cryo-owner-repair-2026-09-12/native/cryo_chamber-q0.png", "bdec98a128d48ca3384fa0e8ba7659398d301f38f05ee9a72426aec0c5b17256"],
+    "q1_north": ["output/cryo-owner-repair-2026-09-12/native/cryo_chamber-q1.png", "096f2f7c14e81c5f29c7f6cd6ca4c7af2e0b0ef3eb9a758e79014ef535a3bb97"],
+    "q2_east": ["output/cryo-owner-repair-2026-09-12/native/cryo_chamber-q2.png", "c51863477485fe32fe6bba179b068c8d6e7b04ce454a3142b752cdf198827f92"],
+    "q3_south": ["output/cryo-owner-repair-2026-09-12/native/cryo_chamber-q3.png", "90a9f35824e865e5f93fab2f844ea5025f67ad188af2aaccf8487615b86769fa"]
+  },
+  "findings": [
+    "All four wall banks read as the same strict overhead machinery rather than tall elevations rotated around the room.",
+    "Two circular vessel lids, compressor, folded coil, pipes, coolant cylinder, terminal, three samples and gas bottle remain legible.",
+    "The bank is shallow against each outer wall and exposes its service surface to the room.",
+    "Existing pods, console and room routes remain current-source responsibilities; this pass changes no gameplay or character animation code."
+  ],
+  "concurrent_state_note": "The q2 current capture contains cryo_pod_1 in addition to the baseline's pod_0 after concurrent room work. This asset task did not edit pod selection or placement.",
+  "tests": [
+    "output/test-runs/20260912-182448-headless",
+    "output/test-runs/20260912-182611-headless",
+    "output/test-runs/20260912-182650-headless"
+  ]
+}

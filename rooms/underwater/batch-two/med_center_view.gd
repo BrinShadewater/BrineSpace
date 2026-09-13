@@ -19,7 +19,7 @@ func _ready() -> void:
 		{"id":"medical_supplies","rect":Rect2(-158,94,96,64),"pivot":Vector2(339,972),"width":292.0,"outline":[Vector2(204,769),Vector2(248,769),Vector2(259,788),Vector2(279,783),Vector2(293,805),Vector2(302,805),Vector2(302,723),Vector2(316,710),Vector2(470,710),Vector2(484,724),Vector2(484,958),Vector2(471,972),Vector2(313,972),Vector2(298,957),Vector2(203,957),Vector2(192,943),Vector2(193,812),Vector2(202,806)],"pieces":[[Vector2(204,769),Vector2(248,769),Vector2(259,788),Vector2(279,783),Vector2(293,805),Vector2(295,943),Vector2(282,957),Vector2(204,957),Vector2(192,944),Vector2(193,812),Vector2(202,806)],[Vector2(302,723),Vector2(316,710),Vector2(470,710),Vector2(484,724),Vector2(484,958),Vector2(471,972),Vector2(313,972),Vector2(300,957)]]},
 		{"id":"medical_station","rect":Rect2(64,86,98,74),"pivot":Vector2(890,991),"width":300.0,"outline":[Vector2(742,806),Vector2(755,781),Vector2(771,779),Vector2(773,752),Vector2(828,737),Vector2(841,746),Vector2(845,737),Vector2(929,737),Vector2(937,745),Vector2(1005,751),Vector2(1008,779),Vector2(1024,784),Vector2(1037,802),Vector2(1039,941),Vector2(1026,957),Vector2(934,957),Vector2(919,946),Vector2(917,967),Vector2(924,980),Vector2(919,990),Vector2(910,989),Vector2(889,975),Vector2(869,990),Vector2(858,987),Vector2(858,980),Vector2(868,967),Vector2(865,948),Vector2(843,957),Vector2(755,957),Vector2(742,944)]}
 	]
-	center_dressing=CryoDressing.new(self,"res://rooms/underwater/batch-two/med-center-composition-v3.json")
+	center_dressing=CryoDressing.new(self,"res://rooms/underwater/batch-two/med-center-composition-v4.json")
 	rebuild()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:

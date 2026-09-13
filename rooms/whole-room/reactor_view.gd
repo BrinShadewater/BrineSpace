@@ -16,7 +16,7 @@ func _ready() -> void:
 		{"id":"reactor_cooler","rect":Rect2(-164,-150,70,54),"pivot":Vector2(262,358),"width":244.0,"outline":[Vector2(151,115),Vector2(324,115),Vector2(332,124),Vector2(332,144),Vector2(356,144),Vector2(367,151),Vector2(373,166),Vector2(373,197),Vector2(384,208),Vector2(384,334),Vector2(337,346),Vector2(334,358),Vector2(143,358),Vector2(140,342),Vector2(149,126)]},
 		{"id":"reactor_console","rect":Rect2(94,119,70,34),"pivot":Vector2(973,1078),"width":281.0,"outline":[Vector2(860,870),Vector2(1084,870),Vector2(1098,879),Vector2(1098,911),Vector2(1112,919),Vector2(1112,1067),Vector2(1100,1078),Vector2(1072,1078),Vector2(1072,1064),Vector2(871,1064),Vector2(871,1078),Vector2(842,1078),Vector2(831,1066),Vector2(831,921),Vector2(847,911),Vector2(847,882)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/whole-room/reactor-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/whole-room/reactor-composition-v3.json")
 	rebuild()
 	actor = Vector2(0,120)
 

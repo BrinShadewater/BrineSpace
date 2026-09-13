@@ -1,0 +1,17 @@
+{
+  "stage": "integrated-native-state-layout-reviewed",
+  "source": "assets/crew-hab-directional-v1/west-matte-idle.png",
+  "sha256": "ce7acfd896950498a875528425de1f3dd9ee310e005e45faac32d2e1ab7eb800",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "raw": "exec-46de328d-81f4-478c-9ab3-be1782219d8c.png",
+  "registration": "rooms/full-wall-v1/registrations/side-crew-hab-berth-wall-west.json",
+  "review": "Preserved authored west berth with inward right storage access; plant/towels/books/thermos/box/bedding/mug retained. Matte trim and thermos; quiet lamp source plus its own source-local steady operating diffuser. Native idle west reviewed.",
+  "comparison": "output/hab-west-matte-2026-09-12/comparison.json",
+  "validation": "176 layouts and existing 20 variant regressions PASS 20260912-152547-headless. Native baseline/installed catalogs exit 0; all placement metadata and q0/q1/q2 RGB unchanged. Six native state captures exit 0; both direct/retained lamp crops change with power and remain steady across operating times; retained powered west visually reviewed.",
+  "card": "q0 unchanged; existing card retained.",
+  "remaining": "Actual station pause, remaining authored horizontal berth finishes and owner aesthetic acceptance.",
+  "state_checks": "output/hab-west-matte-2026-09-12/checks.json"
+}

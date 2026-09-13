@@ -7,17 +7,18 @@ const Decor=preload("res://rooms/whole-room/decoration_props.gd")
 const Catalog=preload("res://rooms/whole-room/riser_catalog.gd")
 static var brine_texture: Texture2D
 
-static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO, adjoining_left := false, adjoining_right := false, wall_view = null) -> void:
+static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO, adjoining_left := false, adjoining_right := false, wall_view = null, include_signals := true) -> void:
 	if room_id=="brine_core":
 		if brine_texture==null:
 			var image:=Image.new()
-			preload("res://scripts/safe_image.gd").load_png(image, "res://assets/brine-riser-v1/source.png")
+			preload("res://scripts/safe_image.gd").load_png(image, "res://assets/brine-core-directional-v1/riser-idle.png")
 			brine_texture=ImageTexture.create_from_image(image)
 		# Use the upper service face at its own aspect, excluding the tall lower cabinets.
 		canvas.draw_texture_rect_region(brine_texture,Rect2(-192,Riser.TOP,384,Riser.HEIGHT),Rect2(0,100,2007,342))
 		canvas.draw_texture_rect_region(brine_texture,Rect2(-196,Riser.CAP_TOP,392,7),Rect2(0,0,2007,100))
+		if include_signals: draw_brine_signals(canvas,wall_view)
 	elif room_id=="airlock":
-		preload("res://rooms/underwater/airlock-v4/fittings.gd").draw_wall(canvas,cell)
+		preload("res://rooms/underwater/airlock-v4/fittings.gd").draw_wall(canvas,cell,wall_view)
 	else:
 		Catalog.face(canvas,room_id,Rect2(-192,Riser.TOP,384,Riser.HEIGHT))
 		# Department-specific mounts; windows retain their native aspect ratio.
@@ -53,6 +54,15 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 			canvas.draw_texture_rect(Hull.texture("structural_rib"),Rect2(edge_x-8,Riser.CAP_TOP,16,Riser.HEIGHT+6),false,Color(.68,.76,.77))
 	if wall_view!=null and preload("res://tools/modular_room_geometry.gd").has_port(wall_view.layout[0],0):
 		preload("res://rooms/whole-room/room_door.gd").draw_riser_door(canvas,0.0,brine_texture if room_id=="brine_core" else null,preload("res://rooms/doors/department_door.gd").department({"id":room_id}))
+
+static func draw_brine_signals(canvas: CanvasItem, wall_view) -> void:
+	if wall_view==null or not wall_view.operating: return
+	for left in [395.0,1470.0]:
+		var points:=PackedVector2Array()
+		for i in range(13):
+			var source:=Vector2(left+150.0*i/12.0,281.0+12.0*sin(i*1.3+wall_view.machine_clock*3))
+			points.append(Vector2(-192+source.x*384.0/2007.0,Riser.TOP+(source.y-100)*Riser.HEIGHT/342.0))
+		canvas.draw_polyline(points,Color(.13,.75,.78,.8),.7)
 
 static func profile(room_id: String) -> Dictionary:
 	if room_id=="brine_core": return {"tint":"c1c5bb","mounts":[]}

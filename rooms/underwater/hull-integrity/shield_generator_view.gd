@@ -18,7 +18,7 @@ func _ready() -> void:
 		{"id":"hull_injector","rect":Rect2(-165,92,84,54),"pivot":Vector2(314,1110),"width":387.0,"outline":[Vector2(121,809),Vector2(134,788),Vector2(142,781),Vector2(145,767),Vector2(155,764),Vector2(157,754),Vector2(171,740),Vector2(359,740),Vector2(375,750),Vector2(399,750),Vector2(410,760),Vector2(463,760),Vector2(480,776),Vector2(483,788),Vector2(502,807),Vector2(507,1081),Vector2(481,1108),Vector2(150,1110),Vector2(120,1083)]},
 		{"id":"hull_patch_rack","rect":Rect2(80,100,84,54),"pivot":Vector2(935,1110),"width":351.0,"outline":[Vector2(762,804),Vector2(775,782),Vector2(779,754),Vector2(794,744),Vector2(794,734),Vector2(813,734),Vector2(814,741),Vector2(1050,741),Vector2(1050,734),Vector2(1070,734),Vector2(1074,748),Vector2(1088,753),Vector2(1090,772),Vector2(1107,786),Vector2(1110,1082),Vector2(1083,1109),Vector2(786,1110),Vector2(760,1081)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/hull-integrity/hull-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/hull-integrity/hull-composition-v4.json")
 	rebuild()
 
 func rebuild() -> void:

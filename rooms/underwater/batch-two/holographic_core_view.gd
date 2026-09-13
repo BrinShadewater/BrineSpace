@@ -13,7 +13,7 @@ func _ready() -> void:
 		{"id":"holo_calibrator","rect":Rect2(-165,45,70,50),"pivot":Vector2(310,1008),"width":260.0,"outline":[Vector2(184,829),Vector2(201,809),Vector2(232,808),Vector2(233,768),Vector2(255,765),Vector2(258,782),Vector2(267,782),Vector2(267,794),Vector2(276,794),Vector2(276,799),Vector2(297,799),Vector2(298,771),Vector2(322,788),Vector2(323,799),Vector2(340,799),Vector2(341,787),Vector2(348,775),Vector2(379,775),Vector2(382,790),Vector2(393,791),Vector2(410,791),Vector2(414,808),Vector2(435,826),Vector2(439,986),Vector2(425,1008),Vector2(195,1008),Vector2(181,991)]},
 		{"id":"holo_terminal","rect":Rect2(66,50,96,52),"pivot":Vector2(922,1012),"width":308.0,"outline":[Vector2(785,789),Vector2(800,780),Vector2(1048,780),Vector2(1059,793),Vector2(1059,807),Vector2(1073,822),Vector2(1076,993),Vector2(1062,1012),Vector2(783,1012),Vector2(768,994),Vector2(769,823),Vector2(782,806)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/holo-composition-v3.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/holo-composition-v5.json")
 	rebuild()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:

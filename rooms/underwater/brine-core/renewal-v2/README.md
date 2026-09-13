@@ -1,3 +1,31 @@
+## Tube floor contact (September 12, 2026)
+
+The ceramic skirt now has a tight source-aligned contact shadow. Its registration
+opts out of the shared rectangular machinery shadow, removing the duplicate dark
+block and broad detached oval. Native four-direction review and BRINE fixture
+pass: `output/brine-grounding-v9/` and `output/brine-grounding-v9.log`.
+
+## Floating-tank polish (September 12, 2026)
+
+The detailed source now has a restrained one-degree, 13-second sway alongside
+the existing eight-second vertical float. A slight contrast lift keeps the face
+readable through glass. Sparse bubbles ease in and fade away before reaching the
+cap. Native checks pass for source resolution, the complete moving quad inside
+glass, pause, hardware power-off, four rotations and three viewport sizes.
+Evidence: `output/brine-polish-v8/` and `output/brine-polish-v8.log`.
+The fixture now uses the startup core's actual hardware-power switch and checks
+chamber/pod registration; wall-library mounting remains in its dedicated fixtures.
+
+## Source-resolution float (September 12, 2026)
+
+The live occupant now samples `brine-cleaned-v4.png` directly through its alpha
+bounds. The old 74-pixel reduction is bypassed; the same normalized registration
+preserves body size, float timing, glass clearance and cap occlusion. No new art
+was generated and the existing source pixels are preserved. Historical sprite
+build instructions below reproduce the older reduced version only.
+
+Native evidence: `output/brine-resolution-v7-final/`. The full room fixture still
+contains obsolete furniture expectations; see `docs/BRINE_RESOLUTION_2026-09-12.md`.
 # BRINE chamber renewal
 
 ## Current tank lettering (v6)

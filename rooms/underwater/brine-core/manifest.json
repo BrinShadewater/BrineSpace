@@ -45,14 +45,14 @@
       "path": "rooms/underwater/brine-core/renewal-v2/brine-source-v4-face.png",
       "sha256": "09bd949d88c38d31b73fb37c99ee891885782837e369ff1442a8807ee5920874",
       "runtime": {
-        "path": "rooms/underwater/brine-core/renewal-v2/brine-float-v4.png",
-        "sha256": "f19557a0c34dd5e8a4f28088b84b8d3f3eae070d72d8d48c360e5c576e989e35"
+        "path": "rooms/underwater/brine-core/renewal-v2/brine-cleaned-v4.png",
+        "sha256": "1883c4a4ed625a9bf060dc30f866ebe73b7a3b437bb70c021cdbbab1c164e975"
       },
       "native_size": [
         1254,
         1254
       ],
-      "treatment": "Built-in face-only image edit toward original BRINE portrait; same cleanup and aspect-preserving 74px sprite height. Runtime source rectangle 521,575,210,210 stays below cap throughout float."
+      "treatment": "Original face-edit source and cleanup retained. Runtime samples full-resolution alpha bounds with the old normalized placement, subtle 13-second sway and eight-second float; native containment, pause and hardware-off checks pass."
     },
     "component_assets": [
       {
@@ -64,8 +64,8 @@
         "sha256": "aceec8bd19e8b46f823265da83f03004fa522e854c4fe222a0960fae46762f81"
       },
       {
-        "path": "rooms/underwater/brine-core/renewal-v2/brine-float-v4.png",
-        "sha256": "f19557a0c34dd5e8a4f28088b84b8d3f3eae070d72d8d48c360e5c576e989e35"
+        "path": "rooms/underwater/brine-core/renewal-v2/brine-cleaned-v4.png",
+        "sha256": "1883c4a4ed625a9bf060dc30f866ebe73b7a3b437bb70c021cdbbab1c164e975"
       }
     ],
     "previous_body_source": {

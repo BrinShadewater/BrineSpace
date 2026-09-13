@@ -14,7 +14,7 @@ func _ready() -> void:
 		{"id":"xeno_samples","rect":Rect2(-160,67,94,68),"pivot":Vector2(316,1014),"width":290.0,"outline":[Vector2(187,742),Vector2(439,742),Vector2(445,754),Vector2(445,877),Vector2(456,887),Vector2(460,1004),Vector2(449,1014),Vector2(183,1014),Vector2(172,1003),Vector2(171,889),Vector2(182,878),Vector2(185,752)]},
 		{"id":"xeno_workbench","rect":Rect2(66,84,94,70),"pivot":Vector2(909,1010),"width":258.0,"outline":[Vector2(781,826),Vector2(790,809),Vector2(800,796),Vector2(813,796),Vector2(814,774),Vector2(905,774),Vector2(910,783),Vector2(910,799),Vector2(926,799),Vector2(930,787),Vector2(947,780),Vector2(974,758),Vector2(977,749),Vector2(990,741),Vector2(1004,747),Vector2(1012,759),Vector2(1011,780),Vector2(1006,790),Vector2(1006,804),Vector2(1025,814),Vector2(1037,831),Vector2(1037,992),Vector2(1024,1010),Vector2(797,1010),Vector2(781,995)]}
 	]
-	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/xeno-composition-v2.json")
+	dressing=Dressing.new(self,"res://rooms/underwater/batch-two/xeno-composition-v3.json")
 	rebuild()
 
 func rebuild() -> void:
