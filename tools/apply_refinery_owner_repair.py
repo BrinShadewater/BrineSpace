@@ -14,14 +14,14 @@ from register_alpha_silhouette import open_holes, polygons
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_MAP = {
-    "assets/refinery-directional-v1/refinery-north.png": "assets/refinery-directional-v2/refinery-north.png",
-    "assets/refinery-directional-v1/refinery-sides.png": "assets/refinery-directional-v2/refinery-sides.png",
-    "assets/refinery-directional-v1/refinery-south.png": "assets/refinery-directional-v2/refinery-south.png",
+    "assets/rooms/ore-refinery/walls/north.png": "assets/refinery-directional-v2/refinery-north.png",
+    "assets/rooms/ore-refinery/walls/sides.png": "assets/refinery-directional-v2/refinery-sides.png",
+    "assets/rooms/ore-refinery/walls/south.png": "assets/refinery-directional-v2/refinery-south.png",
 }
 EXPECTED_SOURCE_SHA256 = {
-    "assets/refinery-directional-v1/refinery-north.png": "c887e52690279460bda2575948df64d9911c91bfccea5d525bb0b27ec0e7109f",
-    "assets/refinery-directional-v1/refinery-sides.png": "d6332983c7e681b23818275fcaef0de16576bbff75eea0e8409af9047846d5da",
-    "assets/refinery-directional-v1/refinery-south.png": "fc1254c4fd9331ff5ea118eb4877f821963bfe4c6cc8f2ef718bee6219adcb3d",
+    "assets/rooms/ore-refinery/walls/north.png": "c887e52690279460bda2575948df64d9911c91bfccea5d525bb0b27ec0e7109f",
+    "assets/rooms/ore-refinery/walls/sides.png": "d6332983c7e681b23818275fcaef0de16576bbff75eea0e8409af9047846d5da",
+    "assets/rooms/ore-refinery/walls/south.png": "fc1254c4fd9331ff5ea118eb4877f821963bfe4c6cc8f2ef718bee6219adcb3d",
 }
 REGISTRATIONS = [
     "rooms/full-wall-v1/registrations/ore-refinery-wall.json",

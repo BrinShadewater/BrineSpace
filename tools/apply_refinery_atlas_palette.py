@@ -10,7 +10,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "rooms/production-ten/ore_refinery-source-v1.png"
-OUTPUT = ROOT / "rooms/production-ten/ore_refinery-source-v2.png"
+OUTPUT = ROOT / "assets/rooms/ore-refinery/source/overhead.png"
 EXPECTED_SHA256 = "f6b88ce8fe1d69e290da77c8863a78f796b27cf52cefc4dcc65a0c39a371edd8"
 
 

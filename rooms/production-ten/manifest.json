@@ -165,11 +165,11 @@
         "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
       },
       {
-        "path": "assets/room-furnishings-v2/research-specimen-island.png",
+        "path": "assets/rooms/research-lab/furnishings/specimen-island.png",
         "sha256": "83099a27b3c8586563698fbca0ef3653bda75c66bd1e8ec6f244b25e393a061d"
       },
       {
-        "path": "assets/room-furnishings-v2/research-specimen-island-registration.json",
+        "path": "assets/rooms/research-lab/furnishings/specimen-island-registration.json",
         "sha256": "111f69d0cbd9f0796850febcd215a883f3536e926483ad23ad9f88d97b7d0b06"
       }
     ],
@@ -192,7 +192,7 @@
       "station": true,
       "cards": true,
       "view": "rooms/production-ten/maintenance_bay_view.gd",
-      "card": "assets/room-furnishings-v8/cards/maintenance_bay.png"
+      "card": "assets/rooms/maintenance-bay/cards/card.png"
     },
     "verification": {
       "native": true,
@@ -213,7 +213,7 @@
       "centerpiece_asset_pass": "Native four-orientation review and route evidence recorded in docs/ROOM_CENTERPIECE_ASSET_PASS_2026-09-12.md; owner acceptance pending.",
       "furnishing_v8": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v8/manifest.json; owner acceptance pending."
     },
-    "source": "rooms\\production-ten\\maintenance_bay-source-v1.png",
+    "source": "assets\\rooms\\maintenance-bay\\source\\overhead.png",
     "sha256": "613fa9535e1f9656d04a42c3db958f1067876afc334777b463195e3f03064d08",
     "native_size": [
       1254,
@@ -235,7 +235,7 @@
       "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
       "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
     },
-    "selected_source": "rooms\\production-ten\\maintenance_bay-source-v1.png",
+    "selected_source": "assets\\rooms\\maintenance-bay\\source\\overhead.png",
     "review": [
       "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending."
     ],
@@ -254,7 +254,7 @@
         "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
       },
       {
-        "path": "assets/room-centerpieces-v1/maintenance-repair-gantry.png",
+        "path": "assets/rooms/maintenance-bay/furnishings/repair-gantry.png",
         "sha256": "716a8fb1b622d489685b22b41a78551e14c84030c027c47533f345ce530988f4"
       },
       {
@@ -262,19 +262,19 @@
         "sha256": "7db32e1439bdf804b3c8bfdc8cd93219e4c26d409b36fcf5124f08c666139d93"
       },
       {
-        "path": "assets/room-furnishings-v8/maintenance-component-rebuild-cradle.png",
+        "path": "assets/rooms/maintenance-bay/furnishings/component-rebuild-cradle.png",
         "sha256": "b01a205b0d59a5d3d7adb0c6807f2e21d02d20427005e047e2868f8f77c101be"
       },
       {
-        "path": "assets/room-furnishings-v8/universal-fastener-drawer-chest.png",
+        "path": "assets/rooms/maintenance-bay/furnishings/universal-fastener-drawer-chest.png",
         "sha256": "039749e3347ebfdbaba53f2a11173a0a0afdabb2fbc43f997a5740cb4368d7a0"
       },
       {
-        "path": "assets/room-furnishings-v8/maintenance-component-rebuild-cradle-registration.json",
+        "path": "assets/rooms/maintenance-bay/furnishings/component-rebuild-cradle-registration.json",
         "sha256": "940d3c90d544141079385cc538c04a12fab35136f6c005e31da28bde0bd6dcd6"
       },
       {
-        "path": "assets/room-furnishings-v8/universal-fastener-drawer-chest-registration.json",
+        "path": "assets/rooms/maintenance-bay/furnishings/universal-fastener-drawer-chest-registration.json",
         "sha256": "1c4aeacbde565b3678faa849205674a0f33228ae32975a3ebaae3689020e73dd"
       }
     ],
@@ -287,7 +287,7 @@
       }
     ],
     "card": {
-      "path": "assets/room-furnishings-v8/cards/maintenance_bay.png",
+      "path": "assets/rooms/maintenance-bay/cards/card.png",
       "sha256": "c2ca1b69fd1cb6eb5d0a3308f468056a10fa56d538608abb7c8a1b5071054569"
     }
   },
@@ -301,7 +301,7 @@
       "station": true,
       "cards": true,
       "view": "rooms/production-ten/storage_bay_view.gd",
-      "card": "assets/room-furnishings-v8/cards/storage_bay.png"
+      "card": "assets/rooms/storage-bay/cards/card.png"
     },
     "verification": {
       "native": true,
@@ -322,7 +322,7 @@
       "centerpiece_asset_pass": "Native four-orientation review and route evidence recorded in docs/ROOM_CENTERPIECE_ASSET_PASS_2026-09-12.md; owner acceptance pending.",
       "furnishing_v8": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v8/manifest.json; owner acceptance pending."
     },
-    "source": "rooms\\production-ten\\storage_bay-source-v1.png",
+    "source": "assets\\rooms\\storage-bay\\source\\overhead.png",
     "sha256": "0a32a31a12a62f5565951ee0e7166d30c012913ace760a30f527b99502af6570",
     "native_size": [
       1254,
@@ -345,7 +345,7 @@
       "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
       "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
     },
-    "selected_source": "rooms\\production-ten\\storage_bay-source-v1.png",
+    "selected_source": "assets\\rooms\\storage-bay\\source\\overhead.png",
     "review": [
       "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending."
     ],
@@ -363,7 +363,7 @@
         "sha256": "6cf635dd89b2879a864d908eeb014e4287f006db61f34ec3f5f0a47e99b7e1b7"
       },
       {
-        "path": "rooms/production-ten/storage_bay-source-v1.png",
+        "path": "assets/rooms/storage-bay/source/overhead.png",
         "sha256": "0a32a31a12a62f5565951ee0e7166d30c012913ace760a30f527b99502af6570"
       },
       {
@@ -371,7 +371,7 @@
         "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
       },
       {
-        "path": "assets/room-centerpieces-v1/storage-cargo-carousel.png",
+        "path": "assets/rooms/storage-bay/furnishings/cargo-carousel.png",
         "sha256": "969814932daa9942b89393cc829f68645001e493faf1cd11254d3d53145497ac"
       },
       {
@@ -379,19 +379,19 @@
         "sha256": "574160ed8e301acb506060629983105b892577ecb8a949047424ed86f05c11fe"
       },
       {
-        "path": "assets/room-furnishings-v8/storage-cargo-sorting-island.png",
+        "path": "assets/rooms/storage-bay/furnishings/cargo-sorting-island.png",
         "sha256": "44179554a3c11200ab57f3f357f393e82b6c1e29c3bd1f6214c040e6d736308d"
       },
       {
-        "path": "assets/room-furnishings-v8/universal-folded-handling-dolly.png",
+        "path": "assets/rooms/storage-bay/furnishings/universal-folded-handling-dolly.png",
         "sha256": "277b177fc19b77f05f6bb4ef3a6d49b1e4fafd7242c31f4d98ab8288c87f8d2e"
       },
       {
-        "path": "assets/room-furnishings-v8/storage-cargo-sorting-island-registration.json",
+        "path": "assets/rooms/storage-bay/furnishings/cargo-sorting-island-registration.json",
         "sha256": "83b8cabca920c965fc84bf5a5c2e39174ffacceafbed90704c3e4528c7926f52"
       },
       {
-        "path": "assets/room-furnishings-v8/universal-folded-handling-dolly-registration.json",
+        "path": "assets/rooms/storage-bay/furnishings/universal-folded-handling-dolly-registration.json",
         "sha256": "dd23b7183595c1b7fb33fc02e1a1b4aa48b8edf1efda54f06f932d7d0ca3f865"
       }
     ],
@@ -404,7 +404,7 @@
     ],
     "decoration_revision": "docs/ORGANIC_ROOM_COMPOSITION.md",
     "card": {
-      "path": "assets/room-furnishings-v8/cards/storage_bay.png",
+      "path": "assets/rooms/storage-bay/cards/card.png",
       "sha256": "b0569fc238149f029970d57f8103dc8c9f343862b6b7df67b6b34f51ae2c8798"
     }
   },
@@ -438,7 +438,7 @@
       "organic_composition": "Activity v2 groups crusher/hopper and nearby assay work surface, with vessels/sorter across the north-south aisle. Four rotations, 728 route samples and 72 static crew-depth probes pass. Postdates Windows v5; station-scale review and package pending.",
       "furnishing_v3": "Native four-orientation review and route evidence recorded in assets/room-furnishings-v3/manifest.json; owner acceptance pending."
     },
-    "source": "rooms\\production-ten\\ore_refinery-source-v2.png",
+    "source": "assets\\rooms\\ore-refinery\\source\\overhead.png",
     "sha256": "6b8850ea121ef4de57f7db96f00eecccfe48065ab5acd2efaa6ed4c3c5a3fa4a",
     "native_size": [
       1254,
@@ -459,13 +459,13 @@
       "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
       "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
     },
-    "selected_source": "rooms\\production-ten\\ore_refinery-source-v2.png",
+    "selected_source": "assets\\rooms\\ore-refinery\\source\\overhead.png",
     "review": [
       "Owner palette repair inspected in four real-display rotations; registered containment, route tests and card bindings pass. Operating-state effects remain inherited from the unchanged semantic machinery."
     ],
     "component_assets": [
       {
-        "path": "rooms/production-ten/decor/ore-assay-bench-v2.png",
+        "path": "assets/rooms/ore-refinery/furnishings/ore-assay-bench.png",
         "sha256": "6b818f9c6d35c8cf3c173654b1d46dc1817877fe45748a294b906eddf27e1681"
       },
       {
@@ -477,11 +477,11 @@
         "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
       },
       {
-        "path": "assets/room-furnishings-v3/refinery-assay-bench.png",
+        "path": "assets/rooms/ore-refinery/furnishings/assay-bench.png",
         "sha256": "a811dccb55880ddfda20dcc151871f068376e1ef54da4f7c3125bf680667d59c"
       },
       {
-        "path": "assets/room-furnishings-v3/refinery-assay-bench-registration.json",
+        "path": "assets/rooms/ore-refinery/furnishings/assay-bench-registration.json",
         "sha256": "81b8acdf2d9776e24ded183190dfd179dc6f272c146a7f6453b8333fc4f93177"
       }
     ],
@@ -784,7 +784,7 @@
       "verdict": "Canonical sockets, registered containment and documented pair/ingress walker-path sweeps passed; sampled connected and blocked doorway pixels reviewed.",
       "owner": "tools/modular_room_geometry.gd; generated hull is not authoritative"
     },
-    "selected_source": "rooms/production-ten/command_center-source-v2.png",
+    "selected_source": "assets/rooms/command-center/source/overhead.png",
     "review": [
       "Source visually inspected; extraction, all-rotation containment, state effects and native consumers pending.",
       "V1 rejected as static base: active sonar screens and open sockets. V2 darkens screens; east/south/west gaps remain. Use equipment only with authoritative shared hull.",
@@ -792,7 +792,7 @@
     ],
     "revisions": [
       {
-        "source": "rooms/production-ten/command_center-source-v2.png",
+        "source": "assets/rooms/command-center/source/overhead.png",
         "sha256": "40daaedb1b8d2961c0801810161037bafdd62a3259d62abb6f97b5ab625d4ab6",
         "prompt_reference": "rooms/production-ten/correction-prompts.json#command_center"
       }
@@ -800,7 +800,7 @@
     "floor_cleanup": "floor-cutout-review.json: source-space openings; platforms retained; card-polish-v1",
     "component_assets": [
       {
-        "path": "rooms/production-ten/decor/command-credenza-v1.png",
+        "path": "assets/rooms/command-center/furnishings/credenza.png",
         "sha256": "7f1f88deafa827ecc2d25b44b494698e611d81c08f16f5fc171541086238e025"
       },
       {
@@ -808,11 +808,11 @@
         "sha256": "e2a88e9ea0bba09d60dc4ba94699a95aceed9974da7515c5188183a54c1db11b"
       },
       {
-        "path": "assets/room-furnishings-v2/command-planning-table.png",
+        "path": "assets/rooms/command-center/furnishings/planning-table.png",
         "sha256": "fbdbb30ca38cb1b284119192839d48e2e5f1a5789f63fa7b083925209d9b5fc6"
       },
       {
-        "path": "assets/room-furnishings-v2/command-planning-table-registration.json",
+        "path": "assets/rooms/command-center/furnishings/planning-table-registration.json",
         "sha256": "d75e06a94add29f4f554a28121173e3f1f7208ccd11b9e90f8a32f0e632b5ce6"
       }
     ],

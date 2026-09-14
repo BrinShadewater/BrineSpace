@@ -7,15 +7,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 COPIES = {
-    "assets/refinery-directional-v2/refinery-north.png": "assets/refinery-directional-v1/refinery-north.png",
-    "assets/refinery-directional-v2/refinery-sides.png": "assets/refinery-directional-v1/refinery-sides.png",
-    "assets/refinery-directional-v2/refinery-south.png": "assets/refinery-directional-v1/refinery-south.png",
+    "assets/refinery-directional-v2/refinery-north.png": "assets/rooms/ore-refinery/walls/north.png",
+    "assets/refinery-directional-v2/refinery-sides.png": "assets/rooms/ore-refinery/walls/sides.png",
+    "assets/refinery-directional-v2/refinery-south.png": "assets/rooms/ore-refinery/walls/south.png",
 }
 REGISTRATIONS = {
-    "rooms/full-wall-v1/registrations/ore-refinery-wall.json": "assets/refinery-directional-v1/refinery-north.png",
-    "rooms/full-wall-v1/registrations/side-ore-refinery-wall-east.json": "assets/refinery-directional-v1/refinery-sides.png",
-    "rooms/full-wall-v1/registrations/side-ore-refinery-wall-west.json": "assets/refinery-directional-v1/refinery-sides.png",
-    "rooms/full-wall-v1/registrations/side-ore-refinery-wall-south.json": "assets/refinery-directional-v1/refinery-south.png",
+    "rooms/full-wall-v1/registrations/ore-refinery-wall.json": "assets/rooms/ore-refinery/walls/north.png",
+    "rooms/full-wall-v1/registrations/side-ore-refinery-wall-east.json": "assets/rooms/ore-refinery/walls/sides.png",
+    "rooms/full-wall-v1/registrations/side-ore-refinery-wall-west.json": "assets/rooms/ore-refinery/walls/sides.png",
+    "rooms/full-wall-v1/registrations/side-ore-refinery-wall-south.json": "assets/rooms/ore-refinery/walls/south.png",
 }
 
 for source, destination in COPIES.items():

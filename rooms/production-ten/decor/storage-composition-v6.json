@@ -1,18 +1,18 @@
 {
   "textures": {
     "bench": "res://rooms/production-ten/decor/storage-packing-bench-v3.png",
-    "cargo": "res://rooms/production-ten/storage_bay-source-v1.png",
+    "cargo": "res://assets/rooms/storage-bay/source/overhead.png",
     "support": "res://assets/material-polish-v4/maintenance-support.png",
     "staging": "res://rooms/production-ten/decor/storage-staging-pallet-v1.png",
-    "centerpiece": "res://assets/room-centerpieces-v1/storage-cargo-carousel.png",
-    "storage_cargo_sorting_island": "res://assets/room-furnishings-v8/storage-cargo-sorting-island.png",
-    "universal_folded_handling_dolly": "res://assets/room-furnishings-v8/universal-folded-handling-dolly.png"
+    "centerpiece": "res://assets/rooms/storage-bay/furnishings/cargo-carousel.png",
+    "storage_cargo_sorting_island": "res://assets/rooms/storage-bay/furnishings/cargo-sorting-island.png",
+    "universal_folded_handling_dolly": "res://assets/rooms/storage-bay/furnishings/universal-folded-handling-dolly.png"
   },
   "furniture": [
     {
       "id": "storage_cargo_sorting_island",
       "texture": "storage_cargo_sorting_island",
-      "registration": "res://assets/room-furnishings-v8/storage-cargo-sorting-island-registration.json",
+      "registration": "res://assets/rooms/storage-bay/furnishings/cargo-sorting-island-registration.json",
       "footprint": [
         -55,
         -18,
@@ -27,7 +27,7 @@
     {
       "id": "universal_folded_handling_dolly",
       "texture": "universal_folded_handling_dolly",
-      "registration": "res://assets/room-furnishings-v8/universal-folded-handling-dolly-registration.json",
+      "registration": "res://assets/rooms/storage-bay/furnishings/universal-folded-handling-dolly-registration.json",
       "footprint": [
         -29,
         -13,
