@@ -13,7 +13,8 @@ func run() -> void:
 			comms.show_next(); comms.advance()
 			for i in range(3): await process_frame
 			await RenderingServer.frame_post_draw
-			assert(comms.portrait.texture.get_width()==256)
+			# Comms now reuses the architect selection portraits (square, high resolution).
+			assert(comms.portrait.texture!=null and comms.portrait.texture.get_width()>=256 and comms.portrait.texture.get_width()==comms.portrait.texture.get_height(),"Crew portrait: "+id)
 			assert(Rect2(Vector2.ZERO,Vector2(root.size)).encloses(comms.panel.get_global_rect()),"Panel fits viewport")
 			assert(comms.body.visible_characters==comms.body.get_total_character_count())
 			root.get_texture().get_image().save_png("res://output/crew-comms/%s-%d.png"%[id,width])
