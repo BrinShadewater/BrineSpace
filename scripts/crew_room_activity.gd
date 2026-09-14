@@ -58,9 +58,27 @@ static func stations(data: Dictionary) -> Array:
 			if prop.id=="wooden-desk": desk=prop
 			elif prop.id=="chair-rear": chair=prop
 		if not desk.is_empty() and not chair.is_empty():
-			var gap: float=(float(desk.rect.end.y)+float(chair.rect.position.y))*0.5
+			# Studio rotations put the chair on any side of the desk: stand midway
+			# between their facing edges, in line with the chair.
+			var d: Rect2=desk.rect
+			var c: Rect2=chair.rect
+			var offset: Vector2=c.get_center()-d.get_center()
+			var at: Vector2
+			if absf(offset.y)>=absf(offset.x):
+				at=Vector2(c.get_center().x,(d.end.y+c.position.y)*0.5 if offset.y>0 else (c.end.y+d.position.y)*0.5)
+			else:
+				at=Vector2((d.end.x+c.position.x)*0.5 if offset.x>0 else (c.end.x+d.position.x)*0.5,c.get_center().y)
 			# Navigation nodes sit on a 16-unit lattice and stations match within 5 units.
-			read_point=Vector2(roundf(chair.rect.get_center().x/16.0)*16.0,roundf(gap/16.0)*16.0)
+			# Rotated layouts can leave too little room between desk and chair; take the
+			# nearest standable lattice point within three nodes of the ideal spot.
+			var ideal: Vector2=(at/16.0).round()*16.0
+			var best:=Vector2.INF
+			for dy in range(-48,49,16):
+				for dx in range(-48,49,16):
+					var candidate: Vector2=ideal+Vector2(dx,dy)
+					if absf(candidate.x)>144 or absf(candidate.y)>144 or _approach_blocked(data,candidate): continue
+					if best==Vector2.INF or candidate.distance_squared_to(ideal)<best.distance_squared_to(ideal): best=candidate
+			if best!=Vector2.INF: read_point=best
 		return [{"point":read_point,"facing":"north","room":id,"mode":"read"},{"point":Vector2(80,0),"facing":"north","room":id,"mode":"watch"}]
 	if id not in ROOMS: return result
 	for prop in data.props:
