@@ -8,9 +8,11 @@ var cycle_pose: Dictionary=preload("res://scripts/airlock_cycle.gd").pose({})
 const CHAMBER=Rect2(-60,-184,120,220)
 const Fittings=preload("res://rooms/underwater/airlock-v4/fittings.gd")
 static var wet_deck: Texture2D
+var embedded_omitted_sides: Array = []
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+	embedded_omitted_sides=omitted_sides.duplicate()
 	var library=preload("res://scripts/room_asset_library.gd")
 	if quarter==0:
 		for i in range(props.size()):
@@ -32,10 +34,9 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 				locker.custom_library_draw=true
 				locker.rect.position=Vector2(-158,-180)
 				locker.helmet_anchor_uv=Vector2(0.051,1.3)
-				var riser=preload("res://rooms/whole-room/riser_geometry.gd")
-				var raised: bool=get_meta("raised_north_visible",preload("res://scripts/title_settings.gd").raised_walls)
-				var wall_top: float=riser.TOP if raised and not omitted_sides.has(0) else riser.BASE_Y
-				locker.wall_art_rect=Rect2(Vector2(-158,wall_top),locker.rect.size)
+				# The wall-art rect depends on the omitted/raised north wall, which is a
+				# per-host drawing state; resolve it at draw time (locker_wall_art_rect)
+				# so embedded geometry stays identical across running/omitted configs.
 				locker.sort_y=locker.rect.end.y
 				props[i]=locker
 				continue
@@ -156,12 +157,28 @@ func draw_room_floor(center: Vector2) -> void:
 			var end:=Geometry.turn(Vector2(-66,-70),quarter)
 			var elbow:=Vector2(end.x,start.y)
 			preload("res://rooms/whole-room/decoration_props.gd").service_run(painter,PackedVector2Array([start,elbow,end]),5.0,"pipe_straight")
+func has_wall_art(prop: Dictionary) -> bool:
+	return quarter==2 and prop.id=="suit_lockers" and prop.get("custom_library_draw",false)
+
+func locker_wall_art_rect(prop: Dictionary) -> Rect2:
+	if not has_wall_art(prop): return prop.rect
+	var riser=preload("res://rooms/whole-room/riser_geometry.gd")
+	var raised: bool=get_meta("raised_north_visible",preload("res://scripts/title_settings.gd").raised_walls)
+	var wall_top: float=riser.TOP if raised and not embedded_omitted_sides.has(0) else riser.BASE_Y
+	return Rect2(Vector2(-158,wall_top),prop.rect.size)
+
+func wall_art_rects() -> Array:
+	var result: Array=[]
+	for prop in props:
+		if has_wall_art(prop): result.append(locker_wall_art_rect(prop))
+	return result
+
 func draw_registered_prop(prop: Dictionary) -> void:
 	if prop.get("library_asset",false):
 		var artwork: Dictionary=prop
-		if prop.has("wall_art_rect"):
+		if has_wall_art(prop):
 			artwork=prop.duplicate()
-			artwork.rect=prop.wall_art_rect
+			artwork.rect=locker_wall_art_rect(prop)
 		preload("res://scripts/room_asset_library.gd").draw(self,artwork)
 		if prop.id!="suit_lockers": return
 	# Draw with the chamber so its wet-deck pass cannot cover the hatch leaves.
@@ -174,7 +191,7 @@ func draw_registered_prop(prop: Dictionary) -> void:
 		# Screen-facing attachment follows the fitting point in every room rotation.
 		var at: Vector2=preload("res://scripts/airlock_service.gd").helmet_anchor(prop)
 		if prop.has("helmet_anchor_uv"):
-			var support: Rect2=prop.get("wall_art_rect",prop.rect)
+			var support: Rect2=locker_wall_art_rect(prop)
 			var tray: Vector2=support.position+support.size*prop.get("helmet_tray_uv",Vector2(0.051,0.52))
 			painter.draw_line(tray,at+Vector2(0,4),Color("293f46"),3)
 		# A shallow side ledge supports the handoff rather than a floating sprite.

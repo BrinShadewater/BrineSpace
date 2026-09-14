@@ -4,6 +4,11 @@ var full_wall = preload("res://rooms/full-wall-v1/full_wall_prop.gd").new("ore-r
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+	# Without a rebuild the bank is already installed; re-arranging the retained
+	# props from their moved positions would drift them on every configure.
+	if props.any(func(prop): return full_wall.owns(prop)):
+		full_wall.apply(self)
+		return
 	var retained: Array=[]
 	if q==3:
 		for prop in props:

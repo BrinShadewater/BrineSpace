@@ -4,6 +4,11 @@ var full_wall = preload("res://rooms/full-wall-v1/full_wall_prop.gd").new("radio
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+	# Without a rebuild the bank is already installed; re-anchoring the equipment
+	# from its moved bounds accumulates float drift on every configure.
+	if props.any(func(prop): return full_wall.owns(prop)):
+		full_wall.apply(self)
+		return
 	var radio_equipment := {}
 	if posmod(q,4)==2:
 		for prop in props:
@@ -26,6 +31,9 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 		for id in radio_equipment:
 			if id not in positions: retained.append(radio_equipment[id])
 		props=retained
+		# Register the retained equipment like the bank's props, so a later configure
+		# without rebuild sees identical prop data.
+		preload("res://scripts/room_layout_store.gd").apply(self,"radio-signal-wall")
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)

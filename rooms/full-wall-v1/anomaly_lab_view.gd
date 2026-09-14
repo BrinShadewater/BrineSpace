@@ -4,6 +4,10 @@ var full_wall = preload("res://rooms/full-wall-v1/full_wall_prop.gd").new("anoma
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+	# Without a rebuild the bank is already installed; keep the arranged props.
+	if props.any(func(prop): return full_wall.owns(prop)):
+		full_wall.apply(self)
+		return
 	var platform := {}
 	if posmod(q,4)==2:
 		for prop in props:
@@ -18,6 +22,9 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 			platform.rect.position=Vector2(48,-25.7391357421875)
 			platform.sort_y=platform.rect.end.y
 			props.append(platform)
+			# Register the re-added platform the same way the bank's props were, so a
+			# later configure without rebuild sees identical prop data.
+			preload("res://scripts/room_layout_store.gd").apply(self,"anomaly-containment-wall")
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)

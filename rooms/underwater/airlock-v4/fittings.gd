@@ -39,7 +39,7 @@ static func draw_wall(canvas: CanvasItem,_cell:=Vector2i.ZERO,wall_view=null) ->
 		var r: Array=item.rect
 		var bounds:=Rect2(Vector2(r[0],r[1])+Riser.MOUNT_SHIFT,Vector2(r[2],r[3]))
 		var covered:=false
-		if wall_view!=null:
-			for prop in wall_view.props:
-				if prop.has("wall_art_rect") and prop.wall_art_rect.intersects(bounds): covered=true
+		if wall_view!=null and wall_view.has_method("wall_art_rects"):
+			for art_rect in wall_view.wall_art_rects():
+				if art_rect.intersects(bounds): covered=true
 		if not covered: sprite(canvas,item.texture,bounds)
