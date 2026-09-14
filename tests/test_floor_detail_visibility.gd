@@ -28,6 +28,8 @@ func run() -> void:
 	for entry in preload("res://scripts/room_database.gd").all_rooms().values():
 		if grid._is_narrow_corridor(entry): continue
 		panel.view=grid._bill_room_view(entry)
+		# Floor details are Studio-only (owner decision); live rooms return before drawing them.
+		panel.view.set_meta("layout_editor_preview",true)
 		var profile:=Floor.profile_for(panel.view)
 		for q in range(4):
 			panel.view.configure_embedded(q,[],false,0.0)
