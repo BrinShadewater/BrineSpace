@@ -55,8 +55,10 @@ static func draw(grid, order: Dictionary, progress: float) -> void:
 				var count: int=clampi(int(ceil((p-.70)/.30*props.size())),0,props.size())
 				view.props=props.slice(0,count)
 				view.set_meta("layout_editor_preview",true)
+				view.set_meta("construction_fitting",true)
 				view.render_into(painter,center,scale,false,true)
 				view.remove_meta("layout_editor_preview")
+				view.remove_meta("construction_fitting")
 				view.props=props
 	painter.draw_set_transform(center,0,Vector2.ONE*scale)
 	var label: String="FOUNDATION" if p<.22 else "DECK ASSEMBLY" if p<.35 else "PRESSURE FRAME" if p<.62 else "HULL SEALED" if p<.7 else "FITTING INTERIOR"
