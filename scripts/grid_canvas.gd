@@ -853,6 +853,11 @@ var render_door_cache_active := false
 var reuse_frame_doors := not OS.get_cmdline_user_args().has("--uncached-frame-doors")
 var retain_room_contents := not OS.get_cmdline_user_args().has("--redraw-room-contents")
 var content_canvases := {}
+# Skip per-frame configure/submit for retained rooms whose inputs are unchanged.
+var skip_unchanged_rooms := not OS.get_cmdline_user_args().has("--configure-all-rooms")
+var room_frame_keys := {}
+var skipped_room_setups := 0
+var plain_view_scripts := {}
 
 class SurfacePass extends Node2D:
 	var host
@@ -1641,6 +1646,42 @@ func bill_room_geometry(room: Dictionary, open_sides: Array) -> Dictionary:
 		return {"layout":view.layout.duplicate(true),"props":props.duplicate(true),"edges":view.edges.duplicate(true)}
 	return {"layout": view.layout.duplicate(true), "props": view.props.filter(func(prop): return not prop.get("layout_hidden",false)).duplicate(true), "edges": view.edges.duplicate(true)}
 
+# Rooms whose retained drawing depends only on inputs the frame key captures.
+# Excluded: per-frame pod/cycle/carrier/recovery state, companion sites, water,
+# crew inside the cell, and views that paint directly into the live pass.
+func _room_setup_skippable(main, room: Dictionary, view) -> bool:
+	if room.get("id","") in ["brine_core","airlock","salvage_workshop","cryo_chamber"] or room.get("recovered_derelict",false): return false
+	if main.Companions.is_site(main,room.pos): return false
+	if preload("res://scripts/room_flooding.gd").level(room) > 0.0: return false
+	if not _plain_retained_view(view): return false
+	return not _room_has_actor(main,room.pos)
+
+func _plain_retained_view(view) -> bool:
+	var script: Script = view.get_script()
+	if not plain_view_scripts.has(script):
+		var plain := false
+		var current: Script = script
+		while current != null:
+			var path := current.resource_path
+			if path.ends_with("nursery_lighting_pilot.gd") or path.ends_with("modular/nursery_view.gd"):
+				plain = false
+				break
+			if path.ends_with("whole-room/nursery_whole_view.gd"): plain = true
+			current = current.get_base_script()
+		plain_view_scripts[script] = plain
+	return plain_view_scripts[script]
+
+func _room_has_actor(main, pos: Vector2i) -> bool:
+	var size := _cell_size()
+	var cell_of := func(at: Vector2) -> Vector2i: return Vector2i(floori(at.x / size), floori(at.y / size))
+	if main.has_test_walker() and cell_of.call(main.get_test_walker_position()) == pos: return true
+	if main.has_dr_veld() and cell_of.call(main.get_dr_veld_position()) == pos: return true
+	if main.has_chief_branforth() and cell_of.call(main.get_chief_branforth_position()) == pos: return true
+	if main.has_marsh() and cell_of.call(main.get_marsh_position()) == pos: return true
+	for actor in main.companion_actors.values():
+		if actor.active and actor.cell_at(actor.foot) == pos: return true
+	return false
+
 func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only := false, shell_only := false) -> void:
 	var setup_started: int = Time.get_ticks_usec() if profile_draw else 0
 	if _is_narrow_corridor(room):
@@ -1670,6 +1711,21 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		if not preview and main.occupied.has(pos + offset) and _uses_layered_art(main.occupied[pos + offset]) and not _is_narrow_corridor(main.occupied[pos+offset]) and side in [0, 3]:
 			omitted.append(side)
 	if profile_draw: _profile_detail("doors_"+str(room.id),setup_started)
+	var retained_live := retain_room_contents and retain_static_surfaces and not preview and not floor_only and not shell_only
+	var frame_key: Array = []
+	if retained_live and skip_unchanged_rooms and _room_setup_skippable(main,room,room_view):
+		var Store = preload("res://scripts/room_layout_store.gd")
+		frame_key = [room_view.get_instance_id(),int(room.get("rotation",0)),sides,omitted,main.powered_room_cells.has(pos),main.hardware.walls,
+			preload("res://scripts/title_settings.gd").raised_walls,main.occupied.has(pos+Vector2i.UP),main.drone_fleet.deployed(pos),main.drone_fleet.hatch_fraction(pos),
+			rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size,Store.revision,Store.geometry_revision,
+			int(room_view.get_meta("layout_apply_serial",0))]
+		if content_canvases.has(pos) and room_frame_keys.get(pos,[]) == frame_key:
+			# Nothing this room's configure/submit reads has changed: its retained
+			# slots are current, so only advance the live animation clock.
+			content_canvases[pos].show()
+			content_canvases[pos].advance_live(main.get_visual_time_seconds())
+			skipped_room_setups += 1
+			return
 	var detail_mark := Time.get_ticks_usec() if profile_draw else 0
 	room_view.set_meta("raised_north_visible",not preview and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP))
 	room_view.configure_embedded(int(room.get("rotation", 0)), sides, not preview and main.powered_room_cells.has(pos), main.get_visual_time_seconds(), omitted)
@@ -1735,6 +1791,12 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		room_view.retained_content_host = canvas
 	room_view.render_into(draw_target, rect.get_center(), _cell_size() / 384.0, floor_only, preview)
 	room_view.retained_content_host = null
+	if not frame_key.is_empty():
+		# Store.apply during render may bump the serial; key on the settled value.
+		frame_key[frame_key.size()-1] = int(room_view.get_meta("layout_apply_serial",0))
+		room_frame_keys[pos] = frame_key
+	elif retained_live:
+		room_frame_keys.erase(pos)
 	room_view.shell_pass = 0
 	if preview or floor_only:
 		draw_target.draw_set_transform(rect.get_center(),0,Vector2.ONE*_cell_size()/384.0)

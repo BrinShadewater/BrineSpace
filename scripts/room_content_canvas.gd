@@ -133,6 +133,18 @@ func submit(view, queue: Array) -> void:
 
 	if profile_enabled: prepare_usec = Time.get_ticks_usec()-started
 
+# The host skipped this room's configure/submit because none of its inputs
+# changed. Only the machine clock moves (configure sets it to visual time), so
+# refresh it and redraw the live slots; static slots stay retained.
+func advance_live(clock: float) -> void:
+	# Nothing was prepared this frame; paints below accumulate draw time afresh.
+	prepare_usec = 0
+	draw_usec = 0
+	if view_state.has("machine_clock"): view_state["machine_clock"] = clock
+	if view_state.has("flood_clock"): view_state["flood_clock"] = clock
+	for slot in slots:
+		if slot.visible and slot.live: slot.queue_redraw()
+
 func paint(slot: DrawSlot) -> void:
 	var started := Time.get_ticks_usec() if profile_enabled else 0
 	if slot.item.has("prop") and slot.item.prop.get("layout_hidden",false): return

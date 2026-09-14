@@ -19,12 +19,39 @@ func changed_state(label: String) -> void:
 		failures += 1
 		push_error("State did not invalidate in the next rendered frame: " + label)
 	await settle()
-	root.get_texture().get_image().save_png("res://output/content-parity-%s-cached.png" % label)
+	save_capture("res://output/content-parity-%s-cached.png" % label)
 	mode(false)
 	await settle()
-	root.get_texture().get_image().save_png("res://output/content-parity-%s-direct.png" % label)
+	save_capture("res://output/content-parity-%s-direct.png" % label)
 	mode(true)
 	await settle()
+var captures := {}
+# Record every capture so cached/direct pairs are compared, not only saved.
+func save_capture(path: String) -> void:
+	var image := root.get_texture().get_image()
+	image.save_png(path)
+	captures[path] = image
+func compare_captures() -> void:
+	var compared := 0
+	for path in captures:
+		if not str(path).ends_with("-cached.png") and not str(path).contains("-cached"): continue
+		var direct_path := str(path).replace("cached","direct")
+		if not captures.has(direct_path): continue
+		compared += 1
+		var a: PackedByteArray = captures[path].get_data()
+		var b: PackedByteArray = captures[direct_path].get_data()
+		if a == b: continue
+		# Door motion between the two captures moves a few pixels by a few levels.
+		var over := 0
+		for i in range(0, mini(a.size(), b.size()), 4):
+			if absi(a[i]-b[i]) > 8 or absi(a[i+1]-b[i+1]) > 8 or absi(a[i+2]-b[i+2]) > 8: over += 1
+		if over > 0:
+			failures += 1
+			push_error("Retained room content differs from the direct path by more than 8 levels at %d pixels: %s" % [over, path])
+	if compared == 0:
+		failures += 1
+		push_error("No cached/direct capture pairs were compared")
+	print("CONTENT PARITY PIXEL PAIRS: %d compared" % compared)
 func run() -> void:
 	if DisplayServer.get_name() == "headless":
 		push_error("Content pixel comparison requires rendering; run without --headless.")
@@ -75,7 +102,7 @@ func run() -> void:
 		for enabled in [false,true]:
 			mode(enabled)
 			await settle()
-			root.get_texture().get_image().save_png("res://output/content-parity-q%d-%s.png" % [q,"cached" if enabled else "direct"])
+			save_capture("res://output/content-parity-q%d-%s.png" % [q,"cached" if enabled else "direct"])
 	game._set_grid_zoom(game.DEFAULT_GRID_ZOOM)
 	await settle()
 	game.grid_scroll.scroll_horizontal = int(20.5*game.get_cell_size()-game.grid_scroll.size.x*0.5)
@@ -83,7 +110,7 @@ func run() -> void:
 	for enabled in [false,true]:
 		mode(enabled)
 		await settle()
-		root.get_texture().get_image().save_png("res://output/content-parity-close-%s.png" % ("cached" if enabled else "direct"))
+		save_capture("res://output/content-parity-close-%s.png" % ("cached" if enabled else "direct"))
 	var static_before := 0
 	var live_before := 0
 	for canvas in game.grid_view.content_canvases.values():
@@ -117,7 +144,7 @@ func run() -> void:
 			for enabled in [true,false]:
 				mode(enabled)
 				await settle()
-				root.get_texture().get_image().save_png("res://output/content-parity-motion-%d-%d-%s.png" % [q,tick,"cached" if enabled else "direct"])
+				save_capture("res://output/content-parity-motion-%d-%d-%s.png" % [q,tick,"cached" if enabled else "direct"])
 	mode(true)
 	await settle()
 	game.placed_rooms[0].rotation = (int(game.placed_rooms[0].rotation)+1)%4
@@ -186,7 +213,7 @@ func run() -> void:
 			for enabled in [true,false]:
 				mode(enabled)
 				await settle()
-				root.get_texture().get_image().save_png("res://output/content-parity-busy-%d-%s.png" % [frame,"cached" if enabled else "direct"])
+				save_capture("res://output/content-parity-busy-%d-%s.png" % [frame,"cached" if enabled else "direct"])
 			mode(true)
 	assert(saw_drone,"Busy fixture must launch a drone")
 	assert(saw_movement,"Busy fixture must actually move crew")
@@ -199,6 +226,7 @@ func run() -> void:
 		meshes += view.prop_meshes.size()
 	assert(meshes > 0,"Cache must actually be exercised")
 	print("Retained meshes: ",meshes)
+	compare_captures()
 	print("CONTENT PARITY CAPTURE %s: %d rooms, %d views, four rotations" % ["PASS" if failures==0 else "FAIL",game.placed_rooms.size(),views.size()])
 	game.queue_free()
 	await process_frame
