@@ -58,13 +58,21 @@ func run() -> void:
 	for i in range(editor.entries.size()):
 		if editor.entries[i].asset=="deepwater-listening-wall": editor.switch_room(i); break
 	editor.switch_rotation(0); editor.free_placement.button_pressed=true
-	editor.selected="flush_back"
-	assert(editor.movable(editor.selected))
+	# The legacy flush_back panels were retired for the strict overhead wall bank
+	# (use_legacy_flush=false); exercise movement on the room's current movable bank.
+	var listening_id:=""
+	for item in editor.entities():
+		if editor.movable(str(item.id)) and editor.draft.get(str(item.id)) is Array and str(item.id).begins_with("full_wall"): listening_id=str(item.id); break
+	if listening_id.is_empty():
+		for item in editor.entities():
+			if editor.movable(str(item.id)) and editor.draft.get(str(item.id)) is Array: listening_id=str(item.id); break
+	editor.selected=listening_id
+	assert(not listening_id.is_empty() and editor.movable(editor.selected),"Listening room has a movable object: "+str(editor.entities().map(func(item): return item.id)))
 	var before: Rect2=editor.entity_bounds(editor.selected_prop())
 	var at: Array=editor.draft[editor.selected]
 	editor.draft[editor.selected]=[at[0]+18,at[1]+12]; editor.dirty=true; editor.refresh()
 	assert(editor.entity_bounds(editor.selected_prop()).position.distance_to(before.position+Vector2(18,12))<0.01)
-	editor.save_all_rotations(); Store.loaded=false; Store.data={}; editor.load_room(); editor.selected="flush_back"
+	editor.save_all_rotations(); Store.loaded=false; Store.data={}; editor.load_room(); editor.selected=listening_id
 	assert(editor.entity_bounds(editor.selected_prop()).position.distance_to(before.position+Vector2(18,12))<0.01,"Listening movement persists")
 	assert(Door.riser_leaf_rects(0).size()==2 and Door.riser_leaf_rects(1).is_empty())
 	assert(Door.riser_leaf_rects(0.5)[0].size.x<Door.riser_leaf_rects(0)[0].size.x)

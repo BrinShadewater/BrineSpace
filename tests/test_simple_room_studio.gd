@@ -12,7 +12,16 @@ func run() -> void:
 	await process_frame
 	e.free_placement.button_pressed=true
 	assert(e.library_filter.get_item_text(0)=="Room Default")
-	assert(e.library_list.item_count==e.base_props.size())
+	# Room Default lists the room's base props first, then its wall-family side
+	# variants and library entries authored for this room.
+	assert(e.library_list.item_count>=e.base_props.size())
+	for i in range(e.library_list.item_count):
+		var item_id: String=str(e.library_list.get_item_metadata(i))
+		if i<e.base_props.size():
+			assert(item_id==str(e.base_props[i].id),"Base prop order: "+item_id)
+		else:
+			var entry: Dictionary=preload("res://scripts/room_asset_library.gd").entries().get(item_id,{})
+			assert(item_id in preload("res://scripts/room_asset_library.gd").family_variants(e.entries[e.index].asset) or e.entries[e.index].room in entry.get("default_rooms",[]),"Room Default extra belongs to this room: "+item_id)
 	assert(not e.x_control.is_visible_in_tree() and not e.prop_list.is_visible_in_tree())
 	assert(e.add_library_asset("library/common-operator-stool",Vector2.ZERO))
 	assert(e.draft["size/"+e.selected]==[0.5,0.5])

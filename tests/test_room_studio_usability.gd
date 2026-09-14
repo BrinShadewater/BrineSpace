@@ -31,7 +31,10 @@ func run() -> void:
 	mouse(title.layout_button.get_global_rect().get_center(),false)
 	await settle()
 	e=root.get_node_or_null("RoomLayoutEditor"); assert(e!=null,"Title-screen button opens studio")
-	assert(not e.free_placement.button_pressed)
+	# Free placement is the Studio default (owner decision); this journey checks the
+	# constrained clearance rules, so switch the toolbar toggle off first.
+	assert(e.free_placement.button_pressed,"Studio opens in free placement")
+	e.free_placement.button_pressed=false
 	# Returned native artwork must obey the same clearance rules as new assets.
 	e.selected="sample_cooler"; e.remove_library_asset()
 	var removed: Dictionary=e.draft.duplicate(true)

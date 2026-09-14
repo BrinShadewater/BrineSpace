@@ -35,6 +35,8 @@ func run() -> void:
 	await process_frame
 	root.size=Vector2i(600,600);root.content_scale_size=root.size
 	for child in game.find_children("*","CanvasLayer",true,false): child.hide()
+	# BRINE's opening dialogue holds the pause and would veto the resume below.
+	game.crew_comms.minimize();game.crew_comms.set_process(false)
 	var preview:=Preview.new()
 	root.add_child(preview)
 	for id in ["life_support","biomass_digester","command_center"]:

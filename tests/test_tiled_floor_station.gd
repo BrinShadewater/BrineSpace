@@ -2,6 +2,15 @@ extends SceneTree
 const Store=preload("res://scripts/room_layout_store.gd")
 const Floor=preload("res://rooms/whole-room/modular_floor.gd")
 func _init() -> void: call_deferred("run")
+# _layout_stamp is layout-store bookkeeping that changes on every save; compare
+# the furniture itself.
+func collision(props: Array) -> Array:
+	var result: Array=[]
+	for prop in props:
+		var copy: Dictionary=prop.duplicate(true)
+		copy.erase("_layout_stamp")
+		result.append(copy)
+	return result
 func run() -> void:
 	Store.path="user://floor-station.json"; Store.defaults_path="user://no-floor-defaults.json"; Store.loaded=true; Store.data={}
 	Store.save_layout("research-analysis-wall",0,{"floor/material/3/6":3,"floor/material/4/6":3})
@@ -19,7 +28,7 @@ func run() -> void:
 	for material in range(4):
 		Store.save_layout("research-analysis-wall",0,{"floor/material/3/6":material})
 		var after: Dictionary=game.grid_view.bill_room_geometry(game.occupied[Vector2i(20,19)],[2])
-		assert(before.props==after.props,"Floor materials never change furniture collision")
+		assert(collision(before.props)==collision(after.props),"Floor materials never change furniture collision")
 	Store.save_layout("research-analysis-wall",0,{"floor/material/3/6":3,"floor/material/4/6":3})
 	for size in [Vector2i(1280,720),Vector2i(1600,900)]:
 		root.size=size; await process_frame; await process_frame
