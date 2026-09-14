@@ -41,7 +41,6 @@ static var reuse_layout_store := not OS.get_cmdline_user_args().has("--uncached-
 static var merged_cache: Dictionary={}
 static var merged_cache_revision:=-1
 static var merged_cache_data=null
-static var apply_serial := 0
 static func shared_positions(asset: String, q: int) -> Dictionary:
 	# Read-only merged layout for the per-frame paths (apply, surface drawing).
 	# Callers must never mutate the result; use positions() for an owned copy.
@@ -110,7 +109,9 @@ static func apply(room, asset: String) -> bool:
 		for prop in room.props:
 			if prop.get("_layout_stamp",-1)!=signature: stamped=false; break
 		if stamped: return false
-	apply_serial += 1 # Prop dictionaries are about to mutate; retained draw slots key on this.
+	# Prop dictionaries are about to mutate; retained draw slots key on this view's serial.
+	# A per-view serial keeps one churning room from invalidating every other room.
+	room.set_meta("layout_apply_serial",int(room.get_meta("layout_apply_serial",0))+1)
 	# Only restore props this authoring layer previously removed; dynamic room props stay authoritative.
 	var removed_by_quarter: Dictionary=room.get_meta("layout_removed_ids",{})
 	var originals: Dictionary=room.get_meta("layout_copy_sources",{}).get(room.quarter,{})

@@ -75,7 +75,7 @@ func submit(view, queue: Array) -> void:
 	for field in LIVE_STATE_FIELDS: static_state.erase(field)
 	# Cheap slot key: view identity + layout apply serial + the static scalar
 	# values, compared as a flat array instead of deep-walking prop dictionaries.
-	var static_key: Array = [view.get_instance_id(),preload("res://scripts/room_layout_store.gd").apply_serial]
+	var static_key: Array = [view.get_instance_id(),int(view.get_meta("layout_apply_serial",0))]
 	for field in state_fields:
 		if field not in LIVE_STATE_FIELDS: static_key.append(view_state[field])
 	while slots.size() < queue.size():
