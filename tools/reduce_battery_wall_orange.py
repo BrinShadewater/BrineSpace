@@ -13,7 +13,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
     "battery-north-muted-v1.png": ROOT
-    / "assets/wall-room-rollout-v1/battery-split-north.png",
+    / "assets/rooms/battery-array/walls/split-north.png",
     "battery-sides-muted-v1.png": ROOT
     / "assets/battery-directional-v1/side-overhead.png",
     "battery-south-muted-v1.png": ROOT

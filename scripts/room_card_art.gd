@@ -16,7 +16,7 @@ const PATHS := {
 	"mycelium_nursery": "res://assets/crew-scale-v1/cards/mycelium_nursery.png",
 	"tidal_condenser": "res://assets/room-furnishings-v6/cards/tidal_condenser.png",
 	"gravity_loom": "res://assets/room-furnishings-v6/cards/gravity_loom.png",
-	"battery_array": "res://assets/room-centerpieces-v1/cards/battery_array.png",
+	"battery_array": "res://assets/rooms/battery-array/cards/card.png",
 	"biodome": "res://assets/room-furnishings-v5/cards/biodome.png",
 	"clone_lab": "res://assets/room-furnishings-v5/cards/clone_lab.png",
 	"brine_core": "res://assets/brine-core-directional-v1/south-idle-cards/brine_core.png",

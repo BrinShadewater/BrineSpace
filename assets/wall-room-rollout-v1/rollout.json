@@ -1127,7 +1127,7 @@
       "sources": [
         {
           "view": "north-pair",
-          "source": "assets/wall-room-rollout-v1/battery-split-north.png",
+          "source": "assets/rooms/battery-array/walls/split-north.png",
           "sha256": "006f79ee2d146caeb65efb0043608324eebf9feaaea32534fdc40bfacb60062c",
           "dimensions": [
             1681,
@@ -1136,7 +1136,7 @@
           "mode": "RGBA",
           "prompt": "assets/wall-room-rollout-v1/battery-split-north.prompt.txt",
           "references": [
-            "rooms/production-ten/battery_array-source-v1.png",
+            "assets/rooms/battery-array/source/overhead.png",
             "assets/wall-room-rollout-v1/life-support-split-north.png"
           ],
           "stage": "native-reviewed",
@@ -1154,7 +1154,7 @@
           "mode": "RGB",
           "prompt": "assets/wall-room-rollout-v1/battery-split-sides.prompt.txt",
           "references": [
-            "assets/wall-room-rollout-v1/battery-split-north.png",
+            "assets/rooms/battery-array/walls/split-north.png",
             "assets/wall-room-rollout-v1/hydro-split-sides.png"
           ],
           "stage": "native-reviewed",
@@ -1172,7 +1172,7 @@
           "mode": "RGB",
           "prompt": "assets/wall-room-rollout-v1/battery-split-south.prompt.txt",
           "references": [
-            "assets/wall-room-rollout-v1/battery-split-north.png"
+            "assets/rooms/battery-array/walls/split-north.png"
           ],
           "stage": "native-reviewed",
           "review": "North-facing control panels and south backing flanges; native pending.",

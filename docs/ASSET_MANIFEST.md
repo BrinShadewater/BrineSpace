@@ -8,7 +8,7 @@ JSON data. Tests, tools, docs and skills are not roots: an asset only they menti
 |---|---|---|
 | live | 13482 | reached by an exact path from runtime code or data |
 | dynamic | 4335 | inside a folder the code reads with a built path or directory listing |
-| unreferenced | 6854 | nothing in the runtime points at it (provenance, superseded versions, sources) |
+| unreferenced | 6816 | nothing in the runtime points at it (provenance, superseded versions, sources) |
 
 ## Live assets by owner
 
@@ -68,7 +68,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/riser-wall-kit-style-v2` — 14 file(s)
 
 ### assets-data/room-centerpieces-v1
-- `assets/room-centerpieces-v1` — 5 file(s)
+- `assets/room-centerpieces-v1` — 3 file(s)
 
 ### assets-data/room-consistency-v1
 - `assets/wall-room-rollout-v1` — 8 file(s)
@@ -113,6 +113,9 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### assets-data/room-risers-v3
 - `assets/room-risers-v3` — 6 file(s)
 - `assets/tidal-owner-v2` — 1 file(s)
+
+### assets-data/rooms
+- `assets/rooms` — 2 file(s)
 
 ### assets-data/wall-dressing-style-v2
 - `assets/wall-dressing-style-v2` — 49 file(s)
@@ -263,38 +266,39 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/archive-directional-v1` — 1 file(s)
 
 ### room/battery
-- `assets/room-centerpieces-v1` — 4 file(s)
-- `rooms/production-ten` — 2 file(s)
+- `assets/rooms` — 5 file(s)
+- `rooms/production-ten` — 1 file(s)
 
 ### room/battery_array
-- `rooms/production-ten` — 2 file(s)
+- `assets/rooms` — 1 file(s)
+- `rooms/production-ten` — 1 file(s)
 
 ### room/battery_wall
-- `assets/wall-room-rollout-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_east_cells
-- `assets/battery-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_east_distribution
-- `assets/battery-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_north_cells
-- `assets/battery-owner-v3` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_north_distribution
-- `assets/battery-owner-v3` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_south_cells
-- `assets/battery-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_south_distribution
-- `assets/battery-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_west_cells
-- `assets/battery-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/battery_wall_west_distribution
-- `assets/battery-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/bench
 - `rooms/underwater` — 1 file(s)
@@ -1350,19 +1354,20 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/room-furnishings-v3` — 6 file(s)
 - `brinecore-animation/assets` — 5 file(s)
 - `assets/crew-scale-v1` — 3 file(s)
-- `assets/room-centerpieces-v1` — 3 file(s)
 - `assets/room-furnishings-v4` — 3 file(s)
 - `assets/room-furnishings-v5` — 3 file(s)
 - `assets/room-furnishings-v6` — 3 file(s)
 - `assets/room-furnishings-v7` — 3 file(s)
 - `assets/room-furnishings-v8` — 3 file(s)
 - `assets/room-furnishings-v9` — 3 file(s)
+- `assets/room-centerpieces-v1` — 2 file(s)
 - `assets/airlock-directional-v1` — 1 file(s)
 - `assets/brine-core-directional-v1` — 1 file(s)
 - `assets/cold-store-directional-v1` — 1 file(s)
 - `assets/construction-directional-v1` — 1 file(s)
 - `assets/galley-directional-v1` — 1 file(s)
 - `assets/mining-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 - `assets/salvage-directional-v1` — 1 file(s)
 - `assets/salvage-drone-directional-v1` — 1 file(s)
 - `character/major-bill-v3` — 1 file(s)
@@ -1416,19 +1421,20 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/room-furnishings-v3` — 6 file(s)
 - `assets/corridor-polish-v3` — 3 file(s)
 - `assets/crew-scale-v1` — 3 file(s)
-- `assets/room-centerpieces-v1` — 3 file(s)
 - `assets/room-furnishings-v4` — 3 file(s)
 - `assets/room-furnishings-v5` — 3 file(s)
 - `assets/room-furnishings-v6` — 3 file(s)
 - `assets/room-furnishings-v7` — 3 file(s)
 - `assets/room-furnishings-v8` — 3 file(s)
 - `assets/room-furnishings-v9` — 3 file(s)
+- `assets/room-centerpieces-v1` — 2 file(s)
 - `assets/airlock-directional-v1` — 1 file(s)
 - `assets/brine-core-directional-v1` — 1 file(s)
 - `assets/cold-store-directional-v1` — 1 file(s)
 - `assets/construction-directional-v1` — 1 file(s)
 - `assets/galley-directional-v1` — 1 file(s)
 - `assets/mining-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 - `assets/salvage-directional-v1` — 1 file(s)
 - `assets/salvage-drone-directional-v1` — 1 file(s)
 
@@ -1476,8 +1482,6 @@ and must move as a unit.
 | `assets/archive-trolley-v1` | 1 | 0 | 4 |
 | `assets/archive-wall-v1` | 1 | 0 | 12 |
 | `assets/audio` | 27 | 0 | 17 |
-| `assets/battery-directional-v2` | 2 | 0 | 3 |
-| `assets/battery-owner-v3` | 2 | 0 | 4 |
 | `assets/bio-directional-v2` | 4 | 0 | 2 |
 | `assets/biodome-directional-v1` | 3 | 0 | 11 |
 | `assets/biomass-material-v2` | 4 | 0 | 2 |
@@ -1560,7 +1564,7 @@ and must move as a unit.
 | `assets/repair-trolley-v1` | 1 | 0 | 5 |
 | `assets/riser-departments-v1` | 9 | 0 | 55 |
 | `assets/riser-wall-kit-style-v2` | 14 | 0 | 3 |
-| `assets/room-centerpieces-v1` | 20 | 0 | 18 |
+| `assets/room-centerpieces-v1` | 15 | 0 | 18 |
 | `assets/room-consistency-v1` | 21 | 0 | 38 |
 | `assets/room-facing-repair-v2` | 3 | 0 | 10 |
 | `assets/room-floor-tiles-v3` | 3 | 0 | 3 |
@@ -1576,6 +1580,7 @@ and must move as a unit.
 | `assets/room-furnishings-v9` | 15 | 0 | 2 |
 | `assets/room-risers-v2` | 11 | 0 | 28 |
 | `assets/room-risers-v3` | 7 | 0 | 32 |
+| `assets/rooms` | 12 | 0 | 0 |
 | `assets/salvage-directional-v1` | 6 | 0 | 28 |
 | `assets/salvage-drone-directional-v1` | 2 | 0 | 8 |
 | `assets/salvage-owner-v2` | 0 | 14 | 0 |
@@ -1590,7 +1595,7 @@ and must move as a unit.
 | `assets/tidal-owner-v2` | 5 | 23 | 0 |
 | `assets/turbine-directional-v4` | 3 | 0 | 6 |
 | `assets/wall-dressing-style-v2` | 49 | 0 | 5 |
-| `assets/wall-room-rollout-v1` | 13 | 0 | 112 |
+| `assets/wall-room-rollout-v1` | 12 | 0 | 100 |
 | `assets/xeno-directional-v2` | 4 | 0 | 5 |
 | `brinecore-animation/assets` | 6 | 0 | 0 |
 | `brineui/button_hover.png` | 1 | 0 | 0 |
@@ -1658,6 +1663,6 @@ and must move as a unit.
 | `rooms/full-wall-v1` | 4 | 245 | 0 |
 | `rooms/modular` | 10 | 2 | 51 |
 | `rooms/power-expansion-v1` | 12 | 8 | 0 |
-| `rooms/production-ten` | 34 | 0 | 154 |
+| `rooms/production-ten` | 32 | 0 | 135 |
 | `rooms/underwater` | 75 | 7 | 339 |
 | `rooms/whole-room` | 15 | 0 | 103 |

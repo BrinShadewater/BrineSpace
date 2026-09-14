@@ -16,7 +16,7 @@ insulation contrast with pale vessel lagging and burnt-orange chassis panels.
 Equipment faces south at every future rotation. Gauges and console screens are
 the intended operating anchors; hatches and large machinery remain static.
 
-Reference: `rooms/production-ten/battery_array-source-v1.png` for camera,
+Reference: `assets/rooms/battery-array/source/overhead.png` for camera,
 rendering density, scale and Engineering materials only, never equipment design
 or doorway topology. Inspect generated vessel, fin-stack and pump silhouettes
 against battery banks to ensure this is a distinct functional room.
