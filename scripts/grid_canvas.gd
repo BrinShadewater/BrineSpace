@@ -298,7 +298,7 @@ func _ready() -> void:
 		var env_layer := EnvPass.new()
 		env_layer.host = self
 		env_layer.pass_id = id
-		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvDerelicts","EnvExteriorActors","EnvFog"][id]
+		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvTerrain","EnvDerelicts","EnvExteriorActors","EnvFog"][id]
 		if id == Env.DERELICTS:
 			var condition_material := ShaderMaterial.new()
 			condition_material.shader = preload("res://scripts/derelict_material.gdshader")
@@ -863,7 +863,7 @@ class SurfacePass extends Node2D:
 # Environment layers below the station surfaces. STATIC_* retain their commands
 # between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
 var underwater_visibility = preload("res://scripts/underwater_visibility.gd").new()
-enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, DERELICTS, EXTERIOR_ACTORS, FOG }
+enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, STATIC_TERRAIN, DERELICTS, EXTERIOR_ACTORS, FOG }
 class EnvPass extends Node2D:
 	var host
 	var pass_id := 0
@@ -875,6 +875,8 @@ var env_below_key: Array = []
 var env_foundations_key: Array = []
 var env_below_rebuilds := 0
 var env_foundation_rebuilds := 0
+var env_terrain_key: Array = []
+var env_terrain_rebuilds := 0
 
 var draw_target: CanvasItem
 var surface_passes: Array = []
@@ -1016,6 +1018,10 @@ func _draw() -> void:
 		if foundations_key != env_foundations_key:
 			env_foundations_key = foundations_key.duplicate(true)
 			env_passes[Env.STATIC_FOUNDATIONS].queue_redraw()
+		var terrain_key := _environment_terrain_key(main,cell_size)
+		if terrain_key != env_terrain_key:
+			env_terrain_key = terrain_key
+			env_passes[Env.STATIC_TERRAIN].queue_redraw()
 		env_passes[Env.LIVE_LINES].queue_redraw()
 		env_passes[Env.LIVE_ABOVE].queue_redraw()
 		env_passes[Env.DERELICTS].queue_redraw()
@@ -1096,6 +1102,15 @@ func _environment_foundations_key(main, size: float) -> Array:
 		key.append([cell,main.wrecks[cell].kind])
 	return key
 
+# Rocks and wrecks were repainted every frame for the whole map. Their drawing
+# (with work effects off) depends only on scale, selection and per-cell state.
+func _environment_terrain_key(main, size: float) -> Array:
+	var key: Array=[size,main.selected_room_cell]
+	for cell in main.wrecks:
+		var w: Dictionary=main.wrecks[cell]
+		key.append([cell,w.kind,w.progress,w.cleared])
+	return key
+
 func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
 	draw_target = target
 	var main = _get_main()
@@ -1114,7 +1129,9 @@ func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
 		Env.LIVE_ABOVE:
 			_draw_foundations(false,"shimmer")
 			_draw_foundations(true,"shimmer")
+		Env.STATIC_TERRAIN:
 			_draw_environment_above(main,cell_size,GRID_SIZE*cell_size)
+			env_terrain_rebuilds += 1
 		Env.DERELICTS:
 			_draw_cryo_derelicts(main,cell_size)
 		Env.FOG:

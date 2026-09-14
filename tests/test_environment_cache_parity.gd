@@ -20,10 +20,15 @@ func changed_state(label: String, expect_foundations := true) -> void:
 		failures += 1
 		push_error("Foundations did not invalidate in the next rendered frame: " + label)
 	await settle()
-	root.get_texture().get_image().save_png("res://output/env-parity-%s-cached.png" % label)
+	var cached_image := root.get_texture().get_image()
+	cached_image.save_png("res://output/env-parity-%s-cached.png" % label)
 	mode(false)
 	await settle()
-	root.get_texture().get_image().save_png("res://output/env-parity-%s-direct.png" % label)
+	var direct_image := root.get_texture().get_image()
+	direct_image.save_png("res://output/env-parity-%s-direct.png" % label)
+	if cached_image.get_data() != direct_image.get_data():
+		failures += 1
+		push_error("Retained environment pixels differ from the direct path: " + label)
 	mode(true)
 	await settle()
 func run() -> void:
@@ -55,6 +60,7 @@ func run() -> void:
 	await settle()
 	# Animation time must not rebuild the retained static passes.
 	var stable := Vector2i(game.grid_view.env_below_rebuilds,game.grid_view.env_foundation_rebuilds)
+	var stable_terrain: int = game.grid_view.env_terrain_rebuilds
 	for frame in range(12):
 		game.visual_time_seconds += 0.1
 		game.grid_view.queue_redraw()
@@ -62,6 +68,9 @@ func run() -> void:
 	if Vector2i(game.grid_view.env_below_rebuilds,game.grid_view.env_foundation_rebuilds) != stable:
 		failures += 1
 		push_error("Retained environment rebuilt while only animation time advanced")
+	if game.grid_view.env_terrain_rebuilds != stable_terrain:
+		failures += 1
+		push_error("Retained rocks and wrecks rebuilt while only animation time advanced")
 	game.visual_time_seconds = 4.25
 	await changed_state("baseline",false)
 	game._place_room("crew_hab",Vector2i(21,19),true)
@@ -84,6 +93,29 @@ func run() -> void:
 	game._set_grid_zoom(game.DEFAULT_GRID_ZOOM*0.8)
 	game.visual_time_seconds = 4.25
 	await changed_state("zoom")
+	# Rock clearance, selection and removal must invalidate the retained terrain pass.
+	game._set_grid_zoom(game.DEFAULT_GRID_ZOOM*0.5)
+	await settle() # Centre with the applied cell size, not the pre-zoom one.
+	game._center_grid_on_station_now()
+	await settle()
+	var view := Rect2(Vector2(game.grid_scroll.scroll_horizontal,game.grid_scroll.scroll_vertical),game.grid_scroll.size)
+	var rock := Vector2i(-1,-1)
+	for cell in game.wrecks:
+		if game.wrecks[cell].kind == "basalt" and not game.wrecks[cell].cleared and view.has_point((Vector2(cell)+Vector2.ONE*0.5)*game.get_cell_size()):
+			rock = cell
+			break
+	if rock != Vector2i(-1,-1):
+		for step in [["rock-selected",func(): game.selected_room_cell = rock],["rock-progress",func(): game.wrecks[rock].progress = 9.0],["rock-cleared",func(): game.wrecks[rock].cleared = true]]:
+			var terrain_before: int = game.grid_view.env_terrain_rebuilds
+			step[1].call()
+			game.visual_time_seconds = 4.25
+			await changed_state(step[0],false)
+			if game.grid_view.env_terrain_rebuilds <= terrain_before:
+				failures += 1
+				push_error("Terrain pass did not invalidate: " + step[0])
+	else:
+		failures += 1
+		push_error("No basalt rock is on screen; terrain invalidation was not exercised: view=%s cell_size=%s basalt=%s" % [view,game.get_cell_size(),game.wrecks.keys().filter(func(c): return game.wrecks[c].kind=="basalt" and not game.wrecks[c].cleared).slice(0,6)])
 	print("ENVIRONMENT PARITY CAPTURE %s: rebuild counters below=%d foundations=%d" % ["PASS" if failures==0 else "FAIL",game.grid_view.env_below_rebuilds,game.grid_view.env_foundation_rebuilds])
 	game.queue_free()
 	await process_frame
