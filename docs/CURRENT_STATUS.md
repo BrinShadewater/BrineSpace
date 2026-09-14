@@ -12,7 +12,9 @@ Native lane cleanup (same day): Studio, floor, Xeno and crew comms tests were br
 
 Latest full native lane (before the crew comms fix): 64 pass, 1 skip (bug_report harness), and only owner-accepted failures remain. **Kept by owner:** four floor-detail cases in `test_floor_detail_visibility` (refinery pipe cap q3, research teal marking q2, biomass and mining no-clear-floor). **Parked by owner:** `test_camera_pixel_stability` fails 2 of 64 cases at 960x540 / zoom 0.6 (a one-pixel line on the BRINE ring changes on third-pixel scroll offsets; whole-pixel offsets are identical). Layer hiding and `--redraw-brine-parts` did not isolate it; do not resume without owner request.
 
-Still waiting on the owner's normal paid playtest: live feel of the rendering changes, the vented-power feedback on screen, and whether the 12-Power storage cap still makes power feel scarce (a balance decision). Ask for an F8 report on any fault.
+Power balance check (same day, scratch run of `tests/playtest_balance.gd` with per-cycle power logging; not committed): early power is abundant, not scarce. Across 30 runs x 40 cycles generation was ~2x demand, the 12-Power cap filled by cycle 8-9, surplus vented in 90% of cycles, and no cycle left a room short of power; drone charging drew ~0.3 Power/cycle. The real early traps were placements: a room on a turbine intake silently stops it, and a build can seal a drone bay's only route to deposits (in every unguarded run a turbine did this, metal stopped and the crew died at cycle 12). Placement feedback now warns about both while hovering (`placement_hazards`). No balance numbers changed. Caveats: the bot's choices barely vary by seed or doctrine, its stations peak at 7-8 rooms, and `playtest_balance.gd` needs `Architects.advance_core` in its step loop and a guard for retired directives before it reflects current play.
+
+Still waiting on the owner's normal paid playtest: live feel of the rendering changes, the vented-power and placement warnings on screen, and whether power still feels scarce in a larger station. Ask for an F8 report on any fault.
 
 ## Gameplay/performance task closed; Claude handoff - September 13, 2026
 
