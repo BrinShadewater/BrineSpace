@@ -6,7 +6,7 @@ from PIL import Image
 from build_clone_overhead_directions import remove_exterior_neutral, sha
 
 ROOT = Path(__file__).resolve().parents[1]
-PACK = ROOT / 'assets/construction-material-v2'
+PACK = ROOT / 'assets/rooms/construction-drone-bay/material'
 RAW = Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-7de8de89-8538-419e-931e-8711c4a461fb.png')
 REG = ROOT / 'rooms/full-wall-v1/registrations'
 

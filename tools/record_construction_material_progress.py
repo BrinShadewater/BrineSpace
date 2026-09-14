@@ -5,7 +5,7 @@ from pathlib import Path
 from build_clone_overhead_directions import sha
 
 ROOT = Path(__file__).resolve().parents[1]
-PACK = ROOT / 'assets/construction-material-v2'
+PACK = ROOT / 'assets/rooms/construction-drone-bay/material'
 NOTE = '''
 
 Construction repair lesson (September 12): retain directional `wall_contact`
@@ -18,7 +18,7 @@ rollers, spools or shared floor machinery; track those components separately.
 
 def main():
     capture = ROOT / 'output/construction-owner-repair-2026-09-12/refined-native/construction_drone_bay-q0.png'
-    card = ROOT / 'assets/construction-directional-v1/cards/construction_drone_bay.png'
+    card = ROOT / 'assets/rooms/construction-drone-bay/cards/card.png'
     shutil.copyfile(capture, card)
     review = {'status': 'wall material repair reviewed; floor equipment remains open', 'native': 'output/construction-owner-repair-2026-09-12/refined-native',
               'directions_reviewed': [0, 1, 2, 3], 'card_sha256': sha(card),

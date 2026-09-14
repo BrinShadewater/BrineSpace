@@ -28,7 +28,7 @@ SPECS = {
         "output": ROOT / "rooms/underwater/batch-two/archive-composition-v3.json",
         "id": "archive_index_island",
         "texture": "centerpiece",
-        "asset": "res://assets/room-centerpieces-v1/archive-index-island.png",
+        "asset": "res://assets/rooms/data-archive/furnishings/index-island.png",
         "registration": "res://assets/room-centerpieces-v1/archive-index-island-registration.json",
         "footprint": [-58, 9, 116, 38],
         "ground_width": 1160,

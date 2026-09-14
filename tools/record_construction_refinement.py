@@ -7,7 +7,7 @@ for path in [ROOT/'docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md', ROOT/'skills/brin
     if 'Construction material refinement (September 12)' not in path.read_text(encoding='utf-8'):
         with path.open('a', encoding='utf-8') as out:
             out.write(note)
-path = ROOT/'assets/construction-material-v2/build.json'
+path = ROOT/'assets/rooms/construction-drone-bay/material/build.json'
 data = json.loads(path.read_text())
 data['status'] = 'refined wall native-reviewed; floor equipment remains open'
 data['remaining'] = ['independent floor equipment material repair']

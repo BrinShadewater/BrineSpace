@@ -3,7 +3,7 @@ import json,hashlib,shutil
 from pathlib import Path
 import numpy as np
 from PIL import Image
-ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/construction-material-v2'
+ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/rooms/construction-drone-bay/material'
 raw=Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-4cbeabbe-88ec-495f-873e-42d80fdd02a7.png')
 shutil.copyfile(raw,PACK/'cradle-overhead-raw.png')
 a=np.array(Image.open(raw).convert('RGBA'))

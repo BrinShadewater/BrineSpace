@@ -3,7 +3,7 @@ import json,hashlib,shutil
 from pathlib import Path
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
-PACK=ROOT/'assets/construction-material-v2'
+PACK=ROOT/'assets/rooms/construction-drone-bay/material'
 raw=Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-7ff10437-9cfe-46b1-99d5-39f1b47c886d.png')
 target=PACK/'hatch-overhead-raw.png'
 shutil.copyfile(raw,target)

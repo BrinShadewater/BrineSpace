@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=ROOT/'assets/construction-material-v2/cradle-build.json'
+p=ROOT/'assets/rooms/construction-drone-bay/material/cradle-build.json'
 d=json.loads(p.read_text());d['status']='rejected docked fit; not installed'
 d['native']='output/construction-owner-repair-2026-09-12/cradle-candidate/empty-docked.png'
 d['finding']='Side-facing variants shrink to roughly 59 units wide under the old height limit; drone overhangs support rails.'

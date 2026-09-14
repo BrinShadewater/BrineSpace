@@ -11,10 +11,10 @@ var equipment_texture: ImageTexture
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/production-ten/salvage_drone_bay-source-v1.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/salvage-drone-bay/source/overhead.png")
 	life_texture=ImageTexture.create_from_image(image)
 	# Keep structural wall samples on the original atlas; repaint equipment only.
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/room-consistency-v1/salvage-equipment.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/salvage-drone-bay/source/salvage-equipment.png")
 	assert(Vector2(image.get_size())==life_texture.get_size())
 	equipment_texture=ImageTexture.create_from_image(image)
 	life_items=[

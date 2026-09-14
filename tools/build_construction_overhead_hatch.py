@@ -3,7 +3,7 @@ import json,hashlib
 from pathlib import Path
 import numpy as np
 from PIL import Image
-ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/construction-material-v2'
+ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/rooms/construction-drone-bay/material'
 a=np.array(Image.open(PACK/'hatch-overhead-raw.png').convert('RGBA'))
 a[a[:,:,3]<16,3]=0
 im=Image.fromarray(a); box=im.getchannel('A').getbbox(); im=im.crop(box)

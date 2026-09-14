@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
-PACK = ROOT/'assets/construction-material-v2'
+PACK = ROOT/'assets/rooms/construction-drone-bay/material'
 source = PACK/'floor-equipment-candidate.png'
 pixels = np.asarray(Image.open(source).convert('RGB')).astype(float)/255
 visible = np.minimum(pixels[:,:,0],pixels[:,:,2])-pixels[:,:,1] <= .18
@@ -18,7 +18,7 @@ for k,box in bounds.items():
     w,h=regions[k][2:]
     assert box[0]>0 and box[1]>0 and box[2]<w and box[3]<h
 capture = ROOT/'output/construction-owner-repair-2026-09-12/floor-native/construction_drone_bay-q0.png'
-card = ROOT/'assets/construction-directional-v1/cards/construction_drone_bay.png'
+card = ROOT/'assets/rooms/construction-drone-bay/cards/card.png'
 shutil.copyfile(capture,card)
 review = {'status':'cradle, bench and hatch integrated and native-reviewed',
           'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),

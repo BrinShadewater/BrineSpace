@@ -1,8 +1,8 @@
 """Record static Construction repairs; keep drone recommendation distinct."""
 import json,hashlib,shutil
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/construction-material-v2'
-card=ROOT/'assets/construction-directional-v1/cards/construction_drone_bay.png'
+ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/rooms/construction-drone-bay/material'
+card=ROOT/'assets/rooms/construction-drone-bay/cards/card.png'
 shutil.copyfile(ROOT/'output/construction-owner-repair-2026-09-12/cradle-native/construction_drone_bay-q0.png',card)
 sources={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for pattern in ['*-overhead.png','bench-overhead-*.png','hatch-overhead-*.png','panel-pallet-*.png','cradle-square-*.png'] for p in PACK.glob(pattern) if 'raw' not in p.name}
 (PACK/'static-review.json').write_text(json.dumps({'status':'static equipment integrated and agent-reviewed','sources':sources,'native':'output/construction-owner-repair-2026-09-12/cradle-native','dock_fixture':'output/construction-owner-repair-2026-09-12/cradle-square/empty-docked.png','card_sha256':hashlib.sha256(card.read_bytes()).hexdigest(),'drone_recommendation':'Preserve recognizable silhouette; consider material repaint. Existing original sprite and animation remain selected.','owner_acceptance':None},indent=2)+'\n')

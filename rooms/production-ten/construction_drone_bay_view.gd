@@ -8,7 +8,7 @@ var cradle_textures: Dictionary = {}
 func _cradle_texture(prop: Dictionary) -> ImageTexture:
 	var facing := _panel_facing(prop)
 	if not cradle_textures.has(facing):
-		cradle_textures[facing] = DroneArt._decode_matte("res://assets/construction-material-v2/cradle-square-%s.png" % facing)
+		cradle_textures[facing] = DroneArt._decode_matte("res://assets/rooms/construction-drone-bay/material/cradle-square-%s.png" % facing)
 	return cradle_textures[facing]
 
 func _cradle_bounds(prop: Dictionary) -> Rect2:
@@ -19,7 +19,7 @@ func _cradle_bounds(prop: Dictionary) -> Rect2:
 func _hatch_texture(prop: Dictionary) -> ImageTexture:
 	var facing := _panel_facing(prop)
 	if not hatch_textures.has(facing):
-		hatch_textures[facing] = DroneArt._decode_matte("res://assets/construction-material-v2/hatch-overhead-%s.png" % facing)
+		hatch_textures[facing] = DroneArt._decode_matte("res://assets/rooms/construction-drone-bay/material/hatch-overhead-%s.png" % facing)
 	return hatch_textures[facing]
 
 func _hatch_bounds(prop: Dictionary) -> Rect2:
@@ -42,7 +42,7 @@ func _draw_overhead_hatch(target: CanvasItem, prop: Dictionary, opened: float) -
 func _bench_texture(prop: Dictionary) -> ImageTexture:
 	var facing := _panel_facing(prop)
 	if not bench_textures.has(facing):
-		bench_textures[facing] = DroneArt._decode_matte("res://assets/construction-material-v2/bench-overhead-%s.png" % facing)
+		bench_textures[facing] = DroneArt._decode_matte("res://assets/rooms/construction-drone-bay/material/bench-overhead-%s.png" % facing)
 	return bench_textures[facing]
 
 func _bench_bounds(prop: Dictionary) -> Rect2:
@@ -58,7 +58,7 @@ func _panel_facing(prop: Dictionary) -> String:
 func _panel_texture(prop: Dictionary) -> ImageTexture:
 	var facing := _panel_facing(prop)
 	if not panel_textures.has(facing):
-		panel_textures[facing] = DroneArt._decode_matte("res://assets/construction-material-v2/panel-pallet-%s.png" % facing)
+		panel_textures[facing] = DroneArt._decode_matte("res://assets/rooms/construction-drone-bay/material/panel-pallet-%s.png" % facing)
 	return panel_textures[facing]
 
 func _panel_bounds(prop: Dictionary) -> Rect2:

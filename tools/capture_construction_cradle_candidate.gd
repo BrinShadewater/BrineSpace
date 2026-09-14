@@ -16,7 +16,7 @@ func run() -> void:
 	root.size=Vector2i(600,300); root.content_scale_size=root.size
 	var preview=Preview.new()
 	for facing in ["down","left","up","right"]:
-		preview.textures.append(Art._decode_matte("res://assets/construction-material-v2/cradle-square-%s.png"%facing))
+		preview.textures.append(Art._decode_matte("res://assets/rooms/construction-drone-bay/material/cradle-square-%s.png"%facing))
 	root.add_child(preview)
 	await process_frame
 	await RenderingServer.frame_post_draw

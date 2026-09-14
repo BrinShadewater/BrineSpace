@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=ROOT/'assets/construction-material-v2/panel-review.json'
+p=ROOT/'assets/rooms/construction-drone-bay/material/panel-review.json'
 d=json.loads(p.read_text())
 d['status']='live q2 and four component placement directions native-reviewed'
 d['placement_fixture']='output/construction-owner-repair-2026-09-12/panel-facings'
