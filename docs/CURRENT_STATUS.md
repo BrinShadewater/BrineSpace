@@ -1,3 +1,11 @@
+## Polish, optimization and bug pass - September 14, 2026
+
+Fixed and pushed: vented Power is named when the reserve is full (likeliest cause of the west-turbine report; no directional defect exists); construction no longer draws service routes to unplaced props (the Sept 12 Solar log's 492 assertions); retained room content keys on a per-view layout serial so one churning view no longer invalidates every room; failed crew construction approach searches retry once per second instead of every frame (profile-station simulation 6.7 -> 2.3 ms/frame); Observation Room reading derives its station from the desk and chair after the scale pass covered the fixed point.
+
+Tests brought up to date with intentional behaviour: crew-built construction (Cold Store, Galley, Observation Room, Salvage Workshop), Salvage pickup pose, Galley drink pose, Observation rise on suspension, and the crew water station destination moved off the Sept 13 rebuild cradle. New `test_construction_fitting_routes`.
+
+Open: rendering is slower than the Sept 11 profile (50-room fit 37 -> 65 ms; draw calls 4,736 -> 6,650). Remaining native-lane failures: five floor tests targeting retired Studio tile brushes, four Studio tests, floor detail visibility, Xeno registration and two tiled-floor checks. **Parked by owner:** `test_camera_pixel_stability` fails 2 of 64 cases at 960x540 / zoom 0.6 (a one-pixel line on the BRINE ring changes on third-pixel scroll offsets; whole-pixel offsets are identical). Layer hiding and `--redraw-brine-parts` did not isolate it; do not resume without owner request. Native runs rewrite tracked card PNGs and route evidence; restore them before committing.
+
 ## Gameplay/performance task closed; Claude handoff - September 13, 2026
 
 Owner requested workflow consolidation and closure. Read [the detailed Claude
