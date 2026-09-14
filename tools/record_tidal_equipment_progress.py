@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,shutil,hashlib
 ROOT=Path(__file__).resolve().parents[1]
-pack=ROOT/'assets/tidal-owner-v2'
+pack=ROOT/'assets/rooms/tidal-condenser/pack'
 card=ROOT/'assets/room-declutter-v1/cards/tidal_condenser.png'
 shutil.copyfile(ROOT/'output/tidal-owner-repair-2026-09-12/equipment-native/tidal_condenser-q0.png',card)
 (pack/'equipment-review.json').write_text(json.dumps({'status':'integrated-static-native-reviewed','native':'output/tidal-owner-repair-2026-09-12/equipment-native','tests':'output/test-runs/20260912-202340-headless','card_sha256':hashlib.sha256(card.read_bytes()).hexdigest(),'remaining':['operating and actual paused-state review','retained-render consumer check'],'owner_acceptance':None},indent=2)+'\n')

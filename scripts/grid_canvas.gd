@@ -226,7 +226,7 @@ var room_texture_paths := {
 	"life_support": "res://assets/room-furnishings-v7/cards/life_support.png",
 	"listening_post": "res://assets/rooms/listening-post/cards/card.png",
 	"maintenance_bay": "res://assets/rooms/maintenance-bay/cards/card.png",
-	"med_bay": "res://assets/room-furnishings-v7/cards/med_bay.png",
+	"med_bay": "res://assets/rooms/med-bay/cards/card.png",
 	"med_center": "res://assets/rooms/med-center/cards/card.png",
 	"med_office": "res://assets/rooms/med-office/cards/card.png",
 	"mining_drone_bay": "res://assets/rooms/mining-drone-bay/cards/card.png",
@@ -238,12 +238,12 @@ var room_texture_paths := {
 	"reactor": "res://assets/room-furnishings-v5/cards/reactor.png",
 	"research_lab": "res://assets/rooms/research-lab/cards/card.png",
 	"salvage_drone_bay": "res://assets/rooms/salvage-drone-bay/cards/card.png",
-	"shield_generator": "res://assets/room-centerpieces-v1/cards/shield_generator.png",
-	"solar_array": "res://assets/room-centerpieces-v1/cards/solar_array.png",
+	"shield_generator": "res://assets/rooms/shield-generator/cards/card.png",
+	"solar_array": "res://assets/rooms/solar-array/cards/card.png",
 	"storage_bay": "res://assets/rooms/storage-bay/cards/card.png",
 	"tee_corridor": "res://assets/corridor-polish-v3/cards/tee_corridor.png",
-	"tidal_condenser": "res://assets/room-furnishings-v6/cards/tidal_condenser.png",
-	"xeno_lab": "res://assets/room-furnishings-v6/cards/xeno_lab.png"
+	"tidal_condenser": "res://assets/rooms/tidal-condenser/cards/card.png",
+	"xeno_lab": "res://assets/rooms/xeno-lab/cards/card.png"
 }
 var room_texture_variant_paths := {
 	"current_turbine": ["res://assets/room-furnishings-v4/cards/current_turbine.png"],
@@ -271,7 +271,7 @@ var room_texture_variant_paths := {
 	"life_support": ["res://assets/room-furnishings-v7/cards/life_support.png"],
 	"listening_post": ["res://assets/rooms/listening-post/cards/card.png"],
 	"maintenance_bay": ["res://assets/rooms/maintenance-bay/cards/card.png"],
-	"med_bay": ["res://assets/room-furnishings-v7/cards/med_bay.png"],
+	"med_bay": ["res://assets/rooms/med-bay/cards/card.png"],
 	"med_center": ["res://assets/rooms/med-center/cards/card.png"],
 	"med_office": ["res://assets/rooms/med-office/cards/card.png"],
 	"mining_drone_bay": ["res://assets/rooms/mining-drone-bay/cards/card.png"],
@@ -283,12 +283,12 @@ var room_texture_variant_paths := {
 	"reactor": ["res://assets/room-furnishings-v5/cards/reactor.png"],
 	"research_lab": ["res://assets/rooms/research-lab/cards/card.png"],
 	"salvage_drone_bay": ["res://assets/rooms/salvage-drone-bay/cards/card.png"],
-	"shield_generator": ["res://assets/room-centerpieces-v1/cards/shield_generator.png"],
-	"solar_array": ["res://assets/room-centerpieces-v1/cards/solar_array.png"],
+	"shield_generator": ["res://assets/rooms/shield-generator/cards/card.png"],
+	"solar_array": ["res://assets/rooms/solar-array/cards/card.png"],
 	"storage_bay": ["res://assets/rooms/storage-bay/cards/card.png"],
 	"tee_corridor": ["res://assets/corridor-polish-v3/cards/tee_corridor.png", "res://assets/corridor-polish-v3/cards/tee_corridor-1.png", "res://assets/corridor-polish-v3/cards/tee_corridor-2.png"],
-	"tidal_condenser": ["res://assets/room-furnishings-v6/cards/tidal_condenser.png"],
-	"xeno_lab": ["res://assets/room-furnishings-v6/cards/xeno_lab.png"]
+	"tidal_condenser": ["res://assets/rooms/tidal-condenser/cards/card.png"],
+	"xeno_lab": ["res://assets/rooms/xeno-lab/cards/card.png"]
 }
 
 func _ready() -> void:

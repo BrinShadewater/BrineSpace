@@ -63,7 +63,7 @@ def main() -> None:
 
     build = {
         "room": "xeno_lab",
-        "canonical": "assets/xeno-directional-v2/north-overhead.png",
+        "canonical": "assets/rooms/xeno-lab/walls/north-overhead.png",
         "canonical_sha256": sha(CANONICAL),
         "operation": "exact clockwise quarter turns from one strict-overhead north source",
         "directions": {d: {"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": sha(p)} for d, p in paths.items()},

@@ -14,7 +14,7 @@ const PATHS := {
 	"isolation_vault": "res://assets/rooms/isolation-vault/cards/card.png",
 	"construction_drone_bay": "res://assets/rooms/construction-drone-bay/cards/card.png",
 	"mycelium_nursery": "res://assets/rooms/mycelium-nursery/cards/card.png",
-	"tidal_condenser": "res://assets/room-furnishings-v6/cards/tidal_condenser.png",
+	"tidal_condenser": "res://assets/rooms/tidal-condenser/cards/card.png",
 	"gravity_loom": "res://assets/room-furnishings-v6/cards/gravity_loom.png",
 	"battery_array": "res://assets/rooms/battery-array/cards/card.png",
 	"biodome": "res://assets/rooms/biodome/cards/card.png",
@@ -31,10 +31,10 @@ const PATHS := {
 	"reactor": "res://assets/room-furnishings-v5/cards/reactor.png",
 	"research_lab": "res://assets/rooms/research-lab/cards/card.png",
 	"salvage_drone_bay": "res://assets/rooms/salvage-drone-bay/cards/card.png",
-	"solar_array": "res://assets/room-centerpieces-v1/cards/solar_array.png",
+	"solar_array": "res://assets/rooms/solar-array/cards/card.png",
 	"storage_bay": "res://assets/rooms/storage-bay/cards/card.png",
-	"med_bay": "res://assets/room-furnishings-v7/cards/med_bay.png",
-	"xeno_lab": "res://assets/room-furnishings-v6/cards/xeno_lab.png",
+	"med_bay": "res://assets/rooms/med-bay/cards/card.png",
+	"xeno_lab": "res://assets/rooms/xeno-lab/cards/card.png",
 	"anomaly_lab": "res://assets/rooms/anomaly-lab/cards/card.png",
 	"bio_lab": "res://assets/rooms/bio-lab/cards/card.png",
 	"command_center": "res://assets/rooms/command-center/cards/card.png",
@@ -47,5 +47,5 @@ const PATHS := {
 	"med_center": "res://assets/rooms/med-center/cards/card.png",
 	"med_office": "res://assets/rooms/med-office/cards/card.png",
 	"radio_lab": "res://assets/rooms/radio-lab/cards/card.png",
-	"shield_generator": "res://assets/room-centerpieces-v1/cards/shield_generator.png"
+	"shield_generator": "res://assets/rooms/shield-generator/cards/card.png"
 }

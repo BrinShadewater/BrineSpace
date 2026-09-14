@@ -3,7 +3,7 @@ from pathlib import Path
 import shutil,json,hashlib
 from PIL import Image
 root=Path(__file__).resolve().parents[1]
-pack=root/'assets/tidal-owner-v2'
+pack=root/'assets/rooms/tidal-condenser/pack'
 src=Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-04b7b162-f9b1-4eae-8863-186b74a3fcec.png')
 dst=pack/'equipment-source-v1.png'
 shutil.copyfile(src,dst)

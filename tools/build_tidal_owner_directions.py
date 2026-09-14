@@ -3,7 +3,7 @@ import json,hashlib,shutil
 from pathlib import Path
 import numpy as np
 from PIL import Image
-ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/tidal-owner-v2'; REG=ROOT/'rooms/full-wall-v1/registrations'
+ROOT=Path(__file__).resolve().parents[1]; PACK=ROOT/'assets/rooms/tidal-condenser/pack'; REG=ROOT/'rooms/full-wall-v1/registrations'
 raw=Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-e0e9783b-045e-4cbc-9853-b431d60dfcb1.png')
 shutil.copyfile(raw,PACK/'source-v2.png')
 a=np.array(Image.open(raw).convert('RGBA'));rgb=a[:,:,:3].astype(float)/255

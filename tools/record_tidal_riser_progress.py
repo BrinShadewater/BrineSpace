@@ -1,7 +1,7 @@
 """Record reviewed Tidal riser palette and matching card."""
 import json,shutil,hashlib
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/tidal-owner-v2'
+ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/rooms/tidal-condenser/pack'
 card=ROOT/'assets/room-declutter-v1/cards/tidal_condenser.png'
 shutil.copyfile(ROOT/'output/tidal-owner-repair-2026-09-12/riser-native/tidal_condenser-q0.png',card)
 (PACK/'riser-review.json').write_text(json.dumps({'status':'Tidal-specific riser integrated and native-reviewed','source_sha256':hashlib.sha256((PACK/'riser.png').read_bytes()).hexdigest(),'native':'output/tidal-owner-repair-2026-09-12/riser-native','card_sha256':hashlib.sha256(card.read_bytes()).hexdigest(),'card_check':'output/test-runs/20260912-201533-headless','remaining':['independent pump and monitor overhead/effects'],'owner_acceptance':None},indent=2)+'\n')

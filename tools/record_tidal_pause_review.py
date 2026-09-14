@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 result=json.loads((ROOT/'output/tidal-owner-repair-2026-09-12/station-pause/result.json').read_text())
 assert result['failures']==0 and len(result['samples'])==4
 assert all(s['operating'] and s['pixels_equal'] and s['paused_clock']>s['clock_before_run'] for s in result['samples'])
-path=ROOT/'assets/tidal-owner-v2/equipment-review.json'
+path=ROOT/'assets/rooms/tidal-condenser/pack/equipment-review.json'
 record=json.loads(path.read_text())
 record['status']='integrated-native-static-operating-retained-pause-reviewed'
 record['retained']='equipment-states direct and retained RGB identical, 24 samples'

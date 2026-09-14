@@ -8,19 +8,19 @@ UPDATES = {
     "thermal-control-wall.json": (
         "res://assets/material-polish-v3/thermal-north.png",
         "659f8a3465ca27d9b9205cb14ea767ab78f99b04f85d7eda261f9743852c635f",
-        "res://assets/solar-directional-v2/thermal-north-muted-v1.png",
+        "res://assets/rooms/solar-array/walls/thermal-north.png",
         "082f7550e7383d89fdefbf0f007a4bae312c85d445593bb7adcce6e89bec85f5",
     ),
     "side-thermal-control-wall-east.json": (
         "res://assets/solar-directional-v1/thermal-sides.png",
         "52e3ce7fdc40818e7e66fcccb461cf6218fd875ad0dad2f2083509e00a0c7393",
-        "res://assets/solar-directional-v2/thermal-sides-muted-v1.png",
+        "res://assets/rooms/solar-array/walls/thermal-sides.png",
         "18acb57dbb7dd6ca30149f18e192d455cc144c728f20b6984112bd99653df4f8",
     ),
     "side-thermal-control-wall-west.json": (
         "res://assets/solar-directional-v1/thermal-sides.png",
         "52e3ce7fdc40818e7e66fcccb461cf6218fd875ad0dad2f2083509e00a0c7393",
-        "res://assets/solar-directional-v2/thermal-sides-muted-v1.png",
+        "res://assets/rooms/solar-array/walls/thermal-sides.png",
         "18acb57dbb7dd6ca30149f18e192d455cc144c728f20b6984112bd99653df4f8",
     ),
 }

@@ -17,7 +17,7 @@ func _equipment_texture(prop: Dictionary) -> ImageTexture:
 	var name := str(prop.id).trim_prefix("tidal_")
 	var key := "%s-%s" % [name,["down","left","up","right"][_equipment_turn(prop)]]
 	if not equipment_textures.has(key):
-		equipment_textures[key]=load_source_texture("res://assets/tidal-owner-v2/%s.png" % key)
+		equipment_textures[key]=load_source_texture("res://assets/rooms/tidal-condenser/pack/%s.png" % key)
 	return equipment_textures[key]
 
 func _equipment_bounds(prop: Dictionary) -> Rect2:
@@ -54,7 +54,7 @@ func _draw_equipment(prop: Dictionary) -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/material-polish-v1/tidal-equipment.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/tidal-condenser/source/tidal-equipment.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"tidal_coils","rect":Rect2(-165,-143,108,64),"pivot":Vector2(348,510),"width":419.0,"outline":[Vector2(140,174),Vector2(163,172),Vector2(164,180),Vector2(191,179),Vector2(204,160),Vector2(222,155),Vector2(247,157),Vector2(260,171),Vector2(431,171),Vector2(445,156),Vector2(477,158),Vector2(492,174),Vector2(511,174),Vector2(514,185),Vector2(538,189),Vector2(550,204),Vector2(558,475),Vector2(543,505),Vector2(490,510),Vector2(477,497),Vector2(215,497),Vector2(201,510),Vector2(157,510),Vector2(140,491)]},

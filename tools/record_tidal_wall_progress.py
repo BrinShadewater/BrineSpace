@@ -1,7 +1,7 @@
 """Record verified Tidal wall family without closing the room palette work."""
 from pathlib import Path
 import json,shutil,hashlib
-ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/tidal-owner-v2'
+ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/rooms/tidal-condenser/pack'
 card=ROOT/'assets/room-declutter-v1/cards/tidal_condenser.png'
 shutil.copyfile(ROOT/'output/tidal-owner-repair-2026-09-12/wall-native/tidal_condenser-q0.png',card)
 (PACK/'wall-review.json').write_text(json.dumps({'status':'wall family integrated and native-reviewed','native':'output/tidal-owner-repair-2026-09-12/wall-native','quarters':[0,1,2,3],'regressions':'output/test-runs/20260912-201204-headless','card_sha256':hashlib.sha256(card.read_bytes()).hexdigest(),'remaining':['Tidal-specific riser palette','independent pump and monitor camera/effects'],'owner_acceptance':None},indent=2)+'\n')

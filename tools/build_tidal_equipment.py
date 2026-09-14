@@ -3,7 +3,7 @@ from pathlib import Path
 import json,hashlib,shutil
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
-PACK=ROOT/'assets/tidal-owner-v2'
+PACK=ROOT/'assets/rooms/tidal-condenser/pack'
 raw=Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-3ea5cfb6-f70d-4a5a-94a1-cfdd85b6e2bf.png')
 shutil.copyfile(raw,PACK/'equipment-source-v2.png')
 im=Image.open(raw).convert('RGBA')
