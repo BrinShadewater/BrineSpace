@@ -117,7 +117,11 @@ func run() -> void:
 	var evidence_name := "cross-room-route-evidence.json" if "--cross-room" in OS.get_cmdline_user_args() else "station-route-evidence.json"
 	if south: evidence_name = ("north-" if north else "south-") + evidence_name
 	if west: evidence_name = "west-" + evidence_name
-	var report := FileAccess.open("res://character/crew-underwater-v1/revisions/"+evidence_name,FileAccess.WRITE)
+	# Routine runs keep evidence out of the tracked revision folder; pass --record-evidence
+	# when deliberately refreshing character/crew-underwater-v1/revisions.
+	var evidence_dir := "res://character/crew-underwater-v1/revisions/" if "--record-evidence" in OS.get_cmdline_user_args() else "res://output/crew-water-station/"
+	DirAccess.make_dir_recursive_absolute(evidence_dir)
+	var report := FileAccess.open(evidence_dir+evidence_name,FileAccess.WRITE)
 	report.store_string(JSON.stringify({"scope":"One equipped route per actor on a five-room station graph; crossRoom identifies the destination variant; not exterior or concurrent traffic", "crossRoom":"--cross-room" in OS.get_cmdline_user_args(), "results":results,"failures":failures,"captures":captures},"\t"))
 	report.close()
 	game.free()

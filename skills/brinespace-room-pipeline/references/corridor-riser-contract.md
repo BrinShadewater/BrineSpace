@@ -66,6 +66,8 @@ Start at `docs/CORRIDOR_ART_SESSION_CLOSEOUT_2026-09-08.md` and CURRENT_STATUS.
 Reusable checks: `test_corridor_wall_variants.gd`, `test_hallway_floor_tiles.gd`,
 `test_corridor_water_variations.gd`, `test_room_flooding.gd`,
 `test_room_catalog_cards.gd`, and `test_corner_defaults.gd`.
+Card-baking tests write under `output/` by default; pass `--cards=res://assets/<set>/cards`
+(corridor wall variants, riser departments) only when deliberately rebaking shipped cards.
 Use isolated saves/layouts. Old Studio tests can reference retired controls; select
 current controller tests and record failures instead of claiming broad acceptance.
 

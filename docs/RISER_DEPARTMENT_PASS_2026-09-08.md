@@ -38,7 +38,7 @@ The source illustrations include quiet lower cabinet areas. Runtime samples the 
 - Card consistency: all 47 identities agree across primary/grid/variant mappings and PNG decoding.
 - Eight source SHA-256 values verified; new PNGs match the Git LFS filter. Gallery serves HTTP 200. Existing raw-image export warnings remain; this pass does not claim exported-build validation.
 
-Logs and native evidence: `output/riser-departments-v1`. Rebuild registration with `tools/register_riser_departments.py`; bake furnished cards with `tools/bake_current_architecture_cards.gd -- --compact --output=res://assets/riser-departments-v1/cards`, corridor/rotation captures with `tests/test_riser_departments.gd`, and gallery/card mappings with `tools/finalize_riser_departments.py`.
+Logs and native evidence: `output/riser-departments-v1`. Rebuild registration with `tools/register_riser_departments.py`; bake furnished cards with `tools/bake_current_architecture_cards.gd -- --compact --output=res://assets/riser-departments-v1/cards`, corridor/rotation captures with `tests/test_riser_departments.gd` (add `-- --cards=res://assets/riser-departments-v1/cards` to rewrite the shipped corridor cards; routine runs write under `output/`), and gallery/card mappings with `tools/finalize_riser_departments.py`.
 
 ## Next action
 

@@ -4,7 +4,13 @@ const DB=preload("res://scripts/room_database.gd")
 const Baker=preload("res://tools/bake_current_architecture_cards.gd")
 const Corridor=preload("res://tools/bake_corridor_variants.gd")
 const OUT="res://output/riser-departments-v1/"
-func _init() -> void: call_deferred("run")
+# Test runs must not rewrite tracked art. Rebake the shipped corridor cards explicitly with
+# --cards=res://assets/riser-departments-v1/cards
+var CARDS="res://output/riser-departments-v1/cards/"
+func _init() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--cards="): CARDS=arg.trim_prefix("--cards=").trim_suffix("/")+"/"
+	call_deferred("run")
 func run() -> void:
 	for path in ["res://rooms/whole-room/riser_catalog.gd","res://tests/test_riser_departments.gd"]:
 		if not FileAccess.file_exists(path+".uid"):
@@ -34,12 +40,13 @@ func run() -> void:
 			await process_frame;await RenderingServer.frame_post_draw
 			assert(root.get_texture().get_image().save_png(OUT+group+"-q"+str(q)+".png")==OK)
 	preview.queue_free();await process_frame
+	DirAccess.make_dir_recursive_absolute(CARDS)
 	var card=Corridor.Card.new();card.textures=Corridor.Art.load_sources();root.add_child(card)
 	for id in ["corridor","corner","tee_corridor"]:
 		for variant in range(3):
 			card.corner=id=="corner";card.tee=id=="tee_corridor";card.variant=variant;card.queue_redraw()
 			await process_frame;await RenderingServer.frame_post_draw
 			var name=id+("" if variant==0 else "-"+str(variant))+".png"
-			assert(root.get_texture().get_image().save_png("res://assets/riser-departments-v1/cards/"+name)==OK)
+			assert(root.get_texture().get_image().save_png(CARDS+name)==OK)
 	print("RISER DEPARTMENTS PASS: 47 explicit mappings, 8 aspect-correct faces, 32 rotated room previews, 9 corridor cards")
 	quit()

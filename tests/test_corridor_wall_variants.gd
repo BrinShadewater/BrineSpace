@@ -4,7 +4,9 @@ const Geometry=preload("res://rooms/underwater/corridor_geometry.gd")
 const Dressing=preload("res://rooms/underwater/corridor_dressing.gd")
 const Walls=preload("res://rooms/underwater/corridor_wall_art.gd")
 var OUT="res://output/corridor-wall-variants-v1/"
-var CARDS="res://assets/corridor-wall-variants-v1/cards/"
+# Test runs must not rewrite tracked art. Rebake the shipped cards explicitly with
+# --cards=res://assets/corridor-wall-variants-v1/cards
+var CARDS="res://output/corridor-wall-variants-v1/cards/"
 class Preview extends Node2D:
 	var id:="corridor"
 	var variant:=0
