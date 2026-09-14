@@ -111,9 +111,16 @@ static func power_balance(game, forecast: Dictionary) -> String:
 	var flow := "Reserve unchanged"
 	if change < 0: flow = "Battery discharge: %d Power" % -change
 	elif change > 0: flow = "Battery charge: %d Power" % change
-	return "POWER // NEXT CYCLE\nGeneration: %d / Requested: %d / Supplied: %d\n%s / Stored: %d -> %d\nReserves cover generation shortfalls automatically. Battery Arrays add capacity; they do not generate Power. Drone and Marsh charging draw from storage between cycles." % [forecast.generation,game._project_power_demand(),forecast.power_used,flow,stored,stored+change]
+	return "POWER // NEXT CYCLE\nGeneration: %d / Requested: %d / Supplied: %d\n%s / Stored: %d -> %d%s\nReserves cover generation shortfalls automatically. Battery Arrays add capacity; they do not generate Power. Drone and Marsh charging draw from storage between cycles." % [forecast.generation,game._project_power_demand(),forecast.power_used,flow,stored,stored+change,power_vented_note(int(forecast.get("power_vented",0)))]
+
+# Surplus above the storage cap is discarded; say so rather than showing a silent +0.
+static func power_vented_note(vented: int) -> String:
+	if vented <= 0: return ""
+	return "\nRESERVE FULL // %d Power vented next cycle. Battery Arrays raise the cap; new generation adds nothing until then." % vented
 
 static func turbine_intake(game, room: Dictionary) -> String:
 	var names := ["NORTH","EAST","SOUTH","WEST"]
 	var reason: String = game._turbine_intake_problem(room)
-	return "INTAKE %s %s: %s" % [names[posmod(int(room.get("rotation",0)),4)],game._turbine_intake_cell(room),"CLEAR / 4 Power per functioning cycle" if reason.is_empty() else "BLOCKED BY " + reason + " / NO POWER"]
+	var line := "INTAKE %s %s: %s" % [names[posmod(int(room.get("rotation",0)),4)],game._turbine_intake_cell(room),"CLEAR / 4 Power per functioning cycle" if reason.is_empty() else "BLOCKED BY " + reason + " / NO POWER"]
+	if reason.is_empty(): line += power_vented_note(int(game.forecast_power_vented))
+	return line

@@ -78,5 +78,20 @@ func _init() -> void:
 	game._draw_hand()
 	check(game.selected_card_id.is_empty() and game.hand.size() == 3,"New opening hand requires explicit blueprint selection")
 	game.free()
+	# A full reserve discards surplus generation; feedback must name it instead of a silent +0.
+	game = Game.new()
+	add(game,"brine_core",Vector2i(20,20))
+	var turbine := add(game,"current_turbine",Vector2i(19,20))
+	turbine.rotation = 3
+	game.resources.power = 5
+	forecast = game._simulate_room_economy()
+	check(forecast.power_vented == 0 and not Insights.power_balance(game,forecast).contains("RESERVE FULL"),"Charging below the cap vents nothing")
+	game.resources.power = game._get_power_capacity()
+	forecast = game._simulate_room_economy()
+	check(forecast.generation == 4 and forecast.delta.power == 0 and forecast.power_vented == 3,"West turbine surplus above a full reserve is vented")
+	check(Insights.power_balance(game,forecast).contains("RESERVE FULL // 3 Power vented"),"Power panel names vented surplus")
+	game.forecast_power_vented = forecast.power_vented
+	check(Insights.turbine_intake(game,turbine).contains("INTAKE WEST") and Insights.turbine_intake(game,turbine).contains("RESERVE FULL"),"Clear turbine status explains why it adds nothing")
+	game.free()
 	print("POWER PLAYTEST REGRESSIONS: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	quit(0 if failures == 0 else 1)

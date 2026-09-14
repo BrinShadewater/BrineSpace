@@ -201,6 +201,7 @@ var expired_pois := []
 var power_generated := 0
 var power_used := 0
 var power_capacity := 12
+var forecast_power_vented := 0
 var unpowered_rooms := []
 var powered_room_cells := {}
 var unpowered_room_cells := {}
@@ -2334,12 +2335,13 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 			added_crew += 1
 			break
 	var used := generation + maxi(reserve_start, 0) - int(input_budget["power"])
-	var final_power := clampi(int(input_budget["power"]) + int(delta.get("power", 0)), 0, _get_power_capacity())
+	var uncapped_power := int(input_budget["power"]) + int(delta.get("power", 0))
+	var final_power := clampi(uncapped_power, 0, _get_power_capacity())
 	delta["power"] = final_power - reserve_start
 	_add_to_delta(delta,preload("res://scripts/crew_primary_work.gd").bonuses(self,working_cells),1)
 	return {"delta": delta, "working_cells": working_cells, "offline": offline, "generator_outputs":generator_outputs,
 		"power_failures": power_failures, "links": links, "generation": generation,
-		"power_used": used, "added_crew": added_crew}
+		"power_used": used, "power_vented": maxi(uncapped_power - final_power, 0), "added_crew": added_crew}
 
 func _turbine_intake_cell(room: Dictionary) -> Vector2i:
 	var offsets := [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
@@ -3347,8 +3349,10 @@ func _refresh_resources() -> void:
 	var forecast := _simulate_room_economy(true, cycle + 1)
 	var net := _project_cycle_delta(forecast)
 	power_capacity = _get_power_capacity()
+	forecast_power_vented = int(forecast.get("power_vented", 0))
 	_set_resource_chip("metal", "METAL\n%d/%d  %+d" % [resources["metal"], _get_resource_capacity("metal"), net.get("metal", 0)], Color("#9aa2a8"))
 	_set_resource_chip("power", "POWER\n%d/%d  %+d" % [resources["power"], power_capacity, net.get("power", 0)], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
+	resource_chips["power"].tooltip_text = str(RESOURCE_TOOLTIPS.get("power", "Station resource.")) + preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented)
 	_set_resource_chip("oxygen", "OXYGEN\n%d/%d  %+d" % [resources["oxygen"], _get_resource_capacity("oxygen"), net.get("oxygen", 0)], _critical_color(resources["oxygen"], Color("#7fd4ff"), 2, 0))
 	_set_resource_chip("water", "WATER\n%d/%d  %+d" % [int(resources.get("water", 0)), _get_resource_capacity("water"), net.get("water", 0)], Color("#719bff"))
 	_set_resource_chip("food", "FOOD\n%d/%d  %+d" % [resources["food"], _get_resource_capacity("food"), net.get("food", 0)], _critical_color(resources["food"], Color("#f0903c"), 2, 0))
