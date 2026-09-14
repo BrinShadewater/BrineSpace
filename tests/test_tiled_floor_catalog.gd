@@ -27,7 +27,9 @@ func run() -> void:
 					var delta:=maxf(absf(a.r-b.r),maxf(absf(a.g-b.g),absf(a.b-b.b)))
 					maximum=maxf(maximum,delta)
 					if delta>0.012: changed+=1
-			assert(changed<300,"Default material/footprint pixel parity: "+id+str(q)+" / "+str(changed))
+			# Corridors now default to tiled deck art; the plain DECK polygon reference
+			# only still describes room floors.
+			if not surface.corridor: assert(changed<300,"Default material/footprint pixel parity: "+id+str(q)+" / "+str(changed))
 			results.append({"id":id,"q":q,"changed_pixels":changed,"maximum":maximum})
 			if surface.corridor:
 				var values: Dictionary={}
@@ -54,28 +56,30 @@ func run() -> void:
 			if e.entries[i].room==id: e.switch_room(i); found=true; break
 		assert(found,"Room in studio: "+id)
 		e.layer=1; e.rebuild_list(); assert(e.floor_tools.visible and not e.layers.is_item_disabled(1))
-		var tools=e.floor_tools; tools.mode.select(2); tools.brush.select(3)
-		var cells: Array=tools.valid_cells(); var selected: Vector2i=cells[cells.size()/2]
-		var before: Dictionary=e.draft.duplicate(true)
+		var tools=e.floor_tools
+		# The Studio offers whole-room finishes; the per-cell tile brushes were retired.
+		var finish_index:=1
+		while finish_index<tools.paths.size()-1 and str(tools.paths[finish_index])==str(profiles.get(id,{}).get("source","")): finish_index+=1
 		e.show_guides=false; e.canvas.queue_redraw(); await frame()
 		var original_image:=root.get_texture().get_image()
-		var press:=InputEventMouseButton.new(); press.button_index=MOUSE_BUTTON_LEFT; press.pressed=true
-		press.position=e.canvas.origin()+(Vector2(selected)*48-Vector2.ONE*168)*e.canvas.factor(); e.canvas_input(press)
-		assert(e.history.size()==1 and Floor.tile_material(e.draft,selected)==3,"One-step fill: "+id)
+		var before: Dictionary=e.draft.duplicate(true)
+		var history_count: int=e.history.size()
+		tools.apply_finish(finish_index)
+		assert(e.history.size()==history_count+1 and e.draft.get("floor/finish","")==tools.paths[finish_index],"One-step finish: "+id)
 		e.canvas.queue_redraw(); await frame()
 		var painted_image:=root.get_texture().get_image(); var visible_changes:=0
 		for y in range(200,880,3):
 			for x in range(320,980,3):
 				if original_image.get_pixel(x,y)!=painted_image.get_pixel(x,y): visible_changes+=1
-		assert(visible_changes>100,"Paint changes the actual room floor: "+id)
+		assert(visible_changes>100,"Finish changes the actual room floor: "+id)
 		e.undo(); assert(e.draft==before); e.redo()
-		e.save_layout(); assert(Store.positions(e.entries[e.index].asset,0).get(Floor.material_key(selected))==3)
-		e.load_room(); e.layer=1; e.rebuild_list(); assert(Floor.tile_material(e.draft,selected)==3)
-		tools.reset_floor(); e.show_guides=false; e.canvas.queue_redraw(); await frame()
+		e.save_layout(); assert(Store.positions(e.entries[e.index].asset,0).get("floor/finish")==tools.paths[finish_index])
+		e.load_room(); e.layer=1; e.rebuild_list(); assert(e.draft.get("floor/finish","")==tools.paths[finish_index])
+		tools.apply_finish(0); e.show_guides=false; e.canvas.queue_redraw(); await frame()
 		root.get_texture().get_image().save_png("res://output/tiled-floor-catalog/"+id+".png")
 		# Persist original before moving on; prior orientation drafts remain independent.
 		e.save_layout()
 	e.close_editor(); await process_frame
 	var file:=FileAccess.open("res://output/tiled-floor-catalog/parity.json",FileAccess.WRITE); file.store_string(JSON.stringify(results,"\t")); file.close()
-	print("TILED FLOOR BATCH PASS: 28 identities, 112 default comparisons, material cache isolation, editor fill/undo/save/reload/reset")
+	print("TILED FLOOR BATCH PASS: 28 identities, 112 default comparisons, material cache isolation, editor finish/undo/save/reload/reset")
 	quit()

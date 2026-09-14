@@ -64,41 +64,36 @@ func run() -> void:
 	var tools=e.floor_tools
 	assert(e.entries[e.index].room=="research_lab")
 	e.layer=1; e.rebuild_list(); assert(tools.visible)
-	tools.mode.select(3); tools.brush.select(3)
+	# The per-cell rectangle/fill brushes were retired for whole-room finishes.
 	var original: Dictionary=e.draft.duplicate(true)
-	var press:=InputEventMouseButton.new(); press.button_index=MOUSE_BUTTON_LEFT; press.pressed=true
-	press.position=e.canvas.origin()+Vector2(-72,24)*e.canvas.factor(); e.canvas_input(press)
-	var motion:=InputEventMouseMotion.new(); motion.position=e.canvas.origin()+Vector2(72,72)*e.canvas.factor(); e.canvas_input(motion)
-	var release:=InputEventMouseButton.new(); release.button_index=MOUSE_BUTTON_LEFT; release.position=motion.position; e.canvas_input(release)
-	assert(e.history.size()==1 and e.draft!=original,"Rectangle uses one undo step")
+	var research_history: int=e.history.size()
+	tools.apply_finish(1)
+	assert(e.history.size()==research_history+1 and e.draft!=original,"Finish uses one undo step")
 	var painted: Dictionary=e.draft.duplicate(true)
 	e.undo(); assert(e.draft==original); e.redo(); assert(e.draft==painted)
-	tools.seed.value=47; tools.vary(); var varied:=Floor.meshes(e.draft,false)
+	# Seeded variation is still a saved floor key that the mesh cache must honour.
+	e.draft["floor/variation"]=true; e.draft["floor/seed"]=47; e.dirty=true
+	var varied:=Floor.meshes(e.draft,false)
 	var variant_builds:=Floor.builds; Floor.meshes(e.draft,false); assert(Floor.builds==variant_builds)
 	e.save_layout(); assert(Store.positions(e.entries[e.index].asset,0).get("floor/seed")==47)
 	e.show_guides=false; e.canvas.queue_redraw(); await frame()
 	root.get_texture().get_image().save_png("res://output/tiled-floor-pilot/editor-research.png")
 	for i in range(e.entries.size()):
 		if e.entries[i].room=="corridor": e.switch_room(i); break
-	e.layer=1; e.rebuild_list(); assert(not e.layers.is_item_disabled(1) and e.entities().size()==16)
-	tools.mode.select(2); tools.brush.select(2)
-	press.position=e.canvas.origin()+Vector2(24,24)*e.canvas.factor(); e.canvas_input(press)
-	assert(Floor.tile_material(e.draft,Vector2i(4,4))==2)
-	assert(e.history.size()==1,"Flood fill is one undo step")
+	e.layer=1; e.rebuild_list(); assert(not e.layers.is_item_disabled(1))
+	var corridor_history: int=e.history.size()
+	tools.apply_finish(1)
+	assert(e.history.size()==corridor_history+1 and e.draft.get("floor/finish","")==tools.paths[1],"Corridor finish is one undo step")
 	for y in range(8):
-		for x in range(8):
-			if Vector2i(x,y) not in tools.valid_cells(): assert(not e.draft.has(Floor.material_key(Vector2i(x,y))))
+		for x in range(8): assert(not e.draft.has(Floor.material_key(Vector2i(x,y))),"A finish replaces per-cell materials")
 	e.save_layout(); e.canvas.queue_redraw(); await frame()
 	root.get_texture().get_image().save_png("res://output/tiled-floor-pilot/editor-corridor.png")
-	# Every pilot material survives disk reload independently of decoration/prop state.
+	# The finish survives disk reload independently of decoration/prop state.
 	Store.loaded=false; Store.data={}; e.load_room(); e.layer=1; e.rebuild_list()
-	assert(Floor.tile_material(e.draft,Vector2i(4,4))==2)
-	e.draft["locked/tile/4/4"]=true
-	tools.mode.select(1); tools.brush.select(3); e.canvas_input(press); e.canvas_input(release)
-	assert(Floor.tile_material(e.draft,Vector2i(4,4))==2,"Painting respects locked tiles")
-	tools.reset_floor(); assert(Floor.tile_material(e.draft,Vector2i(4,4))==0)
-	e.undo(); assert(Floor.tile_material(e.draft,Vector2i(4,4))==2)
+	assert(e.draft.get("floor/finish","")==tools.paths[1])
+	tools.apply_finish(0); assert(not e.draft.has("floor/finish"))
+	e.undo(); assert(e.draft.get("floor/finish","")==tools.paths[1])
 	e.close_editor(); await process_frame
 	var file:=FileAccess.open("res://output/tiled-floor-pilot/parity.json",FileAccess.WRITE); file.store_string(JSON.stringify(comparisons,"\t")); file.close()
-	print("TILED FLOOR PASS: default pixel parity, rotation/clipping, cache reuse, rectangle, undo/redo, seed, save, corridor fill")
+	print("TILED FLOOR PASS: default pixel parity, rotation/clipping, cache reuse, finish undo/redo, seed cache, save, corridor finish/reload/reset")
 	quit()

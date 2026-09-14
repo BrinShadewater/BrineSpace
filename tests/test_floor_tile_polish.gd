@@ -54,35 +54,34 @@ func run() -> void:
 			if e.entries[i].room==id: e.switch_room(i); found=true; break
 		assert(found,"Room in studio: "+id)
 		e.layer=1; e.rebuild_list(); assert(e.floor_tools.visible and not e.layers.is_item_disabled(1))
-		var tools=e.floor_tools; tools.mode.select(2); tools.brush.select(3)
-		var cells: Array=tools.valid_cells(); var selected: Vector2i=cells[cells.size()/2]
+		var tools=e.floor_tools
+		# The Studio offers whole-room finishes; the per-cell tile brushes were retired.
+		var finish_index:=1
+		while finish_index<tools.paths.size()-1 and str(tools.paths[finish_index])==str(profiles.get(id,{}).get("source","")): finish_index+=1
 		var before: Dictionary=e.draft.duplicate(true)
 		e.show_guides=false; e.canvas.queue_redraw(); await frame()
 		var original_image:=root.get_texture().get_image()
-		var press:=InputEventMouseButton.new(); press.button_index=MOUSE_BUTTON_LEFT; press.pressed=true
-		press.position=e.canvas.origin()+(Vector2(selected)*48-Vector2.ONE*168)*e.canvas.factor(); e.canvas_input(press)
-		assert(e.history.size()==1 and Floor.tile_material(e.draft,selected)==3,"One-step fill: "+id)
+		var history_count: int=e.history.size()
+		tools.apply_finish(finish_index)
+		assert(e.history.size()==history_count+1 and e.draft.get("floor/finish","")==tools.paths[finish_index],"One-step finish: "+id)
 		e.canvas.queue_redraw(); await frame()
 		var painted_image:=root.get_texture().get_image(); var visible_changes:=0
 		for y in range(200,880,3):
 			for x in range(320,980,3):
 				if original_image.get_pixel(x,y)!=painted_image.get_pixel(x,y): visible_changes+=1
-		assert(visible_changes>100,"Paint changes the actual room floor: "+id)
+		assert(visible_changes>100,"Finish changes the actual room floor: "+id)
 		e.undo(); assert(e.draft==before); e.redo()
-		e.save_layout(); assert(Store.positions(e.entries[e.index].asset,0).get(Floor.material_key(selected))==3)
-		e.load_room(); e.layer=1; e.rebuild_list(); assert(Floor.tile_material(e.draft,selected)==3)
+		e.save_layout(); assert(Store.positions(e.entries[e.index].asset,0).get("floor/finish")==tools.paths[finish_index])
+		e.load_room(); e.layer=1; e.rebuild_list(); assert(e.draft.get("floor/finish","")==tools.paths[finish_index])
+		# Room default restores authored tiles and clears the finish.
 		e.draft["tile/2/2"]=[3,1]
-		tools.seed.value=73; tools.vary(); assert(e.draft["floor/variation"])
-		tools.set_variation(false); assert(not e.draft.get("floor/variation",false))
-		e.undo(); assert(e.draft["floor/variation"])
-		tools.reset_floor(); assert(not e.draft.has("tile/2/2") or e.draft["tile/2/2"]==e.defaults.get("tile/2/2"))
-		assert(not tools.variation.button_pressed)
-		assert(tools.brush.get_item_icon(3)!=null)
+		tools.apply_finish(0)
+		assert(not e.draft.has("floor/finish") and (not e.draft.has("tile/2/2") or e.draft["tile/2/2"]==e.defaults.get("tile/2/2")))
 		e.show_guides=false; e.canvas.queue_redraw(); await frame()
 		root.get_texture().get_image().save_png("res://output/floor-tile-polish/"+id+".png")
 		# Persist original before moving on; prior orientation drafts remain independent.
 		e.save_layout()
 	e.close_editor(); await process_frame
 	var file:=FileAccess.open("res://output/floor-tile-polish/parity.json",FileAccess.WRITE); file.store_string(JSON.stringify(results,"\t")); file.close()
-	print("TILED FLOOR BATCH PASS: floor swatches, variation toggle/undo, full floor reset, painting and persistence")
+	print("TILED FLOOR BATCH PASS: finish swatches, room default reset, visible finish and persistence")
 	quit()
