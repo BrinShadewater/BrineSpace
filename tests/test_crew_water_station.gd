@@ -58,7 +58,9 @@ func run() -> void:
 		var start: int = npc.nearest_in_room(center+(Vector2(0,80) if south else Vector2(-80,40)),origin,false)
 		var cross_room := "--cross-room" in OS.get_cmdline_user_args()
 		var destination_cell := origin+(Vector2i.DOWN if south else Vector2i.RIGHT) if cross_room else origin
-		var desired := center+(Vector2(0,384) if south else Vector2(384,40)) if cross_room else center+Vector2(50,40)
+		# The Sept 13 rebuild cradle occupies the old (50,40) target; aim for open east water so
+		# the swim route still has to pass the furnished centre of the bay.
+		var desired := center+(Vector2(0,384) if south else Vector2(384,40)) if cross_room else center+Vector2(112,-32)
 		var target: int = npc.nearest_in_room(desired,destination_cell,false)
 		if west or north:
 			var previous_start := start
