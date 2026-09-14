@@ -26,7 +26,8 @@ ASSET_TOP = ('assets/', 'character/', 'rooms/', 'Brine icons/', 'brineui/',
              'mining-drone-animation/', 'brinecore-animation/')
 CODE_EXT = ('.gd', '.gd.uid', '.gdshader', '.gdshader.uid', '.tscn', '.import', '.md', '.txt', '.py')
 TOPS = r'(?:assets|character|rooms|Brine icons|brineui|mining-drone-animation|brinecore-animation)'
-REF_RE = re.compile(r'(?:res://)?(' + TOPS + r'/[A-Za-z0-9 _./\-]+)')
+# Code references are followed too (a preloaded tools/*.gd or scripts/*.gd is runtime code).
+REF_RE = re.compile(r'(?:res://)?((?:' + TOPS[3:-1] + r'|scripts|tools|scenes)/[A-Za-z0-9 _./\-]+)')
 DYN_RE = re.compile(r'res://(' + TOPS + r'/[A-Za-z0-9_\-. ]+(?:/[A-Za-z0-9_\-. ]+)*/)[^"\']*(?:%s|%d|%03d|"\s*\+|"\s*%)')
 FOLDER_RE = re.compile(r'res://(' + TOPS + r'/[A-Za-z0-9_\-. ]+(?:/[A-Za-z0-9_\-. ]+)*)/?"')
 DIR_RE = re.compile(r'(?:get_files_at|get_directories_at|DirAccess\.open)\(\s*"res://([^"]+?)/?"')

@@ -1,15 +1,15 @@
 {
   "textures": {
     "trolley": "res://rooms/whole-room/hydro-potting-trolley-v1.png",
-    "propagation": "res://rooms/underwater/batch-two/biodome-propagation-shelf-v1.png",
-    "biodome_potting_island": "res://assets/room-furnishings-v5/biodome-potting-island.png",
-    "universal_supply_pallet": "res://assets/room-furnishings-v5/universal-supply-pallet.png"
+    "propagation": "res://assets/rooms/biodome/furnishings/propagation-shelf.png",
+    "biodome_potting_island": "res://assets/rooms/biodome/furnishings/potting-island.png",
+    "universal_supply_pallet": "res://assets/rooms/biodome/furnishings/universal-supply-pallet.png"
   },
   "furniture": [
     {
       "id": "biodome_potting_island",
       "texture": "biodome_potting_island",
-      "registration": "res://assets/room-furnishings-v5/biodome-potting-island-registration.json",
+      "registration": "res://assets/rooms/biodome/furnishings/potting-island-registration.json",
       "footprint": [
         -48,
         -15,
@@ -41,7 +41,7 @@
     {
       "id": "universal_supply_pallet",
       "texture": "universal_supply_pallet",
-      "registration": "res://assets/room-furnishings-v5/universal-supply-pallet-registration.json",
+      "registration": "res://assets/rooms/biodome/furnishings/universal-supply-pallet-registration.json",
       "footprint": [
         -30,
         -11,

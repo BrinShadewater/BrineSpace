@@ -16,7 +16,7 @@ var source_items := {
 
 func _ready() -> void:
 	var img := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(img, "res://rooms/whole-room/nursery-opposite-candidate.png")
+	preload("res://scripts/safe_image.gd").load_png(img, "res://assets/rooms/mycelium-nursery/source/nursery-opposite-candidate.png")
 	opposite_texture = ImageTexture.create_from_image(img)
 	super._ready()
 
