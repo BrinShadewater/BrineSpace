@@ -210,6 +210,11 @@ static func flip_axes(room: Node, id: String) -> Vector2:
 static func draw_flip(room, canvas: CanvasItem, prop: Dictionary, origin: Vector2, scale_value: float) -> void:
 	# Dictionary.get evaluates its fallback even when the cached value exists.
 	var axes: Vector2=prop.layout_flip if prop.has("layout_flip") else flip_axes(room,str(prop.id))
+	if axes==Vector2.ONE:
+		# Unflipped: (center-center*axes) is exactly zero, so skip the virtual bounds
+		# lookup that otherwise ran for every retained slot paint.
+		canvas.draw_set_transform(origin,0,Vector2.ONE*scale_value)
+		return
 	var center: Vector2=room.prop_visual_bounds(prop).get_center()
 	canvas.draw_set_transform(origin+(center-center*axes)*scale_value,0,axes*scale_value)
 
