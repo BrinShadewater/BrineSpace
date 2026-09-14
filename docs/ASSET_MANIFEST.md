@@ -8,7 +8,7 @@ JSON data. Tests, tools, docs and skills are not roots: an asset only they menti
 |---|---|---|
 | live | 13482 | reached by an exact path from runtime code or data |
 | dynamic | 4335 | inside a folder the code reads with a built path or directory listing |
-| unreferenced | 6491 | nothing in the runtime points at it (provenance, superseded versions, sources) |
+| unreferenced | 6382 | nothing in the runtime points at it (provenance, superseded versions, sources) |
 
 ## Live assets by owner
 
@@ -76,10 +76,10 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/material-polish-v3` — 1 file(s)
 
 ### assets-data/room-furnishings-v2
-- `assets/room-furnishings-v2` — 4 file(s)
+- `assets/room-furnishings-v2` — 1 file(s)
 
 ### assets-data/room-furnishings-v3
-- `assets/room-furnishings-v3` — 4 file(s)
+- `assets/room-furnishings-v3` — 3 file(s)
 
 ### assets-data/room-furnishings-v4
 - `assets/room-furnishings-v4` — 21 file(s)
@@ -92,7 +92,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/room-furnishings-v6` — 6 file(s)
 
 ### assets-data/room-furnishings-v7
-- `assets/room-furnishings-v7` — 6 file(s)
+- `assets/room-furnishings-v7` — 4 file(s)
 
 ### assets-data/room-furnishings-v9
 - `assets/room-furnishings-v9` — 6 file(s)
@@ -107,7 +107,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/tidal-owner-v2` — 1 file(s)
 
 ### assets-data/rooms
-- `assets/rooms` — 33 file(s)
+- `assets/rooms` — 39 file(s)
 - `assets/construction-directional-v1` — 1 file(s)
 - `assets/drones` — 1 file(s)
 
@@ -216,15 +216,16 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/underwater` — 1 file(s)
 
 ### room/anomaly
-- `assets/room-furnishings-v2` — 2 file(s)
+- `assets/rooms` — 2 file(s)
 - `assets/material-polish-v4` — 1 file(s)
 - `rooms/underwater` — 1 file(s)
 
 ### room/anomaly_containment_wall
-- `assets/wall-room-rollout-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/anomaly_lab
-- `rooms/underwater` — 2 file(s)
+- `assets/rooms` — 1 file(s)
+- `rooms/underwater` — 1 file(s)
 
 ### room/archive
 - `assets/rooms` — 5 file(s)
@@ -297,15 +298,15 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/underwater` — 1 file(s)
 
 ### room/bio
-- `assets/room-furnishings-v7` — 4 file(s)
+- `assets/rooms` — 4 file(s)
 - `assets/material-polish-science-v2` — 1 file(s)
 - `assets/material-polish-v2` — 1 file(s)
 
 ### room/bio_culture_wall
-- `assets/bio-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/bio_lab
-- `assets/material-polish-bio-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 - `rooms/underwater` — 1 file(s)
 
 ### room/biodome
@@ -456,7 +457,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/owner-strict-overhead-v1` — 2 file(s)
 
 ### room/cryo
-- `assets/room-furnishings-v3` — 2 file(s)
+- `assets/rooms` — 2 file(s)
 - `assets/material-polish-science-v2` — 1 file(s)
 
 ### room/cryo_chamber
@@ -464,7 +465,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/underwater` — 1 file(s)
 
 ### room/cryo_support_wall
-- `assets/cryo-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/current_turbine
 - `assets/room-furnishings-v4` — 4 file(s)
@@ -693,22 +694,20 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/whole-room` — 1 file(s)
 
 ### room/med_center
-- `assets/room-furnishings-v2` — 2 file(s)
-- `assets/material-polish-medical-v3` — 1 file(s)
+- `assets/rooms` — 3 file(s)
 - `assets/material-polish-science-v2` — 1 file(s)
 - `rooms/underwater` — 1 file(s)
 
 ### room/med_office
-- `assets/room-furnishings-v2` — 2 file(s)
-- `assets/material-polish-medical-v3` — 1 file(s)
+- `assets/rooms` — 3 file(s)
 - `rooms/production-ten` — 1 file(s)
 - `rooms/underwater` — 1 file(s)
 
 ### room/medical_diagnostic_wall
-- `assets/med-center-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/medical_records_wall
-- `assets/med-office-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/medical_treatment_wall
 - `assets/owner-strict-overhead-v1` — 2 file(s)
@@ -895,22 +894,22 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/airlock-directional-v1` — 1 file(s)
 
 ### room/side_anomaly_containment_wall_east
-- `assets/anomaly-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_anomaly_containment_wall_south
-- `assets/anomaly-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_anomaly_containment_wall_west
-- `assets/anomaly-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_bio_culture_wall_east
-- `assets/bio-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_bio_culture_wall_south
-- `assets/bio-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_bio_culture_wall_west
-- `assets/bio-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_biodome_habitat_wall_east
 - `assets/biodome-directional-v1` — 1 file(s)
@@ -985,13 +984,13 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/owner-strict-overhead-v1` — 2 file(s)
 
 ### room/side_cryo_support_wall_east
-- `assets/cryo-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_cryo_support_wall_south
-- `assets/cryo-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_cryo_support_wall_west
-- `assets/cryo-directional-v2` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_current_turbine_east
 - `assets/turbine-directional-v4` — 1 file(s)
@@ -1087,22 +1086,22 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/rooms` — 1 file(s)
 
 ### room/side_medical_diagnostic_wall_east
-- `assets/med-center-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_medical_diagnostic_wall_south
-- `assets/med-center-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_medical_diagnostic_wall_west
-- `assets/med-center-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_medical_records_wall_east
-- `assets/med-office-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_medical_records_wall_south
-- `assets/med-office-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_medical_records_wall_west
-- `assets/med-office-directional-v1` — 1 file(s)
+- `assets/rooms` — 1 file(s)
 
 ### room/side_medical_treatment_wall_east
 - `assets/owner-strict-overhead-v1` — 2 file(s)
@@ -1359,22 +1358,22 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/hull-damage-v1` — 1 file(s)
 
 ### system/grid_canvas
-- `assets/rooms` — 11 file(s)
+- `assets/rooms` — 16 file(s)
 - `assets/corridor-polish-v3` — 9 file(s)
 - `brinecore-animation/assets` — 5 file(s)
-- `assets/room-furnishings-v2` — 4 file(s)
-- `assets/room-furnishings-v3` — 4 file(s)
 - `assets/crew-scale-v1` — 3 file(s)
+- `assets/room-furnishings-v3` — 3 file(s)
 - `assets/room-furnishings-v4` — 3 file(s)
 - `assets/room-furnishings-v5` — 3 file(s)
 - `assets/room-furnishings-v6` — 3 file(s)
-- `assets/room-furnishings-v7` — 3 file(s)
 - `assets/room-furnishings-v9` — 3 file(s)
 - `assets/room-centerpieces-v1` — 2 file(s)
+- `assets/room-furnishings-v7` — 2 file(s)
 - `assets/airlock-directional-v1` — 1 file(s)
 - `assets/brine-core-directional-v1` — 1 file(s)
 - `assets/cold-store-directional-v1` — 1 file(s)
 - `assets/galley-directional-v1` — 1 file(s)
+- `assets/room-furnishings-v2` — 1 file(s)
 - `assets/salvage-directional-v1` — 1 file(s)
 - `character/major-bill-v3` — 1 file(s)
 
@@ -1423,21 +1422,21 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/full-wall-v1` — 2 file(s)
 
 ### system/room_card_art
-- `assets/rooms` — 11 file(s)
-- `assets/room-furnishings-v2` — 4 file(s)
-- `assets/room-furnishings-v3` — 4 file(s)
+- `assets/rooms` — 16 file(s)
 - `assets/corridor-polish-v3` — 3 file(s)
 - `assets/crew-scale-v1` — 3 file(s)
+- `assets/room-furnishings-v3` — 3 file(s)
 - `assets/room-furnishings-v4` — 3 file(s)
 - `assets/room-furnishings-v5` — 3 file(s)
 - `assets/room-furnishings-v6` — 3 file(s)
-- `assets/room-furnishings-v7` — 3 file(s)
 - `assets/room-furnishings-v9` — 3 file(s)
 - `assets/room-centerpieces-v1` — 2 file(s)
+- `assets/room-furnishings-v7` — 2 file(s)
 - `assets/airlock-directional-v1` — 1 file(s)
 - `assets/brine-core-directional-v1` — 1 file(s)
 - `assets/cold-store-directional-v1` — 1 file(s)
 - `assets/galley-directional-v1` — 1 file(s)
+- `assets/room-furnishings-v2` — 1 file(s)
 - `assets/salvage-directional-v1` — 1 file(s)
 
 ### system/room_layout_editor
@@ -1479,12 +1478,10 @@ and must move as a unit.
 | `assets/airlock-deck-v1` | 3 | 0 | 3 |
 | `assets/airlock-directional-v1` | 9 | 0 | 26 |
 | `assets/airlock-wall-v1` | 1 | 0 | 6 |
-| `assets/anomaly-directional-v1` | 2 | 0 | 5 |
 | `assets/archive-directional-v1` | 2 | 0 | 2 |
 | `assets/archive-trolley-v1` | 1 | 0 | 0 |
 | `assets/archive-wall-v1` | 1 | 0 | 0 |
 | `assets/audio` | 27 | 0 | 17 |
-| `assets/bio-directional-v2` | 4 | 0 | 2 |
 | `assets/biodome-directional-v1` | 3 | 0 | 11 |
 | `assets/biomass-material-v2` | 4 | 0 | 2 |
 | `assets/brine-core-directional-v1` | 5 | 0 | 39 |
@@ -1501,7 +1498,7 @@ and must move as a unit.
 | `assets/crew-hab-directional-v2` | 4 | 0 | 2 |
 | `assets/crew-linen-wall-v1` | 1 | 0 | 8 |
 | `assets/crew-scale-v1` | 3 | 0 | 22 |
-| `assets/cryo-directional-v2` | 4 | 0 | 15 |
+| `assets/cryo-directional-v2` | 0 | 0 | 1 |
 | `assets/department-floors-v1` | 4 | 0 | 1 |
 | `assets/department-floors-v2` | 6 | 0 | 1 |
 | `assets/door-polish-v1` | 2 | 46 | 0 |
@@ -1535,20 +1532,20 @@ and must move as a unit.
 | `assets/listening-directional-v2` | 2 | 0 | 3 |
 | `assets/lounge-reading-stool-v1` | 1 | 0 | 4 |
 | `assets/marsh-charging-v1` | 0 | 23 | 0 |
-| `assets/material-polish-bio-v2` | 1 | 0 | 3 |
+| `assets/material-polish-bio-v2` | 0 | 0 | 3 |
 | `assets/material-polish-cryo-recovery-v1` | 21 | 7 | 0 |
-| `assets/material-polish-cryo-v1` | 1 | 0 | 5 |
+| `assets/material-polish-cryo-v1` | 1 | 0 | 3 |
 | `assets/material-polish-medical-v1` | 1 | 0 | 5 |
-| `assets/material-polish-medical-v3` | 2 | 0 | 4 |
+| `assets/material-polish-medical-v3` | 0 | 0 | 4 |
 | `assets/material-polish-science-v2` | 1 | 0 | 11 |
-| `assets/material-polish-v1` | 1 | 0 | 22 |
+| `assets/material-polish-v1` | 1 | 0 | 20 |
 | `assets/material-polish-v2` | 5 | 0 | 13 |
 | `assets/material-polish-v3` | 2 | 0 | 7 |
 | `assets/material-polish-v4` | 1 | 0 | 19 |
 | `assets/material-polish-xeno-v1` | 1 | 0 | 3 |
 | `assets/meal-trolley-v1` | 1 | 0 | 4 |
-| `assets/med-center-directional-v1` | 3 | 0 | 21 |
-| `assets/med-office-directional-v1` | 3 | 0 | 21 |
+| `assets/med-center-directional-v1` | 0 | 0 | 2 |
+| `assets/med-office-directional-v1` | 0 | 0 | 2 |
 | `assets/mining-directional-v1` | 0 | 0 | 1 |
 | `assets/observation-directional-v1` | 3 | 0 | 7 |
 | `assets/observation-office-v1` | 5 | 8 | 0 |
@@ -1569,18 +1566,18 @@ and must move as a unit.
 | `assets/room-facing-repair-v2` | 3 | 0 | 6 |
 | `assets/room-floor-tiles-v3` | 3 | 0 | 3 |
 | `assets/room-floor-tiles-v4` | 6 | 0 | 9 |
-| `assets/room-floor-tiles-v5` | 6 | 0 | 9 |
-| `assets/room-furnishings-v2` | 12 | 0 | 2 |
-| `assets/room-furnishings-v3` | 12 | 0 | 2 |
+| `assets/room-floor-tiles-v5` | 6 | 0 | 8 |
+| `assets/room-furnishings-v2` | 3 | 0 | 2 |
+| `assets/room-furnishings-v3` | 9 | 0 | 2 |
 | `assets/room-furnishings-v4` | 16 | 0 | 1 |
 | `assets/room-furnishings-v5` | 15 | 0 | 2 |
 | `assets/room-furnishings-v6` | 15 | 0 | 2 |
-| `assets/room-furnishings-v7` | 15 | 0 | 2 |
+| `assets/room-furnishings-v7` | 10 | 0 | 2 |
 | `assets/room-furnishings-v8` | 0 | 0 | 2 |
 | `assets/room-furnishings-v9` | 15 | 0 | 2 |
 | `assets/room-risers-v2` | 11 | 0 | 20 |
-| `assets/room-risers-v3` | 7 | 0 | 24 |
-| `assets/rooms` | 103 | 31 | 0 |
+| `assets/room-risers-v3` | 7 | 0 | 20 |
+| `assets/rooms` | 141 | 31 | 0 |
 | `assets/salvage-directional-v1` | 6 | 0 | 2 |
 | `assets/salvage-drone-directional-v1` | 0 | 0 | 1 |
 | `assets/salvage-owner-v2` | 0 | 14 | 0 |
@@ -1595,7 +1592,7 @@ and must move as a unit.
 | `assets/tidal-owner-v2` | 5 | 23 | 0 |
 | `assets/turbine-directional-v4` | 3 | 0 | 6 |
 | `assets/wall-dressing-style-v2` | 49 | 0 | 5 |
-| `assets/wall-room-rollout-v1` | 12 | 0 | 87 |
+| `assets/wall-room-rollout-v1` | 11 | 0 | 81 |
 | `assets/xeno-directional-v2` | 4 | 0 | 5 |
 | `brinecore-animation/assets` | 6 | 0 | 0 |
 | `brineui/button_hover.png` | 1 | 0 | 0 |
@@ -1664,5 +1661,5 @@ and must move as a unit.
 | `rooms/modular` | 10 | 2 | 51 |
 | `rooms/power-expansion-v1` | 12 | 8 | 0 |
 | `rooms/production-ten` | 20 | 0 | 29 |
-| `rooms/underwater` | 74 | 7 | 321 |
+| `rooms/underwater` | 73 | 7 | 286 |
 | `rooms/whole-room` | 15 | 0 | 103 |

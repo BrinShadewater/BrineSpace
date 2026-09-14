@@ -188,7 +188,7 @@
       "sources": [
         {
           "view": "north",
-          "source": "assets/wall-room-rollout-v1/anomaly-containment-wall.png",
+          "source": "assets/rooms/anomaly-lab/walls/bank.png",
           "sha256": "c9b6112641d2e21f833a63ce903969eda0e79130e315cd642b6d21b065a01985",
           "dimensions": [
             1983,
@@ -197,7 +197,7 @@
           "mode": "RGB",
           "prompt": "assets/wall-room-rollout-v1/anomaly-containment-wall.prompt.txt",
           "references": [
-            "rooms/underwater/batch-two/anomaly_lab-source-v1.png"
+            "assets/rooms/anomaly-lab/source/overhead.png"
           ],
           "stage": "native-reviewed",
           "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",
@@ -214,7 +214,7 @@
           "mode": "RGB",
           "prompt": "assets/wall-room-rollout-v1/anomaly-side-rejected-console.prompt.txt",
           "references": [
-            "assets/wall-room-rollout-v1/anomaly-containment-wall.png",
+            "assets/rooms/anomaly-lab/walls/bank.png",
             "assets/full-wall-expansion-v2/tidal_condenser.png"
           ],
           "stage": "rejected",
@@ -249,7 +249,7 @@
           "mode": "RGB",
           "prompt": "assets/wall-room-rollout-v1/anomaly-containment-wall-south.prompt.txt",
           "references": [
-            "assets/wall-room-rollout-v1/anomaly-containment-wall.png"
+            "assets/rooms/anomaly-lab/walls/bank.png"
           ],
           "stage": "native-reviewed",
           "review": "Source interfaces and all four native room rotations reviewed; cutout apertures repaired where recorded in registration",

@@ -21,11 +21,11 @@
         "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
       },
       {
-        "path": "assets/room-furnishings-v3/cryo-thaw-cart.png",
+        "path": "assets/rooms/cryo-chamber/furnishings/thaw-cart.png",
         "sha256": "0075d10917f82c2088af2c624ccc9b9a5c965298bc4428ae90e8a618658e8e17"
       },
       {
-        "path": "assets/room-furnishings-v3/cryo-thaw-cart-registration.json",
+        "path": "assets/rooms/cryo-chamber/furnishings/thaw-cart-registration.json",
         "sha256": "d915445b02c4b785b5abec61d97a5bad72d722cba302e730d662e54ed8138987"
       }
     ],
@@ -264,7 +264,7 @@
   },
   {
     "id": "anomaly_lab",
-    "source": "rooms/underwater/batch-two/anomaly_lab-source-v1.png",
+    "source": "assets/rooms/anomaly-lab/source/overhead.png",
     "sha256": "67e810d4f3d2d87eec9a16a70e71f2c40d0267091996e97fb44cb96fb0b1de7a",
     "canonical_ports_nesw": [
       2
@@ -302,7 +302,7 @@
     ],
     "integration": {
       "view": "rooms/underwater/batch-two/bio_lab_view.gd",
-      "card": "assets/room-furnishings-v7/cards/bio_lab.png"
+      "card": "assets/rooms/bio-lab/cards/card.png"
     },
     "component_assets": [
       {
@@ -322,19 +322,19 @@
         "sha256": "1223ec201563dd184756c5207918e69e97badedae9121c5fbb7940ed7a4e8b6a"
       },
       {
-        "path": "assets/room-furnishings-v7/bio-lab-culture-preparation-island.png",
+        "path": "assets/rooms/bio-lab/furnishings/culture-preparation-island.png",
         "sha256": "d3b579c1672f5fe7d7641140d7c1a933d6e05e5bcbd7ef3da265499b737be0c5"
       },
       {
-        "path": "assets/room-furnishings-v7/universal-specimen-transit-case.png",
+        "path": "assets/rooms/bio-lab/furnishings/universal-specimen-transit-case.png",
         "sha256": "ee847e076c88b44d5e1c59663b2cf73533f78ce919585b9a9534c31961f7cd05"
       },
       {
-        "path": "assets/room-furnishings-v7/bio-lab-culture-preparation-island-registration.json",
+        "path": "assets/rooms/bio-lab/furnishings/culture-preparation-island-registration.json",
         "sha256": "980ca4009495a278c917a1abe101009d473565be9ad109d8299612307086c9fc"
       },
       {
-        "path": "assets/room-furnishings-v7/universal-specimen-transit-case-registration.json",
+        "path": "assets/rooms/bio-lab/furnishings/universal-specimen-transit-case-registration.json",
         "sha256": "f044585705bec1244918a5f39afe9d644c1e13861ed16a92f9559e961efef23e"
       }
     ],
@@ -346,7 +346,7 @@
       }
     ],
     "card": {
-      "path": "assets/room-furnishings-v7/cards/bio_lab.png",
+      "path": "assets/rooms/bio-lab/cards/card.png",
       "sha256": "dcf524f9469fdd5cd332ab7f5665d1e7f9b54271649705f71679a069cf6d492b"
     },
     "verification": {
