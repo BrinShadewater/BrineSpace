@@ -104,7 +104,11 @@ func run() -> void:
 			await RenderingServer.frame_post_draw
 			root.get_texture().get_image().save_png("res://output/galley-v1/meal.png")
 		worker.update(game,9.1)
-		assert(worker.needs.hunger<60,"Meal break satisfies existing hunger need")
+		# The meal continues into its authored drink pose; hunger resolves when the break ends.
+		for settle in range(30):
+			if worker.goal!="hunger": break
+			worker.update(game,1.0)
+		assert(worker.needs.hunger<60,"Meal break satisfies existing hunger need: stage=%s goal=%s hunger=%s" % [worker.stage,worker.goal,worker.needs.hunger])
 		worker.restore_snapshot(game,saved)
 		game.occupied[cell].suspended=true
 		worker.update(game,.1)
