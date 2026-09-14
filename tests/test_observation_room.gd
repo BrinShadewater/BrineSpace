@@ -112,6 +112,10 @@ func run() -> void:
 			reader.restore_snapshot(game,saved)
 			game.occupied[cell].suspended=true
 			reader.update(game,.1)
+			if visit==0:
+				# Interrupted reading stands up before the reader leaves the chair.
+				assert(reader.stage=="observation_rise","Suspension stands an interrupted reader up")
+				reader.update(game,.7)
 			assert(not reader.stage.begins_with("observation_"),"Suspension releases activity")
 			game.occupied[cell].suspended=false
 			game.powered_room_cells[cell]=true

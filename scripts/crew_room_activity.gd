@@ -49,7 +49,19 @@ static func stations(data: Dictionary) -> Array:
 		for unused in range(posmod(quarter,4)): turned=Vector2(-turned.y,turned.x)
 		return [{"point":turned,"facing":["east","south","west","north"][posmod(quarter,4)],"room":id}]
 	if id=="observation_room":
-		return [{"point":Vector2(0,112),"facing":"north","room":id,"mode":"read"},{"point":Vector2(80,0),"facing":"north","room":id,"mode":"watch"}]
+		# Read between the desk and the chair behind it. A fixed point went stale when the
+		# crew-scale pass enlarged the chair over it, leaving no walkable node to sit from.
+		var read_point:=Vector2(0,112)
+		var desk: Dictionary={}
+		var chair: Dictionary={}
+		for prop in data.get("props",[]):
+			if prop.id=="wooden-desk": desk=prop
+			elif prop.id=="chair-rear": chair=prop
+		if not desk.is_empty() and not chair.is_empty():
+			var gap: float=(float(desk.rect.end.y)+float(chair.rect.position.y))*0.5
+			# Navigation nodes sit on a 16-unit lattice and stations match within 5 units.
+			read_point=Vector2(roundf(chair.rect.get_center().x/16.0)*16.0,roundf(gap/16.0)*16.0)
+		return [{"point":read_point,"facing":"north","room":id,"mode":"read"},{"point":Vector2(80,0),"facing":"north","room":id,"mode":"watch"}]
 	if id not in ROOMS: return result
 	for prop in data.props:
 		if not prop.get("full_wall",false) and prop.id!="flush_back": continue

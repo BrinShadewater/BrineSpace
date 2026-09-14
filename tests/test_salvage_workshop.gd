@@ -86,7 +86,10 @@ func run() -> void:
 		worker.update(game,2.1)
 		assert(worker.stage=="workshop_work")
 		worker.update(game,5.1)
-		assert(worker.stage=="workshop_carry" and not worker.path.is_empty())
+		assert(worker.stage=="workshop_pickup",worker.stage)
+		# Pickup is a short authored pose before the carry route starts.
+		worker.update(game,0.6)
+		assert(worker.stage=="workshop_carry" and not worker.path.is_empty(),worker.stage)
 		var saved: Dictionary=worker.snapshot()
 		assert(worker.valid_snapshot(saved))
 		var file:=FileAccess.open("res://output/salvage-workshop-v1/worker.bin",FileAccess.WRITE)
