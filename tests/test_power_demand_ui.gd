@@ -57,6 +57,27 @@ func run() -> void:
 	game.wrecks[Vector2i(18,20)].cleared = true
 	game._refresh_all()
 	assert(game.inspector_label.text.contains("INTAKE WEST (18, 20): CLEAR"))
+	# Hovering a legal build on the intake names the consequence before paying.
+	# A north/south corridor above the intake gives the hovered corridor a legal port.
+	game.selected_rotation = 0
+	game._place_room("corridor",Vector2i(18,19),true)
+	var hazard_cell := Vector2i(-1,-1)
+	for rotation in range(4):
+		game.selected_card_id = "corridor"
+		game.selected_rotation = rotation
+		if game.get_placement_problem("corridor",Vector2i(18,20)).is_empty():
+			hazard_cell = Vector2i(18,20)
+			break
+	if hazard_cell != Vector2i(-1,-1):
+		game.hover_cell = hazard_cell
+		game._refresh_placement_status()
+		game._position_placement_feedback()
+		assert(game.placement_label.text.contains("BLOCKS CURRENT TURBINE INTAKE AT (19, 20)"),game.placement_label.text)
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://output/placement-hazard-ui.png")
+	else:
+		push_warning("No legal corridor placement on the intake in this fixture: "+game.get_placement_problem("corridor",Vector2i(18,20)))
+	game.selected_card_id = ""
 	game.queue_free()
 	await process_frame
 	print("POWER DEMAND UI PASS")

@@ -118,6 +118,42 @@ static func power_vented_note(vented: int) -> String:
 	if vented <= 0: return ""
 	return "\nRESERVE FULL // %d Power vented next cycle. Battery Arrays raise the cap; new generation adds nothing until then." % vented
 
+# Placement is allowed, but some cells silently break existing systems: a room on a
+# turbine's intake stops its generation, and a room can wall an extraction bay off
+# from every deposit it could reach. Name both before the player pays.
+static func placement_hazards(game, room_id: String, cell: Vector2i, rotation: int) -> Array[String]:
+	var hazards: Array[String] = []
+	for room in game.placed_rooms:
+		if room.id == "current_turbine" and game._turbine_intake_cell(room) == cell:
+			hazards.append("WARNING // BLOCKS CURRENT TURBINE INTAKE AT %s: it stops generating Power" % room.pos)
+	var fleet = game.drone_fleet
+	if fleet.drones.is_empty() or fleet.sites.is_empty(): return hazards
+	var Routes := preload("res://scripts/drone_routes.gd")
+	var Rooms := preload("res://scripts/room_database.gd")
+	var before: Dictionary = fleet.route_blockers.duplicate()
+	var after: Dictionary = before.duplicate()
+	# Judge the finished room: its matching ports stay passable as a service route.
+	var doors: Array = []
+	for side in Rooms.get_layout(Rooms.get_room(room_id).get("layout","cross")).get("doors",[]):
+		doors.append(Routes.STEPS[(["north","east","south","west"].find(side)+rotation)%4])
+	after[cell] = {"doors":doors}
+	for home in fleet.drones:
+		var drone: Dictionary = fleet.drones[home]
+		if not drone.kind in ["mining","salvage"] or not game.occupied.has(home): continue
+		var reachable_before := false
+		var reachable_after := false
+		for site_cell in fleet.sites:
+			var site: Dictionary = fleet.sites[site_cell]
+			if site.kind != drone.kind or not site.discovered or not site.active or site.units <= 0: continue
+			if Routes.find_path(home,site_cell,before).is_empty(): continue
+			reachable_before = true
+			if site_cell != cell and not Routes.find_path(home,site_cell,after).is_empty():
+				reachable_after = true
+				break
+		if reachable_before and not reachable_after:
+			hazards.append("WARNING // CUTS %s DRONE BAY AT %s OFF FROM EVERY %s" % [drone.kind.to_upper(),home,"DEPOSIT" if drone.kind == "mining" else "SCRAP PILE"])
+	return hazards
+
 static func turbine_intake(game, room: Dictionary) -> String:
 	var names := ["NORTH","EAST","SOUTH","WEST"]
 	var reason: String = game._turbine_intake_problem(room)

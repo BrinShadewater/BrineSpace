@@ -4818,11 +4818,14 @@ func _refresh_placement_status() -> void:
 	if selected_card_id == "current_turbine":
 		var turbine_preview := {"pos":hover_cell,"rotation":selected_rotation}
 		placement_label.text += "\n" + preload("res://scripts/station_ui_insights.gd").turbine_intake(self,turbine_preview)
+	var hazards: Array[String] = []
+	if problem.is_empty(): hazards = preload("res://scripts/station_ui_insights.gd").placement_hazards(self,selected_card_id,hover_cell,selected_rotation)
+	for hazard in hazards: placement_label.text += "\n" + hazard
 	placement_label.text += "\n" + _placement_connections(selected_card_id, hover_cell)
 	placement_label.tooltip_text = _blueprint_decision(room)
 	if is_instance_valid(placement_feedback):
 		placement_feedback.text = placement_label.text.replace("PLACING:","READY TO BUILD:")
-		placement_feedback.add_theme_color_override("font_color",Color("d5e5dc") if problem.is_empty() else Color("f0bd99"))
+		placement_feedback.add_theme_color_override("font_color",Color("f0bd99") if not problem.is_empty() or not hazards.is_empty() else Color("d5e5dc"))
 
 func _position_placement_feedback() -> void:
 	if not is_instance_valid(grid_scroll) or not is_instance_valid(grid_view): return

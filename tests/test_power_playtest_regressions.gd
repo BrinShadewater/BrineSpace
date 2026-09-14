@@ -92,6 +92,24 @@ func _init() -> void:
 	check(Insights.power_balance(game,forecast).contains("RESERVE FULL // 3 Power vented"),"Power panel names vented surplus")
 	game.forecast_power_vented = forecast.power_vented
 	check(Insights.turbine_intake(game,turbine).contains("INTAKE WEST") and Insights.turbine_intake(game,turbine).contains("RESERVE FULL"),"Clear turbine status explains why it adds nothing")
+	check(Insights.placement_hazards(game,"corridor",Vector2i(18,20),0).any(func(h): return h.contains("BLOCKS CURRENT TURBINE INTAKE")),"Placing on a turbine intake warns")
+	check(Insights.placement_hazards(game,"corridor",Vector2i(18,21),0).is_empty(),"A neighbouring cell does not warn about the intake")
+	game.free()
+	# A deposit reachable only through one approach cell: walling it off must warn.
+	game = Game.new()
+	add(game,"brine_core",Vector2i(18,20))
+	add(game,"mining_drone_bay",Vector2i(22,20))
+	for cell in [Vector2i(25,20),Vector2i(24,19),Vector2i(24,21)]:
+		game.wrecks[cell] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
+	var deposit := preload("res://scripts/harvest_sites.gd").make_site("mining")
+	deposit.discovered = true
+	game.drone_fleet.sites = {Vector2i(24,20): deposit}
+	game.drone_fleet.sites_initialized = true
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	check(Insights.placement_hazards(game,"corridor",Vector2i(23,20),1).any(func(h): return h.contains("CUTS MINING DRONE BAY")),"Sealing a bay's only route to its deposit warns")
+	# The bay launches north/south, so the route turns at (23,20); a corner with north/east ports carries it.
+	check(not Insights.placement_hazards(game,"corner",Vector2i(23,20),2).any(func(h): return h.contains("CUTS")),"Matching service ports keep the drone route open")
+	check(Insights.placement_hazards(game,"corridor",Vector2i(22,22),1).is_empty(),"An unrelated placement does not warn")
 	game.free()
 	print("POWER PLAYTEST REGRESSIONS: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	quit(0 if failures == 0 else 1)
