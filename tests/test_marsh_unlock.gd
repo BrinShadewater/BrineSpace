@@ -116,10 +116,12 @@ func run():
 	Architects.advance_core(game,Architects.DURATION)
 	check(game.marsh_npc.active and not game.bill_npc.active,"Selected Marsh awakens as the only initial actor")
 	var player=game.grid_view.marsh_player
+	# Owner decision: Marsh is a helmet-free android. marsh-v2/catalog.json declares
+	# no equipment, so no diving-helmet variant is expected to load.
+	check(player.equipment_frames.is_empty(),"Marsh stays helmet-free")
 	for direction in ["south","north","east","west"]:
 		for state in ["idle","walk","weld","swim","death-ground","death-water","salvage","unload"]:
 			check(player.frame_at_elapsed(state+"-"+direction,.3)!=null,"Bare Marsh pose loads: "+state+"-"+direction)
-			check(player.frame_at_elapsed(state+"-"+direction,.3,"diving-helmet")!=null,"Equipped Marsh pose loads: "+state+"-"+direction)
 	check(game.grid_view.marsh_player!=game.grid_view.branforth_player,"Playback clocks are independent")
 	var malformed=Save.capture(game)
 	malformed.crew.marsh.foot=Vector2(NAN,0)

@@ -42,7 +42,12 @@ static func stations(data: Dictionary) -> Array:
 	if id=="galley":
 		return reachable_stations(data,[Vector2(64,144),Vector2(112,144)])
 	if id=="salvage_workshop":
-		return [{"point":Vector2(112,16),"facing":"east","room":id}]
+		# The workshop bench turns with the room's quarter (side variants), so the
+		# authored east-facing approach must turn with it.
+		var quarter: int=int(data.get("layout",[{}])[0].get("rotation",0)) if not data.get("layout",[]).is_empty() else 0
+		var turned: Vector2=Vector2(112,16)
+		for unused in range(posmod(quarter,4)): turned=Vector2(-turned.y,turned.x)
+		return [{"point":turned,"facing":["east","south","west","north"][posmod(quarter,4)],"room":id}]
 	if id=="observation_room":
 		return [{"point":Vector2(0,112),"facing":"north","room":id,"mode":"read"},{"point":Vector2(80,0),"facing":"north","room":id,"mode":"watch"}]
 	if id not in ROOMS: return result
@@ -57,7 +62,9 @@ static func stations(data: Dictionary) -> Array:
 		var point:=Vector2(rect.get_center().x,rect.end.y+28)
 		if side=="west": facing="west"; point=Vector2(rect.end.x+28,rect.get_center().y)
 		elif side=="east": facing="east"; point=Vector2(rect.position.x-28,rect.get_center().y)
-		elif rect.get_center().y>0 or _approach_blocked(data,point):
+		elif rect.get_center().y>0 or (_approach_blocked(data,point) and rect.position.y-28>-144):
+			# Only flip to an above-the-bank approach when that point is still on the
+			# room floor; a north wall bank keeps its below approach and slides outward.
 			# A bank relocated toward the south wall can keep a visual center above
 			# zero while its below-the-bank approach lands inside its own collision;
 			# approach from above, facing the bank, whenever navigation has no floor there.

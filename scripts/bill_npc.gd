@@ -563,7 +563,10 @@ func rebuild(main, staged := false) -> void:
 			for y in range(-176, 177, STEP):
 				for x in range(-176, 177, STEP):
 					var local := Vector2i(x, y)
-					if can_stand(center + Vector2(local)): local_points[local] = true
+					# A node exactly on a blocker's far edge passes can_stand (half-open
+					# rect) but fails every segment_clear sweep, which pads blockers by
+					# 0.05; an actor spawned there waits for a clear route forever.
+					if can_stand(center + Vector2(local)) and segment_clear(center + Vector2(local), center + Vector2(local)): local_points[local] = true
 			for local in local_points:
 				if staged and Time.get_ticks_usec()-slice_started>=4000:
 					await main.get_tree().process_frame
