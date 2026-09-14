@@ -5,7 +5,7 @@ var dressing: RefCounted
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/whole-room/crew-hab-source-v1.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/crew-hab/source/overhead.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"hab_berth_west","rect":Rect2(-163,-154,62,92),"pivot":Vector2(272,460),"width":198.0,"outline":[Vector2(175,128),Vector2(187,114),Vector2(349,114),Vector2(365,128),Vector2(369,443),Vector2(357,460),Vector2(182,460),Vector2(172,444)]},

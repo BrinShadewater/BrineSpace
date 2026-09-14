@@ -10,7 +10,7 @@ func overhead_texture(id: String) -> ImageTexture:
 		source="table"
 		turn=posmod(quarter+1,4)
 	var key:=source+"-q"+str(turn)
-	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/galley-owner-v2/"+key+".png")
+	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/rooms/galley/pack/"+key+".png")
 	return overhead_textures[key]
 func overhead_bounds(prop: Dictionary) -> Rect2:
 	var size:=Vector2(overhead_texture(prop.id).get_size())

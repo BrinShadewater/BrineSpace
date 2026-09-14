@@ -1,8 +1,8 @@
 extends RefCounted
 
 const PATHS := {
-	"cold_store": "res://assets/cold-store-directional-v1/matte-pair-cards/cold_store.png",
-	"galley": "res://assets/galley-directional-v1/north-matte-cards/galley.png",
+	"cold_store": "res://assets/rooms/cold-store/cards/card.png",
+	"galley": "res://assets/rooms/galley/cards/card.png",
 	"salvage_workshop": "res://assets/salvage-directional-v1/matte-pair-cards/salvage_workshop.png",
 	"observation_room": "res://assets/crew-scale-v1/cards/observation_room.png",
 	"current_turbine": "res://assets/room-furnishings-v4/cards/current_turbine.png",
@@ -20,11 +20,11 @@ const PATHS := {
 	"biodome": "res://assets/rooms/biodome/cards/card.png",
 	"clone_lab": "res://assets/rooms/clone-lab/cards/card.png",
 	"brine_core": "res://assets/brine-core-directional-v1/south-idle-cards/brine_core.png",
-	"crew_hab": "res://assets/room-furnishings-v2/cards/crew_hab.png",
+	"crew_hab": "res://assets/rooms/crew-hab/cards/card.png",
 	"cryo_chamber": "res://assets/rooms/cryo-chamber/cards/card.png",
 	"data_archive": "res://assets/rooms/data-archive/cards/card.png",
 	"hydroponics_bay": "res://assets/rooms/hydroponics-bay/cards/card.png",
-	"life_support": "res://assets/room-furnishings-v7/cards/life_support.png",
+	"life_support": "res://assets/rooms/life-support/cards/card.png",
 	"mining_drone_bay": "res://assets/rooms/mining-drone-bay/cards/card.png",
 	"ore_refinery": "res://assets/rooms/ore-refinery/cards/card.png",
 	"quarantine_cell": "res://assets/rooms/quarantine-cell/cards/card.png",
@@ -41,7 +41,7 @@ const PATHS := {
 	"tee_corridor": "res://assets/corridor-polish-v3/cards/tee_corridor.png",
 	"corridor": "res://assets/corridor-polish-v3/cards/corridor.png",
 	"corner": "res://assets/corridor-polish-v3/cards/corner.png",
-	"crew_lounge": "res://assets/crew-scale-v1/cards/crew_lounge.png",
+	"crew_lounge": "res://assets/rooms/crew-lounge/cards/card.png",
 	"holographic_core": "res://assets/rooms/holographic-core/cards/card.png",
 	"maintenance_bay": "res://assets/rooms/maintenance-bay/cards/card.png",
 	"med_center": "res://assets/rooms/med-center/cards/card.png",

@@ -20,7 +20,7 @@ func _ready() -> void:
 	life_items[2].rect=Rect2(-164,99,82,52)
 	life_items[3].rect=Rect2(80,47,82,50)
 	var decor_image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(decor_image, "res://rooms/production-ten/decor/lounge-v1.png")
+	preload("res://scripts/safe_image.gd").load_png(decor_image, "res://assets/rooms/crew-lounge/source/lounge-v1.png")
 	decor_texture=ImageTexture.create_from_image(decor_image)
 	life_items.append({"id":"decor_lounge_0","rect":Rect2(-132.5,32,25,6),"pivot":Vector2(361.0,499),"width":472.0,"outline":[Vector2(125,172),Vector2(597,172),Vector2(597,499),Vector2(125,499)],"pieces":[[Vector2(125,172),Vector2(597,172),Vector2(597,499),Vector2(125,499)]],"decor":true})
 	life_items.append({"id":"decor_lounge_1","rect":Rect2(-79.0,32,22,6),"pivot":Vector2(934.5,512),"width":431.0,"outline":[Vector2(719,79),Vector2(1150,79),Vector2(1150,512),Vector2(719,512)],"pieces":[[Vector2(719,79),Vector2(1150,79),Vector2(1150,512),Vector2(719,512)]],"decor":true})

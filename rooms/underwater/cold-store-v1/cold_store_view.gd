@@ -17,7 +17,7 @@ func _ready() -> void:
 func overhead_texture(id: String) -> ImageTexture:
 	var source: String="cooler" if id.begins_with("cooler") else id
 	var key:=source+"-q"+str(quarter)
-	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/cold-store-owner-v2/"+key+".png")
+	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/rooms/cold-store/pack/"+key+".png")
 	return overhead_textures[key]
 func overhead_bounds(prop: Dictionary) -> Rect2:
 	var size:=Vector2(overhead_texture(prop.id).get_size())

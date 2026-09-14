@@ -9,7 +9,7 @@ def visit(node):
         key=f'room-galley/{q}'
         if key not in node:continue
         entry=node[key]
-        backup=ROOT/f'assets/galley-owner-v2/layout-q{q}-before.json'
+        backup=ROOT/f'assets/rooms/galley/pack/layout-q{q}-before.json'
         if not backup.exists():backup.write_text(json.dumps(entry,indent=2)+'\n')
         for field in ['kitchen','serving','size/kitchen','size/serving']:entry.pop(field,None)
     for value in node.values():visit(value)

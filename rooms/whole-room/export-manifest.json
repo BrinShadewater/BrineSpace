@@ -5,7 +5,7 @@
     "sha256": "b340afc131371088ac226d61ef989a3f28aff033ef7675b1e2e125cf539cee82",
     "integration": {
       "view": "rooms/whole-room/underwater_life_support_view.gd",
-      "card": "assets/room-furnishings-v7/cards/life_support.png"
+      "card": "assets/rooms/life-support/cards/card.png"
     },
     "canonical_ports_nesw": [
       0,
@@ -28,23 +28,23 @@
         "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
       },
       {
-        "path": "assets/room-centerpieces-v1/life-support-scrubber-trolley.png",
+        "path": "assets/rooms/life-support/furnishings/scrubber-trolley.png",
         "sha256": "3354d13c17931c973680a3bd48e45ecc34fd606ab285c2af44a7c502fda53467"
       },
       {
-        "path": "assets/room-furnishings-v7/life-support-atmosphere-analysis-island.png",
+        "path": "assets/rooms/life-support/furnishings/atmosphere-analysis-island.png",
         "sha256": "772dbf4c9d5701212dfae22ec1b9195ca391f8d78c2da921866cca33ca4bb236"
       },
       {
-        "path": "assets/room-furnishings-v7/universal-sealed-filter-cassette-chest.png",
+        "path": "assets/rooms/life-support/furnishings/universal-sealed-filter-cassette-chest.png",
         "sha256": "94cca47f142229201aca141d3e7f42fce85361b5086ed75d78add000d2dd12a3"
       },
       {
-        "path": "assets/room-furnishings-v7/life-support-atmosphere-analysis-island-registration.json",
+        "path": "assets/rooms/life-support/furnishings/atmosphere-analysis-island-registration.json",
         "sha256": "8b0825d6ee48299e8ce2ffa22ab42b5e3321ea8ba5eb136bd6a1fa21b32b69d0"
       },
       {
-        "path": "assets/room-furnishings-v7/universal-sealed-filter-cassette-chest-registration.json",
+        "path": "assets/rooms/life-support/furnishings/universal-sealed-filter-cassette-chest-registration.json",
         "sha256": "e72ce90a04819456fd535089601091164578b2d32ee51bafc680a2549125e487"
       }
     ],
@@ -56,7 +56,7 @@
       }
     ],
     "card": {
-      "path": "assets/room-furnishings-v7/cards/life_support.png",
+      "path": "assets/rooms/life-support/cards/card.png",
       "sha256": "54bfa4245c68609a9f7c4c5cf67cb4a6e37c913015460876b9e7c490d656e198"
     },
     "verification": {
@@ -216,7 +216,7 @@
   },
   {
     "id": "crew_hab",
-    "source": "rooms/whole-room/crew-hab-source-v1.png",
+    "source": "assets/rooms/crew-hab/source/overhead.png",
     "sha256": "9bc8548eae1f1c8bd88a833958824beda87ddd51d49e193a2ea6ddf47d74f7ba",
     "integration": {
       "view": "rooms/whole-room/crew_hab_view.gd",
@@ -234,7 +234,7 @@
         "sha256": "0031013b88c2feeb40a8c1fce57e1b703615b66e8000ef229b3f9714131f0f6c"
       },
       {
-        "path": "rooms/whole-room/hab-drying-rack-clean-v1.png",
+        "path": "assets/rooms/crew-hab/furnishings/drying-rack-clean.png",
         "sha256": "a922fa5baa92de0be0a3afb94d45f4ebdd0f9fcbb32b5a8ea64dfdc331dccc3d"
       }
     ],

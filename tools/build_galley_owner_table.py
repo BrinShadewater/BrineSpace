@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json
 import numpy as np
 from PIL import Image
-p=Path(__file__).resolve().parents[1]/'assets/galley-owner-v2'
+p=Path(__file__).resolve().parents[1]/'assets/rooms/galley/pack'
 raw=p/'table-raw.png'
 im=Image.open(raw).convert('RGBA');a=np.array(im);rgb=a[:,:,:3].astype(int)
 key=(rgb[:,:,0]-rgb[:,:,1]>35)&(rgb[:,:,2]-rgb[:,:,1]>35)

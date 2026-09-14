@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,hashlib
 from PIL import Image,ImageDraw
-root=Path(__file__).resolve().parents[1];pack=root/'assets/galley-owner-v2'
+root=Path(__file__).resolve().parents[1];pack=root/'assets/rooms/galley/pack'
 records=[]
 for name,registration in [('kitchen','side-galley-kitchen-south'),('serving','side-galley-serving-south')]:
     rp=root/f'rooms/full-wall-v1/registrations/{registration}.json'
