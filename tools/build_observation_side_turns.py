@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image,ImageDraw
 import json,hashlib
-ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/observation-owner-v2'
+ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/rooms/observation-room/pack'
 records={}
 for side in ['west','east']:
     d=json.loads((ROOT/f'rooms/full-wall-v1/registrations/side-observation-shelves-{side}.json').read_text())

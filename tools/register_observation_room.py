@@ -8,7 +8,7 @@ from register_full_wall_props import register
 
 ROOT = Path(__file__).resolve().parents[1]
 path = ROOT / 'rooms/underwater/observation-room-v1/registration.json'
-data = register(ROOT / 'rooms/underwater/observation-room-v1/source-v3.png',neutral_min=110)
+data = register(ROOT / 'assets/rooms/observation-room/source/overhead.png',neutral_min=110)
 shape = unary_union([Polygon(piece) for piece in data['pieces']])
 parts = []
 for name, clip, footprint in [

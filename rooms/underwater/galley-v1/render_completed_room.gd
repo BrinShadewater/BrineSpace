@@ -46,7 +46,7 @@ func run() -> void:
 				queue.append(next)
 	assert(visited.has(Vector2i(0,3)),"Workbench approach must remain reachable around desk")
 	for prop in room.props: assert(Rect2(-180,-180,360,360).grow(.1).encloses(room.prop_visual_bounds(prop)))
-	for path in ["res://rooms/underwater/galley-v1/galley_view.gd","res://assets/observation-office-v1/render_completed_room.gd"]:
+	for path in ["res://rooms/underwater/galley-v1/galley_view.gd","res://assets/rooms/observation-room/office/render_completed_room.gd"]:
 		if not FileAccess.file_exists(path+".uid"):
 			var f:=FileAccess.open(path+".uid",FileAccess.WRITE)
 			f.store_line(ResourceUID.id_to_text(ResourceUID.create_id()))

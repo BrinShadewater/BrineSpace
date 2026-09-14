@@ -11,7 +11,7 @@
       "cards": true,
       "view": "rooms/underwater/gravity-loom/gravity_loom_view.gd",
       "candidate_card": "rooms/underwater/gravity-loom/card-v1.png",
-      "card": "assets/room-furnishings-v6/cards/gravity_loom.png"
+      "card": "assets/rooms/gravity-loom/cards/card.png"
     },
     "canonical_ports_nesw": [
       0,
@@ -49,10 +49,10 @@
       1254
     ],
     "image_mode": "RGB",
-    "selected_source": "rooms/underwater/gravity-loom/source-v2.png",
+    "selected_source": "assets/rooms/gravity-loom/source/overhead.png",
     "revisions": [
       {
-        "source": "rooms/underwater/gravity-loom/source-v2.png",
+        "source": "assets/rooms/gravity-loom/source/overhead.png",
         "sha256": "fbacf101c161175f70029fd88e042535784d6ef0c5a721b4a6dc8803063e42ed",
         "prompt": "Targeted edit of this Gravity Loom source. Preserve canvas, camera, walls, floor, exact location and size of all segmented rings and four radial modules. Change ONLY the circular center enclosed by the innermost ring: replace the square floor-like tile pattern with a clearly manufactured shallow charcoal metal sample dish, smooth matte surface, concentric machined grooves and a narrow raised steel rim; retain a few inert mineral fragments resting on the dish. It must look like a sealed removable apparatus tray, never exposed station floor. Keep it dark but slightly lighter than the ring gaps so its physical surface reads. No glow, lights, vortex, floating fragments, labels or new equipment. All other machinery and its non-emissive violet insulators unchanged. Retain full resolution and composition.",
         "review": "Raised inner rim and machined dish distinguish central apparatus from room floor. Native offline card reviewed; full native station validation pending."
@@ -73,19 +73,19 @@
         "sha256": "cf614062b6dc22c5cdd1ba03213451120bf15da2855a60c004456c6dc12bed33"
       },
       {
-        "path": "assets/room-furnishings-v6/gravity-tensor-console.png",
+        "path": "assets/rooms/gravity-loom/furnishings/tensor-console.png",
         "sha256": "3008da62675514ca3cf4f2471f8b43a2122922c29717b0948df63c3f02f9b473"
       },
       {
-        "path": "assets/room-furnishings-v6/universal-diagnostic-rack.png",
+        "path": "assets/rooms/gravity-loom/furnishings/universal-diagnostic-rack.png",
         "sha256": "347f4eda6617329a3c517b251b0c46f20e0b21588e90487781157527d3ed1538"
       },
       {
-        "path": "assets/room-furnishings-v6/gravity-tensor-console-registration.json",
+        "path": "assets/rooms/gravity-loom/furnishings/tensor-console-registration.json",
         "sha256": "4b68f3f57af29e37658b4d99ed75b954ad272bed1ce91924f36806b2e5de628c"
       },
       {
-        "path": "assets/room-furnishings-v6/universal-diagnostic-rack-registration.json",
+        "path": "assets/rooms/gravity-loom/furnishings/universal-diagnostic-rack-registration.json",
         "sha256": "2d7ede7a46abbdd4d7768bd8621b1af95d6573dd0e10661cf722f0a714f5265f"
       }
     ],
@@ -97,7 +97,7 @@
       }
     ],
     "card": {
-      "path": "assets/room-furnishings-v6/cards/gravity_loom.png",
+      "path": "assets/rooms/gravity-loom/cards/card.png",
       "sha256": "7bb2c60bfd547e4ef4f8e37f37ecb2ff0509c31f84f425d9de27a8006d54d33f"
     }
   }

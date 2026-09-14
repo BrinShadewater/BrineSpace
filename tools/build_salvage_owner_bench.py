@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 root = Path(__file__).resolve().parents[1]
-pack = root / 'assets/salvage-owner-v2'
+pack = root / 'assets/rooms/salvage-workshop/pack'
 source = pack / 'bench-raw.png'
 im = Image.open(source).convert('RGBA')
 a = np.array(im)

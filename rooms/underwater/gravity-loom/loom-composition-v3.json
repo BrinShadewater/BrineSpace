@@ -2,14 +2,14 @@
   "textures": {
     "bench": "res://rooms/underwater/acoustic-comms/electronics-bench-v1.png",
     "support": "res://assets/material-polish-v4/maintenance-support.png",
-    "gravity_tensor_console": "res://assets/room-furnishings-v6/gravity-tensor-console.png",
-    "universal_diagnostic_rack": "res://assets/room-furnishings-v6/universal-diagnostic-rack.png"
+    "gravity_tensor_console": "res://assets/rooms/gravity-loom/furnishings/tensor-console.png",
+    "universal_diagnostic_rack": "res://assets/rooms/gravity-loom/furnishings/universal-diagnostic-rack.png"
   },
   "furniture": [
     {
       "id": "gravity_tensor_console",
       "texture": "gravity_tensor_console",
-      "registration": "res://assets/room-furnishings-v6/gravity-tensor-console-registration.json",
+      "registration": "res://assets/rooms/gravity-loom/furnishings/tensor-console-registration.json",
       "footprint": [
         -43,
         -13,
@@ -41,7 +41,7 @@
     {
       "id": "universal_diagnostic_rack",
       "texture": "universal_diagnostic_rack",
-      "registration": "res://assets/room-furnishings-v6/universal-diagnostic-rack-registration.json",
+      "registration": "res://assets/rooms/gravity-loom/furnishings/universal-diagnostic-rack-registration.json",
       "footprint": [
         -28,
         -10,

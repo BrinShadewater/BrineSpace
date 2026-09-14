@@ -6,7 +6,7 @@ var north_bench_art: Dictionary={}
 var overhead_textures: Dictionary={}
 func overhead_texture(id: String) -> ImageTexture:
 	var key:=id+"-q"+str(quarter)
-	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/salvage-owner-v2/"+key+".png")
+	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/rooms/salvage-workshop/pack/"+key+".png")
 	return overhead_textures[key]
 func overhead_bounds(prop: Dictionary) -> Rect2:
 	var size:=Vector2(overhead_texture(prop.id).get_size())

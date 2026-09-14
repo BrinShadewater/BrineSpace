@@ -32,7 +32,7 @@ room floor. Rotate source art, prop bounds and source-local effect anchors toget
 remove obsolete fixed-camera layout overrides only for the affected prop fields.
 '''
 for path in [root/'docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md',root/'skills/brinespace-room-pipeline/references/material-and-scale-review.md',Path('C:/Users/Alex/.codex/skills/brinespace-room-pipeline/references/material-and-scale-review.md')]:append(path,lesson)
-p=root/'assets/salvage-owner-v2/bench-review.json'
+p=root/'assets/rooms/salvage-workshop/pack/bench-review.json'
 d=json.loads(p.read_text());d['stage']='selected live; native, state and station pause verified';d['evidence']='docs/SALVAGE_OWNER_ASSET_REPAIR_2026-09-12.md';p.write_text(json.dumps(d,indent=2)+'\n')
 p=root/'docs/CURRENT_STATUS.md'
 prefix=b'## Salvage owner asset repair verified - September 12, 2026\r\n\r\nOverhead bench and tote rotate through four default layouts. Native alpha, retained power transitions and actual station pause verified; selected card refreshed. See docs/SALVAGE_OWNER_ASSET_REPAIR_2026-09-12.md. Next: Galley and mess-hall tables. No export or owner acceptance.\r\n\r\n'

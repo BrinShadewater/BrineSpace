@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image
 import json,hashlib,shutil
-ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/observation-owner-v2'
+ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/rooms/observation-room/pack'
 raw=Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-9b403aa5-63f5-4e60-9213-530a263a14d6.png')
 shutil.copyfile(raw,PACK/'office-raw.png')
 im=Image.open(raw).convert('RGBA');assert im.getpixel((0,0))[3]==0

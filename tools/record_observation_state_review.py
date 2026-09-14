@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image,ImageChops
 import json,hashlib,shutil
-ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/observation-owner-v2'
+ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/rooms/observation-room/pack'
 folder=ROOT/'output/observation-owner-repair-2026-09-12/furnishing-states'
 a=Image.open(folder/'direct.png').convert('RGB');b=Image.open(folder/'retained.png').convert('RGB')
 assert ImageChops.difference(a,b).getbbox() is None

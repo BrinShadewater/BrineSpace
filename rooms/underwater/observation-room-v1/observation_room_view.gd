@@ -6,8 +6,8 @@ var rotated_textures: Dictionary={}
 func furnishing_texture(id: String) -> ImageTexture:
 	var key:=id+"-q"+str(quarter)
 	if not rotated_textures.has(key):
-		var path: String="res://assets/observation-owner-v2/"+key+".png"
-		if id=="observation_north":path="res://assets/observation-owner-v2/shelves-"+["down","left","up","right"][quarter]+".png"
+		var path: String="res://assets/rooms/observation-room/pack/"+key+".png"
+		if id=="observation_north":path="res://assets/rooms/observation-room/pack/shelves-"+["down","left","up","right"][quarter]+".png"
 		rotated_textures[key]=load_source_texture(path)
 	return rotated_textures[key]
 
@@ -47,16 +47,16 @@ func _ready() -> void:
 	set_process_unhandled_key_input(false)
 	show_actor=false
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/observation-room-v1/source-v3.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/observation-room/source/overhead.png")
 	installation=ImageTexture.create_from_image(image)
-	overhead_shelves=load_source_texture("res://assets/observation-owner-v2/shelves-down.png")
+	overhead_shelves=load_source_texture("res://assets/rooms/observation-room/pack/shelves-down.png")
 	source_registration=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/observation-room-v1/registration.json"))
 	var region: Array=source_registration.region
 	art_scale=360.0/float(region[2])
 	source_origin=Vector2(region[0],region[1])
 	for id in ["wooden-desk","chair-rear","reading-set"]:
 		var item:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(item, "res://assets/observation-office-v1/"+id+".png")
+		preload("res://scripts/safe_image.gd").load_png(item, "res://assets/rooms/observation-room/office/"+id+".png")
 		office_textures[id]=ImageTexture.create_from_image(item)
 		office_regions[id]=Rect2(item.get_used_rect())
 	rebuild()

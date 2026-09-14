@@ -9,7 +9,7 @@ def visit(node):
         key=f'room-salvage_workshop/{q}'
         if key not in node:continue
         entry=node[key]
-        backup=ROOT/f'assets/salvage-owner-v2/layout-q{q}-before.json'
+        backup=ROOT/f'assets/rooms/salvage-workshop/pack/layout-q{q}-before.json'
         if not backup.exists():backup.write_text(json.dumps(entry,indent=2)+'\n')
         for field in ['bench','tote','size/bench','size/tote']:entry.pop(field,None)
     for value in node.values():visit(value)

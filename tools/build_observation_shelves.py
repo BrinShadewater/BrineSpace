@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image
 import json,hashlib,shutil
-ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/observation-owner-v2'
+ROOT=Path(__file__).resolve().parents[1];PACK=ROOT/'assets/rooms/observation-room/pack'
 raw=Path('C:/Users/Alex/.codex/generated_images/01a097fe-5111-7cf1-96a5-7e19609bde1e/exec-4e175a79-022c-4bbc-90d5-3f53cdba2c27.png')
 shutil.copyfile(raw,PACK/'shelves-raw.png')
 im=Image.open(raw).convert('RGBA');assert im.getpixel((0,0))[3]==0
@@ -17,7 +17,7 @@ p=ROOT/'assets/room-risers-v2/registrations.json';d=json.loads(p.read_text());en
 backup=PACK/'riser-original-registration.json'
 if not backup.exists():backup.write_text(json.dumps(entry,indent=2)+'\n')
 assert list(Image.open(PACK/'riser.png').size)==entry['native_size']
-entry.update(source='res://assets/observation-owner-v2/riser.png',sha256=hashlib.sha256((PACK/'riser.png').read_bytes()).hexdigest(),stage='Architecture separation integrated; native review pending')
+entry.update(source='res://assets/rooms/observation-room/pack/riser.png',sha256=hashlib.sha256((PACK/'riser.png').read_bytes()).hexdigest(),stage='Architecture separation integrated; native review pending')
 entry.pop('card',None);entry.pop('card_sha256',None)
 p.write_text(json.dumps(d,indent=2)+'\n')
 print(im.size)

@@ -1,5 +1,5 @@
 extends SceneTree
-const View=preload("res://assets/observation-office-v1/completed_room_view.gd")
+const View=preload("res://assets/rooms/observation-room/office/completed_room_view.gd")
 class Preview extends Node2D:
 	var room
 	var foundation: Texture2D
@@ -32,7 +32,7 @@ func run() -> void:
 	root.add_child(preview)
 	await process_frame
 	await RenderingServer.frame_post_draw
-	assert(root.get_texture().get_image().save_png("res://assets/observation-office-v1/completed-room.png")==OK)
+	assert(root.get_texture().get_image().save_png("res://assets/rooms/observation-room/office/completed-room.png")==OK)
 	room.configure_embedded(0,[2],true,0)
 	var visited: Dictionary={Vector2i(0,21):true}
 	var queue: Array=[Vector2i(0,21)]
@@ -46,7 +46,7 @@ func run() -> void:
 				queue.append(next)
 	assert(visited.has(Vector2i(0,-2)),"Window approach must remain reachable around desk")
 	for prop in room.props: assert(Rect2(-180,-180,360,360).grow(.1).encloses(room.prop_visual_bounds(prop)))
-	for path in ["res://assets/observation-office-v1/completed_room_view.gd","res://assets/observation-office-v1/render_completed_room.gd"]:
+	for path in ["res://assets/rooms/observation-room/office/completed_room_view.gd","res://assets/rooms/observation-room/office/render_completed_room.gd"]:
 		if not FileAccess.file_exists(path+".uid"):
 			var f:=FileAccess.open(path+".uid",FileAccess.WRITE)
 			f.store_line(ResourceUID.id_to_text(ResourceUID.create_id()))

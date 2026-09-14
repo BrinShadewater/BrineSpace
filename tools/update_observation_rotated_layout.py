@@ -9,7 +9,7 @@ def visit(node):
         key=f'room-observation_room/{q}'
         if key not in node:continue
         entry=node[key]
-        backup=ROOT/f'assets/observation-owner-v2/layout-q{q}-before.json'
+        backup=ROOT/f'assets/rooms/observation-room/pack/layout-q{q}-before.json'
         if not backup.exists():backup.write_text(json.dumps(entry,indent=2)+'\n')
         for field in ['wooden-desk','chair-rear','size/wooden-desk','size/chair-rear']:entry.pop(field,None)
     for value in node.values():visit(value)
