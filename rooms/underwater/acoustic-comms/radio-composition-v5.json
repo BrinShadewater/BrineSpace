@@ -2,15 +2,15 @@
   "textures": {
     "bench": "res://rooms/underwater/acoustic-comms/electronics-bench-v1.png",
     "chair": "res://rooms/production-ten/decor/command-operator-chair-v1.png",
-    "centerpiece": "res://assets/room-centerpieces-v1/radio-signal-console.png",
-    "radio_signal_routing_console": "res://assets/room-furnishings-v9/radio-signal-routing-console.png",
-    "universal_patch_cable_organizer": "res://assets/room-furnishings-v9/universal-patch-cable-organizer-chest.png"
+    "centerpiece": "res://assets/rooms/radio-lab/furnishings/signal-console.png",
+    "radio_signal_routing_console": "res://assets/rooms/radio-lab/furnishings/signal-routing-console.png",
+    "universal_patch_cable_organizer": "res://assets/rooms/radio-lab/furnishings/universal-patch-cable-organizer-chest.png"
   },
   "furniture": [
     {
       "id": "radio_signal_routing_console",
       "texture": "radio_signal_routing_console",
-      "registration": "res://assets/room-furnishings-v9/radio-signal-routing-console-registration.json",
+      "registration": "res://assets/rooms/radio-lab/furnishings/signal-routing-console-registration.json",
       "footprint": [
         -55,
         -18,
@@ -42,7 +42,7 @@
     {
       "id": "universal_patch_cable_organizer",
       "texture": "universal_patch_cable_organizer",
-      "registration": "res://assets/room-furnishings-v9/universal-patch-cable-organizer-chest-registration.json",
+      "registration": "res://assets/rooms/radio-lab/furnishings/universal-patch-cable-organizer-chest-registration.json",
       "footprint": [
         -30,
         -13,

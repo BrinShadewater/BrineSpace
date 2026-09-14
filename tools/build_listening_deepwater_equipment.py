@@ -10,8 +10,8 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "assets/room-consistency-v1/radio-equipment-v2.png"
-OUTPUT = ROOT / "assets/listening-directional-v2/listening-equipment.png"
+SOURCE = ROOT / "assets/rooms/radio-lab/source/radio-equipment-v2.png"
+OUTPUT = ROOT / "assets/rooms/listening-post/source/listening-equipment.png"
 
 
 def main() -> None:

@@ -7,7 +7,7 @@ var idle_flush_segments: Dictionary = {}
 
 func _ready() -> void:
 	super._ready()
-	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/listening-directional-v1/listening-u-idle-registration.json"))
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://assets/rooms/listening-post/source/listening-u-idle-registration.json"))
 	var image:=Image.new()
 	preload("res://scripts/safe_image.gd").load_png(image,data.source)
 	idle_flush_texture=ImageTexture.create_from_image(image)

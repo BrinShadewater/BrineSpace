@@ -10,7 +10,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "rooms/production-ten/decor/battery-test-bench-clean-v2.png"
+SOURCE = ROOT / "assets/rooms/isolation-vault/furnishings/battery-test-bench-clean.png"
 OUTPUT = ROOT / "assets/rooms/battery-array/furnishings/test-bench.png"
 RECORD = ROOT / "rooms/production-ten/decor/battery-test-bench-matte-v1.json"
 

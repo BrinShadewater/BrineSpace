@@ -5,10 +5,10 @@ var use_legacy_flush := true
 func _ready() -> void:
 	super._ready()
 	var equipment_image:=Image.new()
-	preload("res://scripts/safe_image.gd").load_png(equipment_image,"res://assets/listening-directional-v2/listening-equipment.png")
+	preload("res://scripts/safe_image.gd").load_png(equipment_image,"res://assets/rooms/listening-post/source/listening-equipment.png")
 	equipment_texture=ImageTexture.create_from_image(equipment_image)
 	var flush_image:=Image.new()
-	preload("res://scripts/safe_image.gd").load_png(flush_image, "res://rooms/underwater/rare-dead-ends/listening-u-flush-clean-v1.png")
+	preload("res://scripts/safe_image.gd").load_png(flush_image, "res://assets/rooms/listening-post/source/listening-u-flush-clean-v1.png")
 	flush_texture=ImageTexture.create_from_image(flush_image)
 	flush_bounds=Rect2(flush_image.get_used_rect())
 	life_items=life_items.filter(func(item):return not item.get("dressing",false))

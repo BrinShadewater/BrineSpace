@@ -4,7 +4,7 @@ var flush_bounds: Rect2
 func _ready() -> void:
 	super._ready()
 	var flush_image:=Image.new()
-	preload("res://scripts/safe_image.gd").load_png(flush_image, "res://assets/room-consistency-v1/pressure-fitted.png")
+	preload("res://scripts/safe_image.gd").load_png(flush_image, "res://assets/rooms/pressure-control/source/pressure-fitted.png")
 	flush_texture=ImageTexture.create_from_image(flush_image)
 	flush_bounds=Rect2(flush_image.get_used_rect())
 	life_items=life_items.filter(func(item):return not item.get("dressing",false))

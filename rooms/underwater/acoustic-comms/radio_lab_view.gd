@@ -6,10 +6,10 @@ var equipment_texture: ImageTexture
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/acoustic-comms/radio_lab-source-v1.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/radio-lab/source/overhead.png")
 	life_texture=ImageTexture.create_from_image(image)
 	# Keep structural wall samples on the original atlas; repaint equipment only.
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/room-consistency-v1/radio-equipment-v2.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/radio-lab/source/radio-equipment-v2.png")
 	assert(Vector2(image.get_size())==life_texture.get_size())
 	equipment_texture=ImageTexture.create_from_image(image)
 	life_items=[

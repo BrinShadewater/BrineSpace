@@ -19,8 +19,8 @@ def main() -> None:
         "status": "integrated and native-reviewed",
         "evidence": "output/listening-owner-repair-2026-09-12/final-native",
         "directions_reviewed": ["north", "east", "south", "west"],
-        "north_source": "assets/listening-directional-v2/listening-north.png",
-        "equipment_source": "assets/listening-directional-v2/listening-equipment.png",
+        "north_source": "assets/rooms/listening-post/walls/north.png",
+        "equipment_source": "assets/rooms/listening-post/source/listening-equipment.png",
         "card": str(CARD.relative_to(ROOT)).replace("\\", "/"),
         "card_sha256": hashlib.sha256(CARD.read_bytes()).hexdigest(),
         "findings": [

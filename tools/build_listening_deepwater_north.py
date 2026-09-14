@@ -9,9 +9,9 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "assets/listening-directional-v1/listening-south.png"
+SOURCE = ROOT / "assets/rooms/listening-post/walls/south.png"
 SOURCE_REG = ROOT / "rooms/full-wall-v1/registrations/side-deepwater-listening-wall-south.json"
-OUTPUT = ROOT / "assets/listening-directional-v2/listening-north.png"
+OUTPUT = ROOT / "assets/rooms/listening-post/walls/north.png"
 OUTPUT_REG = ROOT / "rooms/full-wall-v1/registrations/deepwater-listening-wall.json"
 
 
@@ -23,7 +23,7 @@ def main() -> None:
 
     data = json.loads(SOURCE_REG.read_text(encoding="utf-8"))
     x, y, w, h = data["region"]
-    data["source"] = "res://assets/listening-directional-v2/listening-north.png"
+    data["source"] = "res://assets/rooms/listening-post/walls/north.png"
     data["sha256"] = hashlib.sha256(OUTPUT.read_bytes()).hexdigest()
     data["method"] = "Exact 180-degree rotation of accepted south Deepwater bank; exterior-neutral vector registration rotated with raster"
     data["region"] = [width - x - w, height - y - h, w, h]
