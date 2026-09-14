@@ -877,6 +877,9 @@ var env_below_rebuilds := 0
 var env_foundation_rebuilds := 0
 var env_terrain_key: Array = []
 var env_terrain_rebuilds := 0
+var env_derelict_key: Array = []
+var env_derelict_rebuilds := 0
+var retain_derelicts := not OS.get_cmdline_user_args().has("--redraw-derelicts")
 
 var draw_target: CanvasItem
 var surface_passes: Array = []
@@ -1024,7 +1027,10 @@ func _draw() -> void:
 			env_passes[Env.STATIC_TERRAIN].queue_redraw()
 		env_passes[Env.LIVE_LINES].queue_redraw()
 		env_passes[Env.LIVE_ABOVE].queue_redraw()
-		env_passes[Env.DERELICTS].queue_redraw()
+		var derelict_key := _environment_derelict_key(main,cell_size) if retain_derelicts else []
+		if not retain_derelicts or derelict_key != env_derelict_key:
+			env_derelict_key = derelict_key
+			env_passes[Env.DERELICTS].queue_redraw()
 		env_passes[Env.EXTERIOR_ACTORS].queue_redraw()
 		env_passes[Env.FOG].queue_redraw()
 		if profile_draw: environment_stage = _profile_draw_stage("env_validation",environment_stage)
@@ -1111,6 +1117,24 @@ func _environment_terrain_key(main, size: float) -> Array:
 		key.append([cell,w.kind,w.progress,w.cleared])
 	return key
 
+# Unpowered derelict wards were fully re-rendered every frame (~3 ms). Their
+# drawing follows the culled cells, selection, layout revisions and ward state.
+func _environment_derelict_key(main, size: float) -> Array:
+	var region := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size).grow(size * 0.5)
+	var Store = preload("res://scripts/room_layout_store.gd")
+	var key: Array=[size,main.selected_room_cell,Store.revision,Store.geometry_revision,preload("res://scripts/title_settings.gd").raised_walls,preload("res://scripts/title_settings.gd").placement_guides]
+	for cell in main.wrecks:
+		var ward: Dictionary=main.wrecks[cell]
+		if ward.cleared or not (main.Companions.IDS.has(ward.kind) or ward.kind in ["cryo","charging"]): continue
+		if cull_room_drawing and cull_derelict_drawing and not region.intersects(Rect2(Vector2(cell)*size,Vector2.ONE*size)): continue
+		# Connected neighbours open the ward's door sides and omit shared walls.
+		var neighbours: Array=[]
+		for offset in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
+			var other: Dictionary=main.occupied.get(cell+offset,{})
+			neighbours.append([] if other.is_empty() else [other.id,other.get("rotation",0),other.get("branch_owner",Vector2i(-1,-1))])
+		key.append([cell,str(ward),neighbours,str(preload("res://scripts/architects.gd").ward_for_display(main,ward)) if ward.kind in ["cryo","charging"] else ""])
+	return key
+
 func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
 	draw_target = target
 	var main = _get_main()
@@ -1134,6 +1158,7 @@ func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
 			env_terrain_rebuilds += 1
 		Env.DERELICTS:
 			_draw_cryo_derelicts(main,cell_size)
+			env_derelict_rebuilds += 1
 		Env.FOG:
 			underwater_visibility.draw(target,main,cell_size)
 		Env.EXTERIOR_ACTORS:

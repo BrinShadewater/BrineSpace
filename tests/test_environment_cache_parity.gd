@@ -113,7 +113,31 @@ func run() -> void:
 			if game.grid_view.env_terrain_rebuilds <= terrain_before:
 				failures += 1
 				push_error("Terrain pass did not invalidate: " + step[0])
+	# Unpowered derelict wards are retained too; selection and ward state must invalidate them.
+	game._set_grid_zoom(game.DEFAULT_GRID_ZOOM*0.25)
+	await settle()
+	game._center_grid_on_station_now()
+	await settle()
+	view = Rect2(Vector2(game.grid_scroll.scroll_horizontal,game.grid_scroll.scroll_vertical),game.grid_scroll.size)
+	var ward_cell := Vector2i(-1,-1)
+	var companion_cell := Vector2i(-1,-1)
+	for cell in game.wrecks:
+		if game.wrecks[cell].cleared or not view.has_point((Vector2(cell)+Vector2.ONE*0.5)*game.get_cell_size()): continue
+		if game.wrecks[cell].kind == "cryo" and ward_cell == Vector2i(-1,-1): ward_cell = cell
+		if game.Companions.IDS.has(game.wrecks[cell].kind) and companion_cell == Vector2i(-1,-1): companion_cell = cell
+	if ward_cell != Vector2i(-1,-1) and companion_cell != Vector2i(-1,-1):
+		for step in [["derelict-selected",func(): game.selected_room_cell = ward_cell],["derelict-progress",func(): game.wrecks[ward_cell].progress = 7.0],["companion-opened",func(): game.wrecks[companion_cell].opened = true]]:
+			var derelict_before: int = game.grid_view.env_derelict_rebuilds
+			step[1].call()
+			game.visual_time_seconds = 4.25
+			await changed_state(step[0],false)
+			if game.grid_view.env_derelict_rebuilds <= derelict_before:
+				failures += 1
+				push_error("Derelict pass did not invalidate: " + step[0])
 	else:
+		failures += 1
+		push_error("No cryo and companion ward on screen; derelict invalidation was not exercised: cryo=%s companion=%s" % [ward_cell,companion_cell])
+	if rock == Vector2i(-1,-1):
 		failures += 1
 		push_error("No basalt rock is on screen; terrain invalidation was not exercised: view=%s cell_size=%s basalt=%s" % [view,game.get_cell_size(),game.wrecks.keys().filter(func(c): return game.wrecks[c].kind=="basalt" and not game.wrecks[c].cleared).slice(0,6)])
 	print("ENVIRONMENT PARITY CAPTURE %s: rebuild counters below=%d foundations=%d" % ["PASS" if failures==0 else "FAIL",game.grid_view.env_below_rebuilds,game.grid_view.env_foundation_rebuilds])
