@@ -8,7 +8,7 @@ JSON data. Tests, tools, docs and skills are not roots: an asset only they menti
 |---|---|---|
 | live | 13506 | reached by an exact path from runtime code or data |
 | dynamic | 4362 | inside a folder the code reads with a built path or directory listing |
-| unreferenced | 5825 | nothing in the runtime points at it (provenance, superseded versions, sources) |
+| unreferenced | 5769 | nothing in the runtime points at it (provenance, superseded versions, sources) |
 
 ## Live assets by owner
 
@@ -62,9 +62,9 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/material-polish-v3` — 1 file(s)
 
 ### assets-data/room-furnishings-v4
-- `assets/room-furnishings-v4` — 20 file(s)
+- `assets/room-furnishings-v4` — 18 file(s)
 - `rooms/power-expansion-v1` — 6 file(s)
-- `assets/rooms` — 1 file(s)
+- `assets/rooms` — 3 file(s)
 
 ### assets-data/room-risers-v2
 - `assets/room-risers-v2` — 8 file(s)
@@ -303,7 +303,8 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/rooms` — 1 file(s)
 
 ### room/brine_core
-- `rooms/underwater` — 3 file(s)
+- `assets/rooms` — 2 file(s)
+- `rooms/underwater` — 1 file(s)
 
 ### room/brine_corner_analysis_ne
 - `assets/brine-core-directional-v1` — 1 file(s)
@@ -657,15 +658,15 @@ Which asset folders each room, character or system loads. Moves must keep these 
 
 ### room/manifest
 - `rooms/underwater` — 18 file(s)
-- `assets/room-furnishings-v4` — 15 file(s)
-- `rooms/power-expansion-v1` — 9 file(s)
+- `assets/room-furnishings-v4` — 13 file(s)
 - `rooms/foundation-v1` — 7 file(s)
+- `assets/rooms` — 6 file(s)
+- `rooms/power-expansion-v1` — 6 file(s)
 - `rooms/modular` — 2 file(s)
 - `rooms/production-ten` — 2 file(s)
 - `rooms/whole-room` — 2 file(s)
 - `assets/biomass-material-v2` — 1 file(s)
 - `assets/material-polish-v4` — 1 file(s)
-- `assets/rooms` — 1 file(s)
 
 ### room/med_bay
 - `assets/rooms` — 5 file(s)
@@ -1354,11 +1355,9 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/hull-damage-v1` — 1 file(s)
 
 ### system/grid_canvas
-- `assets/rooms` — 41 file(s)
+- `assets/rooms` — 44 file(s)
 - `assets/corridor-polish-v3` — 9 file(s)
 - `brinecore-animation/assets` — 5 file(s)
-- `assets/room-furnishings-v4` — 2 file(s)
-- `assets/brine-core-directional-v1` — 1 file(s)
 - `character/major-bill-v3` — 1 file(s)
 
 ### system/hardware_panel
@@ -1407,10 +1406,8 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/full-wall-v1` — 2 file(s)
 
 ### system/room_card_art
-- `assets/rooms` — 41 file(s)
+- `assets/rooms` — 44 file(s)
 - `assets/corridor-polish-v3` — 3 file(s)
-- `assets/room-furnishings-v4` — 2 file(s)
-- `assets/brine-core-directional-v1` — 1 file(s)
 
 ### system/room_layout_editor
 - `rooms/foundation-v1` — 1 file(s)
@@ -1420,7 +1417,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/full-wall-v1` — 2 file(s)
 
 ### system/rooms/underwater/brine-core/renewal-v2/composition.json
-- `rooms/underwater` — 2 file(s)
+- `assets/rooms` — 2 file(s)
 
 ### system/station_audio_mix
 - `assets/audio` — 27 file(s)
@@ -1459,7 +1456,7 @@ and must move as a unit.
 | `assets/audio` | 27 | 0 | 17 |
 | `assets/biodome-directional-v1` | 0 | 0 | 2 |
 | `assets/biomass-material-v2` | 1 | 0 | 0 |
-| `assets/brine-core-directional-v1` | 5 | 0 | 39 |
+| `assets/brine-core-directional-v1` | 4 | 0 | 2 |
 | `assets/cargo-dolly-empty-v1` | 1 | 0 | 4 |
 | `assets/cargo-dolly-v1` | 1 | 0 | 7 |
 | `assets/cold-store-directional-v1` | 4 | 0 | 2 |
@@ -1492,7 +1489,7 @@ and must move as a unit.
 | `assets/hab-autumn-v1` | 2 | 0 | 0 |
 | `assets/hallway-floor-tiles-v1` | 1 | 0 | 10 |
 | `assets/hallway-floor-tiles-v2` | 1 | 0 | 10 |
-| `assets/heat-recovery-directional-v1` | 3 | 0 | 8 |
+| `assets/heat-recovery-directional-v1` | 3 | 0 | 2 |
 | `assets/holo-directional-v1` | 3 | 0 | 2 |
 | `assets/holo-wall-v1` | 1 | 0 | 0 |
 | `assets/hull-damage-v1` | 1 | 0 | 2 |
@@ -1534,7 +1531,7 @@ and must move as a unit.
 | `assets/room-floor-tiles-v5` | 6 | 0 | 6 |
 | `assets/room-furnishings-v2` | 0 | 0 | 2 |
 | `assets/room-furnishings-v3` | 0 | 0 | 2 |
-| `assets/room-furnishings-v4` | 15 | 0 | 1 |
+| `assets/room-furnishings-v4` | 13 | 0 | 1 |
 | `assets/room-furnishings-v5` | 0 | 0 | 2 |
 | `assets/room-furnishings-v6` | 0 | 0 | 2 |
 | `assets/room-furnishings-v7` | 0 | 0 | 2 |
@@ -1542,7 +1539,7 @@ and must move as a unit.
 | `assets/room-furnishings-v9` | 0 | 0 | 2 |
 | `assets/room-risers-v2` | 11 | 0 | 8 |
 | `assets/room-risers-v3` | 7 | 0 | 16 |
-| `assets/rooms` | 319 | 143 | 0 |
+| `assets/rooms` | 329 | 143 | 0 |
 | `assets/salvage-directional-v1` | 5 | 0 | 2 |
 | `assets/salvage-drone-directional-v1` | 0 | 0 | 1 |
 | `assets/seal-maintenance-case-v1` | 1 | 0 | 5 |
@@ -1553,7 +1550,7 @@ and must move as a unit.
 | `assets/solar-directional-v2` | 0 | 0 | 1 |
 | `assets/specimen-carrier-v1` | 1 | 0 | 4 |
 | `assets/storage-directional-v1` | 1 | 0 | 2 |
-| `assets/turbine-directional-v4` | 3 | 0 | 6 |
+| `assets/turbine-directional-v4` | 3 | 0 | 1 |
 | `assets/wall-dressing-style-v2` | 49 | 0 | 5 |
 | `assets/wall-room-rollout-v1` | 11 | 0 | 57 |
 | `brinecore-animation/assets` | 6 | 0 | 0 |
@@ -1621,7 +1618,7 @@ and must move as a unit.
 | `rooms/foundation-v1` | 7 | 1 | 0 |
 | `rooms/full-wall-v1` | 4 | 245 | 0 |
 | `rooms/modular` | 34 | 29 | 0 |
-| `rooms/power-expansion-v1` | 12 | 8 | 0 |
+| `rooms/power-expansion-v1` | 9 | 8 | 0 |
 | `rooms/production-ten` | 18 | 0 | 27 |
-| `rooms/underwater` | 63 | 7 | 161 |
+| `rooms/underwater` | 59 | 7 | 153 |
 | `rooms/whole-room` | 9 | 0 | 6 |

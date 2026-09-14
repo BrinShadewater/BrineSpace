@@ -271,6 +271,10 @@ static func _finish_restore(game, data: Dictionary) -> void:
 	game.tick_timer.start(maxf(0.01, float(data.timer_left)))
 	game.tick_timer.wait_time = game._cycle_wait_seconds()
 	game._set_paused(true, false)
+	# A dialogue that opened before this restore (BRINE's greeting on a slow
+	# Continue) captured the pre-restore pause state and hands it back when it
+	# closes. A resumed checkpoint always lands paused, so refresh that capture.
+	if is_instance_valid(game.crew_comms) and game.crew_comms.holds_pause: game.crew_comms.pause_before_dialogue = true
 	preload("res://scripts/flood_alerts.gd").acknowledge_existing(game)
 	game._refresh_all()
 	preload("res://scripts/workspace_state.gd").restore(game,data.get("workspace"))

@@ -10,7 +10,7 @@ const DirectionalLibrary=preload("res://scripts/room_asset_library.gd")
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/power-expansion-v1/"+room_id+".png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/"+room_id.replace("_","-")+"/source/machine.png")
 	machine_texture = ImageTexture.create_from_image(image)
 	machine_region = Rect2(image.get_used_rect())
 	# Register the visible turbine, excluding near-transparent source padding.

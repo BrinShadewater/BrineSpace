@@ -20,7 +20,7 @@ sprite.save(HERE / 'brine-float-v4.png')
 computers = cleanup.clear_exterior(Image.open(HERE / 'computers-source.png'))
 computers.save(HERE / 'computers-cleaned.png')
 profile = json.loads((HERE.parent / 'brine-composition-v1.json').read_text())
-profile['textures']['computers'] = 'res://rooms/underwater/brine-core/renewal-v2/computers-cleaned.png'
+profile['textures']['computers'] = 'res://assets/rooms/brine-core/furnishings/computers-cleaned.png'
 profile['furniture'][0]['footprint'] = [97,69,24,12]
 for identity, region, footprint, pivot, width in [
     ('brine_dual_workstation',[120,284,546,438],[72,-123,94,30],[393,718],546),
