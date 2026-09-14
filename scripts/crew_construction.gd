@@ -2,8 +2,30 @@ extends RefCounted
 ## Paid orders own progress; crew only advance it while at a reachable sealed connection.
 const Architects = preload("res://scripts/architects.gd")
 const WORK_SECONDS := 10.0
+const APPROACH_RETRY_SECONDS := 1.0
 const DIRS := [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
 const NAMES := ["north","east","south","west"]
+
+# A failed approach is a full route search per candidate node. Repeating it every
+# frame for an unreachable order cost ~5 ms per eligible crew member, so retry on
+# a short timer or as soon as the actor's station topology changes.
+static func approach_deferred(actor,order: Dictionary) -> bool:
+	var entry = actor.get_meta("construction_approach_retry",{}).get(order_key(order))
+	return entry != null and entry[1] == actor.signature and float(entry[0]) > 0.0
+
+static func defer_approach(actor,order: Dictionary) -> void:
+	var retry: Dictionary = actor.get_meta("construction_approach_retry",{})
+	retry[order_key(order)] = [APPROACH_RETRY_SECONDS,actor.signature]
+	actor.set_meta("construction_approach_retry",retry)
+
+static func tick_approach_retries(actor,delta: float) -> void:
+	var retry: Dictionary = actor.get_meta("construction_approach_retry",{})
+	for key in retry.keys():
+		retry[key][0] = float(retry[key][0]) - maxf(delta,0.0)
+		if retry[key][0] <= 0.0: retry.erase(key)
+
+static func order_key(order: Dictionary) -> String:
+	return "%s@%s/%d" % [order.id,order.pos,int(order.rotation)]
 
 static func reconcile(game) -> void:
 	for order in game.drone_fleet.orders:
@@ -51,7 +73,9 @@ static func approach(game,actor,order: Dictionary) -> Dictionary:
 static func advance(game,actor,delta: float) -> bool:
 	if game.drone_fleet.orders.is_empty():
 		if actor.goal=="construction": release(actor)
+		actor.remove_meta("construction_approach_retry")
 		return false
+	tick_approach_retries(actor,delta)
 	var id: String="bill" if actor==game.bill_npc else "veld" if actor==game.veld_npc else "marsh" if actor==game.marsh_npc else "branforth"
 	var order: Dictionary={}
 	for candidate in game.drone_fleet.orders:
@@ -66,8 +90,11 @@ static func advance(game,actor,delta: float) -> bool:
 		for candidate in game.drone_fleet.orders:
 			if not str(candidate.get("builder","")).is_empty(): return false
 		for candidate in game.drone_fleet.orders:
+			if approach_deferred(actor,candidate): continue
 			var found:=approach(game,actor,candidate)
-			if found.is_empty(): continue
+			if found.is_empty():
+				defer_approach(actor,candidate)
+				continue
 			order=candidate
 			order["builder"]=id
 			for key in ["work_point","work_cell","facing"]: order[key]=found[key]
@@ -90,8 +117,10 @@ static func advance(game,actor,delta: float) -> bool:
 	if actor.foot.distance_to(order.work_point)>1.0:
 		actor.activity="heading to construction seal"
 		if actor.path.is_empty():
-			var found:=approach(game,actor,order)
-			if found.is_empty(): actor.state="idle"; actor.activity="construction / approach blocked"; return true
+			var found:={} if approach_deferred(actor,order) else approach(game,actor,order)
+			if found.is_empty():
+				if not approach_deferred(actor,order): defer_approach(actor,order)
+				actor.state="idle"; actor.activity="construction / approach blocked"; return true
 			for key in ["work_point","work_cell","facing"]: order[key]=found[key]
 			actor.path=found.route
 		actor.move(delta)

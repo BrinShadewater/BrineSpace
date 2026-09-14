@@ -90,6 +90,7 @@ func run():
 	check(game.placed_rooms.size()==count,"Completion is not replayed")
 	check(not game.testing_free_build and not game.testing_disable_failures,"Normal gameplay rules remain enabled")
 	dedicated()
+	approach_retry()
 	await matrix()
 	print("CREW CONSTRUCTION failures=",failures," rooms=",count)
 	var music=root.get_node_or_null("StationMusic")
@@ -99,6 +100,24 @@ func run():
 	await create_timer(.15).timeout
 	quit(1 if failures else 0)
 
+func approach_retry():
+	# An unreachable order must not repeat the full route search every frame.
+	var C=preload("res://scripts/crew_construction.gd")
+	var actor=game.get(actor_id+"_npc")
+	var order:={"id":"corridor","pos":Vector2i(3,3),"rotation":0}
+	actor.remove_meta("construction_approach_retry")
+	check(not C.approach_deferred(actor,order),"A fresh order is searched immediately")
+	C.defer_approach(actor,order)
+	check(C.approach_deferred(actor,order),"A failed approach is not repeated next frame")
+	C.tick_approach_retries(actor,C.APPROACH_RETRY_SECONDS*0.5)
+	check(C.approach_deferred(actor,order),"A failed approach waits for its retry interval")
+	var signature: String=actor.signature
+	actor.signature=signature+"#changed"
+	check(not C.approach_deferred(actor,order),"A station topology change retries at once")
+	actor.signature=signature
+	C.tick_approach_retries(actor,C.APPROACH_RETRY_SECONDS)
+	check(not C.approach_deferred(actor,order),"A failed approach retries after its interval")
+	actor.remove_meta("construction_approach_retry")
 func dedicated():
 	var fleet=preload("res://scripts/drone_fleet.gd").new()
 	var home:=Vector2i(20,20)
