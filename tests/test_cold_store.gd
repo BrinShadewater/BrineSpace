@@ -35,19 +35,28 @@ func run() -> void:
 	assert(game.resources.metal==before-8,"Construction must cost eight Metal")
 	assert(game.drone_fleet.reserved(cell),"Room must enter the construction queue")
 	game.paused=false
-	game._update_wreck_clearance(30.0)
+	# Crew build paid rooms; step the live simulation until the builder completes it.
+	for i in range(1500):
+		game._process(.1)
+		if game.occupied.has(cell): break
 	game.paused=true
 	assert(game.occupied.has(cell),"Builder must finish the room")
 	assert(game.get_room_doors(game.occupied[cell])==["north","south"])
 	var galley_cell:=cell+Vector2i.UP
+	# River's recovery site sits north of the store; this pairing check needs the open cell.
+	game.wrecks.erase(galley_cell)
 	game.hand.assign(["galley"])
 	game.selected_card_id="galley"
-	assert(game.get_placement_problem("galley",galley_cell).is_empty())
+	assert(game.get_placement_problem("galley",galley_cell).is_empty(),game.get_placement_problem("galley",galley_cell))
 	var pair_metal: int=game.resources.metal
 	game._on_grid_clicked(galley_cell)
 	assert(game.resources.metal==pair_metal-6)
-	game.paused=false; game._update_wreck_clearance(30.0); game.paused=true
-	assert(game.occupied.has(galley_cell))
+	game.paused=false
+	for i in range(1500):
+		game._process(.1)
+		if game.occupied.has(galley_cell): break
+	game.paused=true
+	assert(game.occupied.has(galley_cell),"Builder must finish the galley")
 	assert(game._connected_neighbor_cells(cell).has(galley_cell))
 	assert(Save.write(game,game.run_save_path)==OK)
 	assert(Save.restore(game,Save.read(game.run_save_path)))

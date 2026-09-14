@@ -34,7 +34,10 @@ func run() -> void:
 	assert(game.resources.metal==before-8,"Construction must cost eight Metal")
 	assert(game.drone_fleet.reserved(cell),"Room must enter the construction queue")
 	game.paused=false
-	game._update_wreck_clearance(30.0)
+	# Crew build paid rooms; step the live simulation until the builder completes it.
+	for i in range(1500):
+		game._process(.1)
+		if game.occupied.has(cell): break
 	game.paused=true
 	assert(game.occupied.has(cell),"Builder must finish the room")
 	assert(game.get_room_doors(game.occupied[cell])==["south"])
