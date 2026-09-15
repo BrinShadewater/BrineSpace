@@ -816,7 +816,7 @@ func _gui_input(event: InputEvent) -> void:
 		cell_secondary_clicked.emit(cell)
 	if event is InputEventMouseMotion:
 		var hovered_crew: String=main.crew_comms.crew_at(event.position,_cell_size()) if is_instance_valid(main.crew_comms) and main.selected_card_id.is_empty() else ""
-		tooltip_text="Talk to "+preload("res://scripts/architects.gd").NAMES[hovered_crew] if not hovered_crew.is_empty() else ""
+		tooltip_text="Talk to "+main.crew_comms.speaker_name(hovered_crew) if not hovered_crew.is_empty() else ""
 		mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND if not hovered_crew.is_empty() else Control.CURSOR_ARROW
 		var cell_size := _cell_size()
 		var cell := Vector2i(floori(event.position.x / cell_size), floori(event.position.y / cell_size))

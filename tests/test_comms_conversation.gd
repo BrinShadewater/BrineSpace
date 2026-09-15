@@ -11,13 +11,31 @@ func run() -> void:
 	game.set_process(false); game.tick_timer.stop(); game._set_paused(true,false)
 	var comms=game.crew_comms; comms.set_process(false)
 	assert(comms.opening_enabled)
-	comms.observe_game()
-	assert(comms.pending.size()==3 and comms.pending[1].speaker==game.meta.selected_architect)
-	assert("First objective:" in comms.pending[2].text)
-	comms.observe_game(); assert(comms.pending.size()==3,"No repeated introduction")
-	comms.show_next(); comms.advance(); comms.advance()
-	assert(comms.current.speaker==game.meta.selected_architect)
-	comms.advance(); comms.advance(); assert("First objective:" in comms.current.text)
+	# The wake sequence plays first: BRINE stays quiet until two seconds after the pod opens.
+	assert(not game.architect_run.core.recovered)
+	comms.observe_game(); assert(comms.pending.is_empty(),"BRINE waits for the architect to wake")
+	game.architect_run.core.recovered=true
+	comms.observe_game(); assert(comms.pending.is_empty(),"BRINE waits after the pod opens")
+	game._set_paused(false,false)
+	for i in range(3): comms._process(0.5)
+	assert(comms.pending.is_empty() and comms.current.is_empty(),"Still quiet 1.5 seconds after waking")
+	comms._process(0.6)
+	assert(comms.current.get("speaker","")=="brine" and game.paused,"Greeting arrives two seconds after waking and holds pause")
+	assert(comms.pending.size()==2 and comms.pending[0].speaker==game.meta.selected_architect)
+	assert("First objective:" in comms.pending[1].text)
+	comms.observe_game(); assert(comms.pending.size()==2,"No repeated introduction")
+	# A click on the transmission skips to the next line mid-sentence, and closes after the last.
+	comms.place_panel()
+	for i in range(5): await process_frame
+	var reading: int=comms.body.visible_characters
+	assert(reading<comms.body.get_total_character_count(),"Greeting is still typing out")
+	var skip_click:=InputEventMouseButton.new(); skip_click.button_index=MOUSE_BUTTON_LEFT; skip_click.pressed=true
+	skip_click.position=comms.body.get_global_rect().get_center(); skip_click.global_position=skip_click.position
+	root.push_input(skip_click,true)
+	var skip_release: InputEventMouseButton=skip_click.duplicate(); skip_release.pressed=false; root.push_input(skip_release,true)
+	assert(comms.current.speaker==game.meta.selected_architect,"Clicking the text moves to the next line")
+	comms._on_panel_input(skip_click); assert("First objective:" in comms.current.text)
+	comms._on_panel_input(skip_click); assert(comms.minimized and not comms.panel.visible,"Clicking the last line closes it")
 	comms.dismiss()
 	# Continue keeps the short greeting, without replaying the new-loop tutorial.
 	comms.opening_enabled=false; comms.greeting_sent=false; comms.seen.clear(); comms.last_ambient=-60
@@ -43,6 +61,34 @@ func run() -> void:
 		comms.answer("Needs attention?"); assert(not comms.current.text.is_empty())
 		assert(not resource_replies.has(comms.current.text)); resource_replies.append(comms.current.text)
 		actor.dead=true; assert(not comms.open_crew(id)); actor.dead=false
+	# Josh and River answer a click too, in their own voices, and never open room selection.
+	var companion_lines: Array=[]
+	for id in ["josh","river"]:
+		var companion=game.companion_actors[id]
+		game.companion_roster[id]=Vector2i(20,20)
+		companion.active=true
+		companion.foot=(Vector2(20,20)+Vector2(0.3 if id=="josh" else 0.7,0.35))*384.0
+		var point: Vector2=companion.foot/384.0*game.get_cell_size()-Vector2(0,game.get_cell_size()*(0.09 if id=="josh" else 0.05))
+		assert(comms.crew_at(point,game.get_cell_size())==id,"Companion hit target: "+id)
+		var event:=InputEventMouseButton.new(); event.button_index=MOUSE_BUTTON_LEFT; event.pressed=true; event.position=point
+		game.grid_view._gui_input(event)
+		assert(comms.current.speaker==id and cell_clicks==0,"Companion click talks instead of selecting the room")
+		assert(comms.speaker.text==preload("res://scripts/companions.gd").NAMES[id] and comms.portrait.texture!=null)
+		companion_lines.append(comms.current.text)
+		game.grid_view._gui_input(event)
+		assert(comms.current.text!=companion_lines.back(),"A second click gets a different line")
+		assert(comms.history.back().speaker==id)
+		comms.dismiss()
+	assert(companion_lines[0]!=companion_lines[1])
+	comms.load_archive(); assert(comms.archive_writable and comms.history.back().speaker=="river","Companion lines survive the comms archive")
+	game.companion_actors.josh.water.mode="offline"
+	assert(comms.open_crew("josh") and "does not answer" in comms.current.text)
+	game.companion_actors.josh.water.mode="dry"
+	comms.dismiss()
+	for id in ["josh","river"]:
+		game.companion_actors[id].active=false
+		game.companion_roster.erase(id)
+	assert(not comms.open_crew("josh"),"Absent companions cannot be contacted")
 	# Construction input continues to reach the room handler.
 	game.selected_card_id="reactor"
 	var event:=InputEventMouseButton.new(); event.button_index=MOUSE_BUTTON_LEFT; event.pressed=true
@@ -111,6 +157,6 @@ func run() -> void:
 	game.menu_open=true; comms._process(0.1); assert(not comms.panel.visible)
 	game.menu_open=false; comms._process(0.1); assert(comms.panel.visible)
 	game._start_reboot_cycle()
-	assert(comms.opening_enabled and not comms.greeting_sent and comms.seen.is_empty(),"In-scene restart resets conversation events")
-	print("COMMS CONVERSATION PASS: opening, Continue gating, three crew hit targets, build input, replies, queued reports, priority cue and panel bounds")
+	assert(comms.opening_enabled and not comms.greeting_sent and comms.seen.is_empty() and comms.opening_wait==0.0,"In-scene restart resets conversation events")
+	print("COMMS CONVERSATION PASS: opening after the wake, click to skip, Continue gating, crew and companion hit targets, build input, replies, queued reports, priority cue and panel bounds")
 	quit()

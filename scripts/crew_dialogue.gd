@@ -36,6 +36,24 @@ const ROOM_LINES={
 		"bill":"A place to decide what is worth keeping. I'd rather make that decision at a bench than in a corridor.",
 		"veld":"Label what comes off the wreckage. A part without its history can answer entirely the wrong question.",
 		"branforth":"Room to lay things out and see what fits. Keep the useful stock separate from the parts we're still suspicious of."}}
+# Josh speaks; River answers in chirps with a status-lamp translation. Lines rotate per click.
+const COMPANION_GREETINGS={
+	"josh":[
+		"Josh here. Current task: %s. My treads are clean and my optics are clear. What should we look at?",
+		"Hello again. I watched the crew weld a seam today. I would like to try. I have been asked to wait.",
+		"I have counted every bolt in this room. Two are missing. I did not take them. River might have."],
+	"river":[
+		"Two bright chirps and a whirr. River's status lamp spells it out: %s. No faults worth mentioning.",
+		"A rising chirp, then a doubtful one. River has found another loose bolt and is not ready to discuss giving it back.",
+		"Soft clicks. River's dome turns to the nearest hatch, then back to you. Translation: still counting the exits. All present."]}
+
+static func companion_greeting(id: String, activity: String, water_mode: String, count: int) -> String:
+	if water_mode=="offline": return "Josh does not answer. His standby light pulses slowly while the water is this deep."
+	if water_mode=="float": return "A muffled chirp from the waterline. River's lamp blinks: afloat, dry inside, would prefer the floor back."
+	var lines: Array=COMPANION_GREETINGS[id]
+	var line: String=lines[count%lines.size()]
+	return line%activity if line.contains("%s") else line
+
 static func greeting(id: String, activity: String) -> String:
 	return GREETINGS[id]%activity
 static func room_comment(id: String, room_id: String) -> String:

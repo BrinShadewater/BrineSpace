@@ -2,6 +2,11 @@ extends CanvasLayer
 ## Portrait transmissions, using approved native-resolution concept crops.
 const Architects=preload("res://scripts/architects.gd")
 const Dialogue=preload("res://scripts/crew_dialogue.gd")
+const Companions=preload("res://scripts/companions.gd")
+# Companions who answer a click. Margot keeps her pet interaction.
+const TALKING_COMPANIONS := ["josh","river"]
+# Seconds between the architect stepping out of the core pod and BRINE's first words.
+const OPENING_DELAY := 2.0
 var game
 var panel: PanelContainer
 var portrait: TextureRect
@@ -40,6 +45,8 @@ var room_status: Label
 const WAKE_LINES={"marsh":"Systems responsive. There is a gap in my records. I would prefer to find out why.","bill":"Still breathing. I will take a look around before we call this place habitable.","veld":"I remember the last reading. I would like to know why it changed while I was asleep.","branforth":"I can hear a bearing somewhere. Give me a moment to decide how worried to be."}
 const FINISH_LINES={"marsh":"Inspection complete. I have separated observed faults from suspected ones.","bill":"Inspection finished. Nothing moved that was supposed to stay still.","veld":"The readings are recorded. I have questions. That is preferable to having no readings.","branforth":"Check complete. The equipment can keep working. I suggest we let it."}
 var finished_seconds:=0.0
+var opening_wait:=0.0
+var companion_talks: Dictionary={}
 func _ready() -> void:
 	layer=25
 	panel=PanelContainer.new(); add_child(panel)
@@ -61,6 +68,9 @@ func _ready() -> void:
 	body=RichTextLabel.new(); body.bbcode_enabled=false; body.scroll_following=true
 	body.custom_minimum_size=Vector2(0,74); body.size_flags_vertical=Control.SIZE_EXPAND_FILL
 	body.add_theme_font_size_override("normal_font_size",16); column.add_child(body)
+	# Clicking anywhere on the transmission moves on (buttons keep their own clicks).
+	body.mouse_filter=Control.MOUSE_FILTER_PASS; portrait.mouse_filter=Control.MOUSE_FILTER_PASS
+	panel.gui_input.connect(_on_panel_input)
 	next_button=Button.new(); next_button.text="Next"; next_button.size_flags_horizontal=Control.SIZE_SHRINK_END
 	next_button.pressed.connect(advance); column.add_child(next_button)
 	# Retain archive/context data helpers without exposing the former control panel.
@@ -146,11 +156,28 @@ func present_current() -> void:
 		portrait.texture=brine_portrait
 	else:
 		portrait.custom_minimum_size=Vector2(150,150)
-		portrait.texture=Architects.selection_portrait(current.speaker)
+		portrait.texture=Companions.portrait(current.speaker) if Companions.NAMES.has(current.speaker) else Architects.selection_portrait(current.speaker)
 	bubbles.visible=current.speaker=="brine"
-	speaker.text="BRINE // STATION CORE" if current.speaker=="brine" else Architects.NAMES[current.speaker]
+	speaker.text="BRINE // STATION CORE" if current.speaker=="brine" else speaker_name(current.speaker)
 	body.text=current.text; body.visible_characters=0; reveal=0; character_delay=0.0
 	next_button.text="Next"; next_button.show(); panel.show()
+func speaker_name(id: String) -> String:
+	if id=="brine": return "BRINE"
+	return Companions.NAMES[id] if Companions.NAMES.has(id) else Architects.NAMES.get(id,id)
+
+# A click on the transmission skips straight to the next line, or closes it after the last
+# (owner playtest). The Next button still finishes a line that is typing out first.
+func _on_panel_input(event: InputEvent) -> void:
+	if not (event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_LEFT): return
+	panel.accept_event()
+	skip()
+
+func skip() -> void:
+	if current.is_empty(): return
+	if pending.is_empty(): minimize()
+	else: show_next()
+	update_replies()
+
 func advance() -> void:
 	if body.visible_characters<body.get_total_character_count():
 		body.visible_characters=body.get_total_character_count(); reveal=body.visible_characters
@@ -178,6 +205,9 @@ func _process(delta: float) -> void:
 		game.comms_button.text="COMMS (%d)"%pending.size() if not pending.is_empty() else "COMMS"
 	event_clock+=delta
 	poll_clock+=delta
+	if game!=null and not greeting_sent and game.startup_complete and not game.paused and core_awake():
+		opening_wait+=delta
+		if opening_wait>=OPENING_DELAY: poll_clock=maxf(poll_clock,1.0)
 	if game!=null and game.startup_complete and not game.paused and poll_clock>=1.0:
 		poll_clock=0.0; observe_game()
 	if game!=null and (game._gameplay_input_blocked() or not game.startup_complete):
@@ -221,7 +251,7 @@ func open_brine() -> void:
 func refresh_history() -> void:
 	history_picker.clear(); history_picker.add_item("Message history (%d)"%history.size())
 	for entry in history:
-		var name: String="BRINE" if entry.speaker=="brine" else Architects.NAMES[entry.speaker]
+		var name: String=speaker_name(entry.speaker)
 		history_picker.add_item(name+"  -  "+str(entry.text).left(42))
 func replay_history(index: int) -> void:
 	talk_id=""
@@ -231,8 +261,22 @@ func announce(id: String, message: String, key: String, urgent: bool=false) -> b
 	if event_clock-last_ambient<45.0: return false
 	if not transmit(id,message,key,urgent): return false
 	last_ambient=event_clock; return true
+# The station wakes first: lights, screens and the core pod play out, and BRINE speaks two
+# seconds after the architect steps out. The greeting used to arrive a second in, and the
+# pause it holds froze the whole wake sequence behind the dialogue (owner playtest).
+func core_awake() -> bool:
+	var run = game.get("architect_run")
+	if not run is Dictionary or run.get("core",{}).is_empty(): return true
+	return run.core.get("recovered",false)
+
+func opening_ready() -> bool:
+	var run = game.get("architect_run")
+	if not run is Dictionary or run.get("core",{}).is_empty(): return true # Legacy checkpoints have no core pod.
+	return core_awake() and opening_wait>=OPENING_DELAY
+
 func observe_game() -> void:
 	if not greeting_sent:
+		if not opening_ready(): return
 		greeting_sent=announce("brine","You are awake. The station is still holding pressure. I would like to keep both of those statements true.","opening")
 		if greeting_sent and opening_enabled:
 			var starter: String=game.meta.selected_architect
@@ -271,7 +315,7 @@ func load_archive() -> void:
 	for entry in data.messages:
 		if not entry is Dictionary or not entry.get("speaker") is String or not entry.get("text") is String:
 			archive_writable=false; return
-		if entry.speaker!="brine" and not Architects.NAMES.has(entry.speaker): archive_writable=false; return
+		if entry.speaker!="brine" and not Architects.NAMES.has(entry.speaker) and not TALKING_COMPANIONS.has(entry.speaker): archive_writable=false; return
 		if entry.text.length()>4096: archive_writable=false; return
 		checked.append({"speaker":entry.speaker,"text":entry.text,"urgent":entry.get("urgent",false)==true})
 	history=checked.slice(maxi(0,checked.size()-30))
@@ -291,12 +335,27 @@ func update_replies() -> void:
 	replies.visible=not talk_id.is_empty() and not current.is_empty() and current.speaker==talk_id and body.visible_characters>=body.get_total_character_count()
 
 func open_crew(id: String) -> bool:
-	if game==null or not Architects.IDS.has(id): return false
+	if game==null: return false
+	if TALKING_COMPANIONS.has(id): return open_companion(id)
+	if not Architects.IDS.has(id): return false
 	var actor=Architects.actor_for(game,id)
 	if not actor.active or actor.dead: return false
 	# Preserve queued station messages while the player asks a crew member a question.
 	talk_id=id
 	current={"speaker":id,"text":Dialogue.greeting(id,actor.activity)}
+	record_reply()
+	return true
+
+# Josh and River answer when clicked (owner playtest). They have no question replies.
+func open_companion(id: String) -> bool:
+	if not game.companion_roster.has(id) or not game.companion_actors.has(id): return false
+	var actor=game.companion_actors[id]
+	if not actor.active: return false
+	talk_id=""
+	var count: int=int(companion_talks.get(id,0))
+	companion_talks[id]=count+1
+	current={"speaker":id,"text":Dialogue.companion_greeting(id,actor.activity,actor.water.mode,count)}
+	if id=="river" and game.has_method("play_station_sound"): game.play_station_sound("companion_chirp",actor.foot/384.0)
 	record_reply()
 	return true
 
@@ -341,19 +400,23 @@ func crew_at(point: Vector2, cell_size: float) -> String:
 	if game==null: return ""
 	var found: String=""
 	var nearest:=INF
-	for id in Architects.IDS:
-		var actor=Architects.actor_for(game,id)
+	for id in Architects.IDS+TALKING_COMPANIONS:
+		var companion: bool=TALKING_COMPANIONS.has(id)
+		if companion and not game.companion_roster.has(id): continue
+		var actor=game.companion_actors[id] if companion else Architects.actor_for(game,id)
 		if not actor.active or actor.dead: continue
 		var foot: Vector2=actor.foot/384.0*cell_size
-		# Match the rendered 74-unit body height and canonical foot pivot.
+		# Match the rendered body height and canonical foot pivot: crew 74 units, Josh 70, River 44.
 		var bounds:=Rect2(foot-Vector2(cell_size*0.055,cell_size*0.19),Vector2(cell_size*0.11,cell_size*0.21))
+		if id=="josh": bounds=Rect2(foot-Vector2(cell_size*0.055,cell_size*0.18),Vector2(cell_size*0.11,cell_size*0.20))
+		elif id=="river": bounds=Rect2(foot-Vector2(cell_size*0.045,cell_size*0.115),Vector2(cell_size*0.09,cell_size*0.135))
 		var distance: float=point.distance_squared_to(bounds.get_center())
 		if bounds.has_point(point) and distance<nearest: found=id; nearest=distance
 	return found
 
 func reset_for_loop() -> void:
 	dismiss(); seen.clear(); observed_crew.clear()
-	greeting_sent=false; opening_enabled=true; event_clock=0; poll_clock=0; last_ambient=-60
+	greeting_sent=false; opening_enabled=true; event_clock=0; poll_clock=0; last_ambient=-60; opening_wait=0.0
 
 func refresh_contacts() -> void:
 	contact_picker.clear(); contact_picker.add_item("Contact crew...")
