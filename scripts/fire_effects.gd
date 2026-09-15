@@ -1,7 +1,7 @@
 extends RefCounted
 ## Authored fire atlases; sources and reproducible bake live in assets/fire-effects-v1.
 const PATHS := {
-	"flame":"res://assets/fire-effects-v1/flame-96x128-v2.png",
+	"flame":"res://assets/fire-effects-v1/flame-96x128-v3.png",
 	"smoke":"res://assets/fire-effects-v1/smoke-96x128.png",
 	"embers":"res://assets/fire-effects-v1/embers-96x128.png",
 	"sparks":"res://assets/electrical-sparks-v1/sparks-96x128.png",

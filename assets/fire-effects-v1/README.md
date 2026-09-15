@@ -12,7 +12,7 @@ Each layer has eight frames in a 4x2 grid, with real transparency:
 
 | Layer | Runtime atlas | Full-size atlas | Playback |
 |---|---|---|---|
-| Flame | flame-96x128-v2.png | flame-atlas-v2.png | 8 fps |
+| Flame | flame-96x128-v3.png | flame-atlas-v3.png | 8 fps |
 | Smoke | smoke-96x128.png | smoke-atlas.png | 6 fps |
 | Embers | embers-96x128.png | embers-atlas.png | 8 fps |
 
@@ -51,3 +51,12 @@ The initial visual review missed pale matte residue along flame edges.
 `fix_flame_fringe.py` removes 2855 exterior pale pixels while preserving the
 bright interior and existing transparent gaps. Runtime and animated review now
 use v2 flame atlases; v1 remains for comparison. The updated contact sheet shows v2. Smoke and embers are unchanged.
+
+## Owner playtest: white cutouts (September 15)
+
+Pink-grey checkerboard blends with r-g of 40 or more survived v2's test and still
+read as white specks in game (159 pixels in the runtime atlas). `fix_flame_fringe.py`
+now also writes v3, peeling pale residue (blue at least 80, green within 25 of blue)
+that touches transparency, up to three pixels deep: 2927 full-size pixels, leaving 8
+in the runtime atlas. Runtime uses v3; v2 remains for comparison. Smoke and embers
+are unchanged.

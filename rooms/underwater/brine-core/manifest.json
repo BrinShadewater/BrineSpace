@@ -45,14 +45,14 @@
       "path": "rooms/underwater/brine-core/renewal-v2/brine-source-v4-face.png",
       "sha256": "09bd949d88c38d31b73fb37c99ee891885782837e369ff1442a8807ee5920874",
       "runtime": {
-        "path": "assets/rooms/brine-core/source/brine-cleaned-v4.png",
-        "sha256": "1883c4a4ed625a9bf060dc30f866ebe73b7a3b437bb70c021cdbbab1c164e975"
+        "path": "assets/rooms/brine-core/source/brine-cleaned-v5.png",
+        "sha256": "0e439cd7f5de6aa79c2dce8aacd9537348a035a3bd682344552ad5a81d10f262"
       },
       "native_size": [
         1254,
         1254
       ],
-      "treatment": "Original face-edit source and cleanup retained. Runtime samples full-resolution alpha bounds with the old normalized placement, subtle 13-second sway and eight-second float; native containment, pause and hardware-off checks pass."
+      "treatment": "Original face-edit source and cleanup retained. Runtime samples full-resolution alpha bounds with the old normalized placement, subtle 13-second sway and eight-second float; native containment, pause and hardware-off checks pass. Runtime v5 (Sept 15, owner playtest: white cutouts): v4 with its grey matte fringe and the white background trapped in both fists removed by tools/room_art_pipeline.py --keep-canvas --clear-gap 505 636 --clear-gap 745 636 --clear-gap 742 650 --clear-gap 509 651 --peel-fringe 2; eye whites kept."
     },
     "component_assets": [
       {
@@ -64,8 +64,8 @@
         "sha256": "aceec8bd19e8b46f823265da83f03004fa522e854c4fe222a0960fae46762f81"
       },
       {
-        "path": "assets/rooms/brine-core/source/brine-cleaned-v4.png",
-        "sha256": "1883c4a4ed625a9bf060dc30f866ebe73b7a3b437bb70c021cdbbab1c164e975"
+        "path": "assets/rooms/brine-core/source/brine-cleaned-v5.png",
+        "sha256": "0e439cd7f5de6aa79c2dce8aacd9537348a035a3bd682344552ad5a81d10f262"
       }
     ],
     "previous_body_source": {
