@@ -8,11 +8,14 @@ const MainScene := preload("res://scenes/main.tscn")
 const Rooms := preload("res://scripts/room_database.gd")
 const Runs := preload("res://scripts/run_manager.gd")
 const Synergies := preload("res://scripts/synergy_manager.gd")
+const Insights := preload("res://scripts/station_ui_insights.gd")
+const Routes := preload("res://scripts/drone_routes.gd")
 const SAVE_PATH := "user://brine_balance_playtest.json"
 const OFFSETS := [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
 const SIDES := ["west", "east", "north", "south"]
 const OPPOSITES := ["east", "west", "south", "north"]
 var seeds: Array[int] = [4404, 9021, 1729]
+var max_cycles := 60
 var pair_filter := ""
 var output_path := ""
 var capture_dir := ""
@@ -34,6 +37,8 @@ func _init() -> void:
 			seeds.assign([int(argument.trim_prefix("--seed="))])
 		elif argument.begins_with("--pair="):
 			pair_filter = argument.trim_prefix("--pair=")
+		elif argument.begins_with("--cycles="):
+			max_cycles = int(argument.trim_prefix("--cycles="))
 		elif argument.begins_with("--capture-dir="):
 			capture_dir = argument.trim_prefix("--capture-dir=")
 	call_deferred("_run")
@@ -63,7 +68,7 @@ func _run() -> void:
 			push_error("Cannot write balance report: " + output_path)
 			failures += 1
 		else:
-			file.store_string(JSON.stringify({"policy": "curious-builder-v5-construction-aware", "runs": rows}, "\t"))
+			file.store_string(JSON.stringify({"policy": "curious-builder-v6-heeds-placement-warnings", "runs": rows}, "\t"))
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
 	print("Balance sweep completed: %d runs, %d harness errors." % [rows.size(), failures])
@@ -98,7 +103,8 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	var row := {"pair": "+".join(pair), "seed": run_seed, "first_discovery": -1,
 		"first_blueprint": -1, "idle_cycles": 0, "events": [], "snapshots": [],
 		"discoveries": {}, "blueprints": {}, "prototype_built": {}, "builds": []}
-	while game.running and game.cycle < 60:
+	row["power"] = []
+	while game.running and game.cycle < max_cycles:
 		var built := 0
 		for _action in range(3):
 			# Reassess after the paid room becomes operational. Otherwise the old
@@ -127,14 +133,27 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 		if not game.running:
 			break
 		# Simulate the actual time between economy ticks. Construction is not instant.
+		var drone_spent := 0
 		game.paused = false
 		for step in range(200):
 			if not game.running: break
+			# Mirror the running branch of main._process; without the core advance
+			# no architect wakes, so no paid construction ever completes.
 			game.visual_time_seconds += 0.1
+			preload("res://scripts/airlock_cycle.gd").advance(game, 0.1)
 			game._update_test_walker(0.1)
 			game._update_wreck_clearance(0.1)
 			game.CryoRecovery.advance(game, 0.1)
+			game.Architects.advance_core(game, 0.1)
+			drone_spent += int(game.drone_fleet.power_spent)
 		game.paused = true
+		var forecast: Dictionary = game._simulate_room_economy()
+		var short_of_power := 0
+		for reason in forecast.offline.values():
+			if str(reason).contains("POWER"): short_of_power += 1
+		row["power"].append({"cycle": game.cycle + 1, "generation": forecast.generation, "requested": game._project_power_demand(),
+			"supplied": forecast.power_used, "stored": int(game.resources.power), "capacity": game._get_power_capacity(),
+			"vented": int(forecast.get("power_vented", 0)), "rooms_short_of_power": short_of_power, "drone_spent": drone_spent})
 		game._advance_cycle()
 		for room in game.placed_rooms:
 			if row["blueprints"].has(room.id) and not row["prototype_built"].has(room.id):
@@ -160,7 +179,7 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	row["cycle"] = game.cycle
 	row["stages"] = game.completed_directives.size()
 	row["reason"] = game.summary_text.text.get_slice("\n", 0) if not game.running else "Harness cycle limit"
-	row["final_directive"] = str(game.run_directives.back().get("id", ""))
+	row["final_directive"] = "" if game.run_directives.is_empty() else str(game.run_directives.back().get("id", ""))
 	row["rerolls"] = game.rerolls_remaining
 	row["resonance"] = game.resonance_score
 	row["events"] = game.log_lines.duplicate()
@@ -212,6 +231,10 @@ func _choose_build() -> Dictionary:
 				game.selected_rotation = previous_rotation
 				if not problem.is_empty():
 					continue
+				# A careful player heeds the placement warnings and never buys a bay
+				# with no route to anything it can harvest.
+				if not Insights.placement_hazards(game, id, cell, rotation).is_empty() or not _bay_has_route(id, cell):
+					continue
 				var doors := _doors(id, rotation)
 				var neighbors := []
 				var score := utility
@@ -245,6 +268,15 @@ func _choose_build() -> Dictionary:
 					best_score = score
 					best = {"id": id, "cell": cell, "rotation": rotation, "neighbors": neighbors}
 	return best
+
+func _bay_has_route(id: String, cell: Vector2i) -> bool:
+	if not id in ["mining_drone_bay", "salvage_drone_bay"]: return true
+	var kind := "mining" if id == "mining_drone_bay" else "salvage"
+	for site_cell in game.drone_fleet.sites:
+		var site: Dictionary = game.drone_fleet.sites[site_cell]
+		if site.kind == kind and site.discovered and site.units > 0 and not Routes.find_path(cell, site_cell, game.drone_fleet.route_blockers).is_empty():
+			return true
+	return false
 
 func _room_utility(room: Dictionary) -> float:
 	var id := str(room["id"])
