@@ -316,6 +316,9 @@ var camera_zoom_target := -1.0
 var camera_view_revision := 0
 var camera_viewport_size := Vector2.ZERO
 var camera_zoom_center := Vector2.ZERO
+# Where an animated fit moves the zoom center to (INF when the center stays put).
+var camera_center_target := Vector2.INF
+var camera_zoom_moving := false
 var card_textures := {}
 var ui_textures := {}
 var resource_icon_textures := {}
@@ -629,7 +632,7 @@ func _build_ui() -> void:
 	var recenter_button := Button.new()
 	recenter_button.text = "FIT STATION [F]"
 	recenter_button.set_meta("key_hint", "FIT STATION [{Fit station}]")
-	recenter_button.pressed.connect(_fit_station_view)
+	recenter_button.pressed.connect(_fit_station_view.bind(true))
 	_style_hud_button(recenter_button, false)
 	viewport_tools.add_child(recenter_button)
 	var view_button := Button.new()
@@ -2943,19 +2946,38 @@ func _on_zoom_changed(value: float) -> void:
 	_request_grid_zoom(DEFAULT_GRID_ZOOM * value)
 
 func _request_grid_zoom(value: float) -> void:
-	if camera_zoom_target<0.0: camera_zoom_center=_grid_view_center_ratio()
+	if camera_zoom_target<0.0:
+		camera_zoom_center=_grid_view_center_ratio()
+		camera_center_target=Vector2.INF
+		camera_zoom_moving=false
 	camera_zoom_target=clampf(value,_minimum_map_zoom(),DEFAULT_GRID_ZOOM)
 
 func _update_camera_zoom(delta: float) -> void:
 	if camera_zoom_target<0.0: return
 	if _gameplay_input_blocked():
 		camera_zoom_target=-1.0
+		camera_center_target=Vector2.INF
 		return
+	# Before the camera moves, the grid may take a few frames to repaint what this zoom will
+	# reveal, a layer group at a time, instead of repainting all of it in one frame.
+	if not camera_zoom_moving and grid_view != null and grid_view.zoom_waits_for_cover(self): return
+	camera_zoom_moving=true
 	var target := camera_zoom_target
-	var next := lerpf(grid_zoom,target,1.0-exp(-18.0*delta))
-	if absf(next-target)<0.0005: next=target
+	var blend := 1.0-exp(-18.0*delta)
+	var next := lerpf(grid_zoom,target,blend)
+	var zoom_arrived := absf(next-target)<0.0005
+	if zoom_arrived: next=target
+	var center_arrived := true
+	if camera_center_target!=Vector2.INF:
+		# An animated fit glides its center along with the zoom.
+		var center := camera_zoom_center.lerp(camera_center_target,blend)
+		var gap_px := (center-camera_center_target).length()*float(GRID_SIZE)*get_cell_size()
+		if gap_px<0.5 or (zoom_arrived and gap_px<2.0): center=camera_center_target
+		center_arrived=center==camera_center_target
+		camera_zoom_center=center
 	_set_grid_zoom(next,true,camera_zoom_center)
-	if next!=target: camera_zoom_target=target
+	if not (zoom_arrived and center_arrived): camera_zoom_target=target
+	else: camera_center_target=Vector2.INF
 
 func _set_grid_zoom(value: float, update_slider := true, target_center := Vector2.INF) -> void:
 	camera_view_revision += 1
@@ -3316,7 +3338,7 @@ func _center_grid_on_station() -> void:
 func _center_grid_on_station_deferred() -> void:
 	_center_grid_on_station.call_deferred()
 
-func _fit_station_view() -> void:
+func _fit_station_view(animated := false) -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
 		return
 	var bounds := Rect2(Vector2(placed_rooms[0]["pos"]), Vector2.ONE)
@@ -3324,9 +3346,18 @@ func _fit_station_view() -> void:
 		bounds = bounds.merge(Rect2(Vector2(room["pos"]), Vector2.ONE))
 	var usable := grid_scroll.size - Vector2(120, 110)
 	var fit_zoom := minf(usable.x / ((bounds.size.x + 0.6) * CELL_SIZE), usable.y / ((bounds.size.y + 0.6) * CELL_SIZE))
+	var zoom := minf(fit_zoom, DEFAULT_GRID_ZOOM * 0.60)
+	if animated:
+		# The F key and button glide there like wheel zoom. Jumping repainted the whole
+		# station in one frame (~170 ms on a 50-room station).
+		if camera_zoom_target<0.0: camera_zoom_center=_grid_view_center_ratio()
+		camera_center_target=bounds.get_center()/float(GRID_SIZE)
+		camera_zoom_target=clampf(zoom,_minimum_map_zoom(),DEFAULT_GRID_ZOOM)
+		camera_zoom_moving=false
+		return
 	# Fit uses its destination immediately; preserving the old center first can
 	# rebuild a different visible room set before the deferred station centering.
-	_set_grid_zoom(minf(fit_zoom, DEFAULT_GRID_ZOOM * 0.60),true,bounds.get_center()/float(GRID_SIZE))
+	_set_grid_zoom(zoom,true,bounds.get_center()/float(GRID_SIZE))
 
 func _center_grid_on_station_now() -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
@@ -4051,7 +4082,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Fit station"):
-		_fit_station_view()
+		_fit_station_view(true)
 		get_viewport().set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Pause"):

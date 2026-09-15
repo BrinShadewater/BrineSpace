@@ -37,7 +37,8 @@ static func update_surfaces(grid,game,rooms: Array,size: float) -> void:
 			var surface := Polygon2D.new()
 			surface.material=ShaderMaterial.new()
 			surface.material.shader=SurfaceShader
-			grid.surface_passes[grid.Surface.FLOOR].add_child(surface)
+			# Above both retained floor passes, below the walls.
+			grid.surface_passes[grid.Surface.FLOOR_REST].add_child(surface)
 			grid.flood_surfaces[room.pos]=surface
 		var surface: Polygon2D=grid.flood_surfaces[room.pos]
 		var key := [room.id,room.get("rotation",0)]

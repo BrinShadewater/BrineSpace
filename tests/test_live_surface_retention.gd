@@ -88,6 +88,16 @@ func run() -> void:
 		await rendered()
 		animated_frames+=1
 		if game.grid_view.zoom_reuse_active: saw_freeze=true
+	# A real change while the landed zoom settles repaints at once: only size-only repaints wait.
+	check(game.grid_view.zoom_settling,"The landed zoom settles over the next frames")
+	var settling_floors: int=game.grid_view.floor_rebuilds
+	var settling_walls: int=game.grid_view.wall_rebuilds
+	game.selected_room_cell=cell
+	await rendered()
+	check(game.grid_view.floor_rebuilds>settling_floors and game.grid_view.wall_rebuilds>settling_walls,"A selection change while settling repaints floors and walls in the same frame")
+	game.selected_room_cell=Vector2i(-1,-1)
+	await rendered()
+	var selection_rebuilds: int=game.grid_view.floor_rebuilds-settling_floors
 	# Layers that only changed size repaint over a few frames after the zoom lands.
 	var settle_frames:=0
 	while (settle_frames<2 or game.grid_view.zoom_settling) and settle_frames<60:
@@ -95,7 +105,8 @@ func run() -> void:
 		settle_frames+=1
 	check(not game.grid_view.zoom_settling,"The landed zoom finishes settling: "+str(settle_frames)+" frames")
 	check(saw_freeze and animated_frames>=4 and not is_equal_approx(game.grid_zoom,zoom_start),"Animated zoom engages the retained-layer freeze")
-	check(game.grid_view.floor_rebuilds-rebuilds_before<=2,"Animated zoom rebuilds floors at most at start and settle, not per frame: "+str(game.grid_view.floor_rebuilds-rebuilds_before)+" over "+str(animated_frames))
+	var zoom_rebuilds: int=game.grid_view.floor_rebuilds-rebuilds_before-selection_rebuilds
+	check(zoom_rebuilds<=2,"Animated zoom rebuilds floors at most at start and settle, not per frame: "+str(zoom_rebuilds)+" over "+str(animated_frames))
 	var settled:=root.get_texture().get_image()
 	game.grid_view.reuse_layers_while_zooming=false
 	game.grid_view.surface_key=[];game.grid_view.env_below_key=[];game.grid_view.env_foundations_key=[];game.grid_view.env_terrain_key=[];game.grid_view.env_derelict_key=[];game.grid_view.room_frame_keys.clear()
@@ -121,12 +132,20 @@ func run() -> void:
 		var started_off_screen: bool=not game.grid_view.visible_draw_rooms.has(game.occupied[far])
 		game.camera_zoom_center=zoom_center
 		game.camera_zoom_target=game._minimum_map_zoom()
-		# The room must first enter the view on a frame after the zoom's first step.
+		game.camera_zoom_moving=false
+		# The room must first enter the view on a frame after the zoom's first step. Only
+		# frames that move the camera count: it may hold while the zoom cover repaints.
 		var first_visible_step:=-1
-		for step in range(1,6):
+		var steps:=0
+		var calls:=0
+		while steps<5 and calls<20:
+			var before_zoom: float=game.grid_zoom
 			game._update_camera_zoom(1.0/60.0)
 			await rendered()
-			if first_visible_step<0 and game.grid_view.visible_draw_rooms.has(game.occupied[far]): first_visible_step=step
+			calls+=1
+			if is_equal_approx(game.grid_zoom,before_zoom): continue
+			steps+=1
+			if first_visible_step<0 and game.grid_view.visible_draw_rooms.has(game.occupied[far]): first_visible_step=steps
 		revealed=revealed and started_off_screen and first_visible_step>=2
 		mid_zoom.append(root.get_texture().get_image())
 		# Both rooms and the risers above them, clear of the panels that overlap the map.
@@ -149,5 +168,52 @@ func run() -> void:
 			if absf(a.r-b.r)+absf(a.g-b.g)+absf(a.b-b.b)>0.4: strong+=1
 	print("ZOOM REVEAL: area=",rooms_area," strongly differing sampled pixels=",strong," of ",sampled)
 	check(sampled>2000 and strong*100<sampled,"A room revealed by a zoom-out keeps its shell mid-zoom: "+str(strong)+" of "+str(sampled)+" sampled pixels differ strongly")
+	# F glides to the fitted view instead of repainting the whole station in one frame: the
+	# camera holds a few frames while the cover repaints, floors and walls never repaint on
+	# the same frame, and the glide lands exactly where the instant fit does.
+	game.grid_view.reuse_layers_while_zooming=true
+	var fit_views:=[]
+	for animated in [false,true]:
+		game._set_grid_zoom(game.DEFAULT_GRID_ZOOM,true,zoom_center)
+		await rendered();await rendered()
+		game._restore_grid_view_center(zoom_center)
+		for i in range(4): await rendered()
+		if animated:
+			var fit_key:=InputEventKey.new()
+			fit_key.pressed=true
+			fit_key.keycode=game.Preferences.keys["Fit station"]
+			game._unhandled_input(fit_key)
+			check(game.camera_zoom_target>=0.0 and game.camera_center_target!=Vector2.INF,"The Fit station key starts a glide")
+		else:
+			game._fit_station_view()
+		var frames:=0
+		var held:=0
+		var shell_together:=0
+		var widened:=0
+		while animated and (game.camera_zoom_target>=0.0 or game.grid_view.zoom_settling) and frames<120:
+			var before_zoom: float=game.grid_zoom
+			var floors: int=game.grid_view.floor_rebuilds
+			var walls: int=game.grid_view.wall_rebuilds
+			game._update_camera_zoom(1.0/60.0)
+			await rendered()
+			frames+=1
+			if game.camera_zoom_target>=0.0 and is_equal_approx(game.grid_zoom,before_zoom): held+=1
+			if game.grid_view.floor_rebuilds>floors and game.grid_view.wall_rebuilds>walls: shell_together+=1
+			if game.grid_view.zoom_cover_changed: widened+=1
+		for i in range(4): await rendered()
+		fit_views.append([game.grid_zoom,Vector2(game.grid_scroll.scroll_horizontal,game.grid_scroll.scroll_vertical)])
+		if animated:
+			print("FIT GLIDE: frames=",frames," held=",held," shell_together=",shell_together," cover_widenings=",widened)
+			check(game.camera_zoom_target<0.0 and not game.grid_view.zoom_settling,"The F glide lands and settles: "+str(frames)+" frames")
+			check(held>=1 and held<=game.grid_view.ZOOM_PREPARE_ASKS_MAX,"The camera holds briefly while the zoom cover repaints: "+str(held)+" frames")
+			check(shell_together==0,"Floors and walls never repaint on the same frame of the glide: "+str(shell_together))
+	check(is_equal_approx(fit_views[0][0],fit_views[1][0]) and fit_views[0][1].distance_to(fit_views[1][1])<=1.0,"The F glide ends at the instant fit: "+str(fit_views))
+	var glided:=root.get_texture().get_image()
+	glided.save_png(OUT+"fit-glide-landed.png")
+	game.grid_view.reuse_layers_while_zooming=false
+	game.grid_view.surface_key=[];game.grid_view.env_below_key=[];game.grid_view.env_foundations_key=[];game.grid_view.env_terrain_key=[];game.grid_view.env_derelict_key=[];game.grid_view.room_frame_keys.clear()
+	await rendered();await rendered();await rendered()
+	check(glided.get_data()==root.get_texture().get_image().get_data(),"The landed F glide matches a full rebuild")
+	game.grid_view.reuse_layers_while_zooming=true
 	print("LIVE SURFACE RETENTION: ","PASS" if failures==0 else "FAIL"," failures=",failures)
 	quit(0 if failures==0 else 1)
