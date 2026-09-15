@@ -2,6 +2,11 @@ extends SceneTree
 const ArchitectPicker = preload("res://scripts/architect_selection.gd")
 
 var failures := 0
+# The title and the game it opens must never write the player's progress or checkpoint. This
+# test used to save its seeded codex state over user://brine_save.json on every native run,
+# replacing real discovered and stabilized patterns and unlocked blueprints.
+const TEST_META := "user://title_screen_test.meta"
+const TEST_LOOP := "user://title_screen_test.loop"
 
 func _init() -> void:
 	call_deferred("_run")
@@ -16,7 +21,11 @@ func _run() -> void:
 	test_preferences.save_path = "user://brine_settings_test.cfg"
 	test_preferences.reduced_motion = false
 	var scene := load("res://scenes/title_screen.tscn") as PackedScene
+	_remove_test_saves()
 	var title = scene.instantiate()
+	title.meta_state.save_path = TEST_META
+	title.run_save_path = TEST_LOOP
+	node_added.connect(_isolate_game_saves)
 	root.add_child(title)
 	current_scene = title
 	await create_timer(0.5).timeout
@@ -167,6 +176,7 @@ func _run() -> void:
 	await create_timer(0.2).timeout
 	_check(title.settings_button.has_focus(), "Closing Settings restores its button focus")
 	if "--menu-only" in OS.get_cmdline_user_args():
+		_remove_test_saves()
 		print("TITLE SCREEN: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 		quit(failures)
 		return
@@ -198,8 +208,19 @@ func _run() -> void:
 			_check(current_scene.run_directives.is_empty(), "New expedition has no directive deadline")
 	print("TITLE SCREEN: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	if is_instance_valid(current_scene): current_scene.queue_free()
+	_remove_test_saves()
 	var music := root.get_node_or_null("StationMusic")
 	if music != null: music.queue_free()
 	await process_frame
 	await create_timer(0.15).timeout
 	quit(failures)
+
+func _isolate_game_saves(node: Node) -> void:
+	# The game scene the title opens is redirected before its _ready can load or save anything.
+	if node.scene_file_path == "res://scenes/main.tscn":
+		node.meta.save_path = TEST_META
+		node.run_save_path = TEST_LOOP
+
+func _remove_test_saves() -> void:
+	for path in [TEST_META, TEST_META + ".bak", TEST_META + ".tmp", TEST_LOOP, TEST_LOOP + ".bak", TEST_LOOP + ".tmp", TEST_LOOP + ".comms.json"]:
+		if FileAccess.file_exists(path): DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
