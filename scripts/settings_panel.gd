@@ -69,6 +69,7 @@ func _defaults(section: String) -> void:
 			Preferences.reduced_motion = false
 			Preferences.placement_guides = true
 			Preferences.raised_walls = true
+			Preferences.hand_backdrop = true
 			Preferences.tooltip_delay = 0.5
 		"DISPLAY":
 			_preview_display(func() -> void:
@@ -226,6 +227,7 @@ func _ready() -> void:
 	var access := _section("ACCESSIBILITY")
 	_toggle(access, "RaisedWalls", "Raised room walls", Preferences.raised_walls, func(enabled: bool) -> void: Preferences.raised_walls = enabled)
 	_toggle(access, "PlacementGuides", "Placement door indicators", Preferences.placement_guides, func(enabled: bool) -> void: Preferences.placement_guides = enabled)
+	_toggle(access, "HandBackdrop", "Draft hand backdrop", Preferences.hand_backdrop, func(enabled: bool) -> void: Preferences.hand_backdrop = enabled)
 	_toggle(access, "ReducedMotion", "Reduced motion", Preferences.reduced_motion, func(enabled: bool) -> void: Preferences.reduced_motion = enabled)
 	access.add_child(_label("Pauses the title cover and removes menu fades. Gameplay timing is unchanged.", 15))
 	_slider(access, "MenuTextSize", "Menu panel text size", 100, 130, 5, Preferences.text_scale * 100, "%", func(value: float) -> void: Preferences.text_scale = value / 100.0)
@@ -281,7 +283,8 @@ func _toggle(parent: Control, id: String, title: String, value: bool, action: Ca
 		"MuteUnfocused": "Silences audio while another window is active.",
 		"PauseUnfocused": "Pauses a running station when the game loses focus. Resume manually when you return.",
 		"InvertZoom": "Reverses the direction of Shift + mouse-wheel zoom.",
-		"ReducedMotion": "Freezes ambient cover motion and removes menu fades."
+		"ReducedMotion": "Freezes ambient cover motion and removes menu fades.",
+		"HandBackdrop": "Off: the station view runs behind the draft hand, leaving only the cards, reroll button and draw pile."
 	}.get(id, title)
 	button.toggle_mode = true
 	button.button_pressed = value

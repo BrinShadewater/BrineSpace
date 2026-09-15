@@ -6,6 +6,7 @@ static var window_size := Vector2i(1600, 900)
 static var reduced_motion := false
 static var placement_guides := true
 static var raised_walls := true
+static var hand_backdrop := true
 static var fps_cap := 0
 static var muted := false
 static var music_volume := 1.0
@@ -69,6 +70,7 @@ static func initialize(window: Window) -> void:
 	# A new explicit choice remains persistent after this migration.
 	raised_walls = bool(config.get_value("display", "riser_walls_enabled", true))
 	placement_guides = bool(config.get_value("accessibility", "placement_guides", true))
+	hand_backdrop = bool(config.get_value("display", "hand_backdrop", true))
 	reduced_motion = bool(config.get_value("accessibility", "reduced_motion", false))
 	fps_cap = int(config.get_value("display", "fps_cap", 0))
 	if fps_cap not in [0, 30, 60, 120, 144, 240]:
@@ -165,6 +167,7 @@ static func save(window: Window) -> Error:
 	config.set_value("accessibility", "placement_guides", placement_guides)
 	config.set_value("display", "raised_walls", raised_walls)
 	config.set_value("display", "riser_walls_enabled", raised_walls)
+	config.set_value("display", "hand_backdrop", hand_backdrop)
 	config.set_value("display", "fps_cap", fps_cap)
 	config.set_value("audio", "muted", muted)
 	config.set_value("audio", "music_volume", music_volume)

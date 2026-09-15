@@ -238,7 +238,7 @@ func room_built(id: String) -> void:
 
 func place_panel() -> void:
 	var area:=Rect2(Vector2.ZERO,get_viewport().get_visible_rect().size)
-	if game!=null and is_instance_valid(game.grid_scroll): area=game.grid_scroll.get_global_rect()
+	if game!=null and is_instance_valid(game.grid_scroll): area=game.station_clear_rect() if game.has_method("station_clear_rect") else game.grid_scroll.get_global_rect()
 	panel.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	panel.size=Vector2(minf(720,area.size.x-32),170)
 	panel.position=Vector2(area.get_center().x-panel.size.x*0.5,area.end.y-panel.size.y-16)

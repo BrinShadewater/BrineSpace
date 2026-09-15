@@ -233,6 +233,11 @@ var grid_scroll: ScrollContainer
 var resource_bar: Container
 var hand_box: HBoxContainer
 var hand_count_label: Label
+var hand_panel: PanelContainer
+var hand_chrome: Array = []
+var hand_backdrop_shown := -1
+var station_center: Control
+var resize_keep_top := false
 var reroll_button: Button
 var preview_texture: TextureRect
 var preview_name_label: Label
@@ -492,6 +497,7 @@ func _build_ui() -> void:
 	middle.offset_right = -560
 	middle.offset_bottom = -344
 	root.add_child(middle)
+	station_center = middle
 
 	var grid_frame := PanelContainer.new()
 	grid_frame.name = "GridFrame"
@@ -1021,6 +1027,8 @@ func _build_ui() -> void:
 	card_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bottom_box.add_child(card_row)
 	hand_box = card_row
+	hand_panel = bottom
+	hand_chrome = [blueprint_title, hand_count, draft_hint]
 
 	summary_layer = CanvasLayer.new()
 	summary_layer.name = "SummaryLayer"
@@ -1093,9 +1101,45 @@ func _build_ui() -> void:
 	add_child(tick_timer)
 	tick_timer.start()
 	tick_timer.paused = paused
+	_apply_hand_backdrop()
 	_apply_grid_zoom()
 	_refresh_flow_controls()
 	_hide_grid_scrollbars.call_deferred()
+
+# With the draft hand backdrop off (Settings > Accessibility), the station view runs to the
+# bottom of the screen and the hand floats over it: only the reroll button, the cards and the
+# draw/discard pile stay, and clicks between them reach the station (owner playtest).
+func _apply_hand_backdrop() -> void:
+	if not is_instance_valid(hand_panel): return
+	var shown: bool = Preferences.hand_backdrop
+	if hand_backdrop_shown == int(shown): return
+	hand_backdrop_shown = int(shown)
+	if shown:
+		_apply_panel_style(hand_panel, Color("#071018"), Color("#15232c"))
+	else:
+		var framed: StyleBox = hand_panel.get_theme_stylebox("panel")
+		var clear := StyleBoxEmpty.new()
+		for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: clear.set_content_margin(side, framed.get_content_margin(side))
+		hand_panel.add_theme_stylebox_override("panel", clear)
+	for label in hand_chrome: label.visible = shown
+	var row: HBoxContainer = hand_panel.get_child(0)
+	var status: VBoxContainer = row.get_child(0)
+	status.alignment = BoxContainer.ALIGNMENT_BEGIN if shown else BoxContainer.ALIGNMENT_END
+	hand_panel.mouse_filter = Control.MOUSE_FILTER_STOP if shown else Control.MOUSE_FILTER_IGNORE
+	for container in [row, status, hand_box]:
+		container.mouse_filter = Control.MOUSE_FILTER_PASS if shown else Control.MOUSE_FILTER_IGNORE
+	var view_bottom := -344.0 if shown else -8.0
+	if station_center.offset_bottom != view_bottom:
+		# Toggling mid-run moves only the view's bottom edge; the station holds still on screen.
+		resize_keep_top = camera_viewport_size != Vector2.ZERO
+		station_center.offset_bottom = view_bottom
+
+# The station view less the floating draft hand, for popups that must not cover the cards.
+func station_clear_rect() -> Rect2:
+	var area := grid_scroll.get_global_rect()
+	if is_instance_valid(hand_panel) and not Preferences.hand_backdrop:
+		area.end.y = minf(area.end.y, hand_panel.get_global_rect().position.y)
+	return area
 
 func _apply_panel_style(panel: PanelContainer, bg_color := Color(0.035, 0.055, 0.075, 0.92), border_color := Color(0.18, 0.28, 0.34, 0.9)) -> void:
 	var panel_path := UI_TERMINAL_PANEL
@@ -2921,6 +2965,7 @@ func _focus_inspected_room() -> void:
 	grid_view.queue_redraw()
 
 func _refresh_all() -> void:
+	_apply_hand_backdrop()
 	_refresh_learning_ui()
 	Preferences.apply_key_hints(self)
 	_refresh_resources()
@@ -4867,7 +4912,7 @@ func _refresh_placement_status() -> void:
 
 func _position_placement_feedback() -> void:
 	if not is_instance_valid(grid_scroll) or not is_instance_valid(grid_view): return
-	var area := grid_scroll.get_global_rect().grow(-8)
+	var area := station_clear_rect().grow(-8)
 	placement_feedback.size.x = minf(440,area.size.x)
 	var point := grid_view.get_global_transform() * (Vector2(hover_cell + Vector2i.RIGHT) * get_cell_size())
 	point += Vector2(12,8)
@@ -5328,6 +5373,9 @@ func _resize_grid_view() -> void:
 		_apply_grid_zoom.call_deferred()
 		return
 	var center := (Vector2(grid_scroll.scroll_horizontal, grid_scroll.scroll_vertical) + previous_size * 0.5) / (GRID_SIZE * get_cell_size())
+	if resize_keep_top:
+		resize_keep_top = false
+		center.y += (grid_scroll.size.y - previous_size.y) * 0.5 / (GRID_SIZE * get_cell_size())
 	var revision := camera_view_revision
 	await get_tree().process_frame
 	# A deliberate fit or focus request takes precedence over automatic resize work.
