@@ -222,7 +222,8 @@ static func draw_leak(canvas,origin: Vector2,scale: float,severity: float,water:
 			canvas.draw_circle(origin+bolt*scale,maxf(1,scale*1.5),Color("263e42"))
 	if patched: mouth=origin+Vector2(0,21)*scale
 	if patched or severity<=0.35:
-		canvas.draw_line(mouth,mouth+Vector2(0,12)*scale,Color(0.22,0.48,0.49,0.35),maxf(1,scale*3))
+		# Hairline and patched cracks seep only a falling droplet; the fixed translucent
+		# trickle bar under them read as a stray blue line (owner playtest).
 		var phase := fposmod(time*(0.45 if patched else 0.8),1.0)
 		if phase<0.65:
 			var drop := mouth+Vector2(0,phase*phase*65)*scale

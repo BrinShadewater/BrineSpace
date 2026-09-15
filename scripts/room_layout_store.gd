@@ -93,7 +93,7 @@ static func door_lane(side: int) -> Rect2:
 static func move_prop(prop: Dictionary, at: Vector2) -> void:
 	var shift: Vector2=at-prop.rect.position
 	prop.rect.position=at
-	prop.sort_y=prop.rect.end.y
+	prop.sort_y=preload("res://scripts/room_asset_library.gd").base_sort_y(prop)
 	if prop.has("art_offset"): prop.art_offset+=shift
 static func apply(room, asset: String) -> bool:
 	room.set_meta("layout_asset",asset)
@@ -200,7 +200,7 @@ static func resize_prop(prop: Dictionary, value) -> void:
 		if is_finite(float(value[0])): scale_value=clampf(float(value[0]),0.25,2.0)
 	prop.rect.size=prop.layout_original_size*scale_value
 	if prop.has("visual_y_offset"): prop.visual_y_offset=prop.layout_original_lift*scale_value
-	prop.sort_y=prop.rect.end.y
+	prop.sort_y=preload("res://scripts/room_asset_library.gd").base_sort_y(prop)
 
 static func flip_axes(room: Node, id: String) -> Vector2:
 	var value=surface_positions(room).get("flip/"+id,[false,false])

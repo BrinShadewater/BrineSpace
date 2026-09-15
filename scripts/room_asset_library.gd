@@ -69,8 +69,16 @@ static func apply_variants(room, values: Dictionary) -> void:
 		replacement.variant_source=chosen
 		for metadata in ["copy_source","wall_mount","split_wall","custom_library_draw"]:
 			if original.has(metadata): replacement[metadata]=original[metadata]
-		replacement.sort_y=replacement.rect.end.y
+		replacement.sort_y=base_sort_y(replacement)
 		room.props[i]=replacement
+# Props draw in order of this depth. An L-shaped corner console sorts by the front of its
+# wall arm, not the tip of the arm running down the side wall, which drew crew standing in
+# front of the corner behind it (owner playtest).
+static func base_sort_y(prop: Dictionary) -> float:
+	if prop.has("corner") and not prop.get("collision_boxes",[]).is_empty():
+		var arm: Array=prop.collision_boxes[0]
+		return prop.rect.position.y+prop.rect.size.y*(float(arm[1])+float(arm[3]))
+	return prop.rect.end.y
 static func template(id: String) -> Dictionary:
 	id=base_id(id)
 	var all:=entries()
@@ -103,6 +111,7 @@ static func template(id: String) -> Dictionary:
 	var prop: Dictionary={"id":id,"library_asset":true,"full_wall":true,"rect":Rect2(Vector2.ZERO,size),"center":Vector2.ZERO,"sort_y":size.y,"registration":registration,"library_texture":texture}
 	if data.has("collision_boxes"): prop.collision_boxes=data.collision_boxes.duplicate(true)
 	if data.has("corner"): prop.wall_mount=true; prop.corner=data.corner
+	prop.sort_y=base_sort_y(prop)
 	all[id].template=prop
 	# The tray publishes only clipped transparent renders, never source-sheet crops.
 	return prop
@@ -119,7 +128,7 @@ static func apply(room: Node, values: Dictionary) -> void:
 		if prop.is_empty(): continue
 		prop.id=id
 		if prop.has("art_offset"): prop.art_offset+=at-prop.rect.position
-		prop.rect.position=at; prop.sort_y=prop.rect.end.y
+		prop.rect.position=at; prop.sort_y=base_sort_y(prop)
 		room.props.append(prop)
 
 static func draw(room, prop: Dictionary) -> void:

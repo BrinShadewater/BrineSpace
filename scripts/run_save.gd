@@ -18,6 +18,7 @@ static func capture(game) -> Dictionary:
 		"wrecks": game.wrecks.duplicate(true),
 		"surveyed_water":game.surveyed_water.duplicate(),
 		"companions":game.Companions.snapshot(game),
+		"comms":game.crew_comms.snapshot() if is_instance_valid(game.crew_comms) else {},
 		"drone_fleet": game.drone_fleet.snapshot(),
 		"recovered_crew": game.recovered_crew.duplicate(true),
 		"architects": game.architect_run.duplicate(true),
@@ -251,6 +252,7 @@ static func _restore_crew(game, data: Dictionary, staged := false) -> void:
 		if data.crew.has("playback"): game.grid_view.restore_crew_playback(data.crew.playback)
 
 static func _finish_restore(game, data: Dictionary) -> void:
+	if is_instance_valid(game.crew_comms): game.crew_comms.restore_state(data.get("comms"))
 	game.Companions.restore(game,data.get("companions"))
 	game.grid_view.door_wet_history.clear()
 	game.rng.state = data.rng

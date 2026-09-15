@@ -82,6 +82,7 @@ func transmit(id: String, message: String, key: String="", urgent: bool=false) -
 	var first_waiting := pending.is_empty()
 	if not key.is_empty(): seen[key]=true
 	var entry: Dictionary={"speaker":id,"text":message,"urgent":urgent}
+	if not key.is_empty(): entry.key=key
 	if urgent:
 		var index:=0
 		while index<pending.size() and pending[index].get("urgent",false): index+=1
@@ -90,6 +91,31 @@ func transmit(id: String, message: String, key: String="", urgent: bool=false) -
 	if first_waiting and is_instance_valid(game) and game.has_method("play_station_sound"): game.play_station_sound("ui_comms")
 	if minimized: minimized=false; current={}
 	return true
+# Save/Continue keeps what was already said. Without it every Continue replayed the crew
+# wake lines and BRINE's greeting into the history (an owner playtest history held the
+# same line up to ten times).
+func snapshot() -> Dictionary:
+	return {"seen":seen.keys(),"greeting_sent":greeting_sent}
+
+func restore_state(data: Variant) -> void:
+	if not data is Dictionary or not data.get("seen") is Array: return
+	var said := {}
+	for key in data.seen:
+		if key is String and key.length() <= 128:
+			said[key]=true
+			seen[key]=true
+	greeting_sent=greeting_sent or data.get("greeting_sent",false)==true
+	# A keyed line queued while the checkpoint loaded (a greeting on a slow Continue) was already said.
+	for index in range(pending.size()-1,-1,-1):
+		if said.has(str(pending[index].get("key",""))): pending.remove_at(index)
+	if said.has(str(current.get("key",""))):
+		if not history.is_empty() and history.back().get("key","")==current.key:
+			history.pop_back()
+			save_archive()
+		var queued: Array=pending.duplicate()
+		dismiss()
+		pending=queued
+
 func show_next() -> void:
 	talk_id=""
 	if pending.is_empty(): dismiss(); return

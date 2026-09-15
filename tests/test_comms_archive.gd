@@ -18,5 +18,17 @@ func run() -> void:
 	var broken=Comms.new(); broken.archive_path=path; root.add_child(broken); broken.set_process(false)
 	broken.transmit("bill","Keep the original."); broken.show_next()
 	assert(FileAccess.get_file_as_string(path)=="damaged archive","Malformed history preserved")
-	print("COMMS ARCHIVE PASS: disk reload, replay, atomic replacement, bounded history, malformed preservation")
+	# Save/Continue keeps what was already said: a restored comms never repeats a keyed line,
+	# and drops the same line if it was queued while the checkpoint loaded.
+	var said=Comms.new(); said.archive_path=path+".said"; root.add_child(said); said.set_process(false)
+	assert(said.transmit("bill","Still breathing.","awake/bill"))
+	said.show_next()
+	var state: Dictionary=said.snapshot()
+	var resumed=Comms.new(); resumed.archive_path=path+".resumed"; root.add_child(resumed); resumed.set_process(false)
+	assert(resumed.transmit("bill","Still breathing.","awake/bill"),"Fresh comms queue a wake line before the restore lands")
+	resumed.restore_state(state)
+	assert(resumed.pending.is_empty(),"Restored state drops a wake line queued during the load")
+	assert(not resumed.transmit("bill","Still breathing.","awake/bill"),"Restored comms do not repeat a keyed line")
+	assert(resumed.transmit("bill","A new observation.","finding/1"),"Unsaid lines still transmit")
+	print("COMMS ARCHIVE PASS: disk reload, replay, atomic replacement, bounded history, malformed preservation, said lines survive Continue")
 	quit()
