@@ -71,5 +71,32 @@ func run() -> void:
 		check(panel.cycle_button.disabled,"Blocked exterior control is disabled")
 	await rendered();await rendered()
 	root.get_texture().get_image().save_png(OUT+"airlock-blocker-feedback.png")
+	# An animated camera zoom scales retained layers instead of rebuilding them every frame,
+	# and the settled frame matches a station that rebuilt on every zoom step.
+	game.drone_fleet.sites.erase(blocked_cell)
+	game.selected_room_cell=Vector2i(-1,-1)
+	game._refresh_all()
+	await rendered();await rendered()
+	var zoom_start: float=game.grid_zoom
+	var rebuilds_before: int=game.grid_view.floor_rebuilds
+	game.camera_zoom_center=Vector2(cell)/40.0
+	game.camera_zoom_target=clampf(zoom_start*0.6,game._minimum_map_zoom(),game.DEFAULT_GRID_ZOOM)
+	var animated_frames:=0
+	var saw_freeze:=false
+	while game.camera_zoom_target>=0.0 and animated_frames<240:
+		game._update_camera_zoom(1.0/60.0) # This fixture does not run main._process.
+		await rendered()
+		animated_frames+=1
+		if game.grid_view.zoom_freeze_cell>0.0: saw_freeze=true
+	await rendered();await rendered()
+	check(saw_freeze and animated_frames>=4 and not is_equal_approx(game.grid_zoom,zoom_start),"Animated zoom engages the retained-layer freeze")
+	check(game.grid_view.floor_rebuilds-rebuilds_before<=2,"Animated zoom rebuilds floors at most at start and settle, not per frame: "+str(game.grid_view.floor_rebuilds-rebuilds_before)+" over "+str(animated_frames))
+	var settled:=root.get_texture().get_image()
+	game.grid_view.reuse_layers_while_zooming=false
+	game.grid_view.surface_key=[];game.grid_view.env_below_key=[];game.grid_view.env_foundations_key=[];game.grid_view.env_terrain_key=[];game.grid_view.env_derelict_key=[];game.grid_view.room_frame_keys.clear()
+	game.grid_view.queue_redraw()
+	await rendered();await rendered();await rendered()
+	check(settled.get_data()==root.get_texture().get_image().get_data(),"Settled zoom pixels match a full rebuild")
+	game.grid_view.reuse_layers_while_zooming=true
 	print("LIVE SURFACE RETENTION: ","PASS" if failures==0 else "FAIL"," failures=",failures)
 	quit(0 if failures==0 else 1)

@@ -883,6 +883,12 @@ var env_foundation_rebuilds := 0
 var env_terrain_key: Array = []
 var env_terrain_rebuilds := 0
 var env_derelict_key: Array = []
+# While the camera zoom animates, scale the retained layers built at the previous
+# cell size instead of rebuilding floors, walls, doors, lights and environment every
+# frame; the settled frame rebuilds exactly. --rebuild-while-zooming restores rebuilds.
+var reuse_layers_while_zooming := not OS.get_cmdline_user_args().has("--rebuild-while-zooming")
+var zoom_freeze_cell := -1.0
+var last_draw_cell := -1.0
 var env_derelict_rebuilds := 0
 var retain_derelicts := not OS.get_cmdline_user_args().has("--redraw-derelicts")
 
@@ -1009,6 +1015,7 @@ func _draw() -> void:
 			if region.intersects(Rect2(Vector2(room.pos)*cell_size,Vector2.ONE*cell_size)):
 				visible_draw_rooms.append(room)
 	if retain_static_surfaces: preload("res://scripts/flood_visuals.gd").update_surfaces(self,main,visible_draw_rooms,cell_size)
+	_update_zoom_freeze(main,cell_size)
 	var environment_stage := Time.get_ticks_usec() if profile_draw else 0
 	_draw_space_background(grid_pixel_size)
 	if profile_draw: environment_stage = _profile_draw_stage("env_seabed",environment_stage)
@@ -1019,20 +1026,21 @@ func _draw() -> void:
 		# canvas, which composites BELOW these child passes.
 		for env_layer in env_passes: env_layer.show()
 		var below_key: Array=[cell_size,_visible_cell_range(main,cell_size)]
+		if zoom_freeze_cell > 0.0: below_key = env_below_key
 		if below_key != env_below_key:
 			env_below_key = below_key.duplicate(true)
 			env_passes[Env.STATIC_BELOW].queue_redraw()
-		var foundations_key := _environment_foundations_key(main,cell_size)
+		var foundations_key: Array = env_foundations_key if zoom_freeze_cell > 0.0 else _environment_foundations_key(main,cell_size)
 		if foundations_key != env_foundations_key:
 			env_foundations_key = foundations_key.duplicate(true)
 			env_passes[Env.STATIC_FOUNDATIONS].queue_redraw()
-		var terrain_key := _environment_terrain_key(main,cell_size)
+		var terrain_key: Array = env_terrain_key if zoom_freeze_cell > 0.0 else _environment_terrain_key(main,cell_size)
 		if terrain_key != env_terrain_key:
 			env_terrain_key = terrain_key
 			env_passes[Env.STATIC_TERRAIN].queue_redraw()
 		env_passes[Env.LIVE_LINES].queue_redraw()
 		env_passes[Env.LIVE_ABOVE].queue_redraw()
-		var derelict_key := _environment_derelict_key(main,cell_size) if retain_derelicts else []
+		var derelict_key: Array = env_derelict_key if zoom_freeze_cell > 0.0 and retain_derelicts else (_environment_derelict_key(main,cell_size) if retain_derelicts else [])
 		if not retain_derelicts or derelict_key != env_derelict_key:
 			env_derelict_key = derelict_key
 			env_passes[Env.DERELICTS].queue_redraw()
@@ -1067,18 +1075,32 @@ func _draw() -> void:
 		return
 	for layer in surface_passes: layer.show()
 	var checked := Time.get_ticks_usec() if profile_draw else 0
-	var next_key := _surface_state()
+	var next_key: Array = surface_key if zoom_freeze_cell > 0.0 else _surface_state()
 	if next_key != surface_key:
 		surface_key = next_key.duplicate(true)
 		surface_passes[Surface.FLOOR].queue_redraw()
 		surface_passes[Surface.WALL].queue_redraw()
 	if profile_draw: _profile_draw_stage("surface_validation",checked)
 	checked = Time.get_ticks_usec() if profile_draw else 0
-	_door_light_state()
+	if zoom_freeze_cell <= 0.0: _door_light_state()
 	if profile_draw: _profile_draw_stage("door_light_validation",checked)
 	surface_passes[Surface.LIVE].queue_redraw()
 	surface_passes[Surface.FOREGROUND].queue_redraw()
 	render_door_cache_active = false
+
+func _update_zoom_freeze(main, cell_size: float) -> void:
+	# Hold only while the scale is actually moving: a stalled or cancelled animation
+	# releases the freeze so retained layers can never stay stale.
+	var moving: bool = not is_equal_approx(cell_size, last_draw_cell)
+	last_draw_cell = cell_size
+	var zooming: bool = reuse_layers_while_zooming and retain_static_surfaces and retain_environment and float(main.camera_zoom_target) >= 0.0 and moving and flood_surfaces.is_empty() and surface_key.size() > 1
+	if zooming and zoom_freeze_cell <= 0.0: zoom_freeze_cell = float(surface_key[1])
+	elif not zooming: zoom_freeze_cell = -1.0
+	var factor: float = cell_size / zoom_freeze_cell if zoom_freeze_cell > 0.0 else 1.0
+	for id in [Env.STATIC_BELOW,Env.STATIC_FOUNDATIONS,Env.STATIC_TERRAIN,Env.DERELICTS]:
+		env_passes[id].scale = Vector2.ONE * factor
+	for id in [Surface.FLOOR,Surface.WALL,Surface.REAR_DOORS,Surface.FRONT_DOORS,Surface.LIGHTS]:
+		surface_passes[id].scale = Vector2.ONE * factor
 
 func _draw_environment_above(main, cell_size: float, grid_pixel_size: float) -> void:
 	# Everything the environment draws above the foundations, in the original order.
@@ -1717,12 +1739,14 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		var Store = preload("res://scripts/room_layout_store.gd")
 		frame_key = [room_view.get_instance_id(),int(room.get("rotation",0)),sides,omitted,main.powered_room_cells.has(pos),main.hardware.walls,
 			preload("res://scripts/title_settings.gd").raised_walls,main.occupied.has(pos+Vector2i.UP),main.drone_fleet.deployed(pos),main.drone_fleet.hatch_fraction(pos),
-			rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size,Store.revision,Store.geometry_revision,
+			["zoom",zoom_freeze_cell] if zoom_freeze_cell > 0.0 else [rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size],Store.revision,Store.geometry_revision,
 			int(room_view.get_meta("layout_apply_serial",0))]
 		if content_canvases.has(pos) and room_frame_keys.get(pos,[]) == frame_key:
 			# Nothing this room's configure/submit reads has changed: its retained
 			# slots are current, so only advance the live animation clock.
 			content_canvases[pos].show()
+			# A canvas kept through a zoom animation scales from the cell size it was built at.
+			content_canvases[pos].scale = Vector2.ONE * (_cell_size() / float(content_canvases[pos].get_meta("built_cell", _cell_size())))
 			content_canvases[pos].advance_live(main.get_visual_time_seconds())
 			skipped_room_setups += 1
 			return
@@ -1785,6 +1809,8 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		canvas.profile_enabled = profile_draw
 		canvas.draw_origin = rect.get_center()
 		canvas.draw_scale = _cell_size()/384.0
+		canvas.scale = Vector2.ONE
+		canvas.set_meta("built_cell", _cell_size())
 		canvas.show()
 		var region := Rect2(Vector2(_get_main().grid_scroll.scroll_horizontal,_get_main().grid_scroll.scroll_vertical),_get_main().grid_scroll.size)
 		canvas.clip_region = Rect2((region.position-rect.get_center())/canvas.draw_scale,region.size/canvas.draw_scale)
