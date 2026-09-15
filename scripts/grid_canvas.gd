@@ -1729,14 +1729,7 @@ func _paint_surface(pass_id: int) -> void:
 	stage_time = _profile_draw_stage("room_contents", stage_time)
 	_draw_synergy_links(main)
 	_draw_discovery_bursts(main)
-	if main.occupied.has(main.selected_room_cell):
-		var selected: Dictionary = main.occupied[main.selected_room_cell]
-		var start: Vector2 = (Vector2(main.selected_room_cell) + Vector2.ONE * 0.5) * cell_size
-		for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
-			var neighbor_cell: Vector2i = main.selected_room_cell + offset
-			if main.occupied.has(neighbor_cell) and main._placed_rooms_connected(selected, main.occupied[neighbor_cell], offset):
-				draw_target.draw_line(start, (Vector2(neighbor_cell) + Vector2.ONE * 0.5) * cell_size, Color(0.48,0.65,0.62,0.32), 1.0)
-				draw_target.draw_rect(Rect2(Vector2(neighbor_cell) * cell_size, Vector2.ONE * cell_size).grow(-3), Color(0.48,0.65,0.62,0.32), false, 1.0)
+	_draw_room_selection(main, cell_size)
 	_draw_door_foregrounds(main, true)
 	_draw_humans(main)
 	_draw_door_foregrounds(main, false)
@@ -1809,12 +1802,6 @@ func _draw_room(room: Dictionary) -> void:
 		draw_target.draw_rect(rect.grow(-1), Color(0.05, 0.02, 0.03, 0.58))
 	var border_color := Color("#d34e58") if offline else color.darkened(0.10)
 	var border_width := 1.5 if not has_texture or main.admin_mode or offline else 0.0
-	if main.selected_room_cell == pos:
-		border_color = Color("#4fa38d")
-		border_width = 2.0
-	elif main.hover_cell == pos:
-		border_color = Color("#6ab8a3")
-		border_width = 1.5
 	if border_width > 0.0:
 		draw_target.draw_rect(rect, border_color, false, border_width)
 	var center := rect.get_center()
@@ -1846,6 +1833,42 @@ func _draw_room(room: Dictionary) -> void:
 		_draw_room_path(room, rect)
 		_draw_room_doors(room, rect)
 
+# The selected room gets a thin lamp-light outline that follows its hull (the whole cell for
+# rooms and wards, the tube for corridors), drawn over walls and props but under crew. It
+# replaced a teal box around the cell, with lines to every connected neighbour, that read as
+# UI laid over the art (owner playtest). Hovering a room shows the same outline, fainter.
+func _draw_room_selection(main, cell_size: float) -> void:
+	for mark in [[main.selected_room_cell, 1.0], [main.hover_cell, 0.4]]:
+		var cell: Vector2i = mark[0]
+		var strength: float = mark[1]
+		if strength < 1.0 and cell == main.selected_room_cell: continue
+		var room: Dictionary = main.occupied.get(cell, {})
+		if room.is_empty():
+			var ward: Dictionary = main.wrecks.get(cell, {})
+			if strength < 1.0 or ward.is_empty() or ward.get("cleared", false): continue
+			if not (str(ward.get("kind", "")) in ["cryo", "charging"] or main.Companions.IDS.has(ward.get("kind", ""))): continue
+		var outline := _room_outline(room, cell, cell_size)
+		var width := clampf(cell_size / 200.0, 1.0, 2.5)
+		draw_target.draw_polyline(outline, Color(0.0, 0.0, 0.0, 0.45 * strength), width + 2.0)
+		draw_target.draw_polyline(outline, Color(0.93, 0.89, 0.8, 0.8 * strength), width)
+
+func _room_outline(room: Dictionary, cell: Vector2i, cell_size: float) -> PackedVector2Array:
+	var top := -191.0
+	# A raised north wall stands above the cell; frame it rather than cut across its base.
+	if not room.is_empty() and _uses_layered_art(room) and not _is_narrow_corridor(room) and _riser_fixtures_visible(room):
+		top = preload("res://rooms/whole-room/riser_geometry.gd").CAP_TOP
+	var local := PackedVector2Array([Vector2(-191, top), Vector2(191, top), Vector2(191, 191), Vector2(-191, 191)])
+	if not room.is_empty() and _is_narrow_corridor(room):
+		var Corridor = preload("res://rooms/underwater/corridor_geometry.gd")
+		local = PackedVector2Array()
+		for point in Corridor.hull_for(room.id == "corner", room.id == "tee_corridor"):
+			local.append(preload("res://tools/modular_room_geometry.gd").turn(point, Corridor.rotation(room)))
+	var center := (Vector2(cell) + Vector2.ONE * 0.5) * cell_size
+	var outline := PackedVector2Array()
+	for point in local: outline.append(center + point * cell_size / 384.0)
+	outline.append(outline[0])
+	return outline
+
 func _draw_cryo_derelicts(main, cell_size: float) -> void:
 	var region := _static_cull_rect(main,cell_size).grow(cell_size * 0.5)
 	for cell in main.wrecks:
@@ -1866,8 +1889,6 @@ func _draw_cryo_derelicts(main, cell_size: float) -> void:
 		cryo_view.set_meta("derelict_condition",true)
 		cryo_view.render_into(draw_target,(Vector2(cell)+Vector2.ONE*0.5)*cell_size,cell_size/384.0)
 		cryo_view.set_meta("derelict_condition",false)
-		if cell==main.selected_room_cell:
-			draw_target.draw_rect(Rect2(Vector2(cell)*cell_size,Vector2.ONE*cell_size).grow(-2),Color("a9c4bf"),false,2)
 		if ward.progress>0:
 			var bar := Rect2((Vector2(cell)+Vector2(0.12,0.92))*cell_size,Vector2(0.76,0.018)*cell_size)
 			draw_target.draw_rect(bar,Color("14282b"))
