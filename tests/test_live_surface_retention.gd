@@ -88,7 +88,12 @@ func run() -> void:
 		await rendered()
 		animated_frames+=1
 		if game.grid_view.zoom_reuse_active: saw_freeze=true
-	await rendered();await rendered()
+	# Layers that only changed size repaint over a few frames after the zoom lands.
+	var settle_frames:=0
+	while (settle_frames<2 or game.grid_view.zoom_settling) and settle_frames<60:
+		await rendered()
+		settle_frames+=1
+	check(not game.grid_view.zoom_settling,"The landed zoom finishes settling: "+str(settle_frames)+" frames")
 	check(saw_freeze and animated_frames>=4 and not is_equal_approx(game.grid_zoom,zoom_start),"Animated zoom engages the retained-layer freeze")
 	check(game.grid_view.floor_rebuilds-rebuilds_before<=2,"Animated zoom rebuilds floors at most at start and settle, not per frame: "+str(game.grid_view.floor_rebuilds-rebuilds_before)+" over "+str(animated_frames))
 	var settled:=root.get_texture().get_image()

@@ -841,7 +841,7 @@ func _process(_delta: float) -> void:
 		last_content_viewport = viewport_region
 		queue_redraw()
 	_advance_room_lights(_delta)
-	if not main.paused or (not main.selected_card_id.is_empty() and not main._gameplay_input_blocked()):
+	if zoom_settling or not main.paused or (not main.selected_card_id.is_empty() and not main._gameplay_input_blocked()):
 		queue_redraw()
 
 
@@ -892,6 +892,15 @@ var env_derelict_key: Array = []
 # whose contents grow once, instead of revealing rooms with no floor or walls.
 var reuse_layers_while_zooming := not OS.get_cmdline_user_args().has("--rebuild-while-zooming")
 var zoom_reuse_active := false
+# When the zoom lands, layers whose only change is their size repaint over the next few
+# frames (one layer group per frame, room canvases within a draw budget) and keep scaling
+# until then; a layer whose real inputs changed still repaints at once.
+var zoom_settling := false
+var settle_backlog := false
+var settle_group := ""
+var settle_rooms_rebuilt := 0
+# Canvas slot painting happens after the live pass returns, so budget rooms by count.
+const SETTLE_ROOMS_PER_FRAME := 8
 var zoom_cover_cells := Rect2()
 var zoom_cover_changed := false
 var settled_view_cells := Rect2()
@@ -945,11 +954,11 @@ func _door_light_state() -> void:
 				if parts[i].floor or foot_y>center.y+float(parts[i].depth)*size/384.0: depth_mask |= 1<<i
 			doors.append([room.pos,side,frame,variant,narrow,minf(_room_light_level(room),_room_light_level(other)),depth_mask])
 	var enabled := retain_doors_lights and not department_door_materials.is_empty()
-	if not enabled or _retained_key_stale(doors,door_surface_key,0):
+	if not enabled or _retained_key_stale(doors,door_surface_key,0,"shell"):
 		door_surface_key = doors.duplicate(true)
 		surface_passes[Surface.REAR_DOORS].queue_redraw()
 		surface_passes[Surface.FRONT_DOORS].queue_redraw()
-	if not retain_doors_lights or _retained_key_stale(lights,light_surface_key,0):
+	if not retain_doors_lights or _retained_key_stale(lights,light_surface_key,0,"shell"):
 		light_surface_key = lights.duplicate(true)
 		surface_passes[Surface.LIGHTS].queue_redraw()
 
@@ -1016,12 +1025,17 @@ func _draw() -> void:
 	var cell_size := _cell_size()
 	var grid_pixel_size := GRID_SIZE * cell_size
 	_update_zoom_cover(main,cell_size)
+	# Settling ends on the first frame after one that deferred nothing.
+	if zoom_settling and not settle_backlog: zoom_settling = false
+	settle_backlog = false
+	settle_group = ""
 	visible_draw_rooms = _rooms_in(main,_view_rect(main),cell_size) if cull_room_drawing else main.placed_rooms
 	static_draw_rooms = _rooms_in(main,_static_cull_rect(main,cell_size),cell_size) if cull_room_drawing and zoom_reuse_active else visible_draw_rooms
 	if retain_static_surfaces: preload("res://scripts/flood_visuals.gd").update_surfaces(self,main,static_draw_rooms,cell_size)
-	if zoom_reuse_active and _flood_surface_shown():
+	if (zoom_reuse_active or zoom_settling) and _flood_surface_shown():
 		# Flood surfaces are placed at the current size inside the floor pass: no scaled reuse.
 		_end_zoom_reuse(main,cell_size)
+		zoom_settling = false
 		static_draw_rooms = visible_draw_rooms
 	_scale_retained_layers(cell_size)
 	# Mid-zoom, retained keys are only re-read when the cover widens.
@@ -1036,21 +1050,21 @@ func _draw() -> void:
 		# canvas, which composites BELOW these child passes.
 		for env_layer in env_passes: env_layer.show()
 		var below_key: Array = env_below_key if hold_layers else [cell_size,_visible_cell_range(main,cell_size,true)]
-		if _retained_key_stale(below_key,env_below_key,0):
+		if _retained_key_stale(below_key,env_below_key,0,"env"):
 			env_below_key = below_key.duplicate(true)
 			env_passes[Env.STATIC_BELOW].queue_redraw()
 		var foundations_key: Array = env_foundations_key if hold_layers else _environment_foundations_key(main,cell_size)
-		if _retained_key_stale(foundations_key,env_foundations_key,0):
+		if _retained_key_stale(foundations_key,env_foundations_key,0,"env"):
 			env_foundations_key = foundations_key.duplicate(true)
 			env_passes[Env.STATIC_FOUNDATIONS].queue_redraw()
 		var terrain_key: Array = env_terrain_key if hold_layers else _environment_terrain_key(main,cell_size)
-		if _retained_key_stale(terrain_key,env_terrain_key,0):
+		if _retained_key_stale(terrain_key,env_terrain_key,0,"env"):
 			env_terrain_key = terrain_key
 			env_passes[Env.STATIC_TERRAIN].queue_redraw()
 		env_passes[Env.LIVE_LINES].queue_redraw()
 		env_passes[Env.LIVE_ABOVE].queue_redraw()
 		var derelict_key: Array = env_derelict_key if hold_layers and retain_derelicts else (_environment_derelict_key(main,cell_size) if retain_derelicts else [])
-		if not retain_derelicts or _retained_key_stale(derelict_key,env_derelict_key,0):
+		if not retain_derelicts or _retained_key_stale(derelict_key,env_derelict_key,0,"env"):
 			env_derelict_key = derelict_key
 			env_passes[Env.DERELICTS].queue_redraw()
 		env_passes[Env.EXTERIOR_ACTORS].queue_redraw()
@@ -1085,7 +1099,7 @@ func _draw() -> void:
 	for layer in surface_passes: layer.show()
 	var checked := Time.get_ticks_usec() if profile_draw else 0
 	var next_key: Array = surface_key if hold_layers else _surface_state()
-	if _retained_key_stale(next_key,surface_key,1):
+	if _retained_key_stale(next_key,surface_key,1,"shell"):
 		surface_key = next_key.duplicate(true)
 		surface_passes[Surface.FLOOR].queue_redraw()
 		surface_passes[Surface.WALL].queue_redraw()
@@ -1104,12 +1118,16 @@ func _update_zoom_cover(main, cell_size: float) -> void:
 	last_draw_cell = cell_size
 	zoom_cover_changed = false
 	if not (reuse_layers_while_zooming and retain_static_surfaces and retain_environment and float(main.camera_zoom_target) >= 0.0 and moving and surface_key.size() > 1):
+		if zoom_reuse_active:
+			zoom_settling = true
+			settle_backlog = true
 		_end_zoom_reuse(main,cell_size)
 		return
 	var view := _cells_of(_view_rect(main),cell_size)
 	if not zoom_reuse_active:
 		# The layers hold the settled view; add every cell the zoom will show.
 		zoom_reuse_active = true
+		zoom_settling = false
 		zoom_cover_changed = true
 		zoom_cover_cells = settled_view_cells.merge(_zoom_target_cells(main))
 	if not zoom_cover_cells.grow(1.0/cell_size).encloses(view):
@@ -1167,15 +1185,21 @@ func _flood_surface_shown() -> bool:
 	return false
 
 # Keys lead with the cell size. Mid-zoom a layer whose other inputs match keeps its
-# commands and scales from the size it was built at.
-func _retained_key_stale(next: Array, stored: Array, size_index: int) -> bool:
+# commands and scales from the size it was built at; while settling, one group of such
+# layers repaints per frame.
+func _retained_key_stale(next: Array, stored: Array, size_index: int, group := "") -> bool:
 	if next == stored: return false
-	if not zoom_reuse_active or next.size() != stored.size() or next.size() <= size_index: return true
+	if not (zoom_reuse_active or zoom_settling) or next.size() != stored.size() or next.size() <= size_index: return true
 	var current = next[size_index]
 	next[size_index] = stored[size_index]
 	var stale: bool = next != stored
 	next[size_index] = current
-	return stale
+	if stale or zoom_reuse_active: return stale
+	if settle_group.is_empty() or settle_group == group:
+		settle_group = group
+		return true
+	settle_backlog = true
+	return false
 
 func _scale_retained_layers(cell_size: float) -> void:
 	for layer in [env_passes[Env.STATIC_BELOW],env_passes[Env.STATIC_FOUNDATIONS],env_passes[Env.STATIC_TERRAIN],env_passes[Env.DERELICTS],
@@ -1503,6 +1527,7 @@ func _paint_surface(pass_id: int) -> void:
 		if profile_draw: _profile_draw_stage("lights",stage_time)
 		return
 	if pass_id == Surface.LIVE:
+		settle_rooms_rebuilt = 0
 		var visible_cells := {}
 		# A reused cell may now contain a procedural corridor, which never
 		# submits prop contents. Do not leave its former room's canvas visible.
@@ -1830,9 +1855,16 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 			[rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size],Store.revision,Store.geometry_revision,
 			int(room_view.get_meta("layout_apply_serial",0))]
 		var stored: Array = room_frame_keys.get(pos,[])
-		if zoom_reuse_active and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
-			# Mid-zoom the camera alone does not rebuild a canvas that still shows every prop in view.
-			frame_key[ROOM_FRAME_CAMERA] = stored[ROOM_FRAME_CAMERA]
+		if (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
+			# Mid-zoom the camera alone does not rebuild a canvas that still shows every prop in
+			# view. Once the zoom lands, a few scaled canvases rebuild per frame.
+			var scaled: bool = zoom_settling and not is_equal_approx(float(content_canvases[pos].get_meta("built_cell",_cell_size())),_cell_size())
+			var deferred: bool = scaled and settle_rooms_rebuilt >= SETTLE_ROOMS_PER_FRAME
+			if zoom_reuse_active or deferred:
+				frame_key[ROOM_FRAME_CAMERA] = stored[ROOM_FRAME_CAMERA]
+				if deferred and stored == frame_key: settle_backlog = true
+			elif scaled:
+				settle_rooms_rebuilt += 1
 		if content_canvases.has(pos) and stored == frame_key:
 			# Nothing this room's configure/submit reads has changed: its retained
 			# slots are current, so only advance the live animation clock.
