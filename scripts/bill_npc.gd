@@ -60,6 +60,14 @@ var avoidance_position := Vector2.INF
 var avoidance_positions := PackedVector2Array()
 var traffic_wait := 0.0
 var traffic_retry := 0.0
+# Swim clearance of one graph link depends only on geometry (fixed until rebuild), the
+# headings and the helmet, so repeated route searches reuse it.
+var swim_link_cache := {}
+# A swimmer caught where its swim outline does not fit (a standing spot beside a door
+# when water arrives) may move to this point with standing clearance alone.
+var squeeze_point := Vector2.INF
+# The facing a route_to_any result starts with; it may be an in-place turn from direction.
+var route_facing := ""
 var traffic_activity := ""
 
 func needs_air() -> bool: return true
@@ -510,6 +518,8 @@ func rebuild(main, staged := false) -> void:
 		room_cache.clear(); layout_geometry_revision=revision
 	cancel_helmet_action()
 	graph.clear()
+	swim_link_cache.clear()
+	squeeze_point = Vector2.INF
 	points.clear()
 	room_nodes.clear()
 	geometry.clear()
@@ -760,7 +770,8 @@ func move(delta: float) -> void:
 		var travel := next-foot
 		if travel.length_squared() > 0.001:
 			heading = ("east" if travel.x > 0 else "west") if absf(travel.x) > absf(travel.y) else ("south" if travel.y > 0 else "north")
-		if not segment_clear(foot, next) or (movement_medium != "dry" and not swim_segment_clear(foot,next,heading)):
+		var squeezing: bool = squeeze_point.is_finite() and target.is_equal_approx(squeeze_point)
+		if not segment_clear(foot, next) or (movement_medium != "dry" and not squeezing and not swim_segment_clear(foot,next,heading)):
 			path.clear()
 			goal = ""
 			locker_request.clear()
@@ -769,7 +780,7 @@ func move(delta: float) -> void:
 			timer = 1.0
 			return
 		var offset := next - foot
-		if offset.length_squared() > 0.001:
+		if offset.length_squared() > 0.001 and not squeezing:
 			direction = ("east" if offset.x > 0 else "west") if absf(offset.x) > absf(offset.y) else ("south" if offset.y > 0 else "north")
 		foot = next
 		traffic_wait = 0.0
@@ -777,8 +788,18 @@ func move(delta: float) -> void:
 			activity = traffic_activity
 			traffic_activity = ""
 		remaining -= distance
-		if foot.is_equal_approx(target): path.remove_at(0)
+		if foot.is_equal_approx(target):
+			path.remove_at(0)
+			if squeeze_point.is_finite() and target.is_equal_approx(squeeze_point): squeeze_point = Vector2.INF
 	if path.is_empty(): arrive()
+
+# Standing still in someone's way: may this actor step aside? Meals, rest, work, talk and
+# retreats stay put; only an idle look-around gives way.
+func can_step_aside() -> bool:
+	return state == "idle" and stage.is_empty() and expedition.is_empty() and goal in ["","curiosity"]
+
+func prepare_to_step_aside() -> void:
+	goal = ""
 
 func avoidance_peers() -> PackedVector2Array:
 	var peers := avoidance_positions.duplicate()
@@ -1089,16 +1110,117 @@ func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> 
 			var cost: float = costs[current]+from.distance_to(to)
 			if cost >= costs.get(next_state,INF): continue
 			if avoid_crew and not crew_clear(from,to): continue
-			if not swim_segment_clear(from,to,heading,facings[current.y]): continue
+			if not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
 			costs[next_state]=cost
 			parents[next_state]=current
 			if not frontier.has(next_state): frontier.append(next_state)
 	return PackedVector2Array()
 
-func smooth_route(route: PackedVector2Array) -> PackedVector2Array:
+func swim_link_clear(from_id: int, to_id: int, heading: String, previous_heading: String) -> bool:
+	# Corridor sampling consults fire cells relative to the actor's own cell: no reuse while anything burns.
+	if not fire_cells.is_empty(): return swim_segment_clear(graph.get_point_position(from_id),graph.get_point_position(to_id),heading,previous_heading)
+	var facings := ["east","south","west","north"]
+	var key := Vector4i(from_id,to_id,facings.find(heading)*2+(1 if helmet_equipped else 0),facings.find(previous_heading))
+	if not swim_link_cache.has(key):
+		swim_link_cache[key]=swim_segment_clear(graph.get_point_position(from_id),graph.get_point_position(to_id),heading,previous_heading)
+	return swim_link_cache[key]
+
+# The nearest of several target nodes by route length, in one search. Escape searches
+# ran a full swim search per refuge node, which never finished when no route existed.
+func route_to_any(start: int, targets: Dictionary, avoid_crew := false, turn_at := Vector2.INF) -> PackedVector2Array:
+	route_facing = direction
+	if not graph.has_point(start) or targets.is_empty(): return PackedVector2Array()
+	var disabled := []
+	for cell in fire_cells:
+		if cell==cell_at(foot): continue
+		for node in room_nodes.get(cell,[]):
+			if not graph.is_point_disabled(node):
+				graph.set_point_disabled(node,true)
+				disabled.append(node)
+	var route := PackedVector2Array()
+	if movement_medium == "dry":
+		var best := INF
+		for target in targets:
+			if graph.is_point_disabled(target): continue
+			var candidate := graph.get_point_path(start,target)
+			var length := 0.0
+			for i in range(1,candidate.size()): length+=candidate[i-1].distance_to(candidate[i])
+			if not candidate.is_empty() and length<best:
+				best=length
+				route=candidate
+	else:
+		route=_swim_route_to_any(start,targets,avoid_crew,turn_at if turn_at.is_finite() else foot)
+	for node in disabled: graph.set_point_disabled(node,false)
+	return route
+
+func _swim_route_to_any(start: int, targets: Dictionary, avoid_crew: bool, turn_at: Vector2) -> PackedVector2Array:
+	var facings := ["east","south","west","north"]
+	var costs := {}
+	var parents := {}
+	# Binary heap of [cost, order, state]; stale entries are skipped when popped.
+	var heap: Array = []
+	var order := 0
+	# Keep the current facing, or turn in place where both silhouettes fit, before the first stroke.
+	for index in range(4):
+		var turn: bool = facings[index] != direction
+		if turn and not swim_segment_clear(turn_at,turn_at,facings[index],direction): continue
+		var state := Vector2i(start,index)
+		costs[state]=12.0 if turn else 0.0
+		order+=1
+		heap.append([costs[state],order,state])
+	heap.sort_custom(func(a,b): return a[0]<b[0] or (a[0]==b[0] and a[1]<b[1]))
+	while not heap.is_empty():
+		var top: Array = heap[0]
+		var last: Array = heap.pop_back()
+		if not heap.is_empty():
+			heap[0]=last
+			var index := 0
+			while true:
+				var smallest := index
+				for child in [index*2+1,index*2+2]:
+					if child<heap.size() and (heap[child][0]<heap[smallest][0] or (heap[child][0]==heap[smallest][0] and heap[child][1]<heap[smallest][1])): smallest=child
+				if smallest==index: break
+				var swap: Array = heap[index]
+				heap[index]=heap[smallest]
+				heap[smallest]=swap
+				index=smallest
+		var current: Vector2i = top[2]
+		if float(top[0])>float(costs.get(current,INF)): continue
+		if targets.has(current.x):
+			var route := PackedVector2Array([graph.get_point_position(current.x)])
+			while parents.has(current):
+				current=parents[current]
+				route.insert(0,graph.get_point_position(current.x))
+			route_facing=facings[current.y]
+			return route
+		var from := graph.get_point_position(current.x)
+		for next_id in graph.get_point_connections(current.x):
+			if graph.is_point_disabled(next_id): continue
+			var to := graph.get_point_position(next_id)
+			var heading := travel_heading(from,to,facings[current.y])
+			var next_state := Vector2i(next_id,facings.find(heading))
+			var cost: float = float(costs[current])+from.distance_to(to)
+			if cost >= float(costs.get(next_state,INF)): continue
+			if avoid_crew and not crew_clear(from,to): continue
+			if not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
+			costs[next_state]=cost
+			parents[next_state]=current
+			order+=1
+			heap.append([cost,order,next_state])
+			var index := heap.size()-1
+			while index>0:
+				var parent := (index-1)/2
+				if heap[parent][0]<heap[index][0] or (heap[parent][0]==heap[index][0] and heap[parent][1]<heap[index][1]): break
+				var swap: Array = heap[index]
+				heap[index]=heap[parent]
+				heap[parent]=swap
+				index=parent
+	return PackedVector2Array()
+
+func smooth_route(route: PackedVector2Array, origin := Vector2.INF) -> PackedVector2Array:
 	# Remove grid stair-steps only when the entire shortcut has foot clearance.
 	var result := PackedVector2Array()
-	var from := foot
+	var from := foot if not origin.is_finite() else origin
 	var facing := direction
 	var index := 0
 	while index < route.size():

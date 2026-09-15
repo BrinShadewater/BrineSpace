@@ -135,4 +135,42 @@ func run() -> void:
 		expect(reached[0] and reached[1], "Both concurrent crew reach their original destinations after one yield")
 		if "--save-during-yield" in OS.get_cmdline_user_args(): expect(restored_yield, "Mid-yield restoration was exercised")
 		print("BATTERY CONCURRENT YIELD: reached=",reached," samples=",simultaneous_samples," failures=",failures)
+		# An idle companion standing in the route never waited for anyone, so no stand-off was
+		# resolved and crew gave up behind it (owner playtest: Josh and River at a door).
+		peer.active = false
+		var river = game.companion_actors["river"]
+		river.room_cache = npc.room_cache
+		river.rebuild(game)
+		river.active = true
+		river.foot = Vector2(7283.19287109375,7873.009765625)
+		river.path.clear()
+		river.start_behavior("scan")
+		expect(river.behavior == "scan" and river.can_step_aside(), "Idle scanning companion may give way")
+		npc.foot = Vector2(7297.1708984375,7858.31640625)
+		npc.path = original_path.duplicate()
+		npc.goal = "curiosity"
+		npc.traffic_wait = 0
+		npc.traffic_retry = 0
+		var idle_yield_step := -1
+		var bill_reached := false
+		for step in range(1000):
+			npc.avoidance_positions = PackedVector2Array([river.foot])
+			river.avoidance_positions = PackedVector2Array([npc.foot])
+			for actor in [npc,river]:
+				if actor.path.is_empty(): continue
+				var other = river if actor == npc else npc
+				var before: Vector2 = actor.foot
+				actor.move(0.1)
+				expect(actor.segment_clear(before,actor.foot), "Idle-blocker passage clears geometry")
+				expect(actor.foot.distance_to(other.foot) >= 19.99, "Idle-blocker passage preserves clearance")
+			if not "--negative-no-passage" in OS.get_cmdline_user_args():
+				if preload("res://scripts/crew_passage.gd").update([npc,river]) and idle_yield_step < 0:
+					idle_yield_step = step
+					expect(river.behavior.is_empty() and not river.path.is_empty(), "Companion drops its idle behaviour to walk aside")
+			bill_reached = npc.foot.is_equal_approx(Vector2(7104,7488)) and npc.path.is_empty()
+			if bill_reached and river.path.is_empty(): break
+		expect(idle_yield_step >= 0 and idle_yield_step < 20, "Idle companion steps aside within two seconds: step %d" % idle_yield_step)
+		expect(bill_reached, "Crew reach their destination past an idle companion")
+		expect(river.foot.distance_to(Vector2(7283.19287109375,7873.009765625)) >= 16, "Companion stays aside instead of returning to the doorway")
+		print("BATTERY IDLE BLOCKER: yield_step=",idle_yield_step," reached=",bill_reached," failures=",failures)
 	quit(1 if failures else 0)

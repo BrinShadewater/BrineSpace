@@ -47,6 +47,14 @@ func segment_clear(a:Vector2,b:Vector2)->bool:
 	return super.segment_clear(a,b) and (building_navigation or water.segment_safe(self,a,b))
 
 func needs_air() -> bool: return false
+# Idle behaviours (sitting, scanning, watching) give way; a torch repair, a pet from the
+# player, or a flooded companion (Josh offline, River afloat) does not walk a step-aside path.
+func can_step_aside() -> bool:
+	return water.mode == "dry" and behavior not in ["torch","pet"] and stage.is_empty() and expedition.is_empty()
+
+func prepare_to_step_aside() -> void:
+	behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
+	goal="";state="idle"
 func animation_state() -> String: return state
 func arrive() -> void:
 	path.clear(); goal=""; state="idle"; timer=decision_rng.randf_range(2.0,5.0)
