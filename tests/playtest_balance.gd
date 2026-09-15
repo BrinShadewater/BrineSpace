@@ -10,6 +10,7 @@ const Runs := preload("res://scripts/run_manager.gd")
 const Synergies := preload("res://scripts/synergy_manager.gd")
 const Insights := preload("res://scripts/station_ui_insights.gd")
 const Routes := preload("res://scripts/drone_routes.gd")
+const WreckFieldScript := preload("res://scripts/wreck_field.gd")
 const SAVE_PATH := "user://brine_balance_playtest.json"
 const OFFSETS := [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
 const SIDES := ["west", "east", "north", "south"]
@@ -68,7 +69,7 @@ func _run() -> void:
 			push_error("Cannot write balance report: " + output_path)
 			failures += 1
 		else:
-			file.store_string(JSON.stringify({"policy": "curious-builder-v6-heeds-placement-warnings", "runs": rows}, "\t"))
+			file.store_string(JSON.stringify({"policy": "curious-builder-v7-clears-bay-routes", "runs": rows}, "\t"))
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
 	print("Balance sweep completed: %d runs, %d harness errors." % [rows.size(), failures])
@@ -104,7 +105,9 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 		"first_blueprint": -1, "idle_cycles": 0, "events": [], "snapshots": [],
 		"discoveries": {}, "blueprints": {}, "prototype_built": {}, "builds": []}
 	row["power"] = []
+	row["clearances"] = []
 	while game.running and game.cycle < max_cycles:
+		_order_route_clearance(row)
 		var built := 0
 		for _action in range(3):
 			# Reassess after the paid room becomes operational. Otherwise the old
@@ -268,6 +271,22 @@ func _choose_build() -> Dictionary:
 					best_score = score
 					best = {"id": id, "cell": cell, "rotation": rotation, "neighbors": neighbors}
 	return best
+
+# Follow a stalled bay's own advice: order the first rock/wreck clearance or site
+# recovery on its route, as a player would by selecting that cell.
+func _order_route_clearance(row: Dictionary) -> void:
+	if WreckFieldScript.busy(game.wrecks, Vector2i(-1, -1)): return
+	for home in game.drone_fleet.drones:
+		var drone: Dictionary = game.drone_fleet.drones[home]
+		if not drone.kind in ["mining", "salvage"] or not drone.get("route_wait", false): continue
+		var plan: Dictionary = game.drone_fleet.harvest_route_plan(home, game.wrecks)
+		if not str(plan.get("state", "")) in ["clear", "recover"]: continue
+		var cell: Vector2i = plan.obstacle
+		if game.wrecks.get(cell, {}).get("active", false): continue
+		game._toggle_wreck_work(cell)
+		if game.wrecks.get(cell, {}).get("active", false):
+			row["clearances"].append({"cycle": game.cycle, "cell": str(cell), "action": plan.state, "kind": str(plan.obstacle_kind), "toward": str(plan.goal)})
+			return
 
 func _bay_has_route(id: String, cell: Vector2i) -> bool:
 	if not id in ["mining_drone_bay", "salvage_drone_bay"]: return true

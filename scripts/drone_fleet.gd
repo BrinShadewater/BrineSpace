@@ -343,15 +343,30 @@ func battery_status(home: Vector2i, station_power := -1, bay_powered := true, pa
 # rest lie behind the rock shelves. Name the first rock or wreck to clear, cheapest
 # route first (each obstacle costs one clearance), under the router's port rules.
 func harvest_route_hint(home: Vector2i, wrecks: Dictionary) -> String:
-	if not drones.has(home): return "ROUTE BLOCKED / check surveyed sites and bay ports"
+	var plan := harvest_route_plan(home,wrecks)
+	var noun := "DEPOSIT" if plan.get("kind","mining") == "mining" else "SCRAP PILE"
+	match str(plan.state):
+		"depleted": return "NO SURVEYED %sS LEFT / build outward to survey new seabed" % noun
+		"sealed": return "ROUTE BLOCKED / no clearance reaches a surveyed %s; %s" % [noun.to_lower(),plan.seal]
+		"recover":
+			var title: String = preload("res://scripts/companions.gd").TITLES.get(wrecks[plan.obstacle].kind,"derelict ward")
+			return "NO ROUTE TO A %s / %srecover the %s at %s (8 Metal, from a room with a matching door) toward %s" % [noun,_route_step(plan.steps),title,plan.obstacle,plan.goal]
+		"clear":
+			var what := "rock" if plan.obstacle_kind == "basalt" else "wreck"
+			return "NO ROUTE TO A %s / %sselect the %s at %s to %s it (%s Drone Bay) toward %s" % [noun,_route_step(plan.steps),what,plan.obstacle,"break" if what == "rock" else "dismantle","Mining" if what == "rock" else "Salvage",plan.goal]
+	return "ROUTE BLOCKED / check surveyed sites and bay ports"
+
+# Structured form of the stalled-bay advice. state: "depleted" (nothing harvestable
+# surveyed), "open" (a route exists), "clear"/"recover" (act on obstacle first,
+# steps obstacles in total toward goal) or "sealed" (seal names the nearest blocker).
+func harvest_route_plan(home: Vector2i, wrecks: Dictionary) -> Dictionary:
+	if not drones.has(home): return {"state":"unknown"}
 	var kind: String = drones[home].kind
-	var noun := "DEPOSIT" if kind == "mining" else "SCRAP PILE"
 	var goals: Array = []
 	for cell in sites:
 		var site: Dictionary = sites[cell]
 		if site.kind == kind and site.discovered and site.active and site.units > 0: goals.append(cell)
-	if goals.is_empty():
-		return "NO SURVEYED %sS LEFT / build outward to survey new seabed" % noun
+	if goals.is_empty(): return {"state":"depleted","kind":kind}
 	var clearable := {}
 	var solid: Dictionary = route_blockers.duplicate()
 	var Rooms := preload("res://scripts/room_database.gd")
@@ -379,18 +394,10 @@ func harvest_route_hint(home: Vector2i, wrecks: Dictionary) -> String:
 		if score < best_cost:
 			best_cost = score
 			best = [goal,result.first,int(result.obstacles)]
-	if best.is_empty():
-		return "ROUTE BLOCKED / no clearance reaches a surveyed %s; %s" % [noun.to_lower(),_route_seal(home,solid,clearable,wrecks)]
-	if best[1] == null:
-		return "ROUTE BLOCKED / check surveyed sites and bay ports"
+	if best.is_empty(): return {"state":"sealed","kind":kind,"seal":_route_seal(home,solid,clearable,wrecks)}
+	if best[1] == null: return {"state":"open","kind":kind,"goal":best[0]}
 	var obstacle: Vector2i = best[1]
-	if clearable[obstacle] == "recover":
-		var kind_name: String = wrecks[obstacle].kind
-		var title: String = preload("res://scripts/companions.gd").TITLES.get(kind_name,"derelict ward")
-		return "NO ROUTE TO A %s / %srecover the %s at %s (8 Metal, from a room with a matching door) toward %s" % [noun,_route_step(best[2]),title,obstacle,best[0]]
-	var what := "rock" if clearable[obstacle] == "basalt" else "wreck"
-	var bay := "Mining" if what == "rock" else "Salvage"
-	return "NO ROUTE TO A %s / %sselect the %s at %s to %s it (%s Drone Bay) toward %s" % [noun,_route_step(best[2]),what,obstacle,"break" if what == "rock" else "dismantle",bay,best[0]]
+	return {"state":"recover" if clearable[obstacle] == "recover" else "clear","kind":kind,"goal":best[0],"obstacle":obstacle,"obstacle_kind":clearable[obstacle],"steps":best[2]}
 
 static func _route_step(total: int) -> String:
 	return "" if total <= 1 else "step 1 of %d: " % total
