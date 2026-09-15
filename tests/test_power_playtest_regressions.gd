@@ -128,13 +128,13 @@ func _init() -> void:
 	check(game.drone_fleet.battery_status(Vector2i(22,20),5,true,false,game.wrecks).contains("NO ROUTE TO A DEPOSIT"),"Bay status carries the clearance hint")
 	deposit.units = 0
 	check(game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks).contains("NO SURVEYED DEPOSITS LEFT"),"Exhausted deposits say so")
-	# Unclearable derelict wards on both launch ports: name the seal, not a rock.
+	# Derelict wards on both launch ports: the paid restoration is the first step.
 	deposit.units = 12
 	for cell in [Vector2i(22,19),Vector2i(22,21)]:
 		game.wrecks[cell] = {"kind":"cryo","progress":0.0,"active":false,"cleared":false,"paid":false,"rotation":0,"pods":[]}
 	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
 	var sealed: String = game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks)
-	check(sealed.contains("ROUTE BLOCKED") and sealed.contains("sealed by the derelict ward at (22, 19)") or sealed.contains("sealed by the derelict ward at (22, 21)"),"Derelict-sealed bay names the ward: "+sealed)
+	check(sealed.contains("recover the derelict ward at (22, 19)") or sealed.contains("recover the derelict ward at (22, 21)"),"Ward-sealed bay names the ward to restore: "+sealed)
 	game.free()
 	print("POWER PLAYTEST REGRESSIONS: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	quit(0 if failures == 0 else 1)

@@ -354,10 +354,20 @@ func harvest_route_hint(home: Vector2i, wrecks: Dictionary) -> String:
 		return "NO SURVEYED %sS LEFT / build outward to survey new seabed" % noun
 	var clearable := {}
 	var solid: Dictionary = route_blockers.duplicate()
+	var Rooms := preload("res://scripts/room_database.gd")
 	for cell in wrecks:
 		var wreck: Dictionary = wrecks[cell]
 		if wreck.cleared or not solid.has(cell) or solid[cell] is Dictionary: continue
-		if wreck.kind in ["cryo","charging","river","josh","margot"]: continue
+		if wreck.kind in ["cryo","charging","river","josh","margot"]:
+			# A paid recovery turns the site into a room; route through its future ports.
+			var future: String = preload("res://scripts/companions.gd").ROOMS.get(wreck.kind,"cryo_chamber")
+			var turn: int = int(wreck.get("rotation",0)) if wreck.kind in ["cryo","charging"] else 0
+			var doors: Array = []
+			for side in Rooms.get_layout(Rooms.get_room(future).get("layout","cross")).get("doors",[]):
+				doors.append(Routes.STEPS[(["north","east","south","west"].find(side)+turn)%4])
+			solid[cell] = {"doors":doors}
+			clearable[cell] = "recover"
+			continue
 		clearable[cell] = wreck.kind
 		solid.erase(cell)
 	var best: Array = []
@@ -368,15 +378,22 @@ func harvest_route_hint(home: Vector2i, wrecks: Dictionary) -> String:
 		var score: int = int(result.cost) * 10000 + int(result.steps)
 		if score < best_cost:
 			best_cost = score
-			best = [goal,result.first]
+			best = [goal,result.first,int(result.obstacles)]
 	if best.is_empty():
 		return "ROUTE BLOCKED / no clearance reaches a surveyed %s; %s" % [noun.to_lower(),_route_seal(home,solid,clearable,wrecks)]
 	if best[1] == null:
 		return "ROUTE BLOCKED / check surveyed sites and bay ports"
 	var obstacle: Vector2i = best[1]
+	if clearable[obstacle] == "recover":
+		var kind_name: String = wrecks[obstacle].kind
+		var title: String = preload("res://scripts/companions.gd").TITLES.get(kind_name,"derelict ward")
+		return "NO ROUTE TO A %s / %srecover the %s at %s (8 Metal, from a room with a matching door) toward %s" % [noun,_route_step(best[2]),title,obstacle,best[0]]
 	var what := "rock" if clearable[obstacle] == "basalt" else "wreck"
 	var bay := "Mining" if what == "rock" else "Salvage"
-	return "NO ROUTE TO A %s / select the %s at %s to %s it (%s Drone Bay) and open the way to %s" % [noun,what,obstacle,"break" if what == "rock" else "dismantle",bay,best[0]]
+	return "NO ROUTE TO A %s / %sselect the %s at %s to %s it (%s Drone Bay) toward %s" % [noun,_route_step(best[2]),what,obstacle,"break" if what == "rock" else "dismantle",bay,best[0]]
+
+static func _route_step(total: int) -> String:
+	return "" if total <= 1 else "step 1 of %d: " % total
 
 # Name the nearest thing sealing the region a bay can reach (with rock and wrecks
 # counted as clearable). Reports the obstacle; it does not promise a route beyond it.
@@ -421,6 +438,7 @@ func _cheapest_clearance(start: Vector2i, goal: Vector2i, solid: Dictionary, cle
 	var cost := {start: 0}
 	var steps := {start: 0}
 	var first := {start: null}
+	var obstacles := {start: 0}
 	var buckets: Array = [[start]]
 	var level := 0
 	while level < buckets.size():
@@ -434,18 +452,20 @@ func _cheapest_clearance(start: Vector2i, goal: Vector2i, solid: Dictionary, cle
 				var next: Vector2i = cell+offset
 				if next.x < 0 or next.y < 0 or next.x >= 40 or next.y >= 40: continue
 				if not Routes.can_step(cell,next,start,goal,solid,true): continue
-				var step := 1 if clearable.has(next) and next != goal else 0
+				# Recovery costs Metal, so a free rock or wreck clearance is preferred.
+				var step := (2 if clearable[next] == "recover" else 1) if clearable.has(next) and next != goal else 0
 				var total: int = level + step
 				var length: int = int(steps[cell]) + 1
 				if cost.has(next) and (int(cost[next]) < total or (int(cost[next]) == total and int(steps[next]) <= length)): continue
 				cost[next] = total
 				steps[next] = length
-				first[next] = next if step == 1 and first[cell] == null else first[cell]
+				first[next] = next if step > 0 and first[cell] == null else first[cell]
+				obstacles[next] = int(obstacles[cell]) + (1 if step > 0 else 0)
 				while buckets.size() <= total: buckets.append([])
 				buckets[total].append(next)
 		level += 1
 	if not cost.has(goal): return {}
-	return {"cost": cost[goal], "steps": steps[goal], "first": first[goal]}
+	return {"cost": cost[goal], "steps": steps[goal], "first": first[goal], "obstacles": obstacles[goal]}
 
 func snapshot() -> Dictionary:
 	var state := {"drones":drones.duplicate(true), "orders":orders.duplicate(true)}
