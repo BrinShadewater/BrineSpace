@@ -90,12 +90,19 @@ func _run() -> void:
 	game.testing_free_build = true
 	check(Save.write(game, PATH) == ERR_UNAVAILABLE, "Fixtures must not overwrite real checkpoints")
 	game.testing_free_build = false
-	# A fresh scene consumes the checkpoint, as the title's Continue action does.
+	# A fresh scene consumes the checkpoint, as the title's Continue action does. What comms
+	# already said must survive that path too, where comms is created after the restore.
+	game.crew_comms.seen["opening"] = true
+	game.crew_comms.seen["awake/bill"] = true
+	game.crew_comms.greeting_sent = true
 	check(Save.write(game, PATH) == OK, "Checkpoint should be ready for title Continue")
 	root.remove_child(game)
 	game.free()
 	var title = load("res://scenes/title_screen.tscn").instantiate()
 	title.run_save_path = PATH
+	# Neither the title nor the game it opens may touch the player's real progress file.
+	title.meta_state.save_path = "user://brine_save_test_meta.json"
+	node_added.connect(_isolate_game_meta)
 	root.add_child(title)
 	current_scene = title
 	check(title.continue_button.visible, "Title must offer Continue for a valid save")
@@ -113,13 +120,16 @@ func _run() -> void:
 	var settle_until := Time.get_ticks_msec()+10000
 	while Time.get_ticks_msec()<settle_until:
 		var scene = current_scene
-		if scene!=null and "cycle" in scene and scene.cycle==7 and scene.placed_rooms.size()==2: break
+		# startup_complete is set only after the staged restore finishes (and pauses the station);
+		# cycle and rooms land earlier, so waiting on them alone raced the restore under load.
+		if scene!=null and "cycle" in scene and scene.startup_complete and scene.cycle==7 and scene.placed_rooms.size()==2: break
 		await process_frame
 	game = current_scene
 	game.meta.save_path = "user://brine_save_test_meta.json"
 	check(Save.pending.is_empty(), "Continue request must be consumed only once")
 	check(game.cycle == 7 and game.placed_rooms.size() == 2 and game.paused, "Fresh scene must resume checkpoint instead of resetting it")
 	check(game.run_save_path == PATH, "Continue must retain its checkpoint destination")
+	check(is_instance_valid(game.crew_comms) and game.crew_comms.greeting_sent and game.crew_comms.seen.has("awake/bill"), "Continue from the title keeps what comms already said")
 	game._open_menu()
 	if DisplayServer.get_name() != "headless":
 		await create_timer(0.2).timeout
@@ -134,3 +144,6 @@ func _run() -> void:
 		DirAccess.remove_absolute(game.meta.save_path)
 	print("SAVE GAME: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	quit(failures)
+
+func _isolate_game_meta(node: Node) -> void:
+	if node.scene_file_path == "res://scenes/main.tscn": node.meta.save_path = "user://brine_save_test_meta.json"

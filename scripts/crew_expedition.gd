@@ -201,10 +201,12 @@ static func advance(game,actor,delta: float) -> void:
 			e.elapsed+=delta
 			if e.elapsed>=0.52:
 				var recovered: bool = not e.cargo.is_empty()
+				var before_delivery: Dictionary = game.resources.duplicate()
 				game._apply_delta(e.cargo)
 				if recovered: game.play_station_sound("cargo",Vector2(e.home))
 				else: game.play_station_sound("crew_return",Vector2(e.home))
 				game._clamp_resource_storage()
+				if "resource_flow" in game: preload("res://scripts/resource_flow_ledger.gd").record(game.resource_flow,"crew",before_delivery,game.resources)
 				var cargo_label: String="Minerals" if e.get("kind","salvage")=="mining" else "Salvage"
 				actor.expedition.clear()
 				actor.state = "idle"

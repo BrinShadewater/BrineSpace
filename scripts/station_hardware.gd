@@ -22,7 +22,19 @@ static func set_control(game, key: String, enabled: bool) -> bool:
 		var forecast: Dictionary=game._simulate_room_economy(true,game.cycle+1)
 		game.powered_room_cells=forecast.working_cells.duplicate()
 		game.offline_reasons=forecast.offline.duplicate()
-		game.unpowered_room_cells=forecast.offline.duplicate()
+		# This cycle is already paid for. A next-cycle forecast must not end the blackout the cycle
+		# boundary declared, nor start one before it: only the economy owns that flag.
+		if not game.hardware.power: game.power_blackout=false
+		for room in game.placed_rooms:
+			if int(room.get("consumption",{}).get("power",0))<=0: continue
+			var reason: String=str(game.offline_reasons.get(room.pos,""))
+			if reason in ["ISOLATED","FLOODED","PUMPS OFF","FIRE","SUSPENDED","MASTER POWER OFF"]: continue
+			if game.power_blackout:
+				game.powered_room_cells.erase(room.pos)
+				game.offline_reasons[room.pos]="POWER BLACKOUT"
+			elif reason=="POWER BLACKOUT":
+				game.offline_reasons[room.pos]="NEEDS POWER"
+		game.unpowered_room_cells=game.offline_reasons.duplicate()
 		game.active_synergy_links=game.DiscoveryManagerScript.functioning_links(game.connected_synergy_links,game.powered_room_cells)
 	if key=="doors":
 		for actor in [game.bill_npc,game.veld_npc,game.branforth_npc,game.marsh_npc]:
@@ -33,15 +45,23 @@ static func set_control(game, key: String, enabled: bool) -> bool:
 	game.play_station_sound("ui_select")
 	game._refresh_all()
 	return true
+# One rule for a room's exterior lamps, shared by the fixture and the underwater beam: dark in a
+# blackout, and flickering with a low reserve (dimmed under reduced motion).
+static func exterior_light_level(game, room: Dictionary) -> float:
+	if not game.hardware.power or not game.hardware.exterior or game.power_blackout or room.get("suspended",false): return 0.0
+	if not game.powered_room_cells.has(room.pos) and room.id!="brine_core": return 0.0
+	return preload("res://rooms/whole-room/room_lighting.gd").power_flicker(room.pos,int(game.resources.get("power",0)),int(game.power_capacity),game.get_unscaled_time_seconds(),preload("res://scripts/title_settings.gd").reduced_motion,game.paused)
+
 static func draw_effects(canvas, game, rooms: Array, size: float) -> void:
 	var time: float=game.get_visual_time_seconds()
 	for room in rooms:
 		var center: Vector2=(Vector2(room.pos)+Vector2.ONE*0.5)*size
 		if game.hardware.power and game.hardware.exterior and not room.get("suspended",false) and (game.powered_room_cells.has(room.pos) or room.id=="brine_core"):
+			var lit := exterior_light_level(game,room)
 			for direction in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
 				if game.occupied.has(room.pos+direction): continue
 				var housing_visible: bool=game.hardware.walls and (direction!=Vector2i.UP or preload("res://scripts/title_settings.gd").raised_walls)
-				draw_exterior_light(canvas,center,Vector2(direction),size,housing_visible)
+				draw_exterior_light(canvas,center,Vector2(direction),size,housing_visible,lit)
 
 		var fire=preload("res://scripts/room_fire.gd")
 		if not fire.burning(room): continue
@@ -78,7 +98,7 @@ static func exterior_mount(center: Vector2, direction: Vector2, size: float) -> 
 static func exterior_light_radius(size: float) -> float:
 	return size*.38
 
-static func draw_exterior_light(canvas: CanvasItem, center: Vector2, direction: Vector2, size: float, housing_visible := true) -> void:
+static func draw_exterior_light(canvas: CanvasItem, center: Vector2, direction: Vector2, size: float, housing_visible := true, lit := 1.0) -> void:
 	var lamp:=exterior_mount(center,direction,size)
 	# The underwater visibility pass owns illumination and terrain occlusion.
 	# This foreground pass draws only the physical fixture.
@@ -86,4 +106,4 @@ static func draw_exterior_light(canvas: CanvasItem, center: Vector2, direction: 
 	var tangent:=Vector2(-direction.y,direction.x)
 	var housing:=PackedVector2Array([lamp-tangent*size*0.026-direction*size*0.007,lamp+tangent*size*0.026-direction*size*0.007,lamp+tangent*size*0.026+direction*size*0.009,lamp-tangent*size*0.026+direction*size*0.009])
 	canvas.draw_colored_polygon(housing,Color("233c40"))
-	canvas.draw_line(lamp-tangent*size*0.018,lamp+tangent*size*0.018,Color("d8f4d9"),maxf(1.0,size*0.006))
+	canvas.draw_line(lamp-tangent*size*0.018,lamp+tangent*size*0.018,Color("394f53").lerp(Color("d8f4d9"),clampf(lit,0.0,1.0)),maxf(1.0,size*0.006))

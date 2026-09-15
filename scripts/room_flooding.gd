@@ -12,6 +12,13 @@ const CORE_SEEPAGE := 0.15
 static func level(room: Dictionary) -> float:
 	return float(room.get("water_level", 1.0 if room.get("flooded",false) else 0.0))
 
+# Rooms at wading depth or deeper: where alerts, fire and refuge logic already treat a room as flooded.
+static func flooded_count(rooms: Array) -> int:
+	var count := 0
+	for room in rooms:
+		if level(room) >= MEDIUM: count += 1
+	return count
+
 static func stage(water: float) -> String:
 	if water >= CRITICAL: return "CRITICAL"
 	if water >= HIGH: return "HIGH / SWIMMING"

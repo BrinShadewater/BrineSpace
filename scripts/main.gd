@@ -51,7 +51,7 @@ const RESOURCE_TOOLTIPS := {
 	"data": "Research currency for unlocks and recovered memories.",
 	"biomass": "Organic stock for hydroponics, cloning, and bio rooms.",
 	"rare": "Advanced construction material from unusual POIs.",
-	"integrity": "Station hull condition. At zero, the reboot cycle fails.",
+	"integrity": "Station structural condition. Containment faults lower it; at zero, the reboot cycle fails.",
 	"crew": "Living workers currently aboard the station.",
 	"corruption": "Anomalous contamination risk."
 }
@@ -194,12 +194,16 @@ var paused := false
 var menu_open := false
 var pause_before_menu := false
 var visual_time_seconds := 0.0
+# Real seconds while the station runs, for effects that must not speed up with the time controls.
+var unscaled_time_seconds := 0.0
 var time_speed_index := 0
 var time_speeds := RunManagerScript.TIME_SPEEDS.duplicate()
 var completed_pois := []
 var expired_pois := []
 var power_generated := 0
 var power_used := 0
+# The reserve could not power every consumer this cycle, so the whole station is dark.
+var power_blackout := false
 var power_capacity := 12
 var forecast_power_vented := 0
 var unpowered_rooms := []
@@ -207,6 +211,8 @@ var powered_room_cells := {}
 var unpowered_room_cells := {}
 var offline_reasons := {}
 var last_cycle_delta := {}
+# Drone and crew deliveries per cycle, shown in the resource bar's +/- figure only.
+var resource_flow: Dictionary = preload("res://scripts/resource_flow_ledger.gd").empty()
 const BillNPC = preload("res://scripts/bill_npc.gd")
 var bill_npc = BillNPC.new()
 const VeldNPC = preload("res://scripts/veld_npc.gd")
@@ -362,6 +368,9 @@ func _ready() -> void:
 	crew_comms.game=self
 	crew_comms.archive_path=run_save_path+".comms.json"
 	add_child(crew_comms)
+	if has_meta("pending_comms_state"):
+		crew_comms.restore_state(get_meta("pending_comms_state"))
+		remove_meta("pending_comms_state")
 	var sound := preload("res://scripts/station_audio.gd").new()
 	sound.game = self
 	station_sound = sound
@@ -390,6 +399,7 @@ func _process(delta: float) -> void:
 	_update_discovery_bursts(delta)
 	if running and not paused:
 		visual_time_seconds += delta * time_speeds[time_speed_index]
+		unscaled_time_seconds += delta
 		preload("res://scripts/airlock_cycle.gd").advance(self,delta * time_speeds[time_speed_index])
 		_update_test_walker(delta * time_speeds[time_speed_index])
 		_update_wreck_clearance(delta * time_speeds[time_speed_index])
@@ -406,6 +416,8 @@ func _process(delta: float) -> void:
 		_refresh_construction_button()
 		if is_instance_valid(guide_box) and guide_box.visible: _refresh_learning_ui()
 		preload("res://scripts/flood_alerts.gd").refresh(self)
+		# Water rises every frame but chips refresh once a cycle; keep the flooded count current.
+		if resource_labels.has("integrity"): _refresh_integrity_chip()
 		preload("res://scripts/room_fire.gd").refresh_alert(self)
 		if not meta.last_error.is_empty() and meta.last_error != last_meta_warning:
 			_log("PROGRESSION NOT SAVED // " + meta.last_error,true)
@@ -1469,7 +1481,9 @@ func _update_wreck_clearance(delta: float) -> void:
 		_apply_delta({"power":-drone_fleet.power_spent})
 		_refresh_all()
 	if not drone_fleet.delivered.is_empty():
+		var before_delivery: Dictionary = resources.duplicate()
 		_apply_delta(drone_fleet.delivered)
+		preload("res://scripts/resource_flow_ledger.gd").record(resource_flow,"drone",before_delivery,resources)
 		play_station_sound("cargo")
 		_refresh_all()
 	for order in built:
@@ -1979,12 +1993,15 @@ func _start_reboot_cycle() -> void:
 	expired_pois.clear()
 	power_generated = 0
 	power_used = 0
+	power_blackout = false
 	power_capacity = _get_power_capacity()
 	unpowered_rooms.clear()
 	powered_room_cells.clear()
 	unpowered_room_cells.clear()
 	offline_reasons.clear()
 	last_cycle_delta.clear()
+	unscaled_time_seconds = 0.0
+	resource_flow = preload("res://scripts/resource_flow_ledger.gd").empty()
 	var center_index := int(float(GRID_SIZE) * 0.5)
 	bill_npc = BillNPC.new()
 	veld_npc = VeldNPC.new()
@@ -2223,6 +2240,7 @@ func _advance_cycle() -> void:
 	if not running:
 		return
 	cycle += 1
+	preload("res://scripts/resource_flow_ledger.gd").close_cycle(resource_flow)
 	last_cycle_delta = _apply_room_economy()
 	preload("res://scripts/room_fire.gd").cycle(self)
 	preload("res://scripts/transmission_archive.gd").survey_receivers(self)
@@ -2258,7 +2276,7 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 	var offline := {}
 	if not hardware.power:
 		for room in placed_rooms: offline[room.pos]="MASTER POWER OFF"
-		return {"delta":{},"working_cells":{},"offline":offline,"generator_outputs":{},"power_failures":[],"links":[],"generation":0,"power_used":0,"added_crew":0}
+		return {"delta":{},"working_cells":{},"offline":offline,"generator_outputs":{},"power_failures":[],"links":[],"generation":0,"power_used":0,"added_crew":0,"blackout":false}
 	var power_failures := []
 	var input_budget := resources.duplicate()
 	var generation := 0
@@ -2332,6 +2350,35 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 	input_budget["power"] = generation + maxi(int(input_budget["power"]), 0)
 	var reserve_start := int(resources["power"])
 	var added_crew := 0
+	# The reserve is the station's battery. When generation plus the reserve cannot power every
+	# room that would run, the station blacks out completely for the cycle instead of shedding
+	# rooms one by one, and generation recharges the reserve (owner direction, Sept 15). A dry
+	# run in the same order finds the shortfall; rooms starved of other inputs draw nothing.
+	var blackout := false
+	# The run is only lost when generation plus the reserve cannot cover BRINE's core by itself.
+	# The core runs first (priority 0) and draws only Power, so the dry run stopping on it means that.
+	var core_lost := false
+	var trial_budget: Dictionary = input_budget.duplicate()
+	var trial_crew := 0
+	for room in _rooms_by_power_priority():
+		var cell: Vector2i = room["pos"]
+		if generators.has(cell) or preload("res://scripts/rare_branch_control.gd").offline(room) or room.get("suspended", false): continue
+		if not hardware.pumps and int(room.get("production",{}).get("water",0))>0: continue
+		if preload("res://scripts/room_fire.gd").burning(room): continue
+		var needs: Dictionary = room.get("consumption", {})
+		var starved := false
+		for key in needs:
+			if key != "power" and int(trial_budget.get(key, 0)) < int(needs[key]): starved = true
+		if starved: continue
+		# A lab with full habitats draws nothing, so it must not trigger a blackout.
+		if room["id"] == "clone_lab" and crew_count + trial_crew >= _get_crew_capacity(): continue
+		if int(trial_budget.get("power", 0)) < int(needs.get("power", 0)):
+			blackout = true
+			core_lost = room["id"] == "brine_core"
+			break
+		if room["id"] == "clone_lab": trial_crew += 1
+		for key in needs:
+			trial_budget[key] = int(trial_budget.get(key, 0)) - int(needs[key])
 	for room in _rooms_by_power_priority():
 		var cell: Vector2i = room["pos"]
 		if generators.has(cell): continue
@@ -2347,18 +2394,29 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 		if room.get("suspended", false):
 			offline[cell] = "SUSPENDED"
 			continue
-		var missing: Array[String] = []
+		# Rooms the dry run never counted (starved of another input, or a lab with no berth) keep
+		# their own reason: a blackout must not hide why a room was idle anyway.
 		var consumption: Dictionary = room.get("consumption", {})
+		var missing: Array[String] = []
 		for key in consumption:
+			if key == "power": continue
 			if int(input_budget.get(key, 0)) < int(consumption[key]):
 				missing.append(str(key).replace("_", " ").to_upper())
 		if not missing.is_empty():
 			offline[cell] = "NEEDS %s" % _join_strings(missing, " + ")
-			if missing.has("POWER"):
-				power_failures.append(room["display_name"])
 			continue
 		if room["id"] == "clone_lab" and crew_count + added_crew >= _get_crew_capacity():
 			offline[cell] = "HABITATS FULL"
+			continue
+		if blackout and int(consumption.get("power", 0)) > 0:
+			offline[cell] = "POWER BLACKOUT"
+			# The whole station goes dark, but the core only counts as lost when it truly lacks Power.
+			if room["id"] != "brine_core" or core_lost:
+				power_failures.append(room["display_name"])
+			continue
+		if int(input_budget.get("power", 0)) < int(consumption.get("power", 0)):
+			offline[cell] = "NEEDS POWER"
+			power_failures.append(room["display_name"])
 			continue
 		for key in consumption:
 			input_budget[key] = int(input_budget.get(key, 0)) - int(consumption[key])
@@ -2393,7 +2451,7 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 	_add_to_delta(delta,preload("res://scripts/crew_primary_work.gd").bonuses(self,working_cells),1)
 	return {"delta": delta, "working_cells": working_cells, "offline": offline, "generator_outputs":generator_outputs,
 		"power_failures": power_failures, "links": links, "generation": generation,
-		"power_used": used, "power_vented": maxi(uncapped_power - final_power, 0), "added_crew": added_crew}
+		"power_used": used, "power_vented": maxi(uncapped_power - final_power, 0), "added_crew": added_crew, "blackout": blackout}
 
 func _turbine_intake_cell(room: Dictionary) -> Vector2i:
 	var offsets := [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
@@ -2414,12 +2472,15 @@ func _turbine_intake_problem(room: Dictionary) -> String:
 func _apply_room_economy() -> Dictionary:
 	var result := _simulate_room_economy()
 	drone_fleet.synchronize(placed_rooms)
+	# The station-wide blackout gets one headline below; a line per room would only evict history.
+	var station_flip: bool = bool(result.get("blackout", false)) != power_blackout
 	for room in placed_rooms:
 		var cell: Vector2i = room.pos
 		var before: String = str(offline_reasons.get(cell, "FUNCTIONING"))
 		var after: String = str(result.offline.get(cell, "FUNCTIONING"))
-		if before != after:
-			_log("%s at %s: %s -> %s" % [room.display_name, cell, before, after], false)
+		if before == after: continue
+		if station_flip and "POWER BLACKOUT" in [before, after] and "FUNCTIONING" in [before, after]: continue
+		_log("%s at %s: %s -> %s" % [room.display_name, cell, before, after], false)
 	powered_room_cells = result["working_cells"]
 	offline_reasons = result["offline"]
 	unpowered_room_cells = offline_reasons.duplicate()
@@ -2431,7 +2492,13 @@ func _apply_room_economy() -> Dictionary:
 	active_synergies.clear()
 	for link in active_synergy_links:
 		active_synergies[str(link.get("id", ""))] = link
-	if not unpowered_rooms.is_empty():
+	var was_blackout := power_blackout
+	power_blackout = bool(result.get("blackout", false))
+	if power_blackout and not was_blackout:
+		_log("BLACKOUT // Power demand is higher than generation plus the reserve. Every powered room is dark until generators recharge it.", true)
+	elif was_blackout and not power_blackout and hardware.power:
+		_log("Power restored. The reserve covers the station again.")
+	elif not unpowered_rooms.is_empty() and not power_blackout:
 		_log("Power shortage: %s offline this cycle." % _join_strings(unpowered_rooms))
 	if int(result["added_crew"]) > 0:
 		crew_count += int(result["added_crew"])
@@ -2468,20 +2535,26 @@ func _apply_life_support() -> void:
 	last_cycle_delta["oxygen"] = last_cycle_delta.get("oxygen", 0) - _breathing_crew_count()
 
 func _emit_warnings() -> void:
-	var net := _project_cycle_delta()
+	var forecast := _simulate_room_economy(true, cycle + 1)
+	var net := _project_cycle_delta(forecast)
+	var blackout_ahead: bool = bool(forecast.get("blackout", false))
+	var reserve_empty: bool = int(resources.power) <= 0 and _project_power_demand() > 0
+	var reserve_low: bool = preload("res://rooms/whole-room/room_lighting.gd").low_power(int(resources.power), _get_power_capacity())
 	var audible_warnings := {}
-	if power_generated + int(resources.power) < _project_power_demand(): audible_warnings["power_shortfall"] = true
-	elif resources.power <= max(2,int(_get_power_capacity()*0.2)): audible_warnings["power_reserve"] = true
+	if blackout_ahead: audible_warnings["power_shortfall"] = true
+	elif reserve_empty or reserve_low: audible_warnings["power_reserve"] = true
 	if resources.integrity <= 20: audible_warnings["integrity"] = true
 	if corruption >= 7: audible_warnings["corruption"] = true
 	if crew_count > 0:
 		if resources.oxygen + net.get("oxygen",0) <= 0: audible_warnings["oxygen"] = true
 		if resources.food + net.get("food",0) <= 0: audible_warnings["food"] = true
 	if is_instance_valid(station_sound): station_sound.update_warnings(audible_warnings)
-	if power_generated + int(resources["power"]) < _project_power_demand():
-		_log("Warning: projected Power shortfall next cycle. Lower-priority rooms may go offline.")
-	elif resources["power"] <= max(2, int(_get_power_capacity() * 0.2)):
-		_log("Warning: Power reserve low.")
+	if blackout_ahead:
+		_log("Warning: projected Power shortfall next cycle. The station will black out until generators recharge the reserve.")
+	elif reserve_empty:
+		_log("Warning: Power reserve empty. Any extra draw will black out the station.")
+	elif reserve_low:
+		_log("Warning: Power reserve low. Lights are flickering.")
 	if crew_count > 0:
 		if resources["oxygen"] + net.get("oxygen", 0) <= 0:
 			_log("Warning: Oxygen will collapse soon without Life Support or Hydroponics.")
@@ -3428,7 +3501,7 @@ func _center_grid_on_station_now() -> void:
 
 func _refresh_resources() -> void:
 	var forecast := _simulate_room_economy(true, cycle + 1)
-	var net := _project_cycle_delta(forecast)
+	var net := _displayed_cycle_delta(forecast)
 	power_capacity = _get_power_capacity()
 	forecast_power_vented = int(forecast.get("power_vented", 0))
 	_set_resource_chip("metal", "METAL\n%d/%d  %+d" % [resources["metal"], _get_resource_capacity("metal"), net.get("metal", 0)], Color("#9aa2a8"))
@@ -3440,19 +3513,18 @@ func _refresh_resources() -> void:
 	_set_resource_chip("data", "DATA\n%d/%d  %+d" % [resources["data"], _get_resource_capacity("data"), net.get("data", 0)], Color("#4fd0e0"))
 	_set_resource_chip("biomass", "BIOMASS\n%d/%d  %+d" % [resources["biomass"], _get_resource_capacity("biomass"), net.get("biomass", 0)], Color("#5fc46a"))
 	_set_resource_chip("rare", "RARE\n%d/%d  %+d" % [resources["rare_minerals"], _get_resource_capacity("rare_minerals"), net.get("rare_minerals", 0)], Color("#b07ff0"))
-	var integrity_color := Color.WHITE
-	if resources["integrity"] < 10:
-		integrity_color = Color("#ff3b3b")
-	elif resources["integrity"] < 35:
-		integrity_color = Color("#ff9f31")
-	_set_resource_chip("integrity", "INTEGRITY\n%d%%" % resources["integrity"], integrity_color)
+	_refresh_integrity_chip()
 	_set_resource_chip("crew", "CREW\n%d/%d" % [crew_count, _get_crew_capacity()], Color.WHITE)
 	var corruption_color := Color.WHITE if corruption < 7 else Color("#ff67b3")
 	_set_resource_chip("corruption", "CORRUPTION\n%d/10" % corruption, corruption_color)
+	var delivered: Dictionary = preload("res://scripts/resource_flow_ledger.gd").rates(resource_flow)
 	for key in net:
 		var chip_id: String = "rare" if key == "rare_minerals" else str(key)
 		if resource_chips.has(chip_id):
-			resource_chips[chip_id].tooltip_text = _reserve_forecast(str(key), int(net[key])) + "\nClick or press Enter for room contributions. Estimates can change with events and inputs."
+			resource_chips[chip_id].tooltip_text = _reserve_forecast(str(key), int(net[key])) + ("\nIncludes drone and crew deliveries averaged over the last %d cycles." % preload("res://scripts/resource_flow_ledger.gd").WINDOW if delivered.has(key) else "") + "\nClick or press Enter for room contributions. Estimates can change with events and inputs."
+	if resource_chips.has("integrity"):
+		var integrity_tip: String = _reserve_forecast("integrity", int(net["integrity"])) if net.has("integrity") else str(RESOURCE_TOOLTIPS["integrity"])
+		resource_chips["integrity"].tooltip_text = integrity_tip + "\nFLOODED counts rooms at 25% water or deeper. Flooding does not lower Integrity.\nClick or press Enter for room contributions."
 	if diagnostics_button != null:
 		var risk: Dictionary = forecast.offline
 		var suspended := 0
@@ -3461,6 +3533,18 @@ func _refresh_resources() -> void:
 				suspended += 1
 		diagnostics_button.text = "DIAGNOSTICS\n%d ALERTS" % (risk.size() - suspended)
 		diagnostics_button.tooltip_text = "Forecast room interruptions, locate affected rooms, and inspect reserves."
+
+# Integrity measures structure; the flooded-room count sits beside it so a flooded station never
+# reads as healthy (owner playtest: Integrity 100% with several rooms under water).
+func _refresh_integrity_chip() -> void:
+	var text := "INTEGRITY\n%d%%  %d FLOODED" % [resources["integrity"], preload("res://scripts/room_flooding.gd").flooded_count(placed_rooms)]
+	if resource_labels.has("integrity") and resource_labels["integrity"].text == text: return
+	var integrity_color := Color.WHITE
+	if resources["integrity"] < 10:
+		integrity_color = Color("#ff3b3b")
+	elif resources["integrity"] < 35:
+		integrity_color = Color("#ff9f31")
+	_set_resource_chip("integrity", text, integrity_color)
 
 func _critical_color(value: int, normal: Color, warning_at: int, critical_at: int) -> Color:
 	if value <= critical_at:
@@ -3576,6 +3660,13 @@ func _resource_icon_bbcode(resource_id: String, icon_size: int = 18) -> String:
 	if RESOURCE_ICON_PATHS.has(id):
 		return "[img=%dx%d]%s[/img]" % [icon_size, icon_size, str(RESOURCE_ICON_PATHS[id])]
 	return RoomDatabaseScript.resource_icon(id)
+
+# The resource bar and its detail pages add recent drone and crew deliveries to the room forecast
+# (owner direction, Sept 15). Warnings, guidance and comms keep using _project_cycle_delta.
+func _displayed_cycle_delta(forecast: Dictionary = {}) -> Dictionary:
+	var net := _project_cycle_delta(forecast)
+	_add_to_delta(net, preload("res://scripts/resource_flow_ledger.gd").rates(resource_flow), 1)
+	return net
 
 func _project_cycle_delta(forecast: Dictionary = {}) -> Dictionary:
 	var result: Dictionary = _simulate_room_economy(true, cycle + 1) if forecast.is_empty() else forecast
@@ -5063,6 +5154,11 @@ func _resource_contribution_lines(resource_id: String, forecast: Dictionary) -> 
 		lines.append("No installed rooms have base rates for this resource.")
 	if resource_id in ["food", "oxygen"]:
 		lines.append("Projected crew upkeep: %d / cycle" % ((_breathing_crew_count() if resource_id=="oxygen" else crew_count) + int(forecast.added_crew)))
+	var delivered: Dictionary = preload("res://scripts/resource_flow_ledger.gd").totals(resource_flow)
+	var drone_total := int(delivered.drone.get(resource_id, 0))
+	var crew_total := int(delivered.crew.get(resource_id, 0))
+	if drone_total > 0 or crew_total > 0:
+		lines.append("\n[b]DELIVERIES // LAST %d CYCLES[/b]\nDrones: +%d / Crew expeditions: +%d (stored, after caps)" % [maxi(1, resource_flow.closed.size()), drone_total, crew_total])
 	lines.append("Base rates describe each room, not a second net forecast. Operation, learned bonuses, special effects and storage limits are reflected in the reserve estimate above.")
 	return lines
 
@@ -5089,7 +5185,7 @@ func _history_matches_category(line: String) -> bool:
 	var text := line.to_lower()
 	match history_filter.selected:
 		1:
-			for token in ["warning", "shortage", "shortfall", "needs ", "collapse", "critical", "rejected", "run complete"]:
+			for token in ["warning", "shortage", "shortfall", "needs ", "blackout", "collapse", "critical", "rejected", "run complete"]:
 				if text.contains(token): return true
 			return false
 		2:
@@ -5127,14 +5223,14 @@ func _refresh_diagnostics_page() -> void:
 			if alerts == 0:
 				lines.append("No room interruptions forecast. A rare interval of competence.")
 			lines.append("\nSUPPLY WATCH")
-			var net := _project_cycle_delta()
+			var net := _displayed_cycle_delta()
 			for key in net:
 				if int(net[key]) < 0:
 					lines.append(_reserve_forecast(str(key), int(net[key])))
 		2:
-			lines.append("[b]RESERVES // PROJECTED NEXT CYCLE[/b]\nIncludes crew upkeep and learned bonuses. Storage caps apply.\nEstimates only: events and changing inputs can alter these rates.\n")
+			lines.append("[b]RESERVES // PROJECTED NEXT CYCLE[/b]\nIncludes crew upkeep, learned bonuses and recent drone and crew deliveries. Storage caps apply.\nEstimates only: events and changing inputs can alter these rates.\n")
 			var forecast := _simulate_room_economy(true, cycle + 1)
-			var net := _project_cycle_delta(forecast)
+			var net := _displayed_cycle_delta(forecast)
 			if inspected_resource.is_empty() or inspected_resource == "power":
 				lines.append("\n" + preload("res://scripts/station_ui_insights.gd").power_balance(self,forecast) + "\n")
 				lines.append("\n" + preload("res://scripts/station_ui_insights.gd").power_demand(self) + "\n")
@@ -5218,6 +5314,7 @@ func _format_resource_list(values: Dictionary, icon_size: int = 16) -> String:
 func _missing_cost(cost: Dictionary) -> Dictionary:
 	var missing := {}
 	for key in cost:
+		if key == "power": continue
 		var available := int(resources.get(key, 0))
 		var required := int(cost[key])
 		if available < required:
@@ -5252,8 +5349,11 @@ func _join_strings(values: Array, separator := ", ") -> String:
 		text += str(value)
 	return text
 
+# A Power build cost never blocks construction: it draws whatever reserve is left, and the
+# upkeep shows up in the Power forecast (owner direction, Sept 15).
 func _can_afford(cost: Dictionary) -> bool:
 	for key in cost:
+		if key == "power": continue
 		if resources.get(key, 0) < cost[key]:
 			return false
 	return true
@@ -5292,6 +5392,9 @@ func _log(message: String, show_in_panel := true) -> void:
 func _on_tick_timer_timeout() -> void:
 	if running and not paused:
 		_advance_cycle()
+
+func get_unscaled_time_seconds() -> float:
+	return unscaled_time_seconds
 
 func get_visual_time_seconds() -> float:
 	return visual_time_seconds

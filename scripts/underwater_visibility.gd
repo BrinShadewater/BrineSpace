@@ -47,12 +47,13 @@ static func sources(game) -> Array:
 	# Emitters are expressed in cells, independent of zoom and camera scroll.
 	if game.hardware.power and game.hardware.exterior:
 		for room in game.placed_rooms:
-			if not game.powered_room_cells.has(room.pos) and room.id!="brine_core": continue
-			if room.get("suspended",false): continue
+			# Same rule as the lamp fixtures: no beam in a blackout, and beams flicker with a low reserve.
+			var level: float=preload("res://scripts/station_hardware.gd").exterior_light_level(game,room)
+			if level<=0.0: continue
 			for offset in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
 				if game.occupied.has(room.pos+offset) or Field.blocks(game.wrecks,room.pos+offset): continue
 				var mount: Vector2=preload("res://scripts/station_hardware.gd").exterior_mount(Vector2(room.pos)+Vector2.ONE*.5,Vector2(offset),1.0)
-				result.append({"position":mount,"direction":Vector2(offset),"radius":2.2,"strength":.85,"kind":"station"})
+				result.append({"position":mount,"direction":Vector2(offset),"radius":2.2,"strength":.85*level,"kind":"station"})
 	for drone in game.drone_fleet.drones.values():
 		if drone.phase=="docked": continue
 		var position := drone_position(game,drone)

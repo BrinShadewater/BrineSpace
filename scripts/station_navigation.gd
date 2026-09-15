@@ -20,6 +20,7 @@ static func rooms(game, query: String, forecast: Dictionary) -> Array:
 static func actions(cell: Vector2i, reason: String) -> String:
 	var links: Array[String] = ["[url=%d,%d]INSPECT / LOCATE[/url]" % [cell.x,cell.y]]
 	if reason=="SUSPENDED": links.append("[url=resume:%d,%d]RESUME NEXT CYCLE[/url]" % [cell.x,cell.y])
+	if reason=="POWER BLACKOUT": links.append("[url=resource:power]REVIEW POWER SUPPLY[/url]")
 	if reason.begins_with("NEEDS "):
 		for resource in ["power","oxygen","food","water","metal","data","biomass"]:
 			if reason.to_lower().contains(resource): links.append("[url=resource:%s]REVIEW %s SUPPLY[/url]" % [resource,resource.to_upper()])

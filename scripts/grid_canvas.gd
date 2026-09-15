@@ -101,6 +101,7 @@ func _room_light_target(room: Dictionary) -> float:
 		# A newly connected ward waits for its first power allocation.
 		if not main.powered_room_cells.has(room.pos) and not main.unpowered_room_cells.has(room.pos) and str(main.offline_reasons.get(room.pos,"")).is_empty(): return 0.0
 	if not main.hardware.power or not main.hardware.interior: return 0.0
+	if main.power_blackout: return 0.0
 	if room.id=="brine_core" and not main.architect_run.is_empty() and not main.architect_run.core.recovered:
 		return preload("res://scripts/brine_startup.gd").lights(main.architect_run.core,preload("res://scripts/title_settings.gd").reduced_motion)
 	var cell: Vector2i = room.pos
@@ -135,7 +136,7 @@ func _draw_layered_lighting() -> void:
 	for room in static_draw_rooms:
 		if not _uses_layered_art(room): continue
 		if _is_narrow_corridor(room): continue # Hull-local lighting; do not darken surrounding water.
-		var level := _room_light_level(room)
+		var level := _room_light_level(room)*_power_flicker(room)
 		var rect := Rect2(Vector2(room.pos)*size,Vector2.ONE*size)
 		# Exposed risers project above the deck cell; shade the complete raised face.
 		if main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP):
@@ -147,8 +148,12 @@ func _draw_layered_lighting() -> void:
 		if _is_narrow_corridor(room): continue # Fixtures mount on the narrow hull, not full-cell north.
 		if not _riser_fixtures_visible(room): continue
 		draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*size,0,Vector2.ONE*size/384.0)
-		RoomLighting.draw_fixtures(draw_target,_room_light_level(room),room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
+		RoomLighting.draw_fixtures(draw_target,_room_light_level(room)*_power_flicker(room),room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
 		draw_target.draw_set_transform(Vector2.ZERO)
+
+func _power_flicker(room: Dictionary) -> float:
+	var main = _get_main()
+	return RoomLighting.power_flicker(room.pos,int(main.resources.get("power",0)),int(main.power_capacity),main.get_unscaled_time_seconds(),preload("res://scripts/title_settings.gd").reduced_motion,main.paused)
 
 func _uses_layered_art(room: Dictionary) -> bool:
 	if room.get("id","") in ["observation_room","salvage_workshop","galley","cold_store"]: return true
@@ -956,7 +961,10 @@ func _door_light_state() -> void:
 	var doors: Array = [size,side_open_door_prototype,department_door_materials]
 	var lights: Array = [size,preload("res://scripts/room_layout_store.gd").revision,preload("res://scripts/title_settings.gd").raised_walls,main.hardware.walls]
 	for room in static_draw_rooms:
-		lights.append([room.pos,room.id,_room_light_level(room)])
+		# Key on the drawn light: flicker only changes rooms that draw layered lighting and are lit.
+		var light_level := _room_light_level(room)
+		var drawn_level := light_level*(_power_flicker(room) if light_level>0.0 and _uses_layered_art(room) and not _is_narrow_corridor(room) else 1.0)
+		lights.append([room.pos,room.id,light_level,drawn_level])
 		if room.id=="airlock":
 			doors.append([room.pos,"exterior-hatch",room.rotation,preload("res://scripts/airlock_cycle.gd").pose(room).outer,main.hardware.walls,preload("res://scripts/title_settings.gd").raised_walls])
 		for side in ["north","east","south","west"]:

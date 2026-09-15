@@ -97,5 +97,98 @@ func _init() -> void:
 		check(game.draw_pile.back()=="current_turbine","Affordable second generator is next")
 		check(not game.draw_pile.has("biomass_digester") and not game.draw_pile.has("heat_recovery"),"Discovery locks remain hidden")
 	game.free()
+	# Owner direction (Sept 15): a Power cost never blocks building, lights flicker at a quarter of
+	# capacity or less, and a reserve that cannot power every room blacks the whole station out.
+	game = fresh()
+	game.resources.metal = 20
+	check(game._can_afford({"metal":6,"power":3}) and game._missing_cost({"metal":6,"power":3}).is_empty(),"A Power cost never blocks building")
+	check(not game._can_afford({"metal":30,"power":1}) and game._missing_cost({"metal":30,"power":1})=={"metal":10},"Other costs still block")
+	var Lighting = preload("res://rooms/whole-room/room_lighting.gd")
+	check(not Lighting.low_power(4,12) and Lighting.low_power(3,12) and Lighting.low_power(1,12) and not Lighting.low_power(0,12),"Lights warn at a quarter of capacity or less, before the blackout")
+	var dark_samples := 0
+	var changes := 0
+	var was_lit := true
+	# Sample 60 seconds at 60 fps: the stutter must be visible but never a strobe.
+	for frame in range(3600):
+		var lit: bool = Lighting.power_flicker(Vector2i(3,4),1,12,frame/60.0)>0.0
+		if not lit: dark_samples += 1
+		if lit != was_lit: changes += 1
+		was_lit = lit
+	check(dark_samples>0 and dark_samples<1800,"A nearly empty reserve goes dark part of the time: %d of 3600 frames" % dark_samples)
+	check(changes<=180,"A room changes at most three times a second: %d changes in 60 s" % changes)
+	check(Lighting.power_flicker(Vector2i(3,4),6,12,1.0)==1.0 and Lighting.power_flicker(Vector2i(3,4),2,12,1.0,true)==0.6,"Healthy reserves stay lit; reduced motion dims instead of flickering")
+	var steady_dark := 0
+	for frame in range(600):
+		if Lighting.power_flicker(Vector2i(3,4),1,12,frame/60.0,false,true)==0.0: steady_dark += 1
+	check(steady_dark==0,"A paused station holds its lights steady")
+	add(game,"current_turbine",Vector2i(10,10))
+	var consumers: Array = []
+	for x in range(5): consumers.append(add(game,"cold_store",Vector2i(12+x,12)))
+	var lounge := add(game,"observation_room",Vector2i(12,14))
+	game.resources.power = 0
+	result = game._simulate_room_economy()
+	var dark := 0
+	for store in consumers:
+		if result.offline.get(store.pos,"")=="POWER BLACKOUT" and not result.working_cells.has(store.pos): dark += 1
+	check(result.blackout and dark==5,"Generation 4 cannot power 5 rooms: every powered room blacks out, not just one (%d dark)" % dark)
+	check(result.delta.power==4 and result.working_cells.has(Vector2i(10,10)),"Generators keep running and recharge the reserve during a blackout")
+	check(result.working_cells.has(lounge.pos),"Rooms that draw no Power keep working")
+	game.resources.power = 4
+	result = game._simulate_room_economy()
+	check(not result.blackout and result.working_cells.size()==7 and result.delta.power==-1,"A recharged reserve restarts every room, draining 1 a cycle")
+	game.free()
+	# A blackout darkens BRINE's core but only ends the run when the reserve cannot cover the core alone.
+	game = fresh()
+	var core := add(game,"brine_core",Vector2i(20,20))
+	var turbine := add(game,"current_turbine",Vector2i(10,10))
+	for x in range(5): add(game,"cold_store",Vector2i(12+x,12))
+	result = game._simulate_room_economy()
+	check(result.blackout and result.offline.get(core.pos,"")=="POWER BLACKOUT","The core goes dark with the station")
+	check(not result.power_failures.has("BRINE Core"),"A blackout the generators can recharge does not count as losing the core")
+	game.occupied.erase(turbine.pos)
+	game.placed_rooms.erase(turbine)
+	result = game._simulate_room_economy()
+	check(result.blackout and result.power_failures.has("BRINE Core"),"No generation and no reserve still loses the core")
+	game.free()
+	# A Clone Lab with full habitats draws nothing, so it must not black the station out.
+	game = fresh()
+	add(game,"brine_core",Vector2i(20,20))
+	add(game,"current_turbine",Vector2i(10,10))
+	for x in range(3): add(game,"cold_store",Vector2i(12+x,12))
+	var lab := add(game,"clone_lab",Vector2i(12,14))
+	game.resources.biomass = 1
+	game.resources.data = 1
+	game.crew_count = game._get_crew_capacity()
+	result = game._simulate_room_economy()
+	check(not result.blackout and result.offline.get(lab.pos,"")=="HABITATS FULL" and result.power_failures.is_empty(),"A full-habitat Clone Lab does not trigger a blackout: %s" % str(result.offline))
+	game.crew_count = 0
+	result = game._simulate_room_economy()
+	check(result.blackout,"A Clone Lab that would run and cannot be powered does black out the station")
+	game.free()
+	# Exterior lamps and their beams follow the same rule: dark in a blackout, flickering when low.
+	game = fresh()
+	var Hardware = preload("res://scripts/station_hardware.gd")
+	var store := add(game,"cold_store",Vector2i(12,12))
+	game.powered_room_cells[store.pos] = true
+	game.power_capacity = 12
+	game.resources.power = 12
+	check(Hardware.exterior_light_level(game,store)==1.0,"A healthy reserve keeps exterior lamps lit")
+	game.power_blackout = true
+	check(Hardware.exterior_light_level(game,store)==0.0,"A blackout turns exterior lamps off")
+	game.power_blackout = false
+	game.resources.power = 1
+	var lamp_off := 0
+	for frame in range(1200):
+		game.unscaled_time_seconds = frame/60.0
+		if Hardware.exterior_light_level(game,store)==0.0: lamp_off += 1
+	check(lamp_off>0 and lamp_off<1200,"A low reserve flickers exterior lamps: %d of 1200 frames dark" % lamp_off)
+	game.paused = true
+	var lamp_off_paused := 0
+	for frame in range(600):
+		game.unscaled_time_seconds = frame/60.0
+		if Hardware.exterior_light_level(game,store)==0.0: lamp_off_paused += 1
+	check(lamp_off_paused==0,"A paused station holds exterior lamps steady")
+	game.paused = false
+	game.free()
 	print("POWER EXPANSION: %s" % ("PASS" if failures==0 else "%d failures" % failures))
 	quit(0 if failures==0 else 1)

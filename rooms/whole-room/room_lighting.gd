@@ -4,6 +4,29 @@ const Riser=preload("res://rooms/whole-room/riser_geometry.gd")
 const ANCHORS := [Vector2(-110,Riser.CAP_TOP+3),Vector2(110,Riser.CAP_TOP+3)]
 const FADE_SECONDS := 0.65
 
+# Low reserve warning (owner direction, Sept 15): at a quarter of capacity or less, lights
+# stutter off, more often as the reserve drains toward a blackout. Reduced motion dims instead.
+const LOW_POWER_FRACTION := 0.25
+# One roll every half second, and a dark pulse far shorter than the step: a room can change at
+# most twice a second, under the three-flashes-a-second photosensitivity guideline. The clock is
+# real seconds, not game time, so 2x and 4x speed do not turn the stutter into a strobe.
+const FLICKER_STEP_SECONDS := 0.5
+const FLICKER_PULSE_SECONDS := 0.18
+
+static func low_power(reserve: int, capacity: int) -> bool:
+	return capacity > 0 and reserve > 0 and float(reserve) <= float(capacity) * LOW_POWER_FRACTION
+
+static func power_flicker(cell: Vector2i, reserve: int, capacity: int, seconds: float, reduced_motion := false, steady := false) -> float:
+	if not low_power(reserve, capacity): return 1.0
+	if reduced_motion: return 0.6
+	# A paused station holds still; a frozen clock would otherwise leave rooms dark mid-blink.
+	if steady: return 1.0
+	var severity := clampf(1.0 - float(reserve) / (float(capacity) * LOW_POWER_FRACTION), 0.0, 1.0)
+	var step := int(floor(seconds / FLICKER_STEP_SECONDS))
+	var roll := float(posmod(hash([cell, step]), 1000)) / 1000.0
+	if roll >= 0.2 + 0.45 * severity: return 1.0
+	return 0.0 if fmod(seconds, FLICKER_STEP_SECONDS) < FLICKER_PULSE_SECONDS else 1.0
+
 static func has_light_power(working: bool, reason: String, offline: bool) -> bool:
 	if reason.contains("POWER") or reason=="SUSPENDED": return false
 	if not reason.is_empty(): return true # Input-starved or habitats full, not power failure.

@@ -17,6 +17,7 @@ static func capture(game) -> Dictionary:
 		"discovered_characters": game.run_discovered_character_ids.duplicate(),
 		"wrecks": game.wrecks.duplicate(true),
 		"surveyed_water":game.surveyed_water.duplicate(),
+		"resource_flow":game.resource_flow.duplicate(true),
 		"companions":game.Companions.snapshot(game),
 		"comms":game.crew_comms.snapshot() if is_instance_valid(game.crew_comms) else {},
 		"drone_fleet": game.drone_fleet.snapshot(),
@@ -97,6 +98,7 @@ static func _read_one(path: String) -> Dictionary:
 	if not valid_controls(value): return {}
 	if not preload("res://scripts/station_hardware.gd").valid(value.get("hardware",{})): return {}
 	if not preload("res://scripts/underwater_visibility.gd").valid(value.get("surveyed_water",{})): return {}
+	if not preload("res://scripts/resource_flow_ledger.gd").valid(value.get("resource_flow")): return {}
 	var state: Dictionary = value.state
 	if not state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(state.placed_rooms) or not preload("res://scripts/room_fire.gd").valid_rooms(state.placed_rooms)): return {}
 	if not preload("res://scripts/drone_fleet.gd").valid(value.get("drone_fleet"),state.get("placed_rooms",[])): return {}
@@ -198,6 +200,7 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 	if not preload("res://scripts/cryo_recovery.gd").valid_roster(data.get("recovered_crew",[]),data.get("wrecks",{}),data.state.placed_rooms,data.get("architects",{})): return false
 	if not preload("res://scripts/station_hardware.gd").valid(data.get("hardware",{})): return false
 	if not preload("res://scripts/underwater_visibility.gd").valid(data.get("surveyed_water",{})): return false
+	if not preload("res://scripts/resource_flow_ledger.gd").valid(data.get("resource_flow")): return false
 	game.run_discovered_character_ids.clear()
 	var characters: Variant = data.get("discovered_characters", [])
 	if characters is Array:
@@ -208,6 +211,7 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 	# Older checkpoints have no wreck field. Never seed obstacles into an old station.
 	game.wrecks = data.get("wrecks",{}).duplicate(true)
 	game.surveyed_water = data.get("surveyed_water",{}).duplicate()
+	game.resource_flow = preload("res://scripts/resource_flow_ledger.gd").restored(data.get("resource_flow"))
 	game.grid_view.underwater_visibility.reset()
 	game.drone_fleet.restore(data.get("drone_fleet"))
 	game.recovered_crew = data.get("recovered_crew",[]).duplicate(true)
@@ -252,7 +256,11 @@ static func _restore_crew(game, data: Dictionary, staged := false) -> void:
 		if data.crew.has("playback"): game.grid_view.restore_crew_playback(data.crew.playback)
 
 static func _finish_restore(game, data: Dictionary) -> void:
+	game.power_blackout = game.offline_reasons.values().has("POWER BLACKOUT")
+	# Continue from the title restores before comms exists; hand it over once it is created,
+	# or the greeting and wake lines replay into the history (owner playtest).
 	if is_instance_valid(game.crew_comms): game.crew_comms.restore_state(data.get("comms"))
+	else: game.set_meta("pending_comms_state", data.get("comms"))
 	game.Companions.restore(game,data.get("companions"))
 	game.grid_view.door_wet_history.clear()
 	game.rng.state = data.rng

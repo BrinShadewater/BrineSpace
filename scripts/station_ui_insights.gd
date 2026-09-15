@@ -11,6 +11,8 @@ static func remedy(status: String) -> String:
 		return "Resume this room below. It will be evaluated again next cycle."
 	if status == "HABITATS FULL":
 		return "Add crew capacity before producing more crew."
+	if status == "POWER BLACKOUT":
+		return "Power demand is higher than generation plus the reserve, so every Power-drawing room is dark. Add generation or suspend consumers; generators recharge the reserve, and rooms restart once it covers demand."
 	if status.begins_with("NEEDS "):
 		return "Increase " + status.trim_prefix("NEEDS ").to_lower() + " supply or suspend competing consumers. Rooms share the cycle input budget; non-power outputs become available next cycle."
 	if status == "AWAITING CYCLE":
@@ -76,9 +78,19 @@ static func priorities(game, forecast: Dictionary) -> Array[String]:
 		lines.append("[url=resource:power]DRONES WAITING FOR STORED POWER[/url] / %d docked, %d Power needed to refill active bays. Add generation or suspend a competing consumer." % [demand.waiting,demand.power])
 	var rooms: Array = game.placed_rooms.duplicate()
 	rooms.sort_custom(func(a: Dictionary,b: Dictionary) -> bool: return str(a.pos)<str(b.pos))
+	var blackout_rooms := 0
+	for room in rooms:
+		if str(forecast.offline.get(room.pos,"")) == "POWER BLACKOUT": blackout_rooms += 1
+	var blackout_listed := false
 	for room in rooms:
 		var reason := str(forecast.offline.get(room.pos,""))
 		if reason.is_empty() or reason == "SUSPENDED": continue
+		if reason == "POWER BLACKOUT":
+			# Every powered room carries the same reason: one station-wide entry, not three copies.
+			if blackout_listed: continue
+			blackout_listed = true
+			lines.append("[url=resource:power]STATION BLACKOUT[/url] / %d rooms dark\n%s" % [blackout_rooms,remedy(reason)])
+			continue
 		lines.append("[url=%d,%d]%s / %s[/url]\n%s" % [room.pos.x,room.pos.y,room.display_name,reason,remedy(reason)])
 	return lines.slice(0,3)
 
@@ -111,7 +123,7 @@ static func power_balance(game, forecast: Dictionary) -> String:
 	var flow := "Reserve unchanged"
 	if change < 0: flow = "Battery discharge: %d Power" % -change
 	elif change > 0: flow = "Battery charge: %d Power" % change
-	return "POWER // NEXT CYCLE\nGeneration: %d / Requested: %d / Supplied: %d\n%s / Stored: %d -> %d%s\nReserves cover generation shortfalls automatically. Battery Arrays add capacity; they do not generate Power. Drone and Marsh charging draw from storage between cycles." % [forecast.generation,game._project_power_demand(),forecast.power_used,flow,stored,stored+change,power_vented_note(int(forecast.get("power_vented",0)))]
+	return "POWER // NEXT CYCLE\nGeneration: %d / Requested: %d / Supplied: %d\n%s / Stored: %d -> %d%s\n%s Battery Arrays add capacity; they do not generate Power. Drone and Marsh charging draw from storage between cycles." % [forecast.generation,game._project_power_demand(),forecast.power_used,flow,stored,stored+change,power_vented_note(int(forecast.get("power_vented",0))),"BLACKOUT AHEAD: generation plus the reserve cannot power every room, so all Power consumers go dark next cycle while generators recharge the reserve." if forecast.get("blackout",false) else "The reserve covers generation shortfalls until it runs dry; then the whole station blacks out."]
 
 # Surplus above the storage cap is discarded; say so rather than showing a silent +0.
 static func power_vented_note(vented: int) -> String:

@@ -62,13 +62,21 @@ static func refresh_operation(game) -> void:
 			game.powered_room_cells.erase(cell)
 			game.offline_reasons[cell]="FIRE"
 		elif game.offline_reasons.get(cell,"")=="FIRE":
+			# A room that stops burning during this cycle's blackout stays dark with the station.
+			var blocked: bool=preload("res://scripts/rare_branch_control.gd").offline(room) or (not game.hardware.get("pumps",true) and int(room.get("production",{}).get("water",0))>0)
+			if game.get("power_blackout") == true and not blocked and int(room.get("consumption",{}).get("power",0))>0:
+				game.powered_room_cells.erase(cell)
+				game.offline_reasons[cell]="POWER BLACKOUT"
+				continue
 			if forecast.is_empty(): forecast=game._simulate_room_economy(true,game.cycle+1)
 			if forecast.working_cells.has(cell):
 				game.powered_room_cells[cell]=true
 				game.offline_reasons.erase(cell)
 			else:
 				game.powered_room_cells.erase(cell)
-				game.offline_reasons[cell]=forecast.offline.get(cell,"OFFLINE")
+				# Only a real station blackout carries that label (a save reads it back as one).
+				var reason: String=str(forecast.offline.get(cell,"OFFLINE"))
+				game.offline_reasons[cell]="NEEDS POWER" if reason=="POWER BLACKOUT" else reason
 	game.unpowered_room_cells=game.offline_reasons.duplicate()
 	game.active_synergy_links=game.DiscoveryManagerScript.functioning_links(game.connected_synergy_links,game.powered_room_cells)
 	game._refresh_all()

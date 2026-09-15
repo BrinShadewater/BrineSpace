@@ -57,6 +57,8 @@ func run() -> void:
 	game.Architects.advance_core(game,10.0)
 	game._set_paused(true,false)
 	game.grid_view.cull_room_drawing = false
+	# A full reserve: at a quarter of capacity or less, lights flicker by design (checked below).
+	game.resources.power = game._get_power_capacity()
 	game._refresh_all()
 	await settle()
 	game._fit_station_view()
@@ -100,6 +102,23 @@ func run() -> void:
 	assert(static_before>0 and static_after==static_before,"Static content must actually remain retained")
 	assert(live_after>live_before,"Animated content must keep drawing")
 	print("STATIC CONTENT REUSE / LIVE ANIMATION PASS")
+	# A low reserve is not stable: lights stutter off, so the retained lights repaint, and nothing
+	# else does. A full reserve settles back to reuse.
+	var full_reserve: int = int(game.resources.power)
+	var was_paused: bool = game.paused
+	game.resources.power = 1
+	game.paused = false # The stutter only plays while the station runs, on its own unscaled clock.
+	var low_before := Vector3i(game.grid_view.floor_rebuilds,game.grid_view.wall_rebuilds,game.grid_view.light_rebuilds)
+	for frame in range(24):
+		game.unscaled_time_seconds += 0.1
+		game.grid_view.queue_redraw()
+		await settle()
+	assert(game.grid_view.light_rebuilds > low_before.z,"A low reserve flickers the retained lights")
+	assert(game.grid_view.floor_rebuilds == low_before.x and game.grid_view.wall_rebuilds == low_before.y,"Flicker repaints only the lights")
+	game.paused = was_paused
+	game.resources.power = full_reserve
+	game.grid_view.queue_redraw()
+	await settle()
 	game._fit_station_view()
 	await settle()
 	for q in range(4):
