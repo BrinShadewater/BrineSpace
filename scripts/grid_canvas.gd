@@ -828,11 +828,27 @@ func _align_camera_pixels() -> void:
 	# ScrollContainer moves in design pixels; fractional window scaling otherwise
 	# changes nearest-neighbor sampling on every pan. Move the entire world by one
 	# shared subpixel correction, leaving room geometry and the UI unchanged.
+	# The correction is computed in double precision from the exact window ratio
+	# (2560/1920, not float32 1.3333334): a rounded ratio left third-pixel pans with
+	# a phase-dependent error that flipped whole texel rows of downscaled art.
 	var local := get_transform()
-	var screen := get_viewport().get_stretch_transform() * get_global_transform_with_canvas()
-	var parent_to_screen := screen * local.affine_inverse()
-	local.origin += parent_to_screen.affine_inverse().basis_xform(screen.origin.round() - screen.origin)
+	var stretch := get_viewport().get_stretch_transform()
+	var global := get_global_transform_with_canvas()
+	var parent_scale := global.get_scale()/local.get_scale()
+	var correction := Vector2.ZERO
+	for axis in 2:
+		var ratio := _exact_ratio(float(stretch.get_scale()[axis]))
+		var screen_origin: float = float(stretch.origin[axis])+ratio*float(global.origin[axis])
+		correction[axis] = (roundf(screen_origin)-screen_origin)/ratio/float(parent_scale[axis])
+	local.origin += correction
 	RenderingServer.canvas_item_set_transform(get_canvas_item(), local)
+
+# The small fraction a float32 window scale stands for, e.g. 1.3333334 -> 4/3.
+static func _exact_ratio(scale: float) -> float:
+	for denominator in range(1,65):
+		var numerator := roundf(scale*float(denominator))
+		if absf(numerator/float(denominator)-scale) < 0.000002: return numerator/float(denominator)
+	return scale
 
 func _process(_delta: float) -> void:
 	var main = _get_main()

@@ -30,9 +30,14 @@ func run() -> void:
 	game.selected_card_id = ""
 	game.hover_cell = Vector2i(-1,-1)
 	game._refresh_all()
-	for extent in [Vector2i(960,540),Vector2i(1280,720),Vector2i(1600,900),Vector2i(1920,1080)]:
-		root.size = extent
+	# Setting root.size does not resize a maximized or DPI-scaled window, so the window
+	# scale is chosen through the design size: fractional up- and downscales like 1440p,
+	# 1600x900-on-2560, 1280x720 and 1600x900 windows showing the 1920x1080 design.
+	var window: Vector2i = DisplayServer.window_get_size()
+	for window_scale in [4.0/3.0,8.0/5.0,2.0/3.0,5.0/6.0]:
+		root.content_scale_size = Vector2i(roundi(window.x/window_scale),roundi(window.y/window_scale))
 		await settle()
+		var extent: Vector2i = root.get_texture().get_size()
 		for zoom in [0.6,1.0]:
 			game._set_grid_zoom(game.DEFAULT_GRID_ZOOM * zoom,true,Vector2(20.5,20.5)/40.0)
 			await settle()
@@ -55,7 +60,7 @@ func run() -> void:
 				for i in range(0,pixels.size(),4):
 					if pixels[i]!=moved[i] or pixels[i+1]!=moved[i+1] or pixels[i+2]!=moved[i+2]: different += 1
 				var fraction := float(different)/float(crop.size.x*crop.size.y)
-				results.append({"width":extent.x,"zoom":zoom,"offset":str(offset),"changed_fraction":fraction})
+				results.append({"window_scale":snappedf(root.get_stretch_transform().get_scale().x,0.0001),"width":extent.x,"zoom":zoom,"offset":str(offset),"changed_fraction":fraction})
 				check(fraction<0.005,"Room art must translate without resampling: "+str(results.back()))
 				check(header==frame.get_region(Rect2i(0,0,extent.x,45)).get_data(),"Camera alignment must not move the HUD")
 				check(game.grid_view.position==Vector2(-game.grid_scroll.scroll_horizontal,-game.grid_scroll.scroll_vertical),"Logical input coordinates remain owned by ScrollContainer")
