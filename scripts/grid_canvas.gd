@@ -1134,15 +1134,16 @@ func _static_cull_rect(main, size: float) -> Rect2:
 	if not zoom_reuse_active: return view
 	return view.merge(Rect2(zoom_cover_cells.position*size,zoom_cover_cells.size*size))
 
-# The cells a camera zoom settles on: it keeps its center ratio and, like the scroll
-# clamp, keeps the view inside the grid.
+# The cells a camera zoom settles on: it keeps its center ratio. The scroll it requests
+# is drawn for a frame before the scroll container clamps it inside the grid, so cover both.
 func _zoom_target_cells(main) -> Rect2:
 	var target_cell: float = float(CELL_SIZE)*float(main.camera_zoom_target)
 	if target_cell <= 0.0: return Rect2()
 	var cells: Vector2 = main.grid_scroll.size/target_cell
-	var start: Vector2 = Vector2(main.camera_zoom_center)*float(GRID_SIZE)-cells*0.5
-	start = start.clamp(Vector2.ZERO,Vector2(maxf(float(GRID_SIZE)-cells.x,0.0),maxf(float(GRID_SIZE)-cells.y,0.0)))
-	return Rect2(start,cells)
+	var requested: Vector2 = Vector2(main.camera_zoom_center)*float(GRID_SIZE)-cells*0.5
+	requested = Vector2(maxf(requested.x,0.0),maxf(requested.y,0.0))
+	var clamped: Vector2 = requested.clamp(Vector2.ZERO,Vector2(maxf(float(GRID_SIZE)-cells.x,0.0),maxf(float(GRID_SIZE)-cells.y,0.0)))
+	return Rect2(requested,cells).merge(Rect2(clamped,cells))
 
 func _rooms_in(main, region: Rect2, size: float) -> Array:
 	var rooms: Array = []
