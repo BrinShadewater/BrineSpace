@@ -110,6 +110,31 @@ func _init() -> void:
 	# The bay launches north/south, so the route turns at (23,20); a corner with north/east ports carries it.
 	check(not Insights.placement_hazards(game,"corner",Vector2i(23,20),2).any(func(h): return h.contains("CUTS")),"Matching service ports keep the drone route open")
 	check(Insights.placement_hazards(game,"corridor",Vector2i(22,22),1).is_empty(),"An unrelated placement does not warn")
+	# Seal the approach with rock: the stalled bay names the rock to break and the deposit it opens.
+	game.wrecks[Vector2i(23,20)] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	var hint: String = game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks)
+	var named := Vector2i(-1,-1)
+	for candidate in [Vector2i(23,20),Vector2i(24,19)]:
+		if hint.contains("select the rock at %s" % candidate): named = candidate
+	check(named != Vector2i(-1,-1) and hint.contains("(24, 20)"),"Walled deposit names a nearest single rock to clear: "+hint)
+	if named != Vector2i(-1,-1):
+		game.wrecks[named].cleared = true
+		game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+		check(not preload("res://scripts/drone_routes.gd").find_path(Vector2i(22,20),Vector2i(24,20),game.drone_fleet.route_blockers).is_empty(),"Clearing the named rock opens a real drone route")
+		game.wrecks[named].cleared = false
+		game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	game.drone_fleet.drones[Vector2i(22,20)].route_wait = true
+	check(game.drone_fleet.battery_status(Vector2i(22,20),5,true,false,game.wrecks).contains("NO ROUTE TO A DEPOSIT"),"Bay status carries the clearance hint")
+	deposit.units = 0
+	check(game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks).contains("NO SURVEYED DEPOSITS LEFT"),"Exhausted deposits say so")
+	# Unclearable derelict wards on both launch ports: name the seal, not a rock.
+	deposit.units = 12
+	for cell in [Vector2i(22,19),Vector2i(22,21)]:
+		game.wrecks[cell] = {"kind":"cryo","progress":0.0,"active":false,"cleared":false,"paid":false,"rotation":0,"pods":[]}
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	var sealed: String = game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks)
+	check(sealed.contains("ROUTE BLOCKED") and sealed.contains("sealed by the derelict ward at (22, 19)") or sealed.contains("sealed by the derelict ward at (22, 21)"),"Derelict-sealed bay names the ward: "+sealed)
 	game.free()
 	print("POWER PLAYTEST REGRESSIONS: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	quit(0 if failures == 0 else 1)

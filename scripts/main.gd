@@ -4426,7 +4426,7 @@ func _refresh_harvest_inspector(cell: Vector2i) -> void:
 	else:
 		for drone in drone_fleet.drones.values():
 			if drone.job=="harvest" and Vector2i(drone.target)==cell:
-				status = drone_fleet.battery_status(drone.home,int(resources.power),powered_room_cells.has(drone.home),paused)
+				status = drone_fleet.battery_status(drone.home,int(resources.power),powered_room_cells.has(drone.home),paused,wrecks)
 				break
 	inspector_label.text = "%s\n\nRemaining: %s\nLoads: %d / %d\nCurrent load: %d%%\n\nDrones choose the nearest reachable surveyed site. Extraction stops when its material is gone. Cargo enters storage at the bay; storage limits apply. Expand the station to survey farther seabed.\n\n[color=#698782]I have counted what remains. It is not an inexhaustible number.[/color]" % [status,_format_cost(remaining),site.units,site.capacity,roundi(site.progress/6.0*100)]
 	room_operation_button.set_meta("cell",cell)
@@ -4549,7 +4549,7 @@ func _refresh_inspector_contents() -> void:
 		preview_lines.append("[color=#%s]%s[/color]" % [UI_ACCENT_BRIGHT.to_html(false),"CARGO / EXTRACTION LOAD" if room.id in ["mining_drone_bay","salvage_drone_bay"] else "BASE OUTPUT / FUNCTIONING CYCLE"])
 		preview_lines.append(_format_effect_rows(room.get("production", {}), "+", false,room.id not in ["mining_drone_bay","salvage_drone_bay"]))
 	if room.id in ["mining_drone_bay","salvage_drone_bay"]:
-		preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused))
+		preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused,wrecks))
 		preview_lines.append("Extracts one load per 6 seconds from a finite surveyed site. Cargo enters storage on return. Battery supports 12 seconds of extraction; 1 station Power restores 6 seconds at the bay. Keep an exterior route open.")
 	if not previewing_card and not room.get("consumption", {}).is_empty():
 		preview_lines.append("[color=#c85b61]REQUIRED INPUT / CYCLE[/color]")

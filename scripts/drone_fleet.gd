@@ -325,7 +325,7 @@ func charge_demand(powered: Dictionary, station_power: int) -> Dictionary:
 		else: result.charging += 1
 	return result
 
-func battery_status(home: Vector2i, station_power := -1, bay_powered := true, paused := false) -> String:
+func battery_status(home: Vector2i, station_power := -1, bay_powered := true, paused := false, wrecks: Dictionary = {}) -> String:
 	if not drones.has(home): return "BATTERY / ready"
 	var d: Dictionary = drones[home]
 	var percent := roundi(float(d.get("battery",BATTERY_CAPACITY))/BATTERY_CAPACITY*100)
@@ -336,8 +336,116 @@ func battery_status(home: Vector2i, station_power := -1, bay_powered := true, pa
 		state = "CHARGING"
 		if station_power == 0 and float(d.get("charge_credit",0.0)) <= 0.00001:
 			state = "WAITING FOR STORED POWER / add generation or suspend a competing consumer"
-	elif d.get("route_wait",false): state = "ROUTE BLOCKED / check surveyed sites and bay ports"
+	elif d.get("route_wait",false): state = harvest_route_hint(home,wrecks) if not wrecks.is_empty() else "ROUTE BLOCKED / check surveyed sites and bay ports"
 	return ("PAUSED / " if paused else "") + "BATTERY %d%% / %s" % [percent,state]
+
+# A stalled extraction bay usually means its last reachable deposit is spent and the
+# rest lie behind the rock shelves. Name the first rock or wreck to clear, cheapest
+# route first (each obstacle costs one clearance), under the router's port rules.
+func harvest_route_hint(home: Vector2i, wrecks: Dictionary) -> String:
+	if not drones.has(home): return "ROUTE BLOCKED / check surveyed sites and bay ports"
+	var kind: String = drones[home].kind
+	var noun := "DEPOSIT" if kind == "mining" else "SCRAP PILE"
+	var goals: Array = []
+	for cell in sites:
+		var site: Dictionary = sites[cell]
+		if site.kind == kind and site.discovered and site.active and site.units > 0: goals.append(cell)
+	if goals.is_empty():
+		return "NO SURVEYED %sS LEFT / build outward to survey new seabed" % noun
+	var clearable := {}
+	var solid: Dictionary = route_blockers.duplicate()
+	for cell in wrecks:
+		var wreck: Dictionary = wrecks[cell]
+		if wreck.cleared or not solid.has(cell) or solid[cell] is Dictionary: continue
+		if wreck.kind in ["cryo","charging","river","josh","margot"]: continue
+		clearable[cell] = wreck.kind
+		solid.erase(cell)
+	var best: Array = []
+	var best_cost := 1 << 30
+	for goal in goals:
+		var result := _cheapest_clearance(home,goal,solid,clearable)
+		if result.is_empty(): continue
+		var score: int = int(result.cost) * 10000 + int(result.steps)
+		if score < best_cost:
+			best_cost = score
+			best = [goal,result.first]
+	if best.is_empty():
+		return "ROUTE BLOCKED / no clearance reaches a surveyed %s; %s" % [noun.to_lower(),_route_seal(home,solid,clearable,wrecks)]
+	if best[1] == null:
+		return "ROUTE BLOCKED / check surveyed sites and bay ports"
+	var obstacle: Vector2i = best[1]
+	var what := "rock" if clearable[obstacle] == "basalt" else "wreck"
+	var bay := "Mining" if what == "rock" else "Salvage"
+	return "NO ROUTE TO A %s / select the %s at %s to %s it (%s Drone Bay) and open the way to %s" % [noun,what,obstacle,"break" if what == "rock" else "dismantle",bay,best[0]]
+
+# Name the nearest thing sealing the region a bay can reach (with rock and wrecks
+# counted as clearable). Reports the obstacle; it does not promise a route beyond it.
+func _route_seal(home: Vector2i, solid: Dictionary, clearable: Dictionary, wrecks: Dictionary) -> String:
+	var queued := {}
+	for order in orders: queued[order.pos] = true
+	for worker in drones.values():
+		if not worker.order.is_empty(): queued[worker.order.pos] = true
+	var seen := {home: true}
+	var queue: Array = [home]
+	var head := 0
+	var seal := {}
+	while head < queue.size():
+		var cell: Vector2i = queue[head]
+		head += 1
+		for offset in Routes.STEPS:
+			var next: Vector2i = cell+offset
+			if next.x < 0 or next.y < 0 or next.x >= 40 or next.y >= 40 or seen.has(next): continue
+			if Routes.can_step(cell,next,home,Vector2i(-1,-1),solid,true):
+				seen[next] = true
+				queue.append(next)
+			elif not seal.has(next):
+				seal[next] = true
+	var best := ""
+	var best_distance := 1 << 30
+	for cell in seal:
+		var reason := ""
+		if queued.has(cell): reason = "queued construction at %s blocks it until built" % cell
+		elif wrecks.has(cell) and not wrecks[cell].cleared and wrecks[cell].kind in ["cryo","charging"]: reason = "sealed by the derelict ward at %s" % cell
+		elif wrecks.has(cell) and not wrecks[cell].cleared and not clearable.has(cell): reason = "sealed by the recovery site at %s" % cell
+		elif solid.get(cell) is Dictionary: reason = "the room at %s has no port facing that way" % cell
+		else: continue
+		var distance: int = absi(cell.x-home.x)+absi(cell.y-home.y)
+		if distance < best_distance:
+			best_distance = distance
+			best = reason
+	return best if not best.is_empty() else "check surveyed sites and bay ports"
+
+func _cheapest_clearance(start: Vector2i, goal: Vector2i, solid: Dictionary, clearable: Dictionary) -> Dictionary:
+	# Fewest clearances first, then the shortest route: entering a clearable obstacle
+	# moves to the next bucket. Room ports are honoured as the router's service fallback.
+	var cost := {start: 0}
+	var steps := {start: 0}
+	var first := {start: null}
+	var buckets: Array = [[start]]
+	var level := 0
+	while level < buckets.size():
+		var bucket: Array = buckets[level]
+		var head := 0
+		while head < bucket.size():
+			var cell: Vector2i = bucket[head]
+			head += 1
+			if int(cost[cell]) != level: continue
+			for offset in Routes.STEPS:
+				var next: Vector2i = cell+offset
+				if next.x < 0 or next.y < 0 or next.x >= 40 or next.y >= 40: continue
+				if not Routes.can_step(cell,next,start,goal,solid,true): continue
+				var step := 1 if clearable.has(next) and next != goal else 0
+				var total: int = level + step
+				var length: int = int(steps[cell]) + 1
+				if cost.has(next) and (int(cost[next]) < total or (int(cost[next]) == total and int(steps[next]) <= length)): continue
+				cost[next] = total
+				steps[next] = length
+				first[next] = next if step == 1 and first[cell] == null else first[cell]
+				while buckets.size() <= total: buckets.append([])
+				buckets[total].append(next)
+		level += 1
+	if not cost.has(goal): return {}
+	return {"cost": cost[goal], "steps": steps[goal], "first": first[goal]}
 
 func snapshot() -> Dictionary:
 	var state := {"drones":drones.duplicate(true), "orders":orders.duplicate(true)}
