@@ -22,6 +22,25 @@ static func accessible(game, cell: Vector2i) -> bool:
 			return true
 	return false
 
+# Why a derelict ward or companion site cannot start its paid repair, in words the player
+# can act on: {} when it can start, otherwise a short button label and a detail line.
+# The button used to grey out silently, so 15 Metal and no connected door read as a bug.
+static func repair_blocker(game, cell: Vector2i, door_room: String, door_rotation: int, cost: int) -> Dictionary:
+	var site: Dictionary = game.wrecks[cell]
+	if site.get("active",false) or site.get("cleared",false): return {}
+	var connected := false
+	for offset in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
+		if game.occupied.has(cell+offset) and game._doors_connect(door_room,door_rotation,offset,game.occupied[cell+offset]): connected = true
+	if not connected:
+		var sides: Array = game._room_doors(door_room,door_rotation).map(func(side): return str(side).to_upper())
+		return {"button":"CONNECT A DOOR FIRST","detail":"No room is joined to its %s door%s. Build one there with a matching door to reach it." % ["/".join(sides),"" if sides.size()==1 else "s"]}
+	for other in game.wrecks:
+		if other != cell and game.wrecks[other].get("active",false):
+			return {"button":"REPAIR RIG BUSY","detail":"The one exterior rig is working at %s. Pause that job to start this repair." % [other]}
+	if not site.get("paid",false) and int(game.resources.get("metal",0)) < cost:
+		return {"button":"NEEDS %d METAL" % cost,"detail":"Repair costs %d Metal; the reserve holds %d." % [cost,int(game.resources.get("metal",0))]}
+	return {}
+
 static func status(game, cell: Vector2i) -> String:
 	var ward: Dictionary = game.wrecks[cell]
 	if not ward.cleared:

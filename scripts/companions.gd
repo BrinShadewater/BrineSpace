@@ -79,9 +79,12 @@ static func toggle(game, cell: Vector2i) -> void:
 			game._log("Two human pods failed. The smaller one is still keeping a promise." if site.kind=="margot" else "%s opened. A machine inside is still answering."%OBJECTS[site.kind],false)
 	else:
 		if site.active:site.active=false
-		elif accessible(game,cell) and not preload("res://scripts/wreck_field.gd").busy(game.wrecks,cell):
+		else:
+			var blocker: Dictionary=preload("res://scripts/cryo_recovery.gd").repair_blocker(game,cell,ROOMS[site.kind],0,REPAIR_METAL)
+			if not blocker.is_empty():
+				game._log("%s: %s"%[TITLES[site.kind],blocker.detail],false)
+				return
 			if not site.paid:
-				if game.resources.metal<REPAIR_METAL:return
 				game.resources.metal-=REPAIR_METAL;site.paid=true
 			site.active=true
 	game._refresh_all()
@@ -162,9 +165,13 @@ static func inspect(game, cell: Vector2i) -> void:
 		game.inspector_label.text=game.inspector_label.text.replace("Open the pet cryopod, then supply room power for an eight-second restart.","Start the pet cryopod thaw, then supply room power for eight seconds.").replace("restarted","thawed").replace("Something was left inside.","Two broken human cryopods hold skeletons. A smaller pet pod still has a heartbeat.")
 	var button: Button=game.room_operation_button
 	button.set_meta("cell",cell)
-	button.text="COMPANION ABOARD" if site.recovered else "RESTARTING // %d%%"%roundi(site.boot/BOOT_SECONDS*100) if site.opened else "OPEN "+OBJECTS[id].to_upper() if site.cleared else "PAUSE REPAIR" if site.active else "RESUME REPAIR" if site.paid else "REPAIR & CONNECT // 8 METAL"
+	var blocker: Dictionary=preload("res://scripts/cryo_recovery.gd").repair_blocker(game,cell,ROOMS[id],0,REPAIR_METAL) if not site.recovered and not site.opened else {}
+	button.text="COMPANION ABOARD" if site.recovered else "RESTARTING // %d%%"%roundi(site.boot/BOOT_SECONDS*100) if site.opened else "OPEN "+OBJECTS[id].to_upper() if site.cleared else "PAUSE REPAIR" if site.active else String(blocker.button) if not blocker.is_empty() else "RESUME REPAIR" if site.paid else "REPAIR & CONNECT // %d METAL"%REPAIR_METAL
 	if id=="margot":button.text=button.text.replace("RESTARTING","THAWING").replace("OPEN PET CRYOPOD","THAW PET CRYOPOD")
-	button.disabled=not game.running or site.recovered or site.opened or (not site.cleared and not site.active and (not accessible(game,cell) or preload("res://scripts/wreck_field.gd").busy(game.wrecks,cell) or (not site.paid and game.resources.metal<REPAIR_METAL)))
+	button.disabled=not game.running or site.recovered or site.opened or not blocker.is_empty()
+	if not blocker.is_empty(): game.inspector_label.text+="
+
+[color=#f0bd99]%s // %s[/color]"%[blocker.button,blocker.detail]
 	if site.recovered:
 		button.text="RESUME ROOM" if game.occupied[cell].get("suspended",false) else "SUSPEND ROOM"
 		button.disabled=not game.running

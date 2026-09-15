@@ -1397,9 +1397,11 @@ func _toggle_wreck_work(cell: Vector2i) -> void:
 		_log("A %s Drone Bay is required for this job." % ("Mining" if wreck.kind=="basalt" else "Salvage"),false)
 		return
 	if wreck.kind in ["cryo","charging"] and not wreck.active:
-		if not CryoRecovery.accessible(self,cell) or WreckField.busy(wrecks,cell): return
+		var blocker: Dictionary = CryoRecovery.repair_blocker(self,cell,"cryo_chamber",int(wreck.rotation),CryoRecovery.REPAIR_METAL)
+		if not blocker.is_empty():
+			_log("%s: %s" % [WreckField.NAMES[wreck.kind],blocker.detail],false)
+			return
 		if not wreck.paid:
-			if resources.get("metal",0)<CryoRecovery.REPAIR_METAL: return
 			resources.metal -= CryoRecovery.REPAIR_METAL
 			wreck.paid = true
 	if wreck.active:
@@ -1498,6 +1500,8 @@ func _refresh_cryo_inspector(cell: Vector2i) -> void:
 	if not ward.cleared:
 		lines.append("Repair hull and reconnect utilities: %d Metal, %.0f seconds. Payment is retained through pauses." % [CryoRecovery.REPAIR_METAL,WreckField.DURATION])
 		lines.append("Repair: %d%%. Connect a matching door to reach this ward. One shared exterior rig." % roundi(ward.progress/WreckField.DURATION*100))
+		var blocker: Dictionary = CryoRecovery.repair_blocker(self,cell,"cryo_chamber",int(ward.rotation),CryoRecovery.REPAIR_METAL)
+		if not blocker.is_empty(): lines.append("[color=#f0bd99]%s // %s[/color]" % [blocker.button,blocker.detail])
 	else:
 		lines.append("Restore power to start the pump. White fluid flows through the tubes into Marsh for %.0f seconds, then he wakes. A free berth is needed to join the crew. Power loss or suspension retains charge." % CryoRecovery.CHARGE_SECONDS if charging else "Station compartment online when powered. Each thaw takes %.0f seconds and requires food, oxygen and a free berth. Suspension retains progress." % CryoRecovery.WAKE_SECONDS)
 	for pod in ward.pods:
@@ -1514,8 +1518,9 @@ func _refresh_cryo_inspector(cell: Vector2i) -> void:
 		room_operation_button.text = "RESUME ROOM" if occupied[cell].get("suspended",false) else "SUSPEND ROOM"
 		room_operation_button.disabled = not running
 	else:
-		room_operation_button.text = "PAUSE REPAIR" if ward.active else "RESUME REPAIR" if ward.paid else "REPAIR & CONNECT // 8 METAL"
-		room_operation_button.disabled = not running or (not ward.active and (not CryoRecovery.accessible(self,cell) or WreckField.busy(wrecks,cell) or (not ward.paid and resources.get("metal",0)<CryoRecovery.REPAIR_METAL)))
+		var blocker: Dictionary = CryoRecovery.repair_blocker(self,cell,"cryo_chamber",int(ward.rotation),CryoRecovery.REPAIR_METAL)
+		room_operation_button.text = "PAUSE REPAIR" if ward.active else String(blocker.button) if not blocker.is_empty() else "RESUME REPAIR" if ward.paid else "REPAIR & CONNECT // %d METAL" % CryoRecovery.REPAIR_METAL
+		room_operation_button.disabled = not running or not blocker.is_empty()
 	room_operation_button.tooltip_text = "Repair preserves this compartment and its occupants. Wake progress freezes with pause, suspension, power loss or full berths."
 
 func _refresh_rock_inspector(cell: Vector2i) -> void:

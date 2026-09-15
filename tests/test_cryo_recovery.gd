@@ -28,6 +28,8 @@ func run() -> void:
 	check(Field.valid(game.wrecks,game.occupied),"Initial obstacles validate")
 	game._toggle_wreck_work(cell)
 	check(not game.wrecks[cell].active,"Remote ward cannot repair")
+	var blocker: Dictionary=Cryo.repair_blocker(game,cell,"cryo_chamber",int(game.wrecks[cell].rotation),Cryo.REPAIR_METAL)
+	check(blocker.get("button","")=="CONNECT A DOOR FIRST" and str(blocker.get("detail","")).contains("door"),"A remote ward says it needs a door connection: "+str(blocker))
 	game._place_room("corridor",cell+Vector2i.RIGHT,true)
 	game._toggle_wreck_work(cell)
 	check(not game.wrecks[cell].active,"Adjacent incompatible door cannot repair")
@@ -35,6 +37,17 @@ func run() -> void:
 	game.resources.metal=7
 	game._toggle_wreck_work(cell)
 	check(not game.wrecks[cell].paid,"Insufficient repair metal blocks job")
+	blocker=Cryo.repair_blocker(game,cell,"cryo_chamber",int(game.wrecks[cell].rotation),Cryo.REPAIR_METAL)
+	check(blocker.get("button","")=="NEEDS 8 METAL" and str(blocker.get("detail","")).contains("holds 7"),"A connected ward names the metal it is short: "+str(blocker))
+	# Every repair and clearance shares one exterior rig: another active job blocks this one, and says where.
+	game.resources.metal=30
+	game.wrecks[second].active=true
+	blocker=Cryo.repair_blocker(game,cell,"cryo_chamber",int(game.wrecks[cell].rotation),Cryo.REPAIR_METAL)
+	check(blocker.get("button","")=="REPAIR RIG BUSY" and str(blocker.get("detail","")).contains(str(second)),"A busy rig names the job holding it: "+str(blocker))
+	game._toggle_wreck_work(cell)
+	check(not game.wrecks[cell].paid,"A busy rig does not take payment")
+	game.wrecks[second].active=false
+	check(Cryo.repair_blocker(game,cell,"cryo_chamber",int(game.wrecks[cell].rotation),Cryo.REPAIR_METAL).is_empty(),"A reachable, affordable ward has no blocker")
 	game.resources.metal=30
 	game._toggle_wreck_work(cell)
 	check(game.resources.metal==22 and game.wrecks[cell].paid,"Repair charges eight metal once")
