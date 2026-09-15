@@ -187,5 +187,28 @@ func _init():
 		check(compartment.water_level>=0 and compartment.water_level<=1,"64-room open network stays bounded")
 	check(absf(total-after)<0.000001,"64-room open-door network conserves volume over one minute")
 	check(game.connection_queries==112,"64-room network builds each shared edge once")
+	# BRINE's chamber floods with the station even behind closed doors (owner playtest), but
+	# only inward: it must not carry the flood on to its dry neighbour on the other side.
+	game=fixture()
+	game.bill_npc.active=false
+	game.hardware.pumps=true
+	var core_room := {"id":"brine_core","pos":Vector2i(1,0),"water_level":0.0,"hull_crack":0.0}
+	var far_room := {"id":"crew_hab","pos":Vector2i(2,0),"water_level":0.0,"hull_crack":0.0}
+	game.placed_rooms.remove_at(1)
+	game.occupied.erase(Vector2i(1,0))
+	for compartment in [core_room,far_room]:
+		game.placed_rooms.append(compartment)
+		game.occupied[compartment.pos]=compartment
+		game.powered_room_cells[compartment.pos]=true
+	game.placed_rooms[0].water_level=0.95
+	game.placed_rooms[0].hull_crack=0.6
+	game.grid_view.aperture=0
+	Flood.advance(game,60)
+	check(core_room.water_level>=0.3,"BRINE's chamber floods from a flooded neighbour through closed doors: %.2f" % core_room.water_level)
+	check(is_zero_approx(float(far_room.water_level)),"The core does not carry a flood onward through closed doors")
+	var sealed = fixture()
+	sealed.placed_rooms[0].water_level=0.9
+	Flood.advance(sealed,60)
+	check(is_zero_approx(float(sealed.placed_rooms[1].water_level)),"Ordinary closed doors still seal water")
 	print("ROOM FLOODING ","PASS" if failures==0 else "FAIL", " / ",failures," failures")
 	quit(0 if failures==0 else 1)
