@@ -58,7 +58,8 @@ func run():
 	game.tick_timer.stop()
 	game.crew_comms.set_process(false)
 	var grid=game.grid_view
-	grid.visible_draw_rooms=game.placed_rooms
+	# Static floors and walls snapshot the rooms they cover (the view, widened mid-zoom).
+	grid.visible_draw_rooms=game.placed_rooms;grid.static_draw_rooms=game.placed_rooms
 	var key: Array=grid._surface_state().duplicate(true)
 	game.placed_rooms[0].water_level=0.61
 	game.placed_rooms[0].hull_crack=0.8
