@@ -36,7 +36,8 @@ const ROOM_LINES={
 		"bill":"A place to decide what is worth keeping. I'd rather make that decision at a bench than in a corridor.",
 		"veld":"Label what comes off the wreckage. A part without its history can answer entirely the wrong question.",
 		"branforth":"Room to lay things out and see what fits. Keep the useful stock separate from the parts we're still suspicious of."}}
-# Josh speaks; River answers in chirps with a status-lamp translation. Lines rotate per click.
+# Josh speaks; River answers in chirps with a status-lamp translation; Margot answers as a cat.
+# Lines rotate per click.
 const COMPANION_GREETINGS={
 	"josh":[
 		"Josh here. Current task: %s. My treads are clean and my optics are clear. What should we look at?",
@@ -45,11 +46,16 @@ const COMPANION_GREETINGS={
 	"river":[
 		"Two bright chirps and a whirr. River's status lamp spells it out: %s. No faults worth mentioning.",
 		"A rising chirp, then a doubtful one. River has found another loose bolt and is not ready to discuss giving it back.",
-		"Soft clicks. River's dome turns to the nearest hatch, then back to you. Translation: still counting the exits. All present."]}
+		"Soft clicks. River's dome turns to the nearest hatch, then back to you. Translation: still counting the exits. All present."],
+	"margot":[
+		"Margot flicks an ear under her frog hat. She is %s, and will permit a short interruption.",
+		"A small, questioning mrrp. Margot has inspected the station and found it badly short of sunbeams.",
+		"Margot purrs, gives you one slow blink, and goes back to washing a paw. Your report has been received."]}
 
 static func companion_greeting(id: String, activity: String, water_mode: String, count: int) -> String:
 	if water_mode=="offline": return "Josh does not answer. His standby light pulses slowly while the water is this deep."
 	if water_mode=="float": return "A muffled chirp from the waterline. River's lamp blinks: afloat, dry inside, would prefer the floor back."
+	if water_mode=="swim": return "Margot paddles for the nearest dry ledge with enormous dignity. She would like a word about the water."
 	var lines: Array=COMPANION_GREETINGS[id]
 	var line: String=lines[count%lines.size()]
 	return line%activity if line.contains("%s") else line

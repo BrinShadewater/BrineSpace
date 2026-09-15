@@ -3,8 +3,8 @@ extends CanvasLayer
 const Architects=preload("res://scripts/architects.gd")
 const Dialogue=preload("res://scripts/crew_dialogue.gd")
 const Companions=preload("res://scripts/companions.gd")
-# Companions who answer a click. Margot keeps her pet interaction.
-const TALKING_COMPANIONS := ["josh","river"]
+# Companions who answer a click like the crew do (owner playtest).
+const TALKING_COMPANIONS := ["josh","river","margot"]
 # Seconds between the architect stepping out of the core pod and BRINE's first words.
 const OPENING_DELAY := 2.0
 var game
@@ -406,10 +406,12 @@ func crew_at(point: Vector2, cell_size: float) -> String:
 		var actor=game.companion_actors[id] if companion else Architects.actor_for(game,id)
 		if not actor.active or actor.dead: continue
 		var foot: Vector2=actor.foot/384.0*cell_size
-		# Match the rendered body height and canonical foot pivot: crew 74 units, Josh 70, River 44.
+		# Match the rendered body height and canonical foot pivot: crew 74 units, Josh 70, River 44,
+		# Margot 34 with her hat.
 		var bounds:=Rect2(foot-Vector2(cell_size*0.055,cell_size*0.19),Vector2(cell_size*0.11,cell_size*0.21))
 		if id=="josh": bounds=Rect2(foot-Vector2(cell_size*0.055,cell_size*0.18),Vector2(cell_size*0.11,cell_size*0.20))
 		elif id=="river": bounds=Rect2(foot-Vector2(cell_size*0.045,cell_size*0.115),Vector2(cell_size*0.09,cell_size*0.135))
+		elif id=="margot": bounds=Rect2(foot-Vector2(cell_size*0.05,cell_size*0.095),Vector2(cell_size*0.10,cell_size*0.115))
 		var distance: float=point.distance_squared_to(bounds.get_center())
 		if bounds.has_point(point) and distance<nearest: found=id; nearest=distance
 	return found

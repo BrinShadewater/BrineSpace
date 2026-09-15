@@ -61,14 +61,14 @@ func run() -> void:
 		comms.answer("Needs attention?"); assert(not comms.current.text.is_empty())
 		assert(not resource_replies.has(comms.current.text)); resource_replies.append(comms.current.text)
 		actor.dead=true; assert(not comms.open_crew(id)); actor.dead=false
-	# Josh and River answer a click too, in their own voices, and never open room selection.
+	# Josh, River and Margot answer a click too, in their own voices, and never open room selection.
 	var companion_lines: Array=[]
-	for id in ["josh","river"]:
+	for id in ["josh","river","margot"]:
 		var companion=game.companion_actors[id]
 		game.companion_roster[id]=Vector2i(20,20)
 		companion.active=true
-		companion.foot=(Vector2(20,20)+Vector2(0.3 if id=="josh" else 0.7,0.35))*384.0
-		var point: Vector2=companion.foot/384.0*game.get_cell_size()-Vector2(0,game.get_cell_size()*(0.09 if id=="josh" else 0.05))
+		companion.foot=(Vector2(20,20)+Vector2({"josh":0.3,"margot":0.5,"river":0.7}[id],0.35))*384.0
+		var point: Vector2=companion.foot/384.0*game.get_cell_size()-Vector2(0,game.get_cell_size()*{"josh":0.09,"river":0.05,"margot":0.04}[id])
 		assert(comms.crew_at(point,game.get_cell_size())==id,"Companion hit target: "+id)
 		var event:=InputEventMouseButton.new(); event.button_index=MOUSE_BUTTON_LEFT; event.pressed=true; event.position=point
 		game.grid_view._gui_input(event)
@@ -79,13 +79,16 @@ func run() -> void:
 		assert(comms.current.text!=companion_lines.back(),"A second click gets a different line")
 		assert(comms.history.back().speaker==id)
 		comms.dismiss()
-	assert(companion_lines[0]!=companion_lines[1])
-	comms.load_archive(); assert(comms.archive_writable and comms.history.back().speaker=="river","Companion lines survive the comms archive")
+	assert(companion_lines[0]!=companion_lines[1] and companion_lines[1]!=companion_lines[2])
+	comms.load_archive(); assert(comms.archive_writable and comms.history.back().speaker=="margot","Companion lines survive the comms archive")
 	game.companion_actors.josh.water.mode="offline"
 	assert(comms.open_crew("josh") and "does not answer" in comms.current.text)
 	game.companion_actors.josh.water.mode="dry"
+	game.companion_actors.margot.water.mode="swim"
+	assert(comms.open_crew("margot") and "paddles" in comms.current.text)
+	game.companion_actors.margot.water.mode="dry"
 	comms.dismiss()
-	for id in ["josh","river"]:
+	for id in ["josh","river","margot"]:
 		game.companion_actors[id].active=false
 		game.companion_roster.erase(id)
 	assert(not comms.open_crew("josh"),"Absent companions cannot be contacted")
