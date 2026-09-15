@@ -1,3 +1,13 @@
+## Owner playtest notes, second fixes - September 15, 2026
+
+Opening: BRINE's greeting used to arrive a second into a new loop, and the pause it holds froze the lights, screens and core pod. It now waits until two seconds after the architect steps out (real-game probe: lights full 4.0 s, pod open 12.5 s, greeting 14.5 s, no paused frame before it). Clicking anywhere on a transmission skips to the next line or closes it after the last; the Next button still finishes a typing line first. Josh and River answer a click in their own voices (Josh talks; River chirps with a status-lamp translation), rotating lines per click, with powered-down and afloat lines in deep water; Margot keeps her pet interaction.
+
+Room selector: the teal box around the selected cell, with lines to every connected neighbour, is replaced by a thin lamp-light outline that follows the room's hull (the whole cell and its raised north wall for rooms and wards, the tube for corridors), drawn over walls and props but under crew. Hover shows the same outline, fainter.
+
+Draft hand backdrop: Settings > Accessibility > Draft hand backdrop. Off, the station view runs to the bottom of the screen and the hand floats over it: only the reroll button, the cards and the draw/discard pile stay, clicks between them reach the station, and comms and placement popups stay above the hand. Default on.
+
+Checked, not changed: storage already works as the owner described (capacity is the base plus every storage room's bonus), but the number on the right is the next-cycle room forecast, so drone and crew deliveries and build spending never show in it. Smoke has no pale matte pixels, and the 22 pale ember pixels are hot centres.
+
 ## Owner playtest notes, first fixes - September 15, 2026
 
 The owner playtested and sent 16 notes. Fixed in this batch:
