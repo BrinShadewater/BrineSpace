@@ -171,6 +171,9 @@ static func props(layout: Array) -> Array:
 static func prop_collision_rects(prop: Dictionary) -> Array[Rect2]:
 	# Registered corner furniture has open notches; its image bounds are not a solid block.
 	var result: Array[Rect2]=[]
+	# An overhead shelf hangs above head height, so crew walk under it -- including
+	# through a doorway it spans, as the owner's observation-room layout has it.
+	if prop.get("registration",{}).get("overhead_shelf",false): return result
 	var rect: Rect2=prop.rect
 	var flip: Vector2=prop.get("layout_flip",Vector2.ONE)
 	for box in prop.get("collision_boxes",[]):

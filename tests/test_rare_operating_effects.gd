@@ -25,13 +25,21 @@ func run() -> void:
 		room=load("res://rooms/full-wall-v1/"+id+"_view.gd").new()
 		room.embedded=true; root.add_child(room); room.hide()
 		if preview.get_parent()==null: root.add_child(preview)
+		var instrumented := 0
 		for rotation in range(4):
 			q=rotation; working=true; clock=0.0
 			var first:=await frame(preview)
 			var instrument: Dictionary={}
 			for prop in room.props:
 				if Effects.owns(prop): instrument=prop; break
-			assert(not instrument.is_empty())
+			# A layout may replace the authored instrument with other equipment (owner direction,
+			# Sept 15): these cues are painted onto that specific artwork, so a rotation without it
+			# simply has none. Every room must still keep at least one instrumented rotation.
+			if instrument.is_empty():
+				continue
+			# A library-placed wall is drawn by room_asset_library, which never reaches the
+			# cue, so it does not count: the guard below is about rotations that really paint one.
+			if not instrument.get("library_asset",false): instrumented += 1
 			var before:=Effects.marks(room,instrument,id=="listening_post")
 			assert(not before.is_empty())
 			clock=3.0
@@ -46,6 +54,7 @@ func run() -> void:
 			var off_later:=await frame(preview)
 			assert(off.get_data()==off_later.get_data(),"Offline pixels must remain still")
 			off.save_png("res://output/rare-effects-test/%s-q%d-off.png"%[id,q])
+		assert(instrumented>0,"%s kept no instrumented rotation" % id)
 		room.free()
 	preview.free()
 	var game=load("res://scenes/main.tscn").instantiate()

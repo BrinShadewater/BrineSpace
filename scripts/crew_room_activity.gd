@@ -81,13 +81,31 @@ static func stations(data: Dictionary) -> Array:
 			if best!=Vector2.INF: read_point=best
 		return [{"point":read_point,"facing":"north","room":id,"mode":"read"},{"point":Vector2(80,0),"facing":"north","room":id,"mode":"watch"}]
 	if id not in ROOMS: return result
+	# A layout can replace the authored instrument bank with equipment the owner prefers
+	# (owner direction, Sept 15). The room keeps its work station: fall back to the largest
+	# piece of equipment in it, ignoring seating.
+	var instruments: Array=[]
 	for prop in data.props:
-		if not prop.get("full_wall",false) and prop.id!="flush_back": continue
+		if prop.get("full_wall",false) or prop.id=="flush_back": instruments.append(prop)
+	if instruments.is_empty():
+		var largest: Dictionary={}
+		for prop in data.props:
+			var name: String=str(prop.id)
+			if name.contains("chair") or name.contains("stool") or name.contains("seat") or name.contains("bunk"): continue
+			if largest.is_empty() or prop.rect.get_area()>largest.rect.get_area(): largest=prop
+		if not largest.is_empty(): instruments.append(largest)
+	for prop in instruments:
 		var rect: Rect2=prop.rect
 		if prop.get("full_wall",false):
 			var height: float=rect.size.x*prop.registration.height/prop.registration.width
 			rect=Rect2(rect.position.x,rect.end.y-height+float(prop.get("visual_y_offset",0)),rect.size.x,height)
 		var side: String=prop.get("side_view","")
+		if side.is_empty():
+			# A library wall carries its wall in its id (room_asset_library builds
+			# "library/side-<asset>-<direction>"), so approach it from the side it hangs
+			# on rather than from below, where there is no floor.
+			for direction in ["east","west"]:
+				if str(prop.id).contains("/side-") and str(prop.id).ends_with("-"+direction): side=direction
 		var facing: String="north"
 		var point:=Vector2(rect.get_center().x,rect.end.y+28)
 		if side=="west": facing="west"; point=Vector2(rect.end.x+28,rect.get_center().y)
@@ -108,7 +126,10 @@ static func stations(data: Dictionary) -> Array:
 				if not _approach_blocked(data,approach): break
 				approach+=outward*12
 			result.append({"point":approach,"facing":facing,"room":id,"prop":prop.id})
-	return result
+	# An approach off the room floor cannot be walked to. Keep those only when the
+	# equipment offers nothing better, so the first station is somewhere crew can stand.
+	var walkable: Array=result.filter(func(station): return absf(station.point.x)<=144 and absf(station.point.y)<=144)
+	return walkable if not walkable.is_empty() else result
 
 static func reachable_stations(data: Dictionary,anchors: Array) -> Array:
 	if data.has("reachable_service_stations"):return data.reachable_service_stations
