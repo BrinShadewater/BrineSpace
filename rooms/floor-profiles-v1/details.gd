@@ -49,13 +49,17 @@ static func _resolve_uncached(view: Node, profile: Dictionary) -> Dictionary:
 		var override: Dictionary=spec.get("rotations",{}).get(str(view.quarter),{})
 		for key in override: spec[key]=override[key]
 		if Art.retired_cable(str(spec.asset)): continue
-		var host: Dictionary={}
+		var hosts: Array=[]
 		for candidate_id in spec.hosts:
 			for prop in view.props:
-				if str(prop.id)==candidate_id:
-					host=prop
-					break
-			if not host.is_empty(): break
+				if str(prop.id)==candidate_id: hosts.append(prop)
+		# A hand-placed detail names its host in its key, so keep that host first: picking a
+		# different one would silently drop the owner's position for it.
+		for i in range(hosts.size()):
+			if preload("res://scripts/room_layout_store.gd").surface_positions(view).has("decor/"+str(spec.asset)+"/"+str(hosts[i].id)):
+				hosts.insert(0,hosts.pop_at(i))
+				break
+		var host: Dictionary=hosts[0] if not hosts.is_empty() else {}
 		if host.is_empty():
 			# A host the layout deleted takes its floor detail with it: a choice, not a coverage gap.
 			var host_edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(view)
@@ -68,35 +72,43 @@ static func _resolve_uncached(view: Node, profile: Dictionary) -> Dictionary:
 		if spec.asset=="detail-standing_mat" and not preload("res://scripts/room_layout_store.gd").surface_positions(view).has("decor/"+str(spec.asset)+"/"+str(host.id)):
 			continue
 		var placed:=false
-		var host_rect: Rect2=host.rect.merge(view.prop_visual_bounds(host))
-		for direction in [Vector2.DOWN,Vector2.RIGHT,Vector2.LEFT,Vector2.UP]:
-			var utility: bool=spec.asset.begins_with("cable-") or spec.asset.begins_with("drain-")
-			var q:=posmod(roundi((direction.angle()-PI)/(PI/2)),4) if spec.asset.ends_with("equipment_entry") else (1 if utility and direction.x!=0 else 0)
-			var local_bounds:=ink_bounds(spec.asset,q,float(spec.scale))
-			var half:=local_bounds.size/2
-			var tangent:=Vector2(-direction.y,direction.x)
-			var host_half:=host_rect.size/2
-			var reach: float=absf(direction.x)*host_half.x+absf(direction.y)*host_half.y
-			var span: float=absf(tangent.x)*host_half.x+absf(tangent.y)*host_half.y
-			var outward: float=absf(direction.x)*half.x+absf(direction.y)*half.y
-			for slide in [0.0,-0.15,0.15,-0.25,0.25,-0.4,0.4,-0.55,0.55,-0.7,0.7,-0.85,0.85,-0.95,0.95]:
-				var contact: Vector2=host_rect.get_center()+direction*reach+tangent*span*slide
-				var middle: Vector2=contact+direction*(outward+float(spec.get("stand_off",4)))
-				var rect:=Rect2(middle-half,local_bounds.size)
-				if not floor_rect.encloses(rect): continue
-				var blocked:=false
-				for route in routes:
-					if rect.intersects(route): blocked=true
-				for prop in view.props:
-					if rect.grow(2).intersects(prop.rect) or rect.intersects(view.prop_visual_bounds(prop)): blocked=true
-				for pad in pads:
-					if rect.intersects(pad.rect): blocked=true
-				for other in result:
-					if rect.grow(3).intersects(other.rect): blocked=true
-				if blocked: continue
-				result.append({"asset":spec.asset,"host":str(host.id),"purpose":spec.purpose,"at":middle-local_bounds.get_center(),"rect":rect,"q":q,"scale":float(spec.scale),"contact":contact,"utility":utility})
-				placed=true
-				break
+		# The brief names alternative hosts, and a four-unit gap can be the whole reason a piece
+		# has nowhere to go once the owner's furniture crowds its host. Only after every host,
+		# side and slide has failed at the authored gap is the piece drawn in closer.
+		for gap_scale in [1.0,0.5,0.25]:
+			for host_candidate in hosts:
+				host=host_candidate
+				var host_rect: Rect2=host.rect.merge(view.prop_visual_bounds(host))
+				for direction in [Vector2.DOWN,Vector2.RIGHT,Vector2.LEFT,Vector2.UP]:
+					var utility: bool=spec.asset.begins_with("cable-") or spec.asset.begins_with("drain-")
+					var q:=posmod(roundi((direction.angle()-PI)/(PI/2)),4) if spec.asset.ends_with("equipment_entry") else (1 if utility and direction.x!=0 else 0)
+					var local_bounds:=ink_bounds(spec.asset,q,float(spec.scale))
+					var half:=local_bounds.size/2
+					var tangent:=Vector2(-direction.y,direction.x)
+					var host_half:=host_rect.size/2
+					var reach: float=absf(direction.x)*host_half.x+absf(direction.y)*host_half.y
+					var span: float=absf(tangent.x)*host_half.x+absf(tangent.y)*host_half.y
+					var outward: float=absf(direction.x)*half.x+absf(direction.y)*half.y
+					for slide in [0.0,-0.15,0.15,-0.25,0.25,-0.4,0.4,-0.55,0.55,-0.7,0.7,-0.85,0.85,-0.95,0.95]:
+						var contact: Vector2=host_rect.get_center()+direction*reach+tangent*span*slide
+						var middle: Vector2=contact+direction*(outward+float(spec.get("stand_off",4))*gap_scale)
+						var rect:=Rect2(middle-half,local_bounds.size)
+						if not floor_rect.encloses(rect): continue
+						var blocked:=false
+						for route in routes:
+							if rect.intersects(route): blocked=true
+						for prop in view.props:
+							if rect.grow(2).intersects(prop.rect) or rect.intersects(view.prop_visual_bounds(prop)): blocked=true
+						for pad in pads:
+							if rect.intersects(pad.rect): blocked=true
+						for other in result:
+							if rect.grow(3).intersects(other.rect): blocked=true
+						if blocked: continue
+						result.append({"asset":spec.asset,"host":str(host.id),"purpose":spec.purpose,"at":middle-local_bounds.get_center(),"rect":rect,"q":q,"scale":float(spec.scale),"contact":contact,"utility":utility})
+						placed=true
+						break
+					if placed: break
+				if placed: break
 			if placed: break
 		if not placed: missing.append({"asset":spec.asset,"reason":"no clear host-adjacent floor","hosts":spec.hosts})
 	var edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(view)

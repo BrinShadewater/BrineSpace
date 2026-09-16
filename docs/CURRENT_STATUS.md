@@ -1,3 +1,16 @@
+## Floor details follow the owner's furniture - September 16, 2026
+
+`test_floor_detail_visibility` is green for the first time since the layouts were promoted: 238 placed details, none hidden or below the contrast threshold.
+
+1. A service detail now tries every host its brief names. The briefs list alternatives - the biomass digester's drain names `power_machine` and then the processing wall - but the resolver only ever tried the first host it found and gave up if that one was crowded.
+2. When every host, side and slide fails at the authored four-unit gap, the piece is drawn in closer (half the gap, then a quarter) instead of being reported missing. The biomass digester q1 drain missed by a single unit against a door lane and now sits beside the processing wall. This retry is a last resort, so nothing that already placed moved: dumping every detail in every room and rotation before and after, the only other change is the pipe cap in that same room, which the new drain displaced by 25 units.
+3. Two details the owner dragged by hand in the Studio land under furniture (the Crew Hab access hatch under the book shelf, the Research Lab teal marking under the scanner). Those are their placements, so the test prints them as OWNER-PLACED instead of failing. The exemption is narrow: with the contrast threshold forced high so every detail looks hidden, 230 of the 238 still fail, leaving only the 8 hand-positioned details in the game. A detail also keeps the host the owner named in its key, so falling back to another host can never silently drop their position.
+4. `test_camera_pixel_stability`, parked in September after the BRINE ring shimmered at 960x540, now passes all 64 comparisons. Nothing was done to it; later rendering work fixed it.
+
+Floor details draw only in the Studio, so none of this changes the running station.
+
+One intermittent test to know about: `test_simple_room_studio` times out inside the full native lane roughly half the time, on a different assertion each time, and passes in 4.5 seconds on its own and in a full native `layout-studio` run. It failed the same way before any of this work. It drives a real cursor, so the lane's preceding windowed tests are the likely cause.
+
 ## Owner layouts promoted to defaults - September 15, 2026
 
 The owner's 99 saved Studio layouts are now the committed defaults: 76 entries changed in `rooms/full-wall-v1/default-layouts.json`, merged per key exactly as `RoomLayoutStore.positions()` merges them at runtime, with key order and formatting preserved. A Godot probe dumped `positions()` for all 236 keys before (owner file plus old defaults) and after (empty owner file plus new defaults): identical apart from printed float precision on one decor position. `user://room_layouts.json` is now empty, with `room_layouts.json.before-promote-20260915` beside it, so this machine sees exactly what CI and other machines see. Two inert orphaned `source/copy/...` keys were dropped in the merge, and `tests/test_layout_keys.py` now accepts a portable library prop that carries its own descriptor, keeping the checker at its pre-existing 48 problems (all "asset is not in editor-catalog.json" for the 12 live full-wall identities, red before this change too).

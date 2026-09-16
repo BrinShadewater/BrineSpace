@@ -34,6 +34,7 @@ func run() -> void:
 		for q in range(4):
 			panel.view.configure_embedded(q,[],false,0.0)
 			var resolved:=Details.resolve(panel.view,profile)
+			var owner_placed: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(panel.view)
 			failures+=resolved.missing.size()
 			for item in resolved.missing: print("MISSING DETAIL: ",entry.id," q",q," ",item)
 			var before: Image=await capture(panel,false)
@@ -47,8 +48,13 @@ func run() -> void:
 						var b:=after.get_pixel(x,y)
 						if absf(a.r-b.r)+absf(a.g-b.g)+absf(a.b-b.b)>0.025: pixels+=1
 				if pixels<5:
-					failures+=1
-					print("HIDDEN DETAIL: ",entry.id," q",q," ",piece.asset," host=",piece.host," pixels=",pixels)
+					# A detail the owner dragged there by hand is their placement, not a coverage
+					# fault; this check is about where the automatic placement puts things.
+					if owner_placed.has(piece.id):
+						print("OWNER-PLACED DETAIL: ",entry.id," q",q," ",piece.asset," host=",piece.host," pixels=",pixels)
+					else:
+						failures+=1
+						print("HIDDEN DETAIL: ",entry.id," q",q," ",piece.asset," host=",piece.host," pixels=",pixels)
 				records.append({"id":entry.id,"q":q,"asset":piece.asset,"host":piece.host,"visible_changed_pixels":pixels})
 	Details.enabled=true
 	var file:=FileAccess.open("res://output/floor-coverage/visibility.json",FileAccess.WRITE)
