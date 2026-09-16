@@ -55,7 +55,8 @@ def check(layouts, assets, libraries, label):
                 errors.append(f"{where}: '{key}' must be null or [x, y], got {json.dumps(value)[:40]}")
             if prefix == "flip" and not (isinstance(value, list) and len(value) == 2 and all(isinstance(v, bool) for v in value)):
                 errors.append(f"{where}: '{key}' must be [bool, bool]")
-            if prefix == "library" and key.split("#")[0] not in libraries:
+            # A portable library prop carries its own descriptor, so its id is not in the catalog.
+            if prefix == "library" and key.split("#")[0] not in libraries and "portable/" + key not in entries:
                 errors.append(f"{where}: '{key}' names no registration or common asset")
             if prefix == "copy" and "source/" + key not in entries:
                 errors.append(f"{where}: '{key}' has no 'source/{key}'")

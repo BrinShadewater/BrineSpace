@@ -81,6 +81,14 @@ func apply(room) -> void:
 		if owns(prop):
 			preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
 			return
+	# A layout can delete the bank (a null entry for its id). Nothing then carries the installed
+	# marker above, so the placement ran again on every reconfigure: props were displaced a second
+	# time and any with no clear space were silently dropped. A deleted bank installs nothing, so
+	# the room keeps its authored props and only the layout is applied.
+	if preload("res://scripts/room_layout_store.gd").shared_positions(asset_id,room.quarter).get("full_wall_"+asset_id,0) == null:
+		preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
+		prune_dressing(room,[])
+		return
 	var north: bool=Geometry.has_port(room.layout[0],0)
 	var south: bool=Geometry.has_port(room.layout[0],2)
 	var side := ""
@@ -210,9 +218,14 @@ func apply(room) -> void:
 	kept=anchored
 	placement_reports[room.quarter]={"relocated":moved,"no_clear_space":unplaced,"activity":activity_layout.get("purpose","")}
 	room.props=kept
-	# Remove service leads whose furniture was replaced; retain supported details on survivors.
+	prune_dressing(room,moved)
+	preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
+
+# Remove service leads whose furniture was replaced or deleted; retain supported details on
+# survivors. A layout that deletes props needs this as much as a bank installation does.
+func prune_dressing(room, moved: Array) -> void:
 	var ids: Array=[]
-	for existing in kept: ids.append(existing.id)
+	for existing in room.props: ids.append(existing.id)
 	for name in ["dressing","cryo_dressing","center_dressing","office_dressing"]:
 		if not name in room: continue
 		var dressing=room.get(name)
@@ -231,7 +244,6 @@ func apply(room) -> void:
 			for route in dressing.profile.get(key,[]):
 				if route.from.host in ids and route.to.host in ids and route.from.host not in moved and route.to.host not in moved: routes.append(route)
 			dressing.profile[key]=routes
-	preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
 
 func vacant_placement(room, original: Dictionary, occupied: Array, target:=Vector2.INF) -> Dictionary:
 	var before: Rect2=room.prop_visual_bounds(original)

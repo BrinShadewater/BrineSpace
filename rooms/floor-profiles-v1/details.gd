@@ -57,7 +57,12 @@ static func _resolve_uncached(view: Node, profile: Dictionary) -> Dictionary:
 					break
 			if not host.is_empty(): break
 		if host.is_empty():
-			missing.append({"asset":spec.asset,"reason":"missing host","hosts":spec.hosts})
+			# A host the layout deleted takes its floor detail with it: a choice, not a coverage gap.
+			var host_edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(view)
+			var deleted_hosts := true
+			for candidate_id in spec.hosts:
+				if not (host_edits.has(candidate_id) and host_edits[candidate_id]==null): deleted_hosts=false
+			if not deleted_hosts: missing.append({"asset":spec.asset,"reason":"missing host","hosts":spec.hosts})
 			continue
 		# Keep manually placed mats, but omit automatic workstation mats.
 		if spec.asset=="detail-standing_mat" and not preload("res://scripts/room_layout_store.gd").surface_positions(view).has("decor/"+str(spec.asset)+"/"+str(host.id)):
