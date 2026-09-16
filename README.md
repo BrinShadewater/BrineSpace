@@ -6,10 +6,10 @@ modular placement, interdependent production and discovered room synergies.
 
 > "The station is quiet. That does not mean it is empty."
 
-![BrineSpace showing BRINE Core, underwater derelicts, blueprint cards and the station interface](docs/screenshots/station-gameplay-2026-09-09.png)
+![A BrineSpace station on the sea floor: BRINE Core at the centre, rooms connected around it, the room inspector open and a draft hand of blueprints](docs/screenshots/station-gameplay-2026-09-16.png)
 
-*Native Godot capture, September 9, 2026. This paused UI verification scene shows
-BRINE Core and the current interface; it is not a full expedition.*
+*Native Godot capture, September 16, 2026, from a scripted scene rather than a played
+expedition. The station lights its own hull; the sea floor past the lamps is dark on purpose.*
 
 Rooms use authored layouts with larger equipment and restrained clutter. Raised walls start enabled; change **Raised room walls** in settings to use low walls. See the [room layout direction](docs/LARGE_ASSET_LAYOUTS_2026-09-09.md).
 
@@ -17,15 +17,16 @@ Rooms use authored layouts with larger equipment and restrained clutter. Raised 
 
 ![A large BrineSpace station viewed at Fit zoom, with many rooms across the ocean floor](docs/screenshots/large-station.png)
 
-*Native large-station performance scene with roughly 100 rooms. This is a
-controlled test layout with injected supplies, not a normal paid expedition or
-a claim of finished large-station performance.*
+*Native large-station scene, September 16, 2026: 164 rooms placed by script with free
+building on. A controlled layout with injected supplies, not a normal paid expedition
+or a claim of finished large-station performance.*
 
 ### Starting screen
 
 ![BrineSpace starting screen with BRINE in her tank, New Loop, Settings, Codex and Meta Progression](docs/screenshots/starting-screen.png)
 
-*The actual starting screen, captured from the layered animated title scene.*
+*The actual starting screen, captured from the layered animated title scene at the
+design size and reduced for this page.*
 
 ## Restore a station beneath the ocean
 
@@ -52,12 +53,14 @@ BrineSpace is designed to be thoughtful and watchable: an open-ended restoration
 game with resource pressure, quiet machinery and an AI core with opinions. You can
 pause to plan. The pressure comes from the station's needs, not rapid clicking.
 
-## Current checkpoint - September 9, 2026
+## Current checkpoint - September 16, 2026
 
-The [combined polish and release pass](docs/FINAL_POLISH_RELEASE_2026-09-09.md)
-brings together the latest room artwork, portraits, expanded companion animations,
-flood responses and diagnostic/reporting improvements. Animation frame failures
-now retain their timeline slots, and authored clip durations are precomputed.
+The September 12-16 sessions worked through a full owner playtest. Power was reworked
+around a station-wide blackout, BRINE's chamber now floods with the rest of the station,
+the cyan room selector became a lamp-light outline that follows the hull, the companions
+answer a click in their own voices, and the owner's hand-edited Studio room layouts became
+the committed defaults. The earlier [combined polish and release pass](docs/FINAL_POLISH_RELEASE_2026-09-09.md)
+remains the baseline for room artwork, portraits, companion animations and flood responses.
 
 Start with [current status](docs/CURRENT_STATUS.md) for the latest decisions and
 [development notes](docs/DEVELOPMENT_NOTES.md) for the design direction. BrineSpace
@@ -71,10 +74,14 @@ being evaluated.
   Recover them to unlock future selection. Marsh is an android powered by a
   rechargeable battery; his derelict charging chamber has its own recovery sequence.
 - **Three optional companions:** River, Josh and Margot. Find and restore their
-  derelicts, unlock future selection, and watch their individual behaviors. River
-  and Josh are robots; Margot is a cat you can approach and pet.
-- **Working station systems:** paid drone construction, mining and salvage,
-  finite deposits, cargo delivery, power demand and battery charging.
+  derelicts, unlock future selection, and watch their individual behaviors. River and Josh
+  are robots; Margot is a cat you can approach and pet. Each answers a click with their own
+  dialogue window: Josh talks, River chirps with a status-lamp translation, Margot is a cat.
+- **Working station systems:** paid drone construction, mining and salvage, finite
+  deposits and cargo delivery. Building is never blocked for want of power; it draws the
+  reserve instead. At a quarter of capacity the lights and exterior lamps stutter, and when
+  generation plus reserve cannot cover every running room the whole station blacks out for
+  the cycle rather than shedding rooms one at a time.
 - **Underwater hazards:** room flooding, crew breathing and swimming, hull repairs,
   and an interlocked airlock for exterior excursions. Marsh needs charge rather
   than oxygen.
@@ -109,7 +116,7 @@ finish, and press **F5** to run the project through title, architect selection a
 Continue. The configured main scene is `res://scenes/title_screen.tscn`;
 gameplay is `res://scenes/main.tscn`.
 
-The viewport is designed at 1920Ã—1080 with a 1600Ã—900 default window. Runtime room
+The viewport is designed at 1920x1080 with a 1600x900 default window. Runtime room
 art uses raw PNG loading; UI resources still need Godot import. LFS pointers are
 not usable image files, so finish the LFS download before diagnosing missing art.
 
@@ -147,8 +154,12 @@ rewrites or disabling normal costs/failures to make tests pass.
 Tests are under `tests/`; dedicated native capture/export tools are under `tools/`.
 Use each report's specific fixture and completion criteria. Native screenshot
 fixtures require rendering, while logic checks can run headless. A launched debug
-executable does not prove its validation fixture ran. The September 9 maintenance pass covers 18 regression suites and native UI checks;
-see its [scope and performance limits](docs/MAINTENANCE_2026-09-09.md). Remaining
+executable does not prove its validation fixture ran. Run them with
+`python tools/run_tests.py`, which takes `--subsystem <group>` from `tests/index.json`,
+`--only <names>` and `--native` for the tests that need a real display. On September 16,
+2026 the headless groups and the native lane pass: room-art 16, gameplay 48, crew 27,
+layout-studio 4, flood-water 8 and native 66. The September 9 maintenance pass documents
+the [scope and performance limits](docs/MAINTENANCE_2026-09-09.md) behind those checks. Remaining
 acceptance includes sustained multi-crew traffic, companion animation/pacing,
 dense-station performance and longer human playtests under normal resource costs.
 
@@ -164,7 +175,7 @@ Do not blindly stage generated capture trees. Export presets may refer to local
 validation templates under `output/`; install/configure those before rebuilding
 validation executables. No release binaries or player saves are included here.
 
-## ðŸ“„ Licence
+## Licence
 
 Source-available, with all rights reserved. See [NOTICE.md](NOTICE.md) for rights
 and reuse terms. Third-party components retain their own licences.
