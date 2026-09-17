@@ -20,6 +20,7 @@ func run() -> void:
 	game._place_room("corridor",cell)
 	assert(not game.occupied.has(cell) and game.drone_fleet.reserved(cell),"Paid order reserves cell without operating")
 	assert(game.get_placement_problem("corridor",cell).contains("scheduled"),"Duplicate construction rejected")
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(3.0)
 	var checkpoint = preload("res://scripts/run_save.gd").capture(game)
 	assert(preload("res://scripts/drone_fleet.gd").valid(checkpoint.drone_fleet,game.placed_rooms),"In-flight checkpoint valid")

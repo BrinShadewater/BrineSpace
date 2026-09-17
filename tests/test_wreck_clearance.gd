@@ -44,6 +44,7 @@ func run() -> void:
 	game._refresh_inspector()
 	game._toggle_inspected_room()
 	check(game.wrecks[cell].active,"Inspector starts dismantling")
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(5.0)
 	check(game.wrecks[cell].progress==0.0,"Global pause freezes clearance")
 	game.paused = false

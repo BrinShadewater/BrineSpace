@@ -34,6 +34,7 @@ func run():
 	game._place_room("crew_hab",Vector2i(21,19),true)
 	game._place_room("corridor",ward_cell+Vector2i.DOWN,true)
 	game.resources.metal=50
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._toggle_wreck_work(ward_cell);game._update_wreck_clearance(18)
 	check(game.wrecks[ward_cell].cleared,"Recovery requires repaired ward")
 	game.resources.food=50;game.resources.oxygen=50

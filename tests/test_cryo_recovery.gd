@@ -52,6 +52,7 @@ func run() -> void:
 	game._toggle_wreck_work(cell)
 	check(game.resources.metal==22 and game.wrecks[cell].paid,"Repair charges eight metal once")
 	game.paused=true
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(5)
 	check(game.wrecks[cell].progress==0,"Global pause freezes repairs")
 	game.paused=false

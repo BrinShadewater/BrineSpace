@@ -248,7 +248,7 @@ static func valid_snapshot(data: Variant, breathes := true) -> bool:
 	if not data.get("helmet_equipped", false) is bool: return false
 	if breathes and data.get("movement_medium", "dry") == "exterior" and not data.get("helmet_equipped", false) and not data.get("dead",false): return false
 	if not data.state in ["idle", "walk", "kneel", "repair", "stand", "interact", "weld", "death-ground", "death-water", "equip-helmet", "remove-helmet"]: return false
-	if data.state=="weld" and (data.goal not in ["construction","hull-repair"] or data.get("movement_medium","dry")!="dry" or data.get("helmet_equipped",false) or not data.path.is_empty()): return false
+	if data.state=="weld" and (data.goal not in ["construction","hull-repair","ward-repair"] or data.get("movement_medium","dry")!="dry" or data.get("helmet_equipped",false) or not data.path.is_empty()): return false
 	if data.state in ["equip-helmet", "remove-helmet"]:
 		if not data.active or data.get("movement_medium", "dry") != "dry" or data.direction != "east" or not data.path.is_empty() or data.stage != "" or data.goal != "": return false
 		if data.get("helmet_equipped", false) != (data.state == "remove-helmet"): return false
@@ -258,7 +258,7 @@ static func valid_snapshot(data: Variant, breathes := true) -> bool:
 		if data.state != death_state or not data.path.is_empty() or data.goal != "" or data.stage != "": return false
 	elif data.state in ["death-ground", "death-water"]: return false
 	if not data.direction in ["north", "south", "east", "west"]: return false
-	if not data.goal in ["", "social", "primary-work", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "electrical-repair", "flood-retreat", "fire-retreat"] and not (not breathes and data.goal=="recharge"): return false
+	if not data.goal in ["", "social", "primary-work", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "ward-repair", "electrical-repair", "flood-retreat", "fire-retreat"] and not (not breathes and data.goal=="recharge"): return false
 	var request: Variant = data.get("locker_request", {})
 	if not request is Dictionary: return false
 	if data.goal == "diving-locker":
@@ -658,6 +658,7 @@ func update(main, delta: float) -> void:
 	if preload("res://scripts/flood_safety.gd").advance(main,self,delta): return
 	if preload("res://scripts/hull_repair.gd").advance(main,self,delta): return
 	if preload("res://scripts/electrical_repair.gd").advance(main,self,delta): return
+	if preload("res://scripts/ward_repair.gd").advance(main,self,delta): return
 	# Finish an existing build safely, then take a needed meal/rest before claiming another.
 	if goal=="construction" or not preload("res://scripts/crew_primary_work.gd").break_needed(main,self):
 		if preload("res://scripts/crew_construction.gd").advance(main,self,delta): return
@@ -892,7 +893,7 @@ func arrive() -> void:
 		var facing:=equipment_facing(goal_cell,foot-(Vector2(goal_cell)+Vector2.ONE*.5)*CELL)
 		if not facing.is_empty():direction=facing
 		return
-	if goal in ["construction","hull-repair","electrical-repair","flood-retreat","fire-retreat","recharge"]: return
+	if goal in ["construction","hull-repair","ward-repair","electrical-repair","flood-retreat","fire-retreat","recharge"]: return
 	if stage=="workshop_carry":
 		stage="workshop_unload"
 		direction="north"

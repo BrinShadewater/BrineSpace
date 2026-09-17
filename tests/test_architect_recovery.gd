@@ -57,6 +57,7 @@ func run() -> void:
 	game._place_room("corridor",cell+Vector2i.DOWN,true)
 	game.resources.metal=30
 	game._toggle_wreck_work(cell)
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(18)
 	game.powered_room_cells[cell]=true
 	game.resources.food=30

@@ -42,6 +42,7 @@ func run():
 		game.resources.metal=40;game.paused=false
 		game._toggle_wreck_work(cell)
 		check(ward.active and game.resources.metal==32,"Connected ward charges actual repair cost")
+		preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 		game._update_wreck_clearance(9)
 		check(not ward.cleared and game.grid_view._room_light_target(room)==0,"Partial repair stays weathered and off")
 		game._update_wreck_clearance(9)

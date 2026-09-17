@@ -69,6 +69,7 @@ func run() -> void:
 	game.paused = false
 	game.set_process(false)
 	game.tick_timer.stop()
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(9.0)
 	game.visual_time_seconds = 1.0
 	var a := await capture("excavation-a")

@@ -174,6 +174,7 @@ func _build(id: String, cell: Vector2i, rotation := 0) -> void:
 	# between assertions. Full elapsed-time pacing is covered by playtest_balance.
 	for step in range(1200):
 		if game.occupied.has(cell): break
+		preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 		game._update_wreck_clearance(0.1)
 	game.paused = was_paused
 	_expect(game.occupied.has(cell), "purchased %s is built" % id)

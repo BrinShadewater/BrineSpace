@@ -1583,7 +1583,7 @@ func _update_wreck_clearance(delta: float) -> void:
 		selected_rotation = prior_rotation
 	if not built.is_empty(): _refresh_all()
 	# Quick Rigging speeds hands-on repairs (wards, companion sites); drone work keeps its own rate.
-	var completed := WreckField.advance(wrecks,occupied,delta*ResearchTree.repair_rate(meta),drone_fleet.clearance_seconds)
+	var completed := WreckField.advance(wrecks,occupied,delta*ResearchTree.repair_rate(meta),drone_fleet.clearance_seconds,preload("res://scripts/ward_repair.gd").take_work(self))
 	for cell in completed:
 		if Companions.is_site(self,cell):
 			Companions.connect_room(self,cell);continue

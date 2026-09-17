@@ -145,6 +145,7 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 			game.visual_time_seconds += 0.1
 			preload("res://scripts/airlock_cycle.gd").advance(game, 0.1)
 			game._update_test_walker(0.1)
+			preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 			game._update_wreck_clearance(0.1)
 			game.CryoRecovery.advance(game, 0.1)
 			game.Architects.advance_core(game, 0.1)

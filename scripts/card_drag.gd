@@ -19,9 +19,66 @@ var ghost: Control
 var tilt := 0.0
 var last_mouse := Vector2.ZERO
 
+# Smoothing rates (per second) for the ghost's glide, size and fade (owner playtest, Sept 17:
+# the hand-to-room hand-off should feel smoother). Over the station the card slides into the
+# hovered cell, shrinks to the cell's size and dissolves into the room preview; a drop plays a
+# short settle ring on the cell.
+const FOLLOW_RATE := 20.0
+const MORPH_RATE := 14.0
+
 func _ready() -> void:
 	layer = 40
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_process(false)
+
+func _process(delta: float) -> void:
+	if not dragging or not is_instance_valid(ghost):
+		set_process(false)
+		return
+	var reduced: bool = game.Preferences.reduced_motion
+	var target_position := pointer - ghost.pivot_offset
+	var target_scale := 1.0
+	var target_alpha := 1.0
+	if over_station:
+		var cell_rect := _cell_screen_rect(_cell_under_pointer())
+		target_position = cell_rect.get_center() - ghost.pivot_offset
+		target_scale = clampf(cell_rect.size.x / GHOST_SIZE.x, 0.2, 1.0)
+		target_alpha = 0.0
+	var follow := 1.0 if reduced else 1.0 - exp(-FOLLOW_RATE * delta)
+	var morph := 1.0 if reduced else 1.0 - exp(-MORPH_RATE * delta)
+	ghost.position = ghost.position.lerp(target_position, follow)
+	ghost.scale = ghost.scale.lerp(Vector2.ONE * target_scale, morph)
+	ghost.modulate.a = lerpf(ghost.modulate.a, target_alpha, morph)
+	tilt = 0.0 if reduced else lerpf(tilt, 0.0, 1.0 - exp(-6.0 * delta))
+	ghost.rotation = lerpf(ghost.rotation, 0.0 if over_station else tilt, morph)
+
+func _cell_screen_rect(cell: Vector2i) -> Rect2:
+	var size: float = game.get_cell_size()
+	var xform: Transform2D = game.grid_view.get_global_transform_with_canvas()
+	var top_left: Vector2 = xform * (Vector2(cell) * size)
+	var bottom_right: Vector2 = xform * ((Vector2(cell) + Vector2.ONE) * size)
+	return Rect2(top_left, bottom_right - top_left)
+
+func _settle_ring(cell: Vector2i) -> void:
+	if game.Preferences.reduced_motion: return
+	var rect := _cell_screen_rect(cell)
+	var ring := Panel.new()
+	ring.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var style := StyleBoxFlat.new()
+	style.draw_center = false
+	style.border_color = Color("9ff3df")
+	style.set_border_width_all(3)
+	style.set_corner_radius_all(6)
+	ring.add_theme_stylebox_override("panel", style)
+	ring.position = rect.position
+	ring.size = rect.size
+	ring.pivot_offset = rect.size * 0.5
+	ring.scale = Vector2.ONE * 0.9
+	add_child(ring)
+	var tween := ring.create_tween().set_parallel().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(ring, "scale", Vector2.ONE * 1.06, 0.3)
+	tween.tween_property(ring, "modulate:a", 0.0, 0.3)
+	tween.chain().tween_callback(ring.queue_free)
 
 func begin(id: String, index: int, at: Vector2) -> void:
 	card_id = id
@@ -51,7 +108,10 @@ func _input(event: InputEvent) -> void:
 			var drop_cell: Vector2i = _cell_under_pointer()
 			var drop := over_station
 			_finish()
-			if drop: game._on_grid_clicked(drop_cell)
+			if drop:
+				var before: bool = game.occupied.has(drop_cell) or game.drone_fleet.reserved(drop_cell)
+				game._on_grid_clicked(drop_cell)
+				if not before and (game.occupied.has(drop_cell) or game.drone_fleet.reserved(drop_cell)): _settle_ring(drop_cell)
 		else:
 			pressing = false
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and dragging:
@@ -67,8 +127,10 @@ func _start_drag() -> void:
 	dragging = true
 	ghost = _build_ghost()
 	add_child(ghost)
+	ghost.position = pointer - ghost.pivot_offset
 	_set_source_faded(true)
 	_follow(pointer)
+	set_process(true)
 
 func _follow(at: Vector2) -> void:
 	var velocity := at - last_mouse
@@ -78,14 +140,8 @@ func _follow(at: Vector2) -> void:
 	var inside: bool = game.station_clear_rect().has_point(at) and not game.hand_panel.get_global_rect().has_point(at)
 	if inside:
 		game._on_grid_hovered(_cell_under_pointer())
-	if inside != over_station:
-		over_station = inside
-		# Over the station the card gives way to the room preview drawn on the grid.
-		var tween := ghost.create_tween().set_parallel().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		tween.tween_property(ghost, "scale", Vector2.ONE * (0.35 if inside else 1.0), 0.0 if reduced else 0.12)
-		tween.tween_property(ghost, "modulate:a", 0.0 if inside else 1.0, 0.0 if reduced else 0.12)
-	ghost.position = at - ghost.pivot_offset
-	ghost.rotation = tilt
+	# _process glides the ghost toward the pointer, or into the hovered cell over the station.
+	over_station = inside
 
 func _cell_under_pointer() -> Vector2i:
 	var local: Vector2 = game.grid_view.get_global_transform_with_canvas().affine_inverse() * pointer

@@ -60,13 +60,17 @@ static func busy(wrecks: Dictionary, except_cell: Vector2i) -> bool:
 			return true
 	return false
 
-static func advance(wrecks: Dictionary, occupied: Dictionary, delta: float, drone_work: Variant = null) -> Array:
+# crew_work (cell -> seconds) is welding time from WardRepair: derelict wards only progress
+# while a crew member works on them (owner playtest, Sept 17). Without it (older callers and
+# fixtures) wards progress on the clock as before. Crew time already carries the repair rate.
+static func advance(wrecks: Dictionary, occupied: Dictionary, delta: float, drone_work: Variant = null, crew_work: Variant = null) -> Array:
 	var completed := []
 	for cell in wrecks:
 		var wreck: Dictionary = wrecks[cell]
 		if wreck.cleared or not wreck.active or not reachable(occupied,cell,wrecks):
 			continue
-		var work_delta: float = delta if drone_work == null or wreck.kind in ["cryo","charging","river","josh","margot"] else float(drone_work.get(cell,0.0))
+		var ward: bool = wreck.kind in ["cryo","charging","river","josh","margot"]
+		var work_delta: float = delta if drone_work == null and crew_work == null else float(crew_work.get(cell,0.0)) if ward and crew_work != null else delta if ward or drone_work == null else float(drone_work.get(cell,0.0))
 		wreck.progress = minf(DURATION,float(wreck.progress)+maxf(0.0,work_delta))
 		if wreck.progress >= DURATION:
 			wreck.cleared = true

@@ -31,6 +31,7 @@ func run():
 		var cell: Vector2i=C.CELLS[id]
 		var link:=Vector2i(20,19) if id=="river" else Vector2i(21,20) if id=="josh" else Vector2i(20,21)
 		game._place_room("corridor",link,true);game.occupied[link].rotation=1 if id=="josh" else 0
+		preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 		game.resources.metal=40;C.toggle(game,cell);game._update_wreck_clearance(18)
 		game.powered_room_cells[cell]=true;C.toggle(game,cell);C.advance(game,8)
 		check(game.companion_actors[id].active,"Recover "+id)

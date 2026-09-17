@@ -8,6 +8,11 @@ var transmission_window: Control
 var continue_button: Button
 var finished_reading := false
 var progress: Control
+# The transmission types itself out like an old terminal message sent across time before the
+# station starts loading (owner playtest, Sept 17). A click, Enter or Space shows it all at once.
+const TYPE_CHARACTERS_PER_SECOND := 70.0
+var typing := false
+var type_skipped := false
 
 
 func _ready() -> void:
@@ -97,7 +102,34 @@ func _continue() -> void:
 	if replay_mode:
 		queue_free()
 
+func type_transmission() -> void:
+	if replay_mode or preload("res://scripts/title_settings.gd").reduced_motion or DisplayServer.get_name() == "headless":
+		transcript.visible_characters = -1
+		return
+	typing = true
+	type_skipped = false
+	detail.text = "RECEIVER // DECODING TRANSMISSION"
+	transcript.visible_characters = 0
+	var total := transcript.get_total_character_count()
+	var shown := 0.0
+	while shown < total and not type_skipped:
+		await get_tree().process_frame
+		shown += get_process_delta_time() * TYPE_CHARACTERS_PER_SECOND
+		# Hold briefly at the end of each line, as a slow link would.
+		var next := mini(int(shown), total)
+		if next > transcript.visible_characters:
+			var line_break: bool = transcript.get_parsed_text().substr(transcript.visible_characters, next - transcript.visible_characters).contains("\n")
+			transcript.visible_characters = next
+			if line_break: shown -= TYPE_CHARACTERS_PER_SECOND * 0.12
+	transcript.visible_characters = -1
+	typing = false
+	detail.text = "STATION SYSTEMS // RECOVERING"
+
 func _input(event: InputEvent) -> void:
+	if typing and (event.is_action_pressed("ui_accept") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT)):
+		type_skipped = true
+		get_viewport().set_input_as_handled()
+		return
 	if event.is_action_pressed("ui_accept"):
 		if not event.is_echo():
 			_continue()

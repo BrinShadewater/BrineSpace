@@ -25,6 +25,7 @@ func step() -> void:
 			if drone.phase=="working": work_seconds += 0.1
 			elif drone.phase in ["outbound","returning","launching","docking"]: travel_seconds += 0.1
 			elif game.resources.power==0 and drone.get("battery",12.0)<11.99: waiting_seconds += 0.1
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(0.1)
 	if recording:
 		delivered += int(game.drone_fleet.delivered.get("metal",0))

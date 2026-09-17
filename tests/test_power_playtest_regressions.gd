@@ -45,6 +45,7 @@ func _init() -> void:
 	game.running = true
 	game.paused = false
 	check(game.powered_room_cells.has(bay.pos) and not game._simulate_room_economy().working_cells.has(bay.pos),"Reproduce paid bay with insufficient next-cycle power")
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(0.25)
 	check(drone.battery > 0.0,"Paid bay continues previously paid charging despite empty reserve")
 	check(game.resources.power == 0,"Previously paid charging does not spend reserve twice")

@@ -34,6 +34,7 @@ func run():
 	game.inspector_focus_button.set_meta("cell",cell);game._focus_inspected_room()
 	game._refresh_all()
 	await capture("derelict")
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._toggle_wreck_work(cell);game._update_wreck_clearance(18)
 	assert(game.wrecks[cell].cleared)
 	game.powered_room_cells.erase(cell)

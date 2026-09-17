@@ -36,6 +36,7 @@ func run():
 		focus(cell);await capture(id+"-derelict")
 		var link:=Vector2i(20,21) if id=="margot" else Vector2i(20,19) if id=="river" else Vector2i(21,20)
 		game._place_room("corridor",link,true);game.occupied[link].rotation=1 if id=="josh" else 0
+		preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 		game.resources.metal=40;C.toggle(game,cell);game._update_wreck_clearance(18)
 		game.powered_room_cells[cell]=true;game.grid_view.room_light_levels[cell]=1.0
 		focus(cell);await capture(id+"-closed")

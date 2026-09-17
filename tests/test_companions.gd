@@ -30,6 +30,7 @@ func run():
 		game.resources.metal=40
 		C.toggle(game,cell)
 		check(game.resources.metal==32 and game.wrecks[cell].active,"Paid recovery starts")
+		preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 		game.paused=true;game._update_wreck_clearance(3)
 		check(game.wrecks[cell].progress==0,"Pause freezes repair")
 		game.paused=false;game._update_wreck_clearance(6)

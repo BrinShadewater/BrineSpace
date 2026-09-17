@@ -75,6 +75,7 @@ func run() -> void:
 	await settle()
 	focus_site()
 	game.paused = false
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	for frame in range(36): game._update_wreck_clearance(0.1)
 	game.paused = true
 	assert(game.grid_view._drone_door_frame(game,Vector2i(19,20),Vector2i(18,20))==0,"Drones pass through doors without opening them (owner playtest)")

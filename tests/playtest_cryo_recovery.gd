@@ -52,6 +52,7 @@ func run() -> void:
 	game.resources.metal=30
 	game._toggle_wreck_work(cell)
 	game.paused=false
+	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(18)
 	game.paused=true
 	game.powered_room_cells[cell]=true

@@ -341,6 +341,7 @@ func _start_game(continuing := false) -> void:
 	status.text = "RESTORING STATION INTERFACE..."
 	var loading := preload("res://scripts/loading_transition.gd").new()
 	get_tree().root.add_child(loading)
+	await loading.type_transmission()
 	var scene: PackedScene = await loading.prepare_scene(GAME_SCENE)
 	var error := ERR_CANT_OPEN
 	if scene != null:
