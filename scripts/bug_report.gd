@@ -401,6 +401,11 @@ func _report_text(note: String, after_crash: bool, files: Array, dumps_found: in
 	if not pending_captured_at.is_empty():
 		lines.append("captured at F8: %s (uptime %d s)" % [pending_captured_at, pending_uptime])
 	lines.append("bundle time: " + Time.get_datetime_string_from_system(false, true))
+	# Errors logged this session, counted by kind, so a silent flood of them is obvious here.
+	if is_instance_valid(performance_monitor) and "errors" in performance_monitor:
+		performance_monitor.errors.poll(float(Time.get_ticks_msec()))
+		for line in performance_monitor.errors.report_lines(): lines.append(line)
+		if int(performance_monitor.auto_reports) > 0: lines.append("automatic captures this session: %d" % performance_monitor.auto_reports)
 	lines.append("previous session lock: " + (crashed_at.replace("\n", " | ") if not crashed_at.is_empty() else "(none)"))
 	lines.append("game version: " + preload("res://scripts/build_version.gd").title())
 	lines.append("godot: " + str(Engine.get_version_info().get("string", "unknown")))

@@ -8,6 +8,8 @@ const MATERIALS=["Original","Sealed panel","Steel plate","Grating"]
 const LIMIT=96
 static var enabled:=not OS.get_cmdline_user_args().has("--reference-floor-tiles")
 static var cache: Dictionary={}
+# Evicted batches stay referenced here: a canvas drawn with them may never redraw.
+static var retired: Array=[]
 static var textures: Dictionary={}
 static var cell_cache: Dictionary={}
 static var builds:=0
@@ -161,7 +163,10 @@ static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, sour
 		arrays[Mesh.ARRAY_COLOR]=group.colors; arrays[Mesh.ARRAY_INDEX]=group.indices
 		var mesh:=ArrayMesh.new(); mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
 		result.append({"mesh":mesh,"texture":texture(path)})
-	if cache.size()>=LIMIT: cache.erase(cache.keys()[0])
+	if cache.size()>=LIMIT:
+		var oldest=cache.keys()[0]
+		retired.append(cache[oldest])
+		cache.erase(oldest)
 	cache[key]=result; builds+=1
 	return result
 static func draw(canvas: CanvasItem, values: Dictionary, corridor: bool, q:=0, opacity:=0.42, center:=Vector2.ZERO, light:=1.0, source_path:=SCIENCE, shape:="corridor", variant:=0) -> void:

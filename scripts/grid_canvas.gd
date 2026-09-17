@@ -1545,6 +1545,8 @@ func _foundation_exposed(cell: Vector2i) -> bool:
 # triangle fans, so a new zoom width costs a few dozen array operations.
 static var contact_fans := {}
 static var contact_meshes := {}
+# Meshes are kept once built: a retained canvas holds their RIDs, not a reference to them.
+static var contact_retired := []
 
 func _draw_foundation_contact(origin: Vector2, width: float, height: float, foreground := false) -> void:
 	# Broad seabed occlusion behind the piles; sediment overlaps their lower edges.
@@ -1559,7 +1561,9 @@ static func _unit_fan(rim: PackedVector2Array) -> PackedVector2Array:
 func _foundation_contact_mesh(width: float, foreground: bool) -> ArrayMesh:
 	var key := Vector2(width,1.0 if foreground else 0.0)
 	if contact_meshes.has(key): return contact_meshes[key]
-	if contact_meshes.size() > 32: contact_meshes.clear()
+	if contact_meshes.size() > 32:
+		contact_retired.append(contact_meshes.duplicate())
+		contact_meshes.clear()
 	if contact_fans.is_empty():
 		var ellipse := PackedVector2Array()
 		for i in range(24): ellipse.append(Vector2(cos(float(i)*TAU/24.0),sin(float(i)*TAU/24.0)))

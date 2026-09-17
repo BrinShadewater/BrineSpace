@@ -3039,6 +3039,9 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	summary_text.text = "%s\n\n%s\n\nCycles survived: %d\nCrew remaining: %d\nResonance: %d\nLinks formed: %d / Best cascade: x%d\nArchived Data banked: %d\nArchived Data total: %d" % [reason, discoveries, cycle, crew_count, resonance_score, links_formed, largest_cascade, award, meta.total_research_points]
 	summary_text.text += "\nResources earned: %s" % (_format_cost(run_earned) if not run_earned.is_empty() else "None")
 	summary_layer.visible = true
+	var monitor = _performance_monitor()
+	# One line per finished loop in user://session_stats.csv, for real runs only.
+	if monitor != null and run_save_path == RunSave.PATH: monitor.record_session(monitor.session_row(self))
 	var ranks_gained: Array[String] = []
 	for id in previous_doctrine_ranks:
 		if meta.get_doctrine_rank(id) > int(previous_doctrine_ranks[id]):
@@ -4126,7 +4129,8 @@ func _on_card_unhovered(id: String, card: Control) -> void:
 		hovered_card_id = ""
 	_pose_card(card, card.get_meta("rest_position", card.position), float(card.get_meta("rest_rotation", 0.0)), Vector2.ONE)
 	if card.has_meta("rest_index") and card.get_parent() != null:
-		card.get_parent().move_child(card, int(card.get_meta("rest_index")))
+		# Deferred: the pointer can leave a card while its parent is still adding children.
+		card.get_parent().move_child.call_deferred(card, int(card.get_meta("rest_index")))
 	var color: Color = card.get_meta("category_color", UI_ACCENT_BRIGHT)
 	var affordable: bool = card.get_meta("affordable", true)
 	_apply_card_style(card, color, selected_card_id == id, affordable)
@@ -4245,6 +4249,8 @@ func _input(event: InputEvent) -> void:
 		preload("res://scripts/title_button_style.gd").contain_tab(event, scope)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if get_viewport() == null: # The scene can leave the tree between input and handling.
+		return
 	if is_instance_valid(menu_archive):
 		return
 	if doctrine_layer != null and doctrine_layer.visible:
@@ -5440,6 +5446,8 @@ func _has_room(id: String) -> bool:
 
 func _log(message: String, show_in_panel := true) -> void:
 	event_history.append("[C%02d] %s" % [cycle, message])
+	var monitor = _performance_monitor()
+	if monitor != null: monitor.note("log", "[C%02d] %s" % [cycle, message])
 	if event_history.size() > 1000:
 		event_history.pop_front()
 	if show_in_panel:
@@ -5448,6 +5456,11 @@ func _log(message: String, show_in_panel := true) -> void:
 			log_lines.pop_front()
 	if is_node_ready():
 		_refresh_log()
+
+# The bug report node owns the performance monitor; both are optional in fixtures.
+func _performance_monitor():
+	var reporter := get_tree().root.get_node_or_null("BugReport") if is_inside_tree() else null
+	return reporter.performance_monitor if reporter != null and "performance_monitor" in reporter and is_instance_valid(reporter.performance_monitor) else null
 
 func _on_tick_timer_timeout() -> void:
 	if running and not paused:

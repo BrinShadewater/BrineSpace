@@ -1070,8 +1070,16 @@ func travel_heading(a: Vector2, b: Vector2, fallback: String) -> String:
 	if offset.length_squared() <= 0.001: return fallback
 	return ("east" if offset.x > 0 else "west") if absf(offset.x) > absf(offset.y) else ("south" if offset.y > 0 else "north")
 
+# Counted for the performance overlay and bug reports: a failed search walks the whole crew
+# graph, so a rising count is the first sign of a pathing stall (owner lag report, Sept 17).
+static var route_searches := 0
+static var route_failures := 0
+
 func route_between(start: int, target: int, avoid_crew: bool = false) -> PackedVector2Array:
-	if not graph.has_point(start) or not graph.has_point(target): return PackedVector2Array()
+	route_searches += 1
+	if not graph.has_point(start) or not graph.has_point(target):
+		route_failures += 1
+		return PackedVector2Array()
 	if fire_cells.has(cell_at(graph.get_point_position(target))): return PackedVector2Array()
 	var disabled := []
 	for cell in fire_cells:

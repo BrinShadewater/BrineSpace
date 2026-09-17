@@ -1,3 +1,19 @@
+## Diagnostics pass and logged-error fixes - September 17, 2026
+
+Owner asked for more ways to measure performance and catch bugs; all seven were built.
+
+1. Automatic capture (performance_monitor.gd): a frame over 400 ms, or under 20 FPS for 2 s, saves its own bug report with the seconds before it. At most 3 a session, 90 s apart, never while paused or unfocused, and off whenever the game is started by a script (tests and tools), so runs never add reports to the player's folder.
+2. F7 overlay: a frame-time strip (scale capped at 120 ms so a loading frame does not flatten it) and a stacked bar of crew, drones, cryo, airlocks, interface and grid draw time, plus path searches, failures and error count (performance_graph.gd).
+3. Error counter (error_watch.gd): the running log is read incrementally, errors grouped by message with the first backtrace of each. Shown on the overlay and listed at the top of every bug report.
+4. Counters: crew path searches and failed searches per bucket (a failed search walks the whole crew graph, which is what the Sept 17 repair lag did).
+5. Event timeline: every station log line is kept in a bounded ring buffer and included in reports, so a spike lines up with what just happened.
+6. Headless soak (tools/soak_test.gd): runs a save for N cycles with no window and reports per-system time, the worst frame, route searches and errors; --fail-ms fails the run. On the Sept 17 save: 60 cycles, mean 1.4 ms, worst 102.8 ms at cycle 43.
+7. Session stats: one line per finished loop in user://session_stats.csv (cycles, crew, victory, mean/p95/worst frame, hitches, errors), for real runs only.
+
+Fixed from the same logs: mesh caches (modular_floor.gd, grid_canvas contact meshes) dropped meshes that retained canvases were still drawing, which logged 45 "Parameter mesh is null" errors and is the likely cause of the Cold Store showing up empty in report 20260917-004907; evicted meshes are now kept alive. A card leaving the pointer moved a child during layout (deferred now), and input was handled after the scene left the tree (guarded).
+
+Note: an early version of automatic capture wrote 32 reports into the player's bug_reports folder during test runs; they were removed and the guard added.
+
 ## Owner playtest notes, seventh fixes - September 17, 2026
 
 Owner notes (11) and two F8 reports (20260917-042558 "FPS dropped to 1", 20260917-043829 "slowdown during Margot thawing").
