@@ -95,6 +95,8 @@ static func move_prop(prop: Dictionary, at: Vector2) -> void:
 	prop.rect.position=at
 	prop.sort_y=preload("res://scripts/room_asset_library.gd").base_sort_y(prop)
 	if prop.has("art_offset"): prop.art_offset+=shift
+static func apply_serial(room, quarter: int) -> int:
+	return int(room.get_meta("layout_apply_serials",{}).get(quarter,0))
 static func apply(room, asset: String) -> bool:
 	room.set_meta("layout_asset",asset)
 	if room.has_meta("layout_editor_preview"): return false
@@ -109,9 +111,13 @@ static func apply(room, asset: String) -> bool:
 		for prop in room.props:
 			if prop.get("_layout_stamp",-1)!=signature: stamped=false; break
 		if stamped: return false
-	# Prop dictionaries are about to mutate; retained draw slots key on this view's serial.
-	# A per-view serial keeps one churning room from invalidating every other room.
-	room.set_meta("layout_apply_serial",int(room.get_meta("layout_apply_serial",0))+1)
+	# Prop dictionaries are about to mutate; retained draw slots key on this view's serial
+	# for this quarter. Per view keeps one churning room from invalidating every other
+	# room; per quarter keeps two rooms that share a view at different rotations from
+	# invalidating each other every frame (two rotated Solar Arrays cost ~57 ms a frame).
+	var serials: Dictionary = room.get_meta("layout_apply_serials",{})
+	serials[room.quarter] = int(serials.get(room.quarter,0))+1
+	room.set_meta("layout_apply_serials",serials)
 	# Only restore props this authoring layer previously removed; dynamic room props stay authoritative.
 	var removed_by_quarter: Dictionary=room.get_meta("layout_removed_ids",{})
 	var originals: Dictionary=room.get_meta("layout_copy_sources",{}).get(room.quarter,{})

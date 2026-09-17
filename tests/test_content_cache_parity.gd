@@ -89,6 +89,9 @@ func run() -> void:
 	game.Architects.advance_core(game,game.Architects.DURATION)
 	game._set_paused(true,false)
 	game.grid_view.cull_room_drawing = false
+	# A full reserve: at a quarter of capacity or less, lights flicker on the unscaled
+	# clock, so paired captures a few frames apart differ by timing alone.
+	game.resources.power = game._get_power_capacity()
 	game._refresh_all()
 	await settle()
 	game._fit_station_view()

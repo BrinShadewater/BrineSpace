@@ -2047,7 +2047,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		frame_key = [room_view.get_instance_id(),int(room.get("rotation",0)),sides,omitted,main.powered_room_cells.has(pos),main.hardware.walls,
 			preload("res://scripts/title_settings.gd").raised_walls,main.occupied.has(pos+Vector2i.UP),main.drone_fleet.deployed(pos),main.drone_fleet.hatch_fraction(pos),
 			[rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size],Store.revision,Store.geometry_revision,
-			int(room_view.get_meta("layout_apply_serial",0))]
+			preload("res://scripts/room_layout_store.gd").apply_serial(room_view,int(room.get("rotation",0)))]
 		var stored: Array = room_frame_keys.get(pos,[])
 		if (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
 			# Mid-zoom the camera alone does not rebuild a canvas that still shows every prop in
@@ -2137,7 +2137,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	room_view.retained_content_host = null
 	if not frame_key.is_empty():
 		# Store.apply during render may bump the serial; key on the settled value.
-		frame_key[frame_key.size()-1] = int(room_view.get_meta("layout_apply_serial",0))
+		frame_key[frame_key.size()-1] = preload("res://scripts/room_layout_store.gd").apply_serial(room_view,int(room.get("rotation",0)))
 		room_frame_keys[pos] = frame_key
 	elif retained_live:
 		room_frame_keys.erase(pos)
@@ -2915,14 +2915,23 @@ func _draw_connectors(room: Dictionary, occupied: Dictionary) -> void:
 			draw_target.draw_line(center, neighbor_center, Color("#88939a"), 5)
 			draw_target.draw_line(center, neighbor_center, Color("#1d252b"), 2)
 
+var drone_anchor_cache: Dictionary = {}
+
 func drone_anchors(room: Dictionary) -> Dictionary:
 	if room.id == "brine_core": return {"dock":Vector2(0,0.15)*384,"hatch":Vector2(0,0.35)*384}
+	# Reconfiguring the bay's view for every flying drone every frame rebuilt its props
+	# and churned its retained content; the anchors only change with the layout.
+	var Store = preload("res://scripts/room_layout_store.gd")
+	var key := [room.id,int(room.get("rotation",0)),Store.revision,Store.geometry_revision]
+	if drone_anchor_cache.has(key): return drone_anchor_cache[key]
 	var view = _bill_room_view(room)
 	view.configure_embedded(int(room.get("rotation",0)),[],false,0.0)
-	var anchors := {}
+	# A layout can remove the ROV cradle or hatch; the bay centre stands in.
+	var anchors := {"dock":Vector2.ZERO,"hatch":Vector2(0,0.35)*384}
 	for prop in view.props:
 		if str(prop.id).ends_with("_rov"): anchors["dock"] = Vector2(prop.rect.get_center().x,prop.rect.end.y-50)
 		if str(prop.id).ends_with("_hatch"): anchors["hatch"] = Vector2(prop.rect.get_center().x,prop.rect.end.y-35)
+	drone_anchor_cache[key] = anchors
 	return anchors
 
 func _draw_drones(main) -> void:
