@@ -8,6 +8,7 @@ static var placement_guides := true
 static var raised_walls := true
 static var hand_backdrop := true
 static var hand_layout := "row" # Draft hand as a row of cards or a fan (owner playtest).
+static var pixel_frames := false # HUD panels use clean vector frames unless this is on.
 static var fps_cap := 0
 static var muted := false
 static var music_volume := 1.0
@@ -72,6 +73,7 @@ static func initialize(window: Window) -> void:
 	raised_walls = bool(config.get_value("display", "riser_walls_enabled", true))
 	placement_guides = bool(config.get_value("accessibility", "placement_guides", true))
 	hand_backdrop = bool(config.get_value("display", "hand_backdrop", true))
+	pixel_frames = bool(config.get_value("accessibility", "pixel_frames", false))
 	hand_layout = str(config.get_value("display", "hand_layout", "row"))
 	if hand_layout not in ["row", "fan"]:
 		hand_layout = "row"
@@ -179,6 +181,7 @@ static func save(window: Window) -> Error:
 	config.set_value("display", "riser_walls_enabled", raised_walls)
 	config.set_value("display", "hand_backdrop", hand_backdrop)
 	config.set_value("display", "hand_layout", hand_layout)
+	config.set_value("accessibility", "pixel_frames", pixel_frames)
 	config.set_value("display", "fps_cap", fps_cap)
 	config.set_value("audio", "muted", muted)
 	config.set_value("audio", "music_volume", music_volume)

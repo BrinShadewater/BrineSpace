@@ -21,6 +21,8 @@ var codex_hint: Label
 var texture_cache := {}
 const Catalog = preload("res://scripts/codex_catalog.gd")
 const ResearchTree = preload("res://scripts/research_tree.gd")
+const ResourceIcons = preload("res://scripts/resource_icons.gd")
+const RARITY_ORDER := ["core", "common", "uncommon", "rare", "derelict"]
 const SHADEWATER_LABS_URL := "https://shadewaterlabs.com/"
 const AI_DISCLOSURE := "BrineSpace is made by Brin Shadewater with the help of generative AI. AI tools were used to create or assist with parts of the artwork, animation, audio and code, all directed, selected and edited by a human."
 var close_button: Button
@@ -232,6 +234,20 @@ func _populate_cards() -> void:
 			recovered.append(entry)
 		else:
 			hidden.append(entry)
+	# Cards sort by rarity, then department colour, then name (owner playtest, Sept 17).
+	if codex_tab == 0:
+		recovered.sort_custom(func(a, b):
+			var ra: int = RARITY_ORDER.find(str(a.data.get("rarity", "common")))
+			var rb: int = RARITY_ORDER.find(str(b.data.get("rarity", "common")))
+			if ra != rb: return ra < rb
+			if str(a.category) != str(b.category): return str(a.category) < str(b.category)
+			return str(a.title) < str(b.title))
+	else:
+		recovered.sort_custom(func(a, b):
+			var sa: bool = meta_state.stabilized_synergy_ids.has(a.id)
+			var sb: bool = meta_state.stabilized_synergy_ids.has(b.id)
+			if sa != sb: return sa
+			return str(a.title) < str(b.title))
 	entries = recovered + hidden
 	var known_count := 0
 	for entry in entries:
@@ -249,6 +265,9 @@ func _populate_cards() -> void:
 			room_ids.append(entry.id)
 		if codex_tab == 0:
 			grid.add_child(_codex_room_card(entry))
+			continue
+		if codex_tab == 1:
+			grid.add_child(_codex_synergy_card(entry))
 			continue
 		var data: Dictionary = entry.data
 		var accent := Color("45616f")
@@ -398,20 +417,107 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	rules.add_child(lines)
 	lines.add_child(_label(data.get("description", ""), 15))
 	if not data.get("production", {}).is_empty():
-		lines.add_child(_label("OUTPUT  " + _resources(data.production), 14))
+		lines.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  [color=#cfe9dc]+%s[/color]" % ResourceIcons.bbcode(data.production), 14))
 	if not data.get("consumption", {}).is_empty():
-		lines.add_child(_label("UPKEEP  " + _resources(data.consumption), 14))
+		lines.add_child(_rich("[color=#e0b36a]UPKEEP[/color]  [color=#e9dcc4]%s[/color]" % ResourceIcons.bbcode(data.consumption), 14))
+	if not data.get("storage", {}).is_empty():
+		lines.add_child(_rich("[color=#79b8d9]STORAGE[/color]  [color=#cfe3ee]+%s[/color]" % ResourceIcons.bbcode(data.storage), 14))
+	lines.add_child(_rich("[color=#8fa3ae]BUILD[/color]  [color=#e6eeee]%s[/color]" % ResourceIcons.bbcode(data.get("cost", {})), 14))
 	var footer := HBoxContainer.new()
 	body.add_child(footer)
 	var rarity := _label(str(data.get("rarity", "common")).to_upper(), 13)
 	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	rarity.add_theme_color_override("font_color", accent)
 	footer.add_child(rarity)
-	var cost := _label("BUILD  " + _resources(data.get("cost", {})), 13)
-	cost.autowrap_mode = TextServer.AUTOWRAP_OFF
-	cost.add_theme_stylebox_override("normal", _card_box(Color("121c22"), Color("5f7682"), 1, 10, 6))
-	footer.add_child(cost)
 	return card
+
+# Synergy entries as cards (owner playtest): the linked rooms side by side in the art window,
+# the effect, stabilisation state and reward. Undiscovered patterns show their clue.
+func _codex_synergy_card(entry: Dictionary) -> Control:
+	var data: Dictionary = entry.data
+	var known: bool = entry.known
+	var stabilized: bool = meta_state.stabilized_synergy_ids.has(entry.id)
+	var accent := Color(str(data.get("fx_color", "72d9dc"))) if known else Color("45616f")
+	var card := PanelContainer.new()
+	card.name = "CodexSynergy_" + str(entry.id)
+	card.custom_minimum_size = Vector2(300, 0)
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 3, 14, 10))
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 8)
+	card.add_child(body)
+	var title := _label(entry.title, 18)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 6, 6))
+	body.add_child(title)
+	var record_key := "synergy:" + str(entry.id)
+	if known and meta_state.unread_records.has(record_key):
+		var reviewed := Button.new()
+		reviewed.text = "NEW // MARK REVIEWED"
+		preload("res://scripts/title_button_style.gd").apply(reviewed, 260, 38)
+		reviewed.pressed.connect(func() -> void:
+			meta_state.mark_reviewed(record_key)
+			reviewed.text = "RECORD REVIEWED"
+			reviewed.disabled = true
+			scroll.grab_focus()
+		)
+		body.add_child(reviewed)
+	if not known:
+		body.add_child(_mystery_picture())
+		body.add_child(_label("CLUE // " + str(entry.clue), 16))
+		return card
+	var art := PanelContainer.new()
+	art.custom_minimum_size.y = 170
+	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 4))
+	body.add_child(art)
+	var linked := HBoxContainer.new()
+	linked.alignment = BoxContainer.ALIGNMENT_CENTER
+	art.add_child(linked)
+	for index in range(data.rooms.size()):
+		if index > 0:
+			var connector := _label("↔", 26)
+			connector.add_theme_color_override("font_color", accent)
+			connector.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			linked.add_child(connector)
+		var picture := _room_picture(data.rooms[index], 150)
+		picture.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		linked.add_child(picture)
+	var ribbon := _label("STABILIZED" if stabilized else "DISCOVERED", 12)
+	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	body.add_child(ribbon)
+	var rules := PanelContainer.new()
+	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+	body.add_child(rules)
+	var lines := VBoxContainer.new()
+	lines.add_theme_constant_override("separation", 6)
+	rules.add_child(lines)
+	var names := PackedStringArray()
+	var rooms: Dictionary = Rooms.all_rooms()
+	for id in data.rooms: names.append(rooms[id].display_name)
+	lines.add_child(_label(" + ".join(names), 15))
+	lines.add_child(_label(data.get("effect", ""), 15))
+	if not stabilized:
+		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 14))
+	var reward: String = data.get("unlock_room_id", "")
+	if not reward.is_empty():
+		lines.add_child(_rich("[color=#e0b36a]REWARD[/color]  %s" % (rooms[reward].display_name if meta_state.unlocked_room_ids.has(reward) else "Unrecovered blueprint"), 14))
+	elif data.has("terminal_reward"):
+		lines.add_child(_rich("[color=#e0b36a]REWARD[/color]  %s" % ResourceIcons.bbcode(data.terminal_reward), 14))
+	return card
+
+func _rich(text: String, font_size: int) -> RichTextLabel:
+	var label := RichTextLabel.new()
+	label.bbcode_enabled = true
+	label.fit_content = true
+	label.scroll_active = false
+	label.text = text
+	label.add_theme_font_size_override("normal_font_size", font_size)
+	label.add_theme_color_override("default_color", Color("b9dce5"))
+	return label
 
 func _card_box(fill: Color, border: Color, width: int, radius: int, margin: int) -> StyleBoxFlat:
 	var box := StyleBoxFlat.new()

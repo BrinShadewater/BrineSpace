@@ -257,6 +257,8 @@ func _ready() -> void:
 	_toggle(access, "RaisedWalls", "Raised room walls", Preferences.raised_walls, func(enabled: bool) -> void: Preferences.raised_walls = enabled)
 	_toggle(access, "PlacementGuides", "Placement door indicators", Preferences.placement_guides, func(enabled: bool) -> void: Preferences.placement_guides = enabled)
 	_toggle(access, "HandBackdrop", "Draft hand backdrop", Preferences.hand_backdrop, func(enabled: bool) -> void: Preferences.hand_backdrop = enabled)
+	_toggle(access, "PixelFrames", "Pixel panel frames", Preferences.pixel_frames, func(enabled: bool) -> void: Preferences.pixel_frames = enabled)
+	access.add_child(_label("Pixel panel frames apply the next time a loop starts.", 15))
 	_toggle(access, "ReducedMotion", "Reduced motion", Preferences.reduced_motion, func(enabled: bool) -> void: Preferences.reduced_motion = enabled)
 	access.add_child(_label("Pauses the title cover and removes menu fades. Gameplay timing is unchanged.", 15))
 	_slider(access, "MenuTextSize", "Menu panel text size", 100, 130, 5, Preferences.text_scale * 100, "%", func(value: float) -> void: Preferences.text_scale = value / 100.0)

@@ -171,6 +171,12 @@ static func panel(width: int, height: int, state: String, primary: bool = false)
 	return style
 
 static func apply(button: Button, width: int, height: int, primary: bool = false) -> void:
+	# Menu buttons stay about half their column's width instead of stretching across it (owner
+	# playtest, Sept 17: settings buttons spanned ~30% of a 2560 screen). A button that asks to
+	# fill keeps doing so; captions still size the button up when they need more room.
+	if button.size_flags_horizontal == Control.SIZE_FILL:
+		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		button.custom_minimum_size.x = maxf(button.custom_minimum_size.x, width * 0.55)
 	button.mouse_entered.connect(_tooltip_enter.bind(button))
 	button.mouse_exited.connect(_tooltip_leave.bind(button))
 	button.button_down.connect(_tooltip_leave.bind(button))

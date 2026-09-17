@@ -1228,7 +1228,16 @@ func _apply_panel_style(panel: PanelContainer, bg_color := Color(0.035, 0.055, 0
 		patch_margin = 20
 	if panel.name == "SummaryPanel":
 		panel_path = UI_TERMINAL_PANEL_WARNING
-	var texture_style := _make_texture_stylebox(panel_path, patch_margin, 26, 26, 22, 22)
+	# Clean vector frames by default (owner playtest, Sept 17); the stretched pixel-art frames look
+	# uneven at fractional window scales. Settings > Accessibility > Pixel panel frames restores them.
+	var texture_style = _make_texture_stylebox(panel_path, patch_margin, 26, 26, 22, 22) if Preferences.pixel_frames else preload("res://scripts/terminal_frame_style.gd").new()
+	if texture_style != null and not Preferences.pixel_frames:
+		texture_style.bg_color = Color(bg_color, maxf(bg_color.a, 0.94)) if panel.name != "SummaryPanel" else Color("140d0a")
+		texture_style.border_color = Color("5c3a2a") if panel.name == "SummaryPanel" else Color("1e3844")
+		texture_style.content_margin_left = 22
+		texture_style.content_margin_right = 22
+		texture_style.content_margin_top = 18
+		texture_style.content_margin_bottom = 18
 	if texture_style != null:
 		if panel.name == "TopCommandBar" or panel.name == "BottomHand" or panel.name == "GridFrame":
 			texture_style.content_margin_left = 16
@@ -1836,13 +1845,13 @@ func _build_menu_overlay() -> void:
 	menu_center = center
 	var panel := PanelContainer.new()
 	panel.name = "PauseMenu"
-	panel.custom_minimum_size = Vector2(400, 700)
+	panel.custom_minimum_size = Vector2(340, 700)
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	center.add_child(panel)
 	_apply_panel_style(panel, Color("#10232e"), Color("#3c6b7d"))
 	menu_panel = panel
 	var menu_scroll := ScrollContainer.new()
-	menu_scroll.custom_minimum_size = Vector2(350, 660)
+	menu_scroll.custom_minimum_size = Vector2(300, 660)
 	menu_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	menu_scroll.follow_focus = true
 	panel.add_child(menu_scroll)
@@ -1906,7 +1915,7 @@ func _build_menu_overlay() -> void:
 	end_expedition_button.text = "End Expedition"
 	end_expedition_button.tooltip_text = "Ends this expedition and collects its Research."
 	end_expedition_button.pressed.connect(_end_expedition)
-	preload("res://scripts/title_button_style.gd").apply(end_expedition_button, 330, 50)
+	preload("res://scripts/title_button_style.gd").apply(end_expedition_button, 280, 50)
 	exits.add_child(end_expedition_button)
 	_add_menu_button(exits, "Back", _pause_page_back)
 	menu_save_feedback = Label.new()
@@ -1952,7 +1961,7 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> void
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	button.pressed.connect(callable)
 	button.add_theme_font_size_override("font_size", 17)
-	preload("res://scripts/title_button_style.gd").apply(button, 330, 50, text == "Resume Cycle")
+	preload("res://scripts/title_button_style.gd").apply(button, 280, 50, text == "Resume Cycle")
 	if text == "Codex": preload("res://scripts/navigation_badge.gd").apply(button, "codex")
 	parent.add_child(button)
 	if text == "Resume Cycle":
