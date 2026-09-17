@@ -51,8 +51,12 @@ var signature := ""
 var hardware_doors_locked:=false
 var locked_room_cells: Dictionary = {}
 var visits := {}
-var room_cache := {}
-var layout_geometry_revision:=-1
+# Room walkability is a property of the room, not of who walks it, so every crew member and
+# companion shares one cache, with one shared revision: a per-actor revision meant the first
+# rebuild of each actor threw the whole cache away and paid 150-500 ms again (owner lag reports,
+# and the 400 ms hitch when a crew member woke up).
+static var room_cache := {}
+static var layout_geometry_revision:=-1
 var service_preferences: Dictionary = SERVICES.duplicate(true)
 var spawn_offset := Vector2.ZERO
 var decision_rng: RandomNumberGenerator
@@ -516,8 +520,9 @@ static func segment_hits_rect(a: Vector2,b: Vector2,rect: Rect2) -> bool:
 	return rect.has_point(a.lerp(b,(enter+leave)*0.5))
 
 func rebuild(main, staged := false) -> void:
-	if dead: return
+	if dead or not is_instance_valid(main): return
 	fire_building_navigation=true
+	preload("res://scripts/room_layout_store.gd").prime()
 	var revision: int=preload("res://scripts/room_layout_store.gd").geometry_revision
 	if revision!=layout_geometry_revision:
 		room_cache.clear(); layout_geometry_revision=revision
@@ -538,6 +543,7 @@ func rebuild(main, staged := false) -> void:
 	for cell in main.occupied:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
+			if not is_instance_valid(main): return # The station can be freed mid-slice.
 			slice_started = Time.get_ticks_usec()
 		var room: Dictionary = main.occupied[cell]
 		var sides: Array = []
@@ -569,6 +575,7 @@ func rebuild(main, staged := false) -> void:
 	for cell in geometry:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
+			if not is_instance_valid(main): return # The station can be freed mid-slice.
 			slice_started = Time.get_ticks_usec()
 		var center := (Vector2(cell) + Vector2.ONE * 0.5) * CELL
 		var key: String = room_keys[cell]
@@ -603,6 +610,7 @@ func rebuild(main, staged := false) -> void:
 	for cell in geometry:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
+			if not is_instance_valid(main): return # The station can be freed mid-slice.
 			slice_started = Time.get_ticks_usec()
 		var center := (Vector2(cell) + Vector2.ONE * 0.5) * CELL
 		for side in geometry[cell].open:

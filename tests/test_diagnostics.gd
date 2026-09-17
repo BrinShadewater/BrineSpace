@@ -57,6 +57,7 @@ func run() -> void:
 	reporter.performance_monitor = monitor
 	reporter.add_child(monitor)
 	monitor.auto_capture = true # Scripts (including this test) start with it off.
+	monitor.breadcrumb_path = prefix + "-breadcrumbs.json" # Never the player's file.
 	monitor.errors.path = log_path
 	monitor.stats_path = prefix + ".csv"
 	monitor._watch_for_stalls(500.0, false, false, 100000.0)
@@ -76,6 +77,11 @@ func run() -> void:
 	for index in range(monitor.MAX_TIMELINE + 20):
 		monitor.note("log", "event %d" % index)
 	check(monitor.timeline.size() == monitor.MAX_TIMELINE and str(monitor.timeline.back().text) == "event %d" % (monitor.MAX_TIMELINE + 19), "The timeline keeps the most recent events")
+	# Breadcrumbs: the recent timeline lands in a small file a crash cannot erase.
+	monitor.write_breadcrumbs()
+	var crumbs: Dictionary = JSON.parse_string(FileAccess.open(prefix + "-breadcrumbs.json", FileAccess.READ).get_as_text())
+	check(crumbs.has("timeline") and crumbs.timeline.size() > 0 and crumbs.has("memory"), "Breadcrumbs carry the recent timeline and memory stats")
+	check(int(crumbs.memory.nodes) > 0 and crumbs.memory.has("floor_meshes_retired"), "Breadcrumbs record node counts and retained mesh caches")
 	monitor.errors.poll(5000.0) # The monitor keeps its own watcher; the log now holds one error.
 	var snapshot: Dictionary = monitor.snapshot()
 	check(snapshot.has("timeline") and snapshot.has("errors") and snapshot.has("automatic_reports"), "Reports include the timeline, errors and automatic captures")
@@ -97,7 +103,7 @@ func run() -> void:
 	scene.queue_free()
 	reporter.queue_free()
 	await process_frame
-	for suffix in [".log", ".csv"]:
+	for suffix in [".log", ".csv", "-breadcrumbs.json"]:
 		if FileAccess.file_exists(prefix + suffix): DirAccess.remove_absolute(ProjectSettings.globalize_path(prefix + suffix))
 	print("DIAGNOSTICS %s: error grouping, automatic stall capture, timeline, session stats" % ("PASS" if failures == 0 else "FAIL %d" % failures))
 	quit(1 if failures else 0)

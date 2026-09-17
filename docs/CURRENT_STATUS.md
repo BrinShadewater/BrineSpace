@@ -1,3 +1,15 @@
+## Navigation rebuild stall and the second diagnostics batch - September 17, 2026
+
+The new performance gate found the stall the owner has been reporting since the first lag notes.
+
+1. Crew navigation rebuild cost 150-530 ms and ran again for every crew member: the walkable-point cache and its revision were per actor, so each actor's first rebuild cleared the shared work, and the layout store bumped its geometry revision while the first rebuild was filling the cache, throwing it away again. The cache and revision are now shared (bill_npc.gd), and RoomLayoutStore.prime() settles both files before a rebuild caches anything. A crew member waking up went from 438 ms to about 7 ms; the worst frame in a 40-cycle run went from 538 ms to 14 ms. The core thaw also warms the cache across frames while it runs.
+2. test_soak_budget.gd: builds a twelve-room station, runs 40 cycles and fails when a frame passes 90 ms, the mean passes 8 ms, crew search for a route every frame, or anything ends up stuck. This is the gate that caught the stall.
+3. Memory watch: node, orphan, object, texture and static memory plus the retained mesh caches ride in every bucket and report; growth past 1.6x of the session's first bucket is noted once.
+4. Crash breadcrumbs: the recent timeline, latest bucket, memory and error counts are written to user://last_session.json every five seconds, and a crash report attaches them as diagnostics/previous_session.json.
+5. Automatic captures now include a screenshot, as F8 does.
+6. stuck_watch.gd: a crew member who has not moved in 30 s with a job, a drone parked mid-route for 30 s, or a build order with no progress for 90 s logs one warning and lands in the timeline. The soak gate fails if any of them fire.
+7. Automatic capture and breadcrumbs are enabled only when the main loop has no script, which is the reliable signal for a real play session; a test or tool started with -s never writes to the player's folder. A staged rebuild also guards against the station being freed mid-slice (fixtures do that).
+
 ## Diagnostics pass and logged-error fixes - September 17, 2026
 
 Owner asked for more ways to measure performance and catch bugs; all seven were built.

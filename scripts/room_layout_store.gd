@@ -31,6 +31,12 @@ static func authored_positions(asset: String, q: int) -> Dictionary:
 		if previous!=authored_cache: revision+=1
 		if navigation_stamp(previous)!=navigation_stamp(authored_cache): geometry_revision+=1
 	return authored_cache.get(key(asset,q),{}).duplicate(true)
+# Loads both layout files so revision and geometry_revision settle. Callers that cache geometry
+# call this first: a revision that changes while they fill their cache throws it away again.
+static func prime() -> void:
+	ensure_loaded()
+	authored_positions("brine_core",0)
+
 static func positions(asset: String, q: int) -> Dictionary:
 	ensure_loaded()
 	var result:=authored_positions(asset,q)

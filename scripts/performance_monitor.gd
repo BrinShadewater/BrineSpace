@@ -14,6 +14,13 @@ const AUTO_GAP_MS:=90000
 const GRAPH_FRAMES:=180
 const MAX_TIMELINE:=240
 const SESSION_STATS_PATH:="user://session_stats.csv"
+# Breadcrumbs survive a hard crash: the recent timeline is written every few seconds, and the
+# next launch attaches it to the crash report.
+const BREADCRUMB_PATH:="user://last_session.json"
+const BREADCRUMB_MS:=5000
+const BREADCRUMB_EVENTS:=40
+# Memory watch: nodes, orphans and texture memory are compared against the first full bucket.
+const GROWTH_WARNING:=1.6
 var rows: Array=[]
 var hitches: Array=[]
 var samples: Array[float]=[]
@@ -38,16 +45,20 @@ var auto_capture:=true
 var auto_notes: Array=[]
 var stats_path:=SESSION_STATS_PATH
 var graph: Control
+var breadcrumb_ms:=0
+var breadcrumb_path:=BREADCRUMB_PATH
+var baseline_memory: Dictionary={}
+var growth_warned:={}
 var last_route_searches:=0
 var last_route_failures:=0
 
 func _ready() -> void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	last_usec=Time.get_ticks_usec()
-	# Only a real play session captures by itself. Tests and tools start the game with a script
-	# (-s) and their slow frames must never add reports to the player's folder.
-	for argument in OS.get_cmdline_args():
-		if argument in ["-s","--script"] or argument.ends_with(".gd"): auto_capture=false
+	# Only a real play session captures by itself or writes breadcrumbs. A test or tool started
+	# with -s replaces the main loop with its own script, which is the reliable signal; their
+	# slow frames must never add reports to the player's folder.
+	auto_capture=get_tree().get_script()==null
 
 var last_draw_timing: Dictionary = {}
 
@@ -63,6 +74,9 @@ func _process(_delta: float) -> void:
 	if now/1000-error_poll_ms>3000:
 		error_poll_ms=int(now/1000)
 		errors.poll(now/1000.0)
+	if auto_capture and now/1000-breadcrumb_ms>BREADCRUMB_MS:
+		breadcrumb_ms=int(now/1000)
+		write_breadcrumbs()
 	var scene:=get_tree().current_scene
 	var station: bool=scene!=null and scene.has_method("capture_bug_report_snapshot")
 	var held: bool=get_tree().paused or (station and bool(scene.get("paused")))
@@ -101,11 +115,39 @@ func _watch_for_stalls(ms: float,held: bool,unfocused: bool,uptime_ms: float) ->
 	if reporter==null or not reporter.has_method("save_report"): return
 	last_auto_ms=uptime_ms
 	auto_reports+=1
+	# The automatic report carries a screenshot too, as F8 does.
+	if is_inside_tree() and get_viewport()!=null and get_viewport().get_texture()!=null and "pending_screenshot" in reporter:
+		reporter.pending_screenshot=get_viewport().get_texture().get_image()
 	var path: String=reporter.save_report("automatic capture // %s" % reason)
 	auto_notes.append({"uptime_ms":uptime_ms,"reason":reason,"path":path})
 	note("stall","Automatic report saved: %s" % reason)
 	var scene:=get_tree().current_scene
 	if scene!=null and scene.has_method("_log"): scene._log("DIAGNOSTICS // %s. Report saved in the bug_reports folder." % reason,true)
+
+# What the game is holding on to: nodes, orphaned nodes, texture memory and the retained mesh
+# caches. A steady climb here is a leak, and the first crossing is logged once.
+func memory_stats() -> Dictionary:
+	var floors=preload("res://rooms/whole-room/modular_floor.gd")
+	var canvas=preload("res://scripts/grid_canvas.gd")
+	var retired_contacts:=0
+	for bundle in canvas.contact_retired: retired_contacts+=bundle.size()
+	return {"nodes":Performance.get_monitor(Performance.OBJECT_NODE_COUNT),
+		"orphans":Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT),
+		"objects":Performance.get_monitor(Performance.OBJECT_COUNT),
+		"texture_mem_mb":Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED)/1048576.0,
+		"static_mem_mb":Performance.get_monitor(Performance.MEMORY_STATIC)/1048576.0,
+		"floor_meshes":floors.cache.size(),"floor_meshes_retired":floors.retired.size(),
+		"contact_meshes":canvas.contact_meshes.size(),"contact_meshes_retired":retired_contacts}
+
+func _check_growth(stats: Dictionary) -> void:
+	if baseline_memory.is_empty():
+		baseline_memory=stats.duplicate()
+		return
+	for key in ["nodes","orphans","texture_mem_mb","static_mem_mb","floor_meshes_retired","contact_meshes_retired"]:
+		var base: float=maxf(float(baseline_memory.get(key,0.0)),1.0)
+		if float(stats.get(key,0.0))<base*GROWTH_WARNING or growth_warned.has(key): continue
+		growth_warned[key]=true
+		note("memory","%s grew from %.1f to %.1f since the session started" % [key,base,float(stats.get(key,0.0))])
 
 # Station events worth lining up against the timings (rooms placed, cycles, floods, deaths).
 func note(kind: String,text: String) -> void:
@@ -172,10 +214,24 @@ func finish_bucket(details: Dictionary,uptime_ms: float) -> Dictionary:
 		"p95_sample_count":ordered.size(),"p95_sample_capped":frames>MAX_SAMPLES,
 		"max_frame_ms":maximum_ms,"hitches_50ms":hitch_count,"paused_frames":paused_frames,
 		"unfocused_frames":unfocused_frames,"context_at_end":details.duplicate(true)}
+	var stats:=memory_stats()
+	latest["memory"]=stats
+	_check_growth(stats)
 	rows.append(latest.duplicate(true))
 	if rows.size()>MAX_ROWS: rows.pop_front()
 	samples.clear();total_ms=0;maximum_ms=0;frames=0;paused_frames=0;unfocused_frames=0;hitch_count=0
 	return latest.duplicate(true)
+
+# A small file the next launch can read after a crash that killed the game outright.
+func write_breadcrumbs() -> void:
+	if breadcrumb_path.is_empty(): return
+	var file:=FileAccess.open(breadcrumb_path,FileAccess.WRITE)
+	if file==null: return
+	var recent: Array=timeline.slice(maxi(0,timeline.size()-BREADCRUMB_EVENTS))
+	file.store_string(JSON.stringify({"written":Time.get_datetime_string_from_system(false,true),
+		"uptime_ms":Time.get_ticks_msec(),"latest_bucket":latest.duplicate(true),"memory":memory_stats(),
+		"errors":errors.total,"automatic_reports":auto_reports,"timeline":recent},"\t"))
+	file.close()
 
 func context(scene: Node) -> Dictionary:
 	var memory_bytes:=Performance.get_monitor(Performance.MEMORY_STATIC)
@@ -209,6 +265,7 @@ func snapshot() -> Dictionary:
 		"percentile":"per-bucket nearest-rank p95; sample cap explicitly recorded",
 		"context":"values sampled at bucket end, not per-frame averages",
 		"errors":errors.summary(),"timeline":timeline.duplicate(true),"automatic_reports":auto_notes.duplicate(true),
+		"memory":memory_stats(),"memory_baseline":baseline_memory.duplicate(),
 		"rows":rows.duplicate(true),"hitches":hitches.duplicate(true),
 		"partial_bucket":{"frames":frames,"span_ms":total_ms,"max_frame_ms":maximum_ms,"paused_frames":paused_frames,"unfocused_frames":unfocused_frames}}
 

@@ -98,6 +98,9 @@ func save_report(note: String, after_crash: bool = false) -> String:
 	if not after_crash:
 		if pending_captured_at.is_empty(): _capture_diagnostics()
 		files.append_array(pending_files)
+	# Breadcrumbs from the session that died: the crash report is the only place they show up.
+	if after_crash and FileAccess.file_exists("user://last_session.json"):
+		files.append({"name":"diagnostics/previous_session.json","data":FileAccess.get_file_as_bytes("user://last_session.json")})
 	var artwork: Dictionary = preload("res://scripts/safe_image.gd").failures
 	if not artwork.is_empty(): files.append({"name":"diagnostics/artwork.json","data":JSON.stringify(artwork,"\t").to_utf8_buffer()})
 	if pending_screenshot != null and not pending_screenshot.is_empty():

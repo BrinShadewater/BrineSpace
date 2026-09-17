@@ -127,7 +127,13 @@ static func advance_core(game, delta: float) -> void:
 	if occupant.recovered: return
 	# The core pod's initial emergency wake is supplied by the reboot sequence.
 	occupant.wake=minf(DURATION,float(occupant.wake)+maxf(delta,0.0))
-	if occupant.wake<DURATION: return
+	# Build the crew navigation cache during the thaw, a few milliseconds a frame: waking up
+	# used to pay the whole scan in one frame (owner lag reports; 400-500 ms with 13 rooms).
+	if occupant.wake<DURATION:
+		if not game.has_meta("navigation_warmed"):
+			game.set_meta("navigation_warmed",true)
+			actor_for(game,occupant.get("architect_id","bill")).rebuild(game,true)
+		return
 	if not release(game,occupant,CORE_CELL):
 		occupant.wake=DURATION-0.001
 		return

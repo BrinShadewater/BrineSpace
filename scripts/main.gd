@@ -405,6 +405,7 @@ func _apply_ui_font() -> void:
 
 # Latest station work per frame in microseconds, read by PerformanceMonitor for hitch records.
 var frame_timing_usec := {}
+var operations_refresh_step := 0.5
 
 func _process(delta: float) -> void:
 	var stamp := Time.get_ticks_usec()
@@ -433,6 +434,7 @@ func _process(delta: float) -> void:
 		_position_placement_feedback()
 	operations_refresh += delta
 	if operations_refresh >= 0.5:
+		operations_refresh_step = operations_refresh
 		operations_refresh = 0.0
 		_refresh_construction_button()
 		if is_instance_valid(guide_box) and guide_box.visible: _refresh_learning_ui()
@@ -440,6 +442,10 @@ func _process(delta: float) -> void:
 		# Water rises every frame but chips refresh once a cycle; keep the flooded count current.
 		if resource_labels.has("integrity"): _refresh_integrity_chip()
 		preload("res://scripts/room_fire.gd").refresh_alert(self)
+		# Work that has stopped happening: stuck crew, parked drones, builds nobody starts.
+		for warning in preload("res://scripts/stuck_watch.gd").check(self, operations_refresh_step):
+			var stuck_monitor = _performance_monitor()
+			if stuck_monitor != null: stuck_monitor.note("stuck", warning)
 		if not meta.last_error.is_empty() and meta.last_error != last_meta_warning:
 			_log("PROGRESSION NOT SAVED // " + meta.last_error,true)
 		last_meta_warning = meta.last_error
@@ -2078,6 +2084,8 @@ func _start_reboot_cycle() -> void:
 	for resource_id in perk_supplies:
 		resources[resource_id] = int(resources.get(resource_id, 0)) + int(perk_supplies[resource_id])
 	rerolls_remaining += ResearchTree.extra_rerolls(meta)
+	preload("res://scripts/stuck_watch.gd").reset()
+	if has_meta("navigation_warmed"): remove_meta("navigation_warmed")
 	if has_meta("second_chance_used"): remove_meta("second_chance_used")
 	grid_view.door_wet_history.clear()
 	selected_doctrines.clear()
