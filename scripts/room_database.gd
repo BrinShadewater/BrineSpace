@@ -76,14 +76,14 @@ static func all_rooms() -> Dictionary:
 		"cold_store": {
 			"id":"cold_store", "display_name":"Cold Store", "category":"Engineering", "rarity":"uncommon",
 			"cost":{"metal":8}, "size":Vector2i.ONE, "production":{}, "consumption":{"power":1}, "storage":{"food":40,"biomass":20},
-			"tags":["storage","food","logistics"], "layout":"layout_02_straight", "fixed_rotation":0, "unlocked":true,
-			"description":"Adds 40 Food and 20 Biomass capacity. Refrigeration uses 1 Power per cycle; storage capacity remains during outages. Fixed north/south aisle. I have labelled the containers. Please stop testing the labels by taste."
+			"tags":["storage","food","logistics"], "layout":"layout_02_straight", "unlocked":true,
+			"description":"Adds 40 Food and 20 Biomass capacity. Refrigeration uses 1 Power per cycle; storage capacity remains during outages. A straight aisle between two doors. I have labelled the containers. Please stop testing the labels by taste."
 		},
 		"galley": {
 			"id":"galley", "display_name":"Galley", "category":"Crew", "rarity":"uncommon",
 			"cost":{"metal":6}, "size":Vector2i.ONE, "production":{"food":4}, "consumption":{"biomass":1,"water":1,"power":1},
-			"tags":["crew","food","cooking"], "layout":"layout_dead_south", "fixed_rotation":0, "unlocked":true,
-			"description":"Cooks 1 stored Biomass with 1 Water and 1 Power into 4 Food per functioning cycle. Crew collect meals at the serving counter. South entrance; fixed orientation. It is technically soup. That is the most specific promise I can make."
+			"tags":["crew","food","cooking"], "layout":"layout_dead_south", "unlocked":true,
+			"description":"Cooks 1 stored Biomass with 1 Water and 1 Power into 4 Food per functioning cycle. Crew collect meals at the serving counter. One entrance. It is technically soup. That is the most specific promise I can make."
 		},
 		"salvage_workshop": {
 			"id":"salvage_workshop", "display_name":"Salvage Workshop", "category":"Engineering", "rarity":"uncommon",

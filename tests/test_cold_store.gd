@@ -26,9 +26,11 @@ func run() -> void:
 	game.hand.assign(["cold_store"])
 	game.selected_card_id="cold_store"
 	game.selected_rotation=1
-	assert(game.get_placement_problem("cold_store",cell).contains("Cold Store"))
+	assert(not game.get_placement_problem("cold_store",cell).is_empty(),"An east-west aisle cannot join the Core's north door")
 	game._rotate_selected_room()
-	assert(game.selected_rotation==0,"North installation must retain its orientation")
+	assert(game.selected_rotation==2,"The room rotates like any other (owner playtest)")
+	assert(game.get_placement_problem("cold_store",cell).is_empty(),"A turned-around north-south aisle still connects")
+	game.selected_rotation=0
 	assert(game.get_placement_problem("cold_store",cell).is_empty(),game.get_placement_problem("cold_store",cell))
 	var before: int=game.resources.metal
 	game._on_grid_clicked(cell)

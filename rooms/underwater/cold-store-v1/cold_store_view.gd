@@ -91,4 +91,4 @@ func draw_wall(rect: Rect2, horizontal: bool) -> void:
 func draw_cap(rect: Rect2) -> void:
 	preload("res://rooms/whole-room/department_wall_material.gd").cap(painter,rect,"medical")
 
-func layout_caption() -> String: return "COLD STORE / north-south aisle"
+func layout_caption() -> String: return "COLD STORE / straight aisle"

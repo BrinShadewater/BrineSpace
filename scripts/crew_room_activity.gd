@@ -37,10 +37,12 @@ static func stations(data: Dictionary) -> Array:
 				for approach in [Vector2(rect.get_center().x,rect.end.y+28),Vector2(rect.position.x-28,rect.get_center().y),Vector2(rect.end.x+28,rect.get_center().y)]:
 					result.append({"point":approach,"facing":"north","room":id,"mode":"sit","rest_point":Vector2(rect.get_center().x,rect.end.y-8)})
 		return result
+	# Cold Store and Galley rotate like other rooms (owner playtest): their service spots and
+	# facing turn with the furniture.
 	if id=="cold_store":
-		return reachable_stations(data,[Vector2(-112,64),Vector2(112,64)])
+		return reachable_stations(data,_turned([Vector2(-112,64),Vector2(112,64)],_layout_quarter(data)),_turned_facing("north",_layout_quarter(data)))
 	if id=="galley":
-		return reachable_stations(data,[Vector2(64,144),Vector2(112,144)])
+		return reachable_stations(data,_turned([Vector2(64,144),Vector2(112,144)],_layout_quarter(data)),_turned_facing("north",_layout_quarter(data)))
 	if id=="salvage_workshop":
 		# The workshop bench turns with the room's quarter (side variants), so the
 		# authored east-facing approach must turn with it.
@@ -135,7 +137,22 @@ static func stations(data: Dictionary) -> Array:
 	var walkable: Array=result.filter(func(station): return absf(station.point.x)<=144 and absf(station.point.y)<=144)
 	return walkable if not walkable.is_empty() else result
 
-static func reachable_stations(data: Dictionary,anchors: Array) -> Array:
+static func _layout_quarter(data: Dictionary) -> int:
+	return posmod(int(data.get("layout",[{}])[0].get("rotation",0)) if not data.get("layout",[]).is_empty() else 0,4)
+
+static func _turned(points: Array, quarter: int) -> Array:
+	var result := []
+	for point in points:
+		var turned: Vector2=point
+		for unused in range(quarter): turned=Vector2(-turned.y,turned.x)
+		result.append(turned)
+	return result
+
+static func _turned_facing(facing: String, quarter: int) -> String:
+	var order := ["north","east","south","west"]
+	return order[posmod(order.find(facing)+quarter,4)]
+
+static func reachable_stations(data: Dictionary,anchors: Array,facing:="north") -> Array:
 	if data.has("reachable_service_stations"):return data.reachable_service_stations
 	var result := []
 	for anchor in anchors:
@@ -147,7 +164,7 @@ static func reachable_stations(data: Dictionary,anchors: Array) -> Array:
 				if _approach_blocked(data,point):continue
 				var score: float=point.distance_squared_to(anchor)
 				if score<distance:distance=score;best=point
-		if best!=Vector2.INF:result.append({"point":best,"facing":"north","room":data.activity_room})
+		if best!=Vector2.INF:result.append({"point":best,"facing":facing,"room":data.activity_room})
 	data.reachable_service_stations=result
 	return result
 
