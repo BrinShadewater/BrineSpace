@@ -49,7 +49,7 @@ const RESOURCE_TOOLTIPS := {
 	"oxygen": "Life support supply consumed by crew.",
 	"water": "Reclaimed water for advanced bio systems. Hover a learned pattern to inspect its yield.",
 	"food": "Crew survival supply consumed each cycle.",
-	"data": "Research currency for unlocks and recovered memories.",
+	"data": "Banked as Archived Data at the end of a loop, to spend in Meta Progression.",
 	"biomass": "Organic stock for hydroponics, cloning, and bio rooms.",
 	"rare": "Advanced construction material from unusual POIs.",
 	"integrity": "Station structural condition. Containment faults lower it; at zero, the reboot cycle fails.",
@@ -403,16 +403,29 @@ func _apply_ui_font() -> void:
 	ui_theme.default_font_size = 14
 	theme = ui_theme
 
+# Latest station work per frame in microseconds, read by PerformanceMonitor for hitch records.
+var frame_timing_usec := {}
+
 func _process(delta: float) -> void:
+	var stamp := Time.get_ticks_usec()
+	var frame_start := stamp
 	_update_discovery_bursts(delta)
 	if running and not paused:
 		visual_time_seconds += delta * time_speeds[time_speed_index]
 		unscaled_time_seconds += delta
 		preload("res://scripts/airlock_cycle.gd").advance(self,delta * time_speeds[time_speed_index])
+		frame_timing_usec.airlocks = Time.get_ticks_usec() - stamp
+		stamp = Time.get_ticks_usec()
 		_update_test_walker(delta * time_speeds[time_speed_index])
+		frame_timing_usec.crew = Time.get_ticks_usec() - stamp
+		stamp = Time.get_ticks_usec()
 		_update_wreck_clearance(delta * time_speeds[time_speed_index])
+		frame_timing_usec.drones_wrecks = Time.get_ticks_usec() - stamp
+		stamp = Time.get_ticks_usec()
 		CryoRecovery.advance(self, delta * time_speeds[time_speed_index])
 		Architects.advance_core(self,delta * time_speeds[time_speed_index])
+		frame_timing_usec.cryo = Time.get_ticks_usec() - stamp
+	stamp = Time.get_ticks_usec()
 	_update_camera_pan(delta)
 	_update_camera_zoom(delta)
 	_refresh_solar_meter()
@@ -436,6 +449,8 @@ func _process(delta: float) -> void:
 			_refresh_inspector()
 		elif drone_fleet.reserved(selected_room_cell): _refresh_inspector()
 		elif occupied.has(selected_room_cell) and (occupied[selected_room_cell].has("fire_heat") or occupied[selected_room_cell].has("fire") or inspector_had_water or float(occupied[selected_room_cell].get("water_level",0))>0 or float(occupied[selected_room_cell].get("hull_crack",0))>0): _refresh_inspector()
+	frame_timing_usec.interface = Time.get_ticks_usec() - stamp
+	frame_timing_usec.station_total = Time.get_ticks_usec() - frame_start
 
 func _build_ui() -> void:
 	var backdrop := ColorRect.new()
@@ -1913,7 +1928,7 @@ func _build_menu_overlay() -> void:
 	_add_menu_button(exits, "Restart Reboot Cycle", _menu_restart_cycle)
 	end_expedition_button = Button.new()
 	end_expedition_button.text = "End Expedition"
-	end_expedition_button.tooltip_text = "Ends this expedition and collects its Research."
+	end_expedition_button.tooltip_text = "Ends this expedition and banks its Archived Data."
 	end_expedition_button.pressed.connect(_end_expedition)
 	preload("res://scripts/title_button_style.gd").apply(end_expedition_button, 280, 50)
 	exits.add_child(end_expedition_button)
@@ -1939,7 +1954,7 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> void
 		"Station & Archives":"Archive & Settings  ▸",
 		"End or Leave Loop":"Leave Game  ▸",
 		"Codex":"Codex & Discoveries",
-		"Meta Progression":"Research & Unlocks",
+		"Meta Progression":"Upgrades & Unlocks",
 		"Replay First-loop Guide":"Show Building Guide",
 		"Save & Return to Title":"Save & Return to Title",
 		"Save & Quit":"Save & Quit",
@@ -2539,7 +2554,7 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 	for link in links:
 		if not known_bonuses_only or meta.discovered_synergy_ids.has(link["id"]):
 			bonus_links.append(link)
-	_add_to_delta(delta, SynergyManagerScript.cycle_bonus(bonus_links), 1)
+	_add_to_delta(delta, SynergyManagerScript.cycle_bonus(bonus_links, meta.stabilized_synergy_ids), 1)
 	var tick := cycle if simulated_cycle < 0 else simulated_cycle
 	for link in bonus_links:
 		if link["id"] == "safe_wake_protocol" and tick % 3 == 0 and crew_count + added_crew < _get_crew_capacity():
@@ -2732,25 +2747,12 @@ func _award_synergy_stabilization(synergy: Dictionary) -> void:
 	if not run_stabilized_synergy_ids.has(synergy_id):
 		run_stabilized_synergy_ids.append(synergy_id)
 	var synergy_name := str(synergy.get("name", synergy_id))
-	var unlock_id := str(synergy.get("unlock_room_id", ""))
-	if not unlock_id.is_empty():
-		if meta.unlock_room(unlock_id):
-			draw_pile.append(unlock_id)
-			prototype_card_seen_cycle[unlock_id] = -1
-			run_decrypted_blueprint_ids.append(unlock_id)
-			var room_name := str(RoomDatabaseScript.get_room(unlock_id).get("display_name", unlock_id))
-			_log("Pattern stabilized: %s. Blueprint decrypted: %s." % [synergy_name, room_name])
-			_queue_center_toast("BLUEPRINT DECRYPTED\n%s\nClick to review · Saved in Archive" % room_name.to_upper(), "room:" + unlock_id)
-		else:
-			_log("Pattern stabilized: %s. Blueprint already present in the archive." % synergy_name)
-			_queue_center_toast("PATTERN STABILIZED\n%s" % synergy_name.to_upper())
-		return
-	var terminal_reward: Dictionary = synergy.get("terminal_reward", {})
-	var research := int(terminal_reward.get("research", 0))
-	if research > 0:
-		meta.add_research_points(research)
-		_log("Pattern stabilized: %s. +%d Research." % [synergy_name, research])
-		_queue_center_toast("PATTERN STABILIZED\n+%d RESEARCH" % research)
+	# Stabilizing no longer decrypts a blueprint (owner playtest, Sept 17): the pattern's bonus
+	# doubles in every loop, its related blueprint costs half in the shop, and it pays Data.
+	var research := int(synergy.get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
+	meta.add_research_points(research)
+	_log("Pattern stabilized: %s. Bonus doubled. +%d Archived Data." % [synergy_name, research])
+	_queue_center_toast("PATTERN STABILIZED\n%s\nBonus doubled · +%d Archived Data" % [synergy_name.to_upper(), research])
 
 func _synergy_by_id(synergy_id: String) -> Dictionary:
 	return SynergyManagerScript.get_synergy(synergy_id)
@@ -3006,13 +3008,12 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 		summary_title_label.text = "Station Stabilized" if victory else ("Expedition Complete" if expedition_mode else "Reboot Summary")
 	if continue_expedition_button != null:
 		continue_expedition_button.visible = victory and not expedition_mode
-	var discoveries := "Patterns discovered: %s\nPatterns stabilized: %s\nBlueprints decrypted: %s" % [
+	var discoveries := "Patterns discovered: %s\nPatterns stabilized: %s" % [
 		_join_strings(_synergy_names_for_ids(run_discovered_synergy_ids)) if not run_discovered_synergy_ids.is_empty() else "None",
-		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None",
-		_join_strings(_room_names_for_ids(run_decrypted_blueprint_ids)) if not run_decrypted_blueprint_ids.is_empty() else "None"
+		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None"
 	]
 	discoveries += "\nCharacters discovered: " + _discovered_character_names()
-	summary_text.text = "%s\n\n%s\n\nCycles survived: %d\nCrew remaining: %d\nResonance: %d\nLinks formed: %d / Best cascade: x%d\nResearch awarded: %d\nTotal research: %d" % [reason, discoveries, cycle, crew_count, resonance_score, links_formed, largest_cascade, award, meta.total_research_points]
+	summary_text.text = "%s\n\n%s\n\nCycles survived: %d\nCrew remaining: %d\nResonance: %d\nLinks formed: %d / Best cascade: x%d\nArchived Data banked: %d\nArchived Data total: %d" % [reason, discoveries, cycle, crew_count, resonance_score, links_formed, largest_cascade, award, meta.total_research_points]
 	summary_text.text += "\nResources earned: %s" % (_format_cost(run_earned) if not run_earned.is_empty() else "None")
 	summary_layer.visible = true
 	var ranks_gained: Array[String] = []
@@ -3021,8 +3022,8 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 			ranks_gained.append("%s → rank %d" % [RunManagerScript.doctrine(id).name, meta.get_doctrine_rank(id)])
 	var pattern_research := 0
 	for id in run_stabilized_synergy_ids:
-		pattern_research += int(SynergyManagerScript.get_synergy(id).get("terminal_reward", {}).get("research", 0))
-	var retained := "WHAT SURVIVES\nNew patterns: %d / Stabilized: %d / New blueprints: %d\nResearch banked: %d from score / %d from patterns\nLearned patterns, unlocked blueprints and recovered characters remain in your profile.\n\n" % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size(), run_decrypted_blueprint_ids.size(), run_awarded_research, pattern_research]
+		pattern_research += int(SynergyManagerScript.get_synergy(id).get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
+	var retained := "WHAT SURVIVES\nNew patterns: %d / Stabilized: %d\nArchived Data banked: %d from score / %d from patterns\nLearned patterns and bought blueprints and characters remain in your profile. Spend Archived Data in Meta Progression.\n\n" % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size(), run_awarded_research, pattern_research]
 	summary_text.text = "OUTCOME // " + reason + "\n\n" + retained + "RUN RECORD\n" + summary_text.text.trim_prefix(reason + "\n\n")
 	_refresh_learning_ui()
 	preload("res://scripts/title_settings.gd").apply_menu_text(summary_layer)
@@ -4849,11 +4850,7 @@ func _synergy_reward_text(synergy: Dictionary) -> String:
 	if not meta.discovered_synergy_ids.has(synergy.get("id", "")):
 		return ""
 	var stabilized := meta.stabilized_synergy_ids.has(synergy["id"])
-	var target := str(synergy.get("unlock_room_id", ""))
-	if not target.is_empty():
-		var name := str(RoomDatabaseScript.get_room(target).get("display_name", target))
-		return "BLUEPRINT %s · %s" % ["DECRYPTED" if stabilized else "AT 3 CYCLES", name]
-	return "RESEARCH %s · +%d" % ["RECOVERED" if stabilized else "AT 3 CYCLES", int(synergy.get("terminal_reward", {}).get("research", 0))]
+	return "BONUS DOUBLED · STABILIZED" if stabilized else "AT 3 CYCLES · BONUS DOUBLES, +%d ARCHIVED DATA" % (int(synergy.get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA)
 
 func _active_synergy_link_count(synergy_id: String) -> int:
 	var count := 0
@@ -5306,7 +5303,7 @@ func _refresh_diagnostics_page() -> void:
 		5:
 			lines.append("[b]COMPANIONS[/b] // Separate from architect berths")
 			for id in Companions.IDS:
-				lines.append("%s // %s"%[Companions.NAMES[id],companion_actors[id].activity if companion_roster.has(id) else "Unlocked for future selection" if meta.unlocked_companion_ids.has(id) else "Not yet recovered"])
+				lines.append("%s // %s"%[Companions.NAMES[id],companion_actors[id].activity if companion_roster.has(id) else "Unlocked for future selection" if meta.unlocked_companion_ids.has(id) else "Met // buy in Meta Progression to keep" if meta.met_character_ids.has(id) else "Not yet recovered"])
 				if companion_roster.has(id) and companion_actors[id].active:
 					var companion_cell: Vector2i=companion_actors[id].cell_at(companion_actors[id].foot)
 					lines.append("[url=%d,%d]LOCATE %s[/url]"%[companion_cell.x,companion_cell.y,Companions.NAMES[id].to_upper()])
@@ -5431,7 +5428,10 @@ func _log(message: String, show_in_panel := true) -> void:
 
 func _on_tick_timer_timeout() -> void:
 	if running and not paused:
+		var stamp := Time.get_ticks_usec()
 		_advance_cycle()
+		frame_timing_usec.last_cycle_advance = Time.get_ticks_usec() - stamp
+		frame_timing_usec.last_cycle_at_ms = Time.get_ticks_msec()
 
 func get_unscaled_time_seconds() -> float:
 	return unscaled_time_seconds

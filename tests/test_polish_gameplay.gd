@@ -56,7 +56,7 @@ func _test_water_opens_the_bio_chain() -> void:
 		game.cycle = index + 1
 		game._apply_room_economy()
 		game._advance_synergy_discovery_cycle()
-	_expect(game.meta.unlocked_room_ids.has("biodome"), "three actual powered cycles unlock Biodome")
+	_expect(game.meta.stabilized_synergy_ids.has("closed_air_loop"), "three actual powered cycles stabilize Closed Air Loop")
 	_expect(game.resources["water"] >= Rooms.get_room("biodome")["cost"]["water"], "discovery produces enough water to try its prototype")
 	_dispose(game)
 

@@ -32,6 +32,9 @@ var codex_query := ""
 var codex_filter_index := 0
 var codex_scroll := 0
 var progression_cards: GridContainer
+var progression_tab := 0
+const MetaShop = preload("res://scripts/meta_shop.gd")
+const PROGRESSION_TABS := ["UPGRADES", "BLUEPRINTS", "CREW & COMPANIONS", "RECORDS"]
 
 func _ready() -> void:
 	theme = preload("res://scripts/title_button_style.gd").menu_theme()
@@ -207,7 +210,7 @@ func _layout() -> void:
 	if is_instance_valid(grid):
 		grid.columns = maxi(1, int((size.x - 160) / (340 * preload("res://scripts/title_settings.gd").text_scale))) if mode == "codex" and codex_tab != 2 else 1
 	if is_instance_valid(progression_cards):
-		progression_cards.columns = 2 if size.x >= 1200 else 1
+		progression_cards.columns = 3 if size.x >= 1500 else (2 if size.x >= 1000 else 1)
 
 func _populate_cards() -> void:
 	scroll.scroll_vertical = 0
@@ -503,10 +506,10 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	if not stabilized:
 		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 14))
 	var reward: String = data.get("unlock_room_id", "")
+	var data_reward := int(data.get("terminal_reward", {}).get("research", 0)) + MetaShop.STABILIZE_DATA
+	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["STABILIZED" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 14))
 	if not reward.is_empty():
-		lines.add_child(_rich("[color=#e0b36a]REWARD[/color]  %s" % (rooms[reward].display_name if meta_state.unlocked_room_ids.has(reward) else "Unrecovered blueprint"), 14))
-	elif data.has("terminal_reward"):
-		lines.add_child(_rich("[color=#e0b36a]REWARD[/color]  %s" % ResourceIcons.bbcode(data.terminal_reward), 14))
+		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 14))
 	return card
 
 func _rich(text: String, font_size: int) -> RichTextLabel:
@@ -562,12 +565,113 @@ func _resources(values: Dictionary) -> String:
 		parts.append("%s %s" % [values[key], str(key).replace("_", " ")])
 	return "None" if parts.is_empty() else " / ".join(parts)
 
+# Meta Progression (owner playtest, Sept 17): one currency, Archived Data, spent across tabs.
 func _populate_progression() -> void:
-	var summary := _label("%d RESEARCH AVAILABLE   /   %d EARNED   /   %d STABILIZED LOOPS   /   %d PATTERNS STABILIZED" % [ResearchTree.available(meta_state), meta_state.total_research_points, meta_state.total_victories, meta_state.stabilized_synergy_ids.size()], 23)
+	var summary := _label("%d ARCHIVED DATA AVAILABLE   /   %d EARNED   /   %d PATTERNS STABILIZED   /   %d STABILIZED LOOPS" % [ResearchTree.available(meta_state), meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 23)
 	summary.name = "ResearchSummary"
 	grid.add_child(summary)
-	grid.add_child(_label("Some knowledge survives the reset. Some of it should not.\nEach loop banks Research from its Data and Resonance. Spend it here on perks that carry into every loop.", 18))
-	grid.add_child(_research_tree())
+	var tabs := TabBar.new()
+	tabs.name = "ProgressionTabs"
+	tabs.focus_mode = Control.FOCUS_ALL
+	tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for caption in PROGRESSION_TABS: tabs.add_tab(caption)
+	tabs.current_tab = progression_tab
+	tabs.tab_changed.connect(func(index: int) -> void:
+		progression_tab = index
+		scroll.scroll_vertical = 0
+		_refresh_progression.call_deferred("ProgressionTabs"))
+	grid.add_child(tabs)
+	match progression_tab:
+		1: _blueprint_shop()
+		2: _crew_shop()
+		3: _records()
+		_:
+			grid.add_child(_label("Some knowledge survives the reset. Some of it should not.\nEach loop banks Archived Data from its Data and Resonance. Spend it on upgrades that carry into every loop, blueprints for your draft deck, and crew and companions.", 18))
+			grid.add_child(_research_tree())
+
+func _shop_grid(name: String) -> GridContainer:
+	progression_cards = GridContainer.new()
+	progression_cards.name = name
+	progression_cards.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	progression_cards.add_theme_constant_override("h_separation", 16)
+	progression_cards.add_theme_constant_override("v_separation", 16)
+	grid.add_child(progression_cards)
+	_layout.call_deferred()
+	return progression_cards
+
+func _shop_card(id: String, accent: Color, owned: bool) -> Array:
+	var card := PanelContainer.new()
+	card.name = id
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d"), accent if owned else accent.darkened(0.45), 2 if owned else 1, 12, 12))
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 6)
+	card.add_child(rows)
+	return [card, rows]
+
+func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
+	var button := Button.new()
+	button.name = "Buy"
+	button.text = text
+	button.disabled = not enabled
+	preload("res://scripts/title_button_style.gd").apply(button, 240, 40)
+	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	button.pressed.connect(action)
+	return button
+
+# Blueprints: rooms for the draft deck, priced by rarity; a stabilized related pattern halves it.
+func _blueprint_shop() -> void:
+	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Stabilizing a room's related pattern halves its price.", 17))
+	var cards := _shop_grid("BlueprintShop")
+	var rooms: Dictionary = Rooms.all_rooms()
+	for id in MetaShop.blueprint_ids():
+		var room: Dictionary = rooms[id]
+		var state := MetaShop.room_state(meta_state, id)
+		var cost := MetaShop.room_cost(meta_state, id)
+		var accent: Color = Rooms.category_color(str(room.category))
+		var parts := _shop_card(id, accent, state == "owned")
+		var rows: VBoxContainer = parts[1]
+		rows.add_child(_room_picture(id, 110))
+		var title := _label(str(room.display_name).to_upper(), 17)
+		title.add_theme_color_override("font_color", Color("e6f4f2") if state != "short" else Color("9fb6bd"))
+		rows.add_child(title)
+		rows.add_child(_rich("[color=#8fa3ae]%s · %s[/color]" % [str(room.rarity).to_upper(), str(room.category).to_upper()], 13))
+		if not room.get("production", {}).is_empty():
+			rows.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  +%s" % ResourceIcons.bbcode(room.production), 13))
+		var pattern := MetaShop.related_pattern(id)
+		if not pattern.is_empty() and state != "owned":
+			var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
+			rows.add_child(_label(("HALF PRICE // %s stabilized" if half else "Stabilize %s for half price") % (str(pattern.name) if meta_state.discovered_synergy_ids.has(pattern.id) else "its hidden pattern"), 13))
+		var room_id: String = id
+		parts[1].add_child(_shop_button({"owned": "IN YOUR DECK", "ready": "BUY  ·  %d DATA" % cost, "short": "NEEDS %d DATA" % cost}[state], state == "ready", func() -> void:
+			if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
+		cards.add_child(parts[0])
+
+# Crew & companions: met during a loop (thawed or rebooted), then bought for future loops.
+func _crew_shop() -> void:
+	grid.add_child(_label("Thaw a crew member or reboot a companion during a loop and they play for the rest of it. Buy them here to bring them into future loops.", 17))
+	var cards := _shop_grid("CrewShop")
+	for id in MetaShop.CHARACTER_COSTS:
+		var state := MetaShop.character_state(meta_state, id)
+		var cost := int(MetaShop.CHARACTER_COSTS[id])
+		var companion: bool = id in MetaShop.COMPANIONS
+		var parts := _shop_card(id, Color("b48ad8") if companion else Color("d8913f"), state == "owned")
+		var rows: VBoxContainer = parts[1]
+		var met: bool = state != "unmet"
+		var title := _label(str(MetaShop.CHARACTER_NAMES[id]).to_upper() if met else "UNKNOWN SIGNAL", 18)
+		title.add_theme_color_override("font_color", Color("e6f4f2") if met else Color("7a959e"))
+		rows.add_child(title)
+		rows.add_child(_rich("[color=#8fa3ae]%s[/color]" % ("COMPANION" if companion else "CREW"), 13))
+		var perk: String = "" if companion else str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
+		if met and not perk.is_empty(): rows.add_child(_label(perk, 14))
+		if not met:
+			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if companion else "cryo ward"), 14))
+		var character_id: String = id
+		rows.add_child(_shop_button({"owned": "OWNED", "ready": "BUY  ·  %d DATA" % cost, "short": "NEEDS %d DATA" % cost, "unmet": "NOT MET YET"}[state], state == "ready", func() -> void:
+			if MetaShop.buy_character(meta_state, character_id): _refresh_progression(character_id)))
+		cards.add_child(parts[0])
+
+func _records() -> void:
 	grid.add_child(_label("%d MEMORIES RECOVERED" % meta_state.recovered_memory_ids.size(), 16))
 	grid.add_child(_label("RECOVERED MEMORIES", 22))
 	if meta_state.recovered_memory_ids.is_empty():
@@ -584,7 +688,7 @@ func _research_tree() -> Control:
 	box.name = "ResearchTree"
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 12)
-	box.add_child(_label("RESEARCH TREE", 22))
+	box.add_child(_label("STATION UPGRADES", 22))
 	var columns := HBoxContainer.new()
 	columns.add_theme_constant_override("separation", 18)
 	box.add_child(columns)
@@ -645,7 +749,7 @@ func _perk_node(id: String, color: Color) -> Control:
 	rows.add_child(effect)
 	var action := Button.new()
 	action.name = "Buy"
-	action.text = {"owned": "OWNED", "ready": "UNLOCK  ·  %d RESEARCH" % int(perk.cost), "short": "NEEDS %d RESEARCH" % int(perk.cost), "locked": "LOCKED  ·  %d RESEARCH" % int(perk.cost)}[state]
+	action.text = {"owned": "OWNED", "ready": "UNLOCK  ·  %d DATA" % int(perk.cost), "short": "NEEDS %d DATA" % int(perk.cost), "locked": "LOCKED  ·  %d DATA" % int(perk.cost)}[state]
 	action.disabled = state != "ready"
 	action.tooltip_text = "Unlock the perk above first." if state == "locked" else ""
 	preload("res://scripts/title_button_style.gd").apply(action, 220, 40)

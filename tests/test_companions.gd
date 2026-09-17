@@ -58,7 +58,10 @@ func run():
 		game.tick_timer.stop();game.paused=false;game.powered_room_cells[cell]=true
 		C.advance(game,5)
 		check(game.companion_roster.has(id) and game.companion_actors[id].active,"Companion emerges")
-		check(game.meta.unlocked_companion_ids.has(id),"Recovery unlock persists")
+		# Owner playtest, Sept 17: rebooted companions play this loop; buying them keeps them.
+		check(game.meta.met_character_ids.has(id) and not game.meta.unlocked_companion_ids.has(id),"Recovery meets the companion without buying it")
+		check(preload("res://scripts/meta_shop.gd").character_state(game.meta,id)!="unmet","A met companion can be bought")
+		game.meta.unlocked_companion_ids[id]=true
 		check(game.run_discovered_character_ids.count(id)==1,"First recovery recorded once in recap")
 		C.toggle(game,cell);C.advance(game,20)
 		check(game.companion_roster.size()==C.IDS.find(id)+1,"Recovery cannot duplicate")

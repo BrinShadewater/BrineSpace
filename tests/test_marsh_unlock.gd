@@ -66,7 +66,8 @@ func run():
 	check(game.CryoRecovery.valid_ward(game.wrecks[ward_cell]),"Charged waiting state is save-valid")
 	game.crew_count=actual_count
 	game.CryoRecovery.advance(game,0.1)
-	check(game.meta.unlocked_architect_ids.has("marsh") and game.marsh_npc.active,"Recovery unlocks and spawns Marsh")
+	# Owner playtest, Sept 17: Marsh plays this loop once met; buying him keeps him.
+	check(game.meta.met_character_ids.has("marsh") and not game.meta.unlocked_architect_ids.has("marsh") and game.marsh_npc.active,"Recovery meets and spawns Marsh without unlocking him")
 	var count=game.crew_count
 	game.CryoRecovery.advance(game,30)
 	check(game.crew_count==count,"Recovery cannot duplicate Marsh")
@@ -102,7 +103,9 @@ func run():
 	for identity in Architects.IDS:
 		var actor=Architects.actor_for(game,identity)
 		check(actor.active and actor.avoidance_positions.size()==3,"Four-way peer avoidance includes "+identity)
-	check(game.meta.select_architect("marsh"),"Recovered Marsh becomes selectable")
+	check(not game.meta.select_architect("marsh"),"Met Marsh is not selectable until bought")
+	game.meta.unlocked_architect_ids["marsh"]=true
+	check(game.meta.select_architect("marsh"),"Bought Marsh becomes selectable")
 	check(Save.write(game,game.run_save_path)==OK,"Marsh checkpoint writes")
 	var saved=Save.read(game.run_save_path)
 	check(not saved.is_empty() and Save.restore(game,saved),"Marsh checkpoint restores")

@@ -86,7 +86,8 @@ func _ready() -> void:
 		var info := VBoxContainer.new()
 		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(info)
-		info.add_child(_label(Architects.NAMES[id] if unlocked else ("UNKNOWN ANDROID // POWERED DOWN" if id=="marsh" else "UNKNOWN ARCHITECT // IN STASIS"),23))
+		var met: bool = meta_state.met_character_ids.has(id) if "met_character_ids" in meta_state else false
+		info.add_child(_label(Architects.NAMES[id] if unlocked or met else ("UNKNOWN ANDROID // POWERED DOWN" if id=="marsh" else "UNKNOWN ARCHITECT // IN STASIS"),23))
 		if unlocked:
 			var role := HBoxContainer.new()
 			role.add_theme_constant_override("separation",8)
@@ -112,6 +113,8 @@ func _ready() -> void:
 				supplies.add_child(supply)
 			info.add_child(supplies)
 			if id=="marsh": info.add_child(_label("Sealed android: no helmet or Oxygen required. Returns to his pod at 35% battery; charging costs 1 Power per 25% restored.",17))
+		elif met:
+			info.add_child(_label("Met during a loop. Buy in Meta Progression > Crew & Companions for %d Archived Data to start loops with them." % int(preload("res://scripts/meta_shop.gd").CHARACTER_COSTS.get(id, 0)),18))
 		else:
 			info.add_child(_label("Personnel record sealed",17))
 			info.add_child(_label("Reconnect the derelict charging chamber and restore power. Its machine pumps white fluid into the dormant android until he recharges and wakes. A free berth lets him join the crew." if id=="marsh" else "Connect to a derelict cryo ward and repair its hull. Supply power, a free berth, Food and Oxygen to finish thawing its occupant. Rescue permanently reveals this record.",18))
@@ -143,7 +146,8 @@ func _ready() -> void:
 		row.add_child(face)
 		var button := CheckBox.new()
 		button.add_theme_font_size_override("font_size",22)
-		button.text=("%s // %s"%[preload("res://scripts/companions.gd").NAMES[id],preload("res://scripts/companions.gd").ROLES[id]]) if unlocked else "LOCKED // Recover the %s"%preload("res://scripts/companions.gd").OBJECTS[id]
+		var companion_met: bool = meta_state.met_character_ids.has(id) if "met_character_ids" in meta_state else false
+		button.text=("%s // %s"%[preload("res://scripts/companions.gd").NAMES[id],preload("res://scripts/companions.gd").ROLES[id]]) if unlocked else ("LOCKED // Buy %s in Meta Progression"%preload("res://scripts/companions.gd").NAMES[id] if companion_met else "LOCKED // Recover the %s"%preload("res://scripts/companions.gd").OBJECTS[id])
 		button.disabled=not unlocked
 		button.button_pressed=unlocked and companion_choices.has(id)
 		button.toggled.connect(func(value: bool):

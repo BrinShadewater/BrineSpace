@@ -44,7 +44,7 @@ static func room_entries(meta_state) -> Array[Dictionary]:
 		var id: String = ids[index]
 		var room: Dictionary = rooms[id]
 		var known: bool = id == "brine_core" or meta_state.unlocked_room_ids.has(id)
-		var hint := "Explore functioning room combinations. Stabilize a pattern to recover its blueprint."
+		var hint := "Buy this blueprint with Archived Data in Meta Progression."
 		for pattern in Synergies.all_synergies():
 			if pattern.get("unlock_room_id", "") == id:
 				if meta_state.discovered_synergy_ids.has(pattern.id) or meta_state.stabilized_synergy_ids.has(pattern.id):

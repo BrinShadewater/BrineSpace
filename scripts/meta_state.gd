@@ -17,6 +17,10 @@ var unlocked_architect_ids := {"bill":true}
 var selected_architect := "bill"
 var unlocked_companion_ids := {}
 var selected_companion_ids: Array = []
+# Archived Data shop (owner playtest, Sept 17): characters met during a loop can be bought for
+# future loops; purchased_ids ("room:<id>" / "crew:<id>" -> cost paid) keeps the spend ledger.
+var met_character_ids := {}
+var purchased_ids := {}
 var last_error := ""
 var recovered_backup := false
 
@@ -25,6 +29,15 @@ func unlock_companion(id: String) -> bool:
 	unlocked_companion_ids[id]=true
 	if save_to_disk()!=OK:
 		unlocked_companion_ids.erase(id);return false
+	return true
+
+# First thaw or reboot of a character in any loop. They play for the rest of that loop and can
+# then be bought in Meta Progression. Owned characters count as met.
+func record_character(id: String) -> bool:
+	if met_character_ids.has(id): return false
+	if not preload("res://scripts/architects.gd").IDS.has(id) and id not in ["river","josh","margot"]: return false
+	met_character_ids[id] = true
+	save_to_disk()
 	return true
 
 func unlock_architect(id: String) -> bool:
@@ -88,6 +101,8 @@ func _reset_profile() -> void:
 	selected_architect = "bill"
 	unlocked_companion_ids = {}
 	selected_companion_ids = []
+	met_character_ids = {}
+	purchased_ids = {}
 	last_error = ""
 	recovered_backup = false
 
@@ -159,6 +174,8 @@ func save_to_disk() -> Error:
 		"selected_architect":selected_architect,
 		"unlocked_companion_ids":unlocked_companion_ids.keys(),
 		"selected_companion_ids":selected_companion_ids,
+		"met_character_ids":met_character_ids.keys(),
+		"purchased_ids":purchased_ids,
 		"unread_records": unread_records.keys(),
 		"guide_completed": guide_completed,
 		"unlocked_room_ids": unlocked_room_ids.keys(),
@@ -223,6 +240,14 @@ func load_from_disk() -> void:
 	selected_companion_ids.clear()
 	for id in _saved_ids(parsed,"selected_companion_ids"):
 		if unlocked_companion_ids.has(id) and not selected_companion_ids.has(id):selected_companion_ids.append(id)
+	for id in _saved_ids(parsed,"met_character_ids"):
+		met_character_ids[id]=true
+	for id in unlocked_architect_ids: met_character_ids[id]=true
+	for id in unlocked_companion_ids: met_character_ids[id]=true
+	var parsed_purchases = parsed.get("purchased_ids", {})
+	if typeof(parsed_purchases) == TYPE_DICTIONARY:
+		for key in parsed_purchases:
+			if key is String and not key.is_empty(): purchased_ids[key] = _saved_count(parsed_purchases[key])
 	var selected: String=str(parsed.get("selected_architect","bill"))
 	selected_architect=selected if unlocked_architect_ids.has(selected) else "bill"
 	for key in _saved_ids(parsed, "unread_records"):

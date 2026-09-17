@@ -135,12 +135,11 @@ static func advance(game, delta: float) -> void:
 		var site: Dictionary=game.wrecks[cell]
 		site.boot=minf(BOOT_SECONDS,site.boot+delta)
 		if site.boot>=BOOT_SECONDS:
-			if not game.meta.unlocked_companion_ids.has(site.kind):
-				if not game.meta.unlock_companion(site.kind):continue
+			if game.meta.record_character(site.kind):
 				game.run_discovered_character_ids.append(site.kind)
 		if site.boot>=BOOT_SECONDS and spawn(game,site.kind,cell):
 			site.recovered=true;game.companion_roster[site.kind]=cell
-			game._log("COMPANION RECOVERED // %s. Available in future expedition selection."%NAMES[site.kind],false)
+			game._log(("COMPANION RECOVERED // %s. Available in future expedition selection." if game.meta.unlocked_companion_ids.has(site.kind) else "COMPANION RECOVERED // %s joins this loop. Buy them in Meta Progression to keep them.")%NAMES[site.kind],false)
 			game._refresh_all()
 	for id in game.companion_roster:
 		var actor = game.companion_actors[id]

@@ -508,12 +508,14 @@ static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 			_add_link(links, seen_links, safe_wake, [room["pos"], neighbor_pos])
 	return {"links": links}
 
-static func cycle_bonus(active_links) -> Dictionary:
+# Stabilized patterns pay double their authored bonus (owner playtest, Sept 17).
+static func cycle_bonus(active_links, stabilized_ids: Dictionary = {}) -> Dictionary:
 	var bonus := {}
 	var sources: Array = active_links.values() if typeof(active_links) == TYPE_DICTIONARY else active_links
 	for link in sources:
+		var scale := 2 if stabilized_ids.has(str(link.get("id", ""))) else 1
 		for key in link.get("bonus", {}):
-			bonus[key] = bonus.get(key, 0) + link["bonus"][key]
+			bonus[key] = bonus.get(key, 0) + link["bonus"][key] * scale
 	return bonus
 
 static func all_synergies() -> Array:

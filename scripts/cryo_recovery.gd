@@ -75,9 +75,10 @@ static func advance(game, delta: float) -> void:
 				var member := {"id":pod.id,"name":pod.name,"origin":cell,"alive":true}
 				if pod.has("architect_id"):
 					member["architect_id"]=pod.architect_id
-					if game.meta.unlock_architect(pod.architect_id):
+					if game.meta.record_character(pod.architect_id):
 						game.run_discovered_character_ids.append(pod.architect_id)
-						game._log("ARCHITECT RECOVERED // %s is available for future loops." % pod.name,false)
+					if not game.meta.unlocked_architect_ids.has(pod.architect_id):
+						game._log("ARCHITECT RECOVERED // %s joins this loop. Buy them in Meta Progression to keep them for future loops." % pod.name,false)
 				game.recovered_crew.append(member)
 				if pod.get("architect_id","") in ["bill","veld","branforth"]:
 					member["thawed_at"]=game.get_visual_time_seconds()

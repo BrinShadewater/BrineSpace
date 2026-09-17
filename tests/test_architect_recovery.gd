@@ -66,13 +66,17 @@ func run() -> void:
 	check(not game.veld_npc.active and not game.meta.unlocked_architect_ids.has("veld"),"Thaw does not unlock early")
 	game.CryoRecovery.advance(game,4)
 	check(game.veld_npc.active and game.veld_npc.cell_at(game.veld_npc.foot)==cell,"Recovered Veld spawns in her ward")
-	check(game.meta.unlocked_architect_ids.has("veld") and game.crew_count==2,"Recovery unlocks Veld and adds population")
-	check(game.meta.select_architect("veld"),"Recovered architect becomes selectable")
+	# Owner playtest, Sept 17: thawed crew play this loop; buying them keeps them.
+	check(not game.meta.unlocked_architect_ids.has("veld") and game.meta.met_character_ids.has("veld") and game.crew_count==2,"Recovery meets Veld for this loop and adds population")
+	check(not game.meta.select_architect("veld"),"A met architect is not selectable until bought")
+	check(preload("res://scripts/meta_shop.gd").character_state(game.meta,"veld")!="unmet","Recovered architect can be bought")
+	game.meta.unlocked_architect_ids["veld"]=true
+	check(game.meta.select_architect("veld"),"A bought architect becomes selectable")
 	var meta=preload("res://scripts/meta_state.gd").new()
 	meta.save_path=game.meta.save_path
 	meta.unlocked_architect_ids={"bill":true}
 	meta.load_from_disk()
-	check(meta.selected_architect=="veld" and meta.unlocked_architect_ids.has("veld"),"Selection and unlock persist to disk")
+	check(meta.selected_architect=="veld" and meta.unlocked_architect_ids.has("veld") and meta.met_character_ids.has("veld"),"Selection, unlock and meeting persist to disk")
 	check(Save.write(game,game.run_save_path)==OK,"Recovered architect checkpoint writes")
 	saved=Save.read(game.run_save_path)
 	check(not saved.is_empty() and Save.restore(game,saved),"Recovered NPC and roster Continue")

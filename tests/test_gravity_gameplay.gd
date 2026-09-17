@@ -92,11 +92,11 @@ func _init() -> void:
 		instance.resources.power=8
 		instance._apply_room_economy()
 		instance._advance_synergy_discovery_cycle()
-		if cycle<2: expect(not instance.meta.unlocked_room_ids.has("gravity_loom"),"Loom waits for third functioning cycle")
-	expect(instance.meta.unlocked_room_ids.has("gravity_loom"),"Loom blueprint unlocked")
-	expect(instance.draw_pile.count("gravity_loom")==1,"One loom prototype delivered")
+		if cycle<2: expect(not instance.meta.stabilized_synergy_ids.has("inertial_containment"),"Pattern waits for third functioning cycle")
+	expect(instance.meta.stabilized_synergy_ids.has("inertial_containment") and not instance.meta.unlocked_room_ids.has("gravity_loom"),"Pattern stabilizes; the Loom blueprint is bought, not decrypted")
+	expect(instance.draw_pile.count("gravity_loom")==0,"No loom prototype from stabilizing")
 	instance._award_synergy_stabilization(Synergies.get_synergy("inertial_containment"))
-	expect(instance.draw_pile.count("gravity_loom")==1,"Loom prototype is idempotent")
+	expect(instance.draw_pile.count("gravity_loom")==0,"Repeated stabilization adds nothing")
 	dispose(instance)
 	for pattern in ["mass_sorting","geometric_echo"]:
 		for q in range(4):
@@ -112,9 +112,9 @@ func _init() -> void:
 				instance._apply_room_economy()
 				expect(instance.active_synergies.has(pattern),"Functioning rotated terminal pair: "+pattern)
 				instance._advance_synergy_discovery_cycle()
-			expect(instance.meta.total_research_points==research_before+3,"Terminal grants three research after stabilization")
+			expect(instance.meta.total_research_points==research_before+3+preload("res://scripts/meta_shop.gd").STABILIZE_DATA,"Terminal grants its Archived Data after stabilization")
 			instance._award_synergy_stabilization(Synergies.get_synergy(pattern))
-			expect(instance.meta.total_research_points==research_before+3,"Terminal research is idempotent")
+			expect(instance.meta.total_research_points==research_before+3+preload("res://scripts/meta_shop.gd").STABILIZE_DATA,"Terminal Archived Data is idempotent")
 			instance.occupied[Vector2i(10,10)].suspended=true
 			instance._apply_room_economy()
 			expect(not instance.active_synergies.has(pattern),"Suspended loom stops terminal bonus")

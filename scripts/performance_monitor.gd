@@ -42,8 +42,27 @@ func observe(ms: float,held: bool,unfocused: bool,uptime_ms: float) -> void:
 	if samples.size()<MAX_SAMPLES: samples.append(ms)
 	if ms>=HITCH_MS:
 		hitch_count+=1
-		hitches.append({"uptime_ms":uptime_ms,"frame_ms":ms,"paused":held,"unfocused":unfocused})
+		var hitch := {"uptime_ms":uptime_ms,"frame_ms":ms,"paused":held,"unfocused":unfocused}
+		hitch.merge(station_breakdown(get_tree().current_scene if is_inside_tree() else null))
+		hitches.append(hitch)
 		if hitches.size()>MAX_HITCHES: hitches.pop_front()
+
+# Where the hitch frame's time went: the station's own systems (microseconds, from the most
+# recent station frame and cycle advance), engine process/physics time and the grid draw
+# profile when it is enabled. Rendering is the remainder of frame_ms.
+func station_breakdown(scene: Node) -> Dictionary:
+	var result := {"engine_process_ms":Performance.get_monitor(Performance.TIME_PROCESS)*1000.0,
+		"engine_physics_ms":Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)*1000.0,
+		"draw_calls":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)}
+	if scene==null or not "frame_timing_usec" in scene: return result
+	var timings: Dictionary=scene.frame_timing_usec.duplicate()
+	if timings.has("last_cycle_at_ms"):
+		timings["cycle_advance_age_ms"]=Time.get_ticks_msec()-int(timings.last_cycle_at_ms)
+		timings.erase("last_cycle_at_ms")
+	result["station_usec"]=timings
+	if is_instance_valid(scene.get("grid_view")) and scene.grid_view.profile_draw:
+		result["grid_draw_usec"]=scene.grid_view.draw_profile_usec.duplicate()
+	return result
 
 func finish_bucket(details: Dictionary,uptime_ms: float) -> Dictionary:
 	if frames==0: return {}

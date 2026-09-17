@@ -98,16 +98,16 @@ func _init() -> void:
 		instance._apply_room_economy()
 		instance._advance_synergy_discovery_cycle()
 		if cycle_index < 2:
-			expect(not instance.meta.unlocked_room_ids.has("mycelium_nursery"), "Unlock must wait for third consecutive cycle")
-	expect(instance.meta.unlocked_room_ids.has("mycelium_nursery"), "Three functioning cycles unlock nursery")
-	expect(instance.draw_pile.count("mycelium_nursery") == 1, "One current-run nursery prototype")
+			expect(not instance.meta.stabilized_synergy_ids.has("substrate_recovery"), "Stabilization must wait for third consecutive cycle")
+	expect(instance.meta.stabilized_synergy_ids.has("substrate_recovery") and not instance.meta.unlocked_room_ids.has("mycelium_nursery"), "Three functioning cycles stabilize; the blueprint is bought, not decrypted")
+	expect(instance.draw_pile.count("mycelium_nursery") == 0, "Stabilizing adds no prototype card")
 	instance._award_synergy_stabilization(Synergies.get_synergy("substrate_recovery"))
-	expect(instance.draw_pile.count("mycelium_nursery") == 1, "No repeated prototype reward")
+	expect(instance.draw_pile.count("mycelium_nursery") == 0, "Repeated stabilization adds nothing")
 	for id in ["culture_exchange", "restorative_culture"]:
 		var research_before: int = instance.meta.total_research_points
 		instance._award_synergy_stabilization(Synergies.get_synergy(id))
 		instance._award_synergy_stabilization(Synergies.get_synergy(id))
-		expect(instance.meta.total_research_points == research_before + 3, "Terminal reward grants 3 Research once")
+		expect(instance.meta.total_research_points == research_before + 3 + preload("res://scripts/meta_shop.gd").STABILIZE_DATA, "Terminal reward grants its Archived Data once")
 	dispose(instance)
 	for pattern in ["culture_exchange", "restorative_culture"]:
 		var synergy := Synergies.get_synergy(pattern)

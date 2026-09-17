@@ -99,16 +99,16 @@ func _init() -> void:
 		instance._apply_room_economy()
 		instance._advance_synergy_discovery_cycle()
 		if cycle_index < 2:
-			expect(not instance.meta.unlocked_room_ids.has("tidal_condenser"), "Unlock must wait for third consecutive cycle")
-	expect(instance.meta.unlocked_room_ids.has("tidal_condenser"), "Three functioning cycles unlock condenser")
-	expect(instance.draw_pile.count("tidal_condenser") == 1, "One current-run condenser prototype")
+			expect(not instance.meta.stabilized_synergy_ids.has("thermal_reclamation"), "Stabilization must wait for third consecutive cycle")
+	expect(instance.meta.stabilized_synergy_ids.has("thermal_reclamation") and not instance.meta.unlocked_room_ids.has("tidal_condenser"), "Three functioning cycles stabilize; the blueprint is bought, not decrypted")
+	expect(instance.draw_pile.count("tidal_condenser") == 0, "Stabilizing adds no prototype card")
 	instance._award_synergy_stabilization(Synergies.get_synergy("thermal_reclamation"))
-	expect(instance.draw_pile.count("tidal_condenser") == 1, "No repeated prototype reward")
+	expect(instance.draw_pile.count("tidal_condenser") == 0, "Repeated stabilization adds nothing")
 	for id in ["nutrient_mist", "chilled_cells"]:
 		var research_before: int = instance.meta.total_research_points
 		instance._award_synergy_stabilization(Synergies.get_synergy(id))
 		instance._award_synergy_stabilization(Synergies.get_synergy(id))
-		expect(instance.meta.total_research_points == research_before + 3, "Terminal reward grants 3 Research once")
+		expect(instance.meta.total_research_points == research_before + 3 + preload("res://scripts/meta_shop.gd").STABILIZE_DATA, "Terminal reward grants its Archived Data once")
 	dispose(instance)
 	for pattern in ["nutrient_mist", "chilled_cells"]:
 		var synergy := Synergies.get_synergy(pattern)

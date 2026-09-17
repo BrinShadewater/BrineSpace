@@ -159,9 +159,9 @@ func _ready() -> void:
 			recovered_rooms += 1
 	codex_button = _badge("CODEX", "res://brineui/title/codex-badge.svg", "%d ROOMS RECOVERED" % recovered_rooms)
 	codex_button.set_meta("recovered_count", recovered_rooms)
-	progression_button = _badge("META PROGRESSION", "res://brineui/title/progression-badge.svg", "%d RESEARCH" % preload("res://scripts/research_tree.gd").available(meta_state))
+	progression_button = _badge("META PROGRESSION", "res://brineui/title/progression-badge.svg", "%d ARCHIVED DATA" % preload("res://scripts/research_tree.gd").available(meta_state))
 	codex_button.tooltip_text = "Recovered rooms, discovered synergies, and clues to missing signals."
-	progression_button.tooltip_text = "Research, discoveries, and knowledge retained between loops."
+	progression_button.tooltip_text = "Spend Archived Data on upgrades, blueprints, crew and companions."
 	codex_button.pressed.connect(func() -> void: _open_archive("codex", codex_button))
 	progression_button.pressed.connect(func() -> void: _open_archive("progression", progression_button))
 	resized.connect(_layout)
@@ -282,9 +282,9 @@ func _open_archive(kind: String, opener: Button) -> void:
 			button.disabled = false
 		archive_opener.grab_focus()
 		_refresh_unread_badges()
-		# Spending Research in the tree changes the balance the badge shows.
+		# Spending Archived Data changes the balance the badge shows.
 		if progression_button.has_meta("detail_label"):
-			progression_button.get_meta("detail_label").text = "%d RESEARCH" % preload("res://scripts/research_tree.gd").available(meta_state)
+			progression_button.get_meta("detail_label").text = "%d ARCHIVED DATA" % preload("res://scripts/research_tree.gd").available(meta_state)
 	)
 
 func _refresh_unread_badges() -> void:
@@ -299,7 +299,7 @@ func _refresh_unread_badges() -> void:
 		else:
 			codex_new += 1
 	(codex_button.get_meta("detail_label") as Label).text = "%d NEW RECORDS" % codex_new if codex_new > 0 else "%d ROOMS RECOVERED" % int(codex_button.get_meta("recovered_count", 0))
-	(progression_button.get_meta("detail_label") as Label).text = "%d NEW RANKS" % mastery_new if mastery_new > 0 else "%d RESEARCH" % meta_state.total_research_points
+	(progression_button.get_meta("detail_label") as Label).text = "%d NEW RANKS" % mastery_new if mastery_new > 0 else "%d ARCHIVED DATA" % preload("res://scripts/research_tree.gd").available(meta_state)
 
 func _choose_architect() -> void:
 	if starting or is_instance_valid(archive): return

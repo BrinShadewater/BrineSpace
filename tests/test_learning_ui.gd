@@ -84,10 +84,11 @@ func _run() -> void:
 	game._close_menu()
 	game._award_synergy_stabilization(preload("res://scripts/synergy_manager.gd").get_synergy("closed_air_loop"))
 	game._refresh_learning_ui()
-	check(game.meta.unread_records.has("room:biodome"), "Decrypted blueprints must have their own unread record")
+	# Owner playtest, Sept 17: stabilizing no longer decrypts a blueprint; the pattern record is new again.
+	check(game.meta.unread_records.has("synergy:closed_air_loop") and not game.meta.unread_records.has("room:biodome"), "Stabilized patterns get a new record; no blueprint is decrypted")
 	game._review_latest_discovery()
 	await process_frame
-	check(game.menu_archive.codex_tabs.current_tab == 0 and game.menu_archive.search.text == "Biodome", "Blueprint review must target its room card")
+	check(game.menu_archive.codex_tabs.current_tab == 1 and game.menu_archive.search.text == "Closed Air Loop", "Stabilization review must target its synergy card")
 	game.menu_archive._close()
 	await create_timer(0.2).timeout
 	game._close_menu()

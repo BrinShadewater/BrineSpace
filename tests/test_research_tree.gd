@@ -81,17 +81,17 @@ func run() -> void:
 	check(first != null and second != null, "Perk nodes are listed")
 	if first != null and second != null:
 		var buy: Button = first.find_child("Buy", true, false)
-		check(not buy.disabled and "5 RESEARCH" in buy.text, "An open perk offers to unlock")
+		check(not buy.disabled and "5 DATA" in buy.text, "An open perk offers to unlock")
 		check(second.find_child("Buy", true, false).disabled, "The next perk waits for it")
 		buy.pressed.emit()
 		for i in range(2): await process_frame
 		var summary: Label = page.find_child("ResearchSummary", true, false)
-		check(summary != null and summary.text.begins_with("15 RESEARCH AVAILABLE"), "The balance updates after buying: %s" % (summary.text if summary else "missing"))
+		check(summary != null and summary.text.begins_with("15 ARCHIVED DATA AVAILABLE"), "The balance updates after buying: %s" % (summary.text if summary else "missing"))
 		check((page.find_child("life_stored_rations", true, false).find_child("Buy", true, false) as Button).text == "OWNED", "The perk shows as owned")
 		check(not (page.find_child("life_deep_tanks", true, false).find_child("Buy", true, false) as Button).disabled, "The next perk opens")
 		(page.find_child("RefundResearch", true, false) as Button).pressed.emit()
 		for i in range(2): await process_frame
-		check(Research.available(game.meta) == 20 and (page.find_child("ResearchSummary", true, false) as Label).text.begins_with("20 RESEARCH AVAILABLE"), "Refund from the page restores the balance")
+		check(Research.available(game.meta) == 20 and (page.find_child("ResearchSummary", true, false) as Label).text.begins_with("20 ARCHIVED DATA AVAILABLE"), "Refund from the page restores the balance")
 	page.queue_free()
 	game.queue_free()
 	await process_frame

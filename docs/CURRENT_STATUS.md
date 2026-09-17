@@ -1,3 +1,18 @@
+## Owner playtest notes, sixth fixes - September 17, 2026
+
+Owner notes (batch of 14) and three design calls: one currency, Archived Data; synergies give the room a bonus rather than unlocking rooms; thawed characters and companions play that loop and are bought to keep.
+
+1. Engine: project moved to Godot 4.7.2 (f326e515e). Export templates for 4.7.2 are not installed yet (only 4.8.dev5), so exports need them first.
+2. Crew loss: the run ends when every character is dead even if Crew Hab/Clone Lab phantom berths remain; a one-time WARNING before a death (air, starvation, Marsh battery) in the log and BRINE comms (crew_danger.gd, test_crew_loss). Hovering a card previews it in the inspector.
+3. UI (949829eb4): codex synergy entries as cards; codex rooms show output/upkeep/storage/build in colour with resource icons (resource_icons.gd); cards sort by rarity, department, name. Full-width menu buttons shrink to about half width. HUD panels draw as anti-aliased vector frames (terminal_frame_style.gd); Settings > Accessibility > Pixel panel frames restores the textures. Layout Editor: Previous Room and Previous Rotation sit left of Rotate Room.
+4. Derelict wards (f4dacf215): cryo/charging wards and companion sites only progress while a crew member welds from the connected room beside the ward door (ward_repair.gd, test_ward_repair). Ward-reward fixtures call WardRepair.use_clock().
+5. Title: the loading transmission types itself out before loading (click, Enter or Space shows it all; reduced motion skips). Card drag glides after the pointer and slides/shrinks into the hovered cell, with a settle ring on a successful drop.
+6. Crew Lounge: the unrotated default layout had the built-in couch at y -222, outside the north wall; moved to -172 (checked in a catalog capture of all four rotations).
+7. Meta progression (meta_shop.gd, test_meta_shop): Meta Progression has UPGRADES / BLUEPRINTS / CREW & COMPANIONS / RECORDS tabs, all spending Archived Data (stored in the existing total_research_points; purchases in purchased_ids). Blueprints cost 12/20/32 by rarity. Stabilizing a pattern no longer decrypts a room: its per-cycle bonus doubles in every loop, it pays +5 Archived Data (plus any authored terminal reward), and its related blueprint costs half. Thawed crew and rebooted companions are recorded in met_character_ids and play that loop; buying them (20-40) keeps them. Existing unlocks stay owned and free (the owner's profile: all crew and companions owned, 14 of 64 Data unspent). Crew picker names met-but-unbought characters and where to buy them.
+8. Lag diagnosis: every hitch recorded for F8 reports now carries the station's per-system time (airlocks, crew, drones/wrecks, cryo, interface, last cycle advance and its age), engine process/physics time and draw calls. The 180-197 ms spikes in report 20260917-004907 still need a fresh report with this data.
+
+Tests updated for the new rules: discovery progression, condenser/nursery/gravity/polish gameplay, architect recovery, Marsh unlock, companions, learning UI, research tree wording, UI workspace hover. Owner save, settings, layouts and loop files unchanged by every run in this batch.
+
 ## Owner playtest notes, fifth fixes - September 16, 2026
 
 Fixed from 21 notes and four F8 reports (commits 42a28a723, e8c66b8da, f4bc95ca8 and the one adding this entry):

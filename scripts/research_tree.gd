@@ -28,9 +28,9 @@ const PERKS := {
 	"life_warm_thaw": {"branch":"life_support", "tier":5, "cost":40, "name":"Warm Thaw", "text":"Cryopod thaws and charging run 30% faster.", "thaw_rate":1.3},
 	"disc_archive_index": {"branch":"discovery", "tier":1, "cost":5, "name":"Archive Index", "text":"Start each loop with +4 Data.", "start":{"data":4}},
 	"disc_calibrated_sensors": {"branch":"discovery", "tier":2, "cost":10, "name":"Calibrated Sensors", "text":"Each working Research Lab makes +1 Data per cycle.", "research_lab_data":1},
-	"disc_research_grant": {"branch":"discovery", "tier":3, "cost":15, "name":"Research Grant", "text":"+25% Research at the end of each loop.", "research_bonus":0.25},
+	"disc_research_grant": {"branch":"discovery", "tier":3, "cost":15, "name":"Research Grant", "text":"+25% Archived Data at the end of each loop.", "research_bonus":0.25},
 	"disc_rare_samples": {"branch":"discovery", "tier":4, "cost":25, "name":"Rare Samples", "text":"Start each loop with +2 Rare Minerals, and +20 Data storage.", "start":{"rare_minerals":2}, "capacity":{"data":20}},
-	"disc_endowment": {"branch":"discovery", "tier":5, "cost":40, "name":"Endowment", "text":"A further +25% Research at the end of each loop.", "research_bonus":0.25},
+	"disc_endowment": {"branch":"discovery", "tier":5, "cost":40, "name":"Endowment", "text":"A further +25% Archived Data at the end of each loop.", "research_bonus":0.25},
 }
 
 static func perks_in(branch: String) -> Array:
@@ -50,8 +50,13 @@ static func spent(meta) -> int:
 		if PERKS.has(id): total += int(PERKS[id].cost)
 	return total
 
+# Archived Data left to spend: lifetime Data minus perks and shop purchases (MetaShop).
 static func available(meta) -> int:
-	return maxi(0, int(meta.total_research_points) - spent(meta)) if meta != null else 0
+	if meta == null: return 0
+	var purchases := 0
+	if "purchased_ids" in meta:
+		for key in meta.purchased_ids: purchases += int(meta.purchased_ids[key])
+	return maxi(0, int(meta.total_research_points) - spent(meta) - purchases)
 
 static func previous(id: String) -> String:
 	var perk: Dictionary = PERKS[id]
