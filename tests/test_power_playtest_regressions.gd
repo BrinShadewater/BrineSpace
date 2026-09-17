@@ -106,9 +106,14 @@ func _init() -> void:
 	game.drone_fleet.sites = {Vector2i(24,20): deposit}
 	game.drone_fleet.sites_initialized = true
 	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
-	check(Insights.placement_hazards(game,"corridor",Vector2i(23,20),1).any(func(h): return h.contains("CUTS MINING DRONE BAY")),"Sealing a bay's only route to its deposit warns")
-	# The bay launches north/south, so the route turns at (23,20); a corner with north/east ports carries it.
-	check(not Insights.placement_hazards(game,"corner",Vector2i(23,20),2).any(func(h): return h.contains("CUTS")),"Matching service ports keep the drone route open")
+	# Drones pass beneath rooms (owner playtest), so no placement can cut a bay's route.
+	check(not Insights.placement_hazards(game,"corridor",Vector2i(23,20),1).any(func(h): return h.contains("CUTS")),"Rooms never cut a drone route")
+	add(game,"corridor",Vector2i(21,20))
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
+	check(not preload("res://scripts/drone_routes.gd").find_path(Vector2i(22,20),Vector2i(18,20),game.drone_fleet.route_blockers).is_empty(),"A drone route runs under a corridor with no matching door")
+	game.placed_rooms.pop_back()
+	game.occupied.erase(Vector2i(21,20))
+	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
 	check(Insights.placement_hazards(game,"corridor",Vector2i(22,22),1).is_empty(),"An unrelated placement does not warn")
 	# Seal the approach with rock: the stalled bay names the rock to break and the deposit it opens.
 	game.wrecks[Vector2i(23,20)] = {"kind":"basalt","progress":0.0,"active":false,"cleared":false}
@@ -130,11 +135,12 @@ func _init() -> void:
 	check(game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks).contains("NO SURVEYED DEPOSITS LEFT"),"Exhausted deposits say so")
 	# Derelict wards on both launch ports: the paid restoration is the first step.
 	deposit.units = 12
-	for cell in [Vector2i(22,19),Vector2i(22,21)]:
+	# Drones leave in any direction, so wards on every open side seal the bay.
+	for cell in [Vector2i(22,19),Vector2i(22,21),Vector2i(21,20),Vector2i(23,20)]:
 		game.wrecks[cell] = {"kind":"cryo","progress":0.0,"active":false,"cleared":false,"paid":false,"rotation":0,"pods":[]}
 	game.drone_fleet.advance(0.0,game.placed_rooms,{},game.wrecks)
 	var sealed: String = game.drone_fleet.harvest_route_hint(Vector2i(22,20),game.wrecks)
-	check(sealed.contains("recover the derelict ward at (22, 19)") or sealed.contains("recover the derelict ward at (22, 21)"),"Ward-sealed bay names the ward to restore: "+sealed)
+	check(sealed.contains("recover the derelict ward at"),"Ward-sealed bay names the ward to restore: "+sealed)
 	game.free()
 	print("POWER PLAYTEST REGRESSIONS: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	quit(0 if failures == 0 else 1)

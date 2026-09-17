@@ -44,7 +44,6 @@ static func reachable(occupied: Dictionary, cell: Vector2i, wrecks: Dictionary =
 	if wrecks.has(cell) and (wrecks[cell].kind=="basalt" or wrecks[cell].get("buried",false)):
 		if not exposed(wrecks,cell): return false
 		var blocked := {}
-		for room_cell in occupied: blocked[room_cell]=true
 		for at in wrecks:
 			if blocks(wrecks,at): blocked[at] = true
 		for home in occupied:

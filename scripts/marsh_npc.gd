@@ -70,7 +70,9 @@ func update(main, delta: float) -> void:
 	if dead or not main.running or main.paused or delta<=0: return
 	helmet_equipped=false
 	if not active: super.update(main,delta); return
-	if battery>RETURN_AT and not returning_to_pod:
+	# A weld under way finishes before he heads back to charge (owner playtest: a low battery
+	# abandoned hull repairs mid-seam).
+	if (battery>RETURN_AT or (state=="weld" and battery>5.0)) and not returning_to_pod:
 		super.update(main,delta)
 		return
 	if not returning_to_pod:

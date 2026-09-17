@@ -103,7 +103,9 @@ static func step_crew(game, actor, id: String, dt: float) -> void:
 				actor.path.clear()
 				actor.state="idle"
 			actor.locker_request.clear()
-		actor.movement_medium = "flooded" if water >= HIGH else "dry"
+		# Crew who don't breathe (Marsh) walk the flooded floor instead of swimming: his swim
+		# outline could not fit a furnished room, trapping him (owner playtest).
+		actor.movement_medium = "flooded" if water >= HIGH and actor.needs_air() else "dry"
 	elif not actor.expedition.is_empty() and actor.expedition.phase in ["pressurize","drain"]:
 		water = maxf(water,preload("res://scripts/airlock_cycle.gd").pose(game.occupied.get(actor.expedition.home,{})).water)
 		exterior=false

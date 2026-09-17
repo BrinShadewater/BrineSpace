@@ -4296,9 +4296,11 @@ func _update_test_walker(delta: float) -> void:
 		actor.avoidance_position = Vector2.INF
 		actor.avoidance_positions.clear()
 		for peer in Companions.all_actors(self):
-			# Crew retreating for air pass companions: Josh powers down in deep water and
-			# River floats, and either could otherwise wall a flooded doorway until crew drown.
-			if peer != actor and peer.active and not (actor.goal == "flood-retreat" and not peer.needs_air()): actor.avoidance_positions.append(peer.foot)
+			# Crew pass companions in deep water: Josh powers down and River floats, so neither
+			# can step aside, and either could wall a flooded doorway or trap a crew member in a
+			# flooded room (owner playtest: Marsh stuck beside a companion in the reactor).
+			var stranded: bool = not peer.needs_air() and (actor.goal == "flood-retreat" or preload("res://scripts/room_flooding.gd").level(occupied.get(peer.cell_at(peer.foot), {})) >= preload("res://scripts/room_flooding.gd").HIGH)
+			if peer != actor and peer.active and not stranded: actor.avoidance_positions.append(peer.foot)
 		if actor != bill_npc: actor.room_cache = bill_npc.room_cache
 		preload("res://scripts/airlock_service.gd").check_service(self,actor)
 		actor.hardware_doors_locked=hardware.doors

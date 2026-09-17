@@ -50,15 +50,10 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 			if reserved(cell): sites.erase(cell) # Migration must not obstruct paid queued construction.
 		sites_initialized = true
 	Sites.discover(sites,rooms)
+	# Drones travel beneath the station (owner playtest: a bay without a matching door sealed its
+	# drone outside), so rooms never block a route; they already draw below every floor. Rock,
+	# wrecks, deposits and queued construction still do.
 	route_blockers = {}
-	for room in rooms:
-		var definition := preload("res://scripts/room_database.gd").get_room(room.id)
-		var layout := preload("res://scripts/room_database.gd").get_layout(definition.get("layout","cross"))
-		var doors := []
-		for side in layout.doors:
-			var index: int = ["north","east","south","west"].find(side)
-			doors.append(Routes.STEPS[(index+int(room.get("rotation",0)))%4])
-		route_blockers[room.pos] = {"doors":doors}
 	for cell in wrecks:
 		if preload("res://scripts/wreck_field.gd").blocks(wrecks,cell): route_blockers[cell] = true
 	for cell in sites:
@@ -133,7 +128,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 					if drone.idle_retry>0.0: break
 					continue
 				if drone.bootstrap and _dedicated_builder_ready(powered): break
-				_assign(drone,wrecks,rooms)
+				_assign(drone,wrecks,rooms,powered)
 				if drone.job.is_empty():
 					drone["idle_retry"] = 1.0
 					break
@@ -201,15 +196,19 @@ func _dedicated_builder_ready(powered: Dictionary) -> bool:
 				if not Routes.find_path(drone.home,order.pos,route_blockers).is_empty(): return true
 	return false
 
-func _assign(drone: Dictionary, wrecks: Dictionary, rooms: Array) -> void:
+func _assign(drone: Dictionary, wrecks: Dictionary, rooms: Array, powered: Dictionary = {}) -> void:
 	if drone.kind == "construction":
 		if orders.is_empty(): return
 		var chosen := -1
 		for i in range(orders.size()):
 			if not str(orders[i].get("builder","")).is_empty(): continue
-			if not Routes.find_path(drone.home,orders[i].pos,route_blockers).is_empty():
-				chosen = i
-				break
+			var path := Routes.find_path(drone.home,orders[i].pos,route_blockers)
+			if path.is_empty(): continue
+			# With drones passing under rooms every bay can reach every site: leave an order to a
+			# closer free bay rather than sending a far one across the station.
+			if not drone.bootstrap and _closer_free_builder(drone,orders[i].pos,path.size(),powered): continue
+			chosen = i
+			break
 		if chosen<0:
 			drone["route_wait"] = true
 			return
@@ -251,6 +250,14 @@ func _assign(drone: Dictionary, wrecks: Dictionary, rooms: Array) -> void:
 		drone.target = Vector2(cell)
 		drone.job = "harvest"
 	drone["route_wait"] = drone.job.is_empty()
+
+func _closer_free_builder(drone: Dictionary, cell: Vector2i, length: int, powered: Dictionary) -> bool:
+	for other in drones.values():
+		if other == drone or other.kind != "construction" or other.bootstrap or other.phase != "docked" or not other.job.is_empty(): continue
+		if not powered.has(other.home): continue
+		var other_path := Routes.find_path(other.home,cell,route_blockers)
+		if not other_path.is_empty() and (other_path.size() < length or (other_path.size() == length and Vector2(other.home) < Vector2(drone.home))): return true
+	return false
 
 func reserved(cell: Vector2i) -> bool:
 	for order in orders:

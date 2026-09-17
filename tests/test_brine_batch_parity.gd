@@ -137,15 +137,8 @@ func run() -> void:
 	game.occupied.erase(Vector2i(23,19))
 	await changed_state("remove")
 	game.drone_fleet.synchronize(game.placed_rooms)
-	var drone: Dictionary = game.drone_fleet.drones[Vector2i(20,20)]
-	drone.phase = "outbound"
-	drone.last_cell = Vector2i(20,20)
-	drone.route = [Vector2i(21,20)]
-	drone.position = Vector2(20.5,20)
-	await changed_state("door-open")
-	drone.position = Vector2(20,20)
-	await changed_state("door-close")
-	drone.phase = "docked"
+	# Drones pass through doorways without opening doors (owner playtest), so a passing drone
+	# is no longer a door state change to check here.
 	game._set_grid_zoom(game.DEFAULT_GRID_ZOOM)
 	await settle()
 	game.grid_view.cull_room_drawing = true
