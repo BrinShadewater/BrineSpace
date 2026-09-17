@@ -53,7 +53,7 @@ static func step_water(game, dt: float) -> void:
 		var severity: float=room.get("hull_crack",0.0)
 		if severity>0 and not room.get("hull_patched",false):
 			var before: int=repair.variant(room)
-			room.hull_crack=minf(1,severity+dt*0.0005)
+			room.hull_crack=minf(1,severity+dt*0.0005*preload("res://scripts/research_tree.gd").crack_rate(game.get("meta")))
 			if repair.variant(room)>before:
 				game._log("HULL DETERIORATION // %s at %s. %s." % [room.get("display_name",room.id),room.pos,repair.NAMES[repair.variant(room)]],true)
 		var leak: float=repair.leak_rate(room)
@@ -119,7 +119,7 @@ static func step_crew(game, actor, id: String, dt: float) -> void:
 		water = maxf(water,preload("res://scripts/airlock_cycle.gd").pose(game.occupied.get(actor.expedition.home,{})).water)
 		exterior=false
 		actor.movement_medium="flooded" if water>=HIGH else "dry"
-	actor.flood_speed = 0.55 if water >= HIGH else (0.65 if water >= MEDIUM else 1.0)
+	actor.flood_speed = (0.55 if water >= HIGH else (0.65 if water >= MEDIUM else 1.0))*preload("res://scripts/research_tree.gd").walk_rate(game.get("meta"))
 	if not actor.needs_air():
 		actor.helmet_equipped=false
 		actor.air_recovery=0.0;actor.air_was_low=false
@@ -133,8 +133,9 @@ static func step_crew(game, actor, id: String, dt: float) -> void:
 		actor.air_recovery=maxf(0,actor.air_recovery-dt)
 		if unsafe_air:
 			if (actor.tank_oxygen if actor.helmet_equipped else actor.breath_oxygen)<=(12 if actor.helmet_equipped else 5): actor.air_was_low=true
-			if actor.helmet_equipped: actor.tank_oxygen = maxf(0,actor.tank_oxygen-dt)
-			else: actor.breath_oxygen = maxf(0,actor.breath_oxygen-dt)
+			var air_rate: float = preload("res://scripts/research_tree.gd").air_drain_rate(game.get("meta"))
+			if actor.helmet_equipped: actor.tank_oxygen = maxf(0,actor.tank_oxygen-dt*air_rate)
+			else: actor.breath_oxygen = maxf(0,actor.breath_oxygen-dt*air_rate)
 			if (actor.tank_oxygen if actor.helmet_equipped else actor.breath_oxygen) <= 0.00001:
 				kill(game,actor,id,"oxygen exhausted")
 				return
@@ -153,6 +154,17 @@ static func step_crew(game, actor, id: String, dt: float) -> void:
 	preload("res://scripts/crew_danger.gd").check(game,actor,id,breathing_danger,STARVATION_SECONDS)
 
 static func kill(game,actor,id: String,cause: String) -> void:
+	# Second Chance keystone (Meta Progression): once per loop, starvation or lost air is undone.
+	if cause in ["oxygen exhausted","starvation"] and preload("res://scripts/research_tree.gd").second_chance(game.get("meta")) and not game.has_meta("second_chance_used"):
+		game.set_meta("second_chance_used",true)
+		actor.breath_oxygen=15.0
+		actor.tank_oxygen=60.0
+		actor.starvation=0.0
+		actor.needs.hunger=0.0
+		var message := "SECOND CHANCE // %s was pulled back from %s. It will not happen twice this loop." % [Architects.NAMES[id],cause]
+		game._log(message,true)
+		if is_instance_valid(game.get("crew_comms")): game.crew_comms.transmit("brine",message,"",true)
+		return
 	actor.die()
 	game.crew_count = maxi(0,game.crew_count-1)
 	for member in game.recovered_crew:

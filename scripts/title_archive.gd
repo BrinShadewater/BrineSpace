@@ -776,85 +776,103 @@ func _records() -> void:
 		for id in ids:
 			grid.add_child(_label(str(id).replace("_", " ").capitalize() + "\nRecorded in this profile.", 17))
 
-# Research tree (owner request): three branches of five perks, each needing the one above it.
+# BRINE memory core (owner playtest, Sept 17: Meta Progression option A). The upgrade web on the
+# left, the selected node's details and purchase on the right.
+var core_web: Control
+var perk_detail: VBoxContainer
+static var core_selected := "eng_salvaged_stock"
+
 func _research_tree() -> Control:
 	var box := VBoxContainer.new()
 	box.name = "ResearchTree"
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	box.add_theme_constant_override("separation", 12)
-	box.add_child(_label("STATION UPGRADES", 22))
-	var columns := HBoxContainer.new()
-	columns.add_theme_constant_override("separation", 18)
-	box.add_child(columns)
-	for branch in ResearchTree.BRANCHES:
-		var column := VBoxContainer.new()
-		column.name = str(branch.id).capitalize().replace(" ", "") + "Branch"
-		column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		column.add_theme_constant_override("separation", 6)
-		columns.add_child(column)
-		var heading := _label(branch.name, 20)
-		heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		heading.add_theme_color_override("font_color", branch.color)
-		column.add_child(heading)
-		var perks: Array = ResearchTree.perks_in(branch.id)
-		for i in range(perks.size()):
-			if i > 0:
-				var link := _label("│", 16)
-				link.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-				link.add_theme_color_override("font_color", branch.color.darkened(0.3) if ResearchTree.owned(meta_state, perks[i - 1]) else Color("2c4550"))
-				column.add_child(link)
-			column.add_child(_perk_node(perks[i], branch.color))
+	box.add_theme_constant_override("separation", 10)
+	var title := _label("BRINE MEMORY CORE", 22)
+	title.add_theme_color_override("font_color", Color("9ff3df"))
+	box.add_child(title)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 24)
+	box.add_child(row)
+	core_web = preload("res://scripts/memory_core_web.gd").new()
+	core_web.name = "MemoryCore"
+	core_web.meta_state = meta_state
+	core_web.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(core_web)
+	var side := PanelContainer.new()
+	side.custom_minimum_size = Vector2(380, 0)
+	side.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	side.add_theme_stylebox_override("panel", _card_box(Color("0c1c23"), Color("2e5d66"), 1, 12, 18))
+	row.add_child(side)
+	perk_detail = VBoxContainer.new()
+	perk_detail.name = "PerkDetail"
+	perk_detail.add_theme_constant_override("separation", 12)
+	side.add_child(perk_detail)
+	core_web.node_selected.connect(_show_perk)
+	if not ResearchTree.PERKS.has(core_selected): core_selected = "eng_salvaged_stock"
+	core_web.selected = core_selected
+	_show_perk(core_selected)
 	var footer := HBoxContainer.new()
 	footer.add_theme_constant_override("separation", 18)
 	box.add_child(footer)
-	var note := _label("Start-of-loop perks apply from your next loop. Storage and rate perks apply at once. This tree is a prototype.", 15)
+	var note := _label("Select a node to see it. Each department's nodes open in order, ending in a keystone. Start-of-loop upgrades apply from your next loop.", 15)
 	note.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	footer.add_child(note)
 	var refund := Button.new()
 	refund.name = "RefundResearch"
-	refund.text = "REFUND ALL PERKS"
+	refund.text = "REFUND ALL UPGRADES"
 	refund.disabled = ResearchTree.spent(meta_state) == 0
-	preload("res://scripts/title_button_style.gd").apply(refund, 240, 44)
+	preload("res://scripts/title_button_style.gd").apply(refund, 260, 44)
 	refund.pressed.connect(func() -> void:
 		ResearchTree.refund_all(meta_state)
 		_refresh_progression("RefundResearch"))
 	footer.add_child(refund)
 	return box
 
-func _perk_node(id: String, color: Color) -> Control:
+func _show_perk(id: String) -> void:
+	core_selected = id
+	if not is_instance_valid(perk_detail): return
+	for child in perk_detail.get_children():
+		perk_detail.remove_child(child)
+		child.queue_free()
 	var perk: Dictionary = ResearchTree.PERKS[id]
 	var state := ResearchTree.state(meta_state, id)
-	var panel := PanelContainer.new()
-	panel.name = id
-	var style := _style(color if state == "owned" else (color.darkened(0.35) if state == "ready" else Color("27404b")))
-	style.bg_color = Color("14303a") if state == "owned" else Color("10232e")
-	style.set_border_width_all(2 if state == "owned" else 1)
-	style.content_margin_top = 12
-	style.content_margin_bottom = 12
-	panel.add_theme_stylebox_override("panel", style)
-	var rows := VBoxContainer.new()
-	rows.add_theme_constant_override("separation", 6)
-	panel.add_child(rows)
-	var title := _label("%d  %s" % [int(perk.tier), str(perk.name).to_upper()], 17)
-	title.add_theme_color_override("font_color", Color("e6f4f2") if state in ["owned", "ready"] else Color("7a959e"))
-	rows.add_child(title)
-	var effect := _rich(ResourceIcons.decorate(str(perk.text)), 15)
-	effect.add_theme_color_override("default_color", Color("b9dce5") if state != "locked" else Color("5d7882"))
-	rows.add_child(effect)
+	var color := Color.WHITE
+	var branch_name := ""
+	for branch in ResearchTree.BRANCHES:
+		if branch.id == perk.branch:
+			color = branch.color
+			branch_name = branch.name
+	var keystone: bool = perk.get("keystone", false)
+	var kind := _label("%s  ·  %s" % [branch_name, "KEYSTONE" if keystone else "TIER %d" % int(perk.tier)], 14)
+	kind.add_theme_color_override("font_color", color)
+	perk_detail.add_child(kind)
+	var perk_name := _label(str(perk.name).to_upper(), 24)
+	perk_name.name = "PerkName"
+	perk_name.add_theme_color_override("font_color", Color("f1d58a") if keystone else Color("e6f6f3"))
+	perk_detail.add_child(perk_name)
+	var effect := _rich(ResourceIcons.decorate(str(perk.text), 18), 17)
+	perk_detail.add_child(effect)
+	var status: String = {"owned": "INSTALLED IN BRINE'S MEMORY", "ready": "READY TO RECOVER", "short": "NOT ENOUGH ARCHIVED DATA", "locked": "RECOVER THE NODE BEFORE IT FIRST"}[state]
+	var status_label := _label(status, 14)
+	status_label.add_theme_color_override("font_color", color if state in ["owned", "ready"] else Color("7f9aa3"))
+	perk_detail.add_child(status_label)
 	var action := Button.new()
 	action.name = "Buy"
 	action.text = {"owned": "OWNED", "ready": "UNLOCK  ·  %d DATA" % int(perk.cost), "short": "NEEDS %d DATA" % int(perk.cost), "locked": "LOCKED  ·  %d DATA" % int(perk.cost)}[state]
 	action.disabled = state != "ready"
-	action.tooltip_text = "Unlock the perk above first." if state == "locked" else ""
-	preload("res://scripts/title_button_style.gd").apply(action, 220, 40)
+	preload("res://scripts/title_button_style.gd").apply(action, 300, 50)
+	action.custom_minimum_size = Vector2(300, 50)
 	if state != "owned":
 		action.icon = load(ResourceIcons.PATHS.archived_data)
-		action.add_theme_constant_override("icon_max_width", 22)
+		action.add_theme_constant_override("icon_max_width", 24)
 	action.pressed.connect(func() -> void:
 		if ResearchTree.buy(meta_state, id):
+			core_web.celebrate(id)
 			_refresh_progression(id))
-	rows.add_child(action)
-	return panel
+	perk_detail.add_child(action)
+	var line := _rich("[i][color=#8fb3bd]BRINE: \"%s\"[/color][/i]" % ResearchTree.quote(id), 15)
+	perk_detail.add_child(line)
+	if is_instance_valid(core_web): core_web.queue_redraw()
 
 # Rebuild the page in place after a purchase or refund, keeping the scroll position and focus.
 func _refresh_progression(focus_name: String) -> void:
@@ -867,6 +885,7 @@ func _refresh_progression(focus_name: String) -> void:
 	scroll.set_deferred("scroll_vertical", keep)
 	var target := grid.find_child(focus_name, true, false)
 	if target is PanelContainer: target = target.find_child("Buy", true, false)
+	if ResearchTree.PERKS.has(focus_name): target = grid.find_child("PerkDetail", true, false).find_child("Buy", true, false) if grid.find_child("PerkDetail", true, false) != null else target
 	if target is Control and target.focus_mode != Control.FOCUS_NONE and not (target is Button and target.disabled):
 		target.grab_focus.call_deferred()
 	else:

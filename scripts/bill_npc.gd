@@ -935,6 +935,7 @@ func advance_needs(main,delta: float) -> void:
 		matched=not work.reward(work.identity(main,self),main.occupied[primary_room]).is_empty()
 	for need in needs:
 		var rate := 0.12 if need=="hunger" else (0.08 if matched else 0.10) if need=="fatigue" else 0.22
+		if need in ["hunger","fatigue"]: rate *= preload("res://scripts/research_tree.gd").needs_rate(main.get("meta"))
 		needs[need]=minf(100,needs[need]+delta*rate)
 
 func choose_goal(main) -> void:

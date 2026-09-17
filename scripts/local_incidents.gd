@@ -24,6 +24,8 @@ static func resolve(game) -> void:
 				break
 	for cell in spread:game.occupied[cell]["local_incident"]=true
 	if damage>0:
+		damage=maxi(0,damage-preload("res://scripts/research_tree.gd").integrity_shield(game.get("meta")))
+	if damage>0:
 		game.resources.integrity=maxi(0,int(game.resources.integrity)-damage)
 		game._log("Local containment faults: %d Integrity lost. Repair affected rooms." % damage,false)
 

@@ -128,7 +128,7 @@ static func advance(game,actor,delta: float) -> bool:
 	actor.path.clear()
 	actor.direction=order.facing
 	actor.state="weld"
-	order["work"]=minf(WORK_SECONDS,float(order.get("work",0.0))+maxf(delta,0.0))
+	order["work"]=minf(WORK_SECONDS,float(order.get("work",0.0))+maxf(delta,0.0)*preload("res://scripts/research_tree.gd").build_rate(game.get("meta")))
 	actor.timer=float(order.work)
 	if order.work>=WORK_SECONDS:
 		game.drone_fleet.orders.erase(order)

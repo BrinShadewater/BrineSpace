@@ -13,7 +13,10 @@ Owner notes (11) and two F8 reports (20260917-042558 "FPS dropped to 1", 2026091
 9. Synergy reward (synergy_reveal.gd): discovery and stabilization toasts grow into a reveal card with both room cards, the name and the bonus with icons; on the map, rings, a link line and rising bonus icons.
 10. Exterior lamps reach further and brighter; drifting wisps and bioluminescent plant clumps (seabed_glow.gd) glow in the dark water.
 
-Owner calls: Meta Progression option A (BRINE memory core web) and Settings option A (sidebar with compact rows), built next.
+Owner calls: Meta Progression option A and Settings option A, both built:
+
+11. BRINE memory core (memory_core_web.gd): upgrades as a web around BRINE's core, six departments (Engineering, Drones, Hull, Life Support, Crew, Discovery), 33 upgrades, each department ending in a keystone. Nodes light in the department colour, buying sends a pulse along the line, and the detail panel shows the effect with icons, cost, state and a BRINE line. New upgrades hook into crew needs, air drain, berths, walk speed, drone battery, speed and deliveries, construction, hull cracks and repairs, machinery heat and incident damage. Keystones: Overclocked Generators (+1 Power per generator), Closed Ecology (+2 Oxygen per Life Support), Pattern Sense (+3 Archived Data per new synergy), Second Chance (once per loop, starvation or lost air is undone), Deep Salvage (+1 Rare Minerals with Data deliveries), Blast Doors (incidents cost 1 less Integrity).
+12. Settings: a category sidebar (Display, Audio, Controls, Accessibility) showing one page at a time, compact rows with hints and pill switches, sliders and lists on the right, key bindings as a two-column table, Restore defaults per page. Control names are unchanged.
 
 ## Owner playtest notes, sixth fixes - September 17, 2026
 

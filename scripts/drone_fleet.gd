@@ -15,6 +15,10 @@ var drones: Dictionary = {}
 var orders: Array = []
 var clearance_seconds: Dictionary = {}
 var delivered: Dictionary = {}
+# Drone perks from Meta Progression, set by the station each frame (the fleet has no profile).
+var battery_drain_rate := 1.0
+var travel_rate := 1.0
+var build_rate := 1.0
 
 func synchronize(rooms: Array) -> void:
 	var homes := {}
@@ -102,7 +106,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 			if extractor and drone.phase == "docked" and not powered.has(home): break
 			if drone.phase in ["outbound","returning"]:
 				var goal: Vector2i = drone.home if drone.phase == "returning" else Vector2i(drone.target)
-				remaining = Routes.travel(drone,remaining,goal,route_blockers)
+				remaining = Routes.travel(drone,remaining*travel_rate,goal,route_blockers)/travel_rate
 				if drone.get("route_wait",false) or not Vector2(drone.position).is_equal_approx(Vector2(goal)): break
 				drone.phase = "docking" if drone.phase == "returning" else "working"
 				drone.elapsed = 0.0
@@ -139,11 +143,12 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 			elif drone.phase == "working" and drone.job == "harvest":
 				duration = maxf(0.00001,Sites.WORK_SECONDS-float(sites[Vector2i(drone.target)].progress))
 				drone.elapsed = 0.0
-			elif drone.phase == "working" and drone.bootstrap: duration = 10.0
+			elif drone.phase == "working" and drone.bootstrap: duration = 10.0/build_rate
+			elif drone.phase == "working" and drone.job == "construct": duration /= build_rate
 			var step := minf(remaining,maxf(0.0,duration-float(drone.elapsed)))
 			if extractor and drone.phase == "working":
-				step = minf(step,drone.battery)
-				drone.battery = maxf(0.0,drone.battery-step)
+				step = minf(step,drone.battery/battery_drain_rate)
+				drone.battery = maxf(0.0,drone.battery-step*battery_drain_rate)
 			if drone.phase == "working" and drone.job == "clear":
 				var target_cell := Vector2i(drone.target)
 				clearance_seconds[target_cell] = float(clearance_seconds.get(target_cell,0.0))+step

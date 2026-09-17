@@ -24,7 +24,7 @@ static func cycle(game) -> void:
 		var before := float(room.get("fire_heat",0))
 		var operating: bool=game.hardware.power and game.powered_room_cells.has(room.pos) and not room.get("suspended",false) and float(room.get("water_level",0))<FLOOD_OUT
 		if before>=WARNING: room.electrical_fault=true
-		room.fire_heat=clampf(before+(float(MACHINERY[room.id]) if operating else -0.2),0,1)
+		room.fire_heat=clampf(before+(float(MACHINERY[room.id])*preload("res://scripts/research_tree.gd").heat_rate(game.get("meta")) if operating else -0.2),0,1)
 		if room.fire_heat>=1.0-0.000001:
 			room.fire=0.12
 			room.fire_heat=0.0

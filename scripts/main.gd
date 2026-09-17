@@ -1581,11 +1581,17 @@ func _update_wreck_clearance(delta: float) -> void:
 	# Bay operation was paid for at the cycle boundary. A next-cycle forecast
 	# must not revoke that service after the reserve/fuel has been consumed.
 	var working: Dictionary = powered_room_cells
+	drone_fleet.battery_drain_rate = ResearchTree.battery_drain_rate(meta)
+	drone_fleet.travel_rate = ResearchTree.drone_speed(meta)
+	drone_fleet.build_rate = ResearchTree.build_rate(meta)
 	var built: Array = drone_fleet.advance(delta,placed_rooms,working,wrecks,int(resources.get("power",0)),true)
 	if drone_fleet.power_spent > 0:
 		_apply_delta({"power":-drone_fleet.power_spent})
 		_refresh_all()
 	if not drone_fleet.delivered.is_empty():
+		# Drone perks (Meta Progression): extra Metal per Metal delivery, Rare Minerals with Data.
+		if drone_fleet.delivered.has("metal") and ResearchTree.drone_metal_bonus(meta) > 0: drone_fleet.delivered.metal = int(drone_fleet.delivered.metal) + ResearchTree.drone_metal_bonus(meta)
+		if drone_fleet.delivered.has("data") and ResearchTree.salvage_rare_bonus(meta) > 0: drone_fleet.delivered["rare_minerals"] = int(drone_fleet.delivered.get("rare_minerals", 0)) + ResearchTree.salvage_rare_bonus(meta)
 		var before_delivery: Dictionary = resources.duplicate()
 		_apply_delta(drone_fleet.delivered)
 		preload("res://scripts/resource_flow_ledger.gd").record(resource_flow,"drone",before_delivery,resources)
@@ -2072,6 +2078,7 @@ func _start_reboot_cycle() -> void:
 	for resource_id in perk_supplies:
 		resources[resource_id] = int(resources.get(resource_id, 0)) + int(perk_supplies[resource_id])
 	rerolls_remaining += ResearchTree.extra_rerolls(meta)
+	if has_meta("second_chance_used"): remove_meta("second_chance_used")
 	grid_view.door_wet_history.clear()
 	selected_doctrines.clear()
 	pending_doctrines.clear()
@@ -2434,8 +2441,9 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 			input_budget[key] = int(input_budget.get(key, 0)) - int(fuel[key])
 		_add_to_delta(delta, _without_key(fuel, "power"), -1)
 		_add_to_delta(delta, _without_key(room.get("production", {}), "power"), 1)
-		generation += int(room.production.power)
-		generator_outputs[cell] = int(room.production.power)
+		var perk_power: int = ResearchTree.generator_bonus(meta) if int(room.production.power) > 0 else 0
+		generation += int(room.production.power) + perk_power
+		generator_outputs[cell] = int(room.production.power) + perk_power
 		working_cells[cell] = true
 	# Heat recovery depends only on reactors that passed this cycle's checks.
 	for room in placed_rooms:
@@ -2547,6 +2555,8 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 			_add_to_delta(delta, {"data": 1}, 1)
 		if room["id"] == "research_lab" and ResearchTree.research_lab_data(meta) > 0:
 			_add_to_delta(delta, {"data": ResearchTree.research_lab_data(meta)}, 1)
+		if room["id"] == "life_support" and ResearchTree.life_support_oxygen(meta) > 0:
+			_add_to_delta(delta, {"oxygen": ResearchTree.life_support_oxygen(meta)}, 1)
 		if room["id"] == "clone_lab":
 			added_crew += 1
 	var links := DiscoveryManagerScript.functioning_links(connected_synergy_links, working_cells)
@@ -2637,7 +2647,7 @@ func _get_crew_capacity() -> int:
 	for room in placed_rooms:
 		if room["id"] == "crew_hab":
 			capacity += 2
-	return capacity
+	return capacity + ResearchTree.berth_bonus(meta)
 
 func _apply_orbit_event() -> void:
 	# Legacy entry point retained for old fixtures; orbital POIs are retired.
@@ -2705,6 +2715,7 @@ func _advance_synergy_discovery_cycle() -> void:
 func _handle_synergy_discovery(synergy_id: String) -> void:
 	if not meta.discover_synergy(synergy_id):
 		return
+	if ResearchTree.discovery_data(meta) > 0: meta.add_research_points(ResearchTree.discovery_data(meta))
 	if not run_discovered_synergy_ids.has(synergy_id):
 		run_discovered_synergy_ids.append(synergy_id)
 	play_station_sound("discovery")
