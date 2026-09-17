@@ -21,6 +21,8 @@ var codex_hint: Label
 var texture_cache := {}
 const Catalog = preload("res://scripts/codex_catalog.gd")
 const ResearchTree = preload("res://scripts/research_tree.gd")
+const SHADEWATER_LABS_URL := "https://shadewaterlabs.com/"
+const AI_DISCLOSURE := "BrineSpace is made by Brin Shadewater with the help of generative AI. AI tools were used to create or assist with parts of the artwork, animation, audio and code, all directed, selected and edited by a human."
 var close_button: Button
 var closing := false
 var transition: Tween
@@ -145,12 +147,27 @@ func _build() -> void:
 	elif mode == "about":
 		grid.add_child(_label("BRINESPACE\nCreated by Alex Yesilcimen\n© 2026 Alex Yesilcimen. All rights reserved.", 24))
 		grid.add_child(_label(preload("res://scripts/build_version.gd").details(), 18))
+		# Studio link and AI disclosure (owner request, Sept 16).
+		var studio := Button.new()
+		studio.name = "ShadewaterLabsLink"
+		studio.text = "SHADEWATER LABS  //  shadewaterlabs.com"
+		studio.tooltip_text = SHADEWATER_LABS_URL
+		preload("res://scripts/title_button_style.gd").apply(studio, 420, 48)
+		studio.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		studio.pressed.connect(func() -> void: OS.shell_open(SHADEWATER_LABS_URL))
+		grid.add_child(studio)
+		var disclosure := _label("AI DISCLOSURE\n" + AI_DISCLOSURE, 17)
+		disclosure.name = "AIDisclosure"
+		grid.add_child(disclosure)
 		grid.add_child(_label("BrineSpace is source-available. Art, audio, writing and game rights are reserved. See NOTICE.md for the full rights statement.\n\nPowered by Godot Engine (MIT license).", 18))
 		var licenses := RichTextLabel.new()
 		licenses.custom_minimum_size = Vector2(0, 360)
 		licenses.fit_content = true
 		licenses.text = Engine.get_license_text()
 		grid.add_child(licenses)
+		# Credits read across the page rather than in a narrow column.
+		for child in grid.get_children():
+			if child is Label or child is RichTextLabel: child.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	else:
 		_populate_progression()
 	preload("res://scripts/title_settings.gd").apply_menu_text(self)

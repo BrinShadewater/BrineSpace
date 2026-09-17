@@ -1516,7 +1516,12 @@ func _toggle_inspected_room_lock() -> void:
 	if not occupied.has(cell): return
 	var room: Dictionary = occupied[cell]
 	room["doors_locked"] = not room.get("doors_locked", false)
-	_log("%s doors %s." % [room.get("display_name", "Room"), "locked watertight" if room.doors_locked else "unlocked"], false)
+	# Crew and companions re-plan: a locked room is closed to them both ways.
+	for actor in Companions.all_actors(self):
+		actor.signature = ""
+		actor.path.clear()
+	grid_view.surface_key = []; grid_view.door_surface_key = []; grid_view.light_surface_key = []
+	_log("%s doors %s." % [room.get("display_name", "Room"), "locked: sealed to crew and water" if room.doors_locked else "unlocked"], false)
 	_refresh_all()
 
 func _toggle_wreck_work(cell: Vector2i) -> void:
@@ -4688,7 +4693,7 @@ func _refresh_inspector_contents() -> void:
 		room_lock_button.set_meta("cell", room.pos)
 		room_lock_button.text = "UNLOCK DOORS" if locked else "LOCK DOORS"
 		room_lock_button.disabled = not running
-		room_lock_button.tooltip_text = "Locked doors seal this room against flood water. Closed, unlocked doors let water seep through slowly." if not hardware.doors else "The station-wide DOORS switch is locking every room."
+		room_lock_button.tooltip_text = "Locked doors seal this room: crew cannot pass and flood water stays out or in. Closed, unlocked doors let water seep through slowly." if not hardware.doors else "The station-wide DOORS switch is locking every room."
 		room_lock_button.show()
 	if room.is_empty():
 		preview_texture.texture = null

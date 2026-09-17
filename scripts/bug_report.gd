@@ -400,7 +400,7 @@ func _report_text(note: String, after_crash: bool, files: Array, dumps_found: in
 		lines.append("captured at F8: %s (uptime %d s)" % [pending_captured_at, pending_uptime])
 	lines.append("bundle time: " + Time.get_datetime_string_from_system(false, true))
 	lines.append("previous session lock: " + (crashed_at.replace("\n", " | ") if not crashed_at.is_empty() else "(none)"))
-	lines.append("game version: " + str(ProjectSettings.get_setting("application/config/version", "unknown")))
+	lines.append("game version: " + preload("res://scripts/build_version.gd").title())
 	lines.append("godot: " + str(Engine.get_version_info().get("string", "unknown")))
 	lines.append("template: " + ("debug" if OS.is_debug_build() else "release"))
 	lines.append("os: %s %s" % [OS.get_name(), OS.get_version()])

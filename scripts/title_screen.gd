@@ -217,7 +217,7 @@ func _layout() -> void:
 	about_button.size = settings_button.size
 	if is_instance_valid(version_button):
 		version_button.size = version_button.get_combined_minimum_size()
-		version_button.position = Vector2(40, size.y - version_button.size.y - 10)
+		version_button.position = Vector2((size.x - version_button.size.x) * 0.5, size.y - version_button.size.y - 6)
 	error_label.position = Vector2(48, 12)
 	error_label.size = Vector2(size.x - 96, 64)
 	badges.position = Vector2(size.x - 516, center_y - 122)

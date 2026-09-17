@@ -49,6 +49,7 @@ var fire_cells := {}
 var fire_building_navigation := false
 var signature := ""
 var hardware_doors_locked:=false
+var locked_room_cells: Dictionary = {}
 var visits := {}
 var room_cache := {}
 var layout_geometry_revision:=-1
@@ -365,9 +366,11 @@ func cell_at(point: Vector2) -> Vector2i:
 
 func topology(main) -> String:
 	var entries: Array[String] = []
+	locked_room_cells.clear()
 	for cell in main.occupied:
 		var room: Dictionary = main.occupied[cell]
-		entries.append("%s:%s:%s:%s:%s" % [cell, room.id, room.get("rotation", 0), main.get_room_doors(room),room.get("branch_owner",Vector2i(-1,-1))])
+		if room.get("doors_locked", false): locked_room_cells[cell] = true
+		entries.append("%s:%s:%s:%s:%s:%s" % [cell, room.id, room.get("rotation", 0), main.get_room_doors(room),room.get("branch_owner",Vector2i(-1,-1)),room.get("doors_locked",false)])
 	entries.sort()
 	return str(hardware_doors_locked)+"/"+"|".join(entries)+"/layouts:"+str(preload("res://scripts/room_layout_store.gd").geometry_revision)
 
@@ -395,6 +398,8 @@ var sample_all_segments := OS.get_cmdline_user_args().has("--sample-all-navigati
 func segment_clear(a: Vector2, b: Vector2) -> bool:
 	if not preload("res://scripts/fire_safety.gd").segment_safe(self,a,b): return false
 	if hardware_doors_locked and cell_at(a)!=cell_at(b): return false
+	# A room whose doors the player locked is closed to crew both ways (owner call, Sept 16).
+	if cell_at(a)!=cell_at(b) and (locked_room_cells.has(cell_at(a)) or locked_room_cells.has(cell_at(b))): return false
 	# Inside one authored room, cell and closed-door half-planes are convex.
 	# Clear endpoints plus the exact blocker sweep below prove the whole segment.
 	# Keep sampling for corridor/legacy shapes and all cell-boundary crossings.

@@ -2399,6 +2399,7 @@ func _door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i) -> int:
 
 func _compute_door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i) -> int:
 	if main.hardware.doors: return 0
+	if main.occupied.get(cell_a, {}).get("doors_locked", false) or main.occupied.get(cell_b, {}).get("doors_locked", false): return 0
 	var drone_frame := _drone_door_frame(main,cell_a,cell_b)
 	if main.bill_npc.active or main.has_dr_veld() or main.has_chief_branforth() or main.has_marsh() or not main.companion_roster.is_empty():
 		if not main.occupied.has(cell_a) or not main.occupied.has(cell_b): return 0

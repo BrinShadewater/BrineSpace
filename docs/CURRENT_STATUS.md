@@ -1,3 +1,19 @@
+## Owner playtest notes, fifth fixes - September 16, 2026
+
+Fixed from 21 notes and four F8 reports (commits 42a28a723, e8c66b8da, f4bc95ca8 and the one adding this entry):
+
+1. Drag cards onto the station (card_drag.gd); smooth card filtering for the fan; the HUD button highlight row removed everywhere; Enter saves a bug report.
+2. Display: Restore Defaults keeps borderless fullscreen at the screen size; the size list works from fullscreen (switches to a window) and adds wide/ultrawide sizes; Windows promoted screen-sized borderless windows to exclusive fullscreen and restored stale sizes, so windowed mode and size are applied again after the borders change.
+3. Drones pass under rooms (a bay without a matching door had sealed its drone outside, and drones only charge docked); construction orders go to the nearest free bay.
+4. Marsh walks flooded floors (his swim outline trapped him in the reactor), crew pass companions stranded in deep water, and a weld finishes before he recharges.
+5. Flooding: closed, unlocked doors seep at 15% of an open doorway; each room has LOCK DOORS, which seals water and closes the room to crew and companions both ways (test_room_lock).
+6. Crew queue hull repairs themselves at a split seam or worse, or wading-depth water, when Metal allows.
+7. PANE: ON/OFF on the hand; pause menu regrouped with nothing removed; codex rooms as cards; title focus outlines only for keyboard/controller.
+8. Effects: turbine intake flow, welding sparks, marine snow and caustics, per-room brown-out flicker (at most three dips a second), sprinkler spray to the flood surface.
+9. Version: Build 0.3.0 - Manta Ray (project.godot version and codename, build_version.gd), on the title screen, in Credits & Build and bug reports. Credits add a Shadewater Labs link (https://shadewaterlabs.com/) and the AI disclosure.
+
+Answered: crew capacity already adds 2 berths per Crew Hab. Known limits: codex synergy entries keep the old layout; Cold Store at 90 degrees has a rack over the east wall in the saved layout (owner redressing). A test run at 20:21 wrote two fixture reports into the owner's real bug_reports folder.
+
 ## Owner calls after the fourth playtest - September 16, 2026
 
 Owner answers: push; build the research tree; card-shaped hand in both mockup layouts with a toggle and a hover pop; rooms stay as they are (owner will redress); Cold Store and Galley rotate; fix the loading freeze.
