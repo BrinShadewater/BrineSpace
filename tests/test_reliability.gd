@@ -19,6 +19,8 @@ func run():
 	original.load_png_from_buffer(FileAccess.get_file_as_bytes(path))
 	check(SafeImage.load_png(good,path)==OK and original.get_data()==good.get_data(),"Valid image pixels unchanged")
 	var report=root.get_node("BugReport")
+	var report_dir:="user://reliability-reports-%d"%OS.get_process_id()
+	report.report_dir=report_dir # Never write fixture reports into the player's bug_reports folder.
 	var no_game: String=report.save_report("title fixture")
 	var zip:=ZIPReader.new();check(zip.open(no_game)==OK,"Report without active station")
 	check(JSON.parse_string(zip.read_file("diagnostics/live_station.json").get_string_from_utf8()).status=="unavailable","Title explains snapshot unavailable");zip.close()
@@ -43,4 +45,6 @@ func run():
 	check(zip.read_file("report.txt").get_string_from_utf8().contains("build:"),"Build identity included")
 	zip.close()
 	game.queue_free();await process_frame
+	for name in DirAccess.get_files_at(report_dir): DirAccess.remove_absolute(ProjectSettings.globalize_path(report_dir.path_join(name)))
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(report_dir))
 	print("RELIABILITY CHECKS: %d failures"%failures);quit(1 if failures else 0)

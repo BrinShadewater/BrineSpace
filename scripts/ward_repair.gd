@@ -53,28 +53,30 @@ static func active_ward(game) -> Vector2i:
 		if ward.kind in KINDS and ward.get("active", false) and not ward.get("cleared", false): return cell
 	return Vector2i(-1, -1)
 
+# The weld spot is just inside the connected room, beside the doorway that leads to the ward
+# (owner playtest: Marsh welded mid-room). Nearest standable spots are tried in order, and at
+# most MAX_ROUTES searches run: a failed search explores the whole crew graph, and trying
+# every nearby node each frame cost over a second per frame (F8 report 20260917-042558).
+const MAX_ROUTES := 3
+const RETRY_MSEC := 2000
+
 static func approach(actor, room_cell: Vector2i, toward: Vector2) -> Dictionary:
-	var desired := (Vector2(room_cell) + Vector2.ONE * 0.5) * 384.0 + toward * 130.0
-	if actor.cell_at(actor.foot) == room_cell and actor.foot.distance_to(desired) < REACH and actor.can_stand(actor.foot):
+	var center := (Vector2(room_cell) + Vector2.ONE * 0.5) * 384.0
+	var desired := center + toward * 150.0 + Vector2(-toward.y, toward.x) * 48.0
+	if actor.cell_at(actor.foot) == room_cell and actor.foot.distance_to(desired) < 24.0 and actor.can_stand(actor.foot):
 		return {"point": actor.foot, "route": PackedVector2Array()}
 	var start: int = actor.nearest_in_room(actor.foot, actor.cell_at(actor.foot))
 	if start < 0: return {}
-	var best := INF
-	var found := {}
+	var candidates: Array = []
 	for node in actor.room_nodes.get(room_cell, []):
 		var point: Vector2 = actor.graph.get_point_position(node)
-		if point.distance_to(desired) > REACH or not actor.can_stand(point): continue
-		var path: PackedVector2Array = actor.route_between(start, node)
+		if point.distance_to(desired) <= REACH * 2.0 and actor.can_stand(point): candidates.append([point.distance_to(desired), node, point])
+	candidates.sort_custom(func(a, b): return a[0] < b[0])
+	for i in range(mini(MAX_ROUTES, candidates.size())):
+		var path: PackedVector2Array = actor.route_between(start, candidates[i][1])
 		if path.is_empty() or not actor.segment_clear(actor.foot, path[0]): continue
-		var length := 0.0
-		var from: Vector2 = actor.foot
-		for step in path:
-			length += from.distance_to(step)
-			from = step
-		if length < best:
-			best = length
-			found = {"point": point, "route": path}
-	return found
+		return {"point": candidates[i][2], "route": path}
+	return {}
 
 # Called from the crew update chain; returns true while this crew member is on the job.
 static func advance(game, actor, dt: float) -> bool:
@@ -105,9 +107,11 @@ static func advance(game, actor, dt: float) -> bool:
 		state.status = "No connected room to work from"
 		return false
 	if worker.is_empty():
+		if Time.get_ticks_msec() < int(state.get("retry_" + id, 0)): return false
 		var found := approach(actor, site.room, site.toward)
 		if found.is_empty():
 			state.status = "Path blocked / crew cannot reach the ward door"
+			state["retry_" + id] = Time.get_ticks_msec() + RETRY_MSEC
 			return false
 		state.worker = id
 		state.point = found.point
@@ -124,6 +128,7 @@ static func advance(game, actor, dt: float) -> bool:
 		if actor.path.is_empty():
 			var again := approach(actor, site.room, site.toward)
 			if again.is_empty():
+				state["retry_" + id] = Time.get_ticks_msec() + RETRY_MSEC
 				state.worker = ""
 				_release(actor)
 				return true

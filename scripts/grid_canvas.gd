@@ -881,11 +881,25 @@ const ROOM_FRAME_CAMERA := 10
 var skipped_room_setups := 0
 var plain_view_scripts := {}
 
+# Microseconds spent in grid, surface and environment redraws since the performance monitor
+# last read them, and how many redraws that was.
+var draw_usec_since_read := 0
+var draws_since_read := 0
+
+func take_draw_timing() -> Dictionary:
+	var result := {"grid_draw_usec":draw_usec_since_read,"grid_redraws":draws_since_read}
+	draw_usec_since_read = 0
+	draws_since_read = 0
+	return result
+
 class SurfacePass extends Node2D:
 	var host
 	var pass_id := 0
 	func _draw() -> void:
+		var started := Time.get_ticks_usec()
 		host._draw_surface(self,pass_id)
+		host.draw_usec_since_read += Time.get_ticks_usec()-started
+		host.draws_since_read += 1
 
 # Environment layers below the station surfaces. STATIC_* retain their commands
 # between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
@@ -895,7 +909,10 @@ class EnvPass extends Node2D:
 	var host
 	var pass_id := 0
 	func _draw() -> void:
+		var started := Time.get_ticks_usec()
 		host._draw_environment_pass(self,pass_id)
+		host.draw_usec_since_read += Time.get_ticks_usec()-started
+		host.draws_since_read += 1
 var env_passes: Array = []
 var retain_environment := not OS.get_cmdline_user_args().has("--redraw-environment")
 var env_below_key: Array = []
@@ -1053,6 +1070,12 @@ func _profile_draw_stage(label: String, started: int) -> int:
 	return now
 
 func _draw() -> void:
+	var started := Time.get_ticks_usec()
+	_draw_grid()
+	draw_usec_since_read += Time.get_ticks_usec()-started
+	draws_since_read += 1
+
+func _draw_grid() -> void:
 	render_door_cache.clear()
 	render_door_cache_active = reuse_frame_doors
 	draw_target = self
@@ -1417,6 +1440,7 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 			_draw_foundations(true,"shimmer")
 		Env.STATIC_TERRAIN:
 			_draw_environment_above(main,cell_size,GRID_SIZE*cell_size)
+			preload("res://scripts/seabed_glow.gd").draw_plants(target,main,cell_size)
 			env_terrain_rebuilds += 1
 		Env.DERELICTS:
 			_draw_cryo_derelicts(main,cell_size)
@@ -2619,6 +2643,8 @@ func _synergy_mote_phase(profile: String, time_seconds: float, mote_index: int) 
 		_:
 			return phase
 
+var burst_icon_cache := {}
+
 func _draw_discovery_bursts(main) -> void:
 	var cell_size: float = _cell_size()
 	for burst_value in main.discovery_bursts:
@@ -2626,17 +2652,36 @@ func _draw_discovery_bursts(main) -> void:
 		var cells: Array = burst.get("cells", [])
 		if cells.size() < 2:
 			continue
-		var remaining := clampf(float(burst.get("remaining", 0.0)), 0.0, 1.2)
-		var progress := 1.0 - remaining / 1.2
+		var duration: float = main.DISCOVERY_BURST_SECONDS
+		var remaining := clampf(float(burst.get("remaining", 0.0)), 0.0, duration)
+		var progress := 1.0 - remaining / duration
 		var color: Color = burst.get("color", Color("#55E6FF"))
 		var alpha := (1.0 - progress) * 0.88
 		var center_a := (Vector2(cells[0]) + Vector2.ONE * 0.5) * cell_size
 		var center_b := (Vector2(cells[1]) + Vector2.ONE * 0.5) * cell_size
-		var ring_radius := cell_size * lerpf(0.10, 0.42, progress)
-		for center in [center_a, center_b]:
-			draw_target.draw_arc(center, ring_radius, 0.0, TAU, 48, Color(color.r, color.g, color.b, alpha), maxf(3.0, cell_size * 0.012), true)
+		# Two expanding rings per room, a bright link between them and the pattern's bonus rising
+		# from the shared door as icons (owner playtest, Sept 17: a visible synergy reward).
+		for wave in range(2):
+			var wave_progress := clampf(progress * 1.6 - wave * 0.35, 0.0, 1.0)
+			if wave_progress <= 0.0 or wave_progress >= 1.0: continue
+			var ring_radius := cell_size * lerpf(0.10, 0.48, wave_progress)
+			for center in [center_a, center_b]:
+				draw_target.draw_arc(center, ring_radius, 0.0, TAU, 48, Color(color.r, color.g, color.b, (1.0 - wave_progress) * 0.9), maxf(3.0, cell_size * 0.012), true)
+		draw_target.draw_line(center_a, center_b, Color(color.lightened(0.4), alpha * 0.8), maxf(4.0, cell_size * 0.018), true)
 		var shared_door := center_a.lerp(center_b, 0.5)
-		draw_target.draw_circle(shared_door, cell_size * lerpf(0.12, 0.035, progress), Color(color.r, color.g, color.b, alpha * 0.48))
+		draw_target.draw_circle(shared_door, cell_size * lerpf(0.14, 0.04, progress), Color(color.r, color.g, color.b, alpha * 0.55))
+		var bonus: Dictionary = burst.get("bonus", {})
+		var offset := -float(bonus.size() - 1) * 0.5
+		for key in bonus:
+			var icon_path: String = preload("res://scripts/resource_icons.gd").PATHS.get(str(key), "")
+			if icon_path.is_empty(): continue
+			if not burst_icon_cache.has(icon_path): burst_icon_cache[icon_path] = load(icon_path)
+			var rise := shared_door + Vector2(offset * cell_size * 0.22, -cell_size * lerpf(0.05, 0.55, ease(progress, 0.5)))
+			var size := minf(cell_size * 0.12, 40.0)
+			var fade := clampf((1.0 - progress) * 2.2, 0.0, 1.0)
+			draw_target.draw_texture_rect(burst_icon_cache[icon_path], Rect2(rise - Vector2(size, size) * 0.5, Vector2(size, size)), false, Color(1, 1, 1, fade))
+			draw_target.draw_string(ThemeDB.fallback_font, rise + Vector2(size * 0.62, size * 0.3), "+%d" % int(bonus[key]), HORIZONTAL_ALIGNMENT_LEFT, -1, int(clampf(cell_size * 0.07, 14.0, 30.0)), Color(preload("res://scripts/resource_icons.gd").color(str(key)), fade))
+			offset += 1.0
 
 func _draw_room_hologram(main, cell: Vector2i, valid: bool) -> void:
 	var cell_size := _cell_size()

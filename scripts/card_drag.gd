@@ -111,7 +111,13 @@ func _input(event: InputEvent) -> void:
 			if drop:
 				var before: bool = game.occupied.has(drop_cell) or game.drone_fleet.reserved(drop_cell)
 				game._on_grid_clicked(drop_cell)
-				if not before and (game.occupied.has(drop_cell) or game.drone_fleet.reserved(drop_cell)): _settle_ring(drop_cell)
+				if not before and (game.occupied.has(drop_cell) or game.drone_fleet.reserved(drop_cell)):
+					_settle_ring(drop_cell)
+					# A drop places one room: don't auto-select the next card, whose ghost outline
+					# would appear over the room just placed (owner playtest, Sept 17).
+					game.selected_card_id = ""
+					game.selected_rotation = 0
+					game._refresh_all()
 		else:
 			pressing = false
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and dragging:
@@ -197,7 +203,7 @@ func _build_ghost() -> Control:
 	var art := TextureRect.new()
 	art.custom_minimum_size = Vector2(0, 136)
 	art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	art.texture = game.card_textures.get(card_id)
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE

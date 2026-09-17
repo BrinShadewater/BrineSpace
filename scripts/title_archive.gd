@@ -31,6 +31,11 @@ var transition: Tween
 var codex_query := ""
 var codex_filter_index := 0
 var codex_scroll := 0
+var codex_sort_index := 0
+var codex_sort: OptionButton
+const SORTS := ["SORT: COLOUR", "SORT: RARITY", "SORT: NAME", "SORT: BUILD COST"]
+const CARD_WIDTH := 270
+const SYNERGY_WIDTH := 470
 var progression_cards: GridContainer
 var progression_tab := 0
 const MetaShop = preload("res://scripts/meta_shop.gd")
@@ -129,6 +134,17 @@ func _build() -> void:
 		codex_filter.select(codex_filter_index)
 		codex_filter.item_selected.connect(func(_index: int) -> void: _populate_cards())
 		toolbar.add_child(codex_filter)
+		# Room cards can be sorted by department colour, rarity, name or build cost (owner playtest).
+		codex_sort = OptionButton.new()
+		codex_sort.name = "CodexSort"
+		codex_sort.custom_minimum_size = Vector2(240, 48)
+		preload("res://scripts/title_button_style.gd").apply(codex_sort, 240, 48)
+		for caption in SORTS: codex_sort.add_item(caption)
+		codex_sort.select(codex_sort_index)
+		codex_sort.item_selected.connect(func(index: int) -> void:
+			codex_sort_index = index
+			_populate_cards())
+		toolbar.add_child(codex_sort)
 		codex_count = _label("", 16)
 		content.add_child(codex_count)
 		codex_hint = _label("Connect neighboring rooms and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward.", 15)
@@ -208,7 +224,11 @@ func _label(text: String, font_size: int = 18) -> Label:
 
 func _layout() -> void:
 	if is_instance_valid(grid):
-		grid.columns = maxi(1, int((size.x - 160) / (340 * preload("res://scripts/title_settings.gd").text_scale))) if mode == "codex" and codex_tab != 2 else 1
+		var scale: float = preload("res://scripts/title_settings.gd").text_scale
+		var cell := (CARD_WIDTH + 18) if codex_tab == 0 else (SYNERGY_WIDTH + 18)
+		grid.columns = maxi(1, int((size.x - 140) / (cell * scale))) if mode == "codex" and codex_tab != 2 else 1
+		# Fixed-width cards sit centred rather than stretching across the page.
+		grid.size_flags_horizontal = Control.SIZE_SHRINK_CENTER if mode == "codex" and codex_tab != 2 else Control.SIZE_EXPAND_FILL
 	if is_instance_valid(progression_cards):
 		progression_cards.columns = 3 if size.x >= 1500 else (2 if size.x >= 1000 else 1)
 
@@ -222,6 +242,7 @@ func _populate_cards() -> void:
 	search.visible = codex_tab != 2
 	codex_filter.visible = codex_tab != 2
 	codex_hint.visible = codex_tab != 2
+	codex_sort.visible = codex_tab == 0
 	if codex_tab == 2:
 		grid.columns = 1
 		preload("res://scripts/transmission_archive.gd").populate(self)
@@ -237,14 +258,10 @@ func _populate_cards() -> void:
 			recovered.append(entry)
 		else:
 			hidden.append(entry)
-	# Cards sort by rarity, then department colour, then name (owner playtest, Sept 17).
+	# Room cards sort by the chosen key; colour groups departments, then rarity (owner playtest).
 	if codex_tab == 0:
-		recovered.sort_custom(func(a, b):
-			var ra: int = RARITY_ORDER.find(str(a.data.get("rarity", "common")))
-			var rb: int = RARITY_ORDER.find(str(b.data.get("rarity", "common")))
-			if ra != rb: return ra < rb
-			if str(a.category) != str(b.category): return str(a.category) < str(b.category)
-			return str(a.title) < str(b.title))
+		recovered.sort_custom(_room_order)
+		hidden.sort_custom(_room_order)
 	else:
 		recovered.sort_custom(func(a, b):
 			var sa: bool = meta_state.stabilized_synergy_ids.has(a.id)
@@ -362,14 +379,37 @@ func _populate_cards() -> void:
 # Room entries as cards, matching the draft hand (owner playtest): title plate, art window,
 # category ribbon, description, output and upkeep, and a rarity and cost footer. Unrecovered
 # rooms show as a card back with their clue.
+func _room_order(a: Dictionary, b: Dictionary) -> bool:
+	var ra: int = RARITY_ORDER.find(str(a.data.get("rarity", "common")))
+	var rb: int = RARITY_ORDER.find(str(b.data.get("rarity", "common")))
+	var ca: int = Rooms.CATEGORY_COLORS.keys().find(str(a.category))
+	var cb: int = Rooms.CATEGORY_COLORS.keys().find(str(b.category))
+	match codex_sort_index:
+		1:
+			if ra != rb: return ra < rb
+			if ca != cb: return ca < cb
+		2:
+			pass
+		3:
+			var costa := 0
+			var costb := 0
+			for value in a.data.get("cost", {}).values(): costa += int(value)
+			for value in b.data.get("cost", {}).values(): costb += int(value)
+			if costa != costb: return costa < costb
+		_:
+			if ca != cb: return ca < cb
+			if ra != rb: return ra < rb
+	if a.known != b.known: return a.known
+	return str(a.title) < str(b.title) if a.known else str(a.id) < str(b.id)
+
 func _codex_room_card(entry: Dictionary) -> Control:
 	var data: Dictionary = entry.data
 	var known: bool = entry.known
 	var accent: Color = Rooms.CATEGORY_COLORS.get(entry.category, Color("72d9dc")) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexCard_" + str(entry.id)
-	card.custom_minimum_size = Vector2(300, 0)
-	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.custom_minimum_size = Vector2(CARD_WIDTH, 0)
+	card.size_flags_horizontal = Control.SIZE_FILL
 	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 3, 14, 10))
 	var body := VBoxContainer.new()
@@ -397,11 +437,11 @@ func _codex_room_card(entry: Dictionary) -> Control:
 		body.add_child(_label("CLUE // " + str(entry.clue), 16))
 		return card
 	var art := PanelContainer.new()
-	art.custom_minimum_size.y = 190
+	art.custom_minimum_size.y = 220
 	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
 	body.add_child(art)
-	var picture := _room_picture(entry.id, 186)
-	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	var picture := _room_picture(entry.id, 216)
+	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	var clip := Control.new()
 	clip.clip_contents = true
 	art.add_child(clip)
@@ -436,6 +476,8 @@ func _codex_room_card(entry: Dictionary) -> Control:
 
 # Synergy entries as cards (owner playtest): the linked rooms side by side in the art window,
 # the effect, stabilisation state and reward. Undiscovered patterns show their clue.
+# Owner playtest (Sept 17): a synergy shows its two rooms as two cards side by side, joined by
+# the link, above the effect. Undiscovered patterns show two card backs and the clue.
 func _codex_synergy_card(entry: Dictionary) -> Control:
 	var data: Dictionary = entry.data
 	var known: bool = entry.known
@@ -443,10 +485,9 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	var accent := Color(str(data.get("fx_color", "72d9dc"))) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexSynergy_" + str(entry.id)
-	card.custom_minimum_size = Vector2(300, 0)
-	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 3, 14, 10))
+	card.custom_minimum_size = Vector2(SYNERGY_WIDTH, 0)
+	card.size_flags_horizontal = Control.SIZE_FILL
+	card.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 0))
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 8)
 	card.add_child(body)
@@ -467,26 +508,24 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 			scroll.grab_focus()
 		)
 		body.add_child(reviewed)
-	if not known:
-		body.add_child(_mystery_picture())
-		body.add_child(_label("CLUE // " + str(entry.clue), 16))
-		return card
-	var art := PanelContainer.new()
-	art.custom_minimum_size.y = 170
-	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 4))
-	body.add_child(art)
-	var linked := HBoxContainer.new()
-	linked.alignment = BoxContainer.ALIGNMENT_CENTER
-	art.add_child(linked)
+	var pair := HBoxContainer.new()
+	pair.name = "LinkedCards"
+	pair.alignment = BoxContainer.ALIGNMENT_CENTER
+	pair.add_theme_constant_override("separation", 6)
+	body.add_child(pair)
 	for index in range(data.rooms.size()):
 		if index > 0:
-			var connector := _label("↔", 26)
-			connector.add_theme_color_override("font_color", accent)
+			var connector := _label("+", 34)
+			connector.autowrap_mode = TextServer.AUTOWRAP_OFF
+			connector.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			connector.custom_minimum_size.x = 26
+			connector.add_theme_color_override("font_color", accent.lightened(0.2) if known else Color("45616f"))
 			connector.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-			linked.add_child(connector)
-		var picture := _room_picture(data.rooms[index], 150)
-		picture.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		linked.add_child(picture)
+			pair.add_child(connector)
+		pair.add_child(_mini_room_card(str(data.rooms[index]), known))
+	if not known:
+		body.add_child(_label("CLUE // " + str(entry.clue), 16))
+		return card
 	var ribbon := _label("STABILIZED" if stabilized else "DISCOVERED", 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
@@ -498,11 +537,12 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	var lines := VBoxContainer.new()
 	lines.add_theme_constant_override("separation", 6)
 	rules.add_child(lines)
-	var names := PackedStringArray()
 	var rooms: Dictionary = Rooms.all_rooms()
-	for id in data.rooms: names.append(rooms[id].display_name)
-	lines.add_child(_label(" + ".join(names), 15))
-	lines.add_child(_label(data.get("effect", ""), 15))
+	lines.add_child(_rich(ResourceIcons.decorate(str(data.get("effect", ""))), 15))
+	if stabilized and not data.get("bonus", {}).is_empty():
+		var bonus := {}
+		for key in data.bonus: bonus[key] = int(data.bonus[key]) * 2
+		lines.add_child(_rich("[color=#7fd6a6]DOUBLED[/color]  +%s each functioning cycle" % ResourceIcons.bbcode(bonus), 14))
 	if not stabilized:
 		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 14))
 	var reward: String = data.get("unlock_room_id", "")
@@ -510,6 +550,37 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["STABILIZED" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 14))
 	if not reward.is_empty():
 		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 14))
+	return card
+
+# A small room card for synergy pairs: title, the whole-room picture and the department ribbon.
+func _mini_room_card(room_id: String, known: bool) -> Control:
+	var room: Dictionary = Rooms.get_room(room_id)
+	var accent: Color = Rooms.CATEGORY_COLORS.get(str(room.get("category", "")), Color("72d9dc")) if known else Color("45616f")
+	var card := PanelContainer.new()
+	card.name = "Card_" + room_id
+	card.custom_minimum_size = Vector2(200, 0)
+	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 2, 10, 7))
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 5)
+	card.add_child(rows)
+	var title := _label(str(room.get("display_name", room_id)) if known else "LINKED ROOM", 14)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 5, 4))
+	rows.add_child(title)
+	if not known:
+		rows.add_child(_mystery_picture())
+		return card
+	var art := PanelContainer.new()
+	art.custom_minimum_size.y = 160
+	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
+	rows.add_child(art)
+	art.add_child(_room_picture(room_id, 156))
+	var ribbon := _label(str(room.get("category", "")).to_upper(), 11)
+	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	rows.add_child(ribbon)
 	return card
 
 func _rich(text: String, font_size: int) -> RichTextLabel:
@@ -567,9 +638,28 @@ func _resources(values: Dictionary) -> String:
 
 # Meta Progression (owner playtest, Sept 17): one currency, Archived Data, spent across tabs.
 func _populate_progression() -> void:
-	var summary := _label("%d ARCHIVED DATA AVAILABLE   /   %d EARNED   /   %d PATTERNS STABILIZED   /   %d STABILIZED LOOPS" % [ResearchTree.available(meta_state), meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 23)
+	# The spendable balance with its icon, always in view (owner playtest, Sept 17).
+	var balance := HBoxContainer.new()
+	balance.name = "ArchivedDataBalance"
+	balance.add_theme_constant_override("separation", 12)
+	grid.add_child(balance)
+	var coin := TextureRect.new()
+	coin.texture = load(ResourceIcons.PATHS.archived_data)
+	coin.custom_minimum_size = Vector2(40, 40)
+	coin.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	coin.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	coin.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	balance.add_child(coin)
+	var summary := _label("%d ARCHIVED DATA AVAILABLE" % ResearchTree.available(meta_state), 28)
 	summary.name = "ResearchSummary"
-	grid.add_child(summary)
+	summary.autowrap_mode = TextServer.AUTOWRAP_OFF
+	summary.add_theme_color_override("font_color", Color(ResourceIcons.color("archived_data")))
+	balance.add_child(summary)
+	var totals := _label("%d EARNED   /   %d PATTERNS STABILIZED   /   %d STABILIZED LOOPS" % [meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 17)
+	totals.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	totals.autowrap_mode = TextServer.AUTOWRAP_OFF
+	totals.add_theme_color_override("font_color", Color("8fa3ae"))
+	balance.add_child(totals)
 	var tabs := TabBar.new()
 	tabs.name = "ProgressionTabs"
 	tabs.focus_mode = Control.FOCUS_ALL
@@ -617,6 +707,10 @@ func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 	preload("res://scripts/title_button_style.gd").apply(button, 240, 40)
 	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	button.pressed.connect(action)
+	if "DATA" in text and not text.begins_with("NOT"):
+		button.icon = load(ResourceIcons.PATHS.archived_data)
+		button.expand_icon = false
+		button.add_theme_constant_override("icon_max_width", 22)
 	return button
 
 # Blueprints: rooms for the draft deck, priced by rarity; a stabilized related pattern halves it.
@@ -663,7 +757,7 @@ func _crew_shop() -> void:
 		rows.add_child(title)
 		rows.add_child(_rich("[color=#8fa3ae]%s[/color]" % ("COMPANION" if companion else "CREW"), 13))
 		var perk: String = "" if companion else str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
-		if met and not perk.is_empty(): rows.add_child(_label(perk, 14))
+		if met and not perk.is_empty(): rows.add_child(_rich(ResourceIcons.decorate(perk), 14))
 		if not met:
 			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if companion else "cryo ward"), 14))
 		var character_id: String = id
@@ -744,8 +838,8 @@ func _perk_node(id: String, color: Color) -> Control:
 	var title := _label("%d  %s" % [int(perk.tier), str(perk.name).to_upper()], 17)
 	title.add_theme_color_override("font_color", Color("e6f4f2") if state in ["owned", "ready"] else Color("7a959e"))
 	rows.add_child(title)
-	var effect := _label(str(perk.text), 15)
-	effect.add_theme_color_override("font_color", Color("b9dce5") if state != "locked" else Color("5d7882"))
+	var effect := _rich(ResourceIcons.decorate(str(perk.text)), 15)
+	effect.add_theme_color_override("default_color", Color("b9dce5") if state != "locked" else Color("5d7882"))
 	rows.add_child(effect)
 	var action := Button.new()
 	action.name = "Buy"
@@ -753,6 +847,9 @@ func _perk_node(id: String, color: Color) -> Control:
 	action.disabled = state != "ready"
 	action.tooltip_text = "Unlock the perk above first." if state == "locked" else ""
 	preload("res://scripts/title_button_style.gd").apply(action, 220, 40)
+	if state != "owned":
+		action.icon = load(ResourceIcons.PATHS.archived_data)
+		action.add_theme_constant_override("icon_max_width", 22)
 	action.pressed.connect(func() -> void:
 		if ResearchTree.buy(meta_state, id):
 			_refresh_progression(id))

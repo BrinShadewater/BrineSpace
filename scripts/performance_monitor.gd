@@ -22,8 +22,13 @@ func _ready() -> void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	last_usec=Time.get_ticks_usec()
 
+var last_draw_timing: Dictionary = {}
+
 func _process(_delta: float) -> void:
 	var now:=Time.get_ticks_usec()
+	var current_scene:=get_tree().current_scene
+	if current_scene!=null and is_instance_valid(current_scene.get("grid_view")) and current_scene.grid_view.has_method("take_draw_timing"):
+		last_draw_timing=current_scene.grid_view.take_draw_timing()
 	var elapsed:=float(now-last_usec)/1000.0
 	last_usec=now
 	var scene:=get_tree().current_scene
@@ -60,6 +65,7 @@ func station_breakdown(scene: Node) -> Dictionary:
 		timings["cycle_advance_age_ms"]=Time.get_ticks_msec()-int(timings.last_cycle_at_ms)
 		timings.erase("last_cycle_at_ms")
 	result["station_usec"]=timings
+	result.merge(last_draw_timing)
 	if is_instance_valid(scene.get("grid_view")) and scene.grid_view.profile_draw:
 		result["grid_draw_usec"]=scene.grid_view.draw_profile_usec.duplicate()
 	return result

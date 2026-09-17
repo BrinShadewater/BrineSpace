@@ -5,6 +5,8 @@ extends Node
 ## Engine APIs only; this script must never be the thing that crashes.
 
 const REPORT_DIR := "user://bug_reports"
+# Fixtures point this at their own folder so test runs never add reports to the player's.
+var report_dir := REPORT_DIR
 const LOCK_DIR := "user://bug_report"
 const LOCK_PATH := "user://bug_report/session.lock"
 const LOG_DIR := "user://logs"
@@ -107,15 +109,15 @@ func save_report(note: String, after_crash: bool = false) -> String:
 	files.push_front({"name": "report.txt", "data": summary.to_utf8_buffer()})
 	_clear_pending()
 	var stamp := Time.get_datetime_string_from_system(false, true).replace("-", "").replace(":", "").replace(" ", "-")
-	var base := REPORT_DIR + "/brinespace-report-" + stamp + "-%d-%d" % [OS.get_process_id(), Time.get_ticks_usec()]
+	var base := report_dir + "/brinespace-report-" + stamp + "-%d-%d" % [OS.get_process_id(), Time.get_ticks_usec()]
 	var suffix := 0
 	var candidate := base
 	while FileAccess.file_exists(candidate + ".zip") or DirAccess.dir_exists_absolute(candidate):
 		suffix += 1
 		candidate = base + "-%d" % suffix
 	base = candidate
-	if DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(REPORT_DIR)) != OK:
-		push_warning("BugReport: could not create " + REPORT_DIR)
+	if DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(report_dir)) != OK:
+		push_warning("BugReport: could not create " + report_dir)
 		return ""
 	if _write_zip(base + ".zip", files):
 		last_report_path = base + ".zip"
@@ -351,7 +353,7 @@ func _hide_overlay() -> void:
 	_clear_pending()
 
 func _open_report_folder() -> void:
-	var folder := ProjectSettings.globalize_path(REPORT_DIR)
+	var folder := ProjectSettings.globalize_path(report_dir)
 	if OS.shell_show_in_file_manager(folder, true) != OK:
 		OS.shell_open(folder)
 

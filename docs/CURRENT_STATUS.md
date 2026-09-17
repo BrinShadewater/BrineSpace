@@ -1,3 +1,20 @@
+## Owner playtest notes, seventh fixes - September 17, 2026
+
+Owner notes (11) and two F8 reports (20260917-042558 "FPS dropped to 1", 20260917-043829 "slowdown during Margot thawing").
+
+1. FPS 1: the new per-system timings showed crew updates taking 1.1-1.4 s per frame. Ward and hull repair tried every nearby node as a route each frame when the worksite was unreachable (a failed search explores the whole crew graph). Both now try the three best spots and retry after 2 s. Probe on the report's save: worst crew update 1.6 ms.
+2. Marsh welded mid-room above Margot's ward: the weld spot is now just inside the connected room beside the doorway (probe: 48 px from the wall, beside the door).
+3. Margot thaw slowdown: not caught (the station's own work was 1 ms; the report was taken after it ended). Hitch records now also carry grid redraw time and count.
+4. A test (test_reliability) wrote fixture reports into the player's bug_reports folder; BugReport.report_dir is now redirected and cleaned up by the test.
+5. Dropping a card no longer auto-selects the next card, so no ghost outline sits over the placed room.
+6. Card art: tools/bake_room_cards_v2.gd renders all 44 rooms from the current views and layouts (authored defaults plus the owner's saved layouts) to assets/room-cards-v2; draft cards, the drag ghost, codex and synergy cards show the whole room. Re-run the tool after redressing rooms. Corridors keep their cards.
+7. Codex: narrower fixed-width room cards with a sort control (colour, rarity, name, build cost); synergies show two room cards side by side joined by a plus.
+8. Resource icons and colours (resource_icons.gd COLORS, amount, decorate) on Meta Progression perk, crew and blueprint text, codex synergy effects; the Archived Data balance shows large with the data icon; buy buttons carry the icon.
+9. Synergy reward (synergy_reveal.gd): discovery and stabilization toasts grow into a reveal card with both room cards, the name and the bonus with icons; on the map, rings, a link line and rising bonus icons.
+10. Exterior lamps reach further and brighter; drifting wisps and bioluminescent plant clumps (seabed_glow.gd) glow in the dark water.
+
+Owner calls: Meta Progression option A (BRINE memory core web) and Settings option A (sidebar with compact rows), built next.
+
 ## Owner playtest notes, sixth fixes - September 17, 2026
 
 Owner notes (batch of 14) and three design calls: one currency, Archived Data; synergies give the room a bonus rather than unlocking rooms; thawed characters and companions play that loop and are bought to keep.

@@ -53,7 +53,7 @@ static func sources(game) -> Array:
 			for offset in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
 				if game.occupied.has(room.pos+offset) or Field.blocks(game.wrecks,room.pos+offset): continue
 				var mount: Vector2=preload("res://scripts/station_hardware.gd").exterior_mount(Vector2(room.pos)+Vector2.ONE*.5,Vector2(offset),1.0)
-				result.append({"position":mount,"direction":Vector2(offset),"radius":2.2,"strength":.85*level,"kind":"station"})
+				result.append({"position":mount,"direction":Vector2(offset),"radius":2.9,"strength":1.0*level,"kind":"station"})
 	for drone in game.drone_fleet.drones.values():
 		if drone.phase=="docked": continue
 		var position := drone_position(game,drone)
@@ -112,6 +112,10 @@ func draw(canvas: CanvasItem, game, size: float) -> void:
 	material.set_shader_parameter("lights",positions)
 	material.set_shader_parameter("directions",directions)
 	material.set_shader_parameter("light_count",mini(MAX_LIGHTS,lights.size()))
+	var glow: Array=preload("res://scripts/seabed_glow.gd").glow_uniforms(game,center)
+	material.set_shader_parameter("glows",glow[0])
+	material.set_shader_parameter("glow_colors",glow[1])
+	material.set_shader_parameter("glow_count",glow[2])
 	material.set_shader_parameter("cell_size",size)
 	material.set_shader_parameter("clock",game.get_visual_time_seconds())
 	material.set_shader_parameter("motion",0.0 if preload("res://scripts/title_settings.gd").reduced_motion else 1.0)

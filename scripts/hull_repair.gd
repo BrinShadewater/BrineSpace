@@ -99,20 +99,21 @@ static func approach(actor,cell: Vector2i) -> Dictionary:
 		return {"point":actor.foot,"route":PackedVector2Array()}
 	var start: int=actor.nearest_in_room(actor.foot,actor.cell_at(actor.foot))
 	if start<0: return {}
-	var best := INF
-	var found := {}
+	# Try the best few spots only: a failed search explores the whole crew graph, and trying
+	# every node near the seam each frame stalled the game (F8 report 20260917-042558).
+	var candidates: Array = []
 	for node in actor.room_nodes.get(cell,[]):
 		var point: Vector2=actor.graph.get_point_position(node)
 		if point.distance_to(desired)>50 or not actor.can_stand(point): continue
-		var path: PackedVector2Array=actor.route_between(start,node)
+		candidates.append([point.distance_to(desired)*4+actor.foot.distance_to(point),node,point])
+	candidates.sort_custom(func(a,b): return a[0]<b[0])
+	for i in range(mini(3,candidates.size())):
+		var path: PackedVector2Array=actor.route_between(start,candidates[i][1])
 		if path.is_empty() or not actor.segment_clear(actor.foot,path[0]): continue
-		var score: float = point.distance_to(desired)*4+actor.foot.distance_to(point)
-		if score>=best: continue
 		var route: PackedVector2Array=actor.smooth_route(path)
 		if route.is_empty(): continue
-		best=score
-		found={"point":point,"route":route}
-	return found
+		return {"point":candidates[i][2],"route":route}
+	return {}
 
 static func advance(game,actor,dt: float) -> bool:
 	var id: String="bill" if actor==game.bill_npc else "veld" if actor==game.veld_npc else "marsh" if actor==game.marsh_npc else "branforth"
@@ -130,9 +131,11 @@ static func advance(game,actor,dt: float) -> bool:
 		if not str(job.get("preferred","")).is_empty() and job.preferred!=id: continue
 		if not game.running or game.paused: return actor.goal=="hull-repair"
 		if job.worker.is_empty():
+			if Time.get_ticks_msec()<int(actor.get_meta("hull_approach_retry",0)): continue
 			var found := approach(actor,room.pos)
 			if found.is_empty():
 				job.status="Path blocked / waiting for access"
+				actor.set_meta("hull_approach_retry",Time.get_ticks_msec()+2000)
 				continue
 			var travel := 0.0
 			var from: Vector2=actor.foot

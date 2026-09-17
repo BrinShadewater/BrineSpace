@@ -65,7 +65,8 @@ static func build(game, id: String) -> PanelContainer:
 	var art := TextureRect.new()
 	art.set_anchors_preset(Control.PRESET_FULL_RECT)
 	art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	# The whole room shows in the art window rather than a cropped middle (owner playtest, Sept 17).
+	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	art.texture = game.card_textures.get(id)
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	art_clip.add_child(_ignore(art))

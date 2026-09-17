@@ -16,7 +16,7 @@ const GRID_SIZE := 40
 const CELL_SIZE := 720
 const GRID_PIXEL_SIZE := GRID_SIZE * CELL_SIZE
 const BASE_CYCLE_SECONDS := 20.0
-const DISCOVERY_BURST_SECONDS := 1.2
+const DISCOVERY_BURST_SECONDS := 2.6
 const HAND_SIZE := 3
 const REROLL_RECOVERY_CYCLES := 4
 const REROLL_RECOVERY_CAP := 3
@@ -2707,6 +2707,7 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 		return
 	if not run_discovered_synergy_ids.has(synergy_id):
 		run_discovered_synergy_ids.append(synergy_id)
+	play_station_sound("discovery")
 	if is_instance_valid(crew_comms): crew_comms.transmit("brine","A new connection. The station has done something I did not predict. I have recorded it. That does not mean I understand it.","discovery/"+synergy_id)
 	var synergy := _synergy_by_id(synergy_id)
 	for link_value in active_synergy_links:
@@ -2719,11 +2720,19 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 			discovery_bursts.append({
 				"cells": cells.duplicate(),
 				"color": Color("#%s" % color_text),
-				"remaining": DISCOVERY_BURST_SECONDS
+				"remaining": DISCOVERY_BURST_SECONDS,
+				"bonus": synergy.get("bonus", {})
 			})
 		break
 	_log("Pattern discovered: %s. %s" % [synergy.get("name", "Recovered pattern"), synergy.get("message", "BRINE recovered a functioning room pattern.")])
 	_queue_center_toast("PATTERN DISCOVERED\n%s\nClick to review · Saved in Archive" % str(synergy.get("name", synergy_id)).to_upper(), "synergy:" + synergy_id)
+
+func _burst_synergy_link(synergy: Dictionary) -> void:
+	for link_value in active_synergy_links:
+		var link: Dictionary = link_value
+		if str(link.get("id", "")) != str(synergy.get("id", "")) or link.get("cells", []).size() < 2: continue
+		discovery_bursts.append({"cells": link.cells.duplicate(), "color": Color("#%s" % str(synergy.get("fx_color", "55E6FF")).trim_prefix("#")), "remaining": DISCOVERY_BURST_SECONDS, "bonus": synergy.get("bonus", {})})
+		break
 
 func _update_discovery_bursts(delta: float) -> void:
 	if discovery_bursts.is_empty():
@@ -2752,7 +2761,8 @@ func _award_synergy_stabilization(synergy: Dictionary) -> void:
 	var research := int(synergy.get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
 	meta.add_research_points(research)
 	_log("Pattern stabilized: %s. Bonus doubled. +%d Archived Data." % [synergy_name, research])
-	_queue_center_toast("PATTERN STABILIZED\n%s\nBonus doubled · +%d Archived Data" % [synergy_name.to_upper(), research])
+	_queue_center_toast("PATTERN STABILIZED\n%s\nBonus doubled · +%d Archived Data" % [synergy_name.to_upper(), research], "synergy:" + synergy_id)
+	_burst_synergy_link(synergy)
 
 func _synergy_by_id(synergy_id: String) -> Dictionary:
 	return SynergyManagerScript.get_synergy(synergy_id)
@@ -2857,13 +2867,15 @@ func _show_center_toast(message: String) -> void:
 	cascade_toast_label.text = message
 	current_toast_record = str(toast_record_keys.get(message, ""))
 	toast_record_keys.erase(message)
+	var reveal: bool = preload("res://scripts/synergy_reveal.gd").configure(self, cascade_toast, cascade_toast_label, message, current_toast_record)
+	var hold: float = preload("res://scripts/synergy_reveal.gd").SECONDS if reveal else 3.5
 	cascade_toast.mouse_filter = Control.MOUSE_FILTER_STOP if not current_toast_record.is_empty() else Control.MOUSE_FILTER_IGNORE
 	cascade_toast.visible = true
 	if Preferences.reduced_motion:
 		cascade_toast.modulate = Color.WHITE
 		cascade_toast.scale = Vector2.ONE
 		cascade_toast_tween = create_tween()
-		cascade_toast_tween.tween_interval(3.5 if not current_toast_record.is_empty() else 2.0)
+		cascade_toast_tween.tween_interval(hold if not current_toast_record.is_empty() else 2.0)
 		cascade_toast_tween.tween_callback(_finish_center_toast)
 		return
 	cascade_toast.modulate = Color(1, 1, 1, 0)
@@ -2873,7 +2885,7 @@ func _show_center_toast(message: String) -> void:
 	cascade_toast_tween.set_parallel(true)
 	cascade_toast_tween.tween_property(cascade_toast, "modulate:a", 1.0, 0.12)
 	cascade_toast_tween.tween_property(cascade_toast, "scale", Vector2.ONE, 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	cascade_toast_tween.chain().tween_interval(3.5 if not current_toast_record.is_empty() else 1.15)
+	cascade_toast_tween.chain().tween_interval(hold if not current_toast_record.is_empty() else 1.15)
 	cascade_toast_tween.chain().tween_property(cascade_toast, "modulate:a", 0.0, 0.35)
 	cascade_toast_tween.chain().tween_callback(_finish_center_toast)
 

@@ -100,6 +100,7 @@ func run() -> void:
 	for i in range(3): await process_frame
 	check(not game.card_drag.is_dragging() and (game.occupied.has(target) or game.drone_fleet.reserved(target)), "Releasing over the station places the room")
 	check(game.card_drag.get_child_count() == 0 or not is_instance_valid(game.card_drag.ghost), "The ghost is removed")
+	check(game.selected_card_id.is_empty(), "No next card is selected, so no ghost outline sits over the placed room")
 
 	game.queue_free()
 	await process_frame
