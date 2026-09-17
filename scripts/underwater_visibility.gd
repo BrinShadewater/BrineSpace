@@ -114,5 +114,6 @@ func draw(canvas: CanvasItem, game, size: float) -> void:
 	material.set_shader_parameter("light_count",mini(MAX_LIGHTS,lights.size()))
 	material.set_shader_parameter("cell_size",size)
 	material.set_shader_parameter("clock",game.get_visual_time_seconds())
+	material.set_shader_parameter("motion",0.0 if preload("res://scripts/title_settings.gd").reduced_motion else 1.0)
 	material.set_shader_parameter("silt",Vector4(silt_position.x,silt_position.y,clampf(1.0-(visual_time-silt_time)/6.0,0,1),0))
 	canvas.draw_rect(Rect2(Vector2.ZERO,Vector2.ONE*size*40),Color.WHITE)

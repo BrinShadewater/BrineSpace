@@ -131,6 +131,9 @@ static func signal_water_shortage(game,room: Dictionary,empty: bool) -> void:
 	room.fire_water_warning=empty
 
 static func extinguish(game,room: Dictionary,cause: String) -> void:
+	# Sprinklers that were spraying keep visibly spraying a few seconds as the flood puts the fire
+	# out, instead of cutting off the moment water reaches wading depth (owner playtest).
+	if cause=="floodwater" and sprinkler_status(game,room)=="SPRAYING": room["spray_visual_until"]=game.get_visual_time_seconds()+3.0
 	room.fire=0.0
 	room.fire_heat=0.0
 	room.electrical_fault=false

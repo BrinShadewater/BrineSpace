@@ -106,20 +106,35 @@ func _init() -> void:
 	var Lighting = preload("res://rooms/whole-room/room_lighting.gd")
 	check(not Lighting.low_power(4,12) and Lighting.low_power(3,12) and Lighting.low_power(1,12) and not Lighting.low_power(0,12),"Lights warn at a quarter of capacity or less, before the blackout")
 	var dark_samples := 0
-	var changes := 0
+	var dip_starts: Array = []
 	var was_lit := true
-	# Sample 60 seconds at 60 fps: the stutter must be visible but never a strobe.
+	var deepest := 1.0
+	# Sample 60 seconds at 60 fps: the stutter must be visible but never a strobe. Lights brown
+	# out rather than switching fully off (owner playtest, Sept 16).
 	for frame in range(3600):
-		var lit: bool = Lighting.power_flicker(Vector2i(3,4),1,12,frame/60.0)>0.0
+		var level: float = Lighting.power_flicker(Vector2i(3,4),1,12,frame/60.0)
+		deepest = minf(deepest, level)
+		var lit: bool = level >= 1.0
 		if not lit: dark_samples += 1
-		if lit != was_lit: changes += 1
+		if was_lit and not lit: dip_starts.append(frame)
 		was_lit = lit
-	check(dark_samples>0 and dark_samples<1800,"A nearly empty reserve goes dark part of the time: %d of 3600 frames" % dark_samples)
-	check(changes<=180,"A room changes at most three times a second: %d changes in 60 s" % changes)
+	check(dark_samples>0 and dark_samples<1800,"A nearly empty reserve dims part of the time: %d of 3600 frames" % dark_samples)
+	check(deepest < 0.5 and deepest > 0.0,"Dips brown out deeply without going fully black: lowest %.2f" % deepest)
+	var worst := 0
+	for i in range(dip_starts.size()):
+		var within := 0
+		for j in range(i, dip_starts.size()):
+			if dip_starts[j] - dip_starts[i] < 60: within += 1
+		worst = maxi(worst, within)
+	check(worst<=3,"No room dips more than three times in any second: worst %d" % worst)
+	var other_room_differs := false
+	for frame in range(600):
+		if Lighting.power_flicker(Vector2i(3,4),1,12,frame/60.0) != Lighting.power_flicker(Vector2i(9,2),1,12,frame/60.0): other_room_differs = true
+	check(other_room_differs,"Rooms flicker on their own timing")
 	check(Lighting.power_flicker(Vector2i(3,4),6,12,1.0)==1.0 and Lighting.power_flicker(Vector2i(3,4),2,12,1.0,true)==0.6,"Healthy reserves stay lit; reduced motion dims instead of flickering")
 	var steady_dark := 0
 	for frame in range(600):
-		if Lighting.power_flicker(Vector2i(3,4),1,12,frame/60.0,false,true)==0.0: steady_dark += 1
+		if Lighting.power_flicker(Vector2i(3,4),1,12,frame/60.0,false,true)<1.0: steady_dark += 1
 	check(steady_dark==0,"A paused station holds its lights steady")
 	add(game,"current_turbine",Vector2i(10,10))
 	var consumers: Array = []
@@ -180,13 +195,13 @@ func _init() -> void:
 	var lamp_off := 0
 	for frame in range(1200):
 		game.unscaled_time_seconds = frame/60.0
-		if Hardware.exterior_light_level(game,store)==0.0: lamp_off += 1
-	check(lamp_off>0 and lamp_off<1200,"A low reserve flickers exterior lamps: %d of 1200 frames dark" % lamp_off)
+		if Hardware.exterior_light_level(game,store)<1.0: lamp_off += 1
+	check(lamp_off>0 and lamp_off<1200,"A low reserve flickers exterior lamps: %d of 1200 frames dimmed" % lamp_off)
 	game.paused = true
 	var lamp_off_paused := 0
 	for frame in range(600):
 		game.unscaled_time_seconds = frame/60.0
-		if Hardware.exterior_light_level(game,store)==0.0: lamp_off_paused += 1
+		if Hardware.exterior_light_level(game,store)<1.0: lamp_off_paused += 1
 	check(lamp_off_paused==0,"A paused station holds exterior lamps steady")
 	game.paused = false
 	game.free()

@@ -25,6 +25,25 @@ static func request(game,cell: Vector2i,patch := false) -> bool:
 	game._log("%s queued at %s. %d Metal reserved." % ["Emergency patch" if patch else "Hull repair",cell,cost],false)
 	return true
 
+# Crew start a repair on their own once damage is serious (owner call, Sept 16): a split seam
+# or worse, or a cracked room at wading depth. Manual requests from the inspector still work
+# at any severity. Skipped while the Metal for the weld is short.
+const AUTO_SEVERITY := 0.35
+static func auto_queue(game) -> void:
+	if not game.running or game.paused: return
+	var crew := false
+	for id in Architects.IDS:
+		var actor = Architects.actor_for(game,id)
+		if Architects.present(game,id) and actor.active and not actor.dead: crew = true
+	if not crew: return
+	for room in game.placed_rooms:
+		var crack := float(room.get("hull_crack",0))
+		if crack <= 0 or room.has("leak_repair") or room.get("hull_patched",false): continue
+		if crack <= AUTO_SEVERITY and float(room.get("water_level",0)) < 0.25: continue
+		if int(game.resources.metal) < COSTS[variant(room)]: continue
+		if request(game,room.pos):
+			game._log("Crew noticed serious hull damage at %s and queued a repair." % room.pos,false)
+
 static func cancel(game,cell: Vector2i) -> bool:
 	if not game.occupied.has(cell) or not game.occupied[cell].has("leak_repair"): return false
 	var room: Dictionary=game.occupied[cell]

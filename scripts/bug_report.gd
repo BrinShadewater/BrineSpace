@@ -195,12 +195,7 @@ func _add_saves(files: Array) -> void:
 			files.append({"name": "saves/" + name, "data": FileAccess.get_file_as_bytes(path)})
 
 func _build_info() -> Dictionary:
-	if OS.has_feature("editor"):
-		return {"build_id":"unpackaged-source", "note":"Running editable source; release identities apply only to exported builds."}
-	if FileAccess.file_exists("res://build_info.json"):
-		var value = JSON.parse_string(FileAccess.get_file_as_string("res://build_info.json"))
-		if value is Dictionary: return value
-	return {"build_id":"unpackaged-source", "note":"No release manifest has been generated."}
+	return preload("res://scripts/build_version.gd").build()
 
 func _capture_diagnostics() -> void:
 	pending_files = []

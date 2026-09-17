@@ -38,7 +38,9 @@ func check(ok: bool, message: String):
 func fixture():
 	var game := Station.new()
 	for x in range(2):
-		var room := {"id":"crew_hab","pos":Vector2i(x,0),"water_level":0.0,"hull_crack":0.0}
+		# Locked doors keep each room's water to itself unless a check unlocks them: closed,
+		# unlocked doors seep (owner call, Sept 16).
+		var room := {"id":"crew_hab","pos":Vector2i(x,0),"water_level":0.0,"hull_crack":0.0,"doors_locked":true}
 		game.placed_rooms.append(room)
 		game.occupied[room.pos]=room
 		game.powered_room_cells[room.pos]=true
@@ -56,14 +58,25 @@ func _init():
 	Flood.advance(game,10)
 	check(is_equal_approx(room.water_level,0.4),"Severe crack fills four times faster")
 	room.hull_crack=0.0
+	for unlocked in game.placed_rooms: unlocked.doors_locked=false
 	game.grid_view.aperture=4
 	Flood.advance(game,2)
 	check(game.placed_rooms[1].water_level>0,"Open door transfers water")
 	check(is_equal_approx(room.water_level+game.placed_rooms[1].water_level,0.4),"Door transfer conserves water")
 	game.grid_view.aperture=0
+	var seep_before: float = room.water_level
+	Flood.advance(game,0.5)
+	check(room.water_level<seep_before and is_equal_approx(room.water_level+game.placed_rooms[1].water_level,0.4),"A closed, unlocked door seeps water slowly and conserves it")
+	game.placed_rooms[1].doors_locked=true
 	var before: float = room.water_level
 	Flood.advance(game,2)
-	check(is_equal_approx(room.water_level,before),"Closed door seals water")
+	check(is_equal_approx(room.water_level,before),"A locked door seals water")
+	game.placed_rooms[1].doors_locked=false
+	game.hardware["doors"]=true
+	Flood.advance(game,2)
+	check(is_equal_approx(room.water_level,before),"The station-wide door lock seals water")
+	game.hardware.erase("doors")
+	for sealed in game.placed_rooms: sealed.doors_locked=true
 	game.hardware.pumps=true
 	Flood.advance(game,5)
 	check(is_equal_approx(room.water_level,before-0.04),"Powered pump drains gradually")
@@ -152,6 +165,7 @@ func _init():
 	check(is_equal_approx(game.occupied[Vector2i.ZERO].water_level,forward),"Reversing room iteration preserves flow")
 	game=fixture()
 	game.grid_view.aperture=2
+	for unlocked in game.placed_rooms: unlocked.doors_locked=false
 	game.placed_rooms[0].water_level=0.8
 	Flood.step_water(game,0.1)
 	check(is_equal_approx(game.placed_rooms[1].water_level,0.0072),"Half-open door uses half aperture")
@@ -202,6 +216,7 @@ func _init():
 		game.powered_room_cells[compartment.pos]=true
 	game.placed_rooms[0].water_level=0.95
 	game.placed_rooms[0].hull_crack=0.6
+	game.placed_rooms[0].doors_locked=false
 	game.grid_view.aperture=0
 	Flood.advance(game,60)
 	check(core_room.water_level>=0.3,"BRINE's chamber floods from a flooded neighbour through closed doors: %.2f" % core_room.water_level)

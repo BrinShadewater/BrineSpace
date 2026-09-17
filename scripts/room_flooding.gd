@@ -8,6 +8,10 @@ const CRITICAL := 0.85
 const STARVATION_SECONDS := 90.0
 # Share of an open doorway's flow that seeps into the BRINE core through a closed door.
 const CORE_SEEPAGE := 0.15
+# Closed but unlocked doors are not watertight (owner call, Sept 16): water seeps through them
+# in all four directions at this share of an open doorway. Locking a room's doors, or the
+# station-wide DOORS switch, seals them.
+const DOOR_SEEPAGE := 0.15
 
 static func level(room: Dictionary) -> float:
 	return float(room.get("water_level", 1.0 if room.get("flooded",false) else 0.0))
@@ -64,11 +68,16 @@ static func step_water(game, dt: float) -> void:
 		if is_zero_approx(difference): continue
 		if game.occupied[cell].get("isolated",false) or game.occupied[next].get("isolated",false): continue
 		var aperture := clampf(float(game.grid_view._door_frame_for_pair(game,cell,next))/float(game.grid_view.DOOR_OPEN_FRAMES-1),0,1)
+		var sealed: bool = game.hardware.get("doors",false) or game.occupied[cell].get("doors_locked",false) or game.occupied[next].get("doors_locked",false)
+		# The core never passes water onward, so it does not seep outward either.
+		var out_of_core: bool = (difference > 0 and game.occupied[cell].get("id","") == "brine_core") or (difference < 0 and game.occupied[next].get("id","") == "brine_core")
+		if sealed: aperture = 0.0
+		elif not out_of_core: aperture = maxf(aperture, DOOR_SEEPAGE)
 		# BRINE's chamber is not watertight: a flooded neighbour seeps in through its closed doors,
 		# so the station's heart floods with the station (owner playtest: it stayed dry behind
 		# closed doors). Seepage runs inward only, so the core never carries a flood onward.
 		var into_core: bool = (difference > 0 and game.occupied[next].get("id","") == "brine_core") or (difference < 0 and game.occupied[cell].get("id","") == "brine_core")
-		if into_core: aperture = maxf(aperture, CORE_SEEPAGE)
+		if into_core and not sealed: aperture = maxf(aperture, CORE_SEEPAGE)
 		var flow := difference*0.18*aperture*dt*preload("res://scripts/research_tree.gd").flood_rate(game.get("meta"))
 		changes[cell] -= flow
 		changes[next] += flow

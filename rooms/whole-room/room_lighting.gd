@@ -21,11 +21,38 @@ static func power_flicker(cell: Vector2i, reserve: int, capacity: int, seconds: 
 	if reduced_motion: return 0.6
 	# A paused station holds still; a frozen clock would otherwise leave rooms dark mid-blink.
 	if steady: return 1.0
+	# Owner playtest (Sept 16): a softer, more convincing stutter. Each room keeps its own timing,
+	# lights brown out (dimming deeper as the reserve drains) with a quick fall and a slower
+	# recovery, and some steps double-blink. A double blink forces the next step to hold steady,
+	# so no room exceeds three dips a second. Levels snap to tenths, which bounds how often the
+	# retained lights layer repaints during a dip.
 	var severity := clampf(1.0 - float(reserve) / (float(capacity) * LOW_POWER_FRACTION), 0.0, 1.0)
-	var step := int(floor(seconds / FLICKER_STEP_SECONDS))
-	var roll := float(posmod(hash([cell, step]), 1000)) / 1000.0
-	if roll >= 0.2 + 0.45 * severity: return 1.0
-	return 0.0 if fmod(seconds, FLICKER_STEP_SECONDS) < FLICKER_PULSE_SECONDS else 1.0
+	var offset := float(posmod(hash(cell), 1000)) / 1000.0 * FLICKER_STEP_SECONDS
+	var t := seconds + offset
+	var step := int(floor(t / FLICKER_STEP_SECONDS))
+	var local := fmod(t, FLICKER_STEP_SECONDS)
+	var chance := 0.2 + 0.45 * severity
+	if _flicker_roll(cell, step) >= chance: return 1.0
+	var depth := lerpf(0.55, 0.12, severity)
+	var dip := _dip(local, 0.0, float(posmod(hash([cell, step, 2]), 50)) / 1000.0)
+	var previous_double: bool = _flicker_roll(cell, step - 1) < chance and _flicker_roll(cell, step - 1, 3) < 0.3
+	if not previous_double and _flicker_roll(cell, step, 3) < 0.3:
+		dip = maxf(dip, _dip(local, 0.26, 0.0))
+	return snappedf(1.0 - (1.0 - depth) * dip, 0.1)
+
+static func _flicker_roll(cell: Vector2i, step: int, salt := 1) -> float:
+	return float(posmod(hash([cell, step, salt]), 1000)) / 1000.0
+
+# 0..1 dip envelope starting at `start`: ~50 ms fall, 60-110 ms hold, ~90 ms recovery.
+static func _dip(local: float, start: float, extra_hold: float) -> float:
+	var x := local - start
+	var fall := 0.05
+	var hold := 0.06 + extra_hold
+	var rise := 0.09
+	if x < 0.0 or x > fall + hold + rise: return 0.0
+	if x < fall: return smoothstep(0.0, fall, x)
+	if x < fall + hold: return 1.0
+	return 1.0 - smoothstep(fall + hold, fall + hold + rise, x)
 
 static func has_light_power(working: bool, reason: String, offline: bool) -> bool:
 	if reason.contains("POWER") or reason=="SUSPENDED": return false

@@ -118,10 +118,12 @@ func run():
 		for i in range(900):
 			game._update_test_walker(0.1)
 			if actor.dead: break
-			if float(game.occupied.get(actor.cell_at(actor.foot),{}).get("water_level",1))<0.25:
+			# Closed doors now seep (owner call, Sept 16), so the small fixture station shares the
+			# water; reaching wading depth, out of the swim, is the escape this checks.
+			if float(game.occupied.get(actor.cell_at(actor.foot),{}).get("water_level",1))<preload("res://scripts/room_flooding.gd").HIGH and actor.movement_medium=="dry":
 				reached=true
 				break
-		check(not actor.dead and reached,"Crew caught beside a flooded doorway reach a dry refuge alive: %s at %s, air %.1f" % [actor.activity,actor.cell_at(actor.foot),actor.breath_oxygen])
+		check(not actor.dead and reached,"Crew caught beside a flooded doorway escape to walkable water alive: %s at %s, air %.1f" % [actor.activity,actor.cell_at(actor.foot),actor.breath_oxygen])
 	# River floating in the doorway walled off the retreat: crew waited behind her in the water
 	# until they drowned (owner playtest). Crew fleeing for air now pass companions.
 	if not actor.dead:

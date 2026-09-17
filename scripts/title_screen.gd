@@ -26,6 +26,7 @@ var progression_button: Button
 var archive: Control
 var archive_opener: Button
 var about_button: Button
+var version_button: Button
 var checkpoint_label: Label
 var checkpoint_panel: PanelContainer
 var checkpoint_preview: Control
@@ -135,6 +136,18 @@ func _ready() -> void:
 	controls.remove_child(about_button)
 	add_child(about_button)
 	about_button.pressed.connect(func() -> void: _open_archive("about", about_button))
+	# Version, tied to Credits / Build (owner playtest).
+	version_button = Button.new()
+	version_button.name = "VersionLabel"
+	version_button.flat = true
+	version_button.text = preload("res://scripts/build_version.gd").label()
+	version_button.tooltip_text = "Credits and build details"
+	version_button.focus_mode = Control.FOCUS_NONE
+	version_button.add_theme_font_size_override("font_size", 13)
+	version_button.add_theme_color_override("font_color", Color("759ca9"))
+	version_button.add_theme_color_override("font_hover_color", Color("bde8eb"))
+	version_button.pressed.connect(func() -> void: _open_archive("about", about_button))
+	add_child(version_button)
 	if OS.has_feature("web"):
 		quit_button.hide()
 	badges = HBoxContainer.new()
@@ -169,6 +182,13 @@ func _button(caption: String, primary: bool) -> Button:
 	controls.add_child(button)
 	return button
 
+# Mouse use hides focus outlines; keys and controllers bring them back.
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		ButtonStyle.set_keyboard_navigation(false)
+	elif (event is InputEventKey or event is InputEventJoypadButton) and event.pressed:
+		ButtonStyle.set_keyboard_navigation(true)
+
 func _layout() -> void:
 	if not is_instance_valid(cover):
 		return
@@ -195,6 +215,9 @@ func _layout() -> void:
 	quit_button.size = settings_button.size
 	about_button.position = quit_button.position + Vector2(0, 56)
 	about_button.size = settings_button.size
+	if is_instance_valid(version_button):
+		version_button.size = version_button.get_combined_minimum_size()
+		version_button.position = Vector2(40, size.y - version_button.size.y - 10)
 	error_label.position = Vector2(48, 12)
 	error_label.size = Vector2(size.x - 96, 64)
 	badges.position = Vector2(size.x - 516, center_y - 122)

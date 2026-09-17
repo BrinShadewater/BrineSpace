@@ -1,11 +1,32 @@
 extends RefCounted
 
 # Keep keyboard traversal inside the active modal, including dynamically disabled controls.
+# Focus outlines show only while navigating by keyboard or controller; a mouse click leaves no
+# box around the button (owner playtest). Every button shares this one focus style.
+static var focus_style: StyleBoxFlat
+
+static func set_keyboard_navigation(active: bool) -> void:
+	_focus().border_color.a = 1.0 if active else 0.0
+
+static func _focus() -> StyleBoxFlat:
+	if focus_style == null:
+		focus_style = StyleBoxFlat.new()
+		focus_style.bg_color = Color(0, 0, 0, 0)
+		focus_style.draw_center = false
+		focus_style.border_color = Color(Color("b5f3ee"), 0.0)
+		focus_style.set_border_width_all(2)
+		focus_style.expand_margin_left = 3
+		focus_style.expand_margin_right = 3
+		focus_style.expand_margin_top = 3
+		focus_style.expand_margin_bottom = 3
+	return focus_style
+
 static func contain_tab(event: InputEvent, scope: Node) -> void:
 	var tab: bool = event is InputEventKey and event.pressed and event.keycode == KEY_TAB
 	var directional := event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right")
 	if not tab and not directional:
 		return
+	set_keyboard_navigation(true)
 	var controls: Array[Control] = []
 	_collect_focus(scope, controls)
 	if controls.is_empty():
@@ -108,16 +129,7 @@ static func _flat(fill: String, border: String, padding: int) -> StyleBoxFlat:
 # Procedural nine-slice pressure-panel artwork; no external raster dependency.
 static func panel(width: int, height: int, state: String, primary: bool = false) -> StyleBox:
 	if state == "focus":
-		var focus := StyleBoxFlat.new()
-		focus.bg_color = Color(0, 0, 0, 0)
-		focus.draw_center = false
-		focus.border_color = Color("b5f3ee")
-		focus.set_border_width_all(2)
-		focus.expand_margin_left = 3
-		focus.expand_margin_right = 3
-		focus.expand_margin_top = 3
-		focus.expand_margin_bottom = 3
-		return focus
+		return _focus()
 	var active := state == "hover"
 	var pressed := state == "pressed"
 	var disabled := state == "disabled"

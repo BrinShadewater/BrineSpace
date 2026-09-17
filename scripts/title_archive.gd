@@ -144,7 +144,7 @@ func _build() -> void:
 		_populate_settings()
 	elif mode == "about":
 		grid.add_child(_label("BRINESPACE\nCreated by Alex Yesilcimen\n© 2026 Alex Yesilcimen. All rights reserved.", 24))
-		grid.add_child(_label("BUILD  " + str(ProjectSettings.get_setting("application/config/version", "Prototype — development checkout")) + "\nENGINE  " + Engine.get_version_info().string, 18))
+		grid.add_child(_label(preload("res://scripts/build_version.gd").details(), 18))
 		grid.add_child(_label("BrineSpace is source-available. Art, audio, writing and game rights are reserved. See NOTICE.md for the full rights statement.\n\nPowered by Godot Engine (MIT license).", 18))
 		var licenses := RichTextLabel.new()
 		licenses.custom_minimum_size = Vector2(0, 360)
@@ -230,6 +230,9 @@ func _populate_cards() -> void:
 		visible_entries.append(entry)
 		if codex_tab == 0 and entry.known:
 			room_ids.append(entry.id)
+		if codex_tab == 0:
+			grid.add_child(_codex_room_card(entry))
+			continue
 		var data: Dictionary = entry.data
 		var accent := Color("45616f")
 		if entry.known:
@@ -316,6 +319,91 @@ func _populate_cards() -> void:
 		)
 		empty.add_child(reset)
 	preload("res://scripts/title_settings.gd").apply_menu_text(grid)
+
+# Room entries as cards, matching the draft hand (owner playtest): title plate, art window,
+# category ribbon, description, output and upkeep, and a rarity and cost footer. Unrecovered
+# rooms show as a card back with their clue.
+func _codex_room_card(entry: Dictionary) -> Control:
+	var data: Dictionary = entry.data
+	var known: bool = entry.known
+	var accent: Color = Rooms.CATEGORY_COLORS.get(entry.category, Color("72d9dc")) if known else Color("45616f")
+	var card := PanelContainer.new()
+	card.name = "CodexCard_" + str(entry.id)
+	card.custom_minimum_size = Vector2(300, 0)
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 3, 14, 10))
+	var body := VBoxContainer.new()
+	body.add_theme_constant_override("separation", 8)
+	card.add_child(body)
+	var title := _label(entry.title, 18)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 6, 6))
+	body.add_child(title)
+	var record_key := "room:" + str(entry.id)
+	if known and meta_state.unread_records.has(record_key):
+		var reviewed := Button.new()
+		reviewed.text = "NEW // MARK REVIEWED"
+		preload("res://scripts/title_button_style.gd").apply(reviewed, 260, 38)
+		reviewed.pressed.connect(func() -> void:
+			meta_state.mark_reviewed(record_key)
+			reviewed.text = "RECORD REVIEWED"
+			reviewed.disabled = true
+			scroll.grab_focus()
+		)
+		body.add_child(reviewed)
+	if not known:
+		body.add_child(_mystery_picture())
+		body.add_child(_label("CLUE // " + str(entry.clue), 16))
+		return card
+	var art := PanelContainer.new()
+	art.custom_minimum_size.y = 190
+	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
+	body.add_child(art)
+	var picture := _room_picture(entry.id, 186)
+	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	var clip := Control.new()
+	clip.clip_contents = true
+	art.add_child(clip)
+	picture.set_anchors_preset(Control.PRESET_FULL_RECT)
+	clip.add_child(picture)
+	var ribbon := _label(str(entry.category).to_upper(), 12)
+	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	body.add_child(ribbon)
+	var rules := PanelContainer.new()
+	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+	body.add_child(rules)
+	var lines := VBoxContainer.new()
+	lines.add_theme_constant_override("separation", 6)
+	rules.add_child(lines)
+	lines.add_child(_label(data.get("description", ""), 15))
+	if not data.get("production", {}).is_empty():
+		lines.add_child(_label("OUTPUT  " + _resources(data.production), 14))
+	if not data.get("consumption", {}).is_empty():
+		lines.add_child(_label("UPKEEP  " + _resources(data.consumption), 14))
+	var footer := HBoxContainer.new()
+	body.add_child(footer)
+	var rarity := _label(str(data.get("rarity", "common")).to_upper(), 13)
+	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	rarity.add_theme_color_override("font_color", accent)
+	footer.add_child(rarity)
+	var cost := _label("BUILD  " + _resources(data.get("cost", {})), 13)
+	cost.autowrap_mode = TextServer.AUTOWRAP_OFF
+	cost.add_theme_stylebox_override("normal", _card_box(Color("121c22"), Color("5f7682"), 1, 10, 6))
+	footer.add_child(cost)
+	return card
+
+func _card_box(fill: Color, border: Color, width: int, radius: int, margin: int) -> StyleBoxFlat:
+	var box := StyleBoxFlat.new()
+	box.bg_color = fill
+	box.border_color = border
+	box.set_border_width_all(width)
+	box.set_corner_radius_all(radius)
+	box.set_content_margin_all(margin)
+	return box
 
 func _room_picture(id: String, height: int) -> TextureRect:
 	var picture := TextureRect.new()

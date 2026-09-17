@@ -1731,6 +1731,7 @@ func _paint_surface(pass_id: int) -> void:
 		preload("res://scripts/room_flooding.gd").draw(draw_target,main,visible_draw_rooms,cell_size)
 		preload("res://scripts/room_fire.gd").draw(draw_target,main,visible_draw_rooms,cell_size)
 		preload("res://scripts/station_hardware.gd").draw_effects(draw_target,main,visible_draw_rooms,cell_size)
+		preload("res://scripts/station_effects.gd").draw(draw_target,main,visible_draw_rooms,cell_size)
 	if not retain_static_surfaces:
 		_draw_layered_doors(false)
 		_draw_layered_lighting()

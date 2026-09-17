@@ -246,6 +246,8 @@ var hand_backdrop_shown := -1
 var hand_collapsed := false
 var hand_toggle_button: Button
 var hand_layout_button: Button
+var room_lock_button
+var hand_backdrop_button: Button
 var card_drag
 const DraftCard = preload("res://scripts/draft_card.gd")
 var station_center: Control
@@ -821,6 +823,14 @@ func _build_ui() -> void:
 	room_operation_button.pressed.connect(_toggle_inspected_room)
 	_style_hud_button(room_operation_button, false)
 	preview_box.add_child(room_operation_button)
+	# Per-room watertight lock (owner call, Sept 16): sealed doors stop flood water in and out.
+	room_lock_button = preload("res://scripts/industrial_room_switch.gd").new()
+	room_lock_button.name = "RoomLockSwitch"
+	room_lock_button.custom_minimum_size.y = 34
+	room_lock_button.pressed.connect(_toggle_inspected_room_lock)
+	_style_hud_button(room_lock_button, false)
+	room_lock_button.hide()
+	preview_box.add_child(room_lock_button)
 	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
 	airlock_panel.game=self
 	preview_box.add_child(airlock_panel)
@@ -1050,6 +1060,16 @@ func _build_ui() -> void:
 	_style_hud_button(layout_toggle, false)
 	draft_status.add_child(layout_toggle)
 	hand_layout_button = layout_toggle
+	# The pane behind the hand shows or hides from the hand itself (owner call, Sept 16); the same
+	# choice as Settings > Accessibility > Draft hand backdrop.
+	var backdrop_toggle := Button.new()
+	backdrop_toggle.name = "HandBackdropToggle"
+	backdrop_toggle.custom_minimum_size = Vector2(150, 34)
+	backdrop_toggle.tooltip_text = "Show or hide the pane behind the draft hand."
+	backdrop_toggle.pressed.connect(_toggle_hand_backdrop)
+	_style_hud_button(backdrop_toggle, false)
+	draft_status.add_child(backdrop_toggle)
+	hand_backdrop_button = backdrop_toggle
 	var discard_all_button := Button.new()
 	discard_all_button.text = "REROLL HAND · 3"
 	discard_all_button.custom_minimum_size = Vector2(150, 38)
@@ -1168,6 +1188,8 @@ func _apply_hand_backdrop() -> void:
 	hand_box.visible = not hand_collapsed
 	reroll_button.visible = not hand_collapsed
 	hand_layout_button.visible = not hand_collapsed
+	hand_backdrop_button.visible = not hand_collapsed
+	hand_backdrop_button.text = "PANE: ON" if shown else "PANE: OFF"
 	hand_toggle_button.text = "SHOW HAND" if hand_collapsed else "HIDE HAND"
 	hand_panel.offset_top = -72.0 if hand_collapsed else -380.0
 	var row: HBoxContainer = hand_panel.get_child(0)
@@ -1181,6 +1203,11 @@ func _apply_hand_backdrop() -> void:
 		# Toggling mid-run moves only the view's bottom edge; the station holds still on screen.
 		resize_keep_top = camera_viewport_size != Vector2.ZERO
 		station_center.offset_bottom = view_bottom
+
+func _toggle_hand_backdrop() -> void:
+	Preferences.hand_backdrop = not Preferences.hand_backdrop
+	Preferences.save(get_window())
+	_apply_hand_backdrop()
 
 func _toggle_hand_collapsed() -> void:
 	hand_collapsed = not hand_collapsed
@@ -1481,6 +1508,15 @@ func _toggle_inspected_room() -> void:
 		for link in active_synergy_links:
 			active_synergies[link["id"]] = link
 	_log("%s %s." % [room["display_name"], "suspended" if room["suspended"] else "scheduled to resume next cycle"], false)
+	_refresh_all()
+
+func _toggle_inspected_room_lock() -> void:
+	if _gameplay_input_blocked() or not running or room_lock_button == null: return
+	var cell: Vector2i = room_lock_button.get_meta("cell", Vector2i(-1, -1))
+	if not occupied.has(cell): return
+	var room: Dictionary = occupied[cell]
+	room["doors_locked"] = not room.get("doors_locked", false)
+	_log("%s doors %s." % [room.get("display_name", "Room"), "locked watertight" if room.doors_locked else "unlocked"], false)
 	_refresh_all()
 
 func _toggle_wreck_work(cell: Vector2i) -> void:
@@ -1795,13 +1831,13 @@ func _build_menu_overlay() -> void:
 	menu_center = center
 	var panel := PanelContainer.new()
 	panel.name = "PauseMenu"
-	panel.custom_minimum_size = Vector2(620, 580)
+	panel.custom_minimum_size = Vector2(400, 700)
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	center.add_child(panel)
 	_apply_panel_style(panel, Color("#10232e"), Color("#3c6b7d"))
 	menu_panel = panel
 	var menu_scroll := ScrollContainer.new()
-	menu_scroll.custom_minimum_size = Vector2(570, 540)
+	menu_scroll.custom_minimum_size = Vector2(350, 660)
 	menu_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	menu_scroll.follow_focus = true
 	panel.add_child(menu_scroll)
@@ -1838,18 +1874,22 @@ func _build_menu_overlay() -> void:
 		page.visible = id == "main"
 		box.add_child(page)
 		pause_pages[id] = page
+	# Owner call (Sept 16): every option stays, grouped so it is easy to find. Station actions sit
+	# on the first page; the archive tabs (settings, codex, research, credits) share one page, and
+	# leaving the loop has its own.
 	var primary: VBoxContainer = pause_pages.main
 	_add_menu_button(primary, "Resume Cycle", _close_menu)
 	_add_menu_button(primary, "Save Game", _menu_save_game)
-	_add_menu_button(primary, "Settings", _open_shared_menu.bind("settings"))
+	_add_menu_button(primary,"Crew Comms",func(): _close_menu(); crew_comms.reopen())
+	_add_menu_button(primary, "Recenter Station", _menu_recenter_station)
+	_add_menu_button(primary, "Replay First-loop Guide", _replay_guide)
 	_add_menu_button(primary, "Station & Archives", _show_pause_page.bind("station"))
 	_add_menu_button(primary, "End or Leave Loop", _show_pause_page.bind("exit"))
 	var station: VBoxContainer = pause_pages.station
-	_add_menu_button(station,"Crew Comms",func(): _close_menu(); crew_comms.reopen())
+	_add_menu_button(station, "Settings", _open_shared_menu.bind("settings"))
 	_add_menu_button(station, "Codex", _open_shared_menu.bind("codex"))
 	_add_menu_button(station, "Meta Progression", _open_shared_menu.bind("progression"))
-	_add_menu_button(station, "Recenter Station", _menu_recenter_station)
-	_add_menu_button(station, "Replay First-loop Guide", _replay_guide)
+	_add_menu_button(station, "Credits & Build", _open_shared_menu.bind("about"))
 	if OS.is_debug_build():
 		_add_menu_button(station, "Toggle Admin View", _menu_toggle_admin_view)
 	_add_menu_button(station, "Back", _pause_page_back)
@@ -1858,9 +1898,10 @@ func _build_menu_overlay() -> void:
 	_add_menu_button(exits, "Save & Quit", _menu_quit_game)
 	_add_menu_button(exits, "Restart Reboot Cycle", _menu_restart_cycle)
 	end_expedition_button = Button.new()
-	end_expedition_button.text = "End Expedition & Collect Research"
+	end_expedition_button.text = "End Expedition"
+	end_expedition_button.tooltip_text = "Ends this expedition and collects its Research."
 	end_expedition_button.pressed.connect(_end_expedition)
-	preload("res://scripts/title_button_style.gd").apply(end_expedition_button, 480, 54)
+	preload("res://scripts/title_button_style.gd").apply(end_expedition_button, 330, 50)
 	exits.add_child(end_expedition_button)
 	_add_menu_button(exits, "Back", _pause_page_back)
 	menu_save_feedback = Label.new()
@@ -1881,14 +1922,14 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> void
 	var button := Button.new()
 	button.text = {
 		"Resume Cycle":"Return to Station",
-		"Station & Archives":"Help & Station",
-		"End or Leave Loop":"Leave Game",
+		"Station & Archives":"Archive & Settings  ▸",
+		"End or Leave Loop":"Leave Game  ▸",
 		"Codex":"Codex & Discoveries",
 		"Meta Progression":"Research & Unlocks",
 		"Replay First-loop Guide":"Show Building Guide",
 		"Save & Return to Title":"Save & Return to Title",
-		"Save & Quit":"Save & Quit to Desktop",
-		"Restart Reboot Cycle":"End Loop & Start Again"
+		"Save & Quit":"Save & Quit",
+		"Restart Reboot Cycle":"Restart Loop"
 	}.get(text,text)
 	button.name = text.replace(" ", "")
 	button.tooltip_text = {
@@ -1896,15 +1937,17 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> void
 		"Save & Return to Title": "Records the active loop before opening the title screen.",
 		"Save & Quit": "Records the active loop before closing the game.",
 		"Restart Reboot Cycle": "Records this attempt before starting a new loop.",
-		"Recenter Station": "Fits the station into view without changing its rooms."
+		"Recenter Station": "Fits the station into view without changing its rooms.",
+		"Station & Archives": "Settings, codex, research and credits.",
+		"End or Leave Loop": "Return to title, quit, restart or end the expedition."
 	}.get(text, "")
-	button.custom_minimum_size = Vector2(0, 54)
+	button.custom_minimum_size = Vector2(0, 50)
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	button.focus_mode = Control.FOCUS_ALL
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	button.pressed.connect(callable)
 	button.add_theme_font_size_override("font_size", 17)
-	preload("res://scripts/title_button_style.gd").apply(button, 480, 54, text == "Resume Cycle")
+	preload("res://scripts/title_button_style.gd").apply(button, 330, 50, text == "Resume Cycle")
 	if text == "Codex": preload("res://scripts/navigation_badge.gd").apply(button, "codex")
 	parent.add_child(button)
 	if text == "Resume Cycle":
@@ -4280,6 +4323,7 @@ func _update_test_walker(delta: float) -> void:
 	if grid_view == null:
 		return
 	preload("res://scripts/room_flooding.gd").advance(self,delta)
+	preload("res://scripts/hull_repair.gd").auto_queue(self)
 	preload("res://scripts/room_fire.gd").advance(self,delta)
 	preload("res://scripts/crew_construction.gd").reconcile(self)
 	var previous_status := _walker_status()
@@ -4587,6 +4631,7 @@ func _refresh_inspector() -> void:
 
 func _refresh_inspector_contents() -> void:
 	inspector_focus_button.disabled = true
+	if room_lock_button != null: room_lock_button.hide()
 	if hovered_card_id.is_empty() and selected_card_id.is_empty():
 		var site_cell: Vector2i = selected_room_cell
 		if drone_fleet.sites.has(site_cell) and drone_fleet.sites[site_cell].discovered and not occupied.has(site_cell):
@@ -4638,6 +4683,13 @@ func _refresh_inspector_contents() -> void:
 		room_operation_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
 		room_operation_button.text = ("RESUME ROOM" if room.get("suspended", false) else "SUSPEND ROOM") if can_control else "SELECT A BUILT ROOM TO CONTROL"
 		room_operation_button.tooltip_text = "Suspended rooms stop production and links. Resuming takes effect next cycle."
+	if room_lock_button != null and not previewing_card and room.has("pos") and occupied.has(room.pos):
+		var locked: bool = room.get("doors_locked", false)
+		room_lock_button.set_meta("cell", room.pos)
+		room_lock_button.text = "UNLOCK DOORS" if locked else "LOCK DOORS"
+		room_lock_button.disabled = not running
+		room_lock_button.tooltip_text = "Locked doors seal this room against flood water. Closed, unlocked doors let water seep through slowly." if not hardware.doors else "The station-wide DOORS switch is locking every room."
+		room_lock_button.show()
 	if room.is_empty():
 		preview_texture.texture = null
 		preview_name_label.text = "No Selection"
@@ -5384,7 +5436,7 @@ func _show_pause_page(id: String) -> void:
 	if id != "main": pause_page_opener = get_viewport().gui_get_focus_owner()
 	pause_page = id
 	for key in pause_pages: pause_pages[key].visible = key == id
-	pause_page_title.text = {"main":"PAUSED", "station":"HELP & STATION", "exit":"LEAVE GAME"}[id]
+	pause_page_title.text = {"main":"PAUSED", "station":"ARCHIVE & SETTINGS", "exit":"LEAVE GAME"}[id]
 	for child in pause_pages[id].get_children():
 		if child is Button and child.visible and not child.disabled:
 			child.grab_focus()

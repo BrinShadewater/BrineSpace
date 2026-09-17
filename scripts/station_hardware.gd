@@ -64,8 +64,13 @@ static func draw_effects(canvas, game, rooms: Array, size: float) -> void:
 				draw_exterior_light(canvas,center,Vector2(direction),size,housing_visible,lit)
 
 		var fire=preload("res://scripts/room_fire.gd")
-		if not fire.burning(room): continue
-		var status: String=fire.sprinkler_status(game,room)
+		var trailing: bool=time<float(room.get("spray_visual_until",0.0))
+		if not fire.burning(room) and not trailing: continue
+		var status: String="SPRAYING" if trailing and not fire.burning(room) else fire.sprinkler_status(game,room)
+		var fade: float=clampf((float(room.get("spray_visual_until",0.0))-time)/1.0,0.0,1.0) if trailing and not fire.burning(room) else 1.0
+		# Drops fall to the flood surface, and splash there, in a partly flooded room.
+		var water: float=float(room.get("water_level",0.0))
+		var surface_drop: float=165.0 if water<=0.0 else clampf(165.0-water*52.0*3.2,40.0,165.0)
 		var unit := size/384.0
 		var pixel := maxf(1,unit*2)
 		for side in [-1,1]:
@@ -76,9 +81,11 @@ static func draw_effects(canvas, game, rooms: Array, size: float) -> void:
 			for i in range(22):
 				var phase := fposmod(time*1.2+i*.173+side*.21,1.0)
 				var spread := float(i%11-5)/5.0
-				var drop := nozzle+Vector2(spread*72*phase,phase*165)*unit
+				var drop := nozzle+Vector2(spread*72*phase,phase*surface_drop)*unit
 				drop=(drop/pixel).floor()*pixel
-				canvas.draw_rect(Rect2(drop,Vector2(pixel,pixel*2)),Color(.63,.84,.88,.7*(1-phase*.55)))
+				canvas.draw_rect(Rect2(drop,Vector2(pixel,pixel*2)),Color(.63,.84,.88,.7*(1-phase*.55)*fade))
+				if water>0.0 and phase>0.9:
+					canvas.draw_arc(drop+Vector2(pixel*.5,pixel*2),unit*(3.0+(phase-.9)*60.0),PI,TAU,8,Color(.7,.9,.93,.5*fade),maxf(1.0,unit))
 		var color := Color("9acbd4") if status=="SPRAYING" else Color("d3a479")
 		var font: Font=ThemeDB.fallback_font
 		var label := "SPRINKLERS / "+status
