@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--godot', default='C:/Users/Alex/Desktop/Projects/Godot_v4.6.1-stable_win64.exe')
+    parser.add_argument('--godot', default='C:/Users/Alex/Desktop/Projects/Godot_v4.7.2/Godot_v4.7.2-stable_win64.exe')
     parser.add_argument('--output', type=Path, default=ROOT/'output/crew-replacement-2026-09-12/runtime-baseline')
     args = parser.parse_args()
     destination = args.output.resolve()

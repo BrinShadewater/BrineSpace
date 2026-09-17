@@ -37,7 +37,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_GODOT = {
-    "win32": "C:/Users/Alex/Desktop/Projects/Godot_v4.6.1-stable_win64.exe",
+    "win32": "C:/Users/Alex/Desktop/Projects/Godot_v4.7.2/Godot_v4.7.2-stable_win64.exe",
 }
 PASS_LINE = re.compile(r"\bPASS\b|failures=0|:\s*0 failures\b")
 FAIL_LINE = re.compile(r"\bFAIL\b|SCRIPT ERROR|failures=[1-9]|:\s*[1-9]\d* failures")

@@ -1,4 +1,4 @@
-param([string]$GodotPath = 'C:/Users/Alex/Desktop/Projects/Godot_v4.6.1-stable_win64.exe')
+param([string]$GodotPath = 'C:/Users/Alex/Desktop/Projects/Godot_v4.7.2/Godot_v4.7.2-stable_win64.exe')
 $reviewRoot = Split-Path -Parent $PSScriptRoot
 if (-not (Test-Path -LiteralPath $GodotPath)) {
     throw 'Supply the Godot 4.6 executable using -GodotPath.'

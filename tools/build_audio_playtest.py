@@ -14,7 +14,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-GODOT = 'C:/Users/Alex/Desktop/Projects/Godot_v4.6.1-stable_win64.exe'
+GODOT = 'C:/Users/Alex/Desktop/Projects/Godot_v4.7.2/Godot_v4.7.2-stable_win64.exe'
 FIXTURES = {'audio':'test_suno_audio','space':'test_audio_space','title':'test_title_screen','systems':'test_station_systems','quit':'test_audio_quit'}
 
 def digest(path):

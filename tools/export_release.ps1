@@ -1,5 +1,5 @@
 param(
-    [string]$Godot = 'C:/Users/Alex/Desktop/Projects/Godot_v4.6.1-stable_win64.exe',
+    [string]$Godot = 'C:/Users/Alex/Desktop/Projects/Godot_v4.7.2/Godot_v4.7.2-stable_win64.exe',
     [string]$ProjectRoot = (Split-Path $PSScriptRoot -Parent),
     [string]$OutputPath = 'builds/BrineSpace-reliability/BrineSpace.exe'
 )
@@ -17,10 +17,10 @@ $templateDir = Join-Path $releaseRoot 'output/production-ten/export-tools'
 $templateNames = @('windows_debug_x86_64.exe', 'windows_release_x86_64.exe')
 $missingTemplates = @($templateNames | Where-Object { -not (Test-Path -LiteralPath (Join-Path $templateDir $_)) })
 if ($missingTemplates.Count -gt 0) {
-    $bundle = Join-Path $templateDir 'Godot_v4.6.1-stable_export_templates.tpz'
+    $bundle = Join-Path $templateDir 'Godot_v4.7.2-stable_export_templates.tpz'
     $sums = Join-Path $templateDir 'SHA512-SUMS.txt'
     if (-not (Test-Path -LiteralPath $bundle)) {
-        throw "Export templates missing ($($missingTemplates -join ', ')) and no bundle at $bundle. Re-download the 4.6.1 export templates."
+        throw "Export templates missing ($($missingTemplates -join ', ')) and no bundle at $bundle. Re-download the 4.7.2 export templates."
     }
     if (Test-Path -LiteralPath $sums) {
         $expected = (Select-String -LiteralPath $sums -Pattern ([regex]::Escape((Split-Path $bundle -Leaf))) |

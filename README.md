@@ -1,6 +1,6 @@
 # BrineSpace
 
-A Godot 4.6 underwater station-restoration roguelite prototype. You play BRINE,
+A Godot 4.7 underwater station-restoration roguelite prototype. You play BRINE,
 a damaged AI core rebuilding a silent station through blueprint drafting,
 modular placement, interdependent production and discovered room synergies.
 
@@ -111,7 +111,7 @@ cd BrineSpace
 git lfs pull
 ```
 
-Use Godot 4.6 (tested locally with 4.6.1). Open `project.godot`, allow imports to
+Use Godot 4.7 (tested locally with 4.7.2). Open `project.godot`, allow imports to
 finish, and press **F5** to run the project through title, architect selection and
 Continue. The configured main scene is `res://scenes/title_screen.tscn`;
 gameplay is `res://scenes/main.tscn`.

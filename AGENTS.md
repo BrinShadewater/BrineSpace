@@ -1,6 +1,6 @@
 # AGENTS.md — 🛰️ working on BrineSpace
 
-A Godot 4.6 passive roguelite station builder. `project.godot` sets
+A Godot 4.7 passive roguelite station builder. `project.godot` sets
 `run/main_scene="res://scenes/title_screen.tscn"`, config name `BrineSpace`, a 1920×1080 design
 viewport and a 1600×900 default window.
 
@@ -101,8 +101,8 @@ If you write user-facing text, match that. Do not make BRINE friendly or helpful
 
 ## Run and validate relevant work
 
-Follow README.md's Run locally section: open project.godot with Godot 4.6
-(locally tested with 4.6.1), complete imports, and use F5 for the configured title
+Follow README.md's Run locally section: open project.godot with Godot 4.7
+(locally tested with 4.7.2), complete imports, and use F5 for the configured title
 scene. Choose tests or audit tools for the changed subsystem from tests/ and tools/;
 `python tools/run_tests.py --subsystem <name>` runs a group from tests/index.json
 with native-only tests routed correctly (`--list` classifies; `--native` runs the
