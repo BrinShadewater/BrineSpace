@@ -25,8 +25,8 @@ func run() -> void:
 	assert(editor.show_riser and editor.riser_toggle.button_pressed,"Studio opens with risers visible")
 	assert(editor.autosave_enabled)
 	var actions=editor.find_child("RoomActions",true,false)
-	assert(actions!=null and actions.get_child_count()==3)
-	assert(actions.get_child(0).text=="Rotate Room" and actions.get_child(1).text=="Next Room" and actions.get_child(2).text=="Save")
+	assert(actions!=null and actions.get_child_count()==5)
+	assert(actions.get_child(0).text=="Previous Room" and actions.get_child(1).text=="Previous Rotation" and actions.get_child(2).text=="Rotate Room" and actions.get_child(3).text=="Next Room" and actions.get_child(4).text=="Save")
 	editor.free_placement.button_pressed=true
 	editor.selected="sample_cooler"
 	key(editor,KEY_F)

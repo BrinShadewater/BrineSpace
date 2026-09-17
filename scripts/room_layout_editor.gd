@@ -458,6 +458,8 @@ func _ready() -> void:
 	bottom_actions.name="RoomActions"
 	bottom_actions.alignment=BoxContainer.ALIGNMENT_CENTER
 	column.add_child(bottom_actions)
+	button(bottom_actions,"Previous Room",func(): switch_room(posmod(index-1,entries.size())))
+	button(bottom_actions,"Previous Rotation",func(): switch_rotation(quarter-1))
 	button(bottom_actions,"Rotate Room",func(): switch_rotation(quarter+1))
 	button(bottom_actions,"Next Room",func(): switch_room((index+1)%entries.size()))
 	button(bottom_actions,"Save",save_all_rotations)

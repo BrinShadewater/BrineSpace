@@ -146,7 +146,11 @@ static func step_crew(game, actor, id: String, dt: float) -> void:
 				if not locker.is_empty() and actor.foot.distance_to(locker.interaction_point)<=12:
 					actor.tank_oxygen = minf(60,actor.tank_oxygen+dt*12)
 	actor.starvation = minf(STARVATION_SECONDS,actor.starvation+dt) if int(game.resources.food)<=0 else maxf(0,actor.starvation-dt*2)
-	if actor.starvation >= STARVATION_SECONDS: kill(game,actor,id,"starvation")
+	if actor.starvation >= STARVATION_SECONDS:
+		kill(game,actor,id,"starvation")
+		return
+	var breathing_danger: bool = actor.needs_air() and (exterior or water >= CRITICAL or int(game.resources.oxygen)<=0)
+	preload("res://scripts/crew_danger.gd").check(game,actor,id,breathing_danger,STARVATION_SECONDS)
 
 static func kill(game,actor,id: String,cause: String) -> void:
 	actor.die()
@@ -154,6 +158,7 @@ static func kill(game,actor,id: String,cause: String) -> void:
 	for member in game.recovered_crew:
 		if member.get("architect_id","")==id: member.alive=false
 	game._log("%s lost: %s. The station keeps count." % [Architects.NAMES[id],cause],true)
+	preload("res://scripts/crew_danger.gd").announce_death(game,id,cause)
 	game._check_fail_conditions()
 
 static func inspector(game,room: Dictionary) -> String:

@@ -2950,7 +2950,7 @@ func _check_fail_conditions() -> void:
 		reason = "BRINE Core lost power."
 	elif resources["oxygen"] <= -10:
 		reason = "Oxygen collapse overwhelmed the station."
-	elif had_crew and crew_count <= 0:
+	elif had_crew and (crew_count <= 0 or _all_characters_lost()):
 		reason = "Crew population reached 0."
 	elif corruption >= 10:
 		reason = "Corruption reached maximum."
@@ -2958,6 +2958,15 @@ func _check_fail_conditions() -> void:
 		reason = "Orbit decay reached maximum."
 	if not reason.is_empty():
 		_show_reboot_summary(reason)
+
+# A Crew Hab or Clone Lab adds an unseen survivor to crew_count, so the count could stay above
+# zero after every character died and the run never ended (owner playtest, Sept 17). The run
+# is over once every recovered character is dead, whatever the count says.
+func _all_characters_lost() -> bool:
+	if recovered_crew.is_empty(): return false
+	for member in recovered_crew:
+		if member.get("alive", false): return false
+	return true
 
 func _discovered_character_names() -> String:
 	var names: Array[String] = []
@@ -4061,7 +4070,9 @@ func _on_card_hovered(id: String, card: Control) -> void:
 		return
 	if not is_instance_valid(card) or not card is PanelContainer:
 		return
-	# A hovered card pops up slightly; in the fan it also straightens and comes to the front.
+	# A hovered card pops up slightly; in the fan it also straightens and comes to the front. The
+	# inspector previews it while the pointer is over it (owner playtest).
+	hovered_card_id = id
 	var rest_position: Vector2 = card.get_meta("rest_position", card.position)
 	if Preferences.reduced_motion:
 		_pose_card(card, rest_position, 0.0, Vector2.ONE)
@@ -4627,8 +4638,7 @@ func _refresh_inspector() -> void:
 	if inspector_label == null: return
 	var inspected: Dictionary = occupied.get(selected_room_cell,{})
 	inspector_had_water = float(inspected.get("water_level",0))>0 or float(inspected.get("hull_crack",0))>0
-	hovered_card_id = "" # Discard legacy checkpoint hover state; inspection is click-based.
-	var key := "%s:%s" % [selected_card_id,selected_room_cell]
+	var key := "%s:%s:%s" % [hovered_card_id,selected_card_id,selected_room_cell]
 	var scroll_value: float = inspector_label.get_v_scroll_bar().value if key == inspector_selection_key else 0.0
 	inspector_selection_key = key
 	_refresh_inspector_contents()
