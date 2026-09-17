@@ -3,6 +3,10 @@ extends RefCounted
 static var failures: Dictionary = {}
 
 static func load_png(image: Image, path: String) -> Error:
+	var prefetched: Image = preload("res://scripts/image_prefetch.gd").take(path)
+	if prefetched != null:
+		image.copy_from(prefetched)
+		return OK
 	var file := FileAccess.open(path, FileAccess.READ)
 	var error := FileAccess.get_open_error() if file == null else OK
 	if file != null:
@@ -35,6 +39,10 @@ static func raw_texture(path: String) -> Texture2D:
 	return null
 
 static func raw_image(path: String) -> Image:
+	if path.get_extension().to_lower() == "png":
+		var prefetched: Image = preload("res://scripts/image_prefetch.gd").take(path)
+		if prefetched != null:
+			return prefetched
 	if not FileAccess.file_exists(path):
 		return null
 	var bytes := FileAccess.get_file_as_bytes(path)

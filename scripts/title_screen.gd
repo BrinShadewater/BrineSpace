@@ -321,9 +321,15 @@ func _start_game(continuing := false) -> void:
 	var scene: PackedScene = await loading.prepare_scene(GAME_SCENE)
 	var error := ERR_CANT_OPEN
 	if scene != null:
+		# Station artwork decodes on worker threads while the game builds; the loading
+		# transition ends this once startup completes.
+		loading.begin_station_build()
+		preload("res://scripts/image_prefetch.gd").begin()
+		preload("res://scripts/image_prefetch.gd").progress_callback = loading.show_startup_progress
 		loading.finish_after_scene_change()
 		error = get_tree().change_scene_to_packed(scene)
 	if error != OK:
+		preload("res://scripts/image_prefetch.gd").end()
 		loading.queue_free()
 		starting = false
 		start_button.disabled = false

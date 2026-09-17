@@ -7,6 +7,7 @@ var transcript: RichTextLabel
 var transmission_window: Control
 var continue_button: Button
 var finished_reading := false
+var progress: Control
 
 
 func _ready() -> void:
@@ -54,6 +55,10 @@ func _ready() -> void:
 	detail.add_theme_font_size_override("font_size",17)
 	detail.add_theme_color_override("font_color",Color("7ac4b5"))
 	column.add_child(detail)
+	progress = Control.new()
+	progress.custom_minimum_size = Vector2(1000, 8)
+	progress.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	column.add_child(progress)
 	continue_button = Button.new()
 	continue_button.text = "RETURN TO ARCHIVE" if replay_mode else "CONTINUE"
 	preload("res://scripts/title_button_style.gd").apply(continue_button,1000,56)
@@ -64,6 +69,25 @@ func _ready() -> void:
 	# Render the complete intro before synchronous scene setup can stall a frame.
 	# It stays readable (and scrollable at larger text sizes) until acknowledged.
 	transcript.text = transmission_text
+
+func begin_station_build() -> void:
+	detail.text = "STATION SYSTEMS // BUILDING STATION"
+
+# Called while the station builds, from inside one long frame (ImagePrefetch forces a draw
+# between image decodes). Control updates would wait for a frame that has not happened yet, so
+# the bar is drawn straight into its canvas item, which the forced draw shows at once. The
+# first launch has no image count to measure against, so it sweeps instead.
+func show_startup_progress(fraction: float) -> void:
+	if replay_mode or not is_instance_valid(progress): return
+	var item := progress.get_canvas_item()
+	var bar := Rect2(Vector2.ZERO, progress.size)
+	RenderingServer.canvas_item_clear(item)
+	RenderingServer.canvas_item_add_rect(item, bar, Color("123040"))
+	if fraction >= 0.0:
+		RenderingServer.canvas_item_add_rect(item, Rect2(bar.position, Vector2(bar.size.x * fraction, bar.size.y)), Color("7ac4b5"))
+	else:
+		var sweep := fposmod(Time.get_ticks_msec() / 1400.0, 1.0)
+		RenderingServer.canvas_item_add_rect(item, Rect2(Vector2(bar.size.x * sweep * 0.8, 0), Vector2(bar.size.x * 0.2, bar.size.y)), Color("7ac4b5"))
 
 func _continue() -> void:
 	if continue_button.disabled or finished_reading:
@@ -107,6 +131,8 @@ func finish_after_scene_change() -> void:
 	var game := tree.current_scene
 	while is_instance_valid(game) and not game.get("startup_complete"):
 		await tree.process_frame
+	preload("res://scripts/image_prefetch.gd").end()
+	if is_instance_valid(progress): RenderingServer.canvas_item_clear(progress.get_canvas_item())
 	if not is_instance_valid(game):
 		queue_free()
 		return
