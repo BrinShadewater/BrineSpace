@@ -72,15 +72,36 @@ func _defaults(section: String) -> void:
 			Preferences.hand_backdrop = true
 			Preferences.tooltip_delay = 0.5
 		"DISPLAY":
+			# Defaults fill the screen the game is on (owner playtest: restoring used to drop a
+			# fullscreen player into a small 1600x900 window).
+			var window := get_window()
+			var default_size := DisplayServer.screen_get_size(window.current_screen)
+			var already: bool = Preferences.get_window_mode(window) == 1 and window.size == default_size and Preferences.fps_cap == 0 and DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
+			if already:
+				feedback.text = "DISPLAY IS ALREADY AT ITS DEFAULTS."
+				feedback.show()
+				return
 			_preview_display(func() -> void:
-				Preferences.window_size = Vector2i(1600, 900)
-				Preferences.apply_window_mode(get_window(), 0, false)
+				Preferences.window_size = _fitting_size(DisplayServer.screen_get_usable_rect(window.current_screen).size)
+				Preferences.apply_window_mode(window, 1, false)
 				Preferences.fps_cap = 0
 				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 			)
 			return
 	_commit()
 	_rebuild.call_deferred()
+
+func _aspect_caption(value: Vector2i) -> String:
+	var ratio := float(value.x) / float(value.y)
+	if ratio > 3.2: return "  (32:9)"
+	if ratio > 2.2: return "  (21:9)"
+	return ""
+
+func _fitting_size(area: Vector2i) -> Vector2i:
+	var best := Vector2i(1280, 720)
+	for value in [Vector2i(1600,900),Vector2i(1920,1080),Vector2i(2560,1440),Vector2i(3840,2160)]:
+		if value.x <= area.x and value.y <= area.y: best = value
+	return best
 
 func _preview_display(action: Callable) -> void:
 	if not display_previous.is_empty():
@@ -174,21 +195,29 @@ func _ready() -> void:
 	feedback = _label("", 16)
 	feedback.hide()
 	var display := _section("DISPLAY")
-	var sizes: Array[Vector2i] = [Vector2i(1280,720),Vector2i(1600,900),Vector2i(1920,1080),Vector2i(2560,1440)]
-	var current: Vector2i = Preferences.window_size if Preferences.is_fullscreen(get_window()) else get_window().size
+	# 16:9 plus wide and ultrawide sizes, limited to what fits the screen (owner playtest). The
+	# 1920x1080 design widens to the window's aspect, so wider sizes show more station.
+	var screen_area := DisplayServer.screen_get_usable_rect(get_window().current_screen).size
+	var sizes: Array[Vector2i] = []
+	for value in [Vector2i(1280,720),Vector2i(1600,900),Vector2i(1920,1080),Vector2i(2560,1080),Vector2i(2560,1440),Vector2i(3440,1440),Vector2i(3840,1600),Vector2i(3840,2160),Vector2i(5120,1440)]:
+		if value.x <= screen_area.x and value.y <= screen_area.y: sizes.append(value)
+	var fullscreen: bool = Preferences.is_fullscreen(get_window())
+	var current: Vector2i = Preferences.window_size if fullscreen else get_window().size
 	if not sizes.has(current):
 		sizes.append(current)
 	var captions: Array[String] = []
 	for value in sizes:
-		captions.append("%d × %d" % [value.x, value.y])
+		captions.append("%d × %d%s" % [value.x, value.y, _aspect_caption(value)])
+	# Choosing a size from fullscreen switches to a centred window of that size, under the same
+	# keep/revert check (owner playtest: the list was greyed out in fullscreen).
 	var resolution := _select(display, "Resolution", "Window resolution", captions, sizes.find(current), func(index: int) -> void:
-		get_window().size = sizes[index]
 		Preferences.window_size = sizes[index]
+		Preferences.apply_window_mode(get_window(), 0, false)
 	)
-	resolution.disabled = Preferences.is_fullscreen(get_window())
+	if fullscreen:
+		display.add_child(_label("Fullscreen uses the screen's own %d × %d. Choosing a size here switches to a window." % [DisplayServer.screen_get_size(get_window().current_screen).x, DisplayServer.screen_get_size(get_window().current_screen).y], 15))
 	_select(display, "WindowMode", "Window mode", ["Windowed", "Borderless Fullscreen", "Exclusive Fullscreen"], Preferences.get_window_mode(get_window()), func(index: int) -> void:
 		Preferences.apply_window_mode(get_window(), index)
-		resolution.disabled = index != 0
 	)
 	_toggle(display, "VSync", "V-sync", DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED, func(enabled: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED)

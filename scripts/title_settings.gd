@@ -157,6 +157,12 @@ static func apply_window_mode(window: Window, value: int, remember_size := true)
 		_:
 			window.size = window_size
 			window.position = screen_position + Vector2i(maxi(0, int((screen_size.x - window_size.x) * 0.5)), maxi(0, int((screen_size.y - window_size.y) * 0.5)))
+			# Windows promotes a borderless window covering the screen to exclusive fullscreen,
+			# and the earlier MODE_WINDOWED does not undo it; request windowed again once the
+			# borders and size are back (owner playtest: resolution changes misbehaved).
+			window.mode = Window.MODE_WINDOWED
+			window.size = window_size
+			window.position = screen_position + Vector2i(maxi(0, int((screen_size.x - window_size.x) * 0.5)), maxi(0, int((screen_size.y - window_size.y) * 0.5)))
 
 static func save(window: Window) -> Error:
 	if window.mode == Window.MODE_WINDOWED and not is_fullscreen(window):

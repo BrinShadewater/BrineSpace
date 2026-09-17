@@ -317,6 +317,9 @@ func _build_overlay() -> void:
 	note_field = LineEdit.new()
 	note_field.placeholder_text = "What were you doing?"
 	note_field.max_length = 300
+	# Enter saves the report, like the Save report button (owner playtest).
+	note_field.text_submitted.connect(func(_text: String) -> void:
+		if overlay.visible and note_field.visible: _on_save_pressed())
 	box.add_child(note_field)
 	button_row = HBoxContainer.new()
 	button_row.add_theme_constant_override("separation", 8)

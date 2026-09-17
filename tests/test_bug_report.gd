@@ -25,6 +25,11 @@ func run():
 	var captured_at: String = report.pending_captured_at
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("user://report-overlay.png")
+	report.note_field.text = "enter note"
+	report.note_field.text_submitted.emit("enter note")
+	check(not report.last_report_path.is_empty() and report.overlay.visible and not report.note_field.visible, "Enter in the note saves the report")
+	report._hide_overlay()
+	report._input(key)
 	var first: String = report.save_report("fixture note")
 	var second: String = report.save_report("second report")
 	check(first != second and not first.is_empty() and not second.is_empty(), "Unique report paths")

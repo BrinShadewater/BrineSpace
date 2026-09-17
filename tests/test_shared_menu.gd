@@ -73,12 +73,21 @@ func _run() -> void:
 		window_mode.item_selected.emit(1)
 		await create_timer(0.3).timeout
 		check(root.borderless and root.size == DisplayServer.screen_get_size(root.current_screen), "Borderless fullscreen must fill the current display")
-		check(control(panel, "Resolution").disabled, "Borderless fullscreen must disable window-size selection")
+		check(not control(panel, "Resolution").disabled, "Borderless fullscreen keeps the size list; choosing a size switches to a window")
 		control(panel, "SettingsPanel")._keep_display()
 		await process_frame
 		Preferences.initialized = false
 		Preferences.initialize(root)
 		check(Preferences.get_window_mode(root) == 1 and Preferences.window_size == windowed_size, "Borderless mode must persist without overwriting the windowed resolution (mode %d, saved %s, expected %s)" % [Preferences.get_window_mode(root), Preferences.window_size, windowed_size])
+		# From fullscreen, picking a size switches to that window size; Revert returns to fullscreen.
+		var sizes_list = control(panel, "Resolution")
+		sizes_list.select(0)
+		sizes_list.item_selected.emit(0)
+		await create_timer(0.3).timeout
+		check(not root.borderless and root.mode != Window.MODE_EXCLUSIVE_FULLSCREEN and root.size == Vector2i(1280, 720), "A size chosen in fullscreen switches to that window: mode %d borderless %s size %s" % [root.mode, root.borderless, root.size])
+		control(panel, "SettingsPanel")._revert_display()
+		await create_timer(0.3).timeout
+		check(Preferences.get_window_mode(root) == 1, "Revert returns to fullscreen")
 		window_mode = control(panel, "WindowMode")
 		window_mode.select(2)
 		window_mode.item_selected.emit(2)

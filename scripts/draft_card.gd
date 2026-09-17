@@ -25,6 +25,10 @@ static func build(game, id: String) -> PanelContainer:
 	card.size = CARD_SIZE
 	card.custom_minimum_size = CARD_SIZE
 	card.mouse_filter = Control.MOUSE_FILTER_STOP
+	# The game draws with nearest filtering for pixel art; turned (fan) or scaled (hover) text and
+	# frames sampled that way look jagged (owner playtest), so cards filter smoothly. The room
+	# art keeps its own nearest filter.
+	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	card.pivot_offset = Vector2(CARD_SIZE.x * 0.5, CARD_SIZE.y)
 	# Cards sit outside containers, and before the text has a width it wraps very tall; a
 	# Control grows to that and never shrinks back, so pin it to card size once text settles.

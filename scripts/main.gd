@@ -246,6 +246,7 @@ var hand_backdrop_shown := -1
 var hand_collapsed := false
 var hand_toggle_button: Button
 var hand_layout_button: Button
+var card_drag
 const DraftCard = preload("res://scripts/draft_card.gd")
 var station_center: Control
 var resize_keep_top := false
@@ -1063,6 +1064,10 @@ func _build_ui() -> void:
 	bottom_box.add_child(card_row)
 	hand_box = card_row
 	hand_panel = bottom
+	card_drag = preload("res://scripts/card_drag.gd").new()
+	card_drag.name = "CardDrag"
+	card_drag.game = self
+	add_child(card_drag)
 	hand_chrome = [blueprint_title, hand_count, draft_hint]
 
 	summary_layer = CanvasLayer.new()
@@ -3818,7 +3823,7 @@ func _refresh_cards() -> void:
 		card.set_meta("hand_index", index)
 		card.mouse_entered.connect(_on_card_hovered.bind(id, card))
 		card.mouse_exited.connect(_on_card_unhovered.bind(id, card))
-		card.gui_input.connect(_on_card_gui_input.bind(id))
+		card.gui_input.connect(_on_card_gui_input.bind(id, index))
 		if fan != null:
 			fan.add_child(card)
 			continue
@@ -3959,6 +3964,10 @@ func _load_ui_textures() -> void:
 		UI_TERMINAL_DIVIDER_VERTICAL
 	]:
 		var texture := _load_raw_png_texture(str(path))
+		# The terminal button frame's faint highlight row stretches into a line across every
+		# HUD button near the top of its text (owner playtest); use the frame without it.
+		if path in [UI_TERMINAL_BUTTON_NORMAL, UI_TERMINAL_BUTTON_HOVER, UI_TERMINAL_BUTTON_PRESSED]:
+			texture = preload("res://scripts/navigation_badge.gd").plain_frame(texture)
 		if texture != null:
 			ui_textures[path] = texture
 
@@ -4051,12 +4060,14 @@ func _toggle_hand_layout() -> void:
 	Preferences.save(get_window())
 	_refresh_cards()
 
-func _on_card_gui_input(event: InputEvent, id: String) -> void:
+func _on_card_gui_input(event: InputEvent, id: String, index := -1) -> void:
 	if _gameplay_input_blocked() or not running:
 		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		_on_card_pressed(id)
+		# Pressing selects; dragging onward carries the card onto the station (card_drag.gd).
+		card_drag.begin(id, index, event.global_position)
 		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		_discard_card(id)
