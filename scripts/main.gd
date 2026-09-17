@@ -244,6 +244,8 @@ var hand_chrome: Array = []
 var hand_backdrop_shown := -1
 var hand_collapsed := false
 var hand_toggle_button: Button
+var hand_layout_button: Button
+const DraftCard = preload("res://scripts/draft_card.gd")
 var station_center: Control
 var resize_keep_top := false
 var reroll_button: Button
@@ -1037,6 +1039,15 @@ func _build_ui() -> void:
 	_style_hud_button(toggle_hand, false)
 	draft_status.add_child(toggle_hand)
 	hand_toggle_button = toggle_hand
+	var layout_toggle := Button.new()
+	layout_toggle.name = "HandLayoutToggle"
+	layout_toggle.text = "LAYOUT: ROW"
+	layout_toggle.custom_minimum_size = Vector2(150, 34)
+	layout_toggle.tooltip_text = "Show the draft hand as a row of cards or as a fan."
+	layout_toggle.pressed.connect(_toggle_hand_layout)
+	_style_hud_button(layout_toggle, false)
+	draft_status.add_child(layout_toggle)
+	hand_layout_button = layout_toggle
 	var discard_all_button := Button.new()
 	discard_all_button.text = "REROLL HAND · 3"
 	discard_all_button.custom_minimum_size = Vector2(150, 38)
@@ -1150,6 +1161,7 @@ func _apply_hand_backdrop() -> void:
 	# reclaims the space (owner playtest).
 	hand_box.visible = not hand_collapsed
 	reroll_button.visible = not hand_collapsed
+	hand_layout_button.visible = not hand_collapsed
 	hand_toggle_button.text = "SHOW HAND" if hand_collapsed else "HIDE HAND"
 	hand_panel.offset_top = -72.0 if hand_collapsed else -380.0
 	var row: HBoxContainer = hand_panel.get_child(0)
@@ -3787,115 +3799,34 @@ func _refresh_cards() -> void:
 		reroll_button.disabled = rerolls_remaining <= 0 or not running
 	for child in hand_box.get_children():
 		child.queue_free()
-	for id in hand:
-		var room := RoomDatabaseScript.get_room(id)
-		var category_color := RoomDatabaseScript.category_color(room["category"])
-		var card_slot := Control.new()
-		card_slot.custom_minimum_size = Vector2(234, 344)
-		card_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		card_slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		var card := PanelContainer.new()
-		card.name = "%sCard" % id
-		card.position = Vector2(0, 14)
-		card.size = Vector2(224, 320)
-		card.custom_minimum_size = Vector2(224, 320)
-		card.mouse_filter = Control.MOUSE_FILTER_STOP
-		card.set_meta("card_id", id)
-		card.set_meta("category_color", category_color)
-		card.set_meta("rest_position", card.position)
-		card.set_meta("affordable", _can_afford(room.get("cost", {})))
-		card.tooltip_text = _blueprint_decision(room)
-		_apply_card_style(card, category_color, selected_card_id == id, _can_afford(room.get("cost", {})))
+	# Card-shaped blueprints, as a row or a fan (owner playtest).
+	var fan: Control = DraftCard.fan_row() if Preferences.hand_layout == "fan" else null
+	if fan != null:
+		hand_box.add_child(fan)
+	for index in range(hand.size()):
+		var id: String = hand[index]
+		var card: PanelContainer = DraftCard.build(self, id)
+		card.set_meta("hand_index", index)
 		card.mouse_entered.connect(_on_card_hovered.bind(id, card))
 		card.mouse_exited.connect(_on_card_unhovered.bind(id, card))
 		card.gui_input.connect(_on_card_gui_input.bind(id))
-		var body := VBoxContainer.new()
-		body.add_theme_constant_override("separation", 5)
-		body.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		card.add_child(body)
-		var image_wrap := Control.new()
-		image_wrap.custom_minimum_size = Vector2(0, 128)
-		image_wrap.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		body.add_child(image_wrap)
-		var image := TextureRect.new()
-		image.set_anchors_preset(Control.PRESET_FULL_RECT)
-		image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		if id in ["cold_store", "galley", "salvage_workshop", "current_turbine", "biomass_digester", "heat_recovery", "airlock", "construction_drone_bay", "mycelium_nursery", "life_support", "hydroponics_bay", "reactor", "med_bay", "crew_hab", "cryo_chamber", "clone_lab", "data_archive", "biodome", "xeno_lab", "med_office","med_center","holographic_core","bio_lab","anomaly_lab", "battery_array", "research_lab", "maintenance_bay", "storage_bay", "ore_refinery", "mining_drone_bay", "salvage_drone_bay", "crew_lounge", "command_center", "quarantine_cell", "solar_array", "radio_lab", "shield_generator", "tidal_condenser", "gravity_loom", "brine_core", "corridor", "corner", "tee_corridor", "pressure_control", "listening_post", "isolation_vault"]:
-			image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		image.texture = card_textures.get(id)
-		image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		image.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		image_wrap.add_child(image)
-		var badge := Label.new()
-		badge.text = room["rarity"].to_upper()
-		badge.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		badge.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-		badge.position = Vector2(-84, 8)
-		badge.custom_minimum_size = Vector2(84, 22)
-		badge.add_theme_font_size_override("font_size", 11)
-		var rarity_color := _rarity_color(str(room.get("rarity", "common")))
-		badge.add_theme_color_override("font_color", rarity_color.lightened(0.24))
-		badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_add_label_panel_style(badge, Color("#08202a"), rarity_color)
-		image_wrap.add_child(badge)
-		if prototype_card_seen_cycle.has(id):
-			var prototype_badge := Label.new()
-			prototype_badge.text = "NEW PROTOTYPE"
-			prototype_badge.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-			prototype_badge.position = Vector2(0, 102)
-			prototype_badge.custom_minimum_size = Vector2(112, 22)
-			prototype_badge.add_theme_font_size_override("font_size", 10)
-			prototype_badge.add_theme_color_override("font_color", Color("#d8fff2"))
-			prototype_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			_add_label_panel_style(prototype_badge, Color("#0b3029"), UI_ACCENT_BRIGHT)
-			image_wrap.add_child(prototype_badge)
-		var name_label := Label.new()
-		name_label.text = "■ %s" % room["display_name"]
-		name_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		name_label.add_theme_font_size_override("font_size", 20)
-		name_label.add_theme_color_override("font_color", Color("#f2f7fb"))
-		name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		body.add_child(name_label)
-		var output_label := RichTextLabel.new()
-		output_label.bbcode_enabled = true
-		output_label.fit_content = true
-		output_label.scroll_active = false
-		output_label.text = _primary_output_line(room)
-		output_label.add_theme_font_size_override("normal_font_size", 15)
-		output_label.add_theme_color_override("default_color", Color("#8fa3ae"))
-		output_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		body.add_child(output_label)
-		var cost_label := RichTextLabel.new()
-		cost_label.bbcode_enabled = true
-		cost_label.fit_content = true
-		cost_label.scroll_active = false
-		cost_label.text = "[color=#607784]COST[/color]  %s" % _format_resource_list(room.get("cost", {}), 14)
-		cost_label.add_theme_font_size_override("normal_font_size", 15)
-		cost_label.add_theme_color_override("default_color", Color("#607784") if _can_afford(room.get("cost", {})) else Color("#ff6c75"))
-		cost_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		body.add_child(cost_label)
-		var synergy_label := RichTextLabel.new()
-		synergy_label.bbcode_enabled = true
-		synergy_label.fit_content = true
-		synergy_label.scroll_active = false
-		synergy_label.text = _card_synergy_hint(id)
-		synergy_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		synergy_label.add_theme_font_size_override("normal_font_size", 10)
-		synergy_label.add_theme_color_override("default_color", Color("#6f9f8f"))
-		synergy_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		synergy_label.visible = false # Full known links live in the clicked inspector.
-		body.add_child(synergy_label)
-		var footer_label := Label.new()
-		footer_label.text = "CLICK TO SELECT" if _can_afford(room.get("cost", {})) else "SHORT: " + _format_cost(_missing_cost(room.get("cost", {})))
-		footer_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		footer_label.add_theme_font_size_override("font_size", 12)
-		footer_label.add_theme_color_override("font_color", Color("#3f5663"))
-		footer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		body.add_child(footer_label)
+		if fan != null:
+			fan.add_child(card)
+			continue
+		var card_slot := Control.new()
+		card_slot.custom_minimum_size = DraftCard.ROW_SLOT
+		card_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		card_slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		card.position = Vector2((DraftCard.ROW_SLOT.x - DraftCard.CARD_SIZE.x) * 0.5, DraftCard.HOVER_LIFT + 8.0)
+		card.set_meta("rest_position", card.position)
+		card.set_meta("rest_rotation", 0.0)
 		card_slot.add_child(card)
 		hand_box.add_child(card_slot)
-	_add_deck_slot()
+	if fan != null:
+		DraftCard.layout_fan(fan)
+	hand_box.add_child(DraftCard.build_piles(self))
+	if hand_layout_button != null:
+		hand_layout_button.text = "LAYOUT: FAN" if Preferences.hand_layout == "fan" else "LAYOUT: ROW"
 
 func _card_synergy_hint(room_id: String) -> String:
 	var best_synergy := {}
@@ -3935,36 +3866,6 @@ func _card_synergy_hint(room_id: String) -> String:
 		return "LINK%s  %s · %s -> %s" % [stack_text, best_synergy.get("name", "LEARNED PATTERN"), _join_strings(partner_names, " + "), bonus]
 	return "LINK  EXPERIMENTAL CONFIGURATION"
 
-func _add_deck_slot() -> void:
-	var slot := PanelContainer.new()
-	slot.name = "DeckSlot"
-	slot.custom_minimum_size = Vector2(146, 320)
-	slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	var texture_style := _make_texture_stylebox(UI_TERMINAL_PANEL, 16, 12, 12, 12, 12)
-	if texture_style != null:
-		slot.add_theme_stylebox_override("panel", texture_style)
-	else:
-		var style := StyleBoxFlat.new()
-		style.bg_color = Color(0.02, 0.035, 0.045, 0.58)
-		style.border_color = Color("#1c3038")
-		style.border_width_left = 1
-		style.border_width_top = 1
-		style.border_width_right = 1
-		style.border_width_bottom = 1
-		style.content_margin_left = 10
-		style.content_margin_right = 10
-		style.content_margin_top = 8
-		style.content_margin_bottom = 8
-		slot.add_theme_stylebox_override("panel", style)
-	var label := Label.new()
-	label.text = "/////\n%d DRAW\n%d DISCARD" % [draw_pile.size(), discard_pile.size()]
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.add_theme_font_size_override("font_size", 18)
-	label.add_theme_color_override("font_color", Color("#3e5360"))
-	slot.add_child(label)
-	hand_box.add_child(slot)
-
 func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affordable := true) -> void:
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.02, 0.035, 0.045, 0.78) if not selected else Color(0.03, 0.07, 0.08, 0.88)
@@ -3974,17 +3875,14 @@ func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affor
 	if not affordable and not selected:
 		style.border_color = Color("#30424a")
 	style.border_width_left = 3
-	style.border_width_top = 2
-	style.border_width_right = 2
-	style.border_width_bottom = 2
-	style.corner_radius_top_left = 0
-	style.corner_radius_top_right = 0
-	style.corner_radius_bottom_left = 0
-	style.corner_radius_bottom_right = 0
-	style.content_margin_left = 10
-	style.content_margin_right = 10
+	style.border_width_top = 3
+	style.border_width_right = 3
+	style.border_width_bottom = 3
+	style.set_corner_radius_all(12)
+	style.content_margin_left = 8
+	style.content_margin_right = 8
 	style.content_margin_top = 8
-	style.content_margin_bottom = 8
+	style.content_margin_bottom = 7
 	card.add_theme_stylebox_override("panel", style)
 	if not affordable:
 		card.modulate = Color(0.72, 0.76, 0.78, 0.78)
@@ -4097,10 +3995,12 @@ func _on_card_hovered(id: String, card: Control) -> void:
 		return
 	if not is_instance_valid(card) or not card is PanelContainer:
 		return
-	card.pivot_offset = card.size * 0.5
+	# A hovered card pops up slightly; in the fan it also straightens and comes to the front.
 	var rest_position: Vector2 = card.get_meta("rest_position", card.position)
-	card.position = rest_position if Preferences.reduced_motion else rest_position + Vector2(0, -14)
-	card.scale = Vector2.ONE if Preferences.reduced_motion else Vector2(1.02, 1.02)
+	if Preferences.reduced_motion:
+		_pose_card(card, rest_position, 0.0, Vector2.ONE)
+	else:
+		_pose_card(card, rest_position + Vector2(0, -DraftCard.HOVER_LIFT), 0.0, Vector2.ONE * DraftCard.HOVER_SCALE)
 	var color: Color = card.get_meta("category_color", UI_ACCENT_BRIGHT)
 	var affordable: bool = card.get_meta("affordable", true)
 	_apply_card_style(card, color.lightened(0.18), true, affordable)
@@ -4114,13 +4014,33 @@ func _on_card_unhovered(id: String, card: Control) -> void:
 		return
 	if hovered_card_id == id:
 		hovered_card_id = ""
-	var rest_position: Vector2 = card.get_meta("rest_position", card.position)
-	card.position = rest_position
-	card.scale = Vector2.ONE
+	_pose_card(card, card.get_meta("rest_position", card.position), float(card.get_meta("rest_rotation", 0.0)), Vector2.ONE)
+	if card.has_meta("rest_index") and card.get_parent() != null:
+		card.get_parent().move_child(card, int(card.get_meta("rest_index")))
 	var color: Color = card.get_meta("category_color", UI_ACCENT_BRIGHT)
 	var affordable: bool = card.get_meta("affordable", true)
 	_apply_card_style(card, color, selected_card_id == id, affordable)
 	_refresh_inspector()
+
+func _pose_card(card: Control, at: Vector2, turn: float, grow: Vector2) -> void:
+	var previous: Tween = card.get_meta("pose_tween") if card.has_meta("pose_tween") else null
+	if previous != null and previous.is_valid():
+		previous.kill()
+	if Preferences.reduced_motion or not card.is_inside_tree():
+		card.position = at
+		card.rotation = turn
+		card.scale = grow
+		return
+	var tween := card.create_tween().set_parallel().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(card, "position", at, 0.09)
+	tween.tween_property(card, "rotation", turn, 0.09)
+	tween.tween_property(card, "scale", grow, 0.09)
+	card.set_meta("pose_tween", tween)
+
+func _toggle_hand_layout() -> void:
+	Preferences.hand_layout = "row" if Preferences.hand_layout == "fan" else "fan"
+	Preferences.save(get_window())
+	_refresh_cards()
 
 func _on_card_gui_input(event: InputEvent, id: String) -> void:
 	if _gameplay_input_blocked() or not running:
