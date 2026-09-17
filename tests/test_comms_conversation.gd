@@ -24,7 +24,8 @@ func run() -> void:
 	assert(comms.pending.size()==2 and comms.pending[0].speaker==game.meta.selected_architect)
 	assert("First objective:" in comms.pending[1].text)
 	comms.observe_game(); assert(comms.pending.size()==2,"No repeated introduction")
-	# A click on the transmission skips to the next line mid-sentence, and closes after the last.
+	# A click on the transmission shows the whole page while it types, then moves to the next
+	# line, and closes after the last.
 	comms.place_panel()
 	for i in range(5): await process_frame
 	var reading: int=comms.body.visible_characters
@@ -33,9 +34,11 @@ func run() -> void:
 	skip_click.position=comms.body.get_global_rect().get_center(); skip_click.global_position=skip_click.position
 	root.push_input(skip_click,true)
 	var skip_release: InputEventMouseButton=skip_click.duplicate(); skip_release.pressed=false; root.push_input(skip_release,true)
-	assert(comms.current.speaker==game.meta.selected_architect,"Clicking the text moves to the next line")
+	assert(comms.current.speaker=="brine" and comms.body.visible_characters==comms.body.get_total_character_count(),"Clicking typing text shows the whole page")
+	comms._on_panel_input(skip_click); assert(comms.current.speaker==game.meta.selected_architect,"Clicking a finished page moves to the next line")
+	comms._on_panel_input(skip_click); assert(comms.body.visible_characters==comms.body.get_total_character_count() and comms.current.speaker==game.meta.selected_architect)
 	comms._on_panel_input(skip_click); assert("First objective:" in comms.current.text)
-	comms._on_panel_input(skip_click); assert(comms.minimized and not comms.panel.visible,"Clicking the last line closes it")
+	comms._on_panel_input(skip_click); comms._on_panel_input(skip_click); assert(comms.minimized and not comms.panel.visible,"Clicking the last finished line closes it")
 	comms.dismiss()
 	# Continue keeps the short greeting, without replaying the new-loop tutorial.
 	comms.opening_enabled=false; comms.greeting_sent=false; comms.seen.clear(); comms.last_ambient=-60
@@ -161,5 +164,5 @@ func run() -> void:
 	game.menu_open=false; comms._process(0.1); assert(comms.panel.visible)
 	game._start_reboot_cycle()
 	assert(comms.opening_enabled and not comms.greeting_sent and comms.seen.is_empty() and comms.opening_wait==0.0,"In-scene restart resets conversation events")
-	print("COMMS CONVERSATION PASS: opening after the wake, click to skip, Continue gating, crew and companion hit targets, build input, replies, queued reports, priority cue and panel bounds")
+	print("COMMS CONVERSATION PASS: opening after the wake, click to reveal then advance, Continue gating, crew and companion hit targets, build input, replies, queued reports, priority cue and panel bounds")
 	quit()

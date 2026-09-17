@@ -1,3 +1,30 @@
+## Owner playtest notes, fourth fixes - September 16, 2026
+
+The owner played a normal run (editor, 2560x1440), sent four F8 reports and 17 notes.
+
+FPS drops (165 to 10-15 fps): the owner's station had two Solar Arrays at different rotations. Rooms of one type share a view, and the layout apply serial that retained content keys on was per view, so each array reconfigured the view for the other every frame (~29 ms per switch). A probe loading the 16:52 report's live snapshot at 2560x1440 with the whole station in view reproduced it: mean 78 ms, p95 175 ms. The serial is now per quarter; same probe after: p95 17 ms (commit 7de775e83). Giving each rotation its own view instance was tried first and dropped: 200-450 ms and ~40 MB per view. Drone dock anchors are cached and fall back to the bay centre when a layout removes the ROV cradle (180 `dock` errors in the owner log).
+
+Crash while repairing Veld's derelict cryo ward: not reproduced. Replaying the repair from the 17:05 report's snapshot (door-connected ward, repair, thaw, Veld joins) ran clean on old and new code, including with the whole station in view. The run was from the editor, where the crash lock is skipped, and Godot's file log does not flush ordinary lines, so the log tail before a crash is lost; the log stopping at 16:55 is not evidence of when it crashed. Next time: check the editor's Debugger tab before closing.
+
+Fixed in this batch:
+
+1. Clicking a transmission works like Next: the first click shows the whole page, the next advances or closes.
+2. F8 captures the screenshot, performance history and live station snapshot at the key press; the report records "captured at F8". Previously only the screenshot was, so reports held idle 165 fps frames from typing the note.
+3. The draft hand has a HIDE HAND / SHOW HAND toggle; folded, only the toggle stays and the station view reclaims the space.
+4. Right column: the inspector's reading text is the only part that gives way, sized from the inspector's real fixed content (switch, airlock and crew work controls). Before, TIME / CYCLE ended at y=1155 of 1080 for most selections in the owner's save; now every room and wreck fits (tightest, the pet cryo ward, ends at 1072).
+5. Top navigation buttons centre the badge and caption together, and use a copy of the HUD button frame without its highlight row 8 px from the top, which stretched into a line along the top of every icon.
+6. Drones pass through doorways without opening doors, so doors, door lighting and flood flow follow crew only.
+7. Salvage Workshop and Observation Room rotate (the `fixed_rotation` flag is gone; all four rotations already had art and layouts). The observation watch spot turns with the window. Cold Store and Galley stay fixed pending an owner call.
+8. Studio: a "Show character" toolbar checkbox, and view options (options panel, snap, alignment, entryway areas, clean preview, riser, foundation, lights, animation, zoom, character) persist across rooms, rotations and relaunches in `user://room_layouts.json.studio.cfg`. Only the player's real store writes that file; fixtures keep options in memory, so a test run cannot change where the next one starts.
+
+Answered, not changed: resolutions are 1280x720 to 2560x1440 plus three window modes, V-sync and an fps cap, and every menu setting saves and restores (window position does not). Research Lab makes 2 Data (+1 with crew, +1 with Veld). Data pays build costs and converts to Research at run end (Data / 5), but Research is never spent and `brine_upgrades` is never written.
+
+Loading screen: measured, not yet fixed. `main._ready` holds one frame for ~15 s (plus ~1.9 s scene load): ~44 embedded room views at 150-450 ms each, `_load_replacement_crew_animations` ~4 s, Major Bill animations ~1.3 s, drone assets ~0.6 s, texture region scans ~0.65 s. Spreading this over frames (or loading views on first use) is the fix; it touches startup ordering in main.gd and grid_canvas.gd, so it is proposed rather than done.
+
+Tests: native render-perf 16/16, headless ui, flood-water, save, companions, crew (27), performance-diagnostics, hand backdrop, airlock, comms conversation, crew room activity, bill npc, discovery progression; native navigation badges, salvage workshop, observation room, room layout editor, studio usability, owner notes, layout workflow, simple studio, studio character scale, flood rendering, performance reporting; `test_bug_report` 0 failures in a fresh isolated harness project. Owner save, settings, layouts and comms files byte-identical. `playtest_finite_harvest` fails "Routed builder completes the reclaimed footprint" on the old code as well (it was already failing earlier at the retired port-opening check), so that is a pre-existing break.
+
+Owner calls open: research tree shape, card-shaped hand (mockup A row / B fan), re-dressing bare rooms (Crew Hab lamp, bench and berth wall at 180/270 were removed in the promoted layouts), Cold Store and Galley rotation.
+
 ## Floor details follow the owner's furniture - September 16, 2026
 
 `test_floor_detail_visibility` is green for the first time since the layouts were promoted: 238 placed details, none hidden or below the contrast threshold.

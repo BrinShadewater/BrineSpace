@@ -24,6 +24,10 @@ var preview_animation:=false
 var preview_clock:=0.0
 var scale_actor = preload("res://scripts/room_scale_preview.gd").new()
 var character_mode: OptionButton
+var show_character: CheckButton
+# View options remembered across rooms, rotations and launches (owner playtest).
+const Prefs=preload("res://scripts/room_studio_prefs.gd")
+var pref_controls: Dictionary={}
 var character_place: Button
 var character_status: Label
 var placing_character := false
@@ -284,6 +288,7 @@ func _ready() -> void:
 	snap.button_pressed=true
 	editbar.add_child(snap)
 	alignment=CheckButton.new(); alignment.text="Alignment guides"; alignment.button_pressed=true; editbar.add_child(alignment)
+	pref_controls["options"]=options; pref_controls["snap"]=snap; pref_controls["alignment"]=alignment
 	alignment.tooltip_text="Snap edges and centers to walls and other objects. Hold Alt to bypass snapping."
 	free_placement=CheckButton.new()
 	free_placement.text="Free placement"
@@ -300,6 +305,10 @@ func _ready() -> void:
 	guides.toggled.connect(func(value): show_guides=value; canvas.queue_redraw())
 	var clean:=CheckButton.new(); clean.text="Clean preview"; toolbar.add_child(clean)
 	clean.toggled.connect(func(value): clean_preview=value; canvas.queue_redraw())
+	show_character=CheckButton.new(); show_character.text="Show character"; toolbar.add_child(show_character)
+	show_character.tooltip_text="Show Bill standing in the room at gameplay size, for judging scale. Preview only; never saved as furniture."
+	show_character.toggled.connect(func(value): set_character_mode(1 if value else 0))
+	pref_controls["guides"]=guides; pref_controls["clean"]=clean
 	riser_toggle=CheckButton.new(); riser_toggle.text="Riser wall"; riser_toggle.button_pressed=show_riser; editbar.add_child(riser_toggle)
 	riser_toggle.toggled.connect(func(value):
 		show_riser=value
@@ -311,6 +320,7 @@ func _ready() -> void:
 	lights_toggle.toggled.connect(func(value): preview_lights=value; lights_toggle.text="Lights on" if value else "Lights off"; canvas.queue_redraw())
 	animation_toggle=CheckButton.new(); animation_toggle.text="Animation off"; editbar.add_child(animation_toggle)
 	animation_toggle.toggled.connect(func(value): preview_animation=value; animation_toggle.text="Animation on" if value else "Animation off"; canvas.queue_redraw())
+	pref_controls["riser"]=riser_toggle; pref_controls["foundation"]=foundation_toggle; pref_controls["lights"]=lights_toggle; pref_controls["animation"]=animation_toggle
 	var zoom_label:=Label.new(); zoom_label.text="Zoom"; editbar.add_child(zoom_label)
 	zoom_slider=HSlider.new(); zoom_slider.min_value=0.6; zoom_slider.max_value=1.6; zoom_slider.step=0.1; zoom_slider.value=1.0
 	zoom_slider.custom_minimum_size.x=100; editbar.add_child(zoom_slider)
@@ -349,14 +359,7 @@ func _ready() -> void:
 	for caption in ["Hidden","Standing","Walking"]: character_mode.add_item(caption)
 	character_row.add_child(character_mode)
 	character_mode.tooltip_text="Current Bill artwork at gameplay size. Preview only; never saved as room furniture. Walking respects equipment clearance."
-	character_mode.item_selected.connect(func(value):
-		scale_actor.mode=value
-		placing_character=false
-		character_place.disabled=value==0
-		if value>0:
-			scale_actor.load_art()
-			scale_actor.rebuild(room,str(entries[index].room),quarter)
-		canvas.queue_redraw())
+	character_mode.item_selected.connect(func(value): set_character_mode(value))
 	character_place=button(character_row,"Place",func():
 		placing_character=true
 		status.text="Click clear floor to place Bill. Preview placement does not change the room.")
@@ -468,8 +471,32 @@ func _ready() -> void:
 	confirm.canceled.connect(func(): picker.select(index); rotations.select(quarter))
 	add_child(confirm)
 	load_room()
+	apply_prefs()
 
 	read_recovery()
+
+func set_character_mode(value: int) -> void:
+	character_mode.select(value)
+	show_character.set_pressed_no_signal(value>0)
+	scale_actor.mode=value
+	placing_character=false
+	character_place.disabled=value==0
+	if value>0:
+		scale_actor.load_art()
+		scale_actor.rebuild(room,str(entries[index].room),quarter)
+	Prefs.save_value("character",value)
+	canvas.queue_redraw()
+
+# Restore saved view options, then save each one when the user changes it.
+func apply_prefs() -> void:
+	var saved: Dictionary=Prefs.load_values()
+	for key in pref_controls:
+		var control: CheckButton=pref_controls[key]
+		if saved.get(key) is bool and control.button_pressed!=saved[key]: control.button_pressed=saved[key]
+		control.toggled.connect(func(value): Prefs.save_value(key,value))
+	if saved.get("zoom") is float: zoom_slider.value=clampf(saved.zoom,zoom_slider.min_value,zoom_slider.max_value)
+	zoom_slider.value_changed.connect(func(value): Prefs.save_value("zoom",float(value)))
+	if saved.get("character") is int and int(saved.character) in [1,2]: set_character_mode(saved.character)
 
 func button(parent: Node, text: String, action: Callable) -> Button:
 	var b:=Button.new()
@@ -481,6 +508,7 @@ func button(parent: Node, text: String, action: Callable) -> Button:
 
 func load_room() -> void:
 	if floor_tools!=null: floor_tools.finish()
+	placing_character=false
 	Store.invalidate_authored()
 	surface_entities.clear(); list_signature.clear(); library_signature.clear()
 	selected_many.clear()

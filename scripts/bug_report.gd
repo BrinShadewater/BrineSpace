@@ -21,6 +21,11 @@ var owns_session_lock := false
 var was_paused := false
 var last_report_path := ""
 var pending_screenshot: Image = null
+# Diagnostics captured the moment F8 is pressed, so a report shows the moment being
+# reported rather than the idle frames spent typing the note (owner playtest).
+var pending_files: Array = []
+var pending_captured_at := ""
+var pending_uptime := -1
 var crashed_at := ""
 var lock_unix := 0
 var skipped_dumps: Array = []
@@ -88,9 +93,9 @@ func save_report(note: String, after_crash: bool = false) -> String:
 	var files: Array = []
 	_add_logs(files)
 	_add_saves(files)
-	if not after_crash: _add_live_snapshot(files)
-	if not after_crash and is_instance_valid(performance_monitor):
-		files.append({"name":"diagnostics/performance.json","data":JSON.stringify(performance_monitor.snapshot(),"\t").to_utf8_buffer()})
+	if not after_crash:
+		if pending_captured_at.is_empty(): _capture_diagnostics()
+		files.append_array(pending_files)
 	var artwork: Dictionary = preload("res://scripts/safe_image.gd").failures
 	if not artwork.is_empty(): files.append({"name":"diagnostics/artwork.json","data":JSON.stringify(artwork,"\t").to_utf8_buffer()})
 	if pending_screenshot != null and not pending_screenshot.is_empty():
@@ -100,7 +105,7 @@ func save_report(note: String, after_crash: bool = false) -> String:
 		dumps_found = _add_crash_dumps(files)
 	var summary := _report_text(note, after_crash, files, dumps_found)
 	files.push_front({"name": "report.txt", "data": summary.to_utf8_buffer()})
-	pending_screenshot = null
+	_clear_pending()
 	var stamp := Time.get_datetime_string_from_system(false, true).replace("-", "").replace(":", "").replace(" ", "-")
 	var base := REPORT_DIR + "/brinespace-report-" + stamp + "-%d-%d" % [OS.get_process_id(), Time.get_ticks_usec()]
 	var suffix := 0
@@ -196,6 +201,20 @@ func _build_info() -> Dictionary:
 		var value = JSON.parse_string(FileAccess.get_file_as_string("res://build_info.json"))
 		if value is Dictionary: return value
 	return {"build_id":"unpackaged-source", "note":"No release manifest has been generated."}
+
+func _capture_diagnostics() -> void:
+	pending_files = []
+	_add_live_snapshot(pending_files)
+	if is_instance_valid(performance_monitor):
+		pending_files.append({"name":"diagnostics/performance.json","data":JSON.stringify(performance_monitor.snapshot(),"\t").to_utf8_buffer()})
+	pending_captured_at = Time.get_datetime_string_from_system(false, true)
+	pending_uptime = Time.get_ticks_msec() / 1000
+
+func _clear_pending() -> void:
+	pending_screenshot = null
+	pending_files = []
+	pending_captured_at = ""
+	pending_uptime = -1
 
 func _add_live_snapshot(files: Array) -> void:
 	var scene := get_tree().current_scene if is_inside_tree() else null
@@ -331,7 +350,7 @@ func _hide_overlay() -> void:
 	if overlay != null and overlay.visible:
 		overlay.visible = false
 		get_tree().paused = was_paused
-	pending_screenshot = null
+	_clear_pending()
 
 func _open_report_folder() -> void:
 	var folder := ProjectSettings.globalize_path(REPORT_DIR)
@@ -360,6 +379,7 @@ func _input(event: InputEvent) -> void:
 		return
 	var texture := get_viewport().get_texture()
 	pending_screenshot = texture.get_image() if texture != null else null
+	_capture_diagnostics()
 	_show_overlay("REPORT A BUG", "Saves the game log, your last station save, a separate live diagnostic snapshot and a screenshot into a report you can send to Alex at Shadewater Labs (brinshadewater@gmail.com).", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
 	if note_field != null:
 		note_field.grab_focus()
@@ -378,6 +398,8 @@ func _report_text(note: String, after_crash: bool, files: Array, dumps_found: in
 	lines.append("build: " + JSON.stringify(_build_info()))
 	lines.append("trigger: " + ("previous session did not close normally" if after_crash else "manual (F8)"))
 	lines.append("note: " + (note if not note.is_empty() else "(none)"))
+	if not pending_captured_at.is_empty():
+		lines.append("captured at F8: %s (uptime %d s)" % [pending_captured_at, pending_uptime])
 	lines.append("bundle time: " + Time.get_datetime_string_from_system(false, true))
 	lines.append("previous session lock: " + (crashed_at.replace("\n", " | ") if not crashed_at.is_empty() else "(none)"))
 	lines.append("game version: " + str(ProjectSettings.get_setting("application/config/version", "unknown")))

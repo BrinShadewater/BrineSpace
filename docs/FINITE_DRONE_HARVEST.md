@@ -30,7 +30,8 @@ subsequent load; new cycle credit is never accrued.
 Cardinal waypoint routes avoid rooms, occupied rock/wreck cells, other deposits
 and construction reservations. Exterior routes are preferred. If there is no
 exterior route, matching room ports provide a service passage; sealed sides and
-mismatched rotations remain impassable. Door art opens as the drone approaches.
+mismatched rotations remain impassable. Drones pass through doorways without opening
+the doors, so doors, door lighting and flood flow follow crew only (owner playtest, Sept 16).
 Blocked routes are recalculated; a newly blocked segment is backed out of without
 teleporting. If no route exists, the worker waits. Core construction uses the same
 rules, so an enclosed Core can use connected service passages instead of stalling

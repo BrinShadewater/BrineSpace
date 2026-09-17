@@ -165,18 +165,12 @@ func speaker_name(id: String) -> String:
 	if id=="brine": return "BRINE"
 	return Companions.NAMES[id] if Companions.NAMES.has(id) else Architects.NAMES.get(id,id)
 
-# A click on the transmission skips straight to the next line, or closes it after the last
-# (owner playtest). The Next button still finishes a line that is typing out first.
+# A click on the transmission works like Next (owner playtest): it shows the whole page while
+# the text is typing, then moves to the next line, or closes after the last.
 func _on_panel_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_LEFT): return
 	panel.accept_event()
-	skip()
-
-func skip() -> void:
-	if current.is_empty(): return
-	if pending.is_empty(): minimize()
-	else: show_next()
-	update_replies()
+	if not current.is_empty(): advance()
 
 func advance() -> void:
 	if body.visible_characters<body.get_total_character_count():

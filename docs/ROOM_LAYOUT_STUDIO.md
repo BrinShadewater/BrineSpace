@@ -1,8 +1,15 @@
 # Room Layout Studio
 
-Open **Room Layout Studio** from the title screen or press **F8** during play.
+Open **Room Layout Studio** from the title screen or press **F9** during play.
 The expedition pauses until the studio closes. Choose a room and orientation;
 local layouts apply to every instance of that room and orientation.
+
+**Show character** on the toolbar stands Bill in the room at gameplay size, for judging
+scale (the side panel's Scale: Bill menu also offers Walking and Place). View options
+(Options panel open, snap, alignment guides, entryway areas, clean preview, riser wall,
+foundation, lights, animation, zoom and the character) carry over between rooms and
+rotations and are saved beside the layouts in `user://room_layouts.json.studio.cfg`.
+Free placement is part of each layout, not a view option.
 
 ## Direct editing
 

@@ -115,4 +115,4 @@ func draw_wall(rect: Rect2, horizontal: bool) -> void:
 func draw_cap(rect: Rect2) -> void:
 	preload("res://rooms/whole-room/department_wall_material.gd").cap(painter,rect,"engineering")
 
-func layout_caption() -> String: return "SALVAGE WORKSHOP / south entrance"
+func layout_caption() -> String: return "SALVAGE WORKSHOP / one entrance"

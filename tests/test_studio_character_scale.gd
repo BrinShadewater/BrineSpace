@@ -1,6 +1,7 @@
 extends SceneTree
 const Editor=preload("res://scripts/room_layout_editor.gd")
 const Store=preload("res://scripts/room_layout_store.gd")
+const Prefs=preload("res://scripts/room_studio_prefs.gd")
 const OUT="res://output/gameplay-studio-20260912/"
 var failures:=0
 func _init() -> void: call_deferred("run")
@@ -59,7 +60,32 @@ func run() -> void:
 	await process_frame; await process_frame; await RenderingServer.frame_post_draw
 	check(editor.character_place.get_global_rect().end.x<=editor.size.x,"Scale controls fit compact viewport")
 	root.get_texture().get_image().save_png(OUT+"controls-960.png")
+	# Show character on the toolbar, and view options kept across rotations, rooms and reopening
+	# (owner playtest). Only this fixture's own settings file is written.
+	var prefs_file:=OUT+"studio-prefs-%d.cfg"%OS.get_process_id()
+	Prefs.path=prefs_file
+	editor.show_character.button_pressed=true
+	check(editor.character_mode.selected==1 and not editor.scale_actor.members().is_empty(),"Show character stands Bill in the room")
+	editor.pref_controls.clean.button_pressed=true
+	editor.pref_controls.snap.button_pressed=false
+	editor.zoom_slider.value=1.3
+	editor.switch_rotation(editor.quarter+1)
+	editor.switch_room((editor.index+1)%editor.entries.size())
+	check(editor.show_character.button_pressed and editor.character_mode.selected==1 and not editor.scale_actor.members().is_empty(),"Character stays shown in the next room and rotation")
+	check(editor.clean_preview and not editor.snap.button_pressed and is_equal_approx(editor.zoom,1.3),"Options survive room and rotation changes")
 	editor.dirty=false; editor.rotation_drafts.clear(); editor.close_editor()
 	await process_frame
+	Prefs.session.clear()
+	editor=Editor.open(root)
+	await process_frame
+	editor.set_process(false)
+	editor.autosave_enabled=false
+	check(editor.show_character.button_pressed and editor.pref_controls.clean.button_pressed and not editor.snap.button_pressed and is_equal_approx(editor.zoom_slider.value,1.3),"Options come back from the settings file when the Studio reopens")
+	editor.show_character.button_pressed=false
+	check(editor.character_mode.selected==0 and editor.scale_actor.members().is_empty(),"Unticking hides the character")
+	editor.dirty=false; editor.rotation_drafts.clear(); editor.close_editor()
+	await process_frame
+	Prefs.path=""; Prefs.session.clear()
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(prefs_file))
 	print("STUDIO CHARACTER SCALE: %s / %d clear walking samples"%["PASS" if failures==0 else str(failures)+" failures",sample_count])
 	quit(0 if failures==0 else 1)

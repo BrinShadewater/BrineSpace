@@ -242,6 +242,8 @@ var hand_count_label: Label
 var hand_panel: PanelContainer
 var hand_chrome: Array = []
 var hand_backdrop_shown := -1
+var hand_collapsed := false
+var hand_toggle_button: Button
 var station_center: Control
 var resize_keep_top := false
 var reroll_button: Button
@@ -1026,6 +1028,15 @@ func _build_ui() -> void:
 	draft_hint.add_theme_font_size_override("font_size", 14)
 	draft_hint.add_theme_color_override("font_color", Color("#536874"))
 	draft_status.add_child(draft_hint)
+	var toggle_hand := Button.new()
+	toggle_hand.name = "HandToggle"
+	toggle_hand.text = "HIDE HAND"
+	toggle_hand.custom_minimum_size = Vector2(150, 34)
+	toggle_hand.tooltip_text = "Fold the draft hand away to see more of the station. Press again to bring it back."
+	toggle_hand.pressed.connect(_toggle_hand_collapsed)
+	_style_hud_button(toggle_hand, false)
+	draft_status.add_child(toggle_hand)
+	hand_toggle_button = toggle_hand
 	var discard_all_button := Button.new()
 	discard_all_button.text = "REROLL HAND · 3"
 	discard_all_button.custom_minimum_size = Vector2(150, 38)
@@ -1124,8 +1135,9 @@ func _build_ui() -> void:
 func _apply_hand_backdrop() -> void:
 	if not is_instance_valid(hand_panel): return
 	var shown: bool = Preferences.hand_backdrop
-	if hand_backdrop_shown == int(shown): return
-	hand_backdrop_shown = int(shown)
+	var state := int(shown) | (int(hand_collapsed) << 1)
+	if hand_backdrop_shown == state: return
+	hand_backdrop_shown = state
 	if shown:
 		_apply_panel_style(hand_panel, Color("#071018"), Color("#15232c"))
 	else:
@@ -1133,18 +1145,28 @@ func _apply_hand_backdrop() -> void:
 		var clear := StyleBoxEmpty.new()
 		for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: clear.set_content_margin(side, framed.get_content_margin(side))
 		hand_panel.add_theme_stylebox_override("panel", clear)
-	for label in hand_chrome: label.visible = shown
+	for label in hand_chrome: label.visible = shown and not hand_collapsed
+	# Folded, only the toggle stays: the cards, pile and reroll hide and the station view
+	# reclaims the space (owner playtest).
+	hand_box.visible = not hand_collapsed
+	reroll_button.visible = not hand_collapsed
+	hand_toggle_button.text = "SHOW HAND" if hand_collapsed else "HIDE HAND"
+	hand_panel.offset_top = -72.0 if hand_collapsed else -380.0
 	var row: HBoxContainer = hand_panel.get_child(0)
 	var status: VBoxContainer = row.get_child(0)
 	status.alignment = BoxContainer.ALIGNMENT_BEGIN if shown else BoxContainer.ALIGNMENT_END
 	hand_panel.mouse_filter = Control.MOUSE_FILTER_STOP if shown else Control.MOUSE_FILTER_IGNORE
 	for container in [row, status, hand_box]:
 		container.mouse_filter = Control.MOUSE_FILTER_PASS if shown else Control.MOUSE_FILTER_IGNORE
-	var view_bottom := -344.0 if shown else -8.0
+	var view_bottom := (-80.0 if hand_collapsed else -344.0) if shown else -8.0
 	if station_center.offset_bottom != view_bottom:
 		# Toggling mid-run moves only the view's bottom edge; the station holds still on screen.
 		resize_keep_top = camera_viewport_size != Vector2.ZERO
 		station_center.offset_bottom = view_bottom
+
+func _toggle_hand_collapsed() -> void:
+	hand_collapsed = not hand_collapsed
+	_apply_hand_backdrop()
 
 # The station view less the floating draft hand, for popups that must not cover the cards.
 func station_clear_rect() -> Rect2:
@@ -5467,7 +5489,11 @@ func _fit_sidebar_inspector(scroll: ScrollContainer, side: VBoxContainer, panel:
 		remaining -= child.get_combined_minimum_size().y + side.get_theme_constant("separation")
 	var height := clampf(remaining, 360.0, 520.0)
 	panel.custom_minimum_size.y = height
-	inspector_label.custom_minimum_size.y = clampf(height - 190.0, 180.0, 330.0)
+	# Only the reading text gives way. Everything else in the inspector (header, image, room
+	# switch, airlock and crew work controls) keeps its natural height, so a long selection
+	# no longer pushes TIME / CYCLE below the window (owner playtest).
+	var fixed: float = panel.get_child(0).get_combined_minimum_size().y - inspector_label.get_combined_minimum_size().y + panel.get_theme_stylebox("panel").get_minimum_size().y
+	inspector_label.custom_minimum_size.y = clampf(remaining - fixed, 120.0, 330.0)
 
 func _resize_grid_view() -> void:
 	var previous_size := camera_viewport_size

@@ -72,6 +72,18 @@ func run() -> void:
 	check(absf(game.grid_scroll.get_global_rect().end.y - framed_bottom) < 1.0, "Station view returns above the hand")
 	_click(empty)
 	check(grid_clicks == 1, "Backdrop blocks station clicks again")
+
+	# The toggle on the hand folds it away and brings it back (owner playtest).
+	game.hand_toggle_button.emit_signal("pressed")
+	for i in range(4): await process_frame
+	check(not game.hand_box.is_visible_in_tree() and not game.reroll_button.is_visible_in_tree(), "Folded hand hides cards, pile and reroll")
+	check(game.hand_toggle_button.is_visible_in_tree() and game.hand_toggle_button.text == "SHOW HAND", "The toggle stays to bring the hand back")
+	check(game.grid_scroll.get_global_rect().end.y > framed_bottom + 200, "The station view reclaims the hand's space")
+	check(game.hand_toggle_button.get_global_rect().end.y <= game.get_node("Root").size.y, "The toggle stays on screen")
+	game.hand_toggle_button.emit_signal("pressed")
+	for i in range(4): await process_frame
+	check(game.hand_box.is_visible_in_tree() and game.reroll_button.is_visible_in_tree() and game.hand_toggle_button.text == "HIDE HAND", "Pressing again restores the hand")
+	check(absf(game.grid_scroll.get_global_rect().end.y - framed_bottom) < 1.0 and game.hand_panel.get_global_rect().is_equal_approx(hand), "The hand and view return to their places")
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(Preferences.save_path))
 	print("HAND BACKDROP %s: toggle hides chrome, keeps cards/reroll/pile, extends the station view and passes clicks" % ("PASS" if failures == 0 else "FAIL"))
 	quit(1 if failures else 0)

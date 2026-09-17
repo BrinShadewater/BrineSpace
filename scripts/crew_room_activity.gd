@@ -79,7 +79,11 @@ static func stations(data: Dictionary) -> Array:
 					if absf(candidate.x)>144 or absf(candidate.y)>144 or _approach_blocked(data,candidate): continue
 					if best==Vector2.INF or candidate.distance_squared_to(ideal)<best.distance_squared_to(ideal): best=candidate
 			if best!=Vector2.INF: read_point=best
-		return [{"point":read_point,"facing":"north","room":id,"mode":"read"},{"point":Vector2(80,0),"facing":"north","room":id,"mode":"watch"}]
+		# The porthole sits opposite the entrance, so the watch spot turns with the room.
+		var window_quarter: int=posmod(int(data.get("layout",[{}])[0].get("rotation",0)) if not data.get("layout",[]).is_empty() else 0,4)
+		var watch:=Vector2(80,0)
+		for unused in range(window_quarter): watch=Vector2(-watch.y,watch.x)
+		return [{"point":read_point,"facing":"north","room":id,"mode":"read"},{"point":watch,"facing":["north","east","south","west"][window_quarter],"room":id,"mode":"watch"}]
 	if id not in ROOMS: return result
 	# A layout can replace the authored instrument bank with equipment the owner prefers
 	# (owner direction, Sept 15). The room keeps its work station: fall back to the largest

@@ -77,7 +77,7 @@ func run() -> void:
 	game.paused = false
 	for frame in range(36): game._update_wreck_clearance(0.1)
 	game.paused = true
-	assert(game.grid_view._drone_door_frame(game,Vector2i(19,20),Vector2i(18,20))>0,"Exterior port opens before drone crosses its threshold")
+	assert(game.grid_view._drone_door_frame(game,Vector2i(19,20),Vector2i(18,20))==0,"Drones pass through doors without opening them (owner playtest)")
 	game.grid_view.queue_redraw()
 	await capture("launch-open-port")
 	game.paused = false

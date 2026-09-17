@@ -78,8 +78,6 @@ func refresh() -> void:
 	if choice==null: return
 	var cell: Vector2i=game.selected_room_cell
 	visible=game.selected_card_id.is_empty() and game.occupied.has(cell) and game.occupied[cell].id=="airlock"
-	# Keep the inspector's total height stable when its locker controls appear.
-	game.inspector_label.custom_minimum_size.y=70 if visible else 210
 	if not visible: return
 	for i in range(choice.item_count): choice.set_item_disabled(i,not Architects.present(game,str(choice.get_item_metadata(i))))
 	if choice.is_item_disabled(choice.selected):

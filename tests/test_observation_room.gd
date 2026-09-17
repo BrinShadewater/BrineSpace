@@ -27,7 +27,8 @@ func run() -> void:
 	game.selected_card_id="observation_room"
 	game.selected_rotation=0
 	game._rotate_selected_room()
-	assert(game.selected_rotation==0,"North installation must retain its orientation")
+	assert(game.selected_rotation==1,"The room rotates like any other (owner playtest)")
+	game.selected_rotation=0
 	assert(game.get_placement_problem("observation_room",cell).is_empty(),game.get_placement_problem("observation_room",cell))
 	var before: int=game.resources.metal
 	game._on_grid_clicked(cell)

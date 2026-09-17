@@ -58,7 +58,12 @@ func run() -> void:
 			widths.append(button.size.x)
 			var icon = button.get_node("NavigationBadge")
 			assert(absf(icon.position.x + icon.size.x / 2.0 - button.size.x / 2.0) < 1.0, "Badge is centered")
-			assert(icon.position.y >= 8 and icon.position.y + icon.size.y <= 64, "Badge retains breathing room above its caption")
+			# Badge and caption are centred together: equal space above the badge and below the caption.
+			var frame: StyleBox = button.get_theme_stylebox("normal")
+			assert(icon.position.y >= 4 and absf(frame.content_margin_bottom - icon.position.y) <= 1.0, "Badge and caption are centred in the button")
+			assert(frame.content_margin_top == icon.position.y + icon.size.y + 4, "Caption sits just below the badge")
+			var frame_image: Image = (frame as StyleBoxTexture).texture.get_image()
+			for x in range(frame_image.get_width()): assert(frame_image.get_pixel(x,8) == frame_image.get_pixel(x,7), "No highlight line runs across the top of the badge")
 		assert(absf(widths.max() - widths.min()) < 1.0, "Navigation buttons share equal space")
 		var panel = game.find_child("ControlsPanel",true,false)
 		assert(panel.get_global_rect().end.y <= game.get_node("Root").size.y, "Time and cycle panel fits the window")

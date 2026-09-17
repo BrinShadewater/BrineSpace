@@ -88,14 +88,14 @@ static func all_rooms() -> Dictionary:
 		"salvage_workshop": {
 			"id":"salvage_workshop", "display_name":"Salvage Workshop", "category":"Engineering", "rarity":"uncommon",
 			"cost":{"metal":8}, "size":Vector2i.ONE, "production":{"rare_minerals":1}, "consumption":{"metal":3,"power":2},
-			"tags":["salvage","workshop","engineering"], "layout":"layout_dead_south", "fixed_rotation":0, "unlocked":true,
-			"description":"Sorts stored Metal into recoverable components: 3 Metal and 2 Power yield 1 Rare Mineral per functioning cycle. South entrance; fixed orientation. The previous owner called these parts irreparable. They were insufficiently patient."
+			"tags":["salvage","workshop","engineering"], "layout":"layout_dead_south", "unlocked":true,
+			"description":"Sorts stored Metal into recoverable components: 3 Metal and 2 Power yield 1 Rare Mineral per functioning cycle. One entrance. The previous owner called these parts irreparable. They were insufficiently patient."
 		},
 		"observation_room": {
 			"id":"observation_room", "display_name":"Observation Room", "category":"Crew", "rarity":"uncommon",
 			"cost":{"metal":6}, "size":Vector2i.ONE, "production":{}, "consumption":{},
-			"tags":["crew","observation","library"], "layout":"layout_dead_south", "fixed_rotation":0, "unlocked":true,
-			"description":"A north-facing ocean porthole between three walls of books. South entrance; fixed orientation. A quiet room with no resource output. The glass is rated for the pressure. The books are less certain."
+			"tags":["crew","observation","library"], "layout":"layout_dead_south", "unlocked":true,
+			"description":"An ocean porthole facing away from the entrance, between three walls of books. One entrance. A quiet room with no resource output. The glass is rated for the pressure. The books are less certain."
 		},
 		"current_turbine": {
 			"id":"current_turbine", "display_name":"Current Turbine", "category":"Engineering", "rarity":"common",

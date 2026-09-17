@@ -2424,28 +2424,10 @@ func _compute_door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i) -> i
 		open_amount = (1.0 - progress) / 0.16
 	return maxi(drone_frame,clampi(int(round(open_amount * float(DOOR_OPEN_FRAMES - 1))), 0, DOOR_OPEN_FRAMES - 1))
 
-var drone_frame_cache := {}
-var drone_frame_tick := -1
-func _drone_door_frame(main, cell_a: Vector2i, cell_b: Vector2i) -> int:
-	# Called several times per room per frame from the door/surface state keys;
-	# drones do not move within a frame, so memoise per rendered frame.
-	var tick := Engine.get_process_frames()
-	if drone_frame_tick != tick:
-		drone_frame_tick = tick
-		drone_frame_cache.clear()
-	var memo_key := [cell_a,cell_b]
-	if drone_frame_cache.has(memo_key): return drone_frame_cache[memo_key]
-	var center := (Vector2(cell_a)+Vector2(cell_b))*0.5
-	var amount := 0.0
-	for drone in main.drone_fleet.drones.values():
-		if drone.phase not in ["outbound","returning"] or drone.get("route",[]).is_empty(): continue
-		var previous: Vector2i = drone.get("last_cell",drone.home)
-		var next := Vector2i(drone.route[0])
-		if not ((previous==cell_a and next==cell_b) or (previous==cell_b and next==cell_a)): continue
-		amount = maxf(amount,clampf((0.34-Vector2(drone.position).distance_to(center))/0.15,0,1))
-	var frame := roundi(amount*float(DOOR_OPEN_FRAMES-1))
-	drone_frame_cache[memo_key] = frame
-	return frame
+# Drones pass through doorways without opening the doors (owner playtest): they still route
+# through them, but doors, door lighting and flood flow between rooms follow crew only.
+func _drone_door_frame(_main, _cell_a: Vector2i, _cell_b: Vector2i) -> int:
+	return 0
 
 var crew_feet_cache := PackedVector2Array()
 var crew_feet_tick := -1

@@ -21,6 +21,8 @@ func run():
 	var key := InputEventKey.new(); key.keycode = KEY_F8; key.pressed = true
 	report._input(key)
 	check(paused and report.overlay.visible, "F8 opens and pauses")
+	check(not report.pending_captured_at.is_empty(), "F8 captures diagnostics at the key press, not at save")
+	var captured_at: String = report.pending_captured_at
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("user://report-overlay.png")
 	var first: String = report.save_report("fixture note")
@@ -29,6 +31,7 @@ func run():
 	var zip := ZIPReader.new()
 	check(zip.open(first) == OK, "Valid ZIP")
 	check(zip.read_file("report.txt").get_string_from_utf8().contains("fixture note"), "Tester note retained")
+	check(zip.read_file("report.txt").get_string_from_utf8().contains("captured at F8: " + captured_at), "Report records when F8 was pressed")
 	check(zip.read_file("logs/current.log").size() == 2097152, "Log tail capped at 2 MiB")
 	check(zip.read_file("logs/current.log").get_string_from_utf8().ends_with("END"), "Log keeps newest bytes")
 	check(zip.read_file("logs/previous.log").get_string_from_utf8() == "previous session", "Previous log included")
