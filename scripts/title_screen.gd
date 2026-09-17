@@ -146,7 +146,7 @@ func _ready() -> void:
 			recovered_rooms += 1
 	codex_button = _badge("CODEX", "res://brineui/title/codex-badge.svg", "%d ROOMS RECOVERED" % recovered_rooms)
 	codex_button.set_meta("recovered_count", recovered_rooms)
-	progression_button = _badge("META PROGRESSION", "res://brineui/title/progression-badge.svg", "%d RESEARCH" % meta_state.total_research_points)
+	progression_button = _badge("META PROGRESSION", "res://brineui/title/progression-badge.svg", "%d RESEARCH" % preload("res://scripts/research_tree.gd").available(meta_state))
 	codex_button.tooltip_text = "Recovered rooms, discovered synergies, and clues to missing signals."
 	progression_button.tooltip_text = "Research, discoveries, and knowledge retained between loops."
 	codex_button.pressed.connect(func() -> void: _open_archive("codex", codex_button))
@@ -259,6 +259,9 @@ func _open_archive(kind: String, opener: Button) -> void:
 			button.disabled = false
 		archive_opener.grab_focus()
 		_refresh_unread_badges()
+		# Spending Research in the tree changes the balance the badge shows.
+		if progression_button.has_meta("detail_label"):
+			progression_button.get_meta("detail_label").text = "%d RESEARCH" % preload("res://scripts/research_tree.gd").available(meta_state)
 	)
 
 func _refresh_unread_badges() -> void:

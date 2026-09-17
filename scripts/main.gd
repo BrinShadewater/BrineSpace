@@ -5,6 +5,7 @@ const SynergyManagerScript := preload("res://scripts/synergy_manager.gd")
 const DiscoveryManagerScript := preload("res://scripts/discovery_manager.gd")
 const OrbitManagerScript := preload("res://scripts/orbit_manager.gd")
 const MetaStateScript := preload("res://scripts/meta_state.gd")
+const ResearchTree := preload("res://scripts/research_tree.gd")
 const GridCanvasScript := preload("res://scripts/grid_canvas.gd")
 const RunManagerScript := preload("res://scripts/run_manager.gd")
 const RunSave := preload("res://scripts/run_save.gd")
@@ -1526,7 +1527,8 @@ func _update_wreck_clearance(delta: float) -> void:
 		_place_room(order.id,order.pos,false,true)
 		selected_rotation = prior_rotation
 	if not built.is_empty(): _refresh_all()
-	var completed := WreckField.advance(wrecks,occupied,delta,drone_fleet.clearance_seconds)
+	# Quick Rigging speeds hands-on repairs (wards, companion sites); drone work keeps its own rate.
+	var completed := WreckField.advance(wrecks,occupied,delta*ResearchTree.repair_rate(meta),drone_fleet.clearance_seconds)
 	for cell in completed:
 		if Companions.is_site(self,cell):
 			Companions.connect_room(self,cell);continue
@@ -1988,6 +1990,11 @@ func _start_reboot_cycle() -> void:
 	discard_pile.clear()
 	rerolls_remaining = 3
 	reroll_recovery_progress = 0
+	# Research tree perks (Meta Progression page) that shape a new loop's start.
+	var perk_supplies: Dictionary = ResearchTree.start_resources(meta)
+	for resource_id in perk_supplies:
+		resources[resource_id] = int(resources.get(resource_id, 0)) + int(perk_supplies[resource_id])
+	rerolls_remaining += ResearchTree.extra_rerolls(meta)
 	grid_view.door_wet_history.clear()
 	selected_doctrines.clear()
 	pending_doctrines.clear()
@@ -2461,6 +2468,8 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 		_add_to_delta(delta, _without_key(consumption, "power"), -1)
 		if room["id"] == "research_lab" and crew_count > 0:
 			_add_to_delta(delta, {"data": 1}, 1)
+		if room["id"] == "research_lab" and ResearchTree.research_lab_data(meta) > 0:
+			_add_to_delta(delta, {"data": ResearchTree.research_lab_data(meta)}, 1)
 		if room["id"] == "clone_lab":
 			added_crew += 1
 	var links := DiscoveryManagerScript.functioning_links(connected_synergy_links, working_cells)
@@ -2908,7 +2917,7 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	running = false
 	play_station_sound("ui_end" if archived or victory else "ui_failure")
 	run_victory = run_victory or victory
-	var earned := int(float(max(resources["data"], 0)) / 5.0) + int(float(resonance_score) / 50.0)
+	var earned := int(float(int(float(max(resources["data"], 0)) / 5.0) + int(float(resonance_score) / 50.0)) * ResearchTree.research_multiplier(meta))
 	var award := maxi(0, earned - run_awarded_research)
 	run_awarded_research += award
 	meta.add_research_points(award)
@@ -3723,7 +3732,7 @@ func _without_key(values: Dictionary, removed_key: String) -> Dictionary:
 	return filtered
 
 func _get_resource_capacity(resource_id: String) -> int:
-	var capacity: int = int(BASE_STORAGE_CAPACITY.get(resource_id, 999))
+	var capacity: int = int(BASE_STORAGE_CAPACITY.get(resource_id, 999)) + ResearchTree.capacity_bonus(meta, resource_id)
 	for room in placed_rooms:
 		capacity += int(room.get("storage", {}).get(resource_id, 0))
 	return capacity

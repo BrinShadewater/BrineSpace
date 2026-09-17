@@ -65,7 +65,7 @@ static func advance(game, delta: float) -> void:
 		var seconds := duration(ward)
 		for pod in ward.pods:
 			if pod.recovered: continue
-			pod.wake = minf(seconds,float(pod.wake)+maxf(delta,0.0))
+			pod.wake = minf(seconds,float(pod.wake)+maxf(delta,0.0)*preload("res://scripts/research_tree.gd").thaw_rate(game.get("meta")))
 			if pod.wake >= seconds:
 				if game.crew_count >= game._get_crew_capacity(): break
 				if not preload("res://scripts/architects.gd").release(game,pod,cell):

@@ -20,6 +20,7 @@ var codex_count: Label
 var codex_hint: Label
 var texture_cache := {}
 const Catalog = preload("res://scripts/codex_catalog.gd")
+const ResearchTree = preload("res://scripts/research_tree.gd")
 var close_button: Button
 var closing := false
 var transition: Tween
@@ -351,19 +352,113 @@ func _resources(values: Dictionary) -> String:
 	return "None" if parts.is_empty() else " / ".join(parts)
 
 func _populate_progression() -> void:
-	var summary := _label("%d RESEARCH   /   %d STABILIZED LOOPS   /   %d PATTERNS STABILIZED" % [meta_state.total_research_points, meta_state.total_victories, meta_state.stabilized_synergy_ids.size()], 23)
+	var summary := _label("%d RESEARCH AVAILABLE   /   %d EARNED   /   %d STABILIZED LOOPS   /   %d PATTERNS STABILIZED" % [ResearchTree.available(meta_state), meta_state.total_research_points, meta_state.total_victories, meta_state.stabilized_synergy_ids.size()], 23)
+	summary.name = "ResearchSummary"
 	grid.add_child(summary)
-	grid.add_child(_label("Some knowledge survives the reset. Some of it should not.\nResearch, learned patterns and unlocked blueprints persist between loops.", 18))
-	grid.add_child(_label("%d MEMORIES RECOVERED   /   %d CORE UPGRADES RECOVERED" % [meta_state.recovered_memory_ids.size(), meta_state.brine_upgrades.size()], 16))
-	for section in [{"title": "RECOVERED MEMORIES", "records": meta_state.recovered_memory_ids}, {"title": "CORE UPGRADES", "records": meta_state.brine_upgrades}]:
-		grid.add_child(_label(section.title, 22))
-		if section.records.is_empty():
-			grid.add_child(_label("NO RECORDS RECOVERED.", 16))
-		else:
-			var ids: Array = section.records.keys()
-			ids.sort()
-			for id in ids:
-				grid.add_child(_label(str(id).replace("_", " ").capitalize() + "\nRecorded in this profile. Description and effects are not defined in this prototype.", 17))
+	grid.add_child(_label("Some knowledge survives the reset. Some of it should not.\nEach loop banks Research from its Data and Resonance. Spend it here on perks that carry into every loop.", 18))
+	grid.add_child(_research_tree())
+	grid.add_child(_label("%d MEMORIES RECOVERED" % meta_state.recovered_memory_ids.size(), 16))
+	grid.add_child(_label("RECOVERED MEMORIES", 22))
+	if meta_state.recovered_memory_ids.is_empty():
+		grid.add_child(_label("NO RECORDS RECOVERED.", 16))
+	else:
+		var ids: Array = meta_state.recovered_memory_ids.keys()
+		ids.sort()
+		for id in ids:
+			grid.add_child(_label(str(id).replace("_", " ").capitalize() + "\nRecorded in this profile.", 17))
+
+# Research tree (owner request): three branches of five perks, each needing the one above it.
+func _research_tree() -> Control:
+	var box := VBoxContainer.new()
+	box.name = "ResearchTree"
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_theme_constant_override("separation", 12)
+	box.add_child(_label("RESEARCH TREE", 22))
+	var columns := HBoxContainer.new()
+	columns.add_theme_constant_override("separation", 18)
+	box.add_child(columns)
+	for branch in ResearchTree.BRANCHES:
+		var column := VBoxContainer.new()
+		column.name = str(branch.id).capitalize().replace(" ", "") + "Branch"
+		column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		column.add_theme_constant_override("separation", 6)
+		columns.add_child(column)
+		var heading := _label(branch.name, 20)
+		heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		heading.add_theme_color_override("font_color", branch.color)
+		column.add_child(heading)
+		var perks: Array = ResearchTree.perks_in(branch.id)
+		for i in range(perks.size()):
+			if i > 0:
+				var link := _label("│", 16)
+				link.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+				link.add_theme_color_override("font_color", branch.color.darkened(0.3) if ResearchTree.owned(meta_state, perks[i - 1]) else Color("2c4550"))
+				column.add_child(link)
+			column.add_child(_perk_node(perks[i], branch.color))
+	var footer := HBoxContainer.new()
+	footer.add_theme_constant_override("separation", 18)
+	box.add_child(footer)
+	var note := _label("Start-of-loop perks apply from your next loop. Storage and rate perks apply at once. This tree is a prototype.", 15)
+	note.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	footer.add_child(note)
+	var refund := Button.new()
+	refund.name = "RefundResearch"
+	refund.text = "REFUND ALL PERKS"
+	refund.disabled = ResearchTree.spent(meta_state) == 0
+	preload("res://scripts/title_button_style.gd").apply(refund, 240, 44)
+	refund.pressed.connect(func() -> void:
+		ResearchTree.refund_all(meta_state)
+		_refresh_progression("RefundResearch"))
+	footer.add_child(refund)
+	return box
+
+func _perk_node(id: String, color: Color) -> Control:
+	var perk: Dictionary = ResearchTree.PERKS[id]
+	var state := ResearchTree.state(meta_state, id)
+	var panel := PanelContainer.new()
+	panel.name = id
+	var style := _style(color if state == "owned" else (color.darkened(0.35) if state == "ready" else Color("27404b")))
+	style.bg_color = Color("14303a") if state == "owned" else Color("10232e")
+	style.set_border_width_all(2 if state == "owned" else 1)
+	style.content_margin_top = 12
+	style.content_margin_bottom = 12
+	panel.add_theme_stylebox_override("panel", style)
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 6)
+	panel.add_child(rows)
+	var title := _label("%d  %s" % [int(perk.tier), str(perk.name).to_upper()], 17)
+	title.add_theme_color_override("font_color", Color("e6f4f2") if state in ["owned", "ready"] else Color("7a959e"))
+	rows.add_child(title)
+	var effect := _label(str(perk.text), 15)
+	effect.add_theme_color_override("font_color", Color("b9dce5") if state != "locked" else Color("5d7882"))
+	rows.add_child(effect)
+	var action := Button.new()
+	action.name = "Buy"
+	action.text = {"owned": "OWNED", "ready": "UNLOCK  ·  %d RESEARCH" % int(perk.cost), "short": "NEEDS %d RESEARCH" % int(perk.cost), "locked": "LOCKED  ·  %d RESEARCH" % int(perk.cost)}[state]
+	action.disabled = state != "ready"
+	action.tooltip_text = "Unlock the perk above first." if state == "locked" else ""
+	preload("res://scripts/title_button_style.gd").apply(action, 220, 40)
+	action.pressed.connect(func() -> void:
+		if ResearchTree.buy(meta_state, id):
+			_refresh_progression(id))
+	rows.add_child(action)
+	return panel
+
+# Rebuild the page in place after a purchase or refund, keeping the scroll position and focus.
+func _refresh_progression(focus_name: String) -> void:
+	var keep := scroll.scroll_vertical
+	for child in grid.get_children():
+		grid.remove_child(child)
+		child.queue_free()
+	_populate_progression()
+	preload("res://scripts/title_settings.gd").apply_menu_text(self)
+	scroll.set_deferred("scroll_vertical", keep)
+	var target := grid.find_child(focus_name, true, false)
+	if target is PanelContainer: target = target.find_child("Buy", true, false)
+	if target is Control and target.focus_mode != Control.FOCUS_NONE and not (target is Button and target.disabled):
+		target.grab_focus.call_deferred()
+	else:
+		close_button.grab_focus.call_deferred()
 
 func _input(event: InputEvent) -> void:
 	if not closing:

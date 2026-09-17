@@ -69,7 +69,7 @@ static func step_water(game, dt: float) -> void:
 		# closed doors). Seepage runs inward only, so the core never carries a flood onward.
 		var into_core: bool = (difference > 0 and game.occupied[next].get("id","") == "brine_core") or (difference < 0 and game.occupied[cell].get("id","") == "brine_core")
 		if into_core: aperture = maxf(aperture, CORE_SEEPAGE)
-		var flow := difference*0.18*aperture*dt
+		var flow := difference*0.18*aperture*dt*preload("res://scripts/research_tree.gd").flood_rate(game.get("meta"))
 		changes[cell] -= flow
 		changes[next] += flow
 	for room in game.placed_rooms:
