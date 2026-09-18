@@ -130,6 +130,39 @@ func run() -> void:
 		(page.find_child("RefundResearch", true, false) as Button).pressed.emit()
 		for i in range(2): await process_frame
 		check(Research.available(game.meta) == 20 and (page.find_child("ResearchSummary", true, false) as Label).text.begins_with("20 ARCHIVED DATA AVAILABLE"), "Refund from the page restores the balance")
+	# Nothing in the graph may sit on top of anything else: the keystones at the ends were touching
+	# before the dendrites were given their own sides (owner playtest, Sept 18). A node is 18 across
+	# and a keystone 24, so 46 is the point where two of them meet.
+	var web = preload("res://scripts/memory_core_web.gd").new()
+	web.meta_state = game.meta
+	web.size = Vector2(700, 700)
+	root.add_child(web)
+	for i in range(2): await process_frame
+	var ids: Array = []
+	for branch in Research.BRANCHES:
+		for id in Research.perks_in(branch.id): ids.append(id)
+	var closest := 9999.0
+	var closest_pair := ""
+	for a in range(ids.size()):
+		for b in range(a + 1, ids.size()):
+			var gap: float = web.node_position(ids[a]).distance_to(web.node_position(ids[b]))
+			if gap < closest:
+				closest = gap
+				closest_pair = "%s and %s" % [ids[a], ids[b]]
+	check(closest >= 46.0, "No two memories overlap: closest are %s at %.1f px" % [closest_pair, closest])
+	# A dendrite keeps to one side of its lobe, so its keystone never crosses its neighbour's.
+	for branch in Research.BRANCHES:
+		var sides := {}
+		for id in Research.perks_in(branch.id):
+			var side: int = web.dendrite_side(id)
+			if side < 0: continue
+			if not sides.has(side): sides[side] = []
+			sides[side].append(id)
+		check(sides.size() == 2, "%s spreads over two sides" % branch.id)
+		for side in sides:
+			check(sides[side].size() == 3, "%s side %d carries its dendrite and keystone" % [branch.id, side])
+	web.queue_free()
+	await process_frame
 	page.queue_free()
 	game.queue_free()
 	await process_frame

@@ -1,3 +1,25 @@
+## Memory core: dendrites take sides, keystones stop touching - September 18, 2026
+
+1. Owner playtest: spread the nodes out, the keystones at the end were overlapping, and make the
+   placement more organic and varied.
+2. Placement is built from the dependency tree now instead of slot order. A memory belongs to the
+   dendrite it grew from - found by walking its requirements back to the step that left the root -
+   and that dendrite keeps to one side of its lobe the whole way out, so no path crosses its
+   neighbour and no keystone lands on another.
+3. The lean grows with depth but is capped by the lobe's share of the circle at that distance, so
+   the spread is wide at the rim without spilling into the next lobe. Every node also nudges its
+   own ring and angle from its name, which keeps the whole thing irregular rather than drawn.
+4. Measured, not eyeballed: the closest pair of nodes anywhere in the graph went from 35 px to
+   53 px, against 18 px node and 24 px keystone radii. test_research_tree now fails under 46 px and
+   also checks that every lobe spreads over exactly two sides with three memories on each.
+5. Labels: a lobe's name sits past its own furthest memory rather than at a guessed radius; names
+   carry a backing plate, stagger by lobe and by depth, and step away from any name already written
+   this frame. Only recovered memories and whatever the pointer is on are named - naming every
+   reachable one put two long names on top of each other wherever dendrites ran close.
+6. Checked: test_research_tree passes headless, test_title_screen and test_title_checkpoint_layout
+   on the native lane. Trying to make names dodge the node circles as well pushed them off the
+   panel edge, so that attempt was reverted; names avoid names only.
+
 ## Deeper memory lobes and drift behind the core - September 18, 2026
 
 1. Owner playtest (test 5): more branching nodes on the meta progression page, fill the empty

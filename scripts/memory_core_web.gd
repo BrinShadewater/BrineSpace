@@ -19,6 +19,8 @@ var buttons := {}
 var hover_card: PanelContainer
 var hover_text: RichTextLabel
 var hovered := ""
+# Rectangles already written this frame, so a name can step aside instead of landing on one.
+var label_rects: Array[Rect2] = []
 var pulses: Array = []
 var clock := 0.0
 
@@ -86,11 +88,11 @@ func center() -> Vector2:
 const DEEPEST := 3.0
 const RING_SPREAD := 1.7
 func ring_step() -> float:
-	return maxf(24.0, (minf(size.x, size.y) * 0.5 - LABEL_MARGIN - CORE_RADIUS - KEYSTONE_RADIUS) / (DEEPEST * RING_SPREAD + 0.7))
+	return maxf(20.0, (minf(size.x, size.y) * 0.5 - LABEL_MARGIN - CORE_RADIUS - KEYSTONE_RADIUS) / (DEEPEST * RING_SPREAD + 2.5))
 
 func first_ring() -> float:
-	# Eight lobes leave little arc between their roots, so the first ring sits further out.
-	return CORE_RADIUS + ring_step() * 1.7
+	# Eight lobes leave little arc between their roots, so the first ring sits well out.
+	return CORE_RADIUS + ring_step() * 2.1
 
 func branch_angle(index: int) -> float:
 	return -PI * 0.5 + TAU * float(index) / float(Research.BRANCHES.size())
@@ -104,15 +106,35 @@ func node_lean(id: String) -> float:
 	return (float(seed) / 1000.0 - 0.5) * 0.34
 
 # Rings out from the core follow the dependency chain, not the tier number: a node sits one ring
-# past the furthest node it needs. Two paths off the same root therefore share a ring and fan out
-# to either side of their department's spoke.
+# past the furthest node it needs.
 func node_depth(id: String) -> int:
 	var deepest := -1
 	for needed in Research.requirements(id):
 		deepest = maxi(deepest, node_depth(str(needed)))
 	return deepest + 1
 
-# Every node at the same depth in the same department, in a stable order.
+# Which dendrite a memory belongs to: walk back along its requirements until the step that left the
+# root, and take that step's place among the root's children. A dendrite therefore keeps to one
+# side of its lobe the whole way out, and its keystone never crosses its neighbour's.
+func dendrite_side(id: String) -> int:
+	var branch := str(Research.PERKS[id].branch)
+	var walker := id
+	var guard := 0
+	while guard < 12:
+		guard += 1
+		var needed: Array = Research.requirements(walker)
+		if needed.is_empty(): return -1
+		var parent := str(needed[0])
+		if Research.requirements(parent).is_empty():
+			var children: Array = []
+			for other in Research.perks_in(branch):
+				if Research.requirements(other) == [parent]: children.append(other)
+			children.sort()
+			return maxi(children.find(walker), 0)
+		walker = parent
+	return -1
+
+# Everything at the same depth in the same lobe, in a stable order.
 func depth_row(branch: String, depth: int) -> Array:
 	var row: Array = []
 	for id in Research.perks_in(branch):
@@ -125,18 +147,23 @@ func node_position(id: String) -> Vector2:
 	for i in range(Research.BRANCHES.size()):
 		if Research.BRANCHES[i].id == perk.branch: index = i
 	var depth := node_depth(id)
-	# Depth tops out at three - root, dendrite, the memory past it, then the keystone.
-	# Alternate lobes sit a little further out, so neighbouring roots never share a radius and the
-	# core reads as grown rather than drawn.
+	# Alternate lobes sit a little further out, and every node nudges its own ring, so the core
+	# reads as grown rather than drawn.
 	var stagger := 0.38 if index % 2 == 1 else 0.0
-	var ring := first_ring() + ring_step() * (RING_SPREAD * float(depth) + stagger)
-	var row := depth_row(str(perk.branch), depth)
-	var slot := maxi(row.find(id), 0)
-	var angle := branch_angle(index) + node_lean(id) * (0.24 + float(depth) * 0.06)
+	var wander := node_lean(id)
+	var ring := first_ring() + ring_step() * (RING_SPREAD * float(depth) + stagger + wander * 0.9)
+	var angle := branch_angle(index) + node_lean(id + "angle") * 0.18
 	var spoke := Vector2.from_angle(angle)
-	# Siblings sit a fixed distance apart across the spoke rather than a fixed angle, so a split
-	# reads the same width close to the core as it does out at the keystone.
-	var across := (float(slot) - float(row.size() - 1) * 0.5) * ring_step() * 1.05
+	# A dendrite leans further off the spoke the further it runs, but never past its share of the
+	# lobe's arc, so two lobes' keystones keep their distance.
+	var side := dendrite_side(id)
+	var across := 0.0
+	if side >= 0:
+		# The lobe's share of the circle at this distance, kept back from its neighbours' share.
+		var room: float = ring * (TAU / float(Research.BRANCHES.size())) * 0.42
+		var spread: float = minf(ring_step() * (0.6 + 0.6 * float(depth)), room)
+		across = spread * (-1.0 if side == 0 else 1.0) + wander * minf(ring_step() * 0.4, room * 0.22)
+		across = clampf(across, -room, room)
 	return center() + spoke * ring + spoke.rotated(PI * 0.5) * across
 
 func _place() -> void:
@@ -231,7 +258,7 @@ func label_side(id: String) -> Vector2:
 	var spoke := Vector2.from_angle(branch_angle(index))
 	var across := spoke.rotated(PI * 0.5)
 	var offset := (node_position(id) - center()).dot(across)
-	if absf(offset) > 1.0: return across if offset > 0.0 else -across
+	if absf(offset) > 4.0: return across if offset > 0.0 else -across
 	# A root sits on its spoke, and its neighbours' roots are close at eight lobes, so every root
 	# writes the same way around the core instead of two of them meeting in the gap.
 	return across
@@ -256,8 +283,27 @@ func _draw_node_name(font: Font, at: Vector2, radius: float, id: String, state: 
 	var lobe := 0
 	for i in range(Research.BRANCHES.size()):
 		if Research.BRANCHES[i].id == Research.PERKS[id].branch: lobe = i
-	var lift := 11.0 if lobe % 2 == 1 else -1.0
-	draw_string(font, anchor + Vector2(-width if at_left else 0.0, lift), text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, tint)
+	# Stagger by lobe and again by depth, so neither two neighbours nor two steps of one dendrite
+	# start on the same line.
+	var lift := -6.0 + 7.0 * float(lobe % 4) + (13.0 if node_depth(id) % 2 == 1 else 0.0)
+	var written := anchor + Vector2(-width if at_left else 0.0, lift)
+	var plate := Vector2(width + 8.0, float(size) + 7.0)
+	# Long names still meet where two dendrites run close, so a name that lands on one already
+	# written steps away from the core until it is clear (owner playtest, Sept 18).
+	var away: float = 1.0 if written.y >= center().y else -1.0
+	for attempt in range(7):
+		var candidate := Rect2(written + Vector2(-4.0, -float(size) - 1.0), plate)
+		var clash := false
+		for taken in label_rects:
+			if taken.intersects(candidate):
+				clash = true
+				break
+		if not clash:
+			label_rects.append(candidate)
+			break
+		written.y += away * 15.0
+	draw_rect(Rect2(written + Vector2(-4.0, -float(size) - 1.0), plate), Color(0.02, 0.06, 0.08, 0.72))
+	draw_string(font, written, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, tint)
 
 func size_x_limit() -> float:
 	return size.x - 4.0
@@ -290,9 +336,10 @@ func _draw_drift() -> void:
 			draw_arc(at, radius + 2.0, 0, TAU, 10, Color(0.45, 0.85, 0.82, alpha * 0.5), 1.0, true)
 
 func _draw() -> void:
+	label_rects.clear()
 	_draw_drift()
 	var c := center()
-	var outer := first_ring() + ring_step() * RING_SPREAD * DEEPEST + KEYSTONE_RADIUS + 22.0
+	var outer := 0.0
 	for ring in range(6):
 		draw_arc(c, first_ring() + ring_step() * ring, 0, TAU, 96, Color(0.3, 0.55, 0.6, 0.07), 1.0, true)
 	var font := get_theme_default_font()
@@ -313,8 +360,11 @@ func _draw() -> void:
 				_draw_link(c + direction * CORE_RADIUS, to, line_color, 4.0 if owned else 2.0)
 			for parent in needed:
 				_draw_link(node_position(str(parent)), to, line_color, 4.0 if owned else 2.0)
-		# Labels sit beside the keystone, rotated a little off the spoke so they never cover a node.
-		var label_at := c + Vector2.from_angle(branch_angle(i) + 0.22) * outer
+		# The lobe's name sits past its own furthest memory, clear of every node in it.
+		var reach := 0.0
+		for id in perks:
+			reach = maxf(reach, node_position(id).distance_to(c))
+		var label_at := c + Vector2.from_angle(branch_angle(i)) * (reach + KEYSTONE_RADIUS + 30.0)
 		var text := str(branch.name)
 		var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15).x
 		draw_string(font, label_at - Vector2(width * 0.5, -5), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, department)
@@ -361,8 +411,8 @@ func _draw() -> void:
 			draw_string(font, at + Vector2(-tier_width * 0.5, 5.5), tier_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color("0b1a20") if state == "owned" else Color(0.75, 0.85, 0.88, 0.9 if state != "locked" else 0.4))
 		if hot:
 			draw_arc(at, radius + 6.0, 0, TAU, 40, Color("e6f6f3"), 2.0, true)
-		# Recovered and reachable memories carry their names, as does whatever the pointer is on.
-		# Sealed ones stay unnamed, and so do the roots: eight of them ring the core closely enough
-		# that their names ran into each other, and the lobe's own name already sits outside.
-		if ((state in ["owned", "ready"]) and node_depth(id) > 0) or hot:
+		# Recovered memories carry their names, as does whatever the pointer is on. Naming every
+		# reachable one as well put two long names on top of each other wherever dendrites ran
+		# close (owner playtest, Sept 18); the hover card names the rest.
+		if state == "owned" or hot:
 			_draw_node_name(font, at, radius, id, state, color)
