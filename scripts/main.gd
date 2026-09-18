@@ -323,6 +323,14 @@ var flood_alert_button: Button
 var construction_button: Button
 var operations_refresh := 0.0
 var journal_tabs: TabBar
+# Note 11: one panel, two pages. The journal is what this loop did and what it recovered; the
+# diagnostics page is what the station is doing wrong right now. Tabs stay at their original
+# indexes and are hidden per page, so saved scroll positions and searches keep working.
+const JOURNAL_TABS := [0, 3, 5]
+const DIAGNOSTICS_TABS := [1, 2, 4, 6]
+var journal_mode := "journal"
+var journal_title_label: Label
+var journal_subtitle_label: Label
 var history_search: LineEdit
 var diagnostics_button: Button
 var history_tools: HBoxContainer
@@ -519,7 +527,7 @@ func _build_ui() -> void:
 	journal.text = "JOURNAL [J]"
 	journal.custom_minimum_size = Vector2(130, 44)
 	journal.tooltip_text = "Your recovered patterns and their blueprint rewards. Reading pauses the station."
-	journal.pressed.connect(_toggle_journal)
+	journal.pressed.connect(func(): _open_journal_page("journal"))
 	_style_hud_button(journal, false)
 	preload("res://scripts/navigation_badge.gd").apply_top(journal, "journal")
 	navigation_row.add_child(journal)
@@ -602,11 +610,7 @@ func _build_ui() -> void:
 	construction_button = Button.new()
 	construction_button.text = "CONSTRUCTION / 0"
 	_style_hud_button(construction_button, false)
-	construction_button.pressed.connect(func() -> void:
-		if _gameplay_input_blocked(): return
-		_toggle_journal()
-		journal_tabs.current_tab = 6
-		_refresh_archive())
+	construction_button.pressed.connect(func() -> void: _open_journal_page("diagnostics", 6))
 	objective_box.add_child(construction_button)
 	flood_alert_button=Button.new()
 	flood_alert_button.text="FLOOD / CLEAR"
@@ -720,10 +724,7 @@ func _build_ui() -> void:
 	side_scroll.add_child(side)
 	diagnostics_button = Button.new()
 	diagnostics_button.text = "STATION DIAGNOSTICS"
-	diagnostics_button.pressed.connect(func():
-		_toggle_journal()
-		journal_tabs.current_tab = 1
-		_refresh_archive())
+	diagnostics_button.pressed.connect(func(): _open_journal_page("diagnostics", 1))
 	_style_hud_button(diagnostics_button, false)
 	preload("res://scripts/navigation_badge.gd").apply_top(diagnostics_button, "diagnostics")
 	navigation_row.add_child(diagnostics_button)
@@ -1427,10 +1428,12 @@ func _build_journal_overlay() -> void:
 	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color("#a9e7d4"))
 	body.add_child(title)
+	journal_title_label = title
 	var subtitle := Label.new()
 	subtitle.text = "Recovered patterns, system diagnostics and the loop's recorded failures.\nThe station remembers. Occasionally, that is useful."
 	subtitle.add_theme_color_override("font_color", Color("#92aeb8"))
 	body.add_child(subtitle)
+	journal_subtitle_label = subtitle
 	journal_tabs = TabBar.new()
 	for tab_title in ["Patterns", "Station Health", "Reserves", "Event History", "Rooms", "Crew", "Construction"]:
 		journal_tabs.add_tab(tab_title)
@@ -1486,6 +1489,35 @@ func _build_journal_overlay() -> void:
 	preload("res://scripts/title_button_style.gd").apply(close, 380, 50)
 	_add_menu_button(body, "Settings", _open_overlay_settings)
 
+# Shows one page's tabs and dresses the panel for it. A tab belonging to the other page is hidden
+# rather than removed, so tab indexes stay stable for saved scroll positions and searches.
+func _apply_journal_mode(mode: String) -> void:
+	journal_mode = mode
+	if journal_tabs == null: return
+	var shown: Array = DIAGNOSTICS_TABS if mode == "diagnostics" else JOURNAL_TABS
+	for index in range(journal_tabs.tab_count):
+		journal_tabs.set_tab_hidden(index, not shown.has(index))
+	if not shown.has(journal_tabs.current_tab):
+		journal_tabs.current_tab = int(shown[0])
+	if journal_title_label != null:
+		journal_title_label.text = "BRINE / STATION DIAGNOSTICS" if mode == "diagnostics" else "BRINE / STATION JOURNAL"
+	if journal_subtitle_label != null:
+		journal_subtitle_label.text = "Warnings, alerts and the figures the station is running on right now." if mode == "diagnostics" else "What this loop has done, and what it recovered.\nThe station remembers. Occasionally, that is useful."
+
+# Opens the panel on one of its two pages, or closes it when that page is already showing.
+func _open_journal_page(mode: String, tab: int = -1) -> void:
+	if journal_layer == null: return
+	if _journal_is_open() and journal_mode == mode and tab < 0:
+		_toggle_journal()
+		return
+	if not _journal_is_open():
+		if _gameplay_input_blocked(): return
+		_toggle_journal()
+		if not _journal_is_open(): return
+	_apply_journal_mode(mode)
+	if tab >= 0: journal_tabs.current_tab = tab
+	_refresh_archive()
+
 func _journal_is_open() -> bool:
 	return journal_layer != null and journal_layer.visible
 
@@ -1508,6 +1540,7 @@ func _toggle_journal() -> void:
 	pause_before_journal = paused
 	journal_opener = get_viewport().gui_get_focus_owner()
 	journal_layer.visible = true
+	_apply_journal_mode(journal_mode)
 	preload("res://scripts/title_settings.gd").apply_menu_text(journal_layer)
 	get_viewport().gui_release_focus()
 	var close_button: Button = journal_layer.get_meta("close_button")
@@ -4295,7 +4328,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Journal"):
-		_toggle_journal()
+		_open_journal_page("journal")
 		get_viewport().set_input_as_handled()
 		return
 	if _gameplay_input_blocked():
@@ -5238,9 +5271,8 @@ func _open_resource_details(resource_id: String, opener: Control) -> void:
 		return
 	inspected_resource = "" if resource_id=="crew" else resource_id
 	opener.grab_focus()
-	_toggle_journal()
-	journal_tabs.current_tab = 5 if resource_id=="crew" else 2
-	_refresh_archive()
+	if resource_id == "crew": _open_journal_page("journal", 5)
+	else: _open_journal_page("diagnostics", 2)
 	archive_label.get_v_scroll_bar().set_deferred("value", 0.0)
 
 func _resource_contribution_lines(resource_id: String, forecast: Dictionary) -> Array[String]:
@@ -5570,10 +5602,7 @@ func _listening_action(value: Variant) -> void:
 		_refresh_all()
 
 func _open_station_search() -> void:
-	if _gameplay_input_blocked(): return
-	_toggle_journal()
-	journal_tabs.current_tab = 4
-	_refresh_archive()
+	_open_journal_page("diagnostics", 4)
 	history_search.grab_focus()
 	history_search.select_all()
 

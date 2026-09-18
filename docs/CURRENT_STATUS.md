@@ -1,3 +1,20 @@
+## Journal and Diagnostics are two pages now - September 18, 2026
+
+1. Note 11: both buttons opened the same seven-tab panel under one heading. The panel now shows
+   one of two pages. Journal keeps Patterns, Event History and Crew under "What this loop has
+   done, and what it recovered." Diagnostics keeps Station Health, Reserves, Rooms and
+   Construction under "Warnings, alerts and the figures the station is running on right now."
+2. Tabs are hidden per page rather than rebuilt, so their indexes - and the saved scroll position
+   and search text per tab - keep working. Every opener names its page: the HUD Journal button and
+   the J key open the journal, the Diagnostics button opens Station Health, the construction
+   counter opens Construction, a resource tile opens Reserves, and the crew tile opens Crew.
+3. Pressing a page's own button while that page is open still closes the panel.
+4. Not done from note 11: images and richer design on the journal page. That is a content pass,
+   not a layout change.
+5. Checked: test_overlay_text, test_learning_ui and test_inspector_refresh pass headless;
+   test_navigation_badges passes on the native lane, covering the badge bindings, the diagnostics
+   tab and the journal actions. A probe opened both pages and captured their headers and tab rows.
+
 ## Wreck and rock clearance say why they are unavailable - September 17, 2026
 
 1. Note 18: salvage drones already dismantle the four wreck types, and the derelict rooms (cryo
