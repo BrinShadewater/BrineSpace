@@ -45,65 +45,81 @@ static func branch_color(branch_id: String) -> Color:
 # recovered before it), cost, name, effect text, and the effect data the hooks below read. "start"
 # adds resources at loop start, "capacity" adds storage, and the rate keys scale a system.
 #
-# A lobe roots at the core, splits into two dendrites, and each dendrite ends in its own keystone.
-# Recovering either keystone never requires the other, so two profiles can remember the station
-# differently.
+# A lobe roots at the core, splits into two dendrites, and each dendrite runs two memories deep
+# before ending in its own keystone. Recovering either keystone never requires the other, so two
+# profiles can remember the station differently.
 const PERKS := {
 	# OPERATIONS // what the station does first when something goes wrong.
 	"ops_standing_watch": {"branch":"operations", "tier":1, "cost":5, "name":"Standing Watch", "text":"Someone is always awake. Crew hunger and fatigue build 20% slower.", "needs_rate":0.8},
 	"ops_contingency_drills": {"branch":"operations", "tier":2, "requires":["ops_standing_watch"], "cost":12, "name":"Contingency Drills", "text":"Start each loop with one extra hand reroll.", "rerolls":1},
-	"ops_command_override": {"branch":"operations", "tier":3, "requires":["ops_contingency_drills"], "cost":40, "keystone":true, "name":"Command Override", "text":"BRINE keeps one more blueprint staged: your hand holds +1 card all loop.", "extra_cards":1},
+	"ops_standing_orders": {"branch":"operations", "tier":3, "requires":["ops_contingency_drills"], "cost":18, "name":"Standing Orders", "text":"Everyone knows the drill: crew hunger and fatigue build a further 10% slower.", "needs_rate":0.9},
+	"ops_command_override": {"branch":"operations", "tier":4, "requires":["ops_standing_orders"], "cost":40, "keystone":true, "name":"Command Override", "text":"BRINE keeps one more blueprint staged: your hand holds +1 card all loop.", "extra_cards":1},
 	"ops_quarantine_protocol": {"branch":"operations", "tier":2, "requires":["ops_standing_watch"], "cost":12, "name":"Quarantine Protocol", "text":"Local containment faults cost 1 less Integrity each cycle.", "integrity_shield":1},
-	"crew_second_chance": {"branch":"operations", "tier":3, "requires":["ops_quarantine_protocol"], "cost":40, "keystone":true, "name":"Second Chance", "text":"Once per loop, a crew member about to die of starvation or lack of air is pulled back with fresh air and a full stomach.", "second_chance":1},
+	"ops_sealed_sections": {"branch":"operations", "tier":3, "requires":["ops_quarantine_protocol"], "cost":18, "name":"Sealed Sections", "text":"A second set of seals: containment faults cost 1 less Integrity again.", "integrity_shield":1},
+	"crew_second_chance": {"branch":"operations", "tier":4, "requires":["ops_sealed_sections"], "cost":40, "keystone":true, "name":"Second Chance", "text":"Once per loop, a crew member about to die of starvation or lack of air is pulled back with fresh air and a full stomach.", "second_chance":1},
 
 	# ENGINEERING // power kept, and the rigs that keep it.
 	"eng_salvaged_stock": {"branch":"engineering", "tier":1, "cost":5, "name":"Salvaged Stock", "text":"Start each loop with +5 Metal.", "start":{"metal":5}},
 	"eng_spare_capacitors": {"branch":"engineering", "tier":2, "requires":["eng_salvaged_stock"], "cost":12, "name":"Spare Capacitors", "text":"+4 Power storage, and start each loop with +2 Power.", "capacity":{"power":4}, "start":{"power":2}},
-	"eng_overclocked_generators": {"branch":"engineering", "tier":3, "requires":["eng_spare_capacitors"], "cost":40, "keystone":true, "name":"Overclocked Generators", "text":"Every working room that makes Power makes +1 Power more.", "generator_bonus":1},
+	"eng_load_balancer": {"branch":"engineering", "tier":3, "requires":["eng_spare_capacitors"], "cost":18, "name":"Load Balancer", "text":"+6 Power storage, so the station rides out a bad cycle on what it kept.", "capacity":{"power":6}},
+	"eng_overclocked_generators": {"branch":"engineering", "tier":4, "requires":["eng_load_balancer"], "cost":40, "keystone":true, "name":"Overclocked Generators", "text":"Every working room that makes Power makes +1 Power more.", "generator_bonus":1},
 	"eng_quick_rigging": {"branch":"engineering", "tier":2, "requires":["eng_salvaged_stock"], "cost":12, "name":"Quick Rigging", "text":"Derelict ward and companion site repairs run 25% faster.", "repair_rate":1.25},
-	"eng_failsafe_welds": {"branch":"engineering", "tier":3, "requires":["eng_quick_rigging"], "cost":40, "keystone":true, "name":"Failsafe Welds", "text":"Hull repairs finish 30% faster, and the seams hold: flood water spreads 25% slower.", "hull_repair_rate":1.3, "flood_rate":0.75},
+	"eng_field_repairs": {"branch":"engineering", "tier":3, "requires":["eng_quick_rigging"], "cost":18, "name":"Field Repairs", "text":"Ward and companion repairs run another 15% faster.", "repair_rate":1.15},
+	"eng_failsafe_welds": {"branch":"engineering", "tier":4, "requires":["eng_field_repairs"], "cost":40, "keystone":true, "name":"Failsafe Welds", "text":"Hull repairs finish 30% faster, and the seams hold: flood water spreads 25% slower.", "hull_repair_rate":1.3, "flood_rate":0.75},
 
 	# SCIENCE & MEDICAL // what gets learned, and what it is worth.
 	"disc_archive_index": {"branch":"science", "tier":1, "cost":5, "name":"Archive Index", "text":"Start each loop with +4 Data.", "start":{"data":4}},
 	"disc_calibrated_sensors": {"branch":"science", "tier":2, "requires":["disc_archive_index"], "cost":12, "name":"Calibrated Sensors", "text":"Each working Research Lab makes +1 Data per cycle.", "research_lab_data":1},
-	"disc_pattern_sense": {"branch":"science", "tier":3, "requires":["disc_calibrated_sensors"], "cost":40, "keystone":true, "name":"Pattern Sense", "text":"Discovering a new synergy banks +3 Archived Data on the spot.", "discovery_data":3},
+	"disc_sample_library": {"branch":"science", "tier":3, "requires":["disc_calibrated_sensors"], "cost":18, "name":"Sample Library", "text":"Each working Research Lab makes +1 Data more per cycle.", "research_lab_data":1},
+	"disc_pattern_sense": {"branch":"science", "tier":4, "requires":["disc_sample_library"], "cost":40, "keystone":true, "name":"Pattern Sense", "text":"Discovering a new synergy banks +3 Archived Data on the spot.", "discovery_data":3},
 	"disc_research_grant": {"branch":"science", "tier":2, "requires":["disc_archive_index"], "cost":12, "name":"Research Grant", "text":"+25% Archived Data at the end of each loop.", "research_bonus":0.25},
-	"disc_rehearsed_pattern": {"branch":"science", "tier":3, "requires":["disc_research_grant"], "cost":40, "keystone":true, "name":"Rehearsed Pattern", "text":"BRINE has seen this work before: every synergy stabilizes one cycle sooner.", "stabilize_relief":1},
+	"disc_peer_review": {"branch":"science", "tier":3, "requires":["disc_research_grant"], "cost":18, "name":"Peer Review", "text":"BRINE checks her own work: +15% Archived Data at the end of each loop.", "research_bonus":0.15},
+	"disc_rehearsed_pattern": {"branch":"science", "tier":4, "requires":["disc_peer_review"], "cost":40, "keystone":true, "name":"Rehearsed Pattern", "text":"BRINE has seen this work before: every synergy stabilizes one cycle sooner.", "stabilize_relief":1},
 
 	# LIFE SUPPORT // air, water, food, and the tanks that hold them.
 	"life_stored_rations": {"branch":"life_support", "tier":1, "cost":5, "name":"Stored Rations", "text":"Start each loop with +6 Food.", "start":{"food":6}},
 	"life_deep_tanks": {"branch":"life_support", "tier":2, "requires":["life_stored_rations"], "cost":12, "name":"Deep Tanks", "text":"Start each loop with +6 Oxygen and +4 Water.", "start":{"oxygen":6, "water":4}},
-	"life_expanded_tanks": {"branch":"life_support", "tier":3, "requires":["life_deep_tanks"], "cost":40, "keystone":true, "name":"Expanded Tanks", "text":"+10 Oxygen and +10 Water storage, and start each loop with +20 Data of margin against a bad cycle.", "capacity":{"oxygen":10, "water":10}, "start":{"data":20}},
+	"life_algae_stacks": {"branch":"life_support", "tier":3, "requires":["life_deep_tanks"], "cost":18, "name":"Algae Stacks", "text":"Each working Life Support makes +1 Oxygen per cycle.", "life_support_oxygen":1},
+	"life_expanded_tanks": {"branch":"life_support", "tier":4, "requires":["life_algae_stacks"], "cost":40, "keystone":true, "name":"Expanded Tanks", "text":"+10 Oxygen and +10 Water storage, and start each loop with +20 Data of margin against a bad cycle.", "capacity":{"oxygen":10, "water":10}, "start":{"data":20}},
 	"life_seed_stock": {"branch":"life_support", "tier":2, "requires":["life_stored_rations"], "cost":12, "name":"Seed Stock", "text":"Start each loop with +4 Biomass, and +10 Food storage.", "start":{"biomass":4}, "capacity":{"food":10}},
-	"life_closed_ecology": {"branch":"life_support", "tier":3, "requires":["life_seed_stock"], "cost":40, "keystone":true, "name":"Closed Ecology", "text":"Each working Life Support makes +2 Oxygen per cycle.", "life_support_oxygen":2},
+	"life_root_cellar": {"branch":"life_support", "tier":3, "requires":["life_seed_stock"], "cost":18, "name":"Root Cellar", "text":"+10 Food storage, and start each loop with +2 Biomass.", "capacity":{"food":10}, "start":{"biomass":2}},
+	"life_closed_ecology": {"branch":"life_support", "tier":4, "requires":["life_root_cellar"], "cost":40, "keystone":true, "name":"Closed Ecology", "text":"Each working Life Support makes +2 Oxygen per cycle.", "life_support_oxygen":2},
 
 	# CREW QUARTERS // the people, and how long they last.
 	"crew_steady_rations": {"branch":"crew", "tier":1, "cost":5, "name":"Rebreathers", "text":"Held breath and helmet air last 25% longer.", "air_drain_rate":0.8},
 	"crew_spare_bunks": {"branch":"crew", "tier":2, "requires":["crew_steady_rations"], "cost":12, "name":"Spare Bunks", "text":"+1 crew berth aboard the core.", "berth_bonus":1},
-	"crew_shift_rotation": {"branch":"crew", "tier":3, "requires":["crew_spare_bunks"], "cost":40, "keystone":true, "name":"Shift Rotation", "text":"A second berth, and crew who walk like they know the route: +1 berth and 15% faster on their feet.", "berth_bonus":1, "walk_rate":1.15},
+	"crew_bunk_rotation": {"branch":"crew", "tier":3, "requires":["crew_spare_bunks"], "cost":18, "name":"Bunk Rotation", "text":"Hot bunking, politely arranged: +1 crew berth.", "berth_bonus":1},
+	"crew_shift_rotation": {"branch":"crew", "tier":4, "requires":["crew_bunk_rotation"], "cost":40, "keystone":true, "name":"Shift Rotation", "text":"A second berth, and crew who walk like they know the route: +1 berth and 15% faster on their feet.", "berth_bonus":1, "walk_rate":1.15},
 	"life_warm_thaw": {"branch":"crew", "tier":2, "requires":["crew_steady_rations"], "cost":12, "name":"Warm Thaw", "text":"Cryopod thaws and charging run 30% faster.", "thaw_rate":1.3},
-	"crew_deck_boots": {"branch":"crew", "tier":3, "requires":["life_warm_thaw"], "cost":40, "keystone":true, "name":"Deck Boots", "text":"Magnetic soles: crew move 15% faster, and reach a flooding room before it is a story.", "walk_rate":1.15},
+	"crew_warm_bunks": {"branch":"crew", "tier":3, "requires":["life_warm_thaw"], "cost":18, "name":"Warm Bunks", "text":"Rest that counts: crew hunger and fatigue build 10% slower.", "needs_rate":0.9},
+	"crew_deck_boots": {"branch":"crew", "tier":4, "requires":["crew_warm_bunks"], "cost":40, "keystone":true, "name":"Deck Boots", "text":"Magnetic soles: crew move 15% faster, and reach a flooding room before it is a story.", "walk_rate":1.15},
 
 	# AI & ROBOTICS // BRINE's own hands.
 	"drone_efficient_cells": {"branch":"robotics", "tier":1, "cost":5, "name":"Efficient Cells", "text":"Drone batteries drain 20% slower while working.", "battery_drain_rate":0.8},
 	"drone_ore_sorters": {"branch":"robotics", "tier":2, "requires":["drone_efficient_cells"], "cost":12, "name":"Ore Sorters", "text":"Each drone delivery of Metal brings +1 Metal.", "drone_metal_bonus":1},
-	"drone_deep_salvage": {"branch":"robotics", "tier":3, "requires":["drone_ore_sorters"], "cost":40, "keystone":true, "name":"Deep Salvage", "text":"Each drone delivery of Data also brings +1 Rare Minerals.", "salvage_rare_bonus":1},
+	"drone_cargo_frames": {"branch":"robotics", "tier":3, "requires":["drone_ore_sorters"], "cost":18, "name":"Cargo Frames", "text":"Each drone delivery of Metal brings +1 Metal more.", "drone_metal_bonus":1},
+	"drone_deep_salvage": {"branch":"robotics", "tier":4, "requires":["drone_cargo_frames"], "cost":40, "keystone":true, "name":"Deep Salvage", "text":"Each drone delivery of Data also brings +1 Rare Minerals.", "salvage_rare_bonus":1},
 	"drone_vectored_thrust": {"branch":"robotics", "tier":2, "requires":["drone_efficient_cells"], "cost":12, "name":"Vectored Thrust", "text":"Drones travel 20% faster.", "drone_speed":1.2},
-	"drone_rapid_assembly": {"branch":"robotics", "tier":3, "requires":["drone_vectored_thrust"], "cost":40, "keystone":true, "name":"Rapid Assembly", "text":"Rooms go up 25% faster, and the crews that build them keep their own pace.", "build_rate":1.25},
+	"drone_route_cache": {"branch":"robotics", "tier":3, "requires":["drone_vectored_thrust"], "cost":18, "name":"Route Cache", "text":"Drones remember the way: another 10% faster between bay and site.", "drone_speed":1.1},
+	"drone_rapid_assembly": {"branch":"robotics", "tier":4, "requires":["drone_route_cache"], "cost":40, "keystone":true, "name":"Rapid Assembly", "text":"Rooms go up 25% faster, and the crews that build them keep their own pace.", "build_rate":1.25},
 
 	# ANOMALY // the readings BRINE has not agreed to yet.
 	"anom_quiet_readings": {"branch":"anomaly", "tier":1, "cost":5, "name":"Quiet Readings", "text":"Start each loop with +2 Rare Minerals.", "start":{"rare_minerals":2}},
 	"disc_rare_samples": {"branch":"anomaly", "tier":2, "requires":["anom_quiet_readings"], "cost":12, "name":"Rare Samples", "text":"Start each loop with +2 more Rare Minerals, and +20 Data storage.", "start":{"rare_minerals":2}, "capacity":{"data":20}},
-	"disc_endowment": {"branch":"anomaly", "tier":3, "requires":["disc_rare_samples"], "cost":40, "keystone":true, "name":"Endowment", "text":"A further +25% Archived Data at the end of each loop.", "research_bonus":0.25},
+	"anom_deep_listening": {"branch":"anomaly", "tier":3, "requires":["disc_rare_samples"], "cost":18, "name":"Deep Listening", "text":"Discovering a new synergy banks +1 Archived Data more.", "discovery_data":1},
+	"disc_endowment": {"branch":"anomaly", "tier":4, "requires":["anom_deep_listening"], "cost":40, "keystone":true, "name":"Endowment", "text":"A further +25% Archived Data at the end of each loop.", "research_bonus":0.25},
 	"anom_sympathetic_echo": {"branch":"anomaly", "tier":2, "requires":["anom_quiet_readings"], "cost":12, "name":"Sympathetic Echo", "text":"Discovering a new synergy banks +1 Archived Data on the spot.", "discovery_data":1},
-	"anom_borrowed_time": {"branch":"anomaly", "tier":3, "requires":["anom_sympathetic_echo"], "cost":40, "keystone":true, "name":"Borrowed Time", "text":"Something out there keeps the lights on a little longer: machinery heat builds 35% slower and hull cracks widen 30% slower.", "heat_rate":0.65, "crack_rate":0.7},
+	"anom_resonant_casing": {"branch":"anomaly", "tier":3, "requires":["anom_sympathetic_echo"], "cost":18, "name":"Resonant Casing", "text":"Something out there holds the seams: hull cracks widen 15% slower.", "crack_rate":0.85},
+	"anom_borrowed_time": {"branch":"anomaly", "tier":4, "requires":["anom_resonant_casing"], "cost":40, "keystone":true, "name":"Borrowed Time", "text":"Something out there keeps the lights on a little longer: machinery heat builds 35% slower and hull cracks widen 30% slower.", "heat_rate":0.65, "crack_rate":0.7},
 
 	# STRUCTURE // the hull, the corridors, and the water outside them.
 	"hull_reinforced_plating": {"branch":"structure", "tier":1, "cost":5, "name":"Reinforced Plating", "text":"+20 Integrity storage, and start each loop with +20 Integrity.", "capacity":{"integrity":20}, "start":{"integrity":20}},
 	"hull_slow_fractures": {"branch":"structure", "tier":2, "requires":["hull_reinforced_plating"], "cost":12, "name":"Slow Fractures", "text":"Hull cracks widen 30% slower.", "crack_rate":0.7},
-	"eng_bulkhead_seals": {"branch":"structure", "tier":3, "requires":["hull_slow_fractures"], "cost":40, "keystone":true, "name":"Bulkhead Seals", "text":"Flood water spreads between rooms 25% slower, and the doors remember which way they were shut.", "flood_rate":0.75},
+	"hull_double_hull": {"branch":"structure", "tier":3, "requires":["hull_slow_fractures"], "cost":18, "name":"Double Hull", "text":"+20 Integrity storage for the hits that get through.", "capacity":{"integrity":20}},
+	"eng_bulkhead_seals": {"branch":"structure", "tier":4, "requires":["hull_double_hull"], "cost":40, "keystone":true, "name":"Bulkhead Seals", "text":"Flood water spreads between rooms 25% slower, and the doors remember which way they were shut.", "flood_rate":0.75},
 	"hull_weld_training": {"branch":"structure", "tier":2, "requires":["hull_reinforced_plating"], "cost":12, "name":"Weld Training", "text":"Hull repairs finish 30% faster.", "hull_repair_rate":1.3},
-	"hull_blast_doors": {"branch":"structure", "tier":3, "requires":["hull_weld_training"], "cost":40, "keystone":true, "name":"Blast Doors", "text":"Machinery heat that starts fires builds 35% slower, and a sealed section keeps its own air.", "heat_rate":0.65},
+	"hull_drainage_runs": {"branch":"structure", "tier":3, "requires":["hull_weld_training"], "cost":18, "name":"Drainage Runs", "text":"Flood water spreads 15% slower while the pumps catch up.", "flood_rate":0.85},
+	"hull_blast_doors": {"branch":"structure", "tier":4, "requires":["hull_drainage_runs"], "cost":40, "keystone":true, "name":"Blast Doors", "text":"Machinery heat that starts fires builds 35% slower, and a sealed section keeps its own air.", "heat_rate":0.65},
 }
 
 static func perks_in(branch: String) -> Array:

@@ -1,3 +1,23 @@
+## Deeper memory lobes and drift behind the core - September 18, 2026
+
+1. Owner playtest (test 5): more branching nodes on the meta progression page, fill the empty
+   space, and a background effect that matches the theme.
+2. Each dendrite runs one memory deeper before its keystone, so a lobe is root, two dendrites, two
+   memories along each, and two keystones - seven per lobe, 56 in all. The sixteen new memories are
+   the second step of their dendrite at 18 Data: Standing Orders and Sealed Sections, Load Balancer
+   and Field Repairs, Sample Library and Peer Review, Algae Stacks and Root Cellar, Bunk Rotation
+   and Warm Bunks, Cargo Frames and Route Cache, Deep Listening and Resonant Casing, Double Hull
+   and Drainage Runs. Each keystone now hangs off its dendrite's second memory.
+3. Nothing already bought changed hands: every existing id keeps its effect and cost, and the
+   keystones only moved one link further out.
+4. The page: motes drift up behind the graph, fading at the edges and clear of the core, drawn from
+   the clock rather than a particle system and held still under reduced motion. Names on alternate
+   lobes sit a few pixels lower so two neighbours' labels no longer share a line.
+5. Checked: test_research_tree passes with its counts updated to seven per lobe and new checks that
+   each dendrite carries on past its first memory and that a keystone waits only for its own;
+   test_meta_shop passes; test_title_screen and test_title_checkpoint_layout pass on the native
+   lane. The graph was rendered at 700 by 700 to confirm the deeper shape fills the panel.
+
 ## Weld sparks move to the doorway - September 18, 2026
 
 1. Owner playtest (test 5): the blowtorch effect was in the wrong place. It was drawn at the flame

@@ -21,10 +21,10 @@ func run() -> void:
 	meta.total_research_points = 60
 	# BRINE's memory is lobed (owner request): eight lobes, each splitting into two dendrites that
 	# end in their own keystone.
-	check(Research.BRANCHES.size() == 8 and Research.PERKS.size() == 40, "Eight lobes and 40 memories")
+	check(Research.BRANCHES.size() == 8 and Research.PERKS.size() == 56, "Eight lobes and 56 memories")
 	for branch in Research.BRANCHES:
 		var ids: Array = Research.perks_in(branch.id)
-		check(ids.size() == 5, "%s holds five memories" % branch.id)
+		check(ids.size() == 7, "%s holds seven memories" % branch.id)
 		var rooted: Array = ids.filter(func(id): return Research.requirements(id).is_empty())
 		check(rooted.size() == 1, "%s roots at one node" % branch.id)
 		var children: Array = ids.filter(func(id): return Research.requirements(id) == [rooted[0]])
@@ -42,9 +42,10 @@ func run() -> void:
 	check(Research.buy(meta, "eng_salvaged_stock") and Research.available(meta) == 55, "Buying spends its cost from the balance")
 	check(not Research.buy(meta, "eng_salvaged_stock"), "A memory is recovered once")
 	check(Research.buy(meta, "eng_spare_capacitors") and Research.buy(meta, "eng_quick_rigging") and Research.available(meta) == 31, "Both dendrites open off the root")
-	check(Research.state(meta, "eng_overclocked_generators") == "short" and Research.state(meta, "eng_failsafe_welds") == "short", "Both keystones wait on Data, not on each other")
+	check(Research.state(meta, "eng_load_balancer") != "locked" and Research.state(meta, "eng_field_repairs") != "locked", "Each dendrite carries on past its first memory")
+	check(Research.state(meta, "eng_overclocked_generators") == "locked" and Research.state(meta, "eng_failsafe_welds") == "locked", "A keystone waits for its own dendrite, not for the other one")
 	check(not Research.buy(meta, "eng_overclocked_generators"), "A keystone costing more than the balance waits")
-	check(Research.missing(meta, "ops_command_override") == ["ops_contingency_drills"], "A locked keystone names the node it still needs")
+	check(Research.missing(meta, "ops_command_override") == ["ops_standing_orders"], "A locked keystone names the node it still needs")
 	check(meta.total_research_points == 60, "Spending never reduces Research earned")
 	var reloaded := MetaState.new()
 	reloaded.save_path = prefix + ".json"

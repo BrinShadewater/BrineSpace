@@ -69,6 +69,7 @@ func _ready() -> void:
 	resized.connect(_place)
 	_place()
 	set_process(not preload("res://scripts/title_settings.gd").reduced_motion)
+	queue_redraw()
 
 func _process(delta: float) -> void:
 	clock += delta
@@ -82,8 +83,8 @@ func center() -> Vector2:
 # Rings scale with the space available so the whole graph fits on screen. A department is three
 # steps deep now (root, the split, the pair before the keystone, the keystone), each 1.75 steps
 # apart, and the spare fraction leaves room for the department's name outside the keystone.
-const DEEPEST := 2.0
-const RING_SPREAD := 2.2
+const DEEPEST := 3.0
+const RING_SPREAD := 1.7
 func ring_step() -> float:
 	return maxf(24.0, (minf(size.x, size.y) * 0.5 - LABEL_MARGIN - CORE_RADIUS - KEYSTONE_RADIUS) / (DEEPEST * RING_SPREAD + 0.7))
 
@@ -124,7 +125,7 @@ func node_position(id: String) -> Vector2:
 	for i in range(Research.BRANCHES.size()):
 		if Research.BRANCHES[i].id == perk.branch: index = i
 	var depth := node_depth(id)
-	# Depth tops out at two - root, dendrite, keystone - so each step takes a wide bite of the radius.
+	# Depth tops out at three - root, dendrite, the memory past it, then the keystone.
 	# Alternate lobes sit a little further out, so neighbouring roots never share a radius and the
 	# core reads as grown rather than drawn.
 	var stagger := 0.38 if index % 2 == 1 else 0.0
@@ -250,12 +251,46 @@ func _draw_node_name(font: Font, at: Vector2, radius: float, id: String, state: 
 		side = -side
 		anchor = at + side * gap
 	var at_left: bool = side.x < 0.0
-	draw_string(font, anchor + Vector2(-width if at_left else 0.0, 4.0), text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, tint)
+	# Alternate lobes drop their names a few pixels, so two neighbours' names never sit on the same
+	# line where their dendrites pass close to each other.
+	var lobe := 0
+	for i in range(Research.BRANCHES.size()):
+		if Research.BRANCHES[i].id == Research.PERKS[id].branch: lobe = i
+	var lift := 11.0 if lobe % 2 == 1 else -1.0
+	draw_string(font, anchor + Vector2(-width if at_left else 0.0, lift), text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, tint)
 
 func size_x_limit() -> float:
 	return size.x - 4.0
 
+# Motes drifting up through the core, the way silt moves past a light outside the hull. Deterministic
+# from the clock, so it never needs particles of its own, and it holds still under reduced motion.
+const DRIFT_COUNT := 34
+
+func _draw_drift() -> void:
+	var reduced: bool = preload("res://scripts/title_settings.gd").reduced_motion
+	var drift_time: float = 0.0 if reduced else clock
+	var middle := center()
+	for i in range(DRIFT_COUNT):
+		var seed := float((i * 73) % 97) / 97.0
+		var span := float((i * 31) % 53) / 53.0
+		var column: float = fposmod(seed * 1.37 + 0.05, 1.0) * size.x
+		var speed := 7.0 + span * 16.0
+		var height: float = fposmod(size.y - (drift_time * speed + span * size.y), maxf(size.y, 1.0))
+		var sway := sin(drift_time * (0.3 + span * 0.4) + seed * TAU) * (5.0 + span * 9.0)
+		var at := Vector2(column + sway, height)
+		# Fade toward the edges, and keep clear of the core so the graph stays legible.
+		var to_core: float = at.distance_to(middle)
+		var edge: float = clampf(minf(at.x, size.x - at.x) / 40.0, 0.0, 1.0)
+		var alpha: float = 0.08 + 0.07 * span
+		alpha *= edge * clampf((to_core - CORE_RADIUS * 1.4) / 120.0, 0.0, 1.0)
+		if alpha <= 0.004: continue
+		var radius := maxf(1.0, 1.0 + span * 2.4)
+		draw_circle(at, radius, Color(0.45, 0.85, 0.82, alpha))
+		if span > 0.72:
+			draw_arc(at, radius + 2.0, 0, TAU, 10, Color(0.45, 0.85, 0.82, alpha * 0.5), 1.0, true)
+
 func _draw() -> void:
+	_draw_drift()
 	var c := center()
 	var outer := first_ring() + ring_step() * RING_SPREAD * DEEPEST + KEYSTONE_RADIUS + 22.0
 	for ring in range(6):
