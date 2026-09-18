@@ -97,6 +97,11 @@ func run() -> void:
 	var csv := FileAccess.open(prefix + ".csv", FileAccess.READ).get_as_text().strip_edges().split("\n")
 	check(csv.size() == 3 and csv[0].begins_with("when,build,cycles"), "The stats file has one header and one line per loop")
 	check(csv[1].split(",").size() == csv[0].split(",").size() and csv[1].contains(",7,"), "Each line records the loop's cycles")
+	# A test or tool session writes nothing into the player's folder, the same rule as capture.
+	monitor.auto_capture = false
+	monitor.record_session(monitor.session_row(scene))
+	check(FileAccess.open(prefix + ".csv", FileAccess.READ).get_as_text().strip_edges().split("\n").size() == 3, "A test or tool session records no stats line")
+	monitor.auto_capture = true
 	monitor.stats_path = ""
 	monitor.record_session(monitor.session_row(scene))
 	check(FileAccess.open(prefix + ".csv", FileAccess.READ).get_as_text().strip_edges().split("\n").size() == 3, "An empty stats path writes nothing")

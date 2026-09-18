@@ -156,7 +156,8 @@ func note(kind: String,text: String) -> void:
 
 # One line per finished loop, appended locally so slowdowns can be compared across sessions.
 func record_session(row: Dictionary) -> void:
-	if stats_path.is_empty(): return
+	# Same rule as capture: only a real play session writes into the player's folder.
+	if stats_path.is_empty() or not auto_capture: return
 	var exists:=FileAccess.file_exists(stats_path)
 	var file:=FileAccess.open(stats_path,FileAccess.READ_WRITE if exists else FileAccess.WRITE)
 	if file==null: return
