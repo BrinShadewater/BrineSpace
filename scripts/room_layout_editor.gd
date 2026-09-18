@@ -19,6 +19,14 @@ var retire_button: Button
 # written to a manifest and the entry leaves the tray, so a misclick costs
 # nothing and the art can be swept later once the list has been reviewed.
 const RETIRED_PATH:="res://rooms/tileset-library/retired.json"
+const FAVOURITES_PATH:="res://rooms/tileset-library/favourites.json"
+const CATEGORIES_PATH:="res://rooms/tileset-library/categories.json"
+var favourite_button: Button
+var move_to: OptionButton
+var favourites: Dictionary={}
+var recategorised: Dictionary={}
+var tileset_categories: Array=[]
+var favourites_filter:=-1
 # The tray renders one thumbnail per frame into its own SubViewport, so the cost
 # of a filter is however many entries it lists. Fine at a few hundred; with 8229
 # tileset props registered, All assets pegged a core for sixteen minutes.
@@ -457,9 +465,12 @@ func _ready() -> void:
 		var pack:=str(entry.get("tileset",""))
 		if not pack.is_empty() and pack not in packs: packs.append(pack)
 	themes.sort(); packs.sort()
+	tileset_categories=themes
+	favourites_filter=library_filter.item_count
+	library_filter.add_item("★ Favourites")
 	for theme in themes:
 		theme_filters[library_filter.item_count]=theme
-		library_filter.add_item("Tileset · "+str(theme).capitalize())
+		library_filter.add_item(str(theme))
 	library_filter.add_item("Marked for removal")
 	tray.add_child(library_filter)
 	library_filter.item_selected.connect(func(_i): rebuild_library())
@@ -474,6 +485,19 @@ func _ready() -> void:
 	retire_button.tooltip_text="Take this asset out of the tray. Nothing is deleted: the id goes to retired.json and you can restore it from the Marked for removal filter."
 	tray.add_child(retire_button)
 	retire_button.pressed.connect(func(): toggle_retired(selected_library_id()))
+	load_marks()
+	favourite_button=Button.new(); favourite_button.text="☆ Star"; favourite_button.disabled=true
+	favourite_button.tooltip_text="Star this prop so it turns up under ★ Favourites. Saved to favourites.json."
+	tray.add_child(favourite_button)
+	favourite_button.pressed.connect(func(): toggle_favourite(selected_library_id()))
+	move_to=OptionButton.new(); move_to.disabled=true
+	move_to.add_item("Move to category…")
+	for theme in tileset_categories: move_to.add_item(str(theme))
+	move_to.tooltip_text="File this prop under a different category. Saved to categories.json; picking its original category puts it back."
+	tray.add_child(move_to)
+	move_to.item_selected.connect(func(i):
+		if i>0: recategorise(selected_library_id(),str(move_to.get_item_text(i)))
+		move_to.select(0))
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
@@ -937,6 +961,48 @@ func toggle_retired(id: String) -> void:
 	rebuild_library()
 	update_retire_button()
 
+func load_marks() -> void:
+	favourites.clear(); recategorised.clear()
+	if FileAccess.file_exists(FAVOURITES_PATH):
+		var starred: Variant=JSON.parse_string(FileAccess.get_file_as_string(FAVOURITES_PATH))
+		if starred is Array:
+			for id in starred: favourites[str(id)]=true
+	if FileAccess.file_exists(CATEGORIES_PATH):
+		var moved: Variant=JSON.parse_string(FileAccess.get_file_as_string(CATEGORIES_PATH))
+		if moved is Dictionary:
+			for id in moved: recategorised[str(id)]=str(moved[id])
+
+func save_marks() -> void:
+	var starred: Array=favourites.keys(); starred.sort()
+	var file:=FileAccess.open(FAVOURITES_PATH,FileAccess.WRITE)
+	if file==null: push_warning("Could not write "+FAVOURITES_PATH+"; the star was not saved.")
+	else: file.store_string(JSON.stringify(starred,"	"))
+	var moved:=FileAccess.open(CATEGORIES_PATH,FileAccess.WRITE)
+	if moved==null: push_warning("Could not write "+CATEGORIES_PATH+"; the move was not saved.")
+	else: moved.store_string(JSON.stringify(recategorised,"	"))
+
+func category_of(id: String, entry: Dictionary) -> String:
+	return recategorised.get(id,str(entry.get("category","")))
+
+func toggle_favourite(id: String) -> void:
+	if id.is_empty(): return
+	if favourites.has(id): favourites.erase(id)
+	else: favourites[id]=true
+	save_marks()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
+func recategorise(id: String, category: String) -> void:
+	if id.is_empty() or category.is_empty(): return
+	var entry: Dictionary=Library.entries().get(id,{})
+	if str(entry.get("category",""))==category: recategorised.erase(id)
+	else: recategorised[id]=category
+	save_marks()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
 func selected_library_id() -> String:
 	if library_list==null: return ""
 	var picked:=library_list.get_selected_items()
@@ -947,6 +1013,11 @@ func update_retire_button() -> void:
 	var id:=selected_library_id()
 	retire_button.disabled=id.is_empty()
 	retire_button.text=("Restore asset" if retired.has(id) else "Mark for removal")
+	if favourite_button!=null:
+		favourite_button.disabled=id.is_empty()
+		favourite_button.text=("★ Starred" if favourites.has(id) else "☆ Star")
+	if move_to!=null:
+		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="tileset"
 
 func rebuild_library() -> void:
 	if library_list==null: return
@@ -955,7 +1026,9 @@ func rebuild_library() -> void:
 		if draft[id]==null and defaults.has(id): returned.append(id)
 	var pack:=pack_filter.get_item_text(pack_filter.selected) if pack_filter!=null and pack_filter.selected>0 else ""
 	var theme:=str(theme_filters.get(library_filter.selected,""))
-	var signature: Array=[index,returned,library_search.text,library_filter.selected,pack,retired.size()]
+	var only_favourites:=library_filter.selected==favourites_filter
+	var signature: Array=[index,returned,library_search.text,library_filter.selected,pack,
+		retired.size(),favourites.size(),recategorised.size()]
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
@@ -981,19 +1054,26 @@ func rebuild_library() -> void:
 		if not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4]): continue
 		if not only_retired and library_filter.selected==1 and entry.get("group","")!="common": continue
 		if not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]: continue
-		if not theme.is_empty() and (entry.get("group","")!="tileset" or str(entry.get("category",""))!=theme): continue
+		if only_favourites and not favourites.has(id): continue
+		if not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme): continue
 		if not pack.is_empty() and str(entry.get("tileset",""))!=pack: continue
+		var caption:=str(entry.label)
+		if entry.get("group","")=="tileset":
+			caption=str(entry.data.id).to_upper()+" · "+category_of(id,entry)
+			if favourites.has(id): caption="★ "+caption
 		if not library_search.text.is_empty():
 			var needle:=library_search.text.to_lower()
-			var haystack:=(str(entry.label)+" "+str(entry.get("tileset",""))+" "+str(entry.get("category",""))).to_lower()
+			var haystack:=(caption+" "+str(entry.get("tileset",""))).to_lower()
 			if not haystack.contains(needle): continue
 		if library_list.item_count>=TRAY_LIMIT:
 			hidden_by_limit+=1
 			continue
 		if not entry.get("preview_ready",false): thumbnail_queue.append(id)
-		library_list.add_item(entry.label,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
+		library_list.add_item(caption,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
 		library_list.set_item_metadata(library_list.item_count-1,id)
-		library_list.set_item_tooltip(library_list.item_count-1,entry.label+" — drag into clear floor space")
+		library_list.set_item_tooltip(library_list.item_count-1,caption+
+			(" — "+str(entry.get("tileset","")) if entry.get("group","")=="tileset" else "")+
+			" — drag into clear floor space")
 	if hidden_by_limit>0:
 		library_list.add_item("+%d more — narrow by kind, tileset, or search" % hidden_by_limit,thumbnail_placeholder)
 		library_list.set_item_selectable(library_list.item_count-1,false)
