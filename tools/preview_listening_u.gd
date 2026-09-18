@@ -20,7 +20,7 @@ func run() -> void:
 	room.hide()
 	root.add_child(room)
 	var source:=Image.new()
-	assert(source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/rooms/listening-post/source/listening-u-flush-clean-v1.png"))==OK)
+	assert(source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://legacy/default/assets/rooms/listening-post/source/listening-u-flush-clean-v1.png"))==OK)
 	var composition:=Composition.new()
 	composition.room=room
 	composition.installation=ImageTexture.create_from_image(source)

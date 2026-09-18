@@ -47,9 +47,9 @@ func _ready() -> void:
 	set_process_unhandled_key_input(false)
 	show_actor=false
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/observation-room/source/overhead.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/rooms/observation-room/source/overhead.png")
 	installation=ImageTexture.create_from_image(image)
-	overhead_shelves=load_source_texture("res://assets/rooms/observation-room/pack/shelves-down.png")
+	overhead_shelves=load_source_texture("res://legacy/default/assets/rooms/observation-room/pack/shelves-down.png")
 	source_registration=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/observation-room-v1/registration.json"))
 	var region: Array=source_registration.region
 	art_scale=360.0/float(region[2])

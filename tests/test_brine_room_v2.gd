@@ -63,7 +63,7 @@ func bake_card() -> void:
 	card.view=view
 	viewport.add_child(card)
 	await settle()
-	var path:=OUT.path_join("review-card.png") if review_only else "res://rooms/underwater/brine-core/renewal-v2/core-card-v6.png"
+	var path:=OUT.path_join("review-card.png") if review_only else "res://legacy/default/rooms/underwater/brine-core/renewal-v2/core-card-v6.png"
 	viewport.get_texture().get_image().save_png(path)
 	viewport.queue_free()
 func run() -> void:

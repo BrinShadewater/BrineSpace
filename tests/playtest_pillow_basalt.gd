@@ -27,15 +27,15 @@ func run() -> void:
 	root.size=Vector2i(1600,900)
 	var sheet:=Sheet.new()
 	sheet.size=root.size
-	for path in ["res://assets/environment/shell-shoal-v1/shell-hash-ground-v2.png","res://assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
+	for path in ["res://legacy/default/assets/environment/shell-shoal-v1/shell-hash-ground-v2.png","res://legacy/default/assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
 		var source:=Image.new()
 		assert(source.load(path)==OK)
 		sheet.grounds.append(ImageTexture.create_from_image(source))
 	var prop:=Image.new()
-	assert(prop.load("res://assets/environment/pillow-basalt-v1/pillow-basalt-v1.png")==OK)
+	assert(prop.load("res://legacy/default/assets/environment/pillow-basalt-v1/pillow-basalt-v1.png")==OK)
 	assert(prop.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.prop=ImageTexture.create_from_image(prop)
-	for path in ["res://assets/environment/fractured-rock-v1/fractured-basalt-slab-v1.png","res://assets/environment/volcanic-ash-v1/porous-rocks-v1.png"]:
+	for path in ["res://legacy/default/assets/environment/fractured-rock-v1/fractured-basalt-slab-v1.png","res://legacy/default/assets/environment/volcanic-ash-v1/porous-rocks-v1.png"]:
 		var reference := Image.new()
 		assert(reference.load(path)==OK)
 		sheet.references.append(ImageTexture.create_from_image(reference))

@@ -6,7 +6,7 @@ var room_mode := false
 
 func _ready() -> void:
 	var image := Image.new()
-	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://assets/playtest-visual-v1/switch-source.png")) == OK:
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://legacy/default/assets/playtest-visual-v1/switch-source.png")) == OK:
 		art = ImageTexture.create_from_image(image)
 	set_process(true)
 

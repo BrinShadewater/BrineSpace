@@ -9,7 +9,7 @@ var life_items := [
 	{"id":"life_console","rect":Rect2(58,87,104,64),"pivot":Vector2(925,1017),"width":274.0,"outline":[Vector2(800,780),Vector2(1045,780),Vector2(1062,802),Vector2(1062,1016),Vector2(788,1016),Vector2(788,807)]}
 ]
 func _ready() -> void:
-	life_texture = load_source_texture("res://rooms/whole-room/life-support-candidate.png")
+	life_texture = load_source_texture("res://legacy/default/rooms/whole-room/life-support-candidate.png")
 	pair_mode = 1
 	super._ready()
 func rebuild() -> void:

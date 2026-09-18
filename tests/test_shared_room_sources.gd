@@ -1,7 +1,7 @@
 extends SceneTree
 const View = preload("res://rooms/whole-room/nursery_whole_view.gd")
 func _init() -> void:
-	var paths := [View.SOURCE,"res://rooms/whole-room/life-support-candidate.png"]
+	var paths := [View.SOURCE,"res://legacy/default/rooms/whole-room/life-support-candidate.png"]
 	for path in paths:
 		var first := View.load_source_texture(path)
 		for i in range(50):

@@ -33,7 +33,7 @@ func run() -> void:
 	var preview := Preview.new()
 	preview.room = room
 	var image := Image.new()
-	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/foundation-v1/foundation-silt-v1.png")) == OK)
+	assert(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://legacy/default/rooms/foundation-v1/foundation-silt-v1.png")) == OK)
 	preview.foundation = ImageTexture.create_from_image(image)
 	root.add_child(preview)
 	var output_dir := "res://output/refinery-owner-repair-2026-09-12/native"

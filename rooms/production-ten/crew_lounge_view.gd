@@ -34,7 +34,7 @@ func _ready() -> void:
 	life_items[5].rect=Rect2(141,-48,25,9) # Plant at the dining area's edge.
 	life_items.remove_at(6) # The coat stand now provides the bag's physical home.
 	var support_image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(support_image, "res://rooms/production-ten/decor/lounge-support-v2.png")
+	preload("res://scripts/safe_image.gd").load_png(support_image, "res://legacy/default/rooms/production-ten/decor/lounge-support-v2.png")
 	support_texture=ImageTexture.create_from_image(support_image)
 	append_support("reading_lamp",Rect2(-78,-57,23,8),Rect2(191,69,209,480))
 	append_support("book_console",Rect2(-31,-145,62,23),Rect2(659,155,411,395))

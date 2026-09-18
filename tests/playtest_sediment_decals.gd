@@ -26,16 +26,16 @@ func run() -> void:
 	root.size=Vector2i(1600,900)
 	var sheet:=Sheet.new()
 	sheet.size=root.size
-	for path in ["res://assets/environment/shell-shoal-v1/shell-hash-ground-v2.png","res://assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
+	for path in ["res://legacy/default/assets/environment/shell-shoal-v1/shell-hash-ground-v2.png","res://legacy/default/assets/environment/volcanic-ash-v1/ash-ground-v1.png"]:
 		var source:=Image.new()
 		assert(source.load(path)==OK)
 		sheet.grounds.append(ImageTexture.create_from_image(source))
 	var prop:=Image.new()
-	assert(prop.load("res://assets/environment/mooring-debris-v1/mooring-plate-chain-v1.png")==OK)
+	assert(prop.load("res://legacy/default/assets/environment/mooring-debris-v1/mooring-plate-chain-v1.png")==OK)
 	assert(prop.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.prop=ImageTexture.create_from_image(prop)
 	var scour:=Image.new()
-	assert(scour.load("res://assets/environment/sediment-decals-v1/silt-scour-v2.png")==OK)
+	assert(scour.load("res://legacy/default/assets/environment/sediment-decals-v1/silt-scour-v2.png")==OK)
 	assert(scour.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.scour=ImageTexture.create_from_image(scour)
 	root.add_child(sheet)

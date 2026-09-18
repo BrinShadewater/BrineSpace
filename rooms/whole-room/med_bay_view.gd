@@ -6,7 +6,7 @@ func is_animated_prop(prop: Dictionary) -> bool: return not prop.registration.ge
 func _ready() -> void:
 	super._ready()
 	var img := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(img, "res://assets/rooms/med-bay/source/treatment-equipment.png")
+	preload("res://scripts/safe_image.gd").load_png(img, "res://legacy/default/assets/rooms/med-bay/source/treatment-equipment.png")
 	life_texture = ImageTexture.create_from_image(img)
 	life_items = []
 	for i in range(2):

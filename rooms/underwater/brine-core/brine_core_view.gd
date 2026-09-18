@@ -32,9 +32,9 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/brine-core/source/overhead.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/rooms/brine-core/source/overhead.png")
 	life_texture=ImageTexture.create_from_image(image)
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/brine-core/source/brine-cleaned-v5.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/rooms/brine-core/source/brine-cleaned-v5.png")
 	body_source_rect=Rect2(image.get_used_rect())
 	# Preserve the old 92-square registration without discarding source detail.
 	var registered_width:=roundf(body_source_rect.size.x*74.0/body_source_rect.size.y)

@@ -3,7 +3,7 @@ extends Node2D
 ## Does not read or write player saves. Missing directional views are not synthesized.
 const Geometry = preload("res://tools/modular_room_geometry.gd")
 const ActorLibrary = preload("res://rooms/modular/nursery_view.gd")
-const SOURCE := "res://rooms/whole-room/nursery-master.png"
+const SOURCE := "res://legacy/default/rooms/whole-room/nursery-master.png"
 const SOURCE_REGION := Rect2(110, 84, 1032, 1020)
 # Uniform scaling preserves the source; the quiet floor fills the remaining rim.
 const INTERIOR := Rect2(-184, -181.860465, 368, 363.720930)

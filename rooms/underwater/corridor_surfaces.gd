@@ -4,7 +4,7 @@ static var current_floor: ImageTexture
 const G = preload("res://tools/modular_room_geometry.gd")
 static func load_sources() -> Array:
 	var textures: Array = []
-	for path in ["res://rooms/underwater/straight-source-v1.png","res://rooms/underwater/corner-source-v1.png"]:
+	for path in ["res://legacy/default/rooms/underwater/straight-source-v1.png","res://legacy/default/rooms/underwater/corner-source-v1.png"]:
 		var image := Image.new()
 		preload("res://scripts/safe_image.gd").load_png(image, path)
 		textures.append(ImageTexture.create_from_image(image))

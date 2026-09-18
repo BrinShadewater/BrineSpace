@@ -24,7 +24,7 @@ func run() -> void:
 	root.add_child(canvas)
 	await process_frame
 	await RenderingServer.frame_post_draw
-	assert(root.get_texture().get_image().save_png("res://rooms/underwater/observation-room-v1/card.png")==OK)
+	assert(root.get_texture().get_image().save_png("res://legacy/default/rooms/underwater/observation-room-v1/card.png")==OK)
 	canvas.open=[2]
 	canvas.running=true
 	canvas.queue_redraw()

@@ -1,7 +1,7 @@
 extends RefCounted
 ## Continuous world-mapped material; only exposed sides receive cliff edges.
 const Field := preload("res://scripts/wreck_field.gd")
-const SOURCE := "res://assets/environment/rock-blockers-v1/basalt-surface-v1.png"
+const SOURCE := "res://legacy/default/assets/environment/rock-blockers-v1/basalt-surface-v1.png"
 const DIRECTIONS := [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
 var surface: Texture2D
 
