@@ -288,6 +288,8 @@ var toast_playing := false
 var summary_layer: CanvasLayer
 var summary_panel: PanelContainer
 var summary_title_label: Label
+var summary_outcome_label: Label
+var summary_stats: HFlowContainer
 var summary_text: RichTextLabel
 var continue_expedition_button: Button
 var end_expedition_button: Button
@@ -1119,22 +1121,42 @@ func _build_ui() -> void:
 	summary_layer.add_child(summary_center)
 	var summary := PanelContainer.new()
 	summary.name = "SummaryPanel"
-	summary.custom_minimum_size = Vector2(760, 620)
+	summary.custom_minimum_size = Vector2(760, 0)
 	summary_center.add_child(summary)
 	_apply_panel_style(summary, Color("#071018"), Color("#1f5260"))
 	summary_panel = summary
 	var summary_vbox := VBoxContainer.new()
 	summary_vbox.add_theme_constant_override("separation", 12)
 	summary.add_child(summary_vbox)
+	# The report reads as a record BRINE filed, not a wall of lines (owner playtest, Sept 18): a
+	# heading over a rule in the core's own colour, the outcome beneath it, then the run's figures
+	# as tiles, and the prose below them.
 	var summary_title := Label.new()
 	summary_title.text = "Loop Report"
-	summary_title.add_theme_font_size_override("font_size", 24)
+	summary_title.add_theme_font_size_override("font_size", 28)
+	summary_title.add_theme_color_override("font_color", Color("#a9e7d4"))
 	summary_vbox.add_child(summary_title)
 	summary_title_label = summary_title
+	var summary_rule := ColorRect.new()
+	summary_rule.color = Color("#2e6b74")
+	summary_rule.custom_minimum_size = Vector2(0, 2)
+	summary_vbox.add_child(summary_rule)
+	var summary_outcome := Label.new()
+	summary_outcome.name = "Outcome"
+	summary_outcome.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	summary_outcome.add_theme_font_size_override("font_size", 17)
+	summary_outcome.add_theme_color_override("font_color", Color("#9fc0cb"))
+	summary_vbox.add_child(summary_outcome)
+	summary_outcome_label = summary_outcome
+	summary_stats = HFlowContainer.new()
+	summary_stats.name = "RunFigures"
+	summary_stats.add_theme_constant_override("h_separation", 10)
+	summary_stats.add_theme_constant_override("v_separation", 10)
+	summary_vbox.add_child(summary_stats)
 	var summary_scroll := ScrollContainer.new()
 	summary_scroll.focus_mode = Control.FOCUS_ALL
 	summary_scroll.follow_focus = true
-	summary_scroll.custom_minimum_size = Vector2(740, 480)
+	summary_scroll.custom_minimum_size = Vector2(740, 240)
 	summary_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	summary_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	summary_vbox.add_child(summary_scroll)
@@ -1150,14 +1172,22 @@ func _build_ui() -> void:
 	summary_scroll.add_child(summary_body)
 	summary_text = summary_body
 	continue_expedition_button = Button.new()
-	continue_expedition_button.text = "CONTINUE EXPEDITION · KEEP EXPERIMENTING"
-	continue_expedition_button.custom_minimum_size.y = 44
+	continue_expedition_button.text = "Continue Expedition"
+	# Every action on this page sits at the menu width instead of sizing itself to its caption
+	# (owner playtest, Sept 18).
+	continue_expedition_button.custom_minimum_size = Vector2(380, 50)
+	continue_expedition_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	continue_expedition_button.add_theme_font_size_override("font_size", 17)
+	continue_expedition_button.tooltip_text = "Stay in this expedition and keep building."
 	continue_expedition_button.pressed.connect(_continue_expedition)
 	preload("res://scripts/title_button_style.gd").apply(continue_expedition_button, 380, 50, true)
 	summary_vbox.add_child(continue_expedition_button)
 	var reboot_button := Button.new()
-	reboot_button.text = "Start New Reboot Cycle"
-	reboot_button.custom_minimum_size.y = 40
+	reboot_button.text = "Start New Cycle"
+	reboot_button.custom_minimum_size = Vector2(380, 50)
+	reboot_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	reboot_button.add_theme_font_size_override("font_size", 17)
+	reboot_button.tooltip_text = "Bank this expedition and wake again at the start of a new loop."
 	preload("res://scripts/title_button_style.gd").apply(reboot_button, 380, 50)
 	reboot_button.pressed.connect(_choose_restart_architect)
 	summary_vbox.add_child(reboot_button)
@@ -1981,12 +2011,8 @@ func _build_menu_overlay() -> void:
 	_add_menu_button(exits, "Save & Return to Title", _menu_return_title)
 	_add_menu_button(exits, "Save & Quit", _menu_quit_game)
 	_add_menu_button(exits, "Restart Reboot Cycle", _menu_restart_cycle)
-	end_expedition_button = Button.new()
-	end_expedition_button.text = "End Expedition"
-	end_expedition_button.tooltip_text = "Ends this expedition and banks its Archived Data."
-	end_expedition_button.pressed.connect(_end_expedition)
-	preload("res://scripts/title_button_style.gd").apply(end_expedition_button, 280, 50)
-	exits.add_child(end_expedition_button)
+	# Built through the menu helper so it matches the buttons above it (owner playtest, Sept 18).
+	end_expedition_button = _add_menu_button(exits, "End Expedition", _end_expedition)
 	_add_menu_button(exits, "Back", _pause_page_back)
 	menu_save_feedback = Label.new()
 	menu_save_feedback.name = "SaveFeedback"
@@ -2002,11 +2028,11 @@ func _build_menu_overlay() -> void:
 	hint.add_theme_color_override("font_color", Color("#8daab6"))
 	box.add_child(hint)
 
-func _add_menu_button(parent: Control, text: String, callable: Callable) -> void:
+func _add_menu_button(parent: Control, text: String, callable: Callable) -> Button:
 	var button := Button.new()
 	button.text = {
 		"Resume Cycle":"Return to Station",
-		"Station & Archives":"Archive & Settings  ▸",
+		"Station & Archives":"Archive  ▸",
 		"End or Leave Loop":"Leave Game  ▸",
 		"Codex":"Codex & Discoveries",
 		"Meta Progression":"Upgrades & Unlocks",
@@ -2021,6 +2047,7 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> void
 		"Save & Return to Title": "Records the active loop before opening the title screen.",
 		"Save & Quit": "Records the active loop before closing the game.",
 		"Restart Reboot Cycle": "Records this attempt before starting a new loop.",
+		"End Expedition": "Ends this expedition and banks its Archived Data.",
 		"Recenter Station": "Fits the station into view without changing its rooms.",
 		"Station & Archives": "Settings, codex, research and credits.",
 		"End or Leave Loop": "Return to title, quit, restart or end the expedition."
@@ -2038,6 +2065,7 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> void
 	parent.add_child(button)
 	if text == "Resume Cycle":
 		menu_resume_button = button
+	return button
 
 func _style_danger_button(button: BaseButton) -> void:
 	var style := StyleBoxFlat.new()
@@ -3096,7 +3124,10 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None"
 	]
 	discoveries += "\nCharacters discovered: " + _discovered_character_names()
-	summary_text.text = "%s\n\n%s\n\nCycles survived: %d\nCrew remaining: %d\nResonance: %d\nLinks formed: %d / Best cascade: x%d\nArchived Data banked: %d\nArchived Data total: %d" % [reason, discoveries, cycle, crew_count, resonance_score, links_formed, largest_cascade, award, meta.total_research_points]
+	if summary_outcome_label != null: summary_outcome_label.text = reason
+	_refresh_summary_figures(award)
+	# The figures live in the tiles above; the prose keeps what needs a sentence.
+	summary_text.text = "%s\n\nArchived Data total: %d" % [discoveries, meta.total_research_points]
 	summary_text.text += "\nResources earned: %s" % (_format_cost(run_earned) if not run_earned.is_empty() else "None")
 	summary_layer.visible = true
 	var monitor = _performance_monitor()
@@ -3110,7 +3141,8 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	for id in run_stabilized_synergy_ids:
 		pattern_research += int(SynergyManagerScript.get_synergy(id).get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
 	var retained := "WHAT SURVIVES\nNew patterns: %d / Stabilized: %d\nArchived Data banked: %d from score / %d from patterns\nLearned patterns and bought blueprints and characters remain in your profile. Spend Archived Data in Meta Progression.\n\n" % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size(), run_awarded_research, pattern_research]
-	summary_text.text = ResourceIcons.decorate("OUTCOME // " + reason + "\n\n" + retained + "RUN RECORD\n" + summary_text.text.trim_prefix(reason + "\n\n"), 17)
+	# The outcome has its own line under the heading now, so the prose starts at what survives.
+	summary_text.text = ResourceIcons.decorate(retained + "RUN RECORD\n" + summary_text.text, 17)
 	_refresh_learning_ui()
 	preload("res://scripts/title_settings.gd").apply_menu_text(summary_layer)
 	if is_instance_valid(continue_expedition_button) and continue_expedition_button.visible:
@@ -3135,6 +3167,47 @@ func _continue_expedition() -> void:
 		tick_timer.start()
 	_log("Expedition extended. No directive deadlines; life support remains active.")
 	_refresh_all()
+
+# One figure from the run: the number large in its own colour, its name quiet underneath.
+func _add_summary_figure(value: String, caption: String, tint: Color) -> void:
+	if summary_stats == null: return
+	var tile := PanelContainer.new()
+	tile.custom_minimum_size = Vector2(142, 62)
+	var frame := StyleBoxFlat.new()
+	frame.bg_color = Color("#0b1c24")
+	frame.border_color = tint.darkened(0.45)
+	frame.set_border_width_all(1)
+	frame.set_corner_radius_all(6)
+	frame.set_content_margin_all(8)
+	tile.add_theme_stylebox_override("panel", frame)
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 0)
+	column.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tile.add_child(column)
+	var figure := Label.new()
+	figure.text = value
+	figure.add_theme_font_size_override("font_size", 22)
+	figure.add_theme_color_override("font_color", tint)
+	column.add_child(figure)
+	var name_label := Label.new()
+	name_label.text = caption
+	name_label.add_theme_font_size_override("font_size", 12)
+	name_label.add_theme_color_override("font_color", Color("#7f9aa3"))
+	column.add_child(name_label)
+	summary_stats.add_child(tile)
+
+func _refresh_summary_figures(award: int) -> void:
+	if summary_stats == null: return
+	for child in summary_stats.get_children():
+		summary_stats.remove_child(child)
+		child.queue_free()
+	var data_tint := Color(ResourceIcons.color("data"))
+	_add_summary_figure(str(cycle), "CYCLES SURVIVED", Color("#a9e7d4"))
+	_add_summary_figure(str(crew_count), "CREW REMAINING", RoomDatabaseScript.CATEGORY_COLORS.get("Crew", Color("#e58a45")))
+	_add_summary_figure(str(resonance_score), "RESONANCE", Color("#c9a765"))
+	_add_summary_figure(str(links_formed), "LINKS FORMED", RoomDatabaseScript.CATEGORY_COLORS.get("Science", Color("#4f8fe6")))
+	_add_summary_figure("x%d" % largest_cascade, "BEST CASCADE", RoomDatabaseScript.CATEGORY_COLORS.get("Anomaly", Color("#9c5de8")))
+	_add_summary_figure(str(award), "DATA BANKED", data_tint)
 
 func _end_expedition() -> void:
 	if not expedition_mode or not running:

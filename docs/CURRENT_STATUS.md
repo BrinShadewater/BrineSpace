@@ -1,3 +1,19 @@
+## Menu labels, matching widths and a less bland report - September 18, 2026
+
+1. Owner playtest (test 5): the in-game menu entry now reads "Archive" rather than "Archive &
+   Settings", since Settings has its own place.
+2. End Expedition is built through the menu helper instead of by hand, so it is the same 380 by 50
+   as the buttons above it on the Leave Game page.
+3. On the report page, Continue Expedition, Start New Cycle, Review Discoveries and Return to Title
+   all sit at that same width, and "Start New Reboot Cycle" is now "Start New Cycle".
+4. The page itself: the heading sits over a rule in the core's teal with the outcome beneath it,
+   and the run's figures - cycles survived, crew remaining, resonance, links formed, best cascade
+   and Data banked - are tiles in their own colours rather than six more lines of prose. The prose
+   keeps what needs a sentence, and the panel no longer reserves a 620 px well that left a gap
+   under short reports.
+5. Checked: test_ui_workspace, test_overlay_text and test_discovery_progression pass; the page was
+   rendered before and after through a probe that files an expedition report.
+
 ## The real cause: clicking a styled button cancelled its own click - September 18, 2026
 
 1. The owner's report, narrowed by one question: Tab worked, clicking did nothing. That rules out a
