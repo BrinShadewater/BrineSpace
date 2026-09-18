@@ -1,3 +1,17 @@
+## Inspector progress bars - September 17, 2026
+
+1. Excavation, salvage, cryo-ward repair, pod thaw/charge and mining-site drone load draw a bar
+   in the inspector instead of a bare percentage. `_progress_bar(fraction, fill_hex)` in
+   scripts/main.gd builds it from two `[bgcolor]` spans of non-breaking spaces, so it never wraps
+   and does not depend on the bundled font carrying block glyphs. The percentage stays after
+   the bar.
+2. Fill colours follow the thing being worked: amber for wreck salvage, rock grey-green for
+   excavation, green for ward repair, cyan for thaw and charge, ore amber for drone load.
+3. Closes note 16 from the batch 6 owner playtest list below.
+4. Checked: `tools/run_tests.py --only test_inspector_refresh,test_cryo_recovery,test_finite_harvest`
+   passes headless, and a throwaway Godot render of the bbcode confirmed the bar draws with no
+   wrapping or missing glyphs.
+
 ## Owner playtest notes, batch 6 - September 17, 2026 (part one shipped, part two open)
 
 Owner decisions this batch: department colours are red operations/command/security, blue science

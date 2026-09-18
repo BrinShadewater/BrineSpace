@@ -1659,7 +1659,7 @@ func _refresh_wreck_inspector(cell: Vector2i) -> void:
 		note = "Extend the station to a neighboring cell to reach this wreck."
 	elif busy:
 		note = "The salvage rig is assigned elsewhere. Pause that job first."
-	_set_inspector_text("%s\n\nProgress: %d%% / %.0f seconds remaining\nMetal salvage: %d (delivered on docking; storage capacity applies)\n\n%s\n\nNo recoverable occupants. This compartment can only be dismantled. Construction becomes available after the last frame is cleared; normal room costs still apply.\n\n[color=#698782]It held pressure once. I would not ask it twice.[/color]" % [state,roundi(fraction*100),WreckField.DURATION-float(wreck.progress),WreckField.YIELDS[wreck.kind],note])
+	_set_inspector_text("%s\n\nProgress: %s\n%.0f seconds remaining\nMetal salvage: %d (delivered on docking; storage capacity applies)\n\n%s\n\nNo recoverable occupants. This compartment can only be dismantled. Construction becomes available after the last frame is cleared; normal room costs still apply.\n\n[color=#698782]It held pressure once. I would not ask it twice.[/color]" % [state,_progress_bar(fraction,"#c39861"),WreckField.DURATION-float(wreck.progress),WreckField.YIELDS[wreck.kind],note])
 	room_operation_button.set_meta("cell",cell)
 	room_operation_button.disabled = not running or (not wreck.active and (not accessible or busy or not has_bay))
 	room_operation_button.text = "PAUSE SALVAGE" if wreck.active else "RESUME SALVAGE" if wreck.progress>0 else "DISMANTLE & SALVAGE"
@@ -1676,13 +1676,13 @@ func _refresh_cryo_inspector(cell: Vector2i) -> void:
 	var lines: Array[String] = [CryoRecovery.status(self,cell)]
 	if not ward.cleared:
 		lines.append("Repair hull and reconnect utilities: %d Metal, %.0f seconds. Payment is retained through pauses." % [CryoRecovery.REPAIR_METAL,WreckField.DURATION])
-		lines.append("Repair: %d%%. Connect a matching door to reach this ward. One shared exterior rig." % roundi(ward.progress/WreckField.DURATION*100))
+		lines.append("Repair: %s\nConnect a matching door to reach this ward. One shared exterior rig." % _progress_bar(ward.progress/WreckField.DURATION,"#6fae79"))
 		var blocker: Dictionary = CryoRecovery.repair_blocker(self,cell,"cryo_chamber",int(ward.rotation),CryoRecovery.REPAIR_METAL)
 		if not blocker.is_empty(): lines.append("[color=#f0bd99]%s // %s[/color]" % [blocker.button,blocker.detail])
 	else:
 		lines.append("Restore power to start the pump. White fluid flows through the tubes into Marsh for %.0f seconds, then he wakes. A free berth is needed to join the crew. Power loss or suspension retains charge." % CryoRecovery.CHARGE_SECONDS if charging else "Station compartment online when powered. Each thaw takes %.0f seconds and requires food, oxygen and a free berth. Suspension retains progress." % CryoRecovery.WAKE_SECONDS)
 	for pod in ward.pods:
-		lines.append("%s // %s" % [pod.name,"ADDED TO ROSTER" if pod.recovered else ("CHARGE %d%%" if charging else "STASIS / thaw %d%%") % roundi(pod.wake/CryoRecovery.duration(ward)*100)])
+		lines.append("%s // %s" % [pod.name,"ADDED TO ROSTER" if pod.recovered else ("CHARGE %s" if charging else "STASIS / thaw %s") % _progress_bar(pod.wake/CryoRecovery.duration(ward),"#7fc7d8")])
 	if charging and ward.pods[0].recovered and not marsh_npc.dead:
 		lines.append(marsh_npc.battery_status()+"\nNo helmet or breathing requirement. Returns at 35% battery. Recharging draws 1 Power per 25% restored; a full battery lasts about five minutes.")
 	lines.append("\nCREW ROSTER // RECOVERED SURVIVORS")
@@ -1717,7 +1717,7 @@ func _refresh_rock_inspector(cell: Vector2i) -> void:
 		note = "Cut an exposed edge first. The drill needs an open route from its bay."
 	elif busy:
 		note = "The salvage rig is assigned elsewhere. Pause that job first."
-	_set_inspector_text("%s\n\nProgress: %d%% / %.0f seconds remaining\n\n%s\n\nBreak and remove this section before building here. Neighboring rock remains in place. Excavation recovers 4 Metal, delivered on docking. The drill returns to recharge from station Power; cuts remain between trips. Normal room costs apply after clearance.\n\n[color=#698782]The ocean placed this here. It neglected to file a permit.[/color]" % [state,roundi(float(rock.progress)/WreckField.DURATION*100),WreckField.DURATION-float(rock.progress),note])
+	_set_inspector_text("%s\n\nProgress: %s\n%.0f seconds remaining\n\n%s\n\nBreak and remove this section before building here. Neighboring rock remains in place. Excavation recovers 4 Metal, delivered on docking. The drill returns to recharge from station Power; cuts remain between trips. Normal room costs apply after clearance.\n\n[color=#698782]The ocean placed this here. It neglected to file a permit.[/color]" % [state,_progress_bar(float(rock.progress)/WreckField.DURATION,"#a7b5ab"),WreckField.DURATION-float(rock.progress),note])
 	room_operation_button.set_meta("cell",cell)
 	room_operation_button.disabled = not running or (not rock.active and (not accessible or busy or not has_bay))
 	room_operation_button.text = "PAUSE EXCAVATION" if rock.active else "RESUME EXCAVATION" if rock.progress>0 else "BREAK & CLEAR ROCK"
@@ -4672,13 +4672,25 @@ func _refresh_harvest_inspector(cell: Vector2i) -> void:
 			if drone.job=="harvest" and Vector2i(drone.target)==cell:
 				status = drone_fleet.battery_status(drone.home,int(resources.power),powered_room_cells.has(drone.home),paused,wrecks)
 				break
-	_set_inspector_text("%s\n\nRemaining: %s\nLoads: %d / %d\nCurrent load: %d%%\n\nDrones choose the nearest reachable surveyed site. Extraction stops when its material is gone. Cargo enters storage at the bay; storage limits apply. Expand the station to survey farther seabed.\n\n[color=#698782]I have counted what remains. It is not an inexhaustible number.[/color]" % [status,_format_cost(remaining),site.units,site.capacity,roundi(site.progress/6.0*100)])
+	_set_inspector_text("%s\n\nRemaining: %s\nLoads: %d / %d\nCurrent load: %s\n\nDrones choose the nearest reachable surveyed site. Extraction stops when its material is gone. Cargo enters storage at the bay; storage limits apply. Expand the station to survey farther seabed.\n\n[color=#698782]I have counted what remains. It is not an inexhaustible number.[/color]" % [status,_format_cost(remaining),site.units,site.capacity,_progress_bar(site.progress/6.0,"#c9a765")])
 	room_operation_button.set_meta("cell",cell)
 	room_operation_button.disabled = not running or site.units==0
 	room_operation_button.text = "DEPOSIT EXHAUSTED" if site.units==0 else "PAUSE EXTRACTION" if site.active else "RESUME EXTRACTION"
 	room_operation_button.tooltip_text = "Pause this target without losing extracted material or partial work."
 
 var inspector_had_water := false
+
+const INSPECTOR_BAR_CELLS := 22
+
+func _progress_bar(fraction: float, fill_hex: String = "#6fae79") -> String:
+	var clamped: float = clampf(fraction, 0.0, 1.0)
+	var filled: int = roundi(clamped * INSPECTOR_BAR_CELLS)
+	var bar := ""
+	if filled > 0:
+		bar += "[bgcolor=%s]%s[/bgcolor]" % [fill_hex, " ".repeat(filled)]
+	if filled < INSPECTOR_BAR_CELLS:
+		bar += "[bgcolor=#12222a]%s[/bgcolor]" % " ".repeat(INSPECTOR_BAR_CELLS - filled)
+	return "%s  %d%%" % [bar, roundi(clamped * 100.0)]
 
 # Every inspector page ends here, so resource amounts pick up their icon and colour in one place.
 func _set_inspector_text(value: String) -> void:
