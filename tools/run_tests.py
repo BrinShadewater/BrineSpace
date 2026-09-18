@@ -52,13 +52,35 @@ def load_index() -> dict:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
 
 
+EXTENDS_TEST = re.compile(r'extends\s+"res://tests/([\w./-]+)\.gd"')
+
+
+def source_chain(test: Path, depth: int = 6) -> list[str]:
+    """This fixture's source, then its base fixtures' - most helpers are inherited."""
+    chain, current = [], test
+    while current is not None and current.exists() and depth > 0:
+        src = current.read_text(encoding="utf-8", errors="replace")
+        chain.append(src)
+        match = EXTENDS_TEST.search(src)
+        current = (ROOT / "tests" / (match.group(1) + ".gd")) if match else None
+        depth -= 1
+    return chain
+
+
 def detect_lane(test: Path, index: dict) -> tuple[str, str]:
     """Return (lane, reason). Lane: headless | native | skip."""
     override = index.get("lanes", {}).get(test.stem)
     if override:
         return override.get("lane", "headless"), override.get("reason", "index.json override")
-    src = test.read_text(encoding="utf-8", errors="replace")
-    render_bound = "frame_post_draw" in src or "get_texture().get_image()" in src
+    chain = source_chain(test)
+    src = chain[0]
+    # Art-evidence tools refuse to run without a fresh --capture-dir, which a sweep cannot
+    # invent: their run() is inherited, so the guard is in a base file, not this one.
+    owner = next((text for text in chain if "func run(" in text), src)
+    if "if capture_dir.is_empty() or DirAccess" in owner:
+        return "skip", "art-evidence tool: run it directly with --capture-dir"
+    joined = chr(10).join(chain)
+    render_bound = "frame_post_draw" in joined or "get_texture().get_image()" in joined
     guarded = "headless" in src
     if render_bound and not guarded:
         return "native", "awaits rendered frames with no headless guard"
@@ -77,8 +99,8 @@ def classify_result(code: int, output: str, timed_out: bool) -> tuple[str, str]:
         if passed and not failed:
             return "PASS-HUNG", detail or "printed PASS, then hung at exit"
         return "TIMEOUT", detail or "no verdict line before the timeout"
-    if code == 2 and ("native" in output.lower() or "headless" in output.lower()):
-        return "SKIP-NATIVE", "test rejects headless execution by design (exit 2)"
+    if code == 2:
+        return "SKIP-NATIVE", "test rejects this lane by design (exit 2)"
     if code == 0 and not failed:
         return "PASS", detail
     return f"FAIL({code})", detail[:240]
