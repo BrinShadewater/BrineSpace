@@ -1,3 +1,26 @@
+## The real cause: clicking a styled button cancelled its own click - September 18, 2026
+
+1. The owner's report, narrowed by one question: Tab worked, clicking did nothing. That rules out a
+   paused tree (which would kill both) and points at the click path itself.
+2. Cause: batch 6 added `drop_focus_on_click` so a clicked button would not keep the white focus
+   ring. It called `release_focus.call_deferred()` on the mouse *press*. The deferred call lands
+   between press and release, and Godot cancels a press whose control loses focus - so the button
+   emitted button_down and button_up and never `pressed`. Every button styled through
+   `title_button_style.apply()` was affected, which is most of the game's menus.
+3. Measured, not guessed: a probe clicked a styled button with correctly scaled window coordinates
+   and logged the signals. Before: button_down and button_up fired, `pressed` never did, zero of
+   three clicks registered, while Enter on a focused button worked. Removing that one connection
+   made the same click fire.
+4. Fix: the press only hides the focus ring, which is all the batch 6 note asked for, and focus is
+   dropped on button_up, once the click has resolved. Three clicks in a row now register, the ring
+   stays hidden, the button keeps no focus, and keyboard activation still works.
+5. Regression test in test_title_screen: a styled button is clicked twice with real input events
+   and must register both. Verified the test fails against the old code (0 of 2) and passes with
+   the fix - a regression test that cannot fail on the bug is worth nothing.
+6. Note for the next fix of this kind: a GDScript lambda captures an int by value, so the first
+   version of the test counted clicks into a copy and always read zero. The tally lives in an array
+   now.
+
 ## Still unclickable: input diagnostics and a pause valve - September 18, 2026
 
 1. The close-path fix above did not solve the owner's report - the game still refuses clicks. The

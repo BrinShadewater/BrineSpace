@@ -168,11 +168,17 @@ static func panel(width: int, height: int, state: String, primary: bool = false)
 
 # A clicked button keeps focus, which left a white ring around the last thing pressed (owner
 # playtest, Sept 17). The ring belongs to keyboard navigation, so a mouse press drops focus.
+# A clicked button should not keep the white focus ring, but it must still register the click.
+# Releasing focus on the press - even deferred - lands between press and release, and Godot cancels
+# a press whose control loses focus: the button emitted button_down and button_up and never
+# pressed, so clicking did nothing at all (owner report, Sept 17). The ring is hidden on the press,
+# which is all that was wanted visually, and focus is only dropped once the click has resolved.
 static func drop_focus_on_click(button: BaseButton) -> void:
 	button.gui_input.connect(func(event: InputEvent) -> void:
 		if event is InputEventMouseButton and event.pressed:
-			set_keyboard_navigation(false)
-			button.release_focus.call_deferred())
+			set_keyboard_navigation(false))
+	button.button_up.connect(func() -> void:
+		if button.has_focus(): button.release_focus.call_deferred())
 
 static func apply(button: Button, width: int, height: int, primary: bool = false) -> void:
 	drop_focus_on_click(button)

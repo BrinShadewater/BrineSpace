@@ -1,5 +1,6 @@
 extends SceneTree
 const ArchitectPicker = preload("res://scripts/architect_selection.gd")
+const ButtonStyle = preload("res://scripts/title_button_style.gd")
 
 var failures := 0
 # The title and the game it opens must never write the player's progress or checkpoint. This
@@ -33,6 +34,45 @@ func _run() -> void:
 	_check(title.layout_button.get_parent()==title, "Layout Studio is outside central start controls")
 	_check(title.cover.elapsed > 0.0, "Native cover must start animating")
 	_check(title.start_button.has_focus(), "Start must receive keyboard focus")
+	# A real mouse click must reach a styled button. Dropping focus on the press cancelled it:
+	# Godot cancels a press whose control loses focus, so the button emitted button_down and
+	# button_up and never pressed, and every menu in the game stopped answering the mouse while the
+	# keyboard still worked (owner report, Sept 17).
+	# A lambda captures an int by value, so the tally lives in an array the closure shares.
+	var clicks: Array = []
+	var probe := Button.new()
+	probe.text = "CLICK PROBE"
+	probe.position = Vector2(600, 500)
+	probe.size = Vector2(240, 48)
+	probe.custom_minimum_size = Vector2(240, 48)
+	ButtonStyle.apply(probe, 240, 48)
+	probe.pressed.connect(func(): clicks.append(1))
+	title.add_child(probe)
+	# A Control needs a frame or two before the viewport picks it up under the pointer.
+	for i in range(5): await process_frame
+	var to_window: Vector2 = Vector2(DisplayServer.window_get_size()) / root.get_visible_rect().size
+	var at: Vector2 = probe.get_global_rect().get_center() * to_window
+	for round in range(2):
+		var motion := InputEventMouseMotion.new()
+		motion.position = at
+		motion.global_position = at
+		Input.parse_input_event(motion)
+		await process_frame
+		if round == 0:
+			_check(root.gui_get_hovered_control() == probe, "The probe button is under the pointer (hovered %s, probe rect %s, point %s)" % [str(root.gui_get_hovered_control()), probe.get_global_rect(), at])
+		for down in [true, false]:
+			var click := InputEventMouseButton.new()
+			click.button_index = MOUSE_BUTTON_LEFT
+			click.position = at
+			click.global_position = at
+			click.pressed = down
+			Input.parse_input_event(click)
+			for i in range(3): await process_frame
+	_check(clicks.size() == 2, "A styled button answers repeated mouse clicks (got %d of 2)" % clicks.size())
+	_check(not probe.has_focus() and is_zero_approx(ButtonStyle._focus().border_color.a), "A clicked button keeps no focus ring")
+	probe.queue_free()
+	await process_frame
+
 	var first: float = title.cover.character.position.y
 	await create_timer(0.8).timeout
 	_check(first != title.cover.character.position.y, "Character must float independently")
