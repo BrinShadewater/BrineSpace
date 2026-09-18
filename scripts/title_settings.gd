@@ -1,6 +1,20 @@
 extends RefCounted
 const PATH := "user://brine_settings.cfg"
+# A test, tool or probe started with -s replaces the main loop with its own script - the same
+# signal the performance monitor uses for automatic captures. Those runs resize windows and toggle
+# preferences, and they used to write all of it into the player's own settings (owner report,
+# Sept 17: a probe left a stale window size and swapped the hand layout). They get their own file.
+const TEST_PATH := "user://test_settings.cfg"
 static var save_path := PATH
+
+static func _player_session() -> bool:
+	var loop := Engine.get_main_loop()
+	return loop == null or loop.get_script() == null
+
+# Called before any read or write: only a real play session touches the player's file.
+static func _settings_path() -> String:
+	if save_path == PATH and not _player_session(): return TEST_PATH
+	return save_path
 static var initialized := false
 static var window_size := Vector2i(1600, 900)
 static var reduced_motion := false
@@ -49,7 +63,7 @@ static func initialize(window: Window) -> void:
 		window.focus_exited.connect(_on_focus.bind(false))
 	var config := ConfigFile.new()
 	raised_walls = true
-	if config.load(save_path) != OK:
+	if config.load(_settings_path()) != OK:
 		window_size = window.size
 		apply_runtime(window)
 		return
@@ -194,4 +208,4 @@ static func save(window: Window) -> Error:
 	config.set_value("controls", "keys", keys)
 	config.set_value("accessibility", "tooltip_delay", tooltip_delay)
 	config.set_value("accessibility", "text_scale", text_scale)
-	return config.save(save_path)
+	return config.save(_settings_path())

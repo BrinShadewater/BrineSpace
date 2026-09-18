@@ -1,3 +1,26 @@
+## Fix: the title screen could stop answering the mouse - September 18, 2026
+
+1. Owner bug report (F8, 22:09, scene title_screen): "Clicking on buttons doesnt work and open the
+   next screen". Nothing was logged, no errors were counted, and the frame log shows a healthy 165
+   fps throughout - the game was running, it just would not answer a click.
+2. Cause: `TitleArchive._close()` awaited its fade tween's `finished` signal before emitting
+   `closed`. A killed tween never emits that signal, so the page stayed in the tree at zero alpha -
+   invisible, still full-screen, still MOUSE_FILTER_STOP - while the title's own buttons stayed
+   disabled behind it, which `_open_archive` had done on the way in. The await dates from
+   commit 268c0cd5d (September 6), not from this batch.
+3. Fix: closing hands the title back first - the page stops taking input, emits `closed`, and only
+   then fades and frees itself on a timer that cannot strand it. The title also re-enables its
+   buttons when a page leaves the tree by any route, so a page can never take them with it.
+4. Reproduced and verified: a probe opened a page, closed it, killed the fade mid-close, and read
+   the state back. Before the fix: page alive, buttons disabled, mouse filter still STOP. After:
+   page freed, buttons enabled. test_title_screen now carries that case, and passes on the native
+   lane along with test_title_checkpoint_layout.
+5. Second fix, same report: the probes used for this session's layout work wrote into the player's
+   own `brine_settings.cfg` - a stale 2560x1080 window size and a swapped hand layout. Settings
+   now redirect to `user://test_settings.cfg` for anything started with `-s`, the same check the
+   performance monitor uses, so no test, tool or probe can write the player's preferences again.
+   Verified by hashing the file before and after a headless and a native run: unchanged.
+
 ## BRINE's memory as eight lobes, and what each one remembers - September 18, 2026
 
 1. Owner request: dendrites that go their own way and each end in their own keystone, lobes named

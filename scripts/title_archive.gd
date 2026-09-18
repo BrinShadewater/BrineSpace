@@ -914,18 +914,27 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		_close()
 
+# Closing releases the title screen first and fades afterwards. It used to await the fade tween's
+# finished signal before emitting: a tween that is killed never emits it, which left a fully
+# transparent archive over the title, still swallowing every click, with the title's own buttons
+# still disabled behind it. Nothing was on screen to explain it and nothing was logged.
 func _close() -> void:
 	if closing:
 		return
 	closing = true
+	# The page stops taking input the moment it starts to go, whatever happens to the fade.
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	set_process_input(false)
+	set_process_unhandled_key_input(false)
+	closed.emit()
 	if transition and transition.is_running():
 		transition.kill()
 	if not preload("res://scripts/title_settings.gd").reduced_motion:
 		transition = create_tween()
 		transition.tween_property(self, "modulate:a", 0.0, 0.12)
-		await transition.finished
+		# A timer, not the tween: this wait only delays the free, and can never strand the page.
+		await get_tree().create_timer(0.14).timeout
 	hide()
-	closed.emit()
 	queue_free()
 
 func _populate_settings() -> void:

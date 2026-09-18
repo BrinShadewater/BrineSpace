@@ -273,16 +273,22 @@ func _open_archive(kind: String, opener: Button) -> void:
 	add_child(archive)
 	for button in [start_button, quit_button, codex_button, progression_button, continue_button, settings_button, about_button, layout_button]:
 		button.disabled = true
-	archive.closed.connect(func() -> void:
-		archive = null
-		for button in [start_button, quit_button, codex_button, progression_button, continue_button, settings_button, about_button, layout_button]:
-			button.disabled = false
+	archive.closed.connect(_release_archive)
+	# A page that leaves the tree without saying so must not take the title's buttons with it: a
+	# disabled title looks exactly like a game that has stopped responding.
+	archive.tree_exited.connect(_release_archive)
+
+# Hands the title back to the player. Safe to call twice: the page emits closed and then leaves.
+func _release_archive() -> void:
+	archive = null
+	for button in [start_button, quit_button, codex_button, progression_button, continue_button, settings_button, about_button, layout_button]:
+		button.disabled = false
+	if is_instance_valid(archive_opener) and archive_opener.is_visible_in_tree():
 		archive_opener.grab_focus()
-		_refresh_unread_badges()
-		# Spending Archived Data changes the balance the badge shows.
-		if progression_button.has_meta("detail_label"):
-			progression_button.get_meta("detail_label").text = "%d ARCHIVED DATA" % preload("res://scripts/research_tree.gd").available(meta_state)
-	)
+	_refresh_unread_badges()
+	# Spending Archived Data changes the balance the badge shows.
+	if progression_button.has_meta("detail_label"):
+		progression_button.get_meta("detail_label").text = "%d ARCHIVED DATA" % preload("res://scripts/research_tree.gd").available(meta_state)
 
 func _refresh_unread_badges() -> void:
 	if error_label.text.is_empty():
@@ -307,6 +313,9 @@ func _choose_architect() -> void:
 	picker.closed.connect(func():
 		archive = null
 		start_button.grab_focus()
+	)
+	picker.tree_exited.connect(func():
+		if archive == picker or not is_instance_valid(archive): archive = null
 	)
 	picker.chosen.connect(func(_id: String):
 		archive = null

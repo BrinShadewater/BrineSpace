@@ -64,6 +64,20 @@ func _run() -> void:
 	_check(title.start_button.disabled, "Modal must block New Loop")
 	title._start_game()
 	_check(not title.starting, "Open archive must reject direct game activation")
+	# A page must hand the title back even if its fade never finishes. Closing used to wait on the
+	# fade tween's finished signal, and a killed tween left a transparent page over the title with
+	# every button disabled behind it: the game looked alive and answered no clicks (owner report,
+	# Sept 17).
+	var stranded = title.archive
+	stranded._close()
+	await process_frame
+	if stranded.transition != null: stranded.transition.kill()
+	await create_timer(0.35).timeout
+	_check(not is_instance_valid(title.archive) or title.archive == null, "A closed page lets go of the title")
+	_check(not title.start_button.disabled and not title.codex_button.disabled, "The title takes its buttons back after a page closes")
+	_check(not is_instance_valid(stranded), "The page frees itself even with its fade killed")
+	title.codex_button.pressed.emit()
+	await create_timer(0.3).timeout
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://output/title-codex.png")
 	title.archive.search.text = "reactor"
