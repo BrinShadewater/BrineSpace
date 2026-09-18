@@ -46,6 +46,7 @@ func _run() -> void:
 	game.orbit.rng.seed = 4404
 	game.orbit.current_poi = Orbit.POIS[0].duplicate(true)
 	game.orbit.timer = 6
+	_wake_architect()
 	game.hand.assign(["solar_array", "mining_drone_bay", "hydroponics_bay"])
 	game.draw_pile.assign(["life_support", "solar_array", "storage_bay"])
 	_build("solar_array", Vector2i(19, 20), 2)
@@ -162,6 +163,21 @@ func _run() -> void:
 		push_error("Scene playtest failures: %d" % failures)
 	quit(1 if failures > 0 else 0)
 
+# A loop has no crew until the architect wakes out of the core pod, and rooms are built by the
+# crew: the core's emergency builder stands down whenever crew builders are available. Without
+# this the fixture paid for rooms nobody could ever put up, and every build assertion failed on a
+# station with nobody aboard.
+func _wake_architect() -> void:
+	var Architects = preload("res://scripts/architects.gd")
+	var was_paused: bool = game.paused
+	game.paused = false
+	for step in range(600):
+		if Architects.present(game, "bill"): break
+		Architects.advance_core(game, 0.1)
+		game._update_test_walker(0.1)
+	game.paused = was_paused
+	_expect(Architects.present(game, "bill"), "the architect wakes before anything is built")
+
 func _build(id: String, cell: Vector2i, rotation := 0) -> void:
 	_expect(game.hand.has(id), "draft contains %s" % id)
 	game._on_card_pressed(id)
@@ -180,6 +196,11 @@ func _build(id: String, cell: Vector2i, rotation := 0) -> void:
 		if game.occupied.has(cell): break
 		preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 		game._update_wreck_clearance(0.1)
+		# Rooms are put up by the crew now, and the core's emergency builder stands down whenever
+		# crew builders are available, so advancing only the drone fleet left every paid order
+		# sitting unbuilt. These drive the same per-frame updates the running game does.
+		game._update_test_walker(0.1)
+		preload("res://scripts/architects.gd").advance_core(game, 0.1)
 	game.paused = was_paused
 	_expect(game.occupied.has(cell), "purchased %s is built" % id)
 
@@ -188,7 +209,16 @@ func _cycle_with_drone_returns() -> void:
 	# The discrete-cycle fixture must wait for earned cargo before spending it.
 	var was_paused: bool = game.paused
 	game.paused = false
-	game._update_wreck_clearance(20.0)
+	# Forty seconds of settling, in the steps the game itself takes: one jump of 20 s asks drones to
+	# travel a whole route in a single frame, and leaves the crew - who put the rooms up - out of it
+	# entirely. The window is longer than the original twenty because crew-built rooms come online
+	# later than the retired emergency builder managed, so a mining bay needs the extra time to land
+	# the delivery the fixture counts on. Waiting on "every drone docked" instead reads as settled
+	# before a drone has even launched.
+	for step in range(400):
+		game._update_wreck_clearance(0.1)
+		game._update_test_walker(0.1)
+		preload("res://scripts/architects.gd").advance_core(game, 0.1)
 	game.paused = was_paused
 
 func _settle() -> void:

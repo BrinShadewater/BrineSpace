@@ -1,3 +1,27 @@
+## playtest_polish: nobody was aboard to build anything - September 18, 2026
+
+1. The fixture failed 18 assertions, starting with "purchased solar_array is built". Cause: it
+   never woke an architect, and rooms are built by the crew now - the core's emergency builder
+   stands down whenever crew builders are available, which `_update_wreck_clearance` always
+   requests. A station with nobody aboard paid for orders that nothing could ever put up, and
+   every later assertion fell over the missing rooms.
+2. Proved before changing anything: a probe placed one paid room and watched it sit unbuilt with
+   `bill present=false`; waking the architect first and advancing the same per-frame updates the
+   game runs built it.
+3. The fixture now wakes its architect before the first purchase, the way a loop does, and its
+   build and cycle loops advance the crew and the core pod alongside the drone fleet. The settling
+   window after a cycle is forty seconds rather than twenty, because crew-built rooms come online
+   later than the retired emergency builder did and a mining bay needs that long to land the
+   delivery the next purchase depends on.
+4. Down to 6 failures from 18. Builds, the economy, both discoveries, the prototype reuse and the
+   three-cycle stabilization all pass now.
+5. What is left is a second cluster, untouched and not yet understood: closing the journal
+   restoring a running station, suspension stopping a room's effects, a suspended room contributing
+   a link, the two directive/victory checks, and reboot clearing transient state. They look like
+   one shared cause rather than six, and they want their own session.
+6. Tried and rejected: settling on "every drone docked" instead of a fixed window. A drone starts
+   docked, so it read as settled before one had launched and the metal failures came back.
+
 ## Render parity failures fixed: a zoom step that did nothing - September 18, 2026
 
 1. All five failing parity captures - brine batch, content cache, hitch, retained lights and
