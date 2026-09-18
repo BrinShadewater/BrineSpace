@@ -62,6 +62,24 @@ const TORCH_TIPS := {
 	"west": Vector2(-35, -75),
 }
 
+# Where a crew member's construction weld lands: the centre of the doorway between the cell they
+# stand in and the cell going up, lifted to the door's middle rather than the deck. Vector2.INF
+# when this actor is not building a room.
+static func construction_door(game, actor) -> Vector2:
+	if str(actor.goal) != "construction": return Vector2.INF
+	var fleet = game.get("drone_fleet")
+	if fleet == null: return Vector2.INF
+	for order in fleet.orders:
+		var builder := str(order.get("builder", ""))
+		if builder.is_empty(): continue
+		if game.get(builder + "_npc") != actor: continue
+		if not order.has("work_cell"): continue
+		var standing: Vector2i = order.work_cell
+		var building: Vector2i = order.pos
+		var middle: Vector2 = (Vector2(standing) + Vector2(building)) * 0.5 + Vector2(0.5, 0.5)
+		return middle * 384.0 - Vector2(0, 34.0)
+	return Vector2.INF
+
 static func draw_torch_sparks(canvas, game, size: float) -> void:
 	var actors := torch_actors(game)
 	if actors.is_empty(): return
@@ -73,6 +91,11 @@ static func draw_torch_sparks(canvas, game, size: float) -> void:
 		var facing: Vector2 = DIRECTIONS.get(str(actor.direction), Vector2.DOWN)
 		# The flame in this pose, measured from the frames.
 		var tip: Vector2 = (actor.foot + TORCH_TIPS.get(str(actor.direction), TORCH_TIPS.south)) / 384.0 * size
+		# Building a room is work on the doorway between the two cells, not on the welder's own
+		# hand: the sparks belong in the middle of that door, on whichever side the room is going
+		# up (owner playtest, Sept 18). Repairs and Josh's torch keep the pose's own flame.
+		var door: Vector2 = construction_door(game, actor)
+		if door.is_finite(): tip = door / 384.0 * size
 		var seed := int(actor.foot.x * 7.0 + actor.foot.y * 13.0)
 		var flicker := 0.35 + 0.15 * float(hash([seed, floori(time * 20.0)]) % 100) / 100.0
 		canvas.draw_circle(tip, unit * 10.0, Color(1.0, 0.62, 0.25, (0.3 if reduced else flicker) * 0.6))

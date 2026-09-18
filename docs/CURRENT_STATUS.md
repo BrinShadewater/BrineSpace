@@ -1,3 +1,15 @@
+## Weld sparks move to the doorway - September 18, 2026
+
+1. Owner playtest (test 5): the blowtorch effect was in the wrong place. It was drawn at the flame
+   in the crew sprite's pose, which sits inside the cell the welder stands in - measured at 155
+   units to the side of the door on an eastward build.
+2. A construction weld now draws at the middle of the doorway between the cell the crew member
+   stands in and the cell going up, lifted 34 units so it reads across the door rather than on the
+   deck. Hull repairs and Josh's torch keep the pose's own flame, which is correct for them.
+3. Checked: test_crew_construction passes with a new case asserting the sparks land on the shared
+   edge (x 8064 between cells 20 and 21), across the middle of it, and that a repair still returns
+   no doorway.
+
 ## Menu labels, matching widths and a less bland report - September 18, 2026
 
 1. Owner playtest (test 5): the in-game menu entry now reads "Archive" rather than "Archive &

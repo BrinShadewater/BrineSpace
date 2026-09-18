@@ -89,6 +89,7 @@ func run():
 	for i in range(50): step()
 	check(game.placed_rooms.size()==count,"Completion is not replayed")
 	check(not game.testing_free_build and not game.testing_disable_failures,"Normal gameplay rules remain enabled")
+	torch_at_the_door()
 	dedicated()
 	approach_retry()
 	await matrix()
@@ -118,6 +119,28 @@ func approach_retry():
 	C.tick_approach_retries(actor,C.APPROACH_RETRY_SECONDS)
 	check(not C.approach_deferred(actor,order),"A failed approach retries after its interval")
 	actor.remove_meta("construction_approach_retry")
+# The weld sparks belong in the middle of the doorway the room is going up through, not at the
+# welder's hand: the flame used to sit a cell-width off to the side (owner playtest, Sept 18).
+func torch_at_the_door():
+	var Effects = preload("res://scripts/station_effects.gd")
+	var home := Vector2i(20, 20)
+	var building := Vector2i(21, 20)
+	game.drone_fleet.orders.clear()
+	game.drone_fleet.enqueue("corridor", building, 0)
+	game.drone_fleet.orders[0].merge({"builder": "bill", "work": 5.0, "work_cell": home, "work_point": (Vector2(home) + Vector2(0.5, 0.5)) * 384.0, "facing": "east"})
+	var actor = game.bill_npc
+	var previous_goal = actor.goal
+	actor.goal = "construction"
+	actor.foot = (Vector2(home) + Vector2(0.5, 0.5)) * 384.0
+	var door: Vector2 = Effects.construction_door(game, actor)
+	check(door.is_finite(), "A building crew member has a doorway to weld at")
+	check(is_equal_approx(door.x, 8064.0), "Sparks sit on the shared edge, not inside a cell: x %.1f" % door.x)
+	check(absf(door.y - 7872.0) <= 48.0, "Sparks sit across the middle of that edge: y %.1f" % door.y)
+	actor.goal = "repair"
+	check(not Effects.construction_door(game, actor).is_finite(), "A repair keeps the pose's own flame")
+	actor.goal = previous_goal
+	game.drone_fleet.orders.clear()
+
 func dedicated():
 	var fleet=preload("res://scripts/drone_fleet.gd").new()
 	var home:=Vector2i(20,20)
