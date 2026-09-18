@@ -1,3 +1,16 @@
+## Wreck and rock clearance say why they are unavailable - September 17, 2026
+
+1. Note 18: salvage drones already dismantle the four wreck types, and the derelict rooms (cryo
+   ward, charging chamber, River's, Josh's and Margot's) are recover-only on purpose. What went
+   wrong is the button: it greyed out with the reason only in the paragraph above, which reads as
+   "this is not possible".
+2. The action button now carries the reason - NEEDS A SALVAGE DRONE BAY, NO ROUTE // EXTEND THE
+   STATION, or RIG BUSY // PAUSE THAT JOB - and the full sentence moves to its tooltip. Rock
+   excavation uses the same helper with its Mining bay.
+3. Checked: test_wreck_clearance, test_rock_clearance and test_inspector_refresh pass, and a probe
+   selected an engineering wreck with no bay built and captured the inspector reading NEEDS A
+   SALVAGE DRONE BAY.
+
 ## Journal footer buttons match - September 17, 2026
 
 1. Part of note 11: under the journal and diagnostics pages, Return to Station was 495 by 44 and

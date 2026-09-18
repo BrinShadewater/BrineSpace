@@ -1664,9 +1664,12 @@ func _refresh_wreck_inspector(cell: Vector2i) -> void:
 		note = "The salvage rig is assigned elsewhere. Pause that job first."
 	_set_inspector_text("%s\n\nProgress: %s\n%.0f seconds remaining\nMetal salvage: %d (delivered on docking; storage capacity applies)\n\n%s\n\nNo recoverable occupants. This compartment can only be dismantled. Construction becomes available after the last frame is cleared; normal room costs still apply.\n\n[color=#698782]It held pressure once. I would not ask it twice.[/color]" % [state,_progress_bar(fraction,"#c39861"),WreckField.DURATION-float(wreck.progress),WreckField.YIELDS[wreck.kind],note])
 	room_operation_button.set_meta("cell",cell)
-	room_operation_button.disabled = not running or (not wreck.active and (not accessible or busy or not has_bay))
-	room_operation_button.text = "PAUSE SALVAGE" if wreck.active else "RESUME SALVAGE" if wreck.progress>0 else "DISMANTLE & SALVAGE"
-	room_operation_button.tooltip_text = "Progress freezes with the game. Metal is awarded once, on completion."
+	var blocked: String = "" if wreck.active else _clearance_blocker(has_bay,accessible,busy,"Salvage")
+	room_operation_button.disabled = not running or not blocked.is_empty()
+	# A greyed button with the reason only in the paragraph above reads as "not possible" (owner
+	# playtest note 18): the button says what is missing instead.
+	room_operation_button.text = blocked if not blocked.is_empty() else "PAUSE SALVAGE" if wreck.active else "RESUME SALVAGE" if wreck.progress>0 else "DISMANTLE & SALVAGE"
+	room_operation_button.tooltip_text = note if not blocked.is_empty() else "Progress freezes with the game. Metal is awarded once, on completion."
 
 func _refresh_cryo_inspector(cell: Vector2i) -> void:
 	var ward: Dictionary = wrecks[cell]
@@ -1703,6 +1706,13 @@ func _refresh_cryo_inspector(cell: Vector2i) -> void:
 		room_operation_button.disabled = not running or not blocker.is_empty()
 	room_operation_button.tooltip_text = "Repair preserves this compartment and its occupants. Wake progress freezes with pause, suspension, power loss or full berths."
 
+# Why a clearance job cannot start, short enough to sit on the button itself.
+func _clearance_blocker(has_bay: bool, accessible: bool, busy: bool, bay: String) -> String:
+	if not has_bay: return "NEEDS A %s DRONE BAY" % bay.to_upper()
+	if not accessible: return "NO ROUTE // EXTEND THE STATION"
+	if busy: return "RIG BUSY // PAUSE THAT JOB"
+	return ""
+
 func _refresh_rock_inspector(cell: Vector2i) -> void:
 	var rock: Dictionary = wrecks[cell]
 	var accessible := WreckField.reachable(occupied,cell,wrecks)
@@ -1722,8 +1732,9 @@ func _refresh_rock_inspector(cell: Vector2i) -> void:
 		note = "The salvage rig is assigned elsewhere. Pause that job first."
 	_set_inspector_text("%s\n\nProgress: %s\n%.0f seconds remaining\n\n%s\n\nBreak and remove this section before building here. Neighboring rock remains in place. Excavation recovers 4 Metal, delivered on docking. The drill returns to recharge from station Power; cuts remain between trips. Normal room costs apply after clearance.\n\n[color=#698782]The ocean placed this here. It neglected to file a permit.[/color]" % [state,_progress_bar(float(rock.progress)/WreckField.DURATION,"#a7b5ab"),WreckField.DURATION-float(rock.progress),note])
 	room_operation_button.set_meta("cell",cell)
-	room_operation_button.disabled = not running or (not rock.active and (not accessible or busy or not has_bay))
-	room_operation_button.text = "PAUSE EXCAVATION" if rock.active else "RESUME EXCAVATION" if rock.progress>0 else "BREAK & CLEAR ROCK"
+	var rock_blocked: String = "" if rock.active else _clearance_blocker(has_bay,accessible,busy,"Mining")
+	room_operation_button.disabled = not running or not rock_blocked.is_empty()
+	room_operation_button.text = rock_blocked if not rock_blocked.is_empty() else "PAUSE EXCAVATION" if rock.active else "RESUME EXCAVATION" if rock.progress>0 else "BREAK & CLEAR ROCK"
 	room_operation_button.tooltip_text = "A Mining Drone clears this cell. Progress freezes with the game."
 
 func _build_doctrine_overlay() -> void:
