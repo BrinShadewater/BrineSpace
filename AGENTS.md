@@ -52,7 +52,12 @@ The README is explicit that this is mid-prototype. Do not "fix" these:
 - **Only dedicated fixtures opt into free building or disabled failures.** Do not
   turn those flags on to make a gameplay or balance test pass.
 - **Hidden recipes stay hidden** until functioning rooms discover them. Three
-  consecutive functioning cycles stabilize a pattern and unlock its reward.
+  consecutive functioning cycles stabilize a pattern: its per-cycle bonus doubles in
+  every later loop, it pays Archived Data, and its related blueprint costs half.
+  Stabilising no longer decrypts a room — blueprints, crew and companions are bought
+  with Archived Data on the Meta Progression page (`scripts/meta_shop.gd`).
+- **Crew and companions met in a loop play for the rest of it** and must be bought to
+  return in later loops. What a profile already owned stays owned and free.
 - **Saves and unlocks are prototype-level**, written to `user://brine_save.json`
   and deliberately not versioned.
 
@@ -89,6 +94,30 @@ script.
 Icons ship at several sizes with sources alongside — regenerate from the source
 rather than upscaling a smaller export. Room art and card thumbnails load from PNG at
 runtime so new assets need no editor import step; preserve that if you touch loading.
+
+## 🔍 Diagnostics when something is slow or wrong
+
+F7 draws the performance overlay: frame graph, per-system times (crew, drones, cryo,
+airlocks, interface, grid draw), path-search counts and the session's error count.
+F8 saves a report. A stall (a frame over 400 ms, or under 20 FPS for two seconds)
+saves its own report with the seconds before it, at most three a session — and only
+in a real play session: anything started with `-s` (tests, tools, probes) has
+automatic capture and breadcrumbs off, so runs never write into the player's folders.
+
+- `scripts/error_watch.gd` groups logged errors; every report lists them.
+- `scripts/stuck_watch.gd` warns when crew, drones or build orders stop progressing.
+- `user://last_session.json` holds breadcrumbs a hard crash cannot erase;
+  `user://session_stats.csv` gets one line per finished loop.
+- `tools/soak_test.gd` runs a save headless for N cycles and reports where the time
+  went; `tests/test_soak_budget.gd` is the gate that fails on a slow frame.
+- `tools/bake_room_cards_v2.gd` re-renders card art from the current room designs
+  (including the owner's saved Studio layouts) into `assets/room-cards-v2`.
+
+Department colours live in `RoomDatabase.CATEGORY_COLORS` with per-room overrides in
+`ROOM_COLORS`; use `RoomDatabase.room_color(id)` so corridors stay grey and BRINE's
+core stays AI white. Interface text uses the bundled Barlow Semi Condensed
+(`scripts/ui_fonts.gd`, SIL OFL in `assets/fonts/OFL.txt`); the station log keeps a
+monospace face.
 
 ## 🗣️ BRINE's voice
 

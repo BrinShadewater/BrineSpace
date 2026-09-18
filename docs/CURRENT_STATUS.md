@@ -1,3 +1,53 @@
+## Owner playtest notes, batch 6 - September 17, 2026 (part one shipped, part two open)
+
+Owner decisions this batch: department colours are red operations/command/security, blue science
+and medical, orange crew quarters, yellow engineering and support, green life support and
+agriculture, purple anomaly, grey corridors, white AI and robotics (BRINE, Marsh, drones); the
+interface font is a bundled open-licence face (Barlow Semi Condensed); Meta Progression follows
+the BRINE memory core direction and Settings the sidebar direction.
+
+Shipped (commit e554b415d and the two before it):
+
+1. Colours drive every card outline, codex entry, synergy pair and crew tile through
+   `RoomDatabase.room_color(id)`, with BRINE's core white and corridors grey.
+2. Barlow Semi Condensed bundled under SIL OFL (`assets/fonts/`), applied through
+   `scripts/ui_fonts.gd`; the station log keeps monospace.
+3. Codex: four wider cards per row, sort control, synergies as two cards side by side.
+   Blueprints use the same card; buy buttons show a price only, "OWNED" once bought.
+4. Crew & Companions: portraits (BRINE and Bill aboard by default, unmet crew barely visible),
+   tiles outlined by class.
+5. A clicked button no longer keeps the white focus ring (title and in game).
+6. HUD: Recenter replaces Fit Station; Find Room and the view toggle removed; draw/discard piles
+   hidden; no box around mineable sites; white cycle counter; muted green/red station control
+   labels; room and door switches side by side without panels; narrower Assign Primary Workplace
+   with the crew list beneath; narrower menu and summary buttons; the run-end screen is the Loop
+   Report without Settings; maximum zoom reduced a quarter; "0 Flooded" only when flooded.
+7. In-game menu: Crew Comms, Recenter Station and the guide replay removed, Settings promoted;
+   admin view and its key retired.
+8. Torch sparks are drawn at the flame, from offsets measured in the weld frames themselves;
+   ocean particles drift sideways; the settings switch is smoother and a darker cyan.
+9. Resource icons and colours reach the run summary, journal and inspector (batch commit
+   d10245578), and the card-art table is shared by the station and the cards.
+
+Still open from the same notes (pick these up next):
+
+10. Meta Progression memory core should read like an Obsidian journal graph: unlockable nodes of
+    BRINE's memory, grouped and coloured by the department palette above.
+11. Journal and Diagnostics should feel distinct: Journal is what happened this run and what was
+    unlocked, with images and design; Diagnostics is current warnings, alerts and stats. The
+    Settings button there is much wider than Return to Station.
+12. Character selection: toggle buttons for companions instead of check marks.
+13. Transmission replay on Meta Progression should type out with the sound effects.
+14. Fan mode: the cards left and right of centre still look slightly blurry or jagged.
+15. Some cast shadows look too jagged.
+16. Inspector: progress bars instead of text percentages for excavation, thawing and repairs.
+17. Room-building dialogue should play when the room finishes, not while it is being built.
+18. Salvage drones should be able to dismantle and salvage wrecks.
+
+Known, not caused by this batch: playtest_bill_npc fails the same way on earlier commits (Bill
+never reaches the repair pose for its evidence capture), playtest_polish fails an economy step,
+and playtest_power_expansion needs more than 400 s.
+
 ## Resource icons everywhere and playtest scripts on the new meta rules - September 17, 2026
 
 1. The run summary is a RichTextLabel now, and the summary, journal and every inspector page run their text through ResourceIcons.decorate: amounts written in sentences ("+5 Metal", "WATER 30%") pick up the resource icon and its HUD colour. The pattern takes an amount before or after the word but only on the same line (a number ending one line was being pulled into the next line's resource).
