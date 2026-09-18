@@ -12,6 +12,8 @@ var thumbnail_placeholder: ImageTexture
 var library_list: AssetList
 var library_search: LineEdit
 var library_filter: OptionButton
+var pack_filter: OptionButton
+var theme_filters: Dictionary={}
 var retire_button: Button
 # Assets the owner has marked for removal. Nothing is deleted here: the id is
 # written to a manifest and the entry leaves the tray, so a misclick costs
@@ -444,9 +446,29 @@ func _ready() -> void:
 	var library_title:=Label.new(); library_title.text="ASSET TRAY"; tray.add_child(library_title)
 	var tray_hint:=Label.new(); tray_hint.text="Drag out to place • Drop back to remove"; tray_hint.add_theme_font_size_override("font_size",12); tray.add_child(tray_hint)
 	library_filter=OptionButton.new()
-	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings","Marked for removal"]: library_filter.add_item(label)
+	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings"]: library_filter.add_item(label)
+	var themes: Array=[]
+	var packs: Array=[]
+	for id in Library.entries():
+		var entry: Dictionary=Library.entries()[id]
+		if entry.get("group","")!="tileset": continue
+		var theme:=str(entry.get("category",""))
+		if not theme.is_empty() and theme not in themes: themes.append(theme)
+		var pack:=str(entry.get("tileset",""))
+		if not pack.is_empty() and pack not in packs: packs.append(pack)
+	themes.sort(); packs.sort()
+	for theme in themes:
+		theme_filters[library_filter.item_count]=theme
+		library_filter.add_item("Tileset · "+str(theme).capitalize())
+	library_filter.add_item("Marked for removal")
 	tray.add_child(library_filter)
 	library_filter.item_selected.connect(func(_i): rebuild_library())
+	pack_filter=OptionButton.new()
+	pack_filter.add_item("All tilesets")
+	for pack in packs: pack_filter.add_item(str(pack))
+	pack_filter.tooltip_text="Narrow the tray to one art pack. Combine with the filter above to browse a pack by kind of prop."
+	tray.add_child(pack_filter)
+	pack_filter.item_selected.connect(func(_i): rebuild_library())
 	load_retired()
 	retire_button=Button.new(); retire_button.text="Mark for removal"; retire_button.disabled=true
 	retire_button.tooltip_text="Take this asset out of the tray. Nothing is deleted: the id goes to retired.json and you can restore it from the Marked for removal filter."
@@ -931,13 +953,15 @@ func rebuild_library() -> void:
 	var returned: Array=[]
 	for id in draft:
 		if draft[id]==null and defaults.has(id): returned.append(id)
-	var signature: Array=[index,returned,library_search.text,library_filter.selected,retired.size()]
+	var pack:=pack_filter.get_item_text(pack_filter.selected) if pack_filter!=null and pack_filter.selected>0 else ""
+	var theme:=str(theme_filters.get(library_filter.selected,""))
+	var signature: Array=[index,returned,library_search.text,library_filter.selected,pack,retired.size()]
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
 	library_list.clear()
 	var only_retired:=library_filter.selected==library_filter.item_count-1
-	if library_filter.selected in [0,3] and not only_retired:
+	if library_filter.selected in [0,3] and not only_retired and pack.is_empty():
 		for prop in base_props:
 			var id:=str(prop.id)
 			var caption:=id.trim_prefix("full_wall/").replace("_"," ").replace("/"," · ").capitalize()
@@ -956,8 +980,13 @@ func rebuild_library() -> void:
 		if not only_retired and library_filter.selected==0 and id not in Library.family_variants(entries[index].asset) and entries[index].room not in entry.get("default_rooms",[]): continue
 		if not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4]): continue
 		if not only_retired and library_filter.selected==1 and entry.get("group","")!="common": continue
-		if not only_retired and library_filter.selected==2 and entry.get("group","")=="common": continue
-		if (not library_search.text.is_empty() and not str(entry.label).to_lower().contains(library_search.text.to_lower())): continue
+		if not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]: continue
+		if not theme.is_empty() and (entry.get("group","")!="tileset" or str(entry.get("category",""))!=theme): continue
+		if not pack.is_empty() and str(entry.get("tileset",""))!=pack: continue
+		if not library_search.text.is_empty():
+			var needle:=library_search.text.to_lower()
+			var haystack:=(str(entry.label)+" "+str(entry.get("tileset",""))+" "+str(entry.get("category",""))).to_lower()
+			if not haystack.contains(needle): continue
 		if library_list.item_count>=TRAY_LIMIT:
 			hidden_by_limit+=1
 			continue
@@ -966,7 +995,7 @@ func rebuild_library() -> void:
 		library_list.set_item_metadata(library_list.item_count-1,id)
 		library_list.set_item_tooltip(library_list.item_count-1,entry.label+" — drag into clear floor space")
 	if hidden_by_limit>0:
-		library_list.add_item("+%d more — search or pick a category" % hidden_by_limit,thumbnail_placeholder)
+		library_list.add_item("+%d more — narrow by kind, tileset, or search" % hidden_by_limit,thumbnail_placeholder)
 		library_list.set_item_selectable(library_list.item_count-1,false)
 		library_list.set_item_tooltip(library_list.item_count-1,
 			"The tray lists %d at a time so previews stay responsive." % TRAY_LIMIT)
