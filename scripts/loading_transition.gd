@@ -74,6 +74,9 @@ func _ready() -> void:
 	# Render the complete intro before synchronous scene setup can stall a frame.
 	# It stays readable (and scrollable at larger text sizes) until acknowledged.
 	transcript.text = transmission_text
+	# A new run types the transmission from title_screen, which awaits it. An archive replay has
+	# no such driver, so it starts its own (owner playtest note 13).
+	if replay_mode: type_transmission.call_deferred()
 
 func begin_station_build() -> void:
 	detail.text = "STATION SYSTEMS // BUILDING STATION"
@@ -103,12 +106,14 @@ func _continue() -> void:
 		queue_free()
 
 func type_transmission() -> void:
-	if replay_mode or preload("res://scripts/title_settings.gd").reduced_motion or DisplayServer.get_name() == "headless":
+	# A replay reads like the original reception rather than a page of text appearing at once
+	# (owner playtest note 13); the receiver bed and terminal cue are already playing by now.
+	if preload("res://scripts/title_settings.gd").reduced_motion or DisplayServer.get_name() == "headless":
 		transcript.visible_characters = -1
 		return
 	typing = true
 	type_skipped = false
-	detail.text = "RECEIVER // DECODING TRANSMISSION"
+	detail.text = "RECEIVER // REPLAYING RECORDING" if replay_mode else "RECEIVER // DECODING TRANSMISSION"
 	transcript.visible_characters = 0
 	var total := transcript.get_total_character_count()
 	var shown := 0.0
@@ -123,7 +128,7 @@ func type_transmission() -> void:
 			if line_break: shown -= TYPE_CHARACTERS_PER_SECOND * 0.12
 	transcript.visible_characters = -1
 	typing = false
-	detail.text = "STATION SYSTEMS // RECOVERING"
+	detail.text = "ARCHIVE // RECOVERED RECORDING" if replay_mode else "STATION SYSTEMS // RECOVERING"
 
 func _input(event: InputEvent) -> void:
 	if typing and (event.is_action_pressed("ui_accept") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT)):

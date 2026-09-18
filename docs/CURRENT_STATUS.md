@@ -1,3 +1,18 @@
+## Archive transmission replay types itself out - September 17, 2026
+
+1. Note 13: replaying a recovered transmission from Codex > Transmissions dropped the whole text
+   on screen at once. `type_transmission()` refused to run in replay mode, and nothing called it
+   there anyway - only the title screen awaited it when starting a run.
+2. The overlay now starts its own typing when it opens in replay mode, at the same pace and with
+   the same line pauses as the original reception, over the receiver bed and terminal cue the
+   overlay already plays. A click, Enter or Space still shows the rest at once, and reduced motion
+   still skips straight to the full text.
+3. The status line reads REPLAYING RECORDING while it types and returns to RECOVERED RECORDING at
+   the end, instead of the run's STATION SYSTEMS // RECOVERING.
+4. Checked: test_loading_transition and test_station_systems pass headless, test_title_screen
+   passes on the native lane, and a probe on a real display confirmed a replay is mid-sentence
+   twenty frames in and finishes on its own.
+
 ## Rounded contact shadows under equipment - September 17, 2026
 
 1. Note 15: the contact bands under machinery were square-cornered rectangles drawn with hard
