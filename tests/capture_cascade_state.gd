@@ -13,7 +13,6 @@ func _stage_cascade() -> void:
 	await process_frame
 	game.meta.save_path = TEST_SAVE_PATH
 	game.meta.discovered_synergy_ids.clear()
-	game.pending_doctrines.assign(["industry", "biosphere"])
 	game._confirm_doctrines()
 	game._place_room("life_support", Vector2i(19, 20))
 	game._place_room("crew_hab", Vector2i(17, 20))

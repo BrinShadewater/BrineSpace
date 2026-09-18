@@ -7,7 +7,6 @@ func run() -> void:
 	game.meta.save_path = game.run_save_path+".meta"
 	root.add_child(game)
 	current_scene = game
-	game.pending_doctrines.assign(["industry","biosphere"])
 	game._confirm_doctrines()
 	game.set_process(false)
 	game.tick_timer.stop()

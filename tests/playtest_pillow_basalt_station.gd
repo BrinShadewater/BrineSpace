@@ -57,7 +57,6 @@ func run() -> void:
 	game.run_save_path = "user://pillow_basalt_%d.loop" % OS.get_process_id()
 	root.add_child(game)
 	current_scene = game
-	game.pending_doctrines.assign(["industry","biosphere"])
 	game._confirm_doctrines()
 	game._set_paused(true,false)
 	game.placed_rooms.clear()

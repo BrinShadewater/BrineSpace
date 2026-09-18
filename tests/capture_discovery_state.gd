@@ -18,7 +18,6 @@ func _stage() -> void:
 	game.rng.seed = 4404
 	game.meta.discovered_synergy_ids.clear()
 	game.meta.stabilized_synergy_ids.clear()
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._place_room("life_support", Vector2i(19, 20), true)
 	game._place_room("hydroponics_bay", Vector2i(18, 20), true)

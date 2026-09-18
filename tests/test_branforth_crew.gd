@@ -19,7 +19,6 @@ func run() -> void:
 	root.add_child(game)
 	current_scene = game
 	game.architect_run = {} # Existing three-person encounter; startup is tested separately.
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game.occupied.clear()

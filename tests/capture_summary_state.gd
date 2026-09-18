@@ -14,7 +14,6 @@ func _stage_summary() -> void:
 	game.meta.save_path = TEST_SAVE_PATH
 	game.meta.doctrine_mastery.clear()
 	game.meta.total_victories = 0
-	game.pending_doctrines.assign(["industry", "biosphere"])
 	game._confirm_doctrines()
 	game.cycle = 34
 	game.resonance_score = 220

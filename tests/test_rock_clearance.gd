@@ -41,7 +41,6 @@ func run() -> void:
 	game.meta.save_path = path+".meta"
 	root.add_child(game)
 	current_scene = game
-	game.pending_doctrines.assign(["industry","biosphere"])
 	game._confirm_doctrines()
 	game.drone_fleet.sites_initialized = true
 	game.drone_fleet.sites.clear() # This fixture measures only the rock's one-time yield.

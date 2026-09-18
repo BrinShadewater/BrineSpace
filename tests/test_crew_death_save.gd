@@ -18,7 +18,6 @@ func run() -> void:
 	game.Preferences.save_path = prefix + ".cfg"
 	root.add_child(game)
 	current_scene = game
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	# This is a legacy three-crew movement/save fixture, independent of pod recovery.

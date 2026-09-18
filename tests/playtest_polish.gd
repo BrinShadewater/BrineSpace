@@ -39,7 +39,6 @@ func _run() -> void:
 	root.size = Vector2i(viewport_width, roundi(viewport_width * 9.0 / 16.0))
 	await _settle()
 	await _capture("01-doctrines-1600")
-	game.pending_doctrines.assign(["industry", "biosphere"])
 	game.rng.seed = 4404
 	game._confirm_doctrines()
 	game._set_paused(true)
@@ -248,7 +247,6 @@ func _drain_feedback() -> void:
 
 func _capture_profile(id: String) -> void:
 	await _settle()
-	game.doctrine_layer.visible = false
 	game.running = true
 	game._set_paused(true)
 	game.placed_rooms.clear()

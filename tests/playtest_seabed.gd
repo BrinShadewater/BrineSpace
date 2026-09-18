@@ -18,7 +18,6 @@ func run() -> void:
 	root.add_child(game)
 	current_scene = game
 	await settle()
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game.placed_rooms.clear()

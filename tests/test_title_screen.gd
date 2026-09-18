@@ -255,10 +255,8 @@ func _run() -> void:
 	_check(current_scene != title, "Confirming architect must open the game")
 	if current_scene != title:
 		_check(current_scene.scene_file_path == "res://scenes/main.tscn", "Start must open the existing game scene")
-		_check(current_scene.get("doctrine_layer") != null, "Game script must load successfully")
-		if current_scene.get("doctrine_layer") != null:
-			_check(not current_scene.doctrine_layer.visible, "Retired doctrine selection stays hidden")
-			_check(current_scene.running, "Confirmed architect starts the open expedition")
+		_check(current_scene.get("grid_view") != null, "Game script must load successfully")
+		_check(current_scene.running, "Confirmed architect starts the open expedition")
 	print("TITLE SCREEN: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	if is_instance_valid(current_scene): current_scene.queue_free()
 	_remove_test_saves()

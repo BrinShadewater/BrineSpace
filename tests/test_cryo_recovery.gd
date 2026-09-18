@@ -18,7 +18,6 @@ func run() -> void:
 	current_scene=game
 	game.architect_run={} # Legacy generic one/two-pod mechanism remains checkpoint-compatible.
 	game.wrecks=Field.initial()
-	game.pending_doctrines.assign(["industry","biosphere"])
 	game._confirm_doctrines()
 	game.set_process(false)
 	game.tick_timer.stop()

@@ -18,7 +18,6 @@ func run() -> void:
 	await process_frame
 	root.size = Vector2i(1600, 900)
 	await settle()
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game.architect_run.clear()

@@ -194,7 +194,6 @@ func run() -> void:
 	await get_tree().process_frame
 	root.size = Vector2i(viewport_width, roundi(viewport_width * 9.0 / 16.0))
 	await settle()
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game.orbit.rng.seed = 9135
 	game._set_paused(true)

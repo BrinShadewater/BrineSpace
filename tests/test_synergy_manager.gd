@@ -21,7 +21,6 @@ func _run() -> void:
 	_test_opening_hand_and_discard_cycle()
 	_test_doctrine_rooms_count_for_both_doctrines()
 	_test_all_doctrine_pairs_have_viable_decks()
-	_test_doctrine_pair_preview_exposes_tradeoffs()
 	_test_doctrine_mastery_persists_progress()
 	if failures > 0:
 		push_error("Synergy tests failed: %d" % failures)
@@ -114,7 +113,6 @@ func _test_doctrines_build_a_constrained_deck() -> void:
 
 func _test_opening_hand_and_discard_cycle() -> void:
 	var game = MainScript.new()
-	game.selected_doctrines.assign(["industry", "biosphere"])
 	game._build_run_deck()
 	game._draw_hand()
 	_expect_equal(game.hand.size(), 3, "an opening draw should fill all three hand slots")
@@ -158,18 +156,6 @@ func _test_all_doctrine_pairs_have_viable_decks() -> void:
 					copies_for_doctrine += deck.count(str(room_id_value))
 				_expect_true(copies_for_doctrine >= 2, "%s should expose a repeatable foothold for %s" % [pair_name, doctrine_id])
 	_expect_equal(pair_count, 10, "five doctrines should produce ten unique pair balance cases")
-
-func _test_doctrine_pair_preview_exposes_tradeoffs() -> void:
-	var game = MainScript.new()
-	game.pending_doctrines.assign(["science", "anomaly"])
-	var profile := game._doctrine_pair_preview_text()
-	_expect_true(profile.contains("BLUEPRINTS"), "pair preview should expose deck size")
-	_expect_true(profile.contains("LINK PATTERNS"), "pair preview should expose available synergy breadth")
-	_expect_true(profile.contains("Research Lab"), "pair preview should name shared doctrine rooms")
-	game.free()
-
-
-
 
 func _test_doctrine_mastery_persists_progress() -> void:
 	var test_save_path := "user://brine_meta_test_save.json"

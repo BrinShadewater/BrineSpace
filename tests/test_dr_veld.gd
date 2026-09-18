@@ -40,7 +40,6 @@ func run() -> void:
 	game.run_save_path = "user://veld_test_run_%d.json" % OS.get_process_id()
 	root.add_child(game)
 	current_scene = game
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game.occupied.clear()

@@ -36,7 +36,6 @@ func _station() -> void:
 	for id in Rooms.STARTING_UNLOCKS:
 		game.meta.unlocked_room_ids[id] = true
 	game._start_reboot_cycle()
-	game.pending_doctrines.assign(["science", "biosphere"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	# Connected, sustainable fixture; subsequent cycles and rerolls are real.
@@ -91,7 +90,6 @@ func _test_pause_and_reboot_keep_recharge_honest() -> void:
 		game._on_tick_timer_timeout()
 	_expect(game.cycle == cycle_before and game.rerolls_remaining == 0, "paused timer callbacks cannot generate recovery charges")
 	game._start_reboot_cycle()
-	game.pending_doctrines.assign(["science", "biosphere"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game._place_room("solar_array", Vector2i(21, 20), true)

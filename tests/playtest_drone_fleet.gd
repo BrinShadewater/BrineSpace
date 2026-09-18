@@ -33,7 +33,6 @@ func run() -> void:
 	game.meta.save_path = game.run_save_path+".meta"
 	root.add_child(game)
 	current_scene = game
-	game.pending_doctrines.assign(["industry","biosphere"])
 	game._confirm_doctrines()
 	for argument in OS.get_cmdline_user_args():
 		if argument.begins_with("--width="): viewport_width = int(argument.trim_prefix("--width="))

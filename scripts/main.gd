@@ -145,8 +145,6 @@ var draw_pile: Array[String] = []
 var discard_pile: Array[String] = []
 var rerolls_remaining := 3
 var reroll_recovery_progress := 0
-var selected_doctrines: Array[String] = []
-var pending_doctrines: Array[String] = []
 var run_victory := false
 var expedition_mode := false
 var run_rewards_recorded := false
@@ -289,11 +287,6 @@ var summary_outcome_label: Label
 var summary_stats: HFlowContainer
 var summary_text: RichTextLabel
 var end_expedition_button: Button
-var doctrine_layer: CanvasLayer
-var doctrine_buttons := {}
-var doctrine_selection_label: Label
-var doctrine_pair_preview_label: Label
-var doctrine_confirm_button: Button
 var menu_layer: CanvasLayer
 var pause_pages: Dictionary = {}
 var pause_page := "main"
@@ -1181,7 +1174,6 @@ func _build_ui() -> void:
 	_add_menu_button(summary_vbox, "Return to Title", _menu_return_title)
 
 	_build_journal_overlay()
-	_build_doctrine_overlay()
 	_build_menu_overlay()
 
 	tick_timer = Timer.new()
@@ -1537,7 +1529,7 @@ func _journal_is_open() -> bool:
 	return journal_layer != null and journal_layer.visible
 
 func _gameplay_input_blocked() -> bool:
-	return is_instance_valid(menu_archive) or menu_open or _journal_is_open() or (summary_layer != null and summary_layer.visible) or (doctrine_layer != null and doctrine_layer.visible)
+	return is_instance_valid(menu_archive) or menu_open or _journal_is_open() or (summary_layer != null and summary_layer.visible)
 
 func _toggle_journal() -> void:
 	if journal_layer == null:
@@ -1784,92 +1776,9 @@ func _refresh_rock_inspector(cell: Vector2i) -> void:
 	room_operation_button.text = rock_blocked if not rock_blocked.is_empty() else "PAUSE EXCAVATION" if rock.active else "RESUME EXCAVATION" if rock.progress>0 else "BREAK & CLEAR ROCK"
 	room_operation_button.tooltip_text = "A Mining Drone clears this cell. Progress freezes with the game."
 
-func _build_doctrine_overlay() -> void:
-	# Empty compatibility layer for older scene consumers; selection is retired.
-	doctrine_layer = CanvasLayer.new()
-	doctrine_layer.visible = false
-	add_child(doctrine_layer)
 
-func _on_doctrine_button_pressed(doctrine_id: String) -> void:
-	if pending_doctrines.has(doctrine_id):
-		pending_doctrines.erase(doctrine_id)
-	elif pending_doctrines.size() < 2:
-		pending_doctrines.append(doctrine_id)
-	_refresh_doctrine_overlay()
 
-func _refresh_doctrine_overlay() -> void:
-	if doctrine_selection_label == null:
-		return
-	for doctrine_id_value in RunManagerScript.DOCTRINE_ORDER:
-		var doctrine_id := str(doctrine_id_value)
-		var button: Button = doctrine_buttons.get(doctrine_id)
-		if button == null:
-			continue
-		var data: Dictionary = RunManagerScript.doctrine(doctrine_id)
-		var mastery := meta.get_doctrine_mastery(doctrine_id)
-		var rank := meta.get_doctrine_rank(doctrine_id)
-		var next_threshold := meta.get_next_doctrine_rank_threshold(doctrine_id)
-		var mastery_text := "MAX" if next_threshold < 0 else "%d/%d" % [mastery, next_threshold]
-		button.text = "%s\n%s\nRANK %d · MASTERY %s\nPER RANK  %s" % [
-			data["name"],
-			data["description"],
-			rank,
-			mastery_text,
-			_format_cost(data.get("mastery_bonus", {})).to_upper()
-		]
-		button.tooltip_text = "Rank bonus: %s per rank" % _format_cost(data.get("mastery_bonus", {}))
-		var selected := pending_doctrines.has(doctrine_id)
-		button.set_pressed_no_signal(selected)
-		button.disabled = pending_doctrines.size() >= 2 and not selected
-		_style_hud_button(button, selected)
-		button.add_theme_font_size_override("font_size", 15)
-	doctrine_selection_label.text = "%d/2 SELECTED%s" % [
-		pending_doctrines.size(),
-		"  ·  %s" % RunManagerScript.doctrine_pair_name(pending_doctrines) if not pending_doctrines.is_empty() else ""
-	]
-	if doctrine_pair_preview_label != null:
-		doctrine_pair_preview_label.text = _doctrine_pair_preview_text()
-	doctrine_confirm_button.disabled = pending_doctrines.size() != 2
-	doctrine_confirm_button.text = "BEGIN REBOOT" if pending_doctrines.size() == 2 else "SELECT %d MORE DOCTRINE%s" % [2 - pending_doctrines.size(), "S" if pending_doctrines.is_empty() else ""]
-	if pending_doctrines.size() == 2:
-		doctrine_selection_label.text += "  ·  Select either doctrine again to change the pair."
-	preload("res://scripts/title_settings.gd").apply_menu_text(doctrine_layer)
 
-func _doctrine_pair_preview_text() -> String:
-	if pending_doctrines.size() < 2:
-		return "Select one more doctrine to reveal deck breadth, crossover rooms, and available link patterns." if pending_doctrines.size() == 1 else "Pair profile will reveal deck breadth, crossover rooms, and available link patterns."
-	var deck := RunManagerScript.build_deck(pending_doctrines, meta.unlocked_room_ids)
-	var unique_rooms := {}
-	for room_id_value in deck:
-		unique_rooms[str(room_id_value)] = true
-	var possible_synergies: Array[String] = []
-	for synergy_value in SynergyManagerScript.all_synergies():
-		var synergy: Dictionary = synergy_value
-		if not meta.discovered_synergy_ids.has(str(synergy.get("id", ""))):
-			continue
-		var available := true
-		for room_id_value in synergy.get("rooms", []):
-			var room_id := str(room_id_value)
-			if room_id != "brine_core" and not unique_rooms.has(room_id):
-				available = false
-				break
-		if available:
-			possible_synergies.append(str(synergy.get("name", "Unknown Pattern")))
-	var first_rooms: Array = RunManagerScript.doctrine(str(pending_doctrines[0])).get("rooms", [])
-	var second_rooms: Array = RunManagerScript.doctrine(str(pending_doctrines[1])).get("rooms", [])
-	var crossover_names: Array[String] = []
-	for room_id_value in first_rooms:
-		var room_id := str(room_id_value)
-		if second_rooms.has(room_id) and unique_rooms.has(room_id):
-			crossover_names.append(str(RoomDatabaseScript.get_room(room_id).get("display_name", room_id)))
-	var crossover_text := _preview_name_list(crossover_names, 3) if not crossover_names.is_empty() else "complementary pools"
-	return "PAIR PROFILE  ·  %d BLUEPRINTS  ·  %d UNIQUE ROOMS  ·  %d LEARNED LINK PATTERNS\nCROSSOVER  %s  ·  LEARNED ROUTES  %s" % [
-		deck.size(),
-		unique_rooms.size(),
-		possible_synergies.size(),
-		crossover_text,
-		_preview_name_list(possible_synergies, 3)
-	]
 
 func _preview_name_list(names: Array[String], visible_count: int) -> String:
 	var visible_names: Array[String] = []
@@ -1880,14 +1789,9 @@ func _preview_name_list(names: Array[String], visible_count: int) -> String:
 		text += " +%d" % (names.size() - visible_count)
 	return text if not text.is_empty() else "none"
 
-func _show_doctrine_selection() -> void:
-	# Compatibility entry point: new loops no longer choose doctrines.
-	_confirm_doctrines()
 
+# Kept under its old name: this is how a loop starts, and every fixture opens a run through it.
 func _confirm_doctrines() -> void:
-	selected_doctrines.clear()
-	pending_doctrines.clear()
-	doctrine_layer.hide()
 	expedition_mode = true
 	_build_run_deck()
 	_draw_hand()
@@ -1895,21 +1799,6 @@ func _confirm_doctrines() -> void:
 	_set_paused(false, false)
 	_refresh_all()
 
-func _apply_doctrine_mastery_bonuses() -> void:
-	var total_bonus := {}
-	for doctrine_id_value in selected_doctrines:
-		var doctrine_id := str(doctrine_id_value)
-		var rank := meta.get_doctrine_rank(doctrine_id)
-		if rank <= 0:
-			continue
-		var data: Dictionary = RunManagerScript.doctrine(doctrine_id)
-		_add_to_delta(total_bonus, data.get("mastery_bonus", {}), rank)
-	for key in total_bonus:
-		resources[key] = int(resources.get(key, 0)) + int(total_bonus[key])
-	_clamp_power_reserve()
-	_clamp_resource_storage()
-	if not total_bonus.is_empty():
-		_log("Doctrine mastery supplied %s." % _format_cost(total_bonus), false)
 
 func _build_menu_overlay() -> void:
 	menu_layer = CanvasLayer.new()
@@ -2143,8 +2032,6 @@ func _start_reboot_cycle() -> void:
 	if has_meta("navigation_warmed"): remove_meta("navigation_warmed")
 	if has_meta("second_chance_used"): remove_meta("second_chance_used")
 	grid_view.door_wet_history.clear()
-	selected_doctrines.clear()
-	pending_doctrines.clear()
 	run_victory = false
 	expedition_mode = false
 	run_rewards_recorded = false
@@ -2216,7 +2103,7 @@ func _start_reboot_cycle() -> void:
 	_place_room("brine_core", Vector2i(center_index, center_index), true)
 	_clamp_resource_storage()
 	_center_grid_on_core()
-	_show_doctrine_selection()
+	_confirm_doctrines()
 	_log("Station systems restored. The water is still outside. For now.", false)
 	_refresh_all()
 
@@ -2227,7 +2114,7 @@ func _draw_hand() -> void:
 	selected_rotation = 0
 
 func _build_run_deck() -> void:
-	draw_pile = RunManagerScript.build_deck(selected_doctrines, meta.unlocked_room_ids)
+	draw_pile = RunManagerScript.build_deck([], meta.unlocked_room_ids)
 	discard_pile.clear()
 	_shuffle_draw_pile()
 	# Stage existing foundation copies, without adding cards or revealing locks.
@@ -3022,10 +2909,6 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	var award := maxi(0, earned - run_awarded_research)
 	run_awarded_research += award
 	meta.add_research_points(award)
-	var previous_doctrine_ranks := {}
-	for doctrine_id_value in selected_doctrines:
-		var doctrine_id := str(doctrine_id_value)
-		previous_doctrine_ranks[doctrine_id] = meta.get_doctrine_rank(doctrine_id)
 	if not run_rewards_recorded:
 		meta.record_run([], victory, resonance_score)
 		run_rewards_recorded = true
@@ -3048,10 +2931,6 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	var monitor = _performance_monitor()
 	# One line per finished loop in user://session_stats.csv, for real runs only.
 	if monitor != null and run_save_path == RunSave.PATH: monitor.record_session(monitor.session_row(self))
-	var ranks_gained: Array[String] = []
-	for id in previous_doctrine_ranks:
-		if meta.get_doctrine_rank(id) > int(previous_doctrine_ranks[id]):
-			ranks_gained.append("%s → rank %d" % [RunManagerScript.doctrine(id).name, meta.get_doctrine_rank(id)])
 	var pattern_research := 0
 	for id in run_stabilized_synergy_ids:
 		pattern_research += int(SynergyManagerScript.get_synergy(id).get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
@@ -3117,21 +2996,6 @@ func _end_expedition() -> void:
 		menu_layer.visible = false
 	_show_reboot_summary("Expedition archived. Your station's discoveries remain with BRINE.",false,true)
 
-func _format_doctrine_mastery_summary(previous_ranks: Dictionary) -> String:
-	if selected_doctrines.is_empty():
-		return "None"
-	var parts: Array[String] = []
-	for doctrine_id_value in selected_doctrines:
-		var doctrine_id := str(doctrine_id_value)
-		var data := RunManagerScript.doctrine(doctrine_id)
-		var short_name := str(data.get("short_name", doctrine_id.to_upper()))
-		var mastery := meta.get_doctrine_mastery(doctrine_id)
-		var rank := meta.get_doctrine_rank(doctrine_id)
-		var next_threshold := meta.get_next_doctrine_rank_threshold(doctrine_id)
-		var progress_text := "MAX" if next_threshold < 0 else "%d/%d" % [mastery, next_threshold]
-		var rank_up_text := "  RANK UP" if rank > int(previous_ranks.get(doctrine_id, rank)) else ""
-		parts.append("%s R%d %s%s" % [short_name, rank, progress_text, rank_up_text])
-	return "  ·  ".join(parts)
 
 func _synergy_names_for_ids(ids: Array) -> Array[String]:
 	var names: Array[String] = []
@@ -3417,13 +3281,13 @@ func _open_shared_menu(section: String) -> void:
 	)
 
 func _open_overlay_settings() -> void:
-	if not doctrine_layer.visible and not journal_layer.visible and not summary_layer.visible:
+	if not journal_layer.visible and not summary_layer.visible:
 		_open_menu()
 		_open_shared_menu("settings")
 		return
 	if is_instance_valid(menu_archive):
 		return
-	var source: CanvasLayer = doctrine_layer if doctrine_layer.visible else (journal_layer if journal_layer.visible else summary_layer)
+	var source: CanvasLayer = journal_layer if journal_layer.visible else summary_layer
 	var opener := get_viewport().gui_get_focus_owner()
 	source.hide()
 	menu_archive = preload("res://scripts/title_archive.gd").new()
@@ -4277,8 +4141,6 @@ func _input(event: InputEvent) -> void:
 		scope = menu_center
 	elif summary_layer != null and summary_layer.visible:
 		scope = summary_layer
-	elif doctrine_layer != null and doctrine_layer.visible:
-		scope = doctrine_layer
 	elif _journal_is_open():
 		scope = journal_layer
 	if scope != null:
@@ -4288,11 +4150,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if get_viewport() == null: # The scene can leave the tree between input and handling.
 		return
 	if is_instance_valid(menu_archive):
-		return
-	if doctrine_layer != null and doctrine_layer.visible:
-		if event.is_action_pressed("ui_cancel"):
-			_menu_return_title()
-			get_viewport().set_input_as_handled()
 		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
 		if _journal_is_open():

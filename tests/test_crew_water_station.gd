@@ -12,7 +12,6 @@ func run() -> void:
 	game.Preferences.save_path = prefix + ".cfg"
 	root.add_child(game)
 	current_scene = game
-	game.pending_doctrines.assign(["biosphere","recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game.architect_run.clear()

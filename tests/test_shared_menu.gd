@@ -49,7 +49,7 @@ func _run() -> void:
 	root.add_child(game)
 	current_scene = game
 	await process_frame
-	check(game.running and not game.doctrine_layer.visible, "New loop skips retired doctrine modal")
+	check(game.running, "New loop starts its station directly")
 	game._set_paused(false, false)
 	game._toggle_journal()
 	await check_modal_focus(game.journal_layer)

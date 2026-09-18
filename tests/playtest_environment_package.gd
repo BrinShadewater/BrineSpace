@@ -59,7 +59,6 @@ func run() -> void:
 	game.run_save_path = "user://environment_export_%d.loop" % OS.get_process_id()
 	root.add_child(game)
 	get_tree().current_scene = game
-	game.pending_doctrines.assign(["industry","biosphere"])
 	game._confirm_doctrines()
 	game._set_paused(true,false)
 	game._place_room("crew_hab",Vector2i(21,20),true)

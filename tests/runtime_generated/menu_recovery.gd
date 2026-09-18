@@ -91,7 +91,7 @@ func _run() -> void:
 	check(not Preferences.muted and is_equal_approx(AudioServer.get_bus_volume_linear(0), 1.0), "Audio defaults must restore mute and volume")
 	archive._close()
 	await create_timer(0.2).timeout
-	check(game.running and not game.doctrine_layer.visible, "Settings Back must return to the active station")
+	check(game.running, "Settings Back must return to the active station")
 
 	game._close_menu()
 	game._set_paused(false, false)

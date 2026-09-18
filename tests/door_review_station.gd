@@ -28,7 +28,6 @@ func run() -> void:
 	root.size = Vector2i(viewport_width,roundi(viewport_width*9.0/16))
 	root.title = "BrineSpace — Door review (isolated fixture)"
 	await settle()
-	game.pending_doctrines.assign(["biosphere","recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game.set_process(false)

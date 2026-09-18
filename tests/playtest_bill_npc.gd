@@ -10,7 +10,6 @@ func run() -> void:
 	root.add_child(game)
 	current_scene = game
 	root.size = Vector2i(1600, 900)
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	game.placed_rooms.clear()

@@ -16,7 +16,6 @@ func run() -> void:
 	Engine.max_fps = 0
 	game.testing_free_build = true
 	game.testing_disable_failures = true
-	game.pending_doctrines.assign(["industry","biosphere"])
 	game._confirm_doctrines()
 	game.tick_timer.stop()
 	game.set_process(false)

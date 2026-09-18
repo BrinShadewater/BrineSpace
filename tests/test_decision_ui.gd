@@ -18,7 +18,6 @@ func _run() -> void:
 	root.add_child(game)
 	current_scene = game
 	root.size = Vector2i(1280,720)
-	game.pending_doctrines.assign(["industry", "biosphere"])
 	game._confirm_doctrines()
 	game._set_paused(true, false)
 	game.tick_timer.start(game._cycle_wait_seconds() * 0.4)

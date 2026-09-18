@@ -38,7 +38,6 @@ func run() -> void:
 	current_scene = game
 	root.size = Vector2i(viewport_width, roundi(viewport_width * 9.0 / 16.0))
 	await settle()
-	game.pending_doctrines.assign(["industry", "biosphere"])
 	game.rng.seed = 4404
 	game._confirm_doctrines()
 	game._set_paused(true)

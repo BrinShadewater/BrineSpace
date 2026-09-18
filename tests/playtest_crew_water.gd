@@ -13,7 +13,6 @@ func run() -> void:
 	root.mode = Window.MODE_WINDOWED
 	root.borderless = false
 	root.size = Vector2i(1600, 900)
-	game.pending_doctrines.assign(["biosphere", "recovery"])
 	game._confirm_doctrines()
 	game._set_paused(true)
 	# Three-crew art fixture bypasses only the architect population setup.

@@ -22,7 +22,6 @@ func _run() -> void:
 	root.add_child(game)
 	current_scene = game
 	root.size = Vector2i(1600,900)
-	game.pending_doctrines.assign(["industry", "biosphere"])
 	game._confirm_doctrines()
 	game._set_paused(true, false)
 	# The Sept 9 adaptive guide replaced the numbered steps: it opens by asking

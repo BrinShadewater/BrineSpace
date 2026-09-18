@@ -97,7 +97,6 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	game.rng.seed = run_seed
 	game.orbit.rng.seed = run_seed + 101
 	game.orbit._roll_poi()
-	game.pending_doctrines.assign(pair)
 	game._confirm_doctrines()
 	game._set_paused(true)
 	tried_pairs.clear()

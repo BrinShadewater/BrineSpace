@@ -15,8 +15,7 @@ func _run() -> void:
 	game.run_save_path = PATH
 	root.add_child(game)
 	current_scene = game
-	check(game.running and not game.doctrine_layer.visible, "New Loop starts directly without selection")
-	check(game.selected_doctrines.is_empty(), "New loops have no scenarios")
+	check(game.running, "New Loop starts directly without selection")
 	var deck: Array = game.RunManagerScript.build_deck([], game.meta.unlocked_room_ids)
 	# The current deck offers one unlocked rare specialist, not all three.
 	var specialists := ["pressure_control","listening_post","isolation_vault"]
@@ -64,16 +63,14 @@ func _run() -> void:
 	game.resources.metal = 0
 	game.hand.clear()
 	game.placed_rooms.clear()
-	data.state.selected_doctrines = ["industry", "biosphere"]
 	check(Save.restore(game, data), "Checkpoint should restore")
-	check(game.selected_doctrines.is_empty(), "Old checkpoint scenarios are retired on Continue")
 	check(game.cycle == 7 and game.reroll_recovery_progress == 2, "Cycle and reroll recovery must survive")
 	check(game.resources == expected_resources and game.hand == expected_hand, "Resources and draft must survive")
 	check(game.placed_rooms.size() == 2 and game.occupied.size() == 2, "Station and occupancy must restore")
 	check(game.placed_rooms[1].suspended, "Room suspension must survive")
 	check(game.synergy_stabilization_progress.test_pattern == 2, "Pattern progress must survive")
 	check(game.rng.state == expected_rng, "64-bit RNG state must survive exactly")
-	check(game.paused and not game.doctrine_layer.visible, "Continue must resume the station paused")
+	check(game.paused, "Continue must resume the station paused")
 	check(game.tick_timer.time_left > 0 and game.tick_timer.time_left <= game._cycle_wait_seconds(), "Partial cycle timer must survive")
 	check(Save.write(game, PATH) == OK, "Second save should keep a backup")
 	var corrupt := FileAccess.open(PATH, FileAccess.WRITE)
