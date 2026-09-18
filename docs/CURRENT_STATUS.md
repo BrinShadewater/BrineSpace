@@ -1,3 +1,21 @@
+## Temporary dialogue trace for note 17 - September 17, 2026
+
+1. Note 17 (room dialogue speaking before the room is finished) could not be reproduced by reading
+   the code: every character line tied to a new room already fires from the completion branch of
+   `_place_room`, and scheduling a build only writes the station log line. So the next playtest
+   collects the evidence instead.
+2. `scripts/dialogue_trace.gd` writes `user://dialogue_trace.log`: one line per character line the
+   comms panel accepts, with speaker, key, text and the build orders outstanding at that moment,
+   plus a COMPLETE marker for every finished room. A line that appears above its room's COMPLETE
+   marker is the one speaking too early.
+3. It is wired in two places only - `crew_comms.transmit` and the completion branch of
+   `_place_room` - and writes nothing from tests or tools, using the same `-s` check the
+   performance monitor uses for automatic captures. Delete the file and both call sites once the
+   line is named.
+4. Checked: test_crew_dialogue, test_comms_conversation and test_comms_archive pass with the trace
+   wired in, and a throwaway probe forced the writer on and confirmed both line kinds land in the
+   log in the intended format.
+
 ## Companion toggle buttons in character selection - September 17, 2026
 
 1. The companion rows in the new-loop picker use a toggle button styled like the architect card's

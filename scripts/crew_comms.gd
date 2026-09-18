@@ -98,6 +98,8 @@ func transmit(id: String, message: String, key: String="", urgent: bool=false) -
 		while index<pending.size() and pending[index].get("urgent",false): index+=1
 		pending.insert(index,entry)
 	else: pending.append(entry)
+	# TEMPORARY (note 17): trace every accepted line against the construction still outstanding.
+	preload("res://scripts/dialogue_trace.gd").line_said(game,id,key,message)
 	if first_waiting and is_instance_valid(game) and game.has_method("play_station_sound"): game.play_station_sound("ui_comms")
 	if minimized: minimized=false; current={}
 	return true

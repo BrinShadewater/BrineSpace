@@ -2351,6 +2351,8 @@ func _place_room(id: String, cell: Vector2i, free := false, construction_complet
 	if not free:
 		_log("Built %s at %s." % [room["display_name"], cell])
 		play_station_sound("build_complete" if construction_complete else "placement",Vector2(cell))
+		# TEMPORARY (note 17): mark the completion so the trace shows which lines precede it.
+		preload("res://scripts/dialogue_trace.gd").room_complete(self,id,cell)
 		if is_instance_valid(crew_comms): crew_comms.room_built(id)
 		if id == "crew_hab" and resources["oxygen"] > 0 and resources["food"] > 0:
 			crew_count += 1
