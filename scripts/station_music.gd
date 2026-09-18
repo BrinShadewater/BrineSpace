@@ -31,7 +31,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	music_rng.randomize()
 	# Own a mutable playlist; clearing it on exit must not empty the next instance.
-	playlist = (Bank.CLIPS.moonlit_canyon + Bank.CLIPS.moonlit_test_run).duplicate()
+	playlist = (Bank.CLIPS.moonlit_canyon + Bank.CLIPS.moonlit_test_run + Bank.CLIPS.tracks_v1).duplicate()
 	# Cosmetic ordering must not advance the station simulation's random sequence.
 	for i in range(playlist.size()-1,0,-1):
 		var other := music_rng.randi_range(0,i)

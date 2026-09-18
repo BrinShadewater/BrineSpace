@@ -3,6 +3,8 @@ extends RefCounted
 const CLIPS := {
 	"moonlit_canyon": [preload("res://assets/audio/suno-v1/moonlit_canyon_01.ogg"), preload("res://assets/audio/suno-v1/moonlit_canyon_02.ogg")],
 	"moonlit_test_run": [preload("res://assets/audio/suno-v1/moonlit_test_run_01.ogg"), preload("res://assets/audio/suno-v1/moonlit_test_run_02.ogg")],
+	# Second batch of owner music (September 18), in the same rotation as the first.
+	"tracks_v1": [preload("res://assets/audio/tracks-v1/deep_ocean.ogg"), preload("res://assets/audio/tracks-v1/oceanic_drift.ogg"), preload("res://assets/audio/tracks-v1/silence.ogg"), preload("res://assets/audio/tracks-v1/sonar_pressure.ogg"), preload("res://assets/audio/tracks-v1/station_pulse.ogg")],
 	"interior": [preload("res://assets/audio/suno-v1/interior_01.ogg"), preload("res://assets/audio/suno-v1/interior_02.ogg")],
 	"ocean": [preload("res://assets/audio/suno-v1/ocean_01.ogg"), preload("res://assets/audio/suno-v1/ocean_02.ogg")],
 	"placement": [preload("res://assets/audio/suno-polish-v1/placement_01.wav"), preload("res://assets/audio/suno-polish-v1/placement_02.wav"), preload("res://assets/audio/suno-polish-v1/placement_03.wav"), preload("res://assets/audio/suno-polish-v1/placement_04.wav")],

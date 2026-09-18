@@ -19,7 +19,7 @@ func run() -> void:
 			count += 1
 			check(clip.get_length() > 0.1,"Imported clip has duration: "+clip.resource_path)
 			check(Mix.GAIN_DB.has(clip.resource_path),"Every runtime clip has a measured gain")
-	check(count == 27,"All 27 owner files are runtime dependencies")
+	check(count == 32,"All 32 owner files are runtime dependencies")
 	var game = load("res://scenes/main.tscn").instantiate()
 	game.meta.save_path = "user://audio_test_%d.meta" % OS.get_process_id()
 	game.run_save_path = "user://audio_test_%d.loop" % OS.get_process_id()
@@ -316,7 +316,7 @@ func run() -> void:
 	Preferences.effects_volume = 1.0
 	await process_frame
 	check(Music.ensure(game) == music,"Playlist is singleton across callers")
-	check(music.playlist.size() == 4 and music.player.playing,"All four Moonlit tracks in playing playlist")
+	check(music.playlist.size() == Bank.CLIPS.moonlit_canyon.size() + Bank.CLIPS.moonlit_test_run.size() + Bank.CLIPS.tracks_v1.size() and music.player.playing,"Every music track is in the playing playlist")
 	music.set_process(false)
 	music._process(7.0)
 	var previous = music.player

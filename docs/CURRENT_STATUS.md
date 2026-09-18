@@ -1,3 +1,24 @@
+## Five new music tracks - September 18, 2026
+
+1. The owner added Deep Ocean, Oceanic Drift, Silence, Sonar Pressure and Station Pulse as 48 kHz
+   stereo WAV masters. They are encoded to Ogg Vorbis at 160 kb/s in `assets/audio/tracks-v1/`,
+   matching the first batch, at 2.9 to 3.5 MB each rather than the 190 MB the masters weigh.
+2. They are runtime dependencies through `suno_audio_bank.gd` like every other clip, so a selected
+   resource export keeps them, and they join the same shuffled playlist as the first batch. The
+   title screen and a running station share one `StationMusic` node, so the rotation covers the
+   startup screen too, which is what the owner asked for.
+3. Loudness: each track was measured with ffmpeg's loudnorm and given a constant gain toward the
+   same -17.5 LUFS target the existing music uses - between -0.59 and -2.11 dB - in
+   `station_audio_mix.gd`, which the audio test requires for every runtime clip.
+4. Import stays on Godot's defaults with loop=false: the decks crossfade on a track's `finished`
+   signal, which a looping stream never emits.
+5. `assets/audio/tracks-v1/README.md` and `manifest.json` record each title, its runtime file, the
+   SHA-256 of the master it came from and the command to re-encode a replacement.
+6. Checked: a probe confirmed all five load at their full length (3:04 to 3:33) with loop off and
+   that the rotation now holds nine tracks - one of the new ones was drawn first in that run.
+   test_suno_audio and test_music_restart pass with their four-track expectations rewritten to
+   count the bank, and test_audio_space passes.
+
 ## Memory core: dendrites take sides, keystones stop touching - September 18, 2026
 
 1. Owner playtest: spread the nodes out, the keystones at the end were overlapping, and make the
