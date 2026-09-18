@@ -116,8 +116,12 @@ func _run() -> void:
 	_expect(not game.paused, "closing journal restores a previously running station")
 	game._set_paused(true)
 	game.hover_cell = Vector2i(21, 20)
+	# The inspector follows the clicked room, not the pointer: without a selection the operation
+	# button keeps whatever cell it was last given and suspends nothing.
+	game.selected_room_cell = Vector2i(21, 20)
 	game.selected_card_id = ""
 	game._refresh_inspector()
+	_expect(game.room_operation_button.get_meta("cell", Vector2i(-1, -1)) == Vector2i(21, 20), "the operation button controls the inspected room")
 	game._toggle_inspected_room()
 	_expect(not game.powered_room_cells.has(Vector2i(21, 20)), "suspension immediately stops a room's functioning effects")
 	_cycle_with_drone_returns()
