@@ -99,6 +99,7 @@ func _run() -> void:
 	await _capture("05-expanded-1600")
 	var hand_before: Array = game.hand.duplicate()
 	var rerolls_before: int = game.rerolls_remaining
+	_clear_comms()
 	game.reroll_button.grab_focus()
 	game._toggle_journal()
 	game._discard_all_cards()
@@ -132,6 +133,7 @@ func _run() -> void:
 		await _capture("08-layout-%d" % resolution.x)
 		_expect(game.get_node("Root/BottomHand").get_global_rect().end.x <= game.size.x + 1, "draft fits at %d" % resolution.x)
 		_expect(game.journal_button.get_global_rect().end.x <= game.size.x + 1, "HUD fits at %d" % resolution.x)
+	_clear_comms()
 	game.completed_directives.assign(["ONE", "TWO", "THREE"])
 	game._show_reboot_summary("Sector secured. Your next experiment is waiting.", true)
 	var research_before: int = game.meta.total_research_points
@@ -139,6 +141,11 @@ func _run() -> void:
 	for resolution in [Vector2i(1600, 900), Vector2i(2560, 1440), Vector2i(1920, 1080)]:
 		root.size = resolution
 		await _capture("09-victory-%d" % resolution.x)
+	# Continuing is about directives, not about surviving a flat battery: the longer settles this
+	# fixture runs leave the reserve empty, and an unpowered BRINE Core ends the run the moment it
+	# resumes. Hand the station a working reserve before asking it to carry on.
+	game.resources["power"] = maxi(int(game.resources.get("power", 0)), 20)
+	game._refresh_all()
 	game._continue_expedition()
 	_expect(game.running and game.expedition_mode and game._current_directive().is_empty(), "victory can continue without directive deadlines")
 	game.cycle = 100
@@ -177,6 +184,15 @@ func _wake_architect() -> void:
 		game._update_test_walker(0.1)
 	game.paused = was_paused
 	_expect(Architects.present(game, "bill"), "the architect wakes before anything is built")
+	_clear_comms()
+
+# BRINE and the crew hold the station paused until their line has been read. A fixture that never
+# reads one can no longer resume, so acknowledge whatever is waiting.
+func _clear_comms() -> void:
+	if not is_instance_valid(game.crew_comms): return
+	for line in range(40):
+		if not game.crew_comms.holds_pause and game.crew_comms.pending.is_empty(): break
+		game.crew_comms.advance()
 
 func _build(id: String, cell: Vector2i, rotation := 0) -> void:
 	_expect(game.hand.has(id), "draft contains %s" % id)

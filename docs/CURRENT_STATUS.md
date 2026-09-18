@@ -1,3 +1,25 @@
+## playtest_polish, second half: two more causes, and one question for the owner - September 18, 2026
+
+1. Down to 5 failures from the 18 this fixture started with.
+2. Fixed: the journal's pause round trip. A woken architect talks, and the comms panel holds the
+   station paused until the line is read, so `_set_paused(false)` was refused and the journal
+   opened an already-paused station. The fixture acknowledges whatever is waiting now, which is
+   what a player does.
+3. Fixed: the run ending on a flat battery. The longer settles this fixture runs leave the reserve
+   empty, and an unpowered BRINE Core ends the run the moment it resumes, so the station gets a
+   working reserve before the victory step asks it to carry on.
+4. Diagnosed, not fixed - three assertions encode a retired model. `_current_directive()` returns
+   nothing ("timed reconstruction directives are retired") and `_confirm_doctrines()` sets
+   `expedition_mode = true` for every run, so `_continue_expedition()` returns immediately at its
+   own guard (`if ... or expedition_mode ... return`). "Victory can continue without directive
+   deadlines", "old directive deadlines cannot end an expedition" and the expedition half of
+   "reboot clears transient state" cannot pass while both of those hold.
+5. That is an owner question, not a test question: `continue_expedition_button.visible = victory
+   and not expedition_mode`, so the Continue Expedition button can never appear in a run as the
+   game is now written. Either the button and its flow are dead and should go, or expedition mode
+   should not begin at doctrine confirmation. The assertions follow whichever way that is decided.
+6. Untouched: the two suspension assertions. They need their own look.
+
 ## playtest_polish: nobody was aboard to build anything - September 18, 2026
 
 1. The fixture failed 18 assertions, starting with "purchased solar_array is built". Cause: it
