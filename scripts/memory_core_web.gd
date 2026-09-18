@@ -12,9 +12,13 @@ const NODE_RADIUS := 18.0
 const KEYSTONE_RADIUS := 24.0
 const CORE_RADIUS := 40.0
 const LABEL_MARGIN := 34.0
+const ResourceIcons = preload("res://scripts/resource_icons.gd")
 var meta_state
 var selected := ""
 var buttons := {}
+var hover_card: PanelContainer
+var hover_text: RichTextLabel
+var hovered := ""
 var pulses: Array = []
 var clock := 0.0
 
@@ -34,11 +38,34 @@ func _ready() -> void:
 			for state in ["normal", "hover", "pressed", "focus", "disabled", "hover_pressed"]:
 				node.add_theme_stylebox_override(state, StyleBoxEmpty.new())
 			node.pressed.connect(select.bind(id))
-			node.mouse_entered.connect(queue_redraw)
-			node.mouse_exited.connect(queue_redraw)
+			node.mouse_entered.connect(_hover.bind(id))
+			node.mouse_exited.connect(_unhover.bind(id))
 			node.focus_entered.connect(select.bind(id))
 			add_child(node)
 			buttons[id] = node
+	# What a memory actually does, in the resource colours and icons the rest of the station uses.
+	hover_card = PanelContainer.new()
+	hover_card.name = "HoverCard"
+	hover_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hover_card.visible = false
+	hover_card.custom_minimum_size = Vector2(300, 0)
+	var frame := StyleBoxFlat.new()
+	frame.bg_color = Color("0a1a22ee")
+	frame.border_color = Color("2e5d66")
+	frame.set_border_width_all(1)
+	frame.set_corner_radius_all(10)
+	frame.set_content_margin_all(12)
+	hover_card.add_theme_stylebox_override("panel", frame)
+	hover_text = RichTextLabel.new()
+	hover_text.bbcode_enabled = true
+	hover_text.fit_content = true
+	hover_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hover_text.custom_minimum_size = Vector2(276, 0)
+	hover_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hover_text.add_theme_font_size_override("normal_font_size", 14)
+	hover_text.add_theme_font_size_override("bold_font_size", 14)
+	hover_card.add_child(hover_text)
+	add_child(hover_card)
 	resized.connect(_place)
 	_place()
 	set_process(not preload("res://scripts/title_settings.gd").reduced_motion)
@@ -55,13 +82,14 @@ func center() -> Vector2:
 # Rings scale with the space available so the whole graph fits on screen. A department is three
 # steps deep now (root, the split, the pair before the keystone, the keystone), each 1.75 steps
 # apart, and the spare fraction leaves room for the department's name outside the keystone.
-const DEEPEST := 3.0
-const RING_SPREAD := 1.75
+const DEEPEST := 2.0
+const RING_SPREAD := 2.2
 func ring_step() -> float:
 	return maxf(24.0, (minf(size.x, size.y) * 0.5 - LABEL_MARGIN - CORE_RADIUS - KEYSTONE_RADIUS) / (DEEPEST * RING_SPREAD + 0.7))
 
 func first_ring() -> float:
-	return CORE_RADIUS + ring_step() * 1.3
+	# Eight lobes leave little arc between their roots, so the first ring sits further out.
+	return CORE_RADIUS + ring_step() * 1.7
 
 func branch_angle(index: int) -> float:
 	return -PI * 0.5 + TAU * float(index) / float(Research.BRANCHES.size())
@@ -96,15 +124,18 @@ func node_position(id: String) -> Vector2:
 	for i in range(Research.BRANCHES.size()):
 		if Research.BRANCHES[i].id == perk.branch: index = i
 	var depth := node_depth(id)
-	# Depth now tops out at three, so each step can take more of the radius than a tier did.
-	var ring := first_ring() + ring_step() * RING_SPREAD * float(depth)
+	# Depth tops out at two - root, dendrite, keystone - so each step takes a wide bite of the radius.
+	# Alternate lobes sit a little further out, so neighbouring roots never share a radius and the
+	# core reads as grown rather than drawn.
+	var stagger := 0.38 if index % 2 == 1 else 0.0
+	var ring := first_ring() + ring_step() * (RING_SPREAD * float(depth) + stagger)
 	var row := depth_row(str(perk.branch), depth)
 	var slot := maxi(row.find(id), 0)
 	var angle := branch_angle(index) + node_lean(id) * (0.24 + float(depth) * 0.06)
 	var spoke := Vector2.from_angle(angle)
 	# Siblings sit a fixed distance apart across the spoke rather than a fixed angle, so a split
 	# reads the same width close to the core as it does out at the keystone.
-	var across := (float(slot) - float(row.size() - 1) * 0.5) * ring_step() * 1.5
+	var across := (float(slot) - float(row.size() - 1) * 0.5) * ring_step() * 1.05
 	return center() + spoke * ring + spoke.rotated(PI * 0.5) * across
 
 func _place() -> void:
@@ -112,6 +143,54 @@ func _place() -> void:
 		var node: Button = buttons[id]
 		node.position = node_position(id) - node.size * 0.5
 	queue_redraw()
+
+func _hover(id: String) -> void:
+	hovered = id
+	_show_card(id)
+	queue_redraw()
+
+func _unhover(id: String) -> void:
+	if hovered != id: return
+	hovered = ""
+	if is_instance_valid(hover_card): hover_card.visible = false
+	queue_redraw()
+
+# The card reads like the station's own readouts: the lobe in its department colour, the effect run
+# through ResourceIcons so every amount carries its icon and colour, then the price or the state.
+func _show_card(id: String) -> void:
+	if not is_instance_valid(hover_card) or not Research.PERKS.has(id): return
+	var perk: Dictionary = Research.PERKS[id]
+	var color := _branch_color(id)
+	var lobe := ""
+	for branch in Research.BRANCHES:
+		if branch.id == perk.branch: lobe = str(branch.name)
+	var state := Research.state(meta_state, id)
+	var keystone: bool = perk.get("keystone", false)
+	var lines: Array[String] = []
+	lines.append("[color=#%s]%s%s[/color]" % [color.to_html(false), lobe, "  ·  KEYSTONE" if keystone else ""])
+	lines.append("[b][color=#%s]%s[/color][/b]" % ["f1d58a" if keystone else "e6f6f3", str(perk.name).to_upper()])
+	lines.append(ResourceIcons.decorate(str(perk.text), 15))
+	var price := "%s %d Archived Data" % [ResourceIcons.icon("archived_data", 15), int(perk.cost)]
+	match state:
+		"owned": lines.append("[color=#%s]RECOVERED[/color]" % color.to_html(false))
+		"ready": lines.append("[color=#a8d8c4]%s[/color]" % price)
+		"short": lines.append("[color=#e0a97e]%s  ·  not banked yet[/color]" % price)
+		_:
+			var waiting: Array = Research.missing(meta_state, id).map(func(other): return str(Research.PERKS[other].name))
+			lines.append("[color=#7f9aa3]Sealed until %s  ·  %s[/color]" % [" and ".join(waiting), price])
+	hover_text.text = "\n".join(lines)
+	hover_card.visible = true
+	hover_card.reset_size()
+	_place_card(node_position(id))
+
+# The card sits beside its node and stays inside the panel.
+func _place_card(at: Vector2) -> void:
+	var card_size := hover_card.size
+	var spot := at + Vector2(NODE_RADIUS + 14.0, -card_size.y * 0.5)
+	if spot.x + card_size.x > size.x - 6.0: spot.x = at.x - NODE_RADIUS - 14.0 - card_size.x
+	spot.x = clampf(spot.x, 6.0, maxf(6.0, size.x - card_size.x - 6.0))
+	spot.y = clampf(spot.y, 6.0, maxf(6.0, size.y - card_size.y - 6.0))
+	hover_card.position = spot
 
 func select(id: String) -> void:
 	if selected == id: return
@@ -152,7 +231,9 @@ func label_side(id: String) -> Vector2:
 	var across := spoke.rotated(PI * 0.5)
 	var offset := (node_position(id) - center()).dot(across)
 	if absf(offset) > 1.0: return across if offset > 0.0 else -across
-	return across if node_depth(id) % 2 == 0 else -across
+	# A root sits on its spoke, and its neighbours' roots are close at eight lobes, so every root
+	# writes the same way around the core instead of two of them meeting in the gap.
+	return across
 
 # A node wears its name, the way a journal graph labels every note. The name sits beside the node,
 # square to its spoke, so it never lands on the next node out. Owned and available names read
@@ -222,7 +303,7 @@ func _draw() -> void:
 		var color := _branch_color(id)
 		var keystone: bool = perk.get("keystone", false)
 		var radius := KEYSTONE_RADIUS if keystone else NODE_RADIUS
-		var hot: bool = id == selected or buttons[id].is_hovered()
+		var hot: bool = id == selected or id == hovered or buttons[id].is_hovered()
 		if state == "owned":
 			draw_circle(at, radius + 7.0 + breath * 2.0, Color(color, 0.16))
 			draw_circle(at, radius, color.darkened(0.25))
@@ -246,6 +327,7 @@ func _draw() -> void:
 		if hot:
 			draw_arc(at, radius + 6.0, 0, TAU, 40, Color("e6f6f3"), 2.0, true)
 		# Recovered and reachable memories carry their names, as does whatever the pointer is on.
-		# Sealed ones stay unnamed: thirty-three labels at once buried the shape of the graph.
-		if state in ["owned", "ready"] or hot:
+		# Sealed ones stay unnamed, and so do the roots: eight of them ring the core closely enough
+		# that their names ran into each other, and the lobe's own name already sits outside.
+		if ((state in ["owned", "ready"]) and node_depth(id) > 0) or hot:
 			_draw_node_name(font, at, radius, id, state, color)

@@ -10,7 +10,7 @@ static func functioning_links(connected_links: Array, powered_cells: Dictionary)
 			functioning.append(link)
 	return functioning
 
-static func advance_cycle(active_links: Array, previous_progress: Dictionary, discovered_ids: Dictionary, stabilized_ids: Dictionary) -> Dictionary:
+static func advance_cycle(active_links: Array, previous_progress: Dictionary, discovered_ids: Dictionary, stabilized_ids: Dictionary, relief: int = 0) -> Dictionary:
 	var active_by_id := {}
 	for link_value in active_links:
 		var link: Dictionary = link_value
@@ -31,7 +31,8 @@ static func advance_cycle(active_links: Array, previous_progress: Dictionary, di
 			continue
 		var next_progress := int(progress.get(id, 0)) + 1
 		progress[id] = next_progress
-		if next_progress >= int(link.get("stabilize_cycles", 3)):
+		# A memory core keystone can shorten every stabilization, never below a single cycle.
+		if next_progress >= maxi(1, int(link.get("stabilize_cycles", 3)) - maxi(relief, 0)):
 			new_stabilizations.append(id)
 	return {
 		"progress": progress,

@@ -1,3 +1,32 @@
+## BRINE's memory as eight lobes, and what each one remembers - September 18, 2026
+
+1. Owner request: dendrites that go their own way and each end in their own keystone, lobes named
+   for the station's real departments, perks worth wanting, and a hover that shows the bonus in the
+   right colours and icons.
+2. Eight lobes now, each named and coloured from the department palette: OPERATIONS (command red),
+   ENGINEERING (yellow), SCIENCE & MEDICAL (blue), LIFE SUPPORT (green), CREW QUARTERS (orange),
+   AI & ROBOTICS (white), ANOMALY (purple) and STRUCTURE (corridor grey).
+3. Each lobe roots at the core, grows two dendrites, and each dendrite ends in its own keystone -
+   sixteen keystones in all, and recovering one never requires the other, so two profiles can
+   remember the station differently. Forty memories, five per lobe.
+4. Two new mechanics behind new keystones, rather than another percentage: Command Override
+   (OPERATIONS) stages an extra blueprint, so the hand holds four cards all loop; Rehearsed Pattern
+   (SCIENCE) makes every synergy stabilize one cycle sooner, floored at one cycle.
+5. Other keystones now do two things at once where it reads as one idea - Failsafe Welds repairs
+   the hull faster and slows flooding; Borrowed Time slows both machinery heat and hull cracks;
+   Shift Rotation adds a berth and quickens the crew.
+6. Hovering a node opens a card: the lobe in its department colour, the memory's name, its effect
+   run through ResourceIcons so every amount carries its resource icon and colour, then the price
+   with the Archived Data icon - or what the node is still sealed behind.
+7. Layout follows the new shape: alternate lobes sit slightly further out so neighbouring roots
+   never share a radius, siblings sit a fixed distance apart across their spoke, and roots are
+   named on hover only (eight names around a small core ran into each other).
+8. Checked: test_research_tree passes, rewritten for the new rules and covering both new hooks -
+   the extra card reaching the hand limit, and a three-cycle synergy stabilizing on its second
+   cycle with the relief and not without it. test_meta_shop, test_card_drag, test_hand_backdrop
+   and test_discovery_progression pass headless; test_title_screen and test_title_checkpoint_layout
+   pass on the native lane. The layout was adjusted four times off rendered captures.
+
 ## Memory core branches instead of queueing - September 18, 2026
 
 1. Owner request following note 10: more branching paths off different nodes. A department was a

@@ -2230,8 +2230,12 @@ func _build_run_deck() -> void:
 			draw_pile.erase(id)
 			draw_pile.append(id)
 
+# The hand is three blueprints, plus any the memory core keeps staged (Command Override).
+func hand_limit() -> int:
+	return HAND_SIZE + ResearchTree.extra_cards(meta)
+
 func _refill_hand() -> void:
-	while hand.size() < HAND_SIZE:
+	while hand.size() < hand_limit():
 		if draw_pile.is_empty():
 			_reshuffle_discard_pile()
 		if draw_pile.is_empty():
@@ -2759,7 +2763,8 @@ func _advance_synergy_discovery_cycle() -> void:
 		active_synergy_links,
 		synergy_stabilization_progress,
 		meta.discovered_synergy_ids,
-		meta.stabilized_synergy_ids
+		meta.stabilized_synergy_ids,
+		ResearchTree.stabilize_relief(meta)
 	)
 	synergy_stabilization_progress = transition["progress"]
 	for id_value in transition["new_discovery_ids"]:
@@ -3953,7 +3958,7 @@ func _power_priority(room: Dictionary) -> int:
 
 func _refresh_cards() -> void:
 	if hand_count_label != null:
-		hand_count_label.text = "%d/%d" % [hand.size(), HAND_SIZE]
+		hand_count_label.text = "%d/%d" % [hand.size(), hand_limit()]
 	if reroll_button != null:
 		reroll_button.text = "REROLL HAND · %d" % rerolls_remaining
 		if rerolls_remaining < REROLL_RECOVERY_CAP:

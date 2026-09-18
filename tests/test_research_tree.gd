@@ -19,41 +19,40 @@ func run() -> void:
 	var meta := MetaState.new()
 	meta.save_path = prefix + ".json"
 	meta.total_research_points = 60
-	# BRINE memory core (owner playtest, Sept 17): six departments, each ending in one keystone.
-	check(Research.BRANCHES.size() == 6 and Research.PERKS.size() == 33, "Six departments and 33 upgrades")
+	# BRINE's memory is lobed (owner request): eight lobes, each splitting into two dendrites that
+	# end in their own keystone.
+	check(Research.BRANCHES.size() == 8 and Research.PERKS.size() == 40, "Eight lobes and 40 memories")
 	for branch in Research.BRANCHES:
 		var ids: Array = Research.perks_in(branch.id)
-		var tiers: Array = ids.map(func(id): return int(Research.PERKS[id].tier))
-		var expected: Array = []
-		for tier in range(1, ids.size() + 1): expected.append(tier)
-		check(tiers == expected, "%s runs tier 1 upward without gaps" % branch.id)
-		check(Research.PERKS[ids.back()].get("keystone", false) and ids.filter(func(id): return Research.PERKS[id].get("keystone", false)).size() == 1, "%s ends in exactly one keystone" % branch.id)
+		check(ids.size() == 5, "%s holds five memories" % branch.id)
+		var rooted: Array = ids.filter(func(id): return Research.requirements(id).is_empty())
+		check(rooted.size() == 1, "%s roots at one node" % branch.id)
+		var children: Array = ids.filter(func(id): return Research.requirements(id) == [rooted[0]])
+		check(children.size() == 2, "%s grows two dendrites from its root" % branch.id)
+		var keystones: Array = ids.filter(func(id): return Research.PERKS[id].get("keystone", false))
+		check(keystones.size() == 2, "%s ends each dendrite in its own keystone" % branch.id)
+		for keystone in keystones:
+			var dependents: Array = ids.filter(func(id): return Research.requirements(id).has(keystone))
+			check(dependents.is_empty(), "%s keystone %s is the end of its dendrite" % [branch.id, keystone])
+			check(Research.requirements(keystone).size() == 1, "%s keystone %s needs only its own path" % [branch.id, keystone])
 		check(not Research.quote(ids[0]).is_empty(), "%s has a BRINE line" % branch.id)
-	check(Research.state(meta, "eng_salvaged_stock") == "ready" and Research.state(meta, "eng_spare_capacitors") == "locked", "Only tier 1 is open at first")
-	check(not Research.buy(meta, "eng_spare_capacitors"), "A perk cannot be bought before the one above it")
+		check(Research.branch_color(str(branch.id)).a > 0.0, "%s carries a department colour" % branch.id)
+	check(Research.state(meta, "eng_salvaged_stock") == "ready" and Research.state(meta, "eng_spare_capacitors") == "locked", "Only a lobe's root is open at first")
+	check(not Research.buy(meta, "eng_spare_capacitors"), "A memory cannot be recovered before the one it grows from")
 	check(Research.buy(meta, "eng_salvaged_stock") and Research.available(meta) == 55, "Buying spends its cost from the balance")
-	check(not Research.buy(meta, "eng_salvaged_stock"), "A perk is bought once")
-	check(Research.buy(meta, "eng_spare_capacitors") and Research.buy(meta, "eng_quick_rigging") and Research.available(meta) == 30, "Tiers open in order")
-	# A department is a fork, not a queue: its root opens two paths that meet at the keystone.
-	for branch in Research.BRANCHES:
-		var rooted: Array = Research.perks_in(branch.id).filter(func(id): return Research.requirements(id).is_empty())
-		check(rooted.size() == 1, "%s starts from one node" % branch.id)
-		var children: Array = Research.perks_in(branch.id).filter(func(id): return Research.requirements(id) == [rooted[0]])
-		check(children.size() == 2, "%s splits into two paths off its root" % branch.id)
-		var keystone: String = Research.perks_in(branch.id).back()
-		check(Research.requirements(keystone).size() == 2, "%s keystone waits for both paths" % branch.id)
-	check(Research.state(meta, "eng_spare_parts") != "locked" and Research.state(meta, "eng_bulkhead_seals") != "locked", "Both engineering paths are open at once, affordable or not")
-	check(Research.state(meta, "eng_overclocked_generators") == "locked" and Research.missing(meta, "eng_overclocked_generators").size() == 2, "The keystone names both nodes it still needs")
-	check(Research.buy(meta, "eng_spare_parts") and Research.available(meta) == 5, "Tier 4 costs 25")
-	check(Research.state(meta, "eng_bulkhead_seals") == "short" and not Research.buy(meta, "eng_bulkhead_seals"), "A perk costing more than the balance waits")
+	check(not Research.buy(meta, "eng_salvaged_stock"), "A memory is recovered once")
+	check(Research.buy(meta, "eng_spare_capacitors") and Research.buy(meta, "eng_quick_rigging") and Research.available(meta) == 31, "Both dendrites open off the root")
+	check(Research.state(meta, "eng_overclocked_generators") == "short" and Research.state(meta, "eng_failsafe_welds") == "short", "Both keystones wait on Data, not on each other")
+	check(not Research.buy(meta, "eng_overclocked_generators"), "A keystone costing more than the balance waits")
+	check(Research.missing(meta, "ops_command_override") == ["ops_contingency_drills"], "A locked keystone names the node it still needs")
 	check(meta.total_research_points == 60, "Spending never reduces Research earned")
 	var reloaded := MetaState.new()
 	reloaded.save_path = prefix + ".json"
-	check(reloaded.brine_upgrades.has("eng_spare_parts") and Research.available(reloaded) == 5, "Owned perks survive a reload of the profile")
-	check(Research.refund_all(meta) == 55 and Research.available(meta) == 60 and meta.brine_upgrades.is_empty(), "Refund returns every perk's Research")
+	check(reloaded.brine_upgrades.has("eng_quick_rigging") and Research.available(reloaded) == 31, "Owned memories survive a reload of the profile")
+	check(Research.refund_all(meta) == 29 and Research.available(meta) == 60 and meta.brine_upgrades.is_empty(), "Refund returns every memory's Data")
 
 	# Effects in a new loop.
-	for id in ["eng_salvaged_stock", "eng_spare_capacitors", "eng_quick_rigging", "eng_spare_parts", "eng_bulkhead_seals", "life_stored_rations", "life_deep_tanks", "life_seed_stock", "life_expanded_tanks", "life_warm_thaw", "disc_archive_index", "disc_calibrated_sensors", "disc_research_grant"]:
+	for id in ["eng_salvaged_stock", "eng_spare_capacitors", "eng_quick_rigging", "ops_standing_watch", "ops_contingency_drills", "life_stored_rations", "life_deep_tanks", "life_seed_stock", "life_expanded_tanks", "life_warm_thaw", "disc_archive_index", "disc_calibrated_sensors", "disc_research_grant"]:
 		meta.brine_upgrades[id] = true
 	meta.total_research_points = 500
 	meta.save_to_disk()
@@ -71,21 +70,30 @@ func run() -> void:
 	for key in ["metal", "power", "food", "oxygen", "water", "biomass", "data"]:
 		var expected: int = int(baseline.resources[key]) + int(Research.start_resources(game.meta).get(key, 0))
 		check(int(game.resources[key]) == expected, "Loop starts with perk %s: %d, expected %d" % [key, game.resources[key], expected])
-	check(game.resources.metal == baseline.resources.metal + 5 and game.resources.data == baseline.resources.data + 4, "Salvaged Stock and Archive Index add their supplies")
-	check(game.rerolls_remaining == baseline.rerolls_remaining + 1, "Spare Parts adds a reroll")
+	check(game.resources.metal == baseline.resources.metal + 5 and game.resources.data == baseline.resources.data + 24, "Salvaged Stock, Archive Index and Expanded Tanks add their supplies")
+	check(game.rerolls_remaining == baseline.rerolls_remaining + 1, "Contingency Drills adds a reroll")
 	check(game._get_power_capacity() == baseline._get_power_capacity() + 4 and game._get_resource_capacity("oxygen") == baseline._get_resource_capacity("oxygen") + 10 and game._get_resource_capacity("food") == baseline._get_resource_capacity("food") + 10, "Storage perks raise capacity")
-	check(is_equal_approx(Research.repair_rate(game.meta), 1.25) and is_equal_approx(Research.thaw_rate(game.meta), 1.3) and is_equal_approx(Research.flood_rate(game.meta), 0.75), "Rate perks report their factors")
-	check(is_equal_approx(Research.research_multiplier(game.meta), 1.25) and Research.research_lab_data(game.meta) == 1, "Discovery perks report their bonuses")
+	check(is_equal_approx(Research.repair_rate(game.meta), 1.25) and is_equal_approx(Research.thaw_rate(game.meta), 1.3) and is_equal_approx(Research.needs_rate(game.meta), 0.8), "Rate perks report their factors")
+	check(is_equal_approx(Research.research_multiplier(game.meta), 1.25) and Research.research_lab_data(game.meta) == 1, "Science perks report their bonuses")
 	check(is_equal_approx(Research.repair_rate(baseline.meta), 1.0) and is_equal_approx(Research.research_multiplier(baseline.meta), 1.0), "No perks, no change")
-	# New departments and keystones report their effects and reach the station.
-	for id in ["crew_steady_rations", "crew_rebreathers", "crew_spare_bunks", "crew_deck_boots", "crew_second_chance", "drone_efficient_cells", "drone_ore_sorters", "drone_vectored_thrust", "drone_rapid_assembly", "drone_deep_salvage", "hull_slow_fractures", "hull_weld_training", "hull_heat_sinks", "hull_blast_doors", "eng_overclocked_generators", "life_closed_ecology", "disc_pattern_sense"]:
+	# The keystones of every lobe report their effects and reach the station.
+	var keystone_ids := ["crew_steady_rations", "crew_spare_bunks", "crew_shift_rotation", "crew_second_chance", "drone_efficient_cells", "drone_ore_sorters", "drone_vectored_thrust", "drone_rapid_assembly", "drone_deep_salvage", "hull_reinforced_plating", "hull_slow_fractures", "hull_weld_training", "hull_blast_doors", "eng_bulkhead_seals", "eng_overclocked_generators", "life_closed_ecology", "disc_pattern_sense", "ops_quarantine_protocol", "ops_command_override", "disc_rehearsed_pattern"]
+	for id in keystone_ids:
 		game.meta.brine_upgrades[id] = true
-	check(is_equal_approx(Research.needs_rate(game.meta), 0.8) and is_equal_approx(Research.air_drain_rate(game.meta), 0.8) and is_equal_approx(Research.walk_rate(game.meta), 1.15) and Research.second_chance(game.meta), "Crew upgrades report their factors")
-	check(is_equal_approx(Research.battery_drain_rate(game.meta), 0.8) and Research.drone_metal_bonus(game.meta) == 1 and is_equal_approx(Research.drone_speed(game.meta), 1.2) and is_equal_approx(Research.build_rate(game.meta), 1.25) and Research.salvage_rare_bonus(game.meta) == 1, "Drone upgrades report their factors")
-	check(is_equal_approx(Research.crack_rate(game.meta), 0.7) and is_equal_approx(Research.hull_repair_rate(game.meta), 1.3) and is_equal_approx(Research.heat_rate(game.meta), 0.65) and Research.integrity_shield(game.meta) == 1, "Hull upgrades report their factors")
-	check(game._get_crew_capacity() == baseline._get_crew_capacity() + 1, "Spare Bunks adds a berth")
+	check(is_equal_approx(Research.air_drain_rate(game.meta), 0.8) and is_equal_approx(Research.walk_rate(game.meta), 1.15) and Research.second_chance(game.meta), "Crew upgrades report their factors")
+	check(is_equal_approx(Research.battery_drain_rate(game.meta), 0.8) and Research.drone_metal_bonus(game.meta) == 1 and is_equal_approx(Research.drone_speed(game.meta), 1.2) and is_equal_approx(Research.build_rate(game.meta), 1.25) and Research.salvage_rare_bonus(game.meta) == 1, "Robotics upgrades report their factors")
+	check(is_equal_approx(Research.crack_rate(game.meta), 0.7) and is_equal_approx(Research.hull_repair_rate(game.meta), 1.3) and is_equal_approx(Research.heat_rate(game.meta), 0.65) and Research.integrity_shield(game.meta) == 1, "Structure upgrades report their factors")
+	check(game._get_crew_capacity() == baseline._get_crew_capacity() + 2, "Spare Bunks and Shift Rotation each add a berth")
 	check(Research.generator_bonus(game.meta) == 1 and Research.life_support_oxygen(game.meta) == 2 and Research.discovery_data(game.meta) == 3, "Keystones report their bonuses")
-	for id in ["crew_steady_rations", "crew_rebreathers", "crew_spare_bunks", "crew_deck_boots", "crew_second_chance", "drone_efficient_cells", "drone_ore_sorters", "drone_vectored_thrust", "drone_rapid_assembly", "drone_deep_salvage", "hull_slow_fractures", "hull_weld_training", "hull_heat_sinks", "hull_blast_doors", "eng_overclocked_generators", "life_closed_ecology", "disc_pattern_sense"]:
+	# The two new memories: a staged blueprint and a shorter stabilization.
+	check(Research.extra_cards(game.meta) == 1 and game.hand_limit() == baseline.hand_limit() + 1, "Command Override stages an extra blueprint")
+	check(Research.stabilize_relief(game.meta) == 1, "Rehearsed Pattern shortens every stabilization")
+	var link := {"id":"probe_link", "stabilize_cycles":3}
+	var eased: Dictionary = preload("res://scripts/discovery_manager.gd").advance_cycle([link], {"probe_link":1}, {"probe_link":true}, {}, 1)
+	check(eased["new_stabilization_ids"] == ["probe_link"], "A three-cycle synergy stabilizes on its second cycle with the relief")
+	var normal: Dictionary = preload("res://scripts/discovery_manager.gd").advance_cycle([link], {"probe_link":1}, {"probe_link":true}, {}, 0)
+	check(normal["new_stabilization_ids"].is_empty(), "Without the relief it still waits for its third")
+	for id in keystone_ids:
 		game.meta.brine_upgrades.erase(id)
 	baseline.queue_free()
 
