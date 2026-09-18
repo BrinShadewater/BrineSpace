@@ -12,6 +12,12 @@ var thumbnail_placeholder: ImageTexture
 var library_list: AssetList
 var library_search: LineEdit
 var library_filter: OptionButton
+var retire_button: Button
+# Assets the owner has marked for removal. Nothing is deleted here: the id is
+# written to a manifest and the entry leaves the tray, so a misclick costs
+# nothing and the art can be swept later once the list has been reviewed.
+const RETIRED_PATH:="res://rooms/tileset-library/retired.json"
+var retired: Dictionary={}
 var size_control: SpinBox
 var pan:=Vector2.ZERO
 var panning:=false
@@ -434,9 +440,14 @@ func _ready() -> void:
 	var library_title:=Label.new(); library_title.text="ASSET TRAY"; tray.add_child(library_title)
 	var tray_hint:=Label.new(); tray_hint.text="Drag out to place • Drop back to remove"; tray_hint.add_theme_font_size_override("font_size",12); tray.add_child(tray_hint)
 	library_filter=OptionButton.new()
-	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings"]: library_filter.add_item(label)
+	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings","Marked for removal"]: library_filter.add_item(label)
 	tray.add_child(library_filter)
 	library_filter.item_selected.connect(func(_i): rebuild_library())
+	load_retired()
+	retire_button=Button.new(); retire_button.text="Mark for removal"; retire_button.disabled=true
+	retire_button.tooltip_text="Take this asset out of the tray. Nothing is deleted: the id goes to retired.json and you can restore it from the Marked for removal filter."
+	tray.add_child(retire_button)
+	retire_button.pressed.connect(func(): toggle_retired(selected_library_id()))
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
@@ -453,6 +464,12 @@ func _ready() -> void:
 	library_list.size_flags_vertical=Control.SIZE_EXPAND_FILL
 	library_list.size_flags_stretch_ratio=1.35
 	tray.add_child(library_list)
+	library_list.item_selected.connect(func(_i): update_retire_button())
+	# Right-click an entry to mark or restore it without reaching for the button.
+	library_list.item_clicked.connect(func(i,_at,button):
+		if button==MOUSE_BUTTON_RIGHT:
+			library_list.select(i)
+			toggle_retired(str(library_list.get_item_metadata(i))))
 	save_feedback=Label.new(); column.add_child(save_feedback)
 	var bottom_actions:=HBoxContainer.new()
 	bottom_actions.name="RoomActions"
@@ -870,17 +887,53 @@ func _input(event: InputEvent) -> void:
 	else: return
 	get_viewport().set_input_as_handled()
 
+func load_retired() -> void:
+	retired.clear()
+	if not FileAccess.file_exists(RETIRED_PATH): return
+	var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(RETIRED_PATH))
+	if parsed is Array:
+		for id in parsed: retired[str(id)]=true
+
+func save_retired() -> void:
+	var ids: Array=retired.keys(); ids.sort()
+	var file:=FileAccess.open(RETIRED_PATH,FileAccess.WRITE)
+	if file==null:
+		push_warning("Could not write "+RETIRED_PATH+"; the mark was not saved.")
+		return
+	file.store_string(JSON.stringify(ids,"	"))
+
+func toggle_retired(id: String) -> void:
+	if id.is_empty(): return
+	if retired.has(id): retired.erase(id)
+	else: retired[id]=true
+	save_retired()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
+func selected_library_id() -> String:
+	if library_list==null: return ""
+	var picked:=library_list.get_selected_items()
+	return "" if picked.is_empty() else str(library_list.get_item_metadata(picked[0]))
+
+func update_retire_button() -> void:
+	if retire_button==null: return
+	var id:=selected_library_id()
+	retire_button.disabled=id.is_empty()
+	retire_button.text=("Restore asset" if retired.has(id) else "Mark for removal")
+
 func rebuild_library() -> void:
 	if library_list==null: return
 	var returned: Array=[]
 	for id in draft:
 		if draft[id]==null and defaults.has(id): returned.append(id)
-	var signature: Array=[index,returned,library_search.text,library_filter.selected]
+	var signature: Array=[index,returned,library_search.text,library_filter.selected,retired.size()]
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
 	library_list.clear()
-	if library_filter.selected in [0,3]:
+	var only_retired:=library_filter.selected==library_filter.item_count-1
+	if library_filter.selected in [0,3] and not only_retired:
 		for prop in base_props:
 			var id:=str(prop.id)
 			var caption:=id.trim_prefix("full_wall/").replace("_"," ").replace("/"," · ").capitalize()
@@ -892,10 +945,13 @@ func rebuild_library() -> void:
 			library_list.set_item_tooltip(library_list.item_count-1,caption+(" • Fixed wall artwork" if prop.has("flush_region") else " • Drag into the room"))
 	for id in Library.entries():
 		var entry: Dictionary=Library.entries()[id]
-		if library_filter.selected==0 and id not in Library.family_variants(entries[index].asset) and entries[index].room not in entry.get("default_rooms",[]): continue
-		if library_filter.selected>=4 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4]): continue
-		if library_filter.selected==1 and entry.get("group","")!="common": continue
-		if library_filter.selected==2 and entry.get("group","")=="common": continue
+		if only_retired:
+			if not retired.has(id): continue
+		elif retired.has(id): continue
+		if not only_retired and library_filter.selected==0 and id not in Library.family_variants(entries[index].asset) and entries[index].room not in entry.get("default_rooms",[]): continue
+		if not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4]): continue
+		if not only_retired and library_filter.selected==1 and entry.get("group","")!="common": continue
+		if not only_retired and library_filter.selected==2 and entry.get("group","")=="common": continue
 		if (not library_search.text.is_empty() and not str(entry.label).to_lower().contains(library_search.text.to_lower())): continue
 		if not entry.get("preview_ready",false): thumbnail_queue.append(id)
 		library_list.add_item(entry.label,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
