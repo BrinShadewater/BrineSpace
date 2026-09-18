@@ -334,14 +334,25 @@ func run() -> void:
 	check(music.duck_db <= -4.0,"Priority cue gently lowers music")
 	music._process(5.0)
 	check(is_zero_approx(music.duck_db),"Music returns after the cue")
+	var widest := 0.0
+	for slot in range(music.playlist.size()-1):
+		if not bool(music.pair_with_next[slot]): continue
+		widest = maxf(widest,absf(Mix.brightness(music.playlist[slot])-Mix.brightness(music.playlist[slot+1])))
+	check(widest <= 250.0,"Crossfaded tracks are close in brightness (widest pair %.0f Hz)" % widest)
+	check(music.pair_with_next.size() == music.playlist.size() and bool(music.pair_with_next[0]),"A rotation opens on a pair and marks every slot")
+	var before: Array = music.playlist.duplicate()
+	music.track_index = music.playlist.size()-1
+	music.next_track()
+	check(music.track_index == 0 and music.playlist.size() == before.size(),"Wrapping re-orders the same tracks instead of repeating the sequence")
+	check(music.player.stream != before[before.size()-1],"A re-order never repeats the track that just played")
 	var tracks := {}
 	for i in range(4):
 		tracks[music.player.stream.resource_path] = true
 		music.next_track()
 	check(tracks.size() == 4,"Track completion advances through every Moonlit track")
-	music.tracks_started = 2
+	while bool(music.pair_with_next[music.track_index]): music.next_track()
 	music.player.finished.emit()
-	check(music.rest_remaining >= 18.0 and music.rest_remaining <= 30.0 and not music.player.playing,"Every second track leaves a bounded quiet interval")
+	check(music.rest_remaining >= 18.0 and music.rest_remaining <= 30.0 and not music.player.playing,"The track that closes a pair leaves a bounded quiet interval")
 	music._process(31.0)
 	check(music.rest_remaining == 0.0 and music.player.playing,"Music resumes after its quiet interval")
 	Preferences.music_volume = 0.0

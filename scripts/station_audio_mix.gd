@@ -35,5 +35,24 @@ const GAIN_DB := {
 	"res://assets/audio/suno-polish-v1/warning_01.wav": -8.96,
 }
 
+## Spectral centroid of each music track, in Hz: how bright it sounds. Measured by decoding to
+## 16 kHz mono and taking the energy-weighted mean frequency over 1024-sample frames. The music
+## rotation crossfades tracks that sit close together here and saves the jumps for the rests,
+## because a six-second overlap between a dark ambient and a bright one reads as a mistake.
+const BRIGHTNESS_HZ := {
+	"res://assets/audio/tracks-v1/oceanic_drift.ogg": 356.0,
+	"res://assets/audio/tracks-v1/station_pulse.ogg": 414.0,
+	"res://assets/audio/tracks-v1/deep_ocean.ogg": 457.0,
+	"res://assets/audio/tracks-v1/silence.ogg": 476.0,
+	"res://assets/audio/tracks-v1/sonar_pressure.ogg": 951.0,
+	"res://assets/audio/suno-v1/moonlit_canyon_01.ogg": 1270.0,
+	"res://assets/audio/suno-v1/moonlit_test_run_02.ogg": 1433.0,
+	"res://assets/audio/suno-v1/moonlit_canyon_02.ogg": 1525.0,
+	"res://assets/audio/suno-v1/moonlit_test_run_01.ogg": 1545.0,
+}
+
 static func gain(stream: AudioStream) -> float:
 	return float(GAIN_DB.get(stream.resource_path, 0.0))
+
+static func brightness(stream: AudioStream) -> float:
+	return float(BRIGHTNESS_HZ.get(stream.resource_path, 900.0))
