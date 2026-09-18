@@ -98,7 +98,8 @@ func _run() -> void:
 	check(restored.guide_completed, "Skipping the guide must persist")
 	game.resonance_score = 50
 	game._show_reboot_summary("Station supplies exhausted.", false)
-	check(game.summary_text.text.contains("WHAT SURVIVES") and game.summary_text.text.contains("Station supplies exhausted."), "Summary must explain the outcome and retained rewards")
+	# The outcome has its own line under the heading; the prose keeps what survives.
+	check(game.summary_text.text.contains("WHAT SURVIVES") and game.summary_outcome_label.text.contains("Station supplies exhausted."), "Summary must explain the outcome and retained rewards")
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png("res://output/learning-ui-summary.png")

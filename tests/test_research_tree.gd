@@ -161,6 +161,16 @@ func run() -> void:
 		check(sides.size() == 2, "%s spreads over two sides" % branch.id)
 		for side in sides:
 			check(sides[side].size() == 3, "%s side %d carries its dendrite and keystone" % [branch.id, side])
+	# Places are laid out once and reused; a stale cache would draw the graph somewhere else.
+	var stale := 0
+	for id in ids:
+		if web.node_position(id) != web._compute_position(id): stale += 1
+	check(stale == 0, "Every cached place matches a fresh computation (%d stale)" % stale)
+	var before_growth: Vector2 = web.node_position(ids[0])
+	web.size = Vector2(960, 960)
+	web._place()
+	check(web.node_position(ids[0]) != before_growth, "Growing the panel lays the graph out again")
+	check(web.node_position(ids[0]) == web._compute_position(ids[0]), "The places after a resize are the new ones")
 	web.queue_free()
 	await process_frame
 	page.queue_free()

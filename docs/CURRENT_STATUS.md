@@ -1,3 +1,24 @@
+## Polish pass: a broken check, and 14 ms a frame off the memory core - September 18, 2026
+
+1. Swept the suites for real faults rather than guessing at polish. performance-diagnostics, save,
+   companions and crew pass clean (27 crew tests, soak budget at mean 0.99 ms per frame). The ui
+   subsystem turned up one failure.
+2. test_learning_ui was looking for the run's outcome inside the report prose, where it no longer
+   is: the report page rework moved it to its own line under the heading. The page was right and
+   the check was stale, so the check now reads the outcome label. My own regression from earlier
+   today, missed because I ran the workspace and overlay tests after that change but not this one.
+3. The memory core was recomputing its entire layout from the dependency tree several times per
+   node per frame - node depth by recursion, the dendrite side by scanning and sorting the lobe,
+   for every node, every link end, every name and every lobe caption. Measured at 3.445 ms per
+   pass over 56 memories, about 13.8 ms of a frame at the four passes a draw makes. That is most
+   of a 60 Hz frame spent on a graph that does not move.
+4. Depth and side are fixed by the tree and are cached for the life of the page; places are laid
+   out once and dropped whenever the panel resizes. The same pass now measures 0.130 ms, about
+   0.5 ms of a frame - 26 times cheaper - and the graph draws the same.
+5. Checked: every cached place equals a fresh computation for all 56 memories, and growing the
+   panel to 960 lays them out again and matches. test_research_tree carries both checks now, and
+   passes along with test_learning_ui.
+
 ## Five new music tracks - September 18, 2026
 
 1. The owner added Deep Ocean, Oceanic Drift, Silence, Sonar Pressure and Station Pulse as 48 kHz

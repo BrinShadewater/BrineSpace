@@ -21,6 +21,14 @@ var hover_text: RichTextLabel
 var hovered := ""
 # Rectangles already written this frame, so a name can step aside instead of landing on one.
 var label_rects: Array[Rect2] = []
+# The graph's shape never changes while the page is open, but every node, link end, name and lobe
+# caption used to work it out again from the dependency tree, several times a node per frame. At 56
+# memories that measured 3.4 ms a pass and about 14 ms a frame - more than a 60 Hz frame allows.
+# Depth and side are fixed by the tree; positions only move when the control resizes.
+var depth_cache := {}
+var side_cache := {}
+var position_cache := {}
+var layout_size := Vector2.ZERO
 var pulses: Array = []
 var clock := 0.0
 
@@ -108,15 +116,23 @@ func node_lean(id: String) -> float:
 # Rings out from the core follow the dependency chain, not the tier number: a node sits one ring
 # past the furthest node it needs.
 func node_depth(id: String) -> int:
+	if depth_cache.has(id): return int(depth_cache[id])
 	var deepest := -1
 	for needed in Research.requirements(id):
 		deepest = maxi(deepest, node_depth(str(needed)))
+	depth_cache[id] = deepest + 1
 	return deepest + 1
 
 # Which dendrite a memory belongs to: walk back along its requirements until the step that left the
 # root, and take that step's place among the root's children. A dendrite therefore keeps to one
 # side of its lobe the whole way out, and its keystone never crosses its neighbour's.
 func dendrite_side(id: String) -> int:
+	if side_cache.has(id): return int(side_cache[id])
+	var found := _find_dendrite_side(id)
+	side_cache[id] = found
+	return found
+
+func _find_dendrite_side(id: String) -> int:
 	var branch := str(Research.PERKS[id].branch)
 	var walker := id
 	var guard := 0
@@ -141,7 +157,21 @@ func depth_row(branch: String, depth: int) -> Array:
 		if node_depth(id) == depth: row.append(id)
 	return row
 
+# Drops the laid-out places; depth and side come from the tree and never change.
+func invalidate_layout() -> void:
+	position_cache.clear()
+	layout_size = Vector2.ZERO
+
 func node_position(id: String) -> Vector2:
+	if layout_size != size or not position_cache.has(id):
+		layout_size = size
+		position_cache.clear()
+		for branch in Research.BRANCHES:
+			for other in Research.perks_in(branch.id):
+				position_cache[other] = _compute_position(other)
+	return position_cache.get(id, center())
+
+func _compute_position(id: String) -> Vector2:
 	var perk: Dictionary = Research.PERKS[id]
 	var index := 0
 	for i in range(Research.BRANCHES.size()):
@@ -167,6 +197,8 @@ func node_position(id: String) -> Vector2:
 	return center() + spoke * ring + spoke.rotated(PI * 0.5) * across
 
 func _place() -> void:
+	# A resize moves every node, so the laid-out places go with it.
+	invalidate_layout()
 	for id in buttons:
 		var node: Button = buttons[id]
 		node.position = node_position(id) - node.size * 0.5
