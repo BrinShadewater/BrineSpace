@@ -83,6 +83,22 @@ static func draw_fixtures(canvas: CanvasItem, level: float, white := false, warm
 		if settings.has("color"): lens=Color(settings.color)
 		canvas.draw_rect(Rect2(anchor-Vector2(6.5,1),Vector2(13,2)),Color("34484b").lerp(lens,energy))
 
+# Rounded, anti-aliased footprints for the contact bands. Styleboxes are cached by colour and
+# radius: a room redraws these every frame and a fresh StyleBoxFlat per prop per band is waste.
+static var _contact_boxes := {}
+
+static func _contact_box(shade: Color, radius: float) -> StyleBoxFlat:
+	var key := "%s/%d" % [shade.to_html(), int(round(radius))]
+	if _contact_boxes.has(key): return _contact_boxes[key]
+	var box := StyleBoxFlat.new()
+	box.bg_color = shade
+	box.set_corner_radius_all(int(round(radius)))
+	box.corner_detail = 6
+	box.anti_aliasing = true
+	box.anti_aliasing_size = 1.0
+	_contact_boxes[key] = box
+	return box
+
 ## Footprint-based contact shadows; drawn on the deck before machinery and crew.
 static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: float, view = null) -> void:
 	# Recessed perimeter: narrow ambient contact shade, no extra room-wide dimming.
@@ -110,11 +126,15 @@ static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: floa
 				canvas.draw_colored_polygon(clipped,Color(0.015,0.025,0.04,(0.018+0.012*level)))
 		# Concentric contact bands touch every edge instead of forming an offset
 		# dark mat below the object. Keep a stronger core and a restrained fringe.
+		# The bands are rounded and edge-smoothed: square corners under round and irregular
+		# machinery read as a jagged mat rather than a shadow (owner playtest note 15).
 		for band in range(3):
 			var spread := float(3-band)*0.7
 			var shade := rect.grow(spread)
 			shade=shade.intersection(Rect2(-180,-180,360,360))
-			if shade.has_area(): canvas.draw_rect(shade,Color(0.015,0.025,0.03,(0.025+float(band)*0.018)*(0.8+0.2*level)))
+			if shade.has_area():
+				_contact_box(Color(0.015,0.025,0.03,(0.025+float(band)*0.018)*(0.8+0.2*level)),
+					minf(minf(shade.size.x,shade.size.y)*0.22,10.0)).draw(canvas.get_canvas_item(),shade)
 
 static func riser_edits(edits: Dictionary) -> Dictionary:
 	# Promote saved low-mount offsets before studio defaults can mask them.

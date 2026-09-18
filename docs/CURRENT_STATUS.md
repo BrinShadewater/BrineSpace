@@ -1,3 +1,17 @@
+## Rounded contact shadows under equipment - September 17, 2026
+
+1. Note 15: the contact bands under machinery were square-cornered rectangles drawn with hard
+   edges, which reads as a jagged mat under round or irregular equipment rather than a shadow.
+   The three bands are now rounded and edge-smoothed, drawn through a cached StyleBoxFlat per
+   colour and radius so a room redrawing every frame does not allocate one per prop per band.
+2. The corner radius follows the footprint (up to 10 units), so small fittings stay tight and
+   large installations get a softer mat. Colours, alphas and the projected directional shade are
+   unchanged.
+3. Checked: test_soak_budget passes at mean 0.98 ms per frame with worst 13.7 ms, and
+   test_embedded_geometry passes its 188 room/rotation cases. A throwaway probe rendered the bands
+   against a flat deck with the contrast amplified: the square stepped corner becomes a rounded,
+   feathered one.
+
 ## Fanned card art sharpening, and what did not work for notes 14 and 15 - September 17, 2026
 
 1. Note 14, the jagged half: a turned card samples its room art off the pixel grid, and nearest
