@@ -76,7 +76,7 @@ func run() -> void:
 		tabs.current_tab = 1
 		for i in range(3): await process_frame
 		check(page.find_child("BlueprintShop", true, false) != null, "Blueprints tab lists rooms")
-		var card: Control = page.find_child(linked, true, false)
+		var card: Control = page.find_child("Blueprint_" + linked, true, false)
 		if card != null:
 			var buy: Button = card.find_child("Buy", true, false)
 			var before := Research.available(meta)

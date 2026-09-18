@@ -21,7 +21,7 @@ static var invert_zoom := false
 static var tooltip_delay := 0.5
 static var text_scale := 1.0
 static var window_focused := true
-const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Admin view": KEY_F3, "Placement guides": KEY_V}
+const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V}
 static var keys: Dictionary = DEFAULT_KEYS.duplicate()
 
 static func pressed(event: InputEvent, action: String) -> bool:

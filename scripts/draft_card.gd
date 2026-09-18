@@ -19,7 +19,7 @@ static func build(game, id: String) -> PanelContainer:
 	var room: Dictionary = RoomDatabase.get_room(id)
 	var cost: Dictionary = room.get("cost", {})
 	var affordable: bool = game._can_afford(cost)
-	var category_color: Color = RoomDatabase.category_color(room["category"])
+	var category_color: Color = RoomDatabase.room_color(str(room["id"]))
 	var card := PanelContainer.new()
 	card.name = "%sCard" % id
 	card.size = CARD_SIZE

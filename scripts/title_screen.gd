@@ -38,10 +38,7 @@ func _ready() -> void:
 	preload("res://scripts/station_music.gd").ensure(self)
 	get_window().min_size = Vector2i(960, 540)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	var font := SystemFont.new()
-	font.font_names = PackedStringArray(["Cascadia Mono", "Consolas", "Lucida Console"])
-	var ui_theme := Theme.new()
-	ui_theme.default_font = font
+	var ui_theme := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
 	theme = ui_theme
 	var background := ColorRect.new()
 	background.color = Color("07151f")

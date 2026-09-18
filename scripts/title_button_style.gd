@@ -73,11 +73,7 @@ static func _collect_focus(node: Node, controls: Array[Control]) -> void:
 	for child in node.get_children():
 		_collect_focus(child, controls)
 static func menu_theme() -> Theme:
-	var font := SystemFont.new()
-	font.font_names = PackedStringArray(["Cascadia Mono", "Consolas", "Lucida Console"])
-	var result := Theme.new()
-	result.default_font = font
-	result.default_font_size = 17
+	var result := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
 	result.set_stylebox("focus", "RichTextLabel", _flat("102b38", "86d9df", 8))
 	result.set_stylebox("focus", "ScrollContainer", _flat("102b38", "86d9df", 2))
 	result.set_stylebox("normal", "LineEdit", _flat("0a1c28", "416577", 14))
@@ -170,7 +166,16 @@ static func panel(width: int, height: int, state: String, primary: bool = false)
 	style.content_margin_bottom = 12
 	return style
 
+# A clicked button keeps focus, which left a white ring around the last thing pressed (owner
+# playtest, Sept 17). The ring belongs to keyboard navigation, so a mouse press drops focus.
+static func drop_focus_on_click(button: BaseButton) -> void:
+	button.gui_input.connect(func(event: InputEvent) -> void:
+		if event is InputEventMouseButton and event.pressed:
+			set_keyboard_navigation(false)
+			button.release_focus.call_deferred())
+
 static func apply(button: Button, width: int, height: int, primary: bool = false) -> void:
+	drop_focus_on_click(button)
 	# Menu buttons stay about half their column's width instead of stretching across it (owner
 	# playtest, Sept 17: settings buttons spanned ~30% of a 2560 screen). A button that asks to
 	# fill keeps doing so; captions still size the button up when they need more room.

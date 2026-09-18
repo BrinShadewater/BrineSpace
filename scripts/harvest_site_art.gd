@@ -33,7 +33,6 @@ func draw_site(canvas: CanvasItem, site: Dictionary, center: Vector2, size: floa
 		canvas.draw_line(at,at+Vector2(-side*0.09,0)*size,color,1.0)
 		canvas.draw_line(at,at+Vector2(0,0.09)*size,color,1.0)
 	if selected:
-		canvas.draw_rect(Rect2(center-Vector2.ONE*size*0.46,Vector2.ONE*size*0.92),color,false,1.5)
 		var text := "DEPLETED" if pieces==0 else "%d LOADS" % site.units
 		canvas.draw_string(ThemeDB.fallback_font,center+Vector2(-0.35,0.42)*size,text,HORIZONTAL_ALIGNMENT_CENTER,size*0.7,maxi(9,roundi(size*0.085)),color)
 

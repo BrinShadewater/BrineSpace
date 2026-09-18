@@ -8,10 +8,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	var backdrop := ColorRect.new()
 	backdrop.color = Color("07151f")
-	var font := SystemFont.new()
-	font.font_names = PackedStringArray(["Cascadia Mono","Consolas","Lucida Console"])
-	var ui_theme := Theme.new()
-	ui_theme.default_font = font
+	var ui_theme := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
 	ui_theme.default_font_size = 16
 	backdrop.theme = ui_theme
 	backdrop.mouse_filter = Control.MOUSE_FILTER_STOP

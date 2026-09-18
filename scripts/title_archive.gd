@@ -35,6 +35,7 @@ var codex_sort_index := 0
 var codex_sort: OptionButton
 const SORTS := ["SORT: COLOUR", "SORT: RARITY", "SORT: NAME", "SORT: BUILD COST"]
 const CARD_WIDTH := 270
+const CARDS_PER_ROW := 4
 const SYNERGY_WIDTH := 470
 var progression_cards: GridContainer
 var progression_tab := 0
@@ -226,11 +227,12 @@ func _layout() -> void:
 	if is_instance_valid(grid):
 		var scale: float = preload("res://scripts/title_settings.gd").text_scale
 		var cell := (CARD_WIDTH + 18) if codex_tab == 0 else (SYNERGY_WIDTH + 18)
-		grid.columns = maxi(1, int((size.x - 140) / (cell * scale))) if mode == "codex" and codex_tab != 2 else 1
-		# Fixed-width cards sit centred rather than stretching across the page.
-		grid.size_flags_horizontal = Control.SIZE_SHRINK_CENTER if mode == "codex" and codex_tab != 2 else Control.SIZE_EXPAND_FILL
+		var fits := maxi(1, int((size.x - 140) / (cell * scale)))
+		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else 2, fits) if mode == "codex" and codex_tab != 2 else 1
+		grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if is_instance_valid(progression_cards):
-		progression_cards.columns = 3 if size.x >= 1500 else (2 if size.x >= 1000 else 1)
+		var wide: int = CARDS_PER_ROW if progression_cards.name == "BlueprintShop" else 3
+		progression_cards.columns = maxi(1, mini(wide, int((size.x - 460) / 300)))
 
 func _populate_cards() -> void:
 	scroll.scroll_vertical = 0
@@ -292,7 +294,7 @@ func _populate_cards() -> void:
 		var data: Dictionary = entry.data
 		var accent := Color("45616f")
 		if entry.known:
-			accent = Rooms.CATEGORY_COLORS.get(entry.category, Color(data.get("fx_color", "72d9dc")))
+			accent = Rooms.room_color(str(entry.id))
 		var panel := PanelContainer.new()
 		panel.custom_minimum_size = Vector2(290, 0)
 		panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -405,11 +407,11 @@ func _room_order(a: Dictionary, b: Dictionary) -> bool:
 func _codex_room_card(entry: Dictionary) -> Control:
 	var data: Dictionary = entry.data
 	var known: bool = entry.known
-	var accent: Color = Rooms.CATEGORY_COLORS.get(entry.category, Color("72d9dc")) if known else Color("45616f")
+	var accent: Color = Rooms.room_color(str(entry.id)) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexCard_" + str(entry.id)
 	card.custom_minimum_size = Vector2(CARD_WIDTH, 0)
-	card.size_flags_horizontal = Control.SIZE_FILL
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 3, 14, 10))
 	var body := VBoxContainer.new()
@@ -437,10 +439,10 @@ func _codex_room_card(entry: Dictionary) -> Control:
 		body.add_child(_label("CLUE // " + str(entry.clue), 16))
 		return card
 	var art := PanelContainer.new()
-	art.custom_minimum_size.y = 220
+	art.custom_minimum_size.y = 200
 	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
 	body.add_child(art)
-	var picture := _room_picture(entry.id, 216)
+	var picture := _room_picture(entry.id, 196)
 	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	var clip := Control.new()
 	clip.clip_contents = true
@@ -555,7 +557,7 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 # A small room card for synergy pairs: title, the whole-room picture and the department ribbon.
 func _mini_room_card(room_id: String, known: bool) -> Control:
 	var room: Dictionary = Rooms.get_room(room_id)
-	var accent: Color = Rooms.CATEGORY_COLORS.get(str(room.get("category", "")), Color("72d9dc")) if known else Color("45616f")
+	var accent: Color = Rooms.room_color(room_id) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "Card_" + room_id
 	card.custom_minimum_size = Vector2(200, 0)
@@ -717,51 +719,58 @@ func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 func _blueprint_shop() -> void:
 	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Stabilizing a room's related pattern halves its price.", 17))
 	var cards := _shop_grid("BlueprintShop")
-	var rooms: Dictionary = Rooms.all_rooms()
 	for id in MetaShop.blueprint_ids():
-		var room: Dictionary = rooms[id]
 		var state := MetaShop.room_state(meta_state, id)
 		var cost := MetaShop.room_cost(meta_state, id)
-		var accent: Color = Rooms.category_color(str(room.category))
-		var parts := _shop_card(id, accent, state == "owned")
-		var rows: VBoxContainer = parts[1]
-		rows.add_child(_room_picture(id, 110))
-		var title := _label(str(room.display_name).to_upper(), 17)
-		title.add_theme_color_override("font_color", Color("e6f4f2") if state != "short" else Color("9fb6bd"))
-		rows.add_child(title)
-		rows.add_child(_rich("[color=#8fa3ae]%s · %s[/color]" % [str(room.rarity).to_upper(), str(room.category).to_upper()], 13))
-		if not room.get("production", {}).is_empty():
-			rows.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  +%s" % ResourceIcons.bbcode(room.production), 13))
+		var room_id: String = id
+		var card := _codex_room_card({"id": id, "known": true, "title": str(Rooms.get_room(id).display_name), "category": str(Rooms.get_room(id).category), "clue": "", "data": Rooms.get_room(id)})
+		card.name = "Blueprint_" + id
+		var rows: VBoxContainer = card.get_child(0)
 		var pattern := MetaShop.related_pattern(id)
 		if not pattern.is_empty() and state != "owned":
 			var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
 			rows.add_child(_label(("HALF PRICE // %s stabilized" if half else "Stabilize %s for half price") % (str(pattern.name) if meta_state.discovered_synergy_ids.has(pattern.id) else "its hidden pattern"), 13))
-		var room_id: String = id
-		parts[1].add_child(_shop_button({"owned": "IN YOUR DECK", "ready": "BUY  ·  %d DATA" % cost, "short": "NEEDS %d DATA" % cost}[state], state == "ready", func() -> void:
+		rows.add_child(_shop_button({"owned": "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost}[state], state == "ready", func() -> void:
 			if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
-		cards.add_child(parts[0])
+		cards.add_child(card)
 
 # Crew & companions: met during a loop (thawed or rebooted), then bought for future loops.
 func _crew_shop() -> void:
 	grid.add_child(_label("Thaw a crew member or reboot a companion during a loop and they play for the rest of it. Buy them here to bring them into future loops.", 17))
 	var cards := _shop_grid("CrewShop")
-	for id in MetaShop.CHARACTER_COSTS:
+	for id in MetaShop.ROSTER:
 		var state := MetaShop.character_state(meta_state, id)
-		var cost := int(MetaShop.CHARACTER_COSTS[id])
-		var companion: bool = id in MetaShop.COMPANIONS
-		var parts := _shop_card(id, Color("b48ad8") if companion else Color("d8913f"), state == "owned")
-		var rows: VBoxContainer = parts[1]
+		var owned: bool = state == "owned"
 		var met: bool = state != "unmet"
+		var accent := Color(MetaShop.CHARACTER_COLORS.get(id, "#9fb8c0"))
+		var parts := _shop_card(id, accent, owned)
+		var rows: VBoxContainer = parts[1]
+		# Portraits, dimmed almost to nothing for a character you have not met yet.
+		var portrait := TextureRect.new()
+		portrait.custom_minimum_size.y = 190
+		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		portrait.texture = MetaShop.portrait(id)
+		portrait.modulate = Color(1, 1, 1, 1) if met else Color(0.45, 0.55, 0.6, 0.18)
+		rows.add_child(portrait)
 		var title := _label(str(MetaShop.CHARACTER_NAMES[id]).to_upper() if met else "UNKNOWN SIGNAL", 18)
+		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		title.add_theme_color_override("font_color", Color("e6f4f2") if met else Color("7a959e"))
+		title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 6, 6))
 		rows.add_child(title)
-		rows.add_child(_rich("[color=#8fa3ae]%s[/color]" % ("COMPANION" if companion else "CREW"), 13))
-		var perk: String = "" if companion else str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
+		var ribbon := _label(str(MetaShop.CHARACTER_CLASSES.get(id, "CREW")), 12)
+		ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
+		ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+		rows.add_child(ribbon)
+		var perk: String = str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
 		if met and not perk.is_empty(): rows.add_child(_rich(ResourceIcons.decorate(perk), 14))
 		if not met:
-			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if companion else "cryo ward"), 14))
+			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 14))
 		var character_id: String = id
-		rows.add_child(_shop_button({"owned": "OWNED", "ready": "BUY  ·  %d DATA" % cost, "short": "NEEDS %d DATA" % cost, "unmet": "NOT MET YET"}[state], state == "ready", func() -> void:
+		var cost := int(MetaShop.CHARACTER_COSTS.get(id, 0))
+		rows.add_child(_shop_button({"owned": "ABOARD" if id in MetaShop.ALWAYS_ABOARD else "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost, "unmet": "NOT MET YET"}[state], state == "ready", func() -> void:
 			if MetaShop.buy_character(meta_state, character_id): _refresh_progression(character_id)))
 		cards.add_child(parts[0])
 
@@ -858,7 +867,7 @@ func _show_perk(id: String) -> void:
 	perk_detail.add_child(status_label)
 	var action := Button.new()
 	action.name = "Buy"
-	action.text = {"owned": "OWNED", "ready": "UNLOCK  ·  %d DATA" % int(perk.cost), "short": "NEEDS %d DATA" % int(perk.cost), "locked": "LOCKED  ·  %d DATA" % int(perk.cost)}[state]
+	action.text = {"owned": "OWNED", "ready": "%d DATA" % int(perk.cost), "short": "%d DATA" % int(perk.cost), "locked": "LOCKED  ·  %d DATA" % int(perk.cost)}[state]
 	action.disabled = state != "ready"
 	preload("res://scripts/title_button_style.gd").apply(action, 300, 50)
 	action.custom_minimum_size = Vector2(300, 50)

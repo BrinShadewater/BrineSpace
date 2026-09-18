@@ -274,7 +274,7 @@ func _test_run_summary_names_new_progression_events() -> void:
 	game._show_reboot_summary("Test run complete.")
 	_expect_true(game.summary_text.text.contains("Patterns discovered: Closed Air Loop"), "summary should name recipes discovered this run")
 	_expect_true(game.summary_text.text.contains("Patterns stabilized: Closed Air Loop"), "summary should name recipes stabilized this run")
-	_expect_true(game.summary_text.text.contains("Archived Data banked"), "summary should report Archived Data banked")
+	_expect_true(game.summary_text.text.contains("Archived Data") and game.summary_text.text.contains("banked"), "summary should report Archived Data banked")
 	game.summary_text.free()
 	game.summary_title_label.free()
 	game.summary_layer.free()

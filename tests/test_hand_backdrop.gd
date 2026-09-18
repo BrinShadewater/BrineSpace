@@ -43,11 +43,11 @@ func run() -> void:
 	for label in game.hand_chrome: check(not label.visible, "Hand title, count and hints hide")
 	check(game.reroll_button.is_visible_in_tree(), "Reroll button stays")
 	var cards := 0
-	var pile := false
 	for child in game.hand_box.get_children():
-		if child.name == "DeckSlot": pile = child.is_visible_in_tree() and child.has_node("DrawPile") and child.has_node("DiscardPile")
-		elif child.is_visible_in_tree(): cards += 1
-	check(cards > 0 and pile, "Cards and the draw/discard pile stay: %d cards" % cards)
+		# The draw and discard piles were removed on Sept 17: they showed counts nobody could act on.
+		check(child.name != "DeckSlot", "The draw and discard piles are gone")
+		if child.is_visible_in_tree(): cards += 1
+	check(cards > 0, "Cards stay: %d cards" % cards)
 	check(game.hand_panel.get_theme_stylebox("panel") is StyleBoxEmpty, "Backdrop panel is hidden")
 	# The station frame keeps its own bottom margin inside the screen edge.
 	check(game.grid_scroll.get_global_rect().end.y >= hand.end.y - 24, "Station view runs behind the hand: view ends %.0f, hand ends %.0f" % [game.grid_scroll.get_global_rect().end.y, hand.end.y])

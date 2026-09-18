@@ -23,6 +23,9 @@ const REROLL_RECOVERY_CYCLES := 4
 const REROLL_RECOVERY_CAP := 3
 const DEFAULT_GRID_ZOOM := 0.855
 const MIN_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.02
+# Closest the camera comes to the station: a quarter less than it used to (owner playtest,
+# Sept 17). The starting zoom is unchanged.
+const MAX_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.75
 const UI_ACCENT := Color("#2d7f6b")
 const UI_ACCENT_BRIGHT := Color("#4fa38d")
 const UI_ACCENT_DARK := Color("#0d2f2b")
@@ -396,10 +399,8 @@ func _configure_window_scaling() -> void:
 	window.min_size = Vector2i(960, 540)
 
 func _apply_ui_font() -> void:
-	var font := SystemFont.new()
-	font.font_names = PackedStringArray(["Cascadia Mono", "Consolas", "Lucida Console"])
-	font.font_weight = 500
-	var ui_theme := Theme.new()
+	var font := preload("res://scripts/ui_fonts.gd").interface_font()
+	var ui_theme := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
 	ui_theme.default_font = font
 	ui_theme.default_font_size = 14
 	theme = ui_theme
@@ -573,9 +574,7 @@ func _build_ui() -> void:
 	placement_feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	placement_feedback.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	placement_feedback.add_theme_font_size_override("font_size",17)
-	var feedback_font := SystemFont.new()
-	feedback_font.font_names = PackedStringArray(["Segoe UI","Arial","sans-serif"])
-	placement_feedback.add_theme_font_override("font",feedback_font)
+	placement_feedback.add_theme_font_override("font",preload("res://scripts/ui_fonts.gd").interface_medium())
 	var feedback_style := StyleBoxFlat.new()
 	feedback_style.bg_color = Color(0.025,0.07,0.09,0.96)
 	feedback_style.set_content_margin_all(12)
@@ -670,25 +669,12 @@ func _build_ui() -> void:
 	viewport_tools.offset_bottom = 58
 	viewport_tools.add_theme_constant_override("separation", 10)
 	middle.add_child(viewport_tools)
-	var find_button := Button.new()
-	find_button.name = "FindRoomButton"
-	find_button.text = "FIND ROOM"
-	find_button.tooltip_text = "Search installed rooms by name, type or problem · Ctrl+F"
-	find_button.pressed.connect(_open_station_search)
-	_style_hud_button(find_button,false)
-	viewport_tools.add_child(find_button)
 	var recenter_button := Button.new()
-	recenter_button.text = "FIT STATION [F]"
-	recenter_button.set_meta("key_hint", "FIT STATION [{Fit station}]")
+	recenter_button.text = "RECENTER [F]"
+	recenter_button.set_meta("key_hint", "RECENTER [{Fit station}]")
 	recenter_button.pressed.connect(_fit_station_view.bind(true))
 	_style_hud_button(recenter_button, false)
 	viewport_tools.add_child(recenter_button)
-	var view_button := Button.new()
-	view_button.text = "■ NORMAL VIEW"
-	view_button.pressed.connect(_toggle_admin_view_button)
-	_style_hud_button(view_button, false)
-	viewport_tools.add_child(view_button)
-	view_mode_button = view_button
 
 	var side_scroll := ScrollContainer.new()
 	side_scroll.name = "SideScroll"
@@ -763,10 +749,7 @@ func _build_ui() -> void:
 	var inspector_style: StyleBox = inspector_panel.get_theme_stylebox("panel").duplicate()
 	inspector_style.set_content_margin_all(14)
 	inspector_panel.add_theme_stylebox_override("panel", inspector_style)
-	var reading_font := SystemFont.new()
-	reading_font.font_names = PackedStringArray(["Segoe UI", "Arial", "sans-serif"])
-	var reading_theme := Theme.new()
-	reading_theme.default_font = reading_font
+	var reading_theme := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
 	inspector_panel.theme = reading_theme
 	var preview_box := VBoxContainer.new()
 	preview_box.add_theme_constant_override("separation", 8)
@@ -839,20 +822,26 @@ func _build_ui() -> void:
 	inspector_label = inspector_text
 	side.sort_children.connect(_fit_sidebar_inspector.bind(side_scroll, side, inspector_panel))
 	side_scroll.resized.connect(side.queue_sort)
+	var switch_row := HBoxContainer.new()
+	switch_row.name = "RoomSwitches"
+	switch_row.add_theme_constant_override("separation", 10)
+	preview_box.add_child(switch_row)
 	room_operation_button = preload("res://scripts/industrial_room_switch.gd").new()
 	room_operation_button.text = "SELECT A BUILT ROOM TO CONTROL"
-	room_operation_button.custom_minimum_size.y = 34
+	room_operation_button.custom_minimum_size = Vector2(170, 34)
+	room_operation_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	room_operation_button.pressed.connect(_toggle_inspected_room)
-	_style_hud_button(room_operation_button, false)
-	preview_box.add_child(room_operation_button)
+	_style_switch_button(room_operation_button)
+	switch_row.add_child(room_operation_button)
 	# Per-room watertight lock (owner call, Sept 16): sealed doors stop flood water in and out.
 	room_lock_button = preload("res://scripts/industrial_room_switch.gd").new()
 	room_lock_button.name = "RoomLockSwitch"
 	room_lock_button.custom_minimum_size.y = 34
+	room_lock_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	room_lock_button.pressed.connect(_toggle_inspected_room_lock)
-	_style_hud_button(room_lock_button, false)
+	_style_switch_button(room_lock_button)
 	room_lock_button.hide()
-	preview_box.add_child(room_lock_button)
+	switch_row.add_child(room_lock_button)
 	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
 	airlock_panel.game=self
 	preview_box.add_child(airlock_panel)
@@ -951,7 +940,7 @@ func _build_ui() -> void:
 	zoom_row.add_child(zoom_title)
 	var zoom_control := HSlider.new()
 	zoom_control.min_value = MIN_GRID_ZOOM / DEFAULT_GRID_ZOOM
-	zoom_control.max_value = 1.0
+	zoom_control.max_value = MAX_GRID_ZOOM / DEFAULT_GRID_ZOOM
 	zoom_control.step = 0.01
 	zoom_control.value = grid_zoom / DEFAULT_GRID_ZOOM
 	zoom_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -973,7 +962,7 @@ func _build_ui() -> void:
 	cycle_counter_label = solar_title
 	solar_title.tooltip_text = "Time remaining until the next automatic cycle."
 	solar_title.custom_minimum_size = Vector2(66, 0)
-	solar_title.add_theme_color_override("font_color", Color("#8fa3ae"))
+	solar_title.add_theme_color_override("font_color", Color("#eef6f8"))
 	solar_row.add_child(solar_title)
 	var solar_bar := ProgressBar.new()
 	solar_bar.min_value = 0
@@ -1137,7 +1126,7 @@ func _build_ui() -> void:
 	summary_vbox.add_theme_constant_override("separation", 12)
 	summary.add_child(summary_vbox)
 	var summary_title := Label.new()
-	summary_title.text = "Reboot Summary"
+	summary_title.text = "Loop Report"
 	summary_title.add_theme_font_size_override("font_size", 24)
 	summary_vbox.add_child(summary_title)
 	summary_title_label = summary_title
@@ -1163,15 +1152,14 @@ func _build_ui() -> void:
 	continue_expedition_button.text = "CONTINUE EXPEDITION · KEEP EXPERIMENTING"
 	continue_expedition_button.custom_minimum_size.y = 44
 	continue_expedition_button.pressed.connect(_continue_expedition)
-	preload("res://scripts/title_button_style.gd").apply(continue_expedition_button, 740, 52, true)
+	preload("res://scripts/title_button_style.gd").apply(continue_expedition_button, 380, 50, true)
 	summary_vbox.add_child(continue_expedition_button)
 	var reboot_button := Button.new()
 	reboot_button.text = "Start New Reboot Cycle"
 	reboot_button.custom_minimum_size.y = 40
-	preload("res://scripts/title_button_style.gd").apply(reboot_button, 740, 52)
+	preload("res://scripts/title_button_style.gd").apply(reboot_button, 380, 50)
 	reboot_button.pressed.connect(_choose_restart_architect)
 	summary_vbox.add_child(reboot_button)
-	_add_menu_button(summary_vbox, "Settings", _open_overlay_settings)
 	_add_menu_button(summary_vbox, "Review Discoveries", _review_latest_discovery)
 	summary_layer.set_meta("default_button", reboot_button)
 	_add_menu_button(summary_vbox, "Return to Title", _menu_return_title)
@@ -1314,6 +1302,14 @@ func _apply_panel_style(panel: PanelContainer, bg_color := Color(0.035, 0.055, 0
 		style.content_margin_bottom = 24
 	panel.add_theme_stylebox_override("panel", style)
 
+# The room switches draw their own housing, so they get no button panel behind them.
+func _style_switch_button(button: BaseButton) -> void:
+	for state in ["normal", "hover", "pressed", "focus", "disabled"]:
+		button.add_theme_stylebox_override(state, StyleBoxEmpty.new())
+	button.add_theme_color_override("font_color", Color("#abc5ca"))
+	button.add_theme_font_size_override("font_size", 14)
+	preload("res://scripts/title_button_style.gd").drop_focus_on_click(button)
+
 func _style_hud_button(button: BaseButton, active := false) -> void:
 	var normal_style := _make_texture_stylebox(UI_TERMINAL_BUTTON_NORMAL, 12, 14, 14, 7, 7)
 	var hover_style := _make_texture_stylebox(UI_TERMINAL_BUTTON_HOVER, 12, 14, 14, 7, 7)
@@ -1330,6 +1326,7 @@ func _style_hud_button(button: BaseButton, active := false) -> void:
 	button.add_theme_font_size_override("font_size", 14)
 
 	button.add_theme_stylebox_override("focus", preload("res://scripts/title_button_style.gd").panel(100, 40, "focus"))
+	preload("res://scripts/title_button_style.gd").drop_focus_on_click(button)
 	button.add_theme_color_override("font_disabled_color", Color("#637f89"))
 
 func _panel_texture_for(panel: PanelContainer) -> String:
@@ -1925,18 +1922,13 @@ func _build_menu_overlay() -> void:
 	var primary: VBoxContainer = pause_pages.main
 	_add_menu_button(primary, "Resume Cycle", _close_menu)
 	_add_menu_button(primary, "Save Game", _menu_save_game)
-	_add_menu_button(primary,"Crew Comms",func(): _close_menu(); crew_comms.reopen())
-	_add_menu_button(primary, "Recenter Station", _menu_recenter_station)
-	_add_menu_button(primary, "Replay First-loop Guide", _replay_guide)
+	_add_menu_button(primary, "Settings", _open_shared_menu.bind("settings"))
 	_add_menu_button(primary, "Station & Archives", _show_pause_page.bind("station"))
 	_add_menu_button(primary, "End or Leave Loop", _show_pause_page.bind("exit"))
 	var station: VBoxContainer = pause_pages.station
-	_add_menu_button(station, "Settings", _open_shared_menu.bind("settings"))
 	_add_menu_button(station, "Codex", _open_shared_menu.bind("codex"))
 	_add_menu_button(station, "Meta Progression", _open_shared_menu.bind("progression"))
 	_add_menu_button(station, "Credits & Build", _open_shared_menu.bind("about"))
-	if OS.is_debug_build():
-		_add_menu_button(station, "Toggle Admin View", _menu_toggle_admin_view)
 	_add_menu_button(station, "Back", _pause_page_back)
 	var exits: VBoxContainer = pause_pages.exit
 	_add_menu_button(exits, "Save & Return to Title", _menu_return_title)
@@ -1986,8 +1978,10 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> void
 		"Station & Archives": "Settings, codex, research and credits.",
 		"End or Leave Loop": "Return to title, quit, restart or end the expedition."
 	}.get(text, "")
-	button.custom_minimum_size = Vector2(0, 50)
-	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# Menu and summary actions sit at a readable width instead of spanning the panel (owner
+	# playtest, Sept 17).
+	button.custom_minimum_size = Vector2(380, 50)
+	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	button.focus_mode = Control.FOCUS_ALL
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	button.pressed.connect(callable)
@@ -2157,7 +2151,7 @@ func _start_reboot_cycle() -> void:
 	_set_paused(true, false)
 	summary_layer.visible = false
 	if summary_title_label != null:
-		summary_title_label.text = "Reboot Summary"
+		summary_title_label.text = "Loop Report"
 	if cascade_toast_tween != null and cascade_toast_tween.is_valid():
 		cascade_toast_tween.kill()
 	toast_messages.clear()
@@ -3040,7 +3034,7 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	for id in meta.discovered_synergy_ids:
 		synergy_names.append(id.replace("_", " ").capitalize())
 	if summary_title_label != null:
-		summary_title_label.text = "Station Stabilized" if victory else ("Expedition Complete" if expedition_mode else "Reboot Summary")
+		summary_title_label.text = "Station Stabilized" if victory else ("Expedition Report" if expedition_mode else "Loop Report")
 	if continue_expedition_button != null:
 		continue_expedition_button.visible = victory and not expedition_mode
 	var discoveries := "Patterns discovered: %s\nPatterns stabilized: %s" % [
@@ -3226,7 +3220,7 @@ func _request_grid_zoom(value: float) -> void:
 		camera_zoom_center=_grid_view_center_ratio()
 		camera_center_target=Vector2.INF
 		camera_zoom_moving=false
-	camera_zoom_target=clampf(value,_minimum_map_zoom(),DEFAULT_GRID_ZOOM)
+	camera_zoom_target=clampf(value,_minimum_map_zoom(),MAX_GRID_ZOOM)
 
 func _update_camera_zoom(delta: float) -> void:
 	if camera_zoom_target<0.0: return
@@ -3259,7 +3253,7 @@ func _set_grid_zoom(value: float, update_slider := true, target_center := Vector
 	camera_view_revision += 1
 	camera_zoom_target=-1.0
 	var center_ratio := _grid_view_center_ratio() if target_center == Vector2.INF else target_center
-	grid_zoom = clampf(value, _minimum_map_zoom(), DEFAULT_GRID_ZOOM)
+	grid_zoom = clampf(value, _minimum_map_zoom(), MAX_GRID_ZOOM)
 	if update_slider and zoom_slider != null:
 		zoom_slider.set_value_no_signal(grid_zoom / DEFAULT_GRID_ZOOM)
 	_apply_grid_zoom()
@@ -3628,7 +3622,7 @@ func _fit_station_view(animated := false) -> void:
 		# station in one frame (~170 ms on a 50-room station).
 		if camera_zoom_target<0.0: camera_zoom_center=_grid_view_center_ratio()
 		camera_center_target=bounds.get_center()/float(GRID_SIZE)
-		camera_zoom_target=clampf(zoom,_minimum_map_zoom(),DEFAULT_GRID_ZOOM)
+		camera_zoom_target=clampf(zoom,_minimum_map_zoom(),MAX_GRID_ZOOM)
 		camera_zoom_moving=false
 		return
 	# Fit uses its destination immediately; preserving the old center first can
@@ -3690,7 +3684,8 @@ func _refresh_resources() -> void:
 # Integrity measures structure; the flooded-room count sits beside it so a flooded station never
 # reads as healthy (owner playtest: Integrity 100% with several rooms under water).
 func _refresh_integrity_chip() -> void:
-	var text := "INTEGRITY\n%d%%  %d FLOODED" % [resources["integrity"], preload("res://scripts/room_flooding.gd").flooded_count(placed_rooms)]
+	var flooded: int = preload("res://scripts/room_flooding.gd").flooded_count(placed_rooms)
+	var text := "INTEGRITY\n%d%%%s" % [resources["integrity"], "  %d FLOODED" % flooded if flooded > 0 else ""]
 	if resource_labels.has("integrity") and resource_labels["integrity"].text == text: return
 	var integrity_color := Color.WHITE
 	if resources["integrity"] < 10:
@@ -3943,7 +3938,7 @@ func _refresh_cards() -> void:
 		hand_box.add_child(card_slot)
 	if fan != null:
 		DraftCard.layout_fan(fan)
-	hand_box.add_child(DraftCard.build_piles(self))
+	# The draw and discard piles told the player nothing they could act on, so they are hidden.
 	if hand_layout_button != null:
 		hand_layout_button.text = "LAYOUT: FAN" if Preferences.hand_layout == "fan" else "LAYOUT: ROW"
 
@@ -4306,7 +4301,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_rotate_selected_room()
 		get_viewport().set_input_as_handled()
 		return
-	if Preferences.pressed(event, "Admin view") and OS.is_debug_build():
+	if false:
 		admin_mode = not admin_mode
 		_log("Admin topology overlay %s." % ("enabled" if admin_mode else "hidden"), false)
 		_refresh_all()
@@ -4874,7 +4869,7 @@ func _format_synergy_line(synergy: Dictionary) -> String:
 		var room := RoomDatabaseScript.get_room(id)
 		var color := "#607784"
 		if _has_room(id):
-			color = "#%s" % RoomDatabaseScript.category_color(room.get("category", "")).to_html(false)
+			color = "#%s" % RoomDatabaseScript.room_color(str(room.get("id", ""))).to_html(false)
 		var room_name := str(room.get("display_name", _prettify_id(id)))
 		if active:
 			room_name = "◆ %s" % room_name

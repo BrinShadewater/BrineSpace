@@ -171,7 +171,7 @@ func _set_source_faded(faded: bool) -> void:
 
 func _build_ghost() -> Control:
 	var room: Dictionary = game.RoomDatabaseScript.get_room(card_id)
-	var color: Color = game.RoomDatabaseScript.category_color(room["category"])
+	var color: Color = game.RoomDatabaseScript.room_color(str(room["id"]))
 	var panel := PanelContainer.new()
 	panel.name = "DragGhost"
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE

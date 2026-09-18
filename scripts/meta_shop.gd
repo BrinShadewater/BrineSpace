@@ -16,7 +16,15 @@ const ResearchTree = preload("res://scripts/research_tree.gd")
 const CURRENCY := "Archived Data"
 const ROOM_COSTS := {"common": 12, "uncommon": 20, "rare": 32}
 const CHARACTER_COSTS := {"veld": 30, "branforth": 30, "marsh": 40, "river": 20, "josh": 20, "margot": 25}
-const CHARACTER_NAMES := {"veld": "Dr. Veld", "branforth": "Chief Engineer Branforth", "marsh": "Marsh", "river": "River", "josh": "Josh", "margot": "Margot"}
+const CHARACTER_NAMES := {"brine": "BRINE", "bill": "Major Bill", "veld": "Dr. Veld", "branforth": "Chief Engineer Branforth", "marsh": "Marsh", "river": "River", "josh": "Josh", "margot": "Margot"}
+# The roster the Crew & Companions page shows, in order. BRINE and Bill are aboard from the
+# start (owner playtest, Sept 17), so they appear owned and cost nothing.
+const ROSTER := ["brine", "bill", "veld", "branforth", "marsh", "river", "josh", "margot"]
+const ALWAYS_ABOARD := ["brine", "bill"]
+# Class colours match the room departments: operations red, science blue, engineering yellow,
+# AI and robotics white, companions purple.
+const CHARACTER_COLORS := {"brine": "#e8eef0", "bill": "#d9534f", "veld": "#4f8fe6", "branforth": "#e6c84f", "marsh": "#e8eef0", "river": "#9c5de8", "josh": "#9c5de8", "margot": "#9c5de8"}
+const CHARACTER_CLASSES := {"brine": "STATION AI", "bill": "OPERATIONS", "veld": "SCIENCE & MEDICAL", "branforth": "ENGINEERING", "marsh": "AI & ROBOTICS", "river": "COMPANION", "josh": "COMPANION", "margot": "COMPANION"}
 const COMPANIONS := ["river", "josh", "margot"]
 const STABILIZE_DATA := 5
 
@@ -74,7 +82,17 @@ static func buy_room(meta, room_id: String) -> bool:
 	return true
 
 static func character_owned(meta, id: String) -> bool:
+	if id in ALWAYS_ABOARD: return true
 	return meta.unlocked_companion_ids.has(id) if id in COMPANIONS else meta.unlocked_architect_ids.has(id)
+
+# Portrait art for the roster; BRINE uses her comms portrait.
+static func portrait(id: String) -> Texture2D:
+	if id == "brine":
+		var image := Image.new()
+		if preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-comms-v14/portrait.png") != OK: return null
+		return ImageTexture.create_from_image(image)
+	if id in COMPANIONS: return preload("res://scripts/companions.gd").portrait(id)
+	return preload("res://scripts/architects.gd").selection_portrait(id)
 
 # "owned", "ready", "short" or "unmet" (thaw or reboot them during a loop first).
 static func character_state(meta, id: String) -> String:

@@ -89,7 +89,7 @@ static func _text(bbcode: String, font_size: int) -> RichTextLabel:
 
 static func _card(game, room_id: String) -> Control:
 	var room: Dictionary = Rooms.get_room(room_id)
-	var accent: Color = Rooms.category_color(str(room.get("category", "")))
+	var accent: Color = Rooms.room_color(room_id)
 	var frame := PanelContainer.new()
 	frame.name = "Card_" + room_id
 	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE

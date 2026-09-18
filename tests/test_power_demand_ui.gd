@@ -30,7 +30,7 @@ func run() -> void:
 	game._open_resource_details("power",game.grid_view)
 	for frame in range(10): await process_frame
 	assert(game.archive_label.text.contains("DRONE CHARGING"))
-	assert(game.archive_label.text.contains("POWER // NEXT CYCLE"))
+	assert(game.archive_label.text.contains("NEXT CYCLE")) # Resource words carry icon markup now.
 	assert(game.archive_label.text.contains("Generation:"))
 	assert(game.archive_label.text.contains("2 Power"))
 	assert(game.archive_label.text.contains("1 waiting"))
@@ -38,7 +38,7 @@ func run() -> void:
 	root.get_texture().get_image().save_png("res://output/power-demand-ui.png")
 	game.resources.power = 3
 	game._refresh_all()
-	assert(game.archive_label.text.contains("Battery discharge: 2 Power"))
+	assert(game.archive_label.text.contains("Battery discharge:") and game.archive_label.text.contains("2 Power"))
 	assert(game.archive_label.text.contains("Stored: 3 -> 1"))
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://output/power-discharge-ui.png")

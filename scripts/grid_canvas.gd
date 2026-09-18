@@ -201,100 +201,17 @@ var room_textures := {}
 var room_texture_variants := {}
 var texture_source_regions := {}
 var star_points: Array[Dictionary] = []
-var room_texture_paths := {
-	"cold_store": "res://assets/rooms/cold-store/cards/card.png",
-	"galley": "res://assets/rooms/galley/cards/card.png",
-	"salvage_workshop": "res://assets/rooms/salvage-workshop/cards/card.png",
-	"observation_room": "res://assets/rooms/observation-room/cards/card.png",
-	"current_turbine": "res://assets/rooms/current-turbine/cards/card.png",
-	"biomass_digester": "res://assets/rooms/biomass-digester/cards/card.png",
-	"heat_recovery": "res://assets/rooms/heat-recovery/cards/card.png",
-	"airlock": "res://assets/rooms/airlock/cards/card.png",
-	"anomaly_lab": "res://assets/rooms/anomaly-lab/cards/card.png",
-	"battery_array": "res://assets/rooms/battery-array/cards/card.png",
-	"bio_lab": "res://assets/rooms/bio-lab/cards/card.png",
-	"biodome": "res://assets/rooms/biodome/cards/card.png",
-	"brine_core": "res://assets/rooms/brine-core/cards/card.png",
-	"clone_lab": "res://assets/rooms/clone-lab/cards/card.png",
-	"command_center": "res://assets/rooms/command-center/cards/card.png",
-	"construction_drone_bay": "res://assets/rooms/construction-drone-bay/cards/card.png",
-	"corner": "res://assets/corridor-polish-v3/cards/corner.png",
-	"corridor": "res://assets/corridor-polish-v3/cards/corridor.png",
-	"crew_hab": "res://assets/rooms/crew-hab/cards/card.png",
-	"crew_lounge": "res://assets/rooms/crew-lounge/cards/card.png",
-	"cryo_chamber": "res://assets/rooms/cryo-chamber/cards/card.png",
-	"data_archive": "res://assets/rooms/data-archive/cards/card.png",
-	"gravity_loom": "res://assets/rooms/gravity-loom/cards/card.png",
-	"holographic_core": "res://assets/rooms/holographic-core/cards/card.png",
-	"hydroponics_bay": "res://assets/rooms/hydroponics-bay/cards/card.png",
-	"isolation_vault": "res://assets/rooms/isolation-vault/cards/card.png",
-	"life_support": "res://assets/rooms/life-support/cards/card.png",
-	"listening_post": "res://assets/rooms/listening-post/cards/card.png",
-	"maintenance_bay": "res://assets/rooms/maintenance-bay/cards/card.png",
-	"med_bay": "res://assets/rooms/med-bay/cards/card.png",
-	"med_center": "res://assets/rooms/med-center/cards/card.png",
-	"med_office": "res://assets/rooms/med-office/cards/card.png",
-	"mining_drone_bay": "res://assets/rooms/mining-drone-bay/cards/card.png",
-	"mycelium_nursery": "res://assets/rooms/mycelium-nursery/cards/card.png",
-	"ore_refinery": "res://assets/rooms/ore-refinery/cards/card.png",
-	"pressure_control": "res://assets/rooms/pressure-control/cards/card.png",
-	"quarantine_cell": "res://assets/rooms/quarantine-cell/cards/card.png",
-	"radio_lab": "res://assets/rooms/radio-lab/cards/card.png",
-	"reactor": "res://assets/rooms/reactor/cards/card.png",
-	"research_lab": "res://assets/rooms/research-lab/cards/card.png",
-	"salvage_drone_bay": "res://assets/rooms/salvage-drone-bay/cards/card.png",
-	"shield_generator": "res://assets/rooms/shield-generator/cards/card.png",
-	"solar_array": "res://assets/rooms/solar-array/cards/card.png",
-	"storage_bay": "res://assets/rooms/storage-bay/cards/card.png",
-	"tee_corridor": "res://assets/corridor-polish-v3/cards/tee_corridor.png",
-	"tidal_condenser": "res://assets/rooms/tidal-condenser/cards/card.png",
-	"xeno_lab": "res://assets/rooms/xeno-lab/cards/card.png"
-}
-var room_texture_variant_paths := {
-	"current_turbine": ["res://assets/rooms/current-turbine/cards/card.png"],
-	"biomass_digester": ["res://assets/rooms/biomass-digester/cards/card.png"],
-	"heat_recovery": ["res://assets/rooms/heat-recovery/cards/card.png"],
-	"airlock": ["res://assets/rooms/airlock/cards/card.png"],
-	"anomaly_lab": ["res://assets/rooms/anomaly-lab/cards/card.png"],
-	"battery_array": ["res://assets/rooms/battery-array/cards/card.png"],
-	"bio_lab": ["res://assets/rooms/bio-lab/cards/card.png"],
-	"biodome": ["res://assets/rooms/biodome/cards/card.png"],
-	"brine_core": ["res://assets/rooms/brine-core/cards/card.png"],
-	"clone_lab": ["res://assets/rooms/clone-lab/cards/card.png"],
-	"command_center": ["res://assets/rooms/command-center/cards/card.png"],
-	"construction_drone_bay": ["res://assets/rooms/construction-drone-bay/cards/card.png"],
-	"corner": ["res://assets/corridor-polish-v3/cards/corner.png", "res://assets/corridor-polish-v3/cards/corner-1.png", "res://assets/corridor-polish-v3/cards/corner-2.png"],
-	"corridor": ["res://assets/corridor-polish-v3/cards/corridor.png", "res://assets/corridor-polish-v3/cards/corridor-1.png", "res://assets/corridor-polish-v3/cards/corridor-2.png"],
-	"crew_hab": ["res://assets/rooms/crew-hab/cards/card.png"],
-	"crew_lounge": ["res://assets/rooms/crew-lounge/cards/card.png"],
-	"cryo_chamber": ["res://assets/rooms/cryo-chamber/cards/card.png"],
-	"data_archive": ["res://assets/rooms/data-archive/cards/card.png"],
-	"gravity_loom": ["res://assets/rooms/gravity-loom/cards/card.png"],
-	"holographic_core": ["res://assets/rooms/holographic-core/cards/card.png"],
-	"hydroponics_bay": ["res://assets/rooms/hydroponics-bay/cards/card.png"],
-	"isolation_vault": ["res://assets/rooms/isolation-vault/cards/card.png"],
-	"life_support": ["res://assets/rooms/life-support/cards/card.png"],
-	"listening_post": ["res://assets/rooms/listening-post/cards/card.png"],
-	"maintenance_bay": ["res://assets/rooms/maintenance-bay/cards/card.png"],
-	"med_bay": ["res://assets/rooms/med-bay/cards/card.png"],
-	"med_center": ["res://assets/rooms/med-center/cards/card.png"],
-	"med_office": ["res://assets/rooms/med-office/cards/card.png"],
-	"mining_drone_bay": ["res://assets/rooms/mining-drone-bay/cards/card.png"],
-	"mycelium_nursery": ["res://assets/rooms/mycelium-nursery/cards/card.png"],
-	"ore_refinery": ["res://assets/rooms/ore-refinery/cards/card.png"],
-	"pressure_control": ["res://assets/rooms/pressure-control/cards/card.png"],
-	"quarantine_cell": ["res://assets/rooms/quarantine-cell/cards/card.png"],
-	"radio_lab": ["res://assets/rooms/radio-lab/cards/card.png"],
-	"reactor": ["res://assets/rooms/reactor/cards/card.png"],
-	"research_lab": ["res://assets/rooms/research-lab/cards/card.png"],
-	"salvage_drone_bay": ["res://assets/rooms/salvage-drone-bay/cards/card.png"],
-	"shield_generator": ["res://assets/rooms/shield-generator/cards/card.png"],
-	"solar_array": ["res://assets/rooms/solar-array/cards/card.png"],
-	"storage_bay": ["res://assets/rooms/storage-bay/cards/card.png"],
-	"tee_corridor": ["res://assets/corridor-polish-v3/cards/tee_corridor.png", "res://assets/corridor-polish-v3/cards/tee_corridor-1.png", "res://assets/corridor-polish-v3/cards/tee_corridor-2.png"],
-	"tidal_condenser": ["res://assets/rooms/tidal-condenser/cards/card.png"],
-	"xeno_lab": ["res://assets/rooms/xeno-lab/cards/card.png"]
-}
+# One table of card art for the station and the cards (tools/bake_room_cards_v2.gd writes it).
+var room_texture_paths := preload("res://scripts/room_card_art.gd").PATHS
+
+# Variant art follows the same table; each room's card is its first variant.
+var room_texture_variant_paths := _variant_paths()
+
+func _variant_paths() -> Dictionary:
+	var result := {}
+	for id in ["current_turbine", "biomass_digester", "heat_recovery", "airlock", "anomaly_lab", "battery_array", "bio_lab", "biodome", "brine_core", "clone_lab", "cold_store", "command_center", "construction_drone_bay", "crew_hab", "cryo_chamber", "data_archive", "galley", "gravity_loom", "holographic_core", "hydroponics_bay", "isolation_vault", "life_support", "listening_post", "maintenance_bay", "med_bay", "med_center", "med_office", "mining_drone_bay", "mycelium_nursery", "observation_room", "ore_refinery", "pressure_control", "quarantine_cell", "radio_lab", "reactor", "research_lab", "salvage_drone_bay", "salvage_workshop", "shield_generator", "solar_array", "storage_bay", "tidal_condenser", "xeno_lab"]:
+		if room_texture_paths.has(id): result[id] = [room_texture_paths[id]]
+	return result
 
 func _ready() -> void:
 	draw_target = self
@@ -1812,7 +1729,7 @@ func _draw_room(room: Dictionary) -> void:
 	var pos: Vector2i = room["pos"]
 	var cell_size := _cell_size()
 	var rect := Rect2(Vector2(pos) * cell_size + Vector2.ONE, Vector2(cell_size - 2, cell_size - 2))
-	var color := RoomDatabaseScript.category_color(room["category"])
+	var color := RoomDatabaseScript.room_color(str(room["id"]))
 	var offline: bool = main.unpowered_room_cells.has(pos)
 	var room_texture: Texture2D = _get_room_texture(room)
 	var layered: bool = _uses_layered_art(room)

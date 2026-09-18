@@ -115,7 +115,7 @@ func refresh() -> void:
 		if entry.get("applied_state",[])==[enabled,open]: continue
 		entry.applied_state=[enabled,open]
 		entry.button.target=1.0 if enabled else 0.0
-		entry.status.add_theme_color_override("font_color",Color("a8b99a") if enabled else Color("879e9e"))
+		entry.status.add_theme_color_override("font_color",Color("7fb389") if enabled else Color("b87f83"))
 		if key=="doors" and enabled: entry.status.add_theme_color_override("font_color",Color("c0a56d"))
 		entry.status.text=("LOCKED" if enabled else "UNLOCKED") if key=="doors" else ("ON" if enabled else "OFF")
 		if key=="comms":

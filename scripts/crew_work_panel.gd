@@ -7,17 +7,24 @@ var assign_button: Button
 var info: Label
 var clock := 0.0
 func _ready():
-	choice=OptionButton.new()
-	for id in Architects.IDS:choice.add_item(Architects.NAMES[id])
-	choice.item_selected.connect(func(_i):refresh())
-	add_child(choice)
+	add_theme_constant_override("separation",6)
 	assign_button=Button.new();game._style_hud_button(assign_button,false)
+	assign_button.custom_minimum_size=Vector2(240,34)
+	assign_button.size_flags_horizontal=Control.SIZE_SHRINK_BEGIN
+	assign_button.clip_text=false
+	assign_button.autowrap_mode=TextServer.AUTOWRAP_OFF
 	assign_button.pressed.connect(func():
 		var id: String=Architects.IDS[choice.selected]
 		var actor=Architects.actor_for(game,id)
 		Work.assign(game,id,Vector2i(-1,-1) if actor.primary_room==game.selected_room_cell else game.selected_room_cell)
 		refresh())
 	add_child(assign_button)
+	choice=OptionButton.new()
+	for id in Architects.IDS:choice.add_item(Architects.NAMES[id])
+	choice.custom_minimum_size=Vector2(240,32)
+	choice.size_flags_horizontal=Control.SIZE_SHRINK_BEGIN
+	choice.item_selected.connect(func(_i):refresh())
+	add_child(choice)
 	info=Label.new();info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.add_theme_font_size_override("font_size",12);add_child(info)
 	refresh()
 func _process(delta):

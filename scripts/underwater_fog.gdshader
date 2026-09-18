@@ -21,7 +21,7 @@ float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(
 // One layer of sparse sediment flakes: hashed cells, each with one soft flake drifting down
 // and swaying on the current.
 float snow(vec2 w,float scale,float speed,float t,float seed){
- vec2 p=w*scale+vec2(sin(t*.23+seed)*.35,-t*speed*scale);
+ vec2 p=w*scale+vec2(-t*speed*scale,sin(t*.23+seed)*.22);
  vec2 id=floor(p);vec2 f=fract(p);
  float h=grain(id+seed);
  if(h<.8)return 0.0;

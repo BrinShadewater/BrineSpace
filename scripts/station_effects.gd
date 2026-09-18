@@ -55,6 +55,13 @@ static func torch_actors(game) -> Array:
 		if josh.behavior_elapsed >= enter and josh.behavior_elapsed < josh.behavior_duration - leave: result.append(josh)
 	return result
 
+const TORCH_TIPS := {
+	"south": Vector2(0, -59),
+	"north": Vector2(16, -127),
+	"east": Vector2(37, -75),
+	"west": Vector2(-35, -75),
+}
+
 static func draw_torch_sparks(canvas, game, size: float) -> void:
 	var actors := torch_actors(game)
 	if actors.is_empty(): return
@@ -64,8 +71,8 @@ static func draw_torch_sparks(canvas, game, size: float) -> void:
 	var reduced: bool = Preferences.reduced_motion
 	for actor in actors:
 		var facing: Vector2 = DIRECTIONS.get(str(actor.direction), Vector2.DOWN)
-		# Hand height, a little ahead of the body in the facing direction.
-		var tip: Vector2 = (actor.foot + facing * 26.0 + Vector2(0, -30.0 if facing.y >= 0 else -44.0)) / 384.0 * size
+		# The flame in this pose, measured from the frames.
+		var tip: Vector2 = (actor.foot + TORCH_TIPS.get(str(actor.direction), TORCH_TIPS.south)) / 384.0 * size
 		var seed := int(actor.foot.x * 7.0 + actor.foot.y * 13.0)
 		var flicker := 0.35 + 0.15 * float(hash([seed, floori(time * 20.0)]) % 100) / 100.0
 		canvas.draw_circle(tip, unit * 10.0, Color(1.0, 0.62, 0.25, (0.3 if reduced else flicker) * 0.6))

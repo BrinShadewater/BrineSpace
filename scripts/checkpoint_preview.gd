@@ -36,7 +36,7 @@ func _draw() -> void:
 	var origin := area.get_center()-bounds.size*scale_value*0.5
 	for room in rooms:
 		var rect := Rect2(origin+(Vector2(room.pos)-bounds.position)*scale_value,Vector2.ONE*scale_value).grow(-0.6)
-		var color: Color = Database.category_color(str(room.get("category","Core")))
+		var color: Color = Database.room_color(str(room.get("id","brine_core")))
 		draw_rect(rect,color.darkened(0.45))
 		draw_rect(rect,color,false,1.0)
 		if room.get("suspended",false): draw_line(rect.position,rect.end,Color("edab79"),1.0)

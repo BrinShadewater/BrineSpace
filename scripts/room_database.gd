@@ -1,17 +1,29 @@
 extends RefCounted
 class_name RoomDatabase
 
+# Department colours (owner playtest, Sept 17). Every card outline, codex entry, memory core
+# branch and crew tile uses these: red operations, command and security; blue science and
+# medical; orange crew quarters; yellow engineering and support; green life support and
+# agriculture; purple anomaly; grey corridors; white AI and robotics.
 const CATEGORY_COLORS := {
-	"Core": Color("#c8fbff"),
+	"Core": Color("#d9534f"),
 	"Engineering": Color("#e6c84f"),
 	"Science": Color("#4f8fe6"),
 	"Bio": Color("#57c879"),
 	"Crew": Color("#e58a45"),
-	"Medical": Color("#43d2c6"),
-	"Drone": Color("#9aa2a8"),
-	"Security": Color("#d34e58"),
+	"Medical": Color("#4f8fe6"),
+	"Drone": Color("#e8eef0"),
+	"Security": Color("#d9534f"),
 	"Anomaly": Color("#9c5de8"),
 	"Derelict": Color("#9b6941")
+}
+# Rooms whose colour differs from their department: BRINE's core is AI white, and corridors are
+# structure rather than a department.
+const ROOM_COLORS := {
+	"brine_core": Color("#e8eef0"),
+	"corridor": Color("#9aa2a8"),
+	"corner": Color("#9aa2a8"),
+	"tee_corridor": Color("#9aa2a8"),
 }
 
 const RESOURCE_ICONS := {
@@ -635,6 +647,11 @@ static func get_room(id: String) -> Dictionary:
 
 static func category_color(category: String) -> Color:
 	return CATEGORY_COLORS.get(category, Color.WHITE)
+
+# The colour a room shows: its own override if it has one, otherwise its department's.
+static func room_color(room_id: String) -> Color:
+	if ROOM_COLORS.has(room_id): return ROOM_COLORS[room_id]
+	return category_color(str(get_room(room_id).get("category", "")))
 
 static func get_layout(layout_id: String) -> Dictionary:
 	return LAYOUTS.get(layout_id, LAYOUTS["layout_05_cross"])

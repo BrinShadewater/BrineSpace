@@ -60,8 +60,8 @@ func run() -> void:
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png("res://output/ui-workspace-map.png")
 	game._open_menu()
-	check(game.pause_page=="main" and game.pause_pages.main.get_child_count()==7,"Main pause menu has seven actions")
-	var opener: Button = game.pause_pages.main.get_child(5)
+	check(game.pause_page=="main" and game.pause_pages.main.get_child_count()==5,"Main pause menu has five actions")
+	var opener: Button = game.pause_pages.main.get_child(3)
 	opener.grab_focus()
 	opener.pressed.emit()
 	check(game.pause_page=="station" and not game.pause_pages.main.visible,"Archive and settings occupy their own page")

@@ -448,6 +448,7 @@ func _toggle(parent: Control, id: String, title: String, hint: String, value: bo
 	button.tooltip_text = hint if not hint.is_empty() else title
 	button.button_pressed = value
 	button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	button.add_theme_constant_override("icon_max_width", 52)
 	button.add_theme_icon_override("checked", _switch_icon(true))
 	button.add_theme_icon_override("unchecked", _switch_icon(false))
 	button.add_theme_icon_override("checked_mirrored", _switch_icon(true))
@@ -465,25 +466,30 @@ func _toggle(parent: Control, id: String, title: String, hint: String, value: bo
 static var switch_icons := {}
 static func _switch_icon(on: bool) -> Texture2D:
 	if switch_icons.has(on): return switch_icons[on]
-	var width := 52
-	var height := 28
+	var scale := 3
+	var width := 52 * scale
+	var height := 28 * scale
+	var radius := 13.5 * scale
 	var image := Image.create(width, height, false, Image.FORMAT_RGBA8)
-	var track := Color("2f9c8f") if on else Color("34505a")
-	var edge := Color("7fe6d6") if on else Color("6f8e98")
-	var knob := Color("f2fffc") if on else Color("b8ccd2")
-	var knob_center := Vector2(width - 14.0, 14.0) if on else Vector2(14.0, 14.0)
+	var track := Color("1d7d74") if on else Color("2c454e")
+	var edge := Color("49b6ab") if on else Color("5d7a84")
+	var knob := Color("dff7f3") if on else Color("9fb4bb")
+	var knob_center := Vector2(width - radius, height * 0.5) if on else Vector2(radius, height * 0.5)
 	for x in range(width):
 		for y in range(height):
 			var p := Vector2(x + 0.5, y + 0.5)
-			var nearest := Vector2(clampf(p.x, 14.0, width - 14.0), 14.0)
+			var nearest := Vector2(clampf(p.x, radius, width - radius), height * 0.5)
 			var d := p.distance_to(nearest)
 			var color := Color(0, 0, 0, 0)
-			if d <= 13.5: color = track
-			if d > 12.0 and d <= 13.5: color = edge
-			if p.distance_to(knob_center) <= 9.5: color = knob
+			# One pixel of coverage at the rim keeps the edge smooth when the icon is scaled down.
+			if d <= radius: color = edge if d > radius - 1.6 * scale else track
+			var knob_distance := p.distance_to(knob_center)
+			if knob_distance <= radius - 3.0 * scale: color = knob
+			if d > radius and d < radius + 1.0: color = Color(edge, 0.45)
 			image.set_pixel(x, y, color)
-	switch_icons[on] = ImageTexture.create_from_image(image)
-	return switch_icons[on]
+	var texture := ImageTexture.create_from_image(image)
+	switch_icons[on] = texture
+	return texture
 
 func _select(parent: Control, id: String, title: String, hint: String, captions: Array[String], index: int, action: Callable) -> OptionButton:
 	var line := _row(parent, title, hint)
