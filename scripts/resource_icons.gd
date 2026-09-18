@@ -70,7 +70,13 @@ static func decorate(text: String, icon_size := 16) -> String:
 	var result := ""
 	var last := 0
 	for found in _pattern.search_all(text):
-		var id: String = WORDS[found.get_string(2).to_lower()]
+		var word: String = found.get_string(2)
+		# A resource written as an ordinary noun is prose, not a readout: "wait for the water to
+		# recede" was getting a Water icon mid-sentence, and "restore power to start the pump" a
+		# Power one (owner polish pass, Sept 18). Decorate a capitalised name, or any spelling that
+		# carries an amount beside it.
+		if word[0] == word[0].to_lower() and found.get_string(1).is_empty() and found.get_string(3).is_empty(): continue
+		var id: String = WORDS[word.to_lower()]
 		result += text.substr(last, found.get_start() - last)
 		result += "%s [color=%s]%s[/color]" % [icon(id, icon_size), color(id), found.get_string()]
 		last = found.get_end()

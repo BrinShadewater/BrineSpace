@@ -190,11 +190,13 @@ static func can_pet(game, from_journal := false) -> bool:
 	return actor.active and actor.water.mode=="dry" and actor.pet_cooldown<=0 and actor.can_stand(actor.foot)
 
 static func pet_refusal(game) -> String:
-	# Journal copy for a refused pet; mirrors can_pet's checks in their order.
-	if not game.running or (game.paused and not (game._journal_is_open() and not game.pause_before_journal)):return "resume expedition first"
+	# Journal copy for a refused pet. It names the reason that outlasts a pause first: telling a
+	# player to resume is misleading when Margot is swimming and still will not be pettable once
+	# they do (owner polish pass, Sept 18).
 	var actor = game.companion_actors.margot
 	if actor.water.mode!="dry":return "wait for the water to recede"
 	if actor.pet_cooldown>0:return "give her a moment"
+	if not game.running or (game.paused and not (game._journal_is_open() and not game.pause_before_journal)):return "resume expedition first"
 	return "she is out of reach"
 
 static func pet_margot(game) -> bool:

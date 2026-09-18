@@ -72,7 +72,9 @@ func run() -> void:
 	check("FLOODED counts rooms" in game.resource_chips["integrity"].tooltip_text, "The Integrity tooltip explains the count")
 	rooms[0].water_level = 0.0
 	game._refresh_integrity_chip()
-	check(game.resource_labels["integrity"].text.ends_with("0 FLOODED"), "A drained station reads zero flooded rooms")
+	# Batch 6 owner decision: the chip carries a flooded count only while something is flooded.
+	check(not game.resource_labels["integrity"].text.contains("FLOODED"), "A drained station drops the flooded count entirely: %s" % game.resource_labels["integrity"].text.replace("
+", " "))
 	for suffix in ["", ".bak", ".tmp"]:
 		if FileAccess.file_exists(game.run_save_path + suffix): DirAccess.remove_absolute(ProjectSettings.globalize_path(game.run_save_path + suffix))
 	print("RESOURCE FLOW %s: ledger window, displayed vs forecast figures, checkpoint round trip and the flooded count" % ("PASS" if failures == 0 else "FAIL"))

@@ -1,3 +1,25 @@
+## Polish pass, second half: icons in prose, and two stale checks - September 18, 2026
+
+1. The gameplay subsystem passes clean (48 tests). flood-water turned up two failures, and both
+   fail the same way against the code as it stood before this session, so neither is a regression
+   from today's work - checked by reverting scripts/ to c16af22f2, running them, and restoring.
+2. Real bug behind one of them: `ResourceIcons.decorate` decorated any resource word, not only
+   amounts, so ordinary prose picked up icons mid-sentence - "wait for the [Water icon] water to
+   recede" in the journal, "Restore [Power icon] power to start the pump" in the inspector, "BRINE
+   waits beneath the [Water icon] water". Decoration now needs a capitalised name or an amount
+   beside the word, which keeps every readout ("+5 Metal", "Metal 24", "Archived Data banked: 1",
+   "WATER 30%") and leaves prose alone.
+3. Polish on the same line: the journal's reason for a refused pet named the pause first, so a
+   swimming Margot read as "resume expedition first" - advice that would not have helped, since
+   she still could not be petted once resumed. It names the condition that outlasts a pause now.
+4. Stale check: test_resource_flow still expected "0 FLOODED" on a drained station, which batch 6
+   retired - the chip carries a count only while something is flooded. The check follows the
+   shipped rule now.
+5. Checked: test_companion_water, test_resource_flow, test_overlay_text, test_inspector_refresh,
+   test_learning_ui, test_suno_audio, test_ui_workspace, test_menu_recovery and test_run_save all
+   pass, and a probe compared decoration before and after over eleven real strings from the
+   journal, inspector and run summary.
+
 ## Polish pass: a broken check, and 14 ms a frame off the memory core - September 18, 2026
 
 1. Swept the suites for real faults rather than guessing at polish. performance-diagnostics, save,
