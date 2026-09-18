@@ -1,3 +1,14 @@
+## Companion toggle buttons in character selection - September 17, 2026
+
+1. The companion rows in the new-loop picker use a toggle button styled like the architect card's
+   SELECT rather than a check box: portrait, name and role, then SELECT / SELECTED / LOCKED.
+2. The button stays a direct child of the row so the picker layout test keeps finding it, and the
+   name sits in its own 460 px column so the buttons line up instead of hugging the right edge.
+3. Closes note 12 from the batch 6 owner playtest list below.
+4. Checked: test_companions, test_companion_personality and test_architect_selection pass headless;
+   test_character_discovery_ui passes on the native lane, and its saved picker captures at 1600 and
+   960 wide show the toggles reading correctly at both widths.
+
 ## Inspector progress bars - September 17, 2026
 
 1. Excavation, salvage, cryo-ward repair, pod thaw/charge and mining-site drone load draw a bar

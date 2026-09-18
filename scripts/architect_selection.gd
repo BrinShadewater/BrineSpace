@@ -144,15 +144,27 @@ func _ready() -> void:
 		face.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		if unlocked:face.texture=preload("res://scripts/companions.gd").portrait(id)
 		row.add_child(face)
-		var button := CheckBox.new()
-		button.add_theme_font_size_override("font_size",22)
 		var companion_met: bool = meta_state.met_character_ids.has(id) if "met_character_ids" in meta_state else false
-		button.text=("%s // %s"%[preload("res://scripts/companions.gd").NAMES[id],preload("res://scripts/companions.gd").ROLES[id]]) if unlocked else ("LOCKED // Buy %s in Meta Progression"%preload("res://scripts/companions.gd").NAMES[id] if companion_met else "LOCKED // Recover the %s"%preload("res://scripts/companions.gd").OBJECTS[id])
-		button.disabled=not unlocked
-		button.button_pressed=unlocked and companion_choices.has(id)
+		var name_label := _label(("%s // %s"%[preload("res://scripts/companions.gd").NAMES[id],preload("res://scripts/companions.gd").ROLES[id]]) if unlocked else ("LOCKED // Buy %s in Meta Progression"%preload("res://scripts/companions.gd").NAMES[id] if companion_met else "LOCKED // Recover the %s"%preload("res://scripts/companions.gd").OBJECTS[id]),22)
+		name_label.custom_minimum_size.x = 460
+		name_label.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		name_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		row.add_child(name_label)
+		# Owner note: companions toggle like the architect cards rather than ticking a box.
+		var button := Button.new()
+		button.toggle_mode = true
+		button.disabled = not unlocked
+		button.button_pressed = unlocked and companion_choices.has(id)
+		button.custom_minimum_size = Vector2(160,48)
+		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		Style.apply(button,160,48)
+		button.add_theme_stylebox_override("focus",_selection_focus())
+		button.text = _companion_button_text(button.button_pressed,unlocked)
 		button.toggled.connect(func(value: bool):
 			if value and not companion_choices.has(id):companion_choices.append(id)
-			elif not value:companion_choices.erase(id))
+			elif not value:companion_choices.erase(id)
+			button.text = _companion_button_text(value,unlocked))
 		row.add_child(button);companion_buttons[id]=button
 	detail = _label("",18)
 	layout.add_child(detail)
@@ -177,6 +189,10 @@ func _ready() -> void:
 	preload("res://scripts/title_settings.gd").apply_menu_text(self)
 	_select(selected)
 	confirm.grab_focus.call_deferred()
+
+func _companion_button_text(chosen_now: bool, unlocked: bool) -> String:
+	if not unlocked: return "LOCKED"
+	return "SELECTED" if chosen_now else "SELECT"
 
 func _selection_focus() -> StyleBoxTexture:
 	# Follow the pressure-panel's clipped corners without a rectangular outer box.
