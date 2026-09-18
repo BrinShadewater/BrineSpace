@@ -253,6 +253,10 @@
       "lane": "native",
       "reason": "captures every selected Bill frame on the real renderer"
     },
+    "playtest_bill_npc": {
+      "lane": "native",
+      "reason": "inherits the native room capture helpers; its assertion names the real renderer"
+    },
     "test_bug_report": {
       "lane": "skip",
       "reason": "requires an isolated user-data harness project (see its header); running it in-place writes the real user://brine_save.json"

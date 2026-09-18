@@ -23,6 +23,7 @@ func run() -> void:
 	for cell in game.occupied: game.powered_room_cells[cell] = true
 	game.test_walker_cell = origin
 	game.bill_npc = NPC.new()
+	_stand_bill_up(origin)
 	game.rng.seed = 2231
 	game.selected_card_id = ""
 	game.hover_cell = Vector2i(-1, -1)
@@ -55,3 +56,25 @@ func run() -> void:
 	print("BILL NPC NATIVE: %s; %s" % ["PASS" if failures == 0 else "FAIL", captured.keys()])
 	game.free()
 	quit(0 if failures == 0 else 1)
+
+# A loop now starts with its architect asleep in the core pod, and the crew update skips anyone
+# who is not aboard. This fixture builds its own station with no core pod to wake out of, so
+# register Bill as recovered crew and stand him up in the centre room.
+func _stand_bill_up(origin: Vector2i) -> void:
+	var Architects = preload("res://scripts/architects.gd")
+	if not game.architect_run.is_empty():
+		var occupant: Dictionary = game.architect_run.core
+		occupant.recovered = true
+		game.recovered_crew.append({"id": occupant.id, "architect_id": occupant.architect_id,
+			"name": occupant.name, "origin": origin, "alive": true})
+		game.crew_count += 1
+		game.had_crew = true
+	expect(Architects.present(game, "bill"), "the fixture's architect is aboard before it watches him work")
+	game.bill_npc.rebuild(game)
+	var nodes: Array = game.bill_npc.room_nodes.get(origin, [])
+	expect(not nodes.is_empty(), "the centre room is walkable")
+	if not nodes.is_empty():
+		game.bill_npc.foot = game.bill_npc.graph.get_point_position(nodes[0])
+	game.bill_npc.active = true
+	game.bill_npc.direction = "south"
+	game.bill_npc.state = "idle"
