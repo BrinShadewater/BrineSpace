@@ -1,3 +1,26 @@
+## Memory core branches instead of queueing - September 18, 2026
+
+1. Owner request following note 10: more branching paths off different nodes. A department was a
+   straight chain of five or six tiers; it is now a fork. Its root opens two paths that run in
+   parallel, and they meet again at the keystone, so the order inside a department is the player's
+   to choose.
+2. Prerequisites are explicit now. Each perk carries `requires`, a list of every node needed
+   before it, and `state()` locks a node until all of them are owned. Anything without a list
+   falls back to the old rule (the tier below it in the same department), so nothing breaks if a
+   perk is added later without one.
+3. No perk, cost or effect changed - the same 33 nodes for the same Data, reachable in more than
+   one order. Owned profiles are unaffected: what is bought stays bought.
+4. The graph follows the real shape. A node sits one ring past the furthest node it needs, so two
+   paths off the same root share a ring; siblings sit a fixed distance apart across the spoke,
+   which reads the same near the core as at the keystone. One line is drawn per requirement, so a
+   split shows two lines leaving a node and the keystone shows two arriving.
+5. Names lean outward, away from a node's sibling, instead of alternating by tier; the detail
+   panel now names what a locked node is still waiting for rather than saying "the node before it".
+6. Checked: test_research_tree passes, including new checks that every department starts from one
+   node, splits into exactly two paths, and ends in a keystone waiting on both; test_meta_shop and
+   test_meta_fields pass; test_title_screen and test_title_checkpoint_layout pass on the native
+   lane. The layout was adjusted three times off rendered captures.
+
 ## Memory core reads as a journal graph in the department palette - September 18, 2026
 
 1. Note 10: the BRINE memory core existed as a radial web with its own six colours. It now wears

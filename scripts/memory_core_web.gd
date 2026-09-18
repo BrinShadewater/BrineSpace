@@ -52,9 +52,13 @@ func _process(delta: float) -> void:
 func center() -> Vector2:
 	return size * 0.5
 
-# Rings scale with the space available so the whole web fits on screen.
+# Rings scale with the space available so the whole graph fits on screen. A department is three
+# steps deep now (root, the split, the pair before the keystone, the keystone), each 1.75 steps
+# apart, and the spare fraction leaves room for the department's name outside the keystone.
+const DEEPEST := 3.0
+const RING_SPREAD := 1.75
 func ring_step() -> float:
-	return maxf(30.0, (minf(size.x, size.y) * 0.5 - LABEL_MARGIN - CORE_RADIUS - KEYSTONE_RADIUS) / 6.3)
+	return maxf(24.0, (minf(size.x, size.y) * 0.5 - LABEL_MARGIN - CORE_RADIUS - KEYSTONE_RADIUS) / (DEEPEST * RING_SPREAD + 0.7))
 
 func first_ring() -> float:
 	return CORE_RADIUS + ring_step() * 1.3
@@ -70,16 +74,38 @@ func node_lean(id: String) -> float:
 	for i in id.length(): seed = (seed * 31 + id.unicode_at(i)) % 1000
 	return (float(seed) / 1000.0 - 0.5) * 0.34
 
+# Rings out from the core follow the dependency chain, not the tier number: a node sits one ring
+# past the furthest node it needs. Two paths off the same root therefore share a ring and fan out
+# to either side of their department's spoke.
+func node_depth(id: String) -> int:
+	var deepest := -1
+	for needed in Research.requirements(id):
+		deepest = maxi(deepest, node_depth(str(needed)))
+	return deepest + 1
+
+# Every node at the same depth in the same department, in a stable order.
+func depth_row(branch: String, depth: int) -> Array:
+	var row: Array = []
+	for id in Research.perks_in(branch):
+		if node_depth(id) == depth: row.append(id)
+	return row
+
 func node_position(id: String) -> Vector2:
 	var perk: Dictionary = Research.PERKS[id]
 	var index := 0
 	for i in range(Research.BRANCHES.size()):
 		if Research.BRANCHES[i].id == perk.branch: index = i
-	var tier := float(int(perk.tier) - 1)
-	var ring := first_ring() + ring_step() * tier
-	# The lean grows with distance from the core, as a spreading cluster does.
-	var angle := branch_angle(index) + node_lean(id) * (0.4 + tier * 0.22)
-	return center() + Vector2.from_angle(angle) * ring
+	var depth := node_depth(id)
+	# Depth now tops out at three, so each step can take more of the radius than a tier did.
+	var ring := first_ring() + ring_step() * RING_SPREAD * float(depth)
+	var row := depth_row(str(perk.branch), depth)
+	var slot := maxi(row.find(id), 0)
+	var angle := branch_angle(index) + node_lean(id) * (0.24 + float(depth) * 0.06)
+	var spoke := Vector2.from_angle(angle)
+	# Siblings sit a fixed distance apart across the spoke rather than a fixed angle, so a split
+	# reads the same width close to the core as it does out at the keystone.
+	var across := (float(slot) - float(row.size() - 1) * 0.5) * ring_step() * 1.5
+	return center() + spoke * ring + spoke.rotated(PI * 0.5) * across
 
 func _place() -> void:
 	for id in buttons:
@@ -114,6 +140,20 @@ func _draw_link(from: Vector2, to: Vector2, color: Color, width: float) -> void:
 		points.append(from.lerp(control, t).lerp(control.lerp(to, t), t))
 	draw_polyline(points, color, width, true)
 
+# Which way a node's name leans. A node that sits off to one side of its department's spoke writes
+# outward, away from its sibling; one sitting on the spoke alternates by depth so a name never
+# lands on the node past it.
+func label_side(id: String) -> Vector2:
+	var perk: Dictionary = Research.PERKS[id]
+	var index := 0
+	for i in range(Research.BRANCHES.size()):
+		if Research.BRANCHES[i].id == perk.branch: index = i
+	var spoke := Vector2.from_angle(branch_angle(index))
+	var across := spoke.rotated(PI * 0.5)
+	var offset := (node_position(id) - center()).dot(across)
+	if absf(offset) > 1.0: return across if offset > 0.0 else -across
+	return across if node_depth(id) % 2 == 0 else -across
+
 # A node wears its name, the way a journal graph labels every note. The name sits beside the node,
 # square to its spoke, so it never lands on the next node out. Owned and available names read
 # clearly; the rest stay faint so the cluster shape still comes through.
@@ -122,12 +162,7 @@ func _draw_node_name(font: Font, at: Vector2, radius: float, id: String, state: 
 	var size := 12
 	var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
 	var tint := color.lightened(0.25) if state == "owned" else (Color("d3e6ea") if state == "ready" else Color(0.72, 0.82, 0.85, 0.45))
-	var spoke := (at - center()).normalized()
-	if spoke == Vector2.ZERO: spoke = Vector2.UP
-	# Left of the spoke, or right when that would run the text off the panel.
-	var side := spoke.rotated(-PI * 0.5)
-	# Neighbouring tiers take opposite sides, so two names never share a line along the spoke.
-	if int(Research.PERKS[id].tier) % 2 == 0: side = -side
+	var side := label_side(id)
 	var gap := radius + 8.0
 	var anchor := at + side * gap
 	if anchor.x - width < 4.0 or anchor.x + width > size_x_limit():
@@ -141,7 +176,7 @@ func size_x_limit() -> float:
 
 func _draw() -> void:
 	var c := center()
-	var outer := first_ring() + ring_step() * 5.0 + KEYSTONE_RADIUS + 20.0
+	var outer := first_ring() + ring_step() * RING_SPREAD * DEEPEST + KEYSTONE_RADIUS + 22.0
 	for ring in range(6):
 		draw_arc(c, first_ring() + ring_step() * ring, 0, TAU, 96, Color(0.3, 0.55, 0.6, 0.07), 1.0, true)
 	var font := get_theme_default_font()
@@ -150,14 +185,18 @@ func _draw() -> void:
 		var department: Color = Research.branch_color(str(branch.id))
 		var direction := Vector2.from_angle(branch_angle(i))
 		var perks: Array = Research.perks_in(branch.id)
-		var from := c + direction * CORE_RADIUS
 		for id in perks:
 			var to := node_position(id)
 			var state := Research.state(meta_state, id)
 			var owned := state == "owned"
 			var line_color: Color = department if owned else (department.darkened(0.55) if state in ["ready", "short"] else Color(0.25, 0.33, 0.36, 0.55))
-			_draw_link(from, to, line_color, 4.0 if owned else 2.0)
-			from = to
+			# One line per requirement, so a split shows as two lines leaving a node and the
+			# keystone shows as two lines arriving at it. A root hangs off the core itself.
+			var needed: Array = Research.requirements(id)
+			if needed.is_empty():
+				_draw_link(c + direction * CORE_RADIUS, to, line_color, 4.0 if owned else 2.0)
+			for parent in needed:
+				_draw_link(node_position(str(parent)), to, line_color, 4.0 if owned else 2.0)
 		# Labels sit beside the keystone, rotated a little off the spoke so they never cover a node.
 		var label_at := c + Vector2.from_angle(branch_angle(i) + 0.22) * outer
 		var text := str(branch.name)

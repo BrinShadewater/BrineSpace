@@ -861,7 +861,8 @@ func _show_perk(id: String) -> void:
 	perk_detail.add_child(perk_name)
 	var effect := _rich(ResourceIcons.decorate(str(perk.text), 18), 17)
 	perk_detail.add_child(effect)
-	var status: String = {"owned": "INSTALLED IN BRINE'S MEMORY", "ready": "READY TO RECOVER", "short": "NOT ENOUGH ARCHIVED DATA", "locked": "RECOVER THE NODE BEFORE IT FIRST"}[state]
+	var waiting: Array = ResearchTree.missing(meta_state, id).map(func(other): return str(ResearchTree.PERKS[other].name))
+	var status: String = {"owned": "INSTALLED IN BRINE'S MEMORY", "ready": "READY TO RECOVER", "short": "NOT ENOUGH ARCHIVED DATA", "locked": "RECOVER %s FIRST" % " AND ".join(waiting).to_upper()}[state]
 	var status_label := _label(status, 14)
 	status_label.add_theme_color_override("font_color", color if state in ["owned", "ready"] else Color("7f9aa3"))
 	perk_detail.add_child(status_label)

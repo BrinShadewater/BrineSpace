@@ -34,6 +34,16 @@ func run() -> void:
 	check(Research.buy(meta, "eng_salvaged_stock") and Research.available(meta) == 55, "Buying spends its cost from the balance")
 	check(not Research.buy(meta, "eng_salvaged_stock"), "A perk is bought once")
 	check(Research.buy(meta, "eng_spare_capacitors") and Research.buy(meta, "eng_quick_rigging") and Research.available(meta) == 30, "Tiers open in order")
+	# A department is a fork, not a queue: its root opens two paths that meet at the keystone.
+	for branch in Research.BRANCHES:
+		var rooted: Array = Research.perks_in(branch.id).filter(func(id): return Research.requirements(id).is_empty())
+		check(rooted.size() == 1, "%s starts from one node" % branch.id)
+		var children: Array = Research.perks_in(branch.id).filter(func(id): return Research.requirements(id) == [rooted[0]])
+		check(children.size() == 2, "%s splits into two paths off its root" % branch.id)
+		var keystone: String = Research.perks_in(branch.id).back()
+		check(Research.requirements(keystone).size() == 2, "%s keystone waits for both paths" % branch.id)
+	check(Research.state(meta, "eng_spare_parts") != "locked" and Research.state(meta, "eng_bulkhead_seals") != "locked", "Both engineering paths are open at once, affordable or not")
+	check(Research.state(meta, "eng_overclocked_generators") == "locked" and Research.missing(meta, "eng_overclocked_generators").size() == 2, "The keystone names both nodes it still needs")
 	check(Research.buy(meta, "eng_spare_parts") and Research.available(meta) == 5, "Tier 4 costs 25")
 	check(Research.state(meta, "eng_bulkhead_seals") == "short" and not Research.buy(meta, "eng_bulkhead_seals"), "A perk costing more than the balance waits")
 	check(meta.total_research_points == 60, "Spending never reduces Research earned")
