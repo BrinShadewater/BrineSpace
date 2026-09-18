@@ -1,3 +1,25 @@
+## Fanned card art sharpening, and what did not work for notes 14 and 15 - September 17, 2026
+
+1. Note 14, the jagged half: a turned card samples its room art off the pixel grid, and nearest
+   filtering stair-stepped it. The art now filters smoothly only while the card is turned and
+   returns to nearest the moment it straightens, so the row layout and a hovered card keep their
+   native pixels. Before and after captures of the same fan show the tilted floor edges and
+   equipment clean up.
+2. The card frame dropped mipmaps for plain linear filtering: the mip chain was softening the
+   frames and text at rest for no benefit, since cards are never minified.
+3. Note 14, the blurry half, is not fixed and is not about the fan. The interface is laid out in
+   the 1920x1080 base viewport and stretched to whatever the window is, so at any other size every
+   panel is resampled; the turned cards only make it easy to see. Changing that is a project-wide
+   rendering decision (base viewport size, stretch mode, or distance-field fonts) and needs an
+   owner call.
+4. Note 15 is not fixed. 2D multisampling is a dead end here: with msaa_2d on, a station frame was
+   identical to the same frame with it off, pixel for pixel, because the Compatibility renderer
+   does not apply it to canvas drawing. Feathering the shadow polygons themselves is the remaining
+   option, and it needs to be aimed at the right shadows first - the projected prop shades in
+   rooms/whole-room/room_lighting.gd are the likely candidates.
+5. Checked: test_card_drag and test_hand_backdrop pass; the before/after fan captures were taken on
+   a real display through a throwaway probe.
+
 ## Temporary dialogue trace for note 17 - September 17, 2026
 
 1. Note 17 (room dialogue speaking before the room is finished) could not be reproduced by reading

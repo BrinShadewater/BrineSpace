@@ -4146,6 +4146,8 @@ func _on_card_unhovered(id: String, card: Control) -> void:
 	_refresh_inspector()
 
 func _pose_card(card: Control, at: Vector2, turn: float, grow: Vector2) -> void:
+	# A card that ends up straight shows its art at native pixels again (note 14).
+	DraftCard.set_art_filter(card, not is_zero_approx(turn))
 	var previous: Tween = card.get_meta("pose_tween") if card.has_meta("pose_tween") else null
 	if previous != null and previous.is_valid():
 		previous.kill()

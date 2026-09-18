@@ -26,9 +26,10 @@ static func build(game, id: String) -> PanelContainer:
 	card.custom_minimum_size = CARD_SIZE
 	card.mouse_filter = Control.MOUSE_FILTER_STOP
 	# The game draws with nearest filtering for pixel art; turned (fan) or scaled (hover) text and
-	# frames sampled that way look jagged (owner playtest), so cards filter smoothly. The room
-	# art keeps its own nearest filter.
-	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	# frames sampled that way look jagged (owner playtest), so cards filter smoothly. Mipmaps made
+	# the same frames soft at rest, so this is plain linear; the room art keeps nearest until the
+	# fan turns it.
+	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	card.pivot_offset = Vector2(CARD_SIZE.x * 0.5, CARD_SIZE.y)
 	# Cards sit outside containers, and before the text has a width it wraps very tall; a
 	# Control grows to that and never shrinks back, so pin it to card size once text settles.
@@ -69,6 +70,7 @@ static func build(game, id: String) -> PanelContainer:
 	art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	art.texture = game.card_textures.get(id)
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	card.set_meta("art_node", art)
 	art_clip.add_child(_ignore(art))
 	if game.prototype_card_seen_cycle.has(id):
 		var prototype := Label.new()
@@ -238,6 +240,14 @@ static func layout_fan(fan: Control) -> void:
 		card.position = at
 		card.rotation = card.get_meta("rest_rotation")
 		card.scale = Vector2.ONE
+		# A turned card samples its art off the pixel grid, and nearest filtering stair-steps it
+		# (owner playtest note 14). Only the cards that actually turn filter smoothly.
+		set_art_filter(card, not is_zero_approx(card.rotation))
+
+static func set_art_filter(card: Control, turned: bool) -> void:
+	var art = card.get_meta("art_node", null)
+	if art == null or not is_instance_valid(art): return
+	art.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS if turned else CanvasItem.TEXTURE_FILTER_NEAREST
 
 static func _box(fill: Color, border: Color, border_width: int, radius: int, margin: int = 0) -> StyleBoxFlat:
 	var box := StyleBoxFlat.new()
