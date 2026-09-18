@@ -1,7 +1,7 @@
 extends RefCounted
 const PATH := "user://brine_loop.save"
 const VERSION := 1
-const FIELDS := ["resources","run_earned","placed_rooms","hand","draw_pile","discard_pile","rerolls_remaining","reroll_recovery_progress","selected_doctrines","pending_doctrines","run_directives","directive_index","completed_directives","run_victory","expedition_mode","run_rewards_recorded","run_awarded_research","selected_card_id","hovered_card_id","selected_rotation","selected_room_cell","hover_cell","cycle","crew_count","had_crew","corruption","orbit_decay","active_synergies","connected_synergy_links","active_synergy_links","synergy_stabilization_progress","run_discovered_synergy_ids","run_stabilized_synergy_ids","run_decrypted_blueprint_ids","prototype_card_seen_cycle","discovery_bursts","resonance_score","resonance_tier_index","links_formed","largest_cascade","last_cascade_size","running","admin_mode","grid_zoom","visual_time_seconds","time_speed_index","completed_pois","expired_pois","power_generated","power_used","power_capacity","unpowered_rooms","powered_room_cells","unpowered_room_cells","offline_reasons","last_cycle_delta","test_walker_cell","test_walker_next_cell","test_walker_previous_cell","test_walker_progress","test_walker_speed","test_walker_state","test_walker_break_timer","test_walker_direction"]
+const FIELDS := ["resources","run_earned","placed_rooms","hand","draw_pile","discard_pile","rerolls_remaining","reroll_recovery_progress","selected_doctrines","pending_doctrines","run_victory","expedition_mode","run_rewards_recorded","run_awarded_research","selected_card_id","hovered_card_id","selected_rotation","selected_room_cell","hover_cell","cycle","crew_count","had_crew","corruption","orbit_decay","active_synergies","connected_synergy_links","active_synergy_links","synergy_stabilization_progress","run_discovered_synergy_ids","run_stabilized_synergy_ids","run_decrypted_blueprint_ids","prototype_card_seen_cycle","discovery_bursts","resonance_score","resonance_tier_index","links_formed","largest_cascade","last_cascade_size","running","admin_mode","grid_zoom","visual_time_seconds","time_speed_index","completed_pois","expired_pois","power_generated","power_used","power_capacity","unpowered_rooms","powered_room_cells","unpowered_room_cells","offline_reasons","last_cycle_delta","test_walker_cell","test_walker_next_cell","test_walker_previous_cell","test_walker_progress","test_walker_speed","test_walker_state","test_walker_break_timer","test_walker_direction"]
 static var pending: Dictionary = {}
 static var last_error := ""
 
@@ -269,8 +269,6 @@ static func _finish_restore(game, data: Dictionary) -> void:
 	game.orbit.timer = data.poi_timer
 	game.selected_doctrines.clear()
 	game.pending_doctrines.clear()
-	game.run_directives.clear()
-	game.directive_index = 0
 	game.expedition_mode = true
 	game.orbit.current_poi = {}
 	game.orbit.timer = 0

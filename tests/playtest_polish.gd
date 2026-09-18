@@ -134,30 +134,22 @@ func _run() -> void:
 		_expect(game.get_node("Root/BottomHand").get_global_rect().end.x <= game.size.x + 1, "draft fits at %d" % resolution.x)
 		_expect(game.journal_button.get_global_rect().end.x <= game.size.x + 1, "HUD fits at %d" % resolution.x)
 	_clear_comms()
-	game.completed_directives.assign(["ONE", "TWO", "THREE"])
 	game._show_reboot_summary("Sector secured. Your next experiment is waiting.", true)
 	var research_before: int = game.meta.total_research_points
 	var mastery_before: Dictionary = game.meta.doctrine_mastery.duplicate()
 	for resolution in [Vector2i(1600, 900), Vector2i(2560, 1440), Vector2i(1920, 1080)]:
 		root.size = resolution
 		await _capture("09-victory-%d" % resolution.x)
-	# Continuing is about directives, not about surviving a flat battery: the longer settles this
-	# fixture runs leave the reserve empty, and an unpowered BRINE Core ends the run the moment it
-	# resumes. Hand the station a working reserve before asking it to carry on.
-	game.resources["power"] = maxi(int(game.resources.get("power", 0)), 20)
-	game._refresh_all()
-	game._continue_expedition()
-	_expect(game.running and game.expedition_mode and game._current_directive().is_empty(), "victory can continue without directive deadlines")
 	game.cycle = 100
-	game._check_directive_progress()
-	_expect(game.running, "old directive deadlines cannot end an expedition")
 	game._open_menu()
 	game._end_expedition()
 	_expect(not game.running and not game.menu_open and game.summary_layer.visible, "expedition can be concluded safely from the menu")
 	_expect(game.meta.total_victories == 1 and game.meta.doctrine_mastery == mastery_before, "extended expedition cannot award victory/mastery twice")
 	_expect(game.meta.total_research_points == research_before, "reopening the same summary cannot duplicate research")
 	game._start_reboot_cycle()
-	_expect(not game.expedition_mode and not game.run_rewards_recorded and game.discovery_bursts.is_empty(), "reboot clears transient state")
+	# A reboot starts the next run straight away, so expedition mode is on again by design; what it
+	# must clear is the finished run's bookkeeping.
+	_expect(not game.run_rewards_recorded and game.discovery_bursts.is_empty(), "reboot clears transient state")
 	_expect(game.meta.unlocked_room_ids.has("bio_lab"), "reboot retains learned blueprints")
 	if not capture_dir.is_empty():
 		for id in ["closed_air_loop", "field_clinic", "load_balancing", "core_diagnostics", "ore_buffer", "sterile_observation"]:

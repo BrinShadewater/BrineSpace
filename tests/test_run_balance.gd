@@ -42,7 +42,6 @@ func _station() -> void:
 	# Connected, sustainable fixture; subsequent cycles and rerolls are real.
 	game._place_room("solar_array", Vector2i(21, 20), true)
 	game._place_room("mining_drone_bay", Vector2i(20, 19), true)
-	game.run_directives = [{"id": "fixture", "name": "FIXTURE", "metric": "rooms", "target": 999, "deadline": 999}]
 	game.hand.assign(["biodome", "bio_lab", "clone_lab"])
 	game.draw_pile.assign(["hydroponics_bay", "life_support", "solar_array"])
 	game.rerolls_remaining = 0

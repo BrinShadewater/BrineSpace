@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Full-run diagnostic, not a claim of human playability. This player uses visible
-# resources, room descriptions/doors, directives and already-learned recipes.
+# resources, room descriptions/doors and already-learned recipes.
 # It never peeks at the draw pile or undiscovered synergy definitions. Time is
 # accelerated, but production, purchases, draft shuffles and failures are real.
 const MainScene := preload("res://scenes/main.tscn")
@@ -174,22 +174,19 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 					row["first_blueprint"] = game.cycle
 		row["snapshots"].append({"cycle": game.cycle, "resources": game.resources.duplicate(),
 			"crew": game.crew_count, "hand": game.hand.duplicate(), "rooms": game.placed_rooms.size() - 1,
-			"stage": game.directive_index + 1, "offline": game.offline_reasons.size()})
+			"offline": game.offline_reasons.size()})
 		_drain_feedback()
 		await process_frame
 		if game.cycle in [3, 10, 20] and not capture_dir.is_empty():
 			await _capture("%s-%d-cycle-%02d" % [row["pair"], run_seed, game.cycle])
 	row["victory"] = game.run_victory
 	row["cycle"] = game.cycle
-	row["stages"] = game.completed_directives.size()
 	row["reason"] = game.summary_text.text.get_slice("\n", 0) if not game.running else "Harness cycle limit"
-	row["final_directive"] = "" if game.run_directives.is_empty() else str(game.run_directives.back().get("id", ""))
 	row["rerolls"] = game.rerolls_remaining
 	row["resonance"] = game.resonance_score
 	row["events"] = game.log_lines.duplicate()
 	print("RUN %s seed=%d %s c%d stages=%d discoveries=%d blueprints=%d first=%d/%d idle=%d | %s" % [
-		row["pair"], run_seed, "WIN" if row["victory"] else "LOSS", row["cycle"], row["stages"],
-		row["discoveries"].size(), row["blueprints"].size(), row["first_discovery"], row["first_blueprint"],
+		row["pair"], run_seed, "WIN" if row["victory"] else "LOSS", row["cycle"],		row["discoveries"].size(), row["blueprints"].size(), row["first_discovery"], row["first_blueprint"],
 		row["idle_cycles"], row["reason"]])
 	if not capture_dir.is_empty():
 		await _capture("%s-%d-result" % [row["pair"], run_seed])
@@ -254,8 +251,6 @@ func _choose_build() -> Dictionary:
 						var members: Array = recipe.get("rooms", [])
 						if members.has(id) and members.has(other["id"]) and id != other["id"]:
 							score += 16.0
-							if game._current_directive().get("metric", "") in ["links", "resonance"]:
-								score += 20.0
 				# Prefer room descriptions that suggest related systems, but never
 				# consult the hidden recipe graph to choose a placement.
 					for tag in room.get("tags", []):
@@ -326,14 +321,6 @@ func _room_utility(room: Dictionary) -> float:
 		value += 55 if food_net < 2 else 0
 	if int(produces.get("oxygen", 0)) > 0:
 		value += 25 if oxygen_net < 3 else 0
-	var directive: Dictionary = game._current_directive()
-	if directive.get("metric", "") == "doctrine_pair":
-		var counts: Dictionary = Runs.count_doctrine_rooms(game.placed_rooms, game.selected_doctrines)
-		for doctrine in game.selected_doctrines:
-			if int(counts.get(doctrine, 0)) < int(directive["target"]) and Runs.doctrine(doctrine).get("rooms", []).has(id):
-				value += 24
-	elif directive.get("metric", "") == "rooms":
-		value += 8
 	return value
 
 func _pair_key(first: String, second: String) -> String:

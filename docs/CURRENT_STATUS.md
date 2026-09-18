@@ -1,3 +1,30 @@
+## Retired directives and Continue Expedition removed - September 18, 2026
+
+1. Owner decision: the directive and continue-expedition features were retired long ago, so the
+   scaffolding goes rather than being asserted against.
+2. Out of the game: `_roll_run_directives`, `_current_directive`, `_directive_state`,
+   `_check_directive_progress`, `_complete_current_directive` and `_format_directive_reward`, the
+   `run_directives`, `directive_index` and `completed_directives` state, the three save fields that
+   carried them, `RunManager.roll_directives`, `directive_progress`, `directive_progress_text`,
+   `_build_pair_directive` and the `DIRECTIVE_STAGES` table - about 250 lines. `_current_directive`
+   already returned nothing, so none of it could run.
+3. Also out: `_continue_expedition` and the Continue Expedition button. Its visibility condition
+   was `victory and not expedition_mode`, and `_confirm_doctrines` sets expedition mode for every
+   run, so the button could never appear and the method returned at its own guard.
+4. Tests followed the code: the four legacy-directive guards in test_synergy_manager are gone (the
+   live doctrine-room counting they shared is kept as its own check), along with the directive
+   lines in test_run_save, test_title_screen, test_run_balance, capture_summary_state and the
+   balance harness's dormant doctrine-pair scoring. `tests/capture_pair_directive.gd`, a capture
+   tool for the retired pair-directive HUD, is deleted.
+5. playtest_polish is down to 2 failures from 18. Its reboot check no longer expects expedition
+   mode to be off afterwards: a reboot starts the next run immediately, so the flag is on again by
+   design, and what the check is really about is the finished run's bookkeeping.
+6. Checked: test_synergy_manager, test_run_save, test_run_balance and test_meta_fields pass
+   headless; playtest_polish runs on the native lane with only the two suspension assertions left.
+7. Noted, not done: doctrines are retired in the same way - `_show_doctrine_selection` immediately
+   confirms, `selected_doctrines` is cleared on confirm - so `doctrine_layer`, `pending_doctrines`
+   and the doctrine picker are the next dead weight if the owner wants them gone.
+
 ## playtest_polish, second half: two more causes, and one question for the owner - September 18, 2026
 
 1. Down to 5 failures from the 18 this fixture started with.

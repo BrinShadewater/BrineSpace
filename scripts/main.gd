@@ -147,9 +147,6 @@ var rerolls_remaining := 3
 var reroll_recovery_progress := 0
 var selected_doctrines: Array[String] = []
 var pending_doctrines: Array[String] = []
-var run_directives := []
-var directive_index := 0
-var completed_directives: Array[String] = []
 var run_victory := false
 var expedition_mode := false
 var run_rewards_recorded := false
@@ -291,7 +288,6 @@ var summary_title_label: Label
 var summary_outcome_label: Label
 var summary_stats: HFlowContainer
 var summary_text: RichTextLabel
-var continue_expedition_button: Button
 var end_expedition_button: Button
 var doctrine_layer: CanvasLayer
 var doctrine_buttons := {}
@@ -1171,17 +1167,6 @@ func _build_ui() -> void:
 	summary_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	summary_scroll.add_child(summary_body)
 	summary_text = summary_body
-	continue_expedition_button = Button.new()
-	continue_expedition_button.text = "Continue Expedition"
-	# Every action on this page sits at the menu width instead of sizing itself to its caption
-	# (owner playtest, Sept 18).
-	continue_expedition_button.custom_minimum_size = Vector2(380, 50)
-	continue_expedition_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	continue_expedition_button.add_theme_font_size_override("font_size", 17)
-	continue_expedition_button.tooltip_text = "Stay in this expedition and keep building."
-	continue_expedition_button.pressed.connect(_continue_expedition)
-	preload("res://scripts/title_button_style.gd").apply(continue_expedition_button, 380, 50, true)
-	summary_vbox.add_child(continue_expedition_button)
 	var reboot_button := Button.new()
 	reboot_button.text = "Start New Cycle"
 	reboot_button.custom_minimum_size = Vector2(380, 50)
@@ -1688,7 +1673,6 @@ func _update_wreck_clearance(delta: float) -> void:
 			occupied[cell]["recovered_derelict"] = true
 			occupied[cell].display_name = "Charging Chamber" if wrecks[cell].kind=="charging" else "Recovered Cryo Ward"
 			_check_synergies()
-			_check_directive_progress()
 			_log("Charging chamber connected. Restore power. The machine still has someone to finish." if wrecks[cell].kind=="charging" else "Cryo ward pressure restored. Compartment joined. Its occupants await power and a free berth.",false)
 			continue
 		if wrecks[cell].kind == "basalt":
@@ -1903,8 +1887,6 @@ func _show_doctrine_selection() -> void:
 func _confirm_doctrines() -> void:
 	selected_doctrines.clear()
 	pending_doctrines.clear()
-	run_directives.clear()
-	directive_index = 0
 	doctrine_layer.hide()
 	expedition_mode = true
 	_build_run_deck()
@@ -2163,9 +2145,6 @@ func _start_reboot_cycle() -> void:
 	grid_view.door_wet_history.clear()
 	selected_doctrines.clear()
 	pending_doctrines.clear()
-	run_directives.clear()
-	directive_index = 0
-	completed_directives.clear()
 	run_victory = false
 	expedition_mode = false
 	run_rewards_recorded = false
@@ -2443,8 +2422,6 @@ func _place_room(id: String, cell: Vector2i, free := false, construction_complet
 	if not free:
 		_resolve_placement_cascade(cell, previous_link_keys)
 	_apply_unlocks()
-	if not free:
-		_check_directive_progress()
 	if free:
 		_center_grid_on_station_deferred()
 
@@ -2465,7 +2442,6 @@ func _advance_cycle() -> void:
 	_apply_life_support()
 	_emit_warnings()
 	_apply_unlocks()
-	_check_directive_progress()
 	_expire_prototype_markers()
 	_refresh_all()
 	if running:
@@ -2994,70 +2970,11 @@ func _finish_center_toast() -> void:
 	toast_playing = false
 	_play_next_center_toast()
 
-func _roll_run_directives() -> void:
-	run_directives = RunManagerScript.roll_directives(rng, selected_doctrines)
-	directive_index = 0
-	completed_directives.clear()
 
-func _current_directive() -> Dictionary:
-	return {} # Timed reconstruction directives are retired.
 
-func _directive_state() -> Dictionary:
-	return {
-		"rooms": maxi(0, placed_rooms.size() - 1),
-		"resonance": resonance_score,
-		"links": active_synergy_links.size(),
-		"synergy_types": active_synergies.size(),
-		"pois": completed_pois.size(),
-		"doctrine_counts": RunManagerScript.count_doctrine_rooms(placed_rooms, selected_doctrines)
-	}
 
-func _check_directive_progress() -> void:
-	if not running:
-		return
-	var directive := _current_directive()
-	if directive.is_empty():
-		return
-	var progress := RunManagerScript.directive_progress(directive, _directive_state())
-	if progress >= int(directive.get("target", 0)):
-		_complete_current_directive()
-		return
-	if cycle > int(directive.get("deadline", 0)):
-		_show_reboot_summary("Directive deadline missed: %s." % directive.get("name", "UNKNOWN DIRECTIVE"), false)
 
-func _complete_current_directive() -> void:
-	var directive := _current_directive()
-	if directive.is_empty():
-		return
-	completed_directives.append(str(directive.get("name", "UNKNOWN DIRECTIVE")))
-	var reward: Dictionary = directive.get("reward", {})
-	var resource_reward: Dictionary = reward.get("resources", {})
-	if not resource_reward.is_empty():
-		_apply_delta(resource_reward)
-		_clamp_power_reserve()
-		_clamp_resource_storage()
-	rerolls_remaining += int(reward.get("rerolls", 0))
-	if rerolls_remaining >= REROLL_RECOVERY_CAP:
-		reroll_recovery_progress = 0
-	_log("DIRECTIVE COMPLETE: %s. Reward: %s." % [directive["name"], _format_directive_reward(reward)])
-	if directive_index + 1 >= run_directives.size():
-		run_victory = true
-		_show_reboot_summary("All reconstruction directives complete. BRINE has stabilized this orbital sector.", true)
-		return
-	var completed_number := directive_index + 1
-	directive_index += 1
-	_queue_center_toast("DIRECTIVE %d/%d COMPLETE\n%s" % [completed_number, run_directives.size(), _format_directive_reward(reward).to_upper()])
-	_log("Directive %d/%d received: %s." % [directive_index + 1, run_directives.size(), _current_directive().get("name", "UNKNOWN")])
 
-func _format_directive_reward(reward: Dictionary) -> String:
-	var parts: Array[String] = []
-	var resource_reward: Dictionary = reward.get("resources", {})
-	if not resource_reward.is_empty():
-		parts.append(_format_cost(resource_reward))
-	var rerolls := int(reward.get("rerolls", 0))
-	if rerolls > 0:
-		parts.append("%d reroll%s" % [rerolls, "s" if rerolls != 1 else ""])
-	return _join_strings(parts) if not parts.is_empty() else "sector stability"
 
 func _apply_unlocks() -> void:
 	pass
@@ -3117,8 +3034,6 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 		synergy_names.append(id.replace("_", " ").capitalize())
 	if summary_title_label != null:
 		summary_title_label.text = "Station Stabilized" if victory else ("Expedition Report" if expedition_mode else "Loop Report")
-	if continue_expedition_button != null:
-		continue_expedition_button.visible = victory and not expedition_mode
 	var discoveries := "Patterns discovered: %s\nPatterns stabilized: %s" % [
 		_join_strings(_synergy_names_for_ids(run_discovered_synergy_ids)) if not run_discovered_synergy_ids.is_empty() else "None",
 		_join_strings(_synergy_names_for_ids(run_stabilized_synergy_ids)) if not run_stabilized_synergy_ids.is_empty() else "None"
@@ -3145,9 +3060,7 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	summary_text.text = ResourceIcons.decorate(retained + "RUN RECORD\n" + summary_text.text, 17)
 	_refresh_learning_ui()
 	preload("res://scripts/title_settings.gd").apply_menu_text(summary_layer)
-	if is_instance_valid(continue_expedition_button) and continue_expedition_button.visible:
-		continue_expedition_button.grab_focus()
-	elif summary_layer.has_meta("default_button"):
+	if summary_layer.has_meta("default_button"):
 		var default_button := summary_layer.get_meta("default_button") as Button
 		if is_instance_valid(default_button):
 			default_button.grab_focus()
@@ -3156,19 +3069,6 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	_set_paused(true, false)
 	_log("Run complete: %s" % reason)
 
-func _continue_expedition() -> void:
-	if not run_victory or expedition_mode or summary_layer == null or not summary_layer.visible:
-		return
-	expedition_mode = true
-	summary_layer.visible = false
-	running = true
-	_set_paused(false)
-	if tick_timer != null:
-		tick_timer.start()
-	_log("Expedition extended. No directive deadlines; life support remains active.")
-	_refresh_all()
-
-# One figure from the run: the number large in its own colour, its name quiet underneath.
 func _add_summary_figure(value: String, caption: String, tint: Color) -> void:
 	if summary_stats == null: return
 	var tile := PanelContainer.new()

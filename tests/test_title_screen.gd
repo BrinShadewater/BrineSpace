@@ -259,7 +259,6 @@ func _run() -> void:
 		if current_scene.get("doctrine_layer") != null:
 			_check(not current_scene.doctrine_layer.visible, "Retired doctrine selection stays hidden")
 			_check(current_scene.running, "Confirmed architect starts the open expedition")
-			_check(current_scene.run_directives.is_empty(), "New expedition has no directive deadline")
 	print("TITLE SCREEN: %s" % ("PASS" if failures == 0 else "%d failures" % failures))
 	if is_instance_valid(current_scene): current_scene.queue_free()
 	_remove_test_saves()

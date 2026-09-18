@@ -69,95 +69,6 @@ const PAIR_DIRECTIVE_VARIANTS := [
 	}
 ]
 
-const DIRECTIVE_STAGES := [
-	[
-		{
-			"id": "restore_foothold",
-			"name": "RESTORE A FOOTHOLD",
-			"briefing": "Bring four non-core modules online.",
-			"metric": "rooms",
-			"target": 4,
-			"deadline": 10,
-			"reward": {"resources": {"metal": 5}, "rerolls": 1}
-		},
-		{
-			"id": "seal_first_ring",
-			"name": "SEAL THE FIRST RING",
-			"briefing": "Expand the station to five restored modules.",
-			"metric": "rooms",
-			"target": 5,
-			"deadline": 11,
-			"reward": {"resources": {"power": 3, "metal": 3}, "rerolls": 1}
-		}
-	],
-	[
-		{
-			"id": "prove_the_pattern",
-			"name": "PROVE THE PATTERN",
-			"briefing": "Accumulate 60 Resonance through placement cascades.",
-			"metric": "resonance",
-			"target": 60,
-			"deadline": 24,
-			"reward": {"resources": {"data": 6, "metal": 5}, "rerolls": 1}
-		},
-		{
-			"id": "interlock_systems",
-			"name": "INTERLOCK SYSTEMS",
-			"briefing": "Maintain four connected synergy links at once.",
-			"metric": "links",
-			"target": 4,
-			"deadline": 24,
-			"reward": {"resources": {"data": 5, "rare_minerals": 1}, "rerolls": 1}
-		},
-		{
-			"id": "expand_the_spine",
-			"name": "EXPAND THE SPINE",
-			"briefing": "Restore nine non-core station modules.",
-			"metric": "rooms",
-			"target": 9,
-			"deadline": 23,
-			"reward": {"resources": {"metal": 8, "integrity": 4}, "rerolls": 1}
-		}
-	],
-	[
-		{
-			"id": "harmonic_station",
-			"name": "ACHIEVE HARMONIC STATION",
-			"briefing": "Reach 180 Resonance and stabilize BRINE's memory lattice.",
-			"metric": "resonance",
-			"target": 180,
-			"deadline": 42,
-			"reward": {"resources": {"data": 12}}
-		},
-		{
-			"id": "living_network",
-			"name": "COMPLETE THE LIVING NETWORK",
-			"briefing": "Maintain eight connected synergy links at once.",
-			"metric": "links",
-			"target": 8,
-			"deadline": 42,
-			"reward": {"resources": {"data": 10, "rare_minerals": 2}}
-		},
-		{
-			"id": "catalog_lattice",
-			"name": "CATALOG THE LINK LATTICE",
-			"briefing": "Maintain four distinct synergy patterns at once.",
-			"metric": "synergy_types",
-			"target": 4,
-			"deadline": 42,
-			"reward": {"resources": {"data": 12, "integrity": 4}}
-		},
-		{
-			"id": "restore_station",
-			"name": "RESTORE THE STATION",
-			"briefing": "Bring fourteen non-core modules online before orbital decay.",
-			"metric": "rooms",
-			"target": 14,
-			"deadline": 40,
-			"reward": {"resources": {"data": 10, "integrity": 6}}
-		}
-	]
-]
 
 static func doctrine(id: String) -> Dictionary:
 	return DOCTRINES.get(id, {})
@@ -205,65 +116,9 @@ static func build_deck(selected_doctrines: Array, unlocked_room_ids: Dictionary)
 			deck.append(room_id)
 	return deck
 
-static func roll_directives(rng: RandomNumberGenerator, selected_doctrines: Array = []) -> Array:
-	var directives := []
-	for stage_index in range(DIRECTIVE_STAGES.size()):
-		if stage_index == 1 and selected_doctrines.size() >= 2:
-			directives.append(_build_pair_directive(rng, selected_doctrines))
-			continue
-		var stage: Array = DIRECTIVE_STAGES[stage_index]
-		var picked: Dictionary = stage[rng.randi_range(0, stage.size() - 1)].duplicate(true)
-		directives.append(picked)
-	return directives
 
-static func _build_pair_directive(rng: RandomNumberGenerator, selected_doctrines: Array) -> Dictionary:
-	var picked: Dictionary = PAIR_DIRECTIVE_VARIANTS[rng.randi_range(0, PAIR_DIRECTIVE_VARIANTS.size() - 1)].duplicate(true)
-	var first_id := str(selected_doctrines[0])
-	var second_id := str(selected_doctrines[1])
-	var first_name := str(doctrine(first_id).get("short_name", first_id.to_upper()))
-	var second_name := str(doctrine(second_id).get("short_name", second_id.to_upper()))
-	picked["metric"] = "doctrine_pair"
-	picked["doctrine_ids"] = [first_id, second_id]
-	picked["name"] = str(picked["name"]) % [first_name, second_name]
-	picked["briefing"] = str(picked["briefing"]) % [first_name.to_lower(), second_name.to_lower()]
-	return picked
 
-static func directive_progress(directive_data: Dictionary, state: Dictionary) -> int:
-	match str(directive_data.get("metric", "")):
-		"rooms":
-			return int(state.get("rooms", 0))
-		"resonance":
-			return int(state.get("resonance", 0))
-		"links":
-			return int(state.get("links", 0))
-		"synergy_types":
-			return int(state.get("synergy_types", 0))
-		"pois":
-			return int(state.get("pois", 0))
-		"doctrine_pair":
-			var doctrine_counts: Dictionary = state.get("doctrine_counts", {})
-			var doctrine_ids: Array = directive_data.get("doctrine_ids", [])
-			if doctrine_ids.is_empty():
-				return 0
-			var lowest_count := 1000000
-			for id_value in doctrine_ids:
-				lowest_count = mini(lowest_count, int(doctrine_counts.get(str(id_value), 0)))
-			return lowest_count
-		_:
-			return 0
 
-static func directive_progress_text(directive_data: Dictionary, state: Dictionary) -> String:
-	var target := int(directive_data.get("target", 0))
-	if str(directive_data.get("metric", "")) != "doctrine_pair":
-		return "%d/%d" % [mini(directive_progress(directive_data, state), target), target]
-	var doctrine_counts: Dictionary = state.get("doctrine_counts", {})
-	var parts: Array[String] = []
-	for id_value in directive_data.get("doctrine_ids", []):
-		var doctrine_id := str(id_value)
-		var data := doctrine(doctrine_id)
-		var short_name := str(data.get("short_name", doctrine_id.to_upper()))
-		parts.append("%s %d/%d" % [short_name, mini(int(doctrine_counts.get(doctrine_id, 0)), target), target])
-	return "  ·  ".join(parts)
 
 static func count_doctrine_rooms(placed_rooms: Array, selected_doctrines: Array) -> Dictionary:
 	var counts := {}

@@ -15,7 +15,6 @@ func build(id: String, cell: Vector2i, q := 0) -> void:
 	var before: Dictionary = game.resources.duplicate()
 	game._on_grid_clicked(cell)
 	expect(game.occupied.has(cell), "Built " + id)
-	# Foundation placements can also pay a directive reward in the same click.
 	if id == "mycelium_nursery":
 		for resource in Rooms.get_room(id).cost:
 			expect(game.resources[resource] == before[resource] - Rooms.get_room(id).cost[resource], "Exact nursery purchase cost: " + resource)

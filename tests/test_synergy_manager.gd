@@ -19,19 +19,15 @@ func _run() -> void:
 	_test_placement_cascade_scores_and_pulses()
 	_test_doctrines_build_a_constrained_deck()
 	_test_opening_hand_and_discard_cycle()
-	_test_directives_escalate()
-	_test_pair_directive_tracks_both_doctrines()
+	_test_doctrine_rooms_count_for_both_doctrines()
 	_test_all_doctrine_pairs_have_viable_decks()
 	_test_doctrine_pair_preview_exposes_tradeoffs()
-	_test_retired_directive_grants_no_rewards()
-	_test_retired_final_directive_keeps_run_active()
-	_test_retired_deadline_keeps_run_active()
 	_test_doctrine_mastery_persists_progress()
 	if failures > 0:
 		push_error("Synergy tests failed: %d" % failures)
 		quit(1)
 		return
-	print("Run-loop tests passed: links, cascades, all doctrine pairs, directives, deck flow, and mastery are valid.")
+	print("Run-loop tests passed: links, cascades, all doctrine pairs, deck flow, and mastery are valid.")
 	quit(0)
 
 func _test_repeated_pairs_stack() -> void:
@@ -131,40 +127,14 @@ func _test_opening_hand_and_discard_cycle() -> void:
 	_expect_true(game.discard_pile.has(spent_card_id), "spent blueprints should enter the discard pile")
 	game.free()
 
-func _test_directives_escalate() -> void:
-	var test_rng := RandomNumberGenerator.new()
-	test_rng.seed = 4404
-	var directives := RunManagerScript.roll_directives(test_rng, ["industry", "science"])
-	_expect_equal(directives.size(), 3, "a reboot should contain three directives")
-	_expect_true(int(directives[0]["deadline"]) < int(directives[1]["deadline"]), "second directive deadline should be later")
-	_expect_true(int(directives[1]["deadline"]) < int(directives[2]["deadline"]), "final directive deadline should be latest")
-	_expect_equal(directives[1].get("metric", ""), "doctrine_pair", "stage two should reflect the selected doctrine pair")
-	_expect_true(str(directives[1].get("name", "")).contains("INDUSTRY"), "pair directive should name the first doctrine")
-	_expect_true(str(directives[1].get("name", "")).contains("SCIENCE"), "pair directive should name the second doctrine")
 
-func _test_pair_directive_tracks_both_doctrines() -> void:
-	var directive := {
-		"metric": "doctrine_pair",
-		"doctrine_ids": ["industry", "biosphere"],
-		"target": 3
-	}
-	var state := {"doctrine_counts": {"industry": 4, "biosphere": 2}}
-	_expect_equal(RunManagerScript.directive_progress(directive, state), 2, "pair progress should use the less-developed doctrine")
-	var progress_text := RunManagerScript.directive_progress_text(directive, state)
-	_expect_true(progress_text.contains("INDUSTRY 3/3"), "pair progress should show capped Industry progress")
-	_expect_true(progress_text.contains("BIOSPHERE 2/3"), "pair progress should show remaining Biosphere work")
+func _test_doctrine_rooms_count_for_both_doctrines() -> void:
 	var overlap_counts := RunManagerScript.count_doctrine_rooms(
 		[{"id": "brine_core"}, {"id": "xeno_lab"}, {"id": "research_lab"}],
 		["science", "anomaly"]
 	)
 	_expect_equal(int(overlap_counts.get("science", 0)), 2, "overlap rooms should advance their Science doctrine")
 	_expect_equal(int(overlap_counts.get("anomaly", 0)), 2, "overlap rooms should also advance their Anomaly doctrine")
-	_expect_equal(
-		RunManagerScript.directive_progress({"metric": "synergy_types"}, {"synergy_types": 4}),
-		4,
-		"pattern directives should count distinct active synergy types"
-	)
-
 func _test_all_doctrine_pairs_have_viable_decks() -> void:
 	var unlocked := {}
 	for room_id in RoomDatabaseScript.STARTING_UNLOCKS:
@@ -187,8 +157,6 @@ func _test_all_doctrine_pairs_have_viable_decks() -> void:
 				for room_id_value in RunManagerScript.doctrine(doctrine_id).get("rooms", []):
 					copies_for_doctrine += deck.count(str(room_id_value))
 				_expect_true(copies_for_doctrine >= 2, "%s should expose a repeatable foothold for %s" % [pair_name, doctrine_id])
-			var directives := RunManagerScript.roll_directives(test_rng, pair)
-			_expect_equal(directives[1].get("doctrine_ids", []), pair, "%s should preserve both doctrine ids in stage two" % pair_name)
 	_expect_equal(pair_count, 10, "five doctrines should produce ten unique pair balance cases")
 
 func _test_doctrine_pair_preview_exposes_tradeoffs() -> void:
@@ -200,68 +168,8 @@ func _test_doctrine_pair_preview_exposes_tradeoffs() -> void:
 	_expect_true(profile.contains("Research Lab"), "pair preview should name shared doctrine rooms")
 	game.free()
 
-func _test_retired_directive_grants_no_rewards() -> void:
-	var game = MainScript.new()
-	game.running = true
-	game.rerolls_remaining = 3
-	game.placed_rooms.assign([{"id": "brine_core"}, {"id": "solar_array"}])
-	game.run_directives = [
-		{"name": "FIRST", "metric": "rooms", "target": 1, "deadline": 5, "reward": {"resources": {"metal": 2}, "rerolls": 1}},
-		{"name": "SECOND", "metric": "rooms", "target": 4, "deadline": 10, "reward": {}}
-	]
-	var metal_before := int(game.resources["metal"])
-	game._check_directive_progress()
-	_expect_equal(game.directive_index, 0, "Legacy directives do not advance")
-	_expect_equal(game.completed_directives.size(), 0, "Legacy directives do not record progress")
-	_expect_equal(game.rerolls_remaining, 3, "Legacy directives grant no rerolls")
-	_expect_equal(int(game.resources["metal"]), metal_before, "Legacy directives grant no resources")
-	game.free()
 
-func _test_retired_final_directive_keeps_run_active() -> void:
-	var test_save_path := "user://brine_victory_test_save.json"
-	var game = MainScript.new()
-	game.meta.save_path = test_save_path
-	game.meta.doctrine_mastery.clear()
-	game.meta.total_victories = 0
-	game.summary_layer = CanvasLayer.new()
-	game.summary_text = RichTextLabel.new()
-	game.summary_title_label = Label.new()
-	game.selected_doctrines.assign(["industry", "biosphere"])
-	game.placed_rooms.assign([{"id": "brine_core"}, {"id": "solar_array"}])
-	game.run_directives = [{"name": "FINAL", "metric": "rooms", "target": 1, "deadline": 5, "reward": {}}]
-	game.running = true
-	game._check_directive_progress()
-	_expect_true(not game.run_victory and game.running, "Legacy final directive cannot end the loop")
-	_expect_equal(game.completed_directives.size(), 0, "Legacy directive absent from summary")
-	_expect_equal(game.meta.total_victories, 0, "Legacy directive cannot grant persistent victories")
-	_expect_true(game.meta.doctrine_mastery.is_empty(), "Legacy directive cannot grant mastery")
-	game.summary_text.free()
-	game.summary_title_label.free()
-	game.summary_layer.free()
-	game.free()
-	if FileAccess.file_exists(test_save_path):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(test_save_path))
 
-func _test_retired_deadline_keeps_run_active() -> void:
-	var test_save_path := "user://brine_deadline_test_save.json"
-	var game = MainScript.new()
-	game.meta.save_path = test_save_path
-	game.meta.doctrine_mastery.clear()
-	game.summary_layer = CanvasLayer.new()
-	game.summary_text = RichTextLabel.new()
-	game.summary_title_label = Label.new()
-	game.running = true
-	game.cycle = 6
-	game.run_directives = [{"name": "EXPIRED", "metric": "rooms", "target": 4, "deadline": 5, "reward": {}}]
-	game._check_directive_progress()
-	_expect_true(game.running, "Retired deadlines cannot end a run")
-	_expect_true(game.summary_text.text.is_empty(), "Retired deadlines produce no failure summary")
-	game.summary_text.free()
-	game.summary_title_label.free()
-	game.summary_layer.free()
-	game.free()
-	if FileAccess.file_exists(test_save_path):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(test_save_path))
 
 func _test_doctrine_mastery_persists_progress() -> void:
 	var test_save_path := "user://brine_meta_test_save.json"

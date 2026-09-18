@@ -16,7 +16,7 @@ func _run() -> void:
 	root.add_child(game)
 	current_scene = game
 	check(game.running and not game.doctrine_layer.visible, "New Loop starts directly without selection")
-	check(game.selected_doctrines.is_empty() and game.run_directives.is_empty(), "New loops have no scenarios or deadlines")
+	check(game.selected_doctrines.is_empty(), "New loops have no scenarios")
 	var deck: Array = game.RunManagerScript.build_deck([], game.meta.unlocked_room_ids)
 	# The current deck offers one unlocked rare specialist, not all three.
 	var specialists := ["pressure_control","listening_post","isolation_vault"]
@@ -29,10 +29,7 @@ func _run() -> void:
 		elif id != "brine_core" and not game.RoomDatabaseScript.get_room(str(id)).is_empty():
 			check(deck.has(id), "Neutral draft includes unlocked blueprint " + str(id))
 	check(dealt_specialists == mini(1,eligible_specialists),"Neutral draft offers exactly one available rare specialist")
-	game.run_directives = [{"name":"Legacy expired directive", "deadline":0, "target":99, "metric":"rooms"}]
-	game._check_directive_progress()
 	check(game.running and not game.summary_layer.visible, "Retired deadlines cannot end a loop")
-	game.run_directives.clear()
 	game._set_paused(true, false)
 	game.selected_card_id = "solar_array"
 	game.selected_rotation = 2
@@ -68,9 +65,8 @@ func _run() -> void:
 	game.hand.clear()
 	game.placed_rooms.clear()
 	data.state.selected_doctrines = ["industry", "biosphere"]
-	data.state.run_directives = [{"name":"Legacy", "deadline":0}]
 	check(Save.restore(game, data), "Checkpoint should restore")
-	check(game.selected_doctrines.is_empty() and game.run_directives.is_empty(), "Old checkpoint scenarios are retired on Continue")
+	check(game.selected_doctrines.is_empty(), "Old checkpoint scenarios are retired on Continue")
 	check(game.cycle == 7 and game.reroll_recovery_progress == 2, "Cycle and reroll recovery must survive")
 	check(game.resources == expected_resources and game.hand == expected_hand, "Resources and draft must survive")
 	check(game.placed_rooms.size() == 2 and game.occupied.size() == 2, "Station and occupancy must restore")
