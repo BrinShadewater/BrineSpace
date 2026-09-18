@@ -1,3 +1,26 @@
+## Memory core reads as a journal graph in the department palette - September 18, 2026
+
+1. Note 10: the BRINE memory core existed as a radial web with its own six colours. It now wears
+   the owner's department palette and reads as a graph of named notes.
+2. Colours are sourced, not copied: `ResearchTree.branch_color()` looks each branch up in
+   `RoomDatabase.CATEGORY_COLORS` - engineering yellow, robotics white for drones, agriculture
+   green for life support, crew orange, science blue for discovery - and the hull, which is
+   structure rather than a department, takes the corridor grey. The detail panel on the right
+   reads the same function, so a node and its heading always agree.
+3. Layout: each node leans off its department's spoke by a fixed amount derived from its own id,
+   growing with distance from the core, so a cluster wanders instead of forming a straight ray;
+   the lean is deterministic, so nothing moves between sessions. Links bow away from the core as
+   short antialiased polylines rather than straight spokes.
+4. Names: recovered and reachable nodes carry their names beside them, square to the spoke and
+   alternating sides by tier so two names never share a line. Sealed nodes stay numbered and
+   unnamed - all thirty-three labels at once buried the shape - and hovering or selecting one
+   names it.
+5. Not done: images per node, and any change to what the perks are or cost.
+6. Checked: test_research_tree, test_meta_shop and test_meta_fields pass headless;
+   test_title_screen and test_title_checkpoint_layout pass on the native lane. A probe rendered
+   the core at 900 by 900 with four nodes recovered and 90 Data banked, and the labels were moved
+   twice off the back of those captures.
+
 ## Journal and Diagnostics are two pages now - September 18, 2026
 
 1. Note 11: both buttons opened the same seven-tab panel under one heading. The panel now shows

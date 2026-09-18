@@ -1,6 +1,8 @@
 extends Control
-## BRINE memory core (owner playtest, Sept 17: Meta Progression option A). Upgrades as a web of
-## nodes around BRINE's core: one spoke per department, tiers outward, a keystone at the end.
+## BRINE memory core (owner playtest, Sept 17: Meta Progression option A; note 10: it should read
+## like a journal graph). Upgrades as a graph of memory nodes around BRINE's core: one cluster per
+## department in the owner's palette, tiers outward on curved links, each node named, a keystone
+## at the end of every cluster.
 ## Lines light in the department colour as nodes are bought; buying sends a pulse along the
 ## line. Selecting a node shows it in the detail panel, which does the buying.
 
@@ -60,13 +62,24 @@ func first_ring() -> float:
 func branch_angle(index: int) -> float:
 	return -PI * 0.5 + TAU * float(index) / float(Research.BRANCHES.size())
 
+# A hand-kept graph, not a diagram: each node sits on its department's spoke but leans off it by a
+# fixed amount derived from its own name, so a cluster wanders the way a journal graph does. The
+# lean is deterministic, so a node never moves between sessions.
+func node_lean(id: String) -> float:
+	var seed := 0
+	for i in id.length(): seed = (seed * 31 + id.unicode_at(i)) % 1000
+	return (float(seed) / 1000.0 - 0.5) * 0.34
+
 func node_position(id: String) -> Vector2:
 	var perk: Dictionary = Research.PERKS[id]
 	var index := 0
 	for i in range(Research.BRANCHES.size()):
 		if Research.BRANCHES[i].id == perk.branch: index = i
-	var ring := first_ring() + ring_step() * float(int(perk.tier) - 1)
-	return center() + Vector2.from_angle(branch_angle(index)) * ring
+	var tier := float(int(perk.tier) - 1)
+	var ring := first_ring() + ring_step() * tier
+	# The lean grows with distance from the core, as a spreading cluster does.
+	var angle := branch_angle(index) + node_lean(id) * (0.4 + tier * 0.22)
+	return center() + Vector2.from_angle(angle) * ring
 
 func _place() -> void:
 	for id in buttons:
@@ -87,9 +100,44 @@ func celebrate(id: String) -> void:
 	queue_redraw()
 
 func _branch_color(id: String) -> Color:
-	for branch in Research.BRANCHES:
-		if branch.id == Research.PERKS[id].branch: return branch.color
-	return Color.WHITE
+	return Research.branch_color(str(Research.PERKS[id].branch))
+
+# Links bow away from the core so neighbouring clusters read as separate threads rather than a
+# star. Drawn as a short polyline, which antialiases where draw_line between two nodes cannot bend.
+func _draw_link(from: Vector2, to: Vector2, color: Color, width: float) -> void:
+	var middle := (from + to) * 0.5
+	var bow := (middle - center()).normalized().rotated(PI * 0.5) * from.distance_to(to) * 0.13
+	var control := middle + bow
+	var points := PackedVector2Array()
+	for step in range(9):
+		var t := float(step) / 8.0
+		points.append(from.lerp(control, t).lerp(control.lerp(to, t), t))
+	draw_polyline(points, color, width, true)
+
+# A node wears its name, the way a journal graph labels every note. The name sits beside the node,
+# square to its spoke, so it never lands on the next node out. Owned and available names read
+# clearly; the rest stay faint so the cluster shape still comes through.
+func _draw_node_name(font: Font, at: Vector2, radius: float, id: String, state: String, color: Color) -> void:
+	var text := str(Research.PERKS[id].name)
+	var size := 12
+	var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+	var tint := color.lightened(0.25) if state == "owned" else (Color("d3e6ea") if state == "ready" else Color(0.72, 0.82, 0.85, 0.45))
+	var spoke := (at - center()).normalized()
+	if spoke == Vector2.ZERO: spoke = Vector2.UP
+	# Left of the spoke, or right when that would run the text off the panel.
+	var side := spoke.rotated(-PI * 0.5)
+	# Neighbouring tiers take opposite sides, so two names never share a line along the spoke.
+	if int(Research.PERKS[id].tier) % 2 == 0: side = -side
+	var gap := radius + 8.0
+	var anchor := at + side * gap
+	if anchor.x - width < 4.0 or anchor.x + width > size_x_limit():
+		side = -side
+		anchor = at + side * gap
+	var at_left: bool = side.x < 0.0
+	draw_string(font, anchor + Vector2(-width if at_left else 0.0, 4.0), text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, tint)
+
+func size_x_limit() -> float:
+	return size.x - 4.0
 
 func _draw() -> void:
 	var c := center()
@@ -99,6 +147,7 @@ func _draw() -> void:
 	var font := get_theme_default_font()
 	for i in range(Research.BRANCHES.size()):
 		var branch: Dictionary = Research.BRANCHES[i]
+		var department: Color = Research.branch_color(str(branch.id))
 		var direction := Vector2.from_angle(branch_angle(i))
 		var perks: Array = Research.perks_in(branch.id)
 		var from := c + direction * CORE_RADIUS
@@ -106,14 +155,14 @@ func _draw() -> void:
 			var to := node_position(id)
 			var state := Research.state(meta_state, id)
 			var owned := state == "owned"
-			var line_color: Color = branch.color if owned else (branch.color.darkened(0.55) if state in ["ready", "short"] else Color(0.25, 0.33, 0.36, 0.55))
-			draw_line(from, to, line_color, 4.0 if owned else 2.0, true)
+			var line_color: Color = department if owned else (department.darkened(0.55) if state in ["ready", "short"] else Color(0.25, 0.33, 0.36, 0.55))
+			_draw_link(from, to, line_color, 4.0 if owned else 2.0)
 			from = to
 		# Labels sit beside the keystone, rotated a little off the spoke so they never cover a node.
 		var label_at := c + Vector2.from_angle(branch_angle(i) + 0.22) * outer
 		var text := str(branch.name)
 		var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15).x
-		draw_string(font, label_at - Vector2(width * 0.5, -5), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, branch.color)
+		draw_string(font, label_at - Vector2(width * 0.5, -5), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, department)
 	for pulse in pulses:
 		var at: Vector2 = pulse.from.lerp(pulse.to, ease(pulse.t, 0.6))
 		draw_circle(at, 9.0, Color(pulse.color, 1.0 - pulse.t * 0.5))
@@ -157,3 +206,7 @@ func _draw() -> void:
 			draw_string(font, at + Vector2(-tier_width * 0.5, 5.5), tier_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color("0b1a20") if state == "owned" else Color(0.75, 0.85, 0.88, 0.9 if state != "locked" else 0.4))
 		if hot:
 			draw_arc(at, radius + 6.0, 0, TAU, 40, Color("e6f6f3"), 2.0, true)
+		# Recovered and reachable memories carry their names, as does whatever the pointer is on.
+		# Sealed ones stay unnamed: thirty-three labels at once buried the shape of the graph.
+		if state in ["owned", "ready"] or hot:
+			_draw_node_name(font, at, radius, id, state, color)

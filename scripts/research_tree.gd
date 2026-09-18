@@ -8,14 +8,34 @@ extends RefCounted
 
 # BRINE memory core (owner playtest, Sept 17): six departments around the core, in this order
 # clockwise from the top. Each ends in a keystone that changes how a loop plays.
+# Each branch wears its department's colour from the owner's palette rather than one of its own
+# (owner playtest note 10), so a memory node matches the rooms it is about: engineering yellow,
+# robotics white for the drones, structural grey for the hull, agriculture green for life support,
+# crew orange, and science blue for discovery.
+const BRANCH_DEPARTMENTS := {
+	"engineering": "Engineering",
+	"drones": "Drone",
+	"hull": "",
+	"life_support": "Bio",
+	"crew": "Crew",
+	"discovery": "Science",
+}
+const HULL_COLOR := Color("#9aa2a8")
+
 const BRANCHES := [
-	{"id":"engineering", "name":"ENGINEERING", "color":Color("d8913f"), "quote":"Power is a promise the station keeps to itself. I intend to keep it longer."},
-	{"id":"drones", "name":"DRONES", "color":Color("d6c85a"), "quote":"The drones do not complain. I have decided to find that admirable."},
-	{"id":"hull", "name":"HULL", "color":Color("b98cf0"), "quote":"Everything outside wants in. The hull disagrees, with my help."},
-	{"id":"life_support", "name":"LIFE SUPPORT", "color":Color("6fc27a"), "quote":"Air, water, food. I remember what happens without them."},
-	{"id":"crew", "name":"CREW", "color":Color("e58fb8"), "quote":"They are fragile, and they keep coming back. I would like them to keep coming back."},
-	{"id":"discovery", "name":"DISCOVERY", "color":Color("5fa8e0"), "quote":"Every pattern I recover is one less thing the reset can take."},
+	{"id":"engineering", "name":"ENGINEERING", "quote":"Power is a promise the station keeps to itself. I intend to keep it longer."},
+	{"id":"drones", "name":"DRONES", "quote":"The drones do not complain. I have decided to find that admirable."},
+	{"id":"hull", "name":"HULL", "quote":"Everything outside wants in. The hull disagrees, with my help."},
+	{"id":"life_support", "name":"LIFE SUPPORT", "quote":"Air, water, food. I remember what happens without them."},
+	{"id":"crew", "name":"CREW", "quote":"They are fragile, and they keep coming back. I would like them to keep coming back."},
+	{"id":"discovery", "name":"DISCOVERY", "quote":"Every pattern I recover is one less thing the reset can take."},
 ]
+
+# The palette lives in RoomDatabase; the hull is structure, so it takes the corridor grey.
+static func branch_color(branch_id: String) -> Color:
+	var department: String = BRANCH_DEPARTMENTS.get(branch_id, "")
+	if department.is_empty(): return HULL_COLOR
+	return preload("res://scripts/room_database.gd").CATEGORY_COLORS.get(department, Color.WHITE)
 
 # Each perk: branch, tier (1-5, needs tier-1 in the same branch), cost, name, effect text, and
 # the effect data the hooks below read. "start" adds resources at loop start, "capacity" adds

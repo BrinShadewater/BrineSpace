@@ -849,7 +849,7 @@ func _show_perk(id: String) -> void:
 	var branch_name := ""
 	for branch in ResearchTree.BRANCHES:
 		if branch.id == perk.branch:
-			color = branch.color
+			color = ResearchTree.branch_color(str(branch.id))
 			branch_name = branch.name
 	var keystone: bool = perk.get("keystone", false)
 	var kind := _label("%s  ·  %s" % [branch_name, "KEYSTONE" if keystone else "TIER %d" % int(perk.tier)], 14)
