@@ -1,3 +1,23 @@
+## Still unclickable: input diagnostics and a pause valve - September 18, 2026
+
+1. The close-path fix above did not solve the owner's report - the game still refuses clicks. The
+   cause is not yet known, so this adds evidence and one safety valve rather than another guess.
+2. F8 now records the input state at the moment it is pressed, before its own overlay pauses
+   anything: whether the tree is paused, the mouse mode, the pointer position against the window
+   and viewport size, what holds focus, what sits under the pointer, every visible full-screen
+   control that stops clicks, and every visible CanvasLayer at layer 100 or above.
+3. Why those fields: a paused SceneTree stops every pausable node from receiving input while
+   rendering continues, which looks exactly like this - full frame rate, no errors, no response,
+   and F8 still working because the reporter runs with PROCESS_MODE_ALWAYS.
+4. The valve: only the reporter's overlay and the layout Studio are meant to pause the title
+   screen. If the title is up, the tree is paused, and neither is on screen, the reporter takes the
+   pause back and counts it; the count then appears in the next report. It lives in the reporter
+   because a paused tree would never run the check anywhere else - the first attempt sat in
+   title_screen._process and never fired.
+5. Checked: a probe stranded the tree paused on the title and the valve recovered it; with a layer
+   1000 overlay visible the pause was left alone, and taken back once that overlay hid.
+   test_title_screen and test_title_checkpoint_layout pass on the native lane.
+
 ## Fix: the title screen could stop answering the mouse - September 18, 2026
 
 1. Owner bug report (F8, 22:09, scene title_screen): "Clicking on buttons doesnt work and open the

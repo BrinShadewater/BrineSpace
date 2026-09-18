@@ -28,6 +28,11 @@ var pending_screenshot: Image = null
 var pending_files: Array = []
 var pending_captured_at := ""
 var pending_uptime := -1
+# "The game will not answer a click" leaves no error behind, so the state that decides whether a
+# click can land is written down at F8: the pause flag, the mouse mode, what has focus, what sits
+# under the pointer, and anything full-screen that swallows input (owner report, Sept 17).
+var pending_input: Array = []
+var stuck_pause_recoveries := 0
 var crashed_at := ""
 var lock_unix := 0
 var skipped_dumps: Array = []
@@ -209,12 +214,42 @@ func _capture_diagnostics() -> void:
 		pending_files.append({"name":"diagnostics/performance.json","data":JSON.stringify(performance_monitor.snapshot(),"\t").to_utf8_buffer()})
 	pending_captured_at = Time.get_datetime_string_from_system(false, true)
 	pending_uptime = Time.get_ticks_msec() / 1000
+	pending_input = _input_state()
+
+func _input_state() -> Array:
+	var lines: Array = []
+	if not is_inside_tree(): return lines
+	var tree := get_tree()
+	lines.append("tree paused: %s" % tree.paused)
+	lines.append("mouse mode: %d (0 visible, 2 captured, 3 confined)" % Input.get_mouse_mode())
+	var viewport := get_viewport()
+	if viewport == null: return lines
+	var pointer: Vector2 = viewport.get_mouse_position()
+	lines.append("pointer: %s  window: %s  viewport: %s" % [pointer, DisplayServer.window_get_size(), viewport.get_visible_rect().size])
+	lines.append("focus owner: %s" % _node_name(viewport.gui_get_focus_owner()))
+	lines.append("hovered control: %s" % _node_name(viewport.gui_get_hovered_control()))
+	# Anything visible, full-screen and click-stopping, wherever it lives in the tree.
+	var screen: Vector2 = viewport.get_visible_rect().size
+	for node in tree.root.find_children("*", "Control", true, false):
+		if not node.is_visible_in_tree() or node.mouse_filter == Control.MOUSE_FILTER_IGNORE: continue
+		var rect: Rect2 = node.get_global_rect()
+		if rect.size.x < screen.x * 0.9 or rect.size.y < screen.y * 0.9: continue
+		lines.append("covers the screen: %s filter=%d alpha=%.2f rect=%s" % [_node_name(node), node.mouse_filter, node.get_modulate().a * node.get_self_modulate().a, rect])
+	for node in tree.root.find_children("*", "CanvasLayer", true, false):
+		if node.visible and node.layer >= 100:
+			lines.append("layer %d visible: %s" % [node.layer, _node_name(node)])
+	return lines
+
+func _node_name(node) -> String:
+	if node == null or not is_instance_valid(node): return "(none)"
+	return "%s (%s)" % [str(node.get_path()).replace("/root/", ""), node.get_class()]
 
 func _clear_pending() -> void:
 	pending_screenshot = null
 	pending_files = []
 	pending_captured_at = ""
 	pending_uptime = -1
+	pending_input = []
 
 func _add_live_snapshot(files: Array) -> void:
 	var scene := get_tree().current_scene if is_inside_tree() else null
@@ -360,6 +395,22 @@ func _open_report_folder() -> void:
 	if OS.shell_show_in_file_manager(folder, true) != OK:
 		OS.shell_open(folder)
 
+# A paused tree stops every pausable node from receiving input, so the game keeps drawing at full
+# speed and answers no click, with nothing logged to explain it (owner report, Sept 17). Only this
+# reporter's overlay and the layout Studio are meant to pause the title screen. If the title is up,
+# the tree is paused and neither of those is on screen, the pause is a leak: take it back, and
+# leave a warning the next report will carry.
+func _process(_delta: float) -> void:
+	if not is_inside_tree() or not get_tree().paused: return
+	var scene: Node = get_tree().current_scene
+	if scene == null or not str(scene.scene_file_path).ends_with("title_screen.tscn"): return
+	if overlay != null and overlay.visible: return
+	for node in get_tree().root.find_children("*", "CanvasLayer", true, false):
+		if node.visible and node.layer >= 100 and node != overlay: return
+	get_tree().paused = false
+	stuck_pause_recoveries += 1
+	push_warning("Title screen was left paused with nothing on top of it; unpaused it (recovery %d)." % stuck_pause_recoveries)
+
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventKey):
 		return
@@ -403,6 +454,13 @@ func _report_text(note: String, after_crash: bool, files: Array, dumps_found: in
 	lines.append("note: " + (note if not note.is_empty() else "(none)"))
 	if not pending_captured_at.is_empty():
 		lines.append("captured at F8: %s (uptime %d s)" % [pending_captured_at, pending_uptime])
+	if stuck_pause_recoveries > 0:
+		lines.append("recovered from a leaked pause on the title screen: %d time(s)" % stuck_pause_recoveries)
+	if not pending_input.is_empty():
+		lines.append("")
+		lines.append("input state when F8 was pressed:")
+		for line in pending_input: lines.append("  " + str(line))
+		lines.append("")
 	lines.append("bundle time: " + Time.get_datetime_string_from_system(false, true))
 	# Errors logged this session, counted by kind, so a silent flood of them is obvious here.
 	if is_instance_valid(performance_monitor) and "errors" in performance_monitor:
