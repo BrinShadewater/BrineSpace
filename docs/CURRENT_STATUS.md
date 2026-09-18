@@ -1,3 +1,23 @@
+## Render parity failures fixed: a zoom step that did nothing - September 18, 2026
+
+1. All five failing parity captures - brine batch, content cache, hitch, retained lights and
+   surface cache - reported the same single error: "State did not invalidate in the next rendered
+   frame: zoom".
+2. Cause: each test resets the camera with `_set_grid_zoom(DEFAULT_GRID_ZOOM)` and then zooms in
+   with `_set_grid_zoom(DEFAULT_GRID_ZOOM * 0.8)`. The owner playtest of September 17 brought the
+   closest zoom down to three quarters of the default, and `_set_grid_zoom` clamps to that, so both
+   calls landed on exactly the same zoom. The camera never moved, so the floor cache had nothing to
+   rebuild, and the check that watches for the rebuild failed - on a step that was doing nothing.
+   The capture comparisons themselves were never the problem.
+3. Fix: the step zooms to `MAX_GRID_ZOOM * 0.8`, which is inside the limits and genuinely different
+   from the reset. Applied to all six tests that carried the same line, including
+   test_environment_cache_parity, which would have been just as hollow.
+4. The existing invalidation check now guards this by itself: if a future limit makes the step a
+   no-op again, the cache will not rebuild and the test will say so.
+5. Checked on the native lane: test_brine_batch_parity, test_content_cache_parity, test_hitch_parity,
+   test_retained_lights_parity, test_surface_cache_parity and test_environment_cache_parity all
+   pass, covering 49 rooms, 44 views and four rotations each.
+
 ## The rest of the suites, and a render test that leaned on the owner's settings - September 18, 2026
 
 1. Ran every remaining group. Headless: fire, underwater, cards-bindings, layout-studio (4 pass, 8

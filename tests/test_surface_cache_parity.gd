@@ -108,7 +108,11 @@ func run() -> void:
 	await changed_state("cull")
 	game.grid_scroll.scroll_horizontal += int(game.get_cell_size()*2)
 	await changed_state("pan")
-	game._set_grid_zoom(game.DEFAULT_GRID_ZOOM*0.8)
+	# A zoom the camera limits actually allow. The closest zoom is three quarters of the default
+	# since the owner playtest of September 17, so DEFAULT * 0.8 clamped to exactly the value the
+	# reset above had already produced: the camera never moved, nothing invalidated, and every
+	# parity capture failed on a step that was doing nothing.
+	game._set_grid_zoom(game.MAX_GRID_ZOOM*0.8)
 	await changed_state("zoom")
 	var meshes := 0
 	for view in views:
