@@ -1,3 +1,25 @@
+## The rest of the suites, and a render test that leaned on the owner's settings - September 18, 2026
+
+1. Ran every remaining group. Headless: fire, underwater, cards-bindings, layout-studio (4 pass, 8
+   native-only), room-art (16 pass, 13 native-only) and render-perf (2 pass, 16 native-only) are
+   clean.
+2. Native render-perf: 10 pass, 6 fail. One was a regression from this session; the other five are
+   the parity-capture family, and two of them - test_surface_cache_parity and
+   test_content_cache_parity - fail identically against the pre-session code, so that family
+   predates today's work and wants its own session.
+3. The regression: test_camera_pixel_stability passed before and failed after. It was not the game.
+   Test runs used to read the player's own `brine_settings.cfg`, which on this PC says borderless
+   fullscreen at 2560x1440; the fractional content scales the test measures only line up on a
+   window that fills the screen. Isolating test settings (so probes stop writing the owner's
+   preferences) took that crutch away and the test fell to a windowed default.
+4. Fix: the test states the window it needs - borderless, at the current screen size - instead of
+   inheriting one. It passes deterministically now and no longer depends on what the machine has
+   saved, which was the point of isolating the settings in the first place.
+5. Bisected rather than guessed: reverting scripts/ wholesale restored the pass, then
+   rooms/whole-room/room_lighting.gd, scripts/main.gd and the music scripts each failed to explain
+   it, and scripts/title_settings.gd alone did. Seeding the isolated settings file with the owner's
+   values also made it pass, which confirmed the mechanism before the test was touched.
+
 ## Polish pass, second half: icons in prose, and two stale checks - September 18, 2026
 
 1. The gameplay subsystem passes clean (48 tests). flood-water turned up two failures, and both

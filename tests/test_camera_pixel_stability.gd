@@ -16,6 +16,16 @@ func run() -> void:
 		quit(2)
 		return
 	root.gui_disable_input = true
+	# The window this test measures must be its own doing. It used to inherit whatever display
+	# settings the machine had saved - on the owner's PC a borderless 2560x1440 - and the fractional
+	# scales below only line up on a window that fills the screen. Test runs read an isolated
+	# settings file now, so the test states the window it needs (owner polish pass, Sept 18).
+	var screen := DisplayServer.screen_get_size(DisplayServer.window_get_current_screen())
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+	DisplayServer.window_set_position(DisplayServer.screen_get_position(DisplayServer.window_get_current_screen()))
+	DisplayServer.window_set_size(screen)
+	for i in range(4): await process_frame
 	game = load("res://scenes/main.tscn").instantiate()
 	game.meta.save_path = "user://camera_pixel_test.meta"
 	game.run_save_path = "user://camera_pixel_test.loop"
