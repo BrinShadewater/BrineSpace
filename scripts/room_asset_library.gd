@@ -13,6 +13,20 @@ static func entries() -> Dictionary:
 		if data.has("display_width"): catalog[id].width=float(data.display_width)
 	for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/common-assets.json")):
 		catalog["library/common-"+entry.id]={"data":entry.data,"label":entry.label,"width":entry.width,"group":"common","category":entry.get("category","wall")}
+	# Tileset props arrive as one bulk file rather than 8000 registrations: the
+	# loop above reads a file per entry, which is fine for 220 and not for 8229.
+	# The id prefix is deliberate - RoomLayoutStore.is_common_decoration() drops
+	# anything under library/common-, so these would never reach a live room.
+	var bulk: String="res://rooms/tileset-library/props.json"
+	if FileAccess.file_exists(bulk):
+		var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(bulk))
+		if parsed is Array:
+			for entry in parsed:
+				catalog["library/tileset-"+str(entry.id)]={
+					"data":entry,"label":entry.get("label",entry.id),
+					"width":float(entry.get("display_width",48.0)),
+					"group":"tileset","category":entry.get("category","prop"),
+					"tileset":entry.get("tileset","")}
 	return catalog
 static func base_id(id: String) -> String: return id.split("#")[0]
 
