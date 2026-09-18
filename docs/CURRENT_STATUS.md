@@ -1,3 +1,23 @@
+## The last two playtests: a stale selection, and a fixture nobody was in - September 18, 2026
+
+1. playtest_polish passes. Its two suspension assertions were stale, not a bug: the fixture set
+   `hover_cell` and expected the operation button to follow, but the inspector reads
+   `selected_room_cell`, so the button kept a stale target and the toggle suspended nothing.
+   Resuming afterwards "restored" a link that had never stopped, which is why only two of the
+   three assertions failed. It selects the room now and asserts the button's target first.
+2. playtest_bill_npc passes, and had two faults. The runner classified it headless because its
+   render helpers live in the base fixture, so it never ran on the lane its own assertion names;
+   it is pinned to the native lane in tests/index.json alongside the other Bill fixtures.
+3. The second fault: the fixture builds its own station with no core pod, and the crew update
+   skips anyone `Architects.present` says is not aboard, so Bill never moved and nothing was
+   captured - the loop ran 1800 empty steps. It registers him as recovered crew and stands him on
+   a walkable node in the centre room now.
+4. Checked on the native lane: playtest_polish (29.8s) and playtest_bill_npc (25.5s) both pass,
+   the latter capturing idle, kneel, repair, stand and all four walk directions.
+5. Still open for the owner: the doctrine scaffolding is dead the same way the directives were, a
+   `user://dialogue_trace.log` from a real session is needed for note 17, and note 14's blurry-UI
+   half is a base-viewport-versus-stretch-mode decision.
+
 ## Retired directives and Continue Expedition removed - September 18, 2026
 
 1. Owner decision: the directive and continue-expedition features were retired long ago, so the
