@@ -17,6 +17,10 @@ var retire_button: Button
 # written to a manifest and the entry leaves the tray, so a misclick costs
 # nothing and the art can be swept later once the list has been reviewed.
 const RETIRED_PATH:="res://rooms/tileset-library/retired.json"
+# The tray renders one thumbnail per frame into its own SubViewport, so the cost
+# of a filter is however many entries it lists. Fine at a few hundred; with 8229
+# tileset props registered, All assets pegged a core for sixteen minutes.
+const TRAY_LIMIT:=280
 var retired: Dictionary={}
 var size_control: SpinBox
 var pan:=Vector2.ZERO
@@ -943,6 +947,7 @@ func rebuild_library() -> void:
 			library_list.add_item(caption,thumbnail if thumbnail!=null else thumbnail_placeholder)
 			library_list.set_item_metadata(library_list.item_count-1,id)
 			library_list.set_item_tooltip(library_list.item_count-1,caption+(" • Fixed wall artwork" if prop.has("flush_region") else " • Drag into the room"))
+	var hidden_by_limit:=0
 	for id in Library.entries():
 		var entry: Dictionary=Library.entries()[id]
 		if only_retired:
@@ -953,10 +958,18 @@ func rebuild_library() -> void:
 		if not only_retired and library_filter.selected==1 and entry.get("group","")!="common": continue
 		if not only_retired and library_filter.selected==2 and entry.get("group","")=="common": continue
 		if (not library_search.text.is_empty() and not str(entry.label).to_lower().contains(library_search.text.to_lower())): continue
+		if library_list.item_count>=TRAY_LIMIT:
+			hidden_by_limit+=1
+			continue
 		if not entry.get("preview_ready",false): thumbnail_queue.append(id)
 		library_list.add_item(entry.label,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
 		library_list.set_item_metadata(library_list.item_count-1,id)
 		library_list.set_item_tooltip(library_list.item_count-1,entry.label+" — drag into clear floor space")
+	if hidden_by_limit>0:
+		library_list.add_item("+%d more — search or pick a category" % hidden_by_limit,thumbnail_placeholder)
+		library_list.set_item_selectable(library_list.item_count-1,false)
+		library_list.set_item_tooltip(library_list.item_count-1,
+			"The tray lists %d at a time so previews stay responsive." % TRAY_LIMIT)
 func add_library_asset(id: String, center: Vector2) -> bool:
 	if comparing: return false
 	if defaults.has(id) and draft.get(id)!=null:
