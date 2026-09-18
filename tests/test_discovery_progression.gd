@@ -266,7 +266,7 @@ func _test_run_summary_names_new_progression_events() -> void:
 		game.free()
 		return
 	game.summary_layer = CanvasLayer.new()
-	game.summary_text = Label.new()
+	game.summary_text = RichTextLabel.new()
 	game.summary_title_label = Label.new()
 	game.run_discovered_synergy_ids.assign(["closed_air_loop"])
 	game.run_stabilized_synergy_ids.assign(["closed_air_loop"])

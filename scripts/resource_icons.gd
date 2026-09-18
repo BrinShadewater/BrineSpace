@@ -63,7 +63,10 @@ static var _pattern: RegEx
 static func decorate(text: String, icon_size := 16) -> String:
 	if _pattern == null:
 		_pattern = RegEx.new()
-		_pattern.compile("(?i)([+-]?\\d+%?\\s+)?\\b(archived data|rare minerals?|metal|power|oxygen|water|food|data|biomass|integrity)\\b")
+		# The amount may sit before or after its resource ("+5 Metal", "WATER 30%"), but always on
+		# the same line: a number ending one line was being pulled into the next line's resource
+		# ("Stabilized: 1" then "Archived Data banked").
+		_pattern.compile("(?i)([+-]?\\d+%?[ \\t]+)?\\b(archived data|rare minerals?|metal|power|oxygen|water|food|data|biomass|integrity)\\b([ \\t]+[+-]?\\d+%?)?")
 	var result := ""
 	var last := 0
 	for found in _pattern.search_all(text):

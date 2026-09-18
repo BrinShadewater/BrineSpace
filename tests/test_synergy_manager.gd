@@ -224,7 +224,7 @@ func _test_retired_final_directive_keeps_run_active() -> void:
 	game.meta.doctrine_mastery.clear()
 	game.meta.total_victories = 0
 	game.summary_layer = CanvasLayer.new()
-	game.summary_text = Label.new()
+	game.summary_text = RichTextLabel.new()
 	game.summary_title_label = Label.new()
 	game.selected_doctrines.assign(["industry", "biosphere"])
 	game.placed_rooms.assign([{"id": "brine_core"}, {"id": "solar_array"}])
@@ -248,7 +248,7 @@ func _test_retired_deadline_keeps_run_active() -> void:
 	game.meta.save_path = test_save_path
 	game.meta.doctrine_mastery.clear()
 	game.summary_layer = CanvasLayer.new()
-	game.summary_text = Label.new()
+	game.summary_text = RichTextLabel.new()
 	game.summary_title_label = Label.new()
 	game.running = true
 	game.cycle = 6

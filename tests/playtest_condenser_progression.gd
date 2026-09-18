@@ -63,8 +63,11 @@ func run() -> void:
 		expect(game.running, "Normal run survives discovery")
 		expect(game.synergy_stabilization_progress.get("thermal_reclamation", 0) == cycle_index + 1, "Consecutive functioning progress")
 		await capture("02-discovery-cycle-%d" % (cycle_index + 1))
-	expect(game.meta.unlocked_room_ids.has("tidal_condenser"), "Condenser earned through three functioning cycles")
-	expect(game.draw_pile.back() == "tidal_condenser", "Prototype on live deck")
+	expect(game.meta.stabilized_synergy_ids.has("thermal_reclamation"), "Pattern stabilized by three functioning cycles")
+	game.meta.total_research_points += 100
+	expect(preload("res://scripts/meta_shop.gd").buy_room(game.meta, "tidal_condenser"), "Its blueprint is bought with Archived Data")
+	game.draw_pile.append("tidal_condenser") # Bought blueprints join the next loop's deck; continue this one.
+	expect(game.draw_pile.back() == "tidal_condenser", "Bought blueprint on live deck")
 	game._discard_card(str(game.hand[0]))
 	expect(game.hand.has("tidal_condenser"), "Normal reroll draws prototype")
 	await capture("03-prototype")

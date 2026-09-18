@@ -31,8 +31,12 @@ func build(id: String, cell: Vector2i, q: int) -> void:
 	while not game.occupied.has(cell) and elapsed<300: step()
 	assert(game.occupied.has(cell),"Construction never completed")
 func await_blueprint(id: String) -> void:
-	while not game.meta.unlocked_room_ids.has(id) and elapsed<300: step()
-	assert(game.meta.unlocked_room_ids.has(id),"Functioning discovery did not unlock "+id)
+	var pattern: Dictionary = preload("res://scripts/meta_shop.gd").related_pattern(id)
+	while not game.meta.stabilized_synergy_ids.has(pattern.get("id","")) and elapsed<300: step()
+	assert(game.meta.stabilized_synergy_ids.has(pattern.get("id","")),"Functioning discovery did not stabilize the pattern for "+id)
+	# Blueprints are bought now; a stabilized pattern halves the price.
+	game.meta.total_research_points += 100
+	assert(preload("res://scripts/meta_shop.gd").buy_room(game.meta,id),"Could not buy the blueprint for "+id)
 	# The earned prototype goes to the top of the pile. Drawing it here isolates
 	# advanced-room acceptance from an unrelated full-hand discard decision.
 	game.hand.clear()

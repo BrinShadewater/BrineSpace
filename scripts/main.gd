@@ -6,6 +6,7 @@ const DiscoveryManagerScript := preload("res://scripts/discovery_manager.gd")
 const OrbitManagerScript := preload("res://scripts/orbit_manager.gd")
 const MetaStateScript := preload("res://scripts/meta_state.gd")
 const ResearchTree := preload("res://scripts/research_tree.gd")
+const ResourceIcons := preload("res://scripts/resource_icons.gd")
 const GridCanvasScript := preload("res://scripts/grid_canvas.gd")
 const RunManagerScript := preload("res://scripts/run_manager.gd")
 const RunSave := preload("res://scripts/run_save.gd")
@@ -284,7 +285,7 @@ var toast_playing := false
 var summary_layer: CanvasLayer
 var summary_panel: PanelContainer
 var summary_title_label: Label
-var summary_text: Label
+var summary_text: RichTextLabel
 var continue_expedition_button: Button
 var end_expedition_button: Button
 var doctrine_layer: CanvasLayer
@@ -1147,10 +1148,13 @@ func _build_ui() -> void:
 	summary_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	summary_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	summary_vbox.add_child(summary_scroll)
-	var summary_body := Label.new()
+	var summary_body := RichTextLabel.new()
 	summary_body.name = "Text"
-	summary_body.add_theme_font_size_override("font_size", 17)
-	summary_body.add_theme_color_override("font_color", Color("bdd5df"))
+	summary_body.bbcode_enabled = true
+	summary_body.fit_content = true
+	summary_body.scroll_active = false
+	summary_body.add_theme_font_size_override("normal_font_size", 17)
+	summary_body.add_theme_color_override("default_color", Color("bdd5df"))
 	summary_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	summary_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	summary_scroll.add_child(summary_body)
@@ -1658,7 +1662,7 @@ func _refresh_wreck_inspector(cell: Vector2i) -> void:
 		note = "Extend the station to a neighboring cell to reach this wreck."
 	elif busy:
 		note = "The salvage rig is assigned elsewhere. Pause that job first."
-	inspector_label.text = "%s\n\nProgress: %d%% / %.0f seconds remaining\nMetal salvage: %d (delivered on docking; storage capacity applies)\n\n%s\n\nNo recoverable occupants. This compartment can only be dismantled. Construction becomes available after the last frame is cleared; normal room costs still apply.\n\n[color=#698782]It held pressure once. I would not ask it twice.[/color]" % [state,roundi(fraction*100),WreckField.DURATION-float(wreck.progress),WreckField.YIELDS[wreck.kind],note]
+	_set_inspector_text("%s\n\nProgress: %d%% / %.0f seconds remaining\nMetal salvage: %d (delivered on docking; storage capacity applies)\n\n%s\n\nNo recoverable occupants. This compartment can only be dismantled. Construction becomes available after the last frame is cleared; normal room costs still apply.\n\n[color=#698782]It held pressure once. I would not ask it twice.[/color]" % [state,roundi(fraction*100),WreckField.DURATION-float(wreck.progress),WreckField.YIELDS[wreck.kind],note])
 	room_operation_button.set_meta("cell",cell)
 	room_operation_button.disabled = not running or (not wreck.active and (not accessible or busy or not has_bay))
 	room_operation_button.text = "PAUSE SALVAGE" if wreck.active else "RESUME SALVAGE" if wreck.progress>0 else "DISMANTLE & SALVAGE"
@@ -1688,7 +1692,7 @@ func _refresh_cryo_inspector(cell: Vector2i) -> void:
 	if recovered_crew.is_empty(): lines.append("No recovered crew recorded.")
 	for member in recovered_crew: lines.append("%s // %s" % [member.name,"ABOARD" if member.alive else "DECEASED"])
 	lines.append("\n[color=#698782]Their clocks stopped. Mine did not.[/color]")
-	inspector_label.text = "\n\n".join(lines)
+	_set_inspector_text("\n\n".join(lines))
 	room_operation_button.set_meta("cell",cell)
 	if ward.cleared:
 		room_operation_button.text = "RESUME ROOM" if occupied[cell].get("suspended",false) else "SUSPEND ROOM"
@@ -1716,7 +1720,7 @@ func _refresh_rock_inspector(cell: Vector2i) -> void:
 		note = "Cut an exposed edge first. The drill needs an open route from its bay."
 	elif busy:
 		note = "The salvage rig is assigned elsewhere. Pause that job first."
-	inspector_label.text = "%s\n\nProgress: %d%% / %.0f seconds remaining\n\n%s\n\nBreak and remove this section before building here. Neighboring rock remains in place. Excavation recovers 4 Metal, delivered on docking. The drill returns to recharge from station Power; cuts remain between trips. Normal room costs apply after clearance.\n\n[color=#698782]The ocean placed this here. It neglected to file a permit.[/color]" % [state,roundi(float(rock.progress)/WreckField.DURATION*100),WreckField.DURATION-float(rock.progress),note]
+	_set_inspector_text("%s\n\nProgress: %d%% / %.0f seconds remaining\n\n%s\n\nBreak and remove this section before building here. Neighboring rock remains in place. Excavation recovers 4 Metal, delivered on docking. The drill returns to recharge from station Power; cuts remain between trips. Normal room costs apply after clearance.\n\n[color=#698782]The ocean placed this here. It neglected to file a permit.[/color]" % [state,roundi(float(rock.progress)/WreckField.DURATION*100),WreckField.DURATION-float(rock.progress),note])
 	room_operation_button.set_meta("cell",cell)
 	room_operation_button.disabled = not running or (not rock.active and (not accessible or busy or not has_bay))
 	room_operation_button.text = "PAUSE EXCAVATION" if rock.active else "RESUME EXCAVATION" if rock.progress>0 else "BREAK & CLEAR ROCK"
@@ -3058,7 +3062,7 @@ func _show_reboot_summary(reason: String, victory := false, archived := false) -
 	for id in run_stabilized_synergy_ids:
 		pattern_research += int(SynergyManagerScript.get_synergy(id).get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
 	var retained := "WHAT SURVIVES\nNew patterns: %d / Stabilized: %d\nArchived Data banked: %d from score / %d from patterns\nLearned patterns and bought blueprints and characters remain in your profile. Spend Archived Data in Meta Progression.\n\n" % [run_discovered_synergy_ids.size(), run_stabilized_synergy_ids.size(), run_awarded_research, pattern_research]
-	summary_text.text = "OUTCOME // " + reason + "\n\n" + retained + "RUN RECORD\n" + summary_text.text.trim_prefix(reason + "\n\n")
+	summary_text.text = ResourceIcons.decorate("OUTCOME // " + reason + "\n\n" + retained + "RUN RECORD\n" + summary_text.text.trim_prefix(reason + "\n\n"), 17)
 	_refresh_learning_ui()
 	preload("res://scripts/title_settings.gd").apply_menu_text(summary_layer)
 	if is_instance_valid(continue_expedition_button) and continue_expedition_button.visible:
@@ -4673,13 +4677,17 @@ func _refresh_harvest_inspector(cell: Vector2i) -> void:
 			if drone.job=="harvest" and Vector2i(drone.target)==cell:
 				status = drone_fleet.battery_status(drone.home,int(resources.power),powered_room_cells.has(drone.home),paused,wrecks)
 				break
-	inspector_label.text = "%s\n\nRemaining: %s\nLoads: %d / %d\nCurrent load: %d%%\n\nDrones choose the nearest reachable surveyed site. Extraction stops when its material is gone. Cargo enters storage at the bay; storage limits apply. Expand the station to survey farther seabed.\n\n[color=#698782]I have counted what remains. It is not an inexhaustible number.[/color]" % [status,_format_cost(remaining),site.units,site.capacity,roundi(site.progress/6.0*100)]
+	_set_inspector_text("%s\n\nRemaining: %s\nLoads: %d / %d\nCurrent load: %d%%\n\nDrones choose the nearest reachable surveyed site. Extraction stops when its material is gone. Cargo enters storage at the bay; storage limits apply. Expand the station to survey farther seabed.\n\n[color=#698782]I have counted what remains. It is not an inexhaustible number.[/color]" % [status,_format_cost(remaining),site.units,site.capacity,roundi(site.progress/6.0*100)])
 	room_operation_button.set_meta("cell",cell)
 	room_operation_button.disabled = not running or site.units==0
 	room_operation_button.text = "DEPOSIT EXHAUSTED" if site.units==0 else "PAUSE EXTRACTION" if site.active else "RESUME EXTRACTION"
 	room_operation_button.tooltip_text = "Pause this target without losing extracted material or partial work."
 
 var inspector_had_water := false
+
+# Every inspector page ends here, so resource amounts pick up their icon and colour in one place.
+func _set_inspector_text(value: String) -> void:
+	inspector_label.text = ResourceIcons.decorate(value, 16)
 
 func _refresh_inspector() -> void:
 	if inspector_label == null: return
@@ -4712,7 +4720,7 @@ func _refresh_inspector_contents() -> void:
 				var builder=get(str(order.builder)+"_npc")
 				if builder.state!="weld": build_status=Architects.NAMES[order.builder]+" / "+str(builder.activity)
 			if paused: build_status="PAUSED / "+build_status
-			inspector_label.text = build_status+"\n\nMaterials reserved. The connecting seal stays closed until assembly finishes.\n\nAn available architect builds from inside the station. Powered Construction Drone Bays take unassigned jobs."
+			_set_inspector_text(build_status+"\n\nMaterials reserved. The connecting seal stays closed until assembly finishes.\n\nAn available architect builds from inside the station. Powered Construction Drone Bays take unassigned jobs.")
 			room_operation_button.text = "CONSTRUCTION IN PROGRESS"
 			room_operation_button.disabled = true
 			return
@@ -4757,7 +4765,7 @@ func _refresh_inspector_contents() -> void:
 		preview_name_label.text = "No Selection"
 		preview_tags_label.text = "SYSTEM IDLE"
 		preview_name_label.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
-		inspector_label.text = _join_strings([
+		_set_inspector_text(_join_strings([
 			"[color=#70848a]Click a room, construction site or blueprint to inspect it.[/color]",
 			"[color=#70848a]Station integrity:[/color] [color=#c9d3ce]%d%%[/color]" % resources["integrity"],
 			"",
@@ -4766,7 +4774,7 @@ func _refresh_inspector_contents() -> void:
 			"[color=#34484b]BRINE waits beneath the water. Select a module to read its pattern.[/color]",
 			"",
 			_preview_divider()
-		], "\n")
+		], "\n"))
 		return
 	preview_texture.texture = card_textures.get(room["id"])
 	preview_name_label.text = room["display_name"]
@@ -4822,7 +4830,7 @@ func _refresh_inspector_contents() -> void:
 		preview_lines.push_front(preload("res://scripts/room_flooding.gd").inspector(self,room))
 		var fire_info := preload("res://scripts/room_fire.gd").inspector(self,room)
 		if not fire_info.is_empty(): preview_lines.push_front(fire_info)
-	inspector_label.text = _join_strings(preview_lines, "\n")
+	_set_inspector_text(_join_strings(preview_lines, "\n"))
 	inspector_focus_button.disabled = previewing_card or not room.has("pos")
 	inspector_focus_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
 
@@ -5249,6 +5257,7 @@ func _journal_tab_changed(index: int) -> void:
 	archive_label.get_v_scroll_bar().set_deferred("value", float(journal_scroll_positions.get(index, 0.0)))
 
 func _set_journal_text(value: String) -> void:
+	value = ResourceIcons.decorate(value, 16)
 	if archive_label.text == value:
 		return
 	var position := archive_label.get_v_scroll_bar().value

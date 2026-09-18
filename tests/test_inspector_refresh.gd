@@ -48,6 +48,7 @@ func run() -> void:
 	game.occupied[game.selected_room_cell].water_level = 0.0
 	game.operations_refresh = 0.5
 	game._process(0.0)
-	check(game.inspector_label.text.contains("WATER 0% // DRY"), "Final drainage clears the previous water reading")
+	# Resource words carry their icon and colour now, so the reading and its label are separate.
+	check(game.inspector_label.text.contains("WATER 0%") and game.inspector_label.text.contains("DRY"), "Final drainage clears the previous water reading")
 	print("INSPECTOR REFRESH: ", "PASS" if failures == 0 else "FAIL", " / refreshes=", game.inspector_refreshes, " / 120 update ms=", elapsed)
 	quit(failures)

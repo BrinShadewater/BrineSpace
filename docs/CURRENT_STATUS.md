@@ -1,3 +1,9 @@
+## Resource icons everywhere and playtest scripts on the new meta rules - September 17, 2026
+
+1. The run summary is a RichTextLabel now, and the summary, journal and every inspector page run their text through ResourceIcons.decorate: amounts written in sentences ("+5 Metal", "WATER 30%") pick up the resource icon and its HUD colour. The pattern takes an amount before or after the word but only on the same line (a number ending one line was being pulled into the next line's resource).
+2. Playtests follow the new chain: stabilising a pattern no longer decrypts a blueprint, so playtest_condenser_progression, playtest_nursery_progression, playtest_polish and playtest_power_expansion stabilise, buy the blueprint with Archived Data and put it in the live deck to carry on. Condenser and nursery pass.
+3. Known, not caused by this work: playtest_bill_npc fails the same way on the previous commit (Bill never reaches the repair pose for its evidence capture), playtest_polish still fails an economy step, and playtest_power_expansion needs more than 400 s.
+
 ## Navigation rebuild stall and the second diagnostics batch - September 17, 2026
 
 The new performance gate found the stall the owner has been reporting since the first lag notes.

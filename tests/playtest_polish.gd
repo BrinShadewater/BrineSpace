@@ -70,8 +70,11 @@ func _run() -> void:
 	_expect(game.synergy_stabilization_progress.get("closed_air_loop", 0) == 2, "second functioning cycle is still stabilizing")
 	await _capture("03b-stabilizing-1600")
 	_cycle_with_drone_returns()
-	_expect(game.meta.unlocked_room_ids.has("biodome"), "three cycles decrypt the real blueprint")
-	_expect(game.draw_pile.back() == "biodome", "the prototype is placed on top of the live deck")
+	_expect(game.meta.stabilized_synergy_ids.has("closed_air_loop"), "three cycles stabilize the pattern")
+	game.meta.total_research_points += 100
+	_expect(preload("res://scripts/meta_shop.gd").buy_room(game.meta, "biodome"), "its blueprint is bought with Archived Data")
+	game.draw_pile.append("biodome") # Bought blueprints join the next loop's deck; continue this one.
+	_expect(game.draw_pile.back() == "biodome", "the bought blueprint is on top of the live deck")
 	game._discard_card(str(game.hand[0]))
 	_expect(game.hand.has("biodome"), "a normal reroll draws the prototype")
 	await _capture("04-prototype-1600")
@@ -81,7 +84,8 @@ func _run() -> void:
 	_build("biodome", Vector2i(20, 21), 1) # Connect east to Life Support; old location contains a seeded cryo ward.
 	for _tick in range(3):
 		_cycle_with_drone_returns()
-	_expect(game.meta.unlocked_room_ids.has("bio_lab"), "building the prototype starts a second discovery chain")
+	game.meta.total_research_points += 100
+	_expect(preload("res://scripts/meta_shop.gd").buy_room(game.meta, "bio_lab"), "the second chain's blueprint is bought too")
 	_expect(game.resources["water"] >= 0, "the expanded bio economy remains water-positive")
 	_expect(game.running, "the station survives its two-step discovery chain")
 	game.selected_card_id = ""

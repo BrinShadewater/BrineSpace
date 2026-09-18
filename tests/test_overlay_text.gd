@@ -48,7 +48,7 @@ func _run() -> void:
 	await capture("journal-large", game.archive_label.get_parent().get_parent())
 	game._toggle_journal()
 	game._show_reboot_summary("The archive has recorded this test.", false)
-	check(game.summary_text.get_theme_font_size("font_size") == 22, "Summary must use the saved text scale")
+	check(game.summary_text.get_theme_font_size("normal_font_size") == 22, "Summary must use the saved text scale")
 	check(game.summary_layer.is_ancestor_of(root.gui_get_focus_owner()), "Summary must receive keyboard focus")
 	await capture("summary-large", game.summary_panel)
 	for path in ["user://overlay_text_test.cfg", "user://overlay_text_test.json", "user://overlay_text_test.loop"]:
