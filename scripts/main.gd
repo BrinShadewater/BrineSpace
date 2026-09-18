@@ -1475,12 +1475,15 @@ func _build_journal_overlay() -> void:
 	var close := Button.new()
 	close.text = "RETURN TO STATION  [J / ESC]"
 	close.set_meta("key_hint", "RETURN TO STATION  [{Journal} / ESC]")
-	close.custom_minimum_size.y = 44
+	# Return to Station and Settings sit at the same size under the journal and diagnostics pages;
+	# they were 495 wide by 44 tall against 380 by 50 (owner playtest note 11).
+	close.custom_minimum_size = Vector2(380, 50)
+	close.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	close.pressed.connect(_toggle_journal)
 	_style_hud_button(close, false)
 	body.add_child(close)
 	journal_layer.set_meta("close_button", close)
-	preload("res://scripts/title_button_style.gd").apply(close, 900, 52)
+	preload("res://scripts/title_button_style.gd").apply(close, 380, 50)
 	_add_menu_button(body, "Settings", _open_overlay_settings)
 
 func _journal_is_open() -> bool:

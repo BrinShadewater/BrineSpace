@@ -1,3 +1,15 @@
+## Journal footer buttons match - September 17, 2026
+
+1. Part of note 11: under the journal and diagnostics pages, Return to Station was 495 by 44 and
+   Settings 380 by 50. Both are 380 by 50 now, centred, matching the other menu buttons.
+2. Measured rather than eyeballed: a probe read the two buttons' rects before and after, and the
+   rendered panel shows them aligned.
+3. The rest of note 11 - making Journal and Diagnostics feel like different pages - is untouched.
+   They are tabs of one panel (Patterns, Station Health, Reserves, Event History, Rooms, Crew,
+   Construction), so splitting them is a design decision about what belongs where.
+4. Checked: test_overlay_text and test_learning_ui pass headless, test_navigation_badges passes on
+   the native lane (badge bindings, diagnostics tab, journal actions, two HUD sizes).
+
 ## Archive transmission replay types itself out - September 17, 2026
 
 1. Note 13: replaying a recovered transmission from Codex > Transmissions dropped the whole text
