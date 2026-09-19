@@ -4,8 +4,11 @@ Open **Room Layout Studio** from the title screen or press **F9** during play.
 The expedition pauses until the studio closes. Choose a room and orientation;
 local layouts apply to every instance of that room and orientation.
 
-**Show character** on the toolbar stands Bill in the room at gameplay size, for judging
-scale (the side panel's Scale: Bill menu also offers Walking and Place). View options
+**Show character** on the toolbar stands a crew member in the room at gameplay size,
+for judging scale. The side panel's **Scale:** picker chooses Bill, Marsh, Branforth or
+Veld, and the menu beside it offers Standing, Walking and Place. The choice is a preview
+preference and never enters a layout. Settle prop size once against a crew member before
+decorating: library props share one scale, so one decision covers all of them. View options
 (Options panel open, snap, alignment guides, entryway areas, clean preview, riser wall,
 foundation, lights, animation, zoom and the character) carry over between rooms and
 rotations and are saved beside the layouts in `user://room_layouts.json.studio.cfg`.
@@ -37,11 +40,43 @@ trolley, book trolley, linen hamper and sealed carry case. Search filters the
 current category. Thumbnails use registered cutouts, including older props whose
 source artwork has a solid background.
 
+### The tileset library
+
+About 10,900 bought props in 42 sets load from `rooms/tileset-library/props.json`.
+Two dropdowns narrow them and combine: the first adds a **kind** filter per category
+(Storage, Seating & tables, Screens & computers, Lab & science, Medical, Plants &
+growing, Power & reactor, Industrial & workshop, Water & marine, Ship interior and
+more), the second picks a **set** (Galley, Hydroponics, Infirmary, Undercity…). Search
+matches the label, the set and any name you gave a prop. The tray lists 280 entries at
+a time and says how many it hid; previews render one per frame, and a progress bar under
+the tray title counts them in.
+
+With a library prop selected in the tray:
+
+- **☆ Star** adds it to **★ Favourites**, the first tileset filter.
+- **Mark for removal** takes it out of the tray and lists it under **Marked for
+  removal**. Nothing is deleted until an agent sweeps the list. Right-click does the same.
+- **Move to category…** refiles it. Picking its original category clears the move.
+- **Rename** gives it a name of your own, used in the tray, the sidebar and search.
+  Clear the field to go back. A prop is a region of a shared sheet, so no file is renamed.
+- **Split in two** is for two objects boxed as one. It cuts at the emptiest line through
+  the middle and refuses when there is none. The entry keeps its identity as the first
+  part, so placed copies still resolve; the second part joins the tray.
+
+Ctrl-click or Shift-click selects several entries; Star and Mark for removal then act
+on the whole batch. Your stars, marks, names and moves are saved beside the registry in
+`favourites.json`, `retired.json`, `names.json` and `categories.json`. They are yours:
+agents read them and act on them, and never reset them.
+
 ## Floors and doors
 
 Choose **Floor finish** and click a preset to replace the whole room's floor.
-All fourteen registered floor sources are available, plus **Room default** to
-restore the authored floor. There are no paint brushes, individual tile swaps,
+The registered floor sources are available, plus the finishes listed in
+`rooms/tileset-library/floors.json` (deck plates, panels and tiles cut from the bought
+packs), plus **Room default** to restore the authored floor. Every finish is drawn at
+42% over the authored floor, so it reads as a change of texture. Adding a finish is
+data only: a 192px image of one tile repeated 4×4, and a caption in `floors.json`.
+There are no paint brushes, individual tile swaps,
 variation seeds or rectangle-fill tools in this UI. Changes share normal undo,
 redo and Save, and appear in runtime rooms as well as the preview.
 
@@ -87,3 +122,10 @@ native title-screen button and checks actual pointer-aligned tray drops, reverse
 drags, rejected default restoration, all five new props and focused filters with
 Free placement disabled. `tests/test_layout_performance_guards.gd` checks tray
 retention, recovery, bounded undo, and safe thumbnail shutdown.
+
+`tests/test_tileset_library_tools.gd` covers the library controls: star and the
+Favourites filter, move to category and back, batch marking, rename, Split on two
+stacked chairs, all four crew in the picker, floor footprints including the mirrored
+case, and every finish in `floors.json`. It redirects the registry and all four owner
+files under `output/`. These three are native-lane tests: run them with
+`python tools/run_tests.py --native --only <names, comma-separated>`.
