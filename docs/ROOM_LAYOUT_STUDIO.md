@@ -54,6 +54,16 @@ them in. **In this room** lists only what is already placed here, for reusing th
 chair or console. Resting the pointer on an entry shows it enlarged, straight from the
 sheet, beside the tray.
 
+**Group look-alikes** shows one tile for each family of near-identical props (the same
+rack with different guns, the same monitor with a different screen), marked `×N`. About
+a fifth of the library folds away. Nothing is hidden for good: select the tile and press
+**Variants (N)** to list the family, **◀ Back** to return. Stars, marks and In this room
+always list every prop.
+
+Where a set has been given **titles**, the tray shows what a prop is ("Centrifuge,
+benchtop") instead of its library label ("Lab 121"); search matches both, the tooltip
+keeps the label, and a name you give with Rename still wins.
+
 **New props at %** (side panel) is the size a prop starts at when dragged in. Library
 props share one scale, so set it once against a crew member and every placement
 follows; placed props keep their own size. It is remembered between sessions.

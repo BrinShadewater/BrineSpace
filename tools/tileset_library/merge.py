@@ -23,7 +23,7 @@ import argparse, collections, json, subprocess
 
 import numpy as np
 
-from common import (LIB, PROPS, REPO, OPAQUE, load_json, load_props, load_rgba, print_marks,
+from common import (LIB, PROPS, REPO, OPAQUE, load_json, load_props, load_rgba, print_marks, refresh_variants,
                     remap_marks, save_json, set_geometry, sheet_of, trim)
 
 RUN = 0.6          # share of a shared edge that must be one opaque run
@@ -207,6 +207,7 @@ def main():
     print("owner marks before remap:"); print_marks()
     save_json(PROPS, out); save_json(LIB / "merged.json", alias, indent=1)
     print("marks remapped:", remap_marks(alias))
+    refresh_variants({e["id"] for e in out}, alias)
 
 
 if __name__ == "__main__":

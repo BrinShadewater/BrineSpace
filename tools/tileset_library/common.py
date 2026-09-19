@@ -108,6 +108,27 @@ def next_numbers(props):
     return seen
 
 
+def refresh_variants(valid_ids, alias=None):
+    """Keep variants.json to props that exist: follow merges, drop the swept, and drop
+    any family left with fewer than two members."""
+    path = LIB / "variants.json"
+    data = load_json(path)
+    if not data:
+        return 0
+    alias = alias or {}
+    groups, before = [], sum(len(g) for g in data.get("groups", []))
+    for family in data.get("groups", []):
+        members = []
+        for pid in family:
+            pid = alias.get(pid, pid)
+            if pid in valid_ids and pid not in members:
+                members.append(pid)
+        if len(members) > 1:
+            groups.append(members)
+    save_json(path, {"groups": groups})
+    return before - sum(len(g) for g in groups)
+
+
 def print_marks():
     """Show the owner's marks before anything rewrites them."""
     for name in MARKS:

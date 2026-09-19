@@ -38,6 +38,13 @@ var pager_next: Button
 var hover_panel: PanelContainer
 var hover_image: TextureRect
 var hover_index:=-1
+static var VARIANTS_PATH:="res://rooms/tileset-library/variants.json"
+var variant_group: Dictionary={}     # library id -> family index
+var variant_members: Array=[]        # family index -> library ids
+var group_variants:=true
+var variant_focus:=-1
+var group_toggle: CheckButton
+var variants_button: Button
 var names: Dictionary={}
 var rename_field: LineEdit
 var favourite_button: Button
@@ -550,6 +557,17 @@ func _ready() -> void:
 	rename_field.tooltip_text="Give this prop a name of your own. It replaces the library label in the tray, the sidebar and search, and is saved to names.json. Clear the field to go back to the library label."
 	tray.add_child(rename_field)
 	rename_field.text_submitted.connect(func(text): rename(selected_library_id(),text))
+	# The packs ship one rack with different guns, one monitor with different screens.
+	# One tile per family keeps the tray readable; the button opens the family.
+	load_variants()
+	var family_row:=HBoxContainer.new(); tray.add_child(family_row)
+	group_toggle=CheckButton.new(); group_toggle.text="Group look-alikes"; group_toggle.button_pressed=group_variants
+	group_toggle.tooltip_text="Show one tile for each family of near-identical props (marked ×N). Nothing is hidden for good: select the tile and press Variants."
+	group_toggle.size_flags_horizontal=Control.SIZE_EXPAND_FILL; family_row.add_child(group_toggle)
+	group_toggle.toggled.connect(func(on):
+		group_variants=on; Prefs.save_value("group_variants",on); rebuild_library())
+	variants_button=Button.new(); variants_button.text="Variants"; variants_button.disabled=true; family_row.add_child(variants_button)
+	variants_button.pressed.connect(func(): show_variants(-1 if variant_focus>=0 else int(variant_group.get(selected_library_id(),-1))))
 	split_button=Button.new(); split_button.text="Split in two"; split_button.disabled=true
 	split_button.tooltip_text="For two objects the scanner boxed as one (a chair stacked on a chair). Cuts at the emptiest line through the middle, keeps this entry as the first part and adds the second to the tray. Saved to props.json."
 	refile_row.add_child(split_button)
@@ -643,6 +661,8 @@ func apply_prefs() -> void:
 		control.toggled.connect(func(value): Prefs.save_value(key,value))
 	if saved.get("zoom") is float: zoom_slider.value=clampf(saved.zoom,zoom_slider.min_value,zoom_slider.max_value)
 	zoom_slider.value_changed.connect(func(value): Prefs.save_value("zoom",float(value)))
+	if saved.get("group_variants") is bool and group_toggle!=null:
+		group_variants=saved.group_variants; group_toggle.set_pressed_no_signal(group_variants)
 	if (saved.get("place_scale") is float or saved.get("place_scale") is int) and float(saved.place_scale)>=0.25 and float(saved.place_scale)<=2.0:
 		place_scale=float(saved.place_scale); place_control.set_value_no_signal(place_scale*100.0)
 	if saved.get("cast") is int and int(saved.cast)>0 and int(saved.cast)<scale_actor.CAST.size():
@@ -1211,6 +1231,26 @@ func selected_library_id() -> String:
 	var picked:=library_list.get_selected_items()
 	return "" if picked.is_empty() else str(library_list.get_item_metadata(picked[0]))
 
+func load_variants() -> void:
+	variant_group.clear(); variant_members.clear()
+	if not FileAccess.file_exists(VARIANTS_PATH): return
+	var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(VARIANTS_PATH))
+	if not parsed is Dictionary: return
+	for family in parsed.get("groups",[]):
+		var members: Array=[]
+		for short_id in family:
+			var id:="library/tileset-"+str(short_id)
+			if Library.entries().has(id): members.append(id)
+		if members.size()<2: continue              # swept or merged down to one: not a family any more
+		for id in members: variant_group[id]=variant_members.size()
+		variant_members.append(members)
+
+func show_variants(family: int) -> void:
+	variant_focus=family if family>=0 and family<variant_members.size() else -1
+	rebuild_library()
+	library_list.get_v_scroll_bar().value=0
+	update_retire_button()
+
 func turn_page(step: int) -> void:
 	var pages:=maxi(1,ceili(float(tray_total)/TRAY_LIMIT))
 	var next:=clampi(tray_page+step,0,pages-1)
@@ -1340,6 +1380,13 @@ func update_retire_button() -> void:
 		favourite_button.text=(("★ Unstar %d" % ids.size()) if all_starred else ("☆ Star %d" % ids.size())) if many else ("★ Starred" if favourites.has(id) else "☆ Star")
 	if move_to!=null:
 		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+	if variants_button!=null:
+		var family:=int(variant_group.get(id,-1))
+		if variant_focus>=0:
+			variants_button.text="◀ Back"; variants_button.disabled=false
+		else:
+			variants_button.text=("Variants (%d)" % variant_members[family].size()) if family>=0 else "Variants"
+			variants_button.disabled=family<0 or many
 	if split_button!=null:
 		split_button.disabled=id.is_empty() or many or str(Library.entries().get(id,{}).get("group",""))!="tileset"
 	if rename_field!=null:
@@ -1361,11 +1408,11 @@ func rebuild_library() -> void:
 	if only_in_room:
 		for key in draft:
 			if str(key).begins_with("library/") and draft[key] is Array: placed[Library.base_id(str(key))]=true
-	var key_now: Array=[index,library_search.text,library_filter.selected,pack]
+	var key_now: Array=[index,library_search.text,library_filter.selected,pack,group_variants,variant_focus]
 	if key_now!=tray_key:
 		tray_key=key_now; tray_page=0
 	var signature: Array=[index,returned,library_search.text,library_filter.selected,pack,
-		retired.size(),favourites.size(),recategorised.size(),tray_page,placed.keys()]
+		retired.size(),favourites.size(),recategorised.size(),tray_page,placed.keys(),group_variants,variant_focus]
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
@@ -1384,29 +1431,41 @@ func rebuild_library() -> void:
 			library_list.set_item_tooltip(library_list.item_count-1,caption+(" • Fixed wall artwork" if prop.has("flush_region") else " • Drag into the room"))
 	var hidden_by_limit:=0
 	var matched:=0
+	var grouping:=group_variants and variant_focus<0 and not only_retired and not only_favourites and not only_in_room
+	var seen_families: Dictionary={}
 	# family_variants scans the whole catalog; with a library this size calling
 	# it per entry is quadratic and froze the Studio on open. Once per rebuild.
 	var room_family: Array=Library.family_variants(entries[index].asset) if library_filter.selected==0 else []
 	var room_id: String=str(entries[index].room)
 	for id in Library.entries():
 		var entry: Dictionary=Library.entries()[id]
-		if only_retired:
+		# Looking inside one family: its members, whatever the other filters say.
+		var in_focus:=variant_focus>=0
+		if in_focus:
+			if int(variant_group.get(id,-1))!=variant_focus or retired.has(id): continue
+		elif only_retired:
 			if not retired.has(id): continue
 		elif retired.has(id): continue
-		if not only_retired and library_filter.selected==0 and id not in room_family and room_id not in entry.get("default_rooms",[]): continue
-		if not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4]): continue
-		if not only_retired and library_filter.selected==1 and entry.get("group","")!="common": continue
-		if not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]: continue
-		if only_favourites and not favourites.has(id): continue
-		if only_in_room and not placed.has(id): continue
-		if not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme): continue
-		if not pack.is_empty() and str(entry.get("tileset",""))!=pack: continue
+		if not in_focus and (not only_retired and library_filter.selected==0 and id not in room_family and room_id not in entry.get("default_rooms",[])): continue
+		if not in_focus and (not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4])): continue
+		if not in_focus and (not only_retired and library_filter.selected==1 and entry.get("group","")!="common"): continue
+		if not in_focus and (not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]): continue
+		if not in_focus and (only_favourites and not favourites.has(id)): continue
+		if not in_focus and (only_in_room and not placed.has(id)): continue
+		if not in_focus and (not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme)): continue
+		if not in_focus and (not pack.is_empty() and str(entry.get("tileset",""))!=pack): continue
 		var caption:=label_of(id,entry)
 		if entry.get("group","")=="tileset" and favourites.has(id): caption="★ "+caption
-		if not library_search.text.is_empty():
+		if not in_focus and not library_search.text.is_empty():
 			var needle:=library_search.text.to_lower()
 			var haystack:=(caption+" "+str(entry.label)+" "+str(entry.get("tileset",""))).to_lower()
 			if not haystack.contains(needle): continue
+		# One tile per family of look-alikes; the owner opens the family from the button.
+		var family:=int(variant_group.get(id,-1))
+		if grouping and family>=0:
+			if seen_families.has(family): continue
+			seen_families[family]=true
+			caption+="  ×%d" % variant_members[family].size()
 		# One page of TRAY_LIMIT at a time: previews render one per frame, so the
 		# page is what bounds the work, and the pager reaches the rest.
 		matched+=1

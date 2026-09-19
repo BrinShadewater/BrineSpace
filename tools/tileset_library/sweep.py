@@ -14,7 +14,8 @@ import argparse, collections
 
 import numpy as np
 
-from common import LIB, PREFIX, PROPS, REPO, load_json, load_props, load_rgba, print_marks, save_json, save_png_atomic, sheet_of
+from common import (LIB, PREFIX, PROPS, REPO, load_json, load_props, load_rgba, print_marks, refresh_variants,
+                    save_json, save_png_atomic, sheet_of)
 
 
 def main():
@@ -56,6 +57,7 @@ def main():
     save_json(PROPS, [e for e in props if e["id"] not in going])
     save_json(LIB / "removed.json", removed, indent=1)
     save_json(LIB / "retired.json", [PREFIX + k for k in kept], indent=1)
+    refresh_variants({e["id"] for e in props if e["id"] not in going})
     print(f"swept {len(going)} props on {len(by_sheet)} sheets; {len(props) - len(going)} remain. Commit the sheets, props.json and the mark files together.")
 
 

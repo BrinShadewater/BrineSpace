@@ -38,6 +38,8 @@ results already in the repo before it was committed.
 | `merge.py [--base REV]` | One object, one box. | Rebuilds the committed alias map from the untouched boxes, bar one alias a sweep explains. |
 | `tone.py measure\|repair --sources … [--only set]` | Measures against the owner's props; repairs what is too dark. | `measure` reproduces the known library numbers. |
 | `sweep.py` | Removes what the owner marked. | Dry run keeps the prop that is both retired and starred. |
+| `titles.py sheet "Set" --out …` / `apply file.json` | Real names, a set at a time: numbered pages pinned to ids, then a titles file. | Wet Lab: 198 named, 44 re-filed. |
+| `variants.py [--contact …]` | Families of look-alikes for the tray to fold. | Largest family 20; an earlier chained method grew one to 262. |
 
 Run `register.py --validate` after anything that writes the registry or the sheets.
 
@@ -125,9 +127,25 @@ Work from the untouched scanner boxes, never by patching a merged result.
 - **No automatic split.** Of 227 two-tile-tall boxes with a pinched, discontinuous seam,
   nearly all were single objects: hydrants, bunk beds, sinks with mirrors, IV stands,
   potted plants. The Studio's **Split in two** gives that decision to the owner.
-- **Near-duplicates are variants.** 2,598 look-alikes were gun racks with different
-  guns, portholes with different views, monitors with different screens. Only four
-  props in 10,000 were pixel-identical. Never auto-delete look-alikes.
+- **Near-duplicates are variants.** The look-alikes were gun racks with different guns,
+  portholes with different views, monitors with different screens. Only four props in
+  10,000 were pixel-identical. Never auto-delete look-alikes; `variants.py` groups them
+  and the tray folds each family to one tile. Compare a prop with a family's **first**
+  member only: comparing with any member chains unrelated props through a run of
+  neighbours. `sweep.py` and `merge.py` keep `variants.json` to props that exist.
+
+## Titles: look, then name
+
+Labels are `<Kind> NNN`, so search cannot find "locker". `titles.py sheet` renders a set
+as numbered pages; read them, write `{number: "Title"}` or `{number: ["Title",
+"Category"]}`, and `titles.py apply` it. Name what the prop **is**, plainly ("Incubator,
+dark window"), and let repeats be numbered: that shows the owner where duplicates are.
+The owner's Rename always wins over a title.
+
+The pass is also where categories get fixed, because someone is finally looking. In Wet
+Lab the colour tags had filed an eyewash station and an exit sign under Plants,
+test-tube racks under Screens and blue reagent bottles under Marine; 44 of 198 moved.
+Do one set, let the owner judge, then continue: it is many image reads per set.
 
 Result on the first library: art running off a box edge fell from 884 props to a
 residue the owner resolves with Split.

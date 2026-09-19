@@ -78,6 +78,15 @@ func run() -> void:
 	if removed is Dictionary:
 		for key in removed:
 			if ids.has(key): problems.append("removed.json lists a prop that is still registered: "+str(key))
+	var variants: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+"variants.json"))
+	if variants is Dictionary:
+		var seen_in_family: Dictionary={}
+		for family in variants.get("groups",[]):
+			if family.size()<2: problems.append("variants.json has a family of one: "+str(family))
+			for member in family:
+				if not ids.has(str(member)): problems.append("variants.json names a prop that is not registered: "+str(member))
+				if seen_in_family.has(member): problems.append("variants.json lists a prop in two families: "+str(member))
+				seen_in_family[member]=true
 	var floors: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+"floors.json"))
 	if floors is Dictionary:
 		for caption in floors:

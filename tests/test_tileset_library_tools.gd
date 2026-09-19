@@ -160,6 +160,41 @@ func run() -> void:
 	Library.catalog.erase("library/tileset-test-split"); Library.catalog.erase("library/tileset-test-splitb")
 	e.library_search.text=""
 
+	# --- Families: one tile per family of look-alikes, opened by the Variants button. ---
+	if e.variant_members.is_empty(): return fail("no variant families loaded")
+	var per_set: Dictionary={}
+	for lib_id in Library.entries():
+		var set_name:=str(Library.entries()[lib_id].get("tileset",""))
+		per_set[set_name]=int(per_set.get(set_name,0))+1
+	var fam:=-1
+	for f_index in range(e.variant_members.size()):
+		if int(per_set.get(str(Library.entries()[e.variant_members[f_index][0]].get("tileset","")),0))<=Editor.TRAY_LIMIT: fam=f_index; break
+	if fam<0: return fail("no family in a set small enough to list on one page")
+	var fam_members: Array=e.variant_members[fam]
+	var fam_set:=str(Library.entries()[fam_members[0]].get("tileset",""))
+	for p_index in range(e.pack_filter.item_count):
+		if e.pack_filter.get_item_text(p_index)==fam_set: e.pack_filter.select(p_index)
+	e.library_filter.select(3); e.library_search.text=""; e.group_toggle.button_pressed=true; e.rebuild_library()
+	var fam_rows: Array=[]
+	for row in range(e.library_list.item_count):
+		if str(e.library_list.get_item_metadata(row)) in fam_members: fam_rows.append(row)
+	if fam_rows.size()!=1: return fail("a grouped family should show one tile, showed "+str(fam_rows.size()))
+	if not e.library_list.get_item_text(fam_rows[0]).contains("×%d" % fam_members.size()): return fail("family tile does not show its size: "+e.library_list.get_item_text(fam_rows[0]))
+	e.library_list.deselect_all(); e.library_list.select(fam_rows[0]); e.update_retire_button()
+	if e.variants_button.disabled or not e.variants_button.text.begins_with("Variants ("): return fail("Variants button not offered for a family tile: "+e.variants_button.text)
+	e.show_variants(fam)
+	if e.library_list.item_count!=fam_members.size(): return fail("opening a family should list exactly its members: "+str(e.library_list.item_count))
+	for row in range(e.library_list.item_count):
+		if not str(e.library_list.get_item_metadata(row)) in fam_members: return fail("a stranger is listed inside the family")
+	if not e.variants_button.text.contains("Back"): return fail("no way back out of the family")
+	e.show_variants(-1)
+	e.group_toggle.button_pressed=false; e.rebuild_library()
+	var ungrouped:=0
+	for row in range(e.library_list.item_count):
+		if str(e.library_list.get_item_metadata(row)) in fam_members: ungrouped+=1
+	if ungrouped!=fam_members.size(): return fail("with grouping off every member should be listed: "+str(ungrouped))
+	e.group_toggle.button_pressed=true; e.pack_filter.select(0); e.rebuild_library()
+
 	# --- Placement size: the owner's calibrated size applies to new placements. ---
 	e.library_filter.select(kind); e.library_search.text=""; e.rebuild_library()
 	e.free_placement.button_pressed=true
@@ -223,7 +258,8 @@ func run() -> void:
 	if e.label_of(id,entry)!="Cryo pod": return fail("rename did not take (and should trim spaces)")
 	e.library_filter.select(kind); e.library_search.text="cryo pod"; e.rebuild_library()
 	if e.library_list.item_count!=1 or str(e.library_list.get_item_metadata(0))!=id: return fail("search by the new name did not find the renamed prop")
-	if e.library_list.get_item_text(0)!="Cryo pod": return fail("tray caption is not the new name: "+e.library_list.get_item_text(0))
+	# a family tile carries its size after the name ("Cryo pod  ×10")
+	if not e.library_list.get_item_text(0).begins_with("Cryo pod"): return fail("tray caption is not the new name: "+e.library_list.get_item_text(0))
 	e.library_search.text=original.to_lower(); e.rebuild_library()
 	var still_found:=false
 	for i in range(e.library_list.item_count):
@@ -251,5 +287,5 @@ func run() -> void:
 		e.names.erase(titled_id)
 	e.library_search.text=""
 
-	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split, calibrated size, in-room filter, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split, families grouped and opened, calibrated size, in-room filter, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
 	e.close_editor(); await process_frame; quit()
