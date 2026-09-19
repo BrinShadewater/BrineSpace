@@ -48,8 +48,15 @@ Two dropdowns narrow them and combine: the first adds a **kind** filter per cate
 growing, Power & reactor, Industrial & workshop, Water & marine, Ship interior and
 more), the second picks a **set** (Galley, Hydroponics, Infirmary, Undercity…). Search
 matches the label, the set and any name you gave a prop. The tray lists 280 entries at
-a time and says how many it hid; previews render one per frame, and a progress bar under
-the tray title counts them in.
+a time; the **◀ ▶ pager** under it reaches the rest and shows the range (`281–560 of
+926`). Previews render one per frame, and a progress bar under the tray title counts
+them in. **In this room** lists only what is already placed here, for reusing the same
+chair or console. Resting the pointer on an entry shows it enlarged, straight from the
+sheet, beside the tray.
+
+**New props at %** (side panel) is the size a prop starts at when dragged in. Library
+props share one scale, so set it once against a crew member and every placement
+follows; placed props keep their own size. It is remembered between sessions.
 
 With a library prop selected in the tray:
 
@@ -73,8 +80,10 @@ agents read them and act on them, and never reset them.
 Choose **Floor finish** and click a preset to replace the whole room's floor.
 The registered floor sources are available, plus the finishes listed in
 `rooms/tileset-library/floors.json` (deck plates, panels and tiles cut from the bought
-packs), plus **Room default** to restore the authored floor. Every finish is drawn at
-42% over the authored floor, so it reads as a change of texture. Adding a finish is
+packs), plus **Room default** to restore the authored floor. A finish is drawn over the
+authored floor: **Finish strength** under the list sets how strongly, from 20% to 100%
+(42% unless you change it). It is per room, saves with the layout, shares undo, and
+survives trying another finish. Adding a finish is
 data only: a 192px image of one tile repeated 4×4, and a caption in `floors.json`.
 There are no paint brushes, individual tile swaps,
 variation seeds or rectangle-fill tools in this UI. Changes share normal undo,
@@ -97,6 +106,13 @@ opposite visual corner in place. Restoring a returned default also checks cleara
 Whole-wall assemblies resize as a unit; individual baked objects cannot be split.
 
 ## Persistence and review
+
+**Copy to other rotations** (beside Save) uses the rotation you are looking at for the
+other three. The room stays riser-north at every rotation and only the open door sides
+move, so the composition is kept: a prop moves only where a door approach at that
+rotation forces it, by the shortest way out. A rotation that still fails validation is
+left as it was and named in the status line, for you to finish by hand. Look at each
+rotation afterwards; validation permits a layout, your eye accepts it.
 
 **Save** writes `user://room_layouts.json`, independently of expedition saves.
 Per-orientation drafts, cross-room copy/paste, undo, recovery and adoption of local

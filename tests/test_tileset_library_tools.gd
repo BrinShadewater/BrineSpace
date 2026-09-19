@@ -160,6 +160,62 @@ func run() -> void:
 	Library.catalog.erase("library/tileset-test-split"); Library.catalog.erase("library/tileset-test-splitb")
 	e.library_search.text=""
 
+	# --- Placement size: the owner's calibrated size applies to new placements. ---
+	e.library_filter.select(kind); e.library_search.text=""; e.rebuild_library()
+	e.free_placement.button_pressed=true
+	e.place_scale=0.8
+	var drop_id: String=str(e.library_list.get_item_metadata(0))
+	if not e.add_library_asset(drop_id,Vector2(-120,60)): return fail("could not place a library prop")
+	if e.draft.get("size/"+drop_id)!=[0.8,0.8]: return fail("new placement ignored the calibrated size: "+str(e.draft.get("size/"+drop_id)))
+
+	# --- In this room: lists what is placed here and nothing else. ---
+	e.library_filter.select(e.in_room_filter); e.rebuild_library()
+	var saw_drop:=false
+	for i in range(e.library_list.item_count):
+		var listed_id: String=str(e.library_list.get_item_metadata(i))
+		if listed_id==drop_id: saw_drop=true
+		var is_placed:=false
+		for key in e.draft:
+			if e.draft[key] is Array and Library.base_id(str(key))==listed_id: is_placed=true
+		if not is_placed: return fail("In this room lists a prop that is not placed here: "+listed_id)
+	if not saw_drop: return fail("In this room does not list the prop just placed")
+	if e.library_list.item_count>=20: return fail("In this room is not narrowing the tray: "+str(e.library_list.item_count))
+
+	# --- Paging: a kind larger than one page is reachable, and a new filter starts at page one. ---
+	var big:=-1
+	for i in e.theme_filters:
+		e.library_filter.select(i); e.rebuild_library()
+		if e.tray_total>Editor.TRAY_LIMIT: big=i; break
+	if big<0: return fail("no kind is larger than one tray page; the pager is untested")
+	var first_on_page_one: String=str(e.library_list.get_item_metadata(0))
+	if not e.pager_next.visible or e.pager_next.disabled or not e.pager_prev.disabled: return fail("pager buttons wrong on page one")
+	e.turn_page(1)
+	if e.tray_page!=1 or str(e.library_list.get_item_metadata(0))==first_on_page_one: return fail("next page did not advance the tray")
+	if not e.pager_label.text.contains(" of "+str(e.tray_total)): return fail("pager label does not state the range: "+e.pager_label.text)
+	e.library_filter.select(kind); e.rebuild_library()
+	if e.tray_page!=0: return fail("changing the filter did not return to page one")
+
+	# --- Copy to other rotations: the placed prop reaches all three, saved. ---
+	var asset: String=str(e.entries[e.index].asset)
+	var home: int=e.quarter
+	e.copy_to_other_rotations()
+	if e.quarter!=home: return fail("copy to other rotations did not return to the starting rotation")
+	for q in range(4):
+		var saved_q: Dictionary=Store.data.get(Store.key(asset,q),{})
+		if not (saved_q.get(drop_id) is Array): return fail("rotation %d did not receive the placed prop: %s" % [q*90,e.status.text])
+
+	# --- Finish strength: set per room, kept when trying another finish. ---
+	e.layer=1; e.refresh()
+	e.floor_tools.apply_finish(1)
+	e.floor_tools.preview_strength(80.0)
+	if absf(float(e.draft.get("floor/strength",0.0))-0.8)>0.001: return fail("finish strength did not reach the layout")
+	e.floor_tools.apply_finish(2)
+	if absf(float(e.draft.get("floor/strength",0.0))-0.8)>0.001: return fail("choosing another finish reset the strength")
+	e.floor_tools.preview_strength(42.0)
+	if e.draft.has("floor/strength"): return fail("the default strength should not be stored")
+	e.layer=0; e.refresh()
+	e.library_filter.select(kind); e.library_search.text=""; e.rebuild_library()
+
 	# --- Rename: the owner's name shows in the tray, is found by search, persists, and clears. ---
 	var original: String=str(entry.label)
 	e.rename(id,"  Cryo pod  ")
@@ -179,5 +235,5 @@ func run() -> void:
 	if e.names.has(id) or e.label_of(id,entry)!=original: return fail("clearing the field did not restore the library label")
 	e.library_search.text=""
 
-	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split, rename shown, searched, saved and cleared")
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split, calibrated size, in-room filter, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
 	e.close_editor(); await process_frame; quit()

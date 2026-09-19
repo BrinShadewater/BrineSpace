@@ -145,7 +145,8 @@ static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, sour
 		var material:=tile_material(values,cell)
 		var path: String=(HALL_TILES if corridor else source_path) if material==0 else (DECK if material in [2,3] else SCIENCE)
 		var finish: String=str(values.get("floor/finish",""))
-		if finish in finishes().values(): path=finish
+		var finished:=finish in finishes().values()
+		if finished: path=finish
 		var uv_rect: Rect2
 		if material==0:
 			var source=values.get(tile_key(cell),[cell.x,cell.y] if corridor else [cell.x%4,cell.y%4])
@@ -157,7 +158,10 @@ static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, sour
 		else: uv_rect=Rect2(0.20,0.37,0.20,0.20)
 		var shade:=1.0
 		if values.get("floor/variation",false): shade=0.975+float(posmod(hash([cell,values.get("floor/seed",1)]),6))*0.01
-		var color:=Color(shade,shade,shade,1.0 if corridor else opacity)
+		# An owner-picked finish carries its own strength; without one it draws at the
+		# room's authored opacity, as every finish did before the setting existed.
+		var strength: float=clampf(float(values.get("floor/strength",opacity)),0.1,1.0) if finished else opacity
+		var color:=Color(shade,shade,shade,1.0 if corridor else strength)
 		if corridor and path==HALL_TILES and material==0 and not values.has(tile_key(cell)):
 			add_hall_cell(groups,rect,poly,q,shape,color,variant)
 			continue

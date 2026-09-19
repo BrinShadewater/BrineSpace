@@ -26,6 +26,18 @@ static var CATEGORIES_PATH:="res://rooms/tileset-library/categories.json"
 static var NAMES_PATH:="res://rooms/tileset-library/names.json"
 static var PROPS_PATH:="res://rooms/tileset-library/props.json"
 var split_button: Button
+var place_scale:=0.5          # size new placements start at; the owner calibrates once against a crew member
+var place_control: SpinBox
+var in_room_filter:=-1
+var tray_page:=0
+var tray_key: Array=[]
+var tray_total:=0
+var pager_label: Label
+var pager_prev: Button
+var pager_next: Button
+var hover_panel: PanelContainer
+var hover_image: TextureRect
+var hover_index:=-1
 var names: Dictionary={}
 var rename_field: LineEdit
 var favourite_button: Button
@@ -458,6 +470,14 @@ func _ready() -> void:
 	var size_label:=Label.new(); size_label.text="Size %"; size_row.add_child(size_label)
 	size_control=SpinBox.new(); size_control.min_value=25; size_control.max_value=200; size_control.step=5; size_control.value=100
 	size_row.add_child(size_control); size_control.value_changed.connect(resize_selected)
+	var place_row:=HBoxContainer.new(); side.add_child(place_row)
+	var place_label:=Label.new(); place_label.text="New props at %"; place_row.add_child(place_label)
+	place_control=SpinBox.new(); place_control.min_value=25; place_control.max_value=200; place_control.step=5; place_control.value=place_scale*100.0
+	place_control.tooltip_text="The size a prop starts at when dragged from the tray. Library props share one scale, so set this once against a crew member and every placement follows. Placed props keep their own size."
+	place_row.add_child(place_control)
+	place_control.value_changed.connect(func(value):
+		place_scale=float(value)/100.0
+		Prefs.save_value("place_scale",place_scale))
 	object_buttons.append(button(side,"Return selected to tray",remove_library_asset))
 	
 	var flips:=HBoxContainer.new(); side.add_child(flips)
@@ -491,6 +511,8 @@ func _ready() -> void:
 	tileset_categories=themes
 	favourites_filter=library_filter.item_count
 	library_filter.add_item("★ Favourites")
+	in_room_filter=library_filter.item_count
+	library_filter.add_item("In this room")
 	for theme in themes:
 		theme_filters[library_filter.item_count]=theme
 		library_filter.add_item(str(theme))
@@ -506,18 +528,21 @@ func _ready() -> void:
 	load_retired()
 	retire_button=Button.new(); retire_button.text="Mark for removal"; retire_button.disabled=true
 	retire_button.tooltip_text="Take this asset out of the tray. Nothing is deleted: the id goes to retired.json and you can restore it from the Marked for removal filter."
-	tray.add_child(retire_button)
+	# Paired controls: stacked one per row they squeezed the tray to a single row of previews.
+	var marks_row:=HBoxContainer.new(); tray.add_child(marks_row)
+	retire_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL; retire_button.clip_text=true; marks_row.add_child(retire_button)
 	retire_button.pressed.connect(func(): mark_selected(retired,save_retired))
 	load_marks()
 	favourite_button=Button.new(); favourite_button.text="☆ Star"; favourite_button.disabled=true
 	favourite_button.tooltip_text="Star this prop so it turns up under ★ Favourites. Saved to favourites.json."
-	tray.add_child(favourite_button)
+	favourite_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL; favourite_button.clip_text=true; marks_row.add_child(favourite_button)
 	favourite_button.pressed.connect(func(): mark_selected(favourites,save_marks))
 	move_to=OptionButton.new(); move_to.disabled=true
 	move_to.add_item("Move to category…")
 	for theme in tileset_categories: move_to.add_item(str(theme))
 	move_to.tooltip_text="File this prop under a different category. Saved to categories.json; picking its original category puts it back."
-	tray.add_child(move_to)
+	var refile_row:=HBoxContainer.new(); tray.add_child(refile_row)
+	move_to.size_flags_horizontal=Control.SIZE_EXPAND_FILL; move_to.clip_text=true; refile_row.add_child(move_to)
 	move_to.item_selected.connect(func(i):
 		if i>0: recategorise(selected_library_id(),str(move_to.get_item_text(i)))
 		move_to.select(0))
@@ -527,7 +552,7 @@ func _ready() -> void:
 	rename_field.text_submitted.connect(func(text): rename(selected_library_id(),text))
 	split_button=Button.new(); split_button.text="Split in two"; split_button.disabled=true
 	split_button.tooltip_text="For two objects the scanner boxed as one (a chair stacked on a chair). Cuts at the emptiest line through the middle, keeps this entry as the first part and adds the second to the tray. Saved to props.json."
-	tray.add_child(split_button)
+	refile_row.add_child(split_button)
 	split_button.pressed.connect(func(): split_selected())
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
@@ -549,6 +574,22 @@ func _ready() -> void:
 	tray.add_child(library_list)
 	library_list.item_selected.connect(func(_i): update_retire_button())
 	library_list.multi_selected.connect(func(_i,_on): update_retire_button())
+	var pager:=HBoxContainer.new(); tray.add_child(pager)
+	pager_prev=Button.new(); pager_prev.text="◀"; pager_prev.tooltip_text="Previous page"; pager.add_child(pager_prev)
+	pager_label=Label.new(); pager_label.size_flags_horizontal=Control.SIZE_EXPAND_FILL; pager_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+	pager_label.add_theme_font_size_override("font_size",12); pager.add_child(pager_label)
+	pager_next=Button.new(); pager_next.text="▶"; pager_next.tooltip_text="Next page"; pager.add_child(pager_next)
+	pager_prev.pressed.connect(func(): turn_page(-1))
+	pager_next.pressed.connect(func(): turn_page(1))
+	# A larger look at whatever the pointer is over: tray thumbnails are small and a
+	# cabinet is hard to tell from a locker until it is placed.
+	hover_panel=PanelContainer.new(); hover_panel.visible=false; hover_panel.mouse_filter=Control.MOUSE_FILTER_IGNORE; hover_panel.z_index=50
+	hover_image=TextureRect.new(); hover_image.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+	hover_image.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED; hover_image.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+	hover_image.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	hover_panel.add_child(hover_image); add_child(hover_panel)
+	library_list.gui_input.connect(on_tray_pointer)
+	library_list.mouse_exited.connect(func(): show_hover(-1))
 	# Right-click an entry to mark or restore it without reaching for the button.
 	library_list.item_clicked.connect(func(i,_at,button):
 		if button==MOUSE_BUTTON_RIGHT:
@@ -564,6 +605,9 @@ func _ready() -> void:
 	button(bottom_actions,"Rotate Room",func(): switch_rotation(quarter+1))
 	button(bottom_actions,"Next Room",func(): switch_room((index+1)%entries.size()))
 	button(bottom_actions,"Save",save_all_rotations)
+	var copy_rotations:=button(bottom_actions,"Copy to other rotations",copy_to_other_rotations)
+	copy_rotations.custom_minimum_size=Vector2(190,36)
+	copy_rotations.tooltip_text="Use this rotation's layout for the other three. Props move only where a door approach at that rotation forces them; a rotation that still fails validation is left as it was and named."
 	status=Label.new()
 	status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	status.custom_minimum_size.y=42
@@ -599,6 +643,8 @@ func apply_prefs() -> void:
 		control.toggled.connect(func(value): Prefs.save_value(key,value))
 	if saved.get("zoom") is float: zoom_slider.value=clampf(saved.zoom,zoom_slider.min_value,zoom_slider.max_value)
 	zoom_slider.value_changed.connect(func(value): Prefs.save_value("zoom",float(value)))
+	if (saved.get("place_scale") is float or saved.get("place_scale") is int) and float(saved.place_scale)>=0.25 and float(saved.place_scale)<=2.0:
+		place_scale=float(saved.place_scale); place_control.set_value_no_signal(place_scale*100.0)
 	if saved.get("cast") is int and int(saved.cast)>0 and int(saved.cast)<scale_actor.CAST.size():
 		cast_pick.select(int(saved.cast)); scale_actor.set_cast(int(saved.cast))
 	if saved.get("character") is int and int(saved.character) in [1,2]: set_character_mode(saved.character)
@@ -1161,6 +1207,99 @@ func selected_library_id() -> String:
 	var picked:=library_list.get_selected_items()
 	return "" if picked.is_empty() else str(library_list.get_item_metadata(picked[0]))
 
+func turn_page(step: int) -> void:
+	var pages:=maxi(1,ceili(float(tray_total)/TRAY_LIMIT))
+	var next:=clampi(tray_page+step,0,pages-1)
+	if next==tray_page: return
+	tray_page=next
+	rebuild_library()
+	library_list.get_v_scroll_bar().value=0
+
+func update_pager() -> void:
+	if pager_label==null: return
+	var pages:=maxi(1,ceili(float(tray_total)/TRAY_LIMIT))
+	var first:=tray_page*TRAY_LIMIT+1
+	var last:=mini(tray_total,(tray_page+1)*TRAY_LIMIT)
+	pager_label.text=("%d–%d of %d" % [first,last,tray_total]) if tray_total>TRAY_LIMIT else ("%d shown" % tray_total)
+	pager_prev.disabled=tray_page<=0
+	pager_next.disabled=tray_page>=pages-1
+	pager_prev.visible=tray_total>TRAY_LIMIT; pager_next.visible=tray_total>TRAY_LIMIT
+
+func on_tray_pointer(event: InputEvent) -> void:
+	if event is InputEventMouseMotion: show_hover(library_list.get_item_at_position(event.position,true))
+
+func show_hover(i: int) -> void:
+	if hover_panel==null or i==hover_index: return
+	hover_index=i
+	var id=library_list.get_item_metadata(i) if i>=0 and i<library_list.item_count else null
+	if id==null or str(id).is_empty() or dragging: hover_panel.visible=false; return
+	var texture: Texture2D=library_list.get_item_icon(i)
+	var entry: Dictionary=Library.entries().get(str(id),{})
+	if entry.get("group","")=="tileset" and Library.source_textures.has(entry.data.source):
+		# straight from the sheet, so the enlargement is crisp rather than a scaled thumbnail
+		var atlas:=AtlasTexture.new(); atlas.atlas=Library.source_textures[entry.data.source]
+		var r: Array=entry.data.region
+		atlas.region=Rect2(float(r[0]),float(r[1]),float(r[2]),float(r[3])); texture=atlas
+	if texture==null or texture==thumbnail_placeholder: hover_panel.visible=false; return
+	var dims:=Vector2(texture.get_size())
+	var factor:=clampf(minf(340.0/maxf(1.0,dims.x),340.0/maxf(1.0,dims.y)),1.0,4.0)
+	hover_image.texture=texture; hover_image.custom_minimum_size=dims*factor
+	hover_panel.reset_size()
+	var at:=Vector2(tray_panel.global_position.x-dims.x*factor-36.0,get_global_mouse_position().y-dims.y*factor*0.5)
+	hover_panel.global_position=Vector2(maxf(8.0,at.x),clampf(at.y,8.0,maxf(8.0,size.y-dims.y*factor-36.0)))
+	hover_panel.visible=true
+
+## Carry this rotation's layout to the other three. The room stays riser-north at
+## every rotation and only the open door sides move, so the composition is kept and
+## a prop moves only where a door approach forces it. A rotation that still fails
+## validation is left as it was and named, for the owner to finish by hand.
+func copy_to_other_rotations() -> void:
+	if comparing: return
+	if floor_tools!=null: floor_tools.finish()
+	if not issues().is_empty(): status.text="Fix this rotation first: "+issues()[0]; return
+	var start_q:=quarter
+	var base: Dictionary=draft.duplicate(true)
+	var report: Array=[]
+	for step in range(1,4):
+		var q:=posmod(start_q+step,4)
+		switch_rotation(q)
+		var before:=draft.duplicate(true)
+		for id in base: draft[id]=base[id].duplicate(true) if (base[id] is Array or base[id] is Dictionary) else base[id]
+		refresh()
+		var moved:=clear_door_approaches()
+		if issues().is_empty():
+			if draft!=before: history.append(before); future.clear(); dirty=true
+			report.append("%d°%s" % [q*90,(" (%d moved)" % moved) if moved>0 else ""])
+		else:
+			var reason:=str(issues()[0]); draft=before; refresh()
+			report.append("%d° left alone: %s" % [q*90,reason])
+	switch_rotation(start_q)
+	save_all_rotations()
+	status.text="Copied to other rotations: "+", ".join(report)
+
+func clear_door_approaches() -> int:
+	var moved: Dictionary={}
+	for pass_index in range(6):
+		var changed:=false
+		for prop in room.props:
+			var id:=str(prop.id)
+			if prop.has("flush_region") or not (draft.get(id) is Array): continue
+			var rect: Rect2=prop.rect
+			for side in range(4):
+				if not Geometry.has_port(room.layout[0],side) or not rect.intersects(door_lane(side)): continue
+				var lane:=door_lane(side)
+				var shifts: Array=[Vector2(lane.position.x-rect.size.x-2.0-rect.position.x,0),Vector2(lane.end.x+2.0-rect.position.x,0)] if side in [0,2] else [Vector2(0,lane.position.y-rect.size.y-2.0-rect.position.y),Vector2(0,lane.end.y+2.0-rect.position.y)]
+				shifts.sort_custom(func(a,b): return a.length()<b.length())
+				for shift in shifts:
+					var at: Vector2=rect.position+shift
+					if absf(at.x)>176 or absf(at.y)>176 or absf(at.x+rect.size.x)>176 or absf(at.y+rect.size.y)>176: continue
+					draft[id]=[at.x,at.y]; moved[id]=true; changed=true
+					break
+				break
+		if not changed: break
+		refresh()
+	return moved.size()
+
 func selected_library_ids() -> Array:
 	var result: Array=[]
 	if library_list==null: return result
@@ -1211,8 +1350,18 @@ func rebuild_library() -> void:
 	var pack:=pack_filter.get_item_text(pack_filter.selected) if pack_filter!=null and pack_filter.selected>0 else ""
 	var theme:=str(theme_filters.get(library_filter.selected,""))
 	var only_favourites:=library_filter.selected==favourites_filter
+	# "In this room": the library props already placed here, for reusing the same
+	# chair or console instead of hunting for it again.
+	var only_in_room:=library_filter.selected==in_room_filter
+	var placed: Dictionary={}
+	if only_in_room:
+		for key in draft:
+			if str(key).begins_with("library/") and draft[key] is Array: placed[Library.base_id(str(key))]=true
+	var key_now: Array=[index,library_search.text,library_filter.selected,pack]
+	if key_now!=tray_key:
+		tray_key=key_now; tray_page=0
 	var signature: Array=[index,returned,library_search.text,library_filter.selected,pack,
-		retired.size(),favourites.size(),recategorised.size()]
+		retired.size(),favourites.size(),recategorised.size(),tray_page,placed.keys()]
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
@@ -1230,6 +1379,7 @@ func rebuild_library() -> void:
 			library_list.set_item_metadata(library_list.item_count-1,id)
 			library_list.set_item_tooltip(library_list.item_count-1,caption+(" • Fixed wall artwork" if prop.has("flush_region") else " • Drag into the room"))
 	var hidden_by_limit:=0
+	var matched:=0
 	# family_variants scans the whole catalog; with a library this size calling
 	# it per entry is quadratic and froze the Studio on open. Once per rebuild.
 	var room_family: Array=Library.family_variants(entries[index].asset) if library_filter.selected==0 else []
@@ -1244,6 +1394,7 @@ func rebuild_library() -> void:
 		if not only_retired and library_filter.selected==1 and entry.get("group","")!="common": continue
 		if not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]: continue
 		if only_favourites and not favourites.has(id): continue
+		if only_in_room and not placed.has(id): continue
 		if not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme): continue
 		if not pack.is_empty() and str(entry.get("tileset",""))!=pack: continue
 		var caption:=label_of(id,entry)
@@ -1252,7 +1403,11 @@ func rebuild_library() -> void:
 			var needle:=library_search.text.to_lower()
 			var haystack:=(caption+" "+str(entry.label)+" "+str(entry.get("tileset",""))).to_lower()
 			if not haystack.contains(needle): continue
-		if library_list.item_count>=TRAY_LIMIT:
+		# One page of TRAY_LIMIT at a time: previews render one per frame, so the
+		# page is what bounds the work, and the pager reaches the rest.
+		matched+=1
+		if matched<=tray_page*TRAY_LIMIT: continue
+		if matched>(tray_page+1)*TRAY_LIMIT:
 			hidden_by_limit+=1
 			continue
 		if not entry.get("preview_ready",false): thumbnail_queue.append(id)
@@ -1262,11 +1417,13 @@ func rebuild_library() -> void:
 			(" — "+category_of(id,entry)+" — "+str(entry.get("tileset",""))+" set"
 				if entry.get("group","")=="tileset" else "")+
 			" — drag into clear floor space")
+	tray_total=matched
+	update_pager()
 	if hidden_by_limit>0:
-		library_list.add_item("+%d more — narrow by kind, tileset, or search" % hidden_by_limit,thumbnail_placeholder)
+		library_list.add_item("+%d more — next page ▶, or narrow by kind, set or search" % hidden_by_limit,thumbnail_placeholder)
 		library_list.set_item_selectable(library_list.item_count-1,false)
 		library_list.set_item_tooltip(library_list.item_count-1,
-			"The tray lists %d at a time so previews stay responsive." % TRAY_LIMIT)
+			"The tray lists %d at a time so previews stay responsive. Use the pager below for the rest." % TRAY_LIMIT)
 func add_library_asset(id: String, center: Vector2) -> bool:
 	if comparing: return false
 	if defaults.has(id) and draft.get(id)!=null:
@@ -1278,8 +1435,8 @@ func add_library_asset(id: String, center: Vector2) -> bool:
 			var target:="copy/"+id.replace("/","_")+"#"+str(serial)
 			while draft.has(target):
 				serial+=1; target="copy/"+id.replace("/","_")+"#"+str(serial)
-			draft["source/"+target]=id; draft["size/"+target]=[0.5,0.5]
-			var at: Vector2=center-original.rect.size*0.25
+			draft["source/"+target]=id; draft["size/"+target]=[place_scale,place_scale]
+			var at: Vector2=center-original.rect.size*place_scale*0.5
 			draft[target]=[at.x,at.y]; layer=0; selected=target; selected_many.clear(); refresh()
 			if not issues().is_empty(): draft=before; selected=""; refresh(); return false
 			history.append(before); future.clear(); dirty=true; refresh(); return true
@@ -1296,8 +1453,8 @@ func add_library_asset(id: String, center: Vector2) -> bool:
 			layer=0
 			for prop in base_props:
 				if str(prop.id)==id:
-					at=Vector2(defaults[id][0],defaults[id][1]) if prop.has("flush_region") else center-prop.rect.size*0.25
-					if not prop.has("flush_region"): draft["size/"+id]=[0.5,0.5]
+					at=Vector2(defaults[id][0],defaults[id][1]) if prop.has("flush_region") else center-prop.rect.size*place_scale*0.5
+					if not prop.has("flush_region"): draft["size/"+id]=[place_scale,place_scale]
 		draft[id]=[at.x,at.y]; refresh()
 		if not issues().is_empty():
 			var reason:=issues()[0]; draft=before; refresh(); status.text="Cannot place artwork: "+reason; return false
@@ -1311,8 +1468,8 @@ func add_library_asset(id: String, center: Vector2) -> bool:
 	var prop:=Library.template(id)
 	if prop.is_empty(): return false
 	var before:=draft.duplicate(true)
-	var at: Vector2=center-prop.rect.size*0.25
-	draft["size/"+id]=[0.5,0.5]
+	var at: Vector2=center-prop.rect.size*place_scale*0.5
+	draft["size/"+id]=[place_scale,place_scale]
 	if snap.button_pressed: at=at.snapped(Vector2(6,6))
 	draft[id]=[at.x,at.y]; refresh()
 	if not issues().is_empty():
