@@ -11,6 +11,8 @@ var default_thumbnail_queue: Array=[]
 var thumbnail_placeholder: ImageTexture
 var library_list: AssetList
 var library_search: LineEdit
+var tray_progress: ProgressBar
+var tray_pending_total:=0
 var library_filter: OptionButton
 var pack_filter: OptionButton
 var theme_filters: Dictionary={}
@@ -463,6 +465,11 @@ func _ready() -> void:
 	tray_panel.add_theme_stylebox_override("panel",tray_style)
 	var tray:=VBoxContainer.new(); tray_panel.add_child(tray)
 	var library_title:=Label.new(); library_title.text="ASSET TRAY"; tray.add_child(library_title)
+	# Previews render one per frame, so a full tray takes a few seconds to fill.
+	# Show that as progress rather than letting it look stalled.
+	tray_progress=ProgressBar.new(); tray_progress.custom_minimum_size=Vector2(0,14); tray_progress.visible=false
+	tray_progress.tooltip_text="Rendering previews for the props in the tray."
+	tray.add_child(tray_progress)
 	var tray_hint:=Label.new(); tray_hint.text="Drag out to place • Drop back to remove"; tray_hint.add_theme_font_size_override("font_size",12); tray.add_child(tray_hint)
 	library_filter=OptionButton.new()
 	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings"]: library_filter.add_item(label)
@@ -1045,6 +1052,7 @@ func rebuild_library() -> void:
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
+	tray_pending_total=0
 	library_list.clear()
 	var only_retired:=library_filter.selected==library_filter.item_count-1
 	if library_filter.selected in [0,3] and not only_retired and pack.is_empty():
@@ -1292,6 +1300,13 @@ func reset_selected() -> void:
 		history.append(before); future.clear(); dirty=true; refresh()
 
 func _process(delta: float) -> void:
+	if tray_progress!=null:
+		var pending:=thumbnail_queue.size()+default_thumbnail_queue.size()+(1 if thumbnail_render_busy else 0)+(1 if default_thumbnail_busy else 0)
+		tray_pending_total=maxi(tray_pending_total,pending)
+		tray_progress.visible=pending>0
+		if pending>0:
+			tray_progress.max_value=tray_pending_total
+			tray_progress.value=tray_pending_total-pending
 	if scale_actor.mode>0 and is_instance_valid(room):
 		scale_actor.rebuild(room,str(entries[index].room),quarter)
 		scale_actor.advance(delta)
