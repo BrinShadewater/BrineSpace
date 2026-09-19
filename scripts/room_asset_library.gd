@@ -26,7 +26,8 @@ static func entries() -> Dictionary:
 					"data":entry,"label":entry.get("label",entry.id),
 					"width":float(entry.get("display_width",48.0)),
 					"group":"tileset","category":entry.get("category","prop"),
-					"tileset":entry.get("tileset","")}
+					"tileset":entry.get("tileset",""),
+					"title":str(entry.get("title",""))}
 	return catalog
 static func base_id(id: String) -> String: return id.split("#")[0]
 

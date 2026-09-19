@@ -39,6 +39,7 @@ func run() -> void:
 		if bits.size()!=2 or not bits[1].is_valid_int(): problems.append(who+": label is not '<Kind> NNN'")
 		if not str(e.get("category","")) in CATEGORIES: problems.append(who+": unknown category "+str(e.get("category")))
 		if str(e.get("tileset","")).is_empty(): problems.append(who+": no set name")
+		if e.has("title") and str(e.title).strip_edges().is_empty(): problems.append(who+": empty title")
 		var source: String=str(e.source)
 		if not sheets.has(source):
 			var image:=Image.new()

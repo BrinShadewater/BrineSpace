@@ -1163,7 +1163,11 @@ func split_selected() -> void:
 
 ## The owner's name for a prop if they gave one, else its library label.
 func label_of(id: String, entry: Dictionary) -> String:
-	return str(names.get(id,entry.get("label",id)))
+	# The owner's name wins; then a title written by someone who looked at the prop
+	# ("Centrifuge, benchtop"); then the library label ("Lab 121").
+	if names.has(id): return str(names[id])
+	var title:=str(entry.get("title",""))
+	return title if not title.is_empty() else str(entry.get("label",id))
 
 func display_name(id: String, fallback: String) -> String:
 	return label_of(id,Library.entries()[id]) if Library.entries().has(id) else fallback
@@ -1414,7 +1418,7 @@ func rebuild_library() -> void:
 		library_list.add_item(caption,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
 		library_list.set_item_metadata(library_list.item_count-1,id)
 		library_list.set_item_tooltip(library_list.item_count-1,caption+
-			(" — "+category_of(id,entry)+" — "+str(entry.get("tileset",""))+" set"
+			(" — "+str(entry.label)+" — "+category_of(id,entry)+" — "+str(entry.get("tileset",""))+" set"
 				if entry.get("group","")=="tileset" else "")+
 			" — drag into clear floor space")
 	tray_total=matched

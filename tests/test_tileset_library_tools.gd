@@ -218,6 +218,7 @@ func run() -> void:
 
 	# --- Rename: the owner's name shows in the tray, is found by search, persists, and clears. ---
 	var original: String=str(entry.label)
+	var shown_before: String=e.label_of(id,entry)       # a title, where the prop has one
 	e.rename(id,"  Cryo pod  ")
 	if e.label_of(id,entry)!="Cryo pod": return fail("rename did not take (and should trim spaces)")
 	e.library_filter.select(kind); e.library_search.text="cryo pod"; e.rebuild_library()
@@ -232,7 +233,22 @@ func run() -> void:
 	if not (named is Dictionary and named.get(id,"")=="Cryo pod"): return fail("names.json did not persist the rename")
 	if e.display_name(id,"?")!="Cryo pod": return fail("sidebar name does not follow the rename")
 	e.rename(id,"")
-	if e.names.has(id) or e.label_of(id,entry)!=original: return fail("clearing the field did not restore the library label")
+	if e.names.has(id) or e.label_of(id,entry)!=shown_before: return fail("clearing the field did not restore the library name")
+	# --- Titles: a titled prop shows its title, the owner's rename still wins, search finds both. ---
+	var titled_id:=""
+	for candidate in Library.entries():
+		if not str(Library.entries()[candidate].get("title","")).is_empty(): titled_id=candidate; break
+	if not titled_id.is_empty():
+		var titled: Dictionary=Library.entries()[titled_id]
+		if e.label_of(titled_id,titled)!=str(titled.title): return fail("a titled prop does not show its title")
+		e.library_filter.select(3); e.library_search.text=str(titled.label).to_lower(); e.rebuild_library()
+		var by_label:=false
+		for i in range(e.library_list.item_count):
+			if str(e.library_list.get_item_metadata(i))==titled_id: by_label=true
+		if not by_label: return fail("a titled prop is no longer found by its library label")
+		e.names[titled_id]="Owner's name"
+		if e.label_of(titled_id,titled)!="Owner's name": return fail("the owner's rename does not win over a title")
+		e.names.erase(titled_id)
 	e.library_search.text=""
 
 	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split, calibrated size, in-room filter, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
