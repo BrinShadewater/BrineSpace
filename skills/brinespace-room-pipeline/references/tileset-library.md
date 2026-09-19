@@ -23,8 +23,23 @@ from their layout and change only what a rule forces.
 | `legacy/default/`, `legacy/retired/` | The pre-library room and prop art. Character art was not moved. |
 | Desktop `New Tilesets/`, `Another Pass/extracted/`, `cyber punk/` | Untouched sources. `New Tilesets Converted/` holds the conversion output. Not in the repo. |
 
-The conversion, scan, theming and merge scripts were written as session scratch and
-are **not in the repo yet**. Their parameters are recorded here so they can be rebuilt.
+## The tools
+
+`tools/tileset_library/`, run from the repo root. Every one has `--help`, takes its
+paths as arguments, and the four that write have `--dry-run`. Each was checked against
+results already in the repo before it was committed.
+
+| Tool | Does | Checked by |
+|---|---|---|
+| `convert.py SRC DST` | Converts a pack toward the station's look; alpha untouched. | Reproduces the earlier conversion byte for byte. |
+| `scan.py DIR --code xyz --out scan.json --contact pick.png` | Finds props, draws the numbered sheet to pick from. | Finds the same 993 props in the Cyberpunk pack. |
+| `register.py --scan … --converted … --set "Name" --domain "Kind" [--picks picks.json]` | Themes, trims, footprints, labels and registers picks; copies only referenced sheets. `--neon` for neon-lit packs, where blue is not water. | Dry run. |
+| `register.py --validate` | Checks the live registry against the contract below, on the sheets themselves. | Found five props a sweep had damaged. |
+| `merge.py [--base REV]` | One object, one box. | Rebuilds the committed alias map from the untouched boxes, bar one alias a sweep explains. |
+| `tone.py measure\|repair --sources … [--only set]` | Measures against the owner's props; repairs what is too dark. | `measure` reproduces the known library numbers. |
+| `sweep.py` | Removes what the owner marked. | Dry run keeps the prop that is both retired and starred. |
+
+Run `register.py --validate` after anything that writes the registry or the sheets.
 
 ## The registration contract
 
@@ -140,6 +155,13 @@ Targets come from the game's painted room props (`legacy/**/pack/*.png`), not fr
   the measurement, or most measured pixels never qualify for the lift.
 - The library stays a touch under the owner's numbers on purpose. "A bit more" is a
   cheaper correction than "too much".
+- **A repair must be a fixed target per pixel, or every run lifts again.** The first
+  repair blended its gain by mask strength, which moves fringe pixels part of the way
+  each time. `tone.py` uses a mask-weighted target instead and never lifts a prop past
+  90% of its source, so a second run changes nothing and coal stays coal. Because the
+  first library was repaired the old way, a library-wide run today would lift fringe
+  pixels on most sheets once more: use `--only <set>` for a new pack, and treat a
+  library-wide pass as an art decision for the owner.
 - Many flagged props are correctly dark (coal, rubble, blacked-out screens) or correctly
   grey (chain-link, steel pipe, newspaper). The packs are also simply less saturated
   than the owner's art (0.21 against 0.50 at source); conversion did not cause that.
@@ -173,11 +195,17 @@ room. A progress bar under the tray title counts previews as they render.
 
 ## Sweeping what the owner marked
 
-1. Print `retired.json`. Drop anything also in `favourites.json` and tell the owner.
-2. Remove the registrations, blank the regions on the sheets (write atomically: temp
-   file, then replace), append to `removed.json`, empty `retired.json`.
-3. A merge re-run must drop `removed.json` ids and any region left with no opaque art.
-4. Delete a folder only when nothing references it, checked across the repo.
+Use `tools/tileset_library/sweep.py`; it does the following, and `--dry-run` shows it first.
+
+1. Print the mark files. Keep anything also in `favourites.json` and tell the owner.
+2. Remove the registrations and blank the art on the sheets, written atomically (temp
+   file, then replace). **Blank only pixels no surviving prop's region covers.** Boxes
+   overlap where props sit close: blanking whole boxes took 54–65% of the art out of five
+   props the owner had kept. `register.py --validate` caught it; they were restored from
+   the commit before the sweep.
+3. Append to `removed.json`, empty `retired.json`, then validate.
+4. A merge re-run must drop `removed.json` ids and any region left with no opaque art.
+5. Delete a folder only when nothing references it, checked across the repo.
 
 ## Extending the owner's layout to other rotations
 
