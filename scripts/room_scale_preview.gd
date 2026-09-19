@@ -16,9 +16,29 @@ var signature: Array = []
 var corridor: Dictionary = {}
 var wait := 0.0
 
+## Who the Studio stands in the room. Each entry is a character folder holding a
+## catalog.json; the Studio offers them so a layout can be judged against the
+## crew member who will actually use the room, not only against Bill.
+const CAST := [
+	{"name":"Bill","folder":"res://character/major-bill-v3/"},
+	{"name":"Marsh","folder":"res://character/marsh-v2/"},
+	{"name":"Branforth","folder":"res://character/chief-engineer-branforth-v2/"},
+	{"name":"Veld","folder":"res://character/dr-veld-v2/"},
+]
+var cast_index := 0
+
+func set_cast(which: int) -> void:
+	which=clampi(which,0,CAST.size()-1)
+	if which==cast_index: return
+	cast_index=which
+	player=Player.new()
+	signature.clear()
+	load_art()
+
 func load_art() -> void:
 	if not player.frames.is_empty(): return
-	var base := "res://character/major-bill-v3/"
+	var base: String=CAST[cast_index].folder
+	if not FileAccess.file_exists(base+"catalog.json"): base=CAST[0].folder
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
 	for relative in catalog.body:
 		var manifest := base+str(relative)

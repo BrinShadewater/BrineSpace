@@ -27,7 +27,7 @@ static func draw(canvas: CanvasItem, rect: Rect2, occupant: Dictionary, tint := 
 	if occupant.get("recovered",false):
 		if empty_texture==null:
 			var image:=Image.new()
-			preload("res://scripts/safe_image.gd").load_png(image, "res://assets/material-polish-cryo-v1/cryo-equipment.png")
+			preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/material-polish-cryo-v1/cryo-equipment.png")
 			empty_texture=ImageTexture.create_from_image(image)
 		var vertices:=PackedVector2Array()
 		var uv:=PackedVector2Array()

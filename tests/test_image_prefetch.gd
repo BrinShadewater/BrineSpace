@@ -19,10 +19,10 @@ func direct(path: String) -> Image:
 func run() -> void:
 	var manifest := "user://image_prefetch_test_%d.txt" % OS.get_process_id()
 	var paths: Array = [
-		"res://assets/rooms/solar-array/cards/card.png",
-		"res://assets/rooms/reactor/cards/card.png",
+		"res://legacy/default/assets/rooms/solar-array/cards/card.png",
+		"res://legacy/default/assets/rooms/reactor/cards/card.png",
 		"res://assets/rooms/crew-hab/cards/card.png",
-		"res://assets/rooms/research-lab/cards/card.png",
+		"res://legacy/default/assets/rooms/research-lab/cards/card.png",
 		"res://brineui/terminal_button_normal.png",
 	]
 	for path in paths: check(FileAccess.file_exists(path), "Fixture image exists: " + path)

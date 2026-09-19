@@ -1,12 +1,12 @@
 extends RefCounted
 ## Dimensioned front/edge-on construction with registered concept surfaces.
-const SOURCE := "res://rooms/doors/department-source-v1.png"
+const SOURCE := "res://legacy/default/rooms/doors/department-source-v1.png"
 const VARIANTS := ["bio","life-support","engineering","generic","brine","metal","reactor","cryo_chamber","data_archive","storage_bay","crew_lounge","research_lab"]
 static var leaf_art: ImageTexture
 const APERTURE := 72.0
 const SIDE_POST_DEPTH := 16.0 # Same as the canonical wall/socket cap.
 const SIDE_HEIGHT := 3.0 # Same top lift as the shared room wall cutaway.
-const WALL_SOURCE := "res://rooms/whole-room/nursery-master.png"
+const WALL_SOURCE := "res://legacy/default/rooms/whole-room/nursery-master.png"
 
 static func side_post_rect(north: bool) -> Rect2:
 	# Project identical ground footprints upward, rather than tuning two heights.

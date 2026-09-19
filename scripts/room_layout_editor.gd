@@ -11,7 +11,53 @@ var default_thumbnail_queue: Array=[]
 var thumbnail_placeholder: ImageTexture
 var library_list: AssetList
 var library_search: LineEdit
+var tray_progress: ProgressBar
+var tray_pending_total:=0
 var library_filter: OptionButton
+var pack_filter: OptionButton
+var theme_filters: Dictionary={}
+var retire_button: Button
+# Assets the owner has marked for removal. Nothing is deleted here: the id is
+# written to a manifest and the entry leaves the tray, so a misclick costs
+# nothing and the art can be swept later once the list has been reviewed.
+static var RETIRED_PATH:="res://rooms/tileset-library/retired.json"
+static var FAVOURITES_PATH:="res://rooms/tileset-library/favourites.json"
+static var CATEGORIES_PATH:="res://rooms/tileset-library/categories.json"
+static var NAMES_PATH:="res://rooms/tileset-library/names.json"
+static var PROPS_PATH:="res://rooms/tileset-library/props.json"
+var split_button: Button
+var place_scale:=0.5          # size new placements start at; the owner calibrates once against a crew member
+var place_control: SpinBox
+var in_room_filter:=-1
+var tray_page:=0
+var tray_key: Array=[]
+var tray_total:=0
+var pager_label: Label
+var pager_prev: Button
+var pager_next: Button
+var hover_panel: PanelContainer
+var hover_image: TextureRect
+var hover_index:=-1
+static var VARIANTS_PATH:="res://rooms/tileset-library/variants.json"
+var variant_group: Dictionary={}     # library id -> family index
+var variant_members: Array=[]        # family index -> library ids
+var group_variants:=true
+var variant_focus:=-1
+var group_toggle: CheckButton
+var variants_button: Button
+var names: Dictionary={}
+var rename_field: LineEdit
+var favourite_button: Button
+var move_to: OptionButton
+var favourites: Dictionary={}
+var recategorised: Dictionary={}
+var tileset_categories: Array=[]
+var favourites_filter:=-1
+# The tray renders one thumbnail per frame into its own SubViewport, so the cost
+# of a filter is however many entries it lists. Fine at a few hundred; with 8229
+# tileset props registered, All assets pegged a core for sixteen minutes.
+const TRAY_LIMIT:=280
+var retired: Dictionary={}
 var size_control: SpinBox
 var pan:=Vector2.ZERO
 var panning:=false
@@ -24,6 +70,7 @@ var preview_animation:=false
 var preview_clock:=0.0
 var scale_actor = preload("res://scripts/room_scale_preview.gd").new()
 var character_mode: OptionButton
+var cast_pick: OptionButton
 var show_character: CheckButton
 # View options remembered across rooms, rotations and launches (owner playtest).
 const Prefs=preload("res://scripts/room_studio_prefs.gd")
@@ -241,7 +288,7 @@ static func open(host: Node) -> Control:
 func _ready() -> void:
 	thumbnail_placeholder=ImageTexture.create_from_image(Image.create(104,78,false,Image.FORMAT_RGBA8))
 	var foundation_image:=Image.new()
-	preload("res://scripts/safe_image.gd").load_png(foundation_image, "res://rooms/foundation-v1/foundation-silt-v1.png")
+	preload("res://scripts/safe_image.gd").load_png(foundation_image, "res://legacy/default/rooms/foundation-v1/foundation-silt-v1.png")
 	foundation_texture=ImageTexture.create_from_image(foundation_image)
 	apply_studio_theme()
 	process_mode=Node.PROCESS_MODE_ALWAYS
@@ -306,7 +353,7 @@ func _ready() -> void:
 	var clean:=CheckButton.new(); clean.text="Clean preview"; toolbar.add_child(clean)
 	clean.toggled.connect(func(value): clean_preview=value; canvas.queue_redraw())
 	show_character=CheckButton.new(); show_character.text="Show character"; toolbar.add_child(show_character)
-	show_character.tooltip_text="Show Bill standing in the room at gameplay size, for judging scale. Preview only; never saved as furniture."
+	show_character.tooltip_text="Stand a crew member in the room at gameplay size, for judging scale. Preview only; never saved as furniture."
 	show_character.toggled.connect(func(value): set_character_mode(1 if value else 0))
 	pref_controls["guides"]=guides; pref_controls["clean"]=clean
 	riser_toggle=CheckButton.new(); riser_toggle.text="Riser wall"; riser_toggle.button_pressed=show_riser; editbar.add_child(riser_toggle)
@@ -354,11 +401,21 @@ func _ready() -> void:
 	side.add_child(instructions)
 	var character_row := HBoxContainer.new()
 	side.add_child(character_row)
-	var character_label := Label.new(); character_label.text="Scale: Bill"; character_row.add_child(character_label)
+	var character_label := Label.new(); character_label.text="Scale:"; character_row.add_child(character_label)
+	cast_pick=OptionButton.new()
+	for member in scale_actor.CAST: cast_pick.add_item(str(member.name))
+	cast_pick.tooltip_text="Which crew member stands in the room. Preview only; the choice is never saved into the layout."
+	character_row.add_child(cast_pick)
+	cast_pick.item_selected.connect(func(value):
+		scale_actor.set_cast(value)
+		Prefs.save_value("cast",value)
+		if character_mode.selected>0:
+			scale_actor.rebuild(room,str(entries[index].room),quarter)
+		canvas.queue_redraw())
 	character_mode = OptionButton.new()
 	for caption in ["Hidden","Standing","Walking"]: character_mode.add_item(caption)
 	character_row.add_child(character_mode)
-	character_mode.tooltip_text="Current Bill artwork at gameplay size. Preview only; never saved as room furniture. Walking respects equipment clearance."
+	character_mode.tooltip_text="Current crew artwork at gameplay size. Preview only; never saved as room furniture. Walking respects equipment clearance."
 	character_mode.item_selected.connect(func(value): set_character_mode(value))
 	character_place=button(character_row,"Place",func():
 		placing_character=true
@@ -420,6 +477,14 @@ func _ready() -> void:
 	var size_label:=Label.new(); size_label.text="Size %"; size_row.add_child(size_label)
 	size_control=SpinBox.new(); size_control.min_value=25; size_control.max_value=200; size_control.step=5; size_control.value=100
 	size_row.add_child(size_control); size_control.value_changed.connect(resize_selected)
+	var place_row:=HBoxContainer.new(); side.add_child(place_row)
+	var place_label:=Label.new(); place_label.text="New props at %"; place_row.add_child(place_label)
+	place_control=SpinBox.new(); place_control.min_value=25; place_control.max_value=200; place_control.step=5; place_control.value=place_scale*100.0
+	place_control.tooltip_text="The size a prop starts at when dragged from the tray. Library props share one scale, so set this once against a crew member and every placement follows. Placed props keep their own size."
+	place_row.add_child(place_control)
+	place_control.value_changed.connect(func(value):
+		place_scale=float(value)/100.0
+		Prefs.save_value("place_scale",place_scale))
 	object_buttons.append(button(side,"Return selected to tray",remove_library_asset))
 	
 	var flips:=HBoxContainer.new(); side.add_child(flips)
@@ -432,15 +497,87 @@ func _ready() -> void:
 	tray_panel.add_theme_stylebox_override("panel",tray_style)
 	var tray:=VBoxContainer.new(); tray_panel.add_child(tray)
 	var library_title:=Label.new(); library_title.text="ASSET TRAY"; tray.add_child(library_title)
+	# Previews render one per frame, so a full tray takes a few seconds to fill.
+	# Show that as progress rather than letting it look stalled.
+	tray_progress=ProgressBar.new(); tray_progress.custom_minimum_size=Vector2(0,14); tray_progress.visible=false
+	tray_progress.tooltip_text="Rendering previews for the props in the tray."
+	tray.add_child(tray_progress)
 	var tray_hint:=Label.new(); tray_hint.text="Drag out to place • Drop back to remove"; tray_hint.add_theme_font_size_override("font_size",12); tray.add_child(tray_hint)
 	library_filter=OptionButton.new()
 	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings"]: library_filter.add_item(label)
+	var themes: Array=[]
+	var packs: Array=[]
+	for id in Library.entries():
+		var entry: Dictionary=Library.entries()[id]
+		if entry.get("group","")!="tileset": continue
+		var theme:=str(entry.get("category",""))
+		if not theme.is_empty() and theme not in themes: themes.append(theme)
+		var pack:=str(entry.get("tileset",""))
+		if not pack.is_empty() and pack not in packs: packs.append(pack)
+	themes.sort(); packs.sort()
+	tileset_categories=themes
+	favourites_filter=library_filter.item_count
+	library_filter.add_item("★ Favourites")
+	in_room_filter=library_filter.item_count
+	library_filter.add_item("In this room")
+	for theme in themes:
+		theme_filters[library_filter.item_count]=theme
+		library_filter.add_item(str(theme))
+	library_filter.add_item("Marked for removal")
 	tray.add_child(library_filter)
 	library_filter.item_selected.connect(func(_i): rebuild_library())
+	pack_filter=OptionButton.new()
+	pack_filter.add_item("All tilesets")
+	for pack in packs: pack_filter.add_item(str(pack))
+	pack_filter.tooltip_text="Narrow the tray to one art pack. Combine with the filter above to browse a pack by kind of prop."
+	tray.add_child(pack_filter)
+	pack_filter.item_selected.connect(func(_i): rebuild_library())
+	load_retired()
+	retire_button=Button.new(); retire_button.text="Mark for removal"; retire_button.disabled=true
+	retire_button.tooltip_text="Take this asset out of the tray. Nothing is deleted: the id goes to retired.json and you can restore it from the Marked for removal filter."
+	# Paired controls: stacked one per row they squeezed the tray to a single row of previews.
+	var marks_row:=HBoxContainer.new(); tray.add_child(marks_row)
+	retire_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL; retire_button.clip_text=true; marks_row.add_child(retire_button)
+	retire_button.pressed.connect(func(): mark_selected(retired,save_retired))
+	load_marks()
+	favourite_button=Button.new(); favourite_button.text="☆ Star"; favourite_button.disabled=true
+	favourite_button.tooltip_text="Star this prop so it turns up under ★ Favourites. Saved to favourites.json."
+	favourite_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL; favourite_button.clip_text=true; marks_row.add_child(favourite_button)
+	favourite_button.pressed.connect(func(): mark_selected(favourites,save_marks))
+	move_to=OptionButton.new(); move_to.disabled=true
+	move_to.add_item("Move to category…")
+	for theme in tileset_categories: move_to.add_item(str(theme))
+	move_to.tooltip_text="File this prop under a different category. Saved to categories.json; picking its original category puts it back."
+	var refile_row:=HBoxContainer.new(); tray.add_child(refile_row)
+	move_to.size_flags_horizontal=Control.SIZE_EXPAND_FILL; move_to.clip_text=true; refile_row.add_child(move_to)
+	move_to.item_selected.connect(func(i):
+		if i>0: recategorise(selected_library_id(),str(move_to.get_item_text(i)))
+		move_to.select(0))
+	rename_field=LineEdit.new(); rename_field.placeholder_text="Rename selected prop…"; rename_field.editable=false
+	rename_field.tooltip_text="Give this prop a name of your own. It replaces the library label in the tray, the sidebar and search, and is saved to names.json. Clear the field to go back to the library label."
+	tray.add_child(rename_field)
+	rename_field.text_submitted.connect(func(text): rename(selected_library_id(),text))
+	# The packs ship one rack with different guns, one monitor with different screens.
+	# One tile per family keeps the tray readable; the button opens the family.
+	load_variants()
+	var family_row:=HBoxContainer.new(); tray.add_child(family_row)
+	group_toggle=CheckButton.new(); group_toggle.text="Group look-alikes"; group_toggle.button_pressed=group_variants
+	group_toggle.tooltip_text="Show one tile for each family of near-identical props (marked ×N). Nothing is hidden for good: select the tile and press Variants."
+	group_toggle.size_flags_horizontal=Control.SIZE_EXPAND_FILL; family_row.add_child(group_toggle)
+	group_toggle.toggled.connect(func(on):
+		group_variants=on; Prefs.save_value("group_variants",on); rebuild_library())
+	variants_button=Button.new(); variants_button.text="Variants"; variants_button.disabled=true; family_row.add_child(variants_button)
+	variants_button.pressed.connect(func(): show_variants(-1 if variant_focus>=0 else int(variant_group.get(selected_library_id(),-1))))
+	split_button=Button.new(); split_button.text="Split in two"; split_button.disabled=true
+	split_button.tooltip_text="For two objects the scanner boxed as one (a chair stacked on a chair). Cuts at the emptiest line through the middle, keeps this entry as the first part and adds the second to the tray. Saved to props.json."
+	refile_row.add_child(split_button)
+	split_button.pressed.connect(func(): split_selected())
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
 	library_list.fixed_icon_size=Vector2i(104,78)
+	# Ctrl/Shift-click selects several, so a batch can be marked or starred at once.
+	library_list.select_mode=ItemList.SELECT_MULTI
 	for state in ["selected","selected_focus","hovered"]:
 		var outline:=StyleBoxFlat.new(); outline.bg_color=Color.TRANSPARENT
 		outline.border_color=Color("67d5bb") if state!="hovered" else Color("526c71")
@@ -453,6 +590,29 @@ func _ready() -> void:
 	library_list.size_flags_vertical=Control.SIZE_EXPAND_FILL
 	library_list.size_flags_stretch_ratio=1.35
 	tray.add_child(library_list)
+	library_list.item_selected.connect(func(_i): update_retire_button())
+	library_list.multi_selected.connect(func(_i,_on): update_retire_button())
+	var pager:=HBoxContainer.new(); tray.add_child(pager)
+	pager_prev=Button.new(); pager_prev.text="◀"; pager_prev.tooltip_text="Previous page"; pager.add_child(pager_prev)
+	pager_label=Label.new(); pager_label.size_flags_horizontal=Control.SIZE_EXPAND_FILL; pager_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+	pager_label.add_theme_font_size_override("font_size",12); pager.add_child(pager_label)
+	pager_next=Button.new(); pager_next.text="▶"; pager_next.tooltip_text="Next page"; pager.add_child(pager_next)
+	pager_prev.pressed.connect(func(): turn_page(-1))
+	pager_next.pressed.connect(func(): turn_page(1))
+	# A larger look at whatever the pointer is over: tray thumbnails are small and a
+	# cabinet is hard to tell from a locker until it is placed.
+	hover_panel=PanelContainer.new(); hover_panel.visible=false; hover_panel.mouse_filter=Control.MOUSE_FILTER_IGNORE; hover_panel.z_index=50
+	hover_image=TextureRect.new(); hover_image.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+	hover_image.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED; hover_image.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+	hover_image.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	hover_panel.add_child(hover_image); add_child(hover_panel)
+	library_list.gui_input.connect(on_tray_pointer)
+	library_list.mouse_exited.connect(func(): show_hover(-1))
+	# Right-click an entry to mark or restore it without reaching for the button.
+	library_list.item_clicked.connect(func(i,_at,button):
+		if button==MOUSE_BUTTON_RIGHT:
+			library_list.select(i)
+			toggle_retired(str(library_list.get_item_metadata(i))))
 	save_feedback=Label.new(); column.add_child(save_feedback)
 	var bottom_actions:=HBoxContainer.new()
 	bottom_actions.name="RoomActions"
@@ -463,6 +623,9 @@ func _ready() -> void:
 	button(bottom_actions,"Rotate Room",func(): switch_rotation(quarter+1))
 	button(bottom_actions,"Next Room",func(): switch_room((index+1)%entries.size()))
 	button(bottom_actions,"Save",save_all_rotations)
+	var copy_rotations:=button(bottom_actions,"Copy to other rotations",copy_to_other_rotations)
+	copy_rotations.custom_minimum_size=Vector2(190,36)
+	copy_rotations.tooltip_text="Use this rotation's layout for the other three. Props move only where a door approach at that rotation forces them; a rotation that still fails validation is left as it was and named."
 	status=Label.new()
 	status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	status.custom_minimum_size.y=42
@@ -498,6 +661,12 @@ func apply_prefs() -> void:
 		control.toggled.connect(func(value): Prefs.save_value(key,value))
 	if saved.get("zoom") is float: zoom_slider.value=clampf(saved.zoom,zoom_slider.min_value,zoom_slider.max_value)
 	zoom_slider.value_changed.connect(func(value): Prefs.save_value("zoom",float(value)))
+	if saved.get("group_variants") is bool and group_toggle!=null:
+		group_variants=saved.group_variants; group_toggle.set_pressed_no_signal(group_variants)
+	if (saved.get("place_scale") is float or saved.get("place_scale") is int) and float(saved.place_scale)>=0.25 and float(saved.place_scale)<=2.0:
+		place_scale=float(saved.place_scale); place_control.set_value_no_signal(place_scale*100.0)
+	if saved.get("cast") is int and int(saved.cast)>0 and int(saved.cast)<scale_actor.CAST.size():
+		cast_pick.select(int(saved.cast)); scale_actor.set_cast(int(saved.cast))
 	if saved.get("character") is int and int(saved.character) in [1,2]: set_character_mode(saved.character)
 
 func button(parent: Node, text: String, action: Callable) -> Button:
@@ -654,7 +823,7 @@ func rebuild_list() -> void:
 			var cell:=str(prop.id).split("/")
 			caption="Panel "+str(int(cell[1])+1)+", "+str(int(cell[2])+1)
 		elif prop.has("portable_id"): caption=str(prop.portable_id).replace("_"," ").capitalize()
-		elif prop.get("library_asset",false): caption=Library.entries().get(Library.base_id(prop.id),{}).get("label","Copied prop")
+		elif prop.get("library_asset",false): caption=display_name(Library.base_id(prop.id),"Copied prop")
 		elif prop.get("full_wall",false): caption="Full-wall installation"
 		rows.append([caption+(" [hidden]" if draft.get("hidden/"+str(prop.id),false) else "")+(" [locked]" if draft.get("locked/"+str(prop.id),false) else "")+(" [fixed]" if prop.has("flush_region") else ""),str(prop.id)])
 	if rows!=list_signature:
@@ -870,17 +1039,387 @@ func _input(event: InputEvent) -> void:
 	else: return
 	get_viewport().set_input_as_handled()
 
+func load_retired() -> void:
+	retired.clear()
+	if not FileAccess.file_exists(RETIRED_PATH): return
+	var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(RETIRED_PATH))
+	if parsed is Array:
+		for id in parsed: retired[str(id)]=true
+
+func save_retired() -> void:
+	var ids: Array=retired.keys(); ids.sort()
+	var file:=FileAccess.open(RETIRED_PATH,FileAccess.WRITE)
+	if file==null:
+		push_warning("Could not write "+RETIRED_PATH+"; the mark was not saved.")
+		return
+	file.store_string(JSON.stringify(ids,"	"))
+
+func toggle_retired(id: String) -> void:
+	if id.is_empty(): return
+	if retired.has(id): retired.erase(id)
+	else: retired[id]=true
+	save_retired()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
+func load_marks() -> void:
+	favourites.clear(); recategorised.clear()
+	if FileAccess.file_exists(FAVOURITES_PATH):
+		var starred: Variant=JSON.parse_string(FileAccess.get_file_as_string(FAVOURITES_PATH))
+		if starred is Array:
+			for id in starred: favourites[str(id)]=true
+	if FileAccess.file_exists(CATEGORIES_PATH):
+		var moved: Variant=JSON.parse_string(FileAccess.get_file_as_string(CATEGORIES_PATH))
+		if moved is Dictionary:
+			for id in moved: recategorised[str(id)]=str(moved[id])
+	names.clear()
+	if FileAccess.file_exists(NAMES_PATH):
+		var named: Variant=JSON.parse_string(FileAccess.get_file_as_string(NAMES_PATH))
+		if named is Dictionary:
+			for id in named: names[str(id)]=str(named[id])
+
+func save_marks() -> void:
+	var starred: Array=favourites.keys(); starred.sort()
+	var file:=FileAccess.open(FAVOURITES_PATH,FileAccess.WRITE)
+	if file==null: push_warning("Could not write "+FAVOURITES_PATH+"; the star was not saved.")
+	else: file.store_string(JSON.stringify(starred,"	"))
+	var moved:=FileAccess.open(CATEGORIES_PATH,FileAccess.WRITE)
+	if moved==null: push_warning("Could not write "+CATEGORIES_PATH+"; the move was not saved.")
+	else: moved.store_string(JSON.stringify(recategorised,"	"))
+	var named:=FileAccess.open(NAMES_PATH,FileAccess.WRITE)
+	if named==null: push_warning("Could not write "+NAMES_PATH+"; the name was not saved.")
+	else: named.store_string(JSON.stringify(names,"	"))
+
+## Where one boxed prop is really two: the emptiest line through the middle of its
+## art, on whichever axis is emptier. Returns two opaque-trimmed rects in sheet
+## pixels, or nothing when no line through the middle is at least half empty.
+static func split_regions(data: Dictionary) -> Array:
+	var image:=Image.new()
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes(str(data.source)))!=OK: return []
+	var r: Array=data.region
+	var x0:=int(r[0]); var y0:=int(r[1]); var w:=int(r[2]); var h:=int(r[3])
+	if w<8 or h<8: return []
+	var rows: Array=[]; rows.resize(h); rows.fill(0)
+	var cols: Array=[]; cols.resize(w); cols.fill(0)
+	for y in range(h):
+		for x in range(w):
+			if image.get_pixel(x0+x,y0+y).a>=0.094:
+				rows[y]+=1; cols[x]+=1
+	var best:={"ratio":2.0,"axis":"","at":0}
+	for axis in ["row","col"]:
+		var counts: Array=rows if axis=="row" else cols
+		var span:=float(w if axis=="row" else h)
+		var length:=counts.size()
+		if length<24: continue
+		for i in range(int(length*0.25),int(length*0.75)):
+			var ratio: float=counts[i]/span
+			var centred: float=absf(i-length*0.5)/length
+			if ratio<best.ratio-0.0001 or (absf(ratio-best.ratio)<=0.0001 and centred<best.get("centred",1.0)):
+				best={"ratio":ratio,"axis":axis,"at":i,"centred":centred}
+	if best.axis=="" or best.ratio>0.5: return []
+	var first: Rect2i; var second: Rect2i
+	if best.axis=="row":
+		first=Rect2i(x0,y0,w,best.at); second=Rect2i(x0,y0+best.at,w,h-best.at)
+	else:
+		first=Rect2i(x0,y0,best.at,h); second=Rect2i(x0+best.at,y0,w-best.at,h)
+	var parts: Array=[]
+	for box in [first,second]:
+		var used:=image.get_region(box).get_used_rect()
+		if used.size.x<6 or used.size.y<6: return []
+		parts.append(Rect2i(box.position+used.position,used.size))
+	return parts
+
+static func registration_for(data: Dictionary, box: Rect2i, image: Image) -> Dictionary:
+	var result: Dictionary=data.duplicate(true)
+	var x:=box.position.x; var y:=box.position.y; var w:=box.size.x; var h:=box.size.y
+	result.region=[float(x),float(y),float(w),float(h)]
+	result.pieces=[[[x,y],[x+w,y],[x+w,y+h],[x,y+h]]]
+	result.display_width=float(w)
+	# floor footprint: the base of the silhouette, as fractions of the rect
+	var band:=maxi(6,roundi(h*0.22))
+	var base:=image.get_region(Rect2i(x,y+h-band,w,band)).get_used_rect()
+	if base.size.x<=0: base=Rect2i(0,0,w,band)
+	result.footprint=[snappedf(float(base.position.x)/w,0.0001),snappedf(float(h-band+base.position.y)/h,0.0001),snappedf(float(base.size.x)/w,0.0001),snappedf(float(base.size.y)/h,0.0001)]
+	return result
+
+func split_selected() -> void:
+	var id:=selected_library_id()
+	var entry: Dictionary=Library.entries().get(id,{})
+	if entry.get("group","")!="tileset": return
+	var parts:=split_regions(entry.data)
+	if parts.is_empty():
+		status.text="No clear seam through the middle of this prop; nothing was split."
+		return
+	var image:=Image.new(); image.load_png_from_buffer(FileAccess.get_file_as_bytes(str(entry.data.source)))
+	var first:=registration_for(entry.data,parts[0],image)
+	var second:=registration_for(entry.data,parts[1],image)
+	var suffix:="b"
+	while Library.entries().has("library/tileset-"+str(entry.data.id)+suffix): suffix=char(suffix.unicode_at(0)+1)
+	second.id=str(entry.data.id)+suffix
+	var kind:=str(entry.label).rsplit(" ",true,1)[0]
+	var highest:=0
+	for other in Library.entries().values():
+		var bits:=str(other.get("label","")).rsplit(" ",true,1)
+		if bits.size()==2 and bits[0]==kind and bits[1].is_valid_int(): highest=maxi(highest,int(bits[1]))
+	second.label="%s %03d" % [kind,highest+1]
+	var listed: Variant=JSON.parse_string(FileAccess.get_file_as_string(PROPS_PATH))
+	if not listed is Array: status.text="Could not read "+PROPS_PATH+"; nothing was split."; return
+	var replaced:=false
+	for i in range(listed.size()):
+		if str(listed[i].get("id",""))==str(first.id): listed[i]=first; replaced=true
+	if not replaced: listed.append(first)
+	listed.append(second)
+	var file:=FileAccess.open(PROPS_PATH,FileAccess.WRITE)
+	if file==null: status.text="Could not write "+PROPS_PATH+"; nothing was split."; return
+	file.store_string(JSON.stringify(listed)); file.close()
+	entry.data=first; entry.width=float(first.display_width)
+	for stale in ["template","thumbnail","preview_ready"]: entry.erase(stale)
+	var new_id:="library/tileset-"+str(second.id)
+	Library.catalog[new_id]={"data":second,"label":second.label,"width":float(second.display_width),"group":"tileset","category":entry.get("category","prop"),"tileset":entry.get("tileset","")}
+	if recategorised.has(id): recategorised[new_id]=recategorised[id]; save_marks()
+	library_signature.clear(); rebuild_library(); update_retire_button(); refresh()
+	status.text="Split: "+label_of(id,entry)+" kept the first part; "+str(second.label)+" is the second."
+
+## The owner's name for a prop if they gave one, else its library label.
+func label_of(id: String, entry: Dictionary) -> String:
+	# The owner's name wins; then a title written by someone who looked at the prop
+	# ("Centrifuge, benchtop"); then the library label ("Lab 121").
+	if names.has(id): return str(names[id])
+	var title:=str(entry.get("title",""))
+	return title if not title.is_empty() else str(entry.get("label",id))
+
+func display_name(id: String, fallback: String) -> String:
+	return label_of(id,Library.entries()[id]) if Library.entries().has(id) else fallback
+
+func rename(id: String, text: String) -> void:
+	if id.is_empty(): return
+	var clean:=text.strip_edges()
+	var entry: Dictionary=Library.entries().get(id,{})
+	if clean.is_empty() or clean==str(entry.get("label","")): names.erase(id)
+	else: names[id]=clean
+	save_marks()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+	refresh()
+
+func category_of(id: String, entry: Dictionary) -> String:
+	return recategorised.get(id,str(entry.get("category","")))
+
+func toggle_favourite(id: String) -> void:
+	if id.is_empty(): return
+	if favourites.has(id): favourites.erase(id)
+	else: favourites[id]=true
+	save_marks()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
+func recategorise(id: String, category: String) -> void:
+	if id.is_empty() or category.is_empty(): return
+	var entry: Dictionary=Library.entries().get(id,{})
+	if str(entry.get("category",""))==category: recategorised.erase(id)
+	else: recategorised[id]=category
+	save_marks()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
+func selected_library_id() -> String:
+	if library_list==null: return ""
+	var picked:=library_list.get_selected_items()
+	return "" if picked.is_empty() else str(library_list.get_item_metadata(picked[0]))
+
+func load_variants() -> void:
+	variant_group.clear(); variant_members.clear()
+	if not FileAccess.file_exists(VARIANTS_PATH): return
+	var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(VARIANTS_PATH))
+	if not parsed is Dictionary: return
+	for family in parsed.get("groups",[]):
+		var members: Array=[]
+		for short_id in family:
+			var id:="library/tileset-"+str(short_id)
+			if Library.entries().has(id): members.append(id)
+		if members.size()<2: continue              # swept or merged down to one: not a family any more
+		for id in members: variant_group[id]=variant_members.size()
+		variant_members.append(members)
+
+func show_variants(family: int) -> void:
+	variant_focus=family if family>=0 and family<variant_members.size() else -1
+	rebuild_library()
+	library_list.get_v_scroll_bar().value=0
+	update_retire_button()
+
+func turn_page(step: int) -> void:
+	var pages:=maxi(1,ceili(float(tray_total)/TRAY_LIMIT))
+	var next:=clampi(tray_page+step,0,pages-1)
+	if next==tray_page: return
+	tray_page=next
+	rebuild_library()
+	library_list.get_v_scroll_bar().value=0
+
+func update_pager() -> void:
+	if pager_label==null: return
+	var pages:=maxi(1,ceili(float(tray_total)/TRAY_LIMIT))
+	var first:=tray_page*TRAY_LIMIT+1
+	var last:=mini(tray_total,(tray_page+1)*TRAY_LIMIT)
+	pager_label.text=("%d–%d of %d" % [first,last,tray_total]) if tray_total>TRAY_LIMIT else ("%d shown" % tray_total)
+	pager_prev.disabled=tray_page<=0
+	pager_next.disabled=tray_page>=pages-1
+	pager_prev.visible=tray_total>TRAY_LIMIT; pager_next.visible=tray_total>TRAY_LIMIT
+
+func on_tray_pointer(event: InputEvent) -> void:
+	if event is InputEventMouseMotion: show_hover(library_list.get_item_at_position(event.position,true))
+
+func show_hover(i: int) -> void:
+	if hover_panel==null or i==hover_index: return
+	hover_index=i
+	var id=library_list.get_item_metadata(i) if i>=0 and i<library_list.item_count else null
+	if id==null or str(id).is_empty() or dragging: hover_panel.visible=false; return
+	var texture: Texture2D=library_list.get_item_icon(i)
+	var entry: Dictionary=Library.entries().get(str(id),{})
+	if entry.get("group","")=="tileset" and Library.source_textures.has(entry.data.source):
+		# straight from the sheet, so the enlargement is crisp rather than a scaled thumbnail
+		var atlas:=AtlasTexture.new(); atlas.atlas=Library.source_textures[entry.data.source]
+		var r: Array=entry.data.region
+		atlas.region=Rect2(float(r[0]),float(r[1]),float(r[2]),float(r[3])); texture=atlas
+	if texture==null or texture==thumbnail_placeholder: hover_panel.visible=false; return
+	var dims:=Vector2(texture.get_size())
+	var factor:=clampf(minf(340.0/maxf(1.0,dims.x),340.0/maxf(1.0,dims.y)),1.0,4.0)
+	hover_image.texture=texture; hover_image.custom_minimum_size=dims*factor
+	hover_panel.reset_size()
+	var at:=Vector2(tray_panel.global_position.x-dims.x*factor-36.0,get_global_mouse_position().y-dims.y*factor*0.5)
+	hover_panel.global_position=Vector2(maxf(8.0,at.x),clampf(at.y,8.0,maxf(8.0,size.y-dims.y*factor-36.0)))
+	hover_panel.visible=true
+
+## Carry this rotation's layout to the other three. The room stays riser-north at
+## every rotation and only the open door sides move, so the composition is kept and
+## a prop moves only where a door approach forces it. A rotation that still fails
+## validation is left as it was and named, for the owner to finish by hand.
+func copy_to_other_rotations() -> void:
+	if comparing: return
+	if floor_tools!=null: floor_tools.finish()
+	if not issues().is_empty(): status.text="Fix this rotation first: "+issues()[0]; return
+	var start_q:=quarter
+	var base: Dictionary=draft.duplicate(true)
+	var report: Array=[]
+	for step in range(1,4):
+		var q:=posmod(start_q+step,4)
+		switch_rotation(q)
+		var before:=draft.duplicate(true)
+		for id in base: draft[id]=base[id].duplicate(true) if (base[id] is Array or base[id] is Dictionary) else base[id]
+		refresh()
+		var moved:=clear_door_approaches()
+		if issues().is_empty():
+			if draft!=before: history.append(before); future.clear(); dirty=true
+			report.append("%d°%s" % [q*90,(" (%d moved)" % moved) if moved>0 else ""])
+		else:
+			var reason:=str(issues()[0]); draft=before; refresh()
+			report.append("%d° left alone: %s" % [q*90,reason])
+	switch_rotation(start_q)
+	save_all_rotations()
+	status.text="Copied to other rotations: "+", ".join(report)
+
+func clear_door_approaches() -> int:
+	var moved: Dictionary={}
+	for pass_index in range(6):
+		var changed:=false
+		for prop in room.props:
+			var id:=str(prop.id)
+			if prop.has("flush_region") or not (draft.get(id) is Array): continue
+			var rect: Rect2=prop.rect
+			for side in range(4):
+				if not Geometry.has_port(room.layout[0],side) or not rect.intersects(door_lane(side)): continue
+				var lane:=door_lane(side)
+				var shifts: Array=[Vector2(lane.position.x-rect.size.x-2.0-rect.position.x,0),Vector2(lane.end.x+2.0-rect.position.x,0)] if side in [0,2] else [Vector2(0,lane.position.y-rect.size.y-2.0-rect.position.y),Vector2(0,lane.end.y+2.0-rect.position.y)]
+				shifts.sort_custom(func(a,b): return a.length()<b.length())
+				for shift in shifts:
+					var at: Vector2=rect.position+shift
+					if absf(at.x)>176 or absf(at.y)>176 or absf(at.x+rect.size.x)>176 or absf(at.y+rect.size.y)>176: continue
+					draft[id]=[at.x,at.y]; moved[id]=true; changed=true
+					break
+				break
+		if not changed: break
+		refresh()
+	return moved.size()
+
+func selected_library_ids() -> Array:
+	var result: Array=[]
+	if library_list==null: return result
+	for i in library_list.get_selected_items():
+		var id=library_list.get_item_metadata(i)
+		if id!=null and not str(id).is_empty(): result.append(str(id))
+	return result
+
+## Mark or unmark every selected prop in one go. If any of them is unmarked the
+## batch marks them all; if all are marked the batch clears them all.
+func mark_selected(marks: Dictionary, save: Callable) -> void:
+	var ids:=selected_library_ids()
+	if ids.is_empty(): return
+	var turn_on:=ids.any(func(id): return not marks.has(id))
+	for id in ids:
+		if turn_on: marks[id]=true
+		else: marks.erase(id)
+	save.call()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
+func update_retire_button() -> void:
+	if retire_button==null: return
+	var id:=selected_library_id()
+	var ids:=selected_library_ids()
+	var many:=ids.size()>1
+	retire_button.disabled=id.is_empty()
+	var all_retired:=not ids.is_empty() and ids.all(func(i): return retired.has(i))
+	retire_button.text=(("Restore %d assets" % ids.size()) if all_retired else ("Mark %d for removal" % ids.size())) if many else ("Restore asset" if retired.has(id) else "Mark for removal")
+	if favourite_button!=null:
+		favourite_button.disabled=id.is_empty()
+		var all_starred:=not ids.is_empty() and ids.all(func(i): return favourites.has(i))
+		favourite_button.text=(("★ Unstar %d" % ids.size()) if all_starred else ("☆ Star %d" % ids.size())) if many else ("★ Starred" if favourites.has(id) else "☆ Star")
+	if move_to!=null:
+		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+	if variants_button!=null:
+		var family:=int(variant_group.get(id,-1))
+		if variant_focus>=0:
+			variants_button.text="◀ Back"; variants_button.disabled=false
+		else:
+			variants_button.text=("Variants (%d)" % variant_members[family].size()) if family>=0 else "Variants"
+			variants_button.disabled=family<0 or many
+	if split_button!=null:
+		split_button.disabled=id.is_empty() or many or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+	if rename_field!=null:
+		rename_field.editable=not id.is_empty() and str(Library.entries().get(id,{}).get("group",""))=="tileset"
+		if not rename_field.has_focus(): rename_field.text=str(names.get(id,"")) if rename_field.editable else ""
+
 func rebuild_library() -> void:
 	if library_list==null: return
 	var returned: Array=[]
 	for id in draft:
 		if draft[id]==null and defaults.has(id): returned.append(id)
-	var signature: Array=[index,returned,library_search.text,library_filter.selected]
+	var pack:=pack_filter.get_item_text(pack_filter.selected) if pack_filter!=null and pack_filter.selected>0 else ""
+	var theme:=str(theme_filters.get(library_filter.selected,""))
+	var only_favourites:=library_filter.selected==favourites_filter
+	# "In this room": the library props already placed here, for reusing the same
+	# chair or console instead of hunting for it again.
+	var only_in_room:=library_filter.selected==in_room_filter
+	var placed: Dictionary={}
+	if only_in_room:
+		for key in draft:
+			if str(key).begins_with("library/") and draft[key] is Array: placed[Library.base_id(str(key))]=true
+	var key_now: Array=[index,library_search.text,library_filter.selected,pack,group_variants,variant_focus]
+	if key_now!=tray_key:
+		tray_key=key_now; tray_page=0
+	var signature: Array=[index,returned,library_search.text,library_filter.selected,pack,
+		retired.size(),favourites.size(),recategorised.size(),tray_page,placed.keys(),group_variants,variant_focus]
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
+	tray_pending_total=0
 	library_list.clear()
-	if library_filter.selected in [0,3]:
+	var only_retired:=library_filter.selected==library_filter.item_count-1
+	if library_filter.selected in [0,3] and not only_retired and pack.is_empty():
 		for prop in base_props:
 			var id:=str(prop.id)
 			var caption:=id.trim_prefix("full_wall/").replace("_"," ").replace("/"," · ").capitalize()
@@ -890,17 +1429,64 @@ func rebuild_library() -> void:
 			library_list.add_item(caption,thumbnail if thumbnail!=null else thumbnail_placeholder)
 			library_list.set_item_metadata(library_list.item_count-1,id)
 			library_list.set_item_tooltip(library_list.item_count-1,caption+(" • Fixed wall artwork" if prop.has("flush_region") else " • Drag into the room"))
+	var hidden_by_limit:=0
+	var matched:=0
+	var grouping:=group_variants and variant_focus<0 and not only_retired and not only_favourites and not only_in_room
+	var seen_families: Dictionary={}
+	# family_variants scans the whole catalog; with a library this size calling
+	# it per entry is quadratic and froze the Studio on open. Once per rebuild.
+	var room_family: Array=Library.family_variants(entries[index].asset) if library_filter.selected==0 else []
+	var room_id: String=str(entries[index].room)
 	for id in Library.entries():
 		var entry: Dictionary=Library.entries()[id]
-		if library_filter.selected==0 and id not in Library.family_variants(entries[index].asset) and entries[index].room not in entry.get("default_rooms",[]): continue
-		if library_filter.selected>=4 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4]): continue
-		if library_filter.selected==1 and entry.get("group","")!="common": continue
-		if library_filter.selected==2 and entry.get("group","")=="common": continue
-		if (not library_search.text.is_empty() and not str(entry.label).to_lower().contains(library_search.text.to_lower())): continue
+		# Looking inside one family: its members, whatever the other filters say.
+		var in_focus:=variant_focus>=0
+		if in_focus:
+			if int(variant_group.get(id,-1))!=variant_focus or retired.has(id): continue
+		elif only_retired:
+			if not retired.has(id): continue
+		elif retired.has(id): continue
+		if not in_focus and (not only_retired and library_filter.selected==0 and id not in room_family and room_id not in entry.get("default_rooms",[])): continue
+		if not in_focus and (not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4])): continue
+		if not in_focus and (not only_retired and library_filter.selected==1 and entry.get("group","")!="common"): continue
+		if not in_focus and (not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]): continue
+		if not in_focus and (only_favourites and not favourites.has(id)): continue
+		if not in_focus and (only_in_room and not placed.has(id)): continue
+		if not in_focus and (not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme)): continue
+		if not in_focus and (not pack.is_empty() and str(entry.get("tileset",""))!=pack): continue
+		var caption:=label_of(id,entry)
+		if entry.get("group","")=="tileset" and favourites.has(id): caption="★ "+caption
+		if not in_focus and not library_search.text.is_empty():
+			var needle:=library_search.text.to_lower()
+			var haystack:=(caption+" "+str(entry.label)+" "+str(entry.get("tileset",""))).to_lower()
+			if not haystack.contains(needle): continue
+		# One tile per family of look-alikes; the owner opens the family from the button.
+		var family:=int(variant_group.get(id,-1))
+		if grouping and family>=0:
+			if seen_families.has(family): continue
+			seen_families[family]=true
+			caption+="  ×%d" % variant_members[family].size()
+		# One page of TRAY_LIMIT at a time: previews render one per frame, so the
+		# page is what bounds the work, and the pager reaches the rest.
+		matched+=1
+		if matched<=tray_page*TRAY_LIMIT: continue
+		if matched>(tray_page+1)*TRAY_LIMIT:
+			hidden_by_limit+=1
+			continue
 		if not entry.get("preview_ready",false): thumbnail_queue.append(id)
-		library_list.add_item(entry.label,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
+		library_list.add_item(caption,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
 		library_list.set_item_metadata(library_list.item_count-1,id)
-		library_list.set_item_tooltip(library_list.item_count-1,entry.label+" — drag into clear floor space")
+		library_list.set_item_tooltip(library_list.item_count-1,caption+
+			(" — "+str(entry.label)+" — "+category_of(id,entry)+" — "+str(entry.get("tileset",""))+" set"
+				if entry.get("group","")=="tileset" else "")+
+			" — drag into clear floor space")
+	tray_total=matched
+	update_pager()
+	if hidden_by_limit>0:
+		library_list.add_item("+%d more — next page ▶, or narrow by kind, set or search" % hidden_by_limit,thumbnail_placeholder)
+		library_list.set_item_selectable(library_list.item_count-1,false)
+		library_list.set_item_tooltip(library_list.item_count-1,
+			"The tray lists %d at a time so previews stay responsive. Use the pager below for the rest." % TRAY_LIMIT)
 func add_library_asset(id: String, center: Vector2) -> bool:
 	if comparing: return false
 	if defaults.has(id) and draft.get(id)!=null:
@@ -912,8 +1498,8 @@ func add_library_asset(id: String, center: Vector2) -> bool:
 			var target:="copy/"+id.replace("/","_")+"#"+str(serial)
 			while draft.has(target):
 				serial+=1; target="copy/"+id.replace("/","_")+"#"+str(serial)
-			draft["source/"+target]=id; draft["size/"+target]=[0.5,0.5]
-			var at: Vector2=center-original.rect.size*0.25
+			draft["source/"+target]=id; draft["size/"+target]=[place_scale,place_scale]
+			var at: Vector2=center-original.rect.size*place_scale*0.5
 			draft[target]=[at.x,at.y]; layer=0; selected=target; selected_many.clear(); refresh()
 			if not issues().is_empty(): draft=before; selected=""; refresh(); return false
 			history.append(before); future.clear(); dirty=true; refresh(); return true
@@ -930,8 +1516,8 @@ func add_library_asset(id: String, center: Vector2) -> bool:
 			layer=0
 			for prop in base_props:
 				if str(prop.id)==id:
-					at=Vector2(defaults[id][0],defaults[id][1]) if prop.has("flush_region") else center-prop.rect.size*0.25
-					if not prop.has("flush_region"): draft["size/"+id]=[0.5,0.5]
+					at=Vector2(defaults[id][0],defaults[id][1]) if prop.has("flush_region") else center-prop.rect.size*place_scale*0.5
+					if not prop.has("flush_region"): draft["size/"+id]=[place_scale,place_scale]
 		draft[id]=[at.x,at.y]; refresh()
 		if not issues().is_empty():
 			var reason:=issues()[0]; draft=before; refresh(); status.text="Cannot place artwork: "+reason; return false
@@ -945,8 +1531,8 @@ func add_library_asset(id: String, center: Vector2) -> bool:
 	var prop:=Library.template(id)
 	if prop.is_empty(): return false
 	var before:=draft.duplicate(true)
-	var at: Vector2=center-prop.rect.size*0.25
-	draft["size/"+id]=[0.5,0.5]
+	var at: Vector2=center-prop.rect.size*place_scale*0.5
+	draft["size/"+id]=[place_scale,place_scale]
 	if snap.button_pressed: at=at.snapped(Vector2(6,6))
 	draft[id]=[at.x,at.y]; refresh()
 	if not issues().is_empty():
@@ -993,7 +1579,7 @@ func update_size_control() -> void:
 	for control in object_buttons:
 		if control.text in ["Flip left/right","Flip up/down"]: control.get_parent().visible=not prop.is_empty() and layer!=1
 		if control.text=="Return selected to tray": control.visible=not prop.is_empty() and layer!=1
-	if prop.get("library_asset",false): selection_label.text=Library.entries().get(Library.base_id(selected),{}).get("label",selection_label.text)
+	if prop.get("library_asset",false): selection_label.text=display_name(Library.base_id(selected),selection_label.text)
 	if prop.has("portable_id"): selection_label.text=str(prop.portable_id).replace("_"," ").capitalize()
 	if selection_ids().size()>1: selection_label.text+=" · "+str(selection_ids().size())+" selected"
 	if light_controls!=null:
@@ -1098,6 +1684,13 @@ func reset_selected() -> void:
 		history.append(before); future.clear(); dirty=true; refresh()
 
 func _process(delta: float) -> void:
+	if tray_progress!=null:
+		var pending:=thumbnail_queue.size()+default_thumbnail_queue.size()+(1 if thumbnail_render_busy else 0)+(1 if default_thumbnail_busy else 0)
+		tray_pending_total=maxi(tray_pending_total,pending)
+		tray_progress.visible=pending>0
+		if pending>0:
+			tray_progress.max_value=tray_pending_total
+			tray_progress.value=tray_pending_total-pending
 	if scale_actor.mode>0 and is_instance_valid(room):
 		scale_actor.rebuild(room,str(entries[index].room),quarter)
 		scale_actor.advance(delta)

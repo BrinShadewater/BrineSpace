@@ -48,7 +48,7 @@ func verify_motion_and_routes() -> void:
 				for part in Replacement.parts(frame,vertical,variant):
 					if part.has("source"): expect(Rect2(0,0,1536,1024).encloses(part.source),"Replacement source stays in bounds")
 	var image := Image.new()
-	expect(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://dooranimated.png"))==OK,"Original door atlas loads")
+	expect(image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://legacy/default/dooranimated.png"))==OK,"Original door atlas loads")
 	expect(image.get_size()==Vector2i(2976,1602),"Atlas dimensions unchanged")
 	await settle()
 	var finish: Image = game.grid_view.layered_door_texture.get_image()

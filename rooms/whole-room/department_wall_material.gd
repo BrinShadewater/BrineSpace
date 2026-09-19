@@ -1,9 +1,9 @@
 extends RefCounted
 ## Registered hull crops, independent of a room's equipment texture.
 const MATERIALS={
-	"engineering":{"path":"res://assets/material-polish-v3/thermal-equipment.png","horizontal":Rect2(240,34,142,58),"vertical":Rect2(29,106,46,148),"cap":Rect2(28,32,50,52)},
+	"engineering":{"path":"res://legacy/default/assets/material-polish-v3/thermal-equipment.png","horizontal":Rect2(240,34,142,58),"vertical":Rect2(29,106,46,148),"cap":Rect2(28,32,50,52)},
 	"habitation":{"path":"res://rooms/production-ten/crew_lounge-source-v2.png","horizontal":Rect2(246,41,130,66),"vertical":Rect2(43,220,43,137),"cap":Rect2(45,43,45,44)},
-	"medical":{"path":"res://assets/material-polish-v2/clone-equipment.png","horizontal":Rect2(94,49,123,39),"vertical":Rect2(40,98,36,114),"cap":Rect2(39,45,43,43)}
+	"medical":{"path":"res://legacy/default/assets/material-polish-v2/clone-equipment.png","horizontal":Rect2(94,49,123,39),"vertical":Rect2(40,98,36,114),"cap":Rect2(39,45,43,43)}
 }
 static var textures: Dictionary={}
 static func texture(material: String) -> Texture2D:

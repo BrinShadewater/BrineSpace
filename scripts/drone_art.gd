@@ -1,6 +1,6 @@
 extends RefCounted
 ## Runtime chroma-key decoding preserves the generated source atlas verbatim.
-const SOURCE := "res://assets/drones/fleet-v1/atlas-matte-v1.png"
+const SOURCE := "res://legacy/default/assets/drones/fleet-v1/atlas-matte-v1.png"
 const REGIONS := {
 	"mining":Rect2(100,80,350,420), "salvage":Rect2(580,100,360,390),
 	"construction":Rect2(1060,100,360,390), "cradle":Rect2(85,565,370,320),
@@ -46,7 +46,7 @@ static func _construction_material(color: Color) -> Color:
 
 static func draw_asset(painter: CanvasItem, id: String, center: Vector2, width: float, tint := Color.WHITE, static_atlas: Texture2D = null) -> void:
 	if id == "panels":
-		if stock_texture == null: stock_texture = _decode_matte("res://assets/drones/fleet-v1/stock-rack-matte-v1.png")
+		if stock_texture == null: stock_texture = _decode_matte("res://legacy/default/assets/drones/fleet-v1/stock-rack-matte-v1.png")
 		painter.draw_texture_rect_region(stock_texture,Rect2(center-Vector2(width,width*730/820)*0.5,Vector2(width,width*730/820)),Rect2(220,260,820,730),tint)
 		return
 	var source: Rect2 = REGIONS[id]

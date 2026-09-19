@@ -35,17 +35,17 @@ func run() -> void:
 	room.hide()
 	root.add_child(room)
 	var source:=Image.new()
-	assert(source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/l-shaped-studies/drone-clean-v1.png"))==OK)
+	assert(source.load_png_from_buffer(FileAccess.get_file_as_bytes("res://legacy/default/rooms/underwater/l-shaped-studies/drone-clean-v1.png"))==OK)
 	var composition:=Composition.new()
 	composition.room=room
 	composition.installation=ImageTexture.create_from_image(source)
 	var straight_image:=Image.new()
-	assert(straight_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/underwater/l-shaped-studies/drone-straight-clean-v1.png"))==OK)
+	assert(straight_image.load_png_from_buffer(FileAccess.get_file_as_bytes("res://legacy/default/rooms/underwater/l-shaped-studies/drone-straight-clean-v1.png"))==OK)
 	composition.straight=ImageTexture.create_from_image(straight_image)
 	composition.straight_bounds=Rect2(straight_image.get_used_rect())
 	root.add_child(composition)
 	await process_frame
 	await RenderingServer.frame_post_draw
-	assert(root.get_texture().get_image().save_png("res://rooms/underwater/l-shaped-studies/drone-room-v3.png")==OK)
+	assert(root.get_texture().get_image().save_png("res://legacy/default/rooms/underwater/l-shaped-studies/drone-room-v3.png")==OK)
 	print("DRONE L ROOM COMPOSITION PASS")
 	quit()

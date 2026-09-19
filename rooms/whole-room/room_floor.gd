@@ -54,7 +54,7 @@ static func _lines(canvas: CanvasItem, points: PackedVector2Array, color: Color,
 static func draw_floor(canvas: CanvasItem, center: Vector2, tint := Color("343b45"), seam_color := Color(0.07,0.09,0.11,0.48), seam_stride := 1, material := "steel") -> void:
 	if grain==null:
 		var image := Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, "res://assets/playtest-visual-v1/deck-source.png")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/playtest-visual-v1/deck-source.png")
 		grain = ImageTexture.create_from_image(image)
 	# Keep departmental floor values; the neutral source supplies only quiet plate detail.
 	canvas.draw_rect(Rect2(center-Vector2.ONE*192,Vector2.ONE*384),tint)

@@ -36,7 +36,7 @@ func run() -> void:
 	root.size = Vector2i(1600,900)
 	var sheet := Sheet.new()
 	sheet.size=root.size
-	var paths := ["res://assets/environment/clay-silt-v1/clay-silt-ground-v1.png","res://assets/environment/service-wreckage-v1/collapsed-support-v1.png","res://assets/environment/shell-shoal-v1/limestone-cobbles-v1.png"]
+	var paths := ["res://legacy/default/assets/environment/clay-silt-v1/clay-silt-ground-v1.png","res://legacy/default/assets/environment/service-wreckage-v1/collapsed-support-v1.png","res://legacy/default/assets/environment/shell-shoal-v1/limestone-cobbles-v1.png"]
 	var textures: Array[Texture2D] = []
 	for path in paths:
 		var source := Image.new()
@@ -46,7 +46,7 @@ func run() -> void:
 	sheet.debris=textures[1]
 	sheet.stone=textures[2]
 	var porous_image := Image.new()
-	assert(porous_image.load("res://assets/environment/volcanic-ash-v1/porous-rocks-v1.png")==OK)
+	assert(porous_image.load("res://legacy/default/assets/environment/volcanic-ash-v1/porous-rocks-v1.png")==OK)
 	assert(porous_image.detect_alpha()!=Image.ALPHA_NONE)
 	sheet.porous=ImageTexture.create_from_image(porous_image)
 	root.add_child(sheet)

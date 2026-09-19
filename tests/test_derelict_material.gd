@@ -15,7 +15,7 @@ func run():
 	view.render_target_update_mode=SubViewport.UPDATE_ALWAYS
 	root.add_child(view)
 	var sprite:=Sprite2D.new()
-	sprite.texture=preload("res://scripts/safe_image.gd").raw_texture("res://assets/material-polish-cryo-v1/cryo-equipment.png")
+	sprite.texture=preload("res://scripts/safe_image.gd").raw_texture("res://legacy/default/assets/material-polish-cryo-v1/cryo-equipment.png")
 	sprite.centered=false;sprite.position=Vector2(24,24)
 	sprite.scale=Vector2.ONE*240.0/sprite.texture.get_width()
 	sprite.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST

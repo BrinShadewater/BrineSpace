@@ -214,7 +214,7 @@ func draw_actor() -> void:
 func draw_chamber_floor() -> void:
 	if wet_deck==null:
 		var image:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image,"res://assets/rooms/airlock/source/wet-deck-source.png")
+		preload("res://scripts/safe_image.gd").load_png(image,"res://legacy/default/assets/rooms/airlock/source/wet-deck-source.png")
 		wet_deck=ImageTexture.create_from_image(image)
 	var floor_rect:=chamber_rect().grow(-6)
 	var corners:=PackedVector2Array([floor_rect.position,Vector2(floor_rect.end.x,floor_rect.position.y),floor_rect.end,Vector2(floor_rect.position.x,floor_rect.end.y)])
