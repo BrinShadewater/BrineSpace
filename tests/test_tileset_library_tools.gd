@@ -98,6 +98,21 @@ func run() -> void:
 	var mf: Array=mirrored.footprint
 	if absf(float(mf[0])-(1.0-float(f[0])-float(f[2])))>0.0001 or mf[2]!=f[2]: return fail("mirrored footprint is not the mirror image: "+str(f)+" -> "+str(mf))
 
+	# --- Multi-select: two selected props are marked and restored together. ---
+	e.library_filter.select(kind); e.library_search.text=""; e.rebuild_library()
+	e.library_list.deselect_all(); e.library_list.select(0,true); e.library_list.select(1,false)
+	var pair: Array=e.selected_library_ids()
+	if pair.size()!=2: return fail("multi-select did not yield two ids: "+str(pair))
+	e.update_retire_button()
+	if not e.retire_button.text.begins_with("Mark 2"): return fail("retire button does not name the batch: "+e.retire_button.text)
+	e.mark_selected(e.retired,e.save_retired)
+	if not (e.retired.has(pair[0]) and e.retired.has(pair[1])): return fail("batch mark did not retire both")
+	e.library_filter.select(e.library_filter.item_count-1); e.rebuild_library()
+	if e.library_list.item_count!=2: return fail("Marked for removal does not list the pair: "+str(e.library_list.item_count))
+	e.library_list.select(0,true); e.library_list.select(1,false); e.mark_selected(e.retired,e.save_retired)
+	if e.retired.has(pair[0]) or e.retired.has(pair[1]): return fail("batch restore did not clear both")
+	e.library_filter.select(kind); e.rebuild_library(); e.library_list.deselect_all(); e.library_list.select(0)
+
 	# --- Rename: the owner's name shows in the tray, is found by search, persists, and clears. ---
 	var original: String=str(entry.label)
 	e.rename(id,"  Cryo pod  ")

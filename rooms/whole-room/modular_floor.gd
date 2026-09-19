@@ -85,6 +85,13 @@ static func finishes() -> Dictionary:
 		var path:=str(row.source)
 		if path in result.values(): continue
 		result[path.get_file().get_basename().replace("-"," ").capitalize()]=path
+	# Finishes cut from the tileset library: {"caption": "res://path.png"}, owner-picked.
+	var extra:="res://rooms/tileset-library/floors.json"
+	if FileAccess.file_exists(extra):
+		var picked: Variant=JSON.parse_string(FileAccess.get_file_as_string(extra))
+		if picked is Dictionary:
+			for caption in picked:
+				if not str(picked[caption]) in result.values(): result[str(caption)]=str(picked[caption])
 	finish_catalog=result
 	return result
 

@@ -505,12 +505,12 @@ func _ready() -> void:
 	retire_button=Button.new(); retire_button.text="Mark for removal"; retire_button.disabled=true
 	retire_button.tooltip_text="Take this asset out of the tray. Nothing is deleted: the id goes to retired.json and you can restore it from the Marked for removal filter."
 	tray.add_child(retire_button)
-	retire_button.pressed.connect(func(): toggle_retired(selected_library_id()))
+	retire_button.pressed.connect(func(): mark_selected(retired,save_retired))
 	load_marks()
 	favourite_button=Button.new(); favourite_button.text="☆ Star"; favourite_button.disabled=true
 	favourite_button.tooltip_text="Star this prop so it turns up under ★ Favourites. Saved to favourites.json."
 	tray.add_child(favourite_button)
-	favourite_button.pressed.connect(func(): toggle_favourite(selected_library_id()))
+	favourite_button.pressed.connect(func(): mark_selected(favourites,save_marks))
 	move_to=OptionButton.new(); move_to.disabled=true
 	move_to.add_item("Move to category…")
 	for theme in tileset_categories: move_to.add_item(str(theme))
@@ -527,6 +527,8 @@ func _ready() -> void:
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
 	library_list.fixed_icon_size=Vector2i(104,78)
+	# Ctrl/Shift-click selects several, so a batch can be marked or starred at once.
+	library_list.select_mode=ItemList.SELECT_MULTI
 	for state in ["selected","selected_focus","hovered"]:
 		var outline:=StyleBoxFlat.new(); outline.bg_color=Color.TRANSPARENT
 		outline.border_color=Color("67d5bb") if state!="hovered" else Color("526c71")
@@ -540,6 +542,7 @@ func _ready() -> void:
 	library_list.size_flags_stretch_ratio=1.35
 	tray.add_child(library_list)
 	library_list.item_selected.connect(func(_i): update_retire_button())
+	library_list.multi_selected.connect(func(_i,_on): update_retire_button())
 	# Right-click an entry to mark or restore it without reaching for the button.
 	library_list.item_clicked.connect(func(i,_at,button):
 		if button==MOUSE_BUTTON_RIGHT:
@@ -1062,14 +1065,40 @@ func selected_library_id() -> String:
 	var picked:=library_list.get_selected_items()
 	return "" if picked.is_empty() else str(library_list.get_item_metadata(picked[0]))
 
+func selected_library_ids() -> Array:
+	var result: Array=[]
+	if library_list==null: return result
+	for i in library_list.get_selected_items():
+		var id=library_list.get_item_metadata(i)
+		if id!=null and not str(id).is_empty(): result.append(str(id))
+	return result
+
+## Mark or unmark every selected prop in one go. If any of them is unmarked the
+## batch marks them all; if all are marked the batch clears them all.
+func mark_selected(marks: Dictionary, save: Callable) -> void:
+	var ids:=selected_library_ids()
+	if ids.is_empty(): return
+	var turn_on:=ids.any(func(id): return not marks.has(id))
+	for id in ids:
+		if turn_on: marks[id]=true
+		else: marks.erase(id)
+	save.call()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+
 func update_retire_button() -> void:
 	if retire_button==null: return
 	var id:=selected_library_id()
+	var ids:=selected_library_ids()
+	var many:=ids.size()>1
 	retire_button.disabled=id.is_empty()
-	retire_button.text=("Restore asset" if retired.has(id) else "Mark for removal")
+	var all_retired:=not ids.is_empty() and ids.all(func(i): return retired.has(i))
+	retire_button.text=(("Restore %d assets" % ids.size()) if all_retired else ("Mark %d for removal" % ids.size())) if many else ("Restore asset" if retired.has(id) else "Mark for removal")
 	if favourite_button!=null:
 		favourite_button.disabled=id.is_empty()
-		favourite_button.text=("★ Starred" if favourites.has(id) else "☆ Star")
+		var all_starred:=not ids.is_empty() and ids.all(func(i): return favourites.has(i))
+		favourite_button.text=(("★ Unstar %d" % ids.size()) if all_starred else ("☆ Star %d" % ids.size())) if many else ("★ Starred" if favourites.has(id) else "☆ Star")
 	if move_to!=null:
 		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="tileset"
 	if rename_field!=null:
