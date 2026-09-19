@@ -37,6 +37,7 @@ var pager_prev: Button
 var pager_next: Button
 var hover_panel: PanelContainer
 var hover_image: TextureRect
+var hover_caption: Label
 var hover_index:=-1
 static var VARIANTS_PATH:="res://rooms/tileset-library/variants.json"
 var variant_group: Dictionary={}     # library id -> family index
@@ -496,13 +497,19 @@ func _ready() -> void:
 	tray_style.set_border_width_all(3); tray_style.set_corner_radius_all(10); tray_style.content_margin_left=10; tray_style.content_margin_right=10; tray_style.content_margin_top=12; tray_style.content_margin_bottom=12
 	tray_panel.add_theme_stylebox_override("panel",tray_style)
 	var tray:=VBoxContainer.new(); tray_panel.add_child(tray)
-	var library_title:=Label.new(); library_title.text="ASSET TRAY"; tray.add_child(library_title)
+	# One row for the title and the preview progress; every row spent on chrome is a
+	# row of thumbnails the owner cannot see.
+	var title_row:=HBoxContainer.new(); tray.add_child(title_row)
+	var library_title:=Label.new(); library_title.text="ASSET TRAY"; title_row.add_child(library_title)
+	library_title.tooltip_text="Drag out to place. Drop back on the tray to remove."
+	library_title.mouse_filter=Control.MOUSE_FILTER_STOP
 	# Previews render one per frame, so a full tray takes a few seconds to fill.
 	# Show that as progress rather than letting it look stalled.
 	tray_progress=ProgressBar.new(); tray_progress.custom_minimum_size=Vector2(0,14); tray_progress.visible=false
 	tray_progress.tooltip_text="Rendering previews for the props in the tray."
-	tray.add_child(tray_progress)
-	var tray_hint:=Label.new(); tray_hint.text="Drag out to place • Drop back to remove"; tray_hint.add_theme_font_size_override("font_size",12); tray.add_child(tray_hint)
+	tray_progress.size_flags_horizontal=Control.SIZE_EXPAND_FILL; tray_progress.size_flags_vertical=Control.SIZE_SHRINK_CENTER
+	title_row.add_child(tray_progress)
+	var filter_row:=HBoxContainer.new()
 	library_filter=OptionButton.new()
 	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings"]: library_filter.add_item(label)
 	var themes: Array=[]
@@ -524,13 +531,16 @@ func _ready() -> void:
 		theme_filters[library_filter.item_count]=theme
 		library_filter.add_item(str(theme))
 	library_filter.add_item("Marked for removal")
-	tray.add_child(library_filter)
+	library_filter.size_flags_horizontal=Control.SIZE_EXPAND_FILL; library_filter.clip_text=true; library_filter.fit_to_longest_item=false
+	library_filter.tooltip_text="What kind of prop to list."
+	tray.add_child(filter_row); filter_row.add_child(library_filter)
 	library_filter.item_selected.connect(func(_i): rebuild_library())
 	pack_filter=OptionButton.new()
 	pack_filter.add_item("All tilesets")
 	for pack in packs: pack_filter.add_item(str(pack))
 	pack_filter.tooltip_text="Narrow the tray to one art pack. Combine with the filter above to browse a pack by kind of prop."
-	tray.add_child(pack_filter)
+	pack_filter.size_flags_horizontal=Control.SIZE_EXPAND_FILL; pack_filter.clip_text=true; pack_filter.fit_to_longest_item=false
+	filter_row.add_child(pack_filter)
 	pack_filter.item_selected.connect(func(_i): rebuild_library())
 	load_retired()
 	retire_button=Button.new(); retire_button.text="Mark for removal"; retire_button.disabled=true
@@ -586,7 +596,7 @@ func _ready() -> void:
 	library_list.add_theme_font_size_override("font_size",13)
 	library_list.max_columns=2; library_list.same_column_width=true; library_list.icon_mode=ItemList.ICON_MODE_TOP
 	library_list.fixed_column_width=120; library_list.max_text_lines=2
-	library_list.custom_minimum_size=Vector2(250,180)
+	library_list.custom_minimum_size=Vector2(250,300)
 	library_list.size_flags_vertical=Control.SIZE_EXPAND_FILL
 	library_list.size_flags_stretch_ratio=1.35
 	tray.add_child(library_list)
@@ -599,13 +609,20 @@ func _ready() -> void:
 	pager_next=Button.new(); pager_next.text="▶"; pager_next.tooltip_text="Next page"; pager.add_child(pager_next)
 	pager_prev.pressed.connect(func(): turn_page(-1))
 	pager_next.pressed.connect(func(): turn_page(1))
+	# Above the list, so the pager is never scrolled out of reach below it.
+	tray.move_child(pager,library_list.get_index())
 	# A larger look at whatever the pointer is over: tray thumbnails are small and a
 	# cabinet is hard to tell from a locker until it is placed.
 	hover_panel=PanelContainer.new(); hover_panel.visible=false; hover_panel.mouse_filter=Control.MOUSE_FILTER_IGNORE; hover_panel.z_index=50
+	var hover_style:=StyleBoxFlat.new(); hover_style.bg_color=Color("09151bf2"); hover_style.border_color=Color("67d5bb")
+	hover_style.set_border_width_all(2); hover_style.set_corner_radius_all(8); hover_style.set_content_margin_all(10)
+	hover_panel.add_theme_stylebox_override("panel",hover_style)
+	var hover_box:=VBoxContainer.new(); hover_box.mouse_filter=Control.MOUSE_FILTER_IGNORE; hover_panel.add_child(hover_box)
+	hover_caption=Label.new(); hover_caption.add_theme_font_size_override("font_size",13); hover_caption.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	hover_image=TextureRect.new(); hover_image.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	hover_image.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED; hover_image.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
 	hover_image.mouse_filter=Control.MOUSE_FILTER_IGNORE
-	hover_panel.add_child(hover_image); add_child(hover_panel)
+	hover_box.add_child(hover_image); hover_box.add_child(hover_caption); add_child(hover_panel)
 	library_list.gui_input.connect(on_tray_pointer)
 	library_list.mouse_exited.connect(func(): show_hover(-1))
 	# Right-click an entry to mark or restore it without reaching for the button.
@@ -1288,9 +1305,10 @@ func show_hover(i: int) -> void:
 	var dims:=Vector2(texture.get_size())
 	var factor:=clampf(minf(340.0/maxf(1.0,dims.x),340.0/maxf(1.0,dims.y)),1.0,4.0)
 	hover_image.texture=texture; hover_image.custom_minimum_size=dims*factor
+	hover_caption.text=library_list.get_item_text(i)+("   %d × %d" % [int(dims.x),int(dims.y)] if entry.get("group","")=="tileset" else "")
 	hover_panel.reset_size()
-	var at:=Vector2(tray_panel.global_position.x-dims.x*factor-36.0,get_global_mouse_position().y-dims.y*factor*0.5)
-	hover_panel.global_position=Vector2(maxf(8.0,at.x),clampf(at.y,8.0,maxf(8.0,size.y-dims.y*factor-36.0)))
+	var at:=Vector2(tray_panel.global_position.x-hover_panel.size.x-14.0,get_global_mouse_position().y-hover_panel.size.y*0.5)
+	hover_panel.global_position=Vector2(maxf(8.0,at.x),clampf(at.y,8.0,maxf(8.0,size.y-hover_panel.size.y-8.0)))
 	hover_panel.visible=true
 
 ## Carry this rotation's layout to the other three. The room stays riser-north at

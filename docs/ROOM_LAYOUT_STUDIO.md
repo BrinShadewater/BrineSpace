@@ -18,7 +18,8 @@ Free placement is part of each layout, not a view option.
 
 - **WASD** moves the camera. Middle-drag also pans; the mouse wheel zooms.
 - Drag artwork from the **Asset Tray** into the room. Its drag preview follows
-  the pointer at placement scale. New placements start at **50%**.
+  the pointer at placement scale. New placements start at **New props at %** (50% until
+  you change it).
 - Click a placed object to select it. Drag it to move, or drag its **bottom-right
   corner** to resize proportionally. Size % remains available for exact sizing.
 - Drag an object back over the tray and release to remove it. Delete and
@@ -42,17 +43,17 @@ source artwork has a solid background.
 
 ### The tileset library
 
-About 10,900 bought props in 42 sets load from `rooms/tileset-library/props.json`.
+About 10,500 bought props in 42 sets load from `rooms/tileset-library/props.json`.
 Two dropdowns narrow them and combine: the first adds a **kind** filter per category
 (Storage, Seating & tables, Screens & computers, Lab & science, Medical, Plants &
 growing, Power & reactor, Industrial & workshop, Water & marine, Ship interior and
 more), the second picks a **set** (Galley, Hydroponics, Infirmary, Undercity…). Search
 matches the label, the set and any name you gave a prop. The tray lists 280 entries at
-a time; the **◀ ▶ pager** under it reaches the rest and shows the range (`281–560 of
-926`). Previews render one per frame, and a progress bar under the tray title counts
+a time; the **◀ ▶ pager** above the list reaches the rest and shows the range (`281–560
+of 926`). Previews render one per frame, and a progress bar beside the tray title counts
 them in. **In this room** lists only what is already placed here, for reusing the same
 chair or console. Resting the pointer on an entry shows it enlarged, straight from the
-sheet, beside the tray.
+sheet, in a panel beside the tray with its name and pixel size.
 
 **Group look-alikes** shows one tile for each family of near-identical props (the same
 rack with different guns, the same monitor with a different screen), marked `×N`. About
@@ -136,7 +137,7 @@ Runtime editing does not rebake static cards.
 
 ## Validation
 
-Run Godot 4.6.1 with `--path . --script res://tests/test_simple_room_studio.gd`
+Run Godot 4.7 (tested with 4.7.2) with `--path . --script res://tests/test_simple_room_studio.gd`
 for native tray drag/preview, return drag, corner resizing, WASD/typing guard,
 all floor finishes, persistence and 1600/960 captures. The broader
 `tests/test_room_layout_editor.gd` and `tests/test_layout_workflow.gd` fixtures
