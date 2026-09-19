@@ -20,14 +20,23 @@ import argparse, sys
 
 from PIL import Image, ImageDraw
 
-from common import PROPS, load_json, load_props, next_numbers, save_json, sheet_of
+from common import LIB, PROPS, load_json, load_props, next_numbers, save_json, sheet_of
 from register import KIND
 
 PER_PAGE, COLS, CELL = 48, 8, 150
 
 
-def ordered(props, set_name):
+def families():
+    return load_json(LIB / "variants.json", {}).get("groups", [])
+
+
+def ordered(props, set_name, fold=True):
+    """The set's props in page order. Folded, a family of look-alikes is shown once, by its
+    first member; apply() hands that title to the rest, so a family shares one name."""
     chosen = [e for e in props if e["tileset"] == set_name]
+    if fold:
+        followers = {m for family in families() for m in family[1:]}
+        chosen = [e for e in chosen if e["id"] not in followers]
     chosen.sort(key=lambda e: (e["category"], e["label"]))
     return chosen
 
@@ -61,7 +70,9 @@ def apply(path, dry_run):
     spec = load_json(path)
     props = load_props()
     by_id = {e["id"]: e for e in props}
-    chosen = [by_id[i] for i in load_json(spec["index"]) if i in by_id] if spec.get("index") else ordered(props, spec["set"])
+    # Positions in the index are fixed: a prop removed since the pages were drawn leaves
+    # a gap, it does not shift every later number onto the wrong prop.
+    chosen = [by_id.get(i) for i in load_json(spec["index"])] if spec.get("index") else ordered(props, spec["set"])
     numbers = next_numbers(props)
     used = {}
     for e in props:
@@ -69,8 +80,14 @@ def apply(path, dry_run):
             used[e["title"].lower()] = used.get(e["title"].lower(), 0) + 1
     titled = moved = 0
     for key, value in spec["titles"].items():
-        e = chosen[int(key)] if str(key).isdigit() else by_id.get(key)
-        if e is None: sys.exit(f"unknown prop {key!r}")
+        if str(key).isdigit():
+            if int(key) >= len(chosen): sys.exit(f"{key}: past the end of the index ({len(chosen)} entries)")
+            e = chosen[int(key)]
+            if e is None:
+                print(f"  {key}: no longer registered, skipped"); continue
+        else:
+            e = by_id.get(key)
+            if e is None: sys.exit(f"unknown prop {key!r}")
         title, category = (value, None) if isinstance(value, str) else (value[0], value[1])
         title = " ".join(title.split())
         if category and category not in KIND: sys.exit(f"{key}: unknown category {category!r}")
@@ -81,6 +98,22 @@ def apply(path, dry_run):
             e["category"] = category
             kind = KIND[category]; numbers[kind] = numbers.get(kind, 0) + 1
             e["label"] = f"{kind} {numbers[kind]:03d}"; moved += 1
+    # a family shares its first member's name and category
+    inherited = 0
+    for family in families():
+        lead = by_id.get(family[0])
+        if lead is None or not lead.get("title") or lead["tileset"] != spec["set"]: continue
+        base = lead["title"].rstrip("0123456789 ").strip() or lead["title"]
+        for pid in family[1:]:
+            e = by_id.get(pid)
+            if e is None or e.get("title"): continue
+            used[base.lower()] = used.get(base.lower(), 0) + 1
+            e["title"] = f"{base} {used[base.lower()]}"; inherited += 1
+            if e["category"] != lead["category"]:
+                e["category"] = lead["category"]; kind = KIND[lead["category"]]
+                numbers[kind] = numbers.get(kind, 0) + 1; e["label"] = f"{kind} {numbers[kind]:03d}"; moved += 1
+    print(f"{inherited} family members inherited a name")
+    chosen = [e for e in props if e["tileset"] == spec["set"]]
     missing = [e["label"] for e in chosen if not e.get("title")]
     print(f"{spec['set']}: {titled} titled, {moved} re-filed, {len(missing)} still untitled" + (f" ({missing[:5]}…)" if missing else ""))
     if dry_run:
