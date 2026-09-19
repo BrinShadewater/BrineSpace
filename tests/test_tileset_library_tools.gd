@@ -18,6 +18,10 @@ func run() -> void:
 		var path: String=OUT+"tileset-tools-"+name+".json"
 		if FileAccess.file_exists(path): DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 	Editor.NAMES_PATH=OUT+"tileset-tools-names.json"
+	# Split writes the prop registry; give it a copy so the real one is never touched.
+	var real_props:=FileAccess.get_file_as_string("res://rooms/tileset-library/props.json")
+	Editor.PROPS_PATH=OUT+"tileset-tools-props.json"
+	var props_copy:=FileAccess.open(Editor.PROPS_PATH,FileAccess.WRITE); props_copy.store_string(real_props); props_copy.close()
 	Editor.FAVOURITES_PATH=OUT+"tileset-tools-favourites.json"
 	Editor.CATEGORIES_PATH=OUT+"tileset-tools-categories.json"
 	Editor.RETIRED_PATH=OUT+"tileset-tools-retired.json"
@@ -124,6 +128,38 @@ func run() -> void:
 	if e.retired.has(pair[0]) or e.retired.has(pair[1]): return fail("batch restore did not clear both")
 	e.library_filter.select(kind); e.rebuild_library(); e.library_list.deselect_all(); e.library_list.select(0)
 
+	# --- Split: the owner's case, two stacked chairs boxed as one, comes apart at the seam. ---
+	var top_id:="library/tileset-h22-202"; var bottom_id:="library/tileset-h22-202b"
+	if not (Library.entries().has(top_id) and Library.entries().has(bottom_id)): return fail("split fixture props are missing")
+	var top: Dictionary=Library.entries()[top_id].data; var bottom: Dictionary=Library.entries()[bottom_id].data
+	var ux:=minf(top.region[0],bottom.region[0]); var uy:=minf(top.region[1],bottom.region[1])
+	var ur:=maxf(top.region[0]+top.region[2],bottom.region[0]+bottom.region[2]); var ub:=maxf(top.region[1]+top.region[3],bottom.region[1]+bottom.region[3])
+	var glued: Dictionary=top.duplicate(true); glued.id="test-split"; glued.region=[ux,uy,ur-ux,ub-uy]
+	var parts: Array=Editor.split_regions(glued)
+	if parts.size()!=2: return fail("stacked chairs were not split")
+	for check in [[parts[0],top.region],[parts[1],bottom.region]]:
+		var got: Rect2i=check[0]; var want: Array=check[1]
+		if absi(got.position.x-int(want[0]))>2 or absi(got.position.y-int(want[1]))>2 or absi(got.size.x-int(want[2]))>2 or absi(got.size.y-int(want[3]))>2:
+			return fail("split part does not match the chair: "+str(got)+" vs "+str(want))
+	Library.catalog["library/tileset-test-split"]={"data":glued,"label":"Splitfix 001","width":float(glued.region[2]),"group":"tileset","category":theme,"tileset":"Fixture"}
+	e.library_filter.select(3); e.library_search.text="splitfix"; e.rebuild_library()
+	if e.library_list.item_count!=1: return fail("split fixture is not listed: "+str(e.library_list.item_count))
+	e.library_list.deselect_all(); e.library_list.select(0); e.update_retire_button()
+	if e.split_button.disabled: return fail("Split button is disabled for a single tileset prop")
+	e.split_selected()
+	if not Library.entries().has("library/tileset-test-splitb"): return fail("split did not add the second part to the library")
+	if str(Library.entries()["library/tileset-test-splitb"].label)!="Splitfix 002": return fail("second part is not numbered after the first: "+str(Library.entries()["library/tileset-test-splitb"].label))
+	var second_part: Dictionary=Library.template("library/tileset-test-splitb")
+	if second_part.is_empty() or not second_part.has("footprint"): return fail("second part has no drawable template or footprint")
+	var written: Variant=JSON.parse_string(FileAccess.get_file_as_string(Editor.PROPS_PATH))
+	var found:=0
+	for row in written:
+		if str(row.get("id","")) in ["test-split","test-splitb"]: found+=1
+	if found!=2: return fail("split did not persist both parts: "+str(found))
+	if FileAccess.get_file_as_string("res://rooms/tileset-library/props.json")!=real_props: return fail("split wrote to the real props.json")
+	Library.catalog.erase("library/tileset-test-split"); Library.catalog.erase("library/tileset-test-splitb")
+	e.library_search.text=""
+
 	# --- Rename: the owner's name shows in the tray, is found by search, persists, and clears. ---
 	var original: String=str(entry.label)
 	e.rename(id,"  Cryo pod  ")
@@ -143,5 +179,5 @@ func run() -> void:
 	if e.names.has(id) or e.label_of(id,entry)!=original: return fail("clearing the field did not restore the library label")
 	e.library_search.text=""
 
-	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, rename shown, searched, saved and cleared")
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split, rename shown, searched, saved and cleared")
 	e.close_editor(); await process_frame; quit()

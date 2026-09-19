@@ -24,6 +24,8 @@ static var RETIRED_PATH:="res://rooms/tileset-library/retired.json"
 static var FAVOURITES_PATH:="res://rooms/tileset-library/favourites.json"
 static var CATEGORIES_PATH:="res://rooms/tileset-library/categories.json"
 static var NAMES_PATH:="res://rooms/tileset-library/names.json"
+static var PROPS_PATH:="res://rooms/tileset-library/props.json"
+var split_button: Button
 var names: Dictionary={}
 var rename_field: LineEdit
 var favourite_button: Button
@@ -523,6 +525,10 @@ func _ready() -> void:
 	rename_field.tooltip_text="Give this prop a name of your own. It replaces the library label in the tray, the sidebar and search, and is saved to names.json. Clear the field to go back to the library label."
 	tray.add_child(rename_field)
 	rename_field.text_submitted.connect(func(text): rename(selected_library_id(),text))
+	split_button=Button.new(); split_button.text="Split in two"; split_button.disabled=true
+	split_button.tooltip_text="For two objects the scanner boxed as one (a chair stacked on a chair). Cuts at the emptiest line through the middle, keeps this entry as the first part and adds the second to the tray. Saved to props.json."
+	tray.add_child(split_button)
+	split_button.pressed.connect(func(): split_selected())
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
@@ -1019,6 +1025,96 @@ func save_marks() -> void:
 	if named==null: push_warning("Could not write "+NAMES_PATH+"; the name was not saved.")
 	else: named.store_string(JSON.stringify(names,"	"))
 
+## Where one boxed prop is really two: the emptiest line through the middle of its
+## art, on whichever axis is emptier. Returns two opaque-trimmed rects in sheet
+## pixels, or nothing when no line through the middle is at least half empty.
+static func split_regions(data: Dictionary) -> Array:
+	var image:=Image.new()
+	if image.load_png_from_buffer(FileAccess.get_file_as_bytes(str(data.source)))!=OK: return []
+	var r: Array=data.region
+	var x0:=int(r[0]); var y0:=int(r[1]); var w:=int(r[2]); var h:=int(r[3])
+	if w<8 or h<8: return []
+	var rows: Array=[]; rows.resize(h); rows.fill(0)
+	var cols: Array=[]; cols.resize(w); cols.fill(0)
+	for y in range(h):
+		for x in range(w):
+			if image.get_pixel(x0+x,y0+y).a>=0.094:
+				rows[y]+=1; cols[x]+=1
+	var best:={"ratio":2.0,"axis":"","at":0}
+	for axis in ["row","col"]:
+		var counts: Array=rows if axis=="row" else cols
+		var span:=float(w if axis=="row" else h)
+		var length:=counts.size()
+		if length<24: continue
+		for i in range(int(length*0.25),int(length*0.75)):
+			var ratio: float=counts[i]/span
+			var centred: float=absf(i-length*0.5)/length
+			if ratio<best.ratio-0.0001 or (absf(ratio-best.ratio)<=0.0001 and centred<best.get("centred",1.0)):
+				best={"ratio":ratio,"axis":axis,"at":i,"centred":centred}
+	if best.axis=="" or best.ratio>0.5: return []
+	var first: Rect2i; var second: Rect2i
+	if best.axis=="row":
+		first=Rect2i(x0,y0,w,best.at); second=Rect2i(x0,y0+best.at,w,h-best.at)
+	else:
+		first=Rect2i(x0,y0,best.at,h); second=Rect2i(x0+best.at,y0,w-best.at,h)
+	var parts: Array=[]
+	for box in [first,second]:
+		var used:=image.get_region(box).get_used_rect()
+		if used.size.x<6 or used.size.y<6: return []
+		parts.append(Rect2i(box.position+used.position,used.size))
+	return parts
+
+static func registration_for(data: Dictionary, box: Rect2i, image: Image) -> Dictionary:
+	var result: Dictionary=data.duplicate(true)
+	var x:=box.position.x; var y:=box.position.y; var w:=box.size.x; var h:=box.size.y
+	result.region=[float(x),float(y),float(w),float(h)]
+	result.pieces=[[[x,y],[x+w,y],[x+w,y+h],[x,y+h]]]
+	result.display_width=float(w)
+	# floor footprint: the base of the silhouette, as fractions of the rect
+	var band:=maxi(6,roundi(h*0.22))
+	var base:=image.get_region(Rect2i(x,y+h-band,w,band)).get_used_rect()
+	if base.size.x<=0: base=Rect2i(0,0,w,band)
+	result.footprint=[snappedf(float(base.position.x)/w,0.0001),snappedf(float(h-band+base.position.y)/h,0.0001),snappedf(float(base.size.x)/w,0.0001),snappedf(float(base.size.y)/h,0.0001)]
+	return result
+
+func split_selected() -> void:
+	var id:=selected_library_id()
+	var entry: Dictionary=Library.entries().get(id,{})
+	if entry.get("group","")!="tileset": return
+	var parts:=split_regions(entry.data)
+	if parts.is_empty():
+		status.text="No clear seam through the middle of this prop; nothing was split."
+		return
+	var image:=Image.new(); image.load_png_from_buffer(FileAccess.get_file_as_bytes(str(entry.data.source)))
+	var first:=registration_for(entry.data,parts[0],image)
+	var second:=registration_for(entry.data,parts[1],image)
+	var suffix:="b"
+	while Library.entries().has("library/tileset-"+str(entry.data.id)+suffix): suffix=char(suffix.unicode_at(0)+1)
+	second.id=str(entry.data.id)+suffix
+	var kind:=str(entry.label).rsplit(" ",true,1)[0]
+	var highest:=0
+	for other in Library.entries().values():
+		var bits:=str(other.get("label","")).rsplit(" ",true,1)
+		if bits.size()==2 and bits[0]==kind and bits[1].is_valid_int(): highest=maxi(highest,int(bits[1]))
+	second.label="%s %03d" % [kind,highest+1]
+	var listed: Variant=JSON.parse_string(FileAccess.get_file_as_string(PROPS_PATH))
+	if not listed is Array: status.text="Could not read "+PROPS_PATH+"; nothing was split."; return
+	var replaced:=false
+	for i in range(listed.size()):
+		if str(listed[i].get("id",""))==str(first.id): listed[i]=first; replaced=true
+	if not replaced: listed.append(first)
+	listed.append(second)
+	var file:=FileAccess.open(PROPS_PATH,FileAccess.WRITE)
+	if file==null: status.text="Could not write "+PROPS_PATH+"; nothing was split."; return
+	file.store_string(JSON.stringify(listed)); file.close()
+	entry.data=first; entry.width=float(first.display_width)
+	for stale in ["template","thumbnail","preview_ready"]: entry.erase(stale)
+	var new_id:="library/tileset-"+str(second.id)
+	Library.catalog[new_id]={"data":second,"label":second.label,"width":float(second.display_width),"group":"tileset","category":entry.get("category","prop"),"tileset":entry.get("tileset","")}
+	if recategorised.has(id): recategorised[new_id]=recategorised[id]; save_marks()
+	library_signature.clear(); rebuild_library(); update_retire_button(); refresh()
+	status.text="Split: "+label_of(id,entry)+" kept the first part; "+str(second.label)+" is the second."
+
 ## The owner's name for a prop if they gave one, else its library label.
 func label_of(id: String, entry: Dictionary) -> String:
 	return str(names.get(id,entry.get("label",id)))
@@ -1101,6 +1197,8 @@ func update_retire_button() -> void:
 		favourite_button.text=(("★ Unstar %d" % ids.size()) if all_starred else ("☆ Star %d" % ids.size())) if many else ("★ Starred" if favourites.has(id) else "☆ Star")
 	if move_to!=null:
 		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+	if split_button!=null:
+		split_button.disabled=id.is_empty() or many or str(Library.entries().get(id,{}).get("group",""))!="tileset"
 	if rename_field!=null:
 		rename_field.editable=not id.is_empty() and str(Library.entries().get(id,{}).get("group",""))=="tileset"
 		if not rename_field.has_focus(): rename_field.text=str(names.get(id,"")) if rename_field.editable else ""
