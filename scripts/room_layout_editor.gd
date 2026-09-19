@@ -44,6 +44,7 @@ var preview_animation:=false
 var preview_clock:=0.0
 var scale_actor = preload("res://scripts/room_scale_preview.gd").new()
 var character_mode: OptionButton
+var cast_pick: OptionButton
 var show_character: CheckButton
 # View options remembered across rooms, rotations and launches (owner playtest).
 const Prefs=preload("res://scripts/room_studio_prefs.gd")
@@ -326,7 +327,7 @@ func _ready() -> void:
 	var clean:=CheckButton.new(); clean.text="Clean preview"; toolbar.add_child(clean)
 	clean.toggled.connect(func(value): clean_preview=value; canvas.queue_redraw())
 	show_character=CheckButton.new(); show_character.text="Show character"; toolbar.add_child(show_character)
-	show_character.tooltip_text="Show Bill standing in the room at gameplay size, for judging scale. Preview only; never saved as furniture."
+	show_character.tooltip_text="Stand a crew member in the room at gameplay size, for judging scale. Preview only; never saved as furniture."
 	show_character.toggled.connect(func(value): set_character_mode(1 if value else 0))
 	pref_controls["guides"]=guides; pref_controls["clean"]=clean
 	riser_toggle=CheckButton.new(); riser_toggle.text="Riser wall"; riser_toggle.button_pressed=show_riser; editbar.add_child(riser_toggle)
@@ -374,11 +375,21 @@ func _ready() -> void:
 	side.add_child(instructions)
 	var character_row := HBoxContainer.new()
 	side.add_child(character_row)
-	var character_label := Label.new(); character_label.text="Scale: Bill"; character_row.add_child(character_label)
+	var character_label := Label.new(); character_label.text="Scale:"; character_row.add_child(character_label)
+	cast_pick=OptionButton.new()
+	for member in scale_actor.CAST: cast_pick.add_item(str(member.name))
+	cast_pick.tooltip_text="Which crew member stands in the room. Preview only; the choice is never saved into the layout."
+	character_row.add_child(cast_pick)
+	cast_pick.item_selected.connect(func(value):
+		scale_actor.set_cast(value)
+		Prefs.save_value("cast",value)
+		if character_mode.selected>0:
+			scale_actor.rebuild(room,str(entries[index].room),quarter)
+		canvas.queue_redraw())
 	character_mode = OptionButton.new()
 	for caption in ["Hidden","Standing","Walking"]: character_mode.add_item(caption)
 	character_row.add_child(character_mode)
-	character_mode.tooltip_text="Current Bill artwork at gameplay size. Preview only; never saved as room furniture. Walking respects equipment clearance."
+	character_mode.tooltip_text="Current crew artwork at gameplay size. Preview only; never saved as room furniture. Walking respects equipment clearance."
 	character_mode.item_selected.connect(func(value): set_character_mode(value))
 	character_place=button(character_row,"Place",func():
 		placing_character=true
@@ -565,6 +576,8 @@ func apply_prefs() -> void:
 		control.toggled.connect(func(value): Prefs.save_value(key,value))
 	if saved.get("zoom") is float: zoom_slider.value=clampf(saved.zoom,zoom_slider.min_value,zoom_slider.max_value)
 	zoom_slider.value_changed.connect(func(value): Prefs.save_value("zoom",float(value)))
+	if saved.get("cast") is int and int(saved.cast)>0 and int(saved.cast)<scale_actor.CAST.size():
+		cast_pick.select(int(saved.cast)); scale_actor.set_cast(int(saved.cast))
 	if saved.get("character") is int and int(saved.character) in [1,2]: set_character_mode(saved.character)
 
 func button(parent: Node, text: String, action: Callable) -> Button:
@@ -1045,12 +1058,16 @@ func rebuild_library() -> void:
 			library_list.set_item_metadata(library_list.item_count-1,id)
 			library_list.set_item_tooltip(library_list.item_count-1,caption+(" • Fixed wall artwork" if prop.has("flush_region") else " • Drag into the room"))
 	var hidden_by_limit:=0
+	# family_variants scans the whole catalog; with a library this size calling
+	# it per entry is quadratic and froze the Studio on open. Once per rebuild.
+	var room_family: Array=Library.family_variants(entries[index].asset) if library_filter.selected==0 else []
+	var room_id: String=str(entries[index].room)
 	for id in Library.entries():
 		var entry: Dictionary=Library.entries()[id]
 		if only_retired:
 			if not retired.has(id): continue
 		elif retired.has(id): continue
-		if not only_retired and library_filter.selected==0 and id not in Library.family_variants(entries[index].asset) and entries[index].room not in entry.get("default_rooms",[]): continue
+		if not only_retired and library_filter.selected==0 and id not in room_family and room_id not in entry.get("default_rooms",[]): continue
 		if not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4]): continue
 		if not only_retired and library_filter.selected==1 and entry.get("group","")!="common": continue
 		if not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]: continue
@@ -1058,9 +1075,7 @@ func rebuild_library() -> void:
 		if not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme): continue
 		if not pack.is_empty() and str(entry.get("tileset",""))!=pack: continue
 		var caption:=str(entry.label)
-		if entry.get("group","")=="tileset":
-			caption=str(entry.data.id).to_upper()+" · "+category_of(id,entry)
-			if favourites.has(id): caption="★ "+caption
+		if entry.get("group","")=="tileset" and favourites.has(id): caption="★ "+caption
 		if not library_search.text.is_empty():
 			var needle:=library_search.text.to_lower()
 			var haystack:=(caption+" "+str(entry.get("tileset",""))).to_lower()
@@ -1072,7 +1087,8 @@ func rebuild_library() -> void:
 		library_list.add_item(caption,entry.get("thumbnail") if entry.get("preview_ready",false) else thumbnail_placeholder)
 		library_list.set_item_metadata(library_list.item_count-1,id)
 		library_list.set_item_tooltip(library_list.item_count-1,caption+
-			(" — "+str(entry.get("tileset","")) if entry.get("group","")=="tileset" else "")+
+			(" — "+category_of(id,entry)+" — "+str(entry.get("tileset",""))+" set"
+				if entry.get("group","")=="tileset" else "")+
 			" — drag into clear floor space")
 	if hidden_by_limit>0:
 		library_list.add_item("+%d more — narrow by kind, tileset, or search" % hidden_by_limit,thumbnail_placeholder)
