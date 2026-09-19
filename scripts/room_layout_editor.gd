@@ -20,9 +20,9 @@ var retire_button: Button
 # Assets the owner has marked for removal. Nothing is deleted here: the id is
 # written to a manifest and the entry leaves the tray, so a misclick costs
 # nothing and the art can be swept later once the list has been reviewed.
-const RETIRED_PATH:="res://rooms/tileset-library/retired.json"
-const FAVOURITES_PATH:="res://rooms/tileset-library/favourites.json"
-const CATEGORIES_PATH:="res://rooms/tileset-library/categories.json"
+static var RETIRED_PATH:="res://rooms/tileset-library/retired.json"
+static var FAVOURITES_PATH:="res://rooms/tileset-library/favourites.json"
+static var CATEGORIES_PATH:="res://rooms/tileset-library/categories.json"
 var favourite_button: Button
 var move_to: OptionButton
 var favourites: Dictionary={}

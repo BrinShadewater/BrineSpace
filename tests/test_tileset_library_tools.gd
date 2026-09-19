@@ -1,0 +1,101 @@
+extends SceneTree
+## Tileset library tools in the Studio: star, move to category, crew picker,
+## and the floor footprint that the equipment shadow shades. Every mark file is
+## redirected under output/ so the owner's favourites, categories and retired
+## lists are never touched.
+const Editor=preload("res://scripts/room_layout_editor.gd")
+const Store=preload("res://scripts/room_layout_store.gd")
+const OUT:="res://output/layout-editor/"
+
+func _init() -> void: call_deferred("run")
+
+func fail(message: String) -> void:
+	push_error("TILESET TOOLS FAIL: "+message); quit(1)
+
+func run() -> void:
+	Store.path=OUT+"tileset-tools-isolated.json"; Store.loaded=true; Store.data={}
+	for name in ["favourites","categories","retired"]:
+		var path: String=OUT+"tileset-tools-"+name+".json"
+		if FileAccess.file_exists(path): DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+	Editor.FAVOURITES_PATH=OUT+"tileset-tools-favourites.json"
+	Editor.CATEGORIES_PATH=OUT+"tileset-tools-categories.json"
+	Editor.RETIRED_PATH=OUT+"tileset-tools-retired.json"
+	var e=Editor.open(root)
+	await process_frame
+	var Library=e.Library
+
+	# A tileset prop to work with: the first one under the first kind filter.
+	var kind:=-1
+	for i in range(e.library_filter.item_count):
+		if e.theme_filters.has(i): kind=i; break
+	if kind<0: return fail("no tileset kind filters in the dropdown")
+	var theme: String=e.theme_filters[kind]
+	e.library_filter.select(kind); e.rebuild_library()
+	if e.library_list.item_count<2: return fail("kind filter '%s' lists nothing" % theme)
+	var id: String=str(e.library_list.get_item_metadata(0))
+	if not id.begins_with("library/tileset-"): return fail("first listed id is not a tileset prop: "+id)
+	var entry: Dictionary=Library.entries()[id]
+
+	# --- Star: mark, appears under Favourites with a star, unmark, gone. ---
+	e.toggle_favourite(id)
+	if not e.favourites.has(id): return fail("star did not mark "+id)
+	e.library_filter.select(e.favourites_filter); e.rebuild_library()
+	if e.library_list.item_count!=1 or str(e.library_list.get_item_metadata(0))!=id: return fail("Favourites filter does not list the starred prop")
+	if not e.library_list.get_item_text(0).begins_with("★"): return fail("starred caption lacks the star: "+e.library_list.get_item_text(0))
+	var saved: Variant=JSON.parse_string(FileAccess.get_file_as_string(Editor.FAVOURITES_PATH))
+	if not (saved is Array and saved.has(id)): return fail("favourites.json did not persist the star")
+	e.toggle_favourite(id)
+	if e.favourites.has(id): return fail("second star press did not unmark")
+	e.rebuild_library()
+	if e.library_list.item_count!=0: return fail("Favourites still lists an unstarred prop")
+
+	# --- Move: refile to another kind, listed there and not in its old kind; move back clears the override. ---
+	var target:=""
+	for candidate in e.tileset_categories:
+		if str(candidate)!=theme: target=str(candidate); break
+	e.recategorise(id,target)
+	if e.category_of(id,entry)!=target: return fail("category_of did not follow the move")
+	var target_filter:=-1
+	for i in e.theme_filters:
+		if e.theme_filters[i]==target: target_filter=i
+	e.library_filter.select(target_filter); e.rebuild_library()
+	var listed:=false
+	for i in range(e.library_list.item_count):
+		if str(e.library_list.get_item_metadata(i))==id: listed=true
+	if not listed: return fail("moved prop is not listed under "+target)
+	e.library_filter.select(kind); e.rebuild_library()
+	for i in range(e.library_list.item_count):
+		if str(e.library_list.get_item_metadata(i))==id: return fail("moved prop still listed under "+theme)
+	var moved: Variant=JSON.parse_string(FileAccess.get_file_as_string(Editor.CATEGORIES_PATH))
+	if not (moved is Dictionary and moved.get(id,"")==target): return fail("categories.json did not persist the move")
+	e.recategorise(id,theme)
+	if e.recategorised.has(id): return fail("moving back to the original kind left an override")
+
+	# --- Crew picker: each cast member loads their own art. ---
+	e.set_character_mode(1)
+	var seen: Array=[]
+	for i in range(e.scale_actor.CAST.size()):
+		e.cast_pick.select(i); e.cast_pick.item_selected.emit(i)
+		if e.scale_actor.cast_index!=i: return fail("cast picker did not switch to "+str(e.scale_actor.CAST[i].name))
+		if e.scale_actor.player.frames.is_empty(): return fail("no art loaded for "+str(e.scale_actor.CAST[i].name))
+		seen.append(e.scale_actor.player.frames.size())
+	if seen.size()!=4: return fail("expected four crew members, got "+str(seen.size()))
+
+	# --- Footprint: fractions inside the rect; mirrored art mirrors it. ---
+	var prop: Dictionary=Library.template(id)
+	if not prop.has("footprint"): return fail("template carries no footprint")
+	var f: Array=prop.footprint
+	for v in f:
+		if float(v)<0.0 or float(v)>1.0: return fail("footprint fraction out of range: "+str(f))
+	if float(f[0])+float(f[2])>1.0001 or float(f[1])+float(f[3])>1.0001: return fail("footprint leaves the rect: "+str(f))
+	var mirror_id:="library/tileset-test-mirror"
+	var data: Dictionary=entry.data.duplicate(true); data.mirror_horizontal=true; data.id="test-mirror"
+	Library.catalog[mirror_id]={"data":data,"label":"mirror probe","width":entry.width,"group":"tileset","category":entry.category,"tileset":entry.tileset}
+	var mirrored: Dictionary=Library.template(mirror_id)
+	Library.catalog.erase(mirror_id)
+	if not mirrored.registration.get("mirrored",false): return fail("mirror probe did not mirror")
+	var mf: Array=mirrored.footprint
+	if absf(float(mf[0])-(1.0-float(f[0])-float(f[2])))>0.0001 or mf[2]!=f[2]: return fail("mirrored footprint is not the mirror image: "+str(f)+" -> "+str(mf))
+
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored")
+	e.close_editor(); await process_frame; quit()
