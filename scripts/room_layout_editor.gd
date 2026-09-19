@@ -23,6 +23,9 @@ var retire_button: Button
 static var RETIRED_PATH:="res://rooms/tileset-library/retired.json"
 static var FAVOURITES_PATH:="res://rooms/tileset-library/favourites.json"
 static var CATEGORIES_PATH:="res://rooms/tileset-library/categories.json"
+static var NAMES_PATH:="res://rooms/tileset-library/names.json"
+var names: Dictionary={}
+var rename_field: LineEdit
 var favourite_button: Button
 var move_to: OptionButton
 var favourites: Dictionary={}
@@ -516,6 +519,10 @@ func _ready() -> void:
 	move_to.item_selected.connect(func(i):
 		if i>0: recategorise(selected_library_id(),str(move_to.get_item_text(i)))
 		move_to.select(0))
+	rename_field=LineEdit.new(); rename_field.placeholder_text="Rename selected prop…"; rename_field.editable=false
+	rename_field.tooltip_text="Give this prop a name of your own. It replaces the library label in the tray, the sidebar and search, and is saved to names.json. Clear the field to go back to the library label."
+	tray.add_child(rename_field)
+	rename_field.text_submitted.connect(func(text): rename(selected_library_id(),text))
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
@@ -741,7 +748,7 @@ func rebuild_list() -> void:
 			var cell:=str(prop.id).split("/")
 			caption="Panel "+str(int(cell[1])+1)+", "+str(int(cell[2])+1)
 		elif prop.has("portable_id"): caption=str(prop.portable_id).replace("_"," ").capitalize()
-		elif prop.get("library_asset",false): caption=Library.entries().get(Library.base_id(prop.id),{}).get("label","Copied prop")
+		elif prop.get("library_asset",false): caption=display_name(Library.base_id(prop.id),"Copied prop")
 		elif prop.get("full_wall",false): caption="Full-wall installation"
 		rows.append([caption+(" [hidden]" if draft.get("hidden/"+str(prop.id),false) else "")+(" [locked]" if draft.get("locked/"+str(prop.id),false) else "")+(" [fixed]" if prop.has("flush_region") else ""),str(prop.id)])
 	if rows!=list_signature:
@@ -991,6 +998,11 @@ func load_marks() -> void:
 		var moved: Variant=JSON.parse_string(FileAccess.get_file_as_string(CATEGORIES_PATH))
 		if moved is Dictionary:
 			for id in moved: recategorised[str(id)]=str(moved[id])
+	names.clear()
+	if FileAccess.file_exists(NAMES_PATH):
+		var named: Variant=JSON.parse_string(FileAccess.get_file_as_string(NAMES_PATH))
+		if named is Dictionary:
+			for id in named: names[str(id)]=str(named[id])
 
 func save_marks() -> void:
 	var starred: Array=favourites.keys(); starred.sort()
@@ -1000,6 +1012,28 @@ func save_marks() -> void:
 	var moved:=FileAccess.open(CATEGORIES_PATH,FileAccess.WRITE)
 	if moved==null: push_warning("Could not write "+CATEGORIES_PATH+"; the move was not saved.")
 	else: moved.store_string(JSON.stringify(recategorised,"	"))
+	var named:=FileAccess.open(NAMES_PATH,FileAccess.WRITE)
+	if named==null: push_warning("Could not write "+NAMES_PATH+"; the name was not saved.")
+	else: named.store_string(JSON.stringify(names,"	"))
+
+## The owner's name for a prop if they gave one, else its library label.
+func label_of(id: String, entry: Dictionary) -> String:
+	return str(names.get(id,entry.get("label",id)))
+
+func display_name(id: String, fallback: String) -> String:
+	return label_of(id,Library.entries()[id]) if Library.entries().has(id) else fallback
+
+func rename(id: String, text: String) -> void:
+	if id.is_empty(): return
+	var clean:=text.strip_edges()
+	var entry: Dictionary=Library.entries().get(id,{})
+	if clean.is_empty() or clean==str(entry.get("label","")): names.erase(id)
+	else: names[id]=clean
+	save_marks()
+	library_signature.clear()
+	rebuild_library()
+	update_retire_button()
+	refresh()
 
 func category_of(id: String, entry: Dictionary) -> String:
 	return recategorised.get(id,str(entry.get("category","")))
@@ -1038,6 +1072,9 @@ func update_retire_button() -> void:
 		favourite_button.text=("★ Starred" if favourites.has(id) else "☆ Star")
 	if move_to!=null:
 		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+	if rename_field!=null:
+		rename_field.editable=not id.is_empty() and str(Library.entries().get(id,{}).get("group",""))=="tileset"
+		if not rename_field.has_focus(): rename_field.text=str(names.get(id,"")) if rename_field.editable else ""
 
 func rebuild_library() -> void:
 	if library_list==null: return
@@ -1082,11 +1119,11 @@ func rebuild_library() -> void:
 		if only_favourites and not favourites.has(id): continue
 		if not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme): continue
 		if not pack.is_empty() and str(entry.get("tileset",""))!=pack: continue
-		var caption:=str(entry.label)
+		var caption:=label_of(id,entry)
 		if entry.get("group","")=="tileset" and favourites.has(id): caption="★ "+caption
 		if not library_search.text.is_empty():
 			var needle:=library_search.text.to_lower()
-			var haystack:=(caption+" "+str(entry.get("tileset",""))).to_lower()
+			var haystack:=(caption+" "+str(entry.label)+" "+str(entry.get("tileset",""))).to_lower()
 			if not haystack.contains(needle): continue
 		if library_list.item_count>=TRAY_LIMIT:
 			hidden_by_limit+=1
@@ -1195,7 +1232,7 @@ func update_size_control() -> void:
 	for control in object_buttons:
 		if control.text in ["Flip left/right","Flip up/down"]: control.get_parent().visible=not prop.is_empty() and layer!=1
 		if control.text=="Return selected to tray": control.visible=not prop.is_empty() and layer!=1
-	if prop.get("library_asset",false): selection_label.text=Library.entries().get(Library.base_id(selected),{}).get("label",selection_label.text)
+	if prop.get("library_asset",false): selection_label.text=display_name(Library.base_id(selected),selection_label.text)
 	if prop.has("portable_id"): selection_label.text=str(prop.portable_id).replace("_"," ").capitalize()
 	if selection_ids().size()>1: selection_label.text+=" · "+str(selection_ids().size())+" selected"
 	if light_controls!=null:

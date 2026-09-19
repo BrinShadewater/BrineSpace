@@ -14,9 +14,10 @@ func fail(message: String) -> void:
 
 func run() -> void:
 	Store.path=OUT+"tileset-tools-isolated.json"; Store.loaded=true; Store.data={}
-	for name in ["favourites","categories","retired"]:
+	for name in ["favourites","categories","retired","names"]:
 		var path: String=OUT+"tileset-tools-"+name+".json"
 		if FileAccess.file_exists(path): DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+	Editor.NAMES_PATH=OUT+"tileset-tools-names.json"
 	Editor.FAVOURITES_PATH=OUT+"tileset-tools-favourites.json"
 	Editor.CATEGORIES_PATH=OUT+"tileset-tools-categories.json"
 	Editor.RETIRED_PATH=OUT+"tileset-tools-retired.json"
@@ -97,5 +98,24 @@ func run() -> void:
 	var mf: Array=mirrored.footprint
 	if absf(float(mf[0])-(1.0-float(f[0])-float(f[2])))>0.0001 or mf[2]!=f[2]: return fail("mirrored footprint is not the mirror image: "+str(f)+" -> "+str(mf))
 
-	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored")
+	# --- Rename: the owner's name shows in the tray, is found by search, persists, and clears. ---
+	var original: String=str(entry.label)
+	e.rename(id,"  Cryo pod  ")
+	if e.label_of(id,entry)!="Cryo pod": return fail("rename did not take (and should trim spaces)")
+	e.library_filter.select(kind); e.library_search.text="cryo pod"; e.rebuild_library()
+	if e.library_list.item_count!=1 or str(e.library_list.get_item_metadata(0))!=id: return fail("search by the new name did not find the renamed prop")
+	if e.library_list.get_item_text(0)!="Cryo pod": return fail("tray caption is not the new name: "+e.library_list.get_item_text(0))
+	e.library_search.text=original.to_lower(); e.rebuild_library()
+	var still_found:=false
+	for i in range(e.library_list.item_count):
+		if str(e.library_list.get_item_metadata(i))==id: still_found=true
+	if not still_found: return fail("search by the library label no longer finds the renamed prop")
+	var named: Variant=JSON.parse_string(FileAccess.get_file_as_string(Editor.NAMES_PATH))
+	if not (named is Dictionary and named.get(id,"")=="Cryo pod"): return fail("names.json did not persist the rename")
+	if e.display_name(id,"?")!="Cryo pod": return fail("sidebar name does not follow the rename")
+	e.rename(id,"")
+	if e.names.has(id) or e.label_of(id,entry)!=original: return fail("clearing the field did not restore the library label")
+	e.library_search.text=""
+
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, rename shown, searched, saved and cleared")
 	e.close_editor(); await process_frame; quit()
