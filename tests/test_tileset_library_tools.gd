@@ -98,6 +98,17 @@ func run() -> void:
 	var mf: Array=mirrored.footprint
 	if absf(float(mf[0])-(1.0-float(f[0])-float(f[2])))>0.0001 or mf[2]!=f[2]: return fail("mirrored footprint is not the mirror image: "+str(f)+" -> "+str(mf))
 
+	# --- Floors: every owner-picked finish is offered and its texture loads as a 4x4 atlas. ---
+	var Floor=load("res://rooms/whole-room/modular_floor.gd")
+	var picked: Variant=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/tileset-library/floors.json"))
+	if not (picked is Dictionary) or picked.is_empty(): return fail("floors.json is missing or empty")
+	for caption in picked:
+		var path: String=str(picked[caption])
+		if not path in Floor.finishes().values(): return fail("finish not offered in the Studio: "+str(caption))
+		var floor_texture: Texture2D=Floor.texture(path)
+		if floor_texture==null or floor_texture.get_width()!=floor_texture.get_height() or floor_texture.get_width()%4!=0:
+			return fail("finish texture is not a square 4x4 atlas: "+path)
+
 	# --- Multi-select: two selected props are marked and restored together. ---
 	e.library_filter.select(kind); e.library_search.text=""; e.rebuild_library()
 	e.library_list.deselect_all(); e.library_list.select(0,true); e.library_list.select(1,false)
