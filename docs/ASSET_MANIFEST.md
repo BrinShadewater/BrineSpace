@@ -8,7 +8,7 @@ JSON data. Tests, tools, docs and skills are not roots: an asset only they menti
 |---|---|---|
 | live | 13405 | reached by an exact path from runtime code or data |
 | dynamic | 4244 | inside a folder the code reads with a built path or directory listing |
-| unreferenced | 5635 | nothing in the runtime points at it (provenance, superseded versions, sources) |
+| unreferenced | 5552 | nothing in the runtime points at it (provenance, superseded versions, sources) |
 
 ## Live assets by owner
 
@@ -1051,7 +1051,7 @@ and must move as a unit.
 | `assets/med-center-directional-v1` | 0 | 0 | 1 |
 | `assets/med-office-directional-v1` | 0 | 0 | 1 |
 | `assets/mining-directional-v1` | 0 | 0 | 1 |
-| `assets/new-tilesets` | 293 | 0 | 83 |
+| `assets/new-tilesets` | 293 | 0 | 0 |
 | `assets/observation-directional-v1` | 0 | 0 | 1 |
 | `assets/operator-stool-v1` | 0 | 0 | 3 |
 | `assets/owner-strict-overhead-v1` | 20 | 0 | 1 |

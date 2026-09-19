@@ -222,7 +222,12 @@ send them; the owner's eye accepts a layout, the validator only permits it.
 
 ## Verifying
 
-- Native lane only: `python tools/run_tests.py --native --only
+- `tests/test_tileset_registry.gd` checks the whole registry against the contract on the
+  sheets themselves, plus that marks, removals and floors resolve. It is headless, takes
+  about five seconds and runs in the default lane, so a sweep that cuts into a kept prop
+  or a registration written in the wrong coordinate space fails on the next plain
+  `python tools/run_tests.py`. It was proved against planted faults.
+- The Studio suites are native lane only: `python tools/run_tests.py --native --only
   test_tileset_library_tools,test_room_layout_editor,test_layout_performance_guards`.
   `--only` is comma-separated. A raw `--headless` run has no textures and proves nothing.
 - A passing suite proves the old behaviour survived. It says nothing about a new control
