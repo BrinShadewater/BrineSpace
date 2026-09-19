@@ -124,6 +124,12 @@ static func template(id: String) -> Dictionary:
 	if data.get("mirror_horizontal",false): registration=mirror_registration(registration)
 	var prop: Dictionary={"id":id,"library_asset":true,"full_wall":true,"rect":Rect2(Vector2.ZERO,size),"center":Vector2.ZERO,"sort_y":size.y,"registration":registration,"library_texture":texture}
 	if data.has("collision_boxes"): prop.collision_boxes=data.collision_boxes.duplicate(true)
+	if data.has("footprint"):
+		# Floor footprint as fractions of the rect; the equipment shadow shades this
+		# instead of the full art box. Mirrored art mirrors its footprint.
+		var f: Array=data.footprint.duplicate()
+		if registration.get("mirrored",false): f[0]=1.0-float(f[0])-float(f[2])
+		prop.footprint=f
 	if data.has("corner"): prop.wall_mount=true; prop.corner=data.corner
 	prop.sort_y=base_sort_y(prop)
 	all[id].template=prop
