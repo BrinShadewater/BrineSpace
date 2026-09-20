@@ -87,8 +87,18 @@ def load_tables():
     grid_src = (ROOT / "scripts/grid_canvas.gd").read_text(encoding="utf-8")
     db_src = (ROOT / "scripts/room_database.gd").read_text(encoding="utf-8")
     cards = parse_string_dict(extract_block(cards_src, "PATHS"))
-    grid = parse_string_dict(extract_block(grid_src, "room_texture_paths"))
-    variants = parse_array_dict(extract_block(grid_src, "room_texture_variant_paths"))
+    # grid_canvas.gd used to repeat the table as a literal; it now binds to PATHS directly
+    # and derives each room's variants from it. Follow whichever form the source has, so a
+    # return to literals is still checked and a direct binding is not reported as drift.
+    bound = re.search(r"var\s+room_texture_paths\s*:?=\s*preload\(\"res://scripts/room_card_art\.gd\"\)\.PATHS", grid_src)
+    if bound:
+        grid = dict(cards)
+        body = grid_src[grid_src.index("func _variant_paths"):]
+        ids = re.findall(r'"([a-z0-9_]+)"', body[body.index("["):body.index("]")])
+        variants = {i: [cards[i]] for i in ids if i in cards}
+    else:
+        grid = parse_string_dict(extract_block(grid_src, "room_texture_paths"))
+        variants = parse_array_dict(extract_block(grid_src, "room_texture_variant_paths"))
     db_ids = sorted(set(re.findall(r'"id"\s*:\s*"([a-z0-9_]+)"', db_src)))
     referenced = set()
     for table in (cards, grid):

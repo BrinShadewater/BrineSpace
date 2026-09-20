@@ -1,7 +1,7 @@
 extends SceneTree
-const New=preload("res://assets/wall-dressing-style-v1/wall_sprites.gd")
-const Old1=preload("res://assets/wall-dressing-v1/wall_sprites.gd")
-const Old2=preload("res://assets/wall-dressing-v2/wall_sprites.gd")
+const New=preload("res://archive/assets/wall-dressing-style-v1/wall_sprites.gd")
+const Old1=preload("res://archive/assets/wall-dressing-v1/wall_sprites.gd")
+const Old2=preload("res://archive/assets/wall-dressing-v2/wall_sprites.gd")
 const IDS=["digital_clock","com_panel","poster_diver","poster_marine","oxygen_masks","pressure_gauge"]
 func _init() -> void: call_deferred("run")
 class Canvas extends Node2D:

@@ -1,5 +1,5 @@
 extends SceneTree
-const Kit=preload("res://assets/floor-utilities-v1/floor_sprites.gd")
+const Kit=preload("res://archive/assets/floor-utilities-v1/floor_sprites.gd")
 const OUT="res://assets/floor-utilities-v1"
 func _init() -> void: call_deferred("run")
 class Canvas extends Node2D:

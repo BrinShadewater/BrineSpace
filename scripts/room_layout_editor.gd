@@ -582,7 +582,7 @@ func _ready() -> void:
 	split_button=Button.new(); split_button.text="Split in two"; split_button.disabled=true
 	split_button.tooltip_text="For two objects the scanner boxed as one (a chair stacked on a chair). Cuts at the emptiest line through the middle, keeps this entry as the first part and adds the second to the tray. Saved to props.json."
 	refile_row.add_child(split_button)
-	split_button.pressed.connect(func(): if split_parts(selected_library_id()).is_empty(): split_selected() else: rejoin_selected())
+	split_button.pressed.connect(func(): if split_parts(selected_library_id()).is_empty(): split_selected() else: confirm_rejoin())
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
@@ -1224,6 +1224,21 @@ func split_parts(id: String) -> Array:
 		if all.has(base+letter) and str(all[base+letter].data.source)==str(all[base].data.source): parts.append(base+letter)
 	return parts if parts.size()>1 else []
 
+## Rejoin takes the Split button's place on any split piece and merges EVERY part of the
+## set, so one stray click once folded fourteen named props back into a tile. It asks first:
+## the button names what it will do, and only a second press within a few seconds does it.
+var rejoin_armed_for:=""
+var rejoin_armed_until:=0
+func confirm_rejoin() -> void:
+	var id:=selected_library_id()
+	var parts:=split_parts(id)
+	if parts.is_empty(): return
+	if rejoin_armed_for==str(parts[0]) and Time.get_ticks_msec()<rejoin_armed_until:
+		rejoin_armed_for=""; rejoin_selected(); return
+	rejoin_armed_for=str(parts[0]); rejoin_armed_until=Time.get_ticks_msec()+4000
+	split_button.text="Merge all %d parts? Press again" % parts.size()
+	status.text="Rejoin would merge %d separate props back into one. Press the button again to confirm, or select something else to cancel." % parts.size()
+
 ## Joins the parts back into the first. The other ids become aliases of it in
 ## merged.json, so a copy already placed in a room still draws.
 func rejoin_selected() -> void:
@@ -1473,6 +1488,7 @@ func update_retire_button() -> void:
 			variants_button.disabled=family<0 or many
 	if split_button!=null:
 		split_button.disabled=id.is_empty() or many or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+		rejoin_armed_for=""
 		split_button.text="Split in two" if split_parts(id).is_empty() else "Rejoin parts"
 	if rename_field!=null:
 		rename_field.editable=not id.is_empty() and str(Library.entries().get(id,{}).get("group",""))=="tileset"
