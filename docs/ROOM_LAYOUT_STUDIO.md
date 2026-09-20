@@ -89,6 +89,9 @@ With a library prop selected in the tray:
   copy of the second part already placed in a room still draws.
 - **Mark for removal** only marks; the same button restores. A removal that has already
   been swept can still be undone: ask for `sweep.py --restore <id>`.
+- **A star also means "fix this".** Star anything cut wrongly, holding several objects, or
+  with holes; `refit.py --starred` and `patch_holes.py --suggest-starred` repair what can
+  be repaired from the art, and list the rest for cutting by eye.
 
 Ctrl-click or Shift-click selects several entries; Star and Mark for removal then act
 on the whole batch. Your stars, marks, names and moves are saved beside the registry in

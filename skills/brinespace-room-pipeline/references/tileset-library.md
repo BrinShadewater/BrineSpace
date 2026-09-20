@@ -47,6 +47,8 @@ results already in the repo before it was committed.
 | `variants.py [--contact …]` | Families of look-alikes for the tray to fold. | Largest family 20; an earlier chained method grew one to 262. |
 | `intake.py titles.json [--dry-run]` | Takes in one set's review: names, categories, removals, splits, holes. Trusts none of it. | 39 sets taken in; each verified from the registry. |
 | `split.py <id> …` | The Studio's Split button in Python. | Reproduces the Studio's split of the stacked chairs to the pixel. |
+| `refit.py --starred` / `refit.py <id> …` | Fixes boxes from the art itself: each connected piece goes to the prop whose box holds most of it, the box regrows to the object, objects standing apart become separate props. Lists what touches a neighbour for cutting by eye. | Of 447 starred props: about 205 refitted, 68 separated, 38 wrong splits rejoined first. |
+| `patch_holes.py --suggest-starred` | Adds a `keyed` patch to each starred prop it would change: enclosed holes ringed by light pixels in the source. | 41 props patched; three runs byte-identical. |
 | `split.py --undo <id>` | Rejoins a split (the Studio's **Rejoin parts**). The second id becomes an alias in `merged.json`. | Rejoin then split returns the same two regions. |
 | `patch_holes.py --sources … [--preview …]` | Hand patches for key holes, and whitening of white surfaces. | Three consecutive runs give byte-identical sheets. |
 | `unkey.py` | Automatic key-hole repair. **Not safe to run library-wide**; its header says why. Used for detection only. | Three attempts, none good enough. |
@@ -267,6 +269,29 @@ originals cannot help. `hole-report.json` lists about 420 affected props.
   `whiten` step lifts a white surface as a whole, patches included, to a target (0.80).
   It must be a pure function of the source: two versions that read the sheet being edited
   drifted whiter on every run. Prove stability by running three times and comparing hashes.
+
+## The owner's review pass: stars mean "fix this"
+
+After looking at every prop in the Studio the owner marked 504 for removal and starred
+447 as cut wrongly, holding several objects, or holed. The order that worked:
+
+1. **Commit the marks first**, as they are. Everything after rewrites them.
+2. `sweep.py` for the removals (undo: `sweep.py --restore`).
+3. `refit.py --starred`. Most wrong boxes are wrong the same way: the scanner boxed by
+   grid. What it lists as "no art of its own" is usually the half of a wrong split: an
+   earlier seam cut single machines in two because `seam()` accepts a line half full of
+   art. Rejoin those (`split.py --undo`), then refit the whole.
+4. `patch_holes.py --suggest-starred`, with **every** vendor folder in `--sources`
+   (a pack left out reads as "no source"). Look at the preview before writing.
+5. What is left needs eyes: objects drawn touching each other, holes open to the
+   background, scene tiles that are several props by design.
+
+Two rules the registry test enforced on the way: an id is never reused once it has been
+an alias or a removal (`free_id`), or a layout's alias lands on a different object; and
+`remap_marks` leaves marks on the game's own installations alone.
+
+A fill colour must be sampled only from pixels that survive in the SOURCE. Sampling the
+sheet let one run's fill colour the next, and one sheet never settled.
 
 ## The Studio side
 

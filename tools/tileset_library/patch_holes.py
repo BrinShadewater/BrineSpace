@@ -20,6 +20,11 @@ earlier bad fill is painted over.
                    background. `max` caps a hole's size, so a see-through opening stays.
 The colour is the median of the brightest third of the opaque pixels in `sample` (default:
 rect), which is the surface's own surviving colour rather than the fringe; or "colour".
+  "keyed": 0.6     with "enclosed": only holes ringed by light pixels in the source, which is
+                   what a white key leaves; an opening ringed by dark outline is left open.
+                   `--suggest-starred` writes such a patch for every starred prop it would change.
+  {"origin": [x, y]} records where the prop's box began when its rects were chosen, so a
+                   later refit of the box does not slide the patches.
   {"whiten": [x0, y0, x1, y1], "to": 0.8} then lifts a white surface (pillow, sheet) as a
   whole, because the conversion turns whites grey. Put it after that surface's patches.
 """
@@ -33,10 +38,12 @@ from common import LIB, LUMA, REPO, load_json, load_props, load_rgba, save_png_a
 from tone import match_sources
 
 
-def surface_colour(C, box):
+def surface_colour(C, box, O=None):
     x0, y0, x1, y1 = box
     px = C[y0:y1, x0:x1].reshape(-1, 4).astype(np.float32)
-    px = px[px[:, 3] >= 200]
+    # Only pixels that survive in the SOURCE: sampling an earlier run's fill beside the
+    # hole made one sheet drift on every run.
+    px = px[(px[:, 3] >= 200) & ((O[y0:y1, x0:x1, 3].reshape(-1) >= 200) if O is not None else True)]
     if len(px) < 6: return None
     lum = (px[:, :3] / 255.0) @ LUMA
     return np.median(px[lum >= np.percentile(lum, 67)][:, :3], axis=0)
@@ -46,6 +53,7 @@ def apply(C, O, region, patches):
     """C, O: the prop's crops (converted, source). Returns pixels filled."""
     filled = 0
     for p in patches:
+        if "origin" in p: continue
         if "whiten" in p:
             # A white surface came out of the conversion grey, like everything else, and a
             # patch matched to it is grey too. Lift the surface as a whole (its surviving
@@ -82,13 +90,20 @@ def apply(C, O, region, patches):
             for i in range(1, n + 1):
                 comp = labels == i
                 if i in outside or comp.sum() > int(p.get("max", 10 ** 9)): continue
+                if "keyed" in p:
+                    # A hole the white key made sits in a light surface; a real opening (chair
+                    # slats, a handle) is ringed by the dark outline. Judge by the SOURCE ring.
+                    ring = ndimage.binary_dilation(comp, iterations=2) & ~comp & (O[y0:y1, x0:x1, 3] >= 200)
+                    if ring.sum() < 4: continue
+                    lum = (O[y0:y1, x0:x1, :3][ring].astype(np.float32) / 255.0) @ LUMA
+                    if float(np.median(lum)) < float(p["keyed"]): continue
                 keep |= comp
             # the sealed-over outline gaps belong to whichever hole they border
             hole = hole & (keep | (ndimage.binary_dilation(keep, iterations=max(1, seal)) & hole & solid))
         if not hole.any(): continue
         sub = C[y0:y1, x0:x1]
         if "colour" in p or "sample" in p or p.get("mode", "all") == "all":
-            colour = np.array(p["colour"], np.float32) if "colour" in p else surface_colour(C, p.get("sample", p["rect"]))
+            colour = np.array(p["colour"], np.float32) if "colour" in p else surface_colour(C, p.get("sample", p["rect"]), O)
             if colour is None: continue
             sub[hole, :3] = colour.clip(0, 255).astype(np.uint8); sub[hole, 3] = 255
             filled += int(hole.sum()); continue
@@ -98,7 +113,7 @@ def apply(C, O, region, patches):
         for i, sl in enumerate(ndimage.find_objects(labels), 1):
             ys, xs = sl
             box = [x0 + max(0, xs.start - 4), y0 + max(0, ys.start - 4), x0 + xs.stop + 4, y0 + ys.stop + 4]
-            colour = surface_colour(C, box)
+            colour = surface_colour(C, box, O)
             if colour is None: continue
             comp = labels[sl] == i
             sub[sl][comp, :3] = colour.clip(0, 255).astype(np.uint8); sub[sl][comp, 3] = 255
@@ -110,25 +125,44 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--sources", nargs="+", required=True)
     ap.add_argument("--preview"); ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--suggest-starred", action="store_true", help="add a keyed-hole patch for each starred prop it would change")
     args = ap.parse_args()
     spec = load_json(LIB / "hole-patches.json", {})
     props = {e["id"]: e for e in load_props()}
+    if args.suggest_starred:
+        from common import PREFIX, save_json
+        for key in load_json(LIB / "favourites.json", []):
+            pid = key.replace(PREFIX, "")
+            if pid in props and pid not in spec:
+                x, y, w, h = [int(v) for v in props[pid]["region"]]
+                spec[pid] = [{"origin": [x, y]}, {"rect": [0, 0, w, h], "mode": "enclosed", "seal": 1, "max": 400, "keyed": 0.6}]
+        suggested = set(spec) - set(load_json(LIB / "hole-patches.json", {}))
     by = collections.defaultdict(list)
     for pid in spec:
         if pid in props: by[sheet_of(props[pid])].append(pid)
     found, missing = match_sources(sorted(by), args.sources)
     shots = []
     for sheet, ids in by.items():
-        if sheet not in found: print("no source for", sheet); continue
+        if sheet not in found:
+            print("no source for", sheet)
+            if args.suggest_starred:
+                for pid in ids:
+                    if pid in suggested: del spec[pid]
+            continue
         C = load_rgba(REPO / sheet).copy(); O = load_rgba(found[sheet])
         for pid in ids:
             x, y, w, h = [int(v) for v in props[pid]["region"]]
+            for p in spec[pid]:
+                if "origin" in p:                  # rects were drawn against this corner
+                    ox, oy = p["origin"]; w, h = x + w - ox, y + h - oy; x, y = ox, oy
             before = C[y:y + h, x:x + w].copy()
             n = apply(C[y:y + h, x:x + w], O[y:y + h, x:x + w], None, spec[pid])
             # Twice: a small patch beside a pillow samples its colour before the pillow is
             # whitened on the first pass. The second pass is the fixed point, so one run of
             # this tool always gives the same sheet.
             apply(C[y:y + h, x:x + w], O[y:y + h, x:x + w], None, spec[pid])
+            if args.suggest_starred and pid in suggested and n < 4:
+                C[y:y + h, x:x + w] = before; del spec[pid]; continue      # nothing to patch here
             print(f"   {pid:<9} {(props[pid].get('title') or props[pid]['label']):<32} {n:>5} px")
             shots.append((props[pid], before, C[y:y + h, x:x + w].copy()))
         if not args.dry_run: save_png_atomic(REPO / sheet, C)
@@ -142,6 +176,7 @@ def main():
                 im = im.resize((int(im.width * s), int(im.height * s)), Image.NEAREST)
                 img.alpha_composite(im, (10 + i * cell + (cell - im.width) // 2, 20 + row * cell + (cell - im.height) // 2))
         img.save(args.preview)
+    if args.suggest_starred and not args.dry_run: save_json(LIB / "hole-patches.json", spec, indent=1)
     print("dry run: nothing written" if args.dry_run else "written")
 
 
