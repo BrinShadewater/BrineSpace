@@ -2,6 +2,19 @@ extends SceneTree
 const Editor=preload("res://scripts/room_layout_editor.gd")
 const Store=preload("res://scripts/room_layout_store.gd")
 func _init() -> void: call_deferred("run")
+## The engine drops at the real OS cursor, not at the pushed event, and warp_mouse does
+## nothing while this window is unfocused. So: take focus, put the cursor there, and check it
+## stayed. If someone is using the desk, say so and stop, instead of failing on a wrong
+## landing spot or hanging on an assert.
+func pointer_at(point: Vector2) -> bool:
+	for attempt in range(40):
+		if not DisplayServer.window_is_focused(): DisplayServer.window_move_to_foreground(); root.grab_focus()
+		root.warp_mouse(point)
+		await process_frame
+		if DisplayServer.window_is_focused() and root.get_mouse_position().distance_to(point)<3.0: return true
+	push_error("NATIVE DROP NOT TESTABLE: the test window is unfocused or the mouse is being moved; the engine drops at the real cursor. Re-run with the desk idle.")
+	quit(2)
+	return false
 func run() -> void:
 	root.size=Vector2i(1600,900)
 	Store.path="res://output/layout-editor/simple-test.json"; Store.loaded=true; Store.data={}
@@ -73,6 +86,7 @@ func run() -> void:
 	assert(root.gui_is_dragging(),"Dragging tray artwork shows the native preview")
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://output/layout-editor/tray-drag.png")
+	if not await pointer_at(motion.position): return
 	release.position=motion.position; release.global_position=release.position; root.warp_mouse(release.position); root.push_input(release.duplicate(),true)
 	await process_frame
 	assert(e.draft.has("library/common-operator-stool#2"),"Native release drops artwork in the room")
