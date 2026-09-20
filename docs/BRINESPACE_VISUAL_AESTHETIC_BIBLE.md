@@ -1,7 +1,7 @@
 ## Bought tileset library and owner-decorated rooms - September 19, 2026
 
 The owner bought pixel-art packs and now decorates rooms by hand in the Layout Studio
-from a library of about 10,900 props in 42 sets. The earlier room and prop art moved to
+from a library of about 10,600 props in 42 sets, every one named for what it is. The earlier room and prop art moved to
 `legacy/`; existing floors and riser walls stay live, and floors are not tinted. Agents
 supply a correct, browsable library and extend the owner's layouts only where asked.
 The production rules live in the room pipeline's
@@ -34,6 +34,22 @@ The Studio can stand Bill, Marsh, Branforth or Veld in the room for that judgeme
 footprint. Native art fills its box and hides a box-shaped shade; a cut-out sprite does
 not, and a potted plant sat on a dark mat until library props carried a footprint. This
 extends the tight-footprint-shadow rule below; it does not replace it.
+
+**White should read white.** The conversion halves every prop's brightness, so pillows,
+sheets, lab coats and porcelain come out grey, and the owner asked for white pillows.
+A white surface is lifted as a whole to about 0.80, on the props the owner uses; it is
+not yet a library-wide pass. Several packs also arrive with holes where the vendor keyed
+against white. Those are patched by hand on the props the owner stars, in the surface's
+own surviving colour; automatic repair produced grey and black patches and was abandoned.
+
+**Categories say what a thing is, not what colour it is.** The first categories came from
+colour and filed blue hospital beds under Water and green armchairs under Plants. Every
+prop has since been looked at. Anything broken, rusted, bloodied or overgrown is Derelict
+& damaged whatever else it is, which keeps grime out of clean rooms by default.
+
+**What the owner has touched is theirs.** A prop they starred, renamed or moved is never
+removed by a reviewer, whatever the exclusion list says: they kept a zombie crewman for
+derelict rooms.
 
 **Names belong to the station.** The packs span cafés, haunted ships and Mars bases.
 Sets carry in-universe names (Galley, Hydroponics, Infirmary, Reactor Hall, Ghost Deck,

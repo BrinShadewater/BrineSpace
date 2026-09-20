@@ -18,7 +18,10 @@ from their layout and change only what a rule forces.
 | `rooms/tileset-library/props.json` | The registry: one array entry per prop. Loaded by `scripts/room_asset_library.gd` as group `tileset`. |
 | `rooms/tileset-library/floors.json` | `{caption: res://path}` finishes, read by `rooms/whole-room/modular_floor.gd`. |
 | `rooms/tileset-library/merged.json` | Alias map, absorbed id → surviving id. Remap every mark file through it after a merge. |
-| `rooms/tileset-library/removed.json` | Log of swept props (label, set, source, region). |
+| `rooms/tileset-library/removed.json` | Log of removed props: label, title, set, source, region and, for a reviewer's removal, **why**. |
+| `rooms/tileset-library/variants.json` | Families of look-alikes the tray folds into one tile. |
+| `rooms/tileset-library/hole-report.json` | Props with key holes (automatic estimate, plus what a reviewer saw) and `needs-split`: stuck pairs with no clean seam. |
+| `rooms/tileset-library/hole-patches.json` | Hand-chosen regions for `patch_holes.py`. |
 | `rooms/tileset-library/{favourites,retired,names,categories}.json` | **Owner data**, written live by the Studio. See below. |
 | `legacy/default/`, `legacy/retired/` | The pre-library room and prop art. Character art was not moved. |
 | Desktop `New Tilesets/`, `Another Pass/extracted/`, `cyber punk/` | Untouched sources. `New Tilesets Converted/` holds the conversion output. Not in the repo. |
@@ -40,6 +43,10 @@ results already in the repo before it was committed.
 | `sweep.py` | Removes what the owner marked. | Dry run keeps the prop that is both retired and starred. |
 | `titles.py sheet "Set" --out …` / `apply file.json` | Real names, a set at a time: numbered pages pinned to ids, then a titles file. | Wet Lab: 198 named, 44 re-filed. |
 | `variants.py [--contact …]` | Families of look-alikes for the tray to fold. | Largest family 20; an earlier chained method grew one to 262. |
+| `intake.py titles.json [--dry-run]` | Takes in one set's review: names, categories, removals, splits, holes. Trusts none of it. | 39 sets taken in; each verified from the registry. |
+| `split.py <id> …` | The Studio's Split button in Python. | Reproduces the Studio's split of the stacked chairs to the pixel. |
+| `patch_holes.py --sources … [--preview …]` | Hand patches for key holes, and whitening of white surfaces. | Three consecutive runs give byte-identical sheets. |
+| `unkey.py` | Automatic key-hole repair. **Not safe to run library-wide**; its header says why. Used for detection only. | Three attempts, none good enough. |
 
 Run `register.py --validate` after anything that writes the registry or the sheets.
 
@@ -71,9 +78,13 @@ Run `register.py --validate` after anything that writes the registry or the shee
   codes. Labels appear only in the Studio; nothing player-facing reads them.
 - **`tileset` is an in-universe set name** (Galley, Hydroponics, Infirmary, Reactor Hall,
   Ghost Deck, Undercity). The packs span genres; their real names do not fit the station.
-- Sixteen categories, none a leftover bucket. A prop with a measured theme keeps it
-  (foliage, screen glow, water, warm crate tones); otherwise it takes its pack's subject.
-  That fallback is coarse on purpose: the owner corrects with **Move to category**.
+- Sixteen categories, none a leftover bucket, and every prop has been looked at and filed
+  by what it is. `register.py` still seeds a new pack from colour tags and the pack's
+  subject, which is only a starting point: colour filed blue beds under Water and green
+  armchairs under Plants. A review pass fixes it, and the owner can always **Move**.
+- **`title`** says what the prop is ("Hospital bed, blue sheets"). The tray shows it and
+  search matches it; the owner's Rename wins over it. Anything broken, rusted, bloodied
+  or overgrown is Derelict & damaged whatever else it is.
 
 ## Owner data is a save file
 
@@ -106,7 +117,11 @@ their session. A `git checkout` of them once discarded seventeen marks.
    of each kind, give the set an in-universe name and a slug folder.
 6. **Tone** against the verified source (section after that).
 7. **Copy only referenced sheets** into the repo. Unreferenced sheets are dead LFS weight.
-8. **Verify** with a probe and the three native suites, then commit with explicit paths.
+8. **Review** the set: `titles.py sheet`, a reviewer working to
+   [tileset-review-brief.md](tileset-review-brief.md), then `intake.py`. This names it,
+   fixes its categories, removes what the owner excludes and splits stuck pairs.
+9. **Verify** with `register.py --validate`, the registry test and the native suites,
+   and commit only when they pass, with explicit paths.
 
 ## One object, one box
 
@@ -133,6 +148,44 @@ Work from the untouched scanner boxes, never by patching a merged result.
   and the tray folds each family to one tile. Compare a prop with a family's **first**
   member only: comparing with any member chains unrelated props through a run of
   neighbours. `sweep.py` and `merge.py` keep `variants.json` to props that exist.
+
+## Reviewing a whole library with agents
+
+The first library was 10,600 props: 42 sets, about 170 pages. Three sets were named in
+the main session; the other 39 by review agents, which the owner's CLAUDE.md allows for
+large independent work. What made it work, and what went wrong:
+
+- **One written brief**, [tileset-review-brief.md](tileset-review-brief.md): what a name
+  is, the sixteen categories with guidance, the owner's exclusion list, what counts as a
+  split and as a hole. Agents only read page images and write one JSON file per set.
+  They never touch the repo; `intake.py` applies their work, one set at a time.
+- **Pages carry hints**: `H` where `unkey.py`'s detector sees key holes, `S` where a box
+  has a near-empty line through its middle. Hints direct the eye; reviewers confirmed few
+  holes at page scale, so the automatic estimate is the better hole list.
+- **Save after every page, and run few at once.** Eight agents at once hit the owner's
+  usage limit and lost 31 sets held in memory. Three agents, saving per page and resuming
+  from partial files, finished.
+- **Trust nothing.** Every number covered exactly once, real categories, sane titles, no
+  brands; a set that would remove over 60% of itself stops for a person to look; a split
+  is made only where there is a real seam. Verify each set **from the registry**, not from
+  the printout: two intakes failed unseen behind a filtered log.
+- **What the owner touched is theirs.** A reviewer removed a zombie crewman as a humanoid
+  figure that the owner had deliberately refiled. `remove_ids` refuses anything starred,
+  renamed or moved. Read the reviewer's list of doubts and put the judgement calls to the
+  owner (cooling towers, shop fronts, occupied beds, gun turrets).
+- **Registry writes are atomic.** `save_json` writes beside the file and swaps it in with
+  retries. Opening the registry for writing truncates it, and Windows refuses the open
+  while the Studio or the editor reads it; a failure after the truncate would have
+  destroyed the registry.
+- **Gate the commit on the suites.** One commit went out with two suites failing because
+  the command chain did not wait on them.
+- **Keep shell heredocs away from prose and regexes.** An apostrophe ends a quoted
+  heredoc, and `\b` written through one became a literal backspace that made a filter
+  match nothing. Write a script file.
+
+Outcome: every prop named; 969 removed with reasons; 574 stuck pairs split and 25 listed
+under `needs-split`; categories rebuilt by what things are (Food & kitchen went from 15
+props to 556, and the catch-alls emptied).
 
 ## Titles: look, then name
 
@@ -189,6 +242,28 @@ Targets come from the game's painted room props (`legacy/**/pack/*.png`), not fr
 like `tile-B-01.png`. A name match repaired sheets against the wrong source and came out
 blotchy; it was caught only because the before/after was rendered. Hash the alpha channel
 (conversion never touches it) and verify per sheet before writing.
+
+## Key holes and grey whites: the vendor's art, not the conversion
+
+Several packs were keyed against white, so white pillows, sheets, panels and highlights
+are transparent in the vendor's own files. A fresh extraction of the archive is byte for
+byte the working copy, and the colour under the key is erased to black, so re-pulling
+originals cannot help. `hole-report.json` lists about 420 affected props.
+
+- **Automatic repair does not converge** (`unkey.py`, three attempts). The worst holes are
+  open to the background, the key having eaten through the prop's edge, so enclosure
+  tests refuse them; and the only pixels left beside a hole are its dark fringe, so any
+  fill sampled there reads as a grey or black patch. An early limited pass on 56 props
+  was kept; nothing else.
+- **Patch by hand what the owner uses.** They star a prop; render it enlarged over magenta
+  with a pixel grid; name the damaged regions by eye in `hole-patches.json`. A patch fills
+  what is transparent in the SOURCE inside its region, in the median of the brightest
+  third of that surface's surviving pixels. A round housing is an `ellipse`, since its
+  hole runs off any rectangle.
+- **Whites come out grey**, because the conversion halves every prop's brightness. A
+  `whiten` step lifts a white surface as a whole, patches included, to a target (0.80).
+  It must be a pure function of the source: two versions that read the sheet being edited
+  drifted whiter on every run. Prove stability by running three times and comparing hashes.
 
 ## The Studio side
 
@@ -259,3 +334,6 @@ send them; the owner's eye accepts a layout, the validator only permits it.
 - `git show HEAD:<png>` returns the LFS pointer. Pipe it through `git lfs smudge` to
   compare against the committed image.
 - Other sessions share the checkout. Stage explicit paths; commit promptly.
+- The game must follow `merged.json` too. `Library.base_id` resolves aliases, because a
+  merge once emptied three placed props out of the owner's Research Lab: only the tools
+  had followed the map. The registry test checks every alias lands on a registered prop.

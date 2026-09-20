@@ -43,7 +43,7 @@ source artwork has a solid background.
 
 ### The tileset library
 
-About 10,500 bought props in 42 sets load from `rooms/tileset-library/props.json`.
+About 10,600 bought props in 42 sets load from `rooms/tileset-library/props.json`.
 Two dropdowns narrow them and combine: the first adds a **kind** filter per category
 (Storage, Seating & tables, Screens & computers, Lab & science, Medical, Plants &
 growing, Power & reactor, Industrial & workshop, Water & marine, Ship interior and
@@ -61,9 +61,14 @@ a fifth of the library folds away. Nothing is hidden for good: select the tile a
 **Variants (N)** to list the family, **◀ Back** to return. Stars, marks and In this room
 always list every prop.
 
-Where a set has been given **titles**, the tray shows what a prop is ("Centrifuge,
-benchtop") instead of its library label ("Lab 121"); search matches both, the tooltip
-keeps the label, and a name you give with Rename still wins.
+Every prop has a **title** saying what it is ("Centrifuge, benchtop", "Hospital bed, blue
+sheets"), so search finds things by name: type "locker", "pump" or "sofa". The tooltip
+keeps the library label ("Lab 121"), search matches both, and a name you give with Rename
+still wins. Anything you star, rename or move is yours: no clean-up pass removes it.
+
+Some props arrive from the vendor with holes where white was keyed out, and whites come
+out greyish. Star a prop you want to use and ask for it to be patched; the list of known
+ones is `rooms/tileset-library/hole-report.json`.
 
 **New props at %** (side panel) is the size a prop starts at when dragged in. Library
 props share one scale, so set it once against a crew member and every placement

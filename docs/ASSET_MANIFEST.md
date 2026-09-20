@@ -6,9 +6,9 @@ JSON data. Tests, tools, docs and skills are not roots: an asset only they menti
 
 | Status | Files | Meaning |
 |---|---|---|
-| live | 13405 | reached by an exact path from runtime code or data |
+| live | 13403 | reached by an exact path from runtime code or data |
 | dynamic | 4244 | inside a folder the code reads with a built path or directory listing |
-| unreferenced | 5552 | nothing in the runtime points at it (provenance, superseded versions, sources) |
+| unreferenced | 5557 | nothing in the runtime points at it (provenance, superseded versions, sources) |
 
 ## Live assets by owner
 
@@ -522,7 +522,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/rooms` — 1 file(s)
 
 ### room/props
-- `assets/new-tilesets` — 264 file(s)
+- `assets/new-tilesets` — 260 file(s)
 
 ### room/quarantine
 - `assets/rooms` — 1 file(s)
@@ -949,14 +949,14 @@ Which asset folders each room, character or system loads. Moves must keep these 
 
 ### system/room_asset_library
 - `rooms/full-wall-v1` — 2 file(s)
-- `rooms/tileset-library` — 1 file(s)
+- `rooms/tileset-library` — 2 file(s)
 
 ### system/room_card_art
 - `assets/room-cards-v2` — 44 file(s)
 - `assets/corridor-polish-v3` — 3 file(s)
 
 ### system/room_layout_editor
-- `rooms/tileset-library` — 5 file(s)
+- `rooms/tileset-library` — 6 file(s)
 - `rooms/full-wall-v1` — 1 file(s)
 
 ### system/room_layout_store
@@ -1051,7 +1051,7 @@ and must move as a unit.
 | `assets/med-center-directional-v1` | 0 | 0 | 1 |
 | `assets/med-office-directional-v1` | 0 | 0 | 1 |
 | `assets/mining-directional-v1` | 0 | 0 | 1 |
-| `assets/new-tilesets` | 293 | 0 | 0 |
+| `assets/new-tilesets` | 289 | 0 | 4 |
 | `assets/observation-directional-v1` | 0 | 0 | 1 |
 | `assets/operator-stool-v1` | 0 | 0 | 3 |
 | `assets/owner-strict-overhead-v1` | 20 | 0 | 1 |
@@ -1157,6 +1157,6 @@ and must move as a unit.
 | `rooms/modular` | 3 | 17 | 0 |
 | `rooms/power-expansion-v1` | 6 | 2 | 0 |
 | `rooms/production-ten` | 11 | 0 | 19 |
-| `rooms/tileset-library` | 6 | 0 | 2 |
+| `rooms/tileset-library` | 8 | 0 | 3 |
 | `rooms/underwater` | 28 | 5 | 76 |
 | `rooms/whole-room` | 6 | 0 | 6 |
