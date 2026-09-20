@@ -25,6 +25,15 @@ STATUS: NOT SAFE TO RUN LIBRARY-WIDE. Two attempts, both reverted or limited:
      (black blotches on a CT scanner and on pillows), and before the enclosure and
      foliage guards it also filled crater corners and the gaps between kelp fronds.
      Reverted in full.
+  3. Flat fill from the bright 40% of the rim: no more black, but the patch is still
+     visibly darker than the surface (a grey rectangle for a white pillow), because the
+     only pixels left beside a keyed hole are the dark fringe the key left behind. Previewed
+     only, never written. The owner's Ghost Deck pillows were still not reached.
+Checked against a fresh extraction of the vendor's .rar: the working copies are byte for
+byte the archive's files, the holes are in the vendor's art, and the colour under the key
+is erased (black), so re-pulling the originals cannot help.
+Automatic repair is not converging. For props the owner actually uses, patch by hand:
+a region and a colour chosen by eye, per prop.
 The detection in (2) is close; the FILL is what is wrong. Bleeding colour inward from
 the whole rim drags in keyline and shadow from the far side of the neck. The next
 attempt should fill flat with the median of the rim's BRIGHT pixels only, and must be
@@ -64,7 +73,8 @@ def holes_to_fill(C, O, boxes):
     silhouette = ndimage.binary_fill_holes(ndimage.binary_closing(padded, structure=disk))[CLOSE:-CLOSE, CLOSE:-CLOSE]
     candidates = silhouette & ~opaque & inside
     labels, n = ndimage.label(candidates)
-    if n == 0: return np.zeros_like(opaque)
+    paint = np.zeros(C.shape[:2] + (3,), np.float32)
+    if n == 0: return np.zeros_like(opaque), paint
     src = O[..., :3].astype(np.float32) / 255.0
     lum = src @ LUMA; mx = src.max(-1); sat = np.where(mx > 1e-6, (mx - src.min(-1)) / np.maximum(mx, 1e-6), 0)
     fill = np.zeros_like(opaque)
@@ -81,8 +91,16 @@ def holes_to_fill(C, O, boxes):
         if rim.sum() < ENCLOSED * border.sum(): continue
         rl = lum[pad][rim]; rs = sat[pad][rim]
         if np.median(rl) < RIM_BRIGHT or np.median(rs) > RIM_SAT or (rl < 0.25).mean() > RIM_DARK_SHARE: continue
+        # Flat fill from the BRIGHT part of the rim only. The key ate white surfaces right
+        # up to the prop's dark outline, so half of a hole's rim can be keyline; bleeding
+        # colour in from the whole rim painted pillows and scanner housings dark. The vendor
+        # also erased the colour under the key (it is black), so nothing can be recovered
+        # from the file itself: the surface's own surviving pixels are the only evidence.
+        bright = rim & (lum[pad] >= np.percentile(rl, 60))
+        colour = np.median(C[pad][..., :3][bright].astype(np.float32), axis=0)
         fill[pad] |= region
-    return fill
+        paint[pad][region] = colour
+    return fill, paint
 
 
 def bleed(rgb, known, target):
@@ -116,7 +134,7 @@ def main():
         C = load_rgba(REPO / sheet).copy(); O = load_rgba(found[sheet])
         if O.shape != C.shape: continue
         boxes = [[int(v) for v in e["region"]] for e in entries]
-        fill = holes_to_fill(C, O, boxes)
+        fill, paint = holes_to_fill(C, O, boxes)
         for e, (x, y, w, h) in zip(entries, boxes):       # a big hole relative to its prop is a gap
             share = fill[y:y + h, x:x + w].sum() / float(max(1, (C[y:y + h, x:x + w, 3] >= 24).sum()))
             if share > MAX_SHARE: fill[y:y + h, x:x + w] = False
@@ -128,7 +146,7 @@ def main():
                     fill[y:y + h, x:x + w] = False
         if not fill.any(): continue
         before = C.copy()
-        C[..., :3] = np.where(fill[..., None], bleed(C[..., :3], C[..., 3] >= 24, fill), C[..., :3]).clip(0, 255).astype(np.uint8)
+        C[..., :3] = np.where(fill[..., None], paint, C[..., :3]).clip(0, 255).astype(np.uint8)
         C[..., 3] = np.where(fill, 255, C[..., 3])
         sheets += 1; pixels += int(fill.sum())
         for e, (x, y, w, h) in zip(entries, boxes):
