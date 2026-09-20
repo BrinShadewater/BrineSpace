@@ -6,9 +6,9 @@ JSON data. Tests, tools, docs and skills are not roots: an asset only they menti
 
 | Status | Files | Meaning |
 |---|---|---|
-| live | 13403 | reached by an exact path from runtime code or data |
+| live | 13412 | reached by an exact path from runtime code or data |
 | dynamic | 4244 | inside a folder the code reads with a built path or directory listing |
-| unreferenced | 5557 | nothing in the runtime points at it (provenance, superseded versions, sources) |
+| unreferenced | 5558 | nothing in the runtime points at it (provenance, superseded versions, sources) |
 
 ## Live assets by owner
 
@@ -522,7 +522,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/rooms` — 1 file(s)
 
 ### room/props
-- `assets/new-tilesets` — 260 file(s)
+- `assets/new-tilesets` — 269 file(s)
 
 ### room/quarantine
 - `assets/rooms` — 1 file(s)
@@ -1051,7 +1051,7 @@ and must move as a unit.
 | `assets/med-center-directional-v1` | 0 | 0 | 1 |
 | `assets/med-office-directional-v1` | 0 | 0 | 1 |
 | `assets/mining-directional-v1` | 0 | 0 | 1 |
-| `assets/new-tilesets` | 289 | 0 | 4 |
+| `assets/new-tilesets` | 298 | 0 | 4 |
 | `assets/observation-directional-v1` | 0 | 0 | 1 |
 | `assets/operator-stool-v1` | 0 | 0 | 3 |
 | `assets/owner-strict-overhead-v1` | 20 | 0 | 1 |
@@ -1157,6 +1157,6 @@ and must move as a unit.
 | `rooms/modular` | 3 | 17 | 0 |
 | `rooms/power-expansion-v1` | 6 | 2 | 0 |
 | `rooms/production-ten` | 11 | 0 | 19 |
-| `rooms/tileset-library` | 8 | 0 | 3 |
+| `rooms/tileset-library` | 8 | 0 | 4 |
 | `rooms/underwater` | 28 | 5 | 76 |
 | `rooms/whole-room` | 6 | 0 | 6 |

@@ -1,7 +1,8 @@
-## Bought tileset library and owner-decorated rooms - September 19, 2026
+## Bought tileset library and owner-decorated rooms - September 19-20, 2026
 
 The owner bought pixel-art packs and now decorates rooms by hand in the Layout Studio
-from a library of about 10,600 props in 42 sets, every one named for what it is. The earlier room and prop art moved to
+from a library of about 10,500 props in 42 sets, every one named for what it is, with
+the owner's 45 earlier painted props filed in the same sixteen categories. The earlier room and prop art moved to
 `legacy/`; existing floors and riser walls stay live, and floors are not tinted. Agents
 supply a correct, browsable library and extend the owner's layouts only where asked.
 The production rules live in the room pipeline's
@@ -50,6 +51,19 @@ prop has since been looked at. Anything broken, rusted, bloodied or overgrown is
 **What the owner has touched is theirs.** A prop they starred, renamed or moved is never
 removed by a reviewer, whatever the exclusion list says: they kept a zombie crewman for
 derelict rooms.
+
+**The owner's eye is the final check, and the library is built to take its notes.** After
+the agents' passes the owner looked at every prop: marked about 1,050 for removal, starred
+447 as wrong, then typed what was wrong into the Rename field. A star means "fix this"; a
+name that reads like a complaint is one. Both marked and starred has meant "remove" every
+time it was asked.
+
+**Judge a cut-out over magenta.** A grey drum's holes vanish over a grey floor preview and
+were reported fixed when they were not. Review art over a colour no prop contains.
+
+**A prop tangled with its neighbour is lifted out, not cut.** An arm reaching over the
+next arm, a tray inside the arm's box: the prop's own pixels go to the set's `fixes.png`
+and the vendor's sheet stays as bought.
 
 **Names belong to the station.** The packs span cafés, haunted ships and Mars bases.
 Sets carry in-universe names (Galley, Hydroponics, Infirmary, Reactor Hall, Ghost Deck,
