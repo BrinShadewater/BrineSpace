@@ -1,6 +1,6 @@
 """Fill the holes a vendor's white chroma key punched into the art.
 
-    python tools/tileset_library/unkey.py --sources "C:/New Tilesets" ... [--dry-run] [--contact out.png]
+    python tools/tileset_library/unkey.py --sources "vendor-art/New Tilesets" "vendor-art/Another Pass/extracted" [--dry-run] [--contact out.png]
 
 Several packs were keyed against white, so white pillows, bed sheets and highlights went
 transparent along with the background. The conversion never touches alpha, so the holes

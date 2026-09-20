@@ -1,6 +1,6 @@
 """Measure the library's tone against the owner's own props, and repair what is too dark.
 
-    python tools/tileset_library/tone.py measure --sources "C:/New Tilesets" "C:/Another Pass/extracted"
+    python tools/tileset_library/tone.py measure --sources "vendor-art/New Tilesets" "vendor-art/Another Pass/extracted"
     python tools/tileset_library/tone.py repair  --sources ... [--dry-run]
 
 Targets are measured from the owner's painted room props (legacy/**/pack/*.png), not

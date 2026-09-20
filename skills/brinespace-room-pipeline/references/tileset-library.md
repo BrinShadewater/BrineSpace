@@ -24,7 +24,7 @@ from their layout and change only what a rule forces.
 | `rooms/tileset-library/hole-patches.json` | Hand-chosen regions for `patch_holes.py`. |
 | `rooms/tileset-library/{favourites,retired,names,categories}.json` | **Owner data**, written live by the Studio. See below. |
 | `legacy/default/`, `legacy/retired/` | The pre-library room and prop art. Character art was not moved. |
-| Desktop `New Tilesets/`, `Another Pass/extracted/`, `cyber punk/` | Untouched sources. `New Tilesets Converted/` holds the conversion output. Not in the repo. |
+| `vendor-art/New Tilesets/`, `vendor-art/Another Pass/extracted/` (includes `cyber punk/`) | The vendors' packs, untouched; gitignored (licensed, 350 MB). Every repair tool reads them through `--sources`, so keep them. They were on the owner's Desktop until Sept 20. |
 
 ## The tools
 

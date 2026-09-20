@@ -1,6 +1,6 @@
 """Hand-patch the holes a vendor's white key left in props the owner actually uses.
 
-    python tools/tileset_library/patch_holes.py --sources "C:/New Tilesets" ... [--preview out.png] [--dry-run]
+    python tools/tileset_library/patch_holes.py --sources "vendor-art/New Tilesets" "vendor-art/Another Pass/extracted" [--preview out.png] [--dry-run]
 
 Automatic repair (unkey.py) did not converge: the colour under the key is erased in the
 vendor's own files, and the pixels left beside a hole are its dark fringe. So the regions
