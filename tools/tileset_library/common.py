@@ -32,7 +32,20 @@ def load_json(path, default=None):
 
 
 def save_json(path, data, indent=None):
-    io.open(path, "w", encoding="utf-8").write(json.dumps(data, indent=indent))
+    """Write beside the target, then swap it in. Opening the registry for writing
+    truncates it first, and Windows refuses the open while the Studio or the Godot
+    editor is reading the file: two intakes failed that way, and a failure after the
+    truncate would have destroyed the registry. The swap is retried for a few seconds."""
+    import time
+    tmp = str(path) + ".tmp"
+    with io.open(tmp, "w", encoding="utf-8") as f:
+        f.write(json.dumps(data, indent=indent))
+    for attempt in range(12):
+        try:
+            os.replace(tmp, path); return
+        except OSError:
+            time.sleep(0.5)
+    os.replace(tmp, path)
 
 
 def load_props():

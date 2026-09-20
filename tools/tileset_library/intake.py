@@ -77,8 +77,11 @@ def main():
     titler.apply(args.titles, dry_run=False)
     if remove: sweeper.remove_ids(remove)
     done, refused = [], []
+    have = {e["id"] for e in load_props()}
     for i in spec.get("split", []):
         pid = index[i]
+        if pid + "b" in have:                    # already split: a re-run must not cut a half in half
+            done.append(pid); continue
         (done if splitter.split_prop(pid) else refused).append(pid)
     report = load_json(LIB / "hole-report.json", {})
     for i in spec.get("holes", []): report[index[i]] = spec["set"]
