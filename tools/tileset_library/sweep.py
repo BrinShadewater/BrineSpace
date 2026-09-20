@@ -24,6 +24,49 @@ from common import (LIB, PREFIX, PROPS, REPO, load_json, load_props, load_rgba, 
                     save_json, save_png_atomic, sheet_of)
 
 
+def _remove(going, props, alias, reasons):
+    """Drop registrations, blank their art, log them, and keep variants and aliases honest."""
+    by_sheet = collections.defaultdict(list)
+    for e in going.values(): by_sheet[sheet_of(e)].append(e)
+    staying = collections.defaultdict(list)
+    for e in props:
+        if e["id"] not in going: staying[sheet_of(e)].append([int(v) for v in e["region"]])
+    for sheet, entries in by_sheet.items():
+        A = load_rgba(REPO / sheet).copy()
+        # Boxes overlap where props sit close. Blanking a whole box took slivers out
+        # of five neighbours the owner had kept; blank only what no kept prop covers.
+        protect = np.zeros(A.shape[:2], bool)
+        for x, y, w, h in staying[sheet]: protect[y:y + h, x:x + w] = True
+        for e in entries:
+            x, y, w, h = [int(v) for v in e["region"]]
+            wipe = np.zeros(A.shape[:2], bool); wipe[y:y + h, x:x + w] = True
+            A[wipe & ~protect] = 0
+        save_png_atomic(REPO / sheet, A)
+    removed = load_json(LIB / "removed.json", {})
+    for k, e in going.items():
+        removed[k] = {"label": e["label"], "tileset": e["tileset"], "source": e["source"], "region": e["region"]}
+        if e.get("title"): removed[k]["title"] = e["title"]
+        if reasons.get(k): removed[k]["why"] = reasons[k]
+    save_json(PROPS, [e for e in props if e["id"] not in going])
+    save_json(LIB / "removed.json", removed, indent=1)
+    refresh_variants({e["id"] for e in props if e["id"] not in going})
+    # an alias to a prop that no longer exists points at nothing; a layout using it draws nothing, as intended
+    save_json(LIB / "merged.json", {k: v for k, v in alias.items() if v not in going}, indent=1)
+
+
+def remove_ids(reasons):
+    """Remove props a reviewer judged excluded: {id: why}. Starred props are never removed,
+    and the owner's retired marks are neither read nor written."""
+    alias = load_json(LIB / "merged.json", {})
+    starred = {alias.get(k, k) for k in (i.replace(PREFIX, "") for i in load_json(LIB / "favourites.json", []))}
+    props = load_props(); by_id = {e["id"]: e for e in props}
+    going = {k: by_id[k] for k in reasons if k in by_id and k not in starred}
+    kept = [k for k in reasons if k in starred]
+    if kept: print(f"   kept because the owner starred them: {kept}")
+    if going: _remove(going, props, alias, reasons)
+    return len(going)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--dry-run", action="store_true")
@@ -45,35 +88,11 @@ def main():
     if args.dry_run or not going:
         print("dry run: nothing written" if args.dry_run else "nothing to sweep"); return
 
-    by_sheet = collections.defaultdict(list)
-    for e in going.values(): by_sheet[sheet_of(e)].append(e)
-    staying = collections.defaultdict(list)
-    for e in props:
-        if e["id"] not in going: staying[sheet_of(e)].append([int(v) for v in e["region"]])
-    for sheet, entries in by_sheet.items():
-        A = load_rgba(REPO / sheet).copy()
-        # Boxes overlap where props sit close. Blanking a whole box took slivers out
-        # of five neighbours the owner had kept; blank only what no kept prop covers.
-        protect = np.zeros(A.shape[:2], bool)
-        for x, y, w, h in staying[sheet]: protect[y:y + h, x:x + w] = True
-        for e in entries:
-            x, y, w, h = [int(v) for v in e["region"]]
-            wipe = np.zeros(A.shape[:2], bool); wipe[y:y + h, x:x + w] = True
-            A[wipe & ~protect] = 0
-        save_png_atomic(REPO / sheet, A)
-    removed = load_json(LIB / "removed.json", {})
-    for k, e in going.items():
-        removed[k] = {"label": e["label"], "tileset": e["tileset"], "source": e["source"], "region": e["region"]}
-        if args.why: removed[k]["why"] = args.why
-    save_json(PROPS, [e for e in props if e["id"] not in going])
-    save_json(LIB / "removed.json", removed, indent=1)
+    _remove(going, props, alias, {k: args.why for k in going} if args.why else {})
     if not args.ids:                       # an agent's removal leaves the owner's marks exactly as they were
         # Marks on the game's own installations are not ours to sweep: keep them as they are.
         foreign = [i for i in load_json(LIB / "retired.json", []) if not i.startswith(PREFIX)]
         save_json(LIB / "retired.json", foreign + [PREFIX + k for k in kept], indent=1)
-    refresh_variants({e["id"] for e in props if e["id"] not in going})
-    # an alias to a prop that no longer exists points at nothing; a layout using it draws nothing, as intended
-    save_json(LIB / "merged.json", {k: v for k, v in alias.items() if v not in going}, indent=1)
     print(f"swept {len(going)} props on {len(by_sheet)} sheets; {len(props) - len(going)} remain. Commit the sheets, props.json and the mark files together.")
 
 
