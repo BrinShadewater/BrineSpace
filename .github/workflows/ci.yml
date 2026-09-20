@@ -44,7 +44,10 @@ jobs:
           python3 tests/test_layout_keys.py --self-test
           python3 tests/test_layout_keys.py
       - name: Fetch preloaded audio only
-        run: git lfs pull --include="assets/audio/suno-v1/*.ogg,assets/audio/suno-polish-v1/*.wav" --exclude=""
+        # Every folder scripts/suno_audio_bank.gd preloads from. A preload of an unfetched LFS
+        # pointer fails the whole script ("Could not resolve external class member CLIPS"):
+        # tracks-v1 was added to the bank on Sept 18 and not here, and CI stayed red.
+        run: git lfs pull --include="assets/audio/suno-v1/*.ogg,assets/audio/suno-polish-v1/*.wav,assets/audio/tracks-v1/*.ogg" --exclude=""
       - name: Fetch Godot ${{ env.GODOT_VERSION }} (headless-capable Linux build)
         run: |
           curl -sSL -o godot.zip \
