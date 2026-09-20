@@ -956,7 +956,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/corridor-polish-v3` — 3 file(s)
 
 ### system/room_layout_editor
-- `rooms/tileset-library` — 6 file(s)
+- `rooms/tileset-library` — 7 file(s)
 - `rooms/full-wall-v1` — 1 file(s)
 
 ### system/room_layout_store
