@@ -85,7 +85,9 @@ With a library prop selected in the tray:
 - **Split in two** is for two objects boxed as one. It cuts at the emptiest line through
   the middle and refuses when there is none. The entry keeps its identity as the first
   part, so placed copies still resolve; the second part joins the tray. Select either
-  part afterwards and the same button reads **Rejoin parts**: it undoes the split, and a
+  part afterwards and the same button reads **Rejoin parts**. It merges every part of
+  the set, so it asks first: press once and it says how many props it will merge, press
+  again within four seconds to do it. It undoes the split, and a
   copy of the second part already placed in a room still draws.
 - **Mark for removal** only marks; the same button restores. A removal that has already
   been swept can still be undone: ask for `sweep.py --restore <id>`.

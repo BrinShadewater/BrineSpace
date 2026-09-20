@@ -163,7 +163,10 @@ func run() -> void:
 	e.library_search.text="splitfix"; e.rebuild_library()
 	e.library_list.deselect_all(); e.library_list.select(0); e.update_retire_button()
 	if e.split_button.text!="Rejoin parts": return fail("a split prop does not offer Rejoin: "+e.split_button.text)
-	e.rejoin_selected()
+	e.confirm_rejoin()
+	if not Library.entries().has("library/tileset-test-splitb"): return fail("one press of Rejoin merged the parts without asking")
+	if not e.split_button.text.begins_with("Merge all 2 parts"): return fail("Rejoin did not say what it would do: "+e.split_button.text)
+	e.confirm_rejoin()
 	if Library.entries().has("library/tileset-test-splitb"): return fail("rejoin left the second part in the library")
 	var whole: Array=Library.entries()["library/tileset-test-split"].data.region
 	if absf(whole[0]-ux)>2 or absf(whole[1]-uy)>2 or absf(whole[2]-(ur-ux))>2 or absf(whole[3]-(ub-uy))>2: return fail("rejoined prop is not the whole: "+str(whole))
@@ -313,5 +316,5 @@ func run() -> void:
 		e.names.erase(titled_id)
 	e.library_search.text=""
 
-	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split and rejoined, families grouped and opened, calibrated size, in-room filter, painted props in the categories, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split and rejoined only on a second press, families grouped and opened, calibrated size, in-room filter, painted props in the categories, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
 	e.close_editor(); await process_frame; quit()
