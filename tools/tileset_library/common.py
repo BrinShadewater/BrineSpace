@@ -91,7 +91,7 @@ def footprint(mask, x, y, w, h):
     The equipment shadow shades this instead of the whole art box, so a cut-out
     sprite does not sit on a dark rectangular mat."""
     m = mask[y:y + h, x:x + w]
-    band = max(6, int(round(h * 0.22)))
+    band = min(h, max(6, int(round(h * 0.22))))
     rows, off = m[h - band:, :], h - band
     if not rows.any():
         rows, off = m, 0
@@ -109,6 +109,15 @@ def set_geometry(entry, mask, x, y, w, h):
     entry["display_width"] = float(w)          # one sheet pixel is one room unit
     entry["footprint"] = footprint(mask, x, y, w, h)
     return entry
+
+
+def free_id(pid, taken):
+    """pid plus the first letter nothing has ever used: not a prop, not an alias, not a removal.
+    Reusing one sent a layout's alias, or the owner's removal, to a different object."""
+    dead = set(load_json(LIB / "merged.json", {})) | set(load_json(LIB / "removed.json", {}))
+    for c in "bcdefghijklmnopqrstuvwxyz":
+        if pid + c not in taken and pid + c not in dead: return pid + c
+    raise ValueError(f"no free id left for {pid}")
 
 
 def next_numbers(props):

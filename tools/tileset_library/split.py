@@ -19,7 +19,7 @@ import argparse
 
 import numpy as np
 
-from common import LIB, OPAQUE, PROPS, load_json, remap_marks, refresh_variants, REPO, load_props, load_rgba, next_numbers, save_json, set_geometry, sheet_of, trim
+from common import LIB, OPAQUE, free_id, PROPS, load_json, remap_marks, refresh_variants, REPO, load_props, load_rgba, next_numbers, save_json, set_geometry, sheet_of, trim
 
 
 def seam(mask):
@@ -50,9 +50,7 @@ def split_prop(pid, props=None, write=True):
     boxes = [(x, y, w, at), (x, y + at, w, h - at)] if axis == "row" else [(x, y, at, h), (x + at, y, w - at, h)]
     parts = [trim(mask, *b) for b in boxes]
     if any(p is None or p[2] < 6 or p[3] < 6 for p in parts): return False
-    suffix = "b"
-    while pid + suffix in by_id: suffix = chr(ord(suffix) + 1)
-    second = dict(e); second["id"] = pid + suffix
+    second = dict(e); second["id"] = free_id(pid, by_id)
     kind = e["label"].rpartition(" ")[0]
     second["label"] = f"{kind} {next_numbers(props).get(kind, 0) + 1:03d}"
     if e.get("title"): second["title"] = e["title"] + " (second)"
@@ -65,7 +63,7 @@ def split_prop(pid, props=None, write=True):
 def parts_of(pid, by_id):
     """The first part's id and the ids split from it, given any of them."""
     base = pid[:-1] if pid[-1] in "bcdefgh" and pid[:-1] in by_id else pid
-    return base, [base + c for c in "bcdefgh" if base + c in by_id]
+    return base, [base + c for c in "bcdefghijklmnopqrstuvwxyz" if base + c in by_id]
 
 
 def rejoin(pid, props):
@@ -82,6 +80,8 @@ def rejoin(pid, props):
     props[:] = [e for e in props if e["id"] not in seconds]
     alias = load_json(LIB / "merged.json", {})
     for k in seconds: alias[k] = base
+    for k, v in alias.items():                      # an older alias to a part now points at the whole
+        if v in seconds: alias[k] = base
     save_json(LIB / "merged.json", alias, indent=1)
     remap_marks({k: base for k in seconds}); refresh_variants({e["id"] for e in props}, alias)
     return True
