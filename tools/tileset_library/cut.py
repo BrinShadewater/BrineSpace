@@ -4,7 +4,8 @@
 
 cuts.json says how many objects someone SAW in each prop, never where to cut:
 
-    {"uw1-12": {"cols": 2}, "hs-40": {"rows": 3}, "lab-7": {"cols": 3, "at": [41, 97]}}
+    {"uw1-12": {"cols": 2}, "hs-40": {"rows": 3}, "lab-7": {"cols": 3, "at": [41, 97]},
+     "wall-3": {"cols": 2, "rows": 2}}          both: a grid; "at_rows" gives the row lines
 
 For N columns the cut lines are the emptiest columns of art near each N-th of the width
 (within a third of a part either way); "at" gives the lines outright, in the prop's own
@@ -39,10 +40,11 @@ def cut(spec, dry_run=False, preview=None):
         if e is None: print(f"   {pid}: not registered"); continue
         A = load_rgba(REPO / sheet_of(e)); mask = A[..., 3] >= OPAQUE
         x, y, w, h = [int(v) for v in e["region"]]
-        axis = "cols" if "cols" in how else "rows"
         inner = mask[y:y + h, x:x + w]
-        marks = [0] + lines(inner.sum(0) if axis == "cols" else inner.sum(1), int(how[axis]), how.get("at")) + [w if axis == "cols" else h]
-        boxes = [(x + a, y, b - a, h) if axis == "cols" else (x, y + a, w, b - a) for a, b in zip(marks, marks[1:])]
+        xs = [0] + (lines(inner.sum(0), int(how["cols"]), how.get("at")) if "cols" in how else []) + [w]
+        ys = [0] + (lines(inner.sum(1), int(how["rows"]), how.get("at_rows")) if "rows" in how else []) + [h]
+        # both given: a grid (a wall of monitors, shelving two wide and two high)
+        boxes = [(x + xa, y + ya, xb - xa, yb - ya) for ya, yb in zip(ys, ys[1:]) for xa, xb in zip(xs, xs[1:])]
         parts = [p for p in (trim(mask, *b) for b in boxes) if p is not None and p[2] >= 4 and p[3] >= 4]
         if len(parts) < 2: print(f"   {pid}: nothing to cut"); continue
         title = e.get("title", "")
