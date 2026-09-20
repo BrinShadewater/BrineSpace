@@ -29,7 +29,22 @@ static func entries() -> Dictionary:
 					"tileset":entry.get("tileset",""),
 					"title":str(entry.get("title",""))}
 	return catalog
-static func base_id(id: String) -> String: return id.split("#")[0]
+# Props the library merged away keep working: a layout that placed the old id draws
+# the prop that absorbed it. Without this a merge silently emptied placed props out
+# of the owner's rooms (three went missing from the Research Lab).
+static var aliases: Dictionary={}
+static var aliases_loaded:=false
+static func base_id(id: String) -> String:
+	var base:=id.split("#")[0]
+	if not base.begins_with("library/tileset-"): return base
+	if not aliases_loaded:
+		aliases_loaded=true
+		var path:="res://rooms/tileset-library/merged.json"
+		if FileAccess.file_exists(path):
+			var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(path))
+			if parsed is Dictionary: aliases=parsed
+	var short:=base.trim_prefix("library/tileset-")
+	return "library/tileset-"+str(aliases[short]) if aliases.has(short) else base
 
 # One authored side wall serves both side walls: the opposite wall reuses the same
 # raster with its geometry mirrored about the region's own centre line. The pivot

@@ -1142,10 +1142,21 @@ static func split_regions(data: Dictionary) -> Array:
 		first=Rect2i(x0,y0,best.at,h); second=Rect2i(x0+best.at,y0,w-best.at,h)
 	var parts: Array=[]
 	for box in [first,second]:
-		var used:=image.get_region(box).get_used_rect()
+		var used:=art_bounds(image,box)
 		if used.size.x<6 or used.size.y<6: return []
-		parts.append(Rect2i(box.position+used.position,used.size))
+		parts.append(used)
 	return parts
+
+## Bounds of the art in a box at the library's threshold (alpha 24 of 255).
+## get_used_rect() counts any alpha above zero, so a faint fringe left split parts a
+## pixel or two wider than the registration contract allows.
+static func art_bounds(image: Image, box: Rect2i) -> Rect2i:
+	var x0:=box.end.x; var y0:=box.end.y; var x1:=box.position.x-1; var y1:=box.position.y-1
+	for y in range(box.position.y,box.end.y):
+		for x in range(box.position.x,box.end.x):
+			if image.get_pixel(x,y).a>=0.094:
+				x0=mini(x0,x); y0=mini(y0,y); x1=maxi(x1,x); y1=maxi(y1,y)
+	return Rect2i(x0,y0,x1-x0+1,y1-y0+1) if x1>=x0 else Rect2i(box.position,Vector2i.ZERO)
 
 static func registration_for(data: Dictionary, box: Rect2i, image: Image) -> Dictionary:
 	var result: Dictionary=data.duplicate(true)
@@ -1155,8 +1166,8 @@ static func registration_for(data: Dictionary, box: Rect2i, image: Image) -> Dic
 	result.display_width=float(w)
 	# floor footprint: the base of the silhouette, as fractions of the rect
 	var band:=maxi(6,roundi(h*0.22))
-	var base:=image.get_region(Rect2i(x,y+h-band,w,band)).get_used_rect()
-	if base.size.x<=0: base=Rect2i(0,0,w,band)
+	var base:=art_bounds(image,Rect2i(x,y+h-band,w,band))
+	base=Rect2i(base.position-Vector2i(x,y+h-band),base.size) if base.size.x>0 else Rect2i(0,0,w,band)
 	result.footprint=[snappedf(float(base.position.x)/w,0.0001),snappedf(float(h-band+base.position.y)/h,0.0001),snappedf(float(base.size.x)/w,0.0001),snappedf(float(base.size.y)/h,0.0001)]
 	return result
 

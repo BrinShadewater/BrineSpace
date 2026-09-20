@@ -67,13 +67,22 @@ func run() -> void:
 		var marks: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+name+".json"))
 		if marks is Array:
 			for key in marks:
-				if not ids.has(str(key).trim_prefix("library/tileset-")): problems.append(name+".json names a prop that is not registered: "+str(key))
+				# the owner may also mark the game's own installations; only library ids are ours to check
+				if str(key).begins_with("library/tileset-") and not ids.has(str(key).trim_prefix("library/tileset-")): problems.append(name+".json names a prop that is not registered: "+str(key))
 	for name in ["names","categories"]:
 		var marks: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+name+".json"))
 		if marks is Dictionary:
 			for key in marks:
 				if not ids.has(str(key).trim_prefix("library/tileset-")): problems.append(name+".json names a prop that is not registered: "+str(key))
 				if name=="categories" and not str(marks[key]) in CATEGORIES: problems.append("categories.json moves %s to an unknown category %s" % [key,marks[key]])
+	var removed_log: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+"removed.json"))
+	# every alias must land on a registered prop, or a placed prop vanishes from a room
+	var merged: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+"merged.json"))
+	if merged is Dictionary:
+		for old_id in merged:
+			if ids.has(old_id): problems.append("merged.json aliases a prop that is still registered: "+str(old_id))
+			elif not ids.has(str(merged[old_id])) and not (removed_log is Dictionary and removed_log.has(str(merged[old_id]))):
+				problems.append("merged.json sends %s to %s, which is not registered" % [old_id,merged[old_id]])
 	var removed: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+"removed.json"))
 	if removed is Dictionary:
 		for key in removed:

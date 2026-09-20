@@ -70,6 +70,8 @@ def main():
     if not args.ids:                       # an agent's removal leaves the owner's marks exactly as they were
         save_json(LIB / "retired.json", [PREFIX + k for k in kept], indent=1)
     refresh_variants({e["id"] for e in props if e["id"] not in going})
+    # an alias to a prop that no longer exists points at nothing; a layout using it draws nothing, as intended
+    save_json(LIB / "merged.json", {k: v for k, v in alias.items() if v not in going}, indent=1)
     print(f"swept {len(going)} props on {len(by_sheet)} sheets; {len(props) - len(going)} remain. Commit the sheets, props.json and the mark files together.")
 
 
