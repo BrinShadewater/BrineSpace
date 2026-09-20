@@ -22,7 +22,9 @@ env:
 jobs:
   scripts:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # 15 was enough on Sept 12 (import 5 min, parse check 6). The art library added
+    # thousands of files and the import alone now passes ten minutes.
+    timeout-minutes: 40
     steps:
       - name: Checkout (no LFS smudge on purpose)
         uses: actions/checkout@v4
