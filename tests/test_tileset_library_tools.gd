@@ -227,8 +227,11 @@ func run() -> void:
 	e.turn_page(1)
 	if e.tray_page!=1 or str(e.library_list.get_item_metadata(0))==first_on_page_one: return fail("next page did not advance the tray")
 	if not e.pager_label.text.contains(" of "+str(e.tray_total)): return fail("pager label does not state the range: "+e.pager_label.text)
-	e.library_filter.select(kind); e.rebuild_library()
+	# any filter other than the one being paged: re-categorising the library once made
+	# the first kind the largest, so selecting it changed nothing and this check failed
+	e.library_filter.select(e.favourites_filter); e.rebuild_library()
 	if e.tray_page!=0: return fail("changing the filter did not return to page one")
+	e.library_filter.select(kind); e.rebuild_library()
 
 	# --- Copy to other rotations: the placed prop reaches all three, saved. ---
 	var asset: String=str(e.entries[e.index].asset)

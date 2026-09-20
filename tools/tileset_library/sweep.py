@@ -58,11 +58,16 @@ def remove_ids(reasons):
     """Remove props a reviewer judged excluded: {id: why}. Starred props are never removed,
     and the owner's retired marks are neither read nor written."""
     alias = load_json(LIB / "merged.json", {})
-    starred = {alias.get(k, k) for k in (i.replace(PREFIX, "") for i in load_json(LIB / "favourites.json", []))}
+    # Anything the owner has starred, renamed or moved is theirs. A reviewer removed a
+    # zombie crewman as a "humanoid figure" that the owner had deliberately refiled.
+    touched = set()
+    for name in ("favourites", "names", "categories"):
+        for key in load_json(LIB / f"{name}.json", {}) or []:
+            k = key.replace(PREFIX, ""); touched.add(alias.get(k, k))
     props = load_props(); by_id = {e["id"]: e for e in props}
-    going = {k: by_id[k] for k in reasons if k in by_id and k not in starred}
-    kept = [k for k in reasons if k in starred]
-    if kept: print(f"   kept because the owner starred them: {kept}")
+    going = {k: by_id[k] for k in reasons if k in by_id and k not in touched}
+    kept = [k for k in reasons if k in touched]
+    if kept: print(f"   kept because the owner starred, renamed or moved them: {kept}")
     if going: _remove(going, props, alias, reasons)
     return len(going)
 
