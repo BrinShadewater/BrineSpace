@@ -17,7 +17,8 @@ on:
     branches: [main]
 
 env:
-  GODOT_VERSION: 4.6.1-stable
+  # The version the game is built and tested with (AGENTS.md). CI ran 4.6.1 until Sept 20.
+  GODOT_VERSION: 4.7.2-stable
 
 jobs:
   scripts:
