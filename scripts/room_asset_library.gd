@@ -12,7 +12,7 @@ static func entries() -> Dictionary:
 		catalog[id]={"data":data,"label":data.get("label",file.trim_suffix(".json").replace("-"," ").capitalize()),"default_rooms":data.get("default_rooms",[])}
 		if data.has("display_width"): catalog[id].width=float(data.display_width)
 	for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/common-assets.json")):
-		catalog["library/common-"+entry.id]={"data":entry.data,"label":entry.label,"width":entry.width,"group":"common","category":entry.get("category","wall")}
+		catalog["library/common-"+entry.id]={"data":entry.data,"label":entry.label,"width":entry.width,"group":"common","category":entry.get("category","wall"),"theme":str(entry.get("theme",""))}
 	# Tileset props arrive as one bulk file rather than 8000 registrations: the
 	# loop above reads a file per entry, which is fine for 220 and not for 8229.
 	# The id prefix is deliberate - RoomLayoutStore.is_common_decoration() drops

@@ -232,6 +232,13 @@ func run() -> void:
 	if not saw_drop: return fail("In this room does not list the prop just placed")
 	if e.library_list.item_count>=20: return fail("In this room is not narrowing the tray: "+str(e.library_list.item_count))
 
+	# --- The owner's older hand-painted props sit in the same categories as the bought ones. ---
+	for i in e.theme_filters:
+		if e.theme_filters[i]=="Seating & tables": e.library_filter.select(i)
+	e.library_search.text="Operator chair"; e.rebuild_library()
+	if e.library_list.item_count<1: return fail("Seating & tables does not list the painted Operator chair")
+	e.library_search.text=""; e.rebuild_library()
+
 	# --- Paging: a kind larger than one page is reachable, and a new filter starts at page one. ---
 	var big:=-1
 	for i in e.theme_filters:
@@ -306,5 +313,5 @@ func run() -> void:
 		e.names.erase(titled_id)
 	e.library_search.text=""
 
-	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split and rejoined, families grouped and opened, calibrated size, in-room filter, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split and rejoined, families grouped and opened, calibrated size, in-room filter, painted props in the categories, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
 	e.close_editor(); await process_frame; quit()

@@ -1537,7 +1537,7 @@ func rebuild_library() -> void:
 		if not in_focus and (not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]): continue
 		if not in_focus and (only_favourites and not favourites.has(id)): continue
 		if not in_focus and (only_in_room and not placed.has(id)): continue
-		if not in_focus and (not theme.is_empty() and (entry.get("group","")!="tileset" or category_of(id,entry)!=theme)): continue
+		if not in_focus and (not theme.is_empty() and (category_of(id,entry) if entry.get("group","")=="tileset" else str(entry.get("theme","")))!=theme): continue
 		if not in_focus and (not pack.is_empty() and str(entry.get("tileset",""))!=pack): continue
 		var caption:=label_of(id,entry)
 		if entry.get("group","")=="tileset" and favourites.has(id): caption="★ "+caption
