@@ -1,5 +1,5 @@
 extends SceneTree
-const Kit=preload("res://assets/utility-kit-style-v2/utility_sprites.gd")
+const Kit=preload("res://archive/assets/utility-kit-style-v2/utility_sprites.gd")
 const OUT="res://assets/utility-kit-style-v2"
 var failures:=0
 func _init() -> void: call_deferred("run")

@@ -1,5 +1,5 @@
 extends SceneTree
-const Kit=preload("res://assets/wall-dressing-style-v1/wall_sprites.gd")
+const Kit=preload("res://archive/assets/wall-dressing-style-v1/wall_sprites.gd")
 func _init() -> void: call_deferred("run")
 class Canvas extends Node2D:
 	var layouts:=false

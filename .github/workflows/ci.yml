@@ -61,16 +61,15 @@ jobs:
             exit 1
           fi
           echo "import has no script errors (raster LFS pointers intentionally unfetched)"
-      - name: Every GDScript parses (--check-only)
+      - name: Every GDScript parses (one engine launch)
         run: |
-          set -e
-          fails=0
-          while IFS= read -r f; do
-            if ! ./godot --headless --path . --check-only -s "$f" > check.log 2>&1; then
-              echo "::error file=$f::parse error"
-              grep -i "error" check.log | head -5
-              fails=$((fails+1))
-            fi
-          done < <(git ls-files '*.gd')
-          echo "$(git ls-files '*.gd' | wc -l) script(s) checked, $fails failed"
-          [ "$fails" -eq 0 ]
+          # One launch loads every tracked script. The old loop started Godot once per file:
+          # six minutes for 400 scripts in September, and the repo now has twice that.
+          git ls-files '*.gd' > gd-files.txt
+          ./godot --headless --path . -s tests/ci_parse_all.gd -- "$PWD/gd-files.txt" > check.log 2>&1 || status=$?
+          grep -E "PARSE FAIL|script\(s\) checked" check.log || true
+          if [ "${status:-0}" -ne 0 ]; then
+            echo "::error::one or more scripts failed to parse"
+            grep -E "Parse Error|SCRIPT ERROR" check.log | head -20
+            exit 1
+          fi
