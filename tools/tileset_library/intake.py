@@ -26,7 +26,8 @@ import sweep as sweeper
 import titles as titler
 
 MAX_REMOVE_SHARE = 0.60
-BANNED = re.compile(r"\b(amazon|nasa|ikea|coca|pepsi|sony|apple|usa|mars|moon|earth)\b", re.I)
+# Brands and places only. "apple" and "earth" were here once and refused an apple tree.
+BANNED = re.compile(r"\b(amazon|nasa|ikea|coca|pepsi|sony|usa|mars)\b", re.I)
 
 
 def check(spec, index):
