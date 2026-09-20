@@ -47,6 +47,28 @@ Read as rules:
 - Small clutter tells the story (the mug, the toolbox), but only beside the thing it
   belongs to.
 
+## What worked: groups, not lists (the fourth attempt)
+
+Three passes placed props one by one from a shopping list, hugging the walls. Each fixed
+real bugs (overlaps, blocked doors, hallway floors) and still looked generated. The fourth
+placed **working groups**: an anchor flush to the wall, its companions touching it on the
+same baseline, 26 units of open floor between groups; group one back-left, group two
+back-right, group three on a side wall further forward. Measured against the owner:
+
+| | Owner | List passes | Group pass |
+|---|---|---|---|
+| Props per room | 7 | 10-12 | 7 |
+| Gap to nearest prop | 4 | 11 | 4 |
+| Touching or within 8 | 63% | 34% | 91% |
+| In the back third | 63% | 47% | 63% |
+| Prop area | 3,700 | 2,300 | 2,600 |
+
+Still short: the owner picks chunkier art than title matching finds, and title matching
+makes odd calls (two dining tables side by side). Rooms whose door lanes cross the middle
+(Brine Core, Storage Bay) take few props; leave them sparse.
+
+The tools are `tools/room_decorating/plan_groups.py` and `furnish_groups.gd`.
+
 ## What the Studio does not check (a script must)
 
 - Library props may overlap each other: keep your own list of taken rects.
