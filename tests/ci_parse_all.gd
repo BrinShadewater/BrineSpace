@@ -10,6 +10,9 @@ func _init() -> void:
 	for line in listing.split("\n"):
 		var path:=line.strip_edges()
 		if not path.ends_with(".gd"): continue
+		# Reloading the script that is running, cache ignored, aborted the engine on CI (one
+		# run in two). It is parsed already, or this line would not be executing.
+		if path=="tests/ci_parse_all.gd": continue
 		count+=1
 		print("LOAD "+path)	# if the engine dies on a script, the last LOAD line names it
 		var script: Variant=ResourceLoader.load("res://"+path,"GDScript",ResourceLoader.CACHE_MODE_IGNORE)
