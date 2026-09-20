@@ -20,6 +20,8 @@ earlier bad fill is painted over.
                    background. `max` caps a hole's size, so a see-through opening stays.
 The colour is the median of the brightest third of the opaque pixels in `sample` (default:
 rect), which is the surface's own surviving colour rather than the fringe; or "colour".
+  {"whiten": [x0, y0, x1, y1], "to": 0.8} then lifts a white surface (pillow, sheet) as a
+  whole, because the conversion turns whites grey. Put it after that surface's patches.
 """
 import argparse, collections
 
@@ -44,6 +46,25 @@ def apply(C, O, region, patches):
     """C, O: the prop's crops (converted, source). Returns pixels filled."""
     filled = 0
     for p in patches:
+        if "whiten" in p:
+            # A white surface came out of the conversion grey, like everything else, and a
+            # patch matched to it is grey too. Lift the surface as a whole (its surviving
+            # pixels and its patches together, so they still match) until its median
+            # reaches `to`. Only bright, unsaturated pixels: the outline and the blue sheet stay.
+            x0, y0, x1, y1 = p["whiten"]
+            # A pure function of the SOURCE, so a re-run cannot drift. Two earlier versions
+            # read the sheet being edited: one recruited the pixels the last run had
+            # brightened, the other had the patches and the lift chasing each other.
+            sub = C[y0:y1, x0:x1]; src = O[y0:y1, x0:x1].astype(np.float32); srgb = src[..., :3]
+            slum = (srgb / 255.0) @ LUMA; smx = srgb.max(-1); ssat = np.where(smx > 1, (smx - srgb.min(-1)) / np.maximum(smx, 1), 0)
+            white = (src[..., 3] >= 128) & (slum >= 0.55) & (ssat <= 0.20)
+            if white.sum() < 6: continue
+            k = float(p.get("to", 0.80)) / float(np.median(slum[white]))
+            sub[white, :3] = (srgb[white] * k).clip(0, 255).astype(np.uint8)
+            holes = (src[..., 3] < 128) & (sub[..., 3] >= 200)          # what the patches filled
+            bright = white & (slum >= np.percentile(slum[white], 67))
+            sub[holes, :3] = (np.median(srgb[bright], axis=0) * k).clip(0, 255).astype(np.uint8)
+            continue
         x0, y0, x1, y1 = p["rect"]
         hole = O[y0:y1, x0:x1, 3] < 128
         if "ellipse" in p:                       # [cx, cy, rx, ry]: keep to a round housing's silhouette
@@ -104,6 +125,10 @@ def main():
             x, y, w, h = [int(v) for v in props[pid]["region"]]
             before = C[y:y + h, x:x + w].copy()
             n = apply(C[y:y + h, x:x + w], O[y:y + h, x:x + w], None, spec[pid])
+            # Twice: a small patch beside a pillow samples its colour before the pillow is
+            # whitened on the first pass. The second pass is the fixed point, so one run of
+            # this tool always gives the same sheet.
+            apply(C[y:y + h, x:x + w], O[y:y + h, x:x + w], None, spec[pid])
             print(f"   {pid:<9} {(props[pid].get('title') or props[pid]['label']):<32} {n:>5} px")
             shots.append((props[pid], before, C[y:y + h, x:x + w].copy()))
         if not args.dry_run: save_png_atomic(REPO / sheet, C)
