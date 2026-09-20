@@ -1,8 +1,9 @@
 # Tileset library handoff - September 20, 2026
 
 For whoever picks this up next (Codex, another agent, or the owner in six months).
-Branch `tileset-library`, [PR #12](https://github.com/BrinShadewater/BrineSpace/pull/12),
-not yet merged. Read [`AGENTS.md`](../AGENTS.md) first; this file only covers the bought
+The work landed on `main` on September 20 through
+[PR #12](https://github.com/BrinShadewater/BrineSpace/pull/12) and #13; section 9 lists what
+changed after this was first written. Read [`AGENTS.md`](../AGENTS.md) first; this file only covers the bought
 art library and the Studio changes that came with it.
 
 The rules of the work live in
@@ -103,9 +104,8 @@ All of the above passed at the last commit on this branch.
 
 ## 7. Open items
 
-1. **Merge PR #12.** It is large and other sessions share the checkout.
-2. Two props are still starred (`ast-01`, `h22-01`); both were fixed in the last pass and
-   await the owner's look.
+1. ~~Merge PR #12.~~ Done, with #13 (CI green again). Work from `main`.
+2. ~~Two props still starred.~~ The owner approved both; favourites and notes are empty.
 3. `hole-report.json` lists about 400 props with vendor key holes that nobody has
    patched. Patch what the owner stars; do not attempt a library-wide repair.
 4. Whites are lifted only on props the owner uses. A library-wide pass is the owner's call.
