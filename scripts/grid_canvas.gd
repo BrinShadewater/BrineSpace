@@ -413,8 +413,8 @@ func _ready() -> void:
 	quarantine_view.hide()
 	add_child(quarantine_view)
 	_generate_star_points()
-	space_background_texture = _load_png_texture("res://space texture.jpg")
-	door_texture = _load_png_texture("res://dooranimated.png")
+	space_background_texture = _load_png_texture("res://legacy/retired/space texture.jpg")
+	door_texture = _load_png_texture("res://legacy/default/dooranimated.png")
 	var department_source := _load_png_texture(DepartmentDoor.SOURCE)
 	if department_source != null:
 		department_door_materials = DepartmentDoor.make_materials(self,department_source)

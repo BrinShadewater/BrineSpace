@@ -9,7 +9,7 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/life-support/source/life-equipment.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/rooms/life-support/source/life-equipment.png")
 	life_texture=ImageTexture.create_from_image(image)
 	life_items=[
 		{"id":"life_fan","rect":Rect2(-165,-113,108,54),"pivot":Vector2(355,448),"width":326.0,"outline":[Vector2(194,170),Vector2(510,170),Vector2(519,439),Vector2(509,448),Vector2(193,448)]},

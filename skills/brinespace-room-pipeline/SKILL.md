@@ -24,6 +24,13 @@ read [the corridor/riser contract](references/corridor-riser-contract.md).
 For layout-editor tray previews, drag optimization and water-rendering follow-up,
 read [editor and water lessons](references/layout-editor-and-water.md).
 
+For bought art packs, the `rooms/tileset-library/` registry, the Studio asset tray,
+sweeping assets the owner marked, or extending an owner layout to other rotations, read
+[the tileset library](references/tileset-library.md) first. The owner decorates rooms by
+hand; the registration contract (absolute `pieces`, trimmed `region`, floor `footprint`,
+stable `id`) and the rule that the Studio's mark files are owner data are both easy to
+break and were both broken once.
+
 For every new or revised prop, apply the owner-directed
 [material and scale review](references/material-and-scale-review.md): matte
 surfaces, restrained highlights and native-scale comparison are explicit gates.

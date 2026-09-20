@@ -85,6 +85,11 @@ script.
 | `project.godot`, `scenes/title_screen.tscn` | Project entry point; `scenes/main.tscn` is gameplay |
 | `scripts/` | Game logic — `main`, `grid_canvas`, `room_database`, `orbit_manager`, `synergy_manager`, `meta_state` |
 | `rooms/` | Room definitions and art |
+| `rooms/tileset-library/` | Registry of the bought prop library, floor finishes, and the owner's Studio marks (`favourites`, `retired`, `names`, `categories` — owner data, never reset from git) |
+| `assets/new-tilesets/` | Converted bought art, one folder per in-universe set; Git LFS |
+| `vendor-art/` | The bought packs exactly as shipped; gitignored. The tileset repair tools read them through `--sources`; do not delete |
+| `docs/TILESET_LIBRARY_HANDOFF_2026-09-20.md` | Start here for the bought art library: what exists, how the owner reports problems, the pipeline and what is open |
+| `legacy/` | The earlier room and prop art, moved aside: `default/` was live in rooms, `retired/` was not |
 | `Brine icons/` | Icon set, multiple sizes, with sprite-sheet sources |
 | `brinecore-animation/` | BRINE core room animation study — its own scene and scripts |
 | `mining-drone-animation/` | Directional drone animation frames (the deep paths) |

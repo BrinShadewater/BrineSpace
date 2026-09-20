@@ -26,7 +26,7 @@ func run() -> void:
 	root.size=Vector2i(1600,900)
 	var sheet := Sheet.new()
 	sheet.size=root.size
-	for path in ["res://assets/environment/urchin-v1/short-spine-urchin-v1.png","res://assets/environment/low-growth-v1/seagrass-rosette-v2.png","res://assets/environment/sub-biomes-v1/kelp-ribbon-kelp-v1.png"]:
+	for path in ["res://legacy/default/assets/environment/urchin-v1/short-spine-urchin-v1.png","res://legacy/default/assets/environment/low-growth-v1/seagrass-rosette-v2.png","res://legacy/default/assets/environment/sub-biomes-v1/kelp-ribbon-kelp-v1.png"]:
 		var source := Image.new()
 		assert(source.load(path)==OK)
 		assert(source.detect_alpha()!=Image.ALPHA_NONE)

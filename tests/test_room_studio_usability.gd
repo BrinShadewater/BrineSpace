@@ -5,6 +5,19 @@ var e
 func _init() -> void: call_deferred("run")
 func settle(frames:=3) -> void:
 	for i in range(frames): await process_frame
+## The engine drops at the real OS cursor, not at the pushed event, and warp_mouse does
+## nothing while this window is unfocused. So: take focus, put the cursor there, and check it
+## stayed. If someone is using the desk, say so and stop, instead of failing on a wrong
+## landing spot or hanging on an assert.
+func pointer_at(point: Vector2) -> bool:
+	for attempt in range(40):
+		if not DisplayServer.window_is_focused(): DisplayServer.window_move_to_foreground(); root.grab_focus()
+		root.warp_mouse(point)
+		await process_frame
+		if DisplayServer.window_is_focused() and root.get_mouse_position().distance_to(point)<3.0: return true
+	push_error("NATIVE DROP NOT TESTABLE: the test window is unfocused or the mouse is being moved; the engine drops at the real cursor. Re-run with the desk idle.")
+	quit(2)
+	return false
 func mouse(point: Vector2, pressed: bool, motion:=false) -> void:
 	root.warp_mouse(point)
 	var event: InputEventMouse
@@ -61,6 +74,7 @@ func run() -> void:
 	assert(root.gui_is_dragging())
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://output/layout-editor/usability-drag.png")
+	if not await pointer_at(finish): return
 	mouse(finish,false); await settle()
 	assert(e.draft.has(native_id),"Normal native drop succeeds")
 	assert(e.selected_prop().rect.get_center().distance_to(target)<5,"Drop remains under pointer, including grid snapping")

@@ -1,3 +1,90 @@
+## Bought tileset library and owner-decorated rooms - September 19-20, 2026
+
+The owner bought pixel-art packs and now decorates rooms by hand in the Layout Studio
+from a library of about 10,500 props in 42 sets, every one named for what it is, with
+the owner's 45 earlier painted props filed in the same sixteen categories. The earlier room and prop art moved to
+`legacy/`; existing floors and riser walls stay live, and floors are not tinted. Agents
+supply a correct, browsable library and extend the owner's layouts only where asked.
+The production rules live in the room pipeline's
+[tileset library reference](../skills/brinespace-room-pipeline/references/tileset-library.md);
+this section records the visual intent they serve.
+
+**The owner's painted props are the measuring stick.** Targets are taken from them, not
+chosen: prop median luminance 0.275 with a darkest decile of 0.194, emissive screens
+0.417, mid-grey metal and plastic 0.276. The conversion alone landed well under all four
+and the owner named the symptoms one at a time (dark computers, dark plants, dark
+lockers, black screens, rocks gone near-black) before the distribution was measured.
+Measure first. Lift with curves that cannot clip, only ever brighten, and stop a touch
+under the owner's numbers: "a bit more" is a cheaper note than "too much". A prop that
+is dark or grey because its subject is (coal, a blacked-out screen, chain-link, steel
+pipe) is correct; show the owner outliers rather than correcting a number.
+
+**The packs are less colourful than the station and that is accepted.** At source they
+sit near 0.21 saturation against 0.50 for the owner's art. Conversion did not cause it
+and a tone curve does not fix it. Repainting is a separate decision.
+
+**Grime stays in derelict rooms**, but judge the art, not the pack name: ten packs
+withheld as grime were mostly clean bunks, benches, crates and racks.
+
+**Scale is one decision.** Library props register at one sheet pixel per room unit, so
+a 48px tile is 48 units beside a roughly 65-unit crew member, and the Studio places at
+50%. The owner settles size once against a crew member and the whole library follows.
+The Studio can stand Bill, Marsh, Branforth or Veld in the room for that judgement.
+
+**Shadows ground the base, not the box.** The equipment shadow shades a prop's floor
+footprint. Native art fills its box and hides a box-shaped shade; a cut-out sprite does
+not, and a potted plant sat on a dark mat until library props carried a footprint. This
+extends the tight-footprint-shadow rule below; it does not replace it.
+
+**White should read white.** The conversion halves every prop's brightness, so pillows,
+sheets, lab coats and porcelain come out grey, and the owner asked for white pillows.
+A white surface is lifted as a whole to about 0.80, on the props the owner uses; it is
+not yet a library-wide pass. Several packs also arrive with holes where the vendor keyed
+against white. Those are patched by hand on the props the owner stars, in the surface's
+own surviving colour; automatic repair produced grey and black patches and was abandoned.
+
+**Categories say what a thing is, not what colour it is.** The first categories came from
+colour and filed blue hospital beds under Water and green armchairs under Plants. Every
+prop has since been looked at. Anything broken, rusted, bloodied or overgrown is Derelict
+& damaged whatever else it is, which keeps grime out of clean rooms by default.
+
+**What the owner has touched is theirs.** A prop they starred, renamed or moved is never
+removed by a reviewer, whatever the exclusion list says: they kept a zombie crewman for
+derelict rooms.
+
+**The owner's eye is the final check, and the library is built to take its notes.** After
+the agents' passes the owner looked at every prop: marked about 1,050 for removal, starred
+447 as wrong, then typed what was wrong into the Rename field. A star means "fix this"; a
+name that reads like a complaint is one. Both marked and starred has meant "remove" every
+time it was asked.
+
+**Judge a cut-out over magenta.** A grey drum's holes vanish over a grey floor preview and
+were reported fixed when they were not. Review art over a colour no prop contains.
+
+**A prop tangled with its neighbour is lifted out, not cut.** An arm reaching over the
+next arm, a tray inside the arm's box: the prop's own pixels go to the set's `fixes.png`
+and the vendor's sheet stays as bought.
+
+**Names belong to the station.** The packs span cafés, haunted ships and Mars bases.
+Sets carry in-universe names (Galley, Hydroponics, Infirmary, Reactor Hall, Ghost Deck,
+Undercity), props are labelled by kind and number, and signage with English text is
+excluded. The owner may rename any prop; their name wins everywhere in the Studio.
+
+**One object is one prop.** Halves rejoin where the art itself continues across a seam;
+objects merely placed flush stay apart. Where no rule can tell a stack from a tall
+object, the owner decides with Split. Look-alikes are variants (a rack with different
+guns, a porthole with a different view) and are never removed automatically.
+
+**Rotations keep the owner's composition.** The room stays riser-north at every
+rotation and only the open door sides move, with the full door on the north when that
+side is open. A rotation authored from the owner's layout changes nothing except what a
+door approach forces, and the owner's eye accepts it; validation only permits it.
+
+Library floor finishes are single deck tiles repeated per cell and are drawn, like
+every finish, at 42% over the authored floor, so they read as a change of texture
+rather than a repaint. Floor decorations, wall decorations and lights remain the game's
+own authored systems.
+
 ## Visual integrity during optimization - September 13, 2026
 
 Performance work preserves the current top-down/inward-facing, matte, crew-relative

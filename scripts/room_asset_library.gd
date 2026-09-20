@@ -12,9 +12,39 @@ static func entries() -> Dictionary:
 		catalog[id]={"data":data,"label":data.get("label",file.trim_suffix(".json").replace("-"," ").capitalize()),"default_rooms":data.get("default_rooms",[])}
 		if data.has("display_width"): catalog[id].width=float(data.display_width)
 	for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/common-assets.json")):
-		catalog["library/common-"+entry.id]={"data":entry.data,"label":entry.label,"width":entry.width,"group":"common","category":entry.get("category","wall")}
+		catalog["library/common-"+entry.id]={"data":entry.data,"label":entry.label,"width":entry.width,"group":"common","category":entry.get("category","wall"),"theme":str(entry.get("theme",""))}
+	# Tileset props arrive as one bulk file rather than 8000 registrations: the
+	# loop above reads a file per entry, which is fine for 220 and not for 8229.
+	# The id prefix is deliberate - RoomLayoutStore.is_common_decoration() drops
+	# anything under library/common-, so these would never reach a live room.
+	var bulk: String="res://rooms/tileset-library/props.json"
+	if FileAccess.file_exists(bulk):
+		var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(bulk))
+		if parsed is Array:
+			for entry in parsed:
+				catalog["library/tileset-"+str(entry.id)]={
+					"data":entry,"label":entry.get("label",entry.id),
+					"width":float(entry.get("display_width",48.0)),
+					"group":"tileset","category":entry.get("category","prop"),
+					"tileset":entry.get("tileset",""),
+					"title":str(entry.get("title",""))}
 	return catalog
-static func base_id(id: String) -> String: return id.split("#")[0]
+# Props the library merged away keep working: a layout that placed the old id draws
+# the prop that absorbed it. Without this a merge silently emptied placed props out
+# of the owner's rooms (three went missing from the Research Lab).
+static var aliases: Dictionary={}
+static var aliases_loaded:=false
+static func base_id(id: String) -> String:
+	var base:=id.split("#")[0]
+	if not base.begins_with("library/tileset-"): return base
+	if not aliases_loaded:
+		aliases_loaded=true
+		var path:="res://rooms/tileset-library/merged.json"
+		if FileAccess.file_exists(path):
+			var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(path))
+			if parsed is Dictionary: aliases=parsed
+	var short:=base.trim_prefix("library/tileset-")
+	return "library/tileset-"+str(aliases[short]) if aliases.has(short) else base
 
 # One authored side wall serves both side walls: the opposite wall reuses the same
 # raster with its geometry mirrored about the region's own centre line. The pivot
@@ -110,6 +140,12 @@ static func template(id: String) -> Dictionary:
 	if data.get("mirror_horizontal",false): registration=mirror_registration(registration)
 	var prop: Dictionary={"id":id,"library_asset":true,"full_wall":true,"rect":Rect2(Vector2.ZERO,size),"center":Vector2.ZERO,"sort_y":size.y,"registration":registration,"library_texture":texture}
 	if data.has("collision_boxes"): prop.collision_boxes=data.collision_boxes.duplicate(true)
+	if data.has("footprint"):
+		# Floor footprint as fractions of the rect; the equipment shadow shades this
+		# instead of the full art box. Mirrored art mirrors its footprint.
+		var f: Array=data.footprint.duplicate()
+		if registration.get("mirrored",false): f[0]=1.0-float(f[0])-float(f[2])
+		prop.footprint=f
 	if data.has("corner"): prop.wall_mount=true; prop.corner=data.corner
 	prop.sort_y=base_sort_y(prop)
 	all[id].template=prop

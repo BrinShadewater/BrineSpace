@@ -1,5 +1,5 @@
 extends RefCounted
-const HULL_ATLAS_PATH := "res://assets/hull-damage-v1/hull-96.png"
+const HULL_ATLAS_PATH := "res://legacy/default/assets/hull-damage-v1/hull-96.png"
 static var hull_atlas: Texture2D
 static var hull_atlas_attempted := false
 

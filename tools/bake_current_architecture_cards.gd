@@ -46,7 +46,7 @@ func run() -> void:
 	preview.compact=OS.get_cmdline_user_args().has("--compact")
 	root.transparent_bg=preview.compact
 	var im:=Image.new()
-	assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes("res://rooms/foundation-v1/foundation-silt-v1.png"))==OK)
+	assert(im.load_png_from_buffer(FileAccess.get_file_as_bytes("res://legacy/default/rooms/foundation-v1/foundation-silt-v1.png"))==OK)
 	preview.foundation=ImageTexture.create_from_image(im)
 	root.add_child(preview)
 	DirAccess.make_dir_recursive_absolute(output_dir)
