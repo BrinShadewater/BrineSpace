@@ -29,10 +29,15 @@ func run() -> void:
 	var sheets: Dictionary={}
 	var ids: Dictionary={}
 	var labels: Dictionary={}
+	var boxes: Dictionary={}
 	for e in props:
 		var who:="%s (%s)" % [e.get("id","?"),e.get("label","?")]
 		if ids.has(e.id): problems.append(who+": duplicate id")
 		ids[e.id]=true
+		# Two tools once each cut the same piece: the tray showed it twice under two names.
+		var box:=str(e.get("source",""))+str(e.get("region",[]))
+		if boxes.has(box): problems.append(who+": same box as "+str(boxes[box]))
+		boxes[box]=e.id
 		if labels.has(e.label): problems.append(who+": label already used by "+str(labels[e.label]))
 		labels[e.label]=e.id
 		var bits: PackedStringArray=str(e.label).rsplit(" ",true,1)

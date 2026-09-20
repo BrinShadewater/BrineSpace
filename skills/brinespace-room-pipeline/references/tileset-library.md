@@ -49,6 +49,7 @@ results already in the repo before it was committed.
 | `split.py <id> …` | The Studio's Split button in Python. | Reproduces the Studio's split of the stacked chairs to the pixel. |
 | `refit.py --starred` / `refit.py <id> …` | Fixes boxes from the art itself: each connected piece goes to the prop whose box holds most of it, the box regrows to the object, objects standing apart become separate props. Lists what touches a neighbour for cutting by eye. | Of 447 starred props: about 205 refitted, 68 separated, 38 wrong splits rejoined first. |
 | `patch_holes.py --suggest-starred` | Adds a `keyed` patch to each starred prop it would change: enclosed holes ringed by light pixels in the source. | 41 props patched; three runs byte-identical. |
+| `cut.py cuts.json [--preview …]` | Cuts objects drawn touching, where `refit.py` finds no gap. The reviewer says how many they SEE (`cols`, `rows`, or both for a grid); the tool finds the emptiest lines; `at`/`at_rows` give exact lines for unequal pieces. | 148 starred props cut into about 415, each previewed first. |
 | `split.py --undo <id>` | Rejoins a split (the Studio's **Rejoin parts**). The second id becomes an alias in `merged.json`. | Rejoin then split returns the same two regions. |
 | `patch_holes.py --sources … [--preview …]` | Hand patches for key holes, and whitening of white surfaces. | Three consecutive runs give byte-identical sheets. |
 | `unkey.py` | Automatic key-hole repair. **Not safe to run library-wide**; its header says why. Used for detection only. | Three attempts, none good enough. |
@@ -283,7 +284,13 @@ After looking at every prop in the Studio the owner marked 504 for removal and s
    art. Rejoin those (`split.py --undo`), then refit the whole.
 4. `patch_holes.py --suggest-starred`, with **every** vendor folder in `--sources`
    (a pack left out reads as "no source"). Look at the preview before writing.
-5. What is left needs eyes: objects drawn touching each other, holes open to the
+5. `cut.py` for what is drawn touching: read review pages, write counts, look at the
+   preview, apply. Never run `refit.py` on a piece cut from a scene tile: its art is
+   connected to the rest, so the box regrows to the whole tile. Scene tiles often
+   overlap each other on the sheet; alias the contained one to the containing piece.
+6. Name the new pieces the same way (numbered pages, one JSON of titles per page); no
+   title may be left ending in "(part N)".
+7. What is left needs eyes: objects drawn touching each other, holes open to the
    background, scene tiles that are several props by design.
 
 Two rules the registry test enforced on the way: an id is never reused once it has been
