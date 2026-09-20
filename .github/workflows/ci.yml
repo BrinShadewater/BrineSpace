@@ -64,15 +64,24 @@ jobs:
             exit 1
           fi
           echo "import has no script errors (raster LFS pointers intentionally unfetched)"
-      - name: Every GDScript parses (one engine launch)
+      - name: Every GDScript parses (a few engine launches)
         run: |
-          # One launch loads every tracked script. The old loop started Godot once per file:
-          # six minutes for 400 scripts in September, and the repo now has twice that.
+          # Batches of 100 scripts per launch instead of one launch per script (six minutes
+          # for 400 scripts in September). If the engine itself dies on a script, the last
+          # LOAD line names it and only that batch is lost.
           git ls-files '*.gd' > gd-files.txt
-          ./godot --headless --path . -s tests/ci_parse_all.gd -- "$PWD/gd-files.txt" > check.log 2>&1 || status=$?
-          grep -E "PARSE FAIL|script\(s\) checked" check.log || true
-          if [ "${status:-0}" -ne 0 ]; then
-            echo "::error::one or more scripts failed to parse"
-            grep -E "Parse Error|SCRIPT ERROR" check.log | head -20
-            exit 1
-          fi
+          split -l 100 -d gd-files.txt gd-batch-
+          fails=0
+          for batch in gd-batch-*; do
+            if ! ./godot --headless --path . -s tests/ci_parse_all.gd -- "$PWD/$batch" > check.log 2>&1; then
+              fails=$((fails+1))
+              grep -E "PARSE FAIL" check.log || true
+              if ! grep -q "script(s) checked" check.log; then
+                echo "::error::engine stopped while loading: $(grep '^LOAD ' check.log | tail -1)"
+                tail -15 check.log
+              fi
+              grep -E "Parse Error|SCRIPT ERROR" check.log | head -10 || true
+            fi
+            grep -E "script\(s\) checked" check.log || true
+          done
+          [ "$fails" -eq 0 ]

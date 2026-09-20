@@ -11,6 +11,7 @@ func _init() -> void:
 		var path:=line.strip_edges()
 		if not path.ends_with(".gd"): continue
 		count+=1
+		print("LOAD "+path)	# if the engine dies on a script, the last LOAD line names it
 		var script: Variant=ResourceLoader.load("res://"+path,"GDScript",ResourceLoader.CACHE_MODE_IGNORE)
 		if script==null or not (script is GDScript) or not script.can_instantiate() and not script.is_abstract():
 			failed.append(path)
