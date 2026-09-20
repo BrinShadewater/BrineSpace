@@ -36,6 +36,18 @@ from common import (LIB, OPAQUE, PREFIX, PROPS, REPO, load_json, load_props, loa
 from register import KIND
 
 
+def placed_ids(alias):
+    """Tileset props standing in the owner's saved rooms (read only; the file is theirs).
+    A reviewer once removed a prop the owner had placed in the Research Lab, and the owner's
+    own removal marks took five more out of rooms they were standing in."""
+    import json, os, re
+    path = os.path.join(os.environ.get("APPDATA", ""), "Godot", "app_userdata", "BrineSpace", "room_layouts.json")
+    try: text = io.open(path, encoding="utf-8").read()
+    except OSError: return set()
+    found = set(re.findall(r"library/tileset-([A-Za-z0-9\-]+)", text))
+    return {alias.get(k, k) for k in found}
+
+
 def _remove(going, props, alias, reasons):
     """Drop registrations, blank their art, log them, and keep variants and aliases honest."""
     by_sheet = collections.defaultdict(list)
@@ -78,9 +90,12 @@ def remove_ids(reasons):
         for key in load_json(LIB / f"{name}.json", {}) or []:
             k = key.replace(PREFIX, ""); touched.add(alias.get(k, k))
     props = load_props(); by_id = {e["id"]: e for e in props}
-    going = {k: by_id[k] for k in reasons if k in by_id and k not in touched}
+    placed = placed_ids(alias)
+    going = {k: by_id[k] for k in reasons if k in by_id and k not in touched and k not in placed}
     kept = [k for k in reasons if k in touched]
     if kept: print(f"   kept because the owner starred, renamed or moved them: {kept}")
+    standing = [k for k in reasons if k in by_id and k in placed and k not in touched]
+    if standing: print(f"   kept because they stand in the owner's rooms: {standing}")
     if going: _remove(going, props, alias, reasons)
     return len(going)
 
@@ -169,6 +184,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--ids", help="JSON list of prop ids an agent has judged should go")
     ap.add_argument("--why", help="the reason, recorded in removed.json (required with --ids)")
+    ap.add_argument("--even-if-placed", action="store_true", help="the owner has confirmed removing props that stand in their rooms")
     ap.add_argument("--restore", nargs="+", metavar="ID", help="undo a removal: bring these props back")
     ap.add_argument("--category", help="with --restore: file them here instead of where they were")
     ap.add_argument("--show", metavar="PNG", help="draw removed props to a page instead of doing anything")
@@ -185,7 +201,11 @@ def main():
     starred = {alias.get(k, k) for k in (i.replace(PREFIX, "") for i in load_json(LIB / "favourites.json", []))}
     props = load_props(); by_id = {e["id"]: e for e in props}
     kept = [k for k in retired if k in starred]
-    going = {k: by_id[k] for k in dict.fromkeys(retired) if k not in starred and k in by_id}
+    placed = placed_ids(alias)
+    in_rooms = [k for k in dict.fromkeys(retired) if k in placed and k in by_id and k not in starred]
+    if in_rooms and not args.even_if_placed:
+        print(f"standing in the owner's rooms, so left alone (ask them, then --even-if-placed): {in_rooms}")
+    going = {k: by_id[k] for k in dict.fromkeys(retired) if k not in starred and k in by_id and (args.even_if_placed or k not in placed)}
     gone_already = [k for k in retired if k not in starred and k not in by_id]
     print(f"to remove: {len(going)} | kept because also starred: {kept} | already gone: {len(gone_already)}")
     for k, e in list(going.items())[:12]: print(f"   {k}  {e['label']} · {e['tileset']}")
