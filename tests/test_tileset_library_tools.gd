@@ -22,6 +22,8 @@ func run() -> void:
 	var real_props:=FileAccess.get_file_as_string("res://rooms/tileset-library/props.json")
 	Editor.PROPS_PATH=OUT+"tileset-tools-props.json"
 	var props_copy:=FileAccess.open(Editor.PROPS_PATH,FileAccess.WRITE); props_copy.store_string(real_props); props_copy.close()
+	Editor.MERGED_PATH=OUT+"tileset-tools-merged.json"
+	var real_merged:=FileAccess.get_file_as_string("res://rooms/tileset-library/merged.json")
 	Editor.FAVOURITES_PATH=OUT+"tileset-tools-favourites.json"
 	Editor.CATEGORIES_PATH=OUT+"tileset-tools-categories.json"
 	Editor.RETIRED_PATH=OUT+"tileset-tools-retired.json"
@@ -157,6 +159,20 @@ func run() -> void:
 		if str(row.get("id","")) in ["test-split","test-splitb"]: found+=1
 	if found!=2: return fail("split did not persist both parts: "+str(found))
 	if FileAccess.get_file_as_string("res://rooms/tileset-library/props.json")!=real_props: return fail("split wrote to the real props.json")
+	# --- Rejoin: the same button undoes the split; the second id becomes an alias of the first. ---
+	e.library_search.text="splitfix"; e.rebuild_library()
+	e.library_list.deselect_all(); e.library_list.select(0); e.update_retire_button()
+	if e.split_button.text!="Rejoin parts": return fail("a split prop does not offer Rejoin: "+e.split_button.text)
+	e.rejoin_selected()
+	if Library.entries().has("library/tileset-test-splitb"): return fail("rejoin left the second part in the library")
+	var whole: Array=Library.entries()["library/tileset-test-split"].data.region
+	if absf(whole[0]-ux)>2 or absf(whole[1]-uy)>2 or absf(whole[2]-(ur-ux))>2 or absf(whole[3]-(ub-uy))>2: return fail("rejoined prop is not the whole: "+str(whole))
+	if Library.base_id("library/tileset-test-splitb")!="library/tileset-test-split": return fail("the second part's id does not resolve to the first")
+	written=JSON.parse_string(FileAccess.get_file_as_string(Editor.PROPS_PATH))
+	for row in written:
+		if str(row.get("id",""))=="test-splitb": return fail("rejoin left the second part in props.json")
+	if FileAccess.get_file_as_string("res://rooms/tileset-library/merged.json")!=real_merged: return fail("rejoin wrote to the real merged.json")
+	Library.aliases.erase("test-splitb")
 	Library.catalog.erase("library/tileset-test-split"); Library.catalog.erase("library/tileset-test-splitb")
 	e.library_search.text=""
 
@@ -290,5 +306,5 @@ func run() -> void:
 		e.names.erase(titled_id)
 	e.library_search.text=""
 
-	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split, families grouped and opened, calibrated size, in-room filter, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
+	print("TILESET TOOLS PASS: star and Favourites filter, move to category and back, four crew in the picker, footprint in range and mirrored, floors offered, batch mark, stacked chairs split and rejoined, families grouped and opened, calibrated size, in-room filter, paging, rotations copied, finish strength, rename shown, searched, saved and cleared")
 	e.close_editor(); await process_frame; quit()

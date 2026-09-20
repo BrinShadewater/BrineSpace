@@ -152,6 +152,7 @@ def print_marks():
 def remap_marks(alias):
     """Follow absorbed ids to their survivors in every mark file. Returns counts."""
     def fix(key):
+        if not key.startswith(PREFIX): return key      # a mark on the game's own installation is not ours
         k = key.replace(PREFIX, "")
         return PREFIX + alias.get(k, k)
     changed = {}

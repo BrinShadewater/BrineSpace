@@ -40,6 +40,7 @@ var hover_image: TextureRect
 var hover_caption: Label
 var hover_index:=-1
 static var VARIANTS_PATH:="res://rooms/tileset-library/variants.json"
+static var MERGED_PATH:="res://rooms/tileset-library/merged.json"
 var variant_group: Dictionary={}     # library id -> family index
 var variant_members: Array=[]        # family index -> library ids
 var group_variants:=true
@@ -581,7 +582,7 @@ func _ready() -> void:
 	split_button=Button.new(); split_button.text="Split in two"; split_button.disabled=true
 	split_button.tooltip_text="For two objects the scanner boxed as one (a chair stacked on a chair). Cuts at the emptiest line through the middle, keeps this entry as the first part and adds the second to the tray. Saved to props.json."
 	refile_row.add_child(split_button)
-	split_button.pressed.connect(func(): split_selected())
+	split_button.pressed.connect(func(): if split_parts(selected_library_id()).is_empty(): split_selected() else: rejoin_selected())
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
 	library_list=AssetList.new(); library_list.editor=self
@@ -1209,6 +1210,58 @@ func split_selected() -> void:
 	library_signature.clear(); rebuild_library(); update_retire_button(); refresh()
 	status.text="Split: "+label_of(id,entry)+" kept the first part; "+str(second.label)+" is the second."
 
+## Undo for Split. [first part, second part, ...] when this prop is one of a split
+## set (a second part's id is the first's plus a letter), else empty.
+func split_parts(id: String) -> Array:
+	if not id.begins_with("library/tileset-"): return []
+	var all:=Library.entries()
+	var base:=id
+	if id.right(1) in "bcdefgh" and all.has(id.left(-1)): base=id.left(-1)
+	var parts: Array=[base]
+	for letter in "bcdefgh":
+		if all.has(base+letter) and str(all[base+letter].data.source)==str(all[base].data.source): parts.append(base+letter)
+	return parts if parts.size()>1 else []
+
+## Joins the parts back into the first. The other ids become aliases of it in
+## merged.json, so a copy already placed in a room still draws.
+func rejoin_selected() -> void:
+	var parts:=split_parts(selected_library_id())
+	if parts.is_empty(): return
+	var entry: Dictionary=Library.entries()[parts[0]]
+	var union:=Rect2i()
+	for part in parts:
+		var r: Array=Library.entries()[part].data.region
+		var box:=Rect2i(int(r[0]),int(r[1]),int(r[2]),int(r[3]))
+		union=box if union.size==Vector2i.ZERO else union.merge(box)
+	var image:=Image.new(); image.load_png_from_buffer(FileAccess.get_file_as_bytes(str(entry.data.source)))
+	var whole:=registration_for(entry.data,art_bounds(image,union),image)
+	var gone: Array=[]
+	for part in parts.slice(1): gone.append(str(Library.entries()[part].data.id))
+	var listed: Variant=JSON.parse_string(FileAccess.get_file_as_string(PROPS_PATH))
+	if not listed is Array: status.text="Could not read "+PROPS_PATH+"; nothing was rejoined."; return
+	var kept: Array=[]
+	for row in listed:
+		if str(row.get("id","")) in gone: continue
+		kept.append(whole if str(row.get("id",""))==str(whole.id) else row)
+	var merged: Variant=JSON.parse_string(FileAccess.get_file_as_string(MERGED_PATH)) if FileAccess.file_exists(MERGED_PATH) else {}
+	if not merged is Dictionary: merged={}
+	for short in gone: merged[short]=str(whole.id)
+	var file:=FileAccess.open(PROPS_PATH,FileAccess.WRITE)
+	if file==null: status.text="Could not write "+PROPS_PATH+"; nothing was rejoined."; return
+	file.store_string(JSON.stringify(kept)); file.close()
+	file=FileAccess.open(MERGED_PATH,FileAccess.WRITE)
+	if file!=null: file.store_string(JSON.stringify(merged,"	")); file.close()
+	Library.base_id(parts[0])	# make sure the alias map is loaded before adding to it
+	for short in gone: Library.aliases[short]=str(whole.id)
+	entry.data=whole; entry.width=float(whole.display_width)
+	for stale in ["template","thumbnail","preview_ready"]: entry.erase(stale)
+	for part in parts.slice(1):
+		Library.catalog.erase(part)
+		for marks in [favourites,retired,names,recategorised]: marks.erase(part)
+	save_marks(); save_retired()
+	library_signature.clear(); rebuild_library(); update_retire_button(); refresh()
+	status.text="Rejoined: "+label_of(parts[0],entry)+" is one prop again."
+
 ## The owner's name for a prop if they gave one, else its library label.
 func label_of(id: String, entry: Dictionary) -> String:
 	# The owner's name wins; then a title written by someone who looked at the prop
@@ -1418,6 +1471,7 @@ func update_retire_button() -> void:
 			variants_button.disabled=family<0 or many
 	if split_button!=null:
 		split_button.disabled=id.is_empty() or many or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+		split_button.text="Split in two" if split_parts(id).is_empty() else "Rejoin parts"
 	if rename_field!=null:
 		rename_field.editable=not id.is_empty() and str(Library.entries().get(id,{}).get("group",""))=="tileset"
 		if not rename_field.has_focus(): rename_field.text=str(names.get(id,"")) if rename_field.editable else ""

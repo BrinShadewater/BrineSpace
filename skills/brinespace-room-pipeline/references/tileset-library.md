@@ -41,10 +41,13 @@ results already in the repo before it was committed.
 | `merge.py [--base REV]` | One object, one box. | Rebuilds the committed alias map from the untouched boxes, bar one alias a sweep explains. |
 | `tone.py measure\|repair --sources … [--only set]` | Measures against the owner's props; repairs what is too dark. | `measure` reproduces the known library numbers. |
 | `sweep.py` | Removes what the owner marked. | Dry run keeps the prop that is both retired and starred. |
+| `sweep.py --restore <id> … [--category …]` | Undoes a removal: art from the sheet's git history (LFS, across the folder renames), pasted only where the sheet is empty; registration rebuilt from `removed.json`. | Six corpses and skeletons brought back; registry test passes. |
+| `sweep.py --show page.png [--set …] [--match …]` | Draws removed props with their ids, for the owner to choose from. | Drew the four Undercity facades. |
 | `titles.py sheet "Set" --out …` / `apply file.json` | Real names, a set at a time: numbered pages pinned to ids, then a titles file. | Wet Lab: 198 named, 44 re-filed. |
 | `variants.py [--contact …]` | Families of look-alikes for the tray to fold. | Largest family 20; an earlier chained method grew one to 262. |
 | `intake.py titles.json [--dry-run]` | Takes in one set's review: names, categories, removals, splits, holes. Trusts none of it. | 39 sets taken in; each verified from the registry. |
 | `split.py <id> …` | The Studio's Split button in Python. | Reproduces the Studio's split of the stacked chairs to the pixel. |
+| `split.py --undo <id>` | Rejoins a split (the Studio's **Rejoin parts**). The second id becomes an alias in `merged.json`. | Rejoin then split returns the same two regions. |
 | `patch_holes.py --sources … [--preview …]` | Hand patches for key holes, and whitening of white surfaces. | Three consecutive runs give byte-identical sheets. |
 | `unkey.py` | Automatic key-hole repair. **Not safe to run library-wide**; its header says why. Used for detection only. | Three attempts, none good enough. |
 
