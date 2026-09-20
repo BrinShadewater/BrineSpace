@@ -26,7 +26,8 @@ read [editor and water lessons](references/layout-editor-and-water.md).
 
 For bought art packs, the `rooms/tileset-library/` registry, the Studio asset tray,
 sweeping assets the owner marked, or extending an owner layout to other rotations, read
-[the tileset library](references/tileset-library.md) first. The owner decorates rooms by
+[the tileset library](references/tileset-library.md) first. To furnish a room from that library, read
+[decorating a room](references/room-decorating.md): what the owner's own rooms measure as. The owner decorates rooms by
 hand; the registration contract (absolute `pieces`, trimmed `region`, floor `footprint`,
 stable `id`) and the rule that the Studio's mark files are owner data are both easy to
 break and were both broken once.
