@@ -34,7 +34,7 @@ def main():
     print("owner marks:"); print_marks()
     alias = load_json(LIB / "merged.json", {})
     marked = load_json(args.ids) if args.ids else load_json(LIB / "retired.json", [])
-    retired = [alias.get(k, k) for k in (i.replace(PREFIX, "") for i in marked)]
+    retired = [alias.get(k, k) for k in (i.replace(PREFIX, "") for i in marked if i.startswith(PREFIX) or args.ids)]
     starred = {alias.get(k, k) for k in (i.replace(PREFIX, "") for i in load_json(LIB / "favourites.json", []))}
     props = load_props(); by_id = {e["id"]: e for e in props}
     kept = [k for k in retired if k in starred]
@@ -68,7 +68,9 @@ def main():
     save_json(PROPS, [e for e in props if e["id"] not in going])
     save_json(LIB / "removed.json", removed, indent=1)
     if not args.ids:                       # an agent's removal leaves the owner's marks exactly as they were
-        save_json(LIB / "retired.json", [PREFIX + k for k in kept], indent=1)
+        # Marks on the game's own installations are not ours to sweep: keep them as they are.
+        foreign = [i for i in load_json(LIB / "retired.json", []) if not i.startswith(PREFIX)]
+        save_json(LIB / "retired.json", foreign + [PREFIX + k for k in kept], indent=1)
     refresh_variants({e["id"] for e in props if e["id"] not in going})
     # an alias to a prop that no longer exists points at nothing; a layout using it draws nothing, as intended
     save_json(LIB / "merged.json", {k: v for k, v in alias.items() if v not in going}, indent=1)

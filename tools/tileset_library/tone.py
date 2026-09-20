@@ -93,7 +93,12 @@ def match_sources(sheets, roots):
             # A swept sheet has blanked regions: accept the same-named source whose art contains ours.
             for cand in by_name.get(os.path.basename(sheet), []):
                 oa = load_rgba(cand)[..., 3]
-                if oa.shape == alpha.shape and not ((alpha > 0) & (oa == 0)).any() and (alpha > 0).sum() >= 0.4 * (oa > 0).sum():
+                if oa.shape != alpha.shape: continue
+                ours, theirs = alpha >= 24, oa >= 24
+                # Swept sheets have less art than the source; un-keyed sheets have a little
+                # more (filled holes). Same sheet if nearly all of our art sits on theirs.
+                extra = (ours & ~theirs).sum() / float(max(1, ours.sum()))
+                if extra <= 0.06 and ours.sum() >= 0.4 * theirs.sum():
                     hits = [cand]; break
         if hits: found[sheet] = hits[0]
         else: missing.append(sheet)
