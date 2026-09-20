@@ -1184,7 +1184,9 @@ func split_selected() -> void:
 	var first:=registration_for(entry.data,parts[0],image)
 	var second:=registration_for(entry.data,parts[1],image)
 	var suffix:="b"
-	while Library.entries().has("library/tileset-"+str(entry.data.id)+suffix): suffix=char(suffix.unicode_at(0)+1)
+	# Never reuse an id that is an alias of a merged prop: a layout using it would draw this instead.
+	Library.base_id(id)
+	while Library.entries().has("library/tileset-"+str(entry.data.id)+suffix) or Library.aliases.has(str(entry.data.id)+suffix): suffix=char(suffix.unicode_at(0)+1)
 	second.id=str(entry.data.id)+suffix
 	var kind:=str(entry.label).rsplit(" ",true,1)[0]
 	var highest:=0

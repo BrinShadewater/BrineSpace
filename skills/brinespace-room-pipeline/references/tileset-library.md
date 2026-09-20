@@ -50,6 +50,7 @@ results already in the repo before it was committed.
 | `refit.py --starred` / `refit.py <id> …` | Fixes boxes from the art itself: each connected piece goes to the prop whose box holds most of it, the box regrows to the object, objects standing apart become separate props. Lists what touches a neighbour for cutting by eye. | Of 447 starred props: about 205 refitted, 68 separated, 38 wrong splits rejoined first. |
 | `patch_holes.py --suggest-starred` | Adds a `keyed` patch to each starred prop it would change: enclosed holes ringed by light pixels in the source. | 41 props patched; three runs byte-identical. |
 | `cut.py cuts.json [--preview …]` | Cuts objects drawn touching, where `refit.py` finds no gap. The reviewer says how many they SEE (`cols`, `rows`, or both for a grid); the tool finds the emptiest lines; `at`/`at_rows` give exact lines for unequal pieces. | 148 starred props cut into about 415, each previewed first. |
+| `isolate.py [--preview …]` | Lifts a prop out of art it is tangled with (an arm reaching over its neighbour, a tray inside the box) onto the set's own `fixes.png`; spec in `isolate.json` (`grow`, `drop` rects, `main`). The vendor's sheet is untouched; every run rebuilds from it. | 15 props lifted, two robot arms separated. |
 | `split.py --undo <id>` | Rejoins a split (the Studio's **Rejoin parts**). The second id becomes an alias in `merged.json`. | Rejoin then split returns the same two regions. |
 | `patch_holes.py --sources … [--preview …]` | Hand patches for key holes, and whitening of white surfaces. | Three consecutive runs give byte-identical sheets. |
 | `unkey.py` | Automatic key-hole repair. **Not safe to run library-wide**; its header says why. Used for detection only. | Three attempts, none good enough. |
@@ -299,6 +300,17 @@ an alias or a removal (`free_id`), or a layout's alias lands on a different obje
 
 A fill colour must be sampled only from pixels that survive in the SOURCE. Sampling the
 sheet let one run's fill colour the next, and one sheet never settled.
+
+## The owner's notes: the rename field as a bug report
+
+When stars alone do not say what is wrong, the owner types the problem into the prop's
+Rename field ("remove table next to arm", "transparent sections"). Read `names.json`,
+render each noted prop enlarged with a 10-pixel grid and its neighbours, fix it with the
+smallest tool that works (`cut.py`, then `isolate.py`, then a hand patch: `solid` for a
+soft key, `fill` for holes the source does not show), and delete the note when done.
+Judge holes over MAGENTA, never over the floor grey: a grey drum's holes vanish on it.
+The Studio's Rejoin button merges every part of a split set; if pieces vanish after the
+owner's session, compare ids with HEAD before assuming a tool did it.
 
 ## The Studio side
 

@@ -25,6 +25,8 @@ rect), which is the surface's own surviving colour rather than the fringe; or "c
                    `--suggest-starred` writes such a patch for every starred prop it would change.
   {"origin": [x, y]} records where the prop's box began when its rects were chosen, so a
                    later refit of the box does not slide the patches.
+  {"solid": [x0, y0, x1, y1]} makes half-transparent pixels opaque; {"lift": rect, "gamma": 0.6,
+  "below": 0.22} brightens near-black pixels (soil) from the source.
   {"whiten": [x0, y0, x1, y1], "to": 0.8} then lifts a white surface (pillow, sheet) as a
   whole, because the conversion turns whites grey. Put it after that surface's patches.
 """
@@ -54,6 +56,25 @@ def apply(C, O, region, patches):
     filled = 0
     for p in patches:
         if "origin" in p: continue
+        if "solid" in p:
+            # Soft key: pixels the key left half transparent read as a ragged rim or a see-through
+            # patch. Inside a rect chosen by eye they become fully opaque, colour unchanged.
+            x0, y0, x1, y1 = p["solid"]; sub = C[y0:y1, x0:x1]
+            sub[..., 3] = np.where(sub[..., 3] >= 40, 255, sub[..., 3]); continue
+        if "fill" in p:
+            # Holes the SOURCE does not show (an earlier pass made them): whatever is still
+            # transparent on the sheet inside a rect that lies wholly within the prop.
+            x0, y0, x1, y1 = p["fill"]; sub = C[y0:y1, x0:x1]; gap = sub[..., 3] < 200
+            if "ellipse" in p:
+                cx, cy, rx, ry = p["ellipse"]; yy, xx = np.mgrid[y0:y1, x0:x1]
+                gap &= ((xx - cx) / float(rx)) ** 2 + ((yy - cy) / float(ry)) ** 2 <= 1.0
+            sub[gap, :3] = np.array(p["colour"], np.uint8); sub[gap, 3] = 255; filled += int(gap.sum()); continue
+        if "lift" in p:
+            # Soil drawn near black vanishes after the conversion. Lift only the darkest pixels,
+            # from the SOURCE, by a gamma that cannot clip.
+            x0, y0, x1, y1 = p["lift"]; sub = C[y0:y1, x0:x1]; src = O[y0:y1, x0:x1].astype(np.float32)
+            lum = (src[..., :3] / 255.0) @ LUMA; dark = (src[..., 3] >= 128) & (lum < float(p.get("below", 0.22)))
+            sub[dark, :3] = (((src[dark, :3] / 255.0) ** float(p.get("gamma", 0.6))) * 255.0 * 0.52).clip(0, 255).astype(np.uint8); continue
         if "whiten" in p:
             # A white surface came out of the conversion grey, like everything else, and a
             # patch matched to it is grey too. Lift the surface as a whole (its surviving
