@@ -1,3 +1,60 @@
+## The art the September 18 move left behind, and five doorways nobody could walk through - September 20, 2026
+
+1. Commit `3d4e0fed9` moved 798 files into `legacy/` and rewrote the `res://` literals in 385
+   source files. It could only rewrite whole quoted paths, so 102 paths the code assembles at
+   runtime were invisible to it and its "zero dangling references" was true and useless. The
+   whole seabed (53 textures, 21 view scripts), all four foundation piles and the authored props
+   in eight rooms had drawn nothing since. A missing PNG is a warning and a magenta placeholder,
+   and only `release_new_game_smoke` checked `SafeImage.failures`, only in a release build.
+2. Every call site names whole paths now, the way the move did for the other 385 files. No art
+   moved. Whole paths and not a folder prefix on purpose: `build_release_manifest.py` expands a
+   quoted folder prefix into that whole folder, even inside a comment, and the rooms root shipped
+   80 files and 101 MB to deliver three `machine.png`.
+3. It is *faster* with the art back. On a 78-room station, 64.73 -> 62.19 ms at fit view and
+   23.68 -> 20.30 ms close, while drawing more (10,085 -> 10,564 calls). Eleven environment views
+   guarded `prepare()` with `if not textures.is_empty()`, so a failed load left the dictionary
+   empty and they re-read from disk on every `_draw` - 560 attempts at one PNG in a single run,
+   4.7 ms a frame in the `env_seabed` stage. The blank seabed cost more than drawing it.
+4. Navigation honours the library's floor footprint. All 10,507 props record which part of the
+   art stands on the floor and the equipment shadow already draws only that, but the blocker used
+   the whole art box including the part drawn up the wall. An incubator whose feet were 12 units
+   inside the room walled off the doorway behind it.
+5. Five doorways were blocked by props. One was the footprint bug above. The rest were the
+   owner's own placements, all at identical coordinates in all four rotations - "Copy to other
+   rotations" pinning a prop while the door moves out from under it. On the owner's call the
+   Mycelium Nursery's cultivation bank came out (240 units wide in a 348 room: it cannot share a
+   wall with a door) and Pressure Control lost its wall installation and the pump standing in its
+   only door at q2. `test_bill_npc` passes; `lint_room_layouts.gd` reports no blocked doors in any
+   of the 188 room/rotations.
+6. The Isolation Vault rendered empty: its filter dropped the wall bank the previous
+   `configure_embedded` installed, and the bank only reinstalls off a fresh rebuild, so props went
+   8 -> 0 -> 0 -> 0 and never recovered. It also ran "place the dressing" with no dressing left,
+   and that ends in a room-wide clamp that dragged the wall-mounted bank 16px off its wall.
+   `test_embedded_geometry` passes all 188 cases for the first time since before this session.
+7. BRINE is back in her tube. The September 20 furnishing pass had written a `room-brine_core`
+   layout deleting all five authored props; `brine_chamber` is what the tank, the water and her
+   floating body key off, so she was not drawn in her own core room. Restored in all four
+   rotations; the other four props stay removed pending the owner. The vault was refurnished from
+   the library as switchgear rather than a strongroom - `plan_groups.py` had read the name as a
+   holding cell when the database calls it "reserve power and emergency branch isolation
+   controls".
+8. `playtest_drone_economy` measured nothing: it never woke an architect, and crew build the
+   rooms now, so the station it paid for was never constructed - 0 metal over 300 seconds, twice.
+   Fixed, it delivers 24 metal over 72 seconds of work and records why a run ended.
+9. **Open for the owner:** that fixture now fails honestly. One architect aboard a core, a drone
+   bay and one or two solar arrays runs out of food, oxygen and water by cycle 12,
+   `"Crew population reached 0."` Either the fixture should build life support or the early
+   economy is too tight; enabling free build or disabling failures to make it pass is out.
+10. Checked: gameplay 48 pass, crew 27, fire 4/4 and flood-water 12/12 across both lanes,
+    room-art 16, render-perf 15 of 16 native, 0 missing-art paths across 48 logs (was 102).
+    Fire and flooding were also driven live: ignition 0.120 -> 0.264 unsuppressed, sprinklers to
+    0.000; a hull crack to 0.531 in 8s, pumps losing to an open breach and winning once sealed
+    (0.999 -> 0.523), and station water conserved when pumps are off because it equalises through
+    doorways. The one remaining failure, `test_content_cache_parity`, predates this work and
+    reproduces identically on HEAD: one pixel in 1.44 million, stale by an animation tick. An
+    attempt to fix it by skipping sub-pixel drawing made it worse (10 -> 27) and was reverted,
+    which suggests the retained and direct passes see different `view_scale` values.
+
 ## The last two playtests: a stale selection, and a fixture nobody was in - September 18, 2026
 
 1. playtest_polish passes. Its two suspension assertions were stale, not a bug: the fixture set

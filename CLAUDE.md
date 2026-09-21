@@ -17,6 +17,9 @@ The thing most likely to cost you an hour:
 Also:
 
 - **Raster art is Git LFS.** Pointer files are not corruption; do not "repair" them.
+- **Name whole `res://` paths, never a folder prefix plus a built name.** A rename can
+  only rewrite whole literals, and the release manifest expands a quoted folder into the
+  whole folder — even in a comment. Both bit hard; see AGENTS.md.
 - **Normal runs spend costs and enforce failures.** Free builds and disabled
   failures are isolated fixture options; saves remain at `user://brine_save.json`.
 - **Do not refactor `scripts/main.gd` unasked.** The project is

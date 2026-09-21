@@ -69,7 +69,25 @@ makes odd calls (two dining tables side by side). Rooms whose door lanes cross t
 
 The tools are `tools/room_decorating/plan_groups.py` and `furnish_groups.gd`.
 
+## Two ways a furnishing script has already gone wrong
+
+**It strips the room first.** `furnish_groups.gd` nulls every authored default prop before
+it places anything, keeping a removal only if `issues()` stays clean. On the BRINE Core
+that deleted all five authored props — including `brine_chamber`, which the tank, the water
+and BRINE's floating body all key off, so she stopped being drawn in her own core room. If
+a room has authored furniture worth keeping, place into it instead of through that step.
+
+**It furnishes the name, not the room.** `plan_groups.py` had the Emergency Isolation Vault
+down as a strongroom — strongbox, hard case, crate, cot, locker — when the database calls it
+*"Reserve power and emergency branch isolation controls"*, Engineering. Read the room's
+`description` and `category` in `scripts/room_database.gd` before writing its group list.
+
 ## What the Studio does not check (a script must)
+
+`tools/lint_room_layouts.gd` now checks all of this across all 188 room/rotations headless,
+using the same collision rule the navigation graph uses, and writes `output/layout-lint.json`.
+Run it after any furnishing pass. It found five doorways that crew could not walk through,
+every one of them saved without a warning.
 
 - Library props may overlap each other: keep your own list of taken rects.
 - Library props may stand in a door approach: test `Store.door_lane(side)` for each open side.

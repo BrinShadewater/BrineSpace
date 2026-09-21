@@ -42,6 +42,23 @@ git ls-tree -r --name-only origin/main | grep project.godot
 rather than images. A pointer file is not a corrupt image — do not "repair" one, and
 never commit a large binary in a way that bypasses LFS.
 
+**Name whole `res://` paths. Never a folder prefix joined to a built name.** Two
+tools read your source as if it were data, and both get a prefix wrong:
+
+- A rename or a move can only rewrite *whole quoted paths*. The September 18 art move
+  (`3d4e0fed9`) relocated 798 files and rewrote 385 source files, and its "zero dangling
+  references" was true and useless: 102 paths assembled at runtime — a `const ROOT`
+  joined to a filename, `"…/pack/%s.png" % key`, `"…/" + id + "-v1.png"` — were invisible
+  to it. The whole seabed and every station foundation drew nothing for two days,
+  because a missing PNG is a warning plus a magenta placeholder and nothing asserts on it.
+- `tools/build_release_manifest.py` expands a quoted folder prefix into *that entire
+  folder*, **including inside a comment**. The rooms root shipped 80 files and 101 MB to
+  deliver three `machine.png`.
+
+So: a `const` map of whole paths, not a prefix and a suffix. `tests/test_reliability.gd`
+now fails if any `res://` artwork the station loads reaches the placeholder — that is the
+cheap guard this class of bug went without.
+
 ## 🚫 Prototype state that is deliberate, not broken
 
 The README is explicit that this is mid-prototype. Do not "fix" these:
@@ -117,6 +134,14 @@ automatic capture and breadcrumbs off, so runs never write into the player's fol
   went; `tests/test_soak_budget.gd` is the gate that fails on a slow frame.
 - `tools/bake_room_cards_v2.gd` re-renders card art from the current room designs
   (including the owner's saved Studio layouts) into `assets/room-cards-v2`.
+- `tools/lint_room_layouts.gd` checks what the Layout Studio does not. Free placement is
+  the Studio's default and `issues()` returns nothing in that mode, so a prop can be saved
+  standing in a doorway, on top of another prop or off the hull with no warning — five
+  doorways were blocked that way before anyone noticed, and crew simply could not walk
+  through them. It sweeps all 188 room/rotations headless using the same rule the
+  navigation graph uses, writes `output/layout-lint.json` and exits non-zero on findings.
+  Not a CI gate: about 90 pre-existing off-hull and overlap findings sit in the owner's
+  art, and those are theirs to judge. `--rooms=a,b` narrows it.
 
 Department colours live in `RoomDatabase.CATEGORY_COLORS` with per-room overrides in
 `ROOM_COLORS`; use `RoomDatabase.room_color(id)` so corridors stay grey and BRINE's
