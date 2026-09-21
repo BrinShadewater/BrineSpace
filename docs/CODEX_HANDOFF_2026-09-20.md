@@ -204,6 +204,9 @@ So **0.57 ms × 78 rooms = 44 of the 61 ms** is `_draw_room` doing genuine work 
 rendering full prop detail even when it is 62 px across. `cull_props` only culls what is
 *off-screen*, so at fit view it does nothing.
 
+The project renders through `gl_compatibility` (section 10), which is worth knowing before
+reasoning about batching.
+
 **The only lever that touches that 44 ms is level of detail**: below some zoom, draw a
 simplified room instead of every prop. There is no LOD mechanism in the codebase today, so
 it is a new feature that changes what the player sees, not a tidy-up — an owner decision.
@@ -284,7 +287,37 @@ conserved with pumps off, because it equalises through doorways rather than drai
 
 ---
 
-## 10. Where to look
+## 10. `project.godot` — no instructions in it, and don't add any
+
+It carries Godot's stock header and nothing project-specific. **Do not put guidance there:**
+the editor rewrites that file from its own state whenever it saves, so hand-written comments
+do not survive. Guidance belongs in `AGENTS.md`; `CLAUDE.md` is a pointer at it.
+
+Four settings in it are worth knowing, because they are not obvious and two of them bear on
+work described above:
+
+- **`renderer/rendering_method="gl_compatibility"`.** The game runs on the OpenGL 3.3
+  compatibility renderer, not Forward+. Anyone attacking the 10,564 draw calls in section 6
+  should know that before reasoning about batching or measuring against another renderer's
+  numbers. Changing it is a project-wide rendering decision, not a tuning knob.
+- **`run/main_scene="res://scenes/title_screen.tscn"`.** The title screen is the entry point;
+  `scenes/main.tscn` is gameplay and is what most fixtures instantiate directly. (`CLAUDE.md`
+  claimed `main.tscn` was the entry point until September 20; it did not match the project
+  file and is corrected.)
+- **A 1920×1080 base viewport with a 1600×900 window override and `stretch/mode="canvas_items"`.**
+  This is the whole of the open "blurry UI" item: the interface is laid out at 1920×1080 and
+  resampled to whatever the window is, so at any other size every panel is softened. The
+  turned cards in fan mode only make it easy to see. Fixing it means changing the base
+  viewport, the stretch mode, or moving to distance-field fonts — an owner call, recorded in
+  `CURRENT_STATUS.md`.
+- **`run/main_scene.<feature>` overrides** — `menu_validation`, `environment_validation` and
+  `room_validation` point at generated scenes under `tests/runtime_generated/`. They are how a
+  validation export boots something other than the title screen. Keep those checks separate
+  from actual release gameplay, as AGENTS.md says.
+
+One autoload: `BugReport` (`scripts/bug_report.gd`), which is what F8 writes through.
+
+## 11. Where to look
 
 | Path | What |
 |---|---|

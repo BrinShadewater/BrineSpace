@@ -26,4 +26,6 @@ Also:
   optimising for finding what is fun, not for architecture. Propose, don't perform.
 - **Keep `.uid` files paired with their `.gd`.**
 
-Godot 4.7 (tested with 4.7.2), entry point `res://scenes/main.tscn`. Rights: [`NOTICE.md`](NOTICE.md).
+Godot 4.7 (tested with 4.7.2). `project.godot` runs `res://scenes/title_screen.tscn`;
+`res://scenes/main.tscn` is gameplay, which most fixtures instantiate directly.
+Rights: [`NOTICE.md`](NOTICE.md).
