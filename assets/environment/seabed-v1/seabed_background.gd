@@ -1,7 +1,17 @@
 extends RefCounted
 ## Decorative seabed only. No collision, resources, discovery or hazard state.
-const ROOT := "res://assets/environment/seabed-v1/"
 const SCENERY := ["coral-garden", "tube-worms", "hull-fragment", "pipe-fragment", "wreck-cargo"]
+# Whole paths, one per drawn source. The folder holds 21 generations and the ground and
+# five scenery pieces are the six this draws; a quoted folder prefix reads to
+# build_release_manifest.py as a dependency on all of them, and shipped the other 15.
+const SOURCES := {
+	"silt-plain": "res://legacy/default/assets/environment/seabed-v1/silt-plain-source-v1.png",
+	"coral-garden": "res://legacy/default/assets/environment/seabed-v1/coral-garden-source-v1.png",
+	"tube-worms": "res://legacy/default/assets/environment/seabed-v1/tube-worms-source-v1.png",
+	"hull-fragment": "res://legacy/default/assets/environment/seabed-v1/hull-fragment-source-v1.png",
+	"pipe-fragment": "res://legacy/default/assets/environment/seabed-v1/pipe-fragment-source-v1.png",
+	"wreck-cargo": "res://legacy/default/assets/environment/seabed-v1/wreck-cargo-source-v1.png",
+}
 var textures: Dictionary = {}
 var scenery: Array[Dictionary] = []
 var initialized := false
@@ -51,7 +61,7 @@ func prepare() -> void:
 		return
 	initialized = true
 	for id in ["silt-plain"] + SCENERY:
-		var path: String = ROOT + id + "-source-v1.png"
+		var path: String = SOURCES[id]
 		if FileAccess.file_exists(path):
 			var source := Image.new()
 			if source.load(path) == OK:

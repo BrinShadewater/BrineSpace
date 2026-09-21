@@ -1,6 +1,6 @@
 extends RefCounted
 ## Low decorative basalt plates; no occupancy or excavation state.
-const ROOT := "res://assets/environment/fractured-rock-v1/"
+const ROOT := "res://legacy/default/assets/environment/fractured-rock-v1/"
 const SOURCES := {
     "fractured-basalt-slab": "fractured-basalt-slab-v1.png"
 }
@@ -11,8 +11,10 @@ const PROPS := [
 	{"at":Vector2(13.5,10.7),"size":0.35}
 ]
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["fractured-basalt-slab"])==OK:
 		textures["fractured-basalt-slab"]=ImageTexture.create_from_image(source)

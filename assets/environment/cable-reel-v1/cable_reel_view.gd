@@ -1,13 +1,15 @@
 extends RefCounted
 ## Flooded exterior debris beneath construction; no salvage or collision state.
-const ROOT := "res://assets/environment/cable-reel-v1/"
+const ROOT := "res://legacy/default/assets/environment/cable-reel-v1/"
 const SOURCES := {
     "collapsed-cable-reel": "collapsed-cable-reel-v1.png"
 }
 const CENTER := Vector2(10.8,14.8)
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["collapsed-cable-reel"])==OK:
 		textures["collapsed-cable-reel"]=ImageTexture.create_from_image(source)

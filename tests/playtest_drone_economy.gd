@@ -12,12 +12,19 @@ var waiting_seconds := 0.0
 var recording := false
 var failures := 0
 var kind := "mining"
+# A run that ends mid-measurement says nothing about the economy unless it says why.
+var ended_reason := ""
+var ended_resources: Dictionary = {}
 func _init() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg=="--kind=salvage": kind = "salvage"
 	call_deferred("run")
 func step() -> void:
-	if not game.running: return
+	if not game.running:
+		if ended_reason.is_empty():
+			ended_reason = str(game.summary_outcome_label.text) if game.summary_outcome_label != null else "unknown"
+			ended_resources = game.resources.duplicate()
+		return
 	game.paused = false
 	if recording:
 		for drone in game.drone_fleet.drones.values():
@@ -27,6 +34,11 @@ func step() -> void:
 			elif game.resources.power==0 and drone.get("battery",12.0)<11.99: waiting_seconds += 0.1
 	preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 	game._update_wreck_clearance(0.1)
+	# Rooms are built by the crew, and the core's emergency builder stands down whenever
+	# crew builders are available - which _update_wreck_clearance always requests. Advance
+	# the crew and the core pod alongside the fleet or the paid orders are never put up.
+	game._update_test_walker(0.1)
+	preload("res://scripts/architects.gd").advance_core(game,0.1)
 	if recording:
 		delivered += int(game.drone_fleet.delivered.get("metal",0))
 		charging += game.drone_fleet.power_spent
@@ -35,6 +47,17 @@ func step() -> void:
 	if cycle_clock>=20.0:
 		cycle_clock -= 20.0
 		game._advance_cycle()
+# A loop has no crew until the architect wakes out of the core pod. Without this the
+# fixture paid for rooms nobody could ever put up: it reported a station that never
+# built, delivered no metal and ran its whole 300 seconds with work_seconds at zero.
+func wake_architect() -> bool:
+	var Architects = preload("res://scripts/architects.gd")
+	for frame in range(600):
+		if Architects.present(game,"bill"): return true
+		Architects.advance_core(game,0.1)
+		game._update_test_walker(0.1)
+	return Architects.present(game,"bill")
+
 func build(id: String, cell: Vector2i) -> bool:
 	game.hand.assign([id]) # Controlled available blueprint, not free construction.
 	game._on_card_pressed(id)
@@ -64,6 +87,10 @@ func run() -> void:
 		elapsed = 0.0
 		cycle_clock = 0.0
 		recording = false
+		var crewed := wake_architect()
+		if not crewed:
+			failures += 1
+			push_error("No architect woke out of the core pod; nothing can build")
 		var built := build("solar_array",Vector2i(19,20)) and build(kind+"_drone_bay",Vector2i(20,19))
 		if solar_count==2: built = built and build("solar_array",Vector2i(21,20))
 		if not built:
@@ -75,8 +102,10 @@ func run() -> void:
 		travel_seconds = 0.0
 		waiting_seconds = 0.0
 		recording = true
+		ended_reason = ""
+		ended_resources = {}
 		for frame in range(3000): step()
-		rows.append({"solar_rooms":solar_count,"paid_setup":built,"survived":game.running,"observed_seconds":300,"metal_delivered":delivered,"charging_power":charging,"work_seconds":snappedf(work_seconds,0.1),"travel_seconds":snappedf(travel_seconds,0.1),"waiting_for_power_seconds":snappedf(waiting_seconds,0.1),"final_power":game.resources.power,"final_metal":game.resources.metal,"cycle":game.cycle,"free_build":game.testing_free_build,"failures_disabled":game.testing_disable_failures})
+		rows.append({"solar_rooms":solar_count,"paid_setup":built,"survived":game.running,"observed_seconds":300,"metal_delivered":delivered,"charging_power":charging,"work_seconds":snappedf(work_seconds,0.1),"travel_seconds":snappedf(travel_seconds,0.1),"waiting_for_power_seconds":snappedf(waiting_seconds,0.1),"final_power":game.resources.power,"final_metal":game.resources.metal,"cycle":game.cycle,"free_build":game.testing_free_build,"failures_disabled":game.testing_disable_failures,"ended_reason":ended_reason,"ended_resources":ended_resources})
 		if not game.running or game.testing_free_build or game.testing_disable_failures:
 			failures += 1
 			push_error("Paid drone station must remain viable under normal rules")

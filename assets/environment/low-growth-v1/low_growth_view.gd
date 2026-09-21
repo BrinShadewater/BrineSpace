@@ -1,6 +1,6 @@
 extends RefCounted
 ## Low decorative life. No simulated growth, food yields or occupancy.
-const ROOT := "res://assets/environment/low-growth-v1/"
+const ROOT := "res://legacy/default/assets/environment/low-growth-v1/"
 const SOURCES := {
     "seagrass-rosette": "seagrass-rosette-v2.png",
     "encrusting-algae": "encrusting-algae-v1.png",

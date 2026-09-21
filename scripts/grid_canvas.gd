@@ -1430,6 +1430,18 @@ func _draw_subfloor(cell: Vector2i, width: float, size: float, weathered: bool, 
 		if weathered:
 			draw_target.draw_line(Vector2(x,top+size*0.005),Vector2(x+size*0.012,top+size*0.045),Color(0.26,0.18,0.10,0.65),size*0.006)
 
+# Whole paths, not a folder prefix joined to a built filename. The September 18 art
+# move rewrote every res:// literal it could find and could not see a path assembled
+# at runtime, so every foundation here loaded nothing from then on. Its four piles
+# landed in two different legacy folders; name each one where it actually is.
+const FOUNDATION_ART := {
+	"silt": "res://legacy/default/rooms/foundation-v1/foundation-silt-v1.png",
+	"reef": "res://legacy/retired/rooms/foundation-v1/foundation-reef-v1.png",
+	"mineral": "res://legacy/retired/rooms/foundation-v1/foundation-mineral-v1.png",
+	"source": "res://legacy/retired/rooms/foundation-v1/foundation-source-v1.png",
+	"weathered": "res://legacy/retired/rooms/foundation-v1/foundation-weathered-v3.png",
+}
+
 func _foundation_variant(cell: Vector2i) -> String:
 	const Ground = preload("res://assets/environment/sub-biomes-v1/sub_biome_view.gd")
 	const Ash = preload("res://assets/environment/volcanic-ash-v1/volcanic_ash_view.gd")
@@ -1530,7 +1542,7 @@ func _draw_corridor_foundations(room: Dictionary, size: float) -> void:
 	var main=_get_main()
 	var variant:=_foundation_variant(room.pos)
 	if not foundation_textures.has(variant):
-		foundation_textures[variant]=_load_png_texture("res://rooms/foundation-v1/foundation-"+variant+"-v1.png")
+		foundation_textures[variant]=_load_png_texture(FOUNDATION_ART.get(variant,FOUNDATION_ART.silt))
 	var texture: Texture2D=foundation_textures[variant]
 	if texture==null: return
 	var unit:=size/384.0
@@ -1573,8 +1585,7 @@ func _draw_foundations(exterior := false, mode := "full") -> void:
 		var variant := _foundation_variant(room.pos)
 		if exterior: variant="weathered"
 		if not foundation_textures.has(variant):
-			var filename := "foundation-weathered-v3.png" if exterior else "foundation-"+variant+"-v1.png"
-			foundation_textures[variant]=_load_png_texture("res://rooms/foundation-v1/"+filename)
+			foundation_textures[variant]=_load_png_texture(FOUNDATION_ART.get(variant,FOUNDATION_ART.silt))
 		var foundation_texture: Texture2D=foundation_textures[variant]
 		if foundation_texture==null: continue
 		source=Rect2(25,138,1934,596) if not exterior else Rect2(25,140,2110,550)

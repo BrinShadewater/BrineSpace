@@ -1,14 +1,16 @@
 extends RefCounted
 ## Static displacement mark, registered beneath mooring debris.
 const Mooring := preload("res://assets/environment/mooring-debris-v1/mooring_debris_view.gd")
-const ROOT := "res://assets/environment/sediment-decals-v1/"
+const ROOT := "res://legacy/default/assets/environment/sediment-decals-v1/"
 const SOURCES := {
     "silt-scour": "silt-scour-v2.png"
 }
 const CENTER := Mooring.CENTER
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["silt-scour"])==OK:
 		textures["silt-scour"]=ImageTexture.create_from_image(source)

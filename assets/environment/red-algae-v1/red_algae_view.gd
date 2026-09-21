@@ -1,6 +1,6 @@
 extends RefCounted
 ## Small attached plant scenery; no growth or harvest state.
-const ROOT := "res://assets/environment/red-algae-v1/"
+const ROOT := "res://legacy/default/assets/environment/red-algae-v1/"
 const SOURCES := {
     "red-algae-tuft": "red-algae-tuft-v1.png"
 }
@@ -11,8 +11,10 @@ const PLANTS := [
 	{"at":Vector2(10.8,25.2),"size":0.28}
 ]
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["red-algae-tuft"])==OK:
 		textures["red-algae-tuft"]=ImageTexture.create_from_image(source)

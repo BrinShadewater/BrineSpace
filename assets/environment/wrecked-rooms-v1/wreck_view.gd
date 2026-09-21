@@ -1,6 +1,6 @@
 extends RefCounted
 const Field := preload("res://scripts/wreck_field.gd")
-const ROOT := "res://assets/environment/wrecked-rooms-v1/"
+const ROOT := "res://legacy/default/assets/environment/wrecked-rooms-v1/"
 var textures: Dictionary = {}
 
 func texture(kind: String, stage: String) -> Texture2D:

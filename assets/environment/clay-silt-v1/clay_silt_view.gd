@@ -1,7 +1,7 @@
 extends RefCounted
 ## Quiet fine sediment beneath construction; no terrain gameplay state.
 const Ground := preload("res://assets/environment/sub-biomes-v1/sub_biome_view.gd")
-const ROOT := "res://assets/environment/clay-silt-v1/"
+const ROOT := "res://legacy/default/assets/environment/clay-silt-v1/"
 const SOURCES := {
     "clay-silt-ground": "clay-silt-ground-v1.png",
     "burrow-mouths": "burrow-mouths-v1.png"

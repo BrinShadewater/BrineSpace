@@ -6,7 +6,7 @@ func _overhead_turn(prop: Dictionary) -> int:
 	return 0 if center.y<0 else 2
 func _overhead_texture(prop: Dictionary) -> ImageTexture:
 	var key := "%s-%s"%[str(prop.id).trim_prefix("command_"),["down","left","up","right"][_overhead_turn(prop)]]
-	if not overhead_textures.has(key): overhead_textures[key]=load_source_texture("res://assets/command-owner-v2/%s.png"%key)
+	if not overhead_textures.has(key): overhead_textures[key]=load_source_texture("res://legacy/retired/assets/command-owner-v2/%s.png"%key)
 	return overhead_textures[key]
 func _overhead_bounds(prop: Dictionary) -> Rect2:
 	var size := Vector2(_overhead_texture(prop).get_size())

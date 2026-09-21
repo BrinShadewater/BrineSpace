@@ -1,6 +1,6 @@
 extends RefCounted
 ## Ambient water only; time comes from the authoritative pause-aware visual clock.
-const ROOT := "res://assets/environment/ambient-water-v1/"
+const ROOT := "res://legacy/default/assets/environment/ambient-water-v1/"
 const SOURCES := {
     "current-ribbon": "current-ribbon-v1.png",
     "silt-fan": "silt-fan-v1.png",

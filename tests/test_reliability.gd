@@ -44,6 +44,14 @@ func run():
 	check(zip.file_exists("diagnostics/artwork.json"),"Report includes missing-art paths")
 	check(zip.read_file("report.txt").get_string_from_utf8().contains("build:"),"Build identity included")
 	zip.close()
+	# The two failures above are this fixture's own user:// probes. Any res:// path that
+	# reached the placeholder is shipped art the station could not find. The September 18
+	# move relocated 798 files and rewrote every literal it could see; about a hundred
+	# paths are assembled at runtime, stayed unrewritten, and drew magenta here unnoticed
+	# for two days, because a missing PNG is a warning and not a failure.
+	var stale: Array=SafeImage.failures.keys().filter(func(p: String): return p.begins_with("res://"))
+	stale.sort()
+	check(stale.is_empty(),"Every res:// artwork the station loads resolves (%d missing, first: %s)"%[stale.size(),stale[0] if not stale.is_empty() else ""])
 	game.queue_free();await process_frame
 	for name in DirAccess.get_files_at(report_dir): DirAccess.remove_absolute(ProjectSettings.globalize_path(report_dir.path_join(name)))
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(report_dir))

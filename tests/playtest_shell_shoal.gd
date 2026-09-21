@@ -1,5 +1,5 @@
 extends SceneTree
-const PACK := "res://assets/environment/shell-shoal-v1/"
+const PACK := "res://legacy/default/assets/environment/shell-shoal-v1/"
 
 class Sheet extends Control:
 	var ground: Texture2D

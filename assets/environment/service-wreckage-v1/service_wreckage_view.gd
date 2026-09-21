@@ -1,6 +1,6 @@
 extends RefCounted
 ## Fixed small debris below station geometry. Room-sized wrecks live in WreckField.
-const ROOT := "res://assets/environment/service-wreckage-v1/"
+const ROOT := "res://legacy/default/assets/environment/service-wreckage-v1/"
 const SOURCES := {
     "collapsed-support": "collapsed-support-v1.png",
     "torn-cable-harness": "torn-cable-harness-v1.png",

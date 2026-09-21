@@ -1,6 +1,6 @@
 extends RefCounted
 ## Static seabed organism scenery; no movement or harvest state.
-const ROOT := "res://assets/environment/urchin-v1/"
+const ROOT := "res://legacy/default/assets/environment/urchin-v1/"
 const SOURCES := {
     "short-spine-urchin": "short-spine-urchin-v1.png"
 }
@@ -11,8 +11,10 @@ const PLANTS := [
 	{"at":Vector2(9.5,16.9),"size":0.20}
 ]
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["short-spine-urchin"])==OK:
 		textures["short-spine-urchin"]=ImageTexture.create_from_image(source)

@@ -181,7 +181,19 @@ static func prop_collision_rects(prop: Dictionary) -> Array[Rect2]:
 		if flip.x<0: local.position.x=1.0-local.end.x
 		if flip.y<0: local.position.y=1.0-local.end.y
 		result.append(Rect2(rect.position+local.position*rect.size,local.size*rect.size))
-	if result.is_empty(): result.append(rect)
+	if not result.is_empty(): return result
+	# Every library prop records the part of its art that stands on the floor, and the
+	# equipment shadow already shades that rather than the whole box. Blocking with the
+	# whole box walled off the floor in front of tall wall-mounted art - an incubator, a
+	# pipe loop - including doorways the owner had deliberately left walkable.
+	var footprint: Array = prop.get("footprint",[])
+	if footprint.size()==4:
+		var floor_local:=Rect2(float(footprint[0]),float(footprint[1]),float(footprint[2]),float(footprint[3]))
+		if flip.x<0: floor_local.position.x=1.0-floor_local.end.x
+		if flip.y<0: floor_local.position.y=1.0-floor_local.end.y
+		result.append(Rect2(rect.position+floor_local.position*rect.size,floor_local.size*rect.size))
+		return result
+	result.append(rect)
 	return result
 
 static func can_stand(point: Vector2, layout: Array, furnishings: Array, structure: Array) -> bool:

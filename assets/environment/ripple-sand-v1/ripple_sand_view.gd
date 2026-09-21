@@ -1,7 +1,7 @@
 extends RefCounted
 ## Quiet interrupted sand ripples beneath construction; no terrain gameplay state.
 const Ground := preload("res://assets/environment/sub-biomes-v1/sub_biome_view.gd")
-const ROOT := "res://assets/environment/ripple-sand-v1/"
+const ROOT := "res://legacy/default/assets/environment/ripple-sand-v1/"
 const SOURCES := {
     "ripple-sand": "ripple-sand-v1.png"
 }

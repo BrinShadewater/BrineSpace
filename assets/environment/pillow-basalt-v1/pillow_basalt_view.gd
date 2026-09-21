@@ -1,6 +1,6 @@
 extends RefCounted
 ## Low decorative rounded basalt lobes; no occupancy or excavation state.
-const ROOT := "res://assets/environment/pillow-basalt-v1/"
+const ROOT := "res://legacy/default/assets/environment/pillow-basalt-v1/"
 const SOURCES := {
     "pillow-basalt": "pillow-basalt-v1.png"
 }
@@ -10,8 +10,10 @@ const PROPS := [
 	{"at":Vector2(10.2,15.7),"size":0.35}
 ]
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["pillow-basalt"])==OK:
 		textures["pillow-basalt"]=ImageTexture.create_from_image(source)
