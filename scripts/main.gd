@@ -26,6 +26,8 @@ const MIN_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.02
 # Closest the camera comes to the station: a quarter less than it used to (owner playtest,
 # Sept 17). The starting zoom is unchanged.
 const MAX_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.75
+## How much of the 40x40 grid the furthest zoom-out shows across. 1.0 was the whole grid.
+const ZOOM_OUT_EXTENT := 0.75
 const UI_ACCENT := Color("#2d7f6b")
 const UI_ACCENT_BRIGHT := Color("#4fa38d")
 const UI_ACCENT_DARK := Color("#0d2f2b")
@@ -340,6 +342,12 @@ var camera_viewport_size := Vector2.ZERO
 var camera_zoom_center := Vector2.ZERO
 # Where an animated fit moves the zoom center to (INF when the center stays put).
 var camera_center_target := Vector2.INF
+## Wheel zoom holds the grid point under the pointer still instead of the view's centre.
+## Zooming out far used to clamp the centre to the middle of the map - the scroll cannot
+## centre past the grid edge - so zooming back in returned you to the middle of the map
+## rather than to what you were looking at. Grid ratio, and where the pointer sat in the frame.
+var camera_zoom_anchor := Vector2.INF
+var camera_zoom_anchor_offset := Vector2.ZERO
 var camera_zoom_moving := false
 var card_textures := {}
 var ui_textures := {}
@@ -3107,6 +3115,10 @@ func _on_zoom_changed(value: float) -> void:
 	_request_grid_zoom(DEFAULT_GRID_ZOOM * value)
 
 func _request_grid_zoom(value: float) -> void:
+	# Any zoom that is not the wheel keeps the view's centre; the wheel re-arms the anchor
+	# straight after this call. Clearing here means the slider and a fit cannot inherit a
+	# stale pointer from an earlier scroll.
+	camera_zoom_anchor = Vector2.INF
 	if camera_zoom_target<0.0:
 		camera_zoom_center=_grid_view_center_ratio()
 		camera_center_target=Vector2.INF
@@ -3129,6 +3141,10 @@ func _update_camera_zoom(delta: float) -> void:
 	var zoom_arrived := absf(next-target)<0.0005
 	if zoom_arrived: next=target
 	var center_arrived := true
+	if camera_zoom_anchor!=Vector2.INF and camera_center_target==Vector2.INF:
+		# Recomputed at each step, not lerped: the centre that holds the pointer's grid
+		# point still moves with the zoom, so a fixed centre would drift away from it.
+		camera_zoom_center=_anchored_center_ratio(next)
 	if camera_center_target!=Vector2.INF:
 		# An animated fit glides its center along with the zoom.
 		var center := camera_zoom_center.lerp(camera_center_target,blend)
@@ -3151,6 +3167,33 @@ func _set_grid_zoom(value: float, update_slider := true, target_center := Vector
 	_restore_grid_view_center(center_ratio)
 	_restore_grid_view_center_deferred(center_ratio)
 	_refresh_placement_status()
+
+## One zoom-in/out notch, holding the grid point at `inside` (a position in the grid
+## frame, the pointer's by default) still. The order matters: _request_grid_zoom drops
+## any anchor so a slider or a fit cannot inherit one, so the anchor is armed after it.
+func _request_wheel_zoom(step: float, inside := Vector2.INF) -> void:
+	_request_grid_zoom((camera_zoom_target if camera_zoom_target >= 0.0 else grid_zoom) + step)
+	_set_wheel_zoom_anchor(inside)
+
+func _set_wheel_zoom_anchor(inside := Vector2.INF) -> void:
+	if grid_scroll == null:
+		camera_zoom_anchor = Vector2.INF
+		return
+	var full_size: float = max(GRID_SIZE * get_cell_size(), 1.0)
+	if inside == Vector2.INF: inside = grid_scroll.get_local_mouse_position()
+	if not Rect2(Vector2.ZERO, grid_scroll.get_rect().size).has_point(inside):
+		camera_zoom_anchor = Vector2.INF   # pointer is off the grid frame: keep the centre
+		return
+	var at: Vector2 = Vector2(grid_scroll.scroll_horizontal, grid_scroll.scroll_vertical) + inside
+	camera_zoom_anchor = Vector2(clampf(at.x/full_size,0.0,1.0), clampf(at.y/full_size,0.0,1.0))
+	camera_zoom_anchor_offset = inside
+
+## The centre that keeps the anchored grid point under the pointer at this zoom.
+func _anchored_center_ratio(zoom_value: float) -> Vector2:
+	var full_size: float = max(GRID_SIZE * float(CELL_SIZE) * zoom_value, 1.0)
+	var view: Vector2 = grid_scroll.get_rect().size
+	var center: Vector2 = camera_zoom_anchor + (view*0.5 - camera_zoom_anchor_offset)/full_size
+	return Vector2(clampf(center.x,0.0,1.0), clampf(center.y,0.0,1.0))
 
 func _grid_view_center_ratio() -> Vector2:
 	if grid_scroll == null:
@@ -4194,10 +4237,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventMouseButton and event.pressed and event.shift_pressed:
+		# The pointer is read fresh each notch, so moving the mouse mid-scroll steers.
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_request_grid_zoom((camera_zoom_target if camera_zoom_target>=0 else grid_zoom) + Preferences.zoom_step())
+			_request_wheel_zoom(Preferences.zoom_step())
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_request_grid_zoom((camera_zoom_target if camera_zoom_target>=0 else grid_zoom) - Preferences.zoom_step())
+			_request_wheel_zoom(-Preferences.zoom_step())
 
 func _rotate_selected_room() -> void:
 	if selected_card_id.is_empty():
@@ -5398,7 +5442,13 @@ func _refresh_construction_button() -> void:
 
 func _minimum_map_zoom() -> float:
 	if grid_scroll == null: return MIN_GRID_ZOOM
-	return maxf(MIN_GRID_ZOOM, maxf(grid_scroll.size.x,grid_scroll.size.y) / (GRID_SIZE * float(CELL_SIZE)))
+	# Owner call, September 20: the far end went too far. Zooming out used to stop only
+	# when the whole 40x40 grid fitted the frame, far wider than any station and too small
+	# to read. The stop is now ZOOM_OUT_EXTENT of the grid across, which still shows any
+	# station whole. Readability, not speed: a station is a block in the middle of the grid,
+	# so it is fully drawn at either limit and the frame costs the same (60.6 vs 61.0 ms).
+	var fit_whole_grid: float = maxf(grid_scroll.size.x,grid_scroll.size.y) / (GRID_SIZE * float(CELL_SIZE))
+	return maxf(MIN_GRID_ZOOM, fit_whole_grid / ZOOM_OUT_EXTENT)
 
 func _show_pause_page(id: String) -> void:
 	if not pause_pages.has(id): return
