@@ -10,7 +10,7 @@ func overhead_texture(id: String) -> ImageTexture:
 		source="table"
 		turn=posmod(quarter+1,4)
 	var key:=source+"-q"+str(turn)
-	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/rooms/galley/pack/"+key+".png")
+	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://legacy/retired/assets/rooms/galley/pack/"+key+".png")
 	return overhead_textures[key]
 func overhead_bounds(prop: Dictionary) -> Rect2:
 	var size:=Vector2(overhead_texture(prop.id).get_size())
@@ -32,7 +32,7 @@ func _ready() -> void:
 	show_actor=false
 	for id in ["kitchen","serving"]:
 		var image:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/galley-v1/"+id+".png")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/retired/rooms/underwater/galley-v1/"+id+".png")
 		textures[id]=ImageTexture.create_from_image(image)
 		regions[id]=Rect2(image.get_used_rect())
 	north_kitchen_art=DirectionalLibrary.template("library/galley-kitchen-north").duplicate(true)

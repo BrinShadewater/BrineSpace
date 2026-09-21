@@ -9,8 +9,17 @@ const DirectionalLibrary=preload("res://scripts/room_asset_library.gd")
 
 func _ready() -> void:
 	super._ready()
+	# One whole path per room rather than a folder prefix joined to room_id. A quoted
+	# folder prefix reads to build_release_manifest.py as a dependency on that whole
+	# folder - even inside a comment, so do not quote one here - and the rooms root
+	# shipped 80 files and 101 MB to deliver these three.
+	const MACHINE_ART := {
+		"current_turbine": "res://legacy/default/assets/rooms/current-turbine/source/machine.png",
+		"biomass_digester": "res://legacy/default/assets/rooms/biomass-digester/source/machine.png",
+		"heat_recovery": "res://legacy/default/assets/rooms/heat-recovery/source/machine.png",
+	}
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://assets/rooms/"+room_id.replace("_","-")+"/source/machine.png")
+	preload("res://scripts/safe_image.gd").load_png(image, MACHINE_ART.get(room_id,MACHINE_ART.current_turbine))
 	machine_texture = ImageTexture.create_from_image(image)
 	machine_region = Rect2(image.get_used_rect())
 	# Register the visible turbine, excluding near-transparent source padding.

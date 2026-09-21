@@ -1,6 +1,6 @@
 extends RefCounted
 ## Decorative habitat patches. Occupancy and excavation remain authoritative elsewhere.
-const ROOT := "res://assets/environment/sub-biomes-v1/"
+const ROOT := "res://legacy/default/assets/environment/sub-biomes-v1/"
 const DEFINITIONS := {
 	"sulfur": {"name":"Sulfur vent basin", "props":["anhydrite","bacterial-mat"]},
 	"sponge": {"name":"Sponge reef", "props":["vase-sponges","sea-fans"]},

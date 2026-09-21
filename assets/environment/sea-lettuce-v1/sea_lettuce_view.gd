@@ -1,6 +1,6 @@
 extends RefCounted
 ## Low decorative vegetation beneath rooms; no growth or harvest state.
-const ROOT := "res://assets/environment/sea-lettuce-v1/"
+const ROOT := "res://legacy/default/assets/environment/sea-lettuce-v1/"
 const SOURCES := {
     "sea-lettuce-rosette": "sea-lettuce-rosette-v1.png"
 }
@@ -10,8 +10,10 @@ const PLANTS := [
 	{"at":Vector2(11.8,25.8),"size":0.25}
 ]
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["sea-lettuce-rosette"])==OK:
 		textures["sea-lettuce-rosette"]=ImageTexture.create_from_image(source)

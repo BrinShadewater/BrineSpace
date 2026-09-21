@@ -123,7 +123,16 @@ func run() -> void:
 				check(actor.can_stand(actor.foot),"Return route stays clear")
 				steps+=1
 			check(actor.foot.distance_to(actor.graph.get_point_position(return_id))<1,"Return from each entrance reaches tank observation area")
-	var chamber: Dictionary=view.props.filter(func(p): return p.id=="brine_chamber")[0]
+	# A saved layout can delete an authored prop. Say so and stop, rather than
+	# indexing an empty filter: that aborts the coroutine and the run hangs to its
+	# timeout with one stack trace and no verdict.
+	var chambers: Array=view.props.filter(func(p): return p.id=="brine_chamber")
+	check(not chambers.is_empty(),"The BRINE chamber is still in the room's layout")
+	if chambers.is_empty():
+		print("BRINE ROOM V2: %d failures; the saved layout has no brine_chamber, so the tank, float and bubble checks did not run" % failures)
+		quit(1)
+		return
+	var chamber: Dictionary=chambers[0]
 	var used: Rect2=Rect2(view.body_normalized_rect.position*92.0,view.body_normalized_rect.size*92.0)
 	check(view.body_source_rect.size.y>740,"Float retains detailed source rather than 74-pixel reduction")
 	var glass:=Rect2(555,585,142,190)

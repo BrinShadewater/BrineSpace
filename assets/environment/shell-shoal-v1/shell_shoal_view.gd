@@ -1,7 +1,7 @@
 extends RefCounted
 ## Decorative shell shoal; construction and clearance remain independent.
 const Ground := preload("res://assets/environment/sub-biomes-v1/sub_biome_view.gd")
-const ROOT := "res://assets/environment/shell-shoal-v1/"
+const ROOT := "res://legacy/default/assets/environment/shell-shoal-v1/"
 const SOURCES := {
     "shell-hash-ground": "shell-hash-ground-v2.png",
     "limestone-cobbles": "limestone-cobbles-v1.png",

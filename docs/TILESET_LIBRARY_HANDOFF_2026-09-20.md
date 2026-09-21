@@ -145,3 +145,25 @@ All of the above passed at the last commit on this branch.
   hallway's floor, so a furnishing script must check both itself
   (`Corridor.contains_foot`); and a hallway floor is about 94 units wide with a 72-unit
   door lane, so hallway props must be small (about 22 units) and touch the hull.
+
+## 10. What the furnishing pass cost, found September 20 evening
+
+The scripted furnishing in section 9 strips a room before it places: `furnish_groups.gd`
+nulls every authored default prop, keeping a removal only if `issues()` stays clean. Three
+consequences, all found after the fact:
+
+- **The BRINE Core lost all five authored props**, `brine_chamber` among them. That prop is
+  what the tank, the water, the reflections and BRINE's floating body key off, so she was not
+  drawn in her own core room. Restored in all four rotations; the other four stay removed.
+- **Five doorways were blocked by props** and crew could not path through them. One was a code
+  bug (navigation ignored the library's floor footprint and blocked with the whole art box,
+  wall art included). The rest were the owner's own placements at identical coordinates in all
+  four rotations — "Copy to other rotations" pins a prop while the door moves out from under
+  it. Watch for that button.
+- **A room can be furnished for its name rather than its job.** `plan_groups.py` had the
+  Emergency Isolation Vault down as a strongroom when the database calls it "reserve power and
+  emergency branch isolation controls".
+
+`tools/lint_room_layouts.gd` now reports blocked doors, overlaps and off-hull props across all
+188 room/rotations. No blocked doors remain; 25 off-hull placements and one overlap sit in the
+owner's art and are theirs to judge. Run it after any furnishing pass.

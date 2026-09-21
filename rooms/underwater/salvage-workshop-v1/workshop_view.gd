@@ -6,7 +6,7 @@ var north_bench_art: Dictionary={}
 var overhead_textures: Dictionary={}
 func overhead_texture(id: String) -> ImageTexture:
 	var key:=id+"-q"+str(quarter)
-	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/rooms/salvage-workshop/pack/"+key+".png")
+	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://legacy/retired/assets/rooms/salvage-workshop/pack/"+key+".png")
 	return overhead_textures[key]
 func overhead_bounds(prop: Dictionary) -> Rect2:
 	var size:=Vector2(overhead_texture(prop.id).get_size())
@@ -28,7 +28,7 @@ func _ready() -> void:
 	show_actor=false
 	for id in ["bench","tote"]:
 		var image:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/salvage-workshop-v1/"+id+".png")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/retired/rooms/underwater/salvage-workshop-v1/"+id+".png")
 		textures[id]=ImageTexture.create_from_image(image)
 		regions[id]=Rect2(image.get_used_rect())
 	north_bench_art=DirectionalLibrary.template("library/salvage-bench-north").duplicate(true)

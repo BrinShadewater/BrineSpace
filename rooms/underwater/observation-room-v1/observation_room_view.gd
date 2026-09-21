@@ -6,8 +6,14 @@ var rotated_textures: Dictionary={}
 func furnishing_texture(id: String) -> ImageTexture:
 	var key:=id+"-q"+str(quarter)
 	if not rotated_textures.has(key):
-		var path: String="res://assets/rooms/observation-room/pack/"+key+".png"
-		if id=="observation_north":path="res://assets/rooms/observation-room/pack/shelves-"+["down","left","up","right"][quarter]+".png"
+		# The art move sorted this pack by whether a literal path named the file, and
+		# these are built from an id and a rotation, so it saw none of them: the whole
+		# pack went to legacy/retired except the one shelf face another script names.
+		var path: String="res://legacy/retired/assets/rooms/observation-room/pack/"+key+".png"
+		if id=="observation_north":
+			var facing: String=["down","left","up","right"][quarter]
+			path=("res://legacy/default/assets/rooms/observation-room/pack/shelves-down.png" if facing=="down"
+				else "res://legacy/retired/assets/rooms/observation-room/pack/shelves-"+facing+".png")
 		rotated_textures[key]=load_source_texture(path)
 	return rotated_textures[key]
 
@@ -56,7 +62,7 @@ func _ready() -> void:
 	source_origin=Vector2(region[0],region[1])
 	for id in ["wooden-desk","chair-rear","reading-set"]:
 		var item:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(item, "res://assets/rooms/observation-room/office/"+id+".png")
+		preload("res://scripts/safe_image.gd").load_png(item, "res://legacy/retired/assets/rooms/observation-room/office/"+id+".png")
 		office_textures[id]=ImageTexture.create_from_image(item)
 		office_regions[id]=Rect2(item.get_used_rect())
 	rebuild()

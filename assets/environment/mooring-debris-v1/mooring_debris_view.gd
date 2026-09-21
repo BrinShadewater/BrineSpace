@@ -1,13 +1,15 @@
 extends RefCounted
 ## Pale-shoal decorative attachment debris; no clearance state.
-const ROOT := "res://assets/environment/mooring-debris-v1/"
+const ROOT := "res://legacy/default/assets/environment/mooring-debris-v1/"
 const SOURCES := {
     "mooring-plate-chain": "mooring-plate-chain-v1.png"
 }
 const CENTER := Vector2(10.5,16.1)
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if source.load(ROOT+SOURCES["mooring-plate-chain"])==OK:
 		textures["mooring-plate-chain"]=ImageTexture.create_from_image(source)

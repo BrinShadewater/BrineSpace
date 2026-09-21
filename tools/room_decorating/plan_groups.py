@@ -15,7 +15,10 @@ G = {
  "crew_hab": [["bunk bed", "lockers|locker", "bedside"], ["desk", "office chair"], ["sofa", "potted"]],
  "bio_lab": [["lab bench", "microscope", "stool"], ["specimen tank", "specimen jar"], ["fume hood|biosafety", "biohazard"]],
  "clone_lab": [["stasis tube", "cryo pod", "vitals monitor"], ["medical bed", "iv stand"], ["bioreactor", "control cabinet"]],
- "isolation_vault": [["strongbox", "hard case", "crate, steel"], ["cot", "locker"], ["control cabinet", "warning beacon"]],
+ # Engineering, not a holding cell: the database calls it "Reserve power and emergency
+ # branch isolation controls". Reading the name as a strongroom furnished it with a cot,
+ # a strongbox, a hard case and packing crates.
+ "isolation_vault": [["switchgear", "breaker box|fuse box", "*electrical cabinet"], ["transformer", "power coupling"], ["battery rack|battery bank", "control cabinet"]],
  "current_turbine": [["generator", "control cabinet", "gauge"], ["transformer", "breaker"], ["tool chest", "electric motor"]],
  "biomass_digester": [["*vat|culture vat|fluid tank", "pump", "pipe valve"], ["hopper cart", "sack"], ["control cabinet", "drum"]],
  "heat_recovery": [["boiler", "pump station", "valve wheel"], ["control cabinet", "gauge"], ["electric motor", "tool chest"]],
@@ -29,6 +32,8 @@ G = {
  "gravity_loom": [["twin coil emitter", "control console", "power coupling"], ["holo globe|holo projector", "terminal"], ["server rack", "junction hub"]],
  "tidal_condenser": [["water tank", "pump station", "pipe valve"], ["water basin", "filter canister"], ["control cabinet", "water drum"]],
  "hydroponics_bay": [["hydroponic trough", "hydroponic trough", "nutrient canister"], ["grow rack", "grow tube"], ["garden cart", "seed sack"]],
+ # Bio: "Cultivates edible tissue from Biomass. The trays do not require sunlight."
+ "mycelium_nursery": [["grow rack", "bioreactor", "nutrient"], ["culture vat|specimen tank", "sample cabinet|petri"]],
  "life_support": [["life support tank", "life support tank", "control cabinet"], ["air handling", "vent fan"], ["gas cylinders", "filter canister"]],
  "quarantine_cell": [["medical bed|hospital bed", "iv stand", "vitals monitor"], ["cot", "side table"], ["sink", "biohazard bin"]],
  "data_archive": [["server rack", "server rack", "server cabinet"], ["computer desk", "office chair"], ["filing cabinet", "drawer cabinet"]],
