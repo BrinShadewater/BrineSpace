@@ -1,5 +1,8 @@
 ## The art the September 18 move left behind, and five doorways nobody could walk through - September 20, 2026
 
+The full picture for whoever takes this over is in [`CODEX_HANDOFF_2026-09-20.md`](CODEX_HANDOFF_2026-09-20.md): where the art lives now, the layout
+rules, the camera, the renderer's real cost, and what is open.
+
 1. Commit `3d4e0fed9` moved 798 files into `legacy/` and rewrote the `res://` literals in 385
    source files. It could only rewrite whole quoted paths, so 102 paths the code assembles at
    runtime were invisible to it and its "zero dangling references" was true and useless. The

@@ -106,7 +106,8 @@ script.
 | `assets/new-tilesets/` | Converted bought art, one folder per in-universe set; Git LFS |
 | `vendor-art/` | The bought packs exactly as shipped; gitignored. The tileset repair tools read them through `--sources`; do not delete |
 | `docs/TILESET_LIBRARY_HANDOFF_2026-09-20.md` | Start here for the bought art library: what exists, how the owner reports problems, the pipeline and what is open |
-| `legacy/` | The earlier room and prop art, moved aside: `default/` was live in rooms, `retired/` was not |
+| [`docs/CODEX_HANDOFF_2026-09-20.md`](docs/CODEX_HANDOFF_2026-09-20.md) | Where the art actually lives after the September 18 move, the room-layout rules that are easy to break, the camera, and what the renderer costs and why |
+| `legacy/` | The earlier room and prop art, moved aside. **Load-bearing, not a cleanup candidate:** live code loads from `default/` *and* from `retired/` — that split was decided by whether a literal path named the file, so a dynamic reference landed art in `retired/` that the game still draws. A single pack can be split across `assets/`, `default/` and `retired/` |
 | `Brine icons/` | Icon set, multiple sizes, with sprite-sheet sources |
 | `brinecore-animation/` | BRINE core room animation study — its own scene and scripts |
 | `mining-drone-animation/` | Directional drone animation frames (the deep paths) |
