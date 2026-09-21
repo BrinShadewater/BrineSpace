@@ -140,8 +140,10 @@ automatic capture and breadcrumbs off, so runs never write into the player's fol
   doorways were blocked that way before anyone noticed, and crew simply could not walk
   through them. It sweeps all 188 room/rotations headless using the same rule the
   navigation graph uses, writes `output/layout-lint.json` and exits non-zero on findings.
-  Not a CI gate: about 90 pre-existing off-hull and overlap findings sit in the owner's
-  art, and those are theirs to judge. `--rooms=a,b` narrows it.
+  Its blocked-door check is rigorous - it is the rule the navigation graph uses. Its
+  overlap and off-hull checks only compare props that record their floor contact, and are
+  cosmetic: 25 off-hull placements and one overlap remain, all the owner's, all theirs to
+  judge. Not a CI gate. `--rooms=a,b` narrows it.
 
 Department colours live in `RoomDatabase.CATEGORY_COLORS` with per-room overrides in
 `ROOM_COLORS`; use `RoomDatabase.room_color(id)` so corridors stay grey and BRINE's

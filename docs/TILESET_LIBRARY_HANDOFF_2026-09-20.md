@@ -165,5 +165,5 @@ consequences, all found after the fact:
   emergency branch isolation controls".
 
 `tools/lint_room_layouts.gd` now reports blocked doors, overlaps and off-hull props across all
-188 room/rotations. No blocked doors remain; about 90 off-hull and overlap findings sit in the
+188 room/rotations. No blocked doors remain; 25 off-hull placements and one overlap sit in the
 owner's art and are theirs to judge. Run it after any furnishing pass.

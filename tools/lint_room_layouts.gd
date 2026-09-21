@@ -9,6 +9,16 @@ extends SceneTree
 ##   godot --headless --path . -s res://tools/lint_room_layouts.gd -- --out=res://output/layout-lint.json
 ##
 ## Exits 1 if anything is reported. Reads the owner's layout store; never writes it.
+##
+## What each check is worth:
+##   blocked-door  Rigorous. It is the rule bill_npc.gd uses to build the navigation graph,
+##                 so a finding means crew genuinely cannot walk through that door.
+##   overlap       Only between props that record their floor contact (a library footprint
+##                 or explicit collision boxes). An authored prop falls back to its whole
+##                 art box, and in a top-down room a console standing in front of a machine
+##                 overlaps that box and is drawn correctly by sort_y - comparing art boxes
+##                 reported 48 "overlaps" that were only depth. Those are skipped.
+##   off-hull      Same restriction, and cosmetic: free placement is the owner's to use.
 const Geometry = preload("res://tools/modular_room_geometry.gd")
 const DOOR_REACH := 176.0   # where bill_npc.gd puts a door's navigation node
 const PAD := 10.0           # the padding bill_npc.gd grows every blocker by
@@ -60,8 +70,15 @@ func run() -> void:
 				var backdrop: bool = str(prop.id).begins_with("full_wall_") \
 					or prop.get("wall_mount", false) \
 					or prop.get("registration", {}).get("wall_mount", false)
+				# Only a prop that records its floor contact can be compared on the floor.
+				# Everything else falls back to its whole art box, and in a top-down room a
+				# console standing in front of a machine overlaps that box and is drawn
+				# correctly by sort_y. Comparing art boxes reported 48 "overlaps" that were
+				# just depth.
+				var floor_true: bool = not prop.get("collision_boxes", []).is_empty() \
+					or prop.get("footprint", []).size() == 4
 				for rect in Geometry.prop_collision_rects(prop):
-					solids.append({"id": str(prop.id), "rect": rect, "backdrop": backdrop})
+					solids.append({"id": str(prop.id), "rect": rect, "backdrop": backdrop, "floor_true": floor_true})
 			for side in range(4):
 				if not Geometry.has_port(view.layout[0], side): continue
 				var node := Vector2(Geometry.DIRS[side]) * DOOR_REACH
@@ -73,6 +90,7 @@ func run() -> void:
 				for j in range(i + 1, solids.size()):
 					if solids[i].id == solids[j].id: continue
 					if solids[i].backdrop or solids[j].backdrop: continue
+					if not (solids[i].floor_true and solids[j].floor_true): continue
 					var overlap: Rect2 = (solids[i].rect as Rect2).intersection(solids[j].rect)
 					# The owner's props touch on purpose - 63% sit within 8 units. Only a
 					# real shared footprint is worth a word.
@@ -80,7 +98,7 @@ func run() -> void:
 					note(room_id, q, "overlap",
 						"%s and %s share %d square units of floor" % [solids[i].id, solids[j].id, int(overlap.get_area())])
 			for solid in solids:
-				if solid.backdrop: continue
+				if solid.backdrop or not solid.floor_true: continue
 				var rect: Rect2 = solid.rect
 				var out := maxf(maxf(-182.0 - rect.position.x, -186.0 - rect.position.y),
 					maxf(rect.end.x - 182.0, rect.end.y - 178.0))

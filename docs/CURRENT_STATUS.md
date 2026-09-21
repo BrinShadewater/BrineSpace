@@ -25,7 +25,11 @@
    Mycelium Nursery's cultivation bank came out (240 units wide in a 348 room: it cannot share a
    wall with a door) and Pressure Control lost its wall installation and the pump standing in its
    only door at q2. `test_bill_npc` passes; `lint_room_layouts.gd` reports no blocked doors in any
-   of the 188 room/rotations.
+   of the 188 room/rotations. Twenty-five off-hull placements and one overlap remain, all
+   the owner's and all cosmetic. The lint's first pass claimed 90 findings and was wrong:
+   comparing whole art boxes counted a console standing in front of a machine as an
+   overlap, when `sort_y` draws that correctly. It only compares props that record their
+   floor contact now.
 6. The Isolation Vault rendered empty: its filter dropped the wall bank the previous
    `configure_embedded` installed, and the bank only reinstalls off a fresh rebuild, so props went
    8 -> 0 -> 0 -> 0 and never recovered. It also ran "place the dressing" with no dressing left,
@@ -34,17 +38,23 @@
 7. BRINE is back in her tube. The September 20 furnishing pass had written a `room-brine_core`
    layout deleting all five authored props; `brine_chamber` is what the tank, the water and her
    floating body key off, so she was not drawn in her own core room. Restored in all four
-   rotations; the other four props stay removed pending the owner. The vault was refurnished from
+   rotations, and on the owner's word the other four authored props went back too. The vault was refurnished from
    the library as switchgear rather than a strongroom - `plan_groups.py` had read the name as a
    holding cell when the database calls it "reserve power and emergency branch isolation
    controls".
 8. `playtest_drone_economy` measured nothing: it never woke an architect, and crew build the
    rooms now, so the station it paid for was never constructed - 0 metal over 300 seconds, twice.
    Fixed, it delivers 24 metal over 72 seconds of work and records why a run ended.
-9. **Open for the owner:** that fixture now fails honestly. One architect aboard a core, a drone
-   bay and one or two solar arrays runs out of food, oxygen and water by cycle 12,
-   `"Crew population reached 0."` Either the fixture should build life support or the early
-   economy is too tight; enabling free build or disabling failures to make it pass is out.
+9. **Open for the owner, and now quantified.** The fixture was taught to build the life support
+   its crew needs, in the order a player would (an array before the rooms that draw from it),
+   finding free cells rather than hard-coded ones, and naming any build it cannot make. With
+   solar, life support and hydroponics the station *survives* all 300 seconds - and is then
+   **two Metal short of the drone bay**, and never makes it up, because nothing on a station
+   without a drone bay produces Metal. Thirty-seven cycles later it still held 4. So the paid
+   opening cannot buy both life support for its crew and the bay that earns its keep: without
+   life support the crew are dead by cycle 12 (`"Crew population reached 0."`), with it there is
+   no bay. That is a balance decision - the opening grant, a room cost, or a starter bay -
+   and not one to settle by switching off free build or failure conditions.
 10. Checked: gameplay 48 pass, crew 27, fire 4/4 and flood-water 12/12 across both lanes,
     room-art 16, render-perf 15 of 16 native, 0 missing-art paths across 48 logs (was 102).
     Fire and flooding were also driven live: ignition 0.120 -> 0.264 unsuppressed, sprinklers to

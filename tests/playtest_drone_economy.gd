@@ -58,6 +58,30 @@ func wake_architect() -> bool:
 		game._update_test_walker(0.1)
 	return Architects.present(game,"bill")
 
+# The seabed around the core is not empty: wreckage sits on some of it, and which cells
+# are free depends on the run. Try the ring rather than one hard-coded cell.
+const RING := [Vector2i(20,21),Vector2i(19,21),Vector2i(21,21),Vector2i(19,19),Vector2i(21,19),
+	Vector2i(18,20),Vector2i(22,20),Vector2i(20,18),Vector2i(20,22),Vector2i(18,21),Vector2i(22,21)]
+# A paid opening cannot afford a solar array, life support, hydroponics and a drone bay
+# at once - it is about two Metal short. A player waits a cycle or two; so does this.
+func wait_for(id: String, limit: int) -> bool:
+	var cost: Dictionary = game.RoomDatabaseScript.get_room(id).cost
+	for frame in range(limit):
+		var affordable := true
+		for resource in cost:
+			if int(game.resources.get(resource,0)) < int(cost[resource]): affordable = false
+		if affordable: return true
+		step()
+	return false
+
+func build_somewhere(id: String, used: Array) -> bool:
+	for cell in RING:
+		if cell in used or game.occupied.has(cell): continue
+		if build(id,cell):
+			used.append(cell)
+			return true
+	return false
+
 func build(id: String, cell: Vector2i) -> bool:
 	game.hand.assign([id]) # Controlled available blueprint, not free construction.
 	game._on_card_pressed(id)
@@ -91,8 +115,35 @@ func run() -> void:
 		if not crewed:
 			failures += 1
 			push_error("No architect woke out of the core pod; nothing can build")
-		var built := build("solar_array",Vector2i(19,20)) and build(kind+"_drone_bay",Vector2i(20,19))
-		if solar_count==2: built = built and build("solar_array",Vector2i(21,20))
+		# The crew member who builds the station also breathes, eats and drinks. Without
+		# these the run is not a drone-economy scenario, it is a suffocation scenario: it
+		# ended at cycle 12 on "Crew population reached 0." with food, oxygen and water at
+		# zero. Both arms carry the same base load, so the difference between them is still
+		# exactly one solar array.
+		var used: Array = []
+		var built := build("solar_array",Vector2i(19,20))
+		if not built: push_error("Could not build the first solar_array: %s" % game.get_placement_problem("solar_array",Vector2i(19,20)))
+		# Power first, then the rooms that draw it: life support and hydroponics together
+		# cost 2 power a cycle, and building them before any array ended the run at cycle 3
+		# on "BRINE Core lost power." No condenser - it costs 2 Data the opening does not
+		# have - so water is left to the station's own supply.
+		if built:
+			for id in ["life_support","hydroponics_bay"]:
+				if build_somewhere(id,used): continue
+				built = false
+				push_error("Could not place %s anywhere on the ring (metal %d, power %d, data %d, biomass %d)" % [
+					id,int(game.resources.metal),int(game.resources.power),
+					int(game.resources.data),int(game.resources.biomass)])
+				break
+		if built and not wait_for(kind+"_drone_bay",4000):
+			built = false
+			push_error("Never accumulated enough to buy the %s drone bay (metal %d)" % [kind,int(game.resources.metal)])
+		if built and not build(kind+"_drone_bay",Vector2i(20,19)):
+			built = false
+			push_error("Could not build the %s drone bay at (20,19): %s" % [kind,game.get_placement_problem(kind+"_drone_bay",Vector2i(20,19))])
+		if built and solar_count==2 and not build("solar_array",Vector2i(21,20)):
+			built = false
+			push_error("Could not build the second solar_array at (21,20): %s" % game.get_placement_problem("solar_array",Vector2i(21,20)))
 		if not built:
 			failures += 1
 			push_error("Paid economy fixture could not construct its station")
