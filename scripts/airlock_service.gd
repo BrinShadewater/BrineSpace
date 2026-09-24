@@ -2,19 +2,26 @@ extends RefCounted
 const Architects=preload("res://scripts/architects.gd")
 static var shelf_timelines: Dictionary = {}
 
-static func shelf_helmet_scale(game, cell: Vector2i) -> float:
+# Visible fitted shell bounds from the current 148px idle profiles, not canvas size.
+const SHELF_HELMET_PIXELS := {"bill":Vector2(39,48),"veld":Vector2(28,28),"branforth":Vector2(38,40)}
+
+static func shelf_helmet_size(game, cell: Vector2i) -> Vector2:
 	# Show the fitted size for the servicing actor, including the returned pose.
 	# Derive this from live crew state so pause/Continue need no new saved field.
 	for id in Architects.IDS:
+		if not SHELF_HELMET_PIXELS.has(id):continue
 		var actor=Architects.actor_for(game,id)
 		if not actor.active or actor.dead:continue
 		if (actor.helmet_action_active() and actor.cell_at(actor.foot)==cell) or (not actor.locker_request.is_empty() and actor.locker_request.locker.cell==cell):
-			return 0.6 if id=="veld" else 1.0
-	var veld=Architects.actor_for(game,"veld")
-	if veld.active and not veld.dead and veld.cell_at(veld.foot)==cell:
-		var target:=locker(game,cell)
-		if not target.is_empty() and veld.foot.distance_to(target.interaction_point)<=12:return 0.6
-	return 1.0
+			return SHELF_HELMET_PIXELS[id]*65.28/148.0
+	var target: Dictionary={}
+	for id in SHELF_HELMET_PIXELS:
+		var actor=Architects.actor_for(game,id)
+		if not actor.active or actor.dead or actor.cell_at(actor.foot)!=cell:continue
+		if target.is_empty():target=locker(game,cell)
+		if not target.is_empty() and actor.foot.distance_to(target.interaction_point)<=12:
+			return SHELF_HELMET_PIXELS[id]*65.28/148.0
+	return SHELF_HELMET_PIXELS.bill*65.28/148.0
 
 static func helmet_on_shelf(game, cell: Vector2i) -> bool:
 	# Lockers provide reusable gear. A staged spare is visible when not servicing

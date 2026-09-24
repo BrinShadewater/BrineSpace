@@ -34,7 +34,10 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 
 		Catalog.cap(canvas,room_id,Rect2(-196,Riser.CAP_TOP,392,7))
 		canvas.draw_line(Vector2(-192,Riser.TOP+1),Vector2(192,Riser.TOP+1),Color("23363a"),2)
-		canvas.draw_rect(Rect2(-192,-197,384,5),Color("26383b"))
+		# The raised face replaces the low north wall. Its foot must overlap
+		# the deck by the same eight units as the side walls, hiding the seam.
+		canvas.draw_rect(Rect2(-192,Riser.BASE_Y-5,384,13),Color("26383b"))
+		canvas.draw_line(Vector2(-192,Riser.BASE_Y+7),Vector2(192,Riser.BASE_Y+7),Color("536166"),0.7)
 	for left in [true,false]:
 		if (left and adjoining_left) or (not left and adjoining_right): continue
 		var edge_x := -192.0 if left else 192.0

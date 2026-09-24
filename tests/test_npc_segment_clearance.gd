@@ -34,5 +34,16 @@ func run() -> void:
 		npc.foot=a
 		var route:=npc.smooth_route(PackedVector2Array([safe,b]))
 		expect(route.size()==2,"Smoothing retains safe bend at doorway q%d"%q)
-	if failures==0: print("NPC SEGMENT CLEARANCE PASS: four rotated near-tangent cases, reverse paths, clear doorway, stationary endpoints and smoothing")
+	var swimmer:=NPC.new()
+	var profile: Dictionary={}
+	for facing in ["east","south","west","north"]: profile[facing]=[-4,-4,4,4]
+	swimmer.swim_clearance={"bare":profile,"helmet":profile}
+	# This prop belongs to room zero but extends across its eastern boundary.
+	swimmer.geometry[Vector2i.ZERO]={"blockers":[Rect2(190,-10,30,20)],"swim_blocker_bounds":Rect2(190,-10,30,20)}
+	swimmer.geometry[Vector2i(1,0)]={"blockers":[],"swim_blocker_bounds":Rect2()}
+	swimmer.geometry[Vector2i(20,20)]={"blockers":[Rect2(-10,-10,20,20)],"swim_blocker_bounds":Rect2(-10,-10,20,20)}
+	expect(not swimmer.swim_segment_clear(Vector2(400,192),Vector2(401,192),"east"),"Swim region cache retains overhanging props owned by a neighbouring room")
+	expect(not swimmer.swim_region_cache[Vector4i(1,0,1,0)].has(Vector2i(20,20)),"Swim region cache excludes distant owners")
+	expect(swimmer.swim_segment_clear(Vector2(450,192),Vector2(460,192),"east"),"Cached region still tests exact blocker bounds")
+	if failures==0: print("NPC SEGMENT CLEARANCE PASS: four rotations, reverse paths, doorway, stationary endpoints, smoothing and swim region overhangs")
 	quit(1 if failures else 0)

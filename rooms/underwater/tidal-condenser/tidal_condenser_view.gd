@@ -17,7 +17,7 @@ func _equipment_texture(prop: Dictionary) -> ImageTexture:
 	var name := str(prop.id).trim_prefix("tidal_")
 	var key := "%s-%s" % [name,["down","left","up","right"][_equipment_turn(prop)]]
 	if not equipment_textures.has(key):
-		equipment_textures[key]=load_source_texture("res://assets/rooms/tidal-condenser/pack/%s.png" % key)
+		equipment_textures[key]=load_source_texture("res://legacy/retired/assets/rooms/tidal-condenser/pack/%s.png" % key)
 	return equipment_textures[key]
 
 func _equipment_bounds(prop: Dictionary) -> Rect2:

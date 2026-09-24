@@ -1,0 +1,115 @@
+{
+  "frameWidth": 224,
+  "frameHeight": 208,
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "states": [
+    {
+      "id": "swim-pickup-west",
+      "frameFiles": [
+        "swim-pickup-west-000.png",
+        "swim-pickup-west-001.png",
+        "swim-pickup-west-002.png",
+        "swim-pickup-west-003.png",
+        "swim-pickup-west-004.png",
+        "swim-pickup-west-005.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup",
+        "swim-pickup"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "swim-carry-west",
+      "frameFiles": [
+        "swim-carry-west-000.png",
+        "swim-carry-west-001.png",
+        "swim-carry-west-002.png",
+        "swim-carry-west-003.png",
+        "swim-carry-west-004.png",
+        "swim-carry-west-005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        180,
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry",
+        "swim-carry"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

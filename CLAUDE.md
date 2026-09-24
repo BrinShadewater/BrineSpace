@@ -23,4 +23,16 @@ Also:
   optimising for finding what is fun, not for architecture. Propose, don't perform.
 - **Keep `.uid` files paired with their `.gd`.**
 
-Godot 4.7 (tested with 4.7.2), entry point `res://scenes/main.tscn`. Rights: [`NOTICE.md`](NOTICE.md).
+Godot 4.7 (tested with 4.7.2), configured entry point `res://scenes/title_screen.tscn`; gameplay is `res://scenes/main.tscn`. Rights: [`NOTICE.md`](NOTICE.md).
+
+## September 24 takeover
+
+Read [current status](docs/CURRENT_STATUS.md), then the
+[detailed Claude handoff](docs/CLAUDE_HANDOFF_2026-09-24.md) and
+[asset pipeline/workflow](docs/ASSET_PIPELINE_AND_WORKFLOW.md).
+The checkout contains extensive local uncommitted work; HEAD alone is not the
+current delivered game. Preserve owner layouts and ignored vendor originals.
+The handoff records current packages, unresolved work and acceptance limits.
+Repository skills under `skills/` are usable directly by Claude; no Codex plugin
+is required to read them. The newest camera-style discussion needs recovery before
+any proposed change is treated as accepted. Session archival is not game completion.

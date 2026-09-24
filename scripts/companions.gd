@@ -258,13 +258,14 @@ static func valid(data: Variant, wrecks: Variant, rooms: Variant) -> bool:
 	return true
 
 static func restore(game, data: Variant) -> void:
+	var previous: Dictionary = game.companion_actors.duplicate()
 	game.companion_actors.clear();game.companion_roster.clear()
 	if data==null:
-		for id in IDS:game.companion_actors[id]=NPC.new(id)
+		for id in IDS:game.companion_actors[id]=NPC.new(id,previous.get(id))
 		return
 	game.companion_roster=data.roster.duplicate()
 	for id in IDS:
-		var actor = NPC.new(id)
+		var actor = NPC.new(id,previous.get(id))
 		game.companion_actors[id]=actor
 		if not data.actors.has(id):continue # Older robot-only loops do not gain a new rescue site.
 		actor.restore_snapshot(game,data.actors[id].npc)

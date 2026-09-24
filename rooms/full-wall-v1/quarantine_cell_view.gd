@@ -10,6 +10,9 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 			var spec: Dictionary=prop.get("registration",{}).get("spec",{})
 			if prop.id in ["quarantine_berth","quarantine_filter","quarantine_monitor"] or spec.get("centerpiece",false) or spec.get("authored_anchor",false): retained.append(prop.duplicate(true))
 	full_wall.apply(self)
+	# Standalone saved furniture must survive the legacy q2 bank restoration.
+	var authored: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.layout_key(self),quarter)
+	if authored.get("full_wall_"+full_wall.asset_id,0)==null: return
 	if quarter==2:
 		props=props.filter(func(prop): return full_wall.owns(prop))
 		for prop in retained:

@@ -1,5 +1,11 @@
 # Environment production contract
 
+September 23: new expeditions now use seeded site/habitat placement and provisional
+bought low-rock/timber scenery; existing checkpoints keep authored environments.
+See [procedural sites](PROCEDURAL_SITES_2026-09-23.md) for discovery, Studio filtering,
+native review and validation scope. Older statements below that procedural site
+generation remains future work are superseded; material and source rules remain.
+
 The sub-biome library includes sulfur, sponge, brine, kelp, cold coral, manganese
 nodules and iron seep. Iron seep contrasts muted rust stains with low mineral
 plates and pale hydroid fronds. Keep terrain quieter than station interiors.

@@ -488,6 +488,9 @@ func _ready() -> void:
 		place_scale=float(value)/100.0
 		Prefs.save_value("place_scale",place_scale))
 	object_buttons.append(button(side,"Return selected to tray",remove_library_asset))
+	var stacking:=HBoxContainer.new(); side.add_child(stacking)
+	object_buttons.append(button(stacking,"Move to front",func(): move_to_edge(true)))
+	object_buttons.append(button(stacking,"Move to back",func(): move_to_edge(false)))
 	
 	var flips:=HBoxContainer.new(); side.add_child(flips)
 	object_buttons.append(button(flips,"Flip left/right",func(): flip_selected(0)))
@@ -516,6 +519,7 @@ func _ready() -> void:
 	var themes: Array=[]
 	var packs: Array=[]
 	for id in Library.entries():
+		if Library.is_exterior(id): continue
 		var entry: Dictionary=Library.entries()[id]
 		if entry.get("group","")!="tileset": continue
 		var theme:=str(entry.get("category",""))
@@ -773,6 +777,7 @@ func refresh(move_only:=false) -> void:
 		prop.sort_y+=float(draft.get("order/"+str(prop.id),0))*512.0
 	room.set_meta("layout_draft",draft)
 	canvas.queue_redraw()
+	register_surface_details()
 	rebuild_list()
 	rebuild_library()
 	update_size_control()
@@ -815,6 +820,16 @@ func issues() -> PackedStringArray:
 	return result
 
 func door_lane(side: int) -> Rect2: return Store.door_lane(side)
+func register_surface_details() -> void:
+	# Host-relative details can appear only after saved furniture is applied.
+	# Give them the same editable baseline as details visible in the source room.
+	for piece in Details.resolve(room,Floor.profile_for(room)).pieces:
+		if not defaults.has(piece.id):
+			defaults[piece.id]=[piece.at.x,piece.at.y]
+			base_details[piece.id]=piece.duplicate(true)
+		if not draft.has(piece.id): draft[piece.id]=[piece.at.x,piece.at.y]
+	surface_entities.clear()
+
 func entities() -> Array:
 	if layer==0: return room.props
 	if layer in [2,3,4]:
@@ -999,7 +1014,7 @@ func save_layout() -> void:
 	if not issues().is_empty(): status.text="Cannot save: "+issues()[0]; return
 	var changes: Dictionary={}
 	for id in draft:
-		if draft[id]!=defaults.get(id): changes[id]=draft[id]
+		if not defaults.has(id) or draft[id]!=defaults[id]: changes[id]=draft[id]
 	var error:=Store.save_layout(entries[index].asset,quarter,changes)
 	if error!=OK: status.text="Could not save layout: "+error_string(error); return
 	dirty=false
@@ -1338,7 +1353,7 @@ func load_variants() -> void:
 		var members: Array=[]
 		for short_id in family:
 			var id:="library/tileset-"+str(short_id)
-			if Library.entries().has(id): members.append(id)
+			if Library.entries().has(id) and not Library.is_exterior(id): members.append(id)
 		if members.size()<2: continue              # swept or merged down to one: not a family any more
 		for id in members: variant_group[id]=variant_members.size()
 		variant_members.append(members)
@@ -1523,6 +1538,7 @@ func rebuild_library() -> void:
 	if library_filter.selected in [0,3] and not only_retired and pack.is_empty():
 		for prop in base_props:
 			var id:=str(prop.id)
+			if Library.is_exterior(id): continue
 			var caption:=id.trim_prefix("full_wall/").replace("_"," ").replace("/"," · ").capitalize()
 			if not library_search.text.is_empty() and not caption.to_lower().contains(library_search.text.to_lower()): continue
 			var thumbnail=default_thumbnails.get(str(index)+"/"+str(quarter)+"/"+id)
@@ -1539,6 +1555,7 @@ func rebuild_library() -> void:
 	var room_family: Array=Library.family_variants(entries[index].asset) if library_filter.selected==0 else []
 	var room_id: String=str(entries[index].room)
 	for id in Library.entries():
+		if Library.is_exterior(id): continue
 		var entry: Dictionary=Library.entries()[id]
 		# Looking inside one family: its members, whatever the other filters say.
 		var in_focus:=variant_focus>=0
@@ -1589,6 +1606,7 @@ func rebuild_library() -> void:
 		library_list.set_item_tooltip(library_list.item_count-1,
 			"The tray lists %d at a time so previews stay responsive. Use the pager below for the rest." % TRAY_LIMIT)
 func add_library_asset(id: String, center: Vector2) -> bool:
+	if Library.is_exterior(id): return false
 	if comparing: return false
 	if defaults.has(id) and draft.get(id)!=null:
 		for original in base_props:
@@ -1679,6 +1697,7 @@ func update_size_control() -> void:
 	selection_label.visible=not prop.is_empty() and layer!=1
 	for control in object_buttons:
 		if control.text in ["Flip left/right","Flip up/down"]: control.get_parent().visible=not prop.is_empty() and layer!=1
+		if control.text in ["Move to front","Move to back"]: control.get_parent().visible=not prop.is_empty() and layer in [0,2,3]
 		if control.text=="Return selected to tray": control.visible=not prop.is_empty() and layer!=1
 	if prop.get("library_asset",false): selection_label.text=display_name(Library.base_id(selected),selection_label.text)
 	if prop.has("portable_id"): selection_label.text=str(prop.portable_id).replace("_"," ").capitalize()
@@ -1731,6 +1750,7 @@ func rotate_selected_variant(step: int=1) -> void:
 	if prop.get("split_wall",false):
 		var section:=selected.trim_prefix("full_wall_"+str(entries[index].asset)+"_")
 		variants=Library.family_variants(entries[index].asset).filter(func(id): return str(id).ends_with("-"+section))
+	variants=variants.filter(func(id): return not Library.is_exterior(str(id)))
 	if variants.size()<2:
 		status.text="No matching directional variant for this asset."
 		return
@@ -1792,7 +1812,7 @@ func _process(delta: float) -> void:
 		if pending>0:
 			tray_progress.max_value=tray_pending_total
 			tray_progress.value=tray_pending_total-pending
-	if scale_actor.mode>0 and is_instance_valid(room):
+	if scale_actor.mode>0 and is_instance_valid(room) and not dragging and not resizing:
 		scale_actor.rebuild(room,str(entries[index].room),quarter)
 		scale_actor.advance(delta)
 		character_status.text="Preview only / same scale as gameplay" if scale_actor.visible else "No standing clearance in this layout"
@@ -1832,6 +1852,7 @@ func duplicate_selected() -> void:
 	var before:=draft.duplicate(true)
 	var additions: Array=[]
 	for id in selection_ids():
+		if Library.is_exterior(str(id)): continue
 		var fixed:=false
 		for item in entities():
 			if str(item.id)==id and item.has("flush_region"): fixed=true
@@ -1881,7 +1902,7 @@ func save_all_rotations() -> void:
 		if not issues().is_empty(): quarter=start_q; load_room(); status.text="Save all stopped: resolve placement issues first."; return
 		var changes: Dictionary={}
 		for id in draft:
-			if draft[id]!=defaults.get(id): changes[id]=draft[id]
+			if not defaults.has(id) or draft[id]!=defaults[id]: changes[id]=draft[id]
 		writes[k]=changes
 	var error:=Store.save_many(writes)
 	if error==OK:
@@ -1961,6 +1982,28 @@ func change_order(direction: int) -> void:
 		if not draft.get("locked/"+id,false): draft["order/"+id]=int(draft.get("order/"+id,0))+direction
 	finish_edit(before)
 
+func move_to_edge(front: bool) -> void:
+	if comparing or layer not in [0,2,3]: return
+	var chosen:=selection_ids()
+	if chosen.is_empty(): return
+	var items:=entities().duplicate()
+	items.sort_custom(func(a,b): return float(a.get("sort_y",draft.get("order/"+str(a.id),0)))<float(b.get("sort_y",draft.get("order/"+str(b.id),0))))
+	if not front: items.reverse()
+	var edge: float=-INF if front else INF
+	for item in items:
+		var depth: float=float(item.sort_y) if layer==0 else float(draft.get("order/"+str(item.id),0))
+		edge=maxf(edge,depth) if front else minf(edge,depth)
+	var before:=draft.duplicate(true)
+	for item in items:
+		var id:=str(item.id)
+		if id not in chosen or draft.get("locked/"+id,false): continue
+		var base: float=Library.base_sort_y(item) if layer==0 else 0.0
+		var step:=512.0 if layer==0 else 1.0
+		var order:=ceili((edge+1-base)/step) if front else floori((edge-1-base)/step)
+		draft["order/"+id]=order
+		edge=base+order*step
+	finish_edit(before)
+
 func edit_light() -> void:
 	if comparing or layer!=4 or selected.is_empty() or draft.get("locked/"+selected,false): return
 	var before:=draft.duplicate(true)
@@ -1989,6 +2032,7 @@ func paste_selection() -> void:
 	var additions: Array=[]
 	var group_suffix:="-paste-"+str(Time.get_ticks_usec())
 	for record in clipboard:
+		if Library.is_exterior(str(record.id)): continue
 		var base: String=str(record.id) if not record.has("portable") else "library/portable-prop"
 		var serial:=1
 		while draft.has(base+"#"+str(serial)): serial+=1
@@ -1997,6 +2041,7 @@ func paste_selection() -> void:
 		if record.has("portable"): draft["portable/"+id]=record.portable.duplicate(true)
 		for prefix in record.settings: draft[prefix+id]=str(record.settings[prefix])+group_suffix if prefix=="group/" else record.settings[prefix]
 		additions.append(id)
+	if additions.is_empty(): return
 	layer=0; selected_many=additions; selected=str(additions[-1]); refresh()
 	if not issues().is_empty():
 		draft=before; selected=""; selected_many.clear(); refresh(); status.text="Paste needs clear space. Enable Free placement to arrange overlapping artwork."; return

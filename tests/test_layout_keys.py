@@ -30,6 +30,13 @@ def library_ids():
     ids = {"library/" + p.stem for p in (ROOMS / "registrations").glob("*.json")}
     for entry in json.loads((ROOMS / "common-assets.json").read_text(encoding="utf-8")):
         ids.add("library/common-" + entry["id"])
+    tilesets = ROOT / "rooms/tileset-library"
+    props = json.loads((tilesets / "props.json").read_text(encoding="utf-8"))
+    active = {entry["id"] for entry in props}
+    ids.update("library/tileset-" + id for id in active)
+    aliases = json.loads((tilesets / "merged.json").read_text(encoding="utf-8"))
+    # Match Library.base_id: one alias lookup, followed by a real catalog entry.
+    ids.update("library/tileset-" + old for old, target in aliases.items() if target in active)
     return ids
 
 
@@ -56,9 +63,11 @@ def check(layouts, assets, libraries, label):
             if prefix == "flip" and not (isinstance(value, list) and len(value) == 2 and all(isinstance(v, bool) for v in value)):
                 errors.append(f"{where}: '{key}' must be [bool, bool]")
             # A portable library prop carries its own descriptor, so its id is not in the catalog.
-            if prefix == "library" and key.split("#")[0] not in libraries and "portable/" + key not in entries:
-                errors.append(f"{where}: '{key}' names no registration or common asset")
-            if prefix == "copy" and "source/" + key not in entries:
+            # Null is a suppression entry, including retired/portable props that no
+            # longer need a registration. Only drawable entries must resolve.
+            if prefix == "library" and value is not None and key.split("#")[0] not in libraries and "portable/" + key not in entries:
+                errors.append(f"{where}: '{key}' names no registered library asset")
+            if prefix == "copy" and value is not None and "source/" + key not in entries:
                 errors.append(f"{where}: '{key}' has no 'source/{key}'")
             if prefix == "source" and key[len("source/"):] not in entries:
                 errors.append(f"{where}: '{key}' is orphaned (its copy is gone)")
@@ -76,7 +85,9 @@ def self_test(assets, libraries):
     asset = sorted(assets)[0]
     library = sorted(libraries)[0]
     good = {f"{asset}/0": {"a": [1, 2], "flip/a": [True, False], "copy/a#2": [0, 0], "source/copy/a#2": "a",
-                           library + "#2": None, "__free_placement": True}}
+                           library + "#2": None, "library/retired-prop": None, "copy/retired#2": None,
+                           next(id for id in sorted(libraries) if id.startswith("library/tileset-")): [12, 24],
+                           "__free_placement": True}}
     assert check(good, assets, libraries, "self") == [], check(good, assets, libraries, "self")
     bad = {f"{asset}/4": {}, "no-such-asset/0": {}, f"{asset}/1": {
         "szie/a": [1, 1], "a": "left", "flip/a": [1, 0], "library/missing": [0, 0],

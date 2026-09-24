@@ -41,7 +41,7 @@ are failures to repair, not accepted art. Preserve native appearance and live
 animation state when caching or culling. A newer source pack is not covered by an
 older executable's acceptance.
 
-## Unreproduced report closeout — September 13
+## Unreproduced report closeout â€” September 13
 
 Separate owner report, captured state, current-source checks, reproduced behavior and suspected cause. Link the preserved report and final valid probes; retain discarded diagnostics with their limitations. Log errors in another renderer are concrete findings but not a causal explanation without evidence. Close an investigation session honestly with the narrow next evidence needed, rather than marking the bug resolved or silently continuing an unrelated repair.
 
@@ -61,3 +61,44 @@ project-specific owner decision; see docs/HANDOFF_CREW_ANIMATION_SESSION_CLOSE_2
 Retain existing selected assets and unselected studies. Veld north seating is not
 accepted merely because its mechanical fixture passed. The consolidated continuation
 map is docs/CLAUDE_HANDOFF_2026-09-13.md; use newer CURRENT_STATUS entries if present.
+
+At a substantive milestone, update the matching section of docs/CURRENT_STATUS.md rather than append a second current-state narrative. Keep candidate, installed and packaged states distinct: source installation does not update an older executable. Preserve superseded detail verbatim in a dated history before consolidating. Check the latest installed revision before reopening a rejected earlier pilot.
+
+## Disk checkpoint and restored-view evidence
+
+RunSave.read adds _path, and restoration adopts it as the active save path.
+Ending the expedition may therefore delete the file that was loaded. Preserve a
+frozen evidence copy and load a separate disposable working copy; assert that the
+disk read is nonempty before starting Continue. A missing save can otherwise turn
+a restore probe into a plausible new-loop capture with a successful process exit.
+
+Record exact crew/resources/room state separately from presentation. A matched
+active action and successful post-Resume progress do not prove camera restoration.
+Verify the visible viewport after staged loading, including nondefault zoom.
+Continue currently centers BRINE intentionally. Hidden containers can collapse
+viewport dimensions; apply focus after visible layout, retaining newer camera
+request precedence. See docs/CONTINUE_CAMERA_FIX_2026-09-22.md for the reproduction.
+
+
+## Cross-agent takeover and current evidence
+
+Read the checkout's `docs/CURRENT_STATUS.md` and
+`docs/ASSET_PIPELINE_AND_WORKFLOW.md`. Record branch/HEAD and local dirty state:
+a commit hash omits uncommitted art, untracked builders and ignored originals.
+Preserve owner user-data layouts as well as repo marks. A targeted documentation
+snapshot is not a full project backup.
+
+Separate session closure from feature acceptance. Archive after useful decisions
+and next actions are durable. If recent messages are unavailable, record the gap
+instead of inferring approval from a title or reference image. Later finished rooms
+supersede old cleanup lists; reconcile missing-action counts against current packs.
+
+Await observable startup/restore and isolate loaded profile memory as well as paths.
+Keep a frozen save and load a disposable copy: conclusion can delete the loaded
+save. Exercise actual controller/renderer transitions, not only standalone playback.
+Label paid automated runs, supplied fixtures and checkpoint chains independently.
+Record tail stalls separately from average CPU gains.
+
+Sync only changed maintained files after checking installed copies for divergence.
+Structural validation and mirror equality are not fresh behavior/visual acceptance.
+The September 24 continuation map is `docs/CLAUDE_HANDOFF_2026-09-24.md`.

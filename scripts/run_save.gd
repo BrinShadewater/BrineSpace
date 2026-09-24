@@ -16,6 +16,7 @@ static func capture(game) -> Dictionary:
 		"event_history": game.event_history.duplicate(),
 		"discovered_characters": game.run_discovered_character_ids.duplicate(),
 		"wrecks": game.wrecks.duplicate(true),
+		"site_layout":game.site_layout.duplicate(true),
 		"surveyed_water":game.surveyed_water.duplicate(),
 		"resource_flow":game.resource_flow.duplicate(true),
 		"companions":game.Companions.snapshot(game),
@@ -95,6 +96,7 @@ static func _read_one(path: String) -> Dictionary:
 	if not value is Dictionary or value.get("version") != VERSION or not value.get("state") is Dictionary:
 		last_error = "Checkpoint version unsupported."
 		return {}
+	if not valid_site(value): return {}
 	if not valid_controls(value): return {}
 	if not preload("res://scripts/station_hardware.gd").valid(value.get("hardware",{})): return {}
 	if not preload("res://scripts/underwater_visibility.gd").valid(value.get("surveyed_water",{})): return {}
@@ -172,6 +174,7 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 	if not data.get("state") is Dictionary:
 		last_error = "Checkpoint state is missing."
 		return false
+	if not valid_site(data): return false
 	if not valid_controls(data): return false
 	for key in ["run_id", "poi", "scroll", "rng", "orbit_rng", "poi_timer", "timer_left"]:
 		if not data.has(key):
@@ -206,6 +209,9 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 				game.run_discovered_character_ids.append(id)
 	game.hardware=preload("res://scripts/station_hardware.gd").restored(data.get("hardware",{}))
 	# Older checkpoints have no wreck field. Never seed obstacles into an old station.
+	game.site_layout=data.get("site_layout",{}).duplicate(true)
+	game.grid_view.underwater_visibility.reset()
+	game.grid_view.invalidate_site()
 	game.wrecks = data.get("wrecks",{}).duplicate(true)
 	game.surveyed_water = data.get("surveyed_water",{}).duplicate()
 	game.resource_flow = preload("res://scripts/resource_flow_ledger.gd").restored(data.get("resource_flow"))
@@ -292,10 +298,9 @@ static func valid_crew(value: Variant) -> bool:
 		if value.playback.has("branforth") and not player.valid_snapshot(value.playback.branforth): return false
 		if value.playback.has("marsh") and not player.valid_snapshot(value.playback.marsh): return false
 		if value.playback.bill.has("water") and not player.valid_snapshot(value.playback.bill.water): return false
-	var npc_script = preload("res://scripts/bill_npc.gd")
-	if value.has("branforth") and not npc_script.valid_snapshot(value.branforth): return false
+	if value.has("branforth") and not preload("res://scripts/branforth_npc.gd").valid_branforth_snapshot(value.branforth): return false
 	if value.has("marsh") and not preload("res://scripts/marsh_npc.gd").valid_marsh_snapshot(value.marsh): return false
-	return npc_script.valid_snapshot(value.get("bill")) and npc_script.valid_snapshot(value.get("veld"))
+	return preload("res://scripts/major_bill_npc.gd").valid_bill_snapshot(value.get("bill")) and preload("res://scripts/veld_npc.gd").valid_veld_snapshot(value.get("veld"))
 
 static func clear_run(run_id: String, path: String = PATH) -> void:
 	var data := read(path)
@@ -325,8 +330,27 @@ static func restore_staged(game, data: Dictionary) -> bool:
 	# Let deferred scroll/layout corrections settle before revealing the station.
 	await game.get_tree().process_frame
 	game.visible = was_visible
+	# Hidden containers can report a collapsed viewport during _finish_restore.
+	# Reapply the existing Continue focus after visible layout has settled; the
+	# deferred helper respects any newer deliberate camera request.
+	if restored and was_visible:
+		game._restore_grid_view_center_deferred((Vector2(game.Architects.CORE_CELL)+Vector2.ONE*0.5)/float(game.GRID_SIZE))
 	game.process_mode = previous_mode
 	game.remove_meta("restoring_checkpoint")
 	overlay.queue_free()
 	if restored: last_error = ""
 	return restored
+
+static func valid_site(data: Dictionary) -> bool:
+	var architects=data.get("architects",{})
+	if not architects is Dictionary: return false
+	var layout = data.get("site_layout",{})
+	if not layout is Dictionary: return false
+	if layout.is_empty(): return architects.is_empty() or (architects.get("version") is int and architects.version in [1,2,3,4])
+	if not preload("res://scripts/site_generator.gd").valid(layout): return false
+	if not data.get("wrecks",{}) is Dictionary: return false
+	if architects.get("version")!=5: return false
+	for cell in layout.recovery_cells:
+		var ward=data.wrecks.get(cell)
+		if not ward is Dictionary or ward.get("kind") not in ["recovery","cryo","charging"]: return false
+	return true

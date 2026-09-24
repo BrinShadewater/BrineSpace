@@ -1,6 +1,6 @@
 extends RefCounted
 ## Decorative habitat patches. Occupancy and excavation remain authoritative elsewhere.
-const ROOT := "res://assets/environment/sub-biomes-v1/"
+const ROOT := "res://legacy/default/assets/environment/sub-biomes-v1/"
 const DEFINITIONS := {
 	"sulfur": {"name":"Sulfur vent basin", "props":["anhydrite","bacterial-mat"]},
 	"sponge": {"name":"Sponge reef", "props":["vase-sponges","sea-fans"]},
@@ -42,6 +42,7 @@ const SOURCES := {
     "iron-mineral-ledges": "iron-mineral-ledges-v1.png",
     "iron-hydroids": "iron-hydroids-v1.png"
 }
+var regions: Array = REGIONS.duplicate(true)
 var textures: Dictionary = {}
 var meshes: Array[ArrayMesh] = []
 var props: Array[Dictionary] = []
@@ -91,12 +92,13 @@ func prepare() -> void:
 	for biome in DEFINITIONS:
 		for suffix in ["ground"]+DEFINITIONS[biome].props:
 			var id: String = biome+"-"+suffix
+			if textures.has(id): continue # Site changes rebuild placement meshes, not source textures.
 			var source := Image.new()
-			if source.load(ROOT+SOURCES[id])==OK:
+			if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES[id])==OK:
 				textures[id] = ImageTexture.create_from_image(source)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 609202601
-	for region in REGIONS:
+	for region in regions:
 		meshes.append(ground_mesh(region.center,region.radius))
 		for i in range(14):
 			var at: Vector2 = region.center+Vector2(rng.randf_range(-0.65,0.65),rng.randf_range(-0.65,0.65))*region.radius
@@ -107,8 +109,8 @@ func prepare() -> void:
 
 func render_into(canvas: CanvasItem, cell_size: float) -> void:
 	prepare()
-	for i in range(REGIONS.size()):
-		var id: String = REGIONS[i].biome+"-ground"
+	for i in range(regions.size()):
+		var id: String = regions[i].biome+"-ground"
 		if textures.has(id):
 			canvas.draw_mesh(meshes[i],textures[id],Transform2D().scaled(Vector2.ONE*cell_size))
 	for prop in props:

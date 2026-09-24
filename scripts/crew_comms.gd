@@ -117,6 +117,14 @@ func restore_state(data: Variant) -> void:
 			said[key]=true
 			seen[key]=true
 	greeting_sent=greeting_sent or data.get("greeting_sent",false)==true
+	# Restore the observer baseline as well as message keys. The starter's wake
+	# line uses opening/crew, so an empty observer would announce awake/<id> again.
+	# Crew who thaw after this checkpoint still transition from inactive to active.
+	if is_instance_valid(game):
+		observed_crew.clear()
+		for id in Architects.IDS:
+			var actor=Architects.actor_for(game,id)
+			observed_crew[id]={"active":actor.active,"completion":int(actor.completed_activity.get("serial",0))}
 	# A keyed line queued while the checkpoint loaded (a greeting on a slow Continue) was already said.
 	for index in range(pending.size()-1,-1,-1):
 		if said.has(str(pending[index].get("key",""))): pending.remove_at(index)

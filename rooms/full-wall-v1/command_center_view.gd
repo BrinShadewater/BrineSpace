@@ -1,6 +1,6 @@
 extends "res://rooms/production-ten/command_center_view.gd"
 ## Balanced full-wall installation; original view is the reversible baseline.
-var full_wall = preload("res://rooms/full-wall-v1/split_wall_prop.gd").new("command-wall")
+var full_wall = preload("res://rooms/full-wall-v1/split_wall_prop.gd").new("command-wall","room-command_center")
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)

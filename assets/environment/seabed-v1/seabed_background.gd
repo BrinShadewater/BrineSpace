@@ -1,10 +1,11 @@
 extends RefCounted
 ## Decorative seabed only. No collision, resources, discovery or hazard state.
-const ROOT := "res://assets/environment/seabed-v1/"
+const ROOT := "res://legacy/default/assets/environment/seabed-v1/"
 const SCENERY := ["coral-garden", "tube-worms", "hull-fragment", "pipe-fragment", "wreck-cargo"]
 var textures: Dictionary = {}
 var scenery: Array[Dictionary] = []
 var initialized := false
+var site_signature := ""
 const ComposedSites := preload("res://assets/environment/composed_sites.gd")
 var composed_sites := ComposedSites.new()
 const SubBiomes := preload("res://assets/environment/sub-biomes-v1/sub_biome_view.gd")
@@ -54,7 +55,7 @@ func prepare() -> void:
 		var path: String = ROOT + id + "-source-v1.png"
 		if FileAccess.file_exists(path):
 			var source := Image.new()
-			if source.load(path) == OK:
+			if preload("res://scripts/safe_image.gd").load_png(source, path) == OK:
 				textures[id] = ImageTexture.create_from_image(source)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 9062026
@@ -72,7 +73,7 @@ func prepare() -> void:
 		{"id":"hull-fragment", "at":Vector2(22.8,22.2), "size":0.40}
 	])
 
-func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seconds: float = 0.0) -> void:
+func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seconds: float = 0.0, layout: Dictionary = {}) -> void:
 	prepare()
 	var bounds := Rect2(Vector2.ZERO, Vector2.ONE * cell_size * grid_size)
 	canvas.draw_rect(bounds, Color("09222d"))
@@ -93,7 +94,16 @@ func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seco
 				if y % 2 != 0:
 					tile.size.y = -tile_size
 				canvas.draw_texture_rect(textures["silt-plain"], tile, false, Color(0.49, 0.60, 0.64))
+	var signature := str(layout.get("seed","legacy"))+str(layout.get("habitats",[]))
+	if signature!=site_signature:
+		site_signature=signature
+		sub_biomes.regions=layout.get("habitats",SubBiomes.REGIONS).duplicate(true)
+		sub_biomes.meshes.clear();sub_biomes.props.clear();sub_biomes.initialized=false
 	sub_biomes.render_into(canvas,cell_size)
+	if not layout.is_empty():
+		preload("res://scripts/site_scenery.gd").render_into(canvas,layout,cell_size)
+		ambient_water.render_into(canvas,cell_size,time_seconds)
+		return
 	shell_shoal.render_into(canvas,cell_size)
 	volcanic_ash.render_into(canvas,cell_size)
 	clay_silt.render_into(canvas,cell_size)

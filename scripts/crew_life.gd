@@ -4,11 +4,15 @@ const STAGES={"life_sit":0.8,"life_seated":7.4,"life_rise":0.8,"life_lie":0.8,"l
 const POSES={"life_sit":"sit-down","life_seated":"sit-idle","life_rise":"sit-rise","life_lie":"lie-down","life_sleep":"sleep","life_get_up":"get-up","life_eat":"eat","life_drink":"drink","life_inspect":"inspect","workshop_pickup":"pickup","observation_sit":"sit-down","observation_read":"read-seated","observation_rise":"sit-rise","workshop_inspect":"inspect"}
 static var clearance: Dictionary={}
 
+static func seconds(actor,stage: String) -> float:
+	if actor.has_method("life_stage_seconds"):return actor.life_stage_seconds(stage)
+	return float(STAGES[stage])
+
 static func clear(actor,action: String) -> bool:
 	if actor.has_method("marsh_pose_clear"):return actor.marsh_pose_clear()
 	if actor.movement_medium=="exterior":return true
 	if clearance.is_empty():
-		clearance=JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-life-v1/clearance.json"))
+		# All human profiles come from their selected revisions; no legacy prerequisite.
 		for id in ["bill","veld","branforth"]:
 			clearance[id]=JSON.parse_string(FileAccess.get_file_as_string(preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[id]+"clearance.json")).life
 	var id: String={"veld_npc.gd":"veld","branforth_npc.gd":"branforth"}.get(actor.get_script().resource_path.get_file(),"bill")
@@ -30,7 +34,7 @@ static func pose(actor) -> String:
 static func elapsed(actor) -> float:
 	if actor.dead or actor.movement_medium!="dry": return -1
 	if actor.air_recovery>0 and actor.state=="idle" and actor.stage.is_empty(): return 3.0-actor.air_recovery
-	if actor.stage in ["life_sit","life_rise","life_lie","life_get_up","workshop_pickup"]: return float(STAGES[actor.stage])-actor.timer
+	if actor.stage in ["life_sit","life_rise","life_lie","life_get_up","workshop_pickup"]: return seconds(actor,actor.stage)-actor.timer
 	if actor.stage=="observation_sit" or actor.stage=="observation_rise": return (0.65-actor.timer)/0.65*0.8
 	return -1
 
@@ -38,7 +42,7 @@ static func next(actor) -> bool:
 	var transitions={"life_sit":"life_seated","life_seated":"life_rise","life_lie":"life_sleep","life_sleep":"life_get_up","life_eat":"life_drink"}
 	if not transitions.has(actor.stage): return false
 	actor.stage=transitions[actor.stage]
-	actor.timer=float(STAGES[actor.stage])
+	actor.timer=seconds(actor,actor.stage)
 	return true
 
 static func begin(actor,station: Dictionary) -> bool:
@@ -50,7 +54,8 @@ static func begin(actor,station: Dictionary) -> bool:
 	elif mode=="sit": actor.stage="life_sit";actor.activity="resting in the lounge"
 	else: return false
 	actor.state="idle"
-	actor.timer=float(STAGES[actor.stage])
+	if actor.has_method("begin_life_station"):actor.begin_life_station(station)
+	actor.timer=seconds(actor,actor.stage)
 	return true
 
 static func offset(actor) -> Vector2:
@@ -64,6 +69,7 @@ static func offset(actor) -> Vector2:
 	return (Vector2(station.rest_point)-local)*clampf(amount,0,1)
 
 static func head_alignment(actor,player) -> Vector2:
+	if actor.has_method("bunk_motion_active") and actor.bunk_motion_active():return Vector2.ZERO
 	if actor.stage not in ["life_lie","life_sleep","life_get_up"]:return Vector2.ZERO
 	var frames: Array=player.frames.get("sleep-"+actor.direction,[])
 	if frames.is_empty() or not frames[0].has_meta("crew_rest_head_offset"):return Vector2.ZERO

@@ -4,7 +4,7 @@ The source contract records the real native consumer, including composed turns a
 registered endpoints. Old art is read-only. New output lives in major-bill-v3.
 """
 from pathlib import Path
-import argparse, copy, hashlib, importlib.util, json, re
+import argparse, copy, hashlib, importlib.util, io, json, os, re, tempfile
 import numpy as np
 from PIL import Image, ImageDraw
 
@@ -16,17 +16,41 @@ QA=ROOT/'output/bill-full-replacement-2026-09-12'
 SOURCE_HASHES={}
 OPS={}
 
-def read(path):
+
+def save_png_if_changed(im,path):
+    """Avoid rewriting identical art; publish each changed PNG atomically."""
+    path=Path(path);encoded=io.BytesIO();im.save(encoded,format='PNG');data=encoded.getvalue()
+    if path.exists() and path.read_bytes()==data:return
+    path.parent.mkdir(parents=True,exist_ok=True)
+    temporary=None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent,prefix=path.stem+'-',suffix='.tmp',delete=False) as target:
+            temporary=Path(target.name);target.write(data)
+        os.replace(temporary,path)
+    finally:
+        if temporary is not None and temporary.exists():temporary.unlink()
+
+def source_path(path):
+    """Resolve archived construction inputs; keep the frozen source contract intact."""
     path=Path(path).resolve()
+    relative=path.relative_to(ROOT)
+    if not path.exists() and relative.parts[:2] in [('character','crew-construction-v1'),('character','crew-helmet-fit-v2')]:
+        return ROOT/'archive'/relative
+    return path
+
+
+def read(path):
+    path=source_path(path)
     SOURCE_HASHES[path.relative_to(ROOT).as_posix()]=hashlib.sha256(path.read_bytes()).hexdigest()
     return json.loads(path.read_text())
 
 def image(path):
-    path=Path(path).resolve()
+    path=source_path(path)
     SOURCE_HASHES[path.relative_to(ROOT).as_posix()]=hashlib.sha256(path.read_bytes()).hexdigest()
     return Image.open(path).convert('RGBA')
 
 def module(path,name):
+    path=source_path(path)
     spec=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
     SOURCE_HASHES[path.relative_to(ROOT).as_posix()]=hashlib.sha256(path.read_bytes()).hexdigest()
     return m
@@ -48,7 +72,9 @@ def sig(im):
     a=np.array(im);a[a[:,:,3]==0]=0
     return hashlib.sha256(a.tobytes()).hexdigest()
 
-def base_frames(repair_walk=True):
+def base_frames(repair_walk=False):
+    # Base recipe preserves whole original poses. main() selects side replacements
+    # and north repair/south ordering; True reproduces the rejected rig for history only.
     pack=ROOT/'character/major-bill-v2'
     b=module(pack/'build_pack.py','bill_base_builder')
     b.SIZE=184;b.PIVOT=(92,172)
@@ -107,9 +133,14 @@ def base_frames(repair_walk=True):
         im=Image.new('RGBA',(184,184));im.alpha_composite(src,(0,dy));im.paste(base.crop((0,0,184,59)),(0,0));im.paste(base.crop((0,119,184,184)),(0,119));a['interact-east'][i]=im
     if repair_walk:
         walker=module(ROOT/'tools/repair_bill_walk.py','bill_local_walk')
+        limbs=module(ROOT/'tools/build_bill_limb_candidate.py','bill_limb_surfaces')
         for direction in ['east','west']:
             key='walk-'+direction
-            a[key]=walker.build(a[key][0],direction)[0]
+            source=a[key][0]
+            a[key]=walker.restore_upper_motion(walker.build(a[key][0],direction)[0],a[key])
+            a[key]=limbs.repair(direction,source,a[key])
+            read(limbs.SOURCES/direction/'registration.json')
+            image(limbs.SOURCES/direction/'generated-source.png')
     return {(pack/'frames'/key/f'frame_{i:03}.png').relative_to(ROOT).as_posix():im for key,poses in a.items() for i,im in enumerate(poses)}
 
 class SourceRebaker:
@@ -210,6 +241,7 @@ class SourceRebaker:
         return out
 
     def construction_frame(self,path,index):
+        path=source_path(path)
         direction=path.stem.split('-')[1];row=['east','south','west','north'].index(direction)
         source=path.parents[1]/'source'/('bill-direction-v2.png' if row in [1,3] else 'bill.png')
         image(source);raw,rows=self.construction.clean(source);top,bottom=rows[row]
@@ -241,7 +273,8 @@ def tilted(body,overlay,offset,angle,rect,direction):
     return Image.fromarray(a)
 
 class HelmetRebaker:
-    def __init__(self,body):self.body=body;self.cache={};self.overlays={}
+    def __init__(self,body,max_height=None):
+        self.body=body;self.cache={};self.overlays={};self.max_height=max_height
 
     def overlay(self,view,size=None):
         if view not in self.overlays:
@@ -251,7 +284,17 @@ class HelmetRebaker:
                 reg=read(folder/'source-contract.json');src=chroma(WATER/reg['source']).crop(reg['crop'])
             self.overlays[view]=src
         if size is None:size=tuple(v*2 for v in image(WATER/'equipment'/view/'overlay.png').size)
-        return binary(self.overlays[view].resize(size,Image.Resampling.BOX),True)
+        if self.max_height is None or size[1]<=self.max_height:
+            return binary(self.overlays[view].resize(size,Image.Resampling.BOX),True)
+        # Keep the authored registration canvas. Shrink the shell about its visor
+        # anchor so caller offsets/rotations and the unscaled face remain valid.
+        scale=self.max_height/size[1]
+        smaller=(round(size[0]*scale),self.max_height)
+        anchor=np.array([size[0]*(.68 if view=='east' else .32 if view=='west' else .5),size[1]*.43])
+        offset=tuple(np.rint(anchor*(1-scale)).astype(int))
+        result=Image.new('RGBA',size)
+        result.alpha_composite(binary(self.overlays[view].resize(smaller,Image.Resampling.BOX),True),offset)
+        return result
 
     def packed(self,path):
         path=Path(path).resolve();key=path.relative_to(ROOT).as_posix()
@@ -263,9 +306,8 @@ class HelmetRebaker:
             if state.startswith('idle-'):
                 pos=np.array(reg['frames'][0]['overlayTopLeft'])*2
                 if index in [2,3]:pos[1]-=1
-            if state in ['walk-east','walk-west']:
-                pos=np.array(reg['frames'][0]['overlayTopLeft'])*2
-                if index in [1,4]:pos[1]-=1
+            # Side walks retain complete source poses, including their head motion.
+            # Their per-pose helmet registration must follow those source heads.
             out.alpha_composite(self.overlay(view),tuple(pos))
         elif '/crew-actions-v1/' in key or '/crew-life-v1/' in key:
             reg=read(folder/'registration.json');pose=reg['frames'][index];manifest=read(folder/'manifest.json')
@@ -311,9 +353,9 @@ def main():
     OUT.mkdir(exist_ok=True);QA.mkdir(parents=True,exist_ok=True)
     contract=read(CONTRACT)
     for path,digest in contract['sourceManifests'].items():
-        if hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=digest:raise ValueError('Original manifest changed: '+path)
+        if hashlib.sha256(source_path(ROOT/path).read_bytes()).hexdigest()!=digest:raise ValueError('Original manifest changed: '+path)
     for path,entry in contract['sourceFrames'].items():
-        if hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=entry['sha256']:raise ValueError('Original frame changed: '+path)
+        if hashlib.sha256(source_path(ROOT/path).read_bytes()).hexdigest()!=entry['sha256']:raise ValueError('Original frame changed: '+path)
     rebaker=SourceRebaker();body={};entry_map={}
     for e in contract['states']:
         poses=[]
@@ -330,6 +372,82 @@ def main():
                 high=helmets.packed(ROOT/f['sourceFrame']);offset=f['sourceOffset'];size=f['size']
                 canvas=Image.new('RGBA',(size[0]*2,size[1]*2));canvas.alpha_composite(high,(offset[0]*2,offset[1]*2));poses.append(canvas)
             equipment[key]=poses
+    actions=module(ROOT/'tools/build_bill_south_style_actions.py','bill_south_actions')
+    repaired_body,repaired_equipment=actions.build(ROOT,read,image,HelmetRebaker(rebaker),tilted)
+    body.update(repaired_body);equipment.update(repaired_equipment)
+    OPS['south_action_repair']='Canonical-identity south source; exact idle endpoints, connected lowering, hand-only work and standing-size helmet'
+    north_actions=module(ROOT/'tools/build_bill_north_actions.py','bill_north_actions')
+    north_body,north_equipment=north_actions.build(ROOT,read,image,HelmetRebaker(rebaker),tilted)
+    body.update(north_body);equipment.update(north_equipment)
+    OPS['north_action_repair']='Independent north source, fixed planted foot, matched work endpoints and canonical rear helmet'
+    west_actions=module(ROOT/'tools/build_bill_west_style_actions.py','bill_west_actions')
+    west_body,west_equipment=west_actions.build(ROOT,read,image,HelmetRebaker(rebaker),tilted)
+    body.update(west_body);equipment.update(west_equipment)
+    OPS['west_action_repair']='Canonical-identity west source; connected whole poses, planted toe, arm-only work, standing-size helmet'
+    west_walk=module(ROOT/'tools/build_bill_alternating_west_walk.py','bill_west_walk')
+    walk_body,walk_equipment=west_walk.build(ROOT,read,image,HelmetRebaker(rebaker),tilted)
+    body.update(walk_body);equipment.update(walk_equipment)
+    OPS['west_walk_repair']='Alternating connected whole poses, source-locked surface detail, hard alpha and normal-size per-pose helmets'
+    east_walk=module(ROOT/'tools/build_bill_alternating_east_walk.py','bill_east_walk')
+    walk_body,walk_equipment=east_walk.build(ROOT,read,image,HelmetRebaker(rebaker),tilted)
+    body.update(walk_body);equipment.update(walk_equipment)
+    OPS['east_walk_repair']='Independent east-view alternating whole poses, corrected opposite contact/passing, hard alpha and canonical east helmets'
+    south_walk=module(ROOT/'tools/build_bill_south_walk_order.py','bill_south_walk_order')
+    south_walk.apply(ROOT,body,equipment)
+    OPS['south_walk_order']='Whole original bare/helmet poses reordered 0,4,5,3,1,2 to group alternating half-steps'
+    north_walk=module(ROOT/'tools/build_bill_north_walk.py','bill_north_walk')
+    walk_body,walk_equipment=north_walk.build(ROOT)
+    body.update(walk_body);equipment.update(walk_equipment)
+    OPS['north_walk_repair']='Canonical upper body/arms/helmets with recorded whole-pelvis/leg transfer, shared palette, unchanged stride'
+    # Validate historical recipes above before applying the owner's smaller shell
+    # preference. Compact underwater fits already below the cap stay unchanged.
+    fitted=HelmetRebaker(rebaker,max_height=48)
+    equipment={}
+    for key in contract['equipmentStates']:
+        poses=[]
+        for f in entry_map[key]['frames']:
+            high=fitted.packed(ROOT/f['sourceFrame']);offset=f['sourceOffset'];size=f['size']
+            canvas=Image.new('RGBA',(size[0]*2,size[1]*2))
+            canvas.alpha_composite(high,(offset[0]*2,offset[1]*2));poses.append(canvas)
+        equipment[key]=poses
+    original_north_equipment=equipment['walk-north']
+    _,selected=actions.build(ROOT,read,image,fitted,tilted,idle_equipment=equipment['idle-south'][0]);equipment.update(selected)
+    for builder in [north_actions,west_actions]:
+        _,selected=builder.build(ROOT,read,image,fitted,tilted);equipment.update(selected)
+    for builder in [east_walk,west_walk]:
+        _,selected=builder.build(ROOT,read,image,fitted,tilted,verify_equipment=False);equipment.update(selected)
+    order=read(ROOT/'character/major-bill-v3/sources/south-walk-order-2026-09-21/recipe.json')['order']
+    equipment['walk-south']=[equipment['walk-south'][i] for i in order]
+    _,selected=north_walk.build(ROOT,original_equipped=original_north_equipment);equipment.update(selected)
+    OPS['helmet_size_preference']='Owner requested smaller helmet overall; cap shell height at48 within original registration canvas, preserve compact fits and bare body'
+    north_identity=module(ROOT/'tools/build_bill_north_identity_actions.py','bill_north_identity_actions')
+    selected_body,selected_equipment=north_identity.build(ROOT,read,image,fitted,tilted)
+    body.update(selected_body);equipment.update(selected_equipment)
+    OPS['north_work_identity']='Canonical-reference lowering with matched backpack design, stationary torso/legs and arm-only work loop'
+    west_identity=module(ROOT/'tools/build_bill_west_identity_actions.py','bill_west_identity_actions')
+    selected_body,selected_equipment=west_identity.build(ROOT,read,image,fitted,tilted)
+    body.update(selected_body);equipment.update(selected_equipment)
+    OPS['west_work_identity']='Canonical-reference lowering with planted front boot and stationary body during arm-only wrench work'
+    # Standing action endpoints use the actual idle pose, aligned by profile pivot.
+    # Keep the independent lowering/tool artwork and its historical checks above.
+    for collection in (body,equipment):
+        for direction in ('north','west'):
+            idle_key='idle-'+direction
+            idle_pivot=entry_map[idle_key]['frames'][0]['meta']['crew_pivot']
+            for action,index in [('kneel',0),('stand',5)]:
+                key=action+'-'+direction
+                pivot=entry_map[key]['frames'][0]['meta']['crew_pivot']
+                offset=tuple(round((pivot[i]-idle_pivot[i])*2) for i in range(2))
+                endpoint=Image.new('RGBA',collection[key][index].size)
+                endpoint.alpha_composite(collection[idle_key][0],offset)
+                collection[key][index]=endpoint
+    OPS['standing_action_endpoints']='North/west kneel0 and stand5 preserve canonical idle body and selected helmet at shared profile pivot'
+    locker_identity=module(ROOT/'tools/build_bill_locker_identity.py','bill_locker_identity')
+    locker_frames=locker_identity.build(ROOT,read,image,body['idle-east'][0],equipment['idle-east'][0])
+    body.update(locker_frames)
+    for key,poses in locker_frames.items():
+        if key in equipment:equipment[key]=[pose.copy() for pose in poses]
+    OPS['locker_identity']='Coherent canonical-reference pickup/don/remove poses, exact standing endpoints and unchanged handoff timing'
     write_outputs(body,equipment,entry_map,contract,rebaker)
 
 def write_outputs(body,equipment,entry_map,contract,rebaker):
@@ -345,7 +463,7 @@ def write_outputs(body,equipment,entry_map,contract,rebaker):
             pack=profiles.setdefault(profile,{'name':'major-bill-v3-'+profile,'frameWidth':poses[0].width,'frameHeight':poses[0].height,'pivot':pivot,'standingHeight':148,'strideDistanceCells':strides,'precomposed':True,'states':[]})
             files=[]
             for i,im in enumerate(poses):
-                p=OUT/'frames'/variant/key/f'{i:03}.png';p.parent.mkdir(parents=True,exist_ok=True);im.save(p)
+                p=OUT/'frames'/variant/key/f'{i:03}.png';save_png_if_changed(im,p)
                 files.append('../../'+p.relative_to(OUT).as_posix())
                 frame_records[p.relative_to(OUT).as_posix()]=hashlib.sha256(p.read_bytes()).hexdigest()
             entry={'id':key,'frameFiles':files,'frameDurationsMs':old['timing']['durations'],'loop':old['timing']['loop'],
@@ -384,8 +502,10 @@ def write_outputs(body,equipment,entry_map,contract,rebaker):
                 new=extents[variant][kind+'-'+facing];states[facing]=[min(old[i],new[i]) if i<2 else max(old[i],new[i]) for i in range(4)]
     (OUT/'clearance.json').write_text(json.dumps(clearance,indent=2)+'\n')
     for direction in ['east','south','west','north']:
-        folder=OUT/'rotations';folder.mkdir(exist_ok=True);body['idle-'+direction][0].save(folder/(direction+'.png'))
+        folder=OUT/'rotations';folder.mkdir(exist_ok=True);save_png_if_changed(body['idle-'+direction][0],folder/(direction+'.png'))
     (QA/'build-provenance.json').write_text(json.dumps({'sources':SOURCE_HASHES,'operations':OPS,'frames':frame_records},indent=2)+'\n')
+    from build_bill_bunk import build as build_bunk
+    build_bunk()
     print(json.dumps({'bodyStates':len(body),'bodyFrames':sum(map(len,body.values())),'equipmentStates':len(equipment),'sourceCropsReproduced':rebaker.match_count,'profiles':len(profiles)}))
 
 if __name__=='__main__':main()

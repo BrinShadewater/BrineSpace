@@ -2,7 +2,7 @@ extends "res://rooms/whole-room/life_support_view.gd"
 const Dressing=preload("res://rooms/whole-room/room_dressing.gd")
 var dressing
 var shelf_helmet_visible := true
-var shelf_helmet_scale := 1.0
+var shelf_helmet_size := Vector2(39,48)*65.28/148.0
 var shelf_helmet: Texture2D
 var cycle_pose: Dictionary=preload("res://scripts/airlock_cycle.gd").pose({})
 const CHAMBER=Rect2(-60,-184,120,220)
@@ -157,8 +157,10 @@ func draw_room_floor(center: Vector2) -> void:
 			var end:=Geometry.turn(Vector2(-66,-70),quarter)
 			var elbow:=Vector2(end.x,start.y)
 			preload("res://rooms/whole-room/decoration_props.gd").service_run(painter,PackedVector2Array([start,elbow,end]),5.0,"pipe_straight")
-func has_wall_art(prop: Dictionary) -> bool:
-	return quarter==2 and prop.id=="suit_lockers" and prop.get("custom_library_draw",false)
+func has_wall_art(_prop: Dictionary) -> bool:
+	# Lockers are movable equipment. Drawing the north variant at a hardcoded
+	# riser position detached it from saved placement, picking and collision.
+	return false
 
 func locker_wall_art_rect(prop: Dictionary) -> Rect2:
 	if not has_wall_art(prop): return prop.rect
@@ -199,7 +201,7 @@ func draw_registered_prop(prop: Dictionary) -> void:
 		painter.draw_line(at+Vector2(-12,2),at+Vector2(10,2),Color("9ba898"),1)
 		painter.draw_line(at+Vector2(-7,5),at+Vector2(10,14),Color("293f46"),2)
 		if shelf_helmet_visible and shelf_helmet != null:
-			var helmet_size:=Vector2(20,25)*shelf_helmet_scale
+			var helmet_size:=shelf_helmet_size
 			painter.draw_texture_rect(shelf_helmet, Rect2(at+Vector2(-helmet_size.x*0.5,1-helmet_size.y),helmet_size),false)
 	if prop.id=="air_compressor" and operating:
 		var center: Vector2=life_point(prop,Vector2(269,762))

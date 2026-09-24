@@ -18,6 +18,7 @@ func run() -> void:
 	save_path = "user://wreck_test_%d.loop" % OS.get_process_id()
 	game.run_save_path = save_path
 	game.meta.save_path = save_path+".meta"
+	game.set_meta("authored_site_fixture",true)
 	root.add_child(game)
 	current_scene = game
 	game._confirm_doctrines()

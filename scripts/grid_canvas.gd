@@ -839,6 +839,15 @@ var env_foundation_rebuilds := 0
 var env_terrain_key: Array = []
 var env_terrain_rebuilds := 0
 var env_derelict_key: Array = []
+
+func invalidate_site() -> void:
+	env_below_key.clear()
+	env_foundations_key.clear()
+	env_terrain_key.clear()
+	env_derelict_key.clear()
+	seabed_background.site_signature=""
+	queue_redraw()
+
 # While the camera zoom animates, retained floors, walls, doors, lights, environment and
 # room contents scale from the cell size each was built at instead of repainting every
 # frame; the settled frame rebuilds exactly. --rebuild-while-zooming restores rebuilds.
@@ -894,9 +903,15 @@ func _door_light_state() -> void:
 	var size := _cell_size()
 	var doors: Array = [size,side_open_door_prototype,department_door_materials]
 	var lights: Array = [size,preload("res://scripts/room_layout_store.gd").revision,preload("res://scripts/title_settings.gd").raised_walls,main.hardware.walls]
+	# Light state is stable during this call; do not retain it across frames.
+	var light_levels: Dictionary = {}
+	# Connectivity is symmetric and stable during this call. Share each edge's
+	# result across its two room visits, then discard it before the next call.
+	var connections: Dictionary = {}
 	for room in static_draw_rooms:
 		# Key on the drawn light: flicker only changes rooms that draw layered lighting and are lit.
-		var light_level := _room_light_level(room)
+		if not light_levels.has(room.pos): light_levels[room.pos] = _room_light_level(room)
+		var light_level: float = light_levels[room.pos]
 		var drawn_level := light_level*(_power_flicker(room) if light_level>0.0 and _uses_layered_art(room) and not _is_narrow_corridor(room) else 1.0)
 		lights.append([room.pos,room.id,light_level,drawn_level])
 		if room.id=="airlock":
@@ -904,7 +919,9 @@ func _door_light_state() -> void:
 		for side in ["north","east","south","west"]:
 			var offset := _offset_from_side(side)
 			var neighbor: Vector2i = room.pos+offset
-			var connected := _door_has_connected_neighbor(main,room,neighbor,offset)
+			var edge := Vector3i(mini(room.pos.x,neighbor.x),mini(room.pos.y,neighbor.y),0 if offset.x!=0 else 1)
+			if not connections.has(edge): connections[edge] = _door_has_connected_neighbor(main,room,neighbor,offset)
+			var connected: bool = connections[edge]
 			if connected and side in ["north","west"]: continue
 			var outside_frame := _drone_door_frame(main,room.pos,neighbor)
 			if not connected and (main.occupied.has(neighbor) or side not in main.get_room_doors(room) or outside_frame==0): continue
@@ -919,7 +936,8 @@ func _door_light_state() -> void:
 			var parts := _department_parts(frame,side in ["east","west"],variant,narrow,side_open_door_prototype and side=="east")
 			for i in range(parts.size()):
 				if parts[i].floor or foot_y>center.y+float(parts[i].depth)*size/384.0: depth_mask |= 1<<i
-			doors.append([room.pos,side,frame,variant,narrow,minf(_room_light_level(room),_room_light_level(other)),depth_mask])
+			if not light_levels.has(other.pos): light_levels[other.pos] = _room_light_level(other)
+			doors.append([room.pos,side,frame,variant,narrow,minf(light_level,float(light_levels[other.pos])),depth_mask])
 	var enabled := retain_doors_lights and not department_door_materials.is_empty()
 	if not enabled:
 		door_surface_key = doors.duplicate(true)
@@ -1028,7 +1046,7 @@ func _draw_grid() -> void:
 		# Requires retained surfaces: direct-painted floors land on the parent
 		# canvas, which composites BELOW these child passes.
 		for env_layer in env_passes: env_layer.show()
-		var below_key: Array = env_below_key if hold_layers else [cell_size,_visible_cell_range(main,cell_size,true)]
+		var below_key: Array = env_below_key if hold_layers else [cell_size,_visible_cell_range(main,cell_size,true),main.site_layout.get("seed",-1)]
 		if _retained_key_stale(below_key,env_below_key,0):
 			env_below_key = below_key.duplicate(true)
 			pending_layers[env_passes[Env.STATIC_BELOW]] = true
@@ -1152,9 +1170,10 @@ func zoom_waits_for_cover(main) -> bool:
 # repaints per frame, and a settling layer that only changed size waits its turn too. A
 # landed zoom-out redraws the whole station every frame, so its floors split in two.
 func _flush_retained_layers(cell_size: float) -> void:
-	var floors: Array = [surface_passes[Surface.FLOOR]] if zoom_settling else [surface_passes[Surface.FLOOR],surface_passes[Surface.FLOOR_REST]]
+	var split_floors: bool=zoom_settling or zoom_preparing
+	var floors: Array = [surface_passes[Surface.FLOOR]] if split_floors else [surface_passes[Surface.FLOOR],surface_passes[Surface.FLOOR_REST]]
 	var groups: Array = [floors]
-	if zoom_settling: groups.append([surface_passes[Surface.FLOOR_REST]])
+	if split_floors: groups.append([surface_passes[Surface.FLOOR_REST]])
 	groups.append([surface_passes[Surface.WALL],surface_passes[Surface.REAR_DOORS],surface_passes[Surface.FRONT_DOORS],surface_passes[Surface.LIGHTS]])
 	groups.append([env_passes[Env.STATIC_BELOW],env_passes[Env.STATIC_FOUNDATIONS],env_passes[Env.STATIC_TERRAIN],env_passes[Env.DERELICTS]])
 	var flushed := -1
@@ -1376,6 +1395,18 @@ func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	render_door_cache_active = false
 
 var foundation_textures: Dictionary = {}
+const FOUNDATION_PATHS = {
+	"silt": "res://legacy/default/rooms/foundation-v1/foundation-silt-v1.png",
+	"reef": "res://legacy/retired/rooms/foundation-v1/foundation-reef-v1.png",
+	"mineral": "res://legacy/retired/rooms/foundation-v1/foundation-mineral-v1.png",
+	"source": "res://legacy/retired/rooms/foundation-v1/foundation-source-v1.png",
+	"weathered": "res://legacy/retired/rooms/foundation-v1/foundation-weathered-v3.png",
+}
+
+func _foundation_texture(variant: String) -> Texture2D:
+	if not foundation_textures.has(variant):
+		foundation_textures[variant] = _load_png_texture(FOUNDATION_PATHS[variant])
+	return foundation_textures[variant]
 
 func _draw_underwater_depth(part := "all") -> void:
 	var main = _get_main()
@@ -1529,9 +1560,7 @@ func _foundation_contact_mesh(width: float, foreground: bool) -> ArrayMesh:
 func _draw_corridor_foundations(room: Dictionary, size: float) -> void:
 	var main=_get_main()
 	var variant:=_foundation_variant(room.pos)
-	if not foundation_textures.has(variant):
-		foundation_textures[variant]=_load_png_texture("res://rooms/foundation-v1/foundation-"+variant+"-v1.png")
-	var texture: Texture2D=foundation_textures[variant]
+	var texture: Texture2D=_foundation_texture(variant)
 	if texture==null: return
 	var unit:=size/384.0
 	var center:=Vector2(room.pos)*size+Vector2.ONE*size/2.0
@@ -1572,10 +1601,7 @@ func _draw_foundations(exterior := false, mode := "full") -> void:
 			continue
 		var variant := _foundation_variant(room.pos)
 		if exterior: variant="weathered"
-		if not foundation_textures.has(variant):
-			var filename := "foundation-weathered-v3.png" if exterior else "foundation-"+variant+"-v1.png"
-			foundation_textures[variant]=_load_png_texture("res://rooms/foundation-v1/"+filename)
-		var foundation_texture: Texture2D=foundation_textures[variant]
+		var foundation_texture: Texture2D=_foundation_texture(variant)
 		if foundation_texture==null: continue
 		source=Rect2(25,138,1934,596) if not exterior else Rect2(25,140,2110,550)
 		# Screen-south architecture: never rotate tall supports with room doors.
@@ -1706,7 +1732,7 @@ func _paint_surface(pass_id: int) -> void:
 				draw_target.draw_line(midpoint + Vector2(-5, 5), midpoint + Vector2(5, -5), Color("#efb777"), 2.0)
 
 func _draw_space_background(grid_pixel_size: float) -> void:
-	seabed_background.render_into(draw_target, grid_pixel_size / GRID_SIZE, GRID_SIZE, _get_main().get_visual_time_seconds())
+	seabed_background.render_into(draw_target, grid_pixel_size / GRID_SIZE, GRID_SIZE, _get_main().get_visual_time_seconds(),_get_main().site_layout)
 
 func _draw_stars() -> void:
 	var grid_pixel_size := GRID_SIZE * _cell_size()
@@ -2032,7 +2058,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	if room.id=="airlock":
 		room_view.cycle_pose=preload("res://scripts/airlock_cycle.gd").pose({} if preview else room)
 		room_view.shelf_helmet_visible = preview or preload("res://scripts/airlock_service.gd").helmet_on_shelf(main, pos)
-		room_view.shelf_helmet_scale = 1.0 if preview else preload("res://scripts/airlock_service.gd").shelf_helmet_scale(main,pos)
+		room_view.shelf_helmet_size = Vector2(39,48)*65.28/148.0 if preview else preload("res://scripts/airlock_service.gd").shelf_helmet_size(main,pos)
 	if room.id in ["mining_drone_bay","salvage_drone_bay","construction_drone_bay"]:
 		room_view.drone_deployed = not preview and main.drone_fleet.deployed(pos)
 		room_view.hatch_open = main.drone_fleet.hatch_fraction(pos) if not preview else 0.0
@@ -2786,10 +2812,15 @@ func _draw_marsh_legacy(main) -> void:
 
 func _get_marsh_frame(main) -> Texture2D:
 	if main.marsh_npc.recharge_docked and not main.marsh_npc.dead: return null
+	var draining_texture := _get_marsh_cargo_drain_frame(main)
+	if draining_texture != null:return draining_texture
 	if main.marsh_npc.action_elapsed()>=0:
 		var pose: String=main.marsh_npc.animation_state()
 		var key: String=pose+"-"+main.marsh_npc.direction
 		var elapsed: float=main.marsh_npc.action_elapsed()
+		if not main.marsh_npc.expedition.is_empty() and pose in ["swim-pickup","unload"]:
+			# Expedition handoffs last .52s; play the complete authored clip.
+			elapsed=clampf(elapsed/.52,0.0,1.0)*marsh_player.cycle_seconds(key)
 		if main.marsh_npc.goal=="construction" and pose in ["torch-draw","torch-stow"]:
 			# Construction reserves .52s for each tool handoff; the authored
 			# nonlooping clip keeps its own timing contract and plays in full.
@@ -2799,6 +2830,27 @@ func _get_marsh_frame(main) -> Texture2D:
 		var key: String = main.marsh_npc.state + "-east"
 		return marsh_player.frame_at_elapsed(key, marsh_player.cycle_seconds(key) - main.marsh_npc.timer)
 	return marsh_player.frame(main.marsh_npc.animation_state(), main.marsh_npc.direction, main.get_visual_time_seconds(), main.get_marsh_position() / _cell_size(), "diving-helmet" if main.marsh_npc.helmet_equipped else "",_water_transition_clear(main.marsh_npc))
+
+func _get_marsh_cargo_drain_frame(main) -> Texture2D:
+	var actor=main.marsh_npc
+	if actor.dead or actor.expedition.is_empty() or actor.expedition.phase!="drain" or actor.expedition.cargo.is_empty():return null
+	var room:Dictionary=main.occupied.get(actor.expedition.home,{})
+	if room.is_empty():return null
+	var cycle:Dictionary=preload("res://scripts/airlock_cycle.gd").state(room)
+	var progress:=0.0
+	if cycle.phase=="draining":
+		# Rise as the chamber falls from60% to30% water; use saved interlock time.
+		if float(cycle.elapsed)<1.6:return null
+		progress=clampf((float(cycle.elapsed)-1.6)/1.2,0.0,1.0)
+	elif cycle.phase in ["depressurizing","opening_inner","dry"]:progress=1.0
+	else:return null
+	var key:="cargo-drain-"+str(actor.direction)
+	if not marsh_player.frames.has(key):return null
+	# Penultimate pose has both feet planted. Final reference is the existing
+	# first carry stride, selected normally once the exit movement begins.
+	var durations:Array=marsh_player.timing[key].durations
+	var rise_seconds:=marsh_player.cycle_seconds(key)-float(durations[-1])/1000.0
+	return marsh_player.frame_at_elapsed(key,minf(progress*rise_seconds,rise_seconds-0.000001))
 
 func crew_playback_snapshot() -> Dictionary:
 	return {"bill": {"key": human_animation_key, "phase": human_animation_phase,
@@ -2913,6 +2965,8 @@ func _draw_drones(main) -> void:
 		elif drone.phase in ["outbound","returning"]:
 			var from_home: float = clampf(Vector2(drone.position).distance_to(Vector2(drone.home))/0.30,0,1)
 			pos += hatch_offset*(1.0-from_home)
+			# Match the hatch scale at launch/return boundaries, then grow into flight.
+			width *= lerpf(0.65,1.0,from_home)
 		DroneArt.draw_drone(draw_target,drone.kind,pos,width,float(drone.get("clock",0.0)),drone.phase=="working",drone.phase in ["launching","outbound","returning","docking"])
 
 		draw_target.draw_circle(pos+Vector2(-.04,-.015)*cell_size,maxf(1.0,cell_size*.004),Color("b5ddd3"))

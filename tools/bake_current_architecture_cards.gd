@@ -23,7 +23,8 @@ class Preview extends Node2D:
 			scale_actor.rebuild(room,id,q)
 			room.external_actors=scale_actor.members()
 		draw_set_transform(anchor,0,Vector2.ONE*zoom)
-		preload("res://rooms/whole-room/north_wall.gd").draw_into(self,id,Vector2i.ZERO,false,false,room)
+		if id not in ["corridor","corner","tee_corridor"]:
+			preload("res://rooms/whole-room/north_wall.gd").draw_into(self,id,Vector2i.ZERO,false,false,room)
 		room.render_into(self,anchor,zoom,false,false)
 		if scale_actor!=null: room.external_actors.clear()
 func _init() -> void: call_deferred("run")

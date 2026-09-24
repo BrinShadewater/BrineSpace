@@ -16,7 +16,6 @@ func rebuild() -> void:
 	props=props.filter(func(prop): return prop.registration.get("dressing",false))
 	if dressing!=null: dressing.place()
 
-func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
-	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
-	props=props.filter(func(prop): return prop.registration.get("dressing",false))
-	if dressing!=null: dressing.place()
+# Remove borrowed battery furniture only when rebuilding above. Repeated embedded
+# setup must retain the full-wall wrapper's saved library props; filtering them
+# here emptied the live room after its first pass while cards still looked correct.

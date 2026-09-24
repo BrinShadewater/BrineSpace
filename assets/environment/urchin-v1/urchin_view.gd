@@ -1,6 +1,6 @@
 extends RefCounted
 ## Static seabed organism scenery; no movement or harvest state.
-const ROOT := "res://assets/environment/urchin-v1/"
+const ROOT := "res://legacy/default/assets/environment/urchin-v1/"
 const SOURCES := {
     "short-spine-urchin": "short-spine-urchin-v1.png"
 }
@@ -14,7 +14,7 @@ var textures: Dictionary = {}
 func prepare() -> void:
 	if not textures.is_empty(): return
 	var source := Image.new()
-	if source.load(ROOT+SOURCES["short-spine-urchin"])==OK:
+	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["short-spine-urchin"])==OK:
 		textures["short-spine-urchin"]=ImageTexture.create_from_image(source)
 func render_into(canvas: CanvasItem, cell_size: float) -> void:
 	prepare()

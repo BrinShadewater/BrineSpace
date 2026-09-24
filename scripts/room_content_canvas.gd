@@ -111,9 +111,19 @@ func submit(view, queue: Array) -> void:
 			if item.kind in ["prop","prop_base","prop_effects","prop_pass"]:
 				# Unclassified props stay live. BRINE's dressing includes animated screens.
 				if view.has_method("is_animated_prop"):
-					slot.live = view.is_animated_prop(item.prop)
+					var animation_prop: Dictionary = item.prop
+					if animation_prop.has("copy_source"):
+						animation_prop = animation_prop.duplicate()
+						animation_prop.id = animation_prop.copy_source
+					# Drawing already resolves copied IDs; classification must agree.
+					slot.live = view.is_animated_prop(animation_prop)
 				if item.prop.registration.get("dressing",false) and view.has_method("draw_computer_display"):
 					slot.live = true
+				# Match the ordinary library draw path in paint(): fixed polygons only
+				# change with slot state, while registered screens use the live clock.
+				# Portable/custom artwork still belongs to its source renderer.
+				if item.prop.get("library_asset",false) and not item.prop.get("custom_library_draw",false) and not item.prop.has("portable_view"):
+					slot.live = bool(view_state.get("operating",false)) and not item.prop.registration.get("operating_screens",[]).is_empty()
 				if item.kind == "prop_base": slot.live = false
 				if item.kind == "prop_effects": slot.live = true
 				if item.kind == "prop_pass": slot.live = item.live

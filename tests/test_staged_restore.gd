@@ -47,6 +47,7 @@ func run() -> void:
 	game.bill_npc.update(game,0.01)
 	game._set_paused(true,false)
 	var saved: Dictionary = game.RunSave.capture(game).duplicate(true)
+	saved.state.grid_zoom = 0.55 # Nondefault zoom exercises collapsed hidden viewport focus.
 	check(saved.crew.bill.active,"Fixture contains active crew")
 	var sync_started := Time.get_ticks_usec()
 	check(game.RunSave.restore(game,saved.duplicate(true)),"Synchronous reference restore succeeds")
@@ -89,6 +90,11 @@ func run() -> void:
 	check(continue_frames>=2 and continue_frames<600,"Continue completes across responsive frames")
 	check(game.RunSave.pending.is_empty() and game.visible and game.paused,"Continue consumes checkpoint and reveals a paused station")
 	check(game.resources==expected_resources and game.bill_npc.snapshot()==expected,"Continue restores the same resources and crew")
+	await process_frame
+	await RenderingServer.frame_post_draw
+	var core_center := (Vector2(game.Architects.CORE_CELL)+Vector2.ONE*0.5)/float(game.GRID_SIZE)
+	var focus_error: float = game._grid_view_center_ratio().distance_to(core_center)*game.GRID_SIZE*game.get_cell_size()
+	check(focus_error<2.0,"Continue centers BRINE after hidden viewport layout: "+str(focus_error)+" pixels")
 	for suffix in [".cfg",".meta",".meta.bak",".loop",".loop.bak"]:
 		if FileAccess.file_exists(prefix+suffix): DirAccess.remove_absolute(prefix+suffix)
 	print("STAGED RESTORE: synchronous ",sync_ms," ms; staged total ",staged_ms," ms; ",slices," loading frames; longest interval ",longest_ms," ms; ",failures," failures")

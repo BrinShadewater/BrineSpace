@@ -1,4 +1,4 @@
-"""Build a conservative, explicit dependency manifest for Windows Game exports.
+"""Build a conservative, explicit dependency manifest for playable exports.
 Exact references are followed; dynamic path prefixes retain their directory contents.
 Nothing is deleted. JSON-relative frame paths and imported-resource dependencies remain covered.
 """
@@ -9,6 +9,25 @@ MANIFEST = ROOT / 'assets/runtime-release.json'
 EXTENSIONS = {'.gd','.tscn','.tres','.gdshader','.shader','.png','.jpg','.jpeg','.webp','.svg','.ogg','.wav','.mp3','.json','.cfg','.ttf','.otf'}
 TEXT = {'.gd','.tscn','.tres','.gdshader','.shader','.json','.cfg','.godot'}
 STRINGS = re.compile(r'["\']([^"\'\n]+)["\']')
+# Build inputs, not a runtime directory: live Bill loads catalog/frames/clearance.
+# Only suppress broad discovery. Exact or formatted file references still win,
+# including any future runtime asset deliberately stored beneath this subtree.
+DYNAMIC_AUTHORING_TREES = (
+    'character/major-bill-v3/sources/',
+    'character/chief-engineer-branforth-v2/sources/locker-identity-2026-09-22/',
+)
+
+def json_strings(value):
+    """Walk decoded JSON so apostrophes and escaped quotes cannot hide paths."""
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for key, child in value.items():
+            yield key
+            yield from json_strings(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from json_strings(child)
 def collect(root=ROOT, read_root=None):
     root=root.resolve()
     selected, pending, reasons = set(), [], {}
@@ -28,6 +47,8 @@ def collect(root=ROOT, read_root=None):
         absolute=Path(os.path.abspath(path))
         if not absolute.is_relative_to(root):return
         rel=absolute.relative_to(root).as_posix()
+        if ': dynamic' in reason or ': formatted directory' in reason:
+            if rel.startswith(DYNAMIC_AUTHORING_TREES): return
         if rel in selected:return
         if path.suffix.lower() not in EXTENSIONS and rel not in {'project.godot','NOTICE.md'}:return
         path=path.resolve()
@@ -77,7 +98,8 @@ def collect(root=ROOT, read_root=None):
         text=read_path.read_text(encoding='utf-8-sig',errors='replace')
         if p.name=='project.godot':
             text='\n'.join(line for line in text.splitlines() if not line.startswith('run/main_scene.'))
-        for value in STRINGS.findall(text):
+        values = json_strings(json.loads(text)) if p.suffix.lower()=='.json' else STRINGS.findall(text)
+        for value in values:
             # Godot's enabled autoload entries prefix resource paths with '*'.
             if p.name=='project.godot' and value.startswith('*res://'): value=value[1:]
             if value.startswith('res://') or Path(value).suffix.lower() in EXTENSIONS:
@@ -87,7 +109,32 @@ def collect(root=ROOT, read_root=None):
             if match: reference(match[1],p)
     return selected,reasons
 
+def update_preset(s, resources, preset_name="Windows Game"):
+    sections=list(re.finditer(r'^\[preset\.(\d+)\]\s*$',s,re.M))
+    matches=[]
+    for section in sections:
+        start=section.start()
+        next_section=re.search(r'^\[',s[section.end():],re.M)
+        end=section.end()+next_section.start() if next_section else len(s)
+        if re.search(r'^name='+re.escape(json.dumps(preset_name))+r'\s*$',s[start:end],re.M):
+            matches.append((start,end))
+    if len(matches)!=1:
+        raise ValueError(f'Expected one preset named {preset_name!r}; found {len(matches)}')
+    start,end=matches[0]
+    block=s[start:end]
+    block=re.sub(r'export_filter="[^"]+"','export_filter="selected_resources"',block)
+    block=re.sub(r'include_filter="[^"]*"','include_filter=""',block)
+    block=re.sub(r'exclude_filter="[^"]*"','exclude_filter="output/*,outputs/*,builds/*,asset_backups/*,skills/*,.git/*,tests/*,docs/*"',block)
+    block=re.sub(r'^export_files=.*\n','',block,flags=re.M)
+    block=block.replace('export_filter="selected_resources"','export_filter="selected_resources"\nexport_files=PackedStringArray('+','.join(json.dumps(x) for x in resources)+')')
+    return s[:start]+block+s[end:]
+
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--preset',default='Windows Game',help='Exact playable export preset name')
+    args=parser.parse_args()
+    # Validate before writing manifests or build metadata.
+    update_preset((ROOT/'export_presets.cfg').read_text(encoding='utf-8-sig'),[],args.preset)
     selected,reasons=collect()
     for name in ['addons/brine_raw_export/plugin.gd','export_presets.cfg']:
         selected.add(name); reasons[name]='build configuration'
@@ -114,13 +161,6 @@ def main():
     # The selected-resource preset allows Godot to follow its own imported dependencies.
     resources=[x['path'] for x in rows if Path(x['path']).suffix in {'.gd','.tscn','.tres','.gdshader','.shader','.ogg','.wav','.mp3','.ttf','.otf'}]
     p=ROOT/'export_presets.cfg';s=p.read_text()
-    start=s.index('[preset.3]');end=s.index('[preset.3.options]',start)
-    block=s[start:end]
-    block=re.sub(r'export_filter="[^"]+"','export_filter="selected_resources"',block)
-    block=re.sub(r'include_filter="[^"]*"','include_filter=""',block)
-    block=re.sub(r'exclude_filter="[^"]*"','exclude_filter="output/*,outputs/*,builds/*,asset_backups/*,skills/*,.git/*,tests/*,docs/*"',block)
-    block=re.sub(r'^export_files=.*\n','',block,flags=re.M)
-    block=block.replace('export_filter="selected_resources"','export_filter="selected_resources"\nexport_files=PackedStringArray('+','.join(json.dumps(x) for x in resources)+')')
-    p.write_text(s[:start]+block+s[end:],encoding='utf-8')
+    p.write_text(update_preset(s,resources,args.preset),encoding='utf-8')
     print(json.dumps(info))
 if __name__=='__main__': main()

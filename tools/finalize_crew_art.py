@@ -12,6 +12,9 @@ def finalize(actor):
         for rel in catalog[group]:
             path=root/rel;pack=read(path);pivot=pack['pivot'];factor=65.28/pack['standingHeight']
             for state in pack['states']:
+                # Bed contact is presented on furniture with an explicit offset;
+                # it must not enlarge Marsh's shared swimming/locomotion envelope.
+                if actor=='marsh' and state['id'].startswith(('berth-','bunk-')):continue
                 boxes=[]
                 for file in state['frameFiles']:
                     with Image.open(path.parent/file) as image: boxes.append(image.getbbox())

@@ -99,6 +99,30 @@ static func _contact_box(shade: Color, radius: float) -> StyleBoxFlat:
 	_contact_boxes[key] = box
 	return box
 
+static var batch_projected_shadows := not OS.get_cmdline_user_args().has("--reference-projected-shadows")
+
+# Geometry depends only on the effective footprint and rise, not light or zoom.
+# Bound the shared cache so continuous Studio dragging cannot retain every position.
+static var _projected_meshes := {}
+static var cache_projected_geometry := not OS.get_cmdline_user_args().has("--reference-shadow-geometry")
+static func projected_shadow_mesh(foot: Rect2, rise: float) -> Dictionary:
+	var key := [foot, rise]
+	if cache_projected_geometry and _projected_meshes.has(key): return _projected_meshes[key]
+	var points := PackedVector2Array()
+	var indices := PackedInt32Array()
+	var hull := PackedVector2Array([Vector2(-180,-180),Vector2(180,-180),Vector2(180,180),Vector2(-180,180)])
+	for penumbra in range(3):
+		var offset := Vector2(0.32,0.52)*(minf(rise*0.12,5.0)+float(penumbra))
+		var projected := PackedVector2Array([foot.position,Vector2(foot.end.x,foot.position.y),foot.end+offset,Vector2(foot.position.x,foot.end.y)+offset])
+		for clipped in Geometry2D.intersect_polygons(projected,hull):
+			var base := points.size()
+			for index in Geometry2D.triangulate_polygon(clipped): indices.append(index+base)
+			points.append_array(clipped)
+	if _projected_meshes.size() >= 2048: _projected_meshes.clear()
+	var mesh := {"points":points,"indices":indices}
+	if cache_projected_geometry: _projected_meshes[key] = mesh
+	return mesh
+
 ## Footprint-based contact shadows; drawn on the deck before machinery and crew.
 static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: float, view = null) -> void:
 	# Recessed perimeter: narrow ambient contact shade, no extra room-wide dimming.
@@ -126,11 +150,19 @@ static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: floa
 			rise=clampf(visual.size.y-foot.size.y,8.0,85.0)
 		# A short directional shade stays joined to the installation. Sprite height
 		# is not a physical light distance: long offsets made furniture hover.
-		for penumbra in range(3):
-			var offset := Vector2(0.32,0.52)*(minf(rise*0.12,5.0)+float(penumbra))
-			var projected := PackedVector2Array([foot.position,Vector2(foot.end.x,foot.position.y),foot.end+offset,Vector2(foot.position.x,foot.end.y)+offset])
-			for clipped in Geometry2D.intersect_polygons(projected,hull):
-				canvas.draw_colored_polygon(clipped,Color(0.015,0.025,0.04,(0.018+0.012*level)))
+		var shadow_color := Color(0.015,0.025,0.04,(0.018+0.012*level))
+		if batch_projected_shadows:
+			var mesh := projected_shadow_mesh(foot,rise)
+			if not mesh.indices.is_empty():
+				RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),mesh.indices,mesh.points,PackedColorArray([shadow_color]))
+		else:
+			for penumbra in range(3):
+				var offset := Vector2(0.32,0.52)*(minf(rise*0.12,5.0)+float(penumbra))
+				var projected := PackedVector2Array([foot.position,Vector2(foot.end.x,foot.position.y),foot.end+offset,Vector2(foot.position.x,foot.end.y)+offset])
+				for clipped in Geometry2D.intersect_polygons(projected,hull):
+					canvas.draw_colored_polygon(clipped,shadow_color)
+		# Per-prop order is preserved for overlapping translucent shadows.
+
 		# Concentric contact bands touch every edge instead of forming an offset
 		# dark mat below the object. Keep a stronger core and a restrained fringe.
 		# The bands are rounded and edge-smoothed: square corners under round and irregular

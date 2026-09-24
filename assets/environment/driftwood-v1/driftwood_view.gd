@@ -1,6 +1,6 @@
 extends RefCounted
 ## Waterlogged organic debris beneath construction; no salvage or collision state.
-const ROOT := "res://assets/environment/driftwood-v1/"
+const ROOT := "res://legacy/default/assets/environment/driftwood-v1/"
 const SOURCES := {
     "waterlogged-timber": "waterlogged-timber-v1.png"
 }
@@ -9,7 +9,7 @@ var textures: Dictionary = {}
 func prepare() -> void:
 	if not textures.is_empty(): return
 	var source := Image.new()
-	if source.load(ROOT+SOURCES["waterlogged-timber"])==OK:
+	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["waterlogged-timber"])==OK:
 		textures["waterlogged-timber"]=ImageTexture.create_from_image(source)
 func render_into(canvas: CanvasItem, cell_size: float) -> void:
 	prepare()

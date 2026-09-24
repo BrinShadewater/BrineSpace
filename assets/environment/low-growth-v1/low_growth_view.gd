@@ -1,6 +1,6 @@
 extends RefCounted
 ## Low decorative life. No simulated growth, food yields or occupancy.
-const ROOT := "res://assets/environment/low-growth-v1/"
+const ROOT := "res://legacy/default/assets/environment/low-growth-v1/"
 const SOURCES := {
     "seagrass-rosette": "seagrass-rosette-v2.png",
     "encrusting-algae": "encrusting-algae-v1.png",
@@ -28,7 +28,7 @@ func prepare() -> void:
 	initialized = true
 	for id in SOURCES:
 		var source := Image.new()
-		if source.load(ROOT+SOURCES[id])==OK:
+		if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES[id])==OK:
 			textures[id] = ImageTexture.create_from_image(source)
 
 func render_into(canvas: CanvasItem, cell_size: float) -> void:

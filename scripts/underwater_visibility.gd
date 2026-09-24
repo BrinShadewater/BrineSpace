@@ -33,14 +33,24 @@ static func clear_ray(field: Dictionary, from: Vector2, to: Vector2) -> bool:
 	return true
 
 static func drone_position(game, drone: Dictionary) -> Vector2:
-	var position := Vector2(drone.position)+Vector2.ONE*.5
-	if drone.phase=="working" and drone.job=="clear":
-		var cell:=Vector2i(drone.target)
-		var offsets: Array=[Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
-		offsets.sort_custom(func(a,b):return Vector2(cell+a).distance_squared_to(Vector2(drone.home))<Vector2(cell+b).distance_squared_to(Vector2(drone.home)))
-		for offset in offsets:
-			if not Field.blocks(game.wrecks,cell+offset): return Vector2(cell)+Vector2.ONE*.5+Vector2(offset)*.52
-	return position
+	var position:=Vector2(drone.position)+Vector2.ONE*.5
+	if drone.job!="clear" or drone.phase not in ["working","outbound","returning"]: return position
+	var cell:=Vector2i(drone.target)
+	var offsets: Array=[Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
+	offsets.sort_custom(func(a,b):return Vector2(cell+a).distance_squared_to(Vector2(drone.home))<Vector2(cell+b).distance_squared_to(Vector2(drone.home)))
+	var clear_offsets: Array=[]
+	for offset in offsets:
+		var neighbor: Vector2i=cell+offset
+		if neighbor.x<0 or neighbor.y<0 or neighbor.x>=40 or neighbor.y>=40:continue
+		if not Field.blocks(game.wrecks,neighbor):clear_offsets.append(offset)
+	if clear_offsets.is_empty():return position
+	# Prefer a visible work face; covered routes remain valid when no exposed side exists.
+	var chosen: Vector2i=clear_offsets[0]
+	for offset in clear_offsets:
+		if not game.occupied.has(cell+offset):chosen=offset;break
+	# Keep drawing, lamp and silt together and continuous at the work boundary.
+	var blend:=1.0 if drone.phase=="working" else clampf(1.0-Vector2(drone.position).distance_to(Vector2(drone.target))/.30,0,1)
+	return position+Vector2(chosen)*.52*blend
 
 static func sources(game) -> Array:
 	var result: Array = []
@@ -79,6 +89,19 @@ static func strength_at(source: Dictionary, point: Vector2) -> float:
 	var local := 1.0-smoothstep(.1,.4,distance)
 	return maxf(cone,local)*pow(1.0-distance/source.radius,1.5)*source.strength
 
+func survey(game) -> bool:
+	if Time.get_ticks_msec()-last_survey<=250: return false
+	var lights := sources(game)
+	last_survey=Time.get_ticks_msec()
+	for light in lights:
+		var origin := Vector2i(Vector2(light.position).floor())
+		for x in range(maxi(0,origin.x-3),mini(40,origin.x+4)):
+			for y in range(maxi(0,origin.y-3),mini(40,origin.y+4)):
+				var cell:=Vector2i(x,y)
+				var point:=Vector2(cell)+Vector2.ONE*.5
+				if strength_at(light,point)>.07 and clear_ray(game.wrecks,light.position,point): game.surveyed_water[cell]=true
+	return true
+
 func draw(canvas: CanvasItem, game, size: float) -> void:
 	var lights := sources(game)
 	var visual_time: float=game.get_visual_time_seconds()
@@ -86,15 +109,6 @@ func draw(canvas: CanvasItem, game, size: float) -> void:
 		if drone.phase=="working" and drone.job=="clear" and game.wrecks.get(Vector2i(drone.target),{}).get("kind","")=="basalt":
 			silt_position=drone_position(game,drone)
 			silt_time=visual_time
-	if Time.get_ticks_msec()-last_survey>250:
-		last_survey=Time.get_ticks_msec()
-		for light in lights:
-			var origin := Vector2i(Vector2(light.position).floor())
-			for x in range(maxi(0,origin.x-3),mini(40,origin.x+4)):
-				for y in range(maxi(0,origin.y-3),mini(40,origin.y+4)):
-					var cell:=Vector2i(x,y)
-					var point:=Vector2(cell)+Vector2.ONE*.5
-					if strength_at(light,point)>.07 and clear_ray(game.wrecks,light.position,point): game.surveyed_water[cell]=true
 	mask.fill(Color.BLACK)
 	for cell in game.wrecks:
 		if Field.blocks(game.wrecks,cell): mask.set_pixelv(cell,Color(1,0,0,1))

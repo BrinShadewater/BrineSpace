@@ -16,7 +16,8 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 			if full_wall.owns(prop): bank.append(prop)
 		var stations={"office_exam":Vector2(-157,-80),"office_records":Vector2(-38,-70),"office_consultation":Vector2(65,-90)}
 		for prop in retained:
-			var authored: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.asset_id,quarter)
+			var authored: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.layout_key(self),quarter)
+			if authored.has(str(prop.id)) and authored[str(prop.id)]==null: continue
 			preload("res://scripts/room_layout_store.gd").resize_prop(prop,authored.get("size/"+str(prop.id),[1.0,1.0]))
 			var saved=authored.get(str(prop.id))
 			if saved is Array and saved.size()==2:

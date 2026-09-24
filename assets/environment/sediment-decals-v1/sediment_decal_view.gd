@@ -1,7 +1,7 @@
 extends RefCounted
 ## Static displacement mark, registered beneath mooring debris.
 const Mooring := preload("res://assets/environment/mooring-debris-v1/mooring_debris_view.gd")
-const ROOT := "res://assets/environment/sediment-decals-v1/"
+const ROOT := "res://legacy/default/assets/environment/sediment-decals-v1/"
 const SOURCES := {
     "silt-scour": "silt-scour-v2.png"
 }
@@ -10,7 +10,7 @@ var textures: Dictionary = {}
 func prepare() -> void:
 	if not textures.is_empty(): return
 	var source := Image.new()
-	if source.load(ROOT+SOURCES["silt-scour"])==OK:
+	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["silt-scour"])==OK:
 		textures["silt-scour"]=ImageTexture.create_from_image(source)
 func render_into(canvas: CanvasItem, cell_size: float) -> void:
 	prepare()

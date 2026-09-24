@@ -89,6 +89,12 @@ func run() -> void:
 	check(Preferences.hand_layout == "row" and not game.hand_box.has_node("FanRow"), "The hand starts as a row of cards")
 	var row_card: Control = _first_card(game)
 	check(row_card != null and row_card.size == game.DraftCard.CARD_SIZE, "Row cards are card-sized")
+	var row_art: TextureRect = row_card.get_meta("art_node")
+	var fonts = preload("res://scripts/ui_fonts.gd")
+	check(row_card.theme == fonts.card_theme(), "Card font theme is reused across redraws")
+	check(row_card.theme.default_font != fonts.interface_font() and not fonts.interface_font().multichannel_signed_distance_field, "Card rendering leaves the shared interface font unchanged")
+	check(row_art.texture.get_image().has_mipmaps(), "Raw card thumbnails provide mip levels for the rotated fan")
+	check(row_art.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST, "Upright card art keeps nearest sampling")
 	Preferences.reduced_motion = true
 	game._on_card_hovered(row_card.get_meta("card_id"), row_card)
 	check(row_card.position == row_card.get_meta("rest_position"), "Reduced motion keeps a hovered card in place")
@@ -107,6 +113,7 @@ func run() -> void:
 	if fanned.size() >= 3:
 		check(fanned[0].rotation < 0.0 and fanned[-1].rotation > 0.0 and fanned[0].size == game.DraftCard.CARD_SIZE, "Outer cards turn outward and keep card size: rot %.3f / %.3f size %s" % [fanned[0].rotation, fanned[-1].rotation, fanned[0].size])
 		var outer: Control = fanned[0]
+		check(outer.get_meta("art_node").texture_filter == CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS, "Tilted card art uses its mip levels")
 		game._on_card_hovered(outer.get_meta("card_id"), outer)
 		await create_timer(0.25).timeout
 		check(is_zero_approx(outer.rotation) and outer.get_index() == fanned.size() - 1, "A hovered fanned card straightens and comes to the front")

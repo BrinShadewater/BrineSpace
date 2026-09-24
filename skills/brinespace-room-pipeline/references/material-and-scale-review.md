@@ -384,3 +384,11 @@ Before replacing low-resolution animation art, inspect preserved higher-density 
 Check shadow ownership before tuning darkness: the BRINE tube had both a custom oval and a generic rectangular machinery shadow. Source-shaped contact belongs at the physical skirt; suppress duplicate generic shadows through the prop contract. Review common shadow changes across representative materials and rotations. Tube grounding has owner acceptance; wider grounding and crew-scale passes have bounded native review, not automatic owner acceptance.
 
 Use the existing crew-scale integration lesson above for resizing. Recorded 65.28 world units is this revision's production reference; re-read current consumer metadata for future revisions. Later selected furnishings supersede historical scale-pass captures.
+
+
+When a focal bought prop looks coarse, compare existing source dimensions at the
+same intended world width before enlarging or repainting it. Hydroponics replaced
+a 96-pixel tray enlarged 1.5 times with a 149-pixel foliage trough at .97 scale;
+its leaves read more clearly without new generated pixels. Review the actual
+room zoom, not only an enlarged library thumbnail, and keep growth-stage identity
+and operator clearance when substituting equipment.

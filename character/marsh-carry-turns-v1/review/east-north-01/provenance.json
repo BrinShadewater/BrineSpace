@@ -1,0 +1,37 @@
+{
+  "sources": {
+    "east-north-01.png": "2163599e7978b66a98b03691a239b270d1f2bd02c68f40e3e7c4c54852ba269e",
+    "carry-east-endpoint.png": "0e12db4d37c628b2b292cb2287626bb09fc51ecc77b701557b87b05f623f9bad",
+    "carry-north-endpoint.png": "682e727e57e686c95a9f7fb705b54d58435a991634af3bdc34c5c16a891d763b"
+  },
+  "registration": [
+    {
+      "cell": 0,
+      "sourceCenter": 442,
+      "scale": 0.25,
+      "offset": [
+        -18,
+        4
+      ]
+    },
+    {
+      "cell": 1,
+      "sourceCenter": 1089,
+      "scale": 0.25,
+      "offset": [
+        1,
+        5
+      ]
+    },
+    {
+      "cell": 2,
+      "sourceCenter": 1713,
+      "scale": 0.25,
+      "offset": [
+        26,
+        5
+      ]
+    }
+  ],
+  "derived": "Return reverses authored poses. Exact current carry frame-zero endpoints."
+}

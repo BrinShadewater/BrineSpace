@@ -1,6 +1,6 @@
 extends RefCounted
 ## Ambient water only; time comes from the authoritative pause-aware visual clock.
-const ROOT := "res://assets/environment/ambient-water-v1/"
+const ROOT := "res://legacy/default/assets/environment/ambient-water-v1/"
 const SOURCES := {
     "current-ribbon": "current-ribbon-v1.png",
     "silt-fan": "silt-fan-v1.png",
@@ -20,7 +20,7 @@ func prepare() -> void:
 	initialized = true
 	for id in SOURCES:
 		var source := Image.new()
-		if source.load(ROOT+SOURCES[id])==OK:
+		if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES[id])==OK:
 			textures[id] = ImageTexture.create_from_image(source)
 
 static func samples(time_seconds: float) -> Array[Dictionary]:

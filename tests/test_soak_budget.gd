@@ -46,6 +46,7 @@ func run() -> void:
 	var worst_cycle := 0
 	var total := 0.0
 	var frames := 0
+	var completed_cycles := 0
 	for cycle in range(CYCLES):
 		for step in range(int(round(1.0 / DT))):
 			if game.paused: game.paused = false
@@ -58,6 +59,7 @@ func run() -> void:
 				worst = used
 				worst_cycle = cycle
 		game._on_tick_timer_timeout()
+		completed_cycles += 1
 		if not game.running: break
 		if cycle % 10 == 0: await process_frame
 	var mean := total / maxf(1.0, float(frames))
@@ -70,5 +72,5 @@ func run() -> void:
 	await process_frame
 	for suffix in [".cfg", ".loop", ".json", ".json.bak", ".json.tmp", ".loop.comms.json"]:
 		if FileAccess.file_exists(prefix + suffix): DirAccess.remove_absolute(ProjectSettings.globalize_path(prefix + suffix))
-	print("SOAK BUDGET %s: %d cycles, %d frames, mean %.2f ms, worst %.1f ms at cycle %d, %d route searches" % ["PASS" if failures == 0 else "FAIL %d" % failures, CYCLES, frames, mean, worst, worst_cycle, crew.route_searches])
+	print("SOAK BUDGET %s: %d completed of %d requested cycles, %d frames, mean %.2f ms, worst %.1f ms at cycle %d, %d route searches" % ["PASS" if failures == 0 else "FAIL %d" % failures, completed_cycles, CYCLES, frames, mean, worst, worst_cycle, crew.route_searches])
 	quit(1 if failures else 0)

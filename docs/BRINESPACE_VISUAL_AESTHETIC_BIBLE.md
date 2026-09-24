@@ -1,3 +1,127 @@
+# BrineSpace visual and aesthetic bible
+
+## Current reading rule - September 24, 2026
+
+Later owner decisions govern intended direction; selected runtime assets establish
+what is installed. Dated sections below retain their historical scope, not a
+combined defect queue. See [CURRENT_STATUS](CURRENT_STATUS.md),
+[Claude takeover](CLAUDE_HANDOFF_2026-09-24.md) and
+[asset workflow](ASSET_PIPELINE_AND_WORKFLOW.md).
+
+The owner recently referenced Graveyard Keeper 2 graphics, camera and art style.
+The task preview establishes interest, but recent detailed messages were unavailable
+to the closeout reader. Recover that discussion before declaring a new camera
+approved. Preserve documented top-down/inward-facing equipment, department identity,
+subdued underwater setting and bought-prop compositions in existing work. No camera
+conversion or art generation happened in this closeout.
+
+Owner completion protects 27 rooms in every rotation. The September 23 count of
+19 and 84 cleared views describes that day's operation; it must not erase the
+subsequent eight finished rooms. CURRENT_STATUS has the current list. Preserve
+owner assemblies and logical work areas; visual overlap can be intentional.
+
+Bill's installed repairs and Marsh's completed swim/cargo coverage supersede older
+missing-state descriptions. Coverage and exact rebuilds do not prove natural gait
+or owner approval. Review continuous motion and joins through the real controller
+at station scale. Do not shrink Bill's helmet again from an old note or freeze his
+torso to preserve facial identity.
+
+Distinguish source, integrated, native-reviewed, owner-accepted and packaged art.
+Existing test packages predate procedural sites and later source fixes. Card hashes
+bind only their reviewed revision. Motion/scenery/listening acceptance remains open.
+
+## Owner completion update - September 24, 2026
+
+Construction Drone Bay, BRINE Core, Solar Array, Reactor, Battery Array, Salvage
+Drone Bay, Gravity Loom and Tidal Condenser join the protected finished rooms.
+The current list is 27 rooms, all rotations; see CURRENT_STATUS. Their owner
+compositions supersede the prior cleared authoring state. Do not rerun the old
+cleanup against them. Completion is owner-reported; no new visual review implied.
+
+## Owner authoring update - September 23, 2026
+
+The finished-room protection list now contains 19 rooms, recorded in CURRENT_STATUS.
+Keep all their rotations and every other room's first rotation. The other 84
+rotations have intentionally empty furnishing layers for owner redecorating;
+do not refill them automatically. Move to front/back supports objects on desks
+without moving their footprints. Bench repair removes only the under-seat coil,
+retaining the bag, boots and source PNG. Native agent review is recorded in
+STUDIO_OWNER_DECORATION_FIXES_2026-09-23.md; owner visual acceptance is separate.
+
+## Bill motion refinement � September 21, 2026
+
+The selected side walk now restores preserved shoulder and arm motion while keeping
+head registration and current foot contacts. This supersedes the earlier frozen-
+torso diagnosis as implementation state, not as whole-gait acceptance. Leg contour
+quality remains open. Judge coordinated motion separately from pixel integrity and
+successful playback; preserve both equipment variants when making body changes.
+
+## Owner reference compositions — September 21, 2026
+
+Research Lab uses overlapping equipment to form assemblies; Crew Lounge groups
+seating, tables and rugs around clear activities. These native owner references
+show that visual bounding boxes may overlap naturally. Judge physical support,
+operator space and depth ordering, not an absolute separation rule. The review
+tool records overlaps for inspection while retaining separate access/bounds checks.
+Preserve the currently named owner rooms as references; do not alter them to pass a
+simplified composition test. Evidence: output/owner-room-references-2026-09-21.
+
+## Walking-body review — September 20, 2026
+
+Bill's side-view walk needs upper-body motion and coherent knee/shin artwork. Stable facial identity and
+planted feet are necessary but do not establish a natural gait. Preserve the face
+without freezing shoulders and arms; judge coordinated motion at station scale.
+The current diagnosis and generated study are recorded in BILL_WALK_REVIEW_2026-09-20.md.
+The study adds visible arm swing but alters some identity/details; no new walk art
+has been accepted or installed. Retain detailed face, patch and suit fidelity as
+separate gates from motion visibility. The articulated leg repair has
+fragmented contours and some enclosed alpha gaps: preserve its support timing,
+not damaged pixels. Recent generated poses improve surfaces but repeat the wrong
+leg phase, so remain rejected. Inspect near/far leg occlusion and arm opposition
+before judging a smoother-looking source to be a complete walk.
+
+## Environment review clarification — September 20, 2026
+
+The migrated environmental originals remain the material reference; this repair
+changes loading paths, not their palette, detail or placement. Evaluate their fit
+with bought room art under normal powered exterior light. Unlit fog deliberately
+conceals terrain and supports. Fog-hidden captures are diagnostic comparisons, not
+a proposed brighter exterior or accepted visual direction. Before repainting an
+apparently missing asset, verify its raw PNG binding and the room's lighting state.
+
+## Natural room composition — September 20, 2026
+
+The owner requests agent help decorating rooms, using their hand-positioned rooms
+as references. Equipment must occupy logical places and form believable work areas.
+Prioritize large and medium props; small accessories are difficult to read and
+must not be used as filler. Preserve intentional empty floor, operator space,
+door approaches and existing functional furniture where activity depends on it.
+This direction governs the new composition pilots rather than the older furnishing
+batch's fixed count of additions.
+
+Retain the hybrid of bought props and established character/environment art.
+Judge scale, materials and source detail together at actual gameplay size before
+changing a style or upscaling a library. No Higgsfield without an explicit owner
+request. Bill's body motion is a separate pending repair; Mac release preparation
+follows a stable build.
+
+The [three-room pilot](ROOM_COMPOSITION_PILOT_2026-09-20.md) is installed for review,
+with native checks and backups. It is not yet owner-accepted.
+
+First-pilot feedback: Crew Hab was okay; Maintenance and Bio Lab were lackluster.
+Clear circulation alone is insufficient. Use substantial focal equipment and
+complete working groups, with adjacent storage and operator space. Empty floor
+supports those groups; it is not the main visual feature. Revision 02 uses larger
+bought assemblies and preserves Crew Hab while awaiting further owner review.
+
+Staged revisions 03/04 show why grouping is more than proximity: clustering all
+support equipment on one side creates crowding and leaves the other side vacant.
+Use operator positions and the path of work to arrange related equipment across a
+usable aisle. These are agent review findings, not new owner-approved layouts.
+Keep supports at believable crew-relative size; if a drawer only fits when shrunk,
+move it, replace it with an appropriate prop or omit it. Do not buy geometric
+clearance by making furniture unnaturally small.
+
 ## Bought tileset library and owner-decorated rooms - September 19-20, 2026
 
 The owner bought pixel-art packs and now decorates rooms by hand in the Layout Studio
@@ -3974,3 +4098,594 @@ Retain the accepted BRINE tube's source-aligned skirt contact and single shadow 
 A missing head is a reported rendering defect, not an approved style or a reason to redesign identity. Veld's report captured healthy walking after the event. Current scanning sources contain heads and eight later room-local scan samples retained them; the original defect remains unreproduced. Preserve that uncertainty separately from visual acceptance. See [investigation](VELD_SCANNING_HEAD_INVESTIGATION_2026-09-12.md).
 
 Local Studio changes and static review galleries are different evidence. Do not infer recent owner edits from older saved overrides.
+
+### Articulated drone tools - September 21 repair
+
+Keep rigid machinery rigid: a horizontal sprite cut must not include part of the
+central chassis in rotating arm layers. Use each visible mechanical joint; asymmetric
+arms need distinct pivots. Welding beams and other tool-bound effects must use the
+same source-space attachment point and transform as the tool geometry, including
+body bob. An independent oscillating effect endpoint can appear detached even when
+both animations look plausible separately. Check central-body stability and visible
+tool motion in native phase captures; full flight/docking acceptance is separate.
+Current evidence: docs/DRONE_MOTION_REVIEW_2026-09-21.md.
+
+
+## September 21: furnishing must survive live play and fresh profiles
+
+Review large/medium work groups in the live station at gameplay zoom. A card
+render alone can miss repeated-setup furniture loss. Crew activity points must
+reach the visible furniture, with seated pose and draw depth checked per cast.
+Before promoting local furnishing, compare its effective saved layout against
+fresh-profile defaults in native views. Preserve owner reference layouts and
+library marks. Pixel parity is a consistency check, not owner visual acceptance.
+
+September 21: Review effective saved furnishing before proposing more props.
+Storage Bay showed legacy furniture because its renderer read the art asset ID
+instead of the Studio layout key. Fix layout selection before judging composition.
+
+Storage composition: place handling equipment beside cargo, rather than filling
+each empty corner with an unrelated object. Keep a clear circulation area; empty
+floor can serve staging and movement. Review four rotations and fresh defaults.
+
+Saved furniture deletions are part of the intended composition. Rotation-specific
+restoration must not put legacy stations back over bought props; Medical Office
+showed this as both visual clutter and a blocked route. Fix the restoration path.
+
+
+Bill knee/shin candidates (September 21): three middle east poses now have an
+uninstalled coherent fabric/pad treatment. Original upper-body and articulated
+foot pixels are restored exactly. A horizontal cutoff alone missed raised boot
+pixels; preserve the source foot masks. Partial source and native captures are
+not whole-gait acceptance. See BILL_ADJACENT_POSES_HANDOFF_2026-09-21.md.
+
+Battery Array composition: establish the visual weight of the main equipment before adding accessories. Larger existing racks can clarify function, but display scale is not new source detail; review at actual gameplay zoom. September 21 r3 remains subject to owner visual acceptance.
+
+September21 Bill walk surface integration: use complete independently registered limbs so knee details retain leg ownership through crossings. Continuous trouser fabric replaces fragmented rings while original upper body and boots remain. East/west are independently authored, not mirrored. Owner motion acceptance remains open; see BILL_LIMB_INTEGRATION_2026-09-21.md.
+
+
+September 21 Bill south action integration: match identity across walk, kneel, work and stand, not just within a clip. Equal pivot/height metadata did not prevent an older action source from changing the face and suit. Preserve the supporting body while authoring tool motion, match transition endpoints, and inspect the planted boot independently of the controller foot anchor. See BILL_SOUTH_ACTION_INTEGRATION_2026-09-21.md.
+
+
+September 21 directional action repair: north and west must retain independently authored views. Match settled work endpoints before treating a kneel/rise family as coherent. For side views, extending a tool changes silhouette bounds; register planted contact rather than recentering the whole figure. North and west source repairs now use the canonical rebuild; owner motion acceptance remains separate.
+
+
+September 21 Hydroponics r3: separate established foliage, sprouts and nursery racks from the potting work area. Prefer a higher-density existing bought source at similar world size before enlarging a coarse focal prop. Display enlargement is not additional detail. Saved/default views and live scale were reviewed; owner composition acceptance remains open.
+
+
+September 21 Reactor composition: establish the main apparatus before its controls and accessories. The bought reactor stack, cooling assembly and operator console now define the room. Keep an open service area rather than filling every quadrant. Static bought machinery does not inherit the hidden legacy props' operating animation; owner visual acceptance remains open.
+
+
+## September 21: fan-card sampling
+Tilted miniature room art needs real mip levels as well as a mipmap filter. Keep
+upright card art nearest; do not blur station art globally. Native comparison
+shows reduced edge noise with softer fine detail. Rotated text and owner visual
+acceptance remain separate review gates. See FAN_CARD_SAMPLING_2026-09-21.md.
+
+Fan-card lettering follow-up: use the cached card-only distance-field Barlow
+theme for transformed text. Shared interface font rendering stays unchanged.
+Native 1600x900 review favors it over oversampled bitmap candidates; at 960x540
+labels remain tiny despite fitting. Owner readability acceptance remains open.
+
+
+## September 21: Command Center composition
+Group the monitoring console and targeting display as the operations area, with
+a substantial central briefing station and circulation around its base. Keep the
+south-door approach open; do not use a small storage crate as unrelated filler.
+This is an installed playtest composition, not owner acceptance or animation
+completion. See COMMAND_CENTER_COMPOSITION_2026-09-21.md.
+
+Command Center operating-feedback follow-up: restrained cyan telemetry on the
+monitoring console and amber trace in the targeting display chart now signal an
+operating room. Keep effects within physical screens and tied to the station
+visual clock. Briefing hologram and machinery bodies remain static.
+
+
+September 21 Salvage revision 3: group the tool cabinet beside the processing
+sorter and keep cargo storage opposite, with an open handling aisle. Preserve
+that functional equipment across rotations; hidden legacy machinery returning
+is a renderer defect, not intentional dressing. Four-view and live-scale review
+passed; owner composition acceptance remains separate.
+
+
+September 21 Biodome: keep a substantial fern bed as the focal growing area,
+with smaller bought trays and a potting trolley nearby. Preserve separate seating
+and water-feature space. Resolve inherited machine overlaps before judging the
+art mixture; richer existing foliage can provide hierarchy without enlarging every
+bought source. Current composition is playtest-ready, not owner visual acceptance.
+
+
+September 21 Biomass review: reject tall front-elevation factory machinery even
+when doorway checks pass. A clear primary machine must respect the low top-down
+camera. Place feedstock handling beside a readable inlet and preserve operator
+access; separated equipment islands alone do not tell the processing story.
+
+
+September21 Biomass r4c: matte olive low vessel, organic-material badge and an
+attached covered inlet replace the water-tank identity. Group feed sacks near
+the inlet; keep telemetry inside the physical cabinet display and the vessel
+body static. Installed as an agent-reviewed playtest layout; owner acceptance
+and room-density refinement remain open. See BIOMASS_VESSEL_INTEGRATION_2026-09-21.md.
+
+
+September21 Gravity Loom r2: restore the low overhead ring as the functional focal
+point, with bought instruments around it and one calibration-weight bench. Remove
+duplicated directional consoles before judging empty floor as missing decoration.
+Review the complete rotation-specific composition: a route pass can still hide
+stacked furniture. Existing detailed machinery can supply hierarchy without
+blanket upscaling. Owner visual acceptance remains separate.
+
+
+September21 Clone/Shield: give Clone a growth/incubation pair, recovery bed with
+attached monitor and IV, and reagent/control group. Remove duplicate pods and
+unmounted handheld equipment. Shield keeps its test rig/injector distinct from
+the coupling controls and portable generator. Clear inherited overlaps before
+adding more props; open operator space is intentional. Owner acceptance remains
+open. See CLONE_SHIELD_COMPOSITION_2026-09-21.md for reviewed scope.
+
+
+September21 support-room review: removing overlaps is necessary but does not
+complete furnishing. The Radio draft still reads as isolated corner equipment at
+gameplay scale; keep it staged until related instruments have believable physical
+supports and a stronger workstation relationship. Do not fill the gap with loose
+accessories. See SUPPORT_ROOM_REVIEW_2026-09-21.md.
+
+
+September21 Radio r4 follow-up: restore the low signal-routing panel as a clear
+primary instrument surface, and group reception with calibration. This supersedes
+the staged sparse draft; owner acceptance remains open. The restored panel uses
+static source screens, not verified operating feedback. See SUPPORT_ROOM_REVIEW_2026-09-21.md.
+
+
+September21 Workshop: use a supported teardown assembly as the primary activity,
+with bought machining equipment and a distinct cart/crate handling area. Remove
+redundant floor tools instead of filling open cargo circulation. The restored
+directional bench remains richer than the bought equipment; native review is
+provisional, not owner acceptance. See WORKSHOP_COMPOSITION_2026-09-21.md.
+
+
+September21 Holo draft: larger bought projection imagery exposed the source-detail
+mismatch; geometry acceptance does not justify installation. Separate physical
+housing from switched projection imagery before claiming operational behavior.
+Keep this draft staged. See HOLO_PLACEMENT_REVIEW_2026-09-21.md.
+
+
+September21 Holo integration: matte unlit housing and restrained runtime star
+projection replace the enlarged baked-glow projector. Power removes only emitted
+light; the physical machine stays visible. Actual pause holds the projection.
+The separate chart display remains a baked-glow follow-up, and overall composition
+acceptance is open. See HOLO_PROJECTOR_INTEGRATION_2026-09-21.md.
+
+
+September21 Holo chart follow-up: original stand plus runtime dark panel and quiet
+telemetry replaces baked cyan illumination in this room. Preserve the material
+body when power goes off; emitted graphics disappear. Original atlas unchanged.
+Owner visual acceptance remains open. See HOLO_CHART_INTEGRATION_2026-09-21.md.
+
+
+September21 Radio feedback: two muted green signal traces live inside the existing
+screen apertures; offline glass is dark. Preserve surrounding panel material and
+controls. Decorative source lamps are outside this repair scope. Actual pause
+verified. See RADIO_SIGNAL_FEEDBACK_2026-09-21.md.
+
+
+### September 21 - Bill connected-limb priority
+
+The owner reports disjointed feet in Bill's repaired walk. Preserve coherent
+hip-knee-ankle-boot silhouettes before optimizing pose density or foot sliding.
+Compare against original whole poses and unaffected cast; a smoother timeline
+does not accept tangled joints. The 18-pose study is set aside. Connected-source
+review is documented in BILL_CONNECTED_SOURCE_REVIEW_2026-09-21.md; it is not
+yet installed or accepted as a complete gait repair.
+
+Connected-source follow-up: the canonical build now restores24side-walk PNGs,
+including original per-pose helmets. Lower bodies match preserved sources. Native
+station captures cover east and west; full gait/action consistency remains open.
+The earlier note that this recovery was uninstalled is superseded.
+
+
+### September 21 - equipment continuity across posture
+
+Keep a physical helmet the same apparent size when an actor kneels or stands.
+Bill west work now uses the standing48x56 overlay rather than34x40; body and
+foot pixels are unchanged. North/south work fits need the same comparison.
+Matching equipment does not certify matching body style or gait. See
+BILL_WEST_HELMET_SIZE_2026-09-21.md for scoped evidence.
+
+North/south follow-up: both work helmet fits now preserve the normal48x56
+size. All lowering poses were reviewed against standing references, followed by
+native work captures.36equipped frames changed; body/foot art is unchanged.
+BILL_WORK_HELMET_CONTINUITY_2026-09-21.md records the verification limits.
+
+
+### September21 - west work identity source study
+
+A six-pose edit retaining the drifted work sheet as target was rejected. A
+standing/kneeling study using canonical idle alone better matches Bill's fitted
+suit, face and panel detail at common standing-derived scale. It is uninstalled;
+a complete connected lowering/contact sequence is still required. Keep original
+identity authority separate from pose references that have drifted. Evidence:
+BILL_WEST_STYLE_STUDY_2026-09-21.md. No Higgsfield was used.
+
+West work style integration supersedes the uninstalled study:36bare/helmet
+action PNGs now use connected canonical-identity lowering poses, arm-only work
+and reversed stand. Preserve torso/feet during tool motion and normal helmet
+scale. Corrected native review verifies both dry and equipped consumers; loader
+overrides alone can leave cached dry frames stale. Owner motion acceptance
+remains open. See BILL_WEST_STYLE_INTEGRATION_2026-09-21.md.
+
+
+September 21 - Bill departure continuity: normal route selection remains idle until
+actual movement selects walking and facing. Review adjacent action/idle poses at
+a shared pivot; fixed root coordinates do not establish matching body proportions.
+South stand-to-idle bulk remains open. See BILL_DEPARTURE_CONTACT_REVIEW_2026-09-21.md.
+
+
+September 21 - south standing continuity repaired: current south actions use
+canonical-identity lowering art, exact idle standing endpoints and hand-only work.
+Keep body proportions stable across action/idle; matching pivots alone is not
+identity acceptance. New source helper: build_bill_south_style_actions.py. Native
+fixture review passes; ordinary expedition/owner motion acceptance remains open.
+See BILL_SOUTH_STYLE_INTEGRATION_2026-09-21.md.
+
+
+September 21 - medical support furnishing: Med Center groups treatment, imaging
+and controls with storage/handwashing. Med Office groups consultation and records
+with filing cabinets. Preserve supported furniture assemblies and remove duplicate
+loose accessories; an examination light is not an office-desk decoration. These
+layouts are installed for owner review; Med Bay and owner references are unchanged.
+See MEDICAL_SUPPORT_COMPOSITION_2026-09-21.md.
+
+
+September 21 - alternating gait review: connected ankle/boot silhouettes are necessary but do not prove a complete stride. Trace the same near knee and boot through both contact halves; reject repeated half-cycles even when a sheet contains the requested frame count. The new west-walk sources are authoring studies only, with two complete rows rejected and one isolated opposite-contact reference retained. Current runtime is unchanged. See BILL_ALTERNATING_CONTACT_STUDY_2026-09-21.md.
+
+
+September 21 - six-pose west walk candidate: alternating contact/weight-transfer/passing poses now have native bare/helmet and paid-station evidence, but their smoother lower-body detail still differs from selected idle/work art. This is staged, not installed. Preserve whole-body registration and connected joints; native playback alone does not accept character-style consistency. See BILL_SIX_POSE_WEST_REVIEW_2026-09-21.md.
+
+
+September 21 - alternating west walk installed: the canonical Bill rebuild now selects the six connected contact/weight-transfer/passing poses with masked suit detail, hard alpha and normal-size helmets. Exactly12west images changed; east and other actions stay on their prior recipes. Installed native and source-preservation evidence is in BILL_WEST_WALK_INTEGRATION_2026-09-21.md. Earlier staged/uninstalled notes describe historical review steps. Owner gait judgment and full foot-contact acceptance remain open.
+
+
+### September 21: independently authored alternating side walks
+East and west Bill walks now use selected connected alternating whole poses.
+Trace near/far leg ownership through contacts and passing poses; a six-frame
+sheet can repeat the same support leg despite apparent motion. East retains its
+own directional gear and 46x56 helmet, not a mirrored west source. Preserve raw
+rejected cells, exact replacement mapping and reproducible alpha/registration.
+Native installed checks passed; owner gait acceptance and anatomical foot locking
+remain open. See BILL_EAST_WALK_INTEGRATION_2026-09-21.md.
+
+
+### September 21: south walk phase order
+Bill south walk now orders preserved complete poses 0,4,5,3,1,2 in both helmet
+states. Review contact/down/passing groups and arm pairing before redrawing limbs.
+Clock continuity does not prove anatomical phase continuity. Frozen originals and
+permutation hashes distinguish order repair from pixel repair. Source pixels,
+timing and stride remain unchanged; world-space foot locking and owner acceptance
+remain open. See BILL_SOUTH_WALK_ORDER_INTEGRATION_2026-09-21.md.
+
+
+### September 21: north motion study remains unselected
+Clearer contact/passing poses do not justify simplified canonical backpack or
+suit design. The north motion draft and its detail edit remain source studies;
+production north art is unchanged. Preserve common scale and vertical registration
+when evaluating projected foot depth. A lifted heel is not the ground-contact toe;
+never fit stride solely from the lowest opaque pixel. See BILL_NORTH_CONTACT_STUDY_2026-09-21.md.
+
+
+### September 21: canonical north walk selected
+North now retains canonical head/backpack/torso/arm/helmet pixels under recorded
+whole-upper-body translations. A connected pelvis-and-both-legs region from the
+motion study supplies clearer alternating poses, mapped to the original palette.
+No separate knee/shin/boot transformations. The whole generated body remains
+rejected for identity. Verify preservation against registered canonical pixels and
+check waist connectivity; changing speed to hide source sliding is not a repair.
+All four recent walk repairs are installed with native checks; owner gait review
+and anatomical foot locking remain open. See BILL_NORTH_WALK_INTEGRATION_2026-09-21.md.
+
+
+## Bill overall helmet size - September 21, 2026
+
+Owner clarification: helmet is too large overall. Selected normal shell height is
+48px instead of 56px (about 14% smaller), preserving authored registration canvas
+and visor anchor. Compact fits at or below 48px remain unchanged. Do not shrink
+Bill body/head or alter stride to compensate. Historical 48x56/46x56 normal fits
+now describe registration canvases, not selected visible shell size. Rebuild via
+tools/rebuild_bill_art.py; policy and gear hashes are in the helmet-size-2026-09-21
+source folder. 178 helmet PNGs changed; bare art and 171 native bare renders are
+unchanged. See docs/BILL_HELMET_SIZE_2026-09-21.md for verification and limits.
+
+
+## Bill standing work endpoints - September 21, 2026
+
+North/west kneel0 and stand5 now preserve canonical idle body and smaller helmet
+pixels at the shared profile pivot. Eight PNGs change; no other poses or runtime
+metadata change. This removes the fully standing identity swap, not the remaining
+moving suit/backpack shape differences. See BILL_WORK_ENDPOINTS_2026-09-21.md.
+The latest f2ec1eb651c14137 test exports predate this endpoint repair.
+
+
+## Bill north work identity - September 21, 2026
+
+Selected north lowering/work art now follows canonical rear idle backpack/straps
+and torso proportions. A two-pose identity study preceded six connected lowering
+poses; work composites only arms over the fixed torso/head/backpack/legs. Standing
+endpoints remain exact idle; smaller normal helmet remains. 32 PNGs changed, no
+metadata or clearance changes. Native sequence and paid north service captures
+reviewed; owner acceptance and west moving identity remain open. Three built-in
+image calls, no Higgsfield. See BILL_NORTH_WORK_IDENTITY_2026-09-21.md.
+
+
+## Bill west work identity - September 21, 2026
+
+Selected west work now follows canonical idle proportions, with connected lowering
+and a restrained arm/wrench loop over fixed anatomy. Smaller helmet and exact idle
+endpoints remain. 32 PNGs changed; metadata/clearance/timing unchanged. Filtering
+and grading studies were rejected because they did not fix proportions. Native
+sequence and paid west service captures reviewed. Owner visual acceptance and
+ordinary expedition review remain open. Three built-in calls, no Higgsfield.
+See BILL_WEST_WORK_IDENTITY_2026-09-21.md. Current test exports predate this repair.
+
+
+## Power-room service grouping - September 21, 2026
+
+Turbine supports now form quarter-specific control groups; Heat Recovery pairs its
+process module with controls across a clear service aisle. Loose floor gauges and
+valves are removed from these layouts. All four native views and gameplay-scale
+views reviewed, existing machinery feedback retained, and both cards refreshed.
+Owner visual acceptance remains open. See POWER_ROOM_GROUPING_2026-09-21.md.
+
+
+## Solar/Tidal furnishing cleanup - September 21, 2026
+
+Existing thermal and tidal machinery remains the focal equipment; overlapping
+bought props are removed, and medium controls/storage form service groups. Eight
+native views, operating feedback and gameplay-scale views reviewed; two cards
+refreshed. Owner aesthetic acceptance remains open. See GENERATION_ROOM_REVIEW_2026-09-21.md.
+
+
+## Anomaly Lab functioning feedback - September 21, 2026
+
+The bought orb projection is separated from its physical stand, absent offline
+and gently floating when powered. Kiosk trace and tank-level screen bars use
+bounded apertures; casing and fluid imagery remain unchanged. q3 amber prop now
+sits beside its tanks. Saved/default layouts and offline card are reconciled.
+Native retained/direct parity and actual-station pause pass in all four quarters;
+owner aesthetic acceptance and packaged verification remain open. See
+ANOMALY_ROOM_REVIEW_2026-09-21.md.
+
+September 21 Airlock R2: restored the functional pressure chamber/hatch and grouped bought supplies outside the wet area. Keep the chamber mechanism and dry crew exclusion when replacing furniture; a surviving floor insert is not proof that the chamber remains functional. Saved/default native parity and card review pass. Timed live handoff and release verification remain separate. See docs/LAYOUT_DEFAULT_AUDIT_2026-09-21.md.
+
+September 21 Observation reconciliation: bought sofa/table seating, telescope/stool and grouped storage now match in saved and shipped layouts. Preserve reading and watching approaches when furnishing; doorway circulation alone missed a covered watch point. Four-direction native parity and refreshed card reviewed; autonomous behavior and release acceptance remain separate. See docs/LAYOUT_DEFAULT_AUDIT_2026-09-21.md.
+
+September 21 berth contact correction: compound bed/cabinet props must leave visible floor notches navigable. Use component footprints, preserve solid furniture, and verify routes plus unchanged native pixels. This is separate from animation contact acceptance. Marsh's new bed-entry source remains staged; see docs/MARSH_BERTH_CONTACT_2026-09-21.md.
+
+September 21 Marsh berth integration: compatible bedside entry now uses a 1.6-second seated-contact and leg-swing sequence with shared idle/sleep endpoints. Contact anchors survive saves; partial interruption reverses the current pose. Keep furniture poses separate from ordinary movement clearance. Native controller and restored visual evidence: docs/MARSH_BERTH_INTEGRATION_2026-09-21.md. Autonomous approach/departure, bought bunk and release acceptance remain open.
+
+September 21 bedside travel review: exact contact animations must walk the final clear segment to the authored approach, not start at any nearby navigation node. Compound bed/cabinet sorting now keeps walking crew visible in the open bedside notch. The normal-chooser Marsh run completed rest and departure with native review; see docs/MARSH_BERTH_INTEGRATION_2026-09-21.md.
+
+September 21 bought-bunk contact review: per-cast pillow alignment is required. Veld and Branforth's current straight-legged sleep poses protrude past the frame; preserve body and owner furniture scale and develop compact bunk-specific poses. Bill/Marsh static fit is promising, not integrated motion acceptance. See docs/BOUGHT_BUNK_CONTACT_2026-09-21.md.
+
+September 22 bunk art: staged Veld/Branforth bent-knee endpoints fit the lower bought bunk at existing scale. Preserve source/prompt/recipe in character/bunk-contact-study-2026-09-21. Existing straightening transition frames require repair before runtime use; static contact is not continuous-motion acceptance.
+
+September 22 stacked-bunk motion: check head clearance against the upper mattress during leaning, not only at sleep. Veld's staged native lowering clears from the front edge with a short 12-unit inward move. Complete floor-to-bed motion remains unaccepted; see the bought-bunk contact handoff.
+
+September 22 bunk foreground installed: complementary atlas layers preserve empty art while the ladder/post/front rail occlude explicitly marked bunk poses. Direct/retained RGBA parity and sideways-move cache invalidation are verified. Sleeping activity and complete motion remain unfinished. See docs/BOUGHT_BUNK_LAYER_INTEGRATION_2026-09-22.md.
+
+September 22 boarding depth lesson: a leg hanging outside a bunk stays in front of the front rail. Switch to interior layering only after both legs board; otherwise the shin can appear disconnected. Veld's full entry candidate now follows this in native review; controller integration remains open.
+
+September 22 sleep interruption repair: human crew now reverse from the performed portion of lie-down when service fails, preserving pose and furniture contact. Exact animation boundaries are tested alongside intermediate times. Source art is unchanged; this is separate from unfinished bought-bunk integration.
+
+September 22 Veld bunk equipment study: retain the existing helmet scale and tuck protruding hair only within equipped head regions, preserving visor openings and untouched bare sprites. Seven entry/exit gear poses have native clearance review; full controller/sleep acceptance remains open.
+
+September 22: Veld's bought lower-bunk profile is installed with phase-specific rail occlusion, connected entry/reverse exit and an equipped sleeping hold. Preserve authored furniture/body scale; reject unsupported transforms instead of forcing a fit. Native chooser, contact, save/restore and interruption evidence: docs/VELD_BUNK_INTEGRATION_2026-09-22.md. Other cast and packaged acceptance remain open.
+
+September 22: Branforth now shares the reviewed bought-bunk contact schedule with actor-specific source art, helmet fit and save validation. Preserve the full standing endpoint and check rendered frames against that actor's source pixels, not only against a restored copy. Evidence: docs/BRANFORTH_BUNK_INTEGRATION_2026-09-22.md.
+
+September 22: Bill's coherent bought-bunk sequence is installed with his selected smaller helmet. Preserve the 256x272 transparent canvas and unchanged pivot so the hanging boot remains complete. Native review must use the production room-render path: a direct texture check missed stale standing state after paused restore. Evidence: docs/BILL_BUNK_INTEGRATION_2026-09-22.md.
+
+September 22: all four cast have installed profiles for the reviewed unmirrored bought bunk. Marsh preserves his separate legacy berth and rises before low-battery charging travel. Do not infer other scale/orientation or full expedition acceptance from these fixtures. Evidence: docs/MARSH_BOUGHT_BUNK_INTEGRATION_2026-09-22.md.
+
+### Locker action identity - September 22, 2026
+Equip, remove and standing endpoints must retain the same face, suit proportions and helmet size. Shared palette alone does not correct different head/body shapes. Review both bare and equipped runtime selections at the actual shelf; keep staged source studies distinct from installed animation acceptance.
+
+
+Carried helmets must be visibly empty until worn. Check generated source sheets for duplicate faces inside visors; preserve raw sources and record cleanup masks. The held, raised and seated helmet must retain one consistent scale through the handoff.
+
+
+### September 22 maintenance contact review
+Work previews must include the target equipment, approach and departure. A crew member facing a prop from a valid navigation point can still appear to work on empty floor: service position and action must match the equipment. The Life Support desk observation establishes this remaining contact issue; see docs/BILL_MAINTENANCE_CONTACT_REVIEW_2026-09-22.md. Do not change owner furniture to disguise animation/contact faults.
+
+Life Support console follow-up: the reviewed unflipped blue-graph desk now uses an exact keyboard-side standing interaction, rather than generic floor kneeling. The approach follows effective furniture placement and retains collision checks. See docs/LIFE_SUPPORT_CONSOLE_CONTACT_2026-09-22.md; full-cycle visual acceptance remains separate from the reviewed arrival pose.
+
+September 22 Biodome refinement: a medium bought shrub trough replaces a loose second palm, balancing the retained fern bed while the basin groups with seating. Original source pixels remain unchanged; this is composition improvement, not a blanket detail-density correction. Removal-only cleanup was rejected as too empty. Four-view routes and native review support installation; owner acceptance remains open. See docs/BIODOME_POLISH_REVIEW_2026-09-22.md.
+
+September 22: Branforth south repair uses a connected detailed kneel/action/stand chain with his canonical idle and helmet endpoints. Keep anatomical scale through crouches and align the planted boot to its standing contact, not the body-center pivot. North/west and Marsh remain separate pending work. See docs/BRANFORTH_SOUTH_REPAIR_INTEGRATION_2026-09-22.md.
+
+
+### Branforth west repair selection - September 22, 2026
+
+The west kneel/work/rise chain now uses the slimmer motion source with the canonical mature face and existing helmet pixels. Preserve anatomical scale and planted boot contact. The first broader/younger source remains rejected. Five distinct descent poses include a settling hold; three authored work poses run forward/reverse. South, north and west are installed and reproducible; this is not owner motion acceptance. See BRANFORTH_WEST_REPAIR_INTEGRATION_2026-09-22.md.
+
+
+### Marsh diagnostic maintenance - September 22, 2026
+
+Marsh now draws, checks and stows his existing handheld diagnostic controller for generic equipment maintenance. Legacy kneel/repair/stand state names remain; welding is separate and unchanged. Preserve exact idle and equipped action joins. This reuses authored diagnostic art rather than introducing new kneeling anatomy. His 44 swim/carry transition gaps still use ordinary movement fallbacks and are not finished authored coverage. See MARSH_MAINTENANCE_REPAIR_2026-09-22.md.
+
+
+### Marsh side swim transitions - September 22, 2026
+
+East/west starts and stops now use independent three-pose sources between exact current tread/swim endpoints. Stop reverses start; four 0.4-second clips are selected. Register rotation at the shoulder with fixed anatomical scale, preserve asymmetric views, and pad rather than clip diagonal feet. Clearance and route checks accompany the expanded silhouette. Forty swim/carry transitions remain unprovided, including north/south starts/stops. See MARSH_SIDE_SWIM_TRANSITIONS_2026-09-22.md.
+
+
+### Marsh north/south swim transitions - September 22, 2026
+
+All four directions now have starts and stops: eight clips, 40 frames. Axial front/rear poses use independent source rows, fixed 0.30 scale and measured shoulder anchors, retaining exact tread/swim endpoints. Stop reverses start. Side recipes and existing animations are unchanged. Thirty-six directional swim/carry turns remain unprovided. See MARSH_AXIAL_SWIM_TRANSITIONS_2026-09-22.md.
+
+
+### September 22, 2026 - Marsh east/north swim turns
+
+Two directed swim turns are installed with three authored intermediate poses,
+exact existing swim endpoints, and reversed-pose return motion. The near-rear
+source was corrected for leg foreshortening without shrinking the head. Ten
+frames reproduce locally; native handoffs and the battery route pass. Owner
+visual acceptance is open. Thirty-four cargo/swim turn clips remain. See
+`docs/MARSH_SWIM_TURNS_2026-09-22.md`. No new release export.
+
+
+### September 22, 2026 - Marsh west/north swim turns
+
+Independently authored west/north poses now provide two additional directed
+swimming turns, with compact foreshortened legs and exact existing endpoints.
+Both turn pairs reproduce twenty runtime frames without changing earlier art.
+Native selection/handoff and save/restore pass; owner visual acceptance remains
+open. Four of twelve swimming turns are installed; thirty-two total swimming
+and cargo turn clips remain. See `docs/MARSH_WEST_NORTH_SWIM_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Marsh east/south swim turns
+
+East/south and its reverse add three authored foreshortened frontward poses
+with exact existing endpoints. Six of twelve directed swim turns are installed.
+Thirty turn frames reproduce exactly, with native handoff and save/restore
+checks passing. Earlier art and clearance remain unchanged. Owner visual
+acceptance is open; no release export. See
+`docs/MARSH_EAST_SOUTH_SWIM_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Marsh adjacent swimming turns complete
+
+West/south and its reverse complete eight adjacent swimming turns. Forty
+frames rebuild exactly; native selection/handoff and pause/restore pass.
+Earlier frames and clearance remain unchanged. Four opposite swimming turns
+and twenty-four cargo turns remain. Owner visual acceptance and release
+updates are pending. See `docs/MARSH_WEST_SOUTH_SWIM_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Marsh swimming turn coverage
+
+All twelve swimming turns are installed. Four half-turns compose existing
+quarter-turns through identical cardinal poses, without new art or mirroring.
+Seventy-six turn frames reproduce exactly; native handoff and pause/restore
+checks pass. Owner motion acceptance remains open. Twenty-four cargo turns
+and release testing remain. See `docs/MARSH_OPPOSITE_SWIM_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Marsh carrying turn start
+
+East/north carrying turns are installed with front-held cargo naturally
+occluded by the rear-facing torso. Ten frames reproduce exactly, native
+handoffs and pause/restore pass. Owner motion acceptance remains open.
+Twenty-two cargo turns remain. See `docs/MARSH_CARRY_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Marsh west/north carrying
+
+Independent west/north carrying poses bring dry-carry coverage to four turns.
+Scale correction preserves body height; case remains in front and becomes
+occluded in rear view. Twenty carry frames reproduce exactly. Native handoff
+and save/restore pass; owner acceptance remains open. Twenty cargo turns remain.
+See `docs/MARSH_WEST_CARRY_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Marsh east/south carrying
+
+East/south carrying adds two frontward turns with retained waist-height case
+and exact current endpoints. Thirty carry frames reproduce exactly; native
+handoff and save/restore pass. Earlier art and clearance unchanged. Owner
+acceptance open; eighteen cargo turns remain. See
+`docs/MARSH_SOUTH_CARRY_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Adjacent carrying turns
+
+West/south completes all eight adjacent carrying turns. Forty frames reproduce
+exactly; native handoff and pause/restore checks pass. Earlier art and clearance
+remain unchanged. Owner acceptance open; sixteen cargo turns remain. See
+`docs/MARSH_WEST_SOUTH_CARRY_2026-09-22.md`.
+
+
+### September 22, 2026 - Carrying half-turn coverage
+
+Marsh now has all twelve swimming and twelve dry-carry turns. Half-turns use
+authored quarter-turns with exact cardinal joins; no new art or mirroring.
+Twelve swimming-with-cargo turns remain. Bill, Veld and Branforth have all
+three turn families bare and helmeted. Counts are coverage, not owner visual
+acceptance. See `docs/MARSH_CARRY_HALF_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Loaded swimming foundation defect
+
+Marsh swim-carry east is empty-handed and has no separate rendered case.
+An east loaded-swim loop candidate is prepared, not installed. Fix directional
+base art and pickup/unload joins before the twelve missing cargo swim turns.
+Coverage counts do not certify cargo visibility. See
+`docs/MARSH_SWIM_CARGO_FOUNDATION_2026-09-22.md`.
+
+
+### September 22, 2026 - East loaded swimming installed
+
+Marsh east underwater pickup now reaches/grips a visible case and joins a
+prone loaded swim loop. Twelve selected frames reproduce; native playback and
+93 route samples pass. Other three loaded directions remain empty-handed and
+need repair before twelve turn clips. Owner/full-expedition acceptance open.
+See `docs/MARSH_LOADED_SWIM_EAST_2026-09-22.md`.
+
+
+### September 22, 2026 - West loaded swimming
+
+West underwater pickup and loaded loop now retain the case, with exact
+salvage and loaded endpoints. East repair remains unchanged. Native player
+and asset validation pass; normal expedition and owner review remain open.
+North/south base repairs and twelve cargo swim turns remain. See
+`docs/MARSH_LOADED_SWIM_WEST_2026-09-22.md`.
+
+
+### September 22, 2026 - North loaded swimming
+
+North pickup and loaded loop use compact foreshortened rear poses with hands
+gripping cargo ahead of the torso. Elongated source01 was replaced by source02.
+East/west art unchanged; native player and asset checks pass. South base repairs
+and twelve turns remain. Owner expedition review open. See
+`docs/MARSH_LOADED_SWIM_NORTH_2026-09-22.md`.
+
+
+### September 22, 2026 - Four-direction loaded swimming
+
+South pickup and loaded loop complete all four base replacements. Both hands
+hold the case in front below the face, with compact prone foreshortening.
+All48 selected frames reproduce; native playback and route checks pass.
+Twelve swimming-with-cargo turns and owner expedition review remain. See
+`docs/MARSH_LOADED_SWIM_SOUTH_2026-09-22.md`.
+
+
+### September 22, 2026 - Loaded-swimming turns complete
+
+Marsh now has all twelve loaded-swimming turns, completing the three turn
+families. Four independent corner sheets preserve forward case grip and
+foreshortening; corrected third angles avoid premature cardinal poses.
+Opposite turns compose exact shared cardinal endpoints. All76 new frames
+reproduce; native playback, handoff and route gates pass. Full expedition
+and owner motion acceptance remain open. See
+`docs/MARSH_SWIM_CARRY_TURNS_2026-09-22.md`.
+
+
+### September 22, 2026 - Expedition integration correction
+
+Marsh real pickup now maps the controller slot to the complete authored clip;
+exterior turns no longer require station floor. Earlier isolated-player checks
+did not establish these game integrations. Delivery and both recall cases pass.
+Airlock drainage still changes prone cargo swimming directly to standing carry;
+this transition needs authored visual repair. See
+`docs/MARSH_EXPEDITION_PRESENTATION_2026-09-22.md`.
+
+
+### September 22, 2026 - Cargo drainage rise
+
+Four-facing Marsh cargo rise art now follows chamber drainage, preserving grip.
+Hold planted feet through pressure equalization; start the carry stride only
+on exit. North grip lowers to waist with natural torso occlusion. All24 frames
+reproduce; native delivery and recall drainage checks pass. Rotated journeys
+and owner acceptance remain open. See `docs/MARSH_CARGO_DRAIN_2026-09-22.md`.
+
+September 23 human cryopod handoff: spent pods remain open after crew release. Preserve the final exit pose's lid, housing, canvas and anchor in the empty art rather than swapping to a closed equipment crop. Existing thaw timing and crew release rules remain unchanged. Bill/Veld/Branforth empty-open poses rebuild with tools/build_cryo_open_pods.py; Veld paid recovery and native pause/Continue pass. See docs/CRYO_OPEN_HANDOFF_2026-09-23.md. Current test packages predate this change.

@@ -140,3 +140,42 @@ Fire correction: the initial warm-color key left pale checkerboard fringe that
 owner review caught. Remove only exterior-connected pale residue, preserving
 existing gaps and bright cores; filling every enclosed hole restores checkerboard
 inside flame tongues. Review corrected runtime frames on both light and dark.
+
+
+For bought console feedback, reuse the library operating_screens registration
+when it fits the source instead of adding a room-specific renderer. Screen rectangles
+use absolute sheet coordinates. Keep the trace inside the physical display, retain
+source pixels and gate it by room operating state. Native pixel tests should compare
+active clocks, off-state clocks, held-clock parity and the changed-pixel bounds.
+Classify the test as native explicitly if the runner mistakes a headless rejection
+for a headless-safe capture guard. A held-clock check alone does not test UI pause.
+
+Live pause verification for retained station rooms must inspect the room content
+canvas view_state.machine_clock. The shared renderer's machine_clock is temporarily
+set during painting and restored, so reading it afterward can falsely report a
+frozen animation. Use the actual pause-button signal and process path, and state
+when stepping is manual. Pair this clock check with native effect bounds/off-state
+checks; neither alone proves the entire rendered live-control journey.
+
+Ordinary library polygons are now retained between state changes; operating_screens
+are live only when the room operates. Custom/portable props keep source-renderer
+classification. Any new clock-driven library draw feature must update retention
+classification and direct/retained parity coverage together. Compare a failing
+broad pixel test against the same worktree without the candidate before attributing
+it to an optimization. Keep unchanged baseline failures open; do not widen pixel
+tolerances to turn them green. Scope capture comparisons to files produced by the
+current test; old captures in shared output can inflate the apparent pair count.
+
+Copied-prop animation lesson: instance IDs such as copy/mining_tether#2 belong to
+layout identity; source IDs belong to renderer animation classification. Resolve
+copy_source before is_animated_prop just as drawing does, without mutating the
+instance dictionary. Otherwise a correctly drawn duplicate can freeze once
+retained. The September 21 repair preserves owner placement and closes the prior
+station-parity discrepancy with all 31 current pairs exactly equal in RGB.
+
+For retained-content timing, reset per-canvas paint counters before each measured
+frame or exclude nonparticipating canvases. Culled canvases can retain an old
+draw_usec value that makes a close-view sum falsely resemble overview cost. Pair
+classification modes within one process, preserve raw samples and inspect camera
+framing. Reduced script-side submission time is not automatically reduced GPU
+rendering or an ordinary gameplay FPS gain.

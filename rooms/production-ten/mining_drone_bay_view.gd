@@ -41,18 +41,10 @@ func draw_room_floor(center: Vector2) -> void:
 	if dressing!=null: dressing.floor()
 
 func draw_wall(rect: Rect2,horizontal: bool) -> void:
-	var top := Rect2(rect.position-Vector2(0,3),rect.size)
-	painter.draw_rect(Rect2(top.position+Vector2(0,4),top.size),Color("292d2e"))
-	var span := rect.size.x if horizontal else rect.size.y
-	var cursor := 0.0
-	while cursor<span:
-		var length := minf(48,span-cursor)
-		var target := Rect2(top.position+Vector2(cursor,0),Vector2(length,top.size.y)) if horizontal else Rect2(top.position+Vector2(0,cursor),Vector2(top.size.x,length))
-		painter.draw_texture_rect_region(life_texture,target,Rect2(223,39,122,58) if horizontal else Rect2(50,118,39,169))
-		cursor+=length
+	preload("res://rooms/whole-room/department_wall_material.gd").wall(painter,rect,horizontal,"engineering")
 
 func draw_cap(rect: Rect2) -> void:
-	painter.draw_texture_rect_region(life_texture,Rect2(rect.position-Vector2(0,3),rect.size),Rect2(52,37,48,44))
+	preload("res://rooms/whole-room/department_wall_material.gd").cap(painter,rect,"engineering")
 
 func effect_marks(prop: Dictionary,time: float) -> Array:
 	var marks: Array=[]

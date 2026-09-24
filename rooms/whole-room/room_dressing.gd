@@ -60,6 +60,11 @@ func draw(prop: Dictionary) -> bool:
 	if not prop.registration.get("dressing",false): return false
 	var spec: Dictionary=prop.registration.spec
 	draw_sprite(prop,spec.texture)
+	# Small registered material repairs preserve the source sheet and footprint.
+	for patch in spec.get("patches",[]):
+		var points:=PackedVector2Array()
+		for point in patch.points: points.append(room.life_point(prop,Vector2(point[0],point[1])))
+		room.painter.draw_colored_polygon(points,Color(patch.color))
 	# Neutralize generated bright lenses offline instead of dimming the whole prop.
 	for lens in spec.get("lenses",[]):
 		var points := PackedVector2Array()

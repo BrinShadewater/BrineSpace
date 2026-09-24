@@ -131,6 +131,11 @@ def run(argv=None) -> int:
         tests = [t for t in tests if t.stem in wanted]
     if args.only:
         wanted = {name.strip() for name in args.only.split(",")}
+        missing = wanted - {t.stem for t in tests}
+        if missing:
+            print("Requested tests unavailable in this selection:", ", ".join(sorted(missing)))
+            print("This runner discovers Godot .gd tests. Run Python checks with python tests/<name>.py; check subsystem/playtest filters too.")
+            return 2
         tests = [t for t in tests if t.stem in wanted]
 
     lane_wanted = "native" if args.native else "headless"

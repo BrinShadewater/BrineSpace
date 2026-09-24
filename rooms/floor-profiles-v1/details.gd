@@ -49,6 +49,13 @@ static func _resolve_uncached(view: Node, profile: Dictionary) -> Dictionary:
 		var override: Dictionary=spec.get("rotations",{}).get(str(view.quarter),{})
 		for key in override: spec[key]=override[key]
 		if Art.retired_cable(str(spec.asset)): continue
+		var saved_edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(view)
+		var deleted:=false
+		for host_id in spec.hosts:
+			var detail_id: String="decor/"+str(spec.asset)+"/"+str(host_id)
+			if saved_edits.has(detail_id) and saved_edits[detail_id]==null: deleted=true
+		# A returned detail must not reappear beside a different fallback host.
+		if deleted: continue
 		var hosts: Array=[]
 		for candidate_id in spec.hosts:
 			for prop in view.props:

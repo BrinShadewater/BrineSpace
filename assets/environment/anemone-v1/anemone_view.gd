@@ -1,6 +1,6 @@
 extends RefCounted
 ## Static low reef animals beneath rooms; no growth or harvest state.
-const ROOT := "res://assets/environment/anemone-v1/"
+const ROOT := "res://legacy/default/assets/environment/anemone-v1/"
 const SOURCES := {
     "low-anemones": "low-anemones-v1.png"
 }
@@ -13,7 +13,7 @@ var textures: Dictionary = {}
 func prepare() -> void:
 	if not textures.is_empty(): return
 	var source := Image.new()
-	if source.load(ROOT+SOURCES["low-anemones"])==OK:
+	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["low-anemones"])==OK:
 		textures["low-anemones"]=ImageTexture.create_from_image(source)
 func render_into(canvas: CanvasItem, cell_size: float) -> void:
 	prepare()

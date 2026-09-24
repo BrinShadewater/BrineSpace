@@ -113,7 +113,9 @@ static func apply(room, asset: String) -> bool:
 	var signature:=hash([asset,room.quarter,revision]) if reuse_layout_store else hash([asset,room.quarter,selected,room.props])
 	if room.get_meta("layout_apply_signature",-1)==signature:
 		if not reuse_layout_store: return false
-		var stamped := true
+		# Checking only survivors accepts both a shortened list and an empty one.
+		# Match the applied count as well so saved library props can be restored.
+		var stamped: bool = room.get_meta("layout_apply_count",-1)==room.props.size()
 		for prop in room.props:
 			if prop.get("_layout_stamp",-1)!=signature: stamped=false; break
 		if stamped: return false
@@ -185,6 +187,7 @@ static func apply(room, asset: String) -> bool:
 	if reuse_layout_store:
 		for prop in room.props: prop._layout_stamp=signature
 		room.set_meta("layout_apply_signature",signature)
+		room.set_meta("layout_apply_count",room.props.size())
 	else:
 		room.set_meta("layout_apply_signature",hash([asset,room.quarter,selected,room.props]))
 	return true

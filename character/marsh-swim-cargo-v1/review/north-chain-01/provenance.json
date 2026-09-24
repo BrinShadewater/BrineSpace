@@ -1,0 +1,94 @@
+{
+  "sources": {
+    "north-loop-02.png": "260d37060fbd90651957da0b8dda46e1397fc04dcba2a242cd34128deed0a105",
+    "north-pickup-01.png": "b751ce175c225eeaeb5ccb59a4f44e6af6f40795591fb1b566b438e294a9c577",
+    "salvage-north-endpoint.png": "ff81571f02658e8f7870cf4341baff533da6a03acac49292946d33bb54c24b4d"
+  },
+  "pickupRegistration": [
+    {
+      "cell": [
+        0,
+        0,
+        543,
+        724
+      ],
+      "anchor": [
+        332,
+        282
+      ],
+      "target": [
+        112,
+        80
+      ],
+      "scale": 0.28,
+      "offset": [
+        19,
+        1
+      ]
+    },
+    {
+      "cell": [
+        543,
+        0,
+        1086,
+        724
+      ],
+      "anchor": [
+        848,
+        311
+      ],
+      "target": [
+        112,
+        98
+      ],
+      "scale": 0.28,
+      "offset": [
+        27,
+        11
+      ]
+    },
+    {
+      "cell": [
+        1086,
+        0,
+        1629,
+        724
+      ],
+      "anchor": [
+        1358,
+        331
+      ],
+      "target": [
+        112,
+        119
+      ],
+      "scale": 0.28,
+      "offset": [
+        36,
+        26
+      ]
+    },
+    {
+      "cell": [
+        1629,
+        0,
+        2172,
+        724
+      ],
+      "anchor": [
+        1851,
+        426
+      ],
+      "target": [
+        112,
+        137
+      ],
+      "scale": 0.28,
+      "offset": [
+        50,
+        18
+      ]
+    }
+  ],
+  "derived": "Pickup uses exact salvage first frame and exact loaded-swim endpoint. Four loop poses played 0,1,2,3,2,1 to retain six-frame timing."
+}

@@ -10,14 +10,14 @@ func _ready() -> void:
 	show_actor=false
 	for id in ["fridge","rack"]:
 		var image:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, "res://rooms/underwater/cold-store-v1/"+id+"-v2.png")
+		preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/rooms/underwater/cold-store-v1/"+id+"-v2.png")
 		textures[id]=ImageTexture.create_from_image(image)
 		regions[id]=Rect2(image.get_used_rect())
 	rebuild()
 func overhead_texture(id: String) -> ImageTexture:
 	var source: String="cooler" if id.begins_with("cooler") else id
 	var key:=source+"-q"+str(quarter)
-	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://assets/rooms/cold-store/pack/"+key+".png")
+	if not overhead_textures.has(key):overhead_textures[key]=load_source_texture("res://legacy/retired/assets/rooms/cold-store/pack/"+key+".png")
 	return overhead_textures[key]
 func overhead_bounds(prop: Dictionary) -> Rect2:
 	var size:=Vector2(overhead_texture(prop.id).get_size())

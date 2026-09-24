@@ -1,6 +1,6 @@
 extends "res://rooms/whole-room/hydroponics_view.gd"
 ## Balanced full-wall installation; original view is the reversible baseline.
-var full_wall = preload("res://rooms/full-wall-v1/split_wall_prop.gd").new("hydroponics-wall")
+var full_wall = preload("res://rooms/full-wall-v1/split_wall_prop.gd").new("hydroponics-wall","room-hydroponics_bay")
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)

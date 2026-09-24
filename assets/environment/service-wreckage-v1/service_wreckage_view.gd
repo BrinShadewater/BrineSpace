@@ -1,6 +1,6 @@
 extends RefCounted
 ## Fixed small debris below station geometry. Room-sized wrecks live in WreckField.
-const ROOT := "res://assets/environment/service-wreckage-v1/"
+const ROOT := "res://legacy/default/assets/environment/service-wreckage-v1/"
 const SOURCES := {
     "collapsed-support": "collapsed-support-v1.png",
     "torn-cable-harness": "torn-cable-harness-v1.png",
@@ -30,7 +30,7 @@ func prepare() -> void:
 	initialized = true
 	for id in SOURCES:
 		var source := Image.new()
-		if source.load(ROOT+SOURCES[id])==OK:
+		if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES[id])==OK:
 			textures[id] = ImageTexture.create_from_image(source)
 
 func render_into(canvas: CanvasItem, cell_size: float) -> void:

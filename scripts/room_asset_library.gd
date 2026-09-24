@@ -253,3 +253,34 @@ static func finish_texture(source: String, wait:=false) -> bool:
 	if job.result.has("image"): source_textures[source]=ImageTexture.create_from_image(job.result.image)
 	image_jobs.erase(source)
 	return true
+
+# One cached complementary atlas pair preserves the original UV geometry exactly.
+# These are presentation copies; source textures, collision and owner data stay intact.
+static var bunk_layer_cache: Dictionary={}
+static func bunk_layers(prop: Dictionary) -> Array:
+	if base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))!="library/tileset-mb2-14":return []
+	var texture: Texture2D=prop.library_texture
+	var key:=texture.get_instance_id()
+	if not bunk_layer_cache.has(key):
+		var back:=texture.get_image()
+		var front:=Image.create(back.get_width(),back.get_height(),false,Image.FORMAT_RGBA8)
+		for region in [Rect2i(177,883,49,141),Rect2i(10,783,14,241),Rect2i(24,997,153,18)]:
+			if not Rect2i(Vector2i.ZERO,back.get_size()).encloses(region):return []
+			front.blit_rect(back,region,region.position)
+			back.fill_rect(region,Color.TRANSPARENT)
+		bunk_layer_cache[key]=[ImageTexture.create_from_image(back),ImageTexture.create_from_image(front)]
+	var layers: Array=[]
+	for i in range(2):
+		var layer:=prop.duplicate()
+		layer.library_texture=bunk_layer_cache[key][i]
+		layers.append({"kind":"prop","sort_y":float(prop.sort_y)+i*0.02,"prop":layer})
+	return layers
+
+static var exterior_assets: Dictionary={}
+static var exterior_loaded := false
+static func is_exterior(id: String) -> bool:
+	if not exterior_loaded:
+		exterior_loaded=true
+		var parsed=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/tileset-library/exterior.json"))
+		if parsed is Dictionary: exterior_assets=parsed.get("assets",{})
+	return exterior_assets.has(base_id(id).trim_prefix("library/tileset-"))

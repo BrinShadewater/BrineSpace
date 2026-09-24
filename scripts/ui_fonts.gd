@@ -11,6 +11,7 @@ const SEMIBOLD := "res://assets/fonts/BarlowSemiCondensed-SemiBold.ttf"
 const MONO_NAMES := ["Cascadia Mono", "Consolas", "Lucida Console"]
 
 static var _cache := {}
+static var _card_theme: Theme
 
 static func _load(path: String) -> Font:
 	if _cache.has(path): return _cache[path]
@@ -43,3 +44,22 @@ static func apply(theme: Theme, size := 17) -> Theme:
 	theme.set_font("mono_font", "RichTextLabel", mono_font())
 	theme.set_font("font", "Button", interface_medium())
 	return theme
+
+# Cards rotate and grow on hover. Keep a separate cached distance-field face so
+# their transforms do not resample small bitmap glyphs or alter the rest of the UI.
+static func card_theme() -> Theme:
+	if _card_theme != null: return _card_theme
+	_card_theme = apply(Theme.new())
+	var regular := _card_font(interface_font())
+	_card_theme.default_font = regular
+	_card_theme.set_font("normal_font", "RichTextLabel", regular)
+	_card_theme.set_font("bold_font", "RichTextLabel", _card_font(interface_bold()))
+	_card_theme.set_font("font", "Button", _card_font(interface_medium()))
+	return _card_theme
+
+static func _card_font(source: Font) -> Font:
+	if not source is FontFile: return source
+	var font: FontFile = source.duplicate()
+	font.multichannel_signed_distance_field = true
+	font.msdf_size = 48
+	return font

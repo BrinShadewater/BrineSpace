@@ -8,7 +8,7 @@ func _ready() -> void:
 	rebuild()
 func rebuild() -> void:
 	props=[]
-	layout=[{"cell":Vector2i.ZERO,"rotation":quarter,"kind":1 if room_id=="corridor" else 2 if room_id=="corner" else 4}]
+	layout=[{"cell":Vector2i.ZERO,"rotation":quarter,"kind":1 if room_id=="corridor" else 4 if room_id=="corner" else 0}]
 	edges=Geometry.edges(layout)
 func draw_room_world(include_floor:=true) -> void:
 	if include_floor: draw_room_floor(Vector2.ZERO)
