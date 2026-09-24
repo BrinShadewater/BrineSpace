@@ -20,10 +20,14 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 	elif room_id=="airlock":
 		preload("res://rooms/underwater/airlock-v4/fittings.gd").draw_wall(canvas,cell,wall_view)
 	else:
-		Catalog.face(canvas,room_id,Rect2(-192,Riser.TOP,384,Riser.HEIGHT))
-		# Department-specific mounts; windows retain their native aspect ratio.
 		var edits: Dictionary={} if wall_view==null else preload("res://scripts/room_layout_store.gd").surface_positions(wall_view)
-		for item in (decorations(room_id,edits) if wall_view!=null and wall_view.has_meta("layout_editor_preview") else []):
+		# The Studio's Walls category saves a riser material per room ("wall/riser").
+		var chosen:=str(edits.get("wall/riser",""))
+		Catalog.face(canvas,room_id,Rect2(-192,Riser.TOP,384,Riser.HEIGHT),1.0,chosen)
+		# Department-specific mounts; windows retain their native aspect ratio. Rooms
+		# redesigned with station props v2 carry none of the retired fittings.
+		var fittings: bool=wall_view!=null and wall_view.has_meta("layout_editor_preview") and room_id in preload("res://scripts/room_asset_library.gd").LEGACY_ART_ROOMS
+		for item in (decorations(room_id,edits) if fittings else []):
 			if edits.get("hidden/"+item.id,false): continue
 			var rect: Rect2=item.rect
 			canvas.draw_rect(Rect2(rect.position+Vector2(2,3),rect.size),Color(0,0,0,.13))
@@ -32,7 +36,7 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 			var v0:=1.0 if flip[1] else 0.0
 			canvas.draw_polygon(PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)]),PackedColorArray([Color(.73,.79,.78)]),PackedVector2Array([Vector2(u0,v0),Vector2(1-u0,v0),Vector2(1-u0,1-v0),Vector2(u0,1-v0)]),item.texture)
 
-		Catalog.cap(canvas,room_id,Rect2(-196,Riser.CAP_TOP,392,7))
+		Catalog.cap(canvas,room_id,Rect2(-196,Riser.CAP_TOP,392,7),chosen)
 		canvas.draw_line(Vector2(-192,Riser.TOP+1),Vector2(192,Riser.TOP+1),Color("23363a"),2)
 		# The raised face replaces the low north wall. Its foot must overlap
 		# the deck by the same eight units as the side walls, hiding the seam.

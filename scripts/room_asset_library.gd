@@ -2,8 +2,34 @@ extends RefCounted
 ## Registered artwork only; no unprocessed source images enter the room renderer.
 static var catalog: Dictionary={}
 static var source_textures: Dictionary={}
+const STATION_PROPS := "res://rooms/station-props-v2/props.json"
+# Rooms that keep their pre-v2 art for now (owner, 2026-09-24). Every other room shows
+# only station props, plus the live drone and dock in drone bays.
+const LEGACY_ART_ROOMS := ["brine_core","corridor","corner","tee_corridor"]
+static func is_station_prop(id: String) -> bool:
+	return base_id(id).begins_with("library/sp-")
+static func role_of(prop: Dictionary) -> String:
+	var id:=base_id(str(prop.get("variant_source",prop.get("copy_source",prop.get("id","")))))
+	return str(entries().get(id,{}).get("role",""))
+# Built-in view props and pre-v2 library props leave redesigned rooms. The drone and
+# its dock are live machinery (animation, charging, routes), not dressing.
+static func keeps_in_room(room_id: String, prop: Dictionary) -> bool:
+	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return true
+	var id:=str(prop.get("id",""))
+	if id.ends_with("_rov") or id.ends_with("_hatch"): return true
+	return is_station_prop(str(prop.get("copy_source",prop.get("variant_source",id))))
 static func entries() -> Dictionary:
 	if not catalog.is_empty(): return catalog
+	# Station props v2 (2026-09-24): cut from the owner's room designs. These are the
+	# only props the Studio offers; the older sources below stay loadable for the rooms
+	# and site scenery that still use them (BRINE Core, corridors, seabed dressing).
+	var station: Variant=JSON.parse_string(FileAccess.get_file_as_string(STATION_PROPS))
+	if station is Array:
+		for entry in station:
+			catalog["library/"+str(entry.id)]={
+				"data":entry,"label":str(entry.label),"width":float(entry.display_width),
+				"group":"station","category":str(entry.category),
+				"default_rooms":entry.get("default_rooms",[]),"role":str(entry.get("role",""))}
 	for file in DirAccess.get_files_at("res://rooms/full-wall-v1/registrations"):
 		if not file.ends_with(".json"): continue
 		var data=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+file))

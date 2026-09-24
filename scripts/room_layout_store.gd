@@ -148,6 +148,8 @@ static func apply(room, asset: String) -> bool:
 	room.props=room.props.filter(func(prop): return not (selected.has(str(prop.id)) and selected[str(prop.id)]==null))
 	# Common decorations stay in Studio; live rooms contain their specialist equipment only.
 	room.props=room.props.filter(func(prop): return not is_common_decoration(prop))
+	var room_id:=room_id_for(room,asset)
+	room.props=room.props.filter(func(prop): return preload("res://scripts/room_asset_library.gd").keeps_in_room(room_id,prop))
 	for prop in room.props:
 		var axes=selected.get("flip/"+str(prop.id),[false,false])
 		if not axes is Array or axes.size()!=2: axes=[false,false]
@@ -265,6 +267,14 @@ static func asset_for(room) -> String:
 		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")):
 			asset_paths[entry.view]=entry.asset
 	return str(asset_paths.get(room.get_script().resource_path,""))
+
+static var asset_rooms: Dictionary={}
+static func room_id_for(room, asset: String) -> String:
+	if "room_id" in room: return str(room.room_id)
+	if asset_rooms.is_empty():
+		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")):
+			asset_rooms[entry.asset]=entry.room
+	return str(asset_rooms.get(asset,""))
 
 static func surface_copies(items: Array, values: Dictionary) -> Array:
 	var result: Array=items.duplicate(true)

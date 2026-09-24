@@ -15,6 +15,14 @@ var tray_progress: ProgressBar
 var tray_pending_total:=0
 var library_filter: OptionButton
 var pack_filter: OptionButton
+const TRAY_CATEGORIES := ["Default","Common Props","Floors","Walls","Operations","Engineering","Science","Life Support","Recreation","Anomaly"]
+const TRAY_DEFAULT := 0
+const TRAY_COMMON := 1
+const TRAY_FLOORS := 2
+const TRAY_WALLS := 3
+const TRAY_FIRST_THEME := 4
+const STATION_THEMES := ["operations","engineering","science","life_support","recreation","anomaly"]
+const STATION_CATEGORY_NAMES := {"common":"Common Props","operations":"Operations","engineering":"Engineering","science":"Science","life_support":"Life Support","recreation":"Recreation","anomaly":"Anomaly"}
 var theme_filters: Dictionary={}
 var retire_button: Button
 # Assets the owner has marked for removal. Nothing is deleted here: the id is
@@ -515,37 +523,28 @@ func _ready() -> void:
 	title_row.add_child(tray_progress)
 	var filter_row:=HBoxContainer.new()
 	library_filter=OptionButton.new()
-	for label in ["Room Default","Common props","Wall installations","All assets","Common · Seating","Common · Storage & carts","Common · Small props","Common · Wall fittings"]: library_filter.add_item(label)
-	var themes: Array=[]
+	# Station props v2 (owner, 2026-09-24): Default, Common Props, Floors, Walls, then
+	# the six departments. Only the owner's cut-out props are offered.
+	for label in TRAY_CATEGORIES: library_filter.add_item(label)
+	for i in range(STATION_THEMES.size()): theme_filters[TRAY_FIRST_THEME+i]=STATION_THEMES[i]
+	tileset_categories=STATION_CATEGORY_NAMES.values()
+	favourites_filter=-1; in_room_filter=-1
 	var packs: Array=[]
-	for id in Library.entries():
-		if Library.is_exterior(id): continue
-		var entry: Dictionary=Library.entries()[id]
-		if entry.get("group","")!="tileset": continue
-		var theme:=str(entry.get("category",""))
-		if not theme.is_empty() and theme not in themes: themes.append(theme)
-		var pack:=str(entry.get("tileset",""))
-		if not pack.is_empty() and pack not in packs: packs.append(pack)
-	themes.sort(); packs.sort()
-	tileset_categories=themes
-	favourites_filter=library_filter.item_count
-	library_filter.add_item("★ Favourites")
-	in_room_filter=library_filter.item_count
-	library_filter.add_item("In this room")
-	for theme in themes:
-		theme_filters[library_filter.item_count]=theme
-		library_filter.add_item(str(theme))
-	library_filter.add_item("Marked for removal")
 	library_filter.size_flags_horizontal=Control.SIZE_EXPAND_FILL; library_filter.clip_text=true; library_filter.fit_to_longest_item=false
 	library_filter.tooltip_text="What kind of prop to list."
 	tray.add_child(filter_row); filter_row.add_child(library_filter)
-	library_filter.item_selected.connect(func(_i): rebuild_library())
+	library_filter.item_selected.connect(func(i):
+		# Floors and Walls pick finishes rather than props: switch to the matching layer.
+		if i==TRAY_FLOORS: layers.select(1); layers.item_selected.emit(1)
+		elif layer==1: layers.select(0); layers.item_selected.emit(0)
+		rebuild_library())
 	pack_filter=OptionButton.new()
 	pack_filter.add_item("All tilesets")
 	for pack in packs: pack_filter.add_item(str(pack))
 	pack_filter.tooltip_text="Narrow the tray to one art pack. Combine with the filter above to browse a pack by kind of prop."
 	pack_filter.size_flags_horizontal=Control.SIZE_EXPAND_FILL; pack_filter.clip_text=true; pack_filter.fit_to_longest_item=false
 	filter_row.add_child(pack_filter)
+	pack_filter.hide() # Station props come from one set of designs; there are no packs.
 	pack_filter.item_selected.connect(func(_i): rebuild_library())
 	load_retired()
 	retire_button=Button.new(); retire_button.text="Mark for removal"; retire_button.disabled=true
@@ -553,6 +552,7 @@ func _ready() -> void:
 	# Paired controls: stacked one per row they squeezed the tray to a single row of previews.
 	var marks_row:=HBoxContainer.new(); tray.add_child(marks_row)
 	retire_button.size_flags_horizontal=Control.SIZE_EXPAND_FILL; retire_button.clip_text=true; marks_row.add_child(retire_button)
+	marks_row.hide() # No removal list or favourites in the v2 tray (owner, 2026-09-24).
 	retire_button.pressed.connect(func(): mark_selected(retired,save_retired))
 	load_marks()
 	favourite_button=Button.new(); favourite_button.text="☆ Star"; favourite_button.disabled=true
@@ -566,16 +566,18 @@ func _ready() -> void:
 	var refile_row:=HBoxContainer.new(); tray.add_child(refile_row)
 	move_to.size_flags_horizontal=Control.SIZE_EXPAND_FILL; move_to.clip_text=true; refile_row.add_child(move_to)
 	move_to.item_selected.connect(func(i):
-		if i>0: recategorise(selected_library_id(),str(move_to.get_item_text(i)))
+		# Items show department names; the catalog stores their keys.
+		if i>0: recategorise(selected_library_id(),str(STATION_CATEGORY_NAMES.find_key(move_to.get_item_text(i))))
 		move_to.select(0))
 	rename_field=LineEdit.new(); rename_field.placeholder_text="Rename selected prop…"; rename_field.editable=false
 	rename_field.tooltip_text="Give this prop a name of your own. It replaces the library label in the tray, the sidebar and search, and is saved to names.json. Clear the field to go back to the library label."
 	tray.add_child(rename_field)
+	rename_field.hide() # Tileset-library tools; station props are named from their designs.
 	rename_field.text_submitted.connect(func(text): rename(selected_library_id(),text))
 	# The packs ship one rack with different guns, one monitor with different screens.
 	# One tile per family keeps the tray readable; the button opens the family.
 	load_variants()
-	var family_row:=HBoxContainer.new(); tray.add_child(family_row)
+	var family_row:=HBoxContainer.new(); tray.add_child(family_row); family_row.hide()
 	group_toggle=CheckButton.new(); group_toggle.text="Group look-alikes"; group_toggle.button_pressed=group_variants
 	group_toggle.tooltip_text="Show one tile for each family of near-identical props (marked ×N). Nothing is hidden for good: select the tile and press Variants."
 	group_toggle.size_flags_horizontal=Control.SIZE_EXPAND_FILL; family_row.add_child(group_toggle)
@@ -585,7 +587,7 @@ func _ready() -> void:
 	variants_button.pressed.connect(func(): show_variants(-1 if variant_focus>=0 else int(variant_group.get(selected_library_id(),-1))))
 	split_button=Button.new(); split_button.text="Split in two"; split_button.disabled=true
 	split_button.tooltip_text="For two objects the scanner boxed as one (a chair stacked on a chair). Cuts at the emptiest line through the middle, keeps this entry as the first part and adds the second to the tray. Saved to props.json."
-	refile_row.add_child(split_button)
+	refile_row.add_child(split_button); split_button.hide()
 	split_button.pressed.connect(func(): if split_parts(selected_library_id()).is_empty(): split_selected() else: confirm_rejoin())
 	library_search=LineEdit.new(); library_search.placeholder_text="Search room artwork"; tray.add_child(library_search)
 	library_search.text_changed.connect(func(_text): rebuild_library())
@@ -632,9 +634,8 @@ func _ready() -> void:
 	library_list.mouse_exited.connect(func(): show_hover(-1))
 	# Right-click an entry to mark or restore it without reaching for the button.
 	library_list.item_clicked.connect(func(i,_at,button):
-		if button==MOUSE_BUTTON_RIGHT:
-			library_list.select(i)
-			toggle_retired(str(library_list.get_item_metadata(i))))
+		var picked:=str(library_list.get_item_metadata(i))
+		if picked.begins_with(RISER_PICK) and button==MOUSE_BUTTON_LEFT: apply_riser(picked.trim_prefix(RISER_PICK)))
 	save_feedback=Label.new(); column.add_child(save_feedback)
 	var bottom_actions:=HBoxContainer.new()
 	bottom_actions.name="RoomActions"
@@ -714,9 +715,12 @@ func load_room() -> void:
 	add_child(room)
 	room.hide()
 	room.configure_embedded(quarter,[],false,0.0)
+	room.props=room.props.filter(func(prop): return Library.keeps_in_room(str(entries[index].room),prop))
 	var corridor_room: bool=str(entries[index].room) in ["corridor","corner","tee_corridor"]
-	for i in [1,2,3,4]: layers.set_item_disabled(i,corridor_room and i!=1)
-	if corridor_room: layer=0
+	# Riser wall decorations use retired art; redesigned rooms leave that layer off.
+	var legacy_art: bool=str(entries[index].room) in Library.LEGACY_ART_ROOMS
+	for i in [1,2,3,4]: layers.set_item_disabled(i,(corridor_room and i!=1) or (i==3 and not legacy_art))
+	if corridor_room or (layer==3 and not legacy_art): layer=0
 	base_props=room.props.duplicate(true)
 	base_details={}
 	defaults={"__free_placement":true}
@@ -767,6 +771,8 @@ func refresh(move_only:=false) -> void:
 	Store.copies(room,draft)
 	Library.apply_variants(room,draft)
 	room.props=room.props.filter(func(prop): return not (draft.has(str(prop.id)) and draft[str(prop.id)]==null))
+	# Saved layouts from before station props v2 still name retired props; they stay out.
+	room.props=room.props.filter(func(prop): return Library.keeps_in_room(str(entries[index].room),prop))
 	free_placement.set_pressed_no_signal(bool(draft.get("__free_placement",true)))
 	for prop in room.props:
 		prop.layout_flip=Store.flip_axes(room,str(prop.id))
@@ -1493,7 +1499,7 @@ func update_retire_button() -> void:
 		var all_starred:=not ids.is_empty() and ids.all(func(i): return favourites.has(i))
 		favourite_button.text=(("★ Unstar %d" % ids.size()) if all_starred else ("☆ Star %d" % ids.size())) if many else ("★ Starred" if favourites.has(id) else "☆ Star")
 	if move_to!=null:
-		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="tileset"
+		move_to.disabled=id.is_empty() or str(Library.entries().get(id,{}).get("group",""))!="station"
 	if variants_button!=null:
 		var family:=int(variant_group.get(id,-1))
 		if variant_focus>=0:
@@ -1534,8 +1540,14 @@ func rebuild_library() -> void:
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
 	tray_pending_total=0
 	library_list.clear()
-	var only_retired:=library_filter.selected==library_filter.item_count-1
-	if library_filter.selected in [0,3] and not only_retired and pack.is_empty():
+	var only_retired:=false
+	if library_filter.selected==TRAY_FLOORS:
+		library_list.add_item("Pick a floor finish in the FLOOR FINISH list above.",thumbnail_placeholder)
+		library_list.set_item_selectable(library_list.item_count-1,false)
+		tray_total=0; update_pager(); return
+	if library_filter.selected==TRAY_WALLS:
+		list_riser_walls(); return
+	if library_filter.selected==TRAY_DEFAULT and pack.is_empty():
 		for prop in base_props:
 			var id:=str(prop.id)
 			if Library.is_exterior(id): continue
@@ -1552,7 +1564,6 @@ func rebuild_library() -> void:
 	var seen_families: Dictionary={}
 	# family_variants scans the whole catalog; with a library this size calling
 	# it per entry is quadratic and froze the Studio on open. Once per rebuild.
-	var room_family: Array=Library.family_variants(entries[index].asset) if library_filter.selected==0 else []
 	var room_id: String=str(entries[index].room)
 	for id in Library.entries():
 		if Library.is_exterior(id): continue
@@ -1563,14 +1574,15 @@ func rebuild_library() -> void:
 			if int(variant_group.get(id,-1))!=variant_focus or retired.has(id): continue
 		elif only_retired:
 			if not retired.has(id): continue
-		elif retired.has(id): continue
-		if not in_focus and (not only_retired and library_filter.selected==0 and id not in room_family and room_id not in entry.get("default_rooms",[])): continue
-		if not in_focus and (not only_retired and library_filter.selected>=4 and library_filter.selected<=7 and (entry.get("group","")!="common" or entry.get("category","wall")!=["seating","storage","small","wall"][library_filter.selected-4])): continue
-		if not in_focus and (not only_retired and library_filter.selected==1 and entry.get("group","")!="common"): continue
-		if not in_focus and (not only_retired and library_filter.selected==2 and entry.get("group","") in ["common","tileset"]): continue
+		elif retired.has(id) and entry.get("group","")!="station": continue
+		# Only the owner's station props are offered; older sources stay loadable for
+		# the rooms that still use them but never appear here.
+		if entry.get("group","")!="station": continue
+		if not in_focus and library_filter.selected==TRAY_DEFAULT and room_id not in entry.get("default_rooms",[]): continue
+		if not in_focus and library_filter.selected==TRAY_COMMON and category_of(id,entry)!="common": continue
 		if not in_focus and (only_favourites and not favourites.has(id)): continue
 		if not in_focus and (only_in_room and not placed.has(id)): continue
-		if not in_focus and (not theme.is_empty() and (category_of(id,entry) if entry.get("group","")=="tileset" else str(entry.get("theme","")))!=theme): continue
+		if not in_focus and (not theme.is_empty() and category_of(id,entry)!=theme): continue
 		if not in_focus and (not pack.is_empty() and str(entry.get("tileset",""))!=pack): continue
 		var caption:=label_of(id,entry)
 		if entry.get("group","")=="tileset" and favourites.has(id): caption="★ "+caption
@@ -1605,7 +1617,35 @@ func rebuild_library() -> void:
 		library_list.set_item_selectable(library_list.item_count-1,false)
 		library_list.set_item_tooltip(library_list.item_count-1,
 			"The tray lists %d at a time so previews stay responsive. Use the pager below for the rest." % TRAY_LIMIT)
+const RiserCatalog=preload("res://rooms/whole-room/riser_catalog.gd")
+const RISER_PICK := "wall/riser:"
+# Walls: every riser material, department faces and room-specific ones alike. Picking
+# one saves "wall/riser" with this rotation, the same way a floor finish saves.
+func list_riser_walls() -> void:
+	var current:=str(draft.get("wall/riser",""))
+	var room_id:=str(entries[index].room)
+	var choices: Array=[""]
+	for group in RiserCatalog.catalog(): choices.append(str(group))
+	for group in choices:
+		var caption: String="Department default ("+RiserCatalog.material(room_id).replace("_"," ")+")" if group=="" else group.replace("_"," ").replace("-"," ").capitalize()
+		if group==current: caption="✓ "+caption
+		var thumb:=AtlasTexture.new()
+		var shown: String=RiserCatalog.material(room_id) if group=="" else group
+		thumb.atlas=RiserCatalog.texture(shown); thumb.region=RiserCatalog.source_rect(shown,"face")
+		library_list.add_item(caption,thumb)
+		library_list.set_item_metadata(library_list.item_count-1,RISER_PICK+group)
+		library_list.set_item_tooltip(library_list.item_count-1,caption+" — click to use this riser wall")
+	tray_total=choices.size(); update_pager()
+func apply_riser(group: String) -> void:
+	if comparing or str(draft.get("wall/riser",""))==group: return
+	var before:=draft.duplicate(true)
+	if group.is_empty(): draft.erase("wall/riser")
+	else: draft["wall/riser"]=group
+	history.append(before); future.clear(); dirty=true
+	library_signature.clear(); refresh()
+
 func add_library_asset(id: String, center: Vector2) -> bool:
+	if id.begins_with(RISER_PICK): return false
 	if Library.is_exterior(id): return false
 	if comparing: return false
 	if defaults.has(id) and draft.get(id)!=null:
@@ -1650,8 +1690,10 @@ func add_library_asset(id: String, center: Vector2) -> bool:
 	var prop:=Library.template(id)
 	if prop.is_empty(): return false
 	var before:=draft.duplicate(true)
-	var at: Vector2=center-prop.rect.size*place_scale*0.5
-	draft["size/"+id]=[place_scale,place_scale]
+	# Station props are cut at design scale; the shared tray scale was for tileset art.
+	var start_scale:=1.0 if Library.is_station_prop(id) else place_scale
+	var at: Vector2=center-prop.rect.size*start_scale*0.5
+	draft["size/"+id]=[start_scale,start_scale]
 	if snap.button_pressed: at=at.snapped(Vector2(6,6))
 	draft[id]=[at.x,at.y]; refresh()
 	if not issues().is_empty():

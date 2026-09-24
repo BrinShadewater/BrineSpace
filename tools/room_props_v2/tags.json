@@ -1,0 +1,97 @@
+{
+ "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects.",
+ "common": [
+  "science-extra14-1",
+  "science-extra14-2",
+  "science-extra14-3",
+  "science-extra14-4",
+  "recreation-extra1-1",
+  "recreation-extra1-2",
+  "recreation-extra1-3",
+  "recreation-extra1-4",
+  "recreation-extra3-1",
+  "recreation-extra3-2",
+  "recreation-extra3-3",
+  "recreation-extra3-4",
+  "recreation-extra3-5",
+  "recreation-extra3-6",
+  "recreation-extra3-7",
+  "recreation-extra3-8",
+  "recreation-extra4-1",
+  "recreation-extra4-2",
+  "recreation-extra4-3",
+  "recreation-extra4-4",
+  "recreation-extra2-3",
+  "life_support-extra1-1",
+  "life_support-extra1-2",
+  "life_support-extra1-3",
+  "life_support-extra1-4",
+  "storage_bay-1",
+  "storage_bay-2",
+  "storage_bay-3",
+  "storage_bay-4",
+  "storage_bay-5",
+  "storage_bay-6",
+  "storage_bay-7",
+  "observation_room-3",
+  "crew_lounge-3",
+  "crew_lounge-4"
+ ],
+ "roles": {
+  "crew_hab-3": "bunk",
+  "cold_store-1": "freezer",
+  "cold_store-2": "freezer",
+  "galley-2": "galley_counter",
+  "galley-4": "galley_counter",
+  "observation_room-3": "observation_sofa",
+  "life_support-5": "life_support_console",
+  "holographic_core-1": "holo_projector",
+  "holographic_core-3": "holo_chart"
+ },
+ "not_default": [
+  "mining_drone_bay-1",
+  "mining_drone_bay-3",
+  "salvage_drone_bay-1",
+  "salvage_drone_bay-3",
+  "construction_drone_bay-1",
+  "construction_drone_bay-3"
+ ],
+ "live_anchors": {
+  "mining_drone_bay-1": {
+   "mining_rov": [
+    90,
+    64
+   ]
+  },
+  "mining_drone_bay-3": {
+   "mining_hatch": [
+    90,
+    64
+   ]
+  },
+  "salvage_drone_bay-1": {
+   "salvage_rov": [
+    90,
+    64
+   ]
+  },
+  "salvage_drone_bay-3": {
+   "salvage_hatch": [
+    90,
+    64
+   ]
+  },
+  "construction_drone_bay-1": {
+   "construction_rov": [
+    90,
+    64
+   ]
+  },
+  "construction_drone_bay-3": {
+   "construction_hatch": [
+    90,
+    64
+   ]
+  }
+ }
+}

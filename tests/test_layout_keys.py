@@ -17,7 +17,9 @@ ROOMS = ROOT / "rooms/full-wall-v1"
 PREFIXES = {"size", "flip", "hidden", "order", "copy", "source", "library", "decor", "variant",
             "variant_extent", "portable", "lighting", "locked", "group",
             # Editor layers: floor tiles/finishes (floor_tile_tools.gd) and light/riser prop ids.
-            "tile", "floor", "light", "riser"}
+            "tile", "floor", "light", "riser",
+            # Studio Walls category: the room's chosen riser material ("wall/riser").
+            "wall"}
 POINT_PREFIXES = {"copy", "library", "decor", "light", "riser"}
 
 
@@ -28,6 +30,9 @@ def is_point(value):
 
 def library_ids():
     ids = {"library/" + p.stem for p in (ROOMS / "registrations").glob("*.json")}
+    # Station props v2: the owner's cut-out room props (room_asset_library.gd STATION_PROPS).
+    station = ROOT / "rooms/station-props-v2/props.json"
+    ids.update("library/" + entry["id"] for entry in json.loads(station.read_text(encoding="utf-8")))
     for entry in json.loads((ROOMS / "common-assets.json").read_text(encoding="utf-8")):
         ids.add("library/common-" + entry["id"])
     tilesets = ROOT / "rooms/tileset-library"

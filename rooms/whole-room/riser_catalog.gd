@@ -39,8 +39,8 @@ static func source_rect(group: String, part: String) -> Rect2:
 	var r: Array=catalog()[group][part]
 	return Rect2(r[0],r[1],r[2],r[3])
 
-static func face(canvas: CanvasItem, room_id: String, target: Rect2, light:=1.0) -> void:
-	var group:=material(room_id)
+static func face(canvas: CanvasItem, room_id: String, target: Rect2, light:=1.0, chosen:="") -> void:
+	var group:=chosen if catalog().has(chosen) else material(room_id)
 	var region:=source_rect(group,"face")
 	# Preserve the source scale for short corridor sections rather than squashing a whole wall.
 	var width:=region.size.y*target.size.x/target.size.y
@@ -48,6 +48,6 @@ static func face(canvas: CanvasItem, room_id: String, target: Rect2, light:=1.0)
 		region.position.x+=(region.size.x-width)*0.5;region.size.x=width
 	canvas.draw_texture_rect_region(texture(group),target,region,Color(light,light,light))
 
-static func cap(canvas: CanvasItem, room_id: String, target: Rect2) -> void:
-	var group:=material(room_id)
+static func cap(canvas: CanvasItem, room_id: String, target: Rect2, chosen:="") -> void:
+	var group:=chosen if catalog().has(chosen) else material(room_id)
 	canvas.draw_texture_rect_region(texture(group),target,source_rect(group,"cap"))
