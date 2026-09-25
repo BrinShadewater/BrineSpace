@@ -8,6 +8,11 @@ func run() -> void:
 	assert(desk_station.facing=="north" and desk_station.mode=="console","Use keyboard side and standing console action")
 	assert(desk_station.point.distance_to(Vector2(-123.4,158.1))<0.01,"Desk contact follows effective furniture rectangle")
 	desk_data.blockers=[Rect2(desk_station.point-Vector2.ONE,Vector2.ONE*2)]
+	# Props keep one facing through room rotation, so a blocked front is worked from
+	# behind; only when both sides are obstructed is there no desk contact.
+	var behind: Array=Activity.stations(desk_data)
+	assert(behind.size()==1 and behind[0].facing=="south" and behind[0].point.distance_to(Vector2(-123.4,26.0))<0.01,"Blocked front falls back to the back of the desk")
+	desk_data.blockers.append(Rect2(behind[0].point-Vector2.ONE,Vector2.ONE*2))
 	assert(Activity.stations(desk_data).is_empty(),"Do not offer obstructed desk contact")
 	desk_data.erase("blockers");desk.layout_flip=Vector2(1,-1)
 	assert(Activity.stations(desk_data).is_empty(),"Unreviewed flipped desk must not inherit front contact")

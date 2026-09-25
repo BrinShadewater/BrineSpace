@@ -5,7 +5,8 @@ const LAYERED_PROJECTOR="library/holo-projector-v1"
 const LAYERED_CHART="library/holo-chart-v1"
 
 func is_layered_projector(prop: Dictionary) -> bool:
-	return preload("res://scripts/room_asset_library.gd").base_id(str(prop.get("copy_source",prop.id)))==LAYERED_PROJECTOR
+	var library=preload("res://scripts/room_asset_library.gd")
+	return library.base_id(str(prop.get("copy_source",prop.id)))==LAYERED_PROJECTOR or library.role_of(prop)=="holo_projector"
 
 func is_layered_chart(prop: Dictionary) -> bool:
 	return preload("res://scripts/room_asset_library.gd").base_id(str(prop.get("copy_source",prop.id)))==LAYERED_CHART

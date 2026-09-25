@@ -175,6 +175,10 @@ def main():
             "region": [0, 0, w, h], "pieces": [[[0, 0], [w, 0], [w, h], [0, h]]],
             # Top-down art: the front half of the picture is what stands on the floor.
             "footprint": [0.0, 0.45, 1.0, 0.55],
+            # Crew are blocked by the front of the prop only; the back of top-down art
+            # is what they pass behind. Whole-image collision sealed off the painted
+            # rooms' narrow walkways (40 of 172 room rotations partly unreachable).
+            "collision_boxes": [[0.04, 0.4, 0.92, 0.6]],
             "display_width": round(w * scale, 1),
             "wall_contact": r["walls"],
             "default_rooms": [room] if room and r["id"] not in not_default else [],
