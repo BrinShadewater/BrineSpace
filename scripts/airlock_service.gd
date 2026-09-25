@@ -71,11 +71,18 @@ static func locker(game,cell: Vector2i) -> Dictionary:
 			# side can land in other furniture. Crew work lockers facing east (the helmet
 			# clips are authored that way): take the first clear spot along the west side.
 			var r: Rect2=prop.rect
+			var spots: Array=[]
 			for dx in [28.0,20.0,36.0,44.0]:
 				for y in [r.end.y+6,r.end.y-10,r.get_center().y,r.end.y+18,r.position.y+20]:
-					var at:=Vector2(r.position.x-dx,y)
-					if maxf(absf(at.x),absf(at.y))>172 or RoomActivity._approach_blocked(geometry,at): continue
-					return {"id":"airlock:%d:%d" % [cell.x,cell.y],"cell":cell,"interaction_point":(Vector2(cell)+Vector2.ONE*0.5)*384.0+at,"facing":"east"}
+					spots.append(Vector2(r.position.x-dx,y))
+			# West side blocked (a layout can put the lockers beside the pressure chamber):
+			# stand just in front of the lockers' left end, still facing east.
+			for dy in [16.0,24.0,32.0]:
+				for fx in [0.12,0.25,0.4]:
+					spots.append(Vector2(r.position.x+r.size.x*fx,r.end.y+dy))
+			for at in spots:
+				if maxf(absf(at.x),absf(at.y))>172 or RoomActivity._approach_blocked(geometry,at): continue
+				return {"id":"airlock:%d:%d" % [cell.x,cell.y],"cell":cell,"interaction_point":(Vector2(cell)+Vector2.ONE*0.5)*384.0+at,"facing":"east"}
 	return {}
 
 static func busy(game,cell: Vector2i,requester=null) -> bool:
