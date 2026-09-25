@@ -18,6 +18,14 @@ static func keeps_in_room(room_id: String, prop: Dictionary) -> bool:
 	var id:=str(prop.get("id",""))
 	if id.ends_with("_rov") or id.ends_with("_hatch"): return true
 	return is_station_prop(str(prop.get("copy_source",prop.get("variant_source",id))))
+# Several views re-add built-in props after the layout pass (legacy restorations), so
+# callers strip again once a view is configured and before it draws.
+static func strip_retired(view) -> void:
+	if view==null or not "props" in view: return
+	var store=load("res://scripts/room_layout_store.gd")
+	var room_id: String=store.room_id_for(view,store.asset_for(view))
+	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return
+	view.props=view.props.filter(func(prop): return keeps_in_room(room_id,prop))
 static func entries() -> Dictionary:
 	if not catalog.is_empty(): return catalog
 	# Station props v2 (2026-09-24): cut from the owner's room designs. These are the

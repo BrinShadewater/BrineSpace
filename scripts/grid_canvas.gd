@@ -1655,6 +1655,7 @@ func _paint_surface(pass_id: int) -> void:
 				var north_view = _bill_room_view(room)
 				# Selecting a recovery ward can invalidate the shared view's geometry.
 				north_view.configure_embedded(int(room.get("rotation",0)),[],false,main.get_visual_time_seconds())
+				preload("res://scripts/room_asset_library.gd").strip_retired(north_view)
 				preload("res://rooms/whole-room/north_wall.gd").draw_into(draw_target,room.id,room.pos,_has_raised_wall_at(room.pos+Vector2i.LEFT),_has_raised_wall_at(room.pos+Vector2i.RIGHT),north_view,false)
 				draw_target.draw_set_transform(Vector2.ZERO)
 		if profile_draw: _profile_draw_stage("walls",stage_time)
@@ -1865,6 +1866,7 @@ func _draw_cryo_derelicts(main, cell_size: float) -> void:
 		if ward.kind not in ["cryo","charging"] or ward.cleared: continue
 		cryo_view.recovery = preload("res://scripts/architects.gd").ward_for_display(main,ward)
 		cryo_view.configure_embedded(int(ward.rotation),[],false,main.visual_time_seconds)
+		preload("res://scripts/room_asset_library.gd").strip_retired(cryo_view)
 		cryo_view.shell_pass = 0
 		cryo_view.set_meta("derelict_condition",true)
 		cryo_view.render_into(draw_target,(Vector2(cell)+Vector2.ONE*0.5)*cell_size,cell_size/384.0)
@@ -1933,6 +1935,7 @@ func bill_room_geometry(room: Dictionary, open_sides: Array) -> Dictionary:
 	if view == null:
 		return {}
 	view.configure_embedded(int(room.get("rotation", 0)), open_sides, false, 0.0)
+	preload("res://scripts/room_asset_library.gd").strip_retired(view)
 	# Navigation must see the authored furniture before the first render pass.
 	# Legacy embedded views otherwise acquire different locker targets on draw.
 	if not "full_wall" in view and not view.has_meta("layout_editor_preview"):
@@ -2043,6 +2046,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	var detail_mark := Time.get_ticks_usec() if profile_draw else 0
 	room_view.set_meta("raised_north_visible",not preview and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP))
 	room_view.configure_embedded(int(room.get("rotation", 0)), sides, not preview and main.powered_room_cells.has(pos), main.get_visual_time_seconds(), omitted)
+	preload("res://scripts/room_asset_library.gd").strip_retired(room_view)
 	if not preview and room.id=="brine_core" and not main.architect_run.is_empty() and (not main.architect_run.core.recovered or main.cycle==0):
 		room_view.operating=main.hardware.power and preload("res://scripts/brine_startup.gd").screens(main.architect_run.core)
 	if profile_draw: detail_mark = _profile_detail("configure_"+str(room.id),detail_mark)
@@ -2139,6 +2143,7 @@ func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_o
 			corridor_layout_views[room.id]=editing
 		var editing=corridor_layout_views[room.id]
 		editing.configure_embedded(int(room.get("rotation",0)),[],true,0.0)
+		preload("res://scripts/room_asset_library.gd").strip_retired(editing)
 		editing.render_into(draw_target,at,scale,false,false)
 		draw_target.draw_set_transform(at,0,Vector2.ONE*scale)
 
@@ -2928,6 +2933,7 @@ func drone_anchors(room: Dictionary) -> Dictionary:
 	if drone_anchor_cache.has(key): return drone_anchor_cache[key]
 	var view = _bill_room_view(room)
 	view.configure_embedded(int(room.get("rotation",0)),[],false,0.0)
+	preload("res://scripts/room_asset_library.gd").strip_retired(view)
 	# A layout can remove the ROV cradle or hatch; the bay centre stands in.
 	var anchors := {"dock":Vector2.ZERO,"hatch":Vector2(0,0.35)*384}
 	for prop in view.props:
