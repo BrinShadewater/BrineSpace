@@ -6,7 +6,7 @@ func run():
 	var entries=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json"))
 	Store.loaded=true;Store.data={}
 	for entry in entries:
-		for q in range(4): Store.data[entry.asset+"/"+str(q)]={"library/tileset-npp2-62":[-96,16.56]}
+		for q in range(4): Store.data[entry.asset+"/"+str(q)]={"library/sp-storage_bay-4":[-96,16.56]}
 	for q in range(4):
 		for prop in ["office_exam","office_consultation","office_records","universal_workbench"]: Store.data["room-med_office/"+str(q)][prop]=null
 	for q in range(4):
@@ -28,7 +28,7 @@ func run():
 					failures+=1;push_error("Deleted medical furniture restored: q%d"%q)
 				if id=="med_center" and room.props.any(func(prop):return prop.id in ["medical_treatment","medical_imaging","medical_supplies"]):
 					failures+=1;push_error("Deleted center furniture restored: q%d"%q)
-				var found=room.props.filter(func(prop):return prop.id=="library/tileset-npp2-62")
+				var found=room.props.filter(func(prop):return prop.id=="library/sp-storage_bay-4")
 				if found.size()!=1 or room.get_meta("layout_asset","")!=entry.asset:
 					failures+=1;push_error("Studio layout missing: %s q%d pass%d"%[id,q,pass_index])
 		room.free()

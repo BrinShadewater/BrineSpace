@@ -97,8 +97,9 @@ func endpoint(spec: Dictionary) -> Vector2:
 	return room.life_point(prop,Vector2(spec.source[0],spec.source[1]))
 
 func route_returned_to_tray(route: Dictionary) -> bool:
-	# Construction fits the interior one prop at a time; a route waits for both hosts.
-	if room.has_meta("construction_fitting") and (find_prop(str(route.from.host)).is_empty() or find_prop(str(route.to.host)).is_empty()):
+	# A route waits for both hosts: construction fits the interior one prop at a time, and
+	# rooms dressed with station props (v2) no longer carry the built-in hosts at all.
+	if find_prop(str(route.from.host)).is_empty() or find_prop(str(route.to.host)).is_empty():
 		return true
 	var edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(room)
 	for endpoint_spec in [route.from,route.to]:

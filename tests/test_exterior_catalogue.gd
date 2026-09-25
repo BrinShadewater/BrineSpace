@@ -12,6 +12,9 @@ func run():
 	Store.loaded=true;Store.data={}
 	var e=Editor.open(root)
 	await process_frame
+	# Tileset props only live on in rooms that keep their pre-v2 art (station props v2).
+	for i in range(e.entries.size()):
+		if str(e.entries[i].room)=="brine_core": e.switch_room(i); break
 	e.free_placement.button_pressed=true
 	var exterior := "library/tileset-uw1-188"
 	check(not e.add_library_asset(exterior,Vector2.ZERO),"exterior cannot be newly placed")

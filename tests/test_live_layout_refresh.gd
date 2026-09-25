@@ -34,6 +34,10 @@ func run() -> void:
 	game.meta.save_path="user://live-layout-refresh.meta"; game.run_save_path="user://live-layout-refresh.loop"
 	root.add_child(game); current_scene=game; game._set_paused(true,false)
 	game.testing_free_build=true; game.testing_disable_failures=true
+	# No default layouts load here, and redesigned rooms carry no built-in furniture
+	# (station props v2): give the lab one saved station prop to edit.
+	const LAB_PROP:="library/sp-research_lab-1"
+	assert(Store.save_layout("research-analysis-wall",0,{LAB_PROP:[-100.0,-100.0]})==OK)
 	game._place_room("research_lab",Vector2i(21,20),true)
 	var placed: Dictionary=game.occupied[Vector2i(21,20)]
 	var before: Dictionary=game.grid_view.bill_room_geometry(placed,[])
@@ -44,7 +48,7 @@ func run() -> void:
 	var id:=str(before.props[0].id)
 	var walker=Walker.new()
 	var topology: String=walker.topology(game)
-	assert(Store.save_layout(asset,0,{"hidden/"+id:true})==OK)
+	assert(Store.save_layout(asset,0,{LAB_PROP:[-100.0,-100.0],"hidden/"+id:true})==OK)
 	assert(walker.topology(game)!=topology,"Prop edits invalidate existing crew topology")
 	var hidden: Dictionary=game.grid_view.bill_room_geometry(placed,[])
 	for prop in hidden.props: assert(str(prop.id)!=id,"Hidden furniture must not leave an invisible blocker")

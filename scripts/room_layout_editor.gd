@@ -1629,9 +1629,13 @@ func list_riser_walls() -> void:
 	for group in choices:
 		var caption: String="Department default ("+RiserCatalog.material(room_id).replace("_"," ")+")" if group=="" else group.replace("_"," ").replace("-"," ").capitalize()
 		if group==current: caption="✓ "+caption
-		var thumb:=AtlasTexture.new()
 		var shown: String=RiserCatalog.material(room_id) if group=="" else group
-		thumb.atlas=RiserCatalog.texture(shown); thumb.region=RiserCatalog.source_rect(shown,"face")
+		# BRINE Core and the airlock draw their own walls: no catalog face to preview.
+		var thumb: Texture2D=thumbnail_placeholder
+		if RiserCatalog.catalog().has(shown):
+			var atlas:=AtlasTexture.new()
+			atlas.atlas=RiserCatalog.texture(shown); atlas.region=RiserCatalog.source_rect(shown,"face")
+			thumb=atlas
 		library_list.add_item(caption,thumb)
 		library_list.set_item_metadata(library_list.item_count-1,RISER_PICK+group)
 		library_list.set_item_tooltip(library_list.item_count-1,caption+" — click to use this riser wall")
