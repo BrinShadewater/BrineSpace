@@ -1,5 +1,5 @@
 {
- "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects.",
+ "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects. floor_pieces: flat floor art (hatches, pads): drawn under crew, no collision, no shadow. floor_splits: prop whose rug installs as <id>-rug (model_cut floor_split), placed with it. collision_boxes: per-prop override, fractions of the region.",
  "common": [
   "science-extra14-1",
   "science-extra14-2",
@@ -94,5 +94,38 @@
     64
    ]
   }
+ },
+ "floor_pieces": [
+  "airlock-3",
+  "engineering-extra2-3",
+  "engineering-extra4-3",
+  "mining_drone_bay-3",
+  "salvage_drone_bay-3",
+  "construction_drone_bay-3"
+ ],
+ "floor_splits": [
+  "crew_lounge-3"
+ ],
+ "collision_boxes": {
+  "crew_lounge-3": [
+   [
+    0.1065,
+    0.1981,
+    0.7957,
+    0.2363
+   ],
+   [
+    0.1804,
+    0.5623,
+    0.6457,
+    0.1632
+   ],
+   [
+    0.1804,
+    0.8053,
+    0.6457,
+    0.116
+   ]
+  ]
  }
 }

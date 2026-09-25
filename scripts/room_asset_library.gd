@@ -4,6 +4,7 @@ static var catalog: Dictionary={}
 static var source_textures: Dictionary={}
 const STATION_PROPS := "res://rooms/station-props-v2/props.json"
 # [world offset, opacity] layers of the station-prop contact shadow, darkest nearest.
+const FLOOR_PIECE_DEPTH := 100000.0
 const CONTACT_SHADOW := [[Vector2(1.5,2.0),0.22],[Vector2(2.5,3.5),0.14],[Vector2(3.5,5.0),0.08]]
 # Rooms that keep their pre-v2 art for now (owner, 2026-09-24). Every other room shows
 # only station props, plus the live drone and dock in drone bays.
@@ -141,6 +142,8 @@ static func apply_variants(room, values: Dictionary) -> void:
 # wall arm, not the tip of the arm running down the side wall, which drew crew standing in
 # front of the corner behind it (owner playtest).
 static func base_sort_y(prop: Dictionary) -> float:
+	# Hatches, pads and rugs lie on the deck: under every crew member and prop.
+	if prop.get("floor_piece",false): return prop.rect.end.y-FLOOR_PIECE_DEPTH
 	if prop.has("corner") and not prop.get("collision_boxes",[]).is_empty():
 		var arm: Array=prop.collision_boxes[0]
 		return prop.rect.position.y+prop.rect.size.y*(float(arm[1])+float(arm[3]))
@@ -183,6 +186,7 @@ static func template(id: String) -> Dictionary:
 		if registration.get("mirrored",false): f[0]=1.0-float(f[0])-float(f[2])
 		prop.footprint=f
 	if data.has("corner"): prop.wall_mount=true; prop.corner=data.corner
+	if data.get("floor_piece",false): prop.floor_piece=true; prop.collision_boxes=[]
 	prop.sort_y=base_sort_y(prop)
 	all[id].template=prop
 	# The tray publishes only clipped transparent renders, never source-sheet crops.
@@ -219,7 +223,7 @@ static func draw(room, prop: Dictionary) -> void:
 	var anchor:=Vector2(prop.rect.get_center().x,prop.rect.end.y)
 	# Station props are cut without their painted shadows (owner, 2026-09-24): lay a
 	# soft contact shadow from the prop's own silhouette, stacked offsets fading out.
-	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))):
+	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))) and not prop.get("floor_piece",false):
 		for step in CONTACT_SHADOW:
 			for polygon in reg.pieces:
 				var shadow_points:=PackedVector2Array()

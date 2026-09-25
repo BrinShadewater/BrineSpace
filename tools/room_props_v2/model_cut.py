@@ -42,6 +42,7 @@ class Cutter:
         self.bir = new_session("birefnet-general", providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
         self.sam = SAM("sam2.1_b.pt")
         self.floors = {}
+        self.rugs = {}
 
     def floor_maps(self, design):
         """Clean-floor estimate and difference map from extract.py."""
@@ -151,6 +152,15 @@ class Cutter:
             cut = peel_shadow(cut, spec.get("depth", 10))
             for x0, y0, x1, y1 in spec.get("protect_rects", []):
                 cut[y0:y1, x0:x1, 3] = before[y0:y1, x0:x1, 3]
+        if "floor_split" in fix:
+            # A rug under furniture: the whole cut becomes the floor layer ("-rug"),
+            # and the prop keeps only the furniture, one SAM object per [box, clicks].
+            self.rugs[record["id"]] = cut.copy()
+            furniture = np.zeros(cut.shape[:2], bool)
+            for obj_box, points in fix["floor_split"]:
+                furniture |= ndimage.binary_fill_holes(self.sam_points(crop, points, obj_box))
+            cut = cut.copy()
+            cut[..., 3] = np.where(furniture, cut[..., 3], 0)
         if "clear_below_y" in fix:
             y = fix["clear_below_y"]["y"]
             src = rgb.astype(int)
@@ -185,12 +195,13 @@ def peel_shadow(rgba, depth=10, lo=22, hi=58, chroma=22):
     return rgba
 
 
-def install(record, cut, pid):
+def install(record, cut, pid, suffix=""):
     """Place the cut on the extract.py canvas so the catalog region and saved
     layouts are unchanged. A cut that reaches past that canvas grows it; returns
     the growth (left, top, right, bottom) so the catalog and layouts can follow."""
-    target = ROOT / "assets" / "station-props-v2" / ("sp-%s.png" % pid)
-    w, h = Image.open(target).size
+    target = ROOT / "assets" / "station-props-v2" / ("sp-%s%s.png" % (pid, suffix))
+    base = ROOT / "assets" / "station-props-v2" / ("sp-%s.png" % pid)
+    w, h = Image.open(base).size
     x0, y0 = record["box"][0], record["box"][1]
     ox = max(0, x0 - PAD) - max(0, x0 - MARGIN)
     oy = max(0, y0 - PAD) - max(0, y0 - MARGIN)
@@ -259,6 +270,11 @@ def main():
             if pid in fixes:
                 cut = cutter.repair(records[pid], cut, fixes[pid])
             Image.fromarray(cut, "RGBA").save(path)
+            if pid in cutter.rugs:
+                Image.fromarray(cutter.rugs[pid], "RGBA").save(out / (pid + "-rug.png"))
+        rug = out / (pid + "-rug.png")
+        if args.install and rug.exists():
+            install(records[pid], np.asarray(Image.open(rug).convert("RGBA")), pid, "-rug")
         if args.install:
             g = install(records[pid], cut, pid)
             if any(g): grown["sp-" + pid] = g

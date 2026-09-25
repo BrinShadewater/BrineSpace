@@ -66,7 +66,7 @@
   ]
  },
  "_model_cut_fixes": {
-  "_note": "Model-cut repairs (tools/room_props_v2 model cutter). Points are in padded-crop px (prop box grown by 40). add_points: SAM clicks adding a missed part. sam_object_points: the prop's box plus these clicks, as one object, replace the cut. solid_rects: [x0,y0,x1,y1] areas forced fully opaque (plain rectangular parts the models dropped). peel_shadow: remove dark grey painted shadow from the outer edge (tools: scratch peel.py), except protect_rects. clear_below_y: erase floor below the prop's bottom ink line.",
+  "_note": "Model-cut repairs (tools/room_props_v2 model cutter). Points are in padded-crop px (prop box grown by 40). add_points: SAM clicks adding a missed part. sam_object_points: the prop's box plus these clicks, as one object, replace the cut. solid_rects: [x0,y0,x1,y1] areas forced fully opaque (plain rectangular parts the models dropped). peel_shadow: remove dark grey painted shadow from the outer edge (tools: scratch peel.py), except protect_rects. clear_below_y: erase floor below the prop's bottom ink line. floor_split: [[box,[clicks]],...] furniture objects kept on the prop; the full cut also installs as sp-<id>-rug.png (a floor piece, tags.json floor_pieces).",
   "data_archive-1": {
    "add_points": [
     [
@@ -263,6 +263,92 @@
     [
      381,
      232
+    ]
+   ]
+  },
+  "crew_lounge-3": {
+   "floor_split": [
+    [
+     [
+      90,
+      50,
+      452,
+      218
+     ],
+     [
+      [
+       190,
+       100
+      ],
+      [
+       340,
+       100
+      ],
+      [
+       190,
+       160
+      ],
+      [
+       340,
+       160
+      ],
+      [
+       105,
+       130
+      ],
+      [
+       432,
+       130
+      ]
+     ]
+    ],
+    [
+     [
+      115,
+      225,
+      415,
+      338
+     ],
+     [
+      [
+       270,
+       265
+      ],
+      [
+       140,
+       300
+      ],
+      [
+       400,
+       300
+      ],
+      [
+       230,
+       260
+      ]
+     ]
+    ],
+    [
+     [
+      115,
+      340,
+      422,
+      422
+     ],
+     [
+      [
+       270,
+       370
+      ],
+      [
+       130,
+       380
+      ],
+      [
+       405,
+       380
+      ]
+     ]
     ]
    ]
   }

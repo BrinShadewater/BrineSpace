@@ -153,6 +153,9 @@ def main():
     roles = tags.get("roles", {})
     not_default = set(tags.get("not_default", []))
     anchors = tags.get("live_anchors", {})
+    floor_pieces = set(tags.get("floor_pieces", []))
+    floor_splits = set(tags.get("floor_splits", []))
+    collision = tags.get("collision_boxes", {})
     themes = room_themes()
 
     if ART.exists():
@@ -161,6 +164,7 @@ def main():
     CATALOG.parent.mkdir(parents=True, exist_ok=True)
     catalog = []
     by_room = {}
+    floors_by_room = {}
     for r in records:
         pid = "sp-" + r["id"]
         n = r["id"].rsplit("-", 1)[1]
@@ -188,7 +192,20 @@ def main():
         }
         if r["id"] in roles:
             entry["role"] = roles[r["id"]]
+        if r["id"] in collision:
+            entry["collision_boxes"] = collision[r["id"]]
+        if r["id"] in floor_pieces:
+            # Flat floor art: drawn under crew, walked over, no contact shadow.
+            entry["floor_piece"] = True
+            entry["collision_boxes"] = []
         catalog.append(entry)
+        if r["id"] in floor_splits:
+            # The rug under this furniture is its own floor piece (model_cut floor_split).
+            rug = dict(entry, id=pid + "-rug", label=label + " rug", floor_piece=True, collision_boxes=[],
+                       source="res://assets/station-props-v2/%s-rug.png" % pid)
+            rug.pop("role", None)
+            catalog.append(rug)
+            shutil.copy(cut / r["sheet"] / (n + ".png"), ART / (pid + "-rug.png"))
         for live_id, size in anchors.get(r["id"], {}).items():
             # The drone and its dock keep their live art but take the painted pad's place.
             cx = ((r["box"][0] + r["box"][2]) / 2 - x0) * scale - HALF
@@ -196,7 +213,10 @@ def main():
             by_room.setdefault(room, []).append((live_id, clamp([cx - size[0] / 2, cy - size[1] / 2, size[0], size[1]]), []))
         if room and r["id"] not in not_default:
             rect = [(r["box"][0] - x0) * scale - HALF, (r["box"][1] - y0) * scale - HALF, w * scale, h * scale]
-            by_room.setdefault(room, []).append(("library/" + pid, clamp(rect), r["walls"]))
+            if r["id"] in floor_pieces:
+                floors_by_room.setdefault(room, []).append(("library/" + pid, clamp(rect)))
+            else:
+                by_room.setdefault(room, []).append(("library/" + pid, clamp(rect), r["walls"]))
     CATALOG.write_text(json.dumps(catalog, indent=1))
 
     editor = json.loads(EDITOR.read_text())
@@ -217,6 +237,13 @@ def main():
                 if k.startswith(KEEP_PREFIXES):
                     layout[k] = v
             for pid, rect in placed.items():
+                layout[pid] = [round(rect[0], 1), round(rect[1], 1)]
+                if pid[len("library/sp-"):] in floor_splits:
+                    layout[pid + "-rug"] = layout[pid]  # the rug stays under its furniture
+            # Floor pieces turn with the room but never push or get pushed.
+            for pid, (x, y, w, h) in floors_by_room.get(room, []):
+                cx, cy = turn(x + w / 2, y + h / 2, q)
+                rect = clamp([cx - w / 2, cy - h / 2, w, h])
                 layout[pid] = [round(rect[0], 1), round(rect[1], 1)]
             layouts["%s/%d" % (asset, q)] = layout
             report += ["%s q%d: %s" % (room, q, p) for p in problems]
