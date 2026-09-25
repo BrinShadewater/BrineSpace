@@ -18,6 +18,7 @@ func step(seconds: float) -> void:
 		elapsed+=0.1
 func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	var path: String="user://ward_repair_test_%d" % OS.get_process_id()
 	game.run_save_path=path+".loop"
 	game.meta.save_path=path+".meta"
