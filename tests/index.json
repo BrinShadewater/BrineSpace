@@ -385,36 +385,36 @@
       "reason": "Selected source/station-scale gait rendering and distance-frame parity"
     },
     "test_tileset_library_tools": {
-      "lane": "native",
-      "reason": "opens the Studio and renders tray previews; needs a real display"
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): Studio tileset-library tools; the tray now lists station props only."
     },
     "test_command_console_feedback": {
       "lane": "native",
       "reason": "Verifies operating-screen pixel changes and off/held-clock stability in four room views."
     },
     "test_library_prop_retention": {
-      "lane": "native",
-      "reason": "Checks actual redraw counts and exact retained/direct pixels."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen overlays of retired bought props (new-prop screen effects are parked)."
     },
     "test_copied_prop_animation": {
-      "lane": "native",
-      "reason": "Checks copied-prop live redraws and exact retained/direct render parity."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): copies of the retired built-in mining_tether prop."
     },
     "test_salvage_layout_deletions": {
-      "lane": "native",
-      "reason": "Checks copied-prop live redraws and exact retained/direct render parity."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): deletion of retired built-in salvage props; deletion persistence is covered by test_layout_deletion_persistence."
     },
     "test_quarantine_layout_deletions": {
-      "lane": "native",
-      "reason": "Checks copied-prop live redraws and exact retained/direct render parity."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): deletion of retired built-in quarantine props; deletion persistence is covered by test_layout_deletion_persistence."
     },
     "test_removed_bank_restoration": {
-      "lane": "native",
-      "reason": "Checks copied-prop live redraws and exact retained/direct render parity."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): full-wall banks and their bought props, not shown in station-props-v2 rooms."
     },
     "test_powered_display_retention": {
-      "lane": "native",
-      "reason": "Checks powered display redraw counts, on/off/on transitions and exact retained/direct pixels."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen overlays of retired bought props (new-prop screen effects are parked)."
     },
     "test_bunk_layers": {
       "lane": "native",
@@ -443,6 +443,10 @@
     "test_side_wall_variants": {
       "lane": "skip",
       "reason": "Retired 2026-09-24: redesigned rooms no longer show full-wall side banks (station props v2); only BRINE Core and corridors keep pre-v2 art, and they have none."
+    },
+    "test_wall_rollout_effects": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): full-wall banks, not shown in station-props-v2 rooms."
     }
   }
 }

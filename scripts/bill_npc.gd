@@ -285,7 +285,8 @@ static func valid_snapshot(data: Variant, breathes := true, transition_limit := 
 	elif not request.is_empty(): return false
 	if not Life.STAGES.has(data.stage) and not data.stage in ["", "kneel", "repair", "stand", "observation_sit", "observation_read", "observation_rise", "observation_watch", "workshop_inspect", "workshop_work", "workshop_carry", "workshop_unload"]: return false
 	if str(data.stage).begins_with("observation_"):
-		if not data.active or data.state!="idle" or data.direction!="north" or not data.path.is_empty(): return false
+		# Watching and the desk face north; the reviewed sofa seat faces south.
+		if not data.active or data.state!="idle" or not data.direction in ["north","south"] or not data.path.is_empty(): return false
 		if data.goal not in ["curiosity","fatigue","maintenance"] and not (data.goal.is_empty() and data.stage=="observation_rise"): return false
 	if str(data.stage).begins_with("workshop_"):
 		if not data.active or data.goal not in ["curiosity","maintenance","fatigue"]: return false
