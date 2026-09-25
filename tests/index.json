@@ -455,6 +455,10 @@
     "test_floor_detail_visibility": {
       "lane": "skip",
       "reason": "Retired 2026-09-25 (station props v2): its floor details are hosted on retired built-in props and full-wall banks, which redesigned rooms no longer carry."
+    },
+    "test_wall_rollout_drafts": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): full-wall bank drafts; banks are not shown in station-props-v2 rooms."
     }
   }
 }
