@@ -30,9 +30,9 @@ Extras sheet) at a time.
 ## Naming
 
 `<prop id>.png`, using the existing ids so the catalog and layouts bind unchanged,
-for example `galley-1.png`, `crew_lounge-3.png`, `science-extra13-2.png`. The
-contact sheets in `tools/room_props_v2` output (and the review pages) show which
-number is which prop on each sheet. The lounge rug is `crew_lounge-3-rug.png`
+for example `galley-1.png`, `crew_lounge-3.png`, `science-extra13-2.png`. Numbers count
+props on each design sheet from top to bottom, then left to right; the current
+cut `assets/station-props-v2/sp-<id>.png` shows which prop each id is. The lounge rug is `crew_lounge-3-rug.png`
 (the rug alone; the sofa, table and bench stay in `crew_lounge-3.png`).
 
 Floor pieces (hatches and pads) should be painted flat, as seen from above, with
@@ -41,9 +41,7 @@ no shadow at all: `airlock-3`, `engineering-extra2-3`, `engineering-extra4-3`,
 
 ## Priority
 
-1. The 22 props on the hand-clean list (`handclean.json` in the cutting scratch
-   folder; they include `data_archive-1`, `salvage_drone_bay-2`, `med_bay-3`,
-   `crew_hab-2`, `crew_hab-3`, `xeno_lab-4`, `ore_refinery-4`, `science-extra13-1`).
+1. The 22 props whose cuts needed the most hand cleaning: `clone_lab-2`, `crew_hab-1`, `crew_hab-2`, `crew_hab-3`, `data_archive-1`, `med_bay-3`, `med_center-3`, `mycelium_nursery-2`, `ore_refinery-1`, `ore_refinery-4`, `pressure_control-1`, `quarantine_cell-1`, `salvage_drone_bay-2`, `xeno_lab-4`, `science-extra10-1`, `science-extra13-1`, `science-extra13-2`, `science-extra3-1`, `science-extra5-4`, `science-extra8-1`, `recreation-extra2-1`, `recreation-extra3-1`.
 2. Props with glass or with colours close to their floor (`xeno_lab-1`,
    `recreation-extra3-1` bookcase, `recreation-extra3-4` table, the lounge set).
 3. Everything else, a room at a time.
