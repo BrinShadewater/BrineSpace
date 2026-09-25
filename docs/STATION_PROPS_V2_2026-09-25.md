@@ -77,8 +77,10 @@ station, environment cache parity, Studio owner notes, site runtime's old-save c
 
 ## Open
 
-- Step 8b: remove the old prop/bank loading from ~45 room views, then retire the
-  remaining pre-v2 room art (~130 MB). Delete `Documents/BrineSpace-baseline` after.
+- Step 8b (retire the remaining pre-v2 room art) was surveyed and skipped: every
+  bank/common-asset sheet is also loaded by a room view, and each room's source
+  sheet also supplies its wall and cap material. Revisit with the wall/machinery
+  art pass.
 - New-prop screen/projector effects (Anomaly Lab, Holo Core, consoles); airlock
   helmet-shelf drawing; bunk climb-in animation; drone and live-machinery art.
 - Owner's Codex magenta re-export pass: [brief](CODEX_BRIEF_MAGENTA_PROPS.md).
