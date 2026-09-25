@@ -38,12 +38,16 @@ func run():
 	var passes: int=view.full_wall.placement_passes
 	for i in range(30): view.configure_embedded(0,[1,3],true,float(i))
 	check(view.props==before and view.full_wall.placement_passes==passes,"Stable frames retain exactly the same furniture without relocating it")
+	# A station prop (v2): retired built-in props are filtered out by the layout pass.
 	var prop: Dictionary=view.props.back()
+	for candidate in view.props:
+		if str(candidate.id).begins_with("library/sp-"): prop=candidate
 	var old_sort: float=prop.sort_y
-	Store.data[Store.key("storage-wall",0)]={"order/"+str(prop.id):1}
+	Store.data[Store.key(Store.asset_for(view),0)]={"order/"+str(prop.id):1} # the view's own layout key
 	Store.revision+=1
 	view.configure_embedded(0,[1,3],true,31)
-	check(view.props.back().sort_y==old_sort+512,"Live layout ordering is still applied on the retained path")
+	var reordered: Array=view.props.filter(func(p): return p.id==prop.id)
+	check(not reordered.is_empty() and reordered[0].sort_y==old_sort+512,"Live layout ordering is still applied on the retained path")
 	check(view.full_wall.placement_passes==passes,"Layout application does not rerun vacant-position search")
 	view.configure_embedded(1,[0,2],true,32)
 	check(view.full_wall.placement_passes>passes,"Rotation rebuilds placement")
