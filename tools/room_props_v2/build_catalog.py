@@ -172,6 +172,7 @@ def main():
     floor_pieces = set(tags.get("floor_pieces", []))
     floor_splits = set(tags.get("floor_splits", []))
     collision = tags.get("collision_boxes", {})
+    clear_west = tags.get("clear_west", {})
     themes = room_themes()
 
     if ART.exists():
@@ -181,6 +182,7 @@ def main():
     catalog = []
     by_room = {}
     floors_by_room = {}
+    padded = {}
     for r in records:
         pid = "sp-" + r["id"]
         n = r["id"].rsplit("-", 1)[1]
@@ -230,6 +232,10 @@ def main():
             by_room.setdefault(room, []).append((live_id, clamp([cx - size[0] / 2, cy - size[1] / 2, size[0], size[1]]), []))
         if room and r["id"] not in not_default:
             rect = [(r["box"][0] - x0) * scale - HALF, (r["box"][1] - y0) * scale - HALF, w * scale, h * scale]
+            pad = clear_west.get(r["id"], 0)
+            if pad:  # placed with a strip of free floor on its west side (padded rect)
+                rect = [rect[0] - pad, rect[1], rect[2] + pad, rect[3]]
+                padded["library/" + pid] = pad
             if r["id"] in floor_pieces:
                 floors_by_room.setdefault(room, []).append(("library/" + pid, clamp(rect)))
             else:
@@ -255,7 +261,7 @@ def main():
                 if k.startswith(KEEP_PREFIXES):
                     layout[k] = v
             for pid, rect in placed.items():
-                layout[pid] = [round(rect[0], 1), round(rect[1], 1)]
+                layout[pid] = [round(rect[0] + padded.get(pid, 0), 1), round(rect[1], 1)]
                 if pid[len("library/sp-"):] in floor_splits:
                     layout[pid + "-rug"] = layout[pid]  # the rug stays under its furniture
             # Floor pieces turn with the room but never push or get pushed.

@@ -109,7 +109,13 @@ static func stations(data: Dictionary) -> Array:
 		var quarter: int=int(data.get("layout",[{}])[0].get("rotation",0)) if not data.get("layout",[]).is_empty() else 0
 		var turned: Vector2=Vector2(112,16)
 		for unused in range(posmod(quarter,4)): turned=Vector2(-turned.y,turned.x)
-		return [{"point":turned,"facing":["east","south","west","north"][posmod(quarter,4)],"room":id}]
+		var facing: String=["east","south","west","north"][posmod(quarter,4)]
+		# Station props keep one facing, so a rotation can put furniture on the authored
+		# spot: take the nearest standable floor to it instead.
+		if _approach_blocked(data,turned):
+			var reachable: Array=reachable_stations(data,[turned],facing)
+			if not reachable.is_empty(): return reachable
+		return [{"point":turned,"facing":facing,"room":id}]
 	if id=="observation_room":
 		# Read between the desk and the chair behind it. A fixed point went stale when the
 		# crew-scale pass enlarged the chair over it, leaving no walkable node to sit from.

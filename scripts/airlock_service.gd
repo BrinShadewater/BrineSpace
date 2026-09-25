@@ -1,4 +1,5 @@
 extends RefCounted
+const RoomActivity=preload("res://scripts/crew_room_activity.gd")
 const Architects=preload("res://scripts/architects.gd")
 static var shelf_timelines: Dictionary = {}
 
@@ -62,9 +63,19 @@ static func locker(game,cell: Vector2i) -> Dictionary:
 	if not game.occupied.has(cell) or game.occupied[cell].id!="airlock": return {}
 	var geometry: Dictionary=game.grid_view.bill_room_geometry(game.occupied[cell],[])
 	for prop in geometry.props:
-		if is_suit_locker(prop):
+		if prop.id=="suit_lockers":
 			var point: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*384.0+helmet_anchor(prop)+Vector2(-21,31)
 			return {"id":"airlock:%d:%d" % [cell.x,cell.y],"cell":cell,"interaction_point":point,"facing":"east"}
+		if is_suit_locker(prop):
+			# The painted lockers keep one facing through room rotation, so the spot at their
+			# side can land in other furniture. Crew work lockers facing east (the helmet
+			# clips are authored that way): take the first clear spot along the west side.
+			var r: Rect2=prop.rect
+			for dx in [28.0,20.0,36.0,44.0]:
+				for y in [r.end.y+6,r.end.y-10,r.get_center().y,r.end.y+18,r.position.y+20]:
+					var at:=Vector2(r.position.x-dx,y)
+					if maxf(absf(at.x),absf(at.y))>172 or RoomActivity._approach_blocked(geometry,at): continue
+					return {"id":"airlock:%d:%d" % [cell.x,cell.y],"cell":cell,"interaction_point":(Vector2(cell)+Vector2.ONE*0.5)*384.0+at,"facing":"east"}
 	return {}
 
 static func busy(game,cell: Vector2i,requester=null) -> bool:

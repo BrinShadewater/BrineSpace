@@ -259,10 +259,11 @@ func run() -> void:
 			var view=game.grid_view.airlock_view
 			var present: Array=[]
 			for prop in view.props: present.append(str(prop.id))
-			# R2 keeps the functional locker/chamber/hatch and replaces optional
-			# legacy supplies with the selected bought-art furnishing in every quarter.
-			for required in ["suit_lockers","pressure_chamber","outer_hatch","library/tileset-bmo-208","library/tileset-lbt2-15","library/tileset-msc2-73","library/tileset-slt-14","library/tileset-spa-1124"]:
+			# Station props v2 (2026-09-24): the live chamber and hatch stay; the painted
+			# station props furnish the room and the painted suit lockers serve helmets.
+			for required in ["pressure_chamber","outer_hatch","library/sp-airlock-1","library/sp-airlock-2","library/sp-airlock-4","library/sp-airlock-5"]:
 				check(required in present,"Live airlock furnishing present q%d: %s" % [q,required])
+			check(view.props.any(func(p): return Service.is_suit_locker(p)),"Suit locker present q%d" % q)
 			check(preload("res://scripts/room_layout_store.gd").is_common_decoration({"registration":{"dressing":true}}),"Ordinary dressing remains filtered")
 			for prop in view.props:
 				var envelope:=Rect2(-200,-200,400,400) if prop.id in ["outer_hatch","pressure_chamber"] else Rect2(-180,-180,360,360)
