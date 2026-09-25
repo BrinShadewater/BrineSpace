@@ -1792,21 +1792,21 @@ func _draw_room(room: Dictionary) -> void:
 		draw_target.draw_circle(center, 4, Color("#ff2537"))
 	elif not offline and not has_texture:
 		match room["category"]:
-			"Core":
+			"Operations":
 				draw_target.draw_circle(center, 4, Color("#e8feff"))
 			"Engineering":
 				draw_target.draw_line(center + Vector2(-4, 3), center + Vector2(0, -4), Color.BLACK, 2)
 				draw_target.draw_line(center + Vector2(0, -4), center + Vector2(4, 3), Color.BLACK, 2)
 			"Science":
 				draw_target.draw_circle(center, 3, Color.BLACK)
-			"Bio":
+			"Life Support":
 				draw_target.draw_line(center + Vector2(0, 4), center + Vector2(0, -4), Color.BLACK, 2)
 				draw_target.draw_circle(center + Vector2(-3, -1), 2, Color.BLACK)
 				draw_target.draw_circle(center + Vector2(3, -1), 2, Color.BLACK)
-			"Crew":
+			"Recreation":
 				draw_target.draw_circle(center + Vector2(0, -3), 2, Color.BLACK)
 				draw_target.draw_line(center + Vector2(0, 0), center + Vector2(0, 4), Color.BLACK, 2)
-			"Drone":
+			"Robotics":
 				draw_target.draw_rect(Rect2(center - Vector2(3, 3), Vector2(6, 6)), Color.BLACK)
 			_:
 				draw_target.draw_circle(center, 3, Color.BLACK)

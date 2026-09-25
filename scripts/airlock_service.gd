@@ -49,6 +49,10 @@ static func helmet_on_shelf(game, cell: Vector2i) -> bool:
 static func ready(game,cell: Vector2i) -> bool:
 	return game.running and game.occupied.has(cell) and game.occupied[cell].id=="airlock" and not game.occupied[cell].get("suspended",false) and game.powered_room_cells.has(cell)
 
+# The old built-in lockers, or the station prop tagged as the suit locker (props v2).
+static func is_suit_locker(prop: Dictionary) -> bool:
+	return prop.id=="suit_lockers" or preload("res://scripts/room_asset_library.gd").role_of(prop)=="suit_locker"
+
 static func helmet_anchor(prop: Dictionary) -> Vector2:
 	if prop.has("helmet_anchor_uv"):
 		return prop.rect.position+prop.rect.size*prop.helmet_anchor_uv
@@ -58,7 +62,7 @@ static func locker(game,cell: Vector2i) -> Dictionary:
 	if not game.occupied.has(cell) or game.occupied[cell].id!="airlock": return {}
 	var geometry: Dictionary=game.grid_view.bill_room_geometry(game.occupied[cell],[])
 	for prop in geometry.props:
-		if prop.id=="suit_lockers":
+		if is_suit_locker(prop):
 			var point: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*384.0+helmet_anchor(prop)+Vector2(-21,31)
 			return {"id":"airlock:%d:%d" % [cell.x,cell.y],"cell":cell,"interaction_point":point,"facing":"east"}
 	return {}

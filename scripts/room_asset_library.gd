@@ -9,6 +9,9 @@ const CONTACT_SHADOW := [[Vector2(1.5,2.0),0.22],[Vector2(2.5,3.5),0.14],[Vector
 # Rooms that keep their pre-v2 art for now (owner, 2026-09-24). Every other room shows
 # only station props, plus the live drone and dock in drone bays.
 const LEGACY_ART_ROOMS := ["brine_core","corridor","corner","tee_corridor"]
+# Built-in machinery the game drives (airlock cycle, cryo wake-ups): kept live like the
+# drone docks until replacement art is wired to the same behaviour.
+const LIVE_MACHINERY := ["pressure_chamber","cryo_pod_0","cryo_pod_1"]
 static func is_station_prop(id: String) -> bool:
 	return base_id(id).begins_with("library/sp-")
 static func role_of(prop: Dictionary) -> String:
@@ -19,7 +22,7 @@ static func role_of(prop: Dictionary) -> String:
 static func keeps_in_room(room_id: String, prop: Dictionary) -> bool:
 	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return true
 	var id:=str(prop.get("id",""))
-	if id.ends_with("_rov") or id.ends_with("_hatch"): return true
+	if id.ends_with("_rov") or id.ends_with("_hatch") or id in LIVE_MACHINERY: return true
 	return is_station_prop(str(prop.get("copy_source",prop.get("variant_source",id))))
 # Several views re-add built-in props after the layout pass (legacy restorations), so
 # callers strip again once a view is configured and before it draws.

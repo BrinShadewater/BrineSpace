@@ -19,7 +19,7 @@ static func sources(game) -> Dictionary:
 	for room in game.placed_rooms:
 		if not game.powered_room_cells.has(room.pos) or room.get("suspended",false): continue
 		var kinds := []
-		if room.get("category","") in ["Engineering","Drone"] and not str(room.id).begins_with("corridor"): kinds.append("machinery")
+		if room.get("category","") in ["Engineering","Robotics"] and not str(room.id).begins_with("corridor"): kinds.append("machinery")
 		if room.id in ["life_support","hydroponics_bay","biodome"]: kinds.append("life_support")
 		if room.id == "brine_core": kinds.append("core")
 		if room.id == "cold_store": kinds.append("refrigeration")

@@ -143,9 +143,7 @@
   "collision_boxes": [],
   "display_width": 70.4,
   "wall_contact": [],
-  "default_rooms": [
-   "airlock"
-  ],
+  "default_rooms": [],
   "design": "airlock.png",
   "floor_piece": true
  },
@@ -199,7 +197,8 @@
   "default_rooms": [
    "airlock"
   ],
-  "design": "airlock.png"
+  "design": "airlock.png",
+  "role": "suit_locker"
  },
  {
   "id": "sp-airlock-5",
@@ -2195,7 +2194,7 @@
  {
   "id": "sp-construction_drone_bay-1",
   "label": "Construction Drone Bay 1",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-construction_drone_bay-1.png",
   "region": [
    0,
@@ -2245,7 +2244,7 @@
  {
   "id": "sp-construction_drone_bay-2",
   "label": "Construction Drone Bay 2",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-construction_drone_bay-2.png",
   "region": [
    0,
@@ -2299,7 +2298,7 @@
  {
   "id": "sp-construction_drone_bay-3",
   "label": "Construction Drone Bay 3",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-construction_drone_bay-3.png",
   "region": [
    0,
@@ -2343,7 +2342,7 @@
  {
   "id": "sp-construction_drone_bay-4",
   "label": "Construction Drone Bay 4",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-construction_drone_bay-4.png",
   "region": [
    0,
@@ -2395,7 +2394,7 @@
  {
   "id": "sp-construction_drone_bay-5",
   "label": "Construction Drone Bay 5",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-construction_drone_bay-5.png",
   "region": [
    0,
@@ -3205,9 +3204,7 @@
   ],
   "display_width": 156.0,
   "wall_contact": [],
-  "default_rooms": [
-   "cryo_chamber"
-  ],
+  "default_rooms": [],
   "design": "cryo_chamber.png"
  },
  {
@@ -3535,7 +3532,7 @@
  {
   "id": "sp-data_archive-1",
   "label": "Data Archive 1",
-  "category": "science",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-data_archive-1.png",
   "region": [
    0,
@@ -3589,7 +3586,7 @@
  {
   "id": "sp-data_archive-2",
   "label": "Data Archive 2",
-  "category": "science",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-data_archive-2.png",
   "region": [
    0,
@@ -3644,7 +3641,7 @@
  {
   "id": "sp-data_archive-3",
   "label": "Data Archive 3",
-  "category": "science",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-data_archive-3.png",
   "region": [
    0,
@@ -3696,7 +3693,7 @@
  {
   "id": "sp-data_archive-4",
   "label": "Data Archive 4",
-  "category": "science",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-data_archive-4.png",
   "region": [
    0,
@@ -6697,7 +6694,7 @@
  {
   "id": "sp-mining_drone_bay-1",
   "label": "Mining Drone Bay 1",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-mining_drone_bay-1.png",
   "region": [
    0,
@@ -6747,7 +6744,7 @@
  {
   "id": "sp-mining_drone_bay-2",
   "label": "Mining Drone Bay 2",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-mining_drone_bay-2.png",
   "region": [
    0,
@@ -6799,7 +6796,7 @@
  {
   "id": "sp-mining_drone_bay-3",
   "label": "Mining Drone Bay 3",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-mining_drone_bay-3.png",
   "region": [
    0,
@@ -6843,7 +6840,7 @@
  {
   "id": "sp-mining_drone_bay-4",
   "label": "Mining Drone Bay 4",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-mining_drone_bay-4.png",
   "region": [
    0,
@@ -8768,7 +8765,7 @@
  {
   "id": "sp-salvage_drone_bay-1",
   "label": "Salvage Drone Bay 1",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-salvage_drone_bay-1.png",
   "region": [
    0,
@@ -8821,7 +8818,7 @@
  {
   "id": "sp-salvage_drone_bay-2",
   "label": "Salvage Drone Bay 2",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-salvage_drone_bay-2.png",
   "region": [
    0,
@@ -8876,7 +8873,7 @@
  {
   "id": "sp-salvage_drone_bay-3",
   "label": "Salvage Drone Bay 3",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-salvage_drone_bay-3.png",
   "region": [
    0,
@@ -8920,7 +8917,7 @@
  {
   "id": "sp-salvage_drone_bay-4",
   "label": "Salvage Drone Bay 4",
-  "category": "engineering",
+  "category": "robotics",
   "source": "res://assets/station-props-v2/sp-salvage_drone_bay-4.png",
   "region": [
    0,

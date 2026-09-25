@@ -3009,7 +3009,7 @@ func _refresh_summary_figures(award: int) -> void:
 		child.queue_free()
 	var data_tint := Color(ResourceIcons.color("data"))
 	_add_summary_figure(str(cycle), "CYCLES SURVIVED", Color("#a9e7d4"))
-	_add_summary_figure(str(crew_count), "CREW REMAINING", RoomDatabaseScript.CATEGORY_COLORS.get("Crew", Color("#e58a45")))
+	_add_summary_figure(str(crew_count), "CREW REMAINING", RoomDatabaseScript.CATEGORY_COLORS.get("Recreation", Color("#e58a45")))
 	_add_summary_figure(str(resonance_score), "RESONANCE", Color("#c9a765"))
 	_add_summary_figure(str(links_formed), "LINKS FORMED", RoomDatabaseScript.CATEGORY_COLORS.get("Science", Color("#4f8fe6")))
 	_add_summary_figure("x%d" % largest_cascade, "BEST CASCADE", RoomDatabaseScript.CATEGORY_COLORS.get("Anomaly", Color("#9c5de8")))
@@ -4893,19 +4893,19 @@ func _format_effect_rows(values: Dictionary, prefix: String, negative: bool, per
 
 func _room_flavor_line(room: Dictionary) -> String:
 	match str(room.get("category", "")):
-		"Bio":
+		"Life Support":
 			return "\"Water in. Air out. Keep it clean.\""
 		"Engineering":
 			return "\"If it hums, it can be persuaded.\""
 		"Science":
 			return "\"Every signal is a memory trying to surface.\""
-		"Medical":
-			return "\"Warm the room before you wake the dead.\""
 		"Anomaly":
 			return "\"Containment is just curiosity with manners.\""
-		"Drone":
+		"Recreation":
+			return "\"Somewhere down here, someone still laughs.\""
+		"Robotics":
 			return "\"Small machines remember the work.\""
-		"Core":
+		"Operations":
 			return "\"BRINE listens through the walls.\""
 		_:
 			return "\"Station pattern recovered.\""

@@ -44,6 +44,7 @@ def room_themes():
     old_to_new = {"Core": "operations", "Security": "operations", "Engineering": "engineering",
                   "Drone": "engineering", "Science": "science", "Medical": "science",
                   "Bio": "life_support", "Crew": "recreation", "Anomaly": "anomaly",
+                  "Robotics": "robotics",
                   "Operations": "operations", "Life Support": "life_support", "Recreation": "recreation"}
     text = (ROOT / "scripts" / "room_database.gd").read_text(encoding="utf-8")
     result = {}
@@ -79,7 +80,7 @@ def clamp(rect):
     return [min(max(x, -HALF), HALF - w), min(max(y, -HALF), HALF - h), w, h]
 
 
-def place(props, q, doors):
+def place(props, q, doors, fixed=()):
     """props: list of (id, rect_at_q0, walls_at_q0). Returns {id: rect} for quarter q."""
     placed = {}
     for pid, (x, y, w, h), walls in props:
@@ -96,6 +97,18 @@ def place(props, q, doors):
     for _ in range(40):
         moved = False
         for pid, rect in placed.items():
+            # Live machinery never moves; painted props step clear of it (every quarter).
+            for f in fixed:
+                if not overlaps(rect, f, 2):
+                    continue
+                dx = min(rect[0] + rect[2], f[0] + f[2]) - max(rect[0], f[0]) + 4
+                dy = min(rect[1] + rect[3], f[1] + f[3]) - max(rect[1], f[1]) + 4
+                if dx < dy:
+                    rect[0] += dx if rect[0] + rect[2] / 2 >= f[0] + f[2] / 2 else -dx
+                else:
+                    rect[1] += dy if rect[1] + rect[3] / 2 >= f[1] + f[3] / 2 else -dy
+                rect[:] = clamp(rect)
+                moved = True
             central = abs(rect[0] + rect[2] / 2) < CENTRE and abs(rect[1] + rect[3] / 2) < CENTRE
             for lane in blockers:
                 # A centrepiece is the room's point; it stays put and is reported instead.
@@ -134,6 +147,9 @@ def place(props, q, doors):
         for lane in blockers:
             if overlaps(placed[pid], lane, 0):
                 problems.append("%s blocks a doorway" % pid)
+        for f in fixed:
+            if overlaps(placed[pid], f, 0):
+                problems.append("%s overlaps live machinery" % pid)
         for other in ids[i + 1:]:
             if q and overlaps(placed[pid], placed[other], 0):
                 problems.append("%s overlaps %s" % (pid, other))
@@ -210,6 +226,7 @@ def main():
             # The drone and its dock keep their live art but take the painted pad's place.
             cx = ((r["box"][0] + r["box"][2]) / 2 - x0) * scale - HALF
             cy = ((r["box"][1] + r["box"][3]) / 2 - y0) * scale - HALF
+            cx += size[2] if len(size) > 2 else 0  # optional sideways offset for pairs
             by_room.setdefault(room, []).append((live_id, clamp([cx - size[0] / 2, cy - size[1] / 2, size[0], size[1]]), []))
         if room and r["id"] not in not_default:
             rect = [(r["box"][0] - x0) * scale - HALF, (r["box"][1] - y0) * scale - HALF, w * scale, h * scale]
@@ -230,7 +247,8 @@ def main():
         spec = manifest.get(room)
         for q in range(4):
             doors = spec["rotations"][q] if spec else []
-            placed, problems = place(by_room.get(room, []), q, doors)
+            fixed = tags.get("live_obstacles", {}).get(room, {}).get(str(q), [])
+            placed, problems = place(by_room.get(room, []), q, doors, fixed)
             layout = {"__free_placement": True}
             # Floors stay: keep the room's floor finish and per-tile choices.
             for k, v in layouts.get("%s/%d" % (asset, q), {}).items():

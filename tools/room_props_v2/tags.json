@@ -1,5 +1,5 @@
 {
- "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects. floor_pieces: flat floor art (hatches, pads): drawn under crew, no collision, no shadow. floor_splits: prop whose rug installs as <id>-rug (model_cut floor_split), placed with it. collision_boxes: per-prop override, fractions of the region.",
+ "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects. floor_pieces: flat floor art (hatches, pads): drawn under crew, no collision, no shadow. floor_splits: prop whose rug installs as <id>-rug (model_cut floor_split), placed with it. collision_boxes: per-prop override, fractions of the region. live_obstacles: {room: {quarter: [[x,y,w,h]]}} live machinery (airlock pressure chamber, cryo pods) that painted props are placed clear of. live_anchors size may carry a third value: sideways offset (pairs).",
  "common": [
   "science-extra14-1",
   "science-extra14-2",
@@ -47,15 +47,18 @@
   "life_support-2": "life_support_console",
   "holographic_core-1": "holo_projector",
   "crew_lounge-3": "lounge_seat",
-  "crew_lounge-4": "lounge_seat"
+  "crew_lounge-4": "lounge_seat",
+  "airlock-4": "suit_locker"
  },
  "not_default": [
+  "airlock-3",
+  "construction_drone_bay-1",
+  "construction_drone_bay-3",
+  "cryo_chamber-3",
   "mining_drone_bay-1",
   "mining_drone_bay-3",
   "salvage_drone_bay-1",
-  "salvage_drone_bay-3",
-  "construction_drone_bay-1",
-  "construction_drone_bay-3"
+  "salvage_drone_bay-3"
  ],
  "live_anchors": {
   "mining_drone_bay-1": {
@@ -93,6 +96,18 @@
     90,
     64
    ]
+  },
+  "cryo_chamber-3": {
+   "cryo_pod_0": [
+    62,
+    90,
+    -36
+   ],
+   "cryo_pod_1": [
+    62,
+    90,
+    36
+   ]
   }
  },
  "floor_pieces": [
@@ -127,5 +142,41 @@
     0.116
    ]
   ]
+ },
+ "live_obstacles": {
+  "airlock": {
+   "0": [
+    [
+     -60.0,
+     -184.0,
+     120.0,
+     220.0
+    ]
+   ],
+   "1": [
+    [
+     -36.0,
+     -60.0,
+     220.0,
+     120.0
+    ]
+   ],
+   "2": [
+    [
+     -60.0,
+     -36.0,
+     120.0,
+     220.0
+    ]
+   ],
+   "3": [
+    [
+     -184.0,
+     -60.0,
+     220.0,
+     120.0
+    ]
+   ]
+  }
  }
 }

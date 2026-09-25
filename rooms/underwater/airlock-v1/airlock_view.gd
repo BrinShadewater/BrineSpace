@@ -182,14 +182,14 @@ func draw_registered_prop(prop: Dictionary) -> void:
 			artwork=prop.duplicate()
 			artwork.rect=locker_wall_art_rect(prop)
 		preload("res://scripts/room_asset_library.gd").draw(self,artwork)
-		if prop.id!="suit_lockers": return
+		if not preload("res://scripts/airlock_service.gd").is_suit_locker(prop): return
 	# Draw with the chamber so its wet-deck pass cannot cover the hatch leaves.
 	if prop.id=="outer_hatch": return
 	if prop.id=="pressure_chamber":
 		draw_chamber()
 		return
 	if not prop.get("library_asset",false) and (dressing==null or not dressing.draw(prop)): return
-	if prop.id=="suit_lockers":
+	if preload("res://scripts/airlock_service.gd").is_suit_locker(prop):
 		# Screen-facing attachment follows the fitting point in every room rotation.
 		var at: Vector2=preload("res://scripts/airlock_service.gd").helmet_anchor(prop)
 		if prop.has("helmet_anchor_uv"):
@@ -286,5 +286,5 @@ func draw_outer_cutaway() -> void:
 		var lamp:=Geometry.turn(at+Vector2(x,0),quarter)
 		painter.draw_circle(lamp,1.5,Color("e3e3cc") if operating else Color("52605b"))
 
-func is_animated_prop(prop: Dictionary) -> bool: return prop.id in ["pressure_chamber","outer_hatch","suit_lockers"]
+func is_animated_prop(prop: Dictionary) -> bool: return prop.id in ["pressure_chamber","outer_hatch","suit_lockers"] or preload("res://scripts/airlock_service.gd").is_suit_locker(prop)
 func effect_marks(_prop: Dictionary,_time: float) -> Array: return []

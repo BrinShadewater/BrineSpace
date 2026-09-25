@@ -15,14 +15,14 @@ var tray_progress: ProgressBar
 var tray_pending_total:=0
 var library_filter: OptionButton
 var pack_filter: OptionButton
-const TRAY_CATEGORIES := ["Default","Common Props","Floors","Walls","Operations","Engineering","Science","Life Support","Recreation","Anomaly"]
+const TRAY_CATEGORIES := ["Default","Common Props","Floors","Walls","Operations","Engineering","Science","Life Support","Recreation","Anomaly","Robotics"]
 const TRAY_DEFAULT := 0
 const TRAY_COMMON := 1
 const TRAY_FLOORS := 2
 const TRAY_WALLS := 3
 const TRAY_FIRST_THEME := 4
-const STATION_THEMES := ["operations","engineering","science","life_support","recreation","anomaly"]
-const STATION_CATEGORY_NAMES := {"common":"Common Props","operations":"Operations","engineering":"Engineering","science":"Science","life_support":"Life Support","recreation":"Recreation","anomaly":"Anomaly"}
+const STATION_THEMES := ["operations","engineering","science","life_support","recreation","anomaly","robotics"]
+const STATION_CATEGORY_NAMES := {"common":"Common Props","operations":"Operations","engineering":"Engineering","science":"Science","life_support":"Life Support","recreation":"Recreation","anomaly":"Anomaly","robotics":"Robotics"}
 var theme_filters: Dictionary={}
 var retire_button: Button
 # Assets the owner has marked for removal. Nothing is deleted here: the id is
