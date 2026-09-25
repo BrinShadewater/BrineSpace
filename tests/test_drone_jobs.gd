@@ -3,6 +3,7 @@ var game
 func _init() -> void: call_deferred("run")
 func run() -> void:
 	game = load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	game.run_save_path = "user://drone_jobs_%d.loop" % OS.get_process_id()
 	game.meta.save_path = game.run_save_path+".meta"
 	root.add_child(game)
@@ -57,7 +58,12 @@ func run() -> void:
 	game._update_wreck_clearance(20.0)
 	assert(game.wrecks[rock].progress==before,"Pause freezes job")
 	game.paused = false
-	game._update_wreck_clearance(30.0)
+	# Drones recharge from stored Power above a reserve of 3 (Sept 23 charging): a
+	# mid-job recharge needs Power to spare, so give the station some and allow it.
+	game.resources.power=20
+	for step in range(60):
+		game._update_wreck_clearance(5.0)
+		if game.wrecks[rock].cleared: break
 	assert(game.wrecks[rock].cleared,"Mining drone clears blocker")
 	var old = preload("res://scripts/run_save.gd").capture(game)
 	old.erase("drone_fleet")
