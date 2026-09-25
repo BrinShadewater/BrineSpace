@@ -240,6 +240,8 @@ def main():
         }
         if r["id"] in roles:
             entry["role"] = roles[r["id"]]
+        if r["id"] in tags.get("effects", {}):
+            entry["effects"] = tags["effects"][r["id"]]
         if r["id"] in collision:
             entry["collision_boxes"] = collision[r["id"]]
         if r["id"] in floor_pieces:

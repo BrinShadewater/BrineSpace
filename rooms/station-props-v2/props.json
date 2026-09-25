@@ -465,6 +465,18 @@
     96,
     35
    ]
+  ],
+  "effects": [
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.27,
+     0.17,
+     0.46,
+     0.43
+    ],
+    "color": "#b98cff"
+   }
   ]
  },
  {
@@ -4664,7 +4676,19 @@
   "default_rooms": [
    "gravity_loom"
   ],
-  "design": "gravity_loom.png"
+  "design": "gravity_loom.png",
+  "effects": [
+   {
+    "kind": "field",
+    "area": [
+     0.3,
+     0.27,
+     0.4,
+     0.36
+    ],
+    "color": "#9d7cff"
+   }
+  ]
  },
  {
   "id": "sp-gravity_loom-4",
@@ -11725,6 +11749,19 @@
     52,
     30
    ]
+  ],
+  "effects": [
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.14,
+     0.14,
+     0.72,
+     0.56
+    ],
+    "color": "#9f7bd6",
+    "strength": 0.5
+   }
   ]
  },
  {
@@ -18874,7 +18911,29 @@
   "display_width": 95.4,
   "wall_contact": [],
   "default_rooms": [],
-  "design": "Anomaly/Anomaly Extras1.png"
+  "design": "Anomaly/Anomaly Extras1.png",
+  "effects": [
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.14,
+     0.12,
+     0.29,
+     0.52
+    ],
+    "color": "#a86bff"
+   },
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.53,
+     0.12,
+     0.29,
+     0.52
+    ],
+    "color": "#a86bff"
+   }
+  ]
  },
  {
   "id": "sp-anomaly-extra1-4",

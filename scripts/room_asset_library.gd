@@ -177,6 +177,7 @@ static func template(id: String) -> Dictionary:
 	var size:=Vector2(width,width*float(r[3])/float(r[2]))
 	var registration: Dictionary={"pieces":pieces,"pivot":Vector2(r[0]+r[2]*0.5,r[1]+r[3]),"width":float(r[2]),"height":float(r[3])}
 	if data.has("operating_screens"): registration.operating_screens=data.operating_screens.duplicate(true)
+	if data.has("effects"): registration.effects=data.effects.duplicate(true)
 	if data.has("operating_screen_color"): registration.operating_screen_color=data.operating_screen_color
 	if data.has("reading_lamp"): registration.reading_lamp=data.reading_lamp.duplicate(true)
 	if data.has("turbine_effects"): registration.turbine_effects=data.turbine_effects.duplicate(true)
@@ -246,6 +247,34 @@ static func draw(room, prop: Dictionary) -> void:
 			uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,tex)
 	draw_operating_screens(room,reg,anchor,scale_value)
+	if reg.has("effects") and room.operating: draw_effects(room,prop,reg.effects)
+
+# Station-prop effects (catalog "effects"): areas are fractions of the prop's art.
+static func draw_effects(room, prop: Dictionary, effects: Array) -> void:
+	var r: Rect2=prop.rect
+	var t: float=room.machine_clock
+	for fx in effects:
+		var a: Array=fx.area
+		var area:=Rect2(r.position+r.size*Vector2(a[0],a[1]),r.size*Vector2(a[2],a[3]))
+		var color:=Color(str(fx.get("color","#b98cff")))
+		var strength: float=float(fx.get("strength",1.0))
+		var center:=area.get_center()
+		if fx.kind=="specimen_glow":
+			var pulse: float=0.5+0.5*sin(t*1.7+center.x*0.05)
+			for ring in range(3):
+				var k: float=1.0-ring*0.28
+				room.painter.draw_circle(center,minf(area.size.x,area.size.y)*0.5*k,Color(color,(0.07+0.07*pulse)*strength))
+			# Motes drift up through the fluid on a fixed, clock-driven path.
+			for i in range(6):
+				var phase: float=fposmod(t*0.35+i*0.167,1.0)
+				var p:=Vector2(area.position.x+area.size.x*(0.2+0.6*fposmod(i*0.37,1.0)),area.end.y-area.size.y*phase)
+				room.painter.draw_circle(p,maxf(0.5,area.size.x*0.025),Color(color.lightened(0.4),(1.0-phase)*0.8*strength))
+		elif fx.kind=="field":
+			var radius: float=minf(area.size.x,area.size.y)*0.5
+			for arc in range(3):
+				var start: float=t*(0.8+arc*0.35)+arc*2.1
+				room.painter.draw_arc(center,radius*(0.45+arc*0.2),start,start+1.9,16,Color(color,0.55*strength),maxf(0.6,radius*0.06),true)
+			room.painter.draw_circle(center,radius*0.18*(0.8+0.2*sin(t*3.0)),Color(color.lightened(0.5),0.6*strength))
 
 static func draw_operating_screens(room, reg: Dictionary, anchor: Vector2, scale_value: float) -> void:
 	if reg.has("operating_screens") and room.operating:

@@ -123,7 +123,7 @@ func submit(view, queue: Array) -> void:
 				# change with slot state, while registered screens use the live clock.
 				# Portable/custom artwork still belongs to its source renderer.
 				if item.prop.get("library_asset",false) and not item.prop.get("custom_library_draw",false) and not item.prop.has("portable_view"):
-					slot.live = bool(view_state.get("operating",false)) and not item.prop.registration.get("operating_screens",[]).is_empty()
+					slot.live = bool(view_state.get("operating",false)) and (not item.prop.registration.get("operating_screens",[]).is_empty() or not item.prop.registration.get("effects",[]).is_empty())
 				if item.kind == "prop_base": slot.live = false
 				if item.kind == "prop_effects": slot.live = true
 				if item.kind == "prop_pass": slot.live = item.live

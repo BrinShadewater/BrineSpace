@@ -1,5 +1,5 @@
 {
- "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects. floor_pieces: flat floor art (hatches, pads): drawn under crew, no collision, no shadow. floor_splits: prop whose rug installs as <id>-rug (model_cut floor_split), placed with it. collision_boxes: per-prop override, fractions of the region. live_obstacles: {room: {quarter: [[x,y,w,h]]}} live machinery (airlock pressure chamber, cryo pods) that painted props are placed clear of. live_anchors size may carry a third value: sideways offset (pairs). clear_west: {id: px} free floor kept west of the prop (crew work the suit lockers facing east).",
+ "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects. floor_pieces: flat floor art (hatches, pads): drawn under crew, no collision, no shadow. floor_splits: prop whose rug installs as <id>-rug (model_cut floor_split), placed with it. collision_boxes: per-prop override, fractions of the region. live_obstacles: {room: {quarter: [[x,y,w,h]]}} live machinery (airlock pressure chamber, cryo pods) that painted props are placed clear of. live_anchors size may carry a third value: sideways offset (pairs). clear_west: {id: px} free floor kept west of the prop (crew work the suit lockers facing east). effects: {id: [{kind: specimen_glow|field, area: [fx,fy,fw,fh] of the art, color, strength?}]} drawn while the room is powered.",
  "common": [
   "science-extra14-1",
   "science-extra14-2",
@@ -181,5 +181,66 @@
  },
  "clear_west": {
   "airlock-4": 44
+ },
+ "effects": {
+  "anomaly_lab-3": [
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.27,
+     0.17,
+     0.46,
+     0.43
+    ],
+    "color": "#b98cff"
+   }
+  ],
+  "anomaly-extra1-3": [
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.14,
+     0.12,
+     0.29,
+     0.52
+    ],
+    "color": "#a86bff"
+   },
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.53,
+     0.12,
+     0.29,
+     0.52
+    ],
+    "color": "#a86bff"
+   }
+  ],
+  "xeno_lab-1": [
+   {
+    "kind": "specimen_glow",
+    "area": [
+     0.14,
+     0.14,
+     0.72,
+     0.56
+    ],
+    "color": "#9f7bd6",
+    "strength": 0.5
+   }
+  ],
+  "gravity_loom-3": [
+   {
+    "kind": "field",
+    "area": [
+     0.3,
+     0.27,
+     0.4,
+     0.36
+    ],
+    "color": "#9d7cff"
+   }
+  ]
  }
 }
