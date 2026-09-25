@@ -300,8 +300,8 @@
       "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
     },
     "test_reactor_console_feedback": {
-      "lane": "native",
-      "reason": "Verifies operating-screen pixel changes and off/held-clock stability in four room views."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen effects of the retired built-in consoles; re-author with the parked new-prop screen animations."
     },
     "test_drone_hatch_handoff": {
       "lane": "native",
@@ -389,8 +389,8 @@
       "reason": "Retired 2026-09-25 (station props v2): Studio tileset-library tools; the tray now lists station props only."
     },
     "test_command_console_feedback": {
-      "lane": "native",
-      "reason": "Verifies operating-screen pixel changes and off/held-clock stability in four room views."
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen effects of the retired built-in consoles; re-author with the parked new-prop screen animations."
     },
     "test_library_prop_retention": {
       "lane": "skip",
@@ -447,6 +447,10 @@
     "test_wall_rollout_effects": {
       "lane": "skip",
       "reason": "Retired 2026-09-25 (station props v2): full-wall banks, not shown in station-props-v2 rooms."
+    },
+    "test_rare_operating_effects": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen effects of the retired built-in consoles; re-author with the parked new-prop screen animations."
     }
   }
 }

@@ -160,6 +160,9 @@ static func template(id: String) -> Dictionary:
 	if image_jobs.has(data.source):
 		finish_texture(data.source,true)
 	if not source_textures.has(data.source):
+		# Sheets retired to the owner's Desktop (station props v2, step 8a) leave
+		# stale placements in old saves and layouts: skip them without an error.
+		if not FileAccess.file_exists(data.source): return {}
 		var image:=Image.new()
 		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source))!=OK: return {}
 		source_textures[data.source]=ImageTexture.create_from_image(image)
