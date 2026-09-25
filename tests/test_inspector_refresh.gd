@@ -13,6 +13,7 @@ func check(ok: bool, message: String) -> void:
 		push_error(message)
 func run() -> void:
 	var game := Station.new()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map with cryo wards (predates procedural sites)
 	game.meta.save_path = "user://inspector-refresh.meta"
 	game.run_save_path = "user://inspector-refresh.loop"
 	root.add_child(game)
