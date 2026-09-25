@@ -4,6 +4,8 @@
 
 Writes assets/station-props-v2/<id>.png, rooms/station-props-v2/props.json and
 replaces the redesigned rooms' entries in rooms/full-wall-v1/default-layouts.json.
+These art files are extract.py's colour-difference cuts; run model_cut.py
+--install afterwards to replace them with the reviewed model cuts.
 
 Each design is the room at 0 degrees. The props never turn, so the other three
 rotations move each prop's centre around the room centre, push it back inside

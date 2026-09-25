@@ -3,6 +3,8 @@ extends RefCounted
 static var catalog: Dictionary={}
 static var source_textures: Dictionary={}
 const STATION_PROPS := "res://rooms/station-props-v2/props.json"
+# [world offset, opacity] layers of the station-prop contact shadow, darkest nearest.
+const CONTACT_SHADOW := [[Vector2(1.5,2.0),0.22],[Vector2(2.5,3.5),0.14],[Vector2(3.5,5.0),0.08]]
 # Rooms that keep their pre-v2 art for now (owner, 2026-09-24). Every other room shows
 # only station props, plus the live drone and dock in drone bays.
 const LEGACY_ART_ROOMS := ["brine_core","corridor","corner","tee_corridor"]
@@ -215,6 +217,17 @@ static func draw(room, prop: Dictionary) -> void:
 	var tex: Texture2D=prop.library_texture
 	var scale_value: float=prop.rect.size.x/reg.width
 	var anchor:=Vector2(prop.rect.get_center().x,prop.rect.end.y)
+	# Station props are cut without their painted shadows (owner, 2026-09-24): lay a
+	# soft contact shadow from the prop's own silhouette, stacked offsets fading out.
+	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))):
+		for step in CONTACT_SHADOW:
+			for polygon in reg.pieces:
+				var shadow_points:=PackedVector2Array()
+				var shadow_uv:=PackedVector2Array()
+				for point in polygon:
+					shadow_points.append(anchor+(point-reg.pivot)*scale_value+step[0])
+					shadow_uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
+				room.painter.draw_polygon(shadow_points,PackedColorArray([Color(0,0,0,step[1])]),shadow_uv,tex)
 	for polygon in reg.pieces:
 		var points:=PackedVector2Array()
 		var uv:=PackedVector2Array()
