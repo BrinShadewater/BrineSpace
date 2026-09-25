@@ -54,6 +54,36 @@ def room_themes():
     return result
 
 
+def find_screens(path):
+    """Dark, framed, roughly rectangular panels (monitors) in a prop's art, as
+    [x, y, w, h] in its own pixels; the game draws a live trace on them."""
+    import numpy as np
+    from PIL import Image
+    from scipy import ndimage
+    im = np.asarray(Image.open(path).convert("RGBA")).astype(int)
+    solid = im[..., 3] > 200
+    lum = im[..., :3].mean(2)
+    chroma = im[..., :3].max(2) - im[..., :3].min(2)
+    dark = ndimage.binary_opening(solid & (lum < 42) & (chroma < 45), iterations=1)
+    lab, _ = ndimage.label(dark)
+    found = []
+    for i, sl in enumerate(ndimage.find_objects(lab), 1):
+        if sl is None:
+            continue
+        y0, y1, x0, x1 = sl[0].start, sl[0].stop, sl[1].start, sl[1].stop
+        w, h = x1 - x0, y1 - y0
+        if w < 14 or h < 10 or (lab[sl] == i).sum() < 0.85 * w * h:
+            continue
+        if w > 0.8 * im.shape[1] or h > 0.8 * im.shape[0] or not 0.4 < w / h < 4.5:
+            continue
+        ya, yb, xa, xb = max(0, y0 - 3), min(im.shape[0], y1 + 3), max(0, x0 - 3), min(im.shape[1], x1 + 3)
+        rim = np.concatenate([lum[ya:y0, xa:xb].ravel(), lum[y1:yb, xa:xb].ravel(),
+                              lum[y0:y1, xa:x0].ravel(), lum[y0:y1, x1:xb].ravel()])
+        if rim.size and rim.mean() >= 60:
+            found.append([int(x0) + 2, int(y0) + 2, int(w) - 4, int(h) - 4])
+    return found
+
+
 def turn(x, y, q):
     for _ in range(q % 4):
         x, y = -y, x

@@ -32,6 +32,7 @@ THIN_MIN = 60     # native px; smaller agreed slivers on the outline are ticks
 PEEL = 5          # native px: deepest the floor-strip peel reaches into a mask
 POINT_UP = 2      # click repairs run SAM at twice native size
 MARGIN = 3        # extract.py cut margin, for --install alignment
+SHEET = 1254      # design sheet size (all sheets)
 
 
 class Cutter:
@@ -198,13 +199,14 @@ def peel_shadow(rgba, depth=10, lo=22, hi=58, chroma=22):
 def install(record, cut, pid, suffix=""):
     """Place the cut on the extract.py canvas so the catalog region and saved
     layouts are unchanged. A cut that reaches past that canvas grows it; returns
-    the growth (left, top, right, bottom) so the catalog and layouts can follow."""
+    the growth (left, top, right, bottom) against the extract canvas, so running
+    the install again gives the same file."""
     target = ROOT / "assets" / "station-props-v2" / ("sp-%s%s.png" % (pid, suffix))
-    base = ROOT / "assets" / "station-props-v2" / ("sp-%s.png" % pid)
-    w, h = Image.open(base).size
-    x0, y0 = record["box"][0], record["box"][1]
-    ox = max(0, x0 - PAD) - max(0, x0 - MARGIN)
-    oy = max(0, y0 - PAD) - max(0, y0 - MARGIN)
+    # extract.py's canvas is the record box itself (it already includes the cut margin).
+    x0, y0, x1, y1 = record["box"]
+    w, h = x1 - x0, y1 - y0
+    ox = max(0, x0 - PAD) - x0
+    oy = max(0, y0 - PAD) - y0
     ys, xs = np.where(cut[..., 3] > 0)
     grow = (max(0, -(xs.min() + ox)), max(0, -(ys.min() + oy)),
             max(0, xs.max() + ox + 1 - w), max(0, ys.max() + oy + 1 - h))
@@ -213,36 +215,63 @@ def install(record, cut, pid, suffix=""):
     # Transparent pixels carry no colour, so edge filtering never bleeds floor in.
     arr = np.asarray(canvas).copy(); arr[arr[..., 3] == 0, :3] = 0
     Image.fromarray(arr, "RGBA").save(target)
-    return tuple(int(v) for v in grow)
+    return tuple(int(v) for v in grow), (w, h)
 
 
 def follow_growth(grown):
-    """Grow catalog regions and move layout positions so grown art stays in place."""
+    """Set catalog regions to the installed canvases and move default-layout
+    positions by any change in left/top growth, so grown art stays in place.
+    The applied growth is recorded ("canvas_growth"), which keeps reruns stable."""
     catalog_path = ROOT / "rooms" / "station-props-v2" / "props.json"
     catalog = json.loads(catalog_path.read_text())
-    scales = {}
+    shifts = {}
     for entry in catalog:
-        g = grown.get(entry["id"])
-        if not g: continue
-        w, h = entry["region"][2], entry["region"][3]
-        scale = entry["display_width"] / w
-        w, h = w + g[0] + g[2], h + g[1] + g[3]
+        if entry["id"] not in grown:
+            continue
+        g, (w0, h0) = grown[entry["id"]]
+        prev = entry.get("canvas_growth", [0, 0, 0, 0])
+        scale = entry["display_width"] / entry["region"][2]
+        w, h = w0 + g[0] + g[2], h0 + g[1] + g[3]
         entry["region"] = [0, 0, w, h]
         entry["pieces"] = [[[0, 0], [w, 0], [w, h], [0, h]]]
         entry["display_width"] = round(w * scale, 1)
-        scales[entry["id"]] = (scale, g)
+        if any(g):
+            entry["canvas_growth"] = list(g)
+        else:
+            entry.pop("canvas_growth", None)
+        if g[0] != prev[0] or g[1] != prev[1]:
+            shifts[entry["id"]] = ((g[0] - prev[0]) * scale, (g[1] - prev[1]) * scale)
     catalog_path.write_text(json.dumps(catalog, indent=1))
-    for path in [ROOT / "rooms" / "full-wall-v1" / "default-layouts.json"]:
+    if shifts:
+        path = ROOT / "rooms" / "full-wall-v1" / "default-layouts.json"
         data = json.loads(path.read_text())
         for layout in data["layouts"].values():
             for key, value in layout.items():
                 base = key.split("#")[0]
-                if base.startswith("library/") and base[8:] in scales and isinstance(value, list):
-                    scale, g = scales[base[8:]]
-                    layout[key] = [round(value[0] - g[0] * scale, 1), round(value[1] - g[1] * scale, 1)]
+                if base.startswith("library/") and base[8:] in shifts and isinstance(value, list):
+                    dx, dy = shifts[base[8:]]
+                    layout[key] = [round(value[0] - dx, 1), round(value[1] - dy, 1)]
         # Same shape as the hand-kept file (2-space JSON, CRLF).
         path.write_bytes((json.dumps(data, indent=2) + "\n").replace("\n", "\r\n").encode())
-    return sorted(scales)
+    return sorted(shifts)
+
+
+def detect_screens():
+    """Record each installed prop's monitor panels (build_catalog.find_screens)."""
+    import build_catalog
+    path = ROOT / "rooms" / "station-props-v2" / "props.json"
+    catalog = json.loads(path.read_text())
+    count = 0
+    for entry in catalog:
+        entry.pop("operating_screens", None)
+        if entry.get("floor_piece"):
+            continue
+        screens = build_catalog.find_screens(ROOT / "assets" / "station-props-v2" / (entry["id"] + ".png"))
+        if screens:
+            entry["operating_screens"] = screens
+            count += 1
+    path.write_text(json.dumps(catalog, indent=1))
+    return count
 
 
 def main():
@@ -274,13 +303,14 @@ def main():
                 Image.fromarray(cutter.rugs[pid], "RGBA").save(out / (pid + "-rug.png"))
         rug = out / (pid + "-rug.png")
         if args.install and rug.exists():
-            install(records[pid], np.asarray(Image.open(rug).convert("RGBA")), pid, "-rug")
+            grown["sp-" + pid + "-rug"] = install(records[pid], np.asarray(Image.open(rug).convert("RGBA")), pid, "-rug")
         if args.install:
-            g = install(records[pid], cut, pid)
-            if any(g): grown["sp-" + pid] = g
+            grown["sp-" + pid] = install(records[pid], cut, pid)
         print(pid, flush=True)
     if grown:
-        print("grew canvas (catalog and default layouts follow):", follow_growth(grown))
+        print("default layouts shifted for:", follow_growth(grown))
+    if args.install:
+        print("screens found on %d props" % detect_screens())
 
 
 if __name__ == "__main__":
