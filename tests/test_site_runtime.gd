@@ -69,8 +69,11 @@ func run():
 	if FileAccess.file_exists(historical):
 		legacy=Save.read(historical)
 		check(not legacy.is_empty(),"historical checkpoint reads")
+		# Read tags the data with its path and restore adopts it as the save path; drop it so
+		# later saves never overwrite the fixture (an earlier run replaced it with a site save).
+		legacy.erase("_path")
 		check(Save.restore(game,legacy),"historical checkpoint restores")
-		check(game.site_layout.is_empty() and game.wrecks==legacy.wrecks,"historical geography preserved")
+		check(game.site_layout==legacy.get("site_layout",{}) and game.wrecks==legacy.wrecks,"historical geography preserved")
 	# Known-character shuffle remains stable across actual disk save/restore.
 	game.remove_meta("authored_site_fixture")
 	for id in game.Architects.IDS: game.meta.record_sighting(id)
