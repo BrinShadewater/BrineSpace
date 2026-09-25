@@ -1,8 +1,9 @@
 # Tileset library handoff - September 20, 2026
 
 For whoever picks this up next (Codex, another agent, or the owner in six months).
-Branch `tileset-library`, [PR #12](https://github.com/BrinShadewater/BrineSpace/pull/12),
-not yet merged. Read [`AGENTS.md`](../AGENTS.md) first; this file only covers the bought
+The work landed on `main` on September 20 through
+[PR #12](https://github.com/BrinShadewater/BrineSpace/pull/12) and #13; section 9 lists what
+changed after this was first written. Read [`AGENTS.md`](../AGENTS.md) first; this file only covers the bought
 art library and the Studio changes that came with it.
 
 The rules of the work live in
@@ -103,9 +104,8 @@ All of the above passed at the last commit on this branch.
 
 ## 7. Open items
 
-1. **Merge PR #12.** It is large and other sessions share the checkout.
-2. Two props are still starred (`ast-01`, `h22-01`); both were fixed in the last pass and
-   await the owner's look.
+1. ~~Merge PR #12.~~ Done, with #13 (CI green again). Work from `main`.
+2. ~~Two props still starred.~~ The owner approved both; favourites and notes are empty.
 3. `hole-report.json` lists about 400 props with vendor key holes that nobody has
    patched. Patch what the owner stars; do not attempt a library-wide repair.
 4. Whites are lifted only on props the owner uses. A library-wide pass is the owner's call.
@@ -124,3 +124,46 @@ All of the above passed at the last commit on this branch.
 - Delete `vendor-art/`.
 - Refactor `scripts/main.gd` or the Studio beyond what a task needs. Propose instead.
 - Sign a Mac build, or put keys in code. See the project memory and `AGENTS.md`.
+
+## 9. Later on September 20
+
+- **PR #12 and #13 are merged; `main`'s CI is green again.** Four old breakages hid behind
+  each other (CI stops at the first): a stale card-path test, 48 dead default-layout keys,
+  five new music tracks missing from CI's LFS fetch, and a 15-minute job limit the art
+  import had outgrown. The parse check now runs in batches of 100 scripts per engine
+  launch (`tests/ci_parse_all.gd`) and names the script if the engine dies on one.
+- **Rejoin parts asks first**: one press says how many props it will merge, a second press
+  within four seconds does it.
+- **`sweep.py` never removes a prop standing in the owner's rooms.** It reads the owner's
+  saved layouts (read only). A reviewer's removal is refused; the owner's own marks are
+  listed and need `--even-if-placed`.
+- **The agent furnished the rooms the owner had not decorated** (34 rooms and the three
+  hallway pieces, four rotations each) by driving the real Studio from a probe script.
+  The layouts are in the owner's user folder, not the repo; a backup from before sits
+  beside them as `room_layouts.backup-2026-09-20.json`. Two things learned: the Studio's
+  validation does not stop library props overlapping each other or standing off a
+  hallway's floor, so a furnishing script must check both itself
+  (`Corridor.contains_foot`); and a hallway floor is about 94 units wide with a 72-unit
+  door lane, so hallway props must be small (about 22 units) and touch the hull.
+
+## 10. What the furnishing pass cost, found September 20 evening
+
+The scripted furnishing in section 9 strips a room before it places: `furnish_groups.gd`
+nulls every authored default prop, keeping a removal only if `issues()` stays clean. Three
+consequences, all found after the fact:
+
+- **The BRINE Core lost all five authored props**, `brine_chamber` among them. That prop is
+  what the tank, the water, the reflections and BRINE's floating body key off, so she was not
+  drawn in her own core room. Restored in all four rotations; the other four stay removed.
+- **Five doorways were blocked by props** and crew could not path through them. One was a code
+  bug (navigation ignored the library's floor footprint and blocked with the whole art box,
+  wall art included). The rest were the owner's own placements at identical coordinates in all
+  four rotations — "Copy to other rotations" pins a prop while the door moves out from under
+  it. Watch for that button.
+- **A room can be furnished for its name rather than its job.** `plan_groups.py` had the
+  Emergency Isolation Vault down as a strongroom when the database calls it "reserve power and
+  emergency branch isolation controls".
+
+`tools/lint_room_layouts.gd` now reports blocked doors, overlaps and off-hull props across all
+188 room/rotations. No blocked doors remain; 25 off-hull placements and one overlap sit in the
+owner's art and are theirs to judge. Run it after any furnishing pass.

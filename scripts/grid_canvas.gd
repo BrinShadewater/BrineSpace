@@ -1395,6 +1395,10 @@ func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	render_door_cache_active = false
 
 var foundation_textures: Dictionary = {}
+# Whole paths, not a folder prefix joined to a built filename. The September 18 art
+# move rewrote every res:// literal it could find and could not see a path assembled
+# at runtime, so every foundation here loaded nothing from then on. Its four piles
+# landed in two different legacy folders; name each one where it actually is.
 const FOUNDATION_PATHS = {
 	"silt": "res://legacy/default/rooms/foundation-v1/foundation-silt-v1.png",
 	"reef": "res://legacy/retired/rooms/foundation-v1/foundation-reef-v1.png",

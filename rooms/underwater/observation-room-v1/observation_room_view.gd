@@ -6,9 +6,14 @@ var rotated_textures: Dictionary={}
 func furnishing_texture(id: String) -> ImageTexture:
 	var key:=id+"-q"+str(quarter)
 	if not rotated_textures.has(key):
+		# The art move sorted this pack by whether a literal path named the file, and
+		# these are built from an id and a rotation, so it saw none of them: the whole
+		# pack went to legacy/retired except the one shelf face another script names.
 		var path: String="res://legacy/retired/assets/rooms/observation-room/pack/"+key+".png"
 		if id=="observation_north":
-			path="res://legacy/default/assets/rooms/observation-room/pack/shelves-down.png" if quarter==0 else "res://legacy/retired/assets/rooms/observation-room/pack/shelves-%s.png" % ["down","left","up","right"][quarter]
+			var facing: String=["down","left","up","right"][quarter]
+			path=("res://legacy/default/assets/rooms/observation-room/pack/shelves-down.png" if facing=="down"
+				else "res://legacy/retired/assets/rooms/observation-room/pack/shelves-"+facing+".png")
 		rotated_textures[key]=load_source_texture(path)
 	return rotated_textures[key]
 

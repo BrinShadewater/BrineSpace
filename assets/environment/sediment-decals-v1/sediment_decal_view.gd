@@ -7,8 +7,10 @@ const SOURCES := {
 }
 const CENTER := Mooring.CENTER
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["silt-scour"])==OK:
 		textures["silt-scour"]=ImageTexture.create_from_image(source)

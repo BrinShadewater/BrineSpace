@@ -6,8 +6,10 @@ const SOURCES := {
 }
 const CENTER := Vector2(10.8,14.8)
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["collapsed-cable-reel"])==OK:
 		textures["collapsed-cable-reel"]=ImageTexture.create_from_image(source)

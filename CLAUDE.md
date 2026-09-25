@@ -17,22 +17,15 @@ The thing most likely to cost you an hour:
 Also:
 
 - **Raster art is Git LFS.** Pointer files are not corruption; do not "repair" them.
+- **Name whole `res://` paths, never a folder prefix plus a built name.** A rename can
+  only rewrite whole literals, and the release manifest expands a quoted folder into the
+  whole folder — even in a comment. Both bit hard; see AGENTS.md.
 - **Normal runs spend costs and enforce failures.** Free builds and disabled
   failures are isolated fixture options; saves remain at `user://brine_save.json`.
 - **Do not refactor `scripts/main.gd` unasked.** The project is
   optimising for finding what is fun, not for architecture. Propose, don't perform.
 - **Keep `.uid` files paired with their `.gd`.**
 
-Godot 4.7 (tested with 4.7.2), configured entry point `res://scenes/title_screen.tscn`; gameplay is `res://scenes/main.tscn`. Rights: [`NOTICE.md`](NOTICE.md).
-
-## September 24 takeover
-
-Read [current status](docs/CURRENT_STATUS.md), then the
-[detailed Claude handoff](docs/CLAUDE_HANDOFF_2026-09-24.md) and
-[asset pipeline/workflow](docs/ASSET_PIPELINE_AND_WORKFLOW.md).
-The checkout contains extensive local uncommitted work; HEAD alone is not the
-current delivered game. Preserve owner layouts and ignored vendor originals.
-The handoff records current packages, unresolved work and acceptance limits.
-Repository skills under `skills/` are usable directly by Claude; no Codex plugin
-is required to read them. The newest camera-style discussion needs recovery before
-any proposed change is treated as accepted. Session archival is not game completion.
+Godot 4.7 (tested with 4.7.2). `project.godot` runs `res://scenes/title_screen.tscn`;
+`res://scenes/main.tscn` is gameplay, which most fixtures instantiate directly.
+Rights: [`NOTICE.md`](NOTICE.md).

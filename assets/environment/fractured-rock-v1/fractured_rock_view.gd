@@ -11,8 +11,10 @@ const PROPS := [
 	{"at":Vector2(13.5,10.7),"size":0.35}
 ]
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["fractured-basalt-slab"])==OK:
 		textures["fractured-basalt-slab"]=ImageTexture.create_from_image(source)

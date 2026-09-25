@@ -52,6 +52,9 @@ marks and user layouts are owner data. Back up affected keys before writes.
 
 ## Latest implemented work
 
+- Merged from `main` (Sept 25): the September 20 art-path restore, doorway
+  unblocking, Isolation Vault fix, zoom limits and CI — see
+  [Codex handoff Sept 20](CODEX_HANDOFF_2026-09-20.md).
 - [Full-Power report](DRONE_FULL_POWER_REPORT_2026-09-24.md): seed 3862060672,
   cycle 457 had fully charged mining drones and exhausted discovered mining stock.
   Nearby surveyed piles required salvage. Inspector work/battery status now comes

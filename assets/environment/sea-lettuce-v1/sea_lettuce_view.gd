@@ -10,8 +10,10 @@ const PLANTS := [
 	{"at":Vector2(11.8,25.8),"size":0.25}
 ]
 var textures: Dictionary = {}
+var prepared := false
 func prepare() -> void:
-	if not textures.is_empty(): return
+	if prepared: return
+	prepared = true
 	var source := Image.new()
 	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["sea-lettuce-rosette"])==OK:
 		textures["sea-lettuce-rosette"]=ImageTexture.create_from_image(source)

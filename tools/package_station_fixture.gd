@@ -55,7 +55,7 @@ func _init() -> void:
 		include_path("res://character")
 		include_path("res://tests/playtest_drone_fleet.gd")
 		include_path("res://tests/test_drone_jobs.gd")
-		include_path("res://assets/drones/fleet-v1/")
+		include_path("res://legacy/default/assets/drones/fleet-v1/")
 	if "--production-ten" in OS.get_cmdline_user_args():
 		include_path("res://rooms/production-ten/manifest.json")
 		include_path("res://tests/test_production_ten_connections.gd")
