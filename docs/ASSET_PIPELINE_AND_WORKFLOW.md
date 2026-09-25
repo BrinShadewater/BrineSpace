@@ -9,7 +9,8 @@ the detailed procedures remain in the two repository skills. Start with
 | Work | Maintained procedure | Evidence needed |
 |---|---|---|
 | Crew identity, motion, equipment, furniture contact | [Character skill](../skills/brinespace-character-pipeline/SKILL.md) | Selected source and rebuild, continuous native action/joins, real controller travel where relevant |
-| Bought props, Studio, layouts, room cards | [Room skill](../skills/brinespace-room-pipeline/SKILL.md) and its tileset reference | Registry integrity, protected-key comparison, live/Studio views and relevant door approaches |
+| Station props (v2), Studio, layouts, room cards | [Station props v2](STATION_PROPS_V2_2026-09-25.md) (`tools/room_props_v2/`); [Codex re-export brief](CODEX_BRIEF_MAGENTA_PROPS.md) | Catalog/`test_layout_keys`, owner layout backup, live/Studio views at four rotations, crew reachability |
+| Bought props (pre-v2: BRINE Core, corridors, seabed scenery) | [Room skill](../skills/brinespace-room-pipeline/SKILL.md) and its tileset reference | Registry integrity, protected-key comparison, live/Studio views and relevant door approaches |
 | Seabed, scenery, terrain, wrecks | [Environment contract](ENVIRONMENT_PRODUCTION_CONTRACT.md) | Source provenance, powered/surveyed native view, unchanged occupancy unless deliberately changed |
 | Playable package | [Release workflow](RELEASE_WORKFLOW.md) | Frozen dependencies, exact PCK audit, actual release journey; native Mac evidence separately |
 | Session closeout | [Claude handoff](CLAUDE_HANDOFF_2026-09-24.md) | Current decisions, local state, evidence limits, concrete unresolved work and saved task inventory |
@@ -38,6 +39,10 @@ cleared secondary rotations remain owner authoring space. The September 23 clean
 was a dated operation, not a command to rerun after later decoration.
 
 ## Bought-art path
+
+*Since September 25 the bought tileset art dresses only BRINE Core, the corridor
+pieces and seabed scenery; 240 unused sheets were moved to the owner's Desktop
+(`rooms/tileset-library/retired-sheets.json`). Station rooms use station props v2.*
 
 `vendor-art/` contains licensed original packs and is gitignored. Preserve it;
 a clone will not recreate it. Converted sheets live under `assets/new-tilesets/`.

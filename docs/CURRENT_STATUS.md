@@ -1,6 +1,10 @@
 # BrineSpace current status
 
-Updated September 24, 2026 — Codex sessions closing for Claude takeover.
+Updated September 25, 2026 — station props v2 on branch `room-props-v2` (pushed,
+not merged). **Read [station props v2](STATION_PROPS_V2_2026-09-25.md) first**: the
+room art, departments, Studio tray, cards and tests changed, and parts of the
+September 24 notes below (bought props, protected-room rules, bunk profiles) are
+superseded by it. The owner's saved Studio layouts now define every room.
 
 Start with [the detailed Claude handoff](CLAUDE_HANDOFF_2026-09-24.md) and
 [asset pipeline/workflow](ASSET_PIPELINE_AND_WORKFLOW.md). The previous full status
@@ -29,6 +33,10 @@ as accepted. The installed top-down/inward-facing and bought-prop contracts rema
 the documented baseline, with owner motion and whole-game appearance review open.
 
 ## Owner-finished rooms: protect every rotation
+
+*Superseded September 25:* all 43 redesigned rooms were re-dressed with station
+props and hand-laid by the owner in the Studio; their saved layouts are the owner's
+work to protect. The list below applies to the pre-v2 art only.
 
 Research Lab, Mycelium Nursery, Med Bay, Pressure Control, Crew Lounge, Mining Drone
 Bay, Ore Refinery, Cryo Chamber, Listening Post, Xeno Lab, Maintenance Bay, Crew Hab,
