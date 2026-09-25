@@ -69,11 +69,10 @@ source of truth for placement; backups sit in the Desktop folder's `owner-data/`
 
 CI checks (`test_layout_keys`, card binding, release) pass. Tests pinned to retired
 props were refitted to station props (Studio tests run their native-prop checks in
-BRINE Core) or retired with a reason in `tests/index.json`. Failures that predate
-this work and are left for later: 17 headless (crew save keys, fixed-cell wrecks,
-Bill/Marsh packs, flood, inspector refresh, owner-report, station systems, staged
-restore, ward repair and others) and 5 native (camera pixel stability, crew water
-station, environment cache parity, Studio owner notes, site runtime's old-save check).
+BRINE Core) or retired with a reason in `tests/index.json`. The failures that predated this work are fixed (Sept 25): full run 162/162
+headless and 73/73 native pass, 21 retired skips. Recurring cause: tests that
+clear wrecks by hand need `set_meta("authored_site_fixture",true)` now that new
+games use procedural sites.
 
 ## Open
 
