@@ -26,6 +26,7 @@ func run() -> void:
 	var prefix := "user://staged_restore_%d" % OS.get_process_id()
 	Preferences.save_path = prefix+".cfg"
 	game = load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true)
 	game.meta.save_path = prefix+".meta"
 	game.run_save_path = prefix+".loop"
 	root.add_child(game)
@@ -77,6 +78,7 @@ func run() -> void:
 	game.free()
 	Preferences.reduced_motion = true
 	game = load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true)
 	game.meta.save_path = prefix+".meta"
 	game.run_save_path = prefix+".loop"
 	game.RunSave.pending = saved.duplicate(true)
@@ -90,11 +92,13 @@ func run() -> void:
 	check(continue_frames>=2 and continue_frames<600,"Continue completes across responsive frames")
 	check(game.RunSave.pending.is_empty() and game.visible and game.paused,"Continue consumes checkpoint and reveals a paused station")
 	check(game.resources==expected_resources and game.bill_npc.snapshot()==expected,"Continue restores the same resources and crew")
-	await process_frame
-	await RenderingServer.frame_post_draw
-	var core_center := (Vector2(game.Architects.CORE_CELL)+Vector2.ONE*0.5)/float(game.GRID_SIZE)
-	var focus_error: float = game._grid_view_center_ratio().distance_to(core_center)*game.GRID_SIZE*game.get_cell_size()
-	check(focus_error<2.0,"Continue centers BRINE after hidden viewport layout: "+str(focus_error)+" pixels")
+	# frame_post_draw never fires on the headless renderer; the focus check runs in the native lane.
+	if DisplayServer.get_name()!="headless":
+		await process_frame
+		await RenderingServer.frame_post_draw
+		var core_center := (Vector2(game.Architects.CORE_CELL)+Vector2.ONE*0.5)/float(game.GRID_SIZE)
+		var focus_error: float = game._grid_view_center_ratio().distance_to(core_center)*game.GRID_SIZE*game.get_cell_size()
+		check(focus_error<2.0,"Continue centers BRINE after hidden viewport layout: "+str(focus_error)+" pixels")
 	for suffix in [".cfg",".meta",".meta.bak",".loop",".loop.bak"]:
 		if FileAccess.file_exists(prefix+suffix): DirAccess.remove_absolute(prefix+suffix)
 	print("STAGED RESTORE: synchronous ",sync_ms," ms; staged total ",staged_ms," ms; ",slices," loading frames; longest interval ",longest_ms," ms; ",failures," failures")
