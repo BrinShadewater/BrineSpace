@@ -34,6 +34,7 @@ func changed_state(label: String, expect_foundations := true) -> void:
 func run() -> void:
 	preload("res://scripts/title_settings.gd").save_path = "user://env_parity.cfg"
 	game = load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true)
 	game.meta.save_path = "user://env_parity.meta"
 	game.run_save_path = "user://env_parity.loop"
 	root.add_child(game)
