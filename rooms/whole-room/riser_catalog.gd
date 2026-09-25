@@ -48,6 +48,15 @@ static func face(canvas: CanvasItem, room_id: String, target: Rect2, light:=1.0,
 		region.position.x+=(region.size.x-width)*0.5;region.size.x=width
 	canvas.draw_texture_rect_region(texture(group),target,region,Color(light,light,light))
 
+# Below the face, down to the deck: the face's own bottom band, tiled at source scale.
+static func skirt(canvas: CanvasItem, room_id: String, target: Rect2, chosen:="") -> void:
+	var group:=chosen if catalog().has(chosen) else material(room_id)
+	var face_rect:=source_rect(group,"face")
+	var scale_value: float=target.size.x/face_rect.size.x if face_rect.size.x>0 else 1.0
+	var band_h: float=minf(face_rect.size.y*0.25,target.size.y/maxf(scale_value,0.001))
+	var band:=Rect2(face_rect.position.x,face_rect.end.y-band_h,face_rect.size.x,band_h)
+	canvas.draw_texture_rect_region(texture(group),target,band)
+
 static func cap(canvas: CanvasItem, room_id: String, target: Rect2, chosen:="") -> void:
 	var group:=chosen if catalog().has(chosen) else material(room_id)
 	canvas.draw_texture_rect_region(texture(group),target,source_rect(group,"cap"))
