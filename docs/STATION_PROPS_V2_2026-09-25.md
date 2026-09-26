@@ -80,8 +80,12 @@ games use procedural sites.
   bank/common-asset sheet is also loaded by a room view, and each room's source
   sheet also supplies its wall and cap material. Revisit with the wall/machinery
   art pass.
-- Bunk climb-in on the station-prop bunk (Bill-only trial queued); drone and
-  live-machinery art.
+- Drone and live-machinery art.
+- Bunk climb-in: done Sept 25 for all four crew on `sp-crew_hab-3` (points are fractions
+  of the art; front layer is the rail, ladder and end posts). The five bunk tests run again.
+  Mid-climb the body dips behind the rail for about 0.3 s: owner to judge in motion.
+- Release: Mac and Windows twins `brinespace-ffebeef84bf5f143` (see CURRENT_STATUS). The
+  continuation check needs a fresh frozen mid-game save; the Sept 23 one starves on load.
 - Airlock spare-helmet shelf: done Sept 25. It sits on the locker's left panel, or
   at the foot of the left bay when a wall or furniture takes that side
   (`side_shelf_blocked` in `airlock_view.gd`); the airlock card was rebaked.
