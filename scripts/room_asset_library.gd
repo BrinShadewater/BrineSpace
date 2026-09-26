@@ -415,14 +415,25 @@ static func finish_texture(source: String, wait:=false) -> bool:
 # One cached complementary atlas pair preserves the original UV geometry exactly.
 # These are presentation copies; source textures, collision and owner data stay intact.
 static var bunk_layer_cache: Dictionary={}
+# Source pixels that stand in front of a sleeper, per bunk art.
+const BUNK_FRONT_REGIONS := {
+	"library/tileset-mb2-14": [Rect2i(177,883,49,141),Rect2i(10,783,14,241),Rect2i(24,997,153,18)],
+	# Station-prop bunk: lower rail, ladder and both end posts.
+	"library/sp-crew_hab-3": [Rect2i(66,228,222,24),Rect2i(236,95,50,157),Rect2i(284,0,76,310),Rect2i(0,0,72,310)],
+}
+static func bunk_base(prop: Dictionary) -> String:
+	var id:=base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))
+	return id if BUNK_FRONT_REGIONS.has(id) else ""
 static func bunk_layers(prop: Dictionary) -> Array:
-	if base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))!="library/tileset-mb2-14":return []
+	var bunk:=bunk_base(prop)
+	if bunk.is_empty():return []
 	var texture: Texture2D=prop.library_texture
 	var key:=texture.get_instance_id()
 	if not bunk_layer_cache.has(key):
 		var back:=texture.get_image()
+		back.convert(Image.FORMAT_RGBA8)
 		var front:=Image.create(back.get_width(),back.get_height(),false,Image.FORMAT_RGBA8)
-		for region in [Rect2i(177,883,49,141),Rect2i(10,783,14,241),Rect2i(24,997,153,18)]:
+		for region in BUNK_FRONT_REGIONS[bunk]:
 			if not Rect2i(Vector2i.ZERO,back.get_size()).encloses(region):return []
 			front.blit_rect(back,region,region.position)
 			back.fill_rect(region,Color.TRANSPARENT)
