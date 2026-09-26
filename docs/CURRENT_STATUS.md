@@ -86,9 +86,10 @@ marks and user layouts are owner data. Back up affected keys before writes.
   - Room completion hitch: every crew member rebuilt navigation and re-chose its goal in one
     frame (141-176 ms on the 47-room station). The main crew loop now rebuilds one crew member
     per frame (`defer_navigation_rebuild`); peak 33-64 ms.
-  - Flaky, pre-existing: `test_marsh_expedition_presentation` fails about 1 run in 3 on its
-    mid-expedition checkpoint check ("Loaded checkpoint is current, not backup"), before and
-    after the Sept 26 changes.
+  - `test_marsh_expedition_presentation` failed about 1 run in 3: its route clearing erased
+    unidentified ("recovery") wards when the random site put one on the route, so the saved
+    site was invalid and the checkpoint read fell back to its backup. It now keeps them;
+    the failing seeds 1, 6 and 11 pass and 8/8 random runs pass.
     The first run's `final.loop` was deleted by a probe (restore points
     autosave at the source file); events, profile and screenshots remain.
   - Bunk: the seated frame sits on the mattress edge. Colour-matching the bunk art and

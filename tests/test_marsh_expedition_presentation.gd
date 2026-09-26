@@ -47,8 +47,10 @@ func journey(mode:String,rotation:int=0):
 	for step in range(1,5):
 		for side in [0,1]:
 			var cell:Vector2i=Vector2i(20,20)+outward*step+across*side
-			# Crew wards belong to the checkpoint roster; route around them.
-			if game.wrecks.get(cell,{}).get("kind","") not in ["cryo","charging"]:game.wrecks.erase(cell)
+			# Crew wards belong to the checkpoint roster; route around them. Unidentified wards
+			# ("recovery") too: erasing one on the random route made the saved site invalid, so
+			# the checkpoint fell back to its backup about one run in three (Sept 26; site seeds 1, 6).
+			if game.wrecks.get(cell,{}).get("kind","") not in ["cryo","charging","recovery"]:game.wrecks.erase(cell)
 	game._place_room("airlock",HOME,true);game.occupied[HOME].rotation=rotation;game.powered_room_cells[HOME]=true
 	game.resources.oxygen=0;game.resources.food=50;game.resources.metal=5;game.resources.data=0
 	game.drone_fleet.sites={TARGET:game.drone_fleet.Sites.make_site("salvage",3)}
