@@ -75,7 +75,10 @@ marks and user layouts are owner data. Back up affected keys before writes.
     smoothing got the two-room reach. Stand-off frames 1,018 -> 53-79 ms.
   - The seed-101 review run (alive at cycle 173, Veld rescued) froze from cycle 29:
     mining exhausted, and the test player waited forever for metal. Test-player limit,
-    not a game softlock. Its `final.loop` was deleted by a probe (restore points
+    at first; the rerun (test player now rerolls unaffordable cards) reached metal 0 and
+    showed a **real zero-metal softlock**: once surveyed deposits are gone there is no metal
+    source (orbit rewards exist in `orbit_manager.gd` but nothing calls `orbit.advance`).
+    Owner design decision. The first run's `final.loop` was deleted by a probe (restore points
     autosave at the source file); events, profile and screenshots remain.
   - Bunk: the seated frame sits on the mattress edge. Colour-matching the bunk art and
     smoothing crew sprites were tried and reverted (props v2 doc, Open).
