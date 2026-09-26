@@ -150,7 +150,7 @@ func update(main, delta: float) -> void:
 		returning_to_pod=true
 		release_jobs(main)
 		main._log("Marsh: charge reserve low. Returning to the charging pod.",false)
-	if topology(main)!=signature: rebuild(main)
+	if topology(main)!=signature and not defer_navigation_rebuild: rebuild(main)
 	if goal!="recharge": release_jobs(main)
 	goal="recharge";stage="";timer=0
 	var cell := charging_home(main)

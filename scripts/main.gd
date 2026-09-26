@@ -4398,6 +4398,10 @@ func _update_test_walker(delta: float) -> void:
 	var previous_status := _walker_status()
 	var previous_veld_status := _veld_status()
 	var previous_branforth_status := _branforth_status()
+	# One crew navigation rebuild per frame: a room completing used to rebuild all four crew
+	# graphs and re-choose all four goals in one 402 ms frame (Sept 26). Crew with a graph
+	# wait a frame on it; crew without one always build.
+	var navigation_rebuilt := false
 	for actor in [bill_npc, veld_npc, branforth_npc, marsh_npc]:
 		var architect_id := "bill" if actor==bill_npc else "veld" if actor==veld_npc else "marsh" if actor==marsh_npc else "branforth"
 		if not Architects.present(self,architect_id): continue
@@ -4417,7 +4421,11 @@ func _update_test_walker(delta: float) -> void:
 		if actor != bill_npc: actor.room_cache = bill_npc.room_cache
 		preload("res://scripts/airlock_service.gd").check_service(self,actor)
 		actor.hardware_doors_locked=hardware.doors
+		var stale: bool = actor.topology(self) != actor.signature
+		actor.defer_navigation_rebuild = stale and navigation_rebuilt and actor.graph.get_point_count() > 0
+		if stale and not actor.defer_navigation_rebuild: navigation_rebuilt = true
 		actor.update(self, delta)
+		actor.defer_navigation_rebuild = false
 	preload("res://scripts/crew_social.gd").advance(self,delta)
 	Companions.advance(self,delta)
 	if delta > 0:

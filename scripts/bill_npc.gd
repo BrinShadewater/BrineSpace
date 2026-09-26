@@ -78,6 +78,10 @@ var squeeze_point := Vector2.INF
 # walk per room, so a swimmer's route plans dry rooms with the walking check (owner, Sept 26).
 # null means no map yet: plan every room as swimming, the previous behaviour.
 var swim_cells: Variant = null
+# Set by the main crew loop for one frame: another crew member rebuilt navigation this frame.
+# A graph built before the change stays usable meanwhile (Sept 26: four rebuilds plus four
+# goal choices in one frame made a 402 ms hitch when a room completed).
+var defer_navigation_rebuild := false
 
 func plans_walk(cell: Vector2i) -> bool:
 	return swim_cells is Dictionary and not swim_cells.has(cell)
@@ -713,7 +717,7 @@ func update(main, delta: float) -> void:
 	if dead: return
 	if delta <= 0: return
 	preload("res://scripts/fire_safety.gd").refresh(main,self)
-	if topology(main) != signature: rebuild(main)
+	if topology(main) != signature and not defer_navigation_rebuild: rebuild(main)
 	if not active:
 		var initial: Vector2 = main._room_idle_anchor(main.test_walker_cell) / main.get_cell_size() * CELL + Vector2(0, CELL * 0.038) + spawn_offset
 		var id := nearest_in_room(initial, main.test_walker_cell, false)

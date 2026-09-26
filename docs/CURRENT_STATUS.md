@@ -82,7 +82,13 @@ marks and user layouts are owner data. Back up affected keys before writes.
     bay can harvest (`scripts/metal_trickle.gd`), and any leaf room can be scrapped from the
     inspector for half its Metal (`scripts/room_scrap.gd`; not the core, wards, crew habs,
     occupied rooms or rooms others need to reach the core). Rerun: metal recovers to 2 and
-    corridors keep extending; a 271 ms frame at a room completion (crew nav rebuild) is open.
+    corridors keep extending.
+  - Room completion hitch: every crew member rebuilt navigation and re-chose its goal in one
+    frame (141-176 ms on the 47-room station). The main crew loop now rebuilds one crew member
+    per frame (`defer_navigation_rebuild`); peak 33-64 ms.
+  - Flaky, pre-existing: `test_marsh_expedition_presentation` fails about 1 run in 3 on its
+    mid-expedition checkpoint check ("Loaded checkpoint is current, not backup"), before and
+    after the Sept 26 changes.
     The first run's `final.loop` was deleted by a probe (restore points
     autosave at the source file); events, profile and screenshots remain.
   - Bunk: the seated frame sits on the mattress edge. Colour-matching the bunk art and
