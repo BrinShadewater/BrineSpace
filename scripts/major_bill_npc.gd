@@ -1,6 +1,7 @@
 extends "res://scripts/bill_npc.gd"
 ## Bill-specific furniture presentation on the shared crew navigation controller.
 const BUNK_SECONDS:=1.84
+const BUNK_SEAT_ROWS:=34
 var bunk_motion: Dictionary={}
 
 func rebuild(main, staged := false) -> void:
@@ -35,7 +36,9 @@ func observation_visual_offset() -> Vector2:
 	if stage=="life_lie":t=BUNK_SECONDS-timer
 	elif stage=="life_get_up":t=timer
 	var at: Vector2=bunk_motion.entry
-	if t>=0.36:at.y-=4
+	# The seated frame sits on the lower mattress edge, where the next frame's seat lands
+	# (rest+16); its seat is BUNK_SEAT_ROWS source rows above the foot pivot (owner, Sept 26).
+	if t>=0.36:at.y=Vector2(bunk_motion.rest).y+16+BUNK_SEAT_ROWS*65.28/148.0
 	if t>=0.66:at=Vector2(bunk_motion.rest)+Vector2(0,16*(1-clampf((t-0.96)/0.6,0,1)))
 	return at-(foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL)
 

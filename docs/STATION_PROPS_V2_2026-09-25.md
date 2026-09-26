@@ -80,11 +80,19 @@ games use procedural sites.
   bank/common-asset sheet is also loaded by a room view, and each room's source
   sheet also supplies its wall and cap material. Revisit with the wall/machinery
   art pass.
+- Crew suits read too blue beside the warm bunk (owner, Sept 26): Bill, Veld and
+  Branforth. In-game pixels match the source art, so this is an art-direction pass for
+  Codex, not a renderer tint. The bunk clips were also painted darker and crisper than
+  each walk cycle; a colour match to the walk cycle was tried and reverted (it looked worse).
+  Crew draw at about 37% of their painted size with nearest sampling (speckled). Mipmapped
+  smoothing was built and compared in game; the owner kept nearest, since smoothing blurred
+  faces. Crew art painted nearer its on-screen size is the likelier fix.
 - Drone and live-machinery art: owner doing it in Codex (Sept 26). The Codex room
   designs paint each drone onto its pad, so flying drones need separate exports.
 - Bunk climb-in: done Sept 25 for all four crew on `sp-crew_hab-3` (points are fractions
   of the art; front layer is the rail, ladder and end posts). The five bunk tests run again.
-  Mid-climb the body dips behind the rail for about 0.3 s: owner to judge in motion.
+  The seated frame used to sit on the drawers, then jump up (the "dip"); since Sept 26 it
+  sits on the lower mattress edge (`BUNK_SEAT_ROWS` in each crew script, from the art).
 - Release: Mac and Windows twins `brinespace-ffebeef84bf5f143` (see CURRENT_STATUS). The
   continuation check needs a fresh frozen mid-game save; the Sept 23 one starves on load.
 - Airlock spare-helmet shelf: done Sept 25. It sits on the locker's left panel, or

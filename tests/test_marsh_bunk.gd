@@ -35,6 +35,10 @@ func run():
 		other.rebuild(game)
 		check(not other.RoomActivity.stations(other.geometry[HAB]).any(func(item):return item.get("marsh_bunk",false)),"Other cast do not inherit Marsh's profile")
 	check(actor.animation_state()=="bunk-enter" and actor.direction=="east" and is_equal_approx(actor.timer,1.84),"Arrival selects authored entry and timing")
+	actor.timer=actor.BUNK_SECONDS-0.5 # seated frame
+	var seated: Vector2=actor.observation_visual_offset()+actor.foot-center
+	check(seated.y<actor.bunk_motion.entry.y-10 and is_equal_approx(seated.y,actor.bunk_motion.rest.y+16+actor.BUNK_SEAT_ROWS*65.28/148.0),"Seated frame sits on the mattress edge, not the drawers")
+	actor.timer=actor.BUNK_SECONDS
 	var rejected=actor.geometry[HAB].duplicate(true)
 	var bunk=rejected.props.filter(func(p):return p.id=="library/sp-crew_hab-3")[0]
 	bunk.layout_flip=Vector2(-1,1)
