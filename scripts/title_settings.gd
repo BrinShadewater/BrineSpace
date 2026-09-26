@@ -171,14 +171,19 @@ static func apply_window_mode(window: Window, value: int, remember_size := true)
 		2:
 			window.mode = Window.MODE_EXCLUSIVE_FULLSCREEN
 		_:
-			window.size = window_size
-			window.position = screen_position + Vector2i(maxi(0, int((screen_size.x - window_size.x) * 0.5)), maxi(0, int((screen_size.y - window_size.y) * 0.5)))
+			# Center in the usable area (clear of the taskbar, or the Mac menu bar and Dock) and
+			# shrink to fit when the remembered size is larger than that area.
+			var usable := DisplayServer.screen_get_usable_rect(screen)
+			var fitted := Vector2i(mini(window_size.x, usable.size.x), mini(window_size.y, usable.size.y))
+			var centered := usable.position + Vector2i(maxi(0, int((usable.size.x - fitted.x) * 0.5)), maxi(0, int((usable.size.y - fitted.y) * 0.5)))
+			window.size = fitted
+			window.position = centered
 			# Windows promotes a borderless window covering the screen to exclusive fullscreen,
 			# and the earlier MODE_WINDOWED does not undo it; request windowed again once the
 			# borders and size are back (owner playtest: resolution changes misbehaved).
 			window.mode = Window.MODE_WINDOWED
-			window.size = window_size
-			window.position = screen_position + Vector2i(maxi(0, int((screen_size.x - window_size.x) * 0.5)), maxi(0, int((screen_size.y - window_size.y) * 0.5)))
+			window.size = fitted
+			window.position = centered
 
 static func save(window: Window) -> Error:
 	if window.mode == Window.MODE_WINDOWED and not is_fullscreen(window):

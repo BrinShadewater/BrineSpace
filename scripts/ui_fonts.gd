@@ -8,7 +8,8 @@ extends RefCounted
 const REGULAR := "res://assets/fonts/BarlowSemiCondensed-Regular.ttf"
 const MEDIUM := "res://assets/fonts/BarlowSemiCondensed-Medium.ttf"
 const SEMIBOLD := "res://assets/fonts/BarlowSemiCondensed-SemiBold.ttf"
-const MONO_NAMES := ["Cascadia Mono", "Consolas", "Lucida Console"]
+# Windows faces first, then macOS (Menlo, SF Mono), then the generic family so any system keeps columns aligned.
+const MONO_NAMES := ["Cascadia Mono", "Consolas", "Lucida Console", "Menlo", "SF Mono", "monospace"]
 
 static var _cache := {}
 static var _card_theme: Theme
