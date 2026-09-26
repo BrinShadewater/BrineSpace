@@ -206,6 +206,12 @@ func choose_build(now: int):
 		# Waiting for the repair reserve is not a reason to discard usable support.
 		if connected and int(game.resources.metal)<8 and metal_reserve==0: return
 	if now-last_reroll>=(6 if all_crew else 25) and game.rerolls_remaining>0:
+		# Stranded with nothing affordable: one charge redraws three cards, not one. Holding the
+		# crew hab here left two slots to fish for a 2-Metal route card (seed 101, Sept 26).
+		# Essential support (power, air) is still kept and the rest rerolled card by card.
+		if all_crew and not metal_income() and not game.hand.any(func(id):return int(game.RoomDatabaseScript.get_room(id).cost.get("metal",0))<=int(game.resources.metal) or keep_support_card(id,net)):
+			var stranded_hand: Array=game.hand.duplicate()
+			game._discard_all_cards();last_reroll=now;record("reroll_hand",{"cards":stranded_hand,"stranded":true});return
 		# Use the normal full-hand control when there is no food/berth card to retain.
 		if all_crew and not game.hand.any(func(id):return id in ["hydroponics_bay","crew_hab","galley"] or keep_support_card(id,net)):
 			var previous: Array=game.hand.duplicate()
