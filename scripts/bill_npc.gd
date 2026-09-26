@@ -6,6 +6,7 @@ const Life=preload("res://scripts/crew_life.gd")
 const RoomActivity=preload("res://scripts/crew_room_activity.gd")
 const CELL := 384.0
 const STEP := 16
+const SHORTCUT_REACH := CELL*2.0
 const INVALID := Vector2i(-1, -1)
 const SERVICES := {
 	"hunger": ["galley", "hydroponics_bay", "crew_lounge", "mycelium_nursery"],
@@ -993,7 +994,17 @@ func advance_needs(main,delta: float) -> void:
 		if need in ["hunger","fatigue"]: rate *= preload("res://scripts/research_tree.gd").needs_rate(main.get("meta"))
 		needs[need]=minf(100,needs[need]+delta*rate)
 
+# Within one goal choice nothing moves, so a failed swim search, which explores every
+# reachable state, proves any target it never reached unreachable too (Sept 26: choosing
+# rest from a flooded reactor ran 16 failing searches, 2-3 s).
+var swim_reach_scope: Variant = null
+
 func choose_goal(main) -> void:
+	swim_reach_scope={}
+	_choose_goal(main)
+	swim_reach_scope=null
+
+func _choose_goal(main) -> void:
 	if dead: return
 	if needs_air() and needs.hunger>=65 and helmet_equipped and movement_medium=="dry":
 		for room in main.placed_rooms:
@@ -1200,19 +1211,36 @@ func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> 
 	if not graph.has_point(start) or not graph.has_point(target): return PackedVector2Array()
 	var facings := ["east","south","west","north"]
 	var initial := Vector2i(start,facings.find(direction))
-	var frontier: Array[Vector2i] = [initial]
 	var costs := {initial:0.0}
 	var parents := {}
 	var destination := graph.get_point_position(target)
-	while not frontier.is_empty():
-		var best := 0
-		var priority := INF
-		for i in range(frontier.size()):
-			var candidate: Vector2i = frontier[i]
-			var score: float = costs[candidate]+graph.get_point_position(candidate.x).distance_to(destination)
-			if score < priority: priority=score; best=i
-		var current: Vector2i = frontier[best]
-		frontier.remove_at(best)
+	var reach_key := Vector3i(start,initial.y,1 if helmet_equipped else 0)
+	var scoped: bool=swim_reach_scope is Dictionary and not avoid_crew
+	if scoped and swim_reach_scope.has(reach_key) and not swim_reach_scope[reach_key].has(target): return PackedVector2Array()
+	# Binary heap of [score, order, state]; stale entries are skipped when popped. A linear
+	# frontier scan made a failed swim search, which explores the whole station, cost
+	# 94 ms warm and 840 ms cold (Sept 26 spike probe: Branforth in a flooded reactor).
+	var heap: Array = [[destination.distance_to(graph.get_point_position(start)),0,initial]]
+	var order := 0
+	var closed := {}
+	while not heap.is_empty():
+		var top: Array = heap[0]
+		var last: Array = heap.pop_back()
+		if not heap.is_empty():
+			heap[0]=last
+			var index := 0
+			while true:
+				var smallest := index
+				for child in [index*2+1,index*2+2]:
+					if child<heap.size() and (heap[child][0]<heap[smallest][0] or (heap[child][0]==heap[smallest][0] and heap[child][1]<heap[smallest][1])): smallest=child
+				if smallest==index: break
+				var swap: Array = heap[index]
+				heap[index]=heap[smallest]
+				heap[smallest]=swap
+				index=smallest
+		var current: Vector2i = top[2]
+		if closed.has(current): continue
+		closed[current]=true
 		if current.x == target:
 			var route := PackedVector2Array([destination])
 			while parents.has(current):
@@ -1231,7 +1259,20 @@ func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> 
 			if not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
 			costs[next_state]=cost
 			parents[next_state]=current
-			if not frontier.has(next_state): frontier.append(next_state)
+			order+=1
+			heap.append([cost+to.distance_to(destination),order,next_state])
+			var index := heap.size()-1
+			while index>0:
+				var parent := (index-1)/2
+				if heap[parent][0]<heap[index][0] or (heap[parent][0]==heap[index][0] and heap[parent][1]<heap[index][1]): break
+				var swap: Array = heap[index]
+				heap[index]=heap[parent]
+				heap[parent]=swap
+				index=parent
+	if scoped:
+		var reached := {}
+		for state in closed: reached[state.x]=true
+		swim_reach_scope[reach_key]=reached
 	return PackedVector2Array()
 
 func swim_link_clear(from_id: int, to_id: int, heading: String, previous_heading: String) -> bool:
@@ -1361,6 +1402,10 @@ func _smooth_route(route: PackedVector2Array, origin: Vector2, keep_route_facing
 	while index < route.size():
 		var farthest := -1
 		for probe in range(index, route.size()):
+			# Testing every later point across the station cost 614 ms on a 372-point route
+			# (Sept 26 spike probe). A clear line past two rooms is near-impossible; a longer
+			# straight run just keeps a waypoint on the same line.
+			if probe > index and from.distance_squared_to(route[probe]) > SHORTCUT_REACH*SHORTCUT_REACH: continue
 			var heading := travel_heading(from,route[probe],facing)
 			if keep_route_facing and heading != route_facings[probe]: continue
 			if segment_clear(from, route[probe]) and (movement_medium == "dry" or swim_segment_clear(from,route[probe],heading,facing)): farthest = probe
