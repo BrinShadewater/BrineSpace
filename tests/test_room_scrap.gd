@@ -36,10 +36,31 @@ func run() -> void:
 	check(not Scrap.blocker(game, Vector2i(20,22)).is_empty(), "A room with crew inside cannot be scrapped")
 	actor.foot=saved_foot
 	actor.primary_room=Vector2i(20,22);actor.goal_cell=Vector2i(20,22);actor.goal="curiosity";actor.path=PackedVector2Array([Vector2(1,1)])
+	# Review edge cases (Sept 26).
+	var leaf := Vector2i(20,22)
+	actor.expedition={"home":leaf,"target":Vector2i(30,30),"sea_route":[]}
+	check(Scrap.blocker(game, leaf) == "An expedition returns here.", "An away expedition's airlock cannot be scrapped")
+	actor.expedition={}
+	game.drone_fleet.orders=[{"id":"corridor","pos":Vector2i(21,22),"rotation":0}]
+	check(Scrap.blocker(game, leaf) == "Construction next door depends on it.", "A queued room attached to it blocks scrapping")
+	game.drone_fleet.orders=[{"id":"corridor","pos":Vector2i(30,30),"rotation":0,"work_cell":leaf}]
+	check(Scrap.blocker(game, leaf) == "Construction next door depends on it.", "A builder's work spot cannot be scrapped")
+	game.drone_fleet.orders=[]
+	game.occupied[leaf]["storage"]={"food":40}
+	game.resources.food=game._get_resource_capacity("food")
+	check(Scrap.blocker(game, leaf) == "Stored resources exceed capacity without it.", "Scrapping never silently drops stored resources")
+	game.resources.food=0
+	check(Scrap.blocker(game, leaf).is_empty(), "Storage with room to spare can be scrapped")
+	game.occupied[leaf].erase("storage")
+	# A queued hull repair paid up front; scrapping refunds it in full (no progress yet).
+	game.running=true;game.paused=false
+	game.occupied[leaf]["hull_crack"]=0.5
+	game.resources.metal=10
+	check(preload("res://scripts/hull_repair.gd").request(game, leaf), "Fixture queues a hull repair")
+	check(int(game.resources.metal) < 10, "The repair reserved Metal")
 	# Scrap the leaf.
-	game.resources.metal=0
-	var gained: int=Scrap.scrap(game, Vector2i(20,22))
-	check(gained == 1 and int(game.resources.metal) == 1, "Scrapping refunds Metal (%d, now %s)" % [gained, game.resources.metal])
+	var gained: int=Scrap.scrap(game, leaf)
+	check(gained == 1 and int(game.resources.metal) == 11, "Scrapping refunds the room and the unused repair (%d, now %s)" % [gained, game.resources.metal])
 	check(not game.occupied.has(Vector2i(20,22)) and not game.placed_rooms.any(func(r): return r.pos==Vector2i(20,22)), "Scrapped room is gone")
 	check(not game.powered_room_cells.has(Vector2i(20,22)), "Scrapped room draws no power")
 	check(actor.primary_room != Vector2i(20,22), "Crew lose a scrapped primary workplace")

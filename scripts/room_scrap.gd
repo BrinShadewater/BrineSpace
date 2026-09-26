@@ -5,6 +5,8 @@ extends RefCounted
 ## rooms to the core stay put.
 const Architects=preload("res://scripts/architects.gd")
 const Companions=preload("res://scripts/companions.gd")
+const HullRepair=preload("res://scripts/hull_repair.gd")
+const Expedition=preload("res://scripts/crew_expedition.gd")
 
 static func refund(room: Dictionary) -> int:
 	return int(floor(float(room.get("cost", {}).get("metal", 0)) / 2.0))
@@ -20,6 +22,17 @@ static func blocker(game, cell: Vector2i) -> String:
 	for actor in Companions.all_actors(game):
 		if actor.active and not actor.dead and actor.cell_at(actor.foot) == cell: return "Crew are inside."
 	if _strands_rooms(game, cell): return "Other rooms connect to the core through it."
+	# Edge cases found in review (Sept 26): an away expedition returns through its airlock,
+	# queued construction attaches to or is built from a neighbour, and a smaller store
+	# would silently drop resources at the next cycle's clamp.
+	if Expedition.reserved(game, cell): return "An expedition returns here."
+	for order in game.drone_fleet.orders:
+		var at: Vector2i = order.get("pos", Vector2i(-9999, -9999))
+		if absi(at.x - cell.x) + absi(at.y - cell.y) == 1 or order.get("work_cell", Vector2i(-9999, -9999)) == cell:
+			return "Construction next door depends on it."
+	for key in room.get("storage", {}):
+		if game.resources.has(key) and int(game.resources[key]) > game._get_resource_capacity(str(key)) - int(room.storage[key]):
+			return "Stored resources exceed capacity without it."
 	return ""
 
 static func _core_cell(game) -> Vector2i:
@@ -52,6 +65,8 @@ static func _strands_rooms(game, cell: Vector2i) -> bool:
 static func scrap(game, cell: Vector2i) -> int:
 	if not blocker(game, cell).is_empty(): return 0
 	var room: Dictionary = game.occupied[cell]
+	# A queued repair paid its Metal up front: refund the unused part and release the welder.
+	if room.has("leak_repair"): HullRepair.cancel(game, cell)
 	var metal := refund(room)
 	game.placed_rooms.erase(room)
 	game.occupied.erase(cell)
