@@ -3572,12 +3572,8 @@ func _center_grid_on_station_deferred() -> void:
 func _fit_station_view(animated := false) -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
 		return
-	var bounds := Rect2(Vector2(placed_rooms[0]["pos"]), Vector2.ONE)
-	for room in placed_rooms:
-		bounds = bounds.merge(Rect2(Vector2(room["pos"]), Vector2.ONE))
-	var usable := grid_scroll.size - Vector2(120, 110)
-	var fit_zoom := minf(usable.x / ((bounds.size.x + 0.6) * CELL_SIZE), usable.y / ((bounds.size.y + 0.6) * CELL_SIZE))
-	var zoom := minf(fit_zoom, DEFAULT_GRID_ZOOM * 0.60)
+	var bounds := _station_bounds()
+	var zoom := minf(_station_fit_zoom(), DEFAULT_GRID_ZOOM * 0.60)
 	if animated:
 		# The F key and button glide there like wheel zoom. Jumping repainted the whole
 		# station in one frame (~170 ms on a 50-room station).
@@ -3589,6 +3585,19 @@ func _fit_station_view(animated := false) -> void:
 	# Fit uses its destination immediately; preserving the old center first can
 	# rebuild a different visible room set before the deferred station centering.
 	_set_grid_zoom(zoom,true,bounds.get_center()/float(GRID_SIZE))
+
+func _station_bounds() -> Rect2:
+	var bounds := Rect2(Vector2(placed_rooms[0]["pos"]), Vector2.ONE)
+	for room in placed_rooms:
+		bounds = bounds.merge(Rect2(Vector2(room["pos"]), Vector2.ONE))
+	return bounds
+
+## The zoom at which Fit Station shows every room, with a margin for the HUD edges.
+func _station_fit_zoom() -> float:
+	if grid_scroll == null or placed_rooms.is_empty(): return INF
+	var bounds := _station_bounds()
+	var usable := grid_scroll.size - Vector2(120, 110)
+	return minf(usable.x / ((bounds.size.x + 0.6) * CELL_SIZE), usable.y / ((bounds.size.y + 0.6) * CELL_SIZE))
 
 func _center_grid_on_station_now() -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
@@ -5485,7 +5494,10 @@ func _minimum_map_zoom() -> float:
 	# station whole. Readability, not speed: a station is a block in the middle of the grid,
 	# so it is fully drawn at either limit and the frame costs the same (60.6 vs 61.0 ms).
 	var fit_whole_grid: float = maxf(grid_scroll.size.x,grid_scroll.size.y) / (GRID_SIZE * float(CELL_SIZE))
-	return maxf(MIN_GRID_ZOOM, fit_whole_grid / ZOOM_OUT_EXTENT)
+	# Owner call, September 25: Fit Station must still show the whole station. The limit
+	# spans the wider side of the frame, so on a wide frame a station taller than about
+	# 13 rows was cut off; the stop moves out just far enough to show it whole.
+	return maxf(MIN_GRID_ZOOM, minf(fit_whole_grid / ZOOM_OUT_EXTENT, _station_fit_zoom()))
 
 func _show_pause_page(id: String) -> void:
 	if not pause_pages.has(id): return
