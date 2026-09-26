@@ -3,9 +3,11 @@ extends "res://rooms/full-wall-v1/full_wall_prop.gd"
 var sections := {}
 var placement_passes := 0
 var specification: Dictionary
+var layout_asset_id: String
 
-func _init(id: String) -> void:
+func _init(id: String, layout_id: String = "") -> void:
 	super(id)
+	layout_asset_id = id if layout_id.is_empty() else layout_id
 	specification=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/split-"+id+".json"))
 	for direction in ["north","east","south","west"]:
 		sections[direction]=[]
@@ -26,7 +28,7 @@ func apply(room) -> void:
 	# Configuration runs every frame for shared views. Relocate only changed geometry.
 	var signature := hash([asset_id,room.quarter,room.layout,room.props])
 	if room.get_meta("split_wall_signature",-1)==signature:
-		if preload("res://scripts/room_layout_store.gd").apply(room,asset_id):
+		if preload("res://scripts/room_layout_store.gd").apply(room,layout_asset_id):
 			room.set_meta("split_wall_signature",hash([asset_id,room.quarter,room.layout,room.props]))
 		return
 	placement_passes+=1
@@ -74,7 +76,7 @@ func apply(room) -> void:
 			dressing.profile[key]=dressing.profile.get(key,[]).filter(func(item): return (item.id if key=="furniture" else item.host) in ids)
 		for key in ["routes","surface_routes"]:
 			dressing.profile[key]=dressing.profile.get(key,[]).filter(func(route): return route.from.host in ids and route.to.host in ids and route.from.host not in moved and route.to.host not in moved)
-	preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
+	preload("res://scripts/room_layout_store.gd").apply(room,layout_asset_id)
 	room.set_meta("split_wall_signature",hash([asset_id,room.quarter,room.layout,room.props]))
 
 func draw(room, prop: Dictionary) -> void:

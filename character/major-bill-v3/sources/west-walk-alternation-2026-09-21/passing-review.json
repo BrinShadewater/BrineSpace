@@ -1,0 +1,55 @@
+{
+  "status": "four-key native study only; no selected runtime changes",
+  "new_generations": [
+    {
+      "file": "passing-a.png",
+      "sha256": "6d0d64a0f42af1a5f9497cc1855a1560879d77d4ae4383e89674784ca52c272a",
+      "size": [
+        1230,
+        1278
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "decision": "Near support / far swing; retained for motion study"
+    },
+    {
+      "file": "passing-b.png",
+      "sha256": "a1906020216075050b9174d35e0e204e0486556dcdfeabaa5bcca9193bb3a9f2",
+      "size": [
+        1230,
+        1278
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "decision": "Far support / near swing; retained for motion study; knee lift too strong for final acceptance"
+    },
+    {
+      "file": "rejected-reach-a.png",
+      "sha256": "ab79e36df75663e0a3cef8f7430ff80ac99b64ef30cf1bcc96e4a6f7b42e82e1",
+      "size": [
+        1230,
+        1278
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "decision": "Rejected: foreground thigh returns to left instead of retaining backward-right leg ownership"
+    }
+  ],
+  "native_frames": 27,
+  "native_players": 2,
+  "phase_parity": true,
+  "gif_ms": 900,
+  "selected_bare_walk_hashes_unchanged": 12,
+  "limits": [
+    "Four key poses do not provide a finished smooth cycle",
+    "Knee lift and source detail need refinement",
+    "No helmet or ordinary-expedition review",
+    "Same stride retained for comparison; anatomical foot lock not proven"
+  ]
+}

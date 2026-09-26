@@ -171,6 +171,10 @@ func _write_folder(path: String, files: Array) -> bool:
 
 func _add_logs(files: Array) -> void:
 	files.append({"name": "logs/current.log", "data": _tail(LOG_DIR + "/godot.log")})
+	# Temporary construction-dialogue diagnostic: retain the evidence in the same
+	# bundle as the reported session, without creating a trace when none exists.
+	if FileAccess.file_exists("user://dialogue_trace.log"):
+		files.append({"name": "logs/dialogue_trace.log", "data": _tail("user://dialogue_trace.log")})
 	var previous := _previous_log_name()
 	if not previous.is_empty():
 		files.append({"name": "logs/previous.log", "data": _tail(LOG_DIR + "/" + previous)})

@@ -60,6 +60,11 @@ func draw(prop: Dictionary) -> bool:
 	if not prop.registration.get("dressing",false): return false
 	var spec: Dictionary=prop.registration.spec
 	draw_sprite(prop,spec.texture)
+	# Small registered material repairs preserve the source sheet and footprint.
+	for patch in spec.get("patches",[]):
+		var points:=PackedVector2Array()
+		for point in patch.points: points.append(room.life_point(prop,Vector2(point[0],point[1])))
+		room.painter.draw_colored_polygon(points,Color(patch.color))
 	# Neutralize generated bright lenses offline instead of dimming the whole prop.
 	for lens in spec.get("lenses",[]):
 		var points := PackedVector2Array()
@@ -92,8 +97,9 @@ func endpoint(spec: Dictionary) -> Vector2:
 	return room.life_point(prop,Vector2(spec.source[0],spec.source[1]))
 
 func route_returned_to_tray(route: Dictionary) -> bool:
-	# Construction fits the interior one prop at a time; a route waits for both hosts.
-	if room.has_meta("construction_fitting") and (find_prop(str(route.from.host)).is_empty() or find_prop(str(route.to.host)).is_empty()):
+	# A route waits for both hosts: construction fits the interior one prop at a time, and
+	# rooms dressed with station props (v2) no longer carry the built-in hosts at all.
+	if find_prop(str(route.from.host)).is_empty() or find_prop(str(route.to.host)).is_empty():
 		return true
 	var edits: Dictionary=preload("res://scripts/room_layout_store.gd").surface_positions(room)
 	for endpoint_spec in [route.from,route.to]:

@@ -1,0 +1,76 @@
+{
+  "sources": {
+    "west-south-01.png": "570897d624f3848f32a7a6ea34a9a512d7dbf6264169f6814ff172d127ec1d68",
+    "swim-carry-west-endpoint.png": "3161acd7bef3b365e0c0053bf195419eb888f5a7c2d79726c927911e4c207cfa",
+    "swim-carry-south-endpoint.png": "f220ecc8ee805ad02ef18ceb1935f23ca125b977117d8b814388b2b2399b7f33"
+  },
+  "registration": [
+    {
+      "source": "west-south-01.png",
+      "cell": [
+        0,
+        0,
+        724,
+        724
+      ],
+      "shoulder": [
+        356,
+        420
+      ],
+      "target": [
+        105,
+        137
+      ],
+      "scale": 0.22,
+      "offset": [
+        27,
+        45
+      ]
+    },
+    {
+      "source": "west-south-01.png",
+      "cell": [
+        724,
+        0,
+        1448,
+        724
+      ],
+      "shoulder": [
+        1139,
+        420
+      ],
+      "target": [
+        108,
+        138
+      ],
+      "scale": 0.22,
+      "offset": [
+        17,
+        46
+      ]
+    },
+    {
+      "source": "west-south-01.png",
+      "cell": [
+        1448,
+        0,
+        2172,
+        724
+      ],
+      "shoulder": [
+        1835,
+        435
+      ],
+      "target": [
+        110,
+        138
+      ],
+      "scale": 0.22,
+      "offset": [
+        25,
+        42
+      ]
+    }
+  ],
+  "derived": "Exact selected loaded frame-zero endpoints; return reverses poses. Revised third angles selected for east/north and east/south; no mirrored art."
+}

@@ -379,7 +379,17 @@
       "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
       "furnishing_assets": [
         "universal_storage_bench"
-      ]
+      ],
+      "visual_review": {
+        "card": "assets/room-cards-v2/crew_hab.png",
+        "card_sha256": "dd63204521b59792ca0fb14db05e910ad11097e47306e6a31866af88c45c037a",
+        "scope": "Current card-only visual review; no new native route, rotation, operation or owner acceptance claim.",
+        "findings": [
+          "Beds and lockers form a sleeping/storage group; sofa, table and plant form a separate sitting group.",
+          "The large open middle retains a clear visual separation between those uses."
+        ],
+        "decision": "Keep installed composition pending owner feedback; no layout/art changes."
+      }
     },
     {
       "id": "research_lab",
@@ -628,7 +638,8 @@
         "assets/room-furnishings-v5/manifest.json",
         "output/room-furnishings-v5/native-v1/runtime.json",
         "output/room-furnishings-v5/verification.json",
-        "output/test-runs/20260913-011605-headless"
+        "output/test-runs/20260913-011605-headless",
+        "docs/BIODOME_POLISH_REVIEW_2026-09-22.md"
       ],
       "brief": {
         "activity": "Cultivation and observation retreat",
@@ -637,25 +648,30 @@
         "floor_and_services": "Curved bed-edge irrigation; localized grate and stepping surface",
         "lighting": "Low botanical observation fixture"
       },
-      "limitations": "Shared-wall chart revised; package refresh pending. Prior card review is superseded. Cross-department furnishing v5 is selected and reviewed in four native orientations; owner aesthetic acceptance and a new export remain pending.",
-      "composition_phase": "cross_department_furnishing_v5_native_verified",
+      "limitations": "Owner composition/style acceptance and refreshed Windows/Mac packages remain pending. Legacy fern detail is richer than bought plants; no source-detail harmonization or upscaling claimed.",
+      "composition_phase": "bought_botanical_groups_native_reviewed",
       "packaged_detail_review": "output/room-rollout/windows-detail-review-v1/verification.json",
       "visual_review": {
-        "card": "rooms/underwater/batch-two/biodome-card-care-v1.png",
-        "card_sha256": "7cadf77d4158be6e250abc0de824d5d689feb0c5493d5fd715fc74ae8fc112d6",
-        "station": "output/botanical-charts-routes-v1/biodome-q3/composition-52-biodome.png",
+        "card": "assets/room-cards-v2/biodome.png",
+        "card_sha256": "f38d4b892479a6836711836274fe8fd94dbdf140f9d774ec9bbcd8581246aadf",
+        "station": "output/room-comparison-2026-09-22/medium/room-biodome.png",
         "findings": [
-          "Propagation shelf supports plants, pots and watering supplies; care cart serves the opposite growing area.",
-          "Varied plant silhouettes and enclosed habitats remain legible in the functioning station capture.",
-          "Perimeter services and drains explain tending areas; the center remains accessible.",
-          "Small wall care clipboard remains readable and subordinate to plants in rotated station capture."
+          "Medium shrub bed balances fern focal area without loose accessory scatter.",
+          "Basin and seating occupy the right-hand conservatory area; cultivation and potting remain grouped.",
+          "Four native views and 640 walking samples pass with no visual overlaps."
         ],
-        "decision": "Current furnishing composition accepted in native review; updated packaged verification pending."
+        "decision": "Installed after agent native review; owner acceptance remains open."
       },
-      "composition_revision": "Botanical v4 card: wall chart draws independently of shared-wall shell handoff at x=-52, clear of 72-unit door opening. Prior wall callback omitted the chart beside connected north rooms.",
+      "composition_revision": "September 22: medium shrub trough balances retained fern bed; loose second palm removed; basin grouped with seating. Four saved/default keys reconciled.",
       "furnishing_assets": [
-        "biodome_potting_island",
-        "universal_supply_pallet"
+        "biodome_ferns",
+        "library/tileset-mb-87",
+        "library/tileset-mb-87b",
+        "library/tileset-slt-22",
+        "library/tileset-spa-424",
+        "library/tileset-ns-153b",
+        "library/tileset-ns-136b",
+        "library/tileset-mg-27b"
       ]
     },
     {
@@ -747,7 +763,17 @@
       "furnishing_assets": [
         "bio_culture_preparation_island",
         "universal_specimen_transit_case"
-      ]
+      ],
+      "visual_review": {
+        "card": "assets/room-cards-v2/bio_lab.png",
+        "card_sha256": "407a14c4ec4c55d0bed50d6ef053018a25a4a6f48687d00909f6d234a31f0b0b",
+        "scope": "Current card-only visual review; no new native route, rotation, operation or owner acceptance claim.",
+        "findings": [
+          "Preparation and analysis equipment form distinct upper and lower groups.",
+          "The central workstation and paired lower benches read as usable stations; no arbitrary accessory scatter is visible."
+        ],
+        "decision": "Keep installed composition pending owner feedback; no layout/art changes."
+      }
     },
     {
       "id": "command_center",
@@ -904,7 +930,17 @@
       "furnishing_assets": [
         "maintenance_component_rebuild_cradle",
         "universal_fastener_drawer_chest"
-      ]
+      ],
+      "visual_review": {
+        "card": "assets/room-cards-v2/maintenance_bay.png",
+        "card_sha256": "1b1fa6034d20ea55f41dd21e2511040fbbbab5cb8b6b1dadf04e526446d76229",
+        "scope": "Current card-only visual review; no new native route, rotation, operation or owner acceptance claim.",
+        "findings": [
+          "CNC and parts shelving form the upper work group; paired tool benches and robot station occupy the lower area.",
+          "The open center separates work areas without loose floor accessories."
+        ],
+        "decision": "Keep installed composition pending owner feedback; no layout/art changes."
+      }
     },
     {
       "id": "med_center",

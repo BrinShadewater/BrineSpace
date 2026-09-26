@@ -70,7 +70,21 @@ func _init() -> void:
 	game.hardware.power = true
 	game._apply_room_economy()
 	game._update_wreck_clearance(0.25)
-	check(drone.battery == charge,"Next unpaid cycle disables the bay")
+	check(drone.battery > charge,"An unpaid operating cycle does not discard prepaid battery charge")
+	add(game,"battery_array",Vector2i(20,21))
+	game.resources.power=16
+	game.powered_room_cells.clear()
+	drone.battery=0.0;drone.charge_credit=0.0
+	game._update_wreck_clearance(4.0)
+	check(drone.battery==12.0 and game.resources.power==14,"Main controller charges from 16 stored Power without bay cycle allocation")
+	drone.battery=0.0;drone.charge_credit=0.0
+	game.resources.power=3
+	game._update_wreck_clearance(4.0)
+	check(drone.battery==0.0 and game.resources.power==3,"Main controller preserves three Power automatically")
+	game.resources.power=4
+	game._update_wreck_clearance(4.0)
+	check(drone.battery==6.0 and game.resources.power==3,"Main controller resumes charging when reserve recovers")
+	check(Insights.power_demand(game).contains("preserving a reserve of 3"),"Power inspector explains the charging reserve")
 	game.free()
 	game = Game.new()
 	game.meta.unlocked_room_ids.clear()

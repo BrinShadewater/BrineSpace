@@ -56,3 +56,10 @@ separately. Preserve known legacy state aliases instead of claiming all states a
 Do not rebuild every pack merely to close a session. Update the current inventory,
 visual bible and dated handoff, sync only changed maintained skill files to the installed
 mirror, and report whether an executable was actually rebuilt.
+
+During checkpoint restore, fresh companion behavior/playback does not require new
+decoded textures. Reuse only same-identity loaded art; copy mutable clip/timing and
+clearance containers, retain independent clocks/RNG/routes, and test mutation
+isolation plus legacy checkpoints. The maintained companion restore path now does
+this. Profile normal staged Continue separately from synchronous tool restoration;
+a synchronous first-frame stall is not automatically player-facing Continue latency.

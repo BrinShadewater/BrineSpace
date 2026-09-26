@@ -1,0 +1,57 @@
+{
+  "scope": "staged current saved q3 size only; no controller binding",
+  "bunk_id": "library/tileset-mb2-14",
+  "bunk_rect": [
+    72,
+    -126,
+    72.46131,
+    73.99651
+  ],
+  "seconds": 1.84,
+  "entry": [
+    125.2307,
+    -36.00349
+  ],
+  "seated_feet": [
+    125.2307,
+    -40.00349
+  ],
+  "rest": [
+    112.3378,
+    -70.69855
+  ],
+  "edge_tuck": 16,
+  "stages": [
+    {
+      "from": 0,
+      "to": 0.36,
+      "anchor": "entry",
+      "layer": "front"
+    },
+    {
+      "from": 0.36,
+      "to": 0.66,
+      "anchor": "seated_feet",
+      "layer": "front"
+    },
+    {
+      "from": 0.66,
+      "to": 0.96,
+      "anchor": "rest + (0,16)",
+      "layer": "front; leg still hanging"
+    },
+    {
+      "from": 0.96,
+      "to": 1.56,
+      "anchor": "rest + (0,16*(1-(t-0.96)/0.6))",
+      "layer": "between bunk layers"
+    },
+    {
+      "from": 1.56,
+      "to": 1.84,
+      "anchor": "rest",
+      "layer": "between bunk layers"
+    }
+  ],
+  "exit": "Reverse both ordered poses/durations and contact time. No independent interpolation across differently registered pose anchors."
+}

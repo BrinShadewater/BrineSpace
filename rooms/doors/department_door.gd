@@ -27,8 +27,11 @@ static func department(room: Dictionary) -> String:
 	return "generic"
 
 static func pair_variant(a: Dictionary, b: Dictionary) -> String:
-	if department(a)=="metal" or department(b)=="metal": return "metal"
-	return department(a) if department(a)==department(b) else "generic"
+	var first := department(a)
+	if first=="metal": return "metal"
+	var second := department(b)
+	if second=="metal": return "metal"
+	return first if first==second else "generic"
 
 static func make_materials(host: Node, source: Texture2D) -> Dictionary:
 	var result := {}

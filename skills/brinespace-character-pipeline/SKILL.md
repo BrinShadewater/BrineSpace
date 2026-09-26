@@ -27,6 +27,10 @@ and evidence appropriate to its scope. Preserve accepted work and make revisions
 inexpensive. This skill owns character decisions; existing sprite tools own
 packaging, and the project visual bible owns shared art direction.
 
+For current scope, read `docs/CURRENT_STATUS.md` first. For takeover or closeout,
+use `docs/CLAUDE_HANDOFF_2026-09-24.md` and the maintained
+`docs/ASSET_PIPELINE_AND_WORKFLOW.md`; dated reports retain their original scope.
+
 ## Locate the project and select the scope
 
 Locate the active BrineSpace checkout through the workspace, not a fixed drive.

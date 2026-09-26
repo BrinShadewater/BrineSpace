@@ -50,6 +50,7 @@ func run() -> void:
 	var simulated_ms := 0.0
 	var pauses := 0
 	var ended_at := -1
+	var completed_cycles := 0
 	var started := Time.get_ticks_usec()
 	var crew = preload("res://scripts/bill_npc.gd")
 	crew.route_searches = 0
@@ -67,10 +68,11 @@ func run() -> void:
 			if used > worst:
 				worst = used
 				worst_at = cycle
-				if used >= 33.3: slow_frames += 1
+			if used >= 33.3: slow_frames += 1
 			simulated_ms += used
 			for key in SYSTEMS: totals[key] = float(totals[key]) + float(game.frame_timing_usec.get(key, 0)) / 1000.0
 		game._on_tick_timer_timeout()
+		completed_cycles += 1
 		if not game.running:
 			# The station failed (or won); timings past this point would be idle frames.
 			ended_at = cycle
@@ -78,13 +80,13 @@ func run() -> void:
 		if cycle % 10 == 0: await process_frame
 	var wall := simulated_ms
 	errors.poll(0.0)
-	var report := {"cycles": cycles, "frames": frames, "dt": dt, "save": save_path,
+	var report := {"cycles": cycles, "completed_cycles": completed_cycles, "frames": frames, "dt": dt, "save": save_path,
 		"simulated_ms": wall, "mean_frame_ms": wall / maxf(1.0, float(frames)), "max_frame_ms": worst, "run_ended_at_cycle": ended_at,
 		"max_frame_cycle": worst_at, "frames_over_33ms": slow_frames,
 		"pauses_cleared": pauses, "route_searches": crew.route_searches, "route_failures": crew.route_failures,
 		"errors": errors.summary(), "rooms": game.placed_rooms.size(), "crew": game.crew_count,
 		"systems_ms": totals}
-	print("SOAK: %d cycles / %d frames / %.0f ms simulating / mean %.2f ms / max %.2f ms at cycle %d / %d frames over 33 ms%s" % [cycles, frames, wall, report.mean_frame_ms, worst, worst_at, slow_frames, "" if ended_at < 0 else " / the run ended at cycle %d" % ended_at])
+	print("SOAK: %d completed of %d requested cycles / %d frames / %.0f ms simulating / mean %.2f ms / max %.2f ms at cycle %d / %d frames over 33 ms%s" % [completed_cycles, cycles, frames, wall, report.mean_frame_ms, worst, worst_at, slow_frames, "" if ended_at < 0 else " / the run ended at cycle %d" % ended_at])
 	for key in SYSTEMS:
 		print("  %-14s %8.1f ms total  %6.3f ms per frame" % [key, totals[key], float(totals[key]) / maxf(1.0, float(frames))])
 	print("  pauses cleared %d" % pauses)

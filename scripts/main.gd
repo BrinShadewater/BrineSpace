@@ -135,6 +135,7 @@ var run_earned := {}
 var occupied := {}
 const WreckField := preload("res://scripts/wreck_field.gd")
 var wrecks: Dictionary = {}
+var site_layout: Dictionary = {}
 var drone_fleet = preload("res://scripts/drone_fleet.gd").new()
 const CryoRecovery := preload("res://scripts/cryo_recovery.gd")
 var recovered_crew: Array = []
@@ -215,7 +216,7 @@ var offline_reasons := {}
 var last_cycle_delta := {}
 # Drone and crew deliveries per cycle, shown in the resource bar's +/- figure only.
 var resource_flow: Dictionary = preload("res://scripts/resource_flow_ledger.gd").empty()
-const BillNPC = preload("res://scripts/bill_npc.gd")
+const BillNPC = preload("res://scripts/major_bill_npc.gd")
 var bill_npc = BillNPC.new()
 const VeldNPC = preload("res://scripts/veld_npc.gd")
 var veld_npc = VeldNPC.new()
@@ -421,6 +422,12 @@ func _process(delta: float) -> void:
 	var frame_start := stamp
 	_update_discovery_bursts(delta)
 	if running and not paused:
+		if grid_view.underwater_visibility.survey(self):
+			var found: Array=preload("res://scripts/site_discovery.gd").reveal(self)
+			if not found.is_empty():
+				for cell in found:
+					_log("RECOVERY SIGNAL // %s. The chamber still holds." % wrecks[cell].pods[0].name,false)
+				_refresh_all()
 		visual_time_seconds += delta * time_speeds[time_speed_index]
 		unscaled_time_seconds += delta
 		preload("res://scripts/airlock_cycle.gd").advance(self,delta * time_speeds[time_speed_index])
@@ -1607,6 +1614,7 @@ func _toggle_inspected_room_lock() -> void:
 	_refresh_all()
 
 func _toggle_wreck_work(cell: Vector2i) -> void:
+	if wrecks.get(cell,{}).get("kind","")=="recovery": return
 	if Companions.is_site(self,cell):
 		Companions.toggle(self,cell);return
 	if not running or not WreckField.blocks(wrecks,cell) or not WreckField.visible(wrecks,cell):
@@ -1687,6 +1695,14 @@ func _refresh_wreck_inspector(cell: Vector2i) -> void:
 	if Companions.is_site(self,cell):
 		Companions.inspect(self,cell);return
 	var wreck: Dictionary = wrecks[cell]
+	if wreck.kind=="recovery":
+		preview_name_label.text="Unidentified recovery site"
+		preview_tags_label.text="UNSURVEYED"
+		preview_texture.texture=null
+		_set_inspector_text("A sealed compartment. Bring a survey light close enough to identify it.")
+		room_operation_button.text="SURVEY REQUIRED"
+		room_operation_button.disabled=true
+		return
 	if wreck.kind in ["cryo","charging"]:
 		_refresh_cryo_inspector(cell)
 		return
@@ -2017,14 +2033,25 @@ func _start_reboot_cycle() -> void:
 		archive_label.get_v_scroll_bar().set_deferred("value", 0.0)
 	occupied.clear()
 	placed_rooms.clear()
-	wrecks = WreckField.initial()
+	var site_rng := RandomNumberGenerator.new()
+	site_rng.randomize()
+	site_layout = preload("res://scripts/site_generator.gd").generate(int(get_meta("site_seed",site_rng.randi())))
+	wrecks = site_layout.wrecks.duplicate(true)
+	# Fixed-coordinate legacy regression fixtures opt in explicitly; never a player setting.
+	if get_meta("authored_site_fixture",false) and ("-s" in OS.get_cmdline_args() or "--script" in OS.get_cmdline_args()):
+		site_layout={}
+		wrecks=WreckField.initial()
 	surveyed_water.clear()
 	grid_view.underwater_visibility.reset()
+	grid_view.invalidate_site()
 	architect_run=Architects.begin(self)
 	Companions.begin(self)
 	for resource_id in Architects.starting_supplies(architect_run.selected):
 		resources[resource_id] += Architects.STARTING_SUPPLIES[architect_run.selected][resource_id]
 	drone_fleet.restore(null)
+	if not site_layout.is_empty():
+		drone_fleet.sites=site_layout.sites.duplicate(true)
+		drone_fleet.sites_initialized=true
 	recovered_crew.clear()
 	hand.clear()
 	draw_pile.clear()
@@ -2990,7 +3017,7 @@ func _refresh_summary_figures(award: int) -> void:
 		child.queue_free()
 	var data_tint := Color(ResourceIcons.color("data"))
 	_add_summary_figure(str(cycle), "CYCLES SURVIVED", Color("#a9e7d4"))
-	_add_summary_figure(str(crew_count), "CREW REMAINING", RoomDatabaseScript.CATEGORY_COLORS.get("Crew", Color("#e58a45")))
+	_add_summary_figure(str(crew_count), "CREW REMAINING", RoomDatabaseScript.CATEGORY_COLORS.get("Recreation", Color("#e58a45")))
 	_add_summary_figure(str(resonance_score), "RESONANCE", Color("#c9a765"))
 	_add_summary_figure(str(links_formed), "LINKS FORMED", RoomDatabaseScript.CATEGORY_COLORS.get("Science", Color("#4f8fe6")))
 	_add_summary_figure("x%d" % largest_cascade, "BEST CASCADE", RoomDatabaseScript.CATEGORY_COLORS.get("Anomaly", Color("#9c5de8")))
@@ -3545,12 +3572,8 @@ func _center_grid_on_station_deferred() -> void:
 func _fit_station_view(animated := false) -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
 		return
-	var bounds := Rect2(Vector2(placed_rooms[0]["pos"]), Vector2.ONE)
-	for room in placed_rooms:
-		bounds = bounds.merge(Rect2(Vector2(room["pos"]), Vector2.ONE))
-	var usable := grid_scroll.size - Vector2(120, 110)
-	var fit_zoom := minf(usable.x / ((bounds.size.x + 0.6) * CELL_SIZE), usable.y / ((bounds.size.y + 0.6) * CELL_SIZE))
-	var zoom := minf(fit_zoom, DEFAULT_GRID_ZOOM * 0.60)
+	var bounds := _station_bounds()
+	var zoom := minf(_station_fit_zoom(), DEFAULT_GRID_ZOOM * 0.60)
 	if animated:
 		# The F key and button glide there like wheel zoom. Jumping repainted the whole
 		# station in one frame (~170 ms on a 50-room station).
@@ -3562,6 +3585,19 @@ func _fit_station_view(animated := false) -> void:
 	# Fit uses its destination immediately; preserving the old center first can
 	# rebuild a different visible room set before the deferred station centering.
 	_set_grid_zoom(zoom,true,bounds.get_center()/float(GRID_SIZE))
+
+func _station_bounds() -> Rect2:
+	var bounds := Rect2(Vector2(placed_rooms[0]["pos"]), Vector2.ONE)
+	for room in placed_rooms:
+		bounds = bounds.merge(Rect2(Vector2(room["pos"]), Vector2.ONE))
+	return bounds
+
+## The zoom at which Fit Station shows every room, with a margin for the HUD edges.
+func _station_fit_zoom() -> float:
+	if grid_scroll == null or placed_rooms.is_empty(): return INF
+	var bounds := _station_bounds()
+	var usable := grid_scroll.size - Vector2(120, 110)
+	return minf(usable.x / ((bounds.size.x + 0.6) * CELL_SIZE), usable.y / ((bounds.size.y + 0.6) * CELL_SIZE))
 
 func _center_grid_on_station_now() -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
@@ -3586,7 +3622,8 @@ func _refresh_resources() -> void:
 	power_capacity = _get_power_capacity()
 	forecast_power_vented = int(forecast.get("power_vented", 0))
 	_set_resource_chip("metal", "METAL\n%d/%d  %+d" % [resources["metal"], _get_resource_capacity("metal"), net.get("metal", 0)], Color("#9aa2a8"))
-	_set_resource_chip("power", "POWER\n%d/%d  %+d" % [resources["power"], power_capacity, net.get("power", 0)], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
+	var power_change := "FULL" if int(resources.power)>=power_capacity and int(net.get("power",0))>=0 else "%+d" % int(net.get("power",0))
+	_set_resource_chip("power", "POWER\n%d/%d  %s" % [resources["power"], power_capacity, power_change], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
 	resource_chips["power"].tooltip_text = str(RESOURCE_TOOLTIPS.get("power", "Station resource.")) + preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented)
 	_set_resource_chip("oxygen", "OXYGEN\n%d/%d  %+d" % [resources["oxygen"], _get_resource_capacity("oxygen"), net.get("oxygen", 0)], _critical_color(resources["oxygen"], Color("#7fd4ff"), 2, 0))
 	_set_resource_chip("water", "WATER\n%d/%d  %+d" % [int(resources.get("water", 0)), _get_resource_capacity("water"), net.get("water", 0)], Color("#719bff"))
@@ -4023,7 +4060,15 @@ func _load_card_textures() -> void:
 			card_textures[id] = texture
 
 func _load_card_thumbnail(path: String) -> Texture2D:
-	return preload("res://scripts/safe_image.gd").raw_texture(path)
+	var texture := preload("res://scripts/safe_image.gd").raw_texture(path)
+	if texture == null: return null
+	# Fan cards shrink and rotate this art. Their mipmap filter needs actual levels;
+	# upright cards still sample the base image with nearest filtering.
+	var image := texture.get_image()
+	if image != null and not image.has_mipmaps():
+		if image.generate_mipmaps() == OK:
+			return ImageTexture.create_from_image(image)
+	return texture
 
 func _default_card_rotation(id: String) -> int:
 	if id=="corner":
@@ -4450,7 +4495,7 @@ func _direction_for_offset(offset: Vector2i) -> String:
 	return "west"
 
 func get_test_walker_state() -> String:
-	return test_walker_state
+	return bill_npc.animation_state() if bill_npc.active else test_walker_state
 
 func has_test_walker() -> bool:
 	return not bill_npc.expedition.is_empty() or (occupied.has(test_walker_cell) and (architect_run.is_empty() or bill_npc.active))
@@ -4600,7 +4645,7 @@ func _refresh_harvest_inspector(cell: Vector2i) -> void:
 	else:
 		for drone in drone_fleet.drones.values():
 			if drone.job=="harvest" and Vector2i(drone.target)==cell:
-				status = drone_fleet.battery_status(drone.home,int(resources.power),powered_room_cells.has(drone.home),paused,wrecks)
+				status = drone_fleet.battery_status(drone.home,int(resources.power),powered_room_cells.has(drone.home),paused,wrecks,occupied.get(drone.home,{}).get("suspended",false))
 				break
 	_set_inspector_text("%s\n\nRemaining: %s\nLoads: %d / %d\nCurrent load: %s\n\nDrones choose the nearest reachable surveyed site. Extraction stops when its material is gone. Cargo enters storage at the bay; storage limits apply. Expand the station to survey farther seabed.\n\n[color=#698782]I have counted what remains. It is not an inexhaustible number.[/color]" % [status,_format_cost(remaining),site.units,site.capacity,_progress_bar(site.progress/6.0,"#c9a765")])
 	room_operation_button.set_meta("cell",cell)
@@ -4738,6 +4783,8 @@ func _refresh_inspector_contents() -> void:
 		if not next_reason.is_empty() and next_reason != operation:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(next_reason))
 		preview_lines.append(preload("res://scripts/station_navigation.gd").actions(room.pos,next_reason if not next_reason.is_empty() else operation))
+		if room.id in ["mining_drone_bay","salvage_drone_bay"]:
+			preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused,wrecks,room.get("suspended",false)))
 		if room.id in ["construction_drone_bay","mining_drone_bay","salvage_drone_bay","brine_core"]:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").power_demand(self))
 		preview_lines.append("Forecast uses current shared inputs and learned bonuses; events can change the outcome.")
@@ -4746,7 +4793,6 @@ func _refresh_inspector_contents() -> void:
 		preview_lines.append("[color=#%s]%s[/color]" % [UI_ACCENT_BRIGHT.to_html(false),"CARGO / EXTRACTION LOAD" if room.id in ["mining_drone_bay","salvage_drone_bay"] else "BASE OUTPUT / FUNCTIONING CYCLE"])
 		preview_lines.append(_format_effect_rows(room.get("production", {}), "+", false,room.id not in ["mining_drone_bay","salvage_drone_bay"]))
 	if room.id in ["mining_drone_bay","salvage_drone_bay"]:
-		preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused,wrecks))
 		preview_lines.append("Extracts one load per 6 seconds from a finite surveyed site. Cargo enters storage on return. Battery supports 12 seconds of extraction; 1 station Power restores 6 seconds at the bay. Keep an exterior route open.")
 	if not previewing_card and not room.get("consumption", {}).is_empty():
 		preview_lines.append("[color=#c85b61]REQUIRED INPUT / CYCLE[/color]")
@@ -4900,19 +4946,19 @@ func _format_effect_rows(values: Dictionary, prefix: String, negative: bool, per
 
 func _room_flavor_line(room: Dictionary) -> String:
 	match str(room.get("category", "")):
-		"Bio":
+		"Life Support":
 			return "\"Water in. Air out. Keep it clean.\""
 		"Engineering":
 			return "\"If it hums, it can be persuaded.\""
 		"Science":
 			return "\"Every signal is a memory trying to surface.\""
-		"Medical":
-			return "\"Warm the room before you wake the dead.\""
 		"Anomaly":
 			return "\"Containment is just curiosity with manners.\""
-		"Drone":
+		"Recreation":
+			return "\"Somewhere down here, someone still laughs.\""
+		"Robotics":
 			return "\"Small machines remember the work.\""
-		"Core":
+		"Operations":
 			return "\"BRINE listens through the walls.\""
 		_:
 			return "\"Station pattern recovered.\""
@@ -5448,7 +5494,10 @@ func _minimum_map_zoom() -> float:
 	# station whole. Readability, not speed: a station is a block in the middle of the grid,
 	# so it is fully drawn at either limit and the frame costs the same (60.6 vs 61.0 ms).
 	var fit_whole_grid: float = maxf(grid_scroll.size.x,grid_scroll.size.y) / (GRID_SIZE * float(CELL_SIZE))
-	return maxf(MIN_GRID_ZOOM, fit_whole_grid / ZOOM_OUT_EXTENT)
+	# Owner call, September 25: Fit Station must still show the whole station. The limit
+	# spans the wider side of the frame, so on a wide frame a station taller than about
+	# 13 rows was cut off; the stop moves out just far enough to show it whole.
+	return maxf(MIN_GRID_ZOOM, minf(fit_whole_grid / ZOOM_OUT_EXTENT, _station_fit_zoom()))
 
 func _show_pause_page(id: String) -> void:
 	if not pause_pages.has(id): return
@@ -5527,4 +5576,4 @@ func capture_bug_report_snapshot() -> Dictionary:
 	for member in [bill_npc,veld_npc,branforth_npc,marsh_npc,grid_view,tick_timer]:
 		if not is_instance_valid(member):
 			return {"status":"unavailable", "reason":"station component unavailable"}
-	return {"status":"captured", "snapshot":RunSave.capture(self)}
+	return {"status":"captured", "site_seed":site_layout.get("seed","legacy"), "site_generator_version":site_layout.get("version",0), "snapshot":RunSave.capture(self)}

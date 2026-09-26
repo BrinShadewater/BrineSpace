@@ -1,0 +1,51 @@
+{
+  "status": "authoring study only; no selected runtime changes",
+  "generation": "built-in image_gen; no Higgsfield or API/CLI fallback",
+  "reference": "idle-reference.png (frozen current idle-west/000.png)",
+  "crop": "near-forward-contact.png is unmodified rectangle [0,0,285,724] of rejected-repeated-stance.png",
+  "runtime_walk_frames_unchanged": 12,
+  "sources": [
+    {
+      "file": "rejected-repeated-stance.png",
+      "sha256": "d8406a4dcca362521f8ed1a089c76522bea18bb5b96f5de7f6f82978ecdaadf2",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "decision": "Rejected complete cycle: similar near-leg-forward contact repeated across both halves; cannot prove alternating gait."
+    },
+    {
+      "file": "opposite-contact.png",
+      "sha256": "68c91c0e8f5cf699bd7cb24730d6f5d12b839ea15ee4b8f10a6c40a7979b8ec5",
+      "size": [
+        1230,
+        1278
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "decision": "Useful isolated opposite-contact anatomy reference; not an accepted walk frame, identity/registration/native review incomplete."
+    },
+    {
+      "file": "rejected-anchored-cycle.png",
+      "sha256": "bdac1800d83770e8d36fd2f69b286649cb0825ab1cdd00b20527c2b50df804e7",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "decision": "Rejected complete cycle: repeated similar contact and passing poses across both halves; near arm also stays forward. Does not preserve the two distinct requested contact anchors."
+    }
+  ]
+}

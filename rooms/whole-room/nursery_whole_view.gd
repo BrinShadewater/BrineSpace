@@ -252,7 +252,7 @@ func _sorted_content_queue(live: Array) -> Array:
 	var valid: bool = prop_queue_sources.size() == props.size()
 	if valid:
 		for i in range(props.size()):
-			if not is_same(prop_queue_sources[i],props[i]) or prop_queue_sort_values[i] != float(props[i].sort_y):
+			if not is_same(prop_queue_sources[i],props[i]) or prop_queue_sort_values[i] != prop_content_signature(props[i]):
 				valid = false
 				break
 	if not valid:
@@ -262,8 +262,8 @@ func _sorted_content_queue(live: Array) -> Array:
 		var base: Array = []
 		for prop in props:
 			prop_queue_sources.append(prop)
-			prop_queue_sort_values.append(float(prop.sort_y))
-			base.append({"kind":"prop","sort_y":prop.sort_y,"prop":prop})
+			prop_queue_sort_values.append(prop_content_signature(prop))
+			base.append_array(prop_content_entries(prop))
 		base.sort_custom(func(a: Dictionary,b: Dictionary)->bool: return float(a.sort_y)<float(b.sort_y))
 		# Pre-expand split passes so the content canvas receives the same stable
 		# Dictionary objects every frame (its cheap slot keys rely on identity).
@@ -310,14 +310,14 @@ func draw_room_world(include_floor := true) -> void:
 	if retained_content_host != null and shell_pass == 2 and reuse_prop_queue:
 		var live: Array = []
 		if show_actor:
-			live.append({"kind":"actor","sort_y":actor.y+(float(external_actor_texture.get_meta("crew_depth_offset",0)) if external_actor_texture!=null else 0.0)})
+			live.append({"kind":"actor","sort_y":actor_draw_depth(actor,external_actor_texture)})
 		for member in external_actors:
-			live.append({"kind":"crew","sort_y":member.position.y+(float(member.texture.get_meta("crew_depth_offset",0)) if member.texture!=null else 0.0),"member":member})
+			live.append({"kind":"crew","sort_y":actor_draw_depth(member.position,member.texture),"member":member})
 		retained_content_host.submit(self,_sorted_content_queue(live))
 		return
 	var queue: Array = []
 	for prop in props:
-		queue.append({"kind":"prop","sort_y":prop.sort_y,"prop":prop})
+		queue.append_array(prop_content_entries(prop))
 	if shell_pass != 2:
 		for edge in edges:
 			if get_meta("raised_north_visible",false) and edge.horizontal and is_equal_approx(edge.center.y,-192.0): continue
@@ -335,9 +335,9 @@ func draw_room_world(include_floor := true) -> void:
 					var rect := Rect2(corner-Vector2.ONE*8,Vector2.ONE*16)
 					queue.append({"kind":"cap","sort_y":rect.end.y+0.02,"rect":rect})
 	if show_actor:
-		queue.append({"kind":"actor","sort_y":actor.y+(float(external_actor_texture.get_meta("crew_depth_offset",0)) if external_actor_texture!=null else 0.0)})
+		queue.append({"kind":"actor","sort_y":actor_draw_depth(actor,external_actor_texture)})
 	for member in external_actors:
-		queue.append({"kind":"crew","sort_y":member.position.y+(float(member.texture.get_meta("crew_depth_offset",0)) if member.texture!=null else 0.0),"member":member})
+		queue.append({"kind":"crew","sort_y":actor_draw_depth(member.position,member.texture),"member":member})
 	queue.sort_custom(func(a: Dictionary,b: Dictionary)->bool: return float(a.sort_y)<float(b.sort_y))
 	if not shell_key.is_empty() and shell_queues.size()<32:
 		shell_queues[shell_key.duplicate(true)] = queue.duplicate(true)
@@ -392,3 +392,12 @@ func _draw() -> void:
 	painter.draw_string(ThemeDB.fallback_font,Vector2(28,32),"MYCELIUM / WHOLE-ROOM ART PILOT",HORIZONTAL_ALIGNMENT_LEFT,-1,20,Color("d9e2df"))
 	var state := "PAUSED" if paused else ("OPERATING" if operating else "OFFLINE")
 	painter.draw_string(ThemeDB.fallback_font,Vector2(28,58),"WASD / arrows: walk    O: operation    Space: pause    C: seam fixtures    G: footprints    |    "+state,HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color("a0b4b5"))
+
+func actor_draw_depth(at: Vector2,texture: Texture2D) -> float:
+	return at.y+(float(texture.get_meta("crew_depth_offset",0)) if texture!=null else 0.0)
+
+func prop_content_entries(prop: Dictionary) -> Array:
+	return [{"kind":"prop","sort_y":prop.sort_y,"prop":prop}]
+
+func prop_content_signature(prop: Dictionary) -> Variant:
+	return float(prop.sort_y)

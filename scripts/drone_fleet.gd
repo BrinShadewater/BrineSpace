@@ -5,6 +5,7 @@ const PHASE_SECONDS := {"launching":1.2, "working":6.0, "docking":1.2, "docked":
 const BATTERY_CAPACITY := 12.0 # Seconds of active extraction; propulsion has a separate return reserve.
 const CHARGE_PER_POWER := 6.0
 const CHARGE_RATE := 3.0
+const CHARGE_POWER_RESERVE := 3
 const Sites = preload("res://scripts/harvest_sites.gd")
 const Routes = preload("res://scripts/drone_routes.gd")
 var sites: Dictionary = {}
@@ -69,6 +70,9 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 	delivered.clear()
 	power_spent = 0
 	var completed: Array = []
+	var suspended := {}
+	for room in rooms:
+		if room.get("suspended",false): suspended[room.pos]=true
 	for home in drones:
 		var drone: Dictionary = drones[home]
 		if crew_builders and drone.bootstrap:
@@ -84,7 +88,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 		# Core's emergency builder prevents power/build bootstrap deadlock.
 		var extractor: bool = drone.kind in ["mining","salvage"]
 		if extractor and not drone.has("battery"): drone["battery"] = BATTERY_CAPACITY
-		if not drone.bootstrap and not powered.has(home) and (not extractor or drone.phase == "docked"): continue
+		if not drone.bootstrap and not powered.has(home) and not extractor: continue
 		if drone.job == "harvest" and drone.phase not in ["returning","docking"]:
 			var target_cell := Vector2i(drone.target)
 			var site: Dictionary = sites.get(target_cell,{})
@@ -103,7 +107,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				drone.elapsed = 0.0
 		var remaining := maxf(delta,0.0)
 		while remaining > 0.00001:
-			if extractor and drone.phase == "docked" and not powered.has(home): break
+			if extractor and drone.phase == "docked" and suspended.has(home): break
 			if drone.phase in ["outbound","returning"]:
 				var goal: Vector2i = drone.home if drone.phase == "returning" else Vector2i(drone.target)
 				remaining = Routes.travel(drone,remaining*travel_rate,goal,route_blockers)/travel_rate
@@ -115,7 +119,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				continue
 			if extractor and drone.phase == "docked" and drone.battery < BATTERY_CAPACITY-0.00001:
 				if float(drone.get("charge_credit",0.0)) <= 0.00001:
-					if power_spent >= station_power: break
+					if station_power-power_spent <= CHARGE_POWER_RESERVE: break
 					power_spent += 1
 					drone["charge_credit"] = CHARGE_PER_POWER
 				var charge := minf(minf(remaining*CHARGE_RATE,BATTERY_CAPACITY-drone.battery),drone.charge_credit)
@@ -124,6 +128,9 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				drone.charge_credit -= charge
 				remaining -= charge/CHARGE_RATE
 				continue
+			# Charging draws stored energy independently of the bay's cycle inputs.
+			# Launching a new job still requires an operational bay.
+			if extractor and drone.phase == "docked" and not powered.has(home): break
 			if drone.phase == "docked" and drone.job.is_empty():
 				if float(drone.get("idle_retry",0.0))>0:
 					var retry_step := minf(remaining,drone.idle_retry)
@@ -321,34 +328,39 @@ func clearance_status(cell: Vector2i, powered: Dictionary) -> String:
 			return "WAITING / drone battery recharging at bay"
 	return "WAITING FOR AVAILABLE DRONE"
 
-func charge_demand(powered: Dictionary, station_power: int) -> Dictionary:
+func charge_demand(_powered: Dictionary, station_power: int, rooms: Array = []) -> Dictionary:
 	var result := {"power":0,"waiting":0,"charging":0,"offline":0}
+	var suspended := {}
+	for room in rooms:
+		if room.get("suspended",false): suspended[room.pos]=true
 	for home in drones:
 		var d: Dictionary = drones[home]
 		if d.kind not in ["mining","salvage"] or d.phase != "docked": continue
 		var deficit := BATTERY_CAPACITY-float(d.get("battery",BATTERY_CAPACITY))
 		if deficit <= 0.00001: continue
-		if not powered.has(home):
+		if suspended.has(home):
 			result.offline += 1
 			continue
 		var credit := float(d.get("charge_credit",0.0))
 		result.power += ceili(maxf(0.0,deficit-credit)/CHARGE_PER_POWER)
-		if station_power <= 0 and credit <= 0.00001: result.waiting += 1
+		if station_power <= CHARGE_POWER_RESERVE and credit <= 0.00001: result.waiting += 1
 		else: result.charging += 1
 	return result
 
-func battery_status(home: Vector2i, station_power := -1, bay_powered := true, paused := false, wrecks: Dictionary = {}) -> String:
+func battery_status(home: Vector2i, station_power := -1, bay_powered := true, paused := false, wrecks: Dictionary = {}, bay_suspended := false) -> String:
 	if not drones.has(home): return "BATTERY / ready"
 	var d: Dictionary = drones[home]
 	var percent := roundi(float(d.get("battery",BATTERY_CAPACITY))/BATTERY_CAPACITY*100)
 	var state := str(d.phase).to_upper()
-	if d.phase == "docked" and not bay_powered:
-		state = "BAY OFFLINE / restore its room inputs or resume the bay"
+	if d.phase == "docked" and bay_suspended:
+		state = "BAY SUSPENDED / resume the bay to charge"
 	elif d.phase == "docked" and float(d.get("battery",BATTERY_CAPACITY)) < BATTERY_CAPACITY-0.00001:
 		state = "CHARGING"
-		if station_power == 0 and float(d.get("charge_credit",0.0)) <= 0.00001:
-			state = "WAITING FOR STORED POWER / add generation or suspend a competing consumer"
-	elif d.get("route_wait",false): state = harvest_route_hint(home,wrecks) if not wrecks.is_empty() else "ROUTE BLOCKED / check surveyed sites and bay ports"
+		if station_power >= 0 and station_power <= CHARGE_POWER_RESERVE and float(d.get("charge_credit",0.0)) <= 0.00001:
+			state = "WAITING FOR STORED POWER / preserving 3 Power; resumes above 3"
+	elif d.phase == "docked" and not bay_powered:
+		state = "BAY OFFLINE / battery ready; restore room inputs to launch"
+	elif d.get("route_wait",false): state = harvest_route_hint(home,wrecks)
 	return ("PAUSED / " if paused else "") + "BATTERY %d%% / %s" % [percent,state]
 
 # A stalled extraction bay usually means its last reachable deposit is spent and the

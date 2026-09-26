@@ -1,0 +1,77 @@
+{
+  "sources": {
+    "east-north-01.png": "888da3914ba4a5bd771f8f946671d55ce9171f7ff60cfe3e5bc6158f7bbb6dab",
+    "east-north-02.png": "19f16abe22ec6d7dbbfddc918e5ad907c0f33cfa08506751601ea1e1374aee50",
+    "swim-carry-east-endpoint.png": "503e2a61379e63bbe9ef14079c8d68805f35710c149fa6718ef15034f4de7f46",
+    "swim-carry-north-endpoint.png": "c5d1bd78f66fe3f4489a0f2dc5365beb93e14369ea005f5fac50b8f76b8626cb"
+  },
+  "registration": [
+    {
+      "source": "east-north-01.png",
+      "cell": [
+        0,
+        0,
+        723,
+        725
+      ],
+      "shoulder": [
+        483,
+        400
+      ],
+      "target": [
+        119,
+        137
+      ],
+      "scale": 0.24,
+      "offset": [
+        3,
+        41
+      ]
+    },
+    {
+      "source": "east-north-01.png",
+      "cell": [
+        723,
+        0,
+        1447,
+        725
+      ],
+      "shoulder": [
+        1236,
+        378
+      ],
+      "target": [
+        117,
+        138
+      ],
+      "scale": 0.24,
+      "offset": [
+        -6,
+        47
+      ]
+    },
+    {
+      "source": "east-north-02.png",
+      "cell": [
+        1447,
+        0,
+        2170,
+        725
+      ],
+      "shoulder": [
+        1844,
+        376
+      ],
+      "target": [
+        114,
+        138
+      ],
+      "scale": 0.24,
+      "offset": [
+        19,
+        48
+      ]
+    }
+  ],
+  "derived": "Exact selected loaded frame-zero endpoints; return reverses poses. Revised third angles selected for east/north and east/south; no mirrored art."
+}

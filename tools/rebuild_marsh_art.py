@@ -14,6 +14,8 @@ from rebuild_human_crew_art import write_candidate
 
 ROOT=shared.ROOT
 V2=ROOT/'character/sprite-polish-v2'
+if not (V2/'sources/marsh-locomotion.png').exists():
+    V2=ROOT/'archive/character/sprite-polish-v2'
 V5=ROOT/'character/animation-expansion-v5'
 QA=ROOT/'output/crew-replacement-2026-09-12/marsh'
 OUT=ROOT/'character/marsh-v2'
@@ -180,7 +182,7 @@ def main():
         clips[key],joints=build(donor,rig)
         shared.OPS['marsh/'+key+'/local-rig']={'sourceClip':rig.get('sourceClip',key),'sourcePixelSha256':shared.sig(donor),'recipe':rig,'joints':joints,'method':'Independent source parts with explicit runtime state override'}
     from repair_marsh_carry import SELECTED as CARRY,main as carry_build
-    for direction in CARRY:clips['carry-'+direction]=carry_build(direction)
+    for direction in sorted(CARRY):clips['carry-'+direction]=carry_build(direction)
     from marsh_welding_revision import SELECTED as WELDING,REVISIONS,build_selected as welding_build
     welding={}
     if WELDING:
@@ -199,7 +201,29 @@ def main():
     states,records,padding=write_candidate(OUT,QA,contract,MarshRebaker(clips,welding),False)
     from build_marsh_ground_transitions import build as build_ground_transitions
     build_ground_transitions()
+    from build_marsh_berth import build as build_berth
+    build_berth()
+    from build_marsh_bunk import build as build_bunk
+    build_bunk()
     from finalize_crew_art import finalize
+    from build_marsh_swim_transitions import build as build_swim_transitions
+    for direction in ['east','west','north','south']:build_swim_transitions(install=True,direction=direction)
+    from build_marsh_swim_turns import build as build_swim_turns, PAIRS as SWIM_TURN_PAIRS
+    for pair in SWIM_TURN_PAIRS:build_swim_turns(install=True,pair=pair)
+    from build_marsh_opposite_swim_turns import build as build_opposite_turns, PAIRS as OPPOSITE_PAIRS
+    for pair in OPPOSITE_PAIRS:build_opposite_turns(install=True,pair=pair)
+    from build_marsh_carry_turns import build as build_carry_turns, PAIRS as CARRY_TURN_PAIRS
+    for pair in CARRY_TURN_PAIRS:build_carry_turns(install=True,pair=pair)
+    from build_marsh_opposite_carry_turns import build as build_opposite_carry, PAIRS as OPPOSITE_CARRY_PAIRS
+    for pair in OPPOSITE_CARRY_PAIRS:build_opposite_carry(install=True,pair=pair)
+    from build_marsh_loaded_swim import build as build_loaded_swim, DIRECTIONS as LOADED_DIRECTIONS
+    for direction in LOADED_DIRECTIONS:build_loaded_swim(install=True,direction=direction)
+    from build_marsh_swim_carry_turns import build as build_loaded_turns, PAIRS as LOADED_TURN_PAIRS
+    for pair in LOADED_TURN_PAIRS:build_loaded_turns(install=True,pair=pair)
+    from build_marsh_opposite_swim_carry_turns import build as build_loaded_half_turns, PAIRS as LOADED_HALF_PAIRS
+    for pair in LOADED_HALF_PAIRS:build_loaded_half_turns(install=True,pair=pair)
+    from build_marsh_cargo_drain import build as build_cargo_drain, DIRECTIONS as CARGO_DRAIN_DIRECTIONS
+    for direction in CARGO_DRAIN_DIRECTIONS:build_cargo_drain(install=True,direction=direction)
     finalize('marsh')
     (QA/'body-build.json').write_text(json.dumps({'states':states,'sourceHashes':{**shared.SOURCE_HASHES,**PROVENANCE},'operations':shared.OPS,'frames':records,'padding':padding,'legacyFramesReproduced':len(contract['sourceFrames'])},indent=2)+'\n')
     print(json.dumps({'bodyStates':len(states),'bodyReferences':sum(e['frames'] for e in states),'sourceFramesReproduced':len(contract['sourceFrames']),'paletteColors':color_count}))

@@ -12,6 +12,8 @@ var movement_samples:=0
 var native:=false
 var review_actor: String=""
 var continuous_locker:=false
+var all_rotations:=false
+var reviewed_cases: Array[String]=[]
 var cell: Vector2i
 func _init() -> void: call_deferred("run")
 func check(value: bool,message: String) -> void:
@@ -41,18 +43,35 @@ func capture(label: String,station:=true) -> void:
 	game._focus_inspected_room()
 	await settle()
 	if station: root.get_texture().get_image().save_png(OUT.path_join(label+"-station.png"))
-	if review_actor=="veld":
-		var actor=Architects.actor_for(game,"veld")
+	if review_actor=="bill" and continuous_locker:
+		var actor=game.bill_npc
 		if actor.helmet_action_active():
-			var player=game.grid_view.veld_player
+			var key: String=actor.state+"-east"
+			var durations: Array=game.grid_view.human_animation_timing[key].durations
+			var elapsed:=0.0
+			for duration in durations:elapsed+=float(duration)/1000.0
+			elapsed-=actor.timer
+			var index:=0
+			while index<durations.size()-1 and elapsed>=float(durations[index])/1000.0:
+				elapsed-=float(durations[index])/1000.0
+				index+=1
+			var expected:=Image.new()
+			check(expected.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/major-bill-v3/frames/bare/%s/%03d.png" % [key,index]))==OK,"Bill locker source decodes")
+			var actual: Texture2D=game.grid_view._get_human_frame_source(actor.state,"east")
+			check(actual!=null and actual.get_image().get_data()==expected.get_data(),"Bill locker renderer selects installed source pixels: "+label)
+	if review_actor in ["veld","branforth"]:
+		var actor=Architects.actor_for(game,review_actor)
+		if actor.helmet_action_active():
+			var player=game.grid_view.veld_player if review_actor=="veld" else game.grid_view.branforth_player
 			var key: String=actor.state+"-east"
 			var elapsed: float=player.cycle_seconds(key)-actor.timer
-			var texture: Texture2D=game.grid_view._get_veld_frame_source(game)
+			var texture: Texture2D=game.grid_view._get_veld_frame_source(game) if review_actor=="veld" else game.grid_view._get_branforth_frame_source(game)
 			var index: int=player.frames[key].find(texture)
 			check(index>=0,"Live locker renders selected transition frame")
 			if index>=0:
 				var selected:=Image.new()
-				check(selected.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/dr-veld-v2/frames/bare/%s/%03d.png"%[key,index]))==OK,"Selected locker source loads")
+				var base: String=preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[review_actor]
+				check(selected.load_png_from_buffer(FileAccess.get_file_as_bytes(base+"frames/bare/%s/%03d.png"%[key,index]))==OK,"Selected locker source loads")
 				check(selected.get_data()==texture.get_image().get_data(),"Live locker pixels match selected source")
 				texture.get_image().save_png(OUT.path_join(label+"-actor.png"))
 			var trace={"state":actor.state,"elapsed":elapsed,"frame":index,"helmet":actor.helmet_equipped,"shelf":Service.helmet_on_shelf(game,cell),"foot":[actor.foot.x,actor.foot.y]}
@@ -169,6 +188,7 @@ func run() -> void:
 		if arg.begins_with("--capture-dir="): OUT=arg.trim_prefix("--capture-dir=").replace("\\","/")
 		if arg.begins_with("--actor="): review_actor=arg.trim_prefix("--actor=")
 		if arg=="--continuous-locker":continuous_locker=true
+		if arg=="--all-rotations":all_rotations=true
 	if not review_actor.is_empty() and not review_actor in Architects.IDS:
 		push_error("Unknown Airlock review actor")
 		quit(1)
@@ -219,7 +239,8 @@ func run() -> void:
 		# direction); AirlockService refuses him by design, so the helmet loop
 		# covers the three human architects.
 		if id=="marsh": continue
-		for q in range(4 if id=="bill" else 1):
+		for q in range(4 if id=="bill" or all_rotations else 1):
+			reviewed_cases.append("%s/q%d" % [id,q])
 			game.meta.unlocked_architect_ids[id]=true
 			game.meta.selected_architect=id
 			game._start_reboot_cycle()
@@ -238,8 +259,11 @@ func run() -> void:
 			var view=game.grid_view.airlock_view
 			var present: Array=[]
 			for prop in view.props: present.append(str(prop.id))
-			for required in ["suit_lockers","air_compressor","changing_bench","reserve_air_bank","equipment_check_bench"]:
+			# Station props v2 (2026-09-24): the live chamber and hatch stay; the painted
+			# station props furnish the room and the painted suit lockers serve helmets.
+			for required in ["pressure_chamber","outer_hatch","library/sp-airlock-1","library/sp-airlock-2","library/sp-airlock-4","library/sp-airlock-5"]:
 				check(required in present,"Live airlock furnishing present q%d: %s" % [q,required])
+			check(view.props.any(func(p): return Service.is_suit_locker(p)),"Suit locker present q%d" % q)
 			check(preload("res://scripts/room_layout_store.gd").is_common_decoration({"registration":{"dressing":true}}),"Ordinary dressing remains filtered")
 			for prop in view.props:
 				var envelope:=Rect2(-200,-200,400,400) if prop.id in ["outer_hatch","pressure_chamber"] else Rect2(-180,-180,360,360)
@@ -277,10 +301,10 @@ func run() -> void:
 				game.grid_view.room_light_levels[cell]=1.0
 				await capture("%s-q%d-start" % [id,q])
 			if continuous_locker:
-				await capture_locker_motion(actor,"equip")
+				await capture_locker_motion(actor,"%s-q%d-equip" % [id,q])
 				check(Service.request(game,id,cell),"Continuous return request accepted")
 				reach_action(actor)
-				await capture_locker_motion(actor,"remove")
+				await capture_locker_motion(actor,"%s-q%d-remove" % [id,q])
 				continue
 			var before: float=actor.timer
 			check(Service.helmet_on_shelf(game,cell),"Staged helmet visible before pickup")
@@ -367,5 +391,5 @@ func run() -> void:
 	for suffix in [".meta",".meta.bak",".loop",".loop.bak",".cfg"]:
 		if FileAccess.file_exists(prefix+suffix): DirAccess.remove_absolute(ProjectSettings.globalize_path(prefix+suffix))
 	var coverage: String="continuous equipment/return, fixed foot and UI" if continuous_locker else "equipment/return, ten interlock phases, power interruption, pause, disk saves and UI"
-	print("AIRLOCK %s: %s, %d travel samples, %s" % ["PASS" if failures==0 else "FAIL","all three architects, four rotations" if review_actor.is_empty() else review_actor+" focused review",movement_samples,coverage])
+	print("AIRLOCK %s: %s, %d travel samples, %s" % ["PASS" if failures==0 else "FAIL",", ".join(reviewed_cases),movement_samples,coverage])
 	quit(0 if failures==0 else 1)

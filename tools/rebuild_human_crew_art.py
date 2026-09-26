@@ -16,6 +16,15 @@ import veld_cargo_revision
 
 ROOT = shared.ROOT
 WATER = shared.WATER
+
+def marsh_south_seated_depth(state_id, count):
+    """Reviewed furniture sorting for Marsh's south-facing seated sequence."""
+    if state_id in ('read-seated-south', 'sit-idle-south'):
+        return [40.0] * count
+    if state_id in ('sit-down-south', 'sit-rise-south'):
+        values=[40.0 * i / max(1,count-1) for i in range(count)]
+        return values if state_id=='sit-down-south' else values[::-1]
+    return None
 PACKS = {'veld':'dr-veld-v1','branforth':'chief-engineer-branforth-v1'}
 # Dense source-space fittings reviewed against each actor's authored tread heads.
 # The old pilot helmets were much larger than the dry/action equipment.
@@ -97,7 +106,7 @@ class HumanRebaker(shared.SourceRebaker):
 
     def construction_frame(self,path,index):
         direction=path.stem.split('-')[1]; row=['east','south','west','north'].index(direction)
-        source=ROOT/'character/crew-construction-v1/source'/(self.actor+'.png')
+        source=shared.source_path(ROOT/'character/crew-construction-v1/source'/(self.actor+'.png'))
         shared.image(source); raw,rows=self.construction.clean(source); top,bottom=rows[row]
         crops=[raw.crop((i*raw.width//6,top,(i+1)*raw.width//6,bottom)) for i in range(6)]
         heights=[]
@@ -293,6 +302,12 @@ def write_candidate(out,qa,contract,rebaker,equipped):
         from veld_scanner_revision import replacement as scanner_replacement
         scanner=scanner_replacement(rebaker.actor,entry['id'],bool(helmets))
         if scanner is not None:source_rows.update(scanner)
+        from branforth_repair_revision import replacement as repair_replacement
+        repair = repair_replacement(rebaker.actor, entry['id'], bool(helmets))
+        if repair is not None: source_rows.update(repair)
+        from marsh_repair_revision import replacement as marsh_repair_replacement
+        marsh_repair = marsh_repair_replacement(rebaker.actor, entry['id'], bool(helmets))
+        if marsh_repair is not None: source_rows.update(marsh_repair)
         # Explicit pose sequences already own their identity-matched endpoints.
         if scanner is None and rebaker.actor in PACKS and entry['id'] in ['equip-helmet-east','remove-helmet-east']:
             idle=ROOT/'character'/PACKS[rebaker.actor]/'frames/idle-east/frame_000.png'
@@ -308,6 +323,10 @@ def write_candidate(out,qa,contract,rebaker,equipped):
             shared.OPS[rebaker.actor+'/'+entry['id']+'/endpoints']={
                 'method':'Exact selected idle endpoints with pivot translation',
                 'idleSource':idle.relative_to(ROOT).as_posix(),'offset':[0,24]}
+            if rebaker.actor=='branforth':
+                from build_branforth_locker_identity import build as locker_identity
+                source_rows['bare']=locker_identity(ROOT,shared.read,shared.image,bare,worn)[entry['id']]
+                shared.OPS['branforth/'+entry['id']+'/identity']='Coherent canonical-reference source, recorded empty-helmet cleanup and exact idle endpoints'
         width,height=[v*2 for v in entry['frames'][0]['size']]
         left=top=right=bottom=0
         for poses in source_rows.values():
@@ -332,13 +351,13 @@ def write_candidate(out,qa,contract,rebaker,equipped):
             if rebaker.actor=='marsh':
                 pack['strideDistanceCells']={**pack['strideDistanceCells'],'walk-east':96*65.28/148/384,'walk-west':126*65.28/148/384,'walk-north':0.128,'walk-south':0.128}
                 from repair_marsh_carry import SELECTED as MARSH_CARRY
-                for direction in MARSH_CARRY:
+                for direction in sorted(MARSH_CARRY):
                     pack['strideDistanceCells']={**pack['strideDistanceCells'],'carry-'+direction:RIGS['marsh','walk-'+direction]['travel']*2*65.28/148/384}
             files=[]
             for i,(im,frame) in enumerate(zip(poses,entry['frames'])):
                 canvas=Image.new('RGBA',(pack['frameWidth'],pack['frameHeight']))
                 canvas.alpha_composite(im,(frame['sourceOffset'][0]*2+left,frame['sourceOffset'][1]*2+top))
-                file=out/'frames'/variant/entry['id']/f'{i:03}.png'; file.parent.mkdir(parents=True,exist_ok=True); canvas.save(file)
+                file=out/'frames'/variant/entry['id']/f'{i:03}.png'; shared.save_png_if_changed(canvas,file)
                 files.append('../../'+file.relative_to(out).as_posix())
                 records[file.relative_to(out).as_posix()]=hashlib.sha256(file.read_bytes()).hexdigest()
             state={'id':entry['id'],'frameFiles':files,'frameDurationsMs':entry['timing']['durations'],'loop':entry['timing']['loop']}
@@ -366,6 +385,9 @@ def write_candidate(out,qa,contract,rebaker,equipped):
                     (box[1]+8+offset[1]*2-entry['frames'][0]['meta']['crew_pivot'][1]*2)*65.28/148]
             for dest,src in [('facings','crew_water_facing'),('waterKinds','crew_water_kind'),('waterPoses','crew_water_pose'),('depthOffsets','crew_depth_offset')]:
                 state[dest]=[f['meta'][src] for f in entry['frames']]
+            if rebaker.actor=='marsh':
+                seated_depth=marsh_south_seated_depth(state['id'],len(files))
+                if seated_depth is not None: state['depthOffsets']=seated_depth
             pack['states'].append(state)
         coverage.append({'id':entry['id'],'frames':len(entry['frames'])})
     catalog={'revision':out.name,'standingHeight':148,'body':[],'equipment':[],'status':'complete_source_revision'}
@@ -388,12 +410,18 @@ def main():
     qa.mkdir(parents=True,exist_ok=True)
     contract=shared.read(ROOT/'tools/crew-art-source-contracts'/(args.actor+'.json'))
     for path,record in contract['sourceFrames'].items():
-        if hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=record['sha256']:
+        if hashlib.sha256(shared.source_path(ROOT/path).read_bytes()).hexdigest()!=record['sha256']:
             raise ValueError('Original source changed: '+path)
     rebaker=HumanRebaker(args.actor)
     if args.base_only:
         contract['states']=[entry for entry in contract['states'] if all('/'+PACKS[args.actor]+'/' in f['sourceFrame'] for f in entry['frames'])]
     states,records,padding=write_candidate(out,qa,contract,rebaker,args.equipment)
+    if not args.base_only and args.equipment and args.actor=="veld":
+        from build_veld_bunk import build
+        build()
+    if not args.base_only and args.equipment and args.actor=="branforth":
+        from build_branforth_bunk import build
+        build()
     if not args.base_only and args.equipment:
         from finalize_crew_art import finalize
         finalize(args.actor)

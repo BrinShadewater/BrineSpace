@@ -56,6 +56,7 @@ func render_into(target: CanvasItem, at: Vector2, world_to_host: float, floor_on
 	if not "full_wall" in self and not has_meta("layout_editor_preview"):
 		var asset:=preload("res://scripts/room_layout_store.gd").asset_for(self)
 		if not asset.is_empty(): preload("res://scripts/room_layout_store.gd").apply(self,asset)
+	preload("res://scripts/room_asset_library.gd").strip_retired(self)
 	var saved_origin:=view_origin
 	var saved_scale:=view_scale
 	view_origin=at

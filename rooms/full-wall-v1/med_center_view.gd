@@ -10,6 +10,10 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 			var spec: Dictionary=prop.get("registration",{}).get("spec",{})
 			if prop.id in ["medical_treatment","medical_imaging","medical_supplies"] or spec.get("centerpiece",false) or spec.get("authored_anchor",false): retained.append(prop.duplicate(true))
 	full_wall.apply(self)
+	# Standalone layouts already contain their complete, explicitly placed props.
+	# The old bank-specific q3 restoration would discard the diagnostic console.
+	var authored_layout: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.layout_key(self),quarter)
+	if authored_layout.get("full_wall_"+full_wall.asset_id,0)==null: return
 	if q==3 and not retained.is_empty():
 		var bank: Array=[]
 		for prop in props:
@@ -18,7 +22,8 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 		# doors retain one continuous crew route through the room.
 		var stations={"medical_treatment":Vector2(-158,-150),"medical_imaging":Vector2(-53,-150),"medical_supplies":Vector2(54,-145)}
 		for prop in retained:
-			var authored: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.asset_id,quarter)
+			var authored: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.layout_key(self),quarter)
+			if authored.has(str(prop.id)) and authored[str(prop.id)]==null: continue
 			preload("res://scripts/room_layout_store.gd").resize_prop(prop,authored.get("size/"+str(prop.id),[1.0,1.0]))
 			var saved=authored.get(str(prop.id))
 			if saved is Array and saved.size()==2:

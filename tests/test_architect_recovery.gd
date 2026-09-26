@@ -15,6 +15,7 @@ func run() -> void:
 	game.meta.save_path=path+".meta"
 	game.meta.unlocked_architect_ids={"bill":true}
 	game.meta.selected_architect="bill"
+	game.set_meta("authored_site_fixture",true)
 	root.add_child(game)
 	current_scene=game
 	game.set_process(false)

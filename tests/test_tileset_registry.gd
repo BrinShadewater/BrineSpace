@@ -26,6 +26,7 @@ func run() -> void:
 	var props: Variant=JSON.parse_string(FileAccess.get_file_as_string(LIB+"props.json"))
 	if not props is Array or props.is_empty(): return fail(["props.json is missing or empty"])
 	var problems: Array=[]
+	var retired_sheets: Array=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/tileset-library/retired-sheets.json")).sheets
 	var sheets: Dictionary={}
 	var ids: Dictionary={}
 	var labels: Dictionary={}
@@ -46,6 +47,7 @@ func run() -> void:
 		if str(e.get("tileset","")).is_empty(): problems.append(who+": no set name")
 		if e.has("title") and str(e.title).strip_edges().is_empty(): problems.append(who+": empty title")
 		var source: String=str(e.source)
+		if source in retired_sheets: continue # moved off the repo with station props v2
 		if not sheets.has(source):
 			var image:=Image.new()
 			sheets[source]=image if FileAccess.file_exists(source) and image.load_png_from_buffer(FileAccess.get_file_as_bytes(source))==OK else null

@@ -11,7 +11,7 @@ func prepare() -> void:
 	if prepared: return
 	prepared = true
 	var source := Image.new()
-	if source.load(ROOT+SOURCES["mooring-plate-chain"])==OK:
+	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["mooring-plate-chain"])==OK:
 		textures["mooring-plate-chain"]=ImageTexture.create_from_image(source)
 func render_into(canvas: CanvasItem, cell_size: float) -> void:
 	prepare()

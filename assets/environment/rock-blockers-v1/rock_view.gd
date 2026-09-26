@@ -8,7 +8,7 @@ var surface: Texture2D
 func texture() -> Texture2D:
 	if surface == null:
 		var source := Image.new()
-		if source.load(SOURCE) == OK:
+		if preload("res://scripts/safe_image.gd").load_png(source, SOURCE) == OK:
 			surface = ImageTexture.create_from_image(source)
 	return surface
 

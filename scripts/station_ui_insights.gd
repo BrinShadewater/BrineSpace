@@ -73,7 +73,7 @@ static func priorities(game, forecast: Dictionary) -> Array[String]:
 	for key in ["oxygen", "food", "power"]:
 		if int(net.get(key,0)) < 0 and int(game.resources.get(key,0))+int(net[key]) <= 0:
 			lines.append("[url=resource:%s]%s RESERVE AT RISK[/url] / %d stored, %+d next cycle. Inspect supply and consumers." % [key,key.to_upper(),game.resources.get(key,0),net[key]])
-	var demand: Dictionary = game.drone_fleet.charge_demand(game.powered_room_cells,int(game.resources.power))
+	var demand: Dictionary = game.drone_fleet.charge_demand(game.powered_room_cells,int(game.resources.power),game.placed_rooms)
 	if int(demand.waiting) > 0:
 		lines.append("[url=resource:power]DRONES WAITING FOR STORED POWER[/url] / %d docked, %d Power needed to refill active bays. Add generation or suspend a competing consumer." % [demand.waiting,demand.power])
 	var rooms: Array = game.placed_rooms.duplicate()
@@ -110,11 +110,11 @@ static func learning(game) -> Array[String]:
 	return lines
 
 static func power_demand(game) -> String:
-	var demand: Dictionary = game.drone_fleet.charge_demand(game.powered_room_cells,int(game.resources.power))
-	var message := "DRONE CHARGING // %d Power to refill docked drones; %d stored.\n%d waiting for Power / %d charging / %d bays offline.\n1 Power buys 6 battery seconds. Refills draw between cycles, separately from the room forecast." % [demand.power,game.resources.power,demand.waiting,demand.charging,demand.offline]
+	var demand: Dictionary = game.drone_fleet.charge_demand(game.powered_room_cells,int(game.resources.power),game.placed_rooms)
+	var message := "DRONE CHARGING // %d Power to refill docked drones; %d stored.\n%d waiting for Power / %d charging / %d bays offline.\n1 Power buys 6 battery seconds. Refills use stored Power independently of bay cycle inputs, preserving a reserve of 3. Prepaid charge finishes without further spending." % [demand.power,game.resources.power,demand.waiting,demand.charging,demand.offline]
 	if game.paused: message += "\nTime paused; charging resumes with the station."
-	if demand.waiting > 0: message += "\nAdd generation or suspend a competing Power consumer to leave a reserve for drones."
-	if demand.offline > 0: message += "\nRestore offline bay inputs or resume suspended bays before charging."
+	if demand.waiting > 0: message += "\nCharging resumes automatically when stored Power exceeds 3."
+	if demand.offline > 0: message += "\nResume suspended bays before charging."
 	return message
 
 static func power_balance(game, forecast: Dictionary) -> String:

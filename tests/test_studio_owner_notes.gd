@@ -25,47 +25,34 @@ func run() -> void:
 	assert(editor.show_riser and editor.riser_toggle.button_pressed,"Studio opens with risers visible")
 	assert(editor.autosave_enabled)
 	var actions=editor.find_child("RoomActions",true,false)
-	assert(actions!=null and actions.get_child_count()==5)
-	assert(actions.get_child(0).text=="Previous Room" and actions.get_child(1).text=="Previous Rotation" and actions.get_child(2).text=="Rotate Room" and actions.get_child(3).text=="Next Room" and actions.get_child(4).text=="Save")
+	assert(actions!=null and actions.get_child_count()==6)
+	assert(actions.get_child(0).text=="Previous Room" and actions.get_child(1).text=="Previous Rotation" and actions.get_child(2).text=="Rotate Room" and actions.get_child(3).text=="Next Room" and actions.get_child(4).text=="Save" and actions.get_child(5).text=="Copy to other rotations")
 	editor.free_placement.button_pressed=true
-	editor.selected="sample_cooler"
+	# Station props v2 retired sample_cooler; place and flip the room's own first station prop
+	# (the fixture's defaults are empty, so the room starts bare).
+	var flipped:="library/sp-"+str(editor.entries[editor.index].room)+"-1"
+	for spot in [Vector2(0,0),Vector2(-60,60),Vector2(60,60),Vector2(0,120)]:
+		if editor.add_library_asset(flipped,spot): break
+	assert(editor.draft.get(flipped) is Array,"Station prop placed in "+str(editor.entries[editor.index].room))
+	editor.selected=flipped
 	key(editor,KEY_F)
-	assert(editor.draft["flip/sample_cooler"][0])
+	assert(editor.draft["flip/"+flipped][0])
 	var asset: String=editor.entries[editor.index].asset
 	editor.selected=""; editor.selected_many.clear(); key(editor,KEY_R)
 	assert(editor.quarter==1 and editor.current_room_dirty())
 	editor._process(2.1)
 	assert(not editor.current_room_dirty())
 	Store.loaded=false; Store.data={}; Store.ensure_loaded()
-	assert(Store.positions(asset,0).get("flip/sample_cooler",[])[0],"Autosave includes cached rotation")
-	for i in range(editor.entries.size()):
-		if editor.entries[i].asset=="crew-lounge-built-in": editor.switch_room(i); break
-	editor.switch_rotation(0); editor.free_placement.button_pressed=true
-	editor.selected="full_wall_crew-lounge-built-in"
-	var original: Dictionary=editor.draft.duplicate(true)
-	key(editor,KEY_R)
-	assert(editor.quarter==0 and editor.draft.has("variant/"+editor.selected),"R cycles selected asset")
-	var choice: String=editor.draft["variant/"+editor.selected]
-	assert(editor.selected_prop().get("variant_source","")==choice)
-	editor.undo(); assert(editor.draft==original); editor.redo()
-	editor.save_all_rotations(); Store.loaded=false; Store.data={}; editor.load_room()
-	editor.selected="full_wall_crew-lounge-built-in"
-	assert(editor.selected_prop().get("variant_source","")==choice,"Directional variant persists")
-	Store.apply(editor.room,editor.entries[editor.index].asset)
-	Store.apply(editor.room,editor.entries[editor.index].asset)
-	assert(editor.selected_prop().get("variant_source","")==choice,"Repeated runtime application keeps native variant")
-	assert(Library.family_variants("crew-lounge-built-in").has("library/side-crew-lounge-built-in-east"))
+	assert(Store.positions(asset,0).get("flip/"+flipped,[])[0],"Autosave includes cached rotation")
+	# Directional variants belonged to the full-wall banks, retired with station props v2 (Sept 2026).
 	for i in range(editor.entries.size()):
 		if editor.entries[i].asset=="deepwater-listening-wall": editor.switch_room(i); break
 	editor.switch_rotation(0); editor.free_placement.button_pressed=true
-	# The legacy flush_back panels were retired for the strict overhead wall bank
-	# (use_legacy_flush=false); exercise movement on the room's current movable bank.
-	var listening_id:=""
-	for item in editor.entities():
-		if editor.movable(str(item.id)) and editor.draft.get(str(item.id)) is Array and str(item.id).begins_with("full_wall"): listening_id=str(item.id); break
-	if listening_id.is_empty():
-		for item in editor.entities():
-			if editor.movable(str(item.id)) and editor.draft.get(str(item.id)) is Array: listening_id=str(item.id); break
+	# Station props v2: the listening room's banks are retired and the fixture defaults are
+	# empty, so place its first station prop and move that.
+	var listening_id:="library/sp-"+str(editor.entries[editor.index].room)+"-1"
+	for spot in [Vector2(0,0),Vector2(-60,60),Vector2(60,60),Vector2(0,120)]:
+		if editor.add_library_asset(listening_id,spot): break
 	editor.selected=listening_id
 	assert(not listening_id.is_empty() and editor.movable(editor.selected),"Listening room has a movable object: "+str(editor.entities().map(func(item): return item.id)))
 	var before: Rect2=editor.entity_bounds(editor.selected_prop())
@@ -92,5 +79,5 @@ func run() -> void:
 	var uid_path="res://tests/test_studio_owner_notes.gd.uid"
 	if not FileAccess.file_exists(uid_path):
 		var uid_file=FileAccess.open(uid_path,FileAccess.WRITE); uid_file.store_line(ResourceUID.id_to_text(ResourceUID.create_id())); uid_file.close()
-	print("OWNER NOTES PASS: controls, cached-rotation autosave, R/F, variant persistence, Listening Post movement, door leaf animation")
+	print("OWNER NOTES PASS: controls, cached-rotation autosave, R/F, Listening Post movement, door leaf animation")
 	editor.dirty=false; editor.rotation_drafts.clear(); editor.close_editor(); quit()

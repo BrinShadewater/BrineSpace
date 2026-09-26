@@ -55,3 +55,21 @@ state as well as setting the value without signals. Changing min_value can itsel
 emit value_changed and queue a user zoom that cancels startup centering. A startup
 fixture that immediately disables _process can conceal that failure. Let ordinary
 camera processing run and assert the station is visible before manual Fit/Locate.
+
+## Fan-card sampling (September 21)
+
+Check the exact owner note before treating sharpness as a global viewport issue.
+Raw PNG ImageTextures do not automatically carry mipmaps: verify has_mipmaps()
+on the live texture, not merely a LINEAR_WITH_MIPMAPS control setting. Generate
+levels only for the thumbnail consumer that needs rotated/minified sampling; keep
+upright nearest filtering and station art separate. Compare native current/linear/
+mipmapped captures. Less aliasing can also mean softer detail; record that tradeoff
+and review small rotated font text separately. Native Windows evidence does not
+prove Apple Silicon or owner acceptance. See docs/FAN_CARD_SAMPLING_2026-09-21.md.
+
+For the current Barlow card text, 2x/4x bitmap oversampling was visually worse at
+native size. A separate cached distance-field theme (source size 48) improved
+rotated strokes; size 96 provided no useful visual gain. Duplicate FontFiles and
+keep shared interface fonts/imports unchanged. Preserve non-FontFile fallbacks.
+Check hover/row/fan behavior and all loaded card height constraints; inspect both
+1600x900 and 960x540. No height overflow does not prove small text is readable.

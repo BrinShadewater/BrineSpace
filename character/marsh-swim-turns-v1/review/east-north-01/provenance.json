@@ -1,0 +1,62 @@
+{
+  "sources": {
+    "east-north-01.png": "0b0982a53880786786c8961d266913175a183a014fdda00b856803d13cb7e1cb",
+    "east-north-02.png": "1597ef263f7ff233562d5d4f67a9b607b7ca2b784b71db53a5bffbaef19482b7",
+    "swim-east-endpoint.png": "764ae5c4b9b8d9548774ccb8991940ea99e5c7aa70a108ca3889df43f2a59a75",
+    "swim-north-endpoint.png": "fc6db4fecbd2e361ce1b71d36eae21bb5f31dfb0b4d0a23f75d03a3122b7bf1f"
+  },
+  "registration": [
+    {
+      "source": "east-north-01.png",
+      "cell": 0,
+      "shoulder": [
+        436,
+        366
+      ],
+      "target": [
+        100,
+        137
+      ],
+      "scale": 0.23,
+      "offset": [
+        0,
+        53
+      ]
+    },
+    {
+      "source": "east-north-01.png",
+      "cell": 1,
+      "shoulder": [
+        1154,
+        358
+      ],
+      "target": [
+        97,
+        132
+      ],
+      "scale": 0.23,
+      "offset": [
+        -2,
+        50
+      ]
+    },
+    {
+      "source": "east-north-02.png",
+      "cell": 2,
+      "shoulder": [
+        1810,
+        368
+      ],
+      "target": [
+        94,
+        128
+      ],
+      "scale": 0.23,
+      "offset": [
+        11,
+        43
+      ]
+    }
+  ],
+  "derived": "Return turn reverses forward poses. Existing endpoint pixels preserved with transparent bottom padding. First two poses from source 01; third from corrected source 02."
+}

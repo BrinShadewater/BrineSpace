@@ -5,6 +5,7 @@ const Hull=preload("res://assets/riser-wall-kit-style-v2/wall_sprites.gd")
 const Fittings=preload("res://assets/wall-dressing-style-v2/wall_sprites.gd")
 const Decor=preload("res://rooms/whole-room/decoration_props.gd")
 const Catalog=preload("res://rooms/whole-room/riser_catalog.gd")
+const DROP := 16.0 # face extends over the low north wall's strip (Geometry.WALL)
 static var brine_texture: Texture2D
 
 static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO, adjoining_left := false, adjoining_right := false, wall_view = null, include_signals := true) -> void:
@@ -20,10 +21,17 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 	elif room_id=="airlock":
 		preload("res://rooms/underwater/airlock-v4/fittings.gd").draw_wall(canvas,cell,wall_view)
 	else:
-		Catalog.face(canvas,room_id,Rect2(-192,Riser.TOP,384,Riser.HEIGHT))
-		# Department-specific mounts; windows retain their native aspect ratio.
 		var edits: Dictionary={} if wall_view==null else preload("res://scripts/room_layout_store.gd").surface_positions(wall_view)
-		for item in (decorations(room_id,edits) if wall_view!=null and wall_view.has_meta("layout_editor_preview") else []):
+		# The Studio's Walls category saves a riser material per room ("wall/riser").
+		var chosen:=str(edits.get("wall/riser",""))
+		# The face runs down over the low wall's strip to the deck (owner, 2026-09-25):
+		# built-in wall banks used to hide the gap below it; station-props-v2 rooms do not.
+		Catalog.face(canvas,room_id,Rect2(-192,Riser.TOP,384,Riser.HEIGHT),1.0,chosen)
+		Catalog.skirt(canvas,room_id,Rect2(-192,Riser.BASE_Y,384,DROP),chosen)
+		# Department-specific mounts; windows retain their native aspect ratio. Rooms
+		# redesigned with station props v2 carry none of the retired fittings.
+		var fittings: bool=wall_view!=null and wall_view.has_meta("layout_editor_preview") and room_id in preload("res://scripts/room_asset_library.gd").LEGACY_ART_ROOMS
+		for item in (decorations(room_id,edits) if fittings else []):
 			if edits.get("hidden/"+item.id,false): continue
 			var rect: Rect2=item.rect
 			canvas.draw_rect(Rect2(rect.position+Vector2(2,3),rect.size),Color(0,0,0,.13))
@@ -32,9 +40,7 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 			var v0:=1.0 if flip[1] else 0.0
 			canvas.draw_polygon(PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y)]),PackedColorArray([Color(.73,.79,.78)]),PackedVector2Array([Vector2(u0,v0),Vector2(1-u0,v0),Vector2(1-u0,1-v0),Vector2(u0,1-v0)]),item.texture)
 
-		Catalog.cap(canvas,room_id,Rect2(-196,Riser.CAP_TOP,392,7))
-		canvas.draw_line(Vector2(-192,Riser.TOP+1),Vector2(192,Riser.TOP+1),Color("23363a"),2)
-		canvas.draw_rect(Rect2(-192,-197,384,5),Color("26383b"))
+		Catalog.cap(canvas,room_id,Rect2(-196,Riser.CAP_TOP,392,7),chosen)
 	for left in [true,false]:
 		if (left and adjoining_left) or (not left and adjoining_right): continue
 		var edge_x := -192.0 if left else 192.0
@@ -42,12 +48,12 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 		# different draw offsets used by each room's wall/cap artwork.
 		# Extend beneath the low corner so the two assemblies overlap.
 		var joint_color := Color(profile(room_id).tint).darkened(.22)
-		canvas.draw_rect(Rect2(edge_x-8,Riser.CAP_TOP-3,16,Riser.HEIGHT+17),joint_color)
+		canvas.draw_rect(Rect2(edge_x-8,Riser.CAP_TOP-3,16,Riser.HEIGHT+17+DROP),joint_color)
 		# Reuse the room's actual vertical wall material, extending its corner up.
 		if wall_view!=null:
 			var saved=wall_view.painter
 			wall_view.painter=canvas
-			wall_view.draw_wall(Rect2(edge_x-8,Riser.TOP,16,Riser.HEIGHT),false)
+			wall_view.draw_wall(Rect2(edge_x-8,Riser.TOP,16,Riser.HEIGHT+DROP),false)
 			wall_view.draw_cap(Rect2(edge_x-8,Riser.CAP_TOP,16,10))
 			wall_view.painter=saved
 		else:

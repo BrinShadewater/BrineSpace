@@ -30,7 +30,7 @@ func prepare() -> void:
 	initialized = true
 	for id in SOURCES:
 		var source := Image.new()
-		if source.load(ROOT+SOURCES[id])==OK:
+		if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES[id])==OK:
 			textures[id] = ImageTexture.create_from_image(source)
 
 func render_into(canvas: CanvasItem, cell_size: float) -> void:

@@ -47,6 +47,7 @@ var room_nodes := {}
 var geometry := {}
 var fire_cells := {}
 var fire_building_navigation := false
+var navigation_build_revision := 0
 var signature := ""
 var hardware_doors_locked:=false
 var locked_room_cells: Dictionary = {}
@@ -68,6 +69,7 @@ var traffic_retry := 0.0
 # Swim clearance of one graph link depends only on geometry (fixed until rebuild), the
 # headings and the helmet, so repeated route searches reuse it.
 var swim_link_cache := {}
+var swim_region_cache := {}
 # A swimmer caught where its swim outline does not fit (a standing spot beside a door
 # when water arrives) may move to this point with standing clearance alone.
 var squeeze_point := Vector2.INF
@@ -183,6 +185,16 @@ func action_elapsed() -> float:
 	if stage=="workshop_unload": return 2.0-timer
 	return -1.0
 
+func interrupted_life_rise_seconds() -> float:
+	# Reverse only the lie-down already performed, retaining its furniture contact.
+	# Furniture-specific actors may override this for their longer transition.
+	if stage=="life_lie":
+		var elapsed:=maxf(0,Life.seconds(self,"life_lie")-timer)
+		# Reversed clips use half-open intervals too. At an exact frame boundary,
+		# bias toward the pose just entered rather than its preceding source pose.
+		return minf(elapsed+0.0000001 if elapsed>0 else 0,Life.seconds(self,"life_get_up"))
+	return Life.seconds(self,"life_get_up")
+
 func animation_state() -> String:
 	var life_pose:=Life.pose(self)
 	if not life_pose.is_empty(): return life_pose
@@ -227,7 +239,7 @@ func snapshot() -> Dictionary:
 		"traffic_wait": traffic_wait, "traffic_retry": traffic_retry, "traffic_activity": traffic_activity,
 		"decision_rng": decision_rng.state if decision_rng != null else null}
 
-static func valid_snapshot(data: Variant, breathes := true) -> bool:
+static func valid_snapshot(data: Variant, breathes := true, transition_limit := 0.0) -> bool:
 	if not data is Dictionary: return false
 	var partner = data.get("social_partner","")
 	if not partner is String or partner not in ["","bill","veld","branforth","marsh"]:return false
@@ -273,7 +285,8 @@ static func valid_snapshot(data: Variant, breathes := true) -> bool:
 	elif not request.is_empty(): return false
 	if not Life.STAGES.has(data.stage) and not data.stage in ["", "kneel", "repair", "stand", "observation_sit", "observation_read", "observation_rise", "observation_watch", "workshop_inspect", "workshop_work", "workshop_carry", "workshop_unload"]: return false
 	if str(data.stage).begins_with("observation_"):
-		if not data.active or data.state!="idle" or data.direction!="north" or not data.path.is_empty(): return false
+		# Watching and the desk face north; the reviewed sofa seat faces south.
+		if not data.active or data.state!="idle" or not data.direction in ["north","south"] or not data.path.is_empty(): return false
 		if data.goal not in ["curiosity","fatigue","maintenance"] and not (data.goal.is_empty() and data.stage=="observation_rise"): return false
 	if str(data.stage).begins_with("workshop_"):
 		if not data.active or data.goal not in ["curiosity","maintenance","fatigue"]: return false
@@ -281,7 +294,14 @@ static func valid_snapshot(data: Variant, breathes := true) -> bool:
 	if not data.activity is String or data.activity.length() > 128: return false
 	if not (data.timer is float or data.timer is int) or not is_finite(float(data.timer)) or data.timer < 0 or data.timer > 3600: return false
 	if str(data.stage).begins_with("life_"):
-		if not data.active or data.state!="idle" or not data.path.is_empty() or float(data.timer)>float(Life.STAGES[data.stage]): return false
+		var life_limit: float=Life.STAGES[data.stage]
+		# Type-specific validators may supply a validated furniture duration.
+		if transition_limit>0 and data.stage in ["life_lie","life_get_up"]:life_limit=transition_limit
+		# Marsh's optional authored berth motion has a longer transition. His
+		# validator checks the saved contact anchors; human limits stay unchanged.
+		if not breathes and data.stage in ["life_lie","life_get_up"] and data.get("marsh_berth",{}) is Dictionary and not data.get("marsh_berth",{}).is_empty():life_limit=1.6
+		if not breathes and data.stage in ["life_lie","life_get_up"] and data.get("marsh_bunk",{}) is Dictionary and not data.get("marsh_bunk",{}).is_empty():life_limit=1.84
+		if not data.active or data.state!="idle" or not data.path.is_empty() or float(data.timer)>life_limit: return false
 		if data.goal.is_empty() and data.stage not in ["life_rise","life_get_up"]: return false
 	if not data.needs is Dictionary or data.needs.size() != 4 or not data.visits is Dictionary or data.visits.size() > 1600: return false
 	for key in ["hunger", "fatigue", "curiosity", "maintenance"]:
@@ -304,6 +324,9 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 		if staged: await rebuild(main,true)
 		else: rebuild(main)
 	else:
+		# Clearing the graph also supersedes any yielded thaw warm-up.
+		navigation_build_revision += 1
+		fire_building_navigation = false
 		# Dormant/dead crew do not need a station graph. Release/update builds it
 		# against current geometry before an inactive architect can take a step.
 		signature = ""
@@ -364,6 +387,14 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 			timer = 0.0
 			break
 		previous = point
+	# Safe floor alone does not preserve contact when furniture changed since save.
+	if path.is_empty() and state=="interact" and activity=="checking life support readings":
+		var local: Vector2=foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL
+		var contacts: Array=RoomActivity.stations(geometry.get(goal_cell,{}))
+		var valid_contact: bool=contacts.any(func(station):return station.get("mode","")=="console" and station.facing==direction and local.distance_to(station.point)<0.1)
+		if not valid_contact:
+			goal="";stage="";state="idle";timer=0.0
+			activity="looking around"
 
 func cell_at(point: Vector2) -> Vector2i:
 	return Vector2i(floori(point.x / CELL), floori(point.y / CELL))
@@ -436,8 +467,8 @@ func segment_clear(a: Vector2, b: Vector2) -> bool:
 func action_pose_clear(action: String) -> bool:
 	if movement_medium=="exterior": return true
 	if action_clearance.is_empty():
+		# The selected revision owns both the pixels and their collision envelope.
 		var actor: String={"veld_npc.gd":"veld","branforth_npc.gd":"branforth"}.get(get_script().resource_path.get_file(),"bill")
-		action_clearance=JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-actions-v1/clearance.json"))[actor]
 		action_clearance=JSON.parse_string(FileAccess.get_file_as_string(preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[actor]+"clearance.json")).actions
 	var extent: Array=action_clearance["helmet" if helmet_equipped else "bare"][action+"-"+direction]
 	return swim_segment_clear(foot,foot,direction,direction,false,extent)
@@ -448,12 +479,9 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 		# Companions never inherit a human diver silhouette: Josh has no swim profile by design,
 		# and Margot/River preload theirs, so this lazy path must not fall back to Bill's.
 		if get_script().resource_path.get_file() == "companion_npc.gd": return false
-		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://character/crew-underwater-v1/swim-clearance.json"))
-		if not data is Dictionary: return false
 		var actor: String = {"veld_npc.gd":"veld", "branforth_npc.gd":"branforth"}.get(get_script().resource_path.get_file(), "bill")
-		swim_clearance = data.actors[actor]
-		tread_clearance = data.treading[actor]
-		var revised: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[actor]+"clearance.json"))
+		var revised: Variant=JSON.parse_string(FileAccess.get_file_as_string(preload("res://scripts/crew_sprite_player.gd").REVISION_ROOTS[actor]+"clearance.json"))
+		if not revised is Dictionary: return false
 		swim_clearance=revised.swim
 		tread_clearance=revised.tread
 	var profile: Dictionary = (tread_clearance if treading else swim_clearance)["helmet" if helmet_equipped else "bare"]
@@ -469,8 +497,24 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 			extent[axis+2]=maxf(extent[axis+2],additional_extent[axis+2])
 	var footprint := Rect2(Vector2(extent[0],extent[1]),Vector2(extent[2]-extent[0],extent[3]-extent[1]))
 	var swept := Rect2(a+footprint.position,footprint.size).merge(Rect2(b+footprint.position,footprint.size))
+	var first := cell_at(swept.position)
+	var last := cell_at(swept.end-Vector2.ONE*0.0001)
+	var region := Vector4i(first.x,first.y,last.x,last.y)
+	if not swim_region_cache.has(region):
+		var owners: Array=[]
+		var area := Rect2(Vector2(first)*CELL,Vector2(last-first+Vector2i.ONE)*CELL)
+		for cell in geometry:
+			if not geometry[cell].has("swim_blocker_bounds"):
+				owners.append(cell)
+				continue
+			var bounds: Rect2=geometry[cell].swim_blocker_bounds
+			bounds.position+=(Vector2(cell)+Vector2.ONE*0.5)*CELL
+			if bounds.intersects(area,true): owners.append(cell)
+		swim_region_cache[region]=owners
 	# Sweep the whole bounding rectangle against registered padded blockers.
-	for cell in geometry:
+	# Cache nearby owners, including furniture extending outside its room. Cold
+	# escape searches otherwise scan every room for every candidate swim edge.
+	for cell in swim_region_cache[region]:
 		var center := (Vector2(cell)+Vector2.ONE*0.5)*CELL
 		if geometry[cell].has("swim_blocker_bounds"):
 			var local_bounds: Rect2 = geometry[cell].swim_blocker_bounds
@@ -483,8 +527,6 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 			if segment_hits_rect(a,b,expanded): return false
 	# Authored room blockers already provide an exact rectangle sweep. Only
 	# corridor/legacy floor shapes need the more expensive envelope sampling.
-	var first := cell_at(swept.position)
-	var last := cell_at(swept.end-Vector2.ONE*0.0001)
 	var sample_floor := false
 	for y in range(first.y,last.y+1):
 		for x in range(first.x,last.x+1):
@@ -521,6 +563,9 @@ static func segment_hits_rect(a: Vector2,b: Vector2,rect: Rect2) -> bool:
 
 func rebuild(main, staged := false) -> void:
 	if dead or not is_instance_valid(main): return
+	# A synchronous wake/topology rebuild supersedes any yielded warm-up.
+	navigation_build_revision += 1
+	var build_revision := navigation_build_revision
 	fire_building_navigation=true
 	preload("res://scripts/room_layout_store.gd").prime()
 	var revision: int=preload("res://scripts/room_layout_store.gd").geometry_revision
@@ -529,6 +574,7 @@ func rebuild(main, staged := false) -> void:
 	cancel_helmet_action()
 	graph.clear()
 	swim_link_cache.clear()
+	swim_region_cache.clear()
 	squeeze_point = Vector2.INF
 	points.clear()
 	room_nodes.clear()
@@ -543,7 +589,7 @@ func rebuild(main, staged := false) -> void:
 	for cell in main.occupied:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
-			if not is_instance_valid(main): return # The station can be freed mid-slice.
+			if not is_instance_valid(main) or dead or build_revision != navigation_build_revision: return
 			slice_started = Time.get_ticks_usec()
 		var room: Dictionary = main.occupied[cell]
 		var sides: Array = []
@@ -575,7 +621,7 @@ func rebuild(main, staged := false) -> void:
 	for cell in geometry:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
-			if not is_instance_valid(main): return # The station can be freed mid-slice.
+			if not is_instance_valid(main) or dead or build_revision != navigation_build_revision: return
 			slice_started = Time.get_ticks_usec()
 		var center := (Vector2(cell) + Vector2.ONE * 0.5) * CELL
 		var key: String = room_keys[cell]
@@ -592,6 +638,7 @@ func rebuild(main, staged := false) -> void:
 			for local in local_points:
 				if staged and Time.get_ticks_usec()-slice_started>=4000:
 					await main.get_tree().process_frame
+					if not is_instance_valid(main) or dead or build_revision != navigation_build_revision: return
 					slice_started = Time.get_ticks_usec()
 				for offset in [Vector2i(STEP, 0), Vector2i(0, STEP), Vector2i(STEP, STEP), Vector2i(-STEP, STEP)]:
 					var other: Vector2i = local + offset
@@ -610,7 +657,7 @@ func rebuild(main, staged := false) -> void:
 	for cell in geometry:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
-			if not is_instance_valid(main): return # The station can be freed mid-slice.
+			if not is_instance_valid(main) or dead or build_revision != navigation_build_revision: return
 			slice_started = Time.get_ticks_usec()
 		var center := (Vector2(cell) + Vector2.ONE * 0.5) * CELL
 		for side in geometry[cell].open:
@@ -667,20 +714,20 @@ func update(main, delta: float) -> void:
 	if preload("res://scripts/hull_repair.gd").advance(main,self,delta): return
 	if preload("res://scripts/electrical_repair.gd").advance(main,self,delta): return
 	if preload("res://scripts/ward_repair.gd").advance(main,self,delta): return
-	# Finish an existing build safely, then take a needed meal/rest before claiming another.
-	if goal=="construction" or not preload("res://scripts/crew_primary_work.gd").break_needed(main,self):
-		if preload("res://scripts/crew_construction.gd").advance(main,self,delta): return
+	if preload("res://scripts/crew_construction.gd").advance(main,self,delta): return
 	if goal=="social":return # Paired conversation clock is advanced once by CrewSocial.
 	if helmet_action_active():
 		advance_helmet_action(delta)
 		return
-	if not goal.is_empty() and (goal not in ["curiosity", "diving-locker"] or geometry.get(goal_cell,{}).get("activity_room","") in ["observation_room","salvage_workshop","galley","cold_store","crew_lounge","crew_hab"]) and not service_available(main, goal_cell):
+	if not goal.is_empty() and (goal not in ["curiosity", "diving-locker"] or geometry.get(goal_cell,{}).get("activity_room","") in ["observation_room","salvage_workshop","galley","cold_store","crew_lounge","crew_hab","life_support"]) and not service_available(main, goal_cell):
 		path.clear()
 		goal = ""
 		locker_request.clear()
 		# Stand up before choosing a new destination if work was interrupted.
 		if stage in ["life_lie","life_sleep"]:
-			stage="life_get_up";state="idle";timer=0.8
+			var rise_time:=Life.seconds(self,"life_get_up")
+			if has_method("interrupted_life_rise_seconds"):rise_time=float(call("interrupted_life_rise_seconds"))
+			stage="life_get_up";state="idle";timer=rise_time
 		elif stage in ["life_sit","life_seated"]:
 			stage="life_rise";state="idle";timer=0.8
 		elif stage in ["observation_sit","observation_read"]:
@@ -966,12 +1013,13 @@ func choose_goal(main) -> void:
 		for need in needs:
 			if need=="hunger" and (helmet_equipped or int(main.resources.food)<=0):continue
 			if need != "curiosity" and not service_preferences.get(need, []).has(id): continue
-			if (need != "curiosity" or id in ["observation_room","salvage_workshop","galley","cold_store","crew_lounge","crew_hab"]) and not service_available(main, cell): continue
+			if (need != "curiosity" or id in ["observation_room","salvage_workshop","galley","cold_store","crew_lounge","crew_hab","life_support"]) and not service_available(main, cell): continue
 			var score := float(needs[need]) - Vector2(cell - cell_at(foot)).length() * 2.0
 			if need in ["hunger","fatigue"] and needs_air() and float(needs[need])>=65:score+=200
 			if need == "curiosity": score -= mini(20, int(visits.get(cell, 0)) * 4)
 			candidates.append({"cell": cell, "need": need, "score": score + npc_rng.randf_range(0, 8)})
 	candidates.sort_custom(func(a, b): return a.score > b.score)
+	var station_claims: Dictionary={}
 	for candidate in candidates:
 		var targets: Array = room_nodes[candidate.cell].duplicate()
 		# Use the station RNG so seeded playtests can reproduce decisions.
@@ -983,6 +1031,9 @@ func choose_goal(main) -> void:
 		var stations:=RoomActivity.stations(geometry[candidate.cell])
 		if geometry[candidate.cell].get("activity_room","")=="observation_room" and int(visits.get(candidate.cell,0))%2==1: stations.reverse()
 		var wants_station: bool=not stations.is_empty() and (candidate.need in ["maintenance","fatigue","curiosity"] or (candidate.need=="hunger" and geometry[candidate.cell].get("activity_room","") in ["galley","crew_lounge"]))
+		var service_limit: float=144.0
+		if wants_station:
+			for station in stations: service_limit=maxf(service_limit,float(station.get("service_limit",144)))
 		if wants_station:
 			var center: Vector2=(Vector2(candidate.cell)+Vector2.ONE*0.5)*CELL
 			targets.sort_custom(func(a,b): return graph.get_point_position(a).distance_squared_to(center+stations[0].point)<graph.get_point_position(b).distance_squared_to(center+stations[0].point))
@@ -990,19 +1041,38 @@ func choose_goal(main) -> void:
 		for target_id in targets:
 			var target := graph.get_point_position(target_id)
 			var local := target - (Vector2(candidate.cell) + Vector2.ONE * 0.5) * CELL
-			if absf(local.x) > 144 or absf(local.y) > 144 or target.distance_to(foot) < 32: continue
-			if wants_station and RoomActivity.at(geometry[candidate.cell],local).is_empty(): continue
+			# Nearby service points are valid destinations too; the pacing distance
+			# must not prevent crew already beside a counter from using it.
+			if absf(local.x) > service_limit or absf(local.y) > service_limit or (not wants_station and target.distance_to(foot) < 32): continue
+			var target_station: Dictionary=RoomActivity.at(geometry[candidate.cell],local) if wants_station else {}
+			if wants_station and target_station.is_empty(): continue
 			if wants_station and not spawn_clear(target): continue
 			if candidate.need == "maintenance" and not wants_station and not equipment_spot(candidate.cell, local): continue
+			if wants_station:
+				var contact_key: Vector2=Vector2(candidate.cell)*CELL+Vector2(target_station.point)
+				if not station_claims.has(contact_key):station_claims[contact_key]=bunk_claimed(main,candidate.cell,target_station)
+				if station_claims[contact_key]:continue
 			var route := route_between(start, target_id)
 			attempted += 1
 			if route.is_empty():
 				if attempted >= 8: break
 				continue
+			if wants_station:
+				var station:=target_station
+				if station.get("exact_approach",false):
+					var contact: Vector2=(Vector2(candidate.cell)+Vector2.ONE*0.5)*CELL+Vector2(station.point)
+					if not can_stand(contact) or not spawn_clear(contact) or not segment_clear(target,contact):continue
+					route.append(contact)
+			var planned := smooth_route(route)
+			if planned.is_empty():
+				if attempted>=8: break
+				continue
 			goal = candidate.need
 			goal_cell = candidate.cell
-			path = smooth_route(route)
-			state = "walk"
+			path = planned
+			# move() selects walking and travel facing together on the next update.
+			# A queued route must not flash a walk pose in the previous work direction.
+			state = "idle"
 			activity = {"hunger": "looking for food", "fatigue": "looking for rest", "maintenance": "heading to equipment", "curiosity": "exploring"}[goal]
 			return
 	# A corridor-only station still permits pacing along its safe floor.
@@ -1015,6 +1085,25 @@ func choose_goal(main) -> void:
 	activity = "waiting for suitable rooms" if path.is_empty() else "stretching his legs"
 	timer = 2.0 if path.is_empty() else 0.0
 
+func bunk_claimed(main, cell: Vector2i, station: Dictionary) -> bool:
+	if not station.get("marsh_bunk",false) and not station.get("bill_bunk",false) and not station.get("veld_bunk",false) and not station.get("branforth_bunk",false):return false
+	var contact: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*CELL+Vector2(station.point)
+	for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
+		if peer==self or not peer.active or peer.dead:continue
+		# Do not immediately reuse a bed while a more tired colleague needs it.
+		# Only eligible nearby crew count; charging/remote work is not a bed queue.
+		if float(peer.needs.fatigue)>=65 and float(peer.needs.fatigue)>float(needs.fatigue)+5 and peer.foot.distance_to(contact)<CELL*3 and peer.geometry.has(cell) and peer.expedition.is_empty() and peer.goal not in ["recharge","construction","hull-repair","ward-repair","electrical-repair","flood-retreat","fire-retreat"]:
+			for alternate in RoomActivity.stations(peer.geometry[cell]):
+				if alternate.get("mode","")=="sleep" and Vector2(alternate.point).distance_to(station.point)<0.1:
+					var peer_start: int=peer.nearest_in_room(peer.foot,peer.cell_at(peer.foot),false)
+					var peer_target: int=peer.nearest_in_room(contact,cell,false)
+					if peer_start>=0 and peer_target>=0 and not peer.route_between(peer_start,peer_target).is_empty():return true
+		if peer.goal_cell!=cell:continue
+		# Existing queued routes are the claim; no persistent reservation to leak.
+		if not peer.path.is_empty() and peer.goal in ["fatigue","curiosity","maintenance"] and peer.path[-1].distance_to(contact)<0.1:return true
+		if peer.stage in ["life_lie","life_sleep","life_get_up"] and peer.foot.distance_to(contact)<0.1:return true
+	return false
+
 func begin_room_activity() -> bool:
 	if stage.begins_with("workshop_"): return true
 	if goal not in ["maintenance","fatigue","curiosity","hunger"] or not geometry.has(goal_cell): return false
@@ -1023,6 +1112,12 @@ func begin_room_activity() -> bool:
 	if station.is_empty(): return false
 	direction=station.facing
 	if Life.begin(self,station): return true
+	if station.get("mode","")=="console":
+		stage=""
+		state="interact"
+		activity="checking life support readings"
+		timer=6.0
+		return true
 	if station.room=="cold_store":
 		stage=""
 		state="idle"
@@ -1264,4 +1359,8 @@ func observation_visual_offset() -> Vector2:
 	if stage=="observation_sit": amount=1.0-clampf(timer/0.65,0,1)
 	elif stage=="observation_read": amount=1.0
 	elif stage=="observation_rise": amount=clampf(timer/0.65,0,1)
+	if amount>0.0:
+		var local:=foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL
+		var station: Dictionary=RoomActivity.at(geometry.get(goal_cell,{}),local)
+		if station.has("rest_point"): return (Vector2(station.rest_point)-local)*amount
 	return Vector2(0,8.0*amount)

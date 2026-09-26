@@ -1,26 +1,23 @@
 extends RefCounted
 class_name RoomDatabase
 
-# Department colours (owner playtest, Sept 17). Every card outline, codex entry, memory core
-# branch and crew tile uses these: red operations, command and security; blue science and
-# medical; orange crew quarters; yellow engineering and support; green life support and
-# agriculture; purple anomaly; grey corridors; white AI and robotics.
+# Department colours (owner playtest, Sept 17; seven departments since Sept 24, owner
+# decision): red operations (command, security), yellow engineering (power, industry),
+# blue science (labs and medical), green life support, orange recreation (crew
+# quarters), purple anomaly, cyan robotics (BRINE, drone bays, data archive); grey corridors.
 const CATEGORY_COLORS := {
-	"Core": Color("#d9534f"),
+	"Operations": Color("#d9534f"),
 	"Engineering": Color("#e6c84f"),
 	"Science": Color("#4f8fe6"),
-	"Bio": Color("#57c879"),
-	"Crew": Color("#e58a45"),
-	"Medical": Color("#4f8fe6"),
-	"Drone": Color("#e8eef0"),
-	"Security": Color("#d9534f"),
+	"Life Support": Color("#57c879"),
+	"Recreation": Color("#e58a45"),
 	"Anomaly": Color("#9c5de8"),
+	"Robotics": Color("#46d3e6"),
 	"Derelict": Color("#9b6941")
 }
-# Rooms whose colour differs from their department: BRINE's core is AI white, and corridors are
-# structure rather than a department.
+# Rooms whose colour differs from their department: corridors are structure rather than a
+# department.
 const ROOM_COLORS := {
-	"brine_core": Color("#e8eef0"),
 	"corridor": Color("#9aa2a8"),
 	"corner": Color("#9aa2a8"),
 	"tee_corridor": Color("#9aa2a8"),
@@ -92,7 +89,7 @@ static func all_rooms() -> Dictionary:
 			"description":"Adds 40 Food and 20 Biomass capacity. Refrigeration uses 1 Power per cycle; storage capacity remains during outages. A straight aisle between two doors. I have labelled the containers. Please stop testing the labels by taste."
 		},
 		"galley": {
-			"id":"galley", "display_name":"Galley", "category":"Crew", "rarity":"uncommon",
+			"id":"galley", "display_name":"Galley", "category":"Recreation", "rarity":"uncommon",
 			"cost":{"metal":6}, "size":Vector2i.ONE, "production":{"food":4}, "consumption":{"biomass":1,"water":1,"power":1},
 			"tags":["crew","food","cooking"], "layout":"layout_dead_south", "unlocked":true,
 			"description":"Cooks 1 stored Biomass with 1 Water and 1 Power into 4 Food per functioning cycle. Crew collect meals at the serving counter. One entrance. It is technically soup. That is the most specific promise I can make."
@@ -104,7 +101,7 @@ static func all_rooms() -> Dictionary:
 			"description":"Sorts stored Metal into recoverable components: 3 Metal and 2 Power yield 1 Rare Mineral per functioning cycle. One entrance. The previous owner called these parts irreparable. They were insufficiently patient."
 		},
 		"observation_room": {
-			"id":"observation_room", "display_name":"Observation Room", "category":"Crew", "rarity":"uncommon",
+			"id":"observation_room", "display_name":"Observation Room", "category":"Recreation", "rarity":"uncommon",
 			"cost":{"metal":6}, "size":Vector2i.ONE, "production":{}, "consumption":{},
 			"tags":["crew","observation","library"], "layout":"layout_dead_south", "unlocked":true,
 			"description":"An ocean porthole facing away from the entrance, between three walls of books. One entrance. A quiet room with no resource output. The glass is rated for the pressure. The books are less certain."
@@ -116,7 +113,7 @@ static func all_rooms() -> Dictionary:
 			"description":"Generates 4 Power per cycle while its north-facing intake has an open ocean cell. Rotate to aim the intake; rooms, queued construction and uncleared sites block it. The ocean is moving. We may as well invoice it."
 		},
 		"biomass_digester": {
-			"id":"biomass_digester", "display_name":"Biomass Digester", "category":"Bio", "rarity":"uncommon",
+			"id":"biomass_digester", "display_name":"Biomass Digester", "category":"Life Support", "rarity":"uncommon",
 			"cost":{"metal":6,"biomass":2}, "size":Vector2i.ONE, "production":{"power":4}, "consumption":{"biomass":1},
 			"tags":["power","bio","engineering"], "layout":"layout_01_tee", "unlocked":false,
 			"description":"Converts 1 stored Biomass into 4 Power each cycle. Fresh growth becomes fuel next cycle. The distinction between fuel and dinner remains administrative."
@@ -135,7 +132,7 @@ static func all_rooms() -> Dictionary:
 		},
 		"construction_drone_bay": {
 			"id":"construction_drone_bay", "display_name":"Construction Drone Bay",
-			"category":"Engineering", "rarity":"common", "cost":{"metal":6,"power":1},
+			"category":"Robotics", "rarity":"common", "cost":{"metal":6,"power":1},
 			"size":Vector2i.ONE, "production":{}, "consumption":{"power":1},
 			"tags":["drone","construction","engineering"], "layout":"layout_02_straight",
 			"description":"Houses a fabrication drone. Welds paid room orders into the station. The Core carries an emergency builder.", "unlocked":true
@@ -143,7 +140,7 @@ static func all_rooms() -> Dictionary:
 		"brine_core": {
 			"id": "brine_core",
 			"display_name": "BRINE Core",
-			"category": "Core",
+			"category": "Robotics",
 			"rarity": "core",
 			"cost": {},
 			"size": Vector2i.ONE,
@@ -200,7 +197,7 @@ static func all_rooms() -> Dictionary:
 		"mining_drone_bay": {
 			"id": "mining_drone_bay",
 			"display_name": "Mining Drone Bay",
-			"category": "Drone",
+			"category": "Robotics",
 			"rarity": "common",
 			"cost": {"metal": 6, "power": 1},
 			"size": Vector2i.ONE,
@@ -214,7 +211,7 @@ static func all_rooms() -> Dictionary:
 		"salvage_drone_bay": {
 			"id": "salvage_drone_bay",
 			"display_name": "Salvage Drone Bay",
-			"category": "Drone",
+			"category": "Robotics",
 			"rarity": "common",
 			"cost": {"metal": 5, "power": 1},
 			"size": Vector2i.ONE,
@@ -256,7 +253,7 @@ static func all_rooms() -> Dictionary:
 		"mycelium_nursery": {
 			"id": "mycelium_nursery",
 			"display_name": "Mycelium Nursery",
-			"category": "Bio",
+			"category": "Life Support",
 			"rarity": "uncommon",
 			"cost": {"metal": 7, "biomass": 3},
 			"size": Vector2i.ONE,
@@ -271,7 +268,7 @@ static func all_rooms() -> Dictionary:
 			"id": "hydroponics_bay",
 			"flood_compatible": true,
 			"display_name": "Hydroponics Bay",
-			"category": "Bio",
+			"category": "Life Support",
 			"rarity": "common",
 			"cost": {"metal": 5, "biomass": 1},
 			"size": Vector2i.ONE,
@@ -285,7 +282,7 @@ static func all_rooms() -> Dictionary:
 		"life_support": {
 			"id": "life_support",
 			"display_name": "Life Support",
-			"category": "Bio",
+			"category": "Life Support",
 			"rarity": "common",
 			"cost": {"metal": 5, "power": 1},
 			"size": Vector2i.ONE,
@@ -299,7 +296,7 @@ static func all_rooms() -> Dictionary:
 		"crew_hab": {
 			"id": "crew_hab",
 			"display_name": "Crew Hab",
-			"category": "Crew",
+			"category": "Recreation",
 			"rarity": "common",
 			"cost": {"metal": 6, "oxygen": 2, "food": 2},
 			"size": Vector2i.ONE,
@@ -327,7 +324,7 @@ static func all_rooms() -> Dictionary:
 		"cryo_chamber": {
 			"id": "cryo_chamber",
 			"display_name": "Cryo Chamber",
-			"category": "Medical",
+			"category": "Science",
 			"rarity": "rare",
 			"cost": {"metal": 8, "data": 4},
 			"size": Vector2i.ONE,
@@ -341,7 +338,7 @@ static func all_rooms() -> Dictionary:
 		"clone_lab": {
 			"id": "clone_lab",
 			"display_name": "Clone Lab",
-			"category": "Medical",
+			"category": "Science",
 			"rarity": "rare",
 			"cost": {"metal": 10, "data": 8, "biomass": 8},
 			"size": Vector2i.ONE,
@@ -355,7 +352,7 @@ static func all_rooms() -> Dictionary:
 		"quarantine_cell": {
 			"id": "quarantine_cell",
 			"display_name": "Quarantine Cell",
-			"category": "Security",
+			"category": "Operations",
 			"rarity": "uncommon",
 			"cost": {"metal": 7, "data": 2},
 			"size": Vector2i.ONE,
@@ -369,7 +366,7 @@ static func all_rooms() -> Dictionary:
 		"data_archive": {
 			"id": "data_archive",
 			"display_name": "Data Archive",
-			"category": "Science",
+			"category": "Robotics",
 			"rarity": "uncommon",
 			"cost": {"metal": 5, "data": 8},
 			"size": Vector2i.ONE,
@@ -414,7 +411,7 @@ static func all_rooms() -> Dictionary:
 		"med_bay": {
 			"id": "med_bay",
 			"display_name": "Med Bay",
-			"category": "Medical",
+			"category": "Science",
 			"rarity": "rare",
 			"cost": {"metal": 7, "data": 3, "power": 1},
 			"size": Vector2i.ONE,
@@ -428,7 +425,7 @@ static func all_rooms() -> Dictionary:
 		"biodome": {
 			"id": "biodome",
 			"display_name": "Biodome",
-			"category": "Bio",
+			"category": "Life Support",
 			"rarity": "rare",
 			"cost": {"metal": 10, "water": 4, "biomass": 4},
 			"size": Vector2i.ONE,
@@ -471,7 +468,7 @@ static func all_rooms() -> Dictionary:
 		"bio_lab": {
 			"id": "bio_lab",
 			"display_name": "Bio Lab",
-			"category": "Bio",
+			"category": "Life Support",
 			"rarity": "uncommon",
 			"cost": {"metal": 6, "biomass": 3, "power": 1},
 			"size": Vector2i.ONE,
@@ -485,7 +482,7 @@ static func all_rooms() -> Dictionary:
 		"command_center": {
 			"id": "command_center",
 			"display_name": "Command Center",
-			"category": "Core",
+			"category": "Operations",
 			"rarity": "rare",
 			"cost": {"metal": 10, "data": 6, "power": 2},
 			"size": Vector2i.ONE,
@@ -539,7 +536,7 @@ static func all_rooms() -> Dictionary:
 		"crew_lounge": {
 			"id": "crew_lounge",
 			"display_name": "Crew Lounge",
-			"category": "Crew",
+			"category": "Recreation",
 			"rarity": "uncommon",
 			"cost": {"metal": 6, "food": 2, "oxygen": 2},
 			"size": Vector2i.ONE,
@@ -582,7 +579,7 @@ static func all_rooms() -> Dictionary:
 		"med_center": {
 			"id": "med_center",
 			"display_name": "Med Center",
-			"category": "Medical",
+			"category": "Science",
 			"rarity": "uncommon",
 			"cost": {"metal": 8, "data": 4, "power": 1},
 			"size": Vector2i.ONE,
@@ -596,7 +593,7 @@ static func all_rooms() -> Dictionary:
 		"med_office": {
 			"id": "med_office",
 			"display_name": "Med Office",
-			"category": "Medical",
+			"category": "Science",
 			"rarity": "common",
 			"cost": {"metal": 5, "data": 2},
 			"size": Vector2i.ONE,
@@ -624,7 +621,7 @@ static func all_rooms() -> Dictionary:
 		"shield_generator": {
 			"id": "shield_generator",
 			"display_name": "Shield Generator",
-			"category": "Security",
+			"category": "Operations",
 			"rarity": "uncommon",
 			"cost": {"metal": 8, "power": 2, "rare_minerals": 1},
 			"size": Vector2i.ONE,

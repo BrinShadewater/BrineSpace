@@ -14,6 +14,9 @@ func run():
 	game.run_save_path=stem+".loop"
 	game.meta.unlocked_architect_ids={"bill":true}
 	game.meta.selected_architect="bill"
+	# This charging/save fixture uses authored, identified wards. Procedural
+	# survey-time assignment is covered by the site discovery/runtime contracts.
+	game.set_meta("authored_site_fixture",true)
 	root.add_child(game);current_scene=game
 	while not game.startup_complete: await process_frame
 	game.set_process(false);game.tick_timer.stop();game.paused=false

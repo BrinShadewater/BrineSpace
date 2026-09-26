@@ -64,6 +64,7 @@ func load_manifest(path: String, append: bool = false) -> void:
 			preload("res://scripts/safe_image.gd").load_png(image, filename)
 			var texture := ImageTexture.create_from_image(image)
 			texture.set_meta("crew_frame_92", true)
+			if frame_furniture(entry,row.size())=="bunk":texture.set_meta("crew_bunk_layer",true)
 			if entry.has("restHeadOffset"):texture.set_meta("crew_rest_head_offset",Vector2(entry.restHeadOffset[0],entry.restHeadOffset[1]))
 			texture.set_meta("crew_water_facing",str(entry.get("facings",[])[row.size()]) if entry.has("facings") else str(entry.id).get_slice("-",str(entry.id).get_slice_count("-")-1))
 			texture.set_meta("crew_water_kind",str(entry.waterKinds[row.size()]) if entry.has("waterKinds") else str(entry.id).get_slice("-",0))
@@ -80,6 +81,17 @@ func load_manifest(path: String, append: bool = false) -> void:
 		for duration in entry.frameDurationsMs: seconds += float(duration) / 1000.0
 		timing[entry.id] = {"durations": entry.frameDurationsMs, "loop": entry.loop, "seconds": maxf(seconds, 0.001)}
 	mirror_declared_directions(data)
+
+static func frame_furniture(entry: Dictionary,index: int) -> String:
+	# Contact changes during boarding: a hanging leg stays in front of the rail.
+	# A malformed override must not silently put the whole clip inside furniture.
+	if entry.has("furnitureFrames"):
+		var values: Variant=entry.furnitureFrames
+		if not values is Array or values.size()!=entry.get("frameFiles",[]).size():return ""
+		if index<0 or index>=values.size():return ""
+		return "bunk" if values[index] is String and values[index]=="bunk" else ""
+	var value: Variant=entry.get("furniture","")
+	return "bunk" if value is String and value=="bunk" else ""
 
 func mirror_declared_directions(data: Dictionary) -> void:
 	## Opt-in: a pack declares {"mirrorDirections": {"west": "east"}} to serve one
@@ -134,7 +146,13 @@ func load_equipment_manifest(equipment: String, path: String) -> bool:
 	return true
 
 func frame(state: String, direction: String, time: float, position_cells: Vector2, equipment: String = "", allow_water_transition: bool = false) -> Texture2D:
+	var previous_clip: String=motion.get("clip","")
+	var finished_turn: bool=state in ["carry","swim"] and previous_clip.begins_with(state+"-turn-") and frames.has(previous_clip) and motion.get("state","")==state and motion.get("direction","")==direction and time>=float(motion.get("started",time))+cycle_seconds(previous_clip)
 	var transition := water_transition(state,direction,time,allow_water_transition or state=="carry")
+	if finished_turn:
+		# Authored turns end on destination frame zero. Do not replay the
+		# old locomotion fraction or accumulate the distance already shown during the turn.
+		current_key=""
 	if not transition.is_empty():
 		var row: Array=frames[transition] if equipment.is_empty() else equipment_frames.get(equipment,{}).get(transition,[])
 		if not row.is_empty():

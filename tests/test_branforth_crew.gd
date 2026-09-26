@@ -12,6 +12,7 @@ func _init() -> void: call_deferred("run")
 
 func run() -> void:
 	var game = MainScene.instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	var prefix := "user://branforth_crew_%d" % OS.get_process_id()
 	game.meta.save_path = prefix + "_meta.json"
 	game.run_save_path = prefix + ".loop"

@@ -1,0 +1,61 @@
+{
+  "sources": {
+    "west-south-01.png": "10d2de78fa2ec1b762468b7868ea7528b722a8cd2d190f359516e401587119ce",
+    "swim-west-endpoint.png": "75eaa4bbb69ae2a011b114cf1138315a3d0575147c900ff7b3030527ab768eb1",
+    "swim-south-endpoint.png": "ab4f94d300851a71b2950a50efd16965c989a76f599ad5a5cee27d47dbedf117"
+  },
+  "registration": [
+    {
+      "source": "west-south-01.png",
+      "cell": 0,
+      "shoulder": [
+        373,
+        444
+      ],
+      "target": [
+        84,
+        137
+      ],
+      "scale": 0.23,
+      "offset": [
+        -2,
+        35
+      ]
+    },
+    {
+      "source": "west-south-01.png",
+      "cell": 1,
+      "shoulder": [
+        1156,
+        407
+      ],
+      "target": [
+        109,
+        133
+      ],
+      "scale": 0.23,
+      "offset": [
+        10,
+        39
+      ]
+    },
+    {
+      "source": "west-south-01.png",
+      "cell": 2,
+      "shoulder": [
+        1700,
+        398
+      ],
+      "target": [
+        78,
+        128
+      ],
+      "scale": 0.23,
+      "offset": [
+        20,
+        36
+      ]
+    }
+  ],
+  "derived": "Return turn reverses forward poses. Existing endpoint pixels preserved with transparent bottom padding. All three poses from independently authored west-south source 01."
+}

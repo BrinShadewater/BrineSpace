@@ -1,22 +1,60 @@
 extends RefCounted
 ## Resolve activity approaches from current furniture, including Studio layouts.
 const ROOMS=["pressure_control","listening_post","crew_hab"]
+# Station props v2 carry a behaviour role (rooms/station-props-v2/props.json) in place
+# of the retired bought-prop ids each activity used to look for.
+static func _role(prop: Dictionary) -> String:
+	return preload("res://scripts/room_asset_library.gd").role_of(prop)
 static func stations(data: Dictionary) -> Array:
 	var result: Array=[]
 	var id: String=data.get("activity_room","")
-	if id=="crew_hab":
+	if id=="life_support":
 		for prop in data.get("props",[]):
-			if not str(prop.id).begins_with("hab_berth_"): continue
+			if preload("res://scripts/room_asset_library.gd").base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))!="library/tileset-srb2-35" and _role(prop)!="life_support_console":continue
+			if prop.get("layout_flip",Vector2.ONE)!=Vector2.ONE:continue
 			var rect: Rect2=prop.rect
+			# This bought desk's keyboard faces south in the retained art.
+			var point:=Vector2(rect.get_center().x,rect.end.y+16)
+			var facing:="north"
+			# Props never turn with the room, so a rotation can put the front against a
+			# wall; work it from behind rather than lose the station.
+			if maxf(absf(point.x),absf(point.y))>160 or _approach_blocked(data,point):
+				point=Vector2(rect.get_center().x,rect.position.y-16); facing="south"
+			if maxf(absf(point.x),absf(point.y))>160 or _approach_blocked(data,point):continue
+			result.append({"point":point,"facing":facing,"room":id,"mode":"console","exact_approach":true,"service_limit":160,"prop":prop.id})
+		return result
+	if id=="crew_hab":
+		if data.get("bunk_actor","") in ["bill","veld","branforth","marsh"]:
+			for prop in data.get("props",[]):
+				if preload("res://scripts/room_asset_library.gd").base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))!="library/tileset-mb2-14":continue
+				var rect: Rect2=prop.rect
+				# This profile is reviewed at the owner's current bunk scale only.
+				if prop.get("layout_flip",Vector2.ONE)!=Vector2.ONE or absf(rect.size.x-72.46131)>0.1 or absf(rect.size.y-73.99651)>0.1:continue
+				var point:=Vector2(rect.get_center().x+17,rect.end.y+16)
+				if maxf(absf(point.x),absf(point.y))>144 or _approach_blocked(data,point):continue
+				result.append({"point":point,"facing":"east","room":id,"mode":"sleep","exact_approach":true,"marsh_bunk":data.get("bunk_actor","")=="marsh","bill_bunk":data.get("bunk_actor","")=="bill","veld_bunk":data.get("bunk_actor","")=="veld","branforth_bunk":data.get("bunk_actor","")=="branforth","rest_point":Vector2(rect.get_center().x+4.107145,rect.end.y-18.69506)})
+		for prop in data.get("props",[]):
+			var bunk: bool=_role(prop)=="bunk"
+			if not str(prop.id).begins_with("hab_berth_") and not bunk: continue
+			var rect: Rect2=prop.rect
+			var marsh_bedside:=false
 			var at:=Vector2(rect.position.x-28,rect.get_center().y)
 			# A berth authored against the west wall pushes its approach outside the
 			# ±144 service band choose_goal walks; approach from the east side instead.
 			if at.x<-144: at=Vector2(rect.end.x+28,rect.get_center().y)
+			if prop.id=="hab_berth_east" and prop.get("layout_flip",Vector2.ONE)==Vector2.ONE:
+				# Stand in the open notch below the short bedside cabinet. Retain
+				# the outer approach when another furnishing occupies this space.
+				var bedside:=rect.position+rect.size*Vector2(0.95,0.67)
+				if maxf(absf(bedside.x),absf(bedside.y))<=144 and not _approach_blocked(data,bedside):
+					at=bedside;marsh_bedside=true
 			var station: Dictionary={"point":at,"facing":"north","room":id,"mode":"sleep","rest_point":Vector2(rect.get_center().x,rect.end.y-40)}
 			var registration: Dictionary=prop.get("registration",{})
-			if registration.has("pivot") and registration.has("width"):
+			if not bunk and registration.has("pivot") and registration.has("width"):
 				var pillow_source: Vector2=Vector2(270,158) if prop.id=="hab_berth_west" else Vector2(958,158)
 				station.rest_head=Vector2(rect.get_center().x,rect.end.y)+(pillow_source-Vector2(registration.pivot))*(rect.size.x/float(registration.width))
+				if marsh_bedside:
+					station.marsh_bedside=true;station.exact_approach=true
 			result.append(station)
 		if not result.is_empty(): return result
 	if id=="crew_lounge":
@@ -32,16 +70,38 @@ static func stations(data: Dictionary) -> Array:
 		if result.is_empty():
 			# One authored quarter replaces the games table with a sofa; rest there instead.
 			for prop in data.get("props",[]):
-				if prop.id!="lounge_sofa": continue
+				if prop.id!="lounge_sofa" and _role(prop)!="lounge_seat": continue
 				var rect: Rect2=prop.rect
 				for approach in [Vector2(rect.get_center().x,rect.end.y+28),Vector2(rect.position.x-28,rect.get_center().y),Vector2(rect.end.x+28,rect.get_center().y)]:
 					result.append({"point":approach,"facing":"north","room":id,"mode":"sit","rest_point":Vector2(rect.get_center().x,rect.end.y-8)})
-		return result
+		var on_floor: Array=result.filter(func(station): return absf(station.point.x)<=144 and absf(station.point.y)<=144 and not _approach_blocked(data,station.point))
+		return on_floor if not on_floor.is_empty() else result
 	# Cold Store and Galley rotate like other rooms (owner playtest): their service spots and
 	# facing turn with the furniture.
 	if id=="cold_store":
+		var freezers: Array=data.get("props",[]).filter(func(prop):return str(prop.get("copy_source",prop.id)) in ["library/tileset-as-244","library/tileset-as-244b"] or _role(prop)=="freezer")
+		if not freezers.is_empty():
+			var anchors: Array=[]
+			var backs: Array=[]
+			for freezer in freezers:
+				anchors.append(Vector2(freezer.rect.get_center().x,freezer.rect.end.y+16))
+				backs.append(Vector2(freezer.rect.get_center().x,freezer.rect.position.y-16))
+			var served: Dictionary={}
+			for pass_anchors in [[anchors,"north","reachable_service_stations"],[backs,"south","reachable_service_backs"]]:
+				for station in reachable_stations(data,pass_anchors[0],pass_anchors[1],pass_anchors[2]):
+					var nearest:=0
+					for i in range(1,pass_anchors[0].size()):
+						if station.point.distance_squared_to(pass_anchors[0][i])<station.point.distance_squared_to(pass_anchors[0][nearest]): nearest=i
+					# Front first; a freezer whose front faces a wall is worked from behind.
+					if station.point.distance_to(pass_anchors[0][nearest])>32 or served.has(nearest): continue
+					served[nearest]=true
+					var linked: Dictionary=station.duplicate();linked.prop=freezers[nearest].id
+					result.append(linked)
+			return result
 		return reachable_stations(data,_turned([Vector2(-112,64),Vector2(112,64)],_layout_quarter(data)),_turned_facing("north",_layout_quarter(data)))
 	if id=="galley":
+		var counters: Array=data.get("props",[]).filter(func(prop):return str(prop.get("copy_source",prop.id)) in ["library/tileset-mms-58","library/tileset-mms-60"] or _role(prop)=="galley_counter")
+		if not counters.is_empty(): return galley_counter_stations(data,counters)
 		return reachable_stations(data,_turned([Vector2(64,144),Vector2(112,144)],_layout_quarter(data)),_turned_facing("north",_layout_quarter(data)))
 	if id=="salvage_workshop":
 		# The workshop bench turns with the room's quarter (side variants), so the
@@ -49,16 +109,24 @@ static func stations(data: Dictionary) -> Array:
 		var quarter: int=int(data.get("layout",[{}])[0].get("rotation",0)) if not data.get("layout",[]).is_empty() else 0
 		var turned: Vector2=Vector2(112,16)
 		for unused in range(posmod(quarter,4)): turned=Vector2(-turned.y,turned.x)
-		return [{"point":turned,"facing":["east","south","west","north"][posmod(quarter,4)],"room":id}]
+		var facing: String=["east","south","west","north"][posmod(quarter,4)]
+		# Station props keep one facing, so a rotation can put furniture on the authored
+		# spot: take the nearest standable floor to it instead.
+		if _approach_blocked(data,turned):
+			var reachable: Array=reachable_stations(data,[turned],facing)
+			if not reachable.is_empty(): return reachable
+		return [{"point":turned,"facing":facing,"room":id}]
 	if id=="observation_room":
 		# Read between the desk and the chair behind it. A fixed point went stale when the
 		# crew-scale pass enlarged the chair over it, leaving no walkable node to sit from.
 		var read_point:=Vector2(0,112)
 		var desk: Dictionary={}
 		var chair: Dictionary={}
+		var sofa: Dictionary={}
 		for prop in data.get("props",[]):
 			if prop.id=="wooden-desk": desk=prop
 			elif prop.id=="chair-rear": chair=prop
+			elif str(prop.get("copy_source",prop.id))=="library/tileset-mat-116" or _role(prop)=="observation_sofa": sofa=prop
 		if not desk.is_empty() and not chair.is_empty():
 			# Studio rotations put the chair on any side of the desk: stand midway
 			# between their facing edges, in line with the chair.
@@ -85,7 +153,20 @@ static func stations(data: Dictionary) -> Array:
 		var window_quarter: int=posmod(int(data.get("layout",[{}])[0].get("rotation",0)) if not data.get("layout",[]).is_empty() else 0,4)
 		var watch:=Vector2(80,0)
 		for unused in range(window_quarter): watch=Vector2(-watch.y,watch.x)
-		return [{"point":read_point,"facing":"north","room":id,"mode":"read"},{"point":watch,"facing":["north","east","south","west"][window_quarter],"room":id,"mode":"watch"}]
+		# The sofa uses the room's cached service approach; watching has a different anchor.
+		var watching:=reachable_stations(data,[watch],["north","east","south","west"][window_quarter],"observation_watch_stations")
+		for station in watching: station.mode="watch"
+		if not sofa.is_empty():
+			var rect: Rect2=sofa.rect
+			var approach:=Vector2(rect.position.x+rect.size.x*0.28,rect.end.y+20)
+			var seats:=reachable_stations(data,[approach],"south")
+			if seats.is_empty() or seats[0].point.distance_to(approach)>32: return watching
+			var seated: Dictionary=seats[0].duplicate()
+			seated.mode="read";seated.prop=sofa.id
+			# Reviewed left cushion, including the renderer's normal crew foot offset.
+			seated.rest_point=rect.position+rect.size*Vector2(0.28,0.83)
+			return [seated]+watching
+		return [{"point":read_point,"facing":"north","room":id,"mode":"read"}]+watching
 	if id not in ROOMS: return result
 	# A layout can replace the authored instrument bank with equipment the owner prefers
 	# (owner direction, Sept 15). The room keeps its work station: fall back to the largest
@@ -137,6 +218,30 @@ static func stations(data: Dictionary) -> Array:
 	var walkable: Array=result.filter(func(station): return absf(station.point.x)<=144 and absf(station.point.y)<=144)
 	return walkable if not walkable.is_empty() else result
 
+static func galley_counter_stations(data: Dictionary, counters: Array) -> Array:
+	if data.has("galley_counter_stations"): return data.galley_counter_stations
+	var result: Array=[]
+	for counter in counters:
+		var rect: Rect2=counter.rect
+		# Bought counters keep their facing when the room rotates. Follow the
+		# effective saved rectangle, not the retired serving fixture's coordinates.
+		var approaches=[{"point":Vector2(rect.get_center().x,rect.end.y+12),"facing":"north"},
+			{"point":Vector2(rect.get_center().x,rect.position.y-12),"facing":"south"}]
+		for approach in approaches:
+			var best:=Vector2.INF
+			var distance:=24.0*24.0
+			for y in range(-144,145,16):
+				for x in range(-144,145,16):
+					var point:=Vector2(x,y)
+					if _approach_blocked(data,point): continue
+					var score: float=point.distance_squared_to(approach.point)
+					if score<distance: distance=score; best=point
+			if best!=Vector2.INF:
+				result.append({"point":best,"facing":approach.facing,"room":"galley","prop":counter.id})
+				break
+	data.galley_counter_stations=result
+	return result
+
 static func _layout_quarter(data: Dictionary) -> int:
 	return posmod(int(data.get("layout",[{}])[0].get("rotation",0)) if not data.get("layout",[]).is_empty() else 0,4)
 
@@ -152,8 +257,8 @@ static func _turned_facing(facing: String, quarter: int) -> String:
 	var order := ["north","east","south","west"]
 	return order[posmod(order.find(facing)+quarter,4)]
 
-static func reachable_stations(data: Dictionary,anchors: Array,facing:="north") -> Array:
-	if data.has("reachable_service_stations"):return data.reachable_service_stations
+static func reachable_stations(data: Dictionary,anchors: Array,facing:="north",cache_key:="reachable_service_stations") -> Array:
+	if data.has(cache_key):return data[cache_key]
 	var result := []
 	for anchor in anchors:
 		var best := Vector2.INF
@@ -165,7 +270,7 @@ static func reachable_stations(data: Dictionary,anchors: Array,facing:="north") 
 				var score: float=point.distance_squared_to(anchor)
 				if score<distance:distance=score;best=point
 		if best!=Vector2.INF:result.append({"point":best,"facing":facing,"room":data.activity_room})
-	data.reachable_service_stations=result
+	data[cache_key]=result
 	return result
 
 static func _approach_blocked(data: Dictionary, at_point: Vector2) -> bool:

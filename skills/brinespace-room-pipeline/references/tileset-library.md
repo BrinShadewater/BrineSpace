@@ -1,8 +1,59 @@
 # Tileset library: bought art, owner-decorated rooms
 
+## Owner-authorized composition pilots â€” September 20
+
+The owner now requests help decorating rooms. This authorizes the requested
+compositions, not an automatic library-wide furnishing pass. Large and medium
+equipment take priority; small pipes, extinguishers and miscellaneous objects
+must not be scattered into empty space. Small-prop removal is a separate decision.
+
+Re-read live favourites/names before acting on a dated fix queue. Empty current marks
+supersede historical outstanding-star lists; do not recreate old requests. For a
+selected layout, record source-region dimensions, display scale and known defect
+entries before proposing an upscale. World-units-per-source-pixel is not screen
+resolution: inspect normal station zoom and material/detail fit separately. Absence
+from hole-report.json is not proof that a prop has no visual defects.
+
+Conversely, an automatic hole flag is not proof of missing material. Life Support's
+mat-33 filter rack flagged330pixels; enlarged alpha review showed intentional spaces
+between intact cylinders and supports. Preserve those openings. Record the inspected
+crop and conclusion instead of filling every flagged region or resetting owner marks.
+
+Group items by their use: workbench with tool storage, specimen preparation with
+analysis, beds with personal storage. Preserve quiet working floor and clear door
+approaches. A closed north wall can support a continuous equipment line; move only
+the pieces obstructing it when another quarter opens that door.
+
+Inspect rendered effective props, not just the local JSON. Authored defaults merge
+with local overrides, and original functional furniture may still draw beneath new
+props. Suppress obsolete additions explicitly and preserve functioning activity
+targets (Crew Hab sleeping berths use named original props). Test those approaches.
+
+Back up both local layouts and defaults. Work against a copied candidate file,
+review all four production views beside crew, then merge only the selected room
+keys into fresh files after checking for concurrent edits. Preserve every other
+layout and all library marks. Bake only the changed room cards after review.
+
+The owner found the first Maintenance/Bio Lab pilot lackluster despite clear routes:
+one small item per corner and a sparse rear row do not make a finished workplace.
+Choose substantial existing assemblies first, then adjacent storage and operator
+stations. Compare in native views before adding anything else. Do not scale down
+supporting furniture merely to fill a leftover gap; replace undersized pieces or
+leave the space useful. Keep accepted/provisional reference rooms unchanged during
+focused revisions.
+
+`tools/review_room_composition.gd` reads an optional `--layouts=res://...` file,
+uses the production views, captures all four quarters and records overlapping
+visual bounds for inspection; use --strict-visual-overlap only for deliberately
+disjoint layouts. It checks door approaches, crew traversal and original sleeping-berth access.
+Without `--layouts` it checks shipped defaults independently of local overrides.
+Its graph checks and native stills are bounded evidence, not owner acceptance or
+an expedition playtest. The first pilot and rollback locations are recorded in
+`docs/ROOM_COMPOSITION_PILOT_2026-09-20.md`.
+
 Read this before adding a bought art pack, touching `rooms/tileset-library/`, changing
 the Studio asset tray, or sweeping assets the owner marked. It records the contracts the
-runtime depends on and every mistake that cost real time in the September 18–19 session.
+runtime depends on and every mistake that cost real time in the September 18â€“19 session.
 
 The owner decorates rooms by hand in the Layout Studio. The agent's job is to make the
 library correct, browsable and honest, then get out of the way. Do not auto-decorate
@@ -14,10 +65,10 @@ from their layout and change only what a rule forces.
 | Path | What it is |
 |---|---|
 | `assets/new-tilesets/<set>/` | Converted prop sheets, Git LFS. Folder = slug of the in-universe set name (`galley`, `ghost-deck`, `undercity`). |
-| `assets/new-tilesets/floors/floor-NNN.png` | Floor finishes: one 48px tile repeated 4×4 (192px). |
+| `assets/new-tilesets/floors/floor-NNN.png` | Floor finishes: one 48px tile repeated 4Ã—4 (192px). |
 | `rooms/tileset-library/props.json` | The registry: one array entry per prop. Loaded by `scripts/room_asset_library.gd` as group `tileset`. |
 | `rooms/tileset-library/floors.json` | `{caption: res://path}` finishes, read by `rooms/whole-room/modular_floor.gd`. |
-| `rooms/tileset-library/merged.json` | Alias map, absorbed id → surviving id. Remap every mark file through it after a merge. |
+| `rooms/tileset-library/merged.json` | Alias map, absorbed id â†’ surviving id. Remap every mark file through it after a merge. |
 | `rooms/tileset-library/removed.json` | Log of removed props: label, title, set, source, region and, for a reviewer's removal, **why**. |
 | `rooms/tileset-library/variants.json` | Families of look-alikes the tray folds into one tile. |
 | `rooms/tileset-library/hole-report.json` | Props with key holes (automatic estimate, plus what a reviewer saw) and `needs-split`: stuck pairs with no clean seam. |
@@ -36,23 +87,23 @@ results already in the repo before it was committed.
 |---|---|---|
 | `convert.py SRC DST` | Converts a pack toward the station's look; alpha untouched. | Reproduces the earlier conversion byte for byte. |
 | `scan.py DIR --code xyz --out scan.json --contact pick.png` | Finds props, draws the numbered sheet to pick from. | Finds the same 993 props in the Cyberpunk pack. |
-| `register.py --scan … --converted … --set "Name" --domain "Kind" [--picks picks.json]` | Themes, trims, footprints, labels and registers picks; copies only referenced sheets. `--neon` for neon-lit packs, where blue is not water. | Dry run. |
+| `register.py --scan â€¦ --converted â€¦ --set "Name" --domain "Kind" [--picks picks.json]` | Themes, trims, footprints, labels and registers picks; copies only referenced sheets. `--neon` for neon-lit packs, where blue is not water. | Dry run. |
 | `register.py --validate` | Checks the live registry against the contract below, on the sheets themselves. | Found five props a sweep had damaged. |
 | `merge.py [--base REV]` | One object, one box. | Rebuilds the committed alias map from the untouched boxes, bar one alias a sweep explains. |
-| `tone.py measure\|repair --sources … [--only set]` | Measures against the owner's props; repairs what is too dark. | `measure` reproduces the known library numbers. |
+| `tone.py measure\|repair --sources â€¦ [--only set]` | Measures against the owner's props; repairs what is too dark. | `measure` reproduces the known library numbers. |
 | `sweep.py` | Removes what the owner marked. | Dry run keeps the prop that is both retired and starred. |
-| `sweep.py --restore <id> … [--category …]` | Undoes a removal: art from the sheet's git history (LFS, across the folder renames), pasted only where the sheet is empty; registration rebuilt from `removed.json`. | Six corpses and skeletons brought back; registry test passes. |
-| `sweep.py --show page.png [--set …] [--match …]` | Draws removed props with their ids, for the owner to choose from. | Drew the four Undercity facades. |
-| `titles.py sheet "Set" --out …` / `apply file.json` | Real names, a set at a time: numbered pages pinned to ids, then a titles file. | Wet Lab: 198 named, 44 re-filed. |
-| `variants.py [--contact …]` | Families of look-alikes for the tray to fold. | Largest family 20; an earlier chained method grew one to 262. |
+| `sweep.py --restore <id> â€¦ [--category â€¦]` | Undoes a removal: art from the sheet's git history (LFS, across the folder renames), pasted only where the sheet is empty; registration rebuilt from `removed.json`. | Six corpses and skeletons brought back; registry test passes. |
+| `sweep.py --show page.png [--set â€¦] [--match â€¦]` | Draws removed props with their ids, for the owner to choose from. | Drew the four Undercity facades. |
+| `titles.py sheet "Set" --out â€¦` / `apply file.json` | Real names, a set at a time: numbered pages pinned to ids, then a titles file. | Wet Lab: 198 named, 44 re-filed. |
+| `variants.py [--contact â€¦]` | Families of look-alikes for the tray to fold. | Largest family 20; an earlier chained method grew one to 262. |
 | `intake.py titles.json [--dry-run]` | Takes in one set's review: names, categories, removals, splits, holes. Trusts none of it. | 39 sets taken in; each verified from the registry. |
-| `split.py <id> …` | The Studio's Split button in Python. | Reproduces the Studio's split of the stacked chairs to the pixel. |
-| `refit.py --starred` / `refit.py <id> …` | Fixes boxes from the art itself: each connected piece goes to the prop whose box holds most of it, the box regrows to the object, objects standing apart become separate props. Lists what touches a neighbour for cutting by eye. | Of 447 starred props: about 205 refitted, 68 separated, 38 wrong splits rejoined first. |
+| `split.py <id> â€¦` | The Studio's Split button in Python. | Reproduces the Studio's split of the stacked chairs to the pixel. |
+| `refit.py --starred` / `refit.py <id> â€¦` | Fixes boxes from the art itself: each connected piece goes to the prop whose box holds most of it, the box regrows to the object, objects standing apart become separate props. Lists what touches a neighbour for cutting by eye. | Of 447 starred props: about 205 refitted, 68 separated, 38 wrong splits rejoined first. |
 | `patch_holes.py --suggest-starred` | Adds a `keyed` patch to each starred prop it would change: enclosed holes ringed by light pixels in the source. | 41 props patched; three runs byte-identical. |
-| `cut.py cuts.json [--preview …]` | Cuts objects drawn touching, where `refit.py` finds no gap. The reviewer says how many they SEE (`cols`, `rows`, or both for a grid); the tool finds the emptiest lines; `at`/`at_rows` give exact lines for unequal pieces. | 148 starred props cut into about 415, each previewed first. |
-| `isolate.py [--preview …]` | Lifts a prop out of art it is tangled with (an arm reaching over its neighbour, a tray inside the box) onto the set's own `fixes.png`; spec in `isolate.json` (`grow`, `drop` rects, `main`). The vendor's sheet is untouched; every run rebuilds from it. | 15 props lifted, two robot arms separated. |
+| `cut.py cuts.json [--preview â€¦]` | Cuts objects drawn touching, where `refit.py` finds no gap. The reviewer says how many they SEE (`cols`, `rows`, or both for a grid); the tool finds the emptiest lines; `at`/`at_rows` give exact lines for unequal pieces. | 148 starred props cut into about 415, each previewed first. |
+| `isolate.py [--preview â€¦]` | Lifts a prop out of art it is tangled with (an arm reaching over its neighbour, a tray inside the box) onto the set's own `fixes.png`; spec in `isolate.json` (`grow`, `drop` rects, `main`). The vendor's sheet is untouched; every run rebuilds from it. | 15 props lifted, two robot arms separated. |
 | `split.py --undo <id>` | Rejoins a split (the Studio's **Rejoin parts**). The second id becomes an alias in `merged.json`. | Rejoin then split returns the same two regions. |
-| `patch_holes.py --sources … [--preview …]` | Hand patches for key holes, and whitening of white surfaces. | Three consecutive runs give byte-identical sheets. |
+| `patch_holes.py --sources â€¦ [--preview â€¦]` | Hand patches for key holes, and whitening of white surfaces. | Three consecutive runs give byte-identical sheets. |
 | `unkey.py` | Automatic key-hole repair. **Not safe to run library-wide**; its header says why. Used for detection only. | Three attempts, none good enough. |
 
 Run `register.py --validate` after anything that writes the registry or the sheets.
@@ -70,7 +121,7 @@ Run `register.py --validate` after anything that writes the registry or the shee
   region centre-bottom from every point, exactly as native registrations do. Box-relative
   pieces draw the art displaced by the region's offset: previews render off their 128px
   viewport (3 of 280 painted) and placed art lands far from its selection box.
-- **`region` is trimmed to opaque bounds** (alpha ≥ 24), like native registrations.
+- **`region` is trimmed to opaque bounds** (alpha â‰¥ 24), like native registrations.
 - **`display_width` equals the region width.** One sheet pixel is one room unit; a 48px
   tile is 48 units against a ~65-unit crew member. The Studio places at 50% by default;
   the owner calibrates size once against a crew member before decorating.
@@ -134,10 +185,10 @@ their session. A `git checkout` of them once discarded seventeen marks.
 
 Work from the untouched scanner boxes, never by patching a merged result.
 
-- **Blob pre-pass.** A box holding two or more boxes that cover ≥ 70% of it is the
+- **Blob pre-pass.** A box holding two or more boxes that cover â‰¥ 70% of it is the
   gap-tolerant blob of separate objects. Drop it, alias its id to its largest part.
   Skipping this made the merge "absorb" single chairs into chair pairs (446 blobs).
-- **Merge** two boxes when art crosses their contact: a run of opaque pixels ≥ 60% of
+- **Merge** two boxes when art crosses their contact: a run of opaque pixels â‰¥ 60% of
   the shared edge on both sides, and art just beyond each edge.
 - **Seam continuity guard**, both axes: refuse when the opaque columns (or rows) either
   side do not line up (overlap < 60% of the wider run) or the mean colour across the
@@ -224,11 +275,11 @@ Targets come from the game's painted room props (`legacy/**/pack/*.png`), not fr
 - Lift with a **gamma curve** per prop: it raises shadows and cannot clip a highlight.
 - Lift only props under the floor. A good prop sharing a sheet with a bad one is left
   alone; track a per-sheet "already lifted" mask so no pixel is lifted twice.
-- Props crushed harder than the conversion's own ×0.52 are restored to source × 0.52.
+- Props crushed harder than the conversion's own Ã—0.52 are restored to source Ã— 0.52.
   That is what had turned grey rock near-black.
 - Plants get a higher target (0.28). The owner flagged dark plants three times before
   the distribution was measured; measure the distribution the first time.
-- Screens and mid-greys are restored per pixel toward source × 0.82 and × 0.62, using
+- Screens and mid-greys are restored per pixel toward source Ã— 0.82 and Ã— 0.62, using
   masks built from the **source** sheet. Use the same pixel tests for the repair as for
   the measurement, or most measured pixels never qualify for the lift.
 - The library stays a touch under the owner's numbers on purpose. "A bit more" is a
@@ -314,9 +365,9 @@ owner's session, compare ids with HEAD before assuming a tool did it.
 
 ## The Studio side
 
-Tray controls: kind filter, set filter, search (label, set and the owner's name), **★
+Tray controls: kind filter, set filter, search (label, set and the owner's name), **â˜…
 Favourites**, **Marked for removal**, **Star**, **Mark for removal**, **Move to
-category…**, **Rename**, **Split in two**; Ctrl/Shift-click selects several and the mark
+categoryâ€¦**, **Rename**, **Split in two**; Ctrl/Shift-click selects several and the mark
 buttons act on the batch. The crew picker stands Bill, Marsh, Branforth or Veld in the
 room. A progress bar under the tray title counts previews as they render.
 
@@ -326,8 +377,8 @@ room. A progress bar under the tray title counts previews as they render.
 - **Never call a whole-catalog scan per entry.** `family_variants()` inside the rebuild
   loop was quadratic: the Studio froze on open and the editor test crept from minutes to
   42. Hoisted, the test takes 24 seconds. A loading screen would have hidden the bug.
-- Floor finishes: a room samples a finish as a 4×4 atlas, one quarter per 48-unit cell,
-  so a tileset floor is one tile repeated 4×4. The game draws every finish at 42% over
+- Floor finishes: a room samples a finish as a 4Ã—4 atlas, one quarter per 48-unit cell,
+  so a tileset floor is one tile repeated 4Ã—4. The game draws every finish at 42% over
   the base floor; new finishes read as subtle as the existing ones.
 - Floor decorations, wall decorations and lights are the game's own authored systems per
   room. The tray offers them nothing because no library art is wired in. They are not
@@ -340,7 +391,7 @@ Use `tools/tileset_library/sweep.py`; it does the following, and `--dry-run` sho
 1. Print the mark files. Keep anything also in `favourites.json` and tell the owner.
 2. Remove the registrations and blank the art on the sheets, written atomically (temp
    file, then replace). **Blank only pixels no surviving prop's region covers.** Boxes
-   overlap where props sit close: blanking whole boxes took 54–65% of the art out of five
+   overlap where props sit close: blanking whole boxes took 54â€“65% of the art out of five
    props the owner had kept. `register.py --validate` caught it; they were restored from
    the commit before the sweep.
 3. Append to `removed.json`, empty `retired.json`, then validate.
@@ -355,7 +406,7 @@ falls back to authored defaults, not to quarter 0. The room stays riser-north in
 quarter; only the open door sides move (`Geometry.has_port(room.layout[0], side)`).
 
 Drive the real editor from a `--script` probe: `switch_room`, `switch_rotation(q)`, copy
-the whole 0° draft (positions, flips, sizes, floor, removed defaults), nudge anything
+the whole 0Â° draft (positions, flips, sizes, floor, removed defaults), nudge anything
 intersecting `Store.door_lane(side)` for an open side the shortest way out, require
 `issues()` empty, then `save_layout()`. Back the file up first. Screenshot all four and
 send them; the owner's eye accepts a layout, the validator only permits it.
@@ -384,3 +435,255 @@ send them; the owner's eye accepts a layout, the validator only permits it.
 - The game must follow `merged.json` too. `Library.base_id` resolves aliases, because a
   merge once emptied three placed props out of the owner's Research Lab: only the tools
   had followed the map. The registry test checks every alias lands on a registered prop.
+
+## Migrated originals still used by runtime â€” September 20
+
+Do not infer runtime reachability from `legacy/default` versus `legacy/retired`.
+Base furniture may still load during Grid initialization or bounds calculation
+when a bought layout hides it. Check concatenated and formatted paths as well as
+literal paths when moving art. Exercise lazy loaders in all four directions:
+`tests/test_runtime_room_art.gd` reproduces the migration failure and covers the
+repaired room families. Null-returning raw texture loaders need explicit checks; the runtime test now
+checks all five foundation variants as well. For station capture, verify visible
+rooms and settled retained layers rather than relying on a fixed frame count.
+Use exact bindings for small known sets (such as the three power machines), and
+check the release dependency closure. Do not solve a missing path by generating
+replacement pixels or by suppressing SafeImage diagnostics. Native editor checks
+are not release-executable acceptance. See docs/RUNTIME_ART_MIGRATION_2026-09-20.md.
+
+
+Owner-reference review (September 21): Research combines overlapping equipment into
+assemblies; Crew Lounge layers furniture and rugs. Bounding-box intersection alone
+cannot reject these compositions. Record overlaps for visual inspection, and keep
+floor access/physical obstruction separate. A straight center-to-door segment test
+can flag an indirect route; inspect actual navigation before calling it a gameplay
+bug. Never rearrange owner references merely to satisfy a simplistic art-bounds gate.
+
+Door access diagnostics: use the preview navigation graph instead of requiring a
+straight route from room center. Report the exact prop collision rectangles at a
+blocked endpoint, including actor clearance. A preview failure is not a live-game
+navigation finding until effective gameplay props and routing are checked. Research
+q2 demonstrates this distinction; preserve the owner's reference layout meanwhile.
+
+A thin stray line beside a prop may be a neighbour caught in its registered crop,
+not damaged source pixels. Inspect the whole source sheet and the prop's full
+extent (including chair bases) before repainting. For a corrected rectangle, update
+region, absolute pieces, display_width and footprint together with set_geometry;
+then recheck native placement in every used rotation. Bio's lab-20 correction
+removed a neighbouring table edge and restored the chair without editing the sheet.
+
+Battery composition lesson: navigation success does not establish enough visual weight. Review the primary machinery at gameplay zoom before adding filler. A display-scale adjustment is not a source-resolution repair; preserve source art and inspect pixel/detail fit beside the existing crew and room.
+
+
+Reactor composition lesson: inspect the actual subject as well as its broad
+category. A small reactor control housing did not read as the room's main machine.
+A reactor stack, cooling assembly and operator console clarified the function
+without filling the open service area. Hide unused layout placements, not library
+entries. Bought substitutions do not inherit legacy-ID animation overlays; record
+static machinery separately from operating-animation acceptance.
+
+## Command Center review lesson (September 21)
+
+Source titles are not visual evidence: ns-154 is labelled an office chair but its
+actual crop is a wooden crate. Inspect selected source pixels before composing;
+keep registry label repairs separate from owner names/marks. A central briefing
+station needs circulation around its base and a clear south-door approach. The
+first Command Center candidate at y50 blocked all four quarter checks; y-12 passed.
+Use full RGBA array equality for saved/default image comparisons; do not rely on
+a difference bounding box that may ignore RGB changes under unchanged alpha.
+Installed stills and geometry do not establish operating-console animation.
+
+
+Salvage rotation lesson (September 21): audit the effective prop IDs after each
+rotation-specific restoration, not just navigation. Deleted legacy equipment
+returned and the sorter disappeared in q3 even though routes passed. When the
+full-wall bank is explicitly removed, retain the layout-store result rather than
+reapplying the old bank-specific furniture restoration. Exercise repeated setup
+and assert both deleted IDs and surviving functional equipment. Quarantine q2
+showed the same failure: berth/filter/monitor returned while the cabinet vanished.
+Also inspect inherited default copy entries when a saved override omits them;
+absence from an override does not mean deletion from the merged layout.
+
+Promotion lesson: saved layouts are sparse overrides. Materialize previous defaults
+merged with candidate overrides before replacing a default key. Otherwise omitted
+size/flip/source entries may vanish. Construction q2 lost an inherited panel size;
+full RGBA comparison caught the mismatch. Compare effective native saved/default
+views after promotion, not just equality of the JSON entries you wrote.
+
+
+Biomass candidate lesson (September 21): a missing focal machine does not justify
+installing the first large processing sprite. Review visible top planes and height
+against the camera contract at live scale; tall factory elevations can pass all
+walking checks. Establish adjacent inlet/feedstock handling before adding effects.
+Repeated door-quarter captures do not prove authored equipment orientations.
+
+
+Collision/shadow distinction: registration footprint controls floor shadow.
+Geometry.prop_collision_rects uses collision_boxes when present, otherwise the
+full prop rectangle. Do not claim a footprint change repairs routes, or weaken
+collision merely to expose a depth overlap. Check the actual collision consumer.
+For a room-specific operating screen, use a dedicated registration so other
+rooms sharing the bought source keep their behavior.
+
+
+When giving a prop a consistent position across quarters, also inspect inherited
+size and flip values in each effective layout. Shield q1/q3 used a larger coupling
+than q0, blocking west approaches at the same coordinates. Explicit intended size
+and removal of the inherited q3 patch rack resolved routes and visual overlap.
+Do not infer equal footprints from equal position arrays.
+
+
+Radio restoration lesson (September 21): assert preservation of explicitly placed
+legacy furniture as well as bought props and deleted IDs. A bank wrapper can keep
+library entries yet silently discard a standalone bench in one quarter. Repeated
+setup regression reproduced this q2 failure. A clean route/overlap report still does
+not make isolated corner equipment a coherent workstation; review live scale before
+promoting layout candidates. See SUPPORT_ROOM_REVIEW_2026-09-21.md.
+
+
+Radio panel placement lesson: legacy dressing placement anchors are not always the
+upper-left visual corner. Check native prop_visual_bounds against the raised wall;
+a route-valid panel can overlap it. Lowering the panel anchor corrected the r3
+wall overlap in r4 without changing source pixels or weakening collision. Static
+screen imagery must not be reported as operating feedback.
+
+
+Workshop composition lesson (September 21): inspect existing overhead assemblies
+before placing individual tools. A teardown bench already supporting its tools,
+parts and workpiece conveys the activity better than an empty table plus a loose
+floor tool board. Group bought machining equipment and cargo handling around it.
+A restored static powered indicator is not new mechanical animation. Review every
+quarter when the primary assembly has separately authored directional art.
+
+
+Holographic Core lesson (September21): legacy position fallbacks must not overwrite
+an explicit merged layout position after apply. Test actual coordinates over repeated
+setup, not only retained IDs. Bought hologram glow can be baked imagery with no
+operating metadata; restoring another machine's animation does not make it respond
+to power. Increasing scale reveals coarse pixels rather than adding missing detail.
+
+
+Layered projector lesson (September21): keep physical housing in a static source and
+render the projection from operating state and the station visual clock. Reserve
+transparent effect bounds separately from explicit physical collision boxes; shadow
+footprint is not collision. A custom library effect needs custom_library_draw and
+live classification in the retained renderer, checked after repeated setup. Test
+actual station pause as well as repeated held-clock captures. A repaired projector
+does not establish offline correctness for a separate baked-glow chart display.
+
+
+For a flat bought chart panel, a dedicated registration can sample only the original
+stand while the room renderer supplies a dark panel and switched telemetry. This
+avoids repainting the shared atlas or placing live curves over still-glowing source
+pixels. Verify the stand region stays pixel-identical between powered states and
+the custom chart remains live after repeated setup. Preserve its full original
+region for placement/scale even when sampled pieces cover only the stand.
+
+
+Radio display verification lesson: constrain powered and animated pixel differences
+to the actual source apertures (with stated raster tolerance), not just the full
+machine bounding box. Check both displays independently and preserve surrounding
+bezel/cable pixels. Distinguish repaired displays from decorative source indicator
+lamps; do not claim that every light in the room has correct power behavior.
+
+
+Powered-display retention: custom renderers should classify clock-driven emission
+as live only while operating when their offline source is static. Test on/off/on
+with the same queue and prop objects so power-state invalidation is exercised,
+then compare retained and direct pixels. Count the saved redraws without converting
+that scoped result into an unmeasured overall FPS claim. Preserve other machines'
+classification rules rather than applying a global offline rule.
+
+
+Medical support lesson (September21): identify whole supported assemblies before
+adding accessories. A consultation table includes its seats; the diagnostic console
+includes its stool. Do not leave duplicate loose seats, floor laptops or examination
+lights floating over unrelated furniture. Records rooms benefit from filing storage,
+not inherited medicine cabinets. Med Center q3 also dropped an explicitly placed
+console despite passing routes; presence/position checks across repeated setup catch
+missing support furniture that route tests cannot.
+
+Power grouping lesson (September21): removing loose gauges can leave a room sparse;
+group the remaining medium controls by activity before adding more pieces. Heat
+Recovery's tighter grouping blocked a west-door approach despite nonoverlapping
+sprites. Keep the actual crew clearance through the service aisle, then review at
+gameplay scale. Turbine supports need quarter-specific grouping around directional
+machinery. Verify native saved/default pixel parity after promotion and wait for
+the card baker to finish before reviewing its outputs.
+
+Anomaly effect integration lesson: bought props can carry full_wall=true after
+bank layout application. A full_wall.owns early return can therefore bypass a
+room-specific overlay even when custom_library_draw is set. Trace effective flags
+and test each intended effect independently. A prototype subclass may work because
+its overlay executes after the parent returns; integrating into that parent changes
+the order. Require installed/prototype pixel parity, not only whole-room motion.
+# Shared-renderer review identity
+
+When replacing activity furniture, validate its service points as well as room
+doors. Observation's bought sofa preserved reading but covered a rotated watch
+anchor. A nearest-clear-point lookup fixes that interaction only if each activity
+uses its own cache scope: `reachable_stations` stores results on the passed data,
+so a sofa lookup must not reuse a watch lookup's anchors or mutate its modes.
+Use its optional cache key to retain distinct activity lookups on the geometry
+dictionary; copying and discarding the cache would repeat the whole point scan.
+
+Airlock furniture review must retain its functional `pressure_chamber` and
+`outer_hatch`: a saved null can remove collision and gate/control rendering while
+leaving a convincing floor insert behind. Check wet-area exclusion and locker
+service approach separately from doorway circulation. Studio's 172px actor bound
+differs from production's 176px closed-wall bound; diagnose the actual service
+point before moving furniture to satisfy a preview-only limit. See the September
+21 saved/default audit for the installed R2 and scoped verification.
+
+A failed Studio grid route is not automatically a sealed passage or a live-game
+failure. Probe the same clearance predicates at finer spacing to distinguish a
+missed narrow band from obstruction; retain the original failure. Check production
+geometry too: narrow corridor furnishing currently does not contribute live crew
+blockers, whereas Studio previews do include its footprints. A diagnostic fine
+route does not justify claiming the Studio walk passed or increasing production
+graph density without measuring cost.
+
+When a catalog reuses a renderer (straight, corner and T corridors), assign its
+`room_id` before adding it to the tree, as the Studio does. A correct label does
+not establish a correct rendered identity. Compare declared doorway masks with
+the actual floor polygon in all rotations before diagnosing route failures.
+Corridor hull renderers do not own generic room wall textures: preview helpers
+must not call the generic north-wall renderer for these identities. September 21
+evidence: `docs/LAYOUT_DEFAULT_AUDIT_2026-09-21.md`.
+# Compound furniture collision
+
+Composition refinement: removal-only cleanup can reduce scatter but weaken a
+room's visual balance. Compare at unchanged native scale before promotion. A
+single medium bought planter can replace loose plants without enlarging source
+pixels; retain purposeful growing, tending and seating groups and their routes.
+Refresh the relevant rollout-ledger entry and card hash when the selected layout
+supersedes old furniture, rather than leaving a historically accurate but stale
+prop list as the current review record.
+Distinguish absent card-bound reviews from stale hashes and missing art. A valid
+selected card with no ledger binding may have newer native evidence in a handoff;
+do not automatically mark it visually rejected or overwrite historical review
+hashes without inspecting the current artifact. Report generation must preserve
+both prose and list-valued legacy limitations safely.
+
+When a bed or other furnishing includes a shorter side cabinet, its full image or
+placement rectangle can block visibly empty floor. Inspect the source silhouette
+and production padded blockers before moving furniture or compensating with actor
+offsets. Use conservative component collision boxes where supported; test solid
+components as negative controls and the empty notch for both clearance and a route.
+Verify unchanged native rendering separately. Opening a notch does not validate a
+previously proposed animation entry or imply that a replacement bunk is functional.
+
+## Furniture foreground layers
+
+Split compound props into complementary full-atlas masks with original polygons
+and UVs; separately triangulated pieces can alter filtered edges. Preserve source
+textures and collision/layout dictionaries. Cache mask pairs once. Use stable queue
+entries for both direct and retained drawing, with opted-in sleeping pose depth.
+Layer entries copy presentation dictionaries: same-depth sideways moves must
+invalidate those copies. Include rect, registration, flip and source texture in
+layer signatures. Resolve variant_source before copy_source for source-specific
+masks. Test empty, occupied, mirrored, retained/direct and sideways-move controls.
+Use exact image bytes or all-channel differences for framebuffer parity: Pillow
+RGBA getbbox can ignore RGB changes when alpha differences are all zero. A test
+subclass can lose script.resource_path-based renderer identity; use a scoped switch
+on the actual renderer when comparing behavior.

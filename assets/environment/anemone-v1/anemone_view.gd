@@ -15,7 +15,7 @@ func prepare() -> void:
 	if prepared: return
 	prepared = true
 	var source := Image.new()
-	if source.load(ROOT+SOURCES["low-anemones"])==OK:
+	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["low-anemones"])==OK:
 		textures["low-anemones"]=ImageTexture.create_from_image(source)
 func render_into(canvas: CanvasItem, cell_size: float) -> void:
 	prepare()

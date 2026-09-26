@@ -18,11 +18,15 @@ func run() -> void:
 	var e=Editor.open(host)
 	assert(not host.visible,"Covered scene is hidden instead of redrawn behind the studio")
 	await process_frame
+	# Native (built-in) furniture only remains in rooms that keep pre-v2 art
+	# (station props v2): run in BRINE Core.
+	for brine_i in range(e.entries.size()):
+		if str(e.entries[brine_i].room)=="brine_core": e.index=brine_i; e.quarter=0; e.load_room(); break
 	# Repeated movement retains tray UI state and does not write recovery again.
 	e.library_list.select(2)
 	# sample_cooler is tombstoned in the research defaults since the Sept 9
 	# large-asset layout pass; move a prop that is still placed.
-	e.selected="research_scanner"; e.free_placement.button_pressed=true
+	e.selected="brine_dual_workstation"; e.free_placement.button_pressed=true
 	for i in range(5): e.draft[e.selected][0]+=1; e.refresh()
 	assert(e.library_list.is_selected(2),"Tray selection survives movement")
 	e.dirty=true; e.write_recovery()

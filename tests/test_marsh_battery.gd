@@ -96,6 +96,19 @@ func run():
 	var distant: int=actor.nearest_in_room(Vector2(20.5,22.5)*384.0,Vector2i(20,22),false)
 	actor.foot=actor.graph.get_point_position(distant)
 	actor.battery=35;game.resources.power=0;game.powered_room_cells[CORE]=true
+	actor.update(game,.01)
+	check(not actor.path.is_empty() and actor.goal=="recharge","Recharge begins with a route to the pod")
+	var searches: int=preload("res://scripts/bill_npc.gd").route_searches
+	actor.update(game,.01)
+	check(preload("res://scripts/bill_npc.gd").route_searches==searches,"Following a charging route does not search again each frame")
+	actor.path.clear() # The same invalidation used when move finds an obstruction.
+	actor.hardware_doors_locked=true
+	var held_foot: Vector2=actor.foot
+	actor.update(game,.01)
+	check(actor.path.is_empty() and actor.foot==held_foot,"Locked doors hold an invalidated recharge route")
+	actor.hardware_doors_locked=false
+	actor.update(game,.01)
+	check(not actor.path.is_empty() and preload("res://scripts/bill_npc.gd").route_searches>searches,"An invalidated charging route is searched again after access returns")
 	var samples:=0
 	for i in range(1000):
 		var before: Vector2=actor.foot

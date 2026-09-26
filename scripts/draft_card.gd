@@ -21,6 +21,7 @@ static func build(game, id: String) -> PanelContainer:
 	var affordable: bool = game._can_afford(cost)
 	var category_color: Color = RoomDatabase.room_color(str(room["id"]))
 	var card := PanelContainer.new()
+	card.theme = preload("res://scripts/ui_fonts.gd").card_theme()
 	card.name = "%sCard" % id
 	card.size = CARD_SIZE
 	card.custom_minimum_size = CARD_SIZE

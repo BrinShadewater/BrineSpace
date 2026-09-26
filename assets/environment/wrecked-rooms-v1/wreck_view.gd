@@ -8,7 +8,7 @@ func texture(kind: String, stage: String) -> Texture2D:
 	if not textures.has(key):
 		var path := ROOT+key+"-v1.png"
 		var image := Image.new()
-		if FileAccess.file_exists(path) and image.load(path)==OK:
+		if FileAccess.file_exists(path) and preload("res://scripts/safe_image.gd").load_png(image, path)==OK:
 			textures[key] = ImageTexture.create_from_image(image)
 		else:
 			return null
@@ -26,6 +26,11 @@ func draw_into(canvas: CanvasItem, wrecks: Dictionary, cell_size: float, time: f
 		# A flat remaining foundation, not a functioning hull or doorway.
 		canvas.draw_rect(inner,Color(0.12,0.19,0.20,0.38),false,cell_size*0.018)
 		if w.cleared:
+			continue
+		if w.kind=="recovery":
+			# An anonymous sealed hull: no human/android interior until surveyed.
+			var unknown := texture("medical","wreck")
+			if unknown!=null: canvas.draw_texture_rect(unknown,rect,false,Color(.38,.48,.5))
 			continue
 		var full := texture(w.kind,"wreck")
 		var stripped := texture(w.kind,"stripped")

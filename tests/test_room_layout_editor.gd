@@ -20,7 +20,13 @@ func run() -> void:
 	await process_frame
 	assert(paused,"Editor pauses expedition")
 	assert(editor.entries.size()==47)
-	editor.selected="sample_cooler"
+	# Native (built-in) furniture only remains in rooms that keep their pre-v2 art
+	# (station props v2): exercise the native-prop workflow in BRINE Core.
+	var BRINE:=-1
+	for i in range(editor.entries.size()):
+		if str(editor.entries[i].room)=="brine_core": BRINE=i
+	editor.index=BRINE; editor.quarter=0; editor.load_room()
+	editor.selected="brine_dual_workstation"
 	var prop: Dictionary=editor.selected_prop()
 	assert(not prop.is_empty())
 	var before: Dictionary=editor.draft.duplicate(true)
@@ -90,13 +96,14 @@ func run() -> void:
 	assert(editor.draft[decoration.id]!=original,"Decoration drag changes position")
 	editor.save_layout(); assert(not editor.dirty)
 	Store.loaded=false; Store.data={}; Store.ensure_loaded()
-	assert(Store.positions(editor.entries[0].asset,0).has("sample_cooler"),"Disk persistence")
-	assert(Store.positions(editor.entries[0].asset,1).is_empty(),"Rotations stay independent")
-	var room=load(editor.entries[0].view).new()
+	assert(Store.positions(editor.entries[BRINE].asset,0).has("brine_dual_workstation"),"Disk persistence")
+	assert(Store.positions(editor.entries[BRINE].asset,1).is_empty(),"Rotations stay independent")
+	var room=load(editor.entries[BRINE].view).new()
 	room.embedded=true; root.add_child(room); room.hide()
 	room.configure_embedded(0,[],false,0.0)
+	Store.apply(room,Store.asset_for(room)) # as grid_canvas does for views without a full wall
 	for item in room.props:
-		if item.id=="sample_cooler": assert(item.rect.position.distance_to(destination)<0.01,"Actual runtime applies saved layout")
+		if item.id=="brine_dual_workstation": assert(item.rect.position.distance_to(destination)<0.01,"Actual runtime applies saved layout")
 	assert(Store.surface_positions(room)["floor/finish"]==editor.floor_tools.paths[1],"Runtime floor finish override")
 	var runtime_decor: Array=Editor.Details.resolve(room,Editor.Floor.profile_for(room)).pieces
 	for piece in runtime_decor:
@@ -106,21 +113,21 @@ func run() -> void:
 	RenderingServer.force_draw()
 	root.get_texture().get_image().save_png("res://output/layout-editor/studio.png")
 	# Native props and floor details can be returned, restored and persisted.
-	editor.layer=0; editor.selected="sample_cooler"
+	editor.layer=0; editor.selected="brine_dual_workstation"
 	editor.remove_library_asset()
-	assert(editor.draft.sample_cooler==null and editor.selected_prop().is_empty())
+	assert(editor.draft.brine_dual_workstation==null and editor.selected_prop().is_empty())
 	var in_tray:=false
 	for i in range(editor.library_list.item_count):
-		if editor.library_list.get_item_metadata(i)=="sample_cooler": in_tray=true
+		if editor.library_list.get_item_metadata(i)=="brine_dual_workstation": in_tray=true
 	assert(in_tray,"Original prop returns to sidebar tray")
-	editor.undo(); assert(editor.draft.sample_cooler is Array)
-	editor.redo(); assert(editor.draft.sample_cooler==null)
+	editor.undo(); assert(editor.draft.brine_dual_workstation is Array)
+	editor.redo(); assert(editor.draft.brine_dual_workstation==null)
 	editor.free_placement.button_pressed=true
-	assert(editor.add_library_asset("sample_cooler",Vector2(300,280)))
+	assert(editor.add_library_asset("brine_dual_workstation",Vector2(300,280)))
 	assert(editor.issues().is_empty(),"Free placement accepts outside positions")
 	editor.save_layout(); assert(not editor.dirty)
 	Store.loaded=false; Store.data={}; editor.load_room()
-	assert(editor.free_placement.button_pressed and editor.draft.sample_cooler[0]>180,"Free placement survives disk reload")
+	assert(editor.free_placement.button_pressed and editor.draft.brine_dual_workstation[0]>180,"Free placement survives disk reload")
 	editor.layer=2
 	var remaining: Array=editor.entities()
 	assert(not remaining.is_empty())
@@ -130,15 +137,15 @@ func run() -> void:
 	for piece in editor.entities(): assert(piece.id!=detail_id)
 	editor.save_layout(); Store.loaded=false; Store.data={}; editor.load_room()
 	assert(editor.draft[detail_id]==null,"Decoration removal survives reload")
-	editor.layer=0; editor.selected="sample_cooler"; editor.remove_library_asset(); editor.save_layout()
-	var removed_live=load(editor.entries[0].view).new(); removed_live.embedded=true
-	root.add_child(removed_live); removed_live.hide(); removed_live.configure_embedded(0,[],false,0.0)
-	for item in removed_live.props: assert(item.id!="sample_cooler","Runtime honors native removal")
+	editor.layer=0; editor.selected="brine_dual_workstation"; editor.remove_library_asset(); editor.save_layout()
+	var removed_live=load(editor.entries[BRINE].view).new(); removed_live.embedded=true
+	root.add_child(removed_live); removed_live.hide(); removed_live.configure_embedded(0,[],false,0.0); Store.apply(removed_live,Store.asset_for(removed_live))
+	for item in removed_live.props: assert(item.id!="brine_dual_workstation","Runtime honors native removal")
 	removed_live.free()
 	print("TRAY/FREE PLACEMENT PASS: native props, details, undo/redo, tray restore, disk and runtime")
 
 	editor.reset_layout(); editor.save_layout()
-	assert(Store.positions(editor.entries[0].asset,0).is_empty(),"Reset removes saved override")
+	assert(Store.positions(editor.entries[BRINE].asset,0).is_empty(),"Reset removes saved override")
 	var library_id:="library/crew-lounge-built-in"
 	editor.library_filter.select(3); editor.rebuild_library()
 	print("LIBRARY ",editor.Library.entries().size()," visible ",editor.library_list.item_count," search ",editor.library_search.text)
@@ -178,12 +185,13 @@ func run() -> void:
 	editor.switch_rotation(4); assert(editor.quarter==0,"Rotate right wraps")
 	editor.save_layout(); Store.loaded=false; Store.data={}; editor.load_room()
 	assert(editor.draft.has(library_id),"Inserted artwork reloads from disk")
-	var live=load(editor.entries[0].view).new(); live.embedded=true; root.add_child(live); live.hide(); live.configure_embedded(0,[],false,0.0)
+	var live=load(editor.entries[BRINE].view).new(); live.embedded=true; root.add_child(live); live.hide(); live.configure_embedded(0,[],false,0.0)
+	Store.apply(live,editor.entries[BRINE].asset) # views without a full wall apply on draw; do it here
 	var additions:=0
 	for item in live.props:
 		if item.id==library_id: additions+=1; assert(item.has("library_texture"),"Runtime restores registered art"); assert(item.rect.size.distance_to(original_size*0.5)<0.01,"Runtime restores saved size")
 	assert(additions==1,"Runtime contains one inserted asset")
-	Store.apply(live,editor.entries[0].asset)
+	Store.apply(live,editor.entries[BRINE].asset)
 	additions=0
 	for item in live.props:
 		if item.id==library_id: additions+=1
@@ -196,27 +204,28 @@ func run() -> void:
 	root.get_texture().get_image().save_png("res://output/layout-editor/library.png")
 	editor.reset_layout(); editor.save_layout()
 	var adopted:=FileAccess.open(Store.defaults_path,FileAccess.WRITE)
-	adopted.store_string(JSON.stringify({"version":1,"layouts":{Store.key(editor.entries[0].asset,0):{"tile/0/0":[2,3]}}})); adopted.close()
+	adopted.store_string(JSON.stringify({"version":1,"layouts":{Store.key(editor.entries[BRINE].asset,0):{"tile/0/0":[2,3]}}})); adopted.close()
 	editor.load_room()
 	assert(int(editor.draft["tile/0/0"][0])==2,"Editor loads adopted default")
 	editor.draft["tile/0/0"]=[1,1]; editor.refresh(); editor.save_layout()
-	assert(int(Store.positions(editor.entries[0].asset,0)["tile/0/0"][0])==1,"Local edits override default")
+	assert(int(Store.positions(editor.entries[BRINE].asset,0)["tile/0/0"][0])==1,"Local edits override default")
 	editor.reset_layout(); editor.save_layout()
-	assert(int(Store.positions(editor.entries[0].asset,0)["tile/0/0"][0])==2,"Reset restores adopted default")
-	assert(Store.data.get(Store.key(editor.entries[0].asset,0),{}).is_empty(),"Reset clears local draft")
-	editor.layer=0; editor.selected="sample_cooler"
+	assert(int(Store.positions(editor.entries[BRINE].asset,0)["tile/0/0"][0])==2,"Reset restores adopted default")
+	assert(Store.data.get(Store.key(editor.entries[BRINE].asset,0),{}).is_empty(),"Reset clears local draft")
+	editor.layer=0; editor.selected="brine_dual_workstation"
 	var flip_before: Dictionary=editor.draft.duplicate(true)
 	editor.flip_selected(0)
-	assert(Store.flip_axes(editor.room,"sample_cooler")==Vector2(-1,1))
+	assert(Store.flip_axes(editor.room,"brine_dual_workstation")==Vector2(-1,1))
 	editor.undo(); assert(editor.draft==flip_before)
 	editor.redo(); editor.flip_selected(1)
-	assert(Store.flip_axes(editor.room,"sample_cooler")==Vector2(-1,-1))
+	assert(Store.flip_axes(editor.room,"brine_dual_workstation")==Vector2(-1,-1))
 	editor.save_layout(); Store.loaded=false; Store.data={}; editor.load_room()
-	assert(Store.flip_axes(editor.room,"sample_cooler")==Vector2(-1,-1),"Both flips persist")
-	var flipped_live=load(editor.entries[0].view).new(); flipped_live.embedded=true
+	assert(Store.flip_axes(editor.room,"brine_dual_workstation")==Vector2(-1,-1),"Both flips persist")
+	var flipped_live=load(editor.entries[BRINE].view).new(); flipped_live.embedded=true
 	root.add_child(flipped_live); flipped_live.hide(); flipped_live.configure_embedded(0,[],false,0.0)
+	Store.apply(flipped_live,Store.asset_for(flipped_live))
 	for item in flipped_live.props:
-		if item.id=="sample_cooler": assert(item.layout_flip==Vector2(-1,-1))
+		if item.id=="brine_dual_workstation": assert(item.layout_flip==Vector2(-1,-1))
 	flipped_live.free()
 	await process_frame
 	RenderingServer.force_draw()
@@ -246,7 +255,7 @@ func run() -> void:
 		Store.loaded=false; Store.data={}; editor.load_room(); editor.layer=3
 		assert(absf(editor.draft[wall_item.id][0]-wall_before[0]-6)<0.01,"Riser position survives reload")
 		assert(Store.flip_axes(editor.room,wall_item.id)==Vector2(-1,1))
-		var runtime_mounts: Array=editor.Riser.decorations(str(editor.entries[0].room),Store.positions(editor.entries[0].asset,0))
+		var runtime_mounts: Array=editor.Riser.decorations(str(editor.entries[BRINE].room),Store.positions(editor.entries[BRINE].asset,0))
 		assert(absf(runtime_mounts[0].rect.position.x-wall_before[0]-6)<0.01,"Runtime resolves saved riser positions")
 		editor.selected=wall_item.id; editor.canvas.queue_redraw()
 		await process_frame
@@ -269,7 +278,7 @@ func run() -> void:
 	editor.fit_view(); assert(editor.pan==Vector2.ZERO and editor.zoom==1.0)
 	# Reset, undo and the Delete guard are not riser-specific; they used a riser
 	# fitting as their subject, which exists only while wall decorations run.
-	var ux_target:="sample_cooler"
+	var ux_target:="brine_dual_workstation"
 	editor.layer=0; editor.selected=ux_target; editor.selected_many.clear(); editor.refresh()
 	var edited_wall: Array=editor.draft[ux_target].duplicate()
 	editor.reset_selected(); assert(editor.draft[ux_target]==editor.defaults[ux_target])
@@ -304,56 +313,57 @@ func run() -> void:
 	print("PREVIEW TOGGLES PASS: independent lights, advancing animation and frozen clock")
 
 	editor.library_filter.select(1); editor.rebuild_library()
-	assert(editor.library_list.item_count==45,"Common category includes reusable furniture and fittings")
+	# Station props v2: Common Props lists the owner's cut-out common furniture.
+	assert(editor.library_list.item_count==36,"Common category includes reusable furniture and fittings")
 	for i in range(editor.library_list.item_count):
-		assert(editor.Library.entries()[editor.library_list.get_item_metadata(i)].group=="common")
+		assert(editor.Library.entries()[editor.library_list.get_item_metadata(i)].category=="common")
 	editor.free_placement.button_pressed=true
-	assert(editor.add_library_asset("library/common-acoustic_operator_chair",Vector2(45,80)))
+	assert(editor.add_library_asset("library/sp-storage_bay-4",Vector2(45,80)))
 	editor.flip_selected(0); editor.resize_selected(125)
 	editor.save_layout(); Store.loaded=false; Store.data={}; editor.load_room()
-	assert(editor.draft.has("library/common-acoustic_operator_chair"),"Common asset survives save/reload")
+	assert(editor.draft.has("library/sp-storage_bay-4"),"Common asset survives save/reload")
 	await process_frame
 	RenderingServer.force_draw()
 	root.get_texture().get_image().save_png("res://output/layout-editor/common-assets.png")
-	print("COMMON ASSETS PASS: 45 templates, filtered tray, placement, flip, resize and persistence")
+	print("COMMON ASSETS PASS: 36 templates, filtered tray, placement, flip, resize and persistence")
 
 	editor.layer=0; editor.rebuild_list(); editor.library_search.grab_focus()
 	for i in range(editor.prop_list.item_count):
-		if editor.prop_list.get_item_metadata(i)=="library/common-acoustic_operator_chair":
+		if editor.prop_list.get_item_metadata(i)=="library/sp-storage_bay-4":
 			editor.prop_list.item_selected.emit(i)
 	assert(root.gui_get_focus_owner()==editor.canvas,"Selecting artwork leaves text entry focus")
 	var native_delete:=InputEventKey.new(); native_delete.physical_keycode=KEY_DELETE; native_delete.pressed=true
 	editor._input(native_delete)
-	assert(not editor.draft.has("library/common-acoustic_operator_chair"),"Physical Delete returns selected object to tray")
+	assert(not editor.draft.has("library/sp-storage_bay-4"),"Physical Delete returns selected object to tray")
 	print("DELETE FOCUS PASS: sidebar selection after search, physical Delete and tray return")
 
-	editor.layer=0; editor.selected="sample_cooler"; editor.selected_many=[]
+	editor.layer=0; editor.selected="brine_dual_workstation"; editor.selected_many=[]
 	editor.free_placement.button_pressed=true
 	editor.duplicate_selected()
 	var copied: String=editor.selected
 	assert(copied.begins_with("copy/"))
 	assert(not editor.selected_prop().is_empty(),"Native duplicate exists")
-	editor.selected_many=["sample_cooler",copied]; editor.selected="sample_cooler"
+	editor.selected_many=["brine_dual_workstation",copied]; editor.selected="brine_dual_workstation"
 	var group_before: Dictionary=editor.draft.duplicate(true)
-	editor.x_control.value=editor.draft.sample_cooler[0]+20
+	editor.x_control.value=editor.draft.brine_dual_workstation[0]+20
 	assert(editor.draft[copied][0]==group_before[copied][0]+20,"Coordinate field moves group")
 	editor.flip_selected(0)
 	assert(editor.draft["flip/"+copied][0]!=group_before.get("flip/"+copied,[false,false])[0])
 	editor.toggle_selection_flag("locked/")
-	var locked_position: Array=editor.draft.sample_cooler.duplicate()
+	var locked_position: Array=editor.draft.brine_dual_workstation.duplicate()
 	editor.x_control.value+=20
-	assert(editor.draft.sample_cooler==locked_position,"Lock prevents movement")
+	assert(editor.draft.brine_dual_workstation==locked_position,"Lock prevents movement")
 	editor.toggle_selection_flag("locked/"); editor.toggle_selection_flag("hidden/")
 	assert(editor.draft["hidden/"+copied])
 	var edited: Dictionary=editor.draft.duplicate(true)
 	editor.compare_layout(true); assert(editor.draft==editor.defaults)
 	editor.compare_layout(false); assert(editor.draft==edited,"Compare preserves edits")
 	editor.switch_rotation(1); editor.free_placement.button_pressed=true
-	editor.draft["flip/sample_cooler"]=[true,false]; editor.dirty=true
+	editor.draft["flip/brine_dual_workstation"]=[true,false]; editor.dirty=true
 	editor.save_all_rotations()
 	assert(not editor.has_unsaved_rotations(),"Save All clears saved rotation drafts")
-	assert(Store.positions(editor.entries[0].asset,0).has(copied))
-	assert(Store.positions(editor.entries[0].asset,1).has("flip/sample_cooler"))
+	assert(Store.positions(editor.entries[BRINE].asset,0).has(copied))
+	assert(Store.positions(editor.entries[BRINE].asset,1).has("flip/brine_dual_workstation"))
 	editor.quarter=0
 	for i in range(editor.entries.size()):
 		editor.index=i; editor.rotation_drafts.clear(); editor.load_room()
@@ -361,8 +371,8 @@ func run() -> void:
 		await process_frame
 	print("EXPANSION PASS: 47 rooms, duplication, group coordinates/flip, lock/hide, compare, Save All")
 
-	editor.index=0; editor.quarter=0; editor.load_room(); editor.layer=0
-	editor.selected="sample_cooler"; editor.selected_many=[]
+	editor.index=BRINE; editor.quarter=0; editor.load_room(); editor.layer=0
+	editor.selected="brine_dual_workstation"; editor.selected_many=[]
 	editor.toggle_selection_flag("hidden/")
 	editor.add_library_asset("library/common-analog_clock",Vector2(-60,60))
 	editor.add_library_asset("library/common-analog_clock",Vector2(10,60))

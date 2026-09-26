@@ -13,7 +13,7 @@ $releaseLog = Join-Path $releaseRoot 'output/release-export.log'
 # The export presets point at two template executables under output/, which is
 # also where cleanup passes look. Restore them from the verified bundle rather
 # than failing the build (September 12, 2026 — a cleanup left only the .tpz).
-$templateDir = Join-Path $releaseRoot 'output/production-ten/export-tools'
+$templateDir = Join-Path $releaseRoot 'output/export-tools/4.7.2-stable'
 $templateNames = @('windows_debug_x86_64.exe', 'windows_release_x86_64.exe')
 $missingTemplates = @($templateNames | Where-Object { -not (Test-Path -LiteralPath (Join-Path $templateDir $_)) })
 if ($missingTemplates.Count -gt 0) {
@@ -41,6 +41,27 @@ if ($missingTemplates.Count -gt 0) {
         }
     } finally { $archive.Dispose() }
 }
+# Filenames and directories are not version evidence: an old 4.6.1 template
+# previously produced an EXE that could not read the editor's version-4 PCK.
+function Read-GodotVersion([string]$Binary, [string]$Label) {
+    $versionLog = Join-Path $releaseRoot ("output/release-version-" + $Label + ".txt")
+    $versionProcess = Start-Process -FilePath $Binary -ArgumentList '--version' -WindowStyle Hidden -PassThru -Wait -RedirectStandardOutput $versionLog
+    $versionText = (Get-Content -LiteralPath $versionLog -Raw).Trim()
+    if ($versionProcess.ExitCode -ne 0 -or $versionText -notmatch '^\d+\.\d+') { throw "Cannot verify $Label version: $versionText" }
+    return $versionText
+}
+$editorVersion = Read-GodotVersion $Godot 'editor'
+$presetText = Get-Content -LiteralPath (Join-Path $releaseRoot 'export_presets.cfg') -Raw
+$gamePreset = [regex]::Match($presetText, '(?ms)^\[preset\.(\d+)\]\s*\r?\n(?:(?!^\[).)*?^name="Windows Game"')
+if (-not $gamePreset.Success) { throw 'Windows Game preset missing.' }
+$optionsPattern = '(?ms)^\[preset\.' + $gamePreset.Groups[1].Value + '\.options\]\s*\r?\n(?<options>(?:(?!^\[).)*)'
+$optionsText = [regex]::Match($presetText, $optionsPattern).Groups['options'].Value
+$templateOption = [regex]::Match($optionsText, '(?m)^custom_template/release="([^"]+)"')
+if (-not $templateOption.Success) { throw 'Windows Game must name a release template for version verification.' }
+$selectedTemplate = $templateOption.Groups[1].Value
+if (-not [IO.Path]::IsPathRooted($selectedTemplate)) { $selectedTemplate = Join-Path $releaseRoot $selectedTemplate }
+$templateVersion = Read-GodotVersion $selectedTemplate 'template'
+if ($editorVersion -ne $templateVersion) { throw "Export version mismatch: editor $editorVersion; release template $templateVersion. Install matching templates before exporting." }
 python (Join-Path $releaseRoot 'tools/build_release_manifest.py')
 if ($LASTEXITCODE -ne 0) { throw 'Runtime dependency manifest failed.' }
 python (Join-Path $releaseRoot 'tools/set_raw_png_import_keep.py')

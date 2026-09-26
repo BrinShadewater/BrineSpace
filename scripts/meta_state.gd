@@ -20,6 +20,7 @@ var selected_companion_ids: Array = []
 # Archived Data shop (owner playtest, Sept 17): characters met during a loop can be bought for
 # future loops; purchased_ids ("room:<id>" / "crew:<id>" -> cost paid) keeps the spend ledger.
 var met_character_ids := {}
+var sighted_character_ids := {"bill":true}
 var purchased_ids := {}
 var last_error := ""
 var recovered_backup := false
@@ -38,6 +39,15 @@ func record_character(id: String) -> bool:
 	if not preload("res://scripts/architects.gd").IDS.has(id) and id not in ["river","josh","margot"]: return false
 	met_character_ids[id] = true
 	save_to_disk()
+	return true
+
+func record_sighting(id: String) -> bool:
+	if sighted_character_ids.has(id): return true
+	if not preload("res://scripts/architects.gd").IDS.has(id): return false
+	sighted_character_ids[id]=true
+	if save_to_disk()!=OK:
+		sighted_character_ids.erase(id)
+		return false
 	return true
 
 func unlock_architect(id: String) -> bool:
@@ -102,6 +112,7 @@ func _reset_profile() -> void:
 	unlocked_companion_ids = {}
 	selected_companion_ids = []
 	met_character_ids = {}
+	sighted_character_ids = {"bill":true}
 	purchased_ids = {}
 	last_error = ""
 	recovered_backup = false
@@ -175,6 +186,7 @@ func save_to_disk() -> Error:
 		"unlocked_companion_ids":unlocked_companion_ids.keys(),
 		"selected_companion_ids":selected_companion_ids,
 		"met_character_ids":met_character_ids.keys(),
+		"sighted_character_ids":sighted_character_ids.keys(),
 		"purchased_ids":purchased_ids,
 		"unread_records": unread_records.keys(),
 		"guide_completed": guide_completed,
@@ -243,6 +255,10 @@ func load_from_disk() -> void:
 	for id in _saved_ids(parsed,"met_character_ids"):
 		met_character_ids[id]=true
 	for id in unlocked_architect_ids: met_character_ids[id]=true
+	for id in _saved_ids(parsed,"sighted_character_ids"):
+		if preload("res://scripts/architects.gd").IDS.has(id): sighted_character_ids[id]=true
+	for id in met_character_ids:
+		if preload("res://scripts/architects.gd").IDS.has(id): sighted_character_ids[id]=true
 	for id in unlocked_companion_ids: met_character_ids[id]=true
 	var parsed_purchases = parsed.get("purchased_ids", {})
 	if typeof(parsed_purchases) == TYPE_DICTIONARY:

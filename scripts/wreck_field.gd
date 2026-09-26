@@ -2,7 +2,7 @@ extends RefCounted
 ## Wrecks and rocks occupy placement cells but never join the operational room graph.
 const DURATION := 18.0
 const TYPES := ["engineering", "medical", "habitation", "hydroponics"]
-const NAMES := {"engineering":"Engineering Wreck", "medical":"Medical Wreck", "habitation":"Habitation Wreck", "hydroponics":"Hydroponics Wreck", "basalt":"Basalt Outcrop", "cryo":"Derelict Cryo Ward", "charging":"Derelict Charging Chamber", "river":"Derelict Garbage Disposal Room", "josh":"Derelict Storage Room", "margot":"Derelict Pet Cryo Ward"}
+const NAMES := {"recovery":"Unidentified Recovery Site","engineering":"Engineering Wreck", "medical":"Medical Wreck", "habitation":"Habitation Wreck", "hydroponics":"Hydroponics Wreck", "basalt":"Basalt Outcrop", "cryo":"Derelict Cryo Ward", "charging":"Derelict Charging Chamber", "river":"Derelict Garbage Disposal Room", "josh":"Derelict Storage Room", "margot":"Derelict Pet Cryo Ward"}
 const YIELDS := {"engineering":12, "medical":8, "habitation":6, "hydroponics":10, "basalt":4}
 
 static func initial() -> Dictionary:
@@ -67,7 +67,7 @@ static func advance(wrecks: Dictionary, occupied: Dictionary, delta: float, dron
 	var completed := []
 	for cell in wrecks:
 		var wreck: Dictionary = wrecks[cell]
-		if wreck.cleared or not wreck.active or not reachable(occupied,cell,wrecks):
+		if wreck.kind=="recovery" or wreck.cleared or not wreck.active or not reachable(occupied,cell,wrecks):
 			continue
 		var ward: bool = wreck.kind in ["cryo","charging","river","josh","margot"]
 		var work_delta: float = delta if drone_work == null and crew_work == null else float(crew_work.get(cell,0.0)) if ward and crew_work != null else delta if ward or drone_work == null else float(drone_work.get(cell,0.0))
@@ -93,6 +93,7 @@ static func valid(value: Variant, occupied: Dictionary) -> bool:
 			return false
 		if not w.get("active") is bool or not w.get("cleared") is bool:
 			return false
+		if w.kind=="recovery" and (w.progress!=0.0 or w.active or w.cleared or w.get("rotation")!=0 or w.has("pods")): return false
 		if not w.get("buried",false) is bool: return false
 		if w.kind in ["cryo","charging"] and not preload("res://scripts/cryo_recovery.gd").valid_ward(w):
 			return false

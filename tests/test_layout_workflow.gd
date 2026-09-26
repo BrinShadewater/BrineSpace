@@ -12,6 +12,10 @@ func run() -> void:
 	var e=Editor.open(root)
 	e.autosave_enabled=false
 	await process_frame
+	# Native (built-in) furniture only remains in rooms that keep pre-v2 art
+	# (station props v2): run in BRINE Core.
+	for brine_i in range(e.entries.size()):
+		if str(e.entries[brine_i].room)=="brine_core": e.index=brine_i; e.quarter=0; e.load_room(); break
 	assert(e.free_placement.button_pressed,"Free placement defaults on")
 	# Empty-canvas dragging changes the camera, never the layout or undo history.
 	var empty_press:=InputEventMouseButton.new(); empty_press.button_index=MOUSE_BUTTON_LEFT; empty_press.pressed=true
@@ -43,7 +47,7 @@ func run() -> void:
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://output/layout-editor/clean-controls.png")
 	e.clean_preview=false; e.show_guides=true
-	e.layer=0; e.selected="sample_cooler"; e.selected_many.clear(); e.refresh()
+	e.layer=0; e.selected="brine_dual_workstation"; e.selected_many.clear(); e.refresh()
 	# Leave a real edit in the source room for the later multi-room recovery check.
 	e.draft[e.selected][0]+=1; e.dirty=true; e.refresh()
 	# Portable native artwork and reusable arrangements.
@@ -51,7 +55,13 @@ func run() -> void:
 	e.copy_selection(); assert(not e.clipboard.is_empty())
 	var source_index: int=e.index
 	e.switch_room(1); e.free_placement.button_pressed=true; e.paste_selection()
-	assert(e.selected_prop().has("portable_view"),"Native prop transfers to another room")
+	# Station props v2: redesigned rooms take only station props, so pre-v2 native
+	# art does not transfer into them (clean-slate rooms, owner 2026-09-24).
+	assert(not e.selected_prop().has("portable_view"),"Pre-v2 native art stays out of redesigned rooms")
+	var station_prop:="library/sp-"+str(e.entries[e.index].room)+"-1"
+	for spot in [Vector2(0,0),Vector2(-60,60),Vector2(60,60),Vector2(0,120)]:
+		if e.add_library_asset(station_prop,spot): break
+	assert(e.draft.has(station_prop),"Station prop placed in the target room")
 	var copied: String=e.selected
 	await process_frame
 	await process_frame
@@ -59,7 +69,7 @@ func run() -> void:
 	assert(bounds.has_area())
 	e.duplicate_selected()
 	var duplicate: String=e.selected
-	assert(e.selected_prop().has("portable_view"))
+	assert(e.selected_prop().get("library_asset",false))
 	e.selected_many=[copied,duplicate]; e.group_selection()
 	var group: String=e.draft["group/"+copied]
 	assert(group==e.draft["group/"+duplicate])
@@ -100,7 +110,7 @@ func run() -> void:
 	e.save_layout(); assert(not e.dirty)
 	Store.loaded=false; Store.data={}; e.load_room()
 	assert(e.draft["lighting/light/raised/0"].brightness==0.4)
-	e.layer=0; e.selected=copied; e.refresh(); assert(e.selected_prop().has("portable_view"))
+	e.layer=0; e.selected=copied; e.refresh(); assert(e.selected_prop().get("library_asset",false))
 	assert(e.selected_prop().sort_y>400)
 	# Recovery includes unsaved states in multiple rooms and is separate from saved overrides.
 	e.draft[copied][0]+=17; e.dirty=true; e.refresh(); e.write_recovery()
@@ -108,7 +118,7 @@ func run() -> void:
 	assert(recover.states.size()>=1)
 	var target_index: int=e.index
 	e.cache_current(); e.index=source_index; e.load_room()
-	e.draft["sample_cooler"][0]+=5; e.dirty=true; e.cache_current()
+	e.draft["brine_dual_workstation"][0]+=5; e.dirty=true; e.cache_current()
 	e.index=target_index; e.load_room()
 	assert(e.dirty and e.draft[copied][0]!=Store.positions(e.entries[e.index].asset,e.quarter)[copied][0])
 	e.write_recovery(); recover=JSON.parse_string(FileAccess.get_file_as_string(e.recovery_path()))
@@ -138,12 +148,11 @@ func run() -> void:
 	game._fit_station_view(); await process_frame
 	await RenderingServer.frame_post_draw
 	var view=game.grid_view._bill_room_view({"id":"med_bay"})
-	# The copied prop is dressing furniture, and dressing stays in Studio: the saved
-	# layout keeps it, and the live room filters it out (room_layout_store.gd:170).
-	for prop in view.props:
-		assert(prop.id!=copied,"Live room drops copied dressing furniture")
+	# The copied prop is a station prop (v2): the saved layout keeps it and the live
+	# room shows it, like the Studio.
 	assert(Store.positions("medical-treatment-wall",0).has(copied),"The copy is still saved")
-	assert(Store.is_common_decoration(Editor.Library.portable_template(Store.positions("medical-treatment-wall",0)["portable/"+copied])),"The dressing filter is what removes it")
+	Store.apply(view,"medical-treatment-wall")
+	assert(view.props.any(func(prop): return prop.id==copied),"Live room shows the placed station prop")
 	var live_anchors: Array=game.grid_view._layout_light_anchors({"id":"med_bay","pos":Vector2i(20,20),"rotation":0})
 	assert(live_anchors[0].brightness==0.4)
 	root.get_texture().get_image().save_png("res://output/layout-editor/workflow-runtime.png")

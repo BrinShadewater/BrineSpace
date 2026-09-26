@@ -1,5 +1,27 @@
 # Underwater environment assets
 
+## Procedural-site and bought-scenery review (September 23)
+
+New expeditions use `scripts/site_generator.gd`; old checkpoints retain their
+authored geography. Survey/discovery belongs to simulation, never the drawing
+pass. Save actual site geometry, habitat regions and selected scenery placements;
+do not reconstruct a played map from its seed on Continue.
+
+Exterior bought props are classified individually in
+`rooms/tileset-library/exterior.json`. This is catalogue visibility, not deletion
+or owner retirement: preserve IDs, aliases, source pixels, owner marks and placed
+copies. Indoor aquarium and lab equipment remains available in the Studio.
+
+Use `tools/audition_exterior_scenery.py` for inventory and existing/bought comparison
+sheets, then `tests/preview_procedural_scenery.gd` for production light/fog review.
+Keep low rocks/timber provisional until owner review. Upright coral/kelp and
+stray edge pixels are independent rejection reasons; do not promote a whole set.
+Wait for actual viewport dimensions before choosing review zoom. A minimized
+native window may never emit `frame_post_draw`; explicit `force_draw(false)` can
+capture an isolated fixture without requiring focus or changing player settings.
+
+Current decisions and evidence: `docs/PROCEDURAL_SITES_2026-09-23.md`.
+
 Use this workflow for production. [Case notes](environment-case-notes.md) preserve
 the studies behind these rules; their historical status statements are not the
 current asset inventory. Current selection and integration status live in each
@@ -135,3 +157,19 @@ and study-specific observations in case notes; avoid appending duplicate rules.
 ## September 9 verified ground sampling correction
 
 Large salt and sulfur motifs formed bilateral diamonds under mirrored tiling. The current shared habitat mesh maps each authored patch to one continuous source field, keeping its irregular feather mask and prop coordinates. Native source/tint comparisons and eleven-patch unique-UV checks pass; source PNGs remain unchanged. This applies to habitat fields, not connected blocker sampling. See docs/ART_FIXES_2026-09-09.md.
+
+## Runtime migration and visibility checks — September 20, 2026
+
+Runtime scripts remain under assets/environment; selected PNG roots now live under
+legacy/default/assets/environment. Preserve original pixels and source selections.
+Use SafeImage.load_png for raw PNG decoding so exports do not depend on editor
+imports. A FileAccess existence guard can silently hide broken paths: check expected
+texture inventories, not only engine warnings. tests/test_runtime_environment_art.gd
+covers the 66 current pack/base/wreck/basalt images and release closure must include
+them. Source ledgers and historical authoring tools may still use the old roots;
+resolve their source locations explicitly rather than changing recorded hashes.
+
+A native station review needs powered exterior lamps and a settled camera/retained
+renderer. Normal fog hides unlit seabed and foundation supports. Label a fog-hidden
+capture diagnostic; never remove production fog to make an art review pass. Keep
+image loading, visible gameplay, aesthetic acceptance and release validation separate.

@@ -5,6 +5,14 @@ description: Use when generating, repairing, reviewing, or integrating BrineSpac
 
 # BrineSpace room pipeline
 
+**September 20 owner-directed decoration:** use large and medium bought props to
+compose believable work areas, not a scatter of accessories. Preserve the owner's
+reference layouts; change only requested rooms. Start with three-room pilots and
+review them before a wider rollout. Inspect effective live props before placement:
+old functional furniture can remain beneath bought additions. Keep its activity
+approaches usable. See the composition section in the tileset reference.
+Do not use Higgsfield unless the owner explicitly requests it.
+
 For the Studio standing/walking scale actor, funded-operation previews and saved-loop
 UI checks, read [gameplay preview contracts](references/gameplay-preview-contract.md).
 
@@ -37,15 +45,14 @@ For every new or revised prop, apply the owner-directed
 surfaces, restrained highlights and native-scale comparison are explicit gates.
 Record verified corrections in the maintained workflow as each art task progresses.
 
-For a large/medium furnishing batch, treat the work as a room-composition replacement
-with a fixed closeout contract. Give each room one large process-specific anchor and
-at most one smaller universal support with a visible generic function. Preserve quiet
-floor and inherited focal machinery. Use explicit quarter-specific centers when host
-equipment is asymmetric, and verify both items remain present and visually separate in
-all four production views. Bake cards only after that review, update every card consumer,
-record profile/card/component hashes in the owning manifests, and keep owner acceptance
-separate from agent visual review. The ordered gates live in
-`docs/ROOM_ART_PRODUCTION.md`; the visual intent lives in the aesthetic bible.
+For current bought-prop furnishing, choose the number of pieces from the room's
+activity and operator space; the earlier one-anchor/one-support batch limit is
+historical, not a current cap. Give the room a clear primary function and group
+large/medium equipment into coherent work areas. Use quarter-specific positions
+where actual door ports require them. Review effective props, scale and circulation
+in all four production views before baking changed cards. Preserve owner acceptance
+as a separate gate from geometry checks and agent visual review. The current
+composition workflow is in the tileset reference; the visual intent is in the bible.
 
 For the fourteen-room continuous/split wall rollout, read
 [wall-room rollout](references/wall-room-rollout.md).
@@ -74,6 +81,10 @@ For underwater terrain, scenery, wreckage or blocker art, read
 [references/environment.md](references/environment.md). It routes environment
 geometry, source provenance and native review; room-specific door and card gates
 below apply only when those consumers are in scope.
+
+For current scope, read `docs/CURRENT_STATUS.md` first. For takeover or closeout,
+use `docs/CLAUDE_HANDOFF_2026-09-24.md` and the maintained
+`docs/ASSET_PIPELINE_AND_WORKFLOW.md`; dated reports retain their original scope.
 
 ## Establish the contract
 

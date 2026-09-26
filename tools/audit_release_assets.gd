@@ -1,4 +1,16 @@
 extends SceneTree
+const RAW_EXTENSIONS = ["png","jpg","jpeg","webp","svg","json","cfg","md"]
+func unexpected_sources(folder: String, expected: Dictionary) -> Array:
+	var found: Array = []
+	for name in DirAccess.get_files_at(folder):
+		var path := folder.path_join(name)
+		var source := path.trim_suffix(".import") if path.ends_with(".import") else path
+		if source.get_extension().to_lower() in RAW_EXTENSIONS and not expected.has(source):
+			found.append(path)
+	for name in DirAccess.get_directories_at(folder):
+		if not name.begins_with("."):
+			found.append_array(unexpected_sources(folder.path_join(name),expected))
+	return found
 func _init():call_deferred("run")
 func run():
 	var args:=OS.get_cmdline_user_args()
@@ -7,7 +19,9 @@ func run():
 	if not ProjectSettings.load_resource_pack(args[0],true):quit(2);return
 	var manifest: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(args[1]))
 	var checked:=0;var missing:=0;var changed:=0;var remapped:=0
+	var expected := {"res://build_info.json": true}
 	for entry in manifest.files:
+		expected[entry.path] = true
 		if entry.path.get_extension().to_lower() not in ["png","jpg","jpeg","webp","svg","json","cfg","md"]:continue
 		checked+=1
 		if not FileAccess.file_exists(entry.path):
@@ -20,5 +34,7 @@ func run():
 				missing+=1;push_error("Pack omitted: "+entry.path)
 		elif FileAccess.get_sha256(entry.path)!=entry.sha256:
 			changed+=1;push_error("Pack differs: "+entry.path)
-	print("RELEASE ASSET AUDIT: checked=%d missing=%d changed=%d remapped=%d"%[checked,missing,changed,remapped])
-	quit(1 if missing+changed else 0)
+	var unexpected := unexpected_sources("res://",expected)
+	for path in unexpected: push_error("Pack contains unselected raw source: " + path)
+	print("RELEASE ASSET AUDIT: checked=%d missing=%d changed=%d remapped=%d unexpected=%d"%[checked,missing,changed,remapped,unexpected.size()])
+	quit(1 if missing+changed+unexpected.size() else 0)

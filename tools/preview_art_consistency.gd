@@ -99,7 +99,7 @@ func run() -> void:
 	root.size = Vector2i(1600,900)
 	for index in range(Architects.IDS.size()):
 		var preview := preload("res://scripts/checkpoint_preview.gd").new()
-		preview.configure({"architects":{"selected":Architects.IDS[index]},"state":{"placed_rooms":[{"pos":Vector2i(20,20),"id":"brine_core","category":"Core"}]}})
+		preview.configure({"architects":{"selected":Architects.IDS[index]},"state":{"placed_rooms":[{"pos":Vector2i(20,20),"id":"brine_core","category":"Operations"}]}})
 		preview.position = Vector2(80,80+index*110)
 		preview.size = Vector2(500,84)
 		root.add_child(preview)

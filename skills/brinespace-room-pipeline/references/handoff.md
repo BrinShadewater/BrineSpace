@@ -68,3 +68,29 @@ older executable's acceptance.
 ### Acceptance at closeout
 
 Record owner acceptance separately from native visual review and mechanical tests. Name the accepted source/card revision and the exact exported package, if any. A source-only polish pass does not inherit an older executable's acceptance, and a room material approval does not supersede a newer project-wide camera contract. Retain rejected candidates as provenance without listing them as selected runtime art.
+
+At a substantive milestone, update the matching section of docs/CURRENT_STATUS.md rather than append a second current-state narrative. Keep candidate, installed and packaged states distinct: source installation does not update an older executable. Preserve superseded detail verbatim in a dated history before consolidating. Check the latest installed revision before reopening a rejected earlier pilot.
+
+
+## Cross-agent takeover and current evidence
+
+Read the checkout's `docs/CURRENT_STATUS.md` and
+`docs/ASSET_PIPELINE_AND_WORKFLOW.md`. Record branch/HEAD and local dirty state:
+a commit hash omits uncommitted art, untracked builders and ignored originals.
+Preserve owner user-data layouts as well as repo marks. A targeted documentation
+snapshot is not a full project backup.
+
+Separate session closure from feature acceptance. Archive after useful decisions
+and next actions are durable. If recent messages are unavailable, record the gap
+instead of inferring approval from a title or reference image. Later finished rooms
+supersede old cleanup lists; reconcile missing-action counts against current packs.
+
+Await observable startup/restore and isolate loaded profile memory as well as paths.
+Keep a frozen save and load a disposable copy: conclusion can delete the loaded
+save. Exercise actual controller/renderer transitions, not only standalone playback.
+Label paid automated runs, supplied fixtures and checkpoint chains independently.
+Record tail stalls separately from average CPU gains.
+
+Sync only changed maintained files after checking installed copies for divergence.
+Structural validation and mirror equality are not fresh behavior/visual acceptance.
+The September 24 continuation map is `docs/CLAUDE_HANDOFF_2026-09-24.md`.

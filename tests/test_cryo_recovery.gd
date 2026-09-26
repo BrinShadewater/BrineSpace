@@ -11,6 +11,7 @@ func check(ok: bool, message: String) -> void:
 		push_error(message)
 func run() -> void:
 	game=load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	var path := "user://cryo_test_%d.loop" % OS.get_process_id()
 	game.run_save_path=path
 	game.meta.save_path=path+".meta"

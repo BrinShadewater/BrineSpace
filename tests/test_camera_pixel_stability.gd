@@ -32,6 +32,13 @@ func run() -> void:
 	root.add_child(game)
 	current_scene = game
 	while not game.startup_complete: await process_frame
+	# Startup applies the isolated display settings (a 1600x900 window), where 900/1.6 rounds
+	# to a non-uniform stretch. Restate the full-screen window the scales are chosen for.
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+	DisplayServer.window_set_position(DisplayServer.screen_get_position(DisplayServer.window_get_current_screen()))
+	DisplayServer.window_set_size(screen)
+	for i in range(4): await process_frame
 	game.set_process(false)
 	game.tick_timer.stop()
 	game.crew_comms.minimize()

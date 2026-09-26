@@ -23,8 +23,12 @@ func run() -> void:
 	var e=Editor.open(root)
 	await process_frame
 	await process_frame
+	# Native (built-in) furniture only remains in rooms that keep pre-v2 art
+	# (station props v2): run in BRINE Core.
+	for brine_i in range(e.entries.size()):
+		if str(e.entries[brine_i].room)=="brine_core": e.index=brine_i; e.quarter=0; e.load_room(); break
 	e.free_placement.button_pressed=true
-	assert(e.library_filter.get_item_text(0)=="Room Default")
+	assert(e.library_filter.get_item_text(0)=="Default")
 	# Room Default lists the room's base props first, then its wall-family side
 	# variants and library entries authored for this room.
 	assert(e.library_list.item_count>=e.base_props.size())
@@ -34,9 +38,9 @@ func run() -> void:
 			assert(item_id==str(e.base_props[i].id),"Base prop order: "+item_id)
 		else:
 			var entry: Dictionary=preload("res://scripts/room_asset_library.gd").entries().get(item_id,{})
-			assert(item_id in preload("res://scripts/room_asset_library.gd").family_variants(e.entries[e.index].asset) or e.entries[e.index].room in entry.get("default_rooms",[]),"Room Default extra belongs to this room: "+item_id)
+			assert(e.entries[e.index].room in entry.get("default_rooms",[]),"Room Default extra belongs to this room: "+item_id)
 	assert(not e.x_control.is_visible_in_tree() and not e.prop_list.is_visible_in_tree())
-	assert(e.add_library_asset("library/common-operator-stool",Vector2.ZERO))
+	assert(e.add_library_asset("library/common-operator-stool",Vector2(-40,130))) # clear of BRINE Core's central chamber
 	assert(e.draft["size/"+e.selected]==[0.5,0.5])
 	e.selected_many.clear(); e.update_size_control()
 	var id: String=e.selected
@@ -75,7 +79,7 @@ func run() -> void:
 	assert(e.draft.has("floor/finish"))
 	e.layer=0; e.rebuild_list(); e.library_filter.select(1); e.rebuild_library(); e.selected=""; e.selected_many.clear(); e.update_size_control()
 	# Exercise the engine drag preview and real tray-to-canvas drop journey.
-	e.library_search.text="Utility stool"; e.rebuild_library()
+	e.library_search.text="Storage Bay 4"; e.rebuild_library() # a station-props-v2 common prop
 	for i in range(12): await process_frame
 	assert(e.library_list.item_count==1 and e.library_list.get_item_icon(0)!=null)
 	press.position=e.library_list.global_position+Vector2(60,40); press.global_position=press.position; root.warp_mouse(press.position); root.push_input(press.duplicate(),true)
@@ -89,7 +93,7 @@ func run() -> void:
 	if not await pointer_at(motion.position): return
 	release.position=motion.position; release.global_position=release.position; root.warp_mouse(release.position); root.push_input(release.duplicate(),true)
 	await process_frame
-	assert(e.draft.has("library/common-operator-stool#2"),"Native release drops artwork in the room")
+	assert(e.draft.has("library/sp-storage_bay-4"),"Native release drops artwork in the room")
 	assert(e.selected_prop().rect.get_center().distance_to(Vector2(-60,100))<5,"Native drop lands under the cursor with grid snapping")
 	e.library_search.clear(); e.rebuild_library()
 	for i in range(100): await process_frame

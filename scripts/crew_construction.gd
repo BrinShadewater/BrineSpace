@@ -89,6 +89,10 @@ static func advance(game,actor,delta: float) -> bool:
 		# One manual builder at a time; dedicated bays can take the other orders.
 		for candidate in game.drone_fleet.orders:
 			if not str(candidate.get("builder","")).is_empty(): return false
+		# Only a crew member about to claim a new build needs this route search.
+		# Empty queues and ineligible swimmers previously searched every meal/bed
+		# node each frame. Existing builders still finish before taking a break.
+		if preload("res://scripts/crew_primary_work.gd").break_needed(game,actor): return false
 		for candidate in game.drone_fleet.orders:
 			if approach_deferred(actor,candidate): continue
 			var found:=approach(game,actor,candidate)

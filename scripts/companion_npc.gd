@@ -20,10 +20,21 @@ var interest_point := Vector2.ZERO
 var chirp_pending := false
 var wake_first := false
 
-func _init(id := "river") -> void:
+func _init(id := "river", art_source = null) -> void:
 	identity = id
 	decision_rng = RandomNumberGenerator.new()
 	decision_rng.randomize()
+	# Restore fresh behavior/playback objects, but retain already decoded artwork.
+	# Copy containers so a new actor cannot mutate the previous actor's clip rows.
+	if art_source != null and art_source.identity == id:
+		for pair in [[player,art_source.player],[poses,art_source.poses]]:
+			pair[0].frames = pair[1].frames.duplicate(true)
+			pair[0].timing = pair[1].timing.duplicate(true)
+			pair[0].strides = pair[1].strides.duplicate(true)
+			pair[0].equipment_frames = pair[1].equipment_frames.duplicate(true)
+		swim_clearance = art_source.swim_clearance.duplicate(true)
+		tread_clearance = art_source.tread_clearance.duplicate(true)
+		return
 	var pack_root := "res://character/animation-expansion-v5"
 	player.load_manifest(pack_root+"/%s/manifest.json" % id)
 	poses.load_manifest(pack_root+"/%s-actions/manifest.json"%id)

@@ -157,3 +157,72 @@ Read the latest report's note, screenshot and saved actor/playback state before 
 Wait on the real startup-complete property and settle layout/camera callbacks before capturing. Verify the pictured room and actor, not merely fixture assertions. Probe only supported clearance keys; errors introduced by diagnostic calls are not production regressions. Record exact sampled poses/locations and invalid or superseded probes separately.
 
 If the defect remains unreproduced, preserve the evidence and avoid speculative asset replacement. For a recurrence, pause while the defect is visible and save an F8 report. The Veld investigation found intact selected scanning art and visible heads in eight room-local samples; it did not prove the original full-station glitch fixed.
+
+When migrating clearance to a selected revision, remove superseded reads that are
+immediately overwritten. An unused legacy file must not become a prerequisite for
+current collision profiles. Validate selected swimming, action and everyday pose
+envelopes against open/blocked geometry; retain companion and Marsh-specific paths.
+Do not delete legacy files merely because one consumer no longer reads them.
+
+
+## Superseded navigation work
+
+A staged graph build yields with partially populated actor dictionaries. A later
+wake or topology rebuild can replace those dictionaries before the old coroutine
+resumes. Give each build a revision and check ownership immediately after every
+yield, before reading or writing shared graph data. An obsolete build must not
+clear the newer build's in-progress flag. Preserve a regression that starts a
+staged build, replaces the topology synchronously, then resumes the older work;
+check engine errors as well as the final graph. See test_npc_rebuild_replacement.gd.
+Accelerated fixture setup can expose this interleaving without proving a normal
+player trigger. Record that distinction and retain the failing trace.
+
+Graph invalidation includes restoring dormant/dead actors, not only starting a
+replacement build. Advance the build revision when clearing navigation and reset
+the in-progress flag owned by that cleared state. Test an actually yielded warm-up
+followed by inactive and dead restores; require the graph to remain empty after
+resumption. Fresh actor instances may share a static navigation cache, so isolate
+the cold-cache precondition and assert a yield instead of assuming construction
+of a new NPC guarantees asynchronous work.
+
+
+Shared furniture needs a queued-destination check as well as physical occupancy.
+Reproduce choices while the furniture is empty and an actor is still travelling;
+otherwise stationary-peer avoidance can hide duplicate trips. Prefer deriving a
+claim from existing live route/rest state when possible. Test abandonment, dead
+peers and self exclusion, and check claims before expensive route searches. Keep
+this evidence distinct from simultaneous rendering or full multi-crew playtests.
+
+
+For Bill, sample through main.get_test_walker_state/direction and the room renderer,
+not only a direct sprite-player call. A correct controller and texture can still
+render the wrong pose when a legacy cached presentation state survives a paused
+restore. Active actors must expose current controller state before the next tick.
+Review the actual restored screenshot and retain a regression through that public
+render path. Other actors reading controller state directly are not equivalent
+coverage for Bill's adapter.
+
+
+When an actor has multiple furniture profiles, reject saves that activate both.
+Urgent exits such as Marsh's low battery must finish the correct profile's partial
+rise before floor travel takes control. Test the subsequent charging stage, not
+only the first get-up frame. Keep contact-only poses outside shared movement
+clearance. Sort set-derived manifest keys before serialization so independent
+canonical rebuilds do not produce order-only changes.
+
+
+Exclusive occupancy is not enough to validate shared furniture: run multiple actors
+through repeated normal choices and assert each gets service. A rested actor can
+continually reuse a bed while peers remain exhausted, even when no two sprites
+overlap. Record per-actor entry/sleep/rise counts and remaining needs. During native
+captures, assert the camera center after live updates; an earlier focus request may
+be superseded by camera interpolation. Separate controlled activity fixtures from
+paid economy/full-expedition evidence.
+
+
+Furniture priority needs reachability, not only matching room metadata and distance.
+A tired peer in a disconnected graph component must not hold an accessible bed.
+Use the same route helper for fire/graph eligibility, preserve actual queued and
+occupied claims, and cache priority results only within one synchronous goal
+choice. Keep a disconnected/connected pair in regression coverage; one-room
+multi-crew success alone cannot reveal this failure.

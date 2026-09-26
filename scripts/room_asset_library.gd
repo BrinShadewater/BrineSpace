@@ -2,8 +2,48 @@ extends RefCounted
 ## Registered artwork only; no unprocessed source images enter the room renderer.
 static var catalog: Dictionary={}
 static var source_textures: Dictionary={}
+const STATION_PROPS := "res://rooms/station-props-v2/props.json"
+# [world offset, opacity] layers of the station-prop contact shadow, darkest nearest.
+const FLOOR_PIECE_DEPTH := 100000.0
+const CONTACT_SHADOW := [[Vector2(1.5,2.0),0.22],[Vector2(2.5,3.5),0.14],[Vector2(3.5,5.0),0.08]]
+# Rooms that keep their pre-v2 art for now (owner, 2026-09-24). Every other room shows
+# only station props, plus the live drone and dock in drone bays.
+const LEGACY_ART_ROOMS := ["brine_core","corridor","corner","tee_corridor"]
+# Built-in machinery the game drives (airlock cycle, cryo wake-ups): kept live like the
+# drone docks until replacement art is wired to the same behaviour.
+const LIVE_MACHINERY := ["pressure_chamber","cryo_pod_0","cryo_pod_1"]
+static func is_station_prop(id: String) -> bool:
+	return base_id(id).begins_with("library/sp-")
+static func role_of(prop: Dictionary) -> String:
+	var id:=base_id(str(prop.get("variant_source",prop.get("copy_source",prop.get("id","")))))
+	return str(entries().get(id,{}).get("role",""))
+# Built-in view props and pre-v2 library props leave redesigned rooms. The drone and
+# its dock are live machinery (animation, charging, routes), not dressing.
+static func keeps_in_room(room_id: String, prop: Dictionary) -> bool:
+	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return true
+	var id:=str(prop.get("id",""))
+	if id.ends_with("_rov") or id.ends_with("_hatch") or id in LIVE_MACHINERY: return true
+	return is_station_prop(str(prop.get("copy_source",prop.get("variant_source",id))))
+# Several views re-add built-in props after the layout pass (legacy restorations), so
+# callers strip again once a view is configured and before it draws.
+static func strip_retired(view) -> void:
+	if view==null or not "props" in view: return
+	var store=load("res://scripts/room_layout_store.gd")
+	var room_id: String=store.room_id_for(view,store.asset_for(view))
+	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return
+	view.props=view.props.filter(func(prop): return keeps_in_room(room_id,prop))
 static func entries() -> Dictionary:
 	if not catalog.is_empty(): return catalog
+	# Station props v2 (2026-09-24): cut from the owner's room designs. These are the
+	# only props the Studio offers; the older sources below stay loadable for the rooms
+	# and site scenery that still use them (BRINE Core, corridors, seabed dressing).
+	var station: Variant=JSON.parse_string(FileAccess.get_file_as_string(STATION_PROPS))
+	if station is Array:
+		for entry in station:
+			catalog["library/"+str(entry.id)]={
+				"data":entry,"label":str(entry.label),"width":float(entry.display_width),
+				"group":"station","category":str(entry.category),
+				"default_rooms":entry.get("default_rooms",[]),"role":str(entry.get("role",""))}
 	for file in DirAccess.get_files_at("res://rooms/full-wall-v1/registrations"):
 		if not file.ends_with(".json"): continue
 		var data=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+file))
@@ -105,6 +145,8 @@ static func apply_variants(room, values: Dictionary) -> void:
 # wall arm, not the tip of the arm running down the side wall, which drew crew standing in
 # front of the corner behind it (owner playtest).
 static func base_sort_y(prop: Dictionary) -> float:
+	# Hatches, pads and rugs lie on the deck: under every crew member and prop.
+	if prop.get("floor_piece",false): return prop.rect.end.y-FLOOR_PIECE_DEPTH
 	if prop.has("corner") and not prop.get("collision_boxes",[]).is_empty():
 		var arm: Array=prop.collision_boxes[0]
 		return prop.rect.position.y+prop.rect.size.y*(float(arm[1])+float(arm[3]))
@@ -118,6 +160,9 @@ static func template(id: String) -> Dictionary:
 	if image_jobs.has(data.source):
 		finish_texture(data.source,true)
 	if not source_textures.has(data.source):
+		# Sheets retired to the owner's Desktop (station props v2, step 8a) leave
+		# stale placements in old saves and layouts: skip them without an error.
+		if not FileAccess.file_exists(data.source): return {}
 		var image:=Image.new()
 		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source))!=OK: return {}
 		source_textures[data.source]=ImageTexture.create_from_image(image)
@@ -132,6 +177,7 @@ static func template(id: String) -> Dictionary:
 	var size:=Vector2(width,width*float(r[3])/float(r[2]))
 	var registration: Dictionary={"pieces":pieces,"pivot":Vector2(r[0]+r[2]*0.5,r[1]+r[3]),"width":float(r[2]),"height":float(r[3])}
 	if data.has("operating_screens"): registration.operating_screens=data.operating_screens.duplicate(true)
+	if data.has("effects"): registration.effects=data.effects.duplicate(true)
 	if data.has("operating_screen_color"): registration.operating_screen_color=data.operating_screen_color
 	if data.has("reading_lamp"): registration.reading_lamp=data.reading_lamp.duplicate(true)
 	if data.has("turbine_effects"): registration.turbine_effects=data.turbine_effects.duplicate(true)
@@ -147,6 +193,7 @@ static func template(id: String) -> Dictionary:
 		if registration.get("mirrored",false): f[0]=1.0-float(f[0])-float(f[2])
 		prop.footprint=f
 	if data.has("corner"): prop.wall_mount=true; prop.corner=data.corner
+	if data.get("floor_piece",false): prop.floor_piece=true; prop.collision_boxes=[]
 	prop.sort_y=base_sort_y(prop)
 	all[id].template=prop
 	# The tray publishes only clipped transparent renders, never source-sheet crops.
@@ -181,6 +228,17 @@ static func draw(room, prop: Dictionary) -> void:
 	var tex: Texture2D=prop.library_texture
 	var scale_value: float=prop.rect.size.x/reg.width
 	var anchor:=Vector2(prop.rect.get_center().x,prop.rect.end.y)
+	# Station props are cut without their painted shadows (owner, 2026-09-24): lay a
+	# soft contact shadow from the prop's own silhouette, stacked offsets fading out.
+	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))) and not prop.get("floor_piece",false):
+		for step in CONTACT_SHADOW:
+			for polygon in reg.pieces:
+				var shadow_points:=PackedVector2Array()
+				var shadow_uv:=PackedVector2Array()
+				for point in polygon:
+					shadow_points.append(anchor+(point-reg.pivot)*scale_value+step[0])
+					shadow_uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
+				room.painter.draw_polygon(shadow_points,PackedColorArray([Color(0,0,0,step[1])]),shadow_uv,tex)
 	for polygon in reg.pieces:
 		var points:=PackedVector2Array()
 		var uv:=PackedVector2Array()
@@ -189,6 +247,34 @@ static func draw(room, prop: Dictionary) -> void:
 			uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,tex)
 	draw_operating_screens(room,reg,anchor,scale_value)
+	if reg.has("effects") and room.operating: draw_effects(room,prop,reg.effects)
+
+# Station-prop effects (catalog "effects"): areas are fractions of the prop's art.
+static func draw_effects(room, prop: Dictionary, effects: Array) -> void:
+	var r: Rect2=prop.rect
+	var t: float=room.machine_clock
+	for fx in effects:
+		var a: Array=fx.area
+		var area:=Rect2(r.position+r.size*Vector2(a[0],a[1]),r.size*Vector2(a[2],a[3]))
+		var color:=Color(str(fx.get("color","#b98cff")))
+		var strength: float=float(fx.get("strength",1.0))
+		var center:=area.get_center()
+		if fx.kind=="specimen_glow":
+			var pulse: float=0.5+0.5*sin(t*1.7+center.x*0.05)
+			for ring in range(3):
+				var k: float=1.0-ring*0.28
+				room.painter.draw_circle(center,minf(area.size.x,area.size.y)*0.5*k,Color(color,(0.07+0.07*pulse)*strength))
+			# Motes drift up through the fluid on a fixed, clock-driven path.
+			for i in range(6):
+				var phase: float=fposmod(t*0.35+i*0.167,1.0)
+				var p:=Vector2(area.position.x+area.size.x*(0.2+0.6*fposmod(i*0.37,1.0)),area.end.y-area.size.y*phase)
+				room.painter.draw_circle(p,maxf(0.5,area.size.x*0.025),Color(color.lightened(0.4),(1.0-phase)*0.8*strength))
+		elif fx.kind=="field":
+			var radius: float=minf(area.size.x,area.size.y)*0.5
+			for arc in range(3):
+				var start: float=t*(0.8+arc*0.35)+arc*2.1
+				room.painter.draw_arc(center,radius*(0.45+arc*0.2),start,start+1.9,16,Color(color,0.55*strength),maxf(0.6,radius*0.06),true)
+			room.painter.draw_circle(center,radius*0.18*(0.8+0.2*sin(t*3.0)),Color(color.lightened(0.5),0.6*strength))
 
 static func draw_operating_screens(room, reg: Dictionary, anchor: Vector2, scale_value: float) -> void:
 	if reg.has("operating_screens") and room.operating:
@@ -253,3 +339,34 @@ static func finish_texture(source: String, wait:=false) -> bool:
 	if job.result.has("image"): source_textures[source]=ImageTexture.create_from_image(job.result.image)
 	image_jobs.erase(source)
 	return true
+
+# One cached complementary atlas pair preserves the original UV geometry exactly.
+# These are presentation copies; source textures, collision and owner data stay intact.
+static var bunk_layer_cache: Dictionary={}
+static func bunk_layers(prop: Dictionary) -> Array:
+	if base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))!="library/tileset-mb2-14":return []
+	var texture: Texture2D=prop.library_texture
+	var key:=texture.get_instance_id()
+	if not bunk_layer_cache.has(key):
+		var back:=texture.get_image()
+		var front:=Image.create(back.get_width(),back.get_height(),false,Image.FORMAT_RGBA8)
+		for region in [Rect2i(177,883,49,141),Rect2i(10,783,14,241),Rect2i(24,997,153,18)]:
+			if not Rect2i(Vector2i.ZERO,back.get_size()).encloses(region):return []
+			front.blit_rect(back,region,region.position)
+			back.fill_rect(region,Color.TRANSPARENT)
+		bunk_layer_cache[key]=[ImageTexture.create_from_image(back),ImageTexture.create_from_image(front)]
+	var layers: Array=[]
+	for i in range(2):
+		var layer:=prop.duplicate()
+		layer.library_texture=bunk_layer_cache[key][i]
+		layers.append({"kind":"prop","sort_y":float(prop.sort_y)+i*0.02,"prop":layer})
+	return layers
+
+static var exterior_assets: Dictionary={}
+static var exterior_loaded := false
+static func is_exterior(id: String) -> bool:
+	if not exterior_loaded:
+		exterior_loaded=true
+		var parsed=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/tileset-library/exterior.json"))
+		if parsed is Dictionary: exterior_assets=parsed.get("assets",{})
+	return exterior_assets.has(base_id(id).trim_prefix("library/tileset-"))

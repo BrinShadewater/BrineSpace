@@ -9,6 +9,9 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 		for prop in props:
 			if prop.id in ["construction_rov","construction_hatch","construction_bench"]: retained.append(prop.duplicate(true))
 	full_wall.apply(self)
+	# Saved standalone furnishing supersedes the old bank restoration.
+	var authored: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(full_wall.layout_key(self),quarter)
+	if authored.get("full_wall_"+full_wall.asset_id,0)==null: return
 	if q==3 and not retained.is_empty():
 		var bank: Array=[]
 		for prop in props:

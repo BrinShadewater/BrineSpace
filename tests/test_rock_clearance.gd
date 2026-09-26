@@ -36,6 +36,7 @@ func run() -> void:
 	var diagonal := {center:rock(),center+Vector2i.ONE:rock()}
 	check(View.connections(diagonal,center)==0,"Diagonal rocks remain separate obstacles")
 	var game = load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	var path := "user://rock_test_%d.loop" % OS.get_process_id()
 	game.run_save_path = path
 	game.meta.save_path = path+".meta"

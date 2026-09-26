@@ -38,6 +38,21 @@ can make the whole actor appear thin even when body widths already match.
 
 ## Register and package
 
+Marsh's selected side starts/stops use measured shoulder anchors and independent
+east/west source rows. Preserve exact existing tread/swim endpoints; transparent
+padding may differ by direction when a diagonal pose needs room. Extend derived
+clearance to contain that pose and rerun the relevant route test. Supplemental
+pack checks must validate the declared water flag rather than assuming every
+supplement is dry. Observe actual transition completion when testing loop handoff;
+decimal clock subtraction can land one sample before the nominal boundary.
+See docs/MARSH_SIDE_SWIM_TRANSITIONS_2026-09-22.md in the project.
+
+Marsh's north/south starts/stops complete the same contract using independently
+authored front/rear rows. Use a head/shoulder ruler for these foreshortened views:
+the first 0.27-scale audition shrank between endpoints; the selected fixed 0.30
+scale and measured torso positions preserve the transition. Keep side-view recipes
+unchanged when adding axial coverage. See MARSH_AXIAL_SWIM_TRANSITIONS_2026-09-22.md.
+
 - Preserve accepted dry source pixels and palettes; do not rebuild unrelated art.
 - Use a fixed anatomical scale across a row. Ground death retains a floor baseline;
   swimming uses an authored torso/shoulder anchor. Never normalize each crouched,
@@ -297,3 +312,61 @@ Fit dense tread equipment to the actual head and visor aperture, not doubled leg
 ### Airlock occupied-chamber rendering - September 12, 2026
 
 Keep chamber deck and fill-water drawing in the floor pass. Sorting the entire pressure chamber as a foreground prop paints over its occupant. Keep rail/hatch drawing separate and use chamber-local water depth for the actor, restoring the room water value after drawing. Native visibility regression must compare occupied and empty chamber pixels in all four rotations, both dry and flooded. Before dispatching a native fixture, settle its first rendered layout and rebuild navigation; initial layout geometry registration can otherwise cancel the request. Full journeys use the actual locker and expedition controllers, with source/native and release evidence recorded separately.
+# Equipment continuity across dry work states
+
+When an equipped actor changes posture, compare the actual overlay dimensions and
+opaque shell pixels against standing/walking at the same standingHeight. Shared
+source art and valid anchors do not prevent a scale pop: Bill's west work fit used
+34x40 while dry standing used48x56. The corrected work fits record size and offset
+explicitly, preserving body pixels and endpoints. Review each other direction's fit
+visually before applying the same correction. North/south have now passed that
+review and are corrected as well; tests compare all three views' shell pixels
+against standing. See BILL_WORK_HELMET_CONTINUITY_2026-09-21.md.
+
+For newly generated poses using an existing shell, inspect hair buns outside the
+rotated helmet silhouette at enlarged scale. Tuck only registered equipped head
+regions while preserving the authored visor opening; do not enlarge every helmet
+or alter the bare source to hide that mismatch. Record cleanup boxes, source/overlay
+hashes, head centers and rotation. Verify canonical equipped idle, bare immutability,
+matching furnitureFrames and native clearance through both entry and exit. Staged
+entry/exit gear does not establish sleep-loop or controller/checkpoint coverage.
+
+
+### Marsh east/north turns, September 22, 2026
+
+A rear swimming intermediate must foreshorten the legs while preserving head
+and shoulder scale. Source 01 overextended them; use only source 02 cell three
+and preserve source 01 cells one and two. The deterministic recipe is
+`tools/build_marsh_swim_turns.py`; north-to-east reverses the selected poses.
+Keep exact destination swim frame zero, and test the first resumed frame.
+The handoff fixture must follow the configured clock: Marsh swim currently
+uses elapsed time, whereas stride-configured clips use movement distance.
+Do not add a stride setting solely to satisfy a test assumption. New padded
+turns enlarge north/east lower clearance; the 93-sample battery route passed.
+
+The subsequent west/north pair uses independently authored `west-north-01.png`
+and the same .23 extraction scale; its shoulder anchors are explicit in the
+pair-aware builder. Both pairs are rebuilt and pixel-compared by
+`tests/test_marsh_swim_turns.py`. Adding a pair must also update the canonical
+builder pair list and require both directions in the runtime handoff test.
+West/north did not enlarge clearance or alter any existing runtime PNG.
+
+East/south turns now use the independently authored `east-south-01.png`.
+Front-facing foreshortening must hide trailing legs behind the torso,
+rather than turn the swimmer upright. Register head motion as well as
+shoulders: the middle/near-front trial required -5/-10 horizontal pixels.
+Six directed swimming turns now reproduce locally with exact endpoints.
+
+West/south completes all eight adjacent-direction swimming turns. Its
+independent source has explicit shoulder landmarks in the pair builder;
+do not reuse east/south landmarks or mirror the sheet. Forty frames now
+reproduce exactly, with prior frames and clearance unchanged. Opposite
+turns still need their own integration and motion review.
+
+Opposite swimming turns compose two authored quarter-turns through an exact
+shared cardinal frame. Assert the center pixels match; store that frame
+once with combined120ms duration to preserve the two400ms clocks. The
+separate opposite builder is included in canonical rebuild and all76
+turn frames are reproduction-tested. All twelve directed swimming turns
+are required in the native handoff test. Composition is derived motion,
+not new authored art or owner visual acceptance.

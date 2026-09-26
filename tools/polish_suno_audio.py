@@ -30,6 +30,19 @@ def loudness(path):
     result = json.loads(report[report.rfind('{'):report.rfind('}')+1])
     return float(result['input_i']), float(result['input_tp'])
 
+def update_gain_profile(content, gains):
+    """Update measured entries without discarding later batches or pairing data."""
+    pattern = r'const GAIN_DB := \{(.*?)\n\}'
+    match = re.search(pattern, content, re.S)
+    if match is None:
+        raise ValueError('Audio profile has no GAIN_DB dictionary; refusing to overwrite it')
+    previous = json.loads('{' + re.sub(r',\s*$', '', match.group(1)) + '}')
+    previous.update(gains)
+    replacement = 'const GAIN_DB := {\n' + ''.join(
+        '\t' + json.dumps(path) + ': ' + str(gain) + ',\n'
+        for path, gain in previous.items()) + '}'
+    return content[:match.start()] + replacement + content[match.end():]
+
 def main():
     DEST.mkdir(parents=True,exist_ok=True)
     measurements = json.loads((ROOT/'output/audio-polish/measurements.json').read_text())
@@ -67,10 +80,8 @@ def main():
     for name in EDITS:
         content = re.sub(r'res://assets/audio/(?:suno-v1|suno-polish-v1)/'+name+r'\.wav','res://assets/audio/suno-polish-v1/'+name+'.wav',content)
     bank.write_text(content,encoding='utf-8')
-    profile = ['extends RefCounted','## Measured constant gains; rebuild with tools/polish_suno_audio.py.','const GAIN_DB := {']
-    profile += ['\t'+json.dumps(k)+': '+str(v)+',' for k,v in gains.items()]
-    profile += ['}', '', 'static func gain(stream: AudioStream) -> float:', '\treturn float(GAIN_DB.get(stream.resource_path, 0.0))','']
-    (ROOT/'scripts/station_audio_mix.gd').write_text('\n'.join(profile),encoding='utf-8')
+    profile_path = ROOT/'scripts/station_audio_mix.gd'
+    profile_path.write_text(update_gain_profile(profile_path.read_text(), gains), encoding='utf-8')
     (DEST/'manifest.json').write_text(json.dumps({'processing':'Explicit transient edits, DC removal, 5ms attack, <=150ms shaped tail, PCM16. Constant runtime LUFS matching with bounded gain and peak headroom; original v1 audio untouched.','files':rows},indent=2)+'\n')
     print('Prepared 15 event edits and 27 measured gain entries.')
 

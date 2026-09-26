@@ -41,3 +41,28 @@ Use her original concept for identity; recent generated action frames may have
 drifted and are motion references only. Inspect face, hair and eyewear in paired
 bare/equipped views before expanding a batch. Owner correction supersedes prior
 visual-review claims; technical equality to a drifted source is insufficient.
+
+If editing a drifted animation sheet keeps reproducing its identity, stop treating
+that sheet as a visual authority. Bill's west study improved when canonical idle
+alone established a representative standing/work pair. Preserve rejected outputs
+and prompts, compare at a common standing-derived scale, then expand the successful
+identity study into motion. Do not independently scale a kneeling figure to standing
+height or treat a two-pose study as complete animation coverage.
+
+
+North work identity follow-up (September 21, 2026): canonical idle alone produced
+an improved standing/kneeling study before expansion to lowering and arm-only work.
+Keep the selected torso/backpack/head/legs exact during the work loop; mask only
+the reviewed arm regions from motion sources. A generated grid is not guaranteed
+to follow requested cell boundaries: inspect opaque extents and record a gap-based
+row split rather than clipping boots to a nominal half-height. Preserve raw source
+alpha (which may top out below255); binary thresholding is deterministic extraction,
+not evidence of identity quality. See BILL_NORTH_WORK_IDENTITY_2026-09-21.md.
+
+
+West follow-up (September 21, 2026): isolated filtered-RGB and uniform low-chroma
+gamma candidates preserved alpha but did not solve body proportions; they were
+not selected. Do not use palette reduction or smoothing as a substitute for an
+identity correction. Canonical-only standing/kneeling reference study, then
+connected lowering and a masked arm/wrench loop, produced the selected repair.
+See BILL_WEST_WORK_IDENTITY_2026-09-21.md for raw sources and revision evidence.

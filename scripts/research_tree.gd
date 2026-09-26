@@ -13,12 +13,12 @@ extends RefCounted
 # grows two dendrites that go their own way, and each dendrite ends in its own keystone - the
 # deepest thing BRINE remembers about that part of the station.
 const BRANCH_DEPARTMENTS := {
-	"operations": "Core",
+	"operations": "Operations",
 	"engineering": "Engineering",
 	"science": "Science",
-	"life_support": "Bio",
-	"crew": "Crew",
-	"robotics": "Drone",
+	"life_support": "Life Support",
+	"crew": "Recreation",
+	"robotics": "Robotics",
 	"anomaly": "Anomaly",
 	"structure": "",
 }

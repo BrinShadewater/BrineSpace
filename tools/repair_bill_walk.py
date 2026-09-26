@@ -26,6 +26,90 @@ def knee(hip,ankle,l1,l2,heading=1):
     along=(l1*l1-l2*l2+dist*dist)/(2*dist);perp=math.sqrt(max(0,l1*l1-along*along))
     return hip+u*along+np.array([u[1],-u[0]])*perp*heading
 
+def close_joint_pinholes(image):
+    """Fill enclosed lower-body cutout gaps; preserve every existing opaque pixel."""
+    from PIL import ImageOps
+    pixels=np.array(image)
+    solid=pixels[:,:,3]>0
+    # Flood the transparent exterior with four-connectivity. Remaining transparent
+    # islands are enclosed gaps, not the open space between the legs.
+    exterior=Image.fromarray((solid*255).astype(np.uint8))
+    exterior=ImageOps.expand(exterior,border=1,fill=0)
+    ImageDraw.floodfill(exterior,(0,0),128)
+    holes=np.array(exterior)[1:-1,1:-1]==0
+    holes[:119]=False
+    if int(holes.sum())>32:
+        raise ValueError("Unexpected lower-body alpha gaps require visual review")
+    yy,xx=np.nonzero(solid)
+    for y,x in zip(*np.nonzero(holes)):
+        nearest=np.argmin((yy-y)**2+(xx-x)**2)
+        pixels[y,x]=pixels[yy[nearest],xx[nearest]]
+    return Image.fromarray(pixels)
+
+def repair_knee_contour(image, direction, phase):
+    """Reviewed east passing-knee edge only; retain pose, palette and all other pixels."""
+    if direction == 'east' and phase == 4:
+        pixels=np.array(image)
+        for y,old,last in [(138,109,108),(139,110,108),(142,108,107)]:
+            actual=int(np.where(pixels[y,:,3]>0)[0].max())
+            if actual != old:
+                raise ValueError(f"East swing-knee source changed at row {y}: {actual} != {old}")
+            edge=pixels[y,old].copy()
+            pixels[y,last:old+1]=0
+            pixels[y,last]=edge
+        return Image.fromarray(pixels)
+    if direction != 'east' or phase != 2:
+        return image
+    pixels=np.array(image)
+    # Source-space endpoint pairs are intentionally explicit, not a cast-wide filter.
+    # Preserve the existing dark edge when trimming; bridge the notch from the row above.
+    for y,old,last in [(132,113,112),(133,114,112),(134,113,112),
+                       (135,112,111),(137,110,111),(138,113,111),(140,113,112)]:
+        actual=int(np.where(pixels[y,:,3]>0)[0].max())
+        if actual != old:
+            raise ValueError(f"East passing-knee source changed at row {y}: {actual} != {old}")
+        edge=pixels[y,old].copy()
+        if last < old:
+            pixels[y,last:old+1]=0
+            pixels[y,last]=edge
+        else:
+            pixels[y,old+1:last+1]=pixels[y-1,last]
+    return Image.fromarray(pixels)
+
+
+def repair_ankle_contour(image, direction, phase):
+    """Remove the reviewed west contact-pose cutout spur, keeping the planted boot."""
+    if direction != 'west' or phase != 0:
+        return image
+    pixels=np.array(image)
+    edge=pixels[150,70].copy()
+    if edge.tolist() != [28,26,31,255]:
+        raise ValueError('West contact ankle source outline changed')
+    for y,old,left in [(151,65,70),(152,64,70),(153,64,70),(154,65,70),
+                       (155,65,69),(156,66,69),(157,67,68)]:
+        actual=int(np.where(pixels[y,:,3]>0)[0].min())
+        if actual != old:
+            raise ValueError(f'West contact ankle source changed at row {y}: {actual} != {old}')
+        pixels[y,:left]=0
+        pixels[y,left]=edge
+    return Image.fromarray(pixels)
+
+
+def restore_upper_motion(frames, preserved):
+    """Restore authored arm/shoulder phases without changing selected leg pixels."""
+    source=preserved[0]
+    result=[]
+    for phase,body_index in enumerate([0,1,2,5,2,1]):
+        frame=frames[phase].copy();body=preserved[body_index]
+        bob=-1 if phase in (1,4) else 0
+        shift=source.getbbox()[1]-body.getbbox()[1]+bob
+        frame.paste((0,0,0,0),(0,0,184,119+bob))
+        frame.alpha_composite(body.crop((0,0,184,119-shift+bob)),(0,shift))
+        frame.paste(source.crop((0,0,184,60)),(0,bob))
+        assert np.array_equal(np.array(frame)[119+bob:],np.array(frames[phase])[119+bob:])
+        result.append(frame)
+    return result
+
 def build(source,direction='east'):
     recipes={
       'far':{'hip':(78,119),'knee':(63,143),'ankle':(50,158),
@@ -81,25 +165,33 @@ def build(source,direction='east'):
             poses[name]={'phase':step,'hip':hip.tolist(),'knee':bend.tolist(),'ankle':ankle.tolist(),'soleTarget':sole,'soleActual':foot.getbbox()[3]}
         out.alpha_composite(torso,(0,bob))
         out.paste(source.crop((0,0,184,119)),(0,bob))
-        frames.append(out);joints.append(poses)
+        frames.append(repair_ankle_contour(repair_knee_contour(close_joint_pinholes(out),direction,phase),direction,phase));joints.append(poses)
     return frames,layers,torso,joints
 
-def main():
+def legacy_main():
     OUT.mkdir(exist_ok=True)
     # Never feed the repaired production frames back into their own source rig.
-    from rebuild_bill_art import base_frames
+    from rebuild_bill_art import base_frames, HelmetRebaker, WATER
     preserved=base_frames(repair_walk=False)
+    helmets=HelmetRebaker(None)
     audit={}
     manifests={variant:{'name':'bill-walk-candidate-'+variant,'frameWidth':184,'frameHeight':184,'pivot':[92,172],'standingHeight':148,'precomposed':True,'strideDistanceCells':{'walk':92*65.28/148/384},'states':[]} for variant in ['bare','helmet']}
     for direction in ['east','west']:
         source=preserved[f'character/major-bill-v2/frames/walk-{direction}/frame_000.png']
         src=OUT/f'{direction}-reconstructed-source.png';source.save(src)
         frames,layers,torso,joints=build(source,direction)
-        helmet_source=Image.open(ROOT/f'character/major-bill-v3/frames/helmet/walk-{direction}/000.png').convert('RGBA')
+        authored=[preserved[f'character/major-bill-v2/frames/walk-{direction}/frame_{i:03}.png'] for i in range(6)]
+        frames=restore_upper_motion(frames,authored)
+        from build_bill_limb_candidate import repair as repair_limb_surfaces
+        frames=repair_limb_surfaces(direction,source,frames)
+        registration=json.loads((WATER/'equipment/dry'/f'bill-walk-{direction}'/'registration.json').read_text())
+        overlay=helmets.overlay(Path(registration['overlay']).parent.name)
         equipped=[]
         for i,im in enumerate(frames):
             bob=-1 if i in [1,4] else 0
-            gear=im.copy();gear.paste(helmet_source.crop((0,0,184,119)),(0,bob));gear.save(OUT/f'{direction}-helmet-{i:02}.png');equipped.append(gear)
+            pos=np.array(registration['frames'][0]['overlayTopLeft'])*2
+            pos[1]+=bob
+            gear=im.copy();gear.alpha_composite(overlay,tuple(pos));gear.save(OUT/f'{direction}-helmet-{i:02}.png');equipped.append(gear)
         for variant,suffix in [('bare','candidate'),('helmet','helmet')]:
             manifests[variant]['states'].append({'id':'walk-'+direction,'frameFiles':[f'{direction}-{suffix}-{i:02}.png' for i in range(6)],'frameDurationsMs':[170,130,150,170,130,150],'loop':True})
         for i,im in enumerate(frames):im.save(OUT/f'{direction}-candidate-{i:02}.png')
@@ -116,7 +208,7 @@ def main():
         ground_errors=[];plant_drift=[];identity=True;new_colors=set()
         for i,frame in enumerate(frames):
             pixels=np.array(frame);bob=-1 if i in [1,4] else 0
-            identity &= np.array_equal(pixels[:119+bob],original[-bob:119])
+            identity &= np.array_equal(pixels[:60+bob],original[-bob:60])
             new_colors |= set(map(tuple,pixels[pixels[:,:,3]>0,:3]))-palette
             for pose in joints[i].values():
                 if pose['phase']<3:ground_errors.append(pose['soleActual']-pose['soleTarget'])
@@ -124,9 +216,15 @@ def main():
             times=[0,170,300,450,620,750];heading=1 if direction=='east' else -1
             contacts=[joints[i][name]['ankle'][0]+heading*92*times[i]/900 for i in phases]
             plant_drift.append(max(contacts)-min(contacts))
-        audit[direction]={'upperPixelsPreservedWithOnePixelBob':bool(identity),'newColors':len(new_colors),'stanceSoleErrorsSourcePixels':ground_errors,'stanceAnchorDriftSourcePixels':plant_drift,'proposedStrideCells':92*65.28/148/384}
+        audit[direction]={'headPixelsPreservedWithOnePixelBob':bool(identity),'newColors':len(new_colors),'stanceSoleErrorsSourcePixels':ground_errors,'stanceAnchorDriftSourcePixels':plant_drift,'proposedStrideCells':92*65.28/148/384}
     (OUT/'candidate-checks.json').write_text(json.dumps(audit,indent=2)+'\n')
     for variant,data in manifests.items():(OUT/(variant+'-manifest.json')).write_text(json.dumps(data,indent=2)+'\n')
     print(json.dumps(audit))
     print('Twelve repaired poses and registered source-layer reviews written; production files untouched by this command.')
+def main():
+    # Keep the established review command aligned with selected runtime art.
+    # build()/legacy_main() remain available to reproduce historical rig studies.
+    from build_bill_connected_walk import build as export_connected
+    export_connected(OUT)
+
 if __name__=='__main__':main()

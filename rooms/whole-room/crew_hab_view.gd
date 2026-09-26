@@ -2,6 +2,7 @@ extends "res://rooms/whole-room/life_support_view.gd"
 ## Two compact berths; static furniture, localized desk activity only.
 const Dressing = preload("res://rooms/whole-room/room_dressing.gd")
 var dressing: RefCounted
+var split_bunk_layers:=not OS.get_cmdline_user_args().has("--unsplit-bunk-layers")
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
@@ -18,6 +19,11 @@ func _ready() -> void:
 func rebuild() -> void:
 	super.rebuild()
 	for prop in props:
+		if prop.id=="hab_berth_east":
+			# The source combines a bed with a short cabinet at its head. Keep the
+			# lower-right floor notch open; a single rectangle blocks bedside entry.
+			# Conservative source bounds: bed through x=1053, cabinet through y=311.
+			prop.collision_boxes=[[0.0,0.0,0.74,1.0],[0.74,0.0,0.26,0.51]]
 		if quarter==1 and prop.id in ["hab_berth_west","hab_berth_east"]:
 			var at:=Vector2(116,-113) if prop.id=="hab_berth_west" else Vector2(116,8)
 			prop.rect.position=at-prop.rect.size*0.5
@@ -46,6 +52,23 @@ func effect_marks(prop: Dictionary,time: float) -> Array:
 	for line in range(3): marks.append([Vector2(249,829+line*12),Vector2(275+12*sin(time*1.5+line),829+line*12)])
 	return marks
 func is_animated_prop(prop: Dictionary) -> bool: return prop.id=="hab_desk"
+func actor_draw_depth(at: Vector2,texture: Texture2D) -> float:
+	var depth:=super.actor_draw_depth(at,texture)
+	if texture!=null and texture.get_meta("crew_bunk_layer",false):
+		for bunk in props:
+			if preload("res://scripts/room_asset_library.gd").base_id(str(bunk.get("variant_source",bunk.get("copy_source",bunk.id))))!="library/tileset-mb2-14":continue
+			if bunk.get("layout_flip",Vector2.ONE)!=Vector2.ONE:continue
+			if bunk.rect.grow(8).has_point(at):return float(bunk.sort_y)+0.01
+
+	for prop in props:
+		if prop.id!="hab_berth_east" or prop.get("layout_flip",Vector2.ONE)!=Vector2.ONE:continue
+		var rect: Rect2=prop.rect
+		# This one source combines a long bed and short cabinet. Crew in the
+		# open lower-right notch are in front of the cabinet, even though the
+		# combined image sorts at the bed's lower edge.
+		var notch:=Rect2(rect.position+rect.size*Vector2(0.74,0.51),rect.size*Vector2(0.26,0.49)+Vector2(14,0))
+		if notch.has_point(at):depth=maxf(depth,float(prop.sort_y)+0.01)
+	return depth
 func draw_registered_prop(prop: Dictionary) -> void:
 	draw_prop_base(prop)
 	draw_prop_animation(prop)
@@ -63,3 +86,14 @@ func draw_prop_animation(prop: Dictionary) -> void:
 	if prop.registration.get("dressing",false): return
 	if not operating: return
 	for mark in effect_marks(prop,machine_clock): painter.draw_line(life_point(prop,mark[0]),life_point(prop,mark[1]),Color("c5b495"),1.0,true)
+
+func prop_content_entries(prop: Dictionary) -> Array:
+	if not split_bunk_layers:return super.prop_content_entries(prop)
+	var layers:=preload("res://scripts/room_asset_library.gd").bunk_layers(prop)
+	return layers if not layers.is_empty() else super.prop_content_entries(prop)
+
+func prop_content_signature(prop: Dictionary) -> Variant:
+	if preload("res://scripts/room_asset_library.gd").base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))!="library/tileset-mb2-14":return super.prop_content_signature(prop)
+	# Layer entries hold presentation copies. A sideways move must rebuild them
+	# even though the source dictionary and its vertical sort position survive.
+	return [prop.sort_y,prop.rect,prop.registration.hash(),prop.get("layout_flip",Vector2.ONE),prop.library_texture,split_bunk_layers]

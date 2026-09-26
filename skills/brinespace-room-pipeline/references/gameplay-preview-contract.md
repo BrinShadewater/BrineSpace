@@ -112,3 +112,87 @@ Safe-room fire scans can be skipped without changing substep order, water alloca
 or damage. Compare resulting state as well as time; a function microbenchmark is
 not a whole-game FPS improvement. See docs/FIRE_PERFORMANCE_POLISH_PASS_2026-09-12.md
 and docs/PERFORMANCE_DIAGNOSTICS_2026-09-12.md for scoped evidence.
+
+Repeated setup is part of live-room acceptance. Isolation Vault once looked correct
+in a single card render but deleted saved library props on later configure calls.
+Perform legacy-prop cleanup on geometry rebuild, not every embedded configure.
+Test repeated same-rotation setup and rotation return with saved bought props;
+then inspect a real station capture. A cached empty prop list can otherwise look
+already applied. See test_isolation_layout_reconfigure.gd (September 21).
+
+Bought-layout activity checks must establish furniture contact, not just reachable
+floor. Galley fixed meal coordinates passed clearance while missing the new
+counters entirely. Resolve approaches from effective prop rectangles and verify
+an actual arrival. Seated activities additionally need pose/pivot alignment: a
+new sofa cannot inherit the retired desk chair's fixed visual offset unreviewed.
+
+When promoting local furnishing to shipped defaults, merge the saved override
+with its existing authored entry first. Promote only explicitly selected room/
+rotation keys; never copy the whole player layout file or reset Studio marks.
+Compare native views with local overrides against candidate defaults with empty
+user data. Galley/Isolation/Cold Store matched all 12 views exactly before their
+September 21 promotion. Keep visual acceptance and actual release testing separate.
+
+Service arrivals must work when crew already stand beside the equipment. The
+32-unit wandering minimum previously rejected a freezer approach 22.6 units away.
+Apply that minimum only to non-station destinations; preserve station collision,
+occupancy and route checks. Exercise near-counter starts as well as cross-room trips.
+
+Paid finite-resource comparisons must include setup time, setup deliveries and
+remaining site stock. A longer construction sequence can harvest much of a pile
+before the observation counter resets. September 21 salvage tracing found both
+stations collected all 12 units; the two-generator run finished sooner despite its
+smaller post-setup total. Do not infer a throughput regression from that total alone.
+Keep controlled-blueprint, manually stepped fixtures separate from human playtests.
+
+
+When a funded build fixture cannot place a room, record all tested rotations and
+current resources at failure. Reporting only the last rotation can hide that an
+earlier rotation became affordable on the final simulation step. Wait for the
+resource condition before construction, or recheck it after the last step; do not
+grant resources or relax normal rules to conceal a setup-boundary error.
+
+For construction-dialogue reproduction, the optional dialogue_trace.log is now
+included in F8 bundles with the normal 2 MiB log-tail cap. Correlate its session
+header with the report; an existing trace can predate the current launch. Keep the
+original timing issue open until the offending line is captured. An isolated
+report-test PASS line is invalid if the engine log also contains compile/script
+errors. Copy real transitive source dependencies, use a fresh profile with
+application/config/custom_user_dir_name, and confirm OS.get_user_data_dir before
+treating profile isolation or previous-log assertions as established.
+
+For checkpoint previews, keep an untouched evidence copy and load a disposable
+copy: RunSave adopts the loaded file's _path and expedition conclusion can delete
+it. Fail on an empty disk read instead of rendering a fallback new loop. Check the
+restored camera at visible, settled viewport dimensions in addition to room and
+crew equality. Continue intentionally focuses BRINE; do not restore arbitrary pan
+as a speculative fix. Hidden staged layout previously displaced the focus by half
+a viewport (docs/CONTINUE_CAMERA_FIX_2026-09-22.md).
+
+
+## September 23: legal placement versus functioning generation
+
+A normal paid checkpoint can contain a legal but nonfunctional turbine. The
+cycle-22 continuation had a Current Turbine facing a resource deposit: generation
+was three against five demand, causing repeated blackout/recharge cycles. Earlier
+automated placement checked only `get_placement_problem`, which did not establish
+that the intake was clear. This is fixture strategy evidence, not a balance bug.
+For automatic build choices, check `_turbine_intake_problem` for the proposed
+position/rotation and avoid covering any existing `_turbine_intake_cell`. Record
+`power_generated`, `power_used`, reserve and `offline_reasons` before attributing
+slow progress to crew motion. Use normal paid rerolls/building or mining decisions;
+never delete the blocking deposit or grant resources merely to make a run pass.
+
+Also inspect live drone battery, phase, `route_wait`, remaining site stock and
+actual route reachability. A saved half-charged battery did not explain the whole
+stall: the live drone reached full charge while both remaining mining deposits
+had no route. Keep resource exhaustion and rock-barrier clearance separate from
+power starvation. Schedule exposed basalt through the normal work control rather
+than removing it directly in a normal-play comparison.
+
+Load shedding can also pause construction: its `work_cell` must not be suspended.
+In the same normal continuation, Veld held the paid turbine order because its
+approach was in the suspended cryo ward. Once new generation supplied the margin,
+resuming that room through the ordinary control completed the order. Inspect the
+saved order and actor activity before diagnosing a stuck worker; preserve the
+access gate. Final actual-release checkpoint: cycle35, eleven rooms, no orders.

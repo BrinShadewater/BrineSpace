@@ -76,6 +76,7 @@ func run() -> void:
 	npc.choose_goal(game)
 	check(npc.goal == "hunger", "Highest serviceable need chooses food")
 	check(npc.goal_cell == origin + Vector2i.DOWN * 2, "Food destination uses connected hydroponics")
+	check(not npc.path.is_empty() and npc.state == "idle", "Queued route stays idle until movement selects its facing")
 	var visited := {}
 	var action_states := {}
 	var wandered := false

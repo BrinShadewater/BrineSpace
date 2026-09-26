@@ -9,6 +9,10 @@ var placement_reports := {}
 var side_views := {}
 var activity_layout: Dictionary={}
 
+func layout_key(room) -> String:
+	var selected := preload("res://scripts/room_layout_store.gd").asset_for(room)
+	return asset_id if selected.is_empty() else selected
+
 func _init(id: String) -> void:
 	asset_id=id
 	activity_layout=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/activity-layouts.json")).get(id,{})
@@ -75,18 +79,21 @@ func bounds(prop: Dictionary) -> Rect2:
 
 func apply(room) -> void:
 	if asset_id=="pressure-manifold-wall" and room.quarter==0:
-		preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
+		preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
 		return # Retain the accepted q0 originals.
 	for prop in room.props:
 		if owns(prop):
-			preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
+			preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
 			return
 	# A layout can delete the bank (a null entry for its id). Nothing then carries the installed
 	# marker above, so the placement ran again on every reconfigure: props were displaced a second
 	# time and any with no clear space were silently dropped. A deleted bank installs nothing, so
 	# the room keeps its authored props and only the layout is applied.
-	if preload("res://scripts/room_layout_store.gd").shared_positions(asset_id,room.quarter).get("full_wall_"+asset_id,0) == null:
-		preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
+	# Studio needs a stable source layout. Its draft applies deletions after this
+	# baseline is captured; using saved deletions here resurrects displaced legacy
+	# furniture and makes the next save forget the missing bank's tombstone.
+	if not room.has_meta("layout_editor_preview") and preload("res://scripts/room_layout_store.gd").shared_positions(layout_key(room),room.quarter).get("full_wall_"+asset_id,0) == null:
+		preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
 		prune_dressing(room,[])
 		return
 	var north: bool=Geometry.has_port(room.layout[0],0)
@@ -219,7 +226,7 @@ func apply(room) -> void:
 	placement_reports[room.quarter]={"relocated":moved,"no_clear_space":unplaced,"activity":activity_layout.get("purpose","")}
 	room.props=kept
 	prune_dressing(room,moved)
-	preload("res://scripts/room_layout_store.gd").apply(room,asset_id)
+	preload("res://scripts/room_layout_store.gd").apply(room,layout_key(room))
 
 # Remove service leads whose furniture was replaced or deleted; retain supported details on
 # survivors. A layout that deletes props needs this as much as a bank installation does.

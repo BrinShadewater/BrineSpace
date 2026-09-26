@@ -9,6 +9,68 @@ var returning_to_pod := false
 var recharge_docked := false
 var charge_credit := 0.0
 var charge_elapsed := 0.0
+var berth_motion: Dictionary={}
+var bunk_motion: Dictionary={}
+const BUNK_SECONDS:=1.84
+
+func rebuild(main, staged := false) -> void:
+	await super.rebuild(main,staged)
+	for cell in geometry:
+		geometry[cell]=geometry[cell].duplicate()
+		geometry[cell].bunk_actor="marsh"
+
+func bunk_motion_active() -> bool:
+	return not bunk_motion.is_empty() and stage in ["life_lie","life_sleep","life_get_up"] and not dead and movement_medium=="dry"
+
+
+func berth_motion_active() -> bool:
+	return not berth_motion.is_empty() and stage in ["life_lie","life_sleep","life_get_up"] and not dead
+
+func begin_life_station(station: Dictionary) -> void:
+	berth_motion.clear();bunk_motion.clear()
+	if stage=="life_lie" and station.get("marsh_bunk",false):
+		bunk_motion={"entry":foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL,"rest":Vector2(station.rest_point)}
+		direction="east"
+		return
+	if stage!="life_lie" or not station.get("marsh_bedside",false):return
+	berth_motion={"head":Vector2(station.rest_head),"entry":foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL}
+	direction="east"
+
+func life_stage_seconds(value: String) -> float:
+	if bunk_motion_active() and value in ["life_lie","life_get_up"]:return BUNK_SECONDS
+	return 1.6 if berth_motion_active() and value in ["life_lie","life_get_up"] else float(Life.STAGES[value])
+
+func interrupted_life_rise_seconds() -> float:
+	if bunk_motion_active() and stage=="life_lie":return clampf(BUNK_SECONDS-timer+0.0000001,0,BUNK_SECONDS)
+	if berth_motion_active() and stage=="life_lie":return clampf(1.6-timer,0,1.6)
+	return life_stage_seconds("life_get_up")
+
+func animation_state() -> String:
+	if bunk_motion_active():return {"life_lie":"bunk-enter","life_sleep":"bunk-sleep","life_get_up":"bunk-exit"}[stage]
+	if berth_motion_active():return {"life_lie":"berth-lie","life_sleep":"berth-sleep","life_get_up":"berth-rise"}[stage]
+	return super.animation_state()
+
+func bunk_visual_offset() -> Vector2:
+	if not bunk_motion_active():return super.observation_visual_offset()
+	var t:=BUNK_SECONDS
+	if stage=="life_lie":t=BUNK_SECONDS-timer
+	elif stage=="life_get_up":t=timer
+	var at: Vector2=bunk_motion.entry
+	if t>=0.36:at.y-=4
+	if t>=0.66:at=Vector2(bunk_motion.rest)+Vector2(0,16*(1-clampf((t-0.96)/0.6,0,1)))
+	return at-(foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL)
+
+func observation_visual_offset() -> Vector2:
+	if bunk_motion_active():return bunk_visual_offset()
+	if not berth_motion_active():return super.observation_visual_offset()
+	var time:=1.6
+	if stage=="life_lie":time=1.6-timer
+	elif stage=="life_get_up":time=timer
+	var rest: Vector2=berth_motion.head-Vector2(0,49-172)*65.28/148.0
+	var seat:=rest+Vector2(20,18)
+	var at: Vector2=Vector2(berth_motion.entry).lerp(seat,clampf((time-0.12)/0.3,0,1))
+	if time>=0.72:at=seat.lerp(rest,clampf((time-0.72)/0.6,0,1))
+	return at-(foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL)
 
 func needs_air() -> bool: return false
 func set_helmet_equipped(value: bool) -> bool:
@@ -70,6 +132,12 @@ func update(main, delta: float) -> void:
 	if dead or not main.running or main.paused or delta<=0: return
 	helmet_equipped=false
 	if not active: super.update(main,delta); return
+	if (berth_motion_active() or bunk_motion_active()) and (battery<=RETURN_AT or returning_to_pod):
+		# Leave the mattress before the charging controller starts floor movement.
+		if stage!="life_get_up":
+			timer=interrupted_life_rise_seconds();stage="life_get_up";state="idle";goal=""
+		super.update(main,delta)
+		return
 	# A weld under way finishes before he heads back to charge (owner playtest: a low battery
 	# abandoned hull repairs mid-seam).
 	if (battery>RETURN_AT or (state=="weld" and battery>5.0)) and not returning_to_pod:
@@ -93,7 +161,11 @@ func update(main, delta: float) -> void:
 	if not recharge_docked:
 		if hardware_doors_locked:
 			state="idle";activity="return to pod blocked / unlock doors";return
-		var approach := charging_approach(main)
+		# The last waypoint already identifies the charging spot. Rebuilding and
+		# smoothing that same long route every movement frame stalls large stations.
+		# move() still checks each segment; obstruction/rebuild clears the path and
+		# the next update searches again. Saved paths need no additional cache state.
+		var approach := {"point":path[path.size()-1]} if not path.is_empty() and cell_at(path[path.size()-1])==cell and can_stand(path[path.size()-1]) else charging_approach(main)
 		if approach.is_empty():
 			path.clear();state="idle";activity="return to pod blocked / restore a clear route";return
 		if foot.distance_to(approach.point)>1:
@@ -126,12 +198,27 @@ func update(main, delta: float) -> void:
 
 func snapshot() -> Dictionary:
 	var result := super.snapshot()
+	result.marsh_bunk=bunk_motion.duplicate(true) if bunk_motion_active() else {}
+	result.marsh_berth=berth_motion.duplicate(true) if berth_motion_active() else {}
 	result.merge({"battery":battery,"returning_to_pod":returning_to_pod,"recharge_docked":recharge_docked,"charge_credit":charge_credit,"charge_elapsed":charge_elapsed})
 	return result
 
 static func valid_marsh_snapshot(data: Variant) -> bool:
 	if not data is Dictionary:return false
 	if not preload("res://scripts/marsh_west_motion.gd").valid_west_short_snapshot(data): return false
+	var berth: Variant=data.get("marsh_berth",{})
+	if not berth is Dictionary:return false
+	if not berth.is_empty():
+		if data.stage not in ["life_lie","life_sleep","life_get_up"] or data.direction!="east" or data.get("dead",false):return false
+		for key in ["head","entry"]:
+			if not berth.get(key) is Vector2 or not berth[key].is_finite() or maxf(absf(berth[key].x),absf(berth[key].y))>200:return false
+	var bunk: Variant=data.get("marsh_bunk",{})
+	if not bunk is Dictionary:return false
+	if not bunk.is_empty():
+		if data.stage not in ["life_lie","life_sleep","life_get_up"] or data.direction!="east" or data.get("dead",false) or data.get("movement_medium","dry")!="dry" or not berth.is_empty():return false
+		for key in ["entry","rest"]:
+			if not bunk.get(key) is Vector2 or not bunk[key].is_finite() or maxf(absf(bunk[key].x),absf(bunk[key].y))>200:return false
+		if bunk.entry.distance_to(data.foot-(Vector2(data.goal_cell)+Vector2.ONE*0.5)*384)>0.05:return false
 	for key in {"battery":100.0,"charge_credit":CHARGE_PER_POWER,"charge_elapsed":20.0}:
 		var value: Variant=data.get(key,100.0 if key=="battery" else 0.0)
 		if not (value is float or value is int) or not is_finite(float(value)) or value<0 or value>{"battery":100.0,"charge_credit":CHARGE_PER_POWER,"charge_elapsed":20.0}[key]: return false
@@ -141,6 +228,9 @@ static func valid_marsh_snapshot(data: Variant) -> bool:
 	return data.goal!="recharge" or data.get("returning_to_pod",false)
 
 func restore_snapshot(main, data: Dictionary, staged := false) -> void:
+	if not valid_marsh_snapshot(data):return
+	bunk_motion=data.get("marsh_bunk",{}).duplicate(true)
+	berth_motion=data.get("marsh_berth",{}).duplicate(true)
 	await super.restore_snapshot(main,data,staged)
 	battery=float(data.get("battery",100.0));charge_credit=float(data.get("charge_credit",0.0))
 	returning_to_pod=data.get("returning_to_pod",false);recharge_docked=data.get("recharge_docked",false)
@@ -159,6 +249,8 @@ func _init() -> void:
 	tread_clearance=envelope.duplicate(true)
 
 func marsh_pose_clear() -> bool:
+	# Exterior travel has no station floor; match the other crew's water poses.
+	if movement_medium=="exterior":return true
 	return swim_segment_clear(foot,foot,direction,direction)
 
 func action_pose_clear(_action: String) -> bool:

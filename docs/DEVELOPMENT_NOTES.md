@@ -1,3 +1,32 @@
+> September 24 takeover: [current status](CURRENT_STATUS.md), [Claude handoff](CLAUDE_HANDOFF_2026-09-24.md), and [asset pipeline/workflow](ASSET_PIPELINE_AND_WORKFLOW.md) provide the current continuation map. Dated evidence below retains its original scope.
+
+## September 23 submitted report corrections
+
+Hull repair can choose a clear work position when furniture covers its original
+anchor. Air budgeting projects water during travel but only spends oxygen for
+hazardous transit and work. Failed air checks retry at a bounded interval; new
+air bypasses that delay. Flood navigation can recover a cramped doorway pose and
+continue an existing work route; a reachable room below swimming depth is a valid
+breathing refuge. No extra Metal, oxygen, capacity or resurrection is granted.
+Power's HUD label explicitly says FULL at capacity. See
+[report handoff](OWNER_BUG_REPORT_FIXES_2026-09-23.md) for tests and remaining spikes.
+
+## September 23 stored-Power charging correction
+
+Mining/salvage battery charging uses stored Power even when the bay has no current
+cycle allocation. New charge purchases stop at 3 Power and resume above 3;
+already paid charge persists. Suspension and station pause/Power-off still apply.
+See [charging evidence](DRONE_STORED_POWER_2026-09-23.md).
+
+## September 23 procedural site direction
+
+New loops now use seeded underwater sites with a protected core opening and more
+distant unidentified recovery chambers. Exploration assigns first encounters in
+Veld → Branforth → Marsh order across the profile, separate from rescue/shop
+eligibility. Later owned-starter selection remains available. Legacy checkpoints
+retain their maps. See [procedural-site evidence](PROCEDURAL_SITES_2026-09-23.md);
+older fixed-ward and fixed-habitat descriptions below document the earlier system.
+
 ## September 12 owner playtest handoff - new room art contract
 
 All room equipment moves to top-down, inward-facing art on every wall. Older

@@ -51,6 +51,7 @@ static func draw(grid, order: Dictionary, progress: float) -> void:
 			var view=grid._bill_room_view(room)
 			if view!=null:
 				view.configure_embedded(int(order.rotation),[],false,0.0)
+				preload("res://scripts/room_asset_library.gd").strip_retired(view)
 				var props: Array=view.props
 				var count: int=clampi(int(ceil((p-.70)/.30*props.size())),0,props.size())
 				view.props=props.slice(0,count)

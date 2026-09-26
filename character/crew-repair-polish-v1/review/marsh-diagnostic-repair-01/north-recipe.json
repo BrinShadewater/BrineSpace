@@ -1,0 +1,25 @@
+{
+  "status": "selected_runtime_chain",
+  "idleSource": "character\\crew-repair-polish-v1\\sources\\marsh\\idle-north.png",
+  "idleSha256": "0c693e424308283f55a8061c8232d6cac3c7453fe4e70a43754701d9f8cf1746",
+  "diagnosticSource": "tools/veld_scanner_revision.py: interact-north",
+  "draw": [
+    "canonical idle",
+    4,
+    2
+  ],
+  "work": [
+    2,
+    3,
+    2,
+    1,
+    2,
+    2
+  ],
+  "stow": "reverse draw",
+  "semantics": "Equipment-check stages keep legacy kneel/repair/stand IDs; Marsh uses a handheld diagnostic controller.",
+  "limits": [
+    "Derived from preserved authored instrument poses; no newly generated motion",
+    "Not owner accepted"
+  ]
+}

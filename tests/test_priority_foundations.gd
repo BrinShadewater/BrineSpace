@@ -45,7 +45,8 @@ func run() -> void:
 	check(fleet.battery_status(home,0).contains("WAITING FOR STORED POWER"),"Status identifies cause")
 	fleet.drones[home].charge_credit = 6.0
 	check(fleet.charge_demand({home:true},0).waiting == 0 and fleet.charge_demand({home:true},0).power == 1,"Previously paid charge can proceed at zero reserve")
-	check(fleet.charge_demand({},0).offline == 1 and fleet.charge_demand({},0).waiting == 0,"Offline bay is distinct from charge starvation")
+	check(fleet.charge_demand({},16).charging == 1,"Stored Power charges independently of bay cycle allocation")
+	check(fleet.charge_demand({},16,[{"pos":home,"suspended":true}]).offline == 1,"Suspended bay is distinct from charge starvation")
 	fleet.drones[home].phase = "returning"
 	check(fleet.charge_demand({home:true},0).power == 0,"In-flight deficit is not immediate refill demand")
 	print("PRIORITY FOUNDATIONS PASS" if failures == 0 else "PRIORITY FOUNDATIONS FAIL")

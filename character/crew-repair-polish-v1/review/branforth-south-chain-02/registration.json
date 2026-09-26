@@ -1,0 +1,207 @@
+{
+  "status": "prepared_runtime_chain",
+  "selection": "tools/branforth_repair_revision.py",
+  "source": "character/crew-repair-polish-v1/sources/branforth-kneel-south-02.png",
+  "sourceSha256": "55a6ae501ece37cac14e80557bf6494ef9633e00938336cbbe50b19a411d8151",
+  "registration": [
+    {
+      "crop": [
+        0,
+        0,
+        623,
+        631
+      ],
+      "scale": 0.23,
+      "support": [
+        432.0,
+        606
+      ],
+      "offset": [
+        49,
+        85
+      ]
+    },
+    {
+      "crop": [
+        623,
+        0,
+        1246,
+        631
+      ],
+      "scale": 0.23,
+      "support": [
+        353.0,
+        606
+      ],
+      "offset": [
+        67,
+        85
+      ]
+    },
+    {
+      "crop": [
+        0,
+        631,
+        623,
+        1262
+      ],
+      "scale": 0.23,
+      "support": [
+        473.0,
+        569
+      ],
+      "offset": [
+        39,
+        93
+      ]
+    },
+    {
+      "crop": [
+        623,
+        631,
+        1246,
+        1262
+      ],
+      "scale": 0.23,
+      "support": [
+        379.0,
+        569
+      ],
+      "offset": [
+        61,
+        93
+      ]
+    }
+  ],
+  "helmetFits": {
+    "kneel-south": [
+      {
+        "exactIdle": true
+      },
+      {
+        "headTop": 100,
+        "helmetPosition": [
+          110,
+          96
+        ]
+      },
+      {
+        "headTop": 117,
+        "helmetPosition": [
+          108,
+          113
+        ]
+      },
+      {
+        "headTop": 118,
+        "helmetPosition": [
+          102,
+          114
+        ]
+      },
+      {
+        "headTop": 126,
+        "helmetPosition": [
+          104,
+          122
+        ]
+      },
+      {
+        "headTop": 123,
+        "helmetPosition": [
+          108,
+          119
+        ]
+      }
+    ],
+    "repair-south": [
+      {
+        "headTop": 123,
+        "helmetPosition": [
+          108,
+          119
+        ]
+      },
+      {
+        "headTop": 123,
+        "helmetPosition": [
+          109,
+          119
+        ]
+      },
+      {
+        "headTop": 123,
+        "helmetPosition": [
+          109,
+          119
+        ]
+      },
+      {
+        "headTop": 124,
+        "helmetPosition": [
+          108,
+          120
+        ]
+      },
+      {
+        "headTop": 124,
+        "helmetPosition": [
+          109,
+          120
+        ]
+      },
+      {
+        "headTop": 123,
+        "helmetPosition": [
+          108,
+          119
+        ]
+      }
+    ],
+    "stand-south": [
+      {
+        "headTop": 123,
+        "helmetPosition": [
+          108,
+          119
+        ]
+      },
+      {
+        "headTop": 126,
+        "helmetPosition": [
+          104,
+          122
+        ]
+      },
+      {
+        "headTop": 118,
+        "helmetPosition": [
+          102,
+          114
+        ]
+      },
+      {
+        "headTop": 117,
+        "helmetPosition": [
+          108,
+          113
+        ]
+      },
+      {
+        "headTop": 100,
+        "helmetPosition": [
+          110,
+          96
+        ]
+      },
+      {
+        "exactIdle": true
+      }
+    ]
+  },
+  "derived": "Stand reverses the kneel. Exact frozen idle endpoints and exact repair joins. Repair loop reuses first pose as last.",
+  "limits": [
+    "Generation and joins do not establish owner acceptance.",
+    "Native and live review evidence is recorded separately in the dated handoff."
+  ]
+}

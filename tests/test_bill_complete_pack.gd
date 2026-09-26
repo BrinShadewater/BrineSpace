@@ -13,8 +13,9 @@ func run() -> void:
 	grid._load_major_bill_animations()
 	var player = grid.human_water_player
 	var contract: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tools/bill-art-source-contract.json"))
-	check(player.frames.size()==175,"All 175 body states selected")
-	check(player.equipment_frames["diving-helmet"].size()==168,"All 168 equipped states selected")
+	# 175 contract states plus the three bunk states (enter, sleep, exit) added Sept 21.
+	check(player.frames.size()==178,"All 178 body states selected")
+	check(player.equipment_frames["diving-helmet"].size()==171,"All 171 equipped states selected")
 	for entry in contract.states:
 		var key: String=entry.id
 		check(player.frames.has(key),key+" selected")

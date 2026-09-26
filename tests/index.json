@@ -8,6 +8,7 @@
       "test_soak_budget"
     ],
     "owner-gameplay-playtest": [
+      "test_owner_report_regressions",
       "test_power_playtest_regressions",
       "test_studio_character_scale",
       "test_title_checkpoint_layout",
@@ -16,12 +17,16 @@
       "test_decorative_cable_removal"
     ],
     "crew": [
+      "test_npc_rebuild_replacement",
       "test_airlock_clearance",
       "test_airlock",
       "test_architect_recovery",
+      "test_cryo_exit_timing",
       "test_architect_selection",
       "test_bill_npc",
       "test_bill_complete_pack",
+      "test_carry_turn_handoff",
+      "test_marsh_expedition_presentation",
       "test_crew_complete_packs",
       "test_branforth",
       "test_branforth_crew",
@@ -30,6 +35,7 @@
       "test_crew_comms",
       "test_crew_social",
       "test_crew_construction",
+      "test_construction_break_checks",
       "test_crew_death_pack",
       "test_crew_death_save",
       "test_crew_dialogue",
@@ -44,9 +50,21 @@
       "test_npc_segment_clearance",
       "test_airlock_actor_visibility",
       "test_diver_mining",
-      "test_crew_primary_work"
+      "test_crew_primary_work",
+      "test_galley_counter_stations",
+      "test_observation_sofa",
+      "test_cold_store_stations",
+      "test_sprite_furniture_metadata",
+      "test_sleep_interruption",
+      "test_veld_bunk",
+      "test_branforth_bunk",
+      "test_bill_bunk",
+      "test_marsh_bunk",
+      "test_bunk_multi_crew",
+      "test_bunk_eligibility"
     ],
     "underwater": [
+      "test_runtime_environment_art",
       "test_underwater_foundation",
       "test_underwater_shader",
       "test_rock_clearance",
@@ -72,6 +90,7 @@
       "test_drone_fleet",
       "test_drone_jobs",
       "test_drone_lifecycle",
+      "test_drone_work_face",
       "test_embedded_geometry",
       "test_finite_harvest",
       "test_galley",
@@ -113,6 +132,8 @@
       "test_wreck_clearance"
     ],
     "room-art": [
+      "test_reactor_console_feedback",
+      "test_runtime_room_art",
       "test_anomaly_registration",
       "test_archive_registration",
       "test_bio_registration",
@@ -141,7 +162,17 @@
       "test_tiled_floor_station",
       "test_wall_rollout_drafts",
       "test_wall_rollout_effects",
-      "test_xeno_registration"
+      "test_xeno_registration",
+      "test_isolation_layout_reconfigure",
+      "test_split_layout_keys",
+      "test_command_console_feedback",
+      "test_library_prop_retention",
+      "test_copied_prop_animation",
+      "test_salvage_layout_deletions",
+      "test_quarantine_layout_deletions",
+      "test_removed_bank_restoration",
+      "test_powered_display_retention",
+      "test_bunk_layers"
     ],
     "render-perf": [
       "test_live_surface_retention",
@@ -151,6 +182,11 @@
       "test_content_cache_parity",
       "test_hitch_parity",
       "test_light_pool_batch",
+      "test_projected_shadow_batch",
+      "test_salvage_articulation",
+      "test_construction_articulation",
+      "test_drone_hatch_handoff",
+      "test_drone_hatch_polygon",
       "test_navigation_segment_parity",
       "test_prop_flip_rendering",
       "test_render_cache_parity",
@@ -192,7 +228,9 @@
       "test_companion_personality",
       "test_companion_repair",
       "test_companions",
+      "test_companion_art_reuse",
       "test_marsh_battery",
+      "test_marsh_berth",
       "test_marsh_unlock"
     ],
     "fire": [
@@ -216,6 +254,8 @@
       "test_wet_door_integration"
     ],
     "layout-studio": [
+      "test_studio_owner_regressions",
+      "test_layout_deletion_persistence",
       "test_corner_defaults",
       "test_layout_catalog_runtime",
       "test_layout_free_placement",
@@ -227,13 +267,63 @@
       "test_room_studio_usability",
       "test_studio_character_scale",
       "test_simple_room_studio",
-      "test_studio_owner_notes"
+      "test_studio_owner_notes",
+      "test_layout_cache_removal"
     ],
     "cards-bindings": [
       "test_room_catalog_cards"
+    ],
+    "procedural-sites": [
+      "test_procedural_route",
+      "test_procedural_player_progress",
+      "test_procedural_player_power",
+      "test_procedural_player_recipe",
+      "test_procedural_site",
+      "test_site_discovery",
+      "test_site_runtime",
+      "test_exterior_catalogue",
+      "test_run_save",
+      "test_architect_recovery",
+      "test_cryo_exit_timing"
     ]
   },
   "lanes": {
+    "test_procedural_player_recipe": {
+      "lane": "native",
+      "reason": "Live placement and functioning-cycle checks for a profile-known recipe."
+    },
+    "test_procedural_player_power": {
+      "lane": "native",
+      "reason": "Instantiates the live game scene for placement and reroll strategy checks."
+    },
+    "test_marsh_berth": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
+    },
+    "test_reactor_console_feedback": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen effects of the retired built-in consoles; re-author with the parked new-prop screen animations."
+    },
+    "test_drone_hatch_handoff": {
+      "lane": "native",
+      "reason": "Compares actual grid-rendered drone pixels across hatch phase boundaries."
+    },
+    "test_drone_hatch_polygon": {
+      "lane": "native",
+      "reason": "Checks renderer errors while hatch apertures approach zero at room coordinates."
+    },
+    "test_construction_articulation": {
+      "lane": "native",
+      "reason": "Checks construction chassis rigidity and tool motion with real pixels."
+    },
+    "test_salvage_articulation": {
+      "lane": "native",
+      "reason": "Checks chassis rigidity and claw motion with real rendered pixels."
+    },
+    "test_projected_shadow_batch": {
+      "lane": "native",
+      "reason": "Pixel parity requires a native renderer; headless is an explicit failure."
+    },
     "playtest_human_crew_candidate": {
       "lane": "native",
       "reason": "Checks and renders all candidate human crew frames; rejects headless readback."
@@ -296,8 +386,80 @@
       "reason": "Selected source/station-scale gait rendering and distance-frame parity"
     },
     "test_tileset_library_tools": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): Studio tileset-library tools; the tray now lists station props only."
+    },
+    "test_command_console_feedback": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen effects of the retired built-in consoles; re-author with the parked new-prop screen animations."
+    },
+    "test_library_prop_retention": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen overlays of retired bought props (new-prop screen effects are parked)."
+    },
+    "test_copied_prop_animation": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): copies of the retired built-in mining_tether prop."
+    },
+    "test_salvage_layout_deletions": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): deletion of retired built-in salvage props; deletion persistence is covered by test_layout_deletion_persistence."
+    },
+    "test_quarantine_layout_deletions": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): deletion of retired built-in quarantine props; deletion persistence is covered by test_layout_deletion_persistence."
+    },
+    "test_removed_bank_restoration": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): full-wall banks and their bought props, not shown in station-props-v2 rooms."
+    },
+    "test_powered_display_retention": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen overlays of retired bought props (new-prop screen effects are parked)."
+    },
+    "test_bunk_layers": {
       "lane": "native",
-      "reason": "opens the Studio and renders tray previews; needs a real display"
+      "reason": "Exact framebuffer parity requires a real display."
+    },
+    "test_veld_bunk": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
+    },
+    "test_branforth_bunk": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
+    },
+    "test_bill_bunk": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
+    },
+    "test_marsh_bunk": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
+    },
+    "test_bunk_multi_crew": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
+    },
+    "test_side_wall_variants": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-24: redesigned rooms no longer show full-wall side banks (station props v2); only BRINE Core and corridors keep pre-v2 art, and they have none."
+    },
+    "test_wall_rollout_effects": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): full-wall banks, not shown in station-props-v2 rooms."
+    },
+    "test_rare_operating_effects": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): operating-screen effects of the retired built-in consoles; re-author with the parked new-prop screen animations."
+    },
+    "test_floor_detail_visibility": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): its floor details are hosted on retired built-in props and full-wall banks, which redesigned rooms no longer carry."
+    },
+    "test_wall_rollout_drafts": {
+      "lane": "skip",
+      "reason": "Retired 2026-09-25 (station props v2): full-wall bank drafts; banks are not shown in station-props-v2 rooms."
     }
   }
 }

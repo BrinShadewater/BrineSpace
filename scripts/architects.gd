@@ -61,6 +61,8 @@ static func pod(id: String, key: String) -> Dictionary:
 static func begin(game) -> Dictionary:
 	var selected: String = game.meta.selected_architect
 	if not IDS.has(selected) or not game.meta.unlocked_architect_ids.has(selected): selected="bill"
+	if not game.site_layout.is_empty():
+		return {"version":5,"selected":selected,"core":pod(selected,"core_architect")}
 	var others: Array = IDS.duplicate()
 	others.erase(selected)
 	others.erase("marsh")
@@ -182,7 +184,7 @@ static func valid(data: Variant, wrecks: Dictionary, roster: Variant) -> bool:
 	if data==null: return false
 	if data is Dictionary and data.is_empty(): return true
 	if not roster is Array: return false
-	if not data is Dictionary or data.get("version") not in [1,2,3,4] or not IDS.has(data.get("selected")): return false
+	if not data is Dictionary or data.get("version") not in [1,2,3,4,5] or not IDS.has(data.get("selected")): return false
 	var p=data.get("core")
 	if not p is Dictionary or p.get("id")!="core_architect" or p.get("architect_id")!=data.selected or p.get("name")!=NAMES[data.selected]: return false
 	if not p.get("wake") is float or not is_finite(p.wake) or p.wake<0 or p.wake>DURATION or not p.get("recovered") is bool: return false
@@ -190,14 +192,17 @@ static func valid(data: Variant, wrecks: Dictionary, roster: Variant) -> bool:
 	if p.recovered and not complete: return false
 	if not p.recovered and p.wake==DURATION: return false
 	var seen := {data.selected:true}
+	var unidentified := 0
 	for ward in wrecks.values():
+		if ward.kind=="recovery": unidentified+=1
 		if ward.kind not in ["cryo","charging"]: continue
 		for occupant in ward.pods:
 			var id: String = occupant.get("architect_id","")
 			if not IDS.has(id) or seen.has(id): return false
 			if data.version >= 4 and (id == "marsh") != (ward.kind == "charging"): return false
 			seen[id]=true
-	if seen.size() != (IDS.size() if data.version >= 3 else 3): return false
+	if unidentified>0 and data.version<5: return false
+	if seen.size()+unidentified != (IDS.size() if data.version >= 3 else 3): return false
 	if data.version < 3 and seen.has("marsh"): return false
 	for member in roster:
 		if not member is Dictionary: return false

@@ -1,5 +1,16 @@
 extends SceneTree
 const Comms=preload("res://scripts/crew_comms.gd")
+class CrewState extends RefCounted:
+	var active:=false
+	var dead:=false
+	var completed_activity:Dictionary={}
+class SavedStation extends Node:
+	var bill_npc=CrewState.new()
+	var veld_npc=CrewState.new()
+	var branforth_npc=CrewState.new()
+	var marsh_npc=CrewState.new()
+	var resources={"oxygen":12,"power":6,"food":12,"water":6}
+	func _project_cycle_delta() -> Dictionary:return {}
 func _init() -> void: call_deferred("run")
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute("res://output/comms-archive")
@@ -30,5 +41,27 @@ func run() -> void:
 	assert(resumed.pending.is_empty(),"Restored state drops a wake line queued during the load")
 	assert(not resumed.transmit("bill","Still breathing.","awake/bill"),"Restored comms do not repeat a keyed line")
 	assert(resumed.transmit("bill","A new observation.","finding/1"),"Unsaid lines still transmit")
+	var wake_failures:=check_opening_restore()
+	print("COMMS ARCHIVE: opening restore failures=",wake_failures)
 	print("COMMS ARCHIVE PASS: disk reload, replay, atomic replacement, bounded history, malformed preservation, said lines survive Continue")
-	quit()
+	quit(1 if wake_failures else 0)
+
+func check_opening_restore() -> int:
+	var failures:=0
+	for starter in Comms.Architects.IDS:
+		var station=SavedStation.new();root.add_child(station)
+		Comms.Architects.actor_for(station,starter).active=true
+		var comms=Comms.new();comms.game=station
+		# The initial crew line uses opening/crew, not awake/<architect>.
+		comms.restore_state({"seen":["opening","opening/crew","opening/objective"],"greeting_sent":true})
+		comms.observe_game()
+		if not comms.pending.is_empty():
+			failures+=1;push_error("Continue repeats the starting architect's wake line: "+starter)
+		comms.pending.clear();comms.event_clock=60.0
+		var newcomer:String="veld" if starter!="veld" else "bill"
+		Comms.Architects.actor_for(station,newcomer).active=true
+		comms.observe_game()
+		if comms.pending.size()!=1 or comms.pending[0].get("key","")!="awake/"+newcomer:
+			failures+=1;push_error("A newly thawed architect must still announce waking: "+newcomer)
+		comms.free();station.free()
+	return failures
