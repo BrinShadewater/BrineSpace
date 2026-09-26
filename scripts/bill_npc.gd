@@ -1336,15 +1336,33 @@ func _swim_route_to_any(start: int, targets: Dictionary, avoid_crew: bool, turn_
 	return PackedVector2Array()
 
 func smooth_route(route: PackedVector2Array, origin := Vector2.INF) -> PackedVector2Array:
+	var result := _smooth_route(route, origin, false)
+	# A swim shortcut can arrive facing a way the next turn does not fit there, which
+	# stranded every graph-valid escape in the Sept 23 doorway report. Retry keeping
+	# each arrival facing the one the facing-aware search used; its links all fit.
+	if result.is_empty() and movement_medium != "dry" and not route.is_empty():
+		result = _smooth_route(route, origin, true)
+	return result
+
+func _smooth_route(route: PackedVector2Array, origin: Vector2, keep_route_facing: bool) -> PackedVector2Array:
 	# Remove grid stair-steps only when the entire shortcut has foot clearance.
 	var result := PackedVector2Array()
 	var from := foot if not origin.is_finite() else origin
 	var facing := direction
+	var route_facings := PackedStringArray()
+	if keep_route_facing:
+		var previous := from
+		var arrival := facing
+		for point in route:
+			arrival = travel_heading(previous, point, arrival)
+			route_facings.append(arrival)
+			previous = point
 	var index := 0
 	while index < route.size():
 		var farthest := -1
 		for probe in range(index, route.size()):
 			var heading := travel_heading(from,route[probe],facing)
+			if keep_route_facing and heading != route_facings[probe]: continue
 			if segment_clear(from, route[probe]) and (movement_medium == "dry" or swim_segment_clear(from,route[probe],heading,facing)): farthest = probe
 		if farthest < 0: return PackedVector2Array()
 		result.append(route[farthest])
