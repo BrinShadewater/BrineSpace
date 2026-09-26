@@ -36,7 +36,14 @@ static func write(game, path: String = PATH) -> Error:
 	if not game.running or game.testing_free_build or game.testing_disable_failures:
 		last_error = "No active loop to save."
 		return ERR_UNAVAILABLE
-	var bytes := var_to_bytes(capture(game))
+	var captured := capture(game)
+	# Never replace a good checkpoint with one the loader would reject (it fell back to the
+	# backup silently before Sept 26). Keep the previous file and say why.
+	var reason := problem(captured)
+	if not reason.is_empty():
+		last_error = "Checkpoint not written: " + reason + ". Previous checkpoint kept."
+		return ERR_INVALID_DATA
+	var bytes := var_to_bytes(captured)
 	var temp := path + ".tmp"
 	var file := FileAccess.open(temp, FileAccess.WRITE)
 	if file == null:
@@ -72,9 +79,11 @@ static func read(path: String = PATH) -> Dictionary:
 	last_error = ""
 	var result := _read_one(path)
 	if result.is_empty() and FileAccess.file_exists(path + ".bak"):
+		var primary_problem := last_error
 		result = _read_one(path + ".bak")
 		if not result.is_empty():
 			result["_recovered_backup"] = true
+			result["_primary_problem"] = primary_problem
 	if not result.is_empty():
 		last_error = ""
 		result["_path"] = path
@@ -96,46 +105,50 @@ static func _read_one(path: String) -> Dictionary:
 	if not value is Dictionary or value.get("version") != VERSION or not value.get("state") is Dictionary:
 		last_error = "Checkpoint version unsupported."
 		return {}
-	if not valid_site(value): return {}
-	if not valid_controls(value): return {}
-	if not preload("res://scripts/station_hardware.gd").valid(value.get("hardware",{})): return {}
-	if not preload("res://scripts/underwater_visibility.gd").valid(value.get("surveyed_water",{})): return {}
-	if not preload("res://scripts/resource_flow_ledger.gd").valid(value.get("resource_flow")): return {}
-	var state: Dictionary = value.state
-	if not state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(state.placed_rooms) or not preload("res://scripts/room_fire.gd").valid_rooms(state.placed_rooms)): return {}
-	if not preload("res://scripts/drone_fleet.gd").valid(value.get("drone_fleet"),state.get("placed_rooms",[])): return {}
-	if not valid_crew(value.get("crew")): return {}
-	if not preload("res://scripts/companions.gd").valid(value.get("companions"),value.get("wrecks",{}),state.placed_rooms):return {}
-	if not preload("res://scripts/crew_expedition.gd").valid_crew_rooms(value.get("crew"),state.placed_rooms): return {}
-	for field in FIELDS:
-		if not state.has(field):
-			last_error = "Checkpoint incomplete."
-			return {}
-	for key in ["run_id", "rng", "orbit_rng", "poi", "poi_timer", "timer_left", "scroll"]:
-		if not value.has(key):
-			return {}
-	if not state.placed_rooms is Array or state.placed_rooms.is_empty() or not state.resources is Dictionary:
+	var reason := problem(value)
+	if not reason.is_empty():
+		last_error = "Checkpoint incomplete." if reason.begins_with("missing state field") else "Checkpoint invalid: " + reason
 		return {}
+	return value
+
+# Why a captured or loaded checkpoint cannot be restored, or "" when it can. Every rejection
+# names its check: a silent rejection hid a fixture's invalid site for weeks (Sept 26), and
+# write() uses this to refuse a save the loader would throw away.
+static func problem(value: Dictionary) -> String:
+	if not valid_site(value): return "site layout or recovery wards"
+	if not valid_controls(value): return "station controls"
+	if not preload("res://scripts/station_hardware.gd").valid(value.get("hardware",{})): return "hardware state"
+	if not preload("res://scripts/underwater_visibility.gd").valid(value.get("surveyed_water",{})): return "surveyed water"
+	if not preload("res://scripts/resource_flow_ledger.gd").valid(value.get("resource_flow")): return "resource flow ledger"
+	var state: Dictionary = value.state
+	if not state.get("placed_rooms") is Array: return "room list"
+	if not preload("res://scripts/airlock_cycle.gd").valid_rooms(state.placed_rooms): return "airlock cycle state"
+	if not preload("res://scripts/room_flooding.gd").valid_rooms(state.placed_rooms): return "flood water state"
+	if not preload("res://scripts/room_fire.gd").valid_rooms(state.placed_rooms): return "fire state"
+	if not preload("res://scripts/drone_fleet.gd").valid(value.get("drone_fleet"),state.get("placed_rooms",[])): return "drone fleet"
+	if not valid_crew(value.get("crew")): return "crew snapshots"
+	if not preload("res://scripts/companions.gd").valid(value.get("companions"),value.get("wrecks",{}),state.placed_rooms): return "companions"
+	if not preload("res://scripts/crew_expedition.gd").valid_crew_rooms(value.get("crew"),state.placed_rooms): return "crew expedition rooms"
+	for field in FIELDS:
+		if not state.has(field): return "missing state field " + field
+	for key in ["run_id", "rng", "orbit_rng", "poi", "poi_timer", "timer_left", "scroll"]:
+		if not value.has(key): return "missing " + key
+	if state.placed_rooms.is_empty() or not state.resources is Dictionary: return "rooms or resources"
 	var rooms: Dictionary = preload("res://scripts/room_database.gd").all_rooms()
 	var occupied := {}
 	for room in state.placed_rooms:
-		if not room is Dictionary or not rooms.has(room.get("id")) or not room.get("pos") is Vector2i:
-			return {}
+		if not room is Dictionary or not rooms.has(room.get("id")) or not room.get("pos") is Vector2i: return "unknown room"
 		var pos: Vector2i = room.pos
-		if pos.x < 0 or pos.y < 0 or pos.x >= 40 or pos.y >= 40 or occupied.has(pos):
-			return {}
+		if pos.x < 0 or pos.y < 0 or pos.x >= 40 or pos.y >= 40 or occupied.has(pos): return "room position %s" % pos
 		occupied[pos] = true
-	if not preload("res://scripts/wreck_field.gd").valid(value.get("wrecks",{}),occupied):
-		return {}
-	if not preload("res://scripts/architects.gd").valid(value.get("architects",{}),value.get("wrecks",{}),value.get("recovered_crew",[])): return {}
-	if not preload("res://scripts/cryo_recovery.gd").valid_roster(value.get("recovered_crew",[]),value.get("wrecks",{}),state.placed_rooms,value.get("architects",{})): return {}
+	if not preload("res://scripts/wreck_field.gd").valid(value.get("wrecks",{}),occupied): return "wrecks"
+	if not preload("res://scripts/architects.gd").valid(value.get("architects",{}),value.get("wrecks",{}),value.get("recovered_crew",[])): return "architect roster"
+	if not preload("res://scripts/cryo_recovery.gd").valid_roster(value.get("recovered_crew",[]),value.get("wrecks",{}),state.placed_rooms,value.get("architects",{})): return "recovered crew"
 	for list in [state.hand, state.draw_pile, state.discard_pile]:
-		if not list is Array:
-			return {}
+		if not list is Array: return "card piles"
 		for id in list:
-			if not rooms.has(id):
-				return {}
-	return value
+			if not rooms.has(id): return "unknown card " + str(id)
+	return ""
 
 static func valid_controls(data: Dictionary) -> bool:
 	var state: Dictionary = data.get("state",{})
