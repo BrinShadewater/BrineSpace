@@ -249,6 +249,7 @@ var hand_collapsed := false
 var hand_toggle_button: Button
 var hand_layout_button: Button
 var room_lock_button
+var room_scrap_button
 var hand_backdrop_button: Button
 var card_drag
 const DraftCard = preload("res://scripts/draft_card.gd")
@@ -849,6 +850,19 @@ func _build_ui() -> void:
 	_style_switch_button(room_lock_button)
 	room_lock_button.hide()
 	switch_row.add_child(room_lock_button)
+	# Scrap a built room for half its Metal (owner, Sept 26). Press twice to confirm.
+	room_scrap_button = Button.new()
+	room_scrap_button.name = "RoomScrapButton"
+	room_scrap_button.custom_minimum_size.y = 34
+	room_scrap_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	room_scrap_button.add_theme_font_size_override("font_size", 13)
+	room_scrap_button.pressed.connect(_scrap_inspected_room)
+	preload("res://scripts/title_button_style.gd").apply(room_scrap_button, 380, 34)
+	var scrap_row := HBoxContainer.new()
+	scrap_row.name = "RoomScrap"
+	preview_box.add_child(scrap_row)
+	scrap_row.add_child(room_scrap_button)
+	room_scrap_button.hide()
 	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
 	airlock_panel.game=self
 	preview_box.add_child(airlock_panel)
@@ -1597,6 +1611,23 @@ func _toggle_inspected_room() -> void:
 		for link in active_synergy_links:
 			active_synergies[link["id"]] = link
 	_log("%s %s." % [room["display_name"], "suspended" if room["suspended"] else "scheduled to resume next cycle"], false)
+	_refresh_all()
+
+func _scrap_inspected_room() -> void:
+	if _gameplay_input_blocked() or not running or room_scrap_button == null: return
+	var cell: Vector2i = room_scrap_button.get_meta("cell", Vector2i(-1, -1))
+	var Scrap = preload("res://scripts/room_scrap.gd")
+	if not Scrap.blocker(self, cell).is_empty(): return
+	# First press arms; a second press on the same room scraps it.
+	if room_scrap_button.get_meta("armed", Vector2i(-1, -1)) != cell:
+		room_scrap_button.set_meta("armed", cell)
+		room_scrap_button.text = "CONFIRM SCRAP · +%d METAL" % Scrap.refund(occupied[cell])
+		return
+	room_scrap_button.set_meta("armed", Vector2i(-1, -1))
+	if Scrap.scrap(self, cell) <= 0 and occupied.has(cell): return
+	for actor in Companions.all_actors(self): actor.signature = ""
+	grid_view.surface_key = []; grid_view.door_surface_key = []; grid_view.light_surface_key = []
+	selected_room_cell = Vector2i(-1, -1)
 	_refresh_all()
 
 func _toggle_inspected_room_lock() -> void:
@@ -2353,6 +2384,7 @@ func _advance_cycle() -> void:
 	cycle += 1
 	preload("res://scripts/resource_flow_ledger.gd").close_cycle(resource_flow)
 	last_cycle_delta = _apply_room_economy()
+	preload("res://scripts/metal_trickle.gd").apply(self)
 	preload("res://scripts/room_fire.gd").cycle(self)
 	preload("res://scripts/transmission_archive.gd").survey_receivers(self)
 	preload("res://scripts/listening_post.gd").tick(self)
@@ -4684,6 +4716,7 @@ func _refresh_inspector() -> void:
 func _refresh_inspector_contents() -> void:
 	inspector_focus_button.disabled = true
 	if room_lock_button != null: room_lock_button.hide()
+	if room_scrap_button != null: room_scrap_button.hide()
 	if hovered_card_id.is_empty() and selected_card_id.is_empty():
 		var site_cell: Vector2i = selected_room_cell
 		if drone_fleet.sites.has(site_cell) and drone_fleet.sites[site_cell].discovered and not occupied.has(site_cell):
@@ -4742,6 +4775,15 @@ func _refresh_inspector_contents() -> void:
 		room_lock_button.disabled = not running
 		room_lock_button.tooltip_text = "Locked doors seal this room: crew cannot pass and flood water stays out or in. Closed, unlocked doors let water seep through slowly." if not hardware.doors else "The station-wide DOORS switch is locking every room."
 		room_lock_button.show()
+	if room_scrap_button != null and not previewing_card and room.has("pos") and occupied.has(room.pos):
+		var scrap_reason: String = preload("res://scripts/room_scrap.gd").blocker(self, room.pos)
+		if room_scrap_button.get_meta("armed", Vector2i(-1, -1)) != room.pos:
+			room_scrap_button.set_meta("armed", Vector2i(-1, -1))
+			room_scrap_button.text = "SCRAP · +%d METAL" % preload("res://scripts/room_scrap.gd").refund(room)
+		room_scrap_button.set_meta("cell", room.pos)
+		room_scrap_button.disabled = not running or not scrap_reason.is_empty()
+		room_scrap_button.tooltip_text = scrap_reason if not scrap_reason.is_empty() else "Remove this room for half its Metal. Press twice to confirm."
+		room_scrap_button.show()
 	if room.is_empty():
 		preview_texture.texture = null
 		preview_name_label.text = "No Selection"

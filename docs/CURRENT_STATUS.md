@@ -78,7 +78,12 @@ marks and user layouts are owner data. Back up affected keys before writes.
     at first; the rerun (test player now rerolls unaffordable cards) reached metal 0 and
     showed a **real zero-metal softlock**: once surveyed deposits are gone there is no metal
     source (orbit rewards exist in `orbit_manager.gd` but nothing calls `orbit.advance`).
-    Owner design decision. The first run's `final.loop` was deleted by a probe (restore points
+    Fixed per owner choice: BRINE Core reclaims +1 Metal every 3 cycles while Metal < 2 and no
+    bay can harvest (`scripts/metal_trickle.gd`), and any leaf room can be scrapped from the
+    inspector for half its Metal (`scripts/room_scrap.gd`; not the core, wards, crew habs,
+    occupied rooms or rooms others need to reach the core). Rerun: metal recovers to 2 and
+    corridors keep extending; a 271 ms frame at a room completion (crew nav rebuild) is open.
+    The first run's `final.loop` was deleted by a probe (restore points
     autosave at the source file); events, profile and screenshots remain.
   - Bunk: the seated frame sits on the mattress edge. Colour-matching the bunk art and
     smoothing crew sprites were tried and reverted (props v2 doc, Open).
