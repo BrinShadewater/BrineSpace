@@ -184,6 +184,16 @@ observable state rather than a fixed delay — a fixed wait after a scene swap i
 known flake pattern — and when a failure is unexplained, print the real per-frame
 state with a temporary probe before editing the test.
 
+**Never run tests or probes against the owner's real save folder.** `project.godot`
+pins `user://` to `%APPDATA%/Godot/app_userdata/BrineSpace/`, which holds their
+progress save, loop checkpoint, comms sidecar and Studio layouts. Run every Godot test
+or probe with `APPDATA` set to a scratch folder (copy `room_layouts.json` in if the
+test needs the owner's layouts), and fingerprint the real folder before and after.
+On 2026-09-26 unisolated portrait tests overwrote the checkpoint's
+`brine_loop.save.comms.json`; it was restored from an F8 bug-report zip. A probe
+that restores a checkpoint from `output/` must restore a scratch copy and reset
+`run_save_path`: `RunSave.restore` retargets autosave at the loaded file.
+
 For playable exports, follow [docs/RELEASE_WORKFLOW.md](docs/RELEASE_WORKFLOW.md) and
 use the maintained release exporter. Keep editor/PCK checks separate from actual
 release gameplay; release assertions must never contain required side effects.
