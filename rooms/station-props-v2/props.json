@@ -2268,21 +2268,7 @@
   "default_rooms": [
    "cold_store"
   ],
-  "design": "cold_store.png",
-  "operating_screens": [
-   [
-    68,
-    105,
-    30,
-    58
-   ],
-   [
-    231,
-    105,
-    29,
-    58
-   ]
-  ]
+  "design": "cold_store.png"
  },
  {
   "id": "sp-command_center-1",
@@ -2350,6 +2336,18 @@
     113,
     98,
     34
+   ],
+   [
+    328,
+    61,
+    79,
+    36
+   ],
+   [
+    30,
+    60,
+    78,
+    36
    ]
   ]
  },
@@ -2534,6 +2532,18 @@
     36,
     129,
     88
+   ],
+   [
+    40,
+    47,
+    40,
+    68
+   ],
+   [
+    276,
+    48,
+    39,
+    68
    ]
   ]
  },
@@ -3819,15 +3829,7 @@
   "default_rooms": [
    "current_turbine"
   ],
-  "design": "current_turbine.png",
-  "operating_screens": [
-   [
-    171,
-    108,
-    52,
-    83
-   ]
-  ]
+  "design": "current_turbine.png"
  },
  {
   "id": "sp-current_turbine-2",
@@ -4254,27 +4256,7 @@
   "default_rooms": [
    "data_archive"
   ],
-  "design": "data_archive.png",
-  "operating_screens": [
-   [
-    135,
-    104,
-    45,
-    116
-   ],
-   [
-    200,
-    104,
-    45,
-    116
-   ],
-   [
-    265,
-    104,
-    45,
-    116
-   ]
-  ]
+  "design": "data_archive.png"
  },
  {
   "id": "sp-galley-1",
@@ -5206,6 +5188,18 @@
     19,
     98,
     58
+   ],
+   [
+    35,
+    45,
+    49,
+    39
+   ],
+   [
+    254,
+    44,
+    47,
+    40
    ]
   ]
  },
@@ -5267,6 +5261,18 @@
     46,
     48
    ]
+  ],
+  "effects": [
+   {
+    "kind": "hologram",
+    "area": [
+     0.27,
+     0.24,
+     0.26,
+     0.28
+    ],
+    "color": "#6fd3d8"
+   }
   ]
  },
  {
@@ -7635,15 +7641,7 @@
   "display_width": 110.6,
   "wall_contact": [],
   "default_rooms": [],
-  "design": "mining_drone_bay.png",
-  "operating_screens": [
-   [
-    155,
-    106,
-    22,
-    47
-   ]
-  ]
+  "design": "mining_drone_bay.png"
  },
  {
   "id": "sp-mining_drone_bay-2",
@@ -8154,6 +8152,12 @@
     56,
     148,
     81
+   ],
+   [
+    51,
+    71,
+    38,
+    40
    ]
   ]
  },
@@ -8682,6 +8686,12 @@
     94,
     31,
     46
+   ],
+   [
+    133,
+    99,
+    60,
+    49
    ]
   ]
  },
@@ -10769,36 +10779,6 @@
   "design": "solar_array.png",
   "operating_screens": [
    [
-    224,
-    194,
-    17,
-    11
-   ],
-   [
-    111,
-    211,
-    16,
-    8
-   ],
-   [
-    178,
-    211,
-    17,
-    8
-   ],
-   [
-    201,
-    211,
-    17,
-    8
-   ],
-   [
-    224,
-    211,
-    17,
-    10
-   ],
-   [
     122,
     250,
     61,
@@ -11996,7 +11976,15 @@
    "north"
   ],
   "default_rooms": [],
-  "design": "Operations/Operations Extra1.png"
+  "design": "Operations/Operations Extra1.png",
+  "operating_screens": [
+   [
+    30,
+    60,
+    53,
+    39
+   ]
+  ]
  },
  {
   "id": "sp-operations-extra1-2",
@@ -14519,7 +14507,21 @@
   "display_width": 104.5,
   "wall_contact": [],
   "default_rooms": [],
-  "design": "Science/Science Extras14.png"
+  "design": "Science/Science Extras14.png",
+  "operating_screens": [
+   [
+    78,
+    22,
+    64,
+    29
+   ],
+   [
+    166,
+    22,
+    65,
+    30
+   ]
+  ]
  },
  {
   "id": "sp-science-extra14-3",
@@ -15946,42 +15948,6 @@
   "design": "Science/Science Extras5.png",
   "operating_screens": [
    [
-    109,
-    192,
-    17,
-    11
-   ],
-   [
-    155,
-    192,
-    16,
-    11
-   ],
-   [
-    224,
-    192,
-    16,
-    11
-   ],
-   [
-    64,
-    209,
-    16,
-    10
-   ],
-   [
-    87,
-    209,
-    16,
-    10
-   ],
-   [
-    155,
-    209,
-    16,
-    10
-   ],
-   [
     122,
     249,
     60,
@@ -16300,6 +16266,12 @@
     92,
     145,
     34
+   ],
+   [
+    105,
+    58,
+    114,
+    20
    ]
   ]
  },

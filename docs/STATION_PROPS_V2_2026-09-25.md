@@ -80,7 +80,17 @@ games use procedural sites.
   bank/common-asset sheet is also loaded by a room view, and each room's source
   sheet also supplies its wall and cap material. Revisit with the wall/machinery
   art pass.
-- New-prop screen/projector effects (Anomaly Lab, Holo Core, consoles); airlock
-  helmet-shelf drawing; bunk climb-in animation; drone and live-machinery art.
+- Airlock helmet-shelf drawing; bunk climb-in animation; drone and live-machinery art.
+
+## Powered effects (Sept 25)
+
+While a room is powered, station-prop monitors (`operating_screens`) show a faint
+wash plus a display chosen by the glass's shape: radar sweep on large wide screens
+(≥10,000 px², aspect 1.3–2.6), waveform on wide ones, level bars on square/tall ones
+(`draw_station_screens` in `scripts/room_asset_library.gd`; older library art keeps
+the single trace). The detector skips angled side monitors, so `tags.json`
+`screens_add` lists their glass by hand; loosening the detector instead flagged
+visors, solar cells and a mug. Catalog `effects` kinds: `specimen_glow`, `field`,
+and `hologram` (Holo Core bench lens). The Holo Core projector's beam got a faint fill.
 - Owner's Codex magenta re-export pass: [brief](CODEX_BRIEF_MAGENTA_PROPS.md).
 - Merge `room-props-v2` into `main` when the owner is happy.

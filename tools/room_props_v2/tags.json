@@ -1,5 +1,5 @@
 {
- "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects. floor_pieces: flat floor art (hatches, pads): drawn under crew, no collision, no shadow. floor_splits: prop whose rug installs as <id>-rug (model_cut floor_split), placed with it. collision_boxes: per-prop override, fractions of the region. live_obstacles: {room: {quarter: [[x,y,w,h]]}} live machinery (airlock pressure chamber, cryo pods) that painted props are placed clear of. live_anchors size may carry a third value: sideways offset (pairs). clear_west: {id: px} free floor kept west of the prop (crew work the suit lockers facing east). effects: {id: [{kind: specimen_glow|field, area: [fx,fy,fw,fh] of the art, color, strength?}]} drawn while the room is powered.",
+ "_note": "common: files under Common Props instead of the room's department. roles: crew behaviour hooks. not_default: in the tray but not placed by default (drone bays keep their live dock and drone). live_anchors: the live drone (_rov) and dock (_hatch) take the painted pad's position; sizes are the views' prop rects. floor_pieces: flat floor art (hatches, pads): drawn under crew, no collision, no shadow. floor_splits: prop whose rug installs as <id>-rug (model_cut floor_split), placed with it. collision_boxes: per-prop override, fractions of the region. live_obstacles: {room: {quarter: [[x,y,w,h]]}} live machinery (airlock pressure chamber, cryo pods) that painted props are placed clear of. live_anchors size may carry a third value: sideways offset (pairs). clear_west: {id: px} free floor kept west of the prop (crew work the suit lockers facing east). effects: {id: [{kind: specimen_glow|field, area: [fx,fy,fw,fh] of the art, color, strength?}]} drawn while the room is powered. screens_add: {id: [[x,y,w,h]]} monitor glass the detector misses (angled side screens), in the prop's pixels. effects kind hologram: area is the emitter lens; a wireframe globe hangs above it. screens_drop: {id: [[x,y,w,h]]} detected dark glass that is not a monitor (solar cells, viewports, rack windows with painted lights).",
  "common": [
   "science-extra14-1",
   "science-extra14-2",
@@ -241,6 +241,230 @@
     ],
     "color": "#9d7cff"
    }
+  ],
+  "holographic_core-4": [
+   {
+    "kind": "hologram",
+    "area": [
+     0.27,
+     0.24,
+     0.26,
+     0.28
+    ],
+    "color": "#6fd3d8"
+   }
+  ]
+ },
+ "screens_add": {
+  "command_center-1": [
+   [
+    328,
+    61,
+    79,
+    36
+   ],
+   [
+    30,
+    60,
+    78,
+    36
+   ]
+  ],
+  "command_center-4": [
+   [
+    40,
+    47,
+    40,
+    68
+   ],
+   [
+    276,
+    48,
+    39,
+    68
+   ]
+  ],
+  "holographic_core-3": [
+   [
+    35,
+    45,
+    49,
+    39
+   ],
+   [
+    254,
+    44,
+    47,
+    40
+   ]
+  ],
+  "observation_room-1": [
+   [
+    51,
+    71,
+    38,
+    40
+   ]
+  ],
+  "pressure_control-1": [
+   [
+    133,
+    99,
+    60,
+    49
+   ]
+  ],
+  "operations-extra1-1": [
+   [
+    30,
+    60,
+    53,
+    39
+   ]
+  ],
+  "science-extra14-2": [
+   [
+    78,
+    22,
+    64,
+    29
+   ],
+   [
+    166,
+    22,
+    65,
+    30
+   ]
+  ],
+  "science-extra6-2": [
+   [
+    105,
+    58,
+    114,
+    20
+   ]
+  ]
+ },
+ "screens_drop": {
+  "solar_array-1": [
+   [
+    224,
+    194,
+    17,
+    11
+   ],
+   [
+    111,
+    211,
+    16,
+    8
+   ],
+   [
+    178,
+    211,
+    17,
+    8
+   ],
+   [
+    201,
+    211,
+    17,
+    8
+   ],
+   [
+    224,
+    211,
+    17,
+    10
+   ]
+  ],
+  "science-extra5-1": [
+   [
+    109,
+    192,
+    17,
+    11
+   ],
+   [
+    155,
+    192,
+    16,
+    11
+   ],
+   [
+    224,
+    192,
+    16,
+    11
+   ],
+   [
+    64,
+    209,
+    16,
+    10
+   ],
+   [
+    87,
+    209,
+    16,
+    10
+   ],
+   [
+    155,
+    209,
+    16,
+    10
+   ]
+  ],
+  "mining_drone_bay-1": [
+   [
+    155,
+    106,
+    22,
+    47
+   ]
+  ],
+  "current_turbine-1": [
+   [
+    171,
+    108,
+    52,
+    83
+   ]
+  ],
+  "data_archive-4": [
+   [
+    135,
+    104,
+    45,
+    116
+   ],
+   [
+    200,
+    104,
+    45,
+    116
+   ],
+   [
+    265,
+    104,
+    45,
+    116
+   ]
+  ],
+  "cold_store-4": [
+   [
+    68,
+    105,
+    30,
+    58
+   ],
+   [
+    231,
+    105,
+    29,
+    58
+   ]
   ]
  }
 }

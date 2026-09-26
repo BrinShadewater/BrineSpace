@@ -74,6 +74,8 @@ func draw_projection(prop: Dictionary) -> void:
 	var radius: float=bounds.size.x*0.23
 	var height: float=bounds.size.y*0.30
 	var color:=Color(0.30,0.72,0.78,0.70)
+	# Faint beam volume under the wireframe, so the projection reads as light, not only lines.
+	painter.draw_colored_polygon(PackedVector2Array([base+Vector2(-radius*0.35,0),base+Vector2(radius*0.35,0),base+Vector2(radius,-height),base+Vector2(-radius,-height)]),Color(color,0.08))
 	for level in range(2):
 		var center:=base-Vector2(0,height*float(level))
 		var ring_radius: float=radius*(0.35 if level==0 else 1.0)

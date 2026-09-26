@@ -246,7 +246,8 @@ static func draw(room, prop: Dictionary) -> void:
 			points.append(anchor+(point-reg.pivot)*scale_value)
 			uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
 		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,tex)
-	draw_operating_screens(room,reg,anchor,scale_value)
+	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))): draw_station_screens(room,reg,anchor,scale_value)
+	else: draw_operating_screens(room,reg,anchor,scale_value)
 	if reg.has("effects") and room.operating: draw_effects(room,prop,reg.effects)
 
 # Station-prop effects (catalog "effects"): areas are fractions of the prop's art.
@@ -275,6 +276,77 @@ static func draw_effects(room, prop: Dictionary, effects: Array) -> void:
 				var start: float=t*(0.8+arc*0.35)+arc*2.1
 				room.painter.draw_arc(center,radius*(0.45+arc*0.2),start,start+1.9,16,Color(color,0.55*strength),maxf(0.6,radius*0.06),true)
 			room.painter.draw_circle(center,radius*0.18*(0.8+0.2*sin(t*3.0)),Color(color.lightened(0.5),0.6*strength))
+		elif fx.kind=="hologram":
+			# Area is the emitter lens; a slow wireframe globe hangs above it in a faint beam.
+			var lens: float=minf(area.size.x,area.size.y)*0.5
+			var flicker: float=(0.85+0.15*sin(t*7.3))*strength
+			room.painter.draw_circle(center,lens*0.8,Color(color,0.10*flicker))
+			var globe_center:=center-Vector2(0,lens*0.45)
+			var g: float=lens*0.8
+			room.painter.draw_colored_polygon(PackedVector2Array([center+Vector2(-lens*0.55,0),center+Vector2(lens*0.55,0),globe_center+Vector2(g*0.8,0),globe_center+Vector2(-g*0.8,0)]),Color(color,0.07*flicker))
+			var line_width: float=maxf(0.6,lens*0.04)
+			room.painter.draw_arc(globe_center,g,0,TAU,24,Color(color,0.6*flicker),line_width,true)
+			for m in range(3):
+				var squash: float=cos(t*0.6+m*PI/3.0)
+				var meridian:=PackedVector2Array()
+				for i in range(17):
+					var angle: float=TAU*float(i)/16.0
+					meridian.append(globe_center+Vector2(sin(angle)*g*squash,cos(angle)*g))
+				room.painter.draw_polyline(meridian,Color(color,0.35*flicker),line_width,true)
+			var equator:=PackedVector2Array()
+			for i in range(17):
+				var angle: float=TAU*float(i)/16.0
+				equator.append(globe_center+Vector2(cos(angle)*g,sin(angle)*g*0.3))
+			room.painter.draw_polyline(equator,Color(color,0.45*flicker),line_width,true)
+
+# Station-prop monitors: a faint phosphor wash plus a display picked by the glass's shape —
+# a radar sweep on large wide screens, a waveform on wide ones, level bars on square/tall ones.
+static func draw_station_screens(room, reg: Dictionary, anchor: Vector2, scale_value: float) -> void:
+	if not reg.has("operating_screens") or not room.operating: return
+	var t: float=room.machine_clock
+	var color:=Color(str(reg.operating_screen_color)) if reg.has("operating_screen_color") else Color(.13,.75,.78,.8)
+	var width: float=maxf(.55,scale_value*1.4)
+	for index in range(reg.operating_screens.size()):
+		var s: Array=reg.operating_screens[index]
+		var a: Vector2=anchor+(source_uv(reg,Vector2(s[0],s[1]))-reg.pivot)*scale_value
+		var b: Vector2=anchor+(source_uv(reg,Vector2(s[0]+s[2],s[1]+s[3]))-reg.pivot)*scale_value
+		var box:=Rect2(Vector2(minf(a.x,b.x),minf(a.y,b.y)),(b-a).abs())
+		room.painter.draw_rect(box,Color(color,0.10))
+		var aspect: float=float(s[2])/maxf(1.0,float(s[3]))
+		var phase: float=t+index*1.7
+		if float(s[2])*float(s[3])>=10000.0 and aspect>1.3 and aspect<2.6:
+			var c:=box.get_center()
+			var radius: float=minf(box.size.x,box.size.y)*0.42
+			room.painter.draw_arc(c,radius,0,TAU,32,Color(color,0.25),width*0.6)
+			room.painter.draw_arc(c,radius*0.5,0,TAU,24,Color(color,0.18),width*0.6)
+			var sweep: float=fposmod(phase*1.2,TAU)
+			for k in range(5):
+				var trail: float=sweep-k*0.09
+				room.painter.draw_line(c,c+Vector2(cos(trail),sin(trail))*radius,Color(color,0.7*(1.0-k*0.2)),width)
+			for i in range(3):
+				var angle: float=float(i)*2.39996+index
+				var since: float=fposmod(sweep-angle,TAU)
+				var blip:=c+Vector2(cos(angle),sin(angle))*radius*(0.3+0.2*i)
+				room.painter.draw_circle(blip,width*1.2,Color(color.lightened(0.3),maxf(0.0,1.0-since/2.5)))
+		elif aspect>=1.6:
+			var inner:=box.grow_individual(-box.size.x*0.08,-box.size.y*0.15,-box.size.x*0.08,-box.size.y*0.15)
+			for g in [0.25,0.75]:
+				var y: float=inner.position.y+inner.size.y*g
+				room.painter.draw_line(Vector2(inner.position.x,y),Vector2(inner.end.x,y),Color(color,0.15),width*0.6)
+			var trace:=PackedVector2Array()
+			for i in range(25):
+				var x: float=float(i)/24.0
+				var y: float=0.5+0.42*(sin(x*9.0+phase*2.2)*0.6+sin(x*23.0-phase*3.1)*0.4)
+				trace.append(inner.position+inner.size*Vector2(x,y))
+			room.painter.draw_polyline(trace,color,width,true)
+		else:
+			var inner:=box.grow(-minf(box.size.x,box.size.y)*0.14)
+			var count: int=4 if aspect<1.0 else 5
+			var slot: float=inner.size.x/count
+			for i in range(count):
+				var level: float=0.25+0.65*(0.5+0.5*sin(phase*1.6+i*1.3))
+				var bar:=Rect2(inner.position.x+slot*(i+0.2),inner.end.y-inner.size.y*level,slot*0.6,inner.size.y*level)
+				room.painter.draw_rect(bar,Color(color,0.55))
 
 static func draw_operating_screens(room, reg: Dictionary, anchor: Vector2, scale_value: float) -> void:
 	if reg.has("operating_screens") and room.operating:

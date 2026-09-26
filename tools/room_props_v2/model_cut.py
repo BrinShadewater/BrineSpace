@@ -261,12 +261,20 @@ def detect_screens():
     import build_catalog
     path = ROOT / "rooms" / "station-props-v2" / "props.json"
     catalog = json.loads(path.read_text())
+    # Angled side monitors fail the rectangle test; tags.json lists their glass by hand.
+    tags = json.loads((HERE / "tags.json").read_text())
+    extra = tags.get("screens_add", {})
+    # Dark glass that is not a monitor (solar cells, viewports, rack windows with painted lights).
+    drop = tags.get("screens_drop", {})
     count = 0
     for entry in catalog:
         entry.pop("operating_screens", None)
         if entry.get("floor_piece"):
             continue
         screens = build_catalog.find_screens(ROOT / "assets" / "station-props-v2" / (entry["id"] + ".png"))
+        key = entry["id"].removeprefix("sp-")
+        screens += [s for s in extra.get(key, []) if s not in screens]
+        screens = [s for s in screens if s not in drop.get(key, [])]
         if screens:
             entry["operating_screens"] = screens
             count += 1
