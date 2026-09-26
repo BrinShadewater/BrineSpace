@@ -169,6 +169,15 @@ func after_layout_apply() -> void:
 	for prop in props:
 		if prop.get("library_asset",false) and library.role_of(prop)=="suit_locker": prop.custom_library_draw=true
 
+# The side shelf and its helmet need clear floor left of the locker, inside the walls.
+func side_shelf_blocked(prop: Dictionary, at: Vector2) -> bool:
+	var zone:=Rect2(at.x-13,at.y-shelf_helmet_size.y-1,prop.rect.position.x-at.x+13,shelf_helmet_size.y+16)
+	if zone.position.x<-176 or zone.position.y<-176: return true
+	for other in props:
+		if other==prop or other.get("floor_piece",false) or other.get("layout_hidden",false): continue
+		if prop_visual_bounds(other).intersects(zone): return true
+	return false
+
 func locker_wall_art_rect(prop: Dictionary) -> Rect2:
 	if not has_wall_art(prop): return prop.rect
 	var riser=preload("res://rooms/whole-room/riser_geometry.gd")
@@ -199,13 +208,18 @@ func draw_registered_prop(prop: Dictionary) -> void:
 	if preload("res://scripts/airlock_service.gd").is_suit_locker(prop):
 		# Screen-facing attachment follows the fitting point in every room rotation.
 		var at: Vector2=preload("res://scripts/airlock_service.gd").helmet_anchor(prop)
+		var front:=false
+		if not prop.has("helmet_anchor_uv") and side_shelf_blocked(prop,at):
+			# A wall or the owner's neighbouring furniture takes the side: mount the shelf on
+			# the locker's lower-left front, where crew stand when the side is blocked.
+			at=prop.rect.position+prop.rect.size*Vector2(0.17,0.80); front=true
 		if prop.has("helmet_anchor_uv"):
 			var support: Rect2=locker_wall_art_rect(prop)
 			var tray: Vector2=support.position+support.size*prop.get("helmet_tray_uv",Vector2(0.051,0.52))
 			painter.draw_line(tray,at+Vector2(0,4),Color("293f46"),3)
 		# A shallow side ledge supports the handoff rather than a floating sprite.
 		# Station-prop lockers: the ledge runs into the left panel so it reads as fixed to it.
-		var ledge_end: float=at.x+10 if prop.has("helmet_anchor_uv") else prop.rect.position.x+4
+		var ledge_end: float=at.x+10 if prop.has("helmet_anchor_uv") or front else prop.rect.position.x+4
 		painter.draw_rect(Rect2(at+Vector2(-12,2),Vector2(ledge_end-at.x+12,3)),Color("536767"))
 		painter.draw_line(at+Vector2(-12,2),Vector2(ledge_end,at.y+2),Color("9ba898"),1)
 		painter.draw_line(at+Vector2(-7,5),Vector2(ledge_end,at.y+14),Color("293f46"),2)
