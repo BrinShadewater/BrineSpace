@@ -30,6 +30,7 @@ import argparse
 import datetime
 import json
 import re
+import os
 import subprocess
 import sys
 import time
@@ -114,6 +115,9 @@ def run(argv=None) -> int:
     parser.add_argument("--only", help="comma-separated test names (stem)")
     parser.add_argument("--native", action="store_true",
                         help="run the native lane (real display) instead of headless")
+    parser.add_argument("--screen", default=os.environ.get("BRINE_TEST_SCREEN"),
+                        help="Godot screen index for native-lane windows (default: $BRINE_TEST_SCREEN, "
+                             "else Godot's choice); keeps test windows off the monitor you work on")
     parser.add_argument("--list", action="store_true", help="classify only, run nothing")
     parser.add_argument("--playtests", action="store_true",
                         help="include tests/playtest_*.gd (long; native recommended)")
@@ -163,6 +167,8 @@ def run(argv=None) -> int:
             cmd = [args.godot, "--path", str(ROOT), "-s", f"res://tests/{t.name}"]
             if not args.native:
                 cmd.insert(1, "--headless")
+            elif args.screen is not None:
+                cmd[1:1] = ["--screen", str(args.screen)]
             per_timeout = int(index.get("lanes", {}).get(t.stem, {}).get("timeout", args.timeout))
             started = time.monotonic()
             timed_out = False
