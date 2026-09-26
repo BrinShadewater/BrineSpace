@@ -33,10 +33,11 @@ static func stations(data: Dictionary) -> Array:
 				var point:=Vector2(rect.get_center().x+17,rect.end.y+16)
 				if maxf(absf(point.x),absf(point.y))>144 or _approach_blocked(data,point):continue
 				result.append({"point":point,"facing":"east","room":id,"mode":"sleep","exact_approach":true,"marsh_bunk":data.get("bunk_actor","")=="marsh","bill_bunk":data.get("bunk_actor","")=="bill","veld_bunk":data.get("bunk_actor","")=="veld","branforth_bunk":data.get("bunk_actor","")=="branforth","rest_point":Vector2(rect.get_center().x+4.107145,rect.end.y-18.69506)})
-		# Station-prop bunk: Bill-only trial of the climb-in (Sept 25). Points are fractions of
-		# the art, so the owner's small rescales keep the sleeper on the lower mattress.
+		# Station-prop bunk: each crew member's authored climb-in (Sept 25). Points are fractions
+		# of the art, so the owner's small rescales keep the sleeper on the lower mattress.
 		var profiled: Array=[]
-		if data.get("bunk_actor","")=="bill":
+		var actor: String=data.get("bunk_actor","")
+		if actor in ["bill","veld","branforth","marsh"]:
 			for prop in data.get("props",[]):
 				if preload("res://scripts/room_asset_library.gd").base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))!="library/sp-crew_hab-3":continue
 				if prop.get("layout_flip",Vector2.ONE)!=Vector2.ONE:continue
@@ -44,7 +45,7 @@ static func stations(data: Dictionary) -> Array:
 				var point:=Vector2(rect.position.x+rect.size.x*0.6,rect.end.y+14)
 				if maxf(absf(point.x),absf(point.y))>144 or _approach_blocked(data,point):continue
 				profiled.append(prop.id)
-				result.append({"point":point,"facing":"east","room":id,"mode":"sleep","exact_approach":true,"marsh_bunk":false,"bill_bunk":true,"veld_bunk":false,"branforth_bunk":false,"rest_point":rect.position+rect.size*Vector2(0.53,0.68)})
+				result.append({"point":point,"facing":"east","room":id,"mode":"sleep","exact_approach":true,"marsh_bunk":actor=="marsh","bill_bunk":actor=="bill","veld_bunk":actor=="veld","branforth_bunk":actor=="branforth","rest_point":rect.position+rect.size*Vector2(0.53,0.68)})
 		for prop in data.get("props",[]):
 			var bunk: bool=_role(prop)=="bunk"
 			if not str(prop.id).begins_with("hab_berth_") and not bunk: continue

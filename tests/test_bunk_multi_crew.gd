@@ -1,8 +1,9 @@
 extends "res://tests/test_marsh_battery.gd"
 const HAB=Vector2i(20,22)
 func run():
-	var store=preload("res://scripts/room_layout_store.gd");store.loaded=true;store.data={"crew-hab-berth-wall/3":{"hab_berth_east":null,"library/tileset-spa-29c":null,"library/tileset-mb2-14":[72.0,-126.0],"size/library/tileset-mb2-14":[0.307039470963563,0.307039470963563]}}
+	var store=preload("res://scripts/room_layout_store.gd");store.loaded=true;store.data={} # authored defaults place the station-prop bunk
 	game=load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	var stem="user://bunk_multi_%d"%OS.get_process_id()
 	game.meta.save_path=stem+".meta";game.run_save_path=stem+".loop"
 	game.meta.unlocked_architect_ids={"bill":true};game.meta.selected_architect="bill"

@@ -421,21 +421,9 @@
       "lane": "native",
       "reason": "Exact framebuffer parity requires a real display."
     },
-    "test_veld_bunk": {
-      "lane": "skip",
-      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
-    },
-    "test_branforth_bunk": {
-      "lane": "skip",
-      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
-    },
-    "test_marsh_bunk": {
-      "lane": "skip",
-      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
-    },
     "test_bunk_multi_crew": {
       "lane": "skip",
-      "reason": "Retired 2026-09-24 (owner decision): the authored bunk-entry profiles belong to the retired bought bunk (mb2-14). Crew sleep on the station-props-v2 bunk with the generic sleep pose; revisit with the character art pass."
+      "reason": "Retired 2026-09-25: points at the station-prop bunk now, but its game._process loop no longer steps crew (nobody moves in 180 s though present and routed); the four solo bunk tests cover each crew member. Revive once the harness is fixed."
     },
     "test_side_wall_variants": {
       "lane": "skip",

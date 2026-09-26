@@ -3,6 +3,7 @@ const HAB=Vector2i(20,22)
 func run():
 	var store=preload("res://scripts/room_layout_store.gd");store.loaded=true;store.data={} # authored defaults place the station-prop bunk
 	game=load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	var stem="user://bill_bunk_%d"%OS.get_process_id()
 	game.meta.save_path=stem+".meta";game.run_save_path=stem+".loop"
 	game.meta.unlocked_architect_ids={"bill":true};game.meta.selected_architect="bill"

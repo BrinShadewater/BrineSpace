@@ -42,12 +42,12 @@ func run():
 					npc.move(0.1)
 				check(npc.path.is_empty(),id+" approach completes")
 				check(npc.begin_room_activity(),id+str(q)+actor+" begins at reached furniture")
-				check(npc.valid_snapshot(npc.snapshot()),id+" transition save")
+				check((npc.call("valid_%s_snapshot"%actor,npc.snapshot()) if npc.has_method("valid_%s_snapshot"%actor) else npc.valid_snapshot(npc.snapshot())),id+" transition save")
 				var initial: String=npc.stage
 				if initial in ["life_lie","life_sit","observation_sit"]:
 					npc.timer=0.01;npc.update(game,0.02)
 					check(npc.stage in ["life_sleep","life_seated","observation_read"],id+" settled")
-				check(npc.valid_snapshot(npc.snapshot()),id+" settled save")
+				check((npc.call("valid_%s_snapshot"%actor,npc.snapshot()) if npc.has_method("valid_%s_snapshot"%actor) else npc.valid_snapshot(npc.snapshot())),id+" settled save")
 				var saved: Dictionary=npc.snapshot()
 				npc.restore_snapshot(game,saved)
 				check(npc.snapshot().stage==saved.stage and npc.timer==saved.timer,id+" restores activity clock")
@@ -64,7 +64,7 @@ func run():
 				if initial=="life_lie":check(npc.stage=="life_get_up",id+" rises on interruption")
 				if initial=="life_sit":check(npc.stage=="life_rise",id+" rises on interruption")
 				if initial=="observation_sit":check(npc.stage=="observation_rise",id+" reader rises on interruption")
-				check(npc.valid_snapshot(npc.snapshot()),id+" interrupted snapshot valid")
+				check((npc.call("valid_%s_snapshot"%actor,npc.snapshot()) if npc.has_method("valid_%s_snapshot"%actor) else npc.valid_snapshot(npc.snapshot())),id+" interrupted snapshot valid")
 				game.powered_room_cells[cell]=true
 				npc.active=false;count+=1
 	print("CREW LIFE ROOMS: ",failures," failures / ",count," room/rotation/actor cases")

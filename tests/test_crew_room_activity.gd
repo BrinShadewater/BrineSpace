@@ -96,7 +96,8 @@ func run() -> void:
 				npc.arrive()
 				assert(npc.direction==stations[0].facing,"Face actual operator side")
 				assert(npc.activity in ["checking life support readings","checking manifold gauges","monitoring sonar returns","resting in the berth"],npc.activity)
-				assert(npc.valid_snapshot(npc.snapshot()),"Activity remains save-compatible")
+				# Saves validate each crew member with their own validator (run_save.gd), which knows bunk motion.
+				assert(npc.call("valid_%s_snapshot"%script,npc.snapshot()) if npc.has_method("valid_%s_snapshot"%script) else npc.valid_snapshot(npc.snapshot()),"Activity remains save-compatible")
 				if id=="life_support":
 					var console_saved: Dictionary=npc.snapshot()
 					var old_contact: Vector2=console_saved.foot+Vector2(20,0)

@@ -1,8 +1,9 @@
 extends "res://tests/test_marsh_battery.gd"
 const HAB=Vector2i(20,22)
 func run():
-	var store=preload("res://scripts/room_layout_store.gd");store.loaded=true;store.data={"crew-hab-berth-wall/3":{"hab_berth_east":null,"library/tileset-spa-29c":null,"library/tileset-mb2-14":[72.0,-126.0],"size/library/tileset-mb2-14":[0.307039470963563,0.307039470963563]}}
+	var store=preload("res://scripts/room_layout_store.gd");store.loaded=true;store.data={} # authored defaults place the station-prop bunk
 	game=load("res://scenes/main.tscn").instantiate()
+	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
 	var stem="user://marsh_bunk_%d"%OS.get_process_id()
 	game.meta.save_path=stem+".meta";game.run_save_path=stem+".loop"
 	game.meta.unlocked_architect_ids={"bill":true,"marsh":true};game.meta.selected_architect="marsh"
@@ -18,7 +19,7 @@ func run():
 	var station=actor.RoomActivity.stations(actor.geometry[HAB])[0]
 	check(station.get("marsh_bunk",false),"Compatible berth exposes the profile")
 	var center=(Vector2(HAB)+Vector2.ONE*0.5)*384
-	actor.foot=actor.graph.get_point_position(actor.nearest_in_room(center,HAB))
+	actor.foot=actor.graph.get_point_position(actor.nearest_in_room(center+Vector2(0,130),HAB))
 	actor.path.clear();actor.goal="";actor.stage=""
 	for need in actor.needs:actor.needs[need]=100.0 if need=="fatigue" else 0.0
 	actor.decision_rng.seed=8923
@@ -35,11 +36,11 @@ func run():
 		check(not other.RoomActivity.stations(other.geometry[HAB]).any(func(item):return item.get("marsh_bunk",false)),"Other cast do not inherit Marsh's profile")
 	check(actor.animation_state()=="bunk-enter" and actor.direction=="east" and is_equal_approx(actor.timer,1.84),"Arrival selects authored entry and timing")
 	var rejected=actor.geometry[HAB].duplicate(true)
-	var bunk=rejected.props.filter(func(p):return p.id=="library/tileset-mb2-14")[0]
+	var bunk=rejected.props.filter(func(p):return p.id=="library/sp-crew_hab-3")[0]
 	bunk.layout_flip=Vector2(-1,1)
 	check(not actor.RoomActivity.stations(rejected).any(func(item):return item.get("marsh_bunk",false)),"Mirrored bunk does not inherit unmirrored choreography")
-	bunk.layout_flip=Vector2.ONE;bunk.rect.size.x+=10
-	check(not actor.RoomActivity.stations(rejected).any(func(item):return item.get("marsh_bunk",false)),"Unreviewed scale rejected")
+	bunk.layout_flip=Vector2.ONE;bunk.rect.size*=1.05
+	check(actor.RoomActivity.stations(rejected).any(func(item):return item.get("marsh_bunk",false)),"Owner rescale keeps the profile (points are fractions of the art)")
 	rejected=actor.geometry[HAB].duplicate(true);rejected.blockers.append(Rect2(station.point-Vector2.ONE*4,Vector2.ONE*8))
 	check(not actor.RoomActivity.stations(rejected).any(func(item):return item.get("marsh_bunk",false)),"Blocked contact rejected")
 	var initial=actor.snapshot()
