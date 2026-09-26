@@ -10,6 +10,9 @@ func run():
 	root.add_child(game);current_scene=game
 	while not game.startup_complete:await process_frame
 	game.set_process(false);game.crew_comms.set_process(false);game.tick_timer.stop();game.paused=false
+	# Fixture option: failures are enforced in normal runs now, and this bare station would end the run
+	# on its first tick (the crew then never move). This test is about sharing the bunk, not survival.
+	game.testing_disable_failures=true
 	game.Architects.advance_core(game,10)
 	game.wrecks.erase(HAB)
 	game._place_room("corridor",Vector2i(20,21),true)
@@ -23,7 +26,12 @@ func run():
 	for i in range(4):
 		game.recovered_crew.append({"id":ids[i],"architect_id":ids[i],"name":ids[i],"origin":Vector2i(20,20),"alive":true})
 		var actor=members[i];await actor.rebuild(game)
-		actor.active=true;actor.foot=actor.graph.get_point_position(actor.nearest_in_room(center+starts[i],HAB))
+		actor.active=true
+		# A start inside the station-prop bunk's footprint has no straight clear line to a node; take the
+		# nearest walkable node anyway (an invalid start drops crew at the origin, in open water).
+		var start_node: int=actor.nearest_in_room(center+starts[i],HAB,false)
+		check(start_node>=0,"Start lands on a walkable node: "+ids[i])
+		actor.foot=actor.graph.get_point_position(start_node)
 		actor.path.clear();actor.goal="";actor.stage="";actor.timer=0;actor.primary_room=Vector2i(-1,-1)
 		actor.decision_rng=RandomNumberGenerator.new();actor.decision_rng.seed=8923+i
 		for need in actor.needs:actor.needs[need]=100.0 if need=="fatigue" else 0.0

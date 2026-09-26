@@ -421,10 +421,6 @@
       "lane": "native",
       "reason": "Exact framebuffer parity requires a real display."
     },
-    "test_bunk_multi_crew": {
-      "lane": "skip",
-      "reason": "Retired 2026-09-25: points at the station-prop bunk now, but its game._process loop no longer steps crew (nobody moves in 180 s though present and routed); the four solo bunk tests cover each crew member. Revive once the harness is fixed."
-    },
     "test_side_wall_variants": {
       "lane": "skip",
       "reason": "Retired 2026-09-24: redesigned rooms no longer show full-wall side banks (station props v2); only BRINE Core and corridors keep pre-v2 art, and they have none."
