@@ -1,7 +1,7 @@
 # BrineSpace current status
 
-Updated September 25, 2026 — station props v2 on branch `room-props-v2` (pushed,
-not merged). **Read [station props v2](STATION_PROPS_V2_2026-09-25.md) first**: the
+Updated September 26, 2026 — station props v2 is merged into `main`. **Read
+[station props v2](STATION_PROPS_V2_2026-09-25.md) first**: the
 room art, departments, Studio tray, cards and tests changed, and parts of the
 September 24 notes below (bought props, protected-room rules, bunk profiles) are
 superseded by it. The owner's saved Studio layouts now define every room.
@@ -51,6 +51,26 @@ reported, not a new visual/navigation pass. Names, categories, favourites, retir
 marks and user layouts are owner data. Back up affected keys before writes.
 
 ## Latest implemented work
+
+- Routing and crew spikes (Sept 26), measured on the saved seed-73 47-room station
+  (`expedition-73-progressed-known-recipe-final/latest.loop`; its `final.loop` is gone):
+  - Swim smoothing retries keeping the search's facings, so a shortcut can no longer
+    strand a graph-valid escape. The Sept 23 doorway report now escapes in ~25 ms
+    (was: no escape, 153–262 ms per retry, 740 ms worst update).
+  - Every crew spike was a goal choice. Smoothing shortcuts reach two rooms; the swim
+    A* uses a heap (identical costs on 40 real pairs); a failed swim search skips
+    proven-unreachable targets within one choice. 30 cycles: worst 389 → 143 ms,
+    slow frames 11 → 5, mean 5.3 → 3.6 ms.
+  - Corridor swim clearance skips sampling when the body is inside a proven floor
+    rectangle: cold failing swim search 820 → 481 ms, all 23,444 link answers unchanged.
+  - Remaining: a swimmer's failing search explores the whole station, dry rooms
+    included, as if swimming. Swim-to-walk routing is an owner design decision.
+  - Bunk: the seated frame sits on the mattress edge. Colour-matching the bunk art and
+    smoothing crew sprites were tried and reverted (props v2 doc, Open).
+- `test_owner_report_regressions` passed only with the owner's saved Studio layouts:
+  its flooded-escape fixture started on a corner node. It now starts where the swimmer
+  fits and passes with default and owner layouts. (`test_room_catalog_cards` failed once
+  in a busy isolated run and passed 3/3 after; not layout-dependent.)
 
 - Merged from `main` (Sept 25): the September 20 art-path restore, doorway
   unblocking, Isolation Vault fix, zoom limits and CI — see
@@ -130,10 +150,8 @@ expedition checkpoint could not be continued: it had been advanced to a zero-foo
 ## Next work and acceptance gaps
 
 1. Recover the latest style discussion before choosing a camera/art conversion.
-2. Investigate graph-valid paths rejected by final smoothing in the preserved
-   doorway report. Read [routing](PROCEDURAL_ROUTING_HANDOFF_2026-09-23.md) and
-   [performance](PROCEDURAL_PERFORMANCE_HANDOFF_2026-09-23.md) evidence first.
-   Improved CPU means still include large tail spikes and exclude rendering.
+2. *Done Sept 26* (see Latest implemented work): smoothing rejection fixed, goal-choice
+   spikes cut. Open: swim-to-walk routing (owner decision) and load warm-up spikes.
 3. Review a normal paid source expedition through exploration, rescue, crew work,
    disk Continue and conclusion. Keep fixture and checkpoint-chain evidence distinct.
 4. Obtain owner feedback on motion, scenery, room coherence and music, and native

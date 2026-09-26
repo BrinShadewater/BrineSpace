@@ -44,7 +44,11 @@ func run():
  actor.rebuild(game)
  var failed_escape=FailedEscape.new()
  failed_escape.active=true;failed_escape.rebuild(game)
- failed_escape.foot=failed_escape.graph.get_point_position(failed_escape.room_nodes[Vector2i(19,20)][0])
+ # Start where the swimmer fits. The room's first node is a corner that only fit next to
+ # squeeze spots in the owner's saved layout, so the fixture failed on default furniture.
+ for node in failed_escape.room_nodes[Vector2i(19,20)]:
+  var point: Vector2=failed_escape.graph.get_point_position(node)
+  if failed_escape.swim_segment_clear(point,point,failed_escape.direction): failed_escape.foot=point;break
  failed_escape.movement_medium="flooded"
  var joins=Safety.escape_starts(failed_escape).size()
  check(joins>0,"Failed escape fixture has usable starting joins")
