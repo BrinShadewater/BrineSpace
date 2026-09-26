@@ -537,6 +537,18 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 				if segment_hits_rect(a,b,missing): return false
 			elif geometry[cell].get("corridor",false) or geometry[cell].get("legacy",false): sample_floor=true
 	if not sample_floor: return true
+	# Inside one corridor, a swept body well clear of the floor outline passes every sample
+	# below; skip the 9x5 line grid (508 of 830 ms in a cold swim search, Sept 26). Closed
+	# sockets and fire keep the full check.
+	if fire_cells.is_empty() and first==last and geometry.has(first) and geometry[first].get("corridor",false):
+		var data: Dictionary=geometry[first]
+		var local_box := Rect2(swept.position-(Vector2(first)+Vector2.ONE*0.5)*CELL,swept.size)
+		var sockets_clear := true
+		for side in range(4):
+			if data.open.has(side): continue
+			var normal := Vector2(Geometry.DIRS[side])
+			if maxf(local_box.position.dot(normal),local_box.end.dot(normal))>176.0: sockets_clear=false
+		if sockets_clear and Corridor.encloses_foot_area(data.room,local_box,10.0): return true
 	# Sample the envelope as well for corridor shapes and missing station floor.
 	var columns := maxi(1,ceili(footprint.size.x/8.0))
 	var rows := maxi(1,ceili(footprint.size.y/8.0))

@@ -20,6 +20,26 @@ static func hull_for(corner: bool, tee := false) -> PackedVector2Array:
 	if tee: return junction_hull
 	return elbow_hull if corner else straight_hull
 
+# Axis-aligned rectangles strictly inside each floor outline (0.1 margin), unrotated.
+# A foot area inside one needs no per-sample outline test (Sept 26 cold swim search).
+static var straight_inner := [Rect2(-159.9,-47.9,319.8,95.8),Rect2(-191.9,-35.9,383.8,71.8)]
+static var elbow_inner := [Rect2(-159.9,-47.9,207.8,95.8),Rect2(-191.9,-35.9,239.8,71.8),Rect2(-47.9,-47.9,95.8,207.8),Rect2(-35.9,-47.9,71.8,239.8)]
+static var junction_inner := [Rect2(-159.9,-47.9,319.8,95.8),Rect2(-191.9,-35.9,383.8,71.8),Rect2(-47.9,-47.9,95.8,207.8),Rect2(-35.9,-47.9,71.8,239.8)]
+
+static func inner_for(corner: bool, tee := false) -> Array:
+	if tee: return junction_inner
+	return elbow_inner if corner else straight_inner
+
+# True when every foot of the given radius centred in `area` (cell-local) is on the floor.
+static func encloses_foot_area(room: Dictionary, area: Rect2, radius: float) -> bool:
+	var q := rotation(room)
+	var a := G.turn(area.position,-q)
+	var b := G.turn(area.end,-q)
+	var box := Rect2(Vector2(minf(a.x,b.x),minf(a.y,b.y)),Vector2(absf(a.x-b.x),absf(a.y-b.y))).grow(radius)
+	for rect in inner_for(room.get("id","")=="corner",room.get("id","")=="tee_corridor"):
+		if rect.encloses(box): return true
+	return false
+
 static func contains_foot(room: Dictionary, point: Vector2, radius := 7.0) -> bool:
 	var q := rotation(room)
 	var floor_poly := floor_for(room.get("id","")=="corner",room.get("id","")=="tee_corridor")
