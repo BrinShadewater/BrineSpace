@@ -1,7 +1,13 @@
 # Mac release preparation
 
 Owner test hardware: Apple Silicon (M1 or newer), confirmed September 20, 2026.
-Current local candidate: brinespace-6600876d650b0d68 in
+Newest local candidate (Sept 25): brinespace-ffebeef84bf5f143 in
+builds/BrineSpace-mac-props-v2-2026-09-25, the first full run of `tools/export_macos.py`.
+Universal 2 structure and exact PCK audit pass (15,693 assets, zero discrepancies); no
+Windows twin or actual-release gameplay check was made. It adds a pinned save folder,
+Mac monospace fonts and usable-area window centering. Still open for Mac: trackpad
+gestures, menu entries for F7/F8/F9, Cmd shortcuts in the Studio.
+Previous candidate: brinespace-6600876d650b0d68 in
 builds/BrineSpace-mac-stability-2026-09-23. Matching Windows actual-EXE checks
 and both exact PCK audits pass (15,619 assets, zero discrepancies). Universal2
 bundle checks pass; native Mac execution and Gatekeeper acceptance remain open.

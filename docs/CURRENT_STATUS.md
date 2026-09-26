@@ -116,6 +116,13 @@ These packages include dialogue/pod/hatch fixes but predate procedural sites and
 later source fixes. No new build was made for documentation closeout.
 Mac is Universal2, ad-hoc, not notarized; native Apple Silicon testing remains open.
 
+Newer Mac-only candidate (Sept 25): **brinespace-ffebeef84bf5f143** in
+`builds/BrineSpace-mac-props-v2-2026-09-25/`, built with `tools/export_macos.py` from
+commit 9c179ce34 (station props v2, shaped screens, airlock shelf, four-crew bunk entry,
+Mac comfort fixes). Universal 2 structure and exact PCK audit pass (15,693 assets, zero
+discrepancies; log in `output/mac-release-2026-09-25/`). No matching Windows build or
+actual-release gameplay check was made for it.
+
 ## Next work and acceptance gaps
 
 1. Recover the latest style discussion before choosing a camera/art conversion.
