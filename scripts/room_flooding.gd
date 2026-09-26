@@ -36,6 +36,12 @@ static func advance(game, delta: float) -> void:
 	while remaining > 0.00001:
 		var dt := minf(remaining,0.1)
 		step_water(game,dt)
+		# Where crew will swim: routes plan the other rooms with the walking check.
+		var swim_cells := {}
+		for room in game.placed_rooms:
+			if level(room)>=HIGH: swim_cells[room.pos]=true
+		for id in Architects.IDS:
+			Architects.actor_for(game,id).swim_cells=swim_cells
 		for id in Architects.IDS:
 			var actor = Architects.actor_for(game,id)
 			if Architects.present(game,id) and actor.active and not actor.dead:

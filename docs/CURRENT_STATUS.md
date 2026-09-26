@@ -63,8 +63,11 @@ marks and user layouts are owner data. Back up affected keys before writes.
     slow frames 11 → 5, mean 5.3 → 3.6 ms.
   - Corridor swim clearance skips sampling when the body is inside a proven floor
     rectangle: cold failing swim search 820 → 481 ms, all 23,444 link answers unchanged.
-  - Remaining: a swimmer's failing search explores the whole station, dry rooms
-    included, as if swimming. Swim-to-walk routing is an owner design decision.
+  - Swim-to-walk routing (owner approved): crew swim or walk per room, so a swimmer's
+    route now plans dry rooms with the walking check (`swim_cells`, published by
+    `room_flooding.advance`; no map = old swim-everywhere planning). Branforth, stuck
+    in the flooded reactor because the crew hab's furniture blocks a swim outline, now
+    reaches a bunk in 17 s. 30 cycles: worst frame 143 -> 115 ms, mean 3.4 ms.
   - Bunk: the seated frame sits on the mattress edge. Colour-matching the bunk art and
     smoothing crew sprites were tried and reverted (props v2 doc, Open).
 - `test_owner_report_regressions` passed only with the owner's saved Studio layouts:
@@ -151,7 +154,7 @@ expedition checkpoint could not be continued: it had been advanced to a zero-foo
 
 1. Recover the latest style discussion before choosing a camera/art conversion.
 2. *Done Sept 26* (see Latest implemented work): smoothing rejection fixed, goal-choice
-   spikes cut. Open: swim-to-walk routing (owner decision) and load warm-up spikes.
+   spikes cut, swim-to-walk routing added. Open: the ~115 ms spike right after a load.
 3. Review a normal paid source expedition through exploration, rescue, crew work,
    disk Continue and conclusion. Keep fixture and checkpoint-chain evidence distinct.
 4. Obtain owner feedback on motion, scenery, room coherence and music, and native

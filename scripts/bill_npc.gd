@@ -74,6 +74,23 @@ var swim_region_cache := {}
 # A swimmer caught where its swim outline does not fit (a standing spot beside a door
 # when water arrives) may move to this point with standing clearance alone.
 var squeeze_point := Vector2.INF
+# Rooms deep enough to swim in, published each frame by room_flooding.advance. Crew swim or
+# walk per room, so a swimmer's route plans dry rooms with the walking check (owner, Sept 26).
+# null means no map yet: plan every room as swimming, the previous behaviour.
+var swim_cells: Variant = null
+
+func plans_walk(cell: Vector2i) -> bool:
+	return swim_cells is Dictionary and not swim_cells.has(cell)
+
+# Every cell the segment's bounds touch is walked: a shortcut never crosses water on foot.
+func segment_walks(a: Vector2, b: Vector2) -> bool:
+	if not swim_cells is Dictionary: return false
+	var first := cell_at(Vector2(minf(a.x,b.x),minf(a.y,b.y)))
+	var last := cell_at(Vector2(maxf(a.x,b.x),maxf(a.y,b.y)))
+	for y in range(first.y,last.y+1):
+		for x in range(first.x,last.x+1):
+			if swim_cells.has(Vector2i(x,y)): return false
+	return true
 # The facing a route_to_any result starts with; it may be an in-place turn from direction.
 var route_facing := ""
 var traffic_activity := ""
@@ -1268,7 +1285,7 @@ func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> 
 			var cost: float = costs[current]+from.distance_to(to)
 			if cost >= costs.get(next_state,INF): continue
 			if avoid_crew and not crew_clear(from,to): continue
-			if not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
+			if not (plans_walk(cell_at(from)) and plans_walk(cell_at(to))) and not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
 			costs[next_state]=cost
 			parents[next_state]=current
 			order+=1
@@ -1373,7 +1390,7 @@ func _swim_route_to_any(start: int, targets: Dictionary, avoid_crew: bool, turn_
 			var cost: float = float(costs[current])+from.distance_to(to)
 			if cost >= float(costs.get(next_state,INF)): continue
 			if avoid_crew and not crew_clear(from,to): continue
-			if not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
+			if not (plans_walk(cell_at(from)) and plans_walk(cell_at(to))) and not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
 			costs[next_state]=cost
 			parents[next_state]=current
 			order+=1
@@ -1420,7 +1437,7 @@ func _smooth_route(route: PackedVector2Array, origin: Vector2, keep_route_facing
 			if probe > index and from.distance_squared_to(route[probe]) > SHORTCUT_REACH*SHORTCUT_REACH: continue
 			var heading := travel_heading(from,route[probe],facing)
 			if keep_route_facing and heading != route_facings[probe]: continue
-			if segment_clear(from, route[probe]) and (movement_medium == "dry" or swim_segment_clear(from,route[probe],heading,facing)): farthest = probe
+			if segment_clear(from, route[probe]) and (movement_medium == "dry" or segment_walks(from,route[probe]) or swim_segment_clear(from,route[probe],heading,facing)): farthest = probe
 		if farthest < 0: return PackedVector2Array()
 		result.append(route[farthest])
 		facing = travel_heading(from,route[farthest],facing)
