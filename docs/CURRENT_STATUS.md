@@ -68,6 +68,15 @@ marks and user layouts are owner data. Back up affected keys before writes.
     `room_flooding.advance`; no map = old swim-everywhere planning). Branforth, stuck
     in the flooded reactor because the crew hab's furniture blocks a swim outline, now
     reaches a bunk in 17 s. 30 cycles: worst frame 143 -> 115 ms, mean 3.4 ms.
+  - Crew stand-offs (fresh seed-101 review run): two crew meeting in a doorway tried a
+    detour from every start in the room, each a failed search (269 starts, 500 ms,
+    repeated per step-aside spot: 1 s frames). One fill from the target now predicts
+    reachable starts (0 mismatches vs the real search at 26 stand-offs); detour
+    smoothing got the two-room reach. Stand-off frames 1,018 -> 53-79 ms.
+  - The seed-101 review run (alive at cycle 173, Veld rescued) froze from cycle 29:
+    mining exhausted, and the test player waited forever for metal. Test-player limit,
+    not a game softlock. Its `final.loop` was deleted by a probe (restore points
+    autosave at the source file); events, profile and screenshots remain.
   - Bunk: the seated frame sits on the mattress edge. Colour-matching the bunk art and
     smoothing crew sprites were tried and reverted (props v2 doc, Open).
 - `test_owner_report_regressions` passed only with the owner's saved Studio layouts:

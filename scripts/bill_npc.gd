@@ -921,7 +921,12 @@ func detour_around_crew() -> bool:
 	starts.sort_custom(func(a,b): return foot.distance_squared_to(graph.get_point_position(a)) < foot.distance_squared_to(graph.get_point_position(b)))
 	var target := nearest_in_room(path[path.size() - 1], cell_at(path[path.size() - 1]))
 	if target < 0: return false
+	# A stand-off tried every start in the room, each a failed search: 269 starts, 500 ms,
+	# repeated per step-aside spot (1 s frames, Sept 26). One fill from the target under
+	# the same padding shows which starts can reach it; the others would fail anyway.
+	var reach: Variant = _detour_reach(target)
 	for start in starts:
+		if reach is Dictionary and not _detour_start_joins(start, reach): continue
 		var candidate := crew_detour_from(start, target)
 		if not candidate.is_empty():
 			var endpoint := path[path.size() - 1]
@@ -934,7 +939,49 @@ func detour_around_crew() -> bool:
 			return true
 	return false
 
+# Walking crew only: the swim search depends on facing, so a plain fill is not exact there.
+func _detour_reach(target: int) -> Variant:
+	if movement_medium != "dry" or not graph.has_point(target): return null
+	if fire_cells.has(cell_at(graph.get_point_position(target))): return null
+	var blocked := {}
+	for id in _crew_padding(-1, target): blocked[id] = true
+	var own := cell_at(foot)
+	for cell in fire_cells:
+		if cell == own: continue
+		for id in room_nodes.get(cell, []): blocked[id] = true
+	if blocked.has(target) or graph.is_point_disabled(target): return null
+	var reached := {target: true}
+	var queue: Array[int] = [target]
+	var head := 0
+	while head < queue.size():
+		var current: int = queue[head]
+		head += 1
+		for next_id in graph.get_point_connections(current):
+			if reached.has(next_id) or blocked.has(next_id) or graph.is_point_disabled(next_id): continue
+			reached[next_id] = true
+			queue.append(next_id)
+	return {"reached": reached, "blocked": blocked}
+
+func _detour_start_joins(start: int, reach: Dictionary) -> bool:
+	if graph.is_point_disabled(start): return false
+	if reach.reached.has(start): return true
+	# A padded start is exempt from its own padding, so it joins through any reached neighbour.
+	if not reach.blocked.has(start): return false
+	for next_id in graph.get_point_connections(start):
+		if reach.reached.has(next_id): return true
+	return false
+
 func crew_detour_from(start: int, target: int) -> PackedVector2Array:
+	var disabled: Array[int] = []
+	for id in _crew_padding(start, target):
+		graph.set_point_disabled(id, true)
+		disabled.append(id)
+	var route := route_between(start, target, true)
+	for id in disabled: graph.set_point_disabled(id, false)
+	return _smooth_crew_detour(route)
+
+# Nodes a detour avoids around other crew; `start` is exempt so a crowded start can leave.
+func _crew_padding(start: int, target: int) -> Array[int]:
 	var disabled: Array[int] = []
 	for peer in avoidance_peers():
 		var peer_cell := cell_at(peer)
@@ -950,10 +997,10 @@ func crew_detour_from(start: int, target: int) -> PackedVector2Array:
 					# sprite then stays clear of the back hull's visual silhouette.
 					front_lane = point.y < (float(cell.y) + 0.5) * CELL and id != target
 				if id != start and (point.distance_to(peer) < 32.0 or front_lane):
-					graph.set_point_disabled(id, true)
 					disabled.append(id)
-	var route := route_between(start, target, true)
-	for id in disabled: graph.set_point_disabled(id, false)
+	return disabled
+
+func _smooth_crew_detour(route: PackedVector2Array) -> PackedVector2Array:
 	if route.is_empty(): return PackedVector2Array()
 	var result := PackedVector2Array()
 	var from := foot
@@ -962,6 +1009,7 @@ func crew_detour_from(start: int, target: int) -> PackedVector2Array:
 	while index < route.size():
 		var farthest := -1
 		for probe in range(index, route.size()):
+			if probe > index and from.distance_squared_to(route[probe]) > SHORTCUT_REACH*SHORTCUT_REACH: continue
 			if travel_segment_clear(from,route[probe],facing) and crew_clear(from, route[probe]): farthest = probe
 		if farthest < 0: return PackedVector2Array()
 		result.append(route[farthest])
