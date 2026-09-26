@@ -80,7 +80,11 @@ games use procedural sites.
   bank/common-asset sheet is also loaded by a room view, and each room's source
   sheet also supplies its wall and cap material. Revisit with the wall/machinery
   art pass.
-- Airlock helmet-shelf drawing; bunk climb-in animation; drone and live-machinery art.
+- Bunk climb-in on the station-prop bunk (Bill-only trial queued); drone and
+  live-machinery art.
+- Airlock spare-helmet shelf: done Sept 25. It sits on the locker's left panel, or
+  at the foot of the left bay when a wall or furniture takes that side
+  (`side_shelf_blocked` in `airlock_view.gd`); the airlock card was rebaked.
 
 ## Powered effects (Sept 25)
 
