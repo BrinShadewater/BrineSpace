@@ -162,6 +162,13 @@ func has_wall_art(_prop: Dictionary) -> bool:
 	# riser position detached it from saved placement, picking and collision.
 	return false
 
+# Station-prop suit lockers arrive with the owner layout; route them through
+# draw_registered_prop so the spare-helmet side shelf draws with them.
+func after_layout_apply() -> void:
+	var library=preload("res://scripts/room_asset_library.gd")
+	for prop in props:
+		if prop.get("library_asset",false) and library.role_of(prop)=="suit_locker": prop.custom_library_draw=true
+
 func locker_wall_art_rect(prop: Dictionary) -> Rect2:
 	if not has_wall_art(prop): return prop.rect
 	var riser=preload("res://rooms/whole-room/riser_geometry.gd")
@@ -197,9 +204,11 @@ func draw_registered_prop(prop: Dictionary) -> void:
 			var tray: Vector2=support.position+support.size*prop.get("helmet_tray_uv",Vector2(0.051,0.52))
 			painter.draw_line(tray,at+Vector2(0,4),Color("293f46"),3)
 		# A shallow side ledge supports the handoff rather than a floating sprite.
-		painter.draw_rect(Rect2(at+Vector2(-12,2),Vector2(22,3)),Color("536767"))
-		painter.draw_line(at+Vector2(-12,2),at+Vector2(10,2),Color("9ba898"),1)
-		painter.draw_line(at+Vector2(-7,5),at+Vector2(10,14),Color("293f46"),2)
+		# Station-prop lockers: the ledge runs into the left panel so it reads as fixed to it.
+		var ledge_end: float=at.x+10 if prop.has("helmet_anchor_uv") else prop.rect.position.x+4
+		painter.draw_rect(Rect2(at+Vector2(-12,2),Vector2(ledge_end-at.x+12,3)),Color("536767"))
+		painter.draw_line(at+Vector2(-12,2),Vector2(ledge_end,at.y+2),Color("9ba898"),1)
+		painter.draw_line(at+Vector2(-7,5),Vector2(ledge_end,at.y+14),Color("293f46"),2)
 		if shelf_helmet_visible and shelf_helmet != null:
 			var helmet_size:=shelf_helmet_size
 			painter.draw_texture_rect(shelf_helmet, Rect2(at+Vector2(-helmet_size.x*0.5,1-helmet_size.y),helmet_size),false)

@@ -57,6 +57,8 @@ func render_into(target: CanvasItem, at: Vector2, world_to_host: float, floor_on
 		var asset:=preload("res://scripts/room_layout_store.gd").asset_for(self)
 		if not asset.is_empty(): preload("res://scripts/room_layout_store.gd").apply(self,asset)
 	preload("res://scripts/room_asset_library.gd").strip_retired(self)
+	# Views that must adjust owner-layout props (which arrive only in the apply above) do it here.
+	if has_method("after_layout_apply"): call("after_layout_apply")
 	var saved_origin:=view_origin
 	var saved_scale:=view_scale
 	view_origin=at

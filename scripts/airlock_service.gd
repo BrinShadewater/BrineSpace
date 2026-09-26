@@ -57,7 +57,9 @@ static func is_suit_locker(prop: Dictionary) -> bool:
 static func helmet_anchor(prop: Dictionary) -> Vector2:
 	if prop.has("helmet_anchor_uv"):
 		return prop.rect.position+prop.rect.size*prop.helmet_anchor_uv
-	return Vector2(prop.rect.position.x-7,prop.rect.end.y-25)
+	# Station-prop lockers: a side shelf on the left panel at crew reach, where crew stand
+	# facing east to work them.
+	return Vector2(prop.rect.position.x-6,prop.rect.position.y+prop.rect.size.y*0.6)
 
 static func locker(game,cell: Vector2i) -> Dictionary:
 	if not game.occupied.has(cell) or game.occupied[cell].id!="airlock": return {}
