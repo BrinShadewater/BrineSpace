@@ -218,8 +218,15 @@ func choose_build(now: int):
 			# for a pending rescue while other cards establish the food budget.
 			if all_crew and id=="crew_hab" and needs_berths and not retained_hab:
 				retained_hab=true;continue
-			if int(counts.get(id,0))>=1 or id not in priorities or (all_crew and id=="crew_hab" and int(net.get("food",0))<2):
+			# With no bay able to harvest, an unaffordable card can never be built: holding it froze
+			# the seed-101 review run from cycle 29 to 173 (Sept 26). Reroll toward a cheap route.
+			var stranded: bool=int(game.RoomDatabaseScript.get_room(id).cost.get("metal",0))>int(game.resources.metal) and not metal_income()
+			if stranded or int(counts.get(id,0))>=1 or id not in priorities or (all_crew and id=="crew_hab" and int(net.get("food",0))<2):
 				game._on_card_pressed(id);game._discard_selected_card();last_reroll=now;record("reroll",{"id":id});return
+func metal_income() -> bool:
+	for room in game.placed_rooms:
+		if room.id in ["mining_drone_bay","salvage_drone_bay"] and str(game.drone_fleet.harvest_route_plan(room.pos,game.wrecks).get("state",""))=="open": return true
+	return false
 func exit_distance(id: String, cell: Vector2i, rotation: int, distances: Dictionary) -> int:
 	var nearest:=10000
 	for direction in Generator.DIRECTIONS:
