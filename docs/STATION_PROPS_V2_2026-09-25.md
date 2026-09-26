@@ -1,6 +1,6 @@
 # Station props v2 (September 24–25, 2026)
 
-Branch `room-props-v2` (pushed; not merged to `main`). Owner direction: a clean
+Built on branch `room-props-v2`, now merged into `main`. Owner direction: a clean
 slate of room art. Every redesigned room is dressed only with props cut from the
 owner's Codex room designs (`Desktop/BrineSpace Room Designs`), on the existing
 floors, riser walls, doors, crew and drones.
@@ -80,7 +80,8 @@ games use procedural sites.
   bank/common-asset sheet is also loaded by a room view, and each room's source
   sheet also supplies its wall and cap material. Revisit with the wall/machinery
   art pass.
-- Drone and live-machinery art.
+- Drone and live-machinery art: owner doing it in Codex (Sept 26). The Codex room
+  designs paint each drone onto its pad, so flying drones need separate exports.
 - Bunk climb-in: done Sept 25 for all four crew on `sp-crew_hab-3` (points are fractions
   of the art; front layer is the rail, ladder and end posts). The five bunk tests run again.
   Mid-climb the body dips behind the rail for about 0.3 s: owner to judge in motion.
@@ -101,4 +102,3 @@ the single trace). The detector skips angled side monitors, so `tags.json`
 visors, solar cells and a mug. Catalog `effects` kinds: `specimen_glow`, `field`,
 and `hologram` (Holo Core bench lens). The Holo Core projector's beam got a faint fill.
 - Owner's Codex magenta re-export pass: [brief](CODEX_BRIEF_MAGENTA_PROPS.md).
-- Merge `room-props-v2` into `main` when the owner is happy.
