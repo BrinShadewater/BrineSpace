@@ -113,6 +113,12 @@ of silently succeeding with zero tests. Three selection regressions pass in
   mounts the PCK against its expected manifest. Verify missing/changed/unexpected counts,
   not just successful export. An editor with --main-pack can inspect packaged
   textures and render scenes, but it retains editor/debug execution behavior.
+- Isolate QA user data by setting `APPDATA` for the release process to a QA folder, and
+  guard the fixture on `OS.get_user_data_dir()` before it writes anything. Since Sept 25
+  `project.godot` pins the save folder (`use_custom_user_dir`), so an override.cfg
+  `config/name` no longer isolates saves; a Sept 25 run wrote a New Game checkpoint into the
+  owner's folder before this was caught (moved out, see `output/win-release-2026-09-25/`).
+  Copy frozen input saves in fresh for every run: a continuation writes over its input.
 - Actual release behavior: use tests/release_new_game_smoke.gd through a temporary
   autoload override beside an isolated copy of the EXE/PCK. The fixture requires
   debug=false and uses explicit failure branches. Follow the override recipe in

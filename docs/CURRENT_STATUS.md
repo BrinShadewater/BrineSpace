@@ -121,7 +121,11 @@ Newer Mac-only candidate (Sept 25): **brinespace-ffebeef84bf5f143** in
 commit 9c179ce34 (station props v2, shaped screens, airlock shelf, four-crew bunk entry,
 Mac comfort fixes). Universal 2 structure and exact PCK audit pass (15,693 assets, zero
 discrepancies; log in `output/mac-release-2026-09-25/`). No matching Windows build or
-actual-release gameplay check was made for it.
+actual-release gameplay check was made for it. Its Windows twin (same build ID) is
+`builds/BrineSpace-props-v2-2026-09-25/`: exact PCK audit passes (15,693 assets) and the
+actual-release smoke passes New Game, dialogue Continue, simulation, disk Continue, Fit, F8,
+bunk-entry and station-prop decoding (`output/win-release-2026-09-25/`). The September 23
+expedition checkpoint could not be continued: it had been advanced to a zero-food state.
 
 ## Next work and acceptance gaps
 
