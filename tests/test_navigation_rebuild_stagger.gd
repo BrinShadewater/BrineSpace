@@ -37,6 +37,12 @@ func run() -> void:
 	var current:=crew.filter(func(a): return a.topology(game)==a.signature).size()
 	check(current==1, "One crew member rebuilds in the first frame after a room completes (%d)" % current)
 	for actor in crew: check(not actor.defer_navigation_rebuild, "The deferral lasts only for that update")
+	# Hitch and stall reports name who was busy: per-crew time, activity and rebuilds.
+	check(game.crew_frame_usec.size()==2, "Each present crew member is timed (%d)" % game.crew_frame_usec.size())
+	check(game.crew_frame_usec.values().filter(func(e): return e.rebuilt).size()==1, "The frame record shows which crew member rebuilt")
+	var monitor=preload("res://scripts/performance_monitor.gd").new()
+	check(monitor.station_breakdown(game).get("crew_usec",{}).has("bill"), "Reports carry the per-crew breakdown")
+	monitor.free()
 	game._update_test_walker(0.05)
 	current=crew.filter(func(a): return a.topology(game)==a.signature).size()
 	check(current==2, "The next frame the other crew member rebuilds (%d)" % current)

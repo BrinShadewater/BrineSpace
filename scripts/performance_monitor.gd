@@ -202,6 +202,7 @@ func station_breakdown(scene: Node) -> Dictionary:
 		timings["cycle_advance_age_ms"]=Time.get_ticks_msec()-int(timings.last_cycle_at_ms)
 		timings.erase("last_cycle_at_ms")
 	result["station_usec"]=timings
+	if "crew_frame_usec" in scene: result["crew_usec"]=scene.crew_frame_usec.duplicate(true)
 	result.merge(last_draw_timing)
 	if is_instance_valid(scene.get("grid_view")) and scene.grid_view.profile_draw:
 		result["grid_draw_usec"]=scene.grid_view.draw_profile_usec.duplicate()

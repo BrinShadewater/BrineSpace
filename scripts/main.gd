@@ -416,6 +416,10 @@ func _apply_ui_font() -> void:
 
 # Latest station work per frame in microseconds, read by PerformanceMonitor for hitch records.
 var frame_timing_usec := {}
+# Per crew member for the latest frame: update time, activity, goal and whether it rebuilt
+# navigation. Hitch and stall reports carry it, so a slow frame names who was busy doing
+# what (Sept 26: four temporary traces were needed to answer that by hand).
+var crew_frame_usec := {}
 var operations_refresh_step := 0.5
 
 func _process(delta: float) -> void:
@@ -4402,6 +4406,7 @@ func _update_test_walker(delta: float) -> void:
 	# graphs and re-choose all four goals in one 402 ms frame (Sept 26). Crew with a graph
 	# wait a frame on it; crew without one always build.
 	var navigation_rebuilt := false
+	crew_frame_usec.clear()
 	for actor in [bill_npc, veld_npc, branforth_npc, marsh_npc]:
 		var architect_id := "bill" if actor==bill_npc else "veld" if actor==veld_npc else "marsh" if actor==marsh_npc else "branforth"
 		if not Architects.present(self,architect_id): continue
@@ -4424,7 +4429,9 @@ func _update_test_walker(delta: float) -> void:
 		var stale: bool = actor.topology(self) != actor.signature
 		actor.defer_navigation_rebuild = stale and navigation_rebuilt and actor.graph.get_point_count() > 0
 		if stale and not actor.defer_navigation_rebuild: navigation_rebuilt = true
+		var update_started := Time.get_ticks_usec()
 		actor.update(self, delta)
+		crew_frame_usec[architect_id] = {"usec":Time.get_ticks_usec()-update_started,"activity":actor.activity,"goal":actor.goal,"rebuilt":stale and not actor.defer_navigation_rebuild}
 		actor.defer_navigation_rebuild = false
 	preload("res://scripts/crew_social.gd").advance(self,delta)
 	Companions.advance(self,delta)

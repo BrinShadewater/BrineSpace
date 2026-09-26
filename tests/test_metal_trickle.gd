@@ -33,6 +33,21 @@ func run() -> void:
 	game.resources.metal = 0
 	check(not Trickle.stuck(game, true), "A bay with an open harvest route is income, so no trickle")
 	check(Trickle.stuck(game, false), "Without harvest income the station is stuck")
+	# The economy stall alert fires once after 120 s with nothing affordable and no harvest.
+	var Watch=preload("res://scripts/stuck_watch.gd")
+	Watch.reset()
+	game.running=true;game.paused=false
+	game.resources.metal=0;game.drone_fleet.orders.clear()
+	game.hand=["reactor","storage_bay","crew_hab"]
+	var alerts:=[]
+	for i in range(4): alerts.append_array(Watch.check(game,60.0).filter(func(m): return m.begins_with("Nothing in hand")))
+	check(alerts.size()==1, "A stalled economy raises one alert (%d)" % alerts.size())
+	game.hand=["corridor"];game.resources.metal=2
+	Watch.reset()
+	var none:=[]
+	for i in range(4): none.append_array(Watch.check(game,60.0).filter(func(m): return m.begins_with("Nothing in hand")))
+	check(none.is_empty(), "An affordable card is not a stall")
+	Watch.reset()
 	# Through the real cycle step.
 	game.resources.metal = 0
 	game.running = true;game.paused = false

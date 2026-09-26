@@ -7,6 +7,7 @@ extends RefCounted
 const CREW_SECONDS := 30.0
 const DRONE_SECONDS := 30.0
 const ORDER_SECONDS := 90.0
+const ECONOMY_SECONDS := 120.0
 const MOVED := 6.0 # World units that count as progress.
 
 static var watched := {}
@@ -35,9 +36,16 @@ static func check(game, dt: float) -> Array:
 		var cell = order.get("pos", order.get("cell", Vector2i(-1, -1)))
 		_track(raised, game, "order:" + str(cell), true, Vector2(float(order.get("work", 0.0)), 0.0), ORDER_SECONDS, dt,
 			"The build order at %s has made no progress for %d seconds" % [cell, int(ORDER_SECONDS)])
+	# Economy dead end (Sept 26 seed-101 review): nothing affordable in hand and no bay able
+	# to harvest. Building anything counts as progress; this is advice, not a bug report.
+	var metal := int(game.resources.get("metal", 0))
+	var affordable: bool = game.hand.any(func(id): return int(game.RoomDatabaseScript.get_room(id).get("cost", {}).get("metal", 0)) <= metal)
+	var stalled: bool = not affordable and game.drone_fleet.orders.is_empty() and not preload("res://scripts/metal_trickle.gd").harvest_income(game)
+	_track(raised, game, "economy", stalled, Vector2(game.placed_rooms.size() * 10.0, 0.0), ECONOMY_SECONDS, dt,
+		"Nothing in hand is affordable and no bay can harvest Metal", ". Reroll the hand or scrap a room; BRINE Core also reclaims Metal slowly.")
 	return raised
 
-static func _track(raised: Array, game, key: String, busy: bool, at: Vector2, limit: float, dt: float, message: String) -> void:
+static func _track(raised: Array, game, key: String, busy: bool, at: Vector2, limit: float, dt: float, message: String, advice := ". Please send an F8 report.") -> void:
 	if not busy:
 		watched.erase(key)
 		reported.erase(key)
@@ -53,4 +61,4 @@ static func _track(raised: Array, game, key: String, busy: bool, at: Vector2, li
 	if float(entry.still) < limit or reported.has(key): return
 	reported[key] = true
 	raised.append(message)
-	game._log("STUCK // " + message + ". Please send an F8 report.", true)
+	game._log("STUCK // " + message + advice, true)
