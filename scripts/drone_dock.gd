@@ -63,9 +63,14 @@ static func center(rect:Rect2,kind:String) -> Vector2:
 	rect=Rect2(Vector2(rect.position.x,rect.end.y-height),Vector2(rect.size.x,height))
 	var well:=bounds(rect,record(kind).well)
 	return Vector2(well.get_center().x,well.position.y+well.size.y*.4)
+# Owner, Sept 27: docked drones read too small in their pad wells. The fleet draws at this
+# same scale, so docked, launching and flying drones stay one size.
+const SIZE_BOOST:={"construction":1.25,"mining":1.35,"salvage":1.3}
+# Boosted drones can reach just past the pad frame; retained draw slots use this envelope.
+static func visual_bounds(rect:Rect2) -> Rect2: return rect.grow(rect.size.x*.1)
 static func art_scale(rect:Rect2,kind:String) -> float:
 	var r:=record(kind)
-	return float(r.hull_width)/float(Motion.catalog(kind).get("nominalSouthHullWidthWorld",Motion.catalog(kind).get("nominalWidthWorld",120.36)))*rect.size.x/float(r.world_width)
+	return float(SIZE_BOOST.get(kind,1.0))*float(r.hull_width)/float(Motion.catalog(kind).get("nominalSouthHullWidthWorld",Motion.catalog(kind).get("nominalWidthWorld",120.36)))*rect.size.x/float(r.world_width)
 static func piece(canvas:CanvasItem,r:Dictionary,key:String,at:Vector2,scale_value:float,alpha:float=1.0) -> void:
 	var size:=Vector2(r.sizes[key][0],r.sizes[key][1])*scale_value
 	canvas.draw_texture_rect(Motion.texture(r.components[key]),Rect2(at-size*.5,size),false,Color(1,1,1,alpha))

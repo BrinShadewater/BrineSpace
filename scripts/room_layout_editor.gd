@@ -16,6 +16,9 @@ var tray_pending_total:=0
 var library_filter: OptionButton
 var pack_filter: OptionButton
 const TRAY_CATEGORIES := ["Default","Common Props","Floors","Walls","Operations","Engineering","Science","Life Support","Recreation","Anomaly","Robotics"]
+const LAYER_CAPTIONS := ["Objects", "Floor finish", "Floor decorations", "Wall decorations", "Lights"]
+# Owner, Sept 27: floor decorations and lights leave Studio for now.
+const HIDDEN_LAYERS := [2, 4]
 const TRAY_DEFAULT := 0
 const TRAY_COMMON := 1
 const TRAY_FLOORS := 2
@@ -439,10 +442,12 @@ func _ready() -> void:
 	character_status.text="Preview only / same scale as gameplay"
 	side.add_child(character_status)
 	layers=OptionButton.new()
-	for caption in ["Objects", "Floor finish", "Floor decorations", "Wall decorations", "Lights"]: layers.add_item(caption)
+	# Items carry the layer number as their id, so hidden layers leave the numbering intact.
+	for id in range(LAYER_CAPTIONS.size()):
+		if id not in HIDDEN_LAYERS: layers.add_item(LAYER_CAPTIONS[id],id)
 	side.add_child(layers)
 	layers.item_selected.connect(func(i):
-		layer=i; selected=""; selected_many.clear(); dragging=false
+		layer=layers.get_item_id(i); selected=""; selected_many.clear(); dragging=false
 		if layer==3: riser_toggle.button_pressed=true
 		rebuild_list(); update_size_control(); canvas.queue_redraw())
 	floor_tools=preload("res://scripts/floor_finish_tools.gd").new(); floor_tools.setup(self); side.add_child(floor_tools)
@@ -721,7 +726,7 @@ func load_room() -> void:
 	var corridor_room: bool=str(entries[index].room) in ["corridor","corner","tee_corridor"]
 	# Riser wall decorations use retired art; redesigned rooms leave that layer off.
 	var legacy_art: bool=str(entries[index].room) in Library.LEGACY_ART_ROOMS
-	for i in [1,2,3,4]: layers.set_item_disabled(i,(corridor_room and i!=1) or (i==3 and not legacy_art))
+	for i in [1,3]: layers.set_item_disabled(layers.get_item_index(i),(corridor_room and i!=1) or (i==3 and not legacy_art))
 	if corridor_room or (layer==3 and not legacy_art): layer=0
 	base_props=room.props.duplicate(true)
 	base_details={}
@@ -855,7 +860,7 @@ func entity_bounds(prop: Dictionary) -> Rect2:
 	return room.prop_visual_bounds(prop) if layer==0 else prop.rect
 func rebuild_list() -> void:
 	if floor_tools!=null: floor_tools.sync()
-	layers.select(layer)
+	layers.select(maxi(0,layers.get_item_index(layer)))
 	var rows: Array=[]
 	for prop in entities():
 		var caption:=str(prop.id).replace("_"," ").capitalize()
@@ -928,7 +933,7 @@ func canvas_input(event: InputEvent) -> void:
 			var hits:=hits_at(point)
 			if layer==1 or hits.is_empty():
 				var original_layer:=layer
-				for candidate in [0,2]:
+				for candidate in [0]:
 					layer=candidate; hits=hits_at(point)
 					if not hits.is_empty(): break
 				if hits.is_empty(): layer=original_layer
@@ -1521,7 +1526,8 @@ func rebuild_library() -> void:
 	if library_list==null: return
 	var returned: Array=[]
 	for id in draft:
-		if draft[id]==null and defaults.has(id): returned.append(id)
+		# Hidden layers (lights, floor decorations) do not offer their returned pieces.
+		if draft[id]==null and defaults.has(id) and not str(id).begins_with("light/") and not base_details.has(id): returned.append(id)
 	var pack:=pack_filter.get_item_text(pack_filter.selected) if pack_filter!=null and pack_filter.selected>0 else ""
 	var theme:=str(theme_filters.get(library_filter.selected,""))
 	var only_favourites:=library_filter.selected==favourites_filter

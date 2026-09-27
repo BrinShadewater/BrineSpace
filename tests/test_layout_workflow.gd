@@ -27,7 +27,9 @@ func run() -> void:
 	empty_press.pressed=false; e.canvas_input(empty_press)
 	assert(not e.panning and e.draft==initial_draft and e.history.is_empty())
 	e.fit_view()
-	# Select and move a floor decoration from Objects, then undo it.
+	# Owner, Sept 27: floor decorations and lights left the layer menu, and a click from
+	# Objects no longer reaches through to a floor decoration.
+	for id in e.HIDDEN_LAYERS: assert(e.layers.get_item_index(id)==-1,"Hidden layer still offered: %d" % id)
 	e.layer=2
 	var details: Array=e.entities()
 	assert(not details.is_empty())
@@ -36,12 +38,9 @@ func run() -> void:
 	e.layer=0
 	empty_press.position=e.canvas.origin()+piece.rect.get_center()*e.canvas.factor(); empty_press.pressed=true
 	e.canvas_input(empty_press)
-	assert(e.layer==2 and e.selected==str(piece.id) and e.dragging)
-	pan_motion.position=empty_press.position+Vector2(12,8)*e.canvas.factor(); pan_motion.alt_pressed=true
-	e.canvas_input(pan_motion)
-	empty_press.pressed=false; empty_press.position=pan_motion.position; e.canvas_input(empty_press)
-	assert(e.draft[piece.id]!=detail_before)
-	e.undo(); assert(e.draft[piece.id]==detail_before)
+	assert(e.layer==0 and e.selected!=str(piece.id))
+	empty_press.pressed=false; e.canvas_input(empty_press)
+	assert(e.draft[piece.id]==detail_before)
 	e.clean_preview=true; e.show_guides=false
 	await process_frame
 	await RenderingServer.frame_post_draw

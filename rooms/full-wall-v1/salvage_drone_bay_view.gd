@@ -7,7 +7,7 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 	var retained: Array=[]
 	if q==3:
 		for prop in props:
-			if prop.id in ["salvage_rov","salvage_hatch","salvage_winch"]: retained.append(prop.duplicate(true))
+			if prop.id=="salvage_rov": retained.append(prop.duplicate(true))
 	full_wall.apply(self)
 	# A removed bank means the saved standalone furnishing is authoritative.
 	# Do not replace it with the legacy quarter-three restoration below.
@@ -17,7 +17,7 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 		var bank: Array=[]
 		for prop in props:
 			if full_wall.owns(prop): bank.append(prop)
-		var stations={"salvage_rov":Vector2(67,-90),"salvage_hatch":Vector2(-157,-90),"salvage_winch":Vector2(-45,-115)}
+		var stations={"salvage_rov":Vector2(67,-90)}
 		for prop in retained:
 			prop.rect.position=stations[prop.id]
 			prop.sort_y=prop.rect.end.y

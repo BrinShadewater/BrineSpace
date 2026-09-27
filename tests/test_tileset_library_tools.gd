@@ -107,7 +107,8 @@ func run() -> void:
 	# --- Floors: every owner-picked finish is offered and its texture loads as a 4x4 atlas. ---
 	var Floor=load("res://rooms/whole-room/modular_floor.gd")
 	var picked: Variant=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/tileset-library/floors.json"))
-	if not (picked is Dictionary) or picked.is_empty(): return fail("floors.json is missing or empty")
+	# Owner, Sept 27: the low-resolution tileset finishes were withdrawn, so the list may be empty.
+	if not (picked is Dictionary): return fail("floors.json is missing")
 	for caption in picked:
 		var path: String=str(picked[caption])
 		if not path in Floor.finishes().values(): return fail("finish not offered in the Studio: "+str(caption))

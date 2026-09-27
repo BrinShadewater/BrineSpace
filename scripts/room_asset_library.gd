@@ -22,10 +22,6 @@ static func role_of(prop: Dictionary) -> String:
 static func keeps_in_room(room_id: String, prop: Dictionary) -> bool:
 	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return true
 	var id:=str(prop.get("id",""))
-	# Owner report Sept 27: remove the separate circular construction-bay hatch.
-	# The operational launch pad is part of construction_rov's dock assembly.
-	# Owner, Sept 27: the mining and salvage bays lose their old hatches the same way.
-	if id in ["construction_hatch","mining_hatch","salvage_hatch"]: return false
 	if id.ends_with("_rov") or id.ends_with("_hatch") or id in LIVE_MACHINERY: return true
 	return is_station_prop(str(prop.get("copy_source",prop.get("variant_source",id))))
 # Several views re-add built-in props after the layout pass (legacy restorations), so
@@ -401,6 +397,7 @@ static func bounds(prop: Dictionary) -> Rect2:
 		var native:=prop.duplicate()
 		native.erase("library_asset"); native.id=prop.portable_id
 		return prop.portable_view.prop_visual_bounds(native)
+	if prop.get("registration",{}).has("drone_dock"): return preload("res://scripts/drone_dock.gd").visual_bounds(prop.rect)
 	return prop.rect
 
 # Decode preview PNGs away from the UI thread; GPU textures are created on the main thread.
