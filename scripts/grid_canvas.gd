@@ -53,6 +53,8 @@ const BrineView = preload("res://rooms/underwater/brine-core/brine_core_view.gd"
 var brine_view: BrineView
 var power_room_views := {}
 var rare_room_views := {}
+var expansion_room_views := {}
+const ExpansionViews = preload("res://rooms/new-room-expansion/views.gd")
 const AirlockView=preload("res://rooms/underwater/airlock-v1/airlock_view.gd")
 var airlock_view: AirlockView
 const HullView = preload("res://rooms/full-wall-v1/shield_generator_view.gd")
@@ -156,6 +158,7 @@ func _power_flicker(room: Dictionary) -> float:
 	return RoomLighting.power_flicker(room.pos,int(main.resources.get("power",0)),int(main.power_capacity),main.get_unscaled_time_seconds(),preload("res://scripts/title_settings.gd").reduced_motion,main.paused)
 
 func _uses_layered_art(room: Dictionary) -> bool:
+	if ExpansionViews.PATHS.has(room.get("id","")): return true
 	if room.get("id","") in ["observation_room","salvage_workshop","galley","cold_store"]: return true
 	if room.get("id","")=="airlock": return true
 	return room.get("id", "") in ["current_turbine", "biomass_digester", "heat_recovery", "construction_drone_bay", "mycelium_nursery", "life_support", "hydroponics_bay", "reactor", "med_bay", "crew_hab", "cryo_chamber", "clone_lab", "data_archive", "biodome", "xeno_lab", "med_office","med_center","holographic_core","bio_lab","anomaly_lab", "battery_array", "research_lab", "maintenance_bay", "storage_bay", "ore_refinery", "mining_drone_bay", "salvage_drone_bay", "crew_lounge", "command_center", "quarantine_cell", "solar_array", "radio_lab", "shield_generator", "tidal_condenser", "gravity_loom", "brine_core", "corridor", "corner", "tee_corridor", "pressure_control", "listening_post", "isolation_vault"]
@@ -915,7 +918,7 @@ func _door_light_state() -> void:
 		var drawn_level := light_level*(_power_flicker(room) if light_level>0.0 and _uses_layered_art(room) and not _is_narrow_corridor(room) else 1.0)
 		lights.append([room.pos,room.id,light_level,drawn_level])
 		if room.id=="airlock":
-			doors.append([room.pos,"exterior-hatch",room.rotation,preload("res://scripts/airlock_cycle.gd").pose(room).outer,main.hardware.walls,preload("res://scripts/title_settings.gd").raised_walls])
+			doors.append([room.pos,"exterior-hatch",room.rotation,preload("res://scripts/airlock_cycle.gd").pose(room),main.hardware.walls,preload("res://scripts/title_settings.gd").raised_walls])
 		for side in ["north","east","south","west"]:
 			var offset := _offset_from_side(side)
 			var neighbor: Vector2i = room.pos+offset
@@ -983,7 +986,7 @@ func _surface_state() -> Array:
 		structural.erase("leak_repair")
 		# These values are consumed by live chamber/fire effects, not the shell.
 		# Keeping their timers here redraws every visible floor/wall every frame.
-		for field in ["airlock_cycle","fire","fire_water_seconds","electrical_repair_progress"]:
+		for field in ["airlock_cycle","fire","fire_water_seconds","electrical_repair_progress","survey_clock","survey_blocked"]:
 			structural.erase(field)
 		structural_rooms.append(structural)
 	return [main.hardware.duplicate(),_cell_size(),structural_rooms,main.placed_rooms.size(),main.powered_room_cells,rooms,preload("res://scripts/room_layout_store.gd").revision,
@@ -1147,8 +1150,21 @@ func _zoom_reuse_allowed(main) -> bool:
 # Main asks before a camera zoom starts moving. A zoom that will show cells the retained
 # layers never drew holds the camera while they repaint for its cover, one group a frame,
 # and lets it go once only the environment group is left (that repaints with the first
-# step). It never holds the camera for more than a few frames.
+# step). Cold dock layers also prepare off-thread before the first camera step.
+func _prepare_zoom_art(main) -> bool:
+	var Dock=preload("res://scripts/drone_dock.gd")
+	var paths:Array=[]
+	var chambers_ready:=true
+	for room in _rooms_in(main,_zoom_target_cells(main),1.0):
+		if room.id=="airlock" and not AirlockView.prepare_chamber(): chambers_ready=false
+		var kind:String={"construction_drone_bay":"construction","mining_drone_bay":"mining","salvage_drone_bay":"salvage"}.get(room.id,"")
+		if kind.is_empty(): continue
+		for path in Dock.required_paths(kind,main.drone_fleet.drones.get(room.pos,{}),main.powered_room_cells.has(room.pos)):
+			if not paths.has(path): paths.append(path)
+	return Dock.prepare_paths(paths,true) and chambers_ready
+
 func zoom_waits_for_cover(main) -> bool:
+	if is_visible_in_tree() and not _prepare_zoom_art(main): return true
 	if zoom_reuse_active or not is_visible_in_tree() or not _zoom_reuse_allowed(main) or _flood_surface_shown():
 		zoom_preparing = false
 		return false
@@ -1385,6 +1401,7 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 			underwater_visibility.draw(target,main,cell_size)
 		Env.EXTERIOR_ACTORS:
 			_draw_environment_foreground(main,cell_size,GRID_SIZE*cell_size)
+			preload("res://scripts/survey_probe_art.gd").exterior(target,main,cell_size)
 
 func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	_mark_built(target)
@@ -1657,6 +1674,7 @@ func _paint_surface(pass_id: int) -> void:
 			if preload("res://scripts/title_settings.gd").raised_walls and _uses_layered_art(room) and not _is_narrow_corridor(room) and not main.occupied.has(room.pos+Vector2i.UP):
 				draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
 				var north_view = _bill_room_view(room)
+				north_view.set_meta("raised_north_visible",true)
 				# Selecting a recovery ward can invalidate the shared view's geometry.
 				north_view.configure_embedded(int(room.get("rotation",0)),[],false,main.get_visual_time_seconds())
 				preload("res://scripts/room_asset_library.gd").strip_retired(north_view)
@@ -1883,6 +1901,13 @@ func _draw_cryo_derelicts(main, cell_size: float) -> void:
 	cryo_view.recovery = {}
 
 func _bill_room_view(room: Dictionary):
+	var expansion_id: String=room.get("id", "")
+	if ExpansionViews.PATHS.has(expansion_id):
+		if not expansion_room_views.has(expansion_id):
+			var view=load(ExpansionViews.PATHS[expansion_id]).new()
+			view.embedded=true;view.hide();add_child(view)
+			expansion_room_views[expansion_id]=view
+		return expansion_room_views[expansion_id]
 	var room_view = life_support_view if room.get("id", "") == "life_support" else nursery_view
 	if room.get("id", "") == "hydroponics_bay": room_view = hydroponics_view
 	if room.get("id", "") == "med_bay": room_view = med_bay_view
@@ -1958,7 +1983,7 @@ func bill_room_geometry(room: Dictionary, open_sides: Array) -> Dictionary:
 # Excluded: per-frame pod/cycle/carrier/recovery state, companion sites, water,
 # crew inside the cell, and views that paint directly into the live pass.
 func _room_setup_skippable(main, room: Dictionary, view) -> bool:
-	if room.get("id","") in ["brine_core","airlock","salvage_workshop","cryo_chamber"] or room.get("recovered_derelict",false): return false
+	if room.get("id","") in ["brine_core","airlock","salvage_workshop","cryo_chamber","survey_probe_bay"] or room.get("recovered_derelict",false): return false
 	if main.Companions.is_site(main,room.pos): return false
 	if preload("res://scripts/room_flooding.gd").level(room) > 0.0: return false
 	if not _plain_retained_view(view): return false
@@ -2044,30 +2069,37 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 			content_canvases[pos].show()
 			# A canvas kept through a zoom animation scales from the cell size it was built at.
 			content_canvases[pos].scale = Vector2.ONE * (_cell_size() / float(content_canvases[pos].get_meta("built_cell", _cell_size())))
+			if main.drone_fleet.drones.has(pos): content_canvases[pos].view_state["drone_visual"] = main.drone_fleet.drones[pos].duplicate(true)
 			content_canvases[pos].advance_live(main.get_visual_time_seconds())
 			skipped_room_setups += 1
 			return
 	var detail_mark := Time.get_ticks_usec() if profile_draw else 0
 	room_view.set_meta("raised_north_visible",not preview and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP))
 	room_view.configure_embedded(int(room.get("rotation", 0)), sides, not preview and main.powered_room_cells.has(pos), main.get_visual_time_seconds(), omitted)
+	if room.id=="survey_probe_bay":
+		room_view.survey_clock=0.0 if preview else float(room.get("survey_clock",0.0))
+		room_view.survey_status="yellow" if preview else preload("res://scripts/survey_probe.gd").lamp(main,room)
 	preload("res://scripts/room_asset_library.gd").strip_retired(room_view)
 	if not preview and room.id=="brine_core" and not main.architect_run.is_empty() and (not main.architect_run.core.recovered or main.cycle==0):
 		room_view.operating=main.hardware.power and preload("res://scripts/brine_startup.gd").screens(main.architect_run.core)
 	if profile_draw: detail_mark = _profile_detail("configure_"+str(room.id),detail_mark)
+	room_view.set_meta("companion_recovery_kind",main.wrecks[pos].kind if main.Companions.is_site(main,pos) else "")
 	if main.Companions.is_site(main,pos):
 		var site: Dictionary=main.wrecks[pos]
 		room_view.props=main.Companions.room_props(room_view.props,site.kind)
 		for prop in main.Companions.recovery_props(site.kind,site.recovered):
-			var texture: Texture2D=main.Companions.prop_texture(prop.id) if site.kind=="margot" else main.Companions.container_texture(site.kind,site.opened)
+			var texture: Texture2D=main.Companions.prop_texture(prop.id) if site.kind=="margot" else main.Companions.rescue_texture(main,pos)
 			room_view.external_actors.append({"position":prop.position,"texture":texture})
 	if profile_draw: detail_mark = _profile_detail("companions_"+str(room.id),detail_mark)
 	room_view.flood_water=0.0 if preview else preload("res://scripts/room_flooding.gd").level(room)
 	room_view.flood_clock=main.get_visual_time_seconds()
 	if room.id=="airlock":
 		room_view.cycle_pose=preload("res://scripts/airlock_cycle.gd").pose({} if preview else room)
+		room_view.caution_active=not preview and preload("res://scripts/airlock_cycle.gd").warning_active(room)
 		room_view.shelf_helmet_visible = preview or preload("res://scripts/airlock_service.gd").helmet_on_shelf(main, pos)
 		room_view.shelf_helmet_size = Vector2(39,48)*65.28/148.0 if preview else preload("res://scripts/airlock_service.gd").shelf_helmet_size(main,pos)
 	if room.id in ["mining_drone_bay","salvage_drone_bay","construction_drone_bay"]:
+		room_view.drone_visual = main.drone_fleet.drones.get(pos,{}).duplicate(true) if not preview else {}
 		room_view.drone_deployed = not preview and main.drone_fleet.deployed(pos)
 		room_view.hatch_open = main.drone_fleet.hatch_fraction(pos) if not preview else 0.0
 	if not preview and main.has_test_walker():
@@ -2254,9 +2286,10 @@ func _draw_layered_doors(behind_crew: bool) -> void:
 		# East/south traversal owns each undirected connection exactly once.
 		# The airlock's exterior hatch is not a station connection. Keep its
 		# closed north face visible above the raised hull as well as the low sill.
-		if behind_crew and room.id=="airlock" and posmod(int(room.rotation),4)==0 and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls:
+		if room.id=="airlock" and posmod(int(room.rotation),4)==0 and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls:
 			draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
-			RoomDoor.draw_riser_door(draw_target,preload("res://scripts/airlock_cycle.gd").pose(room).outer,null,"life-support")
+			var hatch_pose:Dictionary=preload("res://scripts/airlock_cycle.gd").pose(room)
+			preload("res://rooms/doors/ocean_hatch.gd").raised(draw_target,hatch_pose.outer,behind_crew,hatch_pose.water,not behind_crew)
 			draw_target.draw_set_transform(Vector2.ZERO)
 		for side in ["north","east","south","west"]:
 			var offset := _offset_from_side(side)
@@ -2941,8 +2974,19 @@ func drone_anchors(room: Dictionary) -> Dictionary:
 	# A layout can remove the ROV cradle or hatch; the bay centre stands in.
 	var anchors := {"dock":Vector2.ZERO,"hatch":Vector2(0,0.35)*384}
 	for prop in view.props:
-		if str(prop.id).ends_with("_rov"): anchors["dock"] = Vector2(prop.rect.get_center().x,prop.rect.end.y-50)
-		if str(prop.id).ends_with("_hatch"): anchors["hatch"] = Vector2(prop.rect.get_center().x,prop.rect.end.y-35)
+		if prop.get("registration",{}).has("drone_dock"):
+			var Dock = preload("res://scripts/drone_dock.gd")
+			anchors["dock"] = Dock.center(prop.rect,prop.registration.drone_dock)
+			anchors["hatch"] = anchors.dock
+			anchors["art_scale"] = Dock.art_scale(prop.rect,prop.registration.drone_dock)
+		if str(prop.id).ends_with("_rov"):
+			var Dock=preload("res://scripts/drone_dock.gd")
+			var kind:String=str(prop.id).trim_suffix("_rov")
+			var dock_rect:Rect2=Dock.legacy_rect(prop,kind)
+			anchors["dock"]=Dock.center(dock_rect,kind)
+			anchors["hatch"]=anchors.dock
+			anchors["art_scale"]=Dock.art_scale(dock_rect,kind)
+		if str(prop.id).ends_with("_hatch") and not anchors.has("art_scale"): anchors["hatch"] = Vector2(prop.rect.get_center().x,prop.rect.end.y-35)
 	drone_anchor_cache[key] = anchors
 	return anchors
 
@@ -2963,24 +3007,18 @@ func _draw_drones(main) -> void:
 		var dock_offset: Vector2 = anchors.dock*cell_size/384.0
 		var hatch_offset: Vector2 = anchors.hatch*cell_size/384.0
 		var pos: Vector2 = preload("res://scripts/underwater_visibility.gd").drone_position(main,drone)*cell_size
-		var width := cell_size*0.18
-		if drone.phase == "launching":
-			var f := clampf(float(drone.elapsed)/1.2,0,1)
-			pos = home+dock_offset.lerp(hatch_offset,f)
-			width *= 1.0-f*0.35
-		elif drone.phase == "docking":
-			var f := clampf(float(drone.elapsed)/1.2,0,1)
-			pos = home+hatch_offset.lerp(dock_offset,f)
-			width *= 0.65+f*0.35
-		elif drone.phase in ["outbound","returning"]:
+		if anchors.has("art_scale") and drone.phase in ["launching","docking"]: continue
+		var visibility := 1.0
+		if drone.phase in ["outbound","returning"]:
 			var from_home: float = clampf(Vector2(drone.position).distance_to(Vector2(drone.home))/0.30,0,1)
 			pos += hatch_offset*(1.0-from_home)
-			# Match the hatch scale at launch/return boundaries, then grow into flight.
-			width *= lerpf(0.65,1.0,from_home)
-		DroneArt.draw_drone(draw_target,drone.kind,pos,width,float(drone.get("clock",0.0)),drone.phase=="working",drone.phase in ["launching","outbound","returning","docking"])
-
-		draw_target.draw_circle(pos+Vector2(-.04,-.015)*cell_size,maxf(1.0,cell_size*.004),Color("b5ddd3"))
-		draw_target.draw_circle(pos+Vector2(.04,-.015)*cell_size,maxf(1.0,cell_size*.004),Color("7ca89b"))
+			visibility = from_home
+		elif drone.phase in ["launching","docking"]:
+			var fraction: float = clampf(float(drone.elapsed)/1.2,0,1)
+			pos = home+dock_offset.lerp(hatch_offset,fraction if drone.phase=="launching" else 1.0-fraction)
+			visibility = 1.0-fraction if drone.phase=="launching" else fraction
+		var running: bool = drone.kind!="construction" or drone.get("bootstrap",false) or main.powered_room_cells.has(drone.home)
+		preload("res://scripts/drone_animation.gd").draw(draw_target,drone,pos,cell_size/384.0,float(anchors.get("art_scale",.42)),running,main.get_visual_time_seconds(),visibility)
 
 func _get_drone_frame(state: String, direction: String) -> Texture2D:
 	if drone_animations.has(state):

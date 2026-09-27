@@ -107,6 +107,10 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				drone.elapsed = 0.0
 		var remaining := maxf(delta,0.0)
 		while remaining > 0.00001:
+			if drone.get("animation_phase","") != drone.phase:
+				drone["animation_phase"] = drone.phase
+				drone["animation_started"] = float(drone.get("clock",0.0))
+				drone.erase("animation_work_duration")
 			if extractor and drone.phase == "docked" and suspended.has(home): break
 			if drone.phase in ["outbound","returning"]:
 				var goal: Vector2i = drone.home if drone.phase == "returning" else Vector2i(drone.target)
@@ -152,6 +156,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				drone.elapsed = 0.0
 			elif drone.phase == "working" and drone.bootstrap: duration = 10.0/build_rate
 			elif drone.phase == "working" and drone.job == "construct": duration /= build_rate
+			if drone.phase=="working" and not drone.has("animation_work_duration"): drone["animation_work_duration"] = duration
 			var step := minf(remaining,maxf(0.0,duration-float(drone.elapsed)))
 			if extractor and drone.phase == "working":
 				step = minf(step,drone.battery/battery_drain_rate)
@@ -163,6 +168,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				sites[Vector2i(drone.target)].progress += step
 			drone.elapsed += step
 			drone["clock"] = float(drone.get("clock",0.0))+step
+			drone["animation_rotor"] = fposmod(float(drone.get("animation_rotor",0.0))+step*30.0,60.0)
 			remaining -= step
 			if drone.elapsed < duration:
 				if extractor and drone.phase == "working" and drone.battery <= 0.00001:
@@ -528,6 +534,11 @@ static func valid(value: Variant, rooms: Array) -> bool:
 		if d.has("return_from") and (not d.return_from is Vector2 or not d.return_from.is_finite()): return false
 		if not d.get("order") is Dictionary: return false
 		if d.has("clock") and (not d.clock is float or not is_finite(d.clock) or d.clock<0): return false
+		for field in ["animation_distance","animation_started","animation_work_duration","animation_rotor","animation_turn_started"]:
+			if d.has(field) and (not d[field] is float or not is_finite(d[field]) or d[field]<0): return false
+		if d.has("animation_previous_heading") and d.animation_previous_heading not in preload("res://scripts/drone_animation.gd").HEADINGS: return false
+		if d.has("animation_heading") and d.animation_heading not in preload("res://scripts/drone_animation.gd").HEADINGS: return false
+		if d.has("animation_phase") and d.animation_phase not in ["docked","launching","outbound","working","returning","docking"]: return false
 		if d.has("route"):
 			if not d.route is Array or d.route.size()>1601: return false
 			for point in d.route:

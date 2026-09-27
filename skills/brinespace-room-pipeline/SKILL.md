@@ -5,6 +5,22 @@ description: Use when generating, repairing, reviewing, or integrating BrineSpac
 
 # BrineSpace room pipeline
 
+For companion rescue crates, occupant reveals and recovery handoffs, read
+[companion rescue workflow](references/companion-rescue.md) and use both pipelines.
+
+For existing Desktop selections, installation audits and acceptance closeout, read
+[selected artwork audit](references/selected-art-audit.md). Start from current status
+and the latest dated owner decisions before carrying forward older next steps.
+
+For the September 26 room/animation closeout, read the active checkout's
+`docs/ROOM_ART_SESSION_CLOSEOUT_2026-09-26.md` after CURRENT_STATUS.md.
+It supersedes historical pending drone installation steps; immersion ideas remain deferred.
+
+For drone NPC animation, launch/recovery effects or their closeout, read
+[drone production lessons](references/drone-animation.md). Use both room and
+character workflows when changing a drone and its dock interaction.
+
+
 **September 20 owner-directed decoration:** use large and medium bought props to
 compose believable work areas, not a scatter of accessories. Preserve the owner's
 reference layouts; change only requested rooms. Start with three-room pilots and

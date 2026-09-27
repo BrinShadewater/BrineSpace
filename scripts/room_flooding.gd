@@ -124,7 +124,7 @@ static func step_crew(game, actor, id: String, dt: float) -> void:
 	elif not actor.expedition.is_empty() and actor.expedition.phase in ["pressurize","drain"]:
 		water = maxf(water,preload("res://scripts/airlock_cycle.gd").pose(game.occupied.get(actor.expedition.home,{})).water)
 		exterior=false
-		actor.movement_medium="flooded" if water>=HIGH else "dry"
+		actor.movement_medium="flooded" if water>0 else "dry"
 	actor.flood_speed = (0.55 if water >= HIGH else (0.65 if water >= MEDIUM else 1.0))*preload("res://scripts/research_tree.gd").walk_rate(game.get("meta"))
 	if not actor.needs_air():
 		actor.helmet_equipped=false
@@ -181,6 +181,8 @@ static func kill(game,actor,id: String,cause: String) -> void:
 
 static func inspector(game,room: Dictionary) -> String:
 	var text := "WATER %d%% // %s" % [roundi(level(room)*100),stage(level(room))]
+	# A remembered blueprint has no placed cell, crew or actionable repair links.
+	if not room.has("pos"): return text
 	if level(room)>0 or float(room.get("hull_crack",0))>0:
 		text += "\nHull crack: %d%% severity. Pumps drain 0.8%%/s when powered." % roundi(float(room.get("hull_crack",0))*100)
 	if float(room.get("hull_crack",0))>0:

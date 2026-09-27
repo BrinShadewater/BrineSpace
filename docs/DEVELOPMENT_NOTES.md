@@ -1,5 +1,18 @@
 > September 24 takeover: [current status](CURRENT_STATUS.md), [Claude handoff](CLAUDE_HANDOFF_2026-09-24.md), and [asset pipeline/workflow](ASSET_PIPELINE_AND_WORKFLOW.md) provide the current continuation map. Dated evidence below retains its original scope.
 
+## September 27 art integration session closed
+
+Installed the existing Desktop clean exports rather than generating replacements: 323 props, 43 refreshed room cards and updated four-direction airlock captures. Follow-up source audit confirms all 477 selected props plus architecture/dock selections; no further missing replacements found in that scope. Owner approved robot rescue `occupied-3`. No gameplay rules or layouts changed in the prop pass. Existing packages remain unchanged; crew polish and unresolved concurrent profile-fingerprint deltas remain open. [Session handoff](ART_SESSION_CLOSEOUT_2026-09-27.md).
+
+## September 27 companion rescue session closeout
+
+Josh/River rescue revision `occupied-3` is installed in source. Owner corrections:
+smoother hinge opening and robots already inside, revealed by moving doors/panels.
+The eight-second powered recovery, payment and reward rules remain unchanged.
+See [session handoff](ROBOT_RESCUE_HANDOFF_2026-09-27.md) for sources, registration,
+native checks and the unresolved real-profile fingerprint delta during the last
+isolated test. No executable rebuild, commit or upload in this rescue session.
+
 ## September 23 submitted report corrections
 
 Hull repair can choose a clear work position when furniture covers its original

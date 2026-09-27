@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Point Godot's importer at each tracked raster's actual release role.
+"""Point Godot's importer at each versioned or newly added raster's actual release role.
 
 Three roles, driven by assets/runtime-release.json (run tools/
 build_release_manifest.py first; tools/export_release.ps1 runs both):
@@ -7,7 +7,7 @@ build_release_manifest.py first; tools/export_release.ps1 runs both):
     (their .tres consumers need the imported Texture2D chain).
   - Manifest rasters get importer="keep": no .ctex is generated, and the
     export's selected-resources pass ships the raw file byte-identical.
-  - Every other tracked raster gets importer="skip": never imported, never
+  - Every other versioned or newly added raster gets importer="skip": never imported, never
     exported. This is what removes ~2.4 GB of unread .ctex and ~3.4 GB of
     QA/source rasters from every release.
 
@@ -28,9 +28,11 @@ SKIP = "[remap]\n\nimporter=\"skip\"\n"
 
 def resource_rasters() -> set:
     referenced = set()
-    tracked = subprocess.run(["git", "ls-files", "*.tscn", "*.tres"], cwd=ROOT,
+    tracked = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard", "*.tscn", "*.tres"], cwd=ROOT,
                              capture_output=True, text=True, check=True)
     for name in tracked.stdout.splitlines():
+        if not (ROOT / name).is_file():
+            continue
         text = (ROOT / name).read_text(encoding="utf-8-sig", errors="replace")
         for match in re.findall(r"res://[^\"']+", text):
             if Path(match).suffix.lower() in RASTER:
@@ -57,10 +59,12 @@ def main() -> int:
         print("ERROR: RESOURCE_ICON_PATHS not found in scripts/main.gd")
         return 1
     imported |= {m[len("res://"):] for m in re.findall(r'"(res://[^"]+)"', icon_block.group(1))}
-    tracked = subprocess.run(["git", "ls-files"], cwd=ROOT,
+    tracked = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard"], cwd=ROOT,
                              capture_output=True, text=True, check=True)
     counts = {"normal": 0, "keep": 0, "skip": 0}
-    for name in tracked.stdout.splitlines():
+    for name in sorted(set(tracked.stdout.splitlines()) | shipped):
+        if not (ROOT / name).is_file():
+            continue
         if Path(name).suffix.lower() not in RASTER:
             continue
         if name in imported:

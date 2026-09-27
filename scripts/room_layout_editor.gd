@@ -145,6 +145,8 @@ var drag_before: Dictionary={}
 var hover_id:=""
 var library_signature: Array=[]
 var thumbnail_queue: Array=[]
+var riser_thumbnail_queue: Array=[]
+var riser_thumbnail_active := ""
 var thumbnail_active:=""
 var thumbnail_render_busy:=false
 var pending_thumbnail: Dictionary={}
@@ -1538,6 +1540,7 @@ func rebuild_library() -> void:
 	if signature==library_signature: return
 	library_signature=signature
 	thumbnail_queue.clear(); default_thumbnail_queue.clear()
+	riser_thumbnail_queue.clear()
 	tray_pending_total=0
 	library_list.clear()
 	var only_retired:=false
@@ -1633,13 +1636,38 @@ func list_riser_walls() -> void:
 		# BRINE Core and the airlock draw their own walls: no catalog face to preview.
 		var thumb: Texture2D=thumbnail_placeholder
 		if RiserCatalog.catalog().has(shown):
-			var atlas:=AtlasTexture.new()
-			atlas.atlas=RiserCatalog.texture(shown); atlas.region=RiserCatalog.source_rect(shown,"face")
-			thumb=atlas
+			if RiserCatalog.textures.has(shown):
+				var atlas:=AtlasTexture.new()
+				atlas.atlas=RiserCatalog.textures[shown]; atlas.region=RiserCatalog.source_rect(shown,"face")
+				thumb=atlas
+			elif shown not in riser_thumbnail_queue:
+				riser_thumbnail_queue.append(shown)
 		library_list.add_item(caption,thumb)
 		library_list.set_item_metadata(library_list.item_count-1,RISER_PICK+group)
 		library_list.set_item_tooltip(library_list.item_count-1,caption+" — click to use this riser wall")
 	tray_total=choices.size(); update_pager()
+
+func pump_riser_thumbnail() -> void:
+	if riser_thumbnail_active.is_empty():
+		if riser_thumbnail_queue.is_empty(): return
+		riser_thumbnail_active=str(riser_thumbnail_queue.pop_front())
+		Library.request_texture(RiserCatalog.catalog()[riser_thumbnail_active].source)
+		return
+	var group:=riser_thumbnail_active
+	var source:String=RiserCatalog.catalog()[group].source
+	if not Library.finish_texture(source): return
+	if Library.source_textures.has(source):
+		RiserCatalog.textures[group]=Library.source_textures[source]
+		var atlas:=AtlasTexture.new()
+		atlas.atlas=RiserCatalog.textures[group]; atlas.region=RiserCatalog.source_rect(group,"face")
+		for i in range(library_list.item_count):
+			var id:=str(library_list.get_item_metadata(i))
+			if not id.begins_with(RISER_PICK): continue
+			var selected_group:=id.trim_prefix(RISER_PICK)
+			if selected_group.is_empty(): selected_group=RiserCatalog.material(str(entries[index].room))
+			if selected_group==group: library_list.set_item_icon(i,atlas)
+	riser_thumbnail_active=""
+
 func apply_riser(group: String) -> void:
 	if comparing or str(draft.get("wall/riser",""))==group: return
 	var before:=draft.duplicate(true)
@@ -1869,6 +1897,7 @@ func _process(delta: float) -> void:
 			pan-=direction.normalized()*480.0*delta; canvas.queue_redraw()
 	pump_default_thumbnail()
 	pump_thumbnails()
+	pump_riser_thumbnail()
 	recovery_clock+=delta
 	if recovery_clock>=2.0 and not dragging and not resizing and not comparing:
 		recovery_clock=0; write_recovery()
@@ -2182,6 +2211,7 @@ func pump_thumbnails() -> void:
 	if not thumbnail_active.is_empty():
 		var entry: Dictionary=Library.entries()[thumbnail_active]
 		if not Library.finish_texture(entry.data.source): return
+		if entry.data.has("drone_dock") and not preload("res://scripts/drone_dock.gd").prepare_preview(str(entry.data.drone_dock),room.operating): return
 		var prop:=Library.template(thumbnail_active)
 		var active_id:=thumbnail_active
 		thumbnail_render_busy=true

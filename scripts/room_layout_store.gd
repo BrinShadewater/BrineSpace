@@ -89,7 +89,7 @@ static func write_data(next: Dictionary) -> Error:
 const PROP_ENVELOPE := Rect2(-180,-198,360,378)
 const MOVABLE_PROP_ENVELOPE := Rect2(-184,-260,368,444)
 static func envelope_for(room, prop: Dictionary) -> Rect2:
-	if prop.has("movable_region"): return MOVABLE_PROP_ENVELOPE
+	if prop.has("movable_region") or prop.get("wall_attachment",false): return MOVABLE_PROP_ENVELOPE
 	if prop.get("wall_mount",false):
 		var half: float=(room.Geometry.CELL+room.Geometry.WALL)*0.5
 		return Rect2(-half,-half,half*2,half*2)

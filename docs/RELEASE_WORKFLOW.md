@@ -1,3 +1,5 @@
+> September 26 frozen-build lesson: preserve a physical copy of selected runtime inputs when other sessions edit the checkout. A manifest detects changes but does not freeze bytes. Build both platforms from the same selection, compare source entries and PCK bytes, and keep platform validation separate. The maintained raster-role helper covers new/untracked art as well as tracked images (raw keep / scene import / unused skip). See [completed evidence and remaining checks](ROOM_ART_SESSION_CLOSEOUT_2026-09-26.md).
+
 > September 24 takeover: [current status](CURRENT_STATUS.md), [Claude handoff](CLAUDE_HANDOFF_2026-09-24.md), and [asset pipeline/workflow](ASSET_PIPELINE_AND_WORKFLOW.md) provide the current continuation map. Dated evidence below retains its original scope.
 
 # BrineSpace release workflow

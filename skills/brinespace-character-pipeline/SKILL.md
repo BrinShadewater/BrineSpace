@@ -5,6 +5,22 @@ description: Create, animate, repair, package, or integrate BrineSpace crew char
 
 # BrineSpace character pipeline
 
+For companion rescue crates, occupant reveals and recovery handoffs, read
+[companion rescue workflow](references/companion-rescue.md) and use both pipelines.
+
+For existing Desktop selections, installation audits and acceptance closeout, read
+[selected artwork audit](references/selected-art-audit.md). Start from current status
+and the latest dated owner decisions before carrying forward older next steps.
+
+For the September 26 room/animation closeout, read the active checkout's
+`docs/ROOM_ART_SESSION_CLOSEOUT_2026-09-26.md` after CURRENT_STATUS.md.
+It supersedes historical pending drone installation steps; immersion ideas remain deferred.
+
+For drone NPC animation, launch/recovery effects or their closeout, read
+[drone production lessons](references/drone-animation.md). Use both room and
+character workflows when changing a drone and its dock interaction.
+
+
 For coarse existing sprites, local detail/motion repair, or replacement of a full
 active library, read [source density and replacement](references/source-density.md).
 
@@ -15,7 +31,8 @@ For everyday crew actions, cargo transitions or their session closeout, read
 [crew-life lessons](references/crew-life.md) for source extraction, furniture
 contact, equipment fitting and checkpoint evidence.
 
-For comms artwork and procedural portrait effects, read
+For new matching portraits, profile revisions, accepted portrait masters and safe
+native portrait verification, as well as procedural comms effects, read
 [comms portrait guidance](references/comms-portraits.md).
 
 For session consolidation or resuming interrupted animation work, read

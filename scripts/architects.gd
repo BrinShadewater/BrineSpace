@@ -18,10 +18,10 @@ const PERKS := {
 const PORTRAITS := {"bill":"major-bill-v2", "veld":"dr-veld-v1", "branforth":"chief-engineer-branforth-v1"}
 # Dedicated close-up portraits share BRINE's current rendering style.
 const SELECTION_PORTRAITS := {
-	"bill": {"path":"res://character/portraits-lighting-v1/bill.png"},
-	"veld": {"path":"res://character/portraits-lighting-v1/veld.png"},
-	"branforth": {"path":"res://character/portraits-lighting-v1/branforth.png"},
-	"marsh": {"path":"res://character/portraits-backgrounds-v1/marsh.png"}
+	"bill": {"path":"res://character/portraits-brine-style-v1/bill.png"},
+	"veld": {"path":"res://character/portraits-brine-style-v1/veld.png"},
+	"branforth": {"path":"res://character/portraits-brine-style-v1/branforth.png"},
+	"marsh": {"path":"res://character/portraits-brine-style-v1/marsh.png"}
 }
 static var _selection_portraits: Dictionary = {}
 

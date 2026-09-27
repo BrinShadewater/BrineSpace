@@ -14,23 +14,13 @@ static func side_post_rect(north: bool) -> Rect2:
 	return Rect2(-8,ground_start-SIDE_HEIGHT,16,SIDE_POST_DEPTH+SIDE_HEIGHT)
 
 static func department(room: Dictionary) -> String:
-	# Dedicated paint finishes follow the installed room-specific riser materials.
-	var room_id := str(room.get("id",""))
-	if room_id in ["reactor","cryo_chamber","data_archive","storage_bay","crew_lounge","research_lab"]:
-		return room_id
-	match str(room.get("id","")):
-		"corridor", "corner", "tee_corridor": return "metal"
-		"mycelium_nursery", "hydroponics_bay", "biodome", "biomass_digester": return "bio"
-		"life_support", "med_bay", "med_office", "med_center", "cryo_chamber", "clone_lab", "airlock": return "life-support"
-		"reactor", "mining_drone_bay", "ore_refinery", "maintenance_bay", "battery_array", "solar_array", "thermal_power_control", "construction_drone_bay": return "engineering"
-		"brine_core": return "brine"
-	return "generic"
+	return preload("res://rooms/doors/painted_door.gd").family_for(str(room.get("id","")))
 
 static func pair_variant(a: Dictionary, b: Dictionary) -> String:
 	var first := department(a)
-	if first=="metal": return "metal"
+	if first=="default": return "default"
 	var second := department(b)
-	if second=="metal": return "metal"
+	if second=="default": return "default"
 	return first if first==second else "generic"
 
 static func make_materials(host: Node, source: Texture2D) -> Dictionary:
@@ -142,21 +132,17 @@ static func solid_piece(rect: Rect2, color: Color, depth: float, floor_piece := 
 	return {"rect":rect,"color":color,"depth":depth,"floor":floor_piece}
 
 static func draw_piece(canvas: CanvasItem, materials: Dictionary, variant: String, part: Dictionary, level: float) -> void:
+	var skin=preload("res://rooms/doors/painted_door.gd").for_variant(variant)
 	if part.get("wall",false):
-		canvas.draw_texture_rect_region(preload("res://rooms/doors/door_finish.gd").texture("low"),part.rect,Rect2(84,183,62,340),preload("res://rooms/doors/door_finish.gd").tint(variant))
+		skin.region(canvas,"low",part.rect,Rect2(80,280,120,162))
+		return
+	if part.get("leaf",false) or part.get("front_leaf",false):
+		preload("res://rooms/doors/door_finish.gd").low_leaf(canvas,part.rect,part.get("north",false),not part.get("front_leaf",false),variant)
 		return
 	if part.has("color"):
 		var color: Color = part.color
 		if part.get("emissive",false): color = Color("29353a").lerp(Color("abb8a9"),clampf(level,0,1))
 		canvas.draw_rect(part.rect,color)
-		if part.get("leaf",false) or part.get("front_leaf",false):
-			preload("res://rooms/doors/door_finish.gd").low_leaf(canvas,part.rect,part.get("north",false),not part.get("front_leaf",false),variant)
-		if part.get("leaf",false):
-			var r: Rect2 = part.rect
-			canvas.draw_rect(Rect2(r.position,Vector2(1,r.size.y)),Color("bfc5bb"))
-			canvas.draw_rect(Rect2(r.position+Vector2(8,0),Vector2(2,r.size.y)),Color("303a40"))
-			var seam_y := r.end.y-1 if part.north else r.position.y
-			canvas.draw_rect(Rect2(r.position.x,seam_y,10,minf(1,r.size.y)),Color("202b30"))
 		return
 	for mode in ["generic" if variant=="generic" else "paint","emission"]:
 		if mode=="emission" and level<=0: continue

@@ -2,22 +2,23 @@
   "scope": "Complete selected Bill, Veld, Branforth and Marsh libraries, with retained companion and portrait bindings.",
   "animationRoots": [
     {
-      "root": "character/animation-expansion-v5",
+      "root": "character/robot-polish-v1/josh/packs",
       "packs": [
-        "river",
-        "river-actions",
-        "josh",
-        "josh-actions",
-        "margot",
-        "margot-actions"
+        "locomotion",
+        "actions"
       ]
     },
     {
-      "root": "character/companion-water-v1",
+      "root": "character/robot-polish-v1/river/packs",
       "packs": [
-        "river",
-        "margot"
+        "locomotion",
+        "actions",
+        "water"
       ]
+    },
+    {
+      "root": "character/margot-polish-v1/packs",
+      "packs": ["locomotion", "actions", "water"]
     },
     {
       "root": "character/major-bill-v3/packs",
@@ -103,11 +104,35 @@
   "bindings": [
     {
       "script": "scripts/companion_npc.gd",
-      "contains": "res://character/animation-expansion-v5"
+      "contains": "res://character/margot-polish-v1/packs/locomotion/manifest.json"
     },
     {
       "script": "scripts/companion_npc.gd",
-      "contains": "res://character/companion-water-v1/%s/manifest.json"
+      "contains": "res://character/margot-polish-v1/packs/actions/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/margot-polish-v1/packs/water/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/josh/packs/locomotion/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/river/packs/locomotion/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/josh/packs/actions/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/river/packs/actions/manifest.json"
+    },
+    {
+      "script": "scripts/companion_npc.gd",
+      "contains": "res://character/robot-polish-v1/river/packs/water/manifest.json"
     },
     {
       "script": "scripts/marsh_npc.gd",
@@ -178,6 +203,7 @@
   },
   "retainedLegacy": "Earlier source packs remain intact for provenance. Marsh legacy helmet rows are not selected: android gameplay does not use them.",
   "reviews": [
+    "character/robot-rescue-v1/index.html",
     "character/animation-expansion-v5/review.html",
     "character/companion-water-v1/review.html"
   ],

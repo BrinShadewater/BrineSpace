@@ -5,10 +5,16 @@ const Cycle=preload("res://scripts/airlock_cycle.gd")
 const Save=preload("res://scripts/run_save.gd")
 var failures := 0
 var game
+var rotation:=0
+var capture_dir:=""
 func check(ok: bool,message: String):
 	if not ok: failures+=1;push_error(message)
 func _init(): call_deferred("run")
 func run():
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--rotation="):rotation=posmod(int(arg.trim_prefix("--rotation=")),4)
+		if arg.begins_with("--capture-dir="):capture_dir=arg.trim_prefix("--capture-dir=")
+	if not capture_dir.is_empty():DirAccess.make_dir_recursive_absolute(capture_dir)
 	game=load("res://scenes/main.tscn").instantiate()
 	game.meta.save_path="user://diver-mining-%d.meta" % OS.get_process_id()
 	game.run_save_path=game.meta.save_path+".loop"
@@ -18,13 +24,16 @@ func run():
 	game.set_process(false);game.tick_timer.stop();game.crew_comms.set_process(false);game.crew_comms.minimize()
 	game.running=true;game.paused=false
 	game.Architects.advance_core(game,10)
-	var cell:=Vector2i(20,19)
-	for y in [19,18,17]:game.wrecks.erase(Vector2i(20,y))
+	var outward:Vector2i=[Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT][rotation]
+	var cell:=Vector2i(20,20)+outward
+	for step in [1,2,3]:game.wrecks.erase(Vector2i(20,20)+outward*step)
 	game.drone_fleet.sites.clear()
+	game.selected_rotation=rotation
 	game._place_room("airlock",cell,true)
+	game.occupied[cell].rotation=rotation
 	game.powered_room_cells[cell]=true
 	game.resources.oxygen=30;game.resources.metal=10;game.resources.food=30
-	var target:=Vector2i(20,17)
+	var target:=Vector2i(20,20)+outward*3
 	game.drone_fleet.sites={target:game.drone_fleet.Sites.make_site("mining",3)}
 	game.drone_fleet.sites[target].discovered=true;game.drone_fleet.sites_initialized=true
 	var actor=game.bill_npc
@@ -51,10 +60,26 @@ func run():
 	var restored:=false
 	var cargo_restored:=false
 	var hatch_phases: Dictionary={}
+	var captures:Dictionary={}
 	for i in range(4000):
 		if actor.expedition.is_empty():break
 		seen[actor.expedition.phase]=true
 		var hatch:=Cycle.pose(game.occupied[cell])
+		var local:Vector2=preload("res://tools/modular_room_geometry.gd").turn(actor.foot-(Vector2(cell)+Vector2.ONE*.5)*384,posmod(4-rotation,4))
+		if actor.expedition.phase in ["leave","entry"] and absf(local.y+184)<24:check(hatch.outer==1,"Crossing requires fully open hatch")
+		if hatch.phase=="sealing_departed":check(actor.state=="idle","Departure waits for seal")
+		if actor.expedition.phase=="drain" and hatch.water>0:check(actor.movement_medium!="dry","Swim until chamber drained")
+		var shot:=""
+		if actor.expedition.phase in ["leave","entry"] and absf(local.y+184)<8:shot=actor.expedition.phase
+		elif hatch.phase in ["opening_outer","sealing_departed","sealing_outer"] and hatch.outer>.3 and hatch.outer<.7:shot=hatch.phase
+		if not capture_dir.is_empty() and not shot.is_empty() and not captures.has(shot) and DisplayServer.get_name()!="headless":
+			captures[shot]=true
+			await process_frame;await process_frame
+			game.selected_card_id="";game.hovered_card_id=""
+			game._set_grid_zoom(.5,true,(Vector2(cell)+Vector2.ONE*.5)/40.0)
+			game.grid_view.queue_redraw()
+			await process_frame;await process_frame;await RenderingServer.frame_post_draw
+			root.get_texture().get_image().save_png(capture_dir.path_join("q%d-%s.png"%[rotation,shot]))
 		hatch_phases[hatch.phase]=true
 		check(not (hatch.inner>0 and hatch.outer>0),"Trip keeps hatch interlock")
 		if actor.expedition.phase=="salvage":
@@ -81,6 +106,7 @@ func run():
 			var cargo_save:=Save.capture(game)
 			check(Save.restore(game,cargo_save),"Mined cargo survives Continue on return leg")
 			game.set_process(false);game.tick_timer.stop();game.paused=false;actor=game.bill_npc;cargo_restored=true
+		game.visual_time_seconds+=0.1
 		Cycle.advance(game,0.1);game._update_test_walker(0.1)
 	print("MINER END ",actor.expedition," / ",actor.activity," tank=",actor.tank_oxygen," metal=",game.resources.metal," stages=",seen)
 	check(restored and actor.expedition.is_empty() and not actor.dead and actor.movement_medium=="dry","Miner returns alive through drained chamber")

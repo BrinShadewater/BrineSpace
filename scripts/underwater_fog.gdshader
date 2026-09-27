@@ -63,6 +63,8 @@ void fragment(){
  float haze=noise(world*2.4+vec2(clock*.018,-clock*.011));
  float fine=noise(world*29.0+vec2(clock*.035,clock*.02));
  float memory=texture(terrain,world/40.0).g;
+ // Local hull spill fades before the cell edge; never reveal a square of water.
+ illumination=max(illumination,texture(terrain,world/40.0).b*(1.0-smoothstep(.30,.70,length(fract(world)-vec2(.5)))));
  float opacity=mix(.985,.92,memory)-illumination*.83;
  float plume=(1.0-smoothstep(.05,1.15,length(world-silt.xy-vec2(-.15,.04))))*silt.z;
  opacity+=plume*.25;

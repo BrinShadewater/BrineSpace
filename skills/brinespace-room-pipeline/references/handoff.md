@@ -1,3 +1,7 @@
+## Deferred immersion pilots
+
+Record suggested graphical ideas as backlog until selected for implementation. Check existing effects first; use one bounded scene and same-scale before/after review. Contact shadows, ocean atmosphere and machine activity should preserve the bible's camera, density, restrained paint and readable silhouettes. Keep light emission local rather than adding broad prop halos. Verify pause/power state and cost of continuous effects when those consumers change. Session closure does not mean closing unfinished crew or native-platform acceptance.
+
 > Current owner decision: [top-down and inward-facing contract](top-down-owner-contract.md) supersedes conflicting historical camera guidance below. Read it before production or handoff.
 
 # Room and environment handoff

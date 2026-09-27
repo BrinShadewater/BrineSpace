@@ -9,6 +9,9 @@ const DROP := 16.0 # face extends over the low north wall's strip (Geometry.WALL
 static var brine_texture: Texture2D
 
 static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO, adjoining_left := false, adjoining_right := false, wall_view = null, include_signals := true) -> void:
+	if preload("res://rooms/whole-room/painted_shell.gd").catalog().has(room_id):
+		preload("res://rooms/whole-room/painted_shell.gd").context(wall_view,room_id).north(canvas,adjoining_left,adjoining_right,include_signals)
+		return
 	if room_id=="brine_core":
 		if brine_texture==null:
 			var image:=Image.new()
@@ -63,6 +66,13 @@ static func draw_into(canvas: CanvasItem, room_id: String, cell := Vector2i.ZERO
 
 static func draw_brine_signals(canvas: CanvasItem, wall_view) -> void:
 	if wall_view==null or not wall_view.operating: return
+	if preload("res://rooms/whole-room/painted_shell.gd").catalog().has("brine_core"):
+		# Restrained live traces inside the two large registered monitor screens.
+		for x in [-150.0,81.0]:
+			var trace:=PackedVector2Array()
+			for i in range(17):trace.append(Vector2(x+i*2,-226+2*sin(i*.7+wall_view.machine_clock*2)))
+			canvas.draw_polyline(trace,Color(.13,.61,.64,.55),.65)
+		return
 	for left in [395.0,1470.0]:
 		var points:=PackedVector2Array()
 		for i in range(13):

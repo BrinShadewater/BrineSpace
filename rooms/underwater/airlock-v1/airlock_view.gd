@@ -5,10 +5,33 @@ var shelf_helmet_visible := true
 var shelf_helmet_size := Vector2(39,48)*65.28/148.0
 var shelf_helmet: Texture2D
 var cycle_pose: Dictionary=preload("res://scripts/airlock_cycle.gd").pose({})
+var caution_active:=false
 const CHAMBER=Rect2(-60,-184,120,220)
 const Fittings=preload("res://rooms/underwater/airlock-v4/fittings.gd")
 static var wet_deck: Texture2D
 var embedded_omitted_sides: Array = []
+
+static func prepare_chamber() -> bool:
+	# The pressure chamber draws these outside the retained wall pass. Decode
+	# them before camera reveal, then share the normal caches with its renderer.
+	var Library=preload("res://scripts/room_asset_library.gd")
+	var Walls=preload("res://rooms/whole-room/department_wall_material.gd")
+	var Hatch=preload("res://rooms/doors/ocean_hatch.gd")
+	var requests:Array=[]
+	if not Walls.textures.has("engineering"):
+		requests.append([Walls.textures,"engineering",Walls.MATERIALS.engineering.path])
+	if not Fittings.textures.has("controller"):
+		requests.append([Fittings.textures,"controller",Fittings.source_paths().controller])
+	for path in [Hatch.TOP,Hatch.RIM]:
+		if not Hatch.textures.has(path): requests.append([Hatch.textures,path,path])
+	for request in requests: Library.request_texture(request[2])
+	# At most one GPU upload per call; existing textures share immediately.
+	for request in requests:
+		if not Library.finish_texture(request[2]): return false
+		if not Library.source_textures.has(request[2]): return false
+		request[0][request[1]]=Library.source_textures[request[2]]
+		return false
+	return true
 
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array = []) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
@@ -232,6 +255,12 @@ func draw_registered_prop(prop: Dictionary) -> void:
 func draw_actor() -> void:
 	var room_water:=flood_water
 	if turned_rect(chamber_rect()).has_point(actor):
+		if cycle_pose.water>0 and external_actor_texture!=null and external_actor_texture.get_meta("crew_water_pose",false):
+			# The shallow cutaway chamber keeps its occupant readable through the water.
+			var pixel_scale:=65.28/float(external_actor_texture.get_meta("crew_standing_height",74.0))
+			var pivot:Vector2=external_actor_texture.get_meta("crew_pivot",Vector2(46,86))
+			painter.draw_texture_rect(external_actor_texture,Rect2(actor-pivot*pixel_scale,external_actor_texture.get_size()*pixel_scale),false,Color(.82,.94,1,.92))
+			return
 		flood_water=maxf(flood_water,float(cycle_pose.water))
 	super.draw_actor()
 	flood_water=room_water
@@ -262,10 +291,12 @@ func draw_chamber() -> void:
 		draw_wall(rect,rect.size.x>rect.size.y)
 	# The same two-leaf mechanism as the shared doors, registered in room space.
 	for leaf in preload("res://rooms/whole-room/room_door.gd").leaf_rects(cycle_pose.inner):
+		leaf.position.y=-9
+		leaf.size.y=18
 		var rect:=turned_rect(Rect2(leaf.position+Vector2(0,35),leaf.size))
 		var vertical:=quarter%2==1
 		var delta:=rect.get_center()-Geometry.turn(Vector2(0,35),quarter)
-		preload("res://rooms/doors/door_finish.gd").low_leaf(painter,rect,(delta.y if vertical else delta.x)<0,vertical,"life-support")
+		preload("res://rooms/doors/door_finish.gd").low_leaf(painter,rect,(delta.y if vertical else delta.x)<0,vertical,"airlock")
 	for x in [-39,39]:
 		var point:=Geometry.turn(Vector2(x,35),quarter)
 		painter.draw_circle(point,2,Color("95cfad") if cycle_pose.inner>=1 else Color("df9860"))
@@ -279,10 +310,25 @@ func draw_chamber() -> void:
 	painter.draw_rect(gauge,Color("15272d"))
 	painter.draw_rect(turned_rect(Rect2(-45,14,90*float(cycle_pose.pressure),4)),Color("d5af68"))
 	draw_outer_cutaway()
+	draw_caution_lights()
 	draw_wet_gate("inner",Vector2(0,35),Vector2.DOWN,cycle_pose.inner,water-flood_water,maxf(water,flood_water))
 	draw_wet_gate("outer",Vector2(0,outer_threshold()),Vector2.UP,cycle_pose.outer,water-1.0,water)
 
 var wet_gate_history: Dictionary={}
+func draw_caution_lights() -> void:
+	for at in [Vector2(-68,35),Vector2(68,35),Vector2(-46,-184),Vector2(46,-184)]:
+		var point:=Geometry.turn(at,quarter)
+		painter.draw_circle(point,5,Color("263036"))
+		painter.draw_circle(point,3.3,Color("d89532") if caution_active else Color("76552e"))
+		if not caution_active:continue
+		# Same 2.5-second revolution and 85-unit reach as the approved preview.
+		var direction:=machine_clock*TAU/2.5
+		for band in range(8):
+			var near:=3.0+band*82.0/8
+			var far:=3.0+(band+1)*82.0/8
+			var points:=PackedVector2Array([point+Vector2.from_angle(direction-.32)*near,point+Vector2.from_angle(direction-.32)*far,point+Vector2.from_angle(direction+.32)*far,point+Vector2.from_angle(direction+.32)*near])
+			painter.draw_colored_polygon(points,Color(0.95,.64,.18,.3*(1.0-band/8.0)))
+
 func draw_wet_gate(id: String, at: Vector2, direction: Vector2, amount: float, difference: float, water: float) -> void:
 	var fx=preload("res://rooms/doors/door_water.gd")
 	var state: Dictionary=fx.advance(wet_gate_history.get(id,{}),roundi(amount*9),machine_clock)
@@ -298,16 +344,8 @@ func draw_outer_cutaway() -> void:
 	# Rotate hull geometry, never the upright source sprite.
 	painter.draw_rect(turned_rect(Rect2(-36,-200,72,22)),Color("172f37"))
 	painter.draw_line(Geometry.turn(at+Vector2(-36,5),quarter),Geometry.turn(at+Vector2(36,5),quarter),Color("758780"),1)
-	for leaf in preload("res://rooms/whole-room/room_door.gd").leaf_rects(cycle_pose.outer):
-		var panel:=turned_rect(Rect2(leaf.position+at,leaf.size))
-		var vertical:=quarter%2==1
-		var delta:=panel.get_center()-Geometry.turn(at,quarter)
-		preload("res://rooms/doors/door_finish.gd").low_leaf(painter,panel,(delta.y if vertical else delta.x)<0,vertical,"life-support")
-	for x in [-40,40]:
-		var jamb:=turned_rect(Rect2(at+Vector2(x-4,-8),Vector2(8,16)))
-		draw_cap(jamb)
-		var lamp:=Geometry.turn(at+Vector2(x,0),quarter)
-		painter.draw_circle(lamp,1.5,Color("e3e3cc") if operating else Color("52605b"))
+	if quarter!=0 or not get_meta("raised_north_visible",false):
+		preload("res://rooms/doors/ocean_hatch.gd").low(painter,quarter,cycle_pose.outer)
 
 func is_animated_prop(prop: Dictionary) -> bool: return prop.id in ["pressure_chamber","outer_hatch","suit_lockers"] or preload("res://scripts/airlock_service.gd").is_suit_locker(prop)
 func effect_marks(_prop: Dictionary,_time: float) -> Array: return []

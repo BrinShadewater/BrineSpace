@@ -73,21 +73,21 @@ func effect_marks(prop: Dictionary,time: float) -> Array:
 func is_animated_prop(prop: Dictionary) -> bool: return prop.id in ["salvage_rov","salvage_winch","salvage_sorter"]
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.id=="salvage_rov":return preload("res://scripts/drone_dock.gd").legacy_rect(prop,"salvage")
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	if prop.id in ["salvage_rov","salvage_hatch"]:
 		return preload("res://rooms/production-ten/drone_prop_bounds.gd").bounds(prop,"salvage")
 	return super.prop_visual_bounds(prop)
 
 func draw_registered_prop(prop: Dictionary) -> void:
-	if prop.id == "salvage_hatch":
-		preload("res://scripts/drone_art.gd").draw_hatch(painter,Vector2(prop.rect.get_center().x,prop.rect.end.y-35),90,hatch_open)
-		return
 	if prop.id == "salvage_rov":
-		var center := Vector2(prop.rect.get_center().x,prop.rect.end.y-35)
-		preload("res://scripts/drone_art.gd").draw_asset(painter,"cradle",center,90)
-		if not drone_deployed: preload("res://scripts/drone_art.gd").draw_drone(painter,"salvage",center-Vector2(0,15),70,machine_clock,false,false)
-		preload("res://rooms/production-ten/drone_dock_status.gd").draw(painter,center,machine_clock,operating)
+		var Dock=preload("res://scripts/drone_dock.gd")
+		Dock.draw(painter,Dock.legacy_rect(prop,"salvage"),"salvage",drone_visual,operating,machine_clock)
 		return
+	if prop.id == "salvage_hatch":
+		preload("res://scripts/drone_art.gd").draw_hatch(painter,Vector2(prop.rect.get_center().x,prop.rect.end.y-35),90,0.0)
+		return
+
 	if dressing!=null and dressing.draw(prop): return
 	for outline in FLOOR_CUTOUTS.get(prop.id,[prop.registration.outline]):
 		var vertices := PackedVector2Array()

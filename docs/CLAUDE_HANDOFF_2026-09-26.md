@@ -1,3 +1,5 @@
+> Later room/art closeout: read [CURRENT_STATUS](CURRENT_STATUS.md) and [room art session handoff](ROOM_ART_SESSION_CLOSEOUT_2026-09-26.md) first. The historical integration checklist below predates the installed drone renderer/docks and matching Windows/Mac builds. Its `drone_art.gd` integration advice and pending-install scope are superseded; preserve its unrelated gameplay evidence.
+
 # Claude handoff — September 26, 2026
 
 Session "Brinespace development". Nineteen commits on `main`, all pushed (5c1999b59 to

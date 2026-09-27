@@ -84,20 +84,23 @@ func _ready() -> void:
 	rebuild()
 
 func draw_registered_prop(prop: Dictionary) -> void:
+	if prop.id == "construction_rov":
+		var Dock=preload("res://scripts/drone_dock.gd")
+		Dock.draw(painter,Dock.legacy_rect(prop,"construction"),"construction",drone_visual,operating,machine_clock)
+		return
 	if dressing!=null and dressing.draw(prop): return
 	var center := Vector2(prop.rect.get_center().x,prop.rect.end.y-35)
 	match prop.id:
-		"construction_rov":
-			painter.draw_texture_rect(_cradle_texture(prop),_cradle_bounds(prop),false)
-			if not drone_deployed: DroneArt.draw_drone(painter,"construction",center-Vector2(0,15),70,machine_clock,false,false)
+
 		"construction_bench": painter.draw_texture_rect(_bench_texture(prop),_bench_bounds(prop),false)
-		"construction_hatch": _draw_overhead_hatch(painter,prop,hatch_open)
+		"construction_hatch": _draw_overhead_hatch(painter,prop,0.0)
 		"construction_panels":
 			painter.draw_texture_rect(_panel_texture(prop),_panel_bounds(prop),false)
 
 func effect_marks(_prop: Dictionary,_time: float) -> Array: return []
 
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
+	if prop.id=="construction_rov":return preload("res://scripts/drone_dock.gd").legacy_rect(prop,"construction")
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	# Match the fleet renderer's actual draw sizes, not the placeholder outline.
 	var bounds_helper=preload("res://rooms/production-ten/drone_prop_bounds.gd")

@@ -3,16 +3,21 @@ extends RefCounted
 const Riser=preload("res://rooms/whole-room/riser_geometry.gd")
 static var textures: Dictionary={}
 static var profile: Dictionary={}
-static func load_assets() -> void:
-	if not profile.is_empty(): return
-	profile=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/airlock-v4/wall-profile.json"))
-	for key in profile.textures:
+static func source_paths() -> Dictionary:
+	if profile.is_empty():
+		profile=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/underwater/airlock-v4/wall-profile.json"))
+	return profile.textures
+
+static func load_assets(keys:Array=[]) -> void:
+	var sources:=source_paths()
+	for key in sources if keys.is_empty() else keys:
+		if textures.has(key): continue
 		var image:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, profile.textures[key])
+		preload("res://scripts/safe_image.gd").load_png(image,sources[key])
 		textures[key]=ImageTexture.create_from_image(image)
 
 static func sprite(canvas: CanvasItem,key: String,bounds: Rect2) -> void:
-	load_assets()
+	load_assets([key])
 	var size: Vector2=textures[key].get_size()
 	size*=minf(bounds.size.x/size.x,bounds.size.y/size.y)
 	canvas.draw_texture_rect(textures[key],Rect2(bounds.get_center()-size*0.5,size),false)

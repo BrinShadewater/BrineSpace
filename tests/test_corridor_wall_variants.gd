@@ -50,7 +50,7 @@ func run() -> void:
 			for i in range(hull.size()):
 				if Dressing.is_north_entry(turn.turn(hull[i],rotation),turn.turn(hull[(i+1)%hull.size()],rotation)):found+=1
 			assert(found==expected,"Raised entry follows the rotated room port")
-	assert(Walls.catalog().size()==6)
+	assert(Walls.catalog().size()==9,"Three hull shapes each retain three finish selections")
 	for id in Walls.catalog():
 		for part in ["face","cap","low","return"]:
 			assert(Rect2(Vector2.ZERO,Walls.texture(id).get_size()).encloses(Walls.region(id,part)))
@@ -91,5 +91,5 @@ func run() -> void:
 	assert(joined.save_png(OUT+"joined.png")==OK)
 	var file=FileAccess.open(OUT+"review.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify(records,"\t"));file.close()
-	print("CORRIDOR WALL VARIANTS PASS: six registered skins, nine distinct room variants, 72 rotated raised/low captures, neighbor culling")
+	print("CORRIDOR WALL VARIANTS PASS: nine shape/finish registrations, nine distinct room variants, 72 rotated raised/low captures, neighbor culling")
 	quit()

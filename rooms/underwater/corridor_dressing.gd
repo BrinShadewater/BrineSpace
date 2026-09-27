@@ -8,7 +8,7 @@ static func draw_props(_canvas: CanvasItem, _q: int, _variant: int, _light: floa
 
 static func draw_risers(canvas: CanvasItem, hull: PackedVector2Array, q: int, variant: int, light: float, neighbors: Array = []) -> void:
 	var tint:=Color(light,light,light)
-	var wall_id:=WallArt.key(hull.size()!=8,variant)
+	var wall_id:=WallArt.key(hull.size()!=8,variant,hull.size()==14)
 	for i in range(hull.size()):
 		var a:=G.turn(hull[i],q)
 		var b:=G.turn(hull[(i+1)%hull.size()],q)
@@ -21,16 +21,18 @@ static func draw_risers(canvas: CanvasItem, hull: PackedVector2Array, q: int, va
 		if absf(a.x-b.x)>.1 and absf(a.y-b.y)>.1:
 			# Chamfer faces use the actual sloped hull edge, not a rectangular patch.
 			var rise:=35.0 if b.x>a.x else 18.0
-			var lift:=Vector2(0,-rise)
-			WallArt.polygon(canvas,wall_id,PackedVector2Array([a+lift,b+lift,b,a]),"return",light)
-			canvas.draw_colored_polygon(PackedVector2Array([a+lift,b+lift,b+lift+Vector2(0,3),a+lift+Vector2(0,3)]),Color("a0afa5")*tint)
+			var top_a:=raised_point(a,rise,neighbors)
+			var top_b:=raised_point(b,rise,neighbors)
+			WallArt.polygon(canvas,wall_id,PackedVector2Array([top_a,top_b,b,a]),"return",light)
+			canvas.draw_colored_polygon(PackedVector2Array([top_a,top_b,top_b+Vector2(0,3),top_a+Vector2(0,3)]),Color("a0afa5")*tint)
 			canvas.draw_line(a,b,Color("293f45")*tint,2)
-			canvas.draw_line(a+Vector2(0,-2),a+lift+Vector2(0,4),Color("3a5159")*tint,1)
+			canvas.draw_line(a+Vector2(0,-2),top_a+Vector2(0,4),Color("3a5159")*tint,1)
 			continue
 		if absf(a.x-b.x)<.1 and absf(a.y-b.y)>60:
 			# Narrow side returns keep the central aisle visible in the fixed camera.
 			var outside:=6.0 if b.y>a.y else -6.0
 			var top:=side_return_top(hull,q,i)
+			if neighbors.has(Vector2i.UP): top=maxf(top,-192.0)
 			var bottom:=maxf(a.y,b.y)
 			var face:=Rect2(minf(a.x,a.x+outside),top,absf(outside),bottom-top)
 			WallArt.polygon(canvas,wall_id,PackedVector2Array([face.position,Vector2(face.position.x,face.end.y),face.end,Vector2(face.end.x,face.position.y)]),"cap",light)
@@ -50,6 +52,7 @@ static func draw_risers(canvas: CanvasItem, hull: PackedVector2Array, q: int, va
 		canvas.draw_line(a,b,Color("293f45")*tint,3)
 		if entry: WallArt.closed_entry(canvas,wall,light)
 
+	if posmod(variant,3)==0:draw_fittings(canvas,hull,q,neighbors,light)
 	draw_entries(canvas,hull,q,true,neighbors)
 
 static func draw_entries(canvas: CanvasItem, hull: PackedVector2Array, q: int, raised: bool, neighbors: Array=[]) -> void:
@@ -73,6 +76,13 @@ static func side_return_top(hull: PackedVector2Array, q: int, edge: int) -> floa
 	var concave: bool=(p-before).cross(after-p)<0
 	return p.y if concave else p.y-35.0
 
+static func raised_point(point: Vector2, rise: float, neighbors: Array) -> Vector2:
+	# Connected north rooms own pixels above the shared threshold. Side returns
+	# and chamfers used to rise into that room even after its entry face was hidden.
+	var result:=point-Vector2(0,rise)
+	if neighbors.has(Vector2i.UP): result.y=maxf(result.y,-192.0)
+	return result
+
 static func is_north_entry(a: Vector2, b: Vector2) -> bool:
 	return absf(a.y+192)<.01 and absf(b.y+192)<.01 and a.x<0 and b.x>0
 
@@ -80,3 +90,44 @@ static func taper_face(a: Vector2, b: Vector2) -> PackedVector2Array:
 	if absf(a.x-b.x)<=.1 or absf(a.y-b.y)<=.1:return PackedVector2Array()
 	var lift:=Vector2(0,-35.0 if b.x>a.x else -18.0)
 	return PackedVector2Array([a,b,b+lift,a+lift])
+
+static func draw_fittings(target:CanvasItem,hull:PackedVector2Array,q:int,neighbors:Array,light:float) -> void:
+	var id:String="corridor" if hull.size()==8 else "tee_corridor" if hull.size()==14 else "corner"
+	var shell=preload("res://rooms/whole-room/painted_shell.gd")
+	var record:Dictionary=shell.catalog()[id].integrated
+	var texture:Texture2D=shell.png(record.source)
+	var face:Array=record.face
+	var exits:=corridor_exit_directions(hull,q)
+	var wall_run:=0
+	for i in range(hull.size()):
+		var a:=G.turn(hull[i],q)
+		var b:=G.turn(hull[(i+1)%hull.size()],q)
+		if absf(a.y-b.y)>.01 or b.x-a.x<60 or is_north_entry(a,b):continue
+		if a.y<=-191 and Vector2i.UP in neighbors:continue
+		var width:float=b.x-a.x-12
+		if width>180 or wall_run==0:draw_route_marking(target,Vector2(a.x+6+width*(.35 if width>180 else .5),a.y-16),exits,light)
+		if width>180 or wall_run>0:
+			var crop:=Rect2(face[0]+face[2]*.69,face[1],face[2]*.25,face[3])
+			var fitting_width:=crop.size.x*31.0/crop.size.y
+			var x:float=a.x+6+width*(.78 if width>180 else .5)-fitting_width*.5
+			target.draw_texture_rect_region(texture,Rect2(x,a.y-31,fitting_width,31),crop,Color(light,light,light))
+		wall_run+=1
+
+static func corridor_exit_directions(hull: PackedVector2Array, q: int) -> Array[Vector2]:
+	var result: Array[Vector2]=[]
+	var turn=preload("res://tools/modular_room_geometry.gd")
+	for i in range(hull.size()):
+		var a: Vector2=turn.turn(hull[i],q)
+		var b: Vector2=turn.turn(hull[(i+1)%hull.size()],q)
+		var middle: Vector2=(a+b)*0.5
+		if absf(middle.x)>=191.99: result.append(Vector2(signf(middle.x),0))
+		elif absf(middle.y)>=191.99: result.append(Vector2(0,signf(middle.y)))
+	return result
+
+static func draw_route_marking(target: CanvasItem, center: Vector2, exits: Array[Vector2],light:float=1.0) -> void:
+	var ink:=Color("c4bca7")*Color(light,light,light)
+	for direction in exits:
+		var side:=Vector2(-direction.y,direction.x)
+		target.draw_line(center,center+direction*8,ink,2.2,true)
+		target.draw_colored_polygon(PackedVector2Array([center+direction*13,center+direction*7+side*4,center+direction*7-side*4]),ink)
+	target.draw_circle(center,2.0,ink)

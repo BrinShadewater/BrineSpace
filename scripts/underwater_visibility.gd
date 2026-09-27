@@ -79,6 +79,7 @@ static func sources(game) -> Array:
 		if "east" in actor.direction: heading.x=1
 		if "west" in actor.direction: heading.x=-1
 		result.append({"position":actor.foot/384.0,"direction":heading.normalized(),"radius":1.8,"strength":1.0,"kind":"diver"})
+	result.append_array(preload("res://scripts/survey_probe.gd").lights(game))
 	return result
 
 static func strength_at(source: Dictionary, point: Vector2) -> float:
@@ -114,6 +115,13 @@ func draw(canvas: CanvasItem, game, size: float) -> void:
 		if Field.blocks(game.wrecks,cell): mask.set_pixelv(cell,Color(1,0,0,1))
 	for cell in game.surveyed_water:
 		var color:=mask.get_pixelv(cell);color.g=1;mask.set_pixelv(cell,color)
+	# Narrow halls leave water visible within an occupied cell. Neighbouring
+	# rooms suppress exterior beams, so retain local spill beside a powered hall.
+	for room in game.placed_rooms:
+		if room.id not in ["corridor","corner","tee_corridor"]: continue
+		var color:=mask.get_pixelv(room.pos)
+		color.b=preload("res://scripts/station_hardware.gd").exterior_light_level(game,room)*0.55
+		mask.set_pixelv(room.pos,color)
 	mask_texture.update(mask)
 	var center: Vector2 = (Vector2(game.grid_scroll.scroll_horizontal,game.grid_scroll.scroll_vertical)+game.grid_scroll.size*.5)/size
 	lights.sort_custom(func(a,b):return a.position.distance_squared_to(center)<b.position.distance_squared_to(center))

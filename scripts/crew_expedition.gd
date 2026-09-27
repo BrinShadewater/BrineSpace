@@ -79,7 +79,9 @@ static func dispatch(game,id: String,cell: Vector2i,kind := "salvage") -> bool:
 		var site: Dictionary = game.drone_fleet.sites[candidate]
 		if site.kind != kind or not site.discovered or not site.active or site.units <= 0 or reserved(game,candidate): continue
 		sea = Routes.find_path(outside,candidate,blocked,true)
-		if not sea.is_empty() and (float(sea.size())*384.0+314.0)*2.0/72.0+18.0 <= (actor.tank_oxygen if actor.needs_air() else actor.battery*actor.BATTERY_SECONDS/100.0-30.0):
+		# Include the new wet warning holds and the stationary departure seal in endurance.
+		var chamber_seconds:=18.0+Cycle.WARNING_LEAD*3+float(Cycle.DURATIONS.sealing_departed)
+		if not sea.is_empty() and (float(sea.size())*384.0+314.0)*2.0/72.0+chamber_seconds <= (actor.tank_oxygen if actor.needs_air() else actor.battery*actor.BATTERY_SECONDS/100.0-30.0):
 			target = candidate
 			break
 	if target.x < 0: return false
@@ -149,6 +151,8 @@ static func advance(game,actor,delta: float) -> void:
 				e.phase = "pressurize"
 				actor.state = "idle"
 		"pressurize":
+			actor.state="idle"
+			actor.direction=actor.travel_heading(actor.foot,point(room,Vector2(0,-184)),actor.direction)
 			if Cycle.pose(room).water >= 0.55: actor.set_movement_medium("flooded")
 			if Cycle.state(room).phase == "exterior":
 				actor.set_movement_medium("exterior")
@@ -156,7 +160,13 @@ static func advance(game,actor,delta: float) -> void:
 		"leave":
 			if move(actor,e,delta) and Cycle.seal_departure(game,e.home):
 				set_route(e,"outbound",e.sea_route.duplicate())
+				actor.state="idle"
+				actor.direction=actor.travel_heading(actor.foot,point(room,Vector2(0,-184)),actor.direction)
 		"outbound":
+			if Cycle.state(room).phase=="sealing_departed":
+				actor.state="idle"
+				actor.direction=actor.travel_heading(actor.foot,point(room,Vector2(0,-184)),actor.direction)
+				return
 			if e.recall:
 				var back := PackedVector2Array()
 				back.append((Vector2(actor.cell_at(actor.foot))+Vector2.ONE*0.5)*384)
@@ -185,11 +195,16 @@ static func advance(game,actor,delta: float) -> void:
 			if move(actor,e,delta): set_route(e,"entry",PackedVector2Array([point(room,Vector2(0,-70))]))
 		"entry":
 			Cycle.open_for_return(game,e.home)
-			if Cycle.state(room).phase != "exterior": return
+			if Cycle.state(room).phase != "exterior":
+				actor.state="idle"
+				actor.direction=actor.travel_heading(actor.foot,point(room,Vector2(0,-184)),actor.direction)
+				return
 			if move(actor,e,delta) and Cycle.request(game,e.home,false):
 				e.phase = "drain"
 				actor.state = "idle"
 		"drain":
+			actor.state="idle"
+			actor.direction=actor.travel_heading(actor.foot,point(room,Vector2(0,-184)),actor.direction)
 			if Cycle.state(room).phase == "dry":
 				actor.set_movement_medium("dry")
 				set_route(e,"exit",PackedVector2Array([point(room,Vector2(0,68))]))
@@ -253,4 +268,3 @@ static func valid_crew_rooms(crew: Variant,rooms: Array) -> bool:
 				if e.phase=="entry" and phase not in ["exterior","sealing_departed","sealed_exterior","opening_outer"]: return false
 		if not found: return false
 	return true
-

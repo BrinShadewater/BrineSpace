@@ -19,6 +19,8 @@
       "test_decorative_cable_removal"
     ],
     "crew": [
+      "test_robot_polish",
+      "test_margot_polish",
       "test_npc_rebuild_replacement",
       "test_airlock_clearance",
       "test_airlock",
@@ -97,6 +99,7 @@
       "test_drone_fleet",
       "test_drone_jobs",
       "test_drone_lifecycle",
+      "test_drone_runtime_animation",
       "test_drone_work_face",
       "test_embedded_geometry",
       "test_finite_harvest",
@@ -232,6 +235,7 @@
       "test_run_save"
     ],
     "companions": [
+      "test_robot_rescue_art",
       "test_companion_personality",
       "test_companion_repair",
       "test_companions",
@@ -293,6 +297,10 @@
       "test_save_integrity",
       "test_architect_recovery",
       "test_cryo_exit_timing"
+    ],
+    "new-room-expansion": [
+      "test_new_room_expansion",
+      "test_room_layout_editor"
     ]
   },
   "lanes": {
@@ -448,6 +456,18 @@
     "test_wall_rollout_drafts": {
       "lane": "skip",
       "reason": "Retired 2026-09-25 (station props v2): full-wall bank drafts; banks are not shown in station-props-v2 rooms."
+    },
+    "test_report_controls_sept27": {
+      "lane": "native",
+      "reason": "Private F8 report replay and rendered checks; use tools/check_report_controls_sept27.py for isolated APPDATA and profile fingerprints."
+    },
+    "test_studio_report_latency": {
+      "lane": "native",
+      "reason": "Studio cold-load timings and complete thumbnail checks; use tools/check_studio_report_latency.py for isolated APPDATA and owner fingerprints."
+    },
+    "test_generated_common_props": {
+      "lane": "native",
+      "reason": "Rendered tray, gameplay and room captures; use tools/check_generated_common_props.py for scratch APPDATA and real-profile fingerprints."
     }
   }
 }

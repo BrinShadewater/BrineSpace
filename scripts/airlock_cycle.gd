@@ -3,6 +3,16 @@ extends RefCounted
 const DURATIONS={"sealing_inner":1.0,"flooding":4.0,"equalizing":2.0,"opening_outer":1.0,"sealing_outer":1.0,"sealing_departed":1.0,"draining":4.0,"depressurizing":2.0,"opening_inner":1.0}
 const NEXT={"sealing_inner":"flooding","flooding":"equalizing","equalizing":"opening_outer","opening_outer":"exterior","sealing_outer":"draining","sealing_departed":"sealed_exterior","draining":"depressurizing","depressurizing":"opening_inner","opening_inner":"dry"}
 const LABELS={"dry":"DRY / INNER DOOR OPEN","sealing_inner":"SEALING INNER DOOR","flooding":"FLOODING CHAMBER","equalizing":"EQUALIZING PRESSURE","opening_outer":"OPENING OUTER HATCH","exterior":"FLOODED / OUTER HATCH OPEN","sealing_outer":"SEALING OUTER HATCH","sealing_departed":"SEALING DEPARTURE HATCH","sealed_exterior":"FLOODED / AWAITING RETURN","draining":"DRAINING CHAMBER","depressurizing":"RESTORING STATION PRESSURE","opening_inner":"OPENING INNER DOOR"}
+const WARNING_LEAD=1.25
+const WARNING_TAIL=2.0
+const MOVING=["sealing_inner","opening_inner","opening_outer","sealing_outer","sealing_departed"]
+
+static func warning_active(room:Dictionary) -> bool:
+	var s:=state(room)
+	return s.phase in MOVING or s.phase in ["equalizing","depressurizing"] or float(s.get("warning_tail",0))>0
+
+static func begin(phase:String) -> Dictionary:
+	return {"phase":phase,"elapsed":0.0,"warning_delay":WARNING_LEAD}
 
 static func state(room: Dictionary) -> Dictionary:
 	return room.get("airlock_cycle",{"phase":"dry","elapsed":0.0})
@@ -39,21 +49,21 @@ static func request(game,cell: Vector2i,outward: bool) -> bool:
 		return true
 	if state(room).phase!=("dry" if outward else "exterior"): return false
 	if outward and not exterior_clear(game,room): return false
-	room.airlock_cycle={"phase":"sealing_inner" if outward else "sealing_outer","elapsed":0.0}
+	room.airlock_cycle=begin("sealing_inner" if outward else "sealing_outer")
 	return true
 
 static func seal_departure(game,cell: Vector2i) -> bool:
 	if not preload("res://scripts/airlock_service.gd").ready(game,cell): return false
 	var room: Dictionary=game.occupied[cell]
 	if state(room).phase!="exterior": return false
-	room.airlock_cycle={"phase":"sealing_departed","elapsed":0.0}
+	room.airlock_cycle=begin("sealing_departed")
 	return true
 
 static func open_for_return(game,cell: Vector2i) -> bool:
 	if not preload("res://scripts/airlock_service.gd").ready(game,cell): return false
 	var room: Dictionary=game.occupied[cell]
 	if state(room).phase!="sealed_exterior": return false
-	room.airlock_cycle={"phase":"opening_outer","elapsed":0.0}
+	room.airlock_cycle=begin("opening_outer")
 	return true
 
 static func advance(game,delta: float) -> void:
@@ -62,12 +72,22 @@ static func advance(game,delta: float) -> void:
 		if room.id!="airlock" or not preload("res://scripts/airlock_service.gd").ready(game,room.pos): continue
 		var s:=state(room).duplicate()
 		var remaining:=maxf(0,delta)
+		if float(s.get("warning_delay",0))>0:
+			var warning_step:=minf(remaining,float(s.warning_delay))
+			s.warning_delay-=warning_step
+			remaining-=warning_step
+		var tail:=float(s.get("warning_tail",0))
 		while DURATIONS.has(s.phase) and remaining>0:
 			var step:=minf(remaining,float(DURATIONS[s.phase])-float(s.elapsed))
 			s.elapsed+=step
 			remaining-=step
+			if s.phase in MOVING:tail=WARNING_TAIL
+			else:tail=maxf(0,tail-step)
 			if s.elapsed>=float(DURATIONS[s.phase]):
 				s={"phase":NEXT[s.phase],"elapsed":0.0}
+		tail=maxf(0,tail-remaining)
+		if tail>0:s.warning_tail=tail
+		else:s.erase("warning_tail")
 		room.airlock_cycle=s
 
 static func valid_rooms(rooms: Array) -> bool:
@@ -79,4 +99,7 @@ static func valid_rooms(rooms: Array) -> bool:
 		if not LABELS.has(s.phase) or not (s.get("elapsed") is float or s.get("elapsed") is int): return false
 		var elapsed:=float(s.elapsed)
 		if not is_finite(elapsed) or elapsed<0 or elapsed>float(DURATIONS.get(s.phase,0.0)): return false
+		for key in ["warning_delay","warning_tail"]:
+			var value=s.get(key,0.0)
+			if not (value is float or value is int) or not is_finite(float(value)) or float(value)<0 or float(value)>WARNING_TAIL:return false
 	return true

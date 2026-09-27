@@ -10,24 +10,34 @@ const REPAIR_METAL := 8
 const BOOT_SECONDS := 8.0
 const NPC = preload("res://scripts/companion_npc.gd")
 static var portraits := {}
+const PORTRAIT_PATHS := {
+	"river": "res://character/portraits-brine-style-v1/river.png",
+	"josh": "res://character/portraits-brine-style-v1/josh.png",
+	"margot": "res://character/portraits-brine-style-v1/margot.png"
+}
 static var container_textures := {}
 const CONTAINER_FOOT := Vector2(90,60)
 const CONTAINER_RECT := Rect2(44,8,94,64)
+const RECOVERY_CLEARANCE := Rect2(28,-8,126,168)
+const RescueArt = preload("res://scripts/companion_rescue_art.gd")
 
 static func container_texture(id: String, opened: bool) -> Texture2D:
-	var key := id+ ("-open" if opened else "-closed")
-	if not container_textures.has(key):
-		var img := Image.new()
-		if img.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/companions/encounters/"+key+".png"))!=OK:return null
-		var texture := ImageTexture.create_from_image(img)
-		texture.set_meta("crew_frame_92",true);texture.set_meta("crew_pivot",Vector2(80,144))
-		container_textures[key]=texture
-	return container_textures[key]
+	return RescueArt.empty_frame(id) if opened else RescueArt.frame(id,0)
+
+static func rescue_texture(game, cell: Vector2i) -> Texture2D:
+	var site: Dictionary=game.wrecks[cell]
+	var actor=game.companion_actors[site.kind]
+	if site.recovered or not site.opened or site.boot<6.4:
+		return RescueArt.texture(site.kind,site.opened,site.boot,site.recovered)
+	var point: Variant=spawn_point(actor,cell)
+	if point==null:return RescueArt.texture(site.kind,true,6.39,false)
+	var offset := Vector2(0,40) if point==null else Vector2(point)-(Vector2(cell)+Vector2.ONE*.5)*384.0-CONTAINER_FOOT
+	return RescueArt.texture(site.kind,site.opened,site.boot,site.recovered,actor,offset)
 
 static func room_props(props: Array, id := "") -> Array:
 	if id=="margot":return [] # This found ward contains exactly its three authored pods.
 	# Found compartments clear a loading area around their one recovery object.
-	return props.filter(func(prop):return not prop.get("layout_hidden",false) and not prop.rect.intersects(CONTAINER_RECT.grow(16)))
+	return props.filter(func(prop):return not prop.get("layout_hidden",false) and not prop.rect.intersects(RECOVERY_CLEARANCE))
 
 static func recovery_props(id: String, recovered := false) -> Array:
 	if id!="margot":return [{"id":"companion_container","rect":CONTAINER_RECT,"position":CONTAINER_FOOT}]
@@ -49,7 +59,7 @@ static func portrait(id: String) -> Texture2D:
 	if not IDS.has(id):return null
 	if not portraits.has(id):
 		var img := Image.new()
-		if img.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/companions/%s-portrait.png"%id))!=OK:return null
+		if img.load_png_from_buffer(FileAccess.get_file_as_bytes(PORTRAIT_PATHS[id]))!=OK:return null
 		portraits[id]=ImageTexture.create_from_image(img)
 	return portraits[id]
 
@@ -114,16 +124,22 @@ static func spawn(game, id: String, cell: Vector2i) -> bool:
 	actor.avoidance_positions.clear()
 	for peer in all_actors(game):
 		if peer!=actor and peer.active:actor.avoidance_positions.append(peer.foot)
+	var point: Variant=spawn_point(actor,cell)
+	if point==null:return false
+	actor.foot=point;actor.active=true;actor.arrive()
+	if id!="margot":actor.direction="south"
+	if id=="river" and not is_site(game,cell):actor.start_behavior("boot")
+	return true
+
+static func spawn_point(actor, cell: Vector2i) -> Variant:
 	var nodes: Array=actor.room_nodes.get(cell,[]).duplicate()
 	var emergence := (Vector2(cell)+Vector2.ONE*0.5)*384.0+CONTAINER_FOOT+Vector2(0,40)
 	nodes.sort_custom(func(a,b):return actor.graph.get_point_position(a).distance_squared_to(emergence)<actor.graph.get_point_position(b).distance_squared_to(emergence))
 	for node in nodes:
 		var point: Vector2=actor.graph.get_point_position(node)
 		if actor.spawn_clear(point):
-			actor.foot=point;actor.active=true;actor.arrive()
-			if id=="river":actor.start_behavior("boot")
-			return true
-	return false
+			return point
+	return null
 
 static func all_actors(game) -> Array:
 	return [game.bill_npc,game.veld_npc,game.branforth_npc,game.marsh_npc]+game.companion_actors.values()
@@ -133,6 +149,14 @@ static func advance(game, delta: float) -> void:
 	for cell in game.wrecks:
 		if not is_site(game,cell) or boot_status(game,cell) not in ["RESTARTING","THAWING"]:continue
 		var site: Dictionary=game.wrecks[cell]
+		if site.kind!="margot":
+			var actor=game.companion_actors[site.kind]
+			if not actor.room_nodes.has(cell):
+				actor.room_cache=game.bill_npc.room_cache
+				actor.rebuild(game)
+			actor.avoidance_positions.clear()
+			for peer in all_actors(game):
+				if peer!=actor and peer.active:actor.avoidance_positions.append(peer.foot)
 		site.boot=minf(BOOT_SECONDS,site.boot+delta)
 		if site.boot>=BOOT_SECONDS:
 			if game.meta.record_character(site.kind):

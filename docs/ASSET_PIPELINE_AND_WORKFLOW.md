@@ -1,5 +1,47 @@
 # BrineSpace asset pipeline and working workflow
 
+## Matching portrait workflow — September 27, 2026
+
+The seven accepted profile masters are installed in `character/portraits-brine-style-v1/`;
+BRINE V14 remains the style reference. Follow the maintained
+[portrait workflow](../skills/brinespace-character-pipeline/references/comms-portraits.md)
+for identity/style references, prompt constraints, versioned masters and isolated
+native verification. See [portrait session closeout](PORTRAIT_SESSION_CLOSEOUT_2026-09-27.md).
+
+## September 27 asset selection and approval closeout
+
+Start with [the latest closeout](ART_SESSION_CLOSEOUT_2026-09-27.md). The 323 existing Desktop clean exports are installed, including colored airlock suits and final furniture repairs; 43 cards and four-direction airlock captures were refreshed. The follow-up audit found the selected additional props, architecture and drone components already present. Robot rescue `occupied-3` is owner-approved. Human crew candidates remain unfinished and packages remain older snapshots.
+
+Before repainting a reported mismatch, locate the owner's existing selected export, compare its ID/dimensions/hash and trace the actual runtime consumer. Review Candidates and source masters are not automatic replacement selections. Keep source, animation components, native visual evidence, owner acceptance and package identity separate. Both room and character skills now carry this procedure in `references/selected-art-audit.md`.
+
+## September 26 room/animation closeout — current continuation
+
+Read [the session handoff](ROOM_ART_SESSION_CLOSEOUT_2026-09-26.md). Native drone pilots, directional motion, runtime installation and matching frozen Windows/Mac packages are completed; the earlier “Next task” below is historical. New graphical enhancements remain a deferred backlog. Before a later pilot, inspect current consumers and effects, use a bounded representative room, and review at gameplay zoom with the locked references. Verify pause/power transitions and rendering cost where relevant. Preserve source selection, installation, agent visual review, owner acceptance and exact release evidence as separate states.
+
+## Accepted drone handoff — September 26, 2026
+
+The owner accepted v10 drone art and launch/recovery previews. Start with
+[session closeout](DRONE_ART_SESSION_CLOSEOUT_2026-09-26.md) and the selected
+`drone-animation-bases/approved-v10/` bundle in the Desktop export folder.
+The bundle separates sources, 30 native components, previews, review, provenance
+and tools. Original loose files remain as compatibility/history, not competing
+current selections. The room and character skills now route through
+`references/drone-animation.md` for shared lessons.
+
+Next task: native room/NPC scale pilot, then articulated directional drone motion.
+Do not regenerate accepted identities or mistake the launch study for a complete
+NPC animation pack. No game files or owner layouts were installed/changed here.
+
+
+## Current visual specification — September 26, 2026
+
+Read [the art and theme bible](BRINESPACE_VISUAL_AESTHETIC_BIBLE.md) before
+production. It is the single current style specification, with fixed references
+in [the reference lock](BRINESPACE_ART_REFERENCE_LOCK_2026-09-26.json).
+The accepted clean exports remain a separate visual reference family, not an
+installed replacement. Historical workflow notes and installed skill snapshots
+must not override this newer visual direction.
+
 Updated September 24, 2026. This is the maintained routing guide for asset work;
 the detailed procedures remain in the two repository skills. Start with
 [current status](CURRENT_STATUS.md) and [the Claude handoff](CLAUDE_HANDOFF_2026-09-24.md).
@@ -33,10 +75,10 @@ Preserve `favourites.json`, `retired.json`, `names.json` and `categories.json` i
 `rooms/tileset-library/`. A dirty tracked file may be newer owner work. Closeout
 does not require a commit and never authorizes resetting those files from Git.
 
-The finished-room list lives in CURRENT_STATUS. All 27 currently named rooms are
-protected in all rotations. Other rooms retain their first rotation; deliberately
-cleared secondary rotations remain owner authoring space. The September 23 cleanup
-was a dated operation, not a command to rerun after later decoration.
+The current layout protection rules live in CURRENT_STATUS and station props v2.
+All 43 redesigned rooms were subsequently hand-adjusted by the owner; preserve
+their saved Studio layouts. The older 27-room list and deliberately cleared
+rotations describe pre-v2 history, not current authoring instructions.
 
 ## Bought-art path
 
@@ -131,6 +173,14 @@ rendering. Record tail spikes as well as means. Faster is not equivalent to smoo
 F7/F8 and the existing soak/report tools are the first diagnostic route.
 
 ## Release and closeout
+
+For companion/container interactions, follow the maintained
+[rescue workflow](../skills/brinespace-character-pipeline/references/companion-rescue.md).
+Review closed, partial reveal, reboot, rollout and empty terminal states together.
+Use existing body art behind explicit aperture masks, fixed chassis registration,
+and the same saved clock/navigation exit as production. Apply encounter clearance
+after saved layouts load; verify visual occlusion and navigation. Refresh preview
+module, manifest and image revisions together before judging a repair.
 
 Required side effects must stay outside assertions that release builds can remove.
 Freeze code, configuration, runtime bindings and the dependency closure together.

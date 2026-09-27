@@ -250,6 +250,7 @@ var hand_toggle_button: Button
 var hand_layout_button: Button
 var room_lock_button
 var room_scrap_button
+var room_repair_button
 var hand_backdrop_button: Button
 var card_drag
 const DraftCard = preload("res://scripts/draft_card.gd")
@@ -433,6 +434,7 @@ func _process(delta: float) -> void:
 				for cell in found:
 					_log("RECOVERY SIGNAL // %s. The chamber still holds." % wrecks[cell].pods[0].name,false)
 				_refresh_all()
+		preload("res://scripts/survey_probe.gd").advance(self,delta * time_speeds[time_speed_index])
 		visual_time_seconds += delta * time_speeds[time_speed_index]
 		unscaled_time_seconds += delta
 		preload("res://scripts/airlock_cycle.gd").advance(self,delta * time_speeds[time_speed_index])
@@ -867,6 +869,12 @@ func _build_ui() -> void:
 	preview_box.add_child(scrap_row)
 	scrap_row.add_child(room_scrap_button)
 	room_scrap_button.hide()
+	room_repair_button = Button.new()
+	room_repair_button.name = "RoomRepairButton"
+	room_repair_button.pressed.connect(_repair_inspected_room)
+	preload("res://scripts/title_button_style.gd").apply(room_repair_button, 380, 34)
+	preview_box.add_child(room_repair_button)
+	room_repair_button.hide()
 	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
 	airlock_panel.game=self
 	preview_box.add_child(airlock_panel)
@@ -3658,7 +3666,8 @@ func _refresh_resources() -> void:
 	power_capacity = _get_power_capacity()
 	forecast_power_vented = int(forecast.get("power_vented", 0))
 	_set_resource_chip("metal", "METAL\n%d/%d  %+d" % [resources["metal"], _get_resource_capacity("metal"), net.get("metal", 0)], Color("#9aa2a8"))
-	var power_change := "FULL" if int(resources.power)>=power_capacity and int(net.get("power",0))>=0 else "%+d" % int(net.get("power",0))
+	# Keep supply minus demand visible even when excess cannot enter storage.
+	var power_change := "%+d" % (int(net.get("power",0)) + forecast_power_vented)
 	_set_resource_chip("power", "POWER\n%d/%d  %s" % [resources["power"], power_capacity, power_change], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
 	resource_chips["power"].tooltip_text = str(RESOURCE_TOOLTIPS.get("power", "Station resource.")) + preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented)
 	_set_resource_chip("oxygen", "OXYGEN\n%d/%d  %+d" % [resources["oxygen"], _get_resource_capacity("oxygen"), net.get("oxygen", 0)], _critical_color(resources["oxygen"], Color("#7fd4ff"), 2, 0))
@@ -4732,6 +4741,7 @@ func _refresh_inspector_contents() -> void:
 	inspector_focus_button.disabled = true
 	if room_lock_button != null: room_lock_button.hide()
 	if room_scrap_button != null: room_scrap_button.hide()
+	if room_repair_button != null: room_repair_button.hide()
 	if hovered_card_id.is_empty() and selected_card_id.is_empty():
 		var site_cell: Vector2i = selected_room_cell
 		if drone_fleet.sites.has(site_cell) and drone_fleet.sites[site_cell].discovered and not occupied.has(site_cell):
@@ -4799,6 +4809,17 @@ func _refresh_inspector_contents() -> void:
 		room_scrap_button.disabled = not running or not scrap_reason.is_empty()
 		room_scrap_button.tooltip_text = scrap_reason if not scrap_reason.is_empty() else "Remove this room for half its Metal. Press twice to confirm."
 		room_scrap_button.show()
+	if room_repair_button != null and not previewing_card and room.has("pos") and occupied.has(room.pos):
+		var Repairs = preload("res://scripts/hull_repair.gd")
+		var damaged: bool = float(room.get("hull_crack",0)) > 0
+		var cost: int = Repairs.COSTS[Repairs.variant(room)] if damaged else 2
+		var pending: bool = room.has("leak_repair")
+		var needs_repair: bool = damaged or room.get("local_incident",false)
+		room_repair_button.set_meta("cell",room.pos)
+		room_repair_button.text = "REPAIR QUEUED" if pending else "REPAIR ROOM · %d METAL" % cost if needs_repair else "HULL INTACT"
+		room_repair_button.disabled = not running or pending or not needs_repair or int(resources.metal) < cost
+		room_repair_button.tooltip_text = "Send reachable crew to weld the hull. Metal is allocated when the job is queued." if damaged else "Repair a local containment fault."
+		room_repair_button.show()
 	if room.is_empty():
 		preview_texture.texture = null
 		preview_name_label.text = "No Selection"
@@ -4844,6 +4865,7 @@ func _refresh_inspector_contents() -> void:
 			preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused,wrecks,room.get("suspended",false)))
 		if room.id in ["construction_drone_bay","mining_drone_bay","salvage_drone_bay","brine_core"]:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").power_demand(self))
+		if room.id=="survey_probe_bay":preview_lines.append(preload("res://scripts/survey_probe.gd").status(room))
 		preview_lines.append("Forecast uses current shared inputs and learned bonuses; events can change the outcome.")
 	if not previewing_card:
 		preview_lines.append(_preview_divider())
@@ -4873,6 +4895,12 @@ func _refresh_inspector_contents() -> void:
 	_set_inspector_text(_join_strings(preview_lines, "\n"))
 	inspector_focus_button.disabled = previewing_card or not room.has("pos")
 	inspector_focus_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
+
+func _repair_inspected_room() -> void:
+	if _gameplay_input_blocked() or not running or room_repair_button == null: return
+	var cell: Vector2i = room_repair_button.get_meta("cell",Vector2i(-1,-1))
+	preload("res://scripts/local_incidents.gd").repair(self,cell)
+	_refresh_all()
 
 func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 	var room_id := str(room.get("id", ""))

@@ -81,7 +81,7 @@ const LAYOUTS := {
 }
 
 static func all_rooms() -> Dictionary:
-	return {
+	var rooms := {
 		"cold_store": {
 			"id":"cold_store", "display_name":"Cold Store", "category":"Engineering", "rarity":"uncommon",
 			"cost":{"metal":8}, "size":Vector2i.ONE, "production":{}, "consumption":{"power":1}, "storage":{"food":40,"biomass":20},
@@ -633,6 +633,9 @@ static func all_rooms() -> Dictionary:
 			"unlocked": true
 		}
 	}
+
+	rooms.merge(preload("res://scripts/new_room_definitions.gd").rooms())
+	return rooms
 
 static var _lookup_templates: Dictionary = {}
 

@@ -19,7 +19,7 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	assert(paused,"Editor pauses expedition")
-	assert(editor.entries.size()==47)
+	assert(editor.entries.size()==preload("res://scripts/room_database.gd").all_rooms().size())
 	# Native (built-in) furniture only remains in rooms that keep their pre-v2 art
 	# (station props v2): exercise the native-prop workflow in BRINE Core.
 	var BRINE:=-1
@@ -369,7 +369,7 @@ func run() -> void:
 		editor.index=i; editor.rotation_drafts.clear(); editor.load_room()
 		assert(editor.room!=null)
 		await process_frame
-	print("EXPANSION PASS: 47 rooms, duplication, group coordinates/flip, lock/hide, compare, Save All")
+	print("EXPANSION PASS: "+str(editor.entries.size())+" rooms, duplication, group coordinates/flip, lock/hide, compare, Save All")
 
 	editor.index=BRINE; editor.quarter=0; editor.load_room(); editor.layer=0
 	editor.selected="brine_dual_workstation"; editor.selected_many=[]

@@ -18,6 +18,9 @@ class Preview extends Node2D:
 		room.configure_embedded(q,[],false,0.0)
 		room.set_meta("raised_north_visible",true)
 		room.render_into(self,anchor,zoom,true)
+		room.shell_pass=1
+		room.render_into(self,anchor,zoom,false,false)
+		room.shell_pass=0
 		if scale_actor!=null:
 			# render_into applies authored layouts; place against that final geometry.
 			scale_actor.rebuild(room,id,q)
@@ -25,7 +28,9 @@ class Preview extends Node2D:
 		draw_set_transform(anchor,0,Vector2.ONE*zoom)
 		if id not in ["corridor","corner","tee_corridor"]:
 			preload("res://rooms/whole-room/north_wall.gd").draw_into(self,id,Vector2i.ZERO,false,false,room)
+		room.shell_pass=2
 		room.render_into(self,anchor,zoom,false,false)
+		room.shell_pass=0
 		if scale_actor!=null: room.external_actors.clear()
 func _init() -> void: call_deferred("run")
 func run() -> void:

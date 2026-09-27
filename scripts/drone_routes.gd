@@ -59,6 +59,14 @@ static func travel(drone: Dictionary, seconds: float, goal: Vector2i, blocked: D
 		var destination: Vector2 = route[0]
 		var distance: float = Vector2(drone.position).distance_to(destination)
 		var used := minf(remaining,distance/SPEED)
+		if distance>0.00001:
+			var facing:String=preload("res://scripts/drone_animation.gd").heading(destination-Vector2(drone.position))
+			if drone.get("animation_heading",facing)!=facing:
+				drone["animation_previous_heading"]=drone.animation_heading
+				drone["animation_turn_started"]=float(drone.get("clock",0.0))
+			drone["animation_heading"]=facing
+		drone["animation_distance"] = float(drone.get("animation_distance",0.0))+used*SPEED*384.0
+		drone["animation_rotor"] = fposmod(float(drone.get("animation_rotor",0.0))+used*120.0,60.0)
 		drone.position = Vector2(drone.position).move_toward(destination,used*SPEED)
 		drone["clock"] = float(drone.get("clock",0.0))+used
 		remaining -= used

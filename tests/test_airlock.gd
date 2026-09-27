@@ -125,7 +125,7 @@ func exercise_cycle(id: String,q: int) -> void:
 	var seen: Dictionary={}
 	for outward in [true,false]:
 		if not outward: check(Cycle.request(game,cell,false),"Inbound cycle accepted")
-		for i in range(81):
+		for i in range(101):
 			Cycle.advance(game,0.1)
 			room=game.occupied[cell]
 			var p:=Cycle.pose(room)
@@ -265,8 +265,11 @@ func run() -> void:
 				check(required in present,"Live airlock furnishing present q%d: %s" % [q,required])
 			check(view.props.any(func(p): return Service.is_suit_locker(p)),"Suit locker present q%d" % q)
 			check(preload("res://scripts/room_layout_store.gd").is_common_decoration({"registration":{"dressing":true}}),"Ordinary dressing remains filtered")
+			# Free-placed layouts (the owner's, promoted to defaults Sept 27) may set props against
+			# the walls; hold them to the live free-placement box in RoomLayoutStore.apply.
+			var free_layout: bool=preload("res://scripts/room_layout_store.gd").shared_positions("room-airlock",q).get("__free_placement",true)
 			for prop in view.props:
-				var envelope:=Rect2(-200,-200,400,400) if prop.id in ["outer_hatch","pressure_chamber"] else Rect2(-180,-180,360,360)
+				var envelope:=Rect2(-200,-200,400,400) if prop.id in ["outer_hatch","pressure_chamber"] else (Rect2(-240,-300,480,540) if free_layout else Rect2(-180,-180,360,360))
 				check(envelope.encloses(view.prop_visual_bounds(prop)),"Airlock prop contained: "+prop.id)
 				if prop.id=="outer_hatch":
 					var bounds: Rect2=view.prop_visual_bounds(prop)

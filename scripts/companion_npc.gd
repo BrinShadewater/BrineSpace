@@ -35,18 +35,34 @@ func _init(id := "river", art_source = null) -> void:
 		swim_clearance = art_source.swim_clearance.duplicate(true)
 		tread_clearance = art_source.tread_clearance.duplicate(true)
 		return
-	var pack_root := "res://character/animation-expansion-v5"
-	player.load_manifest(pack_root+"/%s/manifest.json" % id)
-	poses.load_manifest(pack_root+"/%s-actions/manifest.json"%id)
-	if id!="josh":
-		player.load_manifest("res://character/companion-water-v1/%s/manifest.json"%id,true)
-		var bounds=JSON.parse_string(FileAccess.get_file_as_string("res://character/companion-water-v1/%s/clearance.json"%id))
+	if id=="margot":
+		player.load_manifest("res://character/margot-polish-v1/packs/locomotion/manifest.json")
+		player.load_manifest("res://character/margot-polish-v1/packs/water/manifest.json",true)
+		poses.load_manifest("res://character/margot-polish-v1/packs/actions/manifest.json")
+		var margot_bounds:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://character/margot-polish-v1/clearance.json"))
+		swim_clearance=margot_bounds;tread_clearance=margot_bounds.duplicate(true)
+		for key in player.frames:
+			if not key.begins_with("swim-"):continue
+			for texture in player.frames[key]:
+				texture.set_meta("companion_surface",true)
+				texture.set_meta("companion_surface_line",148.0)
+				texture.set_meta("crew_water_kind","idle" if key.contains("-idle-") else "swim")
+		return
+	const ROBOT_PACKS={
+		"josh":["res://character/robot-polish-v1/josh/packs/locomotion/manifest.json","res://character/robot-polish-v1/josh/packs/actions/manifest.json"],
+		"river":["res://character/robot-polish-v1/river/packs/locomotion/manifest.json","res://character/robot-polish-v1/river/packs/actions/manifest.json"]
+	}
+	player.load_manifest(ROBOT_PACKS[id][0])
+	poses.load_manifest(ROBOT_PACKS[id][1])
+	if id=="river":
+		player.load_manifest("res://character/robot-polish-v1/river/packs/water/manifest.json",true)
+		var bounds=JSON.parse_string(FileAccess.get_file_as_string("res://character/robot-polish-v1/river/clearance.json"))
 		swim_clearance=bounds;tread_clearance=bounds.duplicate(true)
 		for key in player.frames:
 			if not (key.begins_with("swim-") or key.begins_with("float-")):continue
 			for texture in player.frames[key]:
 				texture.set_meta("companion_surface",true)
-				texture.set_meta("companion_surface_line",73.0 if id=="margot" else 70.0)
+				texture.set_meta("companion_surface_line",140.0)
 				texture.set_meta("crew_water_kind","idle" if key.contains("-idle-") else "swim")
 
 func rebuild(main,staged:=false)->void:
@@ -85,7 +101,7 @@ func start_behavior(action: String) -> void:
 	if action not in ACTIONS[identity]:return
 	wake_first=identity=="margot" and behavior=="nap" and action=="pet"
 	if wake_first:wake_direction=direction
-	behavior=action;behavior_elapsed=0.0;behavior_duration=DURATIONS[action]+(0.8 if wake_first else 0.0)
+	behavior=action;behavior_elapsed=0.0;behavior_duration=DURATIONS[action]+(wake_seconds() if wake_first else 0.0)
 	path.clear();pending_behavior="";goal="";state="idle"
 	personality_cooldown=decision_rng.randf_range(12.0,22.0)
 	if identity=="margot" and action=="pet":direction="south" # Pet reaction still faces the viewer.
@@ -229,14 +245,18 @@ func _advance_companion(main, delta: float) -> void:
 		activity="keeping company";return
 	timer=2
 
+func wake_seconds()->float:
+	return poses.cycle_seconds("nap-exit-"+wake_direction)
+
 func texture(time: float) -> Texture2D:
 	var wet:Texture2D=water.texture(self)
 	if wet!=null:return wet
 	if not behavior.is_empty():
 		var elapsed := behavior_elapsed
 		if wake_first:
-			if elapsed<0.8:return poses.frame_at_elapsed("nap-exit-"+wake_direction,elapsed)
-			elapsed-=0.8
+			var waking:=wake_seconds()
+			if elapsed<waking:return poses.frame_at_elapsed("nap-exit-"+wake_direction,elapsed)
+			elapsed-=waking
 		var key := behavior+"-"+direction
 		var enter := behavior+"-enter-"+direction
 		var leave := behavior+"-exit-"+direction

@@ -41,6 +41,7 @@ func run() -> void:
 		await capture("q%d-open"%q,cell)
 	cell=Vector2i(20,19);room=game.occupied[cell]
 	check(Cycle.seal_departure(game,cell),"Diver clears hatch before closure starts")
+	Cycle.advance(game,Cycle.WARNING_LEAD)
 	Cycle.advance(game,0.5)
 	check(is_equal_approx(Cycle.pose(room).outer,0.5),"Departure closure animates")
 	await capture("departure-half",cell)
@@ -58,12 +59,13 @@ func run() -> void:
 	Cycle.advance(game,0.5)
 	check(Cycle.pose(room)=={"inner":0.0,"outer":0.0,"water":1.0,"pressure":1.0,"phase":"sealed_exterior"},"Away chamber holds both doors closed at exterior pressure")
 	check(Cycle.open_for_return(game,cell),"Return requests outer hatch")
+	Cycle.advance(game,Cycle.WARNING_LEAD)
 	Cycle.advance(game,0.5)
 	await capture("return-half",cell)
 	check(is_equal_approx(Cycle.pose(room).outer,0.5) and Cycle.pose(room).inner==0.0,"Return opening keeps inner door sealed")
 	Cycle.advance(game,0.5)
 	check(Cycle.request(game,cell,false),"Diver reenters before draining")
-	Cycle.advance(game,8.0)
+	Cycle.advance(game,8.0+Cycle.WARNING_LEAD)
 	check(Cycle.state(room).phase=="dry","Return ends with dry chamber")
 	room.airlock_cycle={"phase":"sealed_exterior","elapsed":0.0}
 	check(Cycle.request(game,cell,false),"Unreserved sealed chamber can be drained manually")

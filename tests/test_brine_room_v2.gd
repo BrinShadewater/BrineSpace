@@ -134,8 +134,14 @@ func run() -> void:
 		return
 	var chamber: Dictionary=chambers[0]
 	var used: Rect2=Rect2(view.body_normalized_rect.position*92.0,view.body_normalized_rect.size*92.0)
-	check(view.body_source_rect.size.y>740,"Float retains detailed source rather than 74-pixel reduction")
-	var glass:=Rect2(555,585,142,190)
+	check(view.body_texture.get_size()==Vector2(45,139),"Selected v7 character pixels are retained at native source density")
+	check(view.body_texture is CanvasTexture and view.body_texture.texture_filter==CanvasItem.TEXTURE_FILTER_LINEAR,"Only the floating figure uses smooth sampling")
+	var motion=preload("res://rooms/underwater/brine-core/brine_float.gd")
+	for uv in motion.uvs():
+		check(motion.drift(uv,0).is_equal_approx(motion.drift(uv,8)),"Eight-second mesh loop closes")
+	for t in range(80):
+		check(motion.drift(Vector2(.3,.1),t*.1).is_equal_approx(motion.drift(Vector2(.7,.1),t*.1)),"Face moves rigidly")
+	var glass:=Rect2(553,577,144,198) # Actual glass registration; cap/rim remain foreground occluders.
 	for i in range(880):
 		for point in view.body_points(i*0.1):
 			check(glass.has_point(point),"Entire floating and swaying silhouette stays below cap and inside glass")

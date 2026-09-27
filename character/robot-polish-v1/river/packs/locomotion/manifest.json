@@ -1,0 +1,445 @@
+{
+  "character": "river",
+  "frameWidth": 184,
+  "frameHeight": 184,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "walk": 0.1
+  },
+  "mirrored": false,
+  "status": "installed-source",
+  "states": [
+    {
+      "id": "idle-south",
+      "frameFiles": [
+        "../../../river/frames/idle-south/000.png",
+        "../../../river/frames/idle-south/001.png",
+        "../../../river/frames/idle-south/002.png"
+      ],
+      "frameDurationsMs": [
+        1800,
+        350,
+        650
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "walk-south",
+      "frameFiles": [
+        "../../../river/frames/walk-south/000.png",
+        "../../../river/frames/walk-south/001.png",
+        "../../../river/frames/walk-south/002.png",
+        "../../../river/frames/walk-south/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "move-start-south",
+      "frameFiles": [
+        "../../../river/frames/move-start-south/000.png",
+        "../../../river/frames/move-start-south/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared idle and rolling endpoints"
+    },
+    {
+      "id": "move-stop-south",
+      "frameFiles": [
+        "../../../river/frames/move-stop-south/000.png",
+        "../../../river/frames/move-stop-south/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared rolling and idle endpoints"
+    },
+    {
+      "id": "idle-west",
+      "frameFiles": [
+        "../../../river/frames/idle-west/000.png",
+        "../../../river/frames/idle-west/001.png",
+        "../../../river/frames/idle-west/002.png"
+      ],
+      "frameDurationsMs": [
+        1800,
+        350,
+        650
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "walk-west",
+      "frameFiles": [
+        "../../../river/frames/walk-west/000.png",
+        "../../../river/frames/walk-west/001.png",
+        "../../../river/frames/walk-west/002.png",
+        "../../../river/frames/walk-west/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "move-start-west",
+      "frameFiles": [
+        "../../../river/frames/move-start-west/000.png",
+        "../../../river/frames/move-start-west/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared idle and rolling endpoints"
+    },
+    {
+      "id": "move-stop-west",
+      "frameFiles": [
+        "../../../river/frames/move-stop-west/000.png",
+        "../../../river/frames/move-stop-west/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared rolling and idle endpoints"
+    },
+    {
+      "id": "idle-north",
+      "frameFiles": [
+        "../../../river/frames/idle-north/000.png",
+        "../../../river/frames/idle-north/001.png",
+        "../../../river/frames/idle-north/002.png"
+      ],
+      "frameDurationsMs": [
+        1800,
+        350,
+        650
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "walk-north",
+      "frameFiles": [
+        "../../../river/frames/walk-north/000.png",
+        "../../../river/frames/walk-north/001.png",
+        "../../../river/frames/walk-north/002.png",
+        "../../../river/frames/walk-north/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "move-start-north",
+      "frameFiles": [
+        "../../../river/frames/move-start-north/000.png",
+        "../../../river/frames/move-start-north/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared idle and rolling endpoints"
+    },
+    {
+      "id": "move-stop-north",
+      "frameFiles": [
+        "../../../river/frames/move-stop-north/000.png",
+        "../../../river/frames/move-stop-north/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared rolling and idle endpoints"
+    },
+    {
+      "id": "idle-east",
+      "frameFiles": [
+        "../../../river/frames/idle-east/000.png",
+        "../../../river/frames/idle-east/001.png",
+        "../../../river/frames/idle-east/002.png"
+      ],
+      "frameDurationsMs": [
+        1800,
+        350,
+        650
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "walk-east",
+      "frameFiles": [
+        "../../../river/frames/walk-east/000.png",
+        "../../../river/frames/walk-east/001.png",
+        "../../../river/frames/walk-east/002.png",
+        "../../../river/frames/walk-east/003.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "provenance": "authored"
+    },
+    {
+      "id": "move-start-east",
+      "frameFiles": [
+        "../../../river/frames/move-start-east/000.png",
+        "../../../river/frames/move-start-east/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared idle and rolling endpoints"
+    },
+    {
+      "id": "move-stop-east",
+      "frameFiles": [
+        "../../../river/frames/move-stop-east/000.png",
+        "../../../river/frames/move-stop-east/001.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        250
+      ],
+      "loop": false,
+      "provenance": "shared rolling and idle endpoints"
+    },
+    {
+      "id": "turn-south-west",
+      "frameFiles": [
+        "../../../river/frames/turn-south-west/000.png",
+        "../../../river/frames/turn-south-west/001.png",
+        "../../../river/frames/turn-south-west/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-south-north",
+      "frameFiles": [
+        "../../../river/frames/turn-south-north/000.png",
+        "../../../river/frames/turn-south-north/001.png",
+        "../../../river/frames/turn-south-north/002.png",
+        "../../../river/frames/turn-south-north/003.png",
+        "../../../river/frames/turn-south-north/004.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-south-east",
+      "frameFiles": [
+        "../../../river/frames/turn-south-east/000.png",
+        "../../../river/frames/turn-south-east/001.png",
+        "../../../river/frames/turn-south-east/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-west-south",
+      "frameFiles": [
+        "../../../river/frames/turn-west-south/000.png",
+        "../../../river/frames/turn-west-south/001.png",
+        "../../../river/frames/turn-west-south/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-west-north",
+      "frameFiles": [
+        "../../../river/frames/turn-west-north/000.png",
+        "../../../river/frames/turn-west-north/001.png",
+        "../../../river/frames/turn-west-north/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-west-east",
+      "frameFiles": [
+        "../../../river/frames/turn-west-east/000.png",
+        "../../../river/frames/turn-west-east/001.png",
+        "../../../river/frames/turn-west-east/002.png",
+        "../../../river/frames/turn-west-east/003.png",
+        "../../../river/frames/turn-west-east/004.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-north-south",
+      "frameFiles": [
+        "../../../river/frames/turn-north-south/000.png",
+        "../../../river/frames/turn-north-south/001.png",
+        "../../../river/frames/turn-north-south/002.png",
+        "../../../river/frames/turn-north-south/003.png",
+        "../../../river/frames/turn-north-south/004.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-north-west",
+      "frameFiles": [
+        "../../../river/frames/turn-north-west/000.png",
+        "../../../river/frames/turn-north-west/001.png",
+        "../../../river/frames/turn-north-west/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-north-east",
+      "frameFiles": [
+        "../../../river/frames/turn-north-east/000.png",
+        "../../../river/frames/turn-north-east/001.png",
+        "../../../river/frames/turn-north-east/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-east-south",
+      "frameFiles": [
+        "../../../river/frames/turn-east-south/000.png",
+        "../../../river/frames/turn-east-south/001.png",
+        "../../../river/frames/turn-east-south/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-east-west",
+      "frameFiles": [
+        "../../../river/frames/turn-east-west/000.png",
+        "../../../river/frames/turn-east-west/001.png",
+        "../../../river/frames/turn-east-west/002.png",
+        "../../../river/frames/turn-east-west/003.png",
+        "../../../river/frames/turn-east-west/004.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    },
+    {
+      "id": "turn-east-north",
+      "frameFiles": [
+        "../../../river/frames/turn-east-north/000.png",
+        "../../../river/frames/turn-east-north/001.png",
+        "../../../river/frames/turn-east-north/002.png"
+      ],
+      "frameDurationsMs": [
+        150,
+        150,
+        150
+      ],
+      "loop": false,
+      "provenance": "authored diagonal; shared cardinal endpoints; reversed/composed quarters"
+    }
+  ]
+}

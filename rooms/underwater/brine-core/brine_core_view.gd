@@ -3,7 +3,9 @@ extends "res://rooms/whole-room/life_support_view.gd"
 var body_texture: Texture2D
 var body_source_rect: Rect2
 var body_normalized_rect: Rect2
-const BODY_RECT := Rect2(521,575,210,210)
+const FloatArt=preload("res://rooms/underwater/brine-core/brine_float.gd")
+const BODY_RECT := Rect2(596.0863,584.6,59.8274,184.8)
+var float_mesh:ArrayMesh
 const NAMEPLATE := Rect2(555,535,142,34)
 var architect_pod: Dictionary = {}:
 	set(value):
@@ -32,14 +34,17 @@ func rebuild() -> void:
 func _ready() -> void:
 	super._ready()
 	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/rooms/brine-core/source/overhead.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-scale-v10-2026-09-26/source-atlas.png")
 	life_texture=ImageTexture.create_from_image(image)
-	preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/default/assets/rooms/brine-core/source/brine-cleaned-v5.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-face-v7-2026-09-26/body.png")
 	body_source_rect=Rect2(image.get_used_rect())
 	# Preserve the old 92-square registration without discarding source detail.
 	var registered_width:=roundf(body_source_rect.size.x*74.0/body_source_rect.size.y)
 	body_normalized_rect=Rect2(Vector2(floorf((92.0-registered_width)/2.0),9.0)/92.0,Vector2(registered_width,74.0)/92.0)
-	body_texture=ImageTexture.create_from_image(image)
+	var filtered:=CanvasTexture.new()
+	filtered.diffuse_texture=ImageTexture.create_from_image(image)
+	filtered.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
+	body_texture=filtered
 	life_items=[{"id":"brine_chamber","rect":Rect2(-52,-40,104,80),"pivot":Vector2(626,879),"width":286.0,"outline":[Vector2(512,459),Vector2(517,429),Vector2(538,404),Vector2(570,384),Vector2(603,375),Vector2(649,375),Vector2(686,386),Vector2(718,407),Vector2(737,434),Vector2(743,460),Vector2(743,670),Vector2(760,695),Vector2(770,722),Vector2(770,808),Vector2(757,836),Vector2(730,858),Vector2(690,873),Vector2(648,880),Vector2(603,879),Vector2(562,870),Vector2(525,853),Vector2(500,830),Vector2(484,797),Vector2(484,719),Vector2(493,696),Vector2(511,674)]}]
 	dressing=Dressing.new(self,"res://rooms/underwater/brine-core/renewal-v2/composition.json")
 	rebuild()
@@ -127,24 +132,18 @@ func draw_prop_occupant(prop: Dictionary) -> void:
 	if prop.registration.get("dressing",false):
 		if operating: draw_computer_display(prop)
 		return
-	var active:=operating and pod_power()>0.0
-	var tint := Color(0.86,0.93,0.95)*lerpf(0.12,1.0,pod_power())
-	tint.a=1.0
+	var time:float=machine_clock if operating and pod_power()>0 else 0.0
 	var vertices:=PackedVector2Array()
-	for point in body_points(machine_clock,active): vertices.append(life_point(prop,point))
-	var uv:=PackedVector2Array()
-	for corner in [Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]:
-		uv.append((body_source_rect.position+corner*body_source_rect.size)/Vector2(body_texture.get_size()))
-	painter.draw_polygon(vertices,PackedColorArray([tint]),uv,body_texture)
+	for uv in FloatArt.uvs():vertices.append(life_point(prop,BODY_RECT.position+uv*BODY_RECT.size+FloatArt.drift(uv,time)))
+	var arrays:=[];arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX]=vertices;arrays[Mesh.ARRAY_TEX_UV]=FloatArt.uvs();arrays[Mesh.ARRAY_INDEX]=FloatArt.indices()
+	float_mesh=ArrayMesh.new();float_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+	var tint:=Color.WHITE*lerpf(.12,1.0,pod_power());tint.a=1
+	painter.draw_mesh(float_mesh,body_texture,Transform2D.IDENTITY,tint)
 
-func body_points(time: float, active:=true) -> PackedVector2Array:
-	var rect:=Rect2(BODY_RECT.position+body_normalized_rect.position*BODY_RECT.size,body_normalized_rect.size*BODY_RECT.size)
-	var drift:=float_offset(time) if active else Vector2.ZERO
-	# A slow, one-degree current sway, independent of the vertical float period.
-	var angle:=sin(time*TAU/13.0)*0.017 if active else 0.0
+func body_points(time:float,active:=true) -> PackedVector2Array:
 	var points:=PackedVector2Array()
-	for corner in [Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]:
-		points.append(rect.get_center()+(rect.position+corner*rect.size-rect.get_center()).rotated(angle)+drift)
+	for uv in FloatArt.uvs():points.append(BODY_RECT.position+uv*BODY_RECT.size+FloatArt.drift(uv,time if active else 0.0))
 	return points
 
 func draw_prop_glass(prop: Dictionary) -> void:
@@ -181,17 +180,9 @@ func draw_prop_front(prop: Dictionary) -> void:
 		painter.draw_line(life_point(prop,Vector2(x,577)),life_point(prop,Vector2(x,735)),Color(0.55,0.83,0.85,0.32),0.8,true)
 	draw_nameplate(prop)
 
-func draw_nameplate(prop: Dictionary) -> void:
-	var scale: float=prop.rect.size.x/prop.registration.width
-	var rect:=Rect2(life_point(prop,NAMEPLATE.position),NAMEPLATE.size*scale)
-	# Follow the collar's curved face, without a rectangular sign floating above it.
-	glass_polygon(prop,[Vector2(557,531),Vector2(586,540),Vector2(626,544),Vector2(666,540),Vector2(695,531),Vector2(693,552),Vector2(665,560),Vector2(626,564),Vector2(587,560),Vector2(559,552)],Color("c8ccc3"))
-	var font:=ThemeDB.fallback_font
-	var size:=8
-	var text_size:=font.get_string_size("BRINE",HORIZONTAL_ALIGNMENT_LEFT,-1,size)
-	var at:=Vector2(rect.get_center().x-text_size.x*0.5,rect.get_center().y+(font.get_ascent(size)-font.get_descent(size))*0.5)
-	# Printed directly on the pearl upper collar; no separate sign or supports.
-	painter.draw_string(font,at,"BRINE",HORIZONTAL_ALIGNMENT_LEFT,-1,size,Color("29484a"))
+func draw_nameplate(_prop: Dictionary) -> void:
+	# Final selected v10 casing deliberately has no collar lettering.
+	pass
 
 func glass_polygon(prop: Dictionary, source: Array, color: Color) -> void:
 	var points:=PackedVector2Array()

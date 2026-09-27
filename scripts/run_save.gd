@@ -125,6 +125,7 @@ static func problem(value: Dictionary) -> String:
 	if not preload("res://scripts/airlock_cycle.gd").valid_rooms(state.placed_rooms): return "airlock cycle state"
 	if not preload("res://scripts/room_flooding.gd").valid_rooms(state.placed_rooms): return "flood water state"
 	if not preload("res://scripts/room_fire.gd").valid_rooms(state.placed_rooms): return "fire state"
+	if not preload("res://scripts/survey_probe.gd").valid_rooms(state.placed_rooms): return "survey probe state"
 	if not preload("res://scripts/drone_fleet.gd").valid(value.get("drone_fleet"),state.get("placed_rooms",[])): return "drone fleet"
 	if not valid_crew(value.get("crew")): return "crew snapshots"
 	if not preload("res://scripts/companions.gd").valid(value.get("companions"),value.get("wrecks",{}),state.placed_rooms): return "companions"
@@ -202,6 +203,7 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 			last_error = "Checkpoint data does not match this build."
 			return false
 	if not preload("res://scripts/drone_fleet.gd").valid(data.get("drone_fleet"),data.state.placed_rooms): return false
+	if not preload("res://scripts/survey_probe.gd").valid_rooms(data.state.placed_rooms): return false
 	if not data.poi is Dictionary or not data.scroll is Vector2i or not data.rng is int or not data.orbit_rng is int:
 		return false
 	var wreck_occupied := {}

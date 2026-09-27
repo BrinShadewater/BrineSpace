@@ -22,6 +22,9 @@ static func role_of(prop: Dictionary) -> String:
 static func keeps_in_room(room_id: String, prop: Dictionary) -> bool:
 	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return true
 	var id:=str(prop.get("id",""))
+	# Owner report Sept 27: remove the separate circular construction-bay hatch.
+	# The operational launch pad is part of construction_rov's dock assembly.
+	if room_id=="construction_drone_bay" and id=="construction_hatch": return false
 	if id.ends_with("_rov") or id.ends_with("_hatch") or id in LIVE_MACHINERY: return true
 	return is_station_prop(str(prop.get("copy_source",prop.get("variant_source",id))))
 # Several views re-add built-in props after the layout pass (legacy restorations), so
@@ -178,6 +181,8 @@ static func template(id: String) -> Dictionary:
 	var registration: Dictionary={"pieces":pieces,"pivot":Vector2(r[0]+r[2]*0.5,r[1]+r[3]),"width":float(r[2]),"height":float(r[3])}
 	if data.has("operating_screens"): registration.operating_screens=data.operating_screens.duplicate(true)
 	if data.has("effects"): registration.effects=data.effects.duplicate(true)
+	if data.has("drone_dock"): registration.drone_dock=data.drone_dock
+	if data.has("aquarium"): registration.aquarium=data.aquarium.duplicate(true)
 	if data.has("operating_screen_color"): registration.operating_screen_color=data.operating_screen_color
 	if data.has("reading_lamp"): registration.reading_lamp=data.reading_lamp.duplicate(true)
 	if data.has("turbine_effects"): registration.turbine_effects=data.turbine_effects.duplicate(true)
@@ -193,6 +198,7 @@ static func template(id: String) -> Dictionary:
 		if registration.get("mirrored",false): f[0]=1.0-float(f[0])-float(f[2])
 		prop.footprint=f
 	if data.has("corner"): prop.wall_mount=true; prop.corner=data.corner
+	if data.get("wall_attachment",false): prop.wall_mount=true; prop.wall_attachment=true
 	if data.get("floor_piece",false): prop.floor_piece=true; prop.collision_boxes=[]
 	prop.sort_y=base_sort_y(prop)
 	all[id].template=prop
@@ -225,6 +231,9 @@ static func draw(room, prop: Dictionary) -> void:
 		source.painter=previous
 		return
 	var reg: Dictionary=prop.registration
+	if reg.has("drone_dock"):
+		preload("res://scripts/drone_dock.gd").draw(room.painter,prop.rect,reg.drone_dock,room.drone_visual,room.operating,room.machine_clock)
+		return
 	var tex: Texture2D=prop.library_texture
 	var scale_value: float=prop.rect.size.x/reg.width
 	var anchor:=Vector2(prop.rect.get_center().x,prop.rect.end.y)
@@ -249,6 +258,7 @@ static func draw(room, prop: Dictionary) -> void:
 	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))): draw_station_screens(room,reg,anchor,scale_value)
 	else: draw_operating_screens(room,reg,anchor,scale_value)
 	if reg.has("effects") and room.operating: draw_effects(room,prop,reg.effects)
+	if reg.has("aquarium"): preload("res://scripts/aquarium_life.gd").draw(room,prop)
 
 # Station-prop effects (catalog "effects"): areas are fractions of the prop's art.
 static func draw_effects(room, prop: Dictionary, effects: Array) -> void:

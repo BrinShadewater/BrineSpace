@@ -8,6 +8,7 @@ var strength: HSlider
 var strength_label: Label
 var strength_before: Dictionary={}
 const DEFAULT_STRENGTH:=0.42
+var preview_index:=1
 func setup(host) -> void:
 	editor=host
 	var title:=Label.new(); title.text="FLOOR FINISH"; add_child(title)
@@ -16,7 +17,7 @@ func setup(host) -> void:
 	choices.add_item("Room default")
 	for caption in Floor.finishes():
 		var path: String=Floor.finishes()[caption]
-		paths.append(path); choices.add_item(caption,Floor.texture(path))
+		paths.append(path); choices.add_item(caption,Floor.textures.get(path))
 	choices.item_selected.connect(apply_finish)
 	# Finishes are drawn over the authored floor. 42% was the fixed value; the owner
 	# sets how strongly a chosen finish reads, per room, and it saves with the layout.
@@ -29,6 +30,19 @@ func setup(host) -> void:
 	strength.drag_ended.connect(func(changed):
 		if changed and strength_before!=editor.draft:
 			editor.history.append(strength_before); editor.future.clear(); editor.dirty=true; editor.refresh())
+func _process(_delta:float) -> void:
+	# This panel starts hidden. Decode one visible choice at a time, rather than
+	# loading every floor finish while opening the furniture editor.
+	if not is_visible_in_tree() or preview_index>=paths.size(): return
+	var path:String=paths[preview_index]
+	if not Floor.textures.has(path):
+		var Library=preload("res://scripts/room_asset_library.gd")
+		Library.request_texture(path)
+		if not Library.finish_texture(path): return
+		if Library.source_textures.has(path): Floor.textures[path]=Library.source_textures[path]
+	choices.set_item_icon(preview_index,Floor.textures.get(path))
+	preview_index+=1
+
 func available() -> bool: return Floor.pilot(str(editor.entries[editor.index].room))
 func sync() -> void:
 	visible=editor.layer==1 and available()

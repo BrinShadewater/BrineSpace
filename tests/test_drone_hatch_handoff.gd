@@ -3,8 +3,10 @@ class Fleet extends RefCounted:
 	var orders: Array=[]
 	var drones: Dictionary={}
 class Host extends RefCounted:
+	var powered_room_cells:Dictionary={Vector2i.ZERO:true}
 	var drone_fleet=Fleet.new()
 	var occupied: Dictionary={Vector2i.ZERO:{"id":"construction_drone_bay"}}
+	func get_visual_time_seconds() -> float:return 0.0
 class Probe extends "res://scripts/grid_canvas.gd":
 	var host=Host.new()
 	func _ready():pass
@@ -33,7 +35,10 @@ func run():
 		var empty: PackedByteArray=await capture(probe)
 		drone.phase="launching"
 		var launch: PackedByteArray=await capture(probe)
-		if launch==empty:failures+=1;push_error(kind+" drone failed to render")
+		if launch!=empty:failures+=1;push_error(kind+" end of launch must be submerged")
+		drone.elapsed=.3
+		var visible_launch: PackedByteArray=await capture(probe)
+		if visible_launch==empty:failures+=1;push_error(kind+" launch body failed to render")
 		drone.phase="outbound";drone.elapsed=0.0
 		var outbound: PackedByteArray=await capture(probe)
 		if launch!=outbound:failures+=1;push_error(kind+" jumps at launch/outbound")

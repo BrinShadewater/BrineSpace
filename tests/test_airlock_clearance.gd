@@ -28,6 +28,18 @@ func _init() -> void:
 		game.occupied[cell]={"id":"corridor"}
 		check(not Cycle.exterior_clear(game,room),"Room blocks exterior")
 		game.occupied.erase(cell)
+	game.placed_rooms.append(room)
+	room.airlock_cycle={"phase":"exterior","elapsed":0.0}
+	check(Cycle.seal_departure(game,room.pos),"Departure requests closure warning")
+	Cycle.advance(game,1.0)
+	check(Cycle.warning_active(room) and Cycle.pose(room).outer==1,"Warning precedes hatch movement")
+	check(Cycle.valid_rooms([room]),"Partial warning delay is save-compatible")
+	Cycle.advance(game,.25+.5)
+	check(is_equal_approx(Cycle.pose(room).outer,.5),"Hatch moves after lead-in")
+	Cycle.advance(game,.5+1.99)
+	check(Cycle.warning_active(room) and Cycle.pose(room).outer==0,"Warning lingers after seating")
+	Cycle.advance(game,.02)
+	check(not Cycle.warning_active(room),"Warning stops during sealed waiting")
 	room.pos=Vector2i(0,0);room.rotation=0
 	check(not Cycle.exterior_clear(game,room),"Map edge blocks exterior")
 	game.free()

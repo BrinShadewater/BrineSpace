@@ -20,6 +20,7 @@ var actor := Vector2.ZERO
 var actor_direction := "south"
 var actor_clock := 0.0
 var machine_clock := 0.0
+var drone_visual: Dictionary = {}
 var operating := true
 var paused := false
 var walking := false
@@ -286,10 +287,11 @@ func draw_floor_overlays(_center: Vector2) -> void:
 	pass
 
 func draw_room_world(include_floor := true) -> void:
+	var painted:bool=preload("res://rooms/whole-room/painted_shell.gd").enabled(self)
 	# Wall assembly is room-space data: zoom changes its draw transform only.
 	# Keep the complete original sorted queue to preserve equal-depth ordering.
 	var shell_key: Array = []
-	if retain_shell_queues and shell_pass==1 and not show_actor and external_actors.is_empty() and not debug and not include_floor:
+	if not painted and retain_shell_queues and shell_pass==1 and not show_actor and external_actors.is_empty() and not debug and not include_floor:
 		shell_key = [layout,edges,props,get_meta("raised_north_visible",false)]
 		if shell_queues.has(shell_key):
 			for item in shell_queues[shell_key]:
@@ -307,6 +309,9 @@ func draw_room_world(include_floor := true) -> void:
 			draw_floor_overlays(center)
 			if get_meta("derelict_condition",false):
 				preload("res://scripts/derelict_condition.gd").floor_wear(painter,center)
+	if painted and shell_pass!=2:
+		preload("res://rooms/whole-room/painted_shell.gd").context(self).tops(painter)
+		if shell_pass==1:return
 	if retained_content_host != null and shell_pass == 2 and reuse_prop_queue:
 		var live: Array = []
 		if show_actor:
@@ -318,7 +323,7 @@ func draw_room_world(include_floor := true) -> void:
 	var queue: Array = []
 	for prop in props:
 		queue.append_array(prop_content_entries(prop))
-	if shell_pass != 2:
+	if shell_pass != 2 and not painted:
 		for edge in edges:
 			if get_meta("raised_north_visible",false) and edge.horizontal and is_equal_approx(edge.center.y,-192.0): continue
 			for rect in Geometry.wall_rects(edge):

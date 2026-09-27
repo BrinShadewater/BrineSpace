@@ -17,9 +17,14 @@ class Preview extends Node2D:
 		room.configure_embedded(0, [], false, 0.0)
 		room.set_meta("raised_north_visible", true)
 		room.render_into(self, ANCHOR, ZOOM, true)
+		room.shell_pass=1
+		room.render_into(self,ANCHOR, ZOOM,false,false)
+		room.shell_pass=0
 		draw_set_transform(ANCHOR, 0, Vector2.ONE * ZOOM)
 		preload("res://rooms/whole-room/north_wall.gd").draw_into(self, id, Vector2i.ZERO, false, false, room)
+		room.shell_pass=2
 		room.render_into(self, ANCHOR, ZOOM, false, false)
+		room.shell_pass=0
 
 func _init() -> void: call_deferred("run")
 

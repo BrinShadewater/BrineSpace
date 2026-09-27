@@ -1,3 +1,8 @@
+> September 26 update: the Mac drone/room candidate now matches the verified
+> Windows snapshot byte-for-byte at the PCK level. See
+> [current Mac build handoff](MAC_DRONE_BUILD_2026-09-26.md). Native Mac acceptance
+> remains pending; historical candidates below retain their original scope.
+
 # Mac release preparation
 
 Owner test hardware: Apple Silicon (M1 or newer), confirmed September 20, 2026.

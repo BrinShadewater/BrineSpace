@@ -82,7 +82,10 @@ func run() -> void:
 			assert(worker.segment_clear(previous,worker.foot))
 		assert(worker.path.is_empty())
 		worker.arrive()
-		assert(worker.activity=="taking a hot meal break" and worker.direction=="north")
+		# Face the meal station the crew arrived at; which counter that is follows the owner's layout.
+		var local: Vector2=worker.foot-(Vector2(cell)+Vector2.ONE*0.5)*384
+		var arrived: Array=worker.RoomActivity.stations(worker.geometry[cell]).filter(func(st): return st.room=="galley" and Vector2(st.point).distance_to(local)<1)
+		assert(worker.activity=="taking a hot meal break" and arrived.size()==1 and worker.direction==str(arrived[0].facing))
 		var saved: Dictionary=worker.snapshot()
 		assert(worker.valid_snapshot(saved))
 		var file:=FileAccess.open("res://output/galley-v1/worker.bin",FileAccess.WRITE)
