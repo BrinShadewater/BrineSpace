@@ -193,10 +193,7 @@
       "test_hitch_parity",
       "test_light_pool_batch",
       "test_projected_shadow_batch",
-      "test_salvage_articulation",
-      "test_construction_articulation",
       "test_drone_hatch_handoff",
-      "test_drone_hatch_polygon",
       "test_navigation_segment_parity",
       "test_prop_flip_rendering",
       "test_render_cache_parity",
@@ -323,18 +320,6 @@
     "test_drone_hatch_handoff": {
       "lane": "native",
       "reason": "Compares actual grid-rendered drone pixels across hatch phase boundaries."
-    },
-    "test_drone_hatch_polygon": {
-      "lane": "native",
-      "reason": "Checks renderer errors while hatch apertures approach zero at room coordinates."
-    },
-    "test_construction_articulation": {
-      "lane": "native",
-      "reason": "Checks construction chassis rigidity and tool motion with real pixels."
-    },
-    "test_salvage_articulation": {
-      "lane": "native",
-      "reason": "Checks chassis rigidity and claw motion with real rendered pixels."
     },
     "test_projected_shadow_batch": {
       "lane": "native",

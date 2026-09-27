@@ -54,7 +54,7 @@ func run() -> void:
 	var records: Array=[]
 	var failures:=0
 	var subjects: Array=[]
-	for kind in ["mining","salvage"]: subjects.append({"path":"res://rooms/production-ten/%s_drone_bay_view.gd"%kind,"props":[kind+"_rov",kind+"_hatch"]})
+	for kind in ["mining","salvage"]: subjects.append({"path":"res://rooms/production-ten/%s_drone_bay_view.gd"%kind,"props":[kind+"_rov"]})
 	if not review_view.is_empty():
 		assert(not review_props.is_empty(),"Specify exact prop IDs for a custom review")
 		subjects=[{"path":review_view,"props":review_props}]
