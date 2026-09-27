@@ -1,7 +1,7 @@
 extends Node2D
 ## Per-room command retention preserves prop/crew depth order without a raster cache.
-const STATE_FIELDS = ["flood_water","flood_clock","quarter","operating","machine_clock","actor_clock","actor","external_actor_texture","walking","actor_direction","drone_deployed","hatch_open","recovery","architect_pod","cycle_pose","carriers"]
-const LIVE_STATE_FIELDS = ["flood_water","flood_clock","machine_clock","actor_clock","carriers","actor","external_actor_texture","walking","actor_direction"]
+const STATE_FIELDS = ["drone_visual","survey_status","survey_clock","flood_water","flood_clock","quarter","operating","machine_clock","actor_clock","actor","external_actor_texture","walking","actor_direction","drone_deployed","hatch_open","recovery","architect_pod","cycle_pose","caution_active","carriers"]
+const LIVE_STATE_FIELDS = ["drone_visual","survey_status","survey_clock","flood_water","flood_clock","machine_clock","actor_clock","carriers","actor","external_actor_texture","walking","actor_direction"]
 var reuse_cheap_keys := not OS.get_cmdline_user_args().has("--uncached-slot-keys")
 var draw_origin := Vector2.ZERO
 var draw_scale := 1.0
@@ -123,7 +123,7 @@ func submit(view, queue: Array) -> void:
 				# change with slot state, while registered screens use the live clock.
 				# Portable/custom artwork still belongs to its source renderer.
 				if item.prop.get("library_asset",false) and not item.prop.get("custom_library_draw",false) and not item.prop.has("portable_view"):
-					slot.live = bool(view_state.get("operating",false)) and (not item.prop.registration.get("operating_screens",[]).is_empty() or not item.prop.registration.get("effects",[]).is_empty())
+					slot.live = item.prop.registration.has("drone_dock") or item.prop.registration.has("aquarium") or bool(view_state.get("operating",false)) and (not item.prop.registration.get("operating_screens",[]).is_empty() or not item.prop.registration.get("effects",[]).is_empty())
 				if item.kind == "prop_base": slot.live = false
 				if item.kind == "prop_effects": slot.live = true
 				if item.kind == "prop_pass": slot.live = item.live
