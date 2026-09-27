@@ -77,7 +77,6 @@ const MiningView = preload("res://rooms/full-wall-v1/mining_drone_bay_view.gd")
 var mining_view: MiningView
 const ConstructionView = preload("res://rooms/full-wall-v1/construction_drone_bay_view.gd")
 var construction_view: ConstructionView
-const DroneArt = preload("res://scripts/drone_art.gd")
 const SalvageView = preload("res://rooms/full-wall-v1/salvage_drone_bay_view.gd")
 var salvage_view: SalvageView
 const LoungeView = preload("res://rooms/full-wall-v1/crew_lounge_view.gd")
@@ -197,8 +196,6 @@ var human_animation_last_time := -1.0
 var human_animation_phase := 0.0
 var human_animation_last_position := Vector2.ZERO
 var human_stride_distance := {}
-var drone_sprites := {}
-var drone_animations := {}
 var brine_core_overlays := {}
 var room_textures := {}
 var room_texture_variants := {}
@@ -446,7 +443,6 @@ func _ready() -> void:
 			human_sprites[direction] = texture
 	human_sprite=human_sprites.get("south",human_sprite)
 	_load_major_bill_animations()
-	_load_drone_assets()
 	_load_brine_core_overlays()
 
 func _generate_star_points() -> void:
@@ -640,61 +636,6 @@ func _advance_human_animation(key: String, time_seconds: float, position_cells: 
 	human_animation_last_time = time_seconds
 	human_animation_last_position = position_cells
 	return human_animation_phase
-
-func _load_drone_assets() -> void:
-	var directions := ["north", "north-east", "east", "south-east", "south", "south-west", "west", "north-west"]
-	for direction in directions:
-		var texture: Texture2D = _load_png_texture("res://mining-drone-animation/rotations/%s.png" % direction)
-		if texture != null:
-			drone_sprites[direction] = texture
-	_load_drone_animation("fly", "res://mining-drone-animation/animations/2._Flying_Moving_The_drone_tilts_slightly_forward-30d7af04", directions)
-	_load_drone_animation("mine", "res://mining-drone-animation/animations/3._Mining_The_drone_stops_in_place_and_extends_its-32d99183", directions)
-	_load_drone_animation("idle", "res://mining-drone-animation/animations/Idle_Hover_The_drone_floats_in_place_with_a_slow_m-0332a189", directions)
-
-func _load_drone_animation(state: String, base_path: String, directions: Array) -> void:
-	var by_direction := {}
-	for direction_value in directions:
-		var direction := str(direction_value)
-		var direction_dir := _find_direction_animation_dir(base_path, direction)
-		if direction_dir.is_empty():
-			continue
-		var frames: Array[String] = []
-		var dir := DirAccess.open(direction_dir)
-		if dir == null:
-			continue
-		dir.list_dir_begin()
-		var file_name := dir.get_next()
-		while not file_name.is_empty():
-			if not dir.current_is_dir() and file_name.ends_with(".png"):
-				frames.append("%s/%s" % [direction_dir, file_name])
-			file_name = dir.get_next()
-		dir.list_dir_end()
-		frames.sort()
-		var textures: Array[Texture2D] = []
-		for frame_path in frames:
-			var texture: Texture2D = _load_png_texture(frame_path)
-			if texture != null:
-				textures.append(texture)
-		if not textures.is_empty():
-			by_direction[direction] = textures
-	drone_animations[state] = by_direction
-
-func _find_direction_animation_dir(base_path: String, direction: String) -> String:
-	var exact_path := "%s/%s" % [base_path, direction]
-	if DirAccess.dir_exists_absolute(exact_path):
-		return exact_path
-	var dir := DirAccess.open(base_path)
-	if dir == null:
-		return ""
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while not file_name.is_empty():
-		if dir.current_is_dir() and file_name.begins_with(direction):
-			dir.list_dir_end()
-			return "%s/%s" % [base_path, file_name]
-		file_name = dir.get_next()
-	dir.list_dir_end()
-	return ""
 
 func _load_brine_core_overlays() -> void:
 	var overlay_paths := {
@@ -3019,25 +2960,6 @@ func _draw_drones(main) -> void:
 			visibility = 1.0-fraction if drone.phase=="launching" else fraction
 		var running: bool = drone.kind!="construction" or drone.get("bootstrap",false) or main.powered_room_cells.has(drone.home)
 		preload("res://scripts/drone_animation.gd").draw(draw_target,drone,pos,cell_size/384.0,float(anchors.get("art_scale",.42)),running,main.get_visual_time_seconds(),visibility)
-
-func _get_drone_frame(state: String, direction: String) -> Texture2D:
-	if drone_animations.has(state):
-		var by_direction: Dictionary = drone_animations[state]
-		if by_direction.has(direction):
-			var frames: Array = by_direction[direction]
-			var fps := 8.0
-			if state == "mine":
-				fps = 6.0
-			elif state == "idle":
-				fps = 4.0
-			var time_seconds: float = _get_main().get_visual_time_seconds()
-			var index: int = int(time_seconds * fps) % frames.size()
-			return frames[index]
-	if drone_sprites.has(direction):
-		return drone_sprites[direction]
-	if drone_sprites.has("south"):
-		return drone_sprites["south"]
-	return null
 
 func _direction_for_vector(vector: Vector2) -> String:
 	if vector.length() <= 0.001:

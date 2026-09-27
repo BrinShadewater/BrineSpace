@@ -24,7 +24,8 @@ static func keeps_in_room(room_id: String, prop: Dictionary) -> bool:
 	var id:=str(prop.get("id",""))
 	# Owner report Sept 27: remove the separate circular construction-bay hatch.
 	# The operational launch pad is part of construction_rov's dock assembly.
-	if room_id=="construction_drone_bay" and id=="construction_hatch": return false
+	# Owner, Sept 27: the mining and salvage bays lose their old hatches the same way.
+	if id in ["construction_hatch","mining_hatch","salvage_hatch"]: return false
 	if id.ends_with("_rov") or id.ends_with("_hatch") or id in LIVE_MACHINERY: return true
 	return is_station_prop(str(prop.get("copy_source",prop.get("variant_source",id))))
 # Several views re-add built-in props after the layout pass (legacy restorations), so

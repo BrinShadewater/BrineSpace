@@ -22,8 +22,10 @@ Update CURRENT_STATUS.md at a meaningful change of direction or acceptance miles
 git -c core.longpaths=true clone https://github.com/BrinShadewater/BrineSpace.git
 ```
 
-`mining-drone-animation/animations/…` nests deeper than the 260-character Windows
-path limit. Without `core.longpaths`, the clone **fails partway, prints
+Commits before Sept 27, 2026 contain `mining-drone-animation/animations/…`, which nests
+deeper than the 260-character Windows path limit (the retired drone frames were deleted
+then; current `main` stays well under it). Checking out such a commit without
+`core.longpaths` **fails partway, prints
 `Filename too long`, and still leaves a populated-looking directory** with an empty
 index. That failure mode is vicious: the folder looks fine, so a `find` over it
 reports files as absent that are in fact present, and a `git add` + `commit` from
@@ -110,7 +112,6 @@ script.
 | `legacy/` | The earlier room and prop art, moved aside. **Load-bearing, not a cleanup candidate:** live code loads from `default/` *and* from `retired/` — that split was decided by whether a literal path named the file, so a dynamic reference landed art in `retired/` that the game still draws. A single pack can be split across `assets/`, `default/` and `retired/` |
 | `Brine icons/` | Icon set, multiple sizes, with sprite-sheet sources |
 | `brinecore-animation/` | BRINE core room animation study — its own scene and scripts |
-| `mining-drone-animation/` | Directional drone animation frames (the deep paths) |
 | `brineui/`, `character/` | UI and character art |
 | `docs/DEVELOPMENT_NOTES.md` | North star, current focus, known limits |
 
