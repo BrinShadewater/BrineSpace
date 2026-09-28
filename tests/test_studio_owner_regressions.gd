@@ -34,6 +34,18 @@ func run():
   if str(key).ends_with("/"+copy) or str(key)==copy:leftovers.append(key)
  check(leftovers.is_empty(),"Deleted copy leaves no keys behind: "+str(leftovers))
  e.draft=kept;e.history=kept_history;e.future=kept_future;e.selected=a.id;e.refresh()
+ # Shortcuts go through the command-or-control check (Cmd on a Mac): F flips, Ctrl+Z undoes it,
+ # Ctrl+Shift+Z redoes it.
+ var press=func(code,ctrl,shift):
+  var k=InputEventKey.new();k.keycode=code;k.pressed=true;k.ctrl_pressed=ctrl;k.shift_pressed=shift;e._input(k)
+ var unflipped=e.draft.get("flip/"+a.id,[false,false]).duplicate()
+ press.call(KEY_F,false,false)
+ check(e.draft.get("flip/"+a.id)!=unflipped,"F flips the selected prop")
+ press.call(KEY_Z,true,false)
+ check(e.draft.get("flip/"+a.id,[false,false])==unflipped,"Ctrl+Z undoes the flip")
+ press.call(KEY_Z,true,true)
+ check(e.draft.get("flip/"+a.id)!=unflipped,"Ctrl+Shift+Z redoes the flip")
+ e.draft=kept;e.history=kept_history;e.future=kept_future;e.selected=a.id;e.refresh()
  e.undo();check(not e.draft.has("order/"+a.id),"Stacking can be undone")
  e.redo();check(e.draft.get("order/"+a.id)==front_order,"Stacking can be redone")
  e.save_layout();e.rotation_drafts.clear();e.load_room()

@@ -944,7 +944,7 @@ func canvas_input(event: InputEvent) -> void:
 			if layer==1: hits=[]
 			var previous:=selected
 			selected="" if hits.is_empty() else str(hits[0])
-			if event.ctrl_pressed and previous in hits: selected=str(hits[(hits.find(previous)+1)%hits.size()])
+			if event.is_command_or_control_pressed() and previous in hits: selected=str(hits[(hits.find(previous)+1)%hits.size()])
 			if selected.is_empty():
 				if event.shift_pressed:
 					box_selecting=true; box_start=point; box_end=point
@@ -1058,21 +1058,23 @@ func _input(event: InputEvent) -> void:
 	if event.keycode==KEY_ESCAPE and resizing:
 		resizing=false; draft=drag_before.duplicate(true); refresh()
 	elif event.keycode==KEY_ESCAPE: ask_change(close_editor)
-	elif event.keycode==KEY_DELETE or event.physical_keycode==KEY_DELETE: remove_library_asset()
-	elif event.keycode==KEY_R and not event.ctrl_pressed:
+	# Cmd stands in for Ctrl on a Mac, whose laptops have Backspace but no Delete key.
+	elif event.keycode==KEY_DELETE or event.physical_keycode==KEY_DELETE or (event.keycode==KEY_BACKSPACE and OS.get_name()=="macOS"): remove_library_asset()
+	elif event.keycode==KEY_R and not event.is_command_or_control_pressed():
 		if selected_prop().is_empty(): switch_rotation(quarter+(-1 if event.shift_pressed else 1))
 		else: rotate_selected_variant(-1 if event.shift_pressed else 1)
-	elif event.keycode==KEY_F and not event.ctrl_pressed: flip_selected(0)
+	elif event.keycode==KEY_F and not event.is_command_or_control_pressed(): flip_selected(0)
 	elif event.keycode==KEY_BRACKETLEFT: switch_rotation(quarter-1)
 	elif event.keycode==KEY_BRACKETRIGHT: switch_rotation(quarter+1)
-	elif event.ctrl_pressed and event.keycode==KEY_C: copy_selection()
-	elif event.ctrl_pressed and event.keycode==KEY_V: paste_selection()
-	elif event.ctrl_pressed and event.keycode==KEY_G:
+	elif event.is_command_or_control_pressed() and event.keycode==KEY_C: copy_selection()
+	elif event.is_command_or_control_pressed() and event.keycode==KEY_V: paste_selection()
+	elif event.is_command_or_control_pressed() and event.keycode==KEY_G:
 		if event.shift_pressed: ungroup_selection()
 		else: group_selection()
-	elif event.ctrl_pressed and event.keycode==KEY_S: save_all_rotations()
-	elif event.ctrl_pressed and event.keycode==KEY_Z: undo()
-	elif event.ctrl_pressed and event.keycode==KEY_Y: redo()
+	elif event.is_command_or_control_pressed() and event.keycode==KEY_S: save_all_rotations()
+	elif event.is_command_or_control_pressed() and event.keycode==KEY_Z and event.shift_pressed: redo()
+	elif event.is_command_or_control_pressed() and event.keycode==KEY_Z: undo()
+	elif event.is_command_or_control_pressed() and event.keycode==KEY_Y: redo()
 	elif event.keycode in [KEY_LEFT,KEY_RIGHT,KEY_UP,KEY_DOWN]:
 		if layer==1: return
 		var prop:=selected_prop()
