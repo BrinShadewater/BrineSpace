@@ -293,7 +293,7 @@ func prepare_three_crew_review() -> void:
 	var cell:=Vector2i(-1,-1)
 	for candidate in game.occupied:
 		if game.occupied[candidate].id=="cryo_chamber": cell=candidate; break
-	expect(cell!=Vector2i(-1,-1),"Three-crew review requires a real Cryo Chamber")
+	expect(cell!=Vector2i(-1,-1),"Three-crew review requires a real Cryo Lab")
 	if cell==Vector2i(-1,-1): return
 	# The mixed economy can already have produced a clone; add real berths rather
 	# than lowering population or overriding the production capacity check.

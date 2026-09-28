@@ -323,7 +323,7 @@ static func all_rooms() -> Dictionary:
 		},
 		"cryo_chamber": {
 			"id": "cryo_chamber",
-			"display_name": "Cryo Chamber",
+			"display_name": "Cryo Lab",
 			"category": "Science",
 			"rarity": "rare",
 			"cost": {"metal": 8, "data": 4},
