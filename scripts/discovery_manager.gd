@@ -6,7 +6,12 @@ static func functioning_links(connected_links: Array, powered_cells: Dictionary)
 	for link_value in connected_links:
 		var link: Dictionary = link_value
 		var cells: Array = link.get("cells", [])
-		if cells.size() >= 2 and powered_cells.has(cells[0]) and powered_cells.has(cells[1]):
+		var all_functioning := cells.size() >= 2
+		for cell in cells:
+			if not powered_cells.has(cell):
+				all_functioning = false
+				break
+		if all_functioning:
 			functioning.append(link)
 	return functioning
 

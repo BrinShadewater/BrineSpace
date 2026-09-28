@@ -3966,8 +3966,7 @@ func _card_synergy_hint(room_id: String) -> String:
 		var synergy_id := str(synergy.get("id", ""))
 		if not meta.discovered_synergy_ids.has(synergy_id):
 			continue
-		var room_ids: Array = synergy.get("rooms", [])
-		if not room_ids.has(room_id):
+		if not SynergyManagerScript.involves_room(synergy, room_id):
 			continue
 		var score := 0
 		if active_synergies.has(synergy_id):
@@ -4909,7 +4908,7 @@ func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 	var unknown_count := 0
 	for synergy in SynergyManagerScript.all_synergies():
 		if meta.discovered_synergy_ids.has(synergy["id"]):
-			if synergy.get("rooms", []).has(room_id):
+			if SynergyManagerScript.involves_room(synergy, room_id):
 				relevant.append(synergy)
 		else:
 			unknown_count += 1
@@ -4927,7 +4926,7 @@ func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 			for link in active_synergy_links:
 				if link.id == synergy.id and link.get("cells", []).has(room.pos):
 					local_count += 1
-			lines.append("[color=#9fdfdc]%s[/color]" % ("FUNCTIONING AT THIS ROOM" if local_count > 0 else ("CONNECTED HERE · CHECK BOTH PARTNERS' INPUTS" if connected_here else "NOT CONNECTED HERE · MATCH THE PARTNER'S DOORS")))
+			lines.append("[color=#9fdfdc]%s[/color]" % ("FUNCTIONING AT THIS ROOM" if local_count > 0 else ("CONNECTED HERE · CHECK ALL LINKED ROOMS" if connected_here else "NOT CONNECTED HERE · MATCH THE REQUIRED DOORS")))
 			lines.append("[color=#8fa3ae]Station-wide pattern record:[/color]")
 		lines.append(_format_synergy_line(synergy))
 	if unknown_count > 0:
@@ -5202,6 +5201,15 @@ func _placement_connections(room_id: String, cell: Vector2i) -> String:
 	var matches := 0
 	var mismatches := 0
 	var learned: Array[String] = []
+	var passages := []
+	var passage_recipe := SynergyManagerScript.get_synergy("parts_passage")
+	var preview_occupied := occupied.duplicate()
+	if not occupied.has(cell) and SynergyManagerScript.involves_room(passage_recipe, room_id):
+		var candidate := RoomDatabaseScript.get_room(room_id).duplicate(true)
+		candidate["pos"] = cell
+		candidate["rotation"] = selected_rotation
+		preview_occupied[cell] = candidate
+		passages = SynergyManagerScript.passage_links(preview_occupied).filter(func(link): return link.cells.has(cell))
 	for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
 		var neighbor_cell: Vector2i = cell + offset
 		if not occupied.has(neighbor_cell):
@@ -5212,7 +5220,11 @@ func _placement_connections(room_id: String, cell: Vector2i) -> String:
 			continue
 		matches += 1
 		for recipe in SynergyManagerScript.all_synergies():
+			if recipe.get("via_passage", false):
+				continue
 			if not meta.discovered_synergy_ids.has(recipe.id):
+				continue
+			if SynergyManagerScript.within_passage_link(passages, [cell, neighbor_cell]):
 				continue
 			var partners: Array = recipe.get("rooms", [])
 			if partners.size() == 2 and room_id != str(neighbor.id) and partners.has(room_id) and partners.has(neighbor.id) and not learned.has(str(recipe.name)):
@@ -5220,6 +5232,13 @@ func _placement_connections(room_id: String, cell: Vector2i) -> String:
 	var result := "%d door matches · %d unmatched neighbors" % [matches, mismatches]
 	if not learned.is_empty():
 		result += "\nKnown links: " + ", ".join(learned) + " · requires both rooms functioning"
+	if not passages.is_empty():
+		var passage_count := passages.size()
+		if meta.discovered_synergy_ids.has("parts_passage"):
+			var amount := passage_count * (2 if meta.stabilized_synergy_ids.has("parts_passage") else 1)
+			result += "\nParts Passage x%d: +%d Metal / cycle\nRequires storage, workshop and passage functioning." % [passage_count, amount]
+		else:
+			result += "\nUnrecovered passage connection · operate the linked rooms to investigate."
 	return result
 
 func _inspector_action(value: Variant) -> void:

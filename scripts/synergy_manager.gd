@@ -2,8 +2,18 @@ extends RefCounted
 class_name SynergyManager
 
 const RoomDatabaseScript := preload("res://scripts/room_database.gd")
+const PASSAGE_IDS := ["corridor", "corner", "tee_corridor"]
 
 const SYNERGIES := [
+	{
+		"id": "parts_passage", "name": "Parts Passage",
+		"rooms": ["storage_bay", "salvage_workshop"], "via_passage": true,
+		"bonus": {"metal": 1},
+		"effect": "+1 Metal per functioning cycle per Storage Bay / Salvage Workshop pair joined through one straight, corner or T corridor. All three rooms must function; extra passages do not stack.",
+		"message": "The spare parts now reach the workshop before someone declares them missing.",
+		"terminal_reward": {"research": 3}, "stabilize_cycles": 3,
+		"fx_profile": "logistics", "fx_color": "B68D55"
+	},
 	{
 		"id":"chilled_air_recovery", "name":"Chilled Air Recovery", "rooms":["cold_store","life_support"],
 		"bonus":{"oxygen":1}, "effect":"+1 Oxygen per functioning cycle from recovered cold air.",
@@ -1168,12 +1178,15 @@ const SYNERGIES := [
 ]
 
 static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
-	var links := []
+	var links := passage_links(occupied)
 	var seen_links := {}
 	for synergy in SYNERGIES:
+		if synergy.get("via_passage", false):
+			continue
 		var pairs := _find_adjacent_pairs(synergy["rooms"], occupied)
 		for pair in pairs:
-			_add_link(links, seen_links, synergy, pair)
+			if not within_passage_link(links, pair):
+				_add_link(links, seen_links, synergy, pair)
 	for room in placed_rooms:
 		if room["id"] != "cryo_chamber":
 			continue
@@ -1200,6 +1213,52 @@ static func get_synergy(id: String) -> Dictionary:
 		if synergy["id"] == id:
 			return synergy
 	return {}
+
+static func involves_room(synergy: Dictionary, room_id: String) -> bool:
+	return synergy.get("rooms", []).has(room_id) or (synergy.get("via_passage", false) and PASSAGE_IDS.has(room_id))
+
+# Shared by evaluation and hover previews, without scanning unrelated recipes on hover.
+static func passage_links(occupied: Dictionary) -> Array:
+	var links := []
+	var seen := {}
+	for synergy in SYNERGIES:
+		if not synergy.get("via_passage", false):
+			continue
+		for cells in _find_passage_pairs(synergy.rooms, occupied):
+			_add_link(links, seen, synergy, cells)
+	return links
+
+# A corridor already paying Parts Passage does not also pay Logistics Spine for the same
+# storage bay (owner, Sept 27): an adjacent pair inside one passage link does not stack.
+static func within_passage_link(links: Array, pair: Array) -> bool:
+	for link in links:
+		if link.get("via_passage", false) and link.cells.has(pair[0]) and link.cells.has(pair[1]):
+			return true
+	return false
+
+# Endpoints stay first for pair identity; the passage is also a required functioning cell.
+# Only a single passage is traversed. A tee can serve distinct workshops, never a chain.
+static func _find_passage_pairs(room_ids: Array, occupied: Dictionary) -> Array:
+	var pairs := []
+	for pos in occupied:
+		var passage: Dictionary = occupied[pos]
+		if not PASSAGE_IDS.has(str(passage.get("id", ""))):
+			continue
+		var starts := []
+		var ends := []
+		for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+			var neighbor_pos: Vector2i = pos + offset
+			var neighbor: Dictionary = occupied.get(neighbor_pos, {})
+			if not _rooms_connected(passage, neighbor, offset):
+				continue
+			if neighbor.get("id", "") == room_ids[0]:
+				starts.append(neighbor_pos)
+			elif neighbor.get("id", "") == room_ids[1]:
+				ends.append(neighbor_pos)
+		for start in starts:
+			for end in ends:
+				pairs.append([start, end, pos])
+	return pairs
 
 static func _find_adjacent_pairs(room_ids: Array, occupied: Dictionary) -> Array:
 	var pairs := []

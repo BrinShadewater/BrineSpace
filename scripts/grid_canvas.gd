@@ -2498,12 +2498,14 @@ func _draw_synergy_links(main) -> void:
 			continue
 		var color_text := str(link.get("fx_color", "4FA38D")).trim_prefix("#")
 		var link_color := Color("#%s" % color_text)
-		var center_a := (Vector2(cells[0]) + Vector2.ONE * 0.5) * cell_size
-		var center_b := (Vector2(cells[1]) + Vector2.ONE * 0.5) * cell_size
-		if not _is_functioning_link(main.active_synergy_links, link):
-			draw_target.draw_line(center_a, center_b, Color(link_color.r, link_color.g, link_color.b, 0.18), maxf(1.5, cell_size * 0.006), true)
-			continue
-		_draw_functioning_synergy(link, center_a, center_b, link_color, cell_size, float(main.visual_time_seconds))
+		var route: Array = [cells[0], cells[2], cells[1]] if link.get("via_passage", false) and cells.size() == 3 else cells
+		for index in range(route.size() - 1):
+			var center_a := (Vector2(route[index]) + Vector2.ONE * 0.5) * cell_size
+			var center_b := (Vector2(route[index + 1]) + Vector2.ONE * 0.5) * cell_size
+			if not _is_functioning_link(main.active_synergy_links, link):
+				draw_target.draw_line(center_a, center_b, Color(link_color.r, link_color.g, link_color.b, 0.18), maxf(1.5, cell_size * 0.006), true)
+				continue
+			_draw_functioning_synergy(link, center_a, center_b, link_color, cell_size, float(main.visual_time_seconds))
 
 func _is_functioning_link(active_links: Array, candidate: Dictionary) -> bool:
 	var candidate_key := str(candidate.get("key", ""))
