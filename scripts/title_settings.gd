@@ -64,6 +64,12 @@ static func initialize(window: Window) -> void:
 	var config := ConfigFile.new()
 	raised_walls = true
 	if config.load(_settings_path()) != OK:
+		# The 1600x900 window override is in pixels, so a Retina Mac (scale 2) opened the first
+		# window at half size. Windows always reports scale 1 and is unchanged.
+		var scale := DisplayServer.screen_get_scale(window.current_screen)
+		if scale > 1.0 and window.mode == Window.MODE_WINDOWED:
+			window_size = Vector2i(Vector2(window.size) * scale)
+			apply_window_mode(window, 0, false)
 		window_size = window.size
 		apply_runtime(window)
 		return
