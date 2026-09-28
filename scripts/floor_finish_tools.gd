@@ -46,6 +46,14 @@ func _process(_delta:float) -> void:
 func available() -> bool: return Floor.pilot(str(editor.entries[editor.index].room))
 func sync() -> void:
 	visible=editor.layer==1 and available()
+	# Name and show the room's own floor, so reverting to it is one click (owner, Sept 27).
+	var original: String=""
+	if is_instance_valid(editor.room):
+		original=str(preload("res://rooms/whole-room/room_floor.gd").profile_for(editor.room).get("source",""))
+	if original.is_empty(): choices.set_item_text(0,"Room default"); choices.set_item_icon(0,null)
+	else:
+		choices.set_item_text(0,"Room default ("+original.get_file().get_basename().replace("-"," ").capitalize()+")")
+		choices.set_item_icon(0,Floor.texture(original))
 	var index:=paths.find(str(editor.draft.get("floor/finish","")))
 	choices.select(maxi(0,index))
 	var value: float=float(editor.draft.get("floor/strength",DEFAULT_STRENGTH))

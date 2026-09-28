@@ -16,7 +16,7 @@ var tray_pending_total:=0
 var library_filter: OptionButton
 var pack_filter: OptionButton
 const TRAY_CATEGORIES := ["Default","Common Props","Floors","Walls","Operations","Engineering","Science","Life Support","Recreation","Anomaly","Robotics"]
-const LAYER_CAPTIONS := ["Objects", "Floor finish", "Floor decorations", "Wall decorations", "Lights"]
+const LAYER_CAPTIONS := ["Props", "Floors", "Floor decorations", "Wall decorations", "Lights"]
 # Owner, Sept 27: floor decorations and lights leave Studio for now.
 const HIDDEN_LAYERS := [2, 4]
 const TRAY_DEFAULT := 0
@@ -81,16 +81,14 @@ var object_buttons: Array=[]
 var preview_lights:=true
 var preview_animation:=false
 var preview_clock:=0.0
-var scale_actor = preload("res://scripts/room_scale_preview.gd").new()
-var character_mode: OptionButton
-var cast_pick: OptionButton
+var scale_actor = preload("res://scripts/room_scale_cast.gd").new()
+var cast_rows: Array = [] # One activity picker per cast member.
+var instructions: Label
 var show_character: CheckButton
 # View options remembered across rooms, rotations and launches (owner playtest).
 const Prefs=preload("res://scripts/room_studio_prefs.gd")
 var pref_controls: Dictionary={}
-var character_place: Button
 var character_status: Label
-var placing_character := false
 var lights_toggle: CheckButton
 var animation_toggle: CheckButton
 const Lighting=preload("res://rooms/whole-room/room_lighting.gd")
@@ -367,9 +365,11 @@ func _ready() -> void:
 	guides.toggled.connect(func(value): show_guides=value; canvas.queue_redraw())
 	var clean:=CheckButton.new(); clean.text="Clean preview"; toolbar.add_child(clean)
 	clean.toggled.connect(func(value): clean_preview=value; canvas.queue_redraw())
-	show_character=CheckButton.new(); show_character.text="Show character"; toolbar.add_child(show_character)
-	show_character.tooltip_text="Stand a crew member in the room at gameplay size, for judging scale. Preview only; never saved as furniture."
-	show_character.toggled.connect(func(value): set_character_mode(1 if value else 0))
+	show_character=CheckButton.new(); show_character.text="Show characters"; toolbar.add_child(show_character)
+	show_character.tooltip_text="Show the Characters & Companions chosen in the side panel (Bill walking when none is chosen). Preview only; never saved as furniture."
+	show_character.toggled.connect(func(value):
+		if not value: set_cast_modes({})
+		elif not scale_actor.any_shown(): set_cast_modes({0:scale_actor.Actor.WALKING}))
 	pref_controls["guides"]=guides; pref_controls["clean"]=clean
 	riser_toggle=CheckButton.new(); riser_toggle.text="Riser wall"; riser_toggle.button_pressed=show_riser; editbar.add_child(riser_toggle)
 	riser_toggle.toggled.connect(func(value):
@@ -409,38 +409,29 @@ func _ready() -> void:
 	side.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 	side.size_flags_vertical=Control.SIZE_EXPAND_FILL
 	side_scroll.add_child(side)
-	var instructions:=Label.new()
+	# Canvas instructions live in the footer's bottom-right corner (owner, Sept 27).
+	instructions=Label.new()
 	instructions.text="Drag empty canvas: camera / Shift-drag: select\nWASD: camera / Drag corner: resize / R: rotate"
-	instructions.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-	instructions.tooltip_text="Drag empty space to pan. Shift-drag empty space to box-select. Click floor decorations directly to move them. Alt bypasses snapping. Ctrl+G groups; Ctrl+Shift+G ungroups. Ctrl+C / Ctrl+V copies and pastes props. Wheel zooms; Delete returns selection to tray. Shift+R rotates back. Arrow keys nudge; Shift nudges 12 units. Ctrl+S saves all edited room rotations. Ctrl+Z / Ctrl+Y undo and redo."
-	side.add_child(instructions)
-	var character_row := HBoxContainer.new()
-	side.add_child(character_row)
-	var character_label := Label.new(); character_label.text="Scale:"; character_row.add_child(character_label)
-	cast_pick=OptionButton.new()
-	for member in scale_actor.CAST: cast_pick.add_item(str(member.name))
-	cast_pick.tooltip_text="Which crew member stands in the room. Preview only; the choice is never saved into the layout."
-	character_row.add_child(cast_pick)
-	cast_pick.item_selected.connect(func(value):
-		scale_actor.set_cast(value)
-		Prefs.save_value("cast",value)
-		if character_mode.selected>0:
-			scale_actor.rebuild(room,str(entries[index].room),quarter)
-		canvas.queue_redraw())
-	character_mode = OptionButton.new()
-	for caption in ["Hidden","Standing","Walking"]: character_mode.add_item(caption)
-	character_row.add_child(character_mode)
-	character_mode.tooltip_text="Current crew artwork at gameplay size. Preview only; never saved as room furniture. Walking respects equipment clearance."
-	character_mode.item_selected.connect(func(value): set_character_mode(value))
-	character_place=button(character_row,"Place",func():
-		placing_character=true
-		status.text="Click clear floor to place Bill. Preview placement does not change the room.")
-	character_place.disabled=true
+	instructions.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
+	instructions.add_theme_font_size_override("font_size",12)
+	instructions.mouse_filter=Control.MOUSE_FILTER_PASS
+	instructions.tooltip_text="Drag empty space to pan. Shift-drag empty space to box-select. Alt bypasses snapping. Ctrl+G groups; Ctrl+Shift+G ungroups. Ctrl+C / Ctrl+V copies and pastes props. Wheel zooms; Delete returns selection to tray. Shift+R rotates back. Arrow keys nudge; Shift nudges 12 units. Ctrl+S saves all edited room rotations. Ctrl+Z / Ctrl+Y undo and redo."
+	side.add_child(heading("Characters & Companions"))
+	# One row per member: the activity picker doubles as the on/off switch (Hidden).
+	for member_index in range(scale_actor.CAST.size()):
+		var row:=HBoxContainer.new(); side.add_child(row)
+		var name_label:=Label.new(); name_label.text=str(scale_actor.CAST[member_index].name); name_label.custom_minimum_size.x=110; row.add_child(name_label)
+		var pick:=OptionButton.new(); pick.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+		for activity in scale_actor.ROW_ACTIVITIES: pick.add_item(scale_actor.ACTIVITY_NAMES[activity],activity)
+		pick.tooltip_text="What %s does in the room. Preview only, at gameplay size; never saved into the layout." % scale_actor.CAST[member_index].name
+		pick.item_selected.connect(func(i): set_cast_mode(member_index,pick.get_item_id(i)))
+		row.add_child(pick); cast_rows.append(pick)
 	character_status=Label.new()
 	character_status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	character_status.add_theme_font_size_override("font_size",12)
 	character_status.text="Preview only / same scale as gameplay"
 	side.add_child(character_status)
+	side.add_child(heading("Room Art"))
 	layers=OptionButton.new()
 	# Items carry the layer number as their id, so hidden layers leave the numbering intact.
 	for id in range(LAYER_CAPTIONS.size()):
@@ -656,10 +647,13 @@ func _ready() -> void:
 	var copy_rotations:=button(bottom_actions,"Copy to other rotations",copy_to_other_rotations)
 	copy_rotations.custom_minimum_size=Vector2(190,36)
 	copy_rotations.tooltip_text="Use this rotation's layout for the other three. Props move only where a door approach at that rotation forces them; a rotation that still fails validation is left as it was and named."
+	var footer:=HBoxContainer.new(); column.add_child(footer)
 	status=Label.new()
 	status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	status.custom_minimum_size.y=42
-	column.add_child(status)
+	status.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+	footer.add_child(status)
+	footer.add_child(instructions)
 	confirm=ConfirmationDialog.new()
 	confirm.dialog_text="Discard unsaved changes across room orientations?"
 	confirm.confirmed.connect(func(): dirty=false; rotation_drafts.clear(); write_recovery(); pending_action.call())
@@ -670,17 +664,27 @@ func _ready() -> void:
 
 	read_recovery()
 
-func set_character_mode(value: int) -> void:
-	character_mode.select(value)
-	show_character.set_pressed_no_signal(value>0)
-	scale_actor.mode=value
-	placing_character=false
-	character_place.disabled=value==0
-	if value>0:
-		scale_actor.load_art()
-		scale_actor.rebuild(room,str(entries[index].room),quarter)
-	Prefs.save_value("character",value)
+func heading(text: String) -> Label:
+	var label:=Label.new(); label.text=text.to_upper()
+	label.add_theme_font_size_override("font_size",13)
+	label.add_theme_color_override("font_color",Color("9fd3d8"))
+	return label
+
+## One cast member's activity (Hidden turns them off). Saved as a view preference only.
+func set_cast_mode(member: int, value: int) -> void:
+	scale_actor.set_mode(member,value,room if is_instance_valid(room) else null,str(entries[index].room),quarter)
+	var row: OptionButton=cast_rows[member]
+	row.select(maxi(0,row.get_item_index(value)))
+	show_character.set_pressed_no_signal(scale_actor.any_shown())
+	var saved: Dictionary={}
+	for i in range(cast_rows.size()):
+		if scale_actor.mode_of(i)!=scale_actor.Actor.HIDDEN: saved[str(i)]=scale_actor.mode_of(i)
+	Prefs.save_value("cast_modes",saved)
 	canvas.queue_redraw()
+
+## Replace every row at once: {member index: activity}; members not named are hidden.
+func set_cast_modes(modes: Dictionary) -> void:
+	for i in range(cast_rows.size()): set_cast_mode(i,int(modes.get(i,scale_actor.Actor.HIDDEN)))
 
 # Restore saved view options, then save each one when the user changes it.
 func apply_prefs() -> void:
@@ -695,9 +699,14 @@ func apply_prefs() -> void:
 		group_variants=saved.group_variants; group_toggle.set_pressed_no_signal(group_variants)
 	if (saved.get("place_scale") is float or saved.get("place_scale") is int) and float(saved.place_scale)>=0.25 and float(saved.place_scale)<=2.0:
 		place_scale=float(saved.place_scale); place_control.set_value_no_signal(place_scale*100.0)
-	if saved.get("cast") is int and int(saved.cast)>0 and int(saved.cast)<scale_actor.CAST.size():
-		cast_pick.select(int(saved.cast)); scale_actor.set_cast(int(saved.cast))
-	if saved.get("character") is int and int(saved.character) in [1,2]: set_character_mode(saved.character)
+	var modes: Dictionary={}
+	if saved.get("cast_modes") is Dictionary:
+		for key in saved.cast_modes:
+			if str(key).is_valid_int() and int(key)<cast_rows.size() and int(saved.cast_modes[key]) in scale_actor.ROW_ACTIVITIES: modes[int(key)]=int(saved.cast_modes[key])
+	# Older settings saved one "cast" member shown as standing (1) or walking (2).
+	elif saved.get("character") is int and int(saved.character) in [1,2]:
+		modes[clampi(int(saved.get("cast",0)),0,cast_rows.size()-1)]=scale_actor.Actor.WALKING
+	if not modes.is_empty(): set_cast_modes(modes)
 
 func button(parent: Node, text: String, action: Callable) -> Button:
 	var b:=Button.new()
@@ -709,7 +718,6 @@ func button(parent: Node, text: String, action: Callable) -> Button:
 
 func load_room() -> void:
 	if floor_tools!=null: floor_tools.finish()
-	placing_character=false
 	Store.invalidate_authored()
 	surface_entities.clear(); list_signature.clear(); library_signature.clear()
 	selected_many.clear()
@@ -760,7 +768,7 @@ func load_room() -> void:
 	rebuild_list()
 
 func refresh(move_only:=false) -> void:
-	scale_actor.signature.clear()
+	scale_actor.clear_signatures()
 	surface_entities.clear()
 	if move_only:
 		# Dragging only translates existing entities; membership and artwork stay fixed.
@@ -888,12 +896,6 @@ func selected_prop() -> Dictionary:
 
 func canvas_input(event: InputEvent) -> void:
 	if comparing: return
-	if placing_character and event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed:
-		if scale_actor.place(canvas.to_room(event.position)):
-			placing_character=false
-			status.text="Bill placed at gameplay scale. Room layout unchanged."
-		else: status.text="No standing clearance here. Choose clear floor."
-		canvas.queue_redraw(); canvas.accept_event(); return
 	if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_MIDDLE:
 		panning=event.pressed; pan_button=MOUSE_BUTTON_MIDDLE if event.pressed else MOUSE_BUTTON_NONE; canvas.accept_event(); return
 	if event is InputEventMouseButton and not event.pressed and event.button_index==pan_button:
@@ -1894,10 +1896,10 @@ func _process(delta: float) -> void:
 		if pending>0:
 			tray_progress.max_value=tray_pending_total
 			tray_progress.value=tray_pending_total-pending
-	if scale_actor.mode>0 and is_instance_valid(room) and not dragging and not resizing:
+	if scale_actor.any_shown() and is_instance_valid(room) and not dragging and not resizing:
 		scale_actor.rebuild(room,str(entries[index].room),quarter)
 		scale_actor.advance(delta)
-		character_status.text="Preview only / same scale as gameplay" if scale_actor.visible else "No standing clearance in this layout"
+		character_status.text="Preview only / same scale as gameplay" if not scale_actor.members().is_empty() else "No standing clearance in this layout"
 		canvas.queue_redraw()
 	if not (get_viewport().gui_get_focus_owner() is LineEdit) and not confirm.visible and not (recovery_dialog!=null and recovery_dialog.visible) and not Input.is_key_pressed(KEY_CTRL):
 		var direction:=Vector2(float(Input.is_physical_key_pressed(KEY_D))-float(Input.is_physical_key_pressed(KEY_A)),float(Input.is_physical_key_pressed(KEY_S))-float(Input.is_physical_key_pressed(KEY_W)))

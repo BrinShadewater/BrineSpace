@@ -3,7 +3,14 @@ extends RefCounted
 const Geometry = preload("res://tools/modular_room_geometry.gd")
 const Player = preload("res://scripts/crew_sprite_player.gd")
 var player = Player.new()
-var mode := 0 # Hidden, standing, walking.
+# Activities. Tools use 1 and 2; Studio's cast rows offer walking and the rest.
+enum {HIDDEN, STANDING, WALKING, RUNNING, SWIMMING, INTERACTING}
+const ACTIVITY_NAMES := ["Hidden","Standing","Walking","Running","Swimming","Interacting"]
+const SPEED := {WALKING:72.0, RUNNING:150.0, SWIMMING:48.0}
+var mode := 0
+var action_index := 0
+var action_started := 0.0
+var full_art := false
 var foot := Vector2.ZERO
 var direction := "south"
 var clock := 0.0
@@ -24,7 +31,12 @@ const CAST := [
 	{"name":"Marsh","folder":"res://character/marsh-v2/"},
 	{"name":"Branforth","folder":"res://character/chief-engineer-branforth-v2/"},
 	{"name":"Veld","folder":"res://character/dr-veld-v2/"},
+	# Companions load the same packs companion_npc.gd plays in the station.
+	{"name":"River","companion":true,"swim":"float","actions":["scan","inspect"],"packs":["res://character/robot-polish-v1/river/packs/locomotion/manifest.json","res://character/robot-polish-v1/river/packs/actions/manifest.json","res://character/robot-polish-v1/river/packs/water/manifest.json"]},
+	{"name":"Josh","companion":true,"swim":"","actions":["torch","watch"],"packs":["res://character/robot-polish-v1/josh/packs/locomotion/manifest.json","res://character/robot-polish-v1/josh/packs/actions/manifest.json"]},
+	{"name":"Margot","companion":true,"swim":"swim","actions":["groom","pet","stretch","yawn","sit"],"packs":["res://character/margot-polish-v1/packs/locomotion/manifest.json","res://character/margot-polish-v1/packs/water/manifest.json","res://character/margot-polish-v1/packs/actions/manifest.json"]},
 ]
+const CREW_ACTIONS := ["interact","inspect","repair","kneel","salvage","eat","drink"]
 var cast_index := 0
 
 func set_cast(which: int) -> void:
@@ -32,19 +44,30 @@ func set_cast(which: int) -> void:
 	if which==cast_index: return
 	cast_index=which
 	player=Player.new()
+	full_art=false
 	signature.clear()
 	load_art()
 
+## Loads idle/walk only for standing and walking (cheap); running, swimming and
+## interacting load the member's full set once.
 func load_art() -> void:
-	if not player.frames.is_empty(): return
-	var base: String=CAST[cast_index].folder
+	var member: Dictionary=CAST[cast_index]
+	var want_full: bool=mode>=RUNNING
+	if not player.frames.is_empty() and (full_art or not want_full): return
+	if member.get("companion",false):
+		for manifest in member.packs:
+			if FileAccess.file_exists(manifest): player.load_manifest(manifest,true)
+		full_art=true
+		return
+	var base: String=member.folder
 	if not FileAccess.file_exists(base+"catalog.json"): base=CAST[0].folder
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
 	for relative in catalog.body:
 		var manifest := base+str(relative)
 		var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(manifest))
-		if data.states.any(func(state): return str(state.id).begins_with("idle-") or str(state.id).begins_with("walk-")):
+		if want_full or data.states.any(func(state): return str(state.id).begins_with("idle-") or str(state.id).begins_with("walk-")):
 			player.load_manifest(manifest,true)
+	full_art=want_full
 
 func can_stand(at: Vector2) -> bool:
 	if absf(at.x)>172 or absf(at.y)>172: return false
@@ -129,11 +152,11 @@ func advance(delta: float) -> void:
 	moving = false
 	if mode==0 or not visible: return
 	clock += maxf(delta,0.0)
-	if mode!=2: return
+	if not SPEED.has(mode): return
 	wait = maxf(0.0,wait-delta)
 	if wait>0: return
 	if path.is_empty(): choose_route()
-	var travel := maxf(delta,0.0)*72.0
+	var travel := maxf(delta,0.0)*float(SPEED[mode])
 	while travel>0 and not path.is_empty():
 		while path.size()>1 and segment_clear(foot,path[1]): path.remove_at(0)
 		var offset := path[0]-foot
@@ -153,6 +176,45 @@ func advance(delta: float) -> void:
 	if path.is_empty(): wait = 0.8
 
 func members() -> Array:
-	if mode==0 or not visible: return []
-	var texture: Texture2D = player.frame("walk" if moving else "idle",direction,clock,foot/384.0)
+	if mode==HIDDEN or not visible: return []
+	var texture: Texture2D=action_texture() if mode==INTERACTING else null
+	if texture==null:
+		var state:=locomotion_state() if moving else idle_state()
+		texture=player.frame(state,direction,clock,foot/384.0)
+		if texture==null: texture=player.frame("walk" if moving else "idle",direction,clock,foot/384.0)
 	return [] if texture==null else [{"position":foot,"texture":texture}]
+
+func has_family(family: String) -> bool:
+	for facing in ["south","east","west","north"]:
+		if player.frames.has(family+"-"+facing): return true
+	return player.frames.has(family)
+
+# Running uses the run clip where one exists; swimming uses swim (River floats).
+func locomotion_state() -> String:
+	if mode==RUNNING and has_family("run"): return "run"
+	if mode==SWIMMING:
+		var swim: String=str(CAST[cast_index].get("swim","swim"))
+		if not swim.is_empty() and has_family(swim): return swim
+	return "walk"
+
+func idle_state() -> String:
+	if mode==SWIMMING:
+		for family in ["tread","swim-idle","float-idle"]:
+			if has_family(family): return family
+	return "idle"
+
+## Interacting stands still and cycles the member's actions, twice each.
+func action_texture() -> Texture2D:
+	var names: Array=CAST[cast_index].get("actions",CREW_ACTIONS)
+	var keys: Array=[]
+	for family in names:
+		for facing in [direction,"south","east","west","north"]:
+			if player.frames.has(family+"-"+facing): keys.append(family+"-"+facing); break
+	if keys.is_empty(): return null
+	var key: String=keys[action_index%keys.size()]
+	var length: float=player.cycle_seconds(key)
+	var elapsed: float=clock-action_started
+	if elapsed>=length*2.0:
+		action_index+=1; action_started=clock
+		key=keys[action_index%keys.size()]; length=player.cycle_seconds(key); elapsed=0.0
+	return player.frame_at_elapsed(key,fmod(elapsed,length))

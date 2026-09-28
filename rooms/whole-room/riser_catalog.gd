@@ -2,15 +2,24 @@ extends RefCounted
 ## Department wall faces share geometry, not a universal painted panel.
 static var registrations: Dictionary={}
 static var textures: Dictionary={}
+# The Sept 27 expansion rooms (second part of each list) follow the same by-function rule.
 const GROUPS={
-	"biology":["biomass_digester","mycelium_nursery","hydroponics_bay","biodome"],
-	"clinical":["life_support","cryo_chamber","clone_lab","med_bay","med_center","med_office"],
-	"habitat":["galley","observation_room","crew_hab","crew_lounge"],
-	"engineering":["current_turbine","heat_recovery","construction_drone_bay","solar_array","reactor","battery_array","mining_drone_bay","tidal_condenser","ore_refinery","pressure_control","maintenance_bay","shield_generator"],
-	"research":["gravity_loom","research_lab","anomaly_lab","bio_lab"],
-	"communications":["data_archive","command_center","listening_post","holographic_core","radio_lab"],
-	"logistics":["cold_store","salvage_workshop","salvage_drone_bay","storage_bay","corridor","corner","tee_corridor"],
-	"containment":["quarantine_cell","xeno_lab","isolation_vault"]}
+	"biology":["biomass_digester","mycelium_nursery","hydroponics_bay","biodome",
+		"pressure_garden","habitat_recovery","seed_vault"],
+	"clinical":["life_support","cryo_chamber","clone_lab","med_bay","med_center","med_office",
+		"atmospheric_scrubber","water_reclamation"],
+	"habitat":["galley","observation_room","crew_hab","crew_lounge",
+		"aquarium","art_studio","bathhouse","botanical_conservatory","crew_cinema","crew_fitness","games_room","memorial_room","music_room","reading_room","tea_lounge"],
+	"engineering":["current_turbine","heat_recovery","construction_drone_bay","solar_array","reactor","battery_array","mining_drone_bay","tidal_condenser","ore_refinery","pressure_control","maintenance_bay","shield_generator",
+		"bulkhead_control","damage_control","battery_service_bay","droid_workshop","drone_repair_depot","survey_probe_bay"],
+	"research":["gravity_loom","research_lab","anomaly_lab","bio_lab",
+		"echo_chamber","sensor_calibration_lab"],
+	"communications":["data_archive","command_center","listening_post","holographic_core","radio_lab",
+		"stillwater_observatory","sonar_mapping"],
+	"logistics":["cold_store","salvage_workshop","salvage_drone_bay","storage_bay","corridor","corner","tee_corridor",
+		"cargo_dispatch"],
+	"containment":["quarantine_cell","xeno_lab","isolation_vault",
+		"fold_chamber"]}
 
 static func family(room_id: String) -> String:
 	if room_id in ["brine_core","airlock"]: return room_id

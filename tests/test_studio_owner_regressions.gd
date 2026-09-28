@@ -9,7 +9,7 @@ func run():
  Store.path="res://output/studio-owner-2026-09-23/regression-layouts.json";Store.loaded=true;Store.data={}
  preload("res://scripts/title_settings.gd").save_path=Store.path+".cfg"
  var host=Control.new();root.add_child(host)
- var e=Editor.open(host);e.autosave_enabled=false;e.set_process(false);e.scale_actor.mode=0
+ var e=Editor.open(host);e.autosave_enabled=false;e.set_process(false);e.scale_actor.hide_all()
  # Real effective props: stacking keeps placement and survives undo/save/reload.
  e.layer=0
  var a=e.room.props[0];var b=e.room.props[1]
@@ -62,13 +62,14 @@ func run():
  # Construction preview must not rebuild its navigation graph for every drag event.
  for i in e.entries.size():
   if e.entries[i].room=="construction_drone_bay":e.index=i
- e.quarter=2;e.load_room();e.scale_actor.mode=2
+ e.quarter=2;e.load_room();e.scale_actor.actors[0].mode=2
+ var walker=e.scale_actor.actors[0]
  e.scale_actor.rebuild(e.room,"construction_drone_bay",2)
  e.dragging=true;e.refresh(true)
  for i in range(8):e._process(0.016)
- check(e.scale_actor.signature.is_empty(),"Dragging defers preview navigation rebuild")
+ check(walker.signature.is_empty(),"Dragging defers preview navigation rebuild")
  e.dragging=false;e._process(0.016)
- check(not e.scale_actor.signature.is_empty(),"Preview navigation refreshes immediately after drag")
+ check(not walker.signature.is_empty(),"Preview navigation refreshes immediately after drag")
  for i in e.entries.size():
   if e.entries[i].room=="airlock":e.index=i
  e.quarter=2;e.load_room();e.layer=0
