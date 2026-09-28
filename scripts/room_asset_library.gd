@@ -204,8 +204,13 @@ static func template(id: String) -> Dictionary:
 static func apply(room: Node, values: Dictionary) -> void:
 	for i in range(room.props.size()-1,-1,-1):
 		if room.props[i].get("library_asset",false) and str(room.props[i].id).begins_with("library/"): room.props.remove_at(i)
+	# Saved layouts still name retired props (the owner's carry ~1,300). The room drops them
+	# after placement, so skip them before template() decodes their image sheets.
+	var store=load("res://scripts/room_layout_store.gd")
+	var room_id: String=store.room_id_for(room,str(room.get_meta("layout_asset","")))
 	for id in values:
 		if not str(id).begins_with("library/"): continue
+		if not keeps_in_room(room_id,{"id":base_id(str(id))}): continue
 		var value=values[id]
 		if not value is Array or value.size()!=2: continue
 		var at:=Vector2(value[0],value[1])
