@@ -7,15 +7,17 @@ static func texture(path:String) -> Texture2D:
 		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))!=OK:return null
 		textures[path]=ImageTexture.create_from_image(image)
 	return textures[path]
+# The launcher sits at a fixed dock per rotation (Mission.dock); "flush_region" marks it
+# fixed artwork, so the Studio cannot drag or resize it away from the hull (owner, Sept 27).
 static func launcher(q:int) -> Dictionary:
 	if posmod(q,4)==2:
 		var south:=texture("res://assets/probe-outlet-stub-v3/south-launcher-round-collar.png")
-		return {"id":"survey_hatch","rect":Rect2(-21.2,96,64,95.25292),"sort_y":183,"registration":{},"collision_boxes":[[.1,.25,.8,.7]],"texture":south}
+		return {"id":"survey_hatch","rect":Rect2(-21.2,96,64,95.25292),"sort_y":183,"registration":{},"collision_boxes":[[.1,.25,.8,.7]],"flush_region":true,"texture":south}
 	var direction:String=["north","east","south","west"][posmod(q,4)]
 	var data:Dictionary=LAUNCHERS[direction]
 	var tex:=texture(data.image)
 	var scale_value:=.34*float(data.libraryScale)
-	return {"id":"survey_hatch","rect":Rect2(Mission.dock(q)-Vector2(data.anchor[0],data.anchor[1])*scale_value,Vector2(tex.get_size())*scale_value),"sort_y":Mission.dock(q).y+30,"registration":{},"collision_boxes":[[.1,.25,.8,.7]],"texture":tex}
+	return {"id":"survey_hatch","rect":Rect2(Mission.dock(q)-Vector2(data.anchor[0],data.anchor[1])*scale_value,Vector2(tex.get_size())*scale_value),"sort_y":Mission.dock(q).y+30,"registration":{},"collision_boxes":[[.1,.25,.8,.7]],"flush_region":true,"texture":tex}
 static func draw_clipped(canvas,tex:Texture2D,dest:Rect2,source:Rect2,clip:Rect2,tint:=Color.WHITE) -> void:
 	var r:=dest.intersection(clip)
 	if not r.has_area():return

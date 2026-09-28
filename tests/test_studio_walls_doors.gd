@@ -63,6 +63,14 @@ func run() -> void:
 	check(show(editor, Editor.TRAY_DOORS)[0][0].begins_with("Department default") and show(editor, Editor.TRAY_DOORS).any(func(e): return e[0] == "✓ Science"), "The chosen door is ticked")
 	editor.apply_door_style("")
 	check(not editor.draft.has("door/style"), "Default clears the door choice")
+	# The survey launcher is fixed hull equipment in every rotation (owner, Sept 27).
+	for i in editor.entries.size():
+		if editor.entries[i].room == "survey_probe_bay": editor.index = i
+	for q in range(4):
+		editor.quarter = q
+		editor.load_room()
+		await process_frame
+		check(editor.room.props.any(func(p): return p.id == "survey_hatch") and not editor.movable("survey_hatch"), "Survey launcher is fixed at rotation %d" % (q * 90))
 	editor.queue_free()
 	host.queue_free()
 	await process_frame
