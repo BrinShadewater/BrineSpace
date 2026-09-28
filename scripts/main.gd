@@ -3495,6 +3495,7 @@ func _notification(what: int) -> void:
 
 func _exit_tree() -> void:
 	get_tree().auto_accept_quit = true
+	preload("res://scripts/drone_dock.gd").finish_pending_jobs() # Decodes must not outlive the game.
 
 func _toggle_admin_view_button() -> void:
 	admin_mode = not admin_mode

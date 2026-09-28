@@ -44,6 +44,12 @@ static func prepare_paths(paths:Array,parallel_decode:bool=false) -> bool:
 		if not Motion.finish_texture(path): ready=false
 	return ready
 
+# A background decode still running when the engine shuts down crashes it (access violation
+# on quit). Owners of these jobs call this as they leave the tree.
+static func finish_pending_jobs() -> void:
+	for path in Motion.image_jobs.keys():
+		WorkerThreadPool.wait_for_task_completion(Motion.image_jobs[path].task)
+		Motion.finish_texture(path)
 static func prepare_preview(kind:String,operating:bool=true) -> bool:
 	return prepare_paths(required_paths(kind,{},operating))
 static func record(kind:String) -> Dictionary:

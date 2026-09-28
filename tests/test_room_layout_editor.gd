@@ -313,8 +313,12 @@ func run() -> void:
 	print("PREVIEW TOGGLES PASS: independent lights, advancing animation and frozen clock")
 
 	editor.library_filter.select(1); editor.rebuild_library()
-	# Station props v2: Common Props lists the owner's cut-out common furniture.
-	assert(editor.library_list.item_count==36,"Common category includes reusable furniture and fittings")
+	# Station props v2: Common Props lists every common station prop the owner has not retired
+	# (36 cut-outs, then 112 generated common props on Sept 27 — count from the catalog).
+	var common_props:=0
+	for id in editor.Library.entries():
+		if str(id).begins_with("library/sp-") and str(editor.Library.entries()[id].get("category",""))=="common" and not editor.retired.has(id): common_props+=1
+	assert(common_props>=148 and editor.library_list.item_count==common_props,"Common category includes reusable furniture and fittings")
 	for i in range(editor.library_list.item_count):
 		assert(editor.Library.entries()[editor.library_list.get_item_metadata(i)].category=="common")
 	editor.free_placement.button_pressed=true

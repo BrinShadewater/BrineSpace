@@ -5,7 +5,7 @@ var body_source_rect: Rect2
 var body_normalized_rect: Rect2
 const FloatArt=preload("res://rooms/underwater/brine-core/brine_float.gd")
 const BODY_RECT := Rect2(596.0863,584.6,59.8274,184.8)
-var float_mesh:ArrayMesh
+var float_meshes:={} # painter instance id -> ArrayMesh
 const NAMEPLATE := Rect2(555,535,142,34)
 var architect_pod: Dictionary = {}:
 	set(value):
@@ -137,9 +137,19 @@ func draw_prop_occupant(prop: Dictionary) -> void:
 	for uv in FloatArt.uvs():vertices.append(life_point(prop,BODY_RECT.position+uv*BODY_RECT.size+FloatArt.drift(uv,time)))
 	var arrays:=[];arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX]=vertices;arrays[Mesh.ARRAY_TEX_UV]=FloatArt.uvs();arrays[Mesh.ARRAY_INDEX]=FloatArt.indices()
-	float_mesh=ArrayMesh.new();float_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+	# One mesh per canvas item. A canvas keeps drawing the mesh it was given until it redraws:
+	# a fresh ArrayMesh per draw freed the one a retained slot still held ("mesh is null",
+	# BRINE vanished), and one shared mesh let a tray thumbnail reshape BRINE in the room.
+	var key:=painter.get_instance_id()
+	if not float_meshes.has(key):
+		if float_meshes.size()>=64:
+			for stale in float_meshes.keys():
+				if not is_instance_id_valid(stale): float_meshes.erase(stale)
+		float_meshes[key]=ArrayMesh.new()
+	var mesh:ArrayMesh=float_meshes[key]
+	mesh.clear_surfaces();mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
 	var tint:=Color.WHITE*lerpf(.12,1.0,pod_power());tint.a=1
-	painter.draw_mesh(float_mesh,body_texture,Transform2D.IDENTITY,tint)
+	painter.draw_mesh(mesh,body_texture,Transform2D.IDENTITY,tint)
 
 func body_points(time:float,active:=true) -> PackedVector2Array:
 	var points:=PackedVector2Array()

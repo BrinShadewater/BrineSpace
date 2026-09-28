@@ -1042,6 +1042,8 @@ func ask_change(action: Callable) -> void:
 func close_editor() -> void: queue_free()
 func _exit_tree() -> void:
 	for source in Library.image_jobs.keys(): Library.finish_texture(source,true)
+	# Tray dock previews start drone-animation decodes too.
+	preload("res://scripts/drone_dock.gd").finish_pending_jobs()
 	if is_instance_valid(covered_scene):
 		covered_scene.visible=covered_scene_visible
 		if "grid_view" in covered_scene and is_instance_valid(covered_scene.grid_view): covered_scene.grid_view.queue_redraw()
