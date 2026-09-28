@@ -645,6 +645,9 @@ func rebuild(main, staged := false) -> void:
 			data.blockers = []
 			data.blocker_padding = 10.0
 			for prop in data.props:
+				# Small tileset pieces in hallways are floor clutter crew step past; hallway
+				# furniture (crates, carts, benches) still blocks (owner, Sept 28).
+				if data.get("corridor",false) and str(prop.get("id","")).begins_with("library/tileset-"): continue
 				for rect in Geometry.prop_collision_rects(prop): data.blockers.append(rect.grow(10))
 			for edge in data.edges:
 				for rect in Geometry.wall_rects(edge): data.blockers.append(rect.grow(10))

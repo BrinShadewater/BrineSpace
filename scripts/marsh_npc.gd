@@ -9,6 +9,9 @@ var returning_to_pod := false
 var recharge_docked := false
 var charge_credit := 0.0
 var charge_elapsed := 0.0
+# A failed pod search waits before retrying; a layout change retries at once.
+const POD_ROUTE_RETRY := 2.0
+var pod_route_wait := 0.0
 var berth_motion: Dictionary={}
 var bunk_motion: Dictionary={}
 const BUNK_SECONDS:=1.84
@@ -150,7 +153,9 @@ func update(main, delta: float) -> void:
 		returning_to_pod=true
 		release_jobs(main)
 		main._log("Marsh: charge reserve low. Returning to the charging pod.",false)
-	if topology(main)!=signature and not defer_navigation_rebuild: rebuild(main)
+	if topology(main)!=signature and not defer_navigation_rebuild:
+		rebuild(main)
+		pod_route_wait=0.0
 	if goal!="recharge": release_jobs(main)
 	goal="recharge";stage="";timer=0
 	var cell := charging_home(main)
@@ -168,9 +173,11 @@ func update(main, delta: float) -> void:
 		# smoothing that same long route every movement frame stalls large stations.
 		# move() still checks each segment; obstruction/rebuild clears the path and
 		# the next update searches again. Saved paths need no additional cache state.
+		if path.is_empty() and pod_route_wait>0.0:
+			pod_route_wait-=delta;state="idle";activity="return to pod blocked / restore a clear route";return
 		var approach := {"point":path[path.size()-1]} if not path.is_empty() and cell_at(path[path.size()-1])==cell and can_stand(path[path.size()-1]) else charging_approach(main)
 		if approach.is_empty():
-			path.clear();state="idle";activity="return to pod blocked / restore a clear route";return
+			path.clear();pod_route_wait=POD_ROUTE_RETRY;state="idle";activity="return to pod blocked / restore a clear route";return
 		if foot.distance_to(approach.point)>1:
 			if path.is_empty(): path=approach.route
 			activity="returning to charging pod" if battery>0 else "battery empty / emergency return"
