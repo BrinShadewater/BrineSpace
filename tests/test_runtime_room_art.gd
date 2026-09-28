@@ -50,8 +50,10 @@ func run() -> void:
 						prop.id = item
 						check_texture(room._overhead_texture(prop))
 				"construction_drone_bay":
-					for method in ["_cradle_texture","_hatch_texture","_bench_texture","_panel_texture"]:
-						check_texture(room.call(method,prop))
+					# The old cradle/hatch/bench/panel art retired with the Sept 27 drone art;
+					# the bay's built-in art is now the dock's components.
+					for path in preload("res://scripts/drone_dock.gd").record("construction").components.values():
+						check_texture(preload("res://scripts/drone_animation.gd").texture(path))
 	for path in SafeImage.failures:
 		push_error("Runtime art failed: " + path)
 	errors += SafeImage.failures.size()
