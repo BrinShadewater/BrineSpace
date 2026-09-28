@@ -91,13 +91,13 @@ func run() -> void:
 	e.undo(); assert(e.draft==original)
 	# Check useful filters and inspect the expanded tray in the furnished room.
 	e.library_search.clear(); e.selected=""; e.selected_many.clear(); e.refresh()
-	# Station props v2: filters 4+ are the department categories.
-	for category in range(4,4+e.STATION_THEMES.size()):
+	# Station props v2: the department categories follow Walls, Wall Art and Doors.
+	for category in range(e.TRAY_FIRST_THEME,e.TRAY_FIRST_THEME+e.STATION_THEMES.size()):
 		e.library_filter.select(category); e.rebuild_library()
 		assert(e.library_list.item_count>0)
 		for i in range(e.library_list.item_count):
 			var entry: Dictionary=e.Library.entries()[e.library_list.get_item_metadata(i)]
-			assert(e.category_of(e.library_list.get_item_metadata(i),entry)==e.STATION_THEMES[category-4])
+			assert(e.category_of(e.library_list.get_item_metadata(i),entry)==e.STATION_THEMES[category-e.TRAY_FIRST_THEME])
 		e.library_list.get_v_scroll_bar().value=0
 		await settle(90)
 		await RenderingServer.frame_post_draw

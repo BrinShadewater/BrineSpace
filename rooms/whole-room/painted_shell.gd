@@ -34,7 +34,12 @@ static func context(view,id:String=""):
 	# Honour an owner's explicit material selection without changing their saved data.
 	var chosen:String=Store.surface_positions(view).get("wall/riser","") if view!=null else ""
 	var old=load("res://rooms/whole-room/riser_catalog.gd")
-	if not chosen.is_empty() and old.catalog().has(chosen):
+	# Studio Wall Art: another room's own painted riser ("room:<id>" from walls.json).
+	var borrowed:String=chosen.trim_prefix("room:") if chosen.begins_with("room:") else ""
+	if not borrowed.is_empty() and borrowed!=ctx.room_id and catalog().has(borrowed):
+		base=catalog()[borrowed].base;ctx.integrated={}
+		ctx.north_special={}
+	elif not chosen.is_empty() and old.catalog().has(chosen):
 		base=old.catalog()[chosen];ctx.integrated={}
 		ctx.north_special={}
 	ctx.registrations={ctx.room_id:base};ctx.wall=png(base.source)
@@ -81,7 +86,7 @@ func north(canvas:CanvasItem,adjoining_left:bool=false,adjoining_right:bool=fals
 		draw_cap_corner(canvas,Vector2(x,-271),x>0,false)
 	if room_id=="airlock" and room!=null and room.quarter==0:
 		preload("res://rooms/doors/ocean_hatch.gd").raised(canvas,0,static_leaf)
-	elif ports.has(0) or room_id=="brine_core":Doors.for_variant(room_id).raised_at(canvas,0,0,-255,79)
+	elif ports.has(0) or room_id=="brine_core":Doors.for_variant(door_style()).raised_at(canvas,0,0,-255,79)
 	if special and room_id=="survey_probe_bay":
 		# The fixed launcher straddles the hull; let its housing overlap its matching backplate.
 		preload("res://scripts/probe_launcher_mechanics.gd").draw(canvas,float(room.survey_clock),0)
@@ -92,6 +97,10 @@ static func draw_ocean_window(canvas:CanvasItem,path:String,center:Vector2,limit
 	var size:=Vector2(texture.get_size())*factor
 	canvas.draw_texture_rect(texture,Rect2(center-size*.5,size),false)
 
+# A room's layout may pick its door style ("door/style", Studio Doors); else its department.
+func door_style() -> String:
+	var style=Store.surface_positions(room).get("door/style","") if room!=null else ""
+	return str(style) if style is String and not str(style).is_empty() else room_id
 func tops(canvas:CanvasItem) -> void:
 	var raised:bool=room.get_meta("raised_north_visible",false)
 	var present:Array=[]
@@ -117,7 +126,7 @@ func tops(canvas:CanvasItem) -> void:
 			var rect:Rect2=jamb;rect.position.y-=3
 			draw_cap_strip(canvas,rect,not edge.horizontal,side in [1,2])
 		# A closed outer station port still shows its registered leaf and fixed frame.
-		if not edge.open:Doors.for_variant(room_id).low_closed(canvas,edge.center+Vector2(0,-3),not edge.horizontal,room_id)
+		if not edge.open:Doors.for_variant(door_style()).low_closed(canvas,edge.center+Vector2(0,-3),not edge.horizontal,room_id)
 	for x in [-200,184]:
 		for y in [top,181]:
 			if (1 if x>0 else 3) in present and (2 if y==181 else 0) in present:draw_cap_corner(canvas,Vector2(x,y),x>0,y==181)

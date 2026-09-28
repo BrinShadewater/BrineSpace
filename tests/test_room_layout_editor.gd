@@ -147,7 +147,7 @@ func run() -> void:
 	editor.reset_layout(); editor.save_layout()
 	assert(Store.positions(editor.entries[BRINE].asset,0).is_empty(),"Reset removes saved override")
 	var library_id:="library/crew-lounge-built-in"
-	editor.library_filter.select(3); editor.rebuild_library()
+	editor.library_filter.select(editor.TRAY_WALL_ART); editor.rebuild_library()
 	print("LIBRARY ",editor.Library.entries().size()," visible ",editor.library_list.item_count," search ",editor.library_search.text)
 	assert(editor.library_list.item_count>10,"Unused artwork library populated")
 	assert(editor.canvas._can_drop_data(Vector2.ZERO,{"room_library_asset":library_id}),"Canvas accepts art drag payload")

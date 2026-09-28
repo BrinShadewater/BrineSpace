@@ -14,7 +14,9 @@ static func side_post_rect(north: bool) -> Rect2:
 	return Rect2(-8,ground_start-SIDE_HEIGHT,16,SIDE_POST_DEPTH+SIDE_HEIGHT)
 
 static func department(room: Dictionary) -> String:
-	return preload("res://rooms/doors/painted_door.gd").family_for(str(room.get("id","")))
+	var Painted=preload("res://rooms/doors/painted_door.gd")
+	var chosen: String=Painted.style_override(str(room.get("id","")),int(room.get("rotation",0)))
+	return chosen if not chosen.is_empty() else Painted.family_for(str(room.get("id","")))
 
 static func pair_variant(a: Dictionary, b: Dictionary) -> String:
 	if a.get("id","") in ["corridor","corner","tee_corridor"] or b.get("id","") in ["corridor","corner","tee_corridor"]:return "hallway"

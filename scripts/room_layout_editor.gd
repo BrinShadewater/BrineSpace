@@ -15,7 +15,7 @@ var tray_progress: ProgressBar
 var tray_pending_total:=0
 var library_filter: OptionButton
 var pack_filter: OptionButton
-const TRAY_CATEGORIES := ["Default","Common Props","Floors","Walls","Operations","Engineering","Science","Life Support","Recreation","Anomaly","Robotics"]
+const TRAY_CATEGORIES := ["Default","Common Props","Floors","Walls","Wall Art","Doors","Operations","Engineering","Science","Life Support","Recreation","Anomaly","Robotics"]
 const LAYER_CAPTIONS := ["Props", "Floors", "Floor decorations", "Wall decorations", "Lights"]
 # Owner, Sept 27: floor decorations and lights leave Studio for now.
 const HIDDEN_LAYERS := [2, 4]
@@ -23,7 +23,10 @@ const TRAY_DEFAULT := 0
 const TRAY_COMMON := 1
 const TRAY_FLOORS := 2
 const TRAY_WALLS := 3
-const TRAY_FIRST_THEME := 4
+# Walls = department looks; Wall Art = room-specific riser art; Doors = door styles.
+const TRAY_WALL_ART := 4
+const TRAY_DOORS := 5
+const TRAY_FIRST_THEME := 6
 const STATION_THEMES := ["operations","engineering","science","life_support","recreation","anomaly","robotics"]
 const STATION_CATEGORY_NAMES := {"common":"Common Props","operations":"Operations","engineering":"Engineering","science":"Science","life_support":"Life Support","recreation":"Recreation","anomaly":"Anomaly","robotics":"Robotics"}
 var theme_filters: Dictionary={}
@@ -259,8 +262,10 @@ class LayoutCanvas extends Control:
 			draw_set_transform(origin()+door_at*factor(),side*PI/2,Vector2.ONE*factor())
 			if side==0 and editor.show_riser:
 				draw_set_transform(origin(),0,Vector2.ONE*factor())
-				preload("res://rooms/whole-room/room_door.gd").draw_riser_door(self,(sin(editor.preview_clock*1.5)*0.5+0.5) if editor.preview_animation else 0.0,null,preload("res://rooms/doors/department_door.gd").department({"id":id}))
-			else: preload("res://rooms/whole-room/room_door.gd").draw_door(self,0.0)
+				var door_style: String=str(editor.draft.get("door/style",""))
+				preload("res://rooms/whole-room/room_door.gd").draw_riser_door(self,(sin(editor.preview_clock*1.5)*0.5+0.5) if editor.preview_animation else 0.0,null,door_style if not door_style.is_empty() else preload("res://rooms/doors/department_door.gd").department({"id":id}))
+			# Painted-shell rooms already draw their styled closed leaf at each port (as live).
+			elif not preload("res://rooms/whole-room/painted_shell.gd").enabled(editor.room): preload("res://rooms/whole-room/room_door.gd").draw_door(self,0.0)
 			draw_set_transform(origin(),0,Vector2.ONE*factor())
 			if not editor.show_guides or editor.clean_preview: continue
 			var lane: Rect2=editor.door_lane(side)
@@ -639,7 +644,8 @@ func _ready() -> void:
 	# Right-click an entry to mark or restore it without reaching for the button.
 	library_list.item_clicked.connect(func(i,_at,button):
 		var picked:=str(library_list.get_item_metadata(i))
-		if picked.begins_with(RISER_PICK) and button==MOUSE_BUTTON_LEFT: apply_riser(picked.trim_prefix(RISER_PICK)))
+		if picked.begins_with(RISER_PICK) and button==MOUSE_BUTTON_LEFT: apply_riser(picked.trim_prefix(RISER_PICK))
+		elif picked.begins_with(DOOR_PICK) and button==MOUSE_BUTTON_LEFT: apply_door_style(picked.trim_prefix(DOOR_PICK)))
 	save_feedback=Label.new(); column.add_child(save_feedback)
 	var bottom_actions:=HBoxContainer.new()
 	bottom_actions.name="RoomActions"
@@ -1574,8 +1580,10 @@ func rebuild_library() -> void:
 		library_list.add_item("Pick a floor finish in the FLOOR FINISH list above.",thumbnail_placeholder)
 		library_list.set_item_selectable(library_list.item_count-1,false)
 		tray_total=0; update_pager(); return
-	if library_filter.selected==TRAY_WALLS:
-		list_riser_walls(); return
+	if library_filter.selected==TRAY_WALLS or library_filter.selected==TRAY_WALL_ART:
+		list_riser_walls(library_filter.selected==TRAY_WALL_ART); return
+	if library_filter.selected==TRAY_DOORS:
+		list_door_styles(); return
 	if library_filter.selected==TRAY_DEFAULT and pack.is_empty():
 		for prop in base_props:
 			var id:=str(prop.id)
@@ -1648,26 +1656,43 @@ func rebuild_library() -> void:
 			"The tray lists %d at a time so previews stay responsive. Use the pager below for the rest." % TRAY_LIMIT)
 const RiserCatalog=preload("res://rooms/whole-room/riser_catalog.gd")
 const RISER_PICK := "wall/riser:"
-# Walls: every riser material, department faces and room-specific ones alike. Picking
-# one saves "wall/riser" with this rotation, the same way a floor finish saves.
-func list_riser_walls() -> void:
+# Walls lists the department looks; Wall Art lists every room's own painted riser from
+# walls.json (saved as "room:<id>"). Both start with the room's default. Picking one
+# saves "wall/riser" with this rotation, the same way a floor finish saves.
+const WALL_ART_PICK := "room:"
+var riser_thumbs: Dictionary={}
+func riser_record(group: String) -> Dictionary:
+	if group.begins_with(WALL_ART_PICK):
+		return preload("res://rooms/whole-room/painted_shell.gd").catalog().get(group.trim_prefix(WALL_ART_PICK),{}).get("base",{})
+	return RiserCatalog.catalog().get(group,{})
+func riser_face(group: String) -> Rect2:
+	var r: Array=riser_record(group).face
+	return Rect2(r[0],r[1],r[2],r[3])
+# The default is the room's own painted riser where it has one, else its department face.
+func riser_default(room_id: String, _room_art:=false) -> String:
+	if preload("res://rooms/whole-room/painted_shell.gd").catalog().has(room_id): return WALL_ART_PICK+room_id
+	return RiserCatalog.material(room_id)
+func list_riser_walls(room_art:=false) -> void:
 	var current:=str(draft.get("wall/riser",""))
 	var room_id:=str(entries[index].room)
 	var choices: Array=[""]
-	for group in RiserCatalog.catalog(): choices.append(str(group))
+	if room_art:
+		var rooms: Array=preload("res://rooms/whole-room/painted_shell.gd").catalog().keys()
+		rooms.sort()
+		for id in rooms: choices.append(WALL_ART_PICK+str(id))
+	else:
+		for group in RiserCatalog.catalog():
+			if RiserCatalog.GROUPS.has(str(group)): choices.append(str(group))
 	for group in choices:
-		var caption: String="Department default ("+RiserCatalog.material(room_id).replace("_"," ")+")" if group=="" else group.replace("_"," ").replace("-"," ").capitalize()
+		var name: String=group.trim_prefix(WALL_ART_PICK)
+		var caption: String="Room default" if group=="" else name.replace("_"," ").replace("-"," ").capitalize()
 		if group==current: caption="✓ "+caption
-		var shown: String=RiserCatalog.material(room_id) if group=="" else group
+		var shown: String=riser_default(room_id,room_art) if group=="" else group
 		# BRINE Core and the airlock draw their own walls: no catalog face to preview.
 		var thumb: Texture2D=thumbnail_placeholder
-		if RiserCatalog.catalog().has(shown):
-			if RiserCatalog.textures.has(shown):
-				var atlas:=AtlasTexture.new()
-				atlas.atlas=RiserCatalog.textures[shown]; atlas.region=RiserCatalog.source_rect(shown,"face")
-				thumb=atlas
-			elif shown not in riser_thumbnail_queue:
-				riser_thumbnail_queue.append(shown)
+		if riser_record(shown).has("source"):
+			if riser_thumbs.has(shown): thumb=riser_thumbs[shown]
+			elif shown not in riser_thumbnail_queue: riser_thumbnail_queue.append(shown)
 		library_list.add_item(caption,thumb)
 		library_list.set_item_metadata(library_list.item_count-1,RISER_PICK+group)
 		library_list.set_item_tooltip(library_list.item_count-1,caption+" — click to use this riser wall")
@@ -1677,22 +1702,49 @@ func pump_riser_thumbnail() -> void:
 	if riser_thumbnail_active.is_empty():
 		if riser_thumbnail_queue.is_empty(): return
 		riser_thumbnail_active=str(riser_thumbnail_queue.pop_front())
-		Library.request_texture(RiserCatalog.catalog()[riser_thumbnail_active].source)
+		Library.request_texture(str(riser_record(riser_thumbnail_active).source))
 		return
 	var group:=riser_thumbnail_active
-	var source:String=RiserCatalog.catalog()[group].source
+	var source:=str(riser_record(group).source)
 	if not Library.finish_texture(source): return
 	if Library.source_textures.has(source):
-		RiserCatalog.textures[group]=Library.source_textures[source]
 		var atlas:=AtlasTexture.new()
-		atlas.atlas=RiserCatalog.textures[group]; atlas.region=RiserCatalog.source_rect(group,"face")
+		atlas.atlas=Library.source_textures[source]; atlas.region=riser_face(group)
+		riser_thumbs[group]=atlas
+		var room_art: bool=library_filter.selected==TRAY_WALL_ART
 		for i in range(library_list.item_count):
 			var id:=str(library_list.get_item_metadata(i))
 			if not id.begins_with(RISER_PICK): continue
 			var selected_group:=id.trim_prefix(RISER_PICK)
-			if selected_group.is_empty(): selected_group=RiserCatalog.material(str(entries[index].room))
+			if selected_group.is_empty(): selected_group=riser_default(str(entries[index].room),room_art)
 			if selected_group==group: library_list.set_item_icon(i,atlas)
 	riser_thumbnail_active=""
+
+const DOOR_PICK := "door/style:"
+# Doors: the department door styles. Picking one saves "door/style" with this rotation;
+# live doors and the painted shell honour it (painted_door.style_override).
+func list_door_styles() -> void:
+	var Doors=preload("res://rooms/doors/painted_door.gd")
+	Doors.family_for("")
+	var current:=str(draft.get("door/style",""))
+	var room_id:=str(entries[index].room)
+	var choices: Array=[""]
+	for style in Doors.catalog.styles: choices.append(str(style))
+	for style in choices:
+		var caption: String="Department default ("+Doors.family_for(room_id).replace("_"," ")+")" if style=="" else style.replace("_"," ").capitalize()
+		if style==current: caption="✓ "+caption
+		library_list.add_item(caption,thumbnail_placeholder)
+		library_list.set_item_metadata(library_list.item_count-1,DOOR_PICK+style)
+		library_list.set_item_tooltip(library_list.item_count-1,caption+" — click to use this door style")
+	tray_total=choices.size(); update_pager()
+
+func apply_door_style(style: String) -> void:
+	if comparing or str(draft.get("door/style",""))==style: return
+	var before:=draft.duplicate(true)
+	if style.is_empty(): draft.erase("door/style")
+	else: draft["door/style"]=style
+	history.append(before); future.clear(); dirty=true
+	library_signature.clear(); refresh()
 
 func apply_riser(group: String) -> void:
 	if comparing or str(draft.get("wall/riser",""))==group: return
@@ -1703,7 +1755,7 @@ func apply_riser(group: String) -> void:
 	library_signature.clear(); refresh()
 
 func add_library_asset(id: String, center: Vector2) -> bool:
-	if id.begins_with(RISER_PICK): return false
+	if id.begins_with(RISER_PICK) or id.begins_with(DOOR_PICK): return false
 	if Library.is_exterior(id): return false
 	if comparing: return false
 	if defaults.has(id) and draft.get(id)!=null:

@@ -17,7 +17,7 @@ ROOMS = ROOT / "rooms/full-wall-v1"
 PREFIXES = {"size", "flip", "hidden", "order", "copy", "source", "library", "decor", "variant",
             "variant_extent", "portable", "lighting", "locked", "group",
             # Editor layers: floor tiles/finishes (floor_tile_tools.gd) and light/riser prop ids.
-            "tile", "floor", "light", "riser",
+            "tile", "floor", "light", "riser", "door",
             # Studio Walls category: the room's chosen riser material ("wall/riser").
             "wall"}
 POINT_PREFIXES = {"copy", "library", "decor", "light", "riser"}
