@@ -40,7 +40,12 @@ func run() -> void:
 				push_error("Zoom rebuilt room-space wall assembly")
 	var built := 0
 	for count in counts.values(): built += count
-	if built==0: failures += 1
+	# Painted shells (every room since the Sept 27 art pass) draw their walls from the
+	# walls.json art and never build a room-space queue; only unpainted rooms must.
+	var Shell = preload("res://rooms/whole-room/painted_shell.gd")
+	var unpainted: Array = counts.keys().filter(func(view): return not Shell.enabled(view))
+	if built==0 and not unpainted.is_empty(): failures += 1
+	if unpainted.is_empty(): print("ZOOM SHELL REUSE: every fixture room is painted; no wall queue to reuse")
 	for suffix in [".cfg",".meta",".meta.bak",".loop",".loop.bak"]:
 		if FileAccess.file_exists(prefix+suffix): DirAccess.remove_absolute(prefix+suffix)
 	print("ZOOM SHELL REUSE: ",counts.size()," room views, three zoom transitions, ",failures," failures")

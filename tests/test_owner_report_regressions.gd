@@ -137,7 +137,10 @@ func run():
  check(actor.foot.distance_to(doorway)>1,"No-refuge recovery moves physically without granting oxygen")
  game.resources.power=game._get_power_capacity()
  game._refresh_resources()
- check(game.resource_labels.power.text.contains("FULL"),"Full power storage is labelled in the HUD")
+ # Sept 27 design: the chip keeps supply minus demand visible at the cap (stored/capacity
+ # plus a signed net); venting is explained in its tooltip ("RESERVE FULL").
+ var cap_text:="%d/%d" % [int(game.resources.power),int(game._get_power_capacity())]
+ check(game.resource_labels.power.text.contains(cap_text),"Full power storage shows stored/capacity in the HUD")
  print("OWNER REPORT REGRESSIONS ","PASS" if failures==0 else "FAIL")
  quit(0 if failures==0 else 1)
 
