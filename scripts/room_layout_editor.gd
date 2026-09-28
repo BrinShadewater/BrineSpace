@@ -81,6 +81,9 @@ var object_buttons: Array=[]
 var preview_lights:=true
 var preview_animation:=false
 var preview_clock:=0.0
+# Studio-only animation and hazard previews (owner, Sept 28); never saved.
+var effects=preload("res://scripts/studio_effect_preview.gd").new()
+var effects_bar: HFlowContainer
 var scale_actor = preload("res://scripts/room_scale_cast.gd").new()
 var cast_rows: Array = [] # One activity picker per cast member.
 var instructions: Label
@@ -226,6 +229,7 @@ class LayoutCanvas extends Control:
 			draw_texture_rect_region(editor.foundation_texture,Rect2(-192,181.632,384,384.0*596/1934),Rect2(25,138,1934,596),Color(.72,.78,.80))
 		editor.room.operating=true
 		editor.room.machine_clock=editor.preview_clock
+		editor.effects.apply(editor.room)
 		editor.room.render_into(self,origin(),factor(),true)
 		draw_set_transform(origin(),0,Vector2.ONE*factor())
 		if editor.show_riser:
@@ -245,6 +249,7 @@ class LayoutCanvas extends Control:
 		editor.room.external_actors = editor.scale_actor.members()
 		editor.room.render_into(self,origin(),factor(),false,false)
 		editor.room.external_actors.clear()
+		editor.effects.draw_hazards(self,origin(),factor())
 		draw_set_transform(origin(),0,Vector2.ONE*factor())
 		if editor.show_riser: Lighting.draw_fixtures(self,level,white,warm,Lighting.anchors_for(editor.draft,true))
 		draw_set_transform(origin(),0,Vector2.ONE*factor())
@@ -341,6 +346,7 @@ func _ready() -> void:
 	
 	var editbar:=HFlowContainer.new(); column.add_child(editbar)
 	editbar.hide()
+	effects_bar=HFlowContainer.new(); column.add_child(effects_bar)
 	var options:=CheckButton.new(); options.text="Options"; toolbar.add_child(options)
 	options.toggled.connect(func(value): editbar.visible=value)
 	snap=CheckButton.new()
@@ -708,6 +714,13 @@ func apply_prefs() -> void:
 		modes[clampi(int(saved.get("cast",0)),0,cast_rows.size()-1)]=scale_actor.Actor.WALKING
 	if not modes.is_empty(): set_cast_modes(modes)
 
+func rebuild_effect_buttons() -> void:
+	if effects_bar==null: return
+	for child in effects_bar.get_children(): child.queue_free()
+	var caption:=Label.new(); caption.text="Preview"; effects_bar.add_child(caption)
+	for action in effects.actions():
+		var id: String=action[1]
+		button(effects_bar,action[0],func(): effects.start(id); canvas.queue_redraw())
 func button(parent: Node, text: String, action: Callable) -> Button:
 	var b:=Button.new()
 	b.text=text
@@ -730,6 +743,7 @@ func load_room() -> void:
 	add_child(room)
 	room.hide()
 	room.configure_embedded(quarter,[],false,0.0)
+	effects.clear(); effects.room_id=str(entries[index].room); rebuild_effect_buttons()
 	room.props=room.props.filter(func(prop): return Library.keeps_in_room(str(entries[index].room),prop))
 	var corridor_room: bool=str(entries[index].room) in ["corridor","corner","tee_corridor"]
 	# Riser wall decorations use retired art; redesigned rooms leave that layer off.
@@ -1918,6 +1932,9 @@ func _process(delta: float) -> void:
 	if recovery_clock>=2.0 and not dragging and not resizing and not comparing:
 		recovery_clock=0; write_recovery()
 		if autosave_enabled and current_room_dirty(): save_all_rotations()
+	if effects.active() and is_instance_valid(room):
+		effects.advance(delta)
+		canvas.queue_redraw()
 	if not preview_animation or not is_instance_valid(room): return
 	preview_clock+=delta
 	canvas.queue_redraw()
