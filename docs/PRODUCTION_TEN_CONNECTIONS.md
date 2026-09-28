@@ -1,5 +1,9 @@
 # Ten-room connection geometry evidence
 
+**Retired Sept 28, 2026.** All ten rooms now draw through their full-wall views; the
+baseline views this test measured are no longer drawn in play, and the live views are
+covered by the Studio and preferred-layout tests. The record below is historical.
+
 `tests/test_production_ten_connections.gd` loads the current manifest and actual
 registered views, then compares their sockets with RoomDatabase layouts for all
 four rotations. It checks all 6,400 ordered room/rotation/side pairings:

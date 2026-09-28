@@ -58,7 +58,6 @@ func _init() -> void:
 		include_path("res://legacy/default/assets/drones/fleet-v1/")
 	if "--production-ten" in OS.get_cmdline_user_args():
 		include_path("res://rooms/production-ten/manifest.json")
-		include_path("res://tests/test_production_ten_connections.gd")
 		var batch: Array=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/production-ten/manifest.json"))
 		for entry in batch:
 			include_path("res://"+entry.integration.view)
