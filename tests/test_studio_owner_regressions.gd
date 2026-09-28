@@ -22,6 +22,18 @@ func run():
  for other in e.room.props:
   if other.id!=a.id:check(selected.sort_y>other.sort_y,"Selected prop is above every other prop")
  check(e.draft[a.id]==position,"Stacking does not move the prop")
+ # Owner, Sept 27: deleting a copy removed it but left source/flip/size keys behind.
+ var kept=e.draft.duplicate(true);var kept_history=e.history.duplicate(true);var kept_future=e.future.duplicate(true)
+ e.selected=a.id;e.selected_many.clear();e.duplicate_selected()
+ var copy=e.selected
+ check(copy!=a.id and e.draft.has(copy),"Duplicate creates a copy")
+ e.flip_selected(0)
+ e.remove_library_asset()
+ var leftovers=[]
+ for key in e.draft:
+  if str(key).ends_with("/"+copy) or str(key)==copy:leftovers.append(key)
+ check(leftovers.is_empty(),"Deleted copy leaves no keys behind: "+str(leftovers))
+ e.draft=kept;e.history=kept_history;e.future=kept_future;e.selected=a.id;e.refresh()
  e.undo();check(not e.draft.has("order/"+a.id),"Stacking can be undone")
  e.redo();check(e.draft.get("order/"+a.id)==front_order,"Stacking can be redone")
  e.save_layout();e.rotation_drafts.clear();e.load_room()

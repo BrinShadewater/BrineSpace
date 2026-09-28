@@ -1751,8 +1751,12 @@ func remove_library_asset() -> void:
 	for id in selection_ids():
 		if draft.get("locked/"+id,false): continue
 		if defaults.has(id): draft[id]=null
-		else: draft.erase(id)
+		else:
+			draft.erase(id)
+			# A removed copy takes its settings with it; a left-behind source/ key was orphaned.
+			for prefix in COMPANION_PREFIXES: draft.erase(prefix+id)
 	selected=""; selected_many.clear(); dirty=true; refresh()
+const COMPANION_PREFIXES:=["source/","size/","flip/","portable/","order/","group/","locked/","lighting/","hidden/"]
 
 func has_unsaved_rotations() -> bool:
 	if dirty: return true
