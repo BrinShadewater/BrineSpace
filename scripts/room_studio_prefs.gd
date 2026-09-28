@@ -33,6 +33,7 @@ static func save_value(key: String, value: Variant) -> void:
 	if file.is_empty(): return
 	var config := ConfigFile.new()
 	config.load(file)
-	if config.get_value(SECTION, key, null) == value: return
+	# get_value with a null default logs an error for a key saved for the first time.
+	if config.has_section_key(SECTION, key) and config.get_value(SECTION, key) == value: return
 	config.set_value(SECTION, key, value)
 	config.save(file)
