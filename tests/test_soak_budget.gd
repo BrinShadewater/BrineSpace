@@ -32,6 +32,11 @@ func run() -> void:
 		game._place_room(ROOMS[index], cell, true)
 		cell += Vector2i.RIGHT if index % 2 == 0 else Vector2i.UP
 	game.crew_comms.minimize()
+	# Room views load lazily (Sept 28); a loading station builds its own before play, as
+	# main's startup does, so their art is not counted as navigation time.
+	var views_started := Time.get_ticks_usec()
+	game.grid_view.prewarm_station_views(game)
+	print("SOAK BUDGET: station room views built in %.0f ms" % (float(Time.get_ticks_usec() - views_started) / 1000.0))
 	# Scanning a room type's walkable points happens once per type and is paid while a station
 	# loads, so warm it here rather than measuring twelve first-time scans in one frame.
 	var warm_started := Time.get_ticks_usec()

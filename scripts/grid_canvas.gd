@@ -14,77 +14,148 @@ const RockView := preload("res://assets/environment/rock-blockers-v1/rock_view.g
 var rock_view := RockView.new()
 var harvest_site_art := preload("res://scripts/harvest_site_art.gd").new()
 const NurseryView := preload("res://rooms/full-wall-v1/mycelium_nursery_view.gd")
-var nursery_view: NurseryView
+var nursery_view:
+	get: return _lazy_view(&"nursery_view", NurseryView)
+	set(value): lazy_views[&"nursery_view"] = value
 const LifeSupportView := preload("res://rooms/full-wall-v1/life_support_view.gd")
-var life_support_view: LifeSupportView
+var life_support_view:
+	get: return _lazy_view(&"life_support_view", LifeSupportView)
+	set(value): lazy_views[&"life_support_view"] = value
 const HydroponicsView := preload("res://rooms/full-wall-v1/hydroponics_bay_view.gd")
-var hydroponics_view: HydroponicsView
+var hydroponics_view:
+	get: return _lazy_view(&"hydroponics_view", HydroponicsView)
+	set(value): lazy_views[&"hydroponics_view"] = value
 const ReactorView := preload("res://rooms/whole-room/reactor_view.gd")
-var reactor_view: ReactorView
+var reactor_view:
+	get: return _lazy_view(&"reactor_view", ReactorView)
+	set(value): lazy_views[&"reactor_view"] = value
 const MedBayView := preload("res://rooms/full-wall-v1/med_bay_view.gd")
-var med_bay_view: MedBayView
+var med_bay_view:
+	get: return _lazy_view(&"med_bay_view", MedBayView)
+	set(value): lazy_views[&"med_bay_view"] = value
 const CrewHabView = preload("res://rooms/full-wall-v1/crew_hab_view.gd")
-var crew_hab_view: CrewHabView
+var crew_hab_view:
+	get: return _lazy_view(&"crew_hab_view", CrewHabView)
+	set(value): lazy_views[&"crew_hab_view"] = value
 const CryoView = preload("res://rooms/full-wall-v1/cryo_chamber_view.gd")
-var cryo_view: CryoView
+var cryo_view:
+	get: return _lazy_view(&"cryo_view", CryoView)
+	set(value): lazy_views[&"cryo_view"] = value
 const CloneView = preload("res://rooms/full-wall-v1/clone_lab_view.gd")
-var clone_view: CloneView
+var clone_view:
+	get: return _lazy_view(&"clone_view", CloneView)
+	set(value): lazy_views[&"clone_view"] = value
 const ArchiveView = preload("res://rooms/full-wall-v1/data_archive_view.gd")
-var archive_view: ArchiveView
+var archive_view:
+	get: return _lazy_view(&"archive_view", ArchiveView)
+	set(value): lazy_views[&"archive_view"] = value
 const BiodomeView = preload("res://rooms/full-wall-v1/biodome_view.gd")
-var biodome_view: BiodomeView
+var biodome_view:
+	get: return _lazy_view(&"biodome_view", BiodomeView)
+	set(value): lazy_views[&"biodome_view"] = value
 const XenoView = preload("res://rooms/full-wall-v1/xeno_lab_view.gd")
-var xeno_view: XenoView
+var xeno_view:
+	get: return _lazy_view(&"xeno_view", XenoView)
+	set(value): lazy_views[&"xeno_view"] = value
 const AnomalyView = preload("res://rooms/full-wall-v1/anomaly_lab_view.gd")
-var anomaly_view: AnomalyView
+var anomaly_view:
+	get: return _lazy_view(&"anomaly_view", AnomalyView)
+	set(value): lazy_views[&"anomaly_view"] = value
 const BioView = preload("res://rooms/full-wall-v1/bio_lab_view.gd")
-var bio_view: BioView
+var bio_view:
+	get: return _lazy_view(&"bio_view", BioView)
+	set(value): lazy_views[&"bio_view"] = value
 const HoloView = preload("res://rooms/full-wall-v1/holographic_core_view.gd")
-var holo_view: HoloView
+var holo_view:
+	get: return _lazy_view(&"holo_view", HoloView)
+	set(value): lazy_views[&"holo_view"] = value
 const MedCenterView = preload("res://rooms/full-wall-v1/med_center_view.gd")
-var med_center_view: MedCenterView
+var med_center_view:
+	get: return _lazy_view(&"med_center_view", MedCenterView)
+	set(value): lazy_views[&"med_center_view"] = value
 const MedOfficeView = preload("res://rooms/full-wall-v1/med_office_view.gd")
-var med_office_view: MedOfficeView
+var med_office_view:
+	get: return _lazy_view(&"med_office_view", MedOfficeView)
+	set(value): lazy_views[&"med_office_view"] = value
 const TidalView = preload("res://rooms/full-wall-v1/tidal_condenser_view.gd")
-var tidal_view: TidalView
+var tidal_view:
+	get: return _lazy_view(&"tidal_view", TidalView)
+	set(value): lazy_views[&"tidal_view"] = value
 const GravityView = preload("res://rooms/underwater/gravity-loom/gravity_loom_view.gd")
-var gravity_view: GravityView
+var gravity_view:
+	get: return _lazy_view(&"gravity_view", GravityView)
+	set(value): lazy_views[&"gravity_view"] = value
 const BrineView = preload("res://rooms/underwater/brine-core/brine_core_view.gd")
-var brine_view: BrineView
+var brine_view:
+	get: return _lazy_view(&"brine_view", BrineView)
+	set(value): lazy_views[&"brine_view"] = value
 var power_room_views := {}
 var rare_room_views := {}
+# Built on first use like the typed room views above.
+const POWER_VIEW_PATHS := {"current_turbine":"res://rooms/power-expansion-v1/current_turbine_view.gd","biomass_digester":"res://rooms/full-wall-v1/biomass_digester_view.gd","heat_recovery":"res://rooms/power-expansion-v1/heat_recovery_view.gd"}
+const RARE_VIEW_PATHS := {"cold_store":"res://rooms/underwater/cold-store-v1/cold_store_view.gd", "galley":"res://rooms/underwater/galley-v1/galley_view.gd", "salvage_workshop":"res://rooms/underwater/salvage-workshop-v1/workshop_view.gd", "observation_room":"res://rooms/underwater/observation-room-v1/observation_room_view.gd", "pressure_control":"res://rooms/full-wall-v1/pressure_control_view.gd", "listening_post":"res://rooms/full-wall-v1/listening_post_view.gd", "isolation_vault":"res://rooms/full-wall-v1/isolation_vault_view.gd"}
 var expansion_room_views := {}
 const ExpansionViews = preload("res://rooms/new-room-expansion/views.gd")
 const AirlockView=preload("res://rooms/underwater/airlock-v1/airlock_view.gd")
-var airlock_view: AirlockView
+var airlock_view:
+	get: return _lazy_view(&"airlock_view", AirlockView)
+	set(value): lazy_views[&"airlock_view"] = value
 const HullView = preload("res://rooms/full-wall-v1/shield_generator_view.gd")
-var hull_view: HullView
+var hull_view:
+	get: return _lazy_view(&"hull_view", HullView)
+	set(value): lazy_views[&"hull_view"] = value
 const AcousticView = preload("res://rooms/full-wall-v1/radio_lab_view.gd")
-var acoustic_view: AcousticView
+var acoustic_view:
+	get: return _lazy_view(&"acoustic_view", AcousticView)
+	set(value): lazy_views[&"acoustic_view"] = value
 const ThermalView = preload("res://rooms/full-wall-v1/solar_array_view.gd")
-var thermal_view: ThermalView
+var thermal_view:
+	get: return _lazy_view(&"thermal_view", ThermalView)
+	set(value): lazy_views[&"thermal_view"] = value
 const BatteryView = preload("res://rooms/full-wall-v1/battery_array_view.gd")
-var battery_view: BatteryView
+var battery_view:
+	get: return _lazy_view(&"battery_view", BatteryView)
+	set(value): lazy_views[&"battery_view"] = value
 const ResearchView = preload("res://rooms/full-wall-v1/research_lab_view.gd")
-var research_view: ResearchView
+var research_view:
+	get: return _lazy_view(&"research_view", ResearchView)
+	set(value): lazy_views[&"research_view"] = value
 const MaintenanceView = preload("res://rooms/full-wall-v1/maintenance_bay_view.gd")
-var maintenance_view: MaintenanceView
+var maintenance_view:
+	get: return _lazy_view(&"maintenance_view", MaintenanceView)
+	set(value): lazy_views[&"maintenance_view"] = value
 const StorageView = preload("res://rooms/full-wall-v1/storage_bay_view.gd")
-var storage_view: StorageView
+var storage_view:
+	get: return _lazy_view(&"storage_view", StorageView)
+	set(value): lazy_views[&"storage_view"] = value
 const RefineryView = preload("res://rooms/full-wall-v1/ore_refinery_view.gd")
-var refinery_view: RefineryView
+var refinery_view:
+	get: return _lazy_view(&"refinery_view", RefineryView)
+	set(value): lazy_views[&"refinery_view"] = value
 const MiningView = preload("res://rooms/full-wall-v1/mining_drone_bay_view.gd")
-var mining_view: MiningView
+var mining_view:
+	get: return _lazy_view(&"mining_view", MiningView)
+	set(value): lazy_views[&"mining_view"] = value
 const ConstructionView = preload("res://rooms/full-wall-v1/construction_drone_bay_view.gd")
-var construction_view: ConstructionView
+var construction_view:
+	get: return _lazy_view(&"construction_view", ConstructionView)
+	set(value): lazy_views[&"construction_view"] = value
 const SalvageView = preload("res://rooms/full-wall-v1/salvage_drone_bay_view.gd")
-var salvage_view: SalvageView
+var salvage_view:
+	get: return _lazy_view(&"salvage_view", SalvageView)
+	set(value): lazy_views[&"salvage_view"] = value
 const LoungeView = preload("res://rooms/full-wall-v1/crew_lounge_view.gd")
-var lounge_view: LoungeView
+var lounge_view:
+	get: return _lazy_view(&"lounge_view", LoungeView)
+	set(value): lazy_views[&"lounge_view"] = value
 const CommandView = preload("res://rooms/full-wall-v1/command_center_view.gd")
-var command_view: CommandView
+var command_view:
+	get: return _lazy_view(&"command_view", CommandView)
+	set(value): lazy_views[&"command_view"] = value
 const QuarantineView = preload("res://rooms/full-wall-v1/quarantine_cell_view.gd")
-var quarantine_view: QuarantineView
+var quarantine_view:
+	get: return _lazy_view(&"quarantine_view", QuarantineView)
+	set(value): lazy_views[&"quarantine_view"] = value
 const RoomLighting := preload("res://rooms/whole-room/room_lighting.gd")
 const RoomDoor := preload("res://rooms/whole-room/room_door.gd")
 const AnimatedDoorAtlas := preload("res://rooms/whole-room/animated_door_atlas.gd")
@@ -237,181 +308,6 @@ func _ready() -> void:
 		add_child(layer)
 		surface_passes.append(layer)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	nursery_view = NurseryView.new()
-	nursery_view.embedded = true
-	nursery_view.hide()
-	add_child(nursery_view)
-	life_support_view = LifeSupportView.new()
-	life_support_view.embedded = true
-	life_support_view.hide()
-	add_child(life_support_view)
-	hydroponics_view = HydroponicsView.new()
-	hydroponics_view.embedded = true
-	hydroponics_view.hide()
-	add_child(hydroponics_view)
-	reactor_view = ReactorView.new()
-	reactor_view.embedded = true
-	reactor_view.hide()
-	add_child(reactor_view)
-	med_bay_view = MedBayView.new()
-	med_bay_view.embedded = true
-	med_bay_view.hide()
-	add_child(med_bay_view)
-	crew_hab_view=CrewHabView.new()
-	crew_hab_view.embedded=true
-	crew_hab_view.hide()
-	add_child(crew_hab_view)
-	cryo_view=CryoView.new()
-	cryo_view.embedded=true
-	cryo_view.hide()
-	add_child(cryo_view)
-	clone_view=CloneView.new()
-	clone_view.embedded=true
-	clone_view.hide()
-	add_child(clone_view)
-	archive_view=ArchiveView.new()
-	archive_view.embedded=true
-	archive_view.hide()
-	add_child(archive_view)
-	biodome_view=BiodomeView.new()
-	biodome_view.embedded=true
-	biodome_view.hide()
-	add_child(biodome_view)
-	xeno_view=XenoView.new()
-	xeno_view.embedded=true
-	xeno_view.hide()
-	add_child(xeno_view)
-	anomaly_view=AnomalyView.new()
-	anomaly_view.embedded=true
-	anomaly_view.hide()
-	add_child(anomaly_view)
-	bio_view=BioView.new()
-	bio_view.embedded=true
-	bio_view.hide()
-	add_child(bio_view)
-	holo_view=HoloView.new()
-	holo_view.embedded=true
-	holo_view.hide()
-	add_child(holo_view)
-	med_center_view=MedCenterView.new()
-	med_center_view.embedded=true
-	med_center_view.hide()
-	add_child(med_center_view)
-	med_office_view=MedOfficeView.new()
-	med_office_view.embedded=true
-	med_office_view.hide()
-	add_child(med_office_view)
-	tidal_view=TidalView.new()
-	tidal_view.embedded=true
-	tidal_view.hide()
-	add_child(tidal_view)
-	gravity_view=GravityView.new()
-	gravity_view.embedded=true
-	gravity_view.hide()
-	add_child(gravity_view)
-	brine_view=BrineView.new()
-	var power_views := {
-		"current_turbine":preload("res://rooms/power-expansion-v1/current_turbine_view.gd"),
-		"biomass_digester":preload("res://rooms/full-wall-v1/biomass_digester_view.gd"),
-		"heat_recovery":preload("res://rooms/power-expansion-v1/heat_recovery_view.gd")}
-	for id in power_views:
-		var view = power_views[id].new()
-		view.room_id = id
-		view.embedded = true
-		view.hide()
-		add_child(view)
-		power_room_views[id] = view
-	rare_room_views["cold_store"]=preload("res://rooms/underwater/cold-store-v1/cold_store_view.gd").new()
-	rare_room_views["cold_store"].embedded=true
-	rare_room_views["cold_store"].hide()
-	add_child(rare_room_views["cold_store"])
-	rare_room_views["galley"]=preload("res://rooms/underwater/galley-v1/galley_view.gd").new()
-	rare_room_views["galley"].embedded=true
-	rare_room_views["galley"].hide()
-	add_child(rare_room_views["galley"])
-	rare_room_views["salvage_workshop"]=preload("res://rooms/underwater/salvage-workshop-v1/workshop_view.gd").new()
-	rare_room_views["salvage_workshop"].embedded=true
-	rare_room_views["salvage_workshop"].hide()
-	add_child(rare_room_views["salvage_workshop"])
-	rare_room_views["observation_room"]=preload("res://rooms/underwater/observation-room-v1/observation_room_view.gd").new()
-	rare_room_views["observation_room"].embedded=true
-	rare_room_views["observation_room"].hide()
-	add_child(rare_room_views["observation_room"])
-	rare_room_views["pressure_control"]=preload("res://rooms/full-wall-v1/pressure_control_view.gd").new()
-	rare_room_views["pressure_control"].embedded=true
-	rare_room_views["pressure_control"].hide()
-	add_child(rare_room_views["pressure_control"])
-	rare_room_views["listening_post"]=preload("res://rooms/full-wall-v1/listening_post_view.gd").new()
-	rare_room_views["listening_post"].embedded=true
-	rare_room_views["listening_post"].hide()
-	add_child(rare_room_views["listening_post"])
-	rare_room_views["isolation_vault"]=preload("res://rooms/full-wall-v1/isolation_vault_view.gd").new()
-	rare_room_views["isolation_vault"].embedded=true
-	rare_room_views["isolation_vault"].hide()
-	add_child(rare_room_views["isolation_vault"])
-	airlock_view=AirlockView.new()
-	airlock_view.embedded=true
-	airlock_view.hide()
-	add_child(airlock_view)
-	brine_view.embedded=true
-	brine_view.hide()
-	add_child(brine_view)
-	hull_view=HullView.new()
-	hull_view.embedded=true
-	hull_view.hide()
-	add_child(hull_view)
-	acoustic_view=AcousticView.new()
-	acoustic_view.embedded=true
-	acoustic_view.hide()
-	add_child(acoustic_view)
-	thermal_view=ThermalView.new()
-	thermal_view.embedded=true
-	thermal_view.hide()
-	add_child(thermal_view)
-	battery_view=BatteryView.new()
-	battery_view.embedded=true
-	battery_view.hide()
-	add_child(battery_view)
-	research_view=ResearchView.new()
-	research_view.embedded=true
-	research_view.hide()
-	add_child(research_view)
-	maintenance_view=MaintenanceView.new()
-	maintenance_view.embedded=true
-	maintenance_view.hide()
-	add_child(maintenance_view)
-	storage_view=StorageView.new()
-	storage_view.embedded=true
-	storage_view.hide()
-	add_child(storage_view)
-	refinery_view=RefineryView.new()
-	refinery_view.embedded=true
-	refinery_view.hide()
-	add_child(refinery_view)
-	mining_view=MiningView.new()
-	mining_view.embedded=true
-	mining_view.hide()
-	add_child(mining_view)
-	construction_view=ConstructionView.new()
-	construction_view.embedded=true
-	construction_view.hide()
-	add_child(construction_view)
-	salvage_view=SalvageView.new()
-	salvage_view.embedded=true
-	salvage_view.hide()
-	add_child(salvage_view)
-	lounge_view=LoungeView.new()
-	lounge_view.embedded=true
-	lounge_view.hide()
-	add_child(lounge_view)
-	command_view=CommandView.new()
-	command_view.embedded=true
-	command_view.hide()
-	add_child(command_view)
-	quarantine_view=QuarantineView.new()
-	quarantine_view.embedded=true
-	quarantine_view.hide()
-	add_child(quarantine_view)
 	_generate_star_points()
 	space_background_texture = _load_png_texture("res://legacy/retired/space texture.jpg")
 	door_texture = _load_png_texture("res://legacy/default/dooranimated.png")
@@ -716,8 +612,43 @@ static func _exact_ratio(scale: float) -> float:
 		if absf(numerator/float(denominator)-scale) < 0.000002: return numerator/float(denominator)
 	return scale
 
+# Room views load 16-120 MB of art each (owner report, Sept 28: ~1.8 GB for all of them).
+# Build each on first use; prewarm_room_views() builds hand and station rooms ahead of
+# placement, one per frame, so the load does not land on the placing frame.
+var lazy_views: Dictionary = {}
+var prewarmed_room_ids: Dictionary = {}
+func _lazy_view(key: StringName, script: Script):
+	var view = lazy_views.get(key)
+	if not is_instance_valid(view):
+		view = script.new()
+		view.embedded = true
+		view.hide()
+		add_child(view)
+		lazy_views[key] = view
+	return view
+
+# Every room already on the station, at once: startup and checkpoint loads call this so
+# the first navigation build does not load their art (test_soak_budget, Sept 28).
+func prewarm_station_views(main) -> void:
+	for room in main.placed_rooms:
+		var id := str(room.get("id",""))
+		if id.is_empty() or prewarmed_room_ids.has(id): continue
+		prewarmed_room_ids[id] = true
+		_bill_room_view({"id": id})
+
+func prewarm_room_views(main) -> void:
+	var ids: Array = main.hand.duplicate()
+	if not str(main.selected_card_id).is_empty(): ids.push_front(str(main.selected_card_id))
+	for room in main.placed_rooms: ids.append(str(room.get("id","")))
+	for id in ids:
+		if id.is_empty() or prewarmed_room_ids.has(id): continue
+		prewarmed_room_ids[id] = true
+		_bill_room_view({"id": id})
+		return
+
 func _process(_delta: float) -> void:
 	var main = _get_main()
+	prewarm_room_views(main)
 	var viewport_region := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size)
 	if viewport_region != last_content_viewport:
 		last_content_viewport = viewport_region
@@ -1887,12 +1818,21 @@ func _bill_room_view(room: Dictionary):
 	if room.get("id", "") == "command_center": room_view = command_view
 	if room.get("id", "") == "quarantine_cell": room_view = quarantine_view
 	if room.get("id", "") == "reactor": room_view = reactor_view
-	if power_room_views.has(room.get("id", "")):
+	if POWER_VIEW_PATHS.has(room.get("id", "")):
+		if not is_instance_valid(power_room_views.get(room.id)):
+			var power_view = load(POWER_VIEW_PATHS[room.id]).new()
+			power_view.room_id = room.id
+			power_view.embedded = true
+			power_view.hide()
+			add_child(power_view)
+			power_room_views[room.id] = power_view
 		room_view = power_room_views[room.id]
 		if room.id == "current_turbine":
 			var game = _get_main()
 			room_view.intake_clear = game._turbine_intake_clear(room) if game!=null and room.has("pos") else true
-	if rare_room_views.has(room.get("id","")):room_view=rare_room_views[room.id]
+	if RARE_VIEW_PATHS.has(room.get("id","")):
+		if not is_instance_valid(rare_room_views.get(room.id)): rare_room_views[room.id]=_lazy_view(StringName("rare_"+str(room.id)),load(RARE_VIEW_PATHS[room.id]))
+		room_view=rare_room_views[room.id]
 	return room_view
 
 # Snapshot the exact registered ground footprints used to draw this room.

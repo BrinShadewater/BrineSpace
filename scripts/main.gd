@@ -384,6 +384,8 @@ func _ready() -> void:
 		RunSave.pending = {}
 		if not await RunSave.restore_staged(self, checkpoint):
 			_log("Checkpoint unavailable. A new loop is staged.", false)
+	# Room views load lazily; build the station's own during loading, not in play.
+	grid_view.prewarm_station_views(self)
 	startup_complete = true
 	crew_comms=preload("res://scripts/crew_comms.gd").new()
 	crew_comms.opening_enabled=fresh_comms_opening
