@@ -927,7 +927,8 @@ func _surface_state() -> Array:
 		structural.erase("leak_repair")
 		# These values are consumed by live chamber/fire effects, not the shell.
 		# Keeping their timers here redraws every visible floor/wall every frame.
-		for field in ["airlock_cycle","fire","fire_water_seconds","electrical_repair_progress","survey_clock","survey_blocked"]:
+		# fire_heat rises every functioning cycle in machinery rooms (owner lag reports, Sept 27).
+		for field in ["airlock_cycle","fire","fire_heat","fire_water_seconds","electrical_repair_progress","survey_clock","survey_blocked"]:
 			structural.erase(field)
 		structural_rooms.append(structural)
 	return [main.hardware.duplicate(),_cell_size(),structural_rooms,main.placed_rooms.size(),main.powered_room_cells,rooms,preload("res://scripts/room_layout_store.gd").revision,
