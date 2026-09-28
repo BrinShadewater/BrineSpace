@@ -1,8 +1,11 @@
 extends SceneTree
 const Store=preload("res://scripts/room_layout_store.gd")
-const OUT="res://output/corridor-polish-v3/"
+var OUT="res://output/corridor-polish-v3/"
 var game
-func _init(): call_deferred("run")
+func _init():
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--out="): OUT=arg.trim_prefix("--out=").trim_suffix("/")+"/"
+	call_deferred("run")
 func settle():
 	game.grid_view.queue_redraw()
 	for i in range(4): await process_frame
@@ -53,7 +56,11 @@ func run():
 			assert(snapshots[0]!=snapshots[2],"Production closure changes native pixels")
 			game.paused=true
 			await settle()
-			assert(root.get_texture().get_image().get_data()==snapshots[-1],"Paused production door/water render holds")
+			var paused_image:=root.get_texture().get_image()
+			if paused_image.get_data()!=snapshots[-1]:
+				paused_image.save_png(OUT+room_id+"-"+str(variant)+"-pause-diagnostic.png")
+				print("PAUSE_DIAGNOSTIC ",room_id," variant=",variant," time=",game.visual_time_seconds," paused=",game.paused," door=",game.grid_view.door_wet_history.get([a,b],{}))
+				quit(1);return
 			var flood=preload("res://scripts/flood_visuals.gd")
 			for q in range(4):
 				game.occupied[b].rotation=q

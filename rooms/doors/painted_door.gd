@@ -7,9 +7,11 @@ static var catalog: Dictionary={}
 static var skins:Dictionary={}
 static func for_variant(variant:String):
 	if catalog.is_empty():catalog=JSON.parse_string(FileAccess.get_file_as_string("res://assets/architecture-rollout-2026-09-26/doors.json"))
+	var hallway:bool=variant=="hallway" or variant in ["corridor","corner","tee_corridor"]
 	var aliases={"bio":"life_support","life-support":"life_support","metal":"default","brine":"default","generic":"default"}
 	var name:String=catalog.rooms.get(variant,aliases.get(variant,variant))
 	if not catalog.styles.has(name):name="default"
+	if hallway:name="hallway"
 	if not skins.has(name):
 		var skin=new();skin.family=name;skins[name]=skin
 	return skins[name]
@@ -18,10 +20,15 @@ static func family_for(room_id:String) -> String:
 	return str(catalog.rooms.get(room_id,"default"))
 
 const SOURCES={"raised":"res://assets/door-polish-v2/raised-source.png","low":"res://assets/door-polish-v2/low-source.png"}
+const RAISED_VISUAL_SCALE := 0.9
+static func raised_rect(rect: Rect2, anchor: Vector2) -> Rect2:
+	return Rect2(anchor+(rect.position-anchor)*RAISED_VISUAL_SCALE,rect.size*RAISED_VISUAL_SCALE)
+func raised_region(canvas: CanvasItem, dest: Rect2, source: Rect2, anchor: Vector2) -> void:
+	region(canvas,"raised",raised_rect(dest,anchor),source)
 func texture(kind: String) -> Texture2D:
 	var key:=family+":"+kind
 	if not textures.has(key):
-		var path: String=catalog.styles[family][kind] if not catalog.is_empty() else SOURCES[kind]
+		var path: String=catalog.styles["default" if family=="hallway" else family][kind] if not catalog.is_empty() else SOURCES[kind]
 		var image:=Image.new()
 		var error:=image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))
 		assert(error==OK,"Missing department door: "+path)
@@ -32,10 +39,13 @@ func travel(amount: float) -> float:
 	var t:=clampf((amount-0.10)/0.84,0,1)
 	return t*t*(3.0-2.0*t)
 func region(canvas: CanvasItem, kind: String, dest: Rect2, source: Rect2) -> void:
-	canvas.draw_texture_rect_region(texture(kind),dest,source)
+	canvas.draw_texture_rect_region(texture(kind),dest,source,Color(.43,.46,.49) if family=="hallway" else Color.WHITE)
 func raised_at(canvas: CanvasItem, amount: float, center: float, top: float, height: float) -> void:
 	var opening:=travel(amount)
-	canvas.draw_rect(Rect2(center-36,top,72,height),Color("101a20"))
+	# Scale the complete visual assembly around its threshold. Door travel and
+	# navigation retain their existing world-space contracts.
+	var anchor:=Vector2(center,top+height)
+	canvas.draw_rect(raised_rect(Rect2(center-36,top,72,height),anchor),Color("101a20"))
 	for left in [true,false]:
 		var width:=36.0*(1.0-opening)
 		if width<=0.001: continue
@@ -43,18 +53,18 @@ func raised_at(canvas: CanvasItem, amount: float, center: float, top: float, hei
 		var source:=Rect2(160 if left else 628,170+(921.0-source_height)*0.5,464,source_height)
 		if left: source.position.x+=source.size.x*opening
 		source.size.x*=1.0-opening
-		region(canvas,"raised",Rect2(center-36 if left else center+36-width,top,width,height),source)
-	region(canvas,"raised",Rect2(center-44,top,8,height),Rect2(35,165,108,927))
-	region(canvas,"raised",Rect2(center+36,top,8,height),Rect2(1113,165,108,927))
-	region(canvas,"raised",Rect2(center-44,top-8,88,8),Rect2(35,61,1187,95))
-	region(canvas,"raised",Rect2(center-40,top+height,80,3),Rect2(161,1103,930,75))
+		raised_region(canvas,Rect2(center-36 if left else center+36-width,top,width,height),source,anchor)
+	raised_region(canvas,Rect2(center-44,top,8,height),Rect2(35,165,108,927),anchor)
+	raised_region(canvas,Rect2(center+36,top,8,height),Rect2(1113,165,108,927),anchor)
+	raised_region(canvas,Rect2(center-44,top-8,88,8),Rect2(35,61,1187,95),anchor)
+	raised_region(canvas,Rect2(center-40,top+height,80,3),Rect2(161,1103,930,75),anchor)
 func low_leaf(canvas: CanvasItem, target: Rect2, left: bool, vertical: bool, _variant: String) -> void:
 	var raw:=1.0-clampf((target.size.y if vertical else target.size.x)/36.0,0,1)
 	var amount:=travel(raw)
 	var width:=36.0*(1.0-amount)
 	if width<=0.001: return
 	var source:=Rect2(213 if left else 1091,280,865,162)
-	if not catalog.is_empty() and catalog.styles[family].has("low_y"):
+	if not catalog.is_empty() and family!="hallway" and catalog.styles[family].has("low_y"):
 		source.position.y=catalog.styles[family].low_y
 	if left: source.position.x+=source.size.x*amount
 	source.size.x*=1.0-amount
@@ -69,7 +79,7 @@ func low_leaf(canvas: CanvasItem, target: Rect2, left: bool, vertical: bool, _va
 	else:
 		var uv:=PackedVector2Array([source.position,Vector2(source.position.x,source.end.y),source.end,Vector2(source.end.x,source.position.y)])
 		for i in range(4): uv[i]/=Vector2(texture("low").get_size())
-		canvas.draw_polygon(PackedVector2Array([dest.position,Vector2(dest.end.x,dest.position.y),dest.end,Vector2(dest.position.x,dest.end.y)]),PackedColorArray([Color.WHITE]),uv,texture("low"))
+		canvas.draw_polygon(PackedVector2Array([dest.position,Vector2(dest.end.x,dest.position.y),dest.end,Vector2(dest.position.x,dest.end.y)]),PackedColorArray([Color(.43,.46,.49) if family=="hallway" else Color.WHITE]),uv,texture("low"))
 func low_closed(canvas: CanvasItem, center: Vector2, vertical: bool, variant: String) -> void:
 	for left in [true,false]:
 		var width:=36.0*(1.0-progress)

@@ -4,7 +4,8 @@ const Field = preload("res://scripts/wreck_field.gd")
 const HEADINGS := ["east","southeast","south","southwest","west","northwest","north","northeast"]
 const DIRECTIONS := [Vector2.UP,Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT]
 # Launcher anchors, set so each rotation's launcher art sits flush on its wall (owner, Sept 27).
-const DOCKS := [Vector2(0,-113),Vector2(99,0),Vector2(0,123),Vector2(-101,0)]
+# Owner, Sept 27 (second pass): the launcher passes through the hull and ends just outside it.
+const DOCKS := [Vector2(0,-143),Vector2(129,0),Vector2(0,153),Vector2(-131,0)]
 static func dock(q:int) -> Vector2:return DOCKS[posmod(q,4)]
 static func smooth_fraction(t:float) -> float:return t*t*(3-2*t)
 static func pose(time:float,q:int) -> Dictionary:

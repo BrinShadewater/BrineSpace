@@ -33,5 +33,6 @@ func is_animated_prop(prop:Dictionary) -> bool:
 
 
 func prop_visual_bounds(prop:Dictionary) -> Rect2:
+ if prop.id=="survey_hatch" and quarter==0:return prop.rect.merge(Rect2(-28,-178,48,68))
  if prop.id=="survey_hatch":return prop.rect
  return super.prop_visual_bounds(prop)

@@ -84,9 +84,9 @@ const RESOURCE_ICON_PATHS := {
 const Preferences = preload("res://scripts/title_settings.gd")
 const ROOM_ART_VARIANT_COUNTS := {
 	"battery_array": 1,
-	"corner": 3,
-	"corridor": 3,
-	"tee_corridor": 3,
+	"corner": 12,
+	"corridor": 12,
+	"tee_corridor": 12,
 	"crew_hab": 4,
 	"crew_lounge": 1,
 	"hydroponics_bay": 1,

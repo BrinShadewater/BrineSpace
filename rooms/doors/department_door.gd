@@ -17,6 +17,7 @@ static func department(room: Dictionary) -> String:
 	return preload("res://rooms/doors/painted_door.gd").family_for(str(room.get("id","")))
 
 static func pair_variant(a: Dictionary, b: Dictionary) -> String:
+	if a.get("id","") in ["corridor","corner","tee_corridor"] or b.get("id","") in ["corridor","corner","tee_corridor"]:return "hallway"
 	var first := department(a)
 	if first=="default": return "default"
 	var second := department(b)

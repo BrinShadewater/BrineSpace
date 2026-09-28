@@ -9,19 +9,18 @@ class FinishHost extends RefCounted:
 	var dirty:=false
 	func refresh() -> void: pass
 func _init() -> void:
-	assert(Floor.hall_module(Vector2(-60,-12),"corridor")==Floor.hall_module(Vector2(-60,12),"corridor"),"Symmetric lanes meet flipped neighboring sockets")
-	assert(Floor.hall_module(Vector2(-60,-36),"corridor").tile==Vector2(6,0))
-	assert(Floor.hall_module(Vector2(36,60),"corner").tile==Vector2(5,1))
-	assert(Floor.hall_module(Vector2(-60,-12),"corridor").turn==1)
-	assert(Floor.hall_module(Vector2(-12,60),"corner").turn==0)
-	assert(Floor.hall_module(Vector2(12,-12),"corner").tile==Vector2(0,0))
-	assert(Floor.hall_module(Vector2(-12,-12),"tee_corridor").tile==Vector2(0,0))
+	# Owner's Sept 27 hallway floor: the new atlas laid out in authored order on a 24-unit
+	# grid (8x8 tiles), with the retired service-lane pattern and per-shape borders gone.
+	assert(Floor.hall_module(Vector2(-180,-180),"corridor")=={"tile":Vector2(0,0),"turn":0})
+	assert(Floor.hall_module(Vector2(-12,-12),"corridor").tile==Vector2(7,7))
+	assert(Floor.hall_module(Vector2(12,12),"corner").tile==Vector2(0,0))
+	for shape in ["corridor","corner","tee_corridor"]:
+		assert(Floor.hall_module(Vector2(-60,-12),shape)==Floor.hall_module(Vector2(-60,-12),"corridor"),"One atlas order for every hallway shape")
 	var patterns: Array=[]
 	for shape in ["corridor","corner","tee_corridor"]:
-		for v in range(3):
-			var fingerprint=hash(Floor.meshes({},true,0,1.0,"",shape,v)[0].mesh.surface_get_arrays(0)[Mesh.ARRAY_TEX_UV])
-			assert(not fingerprint in patterns,"Nine floor layouts have unique UV arrangements")
-			patterns.append(fingerprint)
+		var fingerprint=hash(Floor.meshes({},true,0,1.0,"",shape)[0].mesh.surface_get_arrays(0)[Mesh.ARRAY_TEX_UV])
+		assert(not fingerprint in patterns,"Each hallway shape keeps its own floor footprint")
+		patterns.append(fingerprint)
 	var dressing=preload("res://rooms/underwater/corridor_dressing.gd")
 	var geometry=preload("res://rooms/underwater/corridor_geometry.gd")
 	assert(dressing.side_return_top(geometry.junction_hull,0,6)==64)

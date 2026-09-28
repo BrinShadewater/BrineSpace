@@ -24,7 +24,14 @@ static func draw_hull(canvas: CanvasItem, hull: PackedVector2Array, floor_poly: 
 	var light := lerpf(0.35,1.0,level)
 	var vertices := PackedVector2Array()
 	for p in hull: vertices.append(G.turn(p+center,q))
-	canvas.draw_colored_polygon(vertices,Color("617471")*Color(light,light,light))
+	# Texture the backing too: concave wall joins expose small patches between strips.
+	var wall_art=preload("res://rooms/underwater/corridor_wall_art.gd")
+	var wall_id:=wall_art.key(corner or tee,variant,tee)
+	var underlay:=wall_art.region(wall_id,"low")
+	var underlay_uv:=PackedVector2Array()
+	for point in hull:
+		underlay_uv.append((underlay.position+(point+Vector2.ONE*192)/384*underlay.size)/Vector2(wall_art.texture(wall_id).get_size()))
+	canvas.draw_polygon(vertices,PackedColorArray([Color(light,light,light)]),underlay_uv,wall_art.texture(wall_id))
 	# Map individual low-relief wall plates along the hull perimeter. Entrance
 	# end segments are intentionally omitted: shared doors/infill own the seam.
 	for index in range(hull.size()):
@@ -37,7 +44,6 @@ static func draw_hull(canvas: CanvasItem, hull: PackedVector2Array, floor_poly: 
 		for tile in range(count):
 			var start := a+tangent*tile*48
 			var end := a+tangent*minf((tile+1)*48,a.distance_to(b))
-			var wall_art=preload("res://rooms/underwater/corridor_wall_art.gd")
 			var points:=PackedVector2Array()
 			for point in [start,end,end+normal,start+normal]:points.append(G.turn(point+center,q))
 			wall_art.polygon(canvas,wall_art.key(corner or tee,variant),points,"low",light)

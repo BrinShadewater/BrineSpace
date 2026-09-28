@@ -687,7 +687,61 @@
         "pressure equalization diagram"
       ]
     },
-    "inherited_from": null
+    "inherited_from": null,
+    "north_special": {
+      "source": "res://assets/special-north-walls-v1/masters/airlock.png",
+      "face": [
+        44,
+        188,
+        2065,
+        420
+      ],
+      "cap": [
+        44,
+        120,
+        2065,
+        68
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "native_size": [
+        2153,
+        730
+      ],
+      "opaque_component_bounds": [
+        44,
+        120,
+        2109,
+        608
+      ],
+      "sha256": "c34238c5f0467d3c08312765e344af3b8395a2aab79bc8f542ae8576a00db2f6",
+      "prompt_sha256": "b3fe3cb5b84896d1377263b5a1bcc205ac023f1752bd49ff388df1fdd1026335"
+    }
   },
   "construction_drone_bay": {
     "base": {
@@ -4048,18 +4102,18 @@
   },
   "echo_chamber": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/anomaly_lab.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/echo_chamber.png",
       "face": [
-        46,
-        204,
-        1960,
-        384
+        45,
+        202,
+        1961,
+        388
       ],
       "cap": [
-        46,
-        141,
-        1960,
-        63
+        45,
+        138,
+        1961,
+        64
       ],
       "display_face": [
         -200,
@@ -4087,238 +4141,60 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2051,
         767
       ],
       "opaque_component_bounds": [
-        46,
-        141,
+        45,
+        138,
         2006,
-        588
+        590
       ],
-      "sha256": "e9c3dc62b5a39999d3ada826aff5c5effb5d379c8f619d1463b9b66869ce54b7"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/anomaly_lab.png",
-      "face": [
-        45,
-        200,
-        1950,
-        386
-      ],
-      "opaque_component_bounds": [
-        45,
-        137,
-        1995,
-        586
-      ],
-      "sha256": "fb255c359059b759c215b8e406ff6c526127f6e25520670041efb211cc87051c",
-      "prompt_sha256": "c5d51c833f70d805573e8d5b69b717484f15dda326a76a79ddc0a0aa3f2c13c2",
+      "sha256": "77b957793f360e5f32f60fa0b31abeab4a25db431052e2672f4fcb717d277ef9",
+      "prompt_sha256": "835bd942f7499d461c821076d366c50f7c39138fc6e574607417fa0d6c3d22fe",
       "reference_sha256": "e9c3dc62b5a39999d3ada826aff5c5effb5d379c8f619d1463b9b66869ce54b7",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2050,
-        767
-      ],
-      "subjects": [
-        "recessed wave trace",
-        "three dark anomalous sample niches",
-        "large geometric anomaly field diagram"
       ]
     },
-    "inherited_from": "anomaly_lab"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/echo_chamber.png",
+      "face": [
+        45,
+        202,
+        1961,
+        388
+      ],
+      "opaque_component_bounds": [
+        45,
+        138,
+        2006,
+        590
+      ],
+      "sha256": "77b957793f360e5f32f60fa0b31abeab4a25db431052e2672f4fcb717d277ef9",
+      "prompt_sha256": "835bd942f7499d461c821076d366c50f7c39138fc6e574607417fa0d6c3d22fe",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "fold_chamber": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/gravity_loom.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/fold_chamber.png",
       "face": [
-        49,
-        197,
-        2035,
-        406
-      ],
-      "cap": [
-        49,
-        131,
-        2035,
-        66
-      ],
-      "display_face": [
-        -200,
-        -258,
-        400,
-        82
-      ],
-      "door_reserve": [
-        -46,
-        -258,
-        92,
-        82
-      ],
-      "window_reserves": [
-        [
-          -152,
-          -249,
-          80,
-          32
-        ],
-        [
-          72,
-          -249,
-          80,
-          32
-        ]
-      ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
-      "native_size": [
-        2132,
-        738
-      ],
-      "opaque_component_bounds": [
-        49,
-        131,
-        2084,
-        603
-      ],
-      "sha256": "29d54041343b2ea338d88c70ec89e39474e06574c55a89fc1d755a394e1e5209"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/gravity_loom.png",
-      "face": [
-        47,
-        193,
-        2046,
-        418
-      ],
-      "opaque_component_bounds": [
-        47,
-        125,
-        2093,
-        611
-      ],
-      "sha256": "5f4650253910927eeef98f4901ef3e00be6829a825eb8854edaddb6bdacc4566",
-      "prompt_sha256": "dc54c0ba1ee2d2154ed2975fe782375b5ed395076889725ec8ea2749efd1e8aa",
-      "reference_sha256": "29d54041343b2ea338d88c70ec89e39474e06574c55a89fc1d755a394e1e5209",
-      "alpha_extrema": [
-        0,
-        255
-      ],
-      "native_size": [
-        2132,
-        738
-      ],
-      "subjects": [
-        "paired tension gauges",
-        "recessed coil cross-sections",
-        "large suspended-field diagram"
-      ]
-    },
-    "inherited_from": "gravity_loom"
-  },
-  "pressure_garden": {
-    "base": {
-      "source": "res://assets/room-risers-v4/masters/xeno_lab.png",
-      "face": [
-        37,
-        187,
-        2079,
-        378
-      ],
-      "cap": [
-        37,
-        126,
-        2079,
-        61
-      ],
-      "display_face": [
-        -200,
-        -258,
-        400,
-        82
-      ],
-      "door_reserve": [
-        -46,
-        -258,
-        92,
-        82
-      ],
-      "window_reserves": [
-        [
-          -152,
-          -249,
-          80,
-          32
-        ],
-        [
-          72,
-          -249,
-          80,
-          32
-        ]
-      ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
-      "native_size": [
-        2151,
-        731
-      ],
-      "opaque_component_bounds": [
-        37,
-        126,
-        2116,
-        565
-      ],
-      "sha256": "ed7fa79751f36eab3af94a174094e70f4373ca2d6d1179c504a05c06c5555479"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/xeno_lab.png",
-      "face": [
-        36,
-        183,
-        2078,
-        381
-      ],
-      "opaque_component_bounds": [
-        36,
-        122,
-        2114,
-        564
-      ],
-      "sha256": "be76777ec023fcc89278ac487329ff5b2cc0d7bf6805885a5b493e3fb9447495",
-      "prompt_sha256": "67c671a2c90cda77c7593685c1f8caf0f19d8c7680ec89a47ae43d895221f693",
-      "reference_sha256": "ed7fa79751f36eab3af94a174094e70f4373ca2d6d1179c504a05c06c5555479",
-      "alpha_extrema": [
-        0,
-        255
-      ],
-      "native_size": [
-        2151,
-        731
-      ],
-      "subjects": [
-        "three contained unusual marine samples",
-        "broad analysis readout",
-        "large alien marine morphology diagram"
-      ]
-    },
-    "inherited_from": "xeno_lab"
-  },
-  "stillwater_observatory": {
-    "base": {
-      "source": "res://assets/room-risers-v4/masters/anomaly_lab.png",
-      "face": [
-        46,
-        204,
+        45,
+        201,
         1960,
-        384
+        383
       ],
       "cap": [
-        46,
-        141,
+        45,
+        138,
         1960,
         63
       ],
@@ -4348,66 +4224,228 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
+      "native_size": [
+        2048,
+        768
+      ],
+      "opaque_component_bounds": [
+        45,
+        138,
+        2005,
+        584
+      ],
+      "sha256": "cd0083ad432cd3a3bcfea6c1b102558a04ca6479749ee094e053d950af28885e",
+      "prompt_sha256": "2801ded25e26eef1890fb78c2cb5b7c80083a0a51c9cbb3abbb9e3dfc3e4e269",
+      "reference_sha256": "e9c3dc62b5a39999d3ada826aff5c5effb5d379c8f619d1463b9b66869ce54b7",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/fold_chamber.png",
+      "face": [
+        45,
+        201,
+        1960,
+        383
+      ],
+      "opaque_component_bounds": [
+        45,
+        138,
+        2005,
+        584
+      ],
+      "sha256": "cd0083ad432cd3a3bcfea6c1b102558a04ca6479749ee094e053d950af28885e",
+      "prompt_sha256": "2801ded25e26eef1890fb78c2cb5b7c80083a0a51c9cbb3abbb9e3dfc3e4e269",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    "inherited_from": ""
+  },
+  "pressure_garden": {
+    "base": {
+      "source": "res://assets/room-risers-expansion-v1/masters/pressure_garden.png",
+      "face": [
+        46,
+        200,
+        1960,
+        385
+      ],
+      "cap": [
+        46,
+        137,
+        1960,
+        63
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2051,
         767
       ],
       "opaque_component_bounds": [
         46,
-        141,
-        2006,
-        588
-      ],
-      "sha256": "e9c3dc62b5a39999d3ada826aff5c5effb5d379c8f619d1463b9b66869ce54b7"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/anomaly_lab.png",
-      "face": [
-        45,
-        200,
-        1950,
-        386
-      ],
-      "opaque_component_bounds": [
-        45,
         137,
-        1995,
-        586
+        2006,
+        585
       ],
-      "sha256": "fb255c359059b759c215b8e406ff6c526127f6e25520670041efb211cc87051c",
-      "prompt_sha256": "c5d51c833f70d805573e8d5b69b717484f15dda326a76a79ddc0a0aa3f2c13c2",
+      "sha256": "a693cba920751d708ba257fb9428bfc328f7e57ecf915c8825bb96f8ed96eafb",
+      "prompt_sha256": "503b8e22db6ca74e6929766508311d5ad19700d814d3dbc326ef4debf9f261ce",
       "reference_sha256": "e9c3dc62b5a39999d3ada826aff5c5effb5d379c8f619d1463b9b66869ce54b7",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2050,
-        767
-      ],
-      "subjects": [
-        "recessed wave trace",
-        "three dark anomalous sample niches",
-        "large geometric anomaly field diagram"
       ]
     },
-    "inherited_from": "anomaly_lab"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/pressure_garden.png",
+      "face": [
+        46,
+        200,
+        1960,
+        385
+      ],
+      "opaque_component_bounds": [
+        46,
+        137,
+        2006,
+        585
+      ],
+      "sha256": "a693cba920751d708ba257fb9428bfc328f7e57ecf915c8825bb96f8ed96eafb",
+      "prompt_sha256": "503b8e22db6ca74e6929766508311d5ad19700d814d3dbc326ef4debf9f261ce",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
+  },
+  "stillwater_observatory": {
+    "base": {
+      "source": "res://assets/room-risers-expansion-v1/masters/stillwater_observatory.png",
+      "face": [
+        45,
+        202,
+        1960,
+        387
+      ],
+      "cap": [
+        45,
+        139,
+        1960,
+        63
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
+      "native_size": [
+        2051,
+        767
+      ],
+      "opaque_component_bounds": [
+        45,
+        139,
+        2005,
+        589
+      ],
+      "sha256": "b051d07daa9e0133c3436ba0ac494faaefc3f0d685b27da7dd609efb89287531",
+      "prompt_sha256": "4d37c6429328654cb2677d38ef1925cea31c9daf429d676d9285baba2b083fe7",
+      "reference_sha256": "e9c3dc62b5a39999d3ada826aff5c5effb5d379c8f619d1463b9b66869ce54b7",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/stillwater_observatory.png",
+      "face": [
+        45,
+        202,
+        1960,
+        387
+      ],
+      "opaque_component_bounds": [
+        45,
+        139,
+        2005,
+        589
+      ],
+      "sha256": "b051d07daa9e0133c3436ba0ac494faaefc3f0d685b27da7dd609efb89287531",
+      "prompt_sha256": "4d37c6429328654cb2677d38ef1925cea31c9daf429d676d9285baba2b083fe7",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "atmospheric_scrubber": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/life_support.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/atmospheric_scrubber.png",
       "face": [
-        47,
-        193,
-        2059,
-        374
+        46,
+        191,
+        2060,
+        377
       ],
       "cap": [
-        47,
-        132,
-        2059,
-        61
+        46,
+        129,
+        2060,
+        62
       ],
       "display_face": [
         -200,
@@ -4435,66 +4473,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
       "opaque_component_bounds": [
-        47,
-        132,
+        46,
+        129,
         2106,
-        567
+        568
       ],
-      "sha256": "63d023e24febbed97a815ba936517d927816a977c85c24345ed7784fd6d2c28f"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/life_support.png",
-      "face": [
-        44,
-        190,
-        2069,
-        379
-      ],
-      "opaque_component_bounds": [
-        44,
-        128,
-        2113,
-        569
-      ],
-      "sha256": "ffe28fe6b43dc84078b09133c16e29a78ebc1d75ee45ceebdf056c6f83dbf658",
-      "prompt_sha256": "4ac0f317d81e48af980097af0f970a2f14e739b42cd80101b8efba7978ff65ee",
+      "sha256": "6e25c9498e48ac849d116f38b2be77956e5f557b74d5763587bfb5d473430605",
+      "prompt_sha256": "2f0daa8666e678de43b2181f7524e67150505210157a4e0baa672ba5ff5a95b3",
       "reference_sha256": "63d023e24febbed97a815ba936517d927816a977c85c24345ed7784fd6d2c28f",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "air mixture gauges",
-        "recessed breathing masks",
-        "large oxygen circulation diagram"
       ]
     },
-    "inherited_from": "life_support"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/atmospheric_scrubber.png",
+      "face": [
+        46,
+        191,
+        2060,
+        377
+      ],
+      "opaque_component_bounds": [
+        46,
+        129,
+        2106,
+        568
+      ],
+      "sha256": "6e25c9498e48ac849d116f38b2be77956e5f557b74d5763587bfb5d473430605",
+      "prompt_sha256": "2f0daa8666e678de43b2181f7524e67150505210157a4e0baa672ba5ff5a95b3",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "habitat_recovery": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/mycelium_nursery.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/habitat_recovery.png",
       "face": [
-        52,
-        203,
-        2049,
-        385
+        45,
+        191,
+        2062,
+        378
       ],
       "cap": [
-        52,
-        140,
-        2049,
-        63
+        45,
+        129,
+        2062,
+        62
       ],
       "display_face": [
         -200,
@@ -4522,152 +4556,61 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
       "opaque_component_bounds": [
-        52,
-        140,
-        2101,
-        588
+        45,
+        129,
+        2107,
+        569
       ],
-      "sha256": "875c16beee3e231e7a3ccfd69873d00edfaaee72da95874a47fc8e09b7677f1a"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/mycelium_nursery.png",
-      "face": [
-        51,
-        199,
-        2052,
-        392
-      ],
-      "opaque_component_bounds": [
-        51,
-        135,
-        2103,
-        591
-      ],
-      "sha256": "e36d14b57f2dee957534bebeede7dab275b404ce43152788392422ed7ed7de66",
-      "prompt_sha256": "8af2563a0dbd43963240bc15c0a2b668ce82c948a52a4b838db8ee91fa3794d8",
-      "reference_sha256": "875c16beee3e231e7a3ccfd69873d00edfaaee72da95874a47fc8e09b7677f1a",
+      "sha256": "964d2d927808aa6ca9f64f77842ad8943a7db9827fa130ad8ad5fff94887a5ff",
+      "prompt_sha256": "683f9a19a5be4a54837a778daa0751ce22221f2198b58d411a333d6fcff4c943",
+      "reference_sha256": "63d023e24febbed97a815ba936517d927816a977c85c24345ed7784fd6d2c28f",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "three fungal culture niches",
-        "recessed humidity readout",
-        "large mycelium growth stencil"
       ]
     },
-    "inherited_from": "mycelium_nursery"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/habitat_recovery.png",
+      "face": [
+        45,
+        191,
+        2062,
+        378
+      ],
+      "opaque_component_bounds": [
+        45,
+        129,
+        2107,
+        569
+      ],
+      "sha256": "964d2d927808aa6ca9f64f77842ad8943a7db9827fa130ad8ad5fff94887a5ff",
+      "prompt_sha256": "683f9a19a5be4a54837a778daa0751ce22221f2198b58d411a333d6fcff4c943",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "seed_vault": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/hydroponics_bay.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/seed_vault.png",
       "face": [
-        47,
-        185,
+        46,
+        191,
         2061,
-        407
+        375
       ],
       "cap": [
-        47,
-        119,
+        46,
+        130,
         2061,
-        66
-      ],
-      "display_face": [
-        -200,
-        -258,
-        400,
-        82
-      ],
-      "door_reserve": [
-        -46,
-        -258,
-        92,
-        82
-      ],
-      "window_reserves": [
-        [
-          -152,
-          -249,
-          80,
-          32
-        ],
-        [
-          72,
-          -249,
-          80,
-          32
-        ]
-      ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
-      "native_size": [
-        2153,
-        730
-      ],
-      "opaque_component_bounds": [
-        47,
-        119,
-        2108,
-        592
-      ],
-      "sha256": "ef97f5c1c2f443a960b23ca1bedf88b9ea2c32655093cfd12fc1d4c75c0b7b6d"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/hydroponics_bay.png",
-      "face": [
-        47,
-        181,
-        2060,
-        413
-      ],
-      "opaque_component_bounds": [
-        47,
-        114,
-        2107,
-        594
-      ],
-      "sha256": "f72a26da4f308abe42fc5e8caa5d931f4241f27f95a3b9d83cf4b8974bf98f27",
-      "prompt_sha256": "a3237629149f9678a59d820ae866644d62813ac80e0cc9a396a45e688af1d2cd",
-      "reference_sha256": "ef97f5c1c2f443a960b23ca1bedf88b9ea2c32655093cfd12fc1d4c75c0b7b6d",
-      "alpha_extrema": [
-        0,
-        255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "plant cutting niches",
-        "irrigation gauges",
-        "large leaf and root diagram"
-      ]
-    },
-    "inherited_from": "hydroponics_bay"
-  },
-  "water_reclamation": {
-    "base": {
-      "source": "res://assets/room-risers-v4/masters/life_support.png",
-      "face": [
-        47,
-        193,
-        2059,
-        374
-      ],
-      "cap": [
-        47,
-        132,
-        2059,
         61
       ],
       "display_face": [
@@ -4696,65 +4639,144 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2153,
-        730
+        2152,
+        731
       ],
       "opaque_component_bounds": [
-        47,
-        132,
-        2106,
-        567
+        46,
+        130,
+        2107,
+        566
       ],
-      "sha256": "63d023e24febbed97a815ba936517d927816a977c85c24345ed7784fd6d2c28f"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/life_support.png",
-      "face": [
-        44,
-        190,
-        2069,
-        379
-      ],
-      "opaque_component_bounds": [
-        44,
-        128,
-        2113,
-        569
-      ],
-      "sha256": "ffe28fe6b43dc84078b09133c16e29a78ebc1d75ee45ceebdf056c6f83dbf658",
-      "prompt_sha256": "4ac0f317d81e48af980097af0f970a2f14e739b42cd80101b8efba7978ff65ee",
+      "sha256": "0beeff7a2296e40bbbcfcb82df15f7bb6a1fe04a7af51d48f3eba03eab91ddc3",
+      "prompt_sha256": "98faa5195c47185b5774556eb64ff00d66d90b4048e55d52a208eaa4bcca1a9f",
       "reference_sha256": "63d023e24febbed97a815ba936517d927816a977c85c24345ed7784fd6d2c28f",
       "alpha_extrema": [
         0,
         255
+      ]
+    },
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/seed_vault.png",
+      "face": [
+        46,
+        191,
+        2061,
+        375
       ],
+      "opaque_component_bounds": [
+        46,
+        130,
+        2107,
+        566
+      ],
+      "sha256": "0beeff7a2296e40bbbcfcb82df15f7bb6a1fe04a7af51d48f3eba03eab91ddc3",
+      "prompt_sha256": "98faa5195c47185b5774556eb64ff00d66d90b4048e55d52a208eaa4bcca1a9f",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
+  },
+  "water_reclamation": {
+    "base": {
+      "source": "res://assets/room-risers-expansion-v1/masters/water_reclamation.png",
+      "face": [
+        45,
+        191,
+        2066,
+        373
+      ],
+      "cap": [
+        45,
+        130,
+        2066,
+        61
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
-      "subjects": [
-        "air mixture gauges",
-        "recessed breathing masks",
-        "large oxygen circulation diagram"
+      "opaque_component_bounds": [
+        45,
+        130,
+        2111,
+        564
+      ],
+      "sha256": "5e6a17edd218343c3a210015bc588ceccb9c6150dfa59fced8be4b8e0e1a16e1",
+      "prompt_sha256": "3402dfd12d442d96b4154d99fb8dcb83f49aa56ebec7447945c570096f242692",
+      "reference_sha256": "63d023e24febbed97a815ba936517d927816a977c85c24345ed7784fd6d2c28f",
+      "alpha_extrema": [
+        0,
+        255
       ]
     },
-    "inherited_from": "life_support"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/water_reclamation.png",
+      "face": [
+        45,
+        191,
+        2066,
+        373
+      ],
+      "opaque_component_bounds": [
+        45,
+        130,
+        2111,
+        564
+      ],
+      "sha256": "5e6a17edd218343c3a210015bc588ceccb9c6150dfa59fced8be4b8e0e1a16e1",
+      "prompt_sha256": "3402dfd12d442d96b4154d99fb8dcb83f49aa56ebec7447945c570096f242692",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "bulkhead_control": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/command_center.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/bulkhead_control.png",
       "face": [
-        51,
-        191,
-        2041,
-        384
+        49,
+        189,
+        2039,
+        387
       ],
       "cap": [
-        51,
-        129,
-        2041,
+        49,
+        127,
+        2039,
         62
       ],
       "display_face": [
@@ -4783,66 +4805,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2146,
         733
       ],
       "opaque_component_bounds": [
-        51,
-        129,
-        2092,
-        575
-      ],
-      "sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/command_center.png",
-      "face": [
-        52,
-        186,
-        2036,
-        395
-      ],
-      "opaque_component_bounds": [
-        52,
-        122,
+        49,
+        127,
         2088,
-        581
+        576
       ],
-      "sha256": "4422de2b0ae9f56e5f540431a5f41ba86856f69643d5c0eb126c491f1f88840e",
-      "prompt_sha256": "78f4d00774a8dc975f37a076441d79d5be052d83d30b40af9b7697aacd89b26f",
+      "sha256": "7edb58f99db2c46a14a3afe736b87bbfc2c510e7aab734113310478f9900b7ba",
+      "prompt_sha256": "9dbd1182d9146403d20947cd6cd55d94f514134fbaf7c17325586ec5ff8c7573",
       "reference_sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2146,
-        733
-      ],
-      "subjects": [
-        "large recessed station plan",
-        "broad sonar readout",
-        "large circular ocean navigation chart"
       ]
     },
-    "inherited_from": "command_center"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/bulkhead_control.png",
+      "face": [
+        49,
+        189,
+        2039,
+        387
+      ],
+      "opaque_component_bounds": [
+        49,
+        127,
+        2088,
+        576
+      ],
+      "sha256": "7edb58f99db2c46a14a3afe736b87bbfc2c510e7aab734113310478f9900b7ba",
+      "prompt_sha256": "9dbd1182d9146403d20947cd6cd55d94f514134fbaf7c17325586ec5ff8c7573",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "cargo_dispatch": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/command_center.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/cargo_dispatch.png",
       "face": [
         51,
-        191,
-        2041,
-        384
+        183,
+        2038,
+        388
       ],
       "cap": [
         51,
-        129,
-        2041,
-        62
+        120,
+        2038,
+        63
       ],
       "display_face": [
         -200,
@@ -4870,65 +4888,61 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2146,
+        2145,
         733
       ],
       "opaque_component_bounds": [
         51,
-        129,
-        2092,
-        575
+        120,
+        2089,
+        571
       ],
-      "sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/command_center.png",
-      "face": [
-        52,
-        186,
-        2036,
-        395
-      ],
-      "opaque_component_bounds": [
-        52,
-        122,
-        2088,
-        581
-      ],
-      "sha256": "4422de2b0ae9f56e5f540431a5f41ba86856f69643d5c0eb126c491f1f88840e",
-      "prompt_sha256": "78f4d00774a8dc975f37a076441d79d5be052d83d30b40af9b7697aacd89b26f",
+      "sha256": "60e3f7f8c29aa2876ed8ade0104fbcc72d107e44882c8fccfd836a3e8bc40ff7",
+      "prompt_sha256": "9d560fc4a05f05ac9b17b96333c398e69268444083afd5bd5ea2713bd8117549",
       "reference_sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2146,
-        733
-      ],
-      "subjects": [
-        "large recessed station plan",
-        "broad sonar readout",
-        "large circular ocean navigation chart"
       ]
     },
-    "inherited_from": "command_center"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/cargo_dispatch.png",
+      "face": [
+        51,
+        183,
+        2038,
+        388
+      ],
+      "opaque_component_bounds": [
+        51,
+        120,
+        2089,
+        571
+      ],
+      "sha256": "60e3f7f8c29aa2876ed8ade0104fbcc72d107e44882c8fccfd836a3e8bc40ff7",
+      "prompt_sha256": "9d560fc4a05f05ac9b17b96333c398e69268444083afd5bd5ea2713bd8117549",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "damage_control": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/command_center.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/damage_control.png",
       "face": [
-        51,
-        191,
-        2041,
-        384
+        50,
+        182,
+        2031,
+        387
       ],
       "cap": [
-        51,
-        129,
-        2041,
+        50,
+        120,
+        2031,
         62
       ],
       "display_face": [
@@ -4957,65 +4971,61 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2146,
         733
       ],
       "opaque_component_bounds": [
-        51,
-        129,
-        2092,
-        575
+        50,
+        120,
+        2081,
+        569
       ],
-      "sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/command_center.png",
-      "face": [
-        52,
-        186,
-        2036,
-        395
-      ],
-      "opaque_component_bounds": [
-        52,
-        122,
-        2088,
-        581
-      ],
-      "sha256": "4422de2b0ae9f56e5f540431a5f41ba86856f69643d5c0eb126c491f1f88840e",
-      "prompt_sha256": "78f4d00774a8dc975f37a076441d79d5be052d83d30b40af9b7697aacd89b26f",
+      "sha256": "81ce7e28eb0adafc4df2bc0eec0f7ffd13b1e632d4748188d12ed581db4ec71f",
+      "prompt_sha256": "a1169b4d0565878e0107e1666b60c2f6785a7a67381ef201bb211033dd8d5f04",
       "reference_sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2146,
-        733
-      ],
-      "subjects": [
-        "large recessed station plan",
-        "broad sonar readout",
-        "large circular ocean navigation chart"
       ]
     },
-    "inherited_from": "command_center"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/damage_control.png",
+      "face": [
+        50,
+        182,
+        2031,
+        387
+      ],
+      "opaque_component_bounds": [
+        50,
+        120,
+        2081,
+        569
+      ],
+      "sha256": "81ce7e28eb0adafc4df2bc0eec0f7ffd13b1e632d4748188d12ed581db4ec71f",
+      "prompt_sha256": "a1169b4d0565878e0107e1666b60c2f6785a7a67381ef201bb211033dd8d5f04",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "sonar_mapping": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/command_center.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/sonar_mapping.png",
       "face": [
         51,
-        191,
-        2041,
-        384
+        189,
+        2043,
+        387
       ],
       "cap": [
         51,
-        129,
-        2041,
+        127,
+        2043,
         62
       ],
       "display_face": [
@@ -5044,66 +5054,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2146,
         733
       ],
       "opaque_component_bounds": [
         51,
-        129,
-        2092,
-        575
+        127,
+        2094,
+        576
       ],
-      "sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/command_center.png",
-      "face": [
-        52,
-        186,
-        2036,
-        395
-      ],
-      "opaque_component_bounds": [
-        52,
-        122,
-        2088,
-        581
-      ],
-      "sha256": "4422de2b0ae9f56e5f540431a5f41ba86856f69643d5c0eb126c491f1f88840e",
-      "prompt_sha256": "78f4d00774a8dc975f37a076441d79d5be052d83d30b40af9b7697aacd89b26f",
+      "sha256": "c0b206c35a6fd4abdd7418794051af32315aa61fd586a77e56c25015000045ff",
+      "prompt_sha256": "f77e9e809c832b60d4fba8bf091c24f864bc29216a1e9bb6d2d4b2a1ce384da4",
       "reference_sha256": "8612acce8690708bf7180b9bb2499db5bd930c50e8a833feba9597ca7e516143",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2146,
-        733
-      ],
-      "subjects": [
-        "large recessed station plan",
-        "broad sonar readout",
-        "large circular ocean navigation chart"
       ]
     },
-    "inherited_from": "command_center"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/sonar_mapping.png",
+      "face": [
+        51,
+        189,
+        2043,
+        387
+      ],
+      "opaque_component_bounds": [
+        51,
+        127,
+        2094,
+        576
+      ],
+      "sha256": "c0b206c35a6fd4abdd7418794051af32315aa61fd586a77e56c25015000045ff",
+      "prompt_sha256": "f77e9e809c832b60d4fba8bf091c24f864bc29216a1e9bb6d2d4b2a1ce384da4",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "aquarium": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/observation_room.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/aquarium.png",
       "face": [
-        52,
+        48,
         195,
-        2050,
-        404
+        2058,
+        414
       ],
       "cap": [
-        52,
-        129,
-        2050,
-        66
+        48,
+        128,
+        2058,
+        67
       ],
       "display_face": [
         -200,
@@ -5131,59 +5137,61 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
       "opaque_component_bounds": [
-        52,
-        129,
-        2102,
-        599
+        48,
+        128,
+        2106,
+        609
       ],
-      "sha256": "6a80b4f1c613d75032136cae89a3c5db7289bfe0b8fd2099a62bfcf9bbf07ebf"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/observation_room.png",
-      "face": [
-        52,
-        191,
-        2044,
-        402
-      ],
-      "opaque_component_bounds": [
-        52,
-        125,
-        2096,
-        593
-      ],
-      "sha256": "cda479765ed081ed475fc46adea155ceb67d94c7775870d48589d43b19d5fcfb",
-      "prompt_sha256": "88dbf84a02e76eb3926e8140cc2e72cad4a8f81a82529d865ebba866a4831275",
+      "sha256": "fcee8b3ba2cc2a3a49e24c540ed8dd8781f558aa96896f8d1da0f0ef53911462",
+      "prompt_sha256": "b7c129856c4504a086b90ba539799f1500f553edfd8630a396e7b179673c2bce",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
-      ],
-      "subjects": [
-        "built-in bookshelves",
-        "ocean reading library"
       ]
     },
-    "inherited_from": "observation_room"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/aquarium.png",
+      "face": [
+        48,
+        195,
+        2058,
+        414
+      ],
+      "opaque_component_bounds": [
+        48,
+        128,
+        2106,
+        609
+      ],
+      "sha256": "fcee8b3ba2cc2a3a49e24c540ed8dd8781f558aa96896f8d1da0f0ef53911462",
+      "prompt_sha256": "b7c129856c4504a086b90ba539799f1500f553edfd8630a396e7b179673c2bce",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "art_studio": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/crew_lounge.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/art_studio.png",
       "face": [
         50,
-        199,
-        2053,
-        414
+        195,
+        2052,
+        417
       ],
       "cap": [
         50,
-        132,
-        2053,
+        128,
+        2052,
         67
       ],
       "display_face": [
@@ -5212,56 +5220,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2153,
-        730
+        2152,
+        731
       ],
       "opaque_component_bounds": [
         50,
-        132,
-        2103,
-        613
-      ],
-      "sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/crew_lounge.png",
-      "face": [
-        49,
-        196,
-        2056,
-        417
-      ],
-      "opaque_component_bounds": [
-        49,
         128,
-        2105,
-        613
+        2102,
+        612
       ],
-      "sha256": "ea3ff82ac7750c94c3735ddbcf76b523d7112441737228857923e08984bf266f",
-      "prompt_sha256": "957c7b087c4329df93c04de88792ba6f0c9c5a1258e2f7e57e2ca4a92008b06f",
+      "sha256": "0c0c7192d027a4e792f78f7783f6f9db0af1ed5d6848260e25895721e5a3f39d",
+      "prompt_sha256": "2171e26affbc27d65dea3a762f17c3cb41f6df8e000cbdbbb247aa858832ffde",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
       ]
     },
-    "inherited_from": "crew_lounge"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/art_studio.png",
+      "face": [
+        50,
+        195,
+        2052,
+        417
+      ],
+      "opaque_component_bounds": [
+        50,
+        128,
+        2102,
+        612
+      ],
+      "sha256": "0c0c7192d027a4e792f78f7783f6f9db0af1ed5d6848260e25895721e5a3f39d",
+      "prompt_sha256": "2171e26affbc27d65dea3a762f17c3cb41f6df8e000cbdbbb247aa858832ffde",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "bathhouse": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/crew_hab.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/bathhouse.png",
       "face": [
-        51,
-        197,
-        2052,
-        389
+        46,
+        196,
+        2061,
+        420
       ],
       "cap": [
-        51,
-        134,
-        2052,
-        63
+        46,
+        128,
+        2061,
+        68
       ],
       "display_face": [
         -200,
@@ -5289,66 +5303,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
       "opaque_component_bounds": [
-        51,
-        134,
-        2103,
-        586
-      ],
-      "sha256": "42f092a1995dfc18ff99c1f6b1d9c9c913ece50b890c13386ebc7fb295a2286e"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/crew_hab.png",
-      "face": [
-        48,
-        191,
-        2059,
-        398
-      ],
-      "opaque_component_bounds": [
-        48,
-        126,
+        46,
+        128,
         2107,
-        589
+        616
       ],
-      "sha256": "336471ac7373b89eed7706957f59e6d82eb5c2cf6dcd5cba5cd608e04442c623",
-      "prompt_sha256": "9cb3cf3640dbe170cacb8fb7722aaad5572a91723a5fc5b1d679c55f09bec0db",
-      "reference_sha256": "42f092a1995dfc18ff99c1f6b1d9c9c913ece50b890c13386ebc7fb295a2286e",
+      "sha256": "ea4e180af8931a455b69b53f06bb56bbada14682542164f52c77811ca2109842",
+      "prompt_sha256": "a26ae1a14d81920f0b52576b0302ccbc09a116500aa77c627d16318302c406cc",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "personal books and keepsakes in shelf",
-        "simple ocean print and clock",
-        "personal photo arrangement pinned directly to panel"
       ]
     },
-    "inherited_from": "crew_hab"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/bathhouse.png",
+      "face": [
+        46,
+        196,
+        2061,
+        420
+      ],
+      "opaque_component_bounds": [
+        46,
+        128,
+        2107,
+        616
+      ],
+      "sha256": "ea4e180af8931a455b69b53f06bb56bbada14682542164f52c77811ca2109842",
+      "prompt_sha256": "a26ae1a14d81920f0b52576b0302ccbc09a116500aa77c627d16318302c406cc",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "botanical_conservatory": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/biodome.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/botanical_conservatory.png",
       "face": [
-        41,
-        191,
-        2060,
-        402
+        48,
+        195,
+        2050,
+        414
       ],
       "cap": [
-        41,
-        125,
-        2060,
-        66
+        48,
+        128,
+        2050,
+        67
       ],
       "display_face": [
         -200,
@@ -5376,66 +5386,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2141,
-        734
+        2153,
+        730
       ],
       "opaque_component_bounds": [
-        41,
-        125,
-        2101,
-        593
-      ],
-      "sha256": "0f5bd9830e77a47f263577e7bdb75a2ac37112087c81f349c5d4b7e75089cae5"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/biodome.png",
-      "face": [
-        40,
-        187,
-        2058,
-        401
-      ],
-      "opaque_component_bounds": [
-        40,
-        121,
+        48,
+        128,
         2098,
-        588
+        609
       ],
-      "sha256": "e8544cfd1830e6eb2373bb223f075e68e6fb88091deda86ffa8d265d768500cb",
-      "prompt_sha256": "b14d29f6b667ff3a5867eae7c026bdd603b52a5b7b283b0ed07df6c19c5cd2b4",
-      "reference_sha256": "0f5bd9830e77a47f263577e7bdb75a2ac37112087c81f349c5d4b7e75089cae5",
+      "sha256": "3399b1dac4e1c35ce14406a1e9e31287d81174d7fcc36b47bd6368ea28d5205c",
+      "prompt_sha256": "7cc23bdf357655b5f40cff4a08300fa5b15a66a9bc57eb57199cf1aac5d9f9af",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2141,
-        734
-      ],
-      "subjects": [
-        "two lush contained plant niches",
-        "recessed environment gauges",
-        "large botanical tree silhouette"
       ]
     },
-    "inherited_from": "biodome"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/botanical_conservatory.png",
+      "face": [
+        48,
+        195,
+        2050,
+        414
+      ],
+      "opaque_component_bounds": [
+        48,
+        128,
+        2098,
+        609
+      ],
+      "sha256": "3399b1dac4e1c35ce14406a1e9e31287d81174d7fcc36b47bd6368ea28d5205c",
+      "prompt_sha256": "7cc23bdf357655b5f40cff4a08300fa5b15a66a9bc57eb57199cf1aac5d9f9af",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "crew_cinema": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/crew_lounge.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/crew_cinema.png",
       "face": [
-        50,
-        199,
-        2053,
-        414
+        46,
+        189,
+        2061,
+        419
       ],
       "cap": [
-        50,
-        132,
-        2053,
-        67
+        46,
+        121,
+        2061,
+        68
       ],
       "display_face": [
         -200,
@@ -5463,56 +5469,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
       "opaque_component_bounds": [
-        50,
-        132,
-        2103,
-        613
+        46,
+        121,
+        2107,
+        608
       ],
-      "sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/crew_lounge.png",
-      "face": [
-        49,
-        196,
-        2056,
-        417
-      ],
-      "opaque_component_bounds": [
-        49,
-        128,
-        2105,
-        613
-      ],
-      "sha256": "ea3ff82ac7750c94c3735ddbcf76b523d7112441737228857923e08984bf266f",
-      "prompt_sha256": "957c7b087c4329df93c04de88792ba6f0c9c5a1258e2f7e57e2ca4a92008b06f",
+      "sha256": "54c58b2d1709be167e950bbefa754005b20b0b56e236cbfadfab4aafb7b4df82",
+      "prompt_sha256": "9d6059de553a7a1b6916649c2a70e48cffc4f2ed0870d2a8f2ed5caa1c611791",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
       ]
     },
-    "inherited_from": "crew_lounge"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/crew_cinema.png",
+      "face": [
+        46,
+        189,
+        2061,
+        419
+      ],
+      "opaque_component_bounds": [
+        46,
+        121,
+        2107,
+        608
+      ],
+      "sha256": "54c58b2d1709be167e950bbefa754005b20b0b56e236cbfadfab4aafb7b4df82",
+      "prompt_sha256": "9d6059de553a7a1b6916649c2a70e48cffc4f2ed0870d2a8f2ed5caa1c611791",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "crew_fitness": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/crew_hab.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/crew_fitness.png",
       "face": [
-        51,
-        197,
-        2052,
-        389
+        47,
+        188,
+        2060,
+        421
       ],
       "cap": [
-        51,
-        134,
-        2052,
-        63
+        47,
+        120,
+        2060,
+        68
       ],
       "display_face": [
         -200,
@@ -5540,66 +5552,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2153,
+        2154,
         730
       ],
       "opaque_component_bounds": [
-        51,
-        134,
-        2103,
-        586
-      ],
-      "sha256": "42f092a1995dfc18ff99c1f6b1d9c9c913ece50b890c13386ebc7fb295a2286e"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/crew_hab.png",
-      "face": [
-        48,
-        191,
-        2059,
-        398
-      ],
-      "opaque_component_bounds": [
-        48,
-        126,
+        47,
+        120,
         2107,
-        589
+        609
       ],
-      "sha256": "336471ac7373b89eed7706957f59e6d82eb5c2cf6dcd5cba5cd608e04442c623",
-      "prompt_sha256": "9cb3cf3640dbe170cacb8fb7722aaad5572a91723a5fc5b1d679c55f09bec0db",
-      "reference_sha256": "42f092a1995dfc18ff99c1f6b1d9c9c913ece50b890c13386ebc7fb295a2286e",
+      "sha256": "3ccd7d46f0578c35b33f158a4343a6e8e9980a6f3e7150d7ad7ec22e81d4abf3",
+      "prompt_sha256": "4d1f81bf2d292e7e85bcf7a498254ce3c5ac5c068531660d87fc0d79b04402ac",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "personal books and keepsakes in shelf",
-        "simple ocean print and clock",
-        "personal photo arrangement pinned directly to panel"
       ]
     },
-    "inherited_from": "crew_hab"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/crew_fitness.png",
+      "face": [
+        47,
+        188,
+        2060,
+        421
+      ],
+      "opaque_component_bounds": [
+        47,
+        120,
+        2107,
+        609
+      ],
+      "sha256": "3ccd7d46f0578c35b33f158a4343a6e8e9980a6f3e7150d7ad7ec22e81d4abf3",
+      "prompt_sha256": "4d1f81bf2d292e7e85bcf7a498254ce3c5ac5c068531660d87fc0d79b04402ac",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "games_room": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/crew_lounge.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/games_room.png",
       "face": [
-        50,
-        199,
-        2053,
-        414
+        48,
+        196,
+        2057,
+        419
       ],
       "cap": [
-        50,
-        132,
-        2053,
-        67
+        48,
+        128,
+        2057,
+        68
       ],
       "display_face": [
         -200,
@@ -5627,136 +5635,61 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
       "opaque_component_bounds": [
-        50,
-        132,
-        2103,
-        613
-      ],
-      "sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/crew_lounge.png",
-      "face": [
-        49,
-        196,
-        2056,
-        417
-      ],
-      "opaque_component_bounds": [
-        49,
+        48,
         128,
         2105,
-        613
+        615
       ],
-      "sha256": "ea3ff82ac7750c94c3735ddbcf76b523d7112441737228857923e08984bf266f",
-      "prompt_sha256": "957c7b087c4329df93c04de88792ba6f0c9c5a1258e2f7e57e2ca4a92008b06f",
+      "sha256": "cdf2f2305df9d582c6bbdc63fa28fc98acd18ae943c0b443d1f80d7e364de6c0",
+      "prompt_sha256": "efcec9a5cdf871119d62bdae534569bfb331e4eafec639c4fe520cb0e9685856",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
       ]
     },
-    "inherited_from": "crew_lounge"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/games_room.png",
+      "face": [
+        48,
+        196,
+        2057,
+        419
+      ],
+      "opaque_component_bounds": [
+        48,
+        128,
+        2105,
+        615
+      ],
+      "sha256": "cdf2f2305df9d582c6bbdc63fa28fc98acd18ae943c0b443d1f80d7e364de6c0",
+      "prompt_sha256": "efcec9a5cdf871119d62bdae534569bfb331e4eafec639c4fe520cb0e9685856",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "memorial_room": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/observation_room.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/memorial_room.png",
       "face": [
-        52,
-        195,
-        2050,
-        404
-      ],
-      "cap": [
-        52,
-        129,
-        2050,
-        66
-      ],
-      "display_face": [
-        -200,
-        -258,
-        400,
-        82
-      ],
-      "door_reserve": [
-        -46,
-        -258,
-        92,
-        82
-      ],
-      "window_reserves": [
-        [
-          -152,
-          -249,
-          80,
-          32
-        ],
-        [
-          72,
-          -249,
-          80,
-          32
-        ]
-      ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
-      "native_size": [
-        2153,
-        730
-      ],
-      "opaque_component_bounds": [
-        52,
-        129,
-        2102,
-        599
-      ],
-      "sha256": "6a80b4f1c613d75032136cae89a3c5db7289bfe0b8fd2099a62bfcf9bbf07ebf"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/observation_room.png",
-      "face": [
-        52,
-        191,
-        2044,
-        402
-      ],
-      "opaque_component_bounds": [
-        52,
-        125,
-        2096,
-        593
-      ],
-      "sha256": "cda479765ed081ed475fc46adea155ceb67d94c7775870d48589d43b19d5fcfb",
-      "prompt_sha256": "88dbf84a02e76eb3926e8140cc2e72cad4a8f81a82529d865ebba866a4831275",
-      "alpha_extrema": [
-        0,
-        255
-      ],
-      "subjects": [
-        "built-in bookshelves",
-        "ocean reading library"
-      ]
-    },
-    "inherited_from": "observation_room"
-  },
-  "music_room": {
-    "base": {
-      "source": "res://assets/room-risers-v4/masters/crew_lounge.png",
-      "face": [
-        50,
-        199,
-        2053,
+        48,
+        193,
+        2065,
         414
       ],
       "cap": [
-        50,
-        132,
-        2053,
+        48,
+        126,
+        2065,
         67
       ],
       "display_face": [
@@ -5785,142 +5718,393 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
-      ],
-      "opaque_component_bounds": [
-        50,
-        132,
-        2103,
-        613
-      ],
-      "sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/crew_lounge.png",
-      "face": [
-        49,
-        196,
-        2056,
-        417
-      ],
-      "opaque_component_bounds": [
-        49,
-        128,
-        2105,
-        613
-      ],
-      "sha256": "ea3ff82ac7750c94c3735ddbcf76b523d7112441737228857923e08984bf266f",
-      "prompt_sha256": "957c7b087c4329df93c04de88792ba6f0c9c5a1258e2f7e57e2ca4a92008b06f",
-      "alpha_extrema": [
-        0,
-        255
-      ]
-    },
-    "inherited_from": "crew_lounge"
-  },
-  "reading_room": {
-    "base": {
-      "source": "res://assets/room-risers-v4/masters/crew_hab.png",
-      "face": [
-        51,
-        197,
-        2052,
-        389
-      ],
-      "cap": [
-        51,
-        134,
-        2052,
-        63
-      ],
-      "display_face": [
-        -200,
-        -258,
-        400,
-        82
-      ],
-      "door_reserve": [
-        -46,
-        -258,
-        92,
-        82
-      ],
-      "window_reserves": [
-        [
-          -152,
-          -249,
-          80,
-          32
-        ],
-        [
-          72,
-          -249,
-          80,
-          32
-        ]
-      ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
-      "native_size": [
-        2153,
-        730
-      ],
-      "opaque_component_bounds": [
-        51,
-        134,
-        2103,
-        586
-      ],
-      "sha256": "42f092a1995dfc18ff99c1f6b1d9c9c913ece50b890c13386ebc7fb295a2286e"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/crew_hab.png",
-      "face": [
-        48,
-        191,
-        2059,
-        398
       ],
       "opaque_component_bounds": [
         48,
         126,
-        2107,
-        589
+        2113,
+        607
       ],
-      "sha256": "336471ac7373b89eed7706957f59e6d82eb5c2cf6dcd5cba5cd608e04442c623",
-      "prompt_sha256": "9cb3cf3640dbe170cacb8fb7722aaad5572a91723a5fc5b1d679c55f09bec0db",
-      "reference_sha256": "42f092a1995dfc18ff99c1f6b1d9c9c913ece50b890c13386ebc7fb295a2286e",
+      "sha256": "98461a5af6532516bf643d1e5fc0f3aab247203c1183556b1d4a8025e97ee1ab",
+      "prompt_sha256": "c0f42306b28fc0d6abc09657e797d741f95838e7127158cd8df80be1a592d9d4",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
       "alpha_extrema": [
         0,
         255
+      ]
+    },
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/memorial_room.png",
+      "face": [
+        48,
+        193,
+        2065,
+        414
       ],
+      "opaque_component_bounds": [
+        48,
+        126,
+        2113,
+        607
+      ],
+      "sha256": "98461a5af6532516bf643d1e5fc0f3aab247203c1183556b1d4a8025e97ee1ab",
+      "prompt_sha256": "c0f42306b28fc0d6abc09657e797d741f95838e7127158cd8df80be1a592d9d4",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
+  },
+  "music_room": {
+    "base": {
+      "source": "res://assets/room-risers-expansion-v1/masters/music_room.png",
+      "face": [
+        49,
+        190,
+        2057,
+        418
+      ],
+      "cap": [
+        49,
+        121,
+        2057,
+        69
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
         2153,
         730
       ],
-      "subjects": [
-        "personal books and keepsakes in shelf",
-        "simple ocean print and clock",
-        "personal photo arrangement pinned directly to panel"
+      "opaque_component_bounds": [
+        49,
+        121,
+        2106,
+        615
+      ],
+      "sha256": "ce44ef47b8bdccb95cf7be04117670ed5a557299bb304ea84b51d7c316973ef1",
+      "prompt_sha256": "f3cf6d0c11e4a6d1c718bf32b9e2e28c5b7ddafdacc5e303b5e782d44365d3cd",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
+      "alpha_extrema": [
+        0,
+        255
       ]
     },
-    "inherited_from": "crew_hab"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/music_room.png",
+      "face": [
+        49,
+        190,
+        2057,
+        418
+      ],
+      "opaque_component_bounds": [
+        49,
+        121,
+        2106,
+        615
+      ],
+      "sha256": "ce44ef47b8bdccb95cf7be04117670ed5a557299bb304ea84b51d7c316973ef1",
+      "prompt_sha256": "f3cf6d0c11e4a6d1c718bf32b9e2e28c5b7ddafdacc5e303b5e782d44365d3cd",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
+  },
+  "reading_room": {
+    "base": {
+      "source": "res://assets/room-risers-expansion-v1/masters/reading_room.png",
+      "face": [
+        46,
+        196,
+        2061,
+        420
+      ],
+      "cap": [
+        46,
+        128,
+        2061,
+        68
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
+      "native_size": [
+        2153,
+        730
+      ],
+      "opaque_component_bounds": [
+        46,
+        128,
+        2107,
+        616
+      ],
+      "sha256": "00e8bcca342ba65248921ac4cf83501c37954d527f76ed86e7ef4802209171ad",
+      "prompt_sha256": "d4f0a58a59ac6ff9db35512b9c98463740fe9b9e0a56fbdf024521a393f03265",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/reading_room.png",
+      "face": [
+        46,
+        196,
+        2061,
+        420
+      ],
+      "opaque_component_bounds": [
+        46,
+        128,
+        2107,
+        616
+      ],
+      "sha256": "00e8bcca342ba65248921ac4cf83501c37954d527f76ed86e7ef4802209171ad",
+      "prompt_sha256": "d4f0a58a59ac6ff9db35512b9c98463740fe9b9e0a56fbdf024521a393f03265",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "tea_lounge": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/galley.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/tea_lounge.png",
+      "face": [
+        50,
+        196,
+        2054,
+        417
+      ],
+      "cap": [
+        50,
+        129,
+        2054,
+        67
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
+      "native_size": [
+        2153,
+        730
+      ],
+      "opaque_component_bounds": [
+        50,
+        129,
+        2104,
+        613
+      ],
+      "sha256": "db068af20d70ac1255f8ab975e4163e80eb51adaad679687568321eca537a8b6",
+      "prompt_sha256": "2ac94ec5595b374a51c810d87200d6bb8d749f3a9431e0540ac8f8bcd829f250",
+      "reference_sha256": "5f0f7ec83d98359a8d4616ec66b0d338c0d46532335c30aac1fcf60ab1b6a6ab",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/tea_lounge.png",
+      "face": [
+        50,
+        196,
+        2054,
+        417
+      ],
+      "opaque_component_bounds": [
+        50,
+        129,
+        2104,
+        613
+      ],
+      "sha256": "db068af20d70ac1255f8ab975e4163e80eb51adaad679687568321eca537a8b6",
+      "prompt_sha256": "2ac94ec5595b374a51c810d87200d6bb8d749f3a9431e0540ac8f8bcd829f250",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
+  },
+  "battery_service_bay": {
+    "base": {
+      "source": "res://assets/room-risers-expansion-v1/masters/battery_service_bay.png",
+      "face": [
+        48,
+        187,
+        2055,
+        397
+      ],
+      "cap": [
+        48,
+        123,
+        2055,
+        64
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
+      "native_size": [
+        2153,
+        730
+      ],
+      "opaque_component_bounds": [
+        48,
+        123,
+        2103,
+        584
+      ],
+      "sha256": "db31044a8526372baab9df3b48246dab994c19cf8813d47d79815a3fc4082ec9",
+      "prompt_sha256": "a0b8c59ee284b16d03fe54c8a4063dd2b93f965e29520d404b9deb2fdc42e370",
+      "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/battery_service_bay.png",
+      "face": [
+        48,
+        187,
+        2055,
+        397
+      ],
+      "opaque_component_bounds": [
+        48,
+        123,
+        2103,
+        584
+      ],
+      "sha256": "db31044a8526372baab9df3b48246dab994c19cf8813d47d79815a3fc4082ec9",
+      "prompt_sha256": "a0b8c59ee284b16d03fe54c8a4063dd2b93f965e29520d404b9deb2fdc42e370",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
+  },
+  "droid_workshop": {
+    "base": {
+      "source": "res://assets/room-risers-expansion-v1/masters/droid_workshop.png",
       "face": [
         48,
         188,
-        2041,
+        2055,
         399
       ],
       "cap": [
         48,
         123,
-        2041,
+        2055,
         65
       ],
       "display_face": [
@@ -5949,240 +6133,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2135,
-        736
+        2153,
+        730
       ],
       "opaque_component_bounds": [
         48,
         123,
-        2089,
-        587
-      ],
-      "sha256": "08180751ffbf97e2fa501e11032205880a8693f063121384127eae33ecbd2ca2"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/galley.png",
-      "face": [
-        47,
-        185,
-        2045,
-        400
-      ],
-      "opaque_component_bounds": [
-        47,
-        120,
-        2092,
-        585
-      ],
-      "sha256": "be84c61194613428e13710ce96daf42c713111341f2e45c73ccf0fd720b0fa7e",
-      "prompt_sha256": "805c0ae6c4f8acd4d482c553f210bff8bc0db6906a0ab591cd37159bb06f0ed6",
-      "reference_sha256": "08180751ffbf97e2fa501e11032205880a8693f063121384127eae33ecbd2ca2",
-      "alpha_extrema": [
-        0,
-        255
-      ],
-      "native_size": [
-        2135,
-        736
-      ],
-      "subjects": [
-        "hanging cooking utensils",
-        "recessed recipe shelf",
-        "meal board and clock"
-      ]
-    },
-    "inherited_from": "galley"
-  },
-  "battery_service_bay": {
-    "base": {
-      "source": "res://assets/room-risers-v4/masters/construction_drone_bay.png",
-      "face": [
-        50,
-        192,
-        2053,
-        394
-      ],
-      "cap": [
-        50,
-        128,
-        2053,
-        64
-      ],
-      "display_face": [
-        -200,
-        -258,
-        400,
-        82
-      ],
-      "door_reserve": [
-        -46,
-        -258,
-        92,
-        82
-      ],
-      "window_reserves": [
-        [
-          -152,
-          -249,
-          80,
-          32
-        ],
-        [
-          72,
-          -249,
-          80,
-          32
-        ]
-      ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
-      "native_size": [
-        2153,
-        730
-      ],
-      "opaque_component_bounds": [
-        50,
-        128,
         2103,
-        586
-      ],
-      "sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/construction_drone_bay.png",
-      "face": [
-        47,
-        189,
-        2063,
-        398
-      ],
-      "opaque_component_bounds": [
-        47,
-        124,
-        2110,
         587
       ],
-      "sha256": "be2625da3131d8178bb04c34366159556d598555332583edf5c7895d4a394fd2",
-      "prompt_sha256": "f92fbfaff8ee6c75ce406b68e9609ab7f4a9805b03a33940dd2a45e41d6dddf2",
+      "sha256": "714c93f871d6c3c231e99fa921c219dd73afadda299f1c6df1832f9b6392baea",
+      "prompt_sha256": "de97094ef641080f5d7dfed96c6d36f8acc23b74c238e7e5a638167a74912afd",
       "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "recessed driver tools",
-        "drone service readout",
-        "construction drone blueprint stencil"
       ]
     },
-    "inherited_from": "construction_drone_bay"
-  },
-  "droid_workshop": {
-    "base": {
-      "source": "res://assets/room-risers-v4/masters/construction_drone_bay.png",
-      "face": [
-        50,
-        192,
-        2053,
-        394
-      ],
-      "cap": [
-        50,
-        128,
-        2053,
-        64
-      ],
-      "display_face": [
-        -200,
-        -258,
-        400,
-        82
-      ],
-      "door_reserve": [
-        -46,
-        -258,
-        92,
-        82
-      ],
-      "window_reserves": [
-        [
-          -152,
-          -249,
-          80,
-          32
-        ],
-        [
-          72,
-          -249,
-          80,
-          32
-        ]
-      ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
-      "native_size": [
-        2153,
-        730
-      ],
-      "opaque_component_bounds": [
-        50,
-        128,
-        2103,
-        586
-      ],
-      "sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031"
-    },
     "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/construction_drone_bay.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/droid_workshop.png",
       "face": [
-        47,
-        189,
-        2063,
-        398
+        48,
+        188,
+        2055,
+        399
       ],
       "opaque_component_bounds": [
-        47,
-        124,
-        2110,
+        48,
+        123,
+        2103,
         587
       ],
-      "sha256": "be2625da3131d8178bb04c34366159556d598555332583edf5c7895d4a394fd2",
-      "prompt_sha256": "f92fbfaff8ee6c75ce406b68e9609ab7f4a9805b03a33940dd2a45e41d6dddf2",
-      "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
+      "sha256": "714c93f871d6c3c231e99fa921c219dd73afadda299f1c6df1832f9b6392baea",
+      "prompt_sha256": "de97094ef641080f5d7dfed96c6d36f8acc23b74c238e7e5a638167a74912afd",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "recessed driver tools",
-        "drone service readout",
-        "construction drone blueprint stencil"
       ]
     },
-    "inherited_from": "construction_drone_bay"
+    "inherited_from": ""
   },
   "drone_repair_depot": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/salvage_drone_bay.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/drone_repair_depot.png",
       "face": [
         48,
-        195,
-        2057,
-        412
+        187,
+        2067,
+        403
       ],
       "cap": [
         48,
-        128,
-        2057,
-        67
+        122,
+        2067,
+        65
       ],
       "display_face": [
         -200,
@@ -6210,66 +6216,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2153,
-        730
+        2152,
+        731
       ],
       "opaque_component_bounds": [
         48,
-        128,
-        2105,
-        607
+        122,
+        2115,
+        590
       ],
-      "sha256": "744f33964d5ec603985b34c8430e7cb7b01538c8a2938941e7e576b1e3b2cdc3"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/salvage_drone_bay.png",
-      "face": [
-        47,
-        193,
-        2055,
-        415
-      ],
-      "opaque_component_bounds": [
-        47,
-        126,
-        2102,
-        608
-      ],
-      "sha256": "0756d702aef04f8b9c71a7b4fa10ae98e78a50f6f201fc3ff3b9441acad25c34",
-      "prompt_sha256": "3d552565a1ec50e9bd0da5fff690dab9a6f0d82d9a6d9fa5335be46621eda5a8",
-      "reference_sha256": "744f33964d5ec603985b34c8430e7cb7b01538c8a2938941e7e576b1e3b2cdc3",
+      "sha256": "239cd1d5397422bba313aa64954e543bbdb1c00e1d89b238db749ddea55cdcd0",
+      "prompt_sha256": "c9ca6a5c91e78056908fdc7d3b15afe004f52206aa399629cbced3f604ff0e9e",
+      "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
       "alpha_extrema": [
         0,
         255
-      ],
-      "native_size": [
-        2153,
-        730
-      ],
-      "subjects": [
-        "retrieval tools in shallow rack",
-        "recessed recovery readout",
-        "salvage claw schematic"
       ]
     },
-    "inherited_from": "salvage_drone_bay"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/drone_repair_depot.png",
+      "face": [
+        48,
+        187,
+        2067,
+        403
+      ],
+      "opaque_component_bounds": [
+        48,
+        122,
+        2115,
+        590
+      ],
+      "sha256": "239cd1d5397422bba313aa64954e543bbdb1c00e1d89b238db749ddea55cdcd0",
+      "prompt_sha256": "c9ca6a5c91e78056908fdc7d3b15afe004f52206aa399629cbced3f604ff0e9e",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "sensor_calibration_lab": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/data_archive.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/sensor_calibration_lab.png",
       "face": [
-        65,
-        200,
-        2014,
-        390
+        49,
+        188,
+        2053,
+        400
       ],
       "cap": [
-        65,
-        136,
-        2014,
-        64
+        49,
+        123,
+        2053,
+        65
       ],
       "display_face": [
         -200,
@@ -6297,60 +6299,62 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2141,
-        734
+        2153,
+        730
       ],
       "opaque_component_bounds": [
-        65,
-        136,
-        2079,
-        590
+        49,
+        123,
+        2102,
+        588
       ],
-      "sha256": "00f319cfa02223a9467915fd5751d8d0144a5e68f222da9fbb153f4e570d56ea"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/data_archive.png",
-      "face": [
-        64,
-        194,
-        2011,
-        392
-      ],
-      "opaque_component_bounds": [
-        64,
-        130,
-        2075,
-        586
-      ],
-      "sha256": "7b0d01b8290cf29150e8dd02c28acde0351f543384466c9882478cdba598109f",
-      "prompt_sha256": "425dd1e9a86facbe0f41b53cd94faa797cc5533e0edd8556a7df6acf966937d8",
+      "sha256": "c6216ac5639d42418f5d27d3997357261f9d92d7ad758b800ed1d62e98def60d",
+      "prompt_sha256": "7cdadb2d6642f594ec2b43df2fda31e92bc3e368642f524e68cf32a14411a469",
+      "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
       "alpha_extrema": [
         0,
         255
-      ],
-      "subjects": [
-        "built-in bookshelves",
-        "reference volumes"
       ]
     },
-    "inherited_from": "data_archive"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/sensor_calibration_lab.png",
+      "face": [
+        49,
+        188,
+        2053,
+        400
+      ],
+      "opaque_component_bounds": [
+        49,
+        123,
+        2102,
+        588
+      ],
+      "sha256": "c6216ac5639d42418f5d27d3997357261f9d92d7ad758b800ed1d62e98def60d",
+      "prompt_sha256": "7cdadb2d6642f594ec2b43df2fda31e92bc3e368642f524e68cf32a14411a469",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": ""
   },
   "survey_probe_bay": {
     "base": {
-      "source": "res://assets/room-risers-v4/masters/data_archive.png",
+      "source": "res://assets/room-risers-expansion-v1/masters/survey_probe_bay.png",
       "face": [
-        65,
-        200,
-        2014,
-        390
+        48,
+        188,
+        2057,
+        400
       ],
       "cap": [
-        65,
-        136,
-        2014,
-        64
+        48,
+        123,
+        2057,
+        65
       ],
       "display_face": [
         -200,
@@ -6378,44 +6382,105 @@
           32
         ]
       ],
-      "cap_policy": "Use the host room draw_wall/draw_cap, not generated cap",
+      "cap_policy": "Production painted shell samples this measured cap",
       "native_size": [
-        2141,
-        734
+        2153,
+        730
       ],
       "opaque_component_bounds": [
-        65,
-        136,
-        2079,
-        590
+        48,
+        123,
+        2105,
+        588
       ],
-      "sha256": "00f319cfa02223a9467915fd5751d8d0144a5e68f222da9fbb153f4e570d56ea"
-    },
-    "integrated": {
-      "source": "res://assets/room-risers-v4/integrated-v1/masters/data_archive.png",
-      "face": [
-        64,
-        194,
-        2011,
-        392
-      ],
-      "opaque_component_bounds": [
-        64,
-        130,
-        2075,
-        586
-      ],
-      "sha256": "7b0d01b8290cf29150e8dd02c28acde0351f543384466c9882478cdba598109f",
-      "prompt_sha256": "425dd1e9a86facbe0f41b53cd94faa797cc5533e0edd8556a7df6acf966937d8",
+      "sha256": "f714ba1b400db163a68a05a2041913fdae0fe9131173ee30ad747780bb0b1805",
+      "prompt_sha256": "58dfa79044d46df12a9a45b85377732f186dfc4c546fe70cedb8184f862bd979",
+      "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
       "alpha_extrema": [
         0,
         255
-      ],
-      "subjects": [
-        "built-in bookshelves",
-        "reference volumes"
       ]
     },
-    "inherited_from": "data_archive"
+    "integrated": {
+      "source": "res://assets/room-risers-expansion-v1/masters/survey_probe_bay.png",
+      "face": [
+        48,
+        188,
+        2057,
+        400
+      ],
+      "opaque_component_bounds": [
+        48,
+        123,
+        2105,
+        588
+      ],
+      "sha256": "f714ba1b400db163a68a05a2041913fdae0fe9131173ee30ad747780bb0b1805",
+      "prompt_sha256": "58dfa79044d46df12a9a45b85377732f186dfc4c546fe70cedb8184f862bd979",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    "inherited_from": "",
+    "north_special": {
+      "source": "res://assets/special-north-walls-v1/masters/survey_probe_bay.png",
+      "face": [
+        42,
+        182,
+        2075,
+        409
+      ],
+      "cap": [
+        42,
+        116,
+        2075,
+        66
+      ],
+      "display_face": [
+        -200,
+        -258,
+        400,
+        82
+      ],
+      "door_reserve": [
+        -46,
+        -258,
+        92,
+        82
+      ],
+      "window_reserves": [
+        [
+          -152,
+          -249,
+          80,
+          32
+        ],
+        [
+          72,
+          -249,
+          80,
+          32
+        ]
+      ],
+      "cap_policy": "Production painted shell samples this measured cap",
+      "native_size": [
+        2153,
+        730
+      ],
+      "opaque_component_bounds": [
+        42,
+        116,
+        2117,
+        591
+      ],
+      "sha256": "69e9b93436154985e6639e8358258b197f4b128c1f71621c3cd238db97929379",
+      "prompt_sha256": "1725635a6efd7f79040fee46c3c1fdf0193a2331bf783479c1a364aade32f6c7",
+      "reference_sha256": "b3354e09eee2d0d5e4c737bdd373d845f53d6f9fd271aec7c6085e24b9219031",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
   }
 }

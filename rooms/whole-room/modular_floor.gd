@@ -1,7 +1,8 @@
 extends RefCounted
 ## Pilot tile geometry. Cached in room-local coordinates; no zoom or light state in keys.
 const SCIENCE="res://assets/department-floors-v2/science-panels.png"
-const HALL_TILES="res://assets/hallway-floor-tiles-v2/source.png"
+const HALL_TILES="res://assets/corridor-risers-v2/floor.png"
+const HALL_ALTERNATES=["res://assets/corridor-risers-v2/floor-rubber.png","res://assets/corridor-risers-v2/floor-sage.png","res://assets/corridor-risers-v2/floor-bronze.png"]
 const HALL_QUIET="res://assets/hallway-floor-tiles-v1/source.png"
 const DECK="res://assets/floors-and-details-v5/corridor-deck.png"
 const MATERIALS=["Original","Sealed panel","Steel plate","Grating"]
@@ -14,10 +15,14 @@ static var textures: Dictionary={}
 static var cell_cache: Dictionary={}
 static var builds:=0
 static var hits:=0
+const FLOOR_REVISIONS={
+	"res://assets/corridor-risers-v2/floor-sage.png":"res://assets/corridor-risers-v2/floor-sage-v2.png",
+	"res://assets/corridor-risers-v2/floor-bronze.png":"res://assets/corridor-risers-v2/floor-bronze-v2.png",
+}
 static func texture(path: String) -> Texture2D:
 	if not textures.has(path):
 		var im:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(im, path)
+		preload("res://scripts/safe_image.gd").load_png(im, FLOOR_REVISIONS.get(path,path))
 		textures[path]=ImageTexture.create_from_image(im)
 	return textures[path]
 static func pilot(id: String) -> bool: return id in ["research_lab", "reactor", "life_support", "crew_hab", "corridor", "corner", "tee_corridor", "hydroponics_bay", "mycelium_nursery", "tidal_condenser", "quarantine_cell", "cryo_chamber", "clone_lab", "med_bay", "storage_bay", "pressure_control", "crew_lounge", "mining_drone_bay", "ore_refinery", "listening_post", "xeno_lab", "maintenance_bay", "bio_lab", "isolation_vault", "current_turbine", "biomass_digester", "heat_recovery", "airlock", "construction_drone_bay", "brine_core", "solar_array", "battery_array", "salvage_drone_bay", "gravity_loom", "data_archive", "biodome", "anomaly_lab", "command_center", "holographic_core", "med_center", "med_office", "radio_lab", "shield_generator", "observation_room", "salvage_workshop", "galley", "cold_store"]
@@ -66,6 +71,9 @@ static var finish_catalog: Dictionary={}
 static func finishes() -> Dictionary:
 	if not finish_catalog.is_empty(): return finish_catalog
 	var result: Dictionary={"Station deck":DECK,"Industrial hallway deck":HALL_TILES,"Quiet hallway panels":HALL_QUIET}
+	result["Hallway charcoal studded rubber"]=HALL_ALTERNATES[0]
+	result["Hallway sage grooved steel"]=HALL_ALTERNATES[1]
+	result["Hallway muted bronze tread"]=HALL_ALTERNATES[2]
 	result["Engineering access plates"]="res://assets/room-floor-tiles-v3/engineering-access.png"
 	result["Life support drainage panels"]="res://assets/room-floor-tiles-v3/life-support-drainage.png"
 	result["Habitation cork composite"]="res://assets/room-floor-tiles-v3/habitation-composite.png"
@@ -95,43 +103,30 @@ static func finishes() -> Dictionary:
 	finish_catalog=result
 	return result
 
-static func hall_module(local: Vector2, shape: String, variant:=0) -> Dictionary:
-	var shape_index:=0 if shape=="corridor" else 1 if shape=="corner" else 2
-	var v:=posmod(variant,3)
-	var borders: Array=[Vector2(6,0),Vector2(1,0),Vector2(2,1),Vector2(5,1),Vector2(4,2),Vector2(2,3),Vector2(5,3),Vector2(3,4),Vector2(6,4)]
-	var border: Vector2=borders[shape_index*3+v]
-	var rhythm:=posmod(int(floor(absf(local.x)/24))*3+int(floor(absf(local.y)/24))*5+shape_index*2+v,11)
-	if rhythm in [3,8]: border=Vector2(6,0)
-	elif rhythm==6: border=Vector2(2,1)
-	# A two-module service lane lies between solid perimeter strips.
-	var horizontal:=absf(local.y)<24 and (shape!="corner" or local.x<24)
-	var vertical:=shape!="corridor" and absf(local.x)<24 and local.y>-24
-	if not horizontal and not vertical: return {"tile":border,"turn":0}
-	if horizontal and vertical:
-		# Symmetric grated manifold covers join either lane at an elbow or branch.
-		return {"tile":Vector2(0,0),"turn":0}
-	# Identical pipe/grating lanes keep reciprocal sockets aligned after 180-degree turns.
-	var along:=local.x if horizontal else local.y
-	var middle:=Vector2(7,0)
-	if absf(along)<144:
-		if v==0: middle=Vector2(4,0) if posmod(int(floor(along/24))+shape_index,4)<2 else Vector2(0,0)
-		elif v==2:
-			middle=[Vector2(2,0),Vector2(2,4),Vector2(4,3)][shape_index]
-			if posmod(int(floor(absf(along)/24)),5)==2: middle=Vector2(0,0)
-	return {"tile":middle,"turn":1 if horizontal else 0}
+static func hall_module(local: Vector2, _shape: String, _variant:=0) -> Dictionary:
+	# Use the new atlas in its authored order, without the retired service-lane pattern.
+	var cell:=Vector2i(((local+Vector2.ONE*192)/24).floor())
+	return {"tile":Vector2(posmod(cell.x,8),posmod(cell.y,8)),"turn":0}
 
-static func add_hall_cell(groups: Dictionary, rect: Rect2, poly: PackedVector2Array, q: int, shape: String, color: Color, variant:=0) -> void:
+static func hall_divisions(path: String) -> int:
+	return 6 if path==HALL_ALTERNATES[1] else 7 if path==HALL_ALTERNATES[2] else 8
+
+static func add_hall_cell(groups: Dictionary, rect: Rect2, poly: PackedVector2Array, q: int, shape: String, color: Color, variant:=0, path:=HALL_TILES, selected: Variant=null) -> void:
 	var turn=preload("res://tools/modular_room_geometry.gd")
+	var divisions:=hall_divisions(path)
 	for y in range(2):
 		for x in range(2):
 			var small:=Rect2(rect.position+Vector2(x,y)*24,Vector2.ONE*24)
 			var module:=hall_module(turn.turn(small.get_center(),-q),shape,variant)
+			if selected is Array and selected.size()==2 and (selected[0] is int or selected[0] is float) and (selected[1] is int or selected[1] is float):
+				module.tile=Vector2(selected[0],selected[1])
+			module.tile=Vector2(posmod(int(module.tile.x),divisions),posmod(int(module.tile.y),divisions))
 			for clipped in Geometry2D.intersect_polygons(rectangle(small),poly):
-				var offset: int=groups.get(HALL_TILES,{"uv":[]}).uv.size()
-				add_polygon(groups,HALL_TILES,clipped,small,Rect2(module.tile/8,Vector2.ONE/8),color)
+				var offset: int=groups.get(path,{"uv":[]}).uv.size()
+				add_polygon(groups,path,clipped,small,Rect2(module.tile/divisions,Vector2.ONE/divisions),color)
 				for i in range(clipped.size()):
 					var local:=turn.turn((clipped[i]-small.get_center())/24,-q-int(module.turn))+Vector2.ONE*.5
-					groups[HALL_TILES].uv[offset+i]=(module.tile+local)/8
+					groups[path].uv[offset+i]=(module.tile+local)/divisions
 
 static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, source_path:=SCIENCE, shape:="corridor", variant:=0) -> Array:
 	var relevant:=floor_values(values)
@@ -151,7 +146,7 @@ static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, sour
 		if material==0:
 			var source=values.get(tile_key(cell),[cell.x,cell.y] if corridor else [cell.x%4,cell.y%4])
 			if not source is Array or source.size()!=2 or not (source[0] is int or source[0] is float) or not (source[1] is int or source[1] is float): source=[cell.x,cell.y] if corridor else [cell.x%4,cell.y%4]
-			var divisions:=8 if corridor and path not in [HALL_TILES,HALL_QUIET] else 4
+			var divisions:=hall_divisions(path) if path==HALL_TILES or path in HALL_ALTERNATES else 8 if corridor and path!=HALL_QUIET else 4
 			uv_rect=Rect2(Vector2(posmod(int(source[0]),divisions),posmod(int(source[1]),divisions))/divisions,Vector2.ONE/divisions)
 		elif material==1: uv_rect=Rect2(0.40,0.185,0.18,0.065)
 		elif material==2: uv_rect=Rect2(0.16,0.05,0.16,0.20)
@@ -162,10 +157,10 @@ static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, sour
 		# room's authored opacity, as every finish did before the setting existed.
 		var strength: float=clampf(float(values.get("floor/strength",opacity)),0.1,1.0) if finished else opacity
 		var color:=Color(shade,shade,shade,1.0 if corridor else strength)
-		if corridor and path==HALL_TILES and material==0 and not values.has(tile_key(cell)):
-			add_hall_cell(groups,rect,poly,q,shape,color,variant)
+		if corridor and (path==HALL_TILES or path in HALL_ALTERNATES) and material==0:
+			add_hall_cell(groups,rect,poly,q,shape,color,variant,path,values.get(tile_key(cell)))
 			continue
-		for region in regions: add_polygon(groups,path,region,rect,uv_rect,color,corridor and material==0 and path not in [HALL_TILES,HALL_QUIET],q)
+		for region in regions: add_polygon(groups,path,region,rect,uv_rect,color,corridor and material==0 and path not in [HALL_TILES,HALL_QUIET] and not path in HALL_ALTERNATES,q)
 	var result: Array=[]
 	for path in groups:
 		var group: Dictionary=groups[path]

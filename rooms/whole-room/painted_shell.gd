@@ -10,6 +10,7 @@ var room
 var wall:Texture2D
 var registrations:Dictionary={}
 var integrated:Dictionary={}
+var north_special:Dictionary={}
 var ports:Array=[]
 static func catalog() -> Dictionary:
 	if records.is_empty():records=JSON.parse_string(FileAccess.get_file_as_string("res://assets/architecture-rollout-2026-09-26/walls.json"))
@@ -29,11 +30,13 @@ static func context(view,id:String=""):
 	var record:Dictionary=catalog()[ctx.room_id]
 	var base:Dictionary=record.base
 	ctx.integrated=record.integrated
+	if view!=null and view.quarter==0:ctx.north_special=record.get("north_special",{})
 	# Honour an owner's explicit material selection without changing their saved data.
 	var chosen:String=Store.surface_positions(view).get("wall/riser","") if view!=null else ""
 	var old=load("res://rooms/whole-room/riser_catalog.gd")
 	if not chosen.is_empty() and old.catalog().has(chosen):
 		base=old.catalog()[chosen];ctx.integrated={}
+		ctx.north_special={}
 	ctx.registrations={ctx.room_id:base};ctx.wall=png(base.source)
 	if view!=null:
 		var db=load("res://scripts/room_database.gd")
@@ -48,10 +51,13 @@ func north(canvas:CanvasItem,adjoining_left:bool=false,adjoining_right:bool=fals
 	var ocean:bool=room_id=="airlock" and room!=null and room.quarter==0
 	var windows:bool=room!=null and room.get_meta("raised_north_visible",false) and room_id!="brine_core"
 	var base:Array=registrations[room_id].face
+	var special:bool=not north_special.is_empty()
+	if special:base=north_special.face
 	for span in [[0.0,.385,-184.0,138.0],[.385,.23,-46.0,92.0],[.615,.385,46.0,138.0]]:
 		var sample:Array=base
 		var tex:Texture2D=wall
-		if not windows and not integrated.is_empty() and not (span[2]==-46.0 and (ports.has(0) or room_id=="airlock")):
+		if special:tex=png(north_special.source)
+		if not special and not windows and not integrated.is_empty() and not (span[2]==-46.0 and (ports.has(0) or room_id=="airlock")):
 			sample=integrated.face;tex=png(integrated.source)
 		if ocean and span[2]==-46.0:
 			for x in [-46.0,28.0]:
@@ -59,11 +65,12 @@ func north(canvas:CanvasItem,adjoining_left:bool=false,adjoining_right:bool=fals
 		else:
 			canvas.draw_texture_rect_region(tex,Rect2(span[2],-255,span[3],79),Rect2(sample[0]+sample[2]*span[0],sample[1],sample[2]*span[1],sample[3]))
 	if windows:
-		# Same reserved panels and selected window artwork as the accepted riser preview.
-		draw_ocean_window(canvas,"res://assets/riser-wall-kit-style-v2/sprites/ocean_window_panoramic.png",Vector2(-105,-230.5),Vector2(66,28))
-		draw_ocean_window(canvas,"res://assets/riser-wall-kit-style-v2/sprites/ocean_window_medium.png",Vector2(105,-230.5),Vector2(53,28))
-		if not ports.has(0) and not ocean:
-			draw_ocean_window(canvas,"res://assets/riser-wall-kit-style-v2/sprites/ocean_window_tall.png",Vector2(0,-215.5),Vector2(31,54))
+		var inserts=preload("res://rooms/whole-room/ocean_windows.gd")
+		if special:
+			inserts.draw_room(canvas,room_id,north_special.get("window_reserves",[]),false)
+		elif inserts.room_allowed(true,room_id,ports,ocean):
+			# Use the authored panel reserves, preserving the central doorway bay.
+			inserts.draw_room(canvas,room_id,registrations[room_id].get("window_reserves",[]))
 	# Raised assembly owns the top corners/returns even when a card draws north after the shell.
 	if ocean:
 		draw_cap_strip(canvas,Rect2(-184,-271,368,16))
@@ -75,6 +82,10 @@ func north(canvas:CanvasItem,adjoining_left:bool=false,adjoining_right:bool=fals
 	if room_id=="airlock" and room!=null and room.quarter==0:
 		preload("res://rooms/doors/ocean_hatch.gd").raised(canvas,0,static_leaf)
 	elif ports.has(0) or room_id=="brine_core":Doors.for_variant(room_id).raised_at(canvas,0,0,-255,79)
+	if special and room_id=="survey_probe_bay":
+		# The fixed launcher straddles the hull; let its housing overlap its matching backplate.
+		preload("res://scripts/probe_launcher_mechanics.gd").draw(canvas,float(room.survey_clock),0)
+		preload("res://scripts/probe_launcher_mechanics.gd").tunnel(canvas,float(room.survey_clock),str(room.survey_status))
 static func draw_ocean_window(canvas:CanvasItem,path:String,center:Vector2,limit:Vector2) -> void:
 	var texture:Texture2D=png(path)
 	var factor:=minf(limit.x/texture.get_width(),limit.y/texture.get_height())

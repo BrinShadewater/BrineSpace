@@ -441,6 +441,8 @@ func can_stand(point: Vector2) -> bool:
 		var normal: Vector2 = Vector2(Geometry.DIRS[side])
 		if local.dot(normal) > 176 and not data.open.has(side): return false
 	if data.get("corridor", false):
+		for rect in data.get("blockers",[]):
+			if rect.has_point(local): return false
 		return Corridor.contains_foot(data.room, local, 10.0)
 	if data.get("legacy", false):
 		# Legacy art has no authored prop map. Retain conservative perimeter lanes
@@ -475,7 +477,7 @@ func segment_clear(a: Vector2, b: Vector2) -> bool:
 			var cell := Vector2i(x,y)
 			if not geometry.has(cell): continue
 			var data: Dictionary = geometry[cell]
-			if data.get("corridor",false) or data.get("legacy",false): continue
+			if data.get("legacy",false): continue
 			var cell_rect := Rect2(Vector2(cell)*CELL,Vector2.ONE*CELL)
 			if not segment_hits_rect(a,b,cell_rect): continue
 			var center := cell_rect.get_center()

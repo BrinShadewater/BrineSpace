@@ -1899,7 +1899,9 @@ func _bill_room_view(room: Dictionary):
 # The draw pass reconfigures shared views before use; snapshots own their arrays.
 func bill_room_geometry(room: Dictionary, open_sides: Array) -> Dictionary:
 	if _is_narrow_corridor(room):
-		return {"corridor": true, "room": room.duplicate(true), "props": [], "edges": []}
+		var corridor_view = _corridor_view(room)
+		preload("res://scripts/room_layout_store.gd").apply(corridor_view,"room-"+str(room.id))
+		return {"corridor": true, "room": room.duplicate(true), "props": corridor_view.props.filter(func(prop): return not prop.get("layout_hidden",false)).duplicate(true), "edges": []}
 	if not _uses_layered_art(room):
 		return {"legacy": true, "room": room.duplicate(true), "props": [], "edges": []}
 	var view = _bill_room_view(room)
@@ -2104,6 +2106,15 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		# Compact room previews have no raised riser to support fixture housings.
 		draw_target.draw_set_transform(Vector2.ZERO)
 
+func _corridor_view(room: Dictionary):
+	if not corridor_layout_views.has(room.id):
+		var view=preload("res://scripts/corridor_layout_view.gd").new()
+		view.room_id=room.id;view.embedded=true;add_child(view);view.hide()
+		corridor_layout_views[room.id]=view
+	var view=corridor_layout_views[room.id]
+	view.configure_embedded(int(room.get("rotation",0)),[],true,0.0)
+	return view
+
 func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_only: bool, shell_only: bool) -> void:
 	if corridor_textures.is_empty(): corridor_textures = CorridorArt.load_sources()
 	var main = _get_main()
@@ -2113,16 +2124,12 @@ func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_o
 	var at: Vector2 = (Vector2(room.pos)+Vector2.ONE*0.5)*_cell_size()
 	draw_target.draw_set_transform(at,0,Vector2.ONE*scale)
 	if floor_only or preview:
-		CorridorArt.draw_hull(draw_target,CorridorGeometry.hull_for(corner,room.id=="tee_corridor"),CorridorGeometry.floor_for(corner,room.id=="tee_corridor"),Vector2.ZERO,q,corridor_textures,corner,true,1.0 if preview else _room_light_level(room),room.id=="tee_corridor",posmod(int(room.get("art_variant",0)),3),preload("res://scripts/room_layout_store.gd").positions("room-"+str(room.id),int(room.get("rotation",0))))
+		CorridorArt.draw_hull(draw_target,CorridorGeometry.hull_for(corner,room.id=="tee_corridor"),CorridorGeometry.floor_for(corner,room.id=="tee_corridor"),Vector2.ZERO,q,corridor_textures,corner,true,1.0 if preview else _room_light_level(room),room.id=="tee_corridor",int(room.get("art_variant",0)),preload("res://scripts/room_layout_store.gd").positions("room-"+str(room.id),int(room.get("rotation",0))))
 	if preview or (not floor_only and not shell_only):
-		if not corridor_layout_views.has(room.id):
-			var editing=preload("res://scripts/corridor_layout_view.gd").new()
-			editing.room_id=room.id; editing.embedded=true; add_child(editing); editing.hide()
-			corridor_layout_views[room.id]=editing
-		var editing=corridor_layout_views[room.id]
-		editing.configure_embedded(int(room.get("rotation",0)),[],true,0.0)
+		var editing = _corridor_view(room)
 		preload("res://scripts/room_asset_library.gd").strip_retired(editing)
-		editing.render_into(draw_target,at,scale,false,false)
+		if preview:editing.render_into(draw_target,at,scale,false,false)
+		else:preload("res://scripts/room_layout_store.gd").apply(editing,"room-"+str(room.id))
 		draw_target.draw_set_transform(at,0,Vector2.ONE*scale)
 
 	if shell_only or preview:
@@ -2137,7 +2144,7 @@ func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_o
 			if not preview and (_door_has_connected_neighbor(main,room,room.pos+offset,offset) or _drone_door_frame(main,room.pos,room.pos+offset)>0): continue
 			var edge := Vector2(offset)*192
 			if not preload("res://scripts/title_settings.gd").raised_walls or main.occupied.has(room.pos+offset):
-				preload("res://rooms/doors/door_finish.gd").low_closed(draw_target,edge,offset.x!=0,"metal")
+				preload("res://rooms/doors/door_finish.gd").low_closed(draw_target,edge,offset.x!=0,"hallway")
 	if preview or (not floor_only and not shell_only):
 		preload("res://rooms/underwater/corridor_dressing.gd").draw_props(draw_target,q,int(room.get("art_variant",0)),1.0 if preview else lerpf(0.35,1.0,_room_light_level(room)))
 	if not preview and not floor_only and not shell_only:
@@ -2161,11 +2168,20 @@ func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_o
 		for actor in main.companion_actors.values():
 			if actor.active and actor.cell_at(actor.foot)==room.pos:
 				crew.append({"position":actor.foot-(Vector2(room.pos)+Vector2.ONE*0.5)*384.0,"texture":actor.texture(main.get_visual_time_seconds())})
+		var furnishing = _corridor_view(room)
+		for prop in furnishing.props:
+			if not prop.get("layout_hidden",false):crew.append({"position":Vector2(0,prop.sort_y),"prop":prop})
 		crew.sort_custom(func(a, b): return a.position.y < b.position.y)
 		nursery_view.flood_water=preload("res://scripts/room_flooding.gd").level(room)
 		nursery_view.flood_clock=main.get_visual_time_seconds()
 		nursery_view.painter = draw_target
 		for member in crew:
+			if member.has("prop"):
+				furnishing.painter=draw_target
+				preload("res://scripts/room_layout_store.gd").draw_flip(furnishing,draw_target,member.prop,at,scale)
+				preload("res://scripts/room_asset_library.gd").draw(furnishing,member.prop)
+				draw_target.draw_set_transform(at,0,Vector2.ONE*scale)
+				continue
 			nursery_view.actor = member.position
 			nursery_view.external_actor_texture = member.texture
 			nursery_view.draw_actor()
