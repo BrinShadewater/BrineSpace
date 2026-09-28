@@ -1,8 +1,22 @@
 extends "res://scripts/bill_npc.gd"
 ## Companion locomotion reuses room routing, never architect jobs or human needs.
 var identity := "river"
-var player = preload("res://scripts/crew_sprite_player.gd").new()
-var poses = preload("res://scripts/crew_sprite_player.gd").new()
+# Companions start sealed in wreck sites; their packs (35-60 MB each) load the first time
+# anything reads player or poses, not when the run begins (Sept 28).
+const SpritePlayer = preload("res://scripts/crew_sprite_player.gd")
+var _player: SpritePlayer = SpritePlayer.new()
+var _poses: SpritePlayer = SpritePlayer.new()
+var art_loaded := false
+var player: SpritePlayer:
+	get:
+		if not art_loaded: _load_art()
+		return _player
+	set(value): _player = value
+var poses: SpritePlayer:
+	get:
+		if not art_loaded: _load_art()
+		return _poses
+	set(value): _poses = value
 var locomotion=preload("res://scripts/companion_motion.gd").new()
 var wake_direction := "south"
 var water=preload("res://scripts/companion_water.gd").new()
@@ -27,23 +41,32 @@ func _init(id := "river", art_source = null) -> void:
 	# Restore fresh behavior/playback objects, but retain already decoded artwork.
 	# Copy containers so a new actor cannot mutate the previous actor's clip rows.
 	if art_source != null and art_source.identity == id:
-		for pair in [[player,art_source.player],[poses,art_source.poses]]:
-			pair[0].frames = pair[1].frames.duplicate(true)
-			pair[0].timing = pair[1].timing.duplicate(true)
-			pair[0].strides = pair[1].strides.duplicate(true)
-			pair[0].equipment_frames = pair[1].equipment_frames.duplicate(true)
+		if art_source.art_loaded:
+			for pair in [[_player,art_source._player],[_poses,art_source._poses]]:
+				pair[0].frames = pair[1].frames.duplicate(true)
+				pair[0].timing = pair[1].timing.duplicate(true)
+				pair[0].strides = pair[1].strides.duplicate(true)
+				pair[0].equipment_frames = pair[1].equipment_frames.duplicate(true)
+			art_loaded = true
 		swim_clearance = art_source.swim_clearance.duplicate(true)
 		tread_clearance = art_source.tread_clearance.duplicate(true)
 		return
+	# Water clearance is navigation data, needed before any artwork.
+	var clearance := {"margot":"res://character/margot-polish-v1/clearance.json","river":"res://character/robot-polish-v1/river/clearance.json"}
+	if clearance.has(id):
+		var bounds: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(clearance[id]))
+		swim_clearance = bounds; tread_clearance = bounds.duplicate(true)
+
+func _load_art() -> void:
+	art_loaded = true
+	var id := identity
 	if id=="margot":
-		player.load_manifest("res://character/margot-polish-v1/packs/locomotion/manifest.json")
-		player.load_manifest("res://character/margot-polish-v1/packs/water/manifest.json",true)
-		poses.load_manifest("res://character/margot-polish-v1/packs/actions/manifest.json")
-		var margot_bounds:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://character/margot-polish-v1/clearance.json"))
-		swim_clearance=margot_bounds;tread_clearance=margot_bounds.duplicate(true)
-		for key in player.frames:
+		_player.load_manifest("res://character/margot-polish-v1/packs/locomotion/manifest.json")
+		_player.load_manifest("res://character/margot-polish-v1/packs/water/manifest.json",true)
+		_poses.load_manifest("res://character/margot-polish-v1/packs/actions/manifest.json")
+		for key in _player.frames:
 			if not key.begins_with("swim-"):continue
-			for texture in player.frames[key]:
+			for texture in _player.frames[key]:
 				texture.set_meta("companion_surface",true)
 				texture.set_meta("companion_surface_line",148.0)
 				texture.set_meta("crew_water_kind","idle" if key.contains("-idle-") else "swim")
@@ -52,15 +75,13 @@ func _init(id := "river", art_source = null) -> void:
 		"josh":["res://character/robot-polish-v1/josh/packs/locomotion/manifest.json","res://character/robot-polish-v1/josh/packs/actions/manifest.json"],
 		"river":["res://character/robot-polish-v1/river/packs/locomotion/manifest.json","res://character/robot-polish-v1/river/packs/actions/manifest.json"]
 	}
-	player.load_manifest(ROBOT_PACKS[id][0])
-	poses.load_manifest(ROBOT_PACKS[id][1])
+	_player.load_manifest(ROBOT_PACKS[id][0])
+	_poses.load_manifest(ROBOT_PACKS[id][1])
 	if id=="river":
-		player.load_manifest("res://character/robot-polish-v1/river/packs/water/manifest.json",true)
-		var bounds=JSON.parse_string(FileAccess.get_file_as_string("res://character/robot-polish-v1/river/clearance.json"))
-		swim_clearance=bounds;tread_clearance=bounds.duplicate(true)
-		for key in player.frames:
+		_player.load_manifest("res://character/robot-polish-v1/river/packs/water/manifest.json",true)
+		for key in _player.frames:
 			if not (key.begins_with("swim-") or key.begins_with("float-")):continue
-			for texture in player.frames[key]:
+			for texture in _player.frames[key]:
 				texture.set_meta("companion_surface",true)
 				texture.set_meta("companion_surface_line",140.0)
 				texture.set_meta("crew_water_kind","idle" if key.contains("-idle-") else "swim")

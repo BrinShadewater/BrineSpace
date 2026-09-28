@@ -204,7 +204,7 @@ static func snapshot(game) -> Dictionary:
 	var actors := {}
 	for id in game.companion_actors:
 		var actor = game.companion_actors[id]
-		actors[id]={"npc":actor.snapshot(),"playback":actor.player.snapshot(),"personality":actor.personality_snapshot()}
+		actors[id]={"npc":actor.snapshot(),"playback":actor._player.snapshot(),"personality":actor.personality_snapshot()}
 	return {"version":2,"roster":game.companion_roster.duplicate(),"actors":actors}
 
 static func can_pet(game, from_journal := false) -> bool:
@@ -293,5 +293,6 @@ static func restore(game, data: Variant) -> void:
 		game.companion_actors[id]=actor
 		if not data.actors.has(id):continue # Older robot-only loops do not gain a new rescue site.
 		actor.restore_snapshot(game,data.actors[id].npc)
-		actor.player.restore_snapshot(data.actors[id].playback)
+		# A companion with no clip playing (still sealed) keeps its packs unloaded.
+		(actor.player if not str(data.actors[id].playback.get("key","")).is_empty() else actor._player).restore_snapshot(data.actors[id].playback)
 		actor.restore_personality(data.actors[id].get("personality"))

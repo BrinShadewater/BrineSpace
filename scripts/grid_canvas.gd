@@ -316,14 +316,23 @@ func _ready() -> void:
 		department_door_materials = DepartmentDoor.make_materials(self,department_source)
 	if door_texture != null:
 		layered_door_texture = AnimatedDoorAtlas.create_station_finish(self, door_texture)
+	# Share the card images main already loaded (Sept 28: each was loaded three times,
+	# ~150 MB of duplicates); variants that name the same file reuse that texture.
+	var cards: Dictionary = {}
+	var ancestor := get_parent()
+	while ancestor != null and not "card_textures" in ancestor: ancestor = ancestor.get_parent()
+	if ancestor != null: cards = ancestor.card_textures
 	for id in room_texture_paths:
-		var texture := _load_png_texture(room_texture_paths[id])
+		var texture: Texture2D = cards.get(id)
+		if texture == null: texture = _load_png_texture(room_texture_paths[id])
+		else: _cache_texture_source_region(texture)
 		if texture != null:
 			room_textures[id] = texture
 	for id in room_texture_variant_paths:
 		var textures: Array[Texture2D] = []
 		for path_value in room_texture_variant_paths[id]:
-			var texture: Texture2D = _load_png_texture(str(path_value))
+			var texture: Texture2D = room_textures.get(id) if str(path_value) == str(room_texture_paths.get(id, "")) else null
+			if texture == null: texture = _load_png_texture(str(path_value))
 			if texture != null:
 				textures.append(texture)
 		if not textures.is_empty():
