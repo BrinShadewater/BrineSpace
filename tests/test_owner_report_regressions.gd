@@ -105,6 +105,9 @@ func run():
  var doorway=(Vector2(21,20)+Vector2.ONE*0.5)*384+Vector2(-190,20)
  actor.foot=doorway
  check(actor.can_stand(doorway) and not actor.swim_segment_clear(doorway,doorway,actor.direction),"Fixture catches the standing-to-swimming doorway transition")
+ # Owner, Sept 28: swimmers pass over hallway furniture that still blocks walkers.
+ var hall:Dictionary=actor.geometry[Vector2i(21,20)]
+ check(hall.has("swim_blockers") and hall.swim_blockers.size()<hall.blockers.size(),"Flooded hallway furniture blocks walkers but not swimmers")
  var destination=(Vector2(21,20)+Vector2.ONE*0.5)*384
  actor.goal="hull-repair"
  actor.path=PackedVector2Array([destination])

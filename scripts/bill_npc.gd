@@ -543,7 +543,7 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 		if geometry[cell].has("swim_blocker_bounds"):
 			var local_bounds: Rect2 = geometry[cell].swim_blocker_bounds
 			if not Rect2(local_bounds.position+center,local_bounds.size).intersects(swept,true): continue
-		for blocker in geometry[cell].get("blockers", []):
+		for blocker in geometry[cell].get("swim_blockers", geometry[cell].get("blockers", [])):
 			# The visible envelope replaces the standing radius; retain a small
 			# clearance margin instead of adding that radius a second time.
 			var obstacle: Rect2 = blocker.grow(-maxf(0.0,float(geometry[cell].get("blocker_padding",0.0))-2.0))
@@ -649,11 +649,17 @@ func rebuild(main, staged := false) -> void:
 				# furniture (crates, carts, benches) still blocks (owner, Sept 28).
 				if data.get("corridor",false) and str(prop.get("id","")).begins_with("library/tileset-"): continue
 				for rect in Geometry.prop_collision_rects(prop): data.blockers.append(rect.grow(10))
+			var walls: Array = []
 			for edge in data.edges:
-				for rect in Geometry.wall_rects(edge): data.blockers.append(rect.grow(10))
-		if not data.blockers.is_empty():
-			var bounds: Rect2 = data.blockers[0]
-			for blocker in data.blockers: bounds = bounds.merge(blocker)
+				for rect in Geometry.wall_rects(edge): walls.append(rect.grow(10))
+			data.blockers.append_array(walls)
+			# Swimmers pass over hallway furniture once a corridor floods (owner, Sept 28);
+			# only its walls still stop them.
+			if data.get("corridor",false): data.swim_blockers = walls
+		var swim_list: Array = data.get("swim_blockers", data.blockers)
+		if not swim_list.is_empty():
+			var bounds: Rect2 = swim_list[0]
+			for blocker in swim_list: bounds = bounds.merge(blocker)
 			data.swim_blocker_bounds = bounds
 		geometry[cell] = data
 		room_nodes[cell] = []
