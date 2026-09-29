@@ -49,6 +49,11 @@ const DOCTRINES := {
 }
 
 const ESSENTIAL_BLUEPRINTS := ["current_turbine", "solar_array", "mining_drone_bay", "construction_drone_bay", "corridor", "corner", "tee_corridor", "storage_bay", "hydroponics_bay", "life_support"]
+const LARGE_ROOMS := ["hydroponics_farm", "storage_depot", "moonbay", "tidal_power_plant"]
+
+static func large_room_for_run(run_index: int, random: RandomNumberGenerator) -> String:
+	if run_index < LARGE_ROOMS.size(): return LARGE_ROOMS[maxi(0,run_index)]
+	return LARGE_ROOMS[random.randi_range(0,LARGE_ROOMS.size()-1)]
 
 const PAIR_DIRECTIVE_VARIANTS := [
 	{
@@ -97,6 +102,7 @@ static func build_deck(selected_doctrines: Array, unlocked_room_ids: Dictionary)
 	var deck: Array[String] = []
 	for room_id_value in room_ids:
 		var room_id := str(room_id_value)
+		if LARGE_ROOMS.has(room_id): continue
 		if not unlocked_room_ids.has(room_id):
 			continue
 		var room := RoomDatabaseScript.get_room(room_id)

@@ -11,6 +11,7 @@ var recovered_memory_ids := {}
 var brine_upgrades := {}
 var doctrine_mastery := {}
 var total_victories := 0
+var large_room_run_index := 0
 var unread_records := {}
 var guide_completed := false
 var unlocked_architect_ids := {"bill":true}
@@ -105,6 +106,7 @@ func _reset_profile() -> void:
 	brine_upgrades = {}
 	doctrine_mastery = {}
 	total_victories = 0
+	large_room_run_index = 0
 	unread_records = {}
 	guide_completed = false
 	unlocked_architect_ids = {"bill":true}
@@ -197,7 +199,8 @@ func save_to_disk() -> Error:
 		"recovered_memory_ids": recovered_memory_ids.keys(),
 		"brine_upgrades": brine_upgrades.keys(),
 		"doctrine_mastery": doctrine_mastery,
-		"total_victories": total_victories
+		"total_victories": total_victories,
+		"large_room_run_index": large_room_run_index
 	}
 	var temp := save_path + ".tmp"
 	var backup := save_path + ".bak"
@@ -285,6 +288,7 @@ func load_from_disk() -> void:
 		for id in parsed_mastery:
 			doctrine_mastery[str(id)] = _saved_count(parsed_mastery[id])
 	total_victories = _saved_count(parsed.get("total_victories", 0))
+	large_room_run_index = _saved_count(parsed.get("large_room_run_index", 0))
 
 # Damaged optional fields must not prevent the remaining records from loading.
 static func _saved_ids(data: Dictionary, key: String) -> Array:

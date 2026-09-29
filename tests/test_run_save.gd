@@ -25,7 +25,7 @@ func _run() -> void:
 		if id in specialists:
 			eligible_specialists += 1
 			if deck.has(id): dealt_specialists += 1
-		elif id != "brine_core" and not game.RoomDatabaseScript.get_room(str(id)).is_empty():
+		elif id != "brine_core" and not game.RunManagerScript.LARGE_ROOMS.has(str(id)) and not game.RoomDatabaseScript.get_room(str(id)).is_empty():
 			check(deck.has(id), "Neutral draft includes unlocked blueprint " + str(id))
 	check(dealt_specialists == mini(1,eligible_specialists),"Neutral draft offers exactly one available rare specialist")
 	check(game.running and not game.summary_layer.visible, "Retired deadlines cannot end a loop")
@@ -80,6 +80,8 @@ func _run() -> void:
 	check(not Save.restore(game, {"state": {}}), "Incomplete checkpoint must fail without throwing")
 	check(game.resources == expected_resources, "Rejected checkpoint must preserve current resources")
 	var expected_hand: Array = game.hand.duplicate()
+	var expected_large_id: String = game.large_room_selected_id
+	var expected_large_index: int = game.meta.large_room_run_index
 	var expected_rng: int = game.rng.state
 	game.resources.metal = 0
 	game.hand.clear()
@@ -87,6 +89,10 @@ func _run() -> void:
 	check(Save.restore(game, data), "Checkpoint should restore")
 	check(game.cycle == 7 and game.reroll_recovery_progress == 2, "Cycle and reroll recovery must survive")
 	check(game.resources == expected_resources and game.hand == expected_hand, "Resources and draft must survive")
+	check(game.large_room_selected_id == expected_large_id and game.meta.large_room_run_index == expected_large_index, "Large room selection and profile sequence survive restore")
+	var legacy_large_record := data.duplicate(true)
+	legacy_large_record.state.erase("large_room_selected_id")
+	check(Save.problem(legacy_large_record).is_empty(), "Earlier checkpoints load without a large room selection")
 	check(game.placed_rooms.size() == 3 and game.occupied.size() == 6, "Station and multi-cell occupancy must restore")
 	check(game.occupied[large_anchor+Vector2i.ONE].pos==large_anchor and game.occupied[large_anchor+Vector2i.ONE].size==Vector2i(2,2),"Large room restores all four cells as one room")
 	check(game.occupied[Vector2i(20,20)].get("size",Vector2i.ONE)==Vector2i.ONE,"Legacy single-cell room keeps its default size")
@@ -145,6 +151,7 @@ func _run() -> void:
 	check(Save.pending.is_empty(), "Continue request must be consumed only once")
 	check(game.cycle == 7 and game.placed_rooms.size() == 3 and game.paused and game.occupied.size()==6, "Fresh scene must resume checkpoint and multi-cell occupancy")
 	check(game.run_save_path == PATH, "Continue must retain its checkpoint destination")
+	check(game.large_room_selected_id == expected_large_id and game.meta.large_room_run_index == expected_large_index, "Continue preserves large room selection without advancing the sequence")
 	check(is_instance_valid(game.crew_comms) and game.crew_comms.greeting_sent and game.crew_comms.seen.has("awake/bill"), "Continue from the title keeps what comms already said")
 	game._open_menu()
 	if DisplayServer.get_name() != "headless":

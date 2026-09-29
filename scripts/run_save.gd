@@ -1,7 +1,7 @@
 extends RefCounted
 const PATH := "user://brine_loop.save"
 const VERSION := 1
-const FIELDS := ["resources","run_earned","placed_rooms","hand","draw_pile","discard_pile","rerolls_remaining","reroll_recovery_progress","run_victory","expedition_mode","run_rewards_recorded","run_awarded_research","selected_card_id","hovered_card_id","selected_rotation","selected_room_cell","hover_cell","cycle","crew_count","had_crew","corruption","orbit_decay","active_synergies","connected_synergy_links","active_synergy_links","synergy_stabilization_progress","run_discovered_synergy_ids","run_stabilized_synergy_ids","run_decrypted_blueprint_ids","prototype_card_seen_cycle","discovery_bursts","resonance_score","resonance_tier_index","links_formed","largest_cascade","last_cascade_size","running","admin_mode","grid_zoom","visual_time_seconds","time_speed_index","completed_pois","expired_pois","power_generated","power_used","power_capacity","unpowered_rooms","powered_room_cells","unpowered_room_cells","offline_reasons","last_cycle_delta","test_walker_cell","test_walker_next_cell","test_walker_previous_cell","test_walker_progress","test_walker_speed","test_walker_state","test_walker_break_timer","test_walker_direction"]
+const FIELDS := ["resources","run_earned","placed_rooms","hand","draw_pile","discard_pile","large_room_selected_id","rerolls_remaining","reroll_recovery_progress","run_victory","expedition_mode","run_rewards_recorded","run_awarded_research","selected_card_id","hovered_card_id","selected_rotation","selected_room_cell","hover_cell","cycle","crew_count","had_crew","corruption","orbit_decay","active_synergies","connected_synergy_links","active_synergy_links","synergy_stabilization_progress","run_discovered_synergy_ids","run_stabilized_synergy_ids","run_decrypted_blueprint_ids","prototype_card_seen_cycle","discovery_bursts","resonance_score","resonance_tier_index","links_formed","largest_cascade","last_cascade_size","running","admin_mode","grid_zoom","visual_time_seconds","time_speed_index","completed_pois","expired_pois","power_generated","power_used","power_capacity","unpowered_rooms","powered_room_cells","unpowered_room_cells","offline_reasons","last_cycle_delta","test_walker_cell","test_walker_next_cell","test_walker_previous_cell","test_walker_progress","test_walker_speed","test_walker_state","test_walker_break_timer","test_walker_direction"]
 static var pending: Dictionary = {}
 static var last_error := ""
 
@@ -131,6 +131,7 @@ static func problem(value: Dictionary) -> String:
 	if not preload("res://scripts/companions.gd").valid(value.get("companions"),value.get("wrecks",{}),state.placed_rooms): return "companions"
 	if not preload("res://scripts/crew_expedition.gd").valid_crew_rooms(value.get("crew"),state.placed_rooms): return "crew expedition rooms"
 	for field in FIELDS:
+		if field == "large_room_selected_id" and not state.has(field): continue
 		if not state.has(field): return "missing state field " + field
 	for key in ["run_id", "rng", "orbit_rng", "poi", "poi_timer", "timer_left", "scroll"]:
 		if not value.has(key): return "missing " + key
@@ -197,6 +198,7 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 	if not valid_crew(data.get("crew")): return false
 	if not preload("res://scripts/companions.gd").valid(data.get("companions"),data.get("wrecks",{}),data.state.get("placed_rooms",[])):return false
 	if not data.state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(data.state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(data.state.placed_rooms) or not preload("res://scripts/room_fire.gd").valid_rooms(data.state.placed_rooms)): return false
+	if not data.state.has("large_room_selected_id"): data.state["large_room_selected_id"] = ""
 	if not preload("res://scripts/crew_expedition.gd").valid_crew_rooms(data.get("crew"),data.state.placed_rooms): return false
 	for field in FIELDS:
 		if not data.state.has(field) or typeof(data.state[field]) != typeof(game.get(field)):

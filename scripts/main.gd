@@ -147,6 +147,7 @@ var placed_rooms := []
 var hand := []
 var draw_pile: Array[String] = []
 var discard_pile: Array[String] = []
+var large_room_selected_id := ""
 var rerolls_remaining := 3
 var reroll_recovery_progress := 0
 var run_victory := false
@@ -2198,6 +2199,15 @@ func _build_run_deck() -> void:
 	draw_pile = RunManagerScript.build_deck([], meta.unlocked_room_ids)
 	discard_pile.clear()
 	_shuffle_draw_pile()
+	# A Continue scene briefly stages a fresh station before applying its checkpoint.
+	# Only an actual new run consumes the next introduction slot.
+	if RunSave.pending.is_empty():
+		large_room_selected_id = RunManagerScript.large_room_for_run(meta.large_room_run_index, rng)
+		meta.large_room_run_index += 1
+		meta.save_to_disk()
+		# Draws pop from the end. Keep the rare room well behind the opening hand.
+		var late_index := mini(draw_pile.size()/2, maxi(0,draw_pile.size()-hand_limit()-1))
+		draw_pile.insert(late_index, large_room_selected_id)
 	# Stage existing foundation copies, without adding cards or revealing locks.
 	# Retain the opening hand; offer a second affordable generator on first build.
 	for id in ["corridor", "life_support", "current_turbine", "hydroponics_bay", "mining_drone_bay", "solar_array"]:
@@ -2231,9 +2241,18 @@ func _refill_hand() -> void:
 			break
 
 func _reshuffle_discard_pile() -> void:
+	# A queued or completed large room has spent its one card for this run.
+	for id in RunManagerScript.LARGE_ROOMS:
+		if id != large_room_selected_id or placed_rooms.any(func(room): return room.id == id):
+			while draw_pile.has(id): draw_pile.erase(id)
+			while discard_pile.has(id): discard_pile.erase(id)
 	if discard_pile.is_empty():
 		return
-	draw_pile.assign(discard_pile)
+	draw_pile.clear()
+	for id in discard_pile:
+		if RunManagerScript.LARGE_ROOMS.has(id) and (id != large_room_selected_id or placed_rooms.any(func(room): return room.id == id)):
+			continue
+		draw_pile.append(id)
 	discard_pile.clear()
 	_shuffle_draw_pile()
 	_log("Blueprint discard pile recycled into the draw stack.", false)
@@ -2299,7 +2318,7 @@ func _on_grid_clicked(cell: Vector2i) -> void:
 	_place_room(built_card_id, cell)
 	_clamp_power_reserve()
 	hand.erase(built_card_id)
-	discard_pile.append(built_card_id)
+	if not RunManagerScript.LARGE_ROOMS.has(built_card_id): discard_pile.append(built_card_id)
 	_refill_hand()
 	selected_card_id = hand[0] if not hand.is_empty() else ""
 	selected_rotation = _default_card_rotation(selected_card_id)
