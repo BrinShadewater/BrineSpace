@@ -48,8 +48,12 @@ static func prepare_paths(paths:Array,parallel_decode:bool=false) -> bool:
 # on quit). Owners of these jobs call this as they leave the tree.
 static func finish_pending_jobs() -> void:
 	for path in Motion.image_jobs.keys():
-		WorkerThreadPool.wait_for_task_completion(Motion.image_jobs[path].task)
-		Motion.finish_texture(path)
+		var job: Dictionary=Motion.image_jobs[path]
+		WorkerThreadPool.wait_for_task_completion(job.task)
+		# A completed task ID is invalid after wait; consume its decoded image directly.
+		Motion.image_jobs.erase(path)
+		if job.result.has("image"): Motion.cache_image(path,job.result.image)
+		else: push_error("Drone animation missing: "+path)
 static func prepare_preview(kind:String,operating:bool=true) -> bool:
 	return prepare_paths(required_paths(kind,{},operating))
 static func record(kind:String) -> Dictionary:

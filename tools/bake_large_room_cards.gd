@@ -5,6 +5,7 @@ extends SceneTree
 
 const Rooms = preload("res://scripts/room_database.gd")
 const Cards = preload("res://scripts/room_card_art.gd")
+const LargeStudioView = preload("res://rooms/large-rooms/studio_view.gd")
 const Views := {
 	"hydroponics_farm": preload("res://rooms/large-rooms/hydroponics_farm.gd"),
 	"storage_depot": preload("res://rooms/large-rooms/storage_depot.gd"),
@@ -18,6 +19,7 @@ class Preview extends Node2D:
 
 	func _draw() -> void:
 		view.draw(self, room, Rect2(32, 32, 448, 448))
+		LargeStudioView.draw_live(self, room, Rect2(32, 32, 448, 448))
 
 func _init() -> void:
 	call_deferred("run")

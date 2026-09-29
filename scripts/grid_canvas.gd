@@ -13,6 +13,7 @@ const LARGE_ROOM_VIEWS := {
 	"moonbay": preload("res://rooms/large-rooms/moonbay.gd"),
 	"tidal_power_plant": preload("res://rooms/large-rooms/tidal_power_plant.gd")
 }
+const LargeStudioView := preload("res://rooms/large-rooms/studio_view.gd")
 const SeabedBackground := preload("res://assets/environment/seabed-v1/seabed_background.gd")
 var seabed_background := SeabedBackground.new()
 const WreckView := preload("res://assets/environment/wrecked-rooms-v1/wreck_view.gd")
@@ -1686,6 +1687,7 @@ func _draw_room(room: Dictionary) -> void:
 			port_open.append(amount)
 		appearance["port_open"] = port_open
 		LARGE_ROOM_VIEWS[room.id].draw(draw_target, appearance, large_rect)
+		LargeStudioView.draw_live(draw_target, room, large_rect, main.get_visual_time_seconds(), main.powered_room_cells.has(pos))
 		if main.unpowered_room_cells.has(pos):
 			draw_target.draw_rect(large_rect, Color(0.05, 0.02, 0.03, 0.35))
 		return
@@ -1890,6 +1892,12 @@ func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Ve
 				bound = Rect2(Vector2(768.0-bound.end.y,bound.position.x),Vector2(bound.size.y,bound.size.x))
 			var overlap: Rect2 = bound.intersection(cell_rect)
 			if overlap.has_area(): blockers.append(Rect2(overlap.position - cell_rect.position - Vector2.ONE*192.0, overlap.size).grow(10.0))
+		for prop in LargeStudioView.live_props(str(room.id),int(room.get("rotation",0))):
+			if prop.get("layout_hidden",false) or prop.get("floor_piece",false): continue
+			var bound: Rect2=preload("res://scripts/room_asset_library.gd").bounds(prop)
+			bound.position+=Vector2.ONE*384.0
+			var overlap: Rect2=bound.intersection(cell_rect)
+			if overlap.has_area(): blockers.append(Rect2(overlap.position-cell_rect.position-Vector2.ONE*192.0,overlap.size).grow(10.0))
 		return {"large_room":true,"legacy":true,"room":room.duplicate(true),"props":[],"edges":[],"blockers":blockers,"swim_blockers":[]}
 	if _is_narrow_corridor(room):
 		var corridor_view = _corridor_view(room)
@@ -2652,6 +2660,7 @@ func _draw_room_hologram(main, cell: Vector2i, valid: bool) -> void:
 	draw_target.draw_rect(rect, tint)
 	if LARGE_ROOM_VIEWS.has(str(room.id)):
 		LARGE_ROOM_VIEWS[room.id].draw(draw_target, room, rect)
+		LargeStudioView.draw_live(draw_target, room, rect)
 		draw_target.draw_rect(rect, Color(0.12, 0.35, 0.3, 0.2) if valid else Color(0.45, 0.08, 0.08, 0.35))
 		draw_target.draw_rect(rect, Color(0.35, 0.82, 0.68, 0.75) if valid else Color(1.0, 0.35, 0.39, 0.75), false, 3.0)
 		_draw_preview_openings(main, room, rect)

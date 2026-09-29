@@ -1,5 +1,8 @@
 extends Control
 const Library=preload("res://scripts/room_asset_library.gd")
+const LargeView=preload("res://rooms/large-rooms/studio_view.gd")
+const LargeCommon=preload("res://rooms/large-rooms/common.gd")
+const RoomDatabase=preload("res://scripts/room_database.gd")
 var resizing:=false
 var resize_scale:=1.0
 var resize_extent:=Vector2.ONE
@@ -220,12 +223,15 @@ class AssetList extends ItemList:
 
 class LayoutCanvas extends Control:
 	var editor
-	func factor() -> float: return maxf(0.25,minf(size.x,size.y)/560.0*editor.zoom)
+	func factor() -> float: return maxf(0.25,minf(size.x,size.y)/(900.0 if editor.is_large_room() else 560.0)*editor.zoom)
 	func origin() -> Vector2: return size/2+editor.pan
 	func to_room(point: Vector2) -> Vector2: return ((point-origin())/factor()).snapped(Vector2(0.001,0.001))
 	func _draw() -> void:
 		draw_rect(Rect2(Vector2.ZERO,size),Color("0b171e"))
 		if editor.room==null: return
+		if editor.is_large_room():
+			_draw_large()
+			return
 		editor.room.set_meta("raised_north_visible",editor.show_riser)
 		draw_set_transform(origin(),0,Vector2.ONE*factor())
 		if editor.show_foundation:
@@ -291,6 +297,31 @@ class LayoutCanvas extends Control:
 			var box:=Rect2(editor.box_start,editor.box_end-editor.box_start).abs()
 			draw_rect(box,Color(0.4,0.8,0.75,0.12)); draw_rect(box,Color("67d5bb"),false,1.0/factor())
 		draw_set_transform(Vector2.ZERO)
+	func _draw_large() -> void:
+		editor.room.operating=true
+		editor.room.machine_clock=editor.preview_clock
+		editor.room.render_into(self,origin(),factor(),true)
+		editor.room.render_into(self,origin(),factor(),false)
+		draw_set_transform(origin(),0,Vector2.ONE*factor())
+		if editor.show_guides and not editor.clean_preview:
+			for lane in editor.large_door_lanes():
+				draw_rect(lane,Color(0.85,0.63,0.3,0.09))
+				draw_rect(lane,Color(0.85,0.63,0.3,0.4),false,1.0/factor())
+		if not editor.clean_preview:
+			var valid: bool=editor.issues().is_empty()
+			for prop in editor.entities():
+				var id:=str(prop.id)
+				if id==editor.hover_id and id not in editor.selection_ids(): draw_rect(editor.entity_bounds(prop).grow(2),Color("a5bfc1"),false,1.0/factor())
+				if id not in editor.selection_ids(): continue
+				var color:=Color("67d5bb") if valid else Color("f08d69")
+				draw_rect(editor.entity_bounds(prop).grow(2),color,false,1.5/factor())
+				draw_rect(prop.rect,Color(color,0.14))
+				if not editor.draft.get("locked/"+id,false): draw_rect(Rect2(editor.entity_bounds(prop).end-Vector2.ONE*5/factor(),Vector2.ONE*10/factor()),color)
+			for line in editor.alignment_lines: draw_line(line[0],line[1],Color("e1ba75"),1.0/factor())
+			if editor.box_selecting:
+				var box:=Rect2(editor.box_start,editor.box_end-editor.box_start).abs()
+				draw_rect(box,Color(0.4,0.8,0.75,0.12)); draw_rect(box,Color("67d5bb"),false,1.0/factor())
+		draw_set_transform(Vector2.ZERO)
 	func _gui_input(event: InputEvent) -> void: editor.canvas_input(event)
 	func _can_drop_data(_at: Vector2, data) -> bool:
 		return data is Dictionary and (editor.Library.entries().has(data.get("room_library_asset","")) or editor.defaults.has(data.get("room_library_asset","")))
@@ -341,6 +372,8 @@ func _ready() -> void:
 	picker.custom_minimum_size.x=210
 	toolbar.add_child(picker)
 	entries=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json"))
+	for large_id in LargeView.VIEWS:
+		entries.append({"room":large_id,"asset":"room-"+large_id,"view":"res://rooms/large-rooms/studio_view.gd","large":true})
 	for entry in entries: picker.add_item(str(entry.room).replace("_"," ").capitalize())
 	picker.item_selected.connect(switch_room)
 	rotations=OptionButton.new()
@@ -735,6 +768,37 @@ func button(parent: Node, text: String, action: Callable) -> Button:
 	parent.add_child(b)
 	return b
 
+func is_large_room() -> bool:
+	return index >= 0 and index < entries.size() and bool(entries[index].get("large",false))
+
+func large_door_lanes() -> Array[Rect2]:
+	var result: Array[Rect2]=[]
+	var definition: Dictionary=RoomDatabase.get_room(str(entries[index].room))
+	for port in definition.get("ports",[]):
+		var center: Vector2=LargeCommon.port_center(port).rotated(float(quarter)*PI*0.5)
+		var side: String=LargeCommon.rotated_side(str(port.side),quarter)
+		match side:
+			"north": result.append(Rect2(center+Vector2(-42,0),Vector2(84,180)))
+			"east": result.append(Rect2(center+Vector2(-180,-42),Vector2(180,84)))
+			"south": result.append(Rect2(center+Vector2(-42,-180),Vector2(84,180)))
+			"west": result.append(Rect2(center+Vector2(0,-42),Vector2(180,84)))
+	if definition.has("ocean_side"):
+		var ocean: String=LargeCommon.rotated_side(str(definition.ocean_side),quarter)
+		match ocean:
+			"north": result.append(Rect2(-100,-370,200,190))
+			"east": result.append(Rect2(180,-100,190,200))
+			"south": result.append(Rect2(-100,180,200,190))
+			"west": result.append(Rect2(-370,-100,190,200))
+	return result
+
+func large_fixed_bounds() -> Array[Rect2]:
+	var result: Array[Rect2]=[]
+	for original in LargeView.VIEWS[str(entries[index].room)].fixed_bounds():
+		var bound: Rect2=original
+		for _turn in range(quarter): bound=Rect2(Vector2(768.0-bound.end.y,bound.position.x),Vector2(bound.size.y,bound.size.x))
+		result.append(Rect2(bound.position-Vector2.ONE*384.0,bound.size))
+	return result
+
 func load_room() -> void:
 	if floor_tools!=null: floor_tools.finish()
 	Store.invalidate_authored()
@@ -750,6 +814,28 @@ func load_room() -> void:
 	room.hide()
 	room.configure_embedded(quarter,[],false,0.0)
 	effects.clear(); effects.room_id=str(entries[index].room); rebuild_effect_buttons()
+	effects_bar.visible=not is_large_room()
+	floor_tools.visible=not is_large_room()
+	show_character.visible=not is_large_room()
+	for cast_pick in cast_rows: cast_pick.get_parent().visible=not is_large_room()
+	character_status.text="Character preview is unavailable for large rooms" if is_large_room() else "Preview only / same scale as gameplay"
+	for control in [riser_toggle,foundation_toggle,lights_toggle,animation_toggle]: control.disabled=is_large_room()
+	if is_large_room():
+		for layer_id in range(LAYER_CAPTIONS.size()):
+			var layer_index:=layers.get_item_index(layer_id)
+			if layer_index>=0: layers.set_item_disabled(layer_index,layer_id!=0)
+		layer=0
+		base_props=[]; base_details={}; defaults={"__free_placement":true}
+		draft=defaults.duplicate(true)
+		draft.merge(Store.positions(entries[index].asset,quarter),true)
+		history.clear(); future.clear(); dirty=false; selected=""; selected_many.clear(); dragging=false
+		var large_cached: Dictionary=rotation_drafts.get(Store.key(entries[index].asset,quarter),{})
+		if not large_cached.is_empty():
+			draft=large_cached.draft.duplicate(true); history=large_cached.history.duplicate(true); future=large_cached.future.duplicate(true)
+			dirty=large_cached.dirty; selected=large_cached.selected
+		picker.select(index); rotations.select(quarter)
+		refresh(); rebuild_list()
+		return
 	room.props=room.props.filter(func(prop): return Library.keeps_in_room(str(entries[index].room),prop))
 	var corridor_room: bool=str(entries[index].room) in ["corridor","corner","tee_corridor"]
 	# Riser wall decorations use retired art; redesigned rooms leave that layer off.
@@ -818,7 +904,7 @@ func refresh(move_only:=false) -> void:
 		prop.sort_y+=float(draft.get("order/"+str(prop.id),0))*512.0
 	room.set_meta("layout_draft",draft)
 	canvas.queue_redraw()
-	register_surface_details()
+	if not is_large_room(): register_surface_details()
 	rebuild_list()
 	rebuild_library()
 	update_size_control()
@@ -829,6 +915,20 @@ func refresh(move_only:=false) -> void:
 func issues() -> PackedStringArray:
 	var result:=PackedStringArray()
 	if draft.get("__free_placement",true): return result
+	if is_large_room():
+		var floor:=Rect2(-360,-360,720,720)
+		var lanes:=large_door_lanes()
+		var fixed:=large_fixed_bounds()
+		for prop in room.props:
+			var bounds: Rect2=room.prop_visual_bounds(prop)
+			if not floor.encloses(bounds): result.append("Keep "+str(prop.id)+" inside the large room.")
+			for lane in lanes:
+				if prop.rect.intersects(lane): result.append("Leave the door approach clear.")
+			for obstacle in fixed:
+				if bounds.intersects(obstacle): result.append("Keep furniture clear of fixed equipment.")
+			for other in room.props:
+				if prop.id!=other.id and bounds.intersects(room.prop_visual_bounds(other)): result.append("Move "+str(prop.id)+" clear of "+str(other.id)+".")
+		return result
 	for prop in room.props:
 		if prop.has("flush_region"): continue
 		if draft.get(str(prop.id))==defaults.get(str(prop.id)) and draft.get("size/"+str(prop.id),[1.0,1.0])==defaults.get("size/"+str(prop.id),[1.0,1.0]): continue
@@ -872,6 +972,7 @@ func register_surface_details() -> void:
 	surface_entities.clear()
 
 func entities() -> Array:
+	if is_large_room(): return room.props
 	if layer==0: return room.props
 	if layer in [2,3,4]:
 		var key:=str(layer)+str(show_riser)
@@ -1475,6 +1576,7 @@ func copy_to_other_rotations() -> void:
 	status.text="Copied to other rotations: "+", ".join(report)
 
 func clear_door_approaches() -> int:
+	if is_large_room(): return 0
 	var moved: Dictionary={}
 	for pass_index in range(6):
 		var changed:=false
@@ -1615,7 +1717,8 @@ func rebuild_library() -> void:
 		# Only the owner's station props are offered; older sources stay loadable for
 		# the rooms that still use them but never appear here.
 		if entry.get("group","")!="station": continue
-		if not in_focus and library_filter.selected==TRAY_DEFAULT and room_id not in entry.get("default_rooms",[]): continue
+		if not in_focus and library_filter.selected==TRAY_DEFAULT and room_id not in entry.get("default_rooms",[]):
+			if not is_large_room() or category_of(id,entry)!=str(RoomDatabase.get_room(room_id).get("category","")).to_snake_case(): continue
 		if not in_focus and library_filter.selected==TRAY_COMMON and category_of(id,entry)!="common": continue
 		if not in_focus and (only_favourites and not favourites.has(id)): continue
 		if not in_focus and (only_in_room and not placed.has(id)): continue
@@ -2089,7 +2192,7 @@ func snap_position(at: Vector2, bypass: bool=false) -> Vector2:
 	if not alignment.button_pressed or selected_prop().is_empty(): return result
 	var bounds:=entity_bounds(selected_prop())
 	bounds.position+=at-Vector2(draft[selected][0],draft[selected][1])
-	var targets: Array=[Rect2(-180,-180,360,360)]
+	var targets: Array=[Rect2(-360,-360,720,720) if is_large_room() else Rect2(-180,-180,360,360)]
 	for item in entities():
 		if str(item.id) not in selection_ids() and not draft.get("hidden/"+str(item.id),false): targets.append(entity_bounds(item))
 	for axis in range(2):
