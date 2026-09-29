@@ -53,7 +53,7 @@ const SYNERGIES_PER_ROW := 3
 var progression_cards: GridContainer
 var progression_tab := 0
 const MetaShop = preload("res://scripts/meta_shop.gd")
-const PROGRESSION_TABS := ["UPGRADES", "BLUEPRINTS", "CREW & COMPANIONS", "RECORDS"]
+const PROGRESSION_TABS := ["UPGRADES", "BLUEPRINTS", "CREW & COMPANIONS"]
 
 func _ready() -> void:
 	theme = preload("res://scripts/title_button_style.gd").menu_theme()
@@ -809,7 +809,6 @@ func _populate_progression() -> void:
 	match progression_tab:
 		1: _blueprint_shop()
 		2: _crew_shop()
-		3: _records()
 		_:
 			grid.add_child(_label("Some knowledge survives the reset. Some of it should not. Spend Archived Data on upgrades that carry into every loop, blueprints for your draft deck, and crew and companions.", 16))
 			grid.add_child(_research_tree())
@@ -903,7 +902,7 @@ func _crew_card(id: String, accent: Color, owned: bool, met: bool) -> Array:
 		lines.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 15))
 	return [card, rows]
 
-# The page tabs (Upgrades, Blueprints, Crew & Companions, Records): the same palette as the Settings
+# The page tabs (Upgrades, Blueprints, Crew & Companions): the same palette as the Settings
 # sidebar, a readable size, and a clear selected state.
 func _style_tabs(tabs: TabBar) -> void:
 	tabs.add_theme_font_override("font", preload("res://scripts/ui_fonts.gd").interface_medium())
@@ -1008,17 +1007,6 @@ func _crew_shop() -> void:
 		rows.add_child(_shop_button({"owned": "ABOARD" if id in MetaShop.ALWAYS_ABOARD else "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost, "unmet": "NOT MET YET"}[state], state == "ready", func() -> void:
 			if MetaShop.buy_character(meta_state, character_id): _refresh_progression(character_id)))
 		cards.add_child(parts[0])
-
-func _records() -> void:
-	grid.add_child(_label("%d MEMORIES RECOVERED" % meta_state.recovered_memory_ids.size(), 16))
-	grid.add_child(_label("RECOVERED MEMORIES", 22))
-	if meta_state.recovered_memory_ids.is_empty():
-		grid.add_child(_label("NO RECORDS RECOVERED.", 16))
-	else:
-		var ids: Array = meta_state.recovered_memory_ids.keys()
-		ids.sort()
-		for id in ids:
-			grid.add_child(_label(str(id).replace("_", " ").capitalize() + "\nRecorded in this profile.", 17))
 
 # BRINE memory core (owner playtest, Sept 17: Meta Progression option A). The upgrade web on the
 # left, the selected node's details and purchase on the right.
