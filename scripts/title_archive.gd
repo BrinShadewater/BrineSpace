@@ -948,6 +948,8 @@ func _populate_settings() -> void:
 	settings.name = "SettingsPanel"
 	settings.preferences_changed.connect(func() -> void:
 		status.text = settings.feedback.text
+		# The save note already shows above the page; the sidebar copy would repeat it.
+		if settings.feedback.text.begins_with("SETTINGS SAVED"): settings.feedback.hide()
 		preload("res://scripts/title_settings.gd").apply_menu_text(self)
 		_layout()
 	)
