@@ -27,6 +27,7 @@ var archive: Control
 var archive_opener: Button
 var about_button: Button
 var version_button: Button
+var report_button: Button
 var checkpoint_label: Label
 var checkpoint_panel: PanelContainer
 var checkpoint_preview: Control
@@ -145,6 +146,19 @@ func _ready() -> void:
 	version_button.add_theme_color_override("font_hover_color", Color("bde8eb"))
 	version_button.pressed.connect(func() -> void: _open_archive("about", about_button))
 	add_child(version_button)
+	report_button = Button.new()
+	report_button.name = "ReportBugLink"
+	report_button.flat = true
+	report_button.text = "REPORT A BUG [F8]"
+	report_button.tooltip_text = "Save a bug report with your log, screenshot and last save"
+	report_button.focus_mode = Control.FOCUS_NONE
+	report_button.add_theme_font_size_override("font_size", 15)
+	report_button.add_theme_color_override("font_color", Color("759ca9"))
+	report_button.add_theme_color_override("font_hover_color", Color("bde8eb"))
+	report_button.pressed.connect(func() -> void:
+		var reporter := get_node_or_null("/root/BugReport")
+		if reporter != null: reporter.open_report())
+	add_child(report_button)
 	if OS.has_feature("web"):
 		quit_button.hide()
 	badges = HBoxContainer.new()
@@ -215,6 +229,8 @@ func _layout() -> void:
 	if is_instance_valid(version_button):
 		version_button.size = version_button.get_combined_minimum_size()
 		version_button.position = Vector2((size.x - version_button.size.x) * 0.5, size.y - version_button.size.y - 6)
+		report_button.size = report_button.get_combined_minimum_size()
+		report_button.position = Vector2(version_button.position.x + version_button.size.x + 24, version_button.position.y)
 	error_label.position = Vector2(48, 12)
 	error_label.size = Vector2(size.x - 96, 64)
 	badges.position = Vector2(size.x - 516, center_y - 122)

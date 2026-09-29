@@ -7,6 +7,12 @@ extends Node
 const REPORT_DIR := "user://bug_reports"
 # Fixtures point this at their own folder so test runs never add reports to the player's.
 var report_dir := REPORT_DIR
+# Where "Save and send" uploads the zip. Empty hides the option, so reports stay local files the
+# player emails themselves. Nothing is ever sent without the player pressing that button.
+const REPORT_ENDPOINT := ""
+const UPLOAD_LIMIT_BYTES := 20 * 1024 * 1024
+var report_endpoint := REPORT_ENDPOINT
+var uploader: HTTPRequest = null
 const LOCK_DIR := "user://bug_report"
 const LOCK_PATH := "user://bug_report/session.lock"
 const LOG_DIR := "user://logs"
@@ -323,6 +329,46 @@ func _report_contains_dump(path: String) -> bool:
 	reader.close()
 	return found
 
+func _on_send_pressed() -> void:
+	var note := note_field.text if note_field != null else ""
+	var path := save_report(note)
+	if path.is_empty():
+		_show_overlay("REPORT NOT SAVED", "The report could not be written, so nothing was sent. Check that the game can write to its user data folder.", false, [["Close", _hide_overlay]])
+		return
+	_show_overlay("SENDING REPORT", "Uploading %s..." % path.get_file(), false, [])
+	var result := await upload_report(path)
+	if result == OK:
+		_show_overlay("REPORT SENT", "Thank you. %s was uploaded, and a copy is saved in the bug_reports folder." % path.get_file(), false, [["Close", _hide_overlay]])
+	else:
+		_show_overlay("COULD NOT SEND", "The upload failed (%s), but the report is saved as %s. You can email it to Alex at Shadewater Labs (brinshadewater@gmail.com)." % [_upload_reason(result), path.get_file()], false, [["Open folder", _open_report_folder], ["Close", _hide_overlay]])
+
+func _upload_reason(code: int) -> String:
+	match code:
+		ERR_FILE_CANT_OPEN: return "only zip reports can be sent"
+		ERR_PARAMETER_RANGE_ERROR: return "the report is too large to upload"
+		ERR_UNCONFIGURED: return "no upload address is set"
+		ERR_TIMEOUT: return "the server did not answer"
+		_: return "error %d" % code
+
+# Posts a saved report zip to report_endpoint. Returns OK only when the server answers 2xx.
+func upload_report(path: String) -> int:
+	if report_endpoint.is_empty(): return ERR_UNCONFIGURED
+	if not path.ends_with(".zip") or not FileAccess.file_exists(path): return ERR_FILE_CANT_OPEN
+	var bytes := FileAccess.get_file_as_bytes(path)
+	if bytes.size() > UPLOAD_LIMIT_BYTES: return ERR_PARAMETER_RANGE_ERROR
+	if uploader == null:
+		uploader = HTTPRequest.new()
+		uploader.process_mode = Node.PROCESS_MODE_ALWAYS
+		uploader.timeout = 60.0
+		add_child(uploader)
+	var headers := PackedStringArray(["Content-Type: application/zip", "X-Report-Name: " + path.get_file(), "X-Game-Version: " + preload("res://scripts/build_version.gd").version()])
+	var started := uploader.request_raw(report_endpoint, headers, HTTPClient.METHOD_POST, bytes)
+	if started != OK: return started
+	var reply: Array = await uploader.request_completed
+	if int(reply[0]) == HTTPRequest.RESULT_TIMEOUT: return ERR_TIMEOUT
+	if int(reply[0]) != HTTPRequest.RESULT_SUCCESS: return FAILED
+	return OK if int(reply[1]) >= 200 and int(reply[1]) < 300 else FAILED
+
 func _build_overlay() -> void:
 	overlay = CanvasLayer.new()
 	overlay.name = "BugReportOverlay"
@@ -435,10 +481,22 @@ func _input(event: InputEvent) -> void:
 	if overlay != null and overlay.visible:
 		_hide_overlay()
 		return
+	open_report()
+
+# The F8 dialog, also opened by the Report a Bug buttons on the title screen and in Settings.
+func open_report() -> void:
+	if overlay != null and overlay.visible: return
 	var texture := get_viewport().get_texture()
 	pending_screenshot = texture.get_image() if texture != null else null
 	_capture_diagnostics()
-	_show_overlay("REPORT A BUG", "Saves the game log, your last station save, a separate live diagnostic snapshot and a screenshot into a report you can send to Alex at Shadewater Labs (brinshadewater@gmail.com).", true, [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]])
+	var body := "Saves the game log, your last station save, a separate live diagnostic snapshot and a screenshot into a report."
+	var buttons := [["Save report", _on_save_pressed], ["Cancel", _hide_overlay]]
+	if report_endpoint.is_empty():
+		body += " You can send it to Alex at Shadewater Labs (brinshadewater@gmail.com)."
+	else:
+		body += " \"Save and send\" also uploads that report to Alex at Shadewater Labs. Only press it if you are happy to share your save and screenshot; \"Save report\" keeps everything on this computer."
+		buttons.insert(1, ["Save and send", _on_send_pressed])
+	_show_overlay("REPORT A BUG", body, true, buttons)
 	if note_field != null:
 		note_field.grab_focus()
 

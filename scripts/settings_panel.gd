@@ -236,6 +236,18 @@ func _ready() -> void:
 	saved_note.add_theme_color_override("font_color", Color("8aa6af"))
 	saved_note.custom_minimum_size.x = 250
 	sidebar.add_child(saved_note)
+	var report := Button.new()
+	report.name = "ReportBugButton"
+	report.text = "  REPORT A BUG   [F8]"
+	report.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	report.custom_minimum_size = Vector2(260, 44)
+	report.add_theme_font_size_override("font_size", 16)
+	_style_tab(report, false)
+	report.tooltip_text = "Save a bug report with your log, screenshot and last save"
+	report.pressed.connect(func() -> void:
+		var reporter := get_node_or_null("/root/BugReport")
+		if reporter != null: reporter.open_report())
+	sidebar.add_child(report)
 	feedback = _label("", 14)
 	feedback.add_theme_color_override("font_color", ACCENT)
 	feedback.custom_minimum_size.x = 250
