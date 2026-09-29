@@ -2252,6 +2252,9 @@ func _draw_layered_doors(behind_crew: bool) -> void:
 			var outside_frame := _drone_door_frame(main,pos,neighbor)
 			if not connected and (main.occupied.has(neighbor) or side not in main.get_room_doors(room) or outside_frame==0): continue
 			var neighbor_room: Dictionary = main.occupied.get(neighbor,room)
+			# Large-room views already paint the shared department door and its live leaves.
+			# The layered pass would otherwise submit a second door on this same seam.
+			if LARGE_ROOM_VIEWS.has(str(room.get("id", ""))) or LARGE_ROOM_VIEWS.has(str(neighbor_room.get("id", ""))): continue
 			if not _uses_layered_art(room) and not _uses_layered_art(neighbor_room): continue
 			var frame := _door_frame_for_pair(main,pos,neighbor) if connected else outside_frame
 			var edge_center := _door_edge_center(pos,side,cell_size)
