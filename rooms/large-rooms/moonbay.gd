@@ -1,7 +1,12 @@
 extends RefCounted
 
 const Common = preload("res://rooms/large-rooms/common.gd")
-const WALL_STYLE := {"material":"data_archive", "art":"res://rooms/large-rooms/art/launch_wall_bank.png", "side":"south", "axis":-192.0, "shade":0.35}
+const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd")
+const DoorFinish = preload("res://rooms/doors/door_finish.gd")
+const PaintedDoor = preload("res://rooms/doors/painted_door.gd")
+const WALL_STYLE := {"material":"data_archive", "art":"res://rooms/large-rooms/art/launch_wall_bank.png", "axis":0.0, "shade":0.35}
+const BAY_DOOR_WIDTH := 192.0
+const SUB_BOUNDS := Rect2(-210,-80,420,160)
 
 static func fixed_bounds() -> Array[Rect2]:
 	return [Rect2(151, 267, 466, 234)]
@@ -25,7 +30,7 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 		for x in range(-340, 341, 68): canvas.draw_rect(Rect2(x - 4, y - 12, 8, 24), Color("#a2b7b9"))
 	Common.panel(canvas, Rect2(-233, -117, 466, 234), Color("#1b303b"), Color("#537887"))
 	if state.sub_present:
-		Common.sprite(canvas, "res://rooms/large-rooms/art/mini_sub.png", Rect2(-233, -117, 466, 234), Color("#b0a8a5") if state.damage>0 else Color.WHITE)
+		Common.sprite(canvas, "res://rooms/large-rooms/art/mini_sub.png", SUB_BOUNDS, Color("#b0a8a5") if state.damage>0 else Color.WHITE)
 	else:
 		for x in [-178,-70,70,178]: canvas.draw_rect(Rect2(x-12,-86,24,172),Color("#547481"))
 		for x in [-142,142]: canvas.draw_circle(Vector2(x,0),23,Color("#0c2533"))
@@ -33,10 +38,47 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 		var water_height: float = 214.0*state.chamber_water
 		canvas.draw_rect(Rect2(-226,108-water_height,452,water_height),Color(0.09,0.54,0.72,0.48))
 		canvas.draw_line(Vector2(-226,108-water_height),Vector2(226,108-water_height),Color("#72daf0"),4)
-	# Independent interlocks make the dry station entrance and ocean gate readable.
-	canvas.draw_rect(Rect2(238,-77,20,154),Color("#132a32") if state.station_open else Color("#c09258"))
-	canvas.draw_rect(Rect2(-258,-77,20,154),Color("#1c809b") if state.ocean_open else Color("#c09258"))
+	# A full pressure enclosure keeps the dry hangar distinct from the floodable launch path.
+	_draw_bay_enclosure(canvas, state)
 	for x in [-247,247]: canvas.draw_circle(Vector2(x,96),7,Color("#52d8df") if (x>0 and state.station_open) or (x<0 and state.ocean_open) else Color("#d7a25c"))
 	canvas.draw_line(Vector2(-203, 0), Vector2(-340, 0), cyan.darkened(0.4), 6)
 	for x in [-280, -150, 150, 280]: canvas.draw_circle(Vector2(x, 172), 9, cyan.darkened(0.3))
 	Common.finish(canvas)
+
+static func _draw_bay_enclosure(canvas: CanvasItem, state: Dictionary) -> void:
+	var top := Rect2(-258,-138,516,24)
+	var bottom := Rect2(-258,114,516,24)
+	WallMaterial.wall(canvas, top, true, "engineering")
+	WallMaterial.wall(canvas, bottom, true, "engineering")
+	for x in [-258.0,234.0]:
+		for y in [-138.0,96.0]:
+			WallMaterial.wall(canvas, Rect2(x,y,24,42), false, "engineering")
+	for side in [-1,1]:
+		var x: float = -258.0 if side < 0 else 234.0
+		var open: bool = bool(state.ocean_open) if side < 0 else bool(state.station_open)
+		_draw_bay_door(canvas, x, open)
+
+static func _draw_bay_door(canvas: CanvasItem, x: float, open: bool) -> void:
+	var half := BAY_DOOR_WIDTH * 0.5
+	canvas.draw_rect(Rect2(x - 4,-half - 4,32,BAY_DOOR_WIDTH + 8),Color("#0b1820"))
+	canvas.draw_rect(Rect2(x + 1,-half,22,BAY_DOOR_WIDTH),Color("#344b55"))
+	for y in [-half - 10,half - 4]:
+		canvas.draw_rect(Rect2(x - 5,y,34,14),Color("#8a989a"))
+		canvas.draw_rect(Rect2(x - 2,y + 3,28,5),Color("#b0b9af"))
+	for upper in [true,false]:
+		var length := 16.0 if open else half
+		var y := -half if upper else half - length
+		var skin = PaintedDoor.for_variant("data_archive")
+		var source := Rect2(213 if upper else 1091,280,865,162)
+		if PaintedDoor.catalog.styles[skin.family].has("low_y"):
+			source.position.y = PaintedDoor.catalog.styles[skin.family].low_y
+		if open:
+			source.size.x *= length / half
+			if not upper: source.position.x += 865.0 - source.size.x
+		DoorFinish.region(canvas,skin.texture("low"),Rect2(x,y,24,length),source,Color.WHITE,true)
+		if not open:
+			canvas.draw_rect(Rect2(x + 10,y + 8,4,length - 16),Color("#49677a"))
+			for rib in range(24,roundi(length),30):
+				canvas.draw_rect(Rect2(x + 2,y + float(rib),20,3),Color("#8c9b9d"))
+	if not open:
+		canvas.draw_rect(Rect2(x - 3,-3,30,6),Color("#b4aaa0"))

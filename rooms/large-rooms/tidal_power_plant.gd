@@ -1,7 +1,7 @@
 extends RefCounted
 
 const Common = preload("res://rooms/large-rooms/common.gd")
-const WALL_STYLE := {"material":"tidal_condenser", "art":"res://rooms/large-rooms/art/tidal_wall_bank.png", "side":"north", "axis":230.0, "shade":0.3}
+const WALL_STYLE := {"material":"tidal_condenser", "art":"res://rooms/large-rooms/art/tidal_wall_bank.png", "axis":230.0, "shade":0.3}
 
 static func fixed_bounds() -> Array[Rect2]:
 	return [Rect2(180, 180, 408, 408)]

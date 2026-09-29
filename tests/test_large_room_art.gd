@@ -19,6 +19,7 @@ const ART := ["res://rooms/large-rooms/art/grow_beds.png",
 const WALL_ART := ["res://rooms/large-rooms/art/grow_wall_bank.png",
 	"res://rooms/large-rooms/art/cargo_wall_bank.png", "res://rooms/large-rooms/art/launch_wall_bank.png",
 	"res://rooms/large-rooms/art/tidal_wall_bank.png"]
+const Common = preload("res://rooms/large-rooms/common.gd")
 
 var failures := 0
 
@@ -51,18 +52,22 @@ func _init() -> void:
 		check(wall_bank.load_png_from_buffer(FileAccess.get_file_as_bytes(WALL_ART[i])) == OK, id + " painted riser bank decodes without an import")
 		if wall_bank.get_width()>0:
 			check(wall_bank.get_pixel(0,0).a < 0.1 and wall_bank.get_pixel(int(wall_bank.get_width()/2),int(wall_bank.get_height()/2)).a > 0.5, id + " riser bank has true exterior alpha and visible interior")
+			var raster: Vector2i = Common.wall_bank_raster_size(wall_bank.get_size())
+			check(raster.x <= 1020 and raster.y <= 310 and raster.x >= 400, id + " wall bank normalizes to riser-scale pixel density")
 		if ResourceLoader.exists(VIEWS[i]):
 			var view = load(VIEWS[i])
 			var style: Dictionary = view.WALL_STYLE
 			check(preload("res://rooms/whole-room/riser_catalog.gd").catalog().has(str(style.material)), id + " uses a registered painted riser face")
 			check(str(style.art) == WALL_ART[i], id + " mounts its own riser bank")
-			for port in room.ports:
-				if str(port.side) != str(style.side): continue
-				var axis: float = float(-192 + port.cell.x*384) if style.side in ["north","south"] else float(-192 + port.cell.y*384)
-				if style.side=="south" or style.side=="west": axis=-axis
-				check(absf(float(style.axis)-axis)>=148.0, id + " riser bank stays clear of its door")
-			if room.get("ocean_side","")==style.side:
-				check(absf(float(style.axis))>=198.0, id + " riser bank stays clear of its ocean face")
+			for rotation in range(4):
+				var axis: float = Common.north_art_axis(room, style, rotation)
+				check(absf(axis) <= 230.0, id + " riser bank remains on the north wall in rotation " + str(rotation))
+				for port in room.ports:
+					if Common.rotated_side(str(port.side), rotation) != "north": continue
+					var entry: float = Common.port_center(port).rotated(float(rotation)*PI*0.5).x
+					check(absf(axis-entry) >= 148.0, id + " north wall art clears its door in rotation " + str(rotation))
+				if room.has("ocean_side") and Common.rotated_side(str(room.ocean_side), rotation) == "north":
+					check(absf(axis) >= 198.0, id + " north wall art clears its ocean face in rotation " + str(rotation))
 			var bounds: Array = view.fixed_bounds()
 			check(not bounds.is_empty() and bounds[0].size.x >= 150 and bounds[0].size.y >= 100, id + " has a very large fixed prop")
 			for port in room.ports:
@@ -83,6 +88,9 @@ func _init() -> void:
 	check(plant.get("production", {}).get("power", 0) == 14 and plant.get("ocean_side", "") == "north", "Tidal plant has major ocean-dependent output")
 	var moonbay: Dictionary = Rooms.get_room("moonbay")
 	check(moonbay.get("ocean_side", "") == "west" and moonbay.get("consumption", {}).get("power", 0) > 0, "Moonbay has a west launch wall and power need")
+	var bay = preload("res://rooms/large-rooms/moonbay.gd")
+	check(bay.BAY_DOOR_WIDTH > 92.0, "Moonbay enclosure has a larger sub-bay door than a station port")
+	check(bay.SUB_BOUNDS.size.y + 20.0 <= bay.BAY_DOOR_WIDTH, "The mini-sub clears the launch gate with room on both sides")
 	var grid = Grid.new()
 	moonbay.pos = Vector2i(10,10)
 	var base: Dictionary = grid.bill_room_geometry(moonbay, [], moonbay.pos)
