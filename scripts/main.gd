@@ -2373,7 +2373,10 @@ func get_placement_problem(id: String, cell: Vector2i) -> String:
 	for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
 		var neighbor_pos: Vector2i = cell + offset
 		if occupied.has(neighbor_pos):
-			if _doors_connect(id, selected_rotation, offset, occupied[neighbor_pos]):
+			var candidate: Dictionary = room.duplicate(true)
+			candidate["pos"] = cell
+			candidate["rotation"] = selected_rotation
+			if _ports_connect(candidate, occupied[neighbor_pos], cell, neighbor_pos):
 				return ""
 			mismatch = "Door does not match %s. Rotate with %s." % [occupied[neighbor_pos]["display_name"], Preferences.key_name("Rotate blueprint")]
 	if not mismatch.is_empty():
@@ -2388,6 +2391,7 @@ func get_footprint_placement_problem(id: String, anchor: Vector2i, rotation: int
 	for covered in RoomFootprintScript.cells(anchor, size):
 		if covered.x < 0 or covered.y < 0 or covered.x >= GRID_SIZE or covered.y >= GRID_SIZE:
 			return "outside station grid."
+		if _ocean_face_reserved(covered): return "ocean-facing launch and intake walls must remain open."
 		if preload("res://scripts/crew_expedition.gd").reserved(self, covered):
 			return "crew expedition return route reserved. Recall the crew before building here."
 		if drone_fleet.reserved(covered): return "construction already scheduled here."
@@ -2410,6 +2414,12 @@ func _place_room(id: String, cell: Vector2i, free := false, construction_complet
 	var blueprint: Dictionary = RoomDatabaseScript.get_room(id)
 	var build_rotation: int=int(blueprint.get("fixed_rotation",selected_rotation))
 	var size: Vector2i = blueprint.get("size", Vector2i.ONE)
+	if construction_complete:
+		var completion_problem := get_footprint_placement_problem(id,cell,build_rotation)
+		if not completion_problem.is_empty():
+			for resource_id in blueprint.get("cost",{}): resources[resource_id] = int(resources.get(resource_id,0))+int(blueprint.cost[resource_id])
+			_log("Construction cancelled at %s: %s Materials returned." % [cell,completion_problem],false)
+			return
 	if size != Vector2i.ONE and (free or construction_complete):
 		for covered in RoomFootprintScript.cells(cell, size):
 			if covered.x < 0 or covered.y < 0 or covered.x >= GRID_SIZE or covered.y >= GRID_SIZE or occupied.has(covered) or drone_fleet.Sites.blocks(drone_fleet.sites, covered) or WreckField.blocks(wrecks, covered):
@@ -2694,14 +2704,39 @@ func _ocean_face_problem(room: Dictionary) -> String:
 	var sides := ["north", "east", "south", "west"]
 	var side_index := sides.find(str(room.get("ocean_side", "")))
 	if side_index < 0: return "NO OCEAN FACE"
-	var side: String = sides[(side_index + posmod(int(room.get("rotation", 0)), 4)) % 4]
-	for exterior in RoomFootprintScript.exterior_cells(room, side):
+	for exterior in _ocean_exterior_cells(room):
 		if exterior.x < 0 or exterior.y < 0 or exterior.x >= GRID_SIZE or exterior.y >= GRID_SIZE: return "MAP EDGE"
 		if occupied.has(exterior): return "ROOM"
 		if WreckField.blocks(wrecks, exterior): return "ROCK" if wrecks[exterior].get("kind", "") == "basalt" else "WRECK"
 		if drone_fleet.Sites.blocks(drone_fleet.sites, exterior): return "RESOURCE DEPOSIT"
 		if drone_fleet.reserved(exterior): return "QUEUED CONSTRUCTION"
 	return ""
+
+func _ocean_exterior_cells(room: Dictionary) -> Array[Vector2i]:
+	var sides := ["north", "east", "south", "west"]
+	var side_index := sides.find(str(room.get("ocean_side", "")))
+	if side_index < 0: return []
+	var side: String = sides[(side_index + posmod(int(room.get("rotation",0)),4)) % 4]
+	return RoomFootprintScript.exterior_cells(room,side)
+
+func _ocean_face_reserved(cell: Vector2i) -> bool:
+	for room in placed_rooms:
+		if room.has("ocean_side") and _ocean_exterior_cells(room).has(cell): return true
+	for order in drone_fleet.orders:
+		var blueprint: Dictionary = RoomDatabaseScript.get_room(str(order.get("id","")))
+		if not blueprint.has("ocean_side"): continue
+		blueprint["pos"] = order.pos
+		blueprint["rotation"] = order.rotation
+		if _ocean_exterior_cells(blueprint).has(cell): return true
+	for drone in drone_fleet.drones.values():
+		var order: Dictionary = drone.get("order",{})
+		if order.is_empty(): continue
+		var blueprint: Dictionary = RoomDatabaseScript.get_room(str(order.get("id","")))
+		if not blueprint.has("ocean_side"): continue
+		blueprint["pos"] = order.pos
+		blueprint["rotation"] = order.rotation
+		if _ocean_exterior_cells(blueprint).has(cell): return true
+	return false
 
 func _apply_room_economy() -> Dictionary:
 	var result := _simulate_room_economy()

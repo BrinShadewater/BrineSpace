@@ -79,6 +79,23 @@ func run() -> void:
 	check(not game.occupied.has(Vector2i(20,21)), "Second press scraps the room")
 	game.selected_room_cell=core;game._refresh_inspector()
 	check(game.room_scrap_button.visible and game.room_scrap_button.disabled, "The core shows SCRAP disabled, with the reason as its tooltip")
+	var large_home := Vector2i(19,18)
+	for part in preload("res://scripts/room_footprint.gd").cells(large_home,Vector2i(2,2)):
+		game.wrecks.erase(part)
+		game.drone_fleet.sites.erase(part)
+	game._place_room("storage_depot",large_home,true)
+	check(game.occupied.has(large_home+Vector2i.ONE),"Scrap fixture builds all four Depot cells")
+	actor.active=true
+	actor.foot=(Vector2(large_home+Vector2i.ONE)+Vector2.ONE*0.5)*384.0
+	check(Scrap.blocker(game,large_home)=="Crew are inside.","Crew in any Depot cell blocks scrapping")
+	actor.foot=saved_foot
+	actor.primary_room=large_home+Vector2i.ONE
+	actor.goal="curiosity"
+	actor.goal_cell=large_home+Vector2i(1,0)
+	var large_refund: int=Scrap.scrap(game,large_home+Vector2i.ONE)
+	check(large_refund==9 and not game.placed_rooms.any(func(r): return r.id=="storage_depot"),"Depot can be scrapped from any covered cell")
+	check(preload("res://scripts/room_footprint.gd").cells(large_home,Vector2i(2,2)).all(func(part): return not game.occupied.has(part)),"Scrapping clears every covered Depot cell")
+	check(actor.primary_room==Vector2i(-1,-1) and actor.goal.is_empty(),"Crew assignments in any covered cell are released")
 	actor.active=saved_active
 	game.free()
 	print("ROOM SCRAP failures=", failures)

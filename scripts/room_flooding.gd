@@ -180,6 +180,7 @@ static func kill(game,actor,id: String,cause: String) -> void:
 		game._log(message,true)
 		if is_instance_valid(game.get("crew_comms")): game.crew_comms.transmit("brine",message,"",true)
 		return
+	preload("res://scripts/moonbay_missions.gd").on_crew_death(game,actor)
 	actor.die()
 	game.crew_count = maxi(0,game.crew_count-1)
 	for member in game.recovered_crew:

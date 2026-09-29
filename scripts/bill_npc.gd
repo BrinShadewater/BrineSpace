@@ -279,7 +279,9 @@ static func valid_snapshot(data: Variant, breathes := true, transition_limit := 
 	if not preload("res://scripts/crew_expedition.gd").valid(data.get("expedition",{})): return false
 	var moonbay: Variant = data.get("moonbay_assignment",{})
 	if not moonbay is Dictionary: return false
-	if not moonbay.is_empty() and (not moonbay.get("home") is Vector2i or not moonbay.get("onboard") is bool or not moonbay.get("arrival",data.get("foot")) is Vector2 or not data.get("active",false) or data.get("dead",false) or data.get("goal","")!="moonbay" or not data.get("expedition",{}).is_empty()): return false
+	if not moonbay.is_empty():
+		if not moonbay.get("home") is Vector2i or not moonbay.get("onboard") is bool or not moonbay.get("arrival",data.get("foot")) is Vector2 or not data.get("active",false) or not data.get("expedition",{}).is_empty(): return false
+		if data.get("goal","") != ("" if data.get("dead",false) else "moonbay"): return false
 	if not data.get("expedition",{}).is_empty() and ((breathes and not data.get("helmet_equipped",false)) or not data.get("active",false)): return false
 	for key in ["active", "foot", "state", "direction", "activity", "goal", "goal_cell", "path", "timer", "stage", "needs", "visits", "decision_rng"]:
 		if not data.has(key): return false

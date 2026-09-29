@@ -12,16 +12,17 @@ Hydroponics Farm is green, Storage Depot and Tidal Power Plant yellow, Moonbay c
 
 ## Current state
 
-Branch `codex/large-rooms` in the managed `large-rooms` worktree. Foundation commits `091da8b9` through `4b5da501` add footprint/ports, paid atomic placement, exact connections and save, fixed room art, four card PNGs tracked through Git LFS, and rare draft scheduling. Moonbay commits `2dd782e5`, `f52add3f`, and `8309dead` add the mission model, distant sites, crew boarding and reservation, inspector controls, room/exterior visuals, and checkpoint validation. Native captures are under `output/large-room-review/` and `output/moonbay-review/`. The repeatable paid walkthrough is `tools/review_moonbay_paid.gd`.
+Branch `codex/large-rooms` in the managed `large-rooms` worktree. Foundation commits `091da8b9` through `4b5da501` add footprint/ports, paid atomic placement, exact connections and save, fixed room art, four card PNGs tracked through Git LFS, and rare draft scheduling. Moonbay commits `2dd782e5`, `f52add3f`, and `8309dead` add the mission model, distant sites, crew boarding and reservation, inspector controls, room/exterior visuals, and checkpoint validation. Final review fixes cover exact small-to-large door checks, reserved ocean faces and construction rechecks, full-footprint scrapping, pilot loss, and older crew-free checkpoints. Native captures are under `output/large-room-review/` and `output/moonbay-review/`. The repeatable paid walkthrough is `tools/review_moonbay_paid.gd`.
 
 ## Verification
 
 - Moonbay-focused model, assignment, and disk save/restore tests: 3/3 pass under scratch `APPDATA`. Each mission phase round-trips with its hatch, chamber water and crew reservation; old checkpoints default to a dry, idle hangar.
 - Relevant large-room, crew construction/work, diver, airlock, site discovery, fire, flooding, reliability, and Save/Continue tests: 15/15 pass under scratch `APPDATA`.
 - Native room/card captures cover all four rooms and rotations. `tools/review_moonbay.gd` captures eight launch-chamber states. `tools/review_moonbay_paid.gd` passes paid construction, Survey, Recover, Deep Access, hazardous early return, 4 Metal repair, and at-sea disk Save/Continue; six paid screenshots are in `output/moonbay-review/`.
+- Final review checks: placement, scrap, missions and Moonbay save 4/4 pass; crew construction, paid build, Moonbay save and general Save/Continue 4/4 pass; legacy crew-death/old-checkpoint and Moonbay save 2/2 pass after the compatibility fix. The native paid walkthrough was rerun after the placement changes and passed with zero failures.
 - The real progress save, checkpoint, profile and Studio files matched pre/post hashes. The active diagnostic `last_session.json` changed continuously while a separate Godot process was running; we did not restore or alter it. An earlier wrapper invocation rotated five owner `logs` files, already disclosed. All subsequent Godot tests and probes used scratch `APPDATA`.
 - Native runs still emit missing-resource messages for existing `brineui` and icon atlases in this isolated checkout, although the room and mission captures render. Check the import/cache state before a release build.
 
 ## Next action
 
-Review the complete branch, then have the owner play a normal long run to tune rare-card timing, large-room economy, mission duration and hazard frequency. Merge or publish only after the owner's review.
+Have the owner play a normal long run to tune rare-card timing, large-room economy, mission duration and hazard frequency. Merge or publish after the owner's review.

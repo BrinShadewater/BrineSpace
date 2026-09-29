@@ -9,7 +9,7 @@ const DURATIONS := {"approach":12.0,"seal":3.0,"flood":6.0,"launch":3.0,
 const PHASES := ["idle","approach","seal","flood","launch","outbound","work","return","drain","unload"]
 
 static func valid_rooms(rooms: Array, crew: Variant) -> bool:
-	if not crew is Dictionary: return false
+	if crew != null and not crew is Dictionary: return false
 	var active_crews := {}
 	for room in rooms:
 		if not room is Dictionary: return false
@@ -41,6 +41,8 @@ static func valid_rooms(rooms: Array, crew: Variant) -> bool:
 		if state.target.x<0 or state.target.y<0 or state.target.x>=40 or state.target.y>=40: return false
 		if float(state.progress)>_duration(room,state)+0.001: return false
 		active_crews[state.crew] = room.pos
+	# Pre-crew checkpoints can only contain idle Moonbays.
+	if crew == null: return active_crews.is_empty()
 	for id in Architects.IDS:
 		var snapshot: Variant = crew.get(id,{})
 		if not snapshot is Dictionary: continue
@@ -55,6 +57,30 @@ static func station_visible(game, actor) -> bool:
 	var room: Dictionary = game.occupied.get(actor.moonbay_assignment.get("home",Vector2i(-1,-1)),{})
 	if room.is_empty(): return true
 	return mission_state(room).phase in ["idle","approach","unload"]
+
+static func on_crew_death(game, actor) -> void:
+	if actor.moonbay_assignment.is_empty(): return
+	var home: Vector2i = actor.moonbay_assignment.home
+	if not game.occupied.has(home): return
+	var state := mission_state(game.occupied[home])
+	if state.phase=="idle": return
+	state.damage = 1
+	state.recall = true
+	state.cargo = {}
+	state.credited = true
+	state.last_result = "Pilot lost. Mini-sub returning under autopilot."
+	if state.phase in ["approach","seal"]:
+		state.phase = "unload"
+		state.progress = 0.0
+		state.station_open = true
+	elif state.phase=="flood":
+		state.phase = "drain"
+		state.progress = (1.0-clampf(float(state.chamber_water),0.0,1.0))*float(DURATIONS.drain)
+		state.ocean_open = false
+	elif state.phase in ["launch","outbound","work"]:
+		state.phase = "return"
+		state.progress = 0.0
+		state.ocean_open = false
 
 static func exterior_position(room: Dictionary, state: Dictionary) -> Vector2:
 	var sides := [Vector2.UP,Vector2.RIGHT,Vector2.DOWN,Vector2.LEFT]
@@ -122,6 +148,7 @@ static func _boarding_route(game, actor, room: Dictionary) -> PackedVector2Array
 
 static func dispatch(game, room: Dictionary, crew_id: String, target: Vector2i, order: String) -> String:
 	if room.get("id","") != "moonbay": return "Select a Moonbay."
+	if not game._ocean_face_problem(room).is_empty(): return "The ocean launch wall is obstructed. Clear it before dispatch."
 	if not ORDERS.has(order): return "Choose Survey, Recover, or Deep Access."
 	var state := mission_state(room)
 	if state.phase != "idle": return "The mini-sub is already assigned."
@@ -193,11 +220,13 @@ static func tick(game, delta: float) -> void:
 		if room.get("id","") != "moonbay" or game.unpowered_room_cells.has(room.pos): continue
 		var state := mission_state(room)
 		if state.phase == "idle": continue
+		var pilot = Architects.actor_for(game,str(state.crew))
+		if pilot.dead and not str(state.last_result).begins_with("Pilot lost."): on_crew_death(game,pilot)
 		if state.phase == "approach" and not Architects.actor_for(game,str(state.crew)).moonbay_assignment.get("onboard",false): continue
 		_advance(game,room,state,maxf(0.0,delta))
 
 static func advance_crew(game, actor, delta: float) -> void:
-	if actor.moonbay_assignment.is_empty(): return
+	if actor.dead or actor.moonbay_assignment.is_empty(): return
 	var home: Vector2i = actor.moonbay_assignment.home
 	if not game.occupied.has(home) or game.occupied[home].get("id","") != "moonbay":
 		actor.moonbay_assignment.clear()
@@ -268,9 +297,10 @@ static func _advance(game, room: Dictionary, state: Dictionary, delta: float) ->
 			state.phase = "idle"
 			var actor = Architects.actor_for(game,str(state.crew))
 			actor.moonbay_assignment.clear()
-			actor.goal = ""
-			actor.goal_cell = Vector2i(-1,-1)
-			actor.activity = "returned from mini-sub mission"
+			if not actor.dead:
+				actor.goal = ""
+				actor.goal_cell = Vector2i(-1,-1)
+				actor.activity = "returned from mini-sub mission"
 			state.crew = ""
 			state.order = ""
 			state.target = Vector2i(-1,-1)
@@ -297,8 +327,12 @@ static func _resolve_work(game, state: Dictionary) -> void:
 		"recover":
 			site.units -= 1
 			state.cargo = {"metal":4,"data":2} if site.kind == "salvage" else {"metal":6}
+			if site.get("hazardous",false):
+				state.cargo.metal = int(state.cargo.get("metal",0))+2
+				state.cargo.data = int(state.cargo.get("data",0))+1
 			state.last_result = "Cargo secured. Returning."
 		"deep_access":
+			site.units -= 1
 			site.deep_accessed = true
-			state.cargo = {"data":4,"rare_minerals":1}
+			state.cargo = {"data":6,"rare_minerals":2} if site.get("hazardous",false) else {"data":4,"rare_minerals":1}
 			state.last_result = "Deep site reached. Returning."

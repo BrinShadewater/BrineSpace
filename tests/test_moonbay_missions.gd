@@ -42,6 +42,9 @@ func _init() -> void:
 			break
 	check(survey_target.x>=0,"A survey target exists")
 	if survey_target.x>=0:
+		game.occupied[Vector2i(9,10)] = {"id":"corridor","display_name":"Ocean Blocker"}
+		check(not Mission.dispatch(game,room,"bill",survey_target,"survey").is_empty(),"Blocked ocean wall prevents mini-sub launch")
+		game.occupied.erase(Vector2i(9,10))
 		check(Mission.dispatch(game,room,"bill",survey_target,"survey").is_empty(),"Survey dispatches")
 		check(Mission.mission_state(room).phase=="approach","Mission starts with crew approach")
 		finish(game,room)
@@ -56,9 +59,11 @@ func _init() -> void:
 		check(game.resources.metal==credited,"Cargo is not credited twice")
 	if deep.x>=0:
 		game.drone_fleet.sites[deep].discovered = true
+		var deep_units_before: int = game.drone_fleet.sites[deep].units
 		check(Mission.dispatch(game,room,"bill",deep,"deep_access").is_empty(),"Deep access dispatches")
 		finish(game,room)
 		check(game.drone_fleet.sites[deep].get("deep_accessed",false),"Deep access records arrival")
+		check(game.drone_fleet.sites[deep].units==deep_units_before-1,"Deep access consumes a finite site load")
 	if hazard.x>=0:
 		game.drone_fleet.sites[hazard].discovered = true
 		check(Mission.dispatch(game,room,"bill",hazard,"deep_access").is_empty(),"Visible hazardous site can be assigned")
@@ -68,6 +73,11 @@ func _init() -> void:
 		check(not Mission.dispatch(game,room,"bill",deep,"deep_access").is_empty(),"Damaged sub cannot launch")
 		var metal_before_repair: int = game.resources.metal
 		check(Mission.repair(game,room).is_empty() and game.resources.metal==metal_before_repair-4,"Repair spends Metal and restores launch")
+		var rare_before: int = game.resources.rare_minerals
+		check(Mission.dispatch(game,room,"bill",hazard,"deep_access").is_empty(),"Repaired sub can revisit a hazardous site")
+		Mission.mission_state(room).hazard_roll = 1.0
+		finish(game,room)
+		check(game.resources.rare_minerals==rare_before+2,"Surviving a hazardous deep site pays the marked bonus")
 	var missing: Vector2i = Vector2i(-1,-1)
 	for cell in game.drone_fleet.sites:
 		if not game.drone_fleet.sites[cell].discovered and cell != survey_target:
@@ -78,6 +88,15 @@ func _init() -> void:
 		game.drone_fleet.sites.erase(missing)
 		finish(game,room)
 		check(Mission.mission_state(room).last_result.contains("absent") and Mission.mission_state(room).phase=="idle","Removed target returns safely")
+	if deep.x>=0 and int(game.drone_fleet.sites[deep].units)>0:
+		check(Mission.dispatch(game,room,"bill",deep,"deep_access").is_empty(),"Pilot can depart before a fatal mission")
+		Mission.mission_state(room).phase = "work"
+		Mission.on_crew_death(game,game.bill_npc)
+		game.bill_npc.die()
+		check(Mission.mission_state(room).phase=="return" and Mission.mission_state(room).damage==1,"Pilot loss orders an autopilot return")
+		check(preload("res://scripts/bill_npc.gd").valid_snapshot(game.bill_npc.snapshot()) and Mission.valid_rooms(game.placed_rooms,{"bill":game.bill_npc.snapshot()}),"Pilot loss leaves a valid in-flight checkpoint")
+		finish(game,room)
+		check(Mission.mission_state(room).phase=="idle" and game.bill_npc.moonbay_assignment.is_empty() and game.bill_npc.dead,"Autopilot returns and releases the lost pilot")
 	check(Mission.dispatch(game,room,"bill",Vector2i(0,0),"survey") != "","Missing target rejects safely")
 	game.free()
 	print("MOONBAY MISSIONS ", "PASS" if failures==0 else "FAIL", " / ", failures, " failures")

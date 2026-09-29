@@ -66,6 +66,16 @@ func run() -> void:
 		var visual: Dictionary = View.visual_state(room)
 		check(visual.sub_present==(phase not in ["launch","outbound","work","return"]) and visual.chamber_water==expected.chamber_water,"%s room visual matches saved mission" % phase)
 		check(Mission.station_visible(game,game.bill_npc)==(phase in ["approach","unload"]),"%s pilot visibility matches boarding state" % phase)
+	state.phase = "work"
+	state.chamber_water = 1.0
+	state.station_open = false
+	state.ocean_open = false
+	Mission.on_crew_death(game,game.bill_npc)
+	game.bill_npc.die()
+	var lost: Dictionary = Save.capture(game)
+	check(Save.problem(lost).is_empty(),"Pilot loss keeps an in-flight checkpoint valid: %s" % Save.problem(lost))
+	check(Save.restore(game,lost),"Autopilot return and deceased pilot restore together")
+	check(Mission.mission_state(game.occupied[home]).phase=="return" and game.bill_npc.dead,"Continue retains autopilot return after pilot loss")
 	var invalid: Dictionary = Save.capture(game)
 	invalid.state.placed_rooms[-1].moonbay_mission.station_open = true
 	invalid.state.placed_rooms[-1].moonbay_mission.ocean_open = true
