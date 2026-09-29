@@ -680,7 +680,7 @@ func _populate_progression() -> void:
 		2: _crew_shop()
 		3: _records()
 		_:
-			grid.add_child(_label("Some knowledge survives the reset. Some of it should not.\nEach loop banks Archived Data from its Data and Resonance. Spend it on upgrades that carry into every loop, blueprints for your draft deck, and crew and companions.", 18))
+			grid.add_child(_label("Some knowledge survives the reset. Some of it should not. Spend Archived Data on upgrades that carry into every loop, blueprints for your draft deck, and crew and companions.", 16))
 			grid.add_child(_research_tree())
 
 func _shop_grid(name: String) -> GridContainer:
@@ -798,7 +798,7 @@ func _research_tree() -> Control:
 	box.name = "ResearchTree"
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 10)
-	var title := _label("BRINE MEMORY CORE", 22)
+	var title := _label("BRINE MEMORY CORE", 18)
 	title.add_theme_color_override("font_color", Color("9ff3df"))
 	box.add_child(title)
 	var row := HBoxContainer.new()
@@ -825,7 +825,7 @@ func _research_tree() -> Control:
 	var footer := HBoxContainer.new()
 	footer.add_theme_constant_override("separation", 18)
 	box.add_child(footer)
-	var note := _label("Select a node to see it. Each department's nodes open in order, ending in a keystone. Start-of-loop upgrades apply from your next loop.", 15)
+	var note := _label("Select a node to see it. Each loop banks Archived Data from its Data and Resonance. Each department's nodes open in order, ending in a keystone, and start-of-loop upgrades apply from your next loop.", 15)
 	note.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	footer.add_child(note)
 	var refund := Button.new()

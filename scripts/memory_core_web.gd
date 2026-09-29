@@ -33,7 +33,7 @@ var pulses: Array = []
 var clock := 0.0
 
 func _ready() -> void:
-	custom_minimum_size = Vector2(700, 700)
+	custom_minimum_size = Vector2(660, 660)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	for branch in Research.BRANCHES:
 		for id in Research.perks_in(branch.id):
