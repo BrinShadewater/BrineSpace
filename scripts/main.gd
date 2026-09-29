@@ -442,6 +442,7 @@ func _process(delta: float) -> void:
 		visual_time_seconds += delta * time_speeds[time_speed_index]
 		unscaled_time_seconds += delta
 		preload("res://scripts/airlock_cycle.gd").advance(self,delta * time_speeds[time_speed_index])
+		preload("res://scripts/moonbay_missions.gd").tick(self,delta * time_speeds[time_speed_index])
 		frame_timing_usec.airlocks = Time.get_ticks_usec() - stamp
 		stamp = Time.get_ticks_usec()
 		_update_test_walker(delta * time_speeds[time_speed_index])

@@ -3,6 +3,12 @@ const ORDER := ["veld","branforth","marsh","bill"]
 const Architects = preload("res://scripts/architects.gd")
 const Generator = preload("res://scripts/site_generator.gd")
 
+static func reveal_moonbay_target(game, cell: Vector2i) -> bool:
+	if not game.drone_fleet.sites.has(cell): return false
+	game.drone_fleet.sites[cell]["discovered"] = true
+	game.surveyed_water[cell] = true
+	return true
+
 static func reveal(game) -> Array:
 	var revealed: Array=[]
 	if game.site_layout.is_empty(): return revealed

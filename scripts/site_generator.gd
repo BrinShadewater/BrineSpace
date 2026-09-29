@@ -106,6 +106,13 @@ static func candidate(seed_value: int, attempt: int) -> Dictionary:
 		var cell := Vector2i(rng.randi_range(6,34),rng.randi_range(6,34))
 		if reserved.has(cell) or wrecks.has(cell) or sites.has(cell): continue
 		sites[cell]=preload("res://scripts/harvest_sites.gd").make_site("mining" if sites.size()%2==0 else "salvage")
+	# The sub can reach these two distant targets. One is visibly hazardous after survey.
+	for far_site in [{"cell":Vector2i(34,34),"hazardous":false}, {"cell":Vector2i(34,5),"hazardous":true}]:
+		var cell: Vector2i = far_site.cell
+		wrecks.erase(cell)
+		sites[cell] = preload("res://scripts/harvest_sites.gd").make_site("salvage",3)
+		sites[cell]["moonbay_deep"] = true
+		sites[cell]["hazardous"] = far_site.hazardous
 	var scenery: Array = []
 	var rock_anchors: Array=[]
 	var debris_anchors: Array=[]
