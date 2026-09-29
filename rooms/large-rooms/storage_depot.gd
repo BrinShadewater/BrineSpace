@@ -15,18 +15,7 @@ static func fixed_bounds() -> Array[Rect2]:
 	return result
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
-	var yellow := Color("#a49b7a")
-	Common.begin(canvas, room, rect, Color("#30383a"), yellow, WALL_STYLE, "res://assets/department-floors-v2/storage-load-deck.png", 0.43)
-	# Recessed load-bay corner marks frame the gantry without painting over the aisles.
-	for x in [-248.0, 248.0]:
-		for y in [-248.0, 248.0]:
-			var toward: float = 1.0 if x < 0.0 else -1.0
-			var inward: float = 1.0 if y < 0.0 else -1.0
-			canvas.draw_line(Vector2(x, y), Vector2(x + toward * 34.0, y), Color("#8a805e", 0.55), 4)
-			canvas.draw_line(Vector2(x, y), Vector2(x, y + inward * 34.0), Color("#8a805e", 0.55), 4)
+	Common.begin(canvas, room, rect, Color("#30383a"), WALL_STYLE, "res://assets/department-floors-v2/storage-load-deck.png", 0.43)
 	Common.draw_features(canvas, FEATURES)
 	Common.sprite(canvas, "res://rooms/large-rooms/art/cargo_gantry.png", Rect2(-204, -204, 408, 408))
-	for x in [-284, 284]:
-		for y in [-278, 278]:
-			canvas.draw_rect(Rect2(x - 18, y - 13, 36, 26), Color("#48555b"))
 	Common.finish(canvas)

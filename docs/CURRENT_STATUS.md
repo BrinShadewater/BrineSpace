@@ -2,6 +2,8 @@
 
 ## Large rooms design — September 28, 2026
 
+September 29 floor-mark cleanup: the solid-color dots, bars, corner brackets, and loose blocks in all four large rooms were decorative code-drawn accents, not reserved prop slots or gameplay indicators. They have been removed. Existing department floor textures, fixed equipment, painted bay rails, structural hull, and actual mission water remain. Four selected cards were rebaked; all 16 Walls-on and 16 Walls-off rotations, native station views and Moonbay launch were reviewed. Art and Moonbay mission tests pass 2/2 under scratch `APPDATA`; real save-folder fingerprints match before and after.
+
 September 29 visual-bible audit: all eight new painted source assets and the four assembled rooms were checked at source, card, rotation and native station scale. Pixel density, focal scale and perspective are sound at current display sizes. The [focused audit](LARGE_ROOM_VISUAL_AUDIT_2026-09-29.md) records three visible material/color corrections: Tidal's flat ocean-face block, Moonbay's schematic bay rails/trim, and Hydroponics's broad green deck wash. No art changed in that review; owner visual acceptance remains open.
 
 September 29 visual corrections: Tidal now has a painted slatted ocean intake instead of the blue block, Moonbay's bay rails and gate trim use painted hull material, and Hydroponics has a neutral gray-green deck. The new intake is normalized to the wall-art pixel density and fitted separately to north riser and low-wall views. Three selected cards were rebaked; 16 Walls-on and 16 Walls-off rotations, four native station views, and Moonbay mission states were reviewed. Five focused tests passed, followed by a targeted art pass after the final intake crop. Owner visual acceptance remains open.

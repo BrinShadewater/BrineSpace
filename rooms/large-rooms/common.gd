@@ -52,7 +52,7 @@ static func feature_bounds(features: Array) -> Array[Rect2]:
 		result.append(Rect2(bounds.position + Vector2.ONE * HALF, bounds.size))
 	return result
 
-static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, accent: Color, wall_style: Dictionary, floor_art: String, floor_opacity: float) -> void:
+static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, wall_style: Dictionary, floor_art: String, floor_opacity: float) -> void:
 	var rotation: int = posmod(int(room.get("rotation", 0)), 4)
 	var scale := Vector2.ONE * (rect.size.x / FLOOR_SIZE)
 	canvas.draw_set_transform(rect.get_center(), 0.0, scale)
@@ -71,9 +71,6 @@ static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color
 		for row in range(4):
 			for column in range(4):
 				canvas.draw_texture_rect(art_textures[floor_art], Rect2(-370 + column * 185, -370 + row * 185, 185, 185), false, Color(1, 1, 1, floor_opacity))
-	for p in [Vector2(-334,-334),Vector2(334,-334),Vector2(-334,334),Vector2(334,334)]:
-		canvas.draw_circle(p, 7, accent.darkened(0.6))
-		canvas.draw_circle(p, 3, accent)
 	var raised: bool = bool(room.get("raised_walls", true))
 	_draw_perimeter(canvas, room, wall_style, raised, rotation)
 	var port_open: Array = room.get("port_open", [])
@@ -85,7 +82,7 @@ static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color
 		var open_amount: float = float(port_open[port_index]) if port_index < port_open.size() else 0.0
 		_draw_station_port(canvas, center, facing, floor_color, raised and facing == "north", str(DOOR_STYLES.get(str(room.get("id", "")), "default")), open_amount)
 	if room.has("ocean_side"):
-		_draw_ocean_face(canvas, rotated_side(str(room.ocean_side), rotation), accent, bool(room.get("moonbay_mission",{}).get("ocean_open",false)), raised, str(room.get("id", "")) == "moonbay")
+		_draw_ocean_face(canvas, rotated_side(str(room.ocean_side), rotation), bool(room.get("moonbay_mission",{}).get("ocean_open",false)), raised, str(room.get("id", "")) == "moonbay")
 	canvas.draw_set_transform(rect.get_center(), float(rotation) * PI * 0.5, scale)
 
 static func rotated_side(side: String, rotation: int) -> String:
@@ -177,7 +174,7 @@ static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String
 	else:
 		for x in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(x,-13),Vector2(12,26)),"engineering")
 
-static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, open: bool, raised: bool, bay_gate: bool) -> void:
+static func _draw_ocean_face(canvas: CanvasItem, side: String, open: bool, raised: bool, bay_gate: bool) -> void:
 	var center := Vector2.ZERO
 	if side == "north": center.y = -370
 	elif side == "south": center.y = 370

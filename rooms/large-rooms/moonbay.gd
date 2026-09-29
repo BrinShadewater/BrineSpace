@@ -28,9 +28,8 @@ static func visual_state(room: Dictionary) -> Dictionary:
 		"damage":int(mission.get("damage",0))}
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
-	var cyan := Color("#78afb9")
 	var state := visual_state(room)
-	Common.begin(canvas, room, rect, Color("#263842"), cyan, WALL_STYLE, "res://assets/department-floors-v2/robotics-service.png", 0.40)
+	Common.begin(canvas, room, rect, Color("#263842"), WALL_STYLE, "res://assets/department-floors-v2/robotics-service.png", 0.40)
 	Common.draw_features(canvas, FEATURES)
 	# Floor rail points west to the sealed launch chamber; the hangar stays dry.
 	for y in [-89, 89]:
@@ -41,24 +40,15 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	# Fine anti-slip ribs belong to the floodable chamber, not the dry service deck.
 	for y in range(-96, 97, 18):
 		canvas.draw_line(Vector2(-220, y), Vector2(220, y), Color("#80979b", 0.16), 2)
-	# Crew boarding stand-off next to the station-side pressure gate.
-	canvas.draw_rect(Rect2(278, -76, 42, 152), Color("#5e828a", 0.25))
-	for y in [-64.0, 64.0]:
-		canvas.draw_line(Vector2(278, y), Vector2(316, y), Color("#83a7ab", 0.55), 3)
 	if state.sub_present:
 		Common.sprite(canvas, "res://rooms/large-rooms/art/mini_sub.png", SUB_BOUNDS, Color("#b0a8a5") if state.damage>0 else Color.WHITE)
-	else:
-		for x in [-178,-70,70,178]: canvas.draw_rect(Rect2(x-12,-86,24,172),Color("#547481"))
-		for x in [-142,142]: canvas.draw_circle(Vector2(x,0),23,Color("#0c2533"))
 	if state.chamber_water>0.0:
 		var water_height: float = 214.0*state.chamber_water
 		canvas.draw_rect(Rect2(-226,108-water_height,452,water_height),Color(0.16,0.42,0.50,0.42))
 		canvas.draw_line(Vector2(-226,108-water_height),Vector2(226,108-water_height),Color("#89bac2"),4)
 	# A full pressure enclosure keeps the dry hangar distinct from the floodable launch path.
 	_draw_bay_enclosure(canvas, state)
-	for x in [-247,247]: canvas.draw_circle(Vector2(x,96),7,Color("#83b9bc") if (x>0 and state.station_open) or (x<0 and state.ocean_open) else Color("#b49a72"))
 	WallMaterial.wall(canvas, Rect2(-340, -5, 137, 10), true, "engineering")
-	for x in [-280, -150, 150, 280]: canvas.draw_circle(Vector2(x, 172), 9, cyan.darkened(0.3))
 	Common.finish(canvas)
 
 static func _draw_bay_enclosure(canvas: CanvasItem, state: Dictionary) -> void:
