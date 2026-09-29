@@ -222,6 +222,7 @@ func _draw_layered_lighting() -> void:
 		draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*size,0,Vector2.ONE*size/384.0)
 		RoomLighting.draw_fixtures(draw_target,_room_light_level(room)*_power_flicker(room),room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
 		if preload("res://scripts/title_settings.gd").effects_quality > 0:
+			RoomLighting.draw_wall_shade(draw_target,0.8 if preload("res://scripts/title_settings.gd").effects_quality == 1 else 1.0)
 			RoomLighting.draw_halos(draw_target,_room_light_level(room)*_power_flicker(room),room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
 		draw_target.draw_set_transform(Vector2.ZERO)
 

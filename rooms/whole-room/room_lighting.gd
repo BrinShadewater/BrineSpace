@@ -103,6 +103,31 @@ static func halo_texture() -> ImageTexture:
 	_halo = ImageTexture.create_from_image(image)
 	return _halo
 
+# Soft dark edges along the inside of a room's walls, so the floor sits below the walls (spec stage 1).
+# Room-local coordinates (384-unit cell centred on zero); drawn into the retained layer, not every frame.
+static var _edge_shade: GradientTexture2D
+static func edge_shade_texture() -> GradientTexture2D:
+	if _edge_shade != null: return _edge_shade
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 1.0])
+	gradient.colors = PackedColorArray([Color(0.01, 0.02, 0.03, 0.30), Color(0.01, 0.02, 0.03, 0.0)])
+	_edge_shade = GradientTexture2D.new()
+	_edge_shade.gradient = gradient
+	_edge_shade.fill_from = Vector2(0, 0)
+	_edge_shade.fill_to = Vector2(1, 0)
+	_edge_shade.width = 32
+	_edge_shade.height = 4
+	return _edge_shade
+
+static func draw_wall_shade(canvas: CanvasItem, strength := 1.0) -> void:
+	var band := 26.0
+	var texture := edge_shade_texture()
+	var tint := Color(1, 1, 1, clampf(strength, 0.0, 1.0))
+	canvas.draw_texture_rect(texture, Rect2(-192, -192, band, 384), false, tint)
+	canvas.draw_texture_rect(texture, Rect2(192, -192, -band, 384), false, tint)
+	canvas.draw_texture_rect(texture, Rect2(-192, -192, 384, band), false, tint, true)
+	canvas.draw_texture_rect(texture, Rect2(-192, 192, 384, -band), false, tint, true)
+
 static func draw_halos(canvas: CanvasItem, level: float, white := false, warm := false, anchors: Array=ANCHORS) -> void:
 	var tint := Color(1.0, 0.90, 0.70) if warm or not white else Color(0.92, 0.97, 1.0)
 	for entry in anchors:
