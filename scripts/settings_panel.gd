@@ -287,7 +287,7 @@ func _ready() -> void:
 	_toggle(display, "VSync", "V-sync", "Matches frames to your display to prevent tearing.", DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED, func(enabled: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED)
 	)
-	_select(display, "EffectsQuality", "Visual effects", "Light shafts, caustics and glow in the water. Lower this on slower computers.", ["Low", "Medium", "High"], Preferences.effects_quality, func(index: int) -> void:
+	_select(display, "EffectsQuality", "Visual effects", "Light shafts, caustics, drifting particles, colour grading and bloom. High adds the full grade and bloom. Lower this on slower computers.", ["Low", "Medium", "High"], Preferences.effects_quality, func(index: int) -> void:
 		Preferences.effects_quality = index
 	)
 	var caps := [0, 30, 60, 120, 144, 240]

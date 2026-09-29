@@ -23,6 +23,10 @@ func run() -> void:
 	Preferences.effects_quality = 2
 	var high: Dictionary = Preferences.atmosphere()
 	expect(float(high.shafts) >= float(medium.shafts) and float(high.snow) > float(medium.snow), "High is stronger than Medium")
+	# screen atmosphere: snow and cool tint at Medium; the screen-read grade and bloom only at High
+	expect(float(low.drift) == 0.0 and float(low.grade) == 0.0 and float(low.bloom) == 0.0, "Low turns the screen atmosphere off")
+	expect(float(medium.drift) > 0.0 and float(medium.grade) == 0.0 and float(medium.bloom) == 0.0, "Medium has snow but no screen-read effects")
+	expect(float(high.drift) > float(medium.drift) and float(high.grade) > 0.0 and float(high.bloom) > 0.0, "High adds the grade and bloom")
 	# round trip
 	Preferences.effects_quality = 2
 	var window := root

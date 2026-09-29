@@ -590,6 +590,7 @@ func _build_ui() -> void:
 	light_map = preload("res://rooms/whole-room/room_lighting.gd").build_light_map(self)
 	grid_frame.add_child(light_map)
 	grid_frame.add_child(_make_vignette())
+	grid_frame.add_child(preload("res://scripts/screen_atmosphere.gd").new(self))
 	hazard_tint = preload("res://scripts/hazard_feedback.gd").make_tint()
 	grid_frame.add_child(hazard_tint)
 	scroll.resized.connect(_resize_grid_view)

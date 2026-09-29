@@ -41,9 +41,9 @@ static var window_focused := true
 # Strengths of the water-atmosphere effects for the current Quality (spec values are the Medium column).
 static func atmosphere() -> Dictionary:
 	match effects_quality:
-		0: return {"shafts": 0.0, "caustics": 0.0, "tint": 0.0, "snow": 1.0}
-		2: return {"shafts": 0.8, "caustics": 0.5, "tint": 1.0, "snow": 1.4}
-		_: return {"shafts": 0.55, "caustics": 0.32, "tint": 0.7, "snow": 1.0}
+		0: return {"shafts": 0.0, "caustics": 0.0, "tint": 0.0, "snow": 1.0, "drift": 0.0, "grade": 0.0, "bloom": 0.0}
+		2: return {"shafts": 0.8, "caustics": 0.5, "tint": 1.0, "snow": 1.4, "drift": 1.3, "grade": 1.0, "bloom": 0.3}
+		_: return {"shafts": 0.55, "caustics": 0.32, "tint": 0.7, "snow": 1.0, "drift": 1.0, "grade": 0.0, "bloom": 0.0}
 const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V}
 static var keys: Dictionary = DEFAULT_KEYS.duplicate()
 
