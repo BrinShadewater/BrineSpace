@@ -1,5 +1,9 @@
 # BrineSpace current status
 
+## Large rooms design — September 28, 2026
+
+Owner accepted the direction for four 2×2 rare rooms with fixed large props: Hydroponics Farm (green), Storage Depot (yellow), Moonbay (cyan), and Tidal Power Plant (yellow). The first four runs introduce them in that order; later runs choose one at random. One card appears later in each run. Moonbay and Tidal Power Plant need an ocean-facing side. Moonbay uses assigned crew missions for survey, recovery, and deep access. The [written design](superpowers/specs/2026-09-28-large-rooms-design.md) is awaiting owner review before implementation. No gameplay or art was changed in this milestone.
+
 Updated September 26, 2026 — station props v2 is merged into `main`. **Read
 [station props v2](STATION_PROPS_V2_2026-09-25.md) first**: the
 room art, departments, Studio tray, cards and tests changed, and parts of the
