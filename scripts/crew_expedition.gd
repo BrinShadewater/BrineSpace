@@ -39,6 +39,7 @@ static func reserved(game,cell: Vector2i) -> bool:
 
 static func reason(game,id: String,cell: Vector2i) -> String:
 	var actor = Architects.actor_for(game,id)
+	if not actor.moonbay_assignment.is_empty(): return "Mini-sub mission in progress. Recall it from the Moonbay."
 	if not actor.expedition.is_empty(): return "Expedition in progress. Recall remains available."
 	if not Architects.present(game,id) or not actor.active or actor.dead: return "Choose an awake architect."
 	if not Service.ready(game,cell): return "Restore power and resume the airlock."

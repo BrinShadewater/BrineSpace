@@ -26,6 +26,7 @@ func _init() -> void:
 			else: deep=cell
 	check(deep.x>=0 and Sites.distance(deep)>=14, "Generator includes a deep site beyond diver range")
 	var game = Main.new()
+	game.bill_npc.active = true
 	game.site_layout = layout
 	game.drone_fleet.sites = layout.sites.duplicate(true)
 	var room: Dictionary = Rooms.get_room("moonbay")

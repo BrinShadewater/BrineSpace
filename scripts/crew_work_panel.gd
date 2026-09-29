@@ -33,7 +33,7 @@ func _process(delta):
 func refresh():
 	if choice==null:return
 	var cell: Vector2i=game.selected_room_cell
-	visible=game.selected_card_id.is_empty() and game.occupied.has(cell) and game.occupied[cell].id not in ["corridor","corner","tee_corridor"]
+	visible=game.selected_card_id.is_empty() and game.occupied.has(cell) and game.occupied[cell].id not in ["corridor","corner","tee_corridor","moonbay"]
 	if not visible:return
 	for i in range(choice.item_count):choice.set_item_disabled(i,not Architects.present(game,Architects.IDS[i]))
 	if choice.is_item_disabled(choice.selected):

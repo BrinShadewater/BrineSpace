@@ -3,6 +3,7 @@ extends RefCounted
 
 const ORDERS := ["survey","recover","deep_access"]
 const REPAIR_METAL := 4
+const Architects = preload("res://scripts/architects.gd")
 const DURATIONS := {"approach":12.0,"seal":3.0,"flood":6.0,"launch":3.0,
 	"work":10.0,"drain":6.0,"unload":3.0}
 
@@ -12,6 +13,33 @@ static func mission_state(room: Dictionary) -> Dictionary:
 			"order":"","cargo":{},"credited":true,"damage":0,"chamber_water":0.0,
 			"station_open":true,"ocean_open":false,"recall":false,"hazard_roll":1.0,"last_result":""}
 	return room.moonbay_mission
+
+static func crew_problem(game, room: Dictionary, crew_id: String) -> String:
+	if not Architects.IDS.has(crew_id): return "Choose an available crew member."
+	var actor = Architects.actor_for(game,crew_id)
+	if game.is_inside_tree() and not Architects.present(game,crew_id): return "That crew member is not aboard the station."
+	if actor.dead or not actor.active: return "That crew member is unavailable."
+	if not actor.expedition.is_empty() or not actor.moonbay_assignment.is_empty(): return "That crew member is already on a mission."
+	if actor.goal not in ["","curiosity"] or actor.primary_room != Vector2i(-1,-1) or not actor.stage.is_empty() or not actor.locker_request.is_empty():
+		return "That crew member has another job. Clear it before assignment."
+	if actor.movement_medium != "dry": return "Crew must board from a dry room."
+	if room.get("id","") != "moonbay": return "Select a Moonbay."
+	return ""
+
+static func _boarding_route(game, actor, room: Dictionary) -> PackedVector2Array:
+	actor.rebuild(game)
+	var start_cell: Vector2i = actor.cell_at(actor.foot)
+	var board_cell: Vector2i = room.pos + Vector2i.ONE
+	var start: int = actor.nearest_in_room(actor.foot,start_cell)
+	var finish: int = actor.nearest_in_room((Vector2(board_cell)+Vector2.ONE*0.5)*actor.CELL,board_cell)
+	if start<0 or finish<0: return PackedVector2Array()
+	var route: PackedVector2Array = actor.graph.get_point_path(start,finish)
+	if route.is_empty(): return route
+	var previous: Vector2 = actor.foot
+	for point in route:
+		if not actor.segment_clear(previous,point): return PackedVector2Array()
+		previous = point
+	return actor.smooth_route(route)
 
 static func dispatch(game, room: Dictionary, crew_id: String, target: Vector2i, order: String) -> String:
 	if room.get("id","") != "moonbay": return "Select a Moonbay."
@@ -26,8 +54,20 @@ static func dispatch(game, room: Dictionary, crew_id: String, target: Vector2i, 
 	if order == "recover" and not site.get("discovered",false): return "Survey the site before recovery."
 	if order == "deep_access" and (not site.get("moonbay_deep",false) or not site.get("discovered",false)):
 		return "Survey a deep site before access."
+	var crew_issue := crew_problem(game,room,crew_id)
+	if not crew_issue.is_empty(): return crew_issue
 	if not game.running or game.paused or not game.hardware.power or game.unpowered_room_cells.has(room.pos):
 		return "Restore power and resume the station before launch."
+	var actor = Architects.actor_for(game,crew_id)
+	var route := PackedVector2Array()
+	if game.is_inside_tree():
+		route = _boarding_route(game,actor,room)
+		if route.is_empty(): return "No safe route to the mini-sub boarding point."
+	actor.path = route
+	actor.goal = "moonbay"
+	actor.goal_cell = room.pos + Vector2i.ONE
+	actor.activity = "heading to the Moonbay" if not route.is_empty() else "aboard mini-sub"
+	actor.moonbay_assignment = {"home":room.pos,"onboard":route.is_empty()}
 	state["phase"] = "approach"
 	state["progress"] = 0.0
 	state["crew"] = crew_id
@@ -47,6 +87,15 @@ static func recall(_game, room: Dictionary) -> bool:
 	var state := mission_state(room)
 	if state.phase == "idle" or state.get("recall",false): return false
 	state.recall = true
+	state.last_result = "Mission recalled."
+	if state.phase in ["approach","seal"]:
+		state.phase = "unload"
+		state.progress = 0.0
+		state.station_open = true
+	elif state.phase == "flood":
+		state.phase = "drain"
+		state.progress = (1.0-clampf(float(state.chamber_water),0.0,1.0))*float(DURATIONS.drain)
+		state.ocean_open = false
 	return true
 
 static func repair(game, room: Dictionary) -> String:
@@ -65,7 +114,24 @@ static func tick(game, delta: float) -> void:
 		if room.get("id","") != "moonbay" or game.unpowered_room_cells.has(room.pos): continue
 		var state := mission_state(room)
 		if state.phase == "idle": continue
+		if state.phase == "approach" and not Architects.actor_for(game,str(state.crew)).moonbay_assignment.get("onboard",false): continue
 		_advance(game,room,state,maxf(0.0,delta))
+
+static func advance_crew(game, actor, delta: float) -> void:
+	if actor.moonbay_assignment.is_empty(): return
+	var home: Vector2i = actor.moonbay_assignment.home
+	if not game.occupied.has(home) or game.occupied[home].get("id","") != "moonbay":
+		actor.moonbay_assignment.clear()
+		actor.goal = ""
+		return
+	if not actor.moonbay_assignment.onboard:
+		if not actor.path.is_empty(): actor.move(delta)
+		if actor.path.is_empty():
+			actor.moonbay_assignment.onboard = true
+			actor.state = "idle"
+			actor.activity = "aboard mini-sub"
+	else:
+		actor.activity = "mini-sub / " + str(mission_state(game.occupied[home]).phase)
 
 static func _travel_duration(room: Dictionary, state: Dictionary) -> float:
 	return 12.0 + float(absi(state.target.x-room.pos.x)+absi(state.target.y-room.pos.y))*1.2
@@ -108,6 +174,11 @@ static func _advance(game, room: Dictionary, state: Dictionary, delta: float) ->
 					game.resources[resource_id] = int(game.resources.get(resource_id,0)) + int(state.cargo[resource_id])
 				state.credited = true
 			state.phase = "idle"
+			var actor = Architects.actor_for(game,str(state.crew))
+			actor.moonbay_assignment.clear()
+			actor.goal = ""
+			actor.goal_cell = Vector2i(-1,-1)
+			actor.activity = "returned from mini-sub mission"
 			state.crew = ""
 			state.order = ""
 			state.target = Vector2i(-1,-1)

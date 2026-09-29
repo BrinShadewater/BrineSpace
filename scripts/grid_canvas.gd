@@ -1875,7 +1875,7 @@ func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Ve
 				bound = Rect2(Vector2(768.0-bound.end.y,bound.position.x),Vector2(bound.size.y,bound.size.x))
 			var overlap: Rect2 = bound.intersection(cell_rect)
 			if overlap.has_area(): blockers.append(Rect2(overlap.position - cell_rect.position - Vector2.ONE*192.0, overlap.size).grow(10.0))
-		return {"legacy":true,"room":room.duplicate(true),"props":[],"edges":[],"blockers":blockers,"swim_blockers":[]}
+		return {"large_room":true,"legacy":true,"room":room.duplicate(true),"props":[],"edges":[],"blockers":blockers,"swim_blockers":[]}
 	if _is_narrow_corridor(room):
 		var corridor_view = _corridor_view(room)
 		preload("res://scripts/room_layout_store.gd").apply(corridor_view,"room-"+str(room.id))

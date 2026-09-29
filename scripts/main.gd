@@ -886,6 +886,10 @@ func _build_ui() -> void:
 	var work_panel=preload("res://scripts/crew_work_panel.gd").new()
 	work_panel.game=self
 	preview_box.add_child(work_panel)
+	var moonbay_panel=preload("res://scripts/moonbay_panel.gd").new()
+	moonbay_panel.name="MoonbayPanel"
+	moonbay_panel.game=self
+	preview_box.add_child(moonbay_panel)
 
 	side.add_child(hardware_panel)
 
@@ -4511,6 +4515,10 @@ func _update_test_walker(delta: float) -> void:
 		var architect_id := "bill" if actor==bill_npc else "veld" if actor==veld_npc else "marsh" if actor==marsh_npc else "branforth"
 		if not Architects.present(self,architect_id): continue
 		preload("res://scripts/fire_safety.gd").refresh(self,actor)
+		if not actor.moonbay_assignment.is_empty():
+			actor.advance_needs(self,delta)
+			preload("res://scripts/moonbay_missions.gd").advance_crew(self,actor,delta)
+			continue
 		if not actor.expedition.is_empty():
 			actor.advance_needs(self,delta)
 			preload("res://scripts/crew_expedition.gd").advance(self,actor,delta)

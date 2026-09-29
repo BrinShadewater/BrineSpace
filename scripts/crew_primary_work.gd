@@ -16,7 +16,7 @@ static func assign(game,id: String,cell: Vector2i) -> bool:
 	if id not in Architects.IDS or not Architects.present(game,id):return false
 	if cell!=Vector2i(-1,-1) and not game.occupied.has(cell):return false
 	var actor=Architects.actor_for(game,id)
-	if actor.dead:return false
+	if actor.dead or not actor.moonbay_assignment.is_empty():return false
 	if cell!=Vector2i(-1,-1):
 		for other in Architects.IDS:
 			var peer=Architects.actor_for(game,other)

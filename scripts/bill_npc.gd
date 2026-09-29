@@ -29,6 +29,7 @@ var starvation := 0.0
 var flood_speed := 1.0
 var locker_request: Dictionary = {}
 var expedition: Dictionary = {}
+var moonbay_assignment: Dictionary = {}
 var swim_clearance: Dictionary = {}
 var tread_clearance: Dictionary = {}
 var action_clearance: Dictionary = {}
@@ -386,7 +387,7 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 	if data.decision_rng is int:
 		if decision_rng == null: decision_rng = RandomNumberGenerator.new()
 		decision_rng.state = data.decision_rng
-	if dead or not active or not expedition.is_empty(): return
+	if dead or not active or not expedition.is_empty() or not moonbay_assignment.is_empty(): return
 	# A changed room asset may invalidate an old route. Keep a valid position,
 	# but discard unsafe travel instead of stepping through new furniture.
 	if active and not can_stand(foot):
@@ -444,6 +445,10 @@ func can_stand(point: Vector2) -> bool:
 		for rect in data.get("blockers",[]):
 			if rect.has_point(local): return false
 		return Corridor.contains_foot(data.room, local, 10.0)
+	if data.get("large_room", false):
+		for rect in data.get("blockers",[]):
+			if rect.has_point(local): return false
+		return true
 	if data.get("legacy", false):
 		# Legacy art has no authored prop map. Retain conservative perimeter lanes
 		# around its central equipment instead of inventing a clear room interior.

@@ -15,6 +15,7 @@ static func update(actors: Array) -> bool:
 	return false
 
 static func rank(actor) -> int:
+	if not actor.moonbay_assignment.is_empty(): return 2
 	if actor.goal == "flood-retreat": return 2
 	return 1 if actor.needs_air() else 0
 
