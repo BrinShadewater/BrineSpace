@@ -471,6 +471,7 @@ func _process(delta: float) -> void:
 		_refresh_construction_button()
 		if is_instance_valid(guide_box) and guide_box.visible: _refresh_learning_ui()
 		preload("res://scripts/flood_alerts.gd").refresh(self)
+		preload("res://scripts/drone_idle_alert.gd").refresh(self)
 		# Water rises every frame but chips refresh once a cycle; keep the flooded count current.
 		if resource_labels.has("integrity"): _refresh_integrity_chip()
 		preload("res://scripts/room_fire.gd").refresh_alert(self)
