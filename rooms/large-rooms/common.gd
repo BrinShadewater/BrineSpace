@@ -18,8 +18,9 @@ static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color 
 		if error != OK:
 			push_error("Large room art could not load: %s (%d)" % [path, error])
 			return
-		# Grade only these new room sprites; neutral steel keeps its value and detail.
-		image.adjust_bcs(1.0, 1.0, float(ART_SATURATION_OVERRIDES.get(path, ART_SATURATION)))
+		# Preserve the accepted station prop colours; only new large-room art is graded.
+		if path.begins_with("res://rooms/large-rooms/art/"):
+			image.adjust_bcs(1.0, 1.0, float(ART_SATURATION_OVERRIDES.get(path, ART_SATURATION)))
 		if path.ends_with("_wall_bank.png"):
 			var target := wall_bank_raster_size(image.get_size())
 			image.resize(target.x, target.y, Image.INTERPOLATE_LANCZOS)
@@ -33,6 +34,17 @@ static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color 
 static func wall_bank_raster_size(native: Vector2i) -> Vector2i:
 	var factor: float = minf(1020.0 / float(native.x), 310.0 / float(native.y))
 	return Vector2i(maxi(1, roundi(float(native.x) * factor)), maxi(1, roundi(float(native.y) * factor)))
+
+static func draw_features(canvas: CanvasItem, features: Array) -> void:
+	for feature in features:
+		sprite(canvas, str(feature.path), feature.rect)
+
+static func feature_bounds(features: Array) -> Array[Rect2]:
+	var result: Array[Rect2] = []
+	for feature in features:
+		var bounds: Rect2 = feature.rect
+		result.append(Rect2(bounds.position + Vector2.ONE * HALF, bounds.size))
+	return result
 
 static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, accent: Color, wall_style: Dictionary) -> void:
 	var rotation: int = posmod(int(room.get("rotation", 0)), 4)

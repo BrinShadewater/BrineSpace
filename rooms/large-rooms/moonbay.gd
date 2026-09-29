@@ -7,9 +7,16 @@ const PaintedDoor = preload("res://rooms/doors/painted_door.gd")
 const WALL_STYLE := {"material":"data_archive", "art":"res://rooms/large-rooms/art/launch_wall_bank.png", "axis":0.0, "shade":0.35}
 const BAY_DOOR_WIDTH := 192.0
 const SUB_BOUNDS := Rect2(-210,-80,420,160)
+const FEATURES := [
+	{"path":"res://assets/station-props-v2/sp-construction_drone_bay-4.png", "rect":Rect2(-58,-300,116,87)},
+	{"path":"res://assets/station-props-v2/sp-airlock-5.png", "rect":Rect2(-57,220,113,87)},
+	{"path":"res://assets/station-props-v2/sp-construction_drone_bay-2.png", "rect":Rect2(80,205,109,107)},
+]
 
 static func fixed_bounds() -> Array[Rect2]:
-	return [Rect2(151, 267, 466, 234)]
+	var result: Array[Rect2] = [Rect2(151, 267, 466, 234)]
+	result.append_array(Common.feature_bounds(FEATURES))
+	return result
 
 static func visual_state(room: Dictionary) -> Dictionary:
 	var mission: Dictionary = room.get("moonbay_mission",{})
@@ -24,6 +31,7 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	var cyan := Color("#78afb9")
 	var state := visual_state(room)
 	Common.begin(canvas, room, rect, Color("#263842"), cyan, WALL_STYLE)
+	Common.draw_features(canvas, FEATURES)
 	# Floor rail points west to the sealed launch chamber; the hangar stays dry.
 	for y in [-89, 89]:
 		canvas.draw_rect(Rect2(-360, y - 7, 720, 14), Color("#597683"))

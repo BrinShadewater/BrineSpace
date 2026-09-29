@@ -28,6 +28,49 @@ func check(ok: bool, message: String) -> void:
 		failures += 1
 		push_error(message)
 
+func doors_share_walkable_floor(room: Dictionary, bounds: Array, rotation: int) -> bool:
+	const STEP := 16.0
+	const COUNT := 48
+	var blockers: Array[Rect2] = []
+	for source in bounds:
+		var bound: Rect2 = source
+		for turn in range(rotation):
+			bound = Rect2(Vector2(768.0 - bound.end.y, bound.position.x), Vector2(bound.size.y, bound.size.x))
+		blockers.append(bound.grow(10.0))
+	var blocked := {}
+	for y in range(COUNT):
+		for x in range(COUNT):
+			var point := Vector2(x + 0.5, y + 0.5) * STEP
+			for bound in blockers:
+				if bound.has_point(point):
+					blocked[Vector2i(x, y)] = true
+					break
+	var entries: Array[Vector2i] = []
+	for port in room.ports:
+		var point: Vector2 = Common.port_center(port).rotated(float(rotation) * PI * 0.5) + Vector2.ONE * 384.0
+		match Common.rotated_side(str(port.side), rotation):
+			"north": point.y = 48.0
+			"east": point.x = 720.0
+			"south": point.y = 720.0
+			"west": point.x = 48.0
+		var entry := Vector2i(int(point.x / STEP), int(point.y / STEP))
+		if blocked.has(entry): return false
+		entries.append(entry)
+	var queue: Array[Vector2i] = [entries[0]]
+	var seen := {entries[0]: true}
+	var head := 0
+	while head < queue.size():
+		var current: Vector2i = queue[head]
+		head += 1
+		for direction in [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]:
+			var next: Vector2i = current + direction
+			if next.x < 0 or next.y < 0 or next.x >= COUNT or next.y >= COUNT or blocked.has(next) or seen.has(next): continue
+			seen[next] = true
+			queue.append(next)
+	for entry in entries:
+		if not seen.has(entry): return false
+	return true
+
 func _init() -> void:
 	for i in range(IDS.size()):
 		var id: String = IDS[i]
@@ -70,6 +113,19 @@ func _init() -> void:
 					check(absf(axis) >= 198.0, id + " north wall art clears its ocean face in rotation " + str(rotation))
 			var bounds: Array = view.fixed_bounds()
 			check(not bounds.is_empty() and bounds[0].size.x >= 150 and bounds[0].size.y >= 100, id + " has a very large fixed prop")
+			var features: Array = view.FEATURES
+			check(features.size() >= 3, id + " has supporting work areas")
+			var centerpiece := Rect2(bounds[0].position - Vector2.ONE * 384.0, bounds[0].size)
+			for feature_index in range(features.size()):
+				var feature: Dictionary = features[feature_index]
+				var feature_rect: Rect2 = feature.rect
+				check(str(feature.path).begins_with("res://assets/station-props-v2/") and FileAccess.file_exists(str(feature.path)), id + " supporting art is an installed station prop")
+				check(feature_rect.position.x >= -312.0 and feature_rect.position.y >= -312.0 and feature_rect.end.x <= 312.0 and feature_rect.end.y <= 312.0, id + " support clears the north riser in every rotation")
+				check(not feature_rect.intersects(centerpiece), id + " support leaves the fixed centerpiece clear")
+				for earlier in range(feature_index):
+					check(not feature_rect.intersects(features[earlier].rect), id + " supports do not overlap")
+			for rotation in range(4):
+				check(doors_share_walkable_floor(room, bounds, rotation), id + " connects all doors around fixed props in rotation " + str(rotation))
 			for port in room.ports:
 				var cell: Vector2i = port.cell
 				var access := Rect2()
