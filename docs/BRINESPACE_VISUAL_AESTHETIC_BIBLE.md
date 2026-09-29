@@ -64,6 +64,12 @@ Read its README and manifest; older numbered previews are history.
   depth tint/softening and slight refraction. Surface foam and expanding wakes are
   separate from the submerged hull and persist briefly after it disappears.
   Beneath-base travel remains hidden. Do not expose the departing NPC through the base.
+## Studio wall, door and naming choices — September 28, 2026
+
+- A room may borrow another room's painted riser (Studio Wall Art) or take another department's door style (Studio Doors). The defaults stay the room's own riser and its department door; these are per-rotation layout choices, not new art.
+- Player-facing name: Cryo Lab (formerly Cryo Chamber).
+- Approved September 28: the survey probe launcher, fixed hull artwork opposite the door in every rotation, and the five gray-metal airlock/suit recolors. Review Candidates, the retired September 24 tiles and the new-room concept folder were discarded; the installed versions stand.
+
 - Native pad canvas widths are 295/329/407 px (Construction/Mining/Salvage).
   Calibrate every component with its pad's scale; do not normalize independent
   sprites to equal thumbnail sizes. Current drone widths are 85/103/148 px as

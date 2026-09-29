@@ -39,6 +39,15 @@ Read [the art and theme bible](BRINESPACE_VISUAL_AESTHETIC_BIBLE.md) before
 production. It is the single current style specification, with fixed references
 in [the reference lock](BRINESPACE_ART_REFERENCE_LOCK_2026-09-26.json).
 The accepted clean exports remain a separate visual reference family, not an
+## Engineering conventions — September 27-28, 2026
+
+- Clean prop exports and room designs live in `Desktop/Projects/Gaming/Brine Space Art` (backed up to D:). The 323 masters, 75 room designs and provenance exist nowhere else; never delete them as duplicates of the game-size files.
+- Room views build on first use (`grid_canvas` lazy properties). A new view needs no startup registration; fixtures that place rooms with `_process` off call `grid_view.prewarm_station_views(game)` before timing navigation.
+- Fixed hull artwork (the survey launcher) carries `flush_region`, so the Studio cannot move, resize or copy it.
+- Corridor props: `library/tileset-` pieces are floor clutter crew walk past; station furniture blocks walkers but never swimmers.
+- Retention: keep the newest Windows and Mac builds plus the Sept 9 itch zip; `output/` evidence that nothing references may be removed after two days; run `git lfs prune --verify-remote` only after every local-only object is pushed.
+- Shared files touched by concurrent sessions are committed by filtered hunks, never whole.
+
 installed replacement. Historical workflow notes and installed skill snapshots
 must not override this newer visual direction.
 

@@ -213,3 +213,9 @@ review evidence separately from disposable executable/package copies.
 
 For sparse-room cleanup, source repaint integration and source-control closeout, read
 [room materials and declutter](references/room-materials-and-declutter.md).
+
+## September 28 engineering notes
+
+- Clean exports and room designs moved to `Desktop/Projects/Gaming/Brine Space Art`; masters, designs and provenance are the only copies.
+- Room views are lazy in `grid_canvas`; prewarm through `prewarm_station_views` in fixtures. Mark fixed hull art with `flush_region`.
+- Studio Wall Art saves `wall/riser` as `room:<id>` (another room's walls.json riser); Studio Doors saves `door/style`, honoured by `painted_shell` and live doors. Use the Studio Preview row to review airlock, drone, probe, fire and flood animation in a room.

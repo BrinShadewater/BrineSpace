@@ -117,3 +117,9 @@ is input to character integration; do not redesign rooms merely to pass a crew t
 Report the requested scope, completed states, generation/packaging/integration
 status, checks actually run, and remaining limitations. When revising this skill,
 use [evaluation cases](evals/cases.json) and the evaluation guidance in acceptance.
+
+## September 28 engineering notes
+
+- Crew navigation: corridor `library/tileset-` pieces never block crew; hallway furniture blocks walkers but not swimmers (`swim_blockers`).
+- Crew animation packs still load eagerly (~2.3 GB at startup); load each crew member on first appearance once this pipeline's session is idle.
+- Cleanup rule: unreferenced `review/` candidate folders may go; `generated/` and `sources/` stay because build tools and playtests read them.

@@ -32,6 +32,14 @@ the task reader. Recover the discussion before treating a proposed camera change
 as accepted. The installed top-down/inward-facing and bought-prop contracts remain
 the documented baseline, with owner motion and whole-game appearance review open.
 
+## Performance, Studio tools and cleanup — September 27-28, 2026
+
+Engineering session alongside the art sessions. Lag reports traced: machinery heat repainted every floor and wall each cycle (9f8e4081); the owner's walkway tileset pieces blocked crew routes, so crew now step past `library/tileset-` pieces and Marsh waits 2 s before re-searching a blocked pod route (27045d08); swimmers pass over hallway furniture once a corridor floods (7c4b06ee). Core-only startup texture memory fell from 5,984 to 3,538 MB: room views build on first use and prewarm from the hand and station (bb60bef6), card images are shared and companion packs load on first use (3e3e7340). Crew animations (~2.3 GB) wait for the crew session.
+
+Studio: preview buttons for airlock cycles, drone launch/return, probe launch, fire and flood (4b276b94); Walls / Wall Art / Doors tray categories with a per-room `door/style` honoured live (3afe524a); one door per doorway; survey launcher is fixed artwork (5a2d908a); Cmd shortcuts on Mac; deleting a copy leaves no orphan keys. Gameplay: Parts Passage pilot committed without Logistics Spine stacking (41458eba); Cryo Chamber is shown as Cryo Lab (id unchanged). Owner approved the survey probe launcher and the five gray-metal airlock recolors.
+
+Cleanup: 49 old builds and unreferenced pre-Sept-26 `output/` evidence (~248 GB) removed by the owner after staging; local LFS cache pruned 23 → 6.6 GB after uploading 364 local-only objects; 535 MB of unused Marsh review candidates removed (a8686d6c); desktop art moved to `Desktop/Projects/Gaming/Brine Space Art` (28c788d3); Review Candidates, retired Sept 24 tiles and the new-room concept folder discarded. Open: crew animation lazy-load, the remaining crew soak gap (5.8 vs 3.4 ms mean) and Mac pinch zoom wait for the crew session; the empty Salvage Drone Bay report never reproduced.
+
 ## Owner-finished rooms: protect every rotation
 
 *Superseded September 25:* all 43 redesigned rooms were re-dressed with station
