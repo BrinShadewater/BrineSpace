@@ -21,6 +21,10 @@ On `codex/large-rooms`, the four large-room views now keep support workstations 
 - The revised support props stay upright in all rotations. All 32 room/rotation/wall variants were reviewed; doors, north caps and the Moonbay enclosure remain aligned. The four selected 0° card PNGs are pixel-identical to fresh renders. `test_large_room_art.gd`, `test_large_room_studio.gd` and `test_large_room_integration.gd` pass with zero failures under scratch `APPDATA`.
 - Native station captures show the rooms at gameplay scale, but that capture process logged unrelated missing imported UI resources; it is visual evidence, not a clean full-game validation. The real profile fingerprint matched before and after the scratch Godot runs.
 
+September 29 continuation: repaired eight invalid local PNG import records and completed a clean native station capture (exit 0, no errors or warnings). `tools/review_large_rooms.gd` now captures all 16 room/rotation combinations with neighbors on the actual station ports, and waits for deferred recentering before positioning the review camera. Reviewed `output/large-room-polish/station-rotations-clean.png`: north risers, top-down side walls, muted department colors, equipment scale and upright support props remain coherent. This supersedes the import-error limitation above for these captures; it does not establish full-run gameplay acceptance. No production art changed.
+
+All continuation Godot launches used scratch `APPDATA`. The real-folder comparison found two changed diagnostic files (`dialogue_trace.log` and `last_session.json`), with a separate Godot session running from the main checkout; progression, checkpoint and Studio layout hashes were unchanged. The fingerprint therefore did not fully match, and no real files were restored or edited.
+
 ## Next action
 
 Show the revised rotated views to the owner for visual acceptance. If a future use enlarges the nine PNGs beyond current room scale, inspect and repair the source-edge specks on light and dark grounds before reuse.
