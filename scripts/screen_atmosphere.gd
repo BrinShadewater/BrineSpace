@@ -19,10 +19,10 @@ const LOOKS := [
 	{"name": "Bloom only", "drift": 0.0, "grade": 0.0, "bloom": 0.3, "cool": false},
 	{"name": "Grade only", "drift": 0.0, "grade": 1.0, "bloom": 0.0, "cool": false},
 	{"name": "Cool tint only (Medium's grade)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": true},
-	{"name": "Water shimmer (open water only)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shimmer": 1.0},
+	{"name": "Water shimmer (open water only)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0},
 	{"name": "Film grain (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "grain": 1.0},
 	{"name": "Edge colour fringe (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "fringe": 1.0},
-	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0},
+	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0},
 ]
 const SHADER_CODE := """
 shader_type canvas_item;
@@ -239,7 +239,7 @@ func _draw() -> void:
 		var at := home + Vector2(sway, time * fall) - scroll * (0.25 + 0.55 * depth)
 		at = Vector2(fposmod(at.x, view.x), fposmod(at.y, view.y))
 		var radius := (0.8 + 1.5 * depth + float((h / 11) % 5) * 0.12) * unit * 1.6
-		var alpha := (0.07 + 0.12 * depth) * _open_water(at + scroll, cell_size)
+		var alpha := (0.05 + 0.09 * depth) * _open_water(at + scroll, cell_size)
 		if alpha <= 0.004: continue
 		draw_circle(at, radius * 2.4, Color(0.7, 0.9, 1.0, alpha * 0.18))
 		draw_circle(at, radius, Color(0.86, 0.96, 1.0, alpha))

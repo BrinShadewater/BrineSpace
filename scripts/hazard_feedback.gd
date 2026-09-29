@@ -25,7 +25,7 @@ static func distress(game) -> float:
 static func tint_alpha(level: float, seconds: float, reduced: bool) -> float:
 	if level <= 0.0: return 0.0
 	var pulse := 0.5 if reduced else 0.5 + 0.5 * sin(seconds * TAU / PULSE_PERIOD)
-	return level * (0.30 + 0.30 * pulse)
+	return level * (0.20 + 0.20 * pulse)
 
 # Offset in pixels for this instant; zero except during a creak.
 static func creak_offset(seconds: float, integrity: float) -> Vector2:
