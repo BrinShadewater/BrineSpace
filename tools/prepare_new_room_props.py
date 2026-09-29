@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw
 from scipy import ndimage
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'assets/new-room-props-2026-09-26'
-SOURCE=Path(r'C:/Users/Alex/Desktop/BrineSpace Clean Prop Exports/New Room Art - Organized 2026-09-26')
+SOURCE=Path(r'C:/Users/Alex/Desktop/Projects/Gaming/Brine Space Art/BrineSpace Clean Prop Exports/New Room Art - Organized 2026-09-26')
 LABELS={
 'echo-chamber':['resonance chambers','specimen vessels','analysis console','signal recorder','sealed chamber'],
 'fold-chamber':['containment gate','field test bench','field controls','cable drum','field equipment cabinet'],

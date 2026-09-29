@@ -1,6 +1,6 @@
 # Selected artwork installation and audit
 
-When the owner points to existing Desktop art, inspect that delivery root and its current selection manifest before generating anything. For BrineSpace the clean delivery is Desktop/BrineSpace Clean Prop Exports: game-size exports are runtime candidates, masters are source artwork, and Review Candidates/provenance preserve experiments. Newest timestamps alone do not establish selection.
+When the owner points to existing Desktop art, inspect that delivery root and its current selection manifest before generating anything. For BrineSpace the clean delivery is Desktop/Projects/Gaming/Brine Space Art/BrineSpace Clean Prop Exports (moved from the Desktop 2026-09-28; Review Candidates removed): game-size exports are runtime candidates, masters are source artwork, and Review Candidates/provenance preserve experiments. Newest timestamps alone do not establish selection.
 
 Follow current owner decisions and selected revision records. Compare existing catalog IDs, source paths, native dimensions and file hashes. Preserve stable geometry, collisions, saved layouts and owner marks. Check animation components and actual renderer consumers as well as still prop PNGs: a static dock is not the complete animated assembly. Do not overwrite newer runtime work with an older organized Desktop snapshot.
 

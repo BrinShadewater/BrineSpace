@@ -4,7 +4,7 @@ const Grid = preload("res://scripts/grid_canvas.gd")
 const DB = preload("res://scripts/room_database.gd")
 const ScaleCrew = preload("res://scripts/room_scale_preview.gd")
 const OUT = "res://output/drone-npc-pilot-2026-09-26"
-const SOURCE = "C:/Users/Alex/Desktop/BrineSpace Clean Prop Exports/drone-animation-bases/approved-v10/sources/construction-base.png"
+const SOURCE = "C:/Users/Alex/Desktop/Projects/Gaming/Brine Space Art/BrineSpace Clean Prop Exports/drone-animation-bases/approved-v10/sources/construction-base.png"
 
 class DroneScalePanel extends Node2D:
 	var room

@@ -3,7 +3,7 @@ import json,threading,http.server,functools
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'assets/new-room-props-2026-09-26/review'
-SOURCE=Path(r'C:/Users/Alex/Desktop/BrineSpace Clean Prop Exports/New Room Art - Organized 2026-09-26/03-animation-studies')
+SOURCE=Path(r'C:/Users/Alex/Desktop/Projects/Gaming/Brine Space Art/BrineSpace Clean Prop Exports/New Room Art - Organized 2026-09-26/03-animation-studies')
 class Quiet(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 def serve(folder):

@@ -2,7 +2,7 @@ from pathlib import Path
 import json,shutil,hashlib,html
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'assets/new-room-props-2026-09-26'
-SOURCE=Path(r'C:/Users/Alex/Desktop/BrineSpace Clean Prop Exports/New Room Art - Organized 2026-09-26')
+SOURCE=Path(r'C:/Users/Alex/Desktop/Projects/Gaming/Brine Space Art/BrineSpace Clean Prop Exports/New Room Art - Organized 2026-09-26')
 records=json.loads((OUT/'manifest.json').read_text(encoding='utf-8'))['records']
 for source,target in [
  (SOURCE/'03-animation-studies/aquarium',OUT/'animation-studies/aquarium'),
