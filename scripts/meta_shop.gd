@@ -26,6 +26,22 @@ const ALWAYS_ABOARD := ["brine", "bill"]
 const CHARACTER_COLORS := {"brine": "#e8eef0", "bill": "#d9534f", "veld": "#4f8fe6", "branforth": "#e6c84f", "marsh": "#e8eef0", "river": "#9c5de8", "josh": "#9c5de8", "margot": "#9c5de8"}
 const CHARACTER_CLASSES := {"brine": "STATION AI", "bill": "OPERATIONS", "veld": "SCIENCE & MEDICAL", "branforth": "ENGINEERING", "marsh": "AI & ROBOTICS", "river": "COMPANION", "josh": "COMPANION", "margot": "COMPANION"}
 const COMPANIONS := ["river", "josh", "margot"]
+# Trading-card copy for the Crew & Companions page (owner request, Sept 28). DRAFT: first names come
+# from docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md; the bios are written for the owner to edit.
+const CHARACTER_FULL_NAMES := {
+	"brine": "BRINE", "bill": "Major Alexander Bill", "veld": "Dr. Maria Veld",
+	"branforth": "Chief Engineer James Branforth", "marsh": "Marsh", "river": "River", "josh": "Josh", "margot": "Margot",
+}
+const CHARACTER_BIOS := {
+	"brine": "Station AI. She woke first and remembers least. She drafts the blueprints, keeps the lights on, and is fairly sure the station is quieter than it should be.",
+	"bill": "Operations officer and the loop's steady hand. Keeps the rations moving and the crew calm, and has stopped asking how many times they have done this.",
+	"veld": "Xeno-marine biologist. Reads the sea like a chart and trusts data over instinct, which is why the readings that do not match bother her most.",
+	"branforth": "Exo-hull technician who treats every leak as a personal insult. Carries more spares than the stores list admits.",
+	"marsh": "Android botanist. Grows things in places that should not allow it, and is patient in the way only a machine can be.",
+	"river": "Small utility droid, found in the disposal room. Sorts everything by a system nobody else has worked out.",
+	"josh": "Tracked companion sealed in a shipping crate. Slow, sturdy, and very good at carrying things.",
+	"margot": "A cat in a frog hat, found in a pet cryo ward. Nobody knows who put the hat on.",
+}
 const STABILIZE_DATA := 5
 
 static func balance(meta) -> int:

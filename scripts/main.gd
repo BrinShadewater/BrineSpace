@@ -4002,10 +4002,10 @@ func _card_synergy_hint(room_id: String) -> String:
 
 func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affordable := true) -> void:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.02, 0.035, 0.045, 0.78) if not selected else Color(0.03, 0.07, 0.08, 0.88)
+	style.bg_color = Color("#101a20") if not selected else Color(0.03, 0.07, 0.08, 0.88)
 	if not affordable:
 		style.bg_color = Color(0.018, 0.024, 0.03, 0.78) if not selected else Color(0.055, 0.065, 0.075, 0.88)
-	style.border_color = UI_ACCENT_BRIGHT if selected else Color(color.r, color.g, color.b, 0.78)
+	style.border_color = UI_ACCENT_BRIGHT if selected else preload("res://scripts/draft_card.gd").muted(color)
 	if not affordable and not selected:
 		style.border_color = Color("#30424a")
 	style.border_width_left = 3

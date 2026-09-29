@@ -37,6 +37,10 @@ var codex_sort_index := 0
 var codex_sort: OptionButton
 const SORTS := ["SORT: COLOUR", "SORT: RARITY", "SORT: NAME", "SORT: BUILD COST"]
 const CARD_WIDTH := 270
+# Every room card is this tall at least, recovered or not, so a row of unrecovered signals is the
+# same size as a row of rooms (owner playtest, Sept 28).
+const CARD_HEIGHT := 500
+const DraftCard = preload("res://scripts/draft_card.gd")
 const CARDS_PER_ROW := 4
 const SYNERGY_WIDTH := 470
 var progression_cards: GridContainer
@@ -233,7 +237,7 @@ func _layout() -> void:
 		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else 2, fits) if mode == "codex" and codex_tab != 2 else 1
 		grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if is_instance_valid(progression_cards):
-		var wide: int = CARDS_PER_ROW if progression_cards.name == "BlueprintShop" else 3
+		var wide: int = CARDS_PER_ROW if progression_cards.name == "BlueprintShop" else 4
 		progression_cards.columns = maxi(1, mini(wide, int((size.x - 460) / 300)))
 
 func _populate_cards() -> void:
@@ -412,17 +416,17 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	var accent: Color = Rooms.room_color(str(entry.id)) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexCard_" + str(entry.id)
-	card.custom_minimum_size = Vector2(CARD_WIDTH, 0)
+	card.custom_minimum_size = Vector2(CARD_WIDTH, CARD_HEIGHT)
 	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 3, 14, 10))
+	card.add_theme_stylebox_override("panel", _card_box(Color("#101a20") if known else Color("#0d161b"), DraftCard.muted(accent), 3, 14, 10))
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 8)
 	card.add_child(body)
 	var title := _label(entry.title, 18)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
-	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 6, 6))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), DraftCard.muted(accent).darkened(0.25), 1, 6, 6))
 	body.add_child(title)
 	var record_key := "room:" + str(entry.id)
 	if known and meta_state.unread_records.has(record_key):
@@ -437,24 +441,24 @@ func _codex_room_card(entry: Dictionary) -> Control:
 		)
 		body.add_child(reviewed)
 	if not known:
-		body.add_child(_mystery_picture())
-		body.add_child(_label("CLUE // " + str(entry.clue), 16))
+		_unrecovered_body(body, accent, str(entry.clue))
 		return card
 	var art := PanelContainer.new()
 	art.custom_minimum_size.y = 200
-	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
+	art.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), DraftCard.muted(accent), 1, 2, 2))
 	body.add_child(art)
 	var picture := _room_picture(entry.id, 196)
 	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	var clip := Control.new()
 	clip.clip_contents = true
 	art.add_child(clip)
+	DraftCard.add_ocean(clip)
 	picture.set_anchors_preset(Control.PRESET_FULL_RECT)
 	clip.add_child(picture)
 	var ribbon := _label(str(entry.category).to_upper(), 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
 	body.add_child(ribbon)
 	var rules := PanelContainer.new()
 	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
@@ -474,9 +478,86 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	body.add_child(footer)
 	var rarity := _label(str(data.get("rarity", "common")).to_upper(), 13)
 	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	rarity.add_theme_color_override("font_color", accent)
+	rarity.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
 	footer.add_child(rarity)
 	return card
+
+# An unrecovered room: the same plates as a recovered one, but the art window is a scanned-water
+# static field and the rules box holds the clue.
+func _unrecovered_body(body: VBoxContainer, accent: Color, clue: String) -> void:
+	var window := PanelContainer.new()
+	window.custom_minimum_size.y = 200
+	window.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), DraftCard.muted(accent), 1, 2, 2))
+	var clip := Control.new()
+	clip.clip_contents = true
+	window.add_child(clip)
+	var field := UnresolvedField.new()
+	field.set_anchors_preset(Control.PRESET_FULL_RECT)
+	clip.add_child(field)
+	body.add_child(window)
+	var ribbon := _label("SIGNAL OBSCURED", 12)
+	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
+	body.add_child(ribbon)
+	var rules := PanelContainer.new()
+	rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+	body.add_child(rules)
+	var lines := VBoxContainer.new()
+	lines.add_theme_constant_override("separation", 6)
+	rules.add_child(lines)
+	var heading := _label("CLUE", 13)
+	heading.add_theme_color_override("font_color", Color("e0b36a"))
+	lines.add_child(heading)
+	lines.add_child(_label(clue, 15))
+	var footer := _label("UNRECOVERED", 13)
+	footer.add_theme_color_override("font_color", Color("5e8293"))
+	body.add_child(footer)
+
+# The art window of an unrecovered room: deep water, a survey grid, a reticle hunting for the
+# signal, a sweeping scan line and flickering static. Holds still under reduced motion.
+class UnresolvedField extends Control:
+	var elapsed := 0.0
+	func _ready() -> void:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		set_process(not preload("res://scripts/title_settings.gd").reduced_motion)
+	func _process(delta: float) -> void:
+		elapsed += delta
+		queue_redraw()
+	func _draw() -> void:
+		var area := Rect2(Vector2.ZERO, size)
+		draw_texture_rect(preload("res://scripts/draft_card.gd").ocean_texture(), area, false, Color(0.62, 0.7, 0.8))
+		var grid := Color(0.45, 0.8, 0.9, 0.07)
+		var step := 24.0
+		var x := fposmod(elapsed * 2.0, step)
+		while x < size.x:
+			draw_line(Vector2(x, 0), Vector2(x, size.y), grid, 1.0)
+			x += step
+		var y := 0.0
+		while y < size.y:
+			draw_line(Vector2(0, y), Vector2(size.x, y), grid, 1.0)
+			y += step
+		var c := area.get_center()
+		var pulse := 0.5 + 0.5 * sin(elapsed * 1.6)
+		for radius in [26.0, 46.0, 68.0]:
+			draw_arc(c, radius, 0, TAU, 48, Color(0.45, 0.8, 0.9, 0.10 + 0.10 * pulse), 1.0, true)
+		var lock := Color(0.55, 0.85, 0.92, 0.55)
+		for corner in [Vector2(-1, -1), Vector2(1, -1), Vector2(-1, 1), Vector2(1, 1)]:
+			var p: Vector2 = c + corner * 34.0
+			draw_line(p, p - Vector2(corner.x * 12.0, 0), lock, 2.0)
+			draw_line(p, p - Vector2(0, corner.y * 12.0), lock, 2.0)
+		var font := get_theme_default_font()
+		draw_string(font, c + Vector2(-8, 12), "?", HORIZONTAL_ALIGNMENT_LEFT, -1, 34, Color(0.7, 0.9, 0.95, 0.75))
+		var sweep := fposmod(elapsed * 46.0, size.y + 40.0) - 20.0
+		draw_rect(Rect2(0, sweep, size.x, 14), Color(0.5, 0.85, 0.95, 0.05))
+		draw_line(Vector2(0, sweep + 14), Vector2(size.x, sweep + 14), Color(0.55, 0.9, 1.0, 0.28), 1.0)
+		for i in range(14):
+			var seed_value := float(i) * 12.9898 + floorf(elapsed * 3.0 + float(i)) * 78.233
+			var rx := fposmod(sin(seed_value) * 43758.5453, 1.0) * size.x
+			var ry := fposmod(sin(seed_value * 1.7) * 24634.6345, 1.0) * size.y
+			draw_rect(Rect2(rx, ry, 8.0 + fposmod(rx, 18.0), 2.0), Color(0.6, 0.85, 0.95, 0.10))
+		draw_string(font, Vector2(8, size.y - 8), "NO LOCK", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color(0.55, 0.8, 0.88, 0.5))
 
 # Synergy entries as cards (owner playtest): the linked rooms side by side in the art window,
 # the effect, stabilisation state and reward. Undiscovered patterns show their clue.
@@ -703,6 +784,71 @@ func _shop_card(id: String, accent: Color, owned: bool) -> Array:
 	card.add_child(rows)
 	return [card, rows]
 
+# A crew or companion as a trading card: full name, department ribbon, portrait in the water
+# window, what they bring, where they are found, and a short bio.
+func _crew_card(id: String, accent: Color, owned: bool, met: bool) -> Array:
+	var frame := DraftCard.muted(accent)
+	var card := PanelContainer.new()
+	card.name = id
+	card.custom_minimum_size = Vector2(250, CARD_HEIGHT + 40)
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.add_theme_stylebox_override("panel", _card_box(Color("#101a20"), frame if met else Color("#33444d"), 3, 14, 10))
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 8)
+	card.add_child(rows)
+	var title := _label(str(MetaShop.CHARACTER_FULL_NAMES.get(id, id)) if met else "UNKNOWN SIGNAL", 17)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	title.custom_minimum_size.y = 52
+	title.add_theme_color_override("font_color", Color("e2ecee") if met else Color("7a959e"))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), frame.darkened(0.25), 1, 6, 6))
+	rows.add_child(title)
+	var window := PanelContainer.new()
+	window.custom_minimum_size.y = 200
+	window.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), frame, 1, 2, 2))
+	var clip := Control.new()
+	clip.clip_contents = true
+	window.add_child(clip)
+	DraftCard.add_ocean(clip)
+	var portrait := TextureRect.new()
+	portrait.set_anchors_preset(Control.PRESET_FULL_RECT)
+	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	portrait.texture = MetaShop.portrait(id)
+	# Dimmed almost to nothing for a character you have not met yet.
+	portrait.modulate = Color(1, 1, 1, 1) if met else Color(0.45, 0.55, 0.6, 0.18)
+	clip.add_child(portrait)
+	rows.add_child(window)
+	var ribbon := _label(str(MetaShop.CHARACTER_CLASSES.get(id, "CREW")), 12)
+	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), frame, 1, 3, 2))
+	rows.add_child(ribbon)
+	var rules := PanelContainer.new()
+	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+	rows.add_child(rules)
+	var lines := VBoxContainer.new()
+	lines.add_theme_constant_override("separation", 6)
+	rules.add_child(lines)
+	if met:
+		var perk: String = str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
+		if not perk.is_empty():
+			var bonus_label := _label("START BONUS", 12)
+			bonus_label.add_theme_color_override("font_color", Color("7fd6a6"))
+			lines.add_child(bonus_label)
+			lines.add_child(_rich(ResourceIcons.decorate(perk.substr(perk.find(": ") + 2) if ": " in perk else perk, 15), 15))
+		if id in MetaShop.COMPANIONS:
+			var found := _label("FOUND IN  " + str(preload("res://scripts/companions.gd").TITLES.get(id, "")), 13)
+			found.add_theme_color_override("font_color", Color("e0b36a"))
+			lines.add_child(found)
+		var bio := _label(str(MetaShop.CHARACTER_BIOS.get(id, "")), 14)
+		bio.add_theme_color_override("font_color", Color("9fb3bd"))
+		lines.add_child(bio)
+	else:
+		lines.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 15))
+	return [card, rows]
+
 # A stretchy gap above the buy button, so it sits at the foot of every card whatever the text above
 # it takes (owner playtest, Sept 28).
 func _pin_to_bottom(rows: VBoxContainer) -> void:
@@ -754,31 +900,8 @@ func _crew_shop() -> void:
 		var owned: bool = state == "owned"
 		var met: bool = state != "unmet"
 		var accent := Color(MetaShop.CHARACTER_COLORS.get(id, "#9fb8c0"))
-		var parts := _shop_card(id, accent, owned)
+		var parts := _crew_card(id, accent, owned, met)
 		var rows: VBoxContainer = parts[1]
-		# Portraits, dimmed almost to nothing for a character you have not met yet.
-		var portrait := TextureRect.new()
-		portrait.custom_minimum_size.y = 190
-		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-		portrait.texture = MetaShop.portrait(id)
-		portrait.modulate = Color(1, 1, 1, 1) if met else Color(0.45, 0.55, 0.6, 0.18)
-		rows.add_child(portrait)
-		var title := _label(str(MetaShop.CHARACTER_NAMES[id]).to_upper() if met else "UNKNOWN SIGNAL", 18)
-		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		title.add_theme_color_override("font_color", Color("e6f4f2") if met else Color("7a959e"))
-		title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 6, 6))
-		rows.add_child(title)
-		var ribbon := _label(str(MetaShop.CHARACTER_CLASSES.get(id, "CREW")), 12)
-		ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-		ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
-		rows.add_child(ribbon)
-		var perk: String = str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
-		if met and not perk.is_empty(): rows.add_child(_rich(ResourceIcons.decorate(perk), 15))
-		if not met:
-			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 15))
 		var character_id: String = id
 		var cost := int(MetaShop.CHARACTER_COSTS.get(id, 0))
 		_pin_to_bottom(rows)
