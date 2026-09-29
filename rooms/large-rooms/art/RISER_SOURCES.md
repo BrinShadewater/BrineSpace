@@ -11,7 +11,7 @@ The four wall-bank PNGs were generated separately with the built-in image genera
 | `launch_wall_bank.png` | `exec-95b40a4f-33ca-4020-8505-a1866c5eafbe.png` | 1942×809 | `CD0F4F0EE909CDF177C16729174B2516123AFA96BDAC3454C93052EE59968DC9` |
 | `tidal_wall_bank.png` | `exec-d4fd070b-7341-45d3-b1d1-552bdc32bd97.png` | 1959×803 | `BF9002913C892316E39020216AC4641F3AA19F1D0C778C96F297C4244D2A3E77` |
 
-All four RGBA sources have alpha extrema 0–255. No cleanup, crop or color transform was applied to the files. At runtime the wall banks are aspect-preservingly reduced to roughly 5 source pixels per displayed world unit, matching the established riser density; raw files and hashes remain unchanged. The accepted prop board at `docs/art-style-reference-2026-09-26.png` and the existing `assets/room-risers-v3` faces were visual references during integration, not image-generation inputs. The measured review is in `docs/LARGE_ROOM_WALL_AUDIT_2026-09-28.md`.
+All four RGBA sources have alpha extrema 0–255. No cleanup, crop or color transform was applied to the files. At runtime the wall banks are aspect-preservingly reduced to roughly 5 source pixels per displayed world unit and receive the large-room 0.58 saturation grade, matching the established riser density and the later muted-palette direction; raw files and hashes remain unchanged. The accepted prop board at `docs/art-style-reference-2026-09-26.png` and the existing `assets/room-risers-v3` faces were visual references during integration, not image-generation inputs. The measured review is in `docs/LARGE_ROOM_WALL_AUDIT_2026-09-28.md`.
 
 ## Exact generation prompts
 

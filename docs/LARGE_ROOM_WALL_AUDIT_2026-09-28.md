@@ -15,6 +15,10 @@ Reviewed Hydroponics Farm, Storage Depot, Moonbay, and Tidal Power Plant against
 | Materials and palette | The green, yellow, cyan, and yellow identities remain accents over matte steel and charcoal. The reused painted hull and door surfaces match the station's established construction. The four painted focal pieces retain the accepted overhead/cutaway view; wall banks are shallow, inward-facing fittings on the north riser. No tall frontal wall face appears on the other edges. |
 | Moonbay state | Painted inner north/south walls and side returns surround the dry bay. The station door and ocean gate show separate full-length leaves, frames, and open pockets. Native mission captures show the chamber through flooding, launch, return, draining, and damage states without a permanently flooded starting bay. |
 
+## Muted palette revision
+
+The owner asked for quieter colors. The four large-room sprite families now receive a 0.58 saturation grade when loaded for room, card and at-sea sub rendering. Physical door trims, floor markers, ocean lamps and Moonbay water use subdued green, ochre and blue-cyan values. Original PNGs, their alpha, department/category interface colors and other rooms are unchanged. The rebaked cards and native station/mission captures were checked at gameplay scale; plants, cargo hardware and the sub remain identifiable against the neutral hull.
+
 ## Verification
 
 `test_large_room_art`, `test_large_room_integration`, `test_large_room_paid`, `test_moonbay_missions`, and `test_moonbay_save` pass 5/5 under scratch `APPDATA` (`output/test-runs/20260928-232925-headless`). Native card baker captured all 16 raised and 16 Walls-off rotations; four room cards were rebaked. Station and mission review scripts exited successfully under scratch `APPDATA`. The isolated checkout still logs missing unrelated `brineui`/icon atlas resources; room walls and mission imagery render in the captures.

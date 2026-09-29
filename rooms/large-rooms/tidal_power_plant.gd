@@ -7,7 +7,7 @@ static func fixed_bounds() -> Array[Rect2]:
 	return [Rect2(180, 180, 408, 408)]
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
-	var yellow := Color("#e6c84f")
+	var yellow := Color("#b9aa70")
 	Common.begin(canvas, room, rect, Color("#303841"), yellow, WALL_STYLE)
 	for x in [-227, 227]:
 		canvas.draw_rect(Rect2(x - 16, -319, 32, 638), Color("#6f7b7c"))

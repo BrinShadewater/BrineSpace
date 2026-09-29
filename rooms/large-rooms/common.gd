@@ -4,6 +4,7 @@ const FLOOR_SIZE := 768.0
 const HALF := FLOOR_SIZE * 0.5
 const RiserCatalog = preload("res://rooms/whole-room/riser_catalog.gd")
 const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd")
+const ART_SATURATION := 0.58
 static var art_textures: Dictionary = {}
 
 static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color = Color.WHITE) -> void:
@@ -13,6 +14,8 @@ static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color 
 		if error != OK:
 			push_error("Large room art could not load: %s (%d)" % [path, error])
 			return
+		# Grade only these new room sprites; neutral steel keeps its value and detail.
+		image.adjust_bcs(1.0, 1.0, ART_SATURATION)
 		if path.ends_with("_wall_bank.png"):
 			var target := wall_bank_raster_size(image.get_size())
 			image.resize(target.x, target.y, Image.INTERPOLATE_LANCZOS)
@@ -121,9 +124,9 @@ static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String
 	canvas.draw_rect(opening.grow(5), accent.darkened(0.58))
 	canvas.draw_rect(opening, Color("#050d14"))
 	if vertical:
-		for y in [-38, 38]: canvas.draw_rect(Rect2(center + Vector2(-13, y-4), Vector2(26, 8)), accent.lightened(0.26))
+		for y in [-38, 38]: canvas.draw_rect(Rect2(center + Vector2(-13, y-4), Vector2(26, 8)), accent.lightened(0.12))
 	else:
-		for x in [-38, 38]: canvas.draw_rect(Rect2(center + Vector2(x-4, -13), Vector2(8, 26)), accent.lightened(0.26))
+		for x in [-38, 38]: canvas.draw_rect(Rect2(center + Vector2(x-4, -13), Vector2(8, 26)), accent.lightened(0.12))
 
 static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, open: bool, raised: bool) -> void:
 	var center := Vector2.ZERO
@@ -138,4 +141,4 @@ static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, op
 	canvas.draw_rect(Rect2(center - size * 0.5, size), Color("#07161e") if open else Color("#113b4b"))
 	for i in range(-2, 3):
 		var mark := center + (Vector2(0, i * 31) if vertical else Vector2(i * 31, 0))
-		canvas.draw_circle(mark, 4, accent.lightened(0.32))
+		canvas.draw_circle(mark, 4, accent.lightened(0.14))

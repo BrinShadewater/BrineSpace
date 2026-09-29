@@ -21,7 +21,7 @@ static func visual_state(room: Dictionary) -> Dictionary:
 		"damage":int(mission.get("damage",0))}
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
-	var cyan := Color("#46d3e6")
+	var cyan := Color("#78afb9")
 	var state := visual_state(room)
 	Common.begin(canvas, room, rect, Color("#263842"), cyan, WALL_STYLE)
 	# Floor rail points west to the sealed launch chamber; the hangar stays dry.
@@ -36,11 +36,11 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 		for x in [-142,142]: canvas.draw_circle(Vector2(x,0),23,Color("#0c2533"))
 	if state.chamber_water>0.0:
 		var water_height: float = 214.0*state.chamber_water
-		canvas.draw_rect(Rect2(-226,108-water_height,452,water_height),Color(0.09,0.54,0.72,0.48))
-		canvas.draw_line(Vector2(-226,108-water_height),Vector2(226,108-water_height),Color("#72daf0"),4)
+		canvas.draw_rect(Rect2(-226,108-water_height,452,water_height),Color(0.16,0.42,0.50,0.42))
+		canvas.draw_line(Vector2(-226,108-water_height),Vector2(226,108-water_height),Color("#89bac2"),4)
 	# A full pressure enclosure keeps the dry hangar distinct from the floodable launch path.
 	_draw_bay_enclosure(canvas, state)
-	for x in [-247,247]: canvas.draw_circle(Vector2(x,96),7,Color("#52d8df") if (x>0 and state.station_open) or (x<0 and state.ocean_open) else Color("#d7a25c"))
+	for x in [-247,247]: canvas.draw_circle(Vector2(x,96),7,Color("#83b9bc") if (x>0 and state.station_open) or (x<0 and state.ocean_open) else Color("#b49a72"))
 	canvas.draw_line(Vector2(-203, 0), Vector2(-340, 0), cyan.darkened(0.4), 6)
 	for x in [-280, -150, 150, 280]: canvas.draw_circle(Vector2(x, 172), 9, cyan.darkened(0.3))
 	Common.finish(canvas)
