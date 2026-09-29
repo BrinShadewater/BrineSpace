@@ -295,7 +295,7 @@ func _ready() -> void:
 		var env_layer := EnvPass.new()
 		env_layer.host = self
 		env_layer.pass_id = id
-		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvTerrain","EnvDerelicts","EnvExteriorActors","EnvFog"][id]
+		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvTerrain","EnvDerelicts","EnvExteriorActors","EnvFog","EnvLife"][id]
 		if id == Env.DERELICTS:
 			var condition_material := ShaderMaterial.new()
 			condition_material.shader = preload("res://scripts/derelict_material.gdshader")
@@ -709,7 +709,7 @@ class SurfacePass extends Node2D:
 # Environment layers below the station surfaces. STATIC_* retain their commands
 # between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
 var underwater_visibility = preload("res://scripts/underwater_visibility.gd").new()
-enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, STATIC_TERRAIN, DERELICTS, EXTERIOR_ACTORS, FOG }
+enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, STATIC_TERRAIN, DERELICTS, EXTERIOR_ACTORS, FOG, LIFE }
 class EnvPass extends Node2D:
 	var host
 	var pass_id := 0
@@ -965,13 +965,14 @@ func _draw_grid() -> void:
 		if profile_draw: environment_stage = _profile_draw_stage("env_stars",environment_stage)
 		_draw_underwater_depth()
 		if profile_draw: environment_stage = _profile_draw_stage("env_haze",environment_stage)
+		env_passes[Env.LIFE].queue_redraw()
 		_draw_foundations()
 		_draw_foundations(true)
 		if profile_draw: environment_stage = _profile_draw_stage("env_foundations",environment_stage)
 		_draw_environment_above(main,cell_size,grid_pixel_size)
 		# Keep material-isolated rooms and exterior actors in their normal order
 		# even when the diagnostic flag disables retained environment surfaces.
-		for id in [Env.DERELICTS,Env.EXTERIOR_ACTORS,Env.FOG]:
+		for id in [Env.DERELICTS,Env.EXTERIOR_ACTORS,Env.FOG,Env.LIFE]:
 			env_passes[id].show()
 			env_passes[id].queue_redraw()
 	stage_time = _profile_draw_stage("environment", stage_time)
@@ -1292,6 +1293,9 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	_mark_built(target)
 	render_door_cache_active = reuse_frame_doors
+		Env.LIFE:
+			# Sea life sits above the fog (which has its own shader) and below the station.
+			preload("res://scripts/ocean_life.gd").draw(target,main,cell_size,_view_rect(main))
 	draw_target = target
 	_paint_surface(pass_id)
 	draw_target = self
