@@ -69,7 +69,10 @@ static var layout_geometry_revision:=-1
 var service_preferences: Dictionary = SERVICES.duplicate(true)
 var spawn_offset := Vector2.ZERO
 var decision_rng: RandomNumberGenerator
-const CREW_CLEARANCE := 20.0
+# Minimum centre-to-centre distance between two crew. A standing crew sprite is about 29 units wide (up to about
+# 45 mid-stride), so 20 let bodies overlap; 30 keeps them apart. Detours avoid peers by 32, so keep this at or below that.
+# Measured on a 6-crew station: 44 of 2400 frames overlapped at 20, none at 30 (spec 2026-09-29-crew-collision-design.md).
+const CREW_CLEARANCE := 30.0
 var avoidance_position := Vector2.INF
 var avoidance_positions := PackedVector2Array()
 var traffic_wait := 0.0
