@@ -83,6 +83,35 @@ static func draw_fixtures(canvas: CanvasItem, level: float, white := false, warm
 		if settings.has("color"): lens=Color(settings.color)
 		canvas.draw_rect(Rect2(anchor-Vector2(6.5,1),Vector2(13,2)),Color("34484b").lerp(lens,energy))
 
+# A soft glow around a lit lamp (owner playtest, Sept 29; spec 2026-09-29-lighting-atmosphere-design.md).
+# The texture falls off in five visible bands with light ordered dithering, so it reads as painted pixel
+# art rather than a blur, and it is drawn with the room's light level so it fades with the lamp.
+static var _halo: ImageTexture
+static func halo_texture() -> ImageTexture:
+	if _halo != null: return _halo
+	var size := 64
+	var image := Image.create(size, size, false, Image.FORMAT_RGBA8)
+	var bayer := [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]
+	for y in range(size):
+		for x in range(size):
+			var distance := Vector2(x + 0.5 - size * 0.5, y + 0.5 - size * 0.5).length() / (size * 0.5)
+			var value := clampf(1.0 - distance, 0.0, 1.0)
+			value *= value
+			var threshold := (float(bayer[(y % 4) * 4 + (x % 4)]) + 0.5) / 16.0 - 0.5
+			var banded := floorf(value * 5.0 + 0.5 + threshold * 0.6) / 5.0
+			image.set_pixel(x, y, Color(1, 1, 1, clampf(banded, 0.0, 1.0)))
+	_halo = ImageTexture.create_from_image(image)
+	return _halo
+
+static func draw_halos(canvas: CanvasItem, level: float, white := false, warm := false, anchors: Array=ANCHORS) -> void:
+	var tint := Color(1.0, 0.90, 0.70) if warm or not white else Color(0.92, 0.97, 1.0)
+	for entry in anchors:
+		var anchor: Vector2=entry.at if entry is Dictionary else entry
+		var settings: Dictionary=entry if entry is Dictionary else {}
+		var energy:=clampf(level*float(settings.get("brightness",1.0)),0,1)
+		if energy < 0.05: continue
+		canvas.draw_texture_rect(halo_texture(), Rect2(anchor - Vector2(70, 46), Vector2(140, 140)), false, Color(tint.r, tint.g, tint.b, 0.30 * energy))
+
 # Rounded, anti-aliased footprints for the contact bands. Styleboxes are cached by colour and
 # radius: a room redraws these every frame and a fresh StyleBoxFlat per prop per band is waste.
 static var _contact_boxes := {}

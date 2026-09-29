@@ -579,6 +579,7 @@ func _build_ui() -> void:
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	grid_frame.add_child(scroll)
 	grid_scroll = scroll
+	grid_frame.add_child(_make_vignette())
 	scroll.resized.connect(_resize_grid_view)
 
 	var grid := GridCanvasScript.new()
@@ -3617,6 +3618,27 @@ func _center_grid_on_station() -> void:
 
 func _center_grid_on_station_deferred() -> void:
 	_center_grid_on_station.call_deferred()
+
+# A soft dark edge over the station view (owner playtest, Sept 29; spec 2026-09-29-lighting-atmosphere-design.md).
+# One gradient overlay, no screen read, so it costs almost nothing and stays on at every quality level.
+func _make_vignette() -> TextureRect:
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.55, 1.0])
+	gradient.colors = PackedColorArray([Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0.01, 0.03, 0.04, 0.42)])
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_RADIAL
+	texture.fill_from = Vector2(0.5, 0.5)
+	texture.fill_to = Vector2(1.0, 0.5)
+	texture.width = 256
+	texture.height = 256
+	var overlay := TextureRect.new()
+	overlay.name = "Vignette"
+	overlay.texture = texture
+	overlay.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	overlay.stretch_mode = TextureRect.STRETCH_SCALE
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return overlay
 
 func _fit_station_view(animated := false) -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
