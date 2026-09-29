@@ -15,6 +15,19 @@ option B, unpowered rooms lighter than in the mockup): wonder in the water outsi
 
 Two stages, each shippable on its own. Stage 1 first because it changes the whole screen for the least cost.
 
+## Research findings that shaped this design (Sept 29)
+
+- Built-in 2D glow: HDR 2D exists only in Forward+ and Mobile, so in Compatibility glow works on 8-bit
+  values only. A probe on the owner's station changed the average pixel by about 3 of 255 and it would also
+  glow the HUD. Not used.
+- `PointLight2D`: a cap of 15 lights per sprite and a per-light cost. Docs recommend additive sprites for
+  many small lights. Not used.
+- Full-screen shaders that read the screen force a full-screen copy each frame; one user measured about 4 ms
+  for an empty one on an integrated GPU. Not used at Low or Medium.
+- A quarter-resolution light map in a hidden viewport, multiplied over the station, gives unlimited coloured
+  lights in one pass without a screen read. A bench on the owner's PC showed it costing about the same as a
+  plain vignette (that PC is CPU-bound at about 5 ms, so treat this as "cheap", not exact).
+
 ## What exists today (measured or read on 2026-09-29)
 
 - Renderer is `gl_compatibility` (`project.godot`). No 2D lights or screen-space glow are assumed.
@@ -39,25 +52,37 @@ Two stages, each shippable on its own. Stage 1 first because it changes the whol
 2. **Lamp halos**: an additive soft radial sprite at each lamp fixture and lit screen, drawn where
    `RoomLighting.draw_fixtures` draws the lamp, scaled by the room's light level. Threshold-and-blur bloom
    is out of scope (needs a screen copy each frame).
-3. **Vignette**: one full-screen `TextureRect` (radial gradient) above the station view and below the
+3. **Contact shadows**: soft dark edges along wall bases and under props, baked once per room layout into
+   the retained layer (not per frame). Cheap depth for every room, lit or not.
+4. **Vignette**: one full-screen `TextureRect` (radial gradient) above the station view and below the
    HUD. Audition strength 0.34.
-4. **Quality setting**: `Low / Medium / High` in Settings > Display, stored in `title_settings.gd`.
+5. **Quality setting**: `Low / Medium / High` in Settings > Display, stored in `title_settings.gd`.
    - Low: current look plus the vignette.
    - Medium (default, owner decision): shafts, caustics, tint, halos and vignette at the audition strengths.
    - High: the same with a second caustics layer and denser particles.
-5. **Reduced Motion**: shafts and caustics hold still; particles use the existing `motion` uniform (0).
+6. **Reduced Motion**: shafts and caustics hold still; particles use the existing `motion` uniform (0).
 
 ## Stage 2: room lighting
 
-1. **Light pools**: for each powered room, two soft warm pools under its lamps, drawn additively in the
-   retained lights layer with the room's light level (and its fade) as strength. Colour about (1.0, 0.90,
-   0.70); audition strength 0.34, pool width 0.40 and height 0.62 of a cell. Pools are clipped to the room.
-2. **Unpowered rooms**: brightness floor 0.55 of normal (owner: lighter than the audition's 0.36) with a
-   faint blue tint (audition 0.5 x (0, 0.02, 0.05)). They must stay readable.
-3. **Blackout emergency**: unpowered rooms get slow red pulses (audition strength 0.16), one pulse per
-   second at most. Reduced Motion holds the red steady at a low level. Uses the `low_power` state so it
-   fires only in a real blackout, not for a room that simply has no generator yet.
-4. Lighting stays deterministic from the visual clock, so it freezes with pause like the other effects.
+1. **Light map**: a hidden `SubViewport` at one quarter of the station view's resolution holds every light
+   as a soft blob and each room's ambient level. It is multiplied over the station by one full-screen
+   `TextureRect` (multiply blend, no screen read). It must follow scrolling and zoom exactly; a test
+   compares a lamp's position in the light map with the lamp on screen at three zoom levels.
+2. **Unpowered rooms**: ambient brightness floor 0.55 of normal (owner: lighter than the audition's 0.36)
+   with a faint blue tint (audition 0.5 x (0, 0.02, 0.05)). They must stay readable.
+3. **Warm pools**: multiply can only darken, so the visible warm pools are additive soft sprites under each
+   powered room's lamps, in the retained lights layer, using the room's light level and fade. Colour about
+   (1.0, 0.90, 0.70); audition strength 0.34, width 0.40 and height 0.62 of a cell, clipped to the room. The
+   pool and halo textures are baked in 4 to 6 visible bands with light ordered dithering, so they read as
+   painted pixel art rather than a blur.
+4. **Door spill**: where a lit room's open door meets a darker neighbour, a soft additive wedge of light
+   falls on the neighbour's floor near the door, scaled by the lit room's level. It uses the light-level
+   data `_door_light_state` already gathers.
+5. **Blackout emergency**: unpowered rooms get red light, one slow pulse per second at most (audition
+   strength 0.16), plus a slowly rotating beacon sweep at each door. Reduced Motion holds the red steady and
+   still. Uses the `low_power` state so it fires only in a real blackout, not for a room that simply has no
+   generator yet.
+6. Lighting stays deterministic from the visual clock, so it freezes with pause like the other effects.
 
 ## Performance budget and checks
 
@@ -73,8 +98,9 @@ Two stages, each shippable on its own. Stage 1 first because it changes the whol
 
 ## Not in scope
 
-- Real dynamic 2D lights and shadow casting (`PointLight2D`); the retained-layer design would fight them.
-- A full-screen bloom or colour-grading pass.
+- Godot's `PointLight2D` nodes and dynamic shadow casting (see research findings).
+- A full-screen bloom or colour-grading pass that reads the screen. A High-only screen-read effect can be
+  reconsidered later if the frame budget allows.
 - New art. Effects are procedural (shader, gradients, additive sprites).
 - Mac tuning beyond the Low/Medium/High setting; a Mac check is a follow-up.
 
@@ -84,6 +110,8 @@ Two stages, each shippable on its own. Stage 1 first because it changes the whol
   quantisation so a fade does not repaint every frame.
 - Additive halos can wash out light floors (the mockup overexposed at higher strengths). Keep strengths at
   the audition values and check the bright Hydroponics floor first.
+- Light-map alignment under scroll and zoom is the main technical risk of stage 2; build and test it first,
+  before any pools or spill.
 - Caustics on a dark background can look like noise at 1080p; keep them faint and slow.
 
 ## Open questions
