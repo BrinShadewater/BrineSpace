@@ -2,6 +2,8 @@
 
 ## Large rooms design — September 28, 2026
 
+September 29 visual-bible audit: all eight new painted source assets and the four assembled rooms were checked at source, card, rotation and native station scale. Pixel density, focal scale and perspective are sound at current display sizes. The [focused audit](LARGE_ROOM_VISUAL_AUDIT_2026-09-29.md) records three visible material/color corrections: Tidal's flat ocean-face block, Moonbay's schematic bay rails/trim, and Hydroponics's broad green deck wash. No art changed in that review; owner visual acceptance remains open.
+
 September 29 interior pass: fixed supporting work areas now surround each centerpiece: crop service, cargo handling, sub maintenance and boarding, and turbine service. Accepted station props retain their native muted colors and block crew navigation at their floor footprints. All four doors remain connected in every rotation. The four cards were rebaked; native station and Moonbay mission captures were reviewed. Owner visual acceptance remains open.
 
 September 29 floor pass: the flat placeholder grid has been replaced with muted department material in all four large rooms, plus flush drains, load-bay marks, Moonbay anti-slip/boarding marks, and turbine service grates. Moonbay remains dry until its existing mission phase floods the launch chamber. The 16 raised-wall and 16 Walls-off rotations, four native station rooms, and eight Moonbay mission phases were reviewed; five focused tests pass. The selected cards were rebaked. Owner visual acceptance remains open.
