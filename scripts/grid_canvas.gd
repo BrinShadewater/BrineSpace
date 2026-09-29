@@ -1258,7 +1258,7 @@ func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
 	var cell_size := _cell_size()
 	var stage_time: int = Time.get_ticks_usec() if profile_draw else 0
 	_draw_environment_layer(main,cell_size,pass_id)
-	if profile_draw: _profile_draw_stage("env_pass_"+["below","lines","foundations","above","terrain","derelicts","exterior_actors","fog"][pass_id],stage_time)
+	if profile_draw: _profile_draw_stage("env_pass_"+["below","lines","foundations","above","terrain","derelicts","exterior_actors","fog","life"][pass_id],stage_time)
 	draw_target = self
 
 func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
