@@ -192,7 +192,13 @@ static func build_light_map(game) -> TextureRect:
 	return overlay
 
 # Called every frame from main._process; cheap unless something changed.
+# The grid resolves the game through the tree's current scene, so while a scene change is under way
+# (Save & Return to Title) a last draw would read the title screen instead. Skip it.
+static func game_is_current(game) -> bool:
+	return is_instance_valid(game) and game.is_inside_tree() and game.get_tree().current_scene == game
+
 static func update_light_map(game) -> void:
+	if not game_is_current(game): return
 	var overlay: TextureRect = game.light_map
 	if overlay == null or not is_instance_valid(overlay): return
 	var active: bool = TitleSettings.effects_quality > 0
@@ -247,6 +253,7 @@ static func _narrow(grid, room: Dictionary) -> bool:
 	return grid._is_narrow_corridor(room)
 
 static func draw_ambient(node: Node2D, game) -> void:
+	if not game_is_current(game): return
 	var grid = game.grid_view
 	var size: float = grid._cell_size()
 	var lit := Color(LIT_AMBIENT, LIT_AMBIENT, LIT_AMBIENT)
@@ -267,6 +274,7 @@ static func _blob(node: Node2D, at: Vector2, radius: Vector2, color: Color) -> v
 	node.draw_texture_rect(halo_texture(), Rect2(at - radius, radius * 2.0), false, color)
 
 static func draw_lights(node: Node2D, game) -> void:
+	if not game_is_current(game): return
 	var grid = game.grid_view
 	var size: float = grid._cell_size()
 	var k := size / 384.0
@@ -376,32 +384,45 @@ static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: floa
 		if view != null:
 			var visual: Rect2 = view.prop_visual_bounds(prop)
 			rise=clampf(visual.size.y-foot.size.y,8.0,85.0)
-		# A short directional shade stays joined to the installation. Sprite height
-		# is not a physical light distance: long offsets made furniture hover.
-		var shadow_color := Color(0.015,0.025,0.04,(0.018+0.012*level))
-		if batch_projected_shadows:
-			var mesh := projected_shadow_mesh(foot,rise)
-			if not mesh.indices.is_empty():
-				RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),mesh.indices,mesh.points,PackedColorArray([shadow_color]))
-		else:
-			for penumbra in range(3):
-				var offset := Vector2(0.32,0.52)*(minf(rise*0.12,5.0)+float(penumbra))
-				var projected := PackedVector2Array([foot.position,Vector2(foot.end.x,foot.position.y),foot.end+offset,Vector2(foot.position.x,foot.end.y)+offset])
-				for clipped in Geometry2D.intersect_polygons(projected,hull):
-					canvas.draw_colored_polygon(clipped,shadow_color)
-		# Per-prop order is preserved for overlapping translucent shadows.
+		# A corner piece stands on the two arms of its L (its collision boxes), not on the whole art box, whose
+		# inside is open floor. Shading the box made a big dark square in the Brine Core.
+		var feet: Array = [foot]
+		if not prop.has("footprint") and prop.has("corner") and not prop.get("collision_boxes",[]).is_empty():
+			feet = []
+			for box in prop.collision_boxes:
+				feet.append(Rect2(rect.position+rect.size*Vector2(float(box[0]),float(box[1])),rect.size*Vector2(float(box[2]),float(box[3]))))
+		for part in feet:
+			_draw_foot_shadow(canvas,part,rise,level,hull)
 
-		# Concentric contact bands touch every edge instead of forming an offset
-		# dark mat below the object. Keep a stronger core and a restrained fringe.
-		# The bands are rounded and edge-smoothed: square corners under round and irregular
-		# machinery read as a jagged mat rather than a shadow (owner playtest note 15).
-		for band in range(3):
-			var spread := float(3-band)*0.7
-			var shade := foot.grow(spread)
-			shade=shade.intersection(Rect2(-180,-180,360,360))
-			if shade.has_area():
-				_contact_box(Color(0.015,0.025,0.03,(0.025+float(band)*0.018)*(0.8+0.2*level)),
-					minf(minf(shade.size.x,shade.size.y)*0.22,10.0)).draw(canvas.get_canvas_item(),shade)
+# One footprint's shadow: a short directional shade plus soft contact bands. Corner installations pass
+# each arm of their L separately, so the empty inside of the corner is not shaded (owner, Sept 29).
+static func _draw_foot_shadow(canvas: CanvasItem, foot: Rect2, rise: float, level: float, hull: PackedVector2Array) -> void:
+	# A short directional shade stays joined to the installation. Sprite height
+	# is not a physical light distance: long offsets made furniture hover.
+	var shadow_color := Color(0.015,0.025,0.04,(0.018+0.012*level))
+	if batch_projected_shadows:
+		var mesh := projected_shadow_mesh(foot,rise)
+		if not mesh.indices.is_empty():
+			RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),mesh.indices,mesh.points,PackedColorArray([shadow_color]))
+	else:
+		for penumbra in range(3):
+			var offset := Vector2(0.32,0.52)*(minf(rise*0.12,5.0)+float(penumbra))
+			var projected := PackedVector2Array([foot.position,Vector2(foot.end.x,foot.position.y),foot.end+offset,Vector2(foot.position.x,foot.end.y)+offset])
+			for clipped in Geometry2D.intersect_polygons(projected,hull):
+				canvas.draw_colored_polygon(clipped,shadow_color)
+	# Per-prop order is preserved for overlapping translucent shadows.
+
+	# Concentric contact bands touch every edge instead of forming an offset
+	# dark mat below the object. Keep a stronger core and a restrained fringe.
+	# The bands are rounded and edge-smoothed: square corners under round and irregular
+	# machinery read as a jagged mat rather than a shadow (owner playtest note 15).
+	for band in range(3):
+		var spread := float(3-band)*0.7
+		var shade := foot.grow(spread)
+		shade=shade.intersection(Rect2(-180,-180,360,360))
+		if shade.has_area():
+			_contact_box(Color(0.015,0.025,0.03,(0.025+float(band)*0.018)*(0.8+0.2*level)),
+				minf(minf(shade.size.x,shade.size.y)*0.22,10.0)).draw(canvas.get_canvas_item(),shade)
 
 static func riser_edits(edits: Dictionary) -> Dictionary:
 	# Promote saved low-mount offsets before studio defaults can mask them.
