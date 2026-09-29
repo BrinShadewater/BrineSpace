@@ -339,6 +339,9 @@ var journal_opener: Control
 var inspected_resource := ""
 # The stage 2 light map overlay over the station view (RoomLighting.build_light_map).
 var light_map: TextureRect
+# Red edge tint and hull-creak state (scripts/hazard_feedback.gd).
+var hazard_tint: TextureRect
+var creak_applied := Vector2i.ZERO
 var camera_pan_remainder := Vector2.ZERO
 var camera_pan_velocity := Vector2.ZERO
 var camera_zoom_target := -1.0
@@ -428,6 +431,7 @@ var crew_frame_usec := {}
 var operations_refresh_step := 0.5
 
 func _process(delta: float) -> void:
+	preload("res://scripts/hazard_feedback.gd").update(self)
 	preload("res://rooms/whole-room/room_lighting.gd").update_light_map(self)
 	var stamp := Time.get_ticks_usec()
 	var frame_start := stamp
@@ -585,6 +589,8 @@ func _build_ui() -> void:
 	light_map = preload("res://rooms/whole-room/room_lighting.gd").build_light_map(self)
 	grid_frame.add_child(light_map)
 	grid_frame.add_child(_make_vignette())
+	hazard_tint = preload("res://scripts/hazard_feedback.gd").make_tint()
+	grid_frame.add_child(hazard_tint)
 	scroll.resized.connect(_resize_grid_view)
 
 	var grid := GridCanvasScript.new()
