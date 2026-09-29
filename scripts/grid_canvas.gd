@@ -1718,15 +1718,14 @@ func _draw_room(room: Dictionary) -> void:
 		_draw_room_path(room, rect)
 		_draw_room_doors(room, rect)
 
-# The selected room gets a thin lamp-light outline that follows its hull (the whole cell for
-# rooms and wards, the tube for corridors), drawn over walls and props but under crew. It
-# replaced a teal box around the cell, with lines to every connected neighbour, that read as
-# UI laid over the art (owner playtest). Hovering a room shows the same outline, fainter.
+# The room under the pointer gets a faint lamp-light outline that follows its hull (the whole
+# cell for rooms and wards, the tube for corridors), drawn over walls and props but under crew.
+# A selected room gets no outline of its own any more (owner playtest, Sept 28); the inspector
+# shows the selection.
 func _draw_room_selection(main, cell_size: float) -> void:
-	for mark in [[main.selected_room_cell, 1.0], [main.hover_cell, 0.4]]:
+	for mark in [[main.hover_cell, 0.4]]:
 		var cell: Vector2i = mark[0]
 		var strength: float = mark[1]
-		if strength < 1.0 and cell == main.selected_room_cell: continue
 		var room: Dictionary = main.occupied.get(cell, {})
 		if room.is_empty():
 			var ward: Dictionary = main.wrecks.get(cell, {})

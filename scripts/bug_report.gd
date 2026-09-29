@@ -27,7 +27,13 @@ const SAVE_FILES := [
 ]
 
 var owns_session_lock := false
-var was_paused := false
+# Only this overlay and the layout Studio ever pause the tree. Each used to remember whether the
+# tree was paused before it and put that back, so closing them in a different order than they
+# opened (report, then Studio, then Cancel, then close the Studio) left the title paused. Each
+# now sets the pause from whether the other one is still open.
+func studio_open() -> bool:
+	var studio := get_tree().root.get_node_or_null("RoomLayoutEditor")
+	return studio != null and not studio.is_queued_for_deletion()
 var last_report_path := ""
 var pending_screenshot: Image = null
 # Diagnostics captured the moment F8 is pressed, so a report shows the moment being
@@ -418,7 +424,6 @@ func _show_overlay(title: String, body: String, with_note: bool, buttons: Array)
 	if overlay == null:
 		_build_overlay()
 	if not overlay.visible:
-		was_paused = get_tree().paused
 		get_tree().paused = true
 	title_label.text = title
 	body_label.text = body
@@ -438,7 +443,7 @@ func _show_overlay(title: String, body: String, with_note: bool, buttons: Array)
 func _hide_overlay() -> void:
 	if overlay != null and overlay.visible:
 		overlay.visible = false
-		get_tree().paused = was_paused
+		get_tree().paused = studio_open()
 	_clear_pending()
 
 func _open_report_folder() -> void:

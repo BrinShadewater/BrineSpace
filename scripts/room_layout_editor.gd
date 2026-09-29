@@ -136,7 +136,6 @@ var defaults: Dictionary={}
 var history: Array=[]
 var future: Array=[]
 var dirty:=false
-var was_paused:=false
 var canvas: LayoutCanvas
 var picker: OptionButton
 var rotations: OptionButton
@@ -315,7 +314,6 @@ func _ready() -> void:
 	foundation_texture=ImageTexture.create_from_image(foundation_image)
 	apply_studio_theme()
 	process_mode=Node.PROCESS_MODE_ALWAYS
-	was_paused=get_tree().paused
 	get_tree().paused=true
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter=Control.MOUSE_FILTER_STOP
@@ -1069,7 +1067,9 @@ func _exit_tree() -> void:
 	if is_instance_valid(covered_scene):
 		covered_scene.visible=covered_scene_visible
 		if "grid_view" in covered_scene and is_instance_valid(covered_scene.grid_view): covered_scene.grid_view.queue_redraw()
-	get_tree().paused=was_paused
+	# Stay paused only while the bug report overlay is still up; it restores the pause itself.
+	var reporter=get_tree().root.get_node_or_null("BugReport")
+	get_tree().paused=reporter!=null and reporter.overlay!=null and reporter.overlay.visible
 func _input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed or event.echo: return
 	if confirm.visible or (recovery_dialog!=null and recovery_dialog.visible): return

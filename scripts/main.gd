@@ -4284,7 +4284,9 @@ func _input(event: InputEvent) -> void:
 		preload("res://scripts/title_button_style.gd").contain_tab(event, scope)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if get_viewport() == null: # The scene can leave the tree between input and handling.
+	# Kept from before the handlers run: Return to Title and similar leave the tree, and get_viewport() is null after.
+	var viewport := get_viewport()
+	if viewport == null: # The scene can leave the tree between input and handling.
 		return
 	if is_instance_valid(menu_archive):
 		return
@@ -4297,11 +4299,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			_pause_page_back()
 		else:
 			_toggle_menu()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Journal"):
 		_open_journal_page("journal")
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if _gameplay_input_blocked():
 		return
@@ -4310,25 +4312,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		Preferences.save(get_window())
 		grid_view.queue_redraw()
 		_refresh_placement_status()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Fit station"):
 		_fit_station_view(true)
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Pause"):
 		_toggle_pause()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Rotate blueprint"):
 		_rotate_selected_room()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if false:
 		admin_mode = not admin_mode
 		_log("Admin topology overlay %s." % ("enabled" if admin_mode else "hidden"), false)
 		_refresh_all()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if event is InputEventMouseButton and event.pressed and event.shift_pressed:
 		# The pointer is read fresh each notch, so moving the mouse mid-scroll steers.
