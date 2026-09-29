@@ -1,6 +1,6 @@
 # Project handoff
 
-Updated: 2026-09-28 · Project: BrineSpace · Task: four large rooms and Moonbay missions
+Updated: 2026-09-28 · Project: BrineSpace · Task: four large rooms, Moonbay missions, riser art
 
 ## Objective and acceptance
 
@@ -12,7 +12,7 @@ Hydroponics Farm is green, Storage Depot and Tidal Power Plant yellow, Moonbay c
 
 ## Current state
 
-Branch `codex/large-rooms` in the managed `large-rooms` worktree. Foundation commits `091da8b9` through `4b5da501` add footprint/ports, paid atomic placement, exact connections and save, initial fixed room views, four card PNGs tracked through Git LFS, and rare draft scheduling. Moonbay commits `2dd782e5`, `f52add3f`, and `8309dead` add the mission model, distant sites, crew boarding and reservation, inspector controls, room/exterior visuals, and checkpoint validation. Final review fixes cover exact small-to-large door checks, reserved ocean faces and construction rechecks, full-footprint scrapping, pilot loss, and older crew-free checkpoints. The subsequent art pass places four painted fixed installations in `rooms/large-rooms/art/`, uses the same mini-sub sprite during missions, and rebakes the four cards. Exact prompts, source hashes and alpha sizes are in `rooms/large-rooms/art/SOURCES.md`. Native captures are under `output/large-room-review/` and `output/moonbay-review/`. The repeatable paid walkthrough is `tools/review_moonbay_paid.gd`.
+Branch `codex/large-rooms` in the managed `large-rooms` worktree. Foundation commits `091da8b9` through `4b5da501` add footprint/ports, paid atomic placement, exact connections and save, initial fixed room views, four card PNGs tracked through Git LFS, and rare draft scheduling. Moonbay commits `2dd782e5`, `f52add3f`, and `8309dead` add the mission model, distant sites, crew boarding and reservation, inspector controls, room/exterior visuals, and checkpoint validation. Final review fixes cover exact small-to-large door checks, reserved ocean faces and construction rechecks, full-footprint scrapping, pilot loss, and older crew-free checkpoints. The subsequent art pass places four painted fixed installations in `rooms/large-rooms/art/`, uses the same mini-sub sprite during missions, and rebakes the four cards. The later riser pass adds four 60-unit painted raised wall faces with cap and skirt, plus fixed functional wall banks on sealed spans. Raised walls follow the station Walls setting; the four doors and Moonbay/Tidal ocean face remain clear. These are structural room art, while separate Studio wall decorations remain paused. Exact art prompts, source hashes and alpha sizes are in `rooms/large-rooms/art/SOURCES.md` and `rooms/large-rooms/art/RISER_SOURCES.md`. Native captures are under `output/large-room-review/` and `output/moonbay-review/`. The repeatable paid walkthrough is `tools/review_moonbay_paid.gd`.
 
 ## Verification
 
@@ -21,9 +21,10 @@ Branch `codex/large-rooms` in the managed `large-rooms` worktree. Foundation com
 - Native room/card captures cover all four rooms and rotations. `tools/review_moonbay.gd` captures eight launch-chamber states. `tools/review_moonbay_paid.gd` passes paid construction, Survey, Recover, Deep Access, hazardous early return, 4 Metal repair, and at-sea disk Save/Continue; six paid screenshots are in `output/moonbay-review/`.
 - Final review checks: placement, scrap, missions and Moonbay save 4/4 pass; crew construction, paid build, Moonbay save and general Save/Continue 4/4 pass; legacy crew-death/old-checkpoint and Moonbay save 2/2 pass after the compatibility fix. The native paid walkthrough was rerun after the placement changes and passed with zero failures.
 - Art pass: the revised navigation blockers clear all four door approaches; `test_large_room_art`, integration and paid construction pass 3/3, and Moonbay mission/save tests pass 3/3. Four final station captures, 16 rotated card frames and eight Moonbay mission-state captures were generated under scratch `APPDATA` and visually reviewed. The painted assets decode as true-alpha PNGs without Godot imports.
+- Riser pass: four new wall-bank PNGs decode as true-alpha artwork without Godot imports. The art, integration, paid construction and Moonbay mission tests pass 4/4; the art, integration and Moonbay save tests passed again after the final door-cutout adjustment. Four native station views, 16 raised-wall card rotations, 16 Walls-off rotations, and eight mission-state views were captured under scratch `APPDATA` and visually inspected. The Walls-off view restores the prior low-wall treatment. A test assertion for south-side mount coordinates was corrected and the art test passed afterward.
 - The real progress save, checkpoint, profile and Studio files matched pre/post hashes. The active diagnostic `last_session.json` changed continuously while a separate Godot process was running; we did not restore or alter it. An earlier wrapper invocation rotated five owner `logs` files, already disclosed. All subsequent Godot tests and probes used scratch `APPDATA`.
 - Native runs still emit missing-resource messages for existing `brineui` and icon atlases in this isolated checkout, although the room and mission captures render. Check the import/cache state before a release build.
 
 ## Next action
 
-Have the owner review the four painted room compositions and play a normal long run to tune rare-card timing, large-room economy, mission duration and hazard frequency. Merge or publish after the owner's review.
+Have the owner review the four painted room compositions and riser walls, then play a normal long run to tune rare-card timing, large-room economy, mission duration and hazard frequency. Merge or publish after the owner's review.

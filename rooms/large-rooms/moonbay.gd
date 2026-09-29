@@ -1,6 +1,7 @@
 extends RefCounted
 
 const Common = preload("res://rooms/large-rooms/common.gd")
+const WALL_STYLE := {"material":"data_archive", "art":"res://rooms/large-rooms/art/launch_wall_bank.png", "side":"south", "axis":-192.0, "shade":0.35}
 
 static func fixed_bounds() -> Array[Rect2]:
 	return [Rect2(151, 267, 466, 234)]
@@ -17,7 +18,7 @@ static func visual_state(room: Dictionary) -> Dictionary:
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	var cyan := Color("#46d3e6")
 	var state := visual_state(room)
-	Common.begin(canvas, room, rect, Color("#263842"), cyan)
+	Common.begin(canvas, room, rect, Color("#263842"), cyan, WALL_STYLE)
 	# Floor rail points west to the sealed launch chamber; the hangar stays dry.
 	for y in [-89, 89]:
 		canvas.draw_rect(Rect2(-360, y - 7, 720, 14), Color("#597683"))

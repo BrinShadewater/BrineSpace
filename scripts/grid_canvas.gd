@@ -1674,7 +1674,9 @@ func _draw_room(room: Dictionary) -> void:
 	var cell_size := _cell_size()
 	if LARGE_ROOM_VIEWS.has(str(room.id)):
 		var large_rect := Rect2(Vector2(pos) * cell_size + Vector2.ONE, Vector2.ONE * (cell_size * 2.0 - 2.0))
-		LARGE_ROOM_VIEWS[room.id].draw(draw_target, room, large_rect)
+		var appearance: Dictionary = room.duplicate()
+		appearance["raised_walls"] = main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls
+		LARGE_ROOM_VIEWS[room.id].draw(draw_target, appearance, large_rect)
 		if main.unpowered_room_cells.has(pos):
 			draw_target.draw_rect(large_rect, Color(0.05, 0.02, 0.03, 0.35))
 		return

@@ -1,13 +1,14 @@
 extends RefCounted
 
 const Common = preload("res://rooms/large-rooms/common.gd")
+const WALL_STYLE := {"material":"tidal_condenser", "art":"res://rooms/large-rooms/art/tidal_wall_bank.png", "side":"north", "axis":230.0, "shade":0.3}
 
 static func fixed_bounds() -> Array[Rect2]:
 	return [Rect2(180, 180, 408, 408)]
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	var yellow := Color("#e6c84f")
-	Common.begin(canvas, room, rect, Color("#303841"), yellow)
+	Common.begin(canvas, room, rect, Color("#303841"), yellow, WALL_STYLE)
 	for x in [-227, 227]:
 		canvas.draw_rect(Rect2(x - 16, -319, 32, 638), Color("#6f7b7c"))
 		for y in range(-277, 278, 92): canvas.draw_rect(Rect2(x - 24, y - 5, 48, 10), Color("#b4ab70"))

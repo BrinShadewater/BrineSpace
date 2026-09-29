@@ -16,6 +16,9 @@ const VIEWS := ["res://rooms/large-rooms/hydroponics_farm.gd",
 const ART := ["res://rooms/large-rooms/art/grow_beds.png",
 	"res://rooms/large-rooms/art/cargo_gantry.png", "res://rooms/large-rooms/art/mini_sub.png",
 	"res://rooms/large-rooms/art/tidal_turbine.png"]
+const WALL_ART := ["res://rooms/large-rooms/art/grow_wall_bank.png",
+	"res://rooms/large-rooms/art/cargo_wall_bank.png", "res://rooms/large-rooms/art/launch_wall_bank.png",
+	"res://rooms/large-rooms/art/tidal_wall_bank.png"]
 
 var failures := 0
 
@@ -44,8 +47,22 @@ func _init() -> void:
 		check(painted.load_png_from_buffer(FileAccess.get_file_as_bytes(ART[i])) == OK, id + " painted installation decodes without an import")
 		if painted.get_width()>0:
 			check(painted.get_pixel(0,0).a < 0.1 and painted.get_pixel(int(painted.get_width()/2),int(painted.get_height()/2)).a > 0.5, id + " installation has true exterior alpha and visible interior")
+		var wall_bank := Image.new()
+		check(wall_bank.load_png_from_buffer(FileAccess.get_file_as_bytes(WALL_ART[i])) == OK, id + " painted riser bank decodes without an import")
+		if wall_bank.get_width()>0:
+			check(wall_bank.get_pixel(0,0).a < 0.1 and wall_bank.get_pixel(int(wall_bank.get_width()/2),int(wall_bank.get_height()/2)).a > 0.5, id + " riser bank has true exterior alpha and visible interior")
 		if ResourceLoader.exists(VIEWS[i]):
 			var view = load(VIEWS[i])
+			var style: Dictionary = view.WALL_STYLE
+			check(preload("res://rooms/whole-room/riser_catalog.gd").catalog().has(str(style.material)), id + " uses a registered painted riser face")
+			check(str(style.art) == WALL_ART[i], id + " mounts its own riser bank")
+			for port in room.ports:
+				if str(port.side) != str(style.side): continue
+				var axis: float = float(-192 + port.cell.x*384) if style.side in ["north","south"] else float(-192 + port.cell.y*384)
+				if style.side=="south" or style.side=="west": axis=-axis
+				check(absf(float(style.axis)-axis)>=148.0, id + " riser bank stays clear of its door")
+			if room.get("ocean_side","")==style.side:
+				check(absf(float(style.axis))>=198.0, id + " riser bank stays clear of its ocean face")
 			var bounds: Array = view.fixed_bounds()
 			check(not bounds.is_empty() and bounds[0].size.x >= 150 and bounds[0].size.y >= 100, id + " has a very large fixed prop")
 			for port in room.ports:

@@ -23,6 +23,8 @@ func _init() -> void:
 
 func run() -> void:
 	var review := OS.get_cmdline_user_args().has("--review")
+	var walls_off := OS.get_cmdline_user_args().has("--walls-off")
+	if walls_off: review = true
 	root.size = Vector2i(512, 512)
 	root.content_scale_size = root.size
 	root.transparent_bg = true
@@ -34,11 +36,14 @@ func run() -> void:
 		for rotation in range(4 if review else 1):
 			preview.room = Rooms.get_room(id)
 			preview.room["rotation"] = rotation
+			if walls_off: preview.room["raised_walls"] = false
 			preview.view = Views[id]
 			preview.queue_redraw()
 			await process_frame
 			await RenderingServer.frame_post_draw
-			var path: String = "res://output/large-room-review/%s-r%d.png" % [id,rotation] if review else Cards.PATHS[id]
+			var path: String = Cards.PATHS[id]
+			if review:
+				path = "res://output/large-room-review/%s-r%d-walls-off.png" % [id,rotation] if walls_off else "res://output/large-room-review/%s-r%d.png" % [id,rotation]
 			DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(path.get_base_dir()))
 			var error := root.get_texture().get_image().save_png(path)
 			if error != OK:
