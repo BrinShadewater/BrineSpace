@@ -60,7 +60,7 @@ func _ready() -> void:
 	status.add_theme_color_override("font_color", Color("88aebc"))
 	add_child(status)
 	var awakening := Label.new()
-	awakening.text = "Awaken Architect.."
+	awakening.text = "Awaken, Architect."
 	awakening.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	awakening.add_theme_font_size_override("font_size", 23)
 	awakening.add_theme_color_override("font_color", Color("c3d9d8"))

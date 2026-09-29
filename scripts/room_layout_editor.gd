@@ -1111,20 +1111,37 @@ func _input(event: InputEvent) -> void:
 	else: return
 	get_viewport().set_input_as_handled()
 
+# Studio marks (retired, starred, moved, renamed) live in res://rooms/tileset-library. That folder is
+# writable when the game runs from the project, but read-only in an exported build, so a player's
+# marks go to user://studio_marks instead and are read back from there first.
+const MARKS_DIR := "user://studio_marks/"
+
+static func marks_read_path(path: String) -> String:
+	var mine := MARKS_DIR + path.get_file()
+	return mine if FileAccess.file_exists(mine) else path
+
+static func marks_write(path: String, text: String) -> bool:
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(MARKS_DIR))
+		file = FileAccess.open(MARKS_DIR + path.get_file(), FileAccess.WRITE)
+		if file == null: return false
+	file.store_string(text)
+	file.close()
+	return true
+
 func load_retired() -> void:
 	retired.clear()
-	if not FileAccess.file_exists(RETIRED_PATH): return
-	var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(RETIRED_PATH))
+	var source:=marks_read_path(RETIRED_PATH)
+	if not FileAccess.file_exists(source): return
+	var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(source))
 	if parsed is Array:
 		for id in parsed: retired[str(id)]=true
 
 func save_retired() -> void:
 	var ids: Array=retired.keys(); ids.sort()
-	var file:=FileAccess.open(RETIRED_PATH,FileAccess.WRITE)
-	if file==null:
+	if not marks_write(RETIRED_PATH,JSON.stringify(ids,"	")):
 		push_warning("Could not write "+RETIRED_PATH+"; the mark was not saved.")
-		return
-	file.store_string(JSON.stringify(ids,"	"))
 
 func toggle_retired(id: String) -> void:
 	if id.is_empty(): return
@@ -1137,31 +1154,25 @@ func toggle_retired(id: String) -> void:
 
 func load_marks() -> void:
 	favourites.clear(); recategorised.clear()
-	if FileAccess.file_exists(FAVOURITES_PATH):
-		var starred: Variant=JSON.parse_string(FileAccess.get_file_as_string(FAVOURITES_PATH))
+	if FileAccess.file_exists(marks_read_path(FAVOURITES_PATH)):
+		var starred: Variant=JSON.parse_string(FileAccess.get_file_as_string(marks_read_path(FAVOURITES_PATH)))
 		if starred is Array:
 			for id in starred: favourites[str(id)]=true
-	if FileAccess.file_exists(CATEGORIES_PATH):
-		var moved: Variant=JSON.parse_string(FileAccess.get_file_as_string(CATEGORIES_PATH))
+	if FileAccess.file_exists(marks_read_path(CATEGORIES_PATH)):
+		var moved: Variant=JSON.parse_string(FileAccess.get_file_as_string(marks_read_path(CATEGORIES_PATH)))
 		if moved is Dictionary:
 			for id in moved: recategorised[str(id)]=str(moved[id])
 	names.clear()
-	if FileAccess.file_exists(NAMES_PATH):
-		var named: Variant=JSON.parse_string(FileAccess.get_file_as_string(NAMES_PATH))
+	if FileAccess.file_exists(marks_read_path(NAMES_PATH)):
+		var named: Variant=JSON.parse_string(FileAccess.get_file_as_string(marks_read_path(NAMES_PATH)))
 		if named is Dictionary:
 			for id in named: names[str(id)]=str(named[id])
 
 func save_marks() -> void:
 	var starred: Array=favourites.keys(); starred.sort()
-	var file:=FileAccess.open(FAVOURITES_PATH,FileAccess.WRITE)
-	if file==null: push_warning("Could not write "+FAVOURITES_PATH+"; the star was not saved.")
-	else: file.store_string(JSON.stringify(starred,"	"))
-	var moved:=FileAccess.open(CATEGORIES_PATH,FileAccess.WRITE)
-	if moved==null: push_warning("Could not write "+CATEGORIES_PATH+"; the move was not saved.")
-	else: moved.store_string(JSON.stringify(recategorised,"	"))
-	var named:=FileAccess.open(NAMES_PATH,FileAccess.WRITE)
-	if named==null: push_warning("Could not write "+NAMES_PATH+"; the name was not saved.")
-	else: named.store_string(JSON.stringify(names,"	"))
+	if not marks_write(FAVOURITES_PATH,JSON.stringify(starred,"	")): push_warning("Could not write "+FAVOURITES_PATH+"; the star was not saved.")
+	if not marks_write(CATEGORIES_PATH,JSON.stringify(recategorised,"	")): push_warning("Could not write "+CATEGORIES_PATH+"; the move was not saved.")
+	if not marks_write(NAMES_PATH,JSON.stringify(names,"	")): push_warning("Could not write "+NAMES_PATH+"; the name was not saved.")
 
 ## Where one boxed prop is really two: the emptiest line through the middle of its
 ## art, on whichever axis is emptier. Returns two opaque-trimmed rects in sheet
