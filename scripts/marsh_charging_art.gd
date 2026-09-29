@@ -16,9 +16,13 @@ static func texture(empty: bool) -> Texture2D:
 		textures[key]=ImageTexture.create_from_image(image)
 	return textures[key]
 
+# The seated Marsh fills about 69% of the pod's height, which made him about 1.24 times the size of the awake
+# Marsh. 0.8 brings the two to the same height (owner request, Sept 29); the pod stays anchored at its base.
+const POD_SCALE := 0.8
+
 static func draw(canvas: CanvasItem, rect: Rect2, pod: Dictionary, tint := Color.WHITE) -> void:
 	var empty: bool=pod.get("recovered",false)
-	var scale: float=rect.size.x/684.0
+	var scale: float=rect.size.x/684.0*POD_SCALE
 	var origin := Vector2(rect.get_center().x,rect.end.y)-Vector2(512,1435)*scale
 	canvas.draw_texture_rect(texture(empty),Rect2(origin,Vector2(1024,1536)*scale),false,tint)
 	if empty: return
