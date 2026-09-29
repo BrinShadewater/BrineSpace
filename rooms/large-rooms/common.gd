@@ -7,6 +7,7 @@ const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd
 const PaintedDoor = preload("res://rooms/doors/painted_door.gd")
 const DoorFinish = preload("res://rooms/doors/door_finish.gd")
 const OCEAN_GATE_ART := "res://assets/door-polish-v3/ocean-hatch-top.png"
+const TIDAL_INTAKE_ART := "res://rooms/large-rooms/art/tidal_intake.png"
 const DOOR_STYLES := {"hydroponics_farm":"life_support", "storage_depot":"engineering",
 	"moonbay":"robotics", "tidal_power_plant":"engineering"}
 const ART_SATURATION := 0.58
@@ -185,9 +186,9 @@ static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, op
 	else: return
 	var vertical := side == "west" or side == "east"
 	var size := Vector2(28 if vertical else 192, 192 if vertical else (76 if raised and side == "north" else 28))
-	canvas.draw_rect(Rect2(center - size * 0.5, size).grow(9), Color("#0a2838"))
-	canvas.draw_rect(Rect2(center - size * 0.5, size), Color("#07161e") if open else Color("#113b4b"))
 	if bay_gate:
+		canvas.draw_rect(Rect2(center - size * 0.5, size).grow(9), Color("#111b20"))
+		canvas.draw_rect(Rect2(center - size * 0.5, size), Color("#07161e") if open else Color("#1c282d"))
 		if not art_textures.has(OCEAN_GATE_ART):
 			var image := Image.new()
 			var error := image.load_png_from_buffer(FileAccess.get_file_as_bytes(OCEAN_GATE_ART))
@@ -196,6 +197,26 @@ static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, op
 		if art_textures.has(OCEAN_GATE_ART) and not open:
 			DoorFinish.region(canvas, art_textures[OCEAN_GATE_ART], Rect2(center - size * 0.5, size), Rect2(110,334,1554,220), Color.WHITE, vertical)
 		return
-	for i in range(-2, 3):
-		var mark := center + (Vector2(0, i * 31) if vertical else Vector2(i * 31, 0))
-		canvas.draw_circle(mark, 4, accent.lightened(0.14))
+	# The turbine intake is a fixed hull fitting, not an open launch aperture.
+	if side != "north":
+		WallMaterial.wall(canvas, Rect2(center - size * 0.5, size), not vertical, "engineering")
+	if not art_textures.has(TIDAL_INTAKE_ART):
+		var image := Image.new()
+		var error := image.load_png_from_buffer(FileAccess.get_file_as_bytes(TIDAL_INTAKE_ART))
+		if error != OK:
+			push_error("Tidal intake art could not load (%d)" % error)
+			return
+		image.adjust_bcs(1.0, 1.0, ART_SATURATION)
+		# Keep the intake's horizontal detail near the registered riser density.
+		image.resize(960, 400, Image.INTERPOLATE_LANCZOS)
+		art_textures[TIDAL_INTAKE_ART] = ImageTexture.create_from_image(image)
+	var intake: Texture2D = art_textures[TIDAL_INTAKE_ART]
+	var target := Rect2(center - size * 0.5, size)
+	var source := Rect2(Vector2.ZERO, intake.get_size())
+	if raised and side == "north":
+		target = Rect2(center.x - 96, -381, 192, 62)
+	elif side == "north":
+		target = Rect2(center.x - 96, -376, 192, 20)
+		# The upper frame belongs to the hidden riser; show the grille within a low wall.
+		source = Rect2(0, 118, 960, 160)
+	DoorFinish.region(canvas, intake, target, source, Color.WHITE, vertical)

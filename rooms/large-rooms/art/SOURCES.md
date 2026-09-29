@@ -8,8 +8,11 @@ Four individual true-alpha PNGs were generated with the built-in image generator
 | `cargo_gantry.png` | `exec-0074fdd3-464f-4512-89dc-2fd0938d9689.png` | 1254×1254 | `B95F73F6970BA7EFCD85AAB8EA069D1FC22D494A58A8000A30005812E10EFC4B` |
 | `mini_sub.png` | `exec-2d4e521e-edae-4f59-8e71-1a5e07aa9206.png` | 1816×866 | `16FC1C038ABC8C1FA6A82C0596DBD2453A84C40326365A86D5E340C93A6D5171` |
 | `tidal_turbine.png` | `exec-1e6664b8-681f-4a98-8b54-212d44ad693d.png` | 1254×1254 | `82B0B112579A7273837003A32B9396A671BAB777DD33D256478EB10DEBA6DFF4` |
+| `tidal_intake.png` | `exec-d8057de8-165f-4302-9d73-31052432d753.png` | 1942×809 | `66F9C7718C75DBC8947BEBB46E28B8EA481866F77DF20B81D57B0A080A34E652` |
 
-All four source outputs remain under `C:/Users/Alex/.codex/generated_images/01a0eb04-3a39-7660-805c-735f4ede7ba0/`. The workspace copies are the active assets. No background removal, crop, or color transform was applied. Alpha extrema are 0–255 for every source.
+The original four source outputs remain under `C:/Users/Alex/.codex/generated_images/01a0eb04-3a39-7660-805c-735f4ede7ba0/`. The workspace copies are the active assets. No background removal, crop, or color transform was applied. Alpha extrema are 0–255 for those sources.
+
+September 29 addition: the separate Tidal intake source is also retained under that generated-images directory. Its PNG is copied unchanged and tracked through Git LFS. At runtime it receives the existing 0.58 large-room saturation grade and an aspect-preserving 960×400 Lanczos cache resize before being fitted to the ocean-facing hull in each rotation. The cache resize preserves the source master and places its long-axis detail at 5 source pixels per world unit. It replaces the old five-dot blue block; Moonbay keeps its distinct outer launch hatch.
 
 ## Exact generation prompts
 
@@ -28,6 +31,10 @@ All four source outputs remain under `C:/Users/Alex/.codex/generated_images/01a0
 ### Tidal turbine
 
 > Create one game-ready true-transparent cutout sprite for BrineSpace, a top-down underwater station builder: a massive fixed tidal power turbine assembly viewed directly overhead. One large circular twelve-vane rotor inside a heavy square industrial containment frame, central dark axle hub, two major longitudinal pipe manifolds and bolted service housings attached to the frame. This is a practical maintained internal generator, dry room, not an exposed open-water prop. Engineering yellow appears as restrained safety panels and small hub detail; bulk surfaces are matte charcoal steel and dull warm gray with muted blue-green pipe accents. Detailed hand-painted industrial game-sprite style, shallow hardware thickness, crisp geometry and strong silhouette readable at small gameplay scale, controlled texture, no gloss, no metallic sparkle, no bloom. Square footprint, one cohesive fixed installation centered in the image, true transparent background with clear margin around all sides. No floor, room, doors, people, text, logos, fake checkerboard, photo 3D, vector, or thick cartoon outline. Stylized-concept game asset.
+
+### Tidal ocean intake — September 29
+
+> Create one isolated transparent 2D game sprite for a Tidal Power Plant's sealed ocean-facing intake fitting in a top-down underwater station. A broad horizontal pressure-hull intake module, about 3.4 times wider than tall. It must read as a fixed water intake / turbine feed, NOT a crew passage or hatch door: dark recessed slatted steel grille across the center, sturdy matte charcoal pressure frame, dull gray bolted ribs, two small muted ochre safety plates, restrained blue-gray pipe coupling at each end. Direct overhead/cutaway view with only shallow hardware thickness. Detailed hand-painted industrial sprite matching a practical maintained underwater station, crisp construction and controlled texture readable at small game scale. Restrained diffuse shading, no gloss, no bloom, no luminous blue panel, no cyan wash. True transparent background and generous margin, no surrounding floor or wall, no text, labels, symbols, people, turbine, water scene or checkerboard. Designed to be rendered horizontally on a north/south wall or turned onto an east/west wall without losing the subject.
 
 ## Review
 

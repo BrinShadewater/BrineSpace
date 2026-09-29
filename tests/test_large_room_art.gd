@@ -159,6 +159,10 @@ func _init() -> void:
 	check(plant.get("production", {}).get("power", 0) == 14 and plant.get("ocean_side", "") == "north", "Tidal plant has major ocean-dependent output")
 	var moonbay: Dictionary = Rooms.get_room("moonbay")
 	check(FileAccess.file_exists(Common.OCEAN_GATE_ART), "Moonbay outer hull has current ocean hatch artwork")
+	var intake := Image.new()
+	check(intake.load_png_from_buffer(FileAccess.get_file_as_bytes(Common.TIDAL_INTAKE_ART)) == OK, "Tidal ocean intake artwork decodes without an import")
+	if intake.get_width() > 0:
+		check(intake.get_pixel(0, 0).a < 0.1 and intake.get_pixel(int(intake.get_width() / 2), int(intake.get_height() / 2)).a > 0.5, "Tidal intake keeps a transparent exterior and solid grille")
 	check(moonbay.get("ocean_side", "") == "west" and moonbay.get("consumption", {}).get("power", 0) > 0, "Moonbay has a west launch wall and power need")
 	var bay = preload("res://rooms/large-rooms/moonbay.gd")
 	check(bay.BAY_DOOR_WIDTH > 92.0, "Moonbay enclosure has a larger sub-bay door than a station port")

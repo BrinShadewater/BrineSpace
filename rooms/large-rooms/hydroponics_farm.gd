@@ -16,7 +16,7 @@ static func fixed_bounds() -> Array[Rect2]:
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	var green := Color("#7ba889")
-	Common.begin(canvas, room, rect, Color("#263b36"), green, WALL_STYLE, "res://assets/department-floors-v1/wet-drainage.png", 0.36)
+	Common.begin(canvas, room, rect, Color("#343b3b"), green, WALL_STYLE, "res://assets/department-floors-v1/wet-drainage.png", 0.36)
 	# Flush washdown drains run beside the beds, away from the four door thresholds.
 	for x in [-252.0, 252.0]:
 		canvas.draw_rect(Rect2(x - 7, -194, 14, 388), Color("#182a2b"))

@@ -34,8 +34,9 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	Common.draw_features(canvas, FEATURES)
 	# Floor rail points west to the sealed launch chamber; the hangar stays dry.
 	for y in [-89, 89]:
-		canvas.draw_rect(Rect2(-360, y - 7, 720, 14), Color("#597683"))
-		for x in range(-340, 341, 68): canvas.draw_rect(Rect2(x - 4, y - 12, 8, 24), Color("#a2b7b9"))
+		WallMaterial.wall(canvas, Rect2(-360, y - 7, 720, 14), true, "engineering")
+		for x in [-340, -272, 272, 340]:
+			WallMaterial.cap(canvas, Rect2(x - 6, y - 12, 12, 24), "engineering")
 	Common.panel(canvas, Rect2(-233, -117, 466, 234), Color("#1b303b"), Color("#537887"))
 	# Fine anti-slip ribs belong to the floodable chamber, not the dry service deck.
 	for y in range(-96, 97, 18):
@@ -56,7 +57,7 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	# A full pressure enclosure keeps the dry hangar distinct from the floodable launch path.
 	_draw_bay_enclosure(canvas, state)
 	for x in [-247,247]: canvas.draw_circle(Vector2(x,96),7,Color("#83b9bc") if (x>0 and state.station_open) or (x<0 and state.ocean_open) else Color("#b49a72"))
-	canvas.draw_line(Vector2(-203, 0), Vector2(-340, 0), cyan.darkened(0.4), 6)
+	WallMaterial.wall(canvas, Rect2(-340, -5, 137, 10), true, "engineering")
 	for x in [-280, -150, 150, 280]: canvas.draw_circle(Vector2(x, 172), 9, cyan.darkened(0.3))
 	Common.finish(canvas)
 
@@ -78,8 +79,7 @@ static func _draw_bay_door(canvas: CanvasItem, x: float, open: bool) -> void:
 	canvas.draw_rect(Rect2(x - 4,-half - 4,32,BAY_DOOR_WIDTH + 8),Color("#0b1820"))
 	canvas.draw_rect(Rect2(x + 1,-half,22,BAY_DOOR_WIDTH),Color("#344b55"))
 	for y in [-half - 10,half - 4]:
-		canvas.draw_rect(Rect2(x - 5,y,34,14),Color("#8a989a"))
-		canvas.draw_rect(Rect2(x - 2,y + 3,28,5),Color("#b0b9af"))
+		WallMaterial.cap(canvas,Rect2(x - 5,y,34,14),"engineering")
 	for upper in [true,false]:
 		var length := 16.0 if open else half
 		var y := -half if upper else half - length
@@ -91,9 +91,5 @@ static func _draw_bay_door(canvas: CanvasItem, x: float, open: bool) -> void:
 			source.size.x *= length / half
 			if not upper: source.position.x += 865.0 - source.size.x
 		DoorFinish.region(canvas,skin.texture("low"),Rect2(x,y,24,length),source,Color.WHITE,true)
-		if not open:
-			canvas.draw_rect(Rect2(x + 10,y + 8,4,length - 16),Color("#49677a"))
-			for rib in range(24,roundi(length),30):
-				canvas.draw_rect(Rect2(x + 2,y + float(rib),20,3),Color("#8c9b9d"))
 	if not open:
-		canvas.draw_rect(Rect2(x - 3,-3,30,6),Color("#b4aaa0"))
+		WallMaterial.cap(canvas,Rect2(x - 3,-4,30,8),"engineering")

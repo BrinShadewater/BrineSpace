@@ -30,10 +30,16 @@ Reviewed commit `4797302f` on `codex/large-rooms`. The four 512-pixel selected c
 3. **Hydroponics deck — medium priority:** bring the base toward neutral gray-green, leaving the plant beds and wall manifold as the clear green identity. Compare the native station view beside ordinary rooms and the 512-pixel card before selecting a shade.
 4. **Source edge quality — low priority:** at source zoom the generated PNGs have partially transparent antialiasing and a few colored edge specks, most noticeable near the gantry/wall-bank yellow edges. No fringe was clearly visible in the reviewed native cards. If these assets are reused at a larger size, inspect against light and dark backdrops and clean only demonstrably visible fringe; preserve the original sources and hashes.
 
+### September 29 correction review
+
+The first three findings were corrected in the large-room worktree. Tidal now has a matte painted slatted intake attached to the existing hull in all four orientations; its north version stays within the riser face. Moonbay's chamber rails and short gate trim reuse the accepted painted engineering hull material, while its door leaves and dry/flooding mission states retain their behavior. Hydroponics's base deck changed from `#263b36` to neutral gray-green `#343b3b`; its beds, manifold, floor details and department UI color remain green. The source-edge note remains a future reuse check, not a visible gameplay defect in these reviewed captures.
+
+The 16 Walls-on and 16 Walls-off frames, four native station captures, and Moonbay idle/flooding/launching frames were reviewed after the material changes. The selected Farm, Moonbay and Tidal cards changed; Storage's selected pixels did not. Five focused art, integration, paid-build, Moonbay mission and save tests passed in `output/test-runs/20260929-035009-headless` under scratch `APPDATA`. A final intake cache resize and low-north-wall crop were visually reviewed; the targeted art test passed in `output/test-runs/20260929-040803-headless`. Selected cards were rebaked after the cache resize; the final crop only affects the Walls-off view.
+
 ## Verification
 
 Read the current bible, accepted prop board, source PNGs and renderer code; inspected the existing native image evidence at original or high detail and measured source/display dimensions with Pillow. No asset or gameplay code changed in this audit, so no test rerun was needed. Earlier focused tests apply to commit `4797302f` as recorded in `LARGE_ROOMS_HANDOFF_2026-09-28.md`; they do not grant visual acceptance.
 
 ## Next action
 
-Repair the Tidal ocean face first, then make the focused Moonbay and Hydroponics material changes above. Re-render the four relevant rotations and native station comparisons after each changed surface, then rebake selected cards and run the focused art test. Owner review remains the final visual acceptance gate.
+Show the corrected cards to the owner. A normal long-run playtest and owner visual acceptance remain open.
