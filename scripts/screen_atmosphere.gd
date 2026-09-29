@@ -4,7 +4,8 @@ extends Control
 ## Strengths follow Settings > Visual effects (TitleSettings.atmosphere()):
 ## - Low: none of it.
 ## - Medium: marine snow and a cheap cool tint. The tint is a multiply layer, so there is no screen read.
-## - High: more snow, the full grade (warm lamps, cool shadows) and bloom. These share one screen-read
+## - High: more snow, the full grade (warm lamps, cool shadows), bloom, water shimmer, grain, edge fringe,
+##   focus blur and a station shadow (shimmer, blur, shadow and grain stay in the open water). These share one screen-read
 ##   shader, which costs about 4 ms on integrated GPUs, so it stays off below High.
 ## F6 is a testing key: it cycles forced looks over the setting (first press: everything off), and the
 ## last step returns to following the setting.
@@ -19,10 +20,12 @@ const LOOKS := [
 	{"name": "Bloom only", "drift": 0.0, "grade": 0.0, "bloom": 0.3, "cool": false},
 	{"name": "Grade only", "drift": 0.0, "grade": 1.0, "bloom": 0.0, "cool": false},
 	{"name": "Cool tint only (Medium's grade)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": true},
-	{"name": "Water shimmer (open water only)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0},
-	{"name": "Film grain (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "grain": 1.0},
+	{"name": "Water shimmer (open water only)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0, "blur": 1.0, "shadow": 1.0},
+	{"name": "Film grain (open water only)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "grain": 1.0},
 	{"name": "Edge colour fringe (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "fringe": 1.0},
-	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0},
+	{"name": "Focus blur, open water (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "blur": 1.0},
+	{"name": "Station shadow on the water (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shadow": 1.0},
+	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0, "blur": 1.0, "shadow": 1.0},
 ]
 const SHADER_CODE := """
 shader_type canvas_item;
@@ -51,6 +54,8 @@ float station_at(vec2 uv) {
 }
 uniform float grain = 0.0;
 uniform float fringe = 0.0;
+uniform float blur = 0.0;
+uniform float station_shadow = 0.0;
 
 vec3 bright(vec2 uv) {
 	vec3 c = texture(screen_tex, uv).rgb;
@@ -66,6 +71,32 @@ void fragment() {
 		uv += vec2(sin(UV.y * 46.0 + TIME * 0.9), cos(UV.x * 38.0 + TIME * 0.7)) * SCREEN_PIXEL_SIZE * 1.5 * shimmer * open_water;
 	}
 	vec3 col = texture(screen_tex, uv).rgb;
+	float open_here = 1.0;
+	if (blur > 0.0 || station_shadow > 0.0 || grain > 0.0) open_here = 1.0 - smoothstep(0.0, 0.6, station_at(UV));
+	if (blur > 0.0 || station_shadow > 0.0) {
+		if (blur > 0.0) {
+			// A soft two-ring blur, about four pixels wide at full strength, in open water only.
+			vec3 sum = col;
+			for (int i = 0; i < 8; i++) {
+				float a = float(i) * 0.785398;
+				vec2 d = vec2(cos(a), sin(a)) * SCREEN_PIXEL_SIZE;
+				sum += texture(screen_tex, uv + d * 2.0 * blur).rgb + texture(screen_tex, uv + d * 4.5 * blur).rgb * 0.6;
+			}
+			col = mix(col, sum / 13.8, open_here);
+		}
+		if (station_shadow > 0.0) {
+			// Coverage of the station in a ring around this pixel, shifted a little south-east like a light
+			// from above and to the left, so the halo is heavier on that side.
+			vec2 world = (UV * view_px + scroll_px) / cell_px / grid_cells;
+			float coverage = 0.0;
+			for (int i = 0; i < 8; i++) {
+				float a = float(i) * 0.785398;
+				vec2 d = vec2(cos(a), sin(a)) * 0.8 / grid_cells;
+				coverage += texture(station_mask, world - d - vec2(0.25, 0.3) / grid_cells).r;
+			}
+			col *= 1.0 - 0.85 * station_shadow * clamp(coverage / 8.0 * 1.6, 0.0, 1.0) * open_here;
+		}
+	}
 	if (fringe > 0.0) {
 		// Red and blue slip apart toward the edges of the view, like a lens.
 		vec2 d = UV - vec2(0.5);
@@ -94,7 +125,7 @@ void fragment() {
 	if (grain > 0.0) {
 		vec2 cell = floor(FRAGCOORD.xy / 2.0) + floor(TIME * 18.0);
 		float n = fract(sin(dot(cell, vec2(12.9898, 78.233))) * 43758.5453) - 0.5;
-		col += n * 0.06 * grain * (0.4 + luma);
+		col += n * 0.042 * grain * (0.4 + luma) * open_here; // ocean background only, 30% under the first test
 	}
 	COLOR = vec4(col, 1.0);
 }
@@ -176,13 +207,17 @@ func _apply() -> void:
 	var shimmer := 0.0 if Preferences.reduced_motion else float(level.get("shimmer", 0.0))
 	var grain := float(level.get("grain", 0.0))
 	var fringe := float(level.get("fringe", 0.0))
-	post.visible = bloom > 0.0 or grade > 0.0 or shimmer > 0.0 or grain > 0.0 or fringe > 0.0
+	var blur := float(level.get("blur", 0.0))
+	var shadow := float(level.get("shadow", 0.0))
+	post.visible = bloom > 0.0 or grade > 0.0 or shimmer > 0.0 or grain > 0.0 or fringe > 0.0 or blur > 0.0 or shadow > 0.0
+	post_material.set_shader_parameter("blur", blur)
+	post_material.set_shader_parameter("station_shadow", shadow)
 	post_material.set_shader_parameter("shimmer", shimmer)
 	post_material.set_shader_parameter("grain", grain)
 	post_material.set_shader_parameter("fringe", fringe)
 	post_material.set_shader_parameter("bloom", bloom)
 	post_material.set_shader_parameter("grade", grade)
-	if shimmer > 0.0 and game != null and game.grid_scroll != null:
+	if (shimmer > 0.0 or blur > 0.0 or shadow > 0.0 or grain > 0.0) and game != null and game.grid_scroll != null:
 		_update_mask()
 		post_material.set_shader_parameter("view_px", size)
 		post_material.set_shader_parameter("scroll_px", Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical))
