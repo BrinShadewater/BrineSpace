@@ -213,6 +213,19 @@ static func update_light_map(game) -> void:
 		(overlay.get_meta("ambient") as Node2D).queue_redraw()
 		(overlay.get_meta("lights") as Node2D).queue_redraw()
 
+# Crew carry lamps (owner playtest, Sept 29): a helmet lamp lights the floor ahead of a crew member in a
+# dark room. Marsh, the android, has no helmet and no lamp. Returns [{at, facing, helmet}] in 384-unit
+# world coordinates, for every crew member who is present, alive and walking the station.
+const FACING := {"north": Vector2(0, -1), "east": Vector2(1, 0), "south": Vector2(0, 1), "west": Vector2(-1, 0)}
+static func crew_lamps(game) -> Array:
+	var lamps: Array = []
+	for pair in [["bill", game.bill_npc], ["veld", game.veld_npc], ["branforth", game.branforth_npc]]:
+		var actor = pair[1]
+		if not game.Architects.present(game, pair[0]): continue
+		if not actor.active or actor.dead or not actor.expedition.is_empty(): continue
+		lamps.append({"at": actor.foot, "facing": FACING.get(str(actor.direction), Vector2(0, 1)), "helmet": bool(actor.helmet_equipped)})
+	return lamps
+
 static func room_level(game, room: Dictionary) -> float:
 	var grid = game.grid_view
 	return clampf(grid._room_light_level(room) * grid._power_flicker(room), 0.0, 1.0)
@@ -226,6 +239,8 @@ static func content_signature(game) -> int:
 	var parts: Array = [game.grid_view._cell_size(), TitleSettings.effects_quality, TitleSettings.reduced_motion, game.power_blackout, game.hardware.walls, TitleSettings.raised_walls, snappedf(emergency_phase(game), 0.05)]
 	for cell in game.occupied:
 		parts.append([cell, snappedf(room_level(game, game.occupied[cell]), 0.05)])
+	for lamp in crew_lamps(game):
+		parts.append([snapped(lamp.at, Vector2(12, 12)), lamp.facing, lamp.helmet])
 	return hash(parts)
 
 static func _narrow(grid, room: Dictionary) -> bool:
@@ -290,6 +305,11 @@ static func draw_lights(node: Node2D, game) -> void:
 				_blob(node, door + direction * size * -0.05, Vector2(0.42, 0.42) * size, Color(0.24, 0.03, 0.02, 1.0) * (0.35 + 0.65 * pulse))
 				var orbit := Vector2(cos(beacon_angle + direction.angle()), sin(beacon_angle + direction.angle())) * size * 0.10
 				_blob(node, door + direction * size * -0.10 + orbit, Vector2(0.14, 0.14) * size, Color(0.30, 0.04, 0.03, 1.0))
+	# Crew lamps: a soft white pool a little ahead of each crew member, stronger with the helmet on.
+	for lamp in crew_lamps(game):
+		var at: Vector2 = lamp.at / 384.0 * size + lamp.facing * size * 0.07 + Vector2(0, -size * 0.05)
+		var radius := size * (0.34 if lamp.helmet else 0.24)
+		_blob(node, at, Vector2(radius, radius), Color(0.13, 0.125, 0.11, 1.0) * (1.0 if lamp.helmet else 0.5))
 
 # Rounded, anti-aliased footprints for the contact bands. Styleboxes are cached by colour and
 # radius: a room redraws these every frame and a fresh StyleBoxFlat per prop per band is waste.
