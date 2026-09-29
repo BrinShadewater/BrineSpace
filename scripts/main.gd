@@ -3674,7 +3674,7 @@ func _refresh_resources() -> void:
 	# Keep supply minus demand visible even when excess cannot enter storage.
 	var power_change := "%+d" % (int(net.get("power",0)) + forecast_power_vented)
 	_set_resource_chip("power", "POWER\n%d/%d  %s" % [resources["power"], power_capacity, power_change], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
-	resource_chips["power"].tooltip_text = str(RESOURCE_TOOLTIPS.get("power", "Station resource.")) + preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented)
+	resource_chips["power"].tooltip_text = str(RESOURCE_TOOLTIPS.get("power", "Station resource.")) + preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented) + _resource_sources_tip("power", forecast)
 	_set_resource_chip("oxygen", "OXYGEN\n%d/%d  %+d" % [resources["oxygen"], _get_resource_capacity("oxygen"), net.get("oxygen", 0)], _critical_color(resources["oxygen"], Color("#7fd4ff"), 2, 0))
 	_set_resource_chip("water", "WATER\n%d/%d  %+d" % [int(resources.get("water", 0)), _get_resource_capacity("water"), net.get("water", 0)], Color("#719bff"))
 	_set_resource_chip("food", "FOOD\n%d/%d  %+d" % [resources["food"], _get_resource_capacity("food"), net.get("food", 0)], _critical_color(resources["food"], Color("#f0903c"), 2, 0))
@@ -3689,7 +3689,12 @@ func _refresh_resources() -> void:
 	for key in net:
 		var chip_id: String = "rare" if key == "rare_minerals" else str(key)
 		if resource_chips.has(chip_id):
-			resource_chips[chip_id].tooltip_text = _reserve_forecast(str(key), int(net[key])) + ("\nIncludes drone and crew deliveries averaged over the last %d cycles." % preload("res://scripts/resource_flow_ledger.gd").WINDOW if delivered.has(key) else "") + "\nClick or press Enter for room contributions. Estimates can change with events and inputs."
+			resource_chips[chip_id].tooltip_text = _reserve_forecast(str(key), int(net[key])) + ("\nIncludes drone and crew deliveries averaged over the last %d cycles." % preload("res://scripts/resource_flow_ledger.gd").WINDOW if delivered.has(key) else "") + "\nClick or press Enter for room contributions. Estimates can change with events and inputs." + _resource_sources_tip(str(key), forecast)
+	# A resource with no net change still has sources: name them on the static tip.
+	for key in ["metal", "water", "data", "biomass", "rare_minerals", "oxygen", "food"]:
+		var chip_id: String = "rare" if key == "rare_minerals" else str(key)
+		if net.has(key) or not resource_chips.has(chip_id): continue
+		resource_chips[chip_id].tooltip_text = str(RESOURCE_TOOLTIPS.get(chip_id, "Station resource.")) + _resource_sources_tip(str(key), forecast)
 	if resource_chips.has("integrity"):
 		var integrity_tip: String = _reserve_forecast("integrity", int(net["integrity"])) if net.has("integrity") else str(RESOURCE_TOOLTIPS["integrity"])
 		resource_chips["integrity"].tooltip_text = integrity_tip + "\nFLOODED counts rooms at 25% water or deeper. Flooding does not lower Integrity.\nClick or press Enter for room contributions."
@@ -5185,6 +5190,67 @@ func _refresh_log() -> void:
 		else:
 			formatted.append("[color=#94a2a0]%s[/color]" % text)
 	log_label.text = _join_strings(formatted, "\n")
+
+# What is giving and taking a resource, for the resource bar's hover tip (owner playtest, Sept 28):
+# rooms grouped by name with a count, crew upkeep, and recent deliveries. Plain text; a tooltip
+# cannot show icons. Offline rooms are named but count for nothing.
+func _resource_sources_tip(resource_id: String, forecast: Dictionary) -> String:
+	if resource_id in ["integrity", "crew", "corruption"]: return ""
+	var giving := {}
+	var taking := {}
+	var offline_names := {}
+	for room in placed_rooms:
+		var cell: Vector2i = room.pos
+		var room_name := str(room.display_name)
+		var produced := int(room.get("production", {}).get(resource_id, 0))
+		var consumed := int(room.get("consumption", {}).get(resource_id, 0))
+		if resource_id == "power" and forecast.get("generator_outputs", {}).has(cell):
+			produced = int(forecast.generator_outputs[cell])
+		if produced == 0 and consumed == 0: continue
+		if forecast.offline.has(cell):
+			offline_names[room_name] = int(offline_names.get(room_name, 0)) + 1
+			continue
+		if produced > 0:
+			giving[room_name] = _tally(giving.get(room_name, [0, 0]), produced)
+		if consumed > 0:
+			taking[room_name] = _tally(taking.get(room_name, [0, 0]), consumed)
+	if resource_id in ["food", "oxygen"]:
+		var eaters: int = (_breathing_crew_count() if resource_id == "oxygen" else crew_count) + int(forecast.added_crew)
+		if eaters > 0: taking["Crew upkeep"] = [eaters, 1]
+	var delivered: Dictionary = preload("res://scripts/resource_flow_ledger.gd").totals(resource_flow)
+	var window := maxi(1, resource_flow.closed.size())
+	if int(delivered.drone.get(resource_id, 0)) > 0:
+		giving["Drone deliveries (last %d cycles)" % window] = [int(delivered.drone[resource_id]), 1]
+	if int(delivered.crew.get(resource_id, 0)) > 0:
+		giving["Crew expeditions (last %d cycles)" % window] = [int(delivered.crew[resource_id]), 1]
+	if giving.is_empty() and taking.is_empty() and offline_names.is_empty(): return "\n\nNothing is giving or taking this yet."
+	var text := ""
+	text += _tip_section("GIVING", giving, "+")
+	text += _tip_section("TAKING", taking, "-")
+	if not offline_names.is_empty():
+		var names := PackedStringArray()
+		for room_name in offline_names: names.append("%s%s" % [room_name, " x%d" % offline_names[room_name] if offline_names[room_name] > 1 else ""])
+		text += "\n\nOFFLINE (not counted)\n  " + ", ".join(names)
+	return text
+
+# [amount, rooms] running total for one room name.
+func _tally(entry: Array, amount: int) -> Array:
+	return [int(entry[0]) + amount, int(entry[1]) + 1]
+
+func _tip_section(title: String, entries: Dictionary, sign: String) -> String:
+	if entries.is_empty(): return ""
+	var names: Array = entries.keys()
+	names.sort_custom(func(a, b) -> bool: return int(entries[a][0]) > int(entries[b][0]))
+	var text := "\n\n" + title
+	var shown := 0
+	for room_name in names:
+		if shown >= 6:
+			text += "\n  and %d more" % (names.size() - shown)
+			break
+		var entry: Array = entries[room_name]
+		text += "\n  %s%s  %s%d" % [room_name, " x%d" % entry[1] if int(entry[1]) > 1 else "", sign, int(entry[0])]
+		shown += 1
+	return text
 
 func _reserve_forecast(key: String, change: int) -> String:
 	var reserve := int(resources.get(key, 0))
