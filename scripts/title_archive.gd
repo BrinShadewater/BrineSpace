@@ -181,29 +181,7 @@ func _build() -> void:
 	elif mode == "settings":
 		_populate_settings()
 	elif mode == "about":
-		grid.add_child(_label("BRINESPACE\nCreated by Alex Yesilcimen\n© 2026 Alex Yesilcimen. All rights reserved.", 24))
-		grid.add_child(_label(preload("res://scripts/build_version.gd").details(), 18))
-		# Studio link and AI disclosure (owner request, Sept 16).
-		var studio := Button.new()
-		studio.name = "ShadewaterLabsLink"
-		studio.text = "SHADEWATER LABS  //  shadewaterlabs.com"
-		studio.tooltip_text = SHADEWATER_LABS_URL
-		preload("res://scripts/title_button_style.gd").apply(studio, 420, 48)
-		studio.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-		studio.pressed.connect(func() -> void: OS.shell_open(SHADEWATER_LABS_URL))
-		grid.add_child(studio)
-		var disclosure := _label("AI DISCLOSURE\n" + AI_DISCLOSURE, 17)
-		disclosure.name = "AIDisclosure"
-		grid.add_child(disclosure)
-		grid.add_child(_label("BrineSpace is source-available. Art, audio, writing and game rights are reserved. See NOTICE.md for the full rights statement.\n\nPowered by Godot Engine (MIT license).", 18))
-		var licenses := RichTextLabel.new()
-		licenses.custom_minimum_size = Vector2(0, 360)
-		licenses.fit_content = true
-		licenses.text = Engine.get_license_text()
-		grid.add_child(licenses)
-		# Credits read across the page rather than in a narrow column.
-		for child in grid.get_children():
-			if child is Label or child is RichTextLabel: child.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		_populate_about()
 	else:
 		_populate_progression()
 	preload("res://scripts/title_settings.gd").apply_menu_text(self)
@@ -213,6 +191,81 @@ func _build() -> void:
 		modulate.a = 0.0
 		transition = create_tween()
 		transition.tween_property(self, "modulate:a", 1.0, 0.16)
+
+# Credits & Build (redesign, Sept 29): a title band, then paired cards (build and studio, disclosure
+# and rights), with the long engine licence folded away behind a button.
+func _about_card(heading: String, accent: Color = Color("2f6a6a")) -> VBoxContainer:
+	var card := PanelContainer.new()
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.size_flags_vertical = Control.SIZE_FILL
+	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d"), accent, 1, 10, 16))
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 8)
+	card.add_child(rows)
+	var title := _label(heading, 14)
+	title.add_theme_color_override("font_color", Color("5fd3c4"))
+	rows.add_child(title)
+	rows.set_meta("panel", card)
+	return rows
+
+func _populate_about() -> void:
+	var band := _label("BRINESPACE", 40)
+	band.add_theme_color_override("font_color", Color("e6f6f3"))
+	grid.add_child(band)
+	grid.add_child(_label("Created by Alex Yesilcimen  //  Copyright 2026 Alex Yesilcimen. All rights reserved.", 18))
+	var pair := GridContainer.new()
+	pair.name = "AboutCards"
+	pair.columns = 2
+	pair.add_theme_constant_override("h_separation", 18)
+	pair.add_theme_constant_override("v_separation", 18)
+	pair.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	grid.add_child(pair)
+	var build := _about_card("BUILD")
+	var version := _label(preload("res://scripts/build_version.gd").title(), 24)
+	version.add_theme_color_override("font_color", Color("a9e7d4"))
+	build.add_child(version)
+	build.add_child(_label(preload("res://scripts/build_version.gd").details().split("
+", false, 1)[1], 16))
+	pair.add_child(build.get_meta("panel"))
+	var studio := _about_card("STUDIO")
+	studio.add_child(_label("The studio site and its other projects.", 18))
+	var link := Button.new()
+	link.name = "ShadewaterLabsLink"
+	link.text = "SHADEWATER LABS  //  shadewaterlabs.com"
+	link.tooltip_text = SHADEWATER_LABS_URL
+	preload("res://scripts/title_button_style.gd").apply(link, 420, 48)
+	link.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	link.pressed.connect(func() -> void: OS.shell_open(SHADEWATER_LABS_URL))
+	studio.add_child(link)
+	pair.add_child(studio.get_meta("panel"))
+	var disclosure := _about_card("AI DISCLOSURE")
+	var disclosure_text := _label(AI_DISCLOSURE, 17)
+	disclosure_text.name = "AIDisclosure"
+	disclosure.add_child(disclosure_text)
+	pair.add_child(disclosure.get_meta("panel"))
+	var rights := _about_card("RIGHTS")
+	rights.add_child(_label("BrineSpace is source-available. Art, audio, writing and game rights are reserved. See NOTICE.md for the full rights statement.", 17))
+	pair.add_child(rights.get_meta("panel"))
+	var engine := _about_card("ENGINE")
+	grid.add_child(engine.get_meta("panel"))
+	engine.add_child(_label("Powered by Godot Engine (MIT license).", 18))
+	var licenses := RichTextLabel.new()
+	licenses.name = "EngineLicense"
+	licenses.custom_minimum_size = Vector2(0, 360)
+	licenses.fit_content = true
+	licenses.text = Engine.get_license_text()
+	licenses.visible = false
+	var toggle := Button.new()
+	toggle.name = "LicenseToggle"
+	toggle.toggle_mode = true
+	toggle.text = "SHOW ENGINE LICENSE TEXT"
+	preload("res://scripts/title_button_style.gd").apply(toggle, 380, 44)
+	toggle.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	toggle.toggled.connect(func(on: bool) -> void:
+		licenses.visible = on
+		toggle.text = "HIDE ENGINE LICENSE TEXT" if on else "SHOW ENGINE LICENSE TEXT")
+	engine.add_child(toggle)
+	engine.add_child(licenses)
 
 func _select_section(section: String, button: Button) -> void:
 	button.set_pressed_no_signal(true)
