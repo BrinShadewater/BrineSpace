@@ -14,6 +14,7 @@ static func draw(canvas, game, rooms: Array, size: float) -> void:
 	draw_torch_sparks(canvas, game, size)
 	draw_hull_bubbles(canvas, game, rooms, size)
 	draw_hazards(canvas, game, rooms, size)
+	draw_build_flourish(canvas, game, rooms, size)
 
 static func draw_turbine_flow(canvas, game, rooms: Array, size: float) -> void:
 	var time: float = game.get_visual_time_seconds()
@@ -145,6 +146,66 @@ static func draw_hazards(canvas, game, rooms: Array, size: float) -> void:
 			var reach := (12.0 + float((h / 7) % 26)) * unit * (local / 0.2)
 			var spark := vent + Vector2(cos(angle), sin(angle)) * reach + Vector2(0, reach * reach / (40.0 * unit) * 0.5)
 			canvas.draw_circle(spark, maxf(1.0, unit * 2.0), Color(1.0, 0.82, 0.45, 0.9 * (1.0 - local / 0.2)))
+
+# Build flourishes (owner-approved, Sept 29): a bright scan line sweeps down a room the moment it
+# appears, and a ring of light spreads from its centre the first time the room gets power. Rooms already
+# on the map when the view starts (a loaded save, several arriving at once) get neither. One gentle
+# sweep and one ring per room, so nothing repeats or strobes; Reduced Motion and Low quality skip them.
+const SCAN_SECONDS := 1.1
+const RIPPLE_SECONDS := 1.0
+static var _seen: Dictionary = {}
+static var _seen_game := 0
+static var _scan_start: Dictionary = {}
+static var _powered: Dictionary = {}
+static var _ripple_start: Dictionary = {}
+static var _awaiting: Dictionary = {} # built rooms still waiting for their first power
+
+static func draw_build_flourish(canvas, game, _rooms: Array, size: float) -> void:
+	var time: float = game.get_visual_time_seconds()
+	var grid = game.grid_view
+	var all_rooms: Array = game.placed_rooms
+	if _seen_game != game.get_instance_id():
+		_seen_game = game.get_instance_id()
+		_seen.clear(); _scan_start.clear(); _powered.clear(); _ripple_start.clear(); _awaiting.clear()
+	var fresh: Array = []
+	for room in all_rooms:
+		if not _seen.has(room.pos): fresh.append(room)
+	# Many rooms at once means a load or a reset, not building: register them quietly.
+	var quiet: bool = fresh.size() > 2 or _seen.is_empty()
+	for room in fresh:
+		_seen[room.pos] = true
+		_powered[room.pos] = quiet and grid._room_light_level(room) > 0.5
+		if not quiet:
+			_scan_start[room.pos] = time
+			_awaiting[room.pos] = true
+	for room in all_rooms:
+		var cell: Vector2i = room.pos
+		var lit: bool = grid._room_light_level(room) > 0.5
+		if lit and _awaiting.has(cell):
+			_awaiting.erase(cell)
+			_ripple_start[cell] = time
+		_powered[cell] = lit
+	if Preferences.effects_quality == 0 or Preferences.reduced_motion: return
+	var unit := size / 384.0
+	for cell in _scan_start.keys():
+		var age: float = time - float(_scan_start[cell])
+		if age < 0.0 or age > SCAN_SECONDS:
+			if age > SCAN_SECONDS: _scan_start.erase(cell)
+			continue
+		var fraction := age / SCAN_SECONDS
+		var rect := Rect2(Vector2(cell) * size, Vector2.ONE * size)
+		var y := rect.position.y + rect.size.y * fraction
+		var fade := 1.0 - fraction * 0.6
+		canvas.draw_rect(Rect2(rect.position.x, y - unit * 3.0, rect.size.x, unit * 6.0), Color(0.55, 0.95, 1.0, 0.75 * fade))
+		canvas.draw_rect(Rect2(rect.position.x, rect.position.y, rect.size.x, y - rect.position.y), Color(0.4, 0.85, 1.0, 0.10 * fade))
+	for cell in _ripple_start.keys():
+		var age: float = time - float(_ripple_start[cell])
+		if age > RIPPLE_SECONDS:
+			_ripple_start.erase(cell)
+			continue
+		var fraction := age / RIPPLE_SECONDS
+		var centre := (Vector2(cell) + Vector2(0.5, 0.5)) * size
+		canvas.draw_arc(centre, size * (0.1 + 0.7 * fraction), 0.0, TAU, 40, Color(0.7, 0.98, 1.0, 0.6 * (1.0 - fraction)), maxf(1.5, unit * 5.0 * (1.0 - fraction)), true)
 
 static func draw_torch_sparks(canvas, game, size: float) -> void:
 	var actors := torch_actors(game)

@@ -64,5 +64,24 @@ func run() -> void:
 	await process_frame
 	await process_frame
 	room.erase("hull_crack")
+	# Build flourishes: a room that appears after the view has started gets a scan line, and none of it
+	# draws under Reduced Motion or at Low quality.
+	var Effects = preload("res://scripts/station_effects.gd")
+	Effects._seen_game = 0
+	var flourish := Node2D.new()
+	flourish.draw.connect(func() -> void: Effects.draw_build_flourish(flourish, game, game.placed_rooms, 96.0))
+	root.add_child(flourish)
+	TitleSettings.effects_quality = 1
+	TitleSettings.reduced_motion = false
+	flourish.queue_redraw()
+	await process_frame
+	await process_frame
+	expect(Effects._scan_start.is_empty(), "Rooms already on the map get no scan line")
+	game.testing_free_build = true
+	game._place_room("galley", Vector2i(23, 19), true)
+	flourish.queue_redraw()
+	await process_frame
+	await process_frame
+	expect(not Effects._scan_start.is_empty() or not Effects._awaiting.is_empty(), "A room built later starts a scan line")
 	print("HAZARD FEEDBACK: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
 	quit(1 if failures > 0 else 0)
