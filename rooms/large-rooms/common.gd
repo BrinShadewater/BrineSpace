@@ -46,15 +46,25 @@ static func feature_bounds(features: Array) -> Array[Rect2]:
 		result.append(Rect2(bounds.position + Vector2.ONE * HALF, bounds.size))
 	return result
 
-static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, accent: Color, wall_style: Dictionary) -> void:
+static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, accent: Color, wall_style: Dictionary, floor_art: String, floor_opacity: float) -> void:
 	var rotation: int = posmod(int(room.get("rotation", 0)), 4)
 	var scale := Vector2.ONE * (rect.size.x / FLOOR_SIZE)
 	canvas.draw_set_transform(rect.get_center(), 0.0, scale)
 	canvas.draw_rect(Rect2(-HALF, -HALF, FLOOR_SIZE, FLOOR_SIZE), Color("#081119"))
 	canvas.draw_rect(Rect2(-370, -370, 740, 740), floor_color)
-	for line in range(-320, 321, 64):
-		canvas.draw_line(Vector2(-360, line), Vector2(360, line), Color(1, 1, 1, 0.035), 2)
-		canvas.draw_line(Vector2(line, -360), Vector2(line, 360), Color(1, 1, 1, 0.035), 2)
+	# Match the existing department floors: four 185-unit material repeats span the large deck.
+	# The source owns its panel seams, so the old generic grid is not drawn over it.
+	if not art_textures.has(floor_art):
+		var image := Image.new()
+		var error := image.load_png_from_buffer(FileAccess.get_file_as_bytes(floor_art))
+		if error != OK:
+			push_error("Large room floor could not load: %s (%d)" % [floor_art, error])
+		else:
+			art_textures[floor_art] = ImageTexture.create_from_image(image)
+	if art_textures.has(floor_art):
+		for row in range(4):
+			for column in range(4):
+				canvas.draw_texture_rect(art_textures[floor_art], Rect2(-370 + column * 185, -370 + row * 185, 185, 185), false, Color(1, 1, 1, floor_opacity))
 	for p in [Vector2(-334,-334),Vector2(334,-334),Vector2(-334,334),Vector2(334,334)]:
 		canvas.draw_circle(p, 7, accent.darkened(0.6))
 		canvas.draw_circle(p, 3, accent)

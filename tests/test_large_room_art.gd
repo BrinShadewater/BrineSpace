@@ -19,6 +19,10 @@ const ART := ["res://rooms/large-rooms/art/grow_beds.png",
 const WALL_ART := ["res://rooms/large-rooms/art/grow_wall_bank.png",
 	"res://rooms/large-rooms/art/cargo_wall_bank.png", "res://rooms/large-rooms/art/launch_wall_bank.png",
 	"res://rooms/large-rooms/art/tidal_wall_bank.png"]
+const FLOOR_ART := ["res://assets/department-floors-v1/wet-drainage.png",
+	"res://assets/department-floors-v2/storage-load-deck.png",
+	"res://assets/department-floors-v2/robotics-service.png",
+	"res://assets/department-floors-v1/engineering-tread.png"]
 const Common = preload("res://rooms/large-rooms/common.gd")
 
 var failures := 0
@@ -92,6 +96,10 @@ func _init() -> void:
 		if painted.get_width()>0:
 			check(painted.get_pixel(0,0).a < 0.1 and painted.get_pixel(int(painted.get_width()/2),int(painted.get_height()/2)).a > 0.5, id + " installation has true exterior alpha and visible interior")
 		var wall_bank := Image.new()
+		var floor_image := Image.new()
+		check(floor_image.load_png_from_buffer(FileAccess.get_file_as_bytes(FLOOR_ART[i])) == OK, id + " department floor decodes without an import")
+		if floor_image.get_width() > 0:
+			check(floor_image.get_width() == floor_image.get_height() and floor_image.get_width() >= 384, id + " floor has sufficient square material detail")
 		check(wall_bank.load_png_from_buffer(FileAccess.get_file_as_bytes(WALL_ART[i])) == OK, id + " painted riser bank decodes without an import")
 		if wall_bank.get_width()>0:
 			check(wall_bank.get_pixel(0,0).a < 0.1 and wall_bank.get_pixel(int(wall_bank.get_width()/2),int(wall_bank.get_height()/2)).a > 0.5, id + " riser bank has true exterior alpha and visible interior")

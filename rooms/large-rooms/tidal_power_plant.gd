@@ -16,7 +16,12 @@ static func fixed_bounds() -> Array[Rect2]:
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	var yellow := Color("#b9aa70")
-	Common.begin(canvas, room, rect, Color("#303841"), yellow, WALL_STYLE)
+	Common.begin(canvas, room, rect, Color("#303841"), yellow, WALL_STYLE, "res://assets/department-floors-v1/engineering-tread.png", 0.36)
+	# Recessed service grates flank the turbine's heavy mounting frame.
+	for x in [-270.0, 270.0]:
+		canvas.draw_rect(Rect2(x - 9, -207, 18, 414), Color("#1b282e"))
+		for y in range(-200, 201, 20):
+			canvas.draw_line(Vector2(x - 7, y), Vector2(x + 7, y), Color("#75817d", 0.65), 2)
 	Common.draw_features(canvas, FEATURES)
 	for x in [-227, 227]:
 		canvas.draw_rect(Rect2(x - 16, -319, 32, 638), Color("#6f7b7c"))

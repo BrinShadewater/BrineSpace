@@ -30,13 +30,20 @@ static func visual_state(room: Dictionary) -> Dictionary:
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	var cyan := Color("#78afb9")
 	var state := visual_state(room)
-	Common.begin(canvas, room, rect, Color("#263842"), cyan, WALL_STYLE)
+	Common.begin(canvas, room, rect, Color("#263842"), cyan, WALL_STYLE, "res://assets/department-floors-v2/robotics-service.png", 0.40)
 	Common.draw_features(canvas, FEATURES)
 	# Floor rail points west to the sealed launch chamber; the hangar stays dry.
 	for y in [-89, 89]:
 		canvas.draw_rect(Rect2(-360, y - 7, 720, 14), Color("#597683"))
 		for x in range(-340, 341, 68): canvas.draw_rect(Rect2(x - 4, y - 12, 8, 24), Color("#a2b7b9"))
 	Common.panel(canvas, Rect2(-233, -117, 466, 234), Color("#1b303b"), Color("#537887"))
+	# Fine anti-slip ribs belong to the floodable chamber, not the dry service deck.
+	for y in range(-96, 97, 18):
+		canvas.draw_line(Vector2(-220, y), Vector2(220, y), Color("#80979b", 0.16), 2)
+	# Crew boarding stand-off next to the station-side pressure gate.
+	canvas.draw_rect(Rect2(278, -76, 42, 152), Color("#5e828a", 0.25))
+	for y in [-64.0, 64.0]:
+		canvas.draw_line(Vector2(278, y), Vector2(316, y), Color("#83a7ab", 0.55), 3)
 	if state.sub_present:
 		Common.sprite(canvas, "res://rooms/large-rooms/art/mini_sub.png", SUB_BOUNDS, Color("#b0a8a5") if state.damage>0 else Color.WHITE)
 	else:
