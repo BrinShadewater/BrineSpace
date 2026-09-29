@@ -19,6 +19,8 @@ Reviewed Hydroponics Farm, Storage Depot, Moonbay, and Tidal Power Plant against
 
 The owner asked for quieter colors. The four large-room sprite families now receive a 0.58 saturation grade when loaded for room, card and at-sea sub rendering. Physical door trims, floor markers, ocean lamps and Moonbay water use subdued green, ochre and blue-cyan values. Original PNGs, their alpha, department/category interface colors and other rooms are unchanged. The rebaked cards and native station/mission captures were checked at gameplay scale; plants, cargo hardware and the sub remain identifiable against the neutral hull.
 
+September 29: Storage Depot received a further owner-requested reduction: its cargo gantry renders at 0.38 saturation, its north-wall bank at 0.42, and its physical yellow accent is dull ochre. Its source PNGs and the other three room palettes are unchanged. The rebaked Storage card and a native station view were visually inspected; `test_large_room_art` passes in `output/test-runs/20260928-235801-headless`.
+
 ## Verification
 
 `test_large_room_art`, `test_large_room_integration`, `test_large_room_paid`, `test_moonbay_missions`, and `test_moonbay_save` pass 5/5 under scratch `APPDATA` (`output/test-runs/20260928-232925-headless`). Native card baker captured all 16 raised and 16 Walls-off rotations; four room cards were rebaked. Station and mission review scripts exited successfully under scratch `APPDATA`. The isolated checkout still logs missing unrelated `brineui`/icon atlas resources; room walls and mission imagery render in the captures.

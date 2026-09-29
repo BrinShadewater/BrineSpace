@@ -1,13 +1,13 @@
 extends RefCounted
 
 const Common = preload("res://rooms/large-rooms/common.gd")
-const WALL_STYLE := {"material":"storage_bay", "art":"res://rooms/large-rooms/art/cargo_wall_bank.png", "axis":192.0, "shade":0.25}
+const WALL_STYLE := {"material":"storage_bay", "art":"res://rooms/large-rooms/art/cargo_wall_bank.png", "axis":192.0, "shade":0.31}
 
 static func fixed_bounds() -> Array[Rect2]:
 	return [Rect2(180, 180, 408, 408)]
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
-	var yellow := Color("#b9aa70")
+	var yellow := Color("#a49b7a")
 	Common.begin(canvas, room, rect, Color("#30383a"), yellow, WALL_STYLE)
 	Common.sprite(canvas, "res://rooms/large-rooms/art/cargo_gantry.png", Rect2(-204, -204, 408, 408))
 	for x in [-284, 284]:

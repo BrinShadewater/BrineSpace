@@ -5,6 +5,10 @@ const HALF := FLOOR_SIZE * 0.5
 const RiserCatalog = preload("res://rooms/whole-room/riser_catalog.gd")
 const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd")
 const ART_SATURATION := 0.58
+const ART_SATURATION_OVERRIDES := {
+	"res://rooms/large-rooms/art/cargo_gantry.png": 0.38,
+	"res://rooms/large-rooms/art/cargo_wall_bank.png": 0.42,
+}
 static var art_textures: Dictionary = {}
 
 static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color = Color.WHITE) -> void:
@@ -15,7 +19,7 @@ static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color 
 			push_error("Large room art could not load: %s (%d)" % [path, error])
 			return
 		# Grade only these new room sprites; neutral steel keeps its value and detail.
-		image.adjust_bcs(1.0, 1.0, ART_SATURATION)
+		image.adjust_bcs(1.0, 1.0, float(ART_SATURATION_OVERRIDES.get(path, ART_SATURATION)))
 		if path.ends_with("_wall_bank.png"):
 			var target := wall_bank_raster_size(image.get_size())
 			image.resize(target.x, target.y, Image.INTERPOLATE_LANCZOS)
