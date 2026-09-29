@@ -9,8 +9,9 @@ const REPORT_DIR := "user://bug_reports"
 var report_dir := REPORT_DIR
 # Where "Save and send" uploads the zip. Empty hides the option, so reports stay local files the
 # player emails themselves. Nothing is ever sent without the player pressing that button.
-const REPORT_ENDPOINT := ""
-const UPLOAD_LIMIT_BYTES := 20 * 1024 * 1024
+const REPORT_ENDPOINT := "https://brinespace-bug-reports.vercel.app/api/report"
+# Vercel function request bodies are capped at 4.5 MB; a bigger report stays a local file to email.
+const UPLOAD_LIMIT_BYTES := 4 * 1024 * 1024
 var report_endpoint := REPORT_ENDPOINT
 var uploader: HTTPRequest = null
 const LOCK_DIR := "user://bug_report"
