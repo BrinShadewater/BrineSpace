@@ -23,6 +23,8 @@ const Catalog = preload("res://scripts/codex_catalog.gd")
 const ResearchTree = preload("res://scripts/research_tree.gd")
 const ResourceIcons = preload("res://scripts/resource_icons.gd")
 const RARITY_ORDER := ["core", "common", "uncommon", "rare", "derelict"]
+# Smallest interface text; see settings_panel.gd MIN_TEXT.
+const MIN_TEXT := 14
 const SHADEWATER_LABS_URL := "https://shadewaterlabs.com/"
 const AI_DISCLOSURE := "BrineSpace is made by Brin Shadewater with the help of generative AI. AI tools were used to create or assist with parts of the artwork, animation, audio and code, all directed, selected and edited by a human."
 var close_button: Button
@@ -218,7 +220,7 @@ func _style(accent: Color) -> StyleBoxFlat:
 func _label(text: String, font_size: int = 18) -> Label:
 	var label := Label.new()
 	label.text = text
-	label.add_theme_font_size_override("font_size", font_size)
+	label.add_theme_font_size_override("font_size", maxi(font_size, MIN_TEXT))
 	label.add_theme_color_override("font_color", Color("b9dce5"))
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	return label
@@ -303,7 +305,7 @@ func _populate_cards() -> void:
 		var body := VBoxContainer.new()
 		body.add_theme_constant_override("separation", 10)
 		panel.add_child(body)
-		body.add_child(_label("%s // %s" % [entry.category.to_upper(), "RECOVERED" if entry.known else "SIGNAL OBSCURED"], 14))
+		body.add_child(_label("%s // %s" % [entry.category.to_upper(), "RECOVERED" if entry.known else "SIGNAL OBSCURED"], 15))
 		var record_key: String = ("room:" if codex_tab == 0 else "synergy:") + str(entry.id)
 		if entry.known and meta_state.unread_records.has(record_key):
 			var reviewed := Button.new()
@@ -339,11 +341,11 @@ func _populate_cards() -> void:
 			continue
 		if codex_tab == 0:
 			body.add_child(_label(data.get("description", ""), 16))
-			body.add_child(_label("BUILD  " + _resources(data.get("cost", {})), 14))
+			body.add_child(_label("BUILD  " + _resources(data.get("cost", {})), 15))
 			if not data.get("production", {}).is_empty():
-				body.add_child(_label("OUTPUT  " + _resources(data.production), 14))
+				body.add_child(_label("OUTPUT  " + _resources(data.production), 15))
 			if not data.get("consumption", {}).is_empty():
-				body.add_child(_label("UPKEEP  " + _resources(data.consumption), 14))
+				body.add_child(_label("UPKEEP  " + _resources(data.consumption), 15))
 		else:
 			var names := PackedStringArray()
 			var rooms: Dictionary = Rooms.all_rooms()
@@ -462,12 +464,12 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	rules.add_child(lines)
 	lines.add_child(_label(data.get("description", ""), 15))
 	if not data.get("production", {}).is_empty():
-		lines.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  [color=#cfe9dc]+%s[/color]" % ResourceIcons.bbcode(data.production), 14))
+		lines.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  [color=#cfe9dc]+%s[/color]" % ResourceIcons.bbcode(data.production), 15))
 	if not data.get("consumption", {}).is_empty():
-		lines.add_child(_rich("[color=#e0b36a]UPKEEP[/color]  [color=#e9dcc4]%s[/color]" % ResourceIcons.bbcode(data.consumption), 14))
+		lines.add_child(_rich("[color=#e0b36a]UPKEEP[/color]  [color=#e9dcc4]%s[/color]" % ResourceIcons.bbcode(data.consumption), 15))
 	if not data.get("storage", {}).is_empty():
-		lines.add_child(_rich("[color=#79b8d9]STORAGE[/color]  [color=#cfe3ee]+%s[/color]" % ResourceIcons.bbcode(data.storage), 14))
-	lines.add_child(_rich("[color=#8fa3ae]BUILD[/color]  [color=#e6eeee]%s[/color]" % ResourceIcons.bbcode(data.get("cost", {})), 14))
+		lines.add_child(_rich("[color=#79b8d9]STORAGE[/color]  [color=#cfe3ee]+%s[/color]" % ResourceIcons.bbcode(data.storage), 15))
+	lines.add_child(_rich("[color=#8fa3ae]BUILD[/color]  [color=#e6eeee]%s[/color]" % ResourceIcons.bbcode(data.get("cost", {})), 15))
 	var footer := HBoxContainer.new()
 	body.add_child(footer)
 	var rarity := _label(str(data.get("rarity", "common")).to_upper(), 13)
@@ -544,14 +546,14 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	if stabilized and not data.get("bonus", {}).is_empty():
 		var bonus := {}
 		for key in data.bonus: bonus[key] = int(data.bonus[key]) * 2
-		lines.add_child(_rich("[color=#7fd6a6]DOUBLED[/color]  +%s each functioning cycle" % ResourceIcons.bbcode(bonus), 14))
+		lines.add_child(_rich("[color=#7fd6a6]DOUBLED[/color]  +%s each functioning cycle" % ResourceIcons.bbcode(bonus), 15))
 	if not stabilized:
-		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 14))
+		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 15))
 	var reward: String = data.get("unlock_room_id", "")
 	var data_reward := int(data.get("terminal_reward", {}).get("research", 0)) + MetaShop.STABILIZE_DATA
-	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["STABILIZED" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 14))
+	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["STABILIZED" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 15))
 	if not reward.is_empty():
-		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 14))
+		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 15))
 	return card
 
 # A small room card for synergy pairs: title, the whole-room picture and the department ribbon.
@@ -565,7 +567,7 @@ func _mini_room_card(room_id: String, known: bool) -> Control:
 	var rows := VBoxContainer.new()
 	rows.add_theme_constant_override("separation", 5)
 	card.add_child(rows)
-	var title := _label(str(room.get("display_name", room_id)) if known else "LINKED ROOM", 14)
+	var title := _label(str(room.get("display_name", room_id)) if known else "LINKED ROOM", 15)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
 	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 5, 4))
@@ -591,7 +593,7 @@ func _rich(text: String, font_size: int) -> RichTextLabel:
 	label.fit_content = true
 	label.scroll_active = false
 	label.text = text
-	label.add_theme_font_size_override("normal_font_size", font_size)
+	label.add_theme_font_size_override("normal_font_size", maxi(font_size, MIN_TEXT))
 	label.add_theme_color_override("default_color", Color("b9dce5"))
 	return label
 
@@ -765,9 +767,9 @@ func _crew_shop() -> void:
 		ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
 		rows.add_child(ribbon)
 		var perk: String = str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
-		if met and not perk.is_empty(): rows.add_child(_rich(ResourceIcons.decorate(perk), 14))
+		if met and not perk.is_empty(): rows.add_child(_rich(ResourceIcons.decorate(perk), 15))
 		if not met:
-			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 14))
+			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 15))
 		var character_id: String = id
 		var cost := int(MetaShop.CHARACTER_COSTS.get(id, 0))
 		rows.add_child(_shop_button({"owned": "ABOARD" if id in MetaShop.ALWAYS_ABOARD else "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost, "unmet": "NOT MET YET"}[state], state == "ready", func() -> void:
@@ -852,7 +854,7 @@ func _show_perk(id: String) -> void:
 			color = ResearchTree.branch_color(str(branch.id))
 			branch_name = branch.name
 	var keystone: bool = perk.get("keystone", false)
-	var kind := _label("%s  ·  %s" % [branch_name, "KEYSTONE" if keystone else "TIER %d" % int(perk.tier)], 14)
+	var kind := _label("%s  ·  %s" % [branch_name, "KEYSTONE" if keystone else "TIER %d" % int(perk.tier)], 15)
 	kind.add_theme_color_override("font_color", color)
 	perk_detail.add_child(kind)
 	var perk_name := _label(str(perk.name).to_upper(), 24)
@@ -863,7 +865,7 @@ func _show_perk(id: String) -> void:
 	perk_detail.add_child(effect)
 	var waiting: Array = ResearchTree.missing(meta_state, id).map(func(other): return str(ResearchTree.PERKS[other].name))
 	var status: String = {"owned": "INSTALLED IN BRINE'S MEMORY", "ready": "READY TO RECOVER", "short": "NOT ENOUGH ARCHIVED DATA", "locked": "RECOVER %s FIRST" % " AND ".join(waiting).to_upper()}[state]
-	var status_label := _label(status, 14)
+	var status_label := _label(status, 15)
 	status_label.add_theme_color_override("font_color", color if state in ["owned", "ready"] else Color("7f9aa3"))
 	perk_detail.add_child(status_label)
 	var action := Button.new()

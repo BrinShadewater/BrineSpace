@@ -72,8 +72,8 @@ func _ready() -> void:
 	hover_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hover_text.custom_minimum_size = Vector2(276, 0)
 	hover_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hover_text.add_theme_font_size_override("normal_font_size", 14)
-	hover_text.add_theme_font_size_override("bold_font_size", 14)
+	hover_text.add_theme_font_size_override("normal_font_size", 16)
+	hover_text.add_theme_font_size_override("bold_font_size", 16)
 	hover_card.add_child(hover_text)
 	add_child(hover_card)
 	resized.connect(_place)
@@ -300,7 +300,7 @@ func label_side(id: String) -> Vector2:
 # clearly; the rest stay faint so the cluster shape still comes through.
 func _draw_node_name(font: Font, at: Vector2, radius: float, id: String, state: String, color: Color) -> void:
 	var text := str(Research.PERKS[id].name)
-	var size := 12
+	var size := 14
 	var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
 	var tint := color.lightened(0.25) if state == "owned" else (Color("d3e6ea") if state == "ready" else Color(0.72, 0.82, 0.85, 0.45))
 	var side := label_side(id)
