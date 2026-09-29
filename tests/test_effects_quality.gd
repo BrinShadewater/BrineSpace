@@ -30,6 +30,7 @@ func run() -> void:
 	expect(float(low.shimmer) == 0.0 and float(medium.shimmer) == 0.0 and float(high.shimmer) > 0.0, "Water shimmer is High only")
 	expect(float(low.grain) == 0.0 and float(medium.grain) == 0.0 and float(high.grain) > 0.0 and float(high.fringe) > 0.0, "Film grain and edge fringe are High only")
 	expect(float(low.blur) == 0.0 and float(medium.blur) == 0.0 and float(low.shadow) == 0.0 and float(medium.shadow) == 0.0 and float(high.blur) > 0.0 and float(high.shadow) > 0.0, "Focus blur and station shadow are High only")
+	expect(float(low.occlusion) == 0.0 and float(medium.occlusion) == 0.0 and float(low.fog) == 0.0 and float(medium.fog) == 0.0 and float(high.occlusion) > 0.0 and float(high.fog) > 0.0, "Hull-edge occlusion and depth fog are High only")
 	# round trip
 	Preferences.effects_quality = 2
 	var window := root

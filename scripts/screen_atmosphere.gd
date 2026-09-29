@@ -5,7 +5,8 @@ extends Control
 ## - Low: none of it.
 ## - Medium: marine snow and a cheap cool tint. The tint is a multiply layer, so there is no screen read.
 ## - High: more snow, the full grade (warm lamps, cool shadows), bloom, water shimmer, grain, edge fringe,
-##   focus blur and a station shadow (shimmer, blur, shadow and grain stay in the open water). These share one screen-read
+##   focus blur, a station shadow, hull-edge occlusion and depth fog (shimmer, blur, shadow and grain
+##   stay in the open water). These share one screen-read
 ##   shader, which costs about 4 ms on integrated GPUs, so it stays off below High.
 ## F6 is a testing key: it cycles forced looks over the setting (first press: everything off), and the
 ## last step returns to following the setting.
@@ -25,7 +26,9 @@ const LOOKS := [
 	{"name": "Edge colour fringe (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "fringe": 1.0},
 	{"name": "Focus blur, open water (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "blur": 1.0},
 	{"name": "Station shadow on the water (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shadow": 1.0},
-	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0, "blur": 1.0, "shadow": 1.0},
+	{"name": "Hull-edge occlusion (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "occlusion": 1.0},
+	{"name": "Depth fog (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "fog": 1.0},
+	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0, "blur": 1.0, "shadow": 1.0, "occlusion": 1.0, "fog": 1.0},
 ]
 const SHADER_CODE := """
 shader_type canvas_item;
@@ -56,6 +59,8 @@ uniform float grain = 0.0;
 uniform float fringe = 0.0;
 uniform float blur = 0.0;
 uniform float station_shadow = 0.0;
+uniform float occlusion = 0.0;
+uniform float fog = 0.0;
 
 vec3 bright(vec2 uv) {
 	vec3 c = texture(screen_tex, uv).rgb;
@@ -96,6 +101,22 @@ void fragment() {
 			}
 			col *= 1.0 - 0.85 * station_shadow * clamp(coverage / 8.0 * 1.6, 0.0, 1.0) * open_here;
 		}
+	}
+	if (occlusion > 0.0) {
+		// Inside a room, darken toward the hull: the room's own mask minus the least-covered neighbour.
+		vec2 world = (UV * view_px + scroll_px) / cell_px / grid_cells;
+		float inside = texture(station_mask, world).r;
+		float least = 1.0;
+		for (int i = 0; i < 8; i++) {
+			float a = float(i) * 0.785398;
+			least = min(least, texture(station_mask, world + vec2(cos(a), sin(a)) * 0.42 / grid_cells).r);
+		}
+		col *= 1.0 - 0.38 * occlusion * inside * (1.0 - least);
+	}
+	if (fog > 0.0) {
+		// Deeper on the map (further down the grid) is darker and bluer. Applies to the whole view.
+		float depth = clamp(((UV.y * view_px.y + scroll_px.y) / cell_px / grid_cells - 0.25) / 0.6, 0.0, 1.0);
+		col = mix(col, vec3(0.01, 0.045, 0.075), depth * 0.5 * fog);
 	}
 	if (fringe > 0.0) {
 		// Red and blue slip apart toward the edges of the view, like a lens.
@@ -209,7 +230,11 @@ func _apply() -> void:
 	var fringe := float(level.get("fringe", 0.0))
 	var blur := float(level.get("blur", 0.0))
 	var shadow := float(level.get("shadow", 0.0))
-	post.visible = bloom > 0.0 or grade > 0.0 or shimmer > 0.0 or grain > 0.0 or fringe > 0.0 or blur > 0.0 or shadow > 0.0
+	var occlusion := float(level.get("occlusion", 0.0))
+	var fog := float(level.get("fog", 0.0))
+	post.visible = bloom > 0.0 or grade > 0.0 or shimmer > 0.0 or grain > 0.0 or fringe > 0.0 or blur > 0.0 or shadow > 0.0 or occlusion > 0.0 or fog > 0.0
+	post_material.set_shader_parameter("occlusion", occlusion)
+	post_material.set_shader_parameter("fog", fog)
 	post_material.set_shader_parameter("blur", blur)
 	post_material.set_shader_parameter("station_shadow", shadow)
 	post_material.set_shader_parameter("shimmer", shimmer)
@@ -217,7 +242,7 @@ func _apply() -> void:
 	post_material.set_shader_parameter("fringe", fringe)
 	post_material.set_shader_parameter("bloom", bloom)
 	post_material.set_shader_parameter("grade", grade)
-	if (shimmer > 0.0 or blur > 0.0 or shadow > 0.0 or grain > 0.0) and game != null and game.grid_scroll != null:
+	if (shimmer > 0.0 or blur > 0.0 or shadow > 0.0 or grain > 0.0 or occlusion > 0.0 or fog > 0.0) and game != null and game.grid_scroll != null:
 		_update_mask()
 		post_material.set_shader_parameter("view_px", size)
 		post_material.set_shader_parameter("scroll_px", Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical))
