@@ -214,7 +214,8 @@ func _draw_layered_lighting() -> void:
 		if main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP):
 			var rise: float=(preload("res://rooms/whole-room/riser_geometry.gd").HEIGHT+9.0)*size/384.0
 			rect.position.y-=rise; rect.size.y+=rise
-		draw_target.draw_rect(rect,Color(0.025,0.045,0.07,lerpf(0.72,0.0,level)))
+		# Medium and High darken unpowered rooms in the light map instead (lighter, spec stage 2).
+		draw_target.draw_rect(rect,Color(0.025,0.045,0.07,lerpf(0.72,0.0,level) if preload("res://scripts/title_settings.gd").effects_quality == 0 else 0.0))
 	for room in static_draw_rooms:
 		if not _uses_layered_art(room): continue
 		if _is_narrow_corridor(room): continue # Fixtures mount on the narrow hull, not full-cell north.

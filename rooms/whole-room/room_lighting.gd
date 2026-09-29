@@ -137,6 +137,160 @@ static func draw_halos(canvas: CanvasItem, level: float, white := false, warm :=
 		if energy < 0.05: continue
 		canvas.draw_texture_rect(halo_texture(), Rect2(anchor - Vector2(70, 46), Vector2(140, 140)), false, Color(tint.r, tint.g, tint.b, 0.30 * energy))
 
+# ---- Stage 2: the light map (spec 2026-09-29-lighting-atmosphere-design.md) ----
+# A hidden viewport at a quarter of the station view's size holds each room's ambient brightness and
+# every light as a soft blob. It is multiplied over the station by one overlay (no screen read), so it
+# costs about what a vignette does. Content is drawn in the grid's own pixels and moved by the scroll
+# offset, so scrolling never repaints it; only a change in room light, zoom or blackout phase does.
+const TitleSettings = preload("res://scripts/title_settings.gd")
+const MAP_SCALE := 4.0
+const LIT_AMBIENT := 0.90
+const DARK_AMBIENT := 0.55   # owner: unpowered rooms lighter than the audition's 0.36
+# Blackout red: one slow pulse every two seconds (well under the three-a-second guideline) and a
+# beacon that circles each door at a quarter turn a second. Reduced Motion holds both still.
+const EMERGENCY_PERIOD := 2.0
+const BEACON_TURNS_PER_SECOND := 0.25
+
+static func build_light_map(game) -> TextureRect:
+	var viewport := SubViewport.new()
+	viewport.name = "LightMapViewport"
+	viewport.size = Vector2i(320, 180)
+	viewport.disable_3d = true
+	viewport.transparent_bg = false
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	var white := ColorRect.new()
+	white.name = "White"
+	white.color = Color.WHITE
+	white.size = Vector2(8192, 8192)
+	viewport.add_child(white)
+	var ambient := Node2D.new()
+	ambient.name = "Ambient"
+	var lights := Node2D.new()
+	lights.name = "Lights"
+	var add := CanvasItemMaterial.new()
+	add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	lights.material = add
+	viewport.add_child(ambient)
+	viewport.add_child(lights)
+	ambient.draw.connect(func() -> void: draw_ambient(ambient, game))
+	lights.draw.connect(func() -> void: draw_lights(lights, game))
+	var overlay := TextureRect.new()
+	overlay.name = "LightMap"
+	overlay.texture = viewport.get_texture()
+	overlay.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	overlay.stretch_mode = TextureRect.STRETCH_SCALE
+	overlay.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var multiply := CanvasItemMaterial.new()
+	multiply.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+	overlay.material = multiply
+	overlay.add_child(viewport)
+	overlay.set_meta("viewport", viewport)
+	overlay.set_meta("ambient", ambient)
+	overlay.set_meta("lights", lights)
+	overlay.set_meta("signature", -1)
+	return overlay
+
+# Called every frame from main._process; cheap unless something changed.
+static func update_light_map(game) -> void:
+	var overlay: TextureRect = game.light_map
+	if overlay == null or not is_instance_valid(overlay): return
+	var active: bool = TitleSettings.effects_quality > 0
+	overlay.visible = active
+	if not active: return
+	var scroll: ScrollContainer = game.grid_scroll
+	var viewport: SubViewport = overlay.get_meta("viewport")
+	var want := Vector2i(maxi(2, ceili(scroll.size.x / MAP_SCALE)), maxi(2, ceili(scroll.size.y / MAP_SCALE)))
+	if viewport.size != want: viewport.size = want
+	var offset := Vector2(scroll.scroll_horizontal, scroll.scroll_vertical)
+	for key in ["ambient", "lights"]:
+		var node: Node2D = overlay.get_meta(key)
+		node.scale = Vector2.ONE / MAP_SCALE
+		node.position = -offset / MAP_SCALE
+	var signature := content_signature(game)
+	if signature != int(overlay.get_meta("signature")):
+		overlay.set_meta("signature", signature)
+		(overlay.get_meta("ambient") as Node2D).queue_redraw()
+		(overlay.get_meta("lights") as Node2D).queue_redraw()
+
+static func room_level(game, room: Dictionary) -> float:
+	var grid = game.grid_view
+	return clampf(grid._room_light_level(room) * grid._power_flicker(room), 0.0, 1.0)
+
+static func emergency_phase(game) -> float:
+	if not game.power_blackout: return -1.0
+	if TitleSettings.reduced_motion: return 0.0
+	return fposmod(game.get_visual_time_seconds(), EMERGENCY_PERIOD) / EMERGENCY_PERIOD
+
+static func content_signature(game) -> int:
+	var parts: Array = [game.grid_view._cell_size(), TitleSettings.effects_quality, TitleSettings.reduced_motion, game.power_blackout, game.hardware.walls, TitleSettings.raised_walls, snappedf(emergency_phase(game), 0.05)]
+	for cell in game.occupied:
+		parts.append([cell, snappedf(room_level(game, game.occupied[cell]), 0.05)])
+	return hash(parts)
+
+static func _narrow(grid, room: Dictionary) -> bool:
+	return grid._is_narrow_corridor(room)
+
+static func draw_ambient(node: Node2D, game) -> void:
+	var grid = game.grid_view
+	var size: float = grid._cell_size()
+	var lit := Color(LIT_AMBIENT, LIT_AMBIENT, LIT_AMBIENT)
+	var dark := Color(DARK_AMBIENT * 0.86, DARK_AMBIENT * 0.92, DARK_AMBIENT)
+	for cell in game.occupied:
+		var room: Dictionary = game.occupied[cell]
+		if not grid._uses_layered_art(room): continue
+		if _narrow(grid, room): continue # Hull-local: never darken the water around a corridor.
+		var rect := Rect2(Vector2(cell) * size, Vector2.ONE * size)
+		# A raised north wall stands above the cell; the deck-cell light covers its whole face.
+		if game.hardware.walls and TitleSettings.raised_walls and not game.occupied.has(cell + Vector2i.UP):
+			var rise: float = (Riser.HEIGHT + 9.0) * size / 384.0
+			rect.position.y -= rise
+			rect.size.y += rise
+		node.draw_rect(rect, dark.lerp(lit, room_level(game, room)))
+
+static func _blob(node: Node2D, at: Vector2, radius: Vector2, color: Color) -> void:
+	node.draw_texture_rect(halo_texture(), Rect2(at - radius, radius * 2.0), false, color)
+
+static func draw_lights(node: Node2D, game) -> void:
+	var grid = game.grid_view
+	var size: float = grid._cell_size()
+	var k := size / 384.0
+	var phase := emergency_phase(game)
+	var seconds: float = game.get_visual_time_seconds()
+	var beacon_angle := 0.0 if TitleSettings.reduced_motion else seconds * BEACON_TURNS_PER_SECOND * TAU
+	for cell in game.occupied:
+		var room: Dictionary = game.occupied[cell]
+		if not grid._uses_layered_art(room) or _narrow(grid, room): continue
+		var level := room_level(game, room)
+		var centre := (Vector2(cell) + Vector2.ONE * 0.5) * size
+		# Warm light where the lamps are: brings the room's ambient back up to full under each lamp.
+		if level > 0.05:
+			var anchors: Array = ANCHORS if not grid.has_method("_layout_light_anchors") else grid._layout_light_anchors(room)
+			for entry in anchors:
+				var anchor: Vector2 = entry.at if entry is Dictionary else entry
+				var brightness: float = float((entry as Dictionary).get("brightness", 1.0)) if entry is Dictionary else 1.0
+				var strength := level * clampf(brightness, 0.0, 1.0)
+				_blob(node, centre + anchor * k + Vector2(0, 60.0 * k), Vector2(150.0, 130.0) * k, Color(0.11, 0.10, 0.085, 1.0) * strength)
+		# Blackout: a slow red wash over the whole dark room.
+		if phase >= 0.0 and level < 0.2:
+			_blob(node, centre, Vector2(0.62, 0.62) * size, Color(0.10, 0.012, 0.01, 1.0) * (0.3 + 0.7 * (0.5 + 0.5 * sin(phase * TAU))))
+		# Light spilling through an open door into a darker neighbour, and blackout red.
+		for neighbor in game._connected_neighbor_cells(cell):
+			if not game.occupied.has(neighbor): continue
+			var other: Dictionary = game.occupied[neighbor]
+			if not grid._uses_layered_art(other) or _narrow(grid, other): continue
+			var direction := Vector2(neighbor - cell)
+			var door := centre + direction * size * 0.5
+			var other_level := room_level(game, other)
+			if level > 0.4 and level - other_level > 0.3:
+				var spill := (level - other_level) * 0.85
+				_blob(node, door + direction * size * 0.16, Vector2(0.34, 0.34) * size, Color(0.13, 0.11, 0.08, 1.0) * spill)
+			if phase >= 0.0 and level < 0.2:
+				var pulse := 0.5 + 0.5 * sin(phase * TAU)
+				_blob(node, door + direction * size * -0.05, Vector2(0.42, 0.42) * size, Color(0.24, 0.03, 0.02, 1.0) * (0.35 + 0.65 * pulse))
+				var orbit := Vector2(cos(beacon_angle + direction.angle()), sin(beacon_angle + direction.angle())) * size * 0.10
+				_blob(node, door + direction * size * -0.10 + orbit, Vector2(0.14, 0.14) * size, Color(0.30, 0.04, 0.03, 1.0))
+
 # Rounded, anti-aliased footprints for the contact bands. Styleboxes are cached by colour and
 # radius: a room redraws these every frame and a fresh StyleBoxFlat per prop per band is waste.
 static var _contact_boxes := {}

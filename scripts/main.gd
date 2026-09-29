@@ -337,6 +337,8 @@ var menu_workspace := {}
 var journal_last_tab := 0
 var journal_opener: Control
 var inspected_resource := ""
+# The stage 2 light map overlay over the station view (RoomLighting.build_light_map).
+var light_map: TextureRect
 var camera_pan_remainder := Vector2.ZERO
 var camera_pan_velocity := Vector2.ZERO
 var camera_zoom_target := -1.0
@@ -426,6 +428,7 @@ var crew_frame_usec := {}
 var operations_refresh_step := 0.5
 
 func _process(delta: float) -> void:
+	preload("res://rooms/whole-room/room_lighting.gd").update_light_map(self)
 	var stamp := Time.get_ticks_usec()
 	var frame_start := stamp
 	_update_discovery_bursts(delta)
@@ -579,6 +582,8 @@ func _build_ui() -> void:
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	grid_frame.add_child(scroll)
 	grid_scroll = scroll
+	light_map = preload("res://rooms/whole-room/room_lighting.gd").build_light_map(self)
+	grid_frame.add_child(light_map)
 	grid_frame.add_child(_make_vignette())
 	scroll.resized.connect(_resize_grid_view)
 
