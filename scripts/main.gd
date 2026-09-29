@@ -5536,6 +5536,34 @@ func _history_row(line: String) -> String:
 	elif colour == "#c9d9de" and (lowered.contains("built ") or lowered.contains("cleared at") or lowered.contains("construction")): colour = "#9fb8c0"
 	return "[color=#5e8293]%s[/color]  [color=%s]%s[/color]" % [cycle_tag, colour, message.replace("[", "[lb]")]
 
+# A journal or diagnostics page heading: large, coloured, with a dim note beneath.
+func _journal_heading(title_text: String, note: String) -> String:
+	return "[font_size=21][color=#a9e7d4][b]%s[/b][/color][/font_size]%s[color=#8fa9b3]%s[/color]%s" % [title_text, "
+", note, "
+"]
+
+# The first thing Station Health says: is anything wrong, in one coloured line.
+func _health_banner(alerts: int) -> String:
+	if alerts == 0:
+		return "[font_size=19][color=#7fd6a6][b]ALL ROOMS NOMINAL[/b][/color][/font_size]%s" % "
+"
+	return "[font_size=19][color=#efb777][b]%d ROOM%s NEED%s ATTENTION[/b][/color][/font_size]%s" % [alerts, "" if alerts == 1 else "S", "S" if alerts == 1 else "", "
+"]
+
+# Every reserve at a glance: stored of capacity, and the projected change per cycle.
+func _reserve_table(net: Dictionary) -> String:
+	var rows := "[table=3]"
+	rows += "[cell][color=#5e8293]RESERVE[/color][/cell][cell][color=#5e8293]STORED[/color][/cell][cell][color=#5e8293]NEXT CYCLE[/color][/cell]"
+	for key in BASE_STORAGE_CAPACITY:
+		var change := int(net.get(key, 0))
+		var tint := "#7fd6a6" if change > 0 else "#ef987c" if change < 0 else "#8fa9b3"
+		var label: String = str(key).replace("_", " ").capitalize()
+		rows += "[cell padding=0,3,24,3]%s[/cell]" % label
+		rows += "[cell padding=0,3,24,3]%d / %d[/cell]" % [int(resources.get(key, 0)), _get_resource_capacity(str(key))]
+		rows += "[cell padding=0,3,0,3][color=%s]%s[/color][/cell]" % [tint, ("%+d" % change) if change != 0 else "steady"]
+	return rows + "[/table]%s" % "
+"
+
 func _history_matches_category(line: String) -> bool:
 	var text := line.to_lower()
 	match history_filter.selected:
@@ -5553,7 +5581,7 @@ func _refresh_diagnostics_page() -> void:
 	var lines: Array[String] = []
 	match journal_tabs.current_tab:
 		1:
-			lines.append("[b]STATION HEALTH // NEXT CYCLE[/b]\nCurrent supplies and learned patterns. Select a room to locate it.\n")
+			lines.append(_journal_heading("STATION HEALTH // NEXT CYCLE", "Current supplies and learned patterns. Select a room to locate it."))
 			var forecast: Dictionary = _simulate_room_economy(true, cycle + 1)
 			var priorities: Array[String] = preload("res://scripts/station_ui_insights.gd").priorities(self,forecast)
 			if not priorities.is_empty():
@@ -5575,6 +5603,7 @@ func _refresh_diagnostics_page() -> void:
 					remedy = "Select this room, then choose Resume Room. Operation is evaluated next cycle."
 				lines.append("[url=%d,%d][color=#efb777]%s · %s[/color][/url]\nObserved: %s\nForecast: %s\n%s\n" % [cell.x, cell.y, room.display_name, cell, str(offline_reasons.get(cell, "FUNCTIONING" if powered_room_cells.has(cell) else "AWAITING CYCLE")), reason, remedy])
 				lines.append(preload("res://scripts/station_navigation.gd").actions(cell,reason)+"\n")
+			lines.insert(1, _health_banner(alerts))
 			if alerts == 0:
 				lines.append("No room interruptions forecast. A rare interval of competence.")
 			lines.append("\nSUPPLY WATCH")
@@ -5583,9 +5612,10 @@ func _refresh_diagnostics_page() -> void:
 				if int(net[key]) < 0:
 					lines.append(_reserve_forecast(str(key), int(net[key])))
 		2:
-			lines.append("[b]RESERVES // PROJECTED NEXT CYCLE[/b]\nIncludes crew upkeep, learned bonuses and recent drone and crew deliveries. Storage caps apply.\nEstimates only: events and changing inputs can alter these rates.\n")
+			lines.append(_journal_heading("RESERVES // PROJECTED NEXT CYCLE", "Includes crew upkeep, learned bonuses and recent drone and crew deliveries. Storage caps apply.\nEstimates only: events and changing inputs can alter these rates."))
 			var forecast := _simulate_room_economy(true, cycle + 1)
 			var net := _displayed_cycle_delta(forecast)
+			if inspected_resource.is_empty(): lines.append(_reserve_table(net))
 			if inspected_resource.is_empty() or inspected_resource == "power":
 				lines.append("\n" + preload("res://scripts/station_ui_insights.gd").power_balance(self,forecast) + "\n")
 				lines.append("\n" + preload("res://scripts/station_ui_insights.gd").power_demand(self) + "\n")
@@ -5612,7 +5642,7 @@ func _refresh_diagnostics_page() -> void:
 		4:
 			var forecast := _simulate_room_economy(true, cycle + 1)
 			var rooms: Array = preload("res://scripts/station_navigation.gd").rooms(self,history_search.text,forecast)
-			lines.append("[b]INSTALLED ROOMS // %d OF %d[/b]\nSearch name, type or problem. Select a result to locate it.\n" % [rooms.size(),placed_rooms.size()])
+			lines.append(_journal_heading("INSTALLED ROOMS // %d OF %d" % [rooms.size(),placed_rooms.size()], "Search name, type or problem. Select a result to locate it."))
 			for room in rooms:
 				var cell: Vector2i = room.pos
 				var reason: String = str(forecast.offline.get(cell,"INPUTS AVAILABLE"))
@@ -5644,7 +5674,7 @@ func _refresh_diagnostics_page() -> void:
 				for pod in ward.pods: waiting += int(not pod.recovered)
 				lines.append("Ward %s // %d in stasis // %s" % [cell,waiting,CryoRecovery.status(self,cell)])
 		6:
-			lines.append("[b]CONSTRUCTION QUEUE[/b]\nSelect a paid order to locate its footprint. Closing this journal restores the previous pause state.\n")
+			lines.append(_journal_heading("CONSTRUCTION QUEUE", "Select a paid order to locate its footprint. Closing this journal restores the previous pause state."))
 			lines.append_array(preload("res://scripts/station_ui_insights.gd").construction(self))
 	_set_journal_text("\n".join(lines))
 
