@@ -905,6 +905,9 @@ func _crew_card(id: String, accent: Color, owned: bool, met: bool) -> Array:
 # The page tabs (Upgrades, Blueprints, Crew & Companions): the same palette as the Settings
 # sidebar, a readable size, and a clear selected state.
 func _style_tabs(tabs: TabBar) -> void:
+	style_tabs(tabs)
+
+static func style_tabs(tabs: TabBar) -> void:
 	tabs.add_theme_font_override("font", preload("res://scripts/ui_fonts.gd").interface_medium())
 	tabs.add_theme_font_size_override("font_size", 18)
 	tabs.add_theme_color_override("font_selected_color", Color("e6f6f3"))

@@ -1489,26 +1489,46 @@ func _build_journal_overlay() -> void:
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	journal_layer.add_child(center)
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(940, 760)
+	panel.custom_minimum_size = Vector2(1040, 720)
 	_apply_panel_style(panel, Color("#071018"), UI_ACCENT_BRIGHT)
 	center.add_child(panel)
 	var body := VBoxContainer.new()
-	body.add_theme_constant_override("separation", 18)
+	body.add_theme_constant_override("separation", 14)
 	panel.add_child(body)
+	# Title on the left, Close on the right (owner playtest, Sept 29: the journal and diagnostics pages
+	# lost a band of space to two big buttons, and their panel changed height between tabs).
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 20)
+	body.add_child(header)
+	var heading := VBoxContainer.new()
+	heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	heading.add_theme_constant_override("separation", 6)
+	header.add_child(heading)
 	var title := Label.new()
-	title.text = "BRINE / STATION JOURNAL"
+	title.text = "BRINESPACE // JOURNAL"
 	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color("#a9e7d4"))
-	body.add_child(title)
+	heading.add_child(title)
 	journal_title_label = title
 	var subtitle := Label.new()
 	subtitle.text = "Recovered patterns, system diagnostics and the loop's recorded failures.\nThe station remembers. Occasionally, that is useful."
 	subtitle.add_theme_color_override("font_color", Color("#92aeb8"))
-	body.add_child(subtitle)
+	heading.add_child(subtitle)
 	journal_subtitle_label = subtitle
+	var close := Button.new()
+	close.text = "CLOSE  [J / ESC]"
+	close.set_meta("key_hint", "CLOSE  [{Journal} / ESC]")
+	close.custom_minimum_size = Vector2(220, 46)
+	close.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	close.pressed.connect(_toggle_journal)
+	_style_hud_button(close, false)
+	header.add_child(close)
+	journal_layer.set_meta("close_button", close)
+	preload("res://scripts/title_button_style.gd").apply(close, 220, 46)
 	journal_tabs = TabBar.new()
-	for tab_title in ["Patterns", "Station Health", "Reserves", "Event History", "Rooms", "Crew", "Construction"]:
+	for tab_title in ["Discoveries", "Station Health", "Reserves", "Event History", "Rooms", "Crew", "Construction"]:
 		journal_tabs.add_tab(tab_title)
+	preload("res://scripts/title_archive.gd").style_tabs(journal_tabs)
 	journal_tabs.tab_changed.connect(_journal_tab_changed)
 	body.add_child(journal_tabs)
 	history_tools = HBoxContainer.new()
@@ -1541,25 +1561,12 @@ func _build_journal_overlay() -> void:
 	archive_label = RichTextLabel.new()
 	archive_label.bbcode_enabled = true
 	archive_label.focus_mode = Control.FOCUS_ALL
-	archive_label.custom_minimum_size = Vector2(900, 460)
+	archive_label.custom_minimum_size = Vector2(980, 300)
 	archive_label.meta_clicked.connect(_locate_diagnostic_room)
 	archive_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	archive_label.add_theme_font_size_override("normal_font_size", 16)
-	archive_label.add_theme_constant_override("line_separation", 6)
+	archive_label.add_theme_font_size_override("normal_font_size", 17)
+	archive_label.add_theme_constant_override("line_separation", 7)
 	body.add_child(archive_label)
-	var close := Button.new()
-	close.text = "RETURN TO STATION  [J / ESC]"
-	close.set_meta("key_hint", "RETURN TO STATION  [{Journal} / ESC]")
-	# Return to Station and Settings sit at the same size under the journal and diagnostics pages;
-	# they were 495 wide by 44 tall against 380 by 50 (owner playtest note 11).
-	close.custom_minimum_size = Vector2(380, 50)
-	close.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	close.pressed.connect(_toggle_journal)
-	_style_hud_button(close, false)
-	body.add_child(close)
-	journal_layer.set_meta("close_button", close)
-	preload("res://scripts/title_button_style.gd").apply(close, 380, 50)
-	_add_menu_button(body, "Settings", _open_overlay_settings)
 
 # Shows one page's tabs and dresses the panel for it. A tab belonging to the other page is hidden
 # rather than removed, so tab indexes stay stable for saved scroll positions and searches.
@@ -1572,7 +1579,7 @@ func _apply_journal_mode(mode: String) -> void:
 	if not shown.has(journal_tabs.current_tab):
 		journal_tabs.current_tab = int(shown[0])
 	if journal_title_label != null:
-		journal_title_label.text = "BRINE / STATION DIAGNOSTICS" if mode == "diagnostics" else "BRINE / STATION JOURNAL"
+		journal_title_label.text = "BRINESPACE // DIAGNOSTICS" if mode == "diagnostics" else "BRINESPACE // JOURNAL"
 	if journal_subtitle_label != null:
 		journal_subtitle_label.text = "Warnings, alerts and the figures the station is running on right now." if mode == "diagnostics" else "What this loop has done, and what it recovered.\nThe station remembers. Occasionally, that is useful."
 
@@ -3463,10 +3470,10 @@ func _open_shared_menu(section: String) -> void:
 			menu_resume_button.grab_focus()
 	)
 
-func _open_overlay_settings() -> void:
+func _open_overlay_settings(section := "settings") -> void:
 	if not journal_layer.visible and not summary_layer.visible:
 		_open_menu()
-		_open_shared_menu("settings")
+		_open_shared_menu(section)
 		return
 	if is_instance_valid(menu_archive):
 		return
@@ -3475,7 +3482,7 @@ func _open_overlay_settings() -> void:
 	source.hide()
 	menu_archive = preload("res://scripts/title_archive.gd").new()
 	menu_archive.meta_state = meta
-	menu_archive.mode = "settings"
+	menu_archive.mode = section
 	menu_archive.in_game = true
 	menu_layer.show()
 	menu_center.hide()
@@ -5196,12 +5203,13 @@ func _refresh_archive() -> void:
 				stabilized_count += 1
 			lines.append(_format_synergy_line(synergy) + "\n")
 	lines.append_array(preload("res://scripts/station_ui_insights.gd").learning(self))
-	lines.push_front("[color=#a9e7d4]%d LEARNED  /  %d STABILIZED  /  %d BLUEPRINTS AVAILABLE[/color]\n" % [discovered_count, stabilized_count, meta.unlocked_room_ids.size()])
+	lines.push_front("[font_size=21][color=#a9e7d4][b]%d[/b] LEARNED[/color]     [color=#7fd6a6][b]%d[/b] STABILIZED[/color]     [color=#79b8d9][b]%d[/b] BLUEPRINTS AVAILABLE[/color][/font_size]\n" % [discovered_count, stabilized_count, meta.unlocked_room_ids.size()])
 	if discovered_count == 0:
 		lines.append("[color=#a7bac1]An empty record, a station full of possibilities.\n\nConnect different rooms through matching doors. Let them function.\nWatch the rooms themselves for the first sign of a discovery.\n\nStabilized blueprints stay with you across reboots, and a new prototype\nis placed on top of your current draw pile.[/color]\n")
 	var unknown_count := SynergyManagerScript.all_synergies().size() - discovered_count
 	if unknown_count > 0:
-		lines.append("[color=#718a97]UNKNOWN PATTERNS REMAIN: %d[/color]" % unknown_count)
+		lines.append("[color=#718a97]UNIDENTIFIED SYNERGIES REMAIN: %d[/color]" % unknown_count)
+	lines.append("\n[url=codex][color=#79b8d9]OPEN THE CODEX  ▸[/color][/url]")
 	_set_journal_text(_join_strings(lines, "\n"))
 	if journal_button != null:
 		journal_button.text = "JOURNAL [%s]\n%d LEARNED" % [Preferences.key_name("Journal"), discovered_count]
@@ -5423,6 +5431,9 @@ func _inspector_action(value: Variant) -> void:
 		_listening_action(value)
 
 func _locate_diagnostic_room(value: Variant) -> void:
+	if str(value) == "codex":
+		_open_overlay_settings("codex")
+		return
 	if str(value)=="pet:margot":
 		if Companions.can_pet(self,true):
 			if _journal_is_open():_toggle_journal()
@@ -5510,6 +5521,21 @@ func _set_journal_text(value: String) -> void:
 	archive_label.text = value
 	archive_label.get_v_scroll_bar().set_deferred("value", position)
 
+# One event-history line: a dim cycle chip, then the message coloured by what kind of event it is.
+func _history_row(line: String) -> String:
+	var cycle_tag := ""
+	var message := line
+	if line.begins_with("[C") and line.find("] ") > 0:
+		cycle_tag = line.substr(1, line.find("]") - 1)
+		message = line.substr(line.find("] ") + 2)
+	var lowered := message.to_lower()
+	var colour := "#c9d9de"
+	for token in ["warning", "shortage", "shortfall", "needs ", "blackout", "collapse", "critical", "rejected", "run complete", "idle"]:
+		if lowered.contains(token): colour = "#ef987c"; break
+	if colour == "#c9d9de" and (lowered.contains("pattern") or lowered.contains("blueprint decrypted") or lowered.contains("resonance tier") or lowered.contains("cascade")): colour = "#7fd6c6"
+	elif colour == "#c9d9de" and (lowered.contains("built ") or lowered.contains("cleared at") or lowered.contains("construction")): colour = "#9fb8c0"
+	return "[color=#5e8293]%s[/color]  [color=%s]%s[/color]" % [cycle_tag, colour, message.replace("[", "[lb]")]
+
 func _history_matches_category(line: String) -> bool:
 	var text := line.to_lower()
 	match history_filter.selected:
@@ -5578,7 +5604,7 @@ func _refresh_diagnostics_page() -> void:
 			for i in range(event_history.size() - 1, -1, -1):
 				var line := str(event_history[i])
 				if _history_matches_category(line) and (query.is_empty() or line.to_lower().contains(query)):
-					lines.append(line.replace("[", "[lb]"))
+					lines.append(_history_row(line))
 					found += 1
 			if found == 0:
 				lines.append("No matching records. Clear the search and choose All events to inspect the full retained history.")
@@ -5593,19 +5619,19 @@ func _refresh_diagnostics_page() -> void:
 				lines.append("[url=%d,%d]%s · %s[/url]\n%s · Forecast: %s\n%s\n" % [cell.x,cell.y,room.display_name,cell,room.category,reason,preload("res://scripts/station_navigation.gd").actions(cell,reason)])
 			if rooms.is_empty(): lines.append("No installed rooms match. Try a room name, department or NEEDS resource.")
 		5:
-			lines.append("[b]COMPANIONS[/b] // Separate from architect berths")
+			lines.append("[font_size=20][color=#a9e7d4][b]COMPANIONS[/b][/color][/font_size] // Separate from architect berths\n")
 			for id in Companions.IDS:
 				lines.append("%s // %s"%[Companions.NAMES[id],companion_actors[id].activity if companion_roster.has(id) else "Unlocked for future selection" if meta.unlocked_companion_ids.has(id) else "Met // buy in Meta Progression to keep" if meta.met_character_ids.has(id) else "Not yet recovered"])
 				if companion_roster.has(id) and companion_actors[id].active:
 					var companion_cell: Vector2i=companion_actors[id].cell_at(companion_actors[id].foot)
 					lines.append("[url=%d,%d]LOCATE %s[/url]"%[companion_cell.x,companion_cell.y,Companions.NAMES[id].to_upper()])
 					if id=="margot":lines.append("[url=pet:margot]PET MARGOT[/url]\n" if Companions.can_pet(self,true) else "Pet Margot // %s\n"%Companions.pet_refusal(self))
-			lines.append("[b]CREW ROSTER // %d / %d BERTHS[/b]\nRecovered occupants join after their wake sequence completes.\n" % [crew_count,_get_crew_capacity()])
+			lines.append("\n[font_size=20][color=#a9e7d4][b]CREW ROSTER // %d / %d BERTHS[/b][/color][/font_size]\nRecovered occupants join after their wake sequence completes.\n" % [crew_count,_get_crew_capacity()])
 			var named_alive := 0
 			for member in recovered_crew:
 				named_alive += int(member.alive)
 				var origin_text := "Awakened in BRINE Core." if member.id=="core_architect" else ("Awakened in charging chamber %s." if member.get("architect_id","")=="marsh" else "Recovered from cryo ward %s.") % member.origin
-				lines.append("[url=%d,%d]%s[/url] // %s\n%s\n" % [member.origin.x,member.origin.y,member.name,"ABOARD" if member.alive else "DECEASED",origin_text])
+				lines.append("[url=%d,%d]%s[/url] // %s\n%s\n" % [member.origin.x,member.origin.y,member.name,"[color=#7fd6a6]ABOARD[/color]" if member.alive else "[color=#ef987c]DECEASED[/color]",origin_text])
 			for id in Architects.IDS:
 				var actor = Architects.actor_for(self,id)
 				if actor.active and not actor.dead: lines.append("Marsh: "+actor.battery_status()+"\n" if not actor.needs_air() else "%s: tank %.0fs / breath %.0fs / starvation %.0f of 90s\n" % [Architects.NAMES[id],actor.tank_oxygen,actor.breath_oxygen,actor.starvation])
