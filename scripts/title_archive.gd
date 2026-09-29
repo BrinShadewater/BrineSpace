@@ -517,9 +517,15 @@ class UnresolvedField extends Control:
 	func _ready() -> void:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 		set_process(not preload("res://scripts/title_settings.gd").reduced_motion)
+	# Hundreds of these can exist (every unrecovered room and unidentified pattern), so only the ones on
+	# screen animate, and at 20 frames a second.
+	var since_draw := 0.0
 	func _process(delta: float) -> void:
 		elapsed += delta
-		queue_redraw()
+		since_draw += delta
+		if since_draw < 0.05: return
+		since_draw = 0.0
+		if get_global_rect().intersects(get_viewport_rect()): queue_redraw()
 	func _draw() -> void:
 		var area := Rect2(Vector2.ZERO, size)
 		draw_texture_rect(preload("res://scripts/draft_card.gd").ocean_texture(), area, false, Color(0.62, 0.7, 0.8))
@@ -604,12 +610,29 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 			pair.add_child(connector)
 		pair.add_child(_mini_room_card(str(data.rooms[index]), known))
 	if not known:
-		body.add_child(_label("CLUE // " + str(entry.clue), 16))
+		var hidden_ribbon := _label("SIGNAL OBSCURED", 12)
+		hidden_ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		hidden_ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+		hidden_ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
+		body.add_child(hidden_ribbon)
+		var hidden_rules := PanelContainer.new()
+		hidden_rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+		body.add_child(hidden_rules)
+		var hidden_lines := VBoxContainer.new()
+		hidden_lines.add_theme_constant_override("separation", 6)
+		hidden_rules.add_child(hidden_lines)
+		var clue_heading := _label("CLUE", 13)
+		clue_heading.add_theme_color_override("font_color", Color("e0b36a"))
+		hidden_lines.add_child(clue_heading)
+		hidden_lines.add_child(_label(str(entry.clue), 15))
+		var hidden_footer := _label("UNDISCOVERED", 13)
+		hidden_footer.add_theme_color_override("font_color", Color("5e8293"))
+		body.add_child(hidden_footer)
 		return card
-	var ribbon := _label("STABILIZED" if stabilized else "DISCOVERED", 12)
+	var ribbon := _label("SYNERGY" if stabilized else "DISCOVERED", 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
 	body.add_child(ribbon)
 	var rules := PanelContainer.new()
 	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
@@ -627,7 +650,7 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 15))
 	var reward: String = data.get("unlock_room_id", "")
 	var data_reward := int(data.get("terminal_reward", {}).get("research", 0)) + MetaShop.STABILIZE_DATA
-	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["STABILIZED" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 15))
+	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["SYNERGY" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 15))
 	if not reward.is_empty():
 		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 15))
 	return card
@@ -639,27 +662,35 @@ func _mini_room_card(room_id: String, known: bool) -> Control:
 	var card := PanelContainer.new()
 	card.name = "Card_" + room_id
 	card.custom_minimum_size = Vector2(200, 0)
-	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 2, 10, 7))
+	card.add_theme_stylebox_override("panel", _card_box(Color("#101a20") if known else Color("#0d161b"), DraftCard.muted(accent), 2, 10, 7))
 	var rows := VBoxContainer.new()
 	rows.add_theme_constant_override("separation", 5)
 	card.add_child(rows)
 	var title := _label(str(room.get("display_name", room_id)) if known else "LINKED ROOM", 15)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
-	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 5, 4))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), DraftCard.muted(accent).darkened(0.25), 1, 5, 4))
 	rows.add_child(title)
-	if not known:
-		rows.add_child(_mystery_picture())
-		return card
 	var art := PanelContainer.new()
 	art.custom_minimum_size.y = 160
-	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
+	art.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), DraftCard.muted(accent), 1, 2, 2))
 	rows.add_child(art)
-	art.add_child(_room_picture(room_id, 156))
-	var ribbon := _label(str(room.get("category", "")).to_upper(), 11)
+	var clip := Control.new()
+	clip.clip_contents = true
+	art.add_child(clip)
+	if not known:
+		var field := UnresolvedField.new()
+		field.set_anchors_preset(Control.PRESET_FULL_RECT)
+		clip.add_child(field)
+		return card
+	DraftCard.add_ocean(clip)
+	var picture := _room_picture(room_id, 156)
+	picture.set_anchors_preset(Control.PRESET_FULL_RECT)
+	clip.add_child(picture)
+	var ribbon := _label(DraftCard.category_label(room.merged({"id": room_id})), 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
 	rows.add_child(ribbon)
 	return card
 
@@ -805,15 +836,19 @@ func _crew_card(id: String, accent: Color, owned: bool, met: bool) -> Array:
 	clip.clip_contents = true
 	window.add_child(clip)
 	DraftCard.add_ocean(clip)
-	var portrait := TextureRect.new()
-	portrait.set_anchors_preset(Control.PRESET_FULL_RECT)
-	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	portrait.texture = MetaShop.portrait(id)
-	# Dimmed almost to nothing for a character you have not met yet.
-	portrait.modulate = Color(1, 1, 1, 1) if met else Color(0.45, 0.55, 0.6, 0.18)
-	clip.add_child(portrait)
+	if met:
+		var portrait := TextureRect.new()
+		portrait.set_anchors_preset(Control.PRESET_FULL_RECT)
+		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		portrait.texture = MetaShop.portrait(id)
+		clip.add_child(portrait)
+	else:
+		# Not met yet: the same scanned-water static as an unrecovered room.
+		var field := UnresolvedField.new()
+		field.set_anchors_preset(Control.PRESET_FULL_RECT)
+		clip.add_child(field)
 	rows.add_child(window)
 	var ribbon := _label(str(MetaShop.CHARACTER_CLASSES.get(id, "CREW")), 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
