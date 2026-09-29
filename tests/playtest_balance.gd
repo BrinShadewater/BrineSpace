@@ -18,6 +18,7 @@ const OPPOSITES := ["east", "west", "south", "north"]
 var seeds: Array[int] = [4404, 9021, 1729]
 var max_cycles := 60
 var pair_filter := ""
+var large_room_intro := -1
 var output_path := ""
 var capture_dir := ""
 var game
@@ -38,6 +39,8 @@ func _init() -> void:
 			seeds.assign([int(argument.trim_prefix("--seed="))])
 		elif argument.begins_with("--pair="):
 			pair_filter = argument.trim_prefix("--pair=")
+		elif argument.begins_with("--large-room-intro="):
+			large_room_intro = int(argument.trim_prefix("--large-room-intro="))
 		elif argument.begins_with("--cycles="):
 			max_cycles = int(argument.trim_prefix("--cycles="))
 		elif argument.begins_with("--capture-dir="):
@@ -92,20 +95,26 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	game.meta.total_victories = 0
 	for id in Rooms.STARTING_UNLOCKS:
 		game.meta.unlocked_room_ids[id] = true
+	if large_room_intro >= 0:
+		game.meta.large_room_run_index = large_room_intro
+	game.set_meta("site_seed", run_seed)
+	game.rng.seed = run_seed
 	game._start_reboot_cycle()
 	seed(run_seed)
 	game.rng.seed = run_seed
 	game.orbit.rng.seed = run_seed + 101
 	game.orbit._roll_poi()
-	game._confirm_doctrines()
 	game._set_paused(true)
 	tried_pairs.clear()
 	var row := {"pair": "+".join(pair), "seed": run_seed, "first_discovery": -1,
 		"first_blueprint": -1, "idle_cycles": 0, "events": [], "snapshots": [],
-		"discoveries": {}, "blueprints": {}, "prototype_built": {}, "builds": []}
+		"discoveries": {}, "blueprints": {}, "prototype_built": {}, "builds": [],
+		"large_room": game.large_room_selected_id, "large_room_first_seen": -1,
+		"large_room_first_affordable": -1, "large_room_built": -1}
 	row["power"] = []
 	row["clearances"] = []
 	while game.running and game.cycle < max_cycles:
+		_record_large_room(row)
 		_order_route_clearance(row)
 		var built := 0
 		for _action in range(3):
@@ -131,7 +140,12 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 		if built == 0:
 			row["idle_cycles"] += 1
 			if not _construction_pending() and game.rerolls_remaining > 0 and game.cycle % 2 == 0:
-				game._discard_all_cards()
+				# A player interested in the one rare offer keeps it while cycling other cards.
+				var other_cards: Array = game.hand.filter(func(id): return id != game.large_room_selected_id)
+				if game.hand.has(game.large_room_selected_id) and not other_cards.is_empty():
+					game._discard_card(str(other_cards[0]))
+				else:
+					game._discard_all_cards()
 		if not game.running:
 			break
 		# Simulate the actual time between economy ticks. Construction is not instant.
@@ -158,6 +172,7 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 			"supplied": forecast.power_used, "stored": int(game.resources.power), "capacity": game._get_power_capacity(),
 			"vented": int(forecast.get("power_vented", 0)), "rooms_short_of_power": short_of_power, "drone_spent": drone_spent})
 		game._advance_cycle()
+		_record_large_room(row)
 		for room in game.placed_rooms:
 			if row["blueprints"].has(room.id) and not row["prototype_built"].has(room.id):
 				row["prototype_built"][room.id] = game.cycle
@@ -184,7 +199,7 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	row["rerolls"] = game.rerolls_remaining
 	row["resonance"] = game.resonance_score
 	row["events"] = game.log_lines.duplicate()
-	print("RUN %s seed=%d %s c%d stages=%d discoveries=%d blueprints=%d first=%d/%d idle=%d | %s" % [
+	print("RUN %s seed=%d %s c%d discoveries=%d blueprints=%d first=%d/%d idle=%d | %s" % [
 		row["pair"], run_seed, "WIN" if row["victory"] else "LOSS", row["cycle"],		row["discoveries"].size(), row["blueprints"].size(), row["first_discovery"], row["first_blueprint"],
 		row["idle_cycles"], row["reason"]])
 	if not capture_dir.is_empty():
@@ -193,6 +208,16 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 		await _capture("%s-%d-final-station" % [row["pair"], run_seed])
 		game.summary_layer.visible = true
 	return row
+
+func _record_large_room(row: Dictionary) -> void:
+	var id: String = str(row.large_room)
+	if id.is_empty(): return
+	if game.hand.has(id):
+		if int(row.large_room_first_seen) < 0: row.large_room_first_seen = game.cycle
+		if int(row.large_room_first_affordable) < 0 and game._can_afford(Rooms.get_room(id).cost):
+			row.large_room_first_affordable = game.cycle
+	if int(row.large_room_built) < 0 and game.placed_rooms.any(func(room): return room.id == id):
+		row.large_room_built = game.cycle
 
 func _choose_build() -> Dictionary:
 	room_counts.clear()

@@ -18,6 +18,8 @@ September 29 bible-audit corrections: a fifth painted source asset, `rooms/large
 
 ## Verification
 
+- September 29 paid-run pacing: the corrected balance harness introduced Hydroponics Farm on its first run and Moonbay on its third. With fresh unlocks and seed 4404, each card appeared at cycle 23 after eleven paid orders. Holding Farm through cycle 60 or Moonbay through cycle 35 did not make either affordable in that automated run. This establishes a Metal-pressure scenario, not a general balance conclusion. Both headless runs exited 0 with zero harness errors under scratch `APPDATA`; the full measurements and limitations are in [the paid-run report](LARGE_ROOM_PAID_RUN_PLAYTEST_2026-09-29.md). The real user folder matched before and after across 2,652 readable non-log files. No runtime costs changed.
+
 - September 29 floor-mark cleanup: the arbitrary code-drawn accent dots, bars, brackets and square blocks were removed from all four large rooms; none was a future prop slot. The accepted floor material textures and physically meaningful Moonbay enclosure/rails remain. Four cards were rebaked. Sixteen Walls-on and sixteen Walls-off rotations, native station captures and Moonbay launch were reviewed. `test_large_room_art` and `test_moonbay_missions` pass 2/2 under scratch `APPDATA` (`output/test-runs/20260929-041918-headless`). The real user folder fingerprint matched before and after across 2,652 readable non-log files.
 
 - Bible-audit correction: 16 Walls-on and 16 Walls-off rotation frames, four native station captures, and Moonbay idle/flooding/launching captures were reviewed under scratch `APPDATA`. The focused art, integration, paid, mission and save suite passed 5/5 in `output/test-runs/20260929-035009-headless`; after the final low-wall intake crop, `test_large_room_art` passed in `output/test-runs/20260929-040803-headless`. Real save/checkpoint/layout files matched the pre-run fingerprint. `last_session.json` changed during review while another Godot process held the real log open; it was left untouched.
@@ -43,4 +45,4 @@ September 29 bible-audit corrections: a fifth painted source asset, `rooms/large
 
 ## Next action
 
-Have the owner review the north-riser/top-down-wall compositions and Moonbay bay doors, then play a normal long run to tune rare-card timing, large-room economy, mission duration and hazard frequency. Merge or publish after the owner's review.
+Have the owner review the north-riser/top-down-wall compositions and Moonbay bay doors, then play a human normal run that actively gathers Metal and saves for the rare card. Use that to judge timing and cost; judge Moonbay mission duration and hazard frequency after building it in a paid run. Merge or publish after the owner's review.
