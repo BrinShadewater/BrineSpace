@@ -42,8 +42,8 @@ static var window_focused := true
 static func atmosphere() -> Dictionary:
 	match effects_quality:
 		0: return {"shafts": 0.0, "caustics": 0.0, "tint": 0.0, "snow": 1.0}
-		2: return {"shafts": 1.0, "caustics": 0.8, "tint": 1.2, "snow": 1.4}
-		_: return {"shafts": 0.75, "caustics": 0.55, "tint": 0.9, "snow": 1.0}
+		2: return {"shafts": 0.8, "caustics": 0.5, "tint": 1.0, "snow": 1.4}
+		_: return {"shafts": 0.55, "caustics": 0.32, "tint": 0.7, "snow": 1.0}
 const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V}
 static var keys: Dictionary = DEFAULT_KEYS.duplicate()
 

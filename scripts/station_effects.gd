@@ -12,6 +12,7 @@ const DIRECTIONS := {"north":Vector2(0,-1), "east":Vector2(1,0), "south":Vector2
 static func draw(canvas, game, rooms: Array, size: float) -> void:
 	draw_turbine_flow(canvas, game, rooms, size)
 	draw_torch_sparks(canvas, game, size)
+	draw_hull_bubbles(canvas, game, rooms, size)
 
 static func draw_turbine_flow(canvas, game, rooms: Array, size: float) -> void:
 	var time: float = game.get_visual_time_seconds()
@@ -79,6 +80,36 @@ static func construction_door(game, actor) -> Vector2:
 		var middle: Vector2 = (Vector2(standing) + Vector2(building)) * 0.5 + Vector2(0.5, 0.5)
 		return middle * 384.0 - Vector2(0, 34.0)
 	return Vector2.INF
+
+# Air seeping from the hull (owner playtest, Sept 29: bubbles from vents). Some exposed north, east and
+# west walls (about a third, chosen by a hash of the cell) loose a slow stream of small bubbles that rise
+# beside the wall and fade. South walls are skipped: from above, bubbles there would seem to rise across
+# the room. Deterministic from visual time, so it freezes with pause; Reduced Motion and Low quality draw
+# none; High draws a longer stream.
+static func draw_hull_bubbles(canvas, game, rooms: Array, size: float) -> void:
+	var quality: int = Preferences.effects_quality
+	if quality == 0 or Preferences.reduced_motion: return
+	var time: float = game.get_visual_time_seconds()
+	var unit := size / 384.0
+	var bubbles := 7 if quality >= 2 else 4
+	for room in rooms:
+		var cell: Vector2i = room.pos
+		for side in ["north", "east", "west"]:
+			var offset: Vector2i = {"north": Vector2i.UP, "east": Vector2i.RIGHT, "west": Vector2i.LEFT}[side]
+			if game.occupied.has(cell + offset): continue
+			if posmod(hash([cell, side, 91]), 3) != 0: continue
+			var edge := (Vector2(cell) + Vector2(0.5, 0.5) + Vector2(offset) * 0.5) * size
+			var along := Vector2(float(offset.y != 0) * (float(posmod(hash([cell, side, 5]), 60)) - 30.0) * unit * 4.0, 0.0)
+			for i in range(bubbles):
+				var cycle := 7.0
+				var phase := fposmod(time / cycle + float(i) / float(bubbles) + float(posmod(hash([cell, side, 17]), 100)) / 100.0, 1.0)
+				var sway := sin(time * 0.9 + float(i) * 1.7 + float(cell.x)) * 5.0 * unit
+				var rise := phase * size * 0.75
+				var at := edge + along + Vector2(sway + float(offset.x) * 10.0 * unit, -rise)
+				var radius := (1.6 + float(posmod(hash([cell, side, i]), 20)) / 10.0) * unit * 1.6
+				var fade := sin(phase * PI)
+				canvas.draw_arc(at, radius, 0.0, TAU, 12, Color(0.72, 0.92, 0.98, 0.42 * fade), maxf(1.0, unit * 1.2), true)
+				canvas.draw_circle(at + Vector2(-radius * 0.3, -radius * 0.3), maxf(0.6, radius * 0.22), Color(1.0, 1.0, 1.0, 0.5 * fade))
 
 static func draw_torch_sparks(canvas, game, size: float) -> void:
 	var actors := torch_actors(game)
