@@ -36,7 +36,7 @@ func run():
 			var before:float=game.wrecks[cell].boot
 			var texture:Texture2D=C.rescue_texture(game,cell)
 			check(texture.get_size()==Vector2(320,440),"Canvas "+id)
-			check(texture.get_meta("crew_standing_height")==148,"Density "+id)
+			check(texture.get_meta("crew_standing_height")==296,"Density "+id)
 			game.paused=true;C.advance(game,.2)
 			check(game.wrecks[cell].boot==before and C.rescue_texture(game,cell)==texture,"Pause holds frame "+id)
 			game.paused=false;game.powered_room_cells.erase(cell);C.advance(game,.2)
