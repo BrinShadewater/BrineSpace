@@ -45,7 +45,11 @@ const CARD_WIDTH := 270
 const CARD_HEIGHT := 500
 const DraftCard = preload("res://scripts/draft_card.gd")
 const CARDS_PER_ROW := 4
-const SYNERGY_WIDTH := 470
+const SYNERGY_WIDTH := 400
+# Every synergy card is at least this tall, discovered or not, and three sit in a row (owner playtest,
+# Sept 29). The rules panel stretches to fill whatever the clue or effect text leaves free.
+const SYNERGY_HEIGHT := 390
+const SYNERGIES_PER_ROW := 3
 var progression_cards: GridContainer
 var progression_tab := 0
 const MetaShop = preload("res://scripts/meta_shop.gd")
@@ -238,7 +242,7 @@ func _layout() -> void:
 		var scale: float = preload("res://scripts/title_settings.gd").text_scale
 		var cell := (CARD_WIDTH + 18) if codex_tab == 0 else (SYNERGY_WIDTH + 18)
 		var fits := maxi(1, int((size.x - 140) / (cell * scale)))
-		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else 2, fits) if mode == "codex" and codex_tab != 2 else 1
+		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else SYNERGIES_PER_ROW, fits) if mode == "codex" and codex_tab != 2 else 1
 		grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if is_instance_valid(progression_cards):
 		var wide: int = CARDS_PER_ROW if progression_cards.name == "BlueprintShop" else 4
@@ -467,6 +471,7 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	body.add_child(ribbon)
 	var rules := PanelContainer.new()
 	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+	rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_child(rules)
 	var lines := VBoxContainer.new()
 	lines.add_theme_constant_override("separation", 6)
@@ -575,8 +580,8 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	var accent := Color(str(data.get("fx_color", "72d9dc"))) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexSynergy_" + str(entry.id)
-	card.custom_minimum_size = Vector2(SYNERGY_WIDTH, 0)
-	card.size_flags_horizontal = Control.SIZE_FILL
+	card.custom_minimum_size = Vector2(SYNERGY_WIDTH, SYNERGY_HEIGHT)
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	card.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 0))
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 8)
@@ -621,6 +626,7 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 		body.add_child(hidden_ribbon)
 		var hidden_rules := PanelContainer.new()
 		hidden_rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+		hidden_rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		body.add_child(hidden_rules)
 		var hidden_lines := VBoxContainer.new()
 		hidden_lines.add_theme_constant_override("separation", 6)
@@ -665,7 +671,7 @@ func _mini_room_card(room_id: String, known: bool) -> Control:
 	var accent: Color = Rooms.room_color(room_id) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "Card_" + room_id
-	card.custom_minimum_size = Vector2(200, 0)
+	card.custom_minimum_size = Vector2(170, 0)
 	card.add_theme_stylebox_override("panel", _card_box(Color("#101a20") if known else Color("#0d161b"), DraftCard.muted(accent), 2, 10, 7))
 	var rows := VBoxContainer.new()
 	rows.add_theme_constant_override("separation", 5)
@@ -676,7 +682,7 @@ func _mini_room_card(room_id: String, known: bool) -> Control:
 	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), DraftCard.muted(accent).darkened(0.25), 1, 5, 4))
 	rows.add_child(title)
 	var art := PanelContainer.new()
-	art.custom_minimum_size.y = 160
+	art.custom_minimum_size.y = 130
 	art.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), DraftCard.muted(accent), 1, 2, 2))
 	rows.add_child(art)
 	var clip := Control.new()
@@ -688,7 +694,7 @@ func _mini_room_card(room_id: String, known: bool) -> Control:
 		clip.add_child(field)
 		return card
 	DraftCard.add_ocean(clip)
-	var picture := _room_picture(room_id, 156)
+	var picture := _room_picture(room_id, 126)
 	picture.set_anchors_preset(Control.PRESET_FULL_RECT)
 	clip.add_child(picture)
 	var ribbon := _label(DraftCard.category_label(room.merged({"id": room_id})), 12)
@@ -779,7 +785,7 @@ func _populate_progression() -> void:
 	summary.autowrap_mode = TextServer.AUTOWRAP_OFF
 	summary.add_theme_color_override("font_color", Color(ResourceIcons.color("archived_data")))
 	balance.add_child(summary)
-	var totals := _label("%d EARNED   /   %d PATTERNS STABILIZED   /   %d STABILIZED LOOPS" % [meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 17)
+	var totals := _label("%d EARNED   /   %d SYNERGIES STABILIZED   /   %d STABILIZED LOOPS" % [meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 17)
 	totals.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	totals.autowrap_mode = TextServer.AUTOWRAP_OFF
 	totals.add_theme_color_override("font_color", Color("8fa3ae"))
@@ -954,7 +960,7 @@ func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 
 # Blueprints: rooms for the draft deck, priced by rarity; a stabilized related pattern halves it.
 func _blueprint_shop() -> void:
-	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Stabilizing a room's related pattern halves its price.", 17))
+	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Discover a synergy that uses a room, then keep it running until it stabilizes: that room's blueprint costs half.", 17))
 	var cards := _shop_grid("BlueprintShop")
 	for id in MetaShop.blueprint_ids():
 		var state := MetaShop.room_state(meta_state, id)
@@ -966,11 +972,24 @@ func _blueprint_shop() -> void:
 		var pattern := MetaShop.related_pattern(id)
 		if not pattern.is_empty() and state != "owned":
 			var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
-			rows.add_child(_label(("HALF PRICE // %s stabilized" if half else "Stabilize %s for half price") % (str(pattern.name) if meta_state.discovered_synergy_ids.has(pattern.id) else "its hidden pattern"), 13))
+			rows.add_child(_price_hint(half, meta_state.discovered_synergy_ids.has(pattern.id), str(pattern.name)))
 		_pin_to_bottom(rows)
 		rows.add_child(_shop_button({"owned": "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost}[state], state == "ready", func() -> void:
 			if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
 		cards.add_child(card)
+
+# The half-price note on a blueprint card: a boxed, wrapped line that says what to do next.
+func _price_hint(stabilized: bool, discovered: bool, synergy_name: String) -> Control:
+	var text := "HALF PRICE // %s synergy stabilized" % synergy_name
+	if not stabilized:
+		text = "Stabilize the %s synergy for half price." % synergy_name if discovered else "Discover and stabilize a synergy with this room for half price."
+	var box := PanelContainer.new()
+	box.add_theme_stylebox_override("panel", _card_box(Color("0a1a1f"), Color("2f6a6a") if stabilized else Color("2a4650"), 1, 6, 8))
+	var note := _label(text, 14)
+	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	note.add_theme_color_override("font_color", Color("7fd6a6") if stabilized else Color("9fd0d6"))
+	box.add_child(note)
+	return box
 
 # Crew & companions: met during a loop (thawed or rebooted), then bought for future loops.
 func _crew_shop() -> void:

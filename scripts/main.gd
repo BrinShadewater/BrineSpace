@@ -163,6 +163,8 @@ var discovery_review_button: Button
 var inspector_focus_button: Button
 var guide_replay := false
 var toast_record_keys := {}
+# Crew lines waiting for their toast to finish, by toast record key: [speaker, text, key].
+var held_comments := {}
 var current_toast_record := ""
 var hover_cell := Vector2i(-1, -1)
 var cycle := 0
@@ -1142,6 +1144,7 @@ func _build_ui() -> void:
 	var card_row := HBoxContainer.new()
 	card_row.name = "CardRow"
 	card_row.add_theme_constant_override("separation", 12)
+	card_row.alignment = BoxContainer.ALIGNMENT_CENTER # row mode sits in the middle of the hand panel
 	card_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bottom_box.add_child(card_row)
 	hand_box = card_row
@@ -2193,6 +2196,7 @@ func _start_reboot_cycle() -> void:
 		cascade_toast_tween.kill()
 	toast_messages.clear()
 	toast_record_keys.clear()
+	held_comments.clear()
 	current_toast_record = ""
 	toast_playing = false
 	cascade_toast.visible = false
@@ -2767,7 +2771,6 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 	if not run_discovered_synergy_ids.has(synergy_id):
 		run_discovered_synergy_ids.append(synergy_id)
 	play_station_sound("discovery")
-	if is_instance_valid(crew_comms): crew_comms.transmit("brine","A new connection. The station has done something I did not predict. I have recorded it. That does not mean I understand it.","discovery/"+synergy_id)
 	var synergy := _synergy_by_id(synergy_id)
 	for link_value in active_synergy_links:
 		var link: Dictionary = link_value
@@ -2784,7 +2787,12 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 			})
 		break
 	_log("Pattern discovered: %s. %s" % [synergy.get("name", "Recovered pattern"), synergy.get("message", "BRINE recovered a functioning room pattern.")])
-	_queue_center_toast("PATTERN DISCOVERED\n%s\nClick to review · Saved in Archive" % str(synergy.get("name", synergy_id)).to_upper(), "synergy:" + synergy_id)
+	# Nobody talks over the discovery card (owner playtest, Sept 29): BRINE's line waits until it is gone.
+	var record := "synergy:" + synergy_id
+	held_comments[record] = ["brine", "A new connection. The station has done something I did not predict. I have recorded it. That does not mean I understand it.", "discovery/" + synergy_id]
+	_queue_center_toast("PATTERN DISCOVERED\n%s\nClick to review · Saved in Archive" % str(synergy.get("name", synergy_id)).to_upper(), record)
+	if cascade_toast == null or not (toast_playing or not toast_messages.is_empty()):
+		_release_held_comment(record)
 
 func _burst_synergy_link(synergy: Dictionary) -> void:
 	for link_value in active_synergy_links:
@@ -2900,7 +2908,9 @@ func _queue_center_toast(message: String, record_key := "") -> void:
 	if toast_messages.has(message):
 		return
 	if toast_messages.size() >= 3:
-		toast_record_keys.erase(toast_messages.pop_front())
+		var evicted: String = toast_messages.pop_front()
+		_release_held_comment(str(toast_record_keys.get(evicted, "")))
+		toast_record_keys.erase(evicted)
 	if not record_key.is_empty():
 		toast_record_keys[message] = record_key
 	toast_messages.append(message)
@@ -2948,9 +2958,17 @@ func _show_center_toast(message: String) -> void:
 	cascade_toast_tween.chain().tween_property(cascade_toast, "modulate:a", 0.0, 0.35)
 	cascade_toast_tween.chain().tween_callback(_finish_center_toast)
 
+# A crew line held back until the card that announces its event has gone (see _handle_synergy_discovery).
+func _release_held_comment(record: String) -> void:
+	if not held_comments.has(record): return
+	var line: Array = held_comments[record]
+	held_comments.erase(record)
+	if is_instance_valid(crew_comms): crew_comms.transmit(str(line[0]), str(line[1]), str(line[2]))
+
 func _finish_center_toast() -> void:
 	if cascade_toast != null:
 		cascade_toast.visible = false
+	_release_held_comment(current_toast_record)
 	toast_playing = false
 	_play_next_center_toast()
 
