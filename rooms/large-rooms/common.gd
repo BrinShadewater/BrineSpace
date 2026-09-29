@@ -4,6 +4,11 @@ const FLOOR_SIZE := 768.0
 const HALF := FLOOR_SIZE * 0.5
 const RiserCatalog = preload("res://rooms/whole-room/riser_catalog.gd")
 const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd")
+const PaintedDoor = preload("res://rooms/doors/painted_door.gd")
+const DoorFinish = preload("res://rooms/doors/door_finish.gd")
+const OCEAN_GATE_ART := "res://assets/door-polish-v3/ocean-hatch-top.png"
+const DOOR_STYLES := {"hydroponics_farm":"life_support", "storage_depot":"engineering",
+	"moonbay":"robotics", "tidal_power_plant":"engineering"}
 const ART_SATURATION := 0.58
 const ART_SATURATION_OVERRIDES := {
 	"res://rooms/large-rooms/art/cargo_gantry.png": 0.38,
@@ -70,12 +75,16 @@ static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color
 		canvas.draw_circle(p, 3, accent)
 	var raised: bool = bool(room.get("raised_walls", true))
 	_draw_perimeter(canvas, room, wall_style, raised, rotation)
-	for port in room.get("ports", []):
+	var port_open: Array = room.get("port_open", [])
+	var ports: Array = room.get("ports", [])
+	for port_index in range(ports.size()):
+		var port: Dictionary = ports[port_index]
 		var facing := rotated_side(str(port.get("side", "")), rotation)
 		var center: Vector2 = port_center(port).rotated(float(rotation) * PI * 0.5)
-		_draw_station_port(canvas, center, facing, accent, floor_color, raised and facing == "north")
+		var open_amount: float = float(port_open[port_index]) if port_index < port_open.size() else 0.0
+		_draw_station_port(canvas, center, facing, floor_color, raised and facing == "north", str(DOOR_STYLES.get(str(room.get("id", "")), "default")), open_amount)
 	if room.has("ocean_side"):
-		_draw_ocean_face(canvas, rotated_side(str(room.ocean_side), rotation), accent, bool(room.get("moonbay_mission",{}).get("ocean_open",false)), raised)
+		_draw_ocean_face(canvas, rotated_side(str(room.ocean_side), rotation), accent, bool(room.get("moonbay_mission",{}).get("ocean_open",false)), raised, str(room.get("id", "")) == "moonbay")
 	canvas.draw_set_transform(rect.get_center(), float(rotation) * PI * 0.5, scale)
 
 static func rotated_side(side: String, rotation: int) -> String:
@@ -109,9 +118,15 @@ static func _draw_north_riser(canvas: CanvasItem, room: Dictionary, wall_style: 
 	for half in range(2):
 		var left: float = -384.0+float(half)*384.0
 		RiserCatalog.face(canvas,material,Rect2(left,-380,384,60))
-		RiserCatalog.cap(canvas,material,Rect2(left,-388,384,8))
 		RiserCatalog.skirt(canvas,material,Rect2(left,-320,384,8))
 	canvas.draw_rect(Rect2(-384,-388,768,76),Color(0.04,0.08,0.09,shade))
+	# A real top surface and two short returns close the raised north wall into the side hulls.
+	for half in range(2):
+		var left: float = -384.0 + float(half) * 384.0
+		RiserCatalog.cap(canvas,material,Rect2(left,-396,384,16))
+	for x in [-384.0,356.0]:
+		WallMaterial.wall(canvas,Rect2(x,-380,28,68),false,"engineering")
+		WallMaterial.cap(canvas,Rect2(x,-396,28,16),"engineering")
 	if art != "":
 		var axis: float = north_art_axis(room, wall_style, rotation)
 		sprite(canvas,art,Rect2(axis-102,-381,204,62))
@@ -141,20 +156,27 @@ static func panel(canvas: CanvasItem, rect: Rect2, body: Color, rim: Color) -> v
 	canvas.draw_line(rect.position + Vector2(7, 7), Vector2(rect.end.x - 7, rect.position.y + 7), Color(1, 1, 1, 0.25), 3)
 	canvas.draw_line(Vector2(rect.position.x + 7, rect.end.y - 7), rect.end - Vector2(7, 7), Color(0, 0, 0, 0.45), 4)
 
-static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String, accent: Color, floor_color: Color, raised: bool) -> void:
+static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String, floor_color: Color, raised: bool, style: String, open_amount: float) -> void:
 	if side.is_empty(): return
 	var vertical := side == "west" or side == "east"
 	var passage_size := Vector2(40 if vertical else 92, 92 if vertical else (76 if raised else 40))
 	canvas.draw_rect(Rect2(center - passage_size * 0.5, passage_size), floor_color)
 	var opening := Rect2(center - (Vector2(20, 92) if vertical else Vector2(92, 20)) * 0.5, Vector2(20, 92) if vertical else Vector2(92, 20))
-	canvas.draw_rect(opening.grow(5), accent.darkened(0.58))
+	canvas.draw_rect(opening.grow(5), Color("#1d2a30"))
 	canvas.draw_rect(opening, Color("#050d14"))
+	var skin = PaintedDoor.for_variant(style)
+	if raised:
+		skin.raised_at(canvas, open_amount, center.x, -390, 76)
+		return
+	skin.progress = open_amount
+	skin.low_closed(canvas, center, vertical, style)
+	skin.progress = 0.0
 	if vertical:
-		for y in [-38, 38]: canvas.draw_rect(Rect2(center + Vector2(-13, y-4), Vector2(26, 8)), accent.lightened(0.12))
+		for y in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(-13,y),Vector2(26,12)),"engineering")
 	else:
-		for x in [-38, 38]: canvas.draw_rect(Rect2(center + Vector2(x-4, -13), Vector2(8, 26)), accent.lightened(0.12))
+		for x in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(x,-13),Vector2(12,26)),"engineering")
 
-static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, open: bool, raised: bool) -> void:
+static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, open: bool, raised: bool, bay_gate: bool) -> void:
 	var center := Vector2.ZERO
 	if side == "north": center.y = -370
 	elif side == "south": center.y = 370
@@ -165,6 +187,15 @@ static func _draw_ocean_face(canvas: CanvasItem, side: String, accent: Color, op
 	var size := Vector2(28 if vertical else 192, 192 if vertical else (76 if raised and side == "north" else 28))
 	canvas.draw_rect(Rect2(center - size * 0.5, size).grow(9), Color("#0a2838"))
 	canvas.draw_rect(Rect2(center - size * 0.5, size), Color("#07161e") if open else Color("#113b4b"))
+	if bay_gate:
+		if not art_textures.has(OCEAN_GATE_ART):
+			var image := Image.new()
+			var error := image.load_png_from_buffer(FileAccess.get_file_as_bytes(OCEAN_GATE_ART))
+			if error == OK: art_textures[OCEAN_GATE_ART] = ImageTexture.create_from_image(image)
+			else: push_error("Moonbay ocean hatch could not load (%d)" % error)
+		if art_textures.has(OCEAN_GATE_ART) and not open:
+			DoorFinish.region(canvas, art_textures[OCEAN_GATE_ART], Rect2(center - size * 0.5, size), Rect2(110,334,1554,220), Color.WHITE, vertical)
+		return
 	for i in range(-2, 3):
 		var mark := center + (Vector2(0, i * 31) if vertical else Vector2(i * 31, 0))
 		canvas.draw_circle(mark, 4, accent.lightened(0.14))

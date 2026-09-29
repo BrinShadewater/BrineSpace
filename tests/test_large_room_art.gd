@@ -24,6 +24,7 @@ const FLOOR_ART := ["res://assets/department-floors-v1/wet-drainage.png",
 	"res://assets/department-floors-v2/robotics-service.png",
 	"res://assets/department-floors-v1/engineering-tread.png"]
 const Common = preload("res://rooms/large-rooms/common.gd")
+const PaintedDoor = preload("res://rooms/doors/painted_door.gd")
 
 var failures := 0
 
@@ -91,6 +92,12 @@ func _init() -> void:
 		check(Cards.PATHS.has(id) and str(Cards.PATHS.get(id, "")).begins_with("res://assets/"), id + " has a whole card art path")
 		if Cards.PATHS.has(id): check(FileAccess.file_exists(str(Cards.PATHS[id])), id + " card image exists")
 		check(ResourceLoader.exists(VIEWS[i]), id + " fixed view exists")
+		var door_style: String = Common.DOOR_STYLES[id]
+		var door_skin = PaintedDoor.for_variant(door_style)
+		check(door_skin.family == door_style, id + " uses its current department door family")
+		for kind in ["raised", "low"]:
+			var door_path: String = PaintedDoor.catalog.styles[door_style][kind]
+			check(door_path.begins_with("res://assets/door-polish-v3/") and FileAccess.file_exists(door_path), id + " uses the current " + kind + " door artwork")
 		var painted := Image.new()
 		check(painted.load_png_from_buffer(FileAccess.get_file_as_bytes(ART[i])) == OK, id + " painted installation decodes without an import")
 		if painted.get_width()>0:
@@ -151,6 +158,7 @@ func _init() -> void:
 	var plant: Dictionary = Rooms.get_room("tidal_power_plant")
 	check(plant.get("production", {}).get("power", 0) == 14 and plant.get("ocean_side", "") == "north", "Tidal plant has major ocean-dependent output")
 	var moonbay: Dictionary = Rooms.get_room("moonbay")
+	check(FileAccess.file_exists(Common.OCEAN_GATE_ART), "Moonbay outer hull has current ocean hatch artwork")
 	check(moonbay.get("ocean_side", "") == "west" and moonbay.get("consumption", {}).get("power", 0) > 0, "Moonbay has a west launch wall and power need")
 	var bay = preload("res://rooms/large-rooms/moonbay.gd")
 	check(bay.BAY_DOOR_WIDTH > 92.0, "Moonbay enclosure has a larger sub-bay door than a station port")

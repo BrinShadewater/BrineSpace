@@ -27,4 +27,6 @@ September 29: Storage Depot received a further owner-requested reduction: its ca
 
 ## Remaining review
 
+September 29 follow-up: the owner identified missing north top construction and older-looking doors. The riser cap is now 16 units deep, with top-down side returns joining the raised face to the east/west hull. The former diagrammatic station openings have been replaced by the current painted raised/low department door skins; the connected leaves use live door progress. Moonbay's existing pair of inner gates encloses the floodable launch chamber, while a separate painted outer hull hatch now closes the ocean face and opens only in the launch phase. Walls-on/off rotation sheets and native idle/launch views were visually reviewed. This updates the earlier door and cap observations above; owner acceptance is still open.
+
 Owner visual acceptance and a normal long-run playtest remain open. The latter should tune rare-card timing, economy, and mission pacing; these art changes do not change those rules.

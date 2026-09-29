@@ -1676,6 +1676,15 @@ func _draw_room(room: Dictionary) -> void:
 		var large_rect := Rect2(Vector2(pos) * cell_size + Vector2.ONE, Vector2.ONE * (cell_size * 2.0 - 2.0))
 		var appearance: Dictionary = room.duplicate()
 		appearance["raised_walls"] = main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls
+		var port_open: Array = []
+		for port in RoomFootprintScript.ports(room):
+			var offset: Vector2i = _offset_from_side(str(port.side))
+			var neighbor: Vector2i = port.cell + offset
+			var amount := 0.0
+			if _door_has_connected_neighbor(main, room, neighbor, offset):
+				amount = float(_door_frame_for_pair(main, port.cell, neighbor)) / float(DOOR_OPEN_FRAMES - 1)
+			port_open.append(amount)
+		appearance["port_open"] = port_open
 		LARGE_ROOM_VIEWS[room.id].draw(draw_target, appearance, large_rect)
 		if main.unpowered_room_cells.has(pos):
 			draw_target.draw_rect(large_rect, Color(0.05, 0.02, 0.03, 0.35))
