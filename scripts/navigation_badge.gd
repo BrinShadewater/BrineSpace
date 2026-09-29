@@ -43,7 +43,7 @@ static func apply_top(button: Button, id: String) -> void:
 	apply(button, id, 56)
 	button.custom_minimum_size = Vector2(112, 104)
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	button.add_theme_font_size_override("font_size", 11)
+	button.add_theme_font_size_override("font_size", 13)
 	var badge := button.get_node("NavigationBadge") as Control
 	badge.set_anchors_preset(Control.PRESET_CENTER_TOP)
 	badge.position = Vector2(-28, 8)

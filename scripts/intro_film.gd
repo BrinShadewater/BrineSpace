@@ -44,6 +44,8 @@ func _ready() -> void:
 	hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(hint)
 	_player.play()
+	# Load the title in the background while the film plays, so the hand-over is not a stall.
+	ResourceLoader.load_threaded_request(TITLE_SCENE)
 
 func _unhandled_input(event: InputEvent) -> void:
 	var key := event as InputEventKey
@@ -57,4 +59,7 @@ func _to_title() -> void:
 	_leaving = true
 	if _player != null:
 		_player.stop()
-	get_tree().change_scene_to_file(TITLE_SCENE)
+	if ResourceLoader.load_threaded_get_status(TITLE_SCENE) == ResourceLoader.THREAD_LOAD_LOADED:
+		get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(TITLE_SCENE))
+	else:
+		get_tree().change_scene_to_file(TITLE_SCENE)

@@ -222,13 +222,17 @@ func _draw_layered_lighting() -> void:
 		if main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls and not main.occupied.has(room.pos+Vector2i.UP):
 			var rise: float=(preload("res://rooms/whole-room/riser_geometry.gd").HEIGHT+9.0)*size/384.0
 			rect.position.y-=rise; rect.size.y+=rise
-		draw_target.draw_rect(rect,Color(0.025,0.045,0.07,lerpf(0.72,0.0,level)))
+		# Medium and High darken unpowered rooms in the light map instead (lighter, spec stage 2).
+		draw_target.draw_rect(rect,Color(0.025,0.045,0.07,lerpf(0.72,0.0,level) if preload("res://scripts/title_settings.gd").effects_quality == 0 else 0.0))
 	for room in static_draw_rooms:
 		if not _uses_layered_art(room): continue
 		if _is_narrow_corridor(room): continue # Fixtures mount on the narrow hull, not full-cell north.
 		if not _riser_fixtures_visible(room): continue
 		draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*size,0,Vector2.ONE*size/384.0)
 		RoomLighting.draw_fixtures(draw_target,_room_light_level(room)*_power_flicker(room),room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
+		if preload("res://scripts/title_settings.gd").effects_quality > 0:
+			RoomLighting.draw_wall_shade(draw_target,0.8 if preload("res://scripts/title_settings.gd").effects_quality == 1 else 1.0)
+			RoomLighting.draw_halos(draw_target,_room_light_level(room)*_power_flicker(room),room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
 		draw_target.draw_set_transform(Vector2.ZERO)
 
 func _power_flicker(room: Dictionary) -> float:
@@ -299,7 +303,7 @@ func _ready() -> void:
 		var env_layer := EnvPass.new()
 		env_layer.host = self
 		env_layer.pass_id = id
-		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvTerrain","EnvDerelicts","EnvExteriorActors","EnvFog"][id]
+		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvTerrain","EnvDerelicts","EnvExteriorActors","EnvFog","EnvLife"][id]
 		if id == Env.DERELICTS:
 			var condition_material := ShaderMaterial.new()
 			condition_material.shader = preload("res://scripts/derelict_material.gdshader")
@@ -713,7 +717,7 @@ class SurfacePass extends Node2D:
 # Environment layers below the station surfaces. STATIC_* retain their commands
 # between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
 var underwater_visibility = preload("res://scripts/underwater_visibility.gd").new()
-enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, STATIC_TERRAIN, DERELICTS, EXTERIOR_ACTORS, FOG }
+enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, STATIC_TERRAIN, DERELICTS, EXTERIOR_ACTORS, FOG, LIFE }
 class EnvPass extends Node2D:
 	var host
 	var pass_id := 0
@@ -972,13 +976,14 @@ func _draw_grid() -> void:
 		if profile_draw: environment_stage = _profile_draw_stage("env_stars",environment_stage)
 		_draw_underwater_depth()
 		if profile_draw: environment_stage = _profile_draw_stage("env_haze",environment_stage)
+		env_passes[Env.LIFE].queue_redraw()
 		_draw_foundations()
 		_draw_foundations(true)
 		if profile_draw: environment_stage = _profile_draw_stage("env_foundations",environment_stage)
 		_draw_environment_above(main,cell_size,grid_pixel_size)
 		# Keep material-isolated rooms and exterior actors in their normal order
 		# even when the diagnostic flag disables retained environment surfaces.
-		for id in [Env.DERELICTS,Env.EXTERIOR_ACTORS,Env.FOG]:
+		for id in [Env.DERELICTS,Env.EXTERIOR_ACTORS,Env.FOG,Env.LIFE]:
 			env_passes[id].show()
 			env_passes[id].queue_redraw()
 	stage_time = _profile_draw_stage("environment", stage_time)
@@ -1264,7 +1269,7 @@ func _draw_environment_pass(target: CanvasItem, pass_id: int) -> void:
 	var cell_size := _cell_size()
 	var stage_time: int = Time.get_ticks_usec() if profile_draw else 0
 	_draw_environment_layer(main,cell_size,pass_id)
-	if profile_draw: _profile_draw_stage("env_pass_"+["below","lines","foundations","above","terrain","derelicts","exterior_actors","fog"][pass_id],stage_time)
+	if profile_draw: _profile_draw_stage("env_pass_"+["below","lines","foundations","above","terrain","derelicts","exterior_actors","fog","life"][pass_id],stage_time)
 	draw_target = self
 
 func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
@@ -1299,6 +1304,9 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	_mark_built(target)
 	render_door_cache_active = reuse_frame_doors
+		Env.LIFE:
+			# Sea life sits above the fog (which has its own shader) and below the station.
+			preload("res://scripts/ocean_life.gd").draw(target,main,cell_size,_view_rect(main))
 	draw_target = target
 	_paint_surface(pass_id)
 	draw_target = self
@@ -1750,15 +1758,14 @@ func _draw_room(room: Dictionary) -> void:
 		_draw_room_path(room, rect)
 		_draw_room_doors(room, rect)
 
-# The selected room gets a thin lamp-light outline that follows its hull (the whole cell for
-# rooms and wards, the tube for corridors), drawn over walls and props but under crew. It
-# replaced a teal box around the cell, with lines to every connected neighbour, that read as
-# UI laid over the art (owner playtest). Hovering a room shows the same outline, fainter.
+# The room under the pointer gets a faint lamp-light outline that follows its hull (the whole
+# cell for rooms and wards, the tube for corridors), drawn over walls and props but under crew.
+# A selected room gets no outline of its own any more (owner playtest, Sept 28); the inspector
+# shows the selection.
 func _draw_room_selection(main, cell_size: float) -> void:
-	for mark in [[main.selected_room_cell, 1.0], [main.hover_cell, 0.4]]:
+	for mark in [[main.hover_cell, 0.4]]:
 		var cell: Vector2i = mark[0]
 		var strength: float = mark[1]
-		if strength < 1.0 and cell == main.selected_room_cell: continue
 		var room: Dictionary = main.occupied.get(cell, {})
 		if room.is_empty():
 			var ward: Dictionary = main.wrecks.get(cell, {})

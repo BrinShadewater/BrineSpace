@@ -12,6 +12,9 @@ const DIRECTIONS := {"north":Vector2(0,-1), "east":Vector2(1,0), "south":Vector2
 static func draw(canvas, game, rooms: Array, size: float) -> void:
 	draw_turbine_flow(canvas, game, rooms, size)
 	draw_torch_sparks(canvas, game, size)
+	draw_hull_bubbles(canvas, game, rooms, size)
+	draw_hazards(canvas, game, rooms, size)
+	draw_build_flourish(canvas, game, rooms, size)
 
 static func draw_turbine_flow(canvas, game, rooms: Array, size: float) -> void:
 	var time: float = game.get_visual_time_seconds()
@@ -79,6 +82,130 @@ static func construction_door(game, actor) -> Vector2:
 		var middle: Vector2 = (Vector2(standing) + Vector2(building)) * 0.5 + Vector2(0.5, 0.5)
 		return middle * 384.0 - Vector2(0, 34.0)
 	return Vector2.INF
+
+# Air seeping from the hull (owner playtest, Sept 29: bubbles from vents). Some exposed north, east and
+# west walls (about a third, chosen by a hash of the cell) loose a slow stream of small bubbles that rise
+# beside the wall and fade. South walls are skipped: from above, bubbles there would seem to rise across
+# the room. Deterministic from visual time, so it freezes with pause; Reduced Motion and Low quality draw
+# none; High draws a longer stream.
+static func draw_hull_bubbles(canvas, game, rooms: Array, size: float) -> void:
+	var quality: int = Preferences.effects_quality
+	if quality == 0 or Preferences.reduced_motion: return
+	var time: float = game.get_visual_time_seconds()
+	var unit := size / 384.0
+	var bubbles := 7 if quality >= 2 else 4
+	for room in rooms:
+		var cell: Vector2i = room.pos
+		for side in ["north", "east", "west"]:
+			var offset: Vector2i = {"north": Vector2i.UP, "east": Vector2i.RIGHT, "west": Vector2i.LEFT}[side]
+			if game.occupied.has(cell + offset): continue
+			if posmod(hash([cell, side, 91]), 3) != 0: continue
+			var edge := (Vector2(cell) + Vector2(0.5, 0.5) + Vector2(offset) * 0.5) * size
+			var along := Vector2(float(offset.y != 0) * (float(posmod(hash([cell, side, 5]), 60)) - 30.0) * unit * 4.0, 0.0)
+			for i in range(bubbles):
+				var cycle := 7.0
+				var phase := fposmod(time / cycle + float(i) / float(bubbles) + float(posmod(hash([cell, side, 17]), 100)) / 100.0, 1.0)
+				var sway := sin(time * 0.9 + float(i) * 1.7 + float(cell.x)) * 5.0 * unit
+				var rise := phase * size * 0.75
+				var at := edge + along + Vector2(sway + float(offset.x) * 10.0 * unit, -rise)
+				var radius := (1.6 + float(posmod(hash([cell, side, i]), 20)) / 10.0) * unit * 1.6
+				var fade := sin(phase * PI)
+				canvas.draw_arc(at, radius, 0.0, TAU, 12, Color(0.72, 0.92, 0.98, 0.42 * fade), maxf(1.0, unit * 1.2), true)
+				canvas.draw_circle(at + Vector2(-radius * 0.3, -radius * 0.3), maxf(0.6, radius * 0.22), Color(1.0, 1.0, 1.0, 0.5 * fade))
+
+# Rooms with a cracked hull or a local containment fault vent steam and spit sparks (owner-approved,
+# Sept 29). Steam is a slow rising column of soft puffs; sparks are a burst of 0.2 s once every couple
+# of seconds per room, never a steady strobe. Reduced Motion draws one still puff and no sparks; Low
+# quality draws nothing. Deterministic from visual time, so it freezes with pause.
+static func draw_hazards(canvas, game, rooms: Array, size: float) -> void:
+	var quality: int = Preferences.effects_quality
+	if quality == 0: return
+	var time: float = game.get_visual_time_seconds()
+	var unit := size / 384.0
+	var reduced: bool = Preferences.reduced_motion
+	for room in rooms:
+		var cracked: bool = float(room.get("hull_crack", 0)) > 0
+		if not cracked and not room.get("local_incident", false): continue
+		var cell: Vector2i = room.pos
+		var seed := int(hash([cell, 33]) % 1000)
+		var vent := (Vector2(cell) + Vector2(0.28 + float(seed % 44) / 100.0, 0.55)) * size
+		var puffs := 1 if reduced else (6 if quality >= 2 else 4)
+		for i in range(puffs):
+			var phase := 0.35 if reduced else fposmod(time / 3.2 + float(i) / float(puffs) + float(seed) / 1000.0, 1.0)
+			var at := vent + Vector2(sin(phase * 5.0 + float(i)) * 10.0 * unit, -phase * size * 0.5)
+			var radius := (10.0 + phase * 26.0) * unit
+			canvas.draw_circle(at, radius, Color(0.86, 0.93, 0.95, 0.22 * sin(phase * PI)))
+		if reduced: continue
+		var cycle := 2.3 + float(seed % 7) * 0.2
+		var local := fposmod(time + float(seed) * 0.37, cycle)
+		if local > 0.2: continue
+		var burst := int((time + float(seed) * 0.37) / cycle)
+		for i in range(7):
+			var h := int(hash([seed, burst, i]))
+			var angle := -PI * (0.15 + float(h % 70) / 100.0)
+			var reach := (12.0 + float((h / 7) % 26)) * unit * (local / 0.2)
+			var spark := vent + Vector2(cos(angle), sin(angle)) * reach + Vector2(0, reach * reach / (40.0 * unit) * 0.5)
+			canvas.draw_circle(spark, maxf(1.0, unit * 2.0), Color(1.0, 0.82, 0.45, 0.9 * (1.0 - local / 0.2)))
+
+# Build flourishes (owner-approved, Sept 29): a bright scan line sweeps down a room the moment it
+# appears, and a ring of light spreads from its centre the first time the room gets power. Rooms already
+# on the map when the view starts (a loaded save, several arriving at once) get neither. One gentle
+# sweep and one ring per room, so nothing repeats or strobes; Reduced Motion and Low quality skip them.
+const SCAN_SECONDS := 1.1
+const RIPPLE_SECONDS := 1.0
+static var _seen: Dictionary = {}
+static var _seen_game := 0
+static var _scan_start: Dictionary = {}
+static var _powered: Dictionary = {}
+static var _ripple_start: Dictionary = {}
+static var _awaiting: Dictionary = {} # built rooms still waiting for their first power
+
+static func draw_build_flourish(canvas, game, _rooms: Array, size: float) -> void:
+	var time: float = game.get_visual_time_seconds()
+	var grid = game.grid_view
+	var all_rooms: Array = game.placed_rooms
+	if _seen_game != game.get_instance_id():
+		_seen_game = game.get_instance_id()
+		_seen.clear(); _scan_start.clear(); _powered.clear(); _ripple_start.clear(); _awaiting.clear()
+	var fresh: Array = []
+	for room in all_rooms:
+		if not _seen.has(room.pos): fresh.append(room)
+	# Many rooms at once means a load or a reset, not building: register them quietly.
+	var quiet: bool = fresh.size() > 2 or _seen.is_empty()
+	for room in fresh:
+		_seen[room.pos] = true
+		_powered[room.pos] = quiet and grid._room_light_level(room) > 0.5
+		if not quiet:
+			_scan_start[room.pos] = time
+			_awaiting[room.pos] = true
+	for room in all_rooms:
+		var cell: Vector2i = room.pos
+		var lit: bool = grid._room_light_level(room) > 0.5
+		if lit and _awaiting.has(cell):
+			_awaiting.erase(cell)
+			_ripple_start[cell] = time
+		_powered[cell] = lit
+	if Preferences.effects_quality == 0 or Preferences.reduced_motion: return
+	var unit := size / 384.0
+	for cell in _scan_start.keys():
+		var age: float = time - float(_scan_start[cell])
+		if age < 0.0 or age > SCAN_SECONDS:
+			if age > SCAN_SECONDS: _scan_start.erase(cell)
+			continue
+		var fraction := age / SCAN_SECONDS
+		var rect := Rect2(Vector2(cell) * size, Vector2.ONE * size)
+		var y := rect.position.y + rect.size.y * fraction
+		var fade := 1.0 - fraction * 0.6
+		canvas.draw_rect(Rect2(rect.position.x, y - unit * 3.0, rect.size.x, unit * 6.0), Color(0.55, 0.95, 1.0, 0.75 * fade))
+		canvas.draw_rect(Rect2(rect.position.x, rect.position.y, rect.size.x, y - rect.position.y), Color(0.4, 0.85, 1.0, 0.10 * fade))
+	for cell in _ripple_start.keys():
+		var age: float = time - float(_ripple_start[cell])
+		if age > RIPPLE_SECONDS:
+			_ripple_start.erase(cell)
+			continue
+		var fraction := age / RIPPLE_SECONDS
+		var centre := (Vector2(cell) + Vector2(0.5, 0.5)) * size
+		canvas.draw_arc(centre, size * (0.1 + 0.7 * fraction), 0.0, TAU, 40, Color(0.7, 0.98, 1.0, 0.6 * (1.0 - fraction)), maxf(1.5, unit * 5.0 * (1.0 - fraction)), true)
 
 static func draw_torch_sparks(canvas, game, size: float) -> void:
 	var actors := torch_actors(game)

@@ -29,7 +29,10 @@ const PATHS = {
 		"res://character/robot-rescue-v1/river/reboot-03.png",
 		"res://character/robot-rescue-v1/river/reboot-04.png",
 		"res://character/robot-rescue-v1/river/reboot-05.png"]}
-const DENSITY := 148.0 / (384.0 * 0.17)
+# Josh and River are drawn at half the crew's height (owner, Sept 29), so their container frames are
+# drawn at twice the source density and the walk-out composite below uses the same density.
+const STANDING_HEIGHT := 296.0
+const DENSITY := STANDING_HEIGHT / (384.0 * 0.17)
 const OPENING_ENDS := [.10,.21,.32,.44,.57,.72,.90,1.20]
 static var cache := {}
 static var departures := {}
@@ -47,7 +50,7 @@ static func make_texture(img: Image) -> Texture2D:
 	var result := ImageTexture.create_from_image(img)
 	result.set_meta("crew_frame_92",true)
 	result.set_meta("crew_pivot",Vector2(160,280))
-	result.set_meta("crew_standing_height",148)
+	result.set_meta("crew_standing_height",STANDING_HEIGHT)
 	return result
 
 static func frame(id: String, index: int) -> Texture2D:

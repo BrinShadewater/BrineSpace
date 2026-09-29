@@ -30,7 +30,7 @@ func _run() -> void:
 	Preferences.text_scale = 1.3
 	game._confirm_doctrines()
 	game._toggle_journal()
-	check(game.archive_label.get_theme_font_size("normal_font_size") == 21, "Journal body must use the saved text scale")
+	check(game.archive_label.get_theme_font_size("normal_font_size") == roundi(17 * 1.3), "Journal body must use the saved text scale")
 	await capture("journal-large", game.archive_label.get_parent().get_parent())
 	game._toggle_journal()
 	game._show_reboot_summary("The archive has recorded this test.", false)

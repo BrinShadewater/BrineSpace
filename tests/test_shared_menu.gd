@@ -175,7 +175,7 @@ func _run() -> void:
 	game._open_menu()
 	game._menu_save_game()
 	check(not Save.read(SAVE_PATH).is_empty(), "Unified menu must still save the loop")
-	check(game.menu_save_feedback.text.begins_with("LOOP RECORDED"), "Save feedback must confirm the checkpoint beside the save action")
+	check(game.menu_save_feedback.text.begins_with("Saved at cycle"), "Save feedback must confirm the checkpoint beside the save action")
 	check(game.menu_status_label.text.contains("Integrity"), "Saving must preserve the station status summary")
 	game._menu_return_title()
 	await create_timer(0.4).timeout

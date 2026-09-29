@@ -342,10 +342,12 @@ func draw_outer_cutaway() -> void:
 	var at:=Vector2(0,outer_threshold())
 	# Low pressure sill and two leaves use the shared 72-unit aperture.
 	# Rotate hull geometry, never the upright source sprite.
+	# With the raised north hatch showing, it owns this doorway; the low sill's dark aperture and edge
+	# line drawn over it read as a blue splotch on the door (owner report, Sept 29).
+	if quarter==0 and get_meta("raised_north_visible",false): return
 	painter.draw_rect(turned_rect(Rect2(-36,-200,72,22)),Color("172f37"))
 	painter.draw_line(Geometry.turn(at+Vector2(-36,5),quarter),Geometry.turn(at+Vector2(36,5),quarter),Color("758780"),1)
-	if quarter!=0 or not get_meta("raised_north_visible",false):
-		preload("res://rooms/doors/ocean_hatch.gd").low(painter,quarter,cycle_pose.outer)
+	preload("res://rooms/doors/ocean_hatch.gd").low(painter,quarter,cycle_pose.outer)
 
 func is_animated_prop(prop: Dictionary) -> bool: return prop.id in ["pressure_chamber","outer_hatch","suit_lockers"] or preload("res://scripts/airlock_service.gd").is_suit_locker(prop)
 func effect_marks(_prop: Dictionary,_time: float) -> Array: return []

@@ -14,6 +14,96 @@ const FAN_DEGREES := 7.0
 const FAN_DROP := 10.0
 const HOVER_LIFT := 22.0
 const HOVER_SCALE := 1.05
+const ResourceIcons = preload("res://scripts/resource_icons.gd")
+
+# The card look (owner playtest, Sept 28): a deeper, slightly desaturated frame colour so a
+# department's cards read like printed stock, and an ocean-water window behind the art so every
+# card, including the corridors, sits in the same water.
+static func muted(color: Color) -> Color:
+	var m := color
+	m.s = color.s * 0.68
+	m.v = color.v * 0.74
+	return m
+
+# Brighter edge of the same muted family, for the inner hairline and ribbon text.
+static func muted_bright(color: Color) -> Color:
+	var m := muted(color)
+	m.v = minf(1.0, m.v * 1.35)
+	return m
+
+static var _ocean: GradientTexture2D
+static func ocean_texture() -> GradientTexture2D:
+	if _ocean != null: return _ocean
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color("#0c3346"))
+	gradient.set_color(1, Color("#06141d"))
+	_ocean = GradientTexture2D.new()
+	_ocean.gradient = gradient
+	_ocean.fill_from = Vector2(0.5, 0.0)
+	_ocean.fill_to = Vector2(0.5, 1.0)
+	_ocean.width = 64
+	_ocean.height = 128
+	return _ocean
+
+# Corridors, corners and tees read as HALLWAYS on cards, not as Engineering (owner playtest, Sept 29).
+const HALLWAY_IDS := ["corridor", "corner", "tee_corridor"]
+static func category_label(room: Dictionary) -> String:
+	return "HALLWAYS" if str(room.get("id", "")) in HALLWAY_IDS else str(room.get("category", "")).to_upper()
+
+# The rarity, small, in the top-right corner of a card's art window (owner playtest, Sept 29).
+static func add_rarity_badge(clip: Control, text: String, color: Color) -> void:
+	var badge := Label.new()
+	badge.text = text.to_upper()
+	badge.add_theme_font_size_override("font_size", 12)
+	badge.add_theme_color_override("font_color", color)
+	badge.add_theme_stylebox_override("normal", _box(Color(0.02, 0.05, 0.07, 0.82), color.darkened(0.35), 1, 3, 3))
+	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	badge.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 4)
+	clip.add_child(badge)
+
+# Adds the water behind a card's art; call before adding the art itself.
+static func add_ocean(clip: Control) -> void:
+	var water := TextureRect.new()
+	water.texture = ocean_texture()
+	water.set_anchors_preset(Control.PRESET_FULL_RECT)
+	water.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	water.stretch_mode = TextureRect.STRETCH_SCALE
+	water.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	clip.add_child(water)
+
+# What a card gives and takes, one line each, with the resource icons the HUD uses.
+static func compact(values: Dictionary, icon_size := 14) -> String:
+	var parts := PackedStringArray()
+	for key in values:
+		var id := str(key)
+		parts.append("%s [color=%s]%d[/color]" % [ResourceIcons.icon(id, icon_size), ResourceIcons.color(id), int(values[key])])
+	return "  ".join(parts)
+
+static func rule_lines(room: Dictionary) -> Array:
+	var lines: Array = []
+	var production: Dictionary = room.get("production", {})
+	var consumption: Dictionary = room.get("consumption", {})
+	var storage: Dictionary = room.get("storage", {})
+	if str(room.get("id", "")) == "heat_recovery":
+		lines.append("[color=#7fd6a6]GIVES[/color]  " + compact({"power": 4}) + " (varies)")
+	elif not production.is_empty():
+		lines.append("[color=#7fd6a6]GIVES[/color]  " + compact(production))
+	if not consumption.is_empty():
+		lines.append("[color=#e0b36a]TAKES[/color]  " + compact(consumption))
+	if not storage.is_empty():
+		lines.append("[color=#79b8d9]HOLDS[/color]  " + compact(storage))
+	if lines.is_empty():
+		lines.append("[color=#8fa3ae]SUPPORT STRUCTURE[/color]")
+	return lines
+
+# The first sentence of the room's description, trimmed to fit two short lines, plus a flood tag.
+static func short_note(room: Dictionary) -> String:
+	var text := str(room.get("description", "")).strip_edges()
+	var stop := text.find(". ")
+	if stop > 0: text = text.substr(0, stop + 1)
+	if text.length() > 70: text = text.substr(0, 67).rstrip(" ,;:") + "..."
+	if room.get("flood_compatible", false): text = (text + " Flood-safe.").strip_edges()
+	return text
 
 static func build(game, id: String) -> PanelContainer:
 	var room: Dictionary = RoomDatabase.get_room(id)
@@ -54,16 +144,17 @@ static func build(game, id: String) -> PanelContainer:
 	title.clip_text = true
 	title.add_theme_font_size_override("font_size", 15 if title.text.length() <= 14 else (13 if title.text.length() <= 18 else 11))
 	title.add_theme_color_override("font_color", Color("#e2ecee"))
-	title.add_theme_stylebox_override("normal", _box(Color("#16222a"), category_color.darkened(0.45), 1, 6))
+	title.add_theme_stylebox_override("normal", _box(Color("#16222a"), muted(category_color).darkened(0.25), 1, 6))
 	body.add_child(_ignore(title))
 
 	var art_frame := PanelContainer.new()
-	art_frame.custom_minimum_size = Vector2(0, 114)
-	art_frame.add_theme_stylebox_override("panel", _box(Color("#05090c"), category_color.darkened(0.3), 1, 2, 2))
+	art_frame.custom_minimum_size = Vector2(0, 100)
+	art_frame.add_theme_stylebox_override("panel", _box(Color(0, 0, 0, 0), muted(category_color), 1, 2, 2))
 	body.add_child(_ignore(art_frame))
 	var art_clip := Control.new()
 	art_clip.clip_contents = true
 	art_frame.add_child(_ignore(art_clip))
+	add_ocean(art_clip)
 	var art := TextureRect.new()
 	art.set_anchors_preset(Control.PRESET_FULL_RECT)
 	art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -73,23 +164,24 @@ static func build(game, id: String) -> PanelContainer:
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	card.set_meta("art_node", art)
 	art_clip.add_child(_ignore(art))
+	add_rarity_badge(art_clip, str(room["rarity"]), game._rarity_color(str(room.get("rarity", "common"))).lightened(0.2))
 	if game.prototype_card_seen_cycle.has(id):
 		var prototype := Label.new()
 		prototype.text = "NEW PROTOTYPE"
 		prototype.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		prototype.position = Vector2(4, 4)
 		prototype.custom_minimum_size = Vector2(108, 20)
-		prototype.add_theme_font_size_override("font_size", 10)
+		prototype.add_theme_font_size_override("font_size", 12)
 		prototype.add_theme_color_override("font_color", Color("#d8fff2"))
 		game._add_label_panel_style(prototype, Color("#0b3029"), game.UI_ACCENT_BRIGHT)
 		art_clip.add_child(_ignore(prototype))
 
 	var ribbon := Label.new()
-	ribbon.text = str(room["category"]).to_upper()
+	ribbon.text = category_label(room)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_font_size_override("font_size", 10)
-	ribbon.add_theme_color_override("font_color", category_color.lightened(0.1))
-	ribbon.add_theme_stylebox_override("normal", _box(Color("#090f14"), category_color.darkened(0.2), 1, 3))
+	ribbon.add_theme_font_size_override("font_size", 12)
+	ribbon.add_theme_color_override("font_color", muted_bright(category_color))
+	ribbon.add_theme_stylebox_override("normal", _box(Color("#090f14"), muted(category_color), 1, 3))
 	body.add_child(_ignore(ribbon))
 
 	var rules := PanelContainer.new()
@@ -99,34 +191,47 @@ static func build(game, id: String) -> PanelContainer:
 	var rules_box := VBoxContainer.new()
 	rules_box.add_theme_constant_override("separation", 2)
 	rules.add_child(_ignore(rules_box))
-	var output := RichTextLabel.new()
-	output.bbcode_enabled = true
-	output.fit_content = true
-	output.scroll_active = false
-	output.text = game._primary_output_line(room)
-	output.add_theme_font_size_override("normal_font_size", 13)
-	output.add_theme_color_override("default_color", Color("#a9bcc4"))
-	rules_box.add_child(_ignore(output))
-	var hint := Label.new()
-	hint.text = "CLICK TO SELECT" if affordable else "SHORT: " + game._format_cost(game._missing_cost(cost))
-	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	hint.add_theme_font_size_override("font_size", 10)
-	hint.add_theme_color_override("font_color", Color("#4a6370") if affordable else Color("#ff8a90"))
-	rules_box.add_child(_ignore(hint))
+	if not cost.is_empty():
+		var build_row := HBoxContainer.new()
+		build_row.add_theme_constant_override("separation", 4)
+		var build_label := Label.new()
+		build_label.text = "BUILD"
+		build_label.add_theme_font_size_override("font_size", 13)
+		build_label.add_theme_color_override("font_color", Color("#8fa3ae"))
+		build_row.add_child(_ignore(build_label))
+		for key in cost:
+			var enough: bool = str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
+			build_row.add_child(_ignore(_cost_gem(game, str(key), int(cost[key]), enough)))
+		rules_box.add_child(_ignore(build_row))
+	for line in rule_lines(room):
+		var entry := RichTextLabel.new()
+		entry.bbcode_enabled = true
+		entry.fit_content = true
+		entry.scroll_active = false
+		entry.autowrap_mode = TextServer.AUTOWRAP_OFF
+		entry.text = line
+		entry.add_theme_font_size_override("normal_font_size", 13)
+		entry.add_theme_color_override("default_color", Color("#a9bcc4"))
+		rules_box.add_child(_ignore(entry))
+	var note := short_note(room)
+	if not note.is_empty():
+		var note_label := Label.new()
+		note_label.text = note
+		note_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		note_label.max_lines_visible = 2
+		note_label.clip_text = true
+		note_label.custom_minimum_size = Vector2(170, 34)
+		note_label.add_theme_font_size_override("font_size", 12)
+		note_label.add_theme_color_override("font_color", Color("#8fa6b1"))
+		rules_box.add_child(_ignore(note_label))
+	if not affordable:
+		var hint := Label.new()
+		hint.text = "SHORT: " + game._format_cost(game._missing_cost(cost))
+		hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hint.add_theme_font_size_override("font_size", 12)
+		hint.add_theme_color_override("font_color", Color("#ff8a90"))
+		rules_box.add_child(_ignore(hint))
 
-	var footer := HBoxContainer.new()
-	footer.add_theme_constant_override("separation", 4)
-	body.add_child(_ignore(footer))
-	var rarity := Label.new()
-	rarity.text = str(room["rarity"]).to_upper()
-	rarity.add_theme_font_size_override("font_size", 10)
-	rarity.add_theme_color_override("font_color", game._rarity_color(str(room.get("rarity", "common"))).lightened(0.2))
-	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	rarity.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	footer.add_child(_ignore(rarity))
-	for key in cost:
-		var enough: bool = str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
-		footer.add_child(_ignore(_cost_gem(game, str(key), int(cost[key]), enough)))
 	return card
 
 # One cost as a round gem: resource icon and amount, red when that resource is short.

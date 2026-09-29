@@ -20,7 +20,6 @@ var hover_card: PanelContainer
 var hover_text: RichTextLabel
 var hovered := ""
 # Rectangles already written this frame, so a name can step aside instead of landing on one.
-var label_rects: Array[Rect2] = []
 # The graph's shape never changes while the page is open, but every node, link end, name and lobe
 # caption used to work it out again from the dependency tree, several times a node per frame. At 56
 # memories that measured 3.4 ms a pass and about 14 ms a frame - more than a 60 Hz frame allows.
@@ -33,7 +32,7 @@ var pulses: Array = []
 var clock := 0.0
 
 func _ready() -> void:
-	custom_minimum_size = Vector2(700, 700)
+	custom_minimum_size = Vector2(660, 660)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	for branch in Research.BRANCHES:
 		for id in Research.perks_in(branch.id):
@@ -72,8 +71,8 @@ func _ready() -> void:
 	hover_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hover_text.custom_minimum_size = Vector2(276, 0)
 	hover_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hover_text.add_theme_font_size_override("normal_font_size", 14)
-	hover_text.add_theme_font_size_override("bold_font_size", 14)
+	hover_text.add_theme_font_size_override("normal_font_size", 16)
+	hover_text.add_theme_font_size_override("bold_font_size", 16)
 	hover_card.add_child(hover_text)
 	add_child(hover_card)
 	resized.connect(_place)
@@ -282,64 +281,6 @@ func _draw_link(from: Vector2, to: Vector2, color: Color, width: float) -> void:
 # Which way a node's name leans. A node that sits off to one side of its department's spoke writes
 # outward, away from its sibling; one sitting on the spoke alternates by depth so a name never
 # lands on the node past it.
-func label_side(id: String) -> Vector2:
-	var perk: Dictionary = Research.PERKS[id]
-	var index := 0
-	for i in range(Research.BRANCHES.size()):
-		if Research.BRANCHES[i].id == perk.branch: index = i
-	var spoke := Vector2.from_angle(branch_angle(index))
-	var across := spoke.rotated(PI * 0.5)
-	var offset := (node_position(id) - center()).dot(across)
-	if absf(offset) > 4.0: return across if offset > 0.0 else -across
-	# A root sits on its spoke, and its neighbours' roots are close at eight lobes, so every root
-	# writes the same way around the core instead of two of them meeting in the gap.
-	return across
-
-# A node wears its name, the way a journal graph labels every note. The name sits beside the node,
-# square to its spoke, so it never lands on the next node out. Owned and available names read
-# clearly; the rest stay faint so the cluster shape still comes through.
-func _draw_node_name(font: Font, at: Vector2, radius: float, id: String, state: String, color: Color) -> void:
-	var text := str(Research.PERKS[id].name)
-	var size := 12
-	var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
-	var tint := color.lightened(0.25) if state == "owned" else (Color("d3e6ea") if state == "ready" else Color(0.72, 0.82, 0.85, 0.45))
-	var side := label_side(id)
-	var gap := radius + 8.0
-	var anchor := at + side * gap
-	if anchor.x - width < 4.0 or anchor.x + width > size_x_limit():
-		side = -side
-		anchor = at + side * gap
-	var at_left: bool = side.x < 0.0
-	# Alternate lobes drop their names a few pixels, so two neighbours' names never sit on the same
-	# line where their dendrites pass close to each other.
-	var lobe := 0
-	for i in range(Research.BRANCHES.size()):
-		if Research.BRANCHES[i].id == Research.PERKS[id].branch: lobe = i
-	# Stagger by lobe and again by depth, so neither two neighbours nor two steps of one dendrite
-	# start on the same line.
-	var lift := -6.0 + 7.0 * float(lobe % 4) + (13.0 if node_depth(id) % 2 == 1 else 0.0)
-	var written := anchor + Vector2(-width if at_left else 0.0, lift)
-	var plate := Vector2(width + 8.0, float(size) + 7.0)
-	# Long names still meet where two dendrites run close, so a name that lands on one already
-	# written steps away from the core until it is clear (owner playtest, Sept 18).
-	var away: float = 1.0 if written.y >= center().y else -1.0
-	for attempt in range(7):
-		var candidate := Rect2(written + Vector2(-4.0, -float(size) - 1.0), plate)
-		var clash := false
-		for taken in label_rects:
-			if taken.intersects(candidate):
-				clash = true
-				break
-		if not clash:
-			label_rects.append(candidate)
-			break
-		written.y += away * 15.0
-	draw_rect(Rect2(written + Vector2(-4.0, -float(size) - 1.0), plate), Color(0.02, 0.06, 0.08, 0.72))
-	draw_string(font, written, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, tint)
-
-func size_x_limit() -> float:
-	return size.x - 4.0
-
 # Motes drifting up through the core, the way silt moves past a light outside the hull. Deterministic
 # from the clock, so it never needs particles of its own, and it holds still under reduced motion.
 const DRIFT_COUNT := 34
@@ -368,7 +309,6 @@ func _draw_drift() -> void:
 			draw_arc(at, radius + 2.0, 0, TAU, 10, Color(0.45, 0.85, 0.82, alpha * 0.5), 1.0, true)
 
 func _draw() -> void:
-	label_rects.clear()
 	_draw_drift()
 	var c := center()
 	var outer := 0.0
@@ -443,8 +383,5 @@ func _draw() -> void:
 			draw_string(font, at + Vector2(-tier_width * 0.5, 5.5), tier_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color("0b1a20") if state == "owned" else Color(0.75, 0.85, 0.88, 0.9 if state != "locked" else 0.4))
 		if hot:
 			draw_arc(at, radius + 6.0, 0, TAU, 40, Color("e6f6f3"), 2.0, true)
-		# Recovered memories carry their names, as does whatever the pointer is on. Naming every
-		# reachable one as well put two long names on top of each other wherever dendrites ran
-		# close (owner playtest, Sept 18); the hover card names the rest.
-		if state == "owned" or hot:
-			_draw_node_name(font, at, radius, id, state, color)
+		# Names live in the hover card only: names drawn beside nodes ran into the next node out
+		# (owner playtest, Sept 28).

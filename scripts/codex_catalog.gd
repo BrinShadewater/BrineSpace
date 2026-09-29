@@ -62,7 +62,7 @@ static func synergy_entries(meta_state) -> Array[Dictionary]:
 	for index in range(patterns.size()):
 		var pattern: Dictionary = patterns[index]
 		var known: bool = meta_state.discovered_synergy_ids.has(pattern.id) or meta_state.stabilized_synergy_ids.has(pattern.id)
-		entries.append({"id": pattern.id, "known": known, "title": pattern.name if known else "UNIDENTIFIED PATTERN // %02d" % (index + 1),
+		entries.append({"id": pattern.id, "known": known, "title": pattern.name if known else "UNIDENTIFIED SYNERGY // %02d" % (index + 1),
 			"category": "SYNERGY", "clue": clue(pattern), "data": pattern})
 	return entries
 

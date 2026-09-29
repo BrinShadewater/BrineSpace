@@ -27,6 +27,7 @@ var archive: Control
 var archive_opener: Button
 var about_button: Button
 var version_button: Button
+var report_button: Button
 var checkpoint_label: Label
 var checkpoint_panel: PanelContainer
 var checkpoint_preview: Control
@@ -60,7 +61,7 @@ func _ready() -> void:
 	status.add_theme_color_override("font_color", Color("88aebc"))
 	add_child(status)
 	var awakening := Label.new()
-	awakening.text = "Awaken Architect.."
+	awakening.text = "Awaken, Architect."
 	awakening.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	awakening.add_theme_font_size_override("font_size", 23)
 	awakening.add_theme_color_override("font_color", Color("c3d9d8"))
@@ -80,7 +81,7 @@ func _ready() -> void:
 	checkpoint_panel.add_child(checkpoint_contents)
 	var saved_heading := Label.new()
 	saved_heading.text="CONTINUE LOOP // SAVED STATION"
-	saved_heading.add_theme_font_size_override("font_size",13)
+	saved_heading.add_theme_font_size_override("font_size", 15)
 	saved_heading.add_theme_color_override("font_color",Color("88aebc"))
 	checkpoint_contents.add_child(saved_heading)
 	checkpoint_label = Label.new()
@@ -140,11 +141,24 @@ func _ready() -> void:
 	version_button.text = preload("res://scripts/build_version.gd").label()
 	version_button.tooltip_text = "Credits and build details"
 	version_button.focus_mode = Control.FOCUS_NONE
-	version_button.add_theme_font_size_override("font_size", 13)
+	version_button.add_theme_font_size_override("font_size", 15)
 	version_button.add_theme_color_override("font_color", Color("759ca9"))
 	version_button.add_theme_color_override("font_hover_color", Color("bde8eb"))
 	version_button.pressed.connect(func() -> void: _open_archive("about", about_button))
 	add_child(version_button)
+	report_button = Button.new()
+	report_button.name = "ReportBugLink"
+	report_button.flat = true
+	report_button.text = "REPORT A BUG [F8]"
+	report_button.tooltip_text = "Save a bug report with your log, screenshot and last save"
+	report_button.focus_mode = Control.FOCUS_NONE
+	report_button.add_theme_font_size_override("font_size", 15)
+	report_button.add_theme_color_override("font_color", Color("759ca9"))
+	report_button.add_theme_color_override("font_hover_color", Color("bde8eb"))
+	report_button.pressed.connect(func() -> void:
+		var reporter := get_node_or_null("/root/BugReport")
+		if reporter != null: reporter.open_report())
+	add_child(report_button)
 	if OS.has_feature("web"):
 		quit_button.hide()
 	badges = HBoxContainer.new()
@@ -215,6 +229,8 @@ func _layout() -> void:
 	if is_instance_valid(version_button):
 		version_button.size = version_button.get_combined_minimum_size()
 		version_button.position = Vector2((size.x - version_button.size.x) * 0.5, size.y - version_button.size.y - 6)
+		report_button.size = report_button.get_combined_minimum_size()
+		report_button.position = Vector2(version_button.position.x + version_button.size.x + 24, version_button.position.y)
 	error_label.position = Vector2(48, 12)
 	error_label.size = Vector2(size.x - 96, 64)
 	badges.position = Vector2(size.x - 516, center_y - 122)
@@ -256,7 +272,7 @@ func _badge(caption: String, icon_path: String, detail: String) -> Button:
 		label.text = text
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		label.add_theme_font_size_override("font_size", 17 if text == caption else 13)
+		label.add_theme_font_size_override("font_size", 17 if text == caption else 15)
 		label.add_theme_color_override("font_color", Color("bde8eb") if text == caption else Color("759ca9"))
 		box.add_child(label)
 		if text == detail:

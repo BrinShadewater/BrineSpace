@@ -165,6 +165,8 @@ var discovery_review_button: Button
 var inspector_focus_button: Button
 var guide_replay := false
 var toast_record_keys := {}
+# Crew lines waiting for their toast to finish, by toast record key: [speaker, text, key].
+var held_comments := {}
 var current_toast_record := ""
 var hover_cell := Vector2i(-1, -1)
 var cycle := 0
@@ -302,6 +304,9 @@ var pause_page_opener: Control
 var menu_panel: PanelContainer
 var menu_status_label: Label
 var menu_save_feedback: Label
+# When the active loop was last recorded (-1 = not yet this loop); see _refresh_save_status.
+var last_save_cycle := -1
+var last_save_msec := 0
 var menu_resume_button: Button
 var menu_center: CenterContainer
 var menu_archive: Control
@@ -339,6 +344,11 @@ var menu_workspace := {}
 var journal_last_tab := 0
 var journal_opener: Control
 var inspected_resource := ""
+# The stage 2 light map overlay over the station view (RoomLighting.build_light_map).
+var light_map: TextureRect
+# Red edge tint and hull-creak state (scripts/hazard_feedback.gd).
+var hazard_tint: TextureRect
+var creak_applied := Vector2i.ZERO
 var camera_pan_remainder := Vector2.ZERO
 var camera_pan_velocity := Vector2.ZERO
 var camera_zoom_target := -1.0
@@ -428,6 +438,8 @@ var crew_frame_usec := {}
 var operations_refresh_step := 0.5
 
 func _process(delta: float) -> void:
+	preload("res://scripts/hazard_feedback.gd").update(self)
+	preload("res://rooms/whole-room/room_lighting.gd").update_light_map(self)
 	var stamp := Time.get_ticks_usec()
 	var frame_start := stamp
 	_update_discovery_bursts(delta)
@@ -467,6 +479,7 @@ func _process(delta: float) -> void:
 		_refresh_construction_button()
 		if is_instance_valid(guide_box) and guide_box.visible: _refresh_learning_ui()
 		preload("res://scripts/flood_alerts.gd").refresh(self)
+		preload("res://scripts/drone_idle_alert.gd").refresh(self)
 		# Water rises every frame but chips refresh once a cycle; keep the flooded count current.
 		if resource_labels.has("integrity"): _refresh_integrity_chip()
 		preload("res://scripts/room_fire.gd").refresh_alert(self)
@@ -522,8 +535,8 @@ func _build_ui() -> void:
 	identity.add_child(title)
 	var subtitle := Label.new()
 	subtitle.text = "RECOVER · CONNECT · DISCOVER"
-	subtitle.add_theme_font_size_override("font_size", 10)
-	subtitle.add_theme_color_override("font_color", Color("#536874"))
+	subtitle.add_theme_font_size_override("font_size", 12)
+	subtitle.add_theme_color_override("font_color", Color("#7c909c"))
 	identity.add_child(subtitle)
 
 	var resources_row := GridContainer.new()
@@ -582,6 +595,12 @@ func _build_ui() -> void:
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	grid_frame.add_child(scroll)
 	grid_scroll = scroll
+	light_map = preload("res://rooms/whole-room/room_lighting.gd").build_light_map(self)
+	grid_frame.add_child(light_map)
+	grid_frame.add_child(_make_vignette())
+	grid_frame.add_child(preload("res://scripts/screen_atmosphere.gd").new(self))
+	hazard_tint = preload("res://scripts/hazard_feedback.gd").make_tint()
+	grid_frame.add_child(hazard_tint)
 	scroll.resized.connect(_resize_grid_view)
 
 	var grid := GridCanvasScript.new()
@@ -784,7 +803,7 @@ func _build_ui() -> void:
 	preview_header_right.text = "CLICK TO SELECT"
 	preview_header_right.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	preview_header_right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	preview_header_right.add_theme_font_size_override("font_size", 12)
+	preview_header_right.add_theme_font_size_override("font_size", 13)
 	preview_header_right.add_theme_color_override("font_color", Color("#8fa3ae"))
 	preview_header.add_child(preview_header_right)
 	var preview_details := HBoxContainer.new()
@@ -809,7 +828,7 @@ func _build_ui() -> void:
 	preview_name_label = preview_name
 	var preview_tags := Label.new()
 	preview_tags.text = "SYSTEM IDLE"
-	preview_tags.add_theme_font_size_override("font_size", 11)
+	preview_tags.add_theme_font_size_override("font_size", 13)
 	preview_tags.add_theme_color_override("font_color", Color("#8a9a9a"))
 	_add_label_panel_style(preview_tags, Color("#071018"), Color("#253946"))
 	preview_texts.add_child(preview_tags)
@@ -831,7 +850,7 @@ func _build_ui() -> void:
 	inspector_focus_button = Button.new()
 	inspector_focus_button.text = "LOCATE ROOM & CONNECTIONS"
 	inspector_focus_button.custom_minimum_size.y = 42
-	inspector_focus_button.add_theme_font_size_override("font_size", 14)
+	inspector_focus_button.add_theme_font_size_override("font_size", 15)
 	inspector_focus_button.pressed.connect(_focus_inspected_room)
 	preload("res://scripts/title_button_style.gd").apply(inspector_focus_button, 380, 42)
 	preview_box.add_child(inspector_focus_button)
@@ -928,7 +947,7 @@ func _build_ui() -> void:
 	controls_state.text = "RUNNING"
 	controls_state.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	controls_state.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	controls_state.add_theme_font_size_override("font_size", 11)
+	controls_state.add_theme_font_size_override("font_size", 13)
 	controls_state.add_theme_color_override("font_color", Color("#8fa3ae"))
 	controls_header.add_child(controls_state)
 	controls_state_label = controls_state
@@ -1018,6 +1037,7 @@ func _build_ui() -> void:
 	var solar_label := Label.new()
 	solar_label.text = "--"
 	solar_label.custom_minimum_size = Vector2(48, 0)
+	solar_label.add_theme_font_size_override("font_size", 15)
 	solar_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	solar_label.add_theme_color_override("font_color", Color("#8fa3ae"))
 	solar_row.add_child(solar_label)
@@ -1035,6 +1055,7 @@ func _build_ui() -> void:
 	detail_toggle.tooltip_text = "Zoom and placement details"
 	detail_toggle.tooltip_text = "Expand view details. Use the Placement guides hotkey to toggle indicators; physical doorway openings remain visible. Rebind it in Settings."
 	detail_toggle.toggle_mode = true
+	detail_toggle.add_theme_font_size_override("font_size", 15)
 	_style_hud_button(detail_toggle, false)
 	solar_row.add_child(detail_toggle)
 	zoom_row.visible = false
@@ -1080,7 +1101,7 @@ func _build_ui() -> void:
 	bottom_box.add_child(draft_status)
 	var blueprint_title := Label.new()
 	blueprint_title.text = "DRAFT HAND"
-	blueprint_title.add_theme_font_size_override("font_size", 12)
+	blueprint_title.add_theme_font_size_override("font_size", 13)
 	blueprint_title.add_theme_color_override("font_color", Color("#8fa3ae"))
 	draft_status.add_child(blueprint_title)
 	var hand_count := Label.new()
@@ -1093,7 +1114,7 @@ func _build_ui() -> void:
 	draft_hint.text = "Build to draw.\nRMB rerolls one.\nR rotates.\nSpace pauses."
 	draft_hint.set_meta("key_hint", "Build to draw.\nRMB rerolls one.\n{Rotate blueprint} rotates.\n{Pause} pauses.")
 	draft_hint.add_theme_font_size_override("font_size", 14)
-	draft_hint.add_theme_color_override("font_color", Color("#536874"))
+	draft_hint.add_theme_color_override("font_color", Color("#7c909c"))
 	draft_status.add_child(draft_hint)
 	var toggle_hand := Button.new()
 	toggle_hand.name = "HandToggle"
@@ -1133,6 +1154,7 @@ func _build_ui() -> void:
 	var card_row := HBoxContainer.new()
 	card_row.name = "CardRow"
 	card_row.add_theme_constant_override("separation", 12)
+	card_row.alignment = BoxContainer.ALIGNMENT_CENTER # row mode sits in the middle of the hand panel
 	card_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bottom_box.add_child(card_row)
 	hand_box = card_row
@@ -1474,26 +1496,46 @@ func _build_journal_overlay() -> void:
 	center.set_anchors_preset(Control.PRESET_FULL_RECT)
 	journal_layer.add_child(center)
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(940, 760)
+	panel.custom_minimum_size = Vector2(1040, 720)
 	_apply_panel_style(panel, Color("#071018"), UI_ACCENT_BRIGHT)
 	center.add_child(panel)
 	var body := VBoxContainer.new()
-	body.add_theme_constant_override("separation", 18)
+	body.add_theme_constant_override("separation", 14)
 	panel.add_child(body)
+	# Title on the left, Close on the right (owner playtest, Sept 29: the journal and diagnostics pages
+	# lost a band of space to two big buttons, and their panel changed height between tabs).
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 20)
+	body.add_child(header)
+	var heading := VBoxContainer.new()
+	heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	heading.add_theme_constant_override("separation", 6)
+	header.add_child(heading)
 	var title := Label.new()
-	title.text = "BRINE / STATION JOURNAL"
+	title.text = "BRINESPACE // JOURNAL"
 	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color("#a9e7d4"))
-	body.add_child(title)
+	heading.add_child(title)
 	journal_title_label = title
 	var subtitle := Label.new()
 	subtitle.text = "Recovered patterns, system diagnostics and the loop's recorded failures.\nThe station remembers. Occasionally, that is useful."
 	subtitle.add_theme_color_override("font_color", Color("#92aeb8"))
-	body.add_child(subtitle)
+	heading.add_child(subtitle)
 	journal_subtitle_label = subtitle
+	var close := Button.new()
+	close.text = "CLOSE  [J / ESC]"
+	close.set_meta("key_hint", "CLOSE  [{Journal} / ESC]")
+	close.custom_minimum_size = Vector2(220, 46)
+	close.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	close.pressed.connect(_toggle_journal)
+	_style_hud_button(close, false)
+	header.add_child(close)
+	journal_layer.set_meta("close_button", close)
+	preload("res://scripts/title_button_style.gd").apply(close, 220, 46)
 	journal_tabs = TabBar.new()
-	for tab_title in ["Patterns", "Station Health", "Reserves", "Event History", "Rooms", "Crew", "Construction"]:
+	for tab_title in ["Discoveries", "Station Health", "Reserves", "Event History", "Rooms", "Crew", "Construction"]:
 		journal_tabs.add_tab(tab_title)
+	preload("res://scripts/title_archive.gd").style_tabs(journal_tabs)
 	journal_tabs.tab_changed.connect(_journal_tab_changed)
 	body.add_child(journal_tabs)
 	history_tools = HBoxContainer.new()
@@ -1526,25 +1568,12 @@ func _build_journal_overlay() -> void:
 	archive_label = RichTextLabel.new()
 	archive_label.bbcode_enabled = true
 	archive_label.focus_mode = Control.FOCUS_ALL
-	archive_label.custom_minimum_size = Vector2(900, 460)
+	archive_label.custom_minimum_size = Vector2(980, 300)
 	archive_label.meta_clicked.connect(_locate_diagnostic_room)
 	archive_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	archive_label.add_theme_font_size_override("normal_font_size", 16)
-	archive_label.add_theme_constant_override("line_separation", 6)
+	archive_label.add_theme_font_size_override("normal_font_size", 17)
+	archive_label.add_theme_constant_override("line_separation", 7)
 	body.add_child(archive_label)
-	var close := Button.new()
-	close.text = "RETURN TO STATION  [J / ESC]"
-	close.set_meta("key_hint", "RETURN TO STATION  [{Journal} / ESC]")
-	# Return to Station and Settings sit at the same size under the journal and diagnostics pages;
-	# they were 495 wide by 44 tall against 380 by 50 (owner playtest note 11).
-	close.custom_minimum_size = Vector2(380, 50)
-	close.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	close.pressed.connect(_toggle_journal)
-	_style_hud_button(close, false)
-	body.add_child(close)
-	journal_layer.set_meta("close_button", close)
-	preload("res://scripts/title_button_style.gd").apply(close, 380, 50)
-	_add_menu_button(body, "Settings", _open_overlay_settings)
 
 # Shows one page's tabs and dresses the panel for it. A tab belonging to the other page is hidden
 # rather than removed, so tab indexes stay stable for saved scroll positions and searches.
@@ -1557,7 +1586,7 @@ func _apply_journal_mode(mode: String) -> void:
 	if not shown.has(journal_tabs.current_tab):
 		journal_tabs.current_tab = int(shown[0])
 	if journal_title_label != null:
-		journal_title_label.text = "BRINE / STATION DIAGNOSTICS" if mode == "diagnostics" else "BRINE / STATION JOURNAL"
+		journal_title_label.text = "BRINESPACE // DIAGNOSTICS" if mode == "diagnostics" else "BRINESPACE // JOURNAL"
 	if journal_subtitle_label != null:
 		journal_subtitle_label.text = "Warnings, alerts and the figures the station is running on right now." if mode == "diagnostics" else "What this loop has done, and what it recovered.\nThe station remembers. Occasionally, that is useful."
 
@@ -1897,13 +1926,13 @@ func _build_menu_overlay() -> void:
 	menu_center = center
 	var panel := PanelContainer.new()
 	panel.name = "PauseMenu"
-	panel.custom_minimum_size = Vector2(340, 700)
+	panel.custom_minimum_size = Vector2(700, 0)
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	center.add_child(panel)
 	_apply_panel_style(panel, Color("#10232e"), Color("#3c6b7d"))
 	menu_panel = panel
 	var menu_scroll := ScrollContainer.new()
-	menu_scroll.custom_minimum_size = Vector2(300, 660)
+	menu_scroll.custom_minimum_size = Vector2(660, 640)
 	menu_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	menu_scroll.follow_focus = true
 	panel.add_child(menu_scroll)
@@ -1912,68 +1941,98 @@ func _build_menu_overlay() -> void:
 	box.add_theme_constant_override("separation", 10)
 	menu_scroll.add_child(box)
 	var title := Label.new()
-	title.text = "BRINE"
+	title.text = "BRINESPACE"
 	title.add_theme_font_size_override("font_size", 34)
 	title.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
 	box.add_child(title)
 	var subtitle := Label.new()
 	subtitle.text = "PAUSED"
 	pause_page_title = subtitle
-	subtitle.add_theme_font_size_override("font_size", 15)
+	subtitle.add_theme_font_size_override("font_size", 16)
 	subtitle.add_theme_color_override("font_color", Color("#8daab6"))
 	box.add_child(subtitle)
 	var status := Label.new()
 	status.text = ""
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	status.add_theme_font_size_override("font_size", 13)
-	status.add_theme_color_override("font_color", Color("#8fa3ae"))
+	status.add_theme_font_size_override("font_size", 16)
+	status.add_theme_color_override("font_color", Color("#a9c4cf"))
 	box.add_child(status)
 	menu_status_label = status
-	var separator := Label.new()
-	separator.text = "────────────────────────────"
-	separator.add_theme_color_override("font_color", Color("#18313c"))
-	box.add_child(separator)
-	for id in ["main", "station", "exit"]:
-		var page := VBoxContainer.new()
-		page.name = "PausePage_" + id
-		page.add_theme_constant_override("separation", 12)
-		page.visible = id == "main"
-		box.add_child(page)
-		pause_pages[id] = page
-	# Owner call (Sept 16): every option stays, grouped so it is easy to find. Station actions sit
-	# on the first page; the archive tabs (settings, codex, research, credits) share one page, and
-	# leaving the loop has its own.
-	var primary: VBoxContainer = pause_pages.main
-	_add_menu_button(primary, "Resume Cycle", _close_menu)
-	_add_menu_button(primary, "Save Game", _menu_save_game)
-	_add_menu_button(primary, "Settings", _open_shared_menu.bind("settings"))
-	_add_menu_button(primary, "Station & Archives", _show_pause_page.bind("station"))
-	_add_menu_button(primary, "End or Leave Loop", _show_pause_page.bind("exit"))
-	var station: VBoxContainer = pause_pages.station
-	_add_menu_button(station, "Codex", _open_shared_menu.bind("codex"))
-	_add_menu_button(station, "Meta Progression", _open_shared_menu.bind("progression"))
-	_add_menu_button(station, "Credits & Build", _open_shared_menu.bind("about"))
-	_add_menu_button(station, "Back", _pause_page_back)
-	var exits: VBoxContainer = pause_pages.exit
-	_add_menu_button(exits, "Save & Return to Title", _menu_return_title)
-	_add_menu_button(exits, "Save & Quit", _menu_quit_game)
-	_add_menu_button(exits, "Restart Reboot Cycle", _menu_restart_cycle)
-	# Built through the menu helper so it matches the buttons above it (owner playtest, Sept 18).
-	end_expedition_button = _add_menu_button(exits, "End Expedition", _end_expedition)
-	_add_menu_button(exits, "Back", _pause_page_back)
+	var rule := ColorRect.new()
+	rule.color = Color("#1f3a44")
+	rule.custom_minimum_size.y = 1
+	box.add_child(rule)
+	# One page, two columns (owner playtest, Sept 29: the old two-level menu hid Settings behind
+	# "Archive" and left half the panel empty). Left: run and leave. Right: the library and settings.
+	var columns := HBoxContainer.new()
+	columns.name = "PauseColumns"
+	columns.add_theme_constant_override("separation", 28)
+	box.add_child(columns)
+	var left := VBoxContainer.new()
+	left.name = "PausePage_main"
+	left.custom_minimum_size.x = 300
+	left.add_theme_constant_override("separation", 8)
+	columns.add_child(left)
+	pause_pages["main"] = left
+	var right := VBoxContainer.new()
+	right.name = "PauseLibrary"
+	right.custom_minimum_size.x = 300
+	right.add_theme_constant_override("separation", 8)
+	columns.add_child(right)
+	_menu_section(left, "RUN")
+	_add_menu_button(left, "Resume Cycle", _close_menu)
+	_add_menu_button(left, "Save Game", _menu_save_game)
 	menu_save_feedback = Label.new()
 	menu_save_feedback.name = "SaveFeedback"
-	menu_save_feedback.text = ""
 	menu_save_feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	menu_save_feedback.custom_minimum_size.x = 300
 	menu_save_feedback.add_theme_font_size_override("font_size", 15)
-	menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
-	box.add_child(menu_save_feedback)
+	left.add_child(menu_save_feedback)
+	_menu_section(left, "LEAVE")
+	_add_menu_button(left, "Save & Return to Title", _menu_return_title)
+	_add_menu_button(left, "Save & Quit", _menu_quit_game)
+	_add_menu_button(left, "Restart Reboot Cycle", _menu_restart_cycle)
+	# Built through the menu helper so it matches the buttons above it (owner playtest, Sept 18).
+	end_expedition_button = _add_menu_button(left, "End Expedition", _end_expedition)
+	_menu_section(right, "LIBRARY")
+	_add_menu_button(right, "Codex", _open_shared_menu.bind("codex"))
+	_add_menu_button(right, "Meta Progression", _open_shared_menu.bind("progression"))
+	_add_menu_button(right, "Credits & Build", _open_shared_menu.bind("about"))
+	_menu_section(right, "GAME")
+	_add_menu_button(right, "Settings", _open_shared_menu.bind("settings"))
 	var hint := Label.new()
-	hint.text = "Esc: Back / Return to Station"
-	hint.tooltip_text = "Escape returns from a submenu, then closes the pause menu."
+	hint.text = "Esc: Return to Station"
+	hint.tooltip_text = "Escape closes the pause menu."
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.add_theme_color_override("font_color", Color("#8daab6"))
 	box.add_child(hint)
+	_refresh_save_status()
+
+# A small caption above a group of pause-menu buttons.
+func _menu_section(parent: Control, caption: String) -> void:
+	if parent.get_child_count() > 0:
+		var gap := Control.new()
+		gap.custom_minimum_size.y = 8
+		parent.add_child(gap)
+	var label := Label.new()
+	label.text = caption
+	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_color_override("font_color", Color("#5fd3c4"))
+	label.add_theme_constant_override("outline_size", 0)
+	parent.add_child(label)
+
+# What the player can rely on: when this loop was last recorded, not a standing hint.
+func _refresh_save_status() -> void:
+	if menu_save_feedback == null: return
+	if last_save_cycle < 0:
+		menu_save_feedback.text = "Not saved yet this loop. Save Game lets you continue it from the title screen."
+		menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
+		return
+	var minutes := int((Time.get_ticks_msec() - last_save_msec) / 60000)
+	var when := "just now" if minutes < 1 else "%d min ago" % minutes
+	menu_save_feedback.text = "Saved at cycle %03d, %s." % [last_save_cycle, when]
+	if cycle > last_save_cycle: menu_save_feedback.text += " %d cycle%s of progress since." % [cycle - last_save_cycle, "" if cycle - last_save_cycle == 1 else "s"]
+	menu_save_feedback.add_theme_color_override("font_color", Color("91e2dd"))
 
 func _add_menu_button(parent: Control, text: String, callable: Callable) -> Button:
 	var button := Button.new()
@@ -2001,8 +2060,8 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> Butt
 	}.get(text, "")
 	# Menu and summary actions sit at a readable width instead of spanning the panel (owner
 	# playtest, Sept 17).
-	button.custom_minimum_size = Vector2(380, 50)
-	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	button.custom_minimum_size = Vector2(300, 46)
+	button.size_flags_horizontal = Control.SIZE_FILL
 	button.focus_mode = Control.FOCUS_ALL
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	button.pressed.connect(callable)
@@ -2055,9 +2114,8 @@ func _hide_grid_scrollbars() -> void:
 func _start_reboot_cycle() -> void:
 	hardware=preload("res://scripts/station_hardware.gd").DEFAULTS.duplicate()
 	if is_instance_valid(crew_comms): crew_comms.reset_for_loop()
-	if menu_save_feedback != null:
-		menu_save_feedback.text = "Record this loop to continue it from the title screen."
-		menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
+	last_save_cycle = -1
+	_refresh_save_status()
 	run_save_id = "%s-%s" % [Time.get_unix_time_from_system(), Time.get_ticks_usec()]
 	if journal_layer != null:
 		journal_layer.visible = false
@@ -2184,6 +2242,7 @@ func _start_reboot_cycle() -> void:
 		cascade_toast_tween.kill()
 	toast_messages.clear()
 	toast_record_keys.clear()
+	held_comments.clear()
 	current_toast_record = ""
 	toast_playing = false
 	cascade_toast.visible = false
@@ -2859,7 +2918,6 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 	if not run_discovered_synergy_ids.has(synergy_id):
 		run_discovered_synergy_ids.append(synergy_id)
 	play_station_sound("discovery")
-	if is_instance_valid(crew_comms): crew_comms.transmit("brine","A new connection. The station has done something I did not predict. I have recorded it. That does not mean I understand it.","discovery/"+synergy_id)
 	var synergy := _synergy_by_id(synergy_id)
 	for link_value in active_synergy_links:
 		var link: Dictionary = link_value
@@ -2876,7 +2934,12 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 			})
 		break
 	_log("Pattern discovered: %s. %s" % [synergy.get("name", "Recovered pattern"), synergy.get("message", "BRINE recovered a functioning room pattern.")])
-	_queue_center_toast("PATTERN DISCOVERED\n%s\nClick to review · Saved in Archive" % str(synergy.get("name", synergy_id)).to_upper(), "synergy:" + synergy_id)
+	# Nobody talks over the discovery card (owner playtest, Sept 29): BRINE's line waits until it is gone.
+	var record := "synergy:" + synergy_id
+	held_comments[record] = ["brine", "A new connection. The station has done something I did not predict. I have recorded it. That does not mean I understand it.", "discovery/" + synergy_id]
+	_queue_center_toast("PATTERN DISCOVERED\n%s\nClick to review · Saved in Archive" % str(synergy.get("name", synergy_id)).to_upper(), record)
+	if cascade_toast == null or not (toast_playing or not toast_messages.is_empty()):
+		_release_held_comment(record)
 
 func _burst_synergy_link(synergy: Dictionary) -> void:
 	for link_value in active_synergy_links:
@@ -2992,7 +3055,9 @@ func _queue_center_toast(message: String, record_key := "") -> void:
 	if toast_messages.has(message):
 		return
 	if toast_messages.size() >= 3:
-		toast_record_keys.erase(toast_messages.pop_front())
+		var evicted: String = toast_messages.pop_front()
+		_release_held_comment(str(toast_record_keys.get(evicted, "")))
+		toast_record_keys.erase(evicted)
 	if not record_key.is_empty():
 		toast_record_keys[message] = record_key
 	toast_messages.append(message)
@@ -3040,9 +3105,17 @@ func _show_center_toast(message: String) -> void:
 	cascade_toast_tween.chain().tween_property(cascade_toast, "modulate:a", 0.0, 0.35)
 	cascade_toast_tween.chain().tween_callback(_finish_center_toast)
 
+# A crew line held back until the card that announces its event has gone (see _handle_synergy_discovery).
+func _release_held_comment(record: String) -> void:
+	if not held_comments.has(record): return
+	var line: Array = held_comments[record]
+	held_comments.erase(record)
+	if is_instance_valid(crew_comms): crew_comms.transmit(str(line[0]), str(line[1]), str(line[2]))
+
 func _finish_center_toast() -> void:
 	if cascade_toast != null:
 		cascade_toast.visible = false
+	_release_held_comment(current_toast_record)
 	toast_playing = false
 	_play_next_center_toast()
 
@@ -3456,6 +3529,7 @@ func _open_menu() -> void:
 	Preferences.apply_menu_text(menu_center)
 	menu_resume_button.grab_focus()
 	_refresh_menu_status()
+	_refresh_save_status()
 	_refresh_all()
 	if grid_view != null:
 		grid_view.queue_redraw()
@@ -3480,7 +3554,7 @@ func _refresh_menu_status() -> void:
 		end_expedition_button.visible = expedition_mode and running
 	if menu_status_label == null:
 		return
-	menu_status_label.text = "Cycle %03d  |  Integrity %d%%  |  Crew %d  |  View %s" % [cycle, resources.get("integrity", 0), crew_count, "ADMIN" if admin_mode else "NORMAL"]
+	menu_status_label.text = "Cycle %03d  ·  Integrity %d%%  ·  Crew %d%s" % [cycle, resources.get("integrity", 0), crew_count, "  ·  ADMIN VIEW" if admin_mode else ""]
 	if not meta.last_error.is_empty():
 		menu_status_label.text += "\nPROGRESSION NOT SAVED // " + meta.last_error
 
@@ -3504,10 +3578,10 @@ func _open_shared_menu(section: String) -> void:
 			menu_resume_button.grab_focus()
 	)
 
-func _open_overlay_settings() -> void:
+func _open_overlay_settings(section := "settings") -> void:
 	if not journal_layer.visible and not summary_layer.visible:
 		_open_menu()
-		_open_shared_menu("settings")
+		_open_shared_menu(section)
 		return
 	if is_instance_valid(menu_archive):
 		return
@@ -3516,7 +3590,7 @@ func _open_overlay_settings() -> void:
 	source.hide()
 	menu_archive = preload("res://scripts/title_archive.gd").new()
 	menu_archive.meta_state = meta
-	menu_archive.mode = "settings"
+	menu_archive.mode = section
 	menu_archive.in_game = true
 	menu_layer.show()
 	menu_center.hide()
@@ -3551,7 +3625,7 @@ func _choose_restart_architect() -> void:
 	add_child(layer)
 	picker.closed.connect(func():
 		layer.queue_free()
-		if menu_open: _show_pause_page("exit")
+		if menu_open: _show_pause_page("main")
 		elif is_instance_valid(opener): opener.grab_focus()
 	)
 	picker.chosen.connect(func(_id: String):
@@ -3582,8 +3656,9 @@ func _save_active_loop() -> bool:
 		menu_save_feedback.text = "LOOP RECORDED / PROGRESSION NOT SAVED // " + meta.last_error
 		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
 		return false
-	menu_save_feedback.text = "LOOP RECORDED // Cycle %03d. Continue is available on the title screen." % cycle
-	menu_save_feedback.add_theme_color_override("font_color", Color("91e2dd"))
+	last_save_cycle = cycle
+	last_save_msec = Time.get_ticks_msec()
+	_refresh_save_status()
 	return true
 
 func _menu_save_game() -> void:
@@ -3724,6 +3799,27 @@ func _center_grid_on_station() -> void:
 func _center_grid_on_station_deferred() -> void:
 	_center_grid_on_station.call_deferred()
 
+# A soft dark edge over the station view (owner playtest, Sept 29; spec 2026-09-29-lighting-atmosphere-design.md).
+# One gradient overlay, no screen read, so it costs almost nothing and stays on at every quality level.
+func _make_vignette() -> TextureRect:
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.55, 1.0])
+	gradient.colors = PackedColorArray([Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0.01, 0.03, 0.04, 0.42)])
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.fill = GradientTexture2D.FILL_RADIAL
+	texture.fill_from = Vector2(0.5, 0.5)
+	texture.fill_to = Vector2(1.0, 0.5)
+	texture.width = 256
+	texture.height = 256
+	var overlay := TextureRect.new()
+	overlay.name = "Vignette"
+	overlay.texture = texture
+	overlay.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	overlay.stretch_mode = TextureRect.STRETCH_SCALE
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return overlay
+
 func _fit_station_view(animated := false) -> void:
 	if grid_scroll == null or placed_rooms.is_empty():
 		return
@@ -3780,7 +3876,7 @@ func _refresh_resources() -> void:
 	# Keep supply minus demand visible even when excess cannot enter storage.
 	var power_change := "%+d" % (int(net.get("power",0)) + forecast_power_vented)
 	_set_resource_chip("power", "POWER\n%d/%d  %s" % [resources["power"], power_capacity, power_change], _critical_color(resources["power"], Color("#f5c542"), 2, 0))
-	resource_chips["power"].tooltip_text = str(RESOURCE_TOOLTIPS.get("power", "Station resource.")) + preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented)
+	resource_chips["power"].tooltip_text = str(RESOURCE_TOOLTIPS.get("power", "Station resource.")) + preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented) + _resource_sources_tip("power", forecast)
 	_set_resource_chip("oxygen", "OXYGEN\n%d/%d  %+d" % [resources["oxygen"], _get_resource_capacity("oxygen"), net.get("oxygen", 0)], _critical_color(resources["oxygen"], Color("#7fd4ff"), 2, 0))
 	_set_resource_chip("water", "WATER\n%d/%d  %+d" % [int(resources.get("water", 0)), _get_resource_capacity("water"), net.get("water", 0)], Color("#719bff"))
 	_set_resource_chip("food", "FOOD\n%d/%d  %+d" % [resources["food"], _get_resource_capacity("food"), net.get("food", 0)], _critical_color(resources["food"], Color("#f0903c"), 2, 0))
@@ -3795,7 +3891,12 @@ func _refresh_resources() -> void:
 	for key in net:
 		var chip_id: String = "rare" if key == "rare_minerals" else str(key)
 		if resource_chips.has(chip_id):
-			resource_chips[chip_id].tooltip_text = _reserve_forecast(str(key), int(net[key])) + ("\nIncludes drone and crew deliveries averaged over the last %d cycles." % preload("res://scripts/resource_flow_ledger.gd").WINDOW if delivered.has(key) else "") + "\nClick or press Enter for room contributions. Estimates can change with events and inputs."
+			resource_chips[chip_id].tooltip_text = _reserve_forecast(str(key), int(net[key])) + ("\nIncludes drone and crew deliveries averaged over the last %d cycles." % preload("res://scripts/resource_flow_ledger.gd").WINDOW if delivered.has(key) else "") + "\nClick or press Enter for room contributions. Estimates can change with events and inputs." + _resource_sources_tip(str(key), forecast)
+	# A resource with no net change still has sources: name them on the static tip.
+	for key in ["metal", "water", "data", "biomass", "rare_minerals", "oxygen", "food"]:
+		var chip_id: String = "rare" if key == "rare_minerals" else str(key)
+		if net.has(key) or not resource_chips.has(chip_id): continue
+		resource_chips[chip_id].tooltip_text = str(RESOURCE_TOOLTIPS.get(chip_id, "Station resource.")) + _resource_sources_tip(str(key), forecast)
 	if resource_chips.has("integrity"):
 		var integrity_tip: String = _reserve_forecast("integrity", int(net["integrity"])) if net.has("integrity") else str(RESOURCE_TOOLTIPS["integrity"])
 		resource_chips["integrity"].tooltip_text = integrity_tip + "\nFLOODED counts rooms at 25% water or deeper. Flooding does not lower Integrity.\nClick or press Enter for room contributions."
@@ -4108,10 +4209,10 @@ func _card_synergy_hint(room_id: String) -> String:
 
 func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affordable := true) -> void:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.02, 0.035, 0.045, 0.78) if not selected else Color(0.03, 0.07, 0.08, 0.88)
+	style.bg_color = Color("#101a20") if not selected else Color(0.03, 0.07, 0.08, 0.88)
 	if not affordable:
 		style.bg_color = Color(0.018, 0.024, 0.03, 0.78) if not selected else Color(0.055, 0.065, 0.075, 0.88)
-	style.border_color = UI_ACCENT_BRIGHT if selected else Color(color.r, color.g, color.b, 0.78)
+	style.border_color = UI_ACCENT_BRIGHT if selected else preload("res://scripts/draft_card.gd").muted(color)
 	if not affordable and not selected:
 		style.border_color = Color("#30424a")
 	style.border_width_left = 3
@@ -4390,7 +4491,9 @@ func _input(event: InputEvent) -> void:
 		preload("res://scripts/title_button_style.gd").contain_tab(event, scope)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if get_viewport() == null: # The scene can leave the tree between input and handling.
+	# Kept from before the handlers run: Return to Title and similar leave the tree, and get_viewport() is null after.
+	var viewport := get_viewport()
+	if viewport == null: # The scene can leave the tree between input and handling.
 		return
 	if is_instance_valid(menu_archive):
 		return
@@ -4403,11 +4506,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			_pause_page_back()
 		else:
 			_toggle_menu()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Journal"):
 		_open_journal_page("journal")
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if _gameplay_input_blocked():
 		return
@@ -4416,25 +4519,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		Preferences.save(get_window())
 		grid_view.queue_redraw()
 		_refresh_placement_status()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Fit station"):
 		_fit_station_view(true)
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Pause"):
 		_toggle_pause()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if Preferences.pressed(event, "Rotate blueprint"):
 		_rotate_selected_room()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if false:
 		admin_mode = not admin_mode
 		_log("Admin topology overlay %s." % ("enabled" if admin_mode else "hidden"), false)
 		_refresh_all()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 		return
 	if event is InputEventMouseButton and event.pressed and event.shift_pressed:
 		# The pointer is read fresh each notch, so moving the mouse mid-scroll steers.
@@ -5234,12 +5337,13 @@ func _refresh_archive() -> void:
 				stabilized_count += 1
 			lines.append(_format_synergy_line(synergy) + "\n")
 	lines.append_array(preload("res://scripts/station_ui_insights.gd").learning(self))
-	lines.push_front("[color=#a9e7d4]%d LEARNED  /  %d STABILIZED  /  %d BLUEPRINTS AVAILABLE[/color]\n" % [discovered_count, stabilized_count, meta.unlocked_room_ids.size()])
+	lines.push_front("[font_size=21][color=#a9e7d4][b]%d[/b] LEARNED[/color]     [color=#7fd6a6][b]%d[/b] STABILIZED[/color]     [color=#79b8d9][b]%d[/b] BLUEPRINTS AVAILABLE[/color][/font_size]\n" % [discovered_count, stabilized_count, meta.unlocked_room_ids.size()])
 	if discovered_count == 0:
 		lines.append("[color=#a7bac1]An empty record, a station full of possibilities.\n\nConnect different rooms through matching doors. Let them function.\nWatch the rooms themselves for the first sign of a discovery.\n\nStabilized blueprints stay with you across reboots, and a new prototype\nis placed on top of your current draw pile.[/color]\n")
 	var unknown_count := SynergyManagerScript.all_synergies().size() - discovered_count
 	if unknown_count > 0:
-		lines.append("[color=#718a97]UNKNOWN PATTERNS REMAIN: %d[/color]" % unknown_count)
+		lines.append("[color=#718a97]UNIDENTIFIED SYNERGIES REMAIN: %d[/color]" % unknown_count)
+	lines.append("\n[url=codex][color=#79b8d9]OPEN THE CODEX  ▸[/color][/url]")
 	_set_journal_text(_join_strings(lines, "\n"))
 	if journal_button != null:
 		journal_button.text = "JOURNAL [%s]\n%d LEARNED" % [Preferences.key_name("Journal"), discovered_count]
@@ -5315,6 +5419,67 @@ func _refresh_log() -> void:
 		else:
 			formatted.append("[color=#94a2a0]%s[/color]" % text)
 	log_label.text = _join_strings(formatted, "\n")
+
+# What is giving and taking a resource, for the resource bar's hover tip (owner playtest, Sept 28):
+# rooms grouped by name with a count, crew upkeep, and recent deliveries. Plain text; a tooltip
+# cannot show icons. Offline rooms are named but count for nothing.
+func _resource_sources_tip(resource_id: String, forecast: Dictionary) -> String:
+	if resource_id in ["integrity", "crew", "corruption"]: return ""
+	var giving := {}
+	var taking := {}
+	var offline_names := {}
+	for room in placed_rooms:
+		var cell: Vector2i = room.pos
+		var room_name := str(room.display_name)
+		var produced := int(room.get("production", {}).get(resource_id, 0))
+		var consumed := int(room.get("consumption", {}).get(resource_id, 0))
+		if resource_id == "power" and forecast.get("generator_outputs", {}).has(cell):
+			produced = int(forecast.generator_outputs[cell])
+		if produced == 0 and consumed == 0: continue
+		if forecast.offline.has(cell):
+			offline_names[room_name] = int(offline_names.get(room_name, 0)) + 1
+			continue
+		if produced > 0:
+			giving[room_name] = _tally(giving.get(room_name, [0, 0]), produced)
+		if consumed > 0:
+			taking[room_name] = _tally(taking.get(room_name, [0, 0]), consumed)
+	if resource_id in ["food", "oxygen"]:
+		var eaters: int = (_breathing_crew_count() if resource_id == "oxygen" else crew_count) + int(forecast.added_crew)
+		if eaters > 0: taking["Crew upkeep"] = [eaters, 1]
+	var delivered: Dictionary = preload("res://scripts/resource_flow_ledger.gd").totals(resource_flow)
+	var window := maxi(1, resource_flow.closed.size())
+	if int(delivered.drone.get(resource_id, 0)) > 0:
+		giving["Drone deliveries (last %d cycles)" % window] = [int(delivered.drone[resource_id]), 1]
+	if int(delivered.crew.get(resource_id, 0)) > 0:
+		giving["Crew expeditions (last %d cycles)" % window] = [int(delivered.crew[resource_id]), 1]
+	if giving.is_empty() and taking.is_empty() and offline_names.is_empty(): return "\n\nNothing is giving or taking this yet."
+	var text := ""
+	text += _tip_section("GIVING", giving, "+")
+	text += _tip_section("TAKING", taking, "-")
+	if not offline_names.is_empty():
+		var names := PackedStringArray()
+		for room_name in offline_names: names.append("%s%s" % [room_name, " x%d" % offline_names[room_name] if offline_names[room_name] > 1 else ""])
+		text += "\n\nOFFLINE (not counted)\n  " + ", ".join(names)
+	return text
+
+# [amount, rooms] running total for one room name.
+func _tally(entry: Array, amount: int) -> Array:
+	return [int(entry[0]) + amount, int(entry[1]) + 1]
+
+func _tip_section(title: String, entries: Dictionary, sign: String) -> String:
+	if entries.is_empty(): return ""
+	var names: Array = entries.keys()
+	names.sort_custom(func(a, b) -> bool: return int(entries[a][0]) > int(entries[b][0]))
+	var text := "\n\n" + title
+	var shown := 0
+	for room_name in names:
+		if shown >= 6:
+			text += "\n  and %d more" % (names.size() - shown)
+			break
+		var entry: Array = entries[room_name]
+		text += "\n  %s%s  %s%d" % [room_name, " x%d" % entry[1] if int(entry[1]) > 1 else "", sign, int(entry[0])]
+		shown += 1
+	return text
 
 func _reserve_forecast(key: String, change: int) -> String:
 	var reserve := int(resources.get(key, 0))
@@ -5400,6 +5565,9 @@ func _inspector_action(value: Variant) -> void:
 		_listening_action(value)
 
 func _locate_diagnostic_room(value: Variant) -> void:
+	if str(value) == "codex":
+		_open_overlay_settings("codex")
+		return
 	if str(value)=="pet:margot":
 		if Companions.can_pet(self,true):
 			if _journal_is_open():_toggle_journal()
@@ -5487,6 +5655,21 @@ func _set_journal_text(value: String) -> void:
 	archive_label.text = value
 	archive_label.get_v_scroll_bar().set_deferred("value", position)
 
+# One event-history line: a dim cycle chip, then the message coloured by what kind of event it is.
+func _history_row(line: String) -> String:
+	var cycle_tag := ""
+	var message := line
+	if line.begins_with("[C") and line.find("] ") > 0:
+		cycle_tag = line.substr(1, line.find("]") - 1)
+		message = line.substr(line.find("] ") + 2)
+	var lowered := message.to_lower()
+	var colour := "#c9d9de"
+	for token in ["warning", "shortage", "shortfall", "needs ", "blackout", "collapse", "critical", "rejected", "run complete", "idle"]:
+		if lowered.contains(token): colour = "#ef987c"; break
+	if colour == "#c9d9de" and (lowered.contains("pattern") or lowered.contains("blueprint decrypted") or lowered.contains("resonance tier") or lowered.contains("cascade")): colour = "#7fd6c6"
+	elif colour == "#c9d9de" and (lowered.contains("built ") or lowered.contains("cleared at") or lowered.contains("construction")): colour = "#9fb8c0"
+	return "[color=#5e8293]%s[/color]  [color=%s]%s[/color]" % [cycle_tag, colour, message.replace("[", "[lb]")]
+
 func _history_matches_category(line: String) -> bool:
 	var text := line.to_lower()
 	match history_filter.selected:
@@ -5555,7 +5738,7 @@ func _refresh_diagnostics_page() -> void:
 			for i in range(event_history.size() - 1, -1, -1):
 				var line := str(event_history[i])
 				if _history_matches_category(line) and (query.is_empty() or line.to_lower().contains(query)):
-					lines.append(line.replace("[", "[lb]"))
+					lines.append(_history_row(line))
 					found += 1
 			if found == 0:
 				lines.append("No matching records. Clear the search and choose All events to inspect the full retained history.")
@@ -5570,19 +5753,19 @@ func _refresh_diagnostics_page() -> void:
 				lines.append("[url=%d,%d]%s · %s[/url]\n%s · Forecast: %s\n%s\n" % [cell.x,cell.y,room.display_name,cell,room.category,reason,preload("res://scripts/station_navigation.gd").actions(cell,reason)])
 			if rooms.is_empty(): lines.append("No installed rooms match. Try a room name, department or NEEDS resource.")
 		5:
-			lines.append("[b]COMPANIONS[/b] // Separate from architect berths")
+			lines.append("[font_size=20][color=#a9e7d4][b]COMPANIONS[/b][/color][/font_size] // Separate from architect berths\n")
 			for id in Companions.IDS:
 				lines.append("%s // %s"%[Companions.NAMES[id],companion_actors[id].activity if companion_roster.has(id) else "Unlocked for future selection" if meta.unlocked_companion_ids.has(id) else "Met // buy in Meta Progression to keep" if meta.met_character_ids.has(id) else "Not yet recovered"])
 				if companion_roster.has(id) and companion_actors[id].active:
 					var companion_cell: Vector2i=companion_actors[id].cell_at(companion_actors[id].foot)
 					lines.append("[url=%d,%d]LOCATE %s[/url]"%[companion_cell.x,companion_cell.y,Companions.NAMES[id].to_upper()])
 					if id=="margot":lines.append("[url=pet:margot]PET MARGOT[/url]\n" if Companions.can_pet(self,true) else "Pet Margot // %s\n"%Companions.pet_refusal(self))
-			lines.append("[b]CREW ROSTER // %d / %d BERTHS[/b]\nRecovered occupants join after their wake sequence completes.\n" % [crew_count,_get_crew_capacity()])
+			lines.append("\n[font_size=20][color=#a9e7d4][b]CREW ROSTER // %d / %d BERTHS[/b][/color][/font_size]\nRecovered occupants join after their wake sequence completes.\n" % [crew_count,_get_crew_capacity()])
 			var named_alive := 0
 			for member in recovered_crew:
 				named_alive += int(member.alive)
 				var origin_text := "Awakened in BRINE Core." if member.id=="core_architect" else ("Awakened in charging chamber %s." if member.get("architect_id","")=="marsh" else "Recovered from cryo ward %s.") % member.origin
-				lines.append("[url=%d,%d]%s[/url] // %s\n%s\n" % [member.origin.x,member.origin.y,member.name,"ABOARD" if member.alive else "DECEASED",origin_text])
+				lines.append("[url=%d,%d]%s[/url] // %s\n%s\n" % [member.origin.x,member.origin.y,member.name,"[color=#7fd6a6]ABOARD[/color]" if member.alive else "[color=#ef987c]DECEASED[/color]",origin_text])
 			for id in Architects.IDS:
 				var actor = Architects.actor_for(self,id)
 				if actor.active and not actor.dead: lines.append("Marsh: "+actor.battery_status()+"\n" if not actor.needs_air() else "%s: tank %.0fs / breath %.0fs / starvation %.0f of 90s\n" % [Architects.NAMES[id],actor.tank_oxygen,actor.breath_oxygen,actor.starvation])
@@ -5745,7 +5928,7 @@ func _show_pause_page(id: String) -> void:
 	if id != "main": pause_page_opener = get_viewport().gui_get_focus_owner()
 	pause_page = id
 	for key in pause_pages: pause_pages[key].visible = key == id
-	pause_page_title.text = {"main":"PAUSED", "station":"ARCHIVE & SETTINGS", "exit":"LEAVE GAME"}[id]
+	pause_page_title.text = "PAUSED"
 	for child in pause_pages[id].get_children():
 		if child is Button and child.visible and not child.disabled:
 			child.grab_focus()

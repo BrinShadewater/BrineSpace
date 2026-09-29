@@ -97,8 +97,8 @@ func add_control(parent, key: String, caption: String, dimensions: Vector2, off:
 	button.idle=load(off); button.engaged=load(on); button.tooltip_text=tip
 	button.disabled=false; column.add_child(button)
 	var label:=Label.new(); label.text=caption; label.add_theme_color_override("font_color",Color("bdceca")); label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-	label.add_theme_constant_override("line_spacing",0); label.add_theme_font_size_override("font_size",12); column.add_child(label)
-	var status:=Label.new(); status.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER; status.add_theme_font_size_override("font_size",10); column.add_child(status)
+	label.add_theme_constant_override("line_spacing",0); label.add_theme_font_size_override("font_size",13); column.add_child(label)
+	var status:=Label.new(); status.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER; status.add_theme_font_size_override("font_size",12); column.add_child(status)
 	controls[key]={"button":button,"status":status}
 func activate(key: String, value: bool) -> void:
 	if game._gameplay_input_blocked(): return

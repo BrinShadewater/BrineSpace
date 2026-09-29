@@ -9,6 +9,9 @@ var mode := ""
 var in_game := false
 var content: VBoxContainer
 var scroll: ScrollContainer
+# Meta Progression: the Archived Data balance and the page tabs live here, above the scroll area, so they
+# stay in view while the cards scroll (owner playtest, Sept 29).
+var sticky: VBoxContainer
 var grid: GridContainer
 var search: LineEdit
 var room_ids: Array[String] = []
@@ -23,6 +26,8 @@ const Catalog = preload("res://scripts/codex_catalog.gd")
 const ResearchTree = preload("res://scripts/research_tree.gd")
 const ResourceIcons = preload("res://scripts/resource_icons.gd")
 const RARITY_ORDER := ["core", "common", "uncommon", "rare", "derelict"]
+# Smallest interface text; see settings_panel.gd MIN_TEXT.
+const MIN_TEXT := 14
 const SHADEWATER_LABS_URL := "https://shadewaterlabs.com/"
 const AI_DISCLOSURE := "BrineSpace is made by Brin Shadewater with the help of generative AI. AI tools were used to create or assist with parts of the artwork, animation, audio and code, all directed, selected and edited by a human."
 var close_button: Button
@@ -35,12 +40,20 @@ var codex_sort_index := 0
 var codex_sort: OptionButton
 const SORTS := ["SORT: COLOUR", "SORT: RARITY", "SORT: NAME", "SORT: BUILD COST"]
 const CARD_WIDTH := 270
+# Every room card is this tall at least, recovered or not, so a row of unrecovered signals is the
+# same size as a row of rooms (owner playtest, Sept 28).
+const CARD_HEIGHT := 500
+const DraftCard = preload("res://scripts/draft_card.gd")
 const CARDS_PER_ROW := 4
-const SYNERGY_WIDTH := 470
+const SYNERGY_WIDTH := 400
+# Every synergy card is at least this tall, discovered or not, and three sit in a row (owner playtest,
+# Sept 29). The rules panel stretches to fill whatever the clue or effect text leaves free.
+const SYNERGY_HEIGHT := 390
+const SYNERGIES_PER_ROW := 3
 var progression_cards: GridContainer
 var progression_tab := 0
 const MetaShop = preload("res://scripts/meta_shop.gd")
-const PROGRESSION_TABS := ["UPGRADES", "BLUEPRINTS", "CREW & COMPANIONS", "RECORDS"]
+const PROGRESSION_TABS := ["UPGRADES", "BLUEPRINTS", "CREW & COMPANIONS"]
 
 func _ready() -> void:
 	theme = preload("res://scripts/title_button_style.gd").menu_theme()
@@ -121,6 +134,7 @@ func _build() -> void:
 		codex_tabs.add_tab("TRANSMISSIONS")
 		codex_tabs.current_tab = codex_tab
 		codex_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		_style_tabs(codex_tabs)
 		codex_tabs.tab_changed.connect(func(index: int) -> void:
 			codex_tab = index
 			scroll.scroll_vertical = 0
@@ -218,7 +232,7 @@ func _style(accent: Color) -> StyleBoxFlat:
 func _label(text: String, font_size: int = 18) -> Label:
 	var label := Label.new()
 	label.text = text
-	label.add_theme_font_size_override("font_size", font_size)
+	label.add_theme_font_size_override("font_size", maxi(font_size, MIN_TEXT))
 	label.add_theme_color_override("font_color", Color("b9dce5"))
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	return label
@@ -228,10 +242,10 @@ func _layout() -> void:
 		var scale: float = preload("res://scripts/title_settings.gd").text_scale
 		var cell := (CARD_WIDTH + 18) if codex_tab == 0 else (SYNERGY_WIDTH + 18)
 		var fits := maxi(1, int((size.x - 140) / (cell * scale)))
-		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else 2, fits) if mode == "codex" and codex_tab != 2 else 1
+		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else SYNERGIES_PER_ROW, fits) if mode == "codex" and codex_tab != 2 else 1
 		grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if is_instance_valid(progression_cards):
-		var wide: int = CARDS_PER_ROW if progression_cards.name == "BlueprintShop" else 3
+		var wide: int = CARDS_PER_ROW if progression_cards.name == "BlueprintShop" else 4
 		progression_cards.columns = maxi(1, mini(wide, int((size.x - 460) / 300)))
 
 func _populate_cards() -> void:
@@ -303,7 +317,7 @@ func _populate_cards() -> void:
 		var body := VBoxContainer.new()
 		body.add_theme_constant_override("separation", 10)
 		panel.add_child(body)
-		body.add_child(_label("%s // %s" % [entry.category.to_upper(), "RECOVERED" if entry.known else "SIGNAL OBSCURED"], 14))
+		body.add_child(_label("%s // %s" % [entry.category.to_upper(), "RECOVERED" if entry.known else "SIGNAL OBSCURED"], 15))
 		var record_key: String = ("room:" if codex_tab == 0 else "synergy:") + str(entry.id)
 		if entry.known and meta_state.unread_records.has(record_key):
 			var reviewed := Button.new()
@@ -339,11 +353,11 @@ func _populate_cards() -> void:
 			continue
 		if codex_tab == 0:
 			body.add_child(_label(data.get("description", ""), 16))
-			body.add_child(_label("BUILD  " + _resources(data.get("cost", {})), 14))
+			body.add_child(_label("BUILD  " + _resources(data.get("cost", {})), 15))
 			if not data.get("production", {}).is_empty():
-				body.add_child(_label("OUTPUT  " + _resources(data.production), 14))
+				body.add_child(_label("OUTPUT  " + _resources(data.production), 15))
 			if not data.get("consumption", {}).is_empty():
-				body.add_child(_label("UPKEEP  " + _resources(data.consumption), 14))
+				body.add_child(_label("UPKEEP  " + _resources(data.consumption), 15))
 		else:
 			var names := PackedStringArray()
 			var rooms: Dictionary = Rooms.all_rooms()
@@ -410,17 +424,17 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	var accent: Color = Rooms.room_color(str(entry.id)) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexCard_" + str(entry.id)
-	card.custom_minimum_size = Vector2(CARD_WIDTH, 0)
+	card.custom_minimum_size = Vector2(CARD_WIDTH, CARD_HEIGHT)
 	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 3, 14, 10))
+	card.add_theme_stylebox_override("panel", _card_box(Color("#101a20") if known else Color("#0d161b"), DraftCard.muted(accent), 3, 14, 10))
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 8)
 	card.add_child(body)
 	var title := _label(entry.title, 18)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
-	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 6, 6))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), DraftCard.muted(accent).darkened(0.25), 1, 6, 6))
 	body.add_child(title)
 	var record_key := "room:" + str(entry.id)
 	if known and meta_state.unread_records.has(record_key):
@@ -435,46 +449,125 @@ func _codex_room_card(entry: Dictionary) -> Control:
 		)
 		body.add_child(reviewed)
 	if not known:
-		body.add_child(_mystery_picture())
-		body.add_child(_label("CLUE // " + str(entry.clue), 16))
+		_unrecovered_body(body, accent, str(entry.clue))
 		return card
 	var art := PanelContainer.new()
 	art.custom_minimum_size.y = 200
-	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
+	art.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), DraftCard.muted(accent), 1, 2, 2))
 	body.add_child(art)
 	var picture := _room_picture(entry.id, 196)
 	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	var clip := Control.new()
 	clip.clip_contents = true
 	art.add_child(clip)
+	DraftCard.add_ocean(clip)
 	picture.set_anchors_preset(Control.PRESET_FULL_RECT)
 	clip.add_child(picture)
-	var ribbon := _label(str(entry.category).to_upper(), 12)
+	DraftCard.add_rarity_badge(clip, str(data.get("rarity", "common")), DraftCard.muted_bright(accent))
+	var ribbon := _label(DraftCard.category_label(data.merged({"id": entry.id})), 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
 	body.add_child(ribbon)
 	var rules := PanelContainer.new()
+	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+	rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_child(rules)
+	var lines := VBoxContainer.new()
+	lines.add_theme_constant_override("separation", 6)
+	rules.add_child(lines)
+	lines.add_child(_rich("[color=#8fa3ae]BUILD[/color]  [color=#e6eeee]%s[/color]" % ResourceIcons.bbcode(data.get("cost", {})), 15))
+	if not data.get("production", {}).is_empty():
+		lines.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  [color=#cfe9dc]+%s[/color]" % ResourceIcons.bbcode(data.production), 15))
+	if not data.get("consumption", {}).is_empty():
+		lines.add_child(_rich("[color=#e0b36a]UPKEEP[/color]  [color=#e9dcc4]%s[/color]" % ResourceIcons.bbcode(data.consumption), 15))
+	if not data.get("storage", {}).is_empty():
+		lines.add_child(_rich("[color=#79b8d9]STORAGE[/color]  [color=#cfe3ee]+%s[/color]" % ResourceIcons.bbcode(data.storage), 15))
+	lines.add_child(_label(data.get("description", ""), 15))
+	return card
+
+# An unrecovered room: the same plates as a recovered one, but the art window is a scanned-water
+# static field and the rules box holds the clue.
+func _unrecovered_body(body: VBoxContainer, accent: Color, clue: String) -> void:
+	var window := PanelContainer.new()
+	window.custom_minimum_size.y = 200
+	window.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), DraftCard.muted(accent), 1, 2, 2))
+	var clip := Control.new()
+	clip.clip_contents = true
+	window.add_child(clip)
+	var field := UnresolvedField.new()
+	field.set_anchors_preset(Control.PRESET_FULL_RECT)
+	clip.add_child(field)
+	body.add_child(window)
+	var ribbon := _label("SIGNAL OBSCURED", 12)
+	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
+	body.add_child(ribbon)
+	var rules := PanelContainer.new()
+	rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
 	body.add_child(rules)
 	var lines := VBoxContainer.new()
 	lines.add_theme_constant_override("separation", 6)
 	rules.add_child(lines)
-	lines.add_child(_label(data.get("description", ""), 15))
-	if not data.get("production", {}).is_empty():
-		lines.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  [color=#cfe9dc]+%s[/color]" % ResourceIcons.bbcode(data.production), 14))
-	if not data.get("consumption", {}).is_empty():
-		lines.add_child(_rich("[color=#e0b36a]UPKEEP[/color]  [color=#e9dcc4]%s[/color]" % ResourceIcons.bbcode(data.consumption), 14))
-	if not data.get("storage", {}).is_empty():
-		lines.add_child(_rich("[color=#79b8d9]STORAGE[/color]  [color=#cfe3ee]+%s[/color]" % ResourceIcons.bbcode(data.storage), 14))
-	lines.add_child(_rich("[color=#8fa3ae]BUILD[/color]  [color=#e6eeee]%s[/color]" % ResourceIcons.bbcode(data.get("cost", {})), 14))
-	var footer := HBoxContainer.new()
+	var heading := _label("CLUE", 13)
+	heading.add_theme_color_override("font_color", Color("e0b36a"))
+	lines.add_child(heading)
+	lines.add_child(_label(clue, 15))
+	var footer := _label("UNRECOVERED", 13)
+	footer.add_theme_color_override("font_color", Color("5e8293"))
 	body.add_child(footer)
-	var rarity := _label(str(data.get("rarity", "common")).to_upper(), 13)
-	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	rarity.add_theme_color_override("font_color", accent)
-	footer.add_child(rarity)
-	return card
+
+# The art window of an unrecovered room: deep water, a survey grid, a reticle hunting for the
+# signal, a sweeping scan line and flickering static. Holds still under reduced motion.
+class UnresolvedField extends Control:
+	var elapsed := 0.0
+	func _ready() -> void:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		set_process(not preload("res://scripts/title_settings.gd").reduced_motion)
+	# Hundreds of these can exist (every unrecovered room and unidentified pattern), so only the ones on
+	# screen animate, and at 20 frames a second.
+	var since_draw := 0.0
+	func _process(delta: float) -> void:
+		elapsed += delta
+		since_draw += delta
+		if since_draw < 0.05: return
+		since_draw = 0.0
+		if get_global_rect().intersects(get_viewport_rect()): queue_redraw()
+	func _draw() -> void:
+		var area := Rect2(Vector2.ZERO, size)
+		draw_texture_rect(preload("res://scripts/draft_card.gd").ocean_texture(), area, false, Color(0.62, 0.7, 0.8))
+		var grid := Color(0.45, 0.8, 0.9, 0.07)
+		var step := 24.0
+		var x := fposmod(elapsed * 2.0, step)
+		while x < size.x:
+			draw_line(Vector2(x, 0), Vector2(x, size.y), grid, 1.0)
+			x += step
+		var y := 0.0
+		while y < size.y:
+			draw_line(Vector2(0, y), Vector2(size.x, y), grid, 1.0)
+			y += step
+		var c := area.get_center()
+		var pulse := 0.5 + 0.5 * sin(elapsed * 1.6)
+		for radius in [26.0, 46.0, 68.0]:
+			draw_arc(c, radius, 0, TAU, 48, Color(0.45, 0.8, 0.9, 0.10 + 0.10 * pulse), 1.0, true)
+		var lock := Color(0.55, 0.85, 0.92, 0.55)
+		for corner in [Vector2(-1, -1), Vector2(1, -1), Vector2(-1, 1), Vector2(1, 1)]:
+			var p: Vector2 = c + corner * 34.0
+			draw_line(p, p - Vector2(corner.x * 12.0, 0), lock, 2.0)
+			draw_line(p, p - Vector2(0, corner.y * 12.0), lock, 2.0)
+		var font := get_theme_default_font()
+		draw_string(font, c + Vector2(-8, 12), "?", HORIZONTAL_ALIGNMENT_LEFT, -1, 34, Color(0.7, 0.9, 0.95, 0.75))
+		var sweep := fposmod(elapsed * 46.0, size.y + 40.0) - 20.0
+		draw_rect(Rect2(0, sweep, size.x, 14), Color(0.5, 0.85, 0.95, 0.05))
+		draw_line(Vector2(0, sweep + 14), Vector2(size.x, sweep + 14), Color(0.55, 0.9, 1.0, 0.28), 1.0)
+		for i in range(14):
+			var seed_value := float(i) * 12.9898 + floorf(elapsed * 3.0 + float(i)) * 78.233
+			var rx := fposmod(sin(seed_value) * 43758.5453, 1.0) * size.x
+			var ry := fposmod(sin(seed_value * 1.7) * 24634.6345, 1.0) * size.y
+			draw_rect(Rect2(rx, ry, 8.0 + fposmod(rx, 18.0), 2.0), Color(0.6, 0.85, 0.95, 0.10))
+		draw_string(font, Vector2(8, size.y - 8), "NO LOCK", HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color(0.55, 0.8, 0.88, 0.5))
 
 # Synergy entries as cards (owner playtest): the linked rooms side by side in the art window,
 # the effect, stabilisation state and reward. Undiscovered patterns show their clue.
@@ -487,8 +580,8 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	var accent := Color(str(data.get("fx_color", "72d9dc"))) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexSynergy_" + str(entry.id)
-	card.custom_minimum_size = Vector2(SYNERGY_WIDTH, 0)
-	card.size_flags_horizontal = Control.SIZE_FILL
+	card.custom_minimum_size = Vector2(SYNERGY_WIDTH, SYNERGY_HEIGHT)
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	card.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 0))
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 8)
@@ -526,12 +619,30 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 			pair.add_child(connector)
 		pair.add_child(_mini_room_card(str(data.rooms[index]), known))
 	if not known:
-		body.add_child(_label("CLUE // " + str(entry.clue), 16))
+		var hidden_ribbon := _label("SIGNAL OBSCURED", 12)
+		hidden_ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		hidden_ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+		hidden_ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
+		body.add_child(hidden_ribbon)
+		var hidden_rules := PanelContainer.new()
+		hidden_rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+		hidden_rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		body.add_child(hidden_rules)
+		var hidden_lines := VBoxContainer.new()
+		hidden_lines.add_theme_constant_override("separation", 6)
+		hidden_rules.add_child(hidden_lines)
+		var clue_heading := _label("CLUE", 13)
+		clue_heading.add_theme_color_override("font_color", Color("e0b36a"))
+		hidden_lines.add_child(clue_heading)
+		hidden_lines.add_child(_label(str(entry.clue), 15))
+		var hidden_footer := _label("UNDISCOVERED", 13)
+		hidden_footer.add_theme_color_override("font_color", Color("5e8293"))
+		body.add_child(hidden_footer)
 		return card
-	var ribbon := _label("STABILIZED" if stabilized else "DISCOVERED", 12)
+	var ribbon := _label("SYNERGY" if stabilized else "DISCOVERED", 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
 	body.add_child(ribbon)
 	var rules := PanelContainer.new()
 	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
@@ -544,14 +655,14 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	if stabilized and not data.get("bonus", {}).is_empty():
 		var bonus := {}
 		for key in data.bonus: bonus[key] = int(data.bonus[key]) * 2
-		lines.add_child(_rich("[color=#7fd6a6]DOUBLED[/color]  +%s each functioning cycle" % ResourceIcons.bbcode(bonus), 14))
+		lines.add_child(_rich("[color=#7fd6a6]DOUBLED[/color]  +%s each functioning cycle" % ResourceIcons.bbcode(bonus), 15))
 	if not stabilized:
-		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 14))
+		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 15))
 	var reward: String = data.get("unlock_room_id", "")
 	var data_reward := int(data.get("terminal_reward", {}).get("research", 0)) + MetaShop.STABILIZE_DATA
-	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["STABILIZED" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 14))
+	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["SYNERGY" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 15))
 	if not reward.is_empty():
-		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 14))
+		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 15))
 	return card
 
 # A small room card for synergy pairs: title, the whole-room picture and the department ribbon.
@@ -560,28 +671,36 @@ func _mini_room_card(room_id: String, known: bool) -> Control:
 	var accent: Color = Rooms.room_color(room_id) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "Card_" + room_id
-	card.custom_minimum_size = Vector2(200, 0)
-	card.add_theme_stylebox_override("panel", _card_box(Color("0e161d") if known else Color("0c171b"), accent, 2, 10, 7))
+	card.custom_minimum_size = Vector2(170, 0)
+	card.add_theme_stylebox_override("panel", _card_box(Color("#101a20") if known else Color("#0d161b"), DraftCard.muted(accent), 2, 10, 7))
 	var rows := VBoxContainer.new()
 	rows.add_theme_constant_override("separation", 5)
 	card.add_child(rows)
-	var title := _label(str(room.get("display_name", room_id)) if known else "LINKED ROOM", 14)
+	var title := _label(str(room.get("display_name", room_id)) if known else "LINKED ROOM", 15)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_color_override("font_color", Color("e2ecee") if known else Color("7f9aa3"))
-	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 5, 4))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), DraftCard.muted(accent).darkened(0.25), 1, 5, 4))
 	rows.add_child(title)
-	if not known:
-		rows.add_child(_mystery_picture())
-		return card
 	var art := PanelContainer.new()
-	art.custom_minimum_size.y = 160
-	art.add_theme_stylebox_override("panel", _card_box(Color("05090c"), accent.darkened(0.3), 1, 2, 2))
+	art.custom_minimum_size.y = 130
+	art.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), DraftCard.muted(accent), 1, 2, 2))
 	rows.add_child(art)
-	art.add_child(_room_picture(room_id, 156))
-	var ribbon := _label(str(room.get("category", "")).to_upper(), 11)
+	var clip := Control.new()
+	clip.clip_contents = true
+	art.add_child(clip)
+	if not known:
+		var field := UnresolvedField.new()
+		field.set_anchors_preset(Control.PRESET_FULL_RECT)
+		clip.add_child(field)
+		return card
+	DraftCard.add_ocean(clip)
+	var picture := _room_picture(room_id, 126)
+	picture.set_anchors_preset(Control.PRESET_FULL_RECT)
+	clip.add_child(picture)
+	var ribbon := _label(DraftCard.category_label(room.merged({"id": room_id})), 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
 	rows.add_child(ribbon)
 	return card
 
@@ -591,7 +710,7 @@ func _rich(text: String, font_size: int) -> RichTextLabel:
 	label.fit_content = true
 	label.scroll_active = false
 	label.text = text
-	label.add_theme_font_size_override("normal_font_size", font_size)
+	label.add_theme_font_size_override("normal_font_size", maxi(font_size, MIN_TEXT))
 	label.add_theme_color_override("default_color", Color("b9dce5"))
 	return label
 
@@ -640,11 +759,20 @@ func _resources(values: Dictionary) -> String:
 
 # Meta Progression (owner playtest, Sept 17): one currency, Archived Data, spent across tabs.
 func _populate_progression() -> void:
+	if not is_instance_valid(sticky):
+		sticky = VBoxContainer.new()
+		sticky.name = "ProgressionHeader"
+		sticky.add_theme_constant_override("separation", 10)
+		content.add_child(sticky)
+		content.move_child(sticky, scroll.get_index())
+	for child in sticky.get_children():
+		sticky.remove_child(child)
+		child.queue_free()
 	# The spendable balance with its icon, always in view (owner playtest, Sept 17).
 	var balance := HBoxContainer.new()
 	balance.name = "ArchivedDataBalance"
 	balance.add_theme_constant_override("separation", 12)
-	grid.add_child(balance)
+	sticky.add_child(balance)
 	var coin := TextureRect.new()
 	coin.texture = load(ResourceIcons.PATHS.archived_data)
 	coin.custom_minimum_size = Vector2(40, 40)
@@ -657,7 +785,7 @@ func _populate_progression() -> void:
 	summary.autowrap_mode = TextServer.AUTOWRAP_OFF
 	summary.add_theme_color_override("font_color", Color(ResourceIcons.color("archived_data")))
 	balance.add_child(summary)
-	var totals := _label("%d EARNED   /   %d PATTERNS STABILIZED   /   %d STABILIZED LOOPS" % [meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 17)
+	var totals := _label("%d EARNED   /   %d SYNERGIES STABILIZED   /   %d STABILIZED LOOPS" % [meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 17)
 	totals.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	totals.autowrap_mode = TextServer.AUTOWRAP_OFF
 	totals.add_theme_color_override("font_color", Color("8fa3ae"))
@@ -672,13 +800,17 @@ func _populate_progression() -> void:
 		progression_tab = index
 		scroll.scroll_vertical = 0
 		_refresh_progression.call_deferred("ProgressionTabs"))
-	grid.add_child(tabs)
+	_style_tabs(tabs)
+	sticky.add_child(tabs)
+	var rule := ColorRect.new()
+	rule.color = Color("1f3a44")
+	rule.custom_minimum_size.y = 1
+	sticky.add_child(rule)
 	match progression_tab:
 		1: _blueprint_shop()
 		2: _crew_shop()
-		3: _records()
 		_:
-			grid.add_child(_label("Some knowledge survives the reset. Some of it should not.\nEach loop banks Archived Data from its Data and Resonance. Spend it on upgrades that carry into every loop, blueprints for your draft deck, and crew and companions.", 18))
+			grid.add_child(_label("Some knowledge survives the reset. Some of it should not. Spend Archived Data on upgrades that carry into every loop, blueprints for your draft deck, and crew and companions.", 16))
 			grid.add_child(_research_tree())
 
 func _shop_grid(name: String) -> GridContainer:
@@ -701,6 +833,119 @@ func _shop_card(id: String, accent: Color, owned: bool) -> Array:
 	card.add_child(rows)
 	return [card, rows]
 
+# A crew or companion as a trading card: full name, department ribbon, portrait in the water
+# window, what they bring, where they are found, and a short bio.
+func _crew_card(id: String, accent: Color, owned: bool, met: bool) -> Array:
+	var frame := DraftCard.muted(accent)
+	var card := PanelContainer.new()
+	card.name = id
+	card.custom_minimum_size = Vector2(250, CARD_HEIGHT + 40)
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.add_theme_stylebox_override("panel", _card_box(Color("#101a20"), frame if met else Color("#33444d"), 3, 14, 10))
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 8)
+	card.add_child(rows)
+	var title := _label(str(MetaShop.CHARACTER_FULL_NAMES.get(id, id)) if met else "UNKNOWN SIGNAL", 17)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	title.custom_minimum_size.y = 52
+	title.add_theme_color_override("font_color", Color("e2ecee") if met else Color("7a959e"))
+	title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), frame.darkened(0.25), 1, 6, 6))
+	rows.add_child(title)
+	var window := PanelContainer.new()
+	window.custom_minimum_size.y = 200
+	window.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), frame, 1, 2, 2))
+	var clip := Control.new()
+	clip.clip_contents = true
+	window.add_child(clip)
+	DraftCard.add_ocean(clip)
+	if met:
+		var portrait := TextureRect.new()
+		portrait.set_anchors_preset(Control.PRESET_FULL_RECT)
+		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		portrait.texture = MetaShop.portrait(id)
+		clip.add_child(portrait)
+	else:
+		# Not met yet: the same scanned-water static as an unrecovered room.
+		var field := UnresolvedField.new()
+		field.set_anchors_preset(Control.PRESET_FULL_RECT)
+		clip.add_child(field)
+	rows.add_child(window)
+	var ribbon := _label(str(MetaShop.CHARACTER_CLASSES.get(id, "CREW")), 12)
+	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), frame, 1, 3, 2))
+	rows.add_child(ribbon)
+	var rules := PanelContainer.new()
+	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
+	rows.add_child(rules)
+	var lines := VBoxContainer.new()
+	lines.add_theme_constant_override("separation", 6)
+	rules.add_child(lines)
+	if met:
+		var perk: String = str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
+		if not perk.is_empty():
+			var bonus_label := _label("START BONUS", 12)
+			bonus_label.add_theme_color_override("font_color", Color("7fd6a6"))
+			lines.add_child(bonus_label)
+			lines.add_child(_rich(ResourceIcons.decorate(perk.substr(perk.find(": ") + 2) if ": " in perk else perk, 15), 15))
+		if id in MetaShop.COMPANIONS:
+			var found := _label("FOUND IN  " + str(preload("res://scripts/companions.gd").TITLES.get(id, "")), 13)
+			found.add_theme_color_override("font_color", Color("e0b36a"))
+			lines.add_child(found)
+		var bio := _label(str(MetaShop.CHARACTER_BIOS.get(id, "")), 14)
+		bio.add_theme_color_override("font_color", Color("9fb3bd"))
+		lines.add_child(bio)
+	else:
+		lines.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 15))
+	return [card, rows]
+
+# The page tabs (Upgrades, Blueprints, Crew & Companions): the same palette as the Settings
+# sidebar, a readable size, and a clear selected state.
+func _style_tabs(tabs: TabBar) -> void:
+	style_tabs(tabs)
+
+static func style_tabs(tabs: TabBar) -> void:
+	tabs.add_theme_font_override("font", preload("res://scripts/ui_fonts.gd").interface_medium())
+	tabs.add_theme_font_size_override("font_size", 18)
+	tabs.add_theme_color_override("font_selected_color", Color("e6f6f3"))
+	tabs.add_theme_color_override("font_hovered_color", Color("d4eae8"))
+	tabs.add_theme_color_override("font_unselected_color", Color("9fb8c0"))
+	tabs.add_theme_constant_override("h_separation", 10)
+	for state in ["tab_selected", "tab_hovered", "tab_unselected", "tab_focus"]:
+		var box := StyleBoxFlat.new()
+		box.set_corner_radius_all(6)
+		box.set_border_width_all(1)
+		box.content_margin_left = 18
+		box.content_margin_right = 18
+		box.content_margin_top = 9
+		box.content_margin_bottom = 9
+		match state:
+			"tab_selected":
+				box.bg_color = Color("153a42")
+				box.border_color = Color("5fd3c4")
+			"tab_hovered":
+				box.bg_color = Color("10262e")
+				box.border_color = Color("3a6470")
+			"tab_focus":
+				box.bg_color = Color(0, 0, 0, 0)
+				box.border_color = Color("e6f6f3")
+				box.set_border_width_all(2)
+			_:
+				box.bg_color = Color("0b1a21")
+				box.border_color = Color("1f3a44")
+		tabs.add_theme_stylebox_override(state, box)
+
+# A stretchy gap above the buy button, so it sits at the foot of every card whatever the text above
+# it takes (owner playtest, Sept 28).
+func _pin_to_bottom(rows: VBoxContainer) -> void:
+	var gap := Control.new()
+	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	rows.add_child(gap)
+
 func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 	var button := Button.new()
 	button.name = "Buy"
@@ -717,7 +962,7 @@ func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 
 # Blueprints: rooms for the draft deck, priced by rarity; a stabilized related pattern halves it.
 func _blueprint_shop() -> void:
-	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Stabilizing a room's related pattern halves its price.", 17))
+	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Discover a synergy that uses a room, then keep it running until it stabilizes: that room's blueprint costs half.", 17))
 	var cards := _shop_grid("BlueprintShop")
 	for id in MetaShop.blueprint_ids():
 		var state := MetaShop.room_state(meta_state, id)
@@ -729,10 +974,24 @@ func _blueprint_shop() -> void:
 		var pattern := MetaShop.related_pattern(id)
 		if not pattern.is_empty() and state != "owned":
 			var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
-			rows.add_child(_label(("HALF PRICE // %s stabilized" if half else "Stabilize %s for half price") % (str(pattern.name) if meta_state.discovered_synergy_ids.has(pattern.id) else "its hidden pattern"), 13))
+			rows.add_child(_price_hint(half, meta_state.discovered_synergy_ids.has(pattern.id), str(pattern.name)))
+		_pin_to_bottom(rows)
 		rows.add_child(_shop_button({"owned": "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost}[state], state == "ready", func() -> void:
 			if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
 		cards.add_child(card)
+
+# The half-price note on a blueprint card: a boxed, wrapped line that says what to do next.
+func _price_hint(stabilized: bool, discovered: bool, synergy_name: String) -> Control:
+	var text := "HALF PRICE // %s synergy stabilized" % synergy_name
+	if not stabilized:
+		text = "Stabilize the %s synergy for half price." % synergy_name if discovered else "Discover and stabilize a synergy with this room for half price."
+	var box := PanelContainer.new()
+	box.add_theme_stylebox_override("panel", _card_box(Color("0a1a1f"), Color("2f6a6a") if stabilized else Color("2a4650"), 1, 6, 8))
+	var note := _label(text, 14)
+	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	note.add_theme_color_override("font_color", Color("7fd6a6") if stabilized else Color("9fd0d6"))
+	box.add_child(note)
+	return box
 
 # Crew & companions: met during a loop (thawed or rebooted), then bought for future loops.
 func _crew_shop() -> void:
@@ -743,47 +1002,14 @@ func _crew_shop() -> void:
 		var owned: bool = state == "owned"
 		var met: bool = state != "unmet"
 		var accent := Color(MetaShop.CHARACTER_COLORS.get(id, "#9fb8c0"))
-		var parts := _shop_card(id, accent, owned)
+		var parts := _crew_card(id, accent, owned, met)
 		var rows: VBoxContainer = parts[1]
-		# Portraits, dimmed almost to nothing for a character you have not met yet.
-		var portrait := TextureRect.new()
-		portrait.custom_minimum_size.y = 190
-		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-		portrait.texture = MetaShop.portrait(id)
-		portrait.modulate = Color(1, 1, 1, 1) if met else Color(0.45, 0.55, 0.6, 0.18)
-		rows.add_child(portrait)
-		var title := _label(str(MetaShop.CHARACTER_NAMES[id]).to_upper() if met else "UNKNOWN SIGNAL", 18)
-		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		title.add_theme_color_override("font_color", Color("e6f4f2") if met else Color("7a959e"))
-		title.add_theme_stylebox_override("normal", _card_box(Color("16222a"), accent.darkened(0.4), 1, 6, 6))
-		rows.add_child(title)
-		var ribbon := _label(str(MetaShop.CHARACTER_CLASSES.get(id, "CREW")), 12)
-		ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		ribbon.add_theme_color_override("font_color", accent.lightened(0.1))
-		ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), accent.darkened(0.2), 1, 3, 2))
-		rows.add_child(ribbon)
-		var perk: String = str(preload("res://scripts/architects.gd").PERKS.get(id, ""))
-		if met and not perk.is_empty(): rows.add_child(_rich(ResourceIcons.decorate(perk), 14))
-		if not met:
-			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 14))
 		var character_id: String = id
 		var cost := int(MetaShop.CHARACTER_COSTS.get(id, 0))
+		_pin_to_bottom(rows)
 		rows.add_child(_shop_button({"owned": "ABOARD" if id in MetaShop.ALWAYS_ABOARD else "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost, "unmet": "NOT MET YET"}[state], state == "ready", func() -> void:
 			if MetaShop.buy_character(meta_state, character_id): _refresh_progression(character_id)))
 		cards.add_child(parts[0])
-
-func _records() -> void:
-	grid.add_child(_label("%d MEMORIES RECOVERED" % meta_state.recovered_memory_ids.size(), 16))
-	grid.add_child(_label("RECOVERED MEMORIES", 22))
-	if meta_state.recovered_memory_ids.is_empty():
-		grid.add_child(_label("NO RECORDS RECOVERED.", 16))
-	else:
-		var ids: Array = meta_state.recovered_memory_ids.keys()
-		ids.sort()
-		for id in ids:
-			grid.add_child(_label(str(id).replace("_", " ").capitalize() + "\nRecorded in this profile.", 17))
 
 # BRINE memory core (owner playtest, Sept 17: Meta Progression option A). The upgrade web on the
 # left, the selected node's details and purchase on the right.
@@ -796,7 +1022,7 @@ func _research_tree() -> Control:
 	box.name = "ResearchTree"
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 10)
-	var title := _label("BRINE MEMORY CORE", 22)
+	var title := _label("BRINE MEMORY CORE", 18)
 	title.add_theme_color_override("font_color", Color("9ff3df"))
 	box.add_child(title)
 	var row := HBoxContainer.new()
@@ -823,7 +1049,7 @@ func _research_tree() -> Control:
 	var footer := HBoxContainer.new()
 	footer.add_theme_constant_override("separation", 18)
 	box.add_child(footer)
-	var note := _label("Select a node to see it. Each department's nodes open in order, ending in a keystone. Start-of-loop upgrades apply from your next loop.", 15)
+	var note := _label("Select a node to see it. Each loop banks Archived Data from its Data and Resonance. Each department's nodes open in order, ending in a keystone, and start-of-loop upgrades apply from your next loop.", 15)
 	note.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	footer.add_child(note)
 	var refund := Button.new()
@@ -852,7 +1078,7 @@ func _show_perk(id: String) -> void:
 			color = ResearchTree.branch_color(str(branch.id))
 			branch_name = branch.name
 	var keystone: bool = perk.get("keystone", false)
-	var kind := _label("%s  ·  %s" % [branch_name, "KEYSTONE" if keystone else "TIER %d" % int(perk.tier)], 14)
+	var kind := _label("%s  ·  %s" % [branch_name, "KEYSTONE" if keystone else "TIER %d" % int(perk.tier)], 15)
 	kind.add_theme_color_override("font_color", color)
 	perk_detail.add_child(kind)
 	var perk_name := _label(str(perk.name).to_upper(), 24)
@@ -863,7 +1089,7 @@ func _show_perk(id: String) -> void:
 	perk_detail.add_child(effect)
 	var waiting: Array = ResearchTree.missing(meta_state, id).map(func(other): return str(ResearchTree.PERKS[other].name))
 	var status: String = {"owned": "INSTALLED IN BRINE'S MEMORY", "ready": "READY TO RECOVER", "short": "NOT ENOUGH ARCHIVED DATA", "locked": "RECOVER %s FIRST" % " AND ".join(waiting).to_upper()}[state]
-	var status_label := _label(status, 14)
+	var status_label := _label(status, 15)
 	status_label.add_theme_color_override("font_color", color if state in ["owned", "ready"] else Color("7f9aa3"))
 	perk_detail.add_child(status_label)
 	var action := Button.new()
@@ -893,7 +1119,7 @@ func _refresh_progression(focus_name: String) -> void:
 	_populate_progression()
 	preload("res://scripts/title_settings.gd").apply_menu_text(self)
 	scroll.set_deferred("scroll_vertical", keep)
-	var target := grid.find_child(focus_name, true, false)
+	var target := find_child(focus_name, true, false)
 	if target is PanelContainer: target = target.find_child("Buy", true, false)
 	if ResearchTree.PERKS.has(focus_name): target = grid.find_child("PerkDetail", true, false).find_child("Buy", true, false) if grid.find_child("PerkDetail", true, false) != null else target
 	if target is Control and target.focus_mode != Control.FOCUS_NONE and not (target is Button and target.disabled):
@@ -946,6 +1172,8 @@ func _populate_settings() -> void:
 	settings.name = "SettingsPanel"
 	settings.preferences_changed.connect(func() -> void:
 		status.text = settings.feedback.text
+		# The save note already shows above the page; the sidebar copy would repeat it.
+		if settings.feedback.text.begins_with("SETTINGS SAVED"): settings.feedback.hide()
 		preload("res://scripts/title_settings.gd").apply_menu_text(self)
 		_layout()
 	)

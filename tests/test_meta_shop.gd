@@ -71,7 +71,7 @@ func run() -> void:
 	root.add_child(page)
 	for i in range(3): await process_frame
 	var tabs: TabBar = page.find_child("ProgressionTabs", true, false)
-	check(tabs != null and tabs.tab_count == 4, "Meta Progression has four tabs")
+	check(tabs != null and tabs.tab_count == 3, "Meta Progression has three tabs (Records was retired; transmissions live in the Codex)")
 	if tabs != null:
 		tabs.current_tab = 1
 		for i in range(3): await process_frame

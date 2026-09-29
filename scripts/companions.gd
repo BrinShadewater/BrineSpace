@@ -17,7 +17,8 @@ const PORTRAIT_PATHS := {
 }
 static var container_textures := {}
 const CONTAINER_FOOT := Vector2(90,60)
-const CONTAINER_RECT := Rect2(44,8,94,64)
+# The container is drawn at half size (owner, Sept 29): the old 94x64 rect scaled by 0.5 about its foot at (90,60).
+const CONTAINER_RECT := Rect2(67,34,47,32)
 const RECOVERY_CLEARANCE := Rect2(28,-8,126,168)
 const RescueArt = preload("res://scripts/companion_rescue_art.gd")
 

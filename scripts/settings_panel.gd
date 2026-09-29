@@ -16,6 +16,9 @@ const PAGE_HINTS := {
 }
 const PAGE_GLYPHS := {"DISPLAY": "▣", "AUDIO": "♪", "CONTROLS & PAUSE": "⌨", "ACCESSIBILITY": "◎"}
 const ACCENT := Color("5fd3c4")
+# Smallest interface text. At the default 1600x900 window the 1920x1080 layout is scaled by 0.83, so
+# anything under this reads under about 12 px on screen.
+const MIN_TEXT := 14
 static var current_page := "DISPLAY"
 var sections: GridContainer # Kept for callers that measure the panel; holds the page area.
 var pages := {}
@@ -94,7 +97,7 @@ func _defaults(section: String) -> void:
 			# fullscreen player into a small 1600x900 window).
 			var window := get_window()
 			var default_size := DisplayServer.screen_get_size(window.current_screen)
-			var already: bool = Preferences.get_window_mode(window) == 1 and window.size == default_size and Preferences.fps_cap == 0 and DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
+			var already: bool = Preferences.get_window_mode(window) == 1 and window.size == default_size and Preferences.fps_cap == 0 and Preferences.effects_quality == 1 and DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
 			if already:
 				feedback.text = "DISPLAY IS ALREADY AT ITS DEFAULTS."
 				feedback.show()
@@ -103,6 +106,7 @@ func _defaults(section: String) -> void:
 				Preferences.window_size = _fitting_size(DisplayServer.screen_get_usable_rect(window.current_screen).size)
 				Preferences.apply_window_mode(window, 1, false)
 				Preferences.fps_cap = 0
+				Preferences.effects_quality = 1
 				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 			)
 			return
@@ -230,9 +234,21 @@ func _ready() -> void:
 		sidebar.add_child(tab)
 		tabs[page] = tab
 	var saved_note := _label("Settings are remembered between sessions.", 13)
-	saved_note.add_theme_color_override("font_color", Color("6f8e98"))
+	saved_note.add_theme_color_override("font_color", Color("8aa6af"))
 	saved_note.custom_minimum_size.x = 250
 	sidebar.add_child(saved_note)
+	var report := Button.new()
+	report.name = "ReportBugButton"
+	report.text = "  REPORT A BUG   [F8]"
+	report.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	report.custom_minimum_size = Vector2(260, 44)
+	report.add_theme_font_size_override("font_size", 16)
+	_style_tab(report, false)
+	report.tooltip_text = "Save a bug report with your log, screenshot and last save"
+	report.pressed.connect(func() -> void:
+		var reporter := get_node_or_null("/root/BugReport")
+		if reporter != null: reporter.open_report())
+	sidebar.add_child(report)
 	feedback = _label("", 14)
 	feedback.add_theme_color_override("font_color", ACCENT)
 	feedback.custom_minimum_size.x = 250
@@ -270,6 +286,9 @@ func _ready() -> void:
 	)
 	_toggle(display, "VSync", "V-sync", "Matches frames to your display to prevent tearing.", DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED, func(enabled: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED)
+	)
+	_select(display, "EffectsQuality", "Visual effects", "Light shafts, caustics, drifting particles, colour grading and bloom. High adds the full grade and bloom. Lower this on slower computers.", ["Low", "Medium", "High"], Preferences.effects_quality, func(index: int) -> void:
+		Preferences.effects_quality = index
 	)
 	var caps := [0, 30, 60, 120, 144, 240]
 	_select(display, "FrameLimit", "Frame-rate limit", "V-sync can limit the frame rate further.", ["Unlimited", "30 FPS", "60 FPS", "120 FPS", "144 FPS", "240 FPS"], caps.find(Preferences.fps_cap), func(index: int) -> void:
@@ -323,8 +342,8 @@ func _ready() -> void:
 			binding.text = "PRESS A KEY"
 		)
 		line.add_child(binding)
-	var help := _label("Left click: place or select.  Escape: menu or back.  Tab / Shift+Tab: move focus.  Enter: activate.", 13)
-	help.add_theme_color_override("font_color", Color("6f8e98"))
+	var help := _label("Left click: place or select.  Escape: menu or back.  Tab / Shift+Tab: move focus.  Enter: activate.", 15)
+	help.add_theme_color_override("font_color", Color("8aa6af"))
 	controls.add_child(help)
 
 	var access := _page("ACCESSIBILITY")
@@ -389,7 +408,7 @@ func _page(title: String) -> VBoxContainer:
 	defaults.size_flags_horizontal = Control.SIZE_SHRINK_END
 	defaults.pressed.connect(_defaults.bind(title))
 	header.add_child(defaults)
-	var hint := _label(PAGE_HINTS[title], 14)
+	var hint := _label(PAGE_HINTS[title], 15)
 	hint.add_theme_color_override("font_color", Color("7f9aa3"))
 	page.add_child(hint)
 	return page
@@ -398,7 +417,7 @@ func _label(text: String, font_size: int) -> Label:
 	var label := Label.new()
 	label.text = text
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.add_theme_font_size_override("font_size", font_size)
+	label.add_theme_font_size_override("font_size", maxi(font_size, MIN_TEXT))
 	label.add_theme_color_override("font_color", Color("b9dce5"))
 	return label
 
@@ -431,8 +450,8 @@ func _row(parent: Control, title: String, hint: String) -> HBoxContainer:
 	line.add_child(text)
 	text.add_child(_label(title, 17))
 	if not hint.is_empty():
-		var small := _label(hint, 13)
-		small.add_theme_color_override("font_color", Color("6f8e98"))
+		var small := _label(hint, 15)
+		small.add_theme_color_override("font_color", Color("8aa6af"))
 		text.add_child(small)
 	return line
 
@@ -441,7 +460,7 @@ func _toggle(parent: Control, id: String, title: String, hint: String, value: bo
 	var state := _label("ON" if value else "OFF", 15)
 	state.autowrap_mode = TextServer.AUTOWRAP_OFF
 	state.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	state.add_theme_color_override("font_color", ACCENT if value else Color("6f8e98"))
+	state.add_theme_color_override("font_color", ACCENT if value else Color("8aa6af"))
 	line.add_child(state)
 	var button := CheckButton.new()
 	button.name = id
@@ -455,7 +474,7 @@ func _toggle(parent: Control, id: String, title: String, hint: String, value: bo
 	button.add_theme_icon_override("unchecked_mirrored", _switch_icon(false))
 	button.toggled.connect(func(enabled: bool) -> void:
 		state.text = "ON" if enabled else "OFF"
-		state.add_theme_color_override("font_color", ACCENT if enabled else Color("6f8e98"))
+		state.add_theme_color_override("font_color", ACCENT if enabled else Color("8aa6af"))
 		action.call(enabled)
 		_commit()
 	)

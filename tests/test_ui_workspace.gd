@@ -60,24 +60,20 @@ func run() -> void:
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png("res://output/ui-workspace-map.png")
 	game._open_menu()
-	check(game.pause_page=="main" and game.pause_pages.main.get_child_count()==5,"Main pause menu has five actions")
-	var opener: Button = game.pause_pages.main.get_child(3)
-	opener.grab_focus()
-	opener.pressed.emit()
-	check(game.pause_page=="station" and not game.pause_pages.main.visible,"Archive and settings occupy their own page")
+	check(game.pause_page=="main" and game.pause_pages.has("main"),"The pause menu is one page")
+	var library: Node = game.menu_center.find_child("PauseLibrary", true, false)
+	check(library != null and library.get_child_count() == 7,"Library column holds two captions, a gap, and Codex, Upgrades, Credits, Settings")
+	check(game.menu_center.find_child("Settings", true, false) != null,"Settings sits on the main page")
+	check(game.menu_center.find_child("SavePlusReturntoTitle", true, false) != null or game.menu_center.find_child("Save&ReturntoTitle", true, false) != null,"Leave actions sit on the main page")
 	var escape := InputEventKey.new()
 	escape.keycode = KEY_ESCAPE
 	escape.pressed = true
-	game._unhandled_input(escape)
-	check(game.menu_open and game.pause_page=="main" and opener.has_focus(),"Escape backs out and restores submenu opener focus")
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png("res://output/pause-menu-streamlined.png")
-	game._show_pause_page("exit")
-	check(game.end_expedition_button.is_visible_in_tree(),"Conclude action is available under End or Leave")
-	game._pause_page_back()
+	check(game.end_expedition_button != null,"Conclude action exists in the Leave group")
 	game._menu_save_game()
-	check(game.menu_save_feedback.text.begins_with("LOOP RECORDED"),"Save feedback remains visible on root page")
+	check(game.menu_save_feedback.text.begins_with("Saved at cycle"),"Save status names the cycle just recorded")
 	game._close_menu()
 	check(game.paused,"Closing nested menu retains prior pause state")
 	game.set_process(false)

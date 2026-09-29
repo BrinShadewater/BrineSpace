@@ -24,6 +24,8 @@ static var hand_backdrop := true
 static var hand_layout := "row" # Draft hand as a row of cards or a fan (owner playtest).
 static var pixel_frames := false # HUD panels use clean vector frames unless this is on.
 static var fps_cap := 0
+# Visual effects: 0 Low, 1 Medium (default), 2 High. See docs/superpowers/specs/2026-09-29-lighting-atmosphere-design.md.
+static var effects_quality := 1
 static var muted := false
 static var music_volume := 1.0
 static var effects_volume := 1.0
@@ -35,6 +37,13 @@ static var invert_zoom := false
 static var tooltip_delay := 0.5
 static var text_scale := 1.0
 static var window_focused := true
+
+# Strengths of the water-atmosphere effects for the current Quality (spec values are the Medium column).
+static func atmosphere() -> Dictionary:
+	match effects_quality:
+		0: return {"shafts": 0.0, "caustics": 0.0, "tint": 0.0, "snow": 1.0, "drift": 0.0, "grade": 0.0, "bloom": 0.0, "shimmer": 0.0, "grain": 0.0, "fringe": 0.0, "blur": 0.0, "shadow": 0.0}
+		2: return {"shafts": 0.6, "caustics": 0.38, "tint": 0.75, "snow": 1.05, "drift": 1.3, "grade": 1.0, "bloom": 0.3, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0, "blur": 1.0, "shadow": 1.0}
+		_: return {"shafts": 0.42, "caustics": 0.24, "tint": 0.52, "snow": 0.75, "drift": 1.0, "grade": 0.0, "bloom": 0.0, "shimmer": 0.0, "grain": 0.0, "fringe": 0.0, "blur": 0.0, "shadow": 0.0}
 const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V}
 static var keys: Dictionary = DEFAULT_KEYS.duplicate()
 
@@ -99,6 +108,7 @@ static func initialize(window: Window) -> void:
 		hand_layout = "row"
 	reduced_motion = bool(config.get_value("accessibility", "reduced_motion", false))
 	fps_cap = int(config.get_value("display", "fps_cap", 0))
+	effects_quality = clampi(int(config.get_value("display", "effects_quality", 1)), 0, 2)
 	if fps_cap not in [0, 30, 60, 120, 144, 240]:
 		fps_cap = 0
 	muted = bool(config.get_value("audio", "muted", false))
@@ -208,6 +218,7 @@ static func save(window: Window) -> Error:
 	config.set_value("display", "hand_layout", hand_layout)
 	config.set_value("accessibility", "pixel_frames", pixel_frames)
 	config.set_value("display", "fps_cap", fps_cap)
+	config.set_value("display", "effects_quality", effects_quality)
 	config.set_value("audio", "muted", muted)
 	config.set_value("audio", "music_volume", music_volume)
 	config.set_value("audio", "effects_volume", effects_volume)
