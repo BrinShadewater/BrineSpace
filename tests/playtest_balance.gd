@@ -19,6 +19,7 @@ var seeds: Array[int] = [4404, 9021, 1729]
 var max_cycles := 60
 var pair_filter := ""
 var large_room_intro := -1
+var save_for_large_room := false
 var output_path := ""
 var capture_dir := ""
 var game
@@ -41,6 +42,8 @@ func _init() -> void:
 			pair_filter = argument.trim_prefix("--pair=")
 		elif argument.begins_with("--large-room-intro="):
 			large_room_intro = int(argument.trim_prefix("--large-room-intro="))
+		elif argument == "--save-for-large-room":
+			save_for_large_room = true
 		elif argument.begins_with("--cycles="):
 			max_cycles = int(argument.trim_prefix("--cycles="))
 		elif argument.begins_with("--capture-dir="):
@@ -110,7 +113,8 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 		"first_blueprint": -1, "idle_cycles": 0, "events": [], "snapshots": [],
 		"discoveries": {}, "blueprints": {}, "prototype_built": {}, "builds": [],
 		"large_room": game.large_room_selected_id, "large_room_first_seen": -1,
-		"large_room_first_affordable": -1, "large_room_built": -1}
+		"large_room_first_affordable": -1, "large_room_first_placeable": -1,
+		"large_room_built": -1}
 	row["power"] = []
 	row["clearances"] = []
 	while game.running and game.cycle < max_cycles:
@@ -121,7 +125,7 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 			# Reassess after the paid room becomes operational. Otherwise the old
 			# instant-build policy buys redundant power while its first plant is queued.
 			if _construction_pending(): break
-			var choice := _choose_build()
+			var choice := _choose_build(row)
 			if choice.is_empty():
 				break
 			game._on_card_pressed(choice["id"])
@@ -219,7 +223,14 @@ func _record_large_room(row: Dictionary) -> void:
 	if int(row.large_room_built) < 0 and game.placed_rooms.any(func(room): return room.id == id):
 		row.large_room_built = game.cycle
 
-func _choose_build() -> Dictionary:
+func _choose_build(row: Dictionary) -> Dictionary:
+	if save_for_large_room and game.hand.has(game.large_room_selected_id):
+		if not game._can_afford(Rooms.get_room(game.large_room_selected_id).cost): return {}
+		var large_choice := _choose_large_room()
+		if not large_choice.is_empty():
+			if int(row.large_room_first_placeable) < 0: row.large_room_first_placeable = game.cycle
+			return large_choice
+		return {}
 	room_counts.clear()
 	production.clear()
 	known_recipes.clear()
@@ -291,6 +302,21 @@ func _choose_build() -> Dictionary:
 					best_score = score
 					best = {"id": id, "cell": cell, "rotation": rotation, "neighbors": neighbors}
 	return best
+
+func _choose_large_room() -> Dictionary:
+	var id: String = game.large_room_selected_id
+	var prior_rotation: int = game.selected_rotation
+	for occupied_cell in game.occupied:
+		for dy in range(-2,2):
+			for dx in range(-2,2):
+				var anchor: Vector2i = occupied_cell + Vector2i(dx,dy)
+				for rotation in range(4):
+					game.selected_rotation = rotation
+					if game.get_placement_problem(id,anchor).is_empty():
+						game.selected_rotation = prior_rotation
+						return {"id":id,"cell":anchor,"rotation":rotation,"neighbors":[]}
+	game.selected_rotation = prior_rotation
+	return {}
 
 # Follow a stalled bay's own advice: order the first rock/wreck clearance or site
 # recovery on its route, as a player would by selecting that cell.
