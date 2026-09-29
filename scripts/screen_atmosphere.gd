@@ -19,7 +19,10 @@ const LOOKS := [
 	{"name": "Bloom only", "drift": 0.0, "grade": 0.0, "bloom": 0.3, "cool": false},
 	{"name": "Grade only", "drift": 0.0, "grade": 1.0, "bloom": 0.0, "cool": false},
 	{"name": "Cool tint only (Medium's grade)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": true},
-	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false},
+	{"name": "Water shimmer (open water only)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shimmer": 1.0},
+	{"name": "Film grain (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "grain": 1.0},
+	{"name": "Edge colour fringe (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "fringe": 1.0},
+	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0},
 ]
 const SHADER_CODE := """
 shader_type canvas_item;
@@ -28,6 +31,26 @@ uniform float bloom = 0.0;
 uniform float grade = 0.0;
 uniform float threshold = 0.72;
 uniform float radius_px = 14.0;
+uniform float shimmer = 0.0;
+uniform sampler2D station_mask : filter_linear, repeat_disable;
+uniform vec2 view_px = vec2(1000.0, 500.0);
+uniform vec2 scroll_px = vec2(0.0);
+uniform float cell_px = 100.0;
+uniform float grid_cells = 40.0;
+
+// 1 on and near the station, 0 in open water. Samples a ring so the shimmer stops a little before the hull.
+float station_at(vec2 uv) {
+	vec2 world = (uv * view_px + scroll_px) / cell_px / grid_cells;
+	float reach = 0.55 / grid_cells;
+	float m = texture(station_mask, world).r;
+	m = max(m, texture(station_mask, world + vec2(reach, 0.0)).r);
+	m = max(m, texture(station_mask, world - vec2(reach, 0.0)).r);
+	m = max(m, texture(station_mask, world + vec2(0.0, reach)).r);
+	m = max(m, texture(station_mask, world - vec2(0.0, reach)).r);
+	return m;
+}
+uniform float grain = 0.0;
+uniform float fringe = 0.0;
 
 vec3 bright(vec2 uv) {
 	vec3 c = texture(screen_tex, uv).rgb;
@@ -37,7 +60,19 @@ vec3 bright(vec2 uv) {
 
 void fragment() {
 	vec2 uv = SCREEN_UV;
+	if (shimmer > 0.0) {
+		// A slow ripple, about a pixel and a half at full strength, like looking through moving water. Open water only.
+		float open_water = 1.0 - smoothstep(0.0, 0.6, station_at(UV));
+		uv += vec2(sin(UV.y * 46.0 + TIME * 0.9), cos(UV.x * 38.0 + TIME * 0.7)) * SCREEN_PIXEL_SIZE * 1.5 * shimmer * open_water;
+	}
 	vec3 col = texture(screen_tex, uv).rgb;
+	if (fringe > 0.0) {
+		// Red and blue slip apart toward the edges of the view, like a lens.
+		vec2 d = UV - vec2(0.5);
+		vec2 push = d * dot(d, d) * SCREEN_PIXEL_SIZE * 22.0 * fringe;
+		col.r = texture(screen_tex, uv + push).r;
+		col.b = texture(screen_tex, uv - push).b;
+	}
 	if (bloom > 0.0) {
 		vec3 glow = bright(uv) * 1.5;
 		for (int i = 0; i < 8; i++) {
@@ -56,6 +91,11 @@ void fragment() {
 	vec3 graded = mix(shadow, light, t);
 	graded = mix(graded, graded * graded * (3.0 - 2.0 * graded), 0.35);
 	col = mix(col, graded, grade);
+	if (grain > 0.0) {
+		vec2 cell = floor(FRAGCOORD.xy / 2.0) + floor(TIME * 18.0);
+		float n = fract(sin(dot(cell, vec2(12.9898, 78.233))) * 43758.5453) - 0.5;
+		col += n * 0.06 * grain * (0.4 + luma);
+	}
 	COLOR = vec4(col, 1.0);
 }
 """
@@ -67,6 +107,9 @@ var post_material: ShaderMaterial
 var snow := 0.0
 var forced := -1 # F6 testing: index into LOOKS, or -1 to follow Settings > Visual effects
 var toast: Label
+var mask_image: Image
+var mask_texture: ImageTexture
+var mask_frame := 0
 var toast_left := 0.0
 
 func _init(owner_game = null) -> void:
@@ -103,6 +146,10 @@ func _ready() -> void:
 	toast.add_theme_constant_override("outline_size", 6)
 	toast.visible = false
 	add_child(toast)
+	mask_image = Image.create(game.GRID_SIZE, game.GRID_SIZE, false, Image.FORMAT_R8)
+	mask_texture = ImageTexture.create_from_image(mask_image)
+	post_material.set_shader_parameter("station_mask", mask_texture)
+	post_material.set_shader_parameter("grid_cells", float(game.GRID_SIZE))
 	resized.connect(_apply)
 	_apply()
 
@@ -126,9 +173,20 @@ func _apply() -> void:
 	var bloom := float(level.bloom)
 	var grade := float(level.grade)
 	cool.visible = Preferences.effects_quality == 1 if forced < 0 else bool(level.cool)
-	post.visible = bloom > 0.0 or grade > 0.0
+	var shimmer := 0.0 if Preferences.reduced_motion else float(level.get("shimmer", 0.0))
+	var grain := float(level.get("grain", 0.0))
+	var fringe := float(level.get("fringe", 0.0))
+	post.visible = bloom > 0.0 or grade > 0.0 or shimmer > 0.0 or grain > 0.0 or fringe > 0.0
+	post_material.set_shader_parameter("shimmer", shimmer)
+	post_material.set_shader_parameter("grain", grain)
+	post_material.set_shader_parameter("fringe", fringe)
 	post_material.set_shader_parameter("bloom", bloom)
 	post_material.set_shader_parameter("grade", grade)
+	if shimmer > 0.0 and game != null and game.grid_scroll != null:
+		_update_mask()
+		post_material.set_shader_parameter("view_px", size)
+		post_material.set_shader_parameter("scroll_px", Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical))
+		post_material.set_shader_parameter("cell_px", game.get_cell_size())
 	post_material.set_shader_parameter("radius_px", 14.0 * maxf(size.y, 540.0) / 1080.0)
 
 func _process(delta: float) -> void:
@@ -137,6 +195,16 @@ func _process(delta: float) -> void:
 		toast_left -= delta
 		if toast_left <= 0.0: toast.visible = false
 	if snow > 0.0: queue_redraw()
+
+# Which grid cells hold a room, as a small texture for the shimmer to keep clear of. Rebuilt every few frames.
+func _update_mask() -> void:
+	mask_frame += 1
+	if mask_frame % 8 != 1: return
+	mask_image.fill(Color(0, 0, 0))
+	for cell in game.occupied:
+		if cell.x >= 0 and cell.y >= 0 and cell.x < game.GRID_SIZE and cell.y < game.GRID_SIZE:
+			mask_image.set_pixel(cell.x, cell.y, Color(1, 1, 1))
+	mask_texture.update(mask_image)
 
 # 0 on the station, rising to 1 one cell out from any room: snow belongs to the water outside.
 # `point` is in station-view pixels (screen position plus scroll).
