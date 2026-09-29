@@ -16,7 +16,9 @@ static func request_texture(path:String) -> void:
 	var result:Dictionary={}
 	var task:=WorkerThreadPool.add_task(func():
 		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK: result.image=image)
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK:
+			result.image=image
+			result.invisible=image.is_invisible())
 	image_jobs[path]={"task":task,"result":result}
 
 static func finish_texture(path:String) -> bool:
@@ -29,10 +31,15 @@ static func finish_texture(path:String) -> bool:
 	if not job.result.has("image"):
 		push_error("Drone animation missing: "+path)
 		return false
-	cache_image(path,job.result.image)
+	cache_image(path,job.result.image,job.result.invisible)
 	return true
 
-static func cache_image(path:String,image:Image) -> void:
+static func cache_image(path:String,image:Image,invisible:bool=false) -> void:
+	# Empty placeholder layers can be enormous atlases. Their pixels never
+	# contribute to a frame, so keep one transparent pixel and skip atlas draws.
+	if invisible:
+		image=Image.create(1,1,false,Image.FORMAT_RGBA8)
+		image.fill(Color(0,0,0,0))
 	var bytes:=image.get_data_size()
 	while cached_bytes+bytes>CACHE_BUDGET and not texture_order.is_empty():
 		var oldest:String=texture_order[0]
@@ -40,6 +47,7 @@ static func cache_image(path:String,image:Image) -> void:
 		texture_order.pop_front()
 		cached_bytes-=int(texture_bytes[oldest]);textures.erase(oldest);texture_bytes.erase(oldest)
 	textures[path]=ImageTexture.create_from_image(image)
+	textures[path].set_meta("drone_invisible",invisible)
 	texture_bytes[path]=bytes;cached_bytes+=bytes
 	last_used[path]=Engine.get_process_frames()
 	texture_order.erase(path);texture_order.append(path)
@@ -54,16 +62,19 @@ static func catalog(kind:String) -> Dictionary:
 static func texture(path:String) -> Texture2D:
 	if not textures.has(path):
 		var image:=Image.new()
+		var invisible:=false
 		if image_jobs.has(path):
 			var job:Dictionary=image_jobs[path]
 			WorkerThreadPool.wait_for_task_completion(job.task)
 			image_jobs.erase(path)
 			assert(job.result.has("image"),"Drone animation missing: "+path)
 			image=job.result.get("image",image)
+			invisible=job.result.get("invisible",false)
 		else:
 			var error:=image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))
 			assert(error==OK,"Drone animation missing: "+path)
-		cache_image(path,image)
+			invisible=image.is_invisible()
+		cache_image(path,image,invisible)
 	last_used[path]=Engine.get_process_frames()
 	texture_order.erase(path);texture_order.append(path)
 	if is_instance_valid(active_canvas):active_canvas.get_meta("drone_texture_pins")[path]=textures[path]
@@ -120,9 +131,16 @@ static func sample(d:Dictionary,operating:bool=true) -> Dictionary:
 	var index:int=mini(count-1,int(fraction*count)) if fraction>=0 else posmod(int(clock*float(clip.fps)),count) if clip.get("loop",false) else mini(count-1,int(elapsed*float(clip.fps)))
 	if not operating:index=0
 	return {"clip":clip,"frame":index,"heading":key.trim_prefix(state+"-") if key.begins_with(state+"-") else facing,"state":state,"lamp":lamp,"loaded":loaded,"time":clock}
+# A layer whose sheet is still decoding is skipped for a frame or two; decoding it on the main thread
+# cost 44-219 ms per new animation state (owner lag reports, Sept 29).
+static func ready(path:String) -> bool:
+	return textures.has(path) or finish_texture(path)
 static func atlas(canvas:CanvasItem,record:Dictionary,index:int,rect:Rect2,size:Vector2,tint:Color) -> void:
+	if not ready(record.path): return
+	var atlas_texture:=texture(record.path)
+	if atlas_texture.get_meta("drone_invisible",false): return
 	var columns:=int(record.columns)
-	canvas.draw_texture_rect_region(texture(record.path),rect,Rect2(Vector2(index%columns,index/columns)*size,size),tint)
+	canvas.draw_texture_rect_region(atlas_texture,rect,Rect2(Vector2(index%columns,index/columns)*size,size),tint)
 static func draw(canvas:CanvasItem,d:Dictionary,at:Vector2,world_scale:float,art_scale:float,operating:bool,visual_clock:float,alpha:float=1.0) -> void:
 	begin(canvas)
 	var kind:String=d.get("kind","construction")
@@ -138,15 +156,15 @@ static func draw(canvas:CanvasItem,d:Dictionary,at:Vector2,world_scale:float,art
 	var meta:Dictionary=m.headings[s.heading]
 	if kind=="salvage" and clip.has("cargoAtlas"):atlas(canvas,clip.cargoAtlas,s.frame,rect,size,tint)
 	if kind=="salvage" and s.loaded and s.state not in ["retrieve","release"]:
-		canvas.draw_texture_rect(texture(meta.cargoPose),rect,false,tint)
-		canvas.draw_texture_rect(texture(meta.closedPose),rect,false,tint)
+		if ready(meta.cargoPose):canvas.draw_texture_rect(texture(meta.cargoPose),rect,false,tint)
+		if ready(meta.closedPose):canvas.draw_texture_rect(texture(meta.closedPose),rect,false,tint)
 	else:atlas(canvas,clip.atlas,s.frame,rect,size,tint)
 	if kind=="mining":
 		var circumference:float=maxf(.01,float(meta.tyreTravelWorldUnitsPerSecond)*2*art_scale)
 		var wheel:=posmod(int(float(d.get("animation_distance",0))/circumference*60),60)
 		atlas(canvas,meta.wheelAtlas,wheel,rect,size,tint)
 		if clip.has("cargoAtlas"):atlas(canvas,clip.cargoAtlas,s.frame,rect,size,tint)
-		elif s.loaded:canvas.draw_texture_rect(texture(meta.cargoPose),rect,false,tint)
+		elif s.loaded and ready(meta.cargoPose):canvas.draw_texture_rect(texture(meta.cargoPose),rect,false,tint)
 	elif kind=="salvage":
 		var rotor:=posmod(int(float(d.get("animation_rotor",0))),60)
 		atlas(canvas,meta.rotorAtlas,rotor,rect,size,tint)
