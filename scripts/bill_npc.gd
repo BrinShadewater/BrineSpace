@@ -6,6 +6,13 @@ const Life=preload("res://scripts/crew_life.gd")
 const RoomActivity=preload("res://scripts/crew_room_activity.gd")
 const CELL := 384.0
 const STEP := 16
+# How far crew keep from walls, door frames and props (owner playtest, Sept 28: crew clip door
+# frames). Standing crew are about 29 units wide and up to about 45 mid-stride in the 384-unit
+# cell. Walls and door posts can take 16 (the 72-unit doorway still leaves 40); props stay at 11
+# because 12 or more disconnects doorways in the battery array, storage bay, maintenance bay, ore
+# refinery and research lab (test_production_ten_walker_paths).
+const WALL_PADDING := 16.0
+const PROP_PADDING := 11.0
 const SHORTCUT_REACH := CELL*2.0
 const INVALID := Vector2i(-1, -1)
 const SERVICES := {
@@ -643,15 +650,15 @@ func rebuild(main, staged := false) -> void:
 		data.open = sides
 		if not data.has("blockers"):
 			data.blockers = []
-			data.blocker_padding = 10.0
+			data.blocker_padding = PROP_PADDING
 			for prop in data.props:
 				# Small tileset pieces in hallways are floor clutter crew step past; hallway
 				# furniture (crates, carts, benches) still blocks (owner, Sept 28).
 				if data.get("corridor",false) and str(prop.get("id","")).begins_with("library/tileset-"): continue
-				for rect in Geometry.prop_collision_rects(prop): data.blockers.append(rect.grow(10))
+				for rect in Geometry.prop_collision_rects(prop): data.blockers.append(rect.grow(PROP_PADDING))
 			var walls: Array = []
 			for edge in data.edges:
-				for rect in Geometry.wall_rects(edge): walls.append(rect.grow(10))
+				for rect in Geometry.wall_rects(edge): walls.append(rect.grow(WALL_PADDING))
 			data.blockers.append_array(walls)
 			# Swimmers pass over hallway furniture once a corridor floods (owner, Sept 28);
 			# only its walls still stop them.
