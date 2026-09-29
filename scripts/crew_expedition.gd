@@ -12,14 +12,18 @@ static func point(room: Dictionary,local: Vector2) -> Vector2:
 
 static func blockers(game) -> Dictionary:
 	var result := {}
-	for room in game.placed_rooms: result[room.pos] = true
+	for room in game.placed_rooms:
+		for cell in preload("res://scripts/room_footprint.gd").cells(room.pos, room.get("size", Vector2i.ONE)):
+			result[cell] = true
 	for cell in game.wrecks:
 		if preload("res://scripts/wreck_field.gd").blocks(game.wrecks,cell): result[cell] = true
 	for cell in game.drone_fleet.sites:
 		if game.drone_fleet.Sites.blocks(game.drone_fleet.sites,cell): result[cell] = true
-	for order in game.drone_fleet.orders: result[order.pos] = true
+	for order in game.drone_fleet.orders:
+		for cell in game.drone_fleet._order_cells(order): result[cell] = true
 	for drone in game.drone_fleet.drones.values():
-		if not drone.order.is_empty(): result[drone.order.pos] = true
+		if not drone.order.is_empty():
+			for cell in game.drone_fleet._order_cells(drone.order): result[cell] = true
 	return result
 
 static func reserved(game,cell: Vector2i) -> bool:

@@ -8,6 +8,8 @@ const CHARGE_RATE := 3.0
 const CHARGE_POWER_RESERVE := 3
 const Sites = preload("res://scripts/harvest_sites.gd")
 const Routes = preload("res://scripts/drone_routes.gd")
+const Footprint = preload("res://scripts/room_footprint.gd")
+const RoomDatabaseScript = preload("res://scripts/room_database.gd")
 var sites: Dictionary = {}
 var sites_initialized := false
 var route_blockers: Dictionary = {}
@@ -63,9 +65,11 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 		if preload("res://scripts/wreck_field.gd").blocks(wrecks,cell): route_blockers[cell] = true
 	for cell in sites:
 		if Sites.blocks(sites,cell): route_blockers[cell] = true
-	for order in orders: route_blockers[order.pos] = true
+	for order in orders:
+		for cell in _order_cells(order): route_blockers[cell] = true
 	for worker in drones.values():
-		if not worker.order.is_empty(): route_blockers[worker.order.pos] = true
+		if not worker.order.is_empty():
+			for cell in _order_cells(worker.order): route_blockers[cell] = true
 	clearance_seconds.clear()
 	delivered.clear()
 	power_spent = 0
@@ -279,16 +283,20 @@ func _closer_free_builder(drone: Dictionary, cell: Vector2i, length: int, powere
 
 func reserved(cell: Vector2i) -> bool:
 	for order in orders:
-		if order.pos == cell: return true
+		if _order_cells(order).has(cell): return true
 	for drone in drones.values():
-		if not drone.order.is_empty() and drone.order.pos == cell: return true
+		if not drone.order.is_empty() and _order_cells(drone.order).has(cell): return true
 	return false
+
+func _order_cells(order: Dictionary) -> Array[Vector2i]:
+	var size: Vector2i = RoomDatabaseScript.get_room(str(order.get("id", ""))).get("size", Vector2i.ONE)
+	return Footprint.cells(order.pos, size)
 
 func order_at(cell: Vector2i) -> Dictionary:
 	for order in orders:
-		if order.pos == cell: return order
+		if _order_cells(order).has(cell): return order
 	for drone in drones.values():
-		if not drone.order.is_empty() and drone.order.pos == cell: return drone.order
+		if not drone.order.is_empty() and _order_cells(drone.order).has(cell): return drone.order
 	return {}
 
 func construction_status(cell: Vector2i, powered: Dictionary) -> String:

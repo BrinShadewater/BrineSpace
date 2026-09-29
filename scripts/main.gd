@@ -1,6 +1,7 @@
 extends Control
 
 const RoomDatabaseScript := preload("res://scripts/room_database.gd")
+const RoomFootprintScript := preload("res://scripts/room_footprint.gd")
 const SynergyManagerScript := preload("res://scripts/synergy_manager.gd")
 const DiscoveryManagerScript := preload("res://scripts/discovery_manager.gd")
 const OrbitManagerScript := preload("res://scripts/orbit_manager.gd")
@@ -2324,19 +2325,9 @@ func _can_place(id: String, cell: Vector2i) -> bool:
 	return get_placement_problem(id, cell).is_empty()
 
 func get_placement_problem(id: String, cell: Vector2i) -> String:
-	if preload("res://scripts/crew_expedition.gd").reserved(self,cell): return "crew expedition return route reserved. Recall the crew before building here."
-	if drone_fleet.reserved(cell): return "construction already scheduled here."
-	if drone_fleet.Sites.blocks(drone_fleet.sites,cell): return "resource deposit occupies this cell. Select it to inspect extraction."
-	if cell.x < 0 or cell.y < 0 or cell.x >= GRID_SIZE or cell.y >= GRID_SIZE:
-		return "outside station grid."
-	if occupied.has(cell):
-		return "cell already contains %s." % occupied[cell]["display_name"]
-	if WreckField.blocks(wrecks,cell):
-		if not WreckField.visible(wrecks,cell): return "unexplored mountain interior."
-		return "rock occupies this cell. Select it to break and clear." if wrecks[cell].kind == "basalt" else "wreckage occupies this cell. Select it to dismantle and salvage."
+	var footprint_problem := get_footprint_placement_problem(id, cell, selected_rotation)
+	if not footprint_problem.is_empty(): return footprint_problem
 	var room := RoomDatabaseScript.get_room(id)
-	if room.is_empty():
-		return "unknown blueprint."
 	if room.has("fixed_rotation") and selected_rotation != int(room.fixed_rotation):
 		return "%s has a fixed orientation; doors: %s." % [room.display_name,_join_strings(get_room_doors(room)," / ")]
 	if not testing_free_build and not _can_afford(room.get("cost", {})):
@@ -2355,8 +2346,43 @@ func get_placement_problem(id: String, cell: Vector2i) -> String:
 		return mismatch
 	return "must connect to an adjacent door."
 
+func get_footprint_placement_problem(id: String, anchor: Vector2i, rotation: int) -> String:
+	var room := RoomDatabaseScript.get_room(id)
+	if room.is_empty(): return "unknown blueprint."
+	var size: Vector2i = room.get("size", Vector2i.ONE)
+	for covered in RoomFootprintScript.cells(anchor, size):
+		if covered.x < 0 or covered.y < 0 or covered.x >= GRID_SIZE or covered.y >= GRID_SIZE:
+			return "outside station grid."
+		if preload("res://scripts/crew_expedition.gd").reserved(self, covered):
+			return "crew expedition return route reserved. Recall the crew before building here."
+		if drone_fleet.reserved(covered): return "construction already scheduled here."
+		if drone_fleet.Sites.blocks(drone_fleet.sites, covered):
+			return "resource deposit occupies this cell. Select it to inspect extraction."
+		if occupied.has(covered):
+			return "cell already contains %s." % occupied[covered]["display_name"]
+		if WreckField.blocks(wrecks, covered):
+			if not WreckField.visible(wrecks, covered): return "unexplored mountain interior."
+			return "rock occupies this cell. Select it to break and clear." if wrecks[covered].kind == "basalt" else "wreckage occupies this cell. Select it to dismantle and salvage."
+	if room.has("ocean_side"):
+		var sides: Array = ["north", "east", "south", "west"]
+		var side: String = sides[(sides.find(str(room.ocean_side)) + posmod(rotation, 4)) % 4]
+		var placed := room.duplicate(true)
+		placed["pos"] = anchor
+		for exterior in RoomFootprintScript.exterior_cells(placed, side):
+			if exterior.x < 0 or exterior.y < 0 or exterior.x >= GRID_SIZE or exterior.y >= GRID_SIZE:
+				return "ocean-facing side must fit inside the site."
+			if occupied.has(exterior) or drone_fleet.reserved(exterior) or drone_fleet.Sites.blocks(drone_fleet.sites, exterior) or WreckField.blocks(wrecks, exterior):
+				return "ocean-facing side must face open water."
+	return ""
+
 func _place_room(id: String, cell: Vector2i, free := false, construction_complete := false) -> void:
-	var build_rotation: int=int(RoomDatabaseScript.get_room(id).get("fixed_rotation",selected_rotation))
+	var blueprint: Dictionary = RoomDatabaseScript.get_room(id)
+	var build_rotation: int=int(blueprint.get("fixed_rotation",selected_rotation))
+	var size: Vector2i = blueprint.get("size", Vector2i.ONE)
+	if size != Vector2i.ONE and (free or construction_complete):
+		for covered in RoomFootprintScript.cells(cell, size):
+			if covered.x < 0 or covered.y < 0 or covered.x >= GRID_SIZE or covered.y >= GRID_SIZE or occupied.has(covered) or drone_fleet.Sites.blocks(drone_fleet.sites, covered) or WreckField.blocks(wrecks, covered):
+				return
 	if not free and drone_fleet.Sites.blocks(drone_fleet.sites,cell): return
 	if not free and WreckField.blocks(wrecks,cell):
 		return
@@ -2372,7 +2398,7 @@ func _place_room(id: String, cell: Vector2i, free := false, construction_complet
 	if ROOM_ART_VARIANT_COUNTS.has(id):
 		room["art_variant"] = rng.randi_range(0, int(ROOM_ART_VARIANT_COUNTS[id]) - 1)
 	placed_rooms.append(room)
-	occupied[cell] = room
+	for covered in RoomFootprintScript.cells(cell, size): occupied[covered] = room
 	if not free:
 		_log("Built %s at %s." % [room["display_name"], cell])
 		play_station_sound("build_complete" if construction_complete else "placement",Vector2(cell))

@@ -2,7 +2,8 @@
   "_comment": "Subsystem groups and lane overrides for tools/run_tests.py. Lanes are auto-detected from test source; add an override only when the heuristic is wrong.",
   "subsystems": {
     "large-rooms": [
-      "test_room_footprint"
+      "test_room_footprint",
+      "test_large_room_placement"
     ],
     "performance-diagnostics": [
       "test_performance_monitor",
