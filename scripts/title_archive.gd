@@ -455,7 +455,8 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	DraftCard.add_ocean(clip)
 	picture.set_anchors_preset(Control.PRESET_FULL_RECT)
 	clip.add_child(picture)
-	var ribbon := _label(str(entry.category).to_upper(), 12)
+	DraftCard.add_rarity_badge(clip, str(data.get("rarity", "common")), DraftCard.muted_bright(accent))
+	var ribbon := _label(DraftCard.category_label(data.merged({"id": entry.id})), 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
 	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
@@ -466,20 +467,14 @@ func _codex_room_card(entry: Dictionary) -> Control:
 	var lines := VBoxContainer.new()
 	lines.add_theme_constant_override("separation", 6)
 	rules.add_child(lines)
-	lines.add_child(_label(data.get("description", ""), 15))
+	lines.add_child(_rich("[color=#8fa3ae]BUILD[/color]  [color=#e6eeee]%s[/color]" % ResourceIcons.bbcode(data.get("cost", {})), 15))
 	if not data.get("production", {}).is_empty():
 		lines.add_child(_rich("[color=#7fd6a6]OUTPUT[/color]  [color=#cfe9dc]+%s[/color]" % ResourceIcons.bbcode(data.production), 15))
 	if not data.get("consumption", {}).is_empty():
 		lines.add_child(_rich("[color=#e0b36a]UPKEEP[/color]  [color=#e9dcc4]%s[/color]" % ResourceIcons.bbcode(data.consumption), 15))
 	if not data.get("storage", {}).is_empty():
 		lines.add_child(_rich("[color=#79b8d9]STORAGE[/color]  [color=#cfe3ee]+%s[/color]" % ResourceIcons.bbcode(data.storage), 15))
-	lines.add_child(_rich("[color=#8fa3ae]BUILD[/color]  [color=#e6eeee]%s[/color]" % ResourceIcons.bbcode(data.get("cost", {})), 15))
-	var footer := HBoxContainer.new()
-	body.add_child(footer)
-	var rarity := _label(str(data.get("rarity", "common")).to_upper(), 13)
-	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	rarity.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
-	footer.add_child(rarity)
+	lines.add_child(_label(data.get("description", ""), 15))
 	return card
 
 # An unrecovered room: the same plates as a recovered one, but the art window is a scanned-water

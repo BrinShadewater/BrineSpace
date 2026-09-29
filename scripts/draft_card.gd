@@ -45,6 +45,22 @@ static func ocean_texture() -> GradientTexture2D:
 	_ocean.height = 128
 	return _ocean
 
+# Corridors, corners and tees read as HALLWAYS on cards, not as Engineering (owner playtest, Sept 29).
+const HALLWAY_IDS := ["corridor", "corner", "tee_corridor"]
+static func category_label(room: Dictionary) -> String:
+	return "HALLWAYS" if str(room.get("id", "")) in HALLWAY_IDS else str(room.get("category", "")).to_upper()
+
+# The rarity, small, in the top-right corner of a card's art window (owner playtest, Sept 29).
+static func add_rarity_badge(clip: Control, text: String, color: Color) -> void:
+	var badge := Label.new()
+	badge.text = text.to_upper()
+	badge.add_theme_font_size_override("font_size", 12)
+	badge.add_theme_color_override("font_color", color)
+	badge.add_theme_stylebox_override("normal", _box(Color(0.02, 0.05, 0.07, 0.82), color.darkened(0.35), 1, 3, 3))
+	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	badge.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 4)
+	clip.add_child(badge)
+
 # Adds the water behind a card's art; call before adding the art itself.
 static func add_ocean(clip: Control) -> void:
 	var water := TextureRect.new()
@@ -148,6 +164,7 @@ static func build(game, id: String) -> PanelContainer:
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	card.set_meta("art_node", art)
 	art_clip.add_child(_ignore(art))
+	add_rarity_badge(art_clip, str(room["rarity"]), game._rarity_color(str(room.get("rarity", "common"))).lightened(0.2))
 	if game.prototype_card_seen_cycle.has(id):
 		var prototype := Label.new()
 		prototype.text = "NEW PROTOTYPE"
@@ -160,7 +177,7 @@ static func build(game, id: String) -> PanelContainer:
 		art_clip.add_child(_ignore(prototype))
 
 	var ribbon := Label.new()
-	ribbon.text = str(room["category"]).to_upper()
+	ribbon.text = category_label(room)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ribbon.add_theme_font_size_override("font_size", 12)
 	ribbon.add_theme_color_override("font_color", muted_bright(category_color))
@@ -174,6 +191,18 @@ static func build(game, id: String) -> PanelContainer:
 	var rules_box := VBoxContainer.new()
 	rules_box.add_theme_constant_override("separation", 2)
 	rules.add_child(_ignore(rules_box))
+	if not cost.is_empty():
+		var build_row := HBoxContainer.new()
+		build_row.add_theme_constant_override("separation", 4)
+		var build_label := Label.new()
+		build_label.text = "BUILD"
+		build_label.add_theme_font_size_override("font_size", 13)
+		build_label.add_theme_color_override("font_color", Color("#8fa3ae"))
+		build_row.add_child(_ignore(build_label))
+		for key in cost:
+			var enough: bool = str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
+			build_row.add_child(_ignore(_cost_gem(game, str(key), int(cost[key]), enough)))
+		rules_box.add_child(_ignore(build_row))
 	for line in rule_lines(room):
 		var entry := RichTextLabel.new()
 		entry.bbcode_enabled = true
@@ -203,19 +232,6 @@ static func build(game, id: String) -> PanelContainer:
 		hint.add_theme_color_override("font_color", Color("#ff8a90"))
 		rules_box.add_child(_ignore(hint))
 
-	var footer := HBoxContainer.new()
-	footer.add_theme_constant_override("separation", 4)
-	body.add_child(_ignore(footer))
-	var rarity := Label.new()
-	rarity.text = str(room["rarity"]).to_upper()
-	rarity.add_theme_font_size_override("font_size", 12)
-	rarity.add_theme_color_override("font_color", game._rarity_color(str(room.get("rarity", "common"))).lightened(0.2))
-	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	rarity.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	footer.add_child(_ignore(rarity))
-	for key in cost:
-		var enough: bool = str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
-		footer.add_child(_ignore(_cost_gem(game, str(key), int(cost[key]), enough)))
 	return card
 
 # One cost as a round gem: resource icon and amount, red when that resource is short.
