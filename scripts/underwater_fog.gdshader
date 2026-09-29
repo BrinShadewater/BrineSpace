@@ -9,6 +9,12 @@ uniform float clock = 0.0;
 uniform vec4 silt = vec4(-100.0,-100.0,0.0,0.0);
 // Marine snow (owner playtest: the outside needed movement and sediment): 0 holds it still.
 uniform float motion = 1.0;
+// Atmosphere (owner playtest, Sept 29; spec 2026-09-29-lighting-atmosphere-design.md): light from above, moving
+// caustics, a teal depth tint and denser sediment. All zero at Low quality.
+uniform float shafts = 0.0;
+uniform float caustic_light = 0.0;
+uniform float depth_tint = 0.0;
+uniform float snow_boost = 1.0;
 // Bioluminescent plant clumps (x, y, radius, phase) and their colours, and drifting wisps
 // (owner playtest, Sept 17: glowing life in the darkness).
 uniform vec4 glows[32];
@@ -74,9 +80,19 @@ void fragment(){
  // Flakes are finer than a pixel when zoomed far out, so fade them there to avoid shimmer.
  float t=clock*motion;
  float flakes=(snow(world,5.0,.07,t,0.0)*.7+snow(world,9.0,.045,t,11.0)*.5+snow(world,16.0,.028,t,23.0)*.35)*smoothstep(48.0,140.0,cell_size);
- water+=vec3(.30,.40,.40)*flakes*(.22+illumination*1.4);
+ water+=vec3(.30,.40,.40)*flakes*snow_boost*(.22+illumination*1.4);
  // Faint moving caustics where lamps light the water.
  water+=vec3(.02,.045,.045)*pow(abs(sin(noise(world*3.1+vec2(t*.21,t*.13))*6.2832)),6.0)*illumination*motion;
+ // Light from the surface: a teal lift toward the top of the world, slow diagonal shafts, and
+ // caustic ripples. Everything drifts on t, so Reduced Motion (motion = 0) holds it still.
+ float above=1.0-smoothstep(0.0,34.0,world.y);
+ water+=vec3(.010,.060,.085)*depth_tint*(.45+.55*above)*(.6+.4*haze);
+ float u=world.x*.95+world.y*.11;
+ float band=pow(sin(u*1.6+t*.05+noise(vec2(u*.7,t*.02))*3.0)*.5+.5,3.5)+pow(sin(u*3.1-t*.04+1.7)*.5+.5,5.0)*.5;
+ float reach=(.45+.55*above)*(.55+.45*noise(world*.35+vec2(t*.01,0.0)));
+ water+=vec3(.22,.62,.72)*band*reach*shafts*.40;
+ float ripple=pow(abs(sin((noise(world*2.6+vec2(t*.06,t*.04))+noise(world*4.4-vec2(t*.05,t*.07)))*6.2832)),8.0);
+ water+=vec3(.15,.55,.65)*ripple*caustic_light*.24*(.4+.6*above);
  // Bioluminescent clumps reveal themselves and tint the water around them.
  for(int i=0;i<glow_count;i++){
   float d=length(world-glows[i].xy);

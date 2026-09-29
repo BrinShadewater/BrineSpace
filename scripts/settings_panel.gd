@@ -97,7 +97,7 @@ func _defaults(section: String) -> void:
 			# fullscreen player into a small 1600x900 window).
 			var window := get_window()
 			var default_size := DisplayServer.screen_get_size(window.current_screen)
-			var already: bool = Preferences.get_window_mode(window) == 1 and window.size == default_size and Preferences.fps_cap == 0 and DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
+			var already: bool = Preferences.get_window_mode(window) == 1 and window.size == default_size and Preferences.fps_cap == 0 and Preferences.effects_quality == 1 and DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
 			if already:
 				feedback.text = "DISPLAY IS ALREADY AT ITS DEFAULTS."
 				feedback.show()
@@ -106,6 +106,7 @@ func _defaults(section: String) -> void:
 				Preferences.window_size = _fitting_size(DisplayServer.screen_get_usable_rect(window.current_screen).size)
 				Preferences.apply_window_mode(window, 1, false)
 				Preferences.fps_cap = 0
+				Preferences.effects_quality = 1
 				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 			)
 			return
@@ -285,6 +286,9 @@ func _ready() -> void:
 	)
 	_toggle(display, "VSync", "V-sync", "Matches frames to your display to prevent tearing.", DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED, func(enabled: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED)
+	)
+	_select(display, "EffectsQuality", "Visual effects", "Light shafts, caustics and glow in the water. Lower this on slower computers.", ["Low", "Medium", "High"], Preferences.effects_quality, func(index: int) -> void:
+		Preferences.effects_quality = index
 	)
 	var caps := [0, 30, 60, 120, 144, 240]
 	_select(display, "FrameLimit", "Frame-rate limit", "V-sync can limit the frame rate further.", ["Unlimited", "30 FPS", "60 FPS", "120 FPS", "144 FPS", "240 FPS"], caps.find(Preferences.fps_cap), func(index: int) -> void:
