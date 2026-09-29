@@ -12,16 +12,16 @@ Hydroponics Farm is green, Storage Depot and Tidal Power Plant yellow, Moonbay c
 
 ## Current state
 
-Branch `codex/large-rooms` in the managed `large-rooms` worktree. Foundation commits `091da8b9`, `fde7efc0`, `cd219f2a`, `684f1872`, and `a60ff8aa` add footprint/ports, atomic placement, exact connections and save, room art, and rare draft scheduling. Task 6 also fixes crew construction approaches for 2×2 perimeter ports. Four card PNGs are tracked through Git LFS. Native captures are under `output/large-room-review/` in this worktree. Moonbay missions are not yet implemented.
+Branch `codex/large-rooms` in the managed `large-rooms` worktree. Foundation commits `091da8b9` through `4b5da501` add footprint/ports, paid atomic placement, exact connections and save, fixed room art, four card PNGs tracked through Git LFS, and rare draft scheduling. Moonbay commits `2dd782e5`, `f52add3f`, and `8309dead` add the mission model, distant sites, crew boarding and reservation, inspector controls, room/exterior visuals, and checkpoint validation. Native captures are under `output/large-room-review/` and `output/moonbay-review/`. The repeatable paid walkthrough is `tools/review_moonbay_paid.gd`.
 
 ## Verification
 
-- Focused `large-rooms` suite: 5/5 pass before the paid construction probe; the new paid probe passes with existing crew construction and Save/Continue tests (3/3).
-- Existing construction, metal trickle, owner regressions, power, reliability, room cards, fire, flooding, and Save/Continue: 9/9 pass under scratch `APPDATA`.
-- Native view/card renders cover all four rooms and four rotations. Native station captures show each room beside normal rooms. Native paid Farm construction passes, with `output/large-room-review/station/paid-hydroponics_farm.png` captured. Farm output and inputs appear in the live resource strip.
-- The real owner folder's 2,679 non-log files match their before hashes. One task-completion wrapper was accidentally run without scratch `APPDATA`; Godot rotated five owner `logs` files. The progress save, checkpoint, profile, and Studio data were unchanged. All subsequent Godot runs explicitly set scratch `APPDATA`.
-- Native runs emit missing-resource messages for several existing `brineui` and icon atlases in this isolated checkout, although the large-room views and paid construction render. Resolve import/cache state before treating those unrelated UI assets as a release check.
+- Moonbay-focused model, assignment, and disk save/restore tests: 3/3 pass under scratch `APPDATA`. Each mission phase round-trips with its hatch, chamber water and crew reservation; old checkpoints default to a dry, idle hangar.
+- Relevant large-room, crew construction/work, diver, airlock, site discovery, fire, flooding, reliability, and Save/Continue tests: 15/15 pass under scratch `APPDATA`.
+- Native room/card captures cover all four rooms and rotations. `tools/review_moonbay.gd` captures eight launch-chamber states. `tools/review_moonbay_paid.gd` passes paid construction, Survey, Recover, Deep Access, hazardous early return, 4 Metal repair, and at-sea disk Save/Continue; six paid screenshots are in `output/moonbay-review/`.
+- The real progress save, checkpoint, profile and Studio files matched pre/post hashes. The active diagnostic `last_session.json` changed continuously while a separate Godot process was running; we did not restore or alter it. An earlier wrapper invocation rotated five owner `logs` files, already disclosed. All subsequent Godot tests and probes used scratch `APPDATA`.
+- Native runs still emit missing-resource messages for existing `brineui` and icon atlases in this isolated checkout, although the room and mission captures render. Check the import/cache state before a release build.
 
 ## Next action
 
-Complete the companion [Moonbay mission plan](superpowers/plans/2026-09-28-moonbay-missions.md): state machine, crew assignment, launch visuals, persistence, paid native review, then update this handoff and current status with final results. Run the complete `large-rooms` suite including the paid probe, confirm the owner non-log fingerprint, and review the full branch before asking for merge or publication.
+Review the complete branch, then have the owner play a normal long run to tune rare-card timing, large-room economy, mission duration and hazard frequency. Merge or publish only after the owner's review.
