@@ -28,22 +28,121 @@ static func survey_receivers(game) -> void:
 			recover(game,"receiver")
 			return
 
+# Where each recording comes from, and how to recover the ones still sealed (redesign, Sept 29).
+const SOURCES := {
+	"opening": {"source": "Deep-space carrier // 417 years in transit", "clue": "Received when the station first woke."},
+	"receiver": {"source": "Receiver array // repeats every nineteen minutes", "clue": "Keep a Listening Post powered and running."},
+	"survey": {"source": "Exterior recorder // pressure-sealed", "clue": "Recover an exterior recorder on a crew salvage expedition."},
+}
+const ACCENT := Color("79b8d9")
+const CARD_SIZE := Vector2(360, 340)
+
+# A static signal trace: bars whose heights are fixed by the recording's id, so each one looks like
+# itself and nothing animates.
+class Trace extends Control:
+	var seed_text := ""
+	func _init(id := "") -> void:
+		seed_text = id
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+	func _draw() -> void:
+		draw_texture_rect(preload("res://scripts/draft_card.gd").ocean_texture(), Rect2(Vector2.ZERO, size), false, Color(0.62, 0.7, 0.8))
+		var bars := int(size.x / 7.0)
+		var mid := size.y * 0.5
+		for i in range(bars):
+			var wave := 0.5 + 0.5 * sin(float(i) * 0.31 + float(hash(seed_text) % 90) * 0.1)
+			var jitter := float(hash([seed_text, i]) % 100) / 100.0
+			var height := (0.10 + 0.72 * wave * (0.35 + 0.65 * jitter)) * size.y * 0.5
+			var x := 6.0 + float(i) * 7.0
+			draw_line(Vector2(x, mid - height), Vector2(x, mid + height), Color(0.55, 0.85, 0.95, 0.55), 3.0)
+		draw_line(Vector2(0, mid), Vector2(size.x, mid), Color(0.55, 0.85, 0.95, 0.25), 1.0)
+
 static func populate(archive) -> void:
-	archive.grid.add_child(archive._label("TRANSMISSIONS // RECOVERED SIGNALS",24))
-	archive.grid.add_child(archive._label("Original recordings. Receiver fragments surface through exploration; their contents remain sealed until recovered.",17))
-	for id in available(archive.meta_state):
+	var recovered: Array[String] = available(archive.meta_state)
+	archive.grid.add_child(archive._label("TRANSMISSIONS // RECOVERED SIGNALS", 24))
+	archive.grid.add_child(archive._label("Original recordings. Some arrive with the station; others surface through exploration and stay sealed until recovered. %d of %d recovered." % [recovered.size(), RECORDS.size()], 17))
+	var cards := GridContainer.new()
+	cards.columns = 3
+	cards.name = "TransmissionCards"
+	cards.add_theme_constant_override("h_separation", 18)
+	cards.add_theme_constant_override("v_separation", 18)
+	cards.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	archive.grid.add_child(cards)
+	for id in RECORDS:
+		cards.add_child(_card(archive, id, recovered.has(id)))
+
+static func _card(archive, id: String, open: bool) -> Control:
+	var info: Dictionary = RECORDS[id]
+	var parts: PackedStringArray = str(info.title).split(" // ")
+	var number := parts[0] if parts.size() > 1 else id
+	var name_text := parts[1] if parts.size() > 1 else str(info.title)
+	var unread: bool = open and archive.meta_state.unread_records.has("transmission_" + id)
+	var card := PanelContainer.new()
+	card.name = "Transmission_" + id
+	card.custom_minimum_size = CARD_SIZE
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.add_theme_stylebox_override("panel", archive._card_box(Color("0e161d"), ACCENT.darkened(0.15) if open else Color("2a4650"), 2 if open else 1, 12, 12))
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 8)
+	card.add_child(rows)
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", 10)
+	rows.add_child(head)
+	var chip: Label = archive._label(number, 15)
+	chip.add_theme_color_override("font_color", ACCENT if open else Color("5e8293"))
+	chip.add_theme_stylebox_override("normal", archive._card_box(Color("090f14"), ACCENT.darkened(0.4) if open else Color("2a4650"), 1, 4, 4))
+	chip.autowrap_mode = TextServer.AUTOWRAP_OFF
+	head.add_child(chip)
+	var title: Label = archive._label(name_text if open else "Sealed signal", 20)
+	title.autowrap_mode = TextServer.AUTOWRAP_OFF
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.add_theme_color_override("font_color", Color("e2ecee") if open else Color("7f9aa3"))
+	head.add_child(title)
+	if unread:
+		var badge: Label = archive._label("NEW", 13)
+		badge.autowrap_mode = TextServer.AUTOWRAP_OFF
+		badge.add_theme_color_override("font_color", Color("e0b36a"))
+		head.add_child(badge)
+	var art := PanelContainer.new()
+	art.custom_minimum_size.y = 110
+	art.add_theme_stylebox_override("panel", archive._card_box(Color(0, 0, 0, 0), ACCENT.darkened(0.45), 1, 2, 2))
+	rows.add_child(art)
+	var clip := Control.new()
+	clip.clip_contents = true
+	art.add_child(clip)
+	var window: Control = Trace.new(id) if open else preload("res://scripts/title_archive.gd").UnresolvedField.new()
+	window.set_anchors_preset(Control.PRESET_FULL_RECT)
+	clip.add_child(window)
+	var source: Label = archive._label(str(SOURCES[id].source).to_upper(), 13)
+	source.add_theme_color_override("font_color", Color("8fa9b3"))
+	rows.add_child(source)
+	if open:
+		var paragraphs: PackedStringArray = str(info.text).split("\n\n")
+		var excerpt: String = paragraphs[1 if paragraphs.size() > 1 else 0].replace("\n", " ")
+		var line: Label = archive._label(excerpt, 15)
+		line.max_lines_visible = 3
+		line.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+		rows.add_child(line)
+	else:
+		var clue_heading: Label = archive._label("HOW TO RECOVER", 13)
+		clue_heading.add_theme_color_override("font_color", Color("e0b36a"))
+		rows.add_child(clue_heading)
+		rows.add_child(archive._label(str(SOURCES[id].clue), 15))
+	var gap := Control.new()
+	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	rows.add_child(gap)
+	if open:
 		var button := Button.new()
-		button.text = RECORDS[id].title + " // REPLAY"
-		button.custom_minimum_size.y = 64
-		preload("res://scripts/title_button_style.gd").apply(button,640,64)
+		button.name = "Replay"
+		button.text = "REPLAY"
+		preload("res://scripts/title_button_style.gd").apply(button, 240, 44)
+		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		button.pressed.connect(func():
 			var playback = load("res://scripts/loading_transition.gd").new()
-			playback.transmission_text = RECORDS[id].text
+			playback.transmission_text = info.text
 			playback.replay_mode = true
 			archive.get_tree().root.add_child(playback)
-			archive.meta_state.mark_reviewed("transmission_"+id)
+			archive.meta_state.mark_reviewed("transmission_" + id)
 		)
-		archive.grid.add_child(button)
-	archive.grid.add_child(archive._label("Listen with a functioning Listening Post. Recover an exterior recorder on a crew salvage expedition.",17))
-	for child in archive.grid.get_children():
-		child.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		rows.add_child(button)
+	return card
