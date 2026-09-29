@@ -79,7 +79,7 @@ static func build(game, id: String) -> PanelContainer:
 		prototype.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		prototype.position = Vector2(4, 4)
 		prototype.custom_minimum_size = Vector2(108, 20)
-		prototype.add_theme_font_size_override("font_size", 10)
+		prototype.add_theme_font_size_override("font_size", 12)
 		prototype.add_theme_color_override("font_color", Color("#d8fff2"))
 		game._add_label_panel_style(prototype, Color("#0b3029"), game.UI_ACCENT_BRIGHT)
 		art_clip.add_child(_ignore(prototype))
@@ -87,7 +87,7 @@ static func build(game, id: String) -> PanelContainer:
 	var ribbon := Label.new()
 	ribbon.text = str(room["category"]).to_upper()
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_font_size_override("font_size", 10)
+	ribbon.add_theme_font_size_override("font_size", 12)
 	ribbon.add_theme_color_override("font_color", category_color.lightened(0.1))
 	ribbon.add_theme_stylebox_override("normal", _box(Color("#090f14"), category_color.darkened(0.2), 1, 3))
 	body.add_child(_ignore(ribbon))
@@ -110,8 +110,8 @@ static func build(game, id: String) -> PanelContainer:
 	var hint := Label.new()
 	hint.text = "CLICK TO SELECT" if affordable else "SHORT: " + game._format_cost(game._missing_cost(cost))
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	hint.add_theme_font_size_override("font_size", 10)
-	hint.add_theme_color_override("font_color", Color("#4a6370") if affordable else Color("#ff8a90"))
+	hint.add_theme_font_size_override("font_size", 12)
+	hint.add_theme_color_override("font_color", Color("#7d97a4") if affordable else Color("#ff8a90"))
 	rules_box.add_child(_ignore(hint))
 
 	var footer := HBoxContainer.new()
@@ -119,7 +119,7 @@ static func build(game, id: String) -> PanelContainer:
 	body.add_child(_ignore(footer))
 	var rarity := Label.new()
 	rarity.text = str(room["rarity"]).to_upper()
-	rarity.add_theme_font_size_override("font_size", 10)
+	rarity.add_theme_font_size_override("font_size", 12)
 	rarity.add_theme_color_override("font_color", game._rarity_color(str(room.get("rarity", "common"))).lightened(0.2))
 	rarity.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	rarity.vertical_alignment = VERTICAL_ALIGNMENT_CENTER

@@ -123,12 +123,12 @@ static func power_balance(game, forecast: Dictionary) -> String:
 	var flow := "Reserve unchanged"
 	if change < 0: flow = "Battery discharge: %d Power" % -change
 	elif change > 0: flow = "Battery charge: %d Power" % change
-	return "POWER // NEXT CYCLE\nGeneration: %d / Requested: %d / Supplied: %d\n%s / Stored: %d -> %d%s\n%s Battery Arrays add capacity; they do not generate Power. Drone and Marsh charging draw from storage between cycles." % [forecast.generation,game._project_power_demand(),forecast.power_used,flow,stored,stored+change,power_vented_note(int(forecast.get("power_vented",0))),"BLACKOUT AHEAD: generation plus the reserve cannot power every room, so all Power consumers go dark next cycle while generators recharge the reserve." if forecast.get("blackout",false) else "The reserve covers generation shortfalls until it runs dry; then the whole station blacks out."]
+	return "POWER // NEXT CYCLE\nGeneration: %d / Requested: %d / Supplied: %d\n%s / Stored: %d -> %d%s\n%s Battery Arrays add capacity; they do not generate Power. Drone and Marsh charging draw from storage between cycles." % [forecast.generation,game._project_power_demand(),forecast.power_used,flow,stored,stored+change,power_vented_note(int(forecast.get("power_vented",0))),"[color=#ff9a8a][b]BLACKOUT AHEAD:[/b] generation plus the reserve cannot power every room, so all Power consumers go dark next cycle while generators recharge the reserve.[/color]" if forecast.get("blackout",false) else "The reserve covers generation shortfalls until it runs dry; then the whole station blacks out."]
 
 # Surplus above the storage cap is discarded; say so rather than showing a silent +0.
 static func power_vented_note(vented: int) -> String:
 	if vented <= 0: return ""
-	return "\nRESERVE FULL // %d Power vented next cycle. Battery Arrays raise the cap; new generation adds nothing until then." % vented
+	return "\n[color=#efb777]RESERVE FULL // %d Power vented next cycle. Battery Arrays raise the cap; new generation adds nothing until then.[/color]" % vented
 
 # Placement is allowed, but some cells silently break existing systems: a room on a
 # turbine's intake stops its generation, and a room can wall an extraction bay off

@@ -519,8 +519,8 @@ func _build_ui() -> void:
 	identity.add_child(title)
 	var subtitle := Label.new()
 	subtitle.text = "RECOVER · CONNECT · DISCOVER"
-	subtitle.add_theme_font_size_override("font_size", 10)
-	subtitle.add_theme_color_override("font_color", Color("#536874"))
+	subtitle.add_theme_font_size_override("font_size", 12)
+	subtitle.add_theme_color_override("font_color", Color("#7c909c"))
 	identity.add_child(subtitle)
 
 	var resources_row := GridContainer.new()
@@ -806,7 +806,7 @@ func _build_ui() -> void:
 	preview_name_label = preview_name
 	var preview_tags := Label.new()
 	preview_tags.text = "SYSTEM IDLE"
-	preview_tags.add_theme_font_size_override("font_size", 11)
+	preview_tags.add_theme_font_size_override("font_size", 13)
 	preview_tags.add_theme_color_override("font_color", Color("#8a9a9a"))
 	_add_label_panel_style(preview_tags, Color("#071018"), Color("#253946"))
 	preview_texts.add_child(preview_tags)
@@ -921,7 +921,7 @@ func _build_ui() -> void:
 	controls_state.text = "RUNNING"
 	controls_state.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	controls_state.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	controls_state.add_theme_font_size_override("font_size", 11)
+	controls_state.add_theme_font_size_override("font_size", 13)
 	controls_state.add_theme_color_override("font_color", Color("#8fa3ae"))
 	controls_header.add_child(controls_state)
 	controls_state_label = controls_state
@@ -1073,7 +1073,7 @@ func _build_ui() -> void:
 	bottom_box.add_child(draft_status)
 	var blueprint_title := Label.new()
 	blueprint_title.text = "DRAFT HAND"
-	blueprint_title.add_theme_font_size_override("font_size", 12)
+	blueprint_title.add_theme_font_size_override("font_size", 13)
 	blueprint_title.add_theme_color_override("font_color", Color("#8fa3ae"))
 	draft_status.add_child(blueprint_title)
 	var hand_count := Label.new()
@@ -1086,7 +1086,7 @@ func _build_ui() -> void:
 	draft_hint.text = "Build to draw.\nRMB rerolls one.\nR rotates.\nSpace pauses."
 	draft_hint.set_meta("key_hint", "Build to draw.\nRMB rerolls one.\n{Rotate blueprint} rotates.\n{Pause} pauses.")
 	draft_hint.add_theme_font_size_override("font_size", 14)
-	draft_hint.add_theme_color_override("font_color", Color("#536874"))
+	draft_hint.add_theme_color_override("font_color", Color("#7c909c"))
 	draft_status.add_child(draft_hint)
 	var toggle_hand := Button.new()
 	toggle_hand.name = "HandToggle"
