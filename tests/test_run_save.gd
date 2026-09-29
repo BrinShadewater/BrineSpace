@@ -47,6 +47,27 @@ func _run() -> void:
 		for actor in [game.bill_npc,game.veld_npc,game.branforth_npc]: print(actor.activity," active=",actor.active," foot=",actor.foot," goal=",actor.goal)
 		quit(1)
 		return
+	# One anchored room must restore occupancy for all four cells, while old rooms
+	# without a size field still restore as single cells.
+	var large_anchor := Vector2i(-1,-1)
+	for y in range(8,36):
+		if large_anchor.x>=0: break
+		for x in range(8,36):
+			var candidate := Vector2i(x,y)
+			var clear := true
+			for covered in preload("res://scripts/room_footprint.gd").cells(candidate,Vector2i(2,2)):
+				if game.occupied.has(covered) or game.drone_fleet.Sites.blocks(game.drone_fleet.sites,covered) or game.WreckField.blocks(game.wrecks,covered): clear=false
+			if clear:
+				large_anchor=candidate
+				break
+	check(large_anchor.x>=0,"Save fixture finds a clear 2x2 site")
+	var large_room: Dictionary=game.RoomDatabaseScript.get_room("storage_bay")
+	large_room["pos"]=large_anchor
+	large_room["size"]=Vector2i(2,2)
+	large_room["rotation"]=0
+	large_room["ports"]=[{"cell":Vector2i(0,0),"side":"north"},{"cell":Vector2i(1,0),"side":"east"},{"cell":Vector2i(1,1),"side":"south"},{"cell":Vector2i(0,1),"side":"west"}]
+	game.placed_rooms.append(large_room)
+	for covered in preload("res://scripts/room_footprint.gd").cells(large_anchor,Vector2i(2,2)): game.occupied[covered]=large_room
 	game.cycle = 7
 	game.reroll_recovery_progress = 2
 	game.synergy_stabilization_progress = {"test_pattern": 2}
@@ -66,7 +87,9 @@ func _run() -> void:
 	check(Save.restore(game, data), "Checkpoint should restore")
 	check(game.cycle == 7 and game.reroll_recovery_progress == 2, "Cycle and reroll recovery must survive")
 	check(game.resources == expected_resources and game.hand == expected_hand, "Resources and draft must survive")
-	check(game.placed_rooms.size() == 2 and game.occupied.size() == 2, "Station and occupancy must restore")
+	check(game.placed_rooms.size() == 3 and game.occupied.size() == 6, "Station and multi-cell occupancy must restore")
+	check(game.occupied[large_anchor+Vector2i.ONE].pos==large_anchor and game.occupied[large_anchor+Vector2i.ONE].size==Vector2i(2,2),"Large room restores all four cells as one room")
+	check(game.occupied[Vector2i(20,20)].get("size",Vector2i.ONE)==Vector2i.ONE,"Legacy single-cell room keeps its default size")
 	check(game.placed_rooms[1].suspended, "Room suspension must survive")
 	check(game.synergy_stabilization_progress.test_pattern == 2, "Pattern progress must survive")
 	check(game.rng.state == expected_rng, "64-bit RNG state must survive exactly")
@@ -115,12 +138,12 @@ func _run() -> void:
 		var scene = current_scene
 		# startup_complete is set only after the staged restore finishes (and pauses the station);
 		# cycle and rooms land earlier, so waiting on them alone raced the restore under load.
-		if scene!=null and "cycle" in scene and scene.startup_complete and scene.cycle==7 and scene.placed_rooms.size()==2: break
+		if scene!=null and "cycle" in scene and scene.startup_complete and scene.cycle==7 and scene.placed_rooms.size()==3: break
 		await process_frame
 	game = current_scene
 	game.meta.save_path = "user://brine_save_test_meta.json"
 	check(Save.pending.is_empty(), "Continue request must be consumed only once")
-	check(game.cycle == 7 and game.placed_rooms.size() == 2 and game.paused, "Fresh scene must resume checkpoint instead of resetting it")
+	check(game.cycle == 7 and game.placed_rooms.size() == 3 and game.paused and game.occupied.size()==6, "Fresh scene must resume checkpoint and multi-cell occupancy")
 	check(game.run_save_path == PATH, "Continue must retain its checkpoint destination")
 	check(is_instance_valid(game.crew_comms) and game.crew_comms.greeting_sent and game.crew_comms.seen.has("awake/bill"), "Continue from the title keeps what comms already said")
 	game._open_menu()

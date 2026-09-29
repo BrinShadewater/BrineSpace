@@ -39,7 +39,9 @@ static func advance(game, delta: float) -> void:
 		# Where crew will swim: routes plan the other rooms with the walking check.
 		var swim_cells := {}
 		for room in game.placed_rooms:
-			if level(room)>=HIGH: swim_cells[room.pos]=true
+			if level(room)>=HIGH:
+				for cell in preload("res://scripts/room_footprint.gd").cells(room.pos, room.get("size", Vector2i.ONE)):
+					swim_cells[cell]=true
 		for id in Architects.IDS:
 			Architects.actor_for(game,id).swim_cells=swim_cells
 		for id in Architects.IDS:
@@ -68,9 +70,11 @@ static func step_water(game, dt: float) -> void:
 		levels[room.pos] = clampf(level(room)+(leak-pump)*dt,0,1)
 		changes[room.pos] = 0.0
 	for pair in connected_pairs(game):
-		var cell: Vector2i=pair[0]
-		var next: Vector2i=pair[1]
-		var difference: float=levels[cell]-levels[next]
+		var room_a: Vector2i=pair[0]
+		var room_b: Vector2i=pair[1]
+		var cell: Vector2i=pair[2]
+		var next: Vector2i=pair[3]
+		var difference: float=levels[room_a]-levels[room_b]
 		if is_zero_approx(difference): continue
 		if game.occupied[cell].get("isolated",false) or game.occupied[next].get("isolated",false): continue
 		var aperture := clampf(float(game.grid_view._door_frame_for_pair(game,cell,next))/float(game.grid_view.DOOR_OPEN_FRAMES-1),0,1)
@@ -85,23 +89,28 @@ static func step_water(game, dt: float) -> void:
 		var into_core: bool = (difference > 0 and game.occupied[next].get("id","") == "brine_core") or (difference < 0 and game.occupied[cell].get("id","") == "brine_core")
 		if into_core and not sealed: aperture = maxf(aperture, CORE_SEEPAGE)
 		var flow := difference*0.18*aperture*dt*preload("res://scripts/research_tree.gd").flood_rate(game.get("meta"))
-		changes[cell] -= flow
-		changes[next] += flow
+		changes[room_a] -= flow
+		changes[room_b] += flow
 	for room in game.placed_rooms:
 		room.water_level = clampf(float(levels[room.pos])+float(changes[room.pos]),0,1)
 
 static func connected_pairs(game) -> Array:
 	var signature := []
 	for room in game.placed_rooms:
-		signature.append([room.pos,room.id,room.get("rotation",0),room.get("branch_owner",Vector2i(-1,-1))])
+		signature.append([room.pos,room.id,room.get("rotation",0),room.get("size",Vector2i.ONE),room.get("ports",[]),room.get("branch_owner",Vector2i(-1,-1))])
 	var key := hash(signature)
 	if game.grid_view.get_meta("flood_topology",-1)==key:
 		return game.grid_view.get_meta("flood_pairs",[])
 	var pairs := []
 	for room in game.placed_rooms:
-		for offset in [Vector2i.RIGHT,Vector2i.DOWN]:
-			var next: Vector2i=room.pos+offset
-			if game.occupied.has(next) and game._placed_rooms_connected(room,game.occupied[next],offset): pairs.append([room.pos,next])
+		for cell in preload("res://scripts/room_footprint.gd").cells(room.pos,room.get("size",Vector2i.ONE)):
+			for offset in [Vector2i.RIGHT,Vector2i.DOWN]:
+				var next: Vector2i=cell+offset
+				if not game.occupied.has(next): continue
+				var neighbor: Dictionary=game.occupied[next]
+				if neighbor.get("pos",Vector2i(-1,-1)) == room.pos: continue
+				var connected: bool = game._ports_connect(room,neighbor,cell,next) if game.has_method("_ports_connect") and (room.get("size",Vector2i.ONE)!=Vector2i.ONE or neighbor.get("size",Vector2i.ONE)!=Vector2i.ONE) else game._placed_rooms_connected(room,neighbor,offset)
+				if connected: pairs.append([room.pos,neighbor.pos,cell,next])
 	game.grid_view.set_meta("flood_topology",key)
 	game.grid_view.set_meta("flood_pairs",pairs)
 	return pairs

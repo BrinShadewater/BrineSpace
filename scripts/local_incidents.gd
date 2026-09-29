@@ -16,12 +16,16 @@ static func resolve(game) -> void:
 	for room in game.placed_rooms:
 		if not room.get("local_incident",false) or room.get("isolated",false):continue
 		damage+=1
-		for direction in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
-			var cell: Vector2i=room.pos+direction
-			if not game.occupied.has(cell) or game.occupied[cell].get("local_incident",false):continue
-			if game._placed_rooms_connected(room,game.occupied[cell],direction):
-				spread.append(cell)
-				break
+		var reached := false
+		for source in preload("res://scripts/room_footprint.gd").cells(room.pos,room.get("size",Vector2i.ONE)):
+			for direction in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:
+				var cell: Vector2i=source+direction
+				if not game.occupied.has(cell) or game.occupied[cell].get("local_incident",false):continue
+				if game._placed_rooms_connected(room,game.occupied[cell],direction,source,cell):
+					spread.append(cell)
+					reached=true
+					break
+			if reached: break
 	for cell in spread:game.occupied[cell]["local_incident"]=true
 	if damage>0:
 		damage=maxi(0,damage-preload("res://scripts/research_tree.gd").integrity_shield(game.get("meta")))

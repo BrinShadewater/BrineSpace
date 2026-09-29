@@ -139,9 +139,9 @@ static func problem(value: Dictionary) -> String:
 	var occupied := {}
 	for room in state.placed_rooms:
 		if not room is Dictionary or not rooms.has(room.get("id")) or not room.get("pos") is Vector2i: return "unknown room"
-		var pos: Vector2i = room.pos
-		if pos.x < 0 or pos.y < 0 or pos.x >= 40 or pos.y >= 40 or occupied.has(pos): return "room position %s" % pos
-		occupied[pos] = true
+		for pos in preload("res://scripts/room_footprint.gd").cells(room.pos, room.get("size", Vector2i.ONE)):
+			if pos.x < 0 or pos.y < 0 or pos.x >= 40 or pos.y >= 40 or occupied.has(pos): return "room position %s" % pos
+			occupied[pos] = true
 	if not preload("res://scripts/wreck_field.gd").valid(value.get("wrecks",{}),occupied): return "wrecks"
 	if not preload("res://scripts/architects.gd").valid(value.get("architects",{}),value.get("wrecks",{}),value.get("recovered_crew",[])): return "architect roster"
 	if not preload("res://scripts/cryo_recovery.gd").valid_roster(value.get("recovered_crew",[]),value.get("wrecks",{}),state.placed_rooms,value.get("architects",{})): return "recovered crew"
@@ -208,7 +208,8 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 		return false
 	var wreck_occupied := {}
 	for room in data.state.placed_rooms:
-		wreck_occupied[room.pos] = true
+		for cell in preload("res://scripts/room_footprint.gd").cells(room.pos, room.get("size", Vector2i.ONE)):
+			wreck_occupied[cell] = true
 	if not preload("res://scripts/wreck_field.gd").valid(data.get("wrecks",{}),wreck_occupied):
 		return false
 	if not preload("res://scripts/architects.gd").valid(data.get("architects",{}),data.get("wrecks",{}),data.get("recovered_crew",[])): return false
@@ -247,14 +248,19 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 			if entry is String:
 				game.event_history.append(entry)
 	game.run_save_path = data.get("_path", game.run_save_path)
-	game.occupied.clear()
-	for room in game.placed_rooms:
-		game.occupied[room.pos] = room
+	game.occupied = occupancy_for_rooms(game.placed_rooms)
 	game.bill_npc = game.BillNPC.new()
 	game.veld_npc = game.VeldNPC.new()
 	game.branforth_npc = game.BranforthNPC.new()
 	game.marsh_npc = game.MarshNPC.new()
 	return true
+
+static func occupancy_for_rooms(rooms: Array) -> Dictionary:
+	var occupied := {}
+	for room in rooms:
+		for cell in preload("res://scripts/room_footprint.gd").cells(room.pos, room.get("size", Vector2i.ONE)):
+			occupied[cell] = room
+	return occupied
 
 static func _restore_crew(game, data: Dictionary, staged := false) -> void:
 	if data.get("crew") != null:

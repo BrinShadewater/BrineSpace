@@ -2298,7 +2298,8 @@ func _draw_static_door_foregrounds(main) -> void:
 			draw_target.draw_rect(Rect2(edge_center - frame_size * 0.5, frame_size), Color(0.04, 0.07, 0.08, 0.82))
 
 func _door_has_connected_neighbor(main, room: Dictionary, neighbor_pos: Vector2i, offset: Vector2i) -> bool:
-	return main.occupied.has(neighbor_pos) and main._placed_rooms_connected(room, main.occupied[neighbor_pos], offset)
+	var cell: Vector2i = neighbor_pos - offset
+	return main.occupied.has(neighbor_pos) and main._placed_rooms_connected(room, main.occupied[neighbor_pos], offset, cell, neighbor_pos)
 
 func _is_duplicate_connected_door_side(side: String) -> bool:
 	return side == "north" or side == "west"
@@ -2324,7 +2325,7 @@ func _compute_door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i) -> i
 	if main.bill_npc.active or main.has_dr_veld() or main.has_chief_branforth() or main.has_marsh() or not main.companion_roster.is_empty():
 		if not main.occupied.has(cell_a) or not main.occupied.has(cell_b): return 0
 		var offset:=cell_b-cell_a
-		if absi(offset.x)+absi(offset.y)!=1 or not main._placed_rooms_connected(main.occupied[cell_a],main.occupied[cell_b],offset): return 0
+		if absi(offset.x)+absi(offset.y)!=1 or not main._placed_rooms_connected(main.occupied[cell_a],main.occupied[cell_b],offset,cell_a,cell_b): return 0
 		var center := (Vector2(cell_a + cell_b) * 0.5 + Vector2.ONE * 0.5) * _cell_size()
 		var distance := _nearest_crew_foot(main, center).distance_to(center) * 384.0 / _cell_size()
 		# Fully open before either crew member reaches the threshold; close
@@ -2863,7 +2864,7 @@ func _draw_connectors(room: Dictionary, occupied: Dictionary) -> void:
 	var pos: Vector2i = room["pos"]
 	var center := Vector2(pos) * cell_size + Vector2(cell_size, cell_size) * 0.5
 	for offset in [Vector2i.RIGHT, Vector2i.DOWN]:
-		if occupied.has(pos + offset) and main._placed_rooms_connected(room, occupied[pos + offset], offset):
+		if occupied.has(pos + offset) and main._placed_rooms_connected(room, occupied[pos + offset], offset, pos, pos + offset):
 			var neighbor_center := Vector2(pos + offset) * cell_size + Vector2(cell_size, cell_size) * 0.5
 			draw_target.draw_line(center, neighbor_center, Color("#88939a"), 5)
 			draw_target.draw_line(center, neighbor_center, Color("#1d252b"), 2)

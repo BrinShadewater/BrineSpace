@@ -2335,6 +2335,17 @@ func get_placement_problem(id: String, cell: Vector2i) -> String:
 	if placed_rooms.is_empty():
 		return ""
 	var mismatch := ""
+	if room.get("size", Vector2i.ONE) != Vector2i.ONE:
+		var candidate: Dictionary = room.duplicate(true)
+		candidate["pos"] = cell
+		candidate["rotation"] = selected_rotation
+		for port in RoomFootprintScript.ports(candidate):
+			var offset: Vector2i = _offset_from_side(str(port.side))
+			var adjacent: Vector2i = port.cell + offset
+			if not occupied.has(adjacent): continue
+			if _ports_connect(candidate, occupied[adjacent], port.cell, adjacent): return ""
+			mismatch = "Door does not match %s. Rotate with %s." % [occupied[adjacent]["display_name"], Preferences.key_name("Rotate blueprint")]
+		return mismatch if not mismatch.is_empty() else "must connect to an adjacent door."
 	for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
 		var neighbor_pos: Vector2i = cell + offset
 		if occupied.has(neighbor_pos):
@@ -4378,6 +4389,26 @@ func _doors_connect(new_id: String, room_rotation: int, offset: Vector2i, neighb
 	var neighbor_side := _opposite_side(new_side)
 	return _room_doors(new_id, room_rotation).has(new_side) and _room_doors(neighbor["id"], int(neighbor.get("rotation", 0))).has(neighbor_side)
 
+func _ports_connect(room_a: Dictionary, room_b: Dictionary, cell_a: Vector2i, cell_b: Vector2i) -> bool:
+	var offset := cell_b - cell_a
+	if absi(offset.x) + absi(offset.y) != 1: return false
+	if room_a.get("branch_owner", Vector2i(-1,-1)) != room_b.get("branch_owner", Vector2i(-1,-1)): return false
+	if room_a.get("pos", Vector2i(-1,-1)) == room_b.get("pos", Vector2i(-2,-2)) and room_a.get("id", "") == room_b.get("id", ""):
+		return true
+	var side := _side_from_offset(offset)
+	var opposite := _opposite_side(side)
+	var a_has: bool = get_room_doors(room_a).has(side) if room_a.get("size", Vector2i.ONE) == Vector2i.ONE and cell_a == room_a.get("pos", cell_a) else RoomFootprintScript.ports(room_a).has({"cell": cell_a, "side": side})
+	var b_has: bool = get_room_doors(room_b).has(opposite) if room_b.get("size", Vector2i.ONE) == Vector2i.ONE and cell_b == room_b.get("pos", cell_b) else RoomFootprintScript.ports(room_b).has({"cell": cell_b, "side": opposite})
+	return a_has and b_has
+
+func _offset_from_side(side: String) -> Vector2i:
+	match side:
+		"north": return Vector2i.UP
+		"east": return Vector2i.RIGHT
+		"south": return Vector2i.DOWN
+		"west": return Vector2i.LEFT
+	return Vector2i.ZERO
+
 var room_door_cache: Dictionary = {}
 
 func _room_doors(room_id: String, room_rotation: int) -> Array:
@@ -4532,12 +4563,14 @@ func _connected_neighbor_cells(cell: Vector2i) -> Array:
 		return neighbors
 	for offset in [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]:
 		var neighbor_cell: Vector2i = cell + offset
-		if occupied.has(neighbor_cell) and _placed_rooms_connected(occupied[cell], occupied[neighbor_cell], offset):
+		if occupied.has(neighbor_cell) and _placed_rooms_connected(occupied[cell], occupied[neighbor_cell], offset, cell, neighbor_cell):
 			neighbors.append(neighbor_cell)
 	return neighbors
 
-func _placed_rooms_connected(room: Dictionary, neighbor: Dictionary, offset: Vector2i) -> bool:
+func _placed_rooms_connected(room: Dictionary, neighbor: Dictionary, offset: Vector2i, cell_a: Vector2i = Vector2i(-1,-1), cell_b: Vector2i = Vector2i(-1,-1)) -> bool:
 	if room.get("branch_owner",Vector2i(-1,-1))!=neighbor.get("branch_owner",Vector2i(-1,-1)):return false
+	if cell_a != Vector2i(-1,-1) and cell_b != Vector2i(-1,-1):
+		return _ports_connect(room, neighbor, cell_a, cell_b)
 	var side := _side_from_offset(offset)
 	var opposite := _opposite_side(side)
 	return get_room_doors(room).has(side) and get_room_doors(neighbor).has(opposite)

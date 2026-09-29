@@ -166,24 +166,29 @@ static func draw_crew_wake(canvas,contact: Vector2,texture: Texture2D,clock: flo
 static func draw_door_currents(canvas,game,room: Dictionary,center: Vector2,scale: float,time: float) -> void:
 	if room.get("isolated",false): return
 	var water := float(room.get("water_level",0))
-	for direction in [Vector2i.RIGHT,Vector2i.DOWN]:
-		var cell: Vector2i=room.pos+direction
-		if not game.occupied.has(cell): continue
-		var neighbor: Dictionary=game.occupied[cell]
+	for source in preload("res://scripts/room_footprint.gd").cells(room.pos,room.get("size",Vector2i.ONE)):
+		for direction in [Vector2i.RIGHT,Vector2i.DOWN]:
+			var cell: Vector2i=source+direction
+			if not game.occupied.has(cell): continue
+			var neighbor: Dictionary=game.occupied[cell]
+			if neighbor.get("pos",Vector2i(-1,-1))==room.pos: continue
+			_draw_single_door_current(canvas,game,room,neighbor,source,cell,direction,center+Vector2(source-room.pos)*384.0*scale,scale,time,water)
+
+static func _draw_single_door_current(canvas,game,room: Dictionary,neighbor: Dictionary,source: Vector2i,cell: Vector2i,direction: Vector2i,center: Vector2,scale: float,time: float,water: float) -> void:
 		var difference := water-float(neighbor.get("water_level",0))
 		if maxf(water,float(neighbor.get("water_level",0)))<=0.015:
-			game.grid_view.door_wet_history.erase([room.pos,cell])
-			continue
-		if neighbor.get("isolated",false): continue
-		if not game._placed_rooms_connected(room,neighbor,direction): continue
-		var aperture := float(game.grid_view._door_frame_for_pair(game,room.pos,cell))/float(game.grid_view.DOOR_OPEN_FRAMES-1)
-		var key: Array=[room.pos,cell]
+			game.grid_view.door_wet_history.erase([source,cell])
+			return
+		if neighbor.get("isolated",false): return
+		if not game._placed_rooms_connected(room,neighbor,direction,source,cell): return
+		var aperture := float(game.grid_view._door_frame_for_pair(game,source,cell))/float(game.grid_view.DOOR_OPEN_FRAMES-1)
+		var key: Array=[source,cell]
 		var wet=preload("res://rooms/doors/door_water.gd")
 		var state: Dictionary=wet.advance(game.grid_view.door_wet_history.get(key,{}),roundi(aperture*9),time)
 		game.grid_view.door_wet_history[key]=state
 		wet.draw(canvas,center+Vector2(direction)*192*scale,Vector2(direction),aperture,difference,maxf(water,float(neighbor.get("water_level",0))),float(state.closing_until)>time,time,scale)
-		if absf(difference)<0.015: continue
-		if aperture<=0: continue
+		if absf(difference)<0.015: return
+		if aperture<=0: return
 		var flow := Vector2(direction)*signf(difference)
 		var across := Vector2(-flow.y,flow.x)
 		var mouth := center+Vector2(direction)*192*scale
