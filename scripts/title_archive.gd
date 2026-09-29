@@ -9,6 +9,9 @@ var mode := ""
 var in_game := false
 var content: VBoxContainer
 var scroll: ScrollContainer
+# Meta Progression: the Archived Data balance and the page tabs live here, above the scroll area, so they
+# stay in view while the cards scroll (owner playtest, Sept 29).
+var sticky: VBoxContainer
 var grid: GridContainer
 var search: LineEdit
 var room_ids: Array[String] = []
@@ -127,6 +130,7 @@ func _build() -> void:
 		codex_tabs.add_tab("TRANSMISSIONS")
 		codex_tabs.current_tab = codex_tab
 		codex_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		_style_tabs(codex_tabs)
 		codex_tabs.tab_changed.connect(func(index: int) -> void:
 			codex_tab = index
 			scroll.scroll_vertical = 0
@@ -749,11 +753,20 @@ func _resources(values: Dictionary) -> String:
 
 # Meta Progression (owner playtest, Sept 17): one currency, Archived Data, spent across tabs.
 func _populate_progression() -> void:
+	if not is_instance_valid(sticky):
+		sticky = VBoxContainer.new()
+		sticky.name = "ProgressionHeader"
+		sticky.add_theme_constant_override("separation", 10)
+		content.add_child(sticky)
+		content.move_child(sticky, scroll.get_index())
+	for child in sticky.get_children():
+		sticky.remove_child(child)
+		child.queue_free()
 	# The spendable balance with its icon, always in view (owner playtest, Sept 17).
 	var balance := HBoxContainer.new()
 	balance.name = "ArchivedDataBalance"
 	balance.add_theme_constant_override("separation", 12)
-	grid.add_child(balance)
+	sticky.add_child(balance)
 	var coin := TextureRect.new()
 	coin.texture = load(ResourceIcons.PATHS.archived_data)
 	coin.custom_minimum_size = Vector2(40, 40)
@@ -781,7 +794,12 @@ func _populate_progression() -> void:
 		progression_tab = index
 		scroll.scroll_vertical = 0
 		_refresh_progression.call_deferred("ProgressionTabs"))
-	grid.add_child(tabs)
+	_style_tabs(tabs)
+	sticky.add_child(tabs)
+	var rule := ColorRect.new()
+	rule.color = Color("1f3a44")
+	rule.custom_minimum_size.y = 1
+	sticky.add_child(rule)
 	match progression_tab:
 		1: _blueprint_shop()
 		2: _crew_shop()
@@ -878,6 +896,39 @@ func _crew_card(id: String, accent: Color, owned: bool, met: bool) -> Array:
 	else:
 		lines.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 15))
 	return [card, rows]
+
+# The page tabs (Upgrades, Blueprints, Crew & Companions, Records): the same palette as the Settings
+# sidebar, a readable size, and a clear selected state.
+func _style_tabs(tabs: TabBar) -> void:
+	tabs.add_theme_font_override("font", preload("res://scripts/ui_fonts.gd").interface_medium())
+	tabs.add_theme_font_size_override("font_size", 18)
+	tabs.add_theme_color_override("font_selected_color", Color("e6f6f3"))
+	tabs.add_theme_color_override("font_hovered_color", Color("d4eae8"))
+	tabs.add_theme_color_override("font_unselected_color", Color("9fb8c0"))
+	tabs.add_theme_constant_override("h_separation", 10)
+	for state in ["tab_selected", "tab_hovered", "tab_unselected", "tab_focus"]:
+		var box := StyleBoxFlat.new()
+		box.set_corner_radius_all(6)
+		box.set_border_width_all(1)
+		box.content_margin_left = 18
+		box.content_margin_right = 18
+		box.content_margin_top = 9
+		box.content_margin_bottom = 9
+		match state:
+			"tab_selected":
+				box.bg_color = Color("153a42")
+				box.border_color = Color("5fd3c4")
+			"tab_hovered":
+				box.bg_color = Color("10262e")
+				box.border_color = Color("3a6470")
+			"tab_focus":
+				box.bg_color = Color(0, 0, 0, 0)
+				box.border_color = Color("e6f6f3")
+				box.set_border_width_all(2)
+			_:
+				box.bg_color = Color("0b1a21")
+				box.border_color = Color("1f3a44")
+		tabs.add_theme_stylebox_override(state, box)
 
 # A stretchy gap above the buy button, so it sits at the foot of every card whatever the text above
 # it takes (owner playtest, Sept 28).
@@ -1058,7 +1109,7 @@ func _refresh_progression(focus_name: String) -> void:
 	_populate_progression()
 	preload("res://scripts/title_settings.gd").apply_menu_text(self)
 	scroll.set_deferred("scroll_vertical", keep)
-	var target := grid.find_child(focus_name, true, false)
+	var target := find_child(focus_name, true, false)
 	if target is PanelContainer: target = target.find_child("Buy", true, false)
 	if ResearchTree.PERKS.has(focus_name): target = grid.find_child("PerkDetail", true, false).find_child("Buy", true, false) if grid.find_child("PerkDetail", true, false) != null else target
 	if target is Control and target.focus_mode != Control.FOCUS_NONE and not (target is Button and target.disabled):
