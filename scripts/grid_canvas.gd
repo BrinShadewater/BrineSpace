@@ -1887,9 +1887,7 @@ func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Ve
 		var local_cell := cell - Vector2i(room.pos)
 		var cell_rect := Rect2(Vector2(local_cell)*384.0,Vector2.ONE*384.0)
 		var blockers: Array = []
-		for bound in LARGE_ROOM_VIEWS[room.id].fixed_bounds():
-			for _turn in range(posmod(int(room.get("rotation",0)),4)):
-				bound = Rect2(Vector2(768.0-bound.end.y,bound.position.x),Vector2(bound.size.y,bound.size.x))
+		for bound in LARGE_ROOM_VIEWS[room.id].fixed_bounds_for_rotation(int(room.get("rotation",0))):
 			var overlap: Rect2 = bound.intersection(cell_rect)
 			if overlap.has_area(): blockers.append(Rect2(overlap.position - cell_rect.position - Vector2.ONE*192.0, overlap.size).grow(10.0))
 		for prop in LargeStudioView.live_props(str(room.id),int(room.get("rotation",0))):

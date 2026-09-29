@@ -56,6 +56,14 @@ func run_check() -> void:
 			await process_frame
 			await process_frame
 			root.get_viewport().get_texture().get_image().save_png("res://output/large-room-review/studio-" + id + ".png")
+		studio.switch_rotation(1)
+		var expected: Array[Rect2] = LargeView.VIEWS[id].fixed_bounds_for_rotation(1)
+		var editor_bounds: Array[Rect2] = studio.large_fixed_bounds()
+		if not check(editor_bounds.size() == expected.size(), id + " rotated Studio bounds are incomplete"): return
+		for bound_index in range(expected.size()):
+			if not check(editor_bounds[bound_index].position.distance_to(expected[bound_index].position - Vector2.ONE * 384.0) < 0.01 and editor_bounds[bound_index].size == expected[bound_index].size,
+				id + " Studio bounds disagree with the rotated art"): return
+		studio.switch_rotation(0)
 	studio.switch_rotation(1)
 	if not check(studio.is_large_room() and studio.room.quarter == 1, "large room rotation did not load"): return
 	studio.switch_room(0)

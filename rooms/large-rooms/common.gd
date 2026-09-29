@@ -41,15 +41,36 @@ static func wall_bank_raster_size(native: Vector2i) -> Vector2i:
 	var factor: float = minf(1020.0 / float(native.x), 310.0 / float(native.y))
 	return Vector2i(maxi(1, roundi(float(native.x) * factor)), maxi(1, roundi(float(native.y) * factor)))
 
-static func draw_features(canvas: CanvasItem, features: Array) -> void:
+static func draw_features(canvas: CanvasItem, features: Array, room: Dictionary, rect: Rect2) -> void:
+	# Station props v2 keep their authored top-down facing as the layout turns.
+	# Their workstations move with the large room, while the centerpiece rotates.
+	var rotation := posmod(int(room.get("rotation", 0)), 4)
+	var scale := Vector2.ONE * (rect.size.x / FLOOR_SIZE)
+	canvas.draw_set_transform(rect.get_center(), 0.0, scale)
 	for feature in features:
-		sprite(canvas, str(feature.path), feature.rect)
+		var source: Rect2 = feature.rect
+		var center := source.get_center().rotated(float(rotation) * PI * 0.5)
+		sprite(canvas, str(feature.path), Rect2(center - source.size * 0.5, source.size))
+	canvas.draw_set_transform(rect.get_center(), float(rotation) * PI * 0.5, scale)
 
 static func feature_bounds(features: Array) -> Array[Rect2]:
 	var result: Array[Rect2] = []
 	for feature in features:
 		var bounds: Rect2 = feature.rect
 		result.append(Rect2(bounds.position + Vector2.ONE * HALF, bounds.size))
+	return result
+
+static func rotated_bounds(bound: Rect2, rotation: int) -> Rect2:
+	for _turn in range(posmod(rotation, 4)):
+		bound = Rect2(Vector2(FLOOR_SIZE - bound.end.y, bound.position.x), Vector2(bound.size.y, bound.size.x))
+	return bound
+
+static func fixed_bounds_for_rotation(centerpiece: Rect2, features: Array, rotation: int) -> Array[Rect2]:
+	var result: Array[Rect2] = [rotated_bounds(centerpiece, rotation)]
+	for feature in features:
+		var source: Rect2 = feature.rect
+		var center := source.get_center().rotated(float(posmod(rotation, 4)) * PI * 0.5)
+		result.append(Rect2(center + Vector2.ONE * HALF - source.size * 0.5, source.size))
 	return result
 
 static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, wall_style: Dictionary, floor_art: String, floor_opacity: float) -> void:

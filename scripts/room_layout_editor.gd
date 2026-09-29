@@ -793,9 +793,7 @@ func large_door_lanes() -> Array[Rect2]:
 
 func large_fixed_bounds() -> Array[Rect2]:
 	var result: Array[Rect2]=[]
-	for original in LargeView.VIEWS[str(entries[index].room)].fixed_bounds():
-		var bound: Rect2=original
-		for _turn in range(quarter): bound=Rect2(Vector2(768.0-bound.end.y,bound.position.x),Vector2(bound.size.y,bound.size.x))
+	for bound in LargeView.VIEWS[str(entries[index].room)].fixed_bounds_for_rotation(quarter):
 		result.append(Rect2(bound.position-Vector2.ONE*384.0,bound.size))
 	return result
 

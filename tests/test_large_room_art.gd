@@ -39,8 +39,6 @@ func doors_share_walkable_floor(room: Dictionary, bounds: Array, rotation: int) 
 	var blockers: Array[Rect2] = []
 	for source in bounds:
 		var bound: Rect2 = source
-		for turn in range(rotation):
-			bound = Rect2(Vector2(768.0 - bound.end.y, bound.position.x), Vector2(bound.size.y, bound.size.x))
 		blockers.append(bound.grow(10.0))
 	var blocked := {}
 	for y in range(COUNT):
@@ -140,7 +138,14 @@ func _init() -> void:
 				for earlier in range(feature_index):
 					check(not feature_rect.intersects(features[earlier].rect), id + " supports do not overlap")
 			for rotation in range(4):
-				check(doors_share_walkable_floor(room, bounds, rotation), id + " connects all doors around fixed props in rotation " + str(rotation))
+				var rotated: Array[Rect2] = view.fixed_bounds_for_rotation(rotation)
+				check(rotated.size() == bounds.size(), id + " keeps all fixed bounds in rotation " + str(rotation))
+				for feature_index in range(features.size()):
+					var source: Rect2 = features[feature_index].rect
+					var expected_center := source.get_center().rotated(float(rotation) * PI * 0.5) + Vector2.ONE * 384.0
+					check(rotated[feature_index + 1].size == source.size and rotated[feature_index + 1].get_center().distance_to(expected_center) < 0.01,
+						id + " keeps support art upright at its rotated position in rotation " + str(rotation))
+				check(doors_share_walkable_floor(room, rotated, rotation), id + " connects all doors around fixed props in rotation " + str(rotation))
 			for port in room.ports:
 				var cell: Vector2i = port.cell
 				var access := Rect2()
