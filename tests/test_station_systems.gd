@@ -203,7 +203,7 @@ func run():
 		for frame in range(15): await process_frame
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png(capture_dir.path_join("transmission-archive.png"))
-	var replay_button: Button = archive.grid.get_child(2)
+	var replay_button: Button = archive.grid.find_child("Replay", true, false)
 	replay_button.pressed.emit()
 	var playback = root.get_child(root.get_child_count()-1)
 	check(playback.get_script().resource_path == "res://scripts/loading_transition.gd" and playback.replay_mode,"Archive starts the scrolling recording without changing scenes")
