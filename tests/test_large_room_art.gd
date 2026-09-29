@@ -1,0 +1,80 @@
+extends SceneTree
+
+const Rooms = preload("res://scripts/room_database.gd")
+const Footprint = preload("res://scripts/room_footprint.gd")
+const Cards = preload("res://scripts/room_card_art.gd")
+const Main = preload("res://scripts/main.gd")
+const Grid = preload("res://scripts/grid_canvas.gd")
+
+const IDS := ["hydroponics_farm", "storage_depot", "moonbay", "tidal_power_plant"]
+const COSTS := [{"metal": 16, "biomass": 3}, {"metal": 18},
+	{"metal": 20, "rare_minerals": 2}, {"metal": 18, "rare_minerals": 3}]
+const COLORS := ["Life Support", "Engineering", "Robotics", "Engineering"]
+const VIEWS := ["res://rooms/large-rooms/hydroponics_farm.gd",
+	"res://rooms/large-rooms/storage_depot.gd", "res://rooms/large-rooms/moonbay.gd",
+	"res://rooms/large-rooms/tidal_power_plant.gd"]
+
+var failures := 0
+
+func check(ok: bool, message: String) -> void:
+	if not ok:
+		failures += 1
+		push_error(message)
+
+func _init() -> void:
+	for i in range(IDS.size()):
+		var id: String = IDS[i]
+		var room: Dictionary = Rooms.get_room(id)
+		check(not room.is_empty(), id + " has a blueprint")
+		if room.is_empty(): continue
+		check(room.get("size") == Vector2i(2, 2), id + " occupies 2x2")
+		check(room.get("cost", {}) == COSTS[i], id + " has premium cost")
+		check(room.get("category", "") == COLORS[i], id + " uses accepted department color")
+		check(Rooms.STARTING_UNLOCKS.has(id), id + " can enter the first run sequence")
+		room["pos"] = Vector2i(10, 10)
+		room["rotation"] = 0
+		check(Footprint.ports(room).size() == 4, id + " has four perimeter doors")
+		check(Cards.PATHS.has(id) and str(Cards.PATHS.get(id, "")).begins_with("res://assets/"), id + " has a whole card art path")
+		if Cards.PATHS.has(id): check(FileAccess.file_exists(str(Cards.PATHS[id])), id + " card image exists")
+		check(ResourceLoader.exists(VIEWS[i]), id + " fixed view exists")
+		if ResourceLoader.exists(VIEWS[i]):
+			var view = load(VIEWS[i])
+			var bounds: Array = view.fixed_bounds()
+			check(not bounds.is_empty() and bounds[0].size.x >= 150 and bounds[0].size.y >= 100, id + " has a very large fixed prop")
+			for port in room.ports:
+				var cell: Vector2i = port.cell
+				var access := Rect2()
+				match str(port.side):
+					"north": access = Rect2(cell.x * 384.0 + 122, 0, 140, 180)
+					"east": access = Rect2(588, cell.y * 384.0 + 122, 180, 140)
+					"south": access = Rect2(cell.x * 384.0 + 122, 588, 140, 180)
+					"west": access = Rect2(0, cell.y * 384.0 + 122, 180, 140)
+				for bound in bounds:
+					check(not bound.intersects(access), id + " prop stays clear of door approach")
+	var farm: Dictionary = Rooms.get_room("hydroponics_farm")
+	check(farm.get("production", {}) == {"food": 6, "oxygen": 3} and farm.get("consumption", {}) == {"water": 2, "power": 3}, "Farm has proposed cycle rates")
+	var depot: Dictionary = Rooms.get_room("storage_depot")
+	check(depot.get("storage", {}) == {"metal": 180, "food": 80, "oxygen": 80, "water": 80}, "Depot adds large shared capacity")
+	var plant: Dictionary = Rooms.get_room("tidal_power_plant")
+	check(plant.get("production", {}).get("power", 0) == 14 and plant.get("ocean_side", "") == "north", "Tidal plant has major ocean-dependent output")
+	var moonbay: Dictionary = Rooms.get_room("moonbay")
+	check(moonbay.get("ocean_side", "") == "west" and moonbay.get("consumption", {}).get("power", 0) > 0, "Moonbay has a west launch wall and power need")
+	var grid = Grid.new()
+	moonbay.pos = Vector2i(10,10)
+	var base: Dictionary = grid.bill_room_geometry(moonbay, [], moonbay.pos)
+	moonbay.rotation = 1
+	var rotated: Dictionary = grid.bill_room_geometry(moonbay, [], moonbay.pos)
+	check(not base.blockers.is_empty() and not rotated.blockers.is_empty() and rotated.blockers[0].position.x > base.blockers[0].position.x, "Fixed sub collision follows room rotation")
+	grid.free()
+	if not plant.is_empty():
+		var game = Main.new()
+		plant.pos = Vector2i(10, 10)
+		plant.rotation = 0
+		check(game.has_method("_ocean_face_problem"), "Plant has a whole-side intake check")
+		if game.has_method("_ocean_face_problem"):
+			check(game.call("_ocean_face_problem", plant).is_empty(), "Open ocean supports the plant")
+			game.occupied[Vector2i(10, 9)] = {"id": "corridor"}
+			check(not game.call("_ocean_face_problem", plant).is_empty(), "Blocked ocean intake stops the plant")
+		game.free()
+	print("LARGE ROOM ART ", "PASS" if failures == 0 else "FAIL", " / ", failures, " failures")
+	quit(0 if failures == 0 else 1)

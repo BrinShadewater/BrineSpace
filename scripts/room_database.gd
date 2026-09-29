@@ -60,7 +60,11 @@ const STARTING_UNLOCKS := [
 	"tee_corridor",
 	"pressure_control",
 	"listening_post",
-	"isolation_vault"
+	"isolation_vault",
+	"hydroponics_farm",
+	"storage_depot",
+	"moonbay",
+	"tidal_power_plant"
 ]
 
 const LAYOUTS := {
@@ -82,6 +86,40 @@ const LAYOUTS := {
 
 static func all_rooms() -> Dictionary:
 	var rooms := {
+		"hydroponics_farm": {
+			"id":"hydroponics_farm", "display_name":"Hydroponics Farm", "category":"Life Support", "rarity":"special",
+			"cost":{"metal":16,"biomass":3}, "size":Vector2i(2,2),
+			"production":{"food":6,"oxygen":3}, "consumption":{"water":2,"power":3},
+			"tags":["food","oxygen","hydroponics","large_room"], "fixed_prop":"grow_beds",
+			"ports":[{"cell":Vector2i(0,0),"side":"north"},{"cell":Vector2i(1,0),"side":"east"},{"cell":Vector2i(1,1),"side":"south"},{"cell":Vector2i(0,1),"side":"west"}],
+			"description":"A four-compartment growing floor with fixed beds and an irrigation spine. Produces Food and Oxygen when supplied with Water and Power. The crops do not care whether we deserve a harvest.",
+			"unlocked":true
+		},
+		"storage_depot": {
+			"id":"storage_depot", "display_name":"Storage Depot", "category":"Engineering", "rarity":"special",
+			"cost":{"metal":18}, "size":Vector2i(2,2), "production":{}, "consumption":{},
+			"storage":{"metal":180,"food":80,"oxygen":80,"water":80},
+			"tags":["storage","logistics","large_room"], "fixed_prop":"cargo_gantry",
+			"ports":[{"cell":Vector2i(0,0),"side":"north"},{"cell":Vector2i(1,0),"side":"east"},{"cell":Vector2i(1,1),"side":"south"},{"cell":Vector2i(0,1),"side":"west"}],
+			"description":"A broad cargo hall with fixed racks and an overhead gantry. Adds major shared storage capacity. I have left the central route clear. Please consider doing the same.",
+			"unlocked":true
+		},
+		"moonbay": {
+			"id":"moonbay", "display_name":"Moonbay", "category":"Robotics", "rarity":"special",
+			"cost":{"metal":20,"rare_minerals":2}, "size":Vector2i(2,2), "production":{}, "consumption":{"power":2},
+			"tags":["crew","submersible","exploration","large_room"], "fixed_prop":"mini_sub", "ocean_side":"west",
+			"ports":[{"cell":Vector2i(0,0),"side":"north"},{"cell":Vector2i(1,0),"side":"north"},{"cell":Vector2i(1,1),"side":"east"},{"cell":Vector2i(0,1),"side":"south"}],
+			"description":"A dry mini-sub hangar with a sealed ocean launch chamber. Assign crew to survey, recover cargo and reach deep sites. The sea may keep its own records; we will keep ours.",
+			"unlocked":true
+		},
+		"tidal_power_plant": {
+			"id":"tidal_power_plant", "display_name":"Tidal Power Plant", "category":"Engineering", "rarity":"special",
+			"cost":{"metal":18,"rare_minerals":3}, "size":Vector2i(2,2), "production":{"power":14}, "consumption":{},
+			"tags":["power","current","engineering","large_room"], "fixed_prop":"tidal_turbine", "ocean_side":"north",
+			"ports":[{"cell":Vector2i(0,0),"side":"west"},{"cell":Vector2i(1,0),"side":"east"},{"cell":Vector2i(0,1),"side":"south"},{"cell":Vector2i(1,1),"side":"south"}],
+			"description":"A large turbine hall. Produces 14 Power while the intake wall faces open water. If the current stops, investigate what you built in its way.",
+			"unlocked":true
+		},
 		"cold_store": {
 			"id":"cold_store", "display_name":"Cold Store", "category":"Engineering", "rarity":"uncommon",
 			"cost":{"metal":8}, "size":Vector2i.ONE, "production":{}, "consumption":{"power":1}, "storage":{"food":40,"biomass":20},

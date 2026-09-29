@@ -3,6 +3,10 @@ extends RefCounted
 # Card art baked from the current room designs by tools/bake_room_cards_v2.gd (owner playtest,
 # Sept 17). Corridors keep their polished cards. Re-run the tool after redressing rooms.
 const PATHS := {
+	"hydroponics_farm": "res://assets/large-room-cards/hydroponics_farm.png",
+	"storage_depot": "res://assets/large-room-cards/storage_depot.png",
+	"moonbay": "res://assets/large-room-cards/moonbay.png",
+	"tidal_power_plant": "res://assets/large-room-cards/tidal_power_plant.png",
 	"echo_chamber": "res://assets/new-room-cards/echo_chamber.png",
 	"fold_chamber": "res://assets/new-room-cards/fold_chamber.png",
 	"pressure_garden": "res://assets/new-room-cards/pressure_garden.png",

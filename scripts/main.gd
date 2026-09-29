@@ -2375,15 +2375,11 @@ func get_footprint_placement_problem(id: String, anchor: Vector2i, rotation: int
 			if not WreckField.visible(wrecks, covered): return "unexplored mountain interior."
 			return "rock occupies this cell. Select it to break and clear." if wrecks[covered].kind == "basalt" else "wreckage occupies this cell. Select it to dismantle and salvage."
 	if room.has("ocean_side"):
-		var sides: Array = ["north", "east", "south", "west"]
-		var side: String = sides[(sides.find(str(room.ocean_side)) + posmod(rotation, 4)) % 4]
 		var placed := room.duplicate(true)
 		placed["pos"] = anchor
-		for exterior in RoomFootprintScript.exterior_cells(placed, side):
-			if exterior.x < 0 or exterior.y < 0 or exterior.x >= GRID_SIZE or exterior.y >= GRID_SIZE:
-				return "ocean-facing side must fit inside the site."
-			if occupied.has(exterior) or drone_fleet.reserved(exterior) or drone_fleet.Sites.blocks(drone_fleet.sites, exterior) or WreckField.blocks(wrecks, exterior):
-				return "ocean-facing side must face open water."
+		placed["rotation"] = rotation
+		var ocean_problem := _ocean_face_problem(placed)
+		if not ocean_problem.is_empty(): return "ocean-facing side must face open water: %s." % ocean_problem
 	return ""
 
 func _place_room(id: String, cell: Vector2i, free := false, construction_complete := false) -> void:
@@ -2495,6 +2491,9 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 			offline[cell] = "ISOLATED" if room.get("isolated", false) else "FLOODED"
 			continue
 		if room.id == "current_turbine" and not _turbine_intake_clear(room):
+			offline[cell] = "INTAKE BLOCKED"
+			continue
+		if room.id == "tidal_power_plant" and not _ocean_face_problem(room).is_empty():
 			offline[cell] = "INTAKE BLOCKED"
 			continue
 		var fuel: Dictionary = room.get("consumption", {})
@@ -2665,6 +2664,19 @@ func _turbine_intake_problem(room: Dictionary) -> String:
 	if WreckField.blocks(wrecks, intake): return "ROCK" if wrecks[intake].get("kind", "") == "basalt" else "WRECK"
 	if drone_fleet.Sites.blocks(drone_fleet.sites, intake): return "RESOURCE DEPOSIT"
 	if drone_fleet.reserved(intake): return "QUEUED CONSTRUCTION"
+	return ""
+
+func _ocean_face_problem(room: Dictionary) -> String:
+	var sides := ["north", "east", "south", "west"]
+	var side_index := sides.find(str(room.get("ocean_side", "")))
+	if side_index < 0: return "NO OCEAN FACE"
+	var side: String = sides[(side_index + posmod(int(room.get("rotation", 0)), 4)) % 4]
+	for exterior in RoomFootprintScript.exterior_cells(room, side):
+		if exterior.x < 0 or exterior.y < 0 or exterior.x >= GRID_SIZE or exterior.y >= GRID_SIZE: return "MAP EDGE"
+		if occupied.has(exterior): return "ROOM"
+		if WreckField.blocks(wrecks, exterior): return "ROCK" if wrecks[exterior].get("kind", "") == "basalt" else "WRECK"
+		if drone_fleet.Sites.blocks(drone_fleet.sites, exterior): return "RESOURCE DEPOSIT"
+		if drone_fleet.reserved(exterior): return "QUEUED CONSTRUCTION"
 	return ""
 
 func _apply_room_economy() -> Dictionary:

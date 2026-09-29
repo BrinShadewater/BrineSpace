@@ -6,6 +6,13 @@ signal cell_secondary_clicked(cell: Vector2i)
 signal cell_hovered(cell: Vector2i)
 
 const RoomDatabaseScript := preload("res://scripts/room_database.gd")
+const RoomFootprintScript := preload("res://scripts/room_footprint.gd")
+const LARGE_ROOM_VIEWS := {
+	"hydroponics_farm": preload("res://rooms/large-rooms/hydroponics_farm.gd"),
+	"storage_depot": preload("res://rooms/large-rooms/storage_depot.gd"),
+	"moonbay": preload("res://rooms/large-rooms/moonbay.gd"),
+	"tidal_power_plant": preload("res://rooms/large-rooms/tidal_power_plant.gd")
+}
 const SeabedBackground := preload("res://assets/environment/seabed-v1/seabed_background.gd")
 var seabed_background := SeabedBackground.new()
 const WreckView := preload("res://assets/environment/wrecked-rooms-v1/wreck_view.gd")
@@ -800,19 +807,21 @@ func _door_light_state() -> void:
 		lights.append([room.pos,room.id,light_level,drawn_level])
 		if room.id=="airlock":
 			doors.append([room.pos,"exterior-hatch",room.rotation,preload("res://scripts/airlock_cycle.gd").pose(room),main.hardware.walls,preload("res://scripts/title_settings.gd").raised_walls])
-		for side in ["north","east","south","west"]:
+		for edge_port in _render_ports(room, main):
+			var pos: Vector2i = edge_port.cell
+			var side: String = edge_port.side
 			var offset := _offset_from_side(side)
-			var neighbor: Vector2i = room.pos+offset
-			var edge := Vector3i(mini(room.pos.x,neighbor.x),mini(room.pos.y,neighbor.y),0 if offset.x!=0 else 1)
+			var neighbor: Vector2i = pos+offset
+			var edge := Vector3i(mini(pos.x,neighbor.x),mini(pos.y,neighbor.y),0 if offset.x!=0 else 1)
 			if not connections.has(edge): connections[edge] = _door_has_connected_neighbor(main,room,neighbor,offset)
 			var connected: bool = connections[edge]
 			if connected and side in ["north","west"]: continue
-			var outside_frame := _drone_door_frame(main,room.pos,neighbor)
+			var outside_frame := _drone_door_frame(main,pos,neighbor)
 			if not connected and (main.occupied.has(neighbor) or side not in main.get_room_doors(room) or outside_frame==0): continue
 			var other: Dictionary = main.occupied.get(neighbor,room)
 			if not _uses_layered_art(room) and not _uses_layered_art(other): continue
-			var frame := _door_frame_for_pair(main,room.pos,neighbor) if connected else outside_frame
-			var center := _door_edge_center(room.pos,side,size)
+			var frame := _door_frame_for_pair(main,pos,neighbor) if connected else outside_frame
+			var center := _door_edge_center(pos,side,size)
 			var foot_y: float = _nearest_crew_foot(main,center).y
 			var variant := DepartmentDoor.pair_variant(room,other)
 			var narrow := _is_narrow_corridor(room) or _is_narrow_corridor(other)
@@ -1148,7 +1157,7 @@ func _rooms_in(main, region: Rect2, size: float) -> Array:
 	var rooms: Array = []
 	var grown := region.grow(size*0.28)
 	for room in main.placed_rooms:
-		if grown.intersects(Rect2(Vector2(room.pos)*size,Vector2.ONE*size)): rooms.append(room)
+		if grown.intersects(Rect2(Vector2(room.pos)*size,Vector2(room.get("size",Vector2i.ONE))*size)): rooms.append(room)
 	return rooms
 
 # A room canvas culls props to the region it was built for. It still shows every prop
@@ -1659,6 +1668,12 @@ func _draw_room(room: Dictionary) -> void:
 	var main = _get_main()
 	var pos: Vector2i = room["pos"]
 	var cell_size := _cell_size()
+	if LARGE_ROOM_VIEWS.has(str(room.id)):
+		var large_rect := Rect2(Vector2(pos) * cell_size + Vector2.ONE, Vector2.ONE * (cell_size * 2.0 - 2.0))
+		LARGE_ROOM_VIEWS[room.id].draw(draw_target, room, large_rect)
+		if main.unpowered_room_cells.has(pos):
+			draw_target.draw_rect(large_rect, Color(0.05, 0.02, 0.03, 0.35))
+		return
 	var rect := Rect2(Vector2(pos) * cell_size + Vector2.ONE, Vector2(cell_size - 2, cell_size - 2))
 	var color := RoomDatabaseScript.room_color(str(room["id"]))
 	var offline: bool = main.unpowered_room_cells.has(pos)
@@ -1738,6 +1753,9 @@ func _draw_room_selection(main, cell_size: float) -> void:
 		draw_target.draw_polyline(outline, Color(0.93, 0.89, 0.8, 0.8 * strength), width)
 
 func _room_outline(room: Dictionary, cell: Vector2i, cell_size: float) -> PackedVector2Array:
+	if not room.is_empty() and room.get("size", Vector2i.ONE) != Vector2i.ONE:
+		var rect := Rect2(Vector2(room.pos) * cell_size, Vector2(room.size) * cell_size).grow(-2.0)
+		return PackedVector2Array([rect.position,Vector2(rect.end.x,rect.position.y),rect.end,Vector2(rect.position.x,rect.end.y),rect.position])
 	var top := -191.0
 	# A raised north wall stands above the cell; frame it rather than cut across its base.
 	if not room.is_empty() and _uses_layered_art(room) and not _is_narrow_corridor(room) and _riser_fixtures_visible(room):
@@ -1846,7 +1864,18 @@ func _bill_room_view(room: Dictionary):
 
 # Snapshot the exact registered ground footprints used to draw this room.
 # The draw pass reconfigures shared views before use; snapshots own their arrays.
-func bill_room_geometry(room: Dictionary, open_sides: Array) -> Dictionary:
+func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Vector2i(-1,-1)) -> Dictionary:
+	if LARGE_ROOM_VIEWS.has(str(room.get("id", ""))):
+		if cell == Vector2i(-1,-1): cell = room.pos
+		var local_cell := cell - Vector2i(room.pos)
+		var cell_rect := Rect2(Vector2(local_cell)*384.0,Vector2.ONE*384.0)
+		var blockers: Array = []
+		for bound in LARGE_ROOM_VIEWS[room.id].fixed_bounds():
+			for _turn in range(posmod(int(room.get("rotation",0)),4)):
+				bound = Rect2(Vector2(768.0-bound.end.y,bound.position.x),Vector2(bound.size.y,bound.size.x))
+			var overlap: Rect2 = bound.intersection(cell_rect)
+			if overlap.has_area(): blockers.append(Rect2(overlap.position - cell_rect.position - Vector2.ONE*192.0, overlap.size).grow(10.0))
+		return {"legacy":true,"room":room.duplicate(true),"props":[],"edges":[],"blockers":blockers,"swim_blockers":[]}
 	if _is_narrow_corridor(room):
 		var corridor_view = _corridor_view(room)
 		preload("res://scripts/room_layout_store.gd").apply(corridor_view,"room-"+str(room.id))
@@ -2198,17 +2227,19 @@ func _draw_layered_doors(behind_crew: bool) -> void:
 			var hatch_pose:Dictionary=preload("res://scripts/airlock_cycle.gd").pose(room)
 			preload("res://rooms/doors/ocean_hatch.gd").raised(draw_target,hatch_pose.outer,behind_crew,hatch_pose.water,not behind_crew)
 			draw_target.draw_set_transform(Vector2.ZERO)
-		for side in ["north","east","south","west"]:
+		for edge_port in _render_ports(room, main):
+			var pos: Vector2i = edge_port.cell
+			var side: String = edge_port.side
 			var offset := _offset_from_side(side)
-			var neighbor: Vector2i = room.pos+offset
+			var neighbor: Vector2i = pos+offset
 			var connected := _door_has_connected_neighbor(main,room,neighbor,offset)
 			if connected and side in ["north","west"]: continue
-			var outside_frame := _drone_door_frame(main,room.pos,neighbor)
+			var outside_frame := _drone_door_frame(main,pos,neighbor)
 			if not connected and (main.occupied.has(neighbor) or side not in main.get_room_doors(room) or outside_frame==0): continue
 			var neighbor_room: Dictionary = main.occupied.get(neighbor,room)
 			if not _uses_layered_art(room) and not _uses_layered_art(neighbor_room): continue
-			var frame := _door_frame_for_pair(main,room.pos,neighbor) if connected else outside_frame
-			var edge_center := _door_edge_center(room.pos,side,cell_size)
+			var frame := _door_frame_for_pair(main,pos,neighbor) if connected else outside_frame
+			var edge_center := _door_edge_center(pos,side,cell_size)
 			actor_y = _nearest_crew_foot(main, edge_center).y
 			if side=="north" and not connected and preload("res://scripts/title_settings.gd").raised_walls and main.hardware.walls and not _is_narrow_corridor(room):
 				if behind_crew:
@@ -2249,9 +2280,9 @@ func _draw_door_foregrounds(main, underlay: bool = false) -> void:
 	var cell_size: float = _cell_size()
 	var drawn: Dictionary = {}
 	for room in main.placed_rooms:
-		var pos: Vector2i = room["pos"]
-		for side_value in main.get_room_doors(room):
-			var side: String = str(side_value)
+		for edge_port in _render_ports(room, main):
+			var pos: Vector2i = edge_port.cell
+			var side: String = edge_port.side
 			var offset: Vector2i = _offset_from_side(side)
 			var neighbor_pos: Vector2i = pos + offset
 			if _uses_layered_art(room) or _uses_layered_art(main.occupied.get(neighbor_pos, {})):
@@ -2278,9 +2309,9 @@ func _draw_static_door_foregrounds(main) -> void:
 	var cell_size: float = _cell_size()
 	var drawn: Dictionary = {}
 	for room in static_draw_rooms:
-		var pos: Vector2i = room["pos"]
-		for side_value in main.get_room_doors(room):
-			var side: String = str(side_value)
+		for edge_port in _render_ports(room, main):
+			var pos: Vector2i = edge_port.cell
+			var side: String = edge_port.side
 			var offset: Vector2i = _offset_from_side(side)
 			var neighbor_pos: Vector2i = pos + offset
 			if _uses_layered_art(room) or _uses_layered_art(main.occupied.get(neighbor_pos, {})):
@@ -2296,6 +2327,14 @@ func _draw_static_door_foregrounds(main) -> void:
 			var vertical: bool = side == "east" or side == "west"
 			var frame_size: Vector2 = Vector2(cell_size * 0.026, cell_size * 0.10) if vertical else Vector2(cell_size * 0.10, cell_size * 0.026)
 			draw_target.draw_rect(Rect2(edge_center - frame_size * 0.5, frame_size), Color(0.04, 0.07, 0.08, 0.82))
+
+func _render_ports(room: Dictionary, main) -> Array[Dictionary]:
+	if room.get("size",Vector2i.ONE) != Vector2i.ONE:
+		return RoomFootprintScript.ports(room)
+	var result: Array[Dictionary] = []
+	for side in main.get_room_doors(room):
+		result.append({"cell":room.pos,"side":str(side)})
+	return result
 
 func _door_has_connected_neighbor(main, room: Dictionary, neighbor_pos: Vector2i, offset: Vector2i) -> bool:
 	var cell: Vector2i = neighbor_pos - offset
@@ -2589,9 +2628,16 @@ func _draw_room_hologram(main, cell: Vector2i, valid: bool) -> void:
 		return
 	room["pos"] = cell
 	room["rotation"] = main.selected_rotation
-	var rect := Rect2(Vector2(cell) * cell_size + Vector2.ONE, Vector2(cell_size - 2, cell_size - 2))
+	var room_size: Vector2i = room.get("size",Vector2i.ONE)
+	var rect := Rect2(Vector2(cell) * cell_size + Vector2.ONE, Vector2(room_size) * cell_size - Vector2.ONE*2.0)
 	var tint := Color(0.22, 0.74, 0.60, 0.045) if valid else Color(0.88, 0.18, 0.20, 0.085)
 	draw_target.draw_rect(rect, tint)
+	if LARGE_ROOM_VIEWS.has(str(room.id)):
+		LARGE_ROOM_VIEWS[room.id].draw(draw_target, room, rect)
+		draw_target.draw_rect(rect, Color(0.12, 0.35, 0.3, 0.2) if valid else Color(0.45, 0.08, 0.08, 0.35))
+		draw_target.draw_rect(rect, Color(0.35, 0.82, 0.68, 0.75) if valid else Color(1.0, 0.35, 0.39, 0.75), false, 3.0)
+		_draw_preview_openings(main, room, rect)
+		return
 	var room_texture: Texture2D = _get_room_texture(room)
 	if _uses_layered_art(room):
 		_draw_nursery(room, rect, true)
@@ -2966,6 +3012,29 @@ func preview_open_sides(room: Dictionary) -> Array:
 
 func _draw_preview_openings(main, room: Dictionary, rect: Rect2) -> void:
 	if not preload("res://scripts/title_settings.gd").placement_guides: return
+	if room.get("size",Vector2i.ONE)!=Vector2i.ONE:
+		for port in RoomFootprintScript.ports(room):
+			var side := str(port.side)
+			var normal := Vector2(_offset_from_side(side))
+			var neighbor: Vector2i = port.cell + Vector2i(normal)
+			var occupied: bool = main.occupied.has(neighbor)
+			var matches: bool = occupied and main._ports_connect(room,main.occupied[neighbor],port.cell,neighbor)
+			var color := Color("9ff3df") if matches else (Color("efb777") if occupied else Color("69cfff"))
+			var center: Vector2 = _door_edge_center(port.cell,side,_cell_size())
+			var width := Vector2(_cell_size()*0.026,_cell_size()*0.12) if normal.x!=0 else Vector2(_cell_size()*0.12,_cell_size()*0.026)
+			draw_target.draw_rect(Rect2(center-width*0.5,width).grow(6),Color("#071822"))
+			draw_target.draw_rect(Rect2(center-width*0.5,width),color)
+		if room.has("ocean_side"):
+			var sides := ["north","east","south","west"]
+			var ocean_side: String=sides[(sides.find(str(room.ocean_side))+posmod(int(room.rotation),4))%4]
+			var ocean_cells: Array[Vector2i]=RoomFootprintScript.exterior_cells(room,ocean_side)
+			if ocean_cells.size()==2:
+				var a: Vector2=_door_edge_center(ocean_cells[0]-_offset_from_side(ocean_side),ocean_side,_cell_size())
+				var b: Vector2=_door_edge_center(ocean_cells[1]-_offset_from_side(ocean_side),ocean_side,_cell_size())
+				var hatch: Vector2=(a+b)*0.5
+				draw_target.draw_circle(hatch,_cell_size()*0.036,Color("#071822"))
+				draw_target.draw_circle(hatch,_cell_size()*0.026,Color("#46d3e6"))
+		return
 	for side in main.get_room_doors(room):
 		var normal := Vector2(_offset_from_side(str(side)))
 		var tangent := Vector2(-normal.y,normal.x)

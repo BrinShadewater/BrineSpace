@@ -632,12 +632,13 @@ func rebuild(main, staged := false) -> void:
 		for neighbor in main._connected_neighbor_cells(cell):
 			sides.append(Geometry.DIRS.find(neighbor - cell))
 		var key := "%s:%s:%s" % [room.id, room.get("rotation", 0), sides]
+		if room.get("size",Vector2i.ONE)!=Vector2i.ONE: key+="/part:"+str(cell-room.pos)
 		# Fixed recovery furniture is part of geometry, not interchangeable blueprint art.
 		if room.id=="brine_core": key+="/pod:"+str(not main.architect_run.is_empty())
 		if room.get("recovered_derelict",false): key+="/pods:"+str(main.wrecks.get(cell,{}).get("pods",[]).size())
 		if main.wrecks.get(cell,{}).get("kind","") in ["river","josh","margot"]:key+="/companion-container"
 		room_keys[cell] = key
-		var data: Dictionary = room_cache[key].data if room_cache.has(key) else main.grid_view.bill_room_geometry(room, sides)
+		var data: Dictionary = room_cache[key].data if room_cache.has(key) else (main.grid_view.bill_room_geometry(room, sides, cell) if room.get("size",Vector2i.ONE)!=Vector2i.ONE else main.grid_view.bill_room_geometry(room, sides))
 		if data.is_empty(): continue
 		data.activity_room = str(room.id)
 		data.open = sides
