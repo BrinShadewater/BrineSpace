@@ -5,6 +5,7 @@ const WORK_SECONDS := 10.0
 const APPROACH_RETRY_SECONDS := 1.0
 const DIRS := [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
 const NAMES := ["north","east","south","west"]
+const Footprint = preload("res://scripts/room_footprint.gd")
 
 # A failed approach is a full route search per candidate node. Repeating it every
 # frame for an unreachable order cost ~5 ms per eligible crew member, so retry on
@@ -36,6 +37,7 @@ static func reconcile(game) -> void:
 			order.erase("builder")
 			order.erase("work_point")
 			order.erase("work_cell")
+			order.erase("port_cell")
 			order.erase("facing")
 			if actor.goal=="construction": release(actor)
 
@@ -51,12 +53,19 @@ static func approach(game,actor,order: Dictionary) -> Dictionary:
 	if start<0: return {}
 	var best: Dictionary={}
 	var best_distance:=INF
-	for side in range(4):
-		var cell: Vector2i=order.pos-DIRS[side]
+	var blueprint: Dictionary = game.RoomDatabaseScript.get_room(order.id)
+	blueprint["pos"] = order.pos
+	blueprint["rotation"] = order.rotation
+	var ports: Array[Dictionary] = Footprint.ports(blueprint)
+	for port in ports:
+		var port_cell: Vector2i = port.cell
+		var side: int = NAMES.find(str(port.side))
+		if side < 0: continue
+		var cell: Vector2i=port_cell+DIRS[side]
 		if not game.occupied.has(cell): continue
-		if not game._doors_connect(order.id,int(order.rotation),-DIRS[side],game.occupied[cell]): continue
+		if not game._ports_connect(blueprint,game.occupied[cell],port_cell,cell): continue
 		var center: Vector2=(Vector2(cell)+Vector2.ONE*.5)*actor.CELL
-		var desired: Vector2=center+Vector2(DIRS[side])*160.0
+		var desired: Vector2=center-Vector2(DIRS[side])*160.0
 		for node in actor.room_nodes.get(cell,[]):
 			var point: Vector2=actor.graph.get_point_position(node)
 			if point.distance_to(desired)>44 or not actor.can_stand(point): continue
@@ -67,7 +76,7 @@ static func approach(game,actor,order: Dictionary) -> Dictionary:
 			distance+=point.distance_to(desired)*4
 			if distance>=best_distance: continue
 			best_distance=distance
-			best={"work_point":point,"work_cell":cell,"facing":NAMES[side],"route":actor.smooth_route(route)}
+			best={"work_point":point,"work_cell":cell,"port_cell":port_cell,"facing":NAMES[(side+2)%4],"route":actor.smooth_route(route)}
 	return best
 
 static func advance(game,actor,delta: float) -> bool:
@@ -101,7 +110,7 @@ static func advance(game,actor,delta: float) -> bool:
 				continue
 			order=candidate
 			order["builder"]=id
-			for key in ["work_point","work_cell","facing"]: order[key]=found[key]
+			for key in ["work_point","work_cell","port_cell","facing"]: order[key]=found[key]
 			actor.path=found.route
 			actor.stage=""
 			actor.timer=0.0
@@ -114,7 +123,11 @@ static func advance(game,actor,delta: float) -> bool:
 		actor.state="idle"
 		actor.activity="construction held / restore station access"
 		return true
-	if not game.occupied.has(order.work_cell) or not actor.can_stand(order.work_point) or not game._doors_connect(order.id,int(order.rotation),order.work_cell-order.pos,game.occupied.get(order.work_cell,{})):
+	var blueprint: Dictionary = game.RoomDatabaseScript.get_room(order.id)
+	blueprint["pos"] = order.pos
+	blueprint["rotation"] = order.rotation
+	var port_cell: Vector2i = order.get("port_cell",order.pos)
+	if not game.occupied.has(order.work_cell) or not actor.can_stand(order.work_point) or not game._ports_connect(blueprint,game.occupied.get(order.work_cell,{}),port_cell,order.work_cell):
 		order.erase("builder")
 		release(actor)
 		return true
@@ -125,7 +138,7 @@ static func advance(game,actor,delta: float) -> bool:
 			if found.is_empty():
 				if not approach_deferred(actor,order): defer_approach(actor,order)
 				actor.state="idle"; actor.activity="construction / approach blocked"; return true
-			for key in ["work_point","work_cell","facing"]: order[key]=found[key]
+			for key in ["work_point","work_cell","port_cell","facing"]: order[key]=found[key]
 			actor.path=found.route
 		actor.move(delta)
 		return true

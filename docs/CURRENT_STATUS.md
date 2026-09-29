@@ -2,7 +2,7 @@
 
 ## Large rooms design — September 28, 2026
 
-Owner accepted the direction for four 2×2 rare rooms with fixed large props: Hydroponics Farm (green), Storage Depot (yellow), Moonbay (cyan), and Tidal Power Plant (yellow). The first four runs introduce them in that order; later runs choose one at random. One card appears later in each run. Moonbay and Tidal Power Plant need an ocean-facing side. Moonbay uses assigned crew missions for survey, recovery, and deep access. The [written design](superpowers/specs/2026-09-28-large-rooms-design.md) is approved; [foundation](superpowers/plans/2026-09-28-large-rooms-foundation.md) and [Moonbay mission](superpowers/plans/2026-09-28-moonbay-missions.md) implementation plans await owner review and execution-method choice. No gameplay or art was changed in this milestone.
+Owner accepted the direction for four 2×2 rare rooms with fixed large props: Hydroponics Farm (green), Storage Depot (yellow), Moonbay (cyan), and Tidal Power Plant (yellow). The [written design](superpowers/specs/2026-09-28-large-rooms-design.md) governs behavior. Foundation implementation is on `codex/large-rooms`: all four room views, costs, footprint/door/save behavior, ocean-facing checks, and one later card per run are in place. The first four new runs introduce Farm, Depot, Moonbay, and Plant in order; later runs choose randomly. A paid Farm construction probe and the focused foundation/regression tests pass. Moonbay's assigned crew missions remain the next implementation stage. See [large rooms handoff](LARGE_ROOMS_HANDOFF_2026-09-28.md) for checks, visual evidence, and limitations.
 
 Updated September 26, 2026 — station props v2 is merged into `main`. **Read
 [station props v2](STATION_PROPS_V2_2026-09-25.md) first**: the
