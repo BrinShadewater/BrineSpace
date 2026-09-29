@@ -10,6 +10,8 @@ const Runs := preload("res://scripts/run_manager.gd")
 const Synergies := preload("res://scripts/synergy_manager.gd")
 const Insights := preload("res://scripts/station_ui_insights.gd")
 const Routes := preload("res://scripts/drone_routes.gd")
+const Footprint := preload("res://scripts/room_footprint.gd")
+const MoonbayMissions := preload("res://scripts/moonbay_missions.gd")
 const WreckFieldScript := preload("res://scripts/wreck_field.gd")
 const SAVE_PATH := "user://brine_balance_playtest.json"
 const OFFSETS := [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
@@ -20,6 +22,9 @@ var max_cycles := 60
 var pair_filter := ""
 var large_room_intro := -1
 var save_for_large_room := false
+var reserve_large_room := false
+var launch_moonbay := false
+var reserved_large_anchor := Vector2i(-1,-1)
 var output_path := ""
 var capture_dir := ""
 var game
@@ -44,6 +49,11 @@ func _init() -> void:
 			large_room_intro = int(argument.trim_prefix("--large-room-intro="))
 		elif argument == "--save-for-large-room":
 			save_for_large_room = true
+		elif argument == "--reserve-large-room":
+			reserve_large_room = true
+			save_for_large_room = true
+		elif argument == "--launch-moonbay":
+			launch_moonbay = true
 		elif argument.begins_with("--cycles="):
 			max_cycles = int(argument.trim_prefix("--cycles="))
 		elif argument.begins_with("--capture-dir="):
@@ -108,13 +118,21 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 	game.orbit.rng.seed = run_seed + 101
 	game.orbit._roll_poi()
 	game._set_paused(true)
+	reserved_large_anchor = Vector2i(-1,-1)
+	if reserve_large_room:
+		game.testing_free_build = true
+		var planned := _choose_large_room()
+		game.testing_free_build = false
+		if not planned.is_empty(): reserved_large_anchor = planned.cell
 	tried_pairs.clear()
 	var row := {"pair": "+".join(pair), "seed": run_seed, "first_discovery": -1,
 		"first_blueprint": -1, "idle_cycles": 0, "events": [], "snapshots": [],
 		"discoveries": {}, "blueprints": {}, "prototype_built": {}, "builds": [],
 		"large_room": game.large_room_selected_id, "large_room_first_seen": -1,
 		"large_room_first_affordable": -1, "large_room_first_placeable": -1,
-		"large_room_built": -1}
+		"large_room_built": -1, "reserved_large_anchor": str(reserved_large_anchor),
+		"moonbay_dispatch_cycle": -1, "moonbay_complete_cycle": -1,
+		"moonbay_elapsed_sim_s": 0.0, "moonbay_issue": "", "moonbay_result": ""}
 	row["power"] = []
 	row["clearances"] = []
 	while game.running and game.cycle < max_cycles:
@@ -155,17 +173,44 @@ func _play_run(pair: Array, run_seed: int) -> Dictionary:
 		# Simulate the actual time between economy ticks. Construction is not instant.
 		var drone_spent := 0
 		game.paused = false
+		if launch_moonbay and int(row.moonbay_dispatch_cycle) < 0:
+			var bay: Dictionary = {}
+			for room in game.placed_rooms:
+				if room.id == "moonbay":
+					bay = room
+					break
+			if not bay.is_empty():
+				var target := Vector2i(-1,-1)
+				for site_cell in game.drone_fleet.sites:
+					var site: Dictionary = game.drone_fleet.sites[site_cell]
+					if site.get("moonbay_deep",false) and not site.get("hazardous",false):
+						target = site_cell
+						break
+				if target.x >= 0:
+					var issue: String = MoonbayMissions.dispatch(game,bay,"bill",target,"survey")
+					row.moonbay_issue = issue
+					if issue.is_empty(): row.moonbay_dispatch_cycle = game.cycle
 		for step in range(200):
 			if not game.running: break
 			# Mirror the running branch of main._process; without the core advance
 			# no architect wakes, so no paid construction ever completes.
 			game.visual_time_seconds += 0.1
 			preload("res://scripts/airlock_cycle.gd").advance(game, 0.1)
+			if launch_moonbay: MoonbayMissions.tick(game,0.1)
 			game._update_test_walker(0.1)
 			preload("res://scripts/ward_repair.gd").use_clock() # Ward rewards, not crew pathing, are under test.
 			game._update_wreck_clearance(0.1)
 			game.CryoRecovery.advance(game, 0.1)
 			game.Architects.advance_core(game, 0.1)
+			if int(row.moonbay_dispatch_cycle) >= 0 and int(row.moonbay_complete_cycle) < 0:
+				row.moonbay_elapsed_sim_s = float(row.moonbay_elapsed_sim_s) + 0.1
+				for room in game.placed_rooms:
+					if room.id != "moonbay": continue
+					var mission: Dictionary = MoonbayMissions.mission_state(room)
+					if mission.phase == "idle":
+						row.moonbay_complete_cycle = game.cycle
+						row.moonbay_result = mission.last_result
+						break
 			drone_spent += int(game.drone_fleet.power_spent)
 		game.paused = true
 		var forecast: Dictionary = game._simulate_room_economy()
@@ -225,7 +270,11 @@ func _record_large_room(row: Dictionary) -> void:
 
 func _choose_build(row: Dictionary) -> Dictionary:
 	if save_for_large_room and game.hand.has(game.large_room_selected_id):
-		if not game._can_afford(Rooms.get_room(game.large_room_selected_id).cost): return {}
+		var large_cost: Dictionary = Rooms.get_room(game.large_room_selected_id).cost
+		if int(game.resources.rare_minerals) < int(large_cost.get("rare_minerals",0)) and not game.placed_rooms.any(func(room): return room.id == "salvage_workshop"):
+			var support_choice := _choose_support_room("salvage_workshop")
+			if not support_choice.is_empty(): return support_choice
+		if not game._can_afford(large_cost): return {}
 		var large_choice := _choose_large_room()
 		if not large_choice.is_empty():
 			if int(row.large_room_first_placeable) < 0: row.large_room_first_placeable = game.cycle
@@ -259,6 +308,8 @@ func _choose_build(row: Dictionary) -> Dictionary:
 			continue
 		for cell in frontier:
 			if cell.x < 0 or cell.y < 0 or cell.x >= game.GRID_SIZE or cell.y >= game.GRID_SIZE:
+				continue
+			if reserve_large_room and Footprint.cells(reserved_large_anchor,Vector2i(2,2)).has(cell):
 				continue
 			for rotation in range(4):
 				var previous_rotation: int = game.selected_rotation
@@ -315,6 +366,21 @@ func _choose_large_room() -> Dictionary:
 					if game.get_placement_problem(id,anchor).is_empty():
 						game.selected_rotation = prior_rotation
 						return {"id":id,"cell":anchor,"rotation":rotation,"neighbors":[]}
+	game.selected_rotation = prior_rotation
+	return {}
+
+func _choose_support_room(id: String) -> Dictionary:
+	if not game.hand.has(id) or not game._can_afford(Rooms.get_room(id).cost): return {}
+	var prior_rotation: int = game.selected_rotation
+	for occupied_cell in game.occupied:
+		for direction in OFFSETS:
+			var cell: Vector2i = occupied_cell + direction
+			if reserve_large_room and Footprint.cells(reserved_large_anchor,Vector2i(2,2)).has(cell): continue
+			for rotation in range(4):
+				game.selected_rotation = rotation
+				if game.get_placement_problem(id,cell).is_empty():
+					game.selected_rotation = prior_rotation
+					return {"id":id,"cell":cell,"rotation":rotation,"neighbors":[]}
 	game.selected_rotation = prior_rotation
 	return {}
 

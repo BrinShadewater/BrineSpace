@@ -12,7 +12,7 @@ One of the four large rooms is offered per run, in Farm → Depot → Moonbay �
 
 ## Current state
 
-`tests/playtest_balance.gd` now accepts `--large-room-intro=0..3`, seeds the site and deck before starting a run, records first sighting, first affordability, first legal site and construction, and keeps a seen rare card when cycling other cards. An optional `--save-for-large-room` policy stops other purchases while the rare card is unaffordable and tries every connected 2×2 anchor once it can pay. The harness no longer confirms the draft a second time after `_start_reboot_cycle()`; that had skipped an introduction slot. The diagnostic player still makes its own build choices, and its results are only evidence for that policy.
+`tests/playtest_balance.gd` now accepts `--large-room-intro=0..3`, seeds the site and deck before starting a run, records first sighting, first affordability, first legal site and construction, and keeps a seen rare card when cycling other cards. `--save-for-large-room` stops ordinary purchases while the rare card is unaffordable. `--reserve-large-room` plans a legal 2×2 anchor at the start and keeps small rooms off those four cells. When Moonbay needs more Rare Minerals, this policy can build an affordable Salvage Workshop from the actual hand. `--launch-moonbay` tries one Survey order and advances its mission during the same paid-run simulation. The harness no longer confirms the draft a second time after `_start_reboot_cycle()`; that had skipped an introduction slot. The diagnostic player still makes its own build choices, and its results are only evidence for that policy.
 
 With fresh starting unlocks, seed 4404 and no resource grants (the harness's `industry+biosphere` pair is a report label; current runs do not select doctrines):
 
@@ -28,12 +28,23 @@ The deliberate-saving policy adds two useful bounds for the Farm:
 | 4404 | Cycle 23 | Never by cycle 60 | Not evaluated after affordability | Metal reached 13 by cycle 30 and stayed there through cycle 60; cost is 16 |
 | 9021 | Cycle 29, after 13 paid orders | Cycle 39 | None found from cycle 39 through 50 | Metal reached 32 by cycle 50, but no legal footprint remained beside the station |
 
-The original Farm run placed 14 paid orders by cycle 60 and had 46 cycles with no new order under that player policy. Food, oxygen, water, power and integrity remained healthy at cycle 60. The saving runs show two different pressures: finite Metal in one site seed, and finding room for a late 2×2 placement in another. A human can plan open space and pursue different mining or salvage routes, so these results do not establish that the costs or timing are wrong. Moonbay mission duration and hazard frequency were not exercised in these runs because no Moonbay could be purchased. The separate paid Moonbay walkthrough remains the functional mission check.
+The original Farm run placed 14 paid orders by cycle 60 and had 46 cycles with no new order under that player policy. Food, oxygen, water, power and integrity remained healthy at cycle 60. The saving runs show two different pressures: finite Metal in one site seed, and finding room for a late 2×2 placement in another. A human can plan open space and pursue different mining or salvage routes, so these results do not establish that the costs or timing are wrong. Moonbay could not be purchased in those initial runs; the reserved-space run below exercises one mission.
+
+## Reserved-space paid run
+
+With the same fresh unlocks and seed 9021, the diagnostic player reserved a legal large-room anchor before its first purchase. No resources or cards were granted. Ordinary rooms still paid their full costs and were completed by crew and drones.
+
+| Introduction | Reserved anchor | Card appeared | Support and purchase | Completed |
+|---|---|---:|---|---:|
+| Hydroponics Farm | (18, 20) | Cycle 19 | Affordable at cycle 19; paid order at cycle 19 | Cycle 21 |
+| Moonbay | (18, 19), with open ocean face | Cycle 19 | Salvage Workshop paid at cycle 47; its first Rare Mineral made Moonbay affordable and the paid order followed at cycle 48 | Cycle 51 |
+
+The Moonbay then dispatched Bill on Survey at cycle 55 to a distant, nonhazardous deep site. The mini-sub returned at cycle 64 with “Survey complete. Site identified.” Boarding, chamber phases, travel and survey took 189.2 simulated seconds. This is one completed normal-economy mission, not a duration or hazard-rate verdict. Recover, Deep Access, hazardous return and repair remain covered by the separate paid Moonbay walkthrough, which starts with test resources.
 
 ## Verification
 
-The Farm and Moonbay headless runs and both saving-policy runs exited 0 with zero harness errors under scratch `APPDATA`. Reports are `output/large-room-review/paid-farm-kept.json`, `paid-moonbay.json`, `paid-farm-saved.json`, and `paid-farm-placement-9021.json`; logs are alongside them. `test_large_room_draft.gd` passed. Existing missing legacy UI atlases produced resource errors in this isolated checkout, as already recorded in the large-room handoff. No game balance values or runtime logic were changed. The real `BrineSpace` user folder matched before and after all runs across 2,652 readable non-log files.
+The Farm and Moonbay headless runs, both saving-policy runs, and both reserved-space runs exited 0 with zero harness errors under scratch `APPDATA`. Reports include `output/large-room-review/paid-farm-reserved-9021.json` and `paid-moonbay-mission-9021.json`; earlier runs and logs are alongside them. `test_large_room_draft.gd` passed. Existing missing legacy UI atlases produced resource errors in this isolated checkout, as already recorded in the large-room handoff. No game balance values or runtime logic were changed. The real `BrineSpace` user folder matched before and after all runs across 2,652 readable non-log files.
 
 ## Next action
 
-Play a human normal run with deliberate Metal collection and a reserved 2×2 bay after the rare card appears. Decide whether to adjust rare-card timing, prices, site clearance or Metal income from that result. Then judge Moonbay mission duration and hazard frequency in a run that actually builds it. Owner visual acceptance and release/merge remain separate.
+Have the owner play a normal run to judge whether reserving a 2×2 area and buying a Salvage Workshop feel discoverable and satisfying. Tune timing, costs and mission length from that feedback. Hazard frequency needs more than one mission. Owner visual acceptance and release/merge remain separate.
