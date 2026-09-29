@@ -703,6 +703,14 @@ func _shop_card(id: String, accent: Color, owned: bool) -> Array:
 	card.add_child(rows)
 	return [card, rows]
 
+# A stretchy gap above the buy button, so it sits at the foot of every card whatever the text above
+# it takes (owner playtest, Sept 28).
+func _pin_to_bottom(rows: VBoxContainer) -> void:
+	var gap := Control.new()
+	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	rows.add_child(gap)
+
 func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 	var button := Button.new()
 	button.name = "Buy"
@@ -732,6 +740,7 @@ func _blueprint_shop() -> void:
 		if not pattern.is_empty() and state != "owned":
 			var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
 			rows.add_child(_label(("HALF PRICE // %s stabilized" if half else "Stabilize %s for half price") % (str(pattern.name) if meta_state.discovered_synergy_ids.has(pattern.id) else "its hidden pattern"), 13))
+		_pin_to_bottom(rows)
 		rows.add_child(_shop_button({"owned": "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost}[state], state == "ready", func() -> void:
 			if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
 		cards.add_child(card)
@@ -772,6 +781,7 @@ func _crew_shop() -> void:
 			rows.add_child(_label("Found in a derelict %s. Repair it during a loop to meet them." % ("companion site" if id in MetaShop.COMPANIONS else "cryo ward"), 15))
 		var character_id: String = id
 		var cost := int(MetaShop.CHARACTER_COSTS.get(id, 0))
+		_pin_to_bottom(rows)
 		rows.add_child(_shop_button({"owned": "ABOARD" if id in MetaShop.ALWAYS_ABOARD else "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost, "unmet": "NOT MET YET"}[state], state == "ready", func() -> void:
 			if MetaShop.buy_character(meta_state, character_id): _refresh_progression(character_id)))
 		cards.add_child(parts[0])

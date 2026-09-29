@@ -781,7 +781,7 @@ func _build_ui() -> void:
 	preview_header_right.text = "CLICK TO SELECT"
 	preview_header_right.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	preview_header_right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	preview_header_right.add_theme_font_size_override("font_size", 12)
+	preview_header_right.add_theme_font_size_override("font_size", 13)
 	preview_header_right.add_theme_color_override("font_color", Color("#8fa3ae"))
 	preview_header.add_child(preview_header_right)
 	var preview_details := HBoxContainer.new()
@@ -828,7 +828,7 @@ func _build_ui() -> void:
 	inspector_focus_button = Button.new()
 	inspector_focus_button.text = "LOCATE ROOM & CONNECTIONS"
 	inspector_focus_button.custom_minimum_size.y = 42
-	inspector_focus_button.add_theme_font_size_override("font_size", 14)
+	inspector_focus_button.add_theme_font_size_override("font_size", 15)
 	inspector_focus_button.pressed.connect(_focus_inspected_room)
 	preload("res://scripts/title_button_style.gd").apply(inspector_focus_button, 380, 42)
 	preview_box.add_child(inspector_focus_button)
@@ -1011,6 +1011,7 @@ func _build_ui() -> void:
 	var solar_label := Label.new()
 	solar_label.text = "--"
 	solar_label.custom_minimum_size = Vector2(48, 0)
+	solar_label.add_theme_font_size_override("font_size", 15)
 	solar_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	solar_label.add_theme_color_override("font_color", Color("#8fa3ae"))
 	solar_row.add_child(solar_label)
@@ -1028,6 +1029,7 @@ func _build_ui() -> void:
 	detail_toggle.tooltip_text = "Zoom and placement details"
 	detail_toggle.tooltip_text = "Expand view details. Use the Placement guides hotkey to toggle indicators; physical doorway openings remain visible. Rebind it in Settings."
 	detail_toggle.toggle_mode = true
+	detail_toggle.add_theme_font_size_override("font_size", 15)
 	_style_hud_button(detail_toggle, false)
 	solar_row.add_child(detail_toggle)
 	zoom_row.visible = false
