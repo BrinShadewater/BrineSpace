@@ -302,6 +302,9 @@ var pause_page_opener: Control
 var menu_panel: PanelContainer
 var menu_status_label: Label
 var menu_save_feedback: Label
+# When the active loop was last recorded (-1 = not yet this loop); see _refresh_save_status.
+var last_save_cycle := -1
+var last_save_msec := 0
 var menu_resume_button: Button
 var menu_center: CenterContainer
 var menu_archive: Control
@@ -1909,13 +1912,13 @@ func _build_menu_overlay() -> void:
 	menu_center = center
 	var panel := PanelContainer.new()
 	panel.name = "PauseMenu"
-	panel.custom_minimum_size = Vector2(340, 700)
+	panel.custom_minimum_size = Vector2(700, 0)
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	center.add_child(panel)
 	_apply_panel_style(panel, Color("#10232e"), Color("#3c6b7d"))
 	menu_panel = panel
 	var menu_scroll := ScrollContainer.new()
-	menu_scroll.custom_minimum_size = Vector2(300, 660)
+	menu_scroll.custom_minimum_size = Vector2(660, 640)
 	menu_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	menu_scroll.follow_focus = true
 	panel.add_child(menu_scroll)
@@ -1924,68 +1927,98 @@ func _build_menu_overlay() -> void:
 	box.add_theme_constant_override("separation", 10)
 	menu_scroll.add_child(box)
 	var title := Label.new()
-	title.text = "BRINE"
+	title.text = "BRINESPACE"
 	title.add_theme_font_size_override("font_size", 34)
 	title.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
 	box.add_child(title)
 	var subtitle := Label.new()
 	subtitle.text = "PAUSED"
 	pause_page_title = subtitle
-	subtitle.add_theme_font_size_override("font_size", 15)
+	subtitle.add_theme_font_size_override("font_size", 16)
 	subtitle.add_theme_color_override("font_color", Color("#8daab6"))
 	box.add_child(subtitle)
 	var status := Label.new()
 	status.text = ""
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	status.add_theme_font_size_override("font_size", 13)
-	status.add_theme_color_override("font_color", Color("#8fa3ae"))
+	status.add_theme_font_size_override("font_size", 16)
+	status.add_theme_color_override("font_color", Color("#a9c4cf"))
 	box.add_child(status)
 	menu_status_label = status
-	var separator := Label.new()
-	separator.text = "────────────────────────────"
-	separator.add_theme_color_override("font_color", Color("#18313c"))
-	box.add_child(separator)
-	for id in ["main", "station", "exit"]:
-		var page := VBoxContainer.new()
-		page.name = "PausePage_" + id
-		page.add_theme_constant_override("separation", 12)
-		page.visible = id == "main"
-		box.add_child(page)
-		pause_pages[id] = page
-	# Owner call (Sept 16): every option stays, grouped so it is easy to find. Station actions sit
-	# on the first page; the archive tabs (settings, codex, research, credits) share one page, and
-	# leaving the loop has its own.
-	var primary: VBoxContainer = pause_pages.main
-	_add_menu_button(primary, "Resume Cycle", _close_menu)
-	_add_menu_button(primary, "Save Game", _menu_save_game)
-	_add_menu_button(primary, "Settings", _open_shared_menu.bind("settings"))
-	_add_menu_button(primary, "Station & Archives", _show_pause_page.bind("station"))
-	_add_menu_button(primary, "End or Leave Loop", _show_pause_page.bind("exit"))
-	var station: VBoxContainer = pause_pages.station
-	_add_menu_button(station, "Codex", _open_shared_menu.bind("codex"))
-	_add_menu_button(station, "Meta Progression", _open_shared_menu.bind("progression"))
-	_add_menu_button(station, "Credits & Build", _open_shared_menu.bind("about"))
-	_add_menu_button(station, "Back", _pause_page_back)
-	var exits: VBoxContainer = pause_pages.exit
-	_add_menu_button(exits, "Save & Return to Title", _menu_return_title)
-	_add_menu_button(exits, "Save & Quit", _menu_quit_game)
-	_add_menu_button(exits, "Restart Reboot Cycle", _menu_restart_cycle)
-	# Built through the menu helper so it matches the buttons above it (owner playtest, Sept 18).
-	end_expedition_button = _add_menu_button(exits, "End Expedition", _end_expedition)
-	_add_menu_button(exits, "Back", _pause_page_back)
+	var rule := ColorRect.new()
+	rule.color = Color("#1f3a44")
+	rule.custom_minimum_size.y = 1
+	box.add_child(rule)
+	# One page, two columns (owner playtest, Sept 29: the old two-level menu hid Settings behind
+	# "Archive" and left half the panel empty). Left: run and leave. Right: the library and settings.
+	var columns := HBoxContainer.new()
+	columns.name = "PauseColumns"
+	columns.add_theme_constant_override("separation", 28)
+	box.add_child(columns)
+	var left := VBoxContainer.new()
+	left.name = "PausePage_main"
+	left.custom_minimum_size.x = 300
+	left.add_theme_constant_override("separation", 8)
+	columns.add_child(left)
+	pause_pages["main"] = left
+	var right := VBoxContainer.new()
+	right.name = "PauseLibrary"
+	right.custom_minimum_size.x = 300
+	right.add_theme_constant_override("separation", 8)
+	columns.add_child(right)
+	_menu_section(left, "RUN")
+	_add_menu_button(left, "Resume Cycle", _close_menu)
+	_add_menu_button(left, "Save Game", _menu_save_game)
 	menu_save_feedback = Label.new()
 	menu_save_feedback.name = "SaveFeedback"
-	menu_save_feedback.text = ""
 	menu_save_feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	menu_save_feedback.custom_minimum_size.x = 300
 	menu_save_feedback.add_theme_font_size_override("font_size", 15)
-	menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
-	box.add_child(menu_save_feedback)
+	left.add_child(menu_save_feedback)
+	_menu_section(left, "LEAVE")
+	_add_menu_button(left, "Save & Return to Title", _menu_return_title)
+	_add_menu_button(left, "Save & Quit", _menu_quit_game)
+	_add_menu_button(left, "Restart Reboot Cycle", _menu_restart_cycle)
+	# Built through the menu helper so it matches the buttons above it (owner playtest, Sept 18).
+	end_expedition_button = _add_menu_button(left, "End Expedition", _end_expedition)
+	_menu_section(right, "LIBRARY")
+	_add_menu_button(right, "Codex", _open_shared_menu.bind("codex"))
+	_add_menu_button(right, "Meta Progression", _open_shared_menu.bind("progression"))
+	_add_menu_button(right, "Credits & Build", _open_shared_menu.bind("about"))
+	_menu_section(right, "GAME")
+	_add_menu_button(right, "Settings", _open_shared_menu.bind("settings"))
 	var hint := Label.new()
-	hint.text = "Esc: Back / Return to Station"
-	hint.tooltip_text = "Escape returns from a submenu, then closes the pause menu."
+	hint.text = "Esc: Return to Station"
+	hint.tooltip_text = "Escape closes the pause menu."
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.add_theme_color_override("font_color", Color("#8daab6"))
 	box.add_child(hint)
+	_refresh_save_status()
+
+# A small caption above a group of pause-menu buttons.
+func _menu_section(parent: Control, caption: String) -> void:
+	if parent.get_child_count() > 0:
+		var gap := Control.new()
+		gap.custom_minimum_size.y = 8
+		parent.add_child(gap)
+	var label := Label.new()
+	label.text = caption
+	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_color_override("font_color", Color("#5fd3c4"))
+	label.add_theme_constant_override("outline_size", 0)
+	parent.add_child(label)
+
+# What the player can rely on: when this loop was last recorded, not a standing hint.
+func _refresh_save_status() -> void:
+	if menu_save_feedback == null: return
+	if last_save_cycle < 0:
+		menu_save_feedback.text = "Not saved yet this loop. Save Game lets you continue it from the title screen."
+		menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
+		return
+	var minutes := int((Time.get_ticks_msec() - last_save_msec) / 60000)
+	var when := "just now" if minutes < 1 else "%d min ago" % minutes
+	menu_save_feedback.text = "Saved at cycle %03d, %s." % [last_save_cycle, when]
+	if cycle > last_save_cycle: menu_save_feedback.text += " %d cycle%s of progress since." % [cycle - last_save_cycle, "" if cycle - last_save_cycle == 1 else "s"]
+	menu_save_feedback.add_theme_color_override("font_color", Color("91e2dd"))
 
 func _add_menu_button(parent: Control, text: String, callable: Callable) -> Button:
 	var button := Button.new()
@@ -2013,8 +2046,8 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> Butt
 	}.get(text, "")
 	# Menu and summary actions sit at a readable width instead of spanning the panel (owner
 	# playtest, Sept 17).
-	button.custom_minimum_size = Vector2(380, 50)
-	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	button.custom_minimum_size = Vector2(300, 46)
+	button.size_flags_horizontal = Control.SIZE_FILL
 	button.focus_mode = Control.FOCUS_ALL
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	button.pressed.connect(callable)
@@ -2067,9 +2100,8 @@ func _hide_grid_scrollbars() -> void:
 func _start_reboot_cycle() -> void:
 	hardware=preload("res://scripts/station_hardware.gd").DEFAULTS.duplicate()
 	if is_instance_valid(crew_comms): crew_comms.reset_for_loop()
-	if menu_save_feedback != null:
-		menu_save_feedback.text = "Record this loop to continue it from the title screen."
-		menu_save_feedback.add_theme_color_override("font_color", Color("9ab9c3"))
+	last_save_cycle = -1
+	_refresh_save_status()
 	run_save_id = "%s-%s" % [Time.get_unix_time_from_system(), Time.get_ticks_usec()]
 	if journal_layer != null:
 		journal_layer.visible = false
@@ -3382,6 +3414,7 @@ func _open_menu() -> void:
 	Preferences.apply_menu_text(menu_center)
 	menu_resume_button.grab_focus()
 	_refresh_menu_status()
+	_refresh_save_status()
 	_refresh_all()
 	if grid_view != null:
 		grid_view.queue_redraw()
@@ -3406,7 +3439,7 @@ func _refresh_menu_status() -> void:
 		end_expedition_button.visible = expedition_mode and running
 	if menu_status_label == null:
 		return
-	menu_status_label.text = "Cycle %03d  |  Integrity %d%%  |  Crew %d  |  View %s" % [cycle, resources.get("integrity", 0), crew_count, "ADMIN" if admin_mode else "NORMAL"]
+	menu_status_label.text = "Cycle %03d  ·  Integrity %d%%  ·  Crew %d%s" % [cycle, resources.get("integrity", 0), crew_count, "  ·  ADMIN VIEW" if admin_mode else ""]
 	if not meta.last_error.is_empty():
 		menu_status_label.text += "\nPROGRESSION NOT SAVED // " + meta.last_error
 
@@ -3477,7 +3510,7 @@ func _choose_restart_architect() -> void:
 	add_child(layer)
 	picker.closed.connect(func():
 		layer.queue_free()
-		if menu_open: _show_pause_page("exit")
+		if menu_open: _show_pause_page("main")
 		elif is_instance_valid(opener): opener.grab_focus()
 	)
 	picker.chosen.connect(func(_id: String):
@@ -3508,8 +3541,9 @@ func _save_active_loop() -> bool:
 		menu_save_feedback.text = "LOOP RECORDED / PROGRESSION NOT SAVED // " + meta.last_error
 		menu_save_feedback.add_theme_color_override("font_color", Color("ffb5a8"))
 		return false
-	menu_save_feedback.text = "LOOP RECORDED // Cycle %03d. Continue is available on the title screen." % cycle
-	menu_save_feedback.add_theme_color_override("font_color", Color("91e2dd"))
+	last_save_cycle = cycle
+	last_save_msec = Time.get_ticks_msec()
+	_refresh_save_status()
 	return true
 
 func _menu_save_game() -> void:
@@ -5734,7 +5768,7 @@ func _show_pause_page(id: String) -> void:
 	if id != "main": pause_page_opener = get_viewport().gui_get_focus_owner()
 	pause_page = id
 	for key in pause_pages: pause_pages[key].visible = key == id
-	pause_page_title.text = {"main":"PAUSED", "station":"ARCHIVE & SETTINGS", "exit":"LEAVE GAME"}[id]
+	pause_page_title.text = "PAUSED"
 	for child in pause_pages[id].get_children():
 		if child is Button and child.visible and not child.disabled:
 			child.grab_focus()
