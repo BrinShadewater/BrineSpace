@@ -256,7 +256,7 @@ func die() -> void:
 	traffic_activity = ""
 
 func snapshot() -> Dictionary:
-	return {"social_partner":social_partner,"social_cooldown":social_cooldown,"primary_room":primary_room,"air_recovery":air_recovery,"air_was_low":air_was_low,"tank_oxygen":tank_oxygen,"breath_oxygen":breath_oxygen,"starvation":starvation,"expedition":expedition.duplicate(true),"helmet_equipped": helmet_equipped, "movement_medium": movement_medium, "dead": dead, "active": active, "foot": foot, "state": state, "direction": direction,
+	return {"social_partner":social_partner,"social_cooldown":social_cooldown,"primary_room":primary_room,"air_recovery":air_recovery,"air_was_low":air_was_low,"tank_oxygen":tank_oxygen,"breath_oxygen":breath_oxygen,"starvation":starvation,"expedition":expedition.duplicate(true),"moonbay_assignment":moonbay_assignment.duplicate(true),"helmet_equipped": helmet_equipped, "movement_medium": movement_medium, "dead": dead, "active": active, "foot": foot, "state": state, "direction": direction,
 		"activity": activity, "goal": goal, "goal_cell": goal_cell, "path": path.duplicate(), "locker_request": locker_request.duplicate(true),
 		"timer": timer, "stage": stage, "needs": needs.duplicate(true), "visits": visits.duplicate(true),
 		"traffic_wait": traffic_wait, "traffic_retry": traffic_retry, "traffic_activity": traffic_activity,
@@ -277,6 +277,9 @@ static func valid_snapshot(data: Variant, breathes := true, transition_limit := 
 		if data.has(key):
 			if not (data[key] is float or data[key] is int) or not is_finite(float(data[key])) or data[key]<0 or data[key]>{"tank_oxygen":60.0,"breath_oxygen":15.0,"starvation":90.0}[key]: return false
 	if not preload("res://scripts/crew_expedition.gd").valid(data.get("expedition",{})): return false
+	var moonbay: Variant = data.get("moonbay_assignment",{})
+	if not moonbay is Dictionary: return false
+	if not moonbay.is_empty() and (not moonbay.get("home") is Vector2i or not moonbay.get("onboard") is bool or not moonbay.get("arrival",data.get("foot")) is Vector2 or not data.get("active",false) or data.get("dead",false) or data.get("goal","")!="moonbay" or not data.get("expedition",{}).is_empty()): return false
 	if not data.get("expedition",{}).is_empty() and ((breathes and not data.get("helmet_equipped",false)) or not data.get("active",false)): return false
 	for key in ["active", "foot", "state", "direction", "activity", "goal", "goal_cell", "path", "timer", "stage", "needs", "visits", "decision_rng"]:
 		if not data.has(key): return false
@@ -297,7 +300,7 @@ static func valid_snapshot(data: Variant, breathes := true, transition_limit := 
 		if data.state != death_state or not data.path.is_empty() or data.goal != "" or data.stage != "": return false
 	elif data.state in ["death-ground", "death-water"]: return false
 	if not data.direction in ["north", "south", "east", "west"]: return false
-	if not data.goal in ["", "social", "primary-work", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "ward-repair", "electrical-repair", "flood-retreat", "fire-retreat"] and not (not breathes and data.goal=="recharge"): return false
+	if not data.goal in ["", "social", "primary-work", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "ward-repair", "electrical-repair", "flood-retreat", "fire-retreat", "moonbay"] and not (not breathes and data.goal=="recharge"): return false
 	var request: Variant = data.get("locker_request", {})
 	if not request is Dictionary: return false
 	if data.goal == "diving-locker":
@@ -367,6 +370,7 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 	helmet_equipped = data.get("helmet_equipped", false)
 	locker_request = data.get("locker_request", {}).duplicate(true)
 	expedition = data.get("expedition",{}).duplicate(true)
+	moonbay_assignment = data.get("moonbay_assignment",{}).duplicate(true)
 	active = data.active
 	foot = data.foot
 	air_recovery=float(data.get("air_recovery",0))
@@ -1047,7 +1051,7 @@ func arrive() -> void:
 		var facing:=equipment_facing(goal_cell,foot-(Vector2(goal_cell)+Vector2.ONE*.5)*CELL)
 		if not facing.is_empty():direction=facing
 		return
-	if goal in ["construction","hull-repair","ward-repair","electrical-repair","flood-retreat","fire-retreat","recharge"]: return
+	if goal in ["construction","hull-repair","ward-repair","electrical-repair","flood-retreat","fire-retreat","recharge","moonbay"]: return
 	if stage=="workshop_carry":
 		stage="workshop_unload"
 		direction="north"

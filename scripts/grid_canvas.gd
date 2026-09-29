@@ -874,6 +874,7 @@ func _surface_state() -> Array:
 		structural.erase("water_level")
 		structural.erase("hull_crack")
 		structural.erase("leak_repair")
+		structural.erase("moonbay_mission")
 		# These values are consumed by live chamber/fire effects, not the shell.
 		# Keeping their timers here redraws every visible floor/wall every frame.
 		# fire_heat rises every functioning cycle in machinery rooms (owner lag reports, Sept 27).
@@ -1546,7 +1547,7 @@ func _paint_surface(pass_id: int) -> void:
 			for room in static_draw_rooms:
 				_draw_connectors(room, main.occupied)
 			for room in static_draw_rooms:
-				if not _uses_layered_art(room):
+				if not _uses_layered_art(room) and room.id!="moonbay":
 					_draw_room(room)
 		for i in (range(split) if pass_id == Surface.FLOOR else range(split,layered.size())):
 			var room: Dictionary = layered[i]
@@ -1608,6 +1609,8 @@ func _paint_surface(pass_id: int) -> void:
 					draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
 					preload("res://rooms/whole-room/north_wall.gd").draw_brine_signals(draw_target,_bill_room_view(room))
 					draw_target.draw_set_transform(Vector2.ZERO)
+			elif room.id=="moonbay":
+				_draw_room(room)
 		if profile_draw: _profile_draw_stage("live_rooms",stage_time)
 		if retain_static_surfaces: return
 	if pass_id==Surface.FOREGROUND or not retain_static_surfaces:
@@ -1625,6 +1628,7 @@ func _paint_surface(pass_id: int) -> void:
 	_draw_discovery_bursts(main)
 	_draw_room_selection(main, cell_size)
 	_draw_door_foregrounds(main, true)
+	preload("res://scripts/moonbay_missions.gd").draw_exterior(draw_target,main,cell_size)
 	_draw_humans(main)
 	_draw_door_foregrounds(main, false)
 	stage_time = _profile_draw_stage("actors_effects", stage_time)
@@ -2732,6 +2736,7 @@ func _draw_humans(main) -> void:
 	_draw_marsh_legacy(main)
 	if human_sprite == null or not main.has_test_walker():
 		return
+	if not preload("res://scripts/moonbay_missions.gd").station_visible(main,main.bill_npc): return
 	var walker_pos: Vector2 = main.get_test_walker_position()
 	var walker_cell := Vector2i(floori(walker_pos.x / _cell_size()), floori(walker_pos.y / _cell_size()))
 	if _uses_layered_art(main.occupied.get(walker_cell, {})):
@@ -2755,6 +2760,7 @@ func _draw_humans(main) -> void:
 
 func _draw_veld_legacy(main) -> void:
 	if not main.has_dr_veld(): return
+	if not preload("res://scripts/moonbay_missions.gd").station_visible(main,main.veld_npc): return
 	var pos: Vector2 = main.get_dr_veld_position()
 	var cell := Vector2i(floori(pos.x / _cell_size()), floori(pos.y / _cell_size()))
 	if _uses_layered_art(main.occupied.get(cell, {})): return
@@ -2777,6 +2783,7 @@ func _get_veld_frame_source(main) -> Texture2D:
 
 func _draw_branforth_legacy(main) -> void:
 	if not main.has_chief_branforth(): return
+	if not preload("res://scripts/moonbay_missions.gd").station_visible(main,main.branforth_npc): return
 	var pos: Vector2 = main.get_chief_branforth_position()
 	var cell := Vector2i(floori(pos.x / _cell_size()), floori(pos.y / _cell_size()))
 	if _uses_layered_art(main.occupied.get(cell, {})): return
@@ -2799,6 +2806,7 @@ func _get_branforth_frame_source(main) -> Texture2D:
 
 func _draw_marsh_legacy(main) -> void:
 	if not main.has_marsh(): return
+	if not preload("res://scripts/moonbay_missions.gd").station_visible(main,main.marsh_npc): return
 	var pos: Vector2 = main.get_marsh_position()
 	var cell := Vector2i(floori(pos.x / _cell_size()), floori(pos.y / _cell_size()))
 	if _uses_layered_art(main.occupied.get(cell, {})): return

@@ -85,6 +85,12 @@ func run() -> void:
 	check(not pilot.moonbay_assignment.is_empty(),"Live crew enters Moonbay assignment")
 	panel.refresh()
 	check(panel.recall_button.visible and panel.launch_button.disabled,"Moonbay inspector shows recall during a mission")
+	for _step in range(600):
+		Mission.advance_crew(station,pilot,0.1)
+		if pilot.moonbay_assignment.get("onboard",false): break
+	check(pilot.moonbay_assignment.get("onboard",false) and pilot.goal=="moonbay","Crew walks into the hangar and boards without taking another job")
+	Mission.tick(station,13.0)
+	check(Mission.mission_state(station.occupied[anchor]).phase=="seal","Launch cycle begins after boarding")
 	root.remove_child(station)
 	current_scene = null
 	station.free()
