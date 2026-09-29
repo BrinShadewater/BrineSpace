@@ -13,6 +13,9 @@ const COLORS := ["Life Support", "Engineering", "Robotics", "Engineering"]
 const VIEWS := ["res://rooms/large-rooms/hydroponics_farm.gd",
 	"res://rooms/large-rooms/storage_depot.gd", "res://rooms/large-rooms/moonbay.gd",
 	"res://rooms/large-rooms/tidal_power_plant.gd"]
+const ART := ["res://rooms/large-rooms/art/grow_beds.png",
+	"res://rooms/large-rooms/art/cargo_gantry.png", "res://rooms/large-rooms/art/mini_sub.png",
+	"res://rooms/large-rooms/art/tidal_turbine.png"]
 
 var failures := 0
 
@@ -37,6 +40,10 @@ func _init() -> void:
 		check(Cards.PATHS.has(id) and str(Cards.PATHS.get(id, "")).begins_with("res://assets/"), id + " has a whole card art path")
 		if Cards.PATHS.has(id): check(FileAccess.file_exists(str(Cards.PATHS[id])), id + " card image exists")
 		check(ResourceLoader.exists(VIEWS[i]), id + " fixed view exists")
+		var painted := Image.new()
+		check(painted.load_png_from_buffer(FileAccess.get_file_as_bytes(ART[i])) == OK, id + " painted installation decodes without an import")
+		if painted.get_width()>0:
+			check(painted.get_pixel(0,0).a < 0.1 and painted.get_pixel(int(painted.get_width()/2),int(painted.get_height()/2)).a > 0.5, id + " installation has true exterior alpha and visible interior")
 		if ResourceLoader.exists(VIEWS[i]):
 			var view = load(VIEWS[i])
 			var bounds: Array = view.fixed_bounds()

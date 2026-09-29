@@ -105,12 +105,16 @@ static func draw_exterior(canvas: CanvasItem, game, cell_size: float) -> void:
 		var state: Dictionary = room.moonbay_mission
 		if state.phase not in ["launch","outbound","work","return"]: continue
 		var point: Vector2 = exterior_position(room,state)*cell_size
-		var radius: float = cell_size*0.13
-		canvas.draw_circle(point,radius*1.7,Color(0.08,0.55,0.7,0.13))
-		canvas.draw_colored_polygon(PackedVector2Array([point+Vector2(-radius,0),point+Vector2(-radius*0.45,-radius*0.42),point+Vector2(radius*0.65,-radius*0.42),point+Vector2(radius,0),point+Vector2(radius*0.65,radius*0.42),point+Vector2(-radius*0.45,radius*0.42)]),Color("#a7c9d0"))
-		canvas.draw_circle(point,radius*0.31,Color("#217690"))
-		canvas.draw_circle(point+Vector2(-radius*0.9,-radius*0.25),radius*0.12,Color("#5cdbef"))
-		canvas.draw_circle(point+Vector2(-radius*0.9,radius*0.25),radius*0.12,Color("#5cdbef"))
+		var hatch: Vector2 = (Vector2(room.pos)+Vector2.ONE)*cell_size
+		var direction: Vector2 = point-hatch
+		if state.phase=="outbound" or state.phase=="work": direction=(Vector2(state.target)+Vector2.ONE*0.5)*cell_size-point
+		if state.phase=="return": direction=hatch-point
+		if direction.length_squared()<0.001: direction=Vector2.LEFT.rotated(deg_to_rad(float(int(room.get("rotation",0))*90)))
+		var angle: float = direction.angle()-PI
+		canvas.draw_circle(point,cell_size*0.19,Color(0.08,0.55,0.7,0.10))
+		canvas.draw_set_transform(point,angle,Vector2.ONE)
+		preload("res://rooms/large-rooms/common.gd").sprite(canvas,"res://rooms/large-rooms/art/mini_sub.png",Rect2(-cell_size*0.23,-cell_size*0.11,cell_size*0.46,cell_size*0.22),Color("#b0a8a5") if int(state.get("damage",0))>0 else Color.WHITE)
+		canvas.draw_set_transform(Vector2.ZERO,0.0,Vector2.ONE)
 
 static func mission_state(room: Dictionary) -> Dictionary:
 	if not room.has("moonbay_mission"):

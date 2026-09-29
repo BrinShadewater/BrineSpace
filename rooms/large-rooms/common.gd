@@ -2,6 +2,21 @@ extends RefCounted
 
 const FLOOR_SIZE := 768.0
 const HALF := FLOOR_SIZE * 0.5
+static var art_textures: Dictionary = {}
+
+static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color = Color.WHITE) -> void:
+	if not art_textures.has(path):
+		var image := Image.new()
+		var error := image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))
+		if error != OK:
+			push_error("Large room art could not load: %s (%d)" % [path, error])
+			return
+		art_textures[path] = ImageTexture.create_from_image(image)
+	var texture: Texture2D = art_textures[path]
+	var natural: Vector2 = texture.get_size()
+	var scale: float = minf(bounds.size.x / natural.x, bounds.size.y / natural.y)
+	var size: Vector2 = natural * scale
+	canvas.draw_texture_rect(texture, Rect2(bounds.get_center() - size * 0.5, size), false, tint)
 
 static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, accent: Color) -> void:
 	canvas.draw_set_transform(rect.get_center(), deg_to_rad(float(int(room.get("rotation", 0)) * 90)), Vector2.ONE * (rect.size.x / FLOOR_SIZE))

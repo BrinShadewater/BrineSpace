@@ -24,14 +24,7 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 		for x in range(-340, 341, 68): canvas.draw_rect(Rect2(x - 4, y - 12, 8, 24), Color("#a2b7b9"))
 	Common.panel(canvas, Rect2(-233, -117, 466, 234), Color("#1b303b"), Color("#537887"))
 	if state.sub_present:
-		# Broad pressure hull, observation glass and twin compact thrusters.
-		canvas.draw_colored_polygon(PackedVector2Array([Vector2(-210,0),Vector2(-130,-73),Vector2(137,-73),Vector2(215,-35),Vector2(225,0),Vector2(215,35),Vector2(137,73),Vector2(-130,73)]), Color("#8d999f") if state.damage>0 else Color("#b4c5c6"))
-		canvas.draw_colored_polygon(PackedVector2Array([Vector2(-173,0),Vector2(-114,-54),Vector2(120,-54),Vector2(180,-22),Vector2(185,0),Vector2(180,22),Vector2(120,54),Vector2(-114,54)]), Color("#4e707d"))
-		canvas.draw_rect(Rect2(-80, -48, 105, 96), Color("#123a4e"))
-		canvas.draw_rect(Rect2(-68, -37, 81, 74), Color("#2d7384"))
-		for y in [-48, 48]:
-			canvas.draw_rect(Rect2(130, y - 16, 94, 32), Color("#899ca2"))
-			canvas.draw_circle(Vector2(218, y), 16, Color("#223c49"))
+		Common.sprite(canvas, "res://rooms/large-rooms/art/mini_sub.png", Rect2(-233, -117, 466, 234), Color("#b0a8a5") if state.damage>0 else Color.WHITE)
 	else:
 		for x in [-178,-70,70,178]: canvas.draw_rect(Rect2(x-12,-86,24,172),Color("#547481"))
 		for x in [-142,142]: canvas.draw_circle(Vector2(x,0),23,Color("#0c2533"))
