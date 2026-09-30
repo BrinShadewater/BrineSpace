@@ -45,7 +45,12 @@ func run() -> void:
 	expect(RoomTooltip.build(game, Vector2i(5, 5)) == null, "An empty cell has no tooltip")
 	# The grid turns hovering a room into that tooltip, and leaves other tooltips alone.
 	var grid = game.grid_view
-	expect(grid._make_custom_tooltip("Talk to Bill") == null, "Plain text tooltips stay plain")
+	# The grid's engine tooltip frame is off (the room panel fits its own outline), so plain text gets a small
+	# framed label of its own rather than the room panel (Sept 30).
+	var plain = grid._make_custom_tooltip("Talk to Bill")
+	expect(plain is PanelContainer and plain.find_child("Flow", true, false) == null and plain.get_child(0) is Label and plain.get_child(0).text == "Talk to Bill", "Plain text tooltips stay plain text in a small frame")
+	if plain is Node: plain.free()
+	expect(grid._make_custom_tooltip("") == null, "An empty tooltip builds nothing")
 	var made = grid._make_custom_tooltip(RoomTooltip.marker(Vector2i(21, 20)))
 	expect(made is Control, "The grid builds the room tooltip from the marker")
 	if made is Node: made.queue_free()
