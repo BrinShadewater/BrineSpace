@@ -737,6 +737,18 @@ class SurfacePass extends Node2D:
 		host.draw_usec_since_read += Time.get_ticks_usec()-started
 		host.draws_since_read += 1
 
+# One door (or airlock hatch) of a retained door pass, in the pass's drawing order. A door that
+# opens, or that a crew member walks past, repaints alone: repainting every door for it cost
+# ~3 ms on two frames in three on a large station (Sept 30 probe, 49 doors).
+class DoorSlot extends Node2D:
+	var host
+	var entry: Dictionary
+	var behind := false
+	func _draw() -> void:
+		var started := Time.get_ticks_usec()
+		host._draw_door_slot(self)
+		host.draw_usec_since_read += Time.get_ticks_usec()-started
+
 # Environment layers below the station surfaces. STATIC_* retain their commands
 # between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
 var underwater_visibility = preload("res://scripts/underwater_visibility.gd").new()
@@ -873,13 +885,40 @@ func _door_light_state() -> void:
 		surface_passes[Surface.REAR_DOORS].queue_redraw()
 		surface_passes[Surface.FRONT_DOORS].queue_redraw()
 	elif _retained_key_stale(doors,door_surface_key,0):
+		if not _repaint_changed_doors(doors):
+			pending_layers[surface_passes[Surface.REAR_DOORS]] = true
+			pending_layers[surface_passes[Surface.FRONT_DOORS]] = true
 		door_surface_key = doors.duplicate(true)
-		pending_layers[surface_passes[Surface.REAR_DOORS]] = true
-		pending_layers[surface_passes[Surface.FRONT_DOORS]] = true
 	if _retained_key_stale(lights,light_surface_key,0):
 		light_surface_key = lights.duplicate(true)
 		pending_layers[surface_passes[Surface.LIGHTS]] = true
 
+
+# The same doors in the same order at the size both passes were built at, outside any zoom:
+# repaint just the doors whose entry changed. Anything else repaints both passes whole.
+func _repaint_changed_doors(doors: Array) -> bool:
+	var passes: Array = [surface_passes[Surface.REAR_DOORS],surface_passes[Surface.FRONT_DOORS]]
+	if zoom_reuse_active or zoom_preparing or zoom_settling: return false
+	if doors.size() != door_surface_key.size() or doors.size() < 3: return false
+	for i in range(3):
+		if doors[i] != door_surface_key[i]: return false
+	for layer in passes:
+		if pending_layers.has(layer) or not layer.has_meta("door_slots"): return false
+		if not is_equal_approx(float(layer.get_meta("built_cell",-1.0)),float(doors[0])): return false
+	var changed: Array[String] = []
+	for i in range(3,doors.size()):
+		var now: Array = doors[i]
+		var before: Array = door_surface_key[i]
+		if now[0] != before[0] or now[1] != before[1]: return false
+		if now == before: continue
+		# A hatch entry carries the wall settings that also decide riser doors.
+		if str(now[1]) == "exterior-hatch": return false
+		changed.append("%s|%s" % [now[0],now[1]])
+	for layer in passes:
+		var slots: Dictionary = layer.get_meta("door_slots")
+		for id in changed:
+			if slots.has(id): slots[id].queue_redraw()
+	return true
 
 func _surface_state() -> Array:
 	var main = _get_main()
@@ -1627,7 +1666,7 @@ func _paint_surface(pass_id: int) -> void:
 		wall_rebuilds += 1
 		return
 	if pass_id in [Surface.REAR_DOORS,Surface.FRONT_DOORS]:
-		_draw_layered_doors(pass_id == Surface.REAR_DOORS)
+		_sync_door_slots(surface_passes[pass_id],pass_id == Surface.REAR_DOORS)
 		door_rebuilds += 1
 		if profile_draw: _profile_draw_stage("rear_doors" if pass_id==Surface.REAR_DOORS else "front_doors",stage_time)
 		return
@@ -2331,19 +2370,18 @@ func _department_parts(frame: int, vertical: bool, variant: String, narrow: bool
 	return parts
 
 func _draw_layered_doors(behind_crew: bool) -> void:
+	for entry in _door_entries(): _draw_door_entry(entry,behind_crew)
+
+# Every drawn door and raised airlock hatch, in drawing order. East/south traversal owns each
+# undirected connection exactly once. Ids match the door key entries (room pos | side).
+func _door_entries() -> Array:
 	var main = _get_main()
-	var cell_size := _cell_size()
-	var actor_y := -INF
-	if main.has_test_walker(): actor_y = main.get_test_walker_position().y+cell_size*0.038
+	var entries: Array = []
 	for room in static_draw_rooms:
-		# East/south traversal owns each undirected connection exactly once.
 		# The airlock's exterior hatch is not a station connection. Keep its
 		# closed north face visible above the raised hull as well as the low sill.
 		if room.id=="airlock" and posmod(int(room.rotation),4)==0 and main.hardware.walls and preload("res://scripts/title_settings.gd").raised_walls:
-			draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
-			var hatch_pose:Dictionary=preload("res://scripts/airlock_cycle.gd").pose(room)
-			preload("res://rooms/doors/ocean_hatch.gd").raised(draw_target,hatch_pose.outer,behind_crew,hatch_pose.water,not behind_crew)
-			draw_target.draw_set_transform(Vector2.ZERO)
+			entries.append({"room":room,"hatch":true,"id":"%s|exterior-hatch" % room.pos})
 		for edge_port in _render_ports(room, main):
 			var pos: Vector2i = edge_port.cell
 			var side: String = edge_port.side
@@ -2358,35 +2396,83 @@ func _draw_layered_doors(behind_crew: bool) -> void:
 			# The layered pass would otherwise submit a second door on this same seam.
 			if LARGE_ROOM_VIEWS.has(str(room.get("id", ""))) or LARGE_ROOM_VIEWS.has(str(neighbor_room.get("id", ""))): continue
 			if not _uses_layered_art(room) and not _uses_layered_art(neighbor_room): continue
-			var frame := _door_frame_for_pair(main,pos,neighbor) if connected else outside_frame
-			var edge_center := _door_edge_center(pos,side,cell_size)
-			actor_y = _nearest_crew_foot(main, edge_center).y
-			if side=="north" and not connected and preload("res://scripts/title_settings.gd").raised_walls and main.hardware.walls and not _is_narrow_corridor(room):
-				if behind_crew:
-					draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
-					RoomDoor.draw_riser_door(draw_target,float(frame)/float(DOOR_OPEN_FRAMES-1),preload("res://rooms/whole-room/north_wall.gd").brine_texture if room.id=="brine_core" else null,DepartmentDoor.department(room))
-					draw_target.draw_set_transform(Vector2.ZERO)
-				continue
-			if not department_door_materials.is_empty():
-				var variant := DepartmentDoor.pair_variant(room,neighbor_room)
-				var light := minf(_room_light_level(room),_room_light_level(neighbor_room))
-				draw_target.draw_set_transform(edge_center,0,Vector2.ONE*cell_size/384.0)
-				var door_parts := _department_parts(frame,side in ["east","west"],variant,_is_narrow_corridor(room) or _is_narrow_corridor(neighbor_room),side_open_door_prototype and side=="east")
-				for part in door_parts:
-					var behind: bool = part.floor or actor_y>edge_center.y+float(part.depth)*cell_size/384.0
-					if behind==behind_crew: DepartmentDoor.draw_piece(draw_target,department_door_materials,variant,part,light)
-				draw_target.draw_set_transform(Vector2.ZERO)
-				continue
-			if door_texture==null:
-				if behind_crew: continue
-				draw_target.draw_set_transform(edge_center,PI/2 if side in ["east","west"] else 0,Vector2.ONE*cell_size/384.0)
-				RoomDoor.draw_door(draw_target,float(frame)/float(DOOR_OPEN_FRAMES-1))
-			else:
-				draw_target.draw_set_transform(edge_center,0,Vector2.ONE*cell_size/384.0)
-				for part in AnimatedDoorAtlas.parts(frame,side in ["east","west"]):
-					var behind: bool = part.floor or actor_y>edge_center.y+float(part.depth)*cell_size/384.0
-					if behind==behind_crew: AnimatedDoorAtlas.draw_piece(draw_target,layered_door_texture if layered_door_texture != null else door_texture,part)
+			entries.append({"room":room,"edge_port":edge_port,"id":"%s|%s" % [room.pos,side]})
+	return entries
+
+func _draw_door_entry(entry: Dictionary, behind_crew: bool) -> void:
+	var main = _get_main()
+	var cell_size := _cell_size()
+	var room: Dictionary = entry.room
+	if entry.has("hatch"):
+		draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
+		var hatch_pose:Dictionary=preload("res://scripts/airlock_cycle.gd").pose(room)
+		preload("res://rooms/doors/ocean_hatch.gd").raised(draw_target,hatch_pose.outer,behind_crew,hatch_pose.water,not behind_crew)
+		draw_target.draw_set_transform(Vector2.ZERO)
+		return
+	var pos: Vector2i = entry.edge_port.cell
+	var side: String = entry.edge_port.side
+	var offset := _offset_from_side(side)
+	var neighbor: Vector2i = pos+offset
+	var connected := _door_has_connected_neighbor(main,room,neighbor,offset)
+	var outside_frame := _drone_door_frame(main,pos,neighbor)
+	var neighbor_room: Dictionary = main.occupied.get(neighbor,room)
+	var frame := _door_frame_for_pair(main,pos,neighbor) if connected else outside_frame
+	var edge_center := _door_edge_center(pos,side,cell_size)
+	var actor_y: float = _nearest_crew_foot(main, edge_center).y
+	if side=="north" and not connected and preload("res://scripts/title_settings.gd").raised_walls and main.hardware.walls and not _is_narrow_corridor(room):
+		if behind_crew:
+			draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
+			RoomDoor.draw_riser_door(draw_target,float(frame)/float(DOOR_OPEN_FRAMES-1),preload("res://rooms/whole-room/north_wall.gd").brine_texture if room.id=="brine_core" else null,DepartmentDoor.department(room))
 			draw_target.draw_set_transform(Vector2.ZERO)
+		return
+	if not department_door_materials.is_empty():
+		var variant := DepartmentDoor.pair_variant(room,neighbor_room)
+		var light := minf(_room_light_level(room),_room_light_level(neighbor_room))
+		draw_target.draw_set_transform(edge_center,0,Vector2.ONE*cell_size/384.0)
+		var door_parts := _department_parts(frame,side in ["east","west"],variant,_is_narrow_corridor(room) or _is_narrow_corridor(neighbor_room),side_open_door_prototype and side=="east")
+		for part in door_parts:
+			var behind: bool = part.floor or actor_y>edge_center.y+float(part.depth)*cell_size/384.0
+			if behind==behind_crew: DepartmentDoor.draw_piece(draw_target,department_door_materials,variant,part,light)
+		draw_target.draw_set_transform(Vector2.ZERO)
+		return
+	if door_texture==null:
+		if behind_crew: return
+		draw_target.draw_set_transform(edge_center,PI/2 if side in ["east","west"] else 0,Vector2.ONE*cell_size/384.0)
+		RoomDoor.draw_door(draw_target,float(frame)/float(DOOR_OPEN_FRAMES-1))
+	else:
+		draw_target.draw_set_transform(edge_center,0,Vector2.ONE*cell_size/384.0)
+		for part in AnimatedDoorAtlas.parts(frame,side in ["east","west"]):
+			var behind: bool = part.floor or actor_y>edge_center.y+float(part.depth)*cell_size/384.0
+			if behind==behind_crew: AnimatedDoorAtlas.draw_piece(draw_target,layered_door_texture if layered_door_texture != null else door_texture,part)
+	draw_target.draw_set_transform(Vector2.ZERO)
+
+# A whole repaint of a retained door pass: one slot per door, in order, each repainted.
+func _sync_door_slots(layer: Node2D, behind: bool) -> void:
+	var entries := _door_entries()
+	var slots: Array = layer.get_children()
+	var by_id := {}
+	for i in range(entries.size()):
+		var slot: DoorSlot
+		if i < slots.size(): slot = slots[i]
+		else:
+			slot = DoorSlot.new()
+			slot.host = self
+			layer.add_child(slot)
+		slot.entry = entries[i]
+		slot.behind = behind
+		slot.queue_redraw()
+		by_id[entries[i].id] = slot
+	for i in range(entries.size(),slots.size()):
+		layer.remove_child(slots[i])
+		slots[i].queue_free()
+	layer.set_meta("door_slots",by_id)
+
+func _draw_door_slot(slot: Node2D) -> void:
+	render_door_cache_active = reuse_frame_doors
+	draw_target = slot
+	_draw_door_entry(slot.entry,slot.behind)
+	draw_target = self
+	render_door_cache_active = false
 
 func _draw_door_foregrounds(main, underlay: bool = false) -> void:
 	if door_texture == null:
