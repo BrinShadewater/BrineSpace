@@ -349,7 +349,6 @@ static func layout_fan(fan: Control) -> void:
 		var at := Vector2(fan.size.x * 0.5 - CARD_SIZE.x * 0.5 + offset * step, 30.0 + offset * offset * FAN_DROP)
 		card.set_meta("rest_position", at)
 		card.set_meta("rest_rotation", deg_to_rad(offset * FAN_DEGREES))
-		card.set_meta("rest_index", i)
 		card.size = CARD_SIZE
 		card.position = at
 		card.rotation = card.get_meta("rest_rotation")
@@ -357,6 +356,16 @@ static func layout_fan(fan: Control) -> void:
 		# A turned card samples its art off the pixel grid, and nearest filtering stair-steps it
 		# (owner playtest note 14). Only the cards that actually turn filter smoothly.
 		set_art_filter(card, not is_zero_approx(card.rotation))
+	# Stack like a held hand: the middle card lies on top and the outer cards tuck under it (owner playtest,
+	# Sept 29). Hover raises a card and puts it back at this rank.
+	var stack := cards.duplicate()
+	stack.sort_custom(func(a, b):
+		var da := absf(float(cards.find(a)) - mid)
+		var db := absf(float(cards.find(b)) - mid)
+		return da > db or (is_equal_approx(da, db) and cards.find(a) < cards.find(b)))
+	for rank in range(stack.size()):
+		fan.move_child(stack[rank], rank)
+		stack[rank].set_meta("rest_index", rank)
 
 static func set_art_filter(card: Control, turned: bool) -> void:
 	var art = card.get_meta("art_node", null)

@@ -4226,9 +4226,10 @@ func _card_synergy_hint(room_id: String) -> String:
 
 func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affordable := true) -> void:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color("#101a20") if not selected else Color(0.03, 0.07, 0.08, 0.88)
+	# Opaque: in the fan a see-through card let its neighbour's text ghost through (owner playtest, Sept 29).
+	style.bg_color = Color("#101a20") if not selected else Color(0.03, 0.07, 0.08, 1.0)
 	if not affordable:
-		style.bg_color = Color(0.018, 0.024, 0.03, 0.78) if not selected else Color(0.055, 0.065, 0.075, 0.88)
+		style.bg_color = Color(0.018, 0.024, 0.03, 1.0) if not selected else Color(0.055, 0.065, 0.075, 1.0)
 	style.border_color = UI_ACCENT_BRIGHT if selected else preload("res://scripts/draft_card.gd").muted(color)
 	if not affordable and not selected:
 		style.border_color = Color("#30424a")
@@ -4243,7 +4244,7 @@ func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affor
 	style.content_margin_bottom = 7
 	card.add_theme_stylebox_override("panel", style)
 	if not affordable:
-		card.modulate = Color(0.72, 0.76, 0.78, 0.78)
+		card.modulate = Color(0.72, 0.76, 0.78, 1.0)
 	elif selected:
 		card.modulate = Color(1.06, 1.10, 1.06, 1.0)
 	else:

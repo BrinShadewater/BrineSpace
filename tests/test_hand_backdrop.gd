@@ -109,6 +109,12 @@ func run() -> void:
 	for i in range(6): await process_frame
 	check(Preferences.hand_layout == "fan" and game.hand_box.has_node("FanRow") and game.hand_layout_button.text == "LAYOUT: FAN", "The layout toggle fans the hand")
 	var fanned: Array = game.hand_box.get_node("FanRow").get_children()
+	var stacked: Array = fanned.duplicate()
+	fanned.sort_custom(func(a, b): return int(a.get_meta("hand_index")) < int(b.get_meta("hand_index")))
+	if fanned.size() >= 3:
+		var middle: Control = fanned[int((fanned.size() - 1) * 0.5)]
+		check(stacked[-1] == middle or (fanned.size() % 2 == 0 and stacked[-1] in [fanned[fanned.size() / 2 - 1], fanned[fanned.size() / 2]]), "The middle card lies on top of the fan")
+		check(stacked[0] in [fanned[0], fanned[-1]], "The outermost card is at the bottom of the fan")
 	check(fanned.size() == game.hand.size(), "Every card is in the fan")
 	if fanned.size() >= 3:
 		check(fanned[0].rotation < 0.0 and fanned[-1].rotation > 0.0 and fanned[0].size == game.DraftCard.CARD_SIZE, "Outer cards turn outward and keep card size: rot %.3f / %.3f size %s" % [fanned[0].rotation, fanned[-1].rotation, fanned[0].size])
@@ -119,7 +125,7 @@ func run() -> void:
 		check(is_zero_approx(outer.rotation) and outer.get_index() == fanned.size() - 1, "A hovered fanned card straightens and comes to the front")
 		game._on_card_unhovered(outer.get_meta("card_id"), outer)
 		await create_timer(0.25).timeout
-		check(outer.get_index() == 0 and outer.rotation < 0.0, "It returns to its place in the fan")
+		check(outer.get_index() == stacked.find(outer) and outer.rotation < 0.0, "It returns to its place in the fan")
 	var layout_saved := ConfigFile.new()
 	check(layout_saved.load(Preferences.save_path) == OK and layout_saved.get_value("display", "hand_layout", "") == "fan", "The hand layout persists")
 	game.hand_layout_button.emit_signal("pressed")
