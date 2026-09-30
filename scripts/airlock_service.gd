@@ -48,7 +48,11 @@ static func helmet_on_shelf(game, cell: Vector2i) -> bool:
 	return true
 
 static func ready(game,cell: Vector2i) -> bool:
-	return game.running and game.occupied.has(cell) and game.occupied[cell].id=="airlock" and not game.occupied[cell].get("suspended",false) and game.powered_room_cells.has(cell)
+	if not game.running or not game.occupied.has(cell): return false
+	var room: Dictionary = game.occupied[cell]
+	if room.id not in ["airlock","moonbay"] or room.get("suspended",false): return false
+	if room.id == "moonbay" and preload("res://scripts/moonbay_missions.gd").mission_state(room).phase != "idle": return false
+	return game.hardware.power and game.powered_room_cells.has(room.pos)
 
 # The old built-in lockers, or the station prop tagged as the suit locker (props v2).
 static func is_suit_locker(prop: Dictionary) -> bool:
@@ -62,7 +66,12 @@ static func helmet_anchor(prop: Dictionary) -> Vector2:
 	return Vector2(prop.rect.position.x-6,prop.rect.position.y+prop.rect.size.y*0.6)
 
 static func locker(game,cell: Vector2i) -> Dictionary:
-	if not game.occupied.has(cell) or game.occupied[cell].id!="airlock": return {}
+	if not game.occupied.has(cell): return {}
+	if game.occupied[cell].id == "moonbay":
+		var room: Dictionary = game.occupied[cell]
+		var point := (Vector2(room.pos)+Vector2.ONE)*384.0+preload("res://rooms/large-rooms/moonbay.gd").locker_point(room)
+		return {"id":"airlock:%d:%d" % [room.pos.x,room.pos.y],"cell":Vector2i(floori(point.x/384.0),floori(point.y/384.0)),"interaction_point":point,"facing":"east"}
+	if game.occupied[cell].id!="airlock": return {}
 	var geometry: Dictionary=game.grid_view.bill_room_geometry(game.occupied[cell],[])
 	for prop in geometry.props:
 		if prop.id=="suit_lockers":
@@ -111,7 +120,7 @@ static func check_service(game,actor) -> void:
 	var cell: Vector2i=actor.cell_at(actor.foot)
 	var pending: bool=not actor.locker_request.is_empty() and str(actor.locker_request.locker.id).begins_with("airlock:")
 	if pending: cell=actor.locker_request.locker.cell
-	var local_action: bool=actor.helmet_action_active() and game.occupied.has(cell) and game.occupied[cell].id=="airlock"
+	var local_action: bool=actor.helmet_action_active() and game.occupied.has(cell) and game.occupied[cell].id in ["airlock","moonbay"]
 	if (pending or local_action) and not ready(game,cell):
 		actor.cancel_helmet_action()
 		actor.locker_request.clear()

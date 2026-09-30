@@ -21,6 +21,7 @@ static func fixed_bounds_for_rotation(rotation: int) -> Array[Rect2]:
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	Common.begin(canvas, room, rect, Color("#343b3b"), WALL_STYLE, "res://assets/department-floors-v1/wet-drainage.png", 0.36)
 	Common.draw_features(canvas, FEATURES, room, rect)
+	Common.south_transform(canvas, rect)
 	# Fixed painted grow beds stay inside the recorded equipment footprint.
 	Common.sprite(canvas, "res://rooms/large-rooms/art/grow_beds.png", Rect2(-204, -204, 408, 408))
 	Common.finish(canvas)

@@ -127,6 +127,7 @@ static func problem(value: Dictionary) -> String:
 	if not preload("res://scripts/room_fire.gd").valid_rooms(state.placed_rooms): return "fire state"
 	if not preload("res://scripts/survey_probe.gd").valid_rooms(state.placed_rooms): return "survey probe state"
 	if not preload("res://scripts/moonbay_missions.gd").valid_rooms(state.placed_rooms,value.get("crew")): return "Moonbay mission state"
+	if not preload("res://rooms/large-rooms/tidal_power_plant.gd").valid_rooms(state.placed_rooms): return "Tidal chamber state"
 	if not preload("res://scripts/drone_fleet.gd").valid(value.get("drone_fleet"),state.get("placed_rooms",[])): return "drone fleet"
 	if not valid_crew(value.get("crew")): return "crew snapshots"
 	if not preload("res://scripts/companions.gd").valid(value.get("companions"),value.get("wrecks",{}),state.placed_rooms): return "companions"

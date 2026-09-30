@@ -44,6 +44,8 @@ func render_into(target: CanvasItem, at: Vector2, scale_value: float, floor_only
 		var appearance: Dictionary = Database.get_room(room_id).duplicate(true)
 		appearance.rotation = quarter
 		appearance.raised_walls = true
+		if room_id == "tidal_power_plant":
+			appearance.tidal_chamber = {"water":minf(1.0,machine_clock/6.0),"spinning":machine_clock>=6.0,"rotor_angle":fposmod(maxf(0.0,machine_clock-6.0)*0.8,TAU)}
 		VIEWS[room_id].draw(target, appearance, Rect2(at - Vector2.ONE * 384.0 * scale_value, Vector2.ONE * 768.0 * scale_value))
 		return
 	draw_props(target, self, at, scale_value)

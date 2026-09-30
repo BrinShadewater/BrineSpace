@@ -445,6 +445,9 @@ func topology(main) -> String:
 		var room: Dictionary = main.occupied[cell]
 		if room.get("doors_locked", false): locked_room_cells[cell] = true
 		entries.append("%s:%s:%s:%s:%s:%s" % [cell, room.id, room.get("rotation", 0), main.get_room_doors(room),room.get("branch_owner",Vector2i(-1,-1)),room.get("doors_locked",false)])
+		if room.id == "moonbay":
+			var bay: Dictionary = preload("res://rooms/large-rooms/moonbay.gd").visual_state(room)
+			entries.append("bay:%s:%s:%s" % [room.pos,bay.station_open,bay.sub_present])
 	entries.sort()
 	return str(hardware_doors_locked)+"/"+"|".join(entries)+"/layouts:"+str(preload("res://scripts/room_layout_store.gd").geometry_revision)
 
@@ -654,6 +657,9 @@ func rebuild(main, staged := false) -> void:
 			sides.append(Geometry.DIRS.find(neighbor - cell))
 		var key := "%s:%s:%s" % [room.id, room.get("rotation", 0), sides]
 		if room.get("size",Vector2i.ONE)!=Vector2i.ONE: key+="/part:"+str(cell-room.pos)
+		if room.id == "moonbay":
+			var bay: Dictionary = preload("res://rooms/large-rooms/moonbay.gd").visual_state(room)
+			key += "/bay:%s:%s" % [bay.station_open,bay.sub_present]
 		# Fixed recovery furniture is part of geometry, not interchangeable blueprint art.
 		if room.id=="brine_core": key+="/pod:"+str(not main.architect_run.is_empty())
 		if room.get("recovered_derelict",false): key+="/pods:"+str(main.wrecks.get(cell,{}).get("pods",[]).size())
@@ -728,10 +734,15 @@ func rebuild(main, staged := false) -> void:
 			slice_started = Time.get_ticks_usec()
 		var center := (Vector2(cell) + Vector2.ONE * 0.5) * CELL
 		for side in geometry[cell].open:
-			var a := Vector2i(center + Vector2(Geometry.DIRS[side]) * 176)
-			var b: Vector2i = a + Geometry.DIRS[side] * 32
-			if points.has(a) and points.has(b) and segment_clear(Vector2(a), Vector2(b)):
-				graph.connect_points(points[a], points[b])
+			var direction: Vector2i = Geometry.DIRS[side]
+			var neighbor: Vector2i = cell + direction
+			var internal: bool = geometry[cell].get("large_room",false) and geometry.has(neighbor) and geometry[neighbor].get("large_room",false) and geometry[cell].room.pos == geometry[neighbor].room.pos
+			var offsets: Array = range(-176,177,STEP) if internal else [0]
+			for offset in offsets:
+				var a := Vector2i(center + Vector2(direction) * 176) + Vector2i(-direction.y,direction.x)*int(offset)
+				var b: Vector2i = a + direction * 32
+				if points.has(a) and points.has(b) and segment_clear(Vector2(a), Vector2(b)):
+					graph.connect_points(points[a], points[b])
 	signature = topology(main)
 	fire_building_navigation=false
 

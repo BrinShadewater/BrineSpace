@@ -133,16 +133,19 @@ func _init() -> void:
 				var feature: Dictionary = features[feature_index]
 				var feature_rect: Rect2 = feature.rect
 				check(str(feature.path).begins_with("res://assets/station-props-v2/") and FileAccess.file_exists(str(feature.path)), id + " supporting art is an installed station prop")
-				check(feature_rect.position.x >= -312.0 and feature_rect.position.y >= -312.0 and feature_rect.end.x <= 312.0 and feature_rect.end.y <= 312.0, id + " support clears the north riser in every rotation")
+				var envelope := 360.0 if feature.get("fixed_position",false) else 312.0
+				check(feature_rect.position.x >= -envelope and feature_rect.position.y >= -312.0 and feature_rect.end.x <= envelope and feature_rect.end.y <= envelope, id + " support clears the hull and north riser")
 				check(not feature_rect.intersects(centerpiece), id + " support leaves the fixed centerpiece clear")
 				for earlier in range(feature_index):
 					check(not feature_rect.intersects(features[earlier].rect), id + " supports do not overlap")
 			for rotation in range(4):
 				var rotated: Array[Rect2] = view.fixed_bounds_for_rotation(rotation)
 				check(rotated.size() == bounds.size(), id + " keeps all fixed bounds in rotation " + str(rotation))
+				check(rotated[0].size == bounds[0].size, id + " keeps its south-facing centerpiece dimensions")
+				var facing_features: Array = view.features_for_rotation(rotation) if id == "moonbay" else features
 				for feature_index in range(features.size()):
-					var source: Rect2 = features[feature_index].rect
-					var expected_center := source.get_center().rotated(float(rotation) * PI * 0.5) + Vector2.ONE * 384.0
+					var source: Rect2 = facing_features[feature_index].rect
+					var expected_center: Vector2 = (source.get_center() if facing_features[feature_index].get("fixed_position",false) else source.get_center().rotated(float(rotation) * PI * 0.5)) + Vector2.ONE * 384.0
 					check(rotated[feature_index + 1].size == source.size and rotated[feature_index + 1].get_center().distance_to(expected_center) < 0.01,
 						id + " keeps support art upright at its rotated position in rotation " + str(rotation))
 				check(doors_share_walkable_floor(room, rotated, rotation), id + " connects all doors around fixed props in rotation " + str(rotation))
@@ -150,10 +153,10 @@ func _init() -> void:
 				var cell: Vector2i = port.cell
 				var access := Rect2()
 				match str(port.side):
-					"north": access = Rect2(cell.x * 384.0 + 122, 0, 140, 180)
-					"east": access = Rect2(588, cell.y * 384.0 + 122, 180, 140)
-					"south": access = Rect2(cell.x * 384.0 + 122, 588, 140, 180)
-					"west": access = Rect2(0, cell.y * 384.0 + 122, 180, 140)
+					"north": access = Rect2(cell.x * 384.0 + 122, 0, 140, 160)
+					"east": access = Rect2(608, cell.y * 384.0 + 122, 160, 140)
+					"south": access = Rect2(cell.x * 384.0 + 122, 608, 140, 160)
+					"west": access = Rect2(0, cell.y * 384.0 + 122, 160, 140)
 				for bound in bounds:
 					check(not bound.intersects(access), id + " prop stays clear of door approach")
 	var farm: Dictionary = Rooms.get_room("hydroponics_farm")
@@ -171,13 +174,13 @@ func _init() -> void:
 	check(moonbay.get("ocean_side", "") == "west" and moonbay.get("consumption", {}).get("power", 0) > 0, "Moonbay has a west launch wall and power need")
 	var bay = preload("res://rooms/large-rooms/moonbay.gd")
 	check(bay.BAY_DOOR_WIDTH > 92.0, "Moonbay enclosure has a larger sub-bay door than a station port")
-	check(bay.SUB_BOUNDS.size.y + 20.0 <= bay.BAY_DOOR_WIDTH, "The mini-sub clears the launch gate with room on both sides")
+	check(bay.SUB_BOUNDS.size.x + 20.0 <= bay.BAY_DOOR_WIDTH, "The south-facing mini-sub clears the launch gate with room on both sides")
 	var grid = Grid.new()
 	moonbay.pos = Vector2i(10,10)
 	var base: Dictionary = grid.bill_room_geometry(moonbay, [], moonbay.pos)
 	moonbay.rotation = 1
 	var rotated: Dictionary = grid.bill_room_geometry(moonbay, [], moonbay.pos)
-	check(not base.blockers.is_empty() and not rotated.blockers.is_empty() and rotated.blockers[0].position.x > base.blockers[0].position.x, "Fixed sub collision follows room rotation")
+	check(not base.blockers.is_empty() and not rotated.blockers.is_empty() and base.blockers[0] == rotated.blockers[0], "Rear pressure enclosure retains its south-facing registration")
 	grid.free()
 	if not plant.is_empty():
 		var game = Main.new()

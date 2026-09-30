@@ -1694,6 +1694,10 @@ func _draw_room(room: Dictionary) -> void:
 				amount = float(_door_frame_for_pair(main, port.cell, neighbor)) / float(DOOR_OPEN_FRAMES - 1)
 			port_open.append(amount)
 		appearance["port_open"] = port_open
+		appearance["machine_clock"] = main.get_visual_time_seconds()
+		if room.id == "moonbay":
+			var locker: Dictionary = preload("res://scripts/airlock_service.gd").locker(main,pos)
+			appearance["shelf_helmet_visible"] = preload("res://scripts/airlock_service.gd").helmet_on_shelf(main,locker.cell)
 		LARGE_ROOM_VIEWS[room.id].draw(draw_target, appearance, large_rect)
 		LargeStudioView.draw_live(draw_target, room, large_rect, main.get_visual_time_seconds(), main.powered_room_cells.has(pos))
 		if main.unpowered_room_cells.has(pos):
@@ -1894,7 +1898,8 @@ func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Ve
 		var local_cell := cell - Vector2i(room.pos)
 		var cell_rect := Rect2(Vector2(local_cell)*384.0,Vector2.ONE*384.0)
 		var blockers: Array = []
-		for bound in LARGE_ROOM_VIEWS[room.id].fixed_bounds_for_rotation(int(room.get("rotation",0))):
+		var fixed_bounds: Array = LARGE_ROOM_VIEWS[room.id].navigation_bounds_for_rotation(room) if str(room.id) == "moonbay" else LARGE_ROOM_VIEWS[room.id].fixed_bounds_for_rotation(int(room.get("rotation",0)))
+		for bound in fixed_bounds:
 			var overlap: Rect2 = bound.intersection(cell_rect)
 			if overlap.has_area(): blockers.append(Rect2(overlap.position - cell_rect.position - Vector2.ONE*192.0, overlap.size).grow(10.0))
 		for prop in LargeStudioView.live_props(str(room.id),int(room.get("rotation",0))):
@@ -1903,7 +1908,7 @@ func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Ve
 			bound.position+=Vector2.ONE*384.0
 			var overlap: Rect2=bound.intersection(cell_rect)
 			if overlap.has_area(): blockers.append(Rect2(overlap.position-cell_rect.position-Vector2.ONE*192.0,overlap.size).grow(10.0))
-		return {"large_room":true,"legacy":true,"room":room.duplicate(true),"props":[],"edges":[],"blockers":blockers,"swim_blockers":[]}
+		return {"large_room":true,"legacy":false,"room":room.duplicate(true),"props":[],"edges":[],"blockers":blockers,"swim_blockers":[]}
 	if _is_narrow_corridor(room):
 		var corridor_view = _corridor_view(room)
 		preload("res://scripts/room_layout_store.gd").apply(corridor_view,"room-"+str(room.id))
