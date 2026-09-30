@@ -222,7 +222,7 @@ func _advance_companion(main, delta: float) -> void:
 	if topology(main)!=signature: rebuild(main)
 	if not can_stand(foot):
 		path.clear();pending_behavior="";behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false;state="idle";activity="route obstructed";return
-	if path.is_empty() and water.mode=="dry" and behavior!="torch" and _make_way(main):return
+	if path.is_empty() and water.mode=="dry" and behavior!="torch" and _make_way(main,delta):return
 	if not behavior.is_empty():
 		if behavior=="torch":
 			var repair:=preload("res://scripts/companion_repair.gd").target(main,self)
@@ -271,13 +271,14 @@ func _advance_companion(main, delta: float) -> void:
 # its room. The crew yield to companions, so without this Marsh waited ~8 s for Margot to finish sitting in a
 # doorway (owner F8 report, Sept 30).
 var make_way_retry := 0.0
-func _make_way(main) -> bool:
+func _make_way(main, delta: float) -> bool:
 	# A failed search walks the whole graph; after a miss, wait before trying again rather than every frame.
 	if make_way_retry > 0.0:
-		make_way_retry = maxf(0.0, make_way_retry - main.get_process_delta_time())
+		make_way_retry = maxf(0.0, make_way_retry - delta)
 		return false
 	var blocked := Vector2.INF
-	for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
+	# Read the crew defensively: test fixtures drive companions with a minimal stand-in game.
+	for peer in [main.get("bill_npc"),main.get("veld_npc"),main.get("branforth_npc"),main.get("marsh_npc")]:
 		if peer==null or not peer.active or peer.dead or not peer.expedition.is_empty():continue
 		if peer.activity=="waiting for passage" and peer.foot.distance_to(foot)<CREW_CLEARANCE*2.5:
 			blocked=peer.foot;break
