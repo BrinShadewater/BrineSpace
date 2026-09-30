@@ -1,7 +1,8 @@
 extends RefCounted
 ## Cardinal exterior routes. Only the departure and work/docking cell may be occupied.
 const STEPS := [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
-const SPEED := 1.5
+# Cells per second. Slowed from 1.5 (owner playtest, Sept 29: drones need to move slower).
+const SPEED := 1.0
 
 static func can_step(cell: Vector2i, next: Vector2i, start: Vector2i, goal: Vector2i, blocked: Dictionary, allow_rooms: bool) -> bool:
 	var offset := next-cell

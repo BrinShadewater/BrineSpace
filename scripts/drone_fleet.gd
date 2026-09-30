@@ -151,7 +151,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 				if drone.job.is_empty():
 					drone["idle_retry"] = 1.0
 					break
-			var duration: float = PHASE_SECONDS.get(drone.phase, maxf(0.5,Vector2(home).distance_to(drone.target)/1.5))
+			var duration: float = PHASE_SECONDS.get(drone.phase, maxf(0.5,Vector2(home).distance_to(drone.target)/Routes.SPEED))
 			if drone.phase == "working" and drone.job == "clear":
 				duration = maxf(0.0001,18.0-float(wrecks[Vector2i(drone.target)].progress)-float(clearance_seconds.get(Vector2i(drone.target),0.0)))
 				drone.elapsed = 0.0

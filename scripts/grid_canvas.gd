@@ -1318,6 +1318,7 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 		Env.LIFE:
 			# Sea life sits above the fog (which has its own shader) and below the station.
 			preload("res://scripts/ocean_life.gd").draw(target,main,cell_size,_view_rect(main))
+			preload("res://scripts/exterior_lamps.gd").draw(target,main,cell_size,_view_rect(main))
 		Env.EXTERIOR_ACTORS:
 			_draw_environment_foreground(main,cell_size,GRID_SIZE*cell_size)
 			preload("res://scripts/survey_probe_art.gd").exterior(target,main,cell_size)
@@ -3070,6 +3071,11 @@ func _draw_drones(main) -> void:
 			pos = home+dock_offset.lerp(hatch_offset,fraction if drone.phase=="launching" else 1.0-fraction)
 			visibility = 1.0-fraction if drone.phase=="launching" else fraction
 		var running: bool = drone.kind!="construction" or drone.get("bootstrap",false) or main.powered_room_cells.has(drone.home)
+		# The mining drone drives along the seabed: silt behind it and a little bounce (owner playtest, Sept 29).
+		var DroneDust = preload("res://scripts/drone_dust.gd")
+		if DroneDust.is_driving(drone,str(preload("res://scripts/drone_animation.gd").sample(drone,running).state)) and visibility > 0.5:
+			pos.y += DroneDust.bounce(drone,cell_size)
+			DroneDust.draw(draw_target,drone,pos,cell_size,main.get_visual_time_seconds(),visibility)
 		preload("res://scripts/drone_animation.gd").draw(draw_target,drone,pos,cell_size/384.0,float(anchors.get("art_scale",.42)),running,main.get_visual_time_seconds(),visibility)
 
 func _direction_for_vector(vector: Vector2) -> String:

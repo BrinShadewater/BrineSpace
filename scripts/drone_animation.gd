@@ -1,6 +1,7 @@
 extends RefCounted
 ## Selected animation layers. Sampling never changes jobs, rewards or movement.
 const MANIFESTS={"construction":"res://assets/drone-runtime-2026-09-26/construction.json","mining":"res://assets/drone-runtime-2026-09-26/mining.json","salvage":"res://assets/drone-runtime-2026-09-26/salvage.json"}
+const Routes=preload("res://scripts/drone_routes.gd")
 const HEADINGS=["east","southeast","south","southwest","west","northwest","north","northeast"]
 static var catalogs:Dictionary={}
 static var textures:Dictionary={}
@@ -100,7 +101,7 @@ static func sample(d:Dictionary,operating:bool=true) -> Dictionary:
 		state="move" if kind=="construction" else "carry" if loaded else "drive" if kind=="mining" else "swim"
 		if kind!="construction":
 			var goal:Vector2=Vector2(d.get("home",Vector2.ZERO)) if phase=="returning" else Vector2(d.get("target",Vector2.ZERO))
-			var left:float=Vector2(d.get("position",goal)).distance_to(goal)/1.5
+			var left:float=Vector2(d.get("position",goal)).distance_to(goal)/Routes.SPEED
 			if elapsed<.2:state="start";fraction=clampf(elapsed/.2,0,1)
 			elif left<.2:state="stop";fraction=1.0-clampf(left/.2,0,1)
 			elif kind=="mining" and clock-float(d.get("animation_turn_started",-10))<.25:
