@@ -26,6 +26,9 @@ var embedded := false
 var operating := true
 var machine_clock := 0.0
 var drone_visual = null
+# Studio previews of the room's machinery (scripts/studio_effect_preview.gd); empty leaves the room's own state.
+var tidal_chamber: Dictionary = {}
+var moonbay_mission: Dictionary = {}
 var painter: CanvasItem
 
 func configure_embedded(q: int, _open_sides: Array, _running: bool, _time_seconds: float) -> void:
@@ -45,7 +48,9 @@ func render_into(target: CanvasItem, at: Vector2, scale_value: float, floor_only
 		appearance.rotation = quarter
 		appearance.raised_walls = true
 		if room_id == "tidal_power_plant":
-			appearance.tidal_chamber = {"water":minf(1.0,machine_clock/6.0),"spinning":machine_clock>=6.0,"rotor_angle":fposmod(maxf(0.0,machine_clock-6.0)*0.8,TAU)}
+			appearance.tidal_chamber = tidal_chamber if not tidal_chamber.is_empty() else {"water":minf(1.0,machine_clock/6.0),"spinning":machine_clock>=6.0,"rotor_angle":fposmod(maxf(0.0,machine_clock-6.0)*0.8,TAU)}
+		if room_id == "moonbay" and not moonbay_mission.is_empty():
+			appearance.moonbay_mission = moonbay_mission
 		VIEWS[room_id].draw(target, appearance, Rect2(at - Vector2.ONE * 384.0 * scale_value, Vector2.ONE * 768.0 * scale_value))
 		return
 	draw_props(target, self, at, scale_value)

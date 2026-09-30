@@ -303,6 +303,7 @@ class LayoutCanvas extends Control:
 	func _draw_large() -> void:
 		editor.room.operating=true
 		editor.room.machine_clock=editor.preview_clock
+		editor.effects.apply(editor.room)
 		editor.room.render_into(self,origin(),factor(),true)
 		editor.room.render_into(self,origin(),factor(),false)
 		draw_set_transform(origin(),0,Vector2.ONE*factor())

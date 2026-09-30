@@ -12,6 +12,10 @@ const PROBE_SECONDS := 32.0 # survey_probe.pose(): launch, trip, scan and dock
 const FLOOD_SECONDS := 6.0
 const FLOOD_LEVEL := 0.85
 const FIRE_SECONDS := 3.0
+# The large rooms' own machinery, previewed with the same tables the live game uses (owner playtest, Sept 29).
+const Tidal = preload("res://rooms/large-rooms/tidal_power_plant.gd")
+const Moonbay = preload("res://scripts/moonbay_missions.gd")
+const SUB_RETURN_SECONDS := 3.0
 
 class StubGrid extends RefCounted:
 	const DOOR_OPEN_FRAMES := 10
@@ -34,6 +38,10 @@ var airlock: Dictionary = {}
 var drone: Dictionary = {}
 var drone_return_phase := ""
 var probe_clock := -1.0
+var tidal_mode := ""      # "fill" fills the chamber and spins the rotor, "drain" empties it; "" leaves the room's own state
+var tidal_time := 0.0
+var tidal_from := 1.0     # water level when a drain began
+var moonbay: Dictionary = {} # {"phase", "progress", "chamber_water", "station_open", "ocean_open"}; empty = sub docked, idle
 var fire := 0.0
 var flood := 0.0
 var stub := StubGame.new()
@@ -45,6 +53,8 @@ func actions() -> Array:
 		list += [["Launch drone", "launch"], ["Return drone", "return"]]
 		if room_id != "construction_drone_bay": list.append(["Return with cargo", "return_cargo"])
 	if room_id == "survey_probe_bay": list.append(["Launch probe", "probe"])
+	if room_id == "tidal_power_plant": list += [["Fill and start", "tidal_fill"], ["Drain", "tidal_drain"]]
+	if room_id == "moonbay": list += [["Send sub out", "sub_out"], ["Bring sub back", "sub_back"]]
 	if FIRE_ROOMS.has(room_id): list.append(["Fire", "fire"])
 	list += [["Flood", "flood"], ["Clear", "clear"]]
 	return list
@@ -57,6 +67,19 @@ func start(action: String) -> void:
 		"return", "return_cargo":
 			drone = {"phase": "docking", "elapsed": 0.0, "job": "preview", "battery": 100.0, "cargo": {"metal": 2} if action == "return_cargo" else {}}
 		"probe": probe_clock = 0.0
+		"tidal_fill":
+			# Carry on from wherever the water is, so pressing it mid-drain refills from that level.
+			tidal_time = clampf(float(tidal_state().get("water", 0.0)), 0.0, 1.0) * float(Tidal.FILL_SECONDS)
+			tidal_mode = "fill"
+		"tidal_drain":
+			tidal_from = float(tidal_state().get("water", 1.0)) if tidal_mode != "" else 1.0
+			tidal_time = 0.0
+			tidal_mode = "drain"
+		"sub_out":
+			if moonbay.is_empty(): moonbay = {"phase": "seal", "progress": 0.0, "chamber_water": 0.0, "station_open": false, "ocean_open": false}
+		"sub_back":
+			if not moonbay.is_empty() and str(moonbay.phase) in ["outbound", "launch"]:
+				moonbay = {"phase": "return", "progress": 0.0, "chamber_water": 1.0, "station_open": false, "ocean_open": false}
 		"fire": fire = 0.3
 		"flood": flood = maxf(flood, 0.01)
 		"clear": clear()
@@ -67,9 +90,12 @@ func clear() -> void:
 	probe_clock = -1.0
 	fire = 0.0
 	flood = 0.0
+	tidal_mode = ""
+	tidal_time = 0.0
+	moonbay = {}
 
 func active() -> bool:
-	return not airlock.is_empty() or not drone.is_empty() or probe_clock >= 0.0 or fire > 0.0 or flood > 0.0
+	return not airlock.is_empty() or not drone.is_empty() or probe_clock >= 0.0 or fire > 0.0 or flood > 0.0 or tidal_mode != "" or not moonbay.is_empty()
 
 func advance(delta: float) -> void:
 	clock += delta
@@ -83,8 +109,41 @@ func advance(delta: float) -> void:
 	if probe_clock >= 0.0:
 		probe_clock += delta
 		if probe_clock >= PROBE_SECONDS: probe_clock = -1.0
+	if tidal_mode != "": tidal_time += delta
+	if not moonbay.is_empty(): _step_moonbay(delta)
 	if fire > 0.0: fire = minf(0.9, fire + delta * 0.6 / FIRE_SECONDS)
 	if flood > 0.0: flood = minf(FLOOD_LEVEL, flood + delta * FLOOD_LEVEL / FLOOD_SECONDS)
+
+# The chamber as tidal_power_plant.tick() would leave it: water rising over FILL_SECONDS, the rotor spinning
+# once it is full, and draining over DRAIN_SECONDS. Empty when the Studio is not driving it.
+func tidal_state() -> Dictionary:
+	if tidal_mode == "fill":
+		var water := clampf(tidal_time / float(Tidal.FILL_SECONDS), 0.0, 1.0)
+		var spin := maxf(0.0, tidal_time - float(Tidal.FILL_SECONDS))
+		return {"water": water, "spinning": water >= 1.0, "rotor_angle": fposmod(spin * 0.8, TAU)}
+	if tidal_mode == "drain":
+		return {"water": clampf(tidal_from - tidal_time / float(Tidal.DRAIN_SECONDS), 0.0, 1.0), "spinning": false, "rotor_angle": 0.0}
+	return {}
+
+# The mini-sub's trip through the moon pool, on the live mission's own phase table: the inner door seals, the
+# chamber floods, the sea gate opens and the sub leaves; it waits outside until told to return, then the sea
+# gate closes on its return and the chamber drains.
+func _step_moonbay(delta: float) -> void:
+	var state := moonbay
+	if str(state.phase) == "outbound": return
+	state.progress = float(state.progress) + delta
+	var duration := SUB_RETURN_SECONDS if str(state.phase) == "return" else float(Moonbay.DURATIONS.get(state.phase, 1.0))
+	var fraction := clampf(float(state.progress) / duration, 0.0, 1.0)
+	if state.phase == "flood": state.chamber_water = fraction
+	if state.phase == "drain": state.chamber_water = 1.0 - fraction
+	if float(state.progress) < duration: return
+	state.progress = 0.0
+	match str(state.phase):
+		"seal": state.phase = "flood"
+		"flood": state.phase = "launch"; state.chamber_water = 1.0; state.ocean_open = true
+		"launch": state.phase = "outbound"; state.ocean_open = false
+		"return": state.phase = "drain"; state.ocean_open = false
+		"drain": moonbay = {}
 
 # airlock_cycle.advance() needs a running game with a serviced airlock; the Studio steps
 # the same phase table directly, holding at the open outer hatch or the dry chamber.
@@ -109,6 +168,8 @@ func hazard_room() -> Dictionary:
 ## Hand the preview state to the room view before it renders.
 func apply(view) -> void:
 	if view == null: return
+	if "tidal_chamber" in view: view.tidal_chamber = tidal_state()
+	if "moonbay_mission" in view: view.moonbay_mission = moonbay.duplicate()
 	if "cycle_pose" in view:
 		var room := {"airlock_cycle": airlock} if not airlock.is_empty() else {}
 		view.cycle_pose = Airlock.pose(room)
