@@ -23,6 +23,8 @@ func check(ok: bool, message: String) -> bool:
 	return false
 
 func run_check() -> void:
+	# Shipped default layouts now cover three of these rooms; this test wants only its own placements.
+	Store.defaults_path = "res://tests/no-default-layouts.json"
 	Store.path = "user://test_large_room_studio.json"
 	Store.loaded = true
 	Store.data = {}
