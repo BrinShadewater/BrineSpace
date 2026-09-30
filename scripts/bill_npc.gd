@@ -372,6 +372,7 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 		points.clear()
 		room_nodes.clear()
 		geometry.clear()
+		segment_geometry_cache.clear()
 	social_partner=data.get("social_partner","");social_cooldown=float(data.get("social_cooldown",20.0))
 	primary_room=data.get("primary_room",Vector2i(-1,-1))
 	tank_oxygen = float(data.get("tank_oxygen",60.0))
@@ -483,17 +484,27 @@ func segment_clear(a: Vector2, b: Vector2) -> bool:
 	if hardware_doors_locked and cell_at(a)!=cell_at(b): return false
 	# A room whose doors the player locked is closed to crew both ways (owner call, Sept 16).
 	if cell_at(a)!=cell_at(b) and (locked_room_cells.has(cell_at(a)) or locked_room_cells.has(cell_at(b))): return false
+	# The geometry test below depends only on this actor's navigation geometry, so it is
+	# remembered until the next rebuild: route smoothing re-tested the same waypoint pairs
+	# ~1,500 times a route, 50-135 ms per goal choice on a large station (Sept 30 probe).
+	if fire_building_navigation: return _segment_geometry_clear(a,b)
+	var key := Vector4(a.x,a.y,b.x,b.y)
+	if not segment_geometry_cache.has(key):
+		if segment_geometry_cache.size() >= 60000: segment_geometry_cache.clear()
+		segment_geometry_cache[key] = _segment_geometry_clear(a,b)
+	return segment_geometry_cache[key]
+
+var segment_geometry_cache := {}
+func _segment_geometry_clear(a: Vector2, b: Vector2) -> bool:
 	# Inside one authored room, cell and closed-door half-planes are convex.
 	# Clear endpoints plus the exact blocker sweep below prove the whole segment.
 	# Keep sampling for corridor/legacy shapes and all cell-boundary crossings.
 	var start_cell := cell_at(a)
 	var local_authored: bool = not sample_all_segments and start_cell == cell_at(b) and geometry.has(start_cell) and not geometry[start_cell].get("corridor",false) and not geometry[start_cell].get("legacy",false)
-	var count := 1 if local_authored else maxi(1, ceili(a.distance_to(b) / 4.0))
-	for i in range(count + 1):
-		if not can_stand(a.lerp(b, float(i) / count)): return false
 	# Spaced samples can miss a short intersection near a rectangle corner.
 	# Sweep registered blockers exactly, clipped to the cell that owns them:
-	# can_stand uses that same ownership at shared doorway boundaries.
+	# can_stand uses that same ownership at shared doorway boundaries. The sweep runs
+	# first because it rejects a blocked line far more cheaply than 4 px samples.
 	var first := cell_at(Vector2(minf(a.x,b.x),minf(a.y,b.y)))
 	var last := cell_at(Vector2(maxf(a.x,b.x),maxf(a.y,b.y)))
 	for y in range(first.y,last.y+1):
@@ -510,6 +521,9 @@ func segment_clear(a: Vector2, b: Vector2) -> bool:
 				# planned line. Reserve a subpixel planning margin, not smaller collision.
 				var rect: Rect2 = Rect2(blocker.position+center,blocker.size).grow(0.05).intersection(cell_rect)
 				if rect.has_area() and segment_hits_rect(a,b,rect): return false
+	var count := 1 if local_authored else maxi(1, ceili(a.distance_to(b) / 4.0))
+	for i in range(count + 1):
+		if not can_stand(a.lerp(b, float(i) / count)): return false
 	return true
 
 func action_pose_clear(action: String) -> bool:
@@ -658,6 +672,7 @@ func rebuild(main, staged := false) -> void:
 	graph.clear()
 	swim_link_cache.clear()
 	swim_region_cache.clear()
+	segment_geometry_cache.clear()
 	squeeze_point = Vector2.INF
 	points.clear()
 	room_nodes.clear()
@@ -995,10 +1010,11 @@ func detour_around_crew() -> bool:
 	# A stand-off tried every start in the room, each a failed search: 269 starts, 500 ms,
 	# repeated per step-aside spot (1 s frames, Sept 26). One fill from the target under
 	# the same padding shows which starts can reach it; the others would fail anyway.
-	var reach: Variant = _detour_reach(target)
+	var padding := _crew_padding(-1, target)
+	var reach: Variant = _detour_reach(target, padding)
 	for start in starts:
 		if reach is Dictionary and not _detour_start_joins(start, reach): continue
-		var candidate := crew_detour_from(start, target)
+		var candidate := crew_detour_from(start, target, padding)
 		if not candidate.is_empty():
 			var endpoint := path[path.size() - 1]
 			var last := candidate[candidate.size() - 1]
@@ -1011,11 +1027,11 @@ func detour_around_crew() -> bool:
 	return false
 
 # Walking crew only: the swim search depends on facing, so a plain fill is not exact there.
-func _detour_reach(target: int) -> Variant:
+func _detour_reach(target: int, padding: Variant = null) -> Variant:
 	if movement_medium != "dry" or not graph.has_point(target): return null
 	if fire_cells.has(cell_at(graph.get_point_position(target))): return null
 	var blocked := {}
-	for id in _crew_padding(-1, target): blocked[id] = true
+	for id in (_crew_padding(-1, target) if padding == null else padding): blocked[id] = true
 	var own := cell_at(foot)
 	for cell in fire_cells:
 		if cell == own: continue
@@ -1042,9 +1058,12 @@ func _detour_start_joins(start: int, reach: Dictionary) -> bool:
 		if reach.reached.has(next_id): return true
 	return false
 
-func crew_detour_from(start: int, target: int) -> PackedVector2Array:
+# `padding` is _crew_padding(-1, target), shared by every start of one detour: building it
+# per start was 217 times the same scan, a 270 ms frame (Sept 30 probe).
+func crew_detour_from(start: int, target: int, padding: Variant = null) -> PackedVector2Array:
 	var disabled: Array[int] = []
-	for id in _crew_padding(start, target):
+	for id in (_crew_padding(start, target) if padding == null else padding):
+		if id == start: continue
 		graph.set_point_disabled(id, true)
 		disabled.append(id)
 	var route := route_between(start, target, true)
@@ -1079,9 +1098,11 @@ func _smooth_crew_detour(route: PackedVector2Array) -> PackedVector2Array:
 	var index := 0
 	while index < route.size():
 		var farthest := -1
-		for probe in range(index, route.size()):
+		for probe in range(route.size() - 1, index - 1, -1):
 			if probe > index and from.distance_squared_to(route[probe]) > SHORTCUT_REACH*SHORTCUT_REACH: continue
-			if travel_segment_clear(from,route[probe],facing) and crew_clear(from, route[probe]): farthest = probe
+			if travel_segment_clear(from,route[probe],facing) and crew_clear(from, route[probe]):
+				farthest = probe
+				break
 		if farthest < 0: return PackedVector2Array()
 		result.append(route[farthest])
 		facing = travel_heading(from,route[farthest],facing)
@@ -1549,14 +1570,18 @@ func _smooth_route(route: PackedVector2Array, origin: Vector2, keep_route_facing
 	var index := 0
 	while index < route.size():
 		var farthest := -1
-		for probe in range(index, route.size()):
+		# Farthest first, stopping at the first clear shortcut: the same pick as testing every
+		# point, without the ~1,500 segment tests per route that cost 50-135 ms (Sept 30 probe).
+		for probe in range(route.size() - 1, index - 1, -1):
 			# Testing every later point across the station cost 614 ms on a 372-point route
 			# (Sept 26 spike probe). A clear line past two rooms is near-impossible; a longer
 			# straight run just keeps a waypoint on the same line.
 			if probe > index and from.distance_squared_to(route[probe]) > SHORTCUT_REACH*SHORTCUT_REACH: continue
 			var heading := travel_heading(from,route[probe],facing)
 			if keep_route_facing and heading != route_facings[probe]: continue
-			if segment_clear(from, route[probe]) and (movement_medium == "dry" or segment_walks(from,route[probe]) or swim_segment_clear(from,route[probe],heading,facing)): farthest = probe
+			if segment_clear(from, route[probe]) and (movement_medium == "dry" or segment_walks(from,route[probe]) or swim_segment_clear(from,route[probe],heading,facing)):
+				farthest = probe
+				break
 		if farthest < 0: return PackedVector2Array()
 		result.append(route[farthest])
 		facing = travel_heading(from,route[farthest],facing)

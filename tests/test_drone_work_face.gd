@@ -42,6 +42,10 @@ func _init():
 	game.drone_fleet.sites[Vector2i(22,20)+chosen_side]=game.drone_fleet.Sites.make_site("mining")
 	var other:=Visibility.drone_position(game,harvest)
 	check(other.distance_to(edge)>.5,"It picks another side when a second deposit fills the first")
+	# A mining drone's drill meets the deposit (owner playtest, Sept 30): it stands closer than other jobs.
+	harvest.kind="mining"
+	check(absf(Visibility.drone_position(game,harvest).distance_to(Vector2(22.5,20.5))-Visibility.MINING_REACH)<.001,"A mining drone stands close enough for its drill to touch the deposit")
+	harvest.erase("kind")
 	harvest.phase="docking"
 	check(Visibility.drone_position(game,harvest).is_equal_approx(Vector2(22.5,20.5)),"Only outbound, working and returning drones move to the edge")
 	game.drone_fleet.sites.clear()

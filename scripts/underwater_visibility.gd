@@ -62,7 +62,7 @@ static func drone_position(game, drone: Dictionary) -> Vector2:
 	if drone.job not in ["clear","harvest"] or drone.phase not in ["working","outbound","returning"]: return position
 	var chosen: Vector2i=work_side(game,drone)
 	if chosen==Vector2i.ZERO:return position
-	var reach:=MINING_REACH if drone.job=="harvest" and drone.kind=="mining" else EDGE_REACH
+	var reach:=MINING_REACH if drone.job=="harvest" and drone.get("kind","")=="mining" else EDGE_REACH
 	# Keep drawing, lamp and silt together and continuous at the work boundary.
 	var blend:=1.0 if drone.phase=="working" else clampf(1.0-Vector2(drone.position).distance_to(Vector2(drone.target))/.30,0,1)
 	return position+Vector2(chosen)*reach*blend
