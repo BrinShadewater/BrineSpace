@@ -25,6 +25,24 @@ func run() -> void:
 	for action in Preferences.DEFAULT_KEYS:
 		check(not used.has(Preferences.DEFAULT_KEYS[action]), "Default keys are unique: " + str(action))
 		used[Preferences.DEFAULT_KEYS[action]] = true
+	# Settings offers it as a switch, and the Accessibility reset turns it off. The switch saves settings,
+	# so point them at a scratch file first.
+	var saved_settings: String = Preferences.save_path
+	Preferences.save_path = "user://test_yield_overlay_panel_%d.cfg" % OS.get_process_id()
+	var saved_flag: bool = Preferences.resource_overlay
+	var panel = preload("res://scripts/settings_panel.gd").new()
+	root.add_child(panel)
+	var toggle = panel.find_child("ResourceOverlay", true, false)
+	check(toggle is CheckButton, "Settings has a Resource overlay switch")
+	if toggle is CheckButton:
+		toggle.button_pressed = true
+		check(Preferences.resource_overlay, "The switch turns the overlay on")
+	panel._defaults("ACCESSIBILITY")
+	check(not Preferences.resource_overlay, "Accessibility reset turns the overlay off")
+	panel.queue_free()
+	Preferences.resource_overlay = saved_flag
+	if FileAccess.file_exists(Preferences.save_path): DirAccess.remove_absolute(Preferences.save_path)
+	Preferences.save_path = saved_settings
 	# The choice is remembered.
 	var saved_path: String = Preferences.save_path
 	Preferences.save_path = "user://test_yield_overlay.cfg"

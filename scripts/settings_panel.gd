@@ -89,6 +89,7 @@ func _defaults(section: String) -> void:
 			Preferences.text_scale = 1.0
 			Preferences.reduced_motion = false
 			Preferences.placement_guides = true
+			Preferences.resource_overlay = false
 			Preferences.raised_walls = true
 			Preferences.hand_backdrop = true
 			Preferences.tooltip_delay = 0.5
@@ -349,6 +350,7 @@ func _ready() -> void:
 	var access := _page("ACCESSIBILITY")
 	_toggle(access, "RaisedWalls", "Raised room walls", "Shows the tall north walls of rooms.", Preferences.raised_walls, func(enabled: bool) -> void: Preferences.raised_walls = enabled)
 	_toggle(access, "PlacementGuides", "Placement door indicators", "Marks which doors will connect while placing a room.", Preferences.placement_guides, func(enabled: bool) -> void: Preferences.placement_guides = enabled)
+	_toggle(access, "ResourceOverlay", "Resource overlay", "Shows what each room gives and takes over the station. Hotkey: %s." % Preferences.key_name("Resource overlay"), Preferences.resource_overlay, func(enabled: bool) -> void: Preferences.resource_overlay = enabled)
 	_toggle(access, "HandBackdrop", "Draft hand backdrop", "Off: the station view runs behind the cards.", Preferences.hand_backdrop, func(enabled: bool) -> void: Preferences.hand_backdrop = enabled)
 	_toggle(access, "PixelFrames", "Pixel panel frames", "Textured pixel-art HUD frames; applies next loop.", Preferences.pixel_frames, func(enabled: bool) -> void: Preferences.pixel_frames = enabled)
 	_toggle(access, "ReducedMotion", "Reduced motion", "Pauses the title cover and removes menu fades. Gameplay timing is unchanged.", Preferences.reduced_motion, func(enabled: bool) -> void: Preferences.reduced_motion = enabled)
