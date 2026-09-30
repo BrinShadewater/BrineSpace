@@ -16,8 +16,9 @@ static func pools(game, size: float, view: Rect2) -> Array:
 	for source in Visibility.sources(game):
 		var kind := str(source.get("kind", ""))
 		if kind != "drone" and kind != "diver": continue
-		var radius := size * (1.25 if kind == "diver" else 1.1)
-		var centre: Vector2 = Vector2(source.position) * size + Vector2(source.direction) * size * 0.25
+		# A drone is small, so its pool is too (owner playtest, Sept 30: the drone light was the wrong size).
+		var radius := size * (1.25 if kind == "diver" else 0.5)
+		var centre: Vector2 = Vector2(source.position) * size + Vector2(source.direction) * size * (0.25 if kind == "diver" else 0.12)
 		if not view.grow(radius).has_point(centre): continue
 		result.append({"centre": centre, "radius": radius, "tint": WARM if kind == "diver" else COOL})
 	return result

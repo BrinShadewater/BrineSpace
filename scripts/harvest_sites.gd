@@ -3,7 +3,8 @@ extends RefCounted
 const NAMES := {"mining":"Mineral Nodule Deposit", "salvage":"Service Scrap Pile"}
 const LOADS := {"mining":{"metal":2}, "salvage":{"metal":1,"data":1}}
 const WORK_SECONDS := 6.0
-const CAPACITY := 12
+# Loads a deposit holds. Doubled from 12 (owner playtest, Sept 30: nodes should hold more); saves keep their own.
+const CAPACITY := 24
 
 static func seed_sites(rooms: Array, wrecks: Dictionary) -> Dictionary:
 	var occupied := {}

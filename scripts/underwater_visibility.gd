@@ -32,10 +32,9 @@ static func clear_ray(field: Dictionary, from: Vector2, to: Vector2) -> bool:
 		if Field.blocks(field,cell) and cell!=Vector2i(to.floor()): return false # Survey includes the first exposed face.
 	return true
 
-static func drone_position(game, drone: Dictionary) -> Vector2:
-	var position:=Vector2(drone.position)+Vector2.ONE*.5
-	# Clearing a wreck or harvesting a deposit is done from its edge, on the side that is open water.
-	if drone.job not in ["clear","harvest"] or drone.phase not in ["working","outbound","returning"]: return position
+# The side of its target a drone works from: the open-water side nearest home, preferring one outside the
+# station. Vector2i.ZERO when the target is walled in.
+static func work_side(game, drone: Dictionary) -> Vector2i:
 	var cell:=Vector2i(drone.target)
 	var offsets: Array=[Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
 	offsets.sort_custom(func(a,b):return Vector2(cell+a).distance_squared_to(Vector2(drone.home))<Vector2(cell+b).distance_squared_to(Vector2(drone.home)))
@@ -45,14 +44,28 @@ static func drone_position(game, drone: Dictionary) -> Vector2:
 		if neighbor.x<0 or neighbor.y<0 or neighbor.x>=40 or neighbor.y>=40:continue
 		var deposit_there: bool=drone.job=="harvest" and game.drone_fleet.Sites.blocks(game.drone_fleet.sites,neighbor)
 		if not Field.blocks(game.wrecks,neighbor) and not deposit_there:clear_offsets.append(offset)
-	if clear_offsets.is_empty():return position
+	if clear_offsets.is_empty():return Vector2i.ZERO
 	# Prefer a visible work face; covered routes remain valid when no exposed side exists.
 	var chosen: Vector2i=clear_offsets[0]
 	for offset in clear_offsets:
 		if not game.occupied.has(cell+offset):chosen=offset;break
+	return chosen
+
+# How far from a deposit's centre the mining drill stands: close enough that the drill touches the deposit
+# (owner playtest, Sept 30). Other jobs keep the old half-cell-and-a-bit edge.
+const MINING_REACH := 0.34
+const EDGE_REACH := 0.52
+
+static func drone_position(game, drone: Dictionary) -> Vector2:
+	var position:=Vector2(drone.position)+Vector2.ONE*.5
+	# Clearing a wreck or harvesting a deposit is done from its edge, on the side that is open water.
+	if drone.job not in ["clear","harvest"] or drone.phase not in ["working","outbound","returning"]: return position
+	var chosen: Vector2i=work_side(game,drone)
+	if chosen==Vector2i.ZERO:return position
+	var reach:=MINING_REACH if drone.job=="harvest" and drone.kind=="mining" else EDGE_REACH
 	# Keep drawing, lamp and silt together and continuous at the work boundary.
 	var blend:=1.0 if drone.phase=="working" else clampf(1.0-Vector2(drone.position).distance_to(Vector2(drone.target))/.30,0,1)
-	return position+Vector2(chosen)*.52*blend
+	return position+Vector2(chosen)*reach*blend
 
 static func sources(game) -> Array:
 	var result: Array = []

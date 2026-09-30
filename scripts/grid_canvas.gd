@@ -298,6 +298,11 @@ func _variant_paths() -> Dictionary:
 
 func _ready() -> void:
 	draw_target = self
+	# The room tooltip is its own outlined panel; the engine's tooltip frame around it showed as a bigger
+	# background behind the coloured outline (owner playtest, Sept 30), so the grid's tooltips have no frame.
+	var tip_theme := Theme.new()
+	tip_theme.set_stylebox("panel", "TooltipPanel", StyleBoxEmpty.new())
+	theme = tip_theme
 	RenderingServer.frame_pre_draw.connect(_align_camera_pixels)
 	for id in range(Env.size()):
 		var env_layer := EnvPass.new()
@@ -3090,7 +3095,14 @@ func _draw_drones(main) -> void:
 		if DroneDust.is_driving(drone,str(preload("res://scripts/drone_animation.gd").sample(drone,running).state)) and visibility > 0.5:
 			pos.y += DroneDust.bounce(drone,cell_size)
 			DroneDust.draw(draw_target,drone,pos,cell_size,main.get_visual_time_seconds(),visibility)
-		preload("res://scripts/drone_animation.gd").draw(draw_target,drone,pos,cell_size/384.0,float(anchors.get("art_scale",.42)),running,main.get_visual_time_seconds(),visibility)
+		# A mining drone at work turns to face its deposit, so the drill meets it (owner playtest, Sept 30).
+		var shown: Dictionary = drone
+		if drone.kind=="mining" and drone.job=="harvest" and drone.phase=="working":
+			var side: Vector2i = preload("res://scripts/underwater_visibility.gd").work_side(main,drone)
+			if side != Vector2i.ZERO:
+				shown = drone.duplicate()
+				shown["animation_heading"] = _direction_for_vector(-Vector2(side))
+		preload("res://scripts/drone_animation.gd").draw(draw_target,shown,pos,cell_size/384.0,float(anchors.get("art_scale",.42)),running,main.get_visual_time_seconds(),visibility)
 
 func _direction_for_vector(vector: Vector2) -> String:
 	if vector.length() <= 0.001:
@@ -3120,7 +3132,25 @@ func _get_main():
 # The room tooltip is a panel of icons rather than plain text; other tooltips stay as text.
 func _make_custom_tooltip(for_text: String) -> Object:
 	var cell := preload("res://scripts/room_tooltip.gd").cell_from(for_text)
-	if cell.x < 0: return null
+	if cell.x < 0:
+		if for_text.is_empty(): return null
+		# Plain text (the crew "Talk to" hint) gets its own small frame, since the engine frame is off here.
+		var plain := PanelContainer.new()
+		var frame := StyleBoxFlat.new()
+		frame.bg_color = Color("0b151c")
+		frame.border_color = Color("3f6a66")
+		frame.set_border_width_all(1)
+		frame.set_corner_radius_all(6)
+		frame.content_margin_left = 10
+		frame.content_margin_right = 10
+		frame.content_margin_top = 5
+		frame.content_margin_bottom = 5
+		plain.add_theme_stylebox_override("panel", frame)
+		var text := Label.new()
+		text.text = for_text
+		text.add_theme_font_size_override("font_size", 15)
+		plain.add_child(text)
+		return plain
 	return preload("res://scripts/room_tooltip.gd").build(_get_main(), cell)
 
 func _cell_size() -> float:

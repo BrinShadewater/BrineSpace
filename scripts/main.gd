@@ -25,8 +25,8 @@ const REROLL_RECOVERY_CAP := 3
 const DEFAULT_GRID_ZOOM := 0.855
 const MIN_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.02
 # Closest the camera comes to the station: a quarter less than it used to (owner playtest,
-# Sept 17). The starting zoom is unchanged.
-const MAX_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.75
+# Sept 17). The starting zoom is unchanged. A quarter closer again (owner playtest, Sept 30).
+const MAX_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.75 * 1.25
 ## How much of the 40x40 grid the furthest zoom-out shows across. 1.0 was the whole grid.
 const ZOOM_OUT_EXTENT := 0.75
 const UI_ACCENT := Color("#2d7f6b")
@@ -2514,6 +2514,8 @@ func _place_room(id: String, cell: Vector2i, free := false, construction_complet
 		room["art_variant"] = rng.randi_range(0, int(ROOM_ART_VARIANT_COUNTS[id]) - 1)
 	placed_rooms.append(room)
 	for covered in RoomFootprintScript.cells(cell, size): occupied[covered] = room
+	if construction_complete and is_instance_valid(grid_view):
+		grid_view.room_transitions.add("complete",room,get_visual_time_seconds())
 	if not free:
 		_log("Built %s at %s." % [room["display_name"], cell])
 		play_station_sound("build_complete" if construction_complete else "placement",Vector2(cell))
@@ -4379,7 +4381,8 @@ func _on_card_hovered(id: String, card: Control) -> void:
 		_pose_card(card, rest_position + Vector2(0, -DraftCard.HOVER_LIFT), 0.0, Vector2.ONE * DraftCard.HOVER_SCALE)
 	var color: Color = card.get_meta("category_color", UI_ACCENT_BRIGHT)
 	var affordable: bool = card.get_meta("affordable", true)
-	_apply_card_style(card, color.lightened(0.18), true, affordable)
+	# Hover no longer borrows the cyan "selected" frame (owner playtest, Sept 30); only a chosen card has it.
+	_apply_card_style(card, color.lightened(0.18), selected_card_id == id, affordable)
 	card.move_to_front()
 	_refresh_inspector()
 
