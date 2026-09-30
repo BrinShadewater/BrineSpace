@@ -56,8 +56,13 @@ func actions() -> Array:
 	if room_id == "tidal_power_plant": list += [["Fill and start", "tidal_fill"], ["Drain", "tidal_drain"]]
 	if room_id == "moonbay": list += [["Send sub out", "sub_out"], ["Bring sub back", "sub_back"]]
 	if FIRE_ROOMS.has(room_id): list.append(["Fire", "fire"])
-	list += [["Flood", "flood"], ["Clear", "clear"]]
+	# The large views have no flood state, so their bar keeps only the room's own machinery and Clear.
+	if not has_large_machine(): list.append(["Flood", "flood"])
+	list.append(["Clear", "clear"])
 	return list
+
+func has_large_machine() -> bool:
+	return room_id == "tidal_power_plant" or room_id == "moonbay"
 
 func start(action: String) -> void:
 	match action:

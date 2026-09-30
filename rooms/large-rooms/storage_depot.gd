@@ -3,6 +3,7 @@ extends RefCounted
 const Common = preload("res://rooms/large-rooms/common.gd")
 const WALL_STYLE := {"material":"storage_bay", "art":"res://rooms/large-rooms/art/cargo_wall_bank.png", "axis":192.0, "shade":0.31}
 const CENTER_BOUNDS := Rect2(180, 180, 408, 408)
+# Default placements of the supporting equipment: ordinary movable props seeded by StudioView.feature_seed. Only the centerpiece is fixed.
 const FEATURES := [
 	{"path":"res://assets/station-props-v2/sp-storage_bay-1.png", "rect":Rect2(-312,-40,100,73)},
 	{"path":"res://assets/station-props-v2/sp-storage_bay-3.png", "rect":Rect2(-310,-155,86,101)},
@@ -11,16 +12,13 @@ const FEATURES := [
 ]
 
 static func fixed_bounds() -> Array[Rect2]:
-	var result: Array[Rect2] = [CENTER_BOUNDS]
-	result.append_array(Common.feature_bounds(FEATURES))
-	return result
+	return [CENTER_BOUNDS]
 
 static func fixed_bounds_for_rotation(rotation: int) -> Array[Rect2]:
-	return Common.fixed_bounds_for_rotation(CENTER_BOUNDS, FEATURES, rotation)
+	return Common.fixed_bounds_for_rotation(CENTER_BOUNDS, [], rotation)
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	Common.begin(canvas, room, rect, Color("#30383a"), WALL_STYLE, "res://assets/department-floors-v2/storage-load-deck.png", 0.43)
-	Common.draw_features(canvas, FEATURES, room, rect)
 	Common.south_transform(canvas, rect)
 	Common.sprite(canvas, "res://rooms/large-rooms/art/cargo_gantry.png", Rect2(-204, -204, 408, 408))
 	Common.finish(canvas)

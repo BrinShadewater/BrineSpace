@@ -143,7 +143,8 @@ func _init() -> void:
 				check(rotated.size() == bounds.size(), id + " keeps all fixed bounds in rotation " + str(rotation))
 				check(rotated[0].size == bounds[0].size, id + " keeps its south-facing centerpiece dimensions")
 				var facing_features: Array = view.features_for_rotation(rotation) if id == "moonbay" else features
-				for feature_index in range(features.size()):
+				# Movable rooms fix only the centerpiece; their equipment is seeded props (test_large_room_props).
+				for feature_index in range(features.size() if id == "moonbay" else 0):
 					var source: Rect2 = facing_features[feature_index].rect
 					var expected_center: Vector2 = (source.get_center() if facing_features[feature_index].get("fixed_position",false) else source.get_center().rotated(float(rotation) * PI * 0.5)) + Vector2.ONE * 384.0
 					check(rotated[feature_index + 1].size == source.size and rotated[feature_index + 1].get_center().distance_to(expected_center) < 0.01,

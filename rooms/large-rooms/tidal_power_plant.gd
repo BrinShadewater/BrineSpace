@@ -7,6 +7,7 @@ const CENTER_BOUNDS := Rect2(172,172,424,424)
 const TURBINE_ART := "res://rooms/large-rooms/art/tidal_turbine.png"
 const FILL_SECONDS := 6.0
 const DRAIN_SECONDS := 5.0
+# Default placements of the supporting equipment: ordinary movable props seeded by StudioView.feature_seed. Only the centerpiece is fixed.
 const FEATURES := [
 	{"path":"res://assets/station-props-v2/sp-tidal_condenser-1.png", "rect":Rect2(-197,-305,92,93)},
 	{"path":"res://assets/station-props-v2/sp-tidal_condenser-4.png", "rect":Rect2(100,-295,100,67)},
@@ -15,10 +16,10 @@ const FEATURES := [
 ]
 
 static func fixed_bounds() -> Array[Rect2]:
-	return Common.fixed_bounds_for_rotation(CENTER_BOUNDS,FEATURES,0)
+	return Common.fixed_bounds_for_rotation(CENTER_BOUNDS,[],0)
 
 static func fixed_bounds_for_rotation(rotation: int) -> Array[Rect2]:
-	return Common.fixed_bounds_for_rotation(CENTER_BOUNDS,FEATURES,rotation)
+	return Common.fixed_bounds_for_rotation(CENTER_BOUNDS,[],rotation)
 
 static func chamber_state(room: Dictionary) -> Dictionary:
 	if not room.has("tidal_chamber"):
@@ -53,7 +54,6 @@ static func valid_rooms(rooms: Array) -> bool:
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	Common.begin(canvas,room,rect,Color("#303841"),WALL_STYLE,"res://assets/department-floors-v1/engineering-tread.png",0.36)
-	Common.draw_features(canvas,FEATURES,room,rect)
 	# Reuse the painted source's large flanged pipe below a flush grate trench.
 	Common.south_transform(canvas,rect,float(int(room.get("rotation",0)))*PI*0.5)
 	Common.sprite(canvas,TURBINE_ART,Rect2(-1,-1,2,2),Color(1,1,1,0))

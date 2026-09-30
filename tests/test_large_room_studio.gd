@@ -41,13 +41,15 @@ func run_check() -> void:
 		if not check(studio.add_library_asset("library/sp-airlock-3", POSITIONS[id]), id + " could not place a station prop"): return
 		studio.save_layout()
 		var live: Array = LargeView.live_props(id, 0)
-		if not check(live.size() == 1 and str(live[0].id) == "library/sp-airlock-3", id + " saved prop missing from live view"): return
+		var seeded: int = LargeView.feature_seed(id, 0).size() / 2
+		var placed: Array = live.filter(func(prop): return str(prop.id) == "library/sp-airlock-3")
+		if not check(placed.size() == 1 and live.size() == 1 + seeded, id + " saved prop missing from live view"): return
 		if not check(Store.shared_positions("room-" + id, 0).has("library/sp-airlock-3"), id + " did not save its layout"): return
 		var grid = Grid.new()
 		var definition: Dictionary = Database.get_room(id).duplicate(true)
 		definition.pos = Vector2i.ZERO
 		definition.rotation = 0
-		var center: Vector2 = live[0].rect.get_center() + Vector2.ONE * 384.0
+		var center: Vector2 = placed[0].rect.get_center() + Vector2.ONE * 384.0
 		var local_cell := Vector2i(int(center.x / 384.0), int(center.y / 384.0))
 		var geometry: Dictionary = grid.bill_room_geometry(definition, [], local_cell)
 		if not check(not geometry.blockers.is_empty(), id + " placed prop has no navigation blocker"): return

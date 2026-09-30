@@ -819,7 +819,7 @@ func load_room() -> void:
 	room.hide()
 	room.configure_embedded(quarter,[],false,0.0)
 	effects.clear(); effects.room_id=str(entries[index].room); rebuild_effect_buttons()
-	effects_bar.visible=not is_large_room()
+	effects_bar.visible=not is_large_room() or effects.has_large_machine()
 	floor_tools.visible=not is_large_room()
 	show_character.visible=not is_large_room()
 	for cast_pick in cast_rows: cast_pick.get_parent().visible=not is_large_room()
@@ -831,6 +831,7 @@ func load_room() -> void:
 			if layer_index>=0: layers.set_item_disabled(layer_index,layer_id!=0)
 		layer=0
 		base_props=[]; base_details={}; defaults={"__free_placement":true}
+		defaults.merge(LargeView.feature_seed(str(entries[index].room),quarter))
 		draft=defaults.duplicate(true)
 		draft.merge(Store.positions(entries[index].asset,quarter),true)
 		history.clear(); future.clear(); dirty=false; selected=""; selected_many.clear(); dragging=false

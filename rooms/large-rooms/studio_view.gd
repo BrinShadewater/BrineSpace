@@ -11,6 +11,10 @@ const VIEWS = {
 }
 static var live_cache: Dictionary = {}
 static var cache_revision := -1
+# The supporting equipment of these rooms starts as ordinary props: movable, resizable, hideable and deletable
+# like any Studio prop. The Moonbay keeps its pieces fixed because they are live machinery (the sea hatch and
+# the helmet locker the crew walk to).
+const MOVABLE_FEATURE_ROOMS := ["tidal_power_plant", "hydroponics_farm", "storage_depot"]
 class PaintContext extends RefCounted:
 	var props: Array = []
 	var painter: CanvasItem
@@ -63,6 +67,23 @@ static func draw_props(target: CanvasItem, view, at: Vector2, scale_value: float
 		Library.draw(view, prop)
 	target.draw_set_transform(Vector2.ZERO)
 
+# The layout entries those pieces have before the owner touches them, for this rotation. They sit under
+# the saved layout, so an old layout shows each piece where it used to be until it is moved, hidden or deleted.
+static func feature_seed(id: String, q: int) -> Dictionary:
+	var result := {}
+	if not MOVABLE_FEATURE_ROOMS.has(id): return result
+	for feature in VIEWS[id].FEATURES:
+		var prop_id := "library/" + str(feature.path).get_file().get_basename()
+		var template: Dictionary = Library.template(prop_id)
+		if template.is_empty(): continue
+		var source: Rect2 = feature.rect
+		var center := source.get_center() if feature.get("fixed_position", false) else source.get_center().rotated(float(posmod(q, 4)) * PI * 0.5)
+		var fit := source.size.x / maxf(1.0, template.rect.size.x)
+		var size: Vector2 = template.rect.size * fit
+		result[prop_id] = [center.x - size.x * 0.5, center.y - size.y * 0.5]
+		result["size/" + prop_id] = [fit, fit]
+	return result
+
 static func live_props(id: String, q: int) -> Array:
 	Store.prime()
 	if cache_revision != Store.revision:
@@ -73,7 +94,8 @@ static func live_props(id: String, q: int) -> Array:
 	var view = new()
 	view.room_id = id
 	view.quarter = posmod(q, 4)
-	var selected: Dictionary = Store.shared_positions("room-" + id, q)
+	var selected: Dictionary = feature_seed(id, q)
+	selected.merge(Store.shared_positions("room-" + id, q), true)
 	view.set_meta("layout_asset", "room-" + id)
 	Library.apply(view, selected)
 	Store.copies(view, selected)

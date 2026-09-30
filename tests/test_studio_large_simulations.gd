@@ -77,5 +77,8 @@ func run() -> void:
 	m.apply(view)
 	check(str(view.moonbay_mission.phase) == "seal", "apply hands the moonbay state to the view")
 
+	check(not ids("tidal_power_plant").has("flood") and ids("tidal_power_plant").has("clear"), "Large-room bar drops Flood, keeps Clear")
+	check(ids("airlock").has("flood"), "Small rooms keep Flood")
+
 	print("studio large simulations: %d failure(s)" % failures)
 	quit(1 if failures > 0 else 0)
