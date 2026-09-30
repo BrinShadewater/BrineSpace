@@ -47,9 +47,56 @@ func _layout(pattern: Dictionary) -> Dictionary:
 							if _count(Synergies.evaluate(occupied.values(), occupied)["links"], str(pattern.id)) == 1: return occupied
 	return {}
 
+# A hallway piece joins two rooms that do not touch: middle, hallway, end, with the other end beside the
+# middle. Returns the rooms, or an empty dictionary.
+func _layout_through_hallway(pattern: Dictionary, hallway_id: String) -> Dictionary:
+	var ids: Array = pattern.rooms
+	var sides := [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
+	var middle := Vector2i(11, 11)
+	for center in range(3):
+		var others := []
+		for index in range(3):
+			if index != center: others.append(ids[index])
+		for first in sides:
+			for second in sides:
+				if first == second: continue
+				for r0 in range(4):
+					for r1 in range(4):
+						for r2 in range(4):
+							for rh in range(4):
+								var occupied := {}
+								_add_room(occupied, ids[center], middle, r1)
+								_add_room(occupied, others[0], middle + first, r0)
+								_add_room(occupied, hallway_id, middle + second, rh)
+								_add_room(occupied, others[1], middle + second * 2, r2)
+								for link in Synergies.evaluate(occupied.values(), occupied)["links"]:
+									if str(link.id) == str(pattern.id) and link.cells.size() == 4: return occupied
+	return {}
+
+# One tee with a room on each of three sides, none touching another.
+func _layout_tee_hub(pattern: Dictionary) -> Dictionary:
+	var sides := [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
+	var hub := Vector2i(11, 11)
+	for a in range(4):
+		for b in range(4):
+			for c in range(4):
+				if a == b or b == c or a == c: continue
+				for rt in range(4):
+					for r0 in range(4):
+						for r1 in range(4):
+							for r2 in range(4):
+								var occupied := {}
+								_add_room(occupied, "tee_corridor", hub, rt)
+								_add_room(occupied, pattern.rooms[0], hub + sides[a], r0)
+								_add_room(occupied, pattern.rooms[1], hub + sides[b], r1)
+								_add_room(occupied, pattern.rooms[2], hub + sides[c], r2)
+								for link in Synergies.evaluate(occupied.values(), occupied)["links"]:
+									if str(link.id) == str(pattern.id): return occupied
+	return {}
+
 func run() -> void:
 	var patterns := Synergies.patterns()
-	expect(patterns.size() == 6, "Six patterns are authored")
+	expect(patterns.size() == 11, "Eleven patterns are authored")
 	expect(Synergies.pairs().size() + patterns.size() == Synergies.all_synergies().size(), "Pairs and patterns together are every synergy")
 	for pattern in patterns:
 		expect(pattern.rooms.size() == 3, "%s names three rooms" % pattern.name)
@@ -77,6 +124,18 @@ func run() -> void:
 	expect(link.get("cells", []).size() == 3, "A pattern link carries all three cells")
 	expect(int(Synergies.cycle_bonus([link]).get("food", 0)) == 2, "Field to Table pays +2 Food")
 	expect(int(Synergies.cycle_bonus([link], {str(pattern.id): true}).get("food", 0)) == 4, "Stabilizing doubles a pattern's bonus")
+	# Hallways connect patterns too: through a corridor between two rooms, and a tee joining all three.
+	var through := _layout_through_hallway(pattern, "corridor")
+	expect(not through.is_empty(), "%s can be joined through a corridor" % pattern.name)
+	var hub := _layout_tee_hub(pattern)
+	expect(not hub.is_empty(), "%s can be joined by a single tee corridor" % pattern.name)
+	var depot: Dictionary = {}
+	for candidate in patterns:
+		if str(candidate.id) == "pattern_parts_depot": depot = candidate
+	expect(not depot.is_empty() and not _layout_tee_hub(depot).is_empty(), "Parts Depot can be joined by a single tee corridor")
+	var solo := {}
+	_add_room(solo, "tee_corridor", Vector2i(11, 11))
+	expect(_count(Synergies.evaluate(solo.values(), solo)["links"], str(pattern.id)) == 0, "A hallway alone makes no pattern")
 	# In a real game: build one, power it, and it is discovered, then stabilizes on the third cycle.
 	var TitleSettings = preload("res://scripts/title_settings.gd")
 	TitleSettings.save_path = "user://patterns_%d.cfg" % OS.get_process_id()

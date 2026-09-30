@@ -1175,13 +1175,14 @@ const SYNERGIES := [
 		"fx_profile": "signal",
 		"fx_color": "7BA7B9"
 	},
-	# ---- Patterns: three rooms joined through matching doors (owner-approved Sept 29). All three must
-	# function; a pattern pays on top of any pair synergies among its rooms.
+	# ---- Patterns: three rooms joined through matching doors, directly or through one hallway piece
+	# (owner-approved Sept 29). All three rooms and any hallway used must function; a pattern pays on top
+	# of any pair synergies among its rooms.
 	{
 		"id": "pattern_field_to_table", "kind": "pattern", "name": "Field to Table",
 		"rooms": ["hydroponics_bay", "galley", "crew_lounge"],
 		"bonus": {"food": 2},
-		"effect": "+2 Food per functioning cycle when the Hydroponics Bay, Galley and Crew Lounge are joined through matching doors.",
+		"effect": "+2 Food per functioning cycle when the Hydroponics Bay, Galley and Crew Lounge are joined through matching doors or a hallway.",
 		"message": "The salad reaches the table in the same shift it was harvested. Complaints have moved on to the salad.",
 		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "care", "fx_color": "BFA76C"
 	},
@@ -1189,7 +1190,7 @@ const SYNERGIES := [
 		"id": "pattern_greenhouse_deck", "kind": "pattern", "name": "Greenhouse Deck",
 		"rooms": ["life_support", "biodome", "observation_room"],
 		"bonus": {"oxygen": 2},
-		"effect": "+2 Oxygen per functioning cycle when Life Support, the Biodome and the Observation Room are joined through matching doors.",
+		"effect": "+2 Oxygen per functioning cycle when Life Support, the Biodome and the Observation Room are joined through matching doors or a hallway.",
 		"message": "The plants breathe, the crew watches them breathe, and the station pretends this was the plan.",
 		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "flow", "fx_color": "75ABB3"
 	},
@@ -1197,7 +1198,7 @@ const SYNERGIES := [
 		"id": "pattern_deep_survey", "kind": "pattern", "name": "Deep Survey",
 		"rooms": ["mining_drone_bay", "observation_room", "data_archive"],
 		"bonus": {"data": 2},
-		"effect": "+2 Data per functioning cycle when the Mining Drone Bay, Observation Room and Data Archive are joined through matching doors.",
+		"effect": "+2 Data per functioning cycle when the Mining Drone Bay, Observation Room and Data Archive are joined through matching doors or a hallway.",
 		"message": "The drone finds it, the window confirms it, the archive files it. Nobody is sure who asked.",
 		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "signal", "fx_color": "7BA7B9"
 	},
@@ -1205,7 +1206,7 @@ const SYNERGIES := [
 		"id": "pattern_smelting_line", "kind": "pattern", "name": "Smelting Line",
 		"rooms": ["reactor", "mining_drone_bay", "ore_refinery"],
 		"bonus": {"metal": 2},
-		"effect": "+2 Metal per functioning cycle when the Reactor, Mining Drone Bay and Ore Refinery are joined through matching doors.",
+		"effect": "+2 Metal per functioning cycle when the Reactor, Mining Drone Bay and Ore Refinery are joined through matching doors or a hallway.",
 		"message": "Ore goes in warm and comes out useful. The reactor takes the credit.",
 		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "logistics", "fx_color": "B68D55"
 	},
@@ -1213,7 +1214,7 @@ const SYNERGIES := [
 		"id": "pattern_steady_hands", "kind": "pattern", "name": "Steady Hands",
 		"rooms": ["salvage_drone_bay", "maintenance_bay", "command_center"],
 		"bonus": {"integrity": 1, "metal": 1},
-		"effect": "+1 Integrity and +1 Metal per functioning cycle when the Salvage Drone Bay, Maintenance Bay and Command Center are joined through matching doors.",
+		"effect": "+1 Integrity and +1 Metal per functioning cycle when the Salvage Drone Bay, Maintenance Bay and Command Center are joined through matching doors or a hallway.",
 		"message": "Repairs are assigned before the damage is admitted.",
 		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "containment", "fx_color": "8FB3A0"
 	},
@@ -1221,8 +1222,48 @@ const SYNERGIES := [
 		"id": "pattern_recovery_ward", "kind": "pattern", "name": "Recovery Ward",
 		"rooms": ["crew_hab", "med_bay", "crew_lounge"],
 		"bonus": {"integrity": 1, "food": 1},
-		"effect": "+1 Integrity and +1 Food per functioning cycle when the Crew Hab, Med Bay and Crew Lounge are joined through matching doors.",
+		"effect": "+1 Integrity and +1 Food per functioning cycle when the Crew Hab, Med Bay and Crew Lounge are joined through matching doors or a hallway.",
 		"message": "A bed, a clinic and a couch within shouting distance. Recovery statistics have improved.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "care", "fx_color": "BFA76C"
+	},
+	{
+		"id": "pattern_cold_loop", "kind": "pattern", "name": "Cold Loop",
+		"rooms": ["life_support", "hydroponics_bay", "cold_store"],
+		"bonus": {"oxygen": 1, "food": 1},
+		"effect": "+1 Oxygen and +1 Food per functioning cycle when Life Support, the Hydroponics Bay and the Cold Store are joined through matching doors or a hallway.",
+		"message": "The seeds keep, the air stays clean, and the cold room finally has a purpose beyond being cold.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "flow", "fx_color": "75ABB3"
+	},
+	{
+		"id": "pattern_parts_depot", "kind": "pattern", "name": "Parts Depot",
+		"rooms": ["storage_bay", "salvage_workshop", "maintenance_bay"],
+		"bonus": {"metal": 2},
+		"effect": "+2 Metal per functioning cycle when the Storage Bay, Salvage Workshop and Maintenance Bay are joined through matching doors or a hallway. One tee can serve all three.",
+		"message": "Everything that was lost is now in a labelled bin. The labels are optimistic.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "logistics", "fx_color": "B68D55"
+	},
+	{
+		"id": "pattern_living_current", "kind": "pattern", "name": "Living Current",
+		"rooms": ["biomass_digester", "hydroponics_bay", "current_turbine"],
+		"bonus": {"biomass": 1, "power": 1},
+		"effect": "+1 Biomass and +1 Power per functioning cycle when the Biomass Digester, Hydroponics Bay and Current Turbine are joined through matching doors or a hallway.",
+		"message": "The digester breathes out, the turbine breathes in, and the garden is somehow both.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "flow", "fx_color": "8FB38A"
+	},
+	{
+		"id": "pattern_steady_grid", "kind": "pattern", "name": "Steady Grid",
+		"rooms": ["battery_array", "reactor", "solar_array"],
+		"bonus": {"power": 2},
+		"effect": "+2 Power per functioning cycle when the Battery Array, Reactor and Solar Array are joined through matching doors or a hallway.",
+		"message": "The batteries hold, the panels feed, and the reactor stops sulking.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "power", "fx_color": "E0B36A"
+	},
+	{
+		"id": "pattern_open_evening", "kind": "pattern", "name": "Open Evening",
+		"rooms": ["games_room", "crew_lounge", "music_room"],
+		"bonus": {"data": 2},
+		"effect": "+2 Data per functioning cycle when the Games Room, Crew Lounge and Music Room are joined through matching doors or a hallway.",
+		"message": "Someone brought the music. Someone else brought a rulebook. The rulebook won.",
 		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "care", "fx_color": "BFA76C"
 	}
 ]
@@ -1324,10 +1365,13 @@ static func _find_passage_pairs(room_ids: Array, occupied: Dictionary) -> Array:
 				pairs.append([start, end, pos])
 	return pairs
 
-# A pattern's three rooms must form one connected cluster: some room among them connects through
-# matching doors to both of the others. Dead-end rooms (one door) can only be an end, so the middle is
-# whichever of the three has the doors. Cells come back as [end, middle, end]; a cluster found from
-# more than one middle is one link (the key sorts the cells).
+# A pattern's three rooms must form one connected cluster: some room among them connects to both of
+# the others through matching doors, either directly or through one hallway piece (corridor, corner
+# or tee; owner, Sept 29: hallways connect synergies and patterns too). Dead-end rooms (one door) can
+# only be an end, so the middle is whichever of the three has the doors. A tee can serve all three
+# rooms at once. Cells come back as a path in drawing order, [end, (hallway,) middle, (hallway,) end],
+# and every hallway piece used must function like the rooms. A cluster found more than one way is one
+# link (the key sorts the cells).
 static func _find_pattern_chains(room_ids: Array, occupied: Dictionary) -> Array:
 	var chains := []
 	for middle_index in [1, 0, 2]:
@@ -1340,19 +1384,46 @@ static func _find_pattern_chains(room_ids: Array, occupied: Dictionary) -> Array
 				continue
 			var starts := []
 			var ends := []
-			for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
-				var neighbor_pos: Vector2i = pos + offset
-				var neighbor: Dictionary = occupied.get(neighbor_pos, {})
-				if not _rooms_connected(middle, neighbor, offset):
-					continue
-				if str(neighbor.get("id", "")) == end_ids[0]:
-					starts.append(neighbor_pos)
-				elif str(neighbor.get("id", "")) == end_ids[1]:
-					ends.append(neighbor_pos)
+			for reach in _pattern_reach(pos, occupied):
+				var id := str(occupied[reach.cell].get("id", ""))
+				if id == end_ids[0]:
+					starts.append(reach)
+				elif id == end_ids[1]:
+					ends.append(reach)
 			for start in starts:
 				for end in ends:
-					chains.append([start, pos, end])
+					if start.cell == end.cell:
+						continue
+					var path := [start.cell]
+					if start.via != null: path.append(start.via)
+					path.append(pos)
+					if end.via != null: path.append(end.via)
+					path.append(end.cell)
+					chains.append(path)
 	return chains
+
+# The rooms a room reaches through matching doors: next door, or one hallway piece away.
+static func _pattern_reach(pos: Vector2i, occupied: Dictionary) -> Array:
+	var reach := []
+	var room: Dictionary = occupied[pos]
+	for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+		var next_pos: Vector2i = pos + offset
+		var next_room: Dictionary = occupied.get(next_pos, {})
+		if not _rooms_connected(room, next_room, offset):
+			continue
+		if not PASSAGE_IDS.has(str(next_room.get("id", ""))):
+			reach.append({"cell": next_pos, "via": null})
+			continue
+		for onward in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+			var far_pos: Vector2i = next_pos + onward
+			if far_pos == pos:
+				continue
+			var far_room: Dictionary = occupied.get(far_pos, {})
+			if far_room.is_empty() or PASSAGE_IDS.has(str(far_room.get("id", ""))):
+				continue
+			if _rooms_connected(next_room, far_room, onward):
+				reach.append({"cell": far_pos, "via": next_pos})
+	return reach
 
 static func _find_adjacent_pairs(room_ids: Array, occupied: Dictionary) -> Array:
 	var pairs := []
@@ -1426,7 +1497,7 @@ static func _rotate_side(side: String, rotation_steps: int) -> String:
 	return sides[(index + rotation_steps) % sides.size()]
 
 static func _add_link(links: Array, seen_links: Dictionary, synergy: Dictionary, cells: Array) -> void:
-	var key := "%s:%s" % [synergy["id"], _cell_pair_key(cells[0], cells[1]) if cells.size() == 2 or is_pattern(synergy) == false else _chain_key(cells)]
+	var key := "%s:%s" % [synergy["id"], _chain_key(cells) if is_pattern(synergy) else _cell_pair_key(cells[0], cells[1])]
 	if seen_links.has(key):
 		return
 	seen_links[key] = true

@@ -315,7 +315,7 @@ func _populate_cards() -> void:
 	search.visible = codex_tab != 3
 	codex_filter.visible = codex_tab != 3
 	codex_hint.visible = codex_tab != 3
-	codex_hint.text = "Join three named rooms through matching doors and keep all three functioning to discover a pattern. Patterns pay on top of the synergies inside them." if codex_tab == 2 else "Connect neighboring rooms and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward."
+	codex_hint.text = "Join three named rooms through matching doors, or through a hallway piece, and keep all three functioning to discover a pattern. Patterns pay on top of the synergies inside them." if codex_tab == 2 else "Connect neighboring rooms and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward."
 	codex_sort.visible = codex_tab == 0
 	if codex_tab == 3:
 		grid.columns = 1
