@@ -270,7 +270,12 @@ func _advance_companion(main, delta: float) -> void:
 # A companion idling in a crew member's way (a doorway, a narrow aisle) gets up and moves to the far side of
 # its room. The crew yield to companions, so without this Marsh waited ~8 s for Margot to finish sitting in a
 # doorway (owner F8 report, Sept 30).
+var make_way_retry := 0.0
 func _make_way(main) -> bool:
+	# A failed search walks the whole graph; after a miss, wait before trying again rather than every frame.
+	if make_way_retry > 0.0:
+		make_way_retry = maxf(0.0, make_way_retry - main.get_process_delta_time())
+		return false
 	var blocked := Vector2.INF
 	for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
 		if peer==null or not peer.active or peer.dead or not peer.expedition.is_empty():continue
@@ -290,6 +295,7 @@ func _make_way(main) -> bool:
 		behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
 		path=route;goal="curiosity";goal_cell=here;timer=0
 		activity="making way";return true
+	make_way_retry = 1.0
 	return false
 
 # Water can catch a companion beside a wall, where her swim outline does not fit: every route failed at its

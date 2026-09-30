@@ -95,6 +95,18 @@ static func initialize(window: Window) -> void:
 		var candidate: Dictionary = DEFAULT_KEYS.duplicate()
 		for action in DEFAULT_KEYS:
 			candidate[action] = int(saved_keys.get(action, DEFAULT_KEYS[action]))
+		# An action added after the player saved their bindings takes its default only if that key is free;
+		# otherwise the first free spare key. A collision here used to reset every custom binding (Sept 30).
+		for action in DEFAULT_KEYS:
+			if saved_keys.has(action): continue
+			var taken := {}
+			for other in candidate:
+				if other != action and saved_keys.has(other): taken[candidate[other]] = true
+			if taken.has(candidate[action]):
+				for spare in [KEY_Y, KEY_O, KEY_U, KEY_H, KEY_K, KEY_L, KEY_N, KEY_M, KEY_B, KEY_T, KEY_G]:
+					if not taken.has(spare) and not candidate.values().has(spare):
+						candidate[action] = spare
+						break
 		var used := {}
 		var valid := true
 		for key in candidate.values():
