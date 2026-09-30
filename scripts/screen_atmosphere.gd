@@ -28,6 +28,10 @@ const LOOKS := [
 	{"name": "Station shadow on the water (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "shadow": 1.0},
 	{"name": "Hull-edge occlusion (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "occlusion": 1.0},
 	{"name": "Depth fog (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "fog": 1.0},
+	{"name": "Bioluminescent motes (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "motes": 1.0},
+	{"name": "Anamorphic flare (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "flare": 1.0},
+	{"name": "Hull light spill (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "spill": 1.0},
+	{"name": "Sonar ping (test)", "drift": 0.0, "grade": 0.0, "bloom": 0.0, "cool": false, "ping": 1.0},
 	{"name": "All (High)", "drift": 1.3, "grade": 1.0, "bloom": 0.3, "cool": false, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0, "blur": 1.0, "shadow": 1.0, "occlusion": 1.0, "fog": 1.0},
 ]
 const SHADER_CODE := """
@@ -61,6 +65,11 @@ uniform float blur = 0.0;
 uniform float station_shadow = 0.0;
 uniform float occlusion = 0.0;
 uniform float fog = 0.0;
+uniform float flare = 0.0;
+uniform float spill = 0.0;
+uniform float ping_alpha = 0.0;
+uniform vec2 ping_center_px = vec2(0.0);
+uniform float ping_radius_px = 0.0;
 
 vec3 bright(vec2 uv) {
 	vec3 c = texture(screen_tex, uv).rgb;
@@ -77,7 +86,7 @@ void fragment() {
 	}
 	vec3 col = texture(screen_tex, uv).rgb;
 	float open_here = 1.0;
-	if (blur > 0.0 || station_shadow > 0.0 || grain > 0.0) open_here = 1.0 - smoothstep(0.0, 0.6, station_at(UV));
+	if (blur > 0.0 || station_shadow > 0.0 || grain > 0.0 || spill > 0.0 || ping_alpha > 0.0) open_here = 1.0 - smoothstep(0.0, 0.6, station_at(UV));
 	if (blur > 0.0 || station_shadow > 0.0) {
 		if (blur > 0.0) {
 			// A soft two-ring blur, about four pixels wide at full strength, in open water only.
@@ -101,6 +110,27 @@ void fragment() {
 			}
 			col *= 1.0 - 0.85 * station_shadow * clamp(coverage / 8.0 * 1.6, 0.0, 1.0) * open_here;
 		}
+	}
+	if (spill > 0.0) {
+		// The station's lights bleed into the water around it: coverage of the station in two wide rings, shown
+		// only in open water and fading with distance.
+		vec2 world = (UV * view_px + scroll_px) / cell_px / grid_cells;
+		float near = 0.0;
+		float far = 0.0;
+		for (int i = 0; i < 8; i++) {
+			float a = float(i) * 0.785398;
+			vec2 d = vec2(cos(a), sin(a)) / grid_cells;
+			near += texture(station_mask, world + d * 0.9).r;
+			far += texture(station_mask, world + d * 2.0).r;
+		}
+		float glow = (near * 0.6 + far * 0.4) / 8.0;
+		col += vec3(0.30, 0.68, 0.74) * glow * open_here * 0.20 * spill;
+	}
+	if (ping_alpha > 0.0) {
+		// One faint ring of sonar leaving the station, in open water only.
+		float dist = length(UV * view_px - ping_center_px);
+		float ring = 1.0 - smoothstep(0.0, 10.0 * (view_px.y / 1080.0) + 6.0, abs(dist - ping_radius_px));
+		col += vec3(0.32, 0.85, 0.9) * ring * open_here * ping_alpha;
 	}
 	if (occlusion > 0.0) {
 		// Inside a room, darken toward the hull: the room's own mask minus the least-covered neighbour.
@@ -136,6 +166,16 @@ void fragment() {
 		glow = glow / 14.3 * bloom * 1.6;
 		col = vec3(1.0) - (vec3(1.0) - col) * (vec3(1.0) - clamp(glow, 0.0, 1.0));
 	}
+	if (flare > 0.0) {
+		// Bright lights smear sideways into a thin cool streak, like an anamorphic cinema lens.
+		vec3 streak = vec3(0.0);
+		for (int i = 1; i <= 7; i++) {
+			float dx = float(i) * radius_px * 0.9;
+			float w = exp(-float(i) * 0.38);
+			streak += (bright(uv + vec2(dx, 0.0) * SCREEN_PIXEL_SIZE) + bright(uv - vec2(dx, 0.0) * SCREEN_PIXEL_SIZE)) * w;
+		}
+		col += streak * vec3(0.55, 0.8, 1.0) * 0.10 * flare;
+	}
 	float luma = dot(col, vec3(0.299, 0.587, 0.114));
 	float t = smoothstep(0.15, 0.75, luma);
 	vec3 shadow = col * vec3(0.84, 0.97, 1.1) + vec3(0.0, 0.008, 0.024);
@@ -157,6 +197,8 @@ var cool: ColorRect
 var post: ColorRect
 var post_material: ShaderMaterial
 var snow := 0.0
+var motes := 0.0
+var glow_layer: Control
 var forced := -1 # F6 testing: index into LOOKS, or -1 to follow Settings > Visual effects
 var toast: Label
 var mask_image: Image
@@ -190,6 +232,15 @@ func _ready() -> void:
 	post.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	post.material = post_material
 	add_child(post)
+	glow_layer = Control.new()
+	glow_layer.name = "Motes"
+	glow_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	glow_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var additive := CanvasItemMaterial.new()
+	additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	glow_layer.material = additive
+	glow_layer.draw.connect(_draw_motes)
+	add_child(glow_layer)
 	toast = Label.new()
 	toast.position = Vector2(24, 24)
 	toast.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -230,9 +281,16 @@ func _apply() -> void:
 	var fringe := float(level.get("fringe", 0.0))
 	var blur := float(level.get("blur", 0.0))
 	var shadow := float(level.get("shadow", 0.0))
+	var spill := float(level.get("spill", 0.0))
+	var ping := float(level.get("ping", 0.0))
+	var flare := float(level.get("flare", 0.0))
+	motes = float(level.get("motes", 0.0))
 	var occlusion := float(level.get("occlusion", 0.0))
 	var fog := float(level.get("fog", 0.0))
-	post.visible = bloom > 0.0 or grade > 0.0 or shimmer > 0.0 or grain > 0.0 or fringe > 0.0 or blur > 0.0 or shadow > 0.0 or occlusion > 0.0 or fog > 0.0
+	post.visible = bloom > 0.0 or grade > 0.0 or shimmer > 0.0 or grain > 0.0 or fringe > 0.0 or blur > 0.0 or shadow > 0.0 or occlusion > 0.0 or fog > 0.0 or flare > 0.0 or spill > 0.0 or ping > 0.0 or flare > 0.0
+	post_material.set_shader_parameter("flare", flare)
+	post_material.set_shader_parameter("spill", spill)
+	_update_ping(ping)
 	post_material.set_shader_parameter("occlusion", occlusion)
 	post_material.set_shader_parameter("fog", fog)
 	post_material.set_shader_parameter("blur", blur)
@@ -242,7 +300,7 @@ func _apply() -> void:
 	post_material.set_shader_parameter("fringe", fringe)
 	post_material.set_shader_parameter("bloom", bloom)
 	post_material.set_shader_parameter("grade", grade)
-	if (shimmer > 0.0 or blur > 0.0 or shadow > 0.0 or grain > 0.0 or occlusion > 0.0 or fog > 0.0) and game != null and game.grid_scroll != null:
+	if (shimmer > 0.0 or blur > 0.0 or shadow > 0.0 or grain > 0.0 or occlusion > 0.0 or fog > 0.0 or flare > 0.0 or spill > 0.0 or ping > 0.0) and game != null and game.grid_scroll != null:
 		_update_mask()
 		post_material.set_shader_parameter("view_px", size)
 		post_material.set_shader_parameter("scroll_px", Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical))
@@ -255,6 +313,8 @@ func _process(delta: float) -> void:
 		toast_left -= delta
 		if toast_left <= 0.0: toast.visible = false
 	if snow > 0.0: queue_redraw()
+	if motes > 0.0 or glow_layer.visible: glow_layer.queue_redraw()
+	glow_layer.visible = motes > 0.0
 
 # Which grid cells hold a room, as a small texture for the shimmer to keep clear of. Rebuilt every few frames.
 func _update_mask() -> void:
@@ -303,3 +363,43 @@ func _draw() -> void:
 		if alpha <= 0.004: continue
 		draw_circle(at, radius * 2.4, Color(0.7, 0.9, 1.0, alpha * 0.18))
 		draw_circle(at, radius, Color(0.86, 0.96, 1.0, alpha))
+
+# Bioluminescent motes: a few soft teal and violet specks that swell and fade slowly in the open water, on
+# an additive layer so they glow. They follow the view scroll at their own depth, like the snow.
+func _draw_motes() -> void:
+	if motes <= 0.0 or game == null or game.grid_scroll == null: return
+	var time: float = 0.0 if Preferences.reduced_motion else game.get_visual_time_seconds()
+	var view := size
+	var scroll := Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical)
+	var unit := view.y / 1080.0
+	var cell_size: float = game.get_cell_size()
+	for i in range(34):
+		var h := hash([i, 733])
+		var depth := 0.3 + 0.7 * float(h % 3) / 2.0
+		var home := Vector2(float((h / 3) % 1000) / 1000.0 * view.x, float((h / 3000) % 1000) / 1000.0 * view.y)
+		var drift := Vector2(sin(time * 0.11 + float(i) * 1.3), cos(time * 0.09 + float(i) * 0.7)) * 26.0 * unit
+		var at := home + drift - scroll * (0.2 + 0.5 * depth)
+		at = Vector2(fposmod(at.x, view.x), fposmod(at.y, view.y))
+		var pulse := 0.5 + 0.5 * sin(time * (0.35 + 0.02 * float(i % 7)) + float(i) * 2.1)
+		var open := _open_water(at + scroll, cell_size)
+		var strength := pulse * pulse * open * motes
+		if strength <= 0.01: continue
+		var tint := Color(0.25, 1.0, 0.85) if h % 4 != 0 else Color(0.7, 0.45, 1.0)
+		var radius := (2.0 + 2.5 * depth) * unit * 1.6
+		glow_layer.draw_circle(at, radius * 4.0, Color(tint.r, tint.g, tint.b, 0.05 * strength))
+		glow_layer.draw_circle(at, radius * 1.8, Color(tint.r, tint.g, tint.b, 0.16 * strength))
+		glow_layer.draw_circle(at, radius * 0.7, Color(0.9, 1.0, 1.0, 0.55 * strength))
+
+# Sonar ping: every PING_PERIOD seconds one ring leaves the middle of the station and fades as it travels.
+# Deterministic from visual time, so it freezes with pause; Reduced Motion shows none.
+const PING_PERIOD := 14.0
+func _update_ping(strength: float) -> void:
+	if strength <= 0.0 or game == null or game.grid_scroll == null or Preferences.reduced_motion or game.placed_rooms.is_empty():
+		post_material.set_shader_parameter("ping_alpha", 0.0)
+		return
+	var phase := fposmod(game.get_visual_time_seconds() / PING_PERIOD, 1.0)
+	var centre: Vector2 = preload("res://scripts/ocean_life.gd").station_centre(game) * game.get_cell_size()
+	var scroll := Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical)
+	post_material.set_shader_parameter("ping_center_px", centre - scroll)
+	post_material.set_shader_parameter("ping_radius_px", phase * size.length() * 0.8)
+	post_material.set_shader_parameter("ping_alpha", 0.16 * strength * sin(phase * PI) * (1.0 - phase))
