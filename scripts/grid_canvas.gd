@@ -328,6 +328,9 @@ func _ready() -> void:
 	life_over.host = self
 	life_over.name = "LifeOverStation"
 	add_child(life_over)
+	var yield_overlay = preload("res://scripts/yield_overlay.gd").new()
+	yield_overlay.host = self
+	add_child(yield_overlay)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_generate_star_points()
 	space_background_texture = _load_png_texture("res://legacy/retired/space texture.jpg")

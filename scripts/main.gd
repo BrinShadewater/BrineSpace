@@ -4545,6 +4545,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		_refresh_placement_status()
 		viewport.set_input_as_handled()
 		return
+	if Preferences.pressed(event, "Resource overlay"):
+		Preferences.resource_overlay = not Preferences.resource_overlay
+		Preferences.save(get_window())
+		_log("RESOURCE OVERLAY // %s" % ("on" if Preferences.resource_overlay else "off"), false)
+		viewport.set_input_as_handled()
+		return
 	if Preferences.pressed(event, "Fit station"):
 		_fit_station_view(true)
 		viewport.set_input_as_handled()

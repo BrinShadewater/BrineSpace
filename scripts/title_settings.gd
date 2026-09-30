@@ -19,6 +19,8 @@ static var initialized := false
 static var window_size := Vector2i(1600, 900)
 static var reduced_motion := false
 static var placement_guides := true
+# The resource overlay: what each room gives and takes, drawn over the rooms (hotkey "Resource overlay").
+static var resource_overlay := false
 static var raised_walls := true
 static var hand_backdrop := true
 static var hand_layout := "row" # Draft hand as a row of cards or a fan (owner playtest).
@@ -48,7 +50,7 @@ static func atmosphere() -> Dictionary:
 		# tint and fringe; the focus blur halved; lighter shadow, occlusion and fog.
 		2: return {"shafts": 0.45, "caustics": 0.26, "tint": 0.45, "snow": 1.05, "drift": 1.3, "grade": 1.0, "bloom": 0.12, "shimmer": 0.5, "grain": 0.35, "fringe": 0.04, "blur": 0.5, "shadow": 0.5, "occlusion": 0.45, "fog": 0.6}
 		_: return {"shafts": 0.42, "caustics": 0.24, "tint": 0.52, "snow": 0.75, "drift": 1.0, "grade": 0.0, "bloom": 0.0, "shimmer": 0.0, "grain": 0.0, "fringe": 0.0, "blur": 0.0, "shadow": 0.0, "occlusion": 0.0, "fog": 0.0}
-const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V}
+const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V, "Resource overlay": KEY_Y}
 static var keys: Dictionary = DEFAULT_KEYS.duplicate()
 
 static func pressed(event: InputEvent, action: String) -> bool:
@@ -105,6 +107,7 @@ static func initialize(window: Window) -> void:
 	# A new explicit choice remains persistent after this migration.
 	raised_walls = bool(config.get_value("display", "riser_walls_enabled", true))
 	placement_guides = bool(config.get_value("accessibility", "placement_guides", true))
+	resource_overlay = bool(config.get_value("display", "resource_overlay", false))
 	hand_backdrop = bool(config.get_value("display", "hand_backdrop", true))
 	pixel_frames = bool(config.get_value("accessibility", "pixel_frames", false))
 	hand_layout = str(config.get_value("display", "hand_layout", "row"))
@@ -231,6 +234,7 @@ static func save(window: Window) -> Error:
 	config.set_value("audio", "volume", AudioServer.get_bus_volume_linear(0))
 	config.set_value("accessibility", "reduced_motion", reduced_motion)
 	config.set_value("accessibility", "placement_guides", placement_guides)
+	config.set_value("display", "resource_overlay", resource_overlay)
 	config.set_value("display", "raised_walls", raised_walls)
 	config.set_value("display", "riser_walls_enabled", raised_walls)
 	config.set_value("display", "hand_backdrop", hand_backdrop)
