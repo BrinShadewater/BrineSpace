@@ -78,6 +78,7 @@ func submit(view, queue: Array) -> void:
 	var static_key: Array = [view.get_instance_id(),preload("res://scripts/room_layout_store.gd").apply_serial(view,int(view_state.get("quarter",0)))]
 	for field in state_fields:
 		if field not in LIVE_STATE_FIELDS: static_key.append(view_state[field])
+	var compare_by_value: bool = view.has_method("props_rebuilt_each_configure")
 	while slots.size() < queue.size():
 		var slot := DrawSlot.new()
 		add_child(slot)
@@ -92,7 +93,7 @@ func submit(view, queue: Array) -> void:
 		var transform_changed: bool = next_transform != slot.draw_transform
 		slot.draw_transform = next_transform
 		var changed: bool
-		if reuse_cheap_keys and item.kind in ["prop","prop_base","prop_effects","prop_pass"]:
+		if reuse_cheap_keys and not compare_by_value and item.kind in ["prop","prop_base","prop_effects","prop_pass"]:
 			# Prop entries are stable Dictionary objects (see _sorted_content_queue);
 			# identity plus the static key covers every invalidating change, with
 			# layout mutations signalled through the store's apply serial.

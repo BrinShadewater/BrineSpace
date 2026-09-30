@@ -33,6 +33,12 @@ func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: 
 			if get(name) != null: profiles[name] = get(name).profile.duplicate(true)
 		configured_geometry[key] = {"layout":layout.duplicate(true),"props":props.duplicate(true),"profiles":profiles}
 
+# configure_embedded hands this view fresh copies of its props on every call (and the cryo chamber is always
+# reconfigured), so the retained content canvas must compare its props by value, not by identity: by identity
+# every static slot redrew every frame.
+func props_rebuilt_each_configure() -> bool:
+	return true
+
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("library_asset",false): return preload("res://scripts/room_asset_library.gd").bounds(prop)
 	if full_wall.owns(prop): return full_wall.bounds(prop)
