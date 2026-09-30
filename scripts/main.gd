@@ -264,6 +264,9 @@ var reroll_button: Button
 var preview_texture: TextureRect
 var preview_name_label: Label
 var preview_tags_label: Label
+var inspector_panel_style: StyleBoxFlat
+var inspector_thumb_style: StyleBoxFlat
+var inspector_status_label: Label
 var inspector_label: RichTextLabel
 var orbital_objective_label: Label
 var archive_label: RichTextLabel
@@ -791,6 +794,7 @@ func _build_ui() -> void:
 	var inspector_style: StyleBox = inspector_panel.get_theme_stylebox("panel").duplicate()
 	inspector_style.set_content_margin_all(14)
 	inspector_panel.add_theme_stylebox_override("panel", inspector_style)
+	inspector_panel_style = inspector_style as StyleBoxFlat
 	var reading_theme := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
 	inspector_panel.theme = reading_theme
 	var preview_box := VBoxContainer.new()
@@ -813,12 +817,24 @@ func _build_ui() -> void:
 	var preview_details := HBoxContainer.new()
 	preview_details.add_theme_constant_override("separation", 14)
 	preview_box.add_child(preview_details)
+	# The thumbnail sits in a frame that takes the room's department colour (inspector redesign, Sept 30).
+	var thumb_frame := PanelContainer.new()
+	thumb_frame.name = "ThumbFrame"
+	inspector_thumb_style = StyleBoxFlat.new()
+	inspector_thumb_style.bg_color = Color("#050c11")
+	inspector_thumb_style.border_color = Color("#2f4a52")
+	inspector_thumb_style.set_border_width_all(2)
+	inspector_thumb_style.set_corner_radius_all(6)
+	inspector_thumb_style.set_content_margin_all(5)
+	thumb_frame.add_theme_stylebox_override("panel", inspector_thumb_style)
+	thumb_frame.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	preview_details.add_child(thumb_frame)
 	var preview_image := TextureRect.new()
 	preview_image.custom_minimum_size = Vector2(72, 72)
 	preview_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	preview_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	preview_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	preview_details.add_child(preview_image)
+	thumb_frame.add_child(preview_image)
 	preview_texture = preview_image
 	var preview_texts := VBoxContainer.new()
 	preview_texts.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -835,8 +851,16 @@ func _build_ui() -> void:
 	preview_tags.add_theme_font_size_override("font_size", 13)
 	preview_tags.add_theme_color_override("font_color", Color("#8a9a9a"))
 	_add_label_panel_style(preview_tags, Color("#071018"), Color("#253946"))
-	preview_texts.add_child(preview_tags)
+	var tag_row := HBoxContainer.new()
+	tag_row.add_theme_constant_override("separation", 8)
+	preview_texts.add_child(tag_row)
+	tag_row.add_child(preview_tags)
 	preview_tags_label = preview_tags
+	inspector_status_label = Label.new()
+	inspector_status_label.name = "InspectorStatus"
+	inspector_status_label.add_theme_font_size_override("font_size", 13)
+	inspector_status_label.hide()
+	tag_row.add_child(inspector_status_label)
 	var inspector_text := RichTextLabel.new()
 	inspector_text.name = "Text"
 	inspector_text.bbcode_enabled = true
@@ -857,6 +881,7 @@ func _build_ui() -> void:
 	inspector_focus_button.add_theme_font_size_override("font_size", 15)
 	inspector_focus_button.pressed.connect(_focus_inspected_room)
 	preload("res://scripts/title_button_style.gd").apply(inspector_focus_button, 380, 42)
+	inspector_focus_button.set_meta("inspector_styled", true)
 	preview_box.add_child(inspector_focus_button)
 	# Retain the internal selection anchor for focus links without a visible action.
 	inspector_focus_button.hide()
@@ -864,6 +889,9 @@ func _build_ui() -> void:
 	inspector_label = inspector_text
 	side.sort_children.connect(_fit_sidebar_inspector.bind(side_scroll, side, inspector_panel))
 	side_scroll.resized.connect(side.queue_sort)
+	var controls_rule := HSeparator.new()
+	controls_rule.name = "ControlsRule"
+	preview_box.add_child(controls_rule)
 	var switch_row := HBoxContainer.new()
 	switch_row.name = "RoomSwitches"
 	switch_row.add_theme_constant_override("separation", 10)
@@ -892,6 +920,7 @@ func _build_ui() -> void:
 	room_scrap_button.add_theme_font_size_override("font_size", 13)
 	room_scrap_button.pressed.connect(_scrap_inspected_room)
 	preload("res://scripts/title_button_style.gd").apply(room_scrap_button, 380, 34)
+	room_scrap_button.set_meta("inspector_styled", true)
 	var scrap_row := HBoxContainer.new()
 	scrap_row.name = "RoomScrap"
 	preview_box.add_child(scrap_row)
@@ -901,6 +930,7 @@ func _build_ui() -> void:
 	room_repair_button.name = "RoomRepairButton"
 	room_repair_button.pressed.connect(_repair_inspected_room)
 	preload("res://scripts/title_button_style.gd").apply(room_repair_button, 380, 34)
+	room_repair_button.set_meta("inspector_styled", true)
 	preview_box.add_child(room_repair_button)
 	room_repair_button.hide()
 	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
@@ -913,6 +943,7 @@ func _build_ui() -> void:
 	moonbay_panel.name="MoonbayPanel"
 	moonbay_panel.game=self
 	preview_box.add_child(moonbay_panel)
+	_uniform_inspector_controls(preview_box)
 
 	side.add_child(hardware_panel)
 
@@ -4996,6 +5027,50 @@ func _progress_bar(fraction: float, fill_hex: String = "#6fae79") -> String:
 func _set_inspector_text(value: String) -> void:
 	inspector_label.text = ResourceIcons.decorate(value, 16)
 
+# Every control in the inspector shares one size and one look: full width, 38 px tall, the same bevelled
+# button, so switches, scrap, repair, workplace and the airlock and Moonbay panels line up (owner playtest,
+# Sept 30: make the buttons the same size).
+const INSPECTOR_CONTROL_HEIGHT := 38
+
+func _uniform_inspector_controls(root: Node) -> void:
+	for child in root.get_children():
+		if child is OptionButton:
+			child.custom_minimum_size = Vector2(0, INSPECTOR_CONTROL_HEIGHT)
+			child.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		elif child is Button:
+			var button := child as Button
+			button.custom_minimum_size = Vector2(0, INSPECTOR_CONTROL_HEIGHT)
+			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+			if not button.has_meta("inspector_styled") and not button.get_script() == preload("res://scripts/industrial_room_switch.gd"):
+				button.set_meta("inspector_styled", true)
+				button.add_theme_font_size_override("font_size", 14)
+				preload("res://scripts/title_button_style.gd").apply(button, 380, INSPECTOR_CONTROL_HEIGHT)
+		_uniform_inspector_controls(child)
+
+# The department colour of whatever the inspector is showing: the hovered or chosen card, else the selected
+# room. It tints the name, the thumbnail frame and the panel edge, and a placed room shows whether it works.
+func _apply_inspector_identity() -> void:
+	if preview_name_label == null: return
+	var room_id := hovered_card_id if not hovered_card_id.is_empty() else selected_card_id
+	var placed := {}
+	if room_id.is_empty() and occupied.has(selected_room_cell):
+		placed = occupied[selected_room_cell]
+		room_id = str(placed.get("id", ""))
+	var accent := UI_ACCENT_BRIGHT
+	if not room_id.is_empty() and not RoomDatabaseScript.get_room(room_id).is_empty():
+		accent = RoomDatabaseScript.room_color(room_id)
+	preview_name_label.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
+	if preview_texture != null and preview_texture.get_parent() != null: preview_texture.get_parent().visible = preview_texture.texture != null
+	if inspector_thumb_style != null: inspector_thumb_style.border_color = DraftCard.muted(accent)
+	if inspector_panel_style != null: inspector_panel_style.border_color = DraftCard.muted(accent).darkened(0.35)
+	if inspector_status_label == null: return
+	var state: Array = preload("res://scripts/room_tooltip.gd").status(self, selected_room_cell, placed) if not placed.is_empty() else []
+	inspector_status_label.visible = not state.is_empty()
+	if not state.is_empty():
+		inspector_status_label.text = str(state[0])
+		inspector_status_label.add_theme_color_override("font_color", state[1])
+
 func _refresh_inspector() -> void:
 	if inspector_label == null: return
 	var inspected: Dictionary = occupied.get(selected_room_cell,{})
@@ -5004,6 +5079,7 @@ func _refresh_inspector() -> void:
 	var scroll_value: float = inspector_label.get_v_scroll_bar().value if key == inspector_selection_key else 0.0
 	inspector_selection_key = key
 	_refresh_inspector_contents()
+	_apply_inspector_identity()
 	inspector_label.get_v_scroll_bar().set_deferred("value",scroll_value)
 
 func _refresh_inspector_contents() -> void:
