@@ -699,6 +699,7 @@ var content_canvases := {}
 var skip_unchanged_rooms := not OS.get_cmdline_user_args().has("--configure-all-rooms")
 var room_frame_keys := {}
 const ROOM_FRAME_CAMERA := 10
+const PAN_MARGIN_CELLS := 0.6
 var skipped_room_setups := 0
 var plain_view_scripts := {}
 
@@ -882,7 +883,7 @@ func _surface_state() -> Array:
 	# Non-layered legacy rooms have no static contract, so keep their floor pass live.
 	var legacy_clock := 0.0
 	for room in static_draw_rooms:
-		if not _uses_layered_art(room): legacy_clock = main.visual_time_seconds
+		if not _uses_layered_art(room) and not LARGE_ROOM_VIEWS.has(str(room.id)): legacy_clock = main.visual_time_seconds
 	# Continuous water depth belongs to the live effect, not cached floor/wall geometry.
 	# Snapshot only the rooms that can currently paint pixels: an off-screen room's
 	# mutation has no visual effect until it scrolls in, and scrolling changes the
@@ -896,6 +897,7 @@ func _surface_state() -> Array:
 		structural.erase("hull_crack")
 		structural.erase("leak_repair")
 		structural.erase("moonbay_mission")
+		structural.erase("tidal_chamber")
 		# These values are consumed by live chamber/fire effects, not the shell.
 		# Keeping their timers here redraws every visible floor/wall every frame.
 		# fire_heat rises every functioning cycle in machinery rooms (owner lag reports, Sept 27).
@@ -1580,7 +1582,9 @@ func _paint_surface(pass_id: int) -> void:
 			for room in static_draw_rooms:
 				_draw_connectors(room, main.occupied)
 			for room in static_draw_rooms:
-				if not _uses_layered_art(room) and room.id!="moonbay":
+				# Large rooms animate (tidal water and rotor, the Moonbay mission), so they are drawn live below;
+				# keeping them here rebuilt every floor and wall every frame (owner playtest, Sept 29).
+				if not _uses_layered_art(room) and not LARGE_ROOM_VIEWS.has(str(room.id)):
 					_draw_room(room)
 		for i in (range(split) if pass_id == Surface.FLOOR else range(split,layered.size())):
 			var room: Dictionary = layered[i]
@@ -1642,7 +1646,7 @@ func _paint_surface(pass_id: int) -> void:
 					draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
 					preload("res://rooms/whole-room/north_wall.gd").draw_brine_signals(draw_target,_bill_room_view(room))
 					draw_target.draw_set_transform(Vector2.ZERO)
-			elif room.id=="moonbay":
+			elif LARGE_ROOM_VIEWS.has(str(room.id)):
 				_draw_room(room)
 		if profile_draw: _profile_draw_stage("live_rooms",stage_time)
 		if retain_static_surfaces: return
@@ -2067,6 +2071,11 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 			[rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size],Store.revision,Store.geometry_revision,
 			preload("res://scripts/room_layout_store.gd").apply_serial(room_view,int(room.get("rotation",0)))]
 		var stored: Array = room_frame_keys.get(pos,[])
+		# Panning alone must not rebuild a room whose canvas already holds every prop in view: two rooms of one
+		# type share a view, so each rebuild reconfigured it (12-15 ms for a drone bay) every frame of a pan
+		# (owner playtest, Sept 29: lag spikes). The canvas is built a little wider than the view for this.
+		if not (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
+			frame_key[ROOM_FRAME_CAMERA] = stored[ROOM_FRAME_CAMERA]
 		if (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
 			# Mid-zoom the camera alone does not rebuild a canvas that still shows every prop in
 			# view. Once the zoom lands, a few scaled canvases rebuild per frame.
@@ -2156,7 +2165,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		canvas.scale = Vector2.ONE
 		canvas.set_meta("built_cell", _cell_size())
 		canvas.show()
-		var region := _static_cull_rect(main,_cell_size())
+		var region := _static_cull_rect(main,_cell_size()).grow(_cell_size()*PAN_MARGIN_CELLS)
 		canvas.clip_region = Rect2((region.position-rect.get_center())/canvas.draw_scale,region.size/canvas.draw_scale)
 		room_view.retained_content_host = canvas
 	room_view.render_into(draw_target, rect.get_center(), _cell_size() / 384.0, floor_only, preview)

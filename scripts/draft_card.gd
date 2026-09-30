@@ -248,7 +248,8 @@ static func _cost_gem(game, resource: String, amount: int, enough: bool) -> Cont
 	gem.text = "%s%d" % [game._resource_icon_bbcode(resource, 12), amount]
 	gem.add_theme_font_size_override("normal_font_size", 12)
 	gem.add_theme_color_override("default_color", Color("#e6eeee") if enough else Color("#ff8a90"))
-	gem.add_theme_stylebox_override("normal", _box(Color("#121c22"), Color("#5f7682") if enough else Color("#a2444b"), 1, 10, 3))
+	# No ring round the cost (owner playtest, Sept 29); a short resource still shows red.
+	gem.add_theme_stylebox_override("normal", _box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 3))
 	return gem
 
 # Only when the content fits: a card whose text truly overflows stays taller rather than being

@@ -1,6 +1,6 @@
 extends Control
 ## The intro film, played full screen before the title (WIP intro one, owner-approved 2026-09-27).
-## SPACE skips it; it hands over to the title when it ends. The film is made outside this repo
+## SPACE skips it; two seconds after it ends it hands over to the title. The film is made outside this repo
 ## (Desktop/Projects/Creative/Brine Space Intro, tag wip-intro-1) and exported here as Theora.
 ## Whole res:// paths on purpose: renames and the release manifest only see whole quoted paths.
 
@@ -11,9 +11,14 @@ const UiFonts := preload("res://scripts/ui_fonts.gd")
 ## The film is mastered loud (-14 LUFS); this sits it near the station music, then the player's
 ## music volume applies on top.
 const FILM_LEVEL_DB := -10.0
+## A beat on the last frame before the title (owner, Sept 29); the title loads during it.
+const HOLD_SECONDS := 2.0
 
 var _player: VideoStreamPlayer
 var _leaving := false
+var _ended := false
+var _held := 0.0
+var _playing_for := 0.0
 
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -34,7 +39,7 @@ func _ready() -> void:
 	_player.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_player.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_player.volume_db = FILM_LEVEL_DB + linear_to_db(maxf(Preferences.music_volume, 0.0001))
-	_player.finished.connect(_to_title)
+	_player.finished.connect(_film_ended)
 	add_child(_player)
 	var hint := Label.new()
 	hint.text = "SPACE  skip"
@@ -44,8 +49,27 @@ func _ready() -> void:
 	hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(hint)
 	_player.play()
-	# Load the title in the background while the film plays, so the hand-over is not a stall.
+
+# The title is loaded only once the film is over: loading it during playback stalled the main thread for
+# about 110 ms mid-film and the film's sound dropped out (owner playtest, Sept 29).
+func _film_ended() -> void:
+	if _ended:
+		return
+	_ended = true
 	ResourceLoader.load_threaded_request(TITLE_SCENE)
+
+func _process(delta: float) -> void:
+	if _player == null or _leaving:
+		return
+	_playing_for += delta
+	# The end signal is not always delivered for the last frame: a stopped player after the start is the end too.
+	if not _ended and _playing_for > 1.0 and not _player.is_playing():
+		_film_ended()
+	if not _ended:
+		return
+	_held += delta
+	if _held >= HOLD_SECONDS and ResourceLoader.load_threaded_get_status(TITLE_SCENE) != ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		_to_title()
 
 func _unhandled_input(event: InputEvent) -> void:
 	var key := event as InputEventKey

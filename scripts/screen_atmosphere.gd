@@ -182,10 +182,13 @@ void fragment() {
 	}
 	float luma = dot(col, vec3(0.299, 0.587, 0.114));
 	float t = smoothstep(0.15, 0.75, luma);
-	vec3 shadow = col * vec3(0.84, 0.97, 1.1) + vec3(0.0, 0.008, 0.024);
-	vec3 light = col * vec3(1.1, 1.0, 0.88);
+	// Lighter grade (owner playtest, Sept 29: rooms still too dark, too much blue): shadows keep more red and
+	// are lifted a little, the contrast curve is gentler, and the whole picture gets a small exposure lift.
+	vec3 shadow = col * vec3(0.92, 0.99, 1.05) + vec3(0.014, 0.022, 0.03);
+	vec3 light = col * vec3(1.1, 1.0, 0.9);
 	vec3 graded = mix(shadow, light, t);
-	graded = mix(graded, graded * graded * (3.0 - 2.0 * graded), 0.35);
+	graded = mix(graded, graded * graded * (3.0 - 2.0 * graded), 0.15);
+	graded *= 1.07;
 	col = mix(col, graded, grade);
 	if (grain > 0.0) {
 		vec2 cell = floor(FRAGCOORD.xy / 2.0) + floor(TIME * 18.0);

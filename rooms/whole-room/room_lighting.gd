@@ -145,7 +145,7 @@ static func draw_halos(canvas: CanvasItem, level: float, white := false, warm :=
 const TitleSettings = preload("res://scripts/title_settings.gd")
 const MAP_SCALE := 4.0
 const LIT_AMBIENT := 0.98   # owner playtest Sept 29: rooms a little too dark, so lit rooms barely dim
-const DARK_AMBIENT := 0.62   # owner: unpowered rooms lighter than the audition's 0.36
+const DARK_AMBIENT := 0.76   # owner: unpowered rooms lighter than the audition's 0.36
 # Blackout red: one slow pulse every two seconds (well under the three-a-second guideline) and a
 # beacon that circles each door at a quarter turn a second. Reduced Motion holds both still.
 const EMERGENCY_PERIOD := 2.0
