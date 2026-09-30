@@ -588,6 +588,12 @@ func _gui_input(event: InputEvent) -> void:
 	if main._gameplay_input_blocked():
 		accept_event()
 		return
+	# Mac trackpad pinch (and any magnify gesture): each event's factor is a small ratio around 1.0; about
+	# a 5% pinch equals one Shift+wheel notch. Two-finger scrolling pans through the ScrollContainer.
+	if event is InputEventMagnifyGesture:
+		main._request_wheel_zoom((event.factor - 1.0) * 20.0 * preload("res://scripts/title_settings.gd").zoom_step())
+		accept_event()
+		return
 	if event is InputEventMouseButton and event.pressed and event.shift_pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			main._set_grid_zoom(main.grid_zoom + preload("res://scripts/title_settings.gd").zoom_step())

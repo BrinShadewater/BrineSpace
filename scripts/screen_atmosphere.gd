@@ -274,11 +274,22 @@ func _input(event: InputEvent) -> void:
 	toast_left = 2.5
 	print("Screen atmosphere: ", label)
 
+func _tuned_high() -> Dictionary:
+	var saved: int = Preferences.effects_quality
+	Preferences.effects_quality = 2
+	var result: Dictionary = Preferences.atmosphere().duplicate()
+	Preferences.effects_quality = saved
+	result["cool"] = false
+	return result
+
 # Reads the current Visual effects setting; cheap enough to run every frame, so changing it in Settings
 # takes effect at once.
 func _apply() -> void:
 	if post == null: return
 	var level: Dictionary = Preferences.atmosphere() if forced < 0 else LOOKS[forced]
+	# "All (High)" shows the tuned High values, not the audition strengths: its full-strength colour fringe
+	# turned small sprites (Margot, Veld) into rainbows (owner F8 report, Sept 30).
+	if forced >= 0 and str(LOOKS[forced].name) == "All (High)": level = _tuned_high()
 	snow = float(level.drift)
 	var bloom := float(level.bloom)
 	var grade := float(level.grade)

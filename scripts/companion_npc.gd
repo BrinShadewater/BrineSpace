@@ -222,6 +222,7 @@ func _advance_companion(main, delta: float) -> void:
 	if topology(main)!=signature: rebuild(main)
 	if not can_stand(foot):
 		path.clear();pending_behavior="";behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false;state="idle";activity="route obstructed";return
+	if path.is_empty() and water.mode=="dry" and behavior!="torch" and _make_way(main):return
 	if not behavior.is_empty():
 		if behavior=="torch":
 			var repair:=preload("res://scripts/companion_repair.gd").target(main,self)
@@ -265,6 +266,31 @@ func _advance_companion(main, delta: float) -> void:
 		path=route;goal="curiosity";goal_cell=target_cell
 		activity="keeping company";return
 	timer=2
+
+# A companion idling in a crew member's way (a doorway, a narrow aisle) gets up and moves to the far side of
+# its room. The crew yield to companions, so without this Marsh waited ~8 s for Margot to finish sitting in a
+# doorway (owner F8 report, Sept 30).
+func _make_way(main) -> bool:
+	var blocked := Vector2.INF
+	for peer in [main.bill_npc,main.veld_npc,main.branforth_npc,main.marsh_npc]:
+		if peer==null or not peer.active or peer.dead or not peer.expedition.is_empty():continue
+		if peer.activity=="waiting for passage" and peer.foot.distance_to(foot)<CREW_CLEARANCE*2.5:
+			blocked=peer.foot;break
+	if blocked==Vector2.INF:return false
+	var here:=cell_at(foot)
+	var start:=nearest_in_room(foot,here)
+	var candidates: Array=room_nodes.get(here,[]).duplicate()
+	if start<0 or candidates.is_empty():return false
+	candidates.sort_custom(func(a,b):return graph.get_point_position(a).distance_squared_to(blocked)>graph.get_point_position(b).distance_squared_to(blocked))
+	for target in candidates.slice(0,10):
+		var point: Vector2=graph.get_point_position(target)
+		if point.distance_to(blocked)<CREW_CLEARANCE*3.0 or not spawn_clear(point):continue
+		var route:=smooth_route(route_between(start,target))
+		if route.is_empty():continue
+		behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
+		path=route;goal="curiosity";goal_cell=here;timer=0
+		activity="making way";return true
+	return false
 
 func wake_seconds()->float:
 	return poses.cycle_seconds("nap-exit-"+wake_direction)

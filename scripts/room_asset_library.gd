@@ -234,7 +234,9 @@ static func draw(room, prop: Dictionary) -> void:
 		return
 	var reg: Dictionary=prop.registration
 	if reg.has("drone_dock"):
-		preload("res://scripts/drone_dock.gd").draw(room.painter,prop.rect,reg.drone_dock,room.drone_visual,room.operating,room.machine_clock)
+		# Views with no drone (the Studio tray, large rooms) pass null; an empty state draws the drone docked.
+		var drone_state: Dictionary = room.drone_visual if room.drone_visual is Dictionary else {}
+		preload("res://scripts/drone_dock.gd").draw(room.painter,prop.rect,reg.drone_dock,drone_state,room.operating,room.machine_clock)
 		return
 	var tex: Texture2D=prop.library_texture
 	var scale_value: float=prop.rect.size.x/reg.width

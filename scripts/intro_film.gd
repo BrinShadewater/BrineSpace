@@ -75,7 +75,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	var key := event as InputEventKey
 	if key != null and key.pressed and not key.echo and key.keycode == KEY_SPACE:
 		get_viewport().set_input_as_handled()
-		_to_title()
+		# Skipping stops the film and starts the threaded title load; _process changes scene as soon as it
+		# lands, without the two-second hold. A direct synchronous load froze the window ~800 ms (Sept 30).
+		if _player == null:
+			_to_title()
+			return
+		_player.stop()
+		_film_ended()
+		_held = HOLD_SECONDS
 
 func _to_title() -> void:
 	if _leaving:
