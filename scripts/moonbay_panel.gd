@@ -9,6 +9,8 @@ var crew_choice: OptionButton
 var order_choice: OptionButton
 var target_choice: OptionButton
 var launch_button: Button
+var helmet_button: Button
+var refill_button: Button
 var recall_button: Button
 var repair_button: Button
 var status: Label
@@ -23,6 +25,10 @@ func _ready() -> void:
 		crew_choice.add_item(Architects.NAMES[id])
 		crew_choice.set_item_metadata(crew_choice.item_count-1,id)
 	add_child(crew_choice)
+	helmet_button = _button("FIT DIVING HELMET")
+	helmet_button.pressed.connect(func(): _helmet(false))
+	refill_button = _button("REFILL HELMET TANK")
+	refill_button.pressed.connect(func(): _helmet(true))
 	order_choice = OptionButton.new()
 	for title in ["SURVEY CONTACT", "RECOVER CARGO", "DEEP ACCESS"]: order_choice.add_item(title)
 	order_choice.item_selected.connect(func(_index): refresh())
@@ -93,6 +99,11 @@ func refresh() -> void:
 			if not crew_choice.is_item_disabled(i): crew_choice.select(i); break
 	var crew_id: String = str(crew_choice.get_item_metadata(crew_choice.selected)) if crew_choice.selected>=0 else ""
 	var crew_issue: String = Mission.crew_problem(game,room,crew_id)
+	var actor = Architects.actor_for(game,crew_id) if Architects.IDS.has(crew_id) else null
+	var locker_ready: bool = actor != null and Architects.present(game,crew_id) and actor.needs_air() and actor.active and not actor.dead and actor.moonbay_assignment.is_empty() and actor.expedition.is_empty() and not actor.helmet_action_active() and actor.locker_request.is_empty() and preload("res://scripts/airlock_service.gd").ready(game,room.pos)
+	helmet_button.disabled = not locker_ready
+	helmet_button.text = "RETURN DIVING HELMET" if actor != null and actor.helmet_equipped else "FIT DIVING HELMET"
+	refill_button.disabled = not locker_ready or not actor.helmet_equipped
 	var ready: bool = state.phase=="idle" and int(state.damage)==0 and target_choice.item_count>0 and crew_issue.is_empty() and game.running and not game.paused and game.hardware.power and not game.unpowered_room_cells.has(room.pos)
 	launch_button.disabled = not ready
 	crew_choice.disabled = state.phase!="idle"
@@ -118,6 +129,13 @@ func _launch() -> void:
 	var problem: String = Mission.dispatch(game,_room(),str(crew_choice.get_item_metadata(crew_choice.selected)),target_choice.get_item_metadata(target_choice.selected),ORDERS[order_choice.selected])
 	if problem.is_empty(): game._log("Moonbay mission dispatched. The chamber remains dry until the crew boards.")
 	else: _feedback(problem)
+	refresh()
+
+func _helmet(refill: bool) -> void:
+	if crew_choice.selected<0: return
+	var id := str(crew_choice.get_item_metadata(crew_choice.selected))
+	if not preload("res://scripts/airlock_service.gd").request(game,id,_room().pos,refill):
+		_feedback("The suit locker is unavailable. Clear the crew member's current action and check power.")
 	refresh()
 
 func _recall() -> void:

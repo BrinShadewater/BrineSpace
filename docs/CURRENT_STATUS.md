@@ -1,5 +1,8 @@
 # BrineSpace current status
 
+September 29 owner large-room corrections: fixed south-facing centerpieces, capped/aligned risers and corners, thicker low doors without backing blocks, rebuilt Moonbay pressure chamber/rear grated airlock and working helmet locker, and enclosed Tidal grating/feed pipe with fill-then-spin operation. All focused checks pass, 16 native station rotations reviewed and four cards rebaked. Real profile fingerprint unchanged. See [revision handoff](LARGE_ROOM_REVISIONS_2026-09-29.md). Restart the game/editor to load; owner hands-on acceptance remains open.
+
+
 September 29 large rooms installed in main: the four 2×2 rooms are available in the main project's Layout Editor and normal-run rare-card pool, including paid construction, rotated ports, saved prop overlays and Moonbay missions. Existing character/UI working edits were merged and preserved. All ten focused checks pass on the combined main checkout; its 16 native station captures have no errors or warnings. See [main integration handoff](LARGE_ROOM_MAIN_INTEGRATION_2026-09-29.md). Restart an already-running game to load the integration. Owner hands-on acceptance remains open.
 
 September 29 large-room native review continuation: repaired invalid local UI imports and captured all 16 large-room rotations cleanly in the station (exit 0, no errors or warnings). The review tool attaches neighbors to the rotated ports and fixes the camera after deferred recentering. Reviewed muted color, north risers, side walls, scale, upright supports and door alignment at gameplay size; no further production-art correction was indicated. See [polish handoff](LARGE_ROOM_POLISH_2026-09-29.md). Owner visual and hands-on acceptance remain open.

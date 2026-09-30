@@ -138,9 +138,10 @@ static func crew_problem(game, room: Dictionary, crew_id: String) -> String:
 static func _boarding_route(game, actor, room: Dictionary) -> PackedVector2Array:
 	actor.rebuild(game)
 	var start_cell: Vector2i = actor.cell_at(actor.foot)
-	var board_cell: Vector2i = room.pos + Vector2i.ONE
+	var board_point: Vector2 = (Vector2(room.pos)+Vector2.ONE)*actor.CELL+Vector2(0,-164)
+	var board_cell: Vector2i = actor.cell_at(board_point)
 	var start: int = actor.nearest_in_room(actor.foot,start_cell)
-	var finish: int = actor.nearest_in_room((Vector2(board_cell)+Vector2.ONE*0.5)*actor.CELL,board_cell)
+	var finish: int = actor.nearest_in_room(board_point,board_cell)
 	if start<0 or finish<0: return PackedVector2Array()
 	var route: PackedVector2Array = actor.graph.get_point_path(start,finish)
 	if route.is_empty(): return route

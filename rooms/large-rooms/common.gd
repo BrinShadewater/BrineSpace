@@ -2,6 +2,8 @@ extends RefCounted
 
 const FLOOR_SIZE := 768.0
 const HALF := FLOOR_SIZE * 0.5
+const LOW_DOOR_DEPTH := 28.0
+const GRATING_ART := "res://rooms/large-rooms/art/service_grating_v1.png"
 const RiserCatalog = preload("res://rooms/whole-room/riser_catalog.gd")
 const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd")
 const PaintedDoor = preload("res://rooms/doors/painted_door.gd")
@@ -43,13 +45,13 @@ static func wall_bank_raster_size(native: Vector2i) -> Vector2i:
 
 static func draw_features(canvas: CanvasItem, features: Array, room: Dictionary, rect: Rect2) -> void:
 	# Station props v2 keep their authored top-down facing as the layout turns.
-	# Their workstations move with the large room, while the centerpiece rotates.
+	# Their workstations move with the large room; machinery retains its south facing.
 	var rotation := posmod(int(room.get("rotation", 0)), 4)
 	var scale := Vector2.ONE * (rect.size.x / FLOOR_SIZE)
 	canvas.draw_set_transform(rect.get_center(), 0.0, scale)
 	for feature in features:
 		var source: Rect2 = feature.rect
-		var center := source.get_center().rotated(float(rotation) * PI * 0.5)
+		var center := source.get_center() if feature.get("fixed_position", false) else source.get_center().rotated(float(rotation) * PI * 0.5)
 		sprite(canvas, str(feature.path), Rect2(center - source.size * 0.5, source.size))
 	canvas.draw_set_transform(rect.get_center(), float(rotation) * PI * 0.5, scale)
 
@@ -66,12 +68,34 @@ static func rotated_bounds(bound: Rect2, rotation: int) -> Rect2:
 	return bound
 
 static func fixed_bounds_for_rotation(centerpiece: Rect2, features: Array, rotation: int) -> Array[Rect2]:
-	var result: Array[Rect2] = [rotated_bounds(centerpiece, rotation)]
+	var center := (centerpiece.get_center() - Vector2.ONE * HALF).rotated(float(posmod(rotation, 4)) * PI * 0.5) + Vector2.ONE * HALF
+	var result: Array[Rect2] = [Rect2(center - centerpiece.size * 0.5, centerpiece.size)]
 	for feature in features:
 		var source: Rect2 = feature.rect
-		var center := source.get_center().rotated(float(posmod(rotation, 4)) * PI * 0.5)
-		result.append(Rect2(center + Vector2.ONE * HALF - source.size * 0.5, source.size))
+		var feature_center := source.get_center() if feature.get("fixed_position", false) else source.get_center().rotated(float(posmod(rotation, 4)) * PI * 0.5)
+		result.append(Rect2(feature_center + Vector2.ONE * HALF - source.size * 0.5, source.size))
 	return result
+
+static func south_transform(canvas: CanvasItem, rect: Rect2, angle := 0.0) -> void:
+	canvas.draw_set_transform(rect.get_center(), angle, Vector2.ONE * rect.size.x / FLOOR_SIZE)
+
+static func floor_tiles(canvas: CanvasItem, path: String, bounds: Rect2, tile_size := 96.0, tint := Color.WHITE) -> void:
+	# Keep material detail at a repeatable world density, including final partial tiles.
+	if not art_textures.has(path):
+		var image := Image.new()
+		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK:
+			push_error("Large room floor tile could not load: " + path)
+			return
+		art_textures[path] = ImageTexture.create_from_image(image)
+	var texture: Texture2D = art_textures[path]
+	var y := bounds.position.y
+	while y < bounds.end.y:
+		var x := bounds.position.x
+		while x < bounds.end.x:
+			var size := Vector2(minf(tile_size, bounds.end.x - x), minf(tile_size, bounds.end.y - y))
+			canvas.draw_texture_rect_region(texture, Rect2(Vector2(x,y),size), Rect2(Vector2.ZERO,Vector2(texture.get_size()) * size / tile_size), tint)
+			x += tile_size
+		y += tile_size
 
 static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color: Color, wall_style: Dictionary, floor_art: String, floor_opacity: float) -> void:
 	var rotation: int = posmod(int(room.get("rotation", 0)), 4)
@@ -125,9 +149,12 @@ static func _draw_perimeter(canvas: CanvasItem, room: Dictionary, wall_style: Di
 	for side in ["north", "east", "south", "west"]:
 		if side == "north" and raised: continue
 		var horizontal: bool = side in ["north", "south"]
-		var wall := Rect2(-384, -380 if side == "north" else 356, 768, 28) if horizontal else Rect2(-380 if side == "west" else 356, -384, 28, 768)
+		var wall := Rect2(-384, -384 if side == "north" else 356, 768, 28) if horizontal else Rect2(-384 if side == "west" else 356, -384, 28, 768)
 		WallMaterial.wall(canvas, wall, horizontal, "engineering")
 	if raised: _draw_north_riser(canvas, room, wall_style, rotation)
+	for x in [-384.0,356.0]:
+		for y in [-393.0 if raised else -384.0,356.0]:
+			WallMaterial.cap(canvas,Rect2(x,y,28,28),"engineering")
 
 static func _draw_north_riser(canvas: CanvasItem, room: Dictionary, wall_style: Dictionary, rotation: int) -> void:
 	var material: String = str(wall_style.get("material",""))
@@ -140,9 +167,7 @@ static func _draw_north_riser(canvas: CanvasItem, room: Dictionary, wall_style: 
 		RiserCatalog.skirt(canvas,material,Rect2(left,-320,384,8))
 	canvas.draw_rect(Rect2(-384,-388,768,76),Color(0.04,0.08,0.09,shade))
 	# A real top surface and two short returns close the raised north wall into the side hulls.
-	for half in range(2):
-		var left: float = -384.0 + float(half) * 384.0
-		RiserCatalog.cap(canvas,material,Rect2(left,-396,384,16))
+	WallMaterial.wall(canvas,Rect2(-384,-393,768,20),true,"engineering")
 	for x in [-384.0,356.0]:
 		WallMaterial.wall(canvas,Rect2(x,-380,28,68),false,"engineering")
 		WallMaterial.cap(canvas,Rect2(x,-396,28,16),"engineering")
@@ -178,17 +203,22 @@ static func panel(canvas: CanvasItem, rect: Rect2, body: Color, rim: Color) -> v
 static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String, floor_color: Color, raised: bool, style: String, open_amount: float) -> void:
 	if side.is_empty(): return
 	var vertical := side == "west" or side == "east"
-	var passage_size := Vector2(40 if vertical else 92, 92 if vertical else (76 if raised else 40))
-	canvas.draw_rect(Rect2(center - passage_size * 0.5, passage_size), floor_color)
-	var opening := Rect2(center - (Vector2(20, 92) if vertical else Vector2(92, 20)) * 0.5, Vector2(20, 92) if vertical else Vector2(92, 20))
-	canvas.draw_rect(opening.grow(5), Color("#1d2a30"))
-	canvas.draw_rect(opening, Color("#050d14"))
+	var passage_size := Vector2(LOW_DOOR_DEPTH if vertical else 72,72 if vertical else LOW_DOOR_DEPTH)
+	if raised:
+		canvas.draw_rect(Rect2(center.x-40,-390,80,78),floor_color)
+	else:
+		canvas.draw_rect(Rect2(center-passage_size*0.5,passage_size),floor_color)
 	var skin = PaintedDoor.for_variant(style)
 	if raised:
 		skin.raised_at(canvas, open_amount, center.x, -390, 76)
 		return
-	skin.progress = open_amount
-	skin.low_closed(canvas, center, vertical, style)
+	for left in [true,false]:
+		var width := 36.0 * (1.0 - open_amount)
+		if width <= 0.001: continue
+		var dest := Rect2(center + Vector2(-36 if left else 36-width,-LOW_DOOR_DEPTH*0.5),Vector2(width,LOW_DOOR_DEPTH))
+		if vertical: dest = Rect2(center + Vector2(-LOW_DOOR_DEPTH*0.5,-36 if left else 36-width),Vector2(LOW_DOOR_DEPTH,width))
+		skin.progress = open_amount
+		skin.low_leaf(canvas,dest,left,vertical,style)
 	skin.progress = 0.0
 	if vertical:
 		for y in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(-13,y),Vector2(26,12)),"engineering")
@@ -203,10 +233,10 @@ static func _draw_ocean_face(canvas: CanvasItem, side: String, open: bool, raise
 	elif side == "east": center.x = 370
 	else: return
 	var vertical := side == "west" or side == "east"
-	var size := Vector2(28 if vertical else 192, 192 if vertical else (76 if raised and side == "north" else 28))
+	var size := Vector2(40 if vertical else 240, 240 if vertical else (76 if raised and side == "north" else 40)) if bay_gate else Vector2(28 if vertical else 192, 192 if vertical else (76 if raised and side == "north" else 28))
 	if bay_gate:
-		canvas.draw_rect(Rect2(center - size * 0.5, size).grow(9), Color("#111b20"))
-		canvas.draw_rect(Rect2(center - size * 0.5, size), Color("#07161e") if open else Color("#1c282d"))
+		WallMaterial.wall(canvas,Rect2(center-size*0.5,size),not vertical,"engineering")
+		canvas.draw_rect(Rect2(center - size * 0.5, size), Color("#07161e"))
 		if not art_textures.has(OCEAN_GATE_ART):
 			var image := Image.new()
 			var error := image.load_png_from_buffer(FileAccess.get_file_as_bytes(OCEAN_GATE_ART))
@@ -214,6 +244,9 @@ static func _draw_ocean_face(canvas: CanvasItem, side: String, open: bool, raise
 			else: push_error("Moonbay ocean hatch could not load (%d)" % error)
 		if art_textures.has(OCEAN_GATE_ART) and not open:
 			DoorFinish.region(canvas, art_textures[OCEAN_GATE_ART], Rect2(center - size * 0.5, size), Rect2(110,334,1554,220), Color.WHITE, vertical)
+		for sign_value in [-1.0,1.0]:
+			var join := center + (Vector2(0,sign_value*size.y*0.5-6) if vertical else Vector2(sign_value*size.x*0.5-6,0))
+			WallMaterial.cap(canvas,Rect2(join-(Vector2(20,0) if vertical else Vector2(0,20)),Vector2(40,12) if vertical else Vector2(12,40)),"engineering")
 		return
 	# The turbine intake is a fixed hull fitting, not an open launch aperture.
 	if side != "north":

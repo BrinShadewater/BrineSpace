@@ -39,3 +39,16 @@ September 29 addition: the separate Tidal intake source is also retained under t
 ## Review
 
 Reviewed the source alpha bounds, all four 512 px baked cards, 16 rotated card frames, four native station screenshots in `output/large-room-review/station/`, and Moonbay's launch and at-sea frames in `output/moonbay-review/`. Geometry remains code-authored. Gameplay tests and owner visual acceptance are tracked in `docs/LARGE_ROOMS_HANDOFF_2026-09-28.md`.
+
+
+### Service grating — September 29 revision
+
+Generated with OpenAI imagegen, transparent background. Unmodified 1254 × 1254 PNG; rendered in repeating 96-world-unit tiles. Used beneath the Moonbay rear airlock and Tidal chamber/feed trench. Native scale, alpha and assembled room rotations reviewed.
+
+Raw source: `C:/Users/Alex/.codex/generated_images/01a0eb04-3a39-7660-805c-735f4ede7ba0/exec-47169ce5-bc07-478b-ba7d-dc8403279ab5.png`
+
+SHA-256: `7346426255059549e173458035cad40d3ddce03b586c37c71c7b6a51f008b084`
+
+Exact prompt:
+
+> Create one standalone seamless industrial floor grating tile for BrineSpace, a top-down hand-painted detailed industrial underwater station game. Asset only, square orthographic overhead 1024x1024, fills full image edge to edge and repeats seamlessly. Quiet dark graphite steel grating with closely spaced flat parallel narrow rectangular bars intersected by sparse cross supports. No surrounding perimeter frame so tiles can repeat. True transparent gaps between bars (alpha zero holes), roughly 35% open area, bars muted cool grey, matte broad painted material, restrained seams and edges, no chrome, no sparkle, no glossy highlights, no rust, no dirt specks, no labels, no perspective, no background and no cast shadow beyond bars. The openings must actually be transparent to see an underfloor pipe. Density: approx 24 narrow horizontal bars across the tile with thin three vertical support rails. It should read as flush walkable metal grating at small gameplay scale. Calm muted saturation, hand-painted sprite finish rather than photographic or coarse pixel art.
