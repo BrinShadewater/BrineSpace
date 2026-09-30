@@ -1578,7 +1578,6 @@ func _build_journal_overlay() -> void:
 	archive_label.add_theme_font_size_override("normal_font_size", 17)
 	archive_label.add_theme_constant_override("line_separation", 7)
 	body.add_child(archive_label)
-
 	journal_widgets = ScrollContainer.new()
 	journal_widgets.name = "JournalWidgets"
 	journal_widgets.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -1590,6 +1589,7 @@ func _build_journal_overlay() -> void:
 	journal_widget_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	journal_widget_box.add_theme_constant_override("separation", 10)
 	journal_widgets.add_child(journal_widget_box)
+
 # Shows one page's tabs and dresses the panel for it. A tab belonging to the other page is hidden
 # rather than removed, so tab indexes stay stable for saved scroll positions and searches.
 func _apply_journal_mode(mode: String) -> void:
@@ -4242,7 +4242,10 @@ func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affor
 	style.content_margin_right = 8
 	style.content_margin_top = 8
 	style.content_margin_bottom = 7
-	card.add_theme_stylebox_override("panel", style)
+	# The authored frame shows more of the department colour: tint the card face towards it.
+	var authored_card_style := preload("res://scripts/card_art.gd").frame_style(style.bg_color.lerp(color,0.14),style.border_color)
+	card.add_theme_stylebox_override("panel", authored_card_style if authored_card_style != null else style)
+	preload("res://scripts/card_art.gd").update_inner_outline(card,style.border_color,authored_card_style != null)
 	if not affordable:
 		card.modulate = Color(0.72, 0.76, 0.78, 1.0)
 	elif selected:
@@ -5336,10 +5339,10 @@ func _refresh_archive() -> void:
 		history_tools.visible = journal_tabs.current_tab in [3,4]
 		history_filter.visible = journal_tabs.current_tab == 3
 		history_search.placeholder_text = "Search name, type or problem (e.g. needs power) · Enter to locate" if journal_tabs.current_tab==4 else "Search room, cycle (C03), or message · Ctrl+F"
-		if journal_tabs.current_tab > 0:
 		var widget_tab: bool = journal_tabs.current_tab in [0, 5]
 		journal_widgets.visible = widget_tab
 		archive_label.visible = not widget_tab
+		if journal_tabs.current_tab > 0:
 			_refresh_diagnostics_page()
 			return
 	var lines: Array[String] = []
@@ -5366,8 +5369,8 @@ func _refresh_archive() -> void:
 		lines.append("[color=#718a97]UNIDENTIFIED SYNERGIES AND PATTERNS REMAIN: %d[/color]" % unknown_count)
 	lines.append("\n[url=codex][color=#79b8d9]OPEN THE CODEX  ▸[/color][/url]")
 	_set_journal_text(_join_strings(lines, "\n"))
-	if journal_button != null:
 	preload("res://scripts/journal_widgets.gd").discoveries(self, journal_widget_box, archive_label.text)
+	if journal_button != null:
 		journal_button.text = "JOURNAL [%s]\n%d LEARNED" % [Preferences.key_name("Journal"), discovered_count]
 
 func _prettify_id(id: String) -> String:
@@ -5833,8 +5836,8 @@ func _refresh_diagnostics_page() -> void:
 			lines.append(_journal_heading("CONSTRUCTION QUEUE", "Select a paid order to locate its footprint. Closing this journal restores the previous pause state."))
 			lines.append_array(preload("res://scripts/station_ui_insights.gd").construction(self))
 	_set_journal_text("\n".join(lines))
-
 	if journal_tabs.current_tab == 5: preload("res://scripts/journal_widgets.gd").crew(self, journal_widget_box, archive_label.text)
+
 func _format_cost(cost: Dictionary) -> String:
 	if cost.is_empty():
 		return "free"
