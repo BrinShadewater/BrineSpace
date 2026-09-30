@@ -604,6 +604,10 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var hovered_crew: String=main.crew_comms.crew_at(event.position,_cell_size()) if is_instance_valid(main.crew_comms) and main.selected_card_id.is_empty() else ""
 		tooltip_text="Talk to "+main.crew_comms.speaker_name(hovered_crew) if not hovered_crew.is_empty() else ""
+		if hovered_crew.is_empty() and main.selected_card_id.is_empty():
+			# A placed room gets a tooltip of what it gives and takes (owner playtest, Sept 29).
+			var over := Vector2i(floori(event.position.x / _cell_size()), floori(event.position.y / _cell_size()))
+			if main.occupied.has(over): tooltip_text = preload("res://scripts/room_tooltip.gd").marker(over)
 		mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND if not hovered_crew.is_empty() else Control.CURSOR_ARROW
 		var cell_size := _cell_size()
 		var cell := Vector2i(floori(event.position.x / cell_size), floori(event.position.y / cell_size))
@@ -722,6 +726,14 @@ class SurfacePass extends Node2D:
 # between frames; LIVE_* redraw every frame (animated water lines, actors, rocks).
 var underwater_visibility = preload("res://scripts/underwater_visibility.gd").new()
 enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, STATIC_TERRAIN, DERELICTS, EXTERIOR_ACTORS, FOG, LIFE }
+# Large sea life that passes over the station is drawn after every surface pass.
+var life_over: Node2D
+class LifeOverPass extends Node2D:
+	var host
+	func _draw() -> void:
+		var started := Time.get_ticks_usec()
+		host._draw_life_over(self)
+		host.draw_usec_since_read += Time.get_ticks_usec()-started
 class EnvPass extends Node2D:
 	var host
 	var pass_id := 0
@@ -764,14 +776,6 @@ var zoom_reuse_active := false
 # on a layer group's frame.
 # A layer whose real inputs change while settling still repaints at once.
 var pending_layers := {}
-# Large sea life that passes over the station is drawn after every surface pass.
-var life_over: Node2D
-class LifeOverPass extends Node2D:
-	var host
-	func _draw() -> void:
-		var started := Time.get_ticks_usec()
-		host._draw_life_over(self)
-		host.draw_usec_since_read += Time.get_ticks_usec()-started
 var zoom_preparing := false
 var zoom_prepare_asks := 0
 var zoom_prepare_groups_left := 0
@@ -981,6 +985,8 @@ func _draw_grid() -> void:
 			pending_layers[env_passes[Env.DERELICTS]] = true
 		env_passes[Env.EXTERIOR_ACTORS].queue_redraw()
 		env_passes[Env.FOG].queue_redraw()
+		env_passes[Env.LIFE].queue_redraw()
+		life_over.queue_redraw()
 		if profile_draw: environment_stage = _profile_draw_stage("env_validation",environment_stage)
 	else:
 		for env_layer in env_passes: env_layer.hide()
@@ -997,6 +1003,7 @@ func _draw_grid() -> void:
 		for id in [Env.DERELICTS,Env.EXTERIOR_ACTORS,Env.FOG,Env.LIFE]:
 			env_passes[id].show()
 			env_passes[id].queue_redraw()
+		life_over.queue_redraw()
 	stage_time = _profile_draw_stage("environment", stage_time)
 	if not retain_static_surfaces:
 		for layer in surface_passes: layer.hide()
@@ -1022,8 +1029,6 @@ func _draw_grid() -> void:
 	if profile_draw: _profile_draw_stage("door_light_validation",checked)
 	_flush_retained_layers(cell_size)
 	surface_passes[Surface.LIVE].queue_redraw()
-		env_passes[Env.LIFE].queue_redraw()
-		life_over.queue_redraw()
 	surface_passes[Surface.FOREGROUND].queue_redraw()
 	render_door_cache_active = false
 
@@ -1041,7 +1046,6 @@ func _update_zoom_cover(main, cell_size: float) -> void:
 			zoom_settling = true
 			settle_backlog = true
 		_end_zoom_reuse(main,cell_size)
-		life_over.queue_redraw()
 		return
 	var view := _cells_of(_view_rect(main),cell_size)
 	if not zoom_reuse_active:
@@ -1311,9 +1315,17 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 			env_derelict_rebuilds += 1
 		Env.FOG:
 			underwater_visibility.draw(target,main,cell_size)
+		Env.LIFE:
+			# Sea life sits above the fog (which has its own shader) and below the station.
+			preload("res://scripts/ocean_life.gd").draw(target,main,cell_size,_view_rect(main))
 		Env.EXTERIOR_ACTORS:
 			_draw_environment_foreground(main,cell_size,GRID_SIZE*cell_size)
 			preload("res://scripts/survey_probe_art.gd").exterior(target,main,cell_size)
+
+func _draw_life_over(target: CanvasItem) -> void:
+	var main = _get_main()
+	if main == null or not main.has_method("get_cell_size"): return
+	preload("res://scripts/ocean_life.gd").draw_over(target, main, _cell_size(), _view_rect(main))
 
 func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	_mark_built(target)
@@ -1350,18 +1362,10 @@ func _draw_underwater_depth(part := "all") -> void:
 	var clock: float = main.get_visual_time_seconds()
 	for y in range(first.y,last.y+1):
 		for x in range(first.x,last.x+1):
-		Env.LIFE:
-			# Sea life sits above the fog (which has its own shader) and below the station.
-			preload("res://scripts/ocean_life.gd").draw(target,main,cell_size,_view_rect(main))
 			var cell := Vector2(x,y)
 			if part != "lines":
 				var distance := cell.distance_to(Vector2(20,20))
 				# Haze affects the seabed only; elevated room art stays crisp.
-func _draw_life_over(target: CanvasItem) -> void:
-	var main = _get_main()
-	if main == null or not main.has_method("get_cell_size"): return
-	preload("res://scripts/ocean_life.gd").draw_over(target, main, _cell_size(), _view_rect(main))
-
 				draw_target.draw_rect(Rect2(cell*size,Vector2.ONE*size),Color(0.07,0.20,0.24,clampf(distance*0.004,0.025,0.10)))
 			if part == "rects": continue
 			if posmod(x*7+y*11,3)!=0: continue
@@ -3092,6 +3096,12 @@ func _direction_for_vector(vector: Vector2) -> String:
 
 func _get_main():
 	return get_tree().current_scene
+
+# The room tooltip is a panel of icons rather than plain text; other tooltips stay as text.
+func _make_custom_tooltip(for_text: String) -> Object:
+	var cell := preload("res://scripts/room_tooltip.gd").cell_from(for_text)
+	if cell.x < 0: return null
+	return preload("res://scripts/room_tooltip.gd").build(_get_main(), cell)
 
 func _cell_size() -> float:
 	return _get_main().get_cell_size()
