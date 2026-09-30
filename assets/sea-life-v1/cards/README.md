@@ -1,4 +1,9 @@
-# BrineSpace card art — batch 3
+# BrineSpace card art - batch 3
+
+Accepted September 29: neutral matte outer metal with dark seams and a continuous
+2px department-colored inner outline at 6px inset, touching the frame inner edge.
+The outline draws above card content so all four sides remain visible. Card and
+text geometry are unchanged. Preview: review/frame-closeup-inner-touch-v7.png.
 
 Fifteen PNGs: one 200x284 nine-slice frame, eight 64px department emblems,
 five 48px rarity marks and a 200x284 back. Frame/back use preserved built-in

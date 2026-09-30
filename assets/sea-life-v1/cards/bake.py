@@ -29,7 +29,10 @@ inner=Image.new('L',(800,1136));d=ImageDraw.Draw(inner)
 d.rounded_rectangle((24,24,775,1111),24,fill=255)
 mask=np.array(outer.resize((200,284),Image.Resampling.LANCZOS),dtype=float)-np.array(inner.resize((200,284),Image.Resampling.LANCZOS),dtype=float)
 a=np.array(frame);lum=np.array(ImageOps.grayscale(frame),dtype=float)
-for c in range(3):a[:,:,c]=np.uint8(150+105*lum/255)
+# Preserve charcoal seams instead of lifting every source tone toward white.
+# Calibrate the source's matte midrange to a readable raised-metal/recess split.
+tone=np.clip((lum/255-.06)/.52,0,.96)
+for c in range(3):a[:,:,c]=np.uint8(tone*255+.5)
 a[:,:,3]=np.uint8(np.clip(mask,0,255))
 save('card-frame.png',Image.fromarray(a),slice_margins=[16,16,16,16],content_margins=[8,8,8,7],tintable=True)
 save('card-back.png',registered('back-generated.png'),tintable=False,usage='retained pile renderer only; live piles remain hidden')

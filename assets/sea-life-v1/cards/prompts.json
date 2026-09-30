@@ -31,7 +31,7 @@
     }
   },
   "registration": {
-    "frame": "Trim source alpha bbox, register to 200x284, retain fine monochrome metal texture inside 6px perimeter; canonical rounded radius12. Slice margins16. Runtime neutral stock/department trim separated.",
+    "frame": "Trim source alpha bbox, register to 200x284, preserve charcoal seams via tone=clamp((luminance-0.06)/0.52,0,0.96) inside 6px perimeter. Canonical radius12 and slice16. Runtime preserves luminance directly when applying department trim; opaque trim is independent of inner stock.",
     "back": "Alpha bbox and single Lanczos resize to 200x284, original muted graphite/teal color retained."
   }
 }
