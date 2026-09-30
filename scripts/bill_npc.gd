@@ -602,7 +602,30 @@ func swim_segment_clear(a: Vector2, b: Vector2, facing: String, previous_facing:
 	for y in range(rows+1):
 		for x in range(columns+1):
 			var offset := footprint.position+footprint.size*Vector2(float(x)/columns,float(y)/rows)
-			if not segment_clear(a+offset,b+offset): return false
+			if not _swim_floor_clear(a+offset,b+offset): return false
+	return true
+
+# One envelope sample line of a swim sweep. It tests floor outline only where the exact blocker sweep
+# above has nothing to go on: corridor and legacy shapes, missing floor and closed door sockets. In
+# authored rooms the sweep already used swim-sized blockers; can_stand there adds the 16-unit walking
+# wall padding a second time and shrinks a 72-unit doorway to 40, which the 40.6-unit helmeted swim
+# outline cannot pass (since e90cdece, Sept 28: flooded crew were trapped behind room doors).
+func _swim_floor_clear(a: Vector2, b: Vector2) -> bool:
+	if not preload("res://scripts/fire_safety.gd").segment_safe(self,a,b): return false
+	if hardware_doors_locked and cell_at(a)!=cell_at(b): return false
+	if cell_at(a)!=cell_at(b) and (locked_room_cells.has(cell_at(a)) or locked_room_cells.has(cell_at(b))): return false
+	var count := maxi(1, ceili(a.distance_to(b) / 4.0))
+	for i in range(count + 1):
+		var point := a.lerp(b, float(i) / count)
+		var cell := cell_at(point)
+		if not geometry.has(cell): return false
+		var data: Dictionary = geometry[cell]
+		if data.get("corridor",false) or data.get("legacy",false):
+			if not can_stand(point): return false
+			continue
+		var local := point - (Vector2(cell) + Vector2.ONE * 0.5) * CELL
+		for side in range(4):
+			if local.dot(Vector2(Geometry.DIRS[side])) > 176 and not data.open.has(side): return false
 	return true
 
 static func segment_hits_rect(a: Vector2,b: Vector2,rect: Rect2) -> bool:
