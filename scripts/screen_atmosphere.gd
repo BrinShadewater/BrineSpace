@@ -141,19 +141,23 @@ void fragment() {
 			float a = float(i) * 0.785398;
 			least = min(least, texture(station_mask, world + vec2(cos(a), sin(a)) * 0.42 / grid_cells).r);
 		}
-		col *= 1.0 - 0.38 * occlusion * inside * (1.0 - least);
+		col *= 1.0 - 0.24 * occlusion * inside * (1.0 - least);
 	}
 	if (fog > 0.0) {
 		// Deeper on the map (further down the grid) is darker and bluer. Applies to the whole view.
 		float depth = clamp(((UV.y * view_px.y + scroll_px.y) / cell_px / grid_cells - 0.25) / 0.6, 0.0, 1.0);
-		col = mix(col, vec3(0.01, 0.045, 0.075), depth * 0.5 * fog);
+		col = mix(col, vec3(0.01, 0.045, 0.075), depth * 0.32 * fog);
 	}
 	if (fringe > 0.0) {
 		// Red and blue slip apart toward the edges of the view, like a lens.
 		vec2 d = UV - vec2(0.5);
 		vec2 push = d * dot(d, d) * SCREEN_PIXEL_SIZE * 22.0 * fringe;
-		col.r = texture(screen_tex, uv + push).r;
-		col.b = texture(screen_tex, uv - push).b;
+		// Shift red and blue by the DIFFERENCE from the centre sample. Overwriting them with raw samples threw
+		// away the darkening from occlusion, fog, shadow and blur on those two channels, leaving green dark
+		// and the whole view purple (owner report, Sept 29).
+		vec3 centre = texture(screen_tex, uv).rgb;
+		col.r += texture(screen_tex, uv + push).r - centre.r;
+		col.b += texture(screen_tex, uv - push).b - centre.b;
 	}
 	if (bloom > 0.0) {
 		vec3 glow = bright(uv) * 1.5;
