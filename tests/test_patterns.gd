@@ -169,5 +169,44 @@ func run() -> void:
 	expect(game.meta.stabilized_synergy_ids.has(pattern_id), "It stabilizes on the third functioning cycle")
 	expect(int(game.meta.total_research_points) - data_before >= 10, "Stabilizing pays at least 10 Archived Data (5 + 5)")
 	expect(game.toast_messages.size() > 0 or game.toast_playing, "A toast announced it")
+	# Pair synergies link through hallways too, and never pay twice for the same two rooms.
+	var closed := Synergies.get_synergy("closed_air_loop")
+	var direct_pairs := 0
+	var hallway_pairs := 0
+	var both_routes := 0
+	for r0 in range(4):
+		for r1 in range(4):
+			for rh in range(4):
+				var gap := {}
+				_add_room(gap, "life_support", Vector2i(10, 10), r0)
+				_add_room(gap, "corridor", Vector2i(11, 10), rh)
+				_add_room(gap, "hydroponics_bay", Vector2i(12, 10), r1)
+				var found := 0
+				for hit in Synergies.evaluate(gap.values(), gap)["links"]:
+					if str(hit.id) == "closed_air_loop":
+						found += 1
+						if hit.get("hallway", false) and hit.cells.size() == 3 and hit.cells[2] == Vector2i(11, 10): hallway_pairs += 1
+				if found > 1: both_routes += 1
+	expect(hallway_pairs > 0, "Life Support and a Hydroponics Bay pay Closed Air Loop through a corridor")
+	expect(both_routes == 0, "A pair never pays the same synergy twice for one route")
+	# Joined directly and through a hallway at once: one link, and it is the direct one.
+	var doubled := {}
+	for r0 in range(4):
+		for r1 in range(4):
+			for rc in range(4):
+				var square := {}
+				_add_room(square, "life_support", Vector2i(10, 10), r0)
+				_add_room(square, "hydroponics_bay", Vector2i(11, 10), r1)
+				_add_room(square, "corner", Vector2i(10, 11), rc)
+				_add_room(square, "corner", Vector2i(11, 11), (rc + 1) % 4)
+				var count := 0
+				var via := 0
+				for hit in Synergies.evaluate(square.values(), square)["links"]:
+					if str(hit.id) == "closed_air_loop":
+						count += 1
+						if hit.get("hallway", false): via += 1
+				if count == 1 and via == 0: doubled = square
+				expect(count <= 1, "Closed Air Loop pays at most once for one pair of rooms")
+	expect(not closed.is_empty(), "Closed Air Loop exists")
 	print("PATTERNS: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
 	quit(1 if failures > 0 else 0)

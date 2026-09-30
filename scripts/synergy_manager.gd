@@ -1278,6 +1278,13 @@ static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 		for pair in pairs:
 			if not within_passage_link(links, pair):
 				_add_link(links, seen_links, synergy, pair)
+		# Hallways connect synergies too (owner, Sept 29): two rooms one corridor, corner or tee apart pay
+		# like neighbours. A pair pays a synergy once however it is joined, and the direct connection
+		# above is added first, so it wins over a hallway route to the same two rooms. Recipes that name a
+		# hallway piece as one of their rooms are already about the hallway.
+		if not PASSAGE_IDS.has(str(synergy["rooms"][0])) and not PASSAGE_IDS.has(str(synergy["rooms"][1])):
+			for cells in _find_passage_pairs(synergy["rooms"], occupied):
+				_add_link(links, seen_links, synergy, cells, true)
 	for synergy in SYNERGIES:
 		if not is_pattern(synergy): continue
 		for cells in _find_pattern_chains(synergy["rooms"], occupied):
@@ -1496,7 +1503,7 @@ static func _rotate_side(side: String, rotation_steps: int) -> String:
 		return side
 	return sides[(index + rotation_steps) % sides.size()]
 
-static func _add_link(links: Array, seen_links: Dictionary, synergy: Dictionary, cells: Array) -> void:
+static func _add_link(links: Array, seen_links: Dictionary, synergy: Dictionary, cells: Array, hallway := false) -> void:
 	var key := "%s:%s" % [synergy["id"], _chain_key(cells) if is_pattern(synergy) else _cell_pair_key(cells[0], cells[1])]
 	if seen_links.has(key):
 		return
@@ -1504,6 +1511,7 @@ static func _add_link(links: Array, seen_links: Dictionary, synergy: Dictionary,
 	var link := synergy.duplicate(true)
 	link["cells"] = cells.duplicate()
 	link["key"] = key
+	if hallway: link["hallway"] = true # drawn start, hallway, end like Parts Passage
 	links.append(link)
 
 static func _chain_key(cells: Array) -> String:
