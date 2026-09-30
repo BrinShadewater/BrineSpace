@@ -1,0 +1,925 @@
+{
+  "schema": 1,
+  "status": "installed sea-life pack",
+  "world_units_per_cell": 384,
+  "owner_accepted": true,
+  "runtime_wired": true,
+  "acceptance_scope": "Owner approved continuation from first-pass direction; integrated motion is a new review milestone.",
+  "tidewalker": {
+    "body_pivot": [
+      800,
+      210
+    ],
+    "pixels_per_cell": 94.84615384615384,
+    "fin_roots": [
+      [
+        1047,
+        119
+      ],
+      [
+        1047,
+        307
+      ],
+      [
+        753,
+        133
+      ],
+      [
+        753,
+        294
+      ],
+      [
+        459,
+        196
+      ],
+      [
+        459,
+        227
+      ]
+    ],
+    "sail_roots": [
+      [
+        1198,
+        161
+      ],
+      [
+        1070,
+        130
+      ],
+      [
+        942,
+        98
+      ],
+      [
+        814,
+        128
+      ],
+      [
+        686,
+        150
+      ],
+      [
+        558,
+        185
+      ],
+      [
+        430,
+        189
+      ]
+    ],
+    "light_positions": [
+      [
+        1303,
+        227
+      ],
+      [
+        1263,
+        195
+      ],
+      [
+        1223,
+        239
+      ],
+      [
+        1183,
+        186
+      ],
+      [
+        1143,
+        252
+      ],
+      [
+        1104,
+        179
+      ],
+      [
+        1064,
+        262
+      ],
+      [
+        1024,
+        166
+      ],
+      [
+        984,
+        278
+      ],
+      [
+        944,
+        160
+      ],
+      [
+        904,
+        280
+      ],
+      [
+        864,
+        165
+      ],
+      [
+        825,
+        267
+      ],
+      [
+        785,
+        174
+      ],
+      [
+        745,
+        259
+      ],
+      [
+        705,
+        180
+      ],
+      [
+        665,
+        244
+      ],
+      [
+        625,
+        193
+      ],
+      [
+        586,
+        234
+      ],
+      [
+        546,
+        199
+      ],
+      [
+        506,
+        223
+      ],
+      [
+        466,
+        202
+      ],
+      [
+        426,
+        226
+      ],
+      [
+        386,
+        189
+      ],
+      [
+        347,
+        263
+      ],
+      [
+        307,
+        153
+      ]
+    ]
+  },
+  "limitations": [
+    "Small-creature motion is derived from a single registered source pose with periodic deformation.",
+    "Lantern tip glints follow the same deformation as tissue.",
+    "Matte-v2 tidewalker removes baked dot chains; original source retained as rejected material treatment.",
+    "Fin and sail roots are registered inside the actual body silhouette.",
+    "Tidewalker density is 384/pixels_per_cell world units per active art pixel; no invented upscaled detail.",
+    "No playable release export; integrated owner review remains separate from continuation approval."
+  ],
+  "files": [
+    {
+      "path": "lantern-bell-body.png",
+      "dimensions": [
+        1280,
+        960
+      ],
+      "sha256": "d797982463abcf358e0abbc7b04a7b432930947b71f02dc21301a2a5078f3051",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "cell": [
+        320,
+        480
+      ],
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "fps": 6,
+      "pivot": [
+        160,
+        160
+      ],
+      "tintable": true,
+      "registration": [
+        {
+          "frame": 0,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        },
+        {
+          "frame": 1,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        },
+        {
+          "frame": 2,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        },
+        {
+          "frame": 3,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        },
+        {
+          "frame": 4,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        },
+        {
+          "frame": 5,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        },
+        {
+          "frame": 6,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        },
+        {
+          "frame": 7,
+          "source_box": [
+            0,
+            0,
+            362,
+            543
+          ],
+          "source_pivot": [
+            181,
+            200
+          ],
+          "offset": [
+            33,
+            20
+          ]
+        }
+      ],
+      "source_scale": 0.7
+    },
+    {
+      "path": "lantern-bell-core.png",
+      "dimensions": [
+        1280,
+        960
+      ],
+      "sha256": "f8d313521715c816a49ddd867ceda5eea0b040e4d5cd2971d1578f334de8fd38",
+      "alpha_extrema": [
+        0,
+        183
+      ],
+      "cell": [
+        320,
+        480
+      ],
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "fps": 6,
+      "pivot": [
+        160,
+        160
+      ],
+      "tintable": false
+    },
+    {
+      "path": "ribbon-swimmer.png",
+      "dimensions": [
+        640,
+        768
+      ],
+      "sha256": "b6413deb84fbdde72d3debea7385a66e89d02d0c8c545d2c5d85c3747fdeb99b",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "cell": [
+        640,
+        96
+      ],
+      "grid": [
+        1,
+        8
+      ],
+      "frames": 8,
+      "fps": 10,
+      "pivot": [
+        604,
+        48
+      ],
+      "tintable": true,
+      "registration": [
+        {
+          "frame": 0,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        },
+        {
+          "frame": 1,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        },
+        {
+          "frame": 2,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        },
+        {
+          "frame": 3,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        },
+        {
+          "frame": 4,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        },
+        {
+          "frame": 5,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        },
+        {
+          "frame": 6,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        },
+        {
+          "frame": 7,
+          "source_box": [
+            0,
+            0,
+            1145,
+            172
+          ],
+          "source_pivot": [
+            1113,
+            118
+          ],
+          "offset": [
+            48,
+            -11
+          ]
+        }
+      ],
+      "source_scale": 0.5
+    },
+    {
+      "path": "ribbon-head.png",
+      "dimensions": [
+        640,
+        768
+      ],
+      "sha256": "547facf413886a6c35d32fc0c74de4cb4e9798ae42be63fca23435437be1e61f",
+      "alpha_extrema": [
+        0,
+        175
+      ],
+      "cell": [
+        640,
+        96
+      ],
+      "grid": [
+        1,
+        8
+      ],
+      "frames": 8,
+      "fps": 10,
+      "pivot": [
+        604,
+        48
+      ],
+      "tintable": false
+    },
+    {
+      "path": "tidewalker-body.png",
+      "dimensions": [
+        1600,
+        420
+      ],
+      "sha256": "a2d66f48529d5396c0d3bf34617e7f3faca8b5304834618965a92c5079f92edd",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "pivot": [
+        800,
+        210
+      ],
+      "frames": 1,
+      "fps": 0,
+      "tintable": false
+    },
+    {
+      "path": "tidewalker-fin.png",
+      "dimensions": [
+        320,
+        256
+      ],
+      "sha256": "901bce4dd853ec5e3625151d69ae09200b05f64abb93cd24b196643347efe39d",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "pivot": [
+        299,
+        18
+      ],
+      "frames": 1,
+      "fps": 0,
+      "tintable": false
+    },
+    {
+      "path": "tidewalker-sail.png",
+      "dimensions": [
+        160,
+        160
+      ],
+      "sha256": "72333b201965c7425369b84e0ccb6b06d5c4df024e5d9f5033dd4a185c3417b1",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "pivot": [
+        80,
+        148
+      ],
+      "frames": 1,
+      "fps": 0,
+      "tintable": false
+    },
+    {
+      "path": "tidewalker-lights.png",
+      "dimensions": [
+        1600,
+        420
+      ],
+      "sha256": "1ab48880131966890bd436ab5c03c4224b4a79e52adc929a945769e7bfd58d1d",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "pivot": [
+        800,
+        210
+      ],
+      "light_positions": [
+        [
+          1303,
+          227
+        ],
+        [
+          1263,
+          195
+        ],
+        [
+          1223,
+          239
+        ],
+        [
+          1183,
+          186
+        ],
+        [
+          1143,
+          252
+        ],
+        [
+          1104,
+          179
+        ],
+        [
+          1064,
+          262
+        ],
+        [
+          1024,
+          166
+        ],
+        [
+          984,
+          278
+        ],
+        [
+          944,
+          160
+        ],
+        [
+          904,
+          280
+        ],
+        [
+          864,
+          165
+        ],
+        [
+          825,
+          267
+        ],
+        [
+          785,
+          174
+        ],
+        [
+          745,
+          259
+        ],
+        [
+          705,
+          180
+        ],
+        [
+          665,
+          244
+        ],
+        [
+          625,
+          193
+        ],
+        [
+          586,
+          234
+        ],
+        [
+          546,
+          199
+        ],
+        [
+          506,
+          223
+        ],
+        [
+          466,
+          202
+        ],
+        [
+          426,
+          226
+        ],
+        [
+          386,
+          189
+        ],
+        [
+          347,
+          263
+        ],
+        [
+          307,
+          153
+        ]
+      ],
+      "tintable": true,
+      "light_region_size": [
+        20,
+        20
+      ],
+      "frames": 1,
+      "fps": 0
+    },
+    {
+      "path": "glass-choir-body.png",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "sha256": "86dc11fc913acd48fa97772a3ad3b02e71e65785e42b501d9d7c667974daa526",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "cell": [
+        256,
+        256
+      ],
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "fps": 6,
+      "pivot": [
+        128,
+        128
+      ],
+      "tintable": true
+    },
+    {
+      "path": "glass-choir-core.png",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "sha256": "a3f8513532f12a2422ee3753dba2cad8ada3a92d5f43106ff04820ed1f756555",
+      "alpha_extrema": [
+        0,
+        253
+      ],
+      "cell": [
+        256,
+        256
+      ],
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "fps": 6,
+      "pivot": [
+        128,
+        128
+      ],
+      "tintable": false
+    },
+    {
+      "path": "veil-kite-body.png",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "sha256": "d4c13e74c48b94de33490a09a547484552c85ed4abd079e2af3ed1cc0f74d932",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "cell": [
+        256,
+        256
+      ],
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "fps": 6,
+      "pivot": [
+        128,
+        128
+      ],
+      "tintable": true
+    },
+    {
+      "path": "veil-kite-core.png",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "sha256": "7b362e801cea0b5652902bf72a82f904e154454abbf629e230852b18ccfd0700",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "cell": [
+        256,
+        256
+      ],
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "fps": 6,
+      "pivot": [
+        128,
+        128
+      ],
+      "tintable": false
+    }
+  ],
+  "sources": [
+    {
+      "path": "sources/concepts.png",
+      "sha256": "a62e3c5b3e96901edd4d03d887b2908e58a6cb48a10585c97dd2adf37ce2b8e6",
+      "dimensions": [
+        1774,
+        887
+      ]
+    },
+    {
+      "path": "sources/fin.png",
+      "sha256": "784d0ce8cb541cd0b86de586a5755f3051bbaa88cd188b73bf3a1d2d69078965",
+      "dimensions": [
+        1402,
+        1122
+      ]
+    },
+    {
+      "path": "sources/lantern.png",
+      "sha256": "d3124bd82f09be73fc7a8644c913156169d82c99d613009bf56fa3035c4e5439",
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "path": "sources/ribbon.png",
+      "sha256": "f1163f74267ede86e8ea1975442033f13925cc526d7f2971502c633917e3be5a",
+      "dimensions": [
+        1145,
+        1374
+      ]
+    },
+    {
+      "path": "sources/sail.png",
+      "sha256": "4d46d0b22239c860426e4db52d91c25eb2d2ed1a2291cf616a2e213dfdf2500e",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "sources/tidewalker-matte-v2.png",
+      "sha256": "e3993322fc7057ba2306e8b28824fe292c6677bb00c3bbdf064c4f578b642fa9",
+      "dimensions": [
+        2103,
+        748
+      ]
+    },
+    {
+      "path": "sources/tidewalker.png",
+      "sha256": "430f0632954d0b54be735675794500f0e846e7253e0ddab557f01e5a82007920",
+      "dimensions": [
+        2103,
+        748
+      ]
+    }
+  ]
+}
