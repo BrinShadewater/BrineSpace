@@ -18,6 +18,22 @@ var duck_db := 0.0
 var rest_remaining := 0.0
 var music_rng := RandomNumberGenerator.new()
 
+# One line for bug reports: what the music is doing and whether anything has silenced it.
+func status_line() -> String:
+	var parts := PackedStringArray()
+	var deck: AudioStreamPlayer = player if is_instance_valid(player) else null
+	if deck != null and deck.stream != null:
+		parts.append("track %s at %.0f of %.0f s" % [deck.stream.resource_path.get_file(), deck.get_playback_position(), deck.stream.get_length()])
+		parts.append("%.1f dB" % deck.volume_db)
+	else:
+		parts.append("no track")
+	if rest_remaining > 0.0: parts.append("resting %.0f s" % rest_remaining)
+	if outgoing != null: parts.append("crossfading")
+	if duck_db < -0.5: parts.append("ducked %.1f dB" % duck_db)
+	parts.append("master %s %.0f%%" % ["MUTED" if AudioServer.is_bus_mute(0) else "on", AudioServer.get_bus_volume_linear(0) * 100.0])
+	parts.append("device %s (%s, %.0f Hz)" % [AudioServer.get_output_device(), AudioServer.get_driver_name(), AudioServer.get_mix_rate()])
+	return ", ".join(parts)
+
 static func ensure(owner: Node) -> Node:
 	var root := owner.get_tree().root
 	if root.has_meta("station_music"):
@@ -31,6 +47,7 @@ static func ensure(owner: Node) -> Node:
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	Preferences.mute_if_silent_run()
 	music_rng.randomize()
 	_order_playlist()
 	for i in range(2):

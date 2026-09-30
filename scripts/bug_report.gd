@@ -238,6 +238,9 @@ func _input_state() -> Array:
 	if not is_inside_tree(): return lines
 	var tree := get_tree()
 	lines.append("tree paused: %s" % tree.paused)
+	if tree.root.has_meta("station_music"):
+		var music = tree.root.get_meta("station_music").get_ref()
+		if is_instance_valid(music): lines.append("music: " + music.status_line())
 	lines.append("mouse mode: %d (0 visible, 2 captured, 3 confined)" % Input.get_mouse_mode())
 	var viewport := get_viewport()
 	if viewport == null: return lines

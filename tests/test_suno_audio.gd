@@ -368,6 +368,7 @@ func run() -> void:
 	check(is_equal_approx(float(config.get_value("audio","music_volume")),0.37),"Music volume persists")
 	check(is_equal_approx(float(config.get_value("audio","effects_volume")),0.62),"Effects volume persists")
 	check(is_equal_approx(float(config.get_value("audio","ambience_volume")),0.41),"Ambience volume persists")
+	Preferences.allow_sound_in_tests = true # this block checks the real mute logic, not the silent-run guard
 	Preferences.muted = true
 	Preferences.apply_runtime(root)
 	check(AudioServer.is_bus_mute(0) and music.player.bus == "Master","Master mute covers soundtrack")
@@ -377,6 +378,8 @@ func run() -> void:
 	check(AudioServer.is_bus_mute(0),"Focus-loss mute covers all audio")
 	Preferences._on_focus(true)
 	check(not AudioServer.is_bus_mute(0),"Focus restores audio")
+	Preferences.allow_sound_in_tests = false
+	Preferences._on_focus(true) # back to a silent run
 	game.expedition_mode = true
 	sound.last_event.clear()
 	game._end_expedition()

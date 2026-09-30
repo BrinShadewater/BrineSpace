@@ -86,6 +86,7 @@ static func tone(kind: String) -> AudioStreamWAV:
 
 func _ready() -> void:
 	name = "StationAudio"
+	Preferences.mute_if_silent_run()
 	audio_rng.randomize() # Cosmetic variation must not consume the gameplay RNG.
 	hull_remaining = audio_rng.randf_range(55.0,95.0)
 	if is_instance_valid(game):

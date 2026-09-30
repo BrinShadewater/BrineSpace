@@ -134,7 +134,22 @@ static func initialize(window: Window) -> void:
 
 static func _on_focus(focused: bool) -> void:
 	window_focused = focused
-	AudioServer.set_bus_mute(0, muted or (mute_unfocused and not focused))
+	AudioServer.set_bus_mute(0, silent_run() or muted or (mute_unfocused and not focused))
+
+# A test, probe or fixture run (Godot --script, --silent, or BRINE_SILENT=1) starts the whole game, music
+# included, on the real audio device. Native runs on screen 2 were playing music and effects over the owner's
+# own game and cutting out when they ended (owner playtest, Sept 29: "music keeps cutting in and out").
+# Such runs mute the master bus; every sound still plays and is counted, it just is not heard.
+# Tests that check the real mute logic (focus loss, the Mute setting) switch this on for their duration.
+static var allow_sound_in_tests := false
+
+static func silent_run() -> bool:
+	if allow_sound_in_tests: return false
+	var args := OS.get_cmdline_args()
+	return args.has("--script") or args.has("-s") or args.has("--silent") or OS.get_environment("BRINE_SILENT") == "1"
+
+static func mute_if_silent_run() -> void:
+	if silent_run(): AudioServer.set_bus_mute(0, true)
 
 static func apply_runtime(window: Window) -> void:
 	Engine.max_fps = fps_cap

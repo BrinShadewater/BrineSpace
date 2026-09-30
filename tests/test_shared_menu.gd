@@ -106,6 +106,7 @@ func _run() -> void:
 	control(panel, "FrameLimit").select(2)
 	control(panel, "FrameLimit").item_selected.emit(2)
 	check(Engine.max_fps == 60, "Frame limit must affect the engine")
+	Preferences.allow_sound_in_tests = true # checks the real mute settings, not the silent-run guard
 	var original_volume := AudioServer.get_bus_volume_linear(0)
 	control(panel, "MasterMute").button_pressed = true
 	check(AudioServer.is_bus_mute(0) and is_equal_approx(AudioServer.get_bus_volume_linear(0), original_volume), "Mute must preserve the volume level")
@@ -115,6 +116,8 @@ func _run() -> void:
 	check(AudioServer.is_bus_mute(0), "Focus loss must mute audio when enabled")
 	Preferences._on_focus(true)
 	check(not AudioServer.is_bus_mute(0), "Focus return must restore audio")
+	Preferences.allow_sound_in_tests = false
+	Preferences._on_focus(true)
 	control(panel, "ZoomSensitivity").value = 180
 	control(panel, "InvertZoom").button_pressed = true
 	control(panel, "PauseUnfocused").button_pressed = true
