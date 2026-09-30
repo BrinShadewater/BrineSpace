@@ -28,7 +28,7 @@ func run() -> void:
 	expect(red_frame.get_pixel(7,142)==blue_frame.get_pixel(7,142),"Inset outline leaves a gap beside the metal")
 	Art.update_inner_outline(parent,Color("#e6c84f"),true)
 	var edge:=parent.get_node("CardInnerOutline")
-	expect(edge.z_index==0 and edge.get_index()==parent.get_child_count()-1 and edge.outline.border_width_left==4,"Inner outline is the last child (over the content) without a raised z, so a fan neighbour cannot draw over it")
+	expect(edge.z_index==0 and edge.get_index()==parent.get_child_count()-1 and edge.outline.border_width_left==3,"Inner outline is the last child (over the content) without a raised z, so a fan neighbour cannot draw over it")
 	Art.update_inner_outline(parent,Color("#46d3e6"),true)
 	expect(edge.outline.border_color==Color("#46d3e6"),"Outline follows updated card state color")
 	Art.update_inner_outline(parent,Color.WHITE,false)

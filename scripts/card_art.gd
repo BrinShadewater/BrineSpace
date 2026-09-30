@@ -85,8 +85,8 @@ static func update_inner_outline(card: Control, color: Color, active: bool) -> v
 		# No z_index: as the last child it already paints over the content, and a raised z put every card's
 		# outline above its neighbours in the fan (owner playtest, Sept 29).
 		edge.outline.draw_center=false
-		edge.outline.border_width_left=4;edge.outline.border_width_right=4
-		edge.outline.border_width_top=4;edge.outline.border_width_bottom=4
+		edge.outline.border_width_left=3;edge.outline.border_width_right=3
+		edge.outline.border_width_top=3;edge.outline.border_width_bottom=3
 		edge.outline.set_corner_radius_all(6)
 		card.add_child(edge)
 		card.resized.connect(edge.queue_redraw)

@@ -4275,8 +4275,9 @@ func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affor
 	style.content_margin_right = 8
 	style.content_margin_top = 8
 	style.content_margin_bottom = 7
-	# The authored frame shows more of the department colour: tint the card face towards it.
-	var authored_card_style := preload("res://scripts/card_art.gd").frame_style(style.bg_color.lerp(color,0.14),style.border_color)
+	# The authored frame shows a little of the department colour: tint the card face towards its muted form, the
+	# same muted family the card menus use (owner playtest, Sept 30).
+	var authored_card_style := preload("res://scripts/card_art.gd").frame_style(style.bg_color.lerp(DraftCard.muted(color),0.10),style.border_color)
 	card.add_theme_stylebox_override("panel", authored_card_style if authored_card_style != null else style)
 	preload("res://scripts/card_art.gd").update_inner_outline(card,style.border_color,authored_card_style != null)
 	if not affordable:

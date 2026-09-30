@@ -166,7 +166,8 @@ static func build(game, id: String) -> PanelContainer:
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	card.set_meta("art_node", art)
 	art_clip.add_child(_ignore(art))
-	add_rarity_badge(art_clip, str(room["rarity"]), game._rarity_color(str(room.get("rarity", "common"))).lightened(0.2))
+	# The department's muted colour, as on the card menus (owner playtest, Sept 30), not a bright rarity colour.
+	add_rarity_badge(art_clip, str(room["rarity"]), muted_bright(category_color))
 	if game.prototype_card_seen_cycle.has(id):
 		var prototype := Label.new()
 		prototype.text = "NEW PROTOTYPE"
