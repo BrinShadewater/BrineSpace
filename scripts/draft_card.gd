@@ -6,6 +6,7 @@ extends RefCounted
 
 const Preferences = preload("res://scripts/title_settings.gd")
 const RoomDatabase = preload("res://scripts/room_database.gd")
+const CardArt = preload("res://scripts/card_art.gd")
 
 const CARD_SIZE := Vector2(200, 284)
 const ROW_SLOT := Vector2(212, 330)
@@ -60,6 +61,7 @@ static func add_rarity_badge(clip: Control, text: String, color: Color) -> void:
 	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	badge.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 4)
 	clip.add_child(badge)
+	CardArt.add_mark(badge,text.to_lower(),Vector2(-15,2),Vector2(12,12),color,"RarityMark")
 
 # Adds the water behind a card's art; call before adding the art itself.
 static func add_ocean(clip: Control) -> void:
@@ -183,6 +185,8 @@ static func build(game, id: String) -> PanelContainer:
 	ribbon.add_theme_color_override("font_color", muted_bright(category_color))
 	ribbon.add_theme_stylebox_override("normal", _box(Color("#090f14"), muted(category_color), 1, 3))
 	body.add_child(_ignore(ribbon))
+	if str(room.get("id","")) not in HALLWAY_IDS:
+		CardArt.add_mark(ribbon,str(room.get("category","")),Vector2(5,2),Vector2(16,16),muted_bright(category_color),"CardEmblem")
 
 	var rules := PanelContainer.new()
 	rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -293,6 +297,10 @@ class CardBack extends Control:
 	var empty := false
 	func _draw() -> void:
 		var rect := Rect2(Vector2.ZERO, size)
+		var authored:=CardArt.texture("back")
+		if authored!=null:
+			draw_texture_rect(authored,rect,false,Color(.40,.45,.46,.7) if empty else Color.WHITE)
+			return
 		var fill := StyleBoxFlat.new()
 		fill.bg_color = Color("#0c171b") if empty else Color("#10242a")
 		fill.set_corner_radius_all(10)

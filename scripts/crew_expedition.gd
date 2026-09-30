@@ -92,6 +92,7 @@ static func dispatch(game,id: String,cell: Vector2i,kind := "salvage") -> bool:
 	if target.x < 0: return false
 	var sea_route := PackedVector2Array([point(room,Vector2(0,-384))])
 	for p in sea: sea_route.append((Vector2(p)+Vector2.ONE*0.5)*384)
+	sea_route = stop_at_edge(sea_route)
 	if actor.needs_air(): game.resources.oxygen -= OXYGEN_COST
 	actor.path.clear()
 	actor.goal = ""
@@ -100,6 +101,18 @@ static func dispatch(game,id: String,cell: Vector2i,kind := "salvage") -> bool:
 	game._log("Marsh dispatched without breathing gear. Watch his battery; his pod is the return destination after unloading." if not actor.needs_air() else "%s dispatched. Tank endurance: 60 seconds underwater. Watch the return distance. Cargo is credited only after safe return." % Architects.NAMES[id],false)
 	game._refresh_all()
 	return true
+
+# The last waypoint is the middle of the deposit. Pull it back along the approach to just outside the
+# deposit's edge so the diver works beside the node, not inside it. Returns the route unchanged if it is
+# too short to have an approach.
+static func stop_at_edge(route: PackedVector2Array) -> PackedVector2Array:
+	if route.size() < 2: return route
+	var centre: Vector2 = route[route.size()-1]
+	var toward: Vector2 = route[route.size()-2] - centre
+	if toward.length() < 0.001: return route
+	var result := route.duplicate()
+	result[result.size()-1] = centre + toward.normalized() * 384.0 * Routes.WORK_EDGE
+	return result
 
 static func request_recall(game,actor) -> bool:
 	if actor.expedition.is_empty() or actor.expedition.recall: return false

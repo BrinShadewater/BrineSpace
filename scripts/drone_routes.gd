@@ -3,6 +3,9 @@ extends RefCounted
 const STEPS := [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
 # Cells per second. Slowed from 1.5 (owner playtest, Sept 29: drones need to move slower).
 const SPEED := 1.0
+# How far from a deposit or wreck's middle a worker stands, in cells: just outside its edge (owner playtest,
+# Sept 29: drones and crew should work from the edge of a node, not its middle).
+const WORK_EDGE := 0.52
 
 static func can_step(cell: Vector2i, next: Vector2i, start: Vector2i, goal: Vector2i, blocked: Dictionary, allow_rooms: bool) -> bool:
 	var offset := next-cell

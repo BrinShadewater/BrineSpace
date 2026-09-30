@@ -1,0 +1,37 @@
+{
+  "frame": {
+    "tool": "built-in image_gen",
+    "prompt": "BrineSpace game UI asset: one complete portrait rectangular card frame, proportions 200 wide by 284 tall, on genuinely transparent background. Neutral monochrome graphite/grey luminance, tintable by department. Very slim matte industrial painted-metal perimeter, softly rounded corners, restrained shallow bevels and tiny fitted corner joints, fine hand-painted pixel-scale material variation matching detailed muted industrial sprites. No glossy shine, bright chrome, thick decorative ornament, coarse pixel blocks, symbols or text. Completely empty TRANSPARENT centre for card content. Perimeter only; frame thickness about 3 percent of width at master size, minimal side details; entire frame with small clear outer margin. Calm practical pressure-station blueprint card, understated and dry. No glow, shadow outside frame, checkerboard or background.",
+    "source": "sources/frame-generated.png"
+  },
+  "back": {
+    "tool": "built-in image_gen",
+    "prompt": "BrineSpace portrait blueprint card BACK, aspect ratio 200 wide to 284 tall. Entire single flat game UI card on transparent background, softly rounded corners. Detailed matte hand-painted fine pixel-scale finish, graphite blue-black printed stock, restrained muted steel/teal perimeter matching a practical industrial pressure-station card. Upper-middle motif: BRINE's damaged aquatic AI core, a small quiet pearl-grey suspended core inside incomplete concentric containment rings, subtle missing segments and two or three interrupted circuit traces. Haunted, precise, dry, restrained, no face, no eyes, no mascot, no skull. Motif occupies upper third so lower centre can support existing count text. Mostly quiet dark surface, very subtle diffuse texture and shallow bevels, no gloss, white glare, glow cloud, stars, space background or ornamental fantasy filigree. No text, letters or numbers, no painted checkerboard. Show the whole card with small transparent outer margin, overhead flat surface, no perspective or external shadow.",
+    "source": "sources/back-generated.png"
+  },
+  "emblems_and_marks": {
+    "tool": "deterministic repo-native UI symbols",
+    "algorithm": "Pillow silhouettes on a 64-unit surface at 4x, one Lanczos reduction, restrained greyscale diffuse variation. See bake.py for exact geometry.",
+    "department_symbols": {
+      "Operations": "navigation/command compass",
+      "Engineering": "eight-tooth gear",
+      "Science": "laboratory vessel",
+      "Life Support": "leaf and vein",
+      "Recreation": "chair",
+      "Anomaly": "fractured diamond",
+      "Robotics": "chip with pins",
+      "Derelict": "fractured hull"
+    },
+    "rarity_symbols": {
+      "core": "interrupted ring with core",
+      "common": "single lozenge",
+      "uncommon": "paired lozenges",
+      "rare": "three lozenges",
+      "derelict": "fractured hull"
+    }
+  },
+  "registration": {
+    "frame": "Trim source alpha bbox, register to 200x284, retain fine monochrome metal texture inside 6px perimeter; canonical rounded radius12. Slice margins16. Runtime neutral stock/department trim separated.",
+    "back": "Alpha bbox and single Lanczos resize to 200x284, original muted graphite/teal color retained."
+  }
+}

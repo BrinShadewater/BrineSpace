@@ -34,7 +34,8 @@ static func clear_ray(field: Dictionary, from: Vector2, to: Vector2) -> bool:
 
 static func drone_position(game, drone: Dictionary) -> Vector2:
 	var position:=Vector2(drone.position)+Vector2.ONE*.5
-	if drone.job!="clear" or drone.phase not in ["working","outbound","returning"]: return position
+	# Clearing a wreck or harvesting a deposit is done from its edge, on the side that is open water.
+	if drone.job not in ["clear","harvest"] or drone.phase not in ["working","outbound","returning"]: return position
 	var cell:=Vector2i(drone.target)
 	var offsets: Array=[Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]
 	offsets.sort_custom(func(a,b):return Vector2(cell+a).distance_squared_to(Vector2(drone.home))<Vector2(cell+b).distance_squared_to(Vector2(drone.home)))
@@ -42,7 +43,8 @@ static func drone_position(game, drone: Dictionary) -> Vector2:
 	for offset in offsets:
 		var neighbor: Vector2i=cell+offset
 		if neighbor.x<0 or neighbor.y<0 or neighbor.x>=40 or neighbor.y>=40:continue
-		if not Field.blocks(game.wrecks,neighbor):clear_offsets.append(offset)
+		var deposit_there: bool=drone.job=="harvest" and game.drone_fleet.Sites.blocks(game.drone_fleet.sites,neighbor)
+		if not Field.blocks(game.wrecks,neighbor) and not deposit_there:clear_offsets.append(offset)
 	if clear_offsets.is_empty():return position
 	# Prefer a visible work face; covered routes remain valid when no exposed side exists.
 	var chosen: Vector2i=clear_offsets[0]

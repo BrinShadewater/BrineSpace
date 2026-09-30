@@ -187,6 +187,9 @@ func run():
 			game._update_test_walker(0.1)
 			if actor.helmet_equipped and not actor.helmet_action_active(): break
 		check(Expedition.dispatch(game,id,home),"Rotated expedition dispatch: "+id)
+		var stop: Vector2 = actor.expedition.sea_route[actor.expedition.sea_route.size()-1]
+		var deposit_middle := (Vector2(site_cell)+Vector2.ONE*0.5)*384.0
+		check(absf(stop.distance_to(deposit_middle)-384.0*0.52)<1.0,"The diver stops at the deposit's edge, not its middle: "+id)
 		for i in range(6000):
 			if actor.expedition.is_empty(): break
 			Cycle.advance(game,0.1)
