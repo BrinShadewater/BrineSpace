@@ -196,7 +196,7 @@ func run():
 	var archive = preload("res://scripts/title_archive.gd").new()
 	archive.meta_state = game.meta
 	archive.mode = "codex"
-	archive.codex_tab = 2
+	archive.codex_tab = 3
 	root.add_child(archive)
 	check(archive.grid.columns == 1 and archive.codex_count.text.contains("2 RECORDINGS"),"Codex exposes only recovered replay recordings")
 	if not capture_dir.is_empty() and DisplayServer.get_name() != "headless":

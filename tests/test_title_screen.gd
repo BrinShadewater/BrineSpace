@@ -135,7 +135,7 @@ func _run() -> void:
 	title.meta_state.stabilized_synergy_ids.clear()
 	title.archive.codex_tabs.current_tab = 1
 	await create_timer(0.3).timeout
-	_check(title.archive.visible_entries.size() == preload("res://scripts/synergy_manager.gd").all_synergies().size(), "Every synergy must have an entry")
+	_check(title.archive.visible_entries.size() == preload("res://scripts/synergy_manager.gd").pairs().size(), "Every synergy must have an entry")
 	title.archive.codex_filter.select(1)
 	title.archive.codex_filter.item_selected.emit(1)
 	_check(title.archive.visible_entries.size() == 1 and title.archive.visible_entries[0].id == "closed_air_loop", "Discovered filter must respect saved knowledge")

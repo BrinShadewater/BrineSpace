@@ -12,6 +12,12 @@ const CLUES := {
 	"research_pipeline": "An experiment becomes useful when its findings have somewhere to stay.",
 	"safe_wake_protocol": "Before waking the sleepers, consider what they will breathe.",
 	"containment_sector": "The unfamiliar samples should not travel far before they can be isolated.",
+	"pattern_field_to_table": "Three rooms that grow, cook and serve might do better as one connected line than as neighbours.",
+	"pattern_greenhouse_deck": "Air, greenery and a good view could share a single deck.",
+	"pattern_deep_survey": "What the drones find, the window confirms and the archive keeps could travel through connected rooms.",
+	"pattern_smelting_line": "Heat, ore and refining want to be joined rather than merely near each other.",
+	"pattern_steady_hands": "Salvage, repairs and command might work better under one roof than three.",
+	"pattern_recovery_ward": "Rest, treatment and company are best kept within one connected reach.",
 	"crew_commons": "Survival is not the only reason people leave their quarters.",
 	"field_clinic": "A long walk from home is an unhelpful feature of emergency care.",
 	"shielded_reactor": "The most energetic machinery may benefit from a protective neighbor.",
@@ -56,13 +62,13 @@ static func room_entries(meta_state) -> Array[Dictionary]:
 			"category": room.category, "clue": hint, "data": room})
 	return entries
 
-static func synergy_entries(meta_state) -> Array[Dictionary]:
+static func synergy_entries(meta_state, patterns_only := false) -> Array[Dictionary]:
 	var entries: Array[Dictionary] = []
-	var patterns: Array = Synergies.all_synergies()
+	var patterns: Array = Synergies.patterns() if patterns_only else Synergies.pairs()
 	for index in range(patterns.size()):
 		var pattern: Dictionary = patterns[index]
 		var known: bool = meta_state.discovered_synergy_ids.has(pattern.id) or meta_state.stabilized_synergy_ids.has(pattern.id)
-		entries.append({"id": pattern.id, "known": known, "title": pattern.name if known else "UNIDENTIFIED SYNERGY // %02d" % (index + 1),
-			"category": "SYNERGY", "clue": clue(pattern), "data": pattern})
+		entries.append({"id": pattern.id, "known": known, "title": pattern.name if known else "UNIDENTIFIED %s // %02d" % ["PATTERN" if patterns_only else "SYNERGY", index + 1],
+			"category": "PATTERN" if patterns_only else "SYNERGY", "clue": clue(pattern), "data": pattern})
 	return entries
 

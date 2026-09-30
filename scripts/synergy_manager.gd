@@ -1174,6 +1174,56 @@ const SYNERGIES := [
 		"stabilize_cycles": 3,
 		"fx_profile": "signal",
 		"fx_color": "7BA7B9"
+	},
+	# ---- Patterns: three rooms joined through matching doors (owner-approved Sept 29). All three must
+	# function; a pattern pays on top of any pair synergies among its rooms.
+	{
+		"id": "pattern_field_to_table", "kind": "pattern", "name": "Field to Table",
+		"rooms": ["hydroponics_bay", "galley", "crew_lounge"],
+		"bonus": {"food": 2},
+		"effect": "+2 Food per functioning cycle when the Hydroponics Bay, Galley and Crew Lounge are joined through matching doors.",
+		"message": "The salad reaches the table in the same shift it was harvested. Complaints have moved on to the salad.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "care", "fx_color": "BFA76C"
+	},
+	{
+		"id": "pattern_greenhouse_deck", "kind": "pattern", "name": "Greenhouse Deck",
+		"rooms": ["life_support", "biodome", "observation_room"],
+		"bonus": {"oxygen": 2},
+		"effect": "+2 Oxygen per functioning cycle when Life Support, the Biodome and the Observation Room are joined through matching doors.",
+		"message": "The plants breathe, the crew watches them breathe, and the station pretends this was the plan.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "flow", "fx_color": "75ABB3"
+	},
+	{
+		"id": "pattern_deep_survey", "kind": "pattern", "name": "Deep Survey",
+		"rooms": ["mining_drone_bay", "observation_room", "data_archive"],
+		"bonus": {"data": 2},
+		"effect": "+2 Data per functioning cycle when the Mining Drone Bay, Observation Room and Data Archive are joined through matching doors.",
+		"message": "The drone finds it, the window confirms it, the archive files it. Nobody is sure who asked.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "signal", "fx_color": "7BA7B9"
+	},
+	{
+		"id": "pattern_smelting_line", "kind": "pattern", "name": "Smelting Line",
+		"rooms": ["reactor", "mining_drone_bay", "ore_refinery"],
+		"bonus": {"metal": 2},
+		"effect": "+2 Metal per functioning cycle when the Reactor, Mining Drone Bay and Ore Refinery are joined through matching doors.",
+		"message": "Ore goes in warm and comes out useful. The reactor takes the credit.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "logistics", "fx_color": "B68D55"
+	},
+	{
+		"id": "pattern_steady_hands", "kind": "pattern", "name": "Steady Hands",
+		"rooms": ["salvage_drone_bay", "maintenance_bay", "command_center"],
+		"bonus": {"integrity": 1, "metal": 1},
+		"effect": "+1 Integrity and +1 Metal per functioning cycle when the Salvage Drone Bay, Maintenance Bay and Command Center are joined through matching doors.",
+		"message": "Repairs are assigned before the damage is admitted.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "containment", "fx_color": "8FB3A0"
+	},
+	{
+		"id": "pattern_recovery_ward", "kind": "pattern", "name": "Recovery Ward",
+		"rooms": ["crew_hab", "med_bay", "crew_lounge"],
+		"bonus": {"integrity": 1, "food": 1},
+		"effect": "+1 Integrity and +1 Food per functioning cycle when the Crew Hab, Med Bay and Crew Lounge are joined through matching doors.",
+		"message": "A bed, a clinic and a couch within shouting distance. Recovery statistics have improved.",
+		"terminal_reward": {"research": 5}, "stabilize_cycles": 3, "fx_profile": "care", "fx_color": "BFA76C"
 	}
 ]
 
@@ -1181,12 +1231,16 @@ static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 	var links := passage_links(occupied)
 	var seen_links := {}
 	for synergy in SYNERGIES:
-		if synergy.get("via_passage", false):
+		if synergy.get("via_passage", false) or is_pattern(synergy):
 			continue
 		var pairs := _find_adjacent_pairs(synergy["rooms"], occupied)
 		for pair in pairs:
 			if not within_passage_link(links, pair):
 				_add_link(links, seen_links, synergy, pair)
+	for synergy in SYNERGIES:
+		if not is_pattern(synergy): continue
+		for cells in _find_pattern_chains(synergy["rooms"], occupied):
+			_add_link(links, seen_links, synergy, cells)
 	for room in placed_rooms:
 		if room["id"] != "cryo_chamber":
 			continue
@@ -1207,6 +1261,16 @@ static func cycle_bonus(active_links, stabilized_ids: Dictionary = {}) -> Dictio
 
 static func all_synergies() -> Array:
 	return SYNERGIES
+
+static func is_pattern(synergy: Dictionary) -> bool:
+	return str(synergy.get("kind", "")) == "pattern"
+
+# The three-room chains, and the two-room pairs, listed separately for the Codex.
+static func patterns() -> Array:
+	return SYNERGIES.filter(func(synergy: Dictionary) -> bool: return is_pattern(synergy))
+
+static func pairs() -> Array:
+	return SYNERGIES.filter(func(synergy: Dictionary) -> bool: return not is_pattern(synergy))
 
 static func get_synergy(id: String) -> Dictionary:
 	for synergy in SYNERGIES:
@@ -1259,6 +1323,36 @@ static func _find_passage_pairs(room_ids: Array, occupied: Dictionary) -> Array:
 			for end in ends:
 				pairs.append([start, end, pos])
 	return pairs
+
+# A pattern's three rooms must form one connected cluster: some room among them connects through
+# matching doors to both of the others. Dead-end rooms (one door) can only be an end, so the middle is
+# whichever of the three has the doors. Cells come back as [end, middle, end]; a cluster found from
+# more than one middle is one link (the key sorts the cells).
+static func _find_pattern_chains(room_ids: Array, occupied: Dictionary) -> Array:
+	var chains := []
+	for middle_index in [1, 0, 2]:
+		var end_ids := []
+		for index in range(3):
+			if index != middle_index: end_ids.append(room_ids[index])
+		for pos in occupied:
+			var middle: Dictionary = occupied[pos]
+			if str(middle.get("id", "")) != room_ids[middle_index]:
+				continue
+			var starts := []
+			var ends := []
+			for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+				var neighbor_pos: Vector2i = pos + offset
+				var neighbor: Dictionary = occupied.get(neighbor_pos, {})
+				if not _rooms_connected(middle, neighbor, offset):
+					continue
+				if str(neighbor.get("id", "")) == end_ids[0]:
+					starts.append(neighbor_pos)
+				elif str(neighbor.get("id", "")) == end_ids[1]:
+					ends.append(neighbor_pos)
+			for start in starts:
+				for end in ends:
+					chains.append([start, pos, end])
+	return chains
 
 static func _find_adjacent_pairs(room_ids: Array, occupied: Dictionary) -> Array:
 	var pairs := []
@@ -1332,7 +1426,7 @@ static func _rotate_side(side: String, rotation_steps: int) -> String:
 	return sides[(index + rotation_steps) % sides.size()]
 
 static func _add_link(links: Array, seen_links: Dictionary, synergy: Dictionary, cells: Array) -> void:
-	var key := "%s:%s" % [synergy["id"], _cell_pair_key(cells[0], cells[1])]
+	var key := "%s:%s" % [synergy["id"], _cell_pair_key(cells[0], cells[1]) if cells.size() == 2 or is_pattern(synergy) == false else _chain_key(cells)]
 	if seen_links.has(key):
 		return
 	seen_links[key] = true
@@ -1340,6 +1434,12 @@ static func _add_link(links: Array, seen_links: Dictionary, synergy: Dictionary,
 	link["cells"] = cells.duplicate()
 	link["key"] = key
 	links.append(link)
+
+static func _chain_key(cells: Array) -> String:
+	var parts := []
+	for cell in cells: parts.append("%d,%d" % [cell.x, cell.y])
+	parts.sort()
+	return "-".join(parts)
 
 static func _cell_pair_key(a: Vector2i, b: Vector2i) -> String:
 	var first := a

@@ -10,6 +10,7 @@ const Synergies = preload("res://scripts/synergy_manager.gd")
 const Rooms = preload("res://scripts/room_database.gd")
 const PLAIN_SIZE := Vector2(470, 68)
 const REVEAL_SIZE := Vector2(520, 330)
+const WIDE_SIZE := Vector2(760, 330) # a pattern shows three room cards
 const SECONDS := 5.0
 
 # Returns true when the toast is a synergy reveal (and so should stay up longer).
@@ -17,14 +18,15 @@ static func configure(game, panel: PanelContainer, label: Label, message: String
 	var reveal: VBoxContainer = panel.get_node_or_null("SynergyReveal")
 	var synergy_id := record.trim_prefix("synergy:") if record.begins_with("synergy:") else ""
 	var synergy: Dictionary = Synergies.get_synergy(synergy_id) if not synergy_id.is_empty() else {}
-	var active := not synergy.is_empty() and (message.begins_with("PATTERN DISCOVERED") or message.begins_with("PATTERN STABILIZED"))
-	_size_panel(panel, REVEAL_SIZE if active else PLAIN_SIZE)
+	var noun := "PATTERN" if message.begins_with("PATTERN") else "SYNERGY"
+	var active := not synergy.is_empty() and (message.begins_with("PATTERN DISCOVERED") or message.begins_with("PATTERN STABILIZED") or message.begins_with("SYNERGY DISCOVERED") or message.begins_with("SYNERGY STABILIZED"))
+	_size_panel(panel, (WIDE_SIZE if synergy.get("rooms", []).size() > 2 else REVEAL_SIZE) if active else PLAIN_SIZE)
 	label.visible = not active
 	if reveal != null:
 		panel.remove_child(reveal)
 		reveal.queue_free()
 	if not active: return false
-	var stabilized := message.begins_with("PATTERN STABILIZED")
+	var stabilized := message.begins_with("PATTERN STABILIZED") or message.begins_with("SYNERGY STABILIZED")
 	var accent := Color("#" + str(synergy.get("fx_color", "55E6FF")).trim_prefix("#"))
 	reveal = VBoxContainer.new()
 	reveal.name = "SynergyReveal"
@@ -32,7 +34,7 @@ static func configure(game, panel: PanelContainer, label: Label, message: String
 	reveal.alignment = BoxContainer.ALIGNMENT_CENTER
 	reveal.add_theme_constant_override("separation", 6)
 	panel.add_child(reveal)
-	var header := _text("[center][color=#%s]◆  %s  ◆[/color][/center]" % [accent.lightened(0.25).to_html(false), "PATTERN STABILIZED" if stabilized else "PATTERN DISCOVERED"], 19)
+	var header := _text("[center][color=#%s]◆  %s  ◆[/color][/center]" % [accent.lightened(0.25).to_html(false), noun + (" STABILIZED" if stabilized else " DISCOVERED")], 19)
 	reveal.add_child(header)
 	var pair := HBoxContainer.new()
 	pair.name = "Cards"

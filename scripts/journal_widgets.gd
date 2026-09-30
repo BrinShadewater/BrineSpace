@@ -133,7 +133,7 @@ static func discoveries(game, box: VBoxContainer, signature: String) -> void:
 	footer.add_theme_constant_override("separation", 14)
 	box.add_child(footer)
 	if unknown > 0:
-		var note := _label("UNIDENTIFIED SYNERGIES REMAIN: %d" % unknown, 15, Color("718a97"))
+		var note := _label("UNIDENTIFIED SYNERGIES AND PATTERNS REMAIN: %d" % unknown, 15, Color("718a97"))
 		note.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		footer.add_child(note)
 	var codex := _action("OPEN THE CODEX", func() -> void: game._locate_diagnostic_room("codex"))
@@ -172,6 +172,7 @@ static func _synergy_card(game, synergy: Dictionary) -> Control:
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(title)
 	var pill_colour := GREEN if status.contains("STABILIZED") else AMBER if status.contains("STABILIZING") else RED if status.begins_with("DORMANT") else DIM
+	if Synergies.is_pattern(synergy): head.add_child(_pill("PATTERN", accent.lightened(0.3)))
 	head.add_child(_pill(status + (" x%d" % count if count > 1 else ""), pill_colour))
 	if status.contains("STABILIZING"):
 		var required := int(synergy.get("stabilize_cycles", 3))

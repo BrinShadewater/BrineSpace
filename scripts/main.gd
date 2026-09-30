@@ -2947,11 +2947,12 @@ func _handle_synergy_discovery(synergy_id: String) -> void:
 				"bonus": synergy.get("bonus", {})
 			})
 		break
-	_log("Pattern discovered: %s. %s" % [synergy.get("name", "Recovered pattern"), synergy.get("message", "BRINE recovered a functioning room pattern.")])
+	var noun := "PATTERN" if SynergyManagerScript.is_pattern(synergy) else "SYNERGY"
+	_log("%s discovered: %s. %s" % [noun.capitalize(), synergy.get("name", "Recovered pattern"), synergy.get("message", "BRINE recovered a functioning room pattern.")])
 	# Nobody talks over the discovery card (owner playtest, Sept 29): BRINE's line waits until it is gone.
 	var record := "synergy:" + synergy_id
 	held_comments[record] = ["brine", "A new connection. The station has done something I did not predict. I have recorded it. That does not mean I understand it.", "discovery/" + synergy_id]
-	_queue_center_toast("PATTERN DISCOVERED\n%s\nClick to review · Saved in Archive" % str(synergy.get("name", synergy_id)).to_upper(), record)
+	_queue_center_toast("%s DISCOVERED\n%s\nClick to review · Saved in Archive" % [noun, str(synergy.get("name", synergy_id)).to_upper()], record)
 	if cascade_toast == null or not (toast_playing or not toast_messages.is_empty()):
 		_release_held_comment(record)
 
@@ -2988,8 +2989,9 @@ func _award_synergy_stabilization(synergy: Dictionary) -> void:
 	# doubles in every loop, its related blueprint costs half in the shop, and it pays Data.
 	var research := int(synergy.get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
 	meta.add_research_points(research)
-	_log("Pattern stabilized: %s. Bonus doubled. +%d Archived Data." % [synergy_name, research])
-	_queue_center_toast("PATTERN STABILIZED\n%s\nBonus doubled · +%d Archived Data" % [synergy_name.to_upper(), research], "synergy:" + synergy_id)
+	var noun := "PATTERN" if SynergyManagerScript.is_pattern(synergy) else "SYNERGY"
+	_log("%s stabilized: %s. Bonus doubled. +%d Archived Data." % [noun.capitalize(), synergy_name, research])
+	_queue_center_toast("%s STABILIZED\n%s\nBonus doubled · +%d Archived Data" % [noun, synergy_name.to_upper(), research], "synergy:" + synergy_id)
 	_burst_synergy_link(synergy)
 
 func _synergy_by_id(synergy_id: String) -> Dictionary:
@@ -5359,7 +5361,7 @@ func _refresh_archive() -> void:
 		lines.append("[color=#a7bac1]An empty record, a station full of possibilities.\n\nConnect different rooms through matching doors. Let them function.\nWatch the rooms themselves for the first sign of a discovery.\n\nStabilized blueprints stay with you across reboots, and a new prototype\nis placed on top of your current draw pile.[/color]\n")
 	var unknown_count := SynergyManagerScript.all_synergies().size() - discovered_count
 	if unknown_count > 0:
-		lines.append("[color=#718a97]UNIDENTIFIED SYNERGIES REMAIN: %d[/color]" % unknown_count)
+		lines.append("[color=#718a97]UNIDENTIFIED SYNERGIES AND PATTERNS REMAIN: %d[/color]" % unknown_count)
 	lines.append("\n[url=codex][color=#79b8d9]OPEN THE CODEX  ▸[/color][/url]")
 	_set_journal_text(_join_strings(lines, "\n"))
 	if journal_button != null:

@@ -50,6 +50,9 @@ const SYNERGY_WIDTH := 400
 # Sept 29). The rules panel stretches to fill whatever the clue or effect text leaves free.
 const SYNERGY_HEIGHT := 390
 const SYNERGIES_PER_ROW := 3
+# A pattern card holds three room cards, so two fit across.
+const PATTERN_WIDTH := 620
+const PATTERNS_PER_ROW := 2
 var progression_cards: GridContainer
 var progression_tab := 0
 const MetaShop = preload("res://scripts/meta_shop.gd")
@@ -131,6 +134,7 @@ func _build() -> void:
 		codex_tabs.focus_mode = Control.FOCUS_ALL
 		codex_tabs.add_tab("ROOMS")
 		codex_tabs.add_tab("SYNERGIES")
+		codex_tabs.add_tab("PATTERNS")
 		codex_tabs.add_tab("TRANSMISSIONS")
 		codex_tabs.current_tab = codex_tab
 		codex_tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -293,9 +297,9 @@ func _label(text: String, font_size: int = 18) -> Label:
 func _layout() -> void:
 	if is_instance_valid(grid):
 		var scale: float = preload("res://scripts/title_settings.gd").text_scale
-		var cell := (CARD_WIDTH + 18) if codex_tab == 0 else (SYNERGY_WIDTH + 18)
+		var cell := (CARD_WIDTH + 18) if codex_tab == 0 else (PATTERN_WIDTH + 18 if codex_tab == 2 else SYNERGY_WIDTH + 18)
 		var fits := maxi(1, int((size.x - 140) / (cell * scale)))
-		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else SYNERGIES_PER_ROW, fits) if mode == "codex" and codex_tab != 2 else 1
+		grid.columns = mini(CARDS_PER_ROW if codex_tab == 0 else (PATTERNS_PER_ROW if codex_tab == 2 else SYNERGIES_PER_ROW), fits) if mode == "codex" and codex_tab != 3 else 1
 		grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if is_instance_valid(progression_cards):
 		var wide: int = CARDS_PER_ROW if progression_cards.name == "BlueprintShop" else 4
@@ -308,17 +312,18 @@ func _populate_cards() -> void:
 		child.queue_free()
 	room_ids.clear()
 	visible_entries.clear()
-	search.visible = codex_tab != 2
-	codex_filter.visible = codex_tab != 2
-	codex_hint.visible = codex_tab != 2
+	search.visible = codex_tab != 3
+	codex_filter.visible = codex_tab != 3
+	codex_hint.visible = codex_tab != 3
+	codex_hint.text = "Join three named rooms through matching doors and keep all three functioning to discover a pattern. Patterns pay on top of the synergies inside them." if codex_tab == 2 else "Connect neighboring rooms and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward."
 	codex_sort.visible = codex_tab == 0
-	if codex_tab == 2:
+	if codex_tab == 3:
 		grid.columns = 1
 		preload("res://scripts/transmission_archive.gd").populate(self)
 		codex_count.text = "%d RECORDINGS RECOVERED" % preload("res://scripts/transmission_archive.gd").available(meta_state).size()
 		return
 	_layout()
-	var entries: Array[Dictionary] = Catalog.room_entries(meta_state) if codex_tab == 0 else Catalog.synergy_entries(meta_state)
+	var entries: Array[Dictionary] = Catalog.room_entries(meta_state) if codex_tab == 0 else Catalog.synergy_entries(meta_state, codex_tab == 2)
 	# Partition the catalog without changing the stable numbering of hidden entries.
 	var recovered: Array[Dictionary] = []
 	var hidden: Array[Dictionary] = []
@@ -355,7 +360,7 @@ func _populate_cards() -> void:
 		if codex_tab == 0:
 			grid.add_child(_codex_room_card(entry))
 			continue
-		if codex_tab == 1:
+		if codex_tab in [1, 2]:
 			grid.add_child(_codex_synergy_card(entry))
 			continue
 		var data: Dictionary = entry.data
@@ -426,7 +431,7 @@ func _populate_cards() -> void:
 				body.add_child(_label("REWARD  " + reward_name, 15))
 			elif data.has("terminal_reward"):
 				body.add_child(_label("REWARD  " + _resources(data.terminal_reward), 15))
-	codex_count.text = "%d / %d %s RECOVERED    //    %d SHOWN" % [known_count, entries.size(), "ROOMS" if codex_tab == 0 else "SYNERGIES", visible_entries.size()]
+	codex_count.text = "%d / %d %s RECOVERED    //    %d SHOWN" % [known_count, entries.size(), "ROOMS" if codex_tab == 0 else ("PATTERNS" if codex_tab == 2 else "SYNERGIES"), visible_entries.size()]
 	if visible_entries.is_empty():
 		var empty := VBoxContainer.new()
 		empty.add_theme_constant_override("separation", 16)
@@ -633,7 +638,8 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 	var accent := Color(str(data.get("fx_color", "72d9dc"))) if known else Color("45616f")
 	var card := PanelContainer.new()
 	card.name = "CodexSynergy_" + str(entry.id)
-	card.custom_minimum_size = Vector2(SYNERGY_WIDTH, SYNERGY_HEIGHT)
+	var noun := "PATTERN" if data.rooms.size() > 2 else "SYNERGY"
+	card.custom_minimum_size = Vector2(PATTERN_WIDTH if data.rooms.size() > 2 else SYNERGY_WIDTH, SYNERGY_HEIGHT)
 	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	card.add_theme_stylebox_override("panel", _card_box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 0))
 	var body := VBoxContainer.new()
@@ -692,7 +698,7 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 		hidden_footer.add_theme_color_override("font_color", Color("5e8293"))
 		body.add_child(hidden_footer)
 		return card
-	var ribbon := _label("SYNERGY" if stabilized else "DISCOVERED", 12)
+	var ribbon := _label(noun if stabilized else "DISCOVERED", 12)
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
 	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
@@ -713,7 +719,7 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 		lines.add_child(_label("Stabilize over %d consecutive functioning cycles." % data.get("stabilize_cycles", 3), 15))
 	var reward: String = data.get("unlock_room_id", "")
 	var data_reward := int(data.get("terminal_reward", {}).get("research", 0)) + MetaShop.STABILIZE_DATA
-	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % ["SYNERGY" if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 15))
+	lines.add_child(_rich("[color=#e0b36a]%s[/color]  Bonus doubled in every loop%s" % [noun if stabilized else "AT STABILIZE", "" if stabilized else ", +%d Archived Data" % data_reward], 15))
 	if not reward.is_empty():
 		lines.add_child(_rich("[color=#79b8d9]BLUEPRINT[/color]  %s half price once stabilized" % rooms[reward].display_name, 15))
 	return card
