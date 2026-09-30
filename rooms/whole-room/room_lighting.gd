@@ -384,15 +384,20 @@ static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: floa
 		if view != null:
 			var visual: Rect2 = view.prop_visual_bounds(prop)
 			rise=clampf(visual.size.y-foot.size.y,8.0,85.0)
-		# A corner piece stands on the two arms of its L (its collision boxes), not on the whole art box, whose
-		# inside is open floor. Shading the box made a big dark square in the Brine Core.
-		var feet: Array = [foot]
-		if not prop.has("footprint") and prop.has("corner") and not prop.get("collision_boxes",[]).is_empty():
-			feet = []
-			for box in prop.collision_boxes:
-				feet.append(Rect2(rect.position+rect.size*Vector2(float(box[0]),float(box[1])),rect.size*Vector2(float(box[2]),float(box[3]))))
+		var feet := shadow_feet(prop,foot)
 		for part in feet:
 			_draw_foot_shadow(canvas,part,rise,level,hull)
+
+# The floor areas a prop shades. A corner piece stands on the two arms of its L (its collision boxes), not on
+# the whole art box, whose inside is open floor: shading the box made a big dark square in the Brine Core
+# (owner, Sept 29). Props with a footprint, and ordinary props, shade one area.
+static func shadow_feet(prop: Dictionary, foot: Rect2) -> Array:
+	if prop.has("footprint") or not prop.has("corner") or prop.get("collision_boxes",[]).is_empty(): return [foot]
+	var rect: Rect2 = prop.get("rect",Rect2())
+	var arms: Array = []
+	for box in prop.collision_boxes:
+		arms.append(Rect2(rect.position+rect.size*Vector2(float(box[0]),float(box[1])),rect.size*Vector2(float(box[2]),float(box[3]))))
+	return arms
 
 # One footprint's shadow: a short directional shade plus soft contact bands. Corner installations pass
 # each arm of their L separately, so the empty inside of the corner is not shaded (owner, Sept 29).
