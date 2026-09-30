@@ -5187,57 +5187,66 @@ func _refresh_inspector_contents() -> void:
 	preview_name_label.add_theme_color_override("font_color", UI_ACCENT_BRIGHT)
 	preview_tags_label.text = "CLASS: %s     %s" % [str(room.get("category", "")).to_upper(), str(room.get("rarity", "")).to_upper()]
 	preview_tags_label.add_theme_color_override("font_color", Color("#95a7a0"))
+	# The inspector reads in labelled sections (owner, Sept 30): the build decision for a card; status,
+	# the next-cycle forecast, resources and the room's story for a placed room.
 	var preview_lines: Array[String] = []
+	var drone_bay: bool = room.id in ["mining_drone_bay","salvage_drone_bay"]
 	if previewing_card:
+		preview_lines.append(_inspector_section("BUILD", true))
 		preview_lines.append("[b]Build cost:[/b] " + _format_cost(room.get("cost",{})))
 		var shortfall := _missing_cost(room.get("cost",{}))
 		preview_lines.append("[color=#eaa88b]Need " + _format_cost(shortfall) + " more[/color]" if not shortfall.is_empty() and not testing_free_build else "[color=#abd2b5]Materials available[/color]")
-		preview_lines.append("[b]" + ("Cargo per load: " if room.id in ["mining_drone_bay","salvage_drone_bay"] else "Output / cycle: ") + "[/b]" + (_format_cost(room.production) if not room.get("production",{}).is_empty() else "None"))
+		preview_lines.append("[b]" + ("Cargo per load: " if drone_bay else "Output / cycle: ") + "[/b]" + (_format_cost(room.production) if not room.get("production",{}).is_empty() else "None"))
 		preview_lines.append("[b]Inputs / cycle:[/b] " + (_format_cost(room.consumption) if not room.get("consumption",{}).is_empty() else "None"))
 		if room.has("fixed_rotation"): preview_lines.append("Fixed orientation. Doors: " + _join_strings(get_room_doors(room)," / "))
 	if not previewing_card and room.has("pos"):
 		var operation := str(offline_reasons.get(room["pos"], "FUNCTIONING" if powered_room_cells.has(room["pos"]) else "AWAITING CYCLE"))
-		preview_lines.append("[color=#f0c67a]CURRENT STATUS // %s[/color]" % operation)
+		preview_lines.append(_inspector_section("CURRENT STATUS", true))
+		preview_lines.append("[color=#f0c67a]%s[/color]" % operation)
 		preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(operation))
+		var fire_info := preload("res://scripts/room_fire.gd").inspector(self,room)
+		if not fire_info.is_empty(): preview_lines.append(fire_info)
+		preview_lines.append(preload("res://scripts/room_flooding.gd").inspector(self,room))
+		if room.get("local_incident",false) and float(room.get("hull_crack",0))<=0:preview_lines.append("[color=#e6aa72]LOCAL CONTAINMENT FAULT[/color]\n[url=repair:%d:%d]Repair containment — 2 Metal[/url]" % [room.pos.x,room.pos.y])
 		var forecast := _simulate_room_economy(true, cycle + 1)
-		preview_lines.append("[color=#9fdfdc]NEXT CYCLE FORECAST // %s[/color]" % str(forecast.offline.get(room.pos, "INPUTS AVAILABLE")))
+		preview_lines.append(_inspector_section("NEXT CYCLE FORECAST"))
+		preview_lines.append("[color=#9fdfdc]%s[/color]" % str(forecast.offline.get(room.pos, "INPUTS AVAILABLE")))
 		if room.id == "current_turbine":
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").turbine_intake(self,room))
 		var next_reason := str(forecast.offline.get(room.pos,""))
 		if not next_reason.is_empty() and next_reason != operation:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(next_reason))
-		preview_lines.append(preload("res://scripts/station_navigation.gd").actions(room.pos,next_reason if not next_reason.is_empty() else operation))
-		if room.id in ["mining_drone_bay","salvage_drone_bay"]:
+		if drone_bay:
 			preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused,wrecks,room.get("suspended",false)))
 		if room.id in ["construction_drone_bay","mining_drone_bay","salvage_drone_bay","brine_core"]:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").power_demand(self))
 		if room.id=="survey_probe_bay":preview_lines.append(preload("res://scripts/survey_probe.gd").status(room))
-		preview_lines.append("Forecast uses current shared inputs and learned bonuses; events can change the outcome.")
+		preview_lines.append("[color=#6f858e]Forecast uses current shared inputs and learned bonuses; events can change the outcome.[/color]")
+		preview_lines.append(preload("res://scripts/station_navigation.gd").actions(room.pos,next_reason if not next_reason.is_empty() else operation))
+	elif not previewing_card:
+		preview_lines.push_front(preload("res://scripts/room_flooding.gd").inspector(self,room))
+		var fire_only := preload("res://scripts/room_fire.gd").inspector(self,room)
+		if not fire_only.is_empty(): preview_lines.push_front(fire_only)
 	if not previewing_card:
-		preview_lines.append(_preview_divider())
-		preview_lines.append("[color=#%s]%s[/color]" % [UI_ACCENT_BRIGHT.to_html(false),"CARGO / EXTRACTION LOAD" if room.id in ["mining_drone_bay","salvage_drone_bay"] else "BASE OUTPUT / FUNCTIONING CYCLE"])
-		preview_lines.append(_format_effect_rows(room.get("production", {}), "+", false,room.id not in ["mining_drone_bay","salvage_drone_bay"]))
-	if room.id in ["mining_drone_bay","salvage_drone_bay"]:
-		preview_lines.append("Extracts one load per 6 seconds from a finite surveyed site. Cargo enters storage on return. Battery supports 12 seconds of extraction; 1 station Power restores 6 seconds at the bay. Keep an exterior route open.")
-	if not previewing_card and not room.get("consumption", {}).is_empty():
-		preview_lines.append("[color=#c85b61]REQUIRED INPUT / CYCLE[/color]")
-		preview_lines.append(_format_effect_rows(room.get("consumption", {}), "-", true))
+		preview_lines.append(_inspector_section("RESOURCES"))
+		preview_lines.append("[color=#%s]%s[/color]" % [UI_ACCENT_BRIGHT.to_html(false),"CARGO / EXTRACTION LOAD" if drone_bay else "BASE OUTPUT / FUNCTIONING CYCLE"])
+		preview_lines.append(_format_effect_rows(room.get("production", {}), "+", false,not drone_bay))
+		if not room.get("consumption", {}).is_empty():
+			preview_lines.append("[color=#c85b61]REQUIRED INPUT / CYCLE[/color]")
+			preview_lines.append(_format_effect_rows(room.get("consumption", {}), "-", true))
 	if not room.get("storage", {}).is_empty():
+		if previewing_card: preview_lines.append(_inspector_section("RESOURCES"))
 		preview_lines.append("[color=#7f929c]STORAGE[/color]")
 		preview_lines.append("[color=#9fb2bc]%s[/color]" % _format_storage(room.get("storage", {})))
-	preview_lines.append(_preview_divider())
-	preview_lines.append("[b]Room details[/b]\n" + str(room.get("description","")))
-	_append_room_synergy_preview(preview_lines, room)
-	preview_lines.append(_preview_divider())
-	preview_lines.append("[color=#596d77]%s[/color]" % _room_flavor_line(room))
+	if drone_bay:
+		preview_lines.append("Extracts one load per 6 seconds from a finite surveyed site. Cargo enters storage on return. Battery supports 12 seconds of extraction; 1 station Power restores 6 seconds at the bay. Keep an exterior route open.")
+	preview_lines.append(_inspector_section("ABOUT"))
+	preview_lines.append(str(room.get("description","")))
 	if not previewing_card and room.get("id","")=="listening_post":preview_lines.append(preload("res://scripts/listening_post.gd").inspector(self,room))
 	if not previewing_card and room.get("id","") in ["pressure_control","isolation_vault"]:preview_lines.append(preload("res://scripts/rare_branch_control.gd").inspector(self,room))
-	if not previewing_card and room.get("local_incident",false) and float(room.get("hull_crack",0))<=0:preview_lines.append("[color=#e6aa72]LOCAL CONTAINMENT FAULT[/color]\n[url=repair:%d:%d]Repair containment — 2 Metal[/url]" % [room.pos.x,room.pos.y])
 	if room.get("tags",[]).has("containment_risk"):preview_lines.append("Containment fault risk: a functioning risk room can develop a local fault every 8 cycles. Uncontained faults spread through connected doors and damage Integrity. Repair costs 2 Metal per room.")
-	if not previewing_card:
-		preview_lines.push_front(preload("res://scripts/room_flooding.gd").inspector(self,room))
-		var fire_info := preload("res://scripts/room_fire.gd").inspector(self,room)
-		if not fire_info.is_empty(): preview_lines.push_front(fire_info)
+	preview_lines.append("[color=#596d77]%s[/color]" % _room_flavor_line(room))
+	_append_room_synergy_preview(preview_lines, room)
 	_set_inspector_text(_join_strings(preview_lines, "\n"))
 	inspector_focus_button.disabled = previewing_card or not room.has("pos")
 	inspector_focus_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
@@ -5258,7 +5267,7 @@ func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 				relevant.append(synergy)
 		else:
 			unknown_count += 1
-	lines.append("[color=#%s]SYNERGIES[/color]" % UI_ACCENT_BRIGHT.to_html(false))
+	lines.append(_inspector_section("SYNERGIES"))
 	lines.append("[color=#607784]%d learned for this room[/color]" % relevant.size())
 	if relevant.is_empty():
 		lines.append("[color=#9aafb9]No recovered patterns for this room yet.[/color]")
@@ -5338,6 +5347,12 @@ func _synergy_runtime_status(synergy_id: String) -> String:
 	if is_connected:
 		return "DORMANT · RESTORE ROOM SUPPLIES"
 	return "STABILIZED" if is_stabilized else "DISCOVERED"
+
+# A section title in the inspector text: small and set apart by a blank line (none before the first).
+func _inspector_section(title: String, first := false) -> String:
+	var heading := "[font_size=13][color=#6fa5a0]%s[/color][/font_size]" % title
+	return heading if first else "
+" + heading
 
 func _preview_divider() -> String:
 	return "[color=#34434a]────────────────────────[/color]"

@@ -111,7 +111,7 @@ func run() -> void:
 	game._refresh_inspector()
 	game._refresh_placement_status()
 	check(game.placement_feedback.visible and game.placement_feedback.text.contains("Need Metal 5"),"Placement reports the exact material shortfall visibly")
-	check(game.inspector_label.text.find("Build cost:") < game.inspector_label.text.find("Room details"),"Inspector prioritizes build decision before description")
+	check(game.inspector_label.text.find("Build cost:") < game.inspector_label.text.find("ABOUT"),"Inspector prioritizes build decision before description")
 	game.resources.metal = 100
 	game._refresh_placement_status()
 	check(game.placement_feedback.text.contains("READY TO BUILD"),"Affordable matched door gives ready feedback")
