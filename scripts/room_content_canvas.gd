@@ -147,12 +147,21 @@ func submit(view, queue: Array) -> void:
 # The host skipped this room's configure/submit because none of its inputs
 # changed. Only the machine clock moves (configure sets it to visual time), so
 # refresh it and redraw the live slots; static slots stay retained.
-func advance_live(clock: float) -> void:
+func advance_live(clock: float, water := -1.0) -> void:
 	# Nothing was prepared this frame; paints below accumulate draw time afresh.
 	prepare_usec = 0
 	draw_usec = 0
 	if view_state.has("machine_clock"): view_state["machine_clock"] = clock
 	if view_state.has("flood_clock"): view_state["flood_clock"] = clock
+	# Submerged props animate through their shader: move its clock, the level (a draining room
+	# changes it slightly every frame; the host keys only wet or dry) and the waterline, which is
+	# in global coordinates and follows a held pan, without re-preparing the room.
+	if water >= 0.0 and view_state.has("flood_water"): view_state["flood_water"] = water
+	water = float(view_state.get("flood_water",0))
+	if water > 0.001:
+		for slot in slots:
+			if slot.visible and slot.material != null and slot.item.kind in ["prop","prop_base","prop_effects","prop_pass"]:
+				preload("res://scripts/flood_visuals.gd").prop_material(slot,slot.item.prop,water,clock,draw_origin,draw_scale)
 	for slot in slots:
 		if slot.visible and slot.live: slot.queue_redraw()
 

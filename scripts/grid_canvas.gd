@@ -2017,7 +2017,9 @@ func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Ve
 func _room_setup_skippable(main, room: Dictionary, view) -> bool:
 	if room.get("id","") in ["brine_core","airlock","salvage_workshop","cryo_chamber","survey_probe_bay"] or room.get("recovered_derelict",false): return false
 	if main.Companions.is_site(main,room.pos): return false
-	if preload("res://scripts/room_flooding.gd").level(room) > 0.0: return false
+	# Flooded rooms reuse their canvas too: wet or dry is in the frame key, and the canvas
+	# moves the water level and clock itself (a flooded solar array reconfigured a shared
+	# view every frame, 2.3 ms on a large station, Sept 30 probe).
 	if not _plain_retained_view(view): return false
 	return not _room_has_actor(main,room.pos)
 
@@ -2082,7 +2084,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		var Store = preload("res://scripts/room_layout_store.gd")
 		frame_key = [room_view.get_instance_id(),int(room.get("rotation",0)),sides,omitted,main.powered_room_cells.has(pos),main.hardware.walls,
 			preload("res://scripts/title_settings.gd").raised_walls,main.occupied.has(pos+Vector2i.UP),main.drone_fleet.deployed(pos),main.drone_fleet.hatch_fraction(pos),
-			[rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size],Store.revision,Store.geometry_revision,
+			[rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size],Store.revision,Store.geometry_revision,preload("res://scripts/room_flooding.gd").level(room) > 0.001,
 			preload("res://scripts/room_layout_store.gd").apply_serial(room_view,int(room.get("rotation",0)))]
 		var stored: Array = room_frame_keys.get(pos,[])
 		# Panning alone must not rebuild a room whose canvas already holds every prop in view: two rooms of one
@@ -2107,7 +2109,7 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 			# A canvas kept through a zoom animation scales from the cell size it was built at.
 			content_canvases[pos].scale = Vector2.ONE * (_cell_size() / float(content_canvases[pos].get_meta("built_cell", _cell_size())))
 			if main.drone_fleet.drones.has(pos): content_canvases[pos].view_state["drone_visual"] = main.drone_fleet.drones[pos].duplicate(true)
-			content_canvases[pos].advance_live(main.get_visual_time_seconds())
+			content_canvases[pos].advance_live(main.get_visual_time_seconds(),preload("res://scripts/room_flooding.gd").level(room))
 			skipped_room_setups += 1
 			return
 	var detail_mark := Time.get_ticks_usec() if profile_draw else 0
