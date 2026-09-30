@@ -86,8 +86,14 @@ static func draw_fixtures(canvas: CanvasItem, level: float, white := false, warm
 # A soft glow around a lit lamp (owner playtest, Sept 29; spec 2026-09-29-lighting-atmosphere-design.md).
 # The texture falls off in five visible bands with light ordered dithering, so it reads as painted pixel
 # art rather than a blur, and it is drawn with the room's light level so it fades with the lamp.
+const LightingArt = preload("res://scripts/lighting_art.gd")
 static var _halo: ImageTexture
-static func halo_texture() -> ImageTexture:
+static func halo_texture(kind: String = "warm") -> Texture2D:
+	var authored := LightingArt.texture(kind)
+	if authored != null: return authored
+	return procedural_halo_texture()
+
+static func procedural_halo_texture() -> ImageTexture:
 	if _halo != null: return _halo
 	var size := 64
 	var image := Image.create(size, size, false, Image.FORMAT_RGBA8)
@@ -135,7 +141,7 @@ static func draw_halos(canvas: CanvasItem, level: float, white := false, warm :=
 		var settings: Dictionary=entry if entry is Dictionary else {}
 		var energy:=clampf(level*float(settings.get("brightness",1.0)),0,1)
 		if energy < 0.05: continue
-		canvas.draw_texture_rect(halo_texture(), Rect2(anchor - Vector2(70, 46), Vector2(140, 140)), false, Color(tint.r, tint.g, tint.b, 0.30 * energy))
+		canvas.draw_texture_rect(halo_texture("warm" if warm or not white else "cool"), Rect2(anchor - Vector2(70, 46), Vector2(140, 140)), false, Color(tint.r, tint.g, tint.b, 0.30 * energy))
 
 # ---- Stage 2: the light map (spec 2026-09-29-lighting-atmosphere-design.md) ----
 # A hidden viewport at a quarter of the station view's size holds each room's ambient brightness and
@@ -144,8 +150,8 @@ static func draw_halos(canvas: CanvasItem, level: float, white := false, warm :=
 # offset, so scrolling never repaints it; only a change in room light, zoom or blackout phase does.
 const TitleSettings = preload("res://scripts/title_settings.gd")
 const MAP_SCALE := 4.0
-const LIT_AMBIENT := 0.90
-const DARK_AMBIENT := 0.55   # owner: unpowered rooms lighter than the audition's 0.36
+const LIT_AMBIENT := 0.98   # owner playtest Sept 29: rooms a little too dark, so lit rooms barely dim
+const DARK_AMBIENT := 0.62   # owner: unpowered rooms lighter than the audition's 0.36
 # Blackout red: one slow pulse every two seconds (well under the three-a-second guideline) and a
 # beacon that circles each door at a quarter turn a second. Reduced Motion holds both still.
 const EMERGENCY_PERIOD := 2.0
@@ -272,6 +278,15 @@ static func draw_ambient(node: Node2D, game) -> void:
 
 static func _blob(node: Node2D, at: Vector2, radius: Vector2, color: Color) -> void:
 	node.draw_texture_rect(halo_texture(), Rect2(at - radius, radius * 2.0), false, color)
+
+static func _beacon(node: Node2D, at: Vector2, radius: Vector2, angle: float, color: Color) -> void:
+	var sprite := LightingArt.texture("beacon")
+	if sprite == null:
+		_blob(node, at, radius, color)
+		return
+	node.draw_set_transform(at, angle)
+	node.draw_texture_rect(sprite, Rect2(-radius, radius * 2.0), false, color)
+	node.draw_set_transform(Vector2.ZERO)
 
 static func draw_lights(node: Node2D, game) -> void:
 	if not game_is_current(game): return

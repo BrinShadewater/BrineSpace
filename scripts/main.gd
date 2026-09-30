@@ -2081,7 +2081,7 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> Butt
 	button.pressed.connect(callable)
 	button.add_theme_font_size_override("font_size", 17)
 	preload("res://scripts/title_button_style.gd").apply(button, 280, 50, text == "Resume Cycle")
-	if text == "Codex": preload("res://scripts/navigation_badge.gd").apply(button, "codex")
+	# No icon on Codex & Discoveries (owner playtest, Sept 29); the HUD Archive button carries the unread count.
 	parent.add_child(button)
 	if text == "Resume Cycle":
 		menu_resume_button = button
@@ -3820,7 +3820,7 @@ func _center_grid_on_station_deferred() -> void:
 func _make_vignette() -> TextureRect:
 	var gradient := Gradient.new()
 	gradient.offsets = PackedFloat32Array([0.0, 0.55, 1.0])
-	gradient.colors = PackedColorArray([Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0.01, 0.03, 0.04, 0.42)])
+	gradient.colors = PackedColorArray([Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0.01, 0.03, 0.04, 0.34)])
 	var texture := GradientTexture2D.new()
 	texture.gradient = gradient
 	texture.fill = GradientTexture2D.FILL_RADIAL

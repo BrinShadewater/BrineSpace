@@ -319,6 +319,10 @@ func _ready() -> void:
 		layer.name = ["Floors","FloorsRest","Walls","RearDoors","LiveContents","FrontDoors","Lights","Foreground"][id]
 		add_child(layer)
 		surface_passes.append(layer)
+	life_over = LifeOverPass.new()
+	life_over.host = self
+	life_over.name = "LifeOverStation"
+	add_child(life_over)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_generate_star_points()
 	space_background_texture = _load_png_texture("res://legacy/retired/space texture.jpg")
@@ -760,6 +764,14 @@ var zoom_reuse_active := false
 # on a layer group's frame.
 # A layer whose real inputs change while settling still repaints at once.
 var pending_layers := {}
+# Large sea life that passes over the station is drawn after every surface pass.
+var life_over: Node2D
+class LifeOverPass extends Node2D:
+	var host
+	func _draw() -> void:
+		var started := Time.get_ticks_usec()
+		host._draw_life_over(self)
+		host.draw_usec_since_read += Time.get_ticks_usec()-started
 var zoom_preparing := false
 var zoom_prepare_asks := 0
 var zoom_prepare_groups_left := 0
@@ -976,7 +988,6 @@ func _draw_grid() -> void:
 		if profile_draw: environment_stage = _profile_draw_stage("env_stars",environment_stage)
 		_draw_underwater_depth()
 		if profile_draw: environment_stage = _profile_draw_stage("env_haze",environment_stage)
-		env_passes[Env.LIFE].queue_redraw()
 		_draw_foundations()
 		_draw_foundations(true)
 		if profile_draw: environment_stage = _profile_draw_stage("env_foundations",environment_stage)
@@ -1011,6 +1022,8 @@ func _draw_grid() -> void:
 	if profile_draw: _profile_draw_stage("door_light_validation",checked)
 	_flush_retained_layers(cell_size)
 	surface_passes[Surface.LIVE].queue_redraw()
+		env_passes[Env.LIFE].queue_redraw()
+		life_over.queue_redraw()
 	surface_passes[Surface.FOREGROUND].queue_redraw()
 	render_door_cache_active = false
 
@@ -1028,6 +1041,7 @@ func _update_zoom_cover(main, cell_size: float) -> void:
 			zoom_settling = true
 			settle_backlog = true
 		_end_zoom_reuse(main,cell_size)
+		life_over.queue_redraw()
 		return
 	var view := _cells_of(_view_rect(main),cell_size)
 	if not zoom_reuse_active:
@@ -1304,9 +1318,6 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 func _draw_surface(target: CanvasItem, pass_id: int) -> void:
 	_mark_built(target)
 	render_door_cache_active = reuse_frame_doors
-		Env.LIFE:
-			# Sea life sits above the fog (which has its own shader) and below the station.
-			preload("res://scripts/ocean_life.gd").draw(target,main,cell_size,_view_rect(main))
 	draw_target = target
 	_paint_surface(pass_id)
 	draw_target = self
@@ -1339,10 +1350,18 @@ func _draw_underwater_depth(part := "all") -> void:
 	var clock: float = main.get_visual_time_seconds()
 	for y in range(first.y,last.y+1):
 		for x in range(first.x,last.x+1):
+		Env.LIFE:
+			# Sea life sits above the fog (which has its own shader) and below the station.
+			preload("res://scripts/ocean_life.gd").draw(target,main,cell_size,_view_rect(main))
 			var cell := Vector2(x,y)
 			if part != "lines":
 				var distance := cell.distance_to(Vector2(20,20))
 				# Haze affects the seabed only; elevated room art stays crisp.
+func _draw_life_over(target: CanvasItem) -> void:
+	var main = _get_main()
+	if main == null or not main.has_method("get_cell_size"): return
+	preload("res://scripts/ocean_life.gd").draw_over(target, main, _cell_size(), _view_rect(main))
+
 				draw_target.draw_rect(Rect2(cell*size,Vector2.ONE*size),Color(0.07,0.20,0.24,clampf(distance*0.004,0.025,0.10)))
 			if part == "rects": continue
 			if posmod(x*7+y*11,3)!=0: continue
@@ -1771,10 +1790,45 @@ func _draw_room_selection(main, cell_size: float) -> void:
 			var ward: Dictionary = main.wrecks.get(cell, {})
 			if strength < 1.0 or ward.is_empty() or ward.get("cleared", false): continue
 			if not (str(ward.get("kind", "")) in ["cryo", "charging"] or main.Companions.IDS.has(ward.get("kind", ""))): continue
-		var outline := _room_outline(room, cell, cell_size)
 		var width := clampf(cell_size / 200.0, 1.0, 2.5)
-		draw_target.draw_polyline(outline, Color(0.0, 0.0, 0.0, 0.45 * strength), width + 2.0)
-		draw_target.draw_polyline(outline, Color(0.93, 0.89, 0.8, 0.8 * strength), width)
+		var pieces: Array = _room_outline_pieces(room, cell, cell_size)
+		for outline in pieces:
+			draw_target.draw_polyline(outline, Color(0.0, 0.0, 0.0, 0.45 * strength), width + 2.0)
+			draw_target.draw_polyline(outline, Color(0.93, 0.89, 0.8, 0.8 * strength), width)
+
+# The hover outline as separate pieces, with a gap where each door is (owner playtest, Sept 29: the outline
+# ran across the doors). Large rooms and corridors keep their single outline.
+func _room_outline_pieces(room: Dictionary, cell: Vector2i, cell_size: float) -> Array:
+	var whole := _room_outline(room, cell, cell_size)
+	if room.is_empty() or room.get("size", Vector2i.ONE) != Vector2i.ONE or _is_narrow_corridor(room):
+		return [whole]
+	var doors: Array = _get_main().get_room_doors(room)
+	var top := -191.0
+	if _uses_layered_art(room) and _riser_fixtures_visible(room):
+		top = preload("res://rooms/whole-room/riser_geometry.gd").CAP_TOP
+	var gap := 62.0 # half the doorway, in 384-unit cell space, with a little frame room
+	var edges := [
+		["north", Vector2(-191, top), Vector2(191, top), 0.0, top == -191.0],
+		["east", Vector2(191, top), Vector2(191, 191), 0.0, true],
+		["south", Vector2(191, 191), Vector2(-191, 191), 0.0, true],
+		["west", Vector2(-191, 191), Vector2(-191, top), 0.0, true],
+	]
+	var centre := (Vector2(cell) + Vector2.ONE * 0.5) * cell_size
+	var scale := cell_size / 384.0
+	var pieces: Array = []
+	for edge in edges:
+		var a: Vector2 = edge[1]
+		var b: Vector2 = edge[2]
+		if not (edge[0] in doors and edge[4]):
+			pieces.append(PackedVector2Array([centre + a * scale, centre + b * scale]))
+			continue
+		# The gap is centred on the cell's middle line, whatever height the edge runs.
+		var horizontal: bool = a.y == b.y
+		var direction := (b - a).normalized()
+		var middle := Vector2(0.0, a.y) if horizontal else Vector2(a.x, 0.0)
+		pieces.append(PackedVector2Array([centre + a * scale, centre + (middle - direction * gap) * scale]))
+		pieces.append(PackedVector2Array([centre + (middle + direction * gap) * scale, centre + b * scale]))
+	return pieces
 
 func _room_outline(room: Dictionary, cell: Vector2i, cell_size: float) -> PackedVector2Array:
 	if not room.is_empty() and room.get("size", Vector2i.ONE) != Vector2i.ONE:
@@ -2661,28 +2715,30 @@ func _draw_room_hologram(main, cell: Vector2i, valid: bool) -> void:
 	room["rotation"] = main.selected_rotation
 	var room_size: Vector2i = room.get("size",Vector2i.ONE)
 	var rect := Rect2(Vector2(cell) * cell_size + Vector2.ONE, Vector2(room_size) * cell_size - Vector2.ONE*2.0)
-	var tint := Color(0.22, 0.74, 0.60, 0.045) if valid else Color(0.88, 0.18, 0.20, 0.085)
+	# Owner playtest, Sept 29: the placement outline was too grainy and too red. A blocked spot now reads as a
+	# soft amber, and the overlays are thinner so the room art shows through cleanly.
+	var tint := Color(0.22, 0.74, 0.60, 0.035) if valid else Color(0.80, 0.58, 0.34, 0.05)
 	draw_target.draw_rect(rect, tint)
 	if LARGE_ROOM_VIEWS.has(str(room.id)):
 		LARGE_ROOM_VIEWS[room.id].draw(draw_target, room, rect)
 		LargeStudioView.draw_live(draw_target, room, rect)
-		draw_target.draw_rect(rect, Color(0.12, 0.35, 0.3, 0.2) if valid else Color(0.45, 0.08, 0.08, 0.35))
-		draw_target.draw_rect(rect, Color(0.35, 0.82, 0.68, 0.75) if valid else Color(1.0, 0.35, 0.39, 0.75), false, 3.0)
+		draw_target.draw_rect(rect, Color(0.12, 0.35, 0.3, 0.12) if valid else Color(0.36, 0.26, 0.14, 0.14))
+		draw_target.draw_rect(rect, Color(0.35, 0.82, 0.68, 0.6) if valid else Color(0.93, 0.68, 0.40, 0.55), false, 2.0)
 		_draw_preview_openings(main, room, rect)
 		return
 	var room_texture: Texture2D = _get_room_texture(room)
 	if _uses_layered_art(room):
 		_draw_nursery(room, rect, true)
-		draw_target.draw_rect(rect, Color(0.12, 0.35, 0.3, 0.22) if valid else Color(0.45, 0.08, 0.08, 0.28))
+		draw_target.draw_rect(rect, Color(0.12, 0.35, 0.3, 0.12) if valid else Color(0.36, 0.26, 0.14, 0.12))
 	elif room_texture != null:
 		draw_target.draw_set_transform(rect.get_center(), deg_to_rad(float(main.selected_rotation * 90)), Vector2.ONE)
-		draw_target.draw_texture_rect(room_texture, Rect2(-rect.size * 0.5, rect.size), false, Color(0.64, 0.95, 0.82, 0.17) if valid else Color(1.0, 0.54, 0.54, 0.19))
+		draw_target.draw_texture_rect(room_texture, Rect2(-rect.size * 0.5, rect.size), false, Color(0.64, 0.95, 0.82, 0.15) if valid else Color(0.95, 0.74, 0.52, 0.14))
 		draw_target.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	else:
 		draw_target.draw_rect(rect.grow(-4), tint)
-	draw_target.draw_rect(rect, Color(0.35, 0.82, 0.68, 0.58) if valid else Color(1.0, 0.35, 0.39, 0.58), false, 2.0)
+	draw_target.draw_rect(rect, Color(0.35, 0.82, 0.68, 0.5) if valid else Color(0.93, 0.68, 0.40, 0.48), false, 2.0)
 	var corner_len := cell_size * 0.16
-	var corner_color := Color(0.68, 0.96, 0.84, 0.50) if valid else Color(1.0, 0.55, 0.58, 0.50)
+	var corner_color := Color(0.68, 0.96, 0.84, 0.42) if valid else Color(0.95, 0.78, 0.52, 0.42)
 	for corner in [rect.position, Vector2(rect.end.x, rect.position.y), rect.end, Vector2(rect.position.x, rect.end.y)]:
 		var sx := 1.0 if corner.x == rect.position.x else -1.0
 		var sy := 1.0 if corner.y == rect.position.y else -1.0

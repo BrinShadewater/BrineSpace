@@ -87,11 +87,16 @@ static func draw(canvas: CanvasItem, game, size: float, view: Rect2) -> void:
 	if not enabled or quality == 0 or TitleSettings.reduced_motion or game.placed_rooms.is_empty(): return
 	var t: float = game.get_visual_time_seconds()
 	var centre := station_centre(game)
-	_draw_whale(canvas, centre, size, view, t)
 	for slot in range(2 if quality >= 2 else 1):
 		_draw_shoal(canvas, centre, size, view, t, slot)
 	for slot in range(9 if quality >= 2 else 5):
 		_draw_drifter(canvas, centre, size, view, t, slot)
+
+# The whale passes over the station, not under it (owner playtest, Sept 29), so it is drawn by its own
+# pass after the station surfaces. Everything else stays in the water beneath the hull.
+static func draw_over(canvas: CanvasItem, game, size: float, view: Rect2) -> void:
+	if not enabled or TitleSettings.effects_quality == 0 or TitleSettings.reduced_motion or game.placed_rooms.is_empty(): return
+	_draw_whale(canvas, station_centre(game), size, view, game.get_visual_time_seconds())
 
 # A creature's life is split into epochs; each epoch re-places it somewhere new around the station.
 static func _epoch(t: float, slot: int, length: float) -> Vector3:

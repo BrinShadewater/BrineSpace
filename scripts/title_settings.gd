@@ -42,7 +42,9 @@ static var window_focused := true
 static func atmosphere() -> Dictionary:
 	match effects_quality:
 		0: return {"shafts": 0.0, "caustics": 0.0, "tint": 0.0, "snow": 1.0, "drift": 0.0, "grade": 0.0, "bloom": 0.0, "shimmer": 0.0, "grain": 0.0, "fringe": 0.0, "blur": 0.0, "shadow": 0.0, "occlusion": 0.0, "fog": 0.0}
-		2: return {"shafts": 0.6, "caustics": 0.38, "tint": 0.75, "snow": 1.05, "drift": 1.3, "grade": 1.0, "bloom": 0.3, "shimmer": 1.0, "grain": 1.0, "fringe": 1.0, "blur": 1.0, "shadow": 1.0, "occlusion": 1.0, "fog": 1.0}
+		# Owner playtest, Sept 29: outside a bit too grainy, water pattern too strong and more transparent wanted,
+		# a green outline round some props (the colour fringe), rooms a little dark (shadow and occlusion).
+		2: return {"shafts": 0.45, "caustics": 0.26, "tint": 0.6, "snow": 1.05, "drift": 1.3, "grade": 1.0, "bloom": 0.3, "shimmer": 0.5, "grain": 0.35, "fringe": 0.15, "blur": 1.0, "shadow": 0.7, "occlusion": 0.7, "fog": 0.85}
 		_: return {"shafts": 0.42, "caustics": 0.24, "tint": 0.52, "snow": 0.75, "drift": 1.0, "grade": 0.0, "bloom": 0.0, "shimmer": 0.0, "grain": 0.0, "fringe": 0.0, "blur": 0.0, "shadow": 0.0, "occlusion": 0.0, "fog": 0.0}
 const DEFAULT_KEYS := {"Pan left": KEY_A, "Pan right": KEY_D, "Pan up": KEY_W, "Pan down": KEY_S, "Pause": KEY_SPACE, "Fit station": KEY_F, "Journal": KEY_J, "Rotate blueprint": KEY_R, "Placement guides": KEY_V}
 static var keys: Dictionary = DEFAULT_KEYS.duplicate()
