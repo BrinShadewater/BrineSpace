@@ -174,7 +174,7 @@ func route_interest(main, cell: Vector2i, point: Vector2, action: String) -> boo
 	for target in candidates:
 		var destination: Vector2=graph.get_point_position(target)
 		if destination.distance_to(point)<50 or destination.distance_to(point)>(95 if action=="torch" else 145) or not spawn_clear(destination):continue
-		var route := smooth_route(route_between(start,target))
+		var route := plan_route(start,target)
 		if route.is_empty():continue
 		interest_cell=cell;interest_point=point;pending_behavior=action
 		path=route;goal="curiosity";goal_cell=cell
@@ -261,7 +261,7 @@ func _advance_companion(main, delta: float) -> void:
 		var target: int=candidates[decision_rng.randi_range(0,candidates.size()-1)]
 		var point: Vector2=graph.get_point_position(target)
 		if not spawn_clear(point) or point.distance_to(foot)<30:continue
-		var route := smooth_route(route_between(start,target))
+		var route := plan_route(start,target)
 		if route.is_empty():continue
 		path=route;goal="curiosity";goal_cell=target_cell
 		activity="keeping company";return
@@ -285,12 +285,30 @@ func _make_way(main) -> bool:
 	for target in candidates.slice(0,10):
 		var point: Vector2=graph.get_point_position(target)
 		if point.distance_to(blocked)<CREW_CLEARANCE*3.0 or not spawn_clear(point):continue
-		var route:=smooth_route(route_between(start,target))
+		var route:=plan_route(start,target)
 		if route.is_empty():continue
 		behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
 		path=route;goal="curiosity";goal_cell=here;timer=0
 		activity="making way";return true
 	return false
+
+# Water can catch a companion beside a wall, where her swim outline does not fit: every route failed at its
+# first step and she floated in place until the water dropped (Sept 30). Like crew escapes
+# (flood_safety.escape_starts), she squeezes on standing clearance to the nearest spot where she fits.
+func plan_route(start: int, target: int) -> PackedVector2Array:
+	var route := smooth_route(route_between(start,target))
+	if not route.is_empty() or movement_medium=="dry": return route
+	var facing := direction
+	for entry in preload("res://scripts/flood_safety.gd").escape_starts(self):
+		if not entry.squeeze: continue
+		direction=entry.facing
+		var joined := smooth_route(route_between(entry.node,target),entry.point)
+		direction=facing
+		if joined.is_empty(): continue
+		joined.insert(0,entry.point)
+		squeeze_point=entry.point
+		return joined
+	return route
 
 func wake_seconds()->float:
 	return poses.cycle_seconds("nap-exit-"+wake_direction)

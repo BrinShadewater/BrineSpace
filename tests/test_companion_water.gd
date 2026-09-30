@@ -53,7 +53,8 @@ func run():
 		for node in actor.room_nodes[cell]:
 			var at:Vector2=actor.graph.get_point_position(node)
 			if at.distance_to(actor.foot)<25 or not actor.spawn_clear(at):continue
-			var route:PackedVector2Array=actor.smooth_route(actor.route_between(actor.nearest_in_room(actor.foot,cell),node))
+			# The companion's own planner, which squeezes out when water caught her where her outline does not fit.
+			var route:PackedVector2Array=actor.plan_route(actor.nearest_in_room(actor.foot,cell),node)
 			if route.is_empty():continue
 			actor.path=route;actor.goal="curiosity";actor.goal_cell=cell
 			var before:Vector2=actor.foot
