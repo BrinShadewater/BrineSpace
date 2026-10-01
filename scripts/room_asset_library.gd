@@ -243,22 +243,22 @@ static func draw(room, prop: Dictionary) -> void:
 	var anchor:=Vector2(prop.rect.get_center().x,prop.rect.end.y)
 	# Station props are cut without their painted shadows (owner, 2026-09-24): lay a
 	# soft contact shadow from the prop's own silhouette, stacked offsets fading out.
+	# Whole outlines go through one native transform each (anchor + (point - pivot) * scale,
+	# and source_uv / texture size): building them point by point in script cost ~37 us a prop,
+	# 1.6 ms a frame for hallway furniture on a large station (Sept 30 probe).
+	var place:=Transform2D(Vector2(scale_value,0),Vector2(0,scale_value),anchor-reg.pivot*scale_value)
+	var size:=Vector2(tex.get_size())
+	var to_uv:=Transform2D(Vector2(1.0/size.x,0),Vector2(0,1.0/size.y),Vector2.ZERO)
+	if reg.get("mirrored",false): to_uv=Transform2D(Vector2(-1.0/size.x,0),Vector2(0,1.0/size.y),Vector2(float(reg.mirror_axis)/size.x,0))
+	var uvs: Array=[]
+	for polygon in reg.pieces: uvs.append(to_uv*PackedVector2Array(polygon))
 	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))) and not prop.get("floor_piece",false):
 		for step in CONTACT_SHADOW:
-			for polygon in reg.pieces:
-				var shadow_points:=PackedVector2Array()
-				var shadow_uv:=PackedVector2Array()
-				for point in polygon:
-					shadow_points.append(anchor+(point-reg.pivot)*scale_value+step[0])
-					shadow_uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
-				room.painter.draw_polygon(shadow_points,PackedColorArray([Color(0,0,0,step[1])]),shadow_uv,tex)
-	for polygon in reg.pieces:
-		var points:=PackedVector2Array()
-		var uv:=PackedVector2Array()
-		for point in polygon:
-			points.append(anchor+(point-reg.pivot)*scale_value)
-			uv.append(source_uv(reg,point)/Vector2(tex.get_size()))
-		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,tex)
+			var shifted:=place.translated(step[0])
+			for i in range(reg.pieces.size()):
+				room.painter.draw_polygon(shifted*PackedVector2Array(reg.pieces[i]),PackedColorArray([Color(0,0,0,step[1])]),uvs[i],tex)
+	for i in range(reg.pieces.size()):
+		room.painter.draw_polygon(place*PackedVector2Array(reg.pieces[i]),PackedColorArray([Color.WHITE]),uvs[i],tex)
 	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))): draw_station_screens(room,reg,anchor,scale_value)
 	else: draw_operating_screens(room,reg,anchor,scale_value)
 	if reg.has("effects") and room.operating: draw_effects(room,prop,reg.effects)
