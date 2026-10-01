@@ -19,10 +19,12 @@ func run() -> void:
 	game._fit_station_view()
 	await process_frame
 	await RenderingServer.frame_post_draw
-	assert(game.grid_view.corridor_layout_views.has("corridor"))
+	# Hallway views are kept per type and rotation (Sept 30).
+	var hallway: Dictionary=game.occupied[Vector2i(20,21)]
+	assert(game.grid_view.corridor_layout_views.has("corridor/%d" % posmod(int(hallway.get("rotation",0)),4)))
 	# September 9 decision: common decorations are Studio dressing only, so a saved
 	# clock reaches the live room's layout and is then filtered out of the render.
-	var corridor=game.grid_view.corridor_layout_views.corridor
+	var corridor=game.grid_view._corridor_view(hallway,false)
 	for prop in corridor.props:
 		assert(not str(prop.id).begins_with("library/common-"),"Corridor drops common decorations")
 	var power=game.grid_view._bill_room_view({"id":"current_turbine"})

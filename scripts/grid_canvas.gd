@@ -2240,13 +2240,31 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		# Compact room previews have no raised riser to support fixture housings.
 		draw_target.draw_set_transform(Vector2.ZERO)
 
-func _corridor_view(room: Dictionary):
-	if not corridor_layout_views.has(room.id):
+# One view per hallway type and rotation: a view shared by every rotation rebuilt its props on
+# each rotation change, and the live pass re-prepared all of them every frame (~2.9 ms for 22
+# hallways on a large station, Sept 30 probe).
+func _corridor_view(room: Dictionary, configure := true):
+	var key := "%s/%d" % [room.id,posmod(int(room.get("rotation",0)),4)]
+	if not corridor_layout_views.has(key):
 		var view=preload("res://scripts/corridor_layout_view.gd").new()
 		view.room_id=room.id;view.embedded=true;add_child(view);view.hide()
-		corridor_layout_views[room.id]=view
-	var view=corridor_layout_views[room.id]
-	view.configure_embedded(int(room.get("rotation",0)),[],true,0.0)
+		corridor_layout_views[key]=view
+	var view=corridor_layout_views[key]
+	if configure: view.configure_embedded(int(room.get("rotation",0)),[],true,0.0)
+	return view
+
+# The live pass prepares a hallway view (configure, strip, apply the owner layout) only when
+# the layout store has changed since it last did; nothing else it reads changes in play.
+func _corridor_live_view(room: Dictionary):
+	var view = _corridor_view(room,false)
+	var Store = preload("res://scripts/room_layout_store.gd")
+	var prepared := [Store.revision,Store.geometry_revision]
+	if view.get_meta("corridor_live_prepared",[]) != prepared or view.has_meta("layout_editor_preview"):
+		_corridor_view(room)
+		preload("res://scripts/room_asset_library.gd").strip_retired(view)
+		Store.apply(view,"room-"+str(room.id))
+		_corridor_view(room)
+		view.set_meta("corridor_live_prepared",[Store.revision,Store.geometry_revision])
 	return view
 
 func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_only: bool, shell_only: bool) -> void:
@@ -2260,10 +2278,11 @@ func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_o
 	if floor_only or preview:
 		CorridorArt.draw_hull(draw_target,CorridorGeometry.hull_for(corner,room.id=="tee_corridor"),CorridorGeometry.floor_for(corner,room.id=="tee_corridor"),Vector2.ZERO,q,corridor_textures,corner,true,1.0 if preview else _room_light_level(room),room.id=="tee_corridor",int(room.get("art_variant",0)),preload("res://scripts/room_layout_store.gd").positions("room-"+str(room.id),int(room.get("rotation",0))))
 	if preview or (not floor_only and not shell_only):
-		var editing = _corridor_view(room)
-		preload("res://scripts/room_asset_library.gd").strip_retired(editing)
-		if preview:editing.render_into(draw_target,at,scale,false,false)
-		else:preload("res://scripts/room_layout_store.gd").apply(editing,"room-"+str(room.id))
+		if preview:
+			var editing = _corridor_view(room)
+			preload("res://scripts/room_asset_library.gd").strip_retired(editing)
+			editing.render_into(draw_target,at,scale,false,false)
+			editing.remove_meta("corridor_live_prepared")
 		draw_target.draw_set_transform(at,0,Vector2.ONE*scale)
 
 	if shell_only or preview:
@@ -2302,7 +2321,7 @@ func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_o
 		for actor in main.companion_actors.values():
 			if actor.active and actor.cell_at(actor.foot)==room.pos:
 				crew.append({"position":actor.foot-(Vector2(room.pos)+Vector2.ONE*0.5)*384.0,"texture":actor.texture(main.get_visual_time_seconds())})
-		var furnishing = _corridor_view(room)
+		var furnishing = _corridor_live_view(room)
 		for prop in furnishing.props:
 			if not prop.get("layout_hidden",false):crew.append({"position":Vector2(0,prop.sort_y),"prop":prop})
 		crew.sort_custom(func(a, b): return a.position.y < b.position.y)
