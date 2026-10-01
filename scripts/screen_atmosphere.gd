@@ -199,6 +199,121 @@ void fragment() {
 }
 """
 
+# Marine snow on the graphics card: one batched mesh whose shader repeats _draw's formulas (fall, sway,
+# parallax, wrap, and the fade within a cell of the station). Drawing it in script cost ~3 ms and ~440
+# draw calls a frame on High (owner F8 reports, Oct 1: 30 FPS on an 11-room station).
+# --script-snow restores the script drawing.
+const SNOW_SHADER := """
+shader_type canvas_item;
+render_mode unshaded;
+uniform float time = 0.0;
+uniform vec2 view = vec2(1920.0, 1080.0);
+uniform vec2 scroll = vec2(0.0);
+uniform float cell_px = 96.0;
+uniform float grid_cells = 40.0;
+uniform sampler2D station_mask : filter_nearest;
+varying flat vec4 fleck;
+
+float open_water(vec2 point) {
+	ivec2 here = ivec2(floor(point / cell_px));
+	float nearest = 2.0;
+	for (int dx = -2; dx <= 2; dx++) {
+		for (int dy = -2; dy <= 2; dy++) {
+			ivec2 cell = here + ivec2(dx, dy);
+			if (cell.x < 0 || cell.y < 0 || cell.x >= int(grid_cells) || cell.y >= int(grid_cells)) continue;
+			if (texelFetch(station_mask, cell, 0).r < 0.5) continue;
+			vec2 low = vec2(cell) * cell_px;
+			vec2 high = low + vec2(cell_px);
+			vec2 gap = vec2(max(low.x - point.x, max(0.0, point.x - high.x)), max(low.y - point.y, max(0.0, point.y - high.y)));
+			nearest = min(nearest, length(gap) / cell_px);
+		}
+	}
+	return clamp(nearest, 0.0, 1.0);
+}
+
+void vertex() {
+	// INSTANCE_CUSTOM: home as a fraction of the view, then depth step + 3 * size step + 15 * halo, then index.
+	float packed = INSTANCE_CUSTOM.z;
+	float halo = floor(packed / 15.0);
+	float size_step = floor((packed - halo * 15.0) / 3.0);
+	float depth = (packed - halo * 15.0 - size_step * 3.0) / 2.0;
+	float index = INSTANCE_CUSTOM.w;
+	float unit = view.y / 1080.0;
+	float fall = (5.0 + 9.0 * depth) * unit;
+	float sway = sin(time * (0.35 + 0.25 * depth) + index) * (10.0 + 14.0 * depth) * unit;
+	vec2 at = INSTANCE_CUSTOM.xy * view + vec2(sway, time * fall) - scroll * (0.25 + 0.55 * depth);
+	at = mod(at, view);
+	float radius = (0.8 + 1.5 * depth + size_step * 0.12) * unit * 1.6;
+	float alpha = (0.05 + 0.09 * depth) * open_water(at + scroll);
+	if (alpha <= 0.004) {
+		VERTEX = vec2(0.0);
+		fleck = vec4(0.0);
+	} else if (halo > 0.5) {
+		VERTEX = at + VERTEX * radius * 2.4;
+		fleck = vec4(0.7, 0.9, 1.0, alpha * 0.18);
+	} else {
+		VERTEX = at + VERTEX * radius;
+		fleck = vec4(0.86, 0.96, 1.0, alpha);
+	}
+}
+
+void fragment() {
+	COLOR = fleck;
+}
+"""
+const SNOW_MAX := 2.0 # the largest drift strength the mesh holds flecks for
+var snow_on_gpu := not OS.get_cmdline_user_args().has("--script-snow")
+var snow_layer: MultiMeshInstance2D
+var snow_material: ShaderMaterial
+
+func _build_snow_layer() -> void:
+	# The same 64-segment fan draw_circle submits.
+	var points := PackedVector2Array([Vector2.ZERO])
+	for i in range(65): points.append(Vector2(cos(float(i) * TAU / 64.0), sin(float(i) * TAU / 64.0)))
+	var indices := PackedInt32Array()
+	for i in range(64): indices.append_array([0, i + 1, i + 2])
+	var arrays := []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = points
+	arrays[Mesh.ARRAY_INDEX] = indices
+	var circle := ArrayMesh.new()
+	circle.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	var flecks := MultiMesh.new()
+	flecks.transform_format = MultiMesh.TRANSFORM_2D
+	flecks.use_custom_data = true
+	flecks.mesh = circle
+	var count := int(SNOW_COUNT * SNOW_MAX)
+	flecks.instance_count = count * 2
+	for i in range(count):
+		var h := hash([i, 401])
+		var packed := float(h % 3) + 3.0 * float((h / 11) % 5)
+		var home := Vector2(float((h / 3) % 1000) / 1000.0, float((h / 3000) % 1000) / 1000.0)
+		# Halo first, then the fleck over it, in fleck order: the order _draw paints them.
+		for part in range(2):
+			flecks.set_instance_transform_2d(i * 2 + part, Transform2D.IDENTITY)
+			flecks.set_instance_custom_data(i * 2 + part, Color(home.x, home.y, packed + (15.0 if part == 0 else 0.0), float(i)))
+	flecks.visible_instance_count = 0
+	var shader := Shader.new()
+	shader.code = SNOW_SHADER
+	snow_material = ShaderMaterial.new()
+	snow_material.shader = shader
+	snow_layer = MultiMeshInstance2D.new()
+	snow_layer.name = "MarineSnow"
+	snow_layer.multimesh = flecks
+	snow_layer.material = snow_material
+	add_child(snow_layer)
+
+func _update_snow_layer() -> void:
+	if snow_layer == null: return
+	var shown: bool = snow_on_gpu and snow > 0.0 and game != null and size.x >= 8.0 and size.y >= 8.0
+	snow_layer.visible = shown
+	if not shown: return
+	snow_layer.multimesh.visible_instance_count = mini(int(SNOW_COUNT * snow), int(SNOW_COUNT * SNOW_MAX)) * 2
+	snow_material.set_shader_parameter("time", 0.0 if Preferences.reduced_motion else game.get_visual_time_seconds())
+	snow_material.set_shader_parameter("view", size)
+	snow_material.set_shader_parameter("scroll", Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical) if game.grid_scroll != null else Vector2.ZERO)
+	snow_material.set_shader_parameter("cell_px", game.get_cell_size())
+
 var game
 var cool: ColorRect
 var post: ColorRect
@@ -220,6 +335,8 @@ func _init(owner_game = null) -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _ready() -> void:
+	# Below the tint and the grade, where the script drawing sat on this node itself.
+	_build_snow_layer()
 	cool = ColorRect.new()
 	cool.name = "CoolTint"
 	cool.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -260,6 +377,8 @@ func _ready() -> void:
 	mask_texture = ImageTexture.create_from_image(mask_image)
 	post_material.set_shader_parameter("station_mask", mask_texture)
 	post_material.set_shader_parameter("grid_cells", float(game.GRID_SIZE))
+	snow_material.set_shader_parameter("station_mask", mask_texture)
+	snow_material.set_shader_parameter("grid_cells", float(game.GRID_SIZE))
 	resized.connect(_apply)
 	_apply()
 
@@ -318,7 +437,7 @@ func _apply() -> void:
 	post_material.set_shader_parameter("fringe", fringe)
 	post_material.set_shader_parameter("bloom", bloom)
 	post_material.set_shader_parameter("grade", grade)
-	if (shimmer > 0.0 or blur > 0.0 or shadow > 0.0 or grain > 0.0 or occlusion > 0.0 or fog > 0.0 or flare > 0.0 or spill > 0.0 or ping > 0.0) and game != null and game.grid_scroll != null:
+	if (shimmer > 0.0 or blur > 0.0 or shadow > 0.0 or grain > 0.0 or occlusion > 0.0 or fog > 0.0 or flare > 0.0 or spill > 0.0 or ping > 0.0 or (snow > 0.0 and snow_on_gpu)) and game != null and game.grid_scroll != null:
 		_update_mask()
 		post_material.set_shader_parameter("view_px", size)
 		post_material.set_shader_parameter("scroll_px", Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical))
@@ -330,7 +449,9 @@ func _process(delta: float) -> void:
 	if toast_left > 0.0:
 		toast_left -= delta
 		if toast_left <= 0.0: toast.visible = false
-	if snow > 0.0: queue_redraw()
+	_update_snow_layer()
+	# The script drawing below only runs with --script-snow; clear it once when it stops.
+	if (snow > 0.0 and not snow_on_gpu) or snow_drawn_in_script: queue_redraw()
 	if motes > 0.0 or glow_layer.visible: glow_layer.queue_redraw()
 	glow_layer.visible = motes > 0.0
 
@@ -360,8 +481,10 @@ func _open_water(point: Vector2, cell_size: float) -> float:
 
 # Marine snow: pale flecks sinking slowly and swaying, in three depth layers. Nearer flecks are bigger,
 # brighter and follow the view scroll more closely, so the water seems to have depth.
+var snow_drawn_in_script := false
 func _draw() -> void:
-	if snow <= 0.0 or game == null: return
+	snow_drawn_in_script = snow > 0.0 and not snow_on_gpu and game != null
+	if not snow_drawn_in_script: return
 	var time: float = 0.0 if Preferences.reduced_motion else game.get_visual_time_seconds()
 	var view := size
 	if view.x < 8.0 or view.y < 8.0: return
