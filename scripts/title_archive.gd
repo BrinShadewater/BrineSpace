@@ -228,8 +228,7 @@ func _populate_about() -> void:
 	var version := _label(preload("res://scripts/build_version.gd").title(), 24)
 	version.add_theme_color_override("font_color", Color("a9e7d4"))
 	build.add_child(version)
-	build.add_child(_label(preload("res://scripts/build_version.gd").details().split("
-", false, 1)[1], 16))
+	build.add_child(_label(preload("res://scripts/build_version.gd").details().split("\n", false, 1)[1], 16))
 	pair.add_child(build.get_meta("panel"))
 	var studio := _about_card("STUDIO")
 	studio.add_child(_label("The studio site and its other projects.", 18))
