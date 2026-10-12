@@ -31,6 +31,9 @@ var paused_frames:=0
 var unfocused_frames:=0
 var hitch_count:=0
 var last_usec:=0
+var render_pre_usec:=0
+var render_post_usec:=0
+var last_frame_boundaries:Dictionary={}
 var overlay: CanvasLayer
 var label: Label
 var latest: Dictionary={}
@@ -51,14 +54,39 @@ var baseline_memory: Dictionary={}
 var growth_warned:={}
 var last_route_searches:=0
 var last_route_failures:=0
+var current_action := ""
+var action_at_ms := -1000
+
+func mark_action(action: String) -> void:
+	var now := Time.get_ticks_msec()
+	if action == current_action and now - action_at_ms < 500: return
+	current_action = action
+	action_at_ms = now
+	note("action", action)
 
 func _ready() -> void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	last_usec=Time.get_ticks_usec()
+	RenderingServer.frame_pre_draw.connect(_record_render_start)
+	RenderingServer.frame_post_draw.connect(_record_render_end)
 	# Only a real play session captures by itself or writes breadcrumbs. A test or tool started
 	# with -s replaces the main loop with its own script, which is the reliable signal; their
 	# slow frames must never add reports to the player's folder.
 	auto_capture=get_tree().get_script()==null
+
+func _record_render_start() -> void:
+	render_pre_usec=Time.get_ticks_usec()
+
+func _record_render_end() -> void:
+	render_post_usec=Time.get_ticks_usec()
+
+static func frame_boundaries(start:int,pre:int,post:int,end:int) -> Dictionary:
+	# Signal intervals, not GPU timings. Omit frames without a complete,
+	# correctly ordered render pair instead of reusing stale/headless samples.
+	if pre<=0 or post<=0 or pre<start or post<pre or end<post: return {}
+	return {"before_render_ms":float(pre-start)/1000.0,
+		"render_signals_ms":float(post-pre)/1000.0,
+		"after_render_ms":float(end-post)/1000.0}
 
 var last_draw_timing: Dictionary = {}
 
@@ -67,6 +95,7 @@ func _process(_delta: float) -> void:
 	var current_scene:=get_tree().current_scene
 	if current_scene!=null and is_instance_valid(current_scene.get("grid_view")) and current_scene.grid_view.has_method("take_draw_timing"):
 		last_draw_timing=current_scene.grid_view.take_draw_timing()
+	last_frame_boundaries=frame_boundaries(last_usec,render_pre_usec,render_post_usec,now)
 	var elapsed:=float(now-last_usec)/1000.0
 	last_usec=now
 	recent_frames.append(elapsed)
@@ -85,7 +114,10 @@ func _process(_delta: float) -> void:
 		finish_bucket(context(scene),now/1000.0)
 		if label!=null and overlay.visible: refresh_label()
 	if overlay!=null and overlay.visible and graph!=null: graph.queue_redraw()
-	_watch_for_stalls(elapsed,held,not get_window().has_focus(),now/1000.0)
+	# Loading is slow by design and covered by the loading transition; it is not a stall.
+	var busy:=loading(scene)
+	if busy: slow_ms=0.0
+	_watch_for_stalls(elapsed,held or busy,not get_window().has_focus(),now/1000.0)
 
 func observe(ms: float,held: bool,unfocused: bool,uptime_ms: float) -> void:
 	if not is_finite(ms) or ms<=0: return
@@ -99,6 +131,16 @@ func observe(ms: float,held: bool,unfocused: bool,uptime_ms: float) -> void:
 		hitch.merge(station_breakdown(get_tree().current_scene if is_inside_tree() else null))
 		hitches.append(hitch)
 		if hitches.size()>MAX_HITCHES: hitches.pop_front()
+
+# True while a station is still starting up or the loading transition is on screen. Decoding the
+# crew art takes seconds inside one frame there, which used to save an automatic report and log
+# "one frame took 3449 ms" on every Continue (packaged check, October 11, 2026).
+func loading(scene: Node) -> bool:
+	if scene!=null and scene.has_method("capture_bug_report_snapshot") and not bool(scene.get("startup_complete")): return true
+	if not is_inside_tree(): return false
+	for child in get_tree().root.get_children():
+		if child.has_method("finish_after_scene_change"): return true
+	return false
 
 # A stall saves its own bug report, at most AUTO_LIMIT times a session and never twice within
 # AUTO_GAP_MS, so a slow patch produces one report rather than a folder full.
@@ -128,16 +170,18 @@ func _watch_for_stalls(ms: float,held: bool,unfocused: bool,uptime_ms: float) ->
 # caches. A steady climb here is a leak, and the first crossing is logged once.
 func memory_stats() -> Dictionary:
 	var floors=preload("res://rooms/whole-room/modular_floor.gd")
-	var canvas=preload("res://scripts/grid_canvas.gd")
+	var scene = get_tree().current_scene if is_inside_tree() else null
+	var canvas = scene.grid_view if scene != null and "grid_view" in scene else null
 	var retired_contacts:=0
-	for bundle in canvas.contact_retired: retired_contacts+=bundle.size()
+	if is_instance_valid(canvas):
+		for bundle in canvas.contact_retired: retired_contacts+=bundle.size()
 	return {"nodes":Performance.get_monitor(Performance.OBJECT_NODE_COUNT),
 		"orphans":Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT),
 		"objects":Performance.get_monitor(Performance.OBJECT_COUNT),
 		"texture_mem_mb":Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED)/1048576.0,
 		"static_mem_mb":Performance.get_monitor(Performance.MEMORY_STATIC)/1048576.0,
 		"floor_meshes":floors.cache.size(),"floor_meshes_retired":floors.retired.size(),
-		"contact_meshes":canvas.contact_meshes.size(),"contact_meshes_retired":retired_contacts}
+		"contact_meshes":canvas.contact_meshes.size() if is_instance_valid(canvas) else 0,"contact_meshes_retired":retired_contacts}
 
 func _check_growth(stats: Dictionary) -> void:
 	if baseline_memory.is_empty():
@@ -191,12 +235,22 @@ func session_row(scene) -> Dictionary:
 
 # Where the hitch frame's time went: the station's own systems (microseconds, from the most
 # recent station frame and cycle advance), engine process/physics time and the grid draw
-# profile when it is enabled. Rendering is the remainder of frame_ms.
+# profile when it is enabled. Signal boundaries distinguish render-adjacent waits
+# without claiming the unaccounted remainder is GPU rendering.
 func station_breakdown(scene: Node) -> Dictionary:
 	var result := {"engine_process_ms":Performance.get_monitor(Performance.TIME_PROCESS)*1000.0,
 		"engine_physics_ms":Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)*1000.0,
 		"draw_calls":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)}
+	result["last_action"] = current_action
+	result["action_age_ms"] = Time.get_ticks_msec() - action_at_ms
+	if not last_frame_boundaries.is_empty(): result["frame_boundaries_ms"]=last_frame_boundaries.duplicate()
 	if scene==null or not "frame_timing_usec" in scene: return result
+	if "startup_stage_ms" in scene: result["startup_stage_ms"] = scene.startup_stage_ms.duplicate()
+	result["image_prefetch"] = preload("res://scripts/image_prefetch.gd").stats()
+	if is_instance_valid(scene.get("grid_view")) and "crew_texture_pool" in scene.grid_view:
+		result["crew_texture_sharing"] = scene.grid_view.crew_texture_pool.stats.duplicate()
+	if is_instance_valid(scene.get("grid_view")) and scene.grid_view.has_method("crew_storage_diagnostics"):
+		result["crew_storage"] = scene.grid_view.crew_storage_diagnostics()
 	var timings: Dictionary=scene.frame_timing_usec.duplicate()
 	if timings.has("last_cycle_at_ms"):
 		timings["cycle_advance_age_ms"]=Time.get_ticks_msec()-int(timings.last_cycle_at_ms)
@@ -213,6 +267,7 @@ func finish_bucket(details: Dictionary,uptime_ms: float) -> Dictionary:
 	var ordered:=samples.duplicate();ordered.sort()
 	latest={"uptime_ms":uptime_ms,"span_ms":total_ms,"frames":frames,"mean_frame_ms":total_ms/frames,
 		"fps":1000.0*frames/total_ms,"p95_frame_ms":ordered[ceili(ordered.size()*0.95)-1],
+		"p99_frame_ms":ordered[ceili(ordered.size()*0.99)-1],
 		"p95_sample_count":ordered.size(),"p95_sample_capped":frames>MAX_SAMPLES,
 		"max_frame_ms":maximum_ms,"hitches_50ms":hitch_count,"paused_frames":paused_frames,
 		"unfocused_frames":unfocused_frames,"context_at_end":details.duplicate(true)}
@@ -264,10 +319,14 @@ func context(scene: Node) -> Dictionary:
 func snapshot() -> Dictionary:
 	return {"schema":1,"clock":"wall time between process callbacks; includes vsync, focus loss and pauses",
 		"retention":"latest 120 approximately one-second buckets; current process only",
+		"frame_boundaries":"Signal intervals between monitor process callbacks; render_signals_ms is not GPU time. Missing on incomplete/headless frames.",
 		"percentile":"per-bucket nearest-rank p95; sample cap explicitly recorded",
 		"context":"values sampled at bucket end, not per-frame averages",
+		"engine_process_time_scope":"TIME_PROCESS and TIME_PHYSICS_PROCESS are previous reporting-second maxima; process_ms_latest and context engine_process_ms are latest reported maxima, not current-frame durations.",
 		"errors":errors.summary(),"timeline":timeline.duplicate(true),"automatic_reports":auto_notes.duplicate(true),
 		"memory":memory_stats(),"memory_baseline":baseline_memory.duplicate(),
+		"texture_memory_scope":"Engine-reported allocations, not measured driver VRAM. Calibrate each runtime and compare decoded-pixel inventories separately; do not apply a global correction factor.",
+		"drone_texture_cache":preload("res://scripts/drone_animation.gd").cache_diagnostics(),
 		"rows":rows.duplicate(true),"hitches":hitches.duplicate(true),
 		"partial_bucket":{"frames":frames,"span_ms":total_ms,"max_frame_ms":maximum_ms,"paused_frames":paused_frames,"unfocused_frames":unfocused_frames}}
 
