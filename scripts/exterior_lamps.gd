@@ -26,7 +26,7 @@ static func pools(game, size: float, view: Rect2) -> Array:
 static func draw(canvas, game, size: float, view: Rect2) -> void:
 	var quality: int = TitleSettings.effects_quality
 	if quality == 0: return
-	var halo: Texture2D = RoomLighting.halo_texture()
+	var halo: Texture2D = halo_texture()
 	var alpha := 0.38 if quality >= 2 else 0.32
 	for pool in pools(game, size, view):
 		var centre: Vector2 = pool.centre
@@ -34,3 +34,21 @@ static func draw(canvas, game, size: float, view: Rect2) -> void:
 		var tint: Color = pool.tint
 		canvas.draw_texture_rect(halo, Rect2(centre - Vector2.ONE * radius, Vector2.ONE * radius * 2.0), false, Color(tint.r, tint.g, tint.b, alpha))
 		canvas.draw_texture_rect(halo, Rect2(centre - Vector2.ONE * radius * 0.45, Vector2.ONE * radius * 0.9), false, Color(tint.r, tint.g, tint.b, alpha * 0.9))
+
+# Exterior pools expand with camera zoom. A smooth, dense gradient avoids the
+# room halo's intentionally coarse dither being magnified around a tiny rover.
+static var _halo: GradientTexture2D
+static func halo_texture() -> GradientTexture2D:
+	if _halo != null: return _halo
+	var ramp := Gradient.new()
+	ramp.colors = PackedColorArray([Color(1,1,1,1), Color(1,1,1,.36), Color(1,1,1,.06), Color(1,1,1,0)])
+	ramp.offsets = PackedFloat32Array([0.0,.4,.75,1.0])
+	ramp.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CUBIC
+	_halo = GradientTexture2D.new()
+	_halo.gradient = ramp
+	_halo.width = 512
+	_halo.height = 512
+	_halo.fill = GradientTexture2D.FILL_RADIAL
+	_halo.fill_from = Vector2(.5,.5)
+	_halo.fill_to = Vector2(1,.5)
+	return _halo

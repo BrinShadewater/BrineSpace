@@ -8,7 +8,7 @@ class RawPNGs extends EditorExportPlugin:
 		# Godot can also enumerate loose metadata and import sidecars. A selected
 		# resource list alone did not exclude QA state JSON or candidate manifests.
 		var source := path.trim_suffix(".import") if path.ends_with(".import") else path
-		if source.get_extension().to_lower() in ["png","jpg","jpeg","webp","svg","json","cfg","md"] and not release_paths.has(source):
+		if source.get_extension().to_lower() in ["png","jpg","jpeg","webp","svg","json","cfg","md","txt"] and not release_paths.has(source):
 			skip()
 	func _get_name() -> String: return "BRINE raw PNG and room JSON sources"
 	func include_directory(path: String) -> void:
@@ -50,7 +50,7 @@ class RawPNGs extends EditorExportPlugin:
 					continue
 			# Imported scene/audio/font dependencies are handled by Godot. These
 			# sources are read directly at runtime and must also exist as raw bytes.
-			if source.get_extension().to_lower() in ["png","jpg","jpeg","webp","svg","json","cfg","md"]:
+			if source.get_extension().to_lower() in ["png","jpg","jpeg","webp","svg","json","cfg","md","txt"]:
 				add_file(source,FileAccess.get_file_as_bytes(source),false)
 		add_file("res://build_info.json",FileAccess.get_file_as_bytes("res://build_info.json"),false)
 

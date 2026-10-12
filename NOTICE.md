@@ -34,6 +34,10 @@ the working copy will be full of pointer files rather than art. 📦
 Third-party fonts, audio, and Godot addons retain their own licences. The Godot
 Engine itself is MIT-licensed and is not covered by this notice.
 
+The antialiased stroke geometry in `scripts/water_stroke_triangles.gd` adapts
+Godot's canvas polyline implementation. Those portions retain the Godot MIT
+licence and copyright notices in `assets/licenses/godot-engine-MIT.txt`.
+
 ## If you want to use something
 
 Ask. Collaboration, asset use, and "can I build on this" questions are welcome

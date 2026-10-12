@@ -1,6 +1,7 @@
 extends RefCounted
 ## World-cell light sources shared by fog, survey memory and future detection.
 const Field = preload("res://scripts/wreck_field.gd")
+const LightingArt = preload("res://scripts/lighting_art.gd")
 const MAX_LIGHTS := 48
 var material := ShaderMaterial.new()
 var mask := Image.create(40,40,false,Image.FORMAT_RGBA8)
@@ -10,9 +11,13 @@ var silt_position := Vector2(-100,-100)
 var silt_time := -1000.0
 
 func _init() -> void:
-	material.shader = preload("res://scripts/underwater_fog.gdshader")
+	material.shader = preload("res://scripts/station_render_shaders.gd").FOG
 	mask_texture = ImageTexture.create_from_image(mask)
 	material.set_shader_parameter("terrain",mask_texture)
+	var caustics := LightingArt.texture("caustics")
+	if caustics != null:
+		material.set_shader_parameter("caustics_tex",caustics)
+		material.set_shader_parameter("use_caustics_tex",true)
 
 func reset() -> void:
 	last_survey=-1000

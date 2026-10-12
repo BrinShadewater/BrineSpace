@@ -9,7 +9,7 @@ static func capture(game) -> Dictionary:
 	var state := {}
 	for field in FIELDS:
 		state[field] = game.get(field)
-	return {"version": VERSION, "saved_at": Time.get_unix_time_from_system(), "run_id": game.run_save_id, "state": state,
+	var data:Dictionary={"version": VERSION, "saved_at": Time.get_unix_time_from_system(), "run_id": game.run_save_id, "state": state,
 		"crew": {"version": 1, "bill": game.bill_npc.snapshot(), "veld": game.veld_npc.snapshot(), "branforth": game.branforth_npc.snapshot(), "marsh": game.marsh_npc.snapshot(), "playback": game.grid_view.crew_playback_snapshot()},
 		"hardware":game.hardware.duplicate(),
 		"workspace": preload("res://scripts/workspace_state.gd").capture(game),
@@ -27,6 +27,9 @@ static func capture(game) -> Dictionary:
 		"rng": game.rng.state, "orbit_rng": game.orbit.rng.state,
 		"poi": game.orbit.current_poi, "poi_timer": game.orbit.timer,
 		"timer_left": game.tick_timer.time_left, "scroll": Vector2i(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical)}.duplicate(true)
+	if game.grid_view.branforth_player.has_method("floor_texture"):
+		data=preload("res://scripts/james_cargo_checkpoint.gd").capture(data,game.grid_view.branforth_player,game.branforth_npc.stage)
+	return data
 
 static func write(game, path: String = PATH) -> Error:
 	last_error = ""
@@ -130,6 +133,8 @@ static func problem(value: Dictionary) -> String:
 	if not preload("res://rooms/large-rooms/tidal_power_plant.gd").valid_rooms(state.placed_rooms): return "Tidal chamber state"
 	if not preload("res://scripts/drone_fleet.gd").valid(value.get("drone_fleet"),state.get("placed_rooms",[])): return "drone fleet"
 	if not valid_crew(value.get("crew")): return "crew snapshots"
+	if value.has("james_cargo_return") and not preload("res://scripts/james_cargo_checkpoint.gd").valid_shape(value):return "James cargo sequence"
+	if not preload("res://scripts/bill_carry_checkpoint.gd").valid(value): return "Bill carry sequence"
 	if not preload("res://scripts/companions.gd").valid(value.get("companions"),value.get("wrecks",{}),state.placed_rooms): return "companions"
 	if not preload("res://scripts/crew_expedition.gd").valid_crew_rooms(value.get("crew"),state.placed_rooms): return "crew expedition rooms"
 	for field in FIELDS:
@@ -198,6 +203,13 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 			last_error = "Checkpoint is incomplete."
 			return false
 	if not valid_crew(data.get("crew")): return false
+	if data.has("james_cargo_return") and not preload("res://scripts/james_cargo_checkpoint.gd").admits_loaded(data,game.grid_view.branforth_player):
+		last_error="James cargo artwork or sequence does not match this checkpoint."
+		return false
+	if not preload("res://scripts/bill_carry_checkpoint.gd").valid(data): return false
+	var saved_crew:Dictionary=data.get("crew") if data.get("crew") is Dictionary else {}
+	var bill_playback:Dictionary=saved_crew.get("playback",{}).get("bill",{}).get("water",{})
+	if bill_playback.has("carry_binding") and not game.grid_view.human_water_player.admits_loaded_snapshot(bill_playback): return false
 	if not preload("res://scripts/companions.gd").valid(data.get("companions"),data.get("wrecks",{}),data.state.get("placed_rooms",[])):return false
 	if not data.state.get("placed_rooms") is Array or (not preload("res://scripts/airlock_cycle.gd").valid_rooms(data.state.placed_rooms) or not preload("res://scripts/room_flooding.gd").valid_rooms(data.state.placed_rooms) or not preload("res://scripts/room_fire.gd").valid_rooms(data.state.placed_rooms)): return false
 	if not preload("res://scripts/moonbay_missions.gd").valid_rooms(data.state.placed_rooms,data.get("crew")): return false
@@ -283,6 +295,11 @@ static func _restore_crew(game, data: Dictionary, staged := false) -> void:
 			if staged: await game.marsh_npc.restore_snapshot(game,data.crew.marsh,true)
 			else: game.marsh_npc.restore_snapshot(game, data.crew.marsh)
 		if data.crew.has("playback"): game.grid_view.restore_crew_playback(data.crew.playback)
+	if game.grid_view.branforth_player.has_method("floor_texture"):
+		var player=game.grid_view.branforth_player
+		player.return_plan.clear();player.last_source.clear();player.game=game
+		game.branforth_npc.preview_player=player
+		if data.has("james_cargo_return"):preload("res://scripts/james_cargo_checkpoint.gd").restore_player(data,player,game.get_visual_time_seconds())
 
 static func _finish_restore(game, data: Dictionary) -> void:
 	game.power_blackout = game.offline_reasons.values().has("POWER BLACKOUT")

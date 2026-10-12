@@ -1,6 +1,29 @@
 extends RefCounted
 ## Decorative habitat patches. Occupancy and excavation remain authoritative elsewhere.
 const ROOT := "res://legacy/default/assets/environment/sub-biomes-v1/"
+const SELECTED_PATHS := {
+	"sulfur-ground": "res://assets/environment/habitat-sediments-v1/runtime/sulfur-ground.png",
+	"sponge-ground": "res://assets/environment/habitat-sediments-v1/runtime/sponge-ground.png",
+	"brine-ground": "res://assets/environment/habitat-sediments-v1/runtime/brine-ground.png",
+	"nodules-ground": "res://assets/environment/habitat-sediments-v1/runtime/nodules-ground.png",
+	"iron-ground": "res://assets/environment/habitat-sediments-v1/runtime/iron-ground.png",
+	"brine-seep-stones": "res://assets/environment/seep-geology-v1/runtime/seep-stones.png",
+	"nodules-nodule-cluster": "res://assets/environment/seep-geology-v1/runtime/nodule-cluster.png",
+	"iron-mineral-ledges": "res://assets/environment/seep-geology-v1/runtime/mineral-ledges.png",
+	"kelp-ground": "res://assets/environment/alien-fungi-biomes-v1/runtime/kelp-sediment.png",
+	"kelp-ribbon-kelp": "res://assets/environment/seabed-refresh-v1/runtime/ribbon-kelp.png",
+	"coral-lace-coral": "res://assets/environment/habitat-refresh-v1/runtime/lace-coral.png",
+	"sponge-vase-sponges": "res://assets/environment/habitat-refresh-v1/runtime/vase-sponges.png",
+	"coral-ground": "res://assets/environment/habitat-refresh-v1/runtime/coral-sediment.png",
+	"coral-cup-corals": "res://assets/environment/habitat-refresh-v1/runtime/cup-corals.png",
+	"sponge-sea-fans": "res://assets/environment/habitat-refresh-v1/runtime/sea-fans.png",
+	"kelp-holdfast": "res://assets/environment/seabed-life-refresh-v1/runtime/holdfast.png",
+	"nodules-brittle-stars": "res://assets/environment/seabed-life-refresh-v1/runtime/brittle-stars.png",
+	"iron-hydroids": "res://assets/environment/seabed-life-refresh-v1/runtime/hydroids.png",
+	"sulfur-anhydrite": "res://assets/environment/mineral-habitat-refresh-v1/runtime/anhydrite.png",
+	"sulfur-bacterial-mat": "res://assets/environment/mineral-habitat-refresh-v1/runtime/bacterial-mat.png",
+	"brine-salt-plates": "res://assets/environment/mineral-habitat-refresh-v1/runtime/salt-plates.png"
+}
 const DEFINITIONS := {
 	"sulfur": {"name":"Sulfur vent basin", "props":["anhydrite","bacterial-mat"]},
 	"sponge": {"name":"Sponge reef", "props":["vase-sponges","sea-fans"]},
@@ -47,6 +70,8 @@ var textures: Dictionary = {}
 var meshes: Array[ArrayMesh] = []
 var props: Array[Dictionary] = []
 var initialized := false
+var floor_details = preload("res://assets/environment/floor-details-v1/floor_details_view.gd").new()
+var ground_variants = preload("res://assets/environment/biome-floor-variants-v1/biome_floor_view.gd").new()
 
 static func coverage(point: Vector2, center: Vector2, radius: Vector2) -> float:
 	var normalized := (point-center)/radius
@@ -94,7 +119,8 @@ func prepare() -> void:
 			var id: String = biome+"-"+suffix
 			if textures.has(id): continue # Site changes rebuild placement meshes, not source textures.
 			var source := Image.new()
-			if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES[id])==OK:
+			var path: String = SELECTED_PATHS.get(id, ROOT+SOURCES[id])
+			if preload("res://scripts/safe_image.gd").load_png(source, path)==OK:
 				textures[id] = ImageTexture.create_from_image(source)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 609202601
@@ -107,15 +133,34 @@ func prepare() -> void:
 			var choices: Array = DEFINITIONS[region.biome].props
 			props.append({"id":region.biome+"-"+choices[i%2],"at":at,"size":rng.randf_range(0.3,0.65)})
 
-func render_into(canvas: CanvasItem, cell_size: float) -> void:
+func render_into(canvas: CanvasItem, cell_size: float, clock:=0.0, under_props: Callable=Callable()) -> void:
+	render_ground(canvas,cell_size,under_props)
+	render_props(canvas,cell_size,clock)
+
+# The still ground layers, which the station grid keeps on a retained layer behind itself.
+func render_ground(canvas: CanvasItem, cell_size: float, under_props: Callable=Callable()) -> void:
 	prepare()
+	# Retained canvases keep mesh RIDs until redraw. A restored site rebuilds
+	# this view's meshes before that redraw; let each drawing canvas own its
+	# referenced generation until new draw commands replace the old ones.
+	canvas.set_meta("seabed_ground_meshes",meshes.duplicate())
 	for i in range(regions.size()):
 		var id: String = regions[i].biome+"-ground"
 		if textures.has(id):
-			canvas.draw_mesh(meshes[i],textures[id],Transform2D().scaled(Vector2.ONE*cell_size))
+			var material: Texture2D=ground_variants.texture_for(regions[i],textures[id])
+			canvas.draw_mesh(meshes[i],material,Transform2D().scaled(Vector2.ONE*cell_size))
+	if under_props.is_valid():under_props.call(canvas,cell_size,regions)
+
+func render_props(canvas: CanvasItem, cell_size: float, clock:=0.0) -> void:
+	prepare()
 	for prop in props:
 		if not textures.has(prop.id):
 			continue
 		var texture: Texture2D = textures[prop.id]
 		var display := texture.get_size()/texture.get_width()*float(prop.size)*cell_size
-		canvas.draw_texture_rect(texture,Rect2(prop.at*cell_size-display*0.5,display),false,Color(0.59,0.68,0.66,0.85))
+		var rect:=Rect2(prop.at*cell_size-display*0.5,display)
+		var tint:=Color(0.59,0.68,0.66,0.85)
+		if prop.id in ["kelp-ribbon-kelp","sponge-sea-fans","iron-hydroids"]:
+			preload("res://scripts/ambient_fronds.gd").draw(canvas,texture,rect,clock,prop.at.x*2.1+prop.at.y,tint)
+		else:canvas.draw_texture_rect(texture,rect,false,tint)
+	floor_details.render_into(canvas,props,cell_size)

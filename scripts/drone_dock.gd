@@ -52,7 +52,7 @@ static func finish_pending_jobs() -> void:
 		WorkerThreadPool.wait_for_task_completion(job.task)
 		# A completed task ID is invalid after wait; consume its decoded image directly.
 		Motion.image_jobs.erase(path)
-		if job.result.has("image"): Motion.cache_image(path,job.result.image)
+		if job.result.has("image"): Motion.cache_image(path,job.result.image,bool(job.result.get("invisible",false)))
 		else: push_error("Drone animation missing: "+path)
 static func prepare_preview(kind:String,operating:bool=true) -> bool:
 	return prepare_paths(required_paths(kind,{},operating))

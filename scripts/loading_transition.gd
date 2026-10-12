@@ -1,5 +1,6 @@
 extends "res://scripts/restore_overlay.gd"
 ## Kept under the window, independent of either scene being replaced.
+const SceneRenderShaders = preload("res://scripts/station_render_shaders.gd")
 const TRANSMISSION := preload("res://scripts/transmission_archive.gd").OPENING
 var transmission_text: String = TRANSMISSION
 var replay_mode := false

@@ -1,9 +1,9 @@
 extends RefCounted
-## Reuse audited, unchanged source sprites; depletion removes whole grounded pieces.
+## Dedicated painted extraction sprites; depletion removes whole grounded pieces.
 const SOURCES := {
-	"mining":"res://legacy/default/assets/environment/sub-biomes-v1/nodules-nodule-cluster-v1.png",
-	"frame":"res://legacy/default/assets/environment/service-wreckage-v1/collapsed-support-v1.png",
-	"cable":"res://legacy/default/assets/environment/service-wreckage-v1/torn-cable-harness-v1.png"
+	"mining":"res://assets/environment/harvest-refresh-v1/runtime/mining.png",
+	"frame":"res://assets/environment/harvest-refresh-v1/runtime/frame.png",
+	"cable":"res://assets/environment/harvest-refresh-v1/runtime/cable.png"
 }
 var textures := {}
 func texture(id: String) -> Texture2D:

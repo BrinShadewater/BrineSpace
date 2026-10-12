@@ -13,8 +13,6 @@ func _init(id: String, layout_id: String = "") -> void:
 		sections[direction]=[]
 		for section in specification.sections:
 			var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+id+"-"+direction+"-"+section+".json"))
-			var image := Image.new()
-			preload("res://scripts/safe_image.gd").load_png(image, data.source)
 			var section_registration: Dictionary=decode_registration(data)
 			if data.has("operating_screens"):
 				section_registration.operating_screens=data.operating_screens.duplicate(true)
@@ -22,7 +20,9 @@ func _init(id: String, layout_id: String = "") -> void:
 				section_registration.operating_screen_color=data.operating_screen_color
 			if data.get("mirror_horizontal",false):
 				section_registration=preload("res://scripts/room_asset_library.gd").mirror_registration(section_registration)
-			sections[direction].append({"registration":section_registration,"texture":ImageTexture.create_from_image(image),"section":section})
+			var source := ArtSource.new(data.source,section_registration,texture_pool,share_texture_storage)
+			source.section=section
+			sections[direction].append(source)
 
 func apply(room) -> void:
 	# Configuration runs every frame for shared views. Relocate only changed geometry.
@@ -36,7 +36,7 @@ func apply(room) -> void:
 	var kept: Array=[]
 	var inner: float=(Geometry.CELL-Geometry.WALL)*0.5
 	for index in range(2):
-		var section: Dictionary=sections[direction][index]
+		var section: ArtSource=sections[direction][index]
 		var reg: Dictionary=section.registration
 		var horizontal: bool=direction in ["north","south"]
 		var span := 136.0
@@ -44,7 +44,7 @@ func apply(room) -> void:
 		var height: float=width*reg.height/reg.width
 		var along: float=-inner if index==0 else inner-span
 		var position := Vector2(along,-inner if direction=="north" else inner-height) if horizontal else Vector2(-inner if direction=="west" else inner-width,along)
-		kept.append({"id":"full_wall_"+asset_id+"_"+section.section,"full_wall":true,"wall_mount":true,"split_wall":true,"validate_directional_layout":true,"side_view":direction,"rect":Rect2(position,Vector2(width,height)),"sort_y":position.y+height,"registration":reg,"split_texture":section.texture})
+		kept.append({"id":"full_wall_"+asset_id+"_"+section.section,"full_wall":true,"wall_mount":true,"split_wall":true,"validate_directional_layout":true,"side_view":direction,"rect":Rect2(position,Vector2(width,height)),"sort_y":position.y+height,"registration":reg,"split_source":section})
 		if direction=="north":
 			kept[-1]["visual_y_offset"]=float(specification.get("north_art_offset",0.0))
 	var candidates: Array=room.props.filter(func(item): return not owns(item) and item.id not in specification.replaces)
@@ -84,6 +84,7 @@ func draw(room, prop: Dictionary) -> void:
 		preload("res://scripts/room_asset_library.gd").draw(room,prop)
 		return
 	var reg: Dictionary=prop.registration
+	var texture: ImageTexture=prop.split_source.texture
 	var scale: float=prop.rect.size.x/reg.width
 	var anchor := Vector2(prop.rect.get_center().x,prop.rect.end.y)
 	anchor.y+=float(prop.get("visual_y_offset",0.0))
@@ -92,6 +93,6 @@ func draw(room, prop: Dictionary) -> void:
 		var uv := PackedVector2Array()
 		for point in polygon:
 			points.append(anchor+(point-reg.pivot)*scale)
-			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(reg,point)/Vector2(prop.split_texture.get_size()))
-		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,prop.split_texture)
+			uv.append(preload("res://scripts/room_asset_library.gd").source_uv(reg,point)/Vector2(texture.get_size()))
+		room.painter.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)
 	preload("res://scripts/room_asset_library.gd").draw_operating_screens(room,reg,anchor,scale)

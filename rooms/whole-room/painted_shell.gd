@@ -17,8 +17,10 @@ static func catalog() -> Dictionary:
 	return records
 static func png(path:String) -> Texture2D:
 	if not textures.has(path):
-		var im:=Image.new()
-		if im.load_png_from_buffer(FileAccess.get_file_as_bytes(path))!=OK:return null
+		var im:Image=preload("res://scripts/hand_image_preparation.gd").take(path)
+		if im==null:
+			im=Image.new()
+			if im.load_png_from_buffer(FileAccess.get_file_as_bytes(path))!=OK:return null
 		textures[path]=ImageTexture.create_from_image(im)
 	return textures[path]
 static func id_for(view) -> String:return Store.room_id_for(view,Store.asset_for(view))
@@ -33,15 +35,9 @@ static func context(view,id:String=""):
 	if view!=null and view.quarter==0:ctx.north_special=record.get("north_special",{})
 	# Honour an owner's explicit material selection without changing their saved data.
 	var chosen:String=Store.surface_positions(view).get("wall/riser","") if view!=null else ""
-	var old=load("res://rooms/whole-room/riser_catalog.gd")
-	# Studio Wall Art: another room's own painted riser ("room:<id>" from walls.json).
-	var borrowed:String=chosen.trim_prefix("room:") if chosen.begins_with("room:") else ""
-	if not borrowed.is_empty() and borrowed!=ctx.room_id and catalog().has(borrowed):
-		base=catalog()[borrowed].base;ctx.integrated={}
-		ctx.north_special={}
-	elif not chosen.is_empty() and old.catalog().has(chosen):
-		base=old.catalog()[chosen];ctx.integrated={}
-		ctx.north_special={}
+	var picked:Dictionary=surface_base(ctx.room_id,chosen)
+	base=picked.base
+	if picked.custom:ctx.integrated={};ctx.north_special={}
 	ctx.registrations={ctx.room_id:base};ctx.wall=png(base.source)
 	if view!=null:
 		var db=load("res://scripts/room_database.gd")
@@ -167,3 +163,12 @@ func draw_cap_corner(target: CanvasItem, at: Vector2, east: bool, south: bool) -
 	target.draw_polygon(PackedVector2Array([points[0],points[1],points[2]]),PackedColorArray([Color.WHITE]),PackedVector2Array([uv[0],uv[1],uv[2]]),wall)
 	target.draw_polygon(PackedVector2Array([points[0],points[2],points[3]]),PackedColorArray([Color.WHITE]),PackedVector2Array([uv[0],uv[2],uv[1]]),wall)
 
+
+static func surface_base(id:String,chosen:String) -> Dictionary:
+	if not catalog().has(id):return {}
+	var base:Dictionary=catalog()[id].base
+	var borrowed:String=chosen.trim_prefix("room:") if chosen.begins_with("room:") else ""
+	if not borrowed.is_empty() and borrowed!=id and catalog().has(borrowed):return {"base":catalog()[borrowed].base,"custom":true}
+	var old=load("res://rooms/whole-room/riser_catalog.gd")
+	if not chosen.is_empty() and old.catalog().has(chosen):return {"base":old.catalog()[chosen],"custom":true}
+	return {"base":base,"custom":false}

@@ -41,14 +41,16 @@ static func break_needed(game,actor) -> bool:
 	if not actor.needs_air():return false
 	var start: int=actor.nearest_in_room(actor.foot,actor.cell_at(actor.foot))
 	if start<0:return false
+	var targets := {}
 	for need in ["hunger","fatigue"]:
 		if actor.needs[need]<65:continue
 		if need=="hunger" and (int(game.resources.food)<=0 or actor.helmet_equipped):continue
 		for cell in actor.room_nodes:
+			# Scrapping refreshes the inspector before the next navigation rebuild.
+			if not game.occupied.has(cell): continue
 			if not actor.service_preferences[need].has(game.occupied[cell].id) or not actor.service_available(game,cell):continue
-			for target in actor.room_nodes[cell]:
-				if not actor.route_between(start,target).is_empty():return true
-	return false
+			for target in actor.room_nodes[cell]: targets[target] = true
+	return actor.can_reach_any(start,targets)
 
 static func choose(game,actor) -> bool:
 	var cell: Vector2i=actor.primary_room

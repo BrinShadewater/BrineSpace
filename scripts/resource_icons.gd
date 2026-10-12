@@ -2,30 +2,14 @@ extends RefCounted
 ## Resource icon artwork and colours, shared by the HUD, draft cards, codex and Meta Progression
 ## (owner playtest, Sept 17: resources should read with the same icon and colour everywhere).
 
-const PATHS := {
-	"metal": "res://Brine icons/icons_64/resource_icon_metal_chunk.png",
-	"power": "res://Brine icons/icons_64/resource_icon_power_lightning.png",
-	"oxygen": "res://Brine icons/icons_64/resource_icon_o2.png",
-	"water": "res://Brine icons/icons_64/resource_icon_water_drop.png",
-	"food": "res://Brine icons/icons_64/resource_icon_leaf_food.png",
-	"data": "res://Brine icons/icons_64/resource_icon_data.png",
-	"archived_data": "res://Brine icons/icons_64/resource_icon_data.png",
-	"biomass": "res://Brine icons/icons_64/resource_icon_biomass_growth.png",
-	"rare_minerals": "res://Brine icons/icons_64/resource_icon_rare_minerals.png",
-	"rare": "res://Brine icons/icons_64/resource_icon_rare_minerals.png",
-	"integrity": "res://Brine icons/icons_64/resource_icon_integrity.png",
-	"crew": "res://Brine icons/icons_64/resource_icon_crew.png",
-	"corruption": "res://Brine icons/icons_64/resource_icon_corruption.png",
-	"anomaly": "res://Brine icons/icons_64/anomaly_icon_spiral.png",
-	"orbit": "res://Brine icons/icons_64/orbit_icon_moon_asteroid.png",
-}
+const PATHS := preload("res://scripts/ui_icons.gd").PATHS
 
 # The HUD resource chip colours.
 const COLORS := {
-	"metal": "#b8c0c6", "power": "#f5c542", "oxygen": "#7fd4ff", "water": "#719bff",
-	"food": "#f0903c", "data": "#4fd0e0", "archived_data": "#8fe8f2", "biomass": "#5fc46a",
-	"rare_minerals": "#b07ff0", "rare": "#b07ff0", "integrity": "#9fd8b0", "crew": "#e6c6a0",
-	"corruption": "#d95b63", "anomaly": "#c58af0", "orbit": "#9fb3c8",
+	"metal": "#d2dbe2", "power": "#edc66b", "oxygen": "#9ed8ee", "water": "#79afe0",
+	"food": "#c1d990", "data": "#7bc6bf", "archived_data": "#a2c8bc", "biomass": "#99bb7f",
+	"rare_minerals": "#baa0d7", "rare": "#baa0d7", "integrity": "#a2cfad", "crew": "#e6c6a0",
+	"corruption": "#a16367", "anomaly": "#9181a2", "orbit": "#9fb3c8",
 }
 
 static func icon(id: String, icon_size := 16) -> String:

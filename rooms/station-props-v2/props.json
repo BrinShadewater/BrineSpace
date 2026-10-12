@@ -648,7 +648,16 @@
   "default_rooms": [
    "battery_array"
   ],
-  "design": "battery_array.png"
+  "design": "battery_array.png",
+  "operating_screens": [
+   [
+    325,
+    89,
+    39,
+    41
+   ]
+  ],
+  "operating_screen_color": "b6a16dc0"
  },
  {
   "id": "sp-battery_array-2",
@@ -703,7 +712,16 @@
   "default_rooms": [
    "battery_array"
   ],
-  "design": "battery_array.png"
+  "design": "battery_array.png",
+  "operating_screens": [
+   [
+    127,
+    97,
+    59,
+    39
+   ]
+  ],
+  "operating_screen_color": "b6a16dc0"
  },
  {
   "id": "sp-battery_array-3",
@@ -811,7 +829,28 @@
   "default_rooms": [
    "battery_array"
   ],
-  "design": "battery_array.png"
+  "design": "battery_array.png",
+  "operating_screens": [
+   [
+    124,
+    36,
+    51,
+    63
+   ],
+   [
+    180,
+    36,
+    51,
+    63
+   ],
+   [
+    236,
+    36,
+    51,
+    63
+   ]
+  ],
+  "operating_screen_color": "b6a16dc0"
  },
  {
   "id": "sp-bio_lab-1",
@@ -4377,7 +4416,10 @@
   ],
   "design": "galley.png",
   "role": "galley_counter",
-  "operating_screens": [
+  "service_facings": [
+      "north"
+    ],
+    "operating_screens": [
    [
     206,
     195,
@@ -4490,7 +4532,10 @@
   ],
   "design": "galley.png",
   "role": "galley_counter",
-  "operating_screens": [
+  "service_facings": [
+      "north"
+    ],
+    "operating_screens": [
    [
     101,
     165,
@@ -30393,6 +30438,9 @@
  {
   "id": "sp-generated-counter-galley-prep",
   "label": "Counter Galley Prep",
+  "role": "galley_counter",
+  "service_facings": ["north", "south"],
+  "service_contact_fractions": {"north": [0.5, 1.0], "south": [0.5, 0.45]},
   "category": "common",
   "source": "res://assets/room-counters-2026-09-26/game-size/counter-galley-prep.png",
   "region": [

@@ -1,0 +1,68 @@
+{
+  "name": "Bill East whole master torch repair",
+  "status": "provisional_unselected",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "weld-east",
+      "frameFiles": [
+        "res://character/bill-east-torch-master-v1/frames/000.png",
+        "res://character/bill-east-torch-master-v1/frames/001.png",
+        "res://character/bill-east-torch-master-v1/frames/002.png",
+        "res://character/bill-east-torch-master-v1/frames/003.png",
+        "res://character/bill-east-torch-master-v1/frames/004.png",
+        "res://character/bill-east-torch-master-v1/frames/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        160,
+        180,
+        160,
+        180,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld",
+        "weld"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "independent east whole figures; fixed source scale; planted anatomical left boot; exact active idle and weld joins"
+    }
+  ],
+  "strideDistanceCells": {}
+}

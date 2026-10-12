@@ -1,0 +1,379 @@
+{
+  "name": "James shared restful breathing cadence bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_native_verified_owner_review_pending",
+  "states": [
+    {
+      "id": "sleep-north",
+      "frameFiles": [
+        "res://character/james-north-rest-polish-v1/frames/bare/sleep/000.png",
+        "res://character/james-north-rest-polish-v1/frames/bare/sleep/001.png",
+        "res://character/james-north-rest-polish-v1/frames/bare/sleep/002.png",
+        "res://character/james-north-rest-polish-v1/frames/bare/sleep/003.png",
+        "res://character/james-north-rest-polish-v1/frames/bare/sleep/004.png",
+        "res://character/james-north-rest-polish-v1/frames/bare/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        0.0580369843527692,
+        -35.72756756756757
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "character/james-lying-north-v1/source-lying-v6.png",
+        "fixedScale": 0.3008130081300813,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          6
+        ],
+        "derivation": "Coherent master-led North rest anatomy; corrected calves; exact standing master; common source6 neutral; rise exact reverse",
+        "helmetDonorSource": null,
+        "sleepCadence": {
+          "sourceManifest": "character/james-north-rest-polish-v1/bare-manifest.json",
+          "originalMs": [
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0
+          ],
+          "newMs": [
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
+          ],
+          "method": "Same six selected source poses, exact existing pixels/alpha/proportions/grade/contact/head anchors. One shared3600ms sleeping visual cycle in all four directions and gear modes; life fatigue/service timers unchanged."
+        }
+      }
+    },
+    {
+      "id": "sleep-south",
+      "frameFiles": [
+        "res://character/james-lying-south-v1/frames/sleep/000.png",
+        "res://character/james-lying-south-v1/frames/sleep/001.png",
+        "res://character/james-lying-south-v1/frames/sleep/002.png",
+        "res://character/james-lying-south-v1/frames/sleep/003.png",
+        "res://character/james-lying-south-v1/frames/sleep/004.png",
+        "res://character/james-lying-south-v1/frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        0.6007828518173333,
+        -33.96324324324325
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4152542372881356,
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse",
+        "sleepCadence": {
+          "sourceManifest": "character/james-lying-family-v1/bare-manifest.json",
+          "originalMs": [
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0
+          ],
+          "newMs": [
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
+          ],
+          "method": "Same six selected source poses, exact existing pixels/alpha/proportions/grade/contact/head anchors. One shared3600ms sleeping visual cycle in all four directions and gear modes; life fatigue/service timers unchanged."
+        }
+      }
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "res://character/james-lying-east-v1/frames/sleep/000.png",
+        "res://character/james-lying-east-v1/frames/sleep/001.png",
+        "res://character/james-lying-east-v1/frames/sleep/002.png",
+        "res://character/james-lying-east-v1/frames/sleep/003.png",
+        "res://character/james-lying-east-v1/frames/sleep/004.png",
+        "res://character/james-lying-east-v1/frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        -23.02054054054054,
+        -7.498378378378378
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4983164983164983,
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse",
+        "sleepCadence": {
+          "sourceManifest": "character/james-lying-family-v1/bare-manifest.json",
+          "originalMs": [
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0
+          ],
+          "newMs": [
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
+          ],
+          "method": "Same six selected source poses, exact existing pixels/alpha/proportions/grade/contact/head anchors. One shared3600ms sleeping visual cycle in all four directions and gear modes; life fatigue/service timers unchanged."
+        }
+      }
+    },
+    {
+      "id": "sleep-west",
+      "frameFiles": [
+        "res://character/james-lying-west-v1/frames/sleep/000.png",
+        "res://character/james-lying-west-v1/frames/sleep/001.png",
+        "res://character/james-lying-west-v1/frames/sleep/002.png",
+        "res://character/james-lying-west-v1/frames/sleep/003.png",
+        "res://character/james-lying-west-v1/frames/sleep/004.png",
+        "res://character/james-lying-west-v1/frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600,
+        600,
+        600,
+        600,
+        600
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        20.806117336849038,
+        -10.585945945945946
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.5285714285714286,
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse",
+        "sleepCadence": {
+          "sourceManifest": "character/james-lying-family-v1/bare-manifest.json",
+          "originalMs": [
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0,
+            160.0
+          ],
+          "newMs": [
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
+          ],
+          "method": "Same six selected source poses, exact existing pixels/alpha/proportions/grade/contact/head anchors. One shared3600ms sleeping visual cycle in all four directions and gear modes; life fatigue/service timers unchanged."
+        }
+      }
+    }
+  ]
+}

@@ -46,4 +46,5 @@ static func valid(sites: Variant) -> bool:
 		if site.capacity<1 or site.capacity>1000 or site.units<0 or site.units>site.capacity: return false
 		if not site.get("progress") is float or not is_finite(site.progress) or site.progress<0 or site.progress>=WORK_SECONDS: return false
 		if not site.get("discovered") is bool or not site.get("active") is bool: return false
+		if not preload("res://scripts/james_case_deposit.gd").valid(site.get("james_case_release",{}),cell):return false
 	return true

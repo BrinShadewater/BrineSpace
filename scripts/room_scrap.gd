@@ -77,6 +77,8 @@ static func scrap(game, cell: Vector2i) -> int:
 	# A queued repair paid its Metal up front: refund the unused part and release the welder.
 	if room.has("leak_repair"): HullRepair.cancel(game, room.pos)
 	var metal := refund(room)
+	if is_instance_valid(game.grid_view):
+		game.grid_view.room_transitions.add("scrap",room,game.get_visual_time_seconds())
 	game.placed_rooms.erase(room)
 	for part in covered:
 		game.occupied.erase(part)

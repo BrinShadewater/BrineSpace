@@ -57,15 +57,17 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	# Reuse the painted source's large flanged pipe below a flush grate trench.
 	Common.south_transform(canvas,rect,float(int(room.get("rotation",0)))*PI*0.5)
 	Common.sprite(canvas,TURBINE_ART,Rect2(-1,-1,2,2),Color(1,1,1,0))
-	canvas.draw_rect(Rect2(-38,-366,76,172),Color("#142028"))
-	canvas.draw_texture_rect_region(Common.art_textures[TURBINE_ART],Rect2(-30,-366,60,174),Rect2(64,244,108,690),Color("#b1b9bc"))
-	Common.floor_tiles(canvas,Common.GRATING_ART,Rect2(-38,-366,76,172),96.0,Color("#829394"))
+	canvas.draw_rect(Rect2(-38,-300,76,106),Color("#142028"))
+	Common.draw_submerged_texture(canvas,Common.art_textures[TURBINE_ART],Rect2(-30,-300,60,108),Rect2(64,244,108,690),Color("#b1b9bc"),float(room.get("water_level",0.0)),float(int(room.get("rotation",0)))*PI*0.5)
+	Common.floor_tiles(canvas,Common.GRATING_ART,Rect2(-38,-300,76,106),96.0,Color("#829394"))
 	Common.south_transform(canvas,rect)
 	canvas.draw_rect(Rect2(-192,-192,384,384),Color("#16232b"))
 	Common.floor_tiles(canvas,Common.GRATING_ART,Rect2(-192,-192,384,384),96.0,Color("#839395"))
-	Common.sprite(canvas,TURBINE_ART,Rect2(-190,-190,380,380))
 	var state: Dictionary = room.get("tidal_chamber",{"water":0.0,"rotor_angle":0.0,"spinning":false})
-	if state.get("spinning",false): _draw_rotor(canvas,float(state.rotor_angle))
+	# Chamber fill is drawn across the whole enclosure below; shallow prop flooding
+	# would add a second waterline only 76 pixels above the turbine's base.
+	Common.sprite(canvas,TURBINE_ART,Rect2(-190,-190,380,380),Color.WHITE)
+	if state.get("spinning",false): _draw_rotor(canvas,0.0 if preload("res://scripts/title_settings.gd").reduced_motion else float(state.rotor_angle),float(state.get("water",0.0)))
 	var water := float(state.get("water",0.0))
 	if water>0.0:
 		canvas.draw_rect(Rect2(-192,192-384*water,384,384*water),Color(0.12,0.34,0.41,0.32))
@@ -77,7 +79,7 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 		for y in [-212.0,192.0]: WallMaterial.cap(canvas,Rect2(x,y,20,20),"engineering")
 	Common.finish(canvas)
 
-static func _draw_rotor(canvas: CanvasItem, angle: float) -> void:
+static func _draw_rotor(canvas: CanvasItem, angle: float, water := 0.0) -> void:
 	# Only the circular impeller moves; its painted housing and floor stay fixed.
 	var texture: Texture2D = Common.art_textures[TURBINE_ART]
 	var center := Vector2(-0.3,-6.3)

@@ -13,6 +13,8 @@ uniform float motion = 1.0;
 // caustics, a teal depth tint and denser sediment. All zero at Low quality.
 uniform float shafts = 0.0;
 uniform float caustic_light = 0.0;
+uniform sampler2D caustics_tex : filter_linear, repeat_enable;
+uniform bool use_caustics_tex = false;
 uniform float depth_tint = 0.0;
 uniform float snow_boost = 1.0;
 // Bioluminescent plant clumps (x, y, radius, phase) and their colours, and drifting wisps
@@ -92,6 +94,9 @@ void fragment(){
  float reach=(.45+.55*above)*(.55+.45*noise(world*.35+vec2(t*.01,0.0)));
  water+=vec3(.22,.62,.72)*band*reach*shafts*.40;
  float ripple=pow(abs(sin((noise(world*2.6+vec2(t*.06,t*.04))+noise(world*4.4-vec2(t*.05,t*.07)))*6.2832)),8.0);
+ if (use_caustics_tex && caustic_light > 0.0) {
+  ripple=texture(caustics_tex,world/6.0+vec2(t*.01,t*.0067)).r;
+ }
  water+=vec3(.15,.55,.65)*ripple*caustic_light*.24*(.4+.6*above);
  // Bioluminescent clumps reveal themselves and tint the water around them.
  for(int i=0;i<glow_count;i++){

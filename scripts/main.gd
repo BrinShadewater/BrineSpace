@@ -29,9 +29,9 @@ const MIN_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.02
 const MAX_GRID_ZOOM := DEFAULT_GRID_ZOOM * 0.75 * 1.25
 ## How much of the 40x40 grid the furthest zoom-out shows across. 1.0 was the whole grid.
 const ZOOM_OUT_EXTENT := 0.75
-const UI_ACCENT := Color("#2d7f6b")
-const UI_ACCENT_BRIGHT := Color("#4fa38d")
-const UI_ACCENT_DARK := Color("#0d2f2b")
+const UI_ACCENT := Color("#386b69")
+const UI_ACCENT_BRIGHT := Color("#789993")
+const UI_ACCENT_DARK := Color("#102e2e")
 const UI_PANEL_LARGE := "res://brineui/panel_large_vertical_9slice.png"
 const UI_PANEL_MEDIUM := "res://brineui/panel_medium_horizontal_9slice.png"
 const UI_PANEL_TOOLTIP := "res://brineui/panel_small_tooltip_9slice.png"
@@ -63,25 +63,7 @@ const RESOURCE_TOOLTIPS := {
 	"crew": "Living workers currently aboard the station.",
 	"corruption": "Anomalous contamination risk."
 }
-const RESOURCE_ICON_PATHS := {
-	"metal": "res://Brine icons/icons_64/resource_icon_metal_chunk.png",
-	"power": "res://Brine icons/icons_64/resource_icon_power_lightning.png",
-	"oxygen": "res://Brine icons/icons_64/resource_icon_o2.png",
-	"water": "res://Brine icons/icons_64/resource_icon_water_drop.png",
-	"food": "res://Brine icons/icons_64/resource_icon_leaf_food.png",
-	"data": "res://Brine icons/icons_64/resource_icon_data.png",
-	"biomass": "res://Brine icons/icons_64/resource_icon_biomass_growth.png",
-	"rare_minerals": "res://Brine icons/icons_64/resource_icon_rare_minerals.png",
-	"rare": "res://Brine icons/icons_64/resource_icon_rare_minerals.png",
-	"integrity": "res://Brine icons/icons_64/resource_icon_integrity.png",
-	"crew": "res://Brine icons/icons_64/resource_icon_crew.png",
-	"corruption": "res://Brine icons/icons_64/resource_icon_corruption.png",
-	"anomaly": "res://Brine icons/icons_64/anomaly_icon_spiral.png",
-	"orbit": "res://Brine icons/icons_64/orbit_icon_moon_asteroid.png",
-	"fire": "res://Brine icons/icons_64/status_icon_fire_flame.png",
-	"freeze": "res://Brine icons/icons_64/status_icon_freeze_snowflake.png",
-	"sensor": "res://Brine icons/icons_64/system_icon_eye_sensor.png"
-}
+const RESOURCE_ICON_PATHS := preload("res://scripts/ui_icons.gd").PATHS
 const Preferences = preload("res://scripts/title_settings.gd")
 const ROOM_ART_VARIANT_COUNTS := {
 	"battery_array": 1,
@@ -220,11 +202,11 @@ var offline_reasons := {}
 var last_cycle_delta := {}
 # Drone and crew deliveries per cycle, shown in the resource bar's +/- figure only.
 var resource_flow: Dictionary = preload("res://scripts/resource_flow_ledger.gd").empty()
-const BillNPC = preload("res://scripts/major_bill_npc.gd")
+const BillNPC = preload("res://scripts/bill_carry_npc.gd")
 var bill_npc = BillNPC.new()
 const VeldNPC = preload("res://scripts/veld_npc.gd")
 var veld_npc = VeldNPC.new()
-const BranforthNPC = preload("res://scripts/branforth_npc.gd")
+const BranforthNPC = preload("res://scripts/james_cargo_actor.gd")
 var branforth_npc = BranforthNPC.new()
 const MarshNPC = preload("res://scripts/marsh_npc.gd")
 var marsh_npc = MarshNPC.new()
@@ -255,6 +237,11 @@ var hand_layout_button: Button
 var room_lock_button
 var room_scrap_button
 var room_repair_button
+var room_action_feedback: Label
+var room_action_feedback_row: HBoxContainer
+var room_scrap_cancel: Button
+var room_action_feedback_cell := Vector2i(-1,-1)
+var room_action_feedback_until := 0
 var hand_backdrop_button: Button
 var card_drag
 const DraftCard = preload("res://scripts/draft_card.gd")
@@ -264,9 +251,15 @@ var reroll_button: Button
 var preview_texture: TextureRect
 var preview_name_label: Label
 var preview_tags_label: Label
+var inspector_card_host: VBoxContainer
+var inspector_effects: RichTextLabel
+var inspector_details: VBoxContainer
+var inspector_detail_key := ""
 var inspector_panel_style: StyleBoxFlat
 var inspector_thumb_style: StyleBoxFlat
 var inspector_status_label: Label
+var inspector_badges: HFlowContainer
+var inspector_loading: PanelContainer
 var inspector_label: RichTextLabel
 var orbital_objective_label: Label
 var archive_label: RichTextLabel
@@ -374,6 +367,7 @@ var card_textures := {}
 var ui_textures := {}
 var resource_icon_textures := {}
 var startup_complete := false
+var startup_stage_ms := {}
 var station_sound: Node
 var room_texture_paths := preload("res://scripts/room_card_art.gd").PATHS
 
@@ -384,6 +378,8 @@ var hardware: Dictionary=preload("res://scripts/station_hardware.gd").DEFAULTS.d
 var hardware_panel
 
 func _ready() -> void:
+	preload("res://scripts/session_art_cache.gd").retain(self)
+	var startup_stamp := Time.get_ticks_usec()
 	Preferences.initialize(get_window())
 	preload("res://scripts/station_music.gd").ensure(self)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -393,8 +389,14 @@ func _ready() -> void:
 	_load_ui_textures()
 	_load_resource_icon_textures()
 	_load_card_textures()
+	startup_stage_ms["interface_art"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
+	startup_stamp = Time.get_ticks_usec()
 	_build_ui()
+	startup_stage_ms["interface_and_grid"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
+	startup_stamp = Time.get_ticks_usec()
 	_start_reboot_cycle()
+	startup_stage_ms["new_loop"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
+	startup_stamp = Time.get_ticks_usec()
 	get_tree().auto_accept_quit = false
 	var fresh_comms_opening: bool=RunSave.pending.is_empty()
 	if not RunSave.pending.is_empty():
@@ -403,7 +405,10 @@ func _ready() -> void:
 		if not await RunSave.restore_staged(self, checkpoint):
 			_log("Checkpoint unavailable. A new loop is staged.", false)
 	# Room views load lazily; build the station's own during loading, not in play.
+	startup_stage_ms["restore"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
+	startup_stamp = Time.get_ticks_usec()
 	grid_view.prewarm_station_views(self)
+	startup_stage_ms["station_rooms"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
 	startup_complete = true
 	crew_comms=preload("res://scripts/crew_comms.gd").new()
 	crew_comms.opening_enabled=fresh_comms_opening
@@ -423,14 +428,16 @@ func play_station_sound(kind: String, cell := Vector2.INF) -> void:
 
 func _configure_window_scaling() -> void:
 	var window := get_window()
-	window.content_scale_size = Vector2i(1920, 1080)
+	_update_interface_scale()
+	window.size_changed.connect(_update_interface_scale)
 	window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
 	window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
 	window.min_size = Vector2i(960, 540)
+	_update_interface_scale.call_deferred() # Apply compact navigation after UI construction.
 
 func _apply_ui_font() -> void:
 	var font := preload("res://scripts/ui_fonts.gd").interface_font()
-	var ui_theme := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
+	var ui_theme := preload("res://scripts/title_button_style.gd").menu_theme()
 	ui_theme.default_font = font
 	ui_theme.default_font_size = 14
 	theme = ui_theme
@@ -442,6 +449,16 @@ var frame_timing_usec := {}
 # what (Sept 26: four temporary traces were needed to answer that by hand).
 var crew_frame_usec := {}
 var operations_refresh_step := 0.5
+
+func _update_interface_scale() -> void:
+	var window := get_window()
+	# Compact windows gain readable controls rather than shrinking the full desktop layout.
+	var design := Vector2i(1600,900) if window.size.x<1440 else Vector2i(1920,1080)
+	if window.content_scale_size != design: window.content_scale_size = design
+	var navigation := find_child("NavigationRow",true,false) as HBoxContainer
+	if navigation != null:
+		navigation.custom_minimum_size.x = 472 if design.x==1600 else 540
+		navigation.add_theme_constant_override("separation",8 if design.x==1600 else 12)
 
 func _process(delta: float) -> void:
 	preload("res://scripts/hazard_feedback.gd").update(self)
@@ -477,23 +494,41 @@ func _process(delta: float) -> void:
 	_update_camera_pan(delta)
 	_update_camera_zoom(delta)
 	_refresh_solar_meter()
+	_refresh_room_action_feedback()
 	if is_instance_valid(placement_feedback) and placement_feedback.visible:
 		_position_placement_feedback()
+	for key in ["ui_construction", "ui_guide", "ui_flood", "ui_drone_alert", "ui_integrity", "ui_fire", "ui_stuck", "ui_inspector", "inspector_work", "inspector_scrap", "inspector_forecast", "inspector_battery"]:
+		frame_timing_usec[key] = 0
+	var ui_stamp := Time.get_ticks_usec()
 	operations_refresh += delta
 	if operations_refresh >= 0.5:
 		operations_refresh_step = operations_refresh
 		operations_refresh = 0.0
 		_refresh_construction_button()
+		frame_timing_usec.ui_construction = Time.get_ticks_usec() - ui_stamp
+		ui_stamp = Time.get_ticks_usec()
 		if is_instance_valid(guide_box) and guide_box.visible: _refresh_learning_ui()
+		frame_timing_usec.ui_guide = Time.get_ticks_usec() - ui_stamp
+		ui_stamp = Time.get_ticks_usec()
 		preload("res://scripts/flood_alerts.gd").refresh(self)
+		frame_timing_usec.ui_flood = Time.get_ticks_usec() - ui_stamp
+		ui_stamp = Time.get_ticks_usec()
 		preload("res://scripts/drone_idle_alert.gd").refresh(self)
+		frame_timing_usec.ui_drone_alert = Time.get_ticks_usec() - ui_stamp
+		ui_stamp = Time.get_ticks_usec()
 		# Water rises every frame but chips refresh once a cycle; keep the flooded count current.
 		if resource_labels.has("integrity"): _refresh_integrity_chip()
+		frame_timing_usec.ui_integrity = Time.get_ticks_usec() - ui_stamp
+		ui_stamp = Time.get_ticks_usec()
 		preload("res://scripts/room_fire.gd").refresh_alert(self)
+		frame_timing_usec.ui_fire = Time.get_ticks_usec() - ui_stamp
+		ui_stamp = Time.get_ticks_usec()
 		# Work that has stopped happening: stuck crew, parked drones, builds nobody starts.
 		for warning in preload("res://scripts/stuck_watch.gd").check(self, operations_refresh_step):
 			var stuck_monitor = _performance_monitor()
 			if stuck_monitor != null: stuck_monitor.note("stuck", warning)
+		frame_timing_usec.ui_stuck = Time.get_ticks_usec() - ui_stamp
+		ui_stamp = Time.get_ticks_usec()
 		if not meta.last_error.is_empty() and meta.last_error != last_meta_warning:
 			_log("PROGRESSION NOT SAVED // " + meta.last_error,true)
 		last_meta_warning = meta.last_error
@@ -503,6 +538,7 @@ func _process(delta: float) -> void:
 			_refresh_inspector()
 		elif drone_fleet.reserved(selected_room_cell): _refresh_inspector()
 		elif occupied.has(selected_room_cell) and (occupied[selected_room_cell].has("fire_heat") or occupied[selected_room_cell].has("fire") or inspector_had_water or float(occupied[selected_room_cell].get("water_level",0))>0 or float(occupied[selected_room_cell].get("hull_crack",0))>0): _refresh_inspector()
+		frame_timing_usec.ui_inspector = Time.get_ticks_usec() - ui_stamp
 	frame_timing_usec.interface = Time.get_ticks_usec() - stamp
 	frame_timing_usec.station_total = Time.get_ticks_usec() - frame_start
 
@@ -658,6 +694,7 @@ func _build_ui() -> void:
 	objective_box.add_child(construction_button)
 	flood_alert_button=Button.new()
 	flood_alert_button.text="FLOOD / CLEAR"
+	preload("res://scripts/ui_icons.gd").apply(flood_alert_button, "water")
 	_style_hud_button(flood_alert_button,false)
 	flood_alert_button.pressed.connect(func():
 		var cell: Vector2i=flood_alert_button.get_meta("target",Vector2i(-1,-1))
@@ -669,7 +706,8 @@ func _build_ui() -> void:
 	objective_box.add_child(flood_alert_button)
 	fire_alert_button=Button.new()
 	_style_hud_button(fire_alert_button,false)
-	fire_alert_button.modulate=Color("ef987c")
+	preload("res://scripts/ui_icons.gd").apply(fire_alert_button, "fire")
+	fire_alert_button.add_theme_color_override("font_color", Color("b78372"))
 	fire_alert_button.pressed.connect(func():
 		var cell: Vector2i=fire_alert_button.get_meta("target",Vector2i(-1,-1))
 		if occupied.has(cell):
@@ -681,7 +719,7 @@ func _build_ui() -> void:
 	fire_alert_button.hide()
 	orbital_objective_label = objective_text
 
-	var cascade_panel := PanelContainer.new()
+	var cascade_panel := preload("res://scripts/ui_widgets.gd").notice("STATION SIGNAL","")
 	cascade_panel.name = "CascadeToast"
 	cascade_panel.visible = false
 	cascade_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -693,14 +731,13 @@ func _build_ui() -> void:
 	_apply_panel_style(cascade_panel, Color("#061b18"), UI_ACCENT_BRIGHT)
 	middle.add_child(cascade_panel)
 	cascade_toast = cascade_panel
-	var cascade_text := Label.new()
+	var cascade_text: Label = cascade_panel.get_node("Body").get_child(1)
 	cascade_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	cascade_text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	cascade_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	cascade_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	cascade_text.add_theme_font_size_override("font_size", 15)
 	cascade_text.add_theme_color_override("font_color", Color("#b9f5df"))
-	cascade_panel.add_child(cascade_text)
 	cascade_toast_label = cascade_text
 	cascade_panel.gui_input.connect(func(event: InputEvent) -> void:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not current_toast_record.is_empty():
@@ -708,35 +745,34 @@ func _build_ui() -> void:
 			_review_discovery_key(current_toast_record)
 	)
 
-	var viewport_tools := HBoxContainer.new()
-	viewport_tools.name = "ViewportTools"
-	viewport_tools.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	viewport_tools.offset_left = -450
-	viewport_tools.offset_top = 18
-	viewport_tools.offset_right = -18
-	viewport_tools.offset_bottom = 58
-	viewport_tools.add_theme_constant_override("separation", 10)
-	middle.add_child(viewport_tools)
+	var crew_strip := preload("res://scripts/crew_portrait_panel.gd").new()
+	crew_strip.game = self
+	middle.add_child(crew_strip)
 	var recenter_button := Button.new()
 	recenter_button.text = "RECENTER [F]"
 	recenter_button.set_meta("key_hint", "RECENTER [{Fit station}]")
 	recenter_button.pressed.connect(_fit_station_view.bind(true))
 	_style_hud_button(recenter_button, false)
-	viewport_tools.add_child(recenter_button)
+	recenter_button.name = "RecenterButton"
 
+	var side_dock := VBoxContainer.new()
+	side_dock.name = "SideDock"
+	side_dock.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
+	side_dock.offset_left = -548
+	side_dock.offset_top = 132
+	side_dock.offset_right = -8
+	side_dock.offset_bottom = -8
+	side_dock.add_theme_constant_override("separation",10)
+	root.add_child(side_dock)
 	var side_scroll := ScrollContainer.new()
 	side_scroll.name = "SideScroll"
-	side_scroll.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
-	side_scroll.offset_left = -548
-	side_scroll.offset_top = 132
-	side_scroll.offset_right = -8
-	side_scroll.offset_bottom = -8
+	side_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	side_scroll.custom_minimum_size = Vector2(540, 0)
 	side_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	side_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	side_scroll.follow_focus = true
 	side_scroll.mouse_force_pass_scroll_events = false
-	root.add_child(side_scroll)
+	side_dock.add_child(side_scroll)
 
 	var side := VBoxContainer.new()
 	guide_box = VBoxContainer.new()
@@ -829,8 +865,10 @@ func _build_ui() -> void:
 	thumb_frame.add_theme_stylebox_override("panel", inspector_thumb_style)
 	thumb_frame.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	preview_details.add_child(thumb_frame)
+	inspector_card_host = VBoxContainer.new()
+	thumb_frame.add_child(inspector_card_host)
 	var preview_image := TextureRect.new()
-	preview_image.custom_minimum_size = Vector2(72, 72)
+	preview_image.custom_minimum_size = Vector2(190, 220)
 	preview_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	preview_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	preview_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -839,6 +877,7 @@ func _build_ui() -> void:
 	var preview_texts := VBoxContainer.new()
 	preview_texts.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	preview_details.add_child(preview_texts)
+	preview_details.move_child(thumb_frame, 1)
 	var preview_name := Label.new()
 	preview_name.text = "No Selection"
 	preview_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -851,22 +890,41 @@ func _build_ui() -> void:
 	preview_tags.add_theme_font_size_override("font_size", 13)
 	preview_tags.add_theme_color_override("font_color", Color("#8a9a9a"))
 	_add_label_panel_style(preview_tags, Color("#071018"), Color("#253946"))
-	var tag_row := HBoxContainer.new()
+	var tag_row := VBoxContainer.new()
 	tag_row.add_theme_constant_override("separation", 8)
 	preview_texts.add_child(tag_row)
 	tag_row.add_child(preview_tags)
+	preview_tags.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	preview_tags.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	preview_tags_label = preview_tags
 	inspector_status_label = Label.new()
 	inspector_status_label.name = "InspectorStatus"
+	inspector_status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	inspector_status_label.add_theme_font_size_override("font_size", 13)
 	inspector_status_label.hide()
 	tag_row.add_child(inspector_status_label)
+	inspector_badges = HFlowContainer.new()
+	inspector_badges.name = "InspectorBadges"
+	inspector_badges.add_theme_constant_override("h_separation",6)
+	inspector_badges.add_theme_constant_override("v_separation",6)
+	tag_row.add_child(inspector_badges)
+	inspector_effects = RichTextLabel.new()
+	inspector_effects.name = "RoomEffects"
+	inspector_effects.bbcode_enabled = true
+	inspector_effects.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	inspector_effects.custom_minimum_size = Vector2(0, 110)
+	inspector_effects.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	inspector_effects.add_theme_font_size_override("normal_font_size", 18)
+	inspector_effects.add_theme_font_size_override("bold_font_size", 18)
+	inspector_effects.mouse_force_pass_scroll_events = false
+	preview_texts.add_child(inspector_effects)
 	var inspector_text := RichTextLabel.new()
+	inspector_text.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	inspector_text.name = "Text"
 	inspector_text.bbcode_enabled = true
 	inspector_text.scroll_active = true
 	inspector_text.fit_content = false
-	inspector_text.custom_minimum_size = Vector2(0, 330)
+	inspector_text.custom_minimum_size = Vector2(0, 80)
 	inspector_text.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	inspector_text.mouse_filter = Control.MOUSE_FILTER_STOP
 	inspector_text.mouse_force_pass_scroll_events = false
@@ -874,7 +932,12 @@ func _build_ui() -> void:
 	inspector_text.add_theme_font_size_override("normal_font_size", 18)
 	inspector_text.add_theme_font_size_override("bold_font_size", 18)
 	inspector_text.add_theme_constant_override("line_separation", 2)
-	preview_box.add_child(inspector_text)
+	inspector_details = preload("res://scripts/ui_widgets.gd").disclosure("FORECAST & ROOM DETAILS",inspector_text)
+	inspector_details.name = "InspectorDetails"
+	inspector_loading = preload("res://scripts/ui_widgets.gd").loading("ASSEMBLY","Paid materials / awaiting a builder",0)
+	inspector_loading.name = "InspectorAssembly"
+	inspector_loading.hide()
+	preview_box.add_child(inspector_loading)
 	inspector_focus_button = Button.new()
 	inspector_focus_button.text = "LOCATE ROOM & CONNECTIONS"
 	inspector_focus_button.custom_minimum_size.y = 42
@@ -882,6 +945,7 @@ func _build_ui() -> void:
 	inspector_focus_button.pressed.connect(_focus_inspected_room)
 	preload("res://scripts/title_button_style.gd").apply(inspector_focus_button, 380, 42)
 	inspector_focus_button.set_meta("inspector_styled", true)
+	preload("res://scripts/ui_icons.gd").apply(inspector_focus_button, "focus_room")
 	preview_box.add_child(inspector_focus_button)
 	# Retain the internal selection anchor for focus links without a visible action.
 	inspector_focus_button.hide()
@@ -896,20 +960,20 @@ func _build_ui() -> void:
 	switch_row.name = "RoomSwitches"
 	switch_row.add_theme_constant_override("separation", 10)
 	preview_box.add_child(switch_row)
-	room_operation_button = preload("res://scripts/industrial_room_switch.gd").new()
+	room_operation_button = Button.new()
 	room_operation_button.text = "SELECT A BUILT ROOM TO CONTROL"
 	room_operation_button.custom_minimum_size = Vector2(170, 34)
 	room_operation_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	room_operation_button.pressed.connect(_toggle_inspected_room)
-	_style_switch_button(room_operation_button)
+	_style_hud_button(room_operation_button)
 	switch_row.add_child(room_operation_button)
 	# Per-room watertight lock (owner call, Sept 16): sealed doors stop flood water in and out.
-	room_lock_button = preload("res://scripts/industrial_room_switch.gd").new()
+	room_lock_button = Button.new()
 	room_lock_button.name = "RoomLockSwitch"
 	room_lock_button.custom_minimum_size.y = 34
 	room_lock_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	room_lock_button.pressed.connect(_toggle_inspected_room_lock)
-	_style_switch_button(room_lock_button)
+	_style_hud_button(room_lock_button)
 	room_lock_button.hide()
 	switch_row.add_child(room_lock_button)
 	# Scrap a built room for half its Metal (owner, Sept 26). Press twice to confirm.
@@ -924,26 +988,49 @@ func _build_ui() -> void:
 	var scrap_row := HBoxContainer.new()
 	scrap_row.name = "RoomScrap"
 	preview_box.add_child(scrap_row)
+	scrap_row.add_theme_constant_override("separation", 10)
 	scrap_row.add_child(room_scrap_button)
+	preload("res://scripts/ui_icons.gd").apply(room_scrap_button, "scrap")
 	room_scrap_button.hide()
 	room_repair_button = Button.new()
 	room_repair_button.name = "RoomRepairButton"
 	room_repair_button.pressed.connect(_repair_inspected_room)
 	preload("res://scripts/title_button_style.gd").apply(room_repair_button, 380, 34)
 	room_repair_button.set_meta("inspector_styled", true)
-	preview_box.add_child(room_repair_button)
+	scrap_row.add_child(room_repair_button)
+	preload("res://scripts/ui_icons.gd").apply(room_repair_button, "repair")
 	room_repair_button.hide()
+	room_action_feedback_row = HBoxContainer.new()
+	room_action_feedback_row.name = "RoomActionFeedback"
+	room_action_feedback_row.add_theme_constant_override("separation",10)
+	preview_box.add_child(room_action_feedback_row)
+	room_action_feedback = preload("res://scripts/ui_widgets.gd").text_label("",16)
+	room_action_feedback.name = "ActionMessage"
+	room_action_feedback_row.add_child(room_action_feedback)
+	room_scrap_cancel = Button.new()
+	room_scrap_cancel.name = "CancelScrap"
+	room_scrap_cancel.text = "CANCEL"
+	preload("res://scripts/title_button_style.gd").apply_plain(room_scrap_cancel)
+	room_scrap_cancel.set_meta("inspector_styled",true)
+	room_scrap_cancel.custom_minimum_size = Vector2(80,34)
+	room_scrap_cancel.pressed.connect(_cancel_inspected_scrap)
+	room_action_feedback_row.add_child(room_scrap_cancel)
+	room_action_feedback_row.hide()
 	var airlock_panel=preload("res://scripts/airlock_panel.gd").new()
 	airlock_panel.game=self
 	preview_box.add_child(airlock_panel)
 	var work_panel=preload("res://scripts/crew_work_panel.gd").new()
 	work_panel.game=self
+	work_panel.name = "CrewWorkPanel"
 	preview_box.add_child(work_panel)
 	var moonbay_panel=preload("res://scripts/moonbay_panel.gd").new()
 	moonbay_panel.name="MoonbayPanel"
 	moonbay_panel.game=self
 	preview_box.add_child(moonbay_panel)
 	_uniform_inspector_controls(preview_box)
+	room_scrap_cancel.size_flags_horizontal = Control.SIZE_SHRINK_END
+	room_scrap_cancel.custom_minimum_size = Vector2(80,34)
+	preview_box.add_child(inspector_details)
 
 	side.add_child(hardware_panel)
 
@@ -962,7 +1049,7 @@ func _build_ui() -> void:
 	var controls_panel := PanelContainer.new()
 	controls_panel.name = "ControlsPanel"
 	controls_panel.custom_minimum_size = Vector2(0, 0)
-	side.add_child(controls_panel)
+	side_dock.add_child(controls_panel)
 	_apply_panel_style(controls_panel, Color("#071018"), Color("#152a35"))
 	var compact_style: StyleBox = controls_panel.get_theme_stylebox("panel").duplicate()
 	compact_style.set_content_margin_all(12)
@@ -1022,7 +1109,7 @@ func _build_ui() -> void:
 		speed_button.toggle_mode = true
 		speed_button.button_pressed = i == time_speed_index
 		speed_button.pressed.connect(_set_time_speed.bind(i))
-		_style_hud_button(speed_button, i == time_speed_index)
+		preload("res://scripts/title_button_style.gd").apply_plain(speed_button, i == time_speed_index)
 		speed_row.add_child(speed_button)
 		speed_buttons.append(speed_button)
 
@@ -1047,6 +1134,7 @@ func _build_ui() -> void:
 	var zoom_value := Label.new()
 	zoom_value.name = "ZoomValue"
 	zoom_row.add_child(zoom_value)
+	zoom_row.add_child(recenter_button)
 	zoom_label = zoom_value
 
 	var solar_row := HBoxContainer.new()
@@ -1107,6 +1195,7 @@ func _build_ui() -> void:
 	side.add_child(log_panel)
 	_apply_panel_style(log_panel, Color("#071018"), Color("#152a35"))
 	var log_text := RichTextLabel.new()
+	log_text.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	log_text.name = "Text"
 	log_text.bbcode_enabled = true
 	log_text.scroll_active = true
@@ -1132,7 +1221,7 @@ func _build_ui() -> void:
 	bottom.add_child(bottom_box)
 	var draft_status := VBoxContainer.new()
 	draft_status.custom_minimum_size = Vector2(148, 0)
-	draft_status.add_theme_constant_override("separation", 12)
+	draft_status.add_theme_constant_override("separation", 6)
 	bottom_box.add_child(draft_status)
 	var blueprint_title := Label.new()
 	blueprint_title.text = "DRAFT HAND"
@@ -1154,38 +1243,39 @@ func _build_ui() -> void:
 	var toggle_hand := Button.new()
 	toggle_hand.name = "HandToggle"
 	toggle_hand.text = "HIDE HAND"
-	toggle_hand.custom_minimum_size = Vector2(150, 34)
+	toggle_hand.custom_minimum_size = Vector2(180, 40)
 	toggle_hand.tooltip_text = "Fold the draft hand away to see more of the station. Press again to bring it back."
 	toggle_hand.pressed.connect(_toggle_hand_collapsed)
-	_style_hud_button(toggle_hand, false)
+	preload("res://scripts/title_button_style.gd").apply_plain(toggle_hand)
 	draft_status.add_child(toggle_hand)
 	hand_toggle_button = toggle_hand
 	var layout_toggle := Button.new()
 	layout_toggle.name = "HandLayoutToggle"
 	layout_toggle.text = "LAYOUT: ROW"
-	layout_toggle.custom_minimum_size = Vector2(150, 34)
+	layout_toggle.custom_minimum_size = Vector2(180, 40)
 	layout_toggle.tooltip_text = "Show the draft hand as a row of cards or as a fan."
 	layout_toggle.pressed.connect(_toggle_hand_layout)
-	_style_hud_button(layout_toggle, false)
+	preload("res://scripts/title_button_style.gd").apply_plain(layout_toggle)
 	draft_status.add_child(layout_toggle)
 	hand_layout_button = layout_toggle
 	# The pane behind the hand shows or hides from the hand itself (owner call, Sept 16); the same
 	# choice as Settings > Accessibility > Draft hand backdrop.
 	var backdrop_toggle := Button.new()
 	backdrop_toggle.name = "HandBackdropToggle"
-	backdrop_toggle.custom_minimum_size = Vector2(150, 34)
+	backdrop_toggle.custom_minimum_size = Vector2(180, 40)
 	backdrop_toggle.tooltip_text = "Show or hide the pane behind the draft hand."
 	backdrop_toggle.pressed.connect(_toggle_hand_backdrop)
-	_style_hud_button(backdrop_toggle, false)
+	preload("res://scripts/title_button_style.gd").apply_plain(backdrop_toggle)
 	draft_status.add_child(backdrop_toggle)
 	hand_backdrop_button = backdrop_toggle
 	var discard_all_button := Button.new()
 	discard_all_button.text = "REROLL HAND · 3"
-	discard_all_button.custom_minimum_size = Vector2(150, 38)
+	discard_all_button.custom_minimum_size = Vector2(180, 40)
 	discard_all_button.pressed.connect(_discard_all_cards)
-	_style_hud_button(discard_all_button, false)
+	preload("res://scripts/title_button_style.gd").apply_plain(discard_all_button)
 	draft_status.add_child(discard_all_button)
 	reroll_button = discard_all_button
+	preload("res://scripts/ui_icons.gd").apply(reroll_button, "reroll", 30)
 	var card_row := HBoxContainer.new()
 	card_row.name = "CardRow"
 	card_row.add_theme_constant_override("separation", 12)
@@ -1257,6 +1347,7 @@ func _build_ui() -> void:
 	summary_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	summary_vbox.add_child(summary_scroll)
 	var summary_body := RichTextLabel.new()
+	summary_body.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	summary_body.name = "Text"
 	summary_body.bbcode_enabled = true
 	summary_body.fit_content = true
@@ -1317,8 +1408,10 @@ func _apply_hand_backdrop() -> void:
 	reroll_button.visible = not hand_collapsed
 	hand_layout_button.visible = not hand_collapsed
 	hand_backdrop_button.visible = not hand_collapsed
-	hand_backdrop_button.text = "PANE: ON" if shown else "PANE: OFF"
+	hand_backdrop_button.text = "FRAME: ON" if shown else "FRAME: OFF"
+	preload("res://scripts/ui_icons.gd").apply(hand_backdrop_button, "frame_on" if shown else "frame_off", 30)
 	hand_toggle_button.text = "SHOW HAND" if hand_collapsed else "HIDE HAND"
+	preload("res://scripts/ui_icons.gd").apply(hand_toggle_button, "show_hand" if hand_collapsed else "hide_hand", 30)
 	hand_panel.offset_top = -72.0 if hand_collapsed else -380.0
 	var row: HBoxContainer = hand_panel.get_child(0)
 	var status: VBoxContainer = row.get_child(0)
@@ -1425,24 +1518,11 @@ func _style_switch_button(button: BaseButton) -> void:
 	button.add_theme_font_size_override("font_size", 14)
 	preload("res://scripts/title_button_style.gd").drop_focus_on_click(button)
 
-func _style_hud_button(button: BaseButton, active := false) -> void:
-	var normal_style := _make_texture_stylebox(UI_TERMINAL_BUTTON_NORMAL, 12, 14, 14, 7, 7)
-	var hover_style := _make_texture_stylebox(UI_TERMINAL_BUTTON_HOVER, 12, 14, 14, 7, 7)
-	var pressed_style := _make_texture_stylebox(UI_TERMINAL_BUTTON_PRESSED, 12, 14, 14, 7, 7)
-	if normal_style != null:
-		button.add_theme_stylebox_override("normal", normal_style)
-	if hover_style != null:
-		button.add_theme_stylebox_override("hover", hover_style)
-	if pressed_style != null:
-		button.add_theme_stylebox_override("pressed", pressed_style)
-	button.add_theme_color_override("font_color", Color("#b0e3cf") if active else Color("#abc5ca"))
-	button.add_theme_color_override("font_hover_color", Color("#d1f2eb"))
-	button.add_theme_color_override("font_pressed_color", Color("#d7f5d2"))
-	button.add_theme_font_size_override("font_size", 14)
+func _style_hud_button(button: BaseButton, _active := false) -> void:
+	if button is Button:
+		preload("res://scripts/title_button_style.gd").apply(button, 160, 38)
+		button.add_theme_font_size_override("font_size", 16)
 
-	button.add_theme_stylebox_override("focus", preload("res://scripts/title_button_style.gd").panel(100, 40, "focus"))
-	preload("res://scripts/title_button_style.gd").drop_focus_on_click(button)
-	button.add_theme_color_override("font_disabled_color", Color("#637f89"))
 
 func _panel_texture_for(panel: PanelContainer) -> String:
 	match panel.name:
@@ -1483,8 +1563,8 @@ func _style_hud_slider(slider: HSlider) -> void:
 	track.content_margin_bottom = 4
 	slider.add_theme_stylebox_override("slider", track)
 	var grabber := StyleBoxFlat.new()
-	grabber.bg_color = Color("#7fbf91")
-	grabber.border_color = Color("#a7d9ad")
+	grabber.bg_color = Color("#386b69")
+	grabber.border_color = Color("#547875")
 	grabber.border_width_left = 1
 	grabber.border_width_top = 1
 	grabber.border_width_right = 1
@@ -1510,8 +1590,8 @@ func _style_hud_progress(progress: ProgressBar) -> void:
 	background.corner_radius_bottom_right = 1
 	progress.add_theme_stylebox_override("background", background)
 	var fill := StyleBoxFlat.new()
-	fill.bg_color = Color("#6fae79")
-	fill.border_color = Color("#9fd0a5")
+	fill.bg_color = Color("#386b69")
+	fill.border_color = Color("#547875")
 	fill.border_width_top = 1
 	fill.border_width_bottom = 1
 	progress.add_theme_stylebox_override("fill", fill)
@@ -1680,6 +1760,33 @@ func _toggle_journal() -> void:
 	_set_paused(true)
 	_refresh_archive()
 
+func _show_room_action_feedback(message: String, cell: Vector2i, confirmation := false) -> void:
+	if not is_instance_valid(room_action_feedback): return
+	if not confirmation and room_scrap_button.get_meta("armed",Vector2i(-1,-1))!=Vector2i(-1,-1):
+		room_scrap_button.set_meta("armed",Vector2i(-1,-1))
+		if occupied.has(cell): room_scrap_button.text = "SCRAP · +%d METAL" % preload("res://scripts/room_scrap.gd").refund(occupied[cell])
+	room_action_feedback_cell = cell
+	room_action_feedback.text = message
+	room_action_feedback.add_theme_color_override("font_color",Color("c2ad83") if confirmation else Color("a6c1b7"))
+	room_action_feedback_until = 0 if confirmation else Time.get_ticks_msec()+6000
+	room_scrap_cancel.visible = confirmation
+	_refresh_room_action_feedback()
+
+func _refresh_room_action_feedback() -> void:
+	if not is_instance_valid(room_action_feedback): return
+	var changed_selection := selected_room_cell != room_action_feedback_cell or not selected_card_id.is_empty()
+	if changed_selection and room_scrap_cancel.visible:
+		room_scrap_button.set_meta("armed",Vector2i(-1,-1))
+	if changed_selection or (room_action_feedback_until>0 and Time.get_ticks_msec()>=room_action_feedback_until):
+		room_action_feedback.text = ""
+	room_action_feedback_row.visible = not room_action_feedback.text.is_empty() and hovered_card_id.is_empty()
+
+func _cancel_inspected_scrap() -> void:
+	room_scrap_button.set_meta("armed",Vector2i(-1,-1))
+	room_action_feedback.text = ""
+	_refresh_all()
+	_refresh_room_action_feedback()
+
 func _toggle_inspected_room() -> void:
 	if _gameplay_input_blocked() or not running or room_operation_button == null:
 		return
@@ -1708,8 +1815,10 @@ func _toggle_inspected_room() -> void:
 			active_synergies[link["id"]] = link
 	_log("%s %s." % [room["display_name"], "suspended" if room["suspended"] else "scheduled to resume next cycle"], false)
 	_refresh_all()
+	_show_room_action_feedback("Room suspended. Production and links are off." if room.suspended else "Resume scheduled for the next cycle.",cell)
 
 func _scrap_inspected_room() -> void:
+	_note_performance_action("demolition")
 	if _gameplay_input_blocked() or not running or room_scrap_button == null: return
 	var cell: Vector2i = room_scrap_button.get_meta("cell", Vector2i(-1, -1))
 	var Scrap = preload("res://scripts/room_scrap.gd")
@@ -1718,13 +1827,16 @@ func _scrap_inspected_room() -> void:
 	if room_scrap_button.get_meta("armed", Vector2i(-1, -1)) != cell:
 		room_scrap_button.set_meta("armed", cell)
 		room_scrap_button.text = "CONFIRM SCRAP · +%d METAL" % Scrap.refund(occupied[cell])
+		_show_room_action_feedback("Remove %s for %d Metal? Press Confirm Scrap again, or Cancel." % [occupied[cell].display_name,Scrap.refund(occupied[cell])],cell,true)
 		return
 	room_scrap_button.set_meta("armed", Vector2i(-1, -1))
-	if Scrap.scrap(self, cell) <= 0 and occupied.has(cell): return
+	var refund: int = Scrap.scrap(self,cell)
+	if refund <= 0 and occupied.has(cell): return
 	for actor in Companions.all_actors(self): actor.signature = ""
 	grid_view.surface_key = []; grid_view.door_surface_key = []; grid_view.light_surface_key = []
 	selected_room_cell = Vector2i(-1, -1)
 	_refresh_all()
+	_show_room_action_feedback("Room scrapped. %d Metal recovered." % refund,selected_room_cell)
 
 func _toggle_inspected_room_lock() -> void:
 	if _gameplay_input_blocked() or not running or room_lock_button == null: return
@@ -1739,6 +1851,7 @@ func _toggle_inspected_room_lock() -> void:
 	grid_view.surface_key = []; grid_view.door_surface_key = []; grid_view.light_surface_key = []
 	_log("%s doors %s." % [room.get("display_name", "Room"), "locked: sealed to crew and water" if room.doors_locked else "unlocked"], false)
 	_refresh_all()
+	_show_room_action_feedback("Doors locked. Crew and flood water cannot pass." if room.doors_locked else "Room lock released."+(" Station-wide doors remain locked." if hardware.doors else ""),cell)
 
 func _toggle_wreck_work(cell: Vector2i) -> void:
 	if wrecks.get(cell,{}).get("kind","")=="recovery": return
@@ -1859,7 +1972,7 @@ func _refresh_wreck_inspector(cell: Vector2i) -> void:
 	# A greyed button with the reason only in the paragraph above reads as "not possible" (owner
 	# playtest note 18): the button says what is missing instead.
 	room_operation_button.text = blocked if not blocked.is_empty() else "PAUSE SALVAGE" if wreck.active else "RESUME SALVAGE" if wreck.progress>0 else "DISMANTLE & SALVAGE"
-	room_operation_button.tooltip_text = note if not blocked.is_empty() else "Progress freezes with the game. Metal is awarded once, on completion."
+	preload("res://scripts/title_button_style.gd").set_hint(room_operation_button,note if not blocked.is_empty() else "Progress freezes with the game. Metal is awarded once, on completion.")
 
 func _refresh_cryo_inspector(cell: Vector2i) -> void:
 	var ward: Dictionary = wrecks[cell]
@@ -1894,7 +2007,7 @@ func _refresh_cryo_inspector(cell: Vector2i) -> void:
 		var blocker: Dictionary = CryoRecovery.repair_blocker(self,cell,"cryo_chamber",int(ward.rotation),CryoRecovery.REPAIR_METAL)
 		room_operation_button.text = "PAUSE REPAIR" if ward.active else String(blocker.button) if not blocker.is_empty() else "RESUME REPAIR" if ward.paid else "REPAIR & CONNECT // %d METAL" % CryoRecovery.REPAIR_METAL
 		room_operation_button.disabled = not running or not blocker.is_empty()
-	room_operation_button.tooltip_text = "Repair preserves this compartment and its occupants. Wake progress freezes with pause, suspension, power loss or full berths."
+	preload("res://scripts/title_button_style.gd").set_hint(room_operation_button,"Repair preserves this compartment and its occupants. Wake progress freezes with pause, suspension, power loss or full berths.")
 
 # Why a clearance job cannot start, short enough to sit on the button itself.
 func _clearance_blocker(has_bay: bool, accessible: bool, busy: bool, bay: String) -> String:
@@ -1925,7 +2038,7 @@ func _refresh_rock_inspector(cell: Vector2i) -> void:
 	var rock_blocked: String = "" if rock.active else _clearance_blocker(has_bay,accessible,busy,"Mining")
 	room_operation_button.disabled = not running or not rock_blocked.is_empty()
 	room_operation_button.text = rock_blocked if not rock_blocked.is_empty() else "PAUSE EXCAVATION" if rock.active else "RESUME EXCAVATION" if rock.progress>0 else "BREAK & CLEAR ROCK"
-	room_operation_button.tooltip_text = "A Mining Drone clears this cell. Progress freezes with the game."
+	preload("res://scripts/title_button_style.gd").set_hint(room_operation_button,"A Mining Drone clears this cell. Progress freezes with the game.")
 
 
 
@@ -2278,6 +2391,7 @@ func _start_reboot_cycle() -> void:
 	test_walker_break_timer = 1.5
 	test_walker_direction = "south"
 	visual_time_seconds = 0.0
+	if is_instance_valid(grid_view): grid_view.room_transitions.events.clear()
 	orbit = OrbitManagerScript.new()
 	running = false
 	_set_paused(true, false)
@@ -2516,6 +2630,7 @@ func get_footprint_placement_problem(id: String, anchor: Vector2i, rotation: int
 	return ""
 
 func _place_room(id: String, cell: Vector2i, free := false, construction_complete := false) -> void:
+	_note_performance_action("placement")
 	var blueprint: Dictionary = RoomDatabaseScript.get_room(id)
 	var build_rotation: int=int(blueprint.get("fixed_rotation",selected_rotation))
 	var size: Vector2i = blueprint.get("size", Vector2i.ONE)
@@ -3013,7 +3128,10 @@ func _handle_synergy_stabilization(synergy_id: String) -> void:
 
 func _award_synergy_stabilization(synergy: Dictionary) -> void:
 	var synergy_id := str(synergy.get("id", ""))
-	if synergy_id.is_empty() or not meta.stabilize_synergy(synergy_id):
+	if synergy_id.is_empty():
+		return
+	var research := int(synergy.get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
+	if not meta.stabilize_synergy(synergy_id, research):
 		return
 	play_station_sound("discovery")
 	if not run_stabilized_synergy_ids.has(synergy_id):
@@ -3021,8 +3139,6 @@ func _award_synergy_stabilization(synergy: Dictionary) -> void:
 	var synergy_name := str(synergy.get("name", synergy_id))
 	# Stabilizing no longer decrypts a blueprint (owner playtest, Sept 17): the pattern's bonus
 	# doubles in every loop, its related blueprint costs half in the shop, and it pays Data.
-	var research := int(synergy.get("terminal_reward", {}).get("research", 0)) + preload("res://scripts/meta_shop.gd").STABILIZE_DATA
-	meta.add_research_points(research)
 	var noun := "PATTERN" if SynergyManagerScript.is_pattern(synergy) else "SYNERGY"
 	_log("%s stabilized: %s. Bonus doubled. +%d Archived Data." % [noun.capitalize(), synergy_name, research])
 	_queue_center_toast("%s STABILIZED\n%s\nBonus doubled · +%d Archived Data" % [noun, synergy_name.to_upper(), research], "synergy:" + synergy_id)
@@ -3134,6 +3250,7 @@ func _show_center_toast(message: String) -> void:
 	current_toast_record = str(toast_record_keys.get(message, ""))
 	toast_record_keys.erase(message)
 	var reveal: bool = preload("res://scripts/synergy_reveal.gd").configure(self, cascade_toast, cascade_toast_label, message, current_toast_record)
+	cascade_toast.get_node("Body").visible = not reveal
 	var hold: float = preload("res://scripts/synergy_reveal.gd").SECONDS if reveal else 3.5
 	cascade_toast.mouse_filter = Control.MOUSE_FILTER_STOP if not current_toast_record.is_empty() else Control.MOUSE_FILTER_IGNORE
 	cascade_toast.visible = true
@@ -3419,6 +3536,7 @@ func _on_zoom_changed(value: float) -> void:
 	_request_grid_zoom(DEFAULT_GRID_ZOOM * value)
 
 func _request_grid_zoom(value: float) -> void:
+	_note_performance_action("zoom")
 	# Any zoom that is not the wheel keeps the view's centre; the wheel re-arms the anchor
 	# straight after this call. Clearing here means the slider and a fit cannot inherit a
 	# stale pointer from an earlier scroll.
@@ -3515,9 +3633,10 @@ func _restore_grid_view_center(center_ratio: Vector2) -> void:
 	grid_scroll.scroll_vertical = int(max(center_ratio.y * full_size - viewport_size.y * 0.5, 0.0))
 
 func _restore_grid_view_center_deferred(center_ratio: Vector2) -> void:
+	if not is_inside_tree() or is_queued_for_deletion(): return
 	var revision := camera_view_revision
 	await get_tree().process_frame
-	if revision == camera_view_revision: _restore_grid_view_center(center_ratio)
+	if is_inside_tree() and not is_queued_for_deletion() and revision == camera_view_revision: _restore_grid_view_center(center_ratio)
 
 func _toggle_pause() -> void:
 	if _gameplay_input_blocked():
@@ -3697,6 +3816,7 @@ func _menu_quit_game() -> void:
 		menu_status_label.text = RunSave.last_error if not RunSave.last_error.is_empty() else meta.last_error
 
 func _save_active_loop() -> bool:
+	_note_performance_action("save")
 	var error := RunSave.write(self, run_save_path)
 	if error != OK:
 		menu_save_feedback.text = "SAVE FAILED // " + RunSave.last_error
@@ -3766,7 +3886,7 @@ func _set_time_speed(index: int) -> void:
 	time_speed_index = clampi(index, 0, time_speeds.size() - 1)
 	for i in range(speed_buttons.size()):
 		speed_buttons[i].set_pressed_no_signal(i == time_speed_index)
-		_style_hud_button(speed_buttons[i], i == time_speed_index)
+		preload("res://scripts/title_button_style.gd").apply_plain(speed_buttons[i], i == time_speed_index)
 	if tick_timer != null:
 		var duration := _cycle_wait_seconds()
 		tick_timer.start(maxf(0.001, duration * remaining_fraction))
@@ -3835,16 +3955,18 @@ func get_cell_size() -> float:
 	return float(CELL_SIZE) * grid_zoom
 
 func _center_grid_on_core() -> void:
+	if not is_inside_tree() or is_queued_for_deletion(): return
 	var revision := camera_view_revision
 	await get_tree().process_frame
-	if grid_scroll == null or revision != camera_view_revision:
+	if not is_inside_tree() or is_queued_for_deletion() or grid_scroll == null or revision != camera_view_revision:
 		return
 	_set_grid_zoom(grid_zoom,true,(Vector2(Architects.CORE_CELL)+Vector2.ONE*0.5)/float(GRID_SIZE))
 
 func _center_grid_on_station() -> void:
+	if not is_inside_tree() or is_queued_for_deletion(): return
 	var revision := camera_view_revision
 	await get_tree().process_frame
-	if revision == camera_view_revision: _center_grid_on_station_now()
+	if is_inside_tree() and not is_queued_for_deletion() and revision == camera_view_revision: _center_grid_on_station_now()
 
 func _center_grid_on_station_deferred() -> void:
 	_center_grid_on_station.call_deferred()
@@ -3950,6 +4072,11 @@ func _refresh_resources() -> void:
 	if resource_chips.has("integrity"):
 		var integrity_tip: String = _reserve_forecast("integrity", int(net["integrity"])) if net.has("integrity") else str(RESOURCE_TOOLTIPS["integrity"])
 		resource_chips["integrity"].tooltip_text = integrity_tip + "\nFLOODED counts rooms at 25% water or deeper. Flooding does not lower Integrity.\nClick or press Enter for room contributions."
+	for key in BASE_STORAGE_CAPACITY:
+		var chip_id: String = "rare" if key=="rare_minerals" else str(key)
+		if resource_chips.has(chip_id): _apply_resource_outlook(chip_id,str(key),int(net.get(key,0)))
+	if forecast_power_vented>0:
+		resource_chips["power"].tooltip_text += preload("res://scripts/station_ui_insights.gd").power_vented_note(forecast_power_vented)
 	if diagnostics_button != null:
 		var risk: Dictionary = forecast.offline
 		var suspended := 0
@@ -3980,6 +4107,10 @@ func _critical_color(value: int, normal: Color, warning_at: int, critical_at: in
 	return normal
 
 func _set_resource_chip(id: String, text: String, color: Color) -> void:
+	var supply_warning := color == Color("#ff3b3b") or color == Color("#ff9f31")
+	if color == Color("#ff3b3b"): color = Color("#a16367")
+	elif color == Color("#ff9f31"): color = Color("#b89a53")
+	elif id != "corruption": color = Color(ResourceIcons.color(id))
 	var label: Label
 	if resource_labels.has(id):
 		label = resource_labels[id]
@@ -4013,7 +4144,7 @@ func _set_resource_chip(id: String, text: String, color: Color) -> void:
 		icon.custom_minimum_size = Vector2(24, 24)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		icon.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		row.add_child(icon)
 		resource_icon_rects[id] = icon
@@ -4022,18 +4153,18 @@ func _set_resource_chip(id: String, text: String, color: Color) -> void:
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		label.add_theme_font_size_override("font_size", 12)
+		label.add_theme_font_size_override("font_size", 14)
 		label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.75))
 		row.add_child(label)
 		resource_labels[id] = label
 	if resource_icon_rects.has(id):
 		var icon_rect: TextureRect = resource_icon_rects[id]
 		icon_rect.texture = _resource_icon_texture(id)
+		icon_rect.self_modulate = Color(1.18, 1.18, 1.18)
 	var chip_panel: PanelContainer = resource_chips[id]
 	var chip_style: StyleBoxFlat = chip_panel.get_theme_stylebox("panel") as StyleBoxFlat if chip_panel.has_theme_stylebox_override("panel") else StyleBoxFlat.new()
 	chip_style.bg_color = Color("#050d10")
-	var color_hex := color.to_html(false)
-	var warning_state := text.contains(" -") or color_hex == "ff3b3b" or color_hex == "ff9f31"
+	var warning_state := text.contains(" -") or supply_warning
 	chip_style.border_color = Color("#663238") if warning_state else Color("#26383b")
 	chip_style.border_width_left = 1
 	chip_style.border_width_top = 1
@@ -4181,6 +4312,7 @@ func _power_priority(room: Dictionary) -> int:
 			return 60
 
 func _refresh_cards() -> void:
+	if is_instance_valid(grid_view):grid_view.prepare_hand_images(self)
 	if hand_count_label != null:
 		hand_count_label.text = "%d/%d" % [hand.size(), hand_limit()]
 	if reroll_button != null:
@@ -4189,36 +4321,50 @@ func _refresh_cards() -> void:
 			reroll_button.text += "\n+1 IN %dC" % (REROLL_RECOVERY_CYCLES - reroll_recovery_progress)
 		reroll_button.tooltip_text = "Rebuilds one reroll every %d cycles while below %d charges." % [REROLL_RECOVERY_CYCLES, REROLL_RECOVERY_CAP]
 		reroll_button.disabled = rerolls_remaining <= 0 or not running
-	for child in hand_box.get_children():
-		child.queue_free()
-	# Card-shaped blueprints, as a row or a fan (owner playtest).
-	var fan: Control = DraftCard.fan_row() if Preferences.hand_layout == "fan" else null
-	if fan != null:
-		hand_box.add_child(fan)
-	for index in range(hand.size()):
-		var id: String = hand[index]
-		var card: PanelContainer = DraftCard.build(self, id)
-		card.set_meta("hand_index", index)
-		card.mouse_entered.connect(_on_card_hovered.bind(id, card))
-		card.mouse_exited.connect(_on_card_unhovered.bind(id, card))
-		card.gui_input.connect(_on_card_gui_input.bind(id, index))
+	var card_states := []
+	for id in hand: card_states.append(DraftCard.presentation(self, str(id)))
+	var presentation := {"layout": Preferences.hand_layout, "cards": card_states}
+	var roots := []
+	for child in hand_box.get_children(): roots.append(child.get_instance_id())
+	# Metadata lives with this hand, so scene exit releases its presentation too.
+	# Check roots as well: an externally cleared/replaced container must rebuild.
+	if hand_box.get_meta("card_presentation", {}) != presentation or hand_box.get_meta("card_roots", []) != roots:
+		for child in hand_box.get_children():
+			hand_box.remove_child(child)
+			child.queue_free()
+		# Card-shaped blueprints, as a row or a fan (owner playtest).
+		var fan: Control = DraftCard.fan_row() if Preferences.hand_layout == "fan" else null
 		if fan != null:
-			fan.add_child(card)
-			continue
-		var card_slot := Control.new()
-		card_slot.custom_minimum_size = DraftCard.ROW_SLOT
-		card_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		card_slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		card.position = Vector2((DraftCard.ROW_SLOT.x - DraftCard.CARD_SIZE.x) * 0.5, DraftCard.HOVER_LIFT + 8.0)
-		card.set_meta("rest_position", card.position)
-		card.set_meta("rest_rotation", 0.0)
-		card_slot.add_child(card)
-		hand_box.add_child(card_slot)
-	if fan != null:
-		DraftCard.layout_fan(fan)
+			hand_box.add_child(fan)
+		for index in range(hand.size()):
+			var id: String = hand[index]
+			var card: PanelContainer = DraftCard.build(self, id)
+			card.set_meta("hand_index", index)
+			card.mouse_entered.connect(_on_card_hovered.bind(id, card))
+			card.mouse_exited.connect(_on_card_unhovered.bind(id, card))
+			card.gui_input.connect(_on_card_gui_input.bind(id, index))
+			if fan != null:
+				fan.add_child(card)
+				continue
+			var card_slot := Control.new()
+			card_slot.custom_minimum_size = DraftCard.ROW_SLOT
+			card_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			card_slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			card.position = Vector2((DraftCard.ROW_SLOT.x - DraftCard.CARD_SIZE.x) * 0.5, DraftCard.HOVER_LIFT + 8.0)
+			card.set_meta("rest_position", card.position)
+			card.set_meta("rest_rotation", 0.0)
+			card_slot.add_child(card)
+			hand_box.add_child(card_slot)
+		if fan != null:
+			DraftCard.layout_fan(fan)
+		roots.clear()
+		for child in hand_box.get_children(): roots.append(child.get_instance_id())
+		hand_box.set_meta("card_presentation", presentation)
+		hand_box.set_meta("card_roots", roots)
 	# The draw and discard piles told the player nothing they could act on, so they are hidden.
 	if hand_layout_button != null:
 		hand_layout_button.text = "LAYOUT: FAN" if Preferences.hand_layout == "fan" else "LAYOUT: ROW"
+		preload("res://scripts/ui_icons.gd").apply(hand_layout_button, Preferences.hand_layout, 30)
 
 func _card_synergy_hint(room_id: String) -> String:
 	var best_synergy := {}
@@ -4263,9 +4409,9 @@ func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affor
 	style.bg_color = Color("#101a20") if not selected else Color(0.03, 0.07, 0.08, 1.0)
 	if not affordable:
 		style.bg_color = Color(0.018, 0.024, 0.03, 1.0) if not selected else Color(0.055, 0.065, 0.075, 1.0)
-	style.border_color = UI_ACCENT_BRIGHT if selected else preload("res://scripts/draft_card.gd").muted(color)
+	style.border_color = preload("res://scripts/draft_card.gd").muted_bright(color).lightened(.12) if selected else preload("res://scripts/draft_card.gd").muted_bright(color)
 	if not affordable and not selected:
-		style.border_color = Color("#30424a")
+		style.border_color = preload("res://scripts/draft_card.gd").muted_bright(color).darkened(.12)
 	style.border_width_left = 3
 	style.border_width_top = 3
 	style.border_width_right = 3
@@ -4279,7 +4425,6 @@ func _apply_card_style(card: PanelContainer, color: Color, selected: bool, affor
 	# same muted family the card menus use (owner playtest, Sept 30).
 	var authored_card_style := preload("res://scripts/card_art.gd").frame_style(style.bg_color.lerp(DraftCard.muted(color),0.10),style.border_color)
 	card.add_theme_stylebox_override("panel", authored_card_style if authored_card_style != null else style)
-	preload("res://scripts/card_art.gd").update_inner_outline(card,style.border_color,authored_card_style != null)
 	if not affordable:
 		card.modulate = Color(0.72, 0.76, 0.78, 1.0)
 	elif selected:
@@ -4371,6 +4516,12 @@ func _load_card_textures() -> void:
 			card_textures[id] = texture
 
 func _load_card_thumbnail(path: String) -> Texture2D:
+	# Prepare the raw image's mipmaps before its first upload. The former path
+	# uploaded, read back and uploaded again for every PNG thumbnail.
+	var raw_image := preload("res://scripts/safe_image.gd").raw_image(path)
+	if raw_image != null:
+		if not raw_image.has_mipmaps(): raw_image.generate_mipmaps()
+		return ImageTexture.create_from_image(raw_image)
 	var texture := preload("res://scripts/safe_image.gd").raw_texture(path)
 	if texture == null: return null
 	# Fan cards shrink and rotate this art. Their mipmap filter needs actual levels;
@@ -4633,8 +4784,8 @@ func _ports_connect(room_a: Dictionary, room_b: Dictionary, cell_a: Vector2i, ce
 		return true
 	var side := _side_from_offset(offset)
 	var opposite := _opposite_side(side)
-	var a_has: bool = get_room_doors(room_a).has(side) if room_a.get("size", Vector2i.ONE) == Vector2i.ONE and cell_a == room_a.get("pos", cell_a) else RoomFootprintScript.ports(room_a).has({"cell": cell_a, "side": side})
-	var b_has: bool = get_room_doors(room_b).has(opposite) if room_b.get("size", Vector2i.ONE) == Vector2i.ONE and cell_b == room_b.get("pos", cell_b) else RoomFootprintScript.ports(room_b).has({"cell": cell_b, "side": opposite})
+	var a_has: bool = _room_has_door(room_a["id"],int(room_a.get("rotation",0)),side) if room_a.get("size", Vector2i.ONE) == Vector2i.ONE and cell_a == room_a.get("pos", cell_a) else RoomFootprintScript.has_port(room_a,cell_a,side)
+	var b_has: bool = _room_has_door(room_b["id"],int(room_b.get("rotation",0)),opposite) if room_b.get("size", Vector2i.ONE) == Vector2i.ONE and cell_b == room_b.get("pos", cell_b) else RoomFootprintScript.has_port(room_b,cell_b,opposite)
 	return a_has and b_has
 
 func _offset_from_side(side: String) -> Vector2i:
@@ -4646,6 +4797,14 @@ func _offset_from_side(side: String) -> Vector2i:
 	return Vector2i.ZERO
 
 var room_door_cache: Dictionary = {}
+
+
+# Membership callers borrow no mutable array; public door lists remain owned copies.
+func _room_has_door(room_id:String,room_rotation:int,side:String)->bool:
+	var key:="%s:%d" % [room_id,room_rotation]
+	if room_door_cache.has(key):return room_door_cache[key].has(side)
+	if room_id=="reactor":return side in ["north","east","south","west"]
+	return _room_doors(room_id,room_rotation).has(side)
 
 func _room_doors(room_id: String, room_rotation: int) -> Array:
 	# Blueprint ports are fixed. Avoid cloning a complete room definition for
@@ -4764,7 +4923,7 @@ func _veld_status() -> String:
 	return "%s | hunger %d / fatigue %d" % [veld_npc.activity, roundi(veld_npc.needs.hunger), roundi(veld_npc.needs.fatigue)]
 
 func has_chief_branforth() -> bool:
-	return branforth_npc.active and (not branforth_npc.expedition.is_empty() or occupied.has(branforth_npc.cell_at(branforth_npc.foot)))
+	return branforth_npc.active and (not branforth_npc.expedition.is_empty() or occupied.has(branforth_npc.cell_at(branforth_npc.foot)) or (branforth_npc.dead and branforth_npc.movement_medium=="exterior"))
 
 func get_chief_branforth_position() -> Vector2:
 	return (branforth_npc.foot / 384.0 - Vector2(0, 0.038)) * get_cell_size()
@@ -4776,7 +4935,7 @@ func has_marsh() -> bool:
 	return marsh_npc.active and (not marsh_npc.recharge_docked or marsh_npc.dead) and (not marsh_npc.expedition.is_empty() or occupied.has(marsh_npc.cell_at(marsh_npc.foot)))
 
 func get_marsh_position() -> Vector2:
-	return (marsh_npc.foot / 384.0 - Vector2(0, 0.038)) * get_cell_size()
+	return ((marsh_npc.foot + marsh_npc.north_step_draw_offset() + marsh_npc.south_draw_offset() + marsh_npc.south_step_draw_offset()) / 384.0 - Vector2(0, 0.038)) * get_cell_size()
 
 func _marsh_status() -> String:
 	return "%s | hunger %d / fatigue %d" % [marsh_npc.activity, roundi(marsh_npc.needs.hunger), roundi(marsh_npc.needs.fatigue)]
@@ -4813,7 +4972,7 @@ func _placed_rooms_connected(room: Dictionary, neighbor: Dictionary, offset: Vec
 		return _ports_connect(room, neighbor, cell_a, cell_b)
 	var side := _side_from_offset(offset)
 	var opposite := _opposite_side(side)
-	return get_room_doors(room).has(side) and get_room_doors(neighbor).has(opposite)
+	return _room_has_door(room["id"],int(room.get("rotation",0)),side) and _room_has_door(neighbor["id"],int(neighbor.get("rotation",0)),opposite)
 
 func get_test_walker_position() -> Vector2:
 	if bill_npc.active:
@@ -5008,7 +5167,7 @@ func _refresh_harvest_inspector(cell: Vector2i) -> void:
 	room_operation_button.set_meta("cell",cell)
 	room_operation_button.disabled = not running or site.units==0
 	room_operation_button.text = "DEPOSIT EXHAUSTED" if site.units==0 else "PAUSE EXTRACTION" if site.active else "RESUME EXTRACTION"
-	room_operation_button.tooltip_text = "Pause this target without losing extracted material or partial work."
+	preload("res://scripts/title_button_style.gd").set_hint(room_operation_button,"Pause this target without losing extracted material or partial work.")
 
 var inspector_had_water := false
 
@@ -5051,6 +5210,60 @@ func _uniform_inspector_controls(root: Node) -> void:
 
 # The department colour of whatever the inspector is showing: the hovered or chosen card, else the selected
 # room. It tints the name, the thumbnail frame and the panel edge, and a placed room shows whether it works.
+func _refresh_inspector_card(room_id: String) -> void:
+	if inspector_card_host == null: return
+	var definition: Dictionary = RoomDatabaseScript.get_room(room_id) if not room_id.is_empty() else {}
+	var has_card := not definition.is_empty()
+	inspector_card_host.visible = has_card
+	preview_texture.visible = not has_card
+	inspector_effects.visible = has_card
+	var details_header: Button = inspector_details.get_node("DisclosureHeader")
+	details_header.visible = has_card
+	var selection_key := "%s:%s:%s:%s" % [room_id,selected_room_cell,selected_card_id,hovered_card_id]
+	if selection_key != inspector_detail_key:
+		inspector_detail_key = selection_key
+		details_header.button_pressed = not has_card
+		inspector_details.get_node("DisclosureBody").visible = not has_card
+	preview_texture.get_parent().add_theme_stylebox_override("panel", StyleBoxEmpty.new() if has_card else inspector_thumb_style)
+	if not has_card: return
+	# Scene-owned previews avoid rebuilding their widget trees on return visits.
+	# Presentation changes invalidate a card; the pool never exceeds twelve entries.
+	var cards:Dictionary=inspector_card_host.get_meta("preview_cards",{})
+	var order:Array=inspector_card_host.get_meta("preview_order",[])
+	var presentation:Dictionary=DraftCard.presentation(self,room_id)
+	var cached:Dictionary=cards.get(room_id,{})
+	var card:PanelContainer=cached.get("node")
+	if not is_instance_valid(card) or cached.get("presentation",{})!=presentation:
+		if is_instance_valid(card):card.free()
+		card=DraftCard.build(self,room_id,true)
+		card.name="InspectorRoomCard"
+		card.tooltip_text=""
+		card.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		inspector_card_host.add_child(card)
+		cards[room_id]={"node":card,"presentation":presentation}
+	order.erase(room_id);order.append(room_id)
+	while order.size()>12:
+		var oldest:String=order.pop_front()
+		var expired:PanelContainer=cards[oldest].node
+		if is_instance_valid(expired):expired.free()
+		cards.erase(oldest)
+	for child in inspector_card_host.get_children():child.visible=child==card
+	inspector_card_host.set_meta("preview_cards",cards)
+	inspector_card_host.set_meta("preview_order",order)
+
+	var lines: Array[String] = []
+	var placed: Dictionary = occupied.get(selected_room_cell, {})
+	if selected_card_id.is_empty() and hovered_card_id.is_empty() and not placed.is_empty():
+		var operation := str(offline_reasons.get(selected_room_cell, "FUNCTIONING" if powered_room_cells.has(selected_room_cell) else "AWAITING CYCLE"))
+		lines.append("Resume scheduled. The room will be evaluated next cycle." if operation=="SUSPENDED" and not placed.get("suspended",false) else preload("res://scripts/station_ui_insights.gd").remedy(operation))
+		lines.append("\n[b]LOCATION[/b]\nSector %d, %d" % [selected_room_cell.x, selected_room_cell.y])
+	else:
+		lines.append("[b]PLACEMENT[/b]\nChoose a connected station tile.\nRotate before placing; keep doors connected.")
+		var shortfall := _missing_cost(definition.get("cost", {}))
+		lines.append("\n[b]BUILD READINESS[/b]\n" + ("Need " + _format_cost(shortfall) + " more" if not shortfall.is_empty() and not testing_free_build else "Materials available"))
+		if definition.has("fixed_rotation"): lines.append("Orientation is fixed.")
+	inspector_effects.text = "\n".join(lines)
+
 func _apply_inspector_identity() -> void:
 	if preview_name_label == null: return
 	var room_id := hovered_card_id if not hovered_card_id.is_empty() else selected_card_id
@@ -5058,22 +5271,50 @@ func _apply_inspector_identity() -> void:
 	if room_id.is_empty() and occupied.has(selected_room_cell):
 		placed = occupied[selected_room_cell]
 		room_id = str(placed.get("id", ""))
+	elif room_id.is_empty() and drone_fleet.reserved(selected_room_cell):
+		room_id = str(drone_fleet.order_at(selected_room_cell).get("id", ""))
 	var accent := UI_ACCENT_BRIGHT
 	if not room_id.is_empty() and not RoomDatabaseScript.get_room(room_id).is_empty():
 		accent = RoomDatabaseScript.room_color(room_id)
 	preview_name_label.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
-	if preview_texture != null and preview_texture.get_parent() != null: preview_texture.get_parent().visible = preview_texture.texture != null
+	if preview_texture != null and preview_texture.get_parent() != null: preview_texture.get_parent().visible = preview_texture.texture != null or not room_id.is_empty()
+	_refresh_inspector_card(room_id)
 	if inspector_thumb_style != null: inspector_thumb_style.border_color = DraftCard.muted(accent)
 	if inspector_panel_style != null: inspector_panel_style.border_color = DraftCard.muted(accent).darkened(0.35)
 	if inspector_status_label == null: return
 	var state: Array = preload("res://scripts/room_tooltip.gd").status(self, selected_room_cell, placed) if not placed.is_empty() else []
-	inspector_status_label.visible = not state.is_empty()
+	inspector_status_label.hide() # The badge and contextual remedy already describe this state.
 	if not state.is_empty():
 		inspector_status_label.text = str(state[0])
 		inspector_status_label.add_theme_color_override("font_color", state[1])
+	var badges: Array = []
+	if not placed.is_empty():
+		if placed.get("suspended",false): badges.append(["PAUSED","pause","disabled"])
+		elif offline_reasons.get(selected_room_cell,"")=="SUSPENDED": badges.append(["RESUMING","idle","normal"])
+		elif powered_room_cells.has(selected_room_cell): badges.append(["ONLINE","power","online"])
+		elif not state.is_empty() and str(state[0]).begins_with("WAITING"): badges.append(["WAITING","idle","normal"])
+		elif not state.is_empty(): badges.append(["OFFLINE","warning","warning"])
+		if float(placed.get("hull_crack",0)) > 0: badges.append(["HULL DAMAGE","repair","warning"])
+		if float(placed.get("water_level",0)) >= .25: badges.append(["FLOODED","water","danger"])
+		if float(placed.get("fire",0)) > 0: badges.append(["FIRE","fire","danger"])
+		if placed.get("doors_locked",false): badges.append(["SEALED","doors_closed","normal"])
+	elif not room_id.is_empty() and not drone_fleet.reserved(selected_room_cell):
+		var blueprint := RoomDatabaseScript.get_room(room_id)
+		if not blueprint.is_empty():
+			var ready: bool = testing_free_build or _can_afford(blueprint.get("cost",{}))
+			badges.append(["MATERIALS READY" if ready else "NEEDS MATERIALS","confirm" if ready else "warning","online" if ready else "warning"])
+	preload("res://scripts/ui_badges.gd").update(inspector_badges,badges)
 
 func _refresh_inspector() -> void:
 	if inspector_label == null: return
+	var inspector_stamp := Time.get_ticks_usec()
+	var controls_box := inspector_details.get_parent()
+	var built_selection := selected_card_id.is_empty() and hovered_card_id.is_empty() and occupied.has(selected_room_cell)
+	for key in ["ControlsRule", "RoomSwitches"]:
+		controls_box.get_node(key).visible = built_selection
+	var crew_controls := controls_box.get_node_or_null("CrewWorkPanel")
+	if crew_controls != null: crew_controls.refresh()
+	frame_timing_usec.inspector_work = Time.get_ticks_usec() - inspector_stamp
 	var inspected: Dictionary = occupied.get(selected_room_cell,{})
 	inspector_had_water = float(inspected.get("water_level",0))>0 or float(inspected.get("hull_crack",0))>0
 	var key := "%s:%s:%s" % [hovered_card_id,selected_card_id,selected_room_cell]
@@ -5084,6 +5325,7 @@ func _refresh_inspector() -> void:
 	inspector_label.get_v_scroll_bar().set_deferred("value",scroll_value)
 
 func _refresh_inspector_contents() -> void:
+	if inspector_loading != null: inspector_loading.hide()
 	inspector_focus_button.disabled = true
 	if room_lock_button != null: room_lock_button.hide()
 	if room_scrap_button != null: room_scrap_button.hide()
@@ -5106,6 +5348,9 @@ func _refresh_inspector_contents() -> void:
 				var builder=get(str(order.builder)+"_npc")
 				if builder.state!="weld": build_status=Architects.NAMES[order.builder]+" / "+str(builder.activity)
 			if paused: build_status="PAUSED / "+build_status
+			inspector_loading.show()
+			inspector_loading.get_node("Body/LoadingProgress").value = clampf(drone_fleet.construction_progress(order_cell)*100.0,0,100)
+			inspector_loading.get_node("Body").get_child(1).text = build_status
 			_set_inspector_text(build_status+"\n\nMaterials reserved. The connecting seal stays closed until assembly finishes.\n\nAn available architect builds from inside the station. Powered Construction Drone Bays take unassigned jobs.")
 			room_operation_button.text = "CONSTRUCTION IN PROGRESS"
 			room_operation_button.disabled = true
@@ -5137,23 +5382,26 @@ func _refresh_inspector_contents() -> void:
 		var can_control: bool = not previewing_card and room.has("pos") and room.get("id", "") != "brine_core"
 		room_operation_button.disabled = not can_control or not running
 		room_operation_button.set_meta("cell", room.get("pos", Vector2i(-1, -1)))
-		room_operation_button.text = ("RESUME ROOM" if room.get("suspended", false) else "SUSPEND ROOM") if can_control else "SELECT A BUILT ROOM TO CONTROL"
-		room_operation_button.tooltip_text = "Suspended rooms stop production and links. Resuming takes effect next cycle."
+		room_operation_button.text = ("RESUME ROOM" if room.get("suspended", false) else "SUSPEND ROOM") if can_control else "ROOM CONTROLS"
+		preload("res://scripts/title_button_style.gd").set_hint(room_operation_button,"BRINE’s core cannot be suspended manually." if room.get("id", "") == "brine_core" else "Select a built room to change its operation." if not can_control else "This expedition has concluded." if not running else "Suspended rooms stop production and links. Resuming takes effect next cycle.")
 	if room_lock_button != null and not previewing_card and room.has("pos") and occupied.has(room.pos):
 		var locked: bool = room.get("doors_locked", false)
 		room_lock_button.set_meta("cell", room.pos)
-		room_lock_button.text = "UNLOCK DOORS" if locked else "LOCK DOORS"
+		room_lock_button.text = "DOORS CLOSED" if locked else "DOORS OPEN"
+		preload("res://scripts/ui_icons.gd").apply(room_lock_button, "doors_closed" if locked else "doors_open")
 		room_lock_button.disabled = not running
-		room_lock_button.tooltip_text = "Locked doors seal this room: crew cannot pass and flood water stays out or in. Closed, unlocked doors let water seep through slowly." if not hardware.doors else "The station-wide DOORS switch is locking every room."
+		preload("res://scripts/title_button_style.gd").set_hint(room_lock_button,"This expedition has concluded." if not running else "Locked doors seal this room: crew cannot pass and flood water stays out or in. Closed, unlocked doors let water seep through slowly." if not hardware.doors else "The station-wide DOORS switch is locking every room.")
 		room_lock_button.show()
 	if room_scrap_button != null and not previewing_card and room.has("pos") and occupied.has(room.pos):
+		var scrap_stamp := Time.get_ticks_usec()
 		var scrap_reason: String = preload("res://scripts/room_scrap.gd").blocker(self, room.pos)
+		frame_timing_usec.inspector_scrap = Time.get_ticks_usec() - scrap_stamp
 		if room_scrap_button.get_meta("armed", Vector2i(-1, -1)) != room.pos:
 			room_scrap_button.set_meta("armed", Vector2i(-1, -1))
 			room_scrap_button.text = "SCRAP · +%d METAL" % preload("res://scripts/room_scrap.gd").refund(room)
 		room_scrap_button.set_meta("cell", room.pos)
 		room_scrap_button.disabled = not running or not scrap_reason.is_empty()
-		room_scrap_button.tooltip_text = scrap_reason if not scrap_reason.is_empty() else "Remove this room for half its Metal. Press twice to confirm."
+		preload("res://scripts/title_button_style.gd").set_hint(room_scrap_button,"This expedition has concluded." if not running else scrap_reason if not scrap_reason.is_empty() else "Remove this room for half its Metal. Press twice to confirm.")
 		room_scrap_button.show()
 	if room_repair_button != null and not previewing_card and room.has("pos") and occupied.has(room.pos):
 		var Repairs = preload("res://scripts/hull_repair.gd")
@@ -5164,7 +5412,12 @@ func _refresh_inspector_contents() -> void:
 		room_repair_button.set_meta("cell",room.pos)
 		room_repair_button.text = "REPAIR QUEUED" if pending else "REPAIR ROOM · %d METAL" % cost if needs_repair else "HULL INTACT"
 		room_repair_button.disabled = not running or pending or not needs_repair or int(resources.metal) < cost
-		room_repair_button.tooltip_text = "Send reachable crew to weld the hull. Metal is allocated when the job is queued." if damaged else "Repair a local containment fault."
+		var repair_hint := "Send reachable crew to weld the hull. Metal is allocated when the job is queued." if damaged else "Repair a local containment fault."
+		if not running: repair_hint = "This expedition has concluded."
+		elif pending: repair_hint = "A repair is already queued. Wait for reachable crew to finish the job."
+		elif not needs_repair: repair_hint = "The hull is intact. No repair is needed."
+		elif int(resources.metal) < cost: repair_hint = "Need %d more Metal to queue this repair." % (cost-int(resources.metal))
+		preload("res://scripts/title_button_style.gd").set_hint(room_repair_button,repair_hint)
 		room_repair_button.show()
 	if room.is_empty():
 		preview_texture.texture = null
@@ -5191,24 +5444,16 @@ func _refresh_inspector_contents() -> void:
 	# the next-cycle forecast, resources and the room's story for a placed room.
 	var preview_lines: Array[String] = []
 	var drone_bay: bool = room.id in ["mining_drone_bay","salvage_drone_bay"]
-	if previewing_card:
-		preview_lines.append(_inspector_section("BUILD", true))
-		preview_lines.append("[b]Build cost:[/b] " + _format_cost(room.get("cost",{})))
-		var shortfall := _missing_cost(room.get("cost",{}))
-		preview_lines.append("[color=#eaa88b]Need " + _format_cost(shortfall) + " more[/color]" if not shortfall.is_empty() and not testing_free_build else "[color=#abd2b5]Materials available[/color]")
-		preview_lines.append("[b]" + ("Cargo per load: " if drone_bay else "Output / cycle: ") + "[/b]" + (_format_cost(room.production) if not room.get("production",{}).is_empty() else "None"))
-		preview_lines.append("[b]Inputs / cycle:[/b] " + (_format_cost(room.consumption) if not room.get("consumption",{}).is_empty() else "None"))
-		if room.has("fixed_rotation"): preview_lines.append("Fixed orientation. Doors: " + _join_strings(get_room_doors(room)," / "))
 	if not previewing_card and room.has("pos"):
 		var operation := str(offline_reasons.get(room["pos"], "FUNCTIONING" if powered_room_cells.has(room["pos"]) else "AWAITING CYCLE"))
-		preview_lines.append(_inspector_section("CURRENT STATUS", true))
-		preview_lines.append("[color=#f0c67a]%s[/color]" % operation)
-		preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(operation))
+
 		var fire_info := preload("res://scripts/room_fire.gd").inspector(self,room)
 		if not fire_info.is_empty(): preview_lines.append(fire_info)
 		preview_lines.append(preload("res://scripts/room_flooding.gd").inspector(self,room))
 		if room.get("local_incident",false) and float(room.get("hull_crack",0))<=0:preview_lines.append("[color=#e6aa72]LOCAL CONTAINMENT FAULT[/color]\n[url=repair:%d:%d]Repair containment — 2 Metal[/url]" % [room.pos.x,room.pos.y])
+		var forecast_stamp := Time.get_ticks_usec()
 		var forecast := _simulate_room_economy(true, cycle + 1)
+		frame_timing_usec.inspector_forecast = Time.get_ticks_usec() - forecast_stamp
 		preview_lines.append(_inspector_section("NEXT CYCLE FORECAST"))
 		preview_lines.append("[color=#9fdfdc]%s[/color]" % str(forecast.offline.get(room.pos, "INPUTS AVAILABLE")))
 		if room.id == "current_turbine":
@@ -5217,7 +5462,9 @@ func _refresh_inspector_contents() -> void:
 		if not next_reason.is_empty() and next_reason != operation:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").remedy(next_reason))
 		if drone_bay:
+			var battery_stamp := Time.get_ticks_usec()
 			preview_lines.append(drone_fleet.battery_status(room.get("pos",Vector2i(-1,-1)),int(resources.power),powered_room_cells.has(room.get("pos",Vector2i(-1,-1))),paused,wrecks,room.get("suspended",false)))
+			frame_timing_usec.inspector_battery = Time.get_ticks_usec() - battery_stamp
 		if room.id in ["construction_drone_bay","mining_drone_bay","salvage_drone_bay","brine_core"]:
 			preview_lines.append(preload("res://scripts/station_ui_insights.gd").power_demand(self))
 		if room.id=="survey_probe_bay":preview_lines.append(preload("res://scripts/survey_probe.gd").status(room))
@@ -5227,21 +5474,9 @@ func _refresh_inspector_contents() -> void:
 		preview_lines.push_front(preload("res://scripts/room_flooding.gd").inspector(self,room))
 		var fire_only := preload("res://scripts/room_fire.gd").inspector(self,room)
 		if not fire_only.is_empty(): preview_lines.push_front(fire_only)
-	if not previewing_card:
-		preview_lines.append(_inspector_section("RESOURCES"))
-		preview_lines.append("[color=#%s]%s[/color]" % [UI_ACCENT_BRIGHT.to_html(false),"CARGO / EXTRACTION LOAD" if drone_bay else "BASE OUTPUT / FUNCTIONING CYCLE"])
-		preview_lines.append(_format_effect_rows(room.get("production", {}), "+", false,not drone_bay))
-		if not room.get("consumption", {}).is_empty():
-			preview_lines.append("[color=#c85b61]REQUIRED INPUT / CYCLE[/color]")
-			preview_lines.append(_format_effect_rows(room.get("consumption", {}), "-", true))
-	if not room.get("storage", {}).is_empty():
-		if previewing_card: preview_lines.append(_inspector_section("RESOURCES"))
-		preview_lines.append("[color=#7f929c]STORAGE[/color]")
-		preview_lines.append("[color=#9fb2bc]%s[/color]" % _format_storage(room.get("storage", {})))
 	if drone_bay:
 		preview_lines.append("Extracts one load per 6 seconds from a finite surveyed site. Cargo enters storage on return. Battery supports 12 seconds of extraction; 1 station Power restores 6 seconds at the bay. Keep an exterior route open.")
-	preview_lines.append(_inspector_section("ABOUT"))
-	preview_lines.append(str(room.get("description","")))
+
 	if not previewing_card and room.get("id","")=="listening_post":preview_lines.append(preload("res://scripts/listening_post.gd").inspector(self,room))
 	if not previewing_card and room.get("id","") in ["pressure_control","isolation_vault"]:preview_lines.append(preload("res://scripts/rare_branch_control.gd").inspector(self,room))
 	if room.get("tags",[]).has("containment_risk"):preview_lines.append("Containment fault risk: a functioning risk room can develop a local fault every 8 cycles. Uncontained faults spread through connected doors and damage Integrity. Repair costs 2 Metal per room.")
@@ -5254,8 +5489,10 @@ func _refresh_inspector_contents() -> void:
 func _repair_inspected_room() -> void:
 	if _gameplay_input_blocked() or not running or room_repair_button == null: return
 	var cell: Vector2i = room_repair_button.get_meta("cell",Vector2i(-1,-1))
-	preload("res://scripts/local_incidents.gd").repair(self,cell)
+	var repaired: bool = preload("res://scripts/local_incidents.gd").repair(self,cell)
 	_refresh_all()
+	if repaired:
+		_show_room_action_feedback("Hull repair queued. Metal reserved; waiting for reachable crew." if occupied.get(cell,{}).has("leak_repair") else "Containment repaired. 2 Metal spent.",cell)
 
 func _append_room_synergy_preview(lines: Array, room: Dictionary) -> void:
 	var room_id := str(room.get("id", ""))
@@ -5440,7 +5677,7 @@ func _refresh_archive() -> void:
 		history_tools.visible = journal_tabs.current_tab in [3,4]
 		history_filter.visible = journal_tabs.current_tab == 3
 		history_search.placeholder_text = "Search name, type or problem (e.g. needs power) · Enter to locate" if journal_tabs.current_tab==4 else "Search room, cycle (C03), or message · Ctrl+F"
-		var widget_tab: bool = journal_tabs.current_tab in [0, 5]
+		var widget_tab: bool = journal_tabs.current_tab in [0, 2, 5]
 		journal_widgets.visible = widget_tab
 		archive_label.visible = not widget_tab
 		if journal_tabs.current_tab > 0:
@@ -5607,15 +5844,55 @@ func _tip_section(title: String, entries: Dictionary, sign: String) -> String:
 		shown += 1
 	return text
 
+# Presentation forecast; it does not change resource allocation or failure rules.
+func _reserve_outlook(key: String, change: int) -> Dictionary:
+	var reserve := int(resources.get(key,0))
+	var capacity := _get_resource_capacity(key)
+	if key=="integrity":
+		return {"state":"CRITICAL" if reserve<10 else "DAMAGED" if reserve<35 else "STABLE","tone":"danger" if reserve<10 else "warning" if reserve<35 else "normal","detail":"Integrity measures structure. Flooding is tracked separately.","next":clampi(reserve+change,0,capacity),"change":change}
+	var state := "STEADY"
+	var tone := "normal"
+	var detail := "Reserve is steady at this rate."
+	if reserve<=0:
+		state = "REFILLING" if change>0 else "EMPTY"
+		detail = "Reserve is empty; projected production adds %d next cycle." % change if change>0 else "Reserve is currently empty."
+		if key in ["power","oxygen","food"] or change<0: tone = "warning" if change>0 else "danger"
+	elif change<0:
+		var cycles := ceili(float(reserve)/-change)
+		state = "LOW" if cycles<=2 else "FALLING"
+		tone = "danger" if cycles<=1 else "warning" if cycles<=2 else "normal"
+		detail = "~%d cycle%s to empty at this rate." % [cycles,"" if cycles==1 else "s"]
+	elif reserve>=capacity and capacity>0:
+		state = "FULL"
+		detail = "Storage is full. Additional deliveries cannot be retained."
+	elif change>0:
+		state = "RISING"
+		detail = "Reserve is increasing at this rate."
+	return {"state":state,"tone":tone,"detail":detail,"next":clampi(reserve+change,0,capacity),"change":change}
+
+func _apply_resource_outlook(chip_id: String, key: String, change: int) -> void:
+	var outlook := _reserve_outlook(key,change)
+	var chip: PanelContainer = resource_chips[chip_id]
+	chip.set_meta("reserve_outlook",outlook)
+	if key=="integrity": return # Preserve structural damage and flooded-room warnings.
+	var label: Label = resource_labels[chip_id]
+	var lines := label.text.split("\n")
+	if lines.size()<2: return
+	var caption := "RARE" if chip_id=="rare" else chip_id.to_upper()
+	if outlook.state in ["LOW","EMPTY","REFILLING","FALLING","FULL"]: caption += " · "+str(outlook.state)
+	label.text = caption+"\n"+lines[1]
+	var tint := Color("a16367") if outlook.tone=="danger" else Color("b89a53") if outlook.tone=="warning" else Color(ResourceIcons.color(chip_id))
+	label.add_theme_color_override("font_color",tint)
+	var skin: StyleBoxFlat = chip.get_theme_stylebox("panel")
+	skin.border_color = Color("663238") if outlook.tone=="danger" else Color("756747") if outlook.tone=="warning" else Color("26383b")
+	if not change and not chip.tooltip_text.contains("stored ·"):
+		chip.tooltip_text = _reserve_forecast(key,change)+"\nClick or press Enter for room contributions. Estimates can change with events and inputs."+chip.tooltip_text.trim_prefix(str(RESOURCE_TOOLTIPS.get(chip_id,"Station resource.")))
+
 func _reserve_forecast(key: String, change: int) -> String:
-	var reserve := int(resources.get(key, 0))
-	var outlook := "No depletion at this rate"
-	if reserve <= 0:
-		outlook = "Reserve currently empty"
-	if change < 0:
-		outlook = "~%d cycles to empty at this rate" % ceili(float(maxi(reserve, 0)) / -change)
-	var next := clampi(reserve + change, 0, _get_resource_capacity(key))
-	return "%s: %d stored · %+d / cycle · next reserve %d\n%s" % [key.replace("_", " ").capitalize(), reserve, change, next, outlook]
+	var reserve := int(resources.get(key,0))
+	var outlook := _reserve_outlook(key,change)
+	if key=="integrity": return "Integrity: %d%% · %+d / cycle · next %d%%\n%s" % [reserve,change,outlook.next,outlook.detail]
+	return "%s: %d stored · %+d / cycle · next reserve %d\n%s" % [key.replace("_", " ").capitalize(),reserve,change,outlook.next,outlook.detail]
 
 func _blueprint_decision(room: Dictionary) -> String:
 	var missing := _missing_cost(room.get("cost", {}))
@@ -5938,6 +6215,7 @@ func _refresh_diagnostics_page() -> void:
 			lines.append_array(preload("res://scripts/station_ui_insights.gd").construction(self))
 	_set_journal_text("\n".join(lines))
 	if journal_tabs.current_tab == 5: preload("res://scripts/journal_widgets.gd").crew(self, journal_widget_box, archive_label.text)
+	if journal_tabs.current_tab == 2: preload("res://scripts/journal_widgets.gd").reserves(self, journal_widget_box, archive_label.text)
 
 func _format_cost(cost: Dictionary) -> String:
 	if cost.is_empty():
@@ -6038,6 +6316,10 @@ func _log(message: String, show_in_panel := true) -> void:
 		_refresh_log()
 
 # The bug report node owns the performance monitor; both are optional in fixtures.
+func _note_performance_action(action: String) -> void:
+	var monitor = _performance_monitor()
+	if monitor != null: monitor.mark_action(action)
+
 func _performance_monitor():
 	var reporter := get_tree().root.get_node_or_null("BugReport") if is_inside_tree() else null
 	return reporter.performance_monitor if reporter != null and "performance_monitor" in reporter and is_instance_valid(reporter.performance_monitor) else null
@@ -6129,11 +6411,8 @@ func _fit_sidebar_inspector(scroll: ScrollContainer, side: VBoxContainer, panel:
 		remaining -= child.get_combined_minimum_size().y + side.get_theme_constant("separation")
 	var height := clampf(remaining, 360.0, 520.0)
 	panel.custom_minimum_size.y = height
-	# Only the reading text gives way. Everything else in the inspector (header, image, room
-	# switch, airlock and crew work controls) keeps its natural height, so a long selection
-	# no longer pushes TIME / CYCLE below the window (owner playtest).
-	var fixed: float = panel.get_child(0).get_combined_minimum_size().y - inspector_label.get_combined_minimum_size().y + panel.get_theme_stylebox("panel").get_minimum_size().y
-	inspector_label.custom_minimum_size.y = clampf(remaining - fixed, 120.0, 330.0)
+	# Expanded notes get a readable viewport; the sidebar can scroll without moving cycle controls.
+	inspector_label.custom_minimum_size.y = 180.0
 
 func _resize_grid_view() -> void:
 	var previous_size := camera_viewport_size

@@ -1,4 +1,5 @@
 extends RefCounted
+const EnvironmentArt=preload("res://scripts/environment_art.gd")
 ## Decorative seabed only. No collision, resources, discovery or hazard state.
 const SCENERY := ["coral-garden", "tube-worms", "hull-fragment", "pipe-fragment", "wreck-cargo"]
 # Whole paths, one per drawn source. The folder holds 21 generations and the ground and
@@ -20,6 +21,16 @@ const ComposedSites := preload("res://assets/environment/composed_sites.gd")
 var composed_sites := ComposedSites.new()
 const SubBiomes := preload("res://assets/environment/sub-biomes-v1/sub_biome_view.gd")
 var sub_biomes := SubBiomes.new()
+const OceanFloor := preload("res://assets/environment/ocean-floor-expansion-v1/ocean_floor_view.gd")
+var ocean_floor := OceanFloor.new()
+const FungiBiome := preload("res://assets/environment/alien-fungi-biomes-v1/fungi_biome_view.gd")
+var fungi_biome := FungiBiome.new()
+const TallPlants := preload("res://assets/environment/tall-sea-plants-v1/tall_plants_view.gd")
+var tall_plants := TallPlants.new()
+const GiantMushrooms := preload("res://assets/environment/giant-mushrooms-v1/giant_mushroom_view.gd")
+var giant_mushrooms := GiantMushrooms.new()
+const UprightKelp := preload("res://assets/environment/upright-kelp-v1/upright_kelp_view.gd")
+var upright_kelp := UprightKelp.new()
 const ServiceWreckage := preload("res://assets/environment/service-wreckage-v1/service_wreckage_view.gd")
 var service_wreckage := ServiceWreckage.new()
 const DuctWreckage := preload("res://assets/environment/duct-wreckage-v1/duct_view.gd")
@@ -62,6 +73,11 @@ func prepare() -> void:
 		return
 	initialized = true
 	for id in ["silt-plain"] + SCENERY:
+		if id in ["silt-plain","tube-worms"]:
+			var selected:=EnvironmentArt.texture(id)
+			if selected!=null:
+				textures[id]=selected
+				continue
 		var path: String = SOURCES[id]
 		if FileAccess.file_exists(path):
 			var source := Image.new()
@@ -83,7 +99,8 @@ func prepare() -> void:
 		{"id":"hull-fragment", "at":Vector2(22.8,22.2), "size":0.40}
 	])
 
-func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seconds: float = 0.0, layout: Dictionary = {}) -> void:
+# Background colour, silt tiles and the sub-biome ground: nothing here moves with time.
+func render_still(canvas: CanvasItem, cell_size: float, grid_size: int, layout: Dictionary = {}) -> void:
 	prepare()
 	var bounds := Rect2(Vector2.ZERO, Vector2.ONE * cell_size * grid_size)
 	canvas.draw_rect(bounds, Color("09222d"))
@@ -91,6 +108,7 @@ func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seco
 	# here used stale transforms during a paused window resize at 1280 pixels.
 	var visible := bounds
 	if textures.has("silt-plain"):
+		var points:=PackedVector2Array();var coordinates:=PackedVector2Array();var indices:=PackedInt32Array()
 		var tile_size := cell_size * 3.0
 		var first := Vector2i((visible.position / tile_size).floor())
 		var last := Vector2i((visible.end / tile_size).ceil())
@@ -99,17 +117,44 @@ func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seco
 				# Alternating mirrored repeats join identical edge pixels. No claim
 				# that the unmodified source itself is a seamless material.
 				var tile := Rect2(Vector2(x, y) * tile_size, Vector2.ONE * tile_size)
-				if x % 2 != 0:
-					tile.size.x = -tile_size
-				if y % 2 != 0:
-					tile.size.y = -tile_size
-				canvas.draw_texture_rect(textures["silt-plain"], tile, false, Color(0.49, 0.60, 0.64))
+				var uv:=PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN])
+				for i in range(uv.size()):
+					if x%2!=0:uv[i].x=1.0-uv[i].x
+					if y%2!=0:uv[i].y=1.0-uv[i].y
+				var polygon:=PackedVector2Array([tile.position,tile.position+Vector2(tile.size.x,0),tile.end,tile.position+Vector2(0,tile.size.y)])
+				var offset:=points.size()
+				points.append_array(polygon);coordinates.append_array(uv)
+				for index in Geometry2D.triangulate_polygon(polygon):indices.append(offset+index)
+		RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),indices,points,PackedColorArray([Color(.49,.60,.64)]),coordinates,PackedInt32Array(),PackedFloat32Array(),textures["silt-plain"].get_rid())
+	sync_site(layout)
+	sub_biomes.render_ground(canvas,cell_size,fungi_biome.render_ground)
+
+# What the still layer depends on; a retained copy is current while this is unchanged.
+func still_key(cell_size: float, grid_size: int, layout: Dictionary = {}) -> Array:
+	prepare()
+	return [cell_size,grid_size,str(layout.get("seed","legacy"))+str(layout.get("habitats",[])),textures.has("silt-plain")]
+
+func sync_site(layout: Dictionary) -> void:
+	prepare()
 	var signature := str(layout.get("seed","legacy"))+str(layout.get("habitats",[]))
 	if signature!=site_signature:
 		site_signature=signature
 		sub_biomes.regions=layout.get("habitats",SubBiomes.REGIONS).duplicate(true)
 		sub_biomes.meshes.clear();sub_biomes.props.clear();sub_biomes.initialized=false
-	sub_biomes.render_into(canvas,cell_size)
+	fungi_biome.sync(sub_biomes.regions)
+
+func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seconds: float = 0.0, layout: Dictionary = {}, include_still := true, visible_rect := Rect2()) -> void:
+	# The station grid keeps the still part on a retained layer behind itself and passes
+	# include_still=false; redrawing it every frame cost ~2 ms on a large station (Sept 30 probe).
+	if include_still: render_still(canvas,cell_size,grid_size,layout)
+	else: sync_site(layout)
+	var visible := Rect2(Vector2.ZERO, Vector2.ONE * cell_size * grid_size)
+	sub_biomes.render_props(canvas,cell_size,time_seconds)
+	fungi_biome.render_props(canvas,cell_size)
+	ocean_floor.render_into(canvas,cell_size,sub_biomes.regions)
+	tall_plants.render_into(canvas,cell_size,sub_biomes.regions)
+	giant_mushrooms.render_into(canvas,cell_size,sub_biomes.regions)
+	upright_kelp.render_into(canvas,cell_size,sub_biomes.regions,time_seconds,visible_rect)
 	if not layout.is_empty():
 		preload("res://scripts/site_scenery.gd").render_into(canvas,layout,cell_size)
 		ambient_water.render_into(canvas,cell_size,time_seconds)
@@ -121,8 +166,8 @@ func render_into(canvas: CanvasItem, cell_size: float, grid_size: int, time_seco
 	fractured_rock.render_into(canvas,cell_size)
 	pillow_basalt.render_into(canvas,cell_size)
 	low_growth.render_into(canvas,cell_size)
-	red_algae.render_into(canvas,cell_size)
-	sea_lettuce.render_into(canvas,cell_size)
+	red_algae.render_into(canvas,cell_size,time_seconds)
+	sea_lettuce.render_into(canvas,cell_size,time_seconds)
 	anemone.render_into(canvas,cell_size)
 	urchin.render_into(canvas,cell_size)
 	for item in scenery:

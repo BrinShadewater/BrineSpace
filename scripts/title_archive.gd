@@ -3,6 +3,8 @@ extends Control
 const Rooms = preload("res://scripts/room_database.gd")
 const Art = preload("res://scripts/room_card_art.gd")
 const Runs = preload("res://scripts/run_manager.gd")
+const Widgets = preload("res://scripts/ui_widgets.gd")
+const Badges = preload("res://scripts/ui_badges.gd")
 signal closed
 var meta_state
 var mode := ""
@@ -38,6 +40,12 @@ var codex_filter_index := 0
 var codex_scroll := 0
 var codex_sort_index := 0
 var codex_sort: OptionButton
+var filter_chips: HFlowContainer
+var sort_chips: HBoxContainer
+var page_host: HBoxContainer
+var codex_page := 0
+var codex_ascending := true
+const PAGE_SIZE := 12
 const SORTS := ["SORT: COLOUR", "SORT: RARITY", "SORT: NAME", "SORT: BUILD COST"]
 const CARD_WIDTH := 270
 # Every room card is this tall at least, recovered or not, so a row of unrecovered signals is the
@@ -110,24 +118,31 @@ func _build() -> void:
 	navigation.add_theme_constant_override("separation", 12)
 	content.add_child(navigation)
 	for section in ["settings", "codex", "progression", "about"]:
-		var button := Button.new()
+		var button := Widgets.chip("")
 		button.name = "Navigate" + section.capitalize()
 		button.text = "META PROGRESSION" if section == "progression" else ("CREDITS / BUILD" if section == "about" else section.to_upper())
-		button.custom_minimum_size = Vector2(240, 48)
+		button.custom_minimum_size = Vector2(180, 40)
 		button.add_theme_font_size_override("font_size", 17)
 		button.toggle_mode = true
 		button.button_pressed = section == mode
-		preload("res://scripts/title_button_style.gd").apply(button, 240, 48)
 		button.pressed.connect(_select_section.bind(section, button))
 		navigation.add_child(button)
+	var route := Widgets.breadcrumbs(["MENU", {"codex":"STATION ARCHIVE","progression":"META PROGRESSION","settings":"SETTINGS","about":"CREDITS / BUILD"}.get(mode,"BRINE")])
+	route.name = "MenuBreadcrumbs"
+	route.get_child(0).pressed.connect(_close)
+	content.add_child(route)
 	if mode == "codex":
 		search = LineEdit.new()
 		search.placeholder_text = "Search names, departments, or clues...  [Ctrl+F]"
 		search.custom_minimum_size.y = 48
 		search.clear_button_enabled = true
 		search.text = codex_query
-		search.text_changed.connect(func(_value: String) -> void: _populate_cards())
-		content.add_child(search)
+		search.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		search.text_changed.connect(func(_value: String) -> void: codex_page = 0; _populate_cards())
+		var search_row := HBoxContainer.new()
+		search_row.add_child(search)
+		search_row.add_child(Widgets.keycap("Ctrl+F"))
+		content.add_child(search_row)
 		var toolbar := HBoxContainer.new()
 		content.add_child(toolbar)
 		codex_tabs = TabBar.new()
@@ -141,6 +156,7 @@ func _build() -> void:
 		_style_tabs(codex_tabs)
 		codex_tabs.tab_changed.connect(func(index: int) -> void:
 			codex_tab = index
+			codex_page = 0
 			scroll.scroll_vertical = 0
 			_populate_cards()
 		)
@@ -151,8 +167,10 @@ func _build() -> void:
 		for caption in ["ALL ENTRIES", "DISCOVERED", "HIDDEN"]:
 			codex_filter.add_item(caption)
 		codex_filter.select(codex_filter_index)
-		codex_filter.item_selected.connect(func(_index: int) -> void: _populate_cards())
-		toolbar.add_child(codex_filter)
+		# Retain the selector API for existing keyboard/test consumers, with chips as its face.
+		codex_filter.item_selected.connect(func(index: int) -> void: codex_filter_index = index; codex_page = 0; _populate_cards())
+		content.add_child(codex_filter)
+		codex_filter.hide()
 		# Room cards can be sorted by department colour, rarity, name or build cost (owner playtest).
 		codex_sort = OptionButton.new()
 		codex_sort.name = "CodexSort"
@@ -162,10 +180,29 @@ func _build() -> void:
 		codex_sort.select(codex_sort_index)
 		codex_sort.item_selected.connect(func(index: int) -> void:
 			codex_sort_index = index
+			codex_page = 0
 			_populate_cards())
-		toolbar.add_child(codex_sort)
+		content.add_child(codex_sort)
+		codex_sort.hide()
+		filter_chips = Widgets.filter_chips(["ALL ENTRIES","DISCOVERED","HIDDEN"],codex_filter_index)
+		filter_chips.name = "CodexFilters"
+		for index in range(filter_chips.get_child_count()):
+			filter_chips.get_child(index).pressed.connect(func() -> void:
+				codex_filter.select(index)
+				codex_filter.item_selected.emit(index))
+		filter_chips.custom_minimum_size.x = 360
+		toolbar.add_child(filter_chips)
+		sort_chips = Widgets.sort_controls(["COLOUR","RARITY","NAME","BUILD COST"],codex_sort_index,func(index: int, ascending: bool) -> void:
+			codex_ascending = ascending
+			codex_sort.select(index)
+			codex_sort.item_selected.emit(index))
+		sort_chips.name = "CodexSorting"
+		var results_row := HBoxContainer.new()
+		content.add_child(results_row)
 		codex_count = _label("", 16)
-		content.add_child(codex_count)
+		codex_count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		results_row.add_child(codex_count)
+		results_row.add_child(sort_chips)
 		codex_hint = _label("Connect neighboring rooms, or join them through a hallway piece, and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward.", 15)
 		content.add_child(codex_hint)
 	scroll = ScrollContainer.new()
@@ -174,6 +211,10 @@ func _build() -> void:
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	content.add_child(scroll)
+	if mode == "codex":
+		page_host = HBoxContainer.new()
+		page_host.name = "CodexPagination"
+		content.add_child(page_host)
 	grid = GridContainer.new()
 	grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	grid.add_theme_constant_override("h_separation", 18)
@@ -207,7 +248,7 @@ func _about_card(heading: String, accent: Color = Color("2f6a6a")) -> VBoxContai
 	rows.add_theme_constant_override("separation", 8)
 	card.add_child(rows)
 	var title := _label(heading, 14)
-	title.add_theme_color_override("font_color", Color("5fd3c4"))
+	title.add_theme_color_override("font_color", Color("648d88"))
 	rows.add_child(title)
 	rows.set_meta("panel", card)
 	return rows
@@ -228,7 +269,9 @@ func _populate_about() -> void:
 	var version := _label(preload("res://scripts/build_version.gd").title(), 24)
 	version.add_theme_color_override("font_color", Color("a9e7d4"))
 	build.add_child(version)
-	build.add_child(_label(preload("res://scripts/build_version.gd").details().split("\n", false, 1)[1], 16))
+	var build_details := preload("res://scripts/build_version.gd").details()
+	var title_end := build_details.find("\n")
+	build.add_child(_label(build_details.substr(title_end + 1) if title_end >= 0 else build_details, 16))
 	pair.add_child(build.get_meta("panel"))
 	var studio := _about_card("STUDIO")
 	studio.add_child(_label("The studio site and its other projects.", 18))
@@ -253,22 +296,15 @@ func _populate_about() -> void:
 	grid.add_child(engine.get_meta("panel"))
 	engine.add_child(_label("Powered by Godot Engine (MIT license).", 18))
 	var licenses := RichTextLabel.new()
+	licenses.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	licenses.name = "EngineLicense"
 	licenses.custom_minimum_size = Vector2(0, 360)
 	licenses.fit_content = true
 	licenses.text = Engine.get_license_text()
 	licenses.visible = false
-	var toggle := Button.new()
-	toggle.name = "LicenseToggle"
-	toggle.toggle_mode = true
-	toggle.text = "SHOW ENGINE LICENSE TEXT"
-	preload("res://scripts/title_button_style.gd").apply(toggle, 380, 44)
-	toggle.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	toggle.toggled.connect(func(on: bool) -> void:
-		licenses.visible = on
-		toggle.text = "HIDE ENGINE LICENSE TEXT" if on else "SHOW ENGINE LICENSE TEXT")
-	engine.add_child(toggle)
-	engine.add_child(licenses)
+	var fold := Widgets.disclosure("ENGINE LICENSE TEXT",licenses)
+	fold.get_node("DisclosureHeader").name = "LicenseToggle"
+	engine.add_child(fold)
 
 func _select_section(section: String, button: Button) -> void:
 	button.set_pressed_no_signal(true)
@@ -312,10 +348,21 @@ func _populate_cards() -> void:
 	room_ids.clear()
 	visible_entries.clear()
 	search.visible = codex_tab != 3
-	codex_filter.visible = codex_tab != 3
+	codex_filter.hide()
+	filter_chips.visible = codex_tab != 3
+	for index in range(filter_chips.get_child_count()): filter_chips.get_child(index).set_pressed_no_signal(index == codex_filter.selected)
 	codex_hint.visible = codex_tab != 3
 	codex_hint.text = "Join three named rooms through matching doors, or through a hallway piece, and keep all three functioning to discover a pattern. Patterns pay on top of the synergies inside them." if codex_tab == 2 else "Connect neighboring rooms, or join them through a hallway piece, and keep both functioning to discover a synergy. Three consecutive functioning cycles stabilize its reward."
-	codex_sort.visible = codex_tab == 0
+	codex_sort.hide()
+	sort_chips.visible = codex_tab == 0
+	sort_chips.set_meta("sort_index",codex_sort_index)
+	sort_chips.set_meta("ascending",codex_ascending)
+	for index in range(sort_chips.get_child_count()):
+		var button: Button = sort_chips.get_child(index)
+		button.set_pressed_no_signal(index == codex_sort_index)
+		button.text = ["COLOUR","RARITY","NAME","BUILD COST"][index] + ((" ↑" if codex_ascending else " ↓") if index == codex_sort_index else "")
+	page_host.visible = codex_tab != 3
+	for child in page_host.get_children(): page_host.remove_child(child); child.queue_free()
 	if codex_tab == 3:
 		grid.columns = 1
 		preload("res://scripts/transmission_archive.gd").populate(self)
@@ -356,6 +403,7 @@ func _populate_cards() -> void:
 		visible_entries.append(entry)
 		if codex_tab == 0 and entry.known:
 			room_ids.append(entry.id)
+		if visible_entries.size() <= codex_page * PAGE_SIZE or visible_entries.size() > (codex_page + 1) * PAGE_SIZE: continue
 		if codex_tab == 0:
 			grid.add_child(_codex_room_card(entry))
 			continue
@@ -430,12 +478,16 @@ func _populate_cards() -> void:
 				body.add_child(_label("REWARD  " + reward_name, 15))
 			elif data.has("terminal_reward"):
 				body.add_child(_label("REWARD  " + _resources(data.terminal_reward), 15))
-	codex_count.text = "%d / %d %s RECOVERED    //    %d SHOWN" % [known_count, entries.size(), "ROOMS" if codex_tab == 0 else ("PATTERNS" if codex_tab == 2 else "SYNERGIES"), visible_entries.size()]
+	codex_count.text = "%d / %d %s RECOVERED    //    %d MATCHING" % [known_count, entries.size(), "ROOMS" if codex_tab == 0 else ("PATTERNS" if codex_tab == 2 else "SYNERGIES"), visible_entries.size()]
+	var pages := maxi(1,ceili(float(visible_entries.size())/PAGE_SIZE))
+	if codex_page >= pages:
+		codex_page = pages-1
+		_populate_cards()
+		return
+	page_host.add_child(Widgets.pagination(pages,codex_page,_change_codex_page))
 	if visible_entries.is_empty():
-		var empty := VBoxContainer.new()
-		empty.add_theme_constant_override("separation", 16)
+		var empty := preload("res://scripts/ui_widgets.gd").empty_state("NO MATCHING SIGNALS", "Clear the search and filter to scan this archive again.")
 		grid.add_child(empty)
-		empty.add_child(_label("NO MATCHING SIGNALS\nClear the search and filter to scan this archive again.", 20))
 		var reset := Button.new()
 		reset.name = "ResetCodexSearch"
 		reset.text = "CLEAR SEARCH & FILTER"
@@ -443,16 +495,30 @@ func _populate_cards() -> void:
 		reset.pressed.connect(func() -> void:
 			search.text = ""
 			codex_filter.select(0)
+			codex_filter_index = 0
+			codex_page = 0
 			_populate_cards()
 			search.grab_focus()
 		)
-		empty.add_child(reset)
+		empty.get_node("Body").add_child(reset)
 	preload("res://scripts/title_settings.gd").apply_menu_text(grid)
+
+func _change_codex_page(page: int) -> void:
+	var forward := page > codex_page
+	codex_page = page
+	_populate_cards()
+	var pager: HBoxContainer = page_host.get_child(0)
+	var next: Button = pager.get_node("NextPage" if forward else "PreviousPage")
+	if next.disabled: next = pager.get_node("PreviousPage" if forward else "NextPage")
+	if not next.disabled: next.grab_focus()
 
 # Room entries as cards, matching the draft hand (owner playtest): title plate, art window,
 # category ribbon, description, output and upkeep, and a rarity and cost footer. Unrecovered
 # rooms show as a card back with their clue.
 func _room_order(a: Dictionary, b: Dictionary) -> bool:
+	return _room_order_base(a,b) if codex_ascending else _room_order_base(b,a)
+
+func _room_order_base(a: Dictionary, b: Dictionary) -> bool:
 	var ra: int = RARITY_ORDER.find(str(a.data.get("rarity", "common")))
 	var rb: int = RARITY_ORDER.find(str(b.data.get("rarity", "common")))
 	var ca: int = Rooms.CATEGORY_COLORS.keys().find(str(a.category))
@@ -697,10 +763,7 @@ func _codex_synergy_card(entry: Dictionary) -> Control:
 		hidden_footer.add_theme_color_override("font_color", Color("5e8293"))
 		body.add_child(hidden_footer)
 		return card
-	var ribbon := _label(noun if stabilized else "DISCOVERED", 12)
-	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	ribbon.add_theme_color_override("font_color", DraftCard.muted_bright(accent))
-	ribbon.add_theme_stylebox_override("normal", _card_box(Color("090f14"), DraftCard.muted(accent), 1, 3, 2))
+	var ribbon := Badges.make("STABILIZED" if stabilized else "DISCOVERED","confirm" if stabilized else "search","online" if stabilized else "research",-1,true)
 	body.add_child(ribbon)
 	var rules := PanelContainer.new()
 	rules.add_theme_stylebox_override("panel", _card_box(Color("0a1116"), Color(0, 0, 0, 0), 0, 6, 10))
@@ -764,6 +827,7 @@ func _mini_room_card(room_id: String, known: bool) -> Control:
 
 func _rich(text: String, font_size: int) -> RichTextLabel:
 	var label := RichTextLabel.new()
+	label.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	label.bbcode_enabled = true
 	label.fit_content = true
 	label.scroll_active = false
@@ -831,6 +895,9 @@ func _populate_progression() -> void:
 	balance.name = "ArchivedDataBalance"
 	balance.add_theme_constant_override("separation", 12)
 	sticky.add_child(balance)
+	var data_badge := Badges.readout("ARCHIVED DATA","archived_data",str(ResearchTree.available(meta_state)),"research")
+	data_badge.name = "AvailableDataBadge"
+	sticky.add_child(data_badge)
 	var coin := TextureRect.new()
 	coin.texture = load(ResourceIcons.PATHS.archived_data)
 	coin.custom_minimum_size = Vector2(40, 40)
@@ -838,11 +905,13 @@ func _populate_progression() -> void:
 	coin.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	coin.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	balance.add_child(coin)
+	coin.hide()
 	var summary := _label("%d ARCHIVED DATA AVAILABLE" % ResearchTree.available(meta_state), 28)
 	summary.name = "ResearchSummary"
 	summary.autowrap_mode = TextServer.AUTOWRAP_OFF
 	summary.add_theme_color_override("font_color", Color(ResourceIcons.color("archived_data")))
 	balance.add_child(summary)
+	summary.hide()
 	var totals := _label("%d EARNED   /   %d SYNERGIES STABILIZED   /   %d STABILIZED LOOPS" % [meta_state.total_research_points, meta_state.stabilized_synergy_ids.size(), meta_state.total_victories], 17)
 	totals.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	totals.autowrap_mode = TextServer.AUTOWRAP_OFF
@@ -973,28 +1042,7 @@ static func style_tabs(tabs: TabBar) -> void:
 	tabs.add_theme_color_override("font_unselected_color", Color("9fb8c0"))
 	tabs.add_theme_constant_override("h_separation", 10)
 	for state in ["tab_selected", "tab_hovered", "tab_unselected", "tab_focus"]:
-		var box := StyleBoxFlat.new()
-		box.set_corner_radius_all(6)
-		box.set_border_width_all(1)
-		box.content_margin_left = 18
-		box.content_margin_right = 18
-		box.content_margin_top = 9
-		box.content_margin_bottom = 9
-		match state:
-			"tab_selected":
-				box.bg_color = Color("153a42")
-				box.border_color = Color("5fd3c4")
-			"tab_hovered":
-				box.bg_color = Color("10262e")
-				box.border_color = Color("3a6470")
-			"tab_focus":
-				box.bg_color = Color(0, 0, 0, 0)
-				box.border_color = Color("e6f6f3")
-				box.set_border_width_all(2)
-			_:
-				box.bg_color = Color("0b1a21")
-				box.border_color = Color("1f3a44")
-		tabs.add_theme_stylebox_override(state, box)
+		tabs.add_theme_stylebox_override(state,Widgets.surface("tab",{"tab_selected":"selected","tab_hovered":"hover","tab_unselected":"normal","tab_focus":"focus"}[state],18))
 
 # A stretchy gap above the buy button, so it sits at the foot of every card whatever the text above
 # it takes (owner playtest, Sept 28).
@@ -1029,6 +1077,7 @@ func _blueprint_shop() -> void:
 		var card := _codex_room_card({"id": id, "known": true, "title": str(Rooms.get_room(id).display_name), "category": str(Rooms.get_room(id).category), "clue": "", "data": Rooms.get_room(id)})
 		card.name = "Blueprint_" + id
 		var rows: VBoxContainer = card.get_child(0)
+		rows.add_child(Badges.make("OWNED" if state == "owned" else "AVAILABLE" if state == "ready" else "LOW DATA","unlocked" if state == "owned" else "archived_data","online" if state in ["owned","ready"] else "warning",-1,true))
 		var pattern := MetaShop.related_pattern(id)
 		if not pattern.is_empty() and state != "owned":
 			var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
@@ -1062,6 +1111,7 @@ func _crew_shop() -> void:
 		var accent := Color(MetaShop.CHARACTER_COLORS.get(id, "#9fb8c0"))
 		var parts := _crew_card(id, accent, owned, met)
 		var rows: VBoxContainer = parts[1]
+		rows.add_child(Badges.make("ABOARD" if id in MetaShop.ALWAYS_ABOARD else "OWNED" if owned else "NOT MET" if not met else "AVAILABLE" if state == "ready" else "LOW DATA","crew" if met else "locked","online" if owned else "disabled" if not met else "normal",-1,true))
 		var character_id: String = id
 		var cost := int(MetaShop.CHARACTER_COSTS.get(id, 0))
 		_pin_to_bottom(rows)

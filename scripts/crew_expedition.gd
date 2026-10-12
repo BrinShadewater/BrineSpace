@@ -6,6 +6,7 @@ const Routes = preload("res://scripts/drone_routes.gd")
 const Geometry = preload("res://tools/modular_room_geometry.gd")
 const PHASES := ["approach","enter","pressurize","leave","outbound","salvage","pickup","return","entry","drain","exit","unload"]
 const OXYGEN_COST := 2
+const WORK_SECONDS := 5.48
 
 static func point(room: Dictionary,local: Vector2) -> Vector2:
 	return (Vector2(room.pos)+Vector2.ONE*0.5)*384 + Geometry.turn(local,int(room.rotation))
@@ -120,6 +121,24 @@ static func request_recall(game,actor) -> bool:
 	game.play_station_sound("ui_recall")
 	return true
 
+static func exterior_pose_clear(game,actor,extent: Array) -> bool:
+	if extent.size()!=4:return false
+	var body:=Rect2(actor.foot+Vector2(extent[0],extent[1]),Vector2(extent[2]-extent[0],extent[3]-extent[1]))
+	if not body.has_area():return false
+	for cell in blockers(game):
+		if game.occupied.has(cell):continue
+		if body.intersects(Rect2(Vector2(cell)*384,Vector2.ONE*384),true):return false
+	# Open sea has no floor cells. Still respect actual registered hull/prop
+	# blockers where the sprite extends into an adjacent station room.
+	for cell in actor.geometry:
+		var room:Dictionary=actor.geometry[cell]
+		var center:Vector2=(Vector2(cell)+Vector2.ONE*.5)*384
+		for blocker in room.get("swim_blockers",room.get("blockers",[])):
+			var obstacle:Rect2=blocker.grow(-maxf(0.0,float(room.get("blocker_padding",0.0))-2.0))
+			obstacle.position+=center
+			if body.intersects(obstacle,true):return false
+	return true
+
 static func move(actor,e: Dictionary,delta: float) -> bool:
 	var route: PackedVector2Array = e.route
 	var remaining := delta*72.0*(0.25 if not actor.needs_air() and actor.battery<=0 else 1.0)
@@ -151,6 +170,9 @@ static func advance(game,actor,delta: float) -> void:
 			actor.returning_to_pod=true
 			game._log("Marsh recalled: battery reserve is needed for the return to his charging pod.",true)
 	actor.activity = ("mining" if e.get("kind","salvage")=="mining" else "salvage")+" expedition / " + ("extracting minerals" if e.phase=="salvage" and e.get("kind","salvage")=="mining" else str(e.phase))
+	if actor.has_method("begin_exterior_cancel"):
+		var began:bool=actor.begin_exterior_cancel()
+		actor.advance_exterior_cancel(game,delta,began)
 	if not game.occupied.has(e.home):
 		actor.activity = "return airlock missing / awaiting recovery"
 		return
@@ -192,11 +214,13 @@ static func advance(game,actor,delta: float) -> void:
 				for p in path: back.append((Vector2(p)+Vector2.ONE*0.5)*384)
 				if not path.is_empty(): set_route(e,"return",back)
 			elif move(actor,e,delta):
+				# A new extraction attempt resumes ownership of the cosmetic floor case.
+				if game.drone_fleet.sites.has(e.target):game.drone_fleet.sites[e.target].erase("james_case_release")
 				e.phase = "salvage"
 				actor.state = "idle"
 		"salvage":
 			e.elapsed += delta
-			if e.elapsed>=5.48 or e.recall:
+			if e.elapsed>=WORK_SECONDS or e.recall:
 				set_route(e,"pickup",PackedVector2Array())
 		"pickup":
 			e.elapsed+=delta

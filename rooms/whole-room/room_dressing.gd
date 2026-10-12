@@ -8,7 +8,11 @@ var textures: Dictionary={}
 func _init(host, path: String) -> void:
 	room=host
 	profile=JSON.parse_string(FileAccess.get_file_as_string(path))
+	var pool = room.get_meta("room_texture_pool") if room.has_meta("room_texture_pool") else null
 	for key in profile.textures:
+		if pool != null:
+			textures[key]=pool.acquire(profile.textures[key]).texture
+			continue
 		var image := Image.new()
 		preload("res://scripts/safe_image.gd").load_png(image, profile.textures[key])
 		textures[key]=ImageTexture.create_from_image(image)

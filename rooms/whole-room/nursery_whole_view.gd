@@ -317,7 +317,7 @@ func draw_room_world(include_floor := true) -> void:
 		if show_actor:
 			live.append({"kind":"actor","sort_y":actor_draw_depth(actor,external_actor_texture)})
 		for member in external_actors:
-			live.append({"kind":"crew","sort_y":actor_draw_depth(member.position,member.texture),"member":member})
+			live.append({"kind":"crew","sort_y":member.get("depth",actor_draw_depth(member.position,member.texture)),"member":member})
 		retained_content_host.submit(self,_sorted_content_queue(live))
 		return
 	var queue: Array = []
@@ -342,7 +342,7 @@ func draw_room_world(include_floor := true) -> void:
 	if show_actor:
 		queue.append({"kind":"actor","sort_y":actor_draw_depth(actor,external_actor_texture)})
 	for member in external_actors:
-		queue.append({"kind":"crew","sort_y":actor_draw_depth(member.position,member.texture),"member":member})
+		queue.append({"kind":"crew","sort_y":member.get("depth",actor_draw_depth(member.position,member.texture)),"member":member})
 	queue.sort_custom(func(a: Dictionary,b: Dictionary)->bool: return float(a.sort_y)<float(b.sort_y))
 	if not shell_key.is_empty() and shell_queues.size()<32:
 		shell_queues[shell_key.duplicate(true)] = queue.duplicate(true)

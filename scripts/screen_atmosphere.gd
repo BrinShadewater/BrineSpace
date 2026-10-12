@@ -458,12 +458,16 @@ func _process(delta: float) -> void:
 # Which grid cells hold a room, as a small texture for the shimmer to keep clear of. Rebuilt every few frames.
 func _update_mask() -> void:
 	mask_frame += 1
-	if mask_frame % 8 != 1: return
+	var cells:Array=game.occupied.keys()
+	if mask_cells_initialized and cells==mask_cells:return
+	mask_cells=cells
+	mask_cells_initialized=true
 	mask_image.fill(Color(0, 0, 0))
 	for cell in game.occupied:
 		if cell.x >= 0 and cell.y >= 0 and cell.x < game.GRID_SIZE and cell.y < game.GRID_SIZE:
 			mask_image.set_pixel(cell.x, cell.y, Color(1, 1, 1))
 	mask_texture.update(mask_image)
+	mask_uploads+=1
 
 # 0 on the station, rising to 1 one cell out from any room: snow belongs to the water outside.
 # `point` is in station-view pixels (screen position plus scroll).
@@ -544,3 +548,7 @@ func _update_ping(strength: float) -> void:
 	post_material.set_shader_parameter("ping_center_px", centre - scroll)
 	post_material.set_shader_parameter("ping_radius_px", phase * size.length() * 0.8)
 	post_material.set_shader_parameter("ping_alpha", 0.16 * strength * sin(phase * PI) * (1.0 - phase))
+
+var mask_cells:Array=[]
+var mask_cells_initialized:=false
+var mask_uploads:=0

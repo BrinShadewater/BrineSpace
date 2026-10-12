@@ -1,0 +1,11 @@
+extends CanvasTexture
+const Router=preload("res://scripts/crew_storage/router.gd")
+func _draw(target:RID,pos:Vector2,modulate:Color,transpose:bool)->void:
+	var shown:Texture2D=Router.resolve(target,self)
+	if shown!=null:shown.draw(target,pos,modulate,transpose)
+func _draw_rect(target:RID,rect:Rect2,tile:bool,modulate:Color,transpose:bool)->void:
+	var shown:Texture2D=Router.resolve(target,self)
+	if shown!=null:shown.draw_rect(target,rect,tile,modulate,transpose)
+func _draw_rect_region(target:RID,rect:Rect2,source:Rect2,modulate:Color,transpose:bool,clip_uv:bool)->void:
+	var shown:Texture2D=Router.resolve(target,self)
+	if shown!=null:shown.draw_rect_region(target,rect,source,modulate,transpose,clip_uv)

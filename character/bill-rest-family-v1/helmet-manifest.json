@@ -1,0 +1,574 @@
+{
+  "name": "Bill cardinal generic rest helmet family",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "selected_runtime",
+  "states": [
+    {
+      "id": "lie-down-east",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/000.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/001.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/002.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/003.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/004.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/005.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/006.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/007.png"
+      ],
+      "frameDurationsMs": [
+        65,
+        85,
+        100,
+        110,
+        120,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7
+    },
+    {
+      "id": "get-up-east",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/007.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/006.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/005.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/004.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/003.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/002.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/001.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        120,
+        110,
+        100,
+        85,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7,
+      "derived": "exact reverse of authored lie-down"
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/007.png",
+        "res://character/bill-rest-helmet-east-coherent-v1/frames/lie-down-east/006.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "restHeadOffset": [
+        -18.9665,
+        4.0061
+      ],
+      "headAnchorCorrection": "includes the normal Bill room draw lift14.592"
+    },
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/000.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/001.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/002.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/003.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/004.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/005.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/006.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/007.png"
+      ],
+      "frameDurationsMs": [
+        65,
+        85,
+        100,
+        110,
+        120,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/007.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/006.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/005.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/004.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/003.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/002.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/001.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        120,
+        110,
+        100,
+        85,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7,
+      "derived": "exact reverse of authored lie-down"
+    },
+    {
+      "id": "sleep-south",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/007.png",
+        "res://character/bill-rest-helmet-south-coherent-v1/frames/lie-down-south/006.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "restHeadOffset": [
+        0.0,
+        -29.9572
+      ]
+    },
+    {
+      "id": "lie-down-west",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/000.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/001.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/002.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/003.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/004.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/005.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/006.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/007.png"
+      ],
+      "frameDurationsMs": [
+        65,
+        85,
+        100,
+        110,
+        120,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7
+    },
+    {
+      "id": "get-up-west",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/007.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/006.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/005.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/004.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/003.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/002.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/001.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        120,
+        110,
+        100,
+        85,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7,
+      "derived": "exact reverse of authored lie-down"
+    },
+    {
+      "id": "sleep-west",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/007.png",
+        "res://character/bill-rest-helmet-west-coherent-v1/frames/lie-down-west/006.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "restHeadOffset": [
+        23.3773,
+        4.8882
+      ]
+    },
+    {
+      "id": "lie-down-north",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/000.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/001.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/002.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/003.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/004.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/005.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/006.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/007.png"
+      ],
+      "frameDurationsMs": [
+        65,
+        85,
+        100,
+        110,
+        120,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7
+    },
+    {
+      "id": "get-up-north",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/007.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/006.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/005.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/004.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/003.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/002.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/001.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        120,
+        110,
+        100,
+        85,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "terminalFrame": 7,
+      "derived": "exact reverse of authored lie-down"
+    },
+    {
+      "id": "sleep-north",
+      "frameFiles": [
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/007.png",
+        "res://character/bill-rest-helmet-north-coherent-v1/frames/lie-down-north/006.png"
+      ],
+      "frameDurationsMs": [
+        600,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0
+      ],
+      "restHeadOffset": [
+        0.0,
+        -35.6912
+      ]
+    }
+  ],
+  "equipment": "diving-helmet",
+  "scope": "generic rest; specialised east bunk remains separate; physical generic bed contexts pending"
+}

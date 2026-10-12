@@ -1,5 +1,5 @@
 extends RefCounted
-const HULL_ATLAS_PATH := "res://legacy/default/assets/hull-damage-v1/hull-96.png"
+const HULL_ATLAS_PATH := "res://assets/environment/hull-condition-v2/runtime/hull-256.png"
 static var hull_atlas: Texture2D
 static var hull_atlas_attempted := false
 
@@ -7,16 +7,31 @@ static func draw_hull_decal(canvas,origin: Vector2,scale: float,index: int) -> b
 	if not hull_atlas_attempted:
 		hull_atlas_attempted=true
 		var picture := Image.new()
-		if FileAccess.file_exists(HULL_ATLAS_PATH) and picture.load_png_from_buffer(FileAccess.get_file_as_bytes(HULL_ATLAS_PATH))==OK and picture.get_size()==Vector2i(288,192):
+		if FileAccess.file_exists(HULL_ATLAS_PATH) and picture.load_png_from_buffer(FileAccess.get_file_as_bytes(HULL_ATLAS_PATH))==OK and picture.get_size()==Vector2i(768,512):
 			hull_atlas=ImageTexture.create_from_image(picture)
 	if hull_atlas==null: return false
-	canvas.draw_texture_rect_region(hull_atlas,Rect2(origin+Vector2(-24,-19)*scale,Vector2(48,48)*scale),Rect2(Vector2(index%3,index/3)*96,Vector2(96,96)))
+	canvas.draw_texture_rect_region(hull_atlas,Rect2(origin+Vector2(-24,-19)*scale,Vector2(48,48)*scale),Rect2(Vector2(index%3,index/3)*256,Vector2(256,256)))
 	return true
 
 const SurfaceShader = preload("res://scripts/flood_surface.gdshader")
 const SubmersionShader = preload("res://scripts/flood_submersion.gdshader")
 const Corridor = preload("res://rooms/underwater/corridor_geometry.gd")
 const Geometry = preload("res://tools/modular_room_geometry.gd")
+const Settings = preload("res://scripts/title_settings.gd")
+
+static func condition_clock(clock: float) -> float:
+	return 0.0 if Settings.reduced_motion else clock
+
+static func floor_bounds(room: Dictionary) -> Rect2:
+	var extent: Vector2i=room.get("size",Vector2i.ONE)
+	# Large-room perimeter walls are 28 world units thick, ordinary hulls 12.
+	var inset:=28.0 if extent!=Vector2i.ONE else 12.0
+	return Rect2(Vector2.ONE*(-192.0+inset),Vector2(extent)*384.0-Vector2.ONE*inset*2.0)
+
+static func damage_anchor(room: Dictionary) -> Vector2:
+	if room.id in ["corridor","corner","tee_corridor"]:
+		return Geometry.turn(Vector2(-80,-56),Corridor.rotation(room))
+	return Vector2(-70,-184)
 
 static func shape(room: Dictionary) -> PackedVector2Array:
 	if room.id in ["corridor","corner","tee_corridor"]:
@@ -24,11 +39,12 @@ static func shape(room: Dictionary) -> PackedVector2Array:
 		for point in Corridor.floor_for(room.id=="corner",room.id=="tee_corridor"):
 			points.append(Geometry.turn(point,Corridor.rotation(room)))
 		return points
-	return PackedVector2Array([Vector2(-180,-180),Vector2(180,-180),Vector2(180,180),Vector2(-180,180)])
+	var bounds:=floor_bounds(room)
+	return PackedVector2Array([bounds.position,Vector2(bounds.end.x,bounds.position.y),bounds.end,Vector2(bounds.position.x,bounds.end.y)])
 
 static func update_surfaces(grid,game,rooms: Array,size: float) -> void:
 	var visible := {}
-	var clock: float = game.get_visual_time_seconds()
+	var clock: float = condition_clock(game.get_visual_time_seconds())
 	for room in rooms:
 		var water := float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0))
 		if water<=0.001: continue
@@ -41,7 +57,7 @@ static func update_surfaces(grid,game,rooms: Array,size: float) -> void:
 			grid.surface_passes[grid.Surface.FLOOR_REST].add_child(surface)
 			grid.flood_surfaces[room.pos]=surface
 		var surface: Polygon2D=grid.flood_surfaces[room.pos]
-		var key := [room.id,room.get("rotation",0)]
+		var key := [room.id,room.get("rotation",0),room.get("size",Vector2i.ONE)]
 		if surface.get_meta("shape_key",[])!=key:
 			surface.polygon=shape(room)
 			surface.set_meta("shape_key",key)
@@ -57,15 +73,18 @@ static func update_surfaces(grid,game,rooms: Array,size: float) -> void:
 		elif not visible.has(cell): grid.flood_surfaces[cell].hide()
 
 static func prop_material(slot: Node2D,prop: Dictionary,water: float,clock: float,origin: Vector2,scale: float) -> void:
+	clock=condition_clock(clock)
 	if water<=0.001:
 		if slot.material!=null:
 			slot.material=null
 			slot.remove_meta("flood_parameters")
+			slot.remove_meta("flood_clock")
 		return
 	if slot.material==null:
 		slot.material=ShaderMaterial.new()
 		slot.material.shader=SubmersionShader
 		slot.remove_meta("flood_parameters")
+		slot.remove_meta("flood_clock")
 	var line: Vector2=origin+Vector2(0,prop.rect.end.y-water*76.0)*scale
 	var transform := slot.get_global_transform()
 	line=transform*line
@@ -96,6 +115,7 @@ static func crew_waterline(foot_y: float,water: float,swimming: bool) -> float:
 	return foot_y-lerpf(-3,25,clampf((water-0.55)/0.45,0,1)) if swimming else foot_y-water/0.55*42.0
 
 static func draw_crew(canvas,texture: Texture2D,rect: Rect2,foot: Vector2,water: float,clock: float) -> void:
+	clock=condition_clock(clock)
 	if water<=0.001:
 		canvas.draw_texture_rect(texture,rect,false,texture.get_meta("cryo_tint",Color.WHITE))
 		return
@@ -141,6 +161,7 @@ static func draw_crew(canvas,texture: Texture2D,rect: Rect2,foot: Vector2,water:
 	draw_crew_wake(canvas,Vector2(foot.x,line),texture,clock,8.0)
 
 static func draw_crew_wake(canvas,contact: Vector2,texture: Texture2D,clock: float,width: float) -> void:
+	clock=condition_clock(clock)
 	var facing: String=texture.get_meta("crew_water_facing","south")
 	var direction: Vector2={"east":Vector2.RIGHT,"west":Vector2.LEFT,"north":Vector2.UP,"south":Vector2.DOWN}.get(facing,Vector2.DOWN)
 	var side := Vector2(-direction.y,direction.x)
@@ -258,26 +279,31 @@ static func draw_leak(canvas,origin: Vector2,scale: float,severity: float,water:
 
 static func draw_repair_torch(canvas,game,room: Dictionary,center: Vector2,scale: float,time: float) -> void:
 	var job: Dictionary=room.get("leak_repair",{})
-	if str(job.get("worker","")).is_empty() or game.paused: return
+	if str(job.get("worker","")).is_empty() or job.get("status","")!="Welding": return
 	var actor=game.get(str(job.worker)+"_npc")
-	if actor.state=="weld": return # Authored dry weld already includes the torch.
 	if actor.dead or actor.goal!="hull-repair" or actor.state not in ["weld","repair"] or not actor.path.is_empty(): return
+	if actor.state=="weld" and actor.animation_state()!="weld":return
 	var foot: Vector2=center+(actor.foot-(Vector2(room.pos)+Vector2.ONE*0.5)*384)*scale
-	var tip := foot+Vector2(5,-22)*scale
-	canvas.draw_line(foot+Vector2(5,-12)*scale,tip,Color(0.23,0.28,0.25),maxf(1,scale*2),true)
-	canvas.draw_line(tip,tip+Vector2(0,-6)*scale,Color(0.4,0.86,0.98,0.8),maxf(1,scale*2),true)
-	canvas.draw_circle(tip+Vector2(0,-7)*scale,(1.5+sin(time*37)*0.5)*scale,Color(1,0.9,0.58,0.9))
-	for i in range(5):
-		var phase := fposmod(time*2.5+i*0.19,1.0)
-		var spark := tip+Vector2(sin(i*13.0)*phase*12,-6+phase*phase*15)*scale
-		canvas.draw_line(spark,spark+Vector2(0,1.4)*scale,Color(1,0.72,0.32,(1-phase)*0.85),maxf(0.6,scale*0.7),true)
+	const Settings=preload("res://scripts/title_settings.gd")
+	if Settings.reduced_motion or Settings.effects_quality==0: return
+	const Art=preload("res://scripts/environment_art.gd")
+	var direction: Vector2=Vector2.LEFT if actor.direction=="west" else Vector2.RIGHT if actor.direction=="east" else Vector2.UP if actor.direction=="north" else Vector2.DOWN
+	var tip:=foot+direction*18*scale+Vector2(0,-10)*scale
+	# The authored dry weld contains its own torch; add only restrained seam vapor.
+	if actor.state=="weld":
+		tip=foot+preload("res://scripts/station_effects.gd").torch_tip_offset(game,actor)*scale
+	if actor.state!="weld":
+		var pulse:=.52+.16*sin(time*7.0)
+		Art.sprite(canvas,"repair-spark",tip,Vector2(16,12)*scale,Color(1,.85,.58,pulse),direction.angle())
+	var phase:=fposmod(time*.65,1.0)
+	Art.sprite(canvas,"leak-puff",tip+Vector2(phase*5,-phase*12)*scale,Vector2(19,12)*(1+phase*.3)*scale,Color(.65,.72,.69,(1-phase)*.16))
 
 static func draw_front(canvas,game,rooms: Array,size: float) -> void:
 	var scale := size/384.0
 	for room in rooms:
 		var water := float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0))
 		var center: Vector2=(Vector2(room.pos)+Vector2.ONE*0.5)*size
-		var time: float=game.get_visual_time_seconds()
+		var time: float=condition_clock(game.get_visual_time_seconds())
 		# Dry stations dominate normal play; skip the per-room door-current state
 		# machine when this room, both drawn-side neighbors, and their wash history
 		# are dry — matching draw_door_currents' own per-direction early-out+erase.
@@ -289,19 +315,21 @@ static func draw_front(canvas,game,rooms: Array,size: float) -> void:
 			and not grid.door_wet_history.has([room.pos,room.pos+Vector2i.DOWN])
 		if not dry_doors: draw_door_currents(canvas,game,room,center,scale,time)
 		draw_repair_torch(canvas,game,room,center,scale,time)
-		if room.id not in ["corridor","corner","tee_corridor"]:
-			if float(room.get("hull_crack",0))<=0 and room.get("hull_welded",false):
-				draw_hull_decal(canvas,center+Vector2(-70,-184)*scale,scale,4)
-			draw_leak(canvas,center+Vector2(-70,-184)*scale,scale,float(room.get("hull_crack",0)),water,time,bool(room.get("hull_patched",false)))
+		var seam:=center+damage_anchor(room)*scale
+		if float(room.get("hull_crack",0))<=0 and room.get("hull_welded",false):
+			draw_hull_decal(canvas,seam,scale,4)
+		draw_leak(canvas,seam,scale,float(room.get("hull_crack",0)),water,time,bool(room.get("hull_patched",false)))
 		if water<=0.001: continue
 		if room.id not in ["corridor","corner","tee_corridor"]:
 			# Visible water depth on the front cutaway, tied to the same physical height.
 			var height := water*52.0*scale
-			var bottom := center.y+180*scale
-			canvas.draw_rect(Rect2(center.x-180*scale,bottom-height,360*scale,height),Color(0.08,0.34,0.40,0.23+water*0.12))
+			var bounds:=floor_bounds(room)
+			var bottom := center.y+bounds.end.y*scale
+			canvas.draw_rect(Rect2(center.x+bounds.position.x*scale,bottom-height,bounds.size.x*scale,height),Color(0.08,0.34,0.40,0.23+water*0.12))
 			var surface := PackedVector2Array()
-			for i in range(41):
-				var x := -180.0+i*9.0
+			var segments:=ceili(bounds.size.x/9.0)
+			for i in range(segments+1):
+				var x := bounds.position.x+bounds.size.x*float(i)/float(segments)
 				surface.append(Vector2(center.x+x*scale,bottom-height+sin(x*0.085+time*1.4)*scale))
 			canvas.draw_polyline(surface,Color(0.48,0.75,0.70,0.65),maxf(1,scale*1.2),true)
 		var gauge := Rect2(center+Vector2(-175,-170)*scale,Vector2(4,72)*scale)

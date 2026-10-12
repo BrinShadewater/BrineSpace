@@ -1,0 +1,437 @@
+{
+  "name": "Bill carry-turn current endpoint/native four-quarter identity matrix",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "selected_runtime",
+  "equipment": "diving-helmet",
+  "integration": "selected_by_grid_canvas_native_frame_clock_checked_2026_09_30",
+  "states": [
+    {
+      "id": "carry-turn-east-south",
+      "frameFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/001.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/002.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/003.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/004.png",
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains"
+    },
+    {
+      "id": "carry-turn-south-east",
+      "frameFiles": [
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/004.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/003.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/002.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/001.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains;reverse derived without mirror"
+    },
+    {
+      "id": "carry-turn-south-west",
+      "frameFiles": [
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/001.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/002.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/003.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/004.png",
+        "res://character/bill-cargo-west-master-head-v1/frames/helmet/pickup-west/011.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains"
+    },
+    {
+      "id": "carry-turn-west-south",
+      "frameFiles": [
+        "res://character/bill-cargo-west-master-head-v1/frames/helmet/pickup-west/011.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/004.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/003.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/002.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/001.png",
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "south",
+        "south"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains;reverse derived without mirror"
+    },
+    {
+      "id": "carry-turn-west-north",
+      "frameFiles": [
+        "res://character/bill-cargo-west-master-head-v1/frames/helmet/pickup-west/011.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/001.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/002.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/003.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/004.png",
+        "res://character/bill-cargo-north-master-head-v1/frames/helmet/pickup-north/011.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains"
+    },
+    {
+      "id": "carry-turn-north-west",
+      "frameFiles": [
+        "res://character/bill-cargo-north-master-head-v1/frames/helmet/pickup-north/011.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/004.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/003.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/002.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/001.png",
+        "res://character/bill-cargo-west-master-head-v1/frames/helmet/pickup-west/011.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "west",
+        "west"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains;reverse derived without mirror"
+    },
+    {
+      "id": "carry-turn-north-east",
+      "frameFiles": [
+        "res://character/bill-cargo-north-master-head-v1/frames/helmet/pickup-north/011.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/001.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/002.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/003.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/004.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains"
+    },
+    {
+      "id": "carry-turn-east-north",
+      "frameFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/004.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/003.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/002.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/001.png",
+        "res://character/bill-cargo-north-master-head-v1/frames/helmet/pickup-north/011.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "provenance": "Current exact static-held cardinal joins;All four quarter paths use newly authored head/shell fits;full motion polish remains;reverse derived without mirror"
+    },
+    {
+      "id": "carry-turn-east-west",
+      "frameFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/001.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/002.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/003.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/004.png",
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/001.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/002.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/003.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/004.png",
+        "res://character/bill-cargo-west-master-head-v1/frames/helmet/pickup-west/011.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        220,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "provenance": "Two existing clockwise quarter paths;shared current static-held midpoint;original1600ms clock and facing metadata"
+    },
+    {
+      "id": "carry-turn-south-north",
+      "frameFiles": [
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/001.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/002.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/003.png",
+        "res://character/bill-carry-turn-south-west-identity-v2/frames/helmet/carry-turn-south-west/004.png",
+        "res://character/bill-cargo-west-master-head-v1/frames/helmet/pickup-west/011.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/001.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/002.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/003.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/004.png",
+        "res://character/bill-cargo-north-master-head-v1/frames/helmet/pickup-north/011.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        220,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "provenance": "Two existing clockwise quarter paths;shared current static-held midpoint;original1600ms clock and facing metadata"
+    },
+    {
+      "id": "carry-turn-west-east",
+      "frameFiles": [
+        "res://character/bill-cargo-west-master-head-v1/frames/helmet/pickup-west/011.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/001.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/002.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/003.png",
+        "res://character/bill-carry-turn-west-north-identity-v2/frames/helmet/carry-turn-west-north/004.png",
+        "res://character/bill-cargo-north-master-head-v1/frames/helmet/pickup-north/011.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/001.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/002.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/003.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/004.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        220,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "provenance": "Two existing clockwise quarter paths;shared current static-held midpoint;original1600ms clock and facing metadata"
+    },
+    {
+      "id": "carry-turn-north-south",
+      "frameFiles": [
+        "res://character/bill-cargo-north-master-head-v1/frames/helmet/pickup-north/011.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/001.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/002.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/003.png",
+        "res://character/bill-carry-turn-north-east-identity-v2/frames/helmet/carry-turn-north-east/004.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/001.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/002.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/003.png",
+        "res://character/bill-carry-turn-east-south-identity-v2/frames/helmet/carry-turn-east-south/004.png",
+        "res://character/bill-cargo-south-master-head-v1/frames/helmet/pickup-south/011.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        220,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "water": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "provenance": "Two existing clockwise quarter paths;shared current static-held midpoint;original1600ms clock and facing metadata"
+    }
+  ]
+}

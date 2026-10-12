@@ -4,7 +4,7 @@ const Surface=preload("res://rooms/underwater/corridor_surfaces.gd")
 var room_id:="corridor"
 var sources: Array=[]
 func _ready() -> void:
-	sources=Surface.load_sources()
+	sources=Surface.load_sources(get_meta("room_texture_pool") if has_meta("room_texture_pool") else null)
 	rebuild()
 func rebuild() -> void:
 	props=[]

@@ -1,0 +1,837 @@
+{
+  "name": "James directional lying family staged",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "staged_lying_master_revision",
+  "states": [
+    {
+      "id": "lie-down-east",
+      "frameFiles": [
+        "../james-lying-east-v1/frames/lie-down/000.png",
+        "../james-lying-east-v1/frames/lie-down/001.png",
+        "../james-lying-east-v1/frames/lie-down/002.png",
+        "../james-lying-east-v1/frames/lie-down/003.png",
+        "../james-lying-east-v1/frames/lie-down/004.png",
+        "../james-lying-east-v1/frames/lie-down/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4983164983164983,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "sleep-east",
+      "frameFiles": [
+        "../james-lying-east-v1/frames/sleep/000.png",
+        "../james-lying-east-v1/frames/sleep/001.png",
+        "../james-lying-east-v1/frames/sleep/002.png",
+        "../james-lying-east-v1/frames/sleep/003.png",
+        "../james-lying-east-v1/frames/sleep/004.png",
+        "../james-lying-east-v1/frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        -23.02054054054054,
+        -7.498378378378378
+      ],
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4983164983164983,
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "get-up-east",
+      "frameFiles": [
+        "../james-lying-east-v1/frames/get-up/000.png",
+        "../james-lying-east-v1/frames/get-up/001.png",
+        "../james-lying-east-v1/frames/get-up/002.png",
+        "../james-lying-east-v1/frames/get-up/003.png",
+        "../james-lying-east-v1/frames/get-up/004.png",
+        "../james-lying-east-v1/frames/get-up/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4983164983164983,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "../james-lying-south-v1/frames/lie-down/000.png",
+        "../james-lying-south-v1/frames/lie-down/001.png",
+        "../james-lying-south-v1/frames/lie-down/002.png",
+        "../james-lying-south-v1/frames/lie-down/003.png",
+        "../james-lying-south-v1/frames/lie-down/004.png",
+        "../james-lying-south-v1/frames/lie-down/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4152542372881356,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "sleep-south",
+      "frameFiles": [
+        "../james-lying-south-v1/frames/sleep/000.png",
+        "../james-lying-south-v1/frames/sleep/001.png",
+        "../james-lying-south-v1/frames/sleep/002.png",
+        "../james-lying-south-v1/frames/sleep/003.png",
+        "../james-lying-south-v1/frames/sleep/004.png",
+        "../james-lying-south-v1/frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        0.6007828518173333,
+        -33.96324324324325
+      ],
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4152542372881356,
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "../james-lying-south-v1/frames/get-up/000.png",
+        "../james-lying-south-v1/frames/get-up/001.png",
+        "../james-lying-south-v1/frames/get-up/002.png",
+        "../james-lying-south-v1/frames/get-up/003.png",
+        "../james-lying-south-v1/frames/get-up/004.png",
+        "../james-lying-south-v1/frames/get-up/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4152542372881356,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "lie-down-west",
+      "frameFiles": [
+        "../james-lying-west-v1/frames/lie-down/000.png",
+        "../james-lying-west-v1/frames/lie-down/001.png",
+        "../james-lying-west-v1/frames/lie-down/002.png",
+        "../james-lying-west-v1/frames/lie-down/003.png",
+        "../james-lying-west-v1/frames/lie-down/004.png",
+        "../james-lying-west-v1/frames/lie-down/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        19.0,
+        38.0,
+        58.0,
+        77.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.5285714285714286,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "sleep-west",
+      "frameFiles": [
+        "../james-lying-west-v1/frames/sleep/000.png",
+        "../james-lying-west-v1/frames/sleep/001.png",
+        "../james-lying-west-v1/frames/sleep/002.png",
+        "../james-lying-west-v1/frames/sleep/003.png",
+        "../james-lying-west-v1/frames/sleep/004.png",
+        "../james-lying-west-v1/frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        20.806117336849038,
+        -10.585945945945946
+      ],
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.5285714285714286,
+        "sourcePoses": [
+          5,
+          7,
+          8,
+          9,
+          10,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "get-up-west",
+      "frameFiles": [
+        "../james-lying-west-v1/frames/get-up/000.png",
+        "../james-lying-west-v1/frames/get-up/001.png",
+        "../james-lying-west-v1/frames/get-up/002.png",
+        "../james-lying-west-v1/frames/get-up/003.png",
+        "../james-lying-west-v1/frames/get-up/004.png",
+        "../james-lying-west-v1/frames/get-up/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        77.0,
+        58.0,
+        38.0,
+        19.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.5285714285714286,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "lie-down-north",
+      "frameFiles": [
+        "../james-lying-north-v1/frames/lie-down/000.png",
+        "../james-lying-north-v1/frames/lie-down/001.png",
+        "../james-lying-north-v1/frames/lie-down/002.png",
+        "../james-lying-north-v1/frames/lie-down/003.png",
+        "../james-lying-north-v1/frames/lie-down/004.png",
+        "../james-lying-north-v1/frames/lie-down/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "lie",
+        "lie",
+        "lie",
+        "lie",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        19,
+        58,
+        58,
+        77,
+        96
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.3681592039800995,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse",
+        "depthCorrection": "North midpoint source38 ->58 to retain visibility above retained bedside cabinet; reversed on rise"
+      }
+    },
+    {
+      "id": "sleep-north",
+      "frameFiles": [
+        "../james-lying-north-v1/frames/sleep/000.png",
+        "../james-lying-north-v1/frames/sleep/001.png",
+        "../james-lying-north-v1/frames/sleep/002.png",
+        "../james-lying-north-v1/frames/sleep/003.png",
+        "../james-lying-north-v1/frames/sleep/004.png",
+        "../james-lying-north-v1/frames/sleep/005.png"
+      ],
+      "frameDurationsMs": [
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0,
+        160.0
+      ],
+      "loop": true,
+      "restHeadOffset": [
+        0.27794150314698723,
+        -29.993513513513513
+      ],
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep",
+        "sleep"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0,
+        96.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.3681592039800995,
+        "sourcePoses": [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse"
+      }
+    },
+    {
+      "id": "get-up-north",
+      "frameFiles": [
+        "../james-lying-north-v1/frames/get-up/000.png",
+        "../james-lying-north-v1/frames/get-up/001.png",
+        "../james-lying-north-v1/frames/get-up/002.png",
+        "../james-lying-north-v1/frames/get-up/003.png",
+        "../james-lying-north-v1/frames/get-up/004.png",
+        "../james-lying-north-v1/frames/get-up/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sleep",
+        "get",
+        "get",
+        "get",
+        "get",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        96,
+        77,
+        58,
+        58,
+        19,
+        0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.3681592039800995,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent cardinal source, fixed anatomical scale, exact selected standing arrival, shared sleep neutral and exact reverse",
+        "depthCorrection": "North midpoint source38 ->58 to retain visibility above retained bedside cabinet; reversed on rise"
+      }
+    }
+  ]
+}

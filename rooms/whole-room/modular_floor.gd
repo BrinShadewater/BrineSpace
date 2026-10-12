@@ -21,8 +21,10 @@ const FLOOR_REVISIONS={
 }
 static func texture(path: String) -> Texture2D:
 	if not textures.has(path):
-		var im:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(im, FLOOR_REVISIONS.get(path,path))
+		var im:Image=preload("res://scripts/hand_image_preparation.gd").take(FLOOR_REVISIONS.get(path,path))
+		if im==null:
+			im=Image.new()
+			preload("res://scripts/safe_image.gd").load_png(im,FLOOR_REVISIONS.get(path,path))
 		textures[path]=ImageTexture.create_from_image(im)
 	return textures[path]
 static func pilot(id: String) -> bool: return id in ["research_lab", "reactor", "life_support", "crew_hab", "corridor", "corner", "tee_corridor", "hydroponics_bay", "mycelium_nursery", "tidal_condenser", "quarantine_cell", "cryo_chamber", "clone_lab", "med_bay", "storage_bay", "pressure_control", "crew_lounge", "mining_drone_bay", "ore_refinery", "listening_post", "xeno_lab", "maintenance_bay", "bio_lab", "isolation_vault", "current_turbine", "biomass_digester", "heat_recovery", "airlock", "construction_drone_bay", "brine_core", "solar_array", "battery_array", "salvage_drone_bay", "gravity_loom", "data_archive", "biodome", "anomaly_lab", "command_center", "holographic_core", "med_center", "med_office", "radio_lab", "shield_generator", "observation_room", "salvage_workshop", "galley", "cold_store"]
@@ -138,10 +140,8 @@ static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, sour
 		var rect:=Rect2(Vector2(cell)*48-Vector2.ONE*192,Vector2.ONE*48)
 		var regions:=Geometry2D.intersect_polygons(rectangle(rect),poly)
 		var material:=tile_material(values,cell)
-		var path: String=(HALL_TILES if corridor else source_path) if material==0 else (DECK if material in [2,3] else SCIENCE)
-		var finish: String=str(values.get("floor/finish",""))
-		var finished:=finish in finishes().values()
-		if finished: path=finish
+		var path:String=tile_source(values,cell,corridor,source_path)
+		var finished:bool=str(values.get("floor/finish","")) in finishes().values()
 		var uv_rect: Rect2
 		if material==0:
 			var source=values.get(tile_key(cell),[cell.x,cell.y] if corridor else [cell.x%4,cell.y%4])
@@ -178,3 +178,15 @@ static func meshes(values: Dictionary, corridor: bool, q:=0, opacity:=0.42, sour
 static func draw(canvas: CanvasItem, values: Dictionary, corridor: bool, q:=0, opacity:=0.42, center:=Vector2.ZERO, light:=1.0, source_path:=SCIENCE, shape:="corridor", variant:=0) -> void:
 	for batch in meshes(values,corridor,q,opacity,source_path,shape,variant):
 		canvas.draw_mesh(batch.mesh,batch.texture,Transform2D(0,center),Color(light,light,light))
+
+static func tile_source(values:Dictionary,cell:Vector2i,corridor:bool,source_path:String) -> String:
+	var material:int=tile_material(values,cell)
+	var path:String=(HALL_TILES if corridor else source_path) if material==0 else (DECK if material in [2,3] else SCIENCE)
+	var finish:String=str(values.get("floor/finish",""))
+	return finish if finish in finishes().values() else path
+static func preparation_paths(values:Dictionary,corridor:bool,q:int,source_path:String,shape:="corridor") -> Array:
+	var result:Array=[]
+	for cell in cells(corridor,q,shape):
+		var path:String=tile_source(values,cell,corridor,source_path)
+		if path not in result:result.append(path)
+	return result

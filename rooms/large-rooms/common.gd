@@ -19,7 +19,7 @@ const ART_SATURATION_OVERRIDES := {
 }
 static var art_textures: Dictionary = {}
 
-static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color = Color.WHITE) -> void:
+static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color = Color.WHITE, water := 0.0, water_rotation := 0.0, wet_modulate := Color.TRANSPARENT) -> void:
 	if not art_textures.has(path):
 		var image := Image.new()
 		var error := image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))
@@ -37,7 +37,39 @@ static func sprite(canvas: CanvasItem, path: String, bounds: Rect2, tint: Color 
 	var natural: Vector2 = texture.get_size()
 	var scale: float = minf(bounds.size.x / natural.x, bounds.size.y / natural.y)
 	var size: Vector2 = natural * scale
-	canvas.draw_texture_rect(texture, Rect2(bounds.get_center() - size * 0.5, size), false, tint)
+	var destination:=Rect2(bounds.get_center()-size*0.5,size)
+	if water<=0.001:canvas.draw_texture_rect(texture,destination,false,tint)
+	else:draw_submerged_texture(canvas,texture,destination,Rect2(Vector2.ZERO,natural),tint,water,water_rotation,wet_modulate)
+
+static func draw_submerged_texture(canvas: CanvasItem, texture: Texture2D, destination: Rect2, source: Rect2, tint: Color, water: float, water_rotation := 0.0, wet_modulate := Color.TRANSPARENT) -> void:
+	if water<=0.001:
+		canvas.draw_texture_rect_region(texture,destination,source,tint)
+		return
+	# Clip in floor/world axes, then undo the artwork's draw rotation. A sideways
+	# source (the sub and intake pipe) must still have a horizontal waterline.
+	var points:=PackedVector2Array([destination.position,Vector2(destination.end.x,destination.position.y),destination.end,Vector2(destination.position.x,destination.end.y)])
+	var bottom: float=-INF
+	for point in points:bottom=maxf(bottom,point.rotated(water_rotation).y)
+	var line:=bottom-water*76.0
+	var wet_tint:=tint*Color(.36,.57,.60,lerpf(.58,.28,clampf(water,0,1)))
+	if wet_modulate.a>0.0: wet_tint=tint*wet_modulate
+	for wet in [false,true]:
+		var clipped:=water_clip(points,line,water_rotation,wet)
+		if clipped.size()<3:continue
+		var uv:=PackedVector2Array()
+		for point in clipped:uv.append((source.position+(point-destination.position)/destination.size*source.size)/Vector2(texture.get_size()))
+		canvas.draw_polygon(clipped,PackedColorArray([wet_tint if wet else tint]),uv,texture)
+
+static func water_clip(points: PackedVector2Array,line: float,angle: float,wet: bool) -> PackedVector2Array:
+	var output:=PackedVector2Array()
+	for i in range(points.size()):
+		var a: Vector2=points[i];var b: Vector2=points[(i+1)%points.size()]
+		var ay:=a.rotated(angle).y-line;var by:=b.rotated(angle).y-line
+		var a_inside: bool=ay>=0 if wet else ay<=0
+		var b_inside: bool=by>=0 if wet else by<=0
+		if a_inside:output.append(a)
+		if a_inside!=b_inside:output.append(a.lerp(b,ay/(ay-by)))
+	return output
 
 static func wall_bank_raster_size(native: Vector2i) -> Vector2i:
 	var factor: float = minf(1020.0 / float(native.x), 310.0 / float(native.y))
@@ -52,7 +84,7 @@ static func draw_features(canvas: CanvasItem, features: Array, room: Dictionary,
 	for feature in features:
 		var source: Rect2 = feature.rect
 		var center := source.get_center() if feature.get("fixed_position", false) else source.get_center().rotated(float(rotation) * PI * 0.5)
-		sprite(canvas, str(feature.path), Rect2(center - source.size * 0.5, source.size))
+		sprite(canvas, str(feature.path), Rect2(center - source.size * 0.5, source.size),Color.WHITE,float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0)))
 	canvas.draw_set_transform(rect.get_center(), float(rotation) * PI * 0.5, scale)
 
 static func feature_bounds(features: Array) -> Array[Rect2]:
@@ -116,6 +148,14 @@ static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color
 		for row in range(4):
 			for column in range(4):
 				canvas.draw_texture_rect(art_textures[floor_art], Rect2(-370 + column * 185, -370 + row * 185, 185, 185), false, Color(1, 1, 1, floor_opacity))
+	# Large floors are immediate artwork above the retained flood polygons.
+	# Apply peripheral water here, before walls and equipment, so it is visible
+	# across the whole room. Enclosed mission chambers retain their own water.
+	var flood: float=clampf(float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0)),0.0,1.0)
+	if flood>0.001:
+		var tint:=Color(0.17,0.43,0.43).lerp(Color(0.025,0.18,0.25),flood)
+		tint.a=lerpf(0.26,0.68,flood)
+		canvas.draw_rect(Rect2(-356,-356,712,712),tint)
 	var raised: bool = bool(room.get("raised_walls", true))
 	_draw_perimeter(canvas, room, wall_style, raised, rotation)
 	var port_open: Array = room.get("port_open", [])
@@ -126,7 +166,7 @@ static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color
 		var center: Vector2 = port_center(port).rotated(float(rotation) * PI * 0.5)
 		var open_amount: float = float(port_open[port_index]) if port_index < port_open.size() else 0.0
 		_draw_station_port(canvas, center, facing, floor_color, raised and facing == "north", str(DOOR_STYLES.get(str(room.get("id", "")), "default")), open_amount)
-	if room.has("ocean_side"):
+	if room.has("ocean_side") and not room.get("custom_ocean_gate",false):
 		_draw_ocean_face(canvas, rotated_side(str(room.ocean_side), rotation), bool(room.get("moonbay_mission",{}).get("ocean_open",false)), raised, str(room.get("id", "")) == "moonbay")
 	canvas.draw_set_transform(rect.get_center(), float(rotation) * PI * 0.5, scale)
 

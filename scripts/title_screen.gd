@@ -9,8 +9,6 @@ const RunSave := preload("res://scripts/run_save.gd")
 var continue_button: Button
 var settings_button: Button
 var run_save_path := RunSave.PATH
-const CODEX_BADGE := preload("res://brineui/title/codex-badge.svg")
-const PROGRESSION_BADGE := preload("res://brineui/title/progression-badge.svg")
 
 var cover: Control
 var controls: VBoxContainer
@@ -39,7 +37,7 @@ func _ready() -> void:
 	preload("res://scripts/station_music.gd").ensure(self)
 	get_window().min_size = Vector2i(960, 540)
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	var ui_theme := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
+	var ui_theme := ButtonStyle.menu_theme()
 	theme = ui_theme
 	var background := ColorRect.new()
 	background.color = Color("07151f")
@@ -127,6 +125,7 @@ func _ready() -> void:
 	add_child(quit_button)
 	quit_button.pressed.connect(func() -> void: preload("res://scripts/audio_shutdown.gd").request(self))
 	settings_button = _button("SETTINGS", false)
+	settings_button.icon = null
 	controls.remove_child(settings_button)
 	add_child(settings_button)
 	settings_button.pressed.connect(func() -> void: _open_archive("settings", settings_button))
@@ -193,7 +192,7 @@ func _button(caption: String, primary: bool) -> Button:
 	controls.add_child(button)
 	return button
 
-# Mouse use hides focus outlines; keys and controllers bring them back.
+# Preserve keyboard/controller navigation state; buttons use brightness, not selection outlines.
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		ButtonStyle.set_keyboard_navigation(false)
@@ -263,7 +262,7 @@ func _badge(caption: String, icon_path: String, detail: String) -> Button:
 	box.offset_top = 16
 	box.offset_bottom = -16
 	box.alignment = BoxContainer.ALIGNMENT_CENTER
-	var icon = preload("res://scripts/navigation_badge.gd").create("codex" if icon_path.ends_with("codex-badge.svg") else "archive")
+	var icon = preload("res://scripts/navigation_badge.gd").create("codex" if caption == "CODEX" else "archive")
 	icon.custom_minimum_size = Vector2(80, 80)
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_child(icon)
@@ -273,7 +272,8 @@ func _badge(caption: String, icon_path: String, detail: String) -> Button:
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		label.add_theme_font_size_override("font_size", 17 if text == caption else 15)
-		label.add_theme_color_override("font_color", Color("bde8eb") if text == caption else Color("759ca9"))
+		if text == caption: label.add_theme_font_override("font", preload("res://scripts/ui_fonts.gd").interface_bold())
+		label.add_theme_color_override("font_color", Color("e0dfcf") if text == caption else Color("759ca9"))
 		box.add_child(label)
 		if text == detail:
 			button.set_meta("detail_label", label)

@@ -84,7 +84,7 @@ func start(action: String) -> void:
 			if moonbay.is_empty(): moonbay = {"phase": "seal", "progress": 0.0, "chamber_water": 0.0, "station_open": false, "ocean_open": false}
 		"sub_back":
 			if not moonbay.is_empty() and str(moonbay.phase) in ["outbound", "launch"]:
-				moonbay = {"phase": "return", "progress": 0.0, "chamber_water": 1.0, "station_open": false, "ocean_open": false}
+				moonbay = {"phase": "return", "progress": 0.0, "chamber_water": 0.0, "station_open": false, "ocean_open": false}
 		"fire": fire = 0.3
 		"flood": flood = maxf(flood, 0.01)
 		"clear": clear()
@@ -135,20 +135,29 @@ func tidal_state() -> Dictionary:
 # gate closes on its return and the chamber drains.
 func _step_moonbay(delta: float) -> void:
 	var state := moonbay
-	if str(state.phase) == "outbound": return
+	state["cycle_clock"]=float(state.get("cycle_clock",0.0))+delta
+	if str(state.phase) == "outbound":
+		state.progress=float(state.progress)+delta
+		state.chamber_water=maxf(0,float(state.chamber_water)-delta/6.0)
+		return
 	state.progress = float(state.progress) + delta
 	var duration := SUB_RETURN_SECONDS if str(state.phase) == "return" else float(Moonbay.DURATIONS.get(state.phase, 1.0))
 	var fraction := clampf(float(state.progress) / duration, 0.0, 1.0)
 	if state.phase == "flood": state.chamber_water = fraction
-	if state.phase == "drain": state.chamber_water = 1.0 - fraction
+	if state.phase == "disembark": state.chamber_water = fraction
+	if state.phase == "drain": state.chamber_water = 1.0-clampf((float(state.progress)-0.8)/(duration-0.8),0,1)
 	if float(state.progress) < duration: return
 	state.progress = 0.0
 	match str(state.phase):
 		"seal": state.phase = "flood"
-		"flood": state.phase = "launch"; state.chamber_water = 1.0; state.ocean_open = true
+		"flood": state.phase = "boarding"; state.chamber_water = 1.0
+		"boarding": state.phase = "launch"; state.ocean_open = true
 		"launch": state.phase = "outbound"; state.ocean_open = false
-		"return": state.phase = "drain"; state.ocean_open = false
-		"drain": moonbay = {}
+		"return": state.phase = "disembark"; state.chamber_water = 0.0; state.ocean_open = false
+		"disembark": state.phase = "exit_bay"; state.chamber_water = 1.0
+		"exit_bay": state.phase = "drain"
+		"drain": state.phase = "unload"; state.chamber_water = 0.0; state.station_open = true
+		"unload": moonbay = {}
 
 # airlock_cycle.advance() needs a running game with a serviced airlock; the Studio steps
 # the same phase table directly, holding at the open outer hatch or the dry chamber.

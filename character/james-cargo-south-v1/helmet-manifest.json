@@ -1,0 +1,220 @@
+{
+  "name": "James south cargo carry helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_owner_accepted_south_cargo_v1",
+  "strideDistanceCells": {
+    "carry-south": 0.0827027027027027
+  },
+  "states": [
+    {
+      "id": "pickup-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/helmet/pickup-south/000.png",
+        "frames/helmet/pickup-south/001.png",
+        "frames/helmet/pickup-south/002.png",
+        "frames/helmet/pickup-south/003.png",
+        "frames/helmet/pickup-south/004.png",
+        "frames/helmet/pickup-south/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-pickup-case-v2.png",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "fixedScale": 0.2624113475177305,
+        "registration": "Fixed source floor; front head horizontal camera registration",
+        "derivation": "Independent pickup; exact reversed unloading; idle and carry endpoints selected pixels",
+        "matte": "Fixed south master-matte-v2 material pipeline; head protected"
+      }
+    },
+    {
+      "id": "carry-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/helmet/000.png",
+        "frames/helmet/001.png",
+        "frames/helmet/002.png",
+        "frames/helmet/003.png",
+        "frames/helmet/004.png",
+        "frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "walkingGuideSourceFrames": [
+          0,
+          13,
+          25,
+          38,
+          51,
+          63
+        ],
+        "direction": "Independent south view",
+        "palette": "Fixed master-matched hardware highlight compression and gold calibration; head protected"
+      }
+    },
+    {
+      "id": "unload-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/helmet/unload-south/000.png",
+        "frames/helmet/unload-south/001.png",
+        "frames/helmet/unload-south/002.png",
+        "frames/helmet/unload-south/003.png",
+        "frames/helmet/unload-south/004.png",
+        "frames/helmet/unload-south/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-pickup-case-v2.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "fixedScale": 0.2624113475177305,
+        "registration": "Fixed source floor; front head horizontal camera registration",
+        "derivation": "Independent pickup; exact reversed unloading; idle and carry endpoints selected pixels",
+        "matte": "Fixed south master-matte-v2 material pipeline; head protected"
+      }
+    }
+  ]
+}

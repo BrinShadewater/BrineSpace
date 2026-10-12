@@ -50,7 +50,9 @@ static func cancel(game,cell: Vector2i) -> bool:
 	var job: Dictionary=room.leak_repair
 	if not str(job.worker).is_empty():
 		var actor=Architects.actor_for(game,job.worker)
-		if actor.goal=="hull-repair": release(actor)
+		if actor.goal=="hull-repair":
+			if actor.has_method("prepare_hull_return"):actor.prepare_hull_return(game)
+			release(actor)
 	# Used patch material is consumed; unstarted orders refund in full.
 	var refund := int(floor(float(job.cost)*(1.0-float(job.progress)/float(job.duration))))
 	game.resources.metal+=refund
@@ -63,9 +65,12 @@ static func reassign(game,cell: Vector2i,id: String) -> bool:
 	var room: Dictionary=game.occupied[cell]
 	if not room.has("leak_repair"): return false
 	var job: Dictionary=room.leak_repair
+	if str(job.worker)==id:return true # Selecting the current worker preserves their live pose.
 	if not str(job.worker).is_empty():
 		var actor=Architects.actor_for(game,job.worker)
-		if actor.goal=="hull-repair": release(actor)
+		if actor.goal=="hull-repair":
+			if actor.has_method("prepare_hull_return"):actor.prepare_hull_return(game)
+			release(actor)
 	job.worker=""
 	job.preferred=id
 	job.status="Waiting for assigned crew"
@@ -88,6 +93,7 @@ static func air_needed(room: Dictionary,job: Dictionary,travel: float,drain := 0
 	return exposure+maxf(3,recovery)
 
 static func release(actor) -> void:
+	if actor.has_method("finish_hull_animation"):actor.finish_hull_animation()
 	actor.goal=""
 	actor.path.clear()
 	actor.state="idle"
@@ -204,9 +210,11 @@ static func advance(game,actor,dt: float) -> bool:
 		job.status="Welding"
 		var local_work: Vector2=Vector2(job.point)-(Vector2(room.pos)+Vector2.ONE*0.5)*384
 		actor.direction=("west" if local_work.x<0 else "east") if absf(local_work.x)>absf(local_work.y) else ("north" if local_work.y<0 else "south")
-		actor.state="weld" if actor.movement_medium=="dry" and not actor.helmet_equipped else "repair"
+		actor.state="weld" if actor.movement_medium=="dry" and (not actor.helmet_equipped or actor.has_method("sync_hull_animation")) else "repair"
 		actor.activity="sealing hull / %d%%" % roundi(float(job.progress)/float(job.duration)*100)
+		if actor.has_method("advance_hull_resume") and actor.advance_hull_resume(game,job,dt):return true
 		job.progress=minf(job.duration,float(job.progress)+dt*preload("res://scripts/companion_repair.gd").multiplier(game,room.pos)*preload("res://scripts/research_tree.gd").hull_repair_rate(game.get("meta")))
+		if actor.has_method("sync_hull_animation"):actor.sync_hull_animation(job)
 		if job.progress>=job.duration:
 			var patched: bool=job.get("patch",false)
 			if patched:

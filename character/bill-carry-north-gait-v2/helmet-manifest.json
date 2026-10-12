@@ -1,0 +1,54 @@
+{
+  "name": "Bill North articulated alternating carry stride candidate",
+  "status": "staged_visual_review",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "standingHeight": 148,
+  "pivot": [
+    128,
+    224
+  ],
+  "textureFilter": "linear",
+  "precomposed": true,
+  "strideDistanceCells": {
+    "carry": 0.12
+  },
+  "states": [
+    {
+      "id": "carry-north",
+      "frameFiles": [
+        "res://character/bill-carry-north-gait-v2/frames/helmet/carry-north/000.png",
+        "res://character/bill-carry-north-gait-v2/frames/helmet/carry-north/001.png",
+        "res://character/bill-carry-north-gait-v2/frames/helmet/carry-north/002.png",
+        "res://character/bill-carry-north-gait-v2/frames/helmet/carry-north/003.png",
+        "res://character/bill-carry-north-gait-v2/frames/helmet/carry-north/004.png",
+        "res://character/bill-carry-north-gait-v2/frames/helmet/carry-north/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ]
+}

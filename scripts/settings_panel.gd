@@ -6,6 +6,7 @@ extends VBoxContainer
 
 const Preferences = preload("res://scripts/title_settings.gd")
 const Style = preload("res://scripts/title_button_style.gd")
+const Widgets = preload("res://scripts/ui_widgets.gd")
 signal preferences_changed
 const PAGES := ["DISPLAY", "AUDIO", "CONTROLS & PAUSE", "ACCESSIBILITY"]
 const PAGE_HINTS := {
@@ -15,7 +16,7 @@ const PAGE_HINTS := {
 	"ACCESSIBILITY": "Readability, motion and on-screen guides.",
 }
 const PAGE_GLYPHS := {"DISPLAY": "▣", "AUDIO": "♪", "CONTROLS & PAUSE": "⌨", "ACCESSIBILITY": "◎"}
-const ACCENT := Color("5fd3c4")
+const ACCENT := Color("648d88")
 # Smallest interface text. At the default 1600x900 window the 1920x1080 layout is scaled by 0.83, so
 # anything under this reads under about 12 px on screen.
 const MIN_TEXT := 14
@@ -25,6 +26,7 @@ var pages := {}
 var tabs := {}
 var feedback: Label
 var display_dialog: ConfirmationDialog
+var display_message: Label
 var display_previous := {}
 var display_seconds := 0
 var display_timer: Timer
@@ -98,7 +100,7 @@ func _defaults(section: String) -> void:
 			# fullscreen player into a small 1600x900 window).
 			var window := get_window()
 			var default_size := DisplayServer.screen_get_size(window.current_screen)
-			var already: bool = Preferences.get_window_mode(window) == 1 and window.size == default_size and Preferences.fps_cap == 0 and Preferences.effects_quality == 1 and DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
+			var already: bool = Preferences.get_window_mode(window) == 1 and window.size == default_size and Preferences.fps_cap == 0 and Preferences.effects_quality == 1 and not Preferences.auto_graphics and DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED
 			if already:
 				feedback.text = "DISPLAY IS ALREADY AT ITS DEFAULTS."
 				feedback.show()
@@ -108,6 +110,7 @@ func _defaults(section: String) -> void:
 				Preferences.apply_window_mode(window, 1, false)
 				Preferences.fps_cap = 0
 				Preferences.effects_quality = 1
+				Preferences.auto_graphics = false
 				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 			)
 			return
@@ -141,8 +144,8 @@ func _preview_display(action: Callable) -> void:
 	display_dialog.exclusive = true
 	display_dialog.dialog_close_on_escape = true
 	display_dialog.theme = Style.menu_theme()
-	display_dialog.theme.set_stylebox("panel", "AcceptDialog", Style._flat("10232e", "76b8c4", 20))
-	var border := Style._flat("10232e", "76b8c4", 12)
+	display_dialog.theme.set_stylebox("panel", "AcceptDialog", Style._flat("10232e", "596664", 20))
+	var border := Style._flat("10232e", "596664", 12)
 	border.expand_margin_top = 32
 	display_dialog.theme.set_stylebox("embedded_border", "Window", border)
 	display_dialog.theme.set_font_size("title_font_size", "Window", 20)
@@ -154,6 +157,12 @@ func _preview_display(action: Callable) -> void:
 		button.add_theme_font_size_override("font_size", 20)
 	display_dialog.confirmed.connect(_keep_display)
 	display_dialog.canceled.connect(_revert_display)
+	var confirmation := Widgets.confirmation("KEEP DISPLAY CHANGES?","Reverting in 15 seconds.","KEEP CHANGES","REVERT")
+	confirmation.name = "DisplayConfirmation"
+	# Native dialog buttons retain Enter/Escape and window focus handling.
+	confirmation.get_node("Body/Actions").hide()
+	display_message = confirmation.get_node("Body").get_child(1)
+	display_dialog.add_child(confirmation)
 	add_child(display_dialog)
 	display_timer = Timer.new()
 	display_timer.wait_time = 1.0
@@ -163,12 +172,15 @@ func _preview_display(action: Callable) -> void:
 			return
 		display_seconds -= 1
 		display_dialog.dialog_text = "Keep this display configuration?\nReverting in %d seconds." % display_seconds
+		display_message.text = "Reverting in %d seconds." % display_seconds
+		display_dialog.get_label().hide()
 		if display_seconds <= 0:
 			_revert_display()
 	)
 	display_dialog.add_child(display_timer)
 	display_dialog.dialog_text = "Keep this display configuration?\nReverting in 15 seconds."
 	display_dialog.popup_centered(Vector2i(680, 230))
+	display_dialog.get_label().hide()
 	display_timer.start()
 	display_dialog.get_cancel_button().grab_focus()
 
@@ -290,6 +302,13 @@ func _ready() -> void:
 	)
 	_select(display, "EffectsQuality", "Visual effects", "Light shafts, caustics, drifting particles, colour grading and bloom. High adds the full grade and bloom. Lower this on slower computers.", ["Low", "Medium", "High"], Preferences.effects_quality, func(index: int) -> void:
 		Preferences.effects_quality = index
+		Preferences.auto_graphics = false
+		_rebuild.call_deferred()
+	)
+	_toggle(display, "AutoGraphics", "Auto-detect graphics", "Choose visual effects for this computer now and at startup. Selecting Low, Medium or High overrides automatic detection.", Preferences.auto_graphics, func(enabled: bool) -> void:
+		Preferences.auto_graphics = enabled
+		if enabled: Preferences.effects_quality = Preferences.detect_graphics()
+		_rebuild.call_deferred()
 	)
 	var caps := [0, 30, 60, 120, 144, 240]
 	_select(display, "FrameLimit", "Frame-rate limit", "V-sync can limit the frame rate further.", ["Unlimited", "30 FPS", "60 FPS", "120 FPS", "144 FPS", "240 FPS"], caps.find(Preferences.fps_cap), func(index: int) -> void:
@@ -484,33 +503,8 @@ func _toggle(parent: Control, id: String, title: String, hint: String, value: bo
 	return button
 
 # Clearly visible pill switches (the default dark switch disappeared when off).
-static var switch_icons := {}
 static func _switch_icon(on: bool) -> Texture2D:
-	if switch_icons.has(on): return switch_icons[on]
-	var scale := 3
-	var width := 52 * scale
-	var height := 28 * scale
-	var radius := 13.5 * scale
-	var image := Image.create(width, height, false, Image.FORMAT_RGBA8)
-	var track := Color("1d7d74") if on else Color("2c454e")
-	var edge := Color("49b6ab") if on else Color("5d7a84")
-	var knob := Color("dff7f3") if on else Color("9fb4bb")
-	var knob_center := Vector2(width - radius, height * 0.5) if on else Vector2(radius, height * 0.5)
-	for x in range(width):
-		for y in range(height):
-			var p := Vector2(x + 0.5, y + 0.5)
-			var nearest := Vector2(clampf(p.x, radius, width - radius), height * 0.5)
-			var d := p.distance_to(nearest)
-			var color := Color(0, 0, 0, 0)
-			# One pixel of coverage at the rim keeps the edge smooth when the icon is scaled down.
-			if d <= radius: color = edge if d > radius - 1.6 * scale else track
-			var knob_distance := p.distance_to(knob_center)
-			if knob_distance <= radius - 3.0 * scale: color = knob
-			if d > radius and d < radius + 1.0: color = Color(edge, 0.45)
-			image.set_pixel(x, y, color)
-	var texture := ImageTexture.create_from_image(image)
-	switch_icons[on] = texture
-	return texture
+	return preload("res://scripts/ui_widgets.gd").switch_texture(on)
 
 func _select(parent: Control, id: String, title: String, hint: String, captions: Array[String], index: int, action: Callable) -> OptionButton:
 	var line := _row(parent, title, hint)

@@ -1,0 +1,438 @@
+{
+  "name": "James North left-cup sip continuity",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "selected_production_native_verified_owner_review_pending",
+  "states": [
+    {
+      "id": "drink-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/000.png",
+        "frames/001.png",
+        "frames/002.png",
+        "frames/003.png",
+        "frames/004.png",
+        "frames/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        450,
+        850,
+        400,
+        600
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink",
+        "drink"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "independentFacing": "north",
+        "fixedScale": 0.38642297650130547,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          6
+        ],
+        "materialGain": [
+          0.907,
+          1.0,
+          1.152
+        ],
+        "derivation": "Independent meal source at one fixed scale; translated by source foot anchor, no per-frame resizing; exact shared neutral loop endpoint"
+      }
+    },
+    {
+      "id": "meal-return-drink-0-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/000.png",
+        "res://character/james-cup-pickup-north-v1/selected/004.png",
+        "res://character/james-cup-pickup-north-v1/selected/003.png",
+        "res://character/james-cup-pickup-north-v1/selected/002.png",
+        "res://character/james-cup-pickup-north-v1/selected/001.png",
+        "res://character/james-cup-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "sourceAction": "drink",
+        "sourceIndex": 0,
+        "derivation": "Exact selected left-cup current pose, reverse whole sip prefix to original held endpoint, unchanged cup deposit tail; no limb splice/mirror."
+      }
+    },
+    {
+      "id": "meal-return-drink-1-north",
+      "frameCount": 7,
+      "frameFiles": [
+        "frames/001.png",
+        "frames/000.png",
+        "res://character/james-cup-pickup-north-v1/selected/004.png",
+        "res://character/james-cup-pickup-north-v1/selected/003.png",
+        "res://character/james-cup-pickup-north-v1/selected/002.png",
+        "res://character/james-cup-pickup-north-v1/selected/001.png",
+        "res://character/james-cup-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "sourceAction": "drink",
+        "sourceIndex": 1,
+        "derivation": "Exact selected left-cup current pose, reverse whole sip prefix to original held endpoint, unchanged cup deposit tail; no limb splice/mirror."
+      }
+    },
+    {
+      "id": "meal-return-drink-2-north",
+      "frameCount": 8,
+      "frameFiles": [
+        "frames/002.png",
+        "frames/001.png",
+        "frames/000.png",
+        "res://character/james-cup-pickup-north-v1/selected/004.png",
+        "res://character/james-cup-pickup-north-v1/selected/003.png",
+        "res://character/james-cup-pickup-north-v1/selected/002.png",
+        "res://character/james-cup-pickup-north-v1/selected/001.png",
+        "res://character/james-cup-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "sourceAction": "drink",
+        "sourceIndex": 2,
+        "derivation": "Exact selected left-cup current pose, reverse whole sip prefix to original held endpoint, unchanged cup deposit tail; no limb splice/mirror."
+      }
+    },
+    {
+      "id": "meal-return-drink-3-north",
+      "frameCount": 9,
+      "frameFiles": [
+        "frames/003.png",
+        "frames/002.png",
+        "frames/001.png",
+        "frames/000.png",
+        "res://character/james-cup-pickup-north-v1/selected/004.png",
+        "res://character/james-cup-pickup-north-v1/selected/003.png",
+        "res://character/james-cup-pickup-north-v1/selected/002.png",
+        "res://character/james-cup-pickup-north-v1/selected/001.png",
+        "res://character/james-cup-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "sourceAction": "drink",
+        "sourceIndex": 3,
+        "derivation": "Exact selected left-cup current pose, reverse whole sip prefix to original held endpoint, unchanged cup deposit tail; no limb splice/mirror."
+      }
+    },
+    {
+      "id": "meal-return-drink-4-north",
+      "frameCount": 10,
+      "frameFiles": [
+        "frames/004.png",
+        "frames/003.png",
+        "frames/002.png",
+        "frames/001.png",
+        "frames/000.png",
+        "res://character/james-cup-pickup-north-v1/selected/004.png",
+        "res://character/james-cup-pickup-north-v1/selected/003.png",
+        "res://character/james-cup-pickup-north-v1/selected/002.png",
+        "res://character/james-cup-pickup-north-v1/selected/001.png",
+        "res://character/james-cup-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "sourceAction": "drink",
+        "sourceIndex": 4,
+        "derivation": "Exact selected left-cup current pose, reverse whole sip prefix to original held endpoint, unchanged cup deposit tail; no limb splice/mirror."
+      }
+    },
+    {
+      "id": "meal-return-drink-5-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/005.png",
+        "res://character/james-cup-pickup-north-v1/selected/004.png",
+        "res://character/james-cup-pickup-north-v1/selected/003.png",
+        "res://character/james-cup-pickup-north-v1/selected/002.png",
+        "res://character/james-cup-pickup-north-v1/selected/001.png",
+        "res://character/james-cup-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "sourceAction": "drink",
+        "sourceIndex": 5,
+        "derivation": "Exact selected left-cup current pose, reverse whole sip prefix to original held endpoint, unchanged cup deposit tail; no limb splice/mirror."
+      }
+    }
+  ]
+}

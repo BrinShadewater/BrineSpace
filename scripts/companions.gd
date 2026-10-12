@@ -16,6 +16,18 @@ const PORTRAIT_PATHS := {
 	"margot": "res://character/portraits-brine-style-v1/margot.png"
 }
 static var container_textures := {}
+const CRYO_MASTER_PATHS := {
+	"margot-human-a":"res://character/cryo-ward-layered-v5/frames/broken-human-a.png",
+	"margot-human-b":"res://character/cryo-ward-layered-v5/frames/broken-human-b.png",
+}
+const ENCOUNTER_PATHS := {
+	"margot-closed":"res://character/companions/encounters/margot-closed.png",
+	"margot-open":"res://character/companions/encounters/margot-open.png",
+	"josh-closed":"res://character/companions/encounters/josh-closed.png",
+	"josh-open":"res://character/companions/encounters/josh-open.png",
+	"river-closed":"res://character/companions/encounters/river-closed.png",
+	"river-open":"res://character/companions/encounters/river-open.png",
+}
 const CONTAINER_FOOT := Vector2(90,60)
 # The container is drawn at half size (owner, Sept 29): the old 94x64 rect scaled by 0.5 about its foot at (90,60).
 const CONTAINER_RECT := Rect2(67,34,47,32)
@@ -45,16 +57,31 @@ static func recovery_props(id: String, recovered := false) -> Array:
 	return [
 		{"id":"margot-human-a","rect":Rect2(-134,-127,68,116),"position":Vector2(-100,-15)},
 		{"id":"margot-human-b","rect":Rect2(61,-127,68,116),"position":Vector2(95,-15)},
-		{"id":"margot-open" if recovered else "margot-closed","rect":Rect2(56,65,38,64),"position":Vector2(75,125)}]
+		{"id":"margot-open" if recovered else "margot-closed","rect":Rect2(56,53,38,76),"position":Vector2(75,125)}]
 
 static func prop_texture(key: String) -> Texture2D:
 	if not container_textures.has(key):
 		var img := Image.new()
-		if img.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/companions/encounters/"+key+".png"))!=OK:return null
+		var path: String=CRYO_MASTER_PATHS.get(key,ENCOUNTER_PATHS.get(key,""))
+		if path.is_empty():return null
+		if img.load_png_from_buffer(FileAccess.get_file_as_bytes(path))!=OK:return null
 		var texture := ImageTexture.create_from_image(img)
 		texture.set_meta("crew_frame_92",true);texture.set_meta("crew_pivot",Vector2(80,144))
+		if CRYO_MASTER_PATHS.has(key):
+			texture.set_meta("crew_pivot",Vector2(256,448));texture.set_meta("crew_standing_height",148.0)
 		container_textures[key]=texture
 	return container_textures[key]
+
+static func margot_pod_texture(game, cell: Vector2i) -> Texture2D:
+	var site: Dictionary=game.wrecks[cell]
+	var actor=game.companion_actors.margot
+	if site.opened and not actor.room_nodes.has(cell):
+		actor.room_cache=game.bill_npc.room_cache
+		actor.rebuild(game)
+	var point: Variant=spawn_point(actor,cell)
+	var origin: Vector2=(Vector2(cell)+Vector2.ONE*0.5)*384.0+preload("res://scripts/margot_cryo_art.gd").FOOT
+	var offset:=Vector2(0,28) if point==null else Vector2(point)-origin
+	return preload("res://scripts/margot_cryo_art.gd").texture(actor,float(site.boot),bool(site.opened),bool(site.recovered),offset,game.Preferences.reduced_motion)
 
 static func portrait(id: String) -> Texture2D:
 	if not IDS.has(id):return null
@@ -128,13 +155,14 @@ static func spawn(game, id: String, cell: Vector2i) -> bool:
 	var point: Variant=spawn_point(actor,cell)
 	if point==null:return false
 	actor.foot=point;actor.active=true;actor.arrive()
-	if id!="margot":actor.direction="south"
+	if id!="margot" or is_site(game,cell):actor.direction="south"
 	if id=="river" and not is_site(game,cell):actor.start_behavior("boot")
 	return true
 
 static func spawn_point(actor, cell: Vector2i) -> Variant:
 	var nodes: Array=actor.room_nodes.get(cell,[]).duplicate()
-	var emergence := (Vector2(cell)+Vector2.ONE*0.5)*384.0+CONTAINER_FOOT+Vector2(0,40)
+	var local_foot:=preload("res://scripts/margot_cryo_art.gd").FOOT+Vector2(0,28) if actor.identity=="margot" else CONTAINER_FOOT+Vector2(0,40)
+	var emergence := (Vector2(cell)+Vector2.ONE*0.5)*384.0+local_foot
 	nodes.sort_custom(func(a,b):return actor.graph.get_point_position(a).distance_squared_to(emergence)<actor.graph.get_point_position(b).distance_squared_to(emergence))
 	for node in nodes:
 		var point: Vector2=actor.graph.get_point_position(node)

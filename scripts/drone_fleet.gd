@@ -13,6 +13,7 @@ const RoomDatabaseScript = preload("res://scripts/room_database.gd")
 var sites: Dictionary = {}
 var sites_initialized := false
 var route_blockers: Dictionary = {}
+var failed_routes: Dictionary = {} # Per-fleet topology epoch; never saved.
 var power_spent := 0
 var drones: Dictionary = {}
 var orders: Array = []
@@ -60,6 +61,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 	# Drones travel beneath the station (owner playtest: a bay without a matching door sealed its
 	# drone outside), so rooms never block a route; they already draw below every floor. Rock,
 	# wrecks, deposits and queued construction still do.
+	var previous_blockers := route_blockers
 	route_blockers = {}
 	for cell in wrecks:
 		if preload("res://scripts/wreck_field.gd").blocks(wrecks,cell): route_blockers[cell] = true
@@ -70,6 +72,8 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 	for worker in drones.values():
 		if not worker.order.is_empty():
 			for cell in _order_cells(worker.order): route_blockers[cell] = true
+	# Compare contents, not dictionary identity: the map is rebuilt each advance.
+	if not failed_routes.is_empty() and route_blockers != previous_blockers: failed_routes.clear()
 	clearance_seconds.clear()
 	delivered.clear()
 	power_spent = 0
@@ -118,7 +122,7 @@ func advance(delta: float, rooms: Array, powered: Dictionary, wrecks: Dictionary
 			if extractor and drone.phase == "docked" and suspended.has(home): break
 			if drone.phase in ["outbound","returning"]:
 				var goal: Vector2i = drone.home if drone.phase == "returning" else Vector2i(drone.target)
-				remaining = Routes.travel(drone,remaining*travel_rate,goal,route_blockers)/travel_rate
+				remaining = Routes.travel(drone,remaining*travel_rate,goal,route_blockers,failed_routes)/travel_rate
 				if drone.get("route_wait",false) or not Vector2(drone.position).is_equal_approx(Vector2(goal)): break
 				drone.phase = "docking" if drone.phase == "returning" else "working"
 				drone.elapsed = 0.0
@@ -585,6 +589,7 @@ static func valid(value: Variant, rooms: Array) -> bool:
 	return true
 
 func restore(value: Variant) -> void:
+	failed_routes.clear()
 	drones = {} if value == null else value.drones.duplicate(true)
 	orders = [] if value == null else value.orders.duplicate(true)
 	sites_initialized = value != null and value.has("sites")

@@ -1,0 +1,153 @@
+{
+  "name": "Bill East master pickup/unload",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {},
+  "precomposed": true,
+  "status": "provisional_unselected",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/000.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/001.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/002.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/003.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/004.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/005.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/006.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/007.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/008.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/009.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/pickup-east/010.png"
+      ],
+      "frameDurationsMs": [
+        35,
+        35,
+        40,
+        40,
+        45,
+        45,
+        50,
+        50,
+        50,
+        65,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "Whole built-in image edits preserving original cargo pose and520ms action; identical original endpoints share one repaired whole source."
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/unload-east/000.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/unload-east/001.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/unload-east/002.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/unload-east/003.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/unload-east/004.png",
+        "res://character/bill-east-cargo-handoffs-master-v1/frames/unload-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "Whole built-in image edits preserving original cargo pose and520ms action; identical original endpoints share one repaired whole source."
+    }
+  ],
+  "integration": "selected_by_grid_canvas_native_frame_clock_checked_2026_09_30"
+}

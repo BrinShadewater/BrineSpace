@@ -135,11 +135,13 @@ func discover_synergy(id: String) -> bool:
 	save_to_disk()
 	return true
 
-func stabilize_synergy(id: String) -> bool:
+func stabilize_synergy(id: String, research_points := 0) -> bool:
 	if stabilized_synergy_ids.has(id):
 		return false
 	stabilized_synergy_ids[id] = true
 	unread_records["synergy:" + id] = true
+	# Persist the pattern and its award together, with one protected disk write.
+	total_research_points += maxi(research_points, 0)
 	save_to_disk()
 	return true
 

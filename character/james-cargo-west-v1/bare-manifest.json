@@ -1,0 +1,220 @@
+{
+  "name": "James west cargo carry bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_owner_accepted_west_cargo_v1",
+  "strideDistanceCells": {
+    "carry-west": 0.07351351351351351
+  },
+  "states": [
+    {
+      "id": "pickup-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/pickup-west/000.png",
+        "frames/bare/pickup-west/001.png",
+        "frames/bare/pickup-west/002.png",
+        "frames/bare/pickup-west/003.png",
+        "frames/bare/pickup-west/004.png",
+        "frames/bare/pickup-west/005.png"
+      ],
+      "frameDurationsMs": [
+        70,
+        80,
+        90,
+        100,
+        100,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-pickup-v1.png",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "fixedScale": 0.30390143737166325,
+        "registration": "Fixed source floor; planted rear boot horizontal camera registration",
+        "derivation": "Independent pickup; exact reversed unloading; idle and carry endpoints selected pixels",
+        "matte": "Fixed east-matte-v2 curve, once; warm and yellow protected"
+      }
+    },
+    {
+      "id": "carry-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/000.png",
+        "frames/bare/001.png",
+        "frames/bare/002.png",
+        "frames/bare/003.png",
+        "frames/bare/004.png",
+        "frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-pose-guide-v2.png",
+        "walkingGuideSourceFrames": [
+          0,
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "direction": "Independent west view",
+        "palette": "Fixed accepted east matte-v2 curve; skin/hair/yellow protected"
+      }
+    },
+    {
+      "id": "unload-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/unload-west/000.png",
+        "frames/bare/unload-west/001.png",
+        "frames/bare/unload-west/002.png",
+        "frames/bare/unload-west/003.png",
+        "frames/bare/unload-west/004.png",
+        "frames/bare/unload-west/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        100,
+        100,
+        90,
+        80,
+        70
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source-pickup-v1.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "fixedScale": 0.30390143737166325,
+        "registration": "Fixed source floor; planted rear boot horizontal camera registration",
+        "derivation": "Independent pickup; exact reversed unloading; idle and carry endpoints selected pixels",
+        "matte": "Fixed east-matte-v2 curve, once; warm and yellow protected"
+      }
+    }
+  ]
+}

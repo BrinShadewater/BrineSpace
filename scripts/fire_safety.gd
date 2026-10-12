@@ -36,6 +36,10 @@ static func advance(game,actor,dt: float) -> bool:
 	if not actor.active or actor.dead or not actor.expedition.is_empty(): return false
 	var exposed: bool=actor.fire_cells.has(actor.cell_at(actor.foot))
 	if not exposed and actor.goal!="fire-retreat": return false
+	# An authored supported pose must reach its standing contact before routing.
+	# The actor hook advances only its finite rise; needs and world hazards keep
+	# their ordinary clocks. Actors without this motion retain the shared path.
+	if actor.has_method("advance_fire_rise") and actor.advance_fire_rise(game,dt):return true
 	if not exposed:
 		actor.goal="";actor.path.clear();actor.state="idle";actor.timer=1.0
 		actor.activity="clear of fire"

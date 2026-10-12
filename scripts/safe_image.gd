@@ -2,10 +2,14 @@ extends RefCounted
 ## Raw PNGs remain independent of editor imports. Failure always leaves a drawable image.
 static var failures: Dictionary = {}
 
-static func load_png(image: Image, path: String) -> Error:
+static func load_png(image: Image, path: String, fingerprint: bool = false) -> Error:
 	var prefetched: Image = preload("res://scripts/image_prefetch.gd").take(path)
 	if prefetched != null:
 		image.copy_from(prefetched)
+		if fingerprint and prefetched.has_meta("png_sha256"):
+			image.set_meta("png_sha256", prefetched.get_meta("png_sha256"))
+		elif fingerprint:
+			image.set_meta("png_sha256", FileAccess.get_sha256(path))
 		return OK
 	var file := FileAccess.open(path, FileAccess.READ)
 	var error := FileAccess.get_open_error() if file == null else OK
@@ -15,7 +19,9 @@ static func load_png(image: Image, path: String) -> Error:
 			error = ERR_FILE_CORRUPT
 		else:
 			error = image.load_png_from_buffer(bytes)
+			if fingerprint and error == OK: image.set_meta("png_sha256", preload("res://scripts/image_prefetch.gd").source_digest(bytes))
 	if error == OK and not image.is_empty():
+		preload("res://scripts/image_prefetch.gd").remember(path, image)
 		return OK
 	if error == OK: error = ERR_FILE_CORRUPT
 	if not failures.has(path):
@@ -52,6 +58,8 @@ static func raw_image(path: String) -> Image:
 		"png": error = image.load_png_from_buffer(bytes)
 		"jpg", "jpeg": error = image.load_jpg_from_buffer(bytes)
 		"webp": error = image.load_webp_from_buffer(bytes)
+	if error == OK and not image.is_empty() and path.get_extension().to_lower() == "png":
+		preload("res://scripts/image_prefetch.gd").remember(path, image)
 	return image if error == OK and not image.is_empty() else null
 
 static func placeholder() -> Image:

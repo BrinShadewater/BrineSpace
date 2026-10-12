@@ -1,0 +1,772 @@
+{
+  "name": "Bill helmet complete basic-swim turn matrix",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "installed_runtime_reviewed",
+  "states": [
+    {
+      "id": "swim-turn-east-south",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-east-south/000.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-east-south/001.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-east-south/002.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-east-south/003.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-east-south/004.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-south-east",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-south-east/000.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-south-east/001.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-south-east/002.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-south-east/003.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-south-east/004.png",
+        "../bill-swim-turn-helmet-east-south-v1/frames/swim-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-south-west",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-south-west/000.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-south-west/001.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-south-west/002.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-south-west/003.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-south-west/004.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-west-south",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-west-south/000.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-west-south/001.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-west-south/002.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-west-south/003.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-west-south/004.png",
+        "../bill-swim-turn-helmet-south-west-v1/frames/swim-turn-west-south/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-west-north",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-west-north/000.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-west-north/001.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-west-north/002.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-west-north/003.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-west-north/004.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-north-west",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-north-west/000.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-north-west/001.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-north-west/002.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-north-west/003.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-north-west/004.png",
+        "../bill-swim-turn-helmet-west-north-v1/frames/swim-turn-north-west/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-north-east",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-north-east/000.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-north-east/001.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-north-east/002.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-north-east/003.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-north-east/004.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-north-east/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-east-north",
+      "frameFiles": [
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-east-north/000.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-east-north/001.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-east-north/002.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-east-north/003.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-east-north/004.png",
+        "../bill-swim-turn-helmet-north-east-v1/frames/swim-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "reviewed cargo-independent prone-yaw shell components at exact native pixel scale;new basic swim bodies;exact equipped loop endpoints;reverse derived"
+    },
+    {
+      "id": "swim-turn-east-west",
+      "frameFiles": [
+        "frames/helmet/swim-turn-east-west/000.png",
+        "frames/helmet/swim-turn-east-west/001.png",
+        "frames/helmet/swim-turn-east-west/002.png",
+        "frames/helmet/swim-turn-east-west/003.png",
+        "frames/helmet/swim-turn-east-west/004.png",
+        "frames/helmet/swim-turn-east-west/005.png",
+        "frames/helmet/swim-turn-east-west/006.png",
+        "frames/helmet/swim-turn-east-west/007.png",
+        "frames/helmet/swim-turn-east-west/008.png",
+        "frames/helmet/swim-turn-east-west/009.png",
+        "frames/helmet/swim-turn-east-west/010.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        160,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "two clockwise authored quarters;exact common endpoint merged with combined hold;no mirroring or new raster art"
+    },
+    {
+      "id": "swim-turn-south-north",
+      "frameFiles": [
+        "frames/helmet/swim-turn-south-north/000.png",
+        "frames/helmet/swim-turn-south-north/001.png",
+        "frames/helmet/swim-turn-south-north/002.png",
+        "frames/helmet/swim-turn-south-north/003.png",
+        "frames/helmet/swim-turn-south-north/004.png",
+        "frames/helmet/swim-turn-south-north/005.png",
+        "frames/helmet/swim-turn-south-north/006.png",
+        "frames/helmet/swim-turn-south-north/007.png",
+        "frames/helmet/swim-turn-south-north/008.png",
+        "frames/helmet/swim-turn-south-north/009.png",
+        "frames/helmet/swim-turn-south-north/010.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        160,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "two clockwise authored quarters;exact common endpoint merged with combined hold;no mirroring or new raster art"
+    },
+    {
+      "id": "swim-turn-west-east",
+      "frameFiles": [
+        "frames/helmet/swim-turn-west-east/000.png",
+        "frames/helmet/swim-turn-west-east/001.png",
+        "frames/helmet/swim-turn-west-east/002.png",
+        "frames/helmet/swim-turn-west-east/003.png",
+        "frames/helmet/swim-turn-west-east/004.png",
+        "frames/helmet/swim-turn-west-east/005.png",
+        "frames/helmet/swim-turn-west-east/006.png",
+        "frames/helmet/swim-turn-west-east/007.png",
+        "frames/helmet/swim-turn-west-east/008.png",
+        "frames/helmet/swim-turn-west-east/009.png",
+        "frames/helmet/swim-turn-west-east/010.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        160,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "two clockwise authored quarters;exact common endpoint merged with combined hold;no mirroring or new raster art"
+    },
+    {
+      "id": "swim-turn-north-south",
+      "frameFiles": [
+        "frames/helmet/swim-turn-north-south/000.png",
+        "frames/helmet/swim-turn-north-south/001.png",
+        "frames/helmet/swim-turn-north-south/002.png",
+        "frames/helmet/swim-turn-north-south/003.png",
+        "frames/helmet/swim-turn-north-south/004.png",
+        "frames/helmet/swim-turn-north-south/005.png",
+        "frames/helmet/swim-turn-north-south/006.png",
+        "frames/helmet/swim-turn-north-south/007.png",
+        "frames/helmet/swim-turn-north-south/008.png",
+        "frames/helmet/swim-turn-north-south/009.png",
+        "frames/helmet/swim-turn-north-south/010.png"
+      ],
+      "frameDurationsMs": [
+        80,
+        110,
+        130,
+        130,
+        110,
+        160,
+        110,
+        130,
+        130,
+        110,
+        80
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "two clockwise authored quarters;exact common endpoint merged with combined hold;no mirroring or new raster art"
+    }
+  ],
+  "equipment": "diving-helmet"
+}

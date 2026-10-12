@@ -11,6 +11,7 @@ var mode := 0
 var action_index := 0
 var action_started := 0.0
 var full_art := false
+var finish_preview_manifest := "" # Opt-in isolated Studio finishing study.
 var foot := Vector2.ZERO
 var direction := "south"
 var clock := 0.0
@@ -21,6 +22,7 @@ var graph := AStar2D.new()
 var blockers: Array[Rect2] = []
 var signature: Array = []
 var corridor: Dictionary = {}
+var floor_half := 172.0
 var wait := 0.0
 
 ## Who the Studio stands in the room. Each entry is a character folder holding a
@@ -67,10 +69,27 @@ func load_art() -> void:
 		var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(manifest))
 		if want_full or data.states.any(func(state): return str(state.id).begins_with("idle-") or str(state.id).begins_with("walk-")):
 			player.load_manifest(manifest,true)
+	var walk_overrides := {
+		"Bill":"res://character/crew-runtime-matte-v1/bill/manifest.json",
+		"Veld":"res://character/crew-runtime-matte-v1/veld/manifest.json",
+		"Branforth":"res://character/crew-runtime-matte-v1/branforth/manifest.json"}
+	if walk_overrides.has(member.name):
+		player.load_manifest(walk_overrides[member.name],true)
+	if not finish_preview_manifest.is_empty():
+		player.load_manifest(finish_preview_manifest,true)
+		for key in player.frames:
+			if not (str(key).begins_with("walk-") or str(key).begins_with("idle-")):continue
+			for i in range(player.frames[key].size()):
+				var original: Texture2D=player.frames[key][i]
+				var linear:=CanvasTexture.new()
+				linear.diffuse_texture=original
+				linear.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
+				for meta in original.get_meta_list():linear.set_meta(meta,original.get_meta(meta))
+				player.frames[key][i]=linear
 	full_art=want_full
 
 func can_stand(at: Vector2) -> bool:
-	if absf(at.x)>172 or absf(at.y)>172: return false
+	if absf(at.x)>floor_half or absf(at.y)>floor_half: return false
 	if not corridor.is_empty() and not preload("res://rooms/underwater/corridor_geometry.gd").contains_foot(corridor,at,10.0): return false
 	for rect in blockers:
 		if rect.has_point(at): return false
@@ -87,6 +106,11 @@ func segment_clear(a: Vector2, b: Vector2) -> bool:
 func rebuild(room, id: String, quarter: int) -> void:
 	var next: Array = [id,quarter]
 	var next_blockers: Array[Rect2] = []
+	var large_views=preload("res://rooms/large-rooms/studio_view.gd").VIEWS
+	floor_half=364.0 if large_views.has(id) else 172.0
+	if large_views.has(id):
+		for bound in large_views[id].fixed_bounds_for_rotation(quarter):
+			next_blockers.append(Rect2(bound.position-Vector2.ONE*384.0,bound.size).grow(10.0))
 	for prop in room.props:
 		for rect in Geometry.prop_collision_rects(prop): next_blockers.append(rect.grow(10.0))
 	next.append(next_blockers)
@@ -96,8 +120,9 @@ func rebuild(room, id: String, quarter: int) -> void:
 	corridor = {"id":id,"rotation":quarter} if id in ["corridor","corner","tee_corridor"] else {}
 	graph.clear()
 	var points := {}
-	for y in range(-160,161,16):
-		for x in range(-160,161,16):
+	var extent:=352 if large_views.has(id) else 160
+	for y in range(-extent,extent+1,16):
+		for x in range(-extent,extent+1,16):
 			var at := Vector2(x,y)
 			if not can_stand(at): continue
 			var key := graph.get_available_point_id()

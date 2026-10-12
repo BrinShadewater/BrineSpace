@@ -53,8 +53,12 @@ static func ready() -> bool:
 static func frame(clock: float, fps: float, phase: int = 0) -> int:
 	return posmod(floori(clock * fps) + phase, 8)
 
+static func swim_clock(clock: float, phase: int) -> float:
+	# Smoothly vary stroke cadence without changing paths or the authored loop order.
+	return clock+.055*sin(clock*1.7+float(phase)*1.91)
+
 static func _sprite(canvas: CanvasItem, key: String, cell: Vector2, columns: int, pivot: Vector2, scale: float, clock: float, fps: float, phase: int, tint: Color) -> void:
-	var index := frame(clock, fps, phase)
+	var index := frame(swim_clock(clock,phase), fps, phase)
 	canvas.draw_texture_rect_region(sheets[key], Rect2(-pivot * scale, cell * scale), Rect2(Vector2(index % columns, index / columns) * cell, cell), tint)
 const PALETTE := [Color(0.25, 0.95, 0.85), Color(0.62, 0.48, 1.0), Color(1.0, 0.72, 0.32), Color(0.60, 1.0, 0.62)]
 const DRIFTER_EPOCH := 80.0
@@ -124,8 +128,9 @@ static func _draw_drifter(canvas: CanvasItem, centre: Vector2, size: float, view
 		var scale := radius / (110.0 if extra else 103.0)
 		var rotation := sin(t * 0.16 + seed) * 0.12 if species == "veil" else (t * 0.04 if species == "glass" else 0.0)
 		canvas.draw_set_transform(at, rotation)
-		_sprite(canvas, species, cell, 4, pivot, scale, t, 6, slot, Color(colour.r, colour.g, colour.b, fade * 0.55))
-		_sprite(canvas, species + "_core", cell, 4, pivot, scale, t, 6, slot, Color(1,1,1,fade * 0.65))
+		var cadence:=6.0 if species=="lantern" else 4.0 if species=="glass" else 5.0
+		_sprite(canvas, species, cell, 4, pivot, scale, t, cadence, slot, Color(colour.r, colour.g, colour.b, fade * 0.55))
+		_sprite(canvas, species + "_core", cell, 4, pivot, scale, t, cadence, slot, Color(1,1,1,fade * 0.65))
 		canvas.draw_set_transform(Vector2.ZERO)
 		return
 	var pulse := 0.5 + 0.5 * sin(t * 1.3 + seed * 6.0)

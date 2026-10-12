@@ -1,0 +1,209 @@
+{
+  "name": "Bill east cargo native master identity candidate",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "strideDistanceCells": {
+    "carry": 0.12
+  },
+  "precomposed": true,
+  "status": "selected_runtime",
+  "textureFilter": "linear",
+  "states": [
+    {
+      "id": "pickup-east",
+      "frameFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/000.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/001.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/002.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/003.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/004.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/005.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/006.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/007.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/008.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/009.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/pickup-east/010.png"
+      ],
+      "frameDurationsMs": [
+        35,
+        35,
+        40,
+        40,
+        45,
+        45,
+        50,
+        50,
+        50,
+        65,
+        65
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "Original cargo anatomy/case/clock; native accepted identity at scale1, shared neck pivot rotation; review candidate"
+    },
+    {
+      "id": "carry-east",
+      "frameFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/carry-east/000.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/carry-east/001.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/carry-east/002.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/carry-east/003.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/carry-east/004.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/carry-east/005.png"
+      ],
+      "frameDurationsMs": [
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "Original cargo anatomy/case/clock; native accepted identity at scale1, shared neck pivot rotation; review candidate"
+    },
+    {
+      "id": "unload-east",
+      "frameFiles": [
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/unload-east/000.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/unload-east/001.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/unload-east/002.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/unload-east/003.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/unload-east/004.png",
+        "res://character/bill-cargo-east-master-head-v1/frames/helmet/unload-east/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload",
+        "unload"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "Original cargo anatomy/case/clock; native accepted identity at scale1, shared neck pivot rotation; review candidate"
+    }
+  ],
+  "equipment": "diving-helmet",
+  "integration": "selected_by_grid_canvas_native_frame_clock_checked_2026_09_30"
+}

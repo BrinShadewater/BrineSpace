@@ -1,4 +1,5 @@
 extends RefCounted
+const EnvironmentArt = preload("res://scripts/environment_art.gd")
 ## Small live effects drawn in the station's foreground pass (owner playtest, Sept 16):
 ## - current flowing into each working Current Turbine's intake, so a turbine visibly works
 ##   whichever way it points (a north intake sat behind the raised wall and looked dead);
@@ -7,6 +8,7 @@ extends RefCounted
 ## draws a calm, static version.
 
 const Preferences = preload("res://scripts/title_settings.gd")
+const LightingArt = preload("res://scripts/lighting_art.gd")
 const DIRECTIONS := {"north":Vector2(0,-1), "east":Vector2(1,0), "south":Vector2(0,1), "west":Vector2(-1,0)}
 
 static func draw(canvas, game, rooms: Array, size: float) -> void:
@@ -29,7 +31,9 @@ static func draw_turbine_flow(canvas, game, rooms: Array, size: float) -> void:
 		if reduced:
 			for i in range(3):
 				var at := mouth - inward * size * (0.18 + 0.2 * i)
-				canvas.draw_polyline(PackedVector2Array([at + (across - inward) * size * 0.05, at, at + (-across - inward) * size * 0.05]), Color(0.62, 0.84, 0.88, 0.45), maxf(1.0, size * 0.006))
+				var points:=PackedVector2Array([at+(across-inward)*size*.05,at,at+(-across-inward)*size*.05])
+				if not EnvironmentArt.stroke(canvas,"current-streak",points,maxf(1.0,size*.006)*2,Color(.62,.84,.88,.45)):
+					canvas.draw_polyline(points, Color(0.62, 0.84, 0.88, 0.45), maxf(1.0, size * 0.006))
 			continue
 		# Streaks drift from the far edge of the intake cell toward the turbine and converge.
 		for i in range(12):
@@ -38,17 +42,21 @@ static func draw_turbine_flow(canvas, game, rooms: Array, size: float) -> void:
 			var head := mouth - inward * size * (0.95 - phase * 0.9) + across * lane * size * 0.32
 			var length := size * (0.08 + 0.05 * float(i % 3))
 			var alpha := sin(phase * PI) * 0.42
-			canvas.draw_line(head, head - inward * length, Color(0.66, 0.86, 0.9, alpha), maxf(1.0, size * 0.005))
+			if not EnvironmentArt.sprite(canvas,"current-streak",head-inward*length*.5,Vector2(length,maxf(1.0,size*.005)*2),Color(.66,.86,.9,alpha),inward.angle()):
+				canvas.draw_line(head, head - inward * length, Color(0.66, 0.86, 0.9, alpha), maxf(1.0, size * 0.005))
 		for i in range(4):
 			var phase := fposmod(time * 0.35 + i * 0.29, 1.0)
 			var bubble := mouth - inward * size * (0.8 - phase * 0.75) + across * sin(time * 1.3 + i * 2.1) * size * 0.12
-			canvas.draw_arc(bubble, maxf(1.0, size * (0.008 + 0.004 * (i % 2))), 0, TAU, 8, Color(0.78, 0.93, 0.95, sin(phase * PI) * 0.5), maxf(1.0, size * 0.003))
+			var radius:=maxf(1.0,size*(.008+.004*(i%2)))
+			if not EnvironmentArt.sprite(canvas,"intake-bubble",bubble,Vector2.ONE*radius*2,Color(.78,.93,.95,sin(phase*PI)*.5)):
+				canvas.draw_arc(bubble, radius, 0, TAU, 8, Color(0.78, 0.93, 0.95, sin(phase * PI) * 0.5), maxf(1.0, size * 0.003))
 
 static func torch_actors(game) -> Array:
 	var result: Array = []
 	for actor in [game.bill_npc, game.veld_npc, game.branforth_npc, game.marsh_npc]:
 		if actor == null or not actor.active or actor.dead: continue
 		if actor.state != "weld" or actor.movement_medium != "dry" or not actor.path.is_empty(): continue
+		if actor.goal in ["hull-repair","ward-repair"] and actor.animation_state()!="weld":continue
 		if actor.goal == "construction" and (actor.timer < 0.52 or actor.timer >= 9.48): continue
 		result.append(actor)
 	var josh = game.companion_actors.get("josh")
@@ -64,6 +72,23 @@ const TORCH_TIPS := {
 	"east": Vector2(37, -75),
 	"west": Vector2(-35, -75),
 }
+
+static var _bill_torch_tips: Dictionary = {}
+static var _james_torch_tips: Dictionary = {}
+
+static func torch_tip_offset(game, actor) -> Vector2:
+	if actor == game.bill_npc:
+		if _bill_torch_tips.is_empty():
+			_bill_torch_tips = JSON.parse_string(FileAccess.get_file_as_string("res://character/bill-torch-actions-v1/torch-tip-offsets.json"))
+		var point: Array = _bill_torch_tips[str(actor.direction)]
+		return Vector2(point[0], point[1])
+	if actor == game.get("branforth_npc"):
+		if _james_torch_tips.is_empty():
+			_james_torch_tips = JSON.parse_string(FileAccess.get_file_as_string("res://character/james-repair-contact-v1/torch-tip-offsets.json"))
+		# Selected flame pixels converted through the148px ruler from physical foot.
+		var point: Array = _james_torch_tips[str(actor.direction)]
+		return Vector2(point[0], point[1])
+	return TORCH_TIPS.get(str(actor.direction), TORCH_TIPS.south)
 
 # Where a crew member's construction weld lands: the centre of the doorway between the cell they
 # stand in and the cell going up, lifted to the door's middle rather than the deck. Vector2.INF
@@ -94,6 +119,7 @@ static func draw_hull_bubbles(canvas, game, rooms: Array, size: float) -> void:
 	var time: float = game.get_visual_time_seconds()
 	var unit := size / 384.0
 	var bubbles := 7 if quality >= 2 else 4
+	var atlas := LightingArt.texture("bubbles")
 	for room in rooms:
 		var cell: Vector2i = room.pos
 		for side in ["north", "east", "west"]:
@@ -110,8 +136,13 @@ static func draw_hull_bubbles(canvas, game, rooms: Array, size: float) -> void:
 				var at := edge + along + Vector2(sway + float(offset.x) * 10.0 * unit, -rise)
 				var radius := (1.6 + float(posmod(hash([cell, side, i]), 20)) / 10.0) * unit * 1.6
 				var fade := sin(phase * PI)
-				canvas.draw_arc(at, radius, 0.0, TAU, 12, Color(0.72, 0.92, 0.98, 0.42 * fade), maxf(1.0, unit * 1.2), true)
-				canvas.draw_circle(at + Vector2(-radius * 0.3, -radius * 0.3), maxf(0.6, radius * 0.22), Color(1.0, 1.0, 1.0, 0.5 * fade))
+				if atlas != null:
+					var bubble_class := clampi(int((radius / unit - 2.56) / 0.8), 0, 3)
+					var extent := radius * (16.0 / 12.0)
+					canvas.draw_texture_rect_region(atlas, Rect2(at - Vector2.ONE * extent, Vector2.ONE * extent * 2), Rect2(bubble_class * 32, 0, 32, 32), Color(1, 1, 1, 0.50 * fade))
+				else:
+					canvas.draw_arc(at, radius, 0.0, TAU, 12, Color(0.72, 0.92, 0.98, 0.42 * fade), maxf(1.0, unit * 1.2), true)
+					canvas.draw_circle(at + Vector2(-radius * 0.3, -radius * 0.3), maxf(0.6, radius * 0.22), Color(1.0, 1.0, 1.0, 0.5 * fade))
 
 # Rooms with a cracked hull or a local containment fault vent steam and spit sparks (owner-approved,
 # Sept 29). Steam is a slow rising column of soft puffs; sparks are a burst of 0.2 s once every couple
@@ -134,7 +165,8 @@ static func draw_hazards(canvas, game, rooms: Array, size: float) -> void:
 			var phase := 0.35 if reduced else fposmod(time / 3.2 + float(i) / float(puffs) + float(seed) / 1000.0, 1.0)
 			var at := vent + Vector2(sin(phase * 5.0 + float(i)) * 10.0 * unit, -phase * size * 0.5)
 			var radius := (10.0 + phase * 26.0) * unit
-			canvas.draw_circle(at, radius, Color(0.86, 0.93, 0.95, 0.22 * sin(phase * PI)))
+			if not EnvironmentArt.sprite(canvas,"leak-puff",at,Vector2.ONE*radius*2,Color(.86,.93,.95,.22*sin(phase*PI))):
+				canvas.draw_circle(at, radius, Color(0.86, 0.93, 0.95, 0.22 * sin(phase * PI)))
 		if reduced: continue
 		var cycle := 2.3 + float(seed % 7) * 0.2
 		var local := fposmod(time + float(seed) * 0.37, cycle)
@@ -145,7 +177,8 @@ static func draw_hazards(canvas, game, rooms: Array, size: float) -> void:
 			var angle := -PI * (0.15 + float(h % 70) / 100.0)
 			var reach := (12.0 + float((h / 7) % 26)) * unit * (local / 0.2)
 			var spark := vent + Vector2(cos(angle), sin(angle)) * reach + Vector2(0, reach * reach / (40.0 * unit) * 0.5)
-			canvas.draw_circle(spark, maxf(1.0, unit * 2.0), Color(1.0, 0.82, 0.45, 0.9 * (1.0 - local / 0.2)))
+			if not EnvironmentArt.sprite(canvas,"repair-spark",spark,Vector2.ONE*maxf(1.0,unit*2)*2,Color(1,.82,.45,.9*(1-local/.2)),angle):
+				canvas.draw_circle(spark, maxf(1.0, unit * 2.0), Color(1.0, 0.82, 0.45, 0.9 * (1.0 - local / 0.2)))
 
 # Build flourishes (owner-approved, Sept 29): a bright scan line sweeps down a room the moment it
 # appears, and a ring of light spreads from its centre the first time the room gets power. Rooms already
@@ -155,6 +188,7 @@ const SCAN_SECONDS := 1.1
 const RIPPLE_SECONDS := 1.0
 static var _seen: Dictionary = {}
 static var _seen_game := 0
+static var _flourish_clock := -INF
 static var _scan_start: Dictionary = {}
 static var _powered: Dictionary = {}
 static var _ripple_start: Dictionary = {}
@@ -164,9 +198,10 @@ static func draw_build_flourish(canvas, game, _rooms: Array, size: float) -> voi
 	var time: float = game.get_visual_time_seconds()
 	var grid = game.grid_view
 	var all_rooms: Array = game.placed_rooms
-	if _seen_game != game.get_instance_id():
+	if _seen_game != game.get_instance_id() or time<_flourish_clock:
 		_seen_game = game.get_instance_id()
 		_seen.clear(); _scan_start.clear(); _powered.clear(); _ripple_start.clear(); _awaiting.clear()
+	_flourish_clock=time
 	var fresh: Array = []
 	for room in all_rooms:
 		if not _seen.has(room.pos): fresh.append(room)
@@ -200,7 +235,7 @@ static func draw_build_flourish(canvas, game, _rooms: Array, size: float) -> voi
 		canvas.draw_rect(Rect2(rect.position.x, rect.position.y, rect.size.x, y - rect.position.y), Color(0.4, 0.85, 1.0, 0.10 * fade))
 	for cell in _ripple_start.keys():
 		var age: float = time - float(_ripple_start[cell])
-		if age > RIPPLE_SECONDS:
+		if age < 0.0 or age > RIPPLE_SECONDS:
 			_ripple_start.erase(cell)
 			continue
 		var fraction := age / RIPPLE_SECONDS
@@ -217,7 +252,7 @@ static func draw_torch_sparks(canvas, game, size: float) -> void:
 	for actor in actors:
 		var facing: Vector2 = DIRECTIONS.get(str(actor.direction), Vector2.DOWN)
 		# The flame in this pose, measured from the frames.
-		var tip: Vector2 = (actor.foot + TORCH_TIPS.get(str(actor.direction), TORCH_TIPS.south)) / 384.0 * size
+		var tip: Vector2 = (actor.foot + torch_tip_offset(game, actor)) / 384.0 * size
 		# Building a room is work on the doorway between the two cells, not on the welder's own
 		# hand: the sparks belong in the middle of that door, on whichever side the room is going
 		# up (owner playtest, Sept 18). Repairs and Josh's torch keep the pose's own flame.
@@ -225,8 +260,10 @@ static func draw_torch_sparks(canvas, game, size: float) -> void:
 		if door.is_finite(): tip = door / 384.0 * size
 		var seed := int(actor.foot.x * 7.0 + actor.foot.y * 13.0)
 		var flicker := 0.35 + 0.15 * float(hash([seed, floori(time * 20.0)]) % 100) / 100.0
-		canvas.draw_circle(tip, unit * 10.0, Color(1.0, 0.62, 0.25, (0.3 if reduced else flicker) * 0.6))
-		canvas.draw_circle(tip, unit * 3.5, Color(1.0, 0.95, 0.85, 0.9))
+		if not EnvironmentArt.sprite(canvas,"cut-glow",tip,Vector2.ONE*unit*20,Color(1,.62,.25,(.3 if reduced else flicker)*.6)):
+			canvas.draw_circle(tip, unit * 10.0, Color(1.0, 0.62, 0.25, (0.3 if reduced else flicker) * 0.6))
+		if not EnvironmentArt.sprite(canvas,"repair-spark",tip,Vector2.ONE*unit*7,Color(1,.95,.85,.9)):
+			canvas.draw_circle(tip, unit * 3.5, Color(1.0, 0.95, 0.85, 0.9))
 		var count := 3 if reduced else 11
 		for i in range(count):
 			var phase := fposmod(time * (0.6 if reduced else 1.8) + i * 0.113 + seed * 0.01, 1.0)
@@ -238,4 +275,5 @@ static func draw_torch_sparks(canvas, game, size: float) -> void:
 			var heat := Color(1.0, 0.97, 0.8).lerp(Color(1.0, 0.45, 0.12), phase)
 			heat.a = 1.0 - phase
 			at = (at / pixel).floor() * pixel
-			canvas.draw_rect(Rect2(at, Vector2(pixel, pixel)), heat)
+			if not EnvironmentArt.sprite(canvas,"repair-spark",at,Vector2.ONE*pixel,heat,angle,Vector2.ZERO):
+				canvas.draw_rect(Rect2(at, Vector2(pixel, pixel)), heat)

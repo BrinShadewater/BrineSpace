@@ -1,0 +1,330 @@
+{
+  "name": "Bill selected north sitting helmet",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "selected_runtime",
+  "states": [
+    {
+      "id": "sit-down-north",
+      "frameFiles": [
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/000.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/001.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/002.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/003.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/004.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        120,
+        140,
+        160,
+        160,
+        120
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "sit-down",
+        "sit-down",
+        "sit-down",
+        "sit-down",
+        "sit-down",
+        "sit-down"
+      ],
+      "depthOffsets": [
+        0,
+        8,
+        16,
+        24,
+        32,
+        40
+      ],
+      "provenance": "native selected dry helmet shell follows authored head tilt;original body/legs preserved;exact equipped standing endpoint;seated idle/contact integration pending"
+    },
+    {
+      "id": "sit-rise-north",
+      "frameFiles": [
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/005.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/004.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/003.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/002.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/001.png",
+        "res://character/bill-seated-helmet-north-coherent-v1/frames/sit-down-north/000.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        160,
+        160,
+        140,
+        120,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "sit-rise",
+        "sit-rise",
+        "sit-rise",
+        "sit-rise",
+        "sit-rise",
+        "sit-rise"
+      ],
+      "depthOffsets": [
+        40,
+        32,
+        24,
+        16,
+        8,
+        0
+      ],
+      "provenance": "authored independent whole figures;reversed rise;exact selected standing idle;seated idle family pending"
+    },
+    {
+      "id": "sit-idle-north",
+      "frameFiles": [
+        "res://character/bill-seated-idle-north-v1/frames/helmet/000.png",
+        "res://character/bill-seated-idle-north-v1/frames/helmet/001.png",
+        "res://character/bill-seated-idle-north-v1/frames/helmet/002.png",
+        "res://character/bill-seated-idle-north-v1/frames/helmet/003.png",
+        "res://character/bill-seated-idle-north-v1/frames/helmet/004.png",
+        "res://character/bill-seated-idle-north-v1/frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "sit-idle",
+        "sit-idle",
+        "sit-idle",
+        "sit-idle",
+        "sit-idle",
+        "sit-idle"
+      ],
+      "depthOffsets": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ]
+    },
+    {
+      "id": "read-seated-north",
+      "frameFiles": [
+        "res://character/bill-reading-north-v1/frames/helmet/000.png",
+        "res://character/bill-reading-north-v1/frames/helmet/001.png",
+        "res://character/bill-reading-north-v1/frames/helmet/002.png",
+        "res://character/bill-reading-north-v1/frames/helmet/003.png",
+        "res://character/bill-reading-north-v1/frames/helmet/004.png",
+        "res://character/bill-reading-north-v1/frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "read-seated",
+        "read-seated",
+        "read-seated",
+        "read-seated",
+        "read-seated",
+        "read-seated"
+      ],
+      "depthOffsets": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ]
+    },
+    {
+      "id": "read-seated-enter-north",
+      "frameFiles": [
+        "res://character/bill-reading-entry-north-v1/frames/helmet/000.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/001.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/002.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/003.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/004.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/005.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "read-seated-enter",
+        "read-seated-enter",
+        "read-seated-enter",
+        "read-seated-enter",
+        "read-seated-enter",
+        "read-seated-enter"
+      ],
+      "depthOffsets": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ]
+    },
+    {
+      "id": "read-seated-exit-north",
+      "frameFiles": [
+        "res://character/bill-reading-entry-north-v1/frames/helmet/005.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/004.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/003.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/002.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/001.png",
+        "res://character/bill-reading-entry-north-v1/frames/helmet/000.png"
+      ],
+      "frameDurationsMs": [
+        60,
+        80,
+        100,
+        100,
+        80,
+        60
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "waterKinds": [
+        "read-seated-exit",
+        "read-seated-exit",
+        "read-seated-exit",
+        "read-seated-exit",
+        "read-seated-exit",
+        "read-seated-exit"
+      ],
+      "depthOffsets": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ]
+    }
+  ],
+  "equipment": "diving-helmet"
+}

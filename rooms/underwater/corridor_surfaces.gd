@@ -1,10 +1,14 @@
 extends RefCounted
 ## Generated surface samples on authoritative hull polygons; no whole-bitmap rotation.
 static var current_floor: ImageTexture
+static var load_unused_deck := OS.get_cmdline_user_args().has("--reference-corridor-deck")
 const G = preload("res://tools/modular_room_geometry.gd")
-static func load_sources() -> Array:
+static func load_sources(pool: RefCounted = null) -> Array:
 	var textures: Array = []
 	for path in ["res://legacy/default/rooms/underwater/straight-source-v1.png","res://legacy/default/rooms/underwater/corner-source-v1.png"]:
+		if pool != null:
+			textures.append(pool.acquire(path).texture)
+			continue
 		var image := Image.new()
 		preload("res://scripts/safe_image.gd").load_png(image, path)
 		textures.append(ImageTexture.create_from_image(image))
@@ -48,14 +52,16 @@ static func draw_hull(canvas: CanvasItem, hull: PackedVector2Array, floor_poly: 
 			for point in [start,end,end+normal,start+normal]:points.append(G.turn(point+center,q))
 			wall_art.polygon(canvas,wall_art.key(corner or tee,variant),points,"low",light)
 	# Current department deck uses the authoritative footprint and existing transform.
-	if current_floor==null:
+	var tiled:bool=preload("res://rooms/whole-room/modular_floor.gd").enabled
+	# Modular tiles own their source; this legacy deck contributes no pixels there.
+	if (not tiled or load_unused_deck) and current_floor==null:
 		var image:=Image.new()
 		preload("res://scripts/safe_image.gd").load_png(image, "res://assets/floors-and-details-v5/corridor-deck.png")
 		current_floor=ImageTexture.create_from_image(image)
 	var floor_texture:=current_floor
 	var floor_uv:=PackedVector2Array()
 	for p in floor_poly: floor_uv.append((p+Vector2.ONE*192)/384)
-	if preload("res://rooms/whole-room/modular_floor.gd").enabled:
+	if tiled:
 		preload("res://rooms/whole-room/modular_floor.gd").draw(canvas,floor_edits,true,q,1.0,G.turn(center,q),light,"", "tee_corridor" if tee else "corner" if corner else "corridor",variant)
 	else:
 		patch(canvas,floor_poly,floor_uv,floor_texture,center,q,light)

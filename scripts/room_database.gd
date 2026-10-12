@@ -109,7 +109,7 @@ static func all_rooms() -> Dictionary:
 			"cost":{"metal":20,"rare_minerals":2}, "size":Vector2i(2,2), "production":{}, "consumption":{"power":2},
 			"tags":["crew","submersible","exploration","large_room"], "fixed_prop":"mini_sub", "ocean_side":"west",
 			"ports":[{"cell":Vector2i(0,0),"side":"north"},{"cell":Vector2i(1,0),"side":"north"},{"cell":Vector2i(1,1),"side":"east"},{"cell":Vector2i(0,1),"side":"south"}],
-			"description":"A dry mini-sub hangar with a sealed ocean launch chamber. Assign crew to survey, recover cargo and reach deep sites. The sea may keep its own records; we will keep ours.",
+			"description":"A flooded mini-sub bay with a cycling crew airlock. Assign crew to survey, recover cargo and reach deep sites. The sea may keep its own records; we will keep ours.",
 			"unlocked":true
 		},
 		"tidal_power_plant": {

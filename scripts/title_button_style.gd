@@ -1,8 +1,8 @@
 extends RefCounted
 
 # Keep keyboard traversal inside the active modal, including dynamically disabled controls.
-# Focus outlines show only while navigating by keyboard or controller; a mouse click leaves no
-# box around the button (owner playtest). Every button shares this one focus style.
+# Buttons use a subtle focus brightness change without a persistent selection outline.
+# Keyboard/controller traversal remains contained within the active modal.
 static var focus_style: StyleBoxFlat
 
 static func set_keyboard_navigation(active: bool) -> void:
@@ -13,8 +13,8 @@ static func _focus() -> StyleBoxFlat:
 		focus_style = StyleBoxFlat.new()
 		focus_style.bg_color = Color(0, 0, 0, 0)
 		focus_style.draw_center = false
-		focus_style.border_color = Color(Color("b5f3ee"), 0.0)
-		focus_style.set_border_width_all(2)
+		focus_style.border_color = Color(Color("698e89"), 0.0)
+		focus_style.set_border_width_all(0)
 		focus_style.expand_margin_left = 3
 		focus_style.expand_margin_right = 3
 		focus_style.expand_margin_top = 3
@@ -74,41 +74,61 @@ static func _collect_focus(node: Node, controls: Array[Control]) -> void:
 		_collect_focus(child, controls)
 static func menu_theme() -> Theme:
 	var result := preload("res://scripts/ui_fonts.gd").apply(Theme.new(), 17)
-	result.set_stylebox("focus", "RichTextLabel", _flat("102b38", "86d9df", 8))
-	result.set_stylebox("focus", "ScrollContainer", _flat("102b38", "86d9df", 2))
-	result.set_stylebox("normal", "LineEdit", _flat("0a1c28", "416577", 14))
-	result.set_stylebox("focus", "LineEdit", _flat("102b38", "86d9df", 14))
+	result.set_stylebox("focus", "RichTextLabel", _flat("102e2e", "648d88", 8))
+	result.set_stylebox("focus", "ScrollContainer", _flat("102e2e", "648d88", 2))
+	result.set_stylebox("normal", "LineEdit", _flat("0b2427", "596664", 14))
+	result.set_stylebox("focus", "LineEdit", _flat("102e2e", "648d88", 14))
 	result.set_color("font_color", "LineEdit", Color("d4edf0"))
 	result.set_color("font_placeholder_color", "LineEdit", Color("8eafb9"))
-	result.set_color("selection_color", "LineEdit", Color("326074"))
-	result.set_stylebox("tab_selected", "TabBar", _flat("214552", "85d7dc", 16))
-	result.set_stylebox("tab_unselected", "TabBar", _flat("0a1c28", "385363", 16))
-	result.set_stylebox("tab_hovered", "TabBar", _flat("2b5361", "a2e9e7", 16))
+	result.set_color("selection_color", "LineEdit", Color("386b69"))
+	result.set_stylebox("tab_selected", "TabBar", _flat("244442", "648d88", 16))
+	result.set_stylebox("tab_unselected", "TabBar", _flat("0b2427", "424e50", 16))
+	result.set_stylebox("tab_hovered", "TabBar", _flat("294847", "789c96", 16))
 	result.set_color("font_selected_color", "TabBar", Color("ddf8f4"))
 	result.set_color("font_unselected_color", "TabBar", Color("9dbac5"))
-	result.set_stylebox("panel", "PopupMenu", _flat("10232e", "669aa9", 12))
-	result.set_stylebox("hover", "PopupMenu", _flat("2c5363", "8ed8dc", 8))
+	result.set_stylebox("panel", "PopupMenu", _flat("0b2427", "596664", 12))
+	result.set_stylebox("hover", "PopupMenu", _flat("294847", "648d88", 8))
 	result.set_color("font_color", "PopupMenu", Color("cbe7ec"))
 	result.set_color("font_hover_color", "PopupMenu", Color("f0fffc"))
 	result.set_constant("v_separation", "PopupMenu", 14)
-	result.set_stylebox("background", "ProgressBar", _flat("081820", "385666", 0))
-	result.set_stylebox("fill", "ProgressBar", _flat("5daab5", "8fd7d9", 0))
+	result.set_stylebox("background", "ProgressBar", _flat("091e21", "465556", 0))
+	result.set_stylebox("fill", "ProgressBar", _flat("386b69", "4c7672", 0))
 	for control in ["VScrollBar", "HScrollBar"]:
-		result.set_stylebox("scroll", control, _flat("091923", "223c4b", 6))
-		result.set_stylebox("grabber", control, _flat("3a6274", "65919f", 6))
-		result.set_stylebox("grabber_highlight", control, _flat("639ca8", "abdfe0", 6))
-		result.set_stylebox("grabber_pressed", control, _flat("89c8cc", "d0f5ef", 6))
-	var rail := _flat("102733", "3a5c6b", 0)
+		result.set_stylebox("scroll", control, _flat("091e21", "303d3f", 6))
+		result.set_stylebox("grabber", control, _flat("465f5e", "647a75", 6))
+		result.set_stylebox("grabber_highlight", control, _flat("5c7670", "81938f", 6))
+		result.set_stylebox("grabber_pressed", control, _flat("6b7b79", "84938f", 6))
+	var rail := _flat("102e2e", "465556", 0)
 	rail.content_margin_top = 3
 	rail.content_margin_bottom = 3
 	result.set_stylebox("slider", "HSlider", rail)
-	result.set_stylebox("grabber_area", "HSlider", _flat("478896", "6cb6c0", 0))
-	result.set_stylebox("grabber_area_highlight", "HSlider", _flat("6cb7bf", "bbefea", 0))
+	result.set_stylebox("grabber_area", "HSlider", _flat("386b69", "4c7672", 0))
+	result.set_stylebox("grabber_area_highlight", "HSlider", _flat("466f6d", "6c8c85", 0))
 	for state in ["grabber", "grabber_highlight", "grabber_disabled"]:
-		var fill := "#b9eeeb" if state == "grabber_highlight" else ("#476775" if state == "grabber_disabled" else "#6aafba")
+		var fill := "#89918f" if state == "grabber_highlight" else ("#476775" if state == "grabber_disabled" else "#697573")
 		var handle := Image.new()
-		handle.load_svg_from_string('<svg xmlns="http://www.w3.org/2000/svg" width="14" height="22"><path d="M3 1H11L13 3V19L11 21H3L1 19V3Z" fill="%s" stroke="#b8e1df"/><path d="M5 6V16M9 6V16" stroke="#163845"/></svg>' % fill)
+		handle.load_svg_from_string('<svg xmlns="http://www.w3.org/2000/svg" width="14" height="22"><path d="M3 1H11L13 3V19L11 21H3L1 19V3Z" fill="%s" stroke="#929a96"/><path d="M5 6V16M9 6V16" stroke="#163845"/></svg>' % fill)
 		result.set_icon(state, "HSlider", ImageTexture.create_from_image(handle))
+	for kind in ["Button", "OptionButton", "MenuButton"]:
+		for state in ["normal", "hover", "pressed", "disabled"]:
+			result.set_stylebox(state, kind, panel(160, 38, state))
+		result.set_stylebox("hover_pressed", kind, panel(160, 38, "pressed"))
+		result.set_stylebox("focus", kind, _focus())
+		result.set_font("font", kind, preload("res://scripts/ui_fonts.gd").interface_bold())
+		result.set_color("font_color", kind, Color("dddeda"))
+		result.set_color("font_disabled_color", kind, Color("99a5a2"))
+		result.set_constant("icon_max_width", kind, 18)
+	result.set_stylebox("panel", "PanelContainer", panel_frame())
+	result.set_stylebox("panel", "TooltipPanel", _flat("0b2427", "596664", 10))
+	result.set_color("font_color", "TooltipLabel", Color("dddeda"))
+	var icons := preload("res://scripts/ui_icons.gd")
+	for kind in ["CheckBox", "CheckButton"]:
+		for key in ["checked", "checked_disabled", "on", "on_disabled"]: result.set_icon(key, kind, icons.glyph("confirm"))
+		for key in ["unchecked", "unchecked_disabled", "off", "off_disabled"]: result.set_icon(key, kind, icons.glyph("frame_on"))
+		result.set_icon("radio_checked", kind, icons.glyph("confirm"))
+		result.set_icon("radio_unchecked", kind, icons.glyph("frame_on"))
+	result.set_icon("clear", "LineEdit", icons.glyph("close"))
+	preload("res://scripts/ui_widgets.gd").apply_theme(result)
 	return result
 
 static func _flat(fill: String, border: String, padding: int) -> StyleBoxFlat:
@@ -122,49 +142,21 @@ static func _flat(fill: String, border: String, padding: int) -> StyleBoxFlat:
 	style.content_margin_bottom = padding * 0.6
 	return style
 
-# Procedural nine-slice pressure-panel artwork; no external raster dependency.
-static func panel(width: int, height: int, state: String, primary: bool = false) -> StyleBox:
-	if state == "focus":
-		return _focus()
-	var active := state == "hover"
-	var pressed := state == "pressed"
-	var disabled := state == "disabled"
-	var edge := "#b8fff2" if active else "#617f90"
-	var face := "#286078" if active else "#102c3b"
-	var light := "#b2fff3" if active else ("#72d9dc" if primary else "#77a4b4")
-	if pressed:
-		face = "#347e89"
-		edge = "#e0fff3"
-		light = "#ffffff"
-	if disabled:
-		face = "#14242b"
-		light = "#465b62"
-	var svg := '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d">' % [width, height, width, height]
-	svg += '<path d="M10 1H%dL%d 10V%dL%d %dH10L1 %dV10Z" fill="#030d15" stroke="#1c3545" stroke-width="2"/>' % [width-10,width-1,height-10,width-10,height-1,height-10]
-	svg += '<path d="M12 4H%dL%d 12V%dL%d %dH12L4 %dV12Z" fill="#304b5d" stroke="%s" stroke-width="2"/>' % [width-12,width-4,height-12,width-12,height-4,height-12,edge]
-	svg += '<path d="M16 10H%dL%d 16V%dL%d %dH16L10 %dV16Z" fill="%s" stroke="#081923" stroke-width="2"/>' % [width-16,width-10,height-16,width-16,height-10,height-16,face]
-	svg += '<path d="M20 12H%dM12 20V%d" stroke="#496779" stroke-width="2"/>' % [width-20,height-20]
-	svg += '<path d="M20 %dH%dM%d 20V%d" stroke="#071722" stroke-width="3"/>' % [height-11,width-20,width-11,height-20]
-	for x in [7, width-9]:
-		for y in [7, height-9]:
-			svg += '<rect x="%d" y="%d" width="3" height="3" fill="#acbcc2"/>' % [x,y]
-	svg += '<path d="M25 6H%d" stroke="%s" stroke-width="2"/>' % [width-25,light]
-	if primary:
-		svg += '<path d="M24 %dL31 %dL24 %dM%d %dL%d %dL%d %d" fill="none" stroke="%s" stroke-width="2"/>' % [height/2-5,height/2,height/2+5,width-24,height/2-5,width-31,height/2,width-24,height/2+5,light]
-	else:
-		svg += '<path d="M18 %dH27M%d %dH%d" stroke="%s" stroke-width="2"/>' % [height-6,width-27,height-6,width-18,light]
-	svg += '</svg>'
-	var image := Image.new()
-	image.load_svg_from_string(svg)
-	var style := StyleBoxTexture.new()
-	style.texture = ImageTexture.create_from_image(image)
-	for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]:
-		style.set_texture_margin(side, 16)
-	style.content_margin_left = 24
-	style.content_margin_right = 24
-	style.content_margin_top = 12
-	style.content_margin_bottom = 12
+# Containers retain the previous understated panel chrome; hull fittings belong to buttons.
+static func panel_frame() -> StyleBox:
+	var style := preload("res://scripts/terminal_frame_style.gd").new()
+	style.content_margin_left = 14
+	style.content_margin_right = 14
+	style.content_margin_top = 6
+	style.content_margin_bottom = 8
 	return style
+
+# Shared thin matte hull surface; drawing preserves rail width without texture stretching.
+static func panel(_width: int, _height: int, state: String, _primary: bool = false) -> StyleBox:
+	if state == "focus": return _focus()
+	var skin := preload("res://scripts/ui_hull_style.gd").new()
+	skin.state = state
+	return skin
 
 # A clicked button keeps focus, which left a white ring around the last thing pressed (owner
 # playtest, Sept 17). The ring belongs to keyboard navigation, so a mouse press drops focus.
@@ -181,6 +173,14 @@ static func drop_focus_on_click(button: BaseButton) -> void:
 		if button.has_focus(): button.release_focus.call_deferred())
 
 static func apply(button: Button, width: int, height: int, primary: bool = false) -> void:
+	if button.has_meta("hull_styled"): return
+	button.set_meta("hull_styled", true)
+	button.add_theme_font_override("font", preload("res://scripts/ui_fonts.gd").interface_bold())
+	var symbols := {"SETTINGS":"settings", "CLOSE":"close", "BACK":"back", "CANCEL":"cancel", "CONFIRM":"confirm", "REPAIR":"repair", "SCRAP":"scrap", "PAUSE":"pause", "RESUME":"play", "SEARCH":"search", "FILTER":"filter"}
+	for caption in symbols:
+		if button.text.begins_with(caption):
+			preload("res://scripts/ui_icons.gd").apply(button, symbols[caption])
+			break
 	drop_focus_on_click(button)
 	# Menu buttons stay about half their column's width instead of stretching across it (owner
 	# playtest, Sept 17: settings buttons spanned ~30% of a 2560 screen). A button that asks to
@@ -191,23 +191,25 @@ static func apply(button: Button, width: int, height: int, primary: bool = false
 	button.mouse_entered.connect(_tooltip_enter.bind(button))
 	button.mouse_exited.connect(_tooltip_leave.bind(button))
 	button.button_down.connect(_tooltip_leave.bind(button))
-	button.mouse_entered.connect(func() -> void: _feedback(button, 1.08))
+	button.mouse_entered.connect(func() -> void: _feedback(button, 1.02))
 	button.mouse_exited.connect(func() -> void: _feedback(button, 1.04 if button.has_focus() else 1.0))
+	button.focus_entered.connect(_tooltip_enter.bind(button))
+	button.focus_exited.connect(_tooltip_leave.bind(button))
 	button.focus_entered.connect(func() -> void: _feedback(button, 1.04))
-	button.focus_exited.connect(func() -> void: _feedback(button, 1.08 if button.is_hovered() else 1.0))
-	button.button_down.connect(func() -> void: _feedback(button, 1.15))
-	button.button_up.connect(func() -> void: _feedback(button, 1.08 if button.is_hovered() else 1.0))
+	button.focus_exited.connect(func() -> void: _feedback(button, 1.02 if button.is_hovered() else 1.0))
+	button.button_down.connect(func() -> void: _feedback(button, 1.0))
+	button.button_up.connect(func() -> void: _feedback(button, 1.02 if button.is_hovered() else 1.0))
 	for state in ["normal", "hover", "pressed", "disabled", "focus"]:
 		button.add_theme_stylebox_override(state, panel(width, height, state, primary))
 	button.add_theme_stylebox_override("hover_pressed", panel(width, height, "pressed", primary))
-	button.add_theme_color_override("font_color", Color("d3ecec"))
-	button.add_theme_color_override("font_hover_color", Color("effff9"))
-	button.add_theme_color_override("font_pressed_color", Color("ffffff"))
-	button.add_theme_color_override("font_hover_pressed_color", Color("ffffff"))
-	button.add_theme_color_override("font_disabled_color", Color("5c737d"))
+	button.add_theme_color_override("font_color", Color("dddeda"))
+	button.add_theme_color_override("font_hover_color", Color("ecece5"))
+	button.add_theme_color_override("font_pressed_color", Color("ecece5"))
+	button.add_theme_color_override("font_hover_pressed_color", Color("ecece5"))
+	button.add_theme_color_override("font_disabled_color", Color("99a5a2"))
 	button.add_theme_color_override("font_shadow_color", Color("020c13"))
 	button.add_theme_constant_override("shadow_offset_x", 1)
-	button.add_theme_constant_override("shadow_offset_y", 2)
+	button.add_theme_constant_override("shadow_offset_y", 1)
 
 static func _feedback(button: Button, brightness: float) -> void:
 	var previous: Tween = button.get_meta("feedback_tween") if button.has_meta("feedback_tween") else null
@@ -221,52 +223,103 @@ static func _feedback(button: Button, brightness: float) -> void:
 	button.set_meta("feedback_tween", tween)
 	tween.tween_property(button, "self_modulate", tint, 0.10)
 
+## Keep live hints current while the native tooltip text is temporarily suppressed.
+static func set_hint(button: Button, text: String) -> void:
+	if button.has_meta("menu_tooltip_text"):
+		button.set_meta("menu_tooltip_text",text)
+		button.tooltip_text = ""
+	else:
+		button.tooltip_text = text
+	if button.has_meta("tooltip_layer"):
+		var layer = button.get_meta("tooltip_layer")
+		if is_instance_valid(layer):
+			layer.get_node("HintCard/Body/HintText").text = text
+			layer.get_node("HintCard/Body/Unavailable").visible = button.disabled
+			_place_tooltip.call_deferred(button)
+
 static func _tooltip_enter(button: Button) -> void:
-	if button.tooltip_text.is_empty() or button.disabled:
-		return
-	var text := button.tooltip_text
+	var text := button.tooltip_text if not button.tooltip_text.is_empty() else str(button.get_meta("menu_tooltip_text",""))
+	if text.is_empty(): return
+	_tooltip_leave(button)
 	button.set_meta("menu_tooltip_text", text)
 	button.tooltip_text = ""
 	var ticket: int = int(button.get_meta("tooltip_ticket", 0)) + 1
 	button.set_meta("tooltip_ticket", ticket)
 	var weak: WeakRef = weakref(button)
 	await button.get_tree().create_timer(preload("res://scripts/title_settings.gd").tooltip_delay).timeout
-	if weak.get_ref() == null or not button.is_inside_tree() or not button.is_hovered() or button.disabled or button.get_meta("tooltip_ticket", 0) != ticket:
-		return
+	if weak.get_ref() == null or not button.is_inside_tree() or not (button.is_hovered() or button.has_focus()) or button.get_meta("tooltip_ticket", 0) != ticket: return
 	var layer := CanvasLayer.new()
+	layer.name = "ControlHint"
 	layer.layer = 100
 	button.add_child(layer)
 	button.set_meta("tooltip_layer", layer)
 	var panel := PanelContainer.new()
+	panel.name = "HintCard"
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var skin := StyleBoxFlat.new()
-	skin.bg_color = Color("0b202e")
-	skin.border_color = Color("76b8c4")
-	skin.set_border_width_all(1)
-	skin.content_margin_left = 14
-	skin.content_margin_right = 14
-	skin.content_margin_top = 12
-	skin.content_margin_bottom = 12
-	panel.add_theme_stylebox_override("panel", skin)
+	panel.add_theme_stylebox_override("panel",_flat("0b2427","596664",14))
+	var body := VBoxContainer.new()
+	body.name = "Body"
+	body.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.add_child(body)
+	var heading := Label.new()
+	heading.name = "Unavailable"
+	heading.text = "UNAVAILABLE"
+	heading.visible = button.disabled
+	heading.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	heading.add_theme_font_override("font",preload("res://scripts/ui_fonts.gd").interface_bold())
+	heading.add_theme_font_size_override("font_size",15)
+	heading.add_theme_color_override("font_color",Color("b29b6d"))
+	body.add_child(heading)
 	var label := Label.new()
+	label.name = "HintText"
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	label.text = text
-	label.custom_minimum_size.x = 330
+	label.text = str(button.get_meta("menu_tooltip_text",text))
+	label.custom_minimum_size.x = minf(360,button.get_viewport_rect().size.x-52)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.add_theme_font_size_override("font_size", 17)
-	panel.add_child(label)
+	label.add_theme_font_override("font",preload("res://scripts/ui_fonts.gd").interface_font())
+	label.add_theme_font_size_override("font_size",17)
+	label.add_theme_color_override("font_color",Color("dddeda"))
+	body.add_child(label)
 	layer.add_child(panel)
-	var origin := button.get_global_transform_with_canvas().origin + Vector2(0, button.size.y + 8)
+	await button.get_tree().process_frame
+	if weak.get_ref()!=null and button.get_meta("tooltip_ticket",0)==ticket: _place_tooltip(button)
+
+static func _place_tooltip(button: Button) -> void:
+	if not is_instance_valid(button): return
+	if not button.has_meta("tooltip_layer"): return
+	var layer = button.get_meta("tooltip_layer")
+	if not is_instance_valid(layer): return
+	var panel: PanelContainer = layer.get_node("HintCard")
+	panel.reset_size()
+	var button_origin := button.get_global_transform_with_canvas().origin
+	var origin := button_origin + Vector2(0,button.size.y+8)
 	var bounds := button.get_viewport_rect().size
-	panel.position = Vector2(clampf(origin.x, 12, bounds.x - panel.size.x - 12), clampf(origin.y, 12, bounds.y - panel.size.y - 12))
+	if origin.y+panel.size.y > bounds.y-12:
+		origin.y = button_origin.y-panel.size.y-8
+	panel.position = Vector2(clampf(origin.x,12,maxf(12,bounds.x-panel.size.x-12)),clampf(origin.y,12,maxf(12,bounds.y-panel.size.y-12)))
 
 static func _tooltip_leave(button: Button) -> void:
-	button.set_meta("tooltip_ticket", int(button.get_meta("tooltip_ticket", 0)) + 1)
+	button.set_meta("tooltip_ticket",int(button.get_meta("tooltip_ticket",0))+1)
 	if button.has_meta("menu_tooltip_text"):
-		button.tooltip_text = button.get_meta("menu_tooltip_text")
+		if button.tooltip_text.is_empty(): button.tooltip_text = str(button.get_meta("menu_tooltip_text"))
 		button.remove_meta("menu_tooltip_text")
 	if button.has_meta("tooltip_layer"):
 		var layer = button.get_meta("tooltip_layer")
-		if is_instance_valid(layer):
-			layer.queue_free()
+		if is_instance_valid(layer): layer.queue_free()
 		button.remove_meta("tooltip_layer")
+
+## Compact utility controls keep a quiet face and a visible selected state.
+static func apply_plain(button: Button, active := false) -> void:
+	apply(button, 160, 38)
+	for state in ["normal", "hover", "pressed", "hover_pressed", "disabled", "focus"]:
+		var skin := StyleBoxFlat.new()
+		skin.bg_color = Color("23454b") if state in ["pressed", "hover_pressed"] or (active and state == "normal") else (Color("15343b") if state in ["hover","focus"] else Color(0,0,0,0))
+		if state == "focus":
+			skin.border_color = Color("81a8a2")
+			skin.border_width_bottom = 2
+		skin.set_corner_radius_all(4)
+		skin.content_margin_left = 8
+		skin.content_margin_right = 8
+		skin.content_margin_top = 4
+		skin.content_margin_bottom = 4
+		button.add_theme_stylebox_override(state, skin)

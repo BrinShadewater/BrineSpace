@@ -10,10 +10,12 @@ const Synergies = preload("res://scripts/synergy_manager.gd")
 const Companions = preload("res://scripts/companions.gd")
 const Architects = preload("res://scripts/architects.gd")
 const CryoRecovery = preload("res://scripts/cryo_recovery.gd")
-const TEAL := Color("5fd3c4")
-const GREEN := Color("7fd6a6")
-const AMBER := Color("efb777")
-const RED := Color("ef987c")
+const Widgets = preload("res://scripts/ui_widgets.gd")
+const Badges = preload("res://scripts/ui_badges.gd")
+const TEAL := Color("6a9490")
+const GREEN := Color("86a594")
+const AMBER := Color("b29b6d")
+const RED := Color("ad7778")
 const DIM := Color("8fa9b3")
 
 # ---- small building blocks ----
@@ -45,13 +47,9 @@ static func _card(border: Color = Color("2a4650")) -> PanelContainer:
 	return card
 
 static func _pill(text: String, colour: Color) -> Control:
-	var pill := PanelContainer.new()
-	pill.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	pill.add_theme_stylebox_override("panel", _box(Color(colour.r, colour.g, colour.b, 0.14), colour.darkened(0.25), 10, 10))
-	var label := _label(text, 14, colour)
-	label.autowrap_mode = TextServer.AUTOWRAP_OFF
-	pill.add_child(label)
-	return pill
+	var tone := "danger" if colour == RED else "warning" if colour == AMBER else "online" if colour == GREEN else "research"
+	var icon := "warning" if tone in ["danger","warning"] else "confirm" if tone == "online" else "search"
+	return Badges.make(text,icon,tone,-1,true)
 
 static func _heading(text: String, note := "") -> Control:
 	var rows := VBoxContainer.new()
@@ -69,8 +67,8 @@ static func _bar(value: float, maximum: float, colour: Color) -> ProgressBar:
 	bar.custom_minimum_size = Vector2(160, 12)
 	bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	bar.add_theme_stylebox_override("background", _box(Color("0a1218"), Color("1f3a44"), 6, 0))
-	bar.add_theme_stylebox_override("fill", _box(colour, colour, 6, 0))
+	bar.add_theme_stylebox_override("background",Widgets.track("081d23","414e54",4))
+	bar.add_theme_stylebox_override("fill",Widgets.track(colour.to_html(false),"668581",4))
 	return bar
 
 static func _action(text: String, callback: Callable) -> Button:
@@ -117,14 +115,8 @@ static func discoveries(game, box: VBoxContainer, signature: String) -> void:
 	strip.add_child(_stat(stabilized, "STABILIZED", GREEN))
 	strip.add_child(_stat(game.meta.unlocked_room_ids.size(), "BLUEPRINTS AVAILABLE", Color("79b8d9")))
 	if learned.is_empty():
-		var empty := _card()
+		var empty := Widgets.empty_state("NO RECOVERED PATTERNS","Connect different rooms through matching doors and keep them functioning. Three consecutive functioning cycles stabilize a discovered pattern.")
 		empty.name = "EmptyRecord"
-		var rows := VBoxContainer.new()
-		rows.add_theme_constant_override("separation", 8)
-		empty.add_child(rows)
-		rows.add_child(_label("An empty record, a station full of possibilities.", 20, Color("e2ecee")))
-		rows.add_child(_label("Connect different rooms through matching doors. Let them function. Watch the rooms themselves for the first sign of a discovery.", 16))
-		rows.add_child(_label("Stabilized blueprints stay with you across reboots, and a new prototype is placed on top of your current draw pile.", 16, DIM))
 		box.add_child(empty)
 	for synergy in learned:
 		box.add_child(_synergy_card(game, synergy))
@@ -278,16 +270,10 @@ static func _companion_row(game, id: String) -> Control:
 
 static func _member_row(game, member: Dictionary) -> Control:
 	var origin_text := "Awakened in BRINE Core." if member.id == "core_architect" else ("Awakened in charging chamber %s." if member.get("architect_id", "") == "marsh" else "Recovered from cryo ward %s.") % member.origin
-	var card := _card(Color("2f6a6a") if member.alive else Color("5f3138"))
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 12)
-	card.add_child(row)
-	var text := VBoxContainer.new()
-	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	text.add_theme_constant_override("separation", 2)
-	row.add_child(text)
-	text.add_child(_label(str(member.name), 18, Color("e2ecee")))
-	text.add_child(_label(origin_text, 15, DIM))
+	var id: String = "bill" if member.id == "core_architect" else str(member.get("architect_id",""))
+	var card := Widgets.portrait_row(str(member.name),origin_text,Architects.selection_portrait(id))
+	card.get_child(0).get_node("Portrait").visible = Architects.SELECTION_PORTRAITS.has(id)
+	var row: HBoxContainer = card.get_child(0)
 	row.add_child(_pill("ABOARD" if member.alive else "DECEASED", GREEN if member.alive else RED))
 	row.add_child(_action("LOCATE", func() -> void: game._locate_diagnostic_room("%d,%d" % [member.origin.x, member.origin.y])))
 	return card
@@ -320,3 +306,50 @@ static func _vital_row(caption: String, value: String, amount: float, maximum: f
 	value_label.custom_minimum_size.x = 90
 	row.add_child(value_label)
 	return row
+
+## Same forecast used by the HUD, including real recent deliveries and storage caps.
+static func reserves(game, box: VBoxContainer, signature: String) -> void:
+	if not _stale(box,signature): return
+	_clear(box)
+	box.add_child(_heading("RESERVES / NEXT CYCLE","Estimates include crew upkeep, learned bonuses and recent deliveries."))
+	var forecast: Dictionary = game._simulate_room_economy(true,game.cycle+1)
+	var net: Dictionary = game._displayed_cycle_delta(forecast)
+	var tiles := GridContainer.new()
+	tiles.name = "ResourceReadouts"
+	tiles.columns = 3
+	tiles.add_theme_constant_override("h_separation",12)
+	tiles.add_theme_constant_override("v_separation",12)
+	box.add_child(tiles)
+	for id in game.BASE_STORAGE_CAPACITY:
+		if not game.inspected_resource.is_empty() and game.inspected_resource != id: continue
+		var tile := Widgets.resource_tile(str(id),int(game.resources.get(id,0)),int(net.get(id,0)))
+		tile.name = "Reserve_"+str(id)
+		tile.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tile.get_child(0).get_node("Amount").text = "%d / %d" % [int(game.resources.get(id,0)),game._get_resource_capacity(str(id))]
+		tiles.add_child(tile)
+		var inspect := _action("ROOM CONTRIBUTIONS",func() -> void:
+			game.inspected_resource = str(id)
+			game._refresh_archive()
+			var focus = box.find_child("DisclosureHeader",true,false)
+			if focus != null: focus.grab_focus.call_deferred())
+		inspect.name = "ResourceContributions"
+		tile.get_child(0).add_child(inspect)
+	if not game.inspected_resource.is_empty():
+		box.add_child(_action("SHOW ALL RESERVES",func() -> void:
+			game.inspected_resource = ""
+			game._refresh_archive()
+			var focus = box.find_child("ResourceContributions",true,false)
+			if focus != null: focus.grab_focus.call_deferred()))
+	var notes := RichTextLabel.new()
+	notes.bbcode_enabled = true
+	notes.fit_content = true
+	notes.scroll_active = false
+	if not game.inspected_resource.is_empty():
+		notes.text = game._reserve_forecast(game.inspected_resource,int(net.get(game.inspected_resource,0)))+"\n"+"\n".join(game._resource_contribution_lines(game.inspected_resource,forecast))
+	else:
+		var lines: Array[String] = [preload("res://scripts/station_ui_insights.gd").power_balance(game,forecast),preload("res://scripts/station_ui_insights.gd").power_demand(game)]
+		for id in game.BASE_STORAGE_CAPACITY: lines.append(game._reserve_forecast(str(id),int(net.get(id,0))))
+		notes.text = "\n\n".join(lines)
+	notes.add_theme_font_size_override("normal_font_size",16)
+	notes.meta_clicked.connect(game._locate_diagnostic_room)
+	box.add_child(Widgets.disclosure("FORECAST / CONTRIBUTIONS",notes,not game.inspected_resource.is_empty()))

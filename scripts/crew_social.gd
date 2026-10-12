@@ -3,6 +3,7 @@ extends RefCounted
 const Architects=preload("res://scripts/architects.gd")
 const SECONDS=6.0
 static func safe(game,actor) -> bool:
+	if actor.has_method("social_available") and not actor.social_available():return false
 	return actor.active and not actor.dead and actor.movement_medium=="dry" and actor.expedition.is_empty() and not actor.helmet_equipped and actor.locker_request.is_empty() and not actor.helmet_action_active() and actor.stage.is_empty() and actor.path.is_empty() and actor.service_available(game,actor.cell_at(actor.foot)) and (not actor.needs_air() or (actor.needs.hunger<65 and actor.needs.fatigue<65))
 static func nearby(a,b) -> bool:
 	var distance: float=a.foot.distance_to(b.foot)

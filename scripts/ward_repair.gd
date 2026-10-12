@@ -60,17 +60,20 @@ static func active_ward(game) -> Vector2i:
 const MAX_ROUTES := 3
 const RETRY_MSEC := 2000
 
+static func tool_clear(actor, point:Vector2, toward:Vector2) -> bool:
+	return not actor.has_method("ward_worksite_clear") or actor.ward_worksite_clear(point,toward)
+
 static func approach(actor, room_cell: Vector2i, toward: Vector2) -> Dictionary:
 	var center := (Vector2(room_cell) + Vector2.ONE * 0.5) * 384.0
 	var desired := center + toward * 150.0 + Vector2(-toward.y, toward.x) * 48.0
-	if actor.cell_at(actor.foot) == room_cell and actor.foot.distance_to(desired) < 24.0 and actor.can_stand(actor.foot):
+	if actor.cell_at(actor.foot) == room_cell and actor.foot.distance_to(desired) < 24.0 and actor.can_stand(actor.foot) and tool_clear(actor,actor.foot,toward):
 		return {"point": actor.foot, "route": PackedVector2Array()}
 	var start: int = actor.nearest_in_room(actor.foot, actor.cell_at(actor.foot))
 	if start < 0: return {}
 	var candidates: Array = []
 	for node in actor.room_nodes.get(room_cell, []):
 		var point: Vector2 = actor.graph.get_point_position(node)
-		if point.distance_to(desired) <= REACH * 2.0 and actor.can_stand(point): candidates.append([point.distance_to(desired), node, point])
+		if point.distance_to(desired) <= REACH * 2.0 and actor.can_stand(point) and tool_clear(actor,point,toward): candidates.append([point.distance_to(desired), node, point])
 	candidates.sort_custom(func(a, b): return a[0] < b[0])
 	for i in range(mini(MAX_ROUTES, candidates.size())):
 		var path: PackedVector2Array = actor.route_between(start, candidates[i][1])
@@ -84,9 +87,9 @@ static func advance(game, actor, dt: float) -> bool:
 	var state := job(game)
 	var cell := active_ward(game)
 	if cell.x < 0 or state.get("cell", cell) != cell:
-		if actor.goal == "ward-repair": _release(actor)
+		if actor.goal == "ward-repair": _release(actor,game)
 		state.clear()
-		if cell.x < 0: return false
+		if cell.x < 0:return actor.has_method("advance_work_return") and actor.advance_work_return(game,0.0)
 	state.cell = cell
 	var worker := str(state.get("worker", ""))
 	if not worker.is_empty() and worker != id:
@@ -100,7 +103,7 @@ static func advance(game, actor, dt: float) -> bool:
 	if not eligible:
 		if actor.goal == "ward-repair":
 			state.worker = ""
-			_release(actor)
+			_release(actor,game)
 		return false
 	var site := worksite(game, cell)
 	if site.is_empty():
@@ -130,7 +133,7 @@ static func advance(game, actor, dt: float) -> bool:
 			if again.is_empty():
 				state["retry_" + id] = Time.get_ticks_msec() + RETRY_MSEC
 				state.worker = ""
-				_release(actor)
+				_release(actor,game)
 				return true
 			state.point = again.point
 			actor.path = again.route
@@ -143,10 +146,14 @@ static func advance(game, actor, dt: float) -> bool:
 	var ward: Dictionary = game.wrecks[cell]
 	actor.activity = "repairing derelict ward / %d%%" % roundi(float(ward.progress) / WreckField.DURATION * 100.0)
 	state.status = "%s welding" % who
+	if actor.has_method("advance_ward_resume") and actor.advance_ward_resume(game,ward,dt):return true
 	state.work = float(state.get("work", 0.0)) + dt * preload("res://scripts/research_tree.gd").repair_rate(game.meta)
+	if actor.has_method("sync_ward_animation"):actor.sync_ward_animation(minf(WreckField.DURATION,float(ward.progress)+float(state.work)))
 	return true
 
-static func _release(actor) -> void:
+static func _release(actor,game) -> void:
+	if actor.has_method("prepare_ward_return"):actor.prepare_ward_return(game)
+	if actor.has_method("finish_ward_animation"):actor.finish_ward_animation()
 	actor.goal = ""
 	actor.path.clear()
 	actor.state = "idle"

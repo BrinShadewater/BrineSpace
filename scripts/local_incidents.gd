@@ -8,6 +8,7 @@ static func seed(game) -> void:
 			room.hull_cause="containment failure"
 			room["hull_crack"]=minf(1.0,float(room.get("hull_crack",0))+preload("res://scripts/hull_repair.gd").SEVERITIES[(game.cycle/8-1)%3])
 			game._log("Containment fault at %s. Repair the room or isolate its branch." % room.pos,false)
+			impact_marsh(game,room)
 			return
 
 static func resolve(game) -> void:
@@ -26,7 +27,9 @@ static func resolve(game) -> void:
 					reached=true
 					break
 			if reached: break
-	for cell in spread:game.occupied[cell]["local_incident"]=true
+	for cell in spread:
+		game.occupied[cell]["local_incident"]=true
+		impact_marsh(game,game.occupied[cell])
 	if damage>0:
 		damage=maxi(0,damage-preload("res://scripts/research_tree.gd").integrity_shield(game.get("meta")))
 	if damage>0:
@@ -42,3 +45,10 @@ static func repair(game,cell: Vector2i) -> bool:
 	game.occupied[cell].hull_crack=0.0
 	game._log("Containment repair completed at %s." % cell,false)
 	return true
+
+static func impact_marsh(game, room: Dictionary) -> void:
+	var actor=game.get("marsh_npc")
+	if actor==null or not actor.active or actor.dead:return
+	var cell: Vector2i=actor.cell_at(actor.foot)
+	if not game.occupied.has(cell) or game.occupied[cell].get("pos",cell)!=room.pos:return
+	actor.receive_physical_damage(game,"containment fault")

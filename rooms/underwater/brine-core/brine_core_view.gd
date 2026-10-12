@@ -4,7 +4,8 @@ var body_texture: Texture2D
 var body_source_rect: Rect2
 var body_normalized_rect: Rect2
 const FloatArt=preload("res://rooms/underwater/brine-core/brine_float.gd")
-const BODY_RECT := Rect2(596.0863,584.6,59.8274,184.8)
+const BODY_SIZE := Vector2(56.0,148.0)*(184.8/148.0)
+const BODY_RECT := Rect2(Vector2(626.0-BODY_SIZE.x*0.5,584.6),BODY_SIZE)
 var float_meshes:={} # painter instance id -> ArrayMesh
 const NAMEPLATE := Rect2(555,535,142,34)
 var architect_pod: Dictionary = {}:
@@ -36,7 +37,7 @@ func _ready() -> void:
 	var image := Image.new()
 	preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-scale-v10-2026-09-26/source-atlas.png")
 	life_texture=ImageTexture.create_from_image(image)
-	preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-face-v7-2026-09-26/body.png")
+	preload("res://scripts/safe_image.gd").load_png(image, "res://character/brine-slim-v14-2026-10-03/body.png")
 	body_source_rect=Rect2(image.get_used_rect())
 	# Preserve the old 92-square registration without discarding source detail.
 	var registered_width:=roundf(body_source_rect.size.x*74.0/body_source_rect.size.y)

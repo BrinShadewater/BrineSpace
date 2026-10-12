@@ -1,0 +1,189 @@
+{
+  "name": "James North meal counter handoffs",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "installed_north_meal_handoffs_owner_review_pending",
+  "states": [
+    {
+      "id": "cup-acquire-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "selected/000.png",
+        "selected/001.png",
+        "selected/002.png",
+        "selected/003.png",
+        "selected/004.png",
+        "selected/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          "exact accepted idle",
+          1,
+          2,
+          3,
+          4,
+          "exact accepted held cup"
+        ],
+        "fixedScale": 0.27007299270072993,
+        "derivation": "Whole independently authored source poses; one fixed registration/grade; exact accepted endpoints, no body splices or per-pose warps."
+      }
+    },
+    {
+      "id": "meal-deposit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/james-meal-pickup-north-v1/selected/005.png",
+        "res://character/james-meal-pickup-north-v1/selected/004.png",
+        "res://character/james-meal-pickup-north-v1/selected/003.png",
+        "res://character/james-meal-pickup-north-v1/selected/002.png",
+        "res://character/james-meal-pickup-north-v1/selected/001.png",
+        "res://character/james-meal-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          "exact accepted idle",
+          1,
+          2,
+          3,
+          4,
+          "exact accepted held meal"
+        ],
+        "fixedScale": 0.24915824915824916,
+        "derivation": "Exact whole acquisition source figures in reverse, matching accepted held-to-empty counter return; no mirroring or body edits."
+      }
+    },
+    {
+      "id": "cup-deposit-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "res://character/james-cup-pickup-north-v1/selected/005.png",
+        "res://character/james-cup-pickup-north-v1/selected/004.png",
+        "res://character/james-cup-pickup-north-v1/selected/003.png",
+        "res://character/james-cup-pickup-north-v1/selected/002.png",
+        "res://character/james-cup-pickup-north-v1/selected/001.png",
+        "res://character/james-cup-pickup-north-v1/selected/000.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          "exact accepted idle",
+          1,
+          2,
+          3,
+          4,
+          "exact accepted held cup"
+        ],
+        "fixedScale": 0.27007299270072993,
+        "derivation": "Exact whole acquisition source figures in reverse, matching accepted held-to-empty counter return; no mirroring or body edits."
+      }
+    }
+  ]
+}

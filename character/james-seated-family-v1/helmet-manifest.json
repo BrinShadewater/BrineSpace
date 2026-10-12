@@ -1,0 +1,1103 @@
+{
+  "name": "James seated family shared helmets",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_seated_family_owner_review_pending",
+  "states": [
+    {
+      "id": "sit-down-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-east-v1/frames/helmet/sit-down-east/000.png",
+        "../james-seated-east-v1/frames/helmet/sit-down-east/001.png",
+        "../james-seated-east-v1/frames/helmet/sit-down-east/002.png",
+        "../james-seated-east-v1/frames/helmet/sit-down-east/003.png",
+        "../james-seated-east-v1/frames/helmet/sit-down-east/004.png",
+        "../james-seated-east-v1/frames/helmet/sit-down-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.3925729442970822,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-idle-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-east-v1/frames/helmet/sit-idle-east/000.png",
+        "../james-seated-east-v1/frames/helmet/sit-idle-east/001.png",
+        "../james-seated-east-v1/frames/helmet/sit-idle-east/002.png",
+        "../james-seated-east-v1/frames/helmet/sit-idle-east/003.png",
+        "../james-seated-east-v1/frames/helmet/sit-idle-east/004.png",
+        "../james-seated-east-v1/frames/helmet/sit-idle-east/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.3925729442970822,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "read-seated-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-east-v1/frames/helmet/read-seated-east/000.png",
+        "../james-seated-east-v1/frames/helmet/read-seated-east/001.png",
+        "../james-seated-east-v1/frames/helmet/read-seated-east/002.png",
+        "../james-seated-east-v1/frames/helmet/read-seated-east/003.png",
+        "../james-seated-east-v1/frames/helmet/read-seated-east/004.png",
+        "../james-seated-east-v1/frames/helmet/read-seated-east/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        500,
+        600,
+        400,
+        400
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.3925729442970822,
+        "sourcePoses": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-rise-east",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-east-v1/frames/helmet/sit-rise-east/000.png",
+        "../james-seated-east-v1/frames/helmet/sit-rise-east/001.png",
+        "../james-seated-east-v1/frames/helmet/sit-rise-east/002.png",
+        "../james-seated-east-v1/frames/helmet/sit-rise-east/003.png",
+        "../james-seated-east-v1/frames/helmet/sit-rise-east/004.png",
+        "../james-seated-east-v1/frames/helmet/sit-rise-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.3925729442970822,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-down-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-south-v1/frames/helmet/sit-down-south/000.png",
+        "../james-seated-south-v1/frames/helmet/sit-down-south/001.png",
+        "../james-seated-south-v1/frames/helmet/sit-down-south/002.png",
+        "../james-seated-south-v1/frames/helmet/sit-down-south/003.png",
+        "../james-seated-south-v1/frames/helmet/sit-down-south/004.png",
+        "../james-seated-south-v1/frames/helmet/sit-down-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.39945652173913043,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-idle-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-south-v1/frames/helmet/sit-idle-south/000.png",
+        "../james-seated-south-v1/frames/helmet/sit-idle-south/001.png",
+        "../james-seated-south-v1/frames/helmet/sit-idle-south/002.png",
+        "../james-seated-south-v1/frames/helmet/sit-idle-south/003.png",
+        "../james-seated-south-v1/frames/helmet/sit-idle-south/004.png",
+        "../james-seated-south-v1/frames/helmet/sit-idle-south/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.39945652173913043,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "read-seated-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-south-v1/frames/helmet/read-seated-south/000.png",
+        "../james-seated-south-v1/frames/helmet/read-seated-south/001.png",
+        "../james-seated-south-v1/frames/helmet/read-seated-south/002.png",
+        "../james-seated-south-v1/frames/helmet/read-seated-south/003.png",
+        "../james-seated-south-v1/frames/helmet/read-seated-south/004.png",
+        "../james-seated-south-v1/frames/helmet/read-seated-south/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        500,
+        600,
+        400,
+        400
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.39945652173913043,
+        "sourcePoses": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-rise-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-south-v1/frames/helmet/sit-rise-south/000.png",
+        "../james-seated-south-v1/frames/helmet/sit-rise-south/001.png",
+        "../james-seated-south-v1/frames/helmet/sit-rise-south/002.png",
+        "../james-seated-south-v1/frames/helmet/sit-rise-south/003.png",
+        "../james-seated-south-v1/frames/helmet/sit-rise-south/004.png",
+        "../james-seated-south-v1/frames/helmet/sit-rise-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.39945652173913043,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-down-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-west-v1/frames/helmet/sit-down-west/000.png",
+        "../james-seated-west-v1/frames/helmet/sit-down-west/001.png",
+        "../james-seated-west-v1/frames/helmet/sit-down-west/002.png",
+        "../james-seated-west-v1/frames/helmet/sit-down-west/003.png",
+        "../james-seated-west-v1/frames/helmet/sit-down-west/004.png",
+        "../james-seated-west-v1/frames/helmet/sit-down-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.37948717948717947,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-idle-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-west-v1/frames/helmet/sit-idle-west/000.png",
+        "../james-seated-west-v1/frames/helmet/sit-idle-west/001.png",
+        "../james-seated-west-v1/frames/helmet/sit-idle-west/002.png",
+        "../james-seated-west-v1/frames/helmet/sit-idle-west/003.png",
+        "../james-seated-west-v1/frames/helmet/sit-idle-west/004.png",
+        "../james-seated-west-v1/frames/helmet/sit-idle-west/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.37948717948717947,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "read-seated-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-west-v1/frames/helmet/read-seated-west/000.png",
+        "../james-seated-west-v1/frames/helmet/read-seated-west/001.png",
+        "../james-seated-west-v1/frames/helmet/read-seated-west/002.png",
+        "../james-seated-west-v1/frames/helmet/read-seated-west/003.png",
+        "../james-seated-west-v1/frames/helmet/read-seated-west/004.png",
+        "../james-seated-west-v1/frames/helmet/read-seated-west/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        500,
+        600,
+        400,
+        400
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.37948717948717947,
+        "sourcePoses": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-rise-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-west-v1/frames/helmet/sit-rise-west/000.png",
+        "../james-seated-west-v1/frames/helmet/sit-rise-west/001.png",
+        "../james-seated-west-v1/frames/helmet/sit-rise-west/002.png",
+        "../james-seated-west-v1/frames/helmet/sit-rise-west/003.png",
+        "../james-seated-west-v1/frames/helmet/sit-rise-west/004.png",
+        "../james-seated-west-v1/frames/helmet/sit-rise-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.37948717948717947,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-down-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-north-v1/frames/helmet/sit-down-north/000.png",
+        "../james-seated-north-v1/frames/helmet/sit-down-north/001.png",
+        "../james-seated-north-v1/frames/helmet/sit-down-north/002.png",
+        "../james-seated-north-v1/frames/helmet/sit-down-north/003.png",
+        "../james-seated-north-v1/frames/helmet/sit-down-north/004.png",
+        "../james-seated-north-v1/frames/helmet/sit-down-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "idle",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        8.0,
+        16.0,
+        24.0,
+        32.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-idle-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-north-v1/frames/helmet/sit-idle-north/000.png",
+        "../james-seated-north-v1/frames/helmet/sit-idle-north/001.png",
+        "../james-seated-north-v1/frames/helmet/sit-idle-north/002.png",
+        "../james-seated-north-v1/frames/helmet/sit-idle-north/003.png",
+        "../james-seated-north-v1/frames/helmet/sit-idle-north/004.png",
+        "../james-seated-north-v1/frames/helmet/sit-idle-north/005.png"
+      ],
+      "frameDurationsMs": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "read-seated-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-north-v1/frames/helmet/read-seated-north/000.png",
+        "../james-seated-north-v1/frames/helmet/read-seated-north/001.png",
+        "../james-seated-north-v1/frames/helmet/read-seated-north/002.png",
+        "../james-seated-north-v1/frames/helmet/read-seated-north/003.png",
+        "../james-seated-north-v1/frames/helmet/read-seated-north/004.png",
+        "../james-seated-north-v1/frames/helmet/read-seated-north/005.png"
+      ],
+      "frameDurationsMs": [
+        350,
+        350,
+        500,
+        600,
+        400,
+        400
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read",
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    },
+    {
+      "id": "sit-rise-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "../james-seated-north-v1/frames/helmet/sit-rise-north/000.png",
+        "../james-seated-north-v1/frames/helmet/sit-rise-north/001.png",
+        "../james-seated-north-v1/frames/helmet/sit-rise-north/002.png",
+        "../james-seated-north-v1/frames/helmet/sit-rise-north/003.png",
+        "../james-seated-north-v1/frames/helmet/sit-rise-north/004.png",
+        "../james-seated-north-v1/frames/helmet/sit-rise-north/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "sit",
+        "idle"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        32.0,
+        24.0,
+        16.0,
+        8.0,
+        0.0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "prompt": "prompt.txt",
+        "fixedScale": 0.4054794520547945,
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent facing, one anatomical scale, foot registration; shared selected standing and seated endpoints; rise reverses sit-down exactly",
+        "helmet": "Native selected idle shell; accepted pitched diagnostic donors for seated reading, body below headCutoff exact"
+      }
+    }
+  ]
+}

@@ -43,9 +43,15 @@ static func frame_style(fill: Color, border: Color) -> StyleBoxTexture:
 		for x in range(200):
 			if x>=16 and x<184 and y>=16 and y<268:continue
 			var p:=source.get_pixel(x,y)
-			# Neutral metal outside; department identity is a separate inset hairline.
+			# Inset painted department line is the backing; authored metal paints last.
 			var trim:=Color(p.r*.70,p.g*.76,p.b*.79,1.0)
-			var out:=fill.lerp(trim,p.a)
+			var inner_q: Vector2 = (Vector2(x+.5,y+.5)-Vector2(100,142)).abs()-Vector2(88,130)
+			var inner_distance := inner_q.max(Vector2.ZERO).length()+minf(maxf(inner_q.x,inner_q.y),0.0)-6.0
+			var coverage := clampf(.5-inner_distance,0.0,1.0)*clampf(inner_distance+3.5,0.0,1.0)
+			var backing := fill.lerp(border,coverage)
+			# Near-opaque authored rail pixels are solid metal, not paint-tinted stock.
+			var metal_alpha := 1.0 if p.a >= .98 else p.a
+			var out:=backing.lerp(trim,metal_alpha)
 			var q: Vector2=(Vector2(x+.5,y+.5)-Vector2(100,142)).abs()-Vector2(88,130)
 			var distance:=q.max(Vector2.ZERO).length()+minf(maxf(q.x,q.y),0.0)-12.0
 			out.a=lerpf(fill.a,1.0,p.a)*clampf(.5-distance,0.0,1.0)
@@ -53,8 +59,8 @@ static func frame_style(fill: Color, border: Color) -> StyleBoxTexture:
 	var style:=StyleBoxTexture.new()
 	style.texture=ImageTexture.create_from_image(image)
 	for side in [SIDE_LEFT,SIDE_TOP,SIDE_RIGHT,SIDE_BOTTOM]:style.set_texture_margin(side,16)
-	style.content_margin_left=8;style.content_margin_right=8
-	style.content_margin_top=8;style.content_margin_bottom=7
+	style.content_margin_left=12;style.content_margin_right=12
+	style.content_margin_top=10;style.content_margin_bottom=10
 	styles[key]=style
 	return style
 
@@ -67,29 +73,3 @@ static func add_mark(parent: Control, key: String, at: Vector2, size: Vector2, c
 	mark.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	mark.modulate=color;mark.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	parent.add_child(mark)
-
-# Node2D avoids participating in PanelContainer layout; draw over the content.
-class InnerOutline extends Node2D:
-	var outline := StyleBoxFlat.new()
-	func _draw() -> void:
-		var card := get_parent() as Control
-		if card != null:
-			draw_style_box(outline, Rect2(Vector2(6,6),card.size-Vector2(12,12)))
-
-static func update_inner_outline(card: Control, color: Color, active: bool) -> void:
-	var edge := card.get_node_or_null("CardInnerOutline") as InnerOutline
-	if edge == null:
-		if not active:return
-		edge=InnerOutline.new()
-		edge.name="CardInnerOutline"
-		# No z_index: as the last child it already paints over the content, and a raised z put every card's
-		# outline above its neighbours in the fan (owner playtest, Sept 29).
-		edge.outline.draw_center=false
-		edge.outline.border_width_left=3;edge.outline.border_width_right=3
-		edge.outline.border_width_top=3;edge.outline.border_width_bottom=3
-		edge.outline.set_corner_radius_all(6)
-		card.add_child(edge)
-		card.resized.connect(edge.queue_redraw)
-	edge.visible=active
-	edge.outline.border_color=color
-	edge.queue_redraw()

@@ -1,13 +1,43 @@
 extends RefCounted
 ## Shared source registration and placement; original room shells remain authoritative.
 const Geometry = preload("res://tools/modular_room_geometry.gd")
-var art: ImageTexture
+class ArtSource extends RefCounted:
+	var source: String
+	var registration: Dictionary
+	var section := ""
+	var pool: RefCounted
+	var share_storage := true
+	var loaded: ImageTexture
+	var texture: ImageTexture:
+		get:
+			if loaded == null:
+				if share_storage: loaded = pool.acquire(source).texture
+				else:
+					var image := Image.new()
+					preload("res://scripts/safe_image.gd").load_png(image, source)
+					loaded = ImageTexture.create_from_image(image)
+			return loaded
+	var art: ImageTexture:
+		get: return texture
+	func _init(path: String, data: Dictionary, storage: RefCounted, shared: bool) -> void:
+		source = path; registration = data; pool = storage; share_storage = shared
+
+var primary_art: ArtSource
+var art: ImageTexture:
+	get: return primary_art.texture
+# Each view owns this weak lookup. Identical source pixels share storage across
+# its wall/section registrations; registrations and mirrored UVs stay independent.
+var texture_pool = preload("res://scripts/crew_texture_pool.gd").new()
+var share_texture_storage := not OS.get_cmdline_user_args().has("--unshared-wall-textures")
 var registration: Dictionary
 var profiles := {}
 var asset_id: String
 var placement_reports := {}
 var side_views := {}
 var activity_layout: Dictionary={}
+var placement_cache := {}
+var reuse_placements := true
+var placement_cache_hits := 0
 
 func layout_key(room) -> String:
 	var selected := preload("res://scripts/room_layout_store.gd").asset_for(room)
@@ -17,20 +47,16 @@ func _init(id: String) -> void:
 	asset_id=id
 	activity_layout=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/activity-layouts.json")).get(id,{})
 	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+id+".json"))
-	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, data.source)
-	art=ImageTexture.create_from_image(image)
 	registration=decode_registration(data)
+	primary_art=ArtSource.new(data.source,registration,texture_pool,share_texture_storage)
 	for side in ["west","east","south"]:
 		var path: String = "res://rooms/full-wall-v1/registrations/side-"+id+"-"+side+".json"
 		if not FileAccess.file_exists(path): continue
 		var side_data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
-		var side_image := Image.new()
-		preload("res://scripts/safe_image.gd").load_png(side_image, side_data.source)
 		var side_registration: Dictionary=decode_registration(side_data)
 		if side_data.get("mirror_horizontal",false):
 			side_registration=preload("res://scripts/room_asset_library.gd").mirror_registration(side_registration)
-		side_views[side]={"art":ImageTexture.create_from_image(side_image),"registration":side_registration}
+		side_views[side]=ArtSource.new(side_data.source,side_registration,texture_pool,share_texture_storage)
 	load_mirrored_side(id)
 
 # Opt-in per asset: `side-<id>-side.json` is one authored side wall that serves both
@@ -47,15 +73,12 @@ func load_mirrored_side(id: String) -> void:
 	if authored not in ["west","east"]:
 		push_warning("Mirrored side registration "+path+" must declare direction east or west.")
 		return
-	var image := Image.new()
-	preload("res://scripts/safe_image.gd").load_png(image, data.source)
-	var texture := ImageTexture.create_from_image(image)
 	var source: Dictionary=decode_registration(data)
 	var opposite: String="east" if authored=="west" else "west"
-	if not side_views.has(authored): side_views[authored]={"art":texture,"registration":source}
+	if not side_views.has(authored): side_views[authored]=ArtSource.new(data.source,source,texture_pool,share_texture_storage)
 	if not side_views.has(opposite):
 		# The raster is shared; only the polygons and their UVs are mirrored.
-		side_views[opposite]={"art":texture,"registration":preload("res://scripts/room_asset_library.gd").mirror_registration(source)}
+		side_views[opposite]=ArtSource.new(data.source,preload("res://scripts/room_asset_library.gd").mirror_registration(source),texture_pool,share_texture_storage)
 
 func decode_registration(data: Dictionary) -> Dictionary:
 	var r: Array=data.region
@@ -254,8 +277,21 @@ func prune_dressing(room, moved: Array) -> void:
 
 func vacant_placement(room, original: Dictionary, occupied: Array, target:=Vector2.INF) -> Dictionary:
 	var before: Rect2=room.prop_visual_bounds(original)
-	var best := {}
+	# Bounds and door lanes are constant over the 29x29 search.
+	var lanes: Array = []
+	for side in range(4):
+		if Geometry.has_port(room.layout[0],side):
+			lanes.append(Rect2(-42,-180,84,180) if side==0 else (Rect2(0,-42,180,84) if side==1 else (Rect2(-42,0,84,180) if side==2 else Rect2(-180,-42,180,84))))
+	var obstacles: Array = []
+	for other in occupied: obstacles.append([room.prop_visual_bounds(other), other.rect])
+	# Cache the displacement, not mutable prop metadata. Actual geometry keys
+	# invalidate automatically after Studio edits, rotation or topology changes.
+	var key := var_to_bytes([before, original.rect, target, lanes, obstacles])
+	if reuse_placements and placement_cache.has(key):
+		placement_cache_hits += 1
+		return shifted_placement(original, placement_cache[key])
 	var best_distance := INF
+	var best_shift := Vector2.INF
 	for y in range(-168,169,12):
 		for x in range(-168,169,12):
 			var shift := Vector2(x,y)-before.position
@@ -264,23 +300,28 @@ func vacant_placement(room, original: Dictionary, occupied: Array, target:=Vecto
 			if not Rect2(-174,-174,348,348).encloses(art_bounds): continue
 			if not Rect2(-174,-174,348,348).encloses(ground): continue
 			var blocked := false
-			for side in range(4):
-				if not Geometry.has_port(room.layout[0],side): continue
-				var lane := Rect2(-42,-180,84,180) if side==0 else (Rect2(0,-42,180,84) if side==1 else (Rect2(-42,0,84,180) if side==2 else Rect2(-180,-42,180,84)))
+			for lane in lanes:
 				if ground.intersects(lane): blocked=true; break
 			if blocked: continue
-			for other in occupied:
-				if art_bounds.grow(7).intersects(room.prop_visual_bounds(other)) or ground.grow(7).intersects(other.rect): blocked=true; break
+			for other in obstacles:
+				if art_bounds.grow(7).intersects(other[0]) or ground.grow(7).intersects(other[1]): blocked=true; break
 			var distance: float=shift.length_squared() if target==Vector2.INF else art_bounds.get_center().distance_squared_to(target)
 			if blocked or distance>=best_distance: continue
-			var candidate: Dictionary=original.duplicate(true)
-			candidate.rect=ground
-			candidate.sort_y=ground.end.y
-			if candidate.has("art_offset"): candidate.art_offset+=shift
-			candidate.relocated=true
-			best=candidate
+			best_shift=shift
 			best_distance=distance
-	return best
+	if reuse_placements:
+		if placement_cache.size() >= 128: placement_cache.erase(placement_cache.keys()[0])
+		placement_cache[key] = best_shift
+	return shifted_placement(original, best_shift)
+
+func shifted_placement(original: Dictionary, shift: Vector2) -> Dictionary:
+	if shift == Vector2.INF: return {}
+	var candidate: Dictionary = original.duplicate(true)
+	candidate.rect.position += shift
+	candidate.sort_y = candidate.rect.end.y
+	if candidate.has("art_offset"): candidate.art_offset += shift
+	candidate.relocated = true
+	return candidate
 
 func restore_profiles(room) -> void:
 	for name in profiles:

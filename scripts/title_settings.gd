@@ -22,12 +22,13 @@ static var placement_guides := true
 # The resource overlay: what each room gives and takes, drawn over the rooms (hotkey "Resource overlay").
 static var resource_overlay := false
 static var raised_walls := true
-static var hand_backdrop := true
-static var hand_layout := "row" # Draft hand as a row of cards or a fan (owner playtest).
+static var hand_backdrop := false
+static var hand_layout := "fan" # Draft hand as a row of cards or a fan (owner playtest).
 static var pixel_frames := false # HUD panels use clean vector frames unless this is on.
 static var fps_cap := 0
 # Visual effects: 0 Low, 1 Medium (default), 2 High. See docs/superpowers/specs/2026-09-29-lighting-atmosphere-design.md.
 static var effects_quality := 1
+static var auto_graphics := false
 static var muted := false
 static var music_volume := 1.0
 static var effects_volume := 1.0
@@ -120,14 +121,16 @@ static func initialize(window: Window) -> void:
 	raised_walls = bool(config.get_value("display", "riser_walls_enabled", true))
 	placement_guides = bool(config.get_value("accessibility", "placement_guides", true))
 	resource_overlay = bool(config.get_value("display", "resource_overlay", false))
-	hand_backdrop = bool(config.get_value("display", "hand_backdrop", true))
+	hand_backdrop = bool(config.get_value("display", "hand_backdrop", false))
 	pixel_frames = bool(config.get_value("accessibility", "pixel_frames", false))
-	hand_layout = str(config.get_value("display", "hand_layout", "row"))
+	hand_layout = str(config.get_value("display", "hand_layout", "fan"))
 	if hand_layout not in ["row", "fan"]:
-		hand_layout = "row"
+		hand_layout = "fan"
 	reduced_motion = bool(config.get_value("accessibility", "reduced_motion", false))
 	fps_cap = int(config.get_value("display", "fps_cap", 0))
 	effects_quality = clampi(int(config.get_value("display", "effects_quality", 1)), 0, 2)
+	auto_graphics = bool(config.get_value("display", "auto_graphics", false))
+	if auto_graphics: effects_quality = detect_graphics()
 	if fps_cap not in [0, 30, 60, 120, 144, 240]:
 		fps_cap = 0
 	muted = bool(config.get_value("audio", "muted", false))
@@ -254,6 +257,7 @@ static func save(window: Window) -> Error:
 	config.set_value("accessibility", "pixel_frames", pixel_frames)
 	config.set_value("display", "fps_cap", fps_cap)
 	config.set_value("display", "effects_quality", effects_quality)
+	config.set_value("display", "auto_graphics", auto_graphics)
 	config.set_value("audio", "muted", muted)
 	config.set_value("audio", "music_volume", music_volume)
 	config.set_value("audio", "effects_volume", effects_volume)
@@ -266,3 +270,14 @@ static func save(window: Window) -> Error:
 	config.set_value("accessibility", "tooltip_delay", tooltip_delay)
 	config.set_value("accessibility", "text_scale", text_scale)
 	return config.save(_settings_path())
+
+## Conservative hardware recommendation; manual choices always win.
+static func recommended_quality(adapter: String, cores: int) -> int:
+	var name := adapter.to_lower()
+	if cores <= 2 or "llvmpipe" in name or "software" in name or "swiftshader" in name: return 0
+	if "intel" in name or "integrated" in name or "radeon graphics" in name: return 1
+	if cores >= 4 and ("geforce" in name or "radeon rx" in name or "rtx" in name): return 2
+	return 1
+
+static func detect_graphics() -> int:
+	return recommended_quality(RenderingServer.get_video_adapter_name(), OS.get_processor_count())

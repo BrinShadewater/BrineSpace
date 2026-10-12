@@ -1,0 +1,73 @@
+{
+  "name": "James North bowl acquisition",
+  "frameWidth": 184,
+  "frameHeight": 192,
+  "pivot": [
+    92,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "installed_north_bowl_acquisition_owner_review_pending",
+  "states": [
+    {
+      "id": "meal-acquire-north",
+      "frameCount": 6,
+      "frameFiles": [
+        "selected/000.png",
+        "selected/001.png",
+        "selected/002.png",
+        "selected/003.png",
+        "selected/004.png",
+        "selected/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        200,
+        200,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "sourcePoses": [
+          "exact accepted idle",
+          1,
+          2,
+          3,
+          4,
+          "exact accepted held meal"
+        ],
+        "fixedScale": 0.24915824915824916,
+        "derivation": "Whole independently authored source poses; one fixed registration/grade; exact accepted endpoints, no body splices or per-pose warps."
+      }
+    }
+  ]
+}

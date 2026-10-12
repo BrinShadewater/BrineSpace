@@ -20,5 +20,5 @@ static func fixed_bounds_for_rotation(rotation: int) -> Array[Rect2]:
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	Common.begin(canvas, room, rect, Color("#30383a"), WALL_STYLE, "res://assets/department-floors-v2/storage-load-deck.png", 0.43)
 	Common.south_transform(canvas, rect)
-	Common.sprite(canvas, "res://rooms/large-rooms/art/cargo_gantry.png", Rect2(-204, -204, 408, 408))
+	Common.sprite(canvas, "res://rooms/large-rooms/art/cargo_gantry.png", Rect2(-204, -204, 408, 408),Color.WHITE,float(room.get("water_level",1.0 if room.get("flooded",false) else 0.0)))
 	Common.finish(canvas)

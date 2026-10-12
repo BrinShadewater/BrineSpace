@@ -51,6 +51,8 @@ static func apply(player, variant, path: String) -> void:
 		overlay.resize(roundi(original_size.x*width_scale),roundi(original_size.y*scale),Image.INTERPOLATE_NEAREST)
 		for i in range(variant.frames[key].size()):
 			var pose: Dictionary = registration.frames[i]
+			player.materialize_frame(player.frames[key][i])
+			variant.materialize_frame(variant.frames[key][i])
 			var body: Image = player.frames[key][i].get_image()
 			var fitted := body.duplicate() as Image
 			var offset := Vector2i(pose.overlayTopLeft[0],pose.overlayTopLeft[1])

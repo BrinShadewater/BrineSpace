@@ -17,10 +17,10 @@ func prepare() -> void:
 	var source := Image.new()
 	if preload("res://scripts/safe_image.gd").load_png(source, ROOT+SOURCES["sea-lettuce-rosette"])==OK:
 		textures["sea-lettuce-rosette"]=ImageTexture.create_from_image(source)
-func render_into(canvas: CanvasItem, cell_size: float) -> void:
+func render_into(canvas: CanvasItem, cell_size: float, clock:=0.0) -> void:
 	prepare()
 	if textures.is_empty(): return
 	var texture: Texture2D=textures["sea-lettuce-rosette"]
 	for plant in PLANTS:
 		var display := texture.get_size()/texture.get_width()*float(plant.size)*cell_size
-		canvas.draw_texture_rect(texture,Rect2(plant.at*cell_size-display*0.5,display),false,Color(.57,.66,.63,.86))
+		preload("res://scripts/ambient_fronds.gd").draw(canvas,texture,Rect2(plant.at*cell_size-display*0.5,display),clock,plant.at.x*2.1+plant.at.y,Color(.57,.66,.63,.86))

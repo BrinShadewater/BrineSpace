@@ -8,8 +8,10 @@ const INTERVAL := 3
 
 # Returns the Metal added this cycle.
 static func apply(game) -> int:
-	if not stuck(game, harvest_income(game)): return 0
+	# Harvest planning scans the station. No route can change an ineligible award.
+	if not stuck(game, false): return 0
 	if int(game.cycle) % INTERVAL != 0: return 0
+	if harvest_income(game): return 0
 	game.resources.metal = int(game.resources.metal) + 1
 	game._log("BRINE reclaims scrap from its own frame: +1 Metal.")
 	return 1

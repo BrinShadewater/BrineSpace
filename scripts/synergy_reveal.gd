@@ -8,7 +8,7 @@ extends RefCounted
 const ResourceIcons = preload("res://scripts/resource_icons.gd")
 const Synergies = preload("res://scripts/synergy_manager.gd")
 const Rooms = preload("res://scripts/room_database.gd")
-const PLAIN_SIZE := Vector2(470, 68)
+const PLAIN_SIZE := Vector2(470, 106)
 const REVEAL_SIZE := Vector2(520, 330)
 const WIDE_SIZE := Vector2(760, 330) # a pattern shows three room cards
 const SECONDS := 5.0

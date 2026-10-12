@@ -26,6 +26,8 @@ var primary_room := Vector2i(-1,-1)
 var needs := {"hunger": 25.0, "fatigue": 15.0, "curiosity": 60.0, "maintenance": 35.0}
 var active := false
 var dead := false
+var death_entry_seconds := 0.0
+var death_ground_variant := ""
 var movement_medium := "dry"
 var helmet_equipped := false
 var tank_oxygen := 60.0
@@ -34,6 +36,7 @@ var air_recovery:=0.0
 var air_was_low:=false
 var starvation := 0.0
 var flood_speed := 1.0
+var movement_heading: Dictionary={}
 var locker_request: Dictionary = {}
 var expedition: Dictionary = {}
 var moonbay_assignment: Dictionary = {}
@@ -50,7 +53,17 @@ var goal_cell := INVALID
 var path := PackedVector2Array()
 var timer := 0.0
 var stage := ""
+var tablet_exit_pose := -1
+var inspection_return_pose := -1
+var meal_return_pose := -1
+var meal_return_kind := ""
 var graph := AStar2D.new()
+var boundary_fast_calls:=0
+var boundary_fallback_calls:=0
+var boundary_prepare_usec:=0
+var reuse_navigation_links:=not OS.get_cmdline_user_args().has("--reference-nav-link-assembly")
+# Diagnostic reference retains the original point insertion path.
+var reuse_navigation_points:=not OS.get_cmdline_user_args().has("--reference-nav-point-assembly")
 var points := {}
 var room_nodes := {}
 var geometry := {}
@@ -165,6 +178,9 @@ static func valid_locker(locker: Variant) -> bool:
 	var point: Vector2 = locker.interaction_point
 	return point.is_finite() and Vector2i(floori(point.x / CELL), floori(point.y / CELL)) == locker.cell and locker.get("facing", "") == "east"
 
+func locker_approach_route(_start: int,_target: int,_locker: Dictionary) -> Variant:
+	return null
+
 func request_helmet_at_locker(equip: bool, locker: Dictionary, refill := false) -> bool:
 	if dead or not active or movement_medium != "dry" or helmet_action_active() or (helmet_equipped == equip and not refill) or not stage.is_empty(): return false
 	if not valid_locker(locker): return false
@@ -173,10 +189,12 @@ func request_helmet_at_locker(equip: bool, locker: Dictionary, refill := false) 
 	var start := nearest_in_room(foot, cell_at(foot))
 	var target := nearest_in_room(point, locker.cell)
 	if start < 0 or target < 0: return false
-	var route := route_between(start, target)
+	var custom: Variant=locker_approach_route(start,target,locker)
+	var route: PackedVector2Array=custom if custom is PackedVector2Array else route_between(start, target)
 	if route.is_empty(): return false
-	route.append(point)
-	route = smooth_route(route)
+	if custom==null:
+		route.append(point)
+		route = smooth_route(route)
 	var previous := foot
 	for step in route:
 		if not segment_clear(previous, step): return false
@@ -205,6 +223,12 @@ func cancel_helmet_action() -> void:
 	timer = 0.0
 	activity = "helmet action interrupted"
 
+func interrupt_locker_action() -> void:
+	cancel_helmet_action()
+
+func helmet_return_active() -> bool:
+	return false
+
 func action_elapsed() -> float:
 	var life_elapsed:=Life.elapsed(self)
 	if life_elapsed>=0: return life_elapsed
@@ -218,6 +242,12 @@ func action_elapsed() -> float:
 	if stage=="workshop_unload": return 2.0-timer
 	return -1.0
 
+func inspection_animation() -> Dictionary:
+	return preload("res://scripts/bill_inspection.gd").clock(self)
+
+func meal_animation() -> Dictionary:
+	return preload("res://scripts/bill_meal.gd").clock(self)
+
 func interrupted_life_rise_seconds() -> float:
 	# Reverse only the lie-down already performed, retaining its furniture contact.
 	# Furniture-specific actors may override this for their longer transition.
@@ -228,6 +258,56 @@ func interrupted_life_rise_seconds() -> float:
 		return minf(elapsed+0.0000001 if elapsed>0 else 0,Life.seconds(self,"life_get_up"))
 	return Life.seconds(self,"life_get_up")
 
+func interrupted_sit_rise_seconds(main=null) -> float:
+	# Rise is the reversed sitting clip. Retain both its source pose and the
+	# furniture translation when service stops before the actor has settled.
+	var duration:=Life.seconds(self,"life_rise")
+	if stage in ["life_sit","observation_sit"]:
+		var elapsed:=maxf(0,Life.seconds(self,"life_sit")-timer) if stage=="life_sit" else maxf(0,(0.65-timer)/0.65*duration)
+		# At an exact frame boundary the two half-open clocks can choose opposite
+		# sides through rounding. Match the currently displayed source index using
+		# the loaded actor's actual timeline, without changing the visible offset.
+		if main is Object and main.get("grid_view")!=null:
+			var view=main.grid_view
+			var script_name: String=get_script().resource_path.get_file()
+			var player=view.veld_player if script_name=="veld_npc.gd" else (view.branforth_player if script_name=="branforth_npc.gd" else view.human_water_player)
+			var gear: String="diving-helmet" if helmet_equipped else ""
+			var clips: Dictionary=player.frames if gear.is_empty() else player.equipment_frames.get(gear,{})
+			var down: String="sit-down-"+direction;var rise: String="sit-rise-"+direction
+			if clips.has(down) and clips.has(rise) and clips[down].size()==clips[rise].size():
+				var index: int=clips[down].find(player.frame_at_elapsed(down,elapsed,gear))
+				if index>=0:
+					var target=clips[rise][clips[rise].size()-1-index]
+					for candidate in [elapsed,elapsed-0.0000001,elapsed+0.0000001]:
+						var retained:=clampf(candidate,0,duration)
+						if player.frame_at_elapsed(rise,duration-retained,gear)==target:return retained
+		return minf(elapsed,duration)
+	return duration
+
+func tablet_reading_sequence() -> bool:
+	return get_script().resource_path in ["res://scripts/bill_npc.gd","res://scripts/major_bill_npc.gd","res://scripts/bill_carry_npc.gd"] and direction in ["north","south"]
+
+func begin_tablet_exit(main) -> void:
+	var player=main.grid_view.human_water_player
+	var gear: String="diving-helmet" if helmet_equipped else ""
+	var clips: Dictionary=player.frames if gear.is_empty() else player.equipment_frames[gear]
+	var retained:=0.48
+	var enter_key: String="read-seated-enter-"+direction
+	var exit_key: String="read-seated-exit-"+direction
+	tablet_exit_pose=-1
+	if stage=="observation_read_enter":
+		var elapsed:=maxf(0,.48-timer)
+		var index: int=clips[enter_key].find(player.frame_at_elapsed(enter_key,elapsed,gear))
+		for candidate in [elapsed,elapsed-.0000001,elapsed+.0000001]:
+			retained=clampf(candidate,0,.48)
+			if player.frame_at_elapsed(exit_key,.48-retained,gear)==clips[exit_key][5-index]:break
+	else:
+		# Retain the actual whole reading pose for the first exit slot, including
+		# its hand/tablet position. The index is saved, so restores keep that join.
+		var current=main.grid_view._get_human_frame_source("read-seated",direction)
+		tablet_exit_pose=maxi(0,clips["read-seated-"+direction].find(current))
+	stage="observation_read_exit";state="idle";timer=retained
+
 func animation_state() -> String:
 	var life_pose:=Life.pose(self)
 	if not life_pose.is_empty(): return life_pose
@@ -237,6 +317,9 @@ func animation_state() -> String:
 		if expedition.phase=="pickup": return "swim-pickup"
 		if expedition.phase=="unload": return "idle" if expedition.cargo.is_empty() else "unload"
 		if not expedition.cargo.is_empty(): return "carry" if movement_medium=="dry" else "swim-carry"
+		# Recall starts the return route one update before its first movement.
+		# Preserve the prone swim pose through that stationary boundary.
+		if expedition.phase=="return" and movement_medium!="dry": return "swim"
 	if movement_medium == "dry":
 		if state=="weld" and goal=="construction":
 			if timer<0.52: return "torch-draw"
@@ -249,6 +332,9 @@ func animation_state() -> String:
 	# Retain a horizontal hold where standing upright in water would hit a wall.
 	if not geometry.is_empty() and not swim_segment_clear(foot,foot,direction,direction,true): return "swim"
 	return "tread"
+
+func prepare_death_motion(game) -> void:
+	preload("res://scripts/bill_ground_death.gd").prepare(self,game)
 
 func die() -> void:
 	if dead: return
@@ -268,11 +354,12 @@ func die() -> void:
 func snapshot() -> Dictionary:
 	return {"social_partner":social_partner,"social_cooldown":social_cooldown,"primary_room":primary_room,"air_recovery":air_recovery,"air_was_low":air_was_low,"tank_oxygen":tank_oxygen,"breath_oxygen":breath_oxygen,"starvation":starvation,"expedition":expedition.duplicate(true),"moonbay_assignment":moonbay_assignment.duplicate(true),"helmet_equipped": helmet_equipped, "movement_medium": movement_medium, "dead": dead, "active": active, "foot": foot, "state": state, "direction": direction,
 		"activity": activity, "goal": goal, "goal_cell": goal_cell, "path": path.duplicate(), "locker_request": locker_request.duplicate(true),
-		"timer": timer, "stage": stage, "needs": needs.duplicate(true), "visits": visits.duplicate(true),
+		"movement_heading":movement_heading.duplicate() if not path.is_empty() and movement_heading.get("target",Vector2.INF)==path[0] else {},
+		"timer": timer, "stage": stage, "death_entry_seconds":death_entry_seconds, "death_ground_variant":death_ground_variant, "tablet_exit_pose":tablet_exit_pose, "inspection_return_pose":inspection_return_pose, "meal_return_pose":meal_return_pose, "meal_return_kind":meal_return_kind, "needs": needs.duplicate(true), "visits": visits.duplicate(true),
 		"traffic_wait": traffic_wait, "traffic_retry": traffic_retry, "traffic_activity": traffic_activity,
 		"decision_rng": decision_rng.state if decision_rng != null else null}
 
-static func valid_snapshot(data: Variant, breathes := true, transition_limit := 0.0) -> bool:
+static func valid_snapshot(data: Variant, breathes := true, transition_limit := 0.0, helmet_ward := false, helmet_hull := false, helmet_construction := false) -> bool:
 	if not data is Dictionary: return false
 	var partner = data.get("social_partner","")
 	if not partner is String or partner not in ["","bill","veld","branforth","marsh"]:return false
@@ -302,16 +389,31 @@ static func valid_snapshot(data: Variant, breathes := true, transition_limit := 
 	if not data.get("helmet_equipped", false) is bool: return false
 	if breathes and data.get("movement_medium", "dry") == "exterior" and not data.get("helmet_equipped", false) and not data.get("dead",false): return false
 	if not data.state in ["idle", "walk", "kneel", "repair", "stand", "interact", "weld", "death-ground", "death-water", "equip-helmet", "remove-helmet"]: return false
-	if data.state=="weld" and (data.goal not in ["construction","hull-repair","ward-repair"] or data.get("movement_medium","dry")!="dry" or data.get("helmet_equipped",false) or not data.path.is_empty()): return false
+	if data.state=="weld" and (data.goal not in ["construction","hull-repair","ward-repair"] or data.get("movement_medium","dry")!="dry" or (data.get("helmet_equipped",false) and not (((helmet_ward and data.goal=="ward-repair") or (helmet_hull and data.goal=="hull-repair") or (helmet_construction and data.goal=="construction")) and data.active and data.stage=="")) or not data.path.is_empty()): return false
 	if data.state in ["equip-helmet", "remove-helmet"]:
 		if not data.active or data.get("movement_medium", "dry") != "dry" or data.direction != "east" or not data.path.is_empty() or data.stage != "" or data.goal != "": return false
 		if data.get("helmet_equipped", false) != (data.state == "remove-helmet"): return false
 	if not data.get("dead", false) is bool: return false
+	var death_entry: Variant=data.get("death_entry_seconds",0.0)
+	if not (death_entry is float or death_entry is int) or not is_finite(float(death_entry)):return false
+	var valid_death_entry:=false
+	for entry in [0.0,.25,.55,.9,1.3,1.7]:
+		if is_equal_approx(float(death_entry),entry):valid_death_entry=true
+	if not valid_death_entry:return false
+	if float(death_entry)>0 and (not data.get("dead",false) or data.get("movement_medium","dry")!="dry"):return false
+	var death_variant:Variant=data.get("death_ground_variant","")
+	if not death_variant is String or death_variant not in ["","lateral"]:return false
+	if death_variant=="lateral" and (not data.get("dead",false) or data.get("movement_medium","dry")!="dry" or data.direction not in ["north","south"]):return false
 	if data.get("dead", false):
 		var death_state := "death-ground" if data.get("movement_medium", "dry") == "dry" else "death-water"
 		if data.state != death_state or not data.path.is_empty() or data.goal != "" or data.stage != "": return false
 	elif data.state in ["death-ground", "death-water"]: return false
 	if not data.direction in ["north", "south", "east", "west"]: return false
+	var heading: Variant=data.get("movement_heading",{})
+	if not heading is Dictionary:return false
+	if not heading.is_empty():
+		if not heading.get("target") is Vector2 or not heading.target.is_finite() or not heading.get("direction") is String or heading.direction not in ["north","south","east","west"]:return false
+		if data.path.is_empty() or heading.target!=data.path[0]:return false
 	if not data.goal in ["", "social", "primary-work", "hunger", "fatigue", "curiosity", "maintenance", "diving-locker", "construction", "hull-repair", "ward-repair", "electrical-repair", "flood-retreat", "fire-retreat", "moonbay"] and not (not breathes and data.goal=="recharge"): return false
 	var request: Variant = data.get("locker_request", {})
 	if not request is Dictionary: return false
@@ -321,14 +423,33 @@ static func valid_snapshot(data: Variant, breathes := true, transition_limit := 
 		if (request.equip == data.get("helmet_equipped", false) and not request.get("refill",false)) or data.goal_cell != request.locker.cell or data.path.is_empty(): return false
 		if data.path[data.path.size() - 1] != request.locker.interaction_point: return false
 	elif not request.is_empty(): return false
-	if not Life.STAGES.has(data.stage) and not data.stage in ["", "kneel", "repair", "stand", "observation_sit", "observation_read", "observation_rise", "observation_watch", "workshop_inspect", "workshop_work", "workshop_carry", "workshop_unload"]: return false
+	if not Life.STAGES.has(data.stage) and not data.stage in ["", "kneel", "repair", "stand", "observation_sit", "observation_read", "observation_read_enter", "observation_read_exit", "observation_rise", "observation_watch", "workshop_inspect", "workshop_work", "workshop_pickup", "workshop_carry", "workshop_unload", "inspection_return", "meal_return"]: return false
+	var meal_pose:Variant=data.get("meal_return_pose",-1);var meal_kind:Variant=data.get("meal_return_kind","")
+	if not meal_pose is int or meal_pose < -1 or meal_pose>6 or not meal_kind is String or meal_kind not in ["","eat","drink"]:return false
+	if data.stage=="meal_return":
+		if meal_kind.is_empty() or data.get("dead",false) or data.get("helmet_equipped",false):return false
+		if not (data.timer is float or data.timer is int) or not is_finite(float(data.timer)) or float(data.timer)<0 or float(data.timer)>.58:return false
+		if not data.active or data.state!="idle" or not data.path.is_empty() or not data.goal.is_empty() or data.get("movement_medium","dry")!="dry":return false
+	var inspection_pose: Variant=data.get("inspection_return_pose",-1)
+	if not inspection_pose is int or inspection_pose < -1 or inspection_pose>5:return false
+	if data.stage=="inspection_return":
+		if not (data.timer is float or data.timer is int) or not is_finite(float(data.timer)) or float(data.timer)<0 or float(data.timer)>.48:return false
+		if not data.active or data.state!="idle" or not data.path.is_empty() or not data.goal.is_empty() or data.get("movement_medium","dry")!="dry":return false
+	var tablet_pose: Variant=data.get("tablet_exit_pose",-1)
+	if not tablet_pose is int or tablet_pose < -1 or tablet_pose>5:return false
+	if data.stage in ["observation_read_enter","observation_read_exit"]:
+		if not (data.timer is float or data.timer is int) or not is_finite(float(data.timer)) or float(data.timer)<0 or float(data.timer)>.48:return false
+		if data.direction not in ["north","south"] or data.get("movement_medium","dry")!="dry":return false
 	if str(data.stage).begins_with("observation_"):
 		# Watching and the desk face north; the reviewed sofa seat faces south.
 		if not data.active or data.state!="idle" or not data.direction in ["north","south"] or not data.path.is_empty(): return false
-		if data.goal not in ["curiosity","fatigue","maintenance"] and not (data.goal.is_empty() and data.stage=="observation_rise"): return false
+		if data.goal not in ["curiosity","fatigue","maintenance"] and not (data.goal.is_empty() and data.stage in ["observation_rise","observation_read_exit"]): return false
 	if str(data.stage).begins_with("workshop_"):
 		if not data.active or data.goal not in ["curiosity","maintenance","fatigue"]: return false
 		if data.stage!="workshop_carry" and not data.path.is_empty(): return false
+	if data.stage=="workshop_pickup":
+		if data.state!="idle" or data.get("movement_medium","dry")!="dry" or data.dead:return false
+		if not (data.timer is float or data.timer is int) or not is_finite(float(data.timer)) or data.timer<0 or data.timer>.52:return false
 	if not data.activity is String or data.activity.length() > 128: return false
 	if not (data.timer is float or data.timer is int) or not is_finite(float(data.timer)) or data.timer < 0 or data.timer > 3600: return false
 	if str(data.stage).begins_with("life_"):
@@ -379,6 +500,8 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 	breath_oxygen = float(data.get("breath_oxygen",15.0))
 	starvation = float(data.get("starvation",0.0))
 	dead = data.get("dead", false)
+	death_entry_seconds=float(data.get("death_entry_seconds",0.0))
+	death_ground_variant=str(data.get("death_ground_variant",""))
 	movement_medium = data.get("movement_medium", "dry")
 	helmet_equipped = data.get("helmet_equipped", false)
 	locker_request = data.get("locker_request", {}).duplicate(true)
@@ -394,8 +517,13 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 	goal = data.goal
 	goal_cell = data.goal_cell
 	path = data.path.duplicate()
+	movement_heading=data.get("movement_heading",{}).duplicate()
 	timer = float(data.timer)
 	stage = data.stage
+	tablet_exit_pose=int(data.get("tablet_exit_pose",-1))
+	inspection_return_pose=int(data.get("inspection_return_pose",-1))
+	meal_return_pose=int(data.get("meal_return_pose",-1))
+	meal_return_kind=str(data.get("meal_return_kind",""))
 	needs = data.needs.duplicate(true)
 	visits = data.visits.duplicate(true)
 	traffic_wait = float(data.get("traffic_wait", 0.0))
@@ -431,7 +559,7 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 	if path.is_empty() and state=="interact" and activity=="checking life support readings":
 		var local: Vector2=foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL
 		var contacts: Array=RoomActivity.stations(geometry.get(goal_cell,{}))
-		var valid_contact: bool=contacts.any(func(station):return station.get("mode","")=="console" and station.facing==direction and local.distance_to(station.point)<0.1)
+		var valid_contact: bool=contacts.any(func(station):return station.get("mode","")=="console" and station.facing==direction and station_contact_valid(station,local))
 		if not valid_contact:
 			goal="";stage="";state="idle";timer=0.0
 			activity="looking around"
@@ -439,18 +567,38 @@ func restore_snapshot(main, data: Dictionary, staged := false) -> void:
 func cell_at(point: Vector2) -> Vector2i:
 	return Vector2i(floori(point.x / CELL), floori(point.y / CELL))
 
+var topology_cached_key:Array=[]
+var topology_cached_value:String=""
+var topology_key_hits:int=0
+var topology_key_misses:int=0
 func topology(main) -> String:
-	var entries: Array[String] = []
+	var key:Array=[false,0]
 	locked_room_cells.clear()
 	for cell in main.occupied:
-		var room: Dictionary = main.occupied[cell]
-		if room.get("doors_locked", false): locked_room_cells[cell] = true
-		entries.append("%s:%s:%s:%s:%s:%s" % [cell, room.id, room.get("rotation", 0), main.get_room_doors(room),room.get("branch_owner",Vector2i(-1,-1)),room.get("doors_locked",false)])
-		if room.id == "moonbay":
-			var bay: Dictionary = preload("res://rooms/large-rooms/moonbay.gd").visual_state(room)
-			entries.append("bay:%s:%s:%s" % [room.pos,bay.station_open,bay.sub_present])
+		var room:Dictionary=main.occupied[cell]
+		if room.get("doors_locked",false):locked_room_cells[cell]=true
+		var row:Array=[cell,room.id,room.get("rotation",0),main.get_room_doors(room),room.get("branch_owner",Vector2i(-1,-1)),room.get("doors_locked",false)]
+		var types:Array=[typeof(row[0]),typeof(row[1]),typeof(row[2]),typeof(row[3]),typeof(row[4]),typeof(row[5])]
+		key.append([false,row,types])
+		if room.id=="moonbay":
+			var bay:Dictionary=preload("res://rooms/large-rooms/moonbay.gd").visual_state(room)
+			var bay_row:Array=[room.pos,bay.station_open,bay.sub_present,bay.phase in ["boarding","exit_bay"]]
+			key.append([true,bay_row,typeof(room.pos)])
+	# Read these after the same queries as the original: a first layout load may change revision.
+	var layout_revision:int=preload("res://scripts/room_layout_store.gd").geometry_revision
+	key[0]=hardware_doors_locked;key[1]=layout_revision
+	if key==topology_cached_key:
+		topology_key_hits+=1
+		return topology_cached_value
+	var entries:Array[String]=[]
+	for index in range(2,key.size()):
+		var item:Array=key[index]
+		entries.append(("bay:%s:%s:%s:%s" if item[0] else "%s:%s:%s:%s:%s:%s") % item[1])
 	entries.sort()
-	return str(hardware_doors_locked)+"/"+"|".join(entries)+"/layouts:"+str(preload("res://scripts/room_layout_store.gd").geometry_revision)
+	topology_cached_key=key.duplicate(true)
+	topology_cached_value=str(hardware_doors_locked)+"/"+"|".join(entries)+"/layouts:"+str(layout_revision)
+	topology_key_misses+=1
+	return topology_cached_value
 
 func can_stand(point: Vector2) -> bool:
 	var cell := cell_at(point)
@@ -458,9 +606,15 @@ func can_stand(point: Vector2) -> bool:
 	var data: Dictionary = geometry[cell]
 	var local := point - (Vector2(cell) + Vector2.ONE * 0.5) * CELL
 	# Closed sockets remain walls even in the corridor and legacy renderers.
-	for side in range(4):
-		var normal: Vector2 = Vector2(Geometry.DIRS[side])
-		if local.dot(normal) > 176 and not data.open.has(side): return false
+	if local.is_finite():
+		if local.y < -176 and not data.open.has(0):return false
+		if local.x > 176 and not data.open.has(1):return false
+		if local.y > 176 and not data.open.has(2):return false
+		if local.x < -176 and not data.open.has(3):return false
+	else:
+		for side in range(4):
+			var normal:Vector2=Vector2(Geometry.DIRS[side])
+			if local.dot(normal)>176 and not data.open.has(side):return false
 	if data.get("corridor", false):
 		for rect in data.get("blockers",[]):
 			if rect.has_point(local): return false
@@ -634,7 +788,16 @@ func _swim_floor_clear(a: Vector2, b: Vector2) -> bool:
 		var cell := cell_at(point)
 		if not geometry.has(cell): return false
 		var data: Dictionary = geometry[cell]
-		if data.get("corridor",false) or data.get("legacy",false):
+		if data.get("corridor",false):
+			# The caller already sweeps the full swim silhouette against furniture.
+			# can_stand would add padded props and a 10-unit walking radius again,
+			# rejecting a 57-unit north/south body at a 72-unit corridor mouth.
+			var local := point - (Vector2(cell) + Vector2.ONE * 0.5) * CELL
+			for side in range(4):
+				if local.dot(Vector2(Geometry.DIRS[side])) > 176 and not data.open.has(side): return false
+			if not Corridor.contains_foot(data.room,local,2.0): return false
+			continue
+		if data.get("legacy",false):
 			if not can_stand(point): return false
 			continue
 		var local := point - (Vector2(cell) + Vector2.ONE * 0.5) * CELL
@@ -669,7 +832,10 @@ func rebuild(main, staged := false) -> void:
 	if revision!=layout_geometry_revision:
 		room_cache.clear(); layout_geometry_revision=revision
 	cancel_helmet_action()
-	graph.clear()
+	var old_nodes:Dictionary=room_nodes.duplicate(true)
+	if staged:
+		graph.clear()
+		prefix_keys.clear();prefix_revision=-1
 	swim_link_cache.clear()
 	swim_region_cache.clear()
 	segment_geometry_cache.clear()
@@ -683,6 +849,8 @@ func rebuild(main, staged := false) -> void:
 	stage = ""
 	state = "idle"
 	var slice_started := Time.get_ticks_usec()
+	# Refresh locks before any cross-cell edges are built.
+	locked_room_cells.clear()
 	var room_keys := {}
 	for cell in main.occupied:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
@@ -690,6 +858,7 @@ func rebuild(main, staged := false) -> void:
 			if not is_instance_valid(main) or dead or build_revision != navigation_build_revision: return
 			slice_started = Time.get_ticks_usec()
 		var room: Dictionary = main.occupied[cell]
+		if room.get("doors_locked",false): locked_room_cells[cell]=true
 		var sides: Array = []
 		for neighbor in main._connected_neighbor_cells(cell):
 			sides.append(Geometry.DIRS.find(neighbor - cell))
@@ -697,14 +866,18 @@ func rebuild(main, staged := false) -> void:
 		if room.get("size",Vector2i.ONE)!=Vector2i.ONE: key+="/part:"+str(cell-room.pos)
 		if room.id == "moonbay":
 			var bay: Dictionary = preload("res://rooms/large-rooms/moonbay.gd").visual_state(room)
-			key += "/bay:%s:%s" % [bay.station_open,bay.sub_present]
+			key += "/bay:%s:%s:%s" % [bay.station_open,bay.sub_present,bay.phase in ["boarding","exit_bay"]]
 		# Fixed recovery furniture is part of geometry, not interchangeable blueprint art.
 		if room.id=="brine_core": key+="/pod:"+str(not main.architect_run.is_empty())
 		if room.get("recovered_derelict",false): key+="/pods:"+str(main.wrecks.get(cell,{}).get("pods",[]).size())
 		if main.wrecks.get(cell,{}).get("kind","") in ["river","josh","margot"]:key+="/companion-container"
 		room_keys[cell] = key
-		var data: Dictionary = room_cache[key].data if room_cache.has(key) else (main.grid_view.bill_room_geometry(room, sides, cell) if room.get("size",Vector2i.ONE)!=Vector2i.ONE else main.grid_view.bill_room_geometry(room, sides))
+		var data: Dictionary = room_cache[key].data.duplicate() if room_cache.has(key) else (main.grid_view.bill_room_geometry(room, sides, cell) if room.get("size",Vector2i.ONE)!=Vector2i.ONE else main.grid_view.bill_room_geometry(room, sides))
 		if data.is_empty(): continue
+		# Cached local geometry can serve several placed rooms. Keep ownership local
+		# so internal large-room links do not compare another room's anchor.
+		if room_cache.has(key) and data.has("room"):
+			data.room = room.duplicate(true)
 		data.activity_room = str(room.id)
 		data.open = sides
 		if not data.has("blockers"):
@@ -729,6 +902,28 @@ func rebuild(main, staged := false) -> void:
 			data.swim_blocker_bounds = bounds
 		geometry[cell] = data
 		room_nodes[cell] = []
+
+	var retained:Dictionary={}
+	var prefix_count:=0
+	var old_order:Array=prefix_keys.keys()
+	var index:=0
+	var eligible:bool=not staged and prefix_revision==revision and not OS.get_cmdline_user_args().has("--reference-prefix-rebuild")
+	for cell in geometry:
+		if not eligible or index>=old_order.size() or old_order[index]!=cell or prefix_keys[cell]!=room_keys[cell] or not room_cache.has(room_keys[cell]):break
+		var ids:Array=old_nodes.get(cell,[])
+		if ids.size()!=room_cache[room_keys[cell]].points.size():break
+		retained[cell]=ids
+		prefix_count+=ids.size()
+		index+=1
+	if prefix_count==0:
+		graph.clear()
+	else:
+		for pair in prefix_boundaries:
+			if graph.has_point(pair[0]) and graph.has_point(pair[1]) and graph.are_points_connected(pair[0],pair[1]):graph.disconnect_points(pair[0],pair[1])
+		for id in range(graph.get_point_count()-1,prefix_count-1,-1):graph.remove_point(id)
+		for id in prefix_count:graph.set_point_disabled(id,false)
+	prefix_boundaries=[]
+	set_meta("retained_nodes",prefix_count)
 	for cell in geometry:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
@@ -737,6 +932,16 @@ func rebuild(main, staged := false) -> void:
 		var center := (Vector2(cell) + Vector2.ONE * 0.5) * CELL
 		var key: String = room_keys[cell]
 		if not room_cache.has(key):
+			# Only template assembly proves both endpoints with can_stand first.
+			# Authored cells and closed-socket half-planes are convex; retain the
+			# exact padded blocker sweep. All other shapes keep segment_clear.
+			var fast_template: bool = fire_building_navigation and not OS.get_cmdline_user_args().has("--reference-nav-template-generation") and not sample_all_segments and not geometry[cell].get("corridor",false) and not geometry[cell].get("legacy",false)
+			var template_blockers: Array[Rect2] = []
+			if fast_template:
+				var cell_bounds := Rect2(Vector2(cell)*CELL,Vector2.ONE*CELL)
+				for blocker in geometry[cell].blockers:
+					var rect: Rect2 = Rect2(blocker.position+center,blocker.size).grow(0.05).intersection(cell_bounds)
+					if rect.has_area(): template_blockers.append(rect)
 			var local_points := {}
 			var links: Array = []
 			for y in range(-176, 177, STEP):
@@ -745,7 +950,7 @@ func rebuild(main, staged := false) -> void:
 					# A node exactly on a blocker's far edge passes can_stand (half-open
 					# rect) but fails every segment_clear sweep, which pads blockers by
 					# 0.05; an actor spawned there waits for a clear route forever.
-					if can_stand(center + Vector2(local)) and segment_clear(center + Vector2(local), center + Vector2(local)): local_points[local] = true
+					if can_stand(center + Vector2(local)) and (_template_segment_clear(center + Vector2(local), center + Vector2(local), template_blockers) if fast_template else segment_clear(center + Vector2(local), center + Vector2(local))): local_points[local] = true
 			for local in local_points:
 				if staged and Time.get_ticks_usec()-slice_started>=4000:
 					await main.get_tree().process_frame
@@ -753,18 +958,33 @@ func rebuild(main, staged := false) -> void:
 					slice_started = Time.get_ticks_usec()
 				for offset in [Vector2i(STEP, 0), Vector2i(0, STEP), Vector2i(STEP, STEP), Vector2i(-STEP, STEP)]:
 					var other: Vector2i = local + offset
-					if local_points.has(other) and segment_clear(center + Vector2(local), center + Vector2(other)):
+					if local_points.has(other) and (_template_segment_clear(center + Vector2(local), center + Vector2(other), template_blockers) if fast_template else segment_clear(center + Vector2(local), center + Vector2(other))):
 						links.append([local, other])
 			room_cache[key] = {"data": geometry[cell], "points": local_points.keys(), "links": links}
-		for local in room_cache[key].points:
-			var point := center + Vector2(local)
-			var id := graph.get_available_point_id()
-			graph.add_point(id, point, 1.0 if mini(absi(local.x), absi(local.y)) < 24 else 1.08)
-			points[Vector2i(point)] = id
-			room_nodes[cell].append(id)
-		for link in room_cache[key].links:
-			graph.connect_points(points[Vector2i(center) + link[0]], points[Vector2i(center) + link[1]])
+
+		if retained.has(cell):
+			room_nodes[cell]=retained[cell]
+			for id in retained[cell]:points[Vector2i(graph.get_point_position(id))]=id
+			continue
+		if reuse_navigation_points:
+			append_cached_room_points(cell,center,key)
+		else:
+			for local in room_cache[key].points:
+				var point := center + Vector2(local)
+				var id := graph.get_available_point_id()
+				graph.add_point(id, point, 1.0 if mini(absi(local.x), absi(local.y)) < 24 else 1.08)
+				points[Vector2i(point)] = id
+				room_nodes[cell].append(id)
+		if reuse_navigation_links:
+			append_cached_room_links(key,PackedInt64Array(room_nodes[cell]))
+		else:
+			for link in room_cache[key].links:
+				graph.connect_points(points[Vector2i(center) + link[0]], points[Vector2i(center) + link[1]])
 	# Cross cell boundaries only at reciprocal, connected door centers.
+	# Cache belongs only to this synchronous rebuild. Staged work keeps reference.
+	var boundary_cache: Dictionary = {}
+	if not staged and not sample_all_segments and not OS.get_cmdline_user_args().has("--reference-nav-boundary-checks"):
+		boundary_cache=_prepare_graph_boundary_cache()
 	for cell in geometry:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
 			await main.get_tree().process_frame
@@ -779,10 +999,15 @@ func rebuild(main, staged := false) -> void:
 			for offset in offsets:
 				var a := Vector2i(center + Vector2(direction) * 176) + Vector2i(-direction.y,direction.x)*int(offset)
 				var b: Vector2i = a + direction * 32
-				if points.has(a) and points.has(b) and segment_clear(Vector2(a), Vector2(b)):
+				if points.has(a) and points.has(b) and (_graph_boundary_clear(cell,neighbor,Vector2(a),Vector2(b),boundary_cache) if not boundary_cache.is_empty() else segment_clear(Vector2(a), Vector2(b))):
 					graph.connect_points(points[a], points[b])
+					prefix_boundaries.append([points[a],points[b]])
 	signature = topology(main)
 	fire_building_navigation=false
+
+	prefix_keys={}
+	for cell in geometry:prefix_keys[cell]=room_keys[cell]
+	prefix_revision=revision if not staged else -1
 
 func nearest_in_room(point: Vector2, cell: Vector2i, require_clear := true) -> int:
 	var best := -1
@@ -827,6 +1052,7 @@ func update(main, delta: float) -> void:
 	advance_needs(main,delta)
 	if preload("res://scripts/fire_safety.gd").advance(main,self,delta): return
 	if preload("res://scripts/flood_safety.gd").advance(main,self,delta): return
+	if has_method("advance_work_return") and call("advance_work_return",main,delta):return
 	if preload("res://scripts/hull_repair.gd").advance(main,self,delta): return
 	if preload("res://scripts/electrical_repair.gd").advance(main,self,delta): return
 	if preload("res://scripts/ward_repair.gd").advance(main,self,delta): return
@@ -842,12 +1068,32 @@ func update(main, delta: float) -> void:
 		# Stand up before choosing a new destination if work was interrupted.
 		if stage in ["life_lie","life_sleep"]:
 			var rise_time:=Life.seconds(self,"life_get_up")
-			if has_method("interrupted_life_rise_seconds"):rise_time=float(call("interrupted_life_rise_seconds"))
+			if has_method("rest_interruption_seconds"):rise_time=float(call("rest_interruption_seconds",main))
+			elif has_method("interrupted_life_rise_seconds"):rise_time=float(call("interrupted_life_rise_seconds"))
 			stage="life_get_up";state="idle";timer=rise_time
+		elif stage=="life_get_up" and has_method("retain_interrupted_rest_exit") and call("retain_interrupted_rest_exit"):
+			# Keep the authored return clock; the cleared goal prevents a rest reward.
+			state="idle"
 		elif stage in ["life_sit","life_seated"]:
-			stage="life_rise";state="idle";timer=0.8
-		elif stage in ["observation_sit","observation_read"]:
+			var rise_time:=interrupted_sit_rise_seconds(main)
+			stage="life_rise";state="idle";timer=rise_time
+		elif stage=="observation_sit":
+			var performed:=interrupted_sit_rise_seconds(main)/.8*.65
+			stage="observation_rise";state="idle";timer=performed
+			return
+		elif stage=="observation_read" and has_method("begin_interrupted_reading") and call("begin_interrupted_reading",main):
+			return
+		elif stage in ["observation_read_enter","observation_read"] and tablet_reading_sequence():
+			begin_tablet_exit(main)
+			return
+		elif stage=="observation_read_exit":
+			state="idle"
+		elif stage=="observation_read":
 			stage="observation_rise";state="idle";timer=0.65
+		elif preload("res://scripts/bill_inspection.gd").interrupt(self,main.grid_view.human_water_player):
+			return
+		elif begin_interrupted_meal(main):
+			return
 		elif stage in ["kneel", "repair"]:
 			stage = "stand"
 			state = "stand"
@@ -856,13 +1102,20 @@ func update(main, delta: float) -> void:
 			stage = ""
 			state = "idle"
 			timer = 0.0
+	if advance_station_motion(main,delta):return
 	if not path.is_empty():
 		move(delta)
 		return
+	# A cancelled draw at its untouched idle endpoint has no stow time to consume.
+	if stage=="inspection_return" and timer<=0:
+		stage="";state="idle";inspection_return_pose=-1
+	if stage=="meal_return" and timer<=0:
+		stage="";state="idle";meal_return_pose=-1;meal_return_kind=""
 	if timer > 0:
 		timer = maxf(0.0, timer - delta)
 		if timer > 0: return
 		if Life.next(self): return
+		if stage=="meal_return":meal_return_pose=-1;meal_return_kind=""
 		if stage=="workshop_inspect":
 			stage="workshop_work"
 			state="interact"
@@ -885,12 +1138,21 @@ func update(main, delta: float) -> void:
 				activity="carrying recovered parts"
 				return
 		if stage == "observation_sit":
-			stage="observation_read"
-			timer=12.0
+			stage="observation_read_enter" if tablet_reading_sequence() else "observation_read"
+			timer=.48 if tablet_reading_sequence() else 12.0
+			tablet_exit_pose=-1
+			return
+		if stage=="observation_read_enter":
+			stage="observation_read";timer=11.04
 			return
 		if stage == "observation_read":
+			if tablet_reading_sequence():begin_tablet_exit(main);return
+			stage="observation_rise";timer=.65
+			return
+		if stage=="observation_read_exit":
 			stage="observation_rise"
 			timer=0.65
+			tablet_exit_pose=-1
 			return
 		if stage == "kneel":
 			stage = "repair"
@@ -916,9 +1178,12 @@ func update(main, delta: float) -> void:
 		return
 	choose_goal(main)
 
+func movement_rate() -> float:
+	return 46.0
+
 func move(delta: float) -> void:
 	if dead: return
-	var remaining := delta * 46.0 * flood_speed
+	var remaining := delta * movement_rate() * flood_speed
 	traffic_retry = maxf(0.0, traffic_retry - delta)
 	state = "walk"
 	while remaining > 0 and not path.is_empty():
@@ -933,9 +1198,11 @@ func move(delta: float) -> void:
 			if traffic_retry <= 0:
 				traffic_retry = 0.5
 				if detour_around_crew(): return
-			if traffic_wait > 3.0:
+			if traffic_wait > 3.0 and goal != "diving-locker":
 				# A colleague may be resting at the destination. Pick another
 				# reachable spot instead of permanently reserving this route.
+				# Explicit locker requests keep their intent while crew pass;
+				# service loss and invalid geometry still cancel them normally.
 				path.clear()
 				goal = ""
 				locker_request.clear()
@@ -946,7 +1213,11 @@ func move(delta: float) -> void:
 		var heading := direction
 		var travel := next-foot
 		if travel.length_squared() > 0.001:
-			heading = ("east" if travel.x > 0 else "west") if absf(travel.x) > absf(travel.y) else ("south" if travel.y > 0 else "north")
+			# Tiny rounded steps can alternate axes on a diagonal at large world
+			# coordinates. Facing follows the intended waypoint segment instead.
+			if movement_heading.get("target",Vector2.INF)!=target:
+				movement_heading={"target":target,"direction":travel_heading(foot,target,direction)}
+			heading=movement_heading.direction
 		var squeezing: bool = squeeze_point.is_finite() and target.is_equal_approx(squeeze_point)
 		if not segment_clear(foot, next) or (movement_medium != "dry" and not squeezing and not swim_segment_clear(foot,next,heading)):
 			path.clear()
@@ -958,7 +1229,7 @@ func move(delta: float) -> void:
 			return
 		var offset := next - foot
 		if offset.length_squared() > 0.001 and not squeezing:
-			direction = ("east" if offset.x > 0 else "west") if absf(offset.x) > absf(offset.y) else ("south" if offset.y > 0 else "north")
+			direction = heading
 		foot = next
 		traffic_wait = 0.0
 		if not traffic_activity.is_empty():
@@ -967,6 +1238,7 @@ func move(delta: float) -> void:
 		remaining -= distance
 		if foot.is_equal_approx(target):
 			path.remove_at(0)
+			movement_heading.clear()
 			if squeeze_point.is_finite() and target.is_equal_approx(squeeze_point): squeeze_point = Vector2.INF
 	if path.is_empty(): arrive()
 
@@ -1028,6 +1300,7 @@ func detour_around_crew() -> bool:
 
 # Walking crew only: the swim search depends on facing, so a plain fill is not exact there.
 func _detour_reach(target: int, padding: Variant = null) -> Variant:
+	if not _detour_graph_dense():return _detour_reach_reference(target,padding)
 	if movement_medium != "dry" or not graph.has_point(target): return null
 	if fire_cells.has(cell_at(graph.get_point_position(target))): return null
 	var blocked := {}
@@ -1038,13 +1311,22 @@ func _detour_reach(target: int, padding: Variant = null) -> Variant:
 		for id in room_nodes.get(cell, []): blocked[id] = true
 	if blocked.has(target) or graph.is_point_disabled(target): return null
 	var reached := {target: true}
+	var visited:=PackedByteArray()
+	visited.resize(graph.get_point_count())
+	for id in blocked:
+		if id>=0 and id<visited.size():visited[id]=2
+	visited[target]=1
 	var queue: Array[int] = [target]
 	var head := 0
 	while head < queue.size():
 		var current: int = queue[head]
 		head += 1
 		for next_id in graph.get_point_connections(current):
-			if reached.has(next_id) or blocked.has(next_id) or graph.is_point_disabled(next_id): continue
+			if visited[next_id]!=0:continue
+			if graph.is_point_disabled(next_id):
+				visited[next_id]=2
+				continue
+			visited[next_id]=1
 			reached[next_id] = true
 			queue.append(next_id)
 	return {"reached": reached, "blocked": blocked}
@@ -1066,8 +1348,17 @@ func crew_detour_from(start: int, target: int, padding: Variant = null) -> Packe
 		if id == start: continue
 		graph.set_point_disabled(id, true)
 		disabled.append(id)
-	var route := route_between(start, target, true)
+	var custom: Variant=locker_approach_route(start,target,locker_request.locker) if goal=="diving-locker" and not locker_request.is_empty() else null
+	var route: PackedVector2Array=custom if custom is PackedVector2Array else route_between(start, target, true)
 	for id in disabled: graph.set_point_disabled(id, false)
+	if custom is PackedVector2Array:
+		# Preserve the authored final facing/contact after a traffic replan.
+		# Generic shortcut smoothing can remove the fine approach connector.
+		var previous:=foot;var facing:=direction
+		for point in route:
+			if not travel_segment_clear(previous,point,facing) or not crew_clear(previous,point):return PackedVector2Array()
+			facing=travel_heading(previous,point,facing);previous=point
+		return route
 	return _smooth_crew_detour(route)
 
 # Nodes a detour avoids around other crew; `start` is exempt so a crowded start can leave.
@@ -1163,12 +1454,13 @@ func advance_needs(main,delta: float) -> void:
 		if need in ["hunger","fatigue"]: rate *= preload("res://scripts/research_tree.gd").needs_rate(main.get("meta"))
 		needs[need]=minf(100,needs[need]+delta*rate)
 
-# Within one goal choice nothing moves, so a failed swim search, which explores every
-# reachable state, proves any target it never reached unreachable too (Sept 26: choosing
-# rest from a flooded reactor ran 16 failing searches, 2-3 s).
+# Reachability proofs live only within one goal choice, while geometry and hazards
+# stay fixed. Swim searches record explored facing states; failed dry searches
+# record the directed component. Reachable routes still use the normal planner.
 var swim_reach_scope: Variant = null
 
 func choose_goal(main) -> void:
+	movement_heading.clear()
 	swim_reach_scope={}
 	_choose_goal(main)
 	swim_reach_scope=null
@@ -1209,6 +1501,9 @@ func _choose_goal(main) -> void:
 			targets[i] = targets[j]
 			targets[j] = swap
 		var stations:=RoomActivity.stations(geometry[candidate.cell])
+		# Contact lookup keeps canonical order even when the target preference reverses.
+		# Scope this snapshot to the decision so changed furniture is never stale.
+		var contact_stations: Array = stations.duplicate()
 		if geometry[candidate.cell].get("activity_room","")=="observation_room" and int(visits.get(candidate.cell,0))%2==1: stations.reverse()
 		var wants_station: bool=not stations.is_empty() and (candidate.need in ["maintenance","fatigue","curiosity"] or (candidate.need=="hunger" and geometry[candidate.cell].get("activity_room","") in ["galley","crew_lounge"]))
 		var service_limit: float=144.0
@@ -1216,7 +1511,7 @@ func _choose_goal(main) -> void:
 			for station in stations: service_limit=maxf(service_limit,float(station.get("service_limit",144)))
 		if wants_station:
 			var center: Vector2=(Vector2(candidate.cell)+Vector2.ONE*0.5)*CELL
-			targets.sort_custom(func(a,b): return graph.get_point_position(a).distance_squared_to(center+stations[0].point)<graph.get_point_position(b).distance_squared_to(center+stations[0].point))
+			_sort_station_targets(targets,center+stations[0].point)
 		var attempted := 0
 		for target_id in targets:
 			var target := graph.get_point_position(target_id)
@@ -1224,7 +1519,7 @@ func _choose_goal(main) -> void:
 			# Nearby service points are valid destinations too; the pacing distance
 			# must not prevent crew already beside a counter from using it.
 			if absf(local.x) > service_limit or absf(local.y) > service_limit or (not wants_station and target.distance_to(foot) < 32): continue
-			var target_station: Dictionary=RoomActivity.at(geometry[candidate.cell],local) if wants_station else {}
+			var target_station: Dictionary=RoomActivity.at_stations(contact_stations,local) if wants_station else {}
 			if wants_station and target_station.is_empty(): continue
 			if wants_station and not spawn_clear(target): continue
 			if candidate.need == "maintenance" and not wants_station and not equipment_spot(candidate.cell, local): continue
@@ -1232,18 +1527,29 @@ func _choose_goal(main) -> void:
 				var contact_key: Vector2=Vector2(candidate.cell)*CELL+Vector2(target_station.point)
 				if not station_claims.has(contact_key):station_claims[contact_key]=bunk_claimed(main,candidate.cell,target_station)
 				if station_claims[contact_key]:continue
-			var route := route_between(start, target_id)
+			var arrival_facing := station_arrival_facing(target_station)
+			var route_facing := "" if target_station.get("exact_approach",false) else arrival_facing
+			var station_override: Variant=station_route(start,target_id,candidate.cell,target_station)
+			var route: PackedVector2Array=station_override if station_override is PackedVector2Array else route_between(start, target_id, false, route_facing)
 			attempted += 1
 			if route.is_empty():
 				if attempted >= 8: break
 				continue
-			if wants_station:
+			if wants_station and station_override==null:
 				var station:=target_station
 				if station.get("exact_approach",false):
 					var contact: Vector2=(Vector2(candidate.cell)+Vector2.ONE*0.5)*CELL+Vector2(station.point)
 					if not can_stand(contact) or not spawn_clear(contact) or not segment_clear(target,contact):continue
+					if not arrival_facing.is_empty() and travel_heading(target,contact,arrival_facing)!=arrival_facing:continue
+					if not arrival_facing.is_empty():
+						var previous := foot
+						var route_heading := direction
+						for point in route:
+							route_heading=travel_heading(previous,point,route_heading)
+							previous=point
+						if not travel_segment_clear(target,contact,route_heading):continue
 					route.append(contact)
-			var planned := smooth_route(route)
+			var planned := smooth_route(route) if arrival_facing.is_empty() else _smooth_route(route, Vector2.INF, true)
 			if planned.is_empty():
 				if attempted>=8: break
 				continue
@@ -1345,6 +1651,9 @@ func equipment_facing(cell: Vector2i, local: Vector2) -> String:
 func service_available(main, cell: Vector2i) -> bool:
 	return main.occupied.has(cell) and not main.occupied[cell].get("suspended", false) and main.powered_room_cells.has(cell)
 
+func begin_interrupted_meal(main) -> bool:
+	return preload("res://scripts/bill_meal.gd").interrupt(self,main.grid_view.human_water_player)
+
 func travel_segment_clear(a: Vector2, b: Vector2, facing: String) -> bool:
 	return segment_clear(a,b) and (movement_medium == "dry" or swim_segment_clear(a,b,travel_heading(a,b,facing),facing))
 
@@ -1358,7 +1667,49 @@ func travel_heading(a: Vector2, b: Vector2, fallback: String) -> String:
 static var route_searches := 0
 static var route_failures := 0
 
-func route_between(start: int, target: int, avoid_crew: bool = false) -> PackedVector2Array:
+func station_arrival_facing(_station: Dictionary) -> String:
+	return ""
+
+func station_route(_start: int,_target: int,_cell: Vector2i,_station: Dictionary) -> Variant:
+	return null
+
+func station_contact_valid(station: Dictionary,local: Vector2) -> bool:
+	return local.distance_to(station.point)<0.1
+
+func advance_station_motion(_main,_delta: float) -> bool:
+	return false
+
+# Needs advice asks whether any service is reachable, not which route is shortest.
+# One graph traversal avoids repeating a failed search for every service node.
+func can_reach_any(start: int, targets: Dictionary) -> bool:
+	route_searches += 1
+	if not graph.has_point(start) or targets.is_empty(): return false
+	if movement_medium == "dry" and graph.is_point_disabled(start): return false
+	var own := cell_at(foot)
+	var facings := ["east","south","west","north"]
+	var initial := Vector2i(start,facings.find(direction))
+	var queue: Array[Vector2i] = [initial]
+	var seen := {initial: true}
+	var head := 0
+	while head < queue.size():
+		var current := queue[head]
+		head += 1
+		var from := graph.get_point_position(current.x)
+		if targets.has(current.x) and not fire_cells.has(cell_at(from)): return true
+		for next_id in graph.get_point_connections(current.x):
+			if graph.is_point_disabled(next_id): continue
+			var to := graph.get_point_position(next_id)
+			var cell := cell_at(to)
+			if cell != own and fire_cells.has(cell): continue
+			var heading := travel_heading(from,to,facings[current.y]) if movement_medium != "dry" else direction
+			var next := Vector2i(next_id,facings.find(heading))
+			if seen.has(next): continue
+			if movement_medium != "dry" and not (plans_walk(cell_at(from)) and plans_walk(cell)) and not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
+			seen[next] = true
+			queue.append(next)
+	return false
+
+func route_between(start: int, target: int, avoid_crew: bool = false, arrival_facing: String = "") -> PackedVector2Array:
 	route_searches += 1
 	if not graph.has_point(start) or not graph.has_point(target):
 		route_failures += 1
@@ -1371,19 +1722,40 @@ func route_between(start: int, target: int, avoid_crew: bool = false) -> PackedV
 			if not graph.is_point_disabled(node):
 				graph.set_point_disabled(node,true)
 				disabled.append(node)
-	var route := _route_between_clear(start,target,avoid_crew)
+	var route := _route_between_clear(start,target,avoid_crew,arrival_facing)
 	for node in disabled: graph.set_point_disabled(node,false)
 	return route
 
-func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> PackedVector2Array:
-	if movement_medium == "dry": return graph.get_point_path(start,target)
+func _route_between_clear(start: int, target: int, avoid_crew: bool = false, arrival_facing: String = "") -> PackedVector2Array:
+	if movement_medium == "dry" and arrival_facing.is_empty():
+		# Only reject proven unreachable destinations within this goal choice.
+		# Keep normal AStar ordering/pixels for every reachable route. A failed
+		# galley approach can otherwise repeat hundreds of disconnected searches.
+		var dry_key:=Vector4i(start,-1,-1,-1)
+		var dry_scoped:bool=swim_reach_scope is Dictionary and not avoid_crew
+		if dry_scoped and swim_reach_scope.has(dry_key) and not swim_reach_scope[dry_key].has(target):return PackedVector2Array()
+		var dry_route:=graph.get_point_path(start,target)
+		if dry_route.is_empty() and dry_scoped and not swim_reach_scope.has(dry_key):
+			var reachable:Dictionary={start:true}
+			var pending:Array[int]=[start]
+			var cursor:=0
+			while cursor<pending.size():
+				var current_id:int=pending[cursor]
+				cursor+=1
+				for next_id in graph.get_point_connections(current_id):
+					if reachable.has(next_id) or graph.is_point_disabled(next_id):continue
+					reachable[next_id]=true
+					pending.append(next_id)
+			swim_reach_scope[dry_key]=reachable
+		return dry_route
 	if not graph.has_point(start) or not graph.has_point(target): return PackedVector2Array()
 	var facings := ["east","south","west","north"]
 	var initial := Vector2i(start,facings.find(direction))
 	var costs := {initial:0.0}
 	var parents := {}
 	var destination := graph.get_point_position(target)
-	var reach_key := Vector3i(start,initial.y,1 if helmet_equipped else 0)
+	var arrival_index: int=facings.find(arrival_facing)
+	var reach_key := Vector4i(start,initial.y,1 if helmet_equipped else 0,arrival_index+1)
 	var scoped: bool=swim_reach_scope is Dictionary and not avoid_crew
 	if scoped and swim_reach_scope.has(reach_key) and not swim_reach_scope[reach_key].has(target): return PackedVector2Array()
 	# Binary heap of [score, order, state]; stale entries are skipped when popped. A linear
@@ -1410,7 +1782,7 @@ func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> 
 		var current: Vector2i = top[2]
 		if closed.has(current): continue
 		closed[current]=true
-		if current.x == target:
+		if current.x == target and (arrival_index<0 or current.y==arrival_index):
 			var route := PackedVector2Array([destination])
 			while parents.has(current):
 				current = parents[current]
@@ -1425,7 +1797,7 @@ func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> 
 			var cost: float = costs[current]+from.distance_to(to)
 			if cost >= costs.get(next_state,INF): continue
 			if avoid_crew and not crew_clear(from,to): continue
-			if not (plans_walk(cell_at(from)) and plans_walk(cell_at(to))) and not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
+			if movement_medium!="dry" and not (plans_walk(cell_at(from)) and plans_walk(cell_at(to))) and not swim_link_clear(current.x,next_id,heading,facings[current.y]): continue
 			costs[next_state]=cost
 			parents[next_state]=current
 			order+=1
@@ -1440,7 +1812,8 @@ func _route_between_clear(start: int, target: int, avoid_crew: bool = false) -> 
 				index=parent
 	if scoped:
 		var reached := {}
-		for state in closed: reached[state.x]=true
+		for state in closed:
+			if arrival_index<0 or state.y==arrival_index:reached[state.x]=true
 		swim_reach_scope[reach_key]=reached
 	return PackedVector2Array()
 
@@ -1593,10 +1966,148 @@ func observation_visual_offset() -> Vector2:
 	if stage.begins_with("life_"): return Life.offset(self)
 	var amount:=0.0
 	if stage=="observation_sit": amount=1.0-clampf(timer/0.65,0,1)
-	elif stage=="observation_read": amount=1.0
+	elif stage in ["observation_read","observation_read_enter","observation_read_exit"]: amount=1.0
 	elif stage=="observation_rise": amount=clampf(timer/0.65,0,1)
 	if amount>0.0:
 		var local:=foot-(Vector2(goal_cell)+Vector2.ONE*0.5)*CELL
 		var station: Dictionary=RoomActivity.at(geometry.get(goal_cell,{}),local)
 		if station.has("rest_point"): return (Vector2(station.rest_point)-local)*amount
 	return Vector2(0,8.0*amount)
+
+# Rebuild owns a cleared graph and appends rooms serially, so IDs are contiguous.
+# Template offsets/weights are derived once and read only; layout invalidation
+# clears their owning room-cache entry. Never share the mutable AStar graph.
+func append_cached_room_points(cell:Vector2i,center:Vector2,key:String)->PackedInt64Array:
+	var entry:Dictionary=room_cache[key]
+	if not entry.has("packed_points"):
+		var offsets:=PackedVector2Array()
+		var weights:=PackedFloat64Array()
+		offsets.resize(entry.points.size());weights.resize(entry.points.size())
+		for i in entry.points.size():
+			var local:Vector2i=entry.points[i]
+			offsets[i]=Vector2(local)
+			weights[i]=1.0 if mini(absi(local.x),absi(local.y))<24 else 1.08
+		entry.packed_points=offsets;entry.point_weights=weights
+	var offsets:PackedVector2Array=entry.packed_points
+	var weights:PackedFloat64Array=entry.point_weights
+	var ids:=PackedInt64Array();ids.resize(offsets.size())
+	var first_id:=graph.get_point_count()
+	assert(graph.get_available_point_id()==first_id)
+	for i in offsets.size():
+		var point:=center+offsets[i]
+		var id:=first_id+i
+		graph.add_point(id,point,weights[i])
+		ids[i]=id;points[Vector2i(point)]=id
+	room_nodes[cell].append_array(Array(ids))
+	return ids
+
+# Derived link indices follow the original template order and are read only.
+
+func append_cached_room_links(key:String,ids:PackedInt64Array)->void:
+	var entry:Dictionary=room_cache[key]
+	if not entry.has("packed_links"):
+		var point_indices:Dictionary={}
+		for i in entry.points.size():point_indices[entry.points[i]]=i
+		var pairs:=PackedInt32Array();pairs.resize(entry.links.size()*2)
+		for i in entry.links.size():
+			pairs[i*2]=point_indices[entry.links[i][0]]
+			pairs[i*2+1]=point_indices[entry.links[i][1]]
+		entry.packed_links=pairs
+	var pairs:PackedInt32Array=entry.packed_links
+	for i in range(0,pairs.size(),2):graph.connect_points(ids[pairs[i]],ids[pairs[i+1]])
+
+# Template-only sweep: callers have already checked both local endpoints.
+# Never substitute for live route validation, fire policy or cell crossings.
+static func _template_segment_clear(a: Vector2, b: Vector2, blockers: Array[Rect2]) -> bool:
+	# Graph links are short: reject disjoint bounds before the full half-open sweep.
+	# Stationary points use the same Rect2 membership as that sweep.
+	if a==b:
+		for rect in blockers:
+			if rect.has_point(a):return false
+		return true
+	var minimum:=a.min(b)
+	var maximum:=a.max(b)
+	for rect in blockers:
+		var end:=rect.end
+		if maximum.x<rect.position.x or minimum.x>=end.x or maximum.y<rect.position.y or minimum.y>=end.y:continue
+		if segment_hits_rect(a,b,rect):return false
+	return true
+
+func _prepare_graph_boundary_cache()->Dictionary:
+	var started:=Time.get_ticks_usec()
+	var cache:Dictionary={}
+	for cell in geometry:
+		var data:Dictionary=geometry[cell]
+		if data.get("legacy",false) or data.get("corridor",false):continue
+		var bounds:=Rect2(Vector2(cell)*384,Vector2.ONE*384)
+		var center:=bounds.get_center();var blockers:Array[Rect2]=[]
+		for blocker in data.blockers:
+			var clipped:Rect2=Rect2(blocker.position+center,blocker.size).grow(.05).intersection(bounds)
+			if clipped.has_area():blockers.append(clipped)
+		cache[cell]=blockers
+	boundary_prepare_usec+=Time.get_ticks_usec()-started
+	return cache
+func _graph_boundary_clear(cell:Vector2i,neighbor:Vector2i,a:Vector2,b:Vector2,cache:Dictionary)->bool:
+	# Graph-assembly seam only; retain all general route/policy checks.
+	if not fire_building_navigation or sample_all_segments or not cache.has(cell) or not cache.has(neighbor):boundary_fallback_calls+=1;return segment_clear(a,b)
+	var direction:Vector2i=neighbor-cell
+	var side:int=Geometry.DIRS.find(direction)
+	if side<0 or cell_at(a)!=cell or cell_at(b)!=neighbor or b!=a+Vector2(direction)*32:boundary_fallback_calls+=1;return segment_clear(a,b)
+	var center:Vector2=(Vector2(cell)+Vector2.ONE*.5)*384
+	if (a-center).dot(Vector2(direction))!=176:boundary_fallback_calls+=1;return segment_clear(a,b)
+	boundary_fast_calls+=1
+	if hardware_doors_locked or locked_room_cells.has(cell) or locked_room_cells.has(neighbor):return false
+	if not geometry[cell].open.has(side) or not geometry[neighbor].open.has((side+2)%4):return false
+	# Each authored floor/closed-socket domain is convex. Reciprocal open sockets
+	# cover the intervening cell margins; exact owner-clipped sweeps cover props.
+	if not can_stand(a) or not can_stand(b):return false
+	for owner in [cell,neighbor]:
+		for rect in cache[owner]:
+			if segment_hits_rect(a,b,rect):return false
+	return true
+
+# Actor-local retained graph state; staged loads and layout revisions rebuild fully.
+var prefix_keys:Dictionary={}
+var prefix_revision:=-1
+var prefix_boundaries:Array=[]
+
+func _detour_reach_reference(target: int, padding: Variant = null) -> Variant:
+	if movement_medium != "dry" or not graph.has_point(target): return null
+	if fire_cells.has(cell_at(graph.get_point_position(target))): return null
+	var blocked := {}
+	for id in (_crew_padding(-1, target) if padding == null else padding): blocked[id] = true
+	var own := cell_at(foot)
+	for cell in fire_cells:
+		if cell == own: continue
+		for id in room_nodes.get(cell, []): blocked[id] = true
+	if blocked.has(target) or graph.is_point_disabled(target): return null
+	var reached := {target: true}
+	var queue: Array[int] = [target]
+	var head := 0
+	while head < queue.size():
+		var current: int = queue[head]
+		head += 1
+		for next_id in graph.get_point_connections(current):
+			if reached.has(next_id) or blocked.has(next_id) or graph.is_point_disabled(next_id): continue
+			reached[next_id] = true
+			queue.append(next_id)
+	return {"reached": reached, "blocked": blocked}
+
+var detour_dense_revision:=-1
+var detour_dense_graph:=0
+var detour_dense_count:=-1
+var detour_dense:=false
+func _detour_graph_dense()->bool:
+	var count:int=graph.get_point_count()
+	if detour_dense_revision!=navigation_build_revision or detour_dense_graph!=graph.get_instance_id() or detour_dense_count!=count:
+		detour_dense_revision=navigation_build_revision;detour_dense_graph=graph.get_instance_id();detour_dense_count=count
+		detour_dense=true
+		for id in graph.get_point_ids():
+			if id<0 or id>=count:detour_dense=false;break
+	return detour_dense
+
+# Decision-local distances preserve the strict comparator and shuffled tie order.
+func _sort_station_targets(targets:Array,station_point:Vector2)->void:
+	var distances:Dictionary={}
+	for id in targets:distances[id]=graph.get_point_position(id).distance_squared_to(station_point)
+	targets.sort_custom(func(a,b):return distances[a]<distances[b])

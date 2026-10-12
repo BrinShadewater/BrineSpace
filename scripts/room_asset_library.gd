@@ -152,21 +152,29 @@ static func base_sort_y(prop: Dictionary) -> float:
 		return prop.rect.position.y+prop.rect.size.y*(float(arm[1])+float(arm[3]))
 	return prop.rect.end.y
 static func template(id: String) -> Dictionary:
+	return _template(id,true)
+static func template_metadata(id: String) -> Dictionary:
+	return _template(id,false)
+static func _template(id: String, with_texture:bool) -> Dictionary:
 	id=base_id(id)
 	var all:=entries()
 	if not all.has(id): return {}
-	if all[id].has("template"): return all[id].template
+	var cache_key:String="template" if with_texture else "template_metadata"
+	if all[id].has(cache_key):return all[id][cache_key]
 	var data: Dictionary=all[id].data
-	if image_jobs.has(data.source):
-		finish_texture(data.source,true)
-	if not source_textures.has(data.source):
-		# Sheets retired to the owner's Desktop (station props v2, step 8a) leave
-		# stale placements in old saves and layouts: skip them without an error.
-		if not FileAccess.file_exists(data.source): return {}
-		var image:=Image.new()
-		if image.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source))!=OK: return {}
-		source_textures[data.source]=ImageTexture.create_from_image(image)
-	var texture: Texture2D=source_textures[data.source]
+	var texture:Texture2D
+	if with_texture:
+		if image_jobs.has(data.source):
+			finish_texture(data.source,true)
+		if not source_textures.has(data.source):
+			# Sheets retired to the owner's Desktop (station props v2, step 8a) leave
+			# stale placements in old saves and layouts: skip them without an error.
+			if not FileAccess.file_exists(data.source): return {}
+			var image:=Image.new()
+			if image.load_png_from_buffer(FileAccess.get_file_as_bytes(data.source))!=OK: return {}
+			source_textures[data.source]=ImageTexture.create_from_image(image)
+		texture=source_textures[data.source]
+	elif not FileAccess.file_exists(data.source):return {}
 	var r: Array=data.region
 	var pieces: Array=[]
 	for polygon in data.pieces:
@@ -198,7 +206,8 @@ static func template(id: String) -> Dictionary:
 	if data.get("wall_attachment",false): prop.wall_mount=true; prop.wall_attachment=true
 	if data.get("floor_piece",false): prop.floor_piece=true; prop.collision_boxes=[]
 	prop.sort_y=base_sort_y(prop)
-	all[id].template=prop
+	if not with_texture:prop.library_template_id=id
+	all[id][cache_key]=prop
 	# The tray publishes only clipped transparent renders, never source-sheet crops.
 	return prop
 static func apply(room: Node, values: Dictionary) -> void:
@@ -238,7 +247,17 @@ static func draw(room, prop: Dictionary) -> void:
 		var drone_state: Dictionary = room.drone_visual if room.drone_visual is Dictionary else {}
 		preload("res://scripts/drone_dock.gd").draw(room.painter,prop.rect,reg.drone_dock,drone_state,room.operating,room.machine_clock)
 		return
+	draw_base(room,prop)
+	draw_live(room,prop)
+
+# Ordinary library props only; portable views and drone docks own their draw path.
+static func draw_base(room, prop: Dictionary) -> void:
+	var reg: Dictionary=prop.registration
 	var tex: Texture2D=prop.library_texture
+	if tex==null and prop.has("library_template_id"):
+		tex=template(str(prop.library_template_id)).get("library_texture")
+		if tex==null:return
+		prop.library_texture=tex
 	var scale_value: float=prop.rect.size.x/reg.width
 	var anchor:=Vector2(prop.rect.get_center().x,prop.rect.end.y)
 	# Station props are cut without their painted shadows (owner, 2026-09-24): lay a
@@ -259,6 +278,11 @@ static func draw(room, prop: Dictionary) -> void:
 				room.painter.draw_polygon(shifted*PackedVector2Array(reg.pieces[i]),PackedColorArray([Color(0,0,0,step[1])]),uvs[i],tex)
 	for i in range(reg.pieces.size()):
 		room.painter.draw_polygon(place*PackedVector2Array(reg.pieces[i]),PackedColorArray([Color.WHITE]),uvs[i],tex)
+
+static func draw_live(room, prop: Dictionary) -> void:
+	var reg: Dictionary=prop.registration
+	var scale_value: float=prop.rect.size.x/reg.width
+	var anchor:=Vector2(prop.rect.get_center().x,prop.rect.end.y)
 	if is_station_prop(str(prop.get("copy_source",prop.get("variant_source",prop.id)))): draw_station_screens(room,reg,anchor,scale_value)
 	else: draw_operating_screens(room,reg,anchor,scale_value)
 	if reg.has("effects") and room.operating: draw_effects(room,prop,reg.effects)
@@ -267,7 +291,7 @@ static func draw(room, prop: Dictionary) -> void:
 # Station-prop effects (catalog "effects"): areas are fractions of the prop's art.
 static func draw_effects(room, prop: Dictionary, effects: Array) -> void:
 	var r: Rect2=prop.rect
-	var t: float=room.machine_clock
+	var t: float=0.0 if preload("res://scripts/title_settings.gd").reduced_motion else room.machine_clock
 	for fx in effects:
 		var a: Array=fx.area
 		var area:=Rect2(r.position+r.size*Vector2(a[0],a[1]),r.size*Vector2(a[2],a[3]))
@@ -317,7 +341,7 @@ static func draw_effects(room, prop: Dictionary, effects: Array) -> void:
 # a radar sweep on large wide screens, a waveform on wide ones, level bars on square/tall ones.
 static func draw_station_screens(room, reg: Dictionary, anchor: Vector2, scale_value: float) -> void:
 	if not reg.has("operating_screens") or not room.operating: return
-	var t: float=room.machine_clock
+	var t: float=0.0 if preload("res://scripts/title_settings.gd").reduced_motion else room.machine_clock
 	var color:=Color(str(reg.operating_screen_color)) if reg.has("operating_screen_color") else Color(.13,.75,.78,.8)
 	var width: float=maxf(.55,scale_value*1.4)
 	for index in range(reg.operating_screens.size()):
@@ -363,12 +387,13 @@ static func draw_station_screens(room, reg: Dictionary, anchor: Vector2, scale_v
 				room.painter.draw_rect(bar,Color(color,0.55))
 
 static func draw_operating_screens(room, reg: Dictionary, anchor: Vector2, scale_value: float) -> void:
+	var clock: float=0.0 if preload("res://scripts/title_settings.gd").reduced_motion else room.machine_clock
 	if reg.has("operating_screens") and room.operating:
 		for index in range(reg.operating_screens.size()):
 			var screen: Array=reg.operating_screens[index]
 			var trace:=PackedVector2Array()
 			for step in range(9):
-				var point:=Vector2(screen[0]+screen[2]*step/8.0,screen[1]+screen[3]*(0.5+0.22*sin(step*1.7+room.machine_clock*3+index)))
+				var point:=Vector2(screen[0]+screen[2]*step/8.0,screen[1]+screen[3]*(0.5+0.22*sin(step*1.7+clock*3+index)))
 				point=source_uv(reg,point)
 				trace.append(anchor+(point-reg.pivot)*scale_value)
 			var color:=Color(str(reg.operating_screen_color)) if reg.has("operating_screen_color") else Color(.13,.75,.78,.8)
@@ -468,3 +493,24 @@ static func is_exterior(id: String) -> bool:
 		var parsed=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/tileset-library/exterior.json"))
 		if parsed is Dictionary: exterior_assets=parsed.get("assets",{})
 	return exterior_assets.has(base_id(id).trim_prefix("library/tileset-"))
+
+# Prepare the same saved-layout templates on a disposable prop list. The live view,
+# its layout stamps and construction preview remain untouched.
+class LayoutPreparation extends Node:
+	var props: Array = []
+	var room_id: String = ""
+	var quarter: int = 0
+static func prewarm_layout_templates(view: Node, quarter: int) -> void:
+	var store = load("res://scripts/room_layout_store.gd")
+	var asset: String = store.asset_for(view)
+	if asset.is_empty(): return
+	var prepared := LayoutPreparation.new()
+	prepared.props = view.props.duplicate(true)
+	prepared.room_id = store.room_id_for(view, asset)
+	prepared.quarter = quarter
+	prepared.set_meta("layout_asset", asset)
+	var values: Dictionary = store.shared_positions(asset, quarter)
+	apply(prepared, values)
+	store.copies(prepared, values)
+	apply_variants(prepared, values)
+	prepared.free()

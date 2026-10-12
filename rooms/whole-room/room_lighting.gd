@@ -86,8 +86,14 @@ static func draw_fixtures(canvas: CanvasItem, level: float, white := false, warm
 # A soft glow around a lit lamp (owner playtest, Sept 29; spec 2026-09-29-lighting-atmosphere-design.md).
 # The texture falls off in five visible bands with light ordered dithering, so it reads as painted pixel
 # art rather than a blur, and it is drawn with the room's light level so it fades with the lamp.
+const LightingArt = preload("res://scripts/lighting_art.gd")
 static var _halo: ImageTexture
-static func halo_texture() -> ImageTexture:
+static func halo_texture(kind: String = "warm") -> Texture2D:
+	var authored := LightingArt.texture(kind)
+	if authored != null: return authored
+	return procedural_halo_texture()
+
+static func procedural_halo_texture() -> ImageTexture:
 	if _halo != null: return _halo
 	var size := 64
 	var image := Image.create(size, size, false, Image.FORMAT_RGBA8)
@@ -135,7 +141,7 @@ static func draw_halos(canvas: CanvasItem, level: float, white := false, warm :=
 		var settings: Dictionary=entry if entry is Dictionary else {}
 		var energy:=clampf(level*float(settings.get("brightness",1.0)),0,1)
 		if energy < 0.05: continue
-		canvas.draw_texture_rect(halo_texture(), Rect2(anchor - Vector2(70, 46), Vector2(140, 140)), false, Color(tint.r, tint.g, tint.b, 0.30 * energy))
+		canvas.draw_texture_rect(halo_texture("warm" if warm or not white else "cool"), Rect2(anchor - Vector2(70, 46), Vector2(140, 140)), false, Color(tint.r, tint.g, tint.b, 0.30 * energy))
 
 # ---- Stage 2: the light map (spec 2026-09-29-lighting-atmosphere-design.md) ----
 # A hidden viewport at a quarter of the station view's size holds each room's ambient brightness and
@@ -144,6 +150,7 @@ static func draw_halos(canvas: CanvasItem, level: float, white := false, warm :=
 # offset, so scrolling never repaints it; only a change in room light, zoom or blackout phase does.
 const TitleSettings = preload("res://scripts/title_settings.gd")
 const MAP_SCALE := 4.0
+static var schedule_light_map := not OS.get_cmdline_user_args().has("--reference-light-map")
 const LIT_AMBIENT := 0.98   # owner playtest Sept 29: rooms a little too dark, so lit rooms barely dim
 const DARK_AMBIENT := 0.76   # owner: unpowered rooms lighter than the audition's 0.36
 # Blackout red: one slow pulse every two seconds (well under the three-a-second guideline) and a
@@ -203,7 +210,11 @@ static func update_light_map(game) -> void:
 	if overlay == null or not is_instance_valid(overlay): return
 	var active: bool = TitleSettings.effects_quality > 0
 	overlay.visible = active
-	if not active: return
+	if not active:
+		if schedule_light_map:
+			(overlay.get_meta("viewport") as SubViewport).render_target_update_mode=SubViewport.UPDATE_DISABLED
+			overlay.set_meta("map_view_state",null)
+		return
 	var scroll: ScrollContainer = game.grid_scroll
 	var viewport: SubViewport = overlay.get_meta("viewport")
 	var want := Vector2i(maxi(2, ceili(scroll.size.x / MAP_SCALE)), maxi(2, ceili(scroll.size.y / MAP_SCALE)))
@@ -218,6 +229,14 @@ static func update_light_map(game) -> void:
 		overlay.set_meta("signature", signature)
 		(overlay.get_meta("ambient") as Node2D).queue_redraw()
 		(overlay.get_meta("lights") as Node2D).queue_redraw()
+	if schedule_light_map:
+		var state:Array=[want,offset,signature]
+		if overlay.get_meta("map_view_state",[])!=state:
+			overlay.set_meta("map_view_state",state)
+			viewport.render_target_update_mode=SubViewport.UPDATE_ONCE
+	else:
+		overlay.set_meta("map_view_state",null)
+		viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS
 
 # Crew carry lamps (owner playtest, Sept 29): a helmet lamp lights the floor ahead of a crew member in a
 # dark room. Marsh, the android, has no helmet and no lamp. Returns [{at, facing, helmet}] in 384-unit
@@ -273,6 +292,15 @@ static func draw_ambient(node: Node2D, game) -> void:
 static func _blob(node: Node2D, at: Vector2, radius: Vector2, color: Color) -> void:
 	node.draw_texture_rect(halo_texture(), Rect2(at - radius, radius * 2.0), false, color)
 
+static func _beacon(node: Node2D, at: Vector2, radius: Vector2, angle: float, color: Color) -> void:
+	var sprite := LightingArt.texture("beacon")
+	if sprite == null:
+		_blob(node, at, radius, color)
+		return
+	node.draw_set_transform(at, angle)
+	node.draw_texture_rect(sprite, Rect2(-radius, radius * 2.0), false, color)
+	node.draw_set_transform(Vector2.ZERO)
+
 static func draw_lights(node: Node2D, game) -> void:
 	if not game_is_current(game): return
 	var grid = game.grid_view
@@ -312,7 +340,7 @@ static func draw_lights(node: Node2D, game) -> void:
 				var pulse := 0.5 + 0.5 * sin(phase * TAU)
 				_blob(node, door + direction * size * -0.05, Vector2(0.42, 0.42) * size, Color(0.24, 0.03, 0.02, 1.0) * (0.35 + 0.65 * pulse))
 				var orbit := Vector2(cos(beacon_angle + direction.angle()), sin(beacon_angle + direction.angle())) * size * 0.10
-				_blob(node, door + direction * size * -0.10 + orbit, Vector2(0.14, 0.14) * size, Color(0.30, 0.04, 0.03, 1.0))
+				_beacon(node, door + direction * size * -0.10 + orbit, Vector2(0.14, 0.14) * size, beacon_angle + direction.angle(), Color(0.30, 0.04, 0.03, 1.0))
 	# Crew lamps: a soft white pool a little ahead of each crew member, stronger with the helmet on.
 	for lamp in crew_lamps(game):
 		var at: Vector2 = lamp.at / 384.0 * size + lamp.facing * size * 0.07 + Vector2(0, -size * 0.05)
@@ -324,7 +352,8 @@ static func draw_lights(node: Node2D, game) -> void:
 static var _contact_boxes := {}
 
 static func _contact_box(shade: Color, radius: float) -> StyleBoxFlat:
-	var key := "%s/%d" % [shade.to_html(), int(round(radius))]
+	# Match the clamped RGBA8/radius buckets while preserving each first cached colour.
+	var key := Vector2i(shade.clamp().to_rgba32(), int(round(radius)))
 	if _contact_boxes.has(key): return _contact_boxes[key]
 	var box := StyleBoxFlat.new()
 	box.bg_color = shade
@@ -334,6 +363,9 @@ static func _contact_box(shade: Color, radius: float) -> StyleBoxFlat:
 	box.anti_aliasing_size = 1.0
 	_contact_boxes[key] = box
 	return box
+
+# Keep the exact StyleBox reference available for matched native diagnostics.
+static var batch_contact_shadows := not OS.get_cmdline_user_args().has("--reference-contact-shadows")
 
 static var batch_projected_shadows := not OS.get_cmdline_user_args().has("--reference-projected-shadows")
 
@@ -360,7 +392,7 @@ static func projected_shadow_mesh(foot: Rect2, rise: float) -> Dictionary:
 	return mesh
 
 ## Footprint-based contact shadows; drawn on the deck before machinery and crew.
-static func draw_equipment_shadows(canvas: CanvasItem, props: Array, level: float, view = null) -> void:
+static func reference_equipment_shadows(canvas: CanvasItem, props: Array, level: float, view = null) -> void:
 	# Recessed perimeter: narrow ambient contact shade, no extra room-wide dimming.
 	for band in range(4):
 		var inset := float(band)*2.0
@@ -417,6 +449,15 @@ static func _draw_foot_shadow(canvas: CanvasItem, foot: Rect2, rise: float, leve
 				canvas.draw_colored_polygon(clipped,shadow_color)
 	# Per-prop order is preserved for overlapping translucent shadows.
 
+	if batch_contact_shadows:
+		var bands:=[]
+		for band in 3:
+			var shade:=foot.grow(float(3-band)*0.7).intersection(Rect2(-180,-180,360,360))
+			if shade.has_area():
+				var box:=_contact_box(Color(0.015,0.025,0.03,(0.025+float(band)*0.018)*(0.8+0.2*level)),minf(minf(shade.size.x,shade.size.y)*0.22,10.0))
+				bands.append({"rect":shade,"radius":float(box.corner_radius_top_left),"color":box.bg_color})
+		if preload("res://scripts/contact_shadow_batch.gd").draw(canvas,bands):return
+
 	# Concentric contact bands touch every edge instead of forming an offset
 	# dark mat below the object. Keep a stronger core and a restrained fringe.
 	# The bands are rounded and edge-smoothed: square corners under round and irregular
@@ -466,3 +507,109 @@ static func anchors_for(edits: Dictionary, raised: bool) -> Array:
 		else:
 			settings.at=light.rect.get_center(); result.append(settings)
 	return result
+
+static var combine_room_shadows:=not OS.get_cmdline_user_args().has("--reference-room-shadow-packet")
+static var room_shadow_packets:Dictionary={}
+static var room_shadow_packet_hits:=0
+static var room_shadow_packet_misses:=0
+static var room_shadow_packet_fallbacks:=0
+static var room_shadow_packet_bytes:=0
+const ROOM_SHADOW_PACKET_BYTES:=8*1024*1024
+static func draw_equipment_shadows(canvas:CanvasItem,props:Array,level:float,view=null)->void:
+	if not combine_room_shadows or not batch_projected_shadows or not batch_contact_shadows:
+		reference_equipment_shadows(canvas,props,level,view);return
+	var parts:Array=[]
+	for prop in props:
+		if prop.get("layout_hidden",false) or prop.get("registration",{}).get("owns_contact_shadow",false):continue
+		var rect:Rect2=prop.get("rect",Rect2())
+		if rect.size.x<18 or rect.size.y<12:continue
+		var foot:Rect2=rect
+		if prop.has("footprint"):
+			var f:Array=prop.footprint
+			foot=Rect2(rect.position+rect.size*Vector2(float(f[0]),float(f[1])),rect.size*Vector2(float(f[2]),float(f[3])))
+		var rise:=12.0
+		if view!=null:
+			var visual:Rect2=view.prop_visual_bounds(prop)
+			rise=clampf(visual.size.y-foot.size.y,8.0,85.0)
+		for part in shadow_feet(prop,foot):
+			var bands:Array=[]
+			for band in 3:
+				var shade:Rect2=part.grow(float(3-band)*0.7).intersection(Rect2(-180,-180,360,360))
+				if shade.has_area():
+					var box:=_contact_box(Color(0.015,0.025,0.03,(0.025+float(band)*0.018)*(0.8+0.2*level)),minf(minf(shade.size.x,shade.size.y)*0.22,10.0))
+					bands.append({"rect":shade,"radius":float(box.corner_radius_top_left),"color":box.bg_color})
+			parts.append([part,rise,bands])
+	if parts.size()>700:
+		room_shadow_packet_fallbacks+=1;reference_equipment_shadows(canvas,props,level,view);return
+	var node:CanvasItem=canvas
+	while node!=null and node.oversampling_with_scale==CanvasItem.OVERSAMPLING_WITH_SCALE_PARENT_NODE:
+		var parent=node.get_parent()
+		if parent!=null and not parent is CanvasItem and not parent is Viewport:
+			room_shadow_packet_fallbacks+=1;reference_equipment_shadows(canvas,props,level,view);return
+		node=parent as CanvasItem
+	if node!=null and node.oversampling_with_scale==CanvasItem.OVERSAMPLING_WITH_SCALE_ENABLED:
+		room_shadow_packet_fallbacks+=1;reference_equipment_shadows(canvas,props,level,view);return
+	var aa:float=canvas.get_viewport().get_oversampling()
+	if aa<=0:aa=1.0
+	var geometry_parts:Array=[]
+	for part in parts:
+		var bands:Array=[]
+		for band in part[2]:bands.append([band.rect,band.radius])
+		geometry_parts.append([part[0],part[1],bands])
+	var key:Array=[aa,geometry_parts]
+	var packet:Dictionary
+	if room_shadow_packets.has(key):
+		room_shadow_packet_hits+=1;packet=room_shadow_packets[key]
+	else:
+		room_shadow_packet_misses+=1
+		packet={"points":PackedVector2Array(),"indices":PackedInt32Array(),"colors":PackedColorArray(),"projected_counts":[]}
+		for part in parts:
+			var projected:Dictionary=projected_shadow_mesh(part[0],part[1])
+			var projected_colors:=PackedColorArray()
+			projected_colors.resize(projected.points.size())
+			projected_colors.fill(Color(0.015,0.025,0.04,(0.018+0.012*level)))
+			append_room_shadow_packet(packet,projected.points,projected.indices,projected_colors)
+			packet.projected_counts.append(projected.points.size())
+			var contact:Dictionary=preload("res://scripts/contact_shadow_batch.gd").prepare(canvas,part[2])
+			if contact.is_empty():
+				room_shadow_packet_fallbacks+=1;reference_equipment_shadows(canvas,props,level,view);return
+			append_room_shadow_packet(packet,contact.points,contact.indices,contact.colors)
+		# Budget includes geometry plus its one current colour buffer, not fade history.
+		var buffer_bytes:int=packet.points.size()*24+packet.indices.size()*4
+		if buffer_bytes>ROOM_SHADOW_PACKET_BYTES:
+			room_shadow_packet_fallbacks+=1;reference_equipment_shadows(canvas,props,level,view);return
+		if room_shadow_packets.size()>=128 or room_shadow_packet_bytes+buffer_bytes>ROOM_SHADOW_PACKET_BYTES:
+			room_shadow_packets.clear();room_shadow_packet_bytes=0
+		packet.erase("colors")
+		room_shadow_packets[key]=packet;room_shadow_packet_bytes+=buffer_bytes
+	for band in range(4):
+		var inset:=float(band)*2.0
+		canvas.draw_rect(Rect2(-180+inset,-180+inset,360-inset*2,360-inset*2),Color(0.015,0.025,0.03,0.055),false,2.0)
+
+	# One current palette per geometry: fading never retessellates or retains
+	# a history of geometry buffers. Actual StyleBox colours preserve legacy rounding.
+	var palette:Array=[level]
+	for part in parts:
+		for band in part[2]:palette.append(band.color)
+	if packet.get("palette",[])!=palette:
+		room_shadow_palette_updates+=1
+		var colors:=PackedColorArray()
+		for i in parts.size():
+			var projected_colors:=PackedColorArray()
+			projected_colors.resize(packet.projected_counts[i])
+			projected_colors.fill(Color(0.015,0.025,0.04,(0.018+0.012*level)))
+			colors.append_array(projected_colors)
+			colors.append_array(preload("res://scripts/contact_shadow_batch.gd").colors_for_bands(parts[i][2]))
+		packet.colors=colors;packet.palette=palette
+	if not packet.indices.is_empty():RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),packet.indices,packet.points,packet.colors)
+static func append_room_shadow_packet(packet:Dictionary,points:PackedVector2Array,indices:PackedInt32Array,colors:PackedColorArray)->void:
+	var base:int=packet.points.size()
+	packet.points.append_array(points);packet.colors.append_array(colors)
+	for index in indices:packet.indices.append(base+index)
+
+static var room_shadow_palette_updates:=0
+
+static func clear_room_shadow_packets()->void:
+	room_shadow_packets.clear();room_shadow_packet_bytes=0
+	room_shadow_packet_hits=0;room_shadow_packet_misses=0
+	room_shadow_packet_fallbacks=0;room_shadow_palette_updates=0

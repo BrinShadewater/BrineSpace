@@ -30,12 +30,10 @@ func _ready() -> void:
 	actor_library=ActorLibrary.new()
 	set_process(false)
 	show_actor=false
-	for id in ["kitchen","serving"]:
-		var image:=Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, "res://legacy/retired/rooms/underwater/galley-v1/"+id+".png")
-		textures[id]=ImageTexture.create_from_image(image)
-		regions[id]=Rect2(image.get_used_rect())
-	north_kitchen_art=DirectionalLibrary.template("library/galley-kitchen-north").duplicate(true)
+	if OS.get_cmdline_user_args().has("--reference-eager-galley"):
+		for id in ["kitchen","serving"]:ensure_legacy_texture(id)
+	if OS.get_cmdline_user_args().has("--reference-eager-galley"):
+		north_kitchen_art=DirectionalLibrary.template("library/galley-kitchen-north").duplicate(true)
 	rebuild()
 func rebuild() -> void:
 	layout=[{"cell":Vector2i.ZERO,"rotation":quarter,"kind":3}]
@@ -45,7 +43,7 @@ func rebuild() -> void:
 	for id in ["kitchen","serving"]:
 		var rect:=Rect2(-160,-180,320,64) if id=="kitchen" else Rect2(20,74,132,42)
 		if id=="serving":
-			var prop: Dictionary=DirectionalLibrary.template("library/side-galley-serving-south").duplicate(true)
+			var prop:Dictionary=(DirectionalLibrary.template("library/side-galley-serving-south") if OS.get_cmdline_user_args().has("--reference-galley-template-texture") else DirectionalLibrary.template_metadata("library/side-galley-serving-south")).duplicate(true)
 			var height: float=152.0*prop.registration.height/prop.registration.width
 			prop.id=id
 			prop.rect=Rect2(32.0,184.0-height,152.0,height)
@@ -67,9 +65,20 @@ func rebuild() -> void:
 	queue_redraw()
 func configure_embedded(q: int, open_sides: Array, running: bool, time_seconds: float, omitted_sides: Array=[]) -> void:
 	super.configure_embedded(q,open_sides,running,time_seconds,omitted_sides)
+const LEGACY_TEXTURE_PATHS={
+	"kitchen":"res://legacy/retired/rooms/underwater/galley-v1/kitchen.png",
+	"serving":"res://legacy/retired/rooms/underwater/galley-v1/serving.png",
+}
+func ensure_legacy_texture(id:String) -> void:
+	if textures.has(id):return
+	var image:=Image.new()
+	preload("res://scripts/safe_image.gd").load_png(image,LEGACY_TEXTURE_PATHS[id])
+	textures[id]=ImageTexture.create_from_image(image)
+	regions[id]=Rect2(image.get_used_rect())
 func prop_visual_bounds(prop: Dictionary) -> Rect2:
 	if prop.get("overhead_furnishing",false):return overhead_bounds(prop)
 	if prop.get("library_asset",false): return DirectionalLibrary.bounds(prop)
+	ensure_legacy_texture(prop.id)
 	var region: Rect2=regions[prop.id]
 	var size:=Vector2(prop.rect.size.x,prop.rect.size.x*region.size.y/region.size.x)
 	return Rect2(Vector2(prop.rect.position.x,prop.rect.end.y-size.y),size)
@@ -97,6 +106,8 @@ func draw_registered_prop(prop: Dictionary) -> void:
 			painter.draw_polyline(points,Color(.75,.32,.10,.28+.10*sin(machine_clock*2)),.65)
 		return
 	var bounds:=prop_visual_bounds(prop)
+	if prop.id=="kitchen" and north_kitchen_art.is_empty():
+		north_kitchen_art=DirectionalLibrary.template("library/galley-kitchen-north").duplicate(true)
 	if prop.id=="kitchen" and not north_kitchen_art.is_empty():
 		var artwork:=north_kitchen_art.duplicate()
 		artwork.rect=bounds

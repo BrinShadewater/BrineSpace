@@ -5,6 +5,13 @@ extends Control
 var art: Texture2D
 var badge_id := ""
 var owner_button: Button
+const PATHS := {
+	"codex":"res://brineui/navigation-badges-v3/codex.png",
+	"archive":"res://brineui/navigation-badges-v3/archive.png",
+	"diagnostics":"res://brineui/navigation-badges-v3/diagnostics.png",
+	"journal":"res://brineui/navigation-badges-v3/journal.png",
+	"menu":"res://brineui/navigation-badges-v3/menu.png",
+}
 static var textures: Dictionary = {}
 static var plain_frames: Dictionary = {}
 var last_button_state := -1
@@ -19,9 +26,10 @@ static func create(id: String) -> Control:
 	badge.badge_id = id
 	if not textures.has(id):
 		var image := Image.new()
-		preload("res://scripts/safe_image.gd").load_png(image, "res://brineui/navigation-badges-v3/%s.png" % id)
+		preload("res://scripts/safe_image.gd").load_png(image, PATHS[id])
 		textures[id] = ImageTexture.create_from_image(image)
 	badge.art = textures[id]
+	badge.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return badge
 
@@ -62,17 +70,24 @@ static func apply_top(button: Button, id: String) -> void:
 # playtest); the navigation buttons use a copy with that row filled from the one above.
 static func plain_frame(texture: Texture2D) -> Texture2D:
 	if texture == null: return texture
+	# UI owners retain their frames. The lookup must not retain every scene's
+	# processed copy after those owners leave; reuse only while a caller holds it.
+	for old_key in plain_frames.keys():
+		var old: WeakRef = plain_frames[old_key]
+		if old.get_ref() == null: plain_frames.erase(old_key)
 	var key := texture.get_instance_id()
-	if not plain_frames.has(key):
-		var image := texture.get_image()
-		if image == null or image.get_height() <= 9:
-			plain_frames[key] = texture
-		else:
-			image = image.duplicate()
-			if image.is_compressed(): image.decompress()
-			for x in range(image.get_width()): image.set_pixel(x, 8, image.get_pixel(x, 7))
-			plain_frames[key] = ImageTexture.create_from_image(image)
-	return plain_frames[key]
+	if plain_frames.has(key):
+		var cached: Texture2D = plain_frames[key].get_ref()
+		if cached != null: return cached
+	var image := texture.get_image()
+	var result := texture
+	if image != null and image.get_height() > 9:
+		image = image.duplicate()
+		if image.is_compressed(): image.decompress()
+		for x in range(image.get_width()): image.set_pixel(x, 8, image.get_pixel(x, 7))
+		result = ImageTexture.create_from_image(image)
+	plain_frames[key] = weakref(result)
+	return result
 
 # Vertically centre the badge and its caption (one or two lines) inside the button.
 func _centre_group() -> void:

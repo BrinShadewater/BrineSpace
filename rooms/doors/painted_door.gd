@@ -25,7 +25,7 @@ static func style_override(room_id:String, quarter:int) -> String:
 	if catalog.is_empty():catalog=JSON.parse_string(FileAccess.get_file_as_string("res://assets/architecture-rollout-2026-09-26/doors.json"))
 	if room_assets.is_empty():
 		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")): room_assets[str(entry.room)]=str(entry.asset)
-	var style=load("res://scripts/room_layout_store.gd").shared_positions(str(room_assets.get(room_id,"room-"+room_id)),quarter).get("door/style","")
+	var style=preload("res://scripts/room_layout_store.gd").shared_positions(str(room_assets.get(room_id,"room-"+room_id)),quarter).get("door/style","")
 	return str(style) if style is String and catalog.styles.has(style) else ""
 
 const SOURCES={"raised":"res://assets/door-polish-v2/raised-source.png","low":"res://assets/door-polish-v2/low-source.png"}

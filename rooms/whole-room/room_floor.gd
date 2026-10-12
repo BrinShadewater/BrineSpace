@@ -4,6 +4,7 @@ const TILE := 48.0
 const SEAMS := [-168,-120,-72,-24,24,72,120,168]
 static var grain: ImageTexture
 static var batch_lines := not OS.get_cmdline_user_args().has("--unbatched-floor-lines")
+static var load_unused_profile_grain := OS.get_cmdline_user_args().has("--reference-profile-grain")
 
 static var floor_profiles: Dictionary={}
 static var department_grains: Dictionary={}
@@ -19,13 +20,15 @@ static func draw_profile_floor(view: Node, canvas: CanvasItem, center: Vector2, 
 		draw_floor(canvas,center,tint,seam_color,seam_stride,material)
 		return
 	var path: String=profile.source
-	if not department_grains.has(path):
+	var use_tiles:bool=preload("res://rooms/whole-room/modular_floor.gd").pilot(str(profile.get("id",""))) and preload("res://rooms/whole-room/modular_floor.gd").enabled
+	# The tile path owns its image. A second legacy upload contributes no pixels.
+	if (not use_tiles or load_unused_profile_grain) and not department_grains.has(path):
 		var im:=Image.new()
 		preload("res://scripts/safe_image.gd").load_png(im, path)
 		department_grains[path]=ImageTexture.create_from_image(im)
 	var rect:=Rect2(center-Vector2.ONE*192,Vector2.ONE*384)
 	canvas.draw_rect(rect,Color(profile.base_tint) if profile.has("base_tint") else tint)
-	if preload("res://rooms/whole-room/modular_floor.gd").pilot(str(profile.get("id",""))) and preload("res://rooms/whole-room/modular_floor.gd").enabled:
+	if use_tiles:
 		preload("res://rooms/whole-room/modular_floor.gd").draw(canvas,preload("res://scripts/room_layout_store.gd").surface_positions(view),false,0,float(profile.opacity),center,1.0,path)
 		return
 	# The source owns its visible panel seams; don't superimpose a second grid.

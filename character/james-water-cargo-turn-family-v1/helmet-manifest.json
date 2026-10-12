@@ -1,0 +1,991 @@
+{
+  "name": "James underwater cargo turns helmet",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_owner_review_pending",
+  "states": [
+    {
+      "id": "swim-carry-turn-east-south",
+      "frameFiles": [
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/000.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/001.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/002.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/003.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/004.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "east-south",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-east-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-south-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-east",
+      "frameFiles": [
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/000.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/001.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/002.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/003.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/004.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "east-south",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-east-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-south-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-west",
+      "frameFiles": [
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/000.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/001.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/002.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/003.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/004.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "south-west",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-south-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-west-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-south",
+      "frameFiles": [
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/000.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/001.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/002.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/003.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/004.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "south-west",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-south-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-west-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-north",
+      "frameFiles": [
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-west-north/000.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-west-north/001.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-west-north/002.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-west-north/003.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-west-north/004.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-west-north/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "west-north",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-west-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-north-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-west",
+      "frameFiles": [
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-north-west/000.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-north-west/001.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-north-west/002.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-north-west/003.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-north-west/004.png",
+        "../james-water-cargo-turn-west-north-v1/frames/helmet/swim-carry-turn-north-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "west-north",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-west-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-north-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-east",
+      "frameFiles": [
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/000.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/001.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/002.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/003.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/004.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "north-east",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-north-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-east-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-east-north",
+      "frameFiles": [
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/000.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/001.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/002.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/003.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/004.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "Independent quarter body/head sheet",
+        "quarter": "north-east",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "endpointSources": [
+          "character/james-water-cargo-north-v1/frames/helmet/swim-carry/000.png",
+          "character/james-water-cargo-east-v1/frames/helmet/swim-carry/000.png"
+        ],
+        "derivation": "Exact staged cargo endpoints; fixed anatomical source scale; fixed material gains; reverse exact; no mirrored pose"
+      }
+    },
+    {
+      "id": "swim-carry-turn-east-west",
+      "frameFiles": [
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/000.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/001.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/002.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/003.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/004.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/005.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/001.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/002.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/003.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/004.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        220.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; composed 1600ms clock",
+        "sourceFrames": [
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/000.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/001.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/002.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/003.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/004.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/005.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/001.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/002.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/003.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/004.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-south-west/005.png"
+        ],
+        "timingQuarterSources": [
+          "east-south",
+          "south-west"
+        ],
+        "previousRetainedDurationMs": 680
+      }
+    },
+    {
+      "id": "swim-carry-turn-west-east",
+      "frameFiles": [
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/000.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/001.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/002.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/003.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/004.png",
+        "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/005.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/001.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/002.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/003.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/004.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        220.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; composed 1600ms clock",
+        "sourceFrames": [
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/000.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/001.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/002.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/003.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/004.png",
+          "../james-water-cargo-turn-south-west-v1/frames/helmet/swim-carry-turn-west-south/005.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/001.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/002.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/003.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/004.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/005.png"
+        ],
+        "timingQuarterSources": [
+          "west-south",
+          "south-east"
+        ],
+        "previousRetainedDurationMs": 680
+      }
+    },
+    {
+      "id": "swim-carry-turn-north-south",
+      "frameFiles": [
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/000.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/001.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/002.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/003.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/004.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/005.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/001.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/002.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/003.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/004.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        220.0,
+        120.0,
+        140.0,
+        160.0,
+        160.0,
+        120.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "east",
+        "east",
+        "east",
+        "east",
+        "east",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; composed 1600ms clock",
+        "sourceFrames": [
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/000.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/001.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/002.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/003.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/004.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-north-east/005.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/001.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/002.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/003.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/004.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-east-south/005.png"
+        ],
+        "timingQuarterSources": [
+          "north-east",
+          "east-south"
+        ],
+        "previousRetainedDurationMs": 680
+      }
+    },
+    {
+      "id": "swim-carry-turn-south-north",
+      "frameFiles": [
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/000.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/001.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/002.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/003.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/004.png",
+        "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/005.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/001.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/002.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/003.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/004.png",
+        "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/005.png"
+      ],
+      "frameDurationsMs": [
+        120.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        220.0,
+        160.0,
+        160.0,
+        140.0,
+        120.0,
+        100.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 11,
+      "provenance": {
+        "derivation": "Exact independent quarter donors; duplicate shared pose merged, holds summed; composed 1600ms clock",
+        "sourceFrames": [
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/000.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/001.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/002.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/003.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/004.png",
+          "../james-water-cargo-turn-east-south-v1/frames/helmet/swim-carry-turn-south-east/005.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/001.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/002.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/003.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/004.png",
+          "../james-water-cargo-turn-north-east-v1/frames/helmet/swim-carry-turn-east-north/005.png"
+        ],
+        "timingQuarterSources": [
+          "south-east",
+          "east-north"
+        ],
+        "previousRetainedDurationMs": 680
+      }
+    }
+  ]
+}

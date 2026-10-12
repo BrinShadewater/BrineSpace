@@ -1,0 +1,91 @@
+{
+  "name": "Veld early bunk floor fall candidate",
+  "equipment": "diving-helmet",
+  "canvas": [
+    256,
+    272
+  ],
+  "frameWidth": 256,
+  "frameHeight": 272,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "textureFilter": "linear",
+  "precomposed": true,
+  "status": "installed_locally_owner_motion_review_open",
+  "states": [
+    {
+      "id": "death-bunk-crouch-east",
+      "frameFiles": [
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-crouch-east/000.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-crouch-east/001.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-crouch-east/002.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-crouch-east/003.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-crouch-east/004.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        160,
+        180,
+        220,
+        500
+      ],
+      "loop": false,
+      "terminalFrame": 4,
+      "furnitureFrames": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "death-bunk-standing-east",
+      "frameFiles": [
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-standing-east/000.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-standing-east/001.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-standing-east/002.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-standing-east/003.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-standing-east/004.png",
+        "res://character/veld-bunk-early-fall-v1/frames/helmet/death-bunk-standing-east/005.png"
+      ],
+      "frameDurationsMs": [
+        180,
+        160,
+        180,
+        180,
+        220,
+        500
+      ],
+      "loop": false,
+      "terminalFrame": 5,
+      "furnitureFrames": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "earlyBunkFloorDeathMode": "floor-v1"
+}

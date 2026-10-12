@@ -1,9 +1,74 @@
 extends RefCounted
 ## Small original procedural cues; no external generator or new credits required.
 static var cache := {}
+const BAKED := {
+	"leak_drip": "res://assets/audio/procedural-cues-v1/leak_drip.json",
+	"sprinkler_hiss": "res://assets/audio/procedural-cues-v1/sprinkler_hiss.json",
+	"electrical_crackle": "res://assets/audio/procedural-cues-v1/electrical_crackle.json",
+	"crack_creak": "res://assets/audio/procedural-cues-v1/crack_creak.json",
+	"companion_chirp": "res://assets/audio/procedural-cues-v1/companion_chirp.json",
+	"ui_select": "res://assets/audio/procedural-cues-v1/ui_select.json",
+	"ui_reject": "res://assets/audio/procedural-cues-v1/ui_reject.json",
+	"ui_comms": "res://assets/audio/procedural-cues-v1/ui_comms.json",
+	"ui_saved": "res://assets/audio/procedural-cues-v1/ui_saved.json",
+	"power_off": "res://assets/audio/procedural-cues-v1/power_off.json",
+	"hull": "res://assets/audio/procedural-cues-v1/hull.json",
+	"core": "res://assets/audio/procedural-cues-v1/core.json",
+	"refrigeration": "res://assets/audio/procedural-cues-v1/refrigeration.json",
+	"workshop": "res://assets/audio/procedural-cues-v1/workshop.json",
+	"build_complete": "res://assets/audio/procedural-cues-v1/build_complete.json",
+	"build_blocked": "res://assets/audio/procedural-cues-v1/build_blocked.json",
+	"launch": "res://assets/audio/procedural-cues-v1/launch.json",
+	"footstep": "res://assets/audio/procedural-cues-v1/footstep.json",
+	"tools": "res://assets/audio/procedural-cues-v1/tools.json",
+	"repair": "res://assets/audio/procedural-cues-v1/repair.json",
+	"all_clear": "res://assets/audio/procedural-cues-v1/all_clear.json",
+	"crew_dispatch": "res://assets/audio/procedural-cues-v1/crew_dispatch.json",
+	"crew_awake": "res://assets/audio/procedural-cues-v1/crew_awake.json",
+	"airlock_pressure": "res://assets/audio/procedural-cues-v1/airlock_pressure.json",
+	"airlock_release": "res://assets/audio/procedural-cues-v1/airlock_release.json",
+	"airlock_ready": "res://assets/audio/procedural-cues-v1/airlock_ready.json",
+	"ui_recall": "res://assets/audio/procedural-cues-v1/ui_recall.json",
+	"crew_return": "res://assets/audio/procedural-cues-v1/crew_return.json",
+	"ui_end": "res://assets/audio/procedural-cues-v1/ui_end.json",
+	"ui_failure": "res://assets/audio/procedural-cues-v1/ui_failure.json",
+	"swim": "res://assets/audio/procedural-cues-v1/swim.json",
+	"suit": "res://assets/audio/procedural-cues-v1/suit.json",
+	"bubbles": "res://assets/audio/procedural-cues-v1/bubbles.json",
+	"mining_work": "res://assets/audio/procedural-cues-v1/mining_work.json",
+	"salvage_work": "res://assets/audio/procedural-cues-v1/salvage_work.json",
+	"galley_work": "res://assets/audio/procedural-cues-v1/galley_work.json",
+	"medical_work": "res://assets/audio/procedural-cues-v1/medical_work.json",
+	"lab_work": "res://assets/audio/procedural-cues-v1/lab_work.json",
+	"cultivation_work": "res://assets/audio/procedural-cues-v1/cultivation_work.json",
+	"warning_oxygen": "res://assets/audio/procedural-cues-v1/warning_oxygen.json",
+	"warning_power": "res://assets/audio/procedural-cues-v1/warning_power.json",
+	"warning_hull": "res://assets/audio/procedural-cues-v1/warning_hull.json",
+	"helmet_lock": "res://assets/audio/procedural-cues-v1/helmet_lock.json",
+	"helmet_release": "res://assets/audio/procedural-cues-v1/helmet_release.json",
+	"site_empty": "res://assets/audio/procedural-cues-v1/site_empty.json",
+}
+
 const EXPANDED_DURATIONS := {"swim":0.65,"suit":0.35,"bubbles":0.85,"mining_work":1.5,"salvage_work":1.2,"galley_work":0.65,"medical_work":0.9,"lab_work":1.0,"cultivation_work":1.4,"warning_oxygen":1.2,"warning_power":0.8,"warning_hull":1.4}
 static func get_stream(kind: String) -> AudioStreamWAV:
 	if cache.has(kind): return cache[kind]
+	var stream: AudioStreamWAV
+	if BAKED.has(kind):
+		var data = JSON.parse_string(FileAccess.get_file_as_string(BAKED[kind]))
+		if data is Dictionary and data.get("schema",0)==1:
+			stream = AudioStreamWAV.new()
+			stream.format = AudioStreamWAV.FORMAT_16_BITS
+			stream.mix_rate = int(data.rate)
+			stream.data = Marshalls.base64_to_raw(data.pcm)
+			stream.loop_mode = int(data.loop_mode)
+			stream.loop_end = int(data.loop_end)
+		else: push_error("Missing baked procedural audio: " + str(BAKED[kind]))
+	if stream == null: stream = synthesize(kind)
+	cache[kind] = stream
+	return stream
+
+# Kept as the authoritative deterministic source for the offline baker and parity checks.
+static func synthesize(kind: String) -> AudioStreamWAV:
 	var duration := float({"ui_select":0.075,"ui_reject":0.16,"ui_comms":0.45,"ui_saved":0.3,"power_off":1.1,"hull":2.5,"build_complete":0.65,"build_blocked":0.5,"launch":0.8,"footstep":0.12,"tools":0.35,"ui_end":2.0,"ui_failure":2.0}.get(kind,4.0))
 	const RATE := 22050
 	if kind=="companion_chirp":duration=0.42
@@ -92,5 +157,4 @@ static func get_stream(kind: String) -> AudioStreamWAV:
 	if kind in ["core","refrigeration","workshop"]:
 		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 		stream.loop_end = frames
-	cache[kind] = stream
 	return stream

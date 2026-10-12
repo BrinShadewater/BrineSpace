@@ -5,9 +5,7 @@ static func age(game,member: Dictionary) -> float:
 	if not member.get("alive",false) or not member.has("thawed_at"): return DURATION
 	return maxf(0.0,game.get_visual_time_seconds()-float(member.thawed_at))
 static func tint(game,id: String) -> Color:
-	for member in game.recovered_crew:
-		if member.get("architect_id","")==id:
-			return Color(0.66,0.86,1.0).lerp(Color.WHITE,clampf(age(game,member)/DURATION,0,1))
+	# The character now regains natural colour before the chamber opens.
 	return Color.WHITE
 static func texture(game,id: String,source: Texture2D) -> Texture2D:
 	if source==null: return null

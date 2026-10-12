@@ -40,9 +40,13 @@ static func find_path(start: Vector2i, goal: Vector2i, blocked: Dictionary, allo
 				return path
 			queue.append(next)
 	# Prefer exterior water; matching room ports provide a service route if enclosed.
-	return [] if allow_rooms else find_path(start,goal,blocked,true)
+	# Boolean-only exterior blockers have identical rules in both passes.
+	if not allow_rooms:
+		for occupant in blocked.values():
+			if occupant is Dictionary: return find_path(start,goal,blocked,true)
+	return []
 
-static func travel(drone: Dictionary, seconds: float, goal: Vector2i, blocked: Dictionary) -> float:
+static func travel(drone: Dictionary, seconds: float, goal: Vector2i, blocked: Dictionary, failed_routes: Variant = null) -> float:
 	var route: Array = drone.get("route",[])
 	var needs_route: bool = route.is_empty() or drone.get("route_goal") != goal
 	var prior: Vector2i = drone.get("last_cell",Vector2i(Vector2(drone.position).round()))
@@ -51,7 +55,13 @@ static func travel(drone: Dictionary, seconds: float, goal: Vector2i, blocked: D
 		prior = Vector2i(point)
 	if needs_route:
 		var origin: Vector2i = drone.get("last_cell",Vector2i(Vector2(drone.position).round()))
-		route = find_path(origin,goal,blocked)
+		# The fleet owns this bounded, transient cache and clears it whenever its
+		# blocker contents change. Standalone callers remain uncached by default.
+		var failure_key := [origin,goal]
+		route = [] if failed_routes != null and failed_routes.has(failure_key) else find_path(origin,goal,blocked)
+		if route.is_empty() and failed_routes != null and not failed_routes.has(failure_key):
+			if failed_routes.size() >= 64: failed_routes.clear()
+			failed_routes[failure_key] = true
 		if not route.is_empty() and not Vector2(drone.position).is_equal_approx(Vector2(origin)):
 			route.push_front(Vector2(origin)) # Back out of a newly blocked segment, never teleport.
 		drone["route"] = route

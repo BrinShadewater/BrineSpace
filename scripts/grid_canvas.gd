@@ -1,5 +1,18 @@
 extends Control
 class_name GridCanvas
+const CpuPlayer=preload("res://scripts/crew_storage/player.gd")
+const CpuJames=preload("res://scripts/crew_storage/james_player.gd")
+const CpuBank=preload("res://scripts/crew_storage/bank.gd")
+const Router=preload("res://scripts/crew_storage/router.gd")
+const CREW_STORAGE_TRIAL_ID="current-oct9-lossless"
+# Internal comparison switch; user-facing effects and animation timing are unchanged.
+var use_direct_wave_commands:=not OS.get_cmdline_user_args().has("--wrapped-wave-commands")
+const EnvironmentArt = preload("res://scripts/environment_art.gd")
+const CrewTexturePool = preload("res://scripts/crew_texture_pool.gd")
+var crew_texture_pool = CrewTexturePool.new()
+func crew_storage_diagnostics()->Dictionary:
+	return Router.active.diagnostics_snapshot() if Router.active!=null else {"active":false}
+var room_texture_pool: RefCounted = null if OS.get_cmdline_user_args().has("--unshared-room-images") else CrewTexturePool.new()
 
 signal cell_clicked(cell: Vector2i)
 signal cell_secondary_clicked(cell: Vector2i)
@@ -13,6 +26,9 @@ const LARGE_ROOM_VIEWS := {
 	"moonbay": preload("res://rooms/large-rooms/moonbay.gd"),
 	"tidal_power_plant": preload("res://rooms/large-rooms/tidal_power_plant.gd")
 }
+const LargeRoomCanvas := preload("res://scripts/large_room_canvas.gd")
+var retain_large_rooms := not OS.get_cmdline_user_args().has("--immediate-large-rooms")
+var large_slots:Dictionary={}
 const LargeStudioView := preload("res://rooms/large-rooms/studio_view.gd")
 const SeabedBackground := preload("res://assets/environment/seabed-v1/seabed_background.gd")
 var seabed_background := SeabedBackground.new()
@@ -101,7 +117,7 @@ var power_room_views := {}
 var rare_room_views := {}
 # Built on first use like the typed room views above.
 const POWER_VIEW_PATHS := {"current_turbine":"res://rooms/power-expansion-v1/current_turbine_view.gd","biomass_digester":"res://rooms/full-wall-v1/biomass_digester_view.gd","heat_recovery":"res://rooms/power-expansion-v1/heat_recovery_view.gd"}
-const RARE_VIEW_PATHS := {"cold_store":"res://rooms/underwater/cold-store-v1/cold_store_view.gd", "galley":"res://rooms/underwater/galley-v1/galley_view.gd", "salvage_workshop":"res://rooms/underwater/salvage-workshop-v1/workshop_view.gd", "observation_room":"res://rooms/underwater/observation-room-v1/observation_room_view.gd", "pressure_control":"res://rooms/full-wall-v1/pressure_control_view.gd", "listening_post":"res://rooms/full-wall-v1/listening_post_view.gd", "isolation_vault":"res://rooms/full-wall-v1/isolation_vault_view.gd"}
+const RARE_VIEW_PATHS := {"cold_store":"res://rooms/underwater/cold-store-v1/cold_store_view.gd", "galley":"res://rooms/underwater/galley-v1/galley_view.gd", "salvage_workshop":"res://scripts/james_cargo_workshop.gd", "observation_room":"res://rooms/underwater/observation-room-v1/observation_room_view.gd", "pressure_control":"res://rooms/full-wall-v1/pressure_control_view.gd", "listening_post":"res://rooms/full-wall-v1/listening_post_view.gd", "isolation_vault":"res://rooms/full-wall-v1/isolation_vault_view.gd"}
 var expansion_room_views := {}
 const ExpansionViews = preload("res://rooms/new-room-expansion/views.gd")
 const AirlockView=preload("res://rooms/underwater/airlock-v1/airlock_view.gd")
@@ -239,11 +255,21 @@ func _power_flicker(room: Dictionary) -> float:
 	var main = _get_main()
 	return RoomLighting.power_flicker(room.pos,int(main.resources.get("power",0)),int(main.power_capacity),main.get_unscaled_time_seconds(),preload("res://scripts/title_settings.gd").reduced_motion,main.paused)
 
+const LAYERED_ROOM_IDS = {
+	"observation_room":true,"salvage_workshop":true,"galley":true,"cold_store":true,"airlock":true,
+	"current_turbine":true,"biomass_digester":true,"heat_recovery":true,"construction_drone_bay":true,
+	"mycelium_nursery":true,"life_support":true,"hydroponics_bay":true,"reactor":true,"med_bay":true,
+	"crew_hab":true,"cryo_chamber":true,"clone_lab":true,"data_archive":true,"biodome":true,"xeno_lab":true,
+	"med_office":true,"med_center":true,"holographic_core":true,"bio_lab":true,"anomaly_lab":true,
+	"battery_array":true,"research_lab":true,"maintenance_bay":true,"storage_bay":true,"ore_refinery":true,
+	"mining_drone_bay":true,"salvage_drone_bay":true,"crew_lounge":true,"command_center":true,"quarantine_cell":true,
+	"solar_array":true,"radio_lab":true,"shield_generator":true,"tidal_condenser":true,"gravity_loom":true,
+	"brine_core":true,"corridor":true,"corner":true,"tee_corridor":true,"pressure_control":true,"listening_post":true,"isolation_vault":true
+}
+
 func _uses_layered_art(room: Dictionary) -> bool:
-	if ExpansionViews.PATHS.has(room.get("id","")): return true
-	if room.get("id","") in ["observation_room","salvage_workshop","galley","cold_store"]: return true
-	if room.get("id","")=="airlock": return true
-	return room.get("id", "") in ["current_turbine", "biomass_digester", "heat_recovery", "construction_drone_bay", "mycelium_nursery", "life_support", "hydroponics_bay", "reactor", "med_bay", "crew_hab", "cryo_chamber", "clone_lab", "data_archive", "biodome", "xeno_lab", "med_office","med_center","holographic_core","bio_lab","anomaly_lab", "battery_array", "research_lab", "maintenance_bay", "storage_bay", "ore_refinery", "mining_drone_bay", "salvage_drone_bay", "crew_lounge", "command_center", "quarantine_cell", "solar_array", "radio_lab", "shield_generator", "tidal_condenser", "gravity_loom", "brine_core", "corridor", "corner", "tee_corridor", "pressure_control", "listening_post", "isolation_vault"]
+	var id:Variant=room.get("id","")
+	return ExpansionViews.PATHS.has(id) or LAYERED_ROOM_IDS.has(id)
 
 func _is_narrow_corridor(room: Dictionary) -> bool:
 	return room.get("id","") in ["corridor","corner","tee_corridor"]
@@ -258,7 +284,7 @@ const ROOM_SOURCE_MARGIN := 8
 
 const CrewSpritePlayer = preload("res://scripts/crew_sprite_player.gd")
 var veld_player = CrewSpritePlayer.new()
-var branforth_player = CrewSpritePlayer.new()
+var branforth_player = preload("res://scripts/james_water_player.gd").new()
 var marsh_player = CrewSpritePlayer.new()
 
 var human_sprite: Texture2D
@@ -270,13 +296,15 @@ var door_wet_history: Dictionary={}
 var space_background_texture: Texture2D
 var human_sprites := {}
 var human_animations := {}
-var human_water_player = CrewSpritePlayer.new()
+var human_bound_source_binding := ""
+var human_water_player = preload("res://scripts/bill_carry_player.gd").new()
 var human_equipment_frames: Dictionary = {}
 var human_animation_timing := {}
 var human_animation_key := ""
 var human_animation_started := 0.0
 var human_animation_last_time := -1.0
 var human_animation_phase := 0.0
+var human_walk_join: RefCounted = null
 var human_animation_last_position := Vector2.ZERO
 var human_stride_distance := {}
 var brine_core_overlays := {}
@@ -311,7 +339,7 @@ func _ready() -> void:
 		env_layer.name = ["EnvStaticBelow","EnvHazeLines","EnvFoundations","EnvLiveAbove","EnvTerrain","EnvDerelicts","EnvExteriorActors","EnvFog","EnvLife"][id]
 		if id == Env.DERELICTS:
 			var condition_material := ShaderMaterial.new()
-			condition_material.shader = preload("res://scripts/derelict_material.gdshader")
+			condition_material.shader = preload("res://scripts/station_render_shaders.gd").DERELICT
 			condition_material.set_shader_parameter("room_light",0.0)
 			env_layer.material = condition_material
 		if id == Env.FOG: env_layer.material = underwater_visibility.material
@@ -324,6 +352,13 @@ func _ready() -> void:
 		layer.name = ["Floors","FloorsRest","Walls","RearDoors","LiveContents","FrontDoors","Lights","Foreground"][id]
 		add_child(layer)
 		surface_passes.append(layer)
+	seabed_still = SeabedStillPass.new()
+	seabed_still.host = self
+	seabed_still.name = "SeabedStill"
+	# Behind the grid's own drawing, where the seabed always began.
+	seabed_still.show_behind_parent = true
+	add_child(seabed_still)
+	move_child(seabed_still,0)
 	life_over = LifeOverPass.new()
 	life_over.host = self
 	life_over.name = "LifeOverStation"
@@ -372,6 +407,7 @@ func _ready() -> void:
 			human_sprites[direction] = texture
 	human_sprite=human_sprites.get("south",human_sprite)
 	_load_major_bill_animations()
+	crew_texture_pool.clear_lookup()
 	_load_brine_core_overlays()
 
 func _generate_star_points() -> void:
@@ -390,6 +426,13 @@ func _generate_star_points() -> void:
 		star_points.append(point)
 
 func _load_png_texture(path: String) -> Texture2D:
+	# Raw loading already has the CPU image; do not read the just-uploaded texture
+	# back from the GPU to calculate the same source bounds.
+	var image: Image = preload("res://scripts/safe_image.gd").raw_image(path)
+	if image != null:
+		var raw_texture := ImageTexture.create_from_image(image)
+		_cache_texture_source_region(raw_texture, image)
+		return raw_texture
 	var texture: Texture2D = preload("res://scripts/safe_image.gd").raw_texture(path)
 	_cache_texture_source_region(texture)
 	return texture
@@ -412,14 +455,24 @@ func _find_content_region(image: Image) -> Rect2:
 	var max_x := -1
 	var max_y := -1
 	for y in range(0, height, 2):
+		# Bounds need only the first/last visible sample in each row. Preserve
+		# the original even-coordinate lattice and exact colour/alpha thresholds.
+		var first_x := -1
 		for x in range(0, width, 2):
 			var pixel := image.get_pixel(x, y)
 			var is_visible_pixel := pixel.a > 0.04 and maxf(maxf(pixel.r, pixel.g), pixel.b) > 0.018
 			if is_visible_pixel:
-				min_x = mini(min_x, x)
-				min_y = mini(min_y, y)
+				first_x = x
+				break
+		if first_x < 0: continue
+		min_x = mini(min_x, first_x)
+		min_y = mini(min_y, y)
+		max_y = y
+		for x in range(((width - 1) / 2) * 2, first_x - 1, -2):
+			var pixel := image.get_pixel(x, y)
+			if pixel.a > 0.04 and maxf(maxf(pixel.r, pixel.g), pixel.b) > 0.018:
 				max_x = maxi(max_x, x)
-				max_y = maxi(max_y, y)
+				break
 	if max_x < min_x or max_y < min_y:
 		return Rect2(Vector2.ZERO, Vector2(width, height))
 	min_x = maxi(min_x - ROOM_SOURCE_MARGIN, 0)
@@ -453,24 +506,555 @@ func _load_human_animation(state: String, base_path: String) -> void:
 	human_animations[state] = by_direction
 
 func _load_replacement_crew_animations() -> void:
+	var bank=CpuBank.new()
 	for actor in ["veld","branforth","marsh"]:
 		var base: String=CrewSpritePlayer.REVISION_ROOTS[actor]
 		var catalog: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
-		var player = CrewSpritePlayer.new()
+		var player = CpuJames.new() if actor=="branforth" else CpuPlayer.new()
+		player.begin_texture_batch(crew_texture_pool if CrewTexturePool.enabled else null)
 		for path in catalog.body: player.load_manifest(base+str(path),true)
 		for path in catalog.equipment:
 			if not player.load_equipment_manifest("diving-helmet",base+str(path)):
 				push_error(actor+" equipment profile mismatch: "+str(path))
+		if actor == "veld":
+			player.load_manifest("res://character/crew-runtime-matte-v1/veld/manifest.json", true)
+			player.load_manifest("res://character/veld-action-west-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/veld-action-south-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/veld-action-north-matched-v1/manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-shared-helmet-v1/manifest.json"):
+				push_error("Veld shared helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-shared-helmet-actions-east-v1/manifest.json"):
+				push_error("Veld east action helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-shared-helmet-actions-west-v1/manifest.json"):
+				push_error("Veld west action helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-shared-helmet-actions-south-v1/manifest.json"):
+				push_error("Veld south action helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-shared-helmet-actions-north-v1/manifest.json"):
+				push_error("Veld north action helmet profile mismatch")
+			player.load_manifest("res://character/veld-helmet-fitting-east-v2/manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-helmet-fitting-east-v2/equipped-idle-manifest.json"):
+				push_error("Veld fitting idle helmet profile mismatch")
+			player.load_manifest("res://character/veld-interact-east-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-interact-east-consistent-v1/helmet-manifest.json"):
+				push_error("Veld scanner interaction helmet profile mismatch")
+			player.load_manifest("res://character/veld-east-sample-chain-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-east-sample-chain-consistent-v1/helmet-manifest.json"):
+				push_error("Veld east sample chain helmet profile mismatch")
+			player.load_manifest("res://character/veld-carry-east-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-east-consistent-v1/helmet-manifest.json"):
+				push_error("Veld east cargo carry helmet profile mismatch")
+			player.load_manifest("res://character/veld-unload-east-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-unload-east-consistent-v1/helmet-manifest.json"):
+				push_error("Veld east cargo unload helmet profile mismatch")
+			player.load_manifest("res://character/veld-pickup-east-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-pickup-east-consistent-v1/helmet-manifest.json"):
+				push_error("Veld east cargo pickup helmet profile mismatch")
+			player.load_manifest("res://character/veld-carry-west-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-west-consistent-v1/helmet-manifest.json"):
+				push_error("Veld west cargo carry helmet profile mismatch")
+			player.load_manifest("res://character/veld-unload-west-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-unload-west-consistent-v1/helmet-manifest.json"):
+				push_error("Veld west cargo unload helmet profile mismatch")
+			player.load_manifest("res://character/veld-pickup-west-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-pickup-west-consistent-v1/helmet-manifest.json"):
+				push_error("Veld west cargo pickup helmet profile mismatch")
+			player.load_manifest("res://character/veld-carry-south-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-south-consistent-v1/helmet-manifest.json"):
+				push_error("Veld south cargo carry helmet profile mismatch")
+			player.load_manifest("res://character/veld-unload-south-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-unload-south-consistent-v1/helmet-manifest.json"):
+				push_error("Veld south cargo unload helmet profile mismatch")
+			player.load_manifest("res://character/veld-pickup-south-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-pickup-south-consistent-v1/helmet-manifest.json"):
+				push_error("Veld south cargo pickup helmet profile mismatch")
+			player.load_manifest("res://character/veld-carry-turn-east-south-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-turn-east-south-consistent-v1/helmet-manifest.json"):
+				push_warning("Veld east/south cargo turn equipment override failed")
+			player.load_manifest("res://character/veld-carry-turn-north-east-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-turn-north-east-consistent-v1/helmet-manifest.json"):
+				push_warning("Veld north/east cargo turn equipment override failed")
+			player.load_manifest("res://character/veld-carry-turn-north-west-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-turn-north-west-consistent-v1/helmet-manifest.json"):
+				push_warning("Veld north/west cargo turn equipment override failed")
+			player.load_manifest("res://character/veld-carry-turn-south-west-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-turn-south-west-consistent-v1/helmet-manifest.json"):
+				push_warning("Veld south/west cargo turn equipment override failed")
+			player.load_manifest("res://character/veld-pickup-north-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-pickup-north-consistent-v1/helmet-manifest.json"):
+				push_warning("Veld north pickup equipment override failed")
+			player.load_manifest("res://character/veld-unload-north-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-unload-north-consistent-v1/helmet-manifest.json"):
+				push_warning("Veld north unload equipment override failed")
+			player.load_manifest("res://character/veld-carry-north-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-carry-north-consistent-v1/helmet-manifest.json"):
+				push_error("Veld north cargo carry helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-library-closeout-v1/turn-body-fix/quarter-helmet-manifest.json"):
+				push_warning("Veld master helmet quarter override failed")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-unified-turn-helmet-v1/carry-north-helmet-manifest.json"):
+				push_warning("Veld master rear carry registration failed")
+			player.load_manifest("res://character/veld-carry-half-turns-consistent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-library-closeout-v1/turn-body-fix/half-helmet-manifest.json"):
+				push_warning("Veld master helmet half-turn override failed")
+			player.load_manifest("res://character/veld-water-north-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-water-north-coherent-v1/helmet-manifest.json"):
+				push_error("Veld north water helmet profile mismatch")
+			player.load_manifest("res://character/veld-water-south-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-water-south-coherent-v1/helmet-manifest.json"):
+				push_error("Veld south water helmet profile mismatch")
+			player.load_manifest("res://character/veld-water-east-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-water-east-coherent-v1/helmet-manifest.json"):
+				push_error("Veld east water helmet profile mismatch")
+			player.load_manifest("res://character/veld-water-west-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-water-west-coherent-v1/helmet-manifest.json"):
+				push_error("Veld west water helmet profile mismatch")
+			player.load_manifest("res://character/veld-swim-turn-matrix-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-swim-turn-matrix-coherent-v1/helmet-manifest.json"):
+				push_error("Veld coherent swimming turn helmet profile mismatch")
+			player.load_manifest("res://character/veld-salvage-pickup-family-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-salvage-pickup-family-coherent-v1/helmet-manifest.json"):
+				push_error("Veld scientific sample helmet profile mismatch")
+			player.load_manifest("res://character/veld-swim-carry-matrix-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-swim-carry-matrix-coherent-v1/helmet-manifest.json"):
+				push_error("Veld swimming cargo helmet profile mismatch")
+			player.load_manifest("res://character/veld-swim-carry-turn-matrix-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-swim-carry-turn-matrix-coherent-v1/helmet-manifest.json"):
+				push_error("Veld swimming cargo turn helmet profile mismatch")
+			player.load_manifest("res://character/veld-recover-air-family-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-recover-air-family-coherent-v1/helmet-manifest.json"):
+				push_error("Veld dry recovery helmet profile mismatch")
+			player.load_manifest("res://character/veld-swim-distress-family-coherent-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-swim-distress-family-coherent-v1/helmet-manifest.json"):
+				push_error("Veld cardinal swimming distress helmet profile mismatch")
+			player.load_manifest("res://character/veld-death-water-prone-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-death-water-prone-family-v1/helmet-manifest.json"):
+				push_error("Veld prone water death equipment mismatch")
+			player.load_manifest("res://character/veld-death-water-tread-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-death-water-tread-family-v1/helmet-manifest.json"):
+				push_error("Veld upright water death equipment mismatch")
+			player.load_manifest("res://character/veld-rest-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-rest-family-v1/helmet-manifest.json"):
+				push_error("Veld cardinal generic rest equipment mismatch")
+			player.load_manifest("res://character/veld-bunk-body-master-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-bunk-body-master-v1/helmet-manifest.json"):
+				push_error("Veld whole-body bunk equipment mismatch")
+			player.load_manifest("res://character/veld-bunk-early-fall-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-bunk-early-fall-v1/helmet-manifest.json"):
+				push_error("Veld early bunk floor-fall equipment mismatch")
+			player.load_manifest("res://character/veld-seated-south-selected-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-seated-south-selected-v1/helmet-manifest.json"):
+				push_error("Veld selected South seated/tablet equipment mismatch")
+			player.load_manifest("res://character/veld-seated-north-selected-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-seated-north-selected-v1/helmet-manifest.json"):
+				push_error("Veld selected North seated/breathing equipment mismatch")
+			player.load_manifest("res://character/veld-lounge-fall-north-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-lounge-fall-north-v1/helmet-manifest.json"):
+				push_error("Veld North seated fall equipment mismatch")
+			player.load_manifest("res://character/veld-lounge-partial-fall-north-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-lounge-partial-fall-north-v1/helmet-manifest.json"):
+				push_error("Veld North partial seated fall equipment mismatch")
+			player.load_manifest("res://character/veld-lounge-late-fall-north-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-lounge-late-fall-north-v1/helmet-manifest.json"):
+				push_error("Veld North late seated fall equipment mismatch")
+			player.load_manifest("res://character/veld-lounge-early-fall-north-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-lounge-early-fall-north-v1/helmet-manifest.json"):
+				push_error("Veld North early seated fall equipment mismatch")
+			player.load_manifest("res://character/veld-sofa-fall-south-selected-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-sofa-fall-south-selected-v1/helmet-manifest.json"):
+				push_error("Veld paired South sofa fall equipment mismatch")
+			player.load_manifest("res://character/veld-sofa-partial-fall-south-selected-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/veld-sofa-partial-fall-south-selected-v1/helmet-manifest.json"):
+				push_error("Veld paired South partial sofa fall equipment mismatch")
+		elif actor == "branforth":
+			player.load_manifest("res://character/crew-runtime-matte-v1/branforth/manifest.json", true)
+			player.load_manifest("res://character/james-action-east-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-action-west-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-action-south-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-action-north-matched-v5/manifest.json", true)
+			player.load_manifest("res://character/james-interact-east-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-interact-west-matched-v2/manifest.json", true)
+			player.load_manifest("res://character/james-interact-south-matched-v3/manifest.json", true)
+			player.load_manifest("res://character/james-interact-north-matched-v2/manifest.json", true)
+			player.load_manifest("res://character/james-torch-east-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-torch-west-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-torch-south-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-torch-north-matched-v1/manifest.json", true)
+			player.load_manifest("res://character/james-helmet-fitting-east-v1/manifest.json", true)
+			player.load_manifest("res://character/james-cargo-turn-east-south-height-v3/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-turn-east-south-height-v3/helmet-manifest.json"):
+				push_error("James east south cargo turn helmet mismatch")
+			player.load_manifest("res://character/james-cargo-turn-south-west-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-turn-south-west-v1/helmet-manifest.json"):
+				push_error("James south west cargo turn helmet mismatch")
+			player.load_manifest("res://character/james-cargo-half-turns-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-half-turns-v1/helmet-manifest.json"):
+				push_error("James carrying half-turn helmet mismatch")
+			player.load_manifest("res://character/james-cargo-turn-north-west-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-turn-north-west-v1/helmet-manifest.json"):
+				push_error("James north west cargo turn helmet mismatch")
+			player.load_manifest("res://character/james-cargo-turn-east-north-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-turn-east-north-v1/helmet-manifest.json"):
+				push_error("James east north cargo turn helmet mismatch")
+			player.load_manifest("res://character/james-cargo-north-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-north-v1/helmet-manifest.json"):
+				push_error("James north cargo shared helmet mismatch")
+			player.load_manifest("res://character/james-cargo-south-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-south-v1/helmet-manifest.json"):
+				push_error("James south cargo shared helmet mismatch")
+			player.load_manifest("res://character/james-cargo-west-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-west-v1/helmet-manifest.json"):
+				push_error("James west cargo shared helmet mismatch")
+			player.load_manifest("res://character/james-cargo-east-height-v3/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-east-height-v3/helmet-manifest.json"):
+				push_error("James east cargo helmet profile mismatch")
+			player.load_manifest("res://character/james-cargo-material-joined-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-cargo-material-joined-v1/helmet-manifest.json"):
+				push_error("James matched cargo helmet mismatch")
+			player.load_manifest("res://character/james-east-cargo-heads-v3/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-east-cargo-heads-v3/helmet-manifest.json"):
+				push_error("James compact East cargo head pair mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-runtime-v1/manifest.json"):
+				push_error("branforth shared helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-actions-east-v1/manifest.json"):
+				push_error("James east repair helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-actions-west-v1/manifest.json"):
+				push_error("James west repair helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-actions-south-v1/manifest.json"):
+				push_error("James south repair helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-actions-north-v5/manifest.json"):
+				push_error("James north repair helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-interact-east-v1/manifest.json"):
+				push_error("James east meter helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-interact-west-v2/manifest.json"):
+				push_error("James west meter helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-interact-south-v3/manifest.json"):
+				push_error("James south tablet helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-interact-north-v2/manifest.json"):
+				push_error("James north tablet helmet profile mismatch")
+			player.load_manifest("res://character/james-inspect-tablet-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-inspect-tablet-v1/helmet-manifest.json"):
+				push_error("James tablet inspection helmet mismatch")
+			player.load_manifest("res://character/james-meal-family-v1/bare-manifest.json", true)
+			player.load_manifest("res://character/james-meal-pickup-north-v1/manifest.json", true)
+			player.load_manifest("res://character/james-cup-pickup-north-v1/handoffs-manifest.json", true)
+			player.load_manifest("res://character/james-meal-interrupt-north-v1/manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-meal-family-v1/helmet-manifest.json"):
+				push_error("James meals helmet substitution mismatch")
+			player.load_manifest("res://character/james-diagnostics-edge-matte-v30/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-diagnostics-edge-matte-v30/helmet-manifest.json"):
+				push_error("James tablet neutral material continuity mismatch")
+			player.load_manifest("res://character/james-east-inspect-body-grade-v26/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-east-inspect-body-grade-v26/helmet-manifest.json"):
+				push_error("James East separate-tablet helmet mismatch")
+			player.load_manifest("res://character/james-meal-service-south-open-v1/handoffs-manifest.json", true)
+			player.load_manifest("res://character/james-drink-north-hand-continuity-v1/manifest.json", true)
+			player.load_manifest("res://character/james-seated-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-seated-family-v1/helmet-manifest.json"):
+				push_error("James seated shared helmet mismatch")
+			player.load_manifest("res://character/james-bunk-east-master-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-bunk-east-master-v1/helmet-manifest.json"):
+				push_error("James bunk shared helmet mismatch")
+			player.load_manifest("res://character/james-lying-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-lying-family-v1/helmet-manifest.json"):
+				push_error("James directional lying shared helmet mismatch")
+			player.load_manifest("res://character/james-water-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-water-family-v1/helmet-manifest.json"):
+				push_error("James directional water shared helmet mismatch")
+			player.load_manifest("res://character/james-water-turn-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-water-turn-family-v1/helmet-manifest.json"):
+				push_error("James water turns shared helmet mismatch")
+			player.load_manifest("res://character/james-console-water-turn-v1/bare-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-console-water-turn-v1/helmet-manifest.json"):
+				push_error("James compact console entry helmet mismatch")
+			player.load_manifest("res://character/james-console-water-exit-turn-v1/bare-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-console-water-exit-turn-v1/helmet-manifest.json"):
+				push_error("James compact console exit helmet mismatch")
+			player.load_manifest("res://character/james-water-cargo-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-water-cargo-family-v1/helmet-manifest.json"):
+				push_error("James water cargo shared helmet mismatch")
+			player.load_manifest("res://character/james-water-cancel-profiles-v1/bare-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-water-cancel-profiles-v1/helmet-manifest.json"):
+				push_error("James indexed exterior cancellation helmet mismatch")
+			player.load_manifest("res://character/james-case-release-east-v1/runtime-bare-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-case-release-east-v1/runtime-helmet-manifest.json"):
+				push_error("James East case release helmet mismatch")
+			player.load_manifest("res://character/james-case-release-west-v1/bare-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-case-release-west-v1/helmet-manifest.json"):
+				push_error("James West case release helmet mismatch")
+			player.load_manifest("res://character/james-case-release-north-v1/bare-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-case-release-north-v1/helmet-manifest.json"):
+				push_error("James North case release helmet mismatch")
+			player.load_manifest("res://character/james-case-release-south-v1/bare-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-case-release-south-v1/helmet-manifest.json"):
+				push_error("James South case release helmet mismatch")
+			player.load_manifest("res://character/james-water-cargo-turn-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-water-cargo-turn-family-v1/helmet-manifest.json"):
+				push_error("James water cargo turns shared helmet mismatch")
+			player.load_manifest("res://character/james-air-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-air-family-v1/helmet-manifest.json"):
+				push_error("James air actions shared helmet mismatch")
+			player.load_manifest("res://character/james-death-family-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-death-family-v1/helmet-manifest.json"):
+				push_error("James death actions shared helmet mismatch")
+			player.load_manifest("res://character/james-north-rest-polish-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-north-rest-polish-v1/helmet-manifest.json"):
+				push_error("James North rest polish shared helmet mismatch")
+			player.load_manifest("res://character/james-sleep-cadence-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-sleep-cadence-v1/helmet-manifest.json"):
+				push_error("James sleep cadence shared helmet mismatch")
+			player.load_manifest("res://character/james-rest-material-continuity-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-rest-material-continuity-v1/helmet-manifest.json"):
+				push_error("James ordinary rest material helmet mismatch")
+			player.load_manifest("res://character/james-rest-east-identity-v2/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-rest-east-identity-v2/helmet-manifest.json"):
+				push_error("James East rest identity helmet mismatch")
+			player.load_manifest("res://character/james-rest-west-identity-v2/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-rest-west-identity-v2/helmet-manifest.json"):
+				push_error("James West rest identity helmet mismatch")
+			player.load_manifest("res://character/james-rest-south-identity-v2/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-rest-south-identity-v2/helmet-manifest.json"):
+				push_error("James South rest identity helmet mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-seated-read-head-pitch-v2/helmet-manifest.json"):
+				push_error("James seated reading pitch helmet mismatch")
+			player.load_manifest("res://character/james-seated-read-phases-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-seated-read-phases-v1/helmet-manifest.json"):
+				push_error("James seated tablet phase helmet mismatch")
+			player.load_manifest("res://character/james-water-north-polish-v1/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-water-north-polish-v1/helmet-manifest.json"):
+				push_error("James North water polish shared helmet mismatch")
+			player.load_manifest("res://character/james-west-water-death-material-v2/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-west-water-death-material-v2/helmet-manifest.json"):
+				push_error("James West water death polish shared helmet mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-torch-east-v1/manifest.json"):
+				push_error("James east construction torch helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-torch-west-v1/manifest.json"):
+				push_error("James west construction torch helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-torch-south-v1/manifest.json"):
+				push_error("James south construction torch helmet profile mismatch")
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-shared-helmet-torch-north-v1/manifest.json"):
+				push_error("James north construction torch helmet profile mismatch")
+			player.load_manifest("res://character/james-torch-material-residue-v2/bare-manifest.json", true)
+			if not player.load_equipment_manifest("diving-helmet", "res://character/james-torch-material-residue-v2/helmet-manifest.json"):
+				push_error("James torch material residue helmet mismatch")
+		if actor=="branforth":
+			player.load_manifest("res://character/james-cargo-return-bridges-v1/bare-joined-manifest-v9.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-cargo-return-bridges-v1/helmet-joined-manifest-v9.json"):push_error("James West return helmet mismatch")
+			player.load_manifest("res://character/james-floor-case-west-v1/bare-rise-v6-manifest.json",true)
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-floor-case-west-v1/helmet-rise-v6-manifest.json"):push_error("James West rise helmet mismatch")
+			if not player.load_equipment_manifest("diving-helmet","res://character/james-helmet-turn-dip-v1/helmet-manifest.json"):push_error("James turn helmet cap mismatch")
+		if actor=="branforth":player.install_bridges()
+		player.finish_texture_batch()
 		set(actor+"_player",player)
+		bank.adopt(player)
+	Router.start(get_tree(),self,bank)
 
 func _load_major_bill_animations() -> void:
 	var base := "res://character/major-bill-v3/"
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(base + "catalog.json"))
-	var player = CrewSpritePlayer.new()
+	var player = preload("res://scripts/crew_storage/bill_player.gd").new()
+	player.begin_texture_batch(crew_texture_pool if CrewTexturePool.enabled else null)
 	for path in catalog.body: player.load_manifest(base + str(path), true)
 	for path in catalog.equipment:
 		if not player.load_equipment_manifest("diving-helmet", base + str(path)):
 			push_error("Bill equipment profile mismatch: " + str(path))
+	player.load_manifest("res://character/crew-runtime-matte-v1/bill/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-shared-helmet-runtime-v2/manifest.json"):
+		push_error("Bill shared helmet profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-equipped-east-selected-v1/manifest.json"):
+		push_error("Bill selected equipped east profile mismatch")
+	player.load_manifest("res://character/bill-equipped-west-selected-v1/bare-timing-manifest.json", true, false)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-equipped-west-selected-v1/manifest.json"):
+		push_error("Bill selected equipped west profile mismatch")
+	player.load_manifest("res://character/bill-equipped-south-selected-v1/bare-timing-manifest.json", true, false)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-equipped-south-selected-v1/manifest.json"):
+		push_error("Bill selected equipped south profile mismatch")
+	player.load_manifest("res://character/bill-equipped-north-selected-v1/bare-timing-manifest.json", true, false)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-equipped-north-selected-v1/manifest.json"):
+		push_error("Bill selected equipped north profile mismatch")
+	# These action revisions inherit legacy stride fields; selected locomotion owns gait.
+	player.load_manifest("res://character/bill-bare-east-selected-v1/manifest.json", true, false)
+	player.load_manifest("res://character/bill-bare-west-selected-v1/manifest.json", true, false)
+	player.load_manifest("res://character/bill-bare-south-selected-v1/manifest.json", true, false)
+	player.load_manifest("res://character/bill-bare-north-selected-v1/manifest.json", true, false)
+	player.load_manifest("res://character/bill-torch-actions-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-torch-helmet-family-v1/manifest.json"):
+		push_error("Bill cardinal torch equipment profile mismatch")
+	player.load_manifest("res://character/bill-helmet-fitting-east-v1/manifest.json", true, false)
+	player.load_manifest("res://character/bill-cargo-east-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-cargo-west-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-cargo-south-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-cargo-north-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-helmet-east-v1/manifest.json"):
+		push_error("Bill east cargo equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-helmet-west-v1/manifest.json"):
+		push_error("Bill west cargo equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-helmet-south-v1/manifest.json"):
+		push_error("Bill south cargo equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-helmet-north-v1/manifest.json"):
+		push_error("Bill north cargo equipment profile mismatch")
+	# Append authored planted turns after cargo; do not join to walking frame zero.
+	player.load_manifest("res://character/bill-carry-turn-matrix-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-carry-turn-matrix-v1/helmet-manifest.json"):
+		push_error("Bill carry-turn matrix equipment profile mismatch")
+	# Select matching east water loops and exact registered transition endpoints together.
+	player.load_manifest("res://character/bill-swim-east-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-tread-east-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-swim-transitions-east-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-helmet-east-coherent-v1/manifest.json"):
+		push_error("Bill east swim equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-tread-helmet-east-coherent-v1/manifest.json"):
+		push_error("Bill east tread equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-transitions-helmet-east-coherent-v1/manifest.json"):
+		push_error("Bill east water transition equipment profile mismatch")
+	# Select the independently authored matching west family on the same clocks.
+	player.load_manifest("res://character/bill-swim-west-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-tread-west-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-swim-transitions-west-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-helmet-west-coherent-v1/manifest.json"):
+		push_error("Bill west swim equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-tread-helmet-west-coherent-v1/manifest.json"):
+		push_error("Bill west tread equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-transitions-helmet-west-coherent-v1/manifest.json"):
+		push_error("Bill west water transition equipment profile mismatch")
+	player.load_manifest("res://character/bill-swim-north-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-tread-north-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-swim-transitions-north-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-helmet-north-coherent-v1/manifest.json"):
+		push_error("Bill north swim equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-tread-helmet-north-coherent-v1/manifest.json"):
+		push_error("Bill north tread equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-transitions-helmet-north-coherent-v1/manifest.json"):
+		push_error("Bill north water transition equipment profile mismatch")
+	player.load_manifest("res://character/bill-swim-south-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-tread-south-coherent-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-swim-transitions-south-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-helmet-south-coherent-v1/manifest.json"):
+		push_error("Bill south swim equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-tread-helmet-south-coherent-v1/manifest.json"):
+		push_error("Bill south tread equipment profile mismatch")
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-transitions-helmet-south-coherent-v1/manifest.json"):
+		push_error("Bill south water transition equipment profile mismatch")
+	# Select water cargo loops and all authored turn routes together.
+	player.load_manifest("res://character/bill-swim-carry-east-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-carry-helmet-east-coherent-v1/manifest.json"):
+		push_error("Bill east water cargo equipment profile mismatch")
+	player.load_manifest("res://character/bill-swim-carry-west-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-carry-helmet-west-coherent-v1/manifest.json"):
+		push_error("Bill west water cargo equipment profile mismatch")
+	player.load_manifest("res://character/bill-swim-carry-north-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-carry-helmet-north-coherent-v1/manifest.json"):
+		push_error("Bill north water cargo equipment profile mismatch")
+	player.load_manifest("res://character/bill-swim-carry-south-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-carry-helmet-south-coherent-v1/manifest.json"):
+		push_error("Bill south water cargo equipment profile mismatch")
+	player.load_manifest("res://character/bill-swim-carry-turn-matrix-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-carry-turn-matrix-v1/helmet-manifest.json"):
+		push_error("Bill water cargo turn matrix equipment profile mismatch")
+	# Match all basic swim turns to the selected four-direction loop endpoints.
+	player.load_manifest("res://character/bill-swim-turn-matrix-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-swim-turn-matrix-v1/helmet-manifest.json"):
+		push_error("Bill basic swim turn matrix equipment profile mismatch")
+	# Keep low-air fatigue bodies and native directional helmets on the same clock.
+	player.load_manifest("res://character/bill-distress-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-distress-family-v1/helmet-manifest.json"):
+		push_error("Bill distress family equipment profile mismatch")
+	# Select matching underwater work and finite cargo pickup together.
+	player.load_manifest("res://character/bill-salvage-pickup-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-salvage-pickup-family-v1/helmet-manifest.json"):
+		push_error("Bill underwater work/pickup family equipment profile mismatch")
+	# Pair cardinal mortality artwork with the selected swimming masters.
+	player.load_manifest("res://character/bill-death-water-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-death-water-family-v1/helmet-manifest.json"):
+		push_error("Bill underwater death family equipment profile mismatch")
+	# Dry recovery follows the saved three-second survival clock.
+	player.load_manifest("res://character/bill-recover-air-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-recover-air-family-v1/helmet-manifest.json"):
+		push_error("Bill dry recovery family equipment profile mismatch")
+	# North lounge sitting shares exact standing/seated joins and a matte loop.
+	player.load_manifest("res://character/bill-seated-north-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-seated-north-family-v1/helmet-manifest.json"):
+		push_error("Bill north sitting family equipment profile mismatch")
+	player.load_manifest("res://character/bill-seated-south-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-seated-south-family-v1/helmet-manifest.json"):
+		push_error("Bill south sitting/reading family equipment profile mismatch")
+	player.load_manifest("res://character/bill-seated-east-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-seated-east-family-v1/helmet-manifest.json"):
+		push_error("Bill east sitting/reading family equipment profile mismatch")
+	player.load_manifest("res://character/bill-seated-west-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-seated-west-family-v1/helmet-manifest.json"):
+		push_error("Bill west sitting/reading family equipment profile mismatch")
+	player.load_manifest("res://character/bill-inspect-family-v1/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-inspect-family-v1/helmet-manifest.json"):
+		push_error("Bill cardinal inspection family equipment profile mismatch")
+	player.load_manifest("res://character/bill-meal-family-v1/manifest.json", true)
+	# Paired dry falls retain open-floor poses and saved contact-aware lateral options.
+	player.load_manifest("res://character/bill-death-ground-contact-family-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-death-ground-contact-family-v1/helmet-manifest.json"):
+		push_error("Bill dry collapse contact family equipment profile mismatch")
+	# Generic cardinal rest uses paired master-density frames; the dedicated bunk stays separate.
+	player.load_manifest("res://character/bill-rest-family-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-rest-family-v1/helmet-manifest.json"):
+		push_error("Bill cardinal rest family equipment profile mismatch")
+	player.load_manifest("res://character/bill-run-east-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-run-east-coherent-v1/helmet-manifest.json"):
+		push_error("Bill east run equipment profile mismatch")
+	player.load_manifest("res://character/bill-run-west-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-run-west-coherent-v1/helmet-manifest.json"):
+		push_error("Bill west run equipment profile mismatch")
+	player.load_manifest("res://character/bill-run-north-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-run-north-coherent-v1/helmet-manifest.json"):
+		push_error("Bill north run equipment profile mismatch")
+	player.load_manifest("res://character/bill-run-south-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-run-south-coherent-v1/helmet-manifest.json"):
+		push_error("Bill south run equipment profile mismatch")
+	player.load_manifest("res://character/bill-walk-north-master-head-v1/manifest.json", true)
+	player.load_manifest("res://character/bill-walk-west-material-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-walk-west-material-v1/helmet-manifest.json"):
+		push_error("Bill west walk material equipment profile mismatch")
+	player.load_manifest("res://character/bill-walk-east-material-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-walk-east-material-v1/helmet-manifest.json"):
+		push_error("Bill east walk material equipment profile mismatch")
+	player.load_manifest("res://character/bill-walk-south-material-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-walk-south-material-v1/helmet-manifest.json"):
+		push_error("Bill south walk material equipment profile mismatch")
+	player.load_manifest("res://character/bill-cargo-east-master-head-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-east-master-head-v1/helmet-manifest.json"):
+		push_error("Bill east cargo master equipment profile mismatch")
+	player.load_manifest("res://character/bill-cargo-west-master-head-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-west-master-head-v1/helmet-manifest.json"):
+		push_error("Bill west cargo master equipment profile mismatch")
+	player.load_manifest("res://character/bill-cargo-north-master-head-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-north-master-head-v1/helmet-manifest.json"):
+		push_error("Bill north cargo native master helmet failed to load")
+	player.load_manifest("res://character/bill-cargo-south-master-head-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-cargo-south-master-head-v1/helmet-manifest.json"):
+		push_error("Bill south cargo native pitch/master helmet failed to load")
+	player.load_manifest("res://character/bill-carry-turn-identity-matrix-v2/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-carry-turn-identity-matrix-v2/helmet-manifest.json"):
+		push_error("Bill carry turn native identity matrix helmet failed to load")
+	# Reviewed East/South and West/North turn heads; exact current cardinal joins.
+	player.load_manifest("res://character/bill-carry-turn-identity-matrix-v3/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-carry-turn-identity-matrix-v3/helmet-manifest.json"):
+		push_error("Bill carry-turn identity matrix v3 equipment failed to load")
+	# Reviewed South/West intermediate identity; prior East/South and West/North retained.
+	player.load_manifest("res://character/bill-carry-turn-identity-matrix-v4/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-carry-turn-identity-matrix-v4/helmet-manifest.json"):
+		push_error("Bill carry-turn identity matrix v4 equipment failed to load")
+	# Four reviewed carry-turn head/shell identities with exact current cardinal joins.
+	player.load_manifest("res://character/bill-carry-turn-identity-matrix-v5/bare-manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-carry-turn-identity-matrix-v5/helmet-manifest.json"):
+		push_error("Bill carry-turn identity matrix v5 equipment failed to load")
+	# Native accepted bare heads; equipment references retain the authored paired runs.
+	player.load_manifest("res://character/bill-run-head-locked-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-run-head-locked-v1/helmet-manifest.json"):
+		push_error("Bill master-head cardinal run equipment profile mismatch")
+	player.load_manifest("res://character/bill-walk-south-east-coherent-v1/manifest.json", true)
+	if not player.load_equipment_manifest("diving-helmet", "res://character/bill-walk-south-east-coherent-v1/helmet-manifest.json"):
+		push_error("Bill southeast walk equipment profile mismatch")
+	# Latest reviewed cardinal carry entry, gait and gradual North unload.
+	if not player.load_candidates(): push_error("Bill cardinal carry source bank failed to load")
+	player.finish_texture_batch()
+	if Router.active==null:push_error("Missing crew storage session");return
+	Router.active.bank.adopt(player)
 	human_animations.clear()
 	human_animation_timing.clear()
 	human_stride_distance = player.strides.duplicate()
@@ -660,24 +1244,51 @@ static func _exact_ratio(scale: float) -> float:
 # placement, one per frame, so the load does not land on the placing frame.
 var lazy_views: Dictionary = {}
 var prewarmed_room_ids: Dictionary = {}
+var hand_image_records:Dictionary={}
+var hand_image_assets:Dictionary={}
+var hand_image_profiles:Dictionary={}
 func _lazy_view(key: StringName, script: Script):
 	var view = lazy_views.get(key)
 	if not is_instance_valid(view):
 		view = script.new()
 		view.embedded = true
+		view.set_meta("room_texture_pool",room_texture_pool)
 		view.hide()
-		add_child(view)
+		# _ready can load images and pump a render during startup. Publish first so
+		# a reentrant draw finds this instance instead of recursively building it.
 		lazy_views[key] = view
+		add_child(view)
 	return view
 
 # Every room already on the station, at once: startup and checkpoint loads call this so
 # the first navigation build does not load their art (test_soak_budget, Sept 28).
 func prewarm_station_views(main) -> void:
-	for room in main.placed_rooms:
+	var required: Array = main.placed_rooms.duplicate()
+	# Restored construction can reach fitting before its blueprint enters the hand.
+	# Prepare only these session-required views while the loading overlay is active.
+	required.append_array(main.drone_fleet.orders)
+	for drone in main.drone_fleet.drones.values():
+		if not drone.order.is_empty(): required.append(drone.order)
+	for room in required:
 		var id := str(room.get("id",""))
 		if id.is_empty() or prewarmed_room_ids.has(id): continue
 		prewarmed_room_ids[id] = true
 		_bill_room_view({"id": id})
+
+	var pending: Array = main.drone_fleet.orders.duplicate()
+	for drone in main.drone_fleet.drones.values():
+		if not drone.order.is_empty(): pending.append(drone.order)
+	var prepared_layouts: Dictionary = {}
+	for order in pending:
+		var id: String = str(order.get("id", ""))
+		if id.is_empty(): continue
+		var quarter: int = int(order.get("rotation", 0))
+		var key: Array = [id, quarter]
+		if prepared_layouts.has(key): continue
+		prepared_layouts[key] = true
+		var view = _bill_room_view({"id": id})
+		if view != null and "props" in view:
+			preload("res://scripts/room_asset_library.gd").prewarm_layout_templates(view, quarter)
 
 func prewarm_room_views(main) -> void:
 	var ids: Array = main.hand.duplicate()
@@ -692,6 +1303,7 @@ func prewarm_room_views(main) -> void:
 func _process(_delta: float) -> void:
 	var main = _get_main()
 	prewarm_room_views(main)
+	prepare_hand_images(main)
 	var viewport_region := Rect2(Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size)
 	if viewport_region != last_content_viewport:
 		last_content_viewport = viewport_region
@@ -703,6 +1315,7 @@ func _process(_delta: float) -> void:
 
 enum Surface { FLOOR, FLOOR_REST, WALL, REAR_DOORS, LIVE, FRONT_DOORS, LIGHTS, FOREGROUND }
 const RoomContents = preload("res://scripts/room_content_canvas.gd")
+var screen_patterns=preload("res://scripts/prepared_library_screens.gd").FramePatterns.new()
 var render_door_cache := {}
 var render_door_cache_tick := -1
 var render_door_cache_active := false
@@ -737,6 +1350,28 @@ class SurfacePass extends Node2D:
 		host.draw_usec_since_read += Time.get_ticks_usec()-started
 		host.draws_since_read += 1
 
+# Room shells and north crowns retain the original two-pass compositing order.
+class WallSlot extends Node2D:
+	var host
+	var room: Dictionary
+	var crown := false
+	var state: Array = []
+	func _draw() -> void:
+		var started := Time.get_ticks_usec()
+		var previous = host.draw_target
+		host.draw_target = self
+		if crown: host._draw_wall_crown(room)
+		else: host._draw_nursery(room,Rect2(Vector2(room.pos)*host._cell_size(),Vector2.ONE*host._cell_size()),false,false,true)
+		host.draw_target = previous
+		host.wall_slot_rebuilds += 1
+		var elapsed := Time.get_ticks_usec()-started
+		host.draw_usec_since_read += elapsed
+		if host.profile_draw: host.draw_profile_usec["wall_slots"] = int(host.draw_profile_usec.get("wall_slots",0))+elapsed
+
+var retain_wall_slots := not OS.get_cmdline_user_args().has("--combined-wall-slots")
+var wall_slots := {}
+var wall_slot_rebuilds := 0
+
 # One door (or airlock hatch) of a retained door pass, in the pass's drawing order. A door that
 # opens, or that a crew member walks past, repaints alone: repainting every door for it cost
 # ~3 ms on two frames in three on a large station (Sept 30 probe, 49 doors).
@@ -755,6 +1390,18 @@ var underwater_visibility = preload("res://scripts/underwater_visibility.gd").ne
 enum Env { STATIC_BELOW, LIVE_LINES, STATIC_FOUNDATIONS, LIVE_ABOVE, STATIC_TERRAIN, DERELICTS, EXTERIOR_ACTORS, FOG, LIFE }
 # Large sea life that passes over the station is drawn after every surface pass.
 var life_over: Node2D
+# The seabed's still part (background, silt tiles, biome ground), repainted only when its key
+# changes; the moving plants and water stay on the grid's own per-frame drawing.
+var seabed_still: Node2D
+var seabed_still_key: Array = []
+var retain_seabed := not OS.get_cmdline_user_args().has("--redraw-seabed")
+class SeabedStillPass extends Node2D:
+	var host
+	func _draw() -> void:
+		var started := Time.get_ticks_usec()
+		var key: Array = host.seabed_still_key
+		if not key.is_empty(): host.seabed_background.render_still(self,float(key[0]),int(key[1]),host._get_main().site_layout)
+		host.draw_usec_since_read += Time.get_ticks_usec()-started
 class LifeOverPass extends Node2D:
 	var host
 	func _draw() -> void:
@@ -777,6 +1424,8 @@ var env_below_rebuilds := 0
 var env_foundation_rebuilds := 0
 var env_terrain_key: Array = []
 var env_terrain_rebuilds := 0
+var retain_terrain_cells := not OS.get_cmdline_user_args().has("--reference-terrain-cells")
+var terrain_content: Node2D
 var env_derelict_key: Array = []
 
 func invalidate_site() -> void:
@@ -824,6 +1473,8 @@ var retain_derelicts := not OS.get_cmdline_user_args().has("--redraw-derelicts")
 var draw_target: CanvasItem
 var surface_passes: Array = []
 var surface_key: Array = []
+var wall_surface_key: Array = []
+var retain_walls_during_fades := not OS.get_cmdline_user_args().has("--rebuild-walls-with-light-fades")
 var retain_static_surfaces := not OS.get_cmdline_user_args().has("--redraw-static-surfaces")
 var floor_rebuilds := 0
 var wall_rebuilds := 0
@@ -861,14 +1512,17 @@ func _door_light_state() -> void:
 			var offset := _offset_from_side(side)
 			var neighbor: Vector2i = pos+offset
 			var edge := Vector3i(mini(pos.x,neighbor.x),mini(pos.y,neighbor.y),0 if offset.x!=0 else 1)
-			if not connections.has(edge): connections[edge] = _door_has_connected_neighbor(main,room,neighbor,offset)
+			if not connections.has(edge):
+				# The source port was just enumerated; topology cannot change without yielding.
+				connections[edge] = _neighbor_connected_from_known_port(main,room,neighbor,offset) if reuse_known_port_connections else _door_has_connected_neighbor(main,room,neighbor,offset)
 			var connected: bool = connections[edge]
 			if connected and side in ["north","west"]: continue
 			var outside_frame := _drone_door_frame(main,pos,neighbor)
 			if not connected and (main.occupied.has(neighbor) or side not in main.get_room_doors(room) or outside_frame==0): continue
 			var other: Dictionary = main.occupied.get(neighbor,room)
 			if not _uses_layered_art(room) and not _uses_layered_art(other): continue
-			var frame := _door_frame_for_pair(main,pos,neighbor) if connected else outside_frame
+			# This connected edge was validated above without yielding.
+			var frame := _door_frame_for_pair(main,pos,neighbor,true) if connected else outside_frame
 			var center := _door_edge_center(pos,side,size)
 			var foot_y: float = _nearest_crew_foot(main,center).y
 			var variant := DepartmentDoor.pair_variant(room,other)
@@ -957,14 +1611,35 @@ func _surface_state() -> Array:
 		for field in ["airlock_cycle","fire","fire_heat","fire_water_seconds","electrical_repair_progress","survey_clock","survey_blocked"]:
 			structural.erase(field)
 		structural_rooms.append(structural)
+	# Selection is painted by other layers and does not change floor/wall pixels.
+	# Keep it stable during zoom too: changing it defeats size-only settling and
+	# forces every static group to repaint together. Structural changes still invalidate.
+	var surface_selection:Vector2i=main.selected_room_cell
+	if surface_key.size()>8:
+		surface_selection=surface_key[8]
 	return [main.hardware.duplicate(),_cell_size(),structural_rooms,main.placed_rooms.size(),main.powered_room_cells,rooms,preload("res://scripts/room_layout_store.gd").revision,
-		preload("res://scripts/title_settings.gd").raised_walls,main.selected_room_cell,main.architect_run.get("core",{}).is_empty(),legacy_clock]
+		preload("res://scripts/title_settings.gd").raised_walls,surface_selection,main.architect_run.get("core",{}).is_empty(),legacy_clock]
+
+# Shell rendering receives power/layout/door state, but never the floor's fading
+# light level. Corridor risers do use it, so preserve their fade dependency.
+func _wall_surface_state(floor_state: Array) -> Array:
+	var result: Array = floor_state.duplicate(true)
+	if retain_walls_during_fades and result.size() > 5:
+		for room_state in result[5]:
+			if not _is_narrow_corridor(_get_main().occupied.get(room_state[0],{})):
+				room_state[2] = 0.0
+	return result
 
 var flood_surfaces: Dictionary = {}
 var visible_draw_rooms: Array = []
 var cull_derelict_drawing := not OS.get_cmdline_user_args().has("--draw-all-derelicts")
 var cull_room_drawing := not OS.get_cmdline_user_args().has("--draw-all-rooms")
-var profile_draw := false
+var profile_draw := false:
+	set(enabled):
+		profile_draw=enabled
+		# Current-frame timings are invalid once collection stops. Keep totals
+		# and report snapshots so disabling diagnostics does not erase evidence.
+		if not enabled:draw_profile_usec.clear()
 var draw_profile_usec: Dictionary = {}
 var draw_profile_totals_usec: Dictionary = {}
 
@@ -997,7 +1672,7 @@ func _draw_grid() -> void:
 		if not settle_backlog or not reuse_layers_while_zooming: zoom_settling = false
 	settle_backlog = false
 	visible_draw_rooms = _rooms_in(main,_view_rect(main),cell_size) if cull_room_drawing else main.placed_rooms
-	static_draw_rooms = _rooms_in(main,_static_cull_rect(main,cell_size),cell_size) if cull_room_drawing and (zoom_reuse_active or zoom_preparing) else visible_draw_rooms
+	static_draw_rooms = _rooms_in(main,_static_cull_rect(main,cell_size),cell_size) if cull_room_drawing and (zoom_reuse_active or zoom_preparing) else _sticky_static_rooms(main,cell_size)
 	if retain_static_surfaces: preload("res://scripts/flood_visuals.gd").update_surfaces(self,main,static_draw_rooms,cell_size)
 	if (zoom_reuse_active or zoom_preparing or zoom_settling) and _flood_surface_shown():
 		# Flood surfaces are placed at the current size inside the floor pass: no scaled reuse.
@@ -1063,6 +1738,7 @@ func _draw_grid() -> void:
 	if not retain_static_surfaces:
 		for layer in surface_passes: layer.hide()
 		surface_key = []
+		wall_surface_key = []
 		door_surface_key = []
 		light_surface_key = []
 		_paint_surface(Surface.FLOOR)
@@ -1077,7 +1753,10 @@ func _draw_grid() -> void:
 		surface_key = next_key.duplicate(true)
 		pending_layers[surface_passes[Surface.FLOOR]] = true
 		pending_layers[surface_passes[Surface.FLOOR_REST]] = true
-		pending_layers[surface_passes[Surface.WALL]] = true
+		var next_wall_key := _wall_surface_state(next_key)
+		if _retained_key_stale(next_wall_key,wall_surface_key,1):
+			wall_surface_key = next_wall_key
+			pending_layers[surface_passes[Surface.WALL]] = true
 	if profile_draw: _profile_draw_stage("surface_validation",checked)
 	checked = Time.get_ticks_usec() if profile_draw else 0
 	if not hold_layers: _door_light_state()
@@ -1180,10 +1859,19 @@ func _flush_retained_layers(cell_size: float) -> void:
 		if (zoom_preparing or (zoom_settling and not changed)) and flushed >= 0:
 			left += 1
 			continue
+		var deferred_size := false
+		var queued := false
 		for layer in due:
+			# An urgent door/selection update must not promote unrelated size-only
+			# layers in its group. Keep their complete scaled commands until their turn.
+			if zoom_settling and flushed >= 0 and not pending_layers.has(layer):
+				deferred_size = true
+				continue
 			pending_layers.erase(layer)
 			layer.queue_redraw()
-		flushed = i
+			queued = true
+		if deferred_size: left += 1
+		if queued: flushed = i
 	if left > 0: settle_backlog = true
 	zoom_prepare_groups_left = left
 	settle_room_limit = 0 if (zoom_preparing or zoom_settling) and flushed >= 0 else SETTLE_ROOMS_PER_FRAME
@@ -1195,7 +1883,8 @@ func _sync_retained_key_sizes(cell_size: float) -> void:
 		for layer in layers:
 			if pending_layers.has(layer) or not is_equal_approx(float(layer.get_meta("built_cell",cell_size)),cell_size): return false
 		return true
-	if surface_key.size() > 1 and current.call([surface_passes[Surface.FLOOR],surface_passes[Surface.FLOOR_REST],surface_passes[Surface.WALL]]): surface_key[1] = cell_size
+	if surface_key.size() > 1 and current.call([surface_passes[Surface.FLOOR],surface_passes[Surface.FLOOR_REST]]): surface_key[1] = cell_size
+	if wall_surface_key.size() > 1 and current.call([surface_passes[Surface.WALL]]): wall_surface_key[1] = cell_size
 	if door_surface_key.size() > 0 and current.call([surface_passes[Surface.REAR_DOORS],surface_passes[Surface.FRONT_DOORS]]): door_surface_key[0] = cell_size
 	if light_surface_key.size() > 0 and current.call([surface_passes[Surface.LIGHTS]]): light_surface_key[0] = cell_size
 	if env_below_key.size() > 0 and current.call([env_passes[Env.STATIC_BELOW]]): env_below_key[0] = cell_size
@@ -1215,6 +1904,32 @@ func _cells_of(region: Rect2, size: float) -> Rect2:
 	return Rect2(region.position/size,region.size/size)
 
 # Static layers cull to the view, widened to the cells a preparing or running zoom will show.
+# The rooms the retained floors, walls, doors and lights are built for. Any change to this set rebuilds all of
+# them (about 100 ms), so panning must not change it each time a room touches the screen edge: a room joins
+# once it is within a few cells of the view and stays until it is well clear (owner playtest, Sept 29: lag
+# spikes while panning). A small station is simply drawn whole.
+const STATIC_JOIN_CELLS := 3.0
+const STATIC_LEAVE_CELLS := 6.0
+var sticky_static_ids: Dictionary = {}
+func _sticky_static_rooms(main, size: float) -> Array:
+	if not cull_room_drawing: return visible_draw_rooms
+	var view := _view_rect(main)
+	var join := view.grow(size * STATIC_JOIN_CELLS)
+	var leave := view.grow(size * STATIC_LEAVE_CELLS)
+	var kept: Dictionary = {}
+	var result: Array = []
+	for room in main.placed_rooms:
+		var rect := Rect2(Vector2(room.pos) * size, Vector2(room.get("size", Vector2i.ONE)) * size)
+		if join.intersects(rect) or (sticky_static_ids.has(room.pos) and leave.intersects(rect)):
+			kept[room.pos] = true
+			result.append(room)
+	for room in visible_draw_rooms:
+		if not kept.has(room.pos):
+			kept[room.pos] = true
+			result.append(room)
+	sticky_static_ids = kept
+	return result
+
 func _static_cull_rect(main, size: float) -> Rect2:
 	var view := _view_rect(main)
 	if not (zoom_reuse_active or zoom_preparing): return view
@@ -1314,7 +2029,7 @@ func _environment_terrain_key(main, size: float) -> Array:
 	var key: Array=[size,main.selected_room_cell]
 	for cell in main.wrecks:
 		var w: Dictionary=main.wrecks[cell]
-		key.append([cell,w.kind,w.progress,w.cleared])
+		key.append([cell,w.kind,w.progress,w.cleared,w.get("buried",false)])
 	return key
 
 # Unpowered derelict wards were fully re-rendered every frame (~3 ms). Their
@@ -1362,8 +2077,16 @@ func _draw_environment_layer(main, cell_size: float, pass_id: int) -> void:
 			_draw_foundations(false,"shimmer")
 			_draw_foundations(true,"shimmer")
 		Env.STATIC_TERRAIN:
-			_draw_environment_above(main,cell_size,GRID_SIZE*cell_size)
-			preload("res://scripts/seabed_glow.gd").draw_plants(target,main,cell_size)
+			if retain_terrain_cells:
+				if terrain_content==null:
+					terrain_content=preload("res://scripts/terrain_content_canvas.gd").new()
+					target.add_child(terrain_content)
+				terrain_content.show()
+				terrain_content.submit(main,cell_size,self,rock_view,wreck_view)
+			else:
+				if terrain_content!=null:terrain_content.hide()
+				_draw_environment_above(main,cell_size,GRID_SIZE*cell_size)
+				preload("res://scripts/seabed_glow.gd").draw_plants(target,main,cell_size)
 			env_terrain_rebuilds += 1
 		Env.DERELICTS:
 			_draw_cryo_derelicts(main,cell_size)
@@ -1416,6 +2139,15 @@ func _draw_underwater_depth(part := "all") -> void:
 	var first: Vector2i = cell_range[0]
 	var last: Vector2i = cell_range[1]
 	var clock: float = main.get_visual_time_seconds()
+	var wave: Texture2D
+	var wave_item:=draw_target.get_canvas_item()
+	var wave_rid:RID
+	var direct_wave:=false
+	var wave_prepared := false
+	# Only the live line pass: haze retains its existing static coverage.
+	var cull_waves:=part=="lines" and cull_room_drawing and draw_target.material==null and not draw_target.use_parent_material
+	var wave_view:Rect2=_view_rect(main) if cull_waves else Rect2()
+	var wave_sources: Array[Rect2] = []
 	for y in range(first.y,last.y+1):
 		for x in range(first.x,last.x+1):
 			var cell := Vector2(x,y)
@@ -1425,13 +2157,41 @@ func _draw_underwater_depth(part := "all") -> void:
 				draw_target.draw_rect(Rect2(cell*size,Vector2.ONE*size),Color(0.07,0.20,0.24,clampf(distance*0.004,0.025,0.10)))
 			if part == "rects": continue
 			if posmod(x*7+y*11,3)!=0: continue
+			# Covers every clock: centre .45 +/- .12, segment thickness and sampling fringe.
+			if cull_waves and not wave_view.intersects(Rect2((cell+Vector2(0,.33))*size,Vector2(size,size*.24)).grow(maxf(2.0,size*.02))):continue
+			if not wave_prepared:
+				wave_prepared = true
+				wave = EnvironmentArt.texture("water-wave")
+				if wave != null:
+					direct_wave=use_direct_wave_commands and wave is ImageTexture
+					if direct_wave:wave_rid=wave.get_rid()
+					var full_width: float = wave.get_width()
+					var width: float = full_width / 12.0
+					var height: float = wave.get_height()
+					for segment in range(12):
+						wave_sources.append(Rect2(float(segment) * full_width / 12.0, 0, width, height))
 			var phase := float(x*13+y*17)
 			var points := PackedVector2Array()
+			points.resize(13)
 			for step in range(13):
 				var along := float(step)/12.0
-				points.append((cell+Vector2(along,0.45+0.12*sin(along*TAU+clock*0.18+phase)))*size)
+				points[step] = (cell+Vector2(along,0.45+0.12*sin(along*TAU+clock*0.18+phase)))*size
 			var intensity := 0.018+0.014*(0.5+0.5*sin(clock*0.27+phase))
-			draw_target.draw_polyline(points,Color(0.46,0.72,0.69,intensity),maxf(1.0,size*0.008))
+			var tint := Color(.46,.72,.69,intensity)
+			if wave!=null:
+				# Piecewise mapping preserves the existing animated path in world space.
+				for segment in range(points.size()-1):
+					var delta: Vector2=points[segment+1]-points[segment]
+					if direct_wave:
+						RenderingServer.canvas_item_add_set_transform(wave_item,Transform2D(delta.angle(),Vector2.ONE,0.0,points[segment]))
+						RenderingServer.canvas_item_add_texture_rect_region(wave_item,Rect2(0,-size*.008,delta.length(),size*.016),wave_rid,wave_sources[segment],tint,false,true)
+					else:
+						draw_target.draw_set_transform(points[segment],delta.angle())
+						draw_target.draw_texture_rect_region(wave,Rect2(0,-size*.008,delta.length(),size*.016),wave_sources[segment],tint)
+				if direct_wave:RenderingServer.canvas_item_add_set_transform(wave_item,Transform2D.IDENTITY)
+				else:draw_target.draw_set_transform(Vector2.ZERO)
+			else:
+				draw_target.draw_polyline(points,Color(0.46,0.72,0.69,intensity),maxf(1.0,size*0.008))
 
 func _draw_subfloor(cell: Vector2i, width: float, size: float, weathered: bool, stone: bool) -> void:
 	var at := Vector2(cell)*size
@@ -1448,11 +2208,13 @@ func _draw_subfloor(cell: Vector2i, width: float, size: float, weathered: bool, 
 		var uv := PackedVector2Array()
 		for point in points: uv.append(RockView.material_uv(point/size))
 		draw_target.draw_colored_polygon(points,Color("14292f"))
-		draw_target.draw_polygon(points,PackedColorArray([Color(0.30,0.41,0.42)]),uv,rock_view.texture())
+		if not EnvironmentArt.cliff(draw_target,PackedVector2Array(points.slice(0,edge.size())),bottom,Color(.6,.7,.7)):
+			draw_target.draw_polygon(points,PackedColorArray([Color(0.30,0.41,0.42)]),uv,rock_view.texture())
 		draw_target.draw_polyline(bottom,Color(0.025,0.07,0.08,0.7),size*0.012)
 		return
 	# Continuous depth face joins adjacent room tiles, hiding individual beam seams.
 	draw_target.draw_rect(Rect2(left,top+size*0.05,width,size*0.065),Color(0.01,0.035,0.045,0.45))
+	if EnvironmentArt.band(draw_target,"foundation-weathered" if weathered else "foundation-fresh",Rect2(left,top,width,size*.07)): return
 	draw_target.draw_rect(Rect2(left,top,width,size*0.07),Color("293536" if weathered else "303e42"))
 	draw_target.draw_rect(Rect2(left,top,width,size*0.009),Color("63695c" if weathered else "71807e"))
 	draw_target.draw_rect(Rect2(left,top+size*0.056,width,size*0.014),Color("131f24"))
@@ -1493,9 +2255,10 @@ func _foundation_exposed(cell: Vector2i) -> bool:
 # a station-wide foundation repaint cost ~8 ms. Meshes are built by transforming unit
 # triangle fans, so a new zoom width costs a few dozen array operations.
 static var contact_fans := {}
-static var contact_meshes := {}
-# Meshes are kept once built: a retained canvas holds their RIDs, not a reference to them.
-static var contact_retired := []
+var contact_meshes := {}
+# Meshes are kept for this grid's lifetime: retained canvases hold RIDs, not resource
+# references. Instance ownership releases both generations when the station exits.
+var contact_retired := []
 
 func _draw_foundation_contact(origin: Vector2, width: float, height: float, foreground := false) -> void:
 	# Broad seabed occlusion behind the piles; sediment overlaps their lower edges.
@@ -1572,7 +2335,8 @@ func _draw_corridor_foundations(room: Dictionary, size: float) -> void:
 		var origin:=top-Vector2(0,size*0.027)
 		_draw_foundation_contact(origin,width,height)
 		# Depth fascia and support share the hull edge instead of the cell edge.
-		draw_target.draw_rect(Rect2(top-Vector2(0,size*0.04),Vector2(width,size*0.07)),Color("303e42"))
+		if not EnvironmentArt.band(draw_target,"foundation-weathered" if variant=="weathered" else "foundation-fresh",Rect2(top-Vector2(0,size*.04),Vector2(width,size*.07))):
+			draw_target.draw_rect(Rect2(top-Vector2(0,size*0.04),Vector2(width,size*0.07)),Color("303e42"))
 		draw_target.draw_texture_rect_region(texture,Rect2(origin,Vector2(width,height)),Rect2(25,138,1934,596),Color(0.72,0.78,0.80))
 		_draw_foundation_contact(origin,width,height,true)
 
@@ -1621,6 +2385,53 @@ func _draw_foundations(exterior := false, mode := "full") -> void:
 			var shimmer: float=0.025+0.015*sin(main.get_visual_time_seconds()*0.3+room.pos.x*2.0)
 			draw_target.draw_line(origin+Vector2(width*0.12,size*0.037),origin+Vector2(width*0.77,size*0.037),Color(0.40,0.65,0.64,shimmer),maxf(1.0,size*0.004))
 
+func _draw_wall_crown(room: Dictionary) -> void:
+	var main = _get_main()
+	var cell_size := _cell_size()
+	if preload("res://scripts/title_settings.gd").raised_walls and _uses_layered_art(room) and not _is_narrow_corridor(room) and not main.occupied.has(room.pos+Vector2i.UP):
+		draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
+		var north_view = _bill_room_view(room)
+		north_view.set_meta("raised_north_visible",true)
+		# Selecting a recovery ward can invalidate the shared view's geometry.
+		north_view.configure_embedded(int(room.get("rotation",0)),[],false,main.get_visual_time_seconds())
+		preload("res://scripts/room_asset_library.gd").strip_retired(north_view)
+		preload("res://rooms/whole-room/north_wall.gd").draw_into(draw_target,room.id,room.pos,_has_raised_wall_at(room.pos+Vector2i.LEFT),_has_raised_wall_at(room.pos+Vector2i.RIGHT),north_view,false)
+		draw_target.draw_set_transform(Vector2.ZERO)
+
+func _sync_wall_slots() -> void:
+	# Keep all existing structural dependencies. Only continuous corridor fades
+	# become local: a fade cannot alter another room's wall commands.
+	var common: Array = _wall_surface_state(_surface_state())
+	for entry in common[5]: entry[2] = 0.0
+	var main = _get_main()
+	retained_wall_context.prepare(common,main.occupied,main.powered_room_cells,static_draw_rooms)
+	var active := {}
+	var parent: Node2D = surface_passes[Surface.WALL]
+	var order := 0
+	# Original compositing order: every room shell, then every north crown.
+	for crown in [false,true]:
+		for room in static_draw_rooms:
+			if not _uses_layered_art(room): continue
+			var id := [room.pos,crown]
+			active[id] = true
+			if not wall_slots.has(id):
+				var created := WallSlot.new()
+				created.host = self; created.crown = crown
+				parent.add_child(created); wall_slots[id] = created
+			var slot: Node2D = wall_slots[id]
+			slot.room = room
+			parent.move_child(slot,order); order += 1
+			slot.show()
+			var shade:float = _room_light_level(room) if _is_narrow_corridor(room) and not crown else 0.0
+			var next:Array = retained_wall_context.key(room,shade)
+			if slot.state != next:
+				# The retained key is an immutable snapshot; share it read-only.
+				slot.state = next
+				slot.queue_redraw()
+	for id in wall_slots.keys():
+		if not active.has(id):
+			wall_slots[id].hide(); wall_slots[id].queue_free(); wall_slots.erase(id)
+
 func _paint_surface(pass_id: int) -> void:
 	var main = _get_main()
 	var cell_size := _cell_size()
@@ -1646,22 +2457,20 @@ func _paint_surface(pass_id: int) -> void:
 		if pass_id == Surface.FLOOR: floor_rebuilds += 1
 		return
 	if pass_id == Surface.WALL:
+		if not main.hardware.walls or not retain_wall_slots or not retain_static_surfaces:
+			for slot in wall_slots.values(): slot.hide()
 		if not main.hardware.walls: return
+		if retain_wall_slots and retain_static_surfaces:
+			_sync_wall_slots()
+			if profile_draw: _profile_draw_stage("walls",stage_time)
+			wall_rebuilds += 1
+			return
 		# Floors precede every modular wall, so a neighbor cannot erase half a seam.
 		# Finish the shell before assembling doors; jambs must cover wall ends.
 		for room in static_draw_rooms:
 			if _uses_layered_art(room):
 				_draw_nursery(room, Rect2(Vector2(room.pos)*cell_size, Vector2.ONE*cell_size), false, false, true)
-		for room in static_draw_rooms:
-			if preload("res://scripts/title_settings.gd").raised_walls and _uses_layered_art(room) and not _is_narrow_corridor(room) and not main.occupied.has(room.pos+Vector2i.UP):
-				draw_target.draw_set_transform((Vector2(room.pos)+Vector2.ONE*0.5)*cell_size,0,Vector2.ONE*cell_size/384.0)
-				var north_view = _bill_room_view(room)
-				north_view.set_meta("raised_north_visible",true)
-				# Selecting a recovery ward can invalidate the shared view's geometry.
-				north_view.configure_embedded(int(room.get("rotation",0)),[],false,main.get_visual_time_seconds())
-				preload("res://scripts/room_asset_library.gd").strip_retired(north_view)
-				preload("res://rooms/whole-room/north_wall.gd").draw_into(draw_target,room.id,room.pos,_has_raised_wall_at(room.pos+Vector2i.LEFT),_has_raised_wall_at(room.pos+Vector2i.RIGHT),north_view,false)
-				draw_target.draw_set_transform(Vector2.ZERO)
+		for room in static_draw_rooms: _draw_wall_crown(room)
 		if profile_draw: _profile_draw_stage("walls",stage_time)
 		wall_rebuilds += 1
 		return
@@ -1676,6 +2485,8 @@ func _paint_surface(pass_id: int) -> void:
 		if profile_draw: _profile_draw_stage("lights",stage_time)
 		return
 	if pass_id == Surface.LIVE:
+		_sync_large_room_canvases(main)
+		LargeStudioView.hide_wet_equipment(draw_target,main.occupied)
 		settle_rooms_rebuilt = 0
 		var visible_cells := {}
 		# A reused cell may now contain a procedural corridor, which never
@@ -1706,6 +2517,7 @@ func _paint_surface(pass_id: int) -> void:
 	if pass_id==Surface.FOREGROUND or not retain_static_surfaces:
 		preload("res://scripts/cryo_release_effect.gd").draw(draw_target,main,cell_size)
 	if pass_id==Surface.FOREGROUND:
+		room_transitions.draw(self,main,"complete")
 		preload("res://scripts/room_flooding.gd").draw(draw_target,main,visible_draw_rooms,cell_size)
 		preload("res://scripts/room_fire.gd").draw(draw_target,main,visible_draw_rooms,cell_size)
 		preload("res://scripts/station_hardware.gd").draw_effects(draw_target,main,visible_draw_rooms,cell_size)
@@ -1717,10 +2529,15 @@ func _paint_surface(pass_id: int) -> void:
 	_draw_synergy_links(main)
 	_draw_discovery_bursts(main)
 	_draw_room_selection(main, cell_size)
-	_draw_door_foregrounds(main, true)
+	# This paint does not yield; door poses and geometry are stable through the
+	# human draw between underlay and overlay. Keep the plan local to this paint.
+	var legacy_entries: Variant = null
+	if reuse_legacy_door_plan and door_texture != null and door_texture.get_width() > 0 and door_texture.get_height() > 0:
+		legacy_entries = _legacy_door_plan(main)
+	_draw_door_foregrounds(main, true, legacy_entries)
 	preload("res://scripts/moonbay_missions.gd").draw_exterior(draw_target,main,cell_size)
 	_draw_humans(main)
-	_draw_door_foregrounds(main, false)
+	_draw_door_foregrounds(main, false, legacy_entries)
 	stage_time = _profile_draw_stage("actors_effects", stage_time)
 	if not main.selected_card_id.is_empty():
 		var mouse_cell := Vector2i(floori(get_local_mouse_position().x / cell_size), floori(get_local_mouse_position().y / cell_size))
@@ -1740,7 +2557,14 @@ func _paint_surface(pass_id: int) -> void:
 				draw_target.draw_line(midpoint + Vector2(-5, 5), midpoint + Vector2(5, -5), Color("#efb777"), 2.0)
 
 func _draw_space_background(grid_pixel_size: float) -> void:
-	seabed_background.render_into(draw_target, grid_pixel_size / GRID_SIZE, GRID_SIZE, _get_main().get_visual_time_seconds(),_get_main().site_layout)
+	var retained: bool = retain_seabed and draw_target == self and is_instance_valid(seabed_still)
+	if is_instance_valid(seabed_still): seabed_still.visible = retained
+	if retained:
+		var key: Array = seabed_background.still_key(grid_pixel_size / GRID_SIZE, GRID_SIZE, _get_main().site_layout)
+		if key != seabed_still_key:
+			seabed_still_key = key
+			seabed_still.queue_redraw()
+	seabed_background.render_into(draw_target, grid_pixel_size / GRID_SIZE, GRID_SIZE, _get_main().get_visual_time_seconds(),_get_main().site_layout,not retained,_view_rect(_get_main()))
 
 func _draw_stars() -> void:
 	var grid_pixel_size := GRID_SIZE * _cell_size()
@@ -1755,7 +2579,8 @@ func _draw_stars() -> void:
 		if star_size >= 3.0:
 			alpha = 0.95
 		var star_color := Color(0.45, 0.65, 0.68, alpha*0.20)
-		draw_target.draw_rect(Rect2(Vector2(x, y), Vector2(star_size, star_size)), star_color)
+		if not EnvironmentArt.sprite(draw_target,"silt-fleck",Vector2(x,y),Vector2.ONE*star_size,star_color,0.0,Vector2.ZERO):
+			draw_target.draw_rect(Rect2(Vector2(x, y), Vector2(star_size, star_size)), star_color)
 		# Underwater suspended particles: no astronomical cross-shaped glints.
 
 func _draw_room(room: Dictionary) -> void:
@@ -1778,9 +2603,17 @@ func _draw_room(room: Dictionary) -> void:
 		appearance["machine_clock"] = main.get_visual_time_seconds()
 		if room.id == "moonbay":
 			var locker: Dictionary = preload("res://scripts/airlock_service.gd").locker(main,pos)
-			appearance["shelf_helmet_visible"] = preload("res://scripts/airlock_service.gd").helmet_on_shelf(main,locker.cell)
+			appearance["shelf_helmet_visible"] = not locker.is_empty() and preload("res://scripts/airlock_service.gd").helmet_on_shelf(main,locker.cell)
+		if retain_large_rooms and retain_static_surfaces and surface_passes.size()>Surface.LIVE and draw_target==surface_passes[Surface.LIVE]:
+			if not large_slots.has(pos):
+				var canvas:=LargeRoomCanvas.new()
+				canvas.show_behind_parent=true;draw_target.add_child(canvas);large_slots[pos]=canvas
+			var canvas=large_slots[pos]
+			canvas.show();draw_target.move_child(canvas,draw_target.get_child_count()-1)
+			canvas.configure(self,LARGE_ROOM_VIEWS[room.id],room,appearance,large_rect,main.get_visual_time_seconds(),main.powered_room_cells.has(pos),main.unpowered_room_cells.has(pos))
+			return
 		LARGE_ROOM_VIEWS[room.id].draw(draw_target, appearance, large_rect)
-		LargeStudioView.draw_live(draw_target, room, large_rect, main.get_visual_time_seconds(), main.powered_room_cells.has(pos))
+		LargeStudioView.draw_live(draw_target, room, large_rect, main.get_visual_time_seconds(), main.powered_room_cells.has(pos),main.unpowered_room_cells.has(pos))
 		if main.unpowered_room_cells.has(pos):
 			draw_target.draw_rect(large_rect, Color(0.05, 0.02, 0.03, 0.35))
 		return
@@ -1860,7 +2693,7 @@ func _draw_room_selection(main, cell_size: float) -> void:
 		var pieces: Array = _room_outline_pieces(room, cell, cell_size)
 		for outline in pieces:
 			draw_target.draw_polyline(outline, Color(0.0, 0.0, 0.0, 0.45 * strength), width + 2.0)
-			draw_target.draw_polyline(outline, Color(0.93, 0.89, 0.8, 0.8 * strength), width)
+			draw_target.draw_polyline(outline, Color(0.39, 0.55, 0.53, 0.8 * strength), width)
 
 # The hover outline as separate pieces, with a gap where each door is (owner playtest, Sept 29: the outline
 # ran across the doors). Large rooms and corridors keep their single outline.
@@ -1949,7 +2782,7 @@ func _bill_room_view(room: Dictionary):
 	if ExpansionViews.PATHS.has(expansion_id):
 		if not expansion_room_views.has(expansion_id):
 			var view=load(ExpansionViews.PATHS[expansion_id]).new()
-			view.embedded=true;view.hide();add_child(view)
+			view.embedded=true;view.set_meta("room_texture_pool",room_texture_pool);view.hide();add_child(view)
 			expansion_room_views[expansion_id]=view
 		return expansion_room_views[expansion_id]
 	var room_view = life_support_view if room.get("id", "") == "life_support" else nursery_view
@@ -1994,6 +2827,7 @@ func _bill_room_view(room: Dictionary):
 			var power_view = load(POWER_VIEW_PATHS[room.id]).new()
 			power_view.room_id = room.id
 			power_view.embedded = true
+			power_view.set_meta("room_texture_pool",room_texture_pool)
 			power_view.hide()
 			add_child(power_view)
 			power_room_views[room.id] = power_view
@@ -2004,6 +2838,7 @@ func _bill_room_view(room: Dictionary):
 	if RARE_VIEW_PATHS.has(room.get("id","")):
 		if not is_instance_valid(rare_room_views.get(room.id)): rare_room_views[room.id]=_lazy_view(StringName("rare_"+str(room.id)),load(RARE_VIEW_PATHS[room.id]))
 		room_view=rare_room_views[room.id]
+	if room.get("id","")=="salvage_workshop":room_view.bind_room(room)
 	return room_view
 
 # Snapshot the exact registered ground footprints used to draw this room.
@@ -2054,7 +2889,8 @@ func bill_room_geometry(room: Dictionary, open_sides: Array, cell: Vector2i = Ve
 # Excluded: per-frame pod/cycle/carrier/recovery state, companion sites, water,
 # crew inside the cell, and views that paint directly into the live pass.
 func _room_setup_skippable(main, room: Dictionary, view) -> bool:
-	if room.get("id","") in ["brine_core","airlock","salvage_workshop","cryo_chamber","survey_probe_bay"] or room.get("recovered_derelict",false): return false
+	if room.get("id","") in ["brine_core","airlock","cryo_chamber","survey_probe_bay"] or room.get("recovered_derelict",false): return false
+	if room.get("id","")=="salvage_workshop" and not view.has_method("retained_floor_case_key"):return false
 	if main.Companions.is_site(main,room.pos): return false
 	# Flooded rooms reuse their canvas too: wet or dry is in the frame key, and the canvas
 	# moves the water level and clock itself (a flooded solar array reconfigured a shared
@@ -2125,13 +2961,16 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 			preload("res://scripts/title_settings.gd").raised_walls,main.occupied.has(pos+Vector2i.UP),main.drone_fleet.deployed(pos),main.drone_fleet.hatch_fraction(pos),
 			[rect,_cell_size(),Vector2(main.grid_scroll.scroll_horizontal,main.grid_scroll.scroll_vertical),main.grid_scroll.size],Store.revision,Store.geometry_revision,preload("res://scripts/room_flooding.gd").level(room) > 0.001,
 			preload("res://scripts/room_layout_store.gd").apply_serial(room_view,int(room.get("rotation",0)))]
+		if room.id=="salvage_workshop":frame_key.insert(frame_key.size()-1,room_view.retained_floor_case_key())
+		# Workshops keep exact camera/scale inputs: scaling their cached prop commands
+		# changed edge pixels during zoom. Case changes and actor entry also rebuild.
 		var stored: Array = room_frame_keys.get(pos,[])
 		# Panning alone must not rebuild a room whose canvas already holds every prop in view: two rooms of one
 		# type share a view, so each rebuild reconfigured it (12-15 ms for a drone bay) every frame of a pan
 		# (owner playtest, Sept 29: lag spikes). The canvas is built a little wider than the view for this.
-		if not (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
+		if room.id != "salvage_workshop" and not (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
 			frame_key[ROOM_FRAME_CAMERA] = stored[ROOM_FRAME_CAMERA]
-		if (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
+		if room.id != "salvage_workshop" and (zoom_reuse_active or zoom_settling) and content_canvases.has(pos) and stored.size() == frame_key.size() and _content_covers_view(main,content_canvases[pos],rect):
 			# Mid-zoom the camera alone does not rebuild a canvas that still shows every prop in
 			# view. Once the zoom lands, a few scaled canvases rebuild per frame.
 			var scaled: bool = zoom_settling and not is_equal_approx(float(content_canvases[pos].get_meta("built_cell",_cell_size())),_cell_size())
@@ -2166,7 +3005,10 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		var site: Dictionary=main.wrecks[pos]
 		room_view.props=main.Companions.room_props(room_view.props,site.kind)
 		for prop in main.Companions.recovery_props(site.kind,site.recovered):
-			var texture: Texture2D=main.Companions.prop_texture(prop.id) if site.kind=="margot" else main.Companions.rescue_texture(main,pos)
+			var texture: Texture2D
+			if site.kind=="margot":
+				texture=main.Companions.margot_pod_texture(main,pos) if prop.id in ["margot-open","margot-closed"] else main.Companions.prop_texture(prop.id)
+			else: texture=main.Companions.rescue_texture(main,pos)
 			room_view.external_actors.append({"position":prop.position,"texture":texture})
 	if profile_draw: detail_mark = _profile_detail("companions_"+str(room.id),detail_mark)
 	room_view.flood_water=0.0 if preview else preload("res://scripts/room_flooding.gd").level(room)
@@ -2184,13 +3026,15 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		var actor_pos: Vector2 = main.get_test_walker_position()
 		var actor_cell := Vector2i(floori(actor_pos.x / _cell_size()), floori(actor_pos.y / _cell_size()))
 		if actor_cell == pos:
-			room_view.actor = (actor_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.bill_npc.observation_visual_offset()
+			room_view.actor = (actor_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.bill_npc.observation_visual_offset()+preload("res://scripts/crew_life.gd").head_alignment(main.bill_npc,human_water_player)
 			room_view.external_actor_texture = _get_human_frame(main.get_test_walker_state(), main.get_test_walker_direction())
 			room_view.show_actor = true
 	if not preview and main.has_dr_veld():
 		var veld_pos: Vector2 = main.get_dr_veld_position()
 		if Vector2i(floori(veld_pos.x / _cell_size()), floori(veld_pos.y / _cell_size())) == pos:
-			room_view.external_actors.append({"position": (veld_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.veld_npc.observation_visual_offset()+preload("res://scripts/crew_life.gd").head_alignment(main.veld_npc,veld_player), "texture": _get_veld_frame(main)})
+			var seated_at:Vector2=(veld_pos + Vector2(0, _cell_size() * 0.038) - rect.get_center()) * (384.0 / _cell_size()) + main.veld_npc.observation_visual_offset()+preload("res://scripts/crew_life.gd").head_alignment(main.veld_npc,veld_player)+preload("res://scripts/veld_death_motion.gd").visual_offset(main,main.veld_npc)
+			var seated_texture:Texture2D=_get_veld_frame(main)
+			room_view.external_actors.append({"position":seated_at,"texture":seated_texture,"depth":preload("res://scripts/veld_death_motion.gd").draw_depth(main,main.veld_npc,seated_texture,seated_at)})
 	if not preview and main.has_chief_branforth():
 		var branforth_pos: Vector2 = main.get_chief_branforth_position()
 		if Vector2i(floori(branforth_pos.x / _cell_size()), floori(branforth_pos.y / _cell_size())) == pos:
@@ -2205,14 +3049,19 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 				room_view.external_actors.append({"position":actor.foot-(Vector2(pos)+Vector2.ONE*0.5)*384.0,"texture":actor.texture(main.get_visual_time_seconds())})
 	if room.id=="salvage_workshop":
 		room_view.carriers=[]
+		if main.branforth_npc.active and main.branforth_npc.movement_medium=="dry" and main.branforth_npc.cell_at(main.branforth_npc.foot)==pos:
+			room_view.bind_frame(_get_branforth_frame(main),branforth_player,"diving-helmet" if main.branforth_npc.helmet_equipped else "",main.branforth_npc.foot-(Vector2(pos)+Vector2.ONE*.5)*384)
+	if profile_draw: detail_mark = _profile_detail("actors_"+str(room.id),detail_mark)
 	if profile_draw:
 		draw_profile_usec["detail_room_setup"] = int(draw_profile_usec.get("detail_room_setup",0)) + Time.get_ticks_usec() - setup_started
 	room_view.shell_pass = 0 if preview else (1 if shell_only else 2)
 	if retain_room_contents and retain_static_surfaces and not preview and not floor_only and not shell_only:
 		if not content_canvases.has(pos):
 			var canvas := RoomContents.new()
+			canvas.screen_patterns=screen_patterns
 			surface_passes[Surface.LIVE].add_child(canvas)
 			content_canvases[pos] = canvas
+			_sort_retained_room_contents()
 		var canvas: Node2D = content_canvases[pos]
 		canvas.profile_enabled = profile_draw
 		canvas.draw_origin = rect.get_center()
@@ -2223,7 +3072,9 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 		var region := _static_cull_rect(main,_cell_size()).grow(_cell_size()*PAN_MARGIN_CELLS)
 		canvas.clip_region = Rect2((region.position-rect.get_center())/canvas.draw_scale,region.size/canvas.draw_scale)
 		room_view.retained_content_host = canvas
+	if profile_draw: detail_mark = Time.get_ticks_usec()
 	room_view.render_into(draw_target, rect.get_center(), _cell_size() / 384.0, floor_only, preview)
+	if profile_draw: detail_mark = _profile_detail(("floor_" if floor_only else ("shell_" if shell_only else "contents_"))+str(room.id),detail_mark)
 	room_view.retained_content_host = null
 	if not frame_key.is_empty():
 		# Store.apply during render may bump the serial; key on the settled value.
@@ -2235,19 +3086,31 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	if preview or floor_only:
 		draw_target.draw_set_transform(rect.get_center(),0,Vector2.ONE*_cell_size()/384.0)
 		var light_level: float=0.0 if room_view.get_meta("derelict_condition",false) else (1.0 if preview else _room_light_level(room))
+		if profile_draw: detail_mark = Time.get_ticks_usec()
 		RoomLighting.draw_pools(draw_target,light_level,room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
+		if profile_draw: detail_mark = _profile_detail("light_pools_"+str(room.id),detail_mark)
 		RoomLighting.draw_equipment_shadows(draw_target,room_view.props,light_level,room_view)
+		if profile_draw: _profile_detail("shadows_"+str(room.id),detail_mark)
 		# Compact room previews have no raised riser to support fixture housings.
 		draw_target.draw_set_transform(Vector2.ZERO)
 
 # One view per hallway type and rotation: a view shared by every rotation rebuilt its props on
 # each rotation change, and the live pass re-prepared all of them every frame (~2.9 ms for 22
 # hallways on a large station, Sept 30 probe).
+func _sort_retained_room_contents() -> void:
+	# Creation order changes after checkpoint restore or camera culling. Keep
+	# neighboring room contents in the same back-to-front cell order instead.
+	var cells := content_canvases.keys()
+	cells.sort_custom(func(a: Vector2i, b: Vector2i): return a.y < b.y or (a.y == b.y and a.x < b.x))
+	var layer: Node = surface_passes[Surface.LIVE]
+	for index in cells.size():
+		layer.move_child(content_canvases[cells[index]], index)
+
 func _corridor_view(room: Dictionary, configure := true):
 	var key := "%s/%d" % [room.id,posmod(int(room.get("rotation",0)),4)]
 	if not corridor_layout_views.has(key):
 		var view=preload("res://scripts/corridor_layout_view.gd").new()
-		view.room_id=room.id;view.embedded=true;add_child(view);view.hide()
+		view.room_id=room.id;view.embedded=true;view.set_meta("room_texture_pool",room_texture_pool);add_child(view);view.hide()
 		corridor_layout_views[key]=view
 	var view=corridor_layout_views[key]
 	if configure: view.configure_embedded(int(room.get("rotation",0)),[],true,0.0)
@@ -2268,7 +3131,7 @@ func _corridor_live_view(room: Dictionary):
 	return view
 
 func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_only: bool, shell_only: bool) -> void:
-	if corridor_textures.is_empty(): corridor_textures = CorridorArt.load_sources()
+	if corridor_textures.is_empty(): corridor_textures = CorridorArt.load_sources(room_texture_pool)
 	var main = _get_main()
 	var q := CorridorGeometry.rotation(room)
 	var corner: bool = room.id=="corner"
@@ -2493,7 +3356,7 @@ func _draw_door_slot(slot: Node2D) -> void:
 	draw_target = self
 	render_door_cache_active = false
 
-func _draw_door_foregrounds(main, underlay: bool = false) -> void:
+func _draw_door_foregrounds(main, underlay: bool = false, prepared: Variant = null) -> void:
 	if door_texture == null:
 		if not underlay:
 			_draw_static_door_foregrounds(main)
@@ -2501,6 +3364,9 @@ func _draw_door_foregrounds(main, underlay: bool = false) -> void:
 	if door_texture.get_width() <= 0 or door_texture.get_height() <= 0:
 		if not underlay:
 			_draw_static_door_foregrounds(main)
+		return
+	if prepared is Array:
+		_draw_legacy_door_plan(prepared,underlay)
 		return
 	var cell_size: float = _cell_size()
 	var drawn: Dictionary = {}
@@ -2572,24 +3438,26 @@ func _always_draw_room_doors(room: Dictionary) -> bool:
 	var id := str(room.get("id", ""))
 	return id == "reactor" or id == "brine_core"
 
-func _door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i) -> int:
+func _door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i, known_connected := false) -> int:
 	# Only render passes share this cache. Physics and input always sample live state.
-	if not render_door_cache_active: return _compute_door_frame_for_pair(main,cell_a,cell_b)
+	if not render_door_cache_active: return _compute_door_frame_for_pair(main,cell_a,cell_b,known_connected)
 	if render_door_cache_tick!=Engine.get_process_frames():
 		render_door_cache.clear()
 		render_door_cache_tick=Engine.get_process_frames()
 	var key := [cell_a,cell_b] if cell_a.y*GRID_SIZE+cell_a.x<cell_b.y*GRID_SIZE+cell_b.x else [cell_b,cell_a]
-	if not render_door_cache.has(key): render_door_cache[key]=_compute_door_frame_for_pair(main,cell_a,cell_b)
+	if not render_door_cache.has(key): render_door_cache[key]=_compute_door_frame_for_pair(main,cell_a,cell_b,known_connected)
 	return render_door_cache[key]
 
-func _compute_door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i) -> int:
+func _compute_door_frame_for_pair(main, cell_a: Vector2i, cell_b: Vector2i, known_connected := false) -> int:
 	if main.hardware.doors: return 0
 	if main.occupied.get(cell_a, {}).get("doors_locked", false) or main.occupied.get(cell_b, {}).get("doors_locked", false): return 0
 	var drone_frame := _drone_door_frame(main,cell_a,cell_b)
 	if main.bill_npc.active or main.has_dr_veld() or main.has_chief_branforth() or main.has_marsh() or not main.companion_roster.is_empty():
 		if not main.occupied.has(cell_a) or not main.occupied.has(cell_b): return 0
 		var offset:=cell_b-cell_a
-		if absi(offset.x)+absi(offset.y)!=1 or not main._placed_rooms_connected(main.occupied[cell_a],main.occupied[cell_b],offset,cell_a,cell_b): return 0
+		# Only the render validator supplies a previously established connection;
+		# all other callers retain the live topology check.
+		if absi(offset.x)+absi(offset.y)!=1 or (not known_connected and not main._placed_rooms_connected(main.occupied[cell_a],main.occupied[cell_b],offset,cell_a,cell_b)): return 0
 		var center := (Vector2(cell_a + cell_b) * 0.5 + Vector2.ONE * 0.5) * _cell_size()
 		var distance := _nearest_crew_foot(main, center).distance_to(center) * 384.0 / _cell_size()
 		# Fully open before either crew member reaches the threshold; close
@@ -2618,20 +3486,27 @@ func _drone_door_frame(_main, _cell_a: Vector2i, _cell_b: Vector2i) -> int:
 
 var crew_feet_cache := PackedVector2Array()
 var crew_feet_tick := -1
+var crew_feet_size := -1.0
+var crew_feet_owner_id := 0
 func _crew_feet(main) -> PackedVector2Array:
 	# Actor positions are stable within a frame; gather them once instead of
 	# re-querying every actor for every door in _door_light_state.
+	# Pixel positions also depend on the current zoom and station owner.
 	var tick := Engine.get_process_frames()
-	if crew_feet_tick == tick: return crew_feet_cache
+	var size := _cell_size()
+	var owner_id: int = main.get_instance_id()
+	if crew_feet_tick == tick and crew_feet_size == size and crew_feet_owner_id == owner_id: return crew_feet_cache
 	crew_feet_tick = tick
+	crew_feet_size = size
+	crew_feet_owner_id = owner_id
 	crew_feet_cache = PackedVector2Array()
-	var lift := Vector2(0, _cell_size() * 0.038)
+	var lift := Vector2(0, size * 0.038)
 	if main.has_test_walker(): crew_feet_cache.append(main.get_test_walker_position() + lift)
 	if main.has_dr_veld(): crew_feet_cache.append(main.get_dr_veld_position() + lift)
 	if main.has_chief_branforth(): crew_feet_cache.append(main.get_chief_branforth_position() + lift)
 	if main.has_marsh(): crew_feet_cache.append(main.get_marsh_position() + lift)
 	for actor in main.companion_actors.values():
-		if actor.active: crew_feet_cache.append(actor.foot/384.0*_cell_size())
+		if actor.active: crew_feet_cache.append(actor.foot/384.0*size)
 	return crew_feet_cache
 
 func _nearest_crew_foot(main, center: Vector2) -> Vector2:
@@ -2686,6 +3561,8 @@ func _draw_door_light_wash(dest: Rect2, upper_piece: bool) -> void:
 func _draw_door_floor_patch(door_size: Vector2) -> void:
 	var patch_size: Vector2 = Vector2(door_size.x * 0.72, door_size.y * 0.86)
 	var patch: Rect2 = Rect2(-patch_size * 0.5 + Vector2(0.0, door_size.y * 0.02), patch_size)
+	# Caller supplies the doorway transform; a band draw preserves it.
+	if EnvironmentArt.band(draw_target,"door-threshold",patch): return
 	draw_target.draw_rect(patch, Color("#323c40"))
 	draw_target.draw_rect(patch.grow(-2), Color("#3f484b"))
 	var line_color := Color(0.68, 0.75, 0.74, 0.30)
@@ -2759,7 +3636,7 @@ func _draw_functioning_synergy(link: Dictionary, center_a: Vector2, center_b: Ve
 	var soft_color := Color(color.r, color.g, color.b, 0.08)
 	var bright_color := Color(color.r, color.g, color.b, pulse_alpha)
 	draw_target.draw_line(center_a, center_b, soft_color, maxf(1.5, line_width * 0.34), true)
-	draw_target.draw_circle(shared_door, cell_size * (0.052 + pulse_alpha * 0.012), Color(color.r, color.g, color.b, pulse_alpha * 0.16))
+	_draw_synergy_circle(shared_door, cell_size * (0.052 + pulse_alpha * 0.012), Color(color.r, color.g, color.b, pulse_alpha * 0.16))
 	draw_target.draw_arc(shared_door, cell_size * 0.045, 0.0, TAU, 28, bright_color, maxf(2.0, line_width * 0.45), true)
 	var edge_a := center_a + direction * cell_size * 0.39
 	var edge_b := center_b - direction * cell_size * 0.39
@@ -2772,15 +3649,15 @@ func _draw_functioning_synergy(link: Dictionary, center_a: Vector2, center_b: Ve
 		edge_alpha_b *= 1.64 - alternate
 	draw_target.draw_line(edge_a - segment_half, edge_a + segment_half, Color(color.r, color.g, color.b, edge_alpha_a), line_width, true)
 	draw_target.draw_line(edge_b - segment_half, edge_b + segment_half, Color(color.r, color.g, color.b, edge_alpha_b), line_width, true)
-	draw_target.draw_circle(edge_a, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_a * 0.38))
-	draw_target.draw_circle(edge_b, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_b * 0.38))
+	_draw_synergy_circle(edge_a, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_a * 0.38))
+	_draw_synergy_circle(edge_b, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_b * 0.38))
 	for mote_index in range(2):
 		var phase := _synergy_mote_phase(profile, time_seconds * 0.4, mote_index)
 		var mote_t := lerpf(0.16, 0.84, phase)
 		var mote_position := center_a.lerp(center_b, mote_t)
-		draw_target.draw_circle(mote_position, mote_radius * 1.8, Color(color.r, color.g, color.b, 0.08))
-		draw_target.draw_circle(mote_position, mote_radius, Color(color.r, color.g, color.b, 0.24))
-		draw_target.draw_circle(mote_position, mote_radius * 0.34, Color(0.75, 0.83, 0.81, 0.26))
+		_draw_synergy_circle(mote_position, mote_radius * 1.8, Color(color.r, color.g, color.b, 0.08))
+		_draw_synergy_circle(mote_position, mote_radius, Color(color.r, color.g, color.b, 0.24))
+		_draw_synergy_circle(mote_position, mote_radius * 0.34, Color(0.75, 0.83, 0.81, 0.26))
 
 func _synergy_mote_phase(profile: String, time_seconds: float, mote_index: int) -> float:
 	var speed := 0.28
@@ -2955,6 +3832,11 @@ func _draw_room_path(room: Dictionary, rect: Rect2) -> void:
 				draw_target.draw_line(center, points[str(door)], Color("#ff2537"), 20)
 
 func _draw_humans(main) -> void:
+	# Match the held case's water/render pass; environment foreground adds a tint.
+	for cell in main.drone_fleet.sites:
+		var site:Dictionary=main.drone_fleet.sites[cell]
+		if site.discovered and not main.occupied.has(cell):
+			preload("res://scripts/james_case_deposit.gd").draw(draw_target,site,_cell_size())
 	_draw_veld_legacy(main)
 	_draw_branforth_legacy(main)
 	_draw_marsh_legacy(main)
@@ -2998,6 +3880,15 @@ func _get_veld_frame(main) -> Texture2D:
 	return preload("res://scripts/cryo_release_effect.gd").texture(main,"veld",_get_veld_frame_source(main))
 
 func _get_veld_frame_source(main) -> Texture2D:
+	var death=preload("res://scripts/veld_death_motion.gd").frame(main,main.veld_npc)
+	if death!=null:return death
+	var shown=_get_veld_live_frame_source(main)
+	if not main.veld_npc.dead:main.veld_npc.water_death_last_frame=shown
+	return shown
+
+func _get_veld_live_frame_source(main) -> Texture2D:
+	var reading_return:Texture2D=main.veld_npc.reading_return_frame(main)
+	if reading_return!=null:return reading_return
 	if main.veld_npc.action_elapsed()>=0:
 		return veld_player.frame_at_elapsed(main.veld_npc.animation_state()+"-"+main.veld_npc.direction,main.veld_npc.action_elapsed(),"diving-helmet" if main.veld_npc.helmet_equipped else "")
 	if main.veld_npc.helmet_action_active():
@@ -3020,13 +3911,47 @@ func _draw_branforth_legacy(main) -> void:
 func _get_branforth_frame(main) -> Texture2D:
 	return preload("res://scripts/cryo_release_effect.gd").texture(main,"branforth",_get_branforth_frame_source(main))
 
+func _branforth_gait_position(main)->Vector2:
+	# Animation distance is measured before camera projection.
+	return main.branforth_npc.foot/384.0-Vector2(0,.038)
+
 func _get_branforth_frame_source(main) -> Texture2D:
+	if branforth_player.has_method("floor_texture"):
+		branforth_player.game=main
+		main.branforth_npc.preview_player=branforth_player
+	if preload("res://scripts/james_hull_resume.gd").eligible(main.branforth_npc):
+		return preload("res://scripts/james_hull_resume.gd").texture(main,main.branforth_npc)
+	if preload("res://scripts/james_hull_return.gd").eligible(main.branforth_npc):
+		return preload("res://scripts/james_hull_return.gd").texture(main,main.branforth_npc)
+	if not main.branforth_npc.construction_motion.is_empty() and preload("res://scripts/james_construction_motion.gd").eligible(main.branforth_npc):
+		return preload("res://scripts/james_construction_motion.gd").texture(main,main.branforth_npc)
+	if main.branforth_npc.stage=="observation_read_exit" and main.branforth_npc.tablet_exit_pose>=0 and main.branforth_npc.action_elapsed()<.06:
+		var gear:String="diving-helmet" if main.branforth_npc.helmet_equipped else ""
+		var clips:Dictionary=branforth_player.frames if gear.is_empty() else branforth_player.equipment_frames[gear]
+		return clips["read-seated-"+main.branforth_npc.direction][main.branforth_npc.tablet_exit_pose]
+	if main.branforth_npc.exterior_cancel_active():
+		var facing:String=main.branforth_npc.exterior_cancel.direction
+		var gear:String="diving-helmet" if main.branforth_npc.helmet_equipped else ""
+		# Remember the visual swim heading while physics returns immediately. This
+		# also reestablishes the exact empty-swim turn entrance after Continue.
+		branforth_player.frame("swim",facing,main.get_visual_time_seconds(),_branforth_gait_position(main),gear,false)
+		branforth_player.current_key=""
+		return branforth_player.frame_at_elapsed(main.branforth_npc.animation_state()+"-"+facing,main.branforth_npc.action_elapsed(),gear)
+	if main.branforth_npc.console_turn_active():
+		# The simulation owns the stationary clock. Align cosmetic travel state so
+		# it cannot replay this turn or resume a stale swim fraction afterwards.
+		branforth_player.frame("swim",main.branforth_npc.direction,main.get_visual_time_seconds(),_branforth_gait_position(main),"diving-helmet" if main.branforth_npc.helmet_equipped else "",false)
+		branforth_player.current_key=""
+		return branforth_player.frame_at_elapsed(main.branforth_npc.animation_state()+"-"+main.branforth_npc.direction,main.branforth_npc.action_elapsed(),"diving-helmet" if main.branforth_npc.helmet_equipped else "")
 	if main.branforth_npc.action_elapsed()>=0:
+		# Meal completion and interrupted returns end on idle frame zero. Their
+		# simulation clocks must not resume a previous idle breathing phase.
+		if main.branforth_npc.meal_return_active() or main.branforth_npc.meal_lifecycle_active() or main.branforth_npc.hull_animation_active() or main.branforth_npc.ward_animation_active():branforth_player.current_key=""
 		return branforth_player.frame_at_elapsed(main.branforth_npc.animation_state()+"-"+main.branforth_npc.direction,main.branforth_npc.action_elapsed(),"diving-helmet" if main.branforth_npc.helmet_equipped else "")
 	if main.branforth_npc.helmet_action_active():
 		var key: String = main.branforth_npc.state + "-east"
 		return branforth_player.frame_at_elapsed(key, branforth_player.cycle_seconds(key) - main.branforth_npc.timer)
-	return branforth_player.frame(main.branforth_npc.animation_state(), main.branforth_npc.direction, main.get_visual_time_seconds(), main.get_chief_branforth_position() / _cell_size(), "diving-helmet" if main.branforth_npc.helmet_equipped else "",_water_transition_clear(main.branforth_npc))
+	return branforth_player.frame(main.branforth_npc.animation_state(), main.branforth_npc.direction, main.get_visual_time_seconds(), _branforth_gait_position(main), "diving-helmet" if main.branforth_npc.helmet_equipped else "",_water_transition_clear(main.branforth_npc))
 
 func _draw_marsh_legacy(main) -> void:
 	if not main.has_marsh(): return
@@ -3042,12 +3967,22 @@ func _draw_marsh_legacy(main) -> void:
 
 func _get_marsh_frame(main) -> Texture2D:
 	if main.marsh_npc.recharge_docked and not main.marsh_npc.dead: return null
+	main.marsh_npc.bind_south_stop_player(marsh_player)
+	main.marsh_npc.prepare_stop_pose(marsh_player,main.get_visual_time_seconds(),main.get_marsh_position()/_cell_size())
+	main.marsh_npc.prepare_south_gait(marsh_player,main.get_visual_time_seconds(),main.get_marsh_position()/_cell_size())
+	main.marsh_npc.prepare_cardinal_north_gait(marsh_player,main.get_visual_time_seconds(),main.get_marsh_position()/_cell_size())
 	var draining_texture := _get_marsh_cargo_drain_frame(main)
 	if draining_texture != null:return draining_texture
+	var arrival:Dictionary=main.marsh_npc.workshop_arrival_presentation(marsh_player)
+	if not arrival.is_empty():return marsh_player.frame_at_elapsed(arrival.key,arrival.elapsed,"diving-helmet" if main.marsh_npc.helmet_equipped else "")
 	if main.marsh_npc.action_elapsed()>=0:
 		var pose: String=main.marsh_npc.animation_state()
 		var key: String=pose+"-"+main.marsh_npc.direction
 		var elapsed: float=main.marsh_npc.action_elapsed()
+		if pose in ["injury-ground","injury-rise"]:
+			# Injury uses the simulation clock. Its final authored idle must join
+			# a fresh idle breath, not resume the pre-impact cosmetic phase.
+			marsh_player.current_key=""
 		if not main.marsh_npc.expedition.is_empty() and pose in ["swim-pickup","unload"]:
 			# Expedition handoffs last .52s; play the complete authored clip.
 			elapsed=clampf(elapsed/.52,0.0,1.0)*marsh_player.cycle_seconds(key)
@@ -3100,17 +4035,92 @@ func restore_crew_playback(data: Dictionary) -> void:
 	if data.has("branforth"): branforth_player.restore_snapshot(data.branforth)
 	if data.has("marsh"): marsh_player.restore_snapshot(data.marsh)
 
+func _is_james_actor(actor) -> bool:
+	var script: Script=actor.get_script()
+	while script!=null:
+		if script.resource_path=="res://scripts/branforth_npc.gd":return true
+		script=script.get_base_script()
+	return false
+
 func _water_transition_clear(actor) -> bool:
 	if actor.animation_state()=="swim-carry": return preload("res://scripts/crew_life.gd").clear(actor,"cargo-turn")
-	return actor.movement_medium!="dry" and actor.action_pose_clear("transition")
+	if actor.movement_medium=="dry":return false
+	if _is_james_actor(actor):
+		var state: String=actor.animation_state()
+		var game=_get_main()
+		var gear:String="diving-helmet" if actor.helmet_equipped else ""
+		var clock:float=game.get_visual_time_seconds()
+		var predicted:String=branforth_player.preview_water_transition(state,actor.direction,clock,gear)
+		if not predicted.is_empty():
+			return preload("res://scripts/james_water_clearance.gd").clear(game,actor,branforth_player,predicted,clock)
+		var previous: String=branforth_player.motion.get("state",state)
+		var clip: String=branforth_player.motion.get("clip","")
+		if state=="tread" and previous=="swim":clip="swim-stop-"+actor.direction
+		elif state=="swim" and previous=="tread":clip="swim-start-"+actor.direction
+		elif state=="swim" and previous=="swim" and branforth_player.motion.get("direction",actor.direction)!=actor.direction:
+			clip="swim-turn-"+str(branforth_player.motion.direction)+"-"+actor.direction
+		if clip.begins_with("swim-turn-") and branforth_player.frames.has(clip):
+			if actor.movement_medium=="exterior" and not actor.geometry.has(actor.cell_at(actor.foot)):
+				return actor.exterior_turn_clear(_get_main(),clip.get_slice("-",2),actor.direction)
+			var extent: Array=branforth_player.clip_extent(clip,"diving-helmet" if actor.helmet_equipped else "")
+			return not extent.is_empty() and actor.swim_segment_clear(actor.foot,actor.foot,actor.direction,clip.get_slice("-",2),false,extent)
+		# A straight start/stop must fit its selected frames, not unrelated turns.
+		if clip in ["swim-start-"+actor.direction,"swim-stop-"+actor.direction]:
+			var extent: Array=branforth_player.clip_extent(clip,"diving-helmet" if actor.helmet_equipped else "")
+			return not extent.is_empty() and actor.swim_segment_clear(actor.foot,actor.foot,actor.direction,actor.direction,false,extent)
+	return actor.action_pose_clear("transition")
 
 func _get_human_frame(state: String, direction: String) -> Texture2D:
 	return preload("res://scripts/cryo_release_effect.gd").texture(_get_main(),"bill",_get_human_frame_source(state,direction))
 
+func _sync_bill_bound_sources() -> void:
+	# Continue can select a legacy source bank before the next retained draw.
+	var source_script:Script=human_water_player.get_script()
+	var expected_script:Script=preload("res://scripts/bill_carry_player.gd")
+	while source_script!=null and source_script!=expected_script:
+		source_script=source_script.get_base_script()
+	if source_script==null:return
+	var binding: String = human_water_player.carry_binding()
+	if human_bound_source_binding == binding: return
+	for key in human_water_player.SOURCE_KEYS:
+		if not human_water_player.frames.has(key): continue
+		var split: int = key.rfind("-")
+		var state: String = key.substr(0,split)
+		var direction: String = key.substr(split+1)
+		if not human_animations.has(state): human_animations[state] = {}
+		for texture in human_water_player.frames[key]: texture.set_meta("major_bill_v2",true)
+		human_animations[state][direction] = human_water_player.frames[key]
+		human_animation_timing[key] = human_water_player.timing[key]
+	human_stride_distance = human_water_player.strides.duplicate()
+	human_bound_source_binding = binding
+
 func _get_human_frame_source(state: String, direction: String) -> Texture2D:
+	_sync_bill_bound_sources()
 	var actor=_get_main().bill_npc
+	# Special activities can return before the optional walking provider is called.
+	if human_walk_join != null and (direction != "east" or state not in ["walk", "idle"] or actor.dead or actor.helmet_equipped or actor.movement_medium != "dry" or actor.action_elapsed() >= 0 or actor.helmet_action_active()):
+		human_walk_join.reset()
+	var ground_death:Texture2D=preload("res://scripts/bill_ground_death.gd").texture(actor,self,state,direction)
+	if ground_death!=null:
+		if human_walk_join != null: human_walk_join.reset()
+		return ground_death
+	var inspection: Texture2D=preload("res://scripts/bill_inspection.gd").texture(actor,human_water_player)
+	if inspection!=null:
+		if human_walk_join != null: human_walk_join.reset()
+		return inspection
+	var meal:Texture2D=preload("res://scripts/bill_meal.gd").texture(actor,human_water_player)
+	if meal!=null:
+		if human_walk_join != null: human_walk_join.reset()
+		return meal
 	if actor.action_elapsed()>=0:
+		if actor.stage=="observation_read_exit" and actor.tablet_exit_pose>=0 and actor.action_elapsed()<.06:
+			var clips: Dictionary=human_water_player.equipment_frames["diving-helmet"] if actor.helmet_equipped else human_water_player.frames
+			return clips["read-seated-"+direction][actor.tablet_exit_pose]
 		return human_water_player.frame_at_elapsed(state+"-"+direction,actor.action_elapsed(),"diving-helmet" if actor.helmet_equipped else "")
+	# Bare walk overrides have different frame counts from the retained helmet clips.
+	if actor.helmet_equipped and state in ["walk", "idle"]:
+		var game = _get_main()
+		return human_water_player.frame(state,direction,game.get_visual_time_seconds(),game.get_test_walker_position()/_cell_size(),"diving-helmet")
 	if state in ["swim","tread","swim-carry","salvage","swim-distress","swim-pickup","carry"]:
 		var game=_get_main()
 		return human_water_player.frame(state,direction,game.get_visual_time_seconds(),game.get_test_walker_position()/_cell_size(),"diving-helmet" if game.bill_npc.helmet_equipped else "",_water_transition_clear(game.bill_npc))
@@ -3133,6 +4143,8 @@ func _get_human_frame_source(state: String, direction: String) -> Texture2D:
 			if not equipment.is_empty():
 				if not human_equipment_frames.has(equipment) or not human_equipment_frames[equipment].has(key): return null
 				return human_equipment_frames[equipment][key][index]
+			if human_walk_join != null:
+				return human_walk_join.frame(state, direction, time_seconds, frames[index], index, actor)
 			return frames[index]
 	return human_sprites.get(direction, human_sprite)
 
@@ -3148,6 +4160,7 @@ func _draw_connectors(room: Dictionary, occupied: Dictionary) -> void:
 			draw_target.draw_line(center, neighbor_center, Color("#1d252b"), 2)
 
 var drone_anchor_cache: Dictionary = {}
+var room_transitions=preload("res://scripts/room_transition_art.gd").new()
 
 func drone_anchors(room: Dictionary) -> Dictionary:
 	if room.id == "brine_core": return {"dock":Vector2(0,0.15)*384,"hatch":Vector2(0,0.35)*384}
@@ -3181,6 +4194,7 @@ func drone_anchors(room: Dictionary) -> Dictionary:
 func _draw_drones(main) -> void:
 	var cell_size := _cell_size()
 	var fleet = main.drone_fleet
+	room_transitions.draw(self,main,"scrap")
 	var pending: Array = fleet.orders.duplicate()
 	for drone in fleet.drones.values():
 		if not drone.order.is_empty(): pending.append(drone.order)
@@ -3338,7 +4352,7 @@ var corridor_layout_views: Dictionary={}
 func _layout_light_anchors(room: Dictionary) -> Array:
 	var view=_bill_room_view(room)
 	var asset: String=preload("res://scripts/room_layout_store.gd").asset_for(view)
-	var edits: Dictionary=preload("res://scripts/room_layout_store.gd").positions(asset,int(room.get("rotation",0)))
+	var edits: Dictionary=preload("res://scripts/room_layout_store.gd").shared_positions(asset,int(room.get("rotation",0)))
 	# Illumination stays fixed; fixture housings separately follow riser visibility.
 	return RoomLighting.anchors_for(edits,true)
 
@@ -3350,3 +4364,117 @@ func _profile_detail(label: String, started: int) -> int:
 	var key := "setup_"+label
 	draw_profile_usec[key] = int(draw_profile_usec.get(key,0))+now-started
 	return now
+
+# Preserve visible canvases without hide/show churn, which forces native redraws.
+func _sync_large_room_canvases(main)->void:
+	var visible:Dictionary={}
+	if retain_large_rooms and retain_static_surfaces:
+		for room in visible_draw_rooms:
+			if LARGE_ROOM_VIEWS.has(str(room.id)):visible[room.pos]=true
+	for cell in large_slots.keys():
+		if not visible.has(cell):large_slots[cell].hide()
+		if not main.occupied.has(cell) or not LARGE_ROOM_VIEWS.has(str(main.occupied[cell].id)) or main.occupied[cell].pos!=cell:
+			large_slots[cell].hide();large_slots[cell].queue_free();large_slots.erase(cell)
+
+# Diagnostic reference path preserves independent traversal of both passes.
+var reuse_legacy_door_plan: bool = not OS.get_cmdline_user_args().has("--reference-legacy-door-plan")
+
+func _legacy_door_plan(main) -> Array:
+	var entries:Array=[]
+	var cell_size: float = _cell_size()
+	var drawn: Dictionary = {}
+	for room in main.placed_rooms:
+		if _uses_layered_art(room):continue
+		for edge_port in _render_ports(room, main):
+			var pos: Vector2i = edge_port.cell
+			var side: String = edge_port.side
+			var offset: Vector2i = _offset_from_side(side)
+			var neighbor_pos: Vector2i = pos + offset
+			if _uses_layered_art(room) or _uses_layered_art(main.occupied.get(neighbor_pos, {})):
+				continue # The modular edge owns its frame; no second legacy door.
+			var connected: bool = _door_has_connected_neighbor(main, room, neighbor_pos, offset)
+			if connected and _is_duplicate_connected_door_side(side) and not _always_draw_room_doors(room):
+				continue
+			var key: String = "%s:%s" % [str(pos), side]
+			if drawn.has(key):
+				continue
+			drawn[key] = true
+			var edge_center: Vector2 = _door_edge_center(pos, side, cell_size)
+			var frame_index: int = _door_frame_for_pair(main, pos, neighbor_pos) if connected else 0
+			var source_rect: Rect2 = _door_source_rect(frame_index)
+			var door_size: Vector2 = Vector2(cell_size * DOOR_DRAW_SIZE.x, cell_size * DOOR_DRAW_SIZE.y)
+			var door_rotation: float = PI * 0.5 if side == "east" or side == "west" else 0.0
+			entries.append([edge_center,source_rect,door_size,door_rotation])
+	return entries
+
+func _draw_legacy_door_plan(entries:Array,underlay:bool) -> void:
+	for entry in entries:
+		draw_target.draw_set_transform(entry[0],entry[3],Vector2.ONE)
+		if underlay:_draw_door_floor_patch(entry[2])
+		_draw_door_texture_layer(entry[1],entry[2],underlay)
+		draw_target.draw_set_transform(Vector2.ZERO,0.0,Vector2.ONE)
+
+var reuse_known_port_connections: bool = not OS.get_cmdline_user_args().has("--reference-known-port-connections")
+# Only for ports immediately enumerated by _render_ports in this synchronous paint.
+func _neighbor_connected_from_known_port(main,room:Dictionary,neighbor_pos:Vector2i,offset:Vector2i)->bool:
+	var cell:Vector2i=neighbor_pos-offset
+	# Preserve the main connection helper's sentinel/default-door behavior.
+	if cell==Vector2i(-1,-1) or neighbor_pos==Vector2i(-1,-1):return _door_has_connected_neighbor(main,room,neighbor_pos,offset)
+	if not main.occupied.has(neighbor_pos):return false
+	var other:Dictionary=main.occupied[neighbor_pos]
+	if room.get("branch_owner",Vector2i(-1,-1))!=other.get("branch_owner",Vector2i(-1,-1)):return false
+	if room.get("pos",Vector2i(-1,-1))==other.get("pos",Vector2i(-2,-2)) and room.get("id","")==other.get("id",""):return true
+	var opposite:String
+	match offset:
+		Vector2i.UP:opposite="south"
+		Vector2i.RIGHT:opposite="west"
+		Vector2i.DOWN:opposite="north"
+		Vector2i.LEFT:opposite="east"
+		_:return _door_has_connected_neighbor(main,room,neighbor_pos,offset)
+	return main.get_room_doors(other).has(opposite) if other.get("size",Vector2i.ONE)==Vector2i.ONE and neighbor_pos==other.get("pos",neighbor_pos) else RoomFootprintScript.has_port(other,neighbor_pos,opposite)
+
+func prepare_hand_images(main) -> void:
+	var queue=preload("res://scripts/hand_image_preparation.gd")
+	if not queue.enabled or preload("res://scripts/image_prefetch.gd").active:queue.maintain([]);return
+	var store=preload("res://scripts/room_layout_store.gd")
+	store.prime()
+	if hand_image_assets.is_empty():
+		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")):hand_image_assets[str(entry.room)]=str(entry.asset)
+		for row in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/floor-profiles-v1/rooms.json")):hand_image_profiles[str(row.id)]=row
+	var ids:Array=main.hand.duplicate()
+	if not str(main.selected_card_id).is_empty():ids.push_front(str(main.selected_card_id))
+	var wanted:Array=[]
+	var floors=preload("res://rooms/whole-room/modular_floor.gd")
+	var walls=preload("res://rooms/whole-room/painted_shell.gd")
+	for id in ids:
+		id=str(id)
+		var q:int=int(main.selected_rotation) if id==str(main.selected_card_id) else int(main._default_card_rotation(id))
+		var key:Array=[id,q,store.revision]
+		if not hand_image_records.has(key):
+			var records:Array=[]
+			var values:Dictionary=store.shared_positions(str(hand_image_assets.get(id,"")),q)
+			var corridor:bool=id in ["corridor","corner","tee_corridor"]
+			if floors.enabled and (corridor or (hand_image_profiles.has(id) and floors.pilot(id))):
+				var source:String="" if corridor else str(hand_image_profiles[id].source)
+				for path in floors.preparation_paths(values,corridor,q,source,id if corridor else "corridor"):
+					records.append({"kind":"floor","key":path,"source":floors.FLOOR_REVISIONS.get(path,path)})
+			var wall:Dictionary=walls.surface_base(id,str(values.get("wall/riser","")))
+			if not wall.is_empty():records.append({"kind":"wall","key":str(wall.base.source),"source":str(wall.base.source)})
+			if hand_image_records.size()>=64:hand_image_records.clear()
+			hand_image_records[key]=records
+		for record in hand_image_records[key]:
+			var uploaded:bool=floors.textures.has(record.key) if record.kind=="floor" else walls.textures.has(record.key)
+			if not uploaded and record.source not in wanted:wanted.append(record.source)
+	queue.maintain(wanted)
+
+var retained_wall_context=preload("res://scripts/retained_wall_context.gd").new()
+
+var SYNERGY_UNIT_CIRCLE=PackedVector2Array([Vector2(1.0,0.0),Vector2(0.9951847195625305,0.0980171412229538),Vector2(0.9807852506637573,0.19509032368659973),Vector2(0.9569403529167175,0.290284663438797),Vector2(0.9238795042037964,0.3826834559440613),Vector2(0.8819212317466736,0.4713967442512512),Vector2(0.8314695954322815,0.5555702447891235),Vector2(0.7730104327201843,0.6343933343887329),Vector2(0.7071067690849304,0.7071067690849304),Vector2(0.6343932747840881,0.7730104327201843),Vector2(0.5555701851844788,0.8314696550369263),Vector2(0.47139665484428406,0.8819212913513184),Vector2(0.3826834261417389,0.9238795042037964),Vector2(0.2902846336364746,0.9569403529167175),Vector2(0.19509023427963257,0.9807853102684021),Vector2(0.0980171337723732,0.9951847195625305),Vector2(-4.371138828673793e-08,1.0),Vector2(-0.09801722317934036,0.9951847195625305),Vector2(-0.19509032368659973,0.9807852506637573),Vector2(-0.2902847230434418,0.9569402933120728),Vector2(-0.38268351554870605,0.9238795042037964),Vector2(-0.4713968336582184,0.8819212317466736),Vector2(-0.5555703639984131,0.8314695358276367),Vector2(-0.6343932747840881,0.7730104923248291),Vector2(-0.7071067690849304,0.7071067690849304),Vector2(-0.7730104923248291,0.6343932747840881),Vector2(-0.8314696550369263,0.5555701851844788),Vector2(-0.8819213509559631,0.47139662504196167),Vector2(-0.9238796234130859,0.38268327713012695),Vector2(-0.9569403529167175,0.2902847230434418),Vector2(-0.9807853102684021,0.19509030878543854),Vector2(-0.9951847195625305,0.09801709651947021),Vector2(-1.0,-8.742277657347586e-08),Vector2(-0.9951847195625305,-0.09801726788282394),Vector2(-0.9807852506637573,-0.19509048759937286),Vector2(-0.9569402933120728,-0.2902848720550537),Vector2(-0.9238795042037964,-0.3826834261417389),Vector2(-0.8819212317466736,-0.4713967740535736),Vector2(-0.8314695358276367,-0.5555703043937683),Vector2(-0.7730103731155396,-0.6343933939933777),Vector2(-0.7071066498756409,-0.70710688829422),Vector2(-0.6343933343887329,-0.7730104327201843),Vector2(-0.5555700063705444,-0.8314697742462158),Vector2(-0.47139668464660645,-0.8819212913513184),Vector2(-0.382683128118515,-0.9238796830177307),Vector2(-0.29028454422950745,-0.9569403529167175),Vector2(-0.1950903832912445,-0.9807852506637573),Vector2(-0.09801693260669708,-0.9951847195625305),Vector2(1.1924880638503055e-08,-1.0),Vector2(0.09801743179559708,-0.9951847195625305),Vector2(0.1950904130935669,-0.9807852506637573),Vector2(0.29028502106666565,-0.956940233707428),Vector2(0.3826836049556732,-0.9238794445991516),Vector2(0.47139671444892883,-0.8819212913513184),Vector2(0.5555704236030579,-0.8314694762229919),Vector2(0.6343933343887329,-0.7730104327201843),Vector2(0.7071070075035095,-0.7071065306663513),Vector2(0.7730105519294739,-0.6343931555747986),Vector2(0.8314695954322815,-0.5555703043937683),Vector2(0.8819213509559631,-0.4713965356349945),Vector2(0.9238795638084412,-0.3826834261417389),Vector2(0.9569404125213623,-0.2902843952178955),Vector2(0.9807853102684021,-0.19509023427963257),Vector2(0.9951847791671753,-0.09801676869392395),Vector2(1.0,1.7484555314695172e-07),Vector2(0,0)])
+var SYNERGY_CIRCLE_INDICES=PackedInt32Array([65,0,1,65,1,2,65,2,3,65,3,4,65,4,5,65,5,6,65,6,7,65,7,8,65,8,9,65,9,10,65,10,11,65,11,12,65,12,13,65,13,14,65,14,15,65,15,16,65,16,17,65,17,18,65,18,19,65,19,20,65,20,21,65,21,22,65,22,23,65,23,24,65,24,25,65,25,26,65,26,27,65,27,28,65,28,29,65,29,30,65,30,31,65,31,32,65,32,33,65,33,34,65,34,35,65,35,36,65,36,37,65,37,38,65,38,39,65,39,40,65,40,41,65,41,42,65,42,43,65,43,44,65,44,45,65,45,46,65,46,47,65,47,48,65,48,49,65,49,50,65,50,51,65,51,52,65,52,53,65,53,54,65,54,55,65,55,56,65,56,57,65,57,58,65,58,59,65,59,60,65,60,61,65,61,62,65,62,63,65,63,64])
+var synergy_geometry_supported:bool=OS.get_name()=="Windows"
+func _draw_synergy_circle(center:Vector2,radius:float,color:Color)->void:
+	if not synergy_geometry_supported:
+		draw_target.draw_circle(center,radius,color)
+		return
+	var transform:=Transform2D(Vector2(radius,0),Vector2(0,radius),center)
+	RenderingServer.canvas_item_add_triangle_array(draw_target.get_canvas_item(),SYNERGY_CIRCLE_INDICES,transform*SYNERGY_UNIT_CIRCLE,PackedColorArray([color]))

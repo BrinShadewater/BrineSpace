@@ -1,4 +1,5 @@
 extends RefCounted
+const EnvironmentArt = preload("res://scripts/environment_art.gd")
 ## Bioluminescent seabed plants (owner playtest, Sept 17: the darkness outside needed glowing
 ## life). Plant clumps grow on open seabed a short swim from the station, chosen by a stable hash
 ## of the cell so they never jump between frames or saves. The terrain pass draws their stems and
@@ -40,6 +41,8 @@ static func draw_plants(canvas: CanvasItem, game, size: float) -> void:
 	for spot in spots(game):
 		var base: Vector2 = spot.position * size
 		var color: Color = spot.color
+		if EnvironmentArt.sprite(canvas,"glow-plant",base,Vector2(.22,.15)*size,color.lightened(.2),0.0,Vector2(.5,1)):
+			continue
 		for i in range(int(spot.stems)):
 			var lean := (float(i) - float(spot.stems - 1) * 0.5) * 0.28 + (_hash(spot.cell, 10.0 + i) - 0.5) * 0.3
 			var height := size * (0.07 + _hash(spot.cell, 20.0 + i) * 0.07)

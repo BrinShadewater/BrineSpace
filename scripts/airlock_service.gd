@@ -69,6 +69,7 @@ static func locker(game,cell: Vector2i) -> Dictionary:
 	if not game.occupied.has(cell): return {}
 	if game.occupied[cell].id == "moonbay":
 		var room: Dictionary = game.occupied[cell]
+		if not preload("res://rooms/large-rooms/moonbay.gd").locker_bounds(room).has_area(): return {}
 		var point := (Vector2(room.pos)+Vector2.ONE)*384.0+preload("res://rooms/large-rooms/moonbay.gd").locker_point(room)
 		return {"id":"airlock:%d:%d" % [room.pos.x,room.pos.y],"cell":Vector2i(floori(point.x/384.0),floori(point.y/384.0)),"interaction_point":point,"facing":"east"}
 	if game.occupied[cell].id!="airlock": return {}
@@ -96,18 +97,25 @@ static func locker(game,cell: Vector2i) -> Dictionary:
 				return {"id":"airlock:%d:%d" % [cell.x,cell.y],"cell":cell,"interaction_point":(Vector2(cell)+Vector2.ONE*0.5)*384.0+at,"facing":"east"}
 	return {}
 
+static func refilling(actor) -> bool:
+	# Refill already saves its idle hold/activity/timer; retain that service reservation
+	# after the approach request clears, including after Continue.
+	return actor.active and not actor.dead and actor.movement_medium=="dry" and actor.state=="idle" and actor.timer>0 and actor.activity=="refilling oxygen tank" and actor.goal.is_empty() and actor.path.is_empty() and actor.stage.is_empty() and actor.expedition.is_empty()
+
 static func busy(game,cell: Vector2i,requester=null) -> bool:
 	for id in Architects.IDS:
 		var actor=Architects.actor_for(game,id)
 		if actor==requester or not actor.active or actor.dead: continue
 		if not actor.locker_request.is_empty() and actor.locker_request.locker.cell==cell: return true
 		if actor.helmet_action_active() and actor.cell_at(actor.foot)==cell: return true
+		if refilling(actor) and actor.cell_at(actor.foot)==cell: return true
 	return false
 
 static func request(game,id: String,cell: Vector2i, refill := false) -> bool:
 	if not Architects.IDS.has(id) or not Architects.present(game,id) or not ready(game,cell): return false
 	var actor=Architects.actor_for(game,id)
 	if not actor.needs_air(): return false
+	if refilling(actor): return false
 	if not actor.expedition.is_empty(): return false
 	if busy(game,cell,actor) or not actor.locker_request.is_empty(): return false
 	if actor.topology(game)!=actor.signature: actor.rebuild(game)
@@ -120,12 +128,13 @@ static func check_service(game,actor) -> void:
 	var cell: Vector2i=actor.cell_at(actor.foot)
 	var pending: bool=not actor.locker_request.is_empty() and str(actor.locker_request.locker.id).begins_with("airlock:")
 	if pending: cell=actor.locker_request.locker.cell
-	var local_action: bool=actor.helmet_action_active() and game.occupied.has(cell) and game.occupied[cell].id in ["airlock","moonbay"]
+	var local_action: bool=(actor.helmet_action_active() or refilling(actor)) and game.occupied.has(cell) and game.occupied[cell].id in ["airlock","moonbay"]
 	if (pending or local_action) and not ready(game,cell):
-		actor.cancel_helmet_action()
+		actor.interrupt_locker_action()
 		actor.locker_request.clear()
 		actor.path.clear()
 		actor.goal=""
+		if actor.helmet_return_active():return
 		actor.state="idle"
 		actor.timer=1.0
 		actor.activity="diving locker offline"

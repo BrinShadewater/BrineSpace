@@ -4,9 +4,9 @@ extends RefCounted
 const ORDERS := ["survey","recover","deep_access"]
 const REPAIR_METAL := 4
 const Architects = preload("res://scripts/architects.gd")
-const DURATIONS := {"approach":12.0,"seal":3.0,"flood":6.0,"launch":3.0,
-	"work":10.0,"drain":6.0,"unload":3.0}
-const PHASES := ["idle","approach","seal","flood","launch","outbound","work","return","drain","unload"]
+const DURATIONS := {"approach":12.0,"seal":3.0,"flood":6.0,"boarding":3.0,"launch":3.0,
+	"work":10.0,"disembark":6.0,"exit_bay":3.0,"drain":6.0,"unload":3.0}
+const PHASES := ["idle","approach","seal","flood","boarding","launch","outbound","work","return","disembark","exit_bay","drain","unload"]
 
 static func valid_rooms(rooms: Array, crew: Variant) -> bool:
 	if crew != null and not crew is Dictionary: return false
@@ -26,8 +26,11 @@ static func valid_rooms(rooms: Array, crew: Variant) -> bool:
 		if not state.get("credited") is bool or not state.get("recall") is bool: return false
 		if not state.get("station_open") is bool or not state.get("ocean_open") is bool: return false
 		if state.station_open and state.ocean_open: return false
+		if state.get("cycle_clock",0.0) is not float and state.get("cycle_clock",0.0) is not int: return false
+		if not is_finite(float(state.get("cycle_clock",0.0))) or float(state.get("cycle_clock",0.0))<0: return false
 		if not (state.get("chamber_water") is float or state.get("chamber_water") is int): return false
 		if not is_finite(float(state.chamber_water)) or float(state.chamber_water)<0 or float(state.chamber_water)>1: return false
+		if state.phase in ["boarding","exit_bay"] and (state.station_open or state.ocean_open or state.chamber_water!=1.0): return false
 		if not state.get("damage") is int or int(state.damage)<0 or int(state.damage)>1: return false
 		if not (state.get("hazard_roll") is float or state.get("hazard_roll") is int): return false
 		if not is_finite(float(state.hazard_roll)) or float(state.hazard_roll)<0 or float(state.hazard_roll)>1: return false
@@ -35,7 +38,7 @@ static func valid_rooms(rooms: Array, crew: Variant) -> bool:
 		for id in state.cargo:
 			if id not in ["metal","data","rare_minerals"] or not state.cargo[id] is int or state.cargo[id]<0 or state.cargo[id]>100: return false
 		if state.phase=="idle":
-			if state.crew!="" or state.order!="" or state.chamber_water!=0.0 or not state.station_open or state.ocean_open: return false
+			if state.crew!="" or state.order!="" or state.chamber_water!=0.0 or state.ocean_open: return false
 			continue
 		if state.crew not in Architects.IDS or state.order not in ORDERS or active_crews.has(state.crew): return false
 		if state.target.x<0 or state.target.y<0 or state.target.x>=40 or state.target.y>=40: return false
@@ -73,9 +76,9 @@ static func on_crew_death(game, actor) -> void:
 		state.phase = "unload"
 		state.progress = 0.0
 		state.station_open = true
-	elif state.phase=="flood":
+	elif state.phase in ["flood","boarding","disembark","exit_bay"]:
 		state.phase = "drain"
-		state.progress = (1.0-clampf(float(state.chamber_water),0.0,1.0))*float(DURATIONS.drain)
+		state.progress = 0.8+(1.0-clampf(float(state.chamber_water),0.0,1.0))*(float(DURATIONS.drain)-0.8)
 		state.ocean_open = false
 	elif state.phase in ["launch","outbound","work"]:
 		state.phase = "return"
@@ -93,10 +96,21 @@ static func exterior_position(room: Dictionary, state: Dictionary) -> Vector2:
 	var target: Vector2 = Vector2(state.target)+Vector2.ONE*0.5
 	var amount: float = clampf(float(state.progress)/maxf(1.0,_duration(room,state)),0.0,1.0)
 	match str(state.phase):
-		"launch": return hatch.lerp(launch,amount)
+		"launch":
+			var view = preload("res://rooms/large-rooms/moonbay.gd")
+			var dock := center+view.bay_center(room)/384.0
+			var departure := clampf((float(state.progress)-view.DOOR_SECONDS)/(float(DURATIONS.launch)-view.DOOR_SECONDS),0,1)
+			return dock.lerp(launch,departure)
 		"outbound": return launch.lerp(target,amount)
 		"work": return target+Vector2(cos(amount*TAU),sin(amount*TAU))*0.15
-		"return": return target.lerp(launch,amount)
+		"return":
+			var view = preload("res://rooms/large-rooms/moonbay.gd")
+			var duration := _duration(room,state)
+			var progress := float(state.progress)
+			var arrival: float = duration-view.DOOR_SECONDS*2.0
+			if progress<arrival: return target.lerp(launch,clampf(progress/arrival,0,1))
+			var dock := center+view.bay_center(room)/384.0
+			return launch.lerp(dock,clampf((progress-duration+view.DOOR_SECONDS)/view.DOOR_SECONDS,0,1))
 	return launch
 
 static func draw_exterior(canvas: CanvasItem, game, cell_size: float) -> void:
@@ -111,16 +125,24 @@ static func draw_exterior(canvas: CanvasItem, game, cell_size: float) -> void:
 		if state.phase=="return": direction=hatch-point
 		if direction.length_squared()<0.001: direction=Vector2.LEFT.rotated(deg_to_rad(float(int(room.get("rotation",0))*90)))
 		var angle: float = direction.angle()-PI
+		var dock_amount := 0.0
+		var view = preload("res://rooms/large-rooms/moonbay.gd")
+		if state.phase=="launch":
+			dock_amount = 1.0-clampf((float(state.progress)-view.DOOR_SECONDS)/(float(DURATIONS.launch)-view.DOOR_SECONDS),0,1)
+		elif state.phase=="return" and float(state.progress)>=_duration(room,state)-view.DOOR_SECONDS*2.0:
+			angle = float(int(room.get("rotation",0)))*PI*0.5
+			dock_amount = clampf((float(state.progress)-_duration(room,state)+view.DOOR_SECONDS)/view.DOOR_SECONDS,0,1)
 		canvas.draw_circle(point,cell_size*0.19,Color(0.08,0.55,0.7,0.10))
 		canvas.draw_set_transform(point,angle,Vector2.ONE)
-		preload("res://rooms/large-rooms/common.gd").sprite(canvas,"res://rooms/large-rooms/art/mini_sub.png",Rect2(-cell_size*0.23,-cell_size*0.11,cell_size*0.46,cell_size*0.22),Color("#b0a8a5") if int(state.get("damage",0))>0 else Color.WHITE)
+		var size := Vector2(cell_size*lerpf(0.46,328.0/384.0,dock_amount),cell_size*lerpf(0.22,156.0/384.0,dock_amount))
+		preload("res://rooms/large-rooms/common.gd").sprite(canvas,"res://rooms/large-rooms/art/mini_sub.png",Rect2(-size*0.5,size),Color("#b0a8a5") if int(state.get("damage",0))>0 else Color.WHITE,dock_amount,angle,view.SUB_WET_MODULATE)
 		canvas.draw_set_transform(Vector2.ZERO,0.0,Vector2.ONE)
 
 static func mission_state(room: Dictionary) -> Dictionary:
 	if not room.has("moonbay_mission"):
 		room["moonbay_mission"] = {"phase":"idle","progress":0.0,"crew":"","target":Vector2i(-1,-1),
 			"order":"","cargo":{},"credited":true,"damage":0,"chamber_water":0.0,
-			"station_open":true,"ocean_open":false,"recall":false,"hazard_roll":1.0,"last_result":""}
+			"station_open":false,"ocean_open":false,"recall":false,"hazard_roll":1.0,"last_result":""}
 	return room.moonbay_mission
 
 static func crew_problem(game, room: Dictionary, crew_id: String) -> String:
@@ -135,10 +157,11 @@ static func crew_problem(game, room: Dictionary, crew_id: String) -> String:
 	if room.get("id","") != "moonbay": return "Select a Moonbay."
 	return ""
 
-static func _boarding_route(game, actor, room: Dictionary) -> PackedVector2Array:
+static func _route_to_point(game, actor, room: Dictionary, local_point: Vector2) -> PackedVector2Array:
 	actor.rebuild(game)
+	if not actor.moonbay_assignment.is_empty() and not actor.dead: actor.goal="moonbay"
 	var start_cell: Vector2i = actor.cell_at(actor.foot)
-	var board_point: Vector2 = (Vector2(room.pos)+Vector2.ONE)*actor.CELL+Vector2(0,-164)
+	var board_point: Vector2 = (Vector2(room.pos)+Vector2.ONE)*actor.CELL+local_point
 	var board_cell: Vector2i = actor.cell_at(board_point)
 	var start: int = actor.nearest_in_room(actor.foot,start_cell)
 	var finish: int = actor.nearest_in_room(board_point,board_cell)
@@ -150,6 +173,9 @@ static func _boarding_route(game, actor, room: Dictionary) -> PackedVector2Array
 		if not actor.segment_clear(previous,point): return PackedVector2Array()
 		previous = point
 	return actor.smooth_route(route)
+
+static func _boarding_route(game, actor, room: Dictionary) -> PackedVector2Array:
+	return _route_to_point(game,actor,room,preload("res://rooms/large-rooms/moonbay.gd").airlock_point(room))
 
 static func dispatch(game, room: Dictionary, crew_id: String, target: Vector2i, order: String) -> String:
 	if room.get("id","") != "moonbay": return "Select a Moonbay."
@@ -172,15 +198,19 @@ static func dispatch(game, room: Dictionary, crew_id: String, target: Vector2i, 
 	var actor = Architects.actor_for(game,crew_id)
 	var route := PackedVector2Array()
 	if game.is_inside_tree():
+		state.station_open=true # Reserve and open the dry-side door before planning entry.
 		route = _boarding_route(game,actor,room)
-		if route.is_empty(): return "No safe route to the mini-sub boarding point."
+		if route.is_empty():
+			state.station_open=false
+			return "No safe route to the crew airlock."
 	actor.path = route
 	actor.goal = "moonbay"
 	actor.goal_cell = room.pos + Vector2i.ONE
 	actor.activity = "heading to the Moonbay" if not route.is_empty() else "aboard mini-sub"
-	actor.moonbay_assignment = {"home":room.pos,"onboard":route.is_empty(),"arrival":route[-1] if not route.is_empty() else actor.foot}
+	actor.moonbay_assignment = {"home":room.pos,"onboard":route.is_empty(),"in_airlock":route.is_empty(),"arrival":route[-1] if not route.is_empty() else actor.foot,"leg":"enter","synthetic":not game.is_inside_tree()}
 	state["phase"] = "approach"
 	state["progress"] = 0.0
+	state["cycle_clock"] = 0.0
 	state["crew"] = crew_id
 	state["target"] = target
 	state["order"] = order
@@ -203,9 +233,13 @@ static func recall(_game, room: Dictionary) -> bool:
 		state.phase = "unload"
 		state.progress = 0.0
 		state.station_open = true
+	elif state.phase=="boarding":
+		state.phase="exit_bay"; state.progress=0.0; state.station_open=false; state.ocean_open=false
+		var actor = Architects.actor_for(_game,str(state.crew))
+		actor.path.clear(); actor.moonbay_assignment.leg="retry_return"
 	elif state.phase == "flood":
 		state.phase = "drain"
-		state.progress = (1.0-clampf(float(state.chamber_water),0.0,1.0))*float(DURATIONS.drain)
+		state.progress = 0.8+(1.0-clampf(float(state.chamber_water),0.0,1.0))*(float(DURATIONS.drain)-0.8)
 		state.ocean_open = false
 	return true
 
@@ -227,7 +261,8 @@ static func tick(game, delta: float) -> void:
 		if state.phase == "idle": continue
 		var pilot = Architects.actor_for(game,str(state.crew))
 		if pilot.dead and not str(state.last_result).begins_with("Pilot lost."): on_crew_death(game,pilot)
-		if state.phase == "approach" and not Architects.actor_for(game,str(state.crew)).moonbay_assignment.get("onboard",false): continue
+		state["cycle_clock"] = float(state.get("cycle_clock",0.0))+maxf(delta,0.0)
+		if state.phase == "approach" and not pilot.moonbay_assignment.get("in_airlock",pilot.moonbay_assignment.get("onboard",false)): continue
 		_advance(game,room,state,maxf(0.0,delta))
 
 static func advance_crew(game, actor, delta: float) -> void:
@@ -237,11 +272,48 @@ static func advance_crew(game, actor, delta: float) -> void:
 		actor.moonbay_assignment.clear()
 		actor.goal = ""
 		return
-	if not actor.moonbay_assignment.onboard:
+	var room: Dictionary = game.occupied[home]
+	var state := mission_state(room)
+	var assignment: Dictionary = actor.moonbay_assignment
+	var view = preload("res://rooms/large-rooms/moonbay.gd")
+	var leg := str(assignment.get("leg","enter"))
+	if state.phase=="boarding" and leg!="board" and not assignment.onboard:
+		if view.bay_door_amount(room)<0.999: return
+		actor.path=_route_to_point(game,actor,room,view.boarding_point(room))
+		if actor.path.is_empty(): return
+		assignment.leg="board"; assignment.arrival=actor.path[-1]; assignment.in_airlock=false
+		leg="board"
+	elif state.phase=="exit_bay" and leg!="return_lock":
+		if view.bay_door_amount(room)<0.999: return
+		if assignment.onboard:
+			actor.foot=(Vector2(room.pos)+Vector2.ONE)*actor.CELL+view.boarding_point(room)
+		actor.path=_route_to_point(game,actor,room,view.airlock_point(room))
+		if actor.path.is_empty(): return
+		assignment.leg="return_lock"; assignment.arrival=actor.path[-1]; assignment.onboard=false; assignment.in_airlock=false
+		leg="return_lock"
+	elif state.phase=="unload" and leg!="exit" and not actor.dead:
+		if view.door_amounts(room).x<0.999: return
+		actor.path=_route_to_point(game,actor,room,view.exit_point(room))
+		if actor.path.is_empty(): return
+		assignment.leg="exit"; assignment.arrival=actor.path[-1]; assignment.onboard=false
+		leg="exit"
+	if (leg in ["enter","board","return_lock","exit"] and not assignment.onboard and not assignment.get("in_airlock",false)) or (leg=="exit" and not assignment.get("exited",false)):
 		if not actor.path.is_empty(): actor.move(delta)
 		if actor.path.is_empty():
 			if actor.foot.distance_to(actor.moonbay_assignment.get("arrival",actor.foot))>4.0:
 				var interrupted: Dictionary = mission_state(game.occupied[home])
+				if leg!="enter":
+					# Keep the pilot reserved until safely through a pressure door. A
+					# lost wet route must not release them into a closed, flooded bay.
+					interrupted.phase="unload" if leg=="exit" else "exit_bay"
+					interrupted.progress=0.0; interrupted.ocean_open=false
+					interrupted.station_open=leg=="exit"
+					interrupted.chamber_water=0.0 if leg=="exit" else 1.0
+					interrupted.recall=true
+					assignment.leg="retry_exit" if leg=="exit" else "retry_return"
+					assignment.onboard=false; assignment.in_airlock=false
+					actor.goal="moonbay"; actor.activity="waiting for safe Moonbay passage"
+					return
 				interrupted.phase = "idle"
 				interrupted.progress = 0.0
 				interrupted.crew = ""
@@ -249,18 +321,22 @@ static func advance_crew(game, actor, delta: float) -> void:
 				interrupted.target = Vector2i(-1,-1)
 				interrupted.cargo = {}
 				interrupted.credited = true
+				interrupted.chamber_water=0.0
+				interrupted.station_open=false
 				interrupted.last_result = "Boarding route obstructed. Mission cancelled."
 				actor.moonbay_assignment.clear()
 				actor.goal = ""
 				return
-			actor.moonbay_assignment.onboard = true
+			if leg=="board": assignment.onboard=true
+			elif leg=="exit": assignment.exited=true
+			else: assignment.in_airlock=true
 			actor.state = "idle"
-			actor.activity = "aboard mini-sub"
+			actor.activity = "aboard mini-sub" if assignment.onboard else "waiting for the Moonbay pressure cycle"
 	else:
 		actor.activity = "mini-sub / " + str(mission_state(game.occupied[home]).phase)
 
 static func _travel_duration(room: Dictionary, state: Dictionary) -> float:
-	return 12.0 + float(absi(state.target.x-room.pos.x)+absi(state.target.y-room.pos.y))*1.2
+	return preload("res://rooms/large-rooms/moonbay.gd").travel_duration(room,state)
 
 static func _duration(room: Dictionary, state: Dictionary) -> float:
 	if state.phase == "outbound" or state.phase == "return": return _travel_duration(room,state)
@@ -280,19 +356,30 @@ static func _advance(game, room: Dictionary, state: Dictionary, delta: float) ->
 	state.progress = minf(float(state.progress)+delta,_duration(room,state))
 	var fraction: float = float(state.progress)/_duration(room,state)
 	if state.phase == "flood": state.chamber_water = fraction
-	if state.phase == "drain": state.chamber_water = 1.0-fraction
+	if state.phase == "disembark": state.chamber_water = fraction
+	if state.phase == "outbound": state.chamber_water = 1.0-clampf(float(state.progress)/float(DURATIONS.drain),0,1)
+	if state.phase == "drain": state.chamber_water = 1.0-clampf((float(state.progress)-0.8)/(float(DURATIONS.drain)-0.8),0,1)
 	if float(state.progress)<_duration(room,state): return
+	var pilot = Architects.actor_for(game,str(state.crew))
+	var assignment: Dictionary = pilot.moonbay_assignment
+	var simulated: bool = assignment.get("synthetic",not game.is_inside_tree()) or pilot.dead
+	if state.phase=="boarding" and not simulated and not assignment.get("onboard",false): return
+	if state.phase=="exit_bay" and not simulated and not assignment.get("in_airlock",false): return
+	if state.phase=="unload" and not simulated and assignment.has("leg") and not assignment.get("exited",false): return
 	state.progress = 0.0
 	match str(state.phase):
 		"approach": state.phase = "seal"; state.station_open = false
 		"seal": state.phase = "flood"
-		"flood": state.phase = "launch"; state.chamber_water = 1.0; state.ocean_open = true
+		"flood": state.phase = "boarding"; state.chamber_water = 1.0
+		"boarding": state.phase = "launch"; state.ocean_open = true
 		"launch": state.phase = "outbound"; state.ocean_open = false
 		"outbound": state.phase = "return" if state.recall else "work"
 		"work":
 			_resolve_work(game,state)
 			state.phase = "return"
-		"return": state.phase = "drain"; state.ocean_open = false
+		"return": state.phase = "disembark"; state.chamber_water = 0.0; state.ocean_open = false
+		"disembark": state.phase = "exit_bay"; state.chamber_water = 1.0
+		"exit_bay": state.phase = "drain"
 		"drain": state.phase = "unload"; state.chamber_water = 0.0; state.station_open = true
 		"unload":
 			if not state.credited:
@@ -300,6 +387,7 @@ static func _advance(game, room: Dictionary, state: Dictionary, delta: float) ->
 					game.resources[resource_id] = int(game.resources.get(resource_id,0)) + int(state.cargo[resource_id])
 				state.credited = true
 			state.phase = "idle"
+			state.station_open=false
 			var actor = Architects.actor_for(game,str(state.crew))
 			actor.moonbay_assignment.clear()
 			if not actor.dead:

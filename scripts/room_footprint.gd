@@ -37,6 +37,32 @@ static func ports(room: Dictionary) -> Array[Dictionary]:
 		result.append({"cell": anchor + rotated, "side": SIDES[(SIDES.find(side) + rotation) % 4]})
 	return result
 
+# Query a single connection without allocating the full world-port list.
+static func has_port(room: Dictionary, cell: Vector2i, requested_side: String) -> bool:
+	var anchor: Vector2i = room.get("pos", Vector2i.ZERO)
+	var size: Vector2i = room.get("size", Vector2i.ONE)
+	var rotation: int = posmod(int(room.get("rotation", 0)), 4)
+	var local_ports: Array = room.get("ports", [])
+	if not room.has("ports") and size == Vector2i.ONE:
+		var template: Dictionary = RoomDatabaseScript.get_room(str(room.get("id", "")))
+		var layout: Dictionary = RoomDatabaseScript.get_layout(str(room.get("layout", template.get("layout", "cross"))))
+		for side in layout.get("doors", []):
+			local_ports.append({"cell": Vector2i.ZERO, "side": str(side)})
+	for port in local_ports:
+		if not port is Dictionary:
+			continue
+		var local: Vector2i = port.get("cell", Vector2i(-1, -1))
+		var side := str(port.get("side", ""))
+		if not SIDES.has(side) or not _on_edge(local, side, size):
+			continue
+		var rotated := local
+		var rotated_size := size
+		for _turn in range(rotation):
+			rotated = Vector2i(rotated_size.y - 1 - rotated.y, rotated.x)
+			rotated_size = Vector2i(rotated_size.y, rotated_size.x)
+		if anchor + rotated == cell and SIDES[(SIDES.find(side) + rotation) % 4] == requested_side: return true
+	return false
+
 static func exterior_cells(room: Dictionary, side: String) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
 	var anchor: Vector2i = room.get("pos", Vector2i.ZERO)

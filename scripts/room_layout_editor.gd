@@ -305,7 +305,9 @@ class LayoutCanvas extends Control:
 		editor.room.machine_clock=editor.preview_clock
 		editor.effects.apply(editor.room)
 		editor.room.render_into(self,origin(),factor(),true)
+		editor.room.external_actors=editor.scale_actor.members()
 		editor.room.render_into(self,origin(),factor(),false)
+		editor.room.external_actors.clear()
 		draw_set_transform(origin(),0,Vector2.ONE*factor())
 		if editor.show_guides and not editor.clean_preview:
 			for lane in editor.large_door_lanes():
@@ -344,6 +346,12 @@ static func open(host: Node) -> Control:
 	return editor
 
 func _ready() -> void:
+	preload("res://scripts/session_art_cache.gd").retain(self)
+	# Keep a surviving standalone preview's draw resources. Lease the scene root,
+	# rather than a persistent report overlay that happened to open Studio.
+	var art_owner=get_tree().current_scene
+	if not is_instance_valid(art_owner):art_owner=covered_scene
+	if is_instance_valid(art_owner):preload("res://scripts/session_art_cache.gd").retain(art_owner)
 	thumbnail_placeholder=ImageTexture.create_from_image(Image.create(104,78,false,Image.FORMAT_RGBA8))
 	var foundation_image:=Image.new()
 	preload("res://scripts/safe_image.gd").load_png(foundation_image, "res://legacy/default/rooms/foundation-v1/foundation-silt-v1.png")
@@ -821,9 +829,9 @@ func load_room() -> void:
 	effects.clear(); effects.room_id=str(entries[index].room); rebuild_effect_buttons()
 	effects_bar.visible=not is_large_room() or effects.has_large_machine()
 	floor_tools.visible=not is_large_room()
-	show_character.visible=not is_large_room()
-	for cast_pick in cast_rows: cast_pick.get_parent().visible=not is_large_room()
-	character_status.text="Character preview is unavailable for large rooms" if is_large_room() else "Preview only / same scale as gameplay"
+	show_character.visible=true
+	for cast_pick in cast_rows: cast_pick.get_parent().visible=true
+	character_status.text="Preview only / same scale as gameplay"
 	for control in [riser_toggle,foundation_toggle,lights_toggle,animation_toggle]: control.disabled=is_large_room()
 	if is_large_room():
 		for layer_id in range(LAYER_CAPTIONS.size()):

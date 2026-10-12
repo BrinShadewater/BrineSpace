@@ -118,6 +118,11 @@ static func connected_pairs(game) -> Array:
 static func step_crew(game, actor, id: String, dt: float) -> void:
 	var cell: Vector2i = actor.cell_at(actor.foot)
 	var water := level(game.occupied.get(cell,{}))
+	var current_room: Dictionary = game.occupied.get(cell,{})
+	if current_room.get("id","")=="moonbay":
+		var local_point: Vector2=actor.foot-(Vector2(current_room.pos)+Vector2.ONE)*384.0
+		water=maxf(water,preload("res://rooms/large-rooms/moonbay.gd").water_at(current_room,local_point))
+		if actor.moonbay_assignment.get("onboard",false): water=0.0 # Sealed mini-sub supplies breathing air.
 	var exterior: bool = actor.movement_medium == "exterior" or not game.occupied.has(cell)
 	if actor.expedition.is_empty() and not exterior:
 		if water >= HIGH:
@@ -180,6 +185,7 @@ static func kill(game,actor,id: String,cause: String) -> void:
 		game._log(message,true)
 		if is_instance_valid(game.get("crew_comms")): game.crew_comms.transmit("brine",message,"",true)
 		return
+	if actor.has_method("prepare_death_motion"):actor.prepare_death_motion(game)
 	preload("res://scripts/moonbay_missions.gd").on_crew_death(game,actor)
 	actor.die()
 	game.crew_count = maxi(0,game.crew_count-1)

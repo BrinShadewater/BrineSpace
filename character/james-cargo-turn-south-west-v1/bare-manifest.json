@@ -1,0 +1,151 @@
+{
+  "name": "James south-west carrying turn bare",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "pivot": [
+    128,
+    224
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_pipeline_checked_owner_review_pending",
+  "states": [
+    {
+      "id": "carry-turn-south-west",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/carry-turn-south-west/000.png",
+        "frames/bare/carry-turn-south-west/001.png",
+        "frames/bare/carry-turn-south-west/002.png",
+        "frames/bare/carry-turn-south-west/003.png",
+        "frames/bare/carry-turn-south-west/004.png",
+        "frames/bare/carry-turn-south-west/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "helmetSource": "source-helmet.png",
+        "sourcePoses": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "derivation": "Independent master-proportioned planted quarter turn, continuous full figures, fixed scale across every pose; selected standing-master helmet heads at endpoints; reverse exact",
+        "fixedScale": 0.27715355805243447,
+        "headOnlyOverlay": "Generated matched helmet angles; body below headCutoff identical to bare"
+      }
+    },
+    {
+      "id": "carry-turn-west-south",
+      "frameCount": 6,
+      "frameFiles": [
+        "frames/bare/carry-turn-west-south/000.png",
+        "frames/bare/carry-turn-west-south/001.png",
+        "frames/bare/carry-turn-west-south/002.png",
+        "frames/bare/carry-turn-west-south/003.png",
+        "frames/bare/carry-turn-west-south/004.png",
+        "frames/bare/carry-turn-west-south/005.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        140,
+        160,
+        160,
+        140,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry",
+        "carry"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": {
+        "source": "source.png",
+        "helmetSource": "source-helmet.png",
+        "sourcePoses": [
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "derivation": "Independent master-proportioned planted quarter turn, continuous full figures, fixed scale across every pose; selected standing-master helmet heads at endpoints; reverse exact",
+        "fixedScale": 0.27715355805243447,
+        "headOnlyOverlay": "Generated matched helmet angles; body below headCutoff identical to bare"
+      }
+    }
+  ]
+}

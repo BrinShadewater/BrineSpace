@@ -1,0 +1,889 @@
+{
+  "normalAdmission": true,
+  "fullGoalComplete": false,
+  "catalogBeforeSha256": "ade83a022a5582ee32209d5bc33ad21ff25e89187e350e6463a32eaf2409921d",
+  "catalogAfterSha256": "b36002ff5b9feb5ad3777a8b47b13b27f399a9df1dae25fc930f12e67ccbbf56",
+  "changedStates": [
+    "walk-south",
+    "walk-start-south",
+    "walk-stop-phase0-south",
+    "walk-stop-phase1-south",
+    "walk-stop-phase2-south",
+    "walk-stop-phase3-south",
+    "walk-stop-phase4-south",
+    "walk-stop-phase5-south"
+  ],
+  "unchangedEffectiveStates": 220,
+  "changedSlots": 13,
+  "uniqueRevisedDrawings": 6,
+  "unchangedLaterStopFrames": 24,
+  "bodyStates": 228,
+  "bodySlots": 1190,
+  "bodyManifests": 93,
+  "oldStates": {
+    "walk-south": {
+      "state": {
+        "id": "walk-south",
+        "frameFiles": [
+          "res://character/marsh-south-walk-material-v1/candidate-02/000.png",
+          "res://character/marsh-south-walk-material-v1/candidate-02/001.png",
+          "res://character/marsh-south-walk-material-v1/candidate-02/002.png",
+          "res://character/marsh-south-walk-material-v1/candidate-02/003.png",
+          "res://character/marsh-south-walk-material-v1/candidate-02/004.png",
+          "res://character/marsh-south-walk-material-v1/candidate-02/005.png"
+        ],
+        "frameDurationsMs": [
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "loop": true,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92.0,
+        172.0
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase0-south": {
+      "state": {
+        "id": "walk-stop-phase0-south",
+        "frameFiles": [
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/000.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/001.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/002.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/003.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase1-south": {
+      "state": {
+        "id": "walk-stop-phase1-south",
+        "frameFiles": [
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/000.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/001.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/002.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/003.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase2-south": {
+      "state": {
+        "id": "walk-stop-phase2-south",
+        "frameFiles": [
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/000.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/001.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/002.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/003.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase3-south": {
+      "state": {
+        "id": "walk-stop-phase3-south",
+        "frameFiles": [
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/000.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/001.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/002.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/003.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase4-south": {
+      "state": {
+        "id": "walk-stop-phase4-south",
+        "frameFiles": [
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/000.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/001.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/002.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/003.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase5-south": {
+      "state": {
+        "id": "walk-stop-phase5-south",
+        "frameFiles": [
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/000.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/001.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/002.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/003.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-start-south": {
+      "state": {
+        "id": "walk-start-south",
+        "frameFiles": [
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/000.png",
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/001.png",
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/002.png",
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/003.png",
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    }
+  },
+  "newStates": {
+    "walk-south": {
+      "state": {
+        "id": "walk-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/000.png",
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/001.png",
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/002.png",
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/003.png",
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/004.png",
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/005.png"
+        ],
+        "frameDurationsMs": [
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "loop": true,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase0-south": {
+      "state": {
+        "id": "walk-stop-phase0-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/000.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/001.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/002.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/003.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-0/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase1-south": {
+      "state": {
+        "id": "walk-stop-phase1-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/001.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/001.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/002.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/003.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-1/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase2-south": {
+      "state": {
+        "id": "walk-stop-phase2-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/002.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/001.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/002.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/003.png",
+          "res://character/marsh-south-stop-v1/candidate-06/phase-2/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase3-south": {
+      "state": {
+        "id": "walk-stop-phase3-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/003.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/001.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/002.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/003.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-3/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase4-south": {
+      "state": {
+        "id": "walk-stop-phase4-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/004.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/001.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/002.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/003.png",
+          "res://character/marsh-south-stop-v1/candidate-07/phase-4/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-stop-phase5-south": {
+      "state": {
+        "id": "walk-stop-phase5-south",
+        "frameFiles": [
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/005.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/001.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/002.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/003.png",
+          "res://character/marsh-south-stop-v1/candidate-01/phase-5/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    },
+    "walk-start-south": {
+      "state": {
+        "id": "walk-start-south",
+        "frameFiles": [
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/000.png",
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/001.png",
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/002.png",
+          "res://character/marsh-south-idle-material-v1/candidate-01/south-start/003.png",
+          "res://character/marsh-v2/supplemental/south-walk-polish-v1/004.png"
+        ],
+        "frameDurationsMs": [
+          80,
+          80,
+          80,
+          80,
+          80
+        ],
+        "loop": false,
+        "facings": [
+          "south",
+          "south",
+          "south",
+          "south",
+          "south"
+        ],
+        "waterKinds": [
+          "walk",
+          "walk",
+          "walk",
+          "walk",
+          "walk"
+        ],
+        "waterPoses": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "depthOffsets": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "pivot": [
+        92,
+        172
+      ],
+      "standingHeight": 148
+    }
+  },
+  "sourceNativeAcceptanceSha256": "ff7ac79987eff10e4f796a507ee3facab81b7015aabf34652b47aa576d47850a",
+  "limits": "Source admission proven; actual normal catalogue loading/native review follows."
+}

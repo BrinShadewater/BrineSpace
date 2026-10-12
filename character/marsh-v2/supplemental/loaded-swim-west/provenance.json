@@ -90,5 +90,17 @@
       ]
     }
   ],
-  "derived": "Pickup uses exact salvage first frame and exact loaded-swim endpoint. Four loop poses played 0,1,2,3,2,1 to retain six-frame timing."
+  "derived": "Pickup uses exact salvage first frame and exact loaded-swim endpoint. Four loop poses played 0,1,2,3,2,1 to retain six-frame timing.",
+  "selectedPickupOverride": {
+    "source": "character/marsh-swim-pickup-match-v1/frames/swim-pickup-west/",
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "start": "Exact active salvage frame zero",
+    "exit": "Exact active swim-carry frame zero"
+  }
 }

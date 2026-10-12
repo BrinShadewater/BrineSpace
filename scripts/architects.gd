@@ -95,32 +95,43 @@ static func release(game, occupant: Dictionary, cell: Vector2i) -> bool:
 	if id.is_empty(): return true
 	var actor = actor_for(game,id)
 	actor.rebuild(game)
-	var room: Dictionary = game.occupied[cell]
-	var geometry: Dictionary = game.grid_view.bill_room_geometry(room,[])
-	var desired := (Vector2(cell)+Vector2.ONE*0.5)*384.0
-	for prop in geometry.props:
-		if prop.id in ["architect_pod","cryo_pod_0"]:
-			desired+=Vector2(prop.rect.get_center().x,prop.rect.end.y+18)
-			break
 	actor.avoidance_positions.clear()
 	for peer_id in IDS:
 		var peer = actor_for(game,peer_id)
 		if peer!=actor and peer.active: actor.avoidance_positions.append(peer.foot)
-	var chosen := -1
-	var distance := INF
-	for point_id in actor.room_nodes.get(cell,[]):
-		var point: Vector2 = actor.graph.get_point_position(point_id)
-		if actor.spawn_clear(point) and point.distance_squared_to(desired)<distance:
-			chosen=point_id
-			distance=point.distance_squared_to(desired)
+	var chosen := release_node(game,actor,cell)
 	if chosen<0: return false
-	actor.foot=actor.graph.get_point_position(chosen)
+	actor.foot=landing_point(game,actor,chosen)
 	actor.active=true
 	actor.direction="south"
 	actor.state="idle"
 	actor.activity="recharged and awake" if id=="marsh" else "recovered from cryostasis"
 	actor.timer=1.0
 	return true
+
+static func landing_point(game, actor, node: int) -> Vector2:
+	# Human emergence was drawn 14.592 units below the navigation node.
+	# Live position helpers subtract that drawing lift and the renderer adds it
+	# back, so actor.foot itself must equal the visible landing position.
+	return actor.graph.get_point_position(node)+(Vector2.ZERO if actor==game.marsh_npc else Vector2(0,14.592))
+
+static func release_node(game, actor, cell: Vector2i) -> int:
+	# Navigation already owns the matching room geometry. Calling the renderer
+	# here would recurse through pod_for_display while it sets up that room.
+	var geometry: Dictionary = actor.geometry.get(cell,{"props":[]})
+	var desired := (Vector2(cell)+Vector2.ONE*0.5)*384.0
+	for prop in geometry.props:
+		if prop.id in ["architect_pod","cryo_pod_0"]:
+			desired+=Vector2(prop.rect.get_center().x,prop.rect.end.y+18)
+			break
+	var chosen := -1
+	var distance := INF
+	for point_id in actor.room_nodes.get(cell,[]):
+		var point: Vector2 = actor.graph.get_point_position(point_id)
+		if actor.spawn_clear(landing_point(game,actor,point_id)) and point.distance_squared_to(desired)<distance:
+			chosen=point_id
+			distance=point.distance_squared_to(desired)
+	return chosen
 
 static func advance_core(game, delta: float) -> void:
 	if game.architect_run.is_empty() or not game.running or game.paused: return
@@ -163,6 +174,30 @@ static func pod_for_display(game, occupant: Dictionary) -> Dictionary:
 	for member in game.recovered_crew:
 		if member.get("architect_id","")==id: acquired=true
 	if acquired: result["recovered"]=true
+	if id in ["bill","veld","branforth"]:
+		result["reduced_motion"]=game.Preferences.reduced_motion
+		# Read the selected runtime frames without advancing the actor's playback.
+		var player = game.grid_view.human_water_player if id=="bill" else game.grid_view.get(id+"_player")
+		var duration: float = result.get("wake_duration",7.0)
+		var exit_elapsed := maxf(0.0,float(result.get("wake",0.0))-maxf(0.0,duration-preload("res://scripts/architect_cryo_art.gd").EXIT_SECONDS))
+		var step:=preload("res://scripts/architect_cryo_art.gd").exit_step(float(result.get("wake",0.0)),duration)
+		var stepping := step>0.0 and step<1.0
+		# Sample a complete selected gait by distance, including eased departure
+		# and arrival, rather than cutting to idle in the middle of a stride.
+		result["cryo_actor_texture"] = player.frame_at_elapsed("walk-south" if stepping else "idle-south",step*player.cycle_seconds("walk-south") if stepping else 0.0)
+		var recovery_texture: Texture2D=preload("res://scripts/architect_cryo_art.gd").recovery_frame(id,exit_elapsed)
+		if recovery_texture!=null:result["cryo_actor_texture"]=recovery_texture
+		if exit_elapsed>0.0 and not result.get("recovered",false):
+			var cell:=CORE_CELL
+			if occupant.get("id","")!="core_architect":
+				for ward_cell in game.wrecks:
+					for pod_data in game.wrecks[ward_cell].get("pods",[]):
+						if pod_data.get("id")==occupant.get("id"): cell=ward_cell
+			if game.occupied.has(cell):
+				var actor=actor_for(game,id)
+				var node:=release_node(game,actor,cell)
+				if node>=0:
+					result["cryo_exit_foot"]=landing_point(game,actor,node)-(Vector2(cell)+Vector2.ONE*0.5)*384.0
 	if id=="marsh" and game.marsh_npc.recharge_docked and not game.marsh_npc.dead:
 		result["recovered"]=false
 		result["wake"]=game.marsh_npc.charge_elapsed

@@ -1,4 +1,5 @@
 extends RefCounted
+const EnvironmentArt = preload("res://scripts/environment_art.gd")
 const DEFAULTS={"power":true,"walls":true,"interior":true,"exterior":true,"sprinklers":false,"doors":false,"pumps":true}
 static func valid(value) -> bool:
 	if not value is Dictionary: return false
@@ -75,17 +76,21 @@ static func draw_effects(canvas, game, rooms: Array, size: float) -> void:
 		var pixel := maxf(1,unit*2)
 		for side in [-1,1]:
 			var nozzle := center+Vector2(side*88,-92)*unit
-			canvas.draw_rect(Rect2(nozzle-Vector2(5,3)*unit,Vector2(10,6)*unit),Color("637c7b"))
-			canvas.draw_rect(Rect2(nozzle-Vector2(2,0)*unit,Vector2(4,4)*unit),Color("b6d4d1") if status=="SPRAYING" else Color("394f53"))
+			if not EnvironmentArt.sprite(canvas,"sprinkler-nozzle",nozzle,Vector2(10,6)*unit):
+				canvas.draw_rect(Rect2(nozzle-Vector2(5,3)*unit,Vector2(10,6)*unit),Color("637c7b"))
+				canvas.draw_rect(Rect2(nozzle-Vector2(2,0)*unit,Vector2(4,4)*unit),Color("b6d4d1") if status=="SPRAYING" else Color("394f53"))
 			if status!="SPRAYING": continue
 			for i in range(22):
 				var phase := fposmod(time*1.2+i*.173+side*.21,1.0)
 				var spread := float(i%11-5)/5.0
 				var drop := nozzle+Vector2(spread*72*phase,phase*surface_drop)*unit
 				drop=(drop/pixel).floor()*pixel
-				canvas.draw_rect(Rect2(drop,Vector2(pixel,pixel*2)),Color(.63,.84,.88,.7*(1-phase*.55)*fade))
+				if not EnvironmentArt.sprite(canvas,"water-drop",drop,Vector2(pixel,pixel*2),Color(.63,.84,.88,.7*(1-phase*.55)*fade),0.0,Vector2.ZERO):
+					canvas.draw_rect(Rect2(drop,Vector2(pixel,pixel*2)),Color(.63,.84,.88,.7*(1-phase*.55)*fade))
 				if water>0.0 and phase>0.9:
-					canvas.draw_arc(drop+Vector2(pixel*.5,pixel*2),unit*(3.0+(phase-.9)*60.0),PI,TAU,8,Color(.7,.9,.93,.5*fade),maxf(1.0,unit))
+					var radius:=unit*(3.0+(phase-.9)*60.0)
+					if not EnvironmentArt.sprite(canvas,"water-splash",drop+Vector2(pixel*.5,pixel*2),Vector2(radius*2,radius),Color(.7,.9,.93,.5*fade),0.0,Vector2(.5,1)):
+						canvas.draw_arc(drop+Vector2(pixel*.5,pixel*2),radius,PI,TAU,8,Color(.7,.9,.93,.5*fade),maxf(1.0,unit))
 		var color := Color("9acbd4") if status=="SPRAYING" else Color("d3a479")
 		var font: Font=ThemeDB.fallback_font
 		var label := "SPRINKLERS / "+status
@@ -111,6 +116,9 @@ static func draw_exterior_light(canvas: CanvasItem, center: Vector2, direction: 
 	# This foreground pass draws only the physical fixture.
 	if not housing_visible: return
 	var tangent:=Vector2(-direction.y,direction.x)
+	if EnvironmentArt.sprite(canvas,"lamp-housing",lamp+direction*size*.001,Vector2(.052,.016)*size,Color.WHITE,tangent.angle()):
+		EnvironmentArt.sprite(canvas,"lamp-lens",lamp,Vector2(size*.036,maxf(1.0,size*.006)),Color("394f53").lerp(Color("d8f4d9"),clampf(lit,0.0,1.0)),tangent.angle())
+		return
 	var housing:=PackedVector2Array([lamp-tangent*size*0.026-direction*size*0.007,lamp+tangent*size*0.026-direction*size*0.007,lamp+tangent*size*0.026+direction*size*0.009,lamp-tangent*size*0.026+direction*size*0.009])
 	canvas.draw_colored_polygon(housing,Color("233c40"))
 	canvas.draw_line(lamp-tangent*size*0.018,lamp+tangent*size*0.018,Color("394f53").lerp(Color("d8f4d9"),clampf(lit,0.0,1.0)),maxf(1.0,size*0.006))

@@ -22,8 +22,8 @@ const ResourceIcons = preload("res://scripts/resource_icons.gd")
 # card, including the corridors, sits in the same water.
 static func muted(color: Color) -> Color:
 	var m := color
-	m.s = color.s * 0.68
-	m.v = color.v * 0.74
+	m.s = color.s * 0.82
+	m.v = color.v * 0.90
 	return m
 
 # Brighter edge of the same muted family, for the inner hairline and ribbon text.
@@ -107,10 +107,29 @@ static func short_note(room: Dictionary) -> String:
 	if room.get("flood_compatible", false): text = (text + " Flood-safe.").strip_edges()
 	return text
 
-static func build(game, id: String) -> PanelContainer:
+# Values that build() displays. Compare presentation, not raw reserves: changes
+# above a cost threshold need not recreate identical controls. Keep this in sync
+# with build() when adding dynamic card content; hover poses are owned by the card.
+static func presentation(game, id: String) -> Dictionary:
 	var room: Dictionary = RoomDatabase.get_room(id)
 	var cost: Dictionary = room.get("cost", {})
 	var affordable: bool = game._can_afford(cost)
+	var enough := {}
+	var icons := {}
+	for key in cost:
+		enough[key] = str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
+		icons[key] = game._resource_icon_bbcode(str(key), 14)
+	return {"room": room.duplicate(true), "color": RoomDatabase.room_color(id),
+		"affordable": affordable, "selected": game.selected_card_id == id,
+		"prototype": game.prototype_card_seen_cycle.has(id),
+		"art": game.card_textures.get(id), "art_enabled": CardArt.enabled,
+		"tooltip": game._blueprint_decision(room), "cost_enough": enough, "cost_icons": icons,
+		"shortfall": "" if affordable else game._format_cost(game._missing_cost(cost))}
+
+static func build(game, id: String, preview := false) -> PanelContainer:
+	var room: Dictionary = RoomDatabase.get_room(id)
+	var cost: Dictionary = room.get("cost", {})
+	var affordable: bool = preview or game._can_afford(cost)
 	var category_color: Color = RoomDatabase.room_color(str(room["id"]))
 	var card := PanelContainer.new()
 	card.theme = preload("res://scripts/ui_fonts.gd").card_theme()
@@ -132,7 +151,7 @@ static func build(game, id: String) -> PanelContainer:
 	card.set_meta("category_color", category_color)
 	card.set_meta("affordable", affordable)
 	card.tooltip_text = game._blueprint_decision(room)
-	game._apply_card_style(card, category_color, game.selected_card_id == id, affordable)
+	game._apply_card_style(card, category_color, not preview and game.selected_card_id == id, affordable)
 	var body := VBoxContainer.new()
 	body.add_theme_constant_override("separation", 4)
 	body.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -144,7 +163,7 @@ static func build(game, id: String) -> PanelContainer:
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title.custom_minimum_size = Vector2(0, 28)
 	title.clip_text = true
-	title.add_theme_font_size_override("font_size", 15 if title.text.length() <= 14 else (13 if title.text.length() <= 18 else 11))
+	title.add_theme_font_size_override("font_size", 16 if title.text.length() <= 14 else (14 if title.text.length() <= 18 else 13))
 	title.add_theme_color_override("font_color", Color("#e2ecee"))
 	title.add_theme_stylebox_override("normal", _box(Color("#16222a"), muted(category_color).darkened(0.25), 1, 6))
 	body.add_child(_ignore(title))
@@ -181,13 +200,15 @@ static func build(game, id: String) -> PanelContainer:
 
 	var ribbon := Label.new()
 	ribbon.text = category_label(room)
+	ribbon.custom_minimum_size.y = 24
+	ribbon.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	ribbon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	ribbon.add_theme_font_size_override("font_size", 12)
 	ribbon.add_theme_color_override("font_color", muted_bright(category_color))
 	ribbon.add_theme_stylebox_override("normal", _box(Color("#090f14"), muted(category_color), 1, 3))
 	body.add_child(_ignore(ribbon))
 	if str(room.get("id","")) not in HALLWAY_IDS:
-		CardArt.add_mark(ribbon,str(room.get("category","")),Vector2(5,2),Vector2(16,16),muted_bright(category_color),"CardEmblem")
+		CardArt.add_mark(ribbon,str(room.get("category","")),Vector2(5,4),Vector2(16,16),muted_bright(category_color),"CardEmblem")
 
 	var rules := PanelContainer.new()
 	rules.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -201,11 +222,11 @@ static func build(game, id: String) -> PanelContainer:
 		build_row.add_theme_constant_override("separation", 4)
 		var build_label := Label.new()
 		build_label.text = "BUILD"
-		build_label.add_theme_font_size_override("font_size", 13)
+		build_label.add_theme_font_size_override("font_size", 14)
 		build_label.add_theme_color_override("font_color", Color("#8fa3ae"))
 		build_row.add_child(_ignore(build_label))
 		for key in cost:
-			var enough: bool = str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
+			var enough: bool = preview or str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
 			build_row.add_child(_ignore(_cost_gem(game, str(key), int(cost[key]), enough)))
 		rules_box.add_child(_ignore(build_row))
 	for line in rule_lines(room):
@@ -215,7 +236,7 @@ static func build(game, id: String) -> PanelContainer:
 		entry.scroll_active = false
 		entry.autowrap_mode = TextServer.AUTOWRAP_OFF
 		entry.text = line
-		entry.add_theme_font_size_override("normal_font_size", 13)
+		entry.add_theme_font_size_override("normal_font_size", 14)
 		entry.add_theme_color_override("default_color", Color("#a9bcc4"))
 		rules_box.add_child(_ignore(entry))
 	var note := short_note(room)
@@ -225,8 +246,8 @@ static func build(game, id: String) -> PanelContainer:
 		note_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		note_label.max_lines_visible = 2
 		note_label.clip_text = true
-		note_label.custom_minimum_size = Vector2(170, 34)
-		note_label.add_theme_font_size_override("font_size", 12)
+		note_label.custom_minimum_size = Vector2(170, 40)
+		note_label.add_theme_font_size_override("font_size", 14)
 		note_label.add_theme_color_override("font_color", Color("#8fa6b1"))
 		rules_box.add_child(_ignore(note_label))
 	if not affordable:
@@ -246,18 +267,39 @@ static func _cost_gem(game, resource: String, amount: int, enough: bool) -> Cont
 	gem.fit_content = true
 	gem.autowrap_mode = TextServer.AUTOWRAP_OFF
 	gem.scroll_active = false
-	gem.text = "%s%d" % [game._resource_icon_bbcode(resource, 12), amount]
-	gem.add_theme_font_size_override("normal_font_size", 12)
+	gem.text = "%s%d" % [game._resource_icon_bbcode(resource, 14), amount]
+	gem.add_theme_font_size_override("normal_font_size", 14)
 	gem.add_theme_color_override("default_color", Color("#e6eeee") if enough else Color("#ff8a90"))
 	# No ring round the cost (owner playtest, Sept 29); a short resource still shows red.
 	gem.add_theme_stylebox_override("normal", _box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 3))
 	return gem
 
-# Only when the content fits: a card whose text truly overflows stays taller rather than being
-# reset every frame.
+# Container text determines the tallest card; the whole hand shares that size.
 static func _fit_card(card: Control) -> void:
-	var fits: bool = card.get_combined_minimum_size().y <= CARD_SIZE.y + 0.5
-	if fits and not card.size.is_equal_approx(CARD_SIZE): card.set_deferred("size", CARD_SIZE)
+	if not card.is_inside_tree() or card.is_queued_for_deletion(): return
+	_sync_hand_size.call_deferred(card.get_instance_id())
+
+static func _sync_hand_size(card_id: int) -> void:
+	var card: Control=instance_from_id(card_id)
+	if not is_instance_valid(card) or not card.is_inside_tree() or card.is_queued_for_deletion(): return
+	var holder:=card.get_parent()
+	var cards: Array[Control]=[]
+	if holder.name=="FanRow":
+		for child in holder.get_children():
+			if child.has_meta("card_id"): cards.append(child)
+	elif card.has_meta("hand_index") and holder.get_parent()!=null:
+		for slot in holder.get_parent().get_children():
+			for child in slot.get_children():
+				if child.has_meta("card_id"): cards.append(child)
+	if cards.is_empty(): cards.append(card)
+	var extent:=CARD_SIZE
+	for item in cards: extent=extent.max(item.get_combined_minimum_size())
+	for item in cards:
+		item.size=extent
+		item.pivot_offset=Vector2(extent.x*0.5,extent.y)
+		if item.get_parent().name!="FanRow" and item.has_meta("hand_index"):
+			item.get_parent().custom_minimum_size.y=maxf(ROW_SLOT.y,extent.y+HOVER_LIFT+24.0)
+	if holder.name=="FanRow": holder.custom_minimum_size.y=maxf(ROW_SLOT.y,extent.y+46.0)
 
 static func build_piles(game) -> Control:
 	var slot := HBoxContainer.new()
@@ -370,6 +412,7 @@ static func layout_fan(fan: Control) -> void:
 		stack[rank].set_meta("rest_index", rank)
 
 static func set_art_filter(card: Control, turned: bool) -> void:
+	if not card.has_meta("art_node"): return
 	var art = card.get_meta("art_node", null)
 	if art == null or not is_instance_valid(art): return
 	art.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS if turned else CanvasItem.TEXTURE_FILTER_NEAREST

@@ -1,0 +1,129 @@
+{
+  "name": "James ordinary water turns bare",
+  "frameWidth": 256,
+  "frameHeight": 276,
+  "pivot": [
+    128,
+    128
+  ],
+  "standingHeight": 148,
+  "precomposed": true,
+  "textureFilter": "linear",
+  "status": "installed_selected",
+  "states": [
+    {
+      "id": "swim-turn-west-north",
+      "frameFiles": [
+        "frames/bare/000.png",
+        "frames/bare/001.png",
+        "frames/bare/002.png",
+        "frames/bare/003.png",
+        "frames/bare/004.png",
+        "frames/bare/005.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source-v1.png",
+        "derivation": "Independently edited whole body knees; fixed cranial density/material, exact selected endpoints, canonical helmet head ownership"
+      }
+    },
+    {
+      "id": "swim-turn-north-west",
+      "frameFiles": [
+        "frames/bare/005.png",
+        "frames/bare/004.png",
+        "frames/bare/003.png",
+        "frames/bare/002.png",
+        "frames/bare/001.png",
+        "frames/bare/000.png"
+      ],
+      "frameDurationsMs": [
+        70.0,
+        90.0,
+        100.0,
+        100.0,
+        90.0,
+        70.0
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim",
+        "swim"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "frameCount": 6,
+      "provenance": {
+        "source": "source-v1.png",
+        "derivation": "Exact reversed whole-pose compact turn; no mirrored pose"
+      }
+    }
+  ]
+}

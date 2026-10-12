@@ -28,12 +28,15 @@ static func tick_approach_retries(actor,delta: float) -> void:
 static func order_key(order: Dictionary) -> String:
 	return "%s@%s/%d" % [order.id,order.pos,int(order.rotation)]
 
+static func equipment_allowed(actor) -> bool:
+	return not actor.helmet_equipped or actor.has_method("advance_construction_motion")
+
 static func reconcile(game) -> void:
 	for order in game.drone_fleet.orders:
 		var id: String = order.get("builder","")
 		if id.is_empty(): continue
 		var actor = game.get(id+"_npc")
-		if not Architects.present(game,id) or actor.dead or actor.movement_medium!="dry" or actor.helmet_equipped or not actor.expedition.is_empty() or actor.helmet_action_active() or not actor.locker_request.is_empty():
+		if not Architects.present(game,id) or actor.dead or actor.movement_medium!="dry" or not equipment_allowed(actor) or not actor.expedition.is_empty() or actor.helmet_action_active() or not actor.locker_request.is_empty():
 			order.erase("builder")
 			order.erase("work_point")
 			order.erase("work_cell")
@@ -91,7 +94,7 @@ static func advance(game,actor,delta: float) -> bool:
 		if candidate.get("builder","")==id: order=candidate; break
 	if order.is_empty():
 		if actor.goal=="construction": release(actor)
-		if actor.helmet_equipped or actor.helmet_action_active() or not actor.locker_request.is_empty() or not actor.stage.is_empty() or actor.movement_medium!="dry": return false
+		if not equipment_allowed(actor) or actor.helmet_action_active() or not actor.locker_request.is_empty() or not actor.stage.is_empty() or actor.movement_medium!="dry": return false
 		if not game.running or game.paused or not game.hardware.power or game.hardware.doors: return false
 		var has_bay: bool=game.drone_fleet.drones.values().any(func(d): return d.kind=="construction" and not d.bootstrap)
 		if has_bay and game.drone_fleet._dedicated_builder_ready(game.powered_room_cells): return false
@@ -120,6 +123,7 @@ static func advance(game,actor,delta: float) -> bool:
 	actor.goal_cell=order.work_cell
 	actor.activity="assembling room / "+str(roundi(float(order.get("work",0.0))/WORK_SECONDS*100))+"%"
 	if not game.running or game.paused or not game.hardware.power or game.hardware.doors or game.occupied.get(order.work_cell,{}).get("suspended",false):
+		if actor.has_method("advance_construction_motion") and actor.advance_construction_motion(game,order,delta,true): return true
 		actor.state="idle"
 		actor.activity="construction held / restore station access"
 		return true
@@ -131,6 +135,7 @@ static func advance(game,actor,delta: float) -> bool:
 		order.erase("builder")
 		release(actor)
 		return true
+	if actor.has_method("advance_construction_motion") and actor.advance_construction_motion(game,order,delta,false): return true
 	if actor.foot.distance_to(order.work_point)>1.0:
 		actor.activity="heading to construction seal"
 		if actor.path.is_empty():
