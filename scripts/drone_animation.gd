@@ -83,7 +83,7 @@ static func cache_diagnostics() -> Dictionary:
 		var id:int=image.get_instance_id()
 		if live_ids.has(id):continue
 		live_ids[id]=true
-		if image is NativeEffect:encoded_original_bytes+=image.original_png.size()
+		if image is NativeEffect or image is CargoStorage:encoded_original_bytes+=image.original_png.size()
 		var bytes:int=entry.bytes
 		live_bytes+=bytes
 		var cache_owned:bool=textures.has(path) and is_same(textures[path],image)
@@ -91,7 +91,7 @@ static func cache_diagnostics() -> Dictionary:
 		if live_details.size()<64:
 			live_details.append({"path":path,"bytes":bytes,"size":image.get_size(),
 				"cache_owned":cache_owned,"last_use_age_frames":frame-int(last_used.get(path,-100))})
-	return {"native_encoded_original_bytes":encoded_original_bytes,"native_mask_draws":native_mask_draws,"native_fallback_draws":native_fallback_draws,"native_mask_sources":effect_storage.size(),"native_effect_storage":native_effect_storage,"cached_decoded_bytes": cached_bytes, "budget_bytes": CACHE_BUDGET,
+	return {"cargo_storage":cargo_storage_enabled,"cargo_storage_sources":cargo_storage.size(),"cargo_frame_draws":cargo_frame_draws,"cargo_fallback_draws":cargo_fallback_draws,"native_encoded_original_bytes":encoded_original_bytes,"native_mask_draws":native_mask_draws,"native_fallback_draws":native_fallback_draws,"native_mask_sources":effect_storage.size(),"native_effect_storage":native_effect_storage,"cached_decoded_bytes": cached_bytes, "budget_bytes": CACHE_BUDGET,
 		"over_budget_bytes": maxi(0, cached_bytes - CACHE_BUDGET), "entries": textures.size(),
 		"recent_decoded_bytes": recent_bytes, "stale_decoded_bytes": stale_bytes,
 		"classified_entries": visited, "classification_complete": visited == texture_bytes.size(),
@@ -255,6 +255,15 @@ static func atlas(canvas:CanvasItem,record:Dictionary,index:int,rect:Rect2,size:
 			native_mask_draws+=1;tint*=Color(135.0/255.0,139.0/255.0,125.0/255.0,1);atlas_texture=atlas_texture.mask
 		else:native_fallback_draws+=1;atlas_texture=atlas_texture.original_texture()
 		if atlas_texture==null:return
+	elif atlas_texture is CargoStorage:
+		# Same quad as the full frame; samples outside the small frame clamp to its transparent border.
+		var cargo_frame:Texture2D=atlas_texture.frame(index) if columns==atlas_texture.columns and Vector2i(size)==atlas_texture.cell and cargo_context_supported(canvas) else null
+		if cargo_frame!=null:
+			cargo_frame_draws+=1
+			canvas.draw_texture_rect_region(cargo_frame,rect,Rect2(-Vector2(atlas_texture.box.position),size),tint)
+			return
+		cargo_fallback_draws+=1;atlas_texture=atlas_texture.original_texture()
+		if atlas_texture==null:return
 	canvas.draw_texture_rect_region(atlas_texture,rect,Rect2(Vector2(index%columns,index/columns)*size,size),tint)
 static func draw(canvas:CanvasItem,d:Dictionary,at:Vector2,world_scale:float,art_scale:float,operating:bool,visual_clock:float,alpha:float=1.0) -> void:
 	begin(canvas)
@@ -342,6 +351,9 @@ static func load_native_or_original(path:String)->Image:
 				if hash.finish().hex_encode()==spec.sha256 and image.load_png_from_buffer(bytes)==OK and image.get_format()==Image.FORMAT_LA8 and image.get_size()==Vector2i(spec.width,spec.height) and not image.has_mipmaps():
 					image.set_meta("native_effect_original_png",original_bytes);image.set_meta("native_effect_source",path)
 					return image
+	if cargo_storage_enabled and cargo_storage.has(path):
+		var cargo:Image=load_cargo_storage(path,cargo_storage[path],original_bytes)
+		if cargo!=null:return cargo
 	image=Image.new()
 	return image if image.load_png_from_buffer(original_bytes)==OK else null
 static func native_context_supported(canvas:CanvasItem,color:Color)->bool:
@@ -359,6 +371,7 @@ static func native_context_supported(canvas:CanvasItem,color:Color)->bool:
 	var material:Material=material_node.material
 	return material==null or (material is ShaderMaterial and material.shader==NativeFlood)
 static func make_native_texture(path:String,image:Image)->Texture2D:
+	if cargo_storage.has(path) and image.get_meta("drone_cargo_source","")==path and image.has_meta("drone_cargo_original_png"):return make_cargo_texture(path,image)
 	if not effect_storage.has(path) or image.get_format()!=Image.FORMAT_LA8 or image.get_meta("native_effect_source","")!=path or not image.has_meta("native_effect_original_png"):return ImageTexture.create_from_image(image)
 	var display=NativeEffect.new();display.source=path;display.original_png=image.get_meta("native_effect_original_png");display.width=image.get_width();display.height=image.get_height();display.base_bytes=image.get_data_size();display.mask=ImageTexture.create_from_image(image)
 	var ref:WeakRef=weakref(display)
@@ -369,5 +382,59 @@ static func make_native_texture(path:String,image:Image)->Texture2D:
 	display.upload_record=func(bytes:int,usec:int,started:int,size:Vector2i):
 		texture_uploads+=1;texture_upload_usec+=usec
 		last_texture_upload={"frame":Engine.get_process_frames(),"path":path,"bytes":bytes,"size":size,"usec":usec,"start_usec":started,"end_usec":started+usec,"native_original_fallback":true}
+		record_frame_upload(last_texture_upload)
+	return display
+
+
+const CargoStorage=preload("res://scripts/drone_cargo_storage.gd")
+const CargoStorageData=preload("res://scripts/drone_cargo_storage_catalog.gd")
+static var cargo_frame_draws:=0
+static var cargo_fallback_draws:=0
+# Cropped cargo frames replace whole-sheet uploads. Scaled drawing can pick a neighbouring
+# source row or column (owner-accepted October 11, 2026). Windows only until checked elsewhere.
+static var cargo_storage_enabled:=OS.get_name()=="Windows" and not OS.get_cmdline_user_args().has("--reference-cargo-storage")
+# Generated catalog; a variable so fixtures can supply scratch entries.
+static var cargo_storage:Dictionary=CargoStorageData.DATA
+static func load_cargo_storage(path:String,spec:Dictionary,original_bytes:PackedByteArray)->Image:
+	var original_hash:=HashingContext.new();original_hash.start(HashingContext.HASH_SHA256);original_hash.update(original_bytes)
+	# A changed selected PNG must invalidate its derived storage, even at the same path/dimensions.
+	if original_hash.finish().hex_encode()!=spec.original_sha256:return null
+	var bytes:=FileAccess.get_file_as_bytes(spec.path) if FileAccess.file_exists(spec.path) else PackedByteArray()
+	if bytes.is_empty():return null
+	var hash:=HashingContext.new();hash.start(HashingContext.HASH_SHA256);hash.update(bytes)
+	if hash.finish().hex_encode()!=spec.sha256:return null
+	var image:=Image.new()
+	if image.load_png_from_buffer(bytes)!=OK or image.has_mipmaps():return null
+	var rows:int=int(spec.height)/int(spec.cell[1])
+	if image.get_size()!=Vector2i(int(spec.box[2])*int(spec.columns),int(spec.box[3])*rows):return null
+	image.set_meta("drone_cargo_original_png",original_bytes);image.set_meta("drone_cargo_source",path)
+	return image
+static func cargo_context_supported(canvas:CanvasItem)->bool:
+	var node:Node=canvas
+	var effective_filter:=0
+	var effective_repeat:=0
+	while node is CanvasItem:
+		if effective_filter==0:effective_filter=node.texture_filter
+		if effective_repeat==0:effective_repeat=node.texture_repeat
+		node=node.get_parent()
+	if effective_filter!=CanvasItem.TEXTURE_FILTER_NEAREST:return false
+	# Samples beyond the small frame must clamp to its border, never wrap.
+	if effective_repeat>CanvasItem.TEXTURE_REPEAT_DISABLED:return false
+	var material_node:CanvasItem=canvas
+	while material_node.use_parent_material and material_node.get_parent() is CanvasItem:material_node=material_node.get_parent()
+	var material:Material=material_node.material
+	return material==null or (material is ShaderMaterial and material.shader==NativeFlood)
+static func make_cargo_texture(path:String,image:Image)->Texture2D:
+	var spec:Dictionary=cargo_storage[path]
+	var display=CargoStorage.new();display.source=path;display.original_png=image.get_meta("drone_cargo_original_png");display.width=int(spec.width);display.height=int(spec.height)
+	display.cropped=image;display.box=Rect2i(int(spec.box[0]),int(spec.box[1]),int(spec.box[2]),int(spec.box[3]));display.cell=Vector2i(int(spec.cell[0]),int(spec.cell[1]));display.columns=int(spec.columns);display.base_bytes=image.get_data_size()
+	var ref:WeakRef=weakref(display)
+	display.storage_changed=func(bytes:int):
+		if not weak_images.has(path) or weak_images[path].ref.get_ref()!=ref.get_ref():return
+		weak_images[path].bytes=bytes
+		if textures.has(path) and textures[path]==ref.get_ref():cached_bytes+=bytes-int(texture_bytes[path]);texture_bytes[path]=bytes
+	display.upload_record=func(bytes:int,usec:int,started:int,size:Vector2i,kind:String):
+		texture_uploads+=1;texture_upload_usec+=usec
+		last_texture_upload={"frame":Engine.get_process_frames(),"path":path,"bytes":bytes,"size":size,"usec":usec,"start_usec":started,"end_usec":started+usec,"cargo_storage":kind}
 		record_frame_upload(last_texture_upload)
 	return display
