@@ -357,6 +357,15 @@ func run() -> void:
 			await capture("%s-q%d-removing" % [id,q])
 			game.powered_room_cells.erase(cell)
 			game._update_test_walker(0.05)
+			# Branforth hands an interrupted helmet back smoothly instead of snapping out of the action
+			# (owner-confirmed October 12, 2026); safety cancellations stay immediate. Let it finish.
+			if actor.has_method("helmet_return_active") and actor.helmet_return_active():
+				check(actor.helmet_equipped and actor.activity=="returning interrupted helmet handoff","Interrupted handoff is returned, not dropped")
+				check(not Service.request(game,id,cell),"No new service while the handoff returns")
+				for step in range(200):
+					if not actor.helmet_action_active(): break
+					game._update_test_walker(0.05)
+				check(not actor.helmet_return_active(),"Interrupted handoff return completes")
 			check(actor.helmet_equipped and not actor.helmet_action_active(),"Power loss cancels removal without changing gear")
 			check(not Service.request(game,id,cell),"Offline airlock refuses equipment service")
 			game.powered_room_cells[cell]=true
