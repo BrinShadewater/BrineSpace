@@ -1,6 +1,16 @@
 extends RefCounted
 ## Resolve a stand-off, or an actor standing in someone's way, without changing goals or clearance.
 
+# A stand-off nobody can step out of used to sweep every step-aside spot on every frame: 52 spots
+# and 4,992 route searches, about 90 ms a frame for six seconds (packaged soak, October 12, 2026).
+# A sweep now tests a few spots a step, in the same nearest-first order, and after a full sweep
+# fails the pair waits before the next one, as the crew's own detour retry already does.
+const SPOTS_PER_STEP := 2
+const RETRY_SECONDS := 0.5
+# Per waiting pair: the next spot to test, the mover's wait when the pair was last seen, and the
+# wait at which a failed sweep may start again. Keyed by instance ids; numbers only.
+static var sweeps: Dictionary = {}
+
 static func update(actors: Array) -> bool:
 	# Crew retreating for air pass first, then crew before companions; within a rank, stable
 	# roster order chooses a single yielding actor, not two reciprocal moves.
@@ -22,7 +32,10 @@ static func rank(actor) -> int:
 static func try_yield(mover, yielder) -> bool:
 	for actor in [mover,yielder]:
 		if not actor.active or actor.dead: return false
-		if actor.helmet_action_active() or not actor.locker_request.is_empty(): return false
+		if actor.helmet_action_active(): return false
+	# Locker approaches can use the normal retreat-and-return path without losing
+	# their final contact/request. Only a servicing actor must stay at its contact.
+	if preload("res://scripts/airlock_service.gd").refilling(yielder): return false
 	# The mover is stuck waiting to pass. The yielder is either caught in the same stand-off or
 	# standing still in the way: an idle companion in a doorway used to block everyone for good.
 	if mover.path.is_empty() or mover.traffic_wait < 0.3: return false
@@ -41,10 +54,21 @@ static func try_yield(mover, yielder) -> bool:
 		if not idle and not yielder.travel_segment_clear(point,yielder.foot,yielder.travel_heading(yielder.foot,point,yielder.direction)): continue
 		candidates.append(point)
 	candidates.sort_custom(func(a,b): return yielder.foot.distance_squared_to(a) < yielder.foot.distance_squared_to(b))
+	var key := [mover.get_instance_id(), yielder.get_instance_id()]
+	var sweep: Dictionary = sweeps.get(key, {})
+	# The mover's wait only falls when a stand-off ends, so a lower wait is a new stand-off.
+	if sweep.is_empty() or mover.traffic_wait < float(sweep.seen): sweep = {"next": 0, "retry": 0.0}
+	sweep.seen = mover.traffic_wait
+	sweeps[key] = sweep
+	if mover.traffic_wait < float(sweep.retry): return false
 	var saved_path: PackedVector2Array = mover.path.duplicate()
 	var saved_peers: PackedVector2Array = mover.avoidance_positions.duplicate()
 	var saved_peer: Vector2 = mover.avoidance_position
-	for point in candidates:
+	var tested := 0
+	while int(sweep.next) < candidates.size() and tested < SPOTS_PER_STEP:
+		var point: Vector2 = candidates[int(sweep.next)]
+		sweep.next = int(sweep.next) + 1
+		tested += 1
 		mover.avoidance_positions = saved_peers.duplicate()
 		for index in range(mover.avoidance_positions.size()):
 			if mover.avoidance_positions[index].is_equal_approx(yielder.foot): mover.avoidance_positions[index] = point
@@ -62,5 +86,9 @@ static func try_yield(mover, yielder) -> bool:
 		yielder.path.insert(0,point)
 		yielder.traffic_wait = 0.0
 		mover.traffic_wait = 0.0
+		sweeps.erase(key)
 		return true
+	if int(sweep.next) >= candidates.size():
+		sweep.next = 0
+		sweep.retry = mover.traffic_wait + RETRY_SECONDS
 	return false
