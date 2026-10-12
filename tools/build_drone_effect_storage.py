@@ -132,11 +132,7 @@ def run(argv=None) -> int:
     expected = catalog_text(rows) if not problems else ""
     existing = CATALOG.read_bytes().decode("utf-8") if CATALOG.exists() else ""
     # Line endings differ by checkout; compare content only.
-    if not problems and existing.replace("
-", "
-") != expected.replace("
-", "
-"):
+    if not problems and existing.splitlines() != expected.splitlines():
         if args.check:
             problems.append("scripts/drone_effect_storage_catalog.gd does not match the files on disk")
         else:
