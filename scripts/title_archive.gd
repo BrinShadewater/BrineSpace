@@ -1105,7 +1105,11 @@ func _blueprint_card(id: String) -> Control:
 	var state := MetaShop.room_state(meta_state, id)
 	var cost := MetaShop.room_cost(meta_state, id)
 	var room_id: String = id
-	var card := _codex_room_card({"id": id, "known": true, "title": str(Rooms.get_room(id).display_name), "category": str(Rooms.get_room(id).category), "clue": "", "data": Rooms.get_room(id)})
+	var room: Dictionary = Rooms.get_room(id)
+	# A blueprint not yet bought is a mystery (owner playtest, October 13): its department and
+	# rarity show, the room itself stays behind an obscured signal until it is recovered.
+	var owned: bool = state == "owned"
+	var card := _codex_room_card({"id": id, "known": owned, "title": str(room.display_name) if owned else locked_title(room), "category": str(room.category), "clue": locked_clue(id), "data": room})
 	card.name = "Blueprint_" + id
 	var rows: VBoxContainer = card.get_child(0)
 	rows.add_child(Badges.make("OWNED" if state == "owned" else "AVAILABLE" if state == "ready" else "LOW DATA","unlocked" if state == "owned" else "archived_data","online" if state in ["owned","ready"] else "warning",-1,true))
@@ -1115,8 +1119,62 @@ func _blueprint_card(id: String) -> Control:
 		rows.add_child(_price_hint(half, meta_state.discovered_synergy_ids.has(pattern.id), str(pattern.name)))
 	_pin_to_bottom(rows)
 	rows.add_child(_shop_button({"owned": "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost}[state], state == "ready", func() -> void:
-		if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
+		if MetaShop.buy_room(meta_state, room_id):
+			_refresh_progression(room_id)
+			show_recovered(room_id)))
 	return card
+
+static func locked_title(room: Dictionary) -> String:
+	return "%s // %s" % [str(room.get("category", "UNKNOWN")).to_upper(), str(room.get("rarity", "common")).to_upper()]
+
+func locked_clue(id: String) -> String:
+	var pattern := MetaShop.related_pattern(id)
+	return Catalog.clue(pattern) if not pattern.is_empty() else "Recover this blueprint with Archived Data to resolve the signal."
+
+# The room a purchase has just recovered, shown in full over the page until it is dismissed.
+var recovered: Control
+
+func show_recovered(id: String) -> void:
+	close_recovered()
+	var room: Dictionary = Rooms.get_room(id)
+	recovered = ColorRect.new()
+	recovered.name = "BlueprintRecovered"
+	recovered.color = Color(0.02, 0.05, 0.07, 0.92)
+	recovered.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(recovered)
+	recovered.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var centre := CenterContainer.new()
+	recovered.add_child(centre)
+	centre.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 14)
+	centre.add_child(rows)
+	var heading := _label("BLUEPRINT RECOVERED", 26)
+	heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	heading.add_theme_color_override("font_color", Color("7fd6a6"))
+	rows.add_child(heading)
+	var card := _codex_room_card({"id": id, "known": true, "title": str(room.display_name), "category": str(room.category), "clue": "", "data": room})
+	card.name = "RecoveredCard"
+	card.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	rows.add_child(card)
+	var note := _label("It joins the draft deck in every loop.", 17)
+	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	rows.add_child(note)
+	var done := Button.new()
+	done.name = "RecoveredContinue"
+	done.text = "CONTINUE"
+	preload("res://scripts/title_button_style.gd").apply(done, 240, 44)
+	done.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	done.pressed.connect(close_recovered)
+	rows.add_child(done)
+	preload("res://scripts/title_settings.gd").apply_menu_text(recovered)
+	done.grab_focus.call_deferred()
+
+func close_recovered() -> void:
+	if not is_instance_valid(recovered): return
+	recovered.queue_free()
+	recovered = null
+	if is_instance_valid(close_button) and not closing: close_button.grab_focus.call_deferred()
 
 # The half-price note on a blueprint card: a boxed, wrapped line that says what to do next.
 func _price_hint(stabilized: bool, discovered: bool, synergy_name: String) -> Control:
@@ -1280,7 +1338,8 @@ func _input(event: InputEvent) -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
-		_close()
+		if is_instance_valid(recovered): close_recovered()
+		else: _close()
 
 # Closing releases the title screen first and fades afterwards. It used to await the fade tween's
 # finished signal before emitting: a tween that is killed never emits it, which left a fully

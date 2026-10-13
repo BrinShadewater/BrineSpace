@@ -84,9 +84,25 @@ func run() -> void:
 			var buy: Button = card.find_child("Buy", true, false)
 			var before := Research.available(meta)
 			check(not buy.disabled and ("%d DATA" % Shop.room_cost(meta, linked)) in buy.text, "A blueprint card offers to buy")
+			# A blueprint not yet bought is a mystery: no name, no picture, no rules.
+			var room_name: String = str(preload("res://scripts/room_database.gd").get_room(linked).display_name)
+			var shown := PackedStringArray()
+			for label in card.find_children("*", "Label", true, false): shown.append(str(label.text))
+			check(not room_name in shown and "SIGNAL OBSCURED" in shown, "A locked blueprint hides the room behind an obscured signal: %s" % ", ".join(shown).left(120))
+			check(card.find_children("*", "TextureRect", true, false).all(func(picture): return picture.custom_minimum_size.y < 100), "A locked blueprint shows no room picture")
 			buy.pressed.emit()
 			for i in range(3): await process_frame
 			check(meta.unlocked_room_ids.has(linked) and Research.available(meta) == before - Shop.room_cost(meta, linked), "Buying from the page spends Archived Data")
+			# The purchase shows the recovered room in full, and Escape dismisses that first.
+			var popup: Control = page.find_child("BlueprintRecovered", true, false)
+			check(popup != null and popup.find_children("*", "Label", true, false).any(func(label): return str(label.text) == room_name), "Buying shows the room that was recovered")
+			var cancel := InputEventAction.new(); cancel.action = "ui_cancel"; cancel.pressed = true
+			page._unhandled_key_input(cancel)
+			for i in range(2): await process_frame
+			check(page.find_child("BlueprintRecovered", true, false) == null and not page.closing, "Escape closes the recovered room, not the page")
+			while page.shop_filling: await process_frame
+			var bought: Control = page.find_child("Blueprint_" + linked, true, false)
+			check(bought != null and bought.find_children("*", "Label", true, false).any(func(label): return str(label.text) == room_name), "A bought blueprint shows its room")
 		else:
 			check(false, "Biomass Digester card is listed")
 		(page.find_child("ProgressionTabs", true, false) as TabBar).current_tab = 2
