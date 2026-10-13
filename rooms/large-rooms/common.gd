@@ -2,7 +2,9 @@ extends RefCounted
 
 const FLOOR_SIZE := 768.0
 const HALF := FLOOR_SIZE * 0.5
-const LOW_DOOR_DEPTH := 28.0
+# Low walls and the doors set into them are as deep as an ordinary room's (owner, October 13).
+const LOW_DOOR_DEPTH := 16.0
+const WALL_DEPTH := 16.0
 const GRATING_ART := "res://rooms/large-rooms/art/service_grating_v1.png"
 const RiserCatalog = preload("res://rooms/whole-room/riser_catalog.gd")
 const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd")
@@ -155,7 +157,7 @@ static func begin(canvas: CanvasItem, room: Dictionary, rect: Rect2, floor_color
 	if flood>0.001:
 		var tint:=Color(0.17,0.43,0.43).lerp(Color(0.025,0.18,0.25),flood)
 		tint.a=lerpf(0.26,0.68,flood)
-		canvas.draw_rect(Rect2(-356,-356,712,712),tint)
+		canvas.draw_rect(Rect2(-384+WALL_DEPTH,-384+WALL_DEPTH,768-2*WALL_DEPTH,768-2*WALL_DEPTH),tint)
 	var raised: bool = bool(room.get("raised_walls", true))
 	_draw_perimeter(canvas, room, wall_style, raised, rotation)
 	var port_open: Array = room.get("port_open", [])
@@ -189,12 +191,12 @@ static func _draw_perimeter(canvas: CanvasItem, room: Dictionary, wall_style: Di
 	for side in ["north", "east", "south", "west"]:
 		if side == "north" and raised: continue
 		var horizontal: bool = side in ["north", "south"]
-		var wall := Rect2(-384, -384 if side == "north" else 356, 768, 28) if horizontal else Rect2(-384 if side == "west" else 356, -384, 28, 768)
+		var wall := Rect2(-384, -384 if side == "north" else 384 - WALL_DEPTH, 768, WALL_DEPTH) if horizontal else Rect2(-384 if side == "west" else 384 - WALL_DEPTH, -384, WALL_DEPTH, 768)
 		WallMaterial.wall(canvas, wall, horizontal, "engineering")
 	if raised: _draw_north_riser(canvas, room, wall_style, rotation)
-	for x in [-384.0,356.0]:
-		for y in [-393.0 if raised else -384.0,356.0]:
-			WallMaterial.cap(canvas,Rect2(x,y,28,28),"engineering")
+	for x in [-384.0, 384.0 - WALL_DEPTH]:
+		for y in [-393.0 if raised else -384.0, 384.0 - WALL_DEPTH]:
+			WallMaterial.cap(canvas,Rect2(x,y,WALL_DEPTH,WALL_DEPTH),"engineering")
 
 static func _draw_north_riser(canvas: CanvasItem, room: Dictionary, wall_style: Dictionary, rotation: int) -> void:
 	var material: String = str(wall_style.get("material",""))
@@ -207,10 +209,10 @@ static func _draw_north_riser(canvas: CanvasItem, room: Dictionary, wall_style: 
 		RiserCatalog.skirt(canvas,material,Rect2(left,-320,384,8))
 	canvas.draw_rect(Rect2(-384,-388,768,76),Color(0.04,0.08,0.09,shade))
 	# A real top surface and two short returns close the raised north wall into the side hulls.
-	WallMaterial.wall(canvas,Rect2(-384,-393,768,20),true,"engineering")
-	for x in [-384.0,356.0]:
-		WallMaterial.wall(canvas,Rect2(x,-380,28,68),false,"engineering")
-		WallMaterial.cap(canvas,Rect2(x,-396,28,16),"engineering")
+	WallMaterial.wall(canvas,Rect2(-384,-393,768,WALL_DEPTH),true,"engineering")
+	for x in [-384.0, 384.0 - WALL_DEPTH]:
+		WallMaterial.wall(canvas,Rect2(x,-380,WALL_DEPTH,68),false,"engineering")
+		WallMaterial.cap(canvas,Rect2(x,-393,WALL_DEPTH,WALL_DEPTH),"engineering")
 	if art != "":
 		var axis: float = north_art_axis(room, wall_style, rotation)
 		sprite(canvas,art,Rect2(axis-102,-381,204,62))
@@ -243,6 +245,11 @@ static func panel(canvas: CanvasItem, rect: Rect2, body: Color, rim: Color) -> v
 static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String, floor_color: Color, raised: bool, style: String, open_amount: float) -> void:
 	if side.is_empty(): return
 	var vertical := side == "west" or side == "east"
+	if not raised:
+		# The port sits in the middle of the wall it passes through.
+		var edge := 384.0 - WALL_DEPTH * 0.5
+		if vertical: center.x = edge if side == "east" else -edge
+		else: center.y = edge if side == "south" else -edge
 	var passage_size := Vector2(LOW_DOOR_DEPTH if vertical else 72,72 if vertical else LOW_DOOR_DEPTH)
 	if raised:
 		canvas.draw_rect(Rect2(center.x-40,-390,80,78),floor_color)
@@ -261,9 +268,9 @@ static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String
 		skin.low_leaf(canvas,dest,left,vertical,style)
 	skin.progress = 0.0
 	if vertical:
-		for y in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(-13,y),Vector2(26,12)),"engineering")
+		for y in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(-WALL_DEPTH*0.5,y),Vector2(WALL_DEPTH,12)),"engineering")
 	else:
-		for x in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(x,-13),Vector2(12,26)),"engineering")
+		for x in [-47.0, 35.0]: WallMaterial.cap(canvas,Rect2(center + Vector2(x,-WALL_DEPTH*0.5),Vector2(12,WALL_DEPTH)),"engineering")
 
 static func _draw_ocean_face(canvas: CanvasItem, side: String, open: bool, raised: bool, bay_gate: bool) -> void:
 	var center := Vector2.ZERO

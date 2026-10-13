@@ -1,3 +1,31 @@
+## Owner playtest report: large-room doors and walls, Blueprints tab freeze - October 13, 2026
+
+The owner played from source (reports say unpackaged-source, debug template), not the packaged
+candidate, and filed `brinespace-report-20261013-102914` ("Hydroponics Farm is using an older
+version of the doors on the east, west and south sides. Also the room walls seem not to match
+the other room walls exactly"); an automatic report at 10:09 recorded one 665 ms frame on the
+title screen. Cards "looked good".
+
+- Doors (388978bf): the grid stamps a door from the legacy door sheet on every port of a room
+  that does not own its door frames. Large rooms draw their own port doors in
+  `rooms/large-rooms/common.gd` but were not in that rule. `_owns_port_doors` in
+  `scripts/grid_canvas.gd` adds them in the three places that decide it.
+- Walls (`rooms/large-rooms/common.gd`): large rooms keep their wall art; every outer edge is now
+  16 px deep like an ordinary room (`WALL_DEPTH`): the three low walls, the riser's side returns
+  and top edge, the corner caps and the port doors (`LOW_DOOR_DEPTH` 28 to 16). The riser's two
+  top corner caps sat 3 px above the top edge and are level with it now. Rejected by the owner
+  on sight: the same edges drawn in the borrowed department's painted cap art (darker); a copy
+  of that attempt is not kept in the repository. Moonbay's inner bay enclosure and lock chamber
+  keep their own frames.
+- Blueprints tab (9604bcd3): the tab put all 74 blueprint cards on screen in one frame, 650 ms
+  on a repeat visit and 984 ms on the first. `_fill_blueprints` in `scripts/title_archive.gd`
+  adds the first two rows at once and four cards a frame after that; worst frame 90 ms repeat,
+  142 ms first. The Crew tab still has a 110-160 ms frame.
+Checked: captures of all four large rooms beside ordinary rooms (`output/large-room-*.png`), and
+the large-room, Moonbay, door, port, riser and Studio tests in both lanes, including the legacy
+door plan comparison (480 pairs) and the Moonbay wall comparison (580 pairs).
+The Windows candidate brinespace-42f32cba40af64c0 predates all three changes.
+
 ## Release: brinespace-42f32cba40af64c0, 40 starts and the packaged benchmark - October 13, 2026
 
 Start check (`C:/bs-release-20261013/start-check/`): 40 real Continue starts on the QA copy, 20
