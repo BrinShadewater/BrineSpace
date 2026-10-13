@@ -1,3 +1,48 @@
+## Owner playtest reports of 13:27 to 13:40: code items - October 13, 2026
+
+Eight reports filed from source. The art items went to Codex
+(`docs/CODEX_ART_HANDOFF_2026-10-13.md`). Code items, in the order done:
+
+- Journal crew row (94a183c3): the core architect's row shows their own portrait.
+  Open, owner's call: the roster reads 2 of 4 berths because building a Crew Hab adds an
+  unnamed survivor.
+- Marsh held by River and Margot (7a7066e0): his east start clip (`_move_start` in
+  `scripts/marsh_ground_motion.gd`) began again on every blocked attempt, so blocked time
+  counted one frame in seven and the three second give-up and the detour search almost never
+  ran. A blocked first step now skips the clip. On the report's save he waited 35 s and more;
+  now he is moving again in 4 s. Test: `test_marsh_blocked_wait` (Bill and Marsh, four
+  headings).
+- The 3.4 s frame (f612f57d) was the Room Layout Studio opening from the title screen, not the
+  return to the title. With the owner's saved cast (seven members shown) the Studio decoded
+  every member's walk and idle PNGs before it appeared. The Studio's cast
+  (`scripts/room_scale_cast.gd`, `lazy_art` in `scripts/room_scale_preview.gd`) now decodes a
+  frame when it is first drawn. Scratch copy of the owner's layouts and settings: 3.2 s to
+  0.76 s first opening, 2.6 s to 0.32 s reopening; no frame over 90 ms after it. Test:
+  `test_studio_cast_lazy_art`.
+- Meta Progression (c55e8a60): a blueprint not yet bought shows its department and rarity
+  behind the Codex's "signal obscured" card (owner's choice); buying one opens the recovered
+  room over the page until Continue or Escape. `locked_title`, `locked_clue`,
+  `show_recovered` in `scripts/title_archive.gd`.
+- Marsh's head through the airlock wall (aa587633): not draw order. A pressure chamber lying
+  east-west is 112 units deep and a standing crew member is 65; on the centre line the head
+  crossed the far wall and its rails drew over face and cargo. All crew were affected.
+  `chamber_stand` in `scripts/crew_expedition.gd` puts them 38 units nearer the south wall in
+  that orientation. Test: `test_airlock_chamber_stand`. Before/after:
+  `output/owner-reports-2026-10-13/marsh-airlock-compare.png`.
+- Card title "slightly fragmented" (13:29): not fixed, owner's call. The report shows a thin
+  bar beside the Q of a hovered card; hovering enlarges the card 5 percent, which resamples
+  its text. The bar did not reproduce in three captures at 2560x1440 (the font atlas differs
+  from session to session). Lifting the hovered card without enlarging it, on whole screen
+  pixels, keeps the text as sharp as at rest:
+  `output/owner-reports-2026-10-13/hover-title-compare.png`.
+
+Checks: the tests named above; 12 windowed and 21 headless Marsh, passage and spacing tests
+(`test_carry_turn_handoff` still reports the 12 Marsh swim-turn art mismatches);
+`test_studio_character_scale` windowed; `test_meta_shop`, `test_ui_live_components`;
+220 tests mentioning the airlock or expeditions headless (5 fail, the same 5 as October 12)
+and 7 windowed. `test_hull_ui` fails as it did on October 12. The Windows candidate
+`brinespace-42f32cba40af64c0` predates all of these.
+
 ## Owner playtest report: large-room doors and walls, Blueprints tab freeze - October 13, 2026
 
 The owner played from source (reports say unpackaged-source, debug template), not the packaged

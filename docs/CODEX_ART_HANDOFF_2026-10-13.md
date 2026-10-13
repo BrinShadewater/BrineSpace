@@ -108,15 +108,19 @@ Claude will grey the locked cards in code first and show the owner. If the owner
 painted silhouettes or a "signal obscured" treatment per room, that becomes art work here.
 Do not start this until asked.
 
-## What Claude is doing from the same reports (do not duplicate)
+## What Claude did from the same reports (do not duplicate)
 
-- 13:27 Marsh's head showing through a wall (draw order).
-- 13:29 card title text looking fragmented (text rendering on the fanned cards).
-- 13:31 Marsh stuck on Margot and River (crew passage).
-- 13:35 Journal crew roster: says 2 of 4 berths, shows Bill's portrait with Marsh's name.
-- 13:39 Meta Progression: the page jumped to the top after a purchase (fixed, 3270479f);
-  a popup for the room just unlocked; greyed locked rooms.
-- 13:40 a 3.4 s frame on returning to the title screen.
+Details are in `docs/CURRENT_STATUS.md`, October 13.
+
+- 13:27 Marsh's head through the airlock wall: fixed in code (aa587633). Crew stand nearer
+  the south wall of a chamber that lies east-west. No art needed.
+- 13:29 card title text: open, waiting on the owner's choice of hover style.
+- 13:31 Marsh stuck on Margot and River: fixed (7a7066e0).
+- 13:35 Journal crew roster: portrait fixed (94a183c3); the berth count is the owner's call.
+- 13:39 Meta Progression: scroll jump fixed (3270479f); locked blueprints use the Codex's
+  "signal obscured" card and a purchase shows the recovered room (c55e8a60). Item 6 above
+  stays optional and unrequested.
+- 13:40 the 3.4 s frame was the Room Layout Studio opening: fixed (f612f57d).
 
 ## When you hand back
 
