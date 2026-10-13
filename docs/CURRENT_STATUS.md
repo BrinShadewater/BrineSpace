@@ -1,3 +1,30 @@
+## Exit crash diagnosed and guarded; large rooms in the riser catalog - October 13, 2026
+
+Exit crash (3094c2b5). A `WorkerThreadPool` task still pending when the process exits crashes it
+with 0xC0000005. Proven both ways on two fixtures: finishing the pending jobs before `quit()`
+gives exit 0 every time, leaving them crashes every time. The station already avoids it:
+`main._exit_tree` finishes drone decodes (`drone_dock.finish_pending_jobs`) and
+`session_art_cache.release` clears the card image queue when the last grid leaves. The 29
+crashing fixtures skip that teardown: the Bill land-to-water set runs
+`character/bill-land-water-*/fixture_main.gd`, a frozen copy of main that predates
+`session_art_cache.retain`, and test_drone_hatch_handoff uses a bare grid. An ordinary quit from
+a running station exited cleanly nine times (quit, close request, free then quit; jobs complete
+and jobs still running).
+
+Guard: `hand_image_preparation.gd` and `drone_animation.gd` each connect one handler to the
+root's `tree_exiting` on their first job and finish what is pending (`hook_exit`). `main.gd`
+unchanged. After: all 29 exit normally, 25 pass, and the four
+`test_bill_land_water_fresh_checkpoint_{east_v1,east_v2,north_v1,west_v1}` fail 4-5 of their own
+checks. Not given the same hook: `room_asset_library.image_jobs`, `image_prefetch.tasks` and
+`crew_storage/worker_batch` jobs; no crash was seen from them.
+
+Riser catalog (`rooms/whole-room/riser_catalog.gd`): the four large rooms were in no group, so
+`family()` answered "logistics" for them. In play they draw their wall from `WALL_STYLE`, so
+nothing looked wrong; a lookup by room id (Studio, tools) disagreed. Each now sits in the
+department of the material it borrows: hydroponics_farm biology, storage_depot logistics,
+moonbay communications, tidal_power_plant engineering. test_riser_departments passes
+(47 explicit mappings).
+
 ## Tests: first full native-lane sweep; 73 real failures remain there - October 13, 2026
 
 Native lane, 545 tests, four workers, second monitor, muted, one scratch APPDATA per worker

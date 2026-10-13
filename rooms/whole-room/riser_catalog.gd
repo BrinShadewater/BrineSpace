@@ -3,21 +3,27 @@ extends RefCounted
 static var registrations: Dictionary={}
 static var textures: Dictionary={}
 # The Sept 27 expansion rooms (second part of each list) follow the same by-function rule.
+# The four large rooms (last in their lists) draw their own wall from WALL_STYLE; each sits in
+# the department of the material it borrows, so a lookup by room id agrees with what is drawn.
 const GROUPS={
 	"biology":["biomass_digester","mycelium_nursery","hydroponics_bay","biodome",
-		"pressure_garden","habitat_recovery","seed_vault"],
+		"pressure_garden","habitat_recovery","seed_vault",
+		"hydroponics_farm"],
 	"clinical":["life_support","cryo_chamber","clone_lab","med_bay","med_center","med_office",
 		"atmospheric_scrubber","water_reclamation"],
 	"habitat":["galley","observation_room","crew_hab","crew_lounge",
 		"aquarium","art_studio","bathhouse","botanical_conservatory","crew_cinema","crew_fitness","games_room","memorial_room","music_room","reading_room","tea_lounge"],
 	"engineering":["current_turbine","heat_recovery","construction_drone_bay","solar_array","reactor","battery_array","mining_drone_bay","tidal_condenser","ore_refinery","pressure_control","maintenance_bay","shield_generator",
-		"bulkhead_control","damage_control","battery_service_bay","droid_workshop","drone_repair_depot","survey_probe_bay"],
+		"bulkhead_control","damage_control","battery_service_bay","droid_workshop","drone_repair_depot","survey_probe_bay",
+		"tidal_power_plant"],
 	"research":["gravity_loom","research_lab","anomaly_lab","bio_lab",
 		"echo_chamber","sensor_calibration_lab"],
 	"communications":["data_archive","command_center","listening_post","holographic_core","radio_lab",
-		"stillwater_observatory","sonar_mapping"],
+		"stillwater_observatory","sonar_mapping",
+		"moonbay"],
 	"logistics":["cold_store","salvage_workshop","salvage_drone_bay","storage_bay","corridor","corner","tee_corridor",
-		"cargo_dispatch"],
+		"cargo_dispatch",
+		"storage_depot"],
 	"containment":["quarantine_cell","xeno_lab","isolation_vault",
 		"fold_chamber"]}
 
