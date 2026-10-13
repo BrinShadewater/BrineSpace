@@ -4561,7 +4561,7 @@ func _on_card_hovered(id: String, card: Control) -> void:
 	if Preferences.reduced_motion:
 		_pose_card(card, rest_position, 0.0, Vector2.ONE)
 	else:
-		_pose_card(card, rest_position + Vector2(0, -DraftCard.HOVER_LIFT), 0.0, Vector2.ONE * DraftCard.HOVER_SCALE)
+		_pose_card(card, DraftCard.hover_position(card, rest_position), 0.0, Vector2.ONE)
 	var color: Color = card.get_meta("category_color", UI_ACCENT_BRIGHT)
 	var affordable: bool = card.get_meta("affordable", true)
 	# Hover no longer borrows the cyan "selected" frame (owner playtest, Sept 30); only a chosen card has it.

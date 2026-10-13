@@ -109,7 +109,7 @@ func run() -> void:
 	Preferences.reduced_motion = false
 	game._on_card_hovered(row_card.get_meta("card_id"), row_card)
 	await create_timer(0.25).timeout
-	check(row_card.position.y < row_card.get_meta("rest_position").y - 10 and row_card.scale.x > 1.0, "A hovered card pops up")
+	check(row_card.position.y < row_card.get_meta("rest_position").y - 10 and row_card.scale == Vector2.ONE, "A hovered card lifts without growing, so its text is not resampled")
 	game._on_card_unhovered(row_card.get_meta("card_id"), row_card)
 	await create_timer(0.25).timeout
 	check(row_card.position == row_card.get_meta("rest_position") and row_card.scale == Vector2.ONE, "It settles back when the pointer leaves")

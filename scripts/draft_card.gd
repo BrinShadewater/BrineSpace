@@ -21,7 +21,15 @@ const FAN_STEP := 150.0
 const FAN_DEGREES := 7.0
 const FAN_DROP := 10.0
 const HOVER_LIFT := 22.0
-const HOVER_SCALE := 1.05
+
+# A hovered card lifts without growing, and lands on whole screen pixels. Enlarging it 5 percent
+# resampled its text, which read as fragmented (owner report and choice, October 13, 2026).
+static func hover_position(card: Control, rest: Vector2) -> Vector2:
+	var at := rest + Vector2(0, -HOVER_LIFT)
+	var parent := card.get_parent() as CanvasItem
+	if parent == null or not card.is_inside_tree(): return at
+	var to_screen: Transform2D = card.get_viewport().get_final_transform() * parent.get_global_transform_with_canvas()
+	return to_screen.affine_inverse() * (to_screen * at).round()
 const ResourceIcons = preload("res://scripts/resource_icons.gd")
 
 # The card look (owner playtest, Sept 28): a deeper, slightly desaturated frame colour so a
