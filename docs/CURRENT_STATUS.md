@@ -12,7 +12,7 @@ owner folder fingerprint unchanged (2,938 files) after each. Evidence under
   verified. Strict comparison of the restored checkpoint: no differences. Loose differences are
   camera centre and scroll only. No quit stuck; all four processes exit 0.
 - Soak, 30 minutes on the reported 12-room save, cycles 326 to 533, speeds 1x/2x/4x by thirds:
-  107,912 frames, mean 16.67 ms every minute, p99 at most 18.39 ms, two frames over 50 ms
+  107,939 frames, mean 16.67 ms every minute, p99 at most 18.39 ms, two frames over 50 ms
   (96.2 ms in minute 1, 62.8 ms in minute 29), none over 100 ms, 0 errors, 0 automatic reports,
   0 missing art, 0 orphan nodes. Private memory 2,536-2,562 MB, flat; textures 1,569.7 MB
   constant; handles 605 throughout. Object count rose from 32,189 to 34,566 (about 82 a minute),
