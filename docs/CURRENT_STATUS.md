@@ -9,8 +9,9 @@ earlier candidate did not recur (now 0 in 100 starts across candidates since).
 Benchmark (`tools/run_release_benchmark.py --release-exe`, 1920x1080, one run, three passes of
 each workload; unsynchronised frame times, 16.67 ms target):
 - Fresh station: 24 of 24 phases pass. Means 5.0-6.5 ms. Save's worst frame 78-88 ms.
-- Reported 12-room save: 20 of 24 pass. Means 10.3-15.2 ms; the lighting workload's p95 is
-  18.2-18.8 ms in all three passes and is what misses. Texture memory 1,559.7 MB.
+- Reported 12-room save: 20 of 24 pass. Means 10.3-15.2 ms; the summary gives only the count, and by p95
+  against 16.67 ms the four are lighting in all three passes (18.2-18.8 ms) and zoom in the
+  first (17.4 ms). Texture memory 1,559.7 MB.
 - Stress station (`mixed_large`): the default run is invalid because its save workload cannot
   write a checkpoint ("Bill carry sequence", the known fixture limitation). Rerun without save
   (`benchmark-stress-nosave/`): 0 of 21 phases pass, idle mean 25.5-26.5 ms, worst frame
