@@ -14,6 +14,7 @@ func _init() -> void:
 	for index in range(CAST.size()):
 		var actor = Actor.new()
 		actor.cast_index = index
+		actor.lazy_art = true
 		# Spread the starting spots so members do not begin on top of one another.
 		actor.foot = Vector2((index % 3 - 1) * 70, (index / 3 - 1) * 70)
 		actors.append(actor)

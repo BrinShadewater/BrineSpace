@@ -50,12 +50,18 @@ func set_cast(which: int) -> void:
 	signature.clear()
 	load_art()
 
+## The Studio's cast decodes a frame when it is first drawn. Decoding a member's whole set
+## on loading costs 150-600 ms each and held the Studio closed for seconds (owner report,
+## October 13, 2026). Tools that read the player's frames directly leave this off.
+var lazy_art := false
+
 ## Loads idle/walk only for standing and walking (cheap); running, swimming and
 ## interacting load the member's full set once.
 func load_art() -> void:
 	var member: Dictionary=CAST[cast_index]
 	var want_full: bool=mode>=RUNNING
 	if not player.frames.is_empty() and (full_art or not want_full): return
+	if lazy_art and finish_preview_manifest.is_empty(): player.begin_texture_batch()
 	if member.get("companion",false):
 		for manifest in member.packs:
 			if FileAccess.file_exists(manifest): player.load_manifest(manifest,true)
@@ -207,6 +213,7 @@ func members() -> Array:
 		var state:=locomotion_state() if moving else idle_state()
 		texture=player.frame(state,direction,clock,foot/384.0)
 		if texture==null: texture=player.frame("walk" if moving else "idle",direction,clock,foot/384.0)
+	if texture!=null: player.materialize_frame(texture)
 	return [] if texture==null else [{"position":foot,"texture":texture}]
 
 func has_family(family: String) -> bool:
