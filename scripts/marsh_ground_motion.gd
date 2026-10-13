@@ -36,6 +36,10 @@ func _move_start(delta: float) -> void:
 	var eastward: bool=not path.is_empty() and (path[0]-foot).x>absf((path[0]-foot).y)
 	if not eastward or movement_medium!="dry" or not stage.is_empty():
 		start_elapsed=-1;pose_elapsed=-1
+	elif state!="walk" and not crew_clear(foot,foot.move_toward(path[0],delta*movement_rate()*flood_speed)):
+		# A colleague stands in the way. The start clip would begin again on every
+		# attempt and the wait would count one frame in seven; wait in real time.
+		start_elapsed=-1;pose_elapsed=-1
 	elif state!="walk":
 		start_elapsed=0.0
 		direction="east"
