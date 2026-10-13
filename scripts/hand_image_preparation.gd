@@ -9,6 +9,15 @@ static var hits:=0
 static var unused:=0
 static var peak_bytes:=0
 static var failures:=0
+# A worker task still pending when the process exits crashes it (access violation).
+# The station clears these when its art cache is released; this covers every other owner.
+static var exit_hooked:=false
+static func hook_exit() -> void:
+	if exit_hooked:return
+	var tree:=Engine.get_main_loop() as SceneTree
+	if tree==null:return
+	exit_hooked=true
+	tree.root.tree_exiting.connect(clear)
 static func maintain(wanted:Array) -> void:
 	for path in jobs.keys():
 		if path not in wanted and WorkerThreadPool.is_task_completed(jobs[path].task):discard(path)
@@ -24,6 +33,7 @@ static func maintain(wanted:Array) -> void:
 			var image:=Image.new()
 			if image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))==OK:result.image=image)
 		jobs[path]={"task":task,"result":result,"bytes":bytes}
+		hook_exit()
 		reserved_bytes+=bytes;submitted+=1;peak_bytes=maxi(peak_bytes,reserved_bytes)
 static func take(path:String) -> Image:
 	if not enabled or not jobs.has(path) or not WorkerThreadPool.is_task_completed(jobs[path].task):return null

@@ -114,6 +114,21 @@ static func request_texture(path:String) -> void:
 			result.image=image
 			result.invisible=image.is_invisible())
 	image_jobs[path]={"task":task,"result":result}
+	hook_exit()
+
+# A worker task still pending when the process exits crashes it (access violation).
+# The station finishes these in main._exit_tree; this covers a grid used without one.
+static var exit_hooked:=false
+static func hook_exit() -> void:
+	if exit_hooked:return
+	var tree:=Engine.get_main_loop() as SceneTree
+	if tree==null:return
+	exit_hooked=true
+	tree.root.tree_exiting.connect(finish_pending_jobs)
+static func finish_pending_jobs() -> void:
+	for path in image_jobs.keys():
+		WorkerThreadPool.wait_for_task_completion(image_jobs[path].task)
+	image_jobs.clear()
 
 static func finish_texture(path:String) -> bool:
 	if textures.has(path) or restore_live(path): return true
