@@ -1,3 +1,31 @@
+## Tests: full headless sweep, runner stall guard, 81 tests moved to the native lane - October 12, 2026
+
+Runner (`tools/run_tests.py`, c2761de1): a script error aborts a fixture's `run()` before its
+`quit()`, leaving the process idle until the timeout. Once a `SCRIPT ERROR` has been printed and
+nothing more arrives for 10 s, the test is stopped and reported `FAIL(hung)`. Verdicts are
+unchanged (a script error was already a failure); a hung test costs about 15 s. The first sweep
+without it took two hours for 105 of 456 tests.
+
+Sweep of the headless lane (456 tests, six parallel workers, one scratch APPDATA each, about ten
+minutes): 279 pass, 33 skip themselves as native, 144 fail (82 hung, 62 exited). Owner folder
+unchanged. All 144 were then rerun with real windows on the second monitor:
+
+- 65 pass with a window.
+- 16 crashed headless on a missing image and run to a verdict with a window, still failing.
+- 63 fail both ways with no missing-image crash.
+
+Cause of the first two groups: `ImageTexture.get_image()` returns null under the headless dummy
+renderer. Crew-storage frames decode their own pixels, so loader frames work headless, but a
+test that injects a candidate manifest after the loader gets plain textures and crashes on
+`get_image().get_data()`. Those 81 tests now have `lane: native` overrides with the reason in
+`tests/index.json` (lanes: headless 375, native 529, skip 16). Checked through the runner: three
+of them pass with `--native --screen 2` and report SKIP-NATIVE headless.
+
+Still failing after this, by kind (lists in `output/full-suite-2026-10-12/`): {'Bill selected-art tests': 24, 'Bill candidate-art tests': 18, 'Bill other': 5, 'other crew art and animation': 7, 'not crew art': 9}.
+The 16 that fail with a window are Bill meal, drink, inspect and seated candidate tests.
+Not crew art: test_discovery_progression, test_hand_backdrop, test_inspector_refresh, test_large_room_art, test_learning_ui, test_research_tree, test_room_flooding, test_room_lock, test_staged_restore.
+None of these were traced. The native lane (448 tests before this change) was not run.
+
 ## Crew tests: three art-baseline tests re-baselined; 11 of the 12 pass - October 12, 2026
 
 Owner decision: re-baseline test_crew_walk_v2, test_bill_complete_pack and

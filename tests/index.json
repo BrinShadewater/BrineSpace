@@ -981,6 +981,330 @@
     "test_synergy_geometry": {
       "lane": "native",
       "reason": "Pixel readback and frame_post_draw require a real display."
+    },
+    "test_bill_carry_cardinal_snapshot_v3": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_carry_cardinal_stow_v2": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_helmet_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_helmet_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_helmet_north_lateral_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_helmet_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_helmet_south_lateral_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_helmet_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_lowered_mortality_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_mortality_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_north_lateral_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_south_lateral_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_death_ground_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_drink_entry_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_drink_entry_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_drink_entry_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_drink_entry_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_floor_case_finish_plan_v1": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_floor_case_release_v1": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_inspect_entry_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_inspect_entry_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_inspect_entry_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_inspect_entry_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_meal_entry_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_meal_entry_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_meal_entry_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_meal_entry_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_meal_north_family_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_meal_south_family_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_meal_west_family_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_reading_entry_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_reading_entry_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_reading_entry_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_reading_entry_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_reading_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_recover_air_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_recover_air_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_recover_air_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_recover_air_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_helmet_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_helmet_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_helmet_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_helmet_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_rest_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_run_east_candidate": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_seated_idle_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_seated_loops_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_seated_loops_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_seated_loops_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_seated_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_seated_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_seated_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_work_pickup_phase_boundaries": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_veld_recover_air_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_veld_recover_air_family_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_veld_recover_air_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_veld_recover_air_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_veld_recover_air_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_veld_work_pickup_phase_boundaries": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; failed headless and passed with a window on 2026-10-12."
+    },
+    "test_bill_carry_normal_snapshot_v1": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_carry_source_versions_v2": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_drink_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_drink_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_drink_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_drink_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_inspect_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_inspect_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_inspect_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_inspect_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_meal_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_meal_east_family_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_meal_north_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_meal_south_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_meal_west_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
+    },
+    "test_bill_seated_east_candidates": {
+      "lane": "native",
+      "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-12 and runs to a verdict with a window (still failing its own checks)."
     }
   }
 }
