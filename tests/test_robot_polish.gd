@@ -25,7 +25,8 @@ func run():
 			for key in player.frames:
 				for texture in player.frames[key]:
 					check(texture.get_size()==Vector2(184,184),"Dense canvas "+id+key)
-					check(texture.get_meta("crew_standing_height")==148.0,"World calibration "+id+key)
+					# Josh and River draw at half crew size since September 29 (commit 5244ac53).
+					check(texture.get_meta("crew_standing_height")==296.0,"World calibration "+id+key)
 		for d in DIRS:
 			if id=="josh":
 				check(actor.poses.frames["powerdown-"+d].size()==1,"Shutdown holds resting pose")
