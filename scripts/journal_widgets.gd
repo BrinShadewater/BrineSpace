@@ -270,7 +270,9 @@ static func _companion_row(game, id: String) -> Control:
 
 static func _member_row(game, member: Dictionary) -> Control:
 	var origin_text := "Awakened in BRINE Core." if member.id == "core_architect" else ("Awakened in charging chamber %s." if member.get("architect_id", "") == "marsh" else "Recovered from cryo ward %s.") % member.origin
-	var id: String = "bill" if member.id == "core_architect" else str(member.get("architect_id",""))
+	# Whoever was chosen for the loop wakes in the core; only a record without an id means Bill.
+	var id: String = str(member.get("architect_id",""))
+	if id.is_empty() and member.id == "core_architect": id = "bill"
 	var card := Widgets.portrait_row(str(member.name),origin_text,Architects.selection_portrait(id))
 	card.get_child(0).get_node("Portrait").visible = Architects.SELECTION_PORTRAITS.has(id)
 	var row: HBoxContainer = card.get_child(0)
