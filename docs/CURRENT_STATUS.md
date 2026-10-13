@@ -1,3 +1,31 @@
+## Release: Windows candidate brinespace-3b3d82da868edf1e - October 13, 2026
+
+Rebuilt from commit 96ac6833 through the same stages, into `C:/bs-release-20261013b`. It
+replaces `brinespace-42f32cba40af64c0` as the current candidate and holds every fix from the
+October 13 reports, plus two owner decisions made after them:
+
+- Hand (b4c0d1f0): a hovered card lifts without growing and lands on whole screen pixels
+  (`DraftCard.hover_position`). The 5 percent enlargement resampled the card's text.
+- Journal (96ac6833): survivors who arrive with a Crew Hab or the recovery systems are listed
+  by name (`survivor_name` in `scripts/journal_widgets.gd`), picked from sixteen placeholder
+  names by the loop's site seed. Nothing is added to the save.
+
+Stages:
+- Freeze: 36,274 runtime files, 3.59 GB, 57,820 files copied, every copy re-verified.
+- Full import: exit 0; the same 12 error lines as before (four non-shipped review PNGs).
+- Pre-export checks (test_release_manifest.py, test_release_assert_safety.py,
+  test_macos_export.py, export isolation, mac preflight): pass.
+- Export: `windows/BrineSpace.exe` 109 MB (SHA-256 7208c3a8..., unchanged, same template),
+  `BrineSpace.pck` 3.63 GB (91cc5c28...), 36,273 files in the build record.
+- Pack audit: checked=35790 missing=0 changed=0 remapped=0 unexpected=0.
+- Smoke in the real executable (debug=false, second monitor, muted, isolated profile): New Game,
+  transmission Continue, running station and F8 report, 0 failures. Screenshot
+  `output/candidate-3b3d82da-new-game-2026-10-13.png`.
+- Owner folder fingerprint unchanged at every stage (2,948 files).
+
+Not rerun on this candidate: Continue timing, save/quit/relaunch, the 30-minute soak, the
+40-start check and the benchmark. Their last results are for 42f32cba.
+
 ## Owner playtest reports of 13:27 to 13:40: code items - October 13, 2026
 
 Eight reports filed from source. The art items went to Codex
