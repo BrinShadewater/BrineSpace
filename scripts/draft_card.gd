@@ -9,6 +9,13 @@ const RoomDatabase = preload("res://scripts/room_database.gd")
 const CardArt = preload("res://scripts/card_art.gd")
 
 const CARD_SIZE := Vector2(200, 284)
+# Every card is CARD_SIZE (owner, October 13). A card whose rules need more height first gives
+# up some of its art window, down to ART_MIN_HEIGHT; after that, or when a line is too wide,
+# the rules text steps down a point at a time, at most FIT_STEPS times.
+const RULES_FONT_SIZE := 14
+const FIT_STEPS := 4
+const ART_HEIGHT := 100.0
+const ART_MIN_HEIGHT := 76.0
 const ROW_SLOT := Vector2(212, 330)
 const FAN_STEP := 150.0
 const FAN_DEGREES := 7.0
@@ -169,7 +176,8 @@ static func build(game, id: String, preview := false) -> PanelContainer:
 	body.add_child(_ignore(title))
 
 	var art_frame := PanelContainer.new()
-	art_frame.custom_minimum_size = Vector2(0, 100)
+	art_frame.custom_minimum_size = Vector2(0, ART_HEIGHT)
+	card.set_meta("art_frame", art_frame)
 	art_frame.add_theme_stylebox_override("panel", _box(Color(0, 0, 0, 0), muted(category_color), 1, 2, 2))
 	body.add_child(_ignore(art_frame))
 	var art_clip := Control.new()
@@ -217,17 +225,22 @@ static func build(game, id: String, preview := false) -> PanelContainer:
 	var rules_box := VBoxContainer.new()
 	rules_box.add_theme_constant_override("separation", 2)
 	rules.add_child(_ignore(rules_box))
+	var fit_text: Array = []
+	card.set_meta("fit_text", fit_text)
 	if not cost.is_empty():
 		var build_row := HBoxContainer.new()
 		build_row.add_theme_constant_override("separation", 4)
 		var build_label := Label.new()
 		build_label.text = "BUILD"
-		build_label.add_theme_font_size_override("font_size", 14)
+		build_label.add_theme_font_size_override("font_size", RULES_FONT_SIZE)
 		build_label.add_theme_color_override("font_color", Color("#8fa3ae"))
 		build_row.add_child(_ignore(build_label))
+		fit_text.append(build_label)
 		for key in cost:
 			var enough: bool = preview or str(key) == "power" or int(game.resources.get(key, 0)) >= int(cost[key])
-			build_row.add_child(_ignore(_cost_gem(game, str(key), int(cost[key]), enough)))
+			var gem := _cost_gem(game, str(key), int(cost[key]), enough)
+			build_row.add_child(_ignore(gem))
+			fit_text.append(gem)
 		rules_box.add_child(_ignore(build_row))
 	for line in rule_lines(room):
 		var entry := RichTextLabel.new()
@@ -236,9 +249,10 @@ static func build(game, id: String, preview := false) -> PanelContainer:
 		entry.scroll_active = false
 		entry.autowrap_mode = TextServer.AUTOWRAP_OFF
 		entry.text = line
-		entry.add_theme_font_size_override("normal_font_size", 14)
+		entry.add_theme_font_size_override("normal_font_size", RULES_FONT_SIZE)
 		entry.add_theme_color_override("default_color", Color("#a9bcc4"))
 		rules_box.add_child(_ignore(entry))
+		fit_text.append(entry)
 	var note := short_note(room)
 	if not note.is_empty():
 		var note_label := Label.new()
@@ -246,10 +260,12 @@ static func build(game, id: String, preview := false) -> PanelContainer:
 		note_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		note_label.max_lines_visible = 2
 		note_label.clip_text = true
-		note_label.custom_minimum_size = Vector2(170, 40)
-		note_label.add_theme_font_size_override("font_size", 14)
+		note_label.custom_minimum_size = Vector2(164, 40)
+		note_label.add_theme_font_size_override("font_size", RULES_FONT_SIZE)
 		note_label.add_theme_color_override("font_color", Color("#8fa6b1"))
+		note_label.set_meta("two_line_note", true)
 		rules_box.add_child(_ignore(note_label))
+		fit_text.append(note_label)
 	if not affordable:
 		var hint := Label.new()
 		hint.text = "SHORT: " + game._format_cost(game._missing_cost(cost))
@@ -274,7 +290,25 @@ static func _cost_gem(game, resource: String, amount: int, enough: bool) -> Cont
 	gem.add_theme_stylebox_override("normal", _box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 3))
 	return gem
 
-# Container text determines the tallest card; the whole hand shares that size.
+# Bring a card that needs more than CARD_SIZE one step closer to fitting.
+static func _shrink_to_fit(card: Control) -> bool:
+	var need := card.get_combined_minimum_size()
+	if need.x <= CARD_SIZE.x + 0.5 and need.y <= CARD_SIZE.y + 0.5: return false
+	var art_frame: Control = card.get_meta("art_frame", null)
+	if need.x <= CARD_SIZE.x + 0.5 and is_instance_valid(art_frame) and art_frame.custom_minimum_size.y > ART_MIN_HEIGHT:
+		art_frame.custom_minimum_size.y = maxf(ART_MIN_HEIGHT, art_frame.custom_minimum_size.y - ceilf(need.y - CARD_SIZE.y))
+		return true
+	var step: int = card.get_meta("fit_step", 0)
+	if step >= FIT_STEPS: return false
+	step += 1
+	card.set_meta("fit_step", step)
+	for control in card.get_meta("fit_text", []):
+		if not is_instance_valid(control): continue
+		control.add_theme_font_size_override("normal_font_size" if control is RichTextLabel else "font_size", RULES_FONT_SIZE - step)
+		if control.has_meta("two_line_note"): control.custom_minimum_size.y = 40.0 - 3.0 * step
+	return true
+
+# Every card in the hand is CARD_SIZE; text that needs more room is stepped down first.
 static func _fit_card(card: Control) -> void:
 	if not card.is_inside_tree() or card.is_queued_for_deletion(): return
 	_sync_hand_size.call_deferred(card.get_instance_id())
@@ -292,6 +326,13 @@ static func _sync_hand_size(card_id: int) -> void:
 			for child in slot.get_children():
 				if child.has_meta("card_id"): cards.append(child)
 	if cards.is_empty(): cards.append(card)
+	var shrunk := false
+	for item in cards:
+		if _shrink_to_fit(item): shrunk = true
+	if shrunk:
+		# Measure again once the smaller text has been laid out.
+		_sync_hand_size.call_deferred(card_id)
+		return
 	var extent:=CARD_SIZE
 	for item in cards: extent=extent.max(item.get_combined_minimum_size())
 	for item in cards:
