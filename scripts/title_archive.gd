@@ -1070,6 +1070,8 @@ func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 func _blueprint_shop() -> void:
 	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Discover a synergy that uses a room, then keep it running until it stabilizes: that room's blueprint costs half.", 17))
 	var cards := _shop_grid("BlueprintShop")
+	# Hold the list's previous height while it refills, so the scroll position stays valid.
+	cards.custom_minimum_size.y = shop_reserve
 	shop_fill += 1
 	_fill_blueprints(cards, MetaShop.blueprint_ids(), shop_fill)
 
@@ -1080,6 +1082,7 @@ const SHOP_CARDS_PER_FRAME := 4
 var shop_fill := 0
 var shop_filling := false
 var shop_scroll := 0
+var shop_reserve := 0.0
 
 func _fill_blueprints(cards: GridContainer, ids: Array, fill: int) -> void:
 	shop_filling = true
@@ -1095,6 +1098,7 @@ func _fill_blueprints(cards: GridContainer, ids: Array, fill: int) -> void:
 		if index >= SHOP_FIRST_CARDS: preload("res://scripts/title_settings.gd").apply_menu_text(card)
 	if fill == shop_fill:
 		shop_filling = false
+		cards.custom_minimum_size.y = 0
 		if shop_scroll > 0: scroll.set_deferred("scroll_vertical", shop_scroll)
 
 func _blueprint_card(id: String) -> Control:
@@ -1250,6 +1254,7 @@ func _refresh_progression(focus_name: String) -> void:
 	var keep := scroll.scroll_vertical
 	shop_scroll = keep
 	shop_filling = false
+	shop_reserve = progression_cards.size.y if is_instance_valid(progression_cards) and progression_cards.name == "BlueprintShop" and progression_tab == 1 else 0.0
 	for child in grid.get_children():
 		grid.remove_child(child)
 		child.queue_free()
