@@ -88,6 +88,17 @@ static func compact(values: Dictionary, icon_size := 14) -> String:
 		parts.append("%s [color=%s]%d[/color]" % [ResourceIcons.icon(id, icon_size), ResourceIcons.color(id), int(values[key])])
 	return "  ".join(parts)
 
+# One labelled row of values. More than three values do not fit the card's width at full
+# size, so they continue on a second row under the first value.
+static func labelled(color: String, label: String, values: Dictionary) -> Array:
+	if values.size() <= 3: return ["[color=%s]%s[/color]  %s" % [color, label, compact(values)]]
+	var first := {}
+	var rest := {}
+	for key in values:
+		if first.size() < int(ceil(values.size() / 2.0)): first[key] = values[key]
+		else: rest[key] = values[key]
+	return ["[color=%s]%s[/color]  %s" % [color, label, compact(first)], "[color=#00000000]%s[/color]  %s" % [label, compact(rest)]]
+
 static func rule_lines(room: Dictionary) -> Array:
 	var lines: Array = []
 	var production: Dictionary = room.get("production", {})
@@ -96,11 +107,11 @@ static func rule_lines(room: Dictionary) -> Array:
 	if str(room.get("id", "")) == "heat_recovery":
 		lines.append("[color=#7fd6a6]GIVES[/color]  " + compact({"power": 4}) + " (varies)")
 	elif not production.is_empty():
-		lines.append("[color=#7fd6a6]GIVES[/color]  " + compact(production))
+		lines.append_array(labelled("#7fd6a6", "GIVES", production))
 	if not consumption.is_empty():
-		lines.append("[color=#e0b36a]TAKES[/color]  " + compact(consumption))
+		lines.append_array(labelled("#e0b36a", "TAKES", consumption))
 	if not storage.is_empty():
-		lines.append("[color=#79b8d9]HOLDS[/color]  " + compact(storage))
+		lines.append_array(labelled("#79b8d9", "HOLDS", storage))
 	if lines.is_empty():
 		lines.append("[color=#8fa3ae]SUPPORT STRUCTURE[/color]")
 	return lines

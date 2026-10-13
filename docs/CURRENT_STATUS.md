@@ -1,3 +1,21 @@
+## Card value rows wrap; runner names the scratch profile for fixtures - October 13, 2026
+
+Cards (`scripts/draft_card.gd` `labelled`): a GIVES, TAKES or HOLDS row with more than three
+values continues on a second row under the first value. Storage Bay and Storage Depot keep
+14 pt text (they had dropped to 11 pt to fit the width) and give up 15 px of art instead. Still
+below 14 pt: Hydroponics Farm 12 pt, Tidal Power Plant 13 pt, both for height with the art
+already at its 76 px floor. The room tooltip uses the same rows. Capture:
+`output/hand-card-holds-two-rows-2026-10-13.png`.
+
+Runner (`tools/run_tests.py` `scratch_profile`): 33 fixtures exit 2 unless
+`BRINESPACE_TEST_USER_DIR` equals user://, and the runner never set it, so every sweep reported
+them SKIP-NATIVE and nothing ran them. The runner now sets it to the profile APPDATA leads to,
+but only when APPDATA is not the account's real roaming folder; with the real folder it stays
+unset and those fixtures still refuse. Checked: real folder in three spellings refused, scratch
+folder accepted. Result: 23 of the 33 run and pass headless; the other 10 reject the headless
+renderer itself and now have native lane overrides, where all 10 pass.
+Lanes: headless 347, native 545, skip 28.
+
 ## Hand cards are one size; twelve overtaken candidate fixtures skipped - October 13, 2026
 
 Owner: hand cards "should all be the same size". `scripts/draft_card.gd` (ac54ebb1): a card that

@@ -1377,6 +1377,46 @@
     "test_bill_work_pickup_family_candidates": {
       "lane": "native",
       "reason": "Reads pixels back from plain textures, which the headless dummy renderer cannot return; crashed headless on 2026-10-13 once given its own scratch folder."
+    },
+    "test_bill_seated_north_reading_selected": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_bill_seated_south_family_selected": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_legacy_door_plan": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_library_live_context": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_marsh_south_step_production": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_moonbay_retained_walls": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_moonbay_water_batch": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_seabed_silt_batch": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_water_depth_preparation": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_water_stroke_triangles": {
+      "lane": "native",
+      "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
     }
   }
 }

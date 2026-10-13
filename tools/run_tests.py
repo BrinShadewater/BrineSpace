@@ -17,6 +17,10 @@ Solves the problems a naive headless sweep hits (2026-09-10 audit):
   - Art-evidence fixtures refuse to run unless user:// resolves inside their
     own "/output/<name>/scratch-appdata/" folder. The runner reads that name
     from the fixture and points APPDATA there for that one test.
+  - Other fixtures exit 2 unless BRINESPACE_TEST_USER_DIR equals user://, so
+    that they only ever run in a profile someone chose. The runner sets it to
+    the profile APPDATA leads to, but only when APPDATA is a scratch folder:
+    run with the real roaming folder and those fixtures still refuse.
 
 Lanes are detected from test source at run time (always current); exceptions
 and subsystem groups live in tests/index.json.
@@ -84,6 +88,19 @@ def own_scratch(test: Path) -> Path | None:
         if match:
             return ROOT / "output" / match.group(1) / "scratch-appdata"
     return None
+
+
+def scratch_profile(appdata: str) -> str | None:
+    """user:// for this APPDATA, or None when APPDATA is the account's real roaming folder."""
+    if sys.platform != "win32" or not appdata:
+        return None
+    chosen = Path(appdata).resolve()
+    real = [Path.home() / "AppData" / "Roaming"]
+    if os.environ.get("USERPROFILE"):
+        real.append(Path(os.environ["USERPROFILE"]) / "AppData" / "Roaming")
+    if any(chosen == folder.resolve() for folder in real):
+        return None
+    return (chosen / "Godot" / "app_userdata" / "BrineSpace").as_posix()
 
 
 def detect_lane(test: Path, index: dict) -> tuple[str, str]:
@@ -222,11 +239,17 @@ def run(argv=None) -> int:
                 cmd[1:1] = ["--screen", str(args.screen)]
             per_timeout = int(index.get("lanes", {}).get(t.stem, {}).get("timeout", args.timeout))
             started = time.monotonic()
-            env = None
+            env = dict(os.environ)
             scratch = own_scratch(t)
             if scratch is not None and sys.platform == "win32":
                 scratch.mkdir(parents=True, exist_ok=True)
-                env = dict(os.environ, APPDATA=str(scratch))
+                env["APPDATA"] = str(scratch)
+            profile = scratch_profile(env.get("APPDATA", ""))
+            if profile is not None:
+                Path(profile).mkdir(parents=True, exist_ok=True)
+                env["BRINESPACE_TEST_USER_DIR"] = profile
+            else:
+                env.pop("BRINESPACE_TEST_USER_DIR", None)
             code, output, timed_out, stalled = run_process(cmd, out_dir / "logs" / f"{t.stem}.log", per_timeout, env=env)
             duration = time.monotonic() - started
             verdict, detail = classify_result(code, output, timed_out)
