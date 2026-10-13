@@ -1,4 +1,59 @@
+## Marsh session closed — October 4, 2026
+
+The owner wrapped this animation session. Current normal selection: 228 states / 1190 holds / 95 body manifests / 1018 unique source paths; 200 prior held states exact / 28 updated through later scoped evidence. Walking, South work matching, repair joins, two actual repair TitleContinues and one South salvage round trip are complete within their recorded scopes. No required work remains; further polish or release work is a new objective. Separate Bill/James/Veld sessions are unaffected.
+
+Start with [session closeout](MARSH_SESSION_CLOSEOUT_2026-10-04.md) and [final review](../character/marsh-final-review-2026-10-04/REVIEW.md). Notes, character skill references and installed mirrors, workflow, animation pipeline and visual bible updated. Main SKILL.md entry-point edit failed; proposed replacement is recorded in the session handoff. No new art/gameplay/test batch/export/commit/upload or automation in this closeout.
+
+## Ocean environmental art session closed - September 30, 2026
+
+Recent ocean-floor life/details, mineral/harvest replacements, rock features and
+biome material variants are integrated in source. The combined pass reviewed matte
+style, overhead perspective, actual size and grain hierarchy across seven habitats.
+Selected finer v2 materials and the overhead ridge remain; no further rescaling
+was needed. 102 runtime checks and 32 generated-map checks pass; all 2,924 owner
+files unchanged under scratch profiles. Pipeline, bible and both room-skill copies
+now carry the reusable lessons. [Session closeout](OCEAN_ART_SESSION_CLOSEOUT_2026-09-30.md)
+records evidence and scope. Concurrent crew work remains separate; no new export,
+commit or upload was requested.
+
+## Cryopod session closed — September 30, 2026
+
+Owner requested closeout after family polish and source wiring. Human core and
+found cryolabs share the selected closed/open shells, registered fall/recovery,
+interior frost and low translucent fog. Margot's v5 full physical door, centered
+wake/hop and broken chamber masters remain selected. Shared actor density and
+actual visible landing joins pass native checks; final isolated runs preserve the
+real profile. Mild cold returns to natural colour after floor contact. No game
+rules, owner layouts, executable export or unrelated actor selection changed in
+the final polish. Updated skills, pipeline/workflow and bible preserve the lessons.
+Read [closeout](CRYO_SESSION_CLOSEOUT_2026-09-30.md) before continuing; final combined
+owner visual acceptance and playable release remain distinct from source checks.
+
 > September 24 takeover: [current status](CURRENT_STATUS.md), [Claude handoff](CLAUDE_HANDOFF_2026-09-24.md), and [asset pipeline/workflow](ASSET_PIPELINE_AND_WORKFLOW.md) provide the current continuation map. Dated evidence below retains its original scope.
+
+## Ocean art session closed — September 30, 2026
+
+The 30 selected assets from this continuation are installed and reviewed for
+style, camera, density, relative size and polish. Tall plants, giant overhead
+fungi, upright kelp, mycelium, ground fields and breakable geology retain their
+accepted selections. Smooth kelp sway respects fixed roots, pause, speed and
+Reduced Motion. No gameplay, save or reward changes were added by closeout.
+The room skill (maintained and installed), animation skill, environment contract,
+bible and asset workflow now record the reusable lessons. See the
+[session closeout](OCEAN_ART_SESSION_CLOSEOUT_2026-09-30.md) and
+[full gallery](../assets/environment/ocean-floor-expansion-v1/combined-index.html).
+
+
+## Human crew animation session closed - September 29, 2026
+
+Owner will continue Veld, James and Bill in separate sessions. Read the
+[closeout](CREW_ANIMATION_SESSION_CLOSEOUT_2026-09-29.md), actor handoff and updated
+character consistency skill before changing animations. Preserve accepted bare
+idle/walk and shared equipment selections. Bill east idle-led-v3 remains staged,
+Veld four-direction shared-helmet actions are installed, and James retained actions
+need audit. Actor files can progress separately; shared loader/registry/standards
+edits require coordination. This documentation closeout changes no gameplay,
+art bindings, save data or release package.
 
 ## September 27 art integration session closed
 

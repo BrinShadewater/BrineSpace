@@ -1,0 +1,108 @@
+extends "res://tests/review_station_motion.gd"
+const View := preload("res://assets/environment/giant-mushrooms-v1/giant_mushroom_view.gd")
+var destination := "res://output/giant-mushrooms-review/"
+class Sheet extends Node2D:
+	var view=View.new()
+	var cell_pixels:=270.0
+	var reference: Texture2D
+	func _ready():
+		view.prepare()
+		reference=preload("res://scripts/safe_image.gd").raw_texture("res://assets/environment/alien-fungi-biomes-v1/runtime/fungal-shelves.png")
+	func _draw():
+		draw_rect(Rect2(0,0,1920,1700),Color("17292d"))
+		var ids:=View.WIDTHS.keys();ids.append("installed-low-fungi")
+		for row in range(ids.size()):
+			var id: String=ids[row]
+			draw_string(ThemeDB.fallback_font,Vector2(10,25+row*400),id,HORIZONTAL_ALIGNMENT_LEFT,-1,18,Color.WHITE)
+			for col in range(4):
+				var at:=Vector2(240+col*465,210+row*400)
+				draw_rect(Rect2(at-Vector2(210,175),Vector2(420,350)),Color("909c93") if col%2==0 else Color("233b41"))
+				var tint:=Color.WHITE if col<2 else Color(.59,.68,.66,.85)
+				if id=="installed-low-fungi":
+					var extent:=reference.get_size()/float(reference.get_width())*.38*cell_pixels
+					draw_texture_rect(reference,Rect2(at-extent*.5,extent),false,tint)
+				else:view.draw_asset(self,id,at,float(View.WIDTHS[id])*cell_pixels,tint)
+		draw_string(ThemeDB.fallback_font,Vector2(10,1675),"Source on pale/dark | existing submerged tint on pale/dark. %.1f physical pixels/cell."%cell_pixels,HORIZONTAL_ALIGNMENT_LEFT,-1,17,Color.WHITE)
+class Samples extends Node2D:
+	var view=View.new()
+	var cell_size:=324.0
+	var identity: String="ivory-blue-umbrella"
+	func _draw():
+		view.draw_asset(self,identity,Vector2(19.8,19.1)*cell_size,float(View.WIDTHS[identity])*cell_size)
+func shot(name: String):
+	await draw_frame();await draw_frame()
+	root.get_texture().get_image().save_png(destination+name+".png")
+func run():
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--out="):destination=arg.trim_prefix("--out=").trim_suffix("/")+"/"
+	DirAccess.make_dir_recursive_absolute(destination)
+	Settings.initialized=true;Settings.pause_unfocused=false;Settings.effects_quality=1
+	game=load("res://scenes/main.tscn").instantiate();game.set_meta("authored_site_fixture",true)
+	game.meta.save_path="user://fungi-review.meta";game.run_save_path="user://fungi-review.loop"
+	root.add_child(game);current_scene=game
+	while not game.startup_complete:await process_frame
+	game.set_process(false);game.tick_timer.stop();game.crew_comms.minimize();game.crew_comms.set_process(false)
+	root.content_scale_size=Vector2i(1920,1080);root.size=Vector2i(1600,900)
+	game.occupied.clear();game.placed_rooms.clear();game.wrecks.clear();game.drone_fleet.restore(null)
+	game.architect_run={};game.recovered_crew.clear();game.site_layout={"seed":39,"scenery":[]}
+	for identity in Architects.IDS:
+		var actor=Architects.actor_for(game,identity);actor.active=false;actor.foot=Vector2.ZERO
+	game.testing_free_build=true;game.testing_disable_failures=true
+	for cell in [Vector2i(19,20),Vector2i(21,20)]:game._place_room("battery_array",cell,true)
+	game.powered_room_cells.clear();game.unpowered_room_cells.clear()
+	for room in game.placed_rooms:game.powered_room_cells[room.pos]=true;game.grid_view.room_light_levels[room.pos]=1.0
+	game._set_paused(true,false);game.visual_time_seconds=1.3;game.selected_card_id="";game.selected_room_cell=Vector2i(-1,-1)
+	game.grid_view.env_below_key.clear();game.grid_view.prewarm_station_views(game);game._refresh_all()
+
+	var samples:=Samples.new();game.grid_view.env_passes[0].add_child(samples)
+	for id in View.WIDTHS:
+		samples.identity=id
+		for zoom in [.25,.45,.65]:
+			await focus(Vector2(20,19.1),zoom);samples.cell_size=game.get_cell_size();samples.queue_redraw()
+			await shot("station-"+id+"-%d"%roundi(zoom*100))
+	await focus(Vector2(20,19.6),.45)
+	var measured: float=game.get_cell_size()*root.get_final_transform().get_scale().x
+	var view=View.new();view.prepare()
+	check(view.textures.size()==3,"All three giant fungi load")
+	for id in View.SOURCES:
+		var art: Texture2D=view.textures[id]
+		check(art.get_width()==1024,"Measured source density: "+id)
+		check(art.get_image().get_pixel(0,0).a==0,"Transparent exterior: "+id)
+	var regions: Array=[{"biome":"kelp","center":Vector2(10,10),"radius":Vector2(3,3)},{"biome":"coral","center":Vector2(30,30),"radius":Vector2(3,3)}]
+	check(view.placements(regions)==view.placements(regions),"Placement stable on redraw")
+	check(view.placements(regions).size()==2,"Kelp and coral habitat assignments")
+	check(view.placements([{"biome":"kelp","center":Vector2(20.5,20.5),"radius":Vector2(.1,.1)}]).is_empty(),"Quiet station core retained")
+	check(game.occupied.size()==2,"Decorative fungi add no occupancy")
+	check(preload("res://scripts/safe_image.gd").failures.is_empty(),"No asset placeholders")
+	samples.queue_free()
+	await process_frame
+	var background=game.grid_view.seabed_background
+	var live=view.placements(background.sub_biomes.regions)
+	check(not live.is_empty(),"Production habitats contain tall fungi")
+	var seen: Dictionary={}
+	for plant in live:
+		if seen.has(plant.id):continue
+		seen[plant.id]=true
+		await focus(plant.at,.45)
+		game.grid_view.env_below_key.clear()
+		await shot("habitat-"+plant.id)
+	check(seen.size()==3,"All three fungi occur in production habitats")
+	game.occupied.clear();game.placed_rooms.clear();game.wrecks.clear()
+	for cell in [Vector2i(9,28),Vector2i(11,28)]:game._place_room("battery_array",cell,true)
+	game.powered_room_cells.clear();game.unpowered_room_cells.clear()
+	for room in game.placed_rooms:game.powered_room_cells[room.pos]=true;game.grid_view.room_light_levels[room.pos]=1.0
+	for biome in ["kelp","iron","coral"]:
+		game.site_layout={"seed":biome.hash(),"scenery":[],"habitats":[{"biome":biome,"center":Vector2(10.5,27.3),"radius":Vector2(2,2)}]}
+		game.grid_view.env_below_key.clear();game.grid_view.prewarm_station_views(game);game._refresh_all()
+		await focus(Vector2(11,27.1),.25)
+		await shot("lit-overview-"+biome)
+		await focus(Vector2(11,26.5),.45)
+		await shot("lit-habitat-"+biome)
+	game.hide();root.content_scale_size=Vector2i(1920,1700);root.size=Vector2i(1920,1700)
+	var sheet:=Sheet.new();sheet.cell_pixels=measured;sheet.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;root.add_child(sheet)
+	await process_frame;RenderingServer.force_draw(false)
+	var first:=root.get_texture().get_image();first.save_png(destination+"native-density-mushrooms.png")
+	sheet.queue_redraw();await process_frame;RenderingServer.force_draw(false)
+	check(first.get_data()==root.get_texture().get_image().get_data(),"Static caps retain pixels")
+	print("GIANT MUSHROOM REVIEW: %d failures"%failures)
+	quit(failures)

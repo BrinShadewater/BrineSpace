@@ -92,7 +92,7 @@ func journey(mode:String,rotation:int=0):
 			game._process(.2)
 			check(actor.foot==foot,"Paused loaded return stays fixed")
 			game.paused=false;restored=true
-		var capture:bool=phase!=previous or (phase in ["pickup","unload"] and tick%2==0) or (not turn.is_empty() and tick%3==0) or (draining and float(chamber.elapsed)<=3.0 and tick%2==0)
+		var capture:bool=phase!=previous or (phase in ["salvage","pickup","unload"] and tick%2==0) or (not turn.is_empty() and tick%3==0) or (draining and float(chamber.elapsed)<=3.0 and tick%2==0)
 		if capture and not capture_dir.is_empty() and DisplayServer.get_name()!="headless":
 			game.selected_card_id="";game.hovered_card_id="";game.crew_comms.panel.hide()
 			game._set_grid_zoom(.7,true,actor.foot/(384.0*40.0));game.grid_view.queue_redraw()

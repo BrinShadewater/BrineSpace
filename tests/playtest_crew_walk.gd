@@ -34,6 +34,7 @@ func run() -> void:
 	var state: String="run" if "run" in args else "walk"
 	if "carry" in args:state="carry"
 	var output: String="res://output/crew-replacement-2026-09-12/%s/%s-native/%s/"%[actor,state,direction]
+	if actor=="marsh" and state=="run":output="res://output/marsh-animation-audit/run-native/%s/"%direction
 	for arg in args:
 		if arg.begins_with("review-revision="):
 			var revision:=arg.trim_prefix("review-revision=")
@@ -68,6 +69,10 @@ func run() -> void:
 		whole_body=true
 		identity_corrected=true
 		identity_root="res://character/marsh-motion-polish-v1/review/walk-"+direction+"-video-cycle-01/"
+	if actor=="marsh" and state=="run":
+		whole_body=true
+		identity_corrected=true
+		identity_root="res://character/marsh-run-match-v1/frames/"+direction+"/"
 	var preservation_failures:=0
 	var durations: Array=rig.recipe.durations
 	if actor=="branforth" and state=="walk" and direction=="west":durations=[130,170,150,200,150,100]
@@ -78,8 +83,11 @@ func run() -> void:
 		if not whole_body:image.load_png_from_buffer(FileAccess.get_file_as_bytes(reference_root+("carry-" if state=="carry" else "")+"%03d.png"%i))
 		if identity_corrected:
 			var corrected:=Image.new()
-			corrected.load_png_from_buffer(FileAccess.get_file_as_bytes(identity_root+"walk-%s-%03d.png"%[direction,i]))
-			corrected=corrected.get_region(Rect2i(36,52,184,184))
+			if actor=="marsh" and state=="run":
+				corrected.load_png_from_buffer(FileAccess.get_file_as_bytes(identity_root+"%03d.png"%i))
+			else:
+				corrected.load_png_from_buffer(FileAccess.get_file_as_bytes(identity_root+"walk-%s-%03d.png"%[direction,i]))
+				corrected=corrected.get_region(Rect2i(36,52,184,184))
 			if not whole_body and image.get_region(Rect2i(0,68,184,116)).get_data()!=corrected.get_region(Rect2i(0,68,184,116)).get_data():
 				preservation_failures+=1;push_error("Identity edit changed original gait below collar")
 			image=corrected
@@ -91,7 +99,8 @@ func run() -> void:
 	var stride: float=rig.strideDistanceCells
 	if whole_body and direction in ["east","west"]:stride=(102.0 if direction=="east" else 108.0)*65.28/148.0/384.0
 	if whole_body and actor=="branforth":stride=(106.0 if direction=="east" else 108.0)*65.28/148.0/384.0 if direction in ["east","west"] else 0.128
-	if whole_body and actor=="marsh":stride=(96.0 if direction=="east" else 126.0)*65.28/148.0/384.0 if direction in ["east","west"] else 0.128
+	if whole_body and actor=="marsh" and state=="walk":stride=(96.0 if direction=="east" else 126.0)*65.28/148.0/384.0 if direction in ["east","west"] else 0.128
+	if actor=="marsh" and state=="run":stride=player.strides[state+"-"+direction]
 	var failures:=preservation_failures
 	if not is_equal_approx(player.strides[state+"-"+direction],stride):failures+=1;push_error("Selected stride differs from source rig")
 	if actor=="marsh" and not player.equipment_frames.get("diving-helmet",{}).is_empty():failures+=1;push_error("Marsh must remain without helmet variants")
@@ -112,7 +121,7 @@ func run() -> void:
 			var duration: float=float(durations[slot])/1000.0
 			if elapsed<duration:break
 			elapsed-=duration;index+=1
-		if review.body.get_image().get_data()!=references[index].get_data():failures+=1;push_error("Selected walk differs at sample "+str(i))
+		if review.body.get_image().get_data()!=references[index].get_data():failures+=1;push_error("Selected gait differs at sample "+str(i))
 		if identity_corrected and review.has_helmet and review.helmet.get_image().get_data()!=helmet_references[index].get_data():failures+=1;push_error("Selected fitted identity differs at sample "+str(i))
 		review.travel=distance;review.queue_redraw()
 		await process_frame;await RenderingServer.frame_post_draw

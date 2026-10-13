@@ -31,6 +31,22 @@ class MarshRepair(unittest.TestCase):
             self.assertGreaterEqual(len({f.tobytes() for f in work}),3)
             self.assertTrue(all(f.tobytes()!=idle for f in work))
 
+    def test_inspect_alias_and_interact_selection(self):
+        from veld_scanner_revision import replacement as interact
+        from rebuild_marsh_art import MarshRebaker
+        rebaker=MarshRebaker.__new__(MarshRebaker)
+        for d in DIRECTIONS:
+            selected=interact('marsh','interact-'+d,False)['bare']
+            for i,expected in enumerate(selected):
+                actual=Image.open(ROOT/f'character/marsh-v2/frames/bare/interact-{d}/{i:03}.png').convert('RGBA')
+                self.assertEqual(actual.tobytes(),expected.tobytes())
+            inspected=rebaker.state_override('inspect-'+d)
+            for i,expected in enumerate(inspected):
+                actual=Image.open(ROOT/f'character/marsh-v2/frames/bare/inspect-{d}/{i:03}.png').convert('RGBA')
+                salvage=Image.open(ROOT/f'character/marsh-v2/frames/bare/salvage-{d}/{i:03}.png').convert('RGBA')
+                self.assertEqual(actual.tobytes(),expected.tobytes())
+                self.assertEqual(actual.tobytes(),salvage.tobytes())
+
     def test_unrelated_states_are_not_selected(self):
         for d in DIRECTIONS:
             for a in ['weld','torch-draw','torch-stow','interact','eat','sit-down','idle']:

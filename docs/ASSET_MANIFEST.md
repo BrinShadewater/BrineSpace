@@ -6,30 +6,29 @@ JSON data. Tests, tools, docs and skills are not roots: an asset only they menti
 
 | Status | Files | Meaning |
 |---|---|---|
-| live | 13412 | reached by an exact path from runtime code or data |
-| dynamic | 4244 | inside a folder the code reads with a built path or directory listing |
-| unreferenced | 5558 | nothing in the runtime points at it (provenance, superseded versions, sources) |
+| live | 13792 | reached by an exact path from runtime code or data |
+| dynamic | 4222 | inside a folder the code reads with a built path or directory listing |
+| unreferenced | 8881 | nothing in the runtime points at it (provenance, superseded versions, sources) |
 
 ## Live assets by owner
 
 Which asset folders each room, character or system loads. Moves must keep these pairs intact.
 
-### assets-data/command-owner-v2
-- `assets/room-risers-v2` — 1 file(s)
+### assets-data/architecture-rollout-2026-09-26
+- `assets/room-risers-v4` — 94 file(s)
+- `assets/room-risers-expansion-v1` — 28 file(s)
+- `assets/door-polish-v3` — 16 file(s)
+- `assets/door-polish-v2` — 2 file(s)
+- `assets/special-north-walls-v1` — 2 file(s)
 
-### assets-data/corridor-wall-variants-v1
-- `assets/corridor-wall-variants-v1` — 6 file(s)
+### assets-data/corridor-risers-v2
+- `assets/corridor-risers-v2` — 5 file(s)
 
-### assets-data/door-polish-v1
-- `assets/floor-details-v3` — 40 file(s)
-- `assets/department-floors-v2` — 6 file(s)
-- `assets/department-floors-v1` — 4 file(s)
-- `assets/door-polish-v1` — 2 file(s)
-- `assets/floors-and-details-v3` — 2 file(s)
-- `assets/floors-and-details-v5` — 1 file(s)
-
-### assets-data/environment
-- `assets/environment` — 35 file(s)
+### assets-data/drone-runtime-2026-09-26
+- `assets/salvage-drone-v1-2026-09-26` — 216 file(s)
+- `assets/mining-rover-v1-2026-09-26` — 198 file(s)
+- `assets/drone-motion-v2-2026-09-26` — 127 file(s)
+- `assets/drone-runtime-2026-09-26` — 30 file(s)
 
 ### assets-data/floor-dressing-style-v2
 - `assets/floor-dressing-style-v2` — 19 file(s)
@@ -44,6 +43,9 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### assets-data/material-polish-cryo-recovery-v1
 - `assets/material-polish-cryo-recovery-v1` — 21 file(s)
 - `rooms/architect-cryo-v1` — 2 file(s)
+
+### assets-data/ocean-windows-v3
+- `assets/ocean-windows-v3` — 28 file(s)
 
 ### assets-data/riser-departments-v1
 - `assets/riser-departments-v1` — 8 file(s)
@@ -73,49 +75,35 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/rooms` — 1 file(s)
 
 ### assets-data/rooms
-- `assets/room-risers-v2` — 1 file(s)
 - `assets/rooms` — 1 file(s)
 
 ### assets-data/wall-dressing-style-v2
 - `assets/wall-dressing-style-v2` — 49 file(s)
 
 ### character/ACTIVE_ASSETS
+- `character/robot-polish-v1` — 5 file(s)
 - `character/companions` — 3 file(s)
+- `character/margot-polish-v1` — 3 file(s)
 - `character/portraits-lighting-v1` — 3 file(s)
 - `character/animation-expansion-v5` — 1 file(s)
 - `character/brine-comms-v14` — 1 file(s)
 - `character/companion-water-v1` — 1 file(s)
 - `character/marsh-v2` — 1 file(s)
 - `character/portraits-backgrounds-v1` — 1 file(s)
-
-### character/animation-expansion-v5
-- `character/animation-expansion-v5` — 1440 file(s)
-- `character/companion-cleanup-v3` — 4 file(s)
-- `character/companion-personality-v1` — 2 file(s)
-- `character/josh-repair-v4` — 2 file(s)
-- `character/marsh-v1` — 1 file(s)
+- `character/robot-rescue-v1` — 1 file(s)
 
 ### character/architect
-- `character/portraits-lighting-v1` — 3 file(s)
+- `character/portraits-brine-style-v1` — 4 file(s)
 - `character/marsh-v1` — 1 file(s)
-- `character/portraits-backgrounds-v1` — 1 file(s)
-
-### character/bill
-- `character/crew-actions-v1` — 1 file(s)
-- `character/crew-underwater-v1` — 1 file(s)
 
 ### character/chief-engineer-branforth-v2
-- `character/chief-engineer-branforth-v2` — 2181 file(s)
+- `character/chief-engineer-branforth-v2` — 2197 file(s)
 
-### character/companion-cleanup-v3
-- `character/companion-cleanup-v3` — 144 file(s)
-- `character/companion-personality-v1` — 2 file(s)
-
-### character/companion-personality-v1
-- `character/companion-personality-v1` — 97 file(s)
-
-### character/companion-water-v1
-- `character/companion-water-v1` — 50 file(s)
+### character/companion
+- `character/robot-rescue-v1` — 28 file(s)
+- `character/robot-polish-v1` — 6 file(s)
+- `character/margot-polish-v1` — 4 file(s)
+- `character/portraits-brine-style-v1` — 3 file(s)
 
 ### character/companions
 - `character/portraits-backgrounds-v1` — 2 file(s)
@@ -125,7 +113,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 
 ### character/crew
 - `character/brine-comms-v14` — 1 file(s)
-- `character/crew-life-v1` — 1 file(s)
+- `rooms/station-props-v2` — 1 file(s)
 
 ### character/crew-actions-v1
 - `character/crew-actions-v1` — 666 file(s)
@@ -134,29 +122,26 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `character/crew-life-v1` — 1044 file(s)
 
 ### character/crew-underwater-v1
-- `character/crew-underwater-v1` — 1361 file(s)
+- `character/crew-underwater-v1` — 1289 file(s)
 - `character/chief-engineer-branforth-v1` — 6 file(s)
 - `character/dr-veld-v1` — 6 file(s)
 - `character/major-bill-v2` — 6 file(s)
 
 ### character/dr-veld-v2
-- `character/dr-veld-v2` — 2179 file(s)
+- `character/dr-veld-v2` — 2195 file(s)
 
 ### character/installed-portraits
-- `character/companions` — 3 file(s)
-- `character/portraits-lighting-v1` — 3 file(s)
+- `character/portraits-brine-style-v1` — 8 file(s)
 - `character/brine-comms-v14` — 1 file(s)
-- `character/portraits-backgrounds-v1` — 1 file(s)
-
-### character/josh-repair-v4
-- `character/josh-repair-v4` — 131 file(s)
-- `character/companion-personality-v1` — 1 file(s)
 
 ### character/josh-v1
 - `character/josh-v1` — 25 file(s)
 
 ### character/major-bill-v3
-- `character/major-bill-v3` — 2233 file(s)
+- `character/major-bill-v3` — 2278 file(s)
+
+### character/margot-polish-v1
+- `character/margot-polish-v1` — 349 file(s)
 
 ### character/margot-v1
 - `character/margot-v1` — 24 file(s)
@@ -167,12 +152,16 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### character/marsh-motion-polish-v1
 - `character/marsh-motion-polish-v1` — 21 file(s)
 
-### character/marsh-v1
-- `character/marsh-v1` — 96 file(s)
-
 ### character/marsh-v2
-- `character/marsh-v2` — 710 file(s)
+- `character/marsh-v2` — 1047 file(s)
 - `character/marsh-motion-polish-v1` — 11 file(s)
+- `character/marsh-berth-v1` — 1 file(s)
+
+### character/portraits-brine-style-v1
+- `character/portraits-brine-style-v1` — 1 file(s)
+
+### character/robot-polish-v1
+- `character/robot-polish-v1` — 439 file(s)
 
 ### room/airlock
 - `character/crew-underwater-v1` — 1 file(s)
@@ -248,6 +237,9 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### room/biodome_habitat_wall
 - `assets/rooms` — 1 file(s)
 
+### room/biomass_controls_v1
+- `assets/new-tilesets` — 1 file(s)
+
 ### room/biomass_digester
 - `assets/room-furnishings-v4` — 2 file(s)
 
@@ -255,7 +247,12 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/room-consistency-v1` — 1 file(s)
 - `assets/rooms` — 1 file(s)
 
+### room/biomass_vessel_v1
+- `assets/biomass-vessel-v1` — 1 file(s)
+
 ### room/brine_core
+- `character/brine-face-v7-2026-09-26` — 1 file(s)
+- `character/brine-scale-v10-2026-09-26` — 1 file(s)
 - `rooms/underwater` — 1 file(s)
 
 ### room/clone
@@ -313,7 +310,7 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/floors-and-details-v5` — 1 file(s)
 
 ### room/corridor_wall_art
-- `assets/corridor-wall-variants-v1` — 1 file(s)
+- `assets/corridor-risers-v2` — 3 file(s)
 
 ### room/crew_hab
 - `assets/rooms` — 4 file(s)
@@ -356,10 +353,14 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/rooms` — 1 file(s)
 
 ### room/default_layouts
+- `assets/room-floor-tiles-v4` — 2 file(s)
 - `assets/room-floor-tiles-v3` — 1 file(s)
 
 ### room/department_wall_material
 - `rooms/production-ten` — 1 file(s)
+
+### room/door_finish
+- `assets/door-polish-v1` — 2 file(s)
 
 ### room/drone_service_wall
 - `assets/owner-strict-overhead-v1` — 1 file(s)
@@ -371,9 +372,6 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### room/fittings
 - `rooms/underwater` — 1 file(s)
 
-### room/floors
-- `assets/new-tilesets` — 29 file(s)
-
 ### room/gravity_loom
 - `rooms/underwater` — 1 file(s)
 
@@ -382,6 +380,12 @@ Which asset folders each room, character or system loads. Moves must keep these 
 
 ### room/holo
 - `assets/rooms` — 2 file(s)
+
+### room/holo_chart_v1
+- `assets/new-tilesets` — 1 file(s)
+
+### room/holo_projector_v1
+- `assets/holo-projector-v1` — 1 file(s)
 
 ### room/holo_wall
 - `assets/holo-wall-v1` — 1 file(s)
@@ -482,13 +486,13 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/floor-profiles-v1` — 1 file(s)
 
 ### room/modular_floor
+- `assets/corridor-risers-v2` — 6 file(s)
 - `assets/room-floor-tiles-v4` — 6 file(s)
 - `assets/room-floor-tiles-v5` — 6 file(s)
 - `assets/room-floor-tiles-v3` — 3 file(s)
 - `assets/department-floors-v2` — 1 file(s)
 - `assets/floors-and-details-v5` — 1 file(s)
 - `assets/hallway-floor-tiles-v1` — 1 file(s)
-- `assets/hallway-floor-tiles-v2` — 1 file(s)
 - `rooms/floor-profiles-v1` — 1 file(s)
 - `rooms/tileset-library` — 1 file(s)
 
@@ -505,11 +509,25 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### room/observation_room
 - `rooms/underwater` — 1 file(s)
 
+### room/ocean_hatch
+- `assets/door-polish-v3` — 3 file(s)
+
+### room/ocean_windows
+- `assets/ocean-windows-v3` — 15 file(s)
+
 ### room/ore_refinery
 - `rooms/production-ten` — 1 file(s)
 
 ### room/ore_refinery_wall
 - `assets/rooms` — 1 file(s)
+
+### room/painted_door
+- `assets/door-polish-v2` — 2 file(s)
+- `assets/architecture-rollout-2026-09-26` — 1 file(s)
+- `rooms/full-wall-v1` — 1 file(s)
+
+### room/painted_shell
+- `assets/architecture-rollout-2026-09-26` — 1 file(s)
 
 ### room/pressure
 - `assets/rooms` — 1 file(s)
@@ -522,7 +540,27 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `assets/rooms` — 1 file(s)
 
 ### room/props
-- `assets/new-tilesets` — 269 file(s)
+- `assets/station-props-v2` — 323 file(s)
+- `assets/new-room-props-2026-09-26` — 154 file(s)
+- `assets/new-tilesets` — 33 file(s)
+- `assets/common-props-calibrated-2026-09-26` — 27 file(s)
+- `assets/hallway-props-v1` — 19 file(s)
+- `assets/plants-matte-2026-09-26` — 10 file(s)
+- `assets/remaining-corners-refined-2026-09-26` — 10 file(s)
+- `assets/submarine-utilities-2026-09-26` — 8 file(s)
+- `assets/common-everyday-2026-09-26` — 6 file(s)
+- `assets/common-storage-2026-09-26` — 6 file(s)
+- `assets/common-surfaces-2026-09-26` — 6 file(s)
+- `assets/metal-corner-variants-refined-2026-09-26` — 6 file(s)
+- `assets/servers-comms-shelves-2026-09-26` — 6 file(s)
+- `assets/directional-lounge-2026-09-26` — 4 file(s)
+- `assets/lounge-variations-2026-09-26` — 4 file(s)
+- `assets/room-counters-2026-09-26` — 4 file(s)
+- `assets/tables-seating-2026-09-26` — 4 file(s)
+- `assets/wall-counters-2026-09-26` — 4 file(s)
+- `assets/study-counters-2026-09-26` — 3 file(s)
+- `assets/corner-counters-refined-2026-09-26` — 2 file(s)
+- `assets/dressed-counters-2026-09-26` — 2 file(s)
 
 ### room/quarantine
 - `assets/rooms` — 1 file(s)
@@ -885,6 +923,9 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### room/xeno_lab
 - `rooms/underwater` — 1 file(s)
 
+### system/aquarium_life
+- `assets/new-room-props-2026-09-26` — 7 file(s)
+
 ### system/brinecore-animation/scenes/BRINECoreRoom.tscn
 - `brinecore-animation/assets` — 4 file(s)
 
@@ -894,13 +935,19 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### system/derelict_condition
 - `rooms/derelict-condition-v1` — 1 file(s)
 
+### system/drone_animation
+- `assets/drone-runtime-2026-09-26` — 3 file(s)
+
+### system/drone_dock
+- `assets/drone-runtime-2026-09-26` — 1 file(s)
+
 ### system/export_presets.cfg
-- `assets/audio` — 27 file(s)
+- `assets/audio` — 32 file(s)
 - `brineui/industrial-switches-v1` — 12 file(s)
+- `assets/fonts` — 3 file(s)
 - `brineui/comms-speaker-v2` — 2 file(s)
 - `brineui/heavy-lever-v1` — 2 file(s)
 - `character/brine-comms-v14` — 1 file(s)
-- `character/major-bill-v2` — 1 file(s)
 
 ### system/fire_effects
 - `assets/fire-effects-v1` — 3 file(s)
@@ -912,6 +959,9 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### system/hardware_panel
 - `brineui/comms-speaker-v2` — 2 file(s)
 - `brineui/heavy-lever-v1` — 2 file(s)
+
+### system/intro_film
+- `brineui/intro` — 1 file(s)
 
 ### system/main
 - `Brine icons/icons_64` — 16 file(s)
@@ -937,6 +987,12 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### system/meta_shop
 - `character/brine-comms-v14` — 1 file(s)
 
+### system/new_room_definitions
+- `rooms/new-room-expansion` — 1 file(s)
+
+### system/probe_launcher_mechanics
+- `assets/probe-launcher-v2` — 2 file(s)
+
 ### system/project.godot
 - `character/brine-comms-v14` — 1 file(s)
 
@@ -948,12 +1004,14 @@ Which asset folders each room, character or system loads. Moves must keep these 
 - `rooms/full-wall-v1` — 1 file(s)
 
 ### system/room_asset_library
+- `rooms/tileset-library` — 3 file(s)
 - `rooms/full-wall-v1` — 2 file(s)
-- `rooms/tileset-library` — 2 file(s)
+- `rooms/station-props-v2` — 1 file(s)
 
 ### system/room_card_art
 - `assets/room-cards-v2` — 44 file(s)
-- `assets/corridor-polish-v3` — 3 file(s)
+- `assets/new-room-cards` — 28 file(s)
+- `assets/corridor-risers-v2` — 3 file(s)
 
 ### system/room_layout_editor
 - `rooms/tileset-library` — 7 file(s)
@@ -962,11 +1020,19 @@ Which asset folders each room, character or system loads. Moves must keep these 
 ### system/room_layout_store
 - `rooms/full-wall-v1` — 2 file(s)
 
+### system/room_scale_preview
+- `character/robot-polish-v1` — 5 file(s)
+- `character/margot-polish-v1` — 3 file(s)
+
 ### system/station_audio_mix
 - `assets/audio` — 32 file(s)
 
 ### system/suno_audio_bank
 - `assets/audio` — 32 file(s)
+
+### system/survey_probe_art
+- `assets/survey-probe-v1-2026-09-26` — 28 file(s)
+- `assets/probe-outlet-stub-v3` — 2 file(s)
 
 ### system/swim_helmet_fit
 - `character/crew-underwater-v1` — 1 file(s)
@@ -994,29 +1060,43 @@ and must move as a unit.
 | `Brine icons/icons_64` | 16 | 17 | 0 |
 | `Brine icons/preview_sheet.png` | 0 | 0 | 1 |
 | `Brine icons/preview_sheet_all_icons.png` | 0 | 0 | 1 |
+| `assets/architecture-rollout-2026-09-26` | 2 | 0 | 0 |
 | `assets/archive-directional-v1` | 0 | 0 | 1 |
 | `assets/archive-wall-v1` | 1 | 0 | 0 |
 | `assets/audio` | 32 | 0 | 18 |
 | `assets/biodome-directional-v1` | 0 | 0 | 1 |
+| `assets/biomass-vessel-v1` | 1 | 0 | 4 |
 | `assets/brine-core-directional-v1` | 1 | 0 | 1 |
 | `assets/cargo-dolly-empty-v1` | 0 | 0 | 3 |
 | `assets/cargo-dolly-v1` | 0 | 0 | 6 |
 | `assets/cold-store-directional-v1` | 0 | 0 | 1 |
 | `assets/command-directional-v1` | 0 | 0 | 1 |
-| `assets/command-owner-v2` | 3 | 16 | 0 |
+| `assets/command-owner-v2` | 3 | 0 | 16 |
+| `assets/common-everyday-2026-09-26` | 6 | 0 | 0 |
+| `assets/common-props-calibrated-2026-09-26` | 27 | 0 | 0 |
+| `assets/common-storage-2026-09-26` | 6 | 0 | 0 |
+| `assets/common-surfaces-2026-09-26` | 6 | 0 | 0 |
 | `assets/construction-directional-v1` | 0 | 0 | 1 |
-| `assets/corridor-polish-v3` | 3 | 0 | 7 |
-| `assets/corridor-wall-variants-v1` | 7 | 0 | 10 |
+| `assets/corner-counters-refined-2026-09-26` | 2 | 0 | 0 |
+| `assets/corridor-polish-v3` | 0 | 0 | 10 |
+| `assets/corridor-risers-v2` | 17 | 0 | 0 |
+| `assets/corridor-wall-variants-v1` | 0 | 0 | 17 |
 | `assets/crew-linen-wall-v1` | 1 | 0 | 8 |
 | `assets/crew-scale-v1` | 0 | 0 | 22 |
 | `assets/department-floors-v1` | 4 | 0 | 1 |
 | `assets/department-floors-v2` | 6 | 0 | 1 |
-| `assets/door-polish-v1` | 2 | 46 | 0 |
+| `assets/directional-lounge-2026-09-26` | 4 | 0 | 0 |
+| `assets/door-polish-v1` | 2 | 0 | 46 |
+| `assets/door-polish-v2` | 2 | 0 | 0 |
+| `assets/door-polish-v3` | 19 | 0 | 0 |
+| `assets/dressed-counters-2026-09-26` | 2 | 0 | 0 |
+| `assets/drone-motion-v2-2026-09-26` | 127 | 0 | 0 |
+| `assets/drone-runtime-2026-09-26` | 34 | 0 | 0 |
 | `assets/drones` | 0 | 0 | 1 |
 | `assets/electrical-sparks-v1` | 0 | 0 | 2 |
-| `assets/environment` | 34 | 49 | 6 |
+| `assets/environment` | 0 | 0 | 89 |
 | `assets/fire-effects-v1` | 3 | 0 | 17 |
-| `assets/floor-details-v3` | 43 | 0 | 1 |
+| `assets/floor-details-v3` | 42 | 0 | 2 |
 | `assets/floor-dressing-style-v2` | 19 | 0 | 2 |
 | `assets/floor-kit-v6` | 0 | 32 | 45 |
 | `assets/floor-utilities-style-v2` | 16 | 0 | 3 |
@@ -1029,14 +1109,18 @@ and must move as a unit.
 | `assets/galley-directional-v1` | 0 | 0 | 1 |
 | `assets/gravity-directional-v1` | 0 | 0 | 1 |
 | `assets/hallway-floor-tiles-v1` | 1 | 0 | 10 |
-| `assets/hallway-floor-tiles-v2` | 1 | 0 | 10 |
+| `assets/hallway-floor-tiles-v2` | 0 | 0 | 11 |
+| `assets/hallway-props-v1` | 19 | 0 | 0 |
 | `assets/heat-recovery-directional-v1` | 0 | 0 | 1 |
 | `assets/holo-directional-v1` | 0 | 0 | 1 |
+| `assets/holo-projector-v1` | 1 | 0 | 4 |
 | `assets/holo-wall-v1` | 1 | 0 | 0 |
 | `assets/hydroponics-directional-v1` | 0 | 0 | 1 |
 | `assets/life-support-directional-v1` | 0 | 0 | 1 |
+| `assets/lounge-variations-2026-09-26` | 4 | 0 | 0 |
 | `assets/marsh-charging-v1` | 0 | 23 | 0 |
 | `assets/material-polish-bio-v2` | 0 | 0 | 2 |
+| `assets/material-polish-cryo-open-v1` | 0 | 3 | 0 |
 | `assets/material-polish-cryo-recovery-v1` | 21 | 7 | 0 |
 | `assets/material-polish-cryo-v1` | 0 | 0 | 2 |
 | `assets/material-polish-medical-v1` | 0 | 0 | 2 |
@@ -1050,22 +1134,32 @@ and must move as a unit.
 | `assets/meal-trolley-v1` | 0 | 0 | 3 |
 | `assets/med-center-directional-v1` | 0 | 0 | 1 |
 | `assets/med-office-directional-v1` | 0 | 0 | 1 |
+| `assets/metal-corner-variants-refined-2026-09-26` | 6 | 0 | 0 |
 | `assets/mining-directional-v1` | 0 | 0 | 1 |
-| `assets/new-tilesets` | 298 | 0 | 4 |
+| `assets/mining-rover-v1-2026-09-26` | 198 | 0 | 0 |
+| `assets/new-room-cards` | 28 | 0 | 0 |
+| `assets/new-room-props-2026-09-26` | 161 | 0 | 0 |
+| `assets/new-tilesets` | 33 | 0 | 29 |
 | `assets/observation-directional-v1` | 0 | 0 | 1 |
+| `assets/ocean-windows-v3` | 36 | 0 | 0 |
 | `assets/operator-stool-v1` | 0 | 0 | 3 |
 | `assets/owner-strict-overhead-v1` | 20 | 0 | 1 |
+| `assets/plants-matte-2026-09-26` | 10 | 0 | 0 |
 | `assets/playtest-visual-v1` | 0 | 0 | 1 |
+| `assets/probe-launcher-v2` | 2 | 0 | 0 |
+| `assets/probe-outlet-stub-v3` | 2 | 0 | 0 |
 | `assets/quarantine-directional-v1` | 0 | 0 | 1 |
 | `assets/rare-directional-v1` | 0 | 0 | 5 |
 | `assets/reactor-directional-v1` | 0 | 0 | 1 |
 | `assets/refinery-directional-v1` | 0 | 0 | 1 |
+| `assets/remaining-corners-refined-2026-09-26` | 10 | 0 | 0 |
 | `assets/repair-trolley-v1` | 0 | 0 | 3 |
 | `assets/riser-departments-v1` | 9 | 0 | 55 |
 | `assets/riser-wall-kit-style-v2` | 14 | 0 | 3 |
 | `assets/room-cards-v2` | 44 | 0 | 0 |
 | `assets/room-centerpieces-v1` | 0 | 0 | 2 |
 | `assets/room-consistency-v1` | 12 | 0 | 13 |
+| `assets/room-counters-2026-09-26` | 4 | 0 | 0 |
 | `assets/room-facing-repair-v2` | 2 | 0 | 4 |
 | `assets/room-floor-tiles-v3` | 3 | 0 | 3 |
 | `assets/room-floor-tiles-v4` | 6 | 0 | 7 |
@@ -1078,17 +1172,28 @@ and must move as a unit.
 | `assets/room-furnishings-v7` | 0 | 0 | 2 |
 | `assets/room-furnishings-v8` | 0 | 0 | 2 |
 | `assets/room-furnishings-v9` | 0 | 0 | 2 |
-| `assets/room-risers-v2` | 11 | 0 | 8 |
+| `assets/room-risers-expansion-v1` | 28 | 0 | 0 |
+| `assets/room-risers-v2` | 9 | 0 | 10 |
 | `assets/room-risers-v3` | 7 | 0 | 16 |
-| `assets/rooms` | 147 | 61 | 0 |
+| `assets/room-risers-v4` | 94 | 0 | 0 |
+| `assets/rooms` | 147 | 0 | 61 |
 | `assets/salvage-directional-v1` | 0 | 0 | 1 |
 | `assets/salvage-drone-directional-v1` | 0 | 0 | 1 |
+| `assets/salvage-drone-v1-2026-09-26` | 216 | 0 | 0 |
 | `assets/seal-maintenance-case-v1` | 0 | 0 | 3 |
+| `assets/servers-comms-shelves-2026-09-26` | 6 | 0 | 0 |
 | `assets/side-wall-inward-v2` | 1 | 0 | 15 |
 | `assets/side-wall-props-v1` | 7 | 0 | 3 |
 | `assets/side-wall-props-v5` | 1 | 0 | 1 |
+| `assets/special-north-walls-v1` | 2 | 0 | 0 |
 | `assets/specimen-carrier-v1` | 0 | 0 | 3 |
+| `assets/station-props-v2` | 323 | 0 | 0 |
 | `assets/storage-directional-v1` | 0 | 0 | 1 |
+| `assets/study-counters-2026-09-26` | 3 | 0 | 0 |
+| `assets/submarine-utilities-2026-09-26` | 8 | 0 | 0 |
+| `assets/survey-probe-v1-2026-09-26` | 28 | 0 | 0 |
+| `assets/tables-seating-2026-09-26` | 4 | 0 | 0 |
+| `assets/wall-counters-2026-09-26` | 4 | 0 | 0 |
 | `assets/wall-dressing-style-v2` | 49 | 0 | 5 |
 | `assets/wall-room-rollout-v1` | 11 | 0 | 57 |
 | `brinecore-animation/assets` | 6 | 0 | 0 |
@@ -1100,6 +1205,7 @@ and must move as a unit.
 | `brineui/divider_vertical.png` | 1 | 0 | 0 |
 | `brineui/heavy-lever-v1` | 2 | 0 | 3 |
 | `brineui/industrial-switches-v1` | 13 | 2 | 0 |
+| `brineui/intro` | 1 | 0 | 1 |
 | `brineui/navigation-badges-v3` | 0 | 7 | 0 |
 | `brineui/panel_large_vertical_9slice.png` | 1 | 0 | 0 |
 | `brineui/panel_medium_horizontal_9slice.png` | 1 | 0 | 0 |
@@ -1117,46 +1223,63 @@ and must move as a unit.
 | `brineui/terminal_panel_warning_9slice.png` | 1 | 0 | 0 |
 | `brineui/title` | 5 | 0 | 18 |
 | `character/Major_Bill` | 0 | 120 | 0 |
-| `character/animation-expansion-v5` | 1441 | 202 | 0 |
+| `character/animation-expansion-v5` | 1 | 0 | 1642 |
 | `character/branforth-motion-polish-v1` | 0 | 0 | 519 |
 | `character/brine-comms-v14` | 1 | 0 | 1 |
+| `character/brine-face-v7-2026-09-26` | 1 | 0 | 0 |
+| `character/brine-scale-v10-2026-09-26` | 1 | 0 | 0 |
+| `character/bunk-contact-study-2026-09-21` | 0 | 0 | 91 |
 | `character/chief-engineer-branforth-v1` | 6 | 0 | 122 |
-| `character/chief-engineer-branforth-v2` | 2181 | 4 | 0 |
-| `character/companion-cleanup-v3` | 148 | 0 | 180 |
-| `character/companion-personality-v1` | 102 | 0 | 24 |
-| `character/companion-water-v1` | 51 | 21 | 0 |
+| `character/chief-engineer-branforth-v2` | 2197 | 6 | 0 |
+| `character/companion-cleanup-v3` | 0 | 0 | 328 |
+| `character/companion-personality-v1` | 0 | 0 | 126 |
+| `character/companion-water-v1` | 1 | 0 | 71 |
 | `character/companions` | 3 | 11 | 0 |
 | `character/crew-action-detail-v2` | 0 | 0 | 1237 |
-| `character/crew-actions-v1` | 667 | 363 | 0 |
+| `character/crew-actions-v1` | 666 | 364 | 0 |
 | `character/crew-gait-v2` | 0 | 0 | 135 |
-| `character/crew-life-v1` | 1045 | 553 | 0 |
+| `character/crew-life-v1` | 1044 | 554 | 0 |
 | `character/crew-portraits-v1` | 0 | 0 | 12 |
-| `character/crew-underwater-v1` | 1304 | 2222 | 93 |
+| `character/crew-repair-polish-v1` | 0 | 0 | 205 |
+| `character/crew-underwater-v1` | 1261 | 2558 | 94 |
+| `character/cryo-open-study-2026-09-23` | 0 | 0 | 2 |
 | `character/dr-veld-v1` | 6 | 0 | 118 |
-| `character/dr-veld-v2` | 2179 | 7 | 0 |
-| `character/josh-repair-v4` | 133 | 0 | 29 |
+| `character/dr-veld-v2` | 2195 | 7 | 0 |
+| `character/josh-repair-v4` | 0 | 0 | 162 |
 | `character/josh-v1` | 26 | 0 | 2 |
-| `character/major-bill-v2` | 7 | 0 | 197 |
-| `character/major-bill-v3` | 2234 | 7 | 0 |
+| `character/major-bill-v2` | 6 | 0 | 198 |
+| `character/major-bill-v3` | 2279 | 154 | 0 |
+| `character/major-bill-walk-study-2026-09-20` | 0 | 0 | 19 |
+| `character/margot-polish-v1` | 353 | 0 | 0 |
 | `character/margot-v1` | 25 | 0 | 6 |
+| `character/marsh-berth-v1` | 1 | 0 | 1 |
+| `character/marsh-cargo-drain-v1` | 0 | 0 | 53 |
+| `character/marsh-carry-turns-v1` | 0 | 0 | 108 |
 | `character/marsh-motion-polish-v1` | 28 | 0 | 972 |
 | `character/marsh-portrait-v3` | 1 | 0 | 1 |
-| `character/marsh-v1` | 98 | 0 | 111 |
-| `character/marsh-v2` | 711 | 5 | 0 |
+| `character/marsh-swim-cargo-v1` | 0 | 0 | 105 |
+| `character/marsh-swim-carry-turns-v1` | 0 | 0 | 110 |
+| `character/marsh-swim-transitions-v1` | 0 | 0 | 69 |
+| `character/marsh-swim-turns-v1` | 0 | 0 | 109 |
+| `character/marsh-v1` | 1 | 0 | 208 |
+| `character/marsh-v2` | 1048 | 84 | 0 |
 | `character/portraits-backgrounds-v1` | 3 | 0 | 5 |
+| `character/portraits-brine-style-v1` | 9 | 0 | 0 |
 | `character/portraits-lighting-v1` | 3 | 0 | 2 |
 | `character/portraits-realism-v3` | 1 | 0 | 8 |
+| `character/robot-polish-v1` | 445 | 0 | 0 |
+| `character/robot-rescue-v1` | 29 | 0 | 0 |
 | `character/veld-identity-correction-v1` | 0 | 0 | 1158 |
-| `mining-drone-animation/animations` | 0 | 191 | 0 |
-| `mining-drone-animation/rotations` | 0 | 8 | 0 |
 | `rooms/architect-cryo-v1` | 2 | 0 | 20 |
 | `rooms/derelict-condition-v1` | 1 | 0 | 1 |
 | `rooms/floor-profiles-v1` | 2 | 0 | 1 |
-| `rooms/foundation-v1` | 0 | 1 | 0 |
-| `rooms/full-wall-v1` | 4 | 245 | 0 |
+| `rooms/foundation-v1` | 0 | 0 | 1 |
+| `rooms/full-wall-v1` | 4 | 249 | 0 |
 | `rooms/modular` | 3 | 17 | 0 |
+| `rooms/new-room-expansion` | 1 | 0 | 0 |
 | `rooms/power-expansion-v1` | 6 | 2 | 0 |
 | `rooms/production-ten` | 11 | 0 | 19 |
-| `rooms/tileset-library` | 8 | 0 | 4 |
+| `rooms/station-props-v2` | 1 | 0 | 0 |
+| `rooms/tileset-library` | 9 | 0 | 5 |
 | `rooms/underwater` | 28 | 5 | 76 |
 | `rooms/whole-room` | 6 | 0 | 6 |

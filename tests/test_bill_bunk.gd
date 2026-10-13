@@ -27,7 +27,12 @@ func run():
 	check(actor.goal=="fatigue" and actor.goal_cell==HAB,"Normal chooser selects the bunk")
 	var peer=game.veld_npc
 	await peer.rebuild(game);peer.active=true
-	peer.foot=peer.graph.get_point_position(peer.nearest_in_room(center-Vector2(90,0),HAB))
+	# The peer queries Bill's reservation while approaching; its requested in-room
+	# point is blocked in the current berth. Use a real available navigation point.
+	var peer_point:int=peer.graph.get_closest_point(center-Vector2(90,0))
+	check(peer_point>=0,"Peer has an actual navigation point")
+	if peer_point<0:quit(1);return
+	peer.foot=peer.graph.get_point_position(peer_point)
 	peer.path.clear();peer.goal="";peer.stage=""
 	for need in peer.needs:peer.needs[need]=100.0 if need=="fatigue" else 0.0
 	peer.avoidance_positions=PackedVector2Array([actor.foot])

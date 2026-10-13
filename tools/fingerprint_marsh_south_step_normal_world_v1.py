@@ -1,0 +1,24 @@
+from pathlib import Path
+import hashlib,json,re,sys
+ROOT=Path(__file__).resolve().parents[1];paths={ROOT/'project.godot',ROOT/'scenes/main.tscn'}
+paths.update(ROOT/p for p in ['tools/install_marsh_south_step_contact_v1.py','character/marsh-v2/supplemental/south-step-contact-v1/admission.json','character/marsh-south-step-detail-v1/candidate-02-registered-frame.png'])
+for folder in ['scripts','rooms']:
+ paths.update((ROOT/folder).rglob('*.gd'));paths.update((ROOT/folder).rglob('*.gd.uid'))
+for name in ['review_marsh_south_step_normal_world_v1.gd','review_marsh_south_step_normal_world_v1.gd.uid','fingerprint_marsh_south_step_normal_world_v1.py','install_marsh_south_step_detail_v1.py','review_marsh_south_step_detail_v1.gd','review_marsh_south_step_detail_v1.gd.uid','fingerprint_marsh_south_step_detail_v1.py','install_marsh_cargo_matched_v1.py','review_marsh_cargo_normal_player_v1.gd','review_marsh_cargo_normal_player_v1.gd.uid','review_marsh_cargo_normal_world_v1.gd','review_marsh_cargo_normal_world_v1.gd.uid','fingerprint_marsh_cargo_normal_v1.py']:paths.add(ROOT/'tools'/name)
+# Freeze quoted runtime artwork/data; no folder-prefix expansion or output traversal.
+for p in list(paths):
+ if p.suffix=='.gd':
+  for ref in re.findall(r'"(res://[^"\n]+\.(?:png|json|tscn|ttf))"',p.read_text()):
+   q=ROOT/ref.removeprefix('res://')
+   if q.is_file():paths.add(q)
+catalog=ROOT/'character/marsh-v2/catalog.json';paths.add(catalog);data=json.loads(catalog.read_text())
+for rel in data['body']+data['equipment']:
+ mp=(catalog.parent/rel).resolve();paths.add(mp)
+ for state in json.loads(mp.read_text())['states']:
+  for f in state['frameFiles']:paths.add(ROOT/f.removeprefix('res://') if f.startswith('res://') else (mp.parent/f).resolve())
+for rel in ['admission.json','selection.json']:paths.add(ROOT/'character/marsh-v2/supplemental/south-step-detail-v1'/rel)
+receipt=json.loads((ROOT/'character/marsh-v2/supplemental/south-step-detail-v1/admission.json').read_text())
+paths.add(ROOT/receipt['oldManifest']);paths.add(ROOT/receipt['wholeSource'])
+for f in receipt['originalSources']:paths.add(ROOT/f['path'])
+records={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
+Path(sys.argv[1]).write_text(json.dumps(records,indent=2)+'\n');print(len(records),'bounded normal cargo source/runtime/art inputs')

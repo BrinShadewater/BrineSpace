@@ -181,7 +181,7 @@ func _init() -> void:
 	var base: Dictionary = grid.bill_room_geometry(moonbay, [], moonbay.pos)
 	moonbay.rotation = 1
 	var rotated: Dictionary = grid.bill_room_geometry(moonbay, [], moonbay.pos)
-	check(not base.blockers.is_empty() and not rotated.blockers.is_empty() and base.blockers[0] == rotated.blockers[0], "Rear pressure enclosure retains its south-facing registration")
+	check(not base.blockers.is_empty() and not rotated.blockers.is_empty() and bay.bay_center(moonbay).distance_to(Vector2(0,-156))<0.01, "Pressure enclosure follows the ocean hull while the sub stays south-facing")
 	grid.free()
 	if not plant.is_empty():
 		var game = Main.new()

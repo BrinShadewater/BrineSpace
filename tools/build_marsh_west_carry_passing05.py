@@ -1,0 +1,7 @@
+"""Pack compact complete far passing after low heel-recovery correction."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+s=(ROOT/'tools/build_marsh_east_carry_contact03.py').read_text().replace('east','west').replace('East','West').replace('contact-03','passing-05').replace('far-contact.png','far-passing.png').replace('exec-1661ff9f-b710-4f30-ae90-3b6dc30c659a','exec-e23917c0-5b25-423f-98aa-b8f8ba6c1760')
+s=s.replace('foreground thigh correctly backward/left, boot contact projection and crate variant remain provisional','correct far support, foreground near thigh vertical with rear near calf folded RIGHT and boot raised; joins provisional')
+s=s.replace('Foreground near thigh correctly goes backward LEFT, darker far thigh forward RIGHT. Far front boot angled and projects above rear near boot; supporting sole not certified. Crate single-latch broad recessed panel differs from source01 rounded box; cannot assume cross-half consistency. Whole body/grade/crate/contact joins pending.','Foreground near thigh now nearly vertical, near knee RIGHT of darker far knee, near calf folded BACK RIGHT and whole rear near boot raised. Dark far flat shin/boot support LEFT under pelvis. Correct compact far passing. Inset crate panel/single block latch remains, but divided panel detail varies and near half/whole joins pending.')
+exec(compile(s,str(Path(__file__).resolve()),'exec'),{'__file__':str(Path(__file__).resolve()),'__name__':'__main__'})

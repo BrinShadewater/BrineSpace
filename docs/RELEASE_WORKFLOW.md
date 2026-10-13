@@ -4,6 +4,10 @@
 
 # BrineSpace release workflow
 
+October 11 performance continuation: see the [Claude handoff](CLAUDE_PERFORMANCE_HANDOFF_2026-10-11.md)
+before further optimization or certification. The reused diagnostic runtime is not
+a full-current-source release candidate; validated private storage still needs integration.
+
 Use this when making a playable build or certifying packaged assets. This is not
 required for a portrait candidate or a documentation-only change.
 
@@ -104,6 +108,49 @@ for release checks: `python tests/test_release_manifest.py`,
 An explicit `--only` selection now rejects missing or filtered-out names instead
 of silently succeeding with zero tests. Three selection regressions pass in
 `tests/test_test_runner_selection.py`; a valid Godot selection still lists normally.
+
+## Packaged Windows performance workloads
+
+`tools/run_release_benchmark.py --release-exe <BrineSpace.exe> --save <frozen-checkpoint> --output <new-evidence-directory>`
+runs the existing fresh/reported/large workloads through a **physical QA copy** of
+the executable and adjacent PCK. The delivery directory receives no overrides.
+The QA copy uses a temporary autoload adapter and empty entry scene; it explicitly
+requires `debug=false`, verifies its user-data directory before gameplay writes,
+and retains owner-profile fingerprints. These automated workloads do not test the
+normal intro/title/dialogue entry path; run the separate release smoke check too.
+
+`--godot <editor>` remains the development-diagnostics mode. Do not pass a release
+template there: official templates can reject loose-project path overrides. Each
+QA copy records executable/PCK/fixture hashes and available build metadata.
+Loading fields are additive: `ready_ms` retains its historical post-scene-load
+scope; `scene_load_ms` covers resource loading, `scene_request_to_ready_ms` includes
+that stage and loading-screen setup, and `engine_uptime_at_ready_ms` includes engine
+bootstrap. None substitutes for timing the normal intro/title/Continue path.
+Reports also record automatic-report enablement and captures, because script-led
+editor fixtures disable automatic capture while the packaged autoload fixture
+keeps normal runtime diagnostics. Account for that when comparing results.
+
+October 4 measurement correction: the workload now schedules its deterministic
+simulation step inside a normal Node `_process`, before the grid updates. The
+older `process_frame` signal driver caused a deferred redraw before node updates
+and another afterward (native regression: two draws versus one). Historical
+results remain evidence for that older fixture, not directly comparable gameplay
+timings. Reports identify `simulation_driver`; re-run both package versions with
+the same current fixture for comparisons. `--trace` adds at most 4096 frame-boundary
+records. These are CPU wall intervals around render signals, not GPU timings;
+collection time is reported separately from the measured sample.
+Keep the native test window visible and avoid concurrent game/export jobs. The
+fixture rejects minimized measured frames and stops after five seconds without
+a rendered frame. A partial JSON without the completion marker is not an accepted
+run. Do not convert interrupted or minimized runs into a performance comparison.
+The runner relocates deeply nested Windows test profiles to a short temporary
+APPDATA folder and records `profile-location.json` plus the resolved profile in
+each result. Preserve that folder with the evidence when retention is required.
+Long shader-cache paths caused a reproducible startup error during native QA;
+the same cache copied to a short profile started cleanly. Never relocate or clear
+the player's normal profile to accommodate a benchmark.
+The packaged option currently supports Windows EXE + external PCK; Mac bundle
+launch/isolation still needs its own native implementation and validation.
 
 ## Checks that establish different things
 

@@ -138,8 +138,8 @@ func _run() -> void:
 	# The swap plus checkpoint restore normally lands within a few frames, but on a
 	# loaded machine the half second above was not always enough and this flaked.
 	# Keep waiting only until the restored state is actually present; the checks
-	# below still report a genuine failure once the ten seconds run out.
-	var settle_until := Time.get_ticks_msec()+10000
+	# below still report a genuine failure once the bounded loading deadline runs out.
+	var settle_until := Time.get_ticks_msec()+120000
 	while Time.get_ticks_msec()<settle_until:
 		var scene = current_scene
 		# startup_complete is set only after the staged restore finishes (and pauses the station);

@@ -5,11 +5,38 @@ extends SceneTree
 const Trickle=preload("res://scripts/metal_trickle.gd")
 var failures := 0
 
+class CountingFleet extends "res://scripts/drone_fleet.gd":
+	var queries := 0
+	func harvest_route_plan(home: Vector2i, wrecks: Dictionary) -> Dictionary:
+		queries += 1
+		return super.harvest_route_plan(home, wrecks)
+
+class BudgetStation extends RefCounted:
+	var resources := {"metal": 2}
+	var cycle := 3
+	var placed_rooms := [{"id":"mining_drone_bay", "pos":Vector2i.ZERO}]
+	var wrecks := {}
+	var drone_fleet := CountingFleet.new()
+	func _log(_message: String) -> void: pass
+
 func _init(): call_deferred("run")
 func check(ok: bool, message: String) -> void:
 	if not ok: failures += 1; push_error(message)
 
 func run() -> void:
+	var expected := OS.get_environment("BRINESPACE_TEST_USER_DIR")
+	if expected.is_empty() or OS.get_user_data_dir().replace("\\", "/") != expected:
+		push_error("Metal trickle test requires a verified scratch profile"); quit(2); return
+	# Real harvest routing, with a counter at its boundary. Queries on ineligible
+	# cycles caused a recurring large-station stall despite ample Metal.
+	for sample in [[2,3,true,0,0], [10,3,true,0,0], [0,1,true,0,0],
+			[0,3,true,0,1], [0,3,false,1,1], [1,6,false,1,1]]:
+		var station := BudgetStation.new()
+		station.resources.metal = sample[0]; station.cycle = sample[1]
+		station.drone_fleet.drones[Vector2i.ZERO] = {"kind":"mining"}
+		station.drone_fleet.sites[Vector2i(1,0)] = {"kind":"mining", "discovered":true, "active":sample[2], "units":10}
+		check(Trickle.apply(station) == sample[3], "Emergency Metal outcome for %s" % str(sample))
+		check(station.drone_fleet.queries == sample[4], "Only eligible emergency Metal cycles query harvest routes: %s got %d" % [str(sample), station.drone_fleet.queries])
 	var store=preload("res://scripts/room_layout_store.gd");store.loaded=true;store.data={}
 	var game=load("res://scenes/main.tscn").instantiate()
 	var stem="user://metal_trickle_%d"%OS.get_process_id()

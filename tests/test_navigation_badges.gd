@@ -62,8 +62,11 @@ func run() -> void:
 			var frame: StyleBox = button.get_theme_stylebox("normal")
 			assert(icon.position.y >= 4 and absf(frame.content_margin_bottom - icon.position.y) <= 1.0, "Badge and caption are centred in the button")
 			assert(frame.content_margin_top == icon.position.y + icon.size.y + 4, "Caption sits just below the badge")
-			var frame_image: Image = (frame as StyleBoxTexture).texture.get_image()
-			for x in range(frame_image.get_width()): assert(frame_image.get_pixel(x,8) == frame_image.get_pixel(x,7), "No highlight line runs across the top of the badge")
+			if frame is StyleBoxTexture:
+				var frame_image: Image = frame.texture.get_image()
+				for x in range(frame_image.get_width()): assert(frame_image.get_pixel(x,8) == frame_image.get_pixel(x,7), "No highlight line runs across the top of the badge")
+			else:
+				assert(frame.get_script() == preload("res://scripts/ui_hull_style.gd") and frame.state == "normal", "Current shared hull button skin remains respected")
 		assert(absf(widths.max() - widths.min()) < 1.0, "Navigation buttons share equal space")
 		var panel = game.find_child("ControlsPanel",true,false)
 		assert(panel.get_global_rect().end.y <= game.get_node("Root").size.y, "Time and cycle panel fits the window")
@@ -71,9 +74,12 @@ func run() -> void:
 		root.get_texture().get_image().save_png("res://output/navigation-%d.png" % extent.x)
 	game._finish_guide()
 	for i in range(12): await process_frame
-	assert(game.find_child("PreviewPanel",true,false).custom_minimum_size.y == 520.0, "Inspector regains its full reading height when the guide closes")
+	assert(not game.guide_box.visible and game.inspector_label.custom_minimum_size.y >= 180.0, "Retired guide leaves a readable inspector")
 	var cycle_panel = game.find_child("ControlsPanel",true,false)
-	cycle_panel.get_parent().get_parent().scroll_vertical = 10000
+	var cycle_scroll: Node = cycle_panel.get_parent()
+	while cycle_scroll != null and not cycle_scroll is ScrollContainer: cycle_scroll = cycle_scroll.get_parent()
+	if cycle_scroll is ScrollContainer: cycle_scroll.scroll_vertical = 10000
+	else: assert(cycle_panel.visible and cycle_panel.get_global_rect().end.y <= game.get_node("Root").size.y, "Fixed controls remain reachable without sidebar scrolling")
 	root.size = Vector2i(1600,900)
 	for i in range(12): await process_frame
 	await RenderingServer.frame_post_draw

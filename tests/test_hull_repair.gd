@@ -7,7 +7,7 @@ var game
 func check(ok: bool,message: String):
 	if not ok: failures+=1; push_error(message)
 func _init(): call_deferred("run")
-func capture(label: String,zoom := 0.8):
+func capture(label: String,zoom := 0.4):
 	if DisplayServer.get_name()=="headless": return
 	game._set_grid_zoom(zoom,true,(Vector2(20,20)+Vector2.ONE*0.5)/40.0)
 	game.selected_card_id=""
@@ -15,7 +15,11 @@ func capture(label: String,zoom := 0.8):
 	preload("res://scripts/flood_alerts.gd").refresh(game)
 	game._refresh_all()
 	for i in range(5): await process_frame
-	await RenderingServer.frame_post_draw
+	var at: Vector2=Vector2(20.5,20.5)*game.get_cell_size()
+	game.grid_scroll.scroll_horizontal=maxi(0,roundi(at.x-game.grid_scroll.size.x*.5))
+	game.grid_scroll.scroll_vertical=maxi(0,roundi(at.y-game.grid_scroll.size.y*.5))
+	await process_frame
+	RenderingServer.force_draw(false)
 	root.get_texture().get_image().save_png("res://output/hull-"+label+".png")
 func run():
 	game=load("res://scenes/main.tscn").instantiate()
@@ -23,6 +27,7 @@ func run():
 	game.run_save_path=game.meta.save_path+".loop"
 	root.add_child(game)
 	current_scene=game
+	while not game.startup_complete: await process_frame
 	game.set_process(false)
 	game.tick_timer.stop()
 	game.crew_comms.set_process(false)
@@ -172,6 +177,9 @@ func run():
 	room.hull_crack=0.8
 	room.water_level=0.2
 	await capture("rupture-normal-zoom",0.4)
+	for stage in [{"name":"hairline-normal-zoom","severity":0.2},{"name":"split-normal-zoom","severity":0.6}]:
+		room.hull_crack=stage.severity
+		await capture(stage.name,0.4)
 	print("HULL REPAIR ","PASS" if failures==0 else "FAIL")
 	DirAccess.remove_absolute(game.run_save_path)
 	DirAccess.remove_absolute(game.meta.save_path)

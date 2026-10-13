@@ -55,17 +55,31 @@ func run() -> void:
 		{"name":"draining","phase":"drain","water":0.5,"damage":0},
 		{"name":"damaged","phase":"idle","water":0.0,"damage":1}
 	]
+	scenes += [
+		{"name":"airlock-filling","phase":"flood","water":0.5,"damage":0,"progress":3.0},
+		{"name":"wet-side-opening","phase":"boarding","water":1.0,"damage":0,"progress":0.4},
+		{"name":"sea-gate-opening","phase":"launch","water":1.0,"damage":0,"progress":0.4},
+		{"name":"sea-gate-closing","phase":"outbound","water":0.9,"damage":0,"progress":0.4},
+		{"name":"airlock-return-draining","phase":"drain","water":0.5,"damage":0,"progress":3.0},
+		{"name":"dry-side-opening","phase":"unload","water":0.0,"damage":0,"progress":0.4}
+	]
 	for scene in scenes:
 		state.phase = scene.phase
-		state.progress = 3.0
+		state.progress = float(scene.get("progress",3.0))
+		state["cycle_clock"] = 1.2+state.progress
 		state.chamber_water = scene.water
 		state.damage = scene.damage
 		state.crew = "bill" if scene.phase!="idle" else ""
 		state.order = "survey" if scene.phase!="idle" else ""
 		state.target = Vector2i(29,29) if scene.phase!="idle" else Vector2i(-1,-1)
-		state.station_open = scene.phase in ["idle","approach"]
+		state.station_open = scene.phase in ["idle","approach","unload"]
 		state.ocean_open = scene.phase=="launch"
 		actor.moonbay_assignment = {"home":home,"onboard":true} if scene.phase!="idle" else {}
+		if scene.phase in ["flood","boarding","drain","unload"]:
+			actor.moonbay_assignment.onboard=false
+			actor.helmet_equipped=true
+			actor.movement_medium="flooded" if scene.water>=0.55 else "dry"
+			actor.foot=(Vector2(home)+Vector2.ONE)*actor.CELL+preload("res://rooms/large-rooms/moonbay.gd").airlock_point(room)
 		actor.goal = "moonbay" if scene.phase!="idle" else ""
 		game._refresh_inspector()
 		game.find_child("MoonbayPanel",true,false).refresh()

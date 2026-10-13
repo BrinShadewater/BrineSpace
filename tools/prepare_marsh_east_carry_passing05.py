@@ -1,0 +1,17 @@
+"""Freeze next whole far-passing pose using the corrected opposite cargo stance."""
+from pathlib import Path
+import hashlib,json
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[1];S=ROOT/'character/marsh-east-carry-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+pose=ROOT/'character/marsh-east-carry-material-v1/contact-04-unselected/far-contact.png';guide=S/'passing-05-whole-far-guide.png';Image.open(pose).convert('RGBA').resize((736,736),Image.Resampling.NEAREST).save(guide)
+g=json.loads((S/'guide-provenance.json').read_text())
+prompt='''Draw TWO complete EAST/right-facing adult Marsh figures on transparent background with wide gutters: FAR-support passing and unobstructed neutral ruler. Reference ONE whole figure has the correct opposite cargo posture: light FOREGROUND NEAR THIGH points BACK/LEFT, darker FAR leg reaches forward RIGHT; both arms support slate waist crate. Preserve this whole identity, cargo design/side projection/hand support and leg identity. Change only the complete posture into low passing: DARKER FAR LEG supports its FLAT boot directly under pelvis; light FOREGROUND NEAR thigh is almost vertical/slightly backward LEFT, knee gently flexed with its WHOLE NEAR rear boot raised to screen LEFT, clearly ABOVE flat supporting far boot by roughly eight production rows. Foreground knee remains slightly LEFT of the far supporting knee. Do not put foreground near thigh/boot forward RIGHT into a near-support pose. Mild natural compression, no high knee/squat/running/airborne supporting foot. Same anatomical limb lengths and equipment sizes; no shortened thigh/shin.
+
+Reference TWO selected East idle is PRIMARY for small adult head/face, fitted body/limb proportions, elevated side camera and quiet warm matte pixel grade. Reference THREE original own East master controls swept blond hair, visible temple implant, collar/chest plate/harness/pouches and authentic ankle buckles. No mirrored identity or broadened head/torso. Figure1 retains the exact same slate crate as reference ONE, same side panel/latch, width/height/depth/side camera and two bent supporting arms. Near glove wraps near side, far hand naturally occluded. Chest/face visible, box stays close to waist. Do not redesign crate or swing arms.
+Figure2 exact neutral East standing ruler matching reference TWO, arms down, no crate. One147 occupied neutral calibration, runtimeH148,184canvas,p92/172; no per-pose or cargo-width fitting.
+
+Warm ivory fabric/plates, muted sage shoulders/pouches, slate joints/crate, charcoal gloves/soles, quiet crisp warm matte pixel clusters. TWO complete connected hair-to-sole bodies with wide transparent empty gutters, no floor/shadow/glow/haze/text/labels. FAR supporting boot flat under pelvis, NEAR boot raised behind LEFT; no near-support substitution.'''
+p=S/'passing-05.prompt.txt';assert not p.exists();p.write_text(prompt+'\n',encoding='utf-8');refs=[guide,S/'selected-idle0-only.png',ROOT/g['originalOwnMaster']['path']]
+(S/'passing-05.request.json').write_text(json.dumps({'normalAdmission':False,'fullGoalComplete':False,'status':'frozen before generation; not started','promptSha256':sha(p),'orderedReferences':[{'path':q.relative_to(ROOT).as_posix(),'sha256':sha(q)} for q in refs],'sourceFrames':[{'path':pose.relative_to(ROOT).as_posix(),'sha256':sha(pose)}],'sheetGrid':[2,1],'transparentBackground':True},indent=2)+'\n')
+print('Frozen next complete far-support passing request; no generation started.')

@@ -56,7 +56,14 @@ def main() -> int:
     main_src = (ROOT / "scripts/main.gd").read_text(encoding="utf-8-sig")
     icon_block = re.search(r"const RESOURCE_ICON_PATHS := \{(.*?)\n\}", main_src, re.S)
     if icon_block is None:
-        print("ERROR: RESOURCE_ICON_PATHS not found in scripts/main.gd")
+        registry = re.search(r'const RESOURCE_ICON_PATHS := preload\("(res://[^"\n]+)"\)\.(\w+)', main_src)
+        if registry:
+            registry_path = (ROOT / registry.group(1)[len("res://"):]).resolve()
+            if registry_path.is_relative_to(ROOT.resolve()) and registry_path.is_file():
+                registry_src = registry_path.read_text(encoding="utf-8-sig")
+                icon_block = re.search(r"const " + re.escape(registry.group(2)) + r" := \{(.*?)\n\}", registry_src, re.S)
+    if icon_block is None:
+        print("ERROR: RESOURCE_ICON_PATHS registry could not be resolved from scripts/main.gd")
         return 1
     imported |= {m[len("res://"):] for m in re.findall(r'"(res://[^"]+)"', icon_block.group(1))}
     tracked = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard"], cwd=ROOT,

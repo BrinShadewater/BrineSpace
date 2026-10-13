@@ -15,7 +15,7 @@ func run() -> void:
 		if style!=null:
 			var centre:=style.texture.get_image().get_pixel(100,142)
 			expect(absf(centre.r-fill.r)<.004 and absf(centre.g-fill.g)<.004 and absf(centre.b-fill.b)<.004,"Inner stock stays neutral across departments")
-			expect(style.content_margin_left==8 and style.content_margin_right==8 and style.content_margin_top==8 and style.content_margin_bottom==7,"Content margins retained")
+			expect(style.content_margin_left==12 and style.content_margin_right==12 and style.content_margin_top==10 and style.content_margin_bottom==10,"Content margins retained")
 	var parent:=Control.new();root.add_child(parent)
 	Art.add_mark(parent,"Operations",Vector2(5,2),Vector2(16,16),Color.WHITE,"TestEmblem")
 	Art.add_mark(parent,"common",Vector2(-15,2),Vector2(12,12),Color.WHITE,"TestRarity")
@@ -25,14 +25,16 @@ func run() -> void:
 	var red_frame:=Art.frame_style(fill,Color("#d9534f")).texture.get_image()
 	var blue_frame:=Art.frame_style(fill,Color("#4f8fe6")).texture.get_image()
 	expect(red_frame.get_pixel(3,142)==blue_frame.get_pixel(3,142),"Outer metal stays neutral across departments")
-	expect(red_frame.get_pixel(7,142)==blue_frame.get_pixel(7,142),"Inset outline leaves a gap beside the metal")
-	Art.update_inner_outline(parent,Color("#e6c84f"),true)
-	var edge:=parent.get_node("CardInnerOutline")
-	expect(edge.z_index==0 and edge.get_index()==parent.get_child_count()-1 and edge.outline.border_width_left==3,"Inner outline is the last child (over the content) without a raised z, so a fan neighbour cannot draw over it")
-	Art.update_inner_outline(parent,Color("#46d3e6"),true)
-	expect(edge.outline.border_color==Color("#46d3e6"),"Outline follows updated card state color")
-	Art.update_inner_outline(parent,Color.WHITE,false)
-	expect(not edge.visible,"Flat fallback hides authored inner outline")
+	expect(red_frame.get_pixel(7,142)!=blue_frame.get_pixel(7,142),"Department backing shows through the gap inside the metal")
+	expect(red_frame.get_pixel(4,142)==blue_frame.get_pixel(4,142),"Opaque authored metal covers colored backing")
+	var source := Art.texture("frame").get_image()
+	var opaque_corners := 0
+	for y in range(16):
+		for x in range(16):
+			if source.get_pixel(x,y).a == 1.0 and red_frame.get_pixel(x,y).a > .99:
+				if red_frame.get_pixel(x,y) != blue_frame.get_pixel(x,y): push_error("Metal corner overwritten by department border"); failures += 1
+				opaque_corners += 1
+	expect(opaque_corners > 0,"Corner plates tested above department backing")
 	expect(translucent.texture.get_image().get_pixel(3,142).a>.99,"Frame trim stays opaque over translucent stock")
 	expect(absf(translucent.texture.get_image().get_pixel(100,142).a-.78)<.004,"Inner stock retains its state opacity")
 	var saved:=Art.textures.duplicate();Art.textures["frame"]=null

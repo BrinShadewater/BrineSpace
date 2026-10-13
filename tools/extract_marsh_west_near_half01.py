@@ -1,0 +1,14 @@
+"""Only complete separated cells; never cut through joined figures3/4."""
+from pathlib import Path
+import json,hashlib,numpy as np
+from PIL import Image,ImageDraw
+from rebuild_bill_art import binary
+ROOT=Path(__file__).resolve().parents[1];BASE=ROOT/'character/marsh-west-run-material-v1'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+rawpath=BASE/'sources/run-01.raw.png';raw=Image.open(rawpath).convert('RGBA');a=np.array(raw);xs=np.flatnonzero(np.sum(a[:,:,3]>=128,axis=0)>=2);groups=np.split(xs,np.flatnonzero(np.diff(xs)>8)+1);assert len(groups)==6
+edges=[0]+[round((groups[i].max()+groups[i+1].min())/2) for i in range(5)]+[raw.width];indices=[0,1,3,4,5];cuts=[(edges[i],0,edges[i+1],raw.height) for i in indices];cells=[binary(raw.crop(c)) for c in cuts];nb=cells[-1].getbbox();scale=147/(nb[3]-nb[1]);out=BASE/'near-half-01-unselected';out.mkdir(exist_ok=True);names=['near-contact.png','near-passing.png','duplicate-near-passing.png','near-flight.png','ruler.png'];records=[];frames=[]
+for i,c in enumerate(cells):
+    dense=binary(c.resize((round(c.width*scale),round(c.height*scale)),Image.Resampling.BOX));b=dense.getbbox();bottom=172 if i!=3 else 172+round((c.getbbox()[3]-nb[3])*scale);offset=(92-round((b[0]+b[2])/2),bottom-b[3]);f=Image.new('RGBA',(184,184));f.alpha_composite(dense,offset);assert np.count_nonzero(np.array(f)[:,:,3])==np.count_nonzero(np.array(dense)[:,:,3]);f.save(out/names[i]);fb=f.getbbox();frames.append(f);records.append({'file':names[i],'sourceCell':cuts[i],'sourceGroup':indices[i],'wholeTranslation':offset,'bounds':fb,'size':[fb[2]-fb[0],fb[3]-fb[1]],'sha256':sha(out/names[i])})
+recipe={'normalAdmission':False,'fullGoalComplete':False,'commonNeutralScale':scale,'neutralOccupiedTargetHeight':147,'rawSha256':sha(rawpath),'records':records,'omittedSource':'Combined alpha column group2 contains figures3/4 without clean vertical gutter; retained untouched in raw, not split or used.','operations':'Five complete separated whole cells, one neutral BOX scale, alpha128, whole translation, no clipping. No mirror/patch/recolour/perposefit.','limits':'Only near contact/passing/flight and duplicate passing plus ruler held. No fullcycle manifest/native/master acceptance.'};(out/'recipe.json').write_text(json.dumps(recipe,indent=2)+'\n');board=Image.new('RGB',(6*368,440),'#293b40');draw=ImageDraw.Draw(board);idle=Image.open(ROOT/'character/marsh-v2/frames/bare/idle-west/000.png').convert('RGBA')
+for i,f in enumerate([idle]+frames):large=f.resize((368,368),Image.Resampling.NEAREST);board.paste(large,(i*368,50),large);draw.text((i*368+4,5),(['Selected West idle']+names)[i],fill='white')
+board.save(out/'comparison.png');print(json.dumps({'scale':scale,'sizes':[r['size'] for r in records],'completeExtractedFigures':5,'joinedFiguresOmitted':2,'normalAdmission':False}))

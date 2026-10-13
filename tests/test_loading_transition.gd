@@ -17,6 +17,10 @@ func check(ok: bool, message: String) -> void:
 
 func run() -> void:
 	root.gui_disable_input = true
+	# These nested Main dependencies must be ready before the background scene
+	# request. Loading them during background parsing left anonymous zero-ref objects.
+	check(ResourceLoader.has_cached("res://scripts/derelict_material.gdshader"), "Derelict shader prepared before background Main loading")
+	check(ResourceLoader.has_cached("res://scripts/underwater_fog.gdshader"), "Fog shader prepared before background Main loading")
 	# Set isolated write targets before gameplay's _ready. The overlay itself
 	# must prevent simulation while the player reads.
 	root.child_entered_tree.connect(func(node: Node):

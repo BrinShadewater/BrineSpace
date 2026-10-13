@@ -1,5 +1,41 @@
 # Environment production contract
 
+## Current ocean-art integration contract - September 30, 2026
+
+Recent small seabed remains, overhead rock features and alternate brine/coral/iron
+floors are installed in source. This supersedes provisional status only for those
+selected original-art packs; unrelated bought scenery and dated export counts
+retain their own scope. See [session closeout](OCEAN_ART_SESSION_CLOSEOUT_2026-09-30.md).
+
+Keep ground materials fine-grained at full-field scale and props overhead/matte.
+Use cell-based size comparisons with visible alpha bounds; 512px props and 1024px
+ground exports are not interchangeable density standards. Preserve immutable
+versioned sources, exact prompts and rejected versions. Art variants use saved
+centres/placements without consuming gameplay RNG or mutating regions. Keep the
+original material fallbacks, continuous UVs, feathering and habitat callbacks.
+Literal full paths and cached raw loads remain required.
+
+Use `tests/review_ocean_art_consistency.gd` through
+`tools/verify_ocean_art_consistency.py` for a changed combined-art scope. Add new
+pack loaders to `tests/test_runtime_environment_art.gd`. Final September 30 evidence
+covers seven native habitat views, nine size comparisons, 32 generated seeds and
+102 environment checks. It does not refresh the historical packaged-export gate.
+
+
+## September 30 ocean family acceptance
+
+This continuation's 30 selected assets across seven packs are installed and
+native-reviewed; all 92 registered raster versions preserve source hashes.
+Overhead crowns/caps remain the default; requested upright kelp is the explicit
+camera exception. Decorative growth adds no occupancy or reward, while rock/
+mineral surfaces remain actual breakable blockers. Preserve smooth fixed-root
+kelp sway, authoritative pause/speed and reduced-motion fallback. Native scale,
+production light/fog and partial mining/paid rebuilding are distinct review gates.
+[Family handoff](OCEAN_ASSET_POLISH_INTEGRATION_2026-09-30.md) records exact scope,
+sizes and evidence. Release dependency reachability passed; no new executable
+export was produced in this session.
+
+
 September 23: new expeditions now use seeded site/habitat placement and provisional
 bought low-rock/timber scenery; existing checkpoints keep authored environments.
 See [procedural sites](PROCEDURAL_SITES_2026-09-23.md) for discovery, Studio filtering,

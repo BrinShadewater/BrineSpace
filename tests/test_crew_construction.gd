@@ -261,6 +261,9 @@ func capture_marsh_motion(side: int):
 		await capture_marsh_reach_study()
 	var output: String="res://output/crew-replacement-2026-09-12/marsh/construction-motion/"
 	if sequence_study:output="res://output/crew-replacement-2026-09-12/marsh/reach-sequence-native/"
+	if "--marsh-welding-match" in OS.get_cmdline_user_args():
+		output="res://output/marsh-animation-audit/welding-native/"
+		await capture_selected_marsh_torch(side,output)
 	DirAccess.make_dir_recursive_absolute(output)
 	var seen: Dictionary={}
 	var actor=game.marsh_npc
@@ -294,6 +297,24 @@ func capture_marsh_motion(side: int):
 	check(seen.size()==selected.size() and selected.size()>1,"Live Marsh welding traverses every selected active pose for side "+str(side))
 	print("MARSH CONSTRUCTION MOTION side=",side," distinct=",seen.size())
 	if sequence_study:game.grid_view.marsh_player.frames["weld-south"]=study_original
+
+func capture_selected_marsh_torch(side: int, output: String):
+	DirAccess.make_dir_recursive_absolute(output)
+	var player=game.grid_view.marsh_player
+	var saved_timer: float=game.marsh_npc.timer
+	var direction: String=["north","east","south","west"][side]
+	for state in ["torch-draw","torch-stow"]:
+		var frames: Array=player.frames[state+"-"+direction]
+		for index in range(6):
+			game.marsh_npc.timer=(0.0 if state=="torch-draw" else 9.48)+.52*(index+.5)/6.0
+			check(game.marsh_npc.animation_state()==state,"Construction selects active tool transition")
+			check(game.grid_view._get_marsh_frame(game)==frames[index],"Construction window selects every active tool pose")
+			game.grid_view.queue_redraw()
+			await process_frame
+			await RenderingServer.frame_post_draw
+			root.get_texture().get_image().save_png(output+"side-%d-%s-%02d.png"%[side,state,index])
+	game.marsh_npc.timer=saved_timer
+	print("MARSH SELECTED TORCH side=",side," 12 renderer samples")
 
 func capture_marsh_reach_transitions():
 	var player=game.grid_view.marsh_player

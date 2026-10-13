@@ -148,6 +148,9 @@ func run() -> void:
 	var legacy: Dictionary = data.duplicate(true)
 	legacy.crew.erase("branforth")
 	legacy.crew.playback.erase("branforth")
+	check(not Save.restore(game, legacy), "Bound cargo checkpoint rejects missing engineer")
+	# A checkpoint predating James also predates his actor-bound cargo extension.
+	legacy.erase("james_cargo_return")
 	check(Save.restore(game, legacy), "Two-crew checkpoint remains compatible")
 	check(not game.branforth_npc.active, "Old checkpoint initializes engineer fresh")
 	legacy.erase("crew")

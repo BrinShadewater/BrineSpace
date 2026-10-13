@@ -1,3 +1,11 @@
+> October 5: new Windows/Universal 2 Mac test pair **brinespace-af8b5f00998283ef**
+> has byte-identical PCKs and exact 35,779-asset audits with zero discrepancies.
+> Windows normal-entry smoke passes; performance/memory gates still fail.
+> Apple Silicon gameplay and Developer ID/notarization remain pending.
+> Current candidate, separate-account checklist and evidence:
+> [paired-build handoff](DRONE_UPLOAD_AND_PAIRED_BUILD_2026-10-05.md).
+> Older candidates below retain their original scope.
+
 > September 26 update: the Mac drone/room candidate now matches the verified
 > Windows snapshot byte-for-byte at the PCK level. See
 > [current Mac build handoff](MAC_DRONE_BUILD_2026-09-26.md). Native Mac acceptance

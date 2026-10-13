@@ -25,6 +25,10 @@ def marsh_south_seated_depth(state_id, count):
         values=[40.0 * i / max(1,count-1) for i in range(count)]
         return values if state_id=='sit-down-south' else values[::-1]
     return None
+def marsh_seated_depth(state_id, count):
+    """North seated poses must draw in front of the lounge seat, like south."""
+    return marsh_south_seated_depth(state_id.replace('-north','-south'),count)
+
 PACKS = {'veld':'dr-veld-v1','branforth':'chief-engineer-branforth-v1'}
 # Dense source-space fittings reviewed against each actor's authored tread heads.
 # The old pilot helmets were much larger than the dry/action equipment.
@@ -386,7 +390,7 @@ def write_candidate(out,qa,contract,rebaker,equipped):
             for dest,src in [('facings','crew_water_facing'),('waterKinds','crew_water_kind'),('waterPoses','crew_water_pose'),('depthOffsets','crew_depth_offset')]:
                 state[dest]=[f['meta'][src] for f in entry['frames']]
             if rebaker.actor=='marsh':
-                seated_depth=marsh_south_seated_depth(state['id'],len(files))
+                seated_depth=marsh_seated_depth(state['id'],len(files))
                 if seated_depth is not None: state['depthOffsets']=seated_depth
             pack['states'].append(state)
         coverage.append({'id':entry['id'],'frames':len(entry['frames'])})
@@ -425,6 +429,8 @@ def main():
     if not args.base_only and args.equipment:
         from finalize_crew_art import finalize
         finalize(args.actor)
+        from polish_helmet_transitions import apply as polish_helmet_transitions
+        polish_helmet_transitions(args.actor)
     # Every candidate image is a source rebake, never enlarged shipped frame art.
     (qa/'body-build.json').write_text(json.dumps({'actor':args.actor,'states':states,'equipmentBuilt':args.equipment,'sourceCropsReproduced':rebaker.match_count,'sourceHashes':shared.SOURCE_HASHES,'operations':shared.OPS,'frames':records,'padding':padding},indent=2)+'\n')
     sheet=Image.new('RGB',(184*6,206*12),(36,43,46)); draw=ImageDraw.Draw(sheet)

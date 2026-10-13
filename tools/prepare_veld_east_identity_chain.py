@@ -39,6 +39,12 @@ def main():
                     slot=0 if key in ['idle-east','walk-east'] else ([0,2,2,3,0,0][i] if key=='interact-east' else [0,0,2,2,2,0][i])
                     anchor=(132,top+30)
                     regions=[(105,top-5,150,top+23),(116,top+23,146,top+32)]
+                # The old bare-head mask removed four rows of authored collar,
+                # leaving the head disconnected. Keep those original body pixels;
+                # the replacement head overlaps the upper collar naturally.
+                if variant=='body':
+                    x1,y1,x2,y2=regions[-1]
+                    regions[-1]=(x1,y1,x2,y2-4)
                 layer=head_layer(raw,row,slot,anchor);pose=body.copy()
                 for region in regions:pose.paste((0,0,0,0),region)
                 pose.alpha_composite(layer)

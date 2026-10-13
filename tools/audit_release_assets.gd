@@ -1,5 +1,5 @@
 extends SceneTree
-const RAW_EXTENSIONS = ["png","jpg","jpeg","webp","svg","json","cfg","md"]
+const RAW_EXTENSIONS = ["png","jpg","jpeg","webp","svg","json","cfg","md","ogv"]
 func unexpected_sources(folder: String, expected: Dictionary) -> Array:
 	var found: Array = []
 	for name in DirAccess.get_files_at(folder):
@@ -22,7 +22,7 @@ func run():
 	var expected := {"res://build_info.json": true}
 	for entry in manifest.files:
 		expected[entry.path] = true
-		if entry.path.get_extension().to_lower() not in ["png","jpg","jpeg","webp","svg","json","cfg","md"]:continue
+		if entry.path.get_extension().to_lower() not in RAW_EXTENSIONS:continue
 		checked+=1
 		if not FileAccess.file_exists(entry.path):
 			# Scene/resource-referenced textures ship as imported .ctex through a

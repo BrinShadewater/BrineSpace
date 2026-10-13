@@ -1,0 +1,19 @@
+"""Freeze whole opposite contact correction with flat far boot and original cargo."""
+from pathlib import Path
+import hashlib,json
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[1];S=ROOT/'character/marsh-east-carry-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+pose=ROOT/'character/marsh-east-carry-material-v1/contact-03-unselected/far-contact.png';guide=S/'contact-04-whole-opposite-guide.png';Image.open(pose).convert('RGBA').resize((736,736),Image.Resampling.NEAREST).save(guide)
+g=json.loads((S/'guide-provenance.json').read_text())
+prompt='''Draw TWO complete EAST/right-facing adult Marsh figures on transparent background with wide gutters. Reference ONE whole opposite cargo figure has the CORRECT literal thigh arrangement: LIGHT FOREGROUND NEAR THIGH slants DOWNLEFT to rear left knee/boot; DARKER FAR THIGH slants DOWNRIGHT to front right knee/boot. Preserve this entire opposite posture and occlusion, adult anatomy, body/gear/arms. Correct its SUPPORTING FRONT FAR BOOT: that boot at screen RIGHT must be FLAT HORIZONTAL and visibly LOWEST, beneath the farther front shin. Its entire flat sole is about five production rows LOWER than the raised rear near boot at screen LEFT. Near rear knee flexes modestly with heel raised. Do not raise front far toe into the air. Do not turn foreground thigh forward/right. One supporting flat far front boot RIGHT, one raised near rear boot LEFT. No running or both feet airborne.
+
+Reference TWO selected East idle is PRIMARY for small adult head/face, fitted body/limb proportions, elevated side camera and quiet warm matte pixel grade. Reference THREE original own East master preserves swept blond hair, visible temple implant, collar/chest plate/harness/pouches and authentic ankle buckles. Same anatomical sizes/rigid gear throughout; no broad head/torso or mirrored identity.
+
+Figure1 full corrected FAR-support cargo contact. BOTH bent arms support a waist-level slate crate in front toward screen RIGHT, near glove on near side and far hand on far side naturally occluded. Restore the ORIGINAL cargo design: compact slate box with softly chamfered corners, simple broad divided side panels and narrow top lip, ONE VISIBLE original ivory latch near its RIGHT upper edge; far latch occluded. No inset bordered decorative sign/panel as in reference ONE, no text/logo/handles. At production scale its visible projected side is about32px wide and24px high, relative to147-high adult. This is consistent original cargo proportion, NOT body fitting. Box held against waist with connected hand support, chest/face visible. Same elevated side projection as body.
+Figure2 exact NEUTRAL standing ruler matching reference TWO, arms down and no crate, complete unobstructed body. One147 occupied neutral calibration, runtimeH148,184canvas,p92/172; no per-pose fitting. Match selected32x147 body proportions.
+
+Warm ivory fabric/plates, muted sage shoulders/pouches, slate joints and crate, charcoal gloves/soles; crisp quiet warm matte pixel style. TWO whole connected hair-to-sole bodies, wide transparent empty gutters, no floor/shadow/glow/haze/text/labels. Correct boot support and original crate while retaining opposite thigh arrangement.'''
+p=S/'contact-04.prompt.txt';assert not p.exists();p.write_text(prompt+'\n',encoding='utf-8');refs=[guide,S/'selected-idle0-only.png',ROOT/g['originalOwnMaster']['path']]
+(S/'contact-04.request.json').write_text(json.dumps({'normalAdmission':False,'fullGoalComplete':False,'status':'frozen before generation','promptSha256':sha(p),'orderedReferences':[{'path':q.relative_to(ROOT).as_posix(),'sha256':sha(q)} for q in refs],'sourceFrames':[{'path':pose.relative_to(ROOT).as_posix(),'sha256':sha(pose)}],'sheetGrid':[2,1],'transparentBackground':True},indent=2)+'\n')
+print('Frozen whole opposite contact: flat lowest far front boot and original compact slate cargo.')

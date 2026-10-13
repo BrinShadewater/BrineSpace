@@ -6,8 +6,9 @@ from pathlib import Path
 import argparse, hashlib, json, re, subprocess, os
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / 'assets/runtime-release.json'
-EXTENSIONS = {'.gd','.tscn','.tres','.gdshader','.shader','.png','.jpg','.jpeg','.webp','.svg','.ogg','.wav','.mp3','.json','.cfg','.ttf','.otf'}
+EXTENSIONS = {'.gd','.tscn','.tres','.gdshader','.shader','.png','.jpg','.jpeg','.webp','.svg','.ogg','.wav','.mp3','.ogv','.json','.cfg','.ttf','.otf'}
 TEXT = {'.gd','.tscn','.tres','.gdshader','.shader','.json','.cfg','.godot'}
+SPECIAL_FILES = {'project.godot','NOTICE.md','assets/licenses/godot-engine-MIT.txt'}
 STRINGS = re.compile(r'["\']([^"\'\n]+)["\']')
 # Build inputs, not a runtime directory: live Bill loads catalog/frames/clearance.
 # Only suppress broad discovery. Exact or formatted file references still win,
@@ -50,12 +51,12 @@ def collect(root=ROOT, read_root=None):
         if ': dynamic' in reason or ': formatted directory' in reason:
             if rel.startswith(DYNAMIC_AUTHORING_TREES): return
         if rel in selected:return
-        if path.suffix.lower() not in EXTENSIONS and rel not in {'project.godot','NOTICE.md'}:return
+        if path.suffix.lower() not in EXTENSIONS and rel not in SPECIAL_FILES:return
         path=path.resolve()
         if not path.is_relative_to(root) or not path.is_file():return
         rel=path.relative_to(root).as_posix()
         if rel in {'assets/runtime-release.json','build_info.json'} or rel.startswith(('.godot/','.git/','output/','outputs/','builds/')): return
-        if path.suffix.lower() not in EXTENSIONS and rel not in {'project.godot','NOTICE.md'}: return
+        if path.suffix.lower() not in EXTENSIONS and rel not in SPECIAL_FILES: return
         if rel not in selected: selected.add(rel);pending.append(path);reasons[rel]=reason
     def reference(value, owner):
         key=(value, "" if value.startswith("res://") else str(owner.parent))
@@ -159,7 +160,7 @@ def main():
     info={'build_id':'brinespace-'+source_id[:16],'source_sha256':source_id,'git_commit':commit,'working_tree_modified':dirty,'file_count':len(rows),'source_bytes':sum(x['bytes'] for x in rows)}
     (ROOT/'build_info.json').write_text(json.dumps(info,indent=2)+'\n',encoding='utf-8')
     # The selected-resource preset allows Godot to follow its own imported dependencies.
-    resources=[x['path'] for x in rows if Path(x['path']).suffix in {'.gd','.tscn','.tres','.gdshader','.shader','.ogg','.wav','.mp3','.ttf','.otf'}]
+    resources=[x['path'] for x in rows if Path(x['path']).suffix in {'.gd','.tscn','.tres','.gdshader','.shader','.ogg','.wav','.mp3','.ogv','.ttf','.otf'}]
     p=ROOT/'export_presets.cfg';s=p.read_text()
     p.write_text(update_preset(s,resources,args.preset),encoding='utf-8')
     print(json.dumps(info))

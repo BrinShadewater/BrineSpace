@@ -1,0 +1,12 @@
+"""Freeze complete low passing heel recovery, retaining far-support identity."""
+from pathlib import Path
+import hashlib,json
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[1];S=ROOT/'character/marsh-west-carry-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+source=ROOT/'character/marsh-west-carry-material-v1/passing-04-unselected/far-passing.png';guide=S/'passing-05-whole-far-guide.png';Image.open(source).convert('RGBA').resize((736,736),Image.Resampling.NEAREST).save(guide)
+text=(S/'passing-04.prompt.txt').read_text().replace('ReferenceONE whole successful far-contact fixes opposite foreground/background leg identity, supported arms and cargo','ReferenceONE whole far-support guide fixes opposite foreground/background leg identity, supported arms and cargo; its foreground rear leg is TOO EXTENDED and must recover nearer the pelvis')
+text=text.replace('Bend the FOREGROUND NEAR knee gently, lift its rear NEAR boot behind to RIGHT, whole sole clearly ABOVE darker flat supporting sole by roughly8 production rows.','The LIGHT FOREGROUND NEAR THIGH hangs nearly VERTICAL, with its knee low immediately RIGHT of the dark far supporting knee. Bend the NEAR knee into low walking heel recovery: near CALF folds BACK toward RIGHT, near heel rises toward calf, near boot sole tilted downward and fully ABOVE the floor by about10 production rows. Bring the raised near boot horizontally CLOSER to the supporting shin, roughly20 production pixels to RIGHT, not the old extended40-50pixel stride. Foreground near shin is angled strongly back, but foreground thigh stays vertical: knee not lifted high. Dark FAR shin stays straight beneath pelvis with its flat FAR boot LEFT on floor. Clearly compact passing heel recovery, NOT extended contact stance.')
+p=S/'passing-05.prompt.txt';assert not p.exists();p.write_text(text,encoding='utf-8');g=json.loads((S/'guide-provenance.json').read_text());refs=[guide,S/'selected-idle0-only.png',ROOT/g['originalOwnMaster']['path']]
+(S/'passing-05.request.json').write_text(json.dumps({'normalAdmission':False,'fullGoalComplete':False,'status':'frozen before generation','promptSha256':sha(p),'orderedReferences':[{'path':q.relative_to(ROOT).as_posix(),'sha256':sha(q)} for q in refs],'sourceFrames':[{'path':source.relative_to(ROOT).as_posix(),'sha256':sha(source)}],'sheetGrid':[2,1],'transparentBackground':True},indent=2)+'\n')
+print('Frozen compact low heel-recovery passing correction; support/cargo kept whole.')

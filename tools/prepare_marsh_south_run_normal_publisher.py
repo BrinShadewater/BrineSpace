@@ -1,0 +1,17 @@
+"""Reuse exact normal pair publisher with scoped eight-case run family rules."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+source=(ROOT/'tools/publish_marsh_west_damage_normal.py').read_text().replace('marsh-west-injury-material-v1','marsh-south-run-material-v1').replace('west-damage-normal-native-v1','south-run-normal-native-v1')
+source=source.replace("assert report['failures']==0 and len(report['checkpoints'])==20 and len(report['captures'])==40","assert report['failures']==0 and len(report['checkpoints'])==8 and len(report['captures'])==16")
+source=source.replace("assert body[-2:]==['../marsh-west-collapse-material-v1/candidate-02/manifest.json','../marsh-west-injury-material-v1/candidate-01/manifest.json']","assert '../marsh-south-run-material-v1/candidate-05/manifest.json' in body")
+source='\n'.join("    assert '../marsh-south-run-material-v1/candidate-05/manifest.json' in body" if line.strip().startswith('assert body[-2:]') else line for line in source.split('\n'))
+source=source.replace("OUT.mkdir(exist_ok=True);grouped={};records=[]","assert selected['run-south']['manifest'].resolve()==(BASE/'candidate-05/manifest.json').resolve()\n    OUT.mkdir(exist_ok=True);grouped={};records=[]")
+source=source.replace('for group in range(4):','for group in range(2):').replace('5*230','4*230').replace('group*5:group*5+5','group*4:group*4+4')
+source=source.replace("['death-ground','injury-ground','injury-rise']","['run']")
+source=source.replace("'fullCheckpoints':20,'freshVisibleTitleContinues':20,'nativeSourceCaptures':40,'exactOriginalContinuedPairs':20","'fullCheckpoints':8,'freshVisibleTitleContinues':8,'nativeSourceCaptures':16,'exactOriginalContinuedPairs':8")
+source=source.replace('Provisional improved West whole-body material. Other-facing master/material joins and full moving/master family polish open.','Provisional improved South complete run05. Other-facing head/torso/material joins and full moving/contact polish open.')
+source=source.replace('allTwentyPairsInspected','allEightPairsInspected').replace('allThreeFacingFamilyBoardsInspected','allFacingRunBoardsInspected')
+start=source.index("    (OUT/'index.html').write_text(");end=source.index('    print(json.dumps',start)
+source=source[:start]+'''    (OUT/'index.html').write_text('''+repr('''<!doctype html><meta charset="utf-8"><title>Marsh South normal run full Continue</title><style>body{background:#182b30;color:#dae8e2;font:16px system-ui;max-width:1500px;margin:25px auto}img{max-width:100%;image-rendering:pixelated}</style><h1>South run05: normal catalog and complete checkpoints</h1><p>Provisional complete alternating run, shared planted sole plane and preserved distance cadence. Eight full checkpoints/fresh actual visible Title Continues: idle, six run phases, slowing walk. Whole actor/player/source/root parity and pause, distance phase resumes normally. Normal costs/failures and scratch profile.</p><p>Family sheet shows current selected four directions at common148metadata with whole translations only. Held source comparison does not certify every facing or moving contacts. <a href="verification.json">Scoped evidence</a></p>''')+"+''.join(f'<img src=\"paired-{i}.png\">' for i in range(2))+'<h2>Current selected four-facing run and idle</h2><img src=\"family-run.png\">',encoding='utf-8')\n"+source[end:]
+(ROOT/'tools/publish_marsh_south_run_normal.py').write_text(source,encoding='utf-8')
+print('Prepared eight normal Continue pair publisher plus four-facing held run sheet.')

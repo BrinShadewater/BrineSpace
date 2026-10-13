@@ -1,0 +1,15 @@
+from pathlib import Path
+import hashlib,json
+b=Path('character/marsh-retained-gesture-material-v1')
+specs={
+'west':('04','03','WEST profile facing viewer LEFT; near RIGHT temple has the small existing hardware, keep it.','Both gloves lower to belt/waist height, forearms slope diagonally down/forward, elbows bend45degrees. A clear halfway return between chest-height third pose and thigh-height fifth idle, not chest hold or fully relaxed arms.'),
+'north':('03','02','NORTH rear view: face invisible, retain sandy hair, backpack and rear straps. Do not invent a rear face or mirror the equipment.','Right shoulder-strap glove LOWERS to just above the right waist with bent forearm; left waist glove lowers to upper hip, elbow slightly bent. Both hands visibly BETWEEN third held pose and fifth relaxed idle. No right glove left up at shoulder and no fully straight arms.'),
+'south':('04','03','SOUTH front elevated view; RIGHT temple hardware is on viewer LEFT. Keep the face and two front shoulder latches.','Both gloves lower below belt to upper hip height, forearms diagonally down, elbows still bent30-45degrees. A clear intermediate between third chest/waist gesture and fifth relaxed thigh-height idle. No chest hold or fully straight arms.')}
+for d,(v,old,camera,action) in specs.items():
+ prompt=f'''Edit SECOND image, existing {d} five-figure whole-source strip. FIRST image is exact current {d} own idle enlarged3x, primary identity/proportion/color/perspective reference. Change FOURTH whole figure ONLY into a visibly intermediate arm-lowering return pose: {action} {camera}
+Leave first THREE original compact closed-glove gestures and FIFTH arms-down neutral unchanged. Keep feet/hips/head/torso upright and fixed, same slim neutral body/head/boot proportions and muted ivory armor/olive shoulders/charcoal seals/gloves. No body rotation, lean, crouch, foot movement, open palm/pointing, new equipment/helmet/prop. Preserve coherent connected wrists, hands, limbs and face/material detail.
+Five complete same-size WHOLE figures in ONE horizontal row, equal crown/sole scale, generous transparent margins, real alpha. No extra row/figure, text/grid/floor shadows/background/checkerboard, local collage, head/limb splice, mirroring or crop. Hands must be observably halfway down, neither peak nor fully idle. Return complete five-figure strip.'''
+ refs=[b/f'inputs/{d}-own-idle-3x.png',b/f'sources/{d}-gesture-{old}.png']
+ req={'prompt':prompt,'transparent_background':True,'referenced_image_paths':[str(p.resolve()) for p in refs],'references':[{'path':p.as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in refs],'scope':'Whole intermediate return figure, original900ms finite retained generic gesture. No helmet behavior.'}
+ path=b/f'sources/{d}-gesture-{v}.request.json';assert not path.exists();path.write_text(json.dumps(req,indent=2)+'\n');path.with_suffix('').with_suffix('.prompt.txt').write_text(prompt)
+print('West/North/South halfway return requests preserved')

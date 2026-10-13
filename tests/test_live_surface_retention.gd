@@ -19,6 +19,7 @@ func run() -> void:
 	game.set_process(false);game.grid_view.set_process(false);game.tick_timer.stop()
 	game.crew_comms.set_process(false);game.crew_comms.minimize();game.paused=false
 	game.Architects.advance_core(game,10);game.paused=true
+	await check_zoom_group_scheduling()
 	game.wrecks.clear();game.drone_fleet.sites.clear()
 	var cell:=Vector2i(20,19)
 	game._place_room("airlock",cell,true);game.powered_room_cells[cell]=true
@@ -77,6 +78,19 @@ func run() -> void:
 	game.selected_room_cell=Vector2i(-1,-1)
 	game._refresh_all()
 	await rendered();await rendered()
+	for i in range(4):await rendered()
+	var selection_before:=Vector2i(game.grid_view.floor_rebuilds,game.grid_view.wall_rebuilds)
+	for chosen in [cell,Vector2i(20,20),Vector2i(-1,-1)]:
+		game.selected_room_cell=chosen
+		game._refresh_all()
+		await rendered();await rendered()
+		var steady:Image=root.get_texture().get_image()
+		var counts:=Vector2i(game.grid_view.floor_rebuilds,game.grid_view.wall_rebuilds)
+		check(counts==selection_before,"Steady selection does not rebuild floor/wall layers")
+		game.grid_view.surface_key=[];game.grid_view.wall_surface_key=[]
+		await rendered();await rendered()
+		check(steady.get_data()==root.get_texture().get_image().get_data(),"Steady selection pixels match forced rebuild")
+		selection_before=Vector2i(game.grid_view.floor_rebuilds,game.grid_view.wall_rebuilds)
 	var zoom_start: float=game.grid_zoom
 	var rebuilds_before: int=game.grid_view.floor_rebuilds
 	game.camera_zoom_center=Vector2(cell)/40.0
@@ -88,13 +102,13 @@ func run() -> void:
 		await rendered()
 		animated_frames+=1
 		if game.grid_view.zoom_reuse_active: saw_freeze=true
-	# A real change while the landed zoom settles repaints at once: only size-only repaints wait.
+	# Selection uses live layers; it must not bypass size-only floor/wall settling.
 	check(game.grid_view.zoom_settling,"The landed zoom settles over the next frames")
 	var settling_floors: int=game.grid_view.floor_rebuilds
 	var settling_walls: int=game.grid_view.wall_rebuilds
 	game.selected_room_cell=cell
 	await rendered()
-	check(game.grid_view.floor_rebuilds>settling_floors and game.grid_view.wall_rebuilds>settling_walls,"A selection change while settling repaints floors and walls in the same frame")
+	check(game.grid_view._surface_state()[8]==game.grid_view.surface_key[8],"Selection while settling preserves the static surface selection key")
 	game.selected_room_cell=Vector2i(-1,-1)
 	await rendered()
 	var selection_rebuilds: int=game.grid_view.floor_rebuilds-settling_floors
@@ -217,3 +231,43 @@ func run() -> void:
 	game.grid_view.reuse_layers_while_zooming=true
 	print("LIVE SURFACE RETENTION: ","PASS" if failures==0 else "FAIL"," failures=",failures)
 	quit(0 if failures==0 else 1)
+
+class SchedulingPass extends Node2D:
+	var draws:=0
+	func _draw()->void:
+		draws+=1
+		set_meta("built_cell",110.0)
+
+func check_zoom_group_scheduling() -> void:
+	var grid=game.grid_view.get_script().new()
+	var holder:=Node2D.new()
+	root.add_child(holder)
+	for i in range(grid.Surface.size()):
+		var layer:=SchedulingPass.new();holder.add_child(layer);grid.surface_passes.append(layer)
+	for i in range(grid.Env.size()):
+		var layer:=SchedulingPass.new();holder.add_child(layer);grid.env_passes.append(layer)
+	await process_frame;await RenderingServer.frame_post_draw
+	for layer in grid.surface_passes+grid.env_passes:
+		layer.draws=0;layer.set_meta("built_cell",100.0)
+	grid.zoom_settling=true
+	grid.pending_layers[grid.surface_passes[grid.Surface.REAR_DOORS]]=true
+	grid.pending_layers[grid.env_passes[grid.Env.STATIC_TERRAIN]]=true
+	grid._flush_retained_layers(110.0)
+	await process_frame;await RenderingServer.frame_post_draw
+	check(grid.surface_passes[grid.Surface.FLOOR].draws==1,"Zoom begins one floor rebuild")
+	check(grid.surface_passes[grid.Surface.WALL].draws==0,"Urgent door change does not promote size-only walls")
+	check(grid.surface_passes[grid.Surface.REAR_DOORS].draws==1,"Urgent door change repaints immediately")
+	check(grid.env_passes[grid.Env.STATIC_TERRAIN].draws==1,"Urgent selected terrain repaints immediately")
+	check(grid.settle_backlog,"Deferred size-only layers retain a settling backlog")
+	for i in range(5):
+		grid.settle_backlog=false;grid._flush_retained_layers(110.0)
+		await process_frame;await RenderingServer.frame_post_draw
+	for layer in [grid.surface_passes[grid.Surface.FLOOR],grid.surface_passes[grid.Surface.FLOOR_REST],grid.surface_passes[grid.Surface.WALL],grid.env_passes[grid.Env.STATIC_BELOW],grid.env_passes[grid.Env.STATIC_FOUNDATIONS]]:
+		check(layer.draws==1,"Deferred layer repaints exactly once")
+	check(not grid.settle_backlog and grid.pending_layers.is_empty(),"All deferred layers drain")
+	grid.zoom_settling=false
+	grid.pending_layers[grid.surface_passes[grid.Surface.WALL]]=true
+	grid._flush_retained_layers(110.0)
+	await process_frame;await RenderingServer.frame_post_draw
+	check(grid.surface_passes[grid.Surface.WALL].draws==2,"Structural wall invalidation still repaints immediately")
+	holder.queue_free();grid.free()

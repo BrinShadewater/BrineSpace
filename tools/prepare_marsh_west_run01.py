@@ -1,0 +1,20 @@
+"""Freeze own-West master-matched complete running cycle, no East mirroring."""
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+ROOT=Path(__file__).resolve().parents[1];S=ROOT/'character/marsh-west-run-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+guide=json.loads((S/'guide-provenance.json').read_text());idle=guide['primarySourceFrames'][0];path=ROOT/idle['path'];assert sha(path)==idle['sha256'];f=Image.open(path).convert('RGBA');assert f.size==(184,184);single=S/'selected-idle0-only.png';f.resize((736,736),Image.Resampling.NEAREST).save(single)
+prompt='''Create a complete running animation sheet of SEVEN complete adult Marsh figures facing LEFT/WEST on true transparent background, wide gutters between figures. Reference ONE selected West idle controls fitted adult anatomy, small head, chest/collar/hip/limb proportions, elevated side camera, drawing density and warm matte grade. Reference TWO original own West master controls blond adult profile, hair, suit construction and small authentic ankle buckles. The VISIBLE near temple is BARE skin; his metal implant is on the hidden far/right temple. Keep that asymmetry. Same build/head/limb size and camera for all seven figures; one common scale calibrated from neutral, not fitted separately per pose.
+
+Left to right, figures1-6 are a restrained six-phase run, figure7 is the neutral ruler matching reference ONE. NEAR means the large visible foreground thigh and visible shoulder arm; FAR means the partly hidden thigh/arm behind them.
+1 NEAR contact: foreground thigh leads LEFT into a flat planted front boot; FAR leg trails RIGHT, heel raised. Visible near arm swings BACK to RIGHT; far arm forward LEFT.
+2 NEAR support passing: foreground leg supports directly under pelvis, boot flat; FAR knee passes LOW toward LEFT with its boot raised. Bent elbows passing beside waist, mild natural knee flexion.
+3 FAR-knee flight: partly hidden FAR thigh/knee leads LEFT; large foreground NEAR thigh trails RIGHT into rear knee/boot. Visible near arm swings FORWARD LEFT; far arm back RIGHT. Both boots airborne with slight clearance, no high-knee jump.
+4 FAR contact: partly hidden FAR leg leads LEFT into planted flat front boot; large foreground NEAR thigh trails RIGHT. Visible near arm FORWARD LEFT; far arm back RIGHT.
+5 FAR support passing: partly hidden FAR leg supports flat boot beneath pelvis; large foreground NEAR thigh passes LOW behind with whole rear boot visibly lifted above planted sole. Bent elbows near neutral.
+6 NEAR-knee flight: foreground NEAR thigh/knee leads LEFT; FAR leg trails RIGHT. Visible near arm BACK RIGHT, far arm forward LEFT. Both boots slightly airborne.
+7 Neutral: exact selected idle standing, arms down.
+
+Preserve each complete thigh-knee-shin-boot connection and foreground/far overlap; different screen boot positions alone are insufficient. Restrained upright running body with slight forward lean and small natural compression. Warm ivory fabric/panels/boot uppers, muted sage shoulders/pouches, slate joints, charcoal gloves and soles. Quiet crisp warm pixel clusters, matte shading as references. Neutral calibration147occupied rows,184canvas,p92/172,H148 at production scale, specification only with no labels. SEVEN complete figures from hair to soles, no clipping. Transparent empty background and separation, no floor/cast shadows/glow/haze/text.'''
+p=S/'run-01.prompt.txt';assert not p.exists();p.write_text(prompt+'\n',encoding='utf-8');refs=[single,ROOT/'character/marsh-motion-polish-v1/sources/west-standing-identity-01.png'];(S/'run-01.request.json').write_text(json.dumps({'normalAdmission':False,'fullGoalComplete':False,'status':'frozen before generation','promptSha256':sha(p),'orderedReferences':[{'path':q.relative_to(ROOT).as_posix(),'sha256':sha(q)} for q in refs],'primarySourceFrames':[idle],'sheetGrid':[7,1],'transparentBackground':True},indent=2)+'\n');print('Frozen seven complete own-West poses/neutral and exact two ordered references.')

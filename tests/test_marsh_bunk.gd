@@ -1,6 +1,14 @@
 extends "res://tests/test_marsh_battery.gd"
 const HAB=Vector2i(20,22)
+const EXPECTED_ENTRY_FRAMES = ["res://character/marsh-v2/supplemental/bunk-east/bare/000.png", "res://character/marsh-master-repair-v1/frames/bunk-enter-east/001.png", "res://character/marsh-master-repair-v1/frames/bunk-enter-east/002.png", "res://character/marsh-master-repair-v1/frames/bunk-enter-east/003.png", "res://character/marsh-master-repair-v1/frames/bunk-enter-east/004.png", "res://character/marsh-master-repair-v1/frames/bunk-enter-east/005.png", "res://character/marsh-master-repair-v1/frames/bunk-enter-east/006.png"]
+var capture_output := "res://output/crew-activity/marsh-bunk"
+var contact_checks := 0
+func check(ok: bool, message: String):
+	contact_checks += 1
+	super.check(ok, message)
 func run():
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--capture-output="):capture_output=arg.trim_prefix("--capture-output=").trim_suffix("/")
 	var store=preload("res://scripts/room_layout_store.gd");store.loaded=true;store.data={} # authored defaults place the station-prop bunk
 	game=load("res://scenes/main.tscn").instantiate()
 	game.set_meta("authored_site_fixture",true) # fixed-coordinate map (predates procedural sites)
@@ -37,7 +45,9 @@ func run():
 	check(actor.animation_state()=="bunk-enter" and actor.direction=="east" and is_equal_approx(actor.timer,1.84),"Arrival selects authored entry and timing")
 	actor.timer=actor.BUNK_SECONDS-0.5 # seated frame
 	var seated: Vector2=actor.observation_visual_offset()+actor.foot-center
-	check(seated.y<actor.bunk_motion.entry.y-10 and absf(seated.y-(actor.bunk_motion.rest.y+16+actor.BUNK_SEAT_ROWS*65.28/148.0))<0.01,"Seated frame sits on the mattress edge, not the drawers")
+	var contact_prop:Dictionary=actor.geometry[HAB].props.filter(func(item):return item.id=="library/sp-crew_hab-3")[0]
+	var mattress_edge_y:float=contact_prop.rect.position.y+contact_prop.rect.size.y*239.0/334.0
+	check(seated.y<actor.bunk_motion.entry.y-10 and absf(seated.y-39*65.28/148.0-mattress_edge_y)<0.01,"Actual source support row lands on lower mattress edge")
 	actor.timer=actor.BUNK_SECONDS
 	var rejected=actor.geometry[HAB].duplicate(true)
 	var bunk=rejected.props.filter(func(p):return p.id=="library/sp-crew_hab-3")[0]
@@ -48,7 +58,12 @@ func run():
 	rejected=actor.geometry[HAB].duplicate(true);rejected.blockers.append(Rect2(station.point-Vector2.ONE*4,Vector2.ONE*8))
 	check(not actor.RoomActivity.stations(rejected).any(func(item):return item.get("marsh_bunk",false)),"Blocked contact rejected")
 	var initial=actor.snapshot()
-	DirAccess.make_dir_recursive_absolute("res://output/crew-activity/marsh-bunk")
+	var old_profile:Dictionary=initial.duplicate(true);old_profile.marsh_bunk.erase("seat_offset")
+	check(actor.valid_marsh_snapshot(old_profile),"Older bunk saves without seat offset remain valid")
+	for invalid_offset in [INF,-1.0,65.0,"bad"]:
+		var bad_offset:Dictionary=initial.duplicate(true);bad_offset.marsh_bunk.seat_offset=invalid_offset
+		check(not actor.valid_marsh_snapshot(bad_offset),"Invalid saved seat offset rejected")
+	DirAccess.make_dir_recursive_absolute(capture_output)
 	check(is_equal_approx(game.grid_view.marsh_player.cycle_seconds("bunk-enter-east"),1.84),"Manifest and actor durations agree")
 	for equipped in [false]:
 		for elapsed in [0.0,0.2,0.55,0.8,1.1,1.4,1.7]:
@@ -59,7 +74,7 @@ func run():
 			check(texture!=null,"Live renderer selects the berth clip")
 			if texture==null:continue
 			var pixels=texture.get_image().get_data();var clock=actor.action_elapsed()
-			var expected=Image.new();expected.load_png_from_buffer(FileAccess.get_file_as_bytes("res://character/marsh-v2/supplemental/bunk-east/bare/%03d.png"%[0.0,0.2,0.55,0.8,1.1,1.4,1.7].find(elapsed)))
+			var expected=Image.new();expected.load_png_from_buffer(FileAccess.get_file_as_bytes(EXPECTED_ENTRY_FRAMES[[0.0, 0.2, 0.55, 0.8, 1.1, 1.4, 1.7].find(elapsed)]))
 			check(pixels==expected.get_data(),"Renderer uses Marsh source pixels for contact phase")
 			check(Save.write(game,game.run_save_path)==OK,"Intermediate berth writes")
 			var saved=Save.read(game.run_save_path)
@@ -74,7 +89,7 @@ func run():
 			game.inspector_focus_button.set_meta("cell",HAB);game._focus_inspected_room();game.grid_view.queue_redraw()
 			await process_frame;await RenderingServer.frame_post_draw
 			check(game._grid_view_center_ratio().distance_to(camera_center)<0.002,"Capture camera actually centers the berth")
-			check(root.get_texture().get_image().save_png("res://output/crew-activity/marsh-bunk/restore-%s-%04d.png"%["helmet" if equipped else "bare",roundi(elapsed*1000)])==OK,"Capture live restored contact")
+			check(root.get_texture().get_image().save_png((capture_output+"/restore-%s-%04d.png")%["helmet" if equipped else "bare",roundi(elapsed*1000)])==OK,"Capture live restored contact")
 			game.paused=false
 			var rise_time=actor.interrupted_life_rise_seconds();actor.stage="life_get_up";actor.timer=rise_time;actor.goal=""
 			check(actor.observation_visual_offset().is_equal_approx(offset),"Reverse interruption preserves position")
@@ -118,4 +133,5 @@ func run():
 	for suffix in [".meta",".loop",".loop.bak"]:
 		if FileAccess.file_exists(stem+suffix):DirAccess.remove_absolute(ProjectSettings.globalize_path(stem+suffix))
 	print("MARSH BUNK: normal chooser/arrival, seven bare disk restores, pause, reverse interruption, completion and invalid saves; %d failures"%failures)
+	print("CONTACT CHECKS: ", contact_checks)
 	quit(failures)

@@ -1,0 +1,75 @@
+extends SceneTree
+## Staged salvage candidates injected into actual Bill player; scratch-profile only.
+const PACKS := [["res://character/bill-salvage-east-coherent-v1/manifest.json", ""],["res://character/bill-salvage-helmet-east-coherent-v1/manifest.json", "diving-helmet"]]
+var checks:=0
+var failures:=0
+func check(ok: bool,message: String) -> void:
+	checks+=1
+	if not ok:failures+=1;push_error(message)
+func _init() -> void:call_deferred("run")
+func run() -> void:
+	var user_path: String=OS.get_user_data_dir().replace("\\","/").to_lower()
+	var scratch_path: String=OS.get_environment("APPDATA").replace("\\","/").to_lower()
+	check(user_path.begins_with(scratch_path+"/") and "/output/bill-salvage-east-candidate-native-v1/scratch-appdata/" in user_path,"Resolved user:// is isolated")
+	print("BILL WATER USER PATH: "+OS.get_user_data_dir())
+	if failures:quit(1);return
+	var grid=load("res://scripts/grid_canvas.gd").new();grid._load_major_bill_animations();var player=grid.human_water_player
+	for spec in PACKS:
+		if spec[1].is_empty():player.load_manifest(spec[0],true)
+		else:check(player.load_equipment_manifest(spec[1],spec[0]),"Candidate equipment profile")
+	for spec in PACKS:
+		var path: String=spec[0];var gear: String=spec[1];var pack: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path));var direction: String="south" if "south-coherent" in path else "north" if "north-coherent" in path else ("west" if "west-coherent" in path else "east")
+		for state in pack.states:
+			var rows: Dictionary=player.frames if gear.is_empty() else player.equipment_frames[gear]
+			var clocks: Dictionary=player.timing if gear.is_empty() else player.equipment_timing[gear]
+			check(rows.has(state.id),state.id+" selected "+gear)
+			if not rows.has(state.id):continue
+			check(rows[state.id].size()==state.frameFiles.size(),state.id+" frame count")
+			check(clocks[state.id].durations==state.frameDurationsMs and clocks[state.id].loop==state.loop,state.id+" clock")
+			var elapsed:=0.0
+			for i in state.frameFiles.size():
+				var frame: Texture2D=rows[state.id][i];var expected:=Image.load_from_file(path.get_base_dir().path_join(state.frameFiles[i]))
+				check(frame.get_image().get_data()==expected.get_data(),state.id+" selected pixels "+str(i)+gear)
+				check(frame.get_meta("crew_pivot")==Vector2(pack.pivot[0],pack.pivot[1]) and frame.get_meta("crew_standing_height")==148.0,state.id+" registration")
+				check(frame.get_meta("crew_water_pose")==true and frame.get_meta("crew_water_kind")==state.waterKinds[i] and frame.get_meta("crew_water_facing")==state.facings[i],state.id+" water metadata")
+				check(player.frame_at_elapsed(state.id,elapsed+float(state.frameDurationsMs[i])/2000.0,gear)==frame,state.id+" selected elapsed sampling")
+				elapsed+=float(state.frameDurationsMs[i])/1000.0
+	check(is_equal_approx(player.strides.swim,.16),"Preserved selected swim stride")
+	for gear in ["","diving-helmet"]:
+		var row: Array=player.frames["salvage-east"] if gear.is_empty() else player.equipment_frames[gear]["salvage-east"]
+		player.current_key="";player.current_equipment=gear;player.motion.clear();player.last_time=-1;player.phase=0
+		check(player.frame("salvage","east",0.0,Vector2.ZERO,gear,true)==row[0],"Salvage entry "+gear)
+		for i in 6:
+			var center: float=.14*i+.07
+			check(player.frame("salvage","east",center,Vector2.ZERO,gear,true)==row[i],"Time-driven salvage pose "+str(i)+gear)
+			check(player.frame("salvage","east",center,Vector2.ZERO,gear,true)==row[i],"Repeated-time pause "+str(i)+gear)
+		check(player.frame("salvage","east",.841,Vector2.ZERO,gear,true)==row[0],"Closed loop wrap "+gear)
+	var actor=load("res://scripts/bill_npc.gd").new();actor.movement_medium="exterior";actor.direction="east";actor.state="idle";actor.breath_oxygen=100;actor.tank_oxygen=100
+	for gear in [false,true]:
+		actor.helmet_equipped=gear;actor.expedition={"phase":"salvage","cargo":{},"elapsed":0.0}
+		check(actor.animation_state()=="salvage","Actual expedition work chooser "+str(gear))
+		check(actor.action_elapsed()<0,"Working loop uses visual time "+str(gear))
+		actor.expedition={"phase":"pickup","cargo":{},"elapsed":.26}
+		check(actor.animation_state()=="swim-pickup","Actual expedition pickup chooser "+str(gear))
+		check(is_equal_approx(actor.action_elapsed(),.26),"Pickup uses simulation elapsed "+str(gear))
+		actor.expedition.clear();actor.state="weld";actor.movement_medium="flooded";actor.foot=Vector2(192,192)
+		actor.geometry={Vector2i.ZERO:{"swim_blockers":[]}};actor.swim_region_cache.clear()
+		check(actor.action_pose_clear("salvage"),"Actual flooded work clearance open "+str(gear))
+		check(actor.animation_state()=="salvage","Open flooded work pose "+str(gear))
+		actor.geometry={Vector2i.ZERO:{"swim_blockers":[Rect2(-19,-8,4,16)]}};actor.swim_region_cache.clear()
+		check(not actor.action_pose_clear("salvage"),"Working envelope rejects lateral blocker "+str(gear))
+		check(actor.animation_state()!="salvage","Blocked room suppresses work pose "+str(gear))
+		actor.movement_medium="exterior";actor.state="idle"
+	if DisplayServer.get_name()!="headless":
+		var viewport:=SubViewport.new();viewport.size=Vector2i(1200,350);viewport.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(viewport)
+		var bg:=ColorRect.new();bg.size=Vector2(1200,350);bg.color=Color("22343e");viewport.add_child(bg)
+		for row_index in 2:
+			var key: String="salvage-east";var gear: String="" if row_index==0 else "diving-helmet"
+			var rows: Array=player.frames[key] if gear.is_empty() else player.equipment_frames[gear][key]
+			var title:=Label.new();title.text=key+" candidate "+("bare" if gear.is_empty() else "helmet");title.position=Vector2(10,row_index*175);viewport.add_child(title)
+			for column in rows.size():
+				var frame: Texture2D=rows[column];var factor:=82.0/148.0;var sprite:=Sprite2D.new();sprite.centered=false;sprite.texture=frame;sprite.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR;sprite.scale=Vector2.ONE*factor;sprite.position=Vector2(100+column*200,row_index*175+85)-frame.get_meta("crew_pivot")*factor;viewport.add_child(sprite)
+		await RenderingServer.frame_post_draw
+		check(viewport.get_texture().get_image().save_png("res://output/bill-salvage-east-candidate-native-v1/loaded-water-carry.png")==OK,"Fresh native selected contact")
+		viewport.queue_free()
+	grid.free();print("BILL SALVAGE CANDIDATE: %d checks,%d failures"%[checks,failures]);quit(1 if failures else 0)

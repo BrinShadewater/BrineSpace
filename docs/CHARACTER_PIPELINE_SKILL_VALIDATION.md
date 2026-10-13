@@ -66,3 +66,43 @@ dependency was installed only into the closeout output directory. Evidence:
 `output/character-closeout/skill-validation.json` and `bindings.json`.
 This was structural validation and a targeted lesson update, not a new independent
 behavioral or comparative skill-effectiveness evaluation.
+
+## September 29 human crew consistency closeout
+
+Added crew-consistency.md from observed owner revisions: material/alpha spill,
+idle-led identity, complete gait cycles, local breathing, resampling limits,
+shared helmet/collar fit, action interior-frame continuity and parallel actor ownership.
+Routed both maintained and installed character skills; preserved their pre-existing
+engineering-note/formatting differences rather than replacing the whole installed skill.
+Updated direct-video current-selection guidance and added underwater/handoff routing.
+Three new regression cases are specified_not_executed in intent (the JSON field is
+not_executed_fresh_context); no independent agent behavior benchmark was run.
+
+Both quick_validate.py runs passed. New closeout/reference Markdown links and both
+skill routing sets resolve; four updated mirrored resources match byte-for-byte.
+Evaluation JSON parses with unique case IDs. Selected/staged inventory records
+16 manifests and 3,106 frame references, with manifest and ordered per-state
+content hashes. git diff --check passed for the changed tracked documentation/skill
+scope (only line-ending notices). No art regeneration, provider spend, Godot test,
+release export or owner-save mutation occurred for this documentation closeout.
+
+See CREW_ANIMATION_SESSION_CLOSEOUT_2026-09-29.md and the three actor continuation
+handoffs. Existing Bill 121/232 checks are previous candidate evidence, not new skill
+behavior acceptance. Bill east idle-led-v3 remains staged and visually unaccepted.
+
+## September 30 Marsh master-repair closeout
+
+Added master-repair.md and routing to maintained/installed character skills:
+master versus idle authority, frozen ordered selection, connected body/tool
+sources, reflowed-sheet extraction/holds, shared poses and material grades,
+protected white android fluid, advancing capture coverage and evidence limits.
+Preserved existing differences between skill copies; only the new guidance and
+three new regression cases were synchronized.
+
+Both quick_validate.py runs passed. New reference copies match byte-for-byte;
+three new cases match with unique IDs. Eight new Markdown links resolve. Closeout
+snapshot verifies all 51 ordered body manifests and the selected runtime contract
+(204 states / 1,058 slots). Scoped git diff --check passed with line-ending notices.
+Cases remain not_executed_fresh_context; no independent behavior benchmark,
+generation, Godot run, export or profile mutation was performed for this closeout.
+See MARSH_SESSION_CLOSEOUT_2026-09-30.md for installed versus accepted scope.

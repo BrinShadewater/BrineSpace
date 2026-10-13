@@ -19,5 +19,7 @@ def build():
         rel=(target/'manifest.json').relative_to(revision).as_posix()
         if rel not in catalog[group]:catalog[group].append(rel)
     (revision/'catalog.json').write_text(json.dumps(catalog,indent=2)+'\n')
+    from install_marsh_furniture_match import install
+    install('bunk')
 
 if __name__=='__main__':build()

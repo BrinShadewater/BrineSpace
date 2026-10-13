@@ -46,16 +46,26 @@ func run() -> void:
 	check(root.get_node_or_null("RoomLayoutEditor")==null,"F8 does not open Studio")
 	await press(KEY_F8)
 	check(not paused,"Closing report restores prior running state")
-	paused=true
+	# Gameplay pause is local to main. The tree pause belongs only to F8/Studio;
+	# restoring an arbitrary old tree pause recreated the title-screen lockup.
+	game._set_paused(true,false)
 	await press(KEY_F8)
 	await press(KEY_F8)
-	check(paused,"Closing report preserves an already paused tree")
-	paused=false
+	check(game.paused and not paused,"Closing report preserves gameplay pause without leaking a tree pause")
+	game._set_paused(false,false)
 	await press(KEY_F9)
 	var editor=root.get_node_or_null("RoomLayoutEditor")
 	check(editor!=null and paused,"F9 opens Studio")
+	await press(KEY_F8)
+	await press(KEY_F8)
+	check(paused,"Closing report leaves the open Studio paused")
+	await press(KEY_F8)
 	if editor!=null: editor.close_editor();await process_frame
-	check(not paused,"Studio close restores prior state")
+	check(paused and report.overlay.visible,"Closing Studio leaves the open report paused")
+	await press(KEY_F9)
+	check(root.get_node_or_null("RoomLayoutEditor")==null,"Reporter blocks gameplay's Studio shortcut")
+	await press(KEY_F8)
+	check(not paused,"Closing the final overlay releases the tree pause")
 	var probe:=ReportProbe.new();root.add_child(probe);probe.set_process_input(false)
 	probe.performance_monitor.set_process(false)
 	probe.performance_monitor.observe(80,false,false,100)

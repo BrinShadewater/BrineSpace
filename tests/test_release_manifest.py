@@ -4,6 +4,35 @@ import tempfile, unittest
 spec=importlib.util.spec_from_file_location('manifest',Path(__file__).resolve().parents[1]/'tools/build_release_manifest.py')
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 class RuntimeAssets(unittest.TestCase):
+    def test_water_stroke_notice_is_selected_without_unrelated_text(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            files={
+                'project.godot':'run/main_scene="res://scenes/title_screen.tscn"',
+                'scenes/title_screen.tscn':'path="res://scripts/water_stroke_triangles.gd"',
+                'scripts/water_stroke_triangles.gd':'const LICENSE_NOTICE="res://assets/licenses/godot-engine-MIT.txt"',
+                'assets/licenses/godot-engine-MIT.txt':'MIT notice fixture',
+                'assets/licenses/unrelated.txt':'Unselected authoring note',
+            }
+            for name,data in files.items():
+                path=root/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(data)
+            selected,_=m.collect(root)
+            self.assertIn('assets/licenses/godot-engine-MIT.txt',selected)
+            self.assertNotIn('assets/licenses/unrelated.txt',selected)
+
+    def test_intro_video_preload_is_collected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            files={'project.godot':'run/main_scene="res://scenes/intro.tscn"',
+                   'scenes/title_screen.tscn':'path="res://scenes/intro.tscn"',
+                   'scenes/intro.tscn':'path="res://scripts/intro.gd"',
+                   'scripts/intro.gd':'const FILM := preload("res://brineui/intro/film.ogv")',
+                   'brineui/intro/film.ogv':'video fixture'}
+            for name,data in files.items():
+                path=root/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(data)
+            selected,_=m.collect(root)
+            self.assertIn('brineui/intro/film.ogv',selected)
+
     def test_branforth_locker_authoring_exclusion_is_narrow(self):
         base='character/chief-engineer-branforth-v2'
         authoring=base+'/sources/locker-identity-2026-09-22'

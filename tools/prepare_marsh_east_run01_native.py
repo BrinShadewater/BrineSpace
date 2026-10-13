@@ -1,0 +1,15 @@
+"""Prepare East normal-move staged source proof on an actual horizontal route."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+source=(ROOT/'tools/review_marsh_south_run05_actor.gd').read_text()
+source=source.replace('south-run-actor-05-2026-10-02','east-run-actor-01-2026-10-02').replace('marsh-south-run-material-v1/candidate-05','marsh-east-run-material-v1/candidate-01').replace('run-south','run-east').replace('idle-south','idle-east').replace('"south"','"east"').replace('South','East')
+source=source.replace('desired+Vector2(dx,dy)','desired+Vector2(dy,dx)').replace('candidate+Vector2(0,travel)','candidate+Vector2(travel,0)').replace('candidate+Vector2(0,168)','candidate+Vector2(168,0)').replace('route_start+Vector2(0,168)','route_start+Vector2(168,0)')
+source=source.replace('actor.foot.x==route_start.x','actor.foot.y==route_start.y').replace('actor.foot.y>=before.y and actor.foot.y<=route_start.y+168','actor.foot.x>=before.x and actor.foot.x<=route_start.x+168')
+target=ROOT/'tools/review_marsh_east_run_actor.gd';assert not target.exists();target.write_text(source,encoding='utf-8');target.with_suffix('.gd.uid').write_text('uid://cq7ehrunm3v84\n')
+fingerprint=(ROOT/'tools/fingerprint_marsh_south_run05_actor.py').read_text().replace('marsh-south-run-material-v1','marsh-east-run-material-v1').replace('tools/review_marsh_south_run05_actor.gd','tools/review_marsh_east_run_actor.gd').replace('tools/fingerprint_marsh_south_run05_actor.py','tools/fingerprint_marsh_east_run_actor.py').replace("'tools/assemble_marsh_south_run04.py','tools/build_marsh_south_run05.py','tools/build_marsh_south_run_passing08.py'","'tools/prepare_marsh_east_run_guides.py','tools/prepare_marsh_east_run_prompt.py','tools/build_marsh_east_run01.py'")
+fingerprint=fingerprint.replace("['sources','candidate-03','candidate-04','candidate-05','passing-05-unselected','passing-06-unselected','passing-07-unselected','passing-08-unselected']","['sources','candidate-01']")
+(ROOT/'tools/fingerprint_marsh_east_run_actor.py').write_text(fingerprint,encoding='utf-8')
+publisher=(ROOT/'tools/publish_marsh_south_run05_actor.py').read_text().replace('marsh-south-run-material-v1','marsh-east-run-material-v1').replace('south-run-actor-05-2026-10-02','east-run-actor-01-2026-10-02').replace('candidate-05/','candidate-01/').replace("'actor-review-v2'","'actor-review-v1'").replace('walk-south','walk-east').replace('marsh-south-idle-material-v1/candidate-01/000.png','marsh-v2/frames/bare/idle-east/000.png').replace('South','East').replace('south','east')
+publisher=publisher.replace("'retainedFailedInterval':'east-run-actor-04-2026-10-02:438checks/76fixture speed-tolerance failures; measured1.37988281 vs ideal1.38, worlds float precision; fixture.gd retained. v2 tolerance0.001worldunit.'","'fixturePrecision':'Existing0.001world-unit movement tolerance, no failed East native interval.'")
+(ROOT/'tools/publish_marsh_east_run_actor.py').write_text(publisher,encoding='utf-8')
+print('Prepared independent East horizontal normal-move study/UID and bounded publisher.')

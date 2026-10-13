@@ -1,0 +1,11 @@
+"""Freeze whole-sheet yaw edit; preserve failed originals and calibration."""
+from pathlib import Path
+import hashlib,json
+ROOT=Path(__file__).resolve().parents[1];S=ROOT/'character/marsh-carry-turn-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+text='''Edit referenceONE whole two-figure sprite sheet. Keep the RIGHT neutral standing figure unchanged. Redraw the LEFT cargo figure as a complete connected adult figure with head,torso,hips,and crate all looking slightly toward the LEFT side of the picture. Currently its face looks slightly right;change it to slightly LEFT. Use referenceTWO's unmistakable left-looking face direction,but make the result much nearer front:only about20degrees left of frontal,both eyes clearly visible,nose between eyes slightly to left. Do not copy referenceTWO's stronger quarter angle. No right-looking face or head twisted opposite chest. Keep original small adult head/body proportions,elevated game camera,quiet matte warm pixel rendering. Preserve correct VIEWER LEFT boot planted lowest,VIEWER RIGHT boot raised behind,waist-held two-hand slate crate with divided front panel/two ivory latches. Redraw entire cargo figure for consistent slight FRONT-LEFT yaw,not a pasted head. Retain entire neutral ruler and both complete hair-to-sole figures,empty wide gutter,transparent background,no floor/shadow/text. Selected neutral defines one common147 occupied-height scale;no independent fitting. Cargo figure faces slightly LEFT,neutral stays FRONT.'''
+p=S/'west-south-nearfront05.prompt.txt';assert not p.exists();p.write_text(text+'\n',encoding='utf-8')
+refs=[S/'west-south-nearfront04.raw.png',S/'west-south-nearfront03-correct-left-guide.png']
+prior=json.loads((S/'west-south-nearfront04.request.json').read_text())
+(S/'west-south-nearfront05.request.json').write_text(json.dumps({'normalAdmission':False,'fullGoalComplete':False,'status':'frozen before generation','promptSha256':sha(p),'orderedReferences':[{'path':q.relative_to(ROOT).as_posix(),'sha256':sha(q)} for q in refs],'sourceFrames':prior['sourceFrames'],'sheetGrid':[2,1],'transparentBackground':True,'neutralOccupiedTargetHeight':147,'replaceForwardSlot':3,'baseSource':'west-south-01'},indent=2)+'\n')
+print('Frozen whole-sheet edit05;failed04 unchanged retained.')

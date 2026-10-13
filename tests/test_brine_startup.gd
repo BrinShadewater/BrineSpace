@@ -67,7 +67,7 @@ func run() -> void:
 		last=value
 	await capture("awake")
 	var frost=preload("res://scripts/cryo_release_effect.gd")
-	check(frost.tint(game,"bill").r<0.8,"Emerging human starts slightly blue")
+	check(frost.tint(game,"bill")==Color.WHITE,"Emerging human has regained natural colour before the live handoff")
 	game.visual_time_seconds+=0.6
 	await capture("cold-release")
 	game.grid_view.retain_room_contents=false

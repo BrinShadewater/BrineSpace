@@ -1,24 +1,47 @@
-import sys,unittest
+"""Selected Marsh dry carry turns reproduce the reviewed sources and join exactly."""
+import json
+import unittest
 from pathlib import Path
+
 from PIL import Image
-ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'tools'))
-from build_marsh_carry_turns import build,PAIRS
-import build_marsh_opposite_carry_turns as opposite
+
+
+ROOT = Path(__file__).resolve().parents[1]
+RUNTIME = ROOT / "character/marsh-v2"
+SELECTED = ROOT / "character/marsh-carry-chain-v1/turns-matched"
+
+
+def pixels(path):
+    return Image.open(path).convert("RGBA").tobytes()
+
+
 class CarryTurns(unittest.TestCase):
     def test_reproduction_and_joins(self):
-        for pair in PAIRS:
-            with self.subTest(pair=pair):self.check_pair(pair)
-        for pair in opposite.PAIRS:
-            with self.subTest(pair=pair):self.check_pair(pair,opposite.build)
-    def check_pair(self,pair,builder=build):
-        clips=builder(pair=pair);runtime=ROOT/f'character/marsh-v2/supplemental/carry-turn-{pair}'
-        for key,row in clips.items():
-            origin,dest=key.removeprefix('carry-turn-').split('-')
-            for i,d in [(0,origin),(-1,dest)]:
-                self.assertEqual(row[i].tobytes(),Image.open(ROOT/f'character/marsh-v2/frames/bare/carry-{d}/000.png').convert('RGBA').tobytes())
-            for i,f in enumerate(row):
-                self.assertEqual(f.tobytes(),Image.open(runtime/f'{key}-{i:03}.png').convert('RGBA').tobytes())
-                self.assertLessEqual(set(f.getchannel('A').tobytes()),{0,255})
-        origin,dest=pair.split('-')
-        self.assertEqual([f.tobytes() for f in clips[f'carry-turn-{pair}']],[f.tobytes() for f in reversed(clips[f'carry-turn-{dest}-{origin}'])])
-if __name__=='__main__':unittest.main()
+        catalog = json.loads((RUNTIME / "catalog.json").read_text())
+        states = {}
+        for relative in catalog["body"]:
+            if not relative.startswith("supplemental/carry-turn-"):
+                continue
+            manifest = RUNTIME / relative
+            for state in json.loads(manifest.read_text())["states"]:
+                name = state["id"]
+                runtime = [manifest.parent / f for f in state["frameFiles"]]
+                selected = sorted((SELECTED / name).glob("[0-9][0-9][0-9].png"))
+                self.assertEqual(len(runtime), len(selected), name)
+                for actual, source in zip(runtime, selected):
+                    self.assertEqual(pixels(actual), pixels(source), name)
+                    with Image.open(actual) as frame:
+                        self.assertLessEqual(set(frame.getchannel("A").tobytes()), {0, 255})
+                origin, destination = name.removeprefix("carry-turn-").split("-")
+                self.assertEqual(pixels(runtime[0]), pixels(RUNTIME / f"frames/bare/carry-{origin}/000.png"), name)
+                self.assertEqual(pixels(runtime[-1]), pixels(RUNTIME / f"frames/bare/carry-{destination}/000.png"), name)
+                states[name] = runtime
+        self.assertEqual(len(states), 12)
+        for name, row in states.items():
+            origin, destination = name.removeprefix("carry-turn-").split("-")
+            reverse = states[f"carry-turn-{destination}-{origin}"]
+            self.assertEqual([pixels(f) for f in row], [pixels(f) for f in reversed(reverse)], name)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -17,6 +17,13 @@ func run():
 	check(slot.material==null,"Dry props release submersion material")
 	Visuals.prop_material(slot,water_prop,0.6,3,Vector2.ZERO,1)
 	check(is_equal_approx(slot.material.get_shader_parameter("depth"),0.6),"Reflooding restores cached depth uniforms")
+	Visuals.prop_material(slot,water_prop,0,3,Vector2.ZERO,1)
+	Visuals.prop_material(slot,water_prop,0.6,3,Vector2.ZERO,1)
+	check(is_equal_approx(slot.material.get_shader_parameter("clock"),3.0),"Reflooding at a paused clock initializes the new material clock")
+	preload("res://scripts/title_settings.gd").reduced_motion=true
+	Visuals.prop_material(slot,water_prop,0.6,9,Vector2.ZERO,1)
+	check(is_zero_approx(slot.material.get_shader_parameter("clock")),"Reduced Motion freezes submersion shimmer")
+	preload("res://scripts/title_settings.gd").reduced_motion=false
 	slot.material=null # Retained draw slot reused by a crew entry, then a prop.
 	Visuals.prop_material(slot,water_prop,0.6,4,Vector2.ZERO,1)
 	check(is_equal_approx(slot.material.get_shader_parameter("depth"),0.6),"Reused slot initializes new material uniforms")
@@ -29,6 +36,10 @@ func run():
 			var room := {"id":id,"rotation":q}
 			var polygon := Visuals.shape(room)
 			check(Geometry2D.is_point_in_polygon(Vector2.ZERO,polygon),"Rotated water footprint contains corridor center")
+			check(Visuals.damage_anchor(room).length()<192,"Hallway damage remains on its own hull")
+	var large:=Visuals.shape({"id":"moonbay","size":Vector2i(2,2)})
+	check(Geometry2D.is_point_in_polygon(Vector2(500,500),large),"Large-room water covers the fourth cell")
+	check(not Geometry2D.is_point_in_polygon(Vector2(590,500),large),"Large-room water stays inside the hull")
 	Store.loaded=true
 	Store.data={}
 	var view=load("res://rooms/full-wall-v1/storage_bay_view.gd").new()

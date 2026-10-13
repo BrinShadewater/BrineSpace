@@ -139,8 +139,90 @@ class MarshRebaker:
     def packed(self,path):
         return self.clips[path.parent.name][int(path.stem)].copy()
     def state_override(self,key):
+        if key=='walk-step-north':
+            manifest=ROOT/'character/marsh-north-step-v1/sequence-v2/manifest.json'
+            state=json.loads(manifest.read_text())['states'][0]
+            return [source(manifest.parent/p) for p in state['frameFiles']]
+        if key.startswith('walk-stop-p') and key.endswith('-north'):
+            manifest=ROOT/'character/marsh-north-stop-v1/phase-bank-v3/manifest.json'
+            state=next(s for s in json.loads(manifest.read_text())['states'] if s['id']==key)
+            return [source(manifest.parent/p) for p in state['frameFiles']]
+        if key=='walk-start-north':
+            manifest=ROOT/'character/marsh-north-walk-material-v1/candidate-01/north-start/manifest.json'
+            state=json.loads(manifest.read_text())['states'][0]
+            return [source(manifest.parent/p) for p in state['frameFiles']]
+        north_path=ROOT/'character/marsh-north-walk-material-v1/selection.json'
+        if north_path.exists():
+            selected=json.loads(north_path.read_text())
+            if key in selected['changedStates']:
+                return [source(ROOT/p) for p in selected['states'][key]]
+        repair_path=ROOT/'character/marsh-master-repair-v1/selection.json'
+        if repair_path.exists():
+            selected=json.loads(repair_path.read_text())
+            if key in selected['changedStates']:
+                return [source(ROOT/p) for p in selected['states'][key]]
+        fullset_path=ROOT/'character/marsh-quality-pass-v4/selection.json'
+        if fullset_path.exists():
+            selected=json.loads(fullset_path.read_text())
+            if key in selected['changedStates']:
+                return [source(ROOT/p) for p in selected['states'][key]]
+        if key.split('-')[0] in ('interact','repair','inspect','salvage','kneel','stand'):
+            folder=ROOT/'character/marsh-diagnostics-v7/frames'/key
+            if folder.exists():return [source(p) for p in sorted(folder.glob('*.png'))]
+        if key.startswith('crew-chat-'):
+            folder=ROOT/'character/marsh-crew-chat-v2/frames'/key
+            return [source(folder/f'{i:03}.png') for i in range(8)]
+        if key=='tread-north':
+            folder=ROOT/'character/marsh-quality-pass-v2/frames/tread-north'
+            if folder.exists():return [source(folder/f'{i:03}.png') for i in range(4)]
+        if key.startswith(('injury-ground-','injury-rise-')):
+            folder=ROOT/'character/marsh-injury-runtime-v1/frames'/key
+            return [source(folder/f'{i:03}.png') for i in range(6)]
+        polish_path=ROOT/'character/marsh-full-polish-v1/selection.json'
+        if polish_path.exists():
+            polish=json.loads(polish_path.read_text())
+            if key in polish['changedStates']:
+                return [source(ROOT/p) for p in polish['states'][key]]
         from repair_crew_walk import SELECTED_GAITS
         from repair_marsh_carry import SELECTED as CARRY
+        action, _, direction=key.rpartition('-')
+        if action in ('interact','kneel','repair','stand') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-controller-tone-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(6 if action in ('interact','repair') else 3)]
+        if action in ('eat','drink') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-galley-match-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(6)]
+        if action in ('death-water','swim-distress','recover-air') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-water-recovery-match-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(6)]
+        if action=='death-ground' and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-shutdown-injury-match-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(6)]
+        if action in ('swim','tread') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-water-match-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(4)]
+        if action=='carry' and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-carry-match-v1/frames'/direction
+            return [source(source_dir/f'{i:03}.png') for i in range(4)]
+        if action in ('pickup','unload','cargo-unload') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-carry-chain-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(4)]
+        if action in ('salvage','inspect') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-salvage-match-v1/frames'/('salvage-'+direction)
+            return [source(source_dir/f'{i:03}.png') for i in range(6)]
+        if key in [f'run-{direction}' for direction in ('south','north','east','west')]:
+            direction=key.split('-')[-1]
+            source_dir=ROOT/'character/marsh-run-match-v1/frames'/direction
+            return [source(source_dir/f'{i:03}.png') for i in range(6)]
+        if action in ('lie-down','sleep','get-up') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-rest-match-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(2 if action=='sleep' else 4)]
+        if action in ('sit-down','sit-idle','read-seated','sit-rise') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-seated-match-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(3 if action=='read-seated' else 2 if action=='sit-idle' else 4)]
+        if action in ('torch-draw','weld','torch-stow') and direction in ('south','north','east','west'):
+            source_dir=ROOT/'character/marsh-welding-match-v1/frames'/key
+            return [source(source_dir/f'{i:03}.png') for i in range(6)]
         if key in self.welding:return [frame.copy() for frame in self.welding[key]]
         if key in ['carry-'+d for d in CARRY]:return [frame.copy() for frame in self.clips[key]]
         if ('marsh',key) in SELECTED_GAITS:return [frame.copy() for frame in self.clips[key]]
@@ -216,15 +298,33 @@ def main():
     for pair in CARRY_TURN_PAIRS:build_carry_turns(install=True,pair=pair)
     from build_marsh_opposite_carry_turns import build as build_opposite_carry, PAIRS as OPPOSITE_CARRY_PAIRS
     for pair in OPPOSITE_CARRY_PAIRS:build_opposite_carry(install=True,pair=pair)
+    from install_marsh_carry_chain import install_turns as install_matched_carry_turns
+    install_matched_carry_turns(backup=False)
     from build_marsh_loaded_swim import build as build_loaded_swim, DIRECTIONS as LOADED_DIRECTIONS
     for direction in LOADED_DIRECTIONS:build_loaded_swim(install=True,direction=direction)
+    from install_marsh_swim_pickup_match import install as install_matched_swim_pickup
+    install_matched_swim_pickup(backup=False)
     from build_marsh_swim_carry_turns import build as build_loaded_turns, PAIRS as LOADED_TURN_PAIRS
     for pair in LOADED_TURN_PAIRS:build_loaded_turns(install=True,pair=pair)
     from build_marsh_opposite_swim_carry_turns import build as build_loaded_half_turns, PAIRS as LOADED_HALF_PAIRS
     for pair in LOADED_HALF_PAIRS:build_loaded_half_turns(install=True,pair=pair)
     from build_marsh_cargo_drain import build as build_cargo_drain, DIRECTIONS as CARGO_DRAIN_DIRECTIONS
     for direction in CARGO_DRAIN_DIRECTIONS:build_cargo_drain(install=True,direction=direction)
+    from install_marsh_cargo_drain_endpoint import install as install_cargo_drain_endpoint
+    install_cargo_drain_endpoint(backup=False)
+    from install_marsh_cargo_drain_match import install as install_matched_cargo_drain
+    install_matched_cargo_drain(backup=False)
     finalize('marsh')
+    from install_marsh_water_match import install as install_matched_water
+    install_matched_water(backup=False)
+    from install_marsh_water_turn_match import install as install_matched_water_turns
+    install_matched_water_turns(backup=False)
+    from install_marsh_loaded_water_match import install as install_matched_loaded_water
+    install_matched_loaded_water(backup=False)
+    from prepare_marsh_controller_tone import install as install_controller_tone
+    install_controller_tone(backup=False)
+    from prepare_marsh_full_polish import install as install_full_polish
+    install_full_polish()
     (QA/'body-build.json').write_text(json.dumps({'states':states,'sourceHashes':{**shared.SOURCE_HASHES,**PROVENANCE},'operations':shared.OPS,'frames':records,'padding':padding,'legacyFramesReproduced':len(contract['sourceFrames'])},indent=2)+'\n')
     print(json.dumps({'bodyStates':len(states),'bodyReferences':sum(e['frames'] for e in states),'sourceFramesReproduced':len(contract['sourceFrames']),'paletteColors':color_count}))
 

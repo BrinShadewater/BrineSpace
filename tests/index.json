@@ -1,6 +1,20 @@
 {
   "_comment": "Subsystem groups and lane overrides for tools/run_tests.py. Lanes are auto-detected from test source; add an override only when the heuristic is wrong.",
   "subsystems": {
+    "hull-ui": [
+      "test_owner_polish",
+      "test_hull_ui",
+      "test_ui_live_components",
+      "test_ui_mission_components",
+      "test_ui_ux_layout",
+      "test_ui_feedback",
+      "test_ui_action_feedback",
+      "test_ui_resource_outlook",
+      "test_ui_responsive_layout",
+      "test_shared_menu",
+      "test_ui_workspace",
+      "test_title_screen"
+    ],
     "moonbay": [
       "test_moonbay_missions",
       "test_moonbay_assignment",
@@ -10,6 +24,7 @@
       "test_large_room_studio",
       "test_large_room_revisions",
       "test_room_footprint",
+      "test_door_membership",
       "test_large_room_placement",
       "test_large_room_integration",
       "test_large_room_art",
@@ -17,7 +32,53 @@
       "test_large_room_paid"
     ],
     "performance-diagnostics": [
+      "test_crew_pose_cache",
+      "test_moonbay_retained_walls",
+      "test_render_known_port_connections",
+      "test_legacy_door_plan",
+      "test_draw_profiler_lifetime",
+      "test_seabed_silt_batch",
+      "test_render_crew_feet_cache",
+      "test_transit_material_cache",
+      "test_session_material_cache",
+      "test_profile_floor_loading",
+      "test_session_art_cache",
+      "test_veld_reading_pose_cache",
+      "test_frozen_prop_effects",
+      "test_light_map_scheduling",
+      "test_terrain_cell_retention",
+      "test_drone_route_cache",
+      "test_drone_invisible_cache",
+      "test_split_prop_retention",
+      "test_terrain_draw_skip",
+      "test_contact_shadow_batch",
+      "test_room_shadow_packets",
+      "test_room_shadow_packet_rooms",
+      "test_room_shadow_packet_cache",
+      "test_galley_lazy_art",
+      "test_hand_image_preparation",
+      "test_release_benchmark_render_guards",
+      "test_room_image_sharing",
+      "test_release_benchmark_driver",
+      "test_solar_rotation_cache",
+      "test_research_rotation_cache",
+      "test_wall_slot_retention",
+      "test_wall_fade_retention",
+      "test_library_layers",
+      "test_baked_procedural_audio",
+      "test_service_reachability",
+      "test_wall_texture_sharing",
+      "test_grid_mesh_lifetime",
+      "test_full_wall_placement_cache",
+      "test_primary_work_stale_room",
+      "test_crew_texture_pool",
+      "test_crew_texture_batch",
+      "test_image_prefetch",
+      "test_retained_wall_context",
+      "test_wall_interior_invalidation",
+      "test_report_regressions",
       "test_performance_monitor",
+      "test_stall_watch_loading",
       "test_performance_reporting",
       "test_diagnostics",
       "test_soak_budget"
@@ -34,6 +95,10 @@
       "test_decorative_cable_removal"
     ],
     "crew": [
+      "test_crew_topology_signature",
+      "test_navigation_room_owner",
+      "test_navigation_prefix",
+      "test_atmosphere_mask_invalidation",
       "test_robot_polish",
       "test_margot_polish",
       "test_npc_rebuild_replacement",
@@ -67,10 +132,15 @@
       "test_crew_medium",
       "test_crew_polish",
       "test_crew_room_activity",
+      "test_activity_station_reuse",
+      "test_lounge_seat_contacts",
       "test_crew_standing_height",
       "test_crew_swim_packs",
       "test_dr_veld",
+      "test_veld_walk_integration",
+      "test_crew_walk_v2",
       "test_crew_spacing",
+      "test_crew_passage_budget",
       "test_npc_movement_trace",
       "test_npc_segment_clearance",
       "test_airlock_actor_visibility",
@@ -86,7 +156,9 @@
       "test_bill_bunk",
       "test_marsh_bunk",
       "test_bunk_multi_crew",
-      "test_bunk_eligibility"
+      "test_bunk_eligibility",
+      "test_dry_goal_reachability",
+      "test_world_gait_input"
     ],
     "underwater": [
       "test_runtime_environment_art",
@@ -114,6 +186,7 @@
       "test_drone_battery",
       "test_drone_fleet",
       "test_drone_jobs",
+      "test_drone_route_cache",
       "test_drone_lifecycle",
       "test_drone_runtime_animation",
       "test_drone_work_face",
@@ -202,9 +275,18 @@
     ],
     "render-perf": [
       "test_live_surface_retention",
+      "test_synergy_geometry",
       "test_batch_two_resource_uids",
       "test_brine_batch_parity",
       "test_camera_pixel_stability",
+      "test_camera_scene_lifetime",
+      "test_crew_loading_progress",
+      "test_card_content_regions",
+      "test_layered_classification",
+      "test_water_depth_preparation",
+      "test_library_live_context",
+      "test_raw_texture_regions",
+      "test_card_mipmap_loading",
       "test_content_cache_parity",
       "test_hitch_parity",
       "test_light_pool_batch",
@@ -220,7 +302,27 @@
       "test_surface_cache_parity",
       "test_tiled_floor_batch",
       "test_tiled_floor_batch_three",
-      "test_zoom_shell_reuse"
+      "test_zoom_shell_reuse",
+      "test_connected_door_render",
+      "test_door_style_lookup",
+      "test_port_membership",
+      "test_moonbay_water_commands",
+      "test_large_room_retention",
+      "test_library_base_triangles",
+      "test_library_triangle_cache",
+      "test_drone_upload_diagnostics",
+      "test_drone_effect_storage",
+      "test_drone_cargo_storage",
+      "test_ordinary_prop_triangles",
+      "test_ordinary_prop_triangle_cache",
+      "test_static_large_base_retention",
+      "test_seabed_strip_triangles",
+      "test_water_stroke_triangles",
+      "test_moonbay_water_batch",
+      "test_water_wave_commands",
+      "test_water_wave_culling",
+      "test_workshop_retention",
+      "test_world_gait_input"
     ],
     "ui": [
       "test_brine_comms_bubbles",
@@ -235,20 +337,17 @@
       "test_inspector_refresh",
       "test_learning_ui",
       "test_navigation_badges",
+      "test_navigation_frame_lifetime",
       "test_overlay_text",
       "test_power_demand_ui",
       "test_title_screen",
-      "test_title_checkpoint_layout",
-      "test_effects_quality",
-      "test_light_map_alignment",
-      "test_light_emergency",
-      "test_crew_lamp_light",
-      "test_ocean_life"
+      "test_title_checkpoint_layout"
     ],
     "save": [
       "test_bug_report",
       "test_checkpoint_isolation",
       "test_menu_recovery",
+      "test_camera_scene_lifetime",
       "test_meta_isolation",
       "test_run_save"
     ],
@@ -259,8 +358,27 @@
       "test_companions",
       "test_companion_art_reuse",
       "test_marsh_battery",
+      "test_marsh_quality_v2",
+      "test_marsh_north_production",
+      "test_marsh_north_stop_controller",
+      "test_marsh_north_step_controller",
+      "test_marsh_south_start_controller",
+      "test_marsh_south_stop_controller",
+      "test_marsh_south_step_controller",
+      "test_marsh_south_step_production",
+      "test_marsh_south_damage_production",
+      "test_marsh_north_damage_production",
+      "test_marsh_east_damage_production",
+      "test_marsh_west_damage_production",
+      "test_marsh_south_snapshots",
+      "test_marsh_south_production",
+      "test_marsh_south_visible_continue",
       "test_marsh_berth",
-      "test_marsh_unlock"
+      "test_marsh_unlock",
+      "test_marsh_south_run_production",
+      "test_marsh_east_run_production",
+      "test_marsh_west_run_production",
+      "test_marsh_north_run_production"
     ],
     "fire": [
       "test_fire_assets",
@@ -285,11 +403,10 @@
     "layout-studio": [
       "test_large_room_studio",
       "test_studio_owner_regressions",
-      "test_layout_deletion_persistence",
-      "test_corner_defaults",
       "test_studio_effect_preview",
       "test_studio_walls_doors",
-      "test_studio_effect_preview",
+      "test_layout_deletion_persistence",
+      "test_corner_defaults",
       "test_layout_catalog_runtime",
       "test_layout_free_placement",
       "test_layout_performance_guards",
@@ -304,7 +421,8 @@
       "test_layout_cache_removal"
     ],
     "cards-bindings": [
-      "test_room_catalog_cards"
+      "test_room_catalog_cards",
+      "test_hand_reuse"
     ],
     "procedural-sites": [
       "test_procedural_route",
@@ -323,9 +441,147 @@
     "new-room-expansion": [
       "test_new_room_expansion",
       "test_room_layout_editor"
+    ],
+    "veld-water-death": [
+      "test_veld_water_death_entry",
+      "test_veld_water_death_continue"
+    ],
+    "veld-dry-death": [
+      "test_veld_death_ground_east_candidate",
+      "test_veld_death_ground_west_candidate",
+      "test_veld_death_ground_south_candidate",
+      "test_veld_death_ground_north_candidate",
+      "test_veld_death_ground_family_candidate",
+      "test_veld_dry_death_entry_candidate",
+      "test_veld_dry_death_role_entry_candidate",
+      "test_veld_dry_death_station_candidate",
+      "test_veld_dry_death_continue_candidate"
+    ],
+    "veld-rest": [
+      "test_veld_rest_east_candidate",
+      "test_veld_rest_west_candidate",
+      "test_veld_rest_north_candidate",
+      "test_veld_rest_south_candidate",
+      "test_veld_rest_family_candidate",
+      "test_veld_rest_family_selected",
+      "test_veld_rest_family_station"
+    ],
+    "veld-seated": [
+      "test_veld_seated_north_candidate",
+      "test_veld_seated_north_station",
+      "test_veld_seated_north_continue",
+      "test_veld_seated_breathing",
+      "test_veld_breathing_continue",
+      "test_veld_seated_south_candidate",
+      "test_veld_seated_south_breathing",
+      "test_veld_seated_journey",
+      "test_veld_seat_front_continue"
     ]
   },
   "lanes": {
+    "test_crew_pose_cache": {
+      "lane": "native",
+      "reason": "Reads actual GPU pose textures and awaits frame_post_draw to verify immutable cache leases, eviction and pixel bytes; isolated profile required."
+    },
+    "test_navigation_frame_lifetime": {
+      "lane": "native",
+      "reason": "Actual processed ImageTexture pixels, mipmaps and final-caller release in an isolated profile."
+    },
+    "test_moonbay_water_commands": {
+      "lane": "native",
+      "reason": "Exact Moonbay stationary water replay, animated fallback, bounded eviction and canvas lifetime; isolated profile required."
+    },
+    "test_card_mipmap_loading": {
+      "lane": "native",
+      "reason": "Every runtime card GPU mip level, exact rotated fan raster and imported fallback; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_raw_texture_regions": {
+      "lane": "native",
+      "reason": "Raw PNG/JPEG upload GPU pixels, source regions and imported texture fallback; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_crew_loading_progress": {
+      "lane": "native",
+      "reason": "Loading progress during manifest registration, reentrant pending state, rate limit and inactive behavior; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_session_material_cache": {
+      "lane": "native",
+      "reason": "Material factory overlap/release and exact reloaded pixels through both filters; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_profile_floor_loading": {
+      "lane": "native",
+      "reason": "Exact profiled floor pixels with tile/legacy paths, rotations and edits, and unused-upload omission; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_session_art_cache": {
+      "lane": "native",
+      "reason": "Shared image/mesh ownership, navigation-image release with topology/metadata retained, surviving/reloaded pixels, pending worker drain and reference behavior; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_room_shadow_packets": {
+      "lane": "native",
+      "reason": "Exact overlapping shadow pixels, oversampling and fallback behavior plus measured draw-call reduction; requires an isolated native viewport."
+    },
+    "test_room_shadow_packet_rooms": {
+      "lane": "native",
+      "reason": "Exact current room floor/shadow composition through rotations, light levels and scaling; requires an isolated native viewport."
+    },
+    "test_room_shadow_packet_cache": {
+      "lane": "native",
+      "reason": "Actual draw callbacks exercise fading palettes, byte/entry limits, moved footprints and overlapping-owner release."
+    },
+    "test_galley_lazy_art": {
+      "lane": "native",
+      "reason": "Lazy old galley PNG loading, decoded GPU pixels, source regions, bounds and repeated-request identity; isolated native viewport required."
+    },
+    "test_veld_reading_pose_cache": {
+      "lane": "native",
+      "reason": "Selected reading-bank GPU readback reference, exact interruption source/timing, invalidation and weak lifetime; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_frozen_prop_effects": {
+      "lane": "native",
+      "reason": "Actual selected prop pixels and Reduced Motion retention/toggles, flood and layout invalidation; scratch APPDATA and BRINESPACE_TEST_USER_DIR required.",
+      "timeout": 180
+    },
+    "test_light_map_scheduling": {
+      "lane": "native",
+      "reason": "Actual light-map pixels, update scheduling and viewport measurements; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR.",
+      "timeout": 180
+    },
+    "test_drone_invisible_cache": {
+      "lane": "native",
+      "reason": "Actual transparent drone texture identity/pixels under GPU cache pressure, bounded ownership and scene release; isolated APPDATA and BRINESPACE_TEST_USER_DIR required.",
+      "timeout": 180
+    },
+    "test_terrain_cell_retention": {
+      "lane": "native",
+      "reason": "Actual terrain pass exact pixels, first frame, plants, cell/scene cleanup; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_split_prop_retention": {
+      "lane": "native",
+      "reason": "Exact retained/fresh room prop pixels and invalidation checks; requires isolated APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_terrain_draw_skip": {
+      "lane": "native",
+      "reason": "Exact mineral-overlay pixels through excavation and clearance; set BRINESPACE_TEST_USER_DIR to the isolated resolved profile."
+    },
+    "test_contact_shadow_batch": {
+      "lane": "native",
+      "reason": "Exact clipped contact-shadow pixels, mutation and oversampling fallback; set BRINESPACE_TEST_USER_DIR to the isolated resolved profile."
+    },
+    "test_wall_fade_retention": {
+      "lane": "native",
+      "reason": "Checks actual wall pixels and fade invalidation on a native viewport, including corridor risers."
+    },
+    "test_library_layers": {
+      "lane": "native",
+      "reason": "Exact retained/combined pixels with animation, flooding, mirroring and both texture filters."
+    },
+    "test_crew_texture_pool": {
+      "lane": "native",
+      "reason": "Validates shared GPU images, independent frame identities and release lifetime."
+    },
+    "test_crew_texture_batch": {
+      "lane": "native",
+      "reason": "Compares uploaded ImageTexture and CanvasTexture pixels, including mirrored and fitted equipment."
+    },
     "test_procedural_player_recipe": {
       "lane": "native",
       "reason": "Live placement and functioning-cycle checks for a profile-known recipe."
@@ -333,6 +589,26 @@
     "test_procedural_player_power": {
       "lane": "native",
       "reason": "Instantiates the live game scene for placement and reroll strategy checks."
+    },
+    "test_marsh_west_damage_production": {
+      "lane": "native",
+      "reason": "Twenty full normal West damage saves and fresh visible Title Continues compare source pixels and playback; scratch APPDATA required.",
+      "timeout": 900
+    },
+    "test_marsh_east_damage_production": {
+      "lane": "native",
+      "reason": "Twenty full normal East damage saves and fresh visible Title Continues compare source pixels and playback; scratch APPDATA required.",
+      "timeout": 900
+    },
+    "test_marsh_north_damage_production": {
+      "lane": "native",
+      "reason": "Twenty full normal North damage saves and fresh visible Title Continues compare source pixels and playback; scratch APPDATA required.",
+      "timeout": 900
+    },
+    "test_marsh_south_damage_production": {
+      "lane": "native",
+      "reason": "Twenty full normal damage saves and fresh visible Title Continues compare actual source pixels and playback; scratch APPDATA required.",
+      "timeout": 900
     },
     "test_marsh_berth": {
       "lane": "skip",
@@ -478,6 +754,232 @@
     "test_generated_common_props": {
       "lane": "native",
       "reason": "Rendered tray, gameplay and room captures; use tools/check_generated_common_props.py for scratch APPDATA and real-profile fingerprints."
+    },
+    "test_veld_water_death_entry": {
+      "lane": "native",
+      "reason": "Normal-loader water death entry and disk Continue include actual rendered pose pixels."
+    },
+    "test_veld_water_death_continue": {
+      "lane": "native",
+      "reason": "Normal-loader water death entry and disk Continue include actual rendered pose pixels."
+    },
+    "test_veld_death_ground_east_candidate": {
+      "lane": "native",
+      "reason": "Paired dry collapse candidate requires native148/82 visual board."
+    },
+    "test_veld_death_ground_west_candidate": {
+      "lane": "native",
+      "reason": "Paired west dry-collapse candidate requires native148/82 visual board."
+    },
+    "test_veld_death_ground_south_candidate": {
+      "lane": "native",
+      "reason": "Paired south dry-collapse candidate and authored forward-pitch heads need native148/82 visual board."
+    },
+    "test_veld_death_ground_north_candidate": {
+      "lane": "native",
+      "reason": "Rear paired collapse and authored15/40degree helmet pitch need native148/82 review."
+    },
+    "test_veld_death_ground_family_candidate": {
+      "lane": "native",
+      "reason": "Combined dry source/player and native148/82 family review"
+    },
+    "test_veld_dry_death_entry_candidate": {
+      "lane": "native",
+      "reason": "Actual dry oxygen deaths with candidate injection and native incoming/lowered/corpse review"
+    },
+    "test_veld_dry_death_role_entry_candidate": {
+      "lane": "native",
+      "reason": "Actual cargo/action/partial-turn deaths and native pose join review"
+    },
+    "test_veld_dry_death_station_candidate": {
+      "lane": "native",
+      "reason": "Owner galley geometry and native64contact captures"
+    },
+    "test_veld_dry_death_continue_candidate": {
+      "lane": "native",
+      "reason": "Candidate-injected fresh-scene disk staged Continue at entry/interior/corpse"
+    },
+    "test_veld_rest_east_candidate": {
+      "lane": "native",
+      "reason": "Paired floor rest source/finite lowering and rising/held sleep need native148/82 review."
+    },
+    "test_veld_rest_west_candidate": {
+      "lane": "native",
+      "reason": "Independent west paired rest source and finite/reverse/held playback need native148/82 visual review."
+    },
+    "test_veld_rest_north_candidate": {
+      "lane": "native",
+      "reason": "North independent rest axis/helmet depth pitch and paired player source need native148/82 review."
+    },
+    "test_veld_rest_south_candidate": {
+      "lane": "native",
+      "reason": "South body/front depth/closed expression source and finite native player review."
+    },
+    "test_veld_rest_family_candidate": {
+      "lane": "native",
+      "reason": "All cardinal paired sources/finite lowering and reverse/held sleep need native148/82 review."
+    },
+    "test_veld_rest_family_selected": {
+      "lane": "native",
+      "reason": "Normal Veld loader, generic1840ms/reverse snapshots and native cardinal source proof."
+    },
+    "test_veld_rest_family_station": {
+      "lane": "native",
+      "reason": "Actual habitation rotations/east specialised bunk regression need native capture."
+    },
+    "test_veld_seated_north_candidate": {
+      "lane": "native",
+      "reason": "Candidate seated source/controller clocks and paired148/82 render; scratch APPDATA required."
+    },
+    "test_veld_seated_north_station": {
+      "lane": "native",
+      "reason": "Real default lounge contact/depth, staged paired sources and controlled interruptions; scratch APPDATA required."
+    },
+    "test_veld_seated_north_continue": {
+      "lane": "native",
+      "reason": "Actual power/suspend NPC guard and six real disk/fresh-scene candidate restores; explicit scratch APPDATA required."
+    },
+    "test_veld_seated_breathing": {
+      "lane": "native",
+      "reason": "Staged paired held loop, four actual lounge rotations, retained source/clock/contact/depth/pause and native captures; scratch APPDATA required."
+    },
+    "test_veld_breathing_continue": {
+      "lane": "native",
+      "reason": "Eight interior/second-cycle disk/fresh-scene restores,16actual service guards and timed neutral joins; staged sources and scratch APPDATA required."
+    },
+    "test_veld_seated_south_candidate": {
+      "lane": "native",
+      "reason": "Staged paired south sitting/rise/held sources, native player/controller clocks and controlled interruption reversal,148/82 captures; scratch APPDATA required."
+    },
+    "test_veld_seated_south_breathing": {
+      "lane": "native",
+      "reason": "Staged paired south held breathing, production visual-clock repeated cycles, source/neutral joins and148/82 capture; controlled actor and scratch APPDATA required."
+    },
+    "test_veld_seated_journey": {
+      "lane": "native",
+      "reason": "Normal released Veld chooses/routes to an actually connected lounge front and completes paired staged down/breathing/rise through normal60Hz updates; native source-change captures and scratch APPDATA required."
+    },
+    "test_marsh_south_production": {
+      "lane": "native",
+      "reason": "Normal South catalog/controller, full RunSave and fresh Title Continue source/contact pairs require a real display and scratch APPDATA."
+    },
+    "test_marsh_south_visible_continue": {
+      "lane": "native",
+      "reason": "Fresh normal South Title Continue must acknowledge the actual loading overlay before native source/contact capture; scratch APPDATA required."
+    },
+    "test_veld_seat_front_continue": {
+      "lane": "native",
+      "reason": "Four actual disk/fresh-scene seated restores, new front and retained old side contact in both gears; staged north sources and scratch APPDATA required."
+    },
+    "test_marsh_south_run_production": {
+      "lane": "native",
+      "reason": "Eight full normal South run checkpoints and actual visible fresh Title Continues compare source/root/player/distance phase; scratch APPDATA required.",
+      "timeout": 900
+    },
+    "test_marsh_east_run_production": {
+      "lane": "native",
+      "reason": "Eight full normal East run checkpoints and actual visible fresh Title Continues compare source/root/player/distance phase; scratch APPDATA required.",
+      "timeout": 900
+    },
+    "test_marsh_west_run_production": {
+      "lane": "native",
+      "reason": "Eight full normal West run checkpoints and actual visible fresh Title Continues compare source/root/player/distance phase; scratch APPDATA required.",
+      "timeout": 900
+    },
+    "test_marsh_north_run_production": {
+      "lane": "native",
+      "reason": "Eight full normal North run checkpoints and actual visible fresh Title Continues compare source/root/player/distance phase; scratch APPDATA required.",
+      "timeout": 900
+    },
+    "test_release_benchmark_driver": {
+      "lane": "native",
+      "reason": "Proves signal-driven duplicate drawing versus one draw per frame with the node driver."
+    },
+    "test_room_image_sharing": {
+      "lane": "native",
+      "reason": "Checks actual shared texture pixels and scene-owner resource release."
+    },
+    "test_solar_rotation_cache": {
+      "lane": "native",
+      "reason": "Exact solar floor/shell/prop pixels across rotations, doors, power, clocks and owner layout edits."
+    },
+    "test_research_rotation_cache": {
+      "lane": "native",
+      "reason": "Exact Research Lab pixels and geometry across rotations, layout edits, zoom/filter changes and Studio bypass."
+    },
+    "test_wall_slot_retention": {
+      "lane": "native",
+      "reason": "Exact combined/retained wall pixels, first-frame creation, local corridor fades, visibility and removal lifecycle."
+    },
+    "test_release_benchmark_render_guards": {
+      "lane": "native",
+      "reason": "Checks minimized-window rejection, rendered-frame completion and bounded render timeout."
+    },
+    "test_transit_material_cache": {
+      "lane": "native",
+      "reason": "Exact corridor tile/legacy pixels and transit image release/reload across filters and door travel; requires scratch APPDATA and BRINESPACE_TEST_USER_DIR."
+    },
+    "test_large_room_retention": {
+      "lane": "native",
+      "reason": "Exact large-room composition, material/filter/layout transitions and actual Grid cleanup; isolated profile required."
+    },
+    "test_library_base_triangles": {
+      "lane": "native",
+      "reason": "Exact indexed body/shadow submission, filtering/materials and slot-owned cache; isolated profile required."
+    },
+    "test_library_triangle_cache": {
+      "lane": "native",
+      "reason": "Exact indexed body/shadow submission, filtering/materials and slot-owned cache; isolated profile required."
+    },
+    "test_drone_cargo_storage": {
+      "lane": "native",
+      "reason": "Actual cropped-frame and original drone cargo pixels, the accepted scaled-draw bound, fallbacks, immutability and session release; isolated APPDATA and BRINESPACE_TEST_USER_DIR required.",
+      "timeout": 300
+    },
+    "test_drone_effect_storage": {
+      "lane": "native",
+      "reason": "Actual stored-mask and original drone effect pixels, fallbacks, immutability and session release; isolated APPDATA and BRINESPACE_TEST_USER_DIR required.",
+      "timeout": 300
+    },
+    "test_drone_upload_diagnostics": {
+      "lane": "native",
+      "reason": "Exercises actual ImageTexture uploads and bounded same-frame diagnostics with isolated user data."
+    },
+    "test_ordinary_prop_triangles": {
+      "lane": "native",
+      "reason": "Actual normal ordinary-prop pixels, filtering/materials and scoped geometry lifetime; isolated profile required."
+    },
+    "test_ordinary_prop_triangle_cache": {
+      "lane": "native",
+      "reason": "Actual normal ordinary-prop pixels, filtering/materials and scoped geometry lifetime; isolated profile required."
+    },
+    "test_static_large_base_retention": {
+      "lane": "native",
+      "reason": "Checks retained hydroponics/storage commands and visual-state redraws with actual native room art; isolated profile required."
+    },
+    "test_seabed_strip_triangles": {
+      "lane": "native",
+      "reason": "Pixel equality of normal swaying kelp/frond triangle submissions against immediate polygons; isolated native display required."
+    },
+    "test_water_wave_commands": {
+      "lane": "native",
+      "reason": "Actual grid wave command pixels, material/transform behavior and texture fallbacks in an isolated native profile."
+    },
+    "test_water_wave_culling": {
+      "lane": "native",
+      "reason": "Exact native wave culling at view edges, animation clocks and zoom sizes, with material and texture fallback coverage; isolated profile required."
+    },
+    "test_workshop_retention": {
+      "lane": "headless",
+      "reason": "Case-key ownership and actor/site eligibility; native pixels are verified separately."
+    },
+    "test_world_gait_input": {
+      "lane": "headless",
+      "reason": "World-position gait input, stationary phase and playback restore; selected-bank/native visuals verified separately."
+    },
+    "test_synergy_geometry": {
+      "lane": "native",
+      "reason": "Pixel readback and frame_post_draw require a real display."
     }
   }
 }

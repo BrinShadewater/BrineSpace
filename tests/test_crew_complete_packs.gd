@@ -37,19 +37,29 @@ func run() -> void:
 				check(player.timing[key].loop==(key=="berth-sleep-east"),actor+" legacy berth loop "+key)
 		for entry in contract.states:
 			var key: String=entry.id
+			if actor == "veld" and key.get_slice("-",0) in ["idle","walk"]:
+				# The accepted video pack supersedes these migration-era bare clips.
+				# Its pixels, timing and equipment coexistence have dedicated coverage.
+				continue
 			# JSON timing values are floats; Array equality also compares element types.
 			var expected_durations: Array=[130.0,170.0,150.0,200.0,150.0,100.0] if actor=="branforth" and key=="walk-west" else entry.timing.durations
+			var polished_helmet: bool = actor in ["veld","branforth"] and key in ["equip-helmet-east","remove-helmet-east"]
+			var expected_count: int = entry.frames.size()
+			if polished_helmet:
+				# September 27 selected eight distinct authored poses; action totals stay unchanged.
+				expected_count = 8
+				expected_durations = [140.0,260.0,300.0,280.0,300.0,340.0,280.0,240.0] if key=="equip-helmet-east" else [140.0,300.0,340.0,320.0,300.0,300.0,300.0,240.0]
 			check(player.frames.has(key),actor+" selected "+key)
 			if not player.frames.has(key):continue
-			check(player.frames[key].size()==entry.frames.size(),actor+" count "+key)
+			check(player.frames[key].size()==expected_count,actor+" count "+key)
 			check(player.timing[key].durations==expected_durations,actor+" durations "+key)
 			check(player.timing[key].loop==supplements.get(key,{}).get("loop",entry.timing.loop),actor+" loop "+key)
 			var elapsed:=0.0
-			for i in range(entry.frames.size()):
+			for i in range(mini(expected_count,player.frames[key].size())):
 				var texture: Texture2D=player.frames[key][i]
 				check(texture.get_meta("crew_standing_height")==148.0,actor+" density "+key)
 				for meta in ["crew_water_facing","crew_water_kind","crew_water_pose","crew_depth_offset"]:
-					var expected: Variant = entry.frames[i].meta[meta]
+					var expected: Variant = entry.frames[0 if polished_helmet else i].meta[meta]
 					if supplements.has(key) and supplements[key].has("metadata"):
 						expected=supplements[key].metadata[meta][i]
 					# Selected south seating carries Marsh across the furniture front edge.

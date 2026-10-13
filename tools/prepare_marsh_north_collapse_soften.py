@@ -1,0 +1,19 @@
+"""Target only the excessive first dip through complete-pose authoring."""
+from pathlib import Path
+import hashlib,json
+ROOT=Path(__file__).resolve().parents[1];BASE=ROOT/'character/marsh-north-collapse-material-v1'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+    sources=BASE/'sources';prompt_path=sources/'soften-02.prompt.txt';assert not prompt_path.exists()
+    prompt='''Create one transparent pixel-art sheet of TWO COMPLETE separate figures of Marsh, the exact NORTH/rear-view android in reference1 selected idle/gait. Reference1 is primary body proportions, matte warm ivory/sage grade, elevated rear camera and anatomical density. Reference2 original North standing master is secondary identity and rear equipment authority; do not reproduce its magenta background. No other characters, clothes or props.
+
+Left figure: very EARLY gentle knee-softening for a mechanical shutdown, BEFORE deep crouch. Feet remain almost in the original neutral stance; knees soften slightly, hips lower only a little, torso inclines forward subtly, shoulders/arms stay slim and naturally connected, gloves hanging close to hips. At final sprite drawing density, neutral occupied height146 should become approximately135: crown drops about11pixels, not21, at unchanged heel/floor plane. Do not achieve this by shrinking the body! Bend complete anatomically correct knee/hip joints and retain actual head, rigid backplate, collar, torso, upper/thigh/shin/boot lengths at one common master drawing density. Reference1's selected idle is55wide at this density; subtle natural arm/stance expansion can reach about60, not a bulky71+ silhouette. Keep rear hair/back of head, no front face, no mirroring. The mild first dip must join the untouched original standing source convincingly, before the deeper crouch poses.
+
+Right figure: standing neutral rear RULER at exactly the same source drawing scale, matching reference1 idle0's fitted adult build, head size, ivory back plate, shoulder pads, harness straps and belt pouches, slate joint bands, dark full gloves, warm ivory shin/ankle guards, charcoal heel/sole surfaces. Target occupied55width by146height while the runtime standing ruler is nominal148. This is a calibration figure, not a second new pose or head-size authority. No larger head, wider torso or shortened legs. All body parts complete and contained.
+
+One common body drawing density across both figures, generous transparent gap and margins. Same muted warm matte ivory/sage materials and restrained crisp pixel clusters as reference1. No glossy highlights, cyan/blue lighting, hard glow or blurry outlines. Do not recolor dark soles to ivory. No fluid, floor, blood, effects, labels, rulers or shadows. Both figures must be complete whole-body sources, with connected limbs and intact equipment; no isolated body-part patch.'''
+    prompt_path.write_text(prompt+'\n',encoding='utf-8')
+    refs=[sources/'selected-north-idle-gait.png',ROOT/'character/marsh-motion-polish-v1/sources/north-standing-identity-01.png']
+    req={'status':'frozen complete early-softening correction before generation','normalAdmission':False,'promptSha256':sha(prompt_path),'orderedReferences':[{'path':p.relative_to(ROOT).as_posix(),'sha256':sha(p)} for p in refs],'transparentBackground':True,'sheetGrid':[2,1],'correction':'Source01 first dip occupied125 versus146standing:21pixel drop. Request milder complete joint articulation about11pixel drop, not per-pose scale/height fit.','neutralOccupiedTargetHeight':146,'declaredStandingRuler':148,'retainedOtherBodies':'source01 candidate01 slots2..5 unchanged until family review.'}
+    (sources/'soften-02.request.json').write_text(json.dumps(req,indent=2)+'\n');print('Frozen targeted whole first-dip correction, two ordered master references.')
+if __name__=='__main__':main()

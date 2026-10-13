@@ -44,13 +44,16 @@ func run() -> void:
 	state.order = "survey"
 	state.target = Vector2i(29,29)
 	state.credited = false
-	for phase in ["approach","seal","flood","launch","outbound","work","return","drain","unload"]:
+	for phase in ["approach","seal","flood","boarding","launch","outbound","work","return","disembark","exit_bay","drain","unload"]:
 		state.phase = phase
-		state.progress = 1.0
-		state.chamber_water = 0.5 if phase in ["flood","drain"] else (1.0 if phase in ["launch","outbound","work","return"] else 0.0)
+		state.progress = 0.4
+		state.cycle_clock = 12.4
+		state.chamber_water = 0.5 if phase in ["flood","drain","disembark"] else (1.0 if phase in ["boarding","launch","exit_bay"] else 0.0)
 		state.station_open = phase in ["approach","unload"]
 		state.ocean_open = phase=="launch"
 		var expected: Dictionary = state.duplicate(true)
+		var expected_doors := View.door_amounts(room)
+		var expected_warning := View.warning_state(room)
 		var checkpoint: Dictionary = Save.capture(game)
 		check(Save.problem(checkpoint).is_empty(),"%s checkpoint validates: %s" % [phase,Save.problem(checkpoint)])
 		if not Save.problem(checkpoint).is_empty(): break
@@ -64,7 +67,9 @@ func run() -> void:
 		check(state.phase==expected.phase and state.progress==expected.progress and state.chamber_water==expected.chamber_water and state.station_open==expected.station_open and state.ocean_open==expected.ocean_open,"%s chamber and mission phase survive Continue" % phase)
 		check(game.bill_npc.moonbay_assignment.get("home",Vector2i(-1,-1))==home and game.bill_npc.goal=="moonbay","%s crew remains reserved after Continue" % phase)
 		var visual: Dictionary = View.visual_state(room)
-		check(visual.sub_present==(phase not in ["launch","outbound","work","return"]) and visual.chamber_water==expected.chamber_water,"%s room visual matches saved mission" % phase)
+		check(View.door_amounts(room)==expected_doors,"%s door animation position resumes after Continue" % phase)
+		check(View.warning_state(room)==expected_warning,"%s beacon rotation and colour resume after Continue" % phase)
+		check(visual.sub_present==(phase not in ["launch","outbound","work","return"]) and visual.chamber_water==1.0 and visual.airlock_water==expected.chamber_water,"%s wet bay and cycling airlock match saved mission" % phase)
 		check(Mission.station_visible(game,game.bill_npc)==(phase in ["approach","unload"]),"%s pilot visibility matches boarding state" % phase)
 	state.phase = "work"
 	state.chamber_water = 1.0
@@ -87,7 +92,7 @@ func run() -> void:
 	old.crew.bill.goal = ""
 	check(Save.problem(old).is_empty(),"Old dry Moonbay checkpoint remains loadable")
 	check(Save.restore(game,old),"Old checkpoint restores")
-	check(Mission.mission_state(game.occupied[home]).phase=="idle" and View.visual_state(game.occupied[home]).chamber_water==0.0,"Old checkpoint defaults to a dry idle Moonbay")
+	check(Mission.mission_state(game.occupied[home]).phase=="idle" and View.visual_state(game.occupied[home]).chamber_water==1.0 and View.visual_state(game.occupied[home]).airlock_water==0.0,"Old checkpoint defaults to a wet bay and dry idle crew airlock")
 	root.remove_child(game)
 	current_scene = null
 	game.free()

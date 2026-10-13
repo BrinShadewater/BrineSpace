@@ -56,8 +56,12 @@ for variant in ['body','equipment']:
             if old is None:
                 errors.append('Unexpected state '+key);continue
             selected[(variant,key)]=(m,e)
-            check(len(e['frameFiles'])==len(old['frames']),'Frame count '+variant+'/'+key)
+            helmet_polish = args.actor in ['veld','branforth'] and variant=='body' and key in ['equip-helmet-east','remove-helmet-east']
+            check(len(e['frameFiles'])==(8 if helmet_polish else len(old['frames'])),'Frame count '+variant+'/'+key)
             expected_durations=[130,170,150,200,150,100] if args.actor=='branforth' and key=='walk-west' else old['timing']['durations']
+            if helmet_polish:
+                from polish_helmet_transitions import DURATIONS
+                expected_durations=DURATIONS[key.split('-')[0]]
             check(e['frameDurationsMs']==expected_durations,'Durations '+variant+'/'+key)
             check(e['loop']==old['timing']['loop'],'Loop mode '+variant+'/'+key)
             for field in (['depthOffsets'] if key in bunk or key in berth else ['facings','waterKinds','waterPoses','depthOffsets']):

@@ -60,6 +60,7 @@ func run() -> void:
 	check(int(game.resources.metal) < 10, "The repair reserved Metal")
 	# Scrap the leaf.
 	var gained: int=Scrap.scrap(game, leaf)
+	check(game.grid_view.room_transitions.events.any(func(event): return event.kind=="scrap" and event.room.pos==leaf),"Successful scrap queues a cosmetic snapshot")
 	check(gained == 1 and int(game.resources.metal) == 11, "Scrapping refunds the room and the unused repair (%d, now %s)" % [gained, game.resources.metal])
 	check(not game.occupied.has(Vector2i(20,22)) and not game.placed_rooms.any(func(r): return r.pos==Vector2i(20,22)), "Scrapped room is gone")
 	check(not game.powered_room_cells.has(Vector2i(20,22)), "Scrapped room draws no power")

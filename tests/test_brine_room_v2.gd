@@ -134,7 +134,8 @@ func run() -> void:
 		return
 	var chamber: Dictionary=chambers[0]
 	var used: Rect2=Rect2(view.body_normalized_rect.position*92.0,view.body_normalized_rect.size*92.0)
-	check(view.body_texture.get_size()==Vector2(45,139),"Selected v7 character pixels are retained at native source density")
+	check(view.body_texture.get_size()==Vector2(56,148),"Polished BRINE pixels retain the selected 148px source density")
+	check(is_equal_approx(view.BODY_RECT.size.x/view.BODY_RECT.size.y,56.0/148.0),"Chamber body registration preserves selected source aspect ratio")
 	check(view.body_texture is CanvasTexture and view.body_texture.texture_filter==CanvasItem.TEXTURE_FILTER_LINEAR,"Only the floating figure uses smooth sampling")
 	var motion=preload("res://rooms/underwater/brine-core/brine_float.gd")
 	for uv in motion.uvs():

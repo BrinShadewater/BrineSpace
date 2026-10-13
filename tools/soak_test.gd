@@ -37,6 +37,8 @@ func run() -> void:
 			print("SOAK: could not restore ", save_path)
 			quit(1)
 			return
+		# restore() adopts the input checkpoint path; a soak must never autosave over it.
+		game.run_save_path = prefix + ".loop"
 		game.tick_timer.stop()
 	game.running = true
 	game.paused = false

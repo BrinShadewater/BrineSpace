@@ -51,6 +51,8 @@ def build():
     catalog=json.loads(catalog_path.read_text());relative='supplemental/berth-east/manifest.json'
     if relative not in catalog['body']:catalog['body'].append(relative)
     catalog_path.write_text(json.dumps(catalog,indent=2)+'\n')
+    from install_marsh_furniture_match import install
+    install('berth')
     return {'states':3,'unique_frames':6,'transition_ms':sum(durations)}
 
 if __name__=="__main__":print(build())

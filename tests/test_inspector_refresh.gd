@@ -51,5 +51,39 @@ func run() -> void:
 	game._process(0.0)
 	# Resource words carry their icon and colour now, so the reading and its label are separate.
 	check(game.inspector_label.text.contains("WATER 0%") and game.inspector_label.text.contains("DRY"), "Final drainage clears the previous water reading")
-	print("INSPECTOR REFRESH: ", "PASS" if failures == 0 else "FAIL", " / refreshes=", game.inspector_refreshes, " / 120 update ms=", elapsed)
+	game._refresh_inspector_card("reactor")
+	var retained: Node = visible_preview(game)
+	game._refresh_inspector_card("galley")
+	game._refresh_inspector_card("reactor")
+	check(visible_preview(game) == retained, "Return visit reuses the preview widget tree")
+	check(visible_preview_count(game) == 1, "Exactly one preview card is visible")
+	game.prototype_card_seen_cycle["reactor"] = game.cycle
+	game._refresh_inspector_card("reactor")
+	check(not is_instance_valid(retained), "Changed prototype presentation releases the old preview")
+	var changed: Node = visible_preview(game)
+	check(changed != null, "Changed presentation has a replacement preview")
+	var count := 0
+	for id in game.RoomDatabaseScript.all_rooms():
+		game._refresh_inspector_card(str(id))
+		count += 1
+		if count == 13: break
+	check(game.inspector_card_host.get_child_count() == 12, "Preview widget pool stays bounded")
+	check(game.inspector_card_host.get_meta("preview_order", []).size() == 12, "Preview eviction bookkeeping stays bounded")
+	check(visible_preview_count(game) == 1, "Eviction preserves the selected preview")
+	var refresh_count: int = game.inspector_refreshes
+	var scene_preview := weakref(visible_preview(game))
+	game.free()
+	check(scene_preview.get_ref() == null, "Scene exit releases retained preview widgets")
+	print("INSPECTOR REFRESH: ", "PASS" if failures == 0 else "FAIL", " / refreshes=", refresh_count, " / 120 update ms=", elapsed)
 	quit(failures)
+
+func visible_preview(game) -> Node:
+	for child in game.inspector_card_host.get_children():
+		if child.visible: return child
+	return null
+
+func visible_preview_count(game) -> int:
+	var count := 0
+	for child in game.inspector_card_host.get_children():
+		if child.visible: count += 1
+	return count

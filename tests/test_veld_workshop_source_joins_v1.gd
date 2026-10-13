@@ -1,0 +1,62 @@
+extends SceneTree
+## Observe production Veld workshop stages; candidate sources only, no actor override.
+const OUT="res://output/veld-workshop-source-joins-v2/"
+var game
+var checks:=0
+var failures:=0
+func check(ok:bool,message:String):
+ checks+=1
+ if not ok:failures+=1;push_error(message)
+func _init():call_deferred("run")
+func run():
+ check(OS.get_user_data_dir().replace("\\","/").begins_with(OS.get_environment("APPDATA").replace("\\","/")+"/"),"Scratch APPDATA required")
+ if failures:quit(2);return
+ game=load("res://scenes/main.tscn").instantiate();game.meta.save_path="user://veld-workshop.meta";game.run_save_path="user://veld-workshop.loop";root.add_child(game);current_scene=game
+ while not game.startup_complete:await process_frame
+ game.set_process(false);game.tick_timer.stop();game._set_paused(true,false);game.crew_comms.set_process(false);game.crew_comms.minimize()
+ for actor in [game.bill_npc,game.veld_npc,game.branforth_npc,game.marsh_npc]:actor.active=false
+ var cell:=Vector2i(20,20);game.occupied.clear();game.placed_rooms.clear();game.selected_rotation=0;game._place_room("salvage_workshop",cell,true);game.powered_room_cells[cell]=true
+ var normal=game.grid_view.veld_player;var journeys:=[];var actor=game.veld_npc
+ for candidate in [false,true]:
+  for helmet in [false,true]:
+   await actor.rebuild(game)
+   var stations:Array=actor.RoomActivity.stations(actor.geometry[cell]);check(not stations.is_empty(),"Real workshop contact available")
+   if stations.is_empty():continue
+   var station:Dictionary=stations[0];actor.active=true;actor.dead=false;actor.helmet_equipped=helmet;actor.movement_medium="dry";actor.stage="";actor.state="idle";actor.timer=0;actor.goal="curiosity";actor.goal_cell=cell;actor.expedition.clear()
+   actor.foot=(Vector2(cell)+Vector2.ONE*.5)*384+Vector2(station.point);actor.direction=station.facing;actor.path.clear();actor.needs={"hunger":25.0,"fatigue":15.0,"curiosity":60.0,"maintenance":35.0}
+   var player=load("res://scripts/crew_sprite_player.gd").new()
+   for property in ["frames","timing","strides","equipment_frames","equipment_timing","equipment_strides","gait_phase_groups"]:player.set(property,normal.get(property).duplicate(true))
+   if candidate:
+    player.load_manifest("res://character/veld-cargo-east-master-family-v1/bare-manifest.json",true)
+    check(player.frames.has("pickup-east") and player.frames.has("unload-east"),"Staged East body admission")
+    check(player.load_equipment_manifest("diving-helmet","res://character/veld-cargo-east-master-family-v1/helmet-manifest.json"),"Staged East helmet admission")
+   game.grid_view.veld_player=player;game.visual_time_seconds=0
+   check(actor.can_stand(actor.foot) and actor.begin_room_activity(),"Actual workshop activity begins")
+   check(actor.stage=="workshop_inspect","Normal workshop inspect entry")
+   for expected in ["workshop_work","workshop_pickup"]:
+    var duration:float=actor.timer;game.visual_time_seconds+=duration+.001;actor.update(game,duration+.001);check(actor.stage==expected,"Original workshop progression to "+expected)
+   game.selected_card_id="";game.selected_room_cell=cell;game._set_grid_zoom(2.0,true,(Vector2(cell)+Vector2.ONE*.5)/40.0);game._refresh_all();await process_frame
+   game.grid_scroll.scroll_horizontal=roundi((cell.x+.5)*game.get_cell_size()-game.grid_scroll.size.x/2);game.grid_scroll.scroll_vertical=roundi((cell.y+.5)*game.get_cell_size()-game.grid_scroll.size.y/2)
+   var records:=[];var previous_key:="";var unloaded:=false;var tag:String=("staged" if candidate else "normal")+("-helmet" if helmet else "-bare")
+   for step in range(1200):
+    var texture:Texture2D=game.grid_view._get_veld_frame_source(game)
+    check(texture!=null,"Actual grid source exists")
+    var gear:String="diving-helmet" if helmet else "";var clips:Dictionary=player.frames if gear.is_empty() else player.equipment_frames[gear]
+    var key:String=actor.animation_state()+"-"+actor.direction;var slot:int=clips.get(key,[]).find(texture)
+    var sample_key:String=actor.stage+"/"+key+"/"+str(slot)
+    var record:Dictionary={"step":step,"time":game.visual_time_seconds,"foot":[actor.foot.x,actor.foot.y],"direction":actor.direction,"pose":actor.animation_state(),"stage":actor.stage,"actionElapsed":actor.action_elapsed(),"slot":slot,"key":key,"timer":actor.timer,"motion":player.motion.duplicate(true)}
+    if sample_key!=previous_key:
+     var filename:String=tag+"-%04d"%step
+     game.grid_view.queue_redraw();await process_frame;await RenderingServer.frame_post_draw
+     check(root.get_texture().get_image().save_png(OUT+filename+"-native.png")==OK,"Native stage/pose capture")
+     check(texture.get_image().save_png(OUT+filename+"-source.png")==OK,"Displayed source capture")
+     record.capture=filename
+    records.append(record);previous_key=sample_key
+    if actor.stage=="workshop_unload":unloaded=true
+    if unloaded and actor.stage!="workshop_unload":break
+    game.visual_time_seconds+=1.0/60.0;actor.update(game,1.0/60.0)
+   check(unloaded,"Production workshop route reaches North unloading")
+   check(actor.stage!="workshop_unload","Finite workshop stage completes")
+   journeys.append({"candidate":candidate,"helmet":helmet,"stationFacing":station.facing,"records":records});actor.active=false
+ var report:=FileAccess.open(OUT+"journeys.json",FileAccess.WRITE);report.store_string(JSON.stringify({"scope":"Actual production Veld actor/default workshop generated route and grid source, prescribed powered room/service entry. Candidate East manifests only; no controller change, natural chooser, cargo ownership, interruption or Continue acceptance.","checks":checks,"failures":failures,"journeys":journeys},"  "))
+ print("VELD WORKSHOP SOURCE JOINS: %d checks,%d failures"%[checks,failures]);quit(1 if failures else 0)

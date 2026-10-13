@@ -7,227 +7,110 @@ Stage text is quoted from each source ledger; it may describe an earlier review.
 Follow the pack README for current evidence. This inventory does not rerun native
 or packaged checks and does not infer owner approval.
 
-## ambient-water-v1
+## construction-v1
 
-[Evidence and integration](../assets/environment/ambient-water-v1/README.md) Â· [Source ledger](../assets/environment/ambient-water-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| current-ribbon | effect | [current-ribbon-v1.png](../assets/environment/ambient-water-v1/current-ribbon-v1.png) | integrated; native reviewed; owner approval pending |
-| silt-fan | effect | [silt-fan-v1.png](../assets/environment/ambient-water-v1/silt-fan-v1.png) | integrated; native reviewed; owner approval pending |
-| microbubble-wake | effect | [microbubble-wake-v1.png](../assets/environment/ambient-water-v1/microbubble-wake-v1.png) | integrated; native reviewed; owner approval pending |
-
-3 selected identities / 3 preserved source versions.
-
-## anemone-v1
-
-[Evidence and integration](../assets/environment/anemone-v1/README.md) Â· [Source ledger](../assets/environment/anemone-v1/manifest.json)
+[Evidence and integration](../assets/environment/construction-v1/README.md) Â· [Source ledger](../assets/environment/construction-v1/manifest.json)
 
 | Identity | Kind | Selected source | Declared ledger stage |
 |---|---|---|---|
-| low-anemones | prop | [low-anemones-v1.png](../assets/environment/anemone-v1/low-anemones-v1.png) | integrated; native terrain, reef station and isolated Windows export verified; owner approval pending |
+| foundation-joist | prop | [runtime/foundation-joist.png](../assets/environment/construction-v1/runtime/foundation-joist.png) | integrated locally; native work-driven assembly and 12 hallway orientations reviewed; owner/release acceptance pending |
+| deck-plate | prop | [runtime/deck-plate.png](../assets/environment/construction-v1/runtime/deck-plate.png) | integrated locally; native work-driven assembly and 12 hallway orientations reviewed; owner/release acceptance pending |
+| pressure-rail | prop | [runtime/pressure-rail.png](../assets/environment/construction-v1/runtime/pressure-rail.png) | integrated locally; native work-driven assembly and 12 hallway orientations reviewed; owner/release acceptance pending |
 
-1 selected identities / 1 preserved source versions.
+3 selected identities / 6 preserved source versions.
 
-## cable-reel-v1
+## ground-refresh-v1
 
-[Evidence and integration](../assets/environment/cable-reel-v1/README.md) Â· [Source ledger](../assets/environment/cable-reel-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| collapsed-cable-reel | prop | [collapsed-cable-reel-v1.png](../assets/environment/cable-reel-v1/collapsed-cable-reel-v1.png) | integrated; native and isolated Windows export reviewed; owner approval pending |
-
-1 selected identities / 1 preserved source versions.
-
-## clay-silt-v1
-
-[Evidence and integration](../assets/environment/clay-silt-v1/README.md) Â· [Source ledger](../assets/environment/clay-silt-v1/manifest.json)
+[Evidence and integration](../assets/environment/ground-refresh-v1/README.md) Â· [Source ledger](../assets/environment/ground-refresh-v1/manifest.json)
 
 | Identity | Kind | Selected source | Declared ledger stage |
 |---|---|---|---|
-| clay-silt-ground | ground | [clay-silt-ground-v1.png](../assets/environment/clay-silt-v1/clay-silt-ground-v1.png) | integrated; native and isolated packaged review passed; owner approval pending |
-| burrow-mouths | prop | [burrow-mouths-v1.png](../assets/environment/clay-silt-v1/burrow-mouths-v1.png) | integrated; native and isolated packaged review passed; owner approval pending |
+| silt-plain | ground | [runtime/silt-plain.png](../assets/environment/ground-refresh-v1/runtime/silt-plain.png) | integrated locally; native review; owner/release review pending |
+| basalt-surface | ground | [runtime/basalt-surface.png](../assets/environment/ground-refresh-v1/runtime/basalt-surface.png) | integrated locally; native review; owner/release review pending |
+| tube-worms | prop | [runtime/tube-worms.png](../assets/environment/ground-refresh-v1/runtime/tube-worms.png) | integrated locally; native review; owner/release review pending |
 
-2 selected identities / 2 preserved source versions.
+3 selected identities / 6 preserved source versions.
 
-## driftwood-v1
+## habitat-refresh-v1
 
-[Evidence and integration](../assets/environment/driftwood-v1/README.md) Â· [Source ledger](../assets/environment/driftwood-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| waterlogged-timber | prop | [waterlogged-timber-v1.png](../assets/environment/driftwood-v1/waterlogged-timber-v1.png) | integrated; native and isolated packaged review passed; owner approval pending |
-
-1 selected identities / 1 preserved source versions.
-
-## duct-wreckage-v1
-
-[Evidence and integration](../assets/environment/duct-wreckage-v1/README.md) Â· [Source ledger](../assets/environment/duct-wreckage-v1/manifest.json)
+[Evidence and integration](../assets/environment/habitat-refresh-v1/README.md) Â· [Source ledger](../assets/environment/habitat-refresh-v1/manifest.json)
 
 | Identity | Kind | Selected source | Declared ledger stage |
 |---|---|---|---|
-| collapsed-vent-duct | prop | [collapsed-vent-duct-v3.png](../assets/environment/duct-wreckage-v1/collapsed-vent-duct-v3.png) | integrated; native and isolated packaged review passed; owner approval pending |
+| lace-coral | prop | [runtime/lace-coral.png](../assets/environment/habitat-refresh-v1/runtime/lace-coral.png) | integrated locally; native source/tint and station review pass; owner/release review pending |
+| vase-sponges | prop | [runtime/vase-sponges.png](../assets/environment/habitat-refresh-v1/runtime/vase-sponges.png) | integrated locally; native source/tint and station review pass; owner/release review pending |
+| coral-sediment | ground | [runtime/coral-sediment.png](../assets/environment/habitat-refresh-v1/runtime/coral-sediment.png) | integrated locally; native source/tint and station review pass; owner/release review pending |
+| cup-corals | prop | [runtime/cup-corals.png](../assets/environment/habitat-refresh-v1/runtime/cup-corals.png) | integrated locally; native source/tint and station review pass; owner/release review pending |
+| sea-fans | prop | [runtime/sea-fans.png](../assets/environment/habitat-refresh-v1/runtime/sea-fans.png) | integrated locally; native source/tint and station review pass; owner/release review pending |
 
-1 selected identities / 3 preserved source versions.
+5 selected identities / 10 preserved source versions.
 
-## fractured-rock-v1
+## procedural-replacements-v1
 
-[Evidence and integration](../assets/environment/fractured-rock-v1/README.md) Â· [Source ledger](../assets/environment/fractured-rock-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| fractured-basalt-slab | prop | [fractured-basalt-slab-v1.png](../assets/environment/fractured-rock-v1/fractured-basalt-slab-v1.png) | integrated; native and isolated packaged review passed; owner approval pending |
-
-1 selected identities / 1 preserved source versions.
-
-## low-growth-v1
-
-[Evidence and integration](../assets/environment/low-growth-v1/README.md) Â· [Source ledger](../assets/environment/low-growth-v1/manifest.json)
+[Evidence and integration](../assets/environment/procedural-replacements-v1/README.md) Â· [Source ledger](../assets/environment/procedural-replacements-v1/manifest.json)
 
 | Identity | Kind | Selected source | Declared ledger stage |
 |---|---|---|---|
-| seagrass-rosette | prop | [seagrass-rosette-v2.png](../assets/environment/low-growth-v1/seagrass-rosette-v2.png) | integrated; native reviewed; owner approval pending |
-| encrusting-algae | prop | [encrusting-algae-v1.png](../assets/environment/low-growth-v1/encrusting-algae-v1.png) | integrated; native reviewed; owner approval pending |
-| mussel-bed | prop | [mussel-bed-v1.png](../assets/environment/low-growth-v1/mussel-bed-v1.png) | integrated; native reviewed; owner approval pending |
+| basalt-edge | ground | [runtime/basalt-edge.png](../assets/environment/procedural-replacements-v1/runtime/basalt-edge.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| debris-chip | prop | [runtime/debris-chip.png](../assets/environment/procedural-replacements-v1/runtime/debris-chip.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| excavation-crack | prop | [runtime/excavation-crack.png](../assets/environment/procedural-replacements-v1/runtime/excavation-crack.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| foundation-fresh | prop | [runtime/foundation-fresh.png](../assets/environment/procedural-replacements-v1/runtime/foundation-fresh.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| foundation-weathered | prop | [runtime/foundation-weathered.png](../assets/environment/procedural-replacements-v1/runtime/foundation-weathered.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| glow-plant | prop | [runtime/glow-plant.png](../assets/environment/procedural-replacements-v1/runtime/glow-plant.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| lamp-housing | prop | [runtime/lamp-housing.png](../assets/environment/procedural-replacements-v1/runtime/lamp-housing.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| leak-puff | effect | [runtime/leak-puff.png](../assets/environment/procedural-replacements-v1/runtime/leak-puff.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| repair-spark | effect | [runtime/repair-spark.png](../assets/environment/procedural-replacements-v1/runtime/repair-spark.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| sediment-puff | effect | [runtime/sediment-puff.png](../assets/environment/procedural-replacements-v1/runtime/sediment-puff.png) | integrated locally; source/tint and native station reviewed; owner/release review pending |
+| cut-glow | effect | [runtime/cut-glow.png](../assets/environment/procedural-replacements-v1/runtime/cut-glow.png) | deterministic export of native optical geometry |
+| lamp-lens | effect | [runtime/lamp-lens.png](../assets/environment/procedural-replacements-v1/runtime/lamp-lens.png) | deterministic export of native optical geometry |
 
-3 selected identities / 4 preserved source versions.
+12 selected identities / 22 preserved source versions.
 
-## mooring-debris-v1
+## seabed-refresh-v1
 
-[Evidence and integration](../assets/environment/mooring-debris-v1/README.md) Â· [Source ledger](../assets/environment/mooring-debris-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| mooring-plate-chain | prop | [mooring-plate-chain-v1.png](../assets/environment/mooring-debris-v1/mooring-plate-chain-v1.png) | integrated; native station reviewed; owner approval pending |
-
-1 selected identities / 1 preserved source versions.
-
-## pillow-basalt-v1
-
-[Evidence and integration](../assets/environment/pillow-basalt-v1/README.md) Â· [Source ledger](../assets/environment/pillow-basalt-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| pillow-basalt | prop | [pillow-basalt-v1.png](../assets/environment/pillow-basalt-v1/pillow-basalt-v1.png) | integrated; native station and isolated Windows export verified; owner approval pending |
-
-1 selected identities / 1 preserved source versions.
-
-## red-algae-v1
-
-[Evidence and integration](../assets/environment/red-algae-v1/README.md) Â· [Source ledger](../assets/environment/red-algae-v1/manifest.json)
+[Evidence and integration](../assets/environment/seabed-refresh-v1/README.md) Â· [Source ledger](../assets/environment/seabed-refresh-v1/manifest.json)
 
 | Identity | Kind | Selected source | Declared ledger stage |
 |---|---|---|---|
-| red-algae-tuft | prop | [red-algae-tuft-v1.png](../assets/environment/red-algae-v1/red-algae-tuft-v1.png) | integrated; native terrain and room-scale reviewed; owner approval pending |
+| basalt-outcrop | prop | [runtime/basalt-outcrop.png](../assets/environment/seabed-refresh-v1/runtime/basalt-outcrop.png) | integrated locally; native density and station review complete; owner approval and packaged review pending |
+| wreck-timbers | prop | [runtime/wreck-timbers.png](../assets/environment/seabed-refresh-v1/runtime/wreck-timbers.png) | integrated locally; native density and station review complete; owner approval and packaged review pending |
+| ribbon-kelp | prop | [runtime/ribbon-kelp.png](../assets/environment/seabed-refresh-v1/runtime/ribbon-kelp.png) | integrated locally; native density and station review complete; owner approval and packaged review pending |
 
-1 selected identities / 1 preserved source versions.
+3 selected identities / 11 preserved source versions.
 
-## ripple-sand-v1
+## water-detail-v1
 
-[Evidence and integration](../assets/environment/ripple-sand-v1/README.md) Â· [Source ledger](../assets/environment/ripple-sand-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| ripple-sand | ground | [ripple-sand-v1.png](../assets/environment/ripple-sand-v1/ripple-sand-v1.png) | integrated; native and isolated Windows export reviewed; owner approval pending; not certified seamless |
-
-1 selected identities / 1 preserved source versions.
-
-## sea-lettuce-v1
-
-[Evidence and integration](../assets/environment/sea-lettuce-v1/README.md) Â· [Source ledger](../assets/environment/sea-lettuce-v1/manifest.json)
+[Evidence and integration](../assets/environment/water-detail-v1/README.md) Â· [Source ledger](../assets/environment/water-detail-v1/manifest.json)
 
 | Identity | Kind | Selected source | Declared ledger stage |
 |---|---|---|---|
-| sea-lettuce-rosette | prop | [sea-lettuce-rosette-v1.png](../assets/environment/sea-lettuce-v1/sea-lettuce-rosette-v1.png) | integrated; native and isolated packaged review passed; owner approval pending |
+| sprinkler-nozzle | prop | [runtime/sprinkler-nozzle.png](../assets/environment/water-detail-v1/runtime/sprinkler-nozzle.png) | integrated locally; native review; owner/release review pending |
+| door-threshold | prop | [runtime/door-threshold.png](../assets/environment/water-detail-v1/runtime/door-threshold.png) | integrated locally; native review; owner/release review pending |
+| water-drop | effect | [runtime/water-drop.png](../assets/environment/water-detail-v1/runtime/water-drop.png) | integrated locally; native review; owner/release review pending |
+| water-splash | effect | [runtime/water-splash.png](../assets/environment/water-detail-v1/runtime/water-splash.png) | integrated locally; native review; owner/release review pending |
+| current-streak | effect | [runtime/current-streak.png](../assets/environment/water-detail-v1/runtime/current-streak.png) | integrated locally; native review; owner/release review pending |
+| intake-bubble | effect | [runtime/intake-bubble.png](../assets/environment/water-detail-v1/runtime/intake-bubble.png) | integrated locally; native review; owner/release review pending |
+| water-wave | effect | [runtime/water-wave.png](../assets/environment/water-detail-v1/runtime/water-wave.png) | integrated locally; native review; owner/release review pending |
+| silt-fleck | effect | [runtime/silt-fleck.png](../assets/environment/water-detail-v1/runtime/silt-fleck.png) | integrated locally; native review; owner/release review pending |
 
-1 selected identities / 1 preserved source versions.
+8 selected identities / 22 preserved source versions.
 
-## sediment-decals-v1
+## wreck-refresh-v1
 
-[Evidence and integration](../assets/environment/sediment-decals-v1/README.md) Â· [Source ledger](../assets/environment/sediment-decals-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| silt-scour | effect | [silt-scour-v2.png](../assets/environment/sediment-decals-v1/silt-scour-v2.png) | integrated; native layered review; owner approval pending |
-
-1 selected identities / 2 preserved source versions.
-
-## service-wreckage-v1
-
-[Evidence and integration](../assets/environment/service-wreckage-v1/README.md) Â· [Source ledger](../assets/environment/service-wreckage-v1/manifest.json)
+[Evidence and integration](../assets/environment/wreck-refresh-v1/README.md) Â· [Source ledger](../assets/environment/wreck-refresh-v1/manifest.json)
 
 | Identity | Kind | Selected source | Declared ledger stage |
 |---|---|---|---|
-| collapsed-support | prop | [collapsed-support-v1.png](../assets/environment/service-wreckage-v1/collapsed-support-v1.png) | integrated; native reviewed; owner approval pending |
-| torn-cable-harness | prop | [torn-cable-harness-v1.png](../assets/environment/service-wreckage-v1/torn-cable-harness-v1.png) | integrated; native reviewed; owner approval pending |
-| ruptured-pressure-tank | prop | [ruptured-pressure-tank-v4.png](../assets/environment/service-wreckage-v1/ruptured-pressure-tank-v4.png) | integrated; native reviewed; owner approval pending |
-| detached-hatch | prop | [detached-hatch-v1.png](../assets/environment/service-wreckage-v1/detached-hatch-v1.png) | integrated; native reviewed; owner approval pending |
-| collapsed-sensor-mast | prop | [collapsed-sensor-mast-v1.png](../assets/environment/service-wreckage-v1/collapsed-sensor-mast-v1.png) | integrated; native station reviewed; owner approval pending |
+| engineering-wreck | prop | [runtime/engineering-wreck.png](../assets/environment/wreck-refresh-v1/runtime/engineering-wreck.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
+| engineering-stripped | prop | [runtime/engineering-stripped.png](../assets/environment/wreck-refresh-v1/runtime/engineering-stripped.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
+| medical-wreck | prop | [runtime/medical-wreck.png](../assets/environment/wreck-refresh-v1/runtime/medical-wreck.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
+| medical-stripped | prop | [runtime/medical-stripped.png](../assets/environment/wreck-refresh-v1/runtime/medical-stripped.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
+| habitation-wreck | prop | [runtime/habitation-wreck.png](../assets/environment/wreck-refresh-v1/runtime/habitation-wreck.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
+| habitation-stripped | prop | [runtime/habitation-stripped.png](../assets/environment/wreck-refresh-v1/runtime/habitation-stripped.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
+| hydroponics-wreck | prop | [runtime/hydroponics-wreck.png](../assets/environment/wreck-refresh-v1/runtime/hydroponics-wreck.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
+| hydroponics-stripped | prop | [runtime/hydroponics-stripped.png](../assets/environment/wreck-refresh-v1/runtime/hydroponics-stripped.png) | integrated locally; native stages and gameplay-scale review; owner/release acceptance pending |
 
-5 selected identities / 8 preserved source versions.
-
-## shell-shoal-v1
-
-[Evidence and integration](../assets/environment/shell-shoal-v1/README.md) Â· [Source ledger](../assets/environment/shell-shoal-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| shell-hash-ground | ground | [shell-hash-ground-v2.png](../assets/environment/shell-shoal-v1/shell-hash-ground-v2.png) | integrated; native station reviewed; owner approval pending |
-| limestone-cobbles | prop | [limestone-cobbles-v1.png](../assets/environment/shell-shoal-v1/limestone-cobbles-v1.png) | integrated; native station reviewed; owner approval pending |
-| shell-bed | prop | [shell-bed-v1.png](../assets/environment/shell-shoal-v1/shell-bed-v1.png) | integrated; native station reviewed; owner approval pending |
-
-3 selected identities / 4 preserved source versions.
-
-## sub-biomes-v1
-
-[Evidence and integration](../assets/environment/sub-biomes-v1/README.md) Â· [Source ledger](../assets/environment/sub-biomes-v1/source-ledger.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| sulfur-ground | ground | [sulfur-ground-v1.png](../assets/environment/sub-biomes-v1/sulfur-ground-v1.png) | integrated; native reviewed; owner approval pending |
-| sulfur-anhydrite | prop | [sulfur-anhydrite-v2.png](../assets/environment/sub-biomes-v1/sulfur-anhydrite-v2.png) | integrated; native reviewed; owner approval pending |
-| sulfur-bacterial-mat | prop | [sulfur-bacterial-mat-v1.png](../assets/environment/sub-biomes-v1/sulfur-bacterial-mat-v1.png) | integrated; native reviewed; owner approval pending |
-| sponge-ground | ground | [sponge-ground-v1.png](../assets/environment/sub-biomes-v1/sponge-ground-v1.png) | integrated; native reviewed; owner approval pending |
-| sponge-vase-sponges | prop | [sponge-vase-sponges-v2.png](../assets/environment/sub-biomes-v1/sponge-vase-sponges-v2.png) | integrated; native reviewed; owner approval pending |
-| sponge-sea-fans | prop | [sponge-sea-fans-v2.png](../assets/environment/sub-biomes-v1/sponge-sea-fans-v2.png) | integrated; native reviewed; owner approval pending |
-| brine-ground | ground | [brine-ground-v1.png](../assets/environment/sub-biomes-v1/brine-ground-v1.png) | integrated; native reviewed; owner approval pending |
-| brine-salt-plates | prop | [brine-salt-plates-v1.png](../assets/environment/sub-biomes-v1/brine-salt-plates-v1.png) | integrated; native reviewed; owner approval pending |
-| brine-seep-stones | prop | [brine-seep-stones-v1.png](../assets/environment/sub-biomes-v1/brine-seep-stones-v1.png) | integrated; native reviewed; owner approval pending |
-| kelp-ground | ground | [kelp-ground-v1.png](../assets/environment/sub-biomes-v1/kelp-ground-v1.png) | integrated; native reviewed; owner approval pending |
-| kelp-ribbon-kelp | prop | [kelp-ribbon-kelp-v1.png](../assets/environment/sub-biomes-v1/kelp-ribbon-kelp-v1.png) | integrated; native reviewed; owner approval pending |
-| kelp-holdfast | prop | [kelp-holdfast-v1.png](../assets/environment/sub-biomes-v1/kelp-holdfast-v1.png) | integrated; native reviewed; owner approval pending |
-| coral-ground | ground | [coral-ground-v1.png](../assets/environment/sub-biomes-v1/coral-ground-v1.png) | integrated; native reviewed; owner approval pending |
-| coral-lace-coral | prop | [coral-lace-coral-v1.png](../assets/environment/sub-biomes-v1/coral-lace-coral-v1.png) | integrated; native reviewed; owner approval pending |
-| coral-cup-corals | prop | [coral-cup-corals-v1.png](../assets/environment/sub-biomes-v1/coral-cup-corals-v1.png) | integrated; native reviewed; owner approval pending |
-| nodules-ground | ground | [nodules-ground-v1.png](../assets/environment/sub-biomes-v1/nodules-ground-v1.png) | integrated; native reviewed; owner approval pending |
-| nodules-nodule-cluster | prop | [nodules-nodule-cluster-v1.png](../assets/environment/sub-biomes-v1/nodules-nodule-cluster-v1.png) | integrated; native reviewed; owner approval pending |
-| nodules-brittle-stars | prop | [nodules-brittle-stars-v1.png](../assets/environment/sub-biomes-v1/nodules-brittle-stars-v1.png) | integrated; native reviewed; owner approval pending |
-| iron-ground | ground | [iron-ground-v1.png](../assets/environment/sub-biomes-v1/iron-ground-v1.png) | integrated; native reviewed; owner approval pending |
-| iron-mineral-ledges | prop | [iron-mineral-ledges-v1.png](../assets/environment/sub-biomes-v1/iron-mineral-ledges-v1.png) | integrated; native reviewed; owner approval pending |
-| iron-hydroids | prop | [iron-hydroids-v1.png](../assets/environment/sub-biomes-v1/iron-hydroids-v1.png) | integrated; native reviewed; owner approval pending |
-
-21 selected identities / 24 preserved source versions.
-
-## urchin-v1
-
-[Evidence and integration](../assets/environment/urchin-v1/README.md) Â· [Source ledger](../assets/environment/urchin-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| short-spine-urchin | prop | [short-spine-urchin-v1.png](../assets/environment/urchin-v1/short-spine-urchin-v1.png) | integrated; native and isolated packaged review passed; owner approval pending |
-
-1 selected identities / 1 preserved source versions.
-
-## volcanic-ash-v1
-
-[Evidence and integration](../assets/environment/volcanic-ash-v1/README.md) Â· [Source ledger](../assets/environment/volcanic-ash-v1/manifest.json)
-
-| Identity | Kind | Selected source | Declared ledger stage |
-|---|---|---|---|
-| ash-ground | ground | [ash-ground-v1.png](../assets/environment/volcanic-ash-v1/ash-ground-v1.png) | integrated; native room-scale reviewed; owner approval pending |
-| porous-rocks | prop | [porous-rocks-v1.png](../assets/environment/volcanic-ash-v1/porous-rocks-v1.png) | integrated; native room-scale reviewed; owner approval pending |
-
-2 selected identities / 2 preserved source versions.
+8 selected identities / 16 preserved source versions.
 
 ## Historical schemas
 
@@ -238,4 +121,218 @@ Their byte checks run through the export preflight; this command does not audit 
 - [seabed-v1](../assets/environment/seabed-v1/README.md)
 - [wrecked-rooms-v1](../assets/environment/wrecked-rooms-v1/README.md)
 
-Audited modern-ledger totals: **51 selected identities / 62 source versions**.
+Audited modern-ledger totals: **42 selected identities / 93 source versions**.
+
+## Migrated source ledgers
+
+The generator discovers packs through raster files. Older raster sources moved to
+legacy/default/assets/environment; their historical records remain below, outside
+the new-pack audit totals. Follow each README for scoped verification evidence.
+
+### ambient-water-v1
+
+[Evidence](../assets/environment/ambient-water-v1/README.md) · [Ledger](../assets/environment/ambient-water-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| current-ribbon | current-ribbon-v1.png | integrated; native reviewed; owner approval pending |
+| silt-fan | silt-fan-v1.png | integrated; native reviewed; owner approval pending |
+| microbubble-wake | microbubble-wake-v1.png | integrated; native reviewed; owner approval pending |
+
+### anemone-v1
+
+[Evidence](../assets/environment/anemone-v1/README.md) · [Ledger](../assets/environment/anemone-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| low-anemones | low-anemones-v1.png | integrated; native terrain, reef station and isolated Windows export verified; owner approval pending |
+
+### cable-reel-v1
+
+[Evidence](../assets/environment/cable-reel-v1/README.md) · [Ledger](../assets/environment/cable-reel-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| collapsed-cable-reel | collapsed-cable-reel-v1.png | integrated; native and isolated Windows export reviewed; owner approval pending |
+
+### clay-silt-v1
+
+[Evidence](../assets/environment/clay-silt-v1/README.md) · [Ledger](../assets/environment/clay-silt-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| clay-silt-ground | clay-silt-ground-v1.png | integrated; native and isolated packaged review passed; owner approval pending |
+| burrow-mouths | burrow-mouths-v1.png | integrated; native and isolated packaged review passed; owner approval pending |
+
+### driftwood-v1
+
+[Evidence](../assets/environment/driftwood-v1/README.md) · [Ledger](../assets/environment/driftwood-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| waterlogged-timber | waterlogged-timber-v1.png | integrated; native and isolated packaged review passed; owner approval pending |
+
+### duct-wreckage-v1
+
+[Evidence](../assets/environment/duct-wreckage-v1/README.md) · [Ledger](../assets/environment/duct-wreckage-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| collapsed-vent-duct | collapsed-vent-duct-v3.png | integrated; native and isolated packaged review passed; owner approval pending |
+
+### fractured-rock-v1
+
+[Evidence](../assets/environment/fractured-rock-v1/README.md) · [Ledger](../assets/environment/fractured-rock-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| fractured-basalt-slab | fractured-basalt-slab-v1.png | integrated; native and isolated packaged review passed; owner approval pending |
+
+### low-growth-v1
+
+[Evidence](../assets/environment/low-growth-v1/README.md) · [Ledger](../assets/environment/low-growth-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| seagrass-rosette | seagrass-rosette-v2.png | integrated; native reviewed; owner approval pending |
+| encrusting-algae | encrusting-algae-v1.png | integrated; native reviewed; owner approval pending |
+| mussel-bed | mussel-bed-v1.png | integrated; native reviewed; owner approval pending |
+
+### mooring-debris-v1
+
+[Evidence](../assets/environment/mooring-debris-v1/README.md) · [Ledger](../assets/environment/mooring-debris-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| mooring-plate-chain | mooring-plate-chain-v1.png | integrated; native station reviewed; owner approval pending |
+
+### pillow-basalt-v1
+
+[Evidence](../assets/environment/pillow-basalt-v1/README.md) · [Ledger](../assets/environment/pillow-basalt-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| pillow-basalt | pillow-basalt-v1.png | integrated; native station and isolated Windows export verified; owner approval pending |
+
+### red-algae-v1
+
+[Evidence](../assets/environment/red-algae-v1/README.md) · [Ledger](../assets/environment/red-algae-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| red-algae-tuft | red-algae-tuft-v1.png | integrated; native terrain and room-scale reviewed; owner approval pending |
+
+### ripple-sand-v1
+
+[Evidence](../assets/environment/ripple-sand-v1/README.md) · [Ledger](../assets/environment/ripple-sand-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| ripple-sand | ripple-sand-v1.png | integrated; native and isolated Windows export reviewed; owner approval pending; not certified seamless |
+
+### sea-lettuce-v1
+
+[Evidence](../assets/environment/sea-lettuce-v1/README.md) · [Ledger](../assets/environment/sea-lettuce-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| sea-lettuce-rosette | sea-lettuce-rosette-v1.png | integrated; native and isolated packaged review passed; owner approval pending |
+
+### seabed-v1
+
+[Evidence](../assets/environment/seabed-v1/README.md) · [Ledger](../assets/environment/seabed-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| silt-plain | silt-plain-source-v1.png |  |
+| basalt-shelf | basalt-shelf-source-v1.png |  |
+| trench-edge | trench-edge-source-v2.png |  |
+| mineral-outcrop | mineral-outcrop-source-v1.png |  |
+| vent-chimney | vent-chimney-source-v2.png |  |
+| brine-pool | brine-pool-source-v1.png |  |
+| coral-garden | coral-garden-source-v1.png |  |
+| tube-worms | tube-worms-source-v1.png |  |
+| wreck-corridor | wreck-corridor-source-v1.png |  |
+| wreck-engineering | wreck-engineering-source-v1.png |  |
+| wreck-cargo | wreck-cargo-source-v1.png |  |
+| wreck-frame | wreck-frame-source-v1.png |  |
+| hull-fragment | hull-fragment-source-v1.png |  |
+| pipe-fragment | pipe-fragment-source-v1.png |  |
+| silt-plume | silt-plume-source-v2.png |  |
+| bubble-stream | bubble-stream-source-v1.png |  |
+| current-wisp | current-wisp-source-v2.png |  |
+
+### sediment-decals-v1
+
+[Evidence](../assets/environment/sediment-decals-v1/README.md) · [Ledger](../assets/environment/sediment-decals-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| silt-scour | silt-scour-v2.png | integrated; native layered review; owner approval pending |
+
+### service-wreckage-v1
+
+[Evidence](../assets/environment/service-wreckage-v1/README.md) · [Ledger](../assets/environment/service-wreckage-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| collapsed-support | collapsed-support-v1.png | integrated; native reviewed; owner approval pending |
+| torn-cable-harness | torn-cable-harness-v1.png | integrated; native reviewed; owner approval pending |
+| ruptured-pressure-tank | ruptured-pressure-tank-v4.png | integrated; native reviewed; owner approval pending |
+| detached-hatch | detached-hatch-v1.png | integrated; native reviewed; owner approval pending |
+| collapsed-sensor-mast | collapsed-sensor-mast-v1.png | integrated; native station reviewed; owner approval pending |
+
+### shell-shoal-v1
+
+[Evidence](../assets/environment/shell-shoal-v1/README.md) · [Ledger](../assets/environment/shell-shoal-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| shell-hash-ground | shell-hash-ground-v2.png | integrated; native station reviewed; owner approval pending |
+| limestone-cobbles | limestone-cobbles-v1.png | integrated; native station reviewed; owner approval pending |
+| shell-bed | shell-bed-v1.png | integrated; native station reviewed; owner approval pending |
+
+### sub-biomes-v1
+
+[Evidence](../assets/environment/sub-biomes-v1/README.md) · [Ledger](../assets/environment/sub-biomes-v1/source-ledger.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| sulfur-ground | sulfur-ground-v1.png | integrated; native reviewed; owner approval pending |
+| sulfur-anhydrite | sulfur-anhydrite-v2.png | integrated; native reviewed; owner approval pending |
+| sulfur-bacterial-mat | sulfur-bacterial-mat-v1.png | integrated; native reviewed; owner approval pending |
+| sponge-ground | sponge-ground-v1.png | integrated; native reviewed; owner approval pending |
+| sponge-vase-sponges | sponge-vase-sponges-v2.png | integrated; native reviewed; owner approval pending |
+| sponge-sea-fans | sponge-sea-fans-v2.png | integrated; native reviewed; owner approval pending |
+| brine-ground | brine-ground-v1.png | integrated; native reviewed; owner approval pending |
+| brine-salt-plates | brine-salt-plates-v1.png | integrated; native reviewed; owner approval pending |
+| brine-seep-stones | brine-seep-stones-v1.png | integrated; native reviewed; owner approval pending |
+| kelp-ground | kelp-ground-v1.png | integrated; native reviewed; owner approval pending |
+| kelp-ribbon-kelp | kelp-ribbon-kelp-v1.png | integrated; native reviewed; owner approval pending |
+| kelp-holdfast | kelp-holdfast-v1.png | integrated; native reviewed; owner approval pending |
+| coral-ground | coral-ground-v1.png | integrated; native reviewed; owner approval pending |
+| coral-lace-coral | coral-lace-coral-v1.png | integrated; native reviewed; owner approval pending |
+| coral-cup-corals | coral-cup-corals-v1.png | integrated; native reviewed; owner approval pending |
+| nodules-ground | nodules-ground-v1.png | integrated; native reviewed; owner approval pending |
+| nodules-nodule-cluster | nodules-nodule-cluster-v1.png | integrated; native reviewed; owner approval pending |
+| nodules-brittle-stars | nodules-brittle-stars-v1.png | integrated; native reviewed; owner approval pending |
+| iron-ground | iron-ground-v1.png | integrated; native reviewed; owner approval pending |
+| iron-mineral-ledges | iron-mineral-ledges-v1.png | integrated; native reviewed; owner approval pending |
+| iron-hydroids | iron-hydroids-v1.png | integrated; native reviewed; owner approval pending |
+
+### urchin-v1
+
+[Evidence](../assets/environment/urchin-v1/README.md) · [Ledger](../assets/environment/urchin-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| short-spine-urchin | short-spine-urchin-v1.png | integrated; native and isolated packaged review passed; owner approval pending |
+
+### volcanic-ash-v1
+
+[Evidence](../assets/environment/volcanic-ash-v1/README.md) · [Ledger](../assets/environment/volcanic-ash-v1/manifest.json)
+
+| Identity | Selected source | Historical declared stage |
+|---|---|---|
+| ash-ground | ash-ground-v1.png | integrated; native room-scale reviewed; owner approval pending |
+| porous-rocks | porous-rocks-v1.png | integrated; native room-scale reviewed; owner approval pending |

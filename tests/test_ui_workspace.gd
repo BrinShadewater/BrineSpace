@@ -111,7 +111,7 @@ func run() -> void:
 	game._refresh_inspector()
 	game._refresh_placement_status()
 	check(game.placement_feedback.visible and game.placement_feedback.text.contains("Need Metal 5"),"Placement reports the exact material shortfall visibly")
-	check(game.inspector_label.text.find("Build cost:") < game.inspector_label.text.find("ABOUT"),"Inspector prioritizes build decision before description")
+	check(game.inspector_effects.text.contains("BUILD READINESS") and game.inspector_effects.text.contains("Need Metal 5") and not game.inspector_label.text.contains("Build cost:"),"Inspector exposes build shortfall beside the card without repeating its cost")
 	game.resources.metal = 100
 	game._refresh_placement_status()
 	check(game.placement_feedback.text.contains("READY TO BUILD"),"Affordable matched door gives ready feedback")

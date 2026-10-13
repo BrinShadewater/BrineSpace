@@ -9,7 +9,7 @@ func run():
 	var game=load("res://scenes/main.tscn").instantiate()
 	game.run_save_path="user://crew-life-test.loop";game.meta.save_path="user://crew-life-test.meta"
 	root.add_child(game);current_scene=game
-	await process_frame
+	while not game.startup_complete:await process_frame
 	game.set_process(false);game.tick_timer.stop();game._set_paused(true,false)
 	game.bill_npc.active=false;game.veld_npc.active=false;game.branforth_npc.active=false
 	var count:=0
@@ -46,6 +46,10 @@ func run():
 				var initial: String=npc.stage
 				if initial in ["life_lie","life_sit","observation_sit"]:
 					npc.timer=0.01;npc.update(game,0.02)
+					# Authored tablet entry precedes the settled reading activity.
+					for step in range(80):
+						if npc.stage!="observation_read_enter":break
+						npc.update(game,1.0/120)
 					check(npc.stage in ["life_sleep","life_seated","observation_read"],id+" settled")
 				check((npc.call("valid_%s_snapshot"%actor,npc.snapshot()) if npc.has_method("valid_%s_snapshot"%actor) else npc.valid_snapshot(npc.snapshot())),id+" settled save")
 				var saved: Dictionary=npc.snapshot()
@@ -63,7 +67,12 @@ func run():
 				check(npc.stage!=saved.stage,id+" unavailable service interrupts action")
 				if initial=="life_lie":check(npc.stage=="life_get_up",id+" rises on interruption")
 				if initial=="life_sit":check(npc.stage=="life_rise",id+" rises on interruption")
-				if initial=="observation_sit":check(npc.stage=="observation_rise",id+" reader rises on interruption")
+				if initial=="observation_sit":
+					# Complete the selected tablet stow before the furniture rise.
+					for step in range(80):
+						if npc.stage!="observation_read_exit":break
+						npc.update(game,1.0/120)
+					check(npc.stage=="observation_rise",id+" reader rises on interruption")
 				check((npc.call("valid_%s_snapshot"%actor,npc.snapshot()) if npc.has_method("valid_%s_snapshot"%actor) else npc.valid_snapshot(npc.snapshot())),id+" interrupted snapshot valid")
 				game.powered_room_cells[cell]=true
 				npc.active=false;count+=1

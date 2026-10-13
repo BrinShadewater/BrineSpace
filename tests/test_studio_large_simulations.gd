@@ -21,6 +21,12 @@ func run_for(e, seconds: float) -> void:
 		e.advance(0.05)
 		t += 0.05
 
+func until_phase(e, phase: String) -> void:
+	for step in range(1600):
+		if (phase=="idle" and e.moonbay.is_empty()) or str(e.moonbay.get("phase",""))==phase: return
+		e.advance(0.05)
+	check(false,"Studio reaches phase "+phase)
+
 func _init() -> void: call_deferred("run")
 
 func run() -> void:
@@ -54,16 +60,21 @@ func run() -> void:
 	check(not m.moonbay.is_empty() and m.active(), "Send sub out starts the trip")
 	run_for(m, 3.5)
 	check(m.moonbay.phase == "flood" and not m.moonbay.station_open, "The inner door seals, then the chamber floods")
-	run_for(m, 6.0)
+	until_phase(m,"boarding")
+	check(float(m.moonbay.chamber_water)==1.0 and not m.moonbay.station_open,"Crew crosses to the permanently flooded bay only after airlock filling")
+	until_phase(m,"launch")
 	check(m.moonbay.phase == "launch" and m.moonbay.ocean_open and float(m.moonbay.chamber_water) >= 1.0, "The sea gate opens on a full chamber")
 	run_for(m, 3.2)
 	check(m.moonbay.phase == "outbound" and not m.moonbay.ocean_open, "The sub waits outside")
 	run_for(m, 20.0)
 	check(m.moonbay.phase == "outbound", "It waits until told to return")
 	m.start("sub_back")
-	run_for(m, 3.2)
-	check(m.moonbay.phase == "drain", "The sub returns and the chamber starts to drain")
-	run_for(m, 6.2)
+	until_phase(m,"disembark")
+	check(m.moonbay.chamber_water==0.0,"Return starts with the crew airlock dry")
+	until_phase(m,"exit_bay")
+	check(m.moonbay.chamber_water==1.0,"The airlock fills before the crew enters from the wet bay")
+	until_phase(m,"drain")
+	until_phase(m,"idle")
 	check(m.moonbay.is_empty() and not m.active(), "Drained, the room returns to its own idle state")
 
 	# The view takes the preview state.

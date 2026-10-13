@@ -1,0 +1,16 @@
+"""Correct own-West whole foreground-trailing stance reference."""
+from pathlib import Path
+from PIL import Image
+import hashlib,json
+ROOT=Path(__file__).resolve().parents[1];S=ROOT/'character/marsh-west-run-material-v1/sources'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+guide=json.loads((S/'guide-provenance.json').read_text());r=guide['primarySourceFrames'][3];p=ROOT/r['path'];assert sha(p)==r['sha256'];f=Image.open(p).convert('RGBA');assert f.size==(184,184);single=S/'selected-walk3-only.png';f.resize((736,736),Image.Resampling.NEAREST).save(single)
+prompt='''Draw FOUR complete LEFT-facing adult Marsh figures, widely separated on transparent background. Reference ONE gives the EXACT foreground/far leg overlap order: visible large ivory thigh slopes BACKWARD to the RIGHT/rear knee and boot; partly hidden darker FAR thigh descends toward LEFT/front knee and boot. Preserve this leg order in figures1-3. Reference TWO single selected West idle controls adult fitted anatomy, small head, collar/chest/limb size, elevated left-side camera, quiet warm matte pixel density and colours. Reference THREE original own West master controls blond identity, bare visible temple, and authentic small ankle buckles. Temple skin stays BARE; implant is hidden on far right side.
+
+1 FAR contact: far leg stretches modestly LEFT/front into flat contacting boot, near large ivory thigh trails RIGHT/rear into near knee/boot. Visible near arm swings FORWARD LEFT; far arm back RIGHT. Slight torso lean, restrained adult stance.
+2 FAR support passing: FAR boot flat directly under pelvis is lowest foot. The large foreground ivory thigh trails RIGHT/rear into low knee; its ENTIRE rear boot is clearly lifted above planted sole, roughly eight production pixels of clearance. Small knee bend, no thigh raised to waist. Visible near elbow passes waist. Preserve reference ONE's exact near/far overlap.
+3 FAR-knee flight: FAR knee leads LEFT/front, foreground large ivory thigh stays RIGHT/rear into trailing knee/boot. Near arm swings FORWARD LEFT; far arm back RIGHT. BOTH boots airborne with modest clearance and low natural knee height.
+4 Neutral ruler standing matching reference TWO.
+
+Same head/body/limb scale in all figures, natural slight running compression, no per-pose fitting. Warm ivory fabric/panels/boot uppers, muted sage shoulders/pouches, slate joints, charcoal gloves and soles. Crisp warm matte clusters, original fitted suit construction. FOUR complete connected figures from hair to soles, generous gutters with empty transparent columns between every entire figure; no floor, shadows, glow, haze, labels or text. One common neutral147occupied-height calibration at production size.'''
+path=S/'half-02.prompt.txt';assert not path.exists();path.write_text(prompt+'\n',encoding='utf-8');refs=[single,S/'selected-idle0-only.png',ROOT/'character/marsh-motion-polish-v1/sources/west-standing-identity-01.png'];(S/'half-02.request.json').write_text(json.dumps({'normalAdmission':False,'fullGoalComplete':False,'status':'frozen before generation','promptSha256':sha(path),'orderedReferences':[{'path':q.relative_to(ROOT).as_posix(),'sha256':sha(q)} for q in refs],'poseSourceFrame':r,'sheetGrid':[4,1],'transparentBackground':True},indent=2)+'\n');print('Frozen four complete far-leg poses/neutral, own-West selected whole stance first.')

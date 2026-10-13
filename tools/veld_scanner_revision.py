@@ -8,6 +8,12 @@ SELECTED={'veld','branforth','marsh'}
 BASE=shared.ROOT/'character/crew-action-detail-v2'
 
 def replacement(actor,state,equipped):
+    if actor=='marsh' and state in ('interact-east','interact-west','interact-north','interact-south'):
+        folder=shared.ROOT/'character/marsh-controller-tone-v1/frames'/state
+        shared.OPS[actor+'/'+state]={'method':'Selected identity-matched handheld controller action with exact active idle endpoints',
+                                  'source':folder.relative_to(shared.ROOT).as_posix(),
+                                  'registration':'character/marsh-maintenance-match-v1/registration.json'}
+        return {'bare':[Image.open(folder/f'{i:03}.png').convert('RGBA') for i in range(6)]}
     if actor=='marsh' and state in ('idle-east','idle-west','idle-north','idle-south'):
         from extract_crew_motion_cycle import extract
         recipe_path=shared.ROOT/f'character/marsh-motion-polish-v1/{state}-cycle-recipe.json'

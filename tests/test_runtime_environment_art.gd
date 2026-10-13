@@ -2,6 +2,9 @@ extends SceneTree
 ## Runtime environment loaders must retain every selected texture after migration.
 const SafeImage = preload("res://scripts/safe_image.gd")
 const PACKS = [
+	preload("res://assets/environment/floor-details-v1/floor_details_view.gd"),
+	preload("res://assets/environment/rock-features-v1/rock_feature_view.gd"),
+	preload("res://assets/environment/biome-floor-variants-v1/biome_floor_view.gd"),
 	preload("res://assets/environment/ambient-water-v1/ambient_water_view.gd"),
 	preload("res://assets/environment/anemone-v1/anemone_view.gd"),
 	preload("res://assets/environment/cable-reel-v1/cable_reel_view.gd"),
@@ -44,6 +47,12 @@ func _init() -> void:
 		for stage in ["wreck","stripped"]:
 			check_texture(wreck.texture(kind,stage),kind+"-"+stage)
 	check_texture(preload("res://assets/environment/rock-blockers-v1/rock_view.gd").new().texture(),"basalt")
+	const EnvironmentArt=preload("res://scripts/environment_art.gd")
+	for key in EnvironmentArt.PATHS:
+		check_texture(EnvironmentArt.texture(key),key)
+	const ConstructionMaterials=preload("res://scripts/construction_materials.gd")
+	for key in ConstructionMaterials.PATHS:
+		check_texture(ConstructionMaterials.texture(key),key)
 	failures += SafeImage.failures.size()
 	print("RUNTIME ENVIRONMENT ART: %d checks, %d failures" % [checks,failures])
 	quit(1 if failures else 0)

@@ -1,6 +1,7 @@
 extends SceneTree
 ## Large-room supporting equipment (owner, Sept 29): the tidal plant, hydroponics farm and storage depot start with
-## their four small pieces as ordinary movable props at the old positions; the Moonbay keeps its machinery fixed.
+## their four small pieces as ordinary movable props. Moonbay support props are also editable;
+## its bay and pressure chamber remain fixed architecture.
 const LargeView = preload("res://rooms/large-rooms/studio_view.gd")
 const Store = preload("res://scripts/room_layout_store.gd")
 const Library = preload("res://scripts/room_asset_library.gd")
@@ -43,8 +44,8 @@ func run() -> void:
 				check(not prop.is_empty() and prop.rect.get_center().distance_to(expected) < 3.0 and absf(prop.rect.size.x - source.size.x) < 2.0,
 					"%s rotation %d keeps %s at its old position and size" % [id, quarter, str(feature.path).get_file()])
 	var moonbay: Array = LargeView.live_props("moonbay", 0)
-	check(moonbay.is_empty() and LargeView.feature_seed("moonbay", 0).is_empty(), "Moonbay equipment stays fixed machinery")
-	check(LargeView.VIEWS["moonbay"].fixed_bounds_for_rotation(0).size() == 5, "Moonbay keeps all its fixed bounds")
+	check(moonbay.size()==3 and LargeView.feature_seed("moonbay", 0).size()==6, "Moonbay supporting equipment starts as three editable props")
+	check(LargeView.VIEWS["moonbay"].fixed_bounds_for_rotation(0).size() == 2, "Moonbay keeps only its bay and pressure chamber fixed")
 
 	# Owner edits win over the seed: moved, resized, hidden and deleted.
 	var id := "tidal_power_plant"

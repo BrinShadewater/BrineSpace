@@ -1,0 +1,7 @@
+"""Retain complete corrected opposite stance; crate/cycle joins still provisional."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+source=(ROOT/'tools/build_marsh_east_carry_contact03.py').read_text().replace('contact-03','contact-04').replace('exec-1661ff9f-b710-4f30-ae90-3b6dc30c659a','exec-ca634adf-5b2b-497b-a4c5-55523e79cbe1')
+source=source.replace('foreground thigh correctly backward/left, boot contact projection and crate variant remain provisional','foreground thigh correctly backward/left and far front boot now flat; rear toe projection/crate variant provisional')
+source=source.replace('Foreground near thigh correctly goes backward LEFT, darker far thigh forward RIGHT. Far front boot angled and projects above rear near boot; supporting sole not certified. Crate single-latch broad recessed panel differs from source01 rounded box; cannot assume cross-half consistency. Whole body/grade/crate/contact joins pending.','Foreground near thigh stays backward LEFT, darker far thigh forward RIGHT. Front far boot is now flatter; rear near toe projects near its baseline, not requested five-row whole clearance. Contact/heel/toe interaction provisional. Crate retained inset panel rather than requested original rounded divided side, and differs from source01; no consistent mixed cycle certified. Whole body/grade/crate/contact joins pending.')
+exec(compile(source,str(ROOT/'tools/build_marsh_east_carry_contact04.py'),'exec'),{'__file__':str(ROOT/'tools/build_marsh_east_carry_contact04.py'),'__name__':'__main__'})

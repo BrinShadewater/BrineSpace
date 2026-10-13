@@ -1,42 +1,34 @@
 """Explicit diagnostic maintenance chain; never changes welding/source aliases."""
 from pathlib import Path
-import contextlib,io,json,hashlib
 from PIL import Image,ImageDraw
 import rebuild_bill_art as shared
 ROOT=Path(__file__).resolve().parents[1]
-BASE=ROOT/'character/crew-repair-polish-v1'
-OUT=BASE/'review/marsh-diagnostic-repair-01'
+BASE=ROOT/'character/marsh-maintenance-match-v1'
+OUT=BASE/'review/canonical-chain'
 DIRECTIONS=['east','west','north','south']
 STATES={a+'-'+d for a in ['kneel','repair','stand'] for d in DIRECTIONS}
 _cache={}
 
 def build(direction):
-    from veld_scanner_revision import replacement as diagnostic
-    with contextlib.redirect_stdout(io.StringIO()):
-        source=diagnostic('marsh','interact-'+direction,False)['bare']
-    idle_path=BASE/f'sources/marsh/idle-{direction}.png'
-    idle=shared.image(idle_path).copy()
-    draw=[idle,source[4].copy(),source[2].copy()]
-    order=[2,1,2,3,2,2] if direction=='east' else [2,3,2,1,2,2]
-    result={'kneel-'+direction:draw,'repair-'+direction:[source[i].copy() for i in order],
-            'stand-'+direction:list(reversed(draw))}
-    OUT.mkdir(parents=True,exist_ok=True)
-    for state,row in result.items():
-        for i,frame in enumerate(row):frame.save(OUT/f'{state}-{i:03}.png')
-    assert draw[-1].tobytes()==result['repair-'+direction][0].tobytes()
-    assert result['repair-'+direction][-1].tobytes()==result['stand-'+direction][0].tobytes()
-    (OUT/f'{direction}-recipe.json').write_text(json.dumps(dict(status='selected_runtime_chain',idleSource=str(idle_path.relative_to(ROOT)),idleSha256=hashlib.sha256(idle_path.read_bytes()).hexdigest(),diagnosticSource='tools/veld_scanner_revision.py: interact-'+direction,draw=['canonical idle',4,2],work=order,stow='reverse draw',semantics='Equipment-check stages keep legacy kneel/repair/stand IDs; Marsh uses a handheld diagnostic controller.',limits=['Derived from preserved authored instrument poses; no newly generated motion','Not owner accepted']),indent=2)+'\n')
+    folder=ROOT/'character/marsh-controller-tone-v1/frames'
+    result={state:[Image.open(folder/state/f'{i:03}.png').convert('RGBA') for i in range(6 if state.startswith('repair-') else 3)]
+            for state in ('kneel-'+direction,'repair-'+direction,'stand-'+direction)}
+    draw=result['kneel-'+direction];work=result['repair-'+direction];stow=result['stand-'+direction]
+    assert draw[-1].tobytes()==work[0].tobytes()
+    assert work[-1].tobytes()==stow[0].tobytes()
     return result
+
 
 def replacement(actor,state,equipped):
     if actor!='marsh' or state not in STATES:return None
     direction=state.rsplit('-',1)[1]
     if direction not in _cache:_cache[direction]=build(direction)
-    shared.OPS['marsh/'+state]={'method':'Explicit maintenance diagnostic chain, canonical idle, existing authored controller poses, exact joins; no welding alias mutation',
-                              'recipe':f'character/crew-repair-polish-v1/review/marsh-diagnostic-repair-01/{direction}-recipe.json'}
+    shared.OPS['marsh/'+state]={'method':'Selected identity-matched diagnostic chain, active idle endpoints and exact shared controller joins',
+                              'recipe':f'character/marsh-maintenance-match-v1/review/{direction}/registration.json'}
     return {'bare':[f.copy() for f in _cache[direction][state]]}
 
 def preview():
+    OUT.mkdir(parents=True,exist_ok=True)
     rows={d:build(d) for d in DIRECTIONS}
     frames=[]
     # Controller dwell: 1s draw, 4s checking, 1s stow (clips hold their endpoints).

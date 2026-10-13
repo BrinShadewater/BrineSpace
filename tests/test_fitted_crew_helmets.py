@@ -1,5 +1,6 @@
 """Verify selected locker joins in shared foot coordinates and reverse playback."""
 import json
+import hashlib
 from pathlib import Path
 import unittest
 from PIL import Image
@@ -37,7 +38,34 @@ class FittedHelmetJoins(unittest.TestCase):
                 self.assertEqual(equip[0],selected['body/idle-east'][0],'Pickup must start in selected bare idle')
                 self.assertEqual(equip[-1],selected['equipment/idle-east'][0],'Fitting must end in selected helmeted idle')
                 self.assertEqual(remove,list(reversed(equip)),'Removal must preserve the same shell, hand contacts and joins')
-                self.assertGreaterEqual(len(set(equip)),10,'Fitting must retain the full authored pose progression')
+                self.assertEqual(len(equip),8,'Six authored interior poses plus exact idle endpoints')
+                self.assertEqual(len(set(equip)),8,'Every exported slot must advance the pose')
+
+    def test_source_pixels_and_action_times_preserved(self):
+        baseline=json.loads((ROOT/'character/helmet-transition-polish-v1/selected.json').read_text())
+        corrections=json.loads((ROOT/'character/veld-consistency-v1/mapping.json').read_text())
+        for actor, rows in baseline.items():
+            equip=rows['body/equip-helmet-east']
+            original_sources={(ROOT/equip['manifest']).parent/f for f in equip['state']['frameFiles']}
+            for action,total in [('equip',2140),('remove',2240)]:
+                record=rows['body/'+action+'-helmet-east']
+                path=ROOT/record['manifest']
+                state=next(s for s in json.loads(path.read_text())['states'] if s['id']==action+'-helmet-east')
+                self.assertEqual(sum(state['frameDurationsMs']),total)
+                self.assertLessEqual(max(state['frameDurationsMs']),340,'Avoid long frozen contact holds')
+                self.assertFalse(state['loop'])
+                pixels=lambda p: hashlib.sha256(Image.open(p).convert('RGBA').tobytes()).hexdigest()
+                self.assertEqual({pixels(path.parent/f) for f in state['frameFiles']},{pixels(f) for f in original_sources})
+                for field in ['facings','waterKinds','waterPoses','depthOffsets']:
+                    self.assertEqual(len(state[field]),len(state['frameFiles']))
+            for record in rows.values():
+                for file,digest in zip(record['state']['frameFiles'],record['frameHashes']):
+                    source=(ROOT/record['manifest']).parent/file
+                    correction=corrections.get(source.resolve().relative_to(ROOT).as_posix())
+                    if correction:
+                        self.assertEqual(correction['before'],digest,'Correction must derive from the frozen pose')
+                        digest=correction['after']
+                    self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),digest,'Palette and source artwork must be unchanged')
 
 
 if __name__=='__main__': unittest.main()

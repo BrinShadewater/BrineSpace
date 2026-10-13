@@ -53,5 +53,27 @@ func run() -> void:
 	current=crew.filter(func(a): return a.topology(game)==a.signature).size()
 	check(current==2, "Direct updates rebuild immediately (%d)" % current)
 	game.free()
+	# Music deliberately lives at the tree root across scenes; release the
+	# fixture's decks and wait for AudioServer playback references to drain.
+	var music:=root.get_node_or_null("StationMusic")
+	var playbacks:Array=[]
+	if music!=null:
+		for deck in music.decks:
+			if deck.playing:playbacks.append(weakref(deck.get_stream_playback()))
+		music.queue_free()
+	var deadline:=Time.get_ticks_msec()+1000
+	while (is_instance_valid(music) or playbacks.any(func(ref):return ref.get_ref()!=null)) and Time.get_ticks_msec()<deadline:
+		await process_frame
+	check(not is_instance_valid(music) and playbacks.all(func(ref):return ref.get_ref()==null), "Fixture music playback is released")
+	# Playback stop commands are consumed by the audio thread, independently
+	# of the fast headless frame loop. Observe two mix boundaries before exit.
+	var completed_mixes:=0
+	var mix_age:=AudioServer.get_time_since_last_mix()
+	while completed_mixes<2 and Time.get_ticks_msec()<deadline:
+		await process_frame
+		var next_age:=AudioServer.get_time_since_last_mix()
+		if next_age<mix_age:completed_mixes+=1
+		mix_age=next_age
+	check(completed_mixes==2,"Audio thread consumed fixture shutdown")
 	print("NAVIGATION REBUILD STAGGER failures=", failures)
 	quit(0 if failures == 0 else 1)

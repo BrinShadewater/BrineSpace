@@ -19,8 +19,19 @@ func _ready():
 	call_deferred("run")
 func run():
 	check(not OS.is_debug_build(), "Must execute in the actual release template")
-	for i in range(10): await get_tree().process_frame
-	var title = get_tree().current_scene
+	var title
+	var title_deadline := Time.get_ticks_msec() + 30000
+	var intro_skipped := false
+	while Time.get_ticks_msec() < title_deadline:
+		await get_tree().process_frame
+		title = get_tree().current_scene
+		if title != null and title.has_method("_start_game"): break
+		if title != null and title.scene_file_path == "res://scenes/intro_film.tscn" and not intro_skipped:
+			var skip := InputEventKey.new()
+			skip.keycode = KEY_SPACE
+			skip.pressed = true
+			title._unhandled_input(skip)
+			intro_skipped = true
 	check(title != null and title.has_method("_start_game"), "Configured title scene loaded")
 	if title == null or not title.has_method("_start_game"):
 		get_tree().quit(1); return
