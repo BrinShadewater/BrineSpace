@@ -1,3 +1,34 @@
+## Crew tests: three art-baseline tests re-baselined; 11 of the 12 pass - October 12, 2026
+
+Owner decision: re-baseline test_crew_walk_v2, test_bill_complete_pack and
+test_crew_complete_packs against today's art instead of retiring them.
+
+- `tests/crew-art-baseline.json` (8.3 MB, schema 1): every crew clip the game loads for Bill,
+  Veld, Branforth and Marsh, bare and helmeted: 2,002 clips, 19,604 frames. Per clip: loop and
+  durations. Per frame: SHA-256 of the decoded pixels, size, format, filter and all metadata.
+  Plus each actor's stride table.
+- `tools/build_crew_art_baseline.gd` writes it from a detached grid (about 25 s headless);
+  `-- --check` compares without writing and exits 1 when out of date. Two builds in a row were
+  byte-identical.
+- `tests/crew_art_baseline.gd` holds the shared describe, compare and playback routines.
+- The three tests now compare their scope with the record (one check per clip, first
+  difference named) and keep their behaviour checks: every frame reachable at the middle of
+  its slot, walking advances by distance, pause is stable, helmet coverage, locker action.
+  Counts: Bill 1,649 checks, crew 4,832, walk 234, all passing. A tampered record (one hash,
+  one duration) failed test_crew_walk_v2 on exactly those two clips.
+
+**After any approved crew art or timing change, rebuild the record and commit it with the
+art.** Otherwise these three tests fail, which is their job. They no longer read the September
+12 contracts in `tools/bill-art-source-contract.json` and `tools/crew-art-source-contracts/`;
+those files stay because the `rebuild_*_art.py` and `validate_*_art.py` tools read them.
+
+Observed, not changed: Bill's helmeted walk-north frames are on the 184 canvas (pivot 92,172)
+while the bare ones are on the 256 canvas (pivot 128,224). Both declare standing height 148, so
+they draw at the same scale; the old test's "same canvas" rule became "same drawn scale".
+
+Rerun of the 12 (`output/test-runs/20261012-203515-headless`): 11 pass. test_carry_turn_handoff
+still fails its 12 Marsh swim-turn checks, which is the art-queue item.
+
 ## Crew tests: 8 of the 12 failures resolved; 4 remain with known causes - October 12, 2026
 
 Headless rerun of the 12 (`output/test-runs/20261012-202309-headless`): 8 pass, 3 fail, 1 times
