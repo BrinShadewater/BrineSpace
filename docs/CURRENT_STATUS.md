@@ -1,3 +1,28 @@
+## Release: brinespace-42f32cba40af64c0 passes Continue timing, relaunch and a 30-minute soak - October 13, 2026
+
+All on the QA copy of the candidate, debug=false, second monitor, muted, isolated profiles;
+owner folder fingerprint unchanged (2,938 files) after each. Evidence under
+`C:/bs-release-20261013/` (`continue-timing/`, `relaunch-check/`, `soak-30m/`).
+
+- Continue, press to playable: first launch 12.73 s (reported save, 12 rooms) and 12.71 s (owner
+  current save, 10 rooms); ordinary launch 7.01 s and 7.05 s. No errors, no missing art. The
+  previous candidate measured 12.3 s and about 7 s, so no change. Largest stage
+  `interface_and_grid`: 7.4 s first, 2.9-3.0 s ordinary.
+- Save, quit, relaunch: reported save and a new game each continued, quit, relaunched and
+  verified. Strict comparison of the restored checkpoint: no differences. Loose differences are
+  camera centre and scroll only. No quit stuck; all four processes exit 0.
+- Soak, 30 minutes on the reported 12-room save, cycles 326 to 533, speeds 1x/2x/4x by thirds:
+  107,912 frames, mean 16.67 ms every minute, p99 at most 18.39 ms, two frames over 50 ms
+  (96.2 ms in minute 1, 62.8 ms in minute 29), none over 100 ms, 0 errors, 0 automatic reports,
+  0 missing art, 0 orphan nodes. Private memory 2,536-2,562 MB, flat; textures 1,569.7 MB
+  constant; handles 605 throughout. Object count rose from 32,189 to 34,566 (about 82 a minute),
+  the same slow growth seen on earlier candidates and still unexplained.
+
+Housekeeping: the frozen source, build and QA copy of the two superseded candidates
+(`D:/bs-release-20261012`, `D:/bs-release-20261011b`, about 26 GB) went to the Recycle Bin on
+D:; their evidence folders stay in place. Not rerun on this candidate: the 20-start check and
+the stress benchmark.
+
 ## Release: Windows candidate brinespace-42f32cba40af64c0 - October 13, 2026
 
 Rebuilt from commit 7e8e959d through the same stages as before, into `C:/bs-release-20261013`
