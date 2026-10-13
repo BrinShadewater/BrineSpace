@@ -1,3 +1,24 @@
+## Hand cards are one size; twelve overtaken candidate fixtures skipped - October 13, 2026
+
+Owner: hand cards "should all be the same size". `scripts/draft_card.gd` (ac54ebb1): a card that
+needs more than `CARD_SIZE` (200x284) first gives up art-window height (100 down to 76 px), then
+steps its rules text down a point at a time, at most four times (`_shrink_to_fit`, called from
+`_sync_hand_size`); the note's minimum width is 164, not 170. All 27 starting cards measure
+200x284. Smallest text: Storage Bay and Storage Depot at 11 pt (their four-resource HOLDS line
+is too wide), Hydroponics Farm 12 pt, Tidal Power Plant 13 pt. Before and after captures:
+`output/hand-card-size-before-after-2026-10-13.png`. test_hand_backdrop passes; with a window,
+test_hand_reuse (74 checks), test_card_content_regions (406), test_hand_image_preparation (220)
+and test_card_mipmap_loading (358) pass.
+
+Owner: candidate-stage fixtures whose art was later selected are skipped, not deleted. The
+twelve `test_bill_{meal,drink,inspect}_{east,north,south,west}_candidates` now have `lane: skip`
+with the reason in `tests/index.json`. Each failed only its "loop chooser" assertion.
+
+Runner gap noticed, not fixed: a test classified headless that exits 2 to demand a window
+(test_hand_reuse, test_card_content_regions, test_hand_image_preparation) is reported
+SKIP-NATIVE headless and SKIP-HEADLESS in the native lane, so the runner never runs it. They
+pass when run directly with a window and `BRINESPACE_TEST_USER_DIR` set.
+
 ## Tests: non-art failures cleared, owner decisions, runner gives fixtures their own scratch folder - October 13, 2026
 
 Owner decisions, October 13:
