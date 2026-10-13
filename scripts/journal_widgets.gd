@@ -226,8 +226,10 @@ static func crew(game, box: VBoxContainer, signature: String) -> void:
 		box.add_child(_member_row(game, member))
 	if game.recovered_crew.is_empty():
 		box.add_child(_label("No recovered survivors recorded. The sealed wards remain quiet.", 16, DIM))
-	if game.crew_count > named_alive:
-		box.add_child(_label("Other station crew: %d" % (game.crew_count - named_alive), 16, DIM))
+	# Survivors who arrive with a Crew Hab or the recovery systems have no body in the station
+	# view, but the roster lists each by name so the berth count adds up (owner, October 13).
+	for index in range(maxi(0, game.crew_count - named_alive)):
+		box.add_child(_survivor_row(survivor_name(game.site_layout.get("seed", 0), index)))
 	for architect in Architects.IDS:
 		var actor = Architects.actor_for(game, architect)
 		if actor.active and not actor.dead: box.add_child(_vitals_card(architect, actor))
@@ -266,6 +268,23 @@ static func _companion_row(game, id: String) -> Control:
 				row.add_child(_action("PET MARGOT", func() -> void: game._locate_diagnostic_room("pet:margot")))
 			else:
 				status_label.text += "  (%s)" % Companions.pet_refusal(game)
+	return card
+
+const SURVIVOR_NAMES := ["Ansel Okafor", "Petra Lindqvist", "Tomas Reyes", "Ines Varga", "Callum Hart", "Noor Haddad", "Mirela Stan", "Dov Abrams", "Sunniva Dahl", "Kenji Morita", "Oriel Vance", "Halima Diallo", "Rurik Belov", "Marisol Quint", "Teodor Kask", "Wren Achebe"]
+
+## The name of a loop's nth unnamed survivor: fixed for the loop, different from loop to loop.
+static func survivor_name(seed: Variant, index: int) -> String:
+	var count := SURVIVOR_NAMES.size()
+	var start := posmod(hash(str(seed)), count)
+	# Seven shares no factor with the list's length, so sixteen survivors get sixteen names.
+	var picked: String = SURVIVOR_NAMES[posmod(start + index * 7, count)]
+	return picked if index < count else "%s %d" % [picked, index / count + 1]
+
+static func _survivor_row(survivor: String) -> Control:
+	var card := Widgets.portrait_row(survivor, "Station crew. Quartered in the crew habitat.", null)
+	card.name = "Survivor"
+	card.get_child(0).get_node("Portrait").visible = false
+	card.get_child(0).add_child(_pill("ABOARD", GREEN))
 	return card
 
 static func _member_row(game, member: Dictionary) -> Control:
