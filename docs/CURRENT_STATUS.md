@@ -1,3 +1,23 @@
+## Repository: tools, tests and documents committed; two padded documents repaired - October 12, 2026
+
+Owner-approved. 6773994d adds 4,268 files (2,130 `tools/`, 1,387 `tests/`, 751 `docs/`; 4,196
+new, 72 changed): every untracked or modified file under those folders that the release does
+not ship, as it stands, unreviewed. Scan: no keys, tokens or email addresses; 207 files name
+local `C:/Users/...` paths, committed by owner decision.
+List: `output/tools-tests-docs-commit-list-2026-10-12.txt`.
+
+e5bfe60c repairs `docs/BRINESPACE_VISUAL_AESTHETIC_BIBLE.md` (226.3 MB to 2.2 MB) and
+`docs/ASSET_PIPELINE_AND_WORKFLOW.md` (137.5 MB to 1.9 MB). The working copies were padded with
+stray carriage returns and runs of up to 23,039 blank lines; cause not found, both last written
+October 4. Repair: strip `\r`, reduce each blank run between two text lines to one blank line.
+Every text line kept in order; of the previously committed text, one line per document differs
+(an edit already in the working copy). Verified copies of the damaged files are staged in
+`D:/_safe-to-delete/damaged-docs-2026-10-12/` (the Recycle Bin refused them).
+
+Still uncommitted: `export_presets.cfg`, `.gitattributes` (adds `*.apng`), and whatever lies
+outside tools/tests/docs/shipped files (`skills/`, `rooms/`, authoring text under `character/`
+and `assets/`). The 51 GB of non-shipped art exists only on this PC.
+
 ## Repository: fresh clone of origin/main starts a new game - October 12, 2026
 
 Shallow clone of 75a972d9 into `D:/bsfc` with `core.longpaths=true`: 56,241 files, clean status.
