@@ -505,8 +505,17 @@ func _load_human_animation(state: String, base_path: String) -> void:
 			by_direction[direction] = textures
 	human_animations[state] = by_direction
 
+# The game loads crew from _ready, inside the scene tree: one storage session per grid.
+# Fixtures call the two loaders on grids that never enter the tree, in either order;
+# those calls share one session that lasts for the process.
+func _detached_crew_bank():
+	if is_inside_tree():return null
+	if Router.active==null:Router.start(Engine.get_main_loop() as SceneTree,self,CpuBank.new())
+	return Router.active.bank
+
 func _load_replacement_crew_animations() -> void:
-	var bank=CpuBank.new()
+	var detached=_detached_crew_bank()
+	var bank=detached if detached!=null else CpuBank.new()
 	for actor in ["veld","branforth","marsh"]:
 		var base: String=CrewSpritePlayer.REVISION_ROOTS[actor]
 		var catalog: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
@@ -845,7 +854,7 @@ func _load_replacement_crew_animations() -> void:
 		player.finish_texture_batch()
 		set(actor+"_player",player)
 		bank.adopt(player)
-	Router.start(get_tree(),self,bank)
+	if detached==null:Router.start(get_tree(),self,bank)
 
 func _load_major_bill_animations() -> void:
 	var base := "res://character/major-bill-v3/"
@@ -1053,6 +1062,7 @@ func _load_major_bill_animations() -> void:
 	# Latest reviewed cardinal carry entry, gait and gradual North unload.
 	if not player.load_candidates(): push_error("Bill cardinal carry source bank failed to load")
 	player.finish_texture_batch()
+	_detached_crew_bank()
 	if Router.active==null:push_error("Missing crew storage session");return
 	Router.active.bank.adopt(player)
 	human_animations.clear()

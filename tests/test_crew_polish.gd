@@ -126,6 +126,8 @@ func run() -> void:
 	check(not Save.restore(game, malformed), "Malformed crew checkpoint is rejected")
 	check(game.veld_npc.snapshot() == before, "Rejected checkpoint does not mutate crew")
 	var legacy: Dictionary = data.duplicate(true)
+	# A checkpoint from before the engineer has no cargo-return record for him either.
+	legacy.erase("james_cargo_return")
 	legacy.erase("crew")
 	check(Save.restore(game, legacy), "Older checkpoint without crew remains compatible")
 	check(not game.bill_npc.active and not game.veld_npc.active, "Older checkpoint starts fresh NPC loops")
