@@ -1,3 +1,23 @@
+## Release: brinespace-42f32cba40af64c0, 40 starts and the packaged benchmark - October 13, 2026
+
+Start check (`C:/bs-release-20261013/start-check/`): 40 real Continue starts on the QA copy, 20
+pressing Continue as soon as it is offered and 20 after a delay. All 40 reached a playing
+station with the simulation advancing, exit 0, no log errors. Start-up 4939-9959 ms
+(instant) and 4966-10025 ms (delayed). The one unexplained hand-over hang seen on an
+earlier candidate did not recur (now 0 in 100 starts across candidates since).
+
+Benchmark (`tools/run_release_benchmark.py --release-exe`, 1920x1080, one run, three passes of
+each workload; unsynchronised frame times, 16.67 ms target):
+- Fresh station: 24 of 24 phases pass. Means 5.0-6.5 ms. Save's worst frame 78-88 ms.
+- Reported 12-room save: 20 of 24 pass. Means 10.3-15.2 ms; the lighting workload's p95 is
+  18.2-18.8 ms in all three passes and is what misses. Texture memory 1,559.7 MB.
+- Stress station (`mixed_large`): the default run is invalid because its save workload cannot
+  write a checkpoint ("Bill carry sequence", the known fixture limitation). Rerun without save
+  (`benchmark-stress-nosave/`): 0 of 21 phases pass, idle mean 25.5-26.5 ms, worst frame
+  105.6 ms (demolition), texture memory 1,946.0 MB. The previous candidate's idle mean on this
+  station was 26.1 ms, so no change.
+Owner folder fingerprint unchanged (2,938 files) after each run.
+
 ## Release: brinespace-42f32cba40af64c0 passes Continue timing, relaunch and a 30-minute soak - October 13, 2026
 
 All on the QA copy of the candidate, debug=false, second monitor, muted, isolated profiles;
