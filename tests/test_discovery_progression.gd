@@ -47,9 +47,25 @@ func _test_foundation_pool_is_intentionally_small() -> void:
 		"solar_array", "reactor", "mining_drone_bay", "hydroponics_bay",
 		"life_support", "crew_hab", "research_lab", "storage_bay",
 		"med_bay", "quarantine_cell", "corridor", "corner", "tee_corridor",
-		"pressure_control", "listening_post", "isolation_vault"
+		"pressure_control", "listening_post", "isolation_vault",
+		# Large rooms are found over time and stay rare (owner, October 13, 2026). They are in
+		# this list only so their one card per run can be drawn; the deck never includes them.
+		"hydroponics_farm", "storage_depot", "moonbay", "tidal_power_plant"
 	]
 	_expect_equal(RoomDatabaseScript.STARTING_UNLOCKS, expected, "clean saves should begin with the authored foundation")
+	var Runs := preload("res://scripts/run_manager.gd")
+	var unlocked := {}
+	for id in RoomDatabaseScript.STARTING_UNLOCKS: unlocked[id] = true
+	var deck: Array = Runs.build_deck([], unlocked)
+	for id in Runs.LARGE_ROOMS:
+		_expect_true(not deck.has(id), "the ordinary deck never holds the large room " + id)
+	var random := RandomNumberGenerator.new()
+	random.seed = 7
+	var introduced := []
+	for run_index in range(Runs.LARGE_ROOMS.size()): introduced.append(Runs.large_room_for_run(run_index, random))
+	_expect_equal(introduced, Runs.LARGE_ROOMS, "the first runs introduce one large room each, in order")
+	for run_index in range(4, 40):
+		_expect_true(Runs.LARGE_ROOMS.has(Runs.large_room_for_run(run_index, random)), "later runs offer exactly one large room")
 
 func _test_medical_airlock_progression() -> void:
 	var link := _test_link("clinical_airlock")

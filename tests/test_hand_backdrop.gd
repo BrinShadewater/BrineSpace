@@ -24,7 +24,12 @@ func run() -> void:
 	game.selected_card_id = "" # A probe click must not schedule construction.
 	game.grid_view.cell_clicked.connect(func(_cell): grid_clicks += 1)
 	for i in range(3): await process_frame
-	check(Preferences.hand_backdrop, "Backdrop defaults on")
+	# Owner decision, October 13, 2026: no frame behind the hand by default, and the fan layout.
+	check(not Preferences.hand_backdrop, "Backdrop defaults off")
+	check(Preferences.hand_layout == "fan", "Hand defaults to the fan layout")
+	Preferences.hand_backdrop = true
+	game._refresh_all()
+	for i in range(4): await process_frame
 	var framed_bottom: float = game.grid_scroll.get_global_rect().end.y
 	var hand: Rect2 = game.hand_panel.get_global_rect()
 	check(framed_bottom < hand.position.y + 40, "With the backdrop, the station view stops above the hand")
@@ -86,7 +91,10 @@ func run() -> void:
 	check(absf(game.grid_scroll.get_global_rect().end.y - framed_bottom) < 1.0 and game.hand_panel.get_global_rect().is_equal_approx(hand), "The hand and view return to their places")
 	# Card-shaped hand as a row or a fan, and a hovered card pops up (owner playtest).
 	game.running = true
-	check(Preferences.hand_layout == "row" and not game.hand_box.has_node("FanRow"), "The hand starts as a row of cards")
+	check(Preferences.hand_layout == "fan" and game.hand_box.has_node("FanRow"), "The hand starts as a fan")
+	game.hand_layout_button.emit_signal("pressed")
+	for i in range(4): await process_frame
+	check(Preferences.hand_layout == "row" and not game.hand_box.has_node("FanRow"), "The layout toggle lays the hand out as a row")
 	var row_card: Control = _first_card(game)
 	check(row_card != null and row_card.size == game.DraftCard.CARD_SIZE, "Row cards are card-sized")
 	var row_art: TextureRect = row_card.get_meta("art_node")
