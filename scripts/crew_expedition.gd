@@ -11,6 +11,14 @@ const WORK_SECONDS := 5.48
 static func point(room: Dictionary,local: Vector2) -> Vector2:
 	return (Vector2(room.pos)+Vector2.ONE*0.5)*384 + Geometry.turn(local,int(room.rotation))
 
+## Where crew stand in the pressure chamber. A chamber lying east-west is 112 units deep,
+## less than a standing figure with headroom: on its centre line the head crossed the far
+## wall (owner report, October 13, 2026). There they stand nearer the south wall.
+const CHAMBER_SOUTH_SHIFT := 38.0
+static func chamber_stand(room: Dictionary) -> Vector2:
+	var at := point(room,Vector2(0,-70))
+	return at+Vector2(0,CHAMBER_SOUTH_SHIFT) if posmod(int(room.rotation),2)==1 else at
+
 static func blockers(game) -> Dictionary:
 	var result := {}
 	for room in game.placed_rooms:
@@ -184,7 +192,7 @@ static func advance(game,actor,delta: float) -> void:
 		return
 	match e.phase:
 		"approach":
-			if move(actor,e,delta): set_route(e,"enter",PackedVector2Array([point(room,Vector2(0,-70))]))
+			if move(actor,e,delta): set_route(e,"enter",PackedVector2Array([chamber_stand(room)]))
 		"enter":
 			if Cycle.state(room).phase != "dry": return
 			if move(actor,e,delta) and Cycle.request(game,e.home,true):
@@ -234,7 +242,7 @@ static func advance(game,actor,delta: float) -> void:
 				back.reverse()
 				set_route(e,"return",back)
 		"return":
-			if move(actor,e,delta): set_route(e,"entry",PackedVector2Array([point(room,Vector2(0,-70))]))
+			if move(actor,e,delta): set_route(e,"entry",PackedVector2Array([chamber_stand(room)]))
 		"entry":
 			Cycle.open_for_return(game,e.home)
 			if Cycle.state(room).phase != "exterior":
