@@ -63,7 +63,9 @@ func run() -> void:
 	loading = false
 	var staged_ms := (Time.get_ticks_usec()-staged_started)/1000.0
 	check(ok,"Staged restore succeeds")
-	check(slices>=5,"Navigation yields repeatedly to the loading screen")
+	# The rebuild yields after each 4 ms of work, so the count falls as navigation gets faster
+	# (four on this fixture in October 2026). More than one yield is the behaviour under test.
+	check(slices>=2,"Navigation yields repeatedly to the loading screen")
 	check(game.visible and game.process_mode!=Node.PROCESS_MODE_DISABLED,"Completed station is revealed and enabled")
 	check(game.paused,"Restored station remains paused")
 	check(game.resources==expected_resources,"Resources match synchronous restoration")

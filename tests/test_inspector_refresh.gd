@@ -71,7 +71,7 @@ func run() -> void:
 	check(game.inspector_card_host.get_meta("preview_order", []).size() == 12, "Preview eviction bookkeeping stays bounded")
 	check(visible_preview_count(game) == 1, "Eviction preserves the selected preview")
 	var refresh_count: int = game.inspector_refreshes
-	var scene_preview := weakref(visible_preview(game))
+	var scene_preview: WeakRef = weakref(visible_preview(game))
 	game.free()
 	check(scene_preview.get_ref() == null, "Scene exit releases retained preview widgets")
 	print("INSPECTOR REFRESH: ", "PASS" if failures == 0 else "FAIL", " / refreshes=", refresh_count, " / 120 update ms=", elapsed)

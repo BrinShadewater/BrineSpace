@@ -144,11 +144,14 @@ func _init() -> void:
 				check(rotated[0].size == bounds[0].size, id + " keeps its south-facing centerpiece dimensions")
 				var facing_features: Array = view.features_for_rotation(rotation) if id == "moonbay" else features
 				# Movable rooms fix only the centerpiece; their equipment is seeded props (test_large_room_props).
-				for feature_index in range(features.size() if id == "moonbay" else 0):
-					var source: Rect2 = facing_features[feature_index].rect
-					var expected_center: Vector2 = (source.get_center() if facing_features[feature_index].get("fixed_position",false) else source.get_center().rotated(float(rotation) * PI * 0.5)) + Vector2.ONE * 384.0
-					check(rotated[feature_index + 1].size == source.size and rotated[feature_index + 1].get_center().distance_to(expected_center) < 0.01,
-						id + " keeps support art upright at its rotated position in rotation " + str(rotation))
+				# Moonbay's second fixed obstacle is the submarine lock chamber (September 29);
+				# its support art is drawn upright per facing but no longer blocks the floor.
+				if id == "moonbay":
+					var lock: Rect2 = view.airlock_bounds({"rotation": rotation})
+					check(rotated.size() == 2 and rotated[1].is_equal_approx(Rect2(lock.position + Vector2.ONE * 384.0, lock.size)), id + " fixes its lock chamber in rotation " + str(rotation))
+					check(mini(int(lock.size.x), int(lock.size.y)) == 114 and maxi(int(lock.size.x), int(lock.size.y)) == 240, id + " lock chamber keeps its footprint in rotation " + str(rotation))
+					for feature_index in range(features.size()):
+						check(facing_features[feature_index].rect.size == features[feature_index].rect.size, id + " keeps support art upright in rotation " + str(rotation))
 				check(doors_share_walkable_floor(room, rotated, rotation), id + " connects all doors around fixed props in rotation " + str(rotation))
 			for port in room.ports:
 				var cell: Vector2i = port.cell

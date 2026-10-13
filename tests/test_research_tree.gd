@@ -11,6 +11,19 @@ func check(ok: bool, message: String) -> void:
 		failures += 1
 		push_error(message)
 
+class Recorded:
+	var meta
+	var resources := {}
+	var rerolls_remaining := 0
+	var power_capacity := 0
+	var capacities := {}
+	var crew_capacity := 0
+	var hand := 0
+	func _get_power_capacity() -> int: return power_capacity
+	func _get_resource_capacity(key: String) -> int: return capacities[key]
+	func _get_crew_capacity() -> int: return crew_capacity
+	func hand_limit() -> int: return hand
+
 func run() -> void:
 	var prefix := "user://research_tree_%d" % OS.get_process_id()
 	Preferences.save_path = prefix + ".cfg"
@@ -57,14 +70,27 @@ func run() -> void:
 		meta.brine_upgrades[id] = true
 	meta.total_research_points = 500
 	meta.save_to_disk()
-	var baseline = load("res://scenes/main.tscn").instantiate()
-	baseline.meta.save_path = prefix + "-empty.json"
-	baseline.run_save_path = prefix + "-baseline.loop"
+	# One station at a time: crew storage keeps a single session, as the game does.
+	# The perk-free station is started, recorded and freed before the perk station loads.
+	var plain = load("res://scenes/main.tscn").instantiate()
+	plain.meta.save_path = prefix + "-empty.json"
+	plain.run_save_path = prefix + "-baseline.loop"
+	root.add_child(plain)
+	current_scene = plain
+	plain._start_reboot_cycle()
+	var baseline := Recorded.new()
+	baseline.meta = plain.meta
+	baseline.resources = plain.resources.duplicate(true)
+	baseline.rerolls_remaining = plain.rerolls_remaining
+	baseline.power_capacity = plain._get_power_capacity()
+	for key in plain.resources: baseline.capacities[key] = plain._get_resource_capacity(key)
+	baseline.crew_capacity = plain._get_crew_capacity()
+	baseline.hand = plain.hand_limit()
+	plain.queue_free()
+	for i in range(2): await process_frame
 	var game = load("res://scenes/main.tscn").instantiate()
 	game.meta.save_path = prefix + ".json"
 	game.run_save_path = prefix + ".loop"
-	root.add_child(baseline)
-	baseline._start_reboot_cycle()
 	root.add_child(game)
 	current_scene = game
 	game._start_reboot_cycle()
@@ -96,7 +122,6 @@ func run() -> void:
 	check(normal["new_stabilization_ids"].is_empty(), "Without the relief it still waits for its third")
 	for id in keystone_ids:
 		game.meta.brine_upgrades.erase(id)
-	baseline.queue_free()
 
 	# The Meta Progression page shows the tree and buys from it.
 	meta.brine_upgrades.clear()

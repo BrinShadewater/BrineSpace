@@ -5,6 +5,8 @@ class Doors:
 	extends RefCounted
 	const DOOR_OPEN_FRAMES = 5
 	var aperture := 0
+	# A drowning Bill asks the grid for his death clips; this stand-in has none loaded.
+	var human_water_player = preload("res://scripts/crew_sprite_player.gd").new()
 	func _door_frame_for_pair(_game,_a,_b): return aperture
 class Station:
 	extends RefCounted

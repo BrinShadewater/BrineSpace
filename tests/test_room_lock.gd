@@ -39,7 +39,8 @@ func run() -> void:
 	game.selected_room_cell = Vector2i(20,19)
 	game.running = true
 	game._refresh_inspector()
-	check(game.room_lock_button.visible and game.room_lock_button.text == "LOCK DOORS", "The inspector offers LOCK DOORS")
+	# The switch shows the doors' state, not the action (inspector redesign, September 30).
+	check(game.room_lock_button.visible and game.room_lock_button.text == "DOORS OPEN", "The inspector shows DOORS OPEN")
 	game.room_lock_button.set_meta("cell", Vector2i(20,19))
 	game._toggle_inspected_room_lock()
 	check(game.occupied[Vector2i(20,19)].get("doors_locked", false), "The switch locks the room")
@@ -47,7 +48,7 @@ func run() -> void:
 	check(route_length(game, actor, Vector2i(20,18), Vector2i(20,20)) <= 0, "Locked doors block crew in the other direction too")
 	check(game.grid_view._compute_door_frame_for_pair(game, Vector2i(20,20), Vector2i(20,19)) == 0, "A locked room's doors stay shut")
 	game._refresh_inspector()
-	check(game.room_lock_button.text == "UNLOCK DOORS", "The switch then offers UNLOCK DOORS")
+	check(game.room_lock_button.text == "DOORS CLOSED", "The switch then shows DOORS CLOSED")
 	game._toggle_inspected_room_lock()
 	check(route_length(game, actor, Vector2i(20,20), Vector2i(20,18)) > 0, "Unlocking restores the route")
 	game.queue_free()

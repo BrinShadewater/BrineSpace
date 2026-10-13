@@ -56,7 +56,8 @@ func _run() -> void:
 	check(game.selected_room_cell == Vector2i(19,20), "Locate must retain the inspected room")
 	game._toggle_inspected_room()
 	game._refresh_inspector()
-	check(game.inspector_label.text.contains("Resume this room"), "Suspension must have an actionable remedy")
+	# The remedy sits in the effects panel beside the room details since the inspector redesign.
+	check(game.inspector_effects.text.contains("Resume this room"), "Suspension must have an actionable remedy")
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png("res://output/learning-ui-inspector.png")
