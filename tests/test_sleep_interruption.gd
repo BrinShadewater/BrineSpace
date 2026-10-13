@@ -24,14 +24,16 @@ func run():
 		var station=npc.RoomActivity.stations(npc.geometry[cell])[0]
 		npc.foot=(Vector2(cell)+Vector2.ONE*0.5)*384+station.point
 		check(npc.can_stand(npc.foot),actor+" fixture approach clear")
-		var player=preload("res://scripts/crew_sprite_player.gd").new()
-		var base=player.REVISION_ROOTS[actor]
-		var catalog=JSON.parse_string(FileAccess.get_file_as_string(base+"catalog.json"))
-		for manifest in catalog.body:player.load_manifest(base+manifest,true)
+		# The clips the game plays: its loader retimes some catalog clips (Veld's rest family).
+		var player=game.grid_view.human_water_player if actor=="bill" else game.grid_view.get(actor+"_player")
+		# Each actor times lie-down and get-up from their own art (Veld's rest family is longer).
+		npc.stage="life_lie"
+		var rest:=float(Life.seconds(npc,"life_lie"))
+		check(is_equal_approx(rest,float(Life.seconds(npc,"life_get_up"))),actor+" rest entry and exit share a duration")
 		for direction in ["north","east","south","west"]:
 			for elapsed in [0.05,0.15,0.25,0.45,0.65,0.79]:
 				npc.path.clear();npc.goal="fatigue";npc.goal_cell=cell;npc.direction=direction
-				npc.state="idle";npc.stage="life_lie";npc.timer=0.8-elapsed
+				npc.state="idle";npc.stage="life_lie";npc.timer=rest-elapsed
 				npc.activity="resting in the berth"
 				for need in npc.needs:npc.needs[need]=90.0 if need=="fatigue" else 0.0
 				check(is_equal_approx(npc.interrupted_life_rise_seconds(),elapsed),actor+" partial rise duration")
@@ -52,12 +54,14 @@ func run():
 			var boundary:=0.0
 			for duration in player.timing["lie-down-"+direction].durations:
 				boundary+=float(duration)/1000.0
-				if boundary>=0.799:continue
-				npc.stage="life_lie";npc.timer=0.8-boundary
-				var a=player.frame_at_elapsed("lie-down-"+direction,boundary)
-				var b=player.frame_at_elapsed("get-up-"+direction,0.8-npc.interrupted_life_rise_seconds())
+				if boundary>=rest-0.001:continue
+				npc.stage="life_lie";npc.timer=rest-boundary
+				# The pose just entered. Sampling a hair past the boundary keeps this independent of
+				# float rounding in the summed frame durations (65+85+100 ms lands one ulp short of 250).
+				var a=player.frame_at_elapsed("lie-down-"+direction,boundary+0.00000001)
+				var b=player.frame_at_elapsed("get-up-"+direction,rest-npc.interrupted_life_rise_seconds())
 				check(a.get_image().get_data()==b.get_image().get_data(),actor+" exact boundary preserves current pose "+direction)
 			npc.stage="life_sleep"
-			check(is_equal_approx(npc.interrupted_life_rise_seconds(),0.8),actor+" full sleep retains full rise")
+			check(is_equal_approx(npc.interrupted_life_rise_seconds(),rest),actor+" full sleep retains full rise")
 	print("SLEEP INTERRUPTION: ",checks," checks, ",failures," failures")
 	quit(1 if failures else 0)
