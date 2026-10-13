@@ -11,6 +11,9 @@ Solves the problems a naive headless sweep hits (2026-09-10 audit):
   - Godot's shutdown teardown noise ("Unreferenced static string", RID leaks)
     is a kill signature, not a failure. A timed-out test that already printed
     its PASS line is reported PASS-HUNG.
+  - A script error aborts a fixture's run() before its quit(), so the process
+    idles until the timeout. Once a SCRIPT ERROR is printed and nothing more
+    arrives for STALL_SECONDS, the test is stopped and reported FAIL(hung).
 
 Lanes are detected from test source at run time (always current); exceptions
 and subsystem groups live in tests/index.json.
@@ -86,6 +89,38 @@ def detect_lane(test: Path, index: dict) -> tuple[str, str]:
     if render_bound and not guarded:
         return "native", "awaits rendered frames with no headless guard"
     return "headless", "headless-safe (guards its captures)" if render_bound else "no render dependency"
+
+
+STALL_SECONDS = 10.0
+
+
+def run_process(cmd: list[str], log: Path, timeout: float, stall_seconds: float = STALL_SECONDS) -> tuple[int, str, bool, bool]:
+    """Run cmd with its output in log. Return (exit code, output, timed_out, stalled)."""
+    started = last_growth = time.monotonic()
+    size, errored, timed_out, stalled = 0, False, False, False
+    with log.open("wb") as sink:
+        proc = subprocess.Popen(cmd, stdout=sink, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL)
+        while proc.poll() is None:
+            time.sleep(0.25)
+            now = time.monotonic()
+            current = log.stat().st_size
+            if current != size:
+                with log.open("rb") as reader:
+                    # Re-read a little before the old end so a marker split across writes is seen.
+                    reader.seek(max(0, size - 16))
+                    errored = errored or b"SCRIPT ERROR" in reader.read()
+                size, last_growth = current, now
+            if now - started >= timeout:
+                timed_out = True
+            elif errored and now - last_growth >= stall_seconds:
+                stalled = True
+            if timed_out or stalled:
+                proc.kill()
+                proc.wait()
+                break
+    output = log.read_bytes().decode("utf-8", errors="replace").replace("\r\n", "\n")
+    log.write_text(output, encoding="utf-8")
+    return (-1 if timed_out or stalled else proc.returncode), output, timed_out, stalled
 
 
 def classify_result(code: int, output: str, timed_out: bool) -> tuple[str, str]:
@@ -171,21 +206,15 @@ def run(argv=None) -> int:
                 cmd[1:1] = ["--screen", str(args.screen)]
             per_timeout = int(index.get("lanes", {}).get(t.stem, {}).get("timeout", args.timeout))
             started = time.monotonic()
-            timed_out = False
-            try:
-                proc = subprocess.run(cmd, capture_output=True, text=True,
-                                      timeout=per_timeout, errors="replace")
-                code, output = proc.returncode, proc.stdout + proc.stderr
-            except subprocess.TimeoutExpired as exc:
-                timed_out, code = True, -1
-                output = ((exc.stdout or "") if isinstance(exc.stdout, str) else "") + \
-                         ((exc.stderr or "") if isinstance(exc.stderr, str) else "")
+            code, output, timed_out, stalled = run_process(cmd, out_dir / "logs" / f"{t.stem}.log", per_timeout)
             duration = time.monotonic() - started
-            (out_dir / "logs" / f"{t.stem}.log").write_text(output, encoding="utf-8")
             verdict, detail = classify_result(code, output, timed_out)
+            if stalled:
+                verdict = "FAIL(hung)"
+                detail = ("stopped: silent after a script error; " + detail)[:240]
         tally[verdict.split("(")[0]] = tally.get(verdict.split("(")[0], 0) + 1
         summary_rows.append(f"{t.stem}\t{verdict}\t{duration:.1f}s\t{detail}")
-        print(summary_rows[-1])
+        print(summary_rows[-1], flush=True)
     (out_dir / "summary.tsv").write_text("\n".join(summary_rows) + "\n", encoding="utf-8")
     print("RESULT:", ", ".join(f"{k}={v}" for k, v in sorted(tally.items())),
           f"-> {out_dir.relative_to(ROOT)}")
