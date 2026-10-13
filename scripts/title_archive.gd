@@ -1070,22 +1070,49 @@ func _shop_button(text: String, enabled: bool, action: Callable) -> Button:
 func _blueprint_shop() -> void:
 	grid.add_child(_label("Bought blueprints join the draft deck in every loop. Discover a synergy that uses a room, then keep it running until it stabilizes: that room's blueprint costs half.", 17))
 	var cards := _shop_grid("BlueprintShop")
-	for id in MetaShop.blueprint_ids():
-		var state := MetaShop.room_state(meta_state, id)
-		var cost := MetaShop.room_cost(meta_state, id)
-		var room_id: String = id
-		var card := _codex_room_card({"id": id, "known": true, "title": str(Rooms.get_room(id).display_name), "category": str(Rooms.get_room(id).category), "clue": "", "data": Rooms.get_room(id)})
-		card.name = "Blueprint_" + id
-		var rows: VBoxContainer = card.get_child(0)
-		rows.add_child(Badges.make("OWNED" if state == "owned" else "AVAILABLE" if state == "ready" else "LOW DATA","unlocked" if state == "owned" else "archived_data","online" if state in ["owned","ready"] else "warning",-1,true))
-		var pattern := MetaShop.related_pattern(id)
-		if not pattern.is_empty() and state != "owned":
-			var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
-			rows.add_child(_price_hint(half, meta_state.discovered_synergy_ids.has(pattern.id), str(pattern.name)))
-		_pin_to_bottom(rows)
-		rows.add_child(_shop_button({"owned": "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost}[state], state == "ready", func() -> void:
-			if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
+	shop_fill += 1
+	_fill_blueprints(cards, MetaShop.blueprint_ids(), shop_fill)
+
+# Putting all 74 blueprint cards on screen in one frame froze the title for 650-980 ms (owner's
+# automatic report, October 13). The first two rows go in at once; the rest follow a few per frame.
+const SHOP_FIRST_CARDS := CARDS_PER_ROW * 2
+const SHOP_CARDS_PER_FRAME := 4
+var shop_fill := 0
+var shop_filling := false
+var shop_scroll := 0
+
+func _fill_blueprints(cards: GridContainer, ids: Array, fill: int) -> void:
+	shop_filling = true
+	for index in ids.size():
+		if index >= SHOP_FIRST_CARDS and (index - SHOP_FIRST_CARDS) % SHOP_CARDS_PER_FRAME == 0:
+			await get_tree().process_frame
+			# A newer page, or a closed one, has replaced this grid.
+			if fill != shop_fill or not is_instance_valid(cards) or not cards.is_inside_tree(): return
+			if shop_scroll > 0: scroll.scroll_vertical = shop_scroll
+		var card := _blueprint_card(ids[index])
 		cards.add_child(card)
+		# The page-wide text scaling pass has already run by the time later cards arrive.
+		if index >= SHOP_FIRST_CARDS: preload("res://scripts/title_settings.gd").apply_menu_text(card)
+	if fill == shop_fill:
+		shop_filling = false
+		if shop_scroll > 0: scroll.set_deferred("scroll_vertical", shop_scroll)
+
+func _blueprint_card(id: String) -> Control:
+	var state := MetaShop.room_state(meta_state, id)
+	var cost := MetaShop.room_cost(meta_state, id)
+	var room_id: String = id
+	var card := _codex_room_card({"id": id, "known": true, "title": str(Rooms.get_room(id).display_name), "category": str(Rooms.get_room(id).category), "clue": "", "data": Rooms.get_room(id)})
+	card.name = "Blueprint_" + id
+	var rows: VBoxContainer = card.get_child(0)
+	rows.add_child(Badges.make("OWNED" if state == "owned" else "AVAILABLE" if state == "ready" else "LOW DATA","unlocked" if state == "owned" else "archived_data","online" if state in ["owned","ready"] else "warning",-1,true))
+	var pattern := MetaShop.related_pattern(id)
+	if not pattern.is_empty() and state != "owned":
+		var half: bool = meta_state.stabilized_synergy_ids.has(pattern.id)
+		rows.add_child(_price_hint(half, meta_state.discovered_synergy_ids.has(pattern.id), str(pattern.name)))
+	_pin_to_bottom(rows)
+	rows.add_child(_shop_button({"owned": "OWNED", "ready": "%d DATA" % cost, "short": "%d DATA" % cost}[state], state == "ready", func() -> void:
+		if MetaShop.buy_room(meta_state, room_id): _refresh_progression(room_id)))
+	return card
 
 # The half-price note on a blueprint card: a boxed, wrapped line that says what to do next.
 func _price_hint(stabilized: bool, discovered: bool, synergy_name: String) -> Control:
@@ -1221,6 +1248,8 @@ func _show_perk(id: String) -> void:
 # Rebuild the page in place after a purchase or refund, keeping the scroll position and focus.
 func _refresh_progression(focus_name: String) -> void:
 	var keep := scroll.scroll_vertical
+	shop_scroll = keep
+	shop_filling = false
 	for child in grid.get_children():
 		grid.remove_child(child)
 		child.queue_free()

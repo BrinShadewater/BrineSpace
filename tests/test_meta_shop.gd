@@ -75,7 +75,10 @@ func run() -> void:
 	if tabs != null:
 		tabs.current_tab = 1
 		for i in range(3): await process_frame
+		# The tab fills a few cards per frame; wait for the whole list.
+		while page.shop_filling: await process_frame
 		check(page.find_child("BlueprintShop", true, false) != null, "Blueprints tab lists rooms")
+		check(page.find_child("BlueprintShop", true, false).get_child_count() == preload("res://scripts/meta_shop.gd").blueprint_ids().size(), "Every blueprint has a card once the tab has filled")
 		var card: Control = page.find_child("Blueprint_" + linked, true, false)
 		if card != null:
 			var buy: Button = card.find_child("Buy", true, false)

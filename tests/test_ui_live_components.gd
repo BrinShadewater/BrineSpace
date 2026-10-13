@@ -70,6 +70,7 @@ func run() -> void:
 	archive.progression_tab = 1
 	archive._refresh_progression("ProgressionTabs")
 	await settle()
+	while archive.shop_filling: await process_frame
 	var card = archive.find_child("Blueprint_"+id,true,false)
 	var buy = card.find_child("Buy",true,false)
 	var before: int = MetaShop.balance(archive.meta_state)
