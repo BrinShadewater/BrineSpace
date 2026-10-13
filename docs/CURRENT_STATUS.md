@@ -1,3 +1,49 @@
+## Crew tests: 8 of the 12 failures resolved; 4 remain with known causes - October 12, 2026
+
+Headless rerun of the 12 (`output/test-runs/20261012-202309-headless`): 8 pass, 3 fail, 1 times
+out. Commits fe4f8577, 90bb64c8, bce9b016, 824a43dd, 8b002b00, 2080a50d. One game change.
+
+Game change (`scripts/grid_canvas.gd`, +12/-2): the two crew loaders now work on a grid outside
+the scene tree. Since crew storage (October 9) the crew loader ended with `Router.start(get_tree(),
+...)` and the Bill loader returned early without a session, so the roughly 186 fixtures that call
+them on a detached grid crashed or hung before their checks. Detached loads share one session
+for the process (`_detached_crew_bank`); the in-tree game path is unchanged. Covered by
+`tests/test_crew_loader_detached.gd` (16 checks: real main scene session, then two detached grids
+in both loader orders). Adding a bare grid to the tree is not an alternative: its `_ready` needs
+the whole game (about 90 errors, 11.7 s).
+
+Tests corrected, with the cause of each:
+- test_crew_polish, test_crew_death_save: the "old checkpoint" fixture removed the engineer but
+  kept `james_cargo_return`, which `james_cargo_checkpoint.valid_shape` rejects. Fixture now
+  removes the record too.
+- test_veld_walk_integration: hard-coded phase 0.75 assumed a 1.0 s walk cycle; it is 1.5 s.
+  Now compares the gait fraction across the turn.
+- test_branforth_pack: expected diagnostics to face east; `branforth_npc.arrive` keeps the
+  travel facing. Now checks all four.
+- test_sleep_interruption: assumed 0.8 s rest for everyone and a catalog-only player. Veld's
+  rest family is 1.84 s and the game loader retimes those clips. Uses `Life.seconds` and the
+  game's players. Bill's 8-frame clip then showed `frame_at_elapsed` landing one ulp short at
+  exact boundaries (65+85+100 ms); the boundary check samples 10 ns past. Game code unchanged.
+- test_crew_death_pack, test_crew_swim_packs: both switched bare/helmet inside one playback and
+  expected the clock to carry over. Owner decision, October 12: a helmet change restarting the
+  clip (`crew_sprite_player.frame`, `current_equipment`) is acceptable. Both now run separate
+  bare and helmeted passes. The restart was absent from the September 24 commit of the player
+  and arrived with per-equipment timing; whether a mid-stride helmet change can occur in play
+  was not checked.
+- test_robot_polish: expected standing height 148; robots are 296 since 5244ac53 (half size).
+
+Still failing:
+- test_carry_turn_handoff (12): real art mismatch, in the owner's art queue. The last frame of
+  each Marsh `swim-turn-*` clip has the outline of swim frame 0 but 3,500-4,100 different
+  interior pixels; carry and swim-carry turns match exactly. Swim-north frame 0 may show two
+  heads. Image: `output/marsh-swim-turn-endpoints-2026-10-12.png`. Leave the test failing.
+- test_crew_walk_v2 (547 of 5,732), test_bill_complete_pack (times out after an out-of-range
+  index), test_crew_complete_packs (1,779 of 20,767): each compares the game with an older art
+  baseline: the `crew-runtime-matte-v1` walk pack, and the September 12 contracts in
+  `tools/bill-art-source-contract.json` and `tools/crew-art-source-contracts/`. Art selected
+  since then differs by design. Not changed; needs an owner decision (re-baseline or retire).
+  The `rebuild_*_art.py` tools that read those contracts were not run.
+
 ## Repository: tools, tests and documents committed; two padded documents repaired - October 12, 2026
 
 Owner-approved. 6773994d adds 4,268 files (2,130 `tools/`, 1,387 `tests/`, 751 `docs/`; 4,196
