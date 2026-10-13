@@ -1,3 +1,42 @@
+## Tests: non-art failures cleared, owner decisions, runner gives fixtures their own scratch folder - October 13, 2026
+
+Owner decisions, October 13:
+- Large rooms are found over time and stay rare. The existing rule already does this: they are
+  in `STARTING_UNLOCKS` only so their card can be drawn, `RunManager.build_deck` never includes
+  them, and `_build_run_deck` inserts exactly one per new run, late in the draw pile
+  (`large_room_for_run`: the first four runs in order, then random). No game change.
+- The hand has no frame by default and uses the fan layout (`title_settings.gd` already does).
+
+The nine non-art headless failures: none was a game bug. Seven tests updated (8167a599):
+test_research_tree (ran two stations at once; crew storage keeps one session),
+test_room_flooding (stand-in grid lacked the crew player), test_room_lock (switch reads DOORS
+OPEN / DOORS CLOSED), test_learning_ui (remedy moved to `inspector_effects`),
+test_staged_restore (yield count fell to four as navigation got faster), test_inspector_refresh
+(parse error), test_large_room_art (Moonbay's second fixed obstacle is the lock chamber).
+test_discovery_progression and test_hand_backdrop follow the decisions above (9c417a28).
+
+**Real finding, not fixed: hand cards are not a uniform size.** `DraftCard.CARD_SIZE` is
+200x284. Measured headless over the 27 starting cards: 206x299 (9 cards), 206x297 (6),
+206x284 (3), 217x299 (3), 206x316 (3), 222x297 (the 3 large rooms shown). The card grows to
+its content's minimum size. test_hand_backdrop fails its two card-size checks on this and
+should until it is fixed. This is probably the owner's reported "middle hand-card sizing".
+
+Runner: a fixture that demands user:// inside its own `"/output/<name>/scratch-appdata/"`
+folder now gets APPDATA pointed there for that test (`own_scratch` in `tools/run_tests.py`).
+25 fixtures name one. With it: 2 pass headless, 18 crashed on the missing-image readback and
+were moved to the native lane (17 pass there, test_bill_water_carry_candidates fails), 5 fail
+their own checks headless.
+
+Bill art failures sampled (70 at the time), by cause:
+- 26 failed only the scratch-folder guard: resolved above.
+- About 18 are pixel pins against art that later passes replaced (for example four versions
+  of test_bill_carry_turn_identity_matrix; only v5 is near passing).
+- 13 "loop chooser" failures (Bill meal, drink, inspect, seated candidates) assert that eating
+  has no scripted clock. `crew_life.elapsed` now asks `meal_animation` / `inspection_animation`,
+  added when `bill-meal-family-v1` was selected; test_bill_meal_east_family_selected passes.
+  These are candidate-stage fixtures overtaken by the selection. Not a game bug. Not changed.
+- The rest are mixed (Veld water death, carry snapshots, the Marsh swim-turn art item).
+
 ## Tests: full headless sweep, runner stall guard, 81 tests moved to the native lane - October 12, 2026
 
 Runner (`tools/run_tests.py`, c2761de1): a script error aborts a fixture's `run()` before its

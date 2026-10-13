@@ -14,6 +14,9 @@ Solves the problems a naive headless sweep hits (2026-09-10 audit):
   - A script error aborts a fixture's run() before its quit(), so the process
     idles until the timeout. Once a SCRIPT ERROR is printed and nothing more
     arrives for STALL_SECONDS, the test is stopped and reported FAIL(hung).
+  - Art-evidence fixtures refuse to run unless user:// resolves inside their
+    own "/output/<name>/scratch-appdata/" folder. The runner reads that name
+    from the fixture and points APPDATA there for that one test.
 
 Lanes are detected from test source at run time (always current); exceptions
 and subsystem groups live in tests/index.json.
@@ -71,6 +74,18 @@ def source_chain(test: Path, depth: int = 6) -> list[str]:
     return chain
 
 
+OWN_SCRATCH = re.compile(r'"/output/([\w.-]+)/scratch-appdata/"')
+
+
+def own_scratch(test: Path) -> Path | None:
+    """The scratch APPDATA folder a fixture demands for itself, if it names one."""
+    for text in source_chain(test):
+        match = OWN_SCRATCH.search(text)
+        if match:
+            return ROOT / "output" / match.group(1) / "scratch-appdata"
+    return None
+
+
 def detect_lane(test: Path, index: dict) -> tuple[str, str]:
     """Return (lane, reason). Lane: headless | native | skip."""
     override = index.get("lanes", {}).get(test.stem)
@@ -94,12 +109,13 @@ def detect_lane(test: Path, index: dict) -> tuple[str, str]:
 STALL_SECONDS = 10.0
 
 
-def run_process(cmd: list[str], log: Path, timeout: float, stall_seconds: float = STALL_SECONDS) -> tuple[int, str, bool, bool]:
+def run_process(cmd: list[str], log: Path, timeout: float, stall_seconds: float = STALL_SECONDS,
+                env: dict | None = None) -> tuple[int, str, bool, bool]:
     """Run cmd with its output in log. Return (exit code, output, timed_out, stalled)."""
     started = last_growth = time.monotonic()
     size, errored, timed_out, stalled = 0, False, False, False
     with log.open("wb") as sink:
-        proc = subprocess.Popen(cmd, stdout=sink, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL)
+        proc = subprocess.Popen(cmd, stdout=sink, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, env=env)
         while proc.poll() is None:
             time.sleep(0.25)
             now = time.monotonic()
@@ -206,7 +222,12 @@ def run(argv=None) -> int:
                 cmd[1:1] = ["--screen", str(args.screen)]
             per_timeout = int(index.get("lanes", {}).get(t.stem, {}).get("timeout", args.timeout))
             started = time.monotonic()
-            code, output, timed_out, stalled = run_process(cmd, out_dir / "logs" / f"{t.stem}.log", per_timeout)
+            env = None
+            scratch = own_scratch(t)
+            if scratch is not None and sys.platform == "win32":
+                scratch.mkdir(parents=True, exist_ok=True)
+                env = dict(os.environ, APPDATA=str(scratch))
+            code, output, timed_out, stalled = run_process(cmd, out_dir / "logs" / f"{t.stem}.log", per_timeout, env=env)
             duration = time.monotonic() - started
             verdict, detail = classify_result(code, output, timed_out)
             if stalled:
