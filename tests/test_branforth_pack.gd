@@ -51,8 +51,11 @@ func _init() -> void:
 	check(npc.state == "kneel" and npc.stage == "kneel", "Engineering work starts kneeling")
 	check(npc.activity == "servicing equipment", "Engineer action meaning")
 	npc.goal = "curiosity"
-	npc.arrive()
-	check(npc.state == "interact" and npc.direction == "east", "Diagnostics use authored direction")
+	# Generic diagnostics read the tablet in the facing he arrived with.
+	for facing in ["east", "north", "west", "south"]:
+		npc.direction = facing
+		npc.arrive()
+		check(npc.state == "interact" and npc.direction == facing and npc.activity == "checking diagnostic readings", "Diagnostics keep the travel facing " + facing)
 	check(NPC.valid_snapshot(npc.snapshot()), "Engineer snapshot validates")
 	print("BRANFORTH PACK: %d failures" % failures)
 	quit(1 if failures else 0)

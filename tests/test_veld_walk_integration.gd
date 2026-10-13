@@ -47,8 +47,10 @@ func run() -> void:
 	p.current_key = ""
 	p.frame("walk","east",0.0,Vector2.ZERO)
 	p.frame("walk","east",0.75,Vector2(0.08984375,0))
+	# Cycle length and stride come from the art, so compare the fraction itself.
+	var fraction: float = p.phase/p.cycle_seconds("walk-east","")
 	p.frame("walk","north",0.75,Vector2(0.08984375,0))
-	check(is_equal_approx(p.phase,0.75),"direction change preserves gait fraction")
+	check(fraction>0.0 and fraction<1.0 and is_equal_approx(p.phase/p.cycle_seconds("walk-north",""),fraction),"direction change preserves gait fraction")
 	grid.free()
 	print("VELD WALK INTEGRATION: %d checks, %d failures" % [checks,failures])
 	quit(1 if failures else 0)
