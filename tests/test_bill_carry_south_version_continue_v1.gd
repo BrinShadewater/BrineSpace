@@ -17,7 +17,7 @@ func fresh():
  while not game.startup_complete:await process_frame
  game.set_process(false);game.tick_timer.stop();game._set_paused(true,false);game.crew_comms.set_process(false);game.crew_comms.minimize()
  check(game.bill_npc.get_script().resource_path=="res://scripts/bill_carry_npc.gd","Normal selected Bill actor")
- check(game.grid_view.human_water_player.get_script().resource_path=="res://scripts/bill_carry_player.gd","Normal selected Bill playback")
+ check(is_instance_of(game.grid_view.human_water_player,preload("res://scripts/bill_carry_player.gd")),"Normal selected Bill playback")
  return game
 func capture(game,name:String,texture:Texture2D):
  game.selected_card_id="";game.selected_room_cell=CELL;game._set_grid_zoom(2.0,true,(Vector2(CELL)+Vector2.ONE*.5)/40.0);game._refresh_all()

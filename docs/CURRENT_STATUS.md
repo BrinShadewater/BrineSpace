@@ -1,3 +1,39 @@
+## Tests: first full native-lane sweep; 73 real failures remain there - October 13, 2026
+
+Native lane, 545 tests, four workers, second monitor, muted, one scratch APPDATA per worker
+(`output/full-suite-2026-10-12/native-lane-results-2026-10-13.tsv`): 340 pass (7 slow to exit),
+12 skip themselves, 193 fail. Owner folder unchanged.
+
+Causes found and handled:
+- 95 failed only a guard of the form `OS.get_environment("APPDATA").contains("<token>")`. The
+  runner now reads the token and gives that test `output/test-scratch/<token>` as APPDATA
+  (`OWN_TOKEN` in `tools/run_tests.py`); 122 fixtures now get their own folder. On retry 88 of
+  the 193 passed.
+- 54 tests asserted Bill's player script path equals `bill_carry_player.gd`. Since crew storage
+  the game uses `crew_storage/bill_player.gd`, which extends it. The check is now
+  `is_instance_of(..., preload("res://scripts/bill_carry_player.gd"))`. 12 of them pass; the
+  rest got past it and fail further on.
+- 15 "station" fixtures swap Bill's player for a plain `crew_sprite_player` and crash in the
+  selected carry runtime (`stow_actor.gd:17`, `stow_plan`). Skipped under the owner's rule for
+  candidate fixtures overtaken by selection.
+- 5 land-water title checkpoint fixtures need one command-line argument per fresh process.
+  Skipped with that reason.
+Lanes now: headless 347, native 525, skip 48.
+
+Still failing in the native lane, about 73, none traced further:
+- **28 exit with 0xC0000005 (access violation) at shutdown; 24 of those report 0 failures
+  first.** All are `test_bill_land_water_*` plus `test_drone_hatch_handoff`. The packaged
+  game's own fixtures exit 0, so this may be confined to these fixtures' teardown, but it is a
+  crash and has not been diagnosed.
+- 5 fail parsing a manifest (`Parse JSON failed`): the pack file they name is not there.
+- About 11 more Bill carry and floor-case fixtures fail later checks ("Fresh native
+  presentation exact", "Floor-prop submission matches fixture state", missing `bind_room`).
+- Singles: test_riser_departments (`Unmapped room: hydroponics_farm`: the four large rooms are
+  absent from the riser catalog groups), test_hull_ui (`pressed` on an HBoxContainer),
+  test_observation_room and test_retained_lights_parity (assertions), test_site_runtime,
+  test_content_cache_parity and test_environment_cache_parity (the known parity diff),
+  test_branforth_bunk, test_release_benchmark_render_guards, and about ten Veld fixtures.
+
 ## Card value rows wrap; runner names the scratch profile for fixtures - October 13, 2026
 
 Cards (`scripts/draft_card.gd` `labelled`): a GIVES, TAKES or HOLDS row with more than three

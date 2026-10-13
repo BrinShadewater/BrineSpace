@@ -32,7 +32,7 @@ func fresh():
     var loaded:Image=bank[index].get_image();loaded.convert(Image.FORMAT_RGBA8)
     check(image.get_data()==loaded.get_data(),"Actual loaded North entry/exit pixels equal current source")
  game.set_process(false);game.tick_timer.stop();game._set_paused(true,false);game.crew_comms.set_process(false);game.crew_comms.minimize()
- check(game.grid_view.human_water_player.get_script().resource_path=="res://scripts/bill_carry_player.gd","Selected normal playback")
+ check(is_instance_of(game.grid_view.human_water_player,preload("res://scripts/bill_carry_player.gd")),"Selected normal playback")
  return game
 func capture(game,name:String,texture:Texture2D):
  game.selected_card_id="";game.selected_room_cell=CELL;game._set_grid_zoom(2.0,true,(Vector2(CELL)+Vector2.ONE*.5)/40.0);game._refresh_all()

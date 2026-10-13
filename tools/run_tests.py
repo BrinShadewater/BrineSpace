@@ -15,8 +15,10 @@ Solves the problems a naive headless sweep hits (2026-09-10 audit):
     idles until the timeout. Once a SCRIPT ERROR is printed and nothing more
     arrives for STALL_SECONDS, the test is stopped and reported FAIL(hung).
   - Art-evidence fixtures refuse to run unless user:// resolves inside their
-    own "/output/<name>/scratch-appdata/" folder. The runner reads that name
-    from the fixture and points APPDATA there for that one test.
+    own "/output/<name>/scratch-appdata/" folder, or unless APPDATA contains
+    a token they name ('APPDATA").contains("<token>")'). The runner reads the
+    name from the fixture and points APPDATA at a folder of that name under
+    output/ for that one test.
   - Other fixtures exit 2 unless BRINESPACE_TEST_USER_DIR equals user://, so
     that they only ever run in a profile someone chose. The runner sets it to
     the profile APPDATA leads to, but only when APPDATA is a scratch folder:
@@ -79,6 +81,7 @@ def source_chain(test: Path, depth: int = 6) -> list[str]:
 
 
 OWN_SCRATCH = re.compile(r'"/output/([\w.-]+)/scratch-appdata/"')
+OWN_TOKEN = re.compile(r'get_environment\("APPDATA"\)[^\n;]{0,80}?\.contains\("([\w.-]+)"\)')
 
 
 def own_scratch(test: Path) -> Path | None:
@@ -87,6 +90,9 @@ def own_scratch(test: Path) -> Path | None:
         match = OWN_SCRATCH.search(text)
         if match:
             return ROOT / "output" / match.group(1) / "scratch-appdata"
+        match = OWN_TOKEN.search(text)
+        if match:
+            return ROOT / "output" / "test-scratch" / match.group(1)
     return None
 
 

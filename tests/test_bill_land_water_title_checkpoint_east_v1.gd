@@ -21,7 +21,7 @@ func fresh():
  var game=load("res://character/bill-land-water-material-east-v3/fresh_fixture.tscn").instantiate();game.meta.save_path="user://bill-carry-continue.meta";game.run_save_path="user://bill-carry-continue.loop";root.add_child(game);current_scene=game
  while not game.startup_complete:await process_frame
  game.set_process(false);game.tick_timer.stop();game._set_paused(true,false);game.crew_comms.set_process(false);game.crew_comms.minimize()
- check(game.grid_view.human_water_player.get_script().resource_path=="res://scripts/bill_carry_player.gd","Selected normal playback")
+ check(is_instance_of(game.grid_view.human_water_player,preload("res://scripts/bill_carry_player.gd")),"Selected normal playback")
  return game
 func capture(game,name:String,texture:Texture2D):
  game._set_paused(true,false)
