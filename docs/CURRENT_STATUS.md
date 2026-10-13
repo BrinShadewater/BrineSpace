@@ -1,3 +1,30 @@
+## Release: Windows candidate brinespace-42f32cba40af64c0 - October 13, 2026
+
+Rebuilt from commit 7e8e959d through the same stages as before, into `C:/bs-release-20261013`
+(D: had 23 GB free; the freeze wants about 40 GB of headroom).
+
+- Freeze: 36,274 runtime files, 3.59 GB, 57,820 files copied with support files, every copy
+  re-verified by SHA-256.
+- Full import: exit 0; the 12 error lines are the same four non-shipped review PNGs as always.
+- Pre-export checks (test_release_manifest.py, test_release_assert_safety.py,
+  test_macos_export.py, export isolation, mac preflight): pass.
+- Export: `windows/BrineSpace.exe` 109 MB (SHA-256 7208c3a8...), `BrineSpace.pck` 3.63 GB
+  (68d773aa...), 36,273 files in the build record.
+- Pack audit: checked=35790 missing=0 changed=0 remapped=0 unexpected=0.
+- Smoke in the real executable (debug=false, second monitor, muted, isolated profile): New Game,
+  transmission Continue, running station and F8 report, 0 failures. Screenshot
+  `output/candidate-42f32cba-new-game-2026-10-13.png`.
+- Owner folder fingerprint unchanged at every stage (2,938 files).
+
+New in this candidate against brinespace-4458359065f3225e: hand cards all 200x284 with two-row
+value lines, crew loaders usable outside the tree, shutdown guard for pending image jobs, large
+rooms in the riser catalog. `build_info.json` says working_tree_modified because non-shipped
+files (skills/, two room render tools, `.gitattributes`, `export_presets.cfg`) are uncommitted.
+
+Not rerun on this candidate: real Continue timing, save and relaunch, the 20-start check, the
+stress benchmark, any soak. Previous candidates: `D:/bs-release-20261012` (4458359065f3225e),
+`D:/bs-release-20261011b` (afe6e4afa739a497, the two-hour soak).
+
 ## Exit crash diagnosed and guarded; large rooms in the riser catalog - October 13, 2026
 
 Exit crash (3094c2b5). A `WorkerThreadPool` task still pending when the process exits crashes it
