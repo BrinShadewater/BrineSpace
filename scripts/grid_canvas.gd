@@ -271,6 +271,11 @@ func _uses_layered_art(room: Dictionary) -> bool:
 	var id:Variant=room.get("id","")
 	return ExpansionViews.PATHS.has(id) or LAYERED_ROOM_IDS.has(id)
 
+# Rooms that draw their own port doors. Large rooms do it in rooms/large-rooms/common.gd,
+# so the legacy door sheet must not be stamped over them as well.
+func _owns_port_doors(room: Dictionary) -> bool:
+	return _uses_layered_art(room) or LARGE_ROOM_VIEWS.has(str(room.get("id","")))
+
 func _is_narrow_corridor(room: Dictionary) -> bool:
 	return room.get("id","") in ["corridor","corner","tee_corridor"]
 
@@ -3386,7 +3391,7 @@ func _draw_door_foregrounds(main, underlay: bool = false, prepared: Variant = nu
 			var side: String = edge_port.side
 			var offset: Vector2i = _offset_from_side(side)
 			var neighbor_pos: Vector2i = pos + offset
-			if _uses_layered_art(room) or _uses_layered_art(main.occupied.get(neighbor_pos, {})):
+			if _owns_port_doors(room) or _owns_port_doors(main.occupied.get(neighbor_pos, {})):
 				continue # The modular edge owns its frame; no second legacy door.
 			var connected: bool = _door_has_connected_neighbor(main, room, neighbor_pos, offset)
 			if connected and _is_duplicate_connected_door_side(side) and not _always_draw_room_doors(room):
@@ -3415,7 +3420,7 @@ func _draw_static_door_foregrounds(main) -> void:
 			var side: String = edge_port.side
 			var offset: Vector2i = _offset_from_side(side)
 			var neighbor_pos: Vector2i = pos + offset
-			if _uses_layered_art(room) or _uses_layered_art(main.occupied.get(neighbor_pos, {})):
+			if _owns_port_doors(room) or _owns_port_doors(main.occupied.get(neighbor_pos, {})):
 				continue # The modular edge owns its frame; no second legacy door.
 			var connected: bool = _door_has_connected_neighbor(main, room, neighbor_pos, offset)
 			if connected and _is_duplicate_connected_door_side(side) and not _always_draw_room_doors(room):
@@ -4400,7 +4405,7 @@ func _legacy_door_plan(main) -> Array:
 			var side: String = edge_port.side
 			var offset: Vector2i = _offset_from_side(side)
 			var neighbor_pos: Vector2i = pos + offset
-			if _uses_layered_art(room) or _uses_layered_art(main.occupied.get(neighbor_pos, {})):
+			if _owns_port_doors(room) or _owns_port_doors(main.occupied.get(neighbor_pos, {})):
 				continue # The modular edge owns its frame; no second legacy door.
 			var connected: bool = _door_has_connected_neighbor(main, room, neighbor_pos, offset)
 			if connected and _is_duplicate_connected_door_side(side) and not _always_draw_room_doors(room):
