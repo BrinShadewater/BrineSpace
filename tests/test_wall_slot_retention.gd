@@ -49,11 +49,18 @@ func run():
 		for level in [0.0,0.23,0.61,1.0]:
 			var before_wall: int=grid.wall_rebuilds
 			var before_floor: int=grid.floor_rebuilds
+			var baked_before: Array=game.placed_rooms.map(func(room): return grid._room_floor_baked(room))
 			for room in game.placed_rooms:
 				if not grid._is_narrow_corridor(room): grid.room_light_levels[room.pos]=level
+			var baked_after: Array=game.placed_rooms.map(func(room): return grid._room_floor_baked(room))
 			grid.queue_redraw(); await settle(grid)
 			check(grid.wall_rebuilds==before_wall,"Fade retains wall q%d level%s"%[quarter,level])
-			check(grid.floor_rebuilds>before_floor,"Fade redraws floor lighting")
+			# Floors repaint when a fade starts or settles; in between, the overlay carries it.
+			check((grid.floor_rebuilds>before_floor)==(baked_before!=baked_after),"Floors repaint only when a fade starts or settles: q%d level%s"%[quarter,level])
+			for room in game.placed_rooms:
+				if grid._is_narrow_corridor(room) or not grid._uses_layered_art(room) or grid._room_floor_baked(room): continue
+				var slot=grid.fade_slots.get(room.pos)
+				check(slot!=null and not slot.baked and is_equal_approx(slot.modulate.a,grid._room_light_level(room)),"A fading room's pools follow its level on the overlay: %s level%s (%s)"%[room.id,level,"no overlay" if slot==null else "baked %s opacity %.3f level %.3f drawn %s"%[slot.baked,slot.modulate.a,grid._room_light_level(room),grid.static_draw_rooms.has(room)]])
 			for unused in range(3): await frame()
 			var retained=capture.get_texture().get_image()
 			var before: int=grid.wall_rebuilds
@@ -115,7 +122,8 @@ func run():
 		check(grid._wall_surface_state(changed)!=key,"Wall retains dependency %d"%field)
 	for field in range(base[5][0].size()):
 		var changed: Array=base.duplicate(true); changed[5][0][field]=null
-		check((grid._wall_surface_state(changed)==key)==(field==2),"Room-state dependency %d"%field)
+		# Walls ignore a room's light level and whether its floor is mid-fade.
+		check((grid._wall_surface_state(changed)==key)==(field in [2,9]),"Room-state dependency %d"%field)
 	wall.reparent(original_parent,false); capture.queue_free()
 	print("WALL SLOT RETENTION: %d checks; %d failures"%[checks,failures])
 	game.queue_free(); await process_frame

@@ -1365,6 +1365,26 @@ class SurfacePass extends Node2D:
 		host.draw_usec_since_read += Time.get_ticks_usec()-started
 		host.draws_since_read += 1
 
+# One room's light pools, or one hallway's hull, drawn at full light. The room's light level
+# is this node's opacity (pools) or tint (hull).
+class FadeSlot extends Node2D:
+	var host
+	var room: Dictionary
+	var hull := false
+	var dark := false
+	var baked := false
+	var state: Array = []
+	func _draw() -> void:
+		if hull:
+			var previous = host.draw_target
+			host.draw_target = self
+			host.fade_slot_drawing = self
+			host._draw_narrow_corridor(room,Rect2(Vector2(room.pos)*host._cell_size(),Vector2.ONE*host._cell_size()),false,true,false)
+			host.fade_slot_drawing = null
+			host.draw_target = previous
+		elif state.size() == 3:
+			preload("res://rooms/whole-room/room_lighting.gd").draw_pools(self,1.0,state[0],state[1],state[2])
+
 # Room shells and north crowns retain the original two-pass compositing order.
 class WallSlot extends Node2D:
 	var host
@@ -1490,6 +1510,82 @@ var surface_passes: Array = []
 var surface_key: Array = []
 var wall_surface_key: Array = []
 var retain_walls_during_fades := not OS.get_cmdline_user_args().has("--rebuild-walls-with-light-fades")
+# A light fade used to repaint every retained floor on every frame, only to change the strength
+# of the light pools and the shade of hallway hulls (8 ms a frame on a 12-room station; owner's
+# 60 FPS gate, October 13, 2026). While a room fades, its pools or its hallway hull are a child
+# of the floor layer that painted it, drawn once at full light, and the fade changes the child's
+# opacity or tint. The floor repaints when the fade starts and once more when it settles, where
+# pools and hull are painted into the floor again exactly as before.
+var retain_floors_during_fades := not OS.get_cmdline_user_args().has("--repaint-floors-with-light-fades")
+var fade_slots: Dictionary = {}
+var fade_slots_seen: Dictionary = {}
+var fade_slot_drawing: FadeSlot
+var hallway_fade_key: Array = []
+
+func _fade_slots_active() -> bool:
+	return retain_floors_during_fades and retain_static_surfaces
+
+# The light level a retained floor is painted at: the level the room is fading towards.
+func _room_floor_light(room: Dictionary) -> float:
+	return _room_light_target(room) if _fade_slots_active() else _room_light_level(room)
+
+# Whether the floor itself carries the room's pools or hull. Not while the room fades.
+func _room_floor_baked(room: Dictionary) -> bool:
+	return not _fade_slots_active() or is_equal_approx(_room_light_level(room),_room_light_target(room))
+
+func _stage_fade_slot(room: Dictionary, hull: bool, at: Vector2, state: Array, dark := false, baked := false) -> void:
+	var slot: FadeSlot = fade_slots.get(room.pos)
+	if slot == null:
+		slot = FadeSlot.new()
+		slot.host = self
+		fade_slots[room.pos] = slot
+	if slot.get_parent() != draw_target:
+		if slot.get_parent() != null: slot.get_parent().remove_child(slot)
+		draw_target.add_child(slot)
+	slot.room = room
+	if slot.hull != hull:
+		# The cell changed between a room and a hallway: start from a clean tint.
+		slot.modulate = Color.WHITE
+		slot.visible = true
+	slot.hull = hull
+	slot.dark = dark
+	slot.baked = baked
+	slot.position = at
+	slot.scale = Vector2.ONE if hull else Vector2.ONE*_cell_size()/384.0
+	# A hallway hull follows everything its floor layer follows, so it repaints with the layer.
+	if hull or slot.state != state:
+		slot.state = state
+		slot.queue_redraw()
+	fade_slots_seen[room.pos] = true
+	_fade_slot(slot)
+
+func _fade_slot(slot: FadeSlot) -> void:
+	var level: float = 0.0 if slot.dark else _room_light_level(slot.room)
+	if slot.hull:
+		var light := lerpf(0.35,1.0,clampf(level,0.0,1.0))
+		if not is_equal_approx(slot.modulate.r,light): slot.modulate = Color(light,light,light)
+		return
+	# Pools painted into the floor need no overlay; the flag is what the layer last painted.
+	if slot.baked: level = 0.0
+	slot.visible = level > 0.0
+	if not is_equal_approx(slot.modulate.a,level): slot.modulate.a = level
+
+# Slots of rooms the layer no longer paints go with them.
+func _drop_stale_fade_slots(layer: Node) -> void:
+	for cell in fade_slots.keys():
+		var slot: FadeSlot = fade_slots[cell]
+		if (layer == null or slot.get_parent() == layer) and not fade_slots_seen.has(cell):
+			slot.queue_free()
+			fade_slots.erase(cell)
+
+# Hallway risers are shaded by the fading level in the wall slots; they used to learn of a
+# fade through the floor key.
+func _hallway_fade_state() -> Array:
+	var levels: Array = []
+	for room in static_draw_rooms:
+		if _is_narrow_corridor(room): levels.append(_room_light_level(room))
+	return levels
+
 var retain_static_surfaces := not OS.get_cmdline_user_args().has("--redraw-static-surfaces")
 var floor_rebuilds := 0
 var wall_rebuilds := 0
@@ -1599,7 +1695,7 @@ func _surface_state() -> Array:
 		var ward: Dictionary = main.wrecks.get(room.pos,{})
 		# Chamber water is painted into the floor; aperture and pressure are live.
 		var chamber_water: float=preload("res://scripts/airlock_cycle.gd").pose(room).water if room.id=="airlock" else 0.0
-		rooms.append([room.pos,ports,_room_light_level(room),ward.get("cleared",false),ward.get("kind",""),ward.is_empty(),ward.get("pods",[]).size(),preload("res://scripts/wreck_field.gd").blocks(main.wrecks,room.pos+Vector2i.DOWN),chamber_water])
+		rooms.append([room.pos,ports,_room_floor_light(room),ward.get("cleared",false),ward.get("kind",""),ward.is_empty(),ward.get("pods",[]).size(),preload("res://scripts/wreck_field.gd").blocks(main.wrecks,room.pos+Vector2i.DOWN),chamber_water,_room_floor_baked(room)])
 	# Deep snapshot of structural state; clocks/actors stay on the live pass.
 	# Light fades rebuild surfaces to preserve per-room pool/seam draw ordering.
 	# Non-layered legacy rooms have no static contract, so keep their floor pass live.
@@ -1641,6 +1737,7 @@ func _wall_surface_state(floor_state: Array) -> Array:
 	var result: Array = floor_state.duplicate(true)
 	if retain_walls_during_fades and result.size() > 5:
 		for room_state in result[5]:
+			room_state[9] = true
 			if not _is_narrow_corridor(_get_main().occupied.get(room_state[0],{})):
 				room_state[2] = 0.0
 	return result
@@ -1771,6 +1868,13 @@ func _draw_grid() -> void:
 		var next_wall_key := _wall_surface_state(next_key)
 		if _retained_key_stale(next_wall_key,wall_surface_key,1):
 			wall_surface_key = next_wall_key
+			pending_layers[surface_passes[Surface.WALL]] = true
+	# With the draw, so an overlay always shows the level this frame is drawn at.
+	for slot in fade_slots.values(): _fade_slot(slot)
+	if _fade_slots_active() and not hold_layers:
+		var hallway_fade: Array = _hallway_fade_state()
+		if hallway_fade != hallway_fade_key:
+			hallway_fade_key = hallway_fade
 			pending_layers[surface_passes[Surface.WALL]] = true
 	if profile_draw: _profile_draw_stage("surface_validation",checked)
 	checked = Time.get_ticks_usec() if profile_draw else 0
@@ -2417,7 +2521,7 @@ func _sync_wall_slots() -> void:
 	# Keep all existing structural dependencies. Only continuous corridor fades
 	# become local: a fade cannot alter another room's wall commands.
 	var common: Array = _wall_surface_state(_surface_state())
-	for entry in common[5]: entry[2] = 0.0
+	for entry in common[5]: entry[2] = 0.0; entry[9] = true
 	var main = _get_main()
 	retained_wall_context.prepare(common,main.occupied,main.powered_room_cells,static_draw_rooms)
 	var active := {}
@@ -2457,6 +2561,7 @@ func _paint_surface(pass_id: int) -> void:
 		# room order, the later half of them in FLOOR_REST.
 		var layered: Array = static_draw_rooms.filter(func(room): return _uses_layered_art(room))
 		var split: int = (layered.size()+1)/2 if retain_static_surfaces else layered.size()
+		fade_slots_seen.clear()
 		if pass_id == Surface.FLOOR:
 			for room in static_draw_rooms:
 				_draw_connectors(room, main.occupied)
@@ -2468,6 +2573,7 @@ func _paint_surface(pass_id: int) -> void:
 		for i in (range(split) if pass_id == Surface.FLOOR else range(split,layered.size())):
 			var room: Dictionary = layered[i]
 			_draw_nursery(room, Rect2(Vector2(room.pos) * cell_size, Vector2.ONE * cell_size), false, true)
+		_drop_stale_fade_slots(draw_target if _fade_slots_active() and draw_target is SurfacePass else null)
 		if profile_draw: _profile_draw_stage("floors" if pass_id == Surface.FLOOR else "floors_rest",stage_time)
 		if pass_id == Surface.FLOOR: floor_rebuilds += 1
 		return
@@ -3100,9 +3206,14 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	room_view.shell_pass = 0
 	if preview or floor_only:
 		draw_target.draw_set_transform(rect.get_center(),0,Vector2.ONE*_cell_size()/384.0)
-		var light_level: float=0.0 if room_view.get_meta("derelict_condition",false) else (1.0 if preview else _room_light_level(room))
+		var dark: bool=room_view.get_meta("derelict_condition",false)
+		var slotted: bool=not preview and _fade_slots_active() and draw_target is SurfacePass
+		var baked: bool=not slotted or _room_floor_baked(room)
+		var light_level: float=0.0 if dark else (1.0 if preview else _room_floor_light(room))
 		if profile_draw: detail_mark = Time.get_ticks_usec()
-		RoomLighting.draw_pools(draw_target,light_level,room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"],room.get("id","")=="crew_hab",_layout_light_anchors(room))
+		var white_light: bool=room.get("id","") in ["med_bay","life_support","cryo_chamber","clone_lab","data_archive","biodome","xeno_lab","med_office","med_center","holographic_core","bio_lab","anomaly_lab"]
+		if slotted: _stage_fade_slot(room,false,rect.get_center(),[white_light,room.get("id","")=="crew_hab",_layout_light_anchors(room).duplicate(true)],dark,baked)
+		if baked: RoomLighting.draw_pools(draw_target,light_level,white_light,room.get("id","")=="crew_hab",_layout_light_anchors(room))
 		if profile_draw: detail_mark = _profile_detail("light_pools_"+str(room.id),detail_mark)
 		RoomLighting.draw_equipment_shadows(draw_target,room_view.props,light_level,room_view)
 		if profile_draw: _profile_detail("shadows_"+str(room.id),detail_mark)
@@ -3153,8 +3264,12 @@ func _draw_narrow_corridor(room: Dictionary, rect: Rect2, preview: bool, floor_o
 	var scale := _cell_size()/384.0
 	var at: Vector2 = (Vector2(room.pos)+Vector2.ONE*0.5)*_cell_size()
 	draw_target.draw_set_transform(at,0,Vector2.ONE*scale)
+	if floor_only and not preview and fade_slot_drawing == null and _fade_slots_active() and draw_target is SurfacePass and not _room_floor_baked(room):
+		draw_target.draw_set_transform(Vector2.ZERO)
+		_stage_fade_slot(room,true,Vector2.ZERO,[])
+		return
 	if floor_only or preview:
-		CorridorArt.draw_hull(draw_target,CorridorGeometry.hull_for(corner,room.id=="tee_corridor"),CorridorGeometry.floor_for(corner,room.id=="tee_corridor"),Vector2.ZERO,q,corridor_textures,corner,true,1.0 if preview else _room_light_level(room),room.id=="tee_corridor",int(room.get("art_variant",0)),preload("res://scripts/room_layout_store.gd").positions("room-"+str(room.id),int(room.get("rotation",0))))
+		CorridorArt.draw_hull(draw_target,CorridorGeometry.hull_for(corner,room.id=="tee_corridor"),CorridorGeometry.floor_for(corner,room.id=="tee_corridor"),Vector2.ZERO,q,corridor_textures,corner,true,1.0 if preview or fade_slot_drawing != null else _room_floor_light(room),room.id=="tee_corridor",int(room.get("art_variant",0)),preload("res://scripts/room_layout_store.gd").positions("room-"+str(room.id),int(room.get("rotation",0))))
 	if preview or (not floor_only and not shell_only):
 		if preview:
 			var editing = _corridor_view(room)
