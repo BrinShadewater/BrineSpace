@@ -1,6 +1,6 @@
 extends SceneTree
 ## The Room Layout Studio has an ocean behind the room (owner playtest, Sept 29): a node of its own behind the
-## canvas, switchable, drifting only when motion and effects allow it.
+## canvas, drifting only when motion and effects allow it. Always shown, on the game's seabed tiles (Oct 14).
 const Editor = preload("res://scripts/room_layout_editor.gd")
 const Store = preload("res://scripts/room_layout_store.gd")
 const TitleSettings = preload("res://scripts/title_settings.gd")
@@ -27,7 +27,14 @@ func run() -> void:
 	var ocean = editor.ocean_backdrop
 	expect(ocean != null and ocean.get_parent() == editor.canvas, "The ocean is a child of the canvas")
 	expect(ocean.show_behind_parent, "It draws behind the room canvas")
-	expect(editor.ocean_on and ocean.visible, "It is on by default")
+	expect(ocean.visible, "It is shown")
+	expect(not "ocean_toggle" in editor and not editor.pref_controls.has("ocean"), "There is no switch for it")
+	var game_seabed = preload("res://assets/environment/seabed-v1/seabed_background.gd").new()
+	game_seabed.prepare()
+	var game_tile: Texture2D = game_seabed.textures.get("silt-plain")
+	expect(ocean.ground() != null and game_tile != null and ocean.ground().get_size() == game_tile.get_size() and ocean.ground().get_image().get_data() == game_tile.get_image().get_data(), "It uses the game's seabed tile")
+	var view: Array = ocean.view()
+	expect(view[0] == editor.canvas.origin() and is_equal_approx(view[1], editor.canvas.factor()), "Its tiles follow the room's position and zoom")
 	expect(ocean.animated(), "It drifts at Medium with motion allowed")
 	var before: float = ocean.clock
 	ocean._process(0.2)
@@ -38,9 +45,8 @@ func run() -> void:
 	TitleSettings.effects_quality = 0
 	expect(not ocean.animated(), "Low quality holds it still")
 	TitleSettings.effects_quality = 1
-	editor.ocean_toggle.button_pressed = false
-	expect(not editor.ocean_on and not ocean.visible and not ocean.animated(), "The toggle turns it off")
-	editor.ocean_toggle.button_pressed = true
-	expect(editor.ocean_on and ocean.visible, "And back on")
+	# A saved setting from when it could be switched off has no effect.
+	editor.apply_prefs()
+	expect(ocean.visible, "An old saved setting cannot hide it")
 	print("STUDIO OCEAN: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
 	quit(1 if failures > 0 else 0)

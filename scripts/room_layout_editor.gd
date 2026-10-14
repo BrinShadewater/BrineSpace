@@ -111,9 +111,8 @@ var zoom:=1.0
 var show_riser:=true
 var show_foundation:=false
 # The ocean behind the room (owner playtest, Sept 29); its own node, so its drift never redraws the room.
-var ocean_on:=true
+# Always shown, on the game's seabed tiles (owner, October 14, 2026).
 var ocean_backdrop: Control
-var ocean_toggle: CheckButton
 var riser_toggle: CheckButton
 var foundation_toggle: CheckButton
 var foundation_texture: Texture2D
@@ -230,7 +229,6 @@ class LayoutCanvas extends Control:
 	func origin() -> Vector2: return size/2+editor.pan
 	func to_room(point: Vector2) -> Vector2: return ((point-origin())/factor()).snapped(Vector2(0.001,0.001))
 	func _draw() -> void:
-		if not editor.ocean_on: draw_rect(Rect2(Vector2.ZERO,size),Color("0b171e"))
 		if editor.room==null: return
 		if editor.is_large_room():
 			_draw_large()
@@ -433,13 +431,11 @@ func _ready() -> void:
 		canvas.queue_redraw())
 	foundation_toggle=CheckButton.new(); foundation_toggle.text="Foundation"; editbar.add_child(foundation_toggle)
 	foundation_toggle.toggled.connect(func(value): show_foundation=value; canvas.queue_redraw())
-	ocean_toggle=CheckButton.new(); ocean_toggle.text="Ocean background"; ocean_toggle.button_pressed=true; editbar.add_child(ocean_toggle)
-	ocean_toggle.toggled.connect(func(value): ocean_on=value; if ocean_backdrop!=null: ocean_backdrop.visible=value; canvas.queue_redraw())
 	lights_toggle=CheckButton.new(); lights_toggle.text="Lights on"; lights_toggle.button_pressed=true; editbar.add_child(lights_toggle)
 	lights_toggle.toggled.connect(func(value): preview_lights=value; lights_toggle.text="Lights on" if value else "Lights off"; canvas.queue_redraw())
 	animation_toggle=CheckButton.new(); animation_toggle.text="Animation off"; editbar.add_child(animation_toggle)
 	animation_toggle.toggled.connect(func(value): preview_animation=value; animation_toggle.text="Animation on" if value else "Animation off"; canvas.queue_redraw())
-	pref_controls["ocean"]=ocean_toggle; pref_controls["riser"]=riser_toggle; pref_controls["foundation"]=foundation_toggle; pref_controls["lights"]=lights_toggle; pref_controls["animation"]=animation_toggle
+	pref_controls["riser"]=riser_toggle; pref_controls["foundation"]=foundation_toggle; pref_controls["lights"]=lights_toggle; pref_controls["animation"]=animation_toggle
 	var zoom_label:=Label.new(); zoom_label.text="Zoom"; editbar.add_child(zoom_label)
 	zoom_slider=HSlider.new(); zoom_slider.min_value=0.6; zoom_slider.max_value=1.6; zoom_slider.step=0.1; zoom_slider.value=1.0
 	zoom_slider.custom_minimum_size.x=100; editbar.add_child(zoom_slider)
