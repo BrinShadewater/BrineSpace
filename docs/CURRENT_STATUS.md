@@ -1,3 +1,33 @@
+## Zoom gate on the 12-room save: cause found, not fixed - October 13, 2026
+
+The benchmark's zoom workload asks for a new zoom every 30 frames, alternating 0.85x and 1.1x
+of a camera that fits the whole station. Its p95 allows about 1.5 slow frames per request.
+Measured from source on the reported 12-room save with the benchmark's camera (1920x1080,
+vsync off, scratch copy of the owner's layouts; three runs):
+
+- Frames with nothing repainting: 12-13 ms at this zoom (the whole station is on screen).
+  That leaves about 4 ms before a frame misses 60 FPS.
+- Every request produces 3 to 5 frames over 16.67 ms (20 requests: 3,4,5,4,4,3,3,3,3,3,4,3,
+  3,3,3,4,4,3,3,3). They are the retained layers repainting at the new size, already spread
+  one group a frame by `_flush_retained_layers` in `scripts/grid_canvas.gd`:
+  floors 18-20 ms; walls, doors and lights 19-20 ms; the environment group 24-26 ms
+  (script time: 274 rock and wreck cell slots 5.6 ms, terrain pass 2.8 ms, foundations 1.2 ms,
+  derelicts 1.0 ms, below 0.7 ms); now and then one more at 17-19 ms.
+- So the miss is by design of the settle: each group is one canvas item or one set of
+  per-room nodes that all repaint in the same frame, and each costs 6-12 ms.
+- Not caused by the light-fade change: 3b3d82da and 6d97d875 read the same back to back.
+
+Options, none applied:
+1. Accept it for this release. After a zoom lands, 3-5 frames run at 18-26 ms (about 50 ms
+   of extra time in all) on the owner's machine, then the station is back at 12-13 ms.
+2. Spread the environment group: repaint terrain cell slots a few a frame (they are already
+   separate nodes; a waiting slot keeps its commands, scaled) and split the group in two.
+   Contained in `scripts/terrain_content_canvas.gd` and the flush list. Takes the worst frame
+   from about 25 ms to about 19 ms. Does not pass the gate: the count of slow frames stays.
+3. Repaint floors, walls and doors a few rooms a frame as well, which needs floors as per-room
+   nodes. This is what passing the gate takes. It restructures the retained floor layers that
+   the parity tests and the zoom cover logic are built on.
+
 ## Lighting gate fixed; Windows candidate brinespace-6d97d875cd6b9d23 - October 13, 2026
 
 Owner chose option 1 from the entry below. Commit a64e18f9, `scripts/grid_canvas.gd`:
