@@ -1,3 +1,46 @@
+## Lighting gate fixed; Windows candidate brinespace-6d97d875cd6b9d23 - October 13, 2026
+
+Owner chose option 1 from the entry below. Commit a64e18f9, `scripts/grid_canvas.gd`:
+
+- While a room's lights fade, its light pools (or a hallway's hull) are a `FadeSlot`, a child
+  of the floor layer that painted the room, drawn once at full light. The fade changes that
+  node's opacity (pools) or tint (hull). The floor repaints when a fade starts and once when
+  it settles; settled, pools and hull are painted into the floor exactly as before. Shadows
+  are painted at the level the room is fading towards. Hallway risers still fade in their
+  wall slots (`hallway_fade_key`). `--repaint-floors-with-light-fades` restores the old
+  drawing.
+- From source, 12-room save, 1920x1080, vsync off: fade frames 18.2 to 13.2 ms mean, 19.5 to
+  14.4 ms p95; settled 10.3-11.1 ms; floor repaints over eight toggles 113 and more to 18.
+- Pixels, old drawing against new with time frozen (two identical old captures differ by 0):
+  settled lit and settled dark are identical on the 12-room save at three zooms and on the
+  13:31 report's station; mid-fade differs by at most 6 of 255, typically 2-4. Sheet:
+  `output/owner-reports-2026-10-13/light-fade-compare.png`.
+- A first version kept pools on the overlay when settled; that drew them over shadows instead
+  of under (up to 6 of 255 on shadow outlines) and failed three retained-against-direct parity
+  tests. Replaced before commit.
+- Tests: `test_wall_fade_retention` and `test_wall_slot_retention` now assert that floors
+  repaint only when a fade starts or settles and that a fading room's overlay follows its
+  level. 75 headless and 40 windowed lighting, surface and hallway tests pass; the four
+  windowed failures (`test_branforth_bunk`, `test_content_cache_parity`,
+  `test_environment_cache_parity`, `test_retained_lights_parity`) are the same as October 12.
+
+Candidate `brinespace-6d97d875cd6b9d23`, `C:/bs-release-20261013c`, from commit a64e18f9, same
+stages: freeze 36,274 runtime files; full import exit 0; pre-export checks pass; pack audit
+checked=35790 missing=0 changed=0 remapped=0 unexpected=0; new-game smoke 0 failures; owner
+folder unchanged at every stage (2,948 files). Benchmark, 1920x1080, three runs of three
+passes, with the previous candidate rerun straight afterwards for comparison:
+
+| workload, 12-room save | 3b3d82da (rerun) p95 | 6d97d875 p95 |
+| --- | --- | --- |
+| lighting | 18.0-19.5 ms, 9 of 9 over | 14.2-15.0 ms in 8 passes, 16.9 ms in one |
+| zoom | 16.7-18.5 ms, 9 of 9 over | 17.1-18.3 ms, 9 of 9 over |
+| idle | 11.5-12.7 ms | 11.6-13.6 ms |
+
+Phases passing: 17-19 of 24 before, 20-21 of 24 now. Fresh station 24 of 24 in all three runs.
+Zoom is now the one workload over the gate; it was already over, and the single morning run
+that showed it under in two of three passes was luck. Not rerun on this candidate: Continue
+timing, relaunch, 40 starts, soak.
+
 ## Lighting gate on the 12-room save: cause found, not fixed - October 13, 2026
 
 The benchmark's lighting workload flips the interior switch once a second. Measured from
