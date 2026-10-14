@@ -1,3 +1,38 @@
+## Release: brinespace-3b3d82da868edf1e, the slower checks - October 13, 2026
+
+All on the QA copy of the candidate, debug=false, second monitor, muted, isolated profiles;
+owner folder fingerprint unchanged (2,948 files). Evidence under `C:/bs-release-20261013b/`
+(`continue-timing/`, `relaunch-check/`, `start-check/`, `benchmark/`,
+`benchmark-stress-nosave/`, `soak-30m/`). The owner's own Godot editor was open and idle
+throughout; the drivers were told to ignore that one process.
+
+- Continue, press to playable: first launch 12.47 s (reported save, 12 rooms) and 12.49 s
+  (owner's 10-room save); ordinary launch 6.90 s and 7.01 s. No errors, no missing art.
+  42f32cba measured 12.7 s and 7.0 s.
+- Save, quit, relaunch: reported save and a new game each continued, quit, relaunched and
+  verified; strict comparison of the restored checkpoint shows no differences; no quit stuck;
+  all four processes exit 0.
+- Start check: 40 real starts, 20 pressing Continue at once and 20 after a delay. All 40
+  reached a playing station with the simulation advancing, exit 0. Start-up 4803-9915 ms and
+  4818-9869 ms.
+- Benchmark (1920x1080, one run, three passes of each workload, 16.67 ms target):
+  fresh station 24 of 24, means 4.8-6.2 ms. Reported 12-room save 18 of 24, means
+  10.0-15.1 ms: lighting is over in all three passes (17.4-18.4 ms p95) as before, and zoom
+  is now over in all three (16.7-17.3 ms) where 42f32cba had it over in one (17.4 ms) and
+  just under in two. Zoom sits on the line; this is one run, so it does not show a change.
+  Texture memory 1,559.7 MB, the same.
+- Stress station (`mixed_large`): the default run is invalid again for the known fixture
+  reason (its save workload cannot write a checkpoint, "Bill carry sequence"). Without save:
+  0 of 21, idle mean 24.8-26.4 ms, worst frame 97.5 ms. Same as 42f32cba.
+- Soak, 30 minutes on the reported save, cycles 323 to 533, speeds 1x/2x/4x by thirds:
+  107,954 frames, mean 16.66-16.70 ms every minute, p99 at most 17.13 ms, one frame over
+  50 ms (98.1 ms in minute 1), none over 100 ms, 0 errors, 0 automatic reports, 0 missing
+  art, 0 orphan nodes. Private memory 2,542-2,570 MB, flat; textures 1,569.7 MB constant;
+  handles 603-613. Object count 32,188 to 34,574, the same slow unexplained growth.
+
+The morning candidate's `source`, `windows` and `normal-entry-smoke` folders are in the Recycle
+Bin on C: (owner approved); its evidence stays in `C:/bs-release-20261013/`.
+
 ## Release: Windows candidate brinespace-3b3d82da868edf1e - October 13, 2026
 
 Rebuilt from commit 96ac6833 through the same stages, into `C:/bs-release-20261013b`. It
