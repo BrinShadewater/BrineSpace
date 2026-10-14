@@ -1,3 +1,31 @@
+## Owner changes on October 14, and the handoff back to Codex - October 14, 2026
+
+- Room Layout Studio (`d5386ab3`): the "Ocean background" switch is gone; the backdrop draws
+  the game's seabed tile (`silt-plain`, its tint and mirrored repeat, three cells a tile)
+  aligned with the room at the Studio's pan and zoom, clipped to the canvas. Test:
+  `test_studio_ocean`.
+- Studio warm-up (`95cd9f64`): two seconds after the title settles,
+  `scripts/studio_warmup.gd` builds the art catalogue on a worker thread
+  (`RoomAssetLibrary.build_catalog`, split out of `entries()`) and requests the first room's
+  view script as a threaded load; opening the Studio and quitting both hand over or wait.
+  First opening 0.77 s to 0.41 s, second 0.32 s; title frames stay at 17 ms; quitting
+  mid-load exits cleanly.
+- Journal (`b2e3f97c`): the roster lists the real crew only; the sixteen placeholder survivor
+  names of 96ac6833 are gone.
+- Berths (`dac6a2a2`): housing for characters only (two to start, two per Crew Hab, research
+  bonus; companions none). Crew Hab, Clone Lab and Safe Wake Protocol no longer add unnamed
+  crew; upkeep counts characters only; old checkpoints reset the count from the characters
+  recorded alive (the October 13 report saves load as 1 / 4, not 2 / 4). Safe Wake Protocol
+  makes cryopods thaw 50% faster. Test: `test_berths_real_crew`.
+- Clone Lab (`fb1072a6`): 3 Data for 2 Power and 1 Biomass, in the draft deck; its real job is
+  parked (the owner liked reviving a crew member who died this run).
+- Handoff to Codex: [`CODEX_HANDOFF_2026-10-14.md`](CODEX_HANDOFF_2026-10-14.md).
+
+Checks: Studio, title-screen and catalogue tests (19 headless, 40 of 43 windowed; the three
+failures pre-existing or the known reused-profile quirk), crew, recovery and synergy tests
+(16 headless and 12 windowed pass; five failures as on October 12). None of these changes is
+in candidate `brinespace-6d97d875cd6b9d23`.
+
 ## Object count growth in soaks: partly traced, not fixed - October 13, 2026
 
 Every candidate's 30-minute soak gains about 80 objects a minute (32,200 to 34,600) with flat
