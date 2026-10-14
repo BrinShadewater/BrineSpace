@@ -31,6 +31,8 @@ func _init() -> void:
 	var result: Dictionary = game._simulate_room_economy()
 	check(int(result.added_crew) == 0, "A running Clone Lab adds no crew")
 	check(result.offline.get(Vector2i(19, 20), "") != "HABITATS FULL", "A Clone Lab is never idled for want of berths")
+	var clone: Dictionary = Rooms.get_room("clone_lab")
+	check(int(clone.production.get("data", 0)) == 3 and not clone.consumption.has("data") and not "crew" in str(clone.description).to_lower(), "For now a Clone Lab turns Biomass into Data: %s" % clone.description)
 	# Safe Wake Protocol: faster thawing instead of unnamed survivors.
 	game.active_synergy_links = []
 	check(is_equal_approx(Cryo.safe_wake_rate(game), 1.0), "Without Safe Wake Protocol pods thaw at the normal rate")

@@ -380,11 +380,12 @@ static func all_rooms() -> Dictionary:
 			"rarity": "rare",
 			"cost": {"metal": 10, "data": 8, "biomass": 8},
 			"size": Vector2i.ONE,
-			"production": {},
-			"consumption": {"power": 2, "biomass": 1, "data": 1},
+			# Clone crew are parked (owner, October 14, 2026): for now its research yields Data.
+			"production": {"data": 3},
+			"consumption": {"power": 2, "biomass": 1},
 			"tags": ["medical", "bio", "clone"],
 			"layout": "layout_01_tee",
-			"description": "Creates clone crew from Biomass and Data.",
+			"description": "Clone research turns Biomass into Data.",
 			"unlocked": false
 		},
 		"quarantine_cell": {
