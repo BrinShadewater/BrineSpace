@@ -258,6 +258,10 @@ static func _apply_checkpoint(game, data: Dictionary) -> bool:
 			current.assign(data.state[field])
 		else:
 			game.set(field, data.state[field])
+	# Checkpoints from before October 14, 2026 counted unnamed survivors from Crew Habs, Clone
+	# Labs and Safe Wake Protocol as crew. Only characters take berths and eat now.
+	if not game.recovered_crew.is_empty():
+		game.crew_count = game.recovered_crew.filter(func(member): return member.get("alive", false)).size()
 	game.run_save_id = data.run_id
 	game.event_history.clear()
 	if data.get("event_history") is Array:

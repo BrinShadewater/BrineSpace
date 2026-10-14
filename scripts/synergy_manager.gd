@@ -266,7 +266,7 @@ const SYNERGIES := [
 		"name": "Safe Wake Protocol",
 		"rooms": ["cryo_chamber", "life_support"],
 		"bonus": {},
-		"effect": "Revives one survivor every 3 cycles while habitat space remains. Connect Cryo to Life Support or any medical room.",
+		"effect": "Cryopods thaw 50% faster while it runs. Connect Cryo to Life Support or any medical room.",
 		"message": "Cryo recovery protocol restored.",
 		"unlock_room_id": "clone_lab",
 		"stabilize_cycles": 3,

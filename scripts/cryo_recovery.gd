@@ -57,6 +57,13 @@ static func status(game, cell: Vector2i) -> String:
 	if game.resources.get("oxygen",0)<=0 or game.resources.get("food",0)<=0: return "WAITING FOR FOOD AND OXYGEN"
 	return "THAWING / WAKING"
 
+## A working Safe Wake Protocol thaws sleepers this much faster (owner, October 14, 2026).
+const SAFE_WAKE_RATE := 1.5
+static func safe_wake_rate(game) -> float:
+	for link in game.get("active_synergy_links") if game.get("active_synergy_links") != null else []:
+		if link is Dictionary and link.get("id","") == "safe_wake_protocol": return SAFE_WAKE_RATE
+	return 1.0
+
 static func advance(game, delta: float) -> void:
 	if not game.running or game.paused: return
 	for cell in game.wrecks:
@@ -65,7 +72,7 @@ static func advance(game, delta: float) -> void:
 		var seconds := duration(ward)
 		for pod in ward.pods:
 			if pod.recovered: continue
-			pod.wake = minf(seconds,float(pod.wake)+maxf(delta,0.0)*preload("res://scripts/research_tree.gd").thaw_rate(game.get("meta")))
+			pod.wake = minf(seconds,float(pod.wake)+maxf(delta,0.0)*preload("res://scripts/research_tree.gd").thaw_rate(game.get("meta"))*safe_wake_rate(game))
 			if pod.get("architect_id","") in ["bill","veld","branforth"] and pod.wake<seconds:
 				var actor=preload("res://scripts/architects.gd").actor_for(game,pod.architect_id)
 				if not actor.room_nodes.has(cell) and not actor.fire_building_navigation:

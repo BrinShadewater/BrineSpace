@@ -2668,10 +2668,7 @@ func _place_room(id: String, cell: Vector2i, free := false, construction_complet
 		# TEMPORARY (note 17): mark the completion so the trace shows which lines precede it.
 		preload("res://scripts/dialogue_trace.gd").room_complete(self,id,cell)
 		if is_instance_valid(crew_comms): crew_comms.room_built(id)
-		if id == "crew_hab" and resources["oxygen"] > 0 and resources["food"] > 0:
-			crew_count += 1
-			had_crew = true
-			_log("A survivor claims the new Crew Hab.")
+		# A Crew Hab is housing only: two more berths for characters (owner, October 14, 2026).
 	if test_walker_cell == Vector2i(-1, -1):
 		test_walker_cell = cell
 	_check_synergies()
@@ -2854,9 +2851,6 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 		if not missing.is_empty():
 			offline[cell] = "NEEDS %s" % _join_strings(missing, " + ")
 			continue
-		if room["id"] == "clone_lab" and crew_count + added_crew >= _get_crew_capacity():
-			offline[cell] = "HABITATS FULL"
-			continue
 		if blackout and int(consumption.get("power", 0)) > 0:
 			offline[cell] = "POWER BLACKOUT"
 			# The whole station goes dark, but the core only counts as lost when it truly lacks Power.
@@ -2880,8 +2874,6 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 			_add_to_delta(delta, {"data": ResearchTree.research_lab_data(meta)}, 1)
 		if room["id"] == "life_support" and ResearchTree.life_support_oxygen(meta) > 0:
 			_add_to_delta(delta, {"oxygen": ResearchTree.life_support_oxygen(meta)}, 1)
-		if room["id"] == "clone_lab":
-			added_crew += 1
 	var links := DiscoveryManagerScript.functioning_links(connected_synergy_links, working_cells)
 	var bonus_links := []
 	for link in links:
@@ -2889,14 +2881,9 @@ func _simulate_room_economy(known_bonuses_only := false, simulated_cycle := -1) 
 			bonus_links.append(link)
 	_add_to_delta(delta, SynergyManagerScript.cycle_bonus(bonus_links, meta.stabilized_synergy_ids), 1)
 	var tick := cycle if simulated_cycle < 0 else simulated_cycle
-	for link in bonus_links:
-		if link["id"] == "safe_wake_protocol" and tick % 3 == 0 and crew_count + added_crew < _get_crew_capacity():
-			var finite_ward := false
-			for cell in link.get("cells",[]):
-				if occupied.has(cell) and occupied[cell].get("recovered_derelict",false): finite_ward=true
-			if finite_ward: continue # Occupants are released once by their emergence sequence.
-			added_crew += 1
-			break
+	# Only characters take berths and eat (owner, October 14, 2026): the Clone Lab and Safe Wake
+	# Protocol no longer add unnamed crew, so added_crew stays 0. Safe Wake speeds thawing instead
+	# (cryo_recovery.gd).
 	var used := generation + maxi(reserve_start, 0) - int(input_budget["power"])
 	var uncapped_power := int(input_budget["power"]) + int(delta.get("power", 0))
 	var final_power := clampi(uncapped_power, 0, _get_power_capacity())

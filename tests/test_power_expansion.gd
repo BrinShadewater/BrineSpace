@@ -165,7 +165,8 @@ func _init() -> void:
 	result = game._simulate_room_economy()
 	check(result.blackout and result.power_failures.has("BRINE Core"),"No generation and no reserve still loses the core")
 	game.free()
-	# A Clone Lab with full habitats draws nothing, so it must not black the station out.
+	# A Clone Lab no longer adds crew (owner, October 14, 2026), so full berths no longer idle it:
+	# it asks for power like any other room.
 	game = fresh()
 	add(game,"brine_core",Vector2i(20,20))
 	add(game,"current_turbine",Vector2i(10,10))
@@ -175,7 +176,7 @@ func _init() -> void:
 	game.resources.data = 1
 	game.crew_count = game._get_crew_capacity()
 	result = game._simulate_room_economy()
-	check(not result.blackout and result.offline.get(lab.pos,"")=="HABITATS FULL" and result.power_failures.is_empty(),"A full-habitat Clone Lab does not trigger a blackout: %s" % str(result.offline))
+	check(result.offline.get(lab.pos,"")!="HABITATS FULL" and int(result.added_crew)==0,"Full berths do not idle a Clone Lab, and it adds no crew: %s" % str(result.offline))
 	game.crew_count = 0
 	result = game._simulate_room_economy()
 	check(result.blackout,"A Clone Lab that would run and cannot be powered does black out the station")
