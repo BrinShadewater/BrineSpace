@@ -1,3 +1,30 @@
+## Object count growth in soaks: partly traced, not fixed - October 13, 2026
+
+Every candidate's 30-minute soak gains about 80 objects a minute (32,200 to 34,600) with flat
+memory. Measured from source on the reported 12-room save (scratch copy of the owner's
+layouts), with scratch probes only; no game code changed.
+
+- The growth follows real time, not the simulation: the same 80 a minute at 1x, 2x and 4x in
+  both soaks (3, 6 and 12 cycles a minute). It stops while paused.
+- Not nodes, not orphaned nodes, not running tweens, and not leaks: a run quit with `--verbose`
+  reports no leaked instances, so whatever holds the objects frees them at exit.
+- Traced and bounded: each shared room view's prop mesh cache (`prop_meshes` in
+  `rooms/whole-room/nursery_whole_view.gd`) fills at about 37 a minute and stops at its cap of
+  256 (minute 7 on this save). The crew path caches (`segment_geometry_cache` in
+  `scripts/bill_npc.gd`) gain thousands of entries a minute but hold no objects and clear at
+  60,000 entries.
+- Not traced: the rest, a steady 55-80 a minute that continues after the mesh cache is full.
+  It is not in any script variable, script-wide variable, node metadata or signal connection
+  reachable from the scene tree (a container walker found nothing that accounts for it; note
+  that walker's own property reads load some art lazily, so its larger numbers are partly its
+  own doing). It is not the companions; hiding the station drawing reduces it to about 55; it
+  persists with every retained surface switched off (`--redraw-static-surfaces`, 59 a minute)
+  and with door and light retention off (54-65). In several probes it stopped for good after a
+  disruption that made the grid drop its wall and door slots; I could not tie that to a cause.
+- Impact so far: 30 minutes adds about 2,400 objects, and private memory, texture memory and
+  frame times stay flat. Over 8 hours that would be about 36,000 more objects; their size is
+  unknown. A longer soak would show whether it matters.
+
 ## Release: brinespace-6d97d875cd6b9d23, the slower checks; zoom miss accepted - October 13, 2026
 
 Owner decision: the zoom workload's miss on the 12-room save (entry below) is accepted for this
