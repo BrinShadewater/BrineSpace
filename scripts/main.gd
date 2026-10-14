@@ -6194,16 +6194,13 @@ func _refresh_diagnostics_page() -> void:
 					lines.append("[url=%d,%d]LOCATE %s[/url]"%[companion_cell.x,companion_cell.y,Companions.NAMES[id].to_upper()])
 					if id=="margot":lines.append("[url=pet:margot]PET MARGOT[/url]\n" if Companions.can_pet(self,true) else "Pet Margot // %s\n"%Companions.pet_refusal(self))
 			lines.append("\n[font_size=20][color=#a9e7d4][b]CREW ROSTER // %d / %d BERTHS[/b][/color][/font_size]\nRecovered occupants join after their wake sequence completes.\n" % [crew_count,_get_crew_capacity()])
-			var named_alive := 0
 			for member in recovered_crew:
-				named_alive += int(member.alive)
 				var origin_text := "Awakened in BRINE Core." if member.id=="core_architect" else ("Awakened in charging chamber %s." if member.get("architect_id","")=="marsh" else "Recovered from cryo ward %s.") % member.origin
 				lines.append("[url=%d,%d]%s[/url] // %s\n%s\n" % [member.origin.x,member.origin.y,member.name,"[color=#7fd6a6]ABOARD[/color]" if member.alive else "[color=#ef987c]DECEASED[/color]",origin_text])
 			for id in Architects.IDS:
 				var actor = Architects.actor_for(self,id)
 				if actor.active and not actor.dead: lines.append("Marsh: "+actor.battery_status()+"\n" if not actor.needs_air() else "%s: tank %.0fs / breath %.0fs / starvation %.0f of 90s\n" % [Architects.NAMES[id],actor.tank_oxygen,actor.breath_oxygen,actor.starvation])
 			if recovered_crew.is_empty(): lines.append("No recovered survivors recorded. The sealed wards remain quiet.\n")
-			for index in range(maxi(0,crew_count-named_alive)): lines.append("%s // [color=#7fd6a6]ABOARD[/color]\nStation crew. Quartered in the crew habitat.\n" % preload("res://scripts/journal_widgets.gd").survivor_name(site_layout.get("seed",0),index))
 			for cell in wrecks:
 				var ward: Dictionary = wrecks[cell]
 				if ward.kind not in ["cryo","charging"]: continue

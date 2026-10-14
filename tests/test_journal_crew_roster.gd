@@ -30,16 +30,8 @@ func run() -> void:
 	var ward: Control = Journal._member_row(null, {"id": "pod_1", "architect_id": "veld", "name": str(Architects.NAMES["veld"]), "origin": Vector2i(16, 21), "alive": false})
 	check(portrait_of(ward).texture == Architects.selection_portrait("veld"), "A ward recovery shows that crew member")
 	ward.free()
-	# Survivors who arrive with a Crew Hab are listed by name: fixed for a loop, no repeats.
-	var names := {}
-	for index in range(Journal.SURVIVOR_NAMES.size()): names[Journal.survivor_name(479821352, index)] = true
-	check(names.size() == Journal.SURVIVOR_NAMES.size(), "Sixteen survivors in one loop get sixteen different names, not %d" % names.size())
-	var firsts := {}
-	for seed in range(40): firsts[Journal.survivor_name(seed, 0)] = true
-	check(firsts.size() > 4, "Different loops start with different survivors: %d names over 40 loops" % firsts.size())
-	check(Journal.survivor_name("legacy", 20) != Journal.survivor_name("legacy", 4), "A seventeenth survivor and beyond is still told apart")
-	var survivor: Control = Journal._survivor_row("Petra Lindqvist")
-	check(not portrait_of(survivor).visible and survivor.find_children("*", "Label", true, false).any(func(label): return label.text == "Petra Lindqvist"), "A survivor row shows the name and no portrait")
-	survivor.free()
+	# The roster lists the real crew only: survivors from a Crew Hab get no row and no made-up name.
+	var journal_script: Script = load("res://scripts/journal_widgets.gd")
+	check(not journal_script.get_script_constant_map().has("SURVIVOR_NAMES") and not journal_script.get_script_method_list().any(func(method): return method.name == "survivor_name"), "The Journal has no made-up survivor names")
 	print("JOURNAL CREW ROSTER: %d checks, %d failures" % [checks, failures])
 	quit(1 if failures else 0)
