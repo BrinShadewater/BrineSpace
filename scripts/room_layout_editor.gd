@@ -335,6 +335,7 @@ class LayoutCanvas extends Control:
 static func open(host: Node) -> Control:
 	var existing=host.get_tree().root.get_node_or_null("RoomLayoutEditor")
 	if existing!=null: return existing
+	preload("res://scripts/studio_warmup.gd").finish()
 	var editor=load("res://scripts/room_layout_editor.gd").new()
 	editor.name="RoomLayoutEditor"
 	var backdrop=host if host is CanvasItem else host.get_tree().current_scene

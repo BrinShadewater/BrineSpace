@@ -33,14 +33,20 @@ static func strip_retired(view) -> void:
 	if room_id.is_empty() or room_id in LEGACY_ART_ROOMS: return
 	view.props=view.props.filter(func(prop): return keeps_in_room(room_id,prop))
 static func entries() -> Dictionary:
-	if not catalog.is_empty(): return catalog
+	if catalog.is_empty(): catalog = build_catalog()
+	return catalog
+
+# Reads data files only and touches no shared state, so the Studio warm-up can run it on a
+# worker thread (scripts/studio_warmup.gd).
+static func build_catalog() -> Dictionary:
+	var result: Dictionary = {}
 	# Station props v2 (2026-09-24): cut from the owner's room designs. These are the
 	# only props the Studio offers; the older sources below stay loadable for the rooms
 	# and site scenery that still use them (BRINE Core, corridors, seabed dressing).
 	var station: Variant=JSON.parse_string(FileAccess.get_file_as_string(STATION_PROPS))
 	if station is Array:
 		for entry in station:
-			catalog["library/"+str(entry.id)]={
+			result["library/"+str(entry.id)]={
 				"data":entry,"label":str(entry.label),"width":float(entry.display_width),
 				"group":"station","category":str(entry.category),
 				"default_rooms":entry.get("default_rooms",[]),"role":str(entry.get("role",""))}
@@ -49,10 +55,10 @@ static func entries() -> Dictionary:
 		var data=JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/registrations/"+file))
 		if not data is Dictionary or not data.has("pieces"): continue
 		var id: String="library/"+file.trim_suffix(".json")
-		catalog[id]={"data":data,"label":data.get("label",file.trim_suffix(".json").replace("-"," ").capitalize()),"default_rooms":data.get("default_rooms",[])}
-		if data.has("display_width"): catalog[id].width=float(data.display_width)
+		result[id]={"data":data,"label":data.get("label",file.trim_suffix(".json").replace("-"," ").capitalize()),"default_rooms":data.get("default_rooms",[])}
+		if data.has("display_width"): result[id].width=float(data.display_width)
 	for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/common-assets.json")):
-		catalog["library/common-"+entry.id]={"data":entry.data,"label":entry.label,"width":entry.width,"group":"common","category":entry.get("category","wall"),"theme":str(entry.get("theme",""))}
+		result["library/common-"+entry.id]={"data":entry.data,"label":entry.label,"width":entry.width,"group":"common","category":entry.get("category","wall"),"theme":str(entry.get("theme",""))}
 	# Tileset props arrive as one bulk file rather than 8000 registrations: the
 	# loop above reads a file per entry, which is fine for 220 and not for 8229.
 	# The id prefix is deliberate - RoomLayoutStore.is_common_decoration() drops
@@ -62,13 +68,13 @@ static func entries() -> Dictionary:
 		var parsed: Variant=JSON.parse_string(FileAccess.get_file_as_string(bulk))
 		if parsed is Array:
 			for entry in parsed:
-				catalog["library/tileset-"+str(entry.id)]={
+				result["library/tileset-"+str(entry.id)]={
 					"data":entry,"label":entry.get("label",entry.id),
 					"width":float(entry.get("display_width",48.0)),
 					"group":"tileset","category":entry.get("category","prop"),
 					"tileset":entry.get("tileset",""),
 					"title":str(entry.get("title",""))}
-	return catalog
+	return result
 # Props the library merged away keep working: a layout that placed the old id draws
 # the prop that absorbed it. Without this a merge silently emptied placed props out
 # of the owner's rooms (three went missing from the Research Lab).

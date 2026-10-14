@@ -180,6 +180,11 @@ func _ready() -> void:
 	_layout()
 	start_button.grab_focus()
 	_refresh_unread_badges()
+	# Once the title has settled, load what the Room Layout Studio needs first, off the main thread.
+	get_tree().create_timer(2.0).timeout.connect(_warm_studio)
+
+func _warm_studio() -> void:
+	if is_inside_tree() and not starting: preload("res://scripts/studio_warmup.gd").start()
 
 func _button(caption: String, primary: bool) -> Button:
 	var button := Button.new()
