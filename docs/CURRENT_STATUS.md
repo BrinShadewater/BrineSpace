@@ -1,3 +1,28 @@
+## Release: brinespace-6d97d875cd6b9d23, the slower checks; zoom miss accepted - October 13, 2026
+
+Owner decision: the zoom workload's miss on the 12-room save (entry below) is accepted for this
+release. Not taken: spreading the seabed repaint, restructuring floors into per-room nodes.
+
+Checks on the QA copy of the candidate, debug=false, second monitor, muted, isolated
+profiles; owner folder unchanged (2,948 files). Evidence under `C:/bs-release-20261013c/`.
+The owner's idle Godot editor was open and excluded from the drivers' process check.
+
+- Continue, press to playable: first launch 12.66 s (reported save) and 12.67 s (owner's
+  save); ordinary launch 6.97 s and 7.16 s. No errors, no missing art.
+- Save, quit, relaunch: both saves restored with no strict differences; no quit stuck; all
+  four processes exit 0.
+- Start check: 40 of 40 reached a playing station, exit 0. Start-up 5066-10007 ms (instant)
+  and 5006-9969 ms (delayed).
+- Soak, 30 minutes on the reported save, cycles 323 to 533: 107,919 frames, mean 16.67-16.73
+  ms every minute, p99 at most 18.48 ms, four frames over 50 ms (largest 96.0 ms in minute 1,
+  58.2 ms in minute 4), none over 100 ms, 0 errors, 0 automatic reports, 0 missing art,
+  0 orphans. Private memory 2,527-2,560 MB, flat; textures constant; handles 603-614. Object
+  count 32,208 to 34,621, the same slow growth as every candidate.
+
+This candidate has now been through every check the earlier candidates had: pack audit, smoke,
+benchmark (lighting passes; zoom over, accepted), Continue timing, relaunch, 40 starts, soak.
+Publishing remains the owner's decision.
+
 ## Zoom gate on the 12-room save: cause found, not fixed - October 13, 2026
 
 The benchmark's zoom workload asks for a new zoom every 30 frames, alternating 0.85x and 1.1x
