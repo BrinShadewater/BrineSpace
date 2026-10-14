@@ -1,3 +1,32 @@
+## Lighting gate on the 12-room save: cause found, not fixed - October 13, 2026
+
+The benchmark's lighting workload flips the interior switch once a second. Measured from
+source on the reported 12-room save (1920x1080, vsync off, scratch copy of the owner's
+layouts, three runs agreeing within 0.2 ms):
+
+- Settled: 10.3-10.8 ms a frame. Inside a light fade: 18.2-18.3 ms mean, 19.5-19.8 ms p95.
+  The frame that flips the switch: 35 ms.
+- A fade lasts `RoomLighting.FADE_SECONDS` (0.65 s), so 39 of every 60 benchmark frames are
+  inside one. That is the whole of the miss.
+- Cause: each room's fading light level is part of the retained floor key (`_surface_state`
+  in `scripts/grid_canvas.gd`; the comment there says so), so the FLOOR and FLOOR_REST layers
+  repaint for every room on every frame of a fade, to change only the light pools and the
+  strength of equipment shadows. Script time per fade frame: floors 4.7 ms (shadows 1.2,
+  reconfiguring room views 1.1, floor tiles 0.9, doors 0.4, pools 0.3), walls 0.7, lights 0.3;
+  the rest of the 8 ms is the engine taking the new draw commands. The light map is cheap.
+- Any room whose light target changes starts the same full repaint, not only the switch.
+  From the code, that includes a room gaining or losing power; not measured in play.
+
+Options, none applied:
+1. Draw pools and the level-dependent part of shadows as per-room overlays whose opacity
+   follows the level, and take the level out of the floor key. No repaint during a fade; the
+   fade stays smooth. Pixels may differ where a pool crosses a room seam. A structural change
+   to the grid's drawing; needs before/after captures.
+2. Step the pools and shadows (for example four steps over the fade) while the light map and
+   lamps fade smoothly. Small change, about a tenth of the repaints, but the pools visibly step
+   and the benchmark's p95 still fails (it tolerates two slow frames a second).
+3. Leave it: 0.65 s at about 55 FPS on the owner's machine when lights change.
+
 ## Release: brinespace-3b3d82da868edf1e, the slower checks - October 13, 2026
 
 All on the QA copy of the candidate, debug=false, second monitor, muted, isolated profiles;
