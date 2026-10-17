@@ -2,9 +2,12 @@ import contextlib
 import importlib.util
 import io
 from pathlib import Path
+import sys
 import unittest
 
-spec = importlib.util.spec_from_file_location('runner', Path(__file__).resolve().parents[1] / 'tools/run_tests.py')
+TOOLS = Path(__file__).resolve().parents[1] / 'tools'
+sys.path.insert(0, str(TOOLS))
+spec = importlib.util.spec_from_file_location('runner', TOOLS / 'run_tests.py')
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 

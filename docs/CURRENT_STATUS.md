@@ -1,3 +1,9 @@
+## Windows integration branch prepared for Mac/iPad review — October 17, 2026
+
+Owner intends Windows, Mac and iPad to release together. Start with [the Windows integration handoff](WINDOWS_INTEGRATION_HANDOFF_2026-10-17.md). This branch records shared d3 source (`632612a0bfb2`), focused later Windows loading changes (`9f7c0fae2bec`), portable evidence and validation. Mac/iPad changes remain separate and need review; no merge, new export or Apple acceptance. Existing frozen Windows/Mac deliveries remain references.
+
+All36,430 working runtime dependencies match tested5dd; committed LFS bytes verified, Git text line normalization recorded. Eleven fresh scoped checks pass; historical benchmark/native acceptance retains its original scope. Keep the valid New loading outlier unresolved. Predicted initial viewport, worker policy, decoder lifetime, raw PNG exports and memory are key port merge points. Current reports below/linked from the handoff supersede older dated task lists; retained shared art reports describe the already shared baseline, not a new post-kit art pass.
+
 ## Owner changes on October 14, and the handoff back to Codex - October 14, 2026
 
 - Room Layout Studio (`d5386ab3`): the "Ocean background" switch is gone; the backdrop draws

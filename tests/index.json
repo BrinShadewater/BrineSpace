@@ -90,7 +90,9 @@
       "test_performance_reporting",
       "test_async_bug_report",
       "test_diagnostics",
-      "test_soak_budget"
+      "test_soak_budget",
+      "test_crew_router_lifetime",
+      "test_crew_router_pixels"
     ],
     "owner-gameplay-playtest": [
       "test_owner_report_regressions",
@@ -1576,6 +1578,10 @@
     "test_visible_art_loading_pixels": {
       "lane": "native",
       "reason": "Native exact environment pixels across initial sites, close views and visual clocks."
+    },
+    "test_crew_router_pixels": {
+      "lane": "native",
+      "reason": "Reads actual routed crew texture pixels and retained peer leases across transformed reparenting, removal and re-entry; isolated profile required."
     }
   }
 }
