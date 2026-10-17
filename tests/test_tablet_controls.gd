@@ -24,6 +24,7 @@ func engine_touch(index: int, at: Vector2, down: bool, canceled := false) -> voi
 func world(at: Vector2) -> Vector2:
 	return (Vector2(game.grid_scroll.scroll_horizontal, game.grid_scroll.scroll_vertical) + at - game.grid_scroll.global_position) / game.get_cell_size()
 func run() -> void:
+	check(DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("user://tablet-evidence")) == OK, "Isolated tablet evidence directory exists")
 	var prefix := "user://tablet_%d" % OS.get_process_id()
 	Preferences.save_path = prefix + ".cfg"
 	var Store = preload("res://scripts/room_layout_store.gd")
@@ -224,7 +225,7 @@ func run() -> void:
 		game.find_child("TouchCancel",true,false).pressed.emit()
 		for i in range(8): await process_frame
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-QA-build/tablet-layout.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/tablet-layout.png")
 	print("TABLET CONTROLS %s: %d failures" % ["PASS" if failures == 0 else "FAIL", failures])
 	game.queue_free(); game = null
 	for i in range(8): await process_frame

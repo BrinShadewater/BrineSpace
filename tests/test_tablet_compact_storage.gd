@@ -17,6 +17,10 @@ func _init():call_deferred("run")
 func check(ok:bool,label:String):
  if not ok:failures+=1;push_error(label)
 func run():
+ check(DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("user://tablet-evidence")) == OK, "Isolated tablet evidence directory exists")
+ # Simulate Apple policy without disabling the shipped Windows LA8 path.
+ var desktop_effect_policy:bool=Motion.native_effect_storage
+ Motion.native_effect_storage=false
  root.set_meta("tablet_controls",true)
  var mode="hull"
  for arg in OS.get_cmdline_user_args():
@@ -43,25 +47,29 @@ func run():
   for lane in range(2):
    var view=SubViewport.new();view.size=Vector2i(cell)+Vector2i(32,32);view.transparent_bg=true;view.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(view);captures.append(view)
    var p=Painter.new();p.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;p.texture_repeat=CanvasItem.TEXTURE_REPEAT_DISABLED;p.texture=original;p.cell=cell;p.record=record;p.reference=lane==0;view.add_child(p);painters.append(p)
+  var lease_tested:=false
   for frame in [0,int(clip.frameCount)/2,int(clip.frameCount)-1]:
    for p in painters:p.index=frame;p.queue_redraw()
    for i in range(3):await process_frame
    await RenderingServer.frame_post_draw
    check(captures[0].get_texture().get_image().get_data()==captures[1].get_texture().get_image().get_data(),"Compact hull renders exact visible pixels frame%d"%frame)
-   if frame==0:
-    var held=weakref(compact.frames[0])
+   # Empty effect cells deliberately issue no draw command or frame lease.
+   if not lease_tested and compact.frames.has(int(frame)):
+    lease_tested=true
+    var held=weakref(compact.frames[int(frame)])
     var before=captures[1].get_texture().get_image().get_data()
-    for other in range(20,32):compact.frame(other)
-    check(not compact.frames.has(0),"Another consumer evicts old frame from LRU")
+    for offset in range(1,13):compact.frame((int(frame)+offset)%int(clip.frameCount))
+    check(not compact.frames.has(int(frame)),"Another consumer evicts old frame from LRU")
     check(held.get_ref()!=null,"Retained canvas leases survive frame cache eviction")
     for i in range(3):await process_frame
     await RenderingServer.frame_post_draw
     check(before==captures[1].get_texture().get_image().get_data(),"Retained pixels stay visible after frame cache eviction")
-    painters[1].index=40;painters[1].queue_redraw()
+    painters[1].index=(int(frame)+1)%int(clip.frameCount);painters[1].queue_redraw()
     for i in range(3):await process_frame
     await RenderingServer.frame_post_draw
     check(held.get_ref()==null,"Redrawing canvas releases retired frame lease")
 
+  check(lease_tested,"A visible sampled frame exercises retained canvas leases")
   var flood=ShaderMaterial.new();flood.shader=preload("res://scripts/flood_submersion.gdshader")
   for p in painters:p.material=flood;p.index=int(clip.frameCount)/2;p.queue_redraw()
   for i in range(3):await process_frame
@@ -87,9 +95,9 @@ func run():
    print("SCALED_COMPACT scale=",scale_value," changed=",changed," unexplained=",unexplained)
    check(unexplained==0,"Fractional zoom samples only original neighboring pixels")
    if scale_value==0.5:
-    drawn.save_png("/Users/Shared/BrineSpace-iPad-compact-evidence/half-"+mode+".png")
-    Image.create_from_data(drawn.get_width(),drawn.get_height(),false,Image.FORMAT_RGBA8,references[0]).save_png("/Users/Shared/BrineSpace-iPad-compact-evidence/half-reference-"+mode+".png")
-   if scale_value==0.3:drawn.save_png("/Users/Shared/BrineSpace-iPad-compact-evidence/scaled-"+mode+".png")
+    drawn.save_png("user://tablet-evidence/half-"+mode+".png")
+    Image.create_from_data(drawn.get_width(),drawn.get_height(),false,Image.FORMAT_RGBA8,references[0]).save_png("user://tablet-evidence/half-reference-"+mode+".png")
+   if scale_value==0.3:drawn.save_png("user://tablet-evidence/scaled-"+mode+".png")
    painters[0].shift=Vector2.ZERO
   for view in captures:view.queue_free()
  # Edited or unavailable derived data must retain the original artwork fallback.
@@ -98,6 +106,7 @@ func run():
  var rejected:Image=Motion.load_cargo_storage(path,spec,FileAccess.get_file_as_bytes(path))
  check(rejected==null,"Invalid compact hash rejects derived data for original fallback")
  root.remove_meta("tablet_controls")
+ Motion.native_effect_storage=desktop_effect_policy
  check(Motion.compact_storage_spec(path).is_empty(),"Desktop does not select tablet hull storage")
  print("TABLET COMPACT STORAGE ","PASS" if failures==0 else "FAIL",": ",failures," failures")
  quit(1 if failures else 0)

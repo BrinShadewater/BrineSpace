@@ -34,6 +34,7 @@ func isolate_scene(node: Node) -> void:
 		node.set("run_save_path",profile_prefix+".next.loop")
 		node.set_meta("startup_manifest_path",profile_prefix+".startup-images")
 func run() -> void:
+	check(DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("user://tablet-evidence")) == OK, "Isolated tablet evidence directory exists")
 	var prefix := "user://tablet_refinement_%d" % OS.get_process_id()
 	profile_prefix = prefix
 	root.set_meta("tablet_controls",true)
@@ -51,7 +52,7 @@ func run() -> void:
 			check(skip.size.x>=200 and skip.size.y>=72,"Intro Skip is touch sized")
 			check(skip.get_global_rect().end.x<=root.get_visible_rect().end.x and skip.get_global_rect().end.y<=root.get_visible_rect().end.y,"Intro Skip fits bottom right")
 			await RenderingServer.frame_post_draw
-			root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-intro-evidence/intro.png")
+			root.get_texture().get_image().save_png("user://tablet-evidence/intro.png")
 			engine_touch(0,skip.get_global_rect().get_center(),true); engine_touch(0,skip.get_global_rect().get_center(),false)
 			check(intro._ended and intro._held>=intro.HOLD_SECONDS and not intro._player.is_playing(),"Touch Skip stops film and bypasses final hold")
 		while ResourceLoader.load_threaded_get_status(intro.TITLE_SCENE)==ResourceLoader.THREAD_LOAD_IN_PROGRESS: await process_frame
@@ -63,6 +64,7 @@ func run() -> void:
 	root.add_child(game); current_scene = game
 	if DisplayServer.get_name() != "headless": DisplayServer.window_set_size(Vector2i(1180,820))
 	while not game.startup_complete: await process_frame
+	check(not game.startup_stage_ms.has("initial_art"), "Tablet startup keeps visible art preparation lazy")
 	if DisplayServer.get_name() != "headless":
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(Vector2i(1180,820))
@@ -95,7 +97,7 @@ func run() -> void:
 	game.crew_comms.advance()
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-alignment-evidence/dialogue.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/dialogue.png")
 	game.crew_comms.body.text="A recorded transmission continues.\n".repeat(30)
 	game.crew_comms.body.visible_characters=-1
 	game.crew_comms.body.scroll_following=false
@@ -159,7 +161,7 @@ func run() -> void:
 	if DisplayServer.get_name() != "headless":
 		for i in range(4): await process_frame
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-alignment-evidence/gameplay.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/gameplay.png")
 	var compact_archive = preload("res://scripts/title_archive.gd").new()
 	compact_archive.meta_state=game.meta; compact_archive.mode="settings"; compact_archive.in_game=true
 	root.add_child(compact_archive)
@@ -170,7 +172,7 @@ func run() -> void:
 	while compact_archive.modulate.a<0.999: await process_frame
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-alignment-evidence/settings.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/settings.png")
 	var settings=compact_archive.find_child("SettingsPanel",true,false)
 	for pc in ["Resolution","WindowMode","VSync","ZoomSensitivity","InvertZoom","PauseUnfocused","KeyBindings","TooltipDelay","MuteUnfocused"]:
 		check(settings.find_child(pc,true,false)==null,"iPad Settings excludes PC option: "+pc)
@@ -186,7 +188,7 @@ func run() -> void:
 		check(heading.size.x>=150 and heading.size.y<=60,"Touch guide headings remain readable horizontal lines")
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-alignment-evidence/controls.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/controls.png")
 	cap.item_selected.emit(1)
 	check(Preferences.fps_cap==30 and Engine.max_fps==30,"iPad 30 FPS option controls actual runtime")
 	cap.item_selected.emit(2)
@@ -260,7 +262,7 @@ func run() -> void:
 	check(not title.start_button.disabled, "Closing settings releases title again")
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-alignment-evidence/title.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/title.png")
 	# Exercise the real title -> loading -> new loop -> Continue transition.
 	Preferences.reduced_motion = true
 	title._start_game()
@@ -281,7 +283,7 @@ func run() -> void:
 	if is_instance_valid(overlay):
 		if DisplayServer.get_name() != "headless":
 			await RenderingServer.frame_post_draw
-			root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-alignment-evidence/loading.png")
+			root.get_texture().get_image().save_png("user://tablet-evidence/loading.png")
 		current_scene.grid_scroll.scroll_horizontal=0; current_scene.grid_scroll.scroll_vertical=0
 		var continue_at: Vector2=overlay.continue_button.get_global_rect().get_center()
 		engine_touch(0,continue_at,true); engine_touch(0,continue_at,false)

@@ -7,6 +7,9 @@ func _init():call_deferred("run")
 func check(ok:bool,label:String):
  if not ok:failures+=1;push_error(label)
 func run():
+ # Simulate Apple policy without disabling the shipped Windows LA8 path.
+ var desktop_effect_policy:bool=Motion.native_effect_storage
+ Motion.native_effect_storage=false
  root.set_meta("tablet_controls",true)
  if OS.get_cmdline_user_args().has("--atlas-bench"):
   var clip=Motion.catalog("mining").states["mine-south"]
@@ -68,6 +71,7 @@ func run():
  print("TABLET LARGE ATLAS peak_pending=",max_pending," ready=",ready)
  Motion.finish_pending_jobs()
  root.remove_meta("tablet_controls")
+ Motion.native_effect_storage=desktop_effect_policy
  check(int(Motion.cache_diagnostics().budget_bytes)==256*1024*1024,"Desktop cache budget is retained")
  print("TABLET DRONE MEMORY ","PASS" if failures==0 else "FAIL",": ",failures," failures")
  quit(1 if failures else 0)

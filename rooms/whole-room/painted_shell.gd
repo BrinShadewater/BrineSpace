@@ -21,8 +21,8 @@ static func png(path:String) -> Texture2D:
 	if not textures.has(path):
 		var im:Image=preload("res://scripts/hand_image_preparation.gd").take(path)
 		if im==null:
-			im=Image.new()
-			if im.load_png_from_buffer(FileAccess.get_file_as_bytes(path))!=OK:return null
+			im=preload("res://scripts/safe_image.gd").raw_image(path)
+			if im==null:return null
 		textures[path]=ImageTexture.create_from_image(im)
 	return textures[path]
 static func id_for(view) -> String:return Store.room_id_for(view,Store.asset_for(view))

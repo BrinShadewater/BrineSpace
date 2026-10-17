@@ -1,0 +1,69 @@
+{
+  "scope": "Retrospective existing250ms process samples. Process CPU, not main-thread stacks; read counters are process logical I/O, not physical disk latency. Time is relative to first external sample; Godot uptime alignment is approximate. CPU threshold<10ms/sample and reads<64KiB. This detects waits but cannot establish scheduling/GPU/driver/OS/application cause. No samples discarded.",
+  "runs": [
+    {
+      "label": "loading-A-new-1-fresh",
+      "ready_ms": 5946.112,
+      "uncovered_ms": 6562.248,
+      "initial_art_ms": 582.784,
+      "low_cpu_periods": []
+    },
+    {
+      "label": "loading-A-new-1-repeat",
+      "ready_ms": 5288.007,
+      "uncovered_ms": 6018.336,
+      "initial_art_ms": 379.065,
+      "low_cpu_periods": []
+    },
+    {
+      "label": "loading-B-new-1-fresh",
+      "ready_ms": 6874.452,
+      "uncovered_ms": 9545.634,
+      "initial_art_ms": 1239.598,
+      "low_cpu_periods": [
+        {
+          "start_seconds_from_first_sample": 10.033806399998866,
+          "end_seconds_from_first_sample": 11.538748099999793,
+          "wall_seconds": 1.504941700000927,
+          "process_cpu_seconds": 0.0,
+          "read_bytes": 49152
+        }
+      ]
+    },
+    {
+      "label": "loading-B-new-1-repeat",
+      "ready_ms": 5164.362,
+      "uncovered_ms": 5781.16,
+      "initial_art_ms": 350.665,
+      "low_cpu_periods": []
+    },
+    {
+      "label": "loading-B-new-2-fresh",
+      "ready_ms": 5728.691,
+      "uncovered_ms": 6336.85,
+      "initial_art_ms": 568.21,
+      "low_cpu_periods": []
+    },
+    {
+      "label": "loading-B-new-2-repeat",
+      "ready_ms": 5003.537,
+      "uncovered_ms": 5607.803,
+      "initial_art_ms": 329.88,
+      "low_cpu_periods": []
+    },
+    {
+      "label": "loading-A-new-2-fresh",
+      "ready_ms": 5887.139,
+      "uncovered_ms": 6502.167,
+      "initial_art_ms": 577.424,
+      "low_cpu_periods": []
+    },
+    {
+      "label": "loading-A-new-2-repeat",
+      "ready_ms": 5069.044,
+      "uncovered_ms": 5797.036,
+      "initial_art_ms": 321.134,
+      "low_cpu_periods": []
+    }
+  ]
+}

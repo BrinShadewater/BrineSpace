@@ -2,6 +2,7 @@ extends "res://scripts/crew_storage/base_batch.gd"
 ## Private experiment: main-thread PNG/prefetch ownership, bounded independent
 ## worker compression/bounds, main-thread frame adoption. No GPU worker calls.
 const WORK_WINDOW:=8
+const Prefetch=preload("res://scripts/image_prefetch.gd")
 var jobs:Dictionary={}
 var key_jobs:Dictionary={}
 var path_jobs:Dictionary={}
@@ -44,7 +45,7 @@ func prepare_path(path:String):
 		var bounds_started:=Time.get_ticks_usec()
 		result.used=Rect2(image.get_used_rect())
 		result.bounds_usec=Time.get_ticks_usec()-bounds_started
-		result.worker_usec=Time.get_ticks_usec()-work_started)
+		result.worker_usec=Time.get_ticks_usec()-work_started,true)
 	jobs[path]={"task":task,"result":result}
 	key_jobs[key]=path;path_jobs[path]=path;job_paths[path]=[path]
 	submitted+=1;peak_jobs=maxi(peak_jobs,jobs.size())
@@ -81,6 +82,11 @@ func materialize(display:Texture2D,early:bool=true)->void:
 	super.materialize(display,early)
 func finish()->Dictionary:
 	var ids:Array=pending.keys();var next:=0
+	if Prefetch.active and Prefetch.batch_order:
+		var order:=PackedStringArray()
+		for id in ids:
+			if pending[id].texture.get_ref()!=null:order.append(pending[id].path)
+		Prefetch.prime(order)
 	for id in ids:
 		while next<ids.size() and jobs.size()<WORK_WINDOW:
 			var ahead:int=ids[next];next+=1

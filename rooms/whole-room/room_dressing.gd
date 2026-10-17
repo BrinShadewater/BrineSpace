@@ -8,6 +8,9 @@ var textures: Dictionary={}
 func _init(host, path: String) -> void:
 	room=host
 	profile=JSON.parse_string(FileAccess.get_file_as_string(path))
+	# First profiles have no learned room order. Announce this small authored set
+	# before consuming it; the existing bounded decoder owns and releases the work.
+	preload("res://scripts/image_prefetch.gd").prime(PackedStringArray(profile.textures.values()))
 	var pool = room.get_meta("room_texture_pool") if room.has_meta("room_texture_pool") else null
 	for key in profile.textures:
 		if pool != null:

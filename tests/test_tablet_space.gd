@@ -35,6 +35,7 @@ func isolate_scene(node: Node) -> void:
 		node.set("run_save_path",profile_prefix+".next.loop")
 		node.set_meta("startup_manifest_path",profile_prefix+".startup-images")
 func run() -> void:
+	check(DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("user://tablet-evidence")) == OK, "Isolated tablet evidence directory exists")
 	var prefix := "user://tablet_refinement_%d" % OS.get_process_id()
 	profile_prefix = prefix
 	root.set_meta("tablet_controls",true)
@@ -115,7 +116,7 @@ func run() -> void:
 		await RenderingServer.frame_post_draw
 		while archive.modulate.a < 0.999: await process_frame
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-space-evidence/codex.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/codex.png")
 	archive.free()
 	game._open_journal_page("diagnostics",3)
 	game.archive_label.text="Touch scroll text\n".repeat(100)
@@ -135,6 +136,6 @@ func run() -> void:
 		check(button.size.y>=72 and button.size.x>=72,"Crew details buttons have finger-sized targets")
 	if DisplayServer.get_name() != "headless":
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/Users/Shared/BrineSpace-iPad-space-evidence/gameplay.png")
+		root.get_texture().get_image().save_png("user://tablet-evidence/gameplay.png")
 	print("TABLET SPACE PASS: %d failures" % failures)
 	quit(1 if failures else 0)

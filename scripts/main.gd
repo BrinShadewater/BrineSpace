@@ -413,6 +413,11 @@ func _ready() -> void:
 	grid_view.prewarm_station_views(self)
 	startup_stage_ms["station_rooms"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
 	startup_stamp = Time.get_ticks_usec()
+	# Desktop preparation stays out of the memory-constrained tablet startup path.
+	if not TabletControls.enabled(self):
+		grid_view.prewarm_loading_art(self)
+		startup_stage_ms["initial_art"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
+	startup_stamp = Time.get_ticks_usec()
 	crew_comms=preload("res://scripts/crew_comms.gd").new()
 	crew_comms.opening_enabled=fresh_comms_opening
 	crew_comms.game=self
