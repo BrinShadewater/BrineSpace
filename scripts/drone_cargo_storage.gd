@@ -12,6 +12,9 @@ var box:Rect2i
 var cell:Vector2i
 var columns:int
 var frames:Dictionary={}
+var frame_cache_limit:=0 # Desktop retains its existing policy.
+var frame_order:Array[int]=[]
+var frame_bytes:=0
 var original:ImageTexture
 var base_bytes:int
 var storage_changed:Callable
@@ -25,13 +28,23 @@ func _get_image()->Image:
 	if image.load_png_from_buffer(original_png)!=OK:return null
 	return image
 func frame(index:int)->Texture2D:
-	if frames.has(index):return frames[index]
+	if frames.has(index):
+		if frame_cache_limit>0:frame_order.erase(index);frame_order.append(index)
+		return frames[index]
 	if cropped==null or index<0 or columns<=0:return null
 	var at:=Vector2i(index%columns,index/columns)*box.size
 	if at.y+box.size.y>cropped.get_height():return null
 	var started:int=Time.get_ticks_usec()
 	var image:Image=cropped.get_region(Rect2i(at,box.size))
 	frames[index]=ImageTexture.create_from_image(image)
+	if frame_cache_limit>0:
+		frame_order.append(index);frame_bytes+=image.get_data_size()
+		while frame_order.size()>frame_cache_limit:
+			var oldest:int=frame_order.pop_front()
+			var retired:Texture2D=frames[oldest]
+			frame_bytes-=retired.get_width()*retired.get_height()*4
+			frames.erase(oldest)
+		if storage_changed.is_valid():storage_changed.call(base_bytes+frame_bytes+(width*height*4 if original!=null else 0))
 	if upload_record.is_valid():upload_record.call(image.get_data_size(),Time.get_ticks_usec()-started,started,image.get_size(),"frame")
 	return frames[index]
 func original_texture()->Texture2D:
@@ -41,7 +54,7 @@ func original_texture()->Texture2D:
 		var started:int=Time.get_ticks_usec()
 		original=ImageTexture.create_from_image(image)
 		if upload_record.is_valid():upload_record.call(image.get_data_size(),Time.get_ticks_usec()-started,started,image.get_size(),"original")
-		if storage_changed.is_valid():storage_changed.call(base_bytes+image.get_data_size())
+		if storage_changed.is_valid():storage_changed.call(base_bytes+image.get_data_size()+frame_bytes)
 	return original
 func _get_rid()->RID:
 	var texture:Texture2D=original_texture()

@@ -90,6 +90,26 @@ void fragment() {
 		var prefix: String={"walls":"lever","sprinklers":"lever","doors":"rocker","pumps":"push"}.get(entry[0],"slide")
 		var dimensions:=Vector2(88,60 if entry[0] in ["walls","sprinklers","doors"] else 46)
 		add_control(grid,entry[0],entry[1],dimensions,"res://brineui/industrial-switches-v1/"+prefix+"-off.tres","res://brineui/industrial-switches-v1/"+prefix+"-on.tres",entry[2])
+	if preload("res://scripts/tablet_controls.gd").enabled(game):
+		custom_minimum_size = Vector2(0,0)
+		heading.add_theme_font_size_override("font_size",20)
+		var touch_grid := GridContainer.new()
+		touch_grid.name = "TouchSwitchGrid"
+		touch_grid.columns = 4
+		touch_grid.add_theme_constant_override("h_separation",12)
+		touch_grid.add_theme_constant_override("v_separation",10)
+		column.add_child(touch_grid)
+		for key in controls:
+			var button: Button = controls[key].button
+			var cell: VBoxContainer = button.get_parent()
+			cell.reparent(touch_grid)
+			cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			cell.custom_minimum_size.x = 128
+			button.custom_minimum_size = Vector2(0,96)
+			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			for label in cell.get_children():
+				if label is Label: label.add_theme_font_size_override("font_size",18)
+		row.queue_free()
 	refresh()
 func add_control(parent, key: String, caption: String, dimensions: Vector2, off: String, on: String, tip: String) -> void:
 	var column:=VBoxContainer.new(); column.add_theme_constant_override("separation",2); parent.add_child(column)

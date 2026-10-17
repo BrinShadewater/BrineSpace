@@ -106,8 +106,12 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			pointer = event.position
 			var drop_cell: Vector2i = _cell_under_pointer()
-			var drop := over_station
+			var return_to_hand: bool = preload("res://scripts/tablet_controls.gd").enabled(game) and not event.canceled and game.hand_panel.get_global_rect().has_point(event.position)
+			var drop := over_station and not return_to_hand
 			_finish()
+			if return_to_hand:
+				game.get_node("TabletControls").cancel_blueprint()
+				return
 			if drop:
 				var before: bool = game.occupied.has(drop_cell) or game.drone_fleet.reserved(drop_cell)
 				game._on_grid_clicked(drop_cell)

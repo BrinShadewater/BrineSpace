@@ -17,6 +17,18 @@ const INVISIBLE_IMAGE_LIMIT:=64
 static var trim_calls:=0
 static var trim_removed:=0
 const CACHE_BUDGET=268435456
+const TABLET_CACHE_BUDGET=64*1024*1024
+static func tablet_memory_limits()->bool:
+	var tree:=Engine.get_main_loop() as SceneTree
+	return OS.has_feature("ios") or (tree!=null and bool(tree.root.get_meta("tablet_controls",false)))
+static func cache_budget()->int:
+	return TABLET_CACHE_BUDGET if tablet_memory_limits() else CACHE_BUDGET
+static func finish_ready_jobs()->void:
+	# A visible set can change while its only decode is pending. Consume finished
+	# work even if that layer is no longer requested, so the queue cannot starve.
+	for path in image_jobs.keys():
+		if WorkerThreadPool.is_task_completed(image_jobs[path].task): finish_texture(path)
+
 static var active_canvas:CanvasItem
 static var image_jobs:Dictionary={}
 static var texture_uploads := 0
@@ -91,8 +103,8 @@ static func cache_diagnostics() -> Dictionary:
 		if live_details.size()<64:
 			live_details.append({"path":path,"bytes":bytes,"size":image.get_size(),
 				"cache_owned":cache_owned,"last_use_age_frames":frame-int(last_used.get(path,-100))})
-	return {"cargo_storage":cargo_storage_enabled,"cargo_storage_sources":cargo_storage.size(),"cargo_frame_draws":cargo_frame_draws,"cargo_fallback_draws":cargo_fallback_draws,"native_encoded_original_bytes":encoded_original_bytes,"native_mask_draws":native_mask_draws,"native_fallback_draws":native_fallback_draws,"native_mask_sources":effect_storage.size(),"native_effect_storage":native_effect_storage,"cached_decoded_bytes": cached_bytes, "budget_bytes": CACHE_BUDGET,
-		"over_budget_bytes": maxi(0, cached_bytes - CACHE_BUDGET), "entries": textures.size(),
+	return {"cargo_storage":cargo_storage_enabled,"cargo_storage_sources":cargo_storage.size(),"cargo_frame_draws":cargo_frame_draws,"cargo_fallback_draws":cargo_fallback_draws,"native_encoded_original_bytes":encoded_original_bytes,"native_mask_draws":native_mask_draws,"native_fallback_draws":native_fallback_draws,"native_mask_sources":effect_storage.size(),"native_effect_storage":native_effect_storage,"cached_decoded_bytes": cached_bytes, "budget_bytes": cache_budget(),
+		"over_budget_bytes": maxi(0, cached_bytes - cache_budget()), "entries": textures.size(),
 		"recent_decoded_bytes": recent_bytes, "stale_decoded_bytes": stale_bytes,
 		"classified_entries": visited, "classification_complete": visited == texture_bytes.size(),
 		"weak_image_entries":weak_images.size(),"stale_lookup_removals":trim_removed,
@@ -107,9 +119,16 @@ static func cache_diagnostics() -> Dictionary:
 		"scope": "Cache bookkeeping; recent means touched within two frames, not GPU residency or an eviction instruction"}
 static func request_texture(path:String) -> void:
 	if textures.has(path) or restore_live(path) or image_jobs.has(path): return
+	if tablet_memory_limits():
+		# Completed-but-unconsumed Images count too: multiple large PNG layers
+		# exceeded the physical iPad's 2867 MB limit during ordinary building.
+		if not image_jobs.is_empty(): return
+		trim_stale()
 	var result:Dictionary={}
+	# Capture policy on the main thread; workers must never read SceneTree nodes.
+	var tablet:=tablet_memory_limits()
 	var task:=WorkerThreadPool.add_task(func():
-		var image:Image=load_native_or_original(path)
+		var image:Image=load_native_or_original(path,tablet)
 		if image!=null:
 			result.image=image
 			result.invisible=image.is_invisible())
@@ -135,6 +154,10 @@ static func finish_texture(path:String) -> bool:
 	if not image_jobs.has(path): request_texture(path); return false
 	var job:Dictionary=image_jobs[path]
 	if not WorkerThreadPool.is_task_completed(job.task): return false
+	return consume_job(path)
+
+static func consume_job(path:String)->bool:
+	var job:Dictionary=image_jobs[path]
 	WorkerThreadPool.wait_for_task_completion(job.task)
 	image_jobs.erase(path)
 	if not job.result.has("image"):
@@ -150,7 +173,7 @@ static func cache_image(path:String,image:Image,invisible:bool=false) -> void:
 		image=Image.create(1,1,false,Image.FORMAT_RGBA8)
 		image.fill(Color(0,0,0,0))
 	var bytes:=image.get_data_size()
-	while cached_bytes+bytes>CACHE_BUDGET and not texture_order.is_empty():
+	while cached_bytes+bytes>cache_budget() and not texture_order.is_empty():
 		var oldest:String=texture_order[0]
 		if int(last_used.get(oldest,0))>=Engine.get_process_frames()-2:break
 		texture_order.pop_front()
@@ -181,6 +204,11 @@ static func catalog(kind:String) -> Dictionary:
 	return catalogs[kind]
 static func texture(path:String) -> Texture2D:
 	if not textures.has(path) and not restore_live(path):
+		# A retained draw can request a layer before asynchronous preparation
+		# finishes. Do not decode it alongside another large tablet PNG.
+		if tablet_memory_limits():
+			for queued in image_jobs.keys():
+				if queued!=path: consume_job(queued)
 		var image:=Image.new()
 		var invisible:=false
 		if image_jobs.has(path):
@@ -191,7 +219,7 @@ static func texture(path:String) -> Texture2D:
 			image=job.result.get("image",image)
 			invisible=job.result.get("invisible",false)
 		else:
-			image=load_native_or_original(path)
+			image=load_native_or_original(path,tablet_memory_limits())
 			if image==null:push_error("Drone animation missing: "+path);return null
 			invisible=image.is_invisible()
 		cache_image(path,image,invisible)
@@ -274,6 +302,12 @@ static func atlas(canvas:CanvasItem,record:Dictionary,index:int,rect:Rect2,size:
 		# Same quad as the full frame; samples outside the small frame clamp to its transparent border.
 		var cargo_frame:Texture2D=atlas_texture.frame(index) if columns==atlas_texture.columns and Vector2i(size)==atlas_texture.cell and cargo_context_supported(canvas) else null
 		if cargo_frame!=null:
+			if atlas_texture.frame_cache_limit>0:
+				# Retained draw commands hold RIDs, not texture Resources. Lease
+				# this frame until its canvas redraws, even if another consumer
+				# evicts it from the small shared frame cache in the meantime.
+				begin(canvas)
+				canvas.get_meta("drone_texture_pins")[cargo_frame.get_instance_id()]=cargo_frame
 			cargo_frame_draws+=1
 			canvas.draw_texture_rect_region(cargo_frame,rect,Rect2(-Vector2(atlas_texture.box.position),size),tint)
 			return
@@ -332,9 +366,9 @@ static func trim_stale()->void:
 	trim_calls+=1
 	for path in weak_images.keys():
 		if weak_images[path].ref.get_ref()==null:weak_images.erase(path)
-	if cached_bytes<=CACHE_BUDGET:return
+	if cached_bytes<=cache_budget():return
 	for path in texture_order.duplicate():
-		if cached_bytes<=CACHE_BUDGET:break
+		if cached_bytes<=cache_budget():break
 		if int(last_used.get(path,0))>=Engine.get_process_frames()-2:continue
 		cached_bytes-=int(texture_bytes[path])
 		textures.erase(path);texture_bytes.erase(path);last_used.erase(path)
@@ -351,7 +385,7 @@ static var native_fallback_draws:=0
 static var native_effect_storage:=OS.get_name()=="Windows" and not OS.get_cmdline_user_args().has("--reference-effect-storage")
 # Generated catalog; a variable so fixtures can supply scratch entries.
 static var effect_storage:Dictionary=NativeEffectData.DATA
-static func load_native_or_original(path:String)->Image:
+static func load_native_or_original(path:String,tablet:bool=false)->Image:
 	var image:=Image.new()
 	var original_bytes:=FileAccess.get_file_as_bytes(path) if FileAccess.file_exists(path) else PackedByteArray()
 	if original_bytes.is_empty():return null
@@ -366,8 +400,9 @@ static func load_native_or_original(path:String)->Image:
 				if hash.finish().hex_encode()==spec.sha256 and image.load_png_from_buffer(bytes)==OK and image.get_format()==Image.FORMAT_LA8 and image.get_size()==Vector2i(spec.width,spec.height) and not image.has_mipmaps():
 					image.set_meta("native_effect_original_png",original_bytes);image.set_meta("native_effect_source",path)
 					return image
-	if cargo_storage_enabled and cargo_storage.has(path):
-		var cargo:Image=load_cargo_storage(path,cargo_storage[path],original_bytes)
+	var compact_spec:=storage_spec_for_policy(path,tablet or OS.has_feature("ios"))
+	if not compact_spec.is_empty():
+		var cargo:Image=load_cargo_storage(path,compact_spec,original_bytes)
 		if cargo!=null:return cargo
 	image=Image.new()
 	return image if image.load_png_from_buffer(original_bytes)==OK else null
@@ -386,7 +421,7 @@ static func native_context_supported(canvas:CanvasItem,color:Color)->bool:
 	var material:Material=material_node.material
 	return material==null or (material is ShaderMaterial and material.shader==NativeFlood)
 static func make_native_texture(path:String,image:Image)->Texture2D:
-	if cargo_storage.has(path) and image.get_meta("drone_cargo_source","")==path and image.has_meta("drone_cargo_original_png"):return make_cargo_texture(path,image)
+	if not compact_storage_spec(path).is_empty() and image.get_meta("drone_cargo_source","")==path and image.has_meta("drone_cargo_original_png"):return make_cargo_texture(path,image)
 	if not effect_storage.has(path) or image.get_format()!=Image.FORMAT_LA8 or image.get_meta("native_effect_source","")!=path or not image.has_meta("native_effect_original_png"):return ImageTexture.create_from_image(image)
 	var display=NativeEffect.new();display.source=path;display.original_png=image.get_meta("native_effect_original_png");display.width=image.get_width();display.height=image.get_height();display.base_bytes=image.get_data_size();display.mask=ImageTexture.create_from_image(image)
 	var ref:WeakRef=weakref(display)
@@ -403,6 +438,7 @@ static func make_native_texture(path:String,image:Image)->Texture2D:
 
 const CargoStorage=preload("res://scripts/drone_cargo_storage.gd")
 const CargoStorageData=preload("res://scripts/drone_cargo_storage_catalog.gd")
+const TabletStorageData=preload("res://scripts/tablet_drone_storage_catalog.gd")
 static var cargo_frame_draws:=0
 static var cargo_fallback_draws:=0
 # Cropped cargo frames replace whole-sheet uploads. Scaled drawing can pick a neighbouring
@@ -410,6 +446,12 @@ static var cargo_fallback_draws:=0
 static var cargo_storage_enabled:=OS.get_name()=="Windows" and not OS.get_cmdline_user_args().has("--reference-cargo-storage")
 # Generated catalog; a variable so fixtures can supply scratch entries.
 static var cargo_storage:Dictionary=CargoStorageData.DATA
+static func compact_storage_spec(path:String)->Dictionary:
+	return storage_spec_for_policy(path,tablet_memory_limits())
+static func storage_spec_for_policy(path:String,tablet:bool)->Dictionary:
+	if tablet and not OS.get_cmdline_user_args().has("--reference-tablet-storage") and TabletStorageData.DATA.has(path):
+		return TabletStorageData.DATA[path]
+	return cargo_storage.get(path,{}) if cargo_storage_enabled else {}
 static func load_cargo_storage(path:String,spec:Dictionary,original_bytes:PackedByteArray)->Image:
 	var original_hash:=HashingContext.new();original_hash.start(HashingContext.HASH_SHA256);original_hash.update(original_bytes)
 	# A changed selected PNG must invalidate its derived storage, even at the same path/dimensions.
@@ -440,8 +482,9 @@ static func cargo_context_supported(canvas:CanvasItem)->bool:
 	var material:Material=material_node.material
 	return material==null or (material is ShaderMaterial and material.shader==NativeFlood)
 static func make_cargo_texture(path:String,image:Image)->Texture2D:
-	var spec:Dictionary=cargo_storage[path]
+	var spec:Dictionary=compact_storage_spec(path)
 	var display=CargoStorage.new();display.source=path;display.original_png=image.get_meta("drone_cargo_original_png");display.width=int(spec.width);display.height=int(spec.height)
+	if tablet_memory_limits(): display.frame_cache_limit=6
 	display.cropped=image;display.box=Rect2i(int(spec.box[0]),int(spec.box[1]),int(spec.box[2]),int(spec.box[3]));display.cell=Vector2i(int(spec.cell[0]),int(spec.cell[1]));display.columns=int(spec.columns);display.base_bytes=image.get_data_size()
 	var ref:WeakRef=weakref(display)
 	display.storage_changed=func(bytes:int):

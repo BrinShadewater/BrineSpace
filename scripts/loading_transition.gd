@@ -8,6 +8,10 @@ var transcript: RichTextLabel
 var transmission_window: Control
 var continue_button: Button
 var finished_reading := false
+var tap_stamp := 0
+var scene_load_started := 0
+var station_build_started := 0
+var timings := {}
 var progress: Control
 # The transmission types itself out like an old terminal message sent across time before the
 # station starts loading (owner playtest, Sept 17). A click, Enter or Space shows it all at once.
@@ -68,6 +72,9 @@ func _ready() -> void:
 	continue_button = Button.new()
 	continue_button.text = "RETURN TO ARCHIVE" if replay_mode else "CONTINUE"
 	preload("res://scripts/title_button_style.gd").apply(continue_button,1000,56)
+	if preload("res://scripts/tablet_controls.gd").enabled(self):
+		continue_button.custom_minimum_size = Vector2(720,104)
+		continue_button.add_theme_font_size_override("font_size",30)
 	continue_button.disabled = not replay_mode
 	continue_button.pressed.connect(_continue)
 	column.add_child(continue_button)
@@ -80,6 +87,7 @@ func _ready() -> void:
 	if replay_mode: type_transmission.call_deferred()
 
 func begin_station_build() -> void:
+	station_build_started = Time.get_ticks_msec()
 	detail.text = "STATION SYSTEMS // BUILDING STATION"
 
 # Called while the station builds, from inside one long frame (ImagePrefetch forces a draw
@@ -142,6 +150,7 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func prepare_scene(path: String) -> PackedScene:
+	scene_load_started = Time.get_ticks_msec()
 	# Present the opaque loading UI before any expensive load or instantiation.
 	await get_tree().process_frame
 	if DisplayServer.get_name() != "headless":
@@ -156,6 +165,7 @@ func prepare_scene(path: String) -> PackedScene:
 			await get_tree().process_frame
 			if DisplayServer.get_name() != "headless":
 				await RenderingServer.frame_post_draw
+			timings["scene_load_ms"] = Time.get_ticks_msec()-scene_load_started
 			return ResourceLoader.load_threaded_get(path) as PackedScene
 		if state != ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			return null
@@ -170,6 +180,10 @@ func finish_after_scene_change() -> void:
 	while is_instance_valid(game) and not game.get("startup_complete"):
 		await tree.process_frame
 	preload("res://scripts/image_prefetch.gd").end()
+	if is_instance_valid(game):
+		timings["station_build_ms"] = Time.get_ticks_msec()-station_build_started
+		timings["stages_ms"] = game.startup_stage_ms.duplicate()
+		_record_tablet_profile(game)
 	if is_instance_valid(progress): RenderingServer.canvas_item_clear(progress.get_canvas_item())
 	if not is_instance_valid(game):
 		queue_free()
@@ -181,6 +195,10 @@ func finish_after_scene_change() -> void:
 	continue_button.disabled = false
 	while not finished_reading:
 		await tree.process_frame
+	if preload("res://scripts/tablet_controls.gd").enabled(game):
+		game.get_node("TabletControls")._fit_layout()
+		await tree.process_frame
+		game.get_node("TabletControls").center_station()
 	# Allow deferred UI layout and a covered gameplay frame to render first.
 	await tree.process_frame
 	if DisplayServer.get_name() != "headless":
@@ -189,3 +207,11 @@ func finish_after_scene_change() -> void:
 		game.process_mode = previous_mode
 	queue_free()
 
+
+func _record_tablet_profile(game: Node) -> void:
+	if not preload("res://scripts/tablet_controls.gd").enabled(game): return
+	var path: String = game.get_meta("tablet_startup_profile_path","user://ipad_startup_profile.json")
+	var data := {"version":1,"time":Time.get_datetime_string_from_system(true),"engine":Engine.get_version_info().string,"timings":timings}
+	var file := FileAccess.open(path,FileAccess.WRITE)
+	if file != null: file.store_string(JSON.stringify(data,"  "))
+	print("IPAD_STARTUP "+JSON.stringify(data))

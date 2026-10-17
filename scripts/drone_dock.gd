@@ -22,6 +22,7 @@ static func required_paths(kind:String,drone:Dictionary,operating:bool) -> Array
 	return paths
 
 static func prepare_paths(paths:Array,parallel_decode:bool=false) -> bool:
+	if Motion.tablet_memory_limits(): Motion.finish_ready_jobs()
 	# Decode independent layers together; upload small pieces within a short
 	# frame budget. Touch the full set before any upload can evict a sibling.
 	for path in paths:

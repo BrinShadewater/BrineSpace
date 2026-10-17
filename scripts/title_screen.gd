@@ -158,7 +158,7 @@ func _ready() -> void:
 		var reporter := get_node_or_null("/root/BugReport")
 		if reporter != null: reporter.open_report())
 	add_child(report_button)
-	if OS.has_feature("web"):
+	if OS.has_feature("web") or preload("res://scripts/tablet_controls.gd").enabled(self):
 		quit_button.hide()
 	badges = HBoxContainer.new()
 	badges.add_theme_constant_override("separation", 20)
@@ -184,7 +184,7 @@ func _ready() -> void:
 	get_tree().create_timer(2.0).timeout.connect(_warm_studio)
 
 func _warm_studio() -> void:
-	if is_inside_tree() and not starting: preload("res://scripts/studio_warmup.gd").start()
+	if is_inside_tree() and not starting and not preload("res://scripts/tablet_controls.gd").enabled(self): preload("res://scripts/studio_warmup.gd").start()
 
 func _button(caption: String, primary: bool) -> Button:
 	var button := Button.new()
@@ -206,6 +206,9 @@ func _input(event: InputEvent) -> void:
 
 func _layout() -> void:
 	if not is_instance_valid(cover):
+		return
+	if preload("res://scripts/tablet_controls.gd").enabled(self):
+		_layout_tablet()
 		return
 	var footer_height := 280.0
 	footer_height = maxf(footer_height, controls.get_combined_minimum_size().y + 32)
@@ -366,8 +369,16 @@ func _start_game(continuing := false) -> void:
 	progression_button.disabled = true
 	about_button.disabled = true
 	status.text = "RESTORING STATION INTERFACE..."
+	var tap_stamp := Time.get_ticks_msec()
+	# Paint the accepted tap before constructing/loading the next screen.
+	await get_tree().process_frame
+	if DisplayServer.get_name() != "headless": await RenderingServer.frame_post_draw
 	var loading := preload("res://scripts/loading_transition.gd").new()
 	get_tree().root.add_child(loading)
+	loading.tap_stamp = tap_stamp
+	await get_tree().process_frame
+	if DisplayServer.get_name() != "headless": await RenderingServer.frame_post_draw
+	loading.timings["tap_to_loading_visible_ms"] = Time.get_ticks_msec()-tap_stamp
 	await loading.type_transmission()
 	var scene: PackedScene = await loading.prepare_scene(GAME_SCENE)
 	var error := ERR_CANT_OPEN
@@ -375,7 +386,7 @@ func _start_game(continuing := false) -> void:
 		# Station artwork decodes on worker threads while the game builds; the loading
 		# transition ends this once startup completes.
 		loading.begin_station_build()
-		preload("res://scripts/image_prefetch.gd").begin()
+		preload("res://scripts/image_prefetch.gd").begin(get_meta("startup_manifest_path",preload("res://scripts/image_prefetch.gd").MANIFEST))
 		preload("res://scripts/image_prefetch.gd").progress_callback = loading.show_startup_progress
 		loading.finish_after_scene_change()
 		error = get_tree().change_scene_to_packed(scene)
@@ -397,3 +408,48 @@ func _start_game(continuing := false) -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		preload("res://scripts/audio_shutdown.gd").request(self)
+
+func _layout_tablet() -> void:
+	quit_button.hide()
+	layout_button.hide()
+	status.hide()
+	var margin := 32.0
+	var footer := minf(430.0,size.y*0.45)
+	var cover_height := size.x/COVER_RATIO
+	cover.size = Vector2(size.x,cover_height)
+	cover.position = Vector2.ZERO
+	var top := maxf(cover.position.y+cover.size.y+24,size.y-footer)
+	controls.size = Vector2(520,236)
+	controls.alignment = BoxContainer.ALIGNMENT_BEGIN
+	for child in controls.get_children():
+		if child is Label: child.hide()
+	controls.position = Vector2((size.x-520)*0.5,top)
+	for button in [start_button,continue_button,settings_button,about_button,layout_button]:
+		button.custom_minimum_size.y = 112
+		button.add_theme_font_size_override("font_size",30)
+	start_button.custom_minimum_size.x = 500
+	continue_button.custom_minimum_size.x = 500
+	settings_button.position = Vector2(margin,top)
+	settings_button.size = Vector2(360,104)
+	about_button.position = settings_button.position+Vector2(0,124)
+	about_button.size = Vector2(360,104)
+	badges.position = Vector2(size.x-580-margin,top)
+	badges.size = Vector2(580,236)
+	layout_button.position = badges.position+Vector2(0,200)
+	layout_button.size = Vector2(500,84)
+	for button in [codex_button,progression_button]:
+		button.custom_minimum_size = Vector2(280,236)
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		for label in button.find_children("*","Label",true,false): label.add_theme_font_size_override("font_size",22)
+	if checkpoint_panel.visible:
+		checkpoint_panel.size = Vector2(320,0)
+		checkpoint_panel.position = Vector2(size.x-352,maxf(24,cover.position.y+cover_height-checkpoint_panel.size.y-16))
+	report_button.text = "REPORT A BUG"
+	report_button.custom_minimum_size = Vector2(360,88)
+	report_button.add_theme_font_size_override("font_size",24)
+	report_button.position = about_button.position+Vector2(0,124)
+	report_button.size = Vector2(360,88)
+	version_button.position = Vector2((size.x-version_button.size.x)*0.5,size.y-40)
+	error_label.position = Vector2(margin,4)
+	error_label.size = Vector2(size.x-margin*2,64)
+	queue_redraw()

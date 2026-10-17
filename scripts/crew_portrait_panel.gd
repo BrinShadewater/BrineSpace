@@ -26,6 +26,7 @@ var clock := 0.0
 func _ready() -> void:
 	name = "CrewPortraitPanel"
 	position = Vector2(18, 18)
+	if preload("res://scripts/tablet_controls.gd").enabled(game): scale = Vector2(1.15,1.15)
 	add_theme_constant_override("separation", 8)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(portraits)
@@ -46,7 +47,7 @@ func _ready() -> void:
 	close.text = "‹"
 	close.tooltip_text = "Collapse character details"
 	close.pressed.connect(func(): selected = ""; refresh())
-	Buttons.apply(close, 32, 28)
+	Buttons.apply(close, 72 if preload("res://scripts/tablet_controls.gd").enabled(game) else 32, 72 if preload("res://scripts/tablet_controls.gd").enabled(game) else 28)
 	title_row.add_child(close)
 	for label in [activity, health, room]:
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -87,8 +88,11 @@ func _ready() -> void:
 		game.grid_scroll.scroll_horizontal = maxi(0, int(center.x - game.grid_scroll.size.x * 0.5))
 		game.grid_scroll.scroll_vertical = maxi(0, int(center.y - game.grid_scroll.size.y * 0.5))
 		game.grid_view.queue_redraw())
-	Buttons.apply(focus, 230, 32)
+	Buttons.apply(focus, 230, 72 if preload("res://scripts/tablet_controls.gd").enabled(game) else 32)
 	box.add_child(focus)
+	if preload("res://scripts/tablet_controls.gd").enabled(game):
+		details.custom_minimum_size.x = 300
+		preload("res://scripts/tablet_touch_ui.gd").prepare(details)
 	refresh()
 
 func _process(delta: float) -> void:
@@ -157,7 +161,7 @@ func refresh() -> void:
 	if selected.is_empty(): return
 	var actor = Architects.actor_for(game, selected)
 	heading.text = str(Architects.NAMES[selected]).to_upper()
-	heading.add_theme_font_size_override("font_size", 17)
+	heading.add_theme_font_size_override("font_size", 20 if preload("res://scripts/tablet_controls.gd").enabled(game) else 17)
 	activity.text = "ACTIVITY  " + str(actor.activity)
 	health.text = "STATUS  " + ("DECEASED" if actor.dead else "ALIVE")
 	Badges.update(status_badges,[["DECEASED" if actor.dead else "ALIVE","warning" if actor.dead else "health","danger" if actor.dead else "online"],["ASSIGNED" if game.occupied.has(actor.primary_room) else "UNASSIGNED","assigned_room" if game.occupied.has(actor.primary_room) else "unassigned","normal" if game.occupied.has(actor.primary_room) else "warning"]])

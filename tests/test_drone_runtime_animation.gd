@@ -68,8 +68,6 @@ func _init() -> void:
 	check(Dock.pose({"phase":"launching","elapsed":1.2}).depth==1.0,"launch ends submerged")
 	check(Dock.pose({"phase":"docking","elapsed":0.0}).depth==1.0,"return starts submerged")
 	check(Dock.pose({"phase":"docking","elapsed":1.2}).depth==0.0,"return ends raised")
-	for path in ["res://scripts/drone_animation.gd","res://scripts/drone_dock.gd","res://tests/test_drone_runtime_animation.gd","res://tools/review_drone_runtime.gd","res://tools/review_drone_gameplay.gd"]:
-		if not FileAccess.file_exists(path+".uid"):
-			var f:=FileAccess.open(path+".uid",FileAccess.WRITE);f.store_line(ResourceUID.id_to_text(ResourceUID.create_id()))
+	# Resource UIDs belong to the source checkout; exported packs are read-only.
 	print("DRONE RUNTIME: ",count," clips, 144 directional phase samples, dock boundaries; ",failures," failures")
 	quit(failures)

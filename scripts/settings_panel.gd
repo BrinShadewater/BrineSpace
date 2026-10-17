@@ -96,6 +96,10 @@ func _defaults(section: String) -> void:
 			Preferences.hand_backdrop = true
 			Preferences.tooltip_delay = 0.5
 		"DISPLAY":
+			if preload("res://scripts/tablet_controls.gd").enabled(self):
+				Preferences.fps_cap=0; Preferences.effects_quality=1; Preferences.auto_graphics=false
+				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+				_commit(); _rebuild.call_deferred(); return
 			# Defaults fill the screen the game is on (owner playtest: restoring used to drop a
 			# fullscreen player into a small 1600x900 window).
 			var window := get_window()
@@ -220,27 +224,35 @@ func _exit_tree() -> void:
 	_revert_display()
 
 func _ready() -> void:
+	var tablet := preload("res://scripts/tablet_controls.gd").enabled(self)
+	if tablet:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		if Preferences.fps_cap not in [0,30,60]: Preferences.fps_cap=0
+		Engine.max_fps=Preferences.fps_cap
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	add_theme_constant_override("separation", 14)
+	add_theme_constant_override("separation", 10 if preload("res://scripts/tablet_controls.gd").enabled(self) else 14)
 	pages.clear()
 	tabs.clear()
 	var body := HBoxContainer.new()
 	body.name = "SettingsBody"
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	body.add_theme_constant_override("separation", 22)
+	body.add_theme_constant_override("separation", 14 if preload("res://scripts/tablet_controls.gd").enabled(self) else 22)
 	add_child(body)
 	var sidebar := VBoxContainer.new()
 	sidebar.name = "SettingsSidebar"
-	sidebar.custom_minimum_size.x = 260
+	sidebar.custom_minimum_size.x = 220 if preload("res://scripts/tablet_controls.gd").enabled(self) else 260
 	sidebar.add_theme_constant_override("separation", 8)
 	body.add_child(sidebar)
 	for page in PAGES:
 		var tab := Button.new()
 		tab.name = "SettingsTab" + page.replace(" ", "").replace("&", "")
-		tab.text = "  %s   %s" % [PAGE_GLYPHS[page], page.replace(" & PAUSE", "")]
+		tab.text = "  %s   %s" % [("↔" if tablet and page=="CONTROLS & PAUSE" else PAGE_GLYPHS[page]), page.replace(" & PAUSE", "")]
+		if tablet and page=="CONTROLS & PAUSE":
+			tab.text="CONTROLS"
+			preload("res://scripts/ui_icons.gd").apply(tab,"focus_room",28)
 		tab.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		tab.toggle_mode = true
-		tab.custom_minimum_size = Vector2(260, 52)
+		tab.custom_minimum_size = Vector2(220 if preload("res://scripts/tablet_controls.gd").enabled(self) else 260, 52)
 		tab.add_theme_font_size_override("font_size", 18)
 		_style_tab(tab, page == current_page)
 		tab.pressed.connect(_show_page.bind(page))
@@ -248,13 +260,13 @@ func _ready() -> void:
 		tabs[page] = tab
 	var saved_note := _label("Settings are remembered between sessions.", 13)
 	saved_note.add_theme_color_override("font_color", Color("8aa6af"))
-	saved_note.custom_minimum_size.x = 250
+	saved_note.custom_minimum_size.x = 216 if preload("res://scripts/tablet_controls.gd").enabled(self) else 250
 	sidebar.add_child(saved_note)
 	var report := Button.new()
 	report.name = "ReportBugButton"
-	report.text = "  REPORT A BUG   [F8]"
+	report.text = "REPORT A BUG" if preload("res://scripts/tablet_controls.gd").enabled(self) else "  REPORT A BUG   [F8]"
 	report.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	report.custom_minimum_size = Vector2(260, 44)
+	report.custom_minimum_size = Vector2(220 if preload("res://scripts/tablet_controls.gd").enabled(self) else 260, 44)
 	report.add_theme_font_size_override("font_size", 16)
 	_style_tab(report, false)
 	report.tooltip_text = "Save a bug report with your log, screenshot and last save"
@@ -264,7 +276,7 @@ func _ready() -> void:
 	sidebar.add_child(report)
 	feedback = _label("", 14)
 	feedback.add_theme_color_override("font_color", ACCENT)
-	feedback.custom_minimum_size.x = 250
+	feedback.custom_minimum_size.x = 216 if preload("res://scripts/tablet_controls.gd").enabled(self) else 250
 	feedback.hide()
 	sidebar.add_child(feedback)
 	sections = GridContainer.new()
@@ -274,44 +286,47 @@ func _ready() -> void:
 	body.add_child(sections)
 
 	var display := _page("DISPLAY")
-	# 16:9 plus wide and ultrawide sizes, limited to what fits the screen (owner playtest). The
-	# 1920x1080 design widens to the window's aspect, so wider sizes show more station.
-	var screen_area := DisplayServer.screen_get_usable_rect(get_window().current_screen).size
-	var sizes: Array[Vector2i] = []
-	for value in [Vector2i(1280,720),Vector2i(1600,900),Vector2i(1920,1080),Vector2i(2560,1080),Vector2i(2560,1440),Vector2i(3440,1440),Vector2i(3840,1600),Vector2i(3840,2160),Vector2i(5120,1440)]:
-		if value.x <= screen_area.x and value.y <= screen_area.y: sizes.append(value)
-	var fullscreen: bool = Preferences.is_fullscreen(get_window())
-	var current: Vector2i = Preferences.window_size if fullscreen else get_window().size
-	if not sizes.has(current):
-		sizes.append(current)
-	var captions: Array[String] = []
-	for value in sizes:
-		captions.append("%d × %d%s" % [value.x, value.y, _aspect_caption(value)])
-	var screen_size := DisplayServer.screen_get_size(get_window().current_screen)
-	# Choosing a size from fullscreen switches to a centred window of that size, under the same
-	# keep/revert check (owner playtest: the list was greyed out in fullscreen).
-	_select(display, "Resolution", "Window resolution", "Fullscreen uses the screen's own %d × %d; choosing a size switches to a window." % [screen_size.x, screen_size.y] if fullscreen else "Size of the game window.", captions, sizes.find(current), func(index: int) -> void:
-		Preferences.window_size = sizes[index]
-		Preferences.apply_window_mode(get_window(), 0, false)
-	)
-	_select(display, "WindowMode", "Window mode", "Borderless fills the screen and switches apps quickly.", ["Windowed", "Borderless Fullscreen", "Exclusive Fullscreen"], Preferences.get_window_mode(get_window()), func(index: int) -> void:
-		Preferences.apply_window_mode(get_window(), index)
-	)
-	_toggle(display, "VSync", "V-sync", "Matches frames to your display to prevent tearing.", DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED, func(enabled: bool) -> void:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED)
-	)
-	_select(display, "EffectsQuality", "Visual effects", "Light shafts, caustics, drifting particles, colour grading and bloom. High adds the full grade and bloom. Lower this on slower computers.", ["Low", "Medium", "High"], Preferences.effects_quality, func(index: int) -> void:
+	if not tablet:
+		# 16:9 plus wide and ultrawide sizes, limited to what fits the screen (owner playtest). The
+		# 1920x1080 design widens to the window's aspect, so wider sizes show more station.
+		var screen_area := DisplayServer.screen_get_usable_rect(get_window().current_screen).size
+		var sizes: Array[Vector2i] = []
+		for value in [Vector2i(1280,720),Vector2i(1600,900),Vector2i(1920,1080),Vector2i(2560,1080),Vector2i(2560,1440),Vector2i(3440,1440),Vector2i(3840,1600),Vector2i(3840,2160),Vector2i(5120,1440)]:
+			if value.x <= screen_area.x and value.y <= screen_area.y: sizes.append(value)
+		var fullscreen: bool = Preferences.is_fullscreen(get_window())
+		var current: Vector2i = Preferences.window_size if fullscreen else get_window().size
+		if not sizes.has(current):
+			sizes.append(current)
+		var captions: Array[String] = []
+		for value in sizes:
+			captions.append("%d × %d%s" % [value.x, value.y, _aspect_caption(value)])
+		var screen_size := DisplayServer.screen_get_size(get_window().current_screen)
+		# Choosing a size from fullscreen switches to a centred window of that size, under the same
+		# keep/revert check (owner playtest: the list was greyed out in fullscreen).
+		_select(display, "Resolution", "Window resolution", "Fullscreen uses the screen's own %d × %d; choosing a size switches to a window." % [screen_size.x, screen_size.y] if fullscreen else "Size of the game window.", captions, sizes.find(current), func(index: int) -> void:
+			Preferences.window_size = sizes[index]
+			Preferences.apply_window_mode(get_window(), 0, false)
+		)
+		_select(display, "WindowMode", "Window mode", "Borderless fills the screen and switches apps quickly.", ["Windowed", "Borderless Fullscreen", "Exclusive Fullscreen"], Preferences.get_window_mode(get_window()), func(index: int) -> void:
+			Preferences.apply_window_mode(get_window(), index)
+		)
+		_toggle(display, "VSync", "V-sync", "Matches frames to your display to prevent tearing.", DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED, func(enabled: bool) -> void:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED)
+		)
+	_select(display, "EffectsQuality", "Visual effects", "Lower effects can reduce heat and battery use on your iPad." if tablet else "Light shafts, caustics, drifting particles, colour grading and bloom. High adds the full grade and bloom. Lower this on slower computers.", ["Low", "Medium", "High"], Preferences.effects_quality, func(index: int) -> void:
 		Preferences.effects_quality = index
 		Preferences.auto_graphics = false
 		_rebuild.call_deferred()
 	)
-	_toggle(display, "AutoGraphics", "Auto-detect graphics", "Choose visual effects for this computer now and at startup. Selecting Low, Medium or High overrides automatic detection.", Preferences.auto_graphics, func(enabled: bool) -> void:
+	_toggle(display, "AutoGraphics", "Automatic quality" if tablet else "Auto-detect graphics", "Choose effects for this iPad. Selecting a quality manually turns this off." if tablet else "Choose visual effects for this computer now and at startup. Selecting Low, Medium or High overrides automatic detection.", Preferences.auto_graphics, func(enabled: bool) -> void:
 		Preferences.auto_graphics = enabled
 		if enabled: Preferences.effects_quality = Preferences.detect_graphics()
 		_rebuild.call_deferred()
 	)
-	var caps := [0, 30, 60, 120, 144, 240]
-	_select(display, "FrameLimit", "Frame-rate limit", "V-sync can limit the frame rate further.", ["Unlimited", "30 FPS", "60 FPS", "120 FPS", "144 FPS", "240 FPS"], caps.find(Preferences.fps_cap), func(index: int) -> void:
+	var cap_captions: Array[String] = []
+	cap_captions.assign(["Match iPad display", "30 FPS", "60 FPS"] if tablet else ["Unlimited", "30 FPS", "60 FPS", "120 FPS", "144 FPS", "240 FPS"])
+	var caps := [0, 30, 60] if tablet else [0, 30, 60, 120, 144, 240]
+	_select(display, "FrameLimit", "Frame rate" if tablet else "Frame-rate limit", "30 FPS uses less power; 60 FPS gives smoother motion." if tablet else "V-sync can limit the frame rate further.", cap_captions, caps.find(Preferences.fps_cap), func(index: int) -> void:
 		Preferences.fps_cap = caps[index]
 	)
 
@@ -323,58 +338,81 @@ func _ready() -> void:
 	_slider(audio, "MusicVolume", "Music", "", 0, 100, 1, Preferences.music_volume * 100, "%", func(value: float) -> void: Preferences.music_volume = value / 100.0)
 	_slider(audio, "EffectsVolume", "Effects", "", 0, 100, 1, Preferences.effects_volume * 100, "%", func(value: float) -> void: Preferences.effects_volume = value / 100.0)
 	_slider(audio, "AmbienceVolume", "Ambience", "", 0, 100, 1, Preferences.ambience_volume * 100, "%", func(value: float) -> void: Preferences.ambience_volume = value / 100.0)
-	_toggle(audio, "MuteUnfocused", "Mute when unfocused", "Silences audio while another window is active.", Preferences.mute_unfocused, func(enabled: bool) -> void: Preferences.mute_unfocused = enabled)
+	if not tablet:
+		_toggle(audio, "MuteUnfocused", "Mute when unfocused", "Silences audio while another window is active.", Preferences.mute_unfocused, func(enabled: bool) -> void: Preferences.mute_unfocused = enabled)
+
+	else:
+		audio.add_child(_label("Sound follows your iPad’s Silent Mode. Turn Silent Mode off in Control Centre to hear the station.",20))
 
 	var controls := _page("CONTROLS & PAUSE")
-	_slider(controls, "ZoomSensitivity", "Wheel zoom sensitivity", "Shift + wheel zooms the station.", 50, 200, 10, Preferences.zoom_sensitivity * 100, "%", func(value: float) -> void: Preferences.zoom_sensitivity = value / 100.0)
-	_toggle(controls, "InvertZoom", "Invert wheel zoom", "Reverses the direction of Shift + wheel zoom.", Preferences.invert_zoom, func(enabled: bool) -> void: Preferences.invert_zoom = enabled)
-	_toggle(controls, "PauseUnfocused", "Pause when unfocused", "Pauses a running station when the game loses focus; resume manually.", Preferences.pause_unfocused, func(enabled: bool) -> void: Preferences.pause_unfocused = enabled)
-	var keys_heading := _label("KEYBOARD SHORTCUTS", 15)
-	keys_heading.add_theme_color_override("font_color", Color("8fb3bd"))
-	controls.add_child(keys_heading)
-	var bindings := GridContainer.new()
-	bindings.name = "KeyBindings"
-	bindings.columns = 2
-	bindings.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	bindings.add_theme_constant_override("h_separation", 12)
-	bindings.add_theme_constant_override("v_separation", 8)
-	controls.add_child(bindings)
-	for action in Preferences.DEFAULT_KEYS:
-		var cell := _row_panel()
-		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		bindings.add_child(cell)
-		var line := HBoxContainer.new()
-		cell.add_child(line)
-		var name_label := _label(str(action).capitalize(), 16)
-		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		name_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-		line.add_child(name_label)
-		var binding := Button.new()
-		binding.name = "Bind" + action.replace(" ", "")
-		binding.text = Preferences.key_name(action)
-		binding.tooltip_text = "Change the key for " + str(action)
-		Style.apply(binding, 150, 40)
-		binding.custom_minimum_size = Vector2(150, 40)
-		binding.size_flags_horizontal = Control.SIZE_SHRINK_END
-		binding.pressed.connect(func() -> void:
-			binding_action = action
-			binding_button = binding
-			binding.text = "PRESS A KEY"
-		)
-		line.add_child(binding)
-	var help := _label("Left click: place or select.  Escape: menu or back.  Tab / Shift+Tab: move focus.  Enter: activate.", 15)
-	help.add_theme_color_override("font_color", Color("8aa6af"))
-	controls.add_child(help)
+	if tablet:
+		var guide := VBoxContainer.new(); guide.name="TouchGuide"
+		guide.add_theme_constant_override("separation",12); controls.add_child(guide)
+		var cards := GridContainer.new(); cards.columns=2
+		cards.add_theme_constant_override("h_separation",12); cards.add_theme_constant_override("v_separation",12)
+		guide.add_child(cards)
+		for spec in [["row","BUILD & RETURN","Tap a blueprint, then tap the station to place it. Drag back to the hand and release to put it down."],["focus_room","MOVE & ZOOM","Pinch to zoom. Drag with two fingers to pan. Fit Station recenters the view."],["reroll","ROTATE & CANCEL","Tap the station with two fingers to rotate a selected room. Rotate and Cancel buttons are also available."],["journal","MENUS & READING","Swipe with one finger to scroll menus and text. Use Next to advance dialogue, or Close to dismiss it."]]:
+			var panel:=_row_panel(); panel.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+			panel.custom_minimum_size=Vector2(0,164); cards.add_child(panel)
+			var box:=VBoxContainer.new(); box.add_theme_constant_override("separation",8); panel.add_child(box)
+			var heading_row:=HBoxContainer.new(); box.add_child(heading_row)
+			var icon:=TextureRect.new(); icon.texture=preload("res://scripts/ui_icons.gd").texture(spec[0]); icon.custom_minimum_size=Vector2(28,28)
+			icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE; icon.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED; heading_row.add_child(icon)
+			var heading:=_label(spec[1],22); heading.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+			heading_row.add_child(heading)
+			box.add_child(_label(spec[2],20))
+		guide.add_child(_label("LEAVING THE APP\nAn active loop saves and pauses when you leave. After returning, tap Resume when you’re ready.",20))
+	else:
+		_slider(controls, "ZoomSensitivity", "Wheel zoom sensitivity", "Shift + wheel zooms the station.", 50, 200, 10, Preferences.zoom_sensitivity * 100, "%", func(value: float) -> void: Preferences.zoom_sensitivity = value / 100.0)
+		_toggle(controls, "InvertZoom", "Invert wheel zoom", "Reverses the direction of Shift + wheel zoom.", Preferences.invert_zoom, func(enabled: bool) -> void: Preferences.invert_zoom = enabled)
+		_toggle(controls, "PauseUnfocused", "Pause when unfocused", "Pauses a running station when the game loses focus; resume manually.", Preferences.pause_unfocused, func(enabled: bool) -> void: Preferences.pause_unfocused = enabled)
+		var keys_heading := _label("KEYBOARD SHORTCUTS", 15)
+		keys_heading.add_theme_color_override("font_color", Color("8fb3bd"))
+		controls.add_child(keys_heading)
+		var bindings := GridContainer.new()
+		bindings.name = "KeyBindings"
+		bindings.columns = 2
+		bindings.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		bindings.add_theme_constant_override("h_separation", 12)
+		bindings.add_theme_constant_override("v_separation", 8)
+		controls.add_child(bindings)
+		for action in Preferences.DEFAULT_KEYS:
+			var cell := _row_panel()
+			cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			bindings.add_child(cell)
+			var line := HBoxContainer.new()
+			cell.add_child(line)
+			var name_label := _label(str(action).capitalize(), 16)
+			name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			name_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			line.add_child(name_label)
+			var binding := Button.new()
+			binding.name = "Bind" + action.replace(" ", "")
+			binding.text = Preferences.key_name(action)
+			binding.tooltip_text = "Change the key for " + str(action)
+			Style.apply(binding, 150, 40)
+			binding.custom_minimum_size = Vector2(150, 40)
+			binding.size_flags_horizontal = Control.SIZE_SHRINK_END
+			binding.pressed.connect(func() -> void:
+				binding_action = action
+				binding_button = binding
+				binding.text = "PRESS A KEY"
+			)
+			line.add_child(binding)
+		var help := _label("Left click: place or select.  Escape: menu or back.  Tab / Shift+Tab: move focus.  Enter: activate.", 15)
+		help.add_theme_color_override("font_color", Color("8aa6af"))
+		controls.add_child(help)
 
 	var access := _page("ACCESSIBILITY")
 	_toggle(access, "RaisedWalls", "Raised room walls", "Shows the tall north walls of rooms.", Preferences.raised_walls, func(enabled: bool) -> void: Preferences.raised_walls = enabled)
 	_toggle(access, "PlacementGuides", "Placement door indicators", "Marks which doors will connect while placing a room.", Preferences.placement_guides, func(enabled: bool) -> void: Preferences.placement_guides = enabled)
-	_toggle(access, "ResourceOverlay", "Resource overlay", "Shows what each room gives and takes over the station. Hotkey: %s." % Preferences.key_name("Resource overlay"), Preferences.resource_overlay, func(enabled: bool) -> void: Preferences.resource_overlay = enabled)
+	_toggle(access, "ResourceOverlay", "Resource overlay", "Shows what each room gives and takes over the station." if tablet else "Shows what each room gives and takes over the station. Hotkey: %s." % Preferences.key_name("Resource overlay"), Preferences.resource_overlay, func(enabled: bool) -> void: Preferences.resource_overlay = enabled)
 	_toggle(access, "HandBackdrop", "Draft hand backdrop", "Off: the station view runs behind the cards.", Preferences.hand_backdrop, func(enabled: bool) -> void: Preferences.hand_backdrop = enabled)
 	_toggle(access, "PixelFrames", "Pixel panel frames", "Textured pixel-art HUD frames; applies next loop.", Preferences.pixel_frames, func(enabled: bool) -> void: Preferences.pixel_frames = enabled)
 	_toggle(access, "ReducedMotion", "Reduced motion", "Pauses the title cover and removes menu fades. Gameplay timing is unchanged.", Preferences.reduced_motion, func(enabled: bool) -> void: Preferences.reduced_motion = enabled)
 	_slider(access, "MenuTextSize", "Menu text size", "Scales menus, journal and summaries.", 100, 130, 5, Preferences.text_scale * 100, "%", func(value: float) -> void: Preferences.text_scale = value / 100.0)
-	_slider(access, "TooltipDelay", "Tooltip delay", "How long to hover before a tooltip shows.", 100, 1500, 100, Preferences.tooltip_delay * 1000, " ms", func(value: float) -> void: Preferences.tooltip_delay = value / 1000.0)
+	if not tablet:
+		_slider(access, "TooltipDelay", "Tooltip delay", "How long to hover before a tooltip shows.", 100, 1500, 100, Preferences.tooltip_delay * 1000, " ms", func(value: float) -> void: Preferences.tooltip_delay = value / 1000.0)
 	_show_page(current_page if pages.has(current_page) else "DISPLAY", false)
 	resized.connect(_layout)
 	_layout()
@@ -403,6 +441,7 @@ func _style_tab(tab: Button, active: bool) -> void:
 	tab.add_theme_color_override("font_focus_color", Color("e6f6f3"))
 
 func _layout() -> void:
+	if preload("res://scripts/tablet_controls.gd").enabled(self): preload("res://scripts/tablet_touch_ui.gd").prepare(self)
 	var narrow := size.x < 900 * Preferences.text_scale
 	var bindings := find_child("KeyBindings", true, false) as GridContainer
 	if bindings != null: bindings.columns = 1 if narrow else 2
@@ -411,12 +450,12 @@ func _page(title: String) -> VBoxContainer:
 	var page := VBoxContainer.new()
 	page.name = "Page" + title.replace(" ", "").replace("&", "")
 	page.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	page.add_theme_constant_override("separation", 8)
+	page.add_theme_constant_override("separation", 6 if preload("res://scripts/tablet_controls.gd").enabled(self) else 8)
 	sections.add_child(page)
 	pages[title] = page
 	var header := HBoxContainer.new()
 	page.add_child(header)
-	var heading := _label(title, 24)
+	var heading := _label("TOUCH & PAUSE" if title=="CONTROLS & PAUSE" and preload("res://scripts/tablet_controls.gd").enabled(self) else title, 24)
 	heading.add_theme_color_override("font_color", Color("e6f6f3"))
 	heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(heading)
@@ -429,7 +468,9 @@ func _page(title: String) -> VBoxContainer:
 	defaults.size_flags_horizontal = Control.SIZE_SHRINK_END
 	defaults.pressed.connect(_defaults.bind(title))
 	header.add_child(defaults)
-	var hint := _label(PAGE_HINTS[title], 15)
+	if preload("res://scripts/tablet_controls.gd").enabled(self) and title=="CONTROLS & PAUSE": defaults.hide()
+	var hints := {"DISPLAY":"Graphics quality and power use for this iPad.","AUDIO":"Station sound and your iPad volume.","CONTROLS & PAUSE":"Touch gestures and returning to your loop.","ACCESSIBILITY":"Readability, motion and on-screen guides."}
+	var hint := _label(hints[title] if preload("res://scripts/tablet_controls.gd").enabled(self) else PAGE_HINTS[title], 15)
 	hint.add_theme_color_override("font_color", Color("7f9aa3"))
 	page.add_child(hint)
 	return page
@@ -451,8 +492,8 @@ func _row_panel() -> PanelContainer:
 	box.set_corner_radius_all(6)
 	box.content_margin_left = 16
 	box.content_margin_right = 14
-	box.content_margin_top = 10
-	box.content_margin_bottom = 10
+	box.content_margin_top = 6 if preload("res://scripts/tablet_controls.gd").enabled(self) else 10
+	box.content_margin_bottom = 6 if preload("res://scripts/tablet_controls.gd").enabled(self) else 10
 	panel.add_theme_stylebox_override("panel", box)
 	return panel
 
@@ -462,7 +503,7 @@ func _row(parent: Control, title: String, hint: String) -> HBoxContainer:
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	parent.add_child(panel)
 	var line := HBoxContainer.new()
-	line.add_theme_constant_override("separation", 18)
+	line.add_theme_constant_override("separation", 12 if preload("res://scripts/tablet_controls.gd").enabled(self) else 18)
 	panel.add_child(line)
 	var text := VBoxContainer.new()
 	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL

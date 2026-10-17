@@ -70,6 +70,7 @@ func _ready() -> void:
 	theme = preload("res://scripts/title_button_style.gd").menu_theme()
 	resized.connect(_layout)
 	_build()
+	preload("res://scripts/tablet_touch_ui.gd").install(self)
 
 func show_section(section: String) -> void:
 	if closing or section == mode:
@@ -85,6 +86,7 @@ func show_section(section: String) -> void:
 		child.queue_free()
 	mode = section
 	_build()
+	preload("res://scripts/tablet_touch_ui.gd").install(self)
 
 func _build() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -93,15 +95,16 @@ func _build() -> void:
 	add_child(shade)
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var margins := MarginContainer.new()
+	margins.name = "ArchiveMargins"
 	add_child(margins)
 	margins.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	for side in ["left", "right", "top", "bottom"]:
-		margins.add_theme_constant_override("margin_" + side, 48)
+		margins.add_theme_constant_override("margin_" + side, 24 if preload("res://scripts/tablet_controls.gd").enabled(self) else 48)
 	var panel := PanelContainer.new()
 	panel.add_theme_stylebox_override("panel", _style(Color("3c6b7d")))
 	margins.add_child(panel)
 	content = VBoxContainer.new()
-	content.add_theme_constant_override("separation", 18)
+	content.add_theme_constant_override("separation", 12 if in_game and preload("res://scripts/tablet_controls.gd").enabled(self) else 18)
 	panel.add_child(content)
 	var header := HBoxContainer.new()
 	content.add_child(header)
@@ -117,6 +120,7 @@ func _build() -> void:
 	var navigation := HBoxContainer.new()
 	navigation.add_theme_constant_override("separation", 12)
 	content.add_child(navigation)
+	if in_game and mode == "settings" and preload("res://scripts/tablet_controls.gd").enabled(self): navigation.hide()
 	for section in ["settings", "codex", "progression", "about"]:
 		var button := Widgets.chip("")
 		button.name = "Navigate" + section.capitalize()
@@ -129,6 +133,7 @@ func _build() -> void:
 		navigation.add_child(button)
 	var route := Widgets.breadcrumbs(["MENU", {"codex":"STATION ARCHIVE","progression":"META PROGRESSION","settings":"SETTINGS","about":"CREDITS / BUILD"}.get(mode,"BRINE")])
 	route.name = "MenuBreadcrumbs"
+	if preload("res://scripts/tablet_controls.gd").enabled(self): route.hide()
 	route.get_child(0).pressed.connect(_close)
 	content.add_child(route)
 	if mode == "codex":
@@ -190,7 +195,7 @@ func _build() -> void:
 			filter_chips.get_child(index).pressed.connect(func() -> void:
 				codex_filter.select(index)
 				codex_filter.item_selected.emit(index))
-		filter_chips.custom_minimum_size.x = 360
+		filter_chips.custom_minimum_size.x = 520 if preload("res://scripts/tablet_controls.gd").enabled(self) else 360
 		toolbar.add_child(filter_chips)
 		sort_chips = Widgets.sort_controls(["COLOUR","RARITY","NAME","BUILD COST"],codex_sort_index,func(index: int, ascending: bool) -> void:
 			codex_ascending = ascending
@@ -330,6 +335,16 @@ func _label(text: String, font_size: int = 18) -> Label:
 	return label
 
 func _layout() -> void:
+	if preload("res://scripts/tablet_controls.gd").enabled(self):
+		preload("res://scripts/tablet_touch_ui.gd").prepare(self)
+		if is_instance_valid(close_button): close_button.text = "BACK" if in_game else "CLOSE"
+		var margins: Control = get_node_or_null("ArchiveMargins")
+		if margins != null and in_game and mode == "settings":
+			var inset := (size-Vector2(minf(1480,size.x-48),minf(1040,size.y-48)))*0.5
+			margins.offset_left=inset.x; margins.offset_right=-inset.x
+			margins.offset_top=inset.y; margins.offset_bottom=-inset.y
+		if is_instance_valid(codex_tabs): codex_tabs.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		if is_instance_valid(search): search.placeholder_text = "Search names, departments, or clues…"
 	if is_instance_valid(grid):
 		var scale: float = preload("res://scripts/title_settings.gd").text_scale
 		var cell := (CARD_WIDTH + 18) if codex_tab == 0 else (PATTERN_WIDTH + 18 if codex_tab == 2 else SYNERGY_WIDTH + 18)

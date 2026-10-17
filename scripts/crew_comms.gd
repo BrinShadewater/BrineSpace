@@ -64,7 +64,7 @@ func _ready() -> void:
 	speaker=Label.new(); speaker.add_theme_font_size_override("font_size",16)
 	speaker.size_flags_horizontal=Control.SIZE_EXPAND_FILL; speaker.text_overrun_behavior=TextServer.OVERRUN_TRIM_ELLIPSIS
 	title.add_child(speaker)
-	var close:=Button.new(); close.text="X"; close.tooltip_text="Close comms"; close.pressed.connect(minimize); title.add_child(close)
+	var close:=Button.new(); close.name="CloseDialogue"; close.text="X"; close.tooltip_text="Close comms"; close.pressed.connect(minimize); title.add_child(close)
 	body=RichTextLabel.new(); body.bbcode_enabled=false; body.scroll_following=true
 	body.custom_minimum_size=Vector2(0,74); body.size_flags_vertical=Control.SIZE_EXPAND_FILL
 	body.add_theme_font_size_override("normal_font_size",16); column.add_child(body)
@@ -83,6 +83,21 @@ func _ready() -> void:
 	speed_picker=OptionButton.new(); stored.add_child(speed_picker)
 	contact_picker=OptionButton.new(); stored.add_child(contact_picker)
 	inbox_button=Button.new(); stored.add_child(inbox_button)
+	if game != null and preload("res://scripts/tablet_controls.gd").enabled(game):
+		close.text = "CLOSE"
+		portrait.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		var actions := VBoxContainer.new()
+		actions.name = "DialogueActions"
+		actions.add_theme_constant_override("separation",8)
+		actions.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		row.add_child(actions)
+		close.reparent(actions); next_button.reparent(actions)
+		next_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		for button in [close,next_button]:
+			button.custom_minimum_size = Vector2(144,72)
+			button.add_theme_font_size_override("font_size",24)
+		speaker.add_theme_font_size_override("font_size",26)
+		body.add_theme_font_size_override("normal_font_size",26)
 	text_speed=1.0
 	load_archive(); refresh_history(); panel.hide()
 func transmit(id: String, message: String, key: String="", urgent: bool=false) -> bool:
@@ -178,6 +193,7 @@ func speaker_name(id: String) -> String:
 # A click on the transmission works like Next (owner playtest): it shows the whole page while
 # the text is typing, then moves to the next line, or closes after the last.
 func _on_panel_input(event: InputEvent) -> void:
+	if game != null and preload("res://scripts/tablet_controls.gd").enabled(game): return # Next owns advancing; text swipes only scroll.
 	if not (event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_LEFT): return
 	panel.accept_event()
 	if not current.is_empty(): advance()
@@ -244,7 +260,8 @@ func place_panel() -> void:
 	var area:=Rect2(Vector2.ZERO,get_viewport().get_visible_rect().size)
 	if game!=null and is_instance_valid(game.grid_scroll): area=game.station_clear_rect() if game.has_method("station_clear_rect") else game.grid_scroll.get_global_rect()
 	panel.set_anchors_preset(Control.PRESET_TOP_LEFT)
-	panel.size=Vector2(minf(720,area.size.x-32),170)
+	var tablet: bool = game != null and preload("res://scripts/tablet_controls.gd").enabled(game)
+	panel.size=Vector2(minf(1040 if tablet else 720,area.size.x-32),minf(174,area.size.y-32) if tablet else 170)
 	panel.position=Vector2(area.get_center().x-panel.size.x*0.5,area.end.y-panel.size.y-16)
 
 func open_brine() -> void:

@@ -357,8 +357,8 @@ static func _sync_hand_size(card_id: int) -> void:
 		item.size=extent
 		item.pivot_offset=Vector2(extent.x*0.5,extent.y)
 		if item.get_parent().name!="FanRow" and item.has_meta("hand_index"):
-			item.get_parent().custom_minimum_size.y=maxf(ROW_SLOT.y,extent.y+HOVER_LIFT+24.0)
-	if holder.name=="FanRow": holder.custom_minimum_size.y=maxf(ROW_SLOT.y,extent.y+46.0)
+			item.get_parent().custom_minimum_size.y=maxf(ROW_SLOT.y,extent.y+HOVER_LIFT+24.0)*float(item.get_meta("display_scale",1.0))
+	if holder.name=="FanRow": holder.custom_minimum_size.y=maxf(ROW_SLOT.y,extent.y+46.0)*float(holder.get_meta("display_scale",1.0))
 
 static func build_piles(game) -> Control:
 	var slot := HBoxContainer.new()
@@ -426,11 +426,12 @@ class CardBack extends Control:
 		draw_circle(rect.get_center() + Vector2(0, -42), 20.0, Color("#0a1418"))
 		draw_arc(rect.get_center() + Vector2(0, -42), 20.0, 0, TAU, 32, Color("#62aa9f"), 2.0)
 
-static func fan_row() -> Control:
+static func fan_row(display_scale := 1.0) -> Control:
 	var fan := Control.new()
 	fan.name = "FanRow"
+	fan.set_meta("display_scale", display_scale)
 	fan.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	fan.custom_minimum_size = Vector2(CARD_SIZE.x + FAN_STEP * 2 + 60, ROW_SLOT.y)
+	fan.custom_minimum_size = Vector2(CARD_SIZE.x + FAN_STEP * 2 + 60, ROW_SLOT.y) * display_scale
 	fan.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	fan.resized.connect(layout_fan.bind(fan))
 	return fan
@@ -444,18 +445,21 @@ static func layout_fan(fan: Control) -> void:
 	cards.sort_custom(func(a, b): return int(a.get_meta("hand_index")) < int(b.get_meta("hand_index")))
 	var count := cards.size()
 	if count == 0: return
+	var display_scale: float = fan.get_meta("display_scale",1.0)
 	var mid := (count - 1) * 0.5
-	var step := minf(FAN_STEP, (fan.size.x - CARD_SIZE.x - 40.0) / maxf(count - 1, 1)) if count > 1 else 0.0
+	var step := minf(FAN_STEP * display_scale, (fan.size.x - (CARD_SIZE.x + 40.0) * display_scale) / maxf(count - 1, 1)) if count > 1 else 0.0
 	for i in range(count):
 		var card: Control = cards[i]
 		var offset := float(i) - mid
-		var at := Vector2(fan.size.x * 0.5 - CARD_SIZE.x * 0.5 + offset * step, 30.0 + offset * offset * FAN_DROP)
+		var at := Vector2(fan.size.x * 0.5 - CARD_SIZE.x * display_scale * 0.5 + offset * step, (30.0 + offset * offset * FAN_DROP) * display_scale)
 		card.set_meta("rest_position", at)
 		card.set_meta("rest_rotation", deg_to_rad(offset * FAN_DEGREES))
 		card.size = CARD_SIZE
+		at += card.pivot_offset * (display_scale - 1.0)
+		card.set_meta("rest_position", at)
 		card.position = at
 		card.rotation = card.get_meta("rest_rotation")
-		card.scale = Vector2.ONE
+		card.scale = Vector2.ONE * display_scale
 		# A turned card samples its art off the pixel grid, and nearest filtering stair-steps it
 		# (owner playtest note 14). Only the cards that actually turn filter smoothly.
 		set_art_filter(card, not is_zero_approx(card.rotation))

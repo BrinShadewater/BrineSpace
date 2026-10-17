@@ -1,6 +1,8 @@
 extends RefCounted
 ## Normal quits drain playback before closing the engine; save decisions stay with callers.
 static func request(owner: Node) -> void:
+	# iOS cannot quit programmatically. Never disable scenes before a no-op quit.
+	if preload("res://scripts/tablet_controls.gd").enabled(owner): return
 	var tree := owner.get_tree()
 	if tree.root.get_meta("audio_quitting",false): return
 	tree.root.set_meta("audio_quitting",true)

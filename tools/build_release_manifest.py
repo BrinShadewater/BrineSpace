@@ -155,8 +155,15 @@ def main():
     source_id=aggregate.hexdigest()
     manifest={'schema':1,'source_sha256':source_id,'files':rows}
     MANIFEST.write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
-    commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-    dirty=bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip())
+    if (ROOT / '.git').exists():
+        commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+        dirty=bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip())
+    else:
+        # Editable Mac test snapshots intentionally omit Git history. Runtime
+        # identity still comes from the selected physical bytes above.
+        provenance=json.loads((ROOT/'SOURCE_PROVENANCE.json').read_text(encoding='utf-8-sig'))
+        commit=provenance['build']['git_commit']
+        dirty=True
     info={'build_id':'brinespace-'+source_id[:16],'source_sha256':source_id,'git_commit':commit,'working_tree_modified':dirty,'file_count':len(rows),'source_bytes':sum(x['bytes'] for x in rows)}
     (ROOT/'build_info.json').write_text(json.dumps(info,indent=2)+'\n',encoding='utf-8')
     # The selected-resource preset allows Godot to follow its own imported dependencies.

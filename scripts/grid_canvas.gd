@@ -2803,7 +2803,7 @@ func _paint_surface(pass_id: int) -> void:
 	_draw_humans(main)
 	_draw_door_foregrounds(main, false, legacy_entries)
 	stage_time = _profile_draw_stage("actors_effects", stage_time)
-	if not main.selected_card_id.is_empty():
+	if not main.selected_card_id.is_empty() and not main._dialogue_open():
 		var mouse_cell := Vector2i(floori(get_local_mouse_position().x / cell_size), floori(get_local_mouse_position().y / cell_size))
 		var valid: bool = main.get_placement_problem(main.selected_card_id, mouse_cell).is_empty()
 		_draw_room_hologram(main, mouse_cell, valid)

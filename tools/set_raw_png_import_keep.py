@@ -26,11 +26,23 @@ KEEP = "[remap]\n\nimporter=\"keep\"\n"
 SKIP = "[remap]\n\nimporter=\"skip\"\n"
 
 
+def project_files(patterns=()):
+    snapshot = ROOT / "SOURCE_FILES_SHA256.json"
+    if snapshot.is_file() and not (ROOT / ".git").exists():
+        # The editable source archive has an explicit inventory instead of Git.
+        import fnmatch
+        names = set(json.loads(snapshot.read_text(encoding="utf-8-sig"))["files"])
+        manifest = ROOT / "assets/runtime-release.json"
+        if manifest.is_file():
+            names.update(entry["path"][len("res://"):] for entry in json.loads(manifest.read_text())["files"])
+        return sorted(name for name in names if not patterns or any(fnmatch.fnmatch(name, pattern) for pattern in patterns))
+    tracked = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard", *patterns], cwd=ROOT,
+                             capture_output=True, text=True, check=True)
+    return tracked.stdout.splitlines()
+
 def resource_rasters() -> set:
     referenced = set()
-    tracked = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard", "*.tscn", "*.tres"], cwd=ROOT,
-                             capture_output=True, text=True, check=True)
-    for name in tracked.stdout.splitlines():
+    for name in project_files(("*.tscn", "*.tres")):
         if not (ROOT / name).is_file():
             continue
         text = (ROOT / name).read_text(encoding="utf-8-sig", errors="replace")
@@ -66,10 +78,8 @@ def main() -> int:
         print("ERROR: RESOURCE_ICON_PATHS registry could not be resolved from scripts/main.gd")
         return 1
     imported |= {m[len("res://"):] for m in re.findall(r'"(res://[^"]+)"', icon_block.group(1))}
-    tracked = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard"], cwd=ROOT,
-                             capture_output=True, text=True, check=True)
     counts = {"normal": 0, "keep": 0, "skip": 0}
-    for name in sorted(set(tracked.stdout.splitlines()) | shipped):
+    for name in sorted(set(project_files()) | shipped):
         if not (ROOT / name).is_file():
             continue
         if Path(name).suffix.lower() not in RASTER:

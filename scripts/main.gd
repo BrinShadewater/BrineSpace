@@ -19,6 +19,7 @@ const CELL_SIZE := 720
 const GRID_PIXEL_SIZE := GRID_SIZE * CELL_SIZE
 const BASE_CYCLE_SECONDS := 20.0
 const DISCOVERY_BURST_SECONDS := 2.6
+const TabletControls = preload("res://scripts/tablet_controls.gd")
 const HAND_SIZE := 3
 const REROLL_RECOVERY_CYCLES := 4
 const REROLL_RECOVERY_CAP := 3
@@ -306,6 +307,8 @@ var menu_save_feedback: Label
 # When the active loop was last recorded (-1 = not yet this loop); see _refresh_save_status.
 var last_save_cycle := -1
 var last_save_msec := 0
+var tablet_background_suspended := false
+var tablet_background_save_error := ""
 var menu_resume_button: Button
 var menu_center: CenterContainer
 var menu_archive: Control
@@ -409,12 +412,13 @@ func _ready() -> void:
 	startup_stamp = Time.get_ticks_usec()
 	grid_view.prewarm_station_views(self)
 	startup_stage_ms["station_rooms"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
-	startup_complete = true
+	startup_stamp = Time.get_ticks_usec()
 	crew_comms=preload("res://scripts/crew_comms.gd").new()
 	crew_comms.opening_enabled=fresh_comms_opening
 	crew_comms.game=self
 	crew_comms.archive_path=run_save_path+".comms.json"
 	add_child(crew_comms)
+	crew_comms.panel.visibility_changed.connect(_dialogue_visibility_changed)
 	if has_meta("pending_comms_state"):
 		crew_comms.restore_state(get_meta("pending_comms_state"))
 		remove_meta("pending_comms_state")
@@ -422,6 +426,12 @@ func _ready() -> void:
 	sound.game = self
 	station_sound = sound
 	add_child(sound)
+	if TabletControls.enabled(self):
+		var tablet := TabletControls.new()
+		tablet.game = self
+		add_child(tablet)
+	startup_stage_ms["dialogue_audio_tablet"] = (Time.get_ticks_usec()-startup_stamp)/1000.0
+	startup_complete = true
 
 func play_station_sound(kind: String, cell := Vector2.INF) -> void:
 	if is_instance_valid(station_sound): station_sound.play_event(kind,cell)
@@ -453,7 +463,7 @@ var operations_refresh_step := 0.5
 func _update_interface_scale() -> void:
 	var window := get_window()
 	# Compact windows gain readable controls rather than shrinking the full desktop layout.
-	var design := Vector2i(1600,900) if window.size.x<1440 else Vector2i(1920,1080)
+	var design := Vector2i(1920,1080) if TabletControls.enabled(self) else (Vector2i(1600,900) if window.size.x<1440 else Vector2i(1920,1080))
 	if window.content_scale_size != design: window.content_scale_size = design
 	var navigation := find_child("NavigationRow",true,false) as HBoxContainer
 	if navigation != null:
@@ -1412,14 +1422,14 @@ func _apply_hand_backdrop() -> void:
 	preload("res://scripts/ui_icons.gd").apply(hand_backdrop_button, "frame_on" if shown else "frame_off", 30)
 	hand_toggle_button.text = "SHOW HAND" if hand_collapsed else "HIDE HAND"
 	preload("res://scripts/ui_icons.gd").apply(hand_toggle_button, "show_hand" if hand_collapsed else "hide_hand", 30)
-	hand_panel.offset_top = -72.0 if hand_collapsed else -380.0
+	hand_panel.offset_top = (hand_panel.offset_bottom + (-100.0 if hand_collapsed else -530.0)) if TabletControls.enabled(self) else (-72.0 if hand_collapsed else -380.0)
 	var row: HBoxContainer = hand_panel.get_child(0)
 	var status: VBoxContainer = row.get_child(0)
 	status.alignment = BoxContainer.ALIGNMENT_BEGIN if shown else BoxContainer.ALIGNMENT_END
 	hand_panel.mouse_filter = Control.MOUSE_FILTER_STOP if shown else Control.MOUSE_FILTER_IGNORE
 	for container in [row, status, hand_box]:
 		container.mouse_filter = Control.MOUSE_FILTER_PASS if shown else Control.MOUSE_FILTER_IGNORE
-	var view_bottom := (-80.0 if hand_collapsed else -344.0) if shown else -8.0
+	var view_bottom := ((hand_panel.offset_top - 8.0) if TabletControls.enabled(self) else (-80.0 if hand_collapsed else -344.0)) if shown else -8.0
 	if station_center.offset_bottom != view_bottom:
 		# Toggling mid-run moves only the view's bottom edge; the station holds still on screen.
 		resize_keep_top = camera_viewport_size != Vector2.ZERO
@@ -1521,7 +1531,10 @@ func _style_switch_button(button: BaseButton) -> void:
 func _style_hud_button(button: BaseButton, _active := false) -> void:
 	if button is Button:
 		preload("res://scripts/title_button_style.gd").apply(button, 160, 38)
-		button.add_theme_font_size_override("font_size", 16)
+		button.add_theme_font_size_override("font_size", 20 if TabletControls.enabled(self) else 16)
+		if TabletControls.enabled(self):
+			button.custom_minimum_size.y = maxf(button.custom_minimum_size.y,72)
+			TabletControls.compact_button(button)
 
 
 func _panel_texture_for(panel: PanelContainer) -> String:
@@ -1732,6 +1745,16 @@ func _open_journal_page(mode: String, tab: int = -1) -> void:
 
 func _journal_is_open() -> bool:
 	return journal_layer != null and journal_layer.visible
+
+func _dialogue_open() -> bool:
+	return is_instance_valid(crew_comms) and is_instance_valid(crew_comms.panel) and crew_comms.panel.visible
+
+func _dialogue_visibility_changed() -> void:
+	if _dialogue_open() and is_instance_valid(card_drag): card_drag._finish()
+	_refresh_placement_status()
+	var tablet := get_node_or_null("TabletControls")
+	if tablet != null: tablet.refresh_blueprint_actions()
+	if is_instance_valid(grid_view): grid_view.queue_redraw()
 
 func _gameplay_input_blocked() -> bool:
 	return is_instance_valid(menu_archive) or menu_open or _journal_is_open() or (summary_layer != null and summary_layer.visible)
@@ -2149,7 +2172,7 @@ func _build_menu_overlay() -> void:
 	left.add_child(menu_save_feedback)
 	_menu_section(left, "LEAVE")
 	_add_menu_button(left, "Save & Return to Title", _menu_return_title)
-	_add_menu_button(left, "Save & Quit", _menu_quit_game)
+	if not TabletControls.enabled(self): _add_menu_button(left, "Save & Quit", _menu_quit_game)
 	_add_menu_button(left, "Restart Reboot Cycle", _menu_restart_cycle)
 	# Built through the menu helper so it matches the buttons above it (owner playtest, Sept 18).
 	end_expedition_button = _add_menu_button(left, "End Expedition", _end_expedition)
@@ -2159,8 +2182,16 @@ func _build_menu_overlay() -> void:
 	_add_menu_button(right, "Credits & Build", _open_shared_menu.bind("about"))
 	_menu_section(right, "GAME")
 	_add_menu_button(right, "Settings", _open_shared_menu.bind("settings"))
+	if TabletControls.enabled(self):
+		_menu_section(right,"TESTING")
+		_add_menu_button(right,"Performance Overlay",func():
+			var reporter := get_node_or_null("/root/BugReport")
+			if reporter != null and is_instance_valid(reporter.performance_monitor): reporter.performance_monitor.toggle_overlay())
+		_add_menu_button(right,"Report a Bug",func():
+			var reporter := get_node_or_null("/root/BugReport")
+			if reporter != null: reporter.open_report())
 	var hint := Label.new()
-	hint.text = "Esc: Return to Station"
+	hint.text = "Tap Resume Cycle to return." if TabletControls.enabled(self) else "Esc: Return to Station"
 	hint.tooltip_text = "Escape closes the pause menu."
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.add_theme_color_override("font_color", Color("#8daab6"))
@@ -2227,6 +2258,9 @@ func _add_menu_button(parent: Control, text: String, callable: Callable) -> Butt
 	button.add_theme_font_size_override("font_size", 17)
 	preload("res://scripts/title_button_style.gd").apply(button, 280, 50, text == "Resume Cycle")
 	# No icon on Codex & Discoveries (owner playtest, Sept 29); the HUD Archive button carries the unread count.
+	if TabletControls.enabled(self):
+		button.custom_minimum_size.y = 84
+		button.add_theme_font_size_override("font_size",26)
 	parent.add_child(button)
 	if text == "Resume Cycle":
 		menu_resume_button = button
@@ -2500,7 +2534,7 @@ func _expire_prototype_markers() -> void:
 			prototype_card_seen_cycle.erase(room_id)
 
 func _on_grid_clicked(cell: Vector2i) -> void:
-	if _gameplay_input_blocked():
+	if _gameplay_input_blocked() or _dialogue_open():
 		return
 	if not running:
 		return
@@ -3509,6 +3543,8 @@ func _refresh_all() -> void:
 	_refresh_view_mode_button()
 	_refresh_menu_status()
 	grid_view.queue_redraw()
+	var tablet := get_node_or_null("TabletControls")
+	if tablet != null: tablet.refresh_targets()
 
 func _refresh_orbital_objective() -> void:
 	if orbital_objective_label == null:
@@ -3796,6 +3832,9 @@ func _menu_restart_cycle() -> void:
 	_choose_restart_architect()
 
 func _menu_quit_game() -> void:
+	if TabletControls.enabled(self):
+		_menu_return_title()
+		return
 	if not running or _save_active_loop():
 		preload("res://scripts/audio_shutdown.gd").request(self)
 	else:
@@ -3827,6 +3866,26 @@ func _menu_return_title() -> void:
 	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 
 func _notification(what: int) -> void:
+	if TabletControls.enabled(self) and startup_complete and not get_meta("restoring_checkpoint",false):
+		if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED:
+			_set_paused(true,false)
+			pause_before_menu = true
+			pause_before_journal = true
+			if is_instance_valid(crew_comms) and crew_comms.holds_pause: crew_comms.pause_before_dialogue = true
+			if menu_open: menu_resume_button.text = "Return to Station · Paused"
+			if not tablet_background_suspended:
+				tablet_background_suspended = true
+				if is_instance_valid(card_drag): card_drag._finish()
+				_set_paused(true,false)
+				if running and not testing_free_build and not testing_disable_failures:
+					tablet_background_save_error = "" if _save_active_loop() else menu_save_feedback.text
+			return
+		if what == NOTIFICATION_APPLICATION_RESUMED or what == NOTIFICATION_APPLICATION_FOCUS_IN:
+			tablet_background_suspended = false
+			_set_paused(true,false)
+			if not tablet_background_save_error.is_empty():
+				_log("CHECKPOINT NOT SAVED // " + tablet_background_save_error)
+			return
 	if get_meta("restoring_checkpoint",false):
 		if what == NOTIFICATION_WM_CLOSE_REQUEST: preload("res://scripts/audio_shutdown.gd").request(self)
 		return
@@ -4308,6 +4367,7 @@ func _refresh_cards() -> void:
 			reroll_button.text += "\n+1 IN %dC" % (REROLL_RECOVERY_CYCLES - reroll_recovery_progress)
 		reroll_button.tooltip_text = "Rebuilds one reroll every %d cycles while below %d charges." % [REROLL_RECOVERY_CYCLES, REROLL_RECOVERY_CAP]
 		reroll_button.disabled = rerolls_remaining <= 0 or not running
+	var card_scale := TabletControls.CARD_SCALE if TabletControls.enabled(self) else 1.0
 	var card_states := []
 	for id in hand: card_states.append(DraftCard.presentation(self, str(id)))
 	var presentation := {"layout": Preferences.hand_layout, "cards": card_states}
@@ -4320,13 +4380,15 @@ func _refresh_cards() -> void:
 			hand_box.remove_child(child)
 			child.queue_free()
 		# Card-shaped blueprints, as a row or a fan (owner playtest).
-		var fan: Control = DraftCard.fan_row() if Preferences.hand_layout == "fan" else null
+		var fan: Control = DraftCard.fan_row(card_scale) if Preferences.hand_layout == "fan" else null
 		if fan != null:
 			hand_box.add_child(fan)
 		for index in range(hand.size()):
 			var id: String = hand[index]
 			var card: PanelContainer = DraftCard.build(self, id)
 			card.set_meta("hand_index", index)
+			card.set_meta("display_scale", card_scale)
+			card.scale = Vector2.ONE * card_scale
 			card.mouse_entered.connect(_on_card_hovered.bind(id, card))
 			card.mouse_exited.connect(_on_card_unhovered.bind(id, card))
 			card.gui_input.connect(_on_card_gui_input.bind(id, index))
@@ -4334,10 +4396,10 @@ func _refresh_cards() -> void:
 				fan.add_child(card)
 				continue
 			var card_slot := Control.new()
-			card_slot.custom_minimum_size = DraftCard.ROW_SLOT
+			card_slot.custom_minimum_size = DraftCard.ROW_SLOT * card_scale
 			card_slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			card_slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			card.position = Vector2((DraftCard.ROW_SLOT.x - DraftCard.CARD_SIZE.x) * 0.5, DraftCard.HOVER_LIFT + 8.0)
+			card.position = Vector2((DraftCard.ROW_SLOT.x - DraftCard.CARD_SIZE.x) * 0.5, DraftCard.HOVER_LIFT + 8.0) * card_scale + card.pivot_offset * (card_scale - 1.0)
 			card.set_meta("rest_position", card.position)
 			card.set_meta("rest_rotation", 0.0)
 			card_slot.add_child(card)
@@ -4352,6 +4414,9 @@ func _refresh_cards() -> void:
 	if hand_layout_button != null:
 		hand_layout_button.text = "LAYOUT: FAN" if Preferences.hand_layout == "fan" else "LAYOUT: ROW"
 		preload("res://scripts/ui_icons.gd").apply(hand_layout_button, Preferences.hand_layout, 30)
+
+	var tablet := get_node_or_null("TabletControls")
+	if tablet != null: tablet.refresh_blueprint_actions()
 
 func _card_synergy_hint(room_id: String) -> String:
 	var best_synergy := {}
@@ -4573,6 +4638,7 @@ func _on_card_unhovered(id: String, card: Control) -> void:
 	_refresh_inspector()
 
 func _pose_card(card: Control, at: Vector2, turn: float, grow: Vector2) -> void:
+	grow *= float(card.get_meta("display_scale", 1.0))
 	# A card that ends up straight shows its art at native pixels again (note 14).
 	DraftCard.set_art_filter(card, not is_zero_approx(turn))
 	var previous: Tween = card.get_meta("pose_tween") if card.has_meta("pose_tween") else null
@@ -4595,7 +4661,7 @@ func _toggle_hand_layout() -> void:
 	_refresh_cards()
 
 func _on_card_gui_input(event: InputEvent, id: String, index := -1) -> void:
-	if _gameplay_input_blocked() or not running:
+	if _gameplay_input_blocked() or _dialogue_open() or not running:
 		get_viewport().set_input_as_handled()
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -4657,12 +4723,22 @@ func _input(event: InputEvent) -> void:
 		return
 	if menu_archive != null:
 		return
-	if event is InputEventKey and event.pressed and not event.echo and event.ctrl_pressed and event.keycode==KEY_F and not _gameplay_input_blocked():
+	# Escape puts a held blueprint back before it opens the pause menu.
+	# Handle this before GUI focus can consume the key; dialogs keep priority.
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE and running and not _gameplay_input_blocked() and (not selected_card_id.is_empty() or card_drag.pressing):
+		card_drag._finish()
+		selected_card_id = ""
+		selected_rotation = 0
+		hovered_card_id = ""
+		_refresh_all()
+		get_viewport().set_input_as_handled()
+		return
+	if event is InputEventKey and event.pressed and not event.echo and (event.ctrl_pressed or event.meta_pressed) and event.keycode==KEY_F and not _gameplay_input_blocked():
 		_open_station_search()
 		get_viewport().set_input_as_handled()
 		return
 	if _journal_is_open() and event is InputEventKey and event.pressed and not event.echo:
-		if event.ctrl_pressed and event.keycode == KEY_F:
+		if (event.ctrl_pressed or event.meta_pressed) and event.keycode == KEY_F:
 			journal_tabs.current_tab = 3 if journal_tabs.current_tab==3 else 4
 			history_search.grab_focus()
 			history_search.select_all()
@@ -5715,7 +5791,7 @@ func _refresh_routing() -> void:
 	routing_label.text = _join_strings(lines, "\n")
 
 func _refresh_placement_status() -> void:
-	if is_instance_valid(placement_feedback): placement_feedback.visible = not selected_card_id.is_empty() and not _gameplay_input_blocked()
+	if is_instance_valid(placement_feedback): placement_feedback.visible = not selected_card_id.is_empty() and not _gameplay_input_blocked() and not _dialogue_open()
 	if selected_card_id.is_empty():
 		placement_label.tooltip_text = ""
 		placement_label.text = "■ %s     VIEW: %s\nMajor Bill: %s" % ["HALTED" if paused else "RUNNING", "ADMIN" if admin_mode else "NORMAL", _walker_status()]
@@ -6393,7 +6469,7 @@ func _fit_sidebar_inspector(scroll: ScrollContainer, side: VBoxContainer, panel:
 	for child in side.get_children():
 		if child == panel or not child.visible: continue
 		remaining -= child.get_combined_minimum_size().y + side.get_theme_constant("separation")
-	var height := clampf(remaining, 360.0, 520.0)
+	var height := maxf(remaining, 240.0) if TabletControls.enabled(self) else clampf(remaining, 360.0, 520.0)
 	panel.custom_minimum_size.y = height
 	# Expanded notes get a readable viewport; the sidebar can scroll without moving cycle controls.
 	inspector_label.custom_minimum_size.y = 180.0

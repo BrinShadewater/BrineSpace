@@ -41,13 +41,15 @@ func _ready() -> void:
 	_player.volume_db = FILM_LEVEL_DB + linear_to_db(maxf(Preferences.music_volume, 0.0001))
 	_player.finished.connect(_film_ended)
 	add_child(_player)
-	var hint := Label.new()
-	hint.text = "SPACE  skip"
-	hint.add_theme_color_override("font_color", Color(0.78, 0.86, 0.9, 0.4))
-	hint.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	hint.position = Vector2(-150, -52)
-	hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(hint)
+	var skip := Button.new()
+	skip.name = "SkipIntro"; skip.text = "SKIP INTRO"
+	skip.theme = preload("res://scripts/title_button_style.gd").menu_theme()
+	skip.add_theme_font_size_override("font_size",26)
+	skip.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
+	skip.offset_left = -264; skip.offset_top = -108
+	skip.offset_right = -24; skip.offset_bottom = -24
+	skip.pressed.connect(_skip)
+	add_child(skip)
 	_player.play()
 
 # The title is loaded only once the film is over: loading it during playback stalled the main thread for
@@ -75,14 +77,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	var key := event as InputEventKey
 	if key != null and key.pressed and not key.echo and key.keycode == KEY_SPACE:
 		get_viewport().set_input_as_handled()
-		# Skipping stops the film and starts the threaded title load; _process changes scene as soon as it
-		# lands, without the two-second hold. A direct synchronous load froze the window ~800 ms (Sept 30).
-		if _player == null:
-			_to_title()
-			return
-		_player.stop()
-		_film_ended()
-		_held = HOLD_SECONDS
+		_skip()
+
+func _skip() -> void:
+	if _leaving: return
+	# Share the nonblocking transition between keyboard and touch.
+	if _player == null:
+		_to_title()
+		return
+	_player.stop()
+	_film_ended()
+	_held = HOLD_SECONDS
 
 func _to_title() -> void:
 	if _leaving:

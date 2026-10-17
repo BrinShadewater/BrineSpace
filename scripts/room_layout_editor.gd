@@ -333,6 +333,7 @@ class LayoutCanvas extends Control:
 		editor.add_library_asset(str(data.room_library_asset),to_room(at))
 
 static func open(host: Node) -> Control:
+	if preload("res://scripts/tablet_controls.gd").enabled(host): return null
 	var existing=host.get_tree().root.get_node_or_null("RoomLayoutEditor")
 	if existing!=null: return existing
 	preload("res://scripts/studio_warmup.gd").finish()

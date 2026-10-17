@@ -88,6 +88,51 @@ func run() -> void:
 	await process_frame
 	check(not game.card_drag.is_dragging() and not game.occupied.has(target), "A right click cancels the drag")
 
+	# Escape clears a click-selected blueprint without spending or discarding it.
+	var original_hand: Array = game.hand.duplicate()
+	var original_resources: Dictionary = game.resources.duplicate(true)
+	var original_rerolls: int = game.rerolls_remaining
+	var escape := InputEventKey.new()
+	escape.keycode = KEY_ESCAPE
+	escape.pressed = true
+	game._on_card_pressed("corridor")
+	game.selected_rotation = 2
+	root.push_input(escape, true)
+	await process_frame
+	check(game.selected_card_id.is_empty() and game.selected_rotation == 0, "Escape deselects the blueprint and resets its rotation")
+	check(not game.menu_open, "First Escape cancels selection instead of opening the menu")
+	check(game.hand == original_hand and game.resources == original_resources and game.rerolls_remaining == original_rerolls, "Escape preserves cards, resources and rerolls")
+
+	# With no selection, Escape keeps its normal pause-menu behavior.
+	root.push_input(escape, true)
+	await process_frame
+	check(game.menu_open, "Second Escape opens the menu")
+	root.push_input(escape, true)
+	await process_frame
+	check(not game.menu_open, "Escape closes the menu as before")
+
+	# A journal owns Escape even when a blueprint is selected behind it.
+	game._on_card_pressed("corridor")
+	game._toggle_journal()
+	root.push_input(escape, true)
+	await process_frame
+	check(not game._journal_is_open() and game.selected_card_id == "corridor", "Escape closes the journal without cancelling the underlying blueprint")
+
+	# Escape during a drag removes the ghost and disarms the later mouse release.
+	game._on_card_gui_input(press, "corridor", 0)
+	motion(start + Vector2(0, -80))
+	motion(drop)
+	await process_frame
+	check(game.card_drag.is_dragging(), "Escape fixture starts with an active drag")
+	root.push_input(escape, true)
+	await process_frame
+	check(not game.card_drag.pressing and not game.card_drag.is_dragging() and not is_instance_valid(game.card_drag.ghost), "Escape ends the drag and removes its ghost")
+	check(game.selected_card_id.is_empty() and not game.menu_open, "Drag cancellation deselects without opening a menu")
+	button(drop, MOUSE_BUTTON_LEFT, false)
+	await process_frame
+	check(not game.occupied.has(target) and not game.drone_fleet.reserved(target), "Releasing after Escape cannot place the cancelled room")
+	check(game.hand == original_hand and game.resources == original_resources and game.rerolls_remaining == original_rerolls, "Drag cancellation preserves cards, resources and rerolls")
+
 	# Drop places the room.
 	game._on_card_pressed("corridor")
 	game.selected_rotation = 0
