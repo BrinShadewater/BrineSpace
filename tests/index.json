@@ -32,6 +32,12 @@
       "test_large_room_paid"
     ],
     "performance-diagnostics": [
+      "test_initial_surface_loading",
+      "test_visible_art_loading",
+      "test_visible_art_loading_pixels",
+      "test_room_art_prefetch",
+      "test_room_art_prefetch_pixels",
+      "test_room_view_selection",
       "test_painted_cap_batch",
       "test_crew_pose_cache",
       "test_moonbay_retained_walls",
@@ -1566,6 +1572,10 @@
     "test_bill_land_water_title_checkpoint_west_v1": {
       "lane": "skip",
       "reason": "Art-evidence tool: expects exactly one checkpoint name after \"--\" and a fresh process per checkpoint, which a sweep cannot supply. Run it directly with its argument."
+    },
+    "test_visible_art_loading_pixels": {
+      "lane": "native",
+      "reason": "Native exact environment pixels across initial sites, close views and visual clocks."
     }
   }
 }

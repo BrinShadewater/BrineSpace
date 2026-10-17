@@ -83,41 +83,60 @@ func load_manifest(path: String, append: bool = false, load_stride_overrides: bo
 	if load_stride_overrides:
 		strides.merge(data.get("strideDistanceCells", {} if append else {"walk": 0.12}), true)
 	gait_phase_groups.merge(data.get("gaitPhaseGroups", {}), true)
+	# These values belong to the manifest/clip, not an individual timing slot.
+	var pivot: Array = data.get("pivot", [46, 86])
+	var frame_pivot := Vector2(float(pivot[0]), float(pivot[1]))
+	var standing_height := float(data.get("standingHeight", 74))
+	var linear_filter: bool = data.get("textureFilter", "nearest") == "linear"
+	var directory := path.get_base_dir()
 	for entry in data.states:
+		var state_id := str(entry.id)
+		var lowered: bool = state_id.begins_with("death-ground-") and data.get("deathEntryMode", "") == "lowered-start-v1"
+		var bunk_settle: bool = state_id == "death-bunk-settle-east" and data.get("supportedBunkDeathMode", "") == "settle-v1"
+		var bunk_early: bool = state_id in ["death-bunk-standing-east", "death-bunk-crouch-east"] and data.get("earlyBunkFloorDeathMode", "") == "floor-v1"
+		var lounge_floor: bool = state_id == "death-lounge-seated-north" and data.get("loungeFallDeathMode", "") == "seated-north-v1"
+		var sofa_read: bool = state_id in ["death-sofa-read-south", "death-sofa-neutral-south"] and data.get("sofaFallDeathMode", "") == "reader-south-v1"
+		var sofa_partial: bool = state_id in ["death-sofa-pose0-south", "death-sofa-pose1-south", "death-sofa-pose2-south", "death-sofa-pose3-south", "death-sofa-pose4-south", "death-sofa-pose5-south"] and data.get("sofaPartialFallDeathMode", "") == "partial-south-v1"
+		var contact_choice: bool = state_id.begins_with("death-ground-") and data.get("deathContactMode", "") == "terminal-projection-v1"
+		var has_facing: bool = entry.has("facings")
+		var has_depth: bool = entry.has("depthOffsets")
+		var has_water: bool = entry.has("waterPoses")
+		var default_facing := state_id.get_slice("-", state_id.get_slice_count("-") - 1)
+		var default_kind := state_id.get_slice("-", 0)
+		var default_water: bool = bool(entry.get("water", false)) or state_id.begins_with("swim-") or state_id.begins_with("tread-") or state_id.begins_with("death-water-")
 		var row: Array = []
 		for relative in entry.frameFiles:
-			var filename: String = str(relative) if str(relative).begins_with("res://") else path.get_base_dir().path_join(relative).simplify_path()
+			var filename: String = str(relative) if str(relative).begins_with("res://") else directory.path_join(relative).simplify_path()
 			# Keep the slot even when art is unavailable: timing and facing use its index.
 			var texture := ImageTexture.new()
 			texture.set_meta("crew_frame_92", true)
-			if str(entry.id).begins_with("death-ground-") and data.get("deathEntryMode","")=="lowered-start-v1":texture.set_meta("crew_lowered_death_entry",true)
-			if str(entry.id)=="death-bunk-settle-east" and data.get("supportedBunkDeathMode","")=="settle-v1":texture.set_meta("crew_bunk_supported_settle",true)
-			if str(entry.id) in ["death-bunk-standing-east","death-bunk-crouch-east"] and data.get("earlyBunkFloorDeathMode","")=="floor-v1":texture.set_meta("crew_bunk_early_floor",true)
-			if str(entry.id)=="death-lounge-seated-north" and data.get("loungeFallDeathMode","")=="seated-north-v1":texture.set_meta("crew_lounge_floor_fall",true)
-			if str(entry.id) in ["death-sofa-read-south","death-sofa-neutral-south"] and data.get("sofaFallDeathMode","")=="reader-south-v1":texture.set_meta("crew_sofa_read_floor_fall",true)
-			if str(entry.id) in ["death-sofa-pose0-south","death-sofa-pose1-south","death-sofa-pose2-south","death-sofa-pose3-south","death-sofa-pose4-south","death-sofa-pose5-south"] and data.get("sofaPartialFallDeathMode","")=="partial-south-v1":texture.set_meta("crew_sofa_partial_floor_fall",true)
+			if lowered:texture.set_meta("crew_lowered_death_entry",true)
+			if bunk_settle:texture.set_meta("crew_bunk_supported_settle",true)
+			if bunk_early:texture.set_meta("crew_bunk_early_floor",true)
+			if lounge_floor:texture.set_meta("crew_lounge_floor_fall",true)
+			if sofa_read:texture.set_meta("crew_sofa_read_floor_fall",true)
+			if sofa_partial:texture.set_meta("crew_sofa_partial_floor_fall",true)
 			if str(entry.id)=="death-lounge-partial-north" and data.get("loungeFallDeathMode","")=="partial-north-v1":texture.set_meta("crew_lounge_partial_floor_fall",true)
 			if str(entry.id) in ["death-lounge-late3-north","death-lounge-late4-north"] and data.get("loungeFallDeathMode","")=="late-north-v1":texture.set_meta("crew_lounge_late_floor_fall",true)
 			if str(entry.id) in ["death-lounge-early0-north","death-lounge-early1-north"] and data.get("loungeFallDeathMode","")=="early-north-v1":texture.set_meta("crew_lounge_early_floor_fall",true)
 			if frame_furniture(entry,row.size())=="bunk":texture.set_meta("crew_bunk_layer",true)
 			if entry.has("restHeadOffset"):texture.set_meta("crew_rest_head_offset",Vector2(entry.restHeadOffset[0],entry.restHeadOffset[1]))
-			texture.set_meta("crew_water_facing",str(entry.get("facings",[])[row.size()]) if entry.has("facings") else str(entry.id).get_slice("-",str(entry.id).get_slice_count("-")-1))
-			texture.set_meta("crew_water_kind",str(entry.waterKinds[row.size()]) if entry.has("waterKinds") else str(entry.id).get_slice("-",0))
-			texture.set_meta("crew_depth_offset",float(entry.get("depthOffsets",[])[row.size()]) if entry.has("depthOffsets") else 0.0)
+			texture.set_meta("crew_water_facing",str(entry.get("facings",[])[row.size()]) if has_facing else default_facing)
+			texture.set_meta("crew_water_kind",str(entry.waterKinds[row.size()]) if entry.has("waterKinds") else default_kind)
+			texture.set_meta("crew_depth_offset",float(entry.get("depthOffsets",[])[row.size()]) if has_depth else 0.0)
 			if entry.get("seatContactDepth",false):texture.set_meta("crew_seat_contact_depth",true)
-			texture.set_meta("crew_water_pose",bool(entry.waterPoses[row.size()]) if entry.has("waterPoses") else (bool(entry.get("water",false)) or str(entry.id).begins_with("swim-") or str(entry.id).begins_with("tread-") or str(entry.id).begins_with("death-water-")))
-			var pivot: Array = data.get("pivot", [46, 86])
-			texture.set_meta("crew_pivot", Vector2(float(pivot[0]), float(pivot[1])))
+			texture.set_meta("crew_water_pose",bool(entry.waterPoses[row.size()]) if has_water else (default_water))
+			texture.set_meta("crew_pivot", frame_pivot)
 			# Source pixels per 65.28 world units. 74 is the legacy pack profile; a pack
 			# authored at higher density declares its own so it lands at the same size.
-			texture.set_meta("crew_standing_height", float(data.get("standingHeight", 74)))
-			if str(entry.id).begins_with("death-ground-") and data.get("deathContactMode","")=="terminal-projection-v1":
+			texture.set_meta("crew_standing_height", standing_height)
+			if contact_choice:
 				texture.set_meta("crew_death_contact_choice",true)
-			if data.get("textureFilter", "nearest") == "linear" or (texture_batch != null and texture_batch.pool != null):
+			if linear_filter or (texture_batch != null and texture_batch.pool != null):
 				var filtered := CanvasTexture.new()
 				filtered.diffuse_texture = texture
 				# Non-linear manifests previously inherited the drawing CanvasItem's filter.
-				filtered.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if data.get("textureFilter", "nearest") == "linear" else CanvasItem.TEXTURE_FILTER_PARENT_NODE
+				filtered.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if linear_filter else CanvasItem.TEXTURE_FILTER_PARENT_NODE
 				for meta in texture.get_meta_list(): filtered.set_meta(meta, texture.get_meta(meta))
 				row.append(filtered)
 			else:

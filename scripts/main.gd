@@ -409,6 +409,9 @@ func _ready() -> void:
 	startup_stamp = Time.get_ticks_usec()
 	grid_view.prewarm_station_views(self)
 	startup_stage_ms["station_rooms"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
+	startup_stamp = Time.get_ticks_usec()
+	grid_view.prewarm_loading_art(self)
+	startup_stage_ms["initial_art"] = (Time.get_ticks_usec() - startup_stamp) / 1000.0
 	startup_complete = true
 	crew_comms=preload("res://scripts/crew_comms.gd").new()
 	crew_comms.opening_enabled=fresh_comms_opening

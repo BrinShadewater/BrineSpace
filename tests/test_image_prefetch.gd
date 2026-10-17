@@ -19,10 +19,10 @@ func direct(path: String) -> Image:
 func run() -> void:
 	var manifest := "user://image_prefetch_test_%d.txt" % OS.get_process_id()
 	var paths: Array = [
-		"res://legacy/default/assets/rooms/solar-array/cards/card.png",
-		"res://legacy/default/assets/rooms/reactor/cards/card.png",
-		"res://assets/rooms/crew-hab/cards/card.png",
-		"res://legacy/default/assets/rooms/research-lab/cards/card.png",
+		"res://assets/environment/ground-refresh-v1/runtime/silt-plain.png",
+		"res://assets/environment/ocean-floor-expansion-v1/runtime/brine-star.png",
+		"res://assets/environment/ocean-floor-expansion-v1/runtime/tube-worms.png",
+		"res://assets/environment/ocean-floor-expansion-v1/runtime/fractured-stone.png",
 		"res://brineui/terminal_button_normal.png",
 	]
 	for path in paths: check(FileAccess.file_exists(path), "Fixture image exists: " + path)
@@ -85,6 +85,54 @@ func run() -> void:
 	Prefetch.index_of = {paths[4]:Prefetch.paths.size()-1}
 	check(Prefetch.take(paths[4]).get_data() == direct(paths[4]).get_data(),"Jumping ahead still returns the requested pixels")
 	check(Prefetch.worker_submissions == 1 and Prefetch.peak_pending <= Prefetch.WINDOW*2,"A changed startup order never queues its skipped prefix")
+	Prefetch.end()
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(manifest))
+	# A first launch already knows surviving crew paths at batch completion.
+	# Announcing them must enable the same bounded decoder without a prior file.
+	var decoder:=Prefetch.new()
+	Prefetch.begin(manifest)
+	if decoder.has_method("prime"):
+		decoder.call("prime",PackedStringArray([paths[0], paths[1], paths[0]]))
+		check(Array(Prefetch.paths)==[paths[0],paths[1]],"First-launch batch order deduplicates paths")
+		check(Prefetch.tasks.is_empty() and Prefetch.recorded.is_empty(),"Priming itself neither decodes nor invents requests")
+		var initial:=SafeImage.raw_image(paths[0])
+		check(initial.get_data()==direct(paths[0]).get_data() and Prefetch.hits==1,"First-launch batch uses workers with exact pixels")
+		initial.fill(Color.RED)
+		check(SafeImage.raw_image(paths[0]).get_data()==direct(paths[0]).get_data(),"Primed images remain independent")
+		decoder.call("prime",PackedStringArray([paths[2],paths[1]]))
+		check(Array(Prefetch.paths)==[paths[0],paths[1],paths[2]],"Later crew batches extend the first-launch order")
+		check(SafeImage.raw_image(paths[2]).get_data()==direct(paths[2]).get_data(),"Extended order decodes correctly")
+	else:check(false,"First-launch crew batches can prime the decoder")
+	Prefetch.end()
+	check(Prefetch.tasks.is_empty() and Prefetch.results.is_empty() and Prefetch.paths.is_empty(),"Primed workers and order released")
+	var requests:=FileAccess.get_file_as_string(manifest).split("\n",false)
+	check(Array(requests)==[paths[0],paths[0],paths[2]],"Only actual primed requests become the next launch's order")
+	Prefetch.begin(manifest)
+	if decoder.has_method("prime"):
+		var learned:=Prefetch.paths.duplicate()
+		decoder.call("prime",PackedStringArray([paths[4],paths[3]]))
+		check(Prefetch.paths==learned,"Repeat launches preserve the learned order")
+	Prefetch.end()
+	if decoder.has_method("prime"):
+		decoder.call("prime",PackedStringArray([paths[0]]))
+		check(Prefetch.paths.is_empty(),"Inactive gameplay does not prime startup decoding")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(manifest))
+	# Exercise the real compressed crew batch caller, not just the priming API.
+	Prefetch.begin(manifest)
+	var batch=preload("res://scripts/crew_storage/worker_batch.gd").new()
+	var displays:Array=[]
+	for path in [paths[0],paths[1],paths[0]]:
+		var texture:=ImageTexture.new()
+		texture.set_meta("crew_pivot",Vector2(3,6))
+		texture.set_meta("crew_standing_height",65.28)
+		var display:=CanvasTexture.new();display.diffuse_texture=texture
+		batch.add(texture,display,path);displays.append(display)
+	var batch_stats:Dictionary=batch.finish()
+	check(Prefetch.hits==2 and Prefetch.worker_submissions==2,"Surviving first-launch crew batch enables workers")
+	check(displays[0].diffuse_texture.get_image().get_data()==direct(paths[0]).get_data(),"Compressed primed crew frame has exact pixels")
+	check(displays[0].diffuse_texture==displays[2].diffuse_texture,"Repeated crew paths still share immutable storage")
+	check(displays[1].get_meta("crew_alpha_extent")==Rect2(Vector2(direct(paths[1]).get_used_rect().position)-Vector2(3,6),Vector2(direct(paths[1]).get_used_rect().size)),"Crew alpha bounds and pivot remain exact")
+	check(batch_stats.private_compress_jobs_left==0 and batch_stats.private_compress_peak_jobs<=batch.WORK_WINDOW,"Crew worker bounds and cleanup preserved")
 	Prefetch.end()
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(manifest))
 	print("IMAGE PREFETCH %s" % ("PASS" if failures == 0 else "FAIL %d" % failures))

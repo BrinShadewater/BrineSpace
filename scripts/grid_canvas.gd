@@ -1306,6 +1306,61 @@ func prewarm_station_views(main) -> void:
 		if view != null and "props" in view:
 			preload("res://scripts/room_asset_library.gd").prewarm_layout_templates(view, quarter)
 
+# The initial camera centers after a layout frame. Predict that same clamped rectangle
+# so companion views are ready before startup decoding ends, without moving the camera.
+func prewarm_loading_art(main) -> void:
+	if not preload("res://scripts/image_prefetch.gd").active: return
+	seabed_background.prepare_for_loading(main.site_layout)
+	if main.placed_rooms.is_empty(): return
+	var size: float = main.get_cell_size()
+	var extent: Vector2 = main.grid_scroll.size
+	# Containers have not sorted on a fresh New Loop. The viewport conservatively
+	# covers the eventual scroll area; at most the three companion room types warm.
+	if extent.x <= 0.0 or extent.y <= 0.0: extent = main.get_viewport_rect().size
+	var center: Vector2 = main._station_bounds().get_center()*size
+	var origin := (center-extent*0.5).clamp(Vector2.ZERO,(Vector2.ONE*GRID_SIZE*size-extent).max(Vector2.ZERO))
+	var view_cells:=Rect2(Vector2(Vector2i(origin))/size,extent/size)
+	prewarm_visible_derelicts(main,view_cells)
+	prewarm_initial_surface_images(main,view_cells)
+
+func prewarm_initial_surface_images(main,view_cells:Rect2) -> void:
+	var decoder=preload("res://scripts/image_prefetch.gd")
+	if not decoder.active:return
+	# Match the initial retained-room join cover without changing the camera or
+	# creating draw commands. Reuse the same image choices as hand preparation.
+	var region:=view_cells.grow(STATIC_JOIN_CELLS)
+	var rooms:Array=[]
+	for room in main.placed_rooms:
+		if not _uses_layered_art(room):continue
+		if cull_room_drawing and not region.intersects(Rect2(Vector2(room.pos),Vector2(room.get("size",Vector2i.ONE)))):continue
+		rooms.append(room)
+	# One opening room showed no end-to-end gain from eager preparation. Keep
+	# that case lazy; amortize the setup only across an initial room group.
+	if rooms.size()<2:return
+	_prime_surface_image_records()
+	var records:Array=[]
+	var seen:Dictionary={}
+	for room in rooms:
+		for record in _surface_image_records(str(room.id),int(room.get("rotation",0))):
+			if record.kind=="wall" and not main.hardware.walls:continue
+			var key:Array=[record.kind,record.key]
+			if seen.has(key):continue
+			seen[key]=true;records.append(record)
+	var paths:=PackedStringArray()
+	for record in records:paths.append(record.source)
+	decoder.prime(paths)
+	for record in records:
+		if record.kind=="floor":preload("res://rooms/whole-room/modular_floor.gd").texture(record.key)
+		else:preload("res://rooms/whole-room/painted_shell.gd").png(record.key)
+
+func prewarm_visible_derelicts(main, view_cells: Rect2) -> void:
+	var region := view_cells.grow(0.5)
+	for cell in main.wrecks:
+		var ward: Dictionary = main.wrecks[cell]
+		if ward.cleared or not main.Companions.IDS.has(ward.kind): continue
+		if cull_room_drawing and cull_derelict_drawing and not region.intersects(Rect2(Vector2(cell),Vector2.ONE)): continue
+		_bill_room_view({"id":main.Companions.ROOMS[ward.kind]})
+
 func prewarm_room_views(main) -> void:
 	var ids: Array = main.hand.duplicate()
 	if not str(main.selected_card_id).is_empty(): ids.push_front(str(main.selected_card_id))
@@ -3049,7 +3104,7 @@ func _bill_room_view(room: Dictionary):
 			view.embedded=true;view.set_meta("room_texture_pool",room_texture_pool);view.hide();add_child(view)
 			expansion_room_views[expansion_id]=view
 		return expansion_room_views[expansion_id]
-	var room_view = life_support_view if room.get("id", "") == "life_support" else nursery_view
+	var room_view = life_support_view if room.get("id", "") == "life_support" else null
 	if room.get("id", "") == "hydroponics_bay": room_view = hydroponics_view
 	if room.get("id", "") == "med_bay": room_view = med_bay_view
 	if room.get("id", "") == "crew_hab": room_view = crew_hab_view
@@ -3103,7 +3158,7 @@ func _bill_room_view(room: Dictionary):
 		if not is_instance_valid(rare_room_views.get(room.id)): rare_room_views[room.id]=_lazy_view(StringName("rare_"+str(room.id)),load(RARE_VIEW_PATHS[room.id]))
 		room_view=rare_room_views[room.id]
 	if room.get("id","")=="salvage_workshop":room_view.bind_room(room)
-	return room_view
+	return room_view if room_view != null else nursery_view
 
 # Snapshot the exact registered ground footprints used to draw this room.
 # The draw pass reconfigures shared views before use; snapshots own their arrays.
@@ -4740,11 +4795,7 @@ func _neighbor_connected_from_known_port(main,room:Dictionary,neighbor_pos:Vecto
 func prepare_hand_images(main) -> void:
 	var queue=preload("res://scripts/hand_image_preparation.gd")
 	if not queue.enabled or preload("res://scripts/image_prefetch.gd").active:queue.maintain([]);return
-	var store=preload("res://scripts/room_layout_store.gd")
-	store.prime()
-	if hand_image_assets.is_empty():
-		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")):hand_image_assets[str(entry.room)]=str(entry.asset)
-		for row in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/floor-profiles-v1/rooms.json")):hand_image_profiles[str(row.id)]=row
+	_prime_surface_image_records()
 	var ids:Array=main.hand.duplicate()
 	if not str(main.selected_card_id).is_empty():ids.push_front(str(main.selected_card_id))
 	var wanted:Array=[]
@@ -4753,23 +4804,34 @@ func prepare_hand_images(main) -> void:
 	for id in ids:
 		id=str(id)
 		var q:int=int(main.selected_rotation) if id==str(main.selected_card_id) else int(main._default_card_rotation(id))
-		var key:Array=[id,q,store.revision]
-		if not hand_image_records.has(key):
-			var records:Array=[]
-			var values:Dictionary=store.shared_positions(str(hand_image_assets.get(id,"")),q)
-			var corridor:bool=id in ["corridor","corner","tee_corridor"]
-			if floors.enabled and (corridor or (hand_image_profiles.has(id) and floors.pilot(id))):
-				var source:String="" if corridor else str(hand_image_profiles[id].source)
-				for path in floors.preparation_paths(values,corridor,q,source,id if corridor else "corridor"):
-					records.append({"kind":"floor","key":path,"source":floors.FLOOR_REVISIONS.get(path,path)})
-			var wall:Dictionary=walls.surface_base(id,str(values.get("wall/riser","")))
-			if not wall.is_empty():records.append({"kind":"wall","key":str(wall.base.source),"source":str(wall.base.source)})
-			if hand_image_records.size()>=64:hand_image_records.clear()
-			hand_image_records[key]=records
-		for record in hand_image_records[key]:
+		for record in _surface_image_records(id,q):
 			var uploaded:bool=floors.textures.has(record.key) if record.kind=="floor" else walls.textures.has(record.key)
 			if not uploaded and record.source not in wanted:wanted.append(record.source)
 	queue.maintain(wanted)
+
+func _prime_surface_image_records() -> void:
+	preload("res://scripts/room_layout_store.gd").prime()
+	if hand_image_assets.is_empty():
+		for entry in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/full-wall-v1/editor-catalog.json")):hand_image_assets[str(entry.room)]=str(entry.asset)
+		for row in JSON.parse_string(FileAccess.get_file_as_string("res://rooms/floor-profiles-v1/rooms.json")):hand_image_profiles[str(row.id)]=row
+
+func _surface_image_records(id:String,q:int) -> Array:
+	var store=preload("res://scripts/room_layout_store.gd")
+	var key:Array=[id,q,store.revision]
+	if not hand_image_records.has(key):
+		var records:Array=[]
+		var values:Dictionary=store.shared_positions(str(hand_image_assets.get(id,"")),q)
+		var corridor:bool=id in ["corridor","corner","tee_corridor"]
+		var floors=preload("res://rooms/whole-room/modular_floor.gd")
+		if floors.enabled and (corridor or (hand_image_profiles.has(id) and floors.pilot(id))):
+			var source:String="" if corridor else str(hand_image_profiles[id].source)
+			for path in floors.preparation_paths(values,corridor,q,source,id if corridor else "corridor"):
+				records.append({"kind":"floor","key":path,"source":floors.FLOOR_REVISIONS.get(path,path)})
+		var wall:Dictionary=preload("res://rooms/whole-room/painted_shell.gd").surface_base(id,str(values.get("wall/riser","")))
+		if not wall.is_empty():records.append({"kind":"wall","key":str(wall.base.source),"source":str(wall.base.source)})
+		if hand_image_records.size()>=64:hand_image_records.clear()
+		hand_image_records[key]=records
+	return hand_image_records[key]
 
 var retained_wall_context=preload("res://scripts/retained_wall_context.gd").new()
 

@@ -68,6 +68,36 @@ var mooring_debris := MooringDebris.new()
 const SedimentDecals := preload("res://assets/environment/sediment-decals-v1/sediment_decal_view.gd")
 var sediment_decals := SedimentDecals.new()
 
+# Generated sites draw these groups on their first presentation. Prepare their existing
+# caches while the loading decoder is active, without issuing draw commands or changing
+# the site, camera, placement RNG or animation clocks. Legacy authored scenes stay lazy.
+func prepare_for_loading(layout: Dictionary) -> void:
+	if layout.is_empty(): return
+	var order := PackedStringArray()
+	for id in ["silt-plain"] + SCENERY:
+		order.append(EnvironmentArt.PATHS.get(id,SOURCES[id]))
+	var groups: Array = [fungi_biome,sub_biomes]
+	order.append_array(PackedStringArray(FungiBiome.SOURCES.values()))
+	order.append_array(PackedStringArray(SubBiomes.SELECTED_PATHS.values()))
+	if not layout.get("habitats",[]).is_empty():
+		groups.append_array([sub_biomes.floor_details,ocean_floor,tall_plants,giant_mushrooms,upright_kelp])
+		if layout.habitats.any(func(region):return not sub_biomes.ground_variants.variant_for(region).is_empty()):
+			groups.append(sub_biomes.ground_variants)
+		for view in groups.slice(2):order.append_array(PackedStringArray(view.SOURCES.values()))
+	var scenery: Array = layout.get("scenery",[])
+	var site_art = preload("res://scripts/site_scenery.gd")
+	if scenery.any(func(item):return not site_art.rock_feature_for(item).is_empty()):
+		groups.append(site_art.rock_view)
+		order.append_array(PackedStringArray(site_art.rock_view.SOURCES.values()))
+	if not scenery.is_empty():
+		groups.append(site_art.replacement_view)
+		order.append_array(PackedStringArray(site_art.replacement_view.SOURCES.values()))
+	preload("res://scripts/image_prefetch.gd").prime(order)
+	prepare()
+	sync_site(layout)
+	for view in groups:view.prepare()
+	ambient_water.prepare()
+
 func prepare() -> void:
 	if initialized:
 		return
