@@ -1,0 +1,233 @@
+{
+  "revision": "marsh-south-seated-whole-body-v1",
+  "pivot": [
+    92.0,
+    172.0
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "states": [
+    {
+      "id": "sit-down-south",
+      "frameFiles": [
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png",
+        "res://character/marsh-rest-polish-v1/seated-body-01.png",
+        "res://character/marsh-rest-polish-v1/seated-body-02.png",
+        "res://character/marsh-rest-polish-v1/seated-body-03.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        13.333333333333334,
+        26.666666666666668,
+        40.0
+      ]
+    },
+    {
+      "id": "sit-idle-south",
+      "frameFiles": [
+        "res://character/marsh-rest-polish-v1/seated-body-03.png",
+        "res://character/marsh-rest-polish-v1/seated-body-04.png"
+      ],
+      "frameDurationsMs": [
+        650.0,
+        650.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0
+      ]
+    },
+    {
+      "id": "read-seated-south",
+      "frameFiles": [
+        "res://character/marsh-rest-polish-v1/seated-body-05.png",
+        "res://character/marsh-rest-polish-v1/seated-body-06.png",
+        "res://character/marsh-rest-polish-v1/seated-body-07.png"
+      ],
+      "frameDurationsMs": [
+        450.0,
+        450.0,
+        450.0
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "read",
+        "read",
+        "read"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        40.0,
+        40.0
+      ]
+    },
+    {
+      "id": "sit-rise-south",
+      "frameFiles": [
+        "res://character/marsh-rest-polish-v1/seated-body-03.png",
+        "res://character/marsh-rest-polish-v1/seated-body-02.png",
+        "res://character/marsh-rest-polish-v1/seated-body-01.png",
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "sit",
+        "sit",
+        "sit",
+        "sit"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        40.0,
+        26.666666666666668,
+        13.333333333333334,
+        0.0
+      ]
+    },
+    {
+      "id": "lie-down-south",
+      "frameFiles": [
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png",
+        "res://character/marsh-master-repair-v1/frames/lie-down-south/001.png",
+        "res://character/marsh-master-repair-v1/frames/lie-down-south/002.png",
+        "res://character/marsh-master-repair-v1/frames/lie-down-south/003.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "lie",
+        "lie",
+        "lie",
+        "lie"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "get-up-south",
+      "frameFiles": [
+        "res://character/marsh-master-repair-v1/frames/get-up-south/000.png",
+        "res://character/marsh-master-repair-v1/frames/get-up-south/001.png",
+        "res://character/marsh-master-repair-v1/frames/get-up-south/002.png",
+        "res://character/marsh-south-idle-material-v1/candidate-01/000.png"
+      ],
+      "frameDurationsMs": [
+        200.0,
+        200.0,
+        200.0,
+        200.0
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "get",
+        "get",
+        "get",
+        "get"
+      ],
+      "waterPoses": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

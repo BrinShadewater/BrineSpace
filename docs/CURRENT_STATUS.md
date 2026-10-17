@@ -1,3 +1,1226 @@
+## Save cost reduced; separate Windows candidate verified — October 16, 2026
+
+Frozen **brinespace-d3cfa1890bafefe7** continues accepted e54 with three runtime
+changes: compressed-frame fingerprint caching, checkpoint use and loading prewarm.
+No artwork, crew behavior, save schema/admission or backup changes. Exact owned
+compressed-byte/layout keys invalidate edits; metadata/plan/timing/floor stay fresh.
+Measured key copies **490,230 bytes**, no decoded Images retained. Source and
+Windows export: **D:/bs-save-hitch-20261016/**.
+
+Native profile: actual Save **62.331–65.122→11.724–11.815 ms** (81–82% lower),
+bank fingerprints **50.310–52.176→0.125–0.142 ms**. All three diagnostic packets
+equal production. Four-run 40-room comparison: **96 phases / 11,520 frames**,
+Save frames including verification **95.836–113.938→42.521–51.259 ms**. 4× idle
+**41.23–42.56 FPS**; placement action **52.781–54.851 ms**, following 60 max
+39.976 ms, none >50 ms. Original **100.372 ms idle** outlier retained.
+
+Contemporary two-repeat 1080p A/B repeats the Save benefit. Original 8–9% warm
+zoom/placement drop does not repeat consistently; baseline itself has a slow warm
+placement phase. Several later candidate ordinary phases are 2–4% slower; earlier
+idle differences reversed. No general FPS gain or blanket regression-free claim.
+Render/CPU, rare idle stalls, loading and large-station 60 FPS gates remain open.
+
+Cache 18/0, save/integrity, native crew pixels and cargo checkpoint **424 checks /
+ten cases / 30 presentations** pass. Actual normal-process packaged 12-room 4×
+canary: **60.014930 s / 3,598 frames / 39 checks pass**, max 38.045 ms, no ≥50 ms
+frames/errors, all flags zero; normal Save/Return/Quit and scene release pass.
+This does not replace e54's two-hour acceptance. Maintained export and exact
+asset/source audits pass: same 36,430 entries, only three scripts changed;
+all 421 additional frozen scripts unchanged.
+
+All **2,948 protected player files unchanged**. Original/fixed Windows and Mac
+11/11/12/13-file checksums and new Windows ten-file checksums pass. Seven temporary
+QA binary pairs removed after hash verification; canonicals, evidence and restoration
+map retained. C:/D: free **123.648/83.602 GiB**; game/export closed. No commit,
+upload or promotion. Preserved owner-run Mac ZIP remains e54 and lacks this Save
+patch; matching export/native Mac checks remain pending.
+[Save investigation and scoped results](SAVE_HITCH_2026-10-16.md).
+
+## Fixed candidate completes two-hour Windows validation; new matching Mac ZIP ready — October 16, 2026
+
+Frozen **brinespace-e54e8a0eb8d58f65** completes the actual normal 12-room 4×
+Windows soak: **7,200.001270 s / 431,838 frames / 39 checks pass**. All 1,441
+censuses have zero expired router references. Final-hour objects stay within
+**32,604–32,631**; late Windows private memory stays **2,627.180–2,627.711 MiB**.
+Mean 59.9775 FPS; p95/p99 16.767/17.193 ms. Two retained hitches, 59.524/52.327 ms,
+none ≥100 ms; every interval flag is zero. No logged errors, active crew remain
+alive/moving, gameplay instance frees and normal Return/Quit pass. This confirms
+the targeted registry cleanup; release orphan counters remain unavailable and
+the 16.767 ms p95 still misses the strict 16.7 ms pacing gate.
+
+Exact corrected-v3 **40-room** fixture: four valid runs, 96 phases / 11,520 frames.
+Normal idle **44.97–45.69 FPS**, 4× idle **40.35–41.43**, 4× zoom **35.57–35.93**;
+ranges overlap the earlier candidate. 4× placement action frames **53.069–60.336
+ms**; three paired values higher, with no causal patch attribution. Following
+60 frames peak **35.988 ms**, none >50 ms. Save peaks **113.938 ms**, with all
+eight >100 ms frames confined to Save. All 96 pacing gates remain open.
+
+New Mac test ZIP: **D:/bs-release-validation-20261016/mac/BrineSpace.zip**.
+Universal 2 structure, executable permissions and full ZIP CRC checks pass;
+PCK/build metadata byte-identical to Windows, all 36,430 manifest entries match.
+ZIP SHA256: `3f77d0a4615cc0cf84963a75c9bffb0b24725dc0c5086d90e646ecdf8775ec74`.
+Use this ZIP instead of the earlier b0b5d1b031c6ec29 export. Owner will run it on
+their Mac; native launch/Gatekeeper, controls/audio, visual/pacing/memory and
+save/Resume acceptance remain pending. No new production/art/crew changes here.
+
+All **2,948 protected owner files unchanged**. Original Windows/Mac 11-file
+checksums and new Windows/Mac 12-/13-file checksums pass. Temporary soak and
+benchmark binary copies removed (6.963 GiB total); canonicals, helpers, evidence
+and restoration map retained. C:/D: free **106.008/95.293 GiB**. Game/export closed,
+owner Project Manager preserved. No promotion, commit or upload. Loading/Save,
+large-station 60 FPS and target-hardware gates remain open.
+[Validation report](FIXED_RELEASE_VALIDATION_2026-10-16.md).
+
+## Live-object registry cleanup validated in Windows release — October 16, 2026
+
+The crew texture router retained WeakRef Objects for departed canvas items until
+station exit. Frozen-package census shows expired references growing about
+75–76/min at 4×; repeated Return to Title frees the gameplay scene and returns to
+the same warmed object count. Minimal/full observers both reproduce growth.
+
+Narrow cleanup now removes registry/epoch/draw-callback records on node removal.
+Five focused tests pass, including native exact-pixel reparent/re-entry and
+retained-peer checks. Private Windows **brinespace-e54e8a0eb8d58f65** changes only
+router.gd among 36,430 runtime dependencies; exact asset/source audits pass.
+
+Actual normal 12-room 4× release run: **600.015 s / 35,975 frames / 36 checks pass**;
+all 121 censuses have zero expired references. Objects settle **32,527–32,547**
+over the final three minutes, title returns to 2,354 and gameplay Node is freed.
+Mean 59.957 FPS, max 36.998 ms, no frames ≥50 ms or rejected interval flags. This is a
+VSync-limited 12-room workload, not 40-room 60 FPS acceptance. No art/crew logic
+changes. Original frozen Windows/Mac deliveries remain intact; full re-soak and
+refreshed matching Mac/native validation remain release gates. Final owner and both
+11-file delivery checksum guards pass. Task-owned duplicate QA binaries removed
+(6.963 GiB); C:/D: free 103.966/98.658 GiB. Canonicals and restoration map retained.
+[Investigation](OBJECT_LIFETIME_2026-10-16.md).
+
+## Storage cleanup complete; C: headroom restored — October 16, 2026
+
+C: free **26.835→104.636 GiB** (+77.802); D: **142.743→110.252 GiB**.
+Removed **27 exact duplicate old runtime binaries**, 45.318 GiB, with retained
+canonical hashes and restoration map. Already-hardlinked aliases and unique
+versions remain. Complete `C:/bs-crew-stall-20261016/runtime` reference retained.
+
+Relocated **32.488 GiB / 955 files** from
+`output/drone-compiled-2026-10-07` to
+`D:/BrineSpace-archive/2026-10-16/drone-compiled-2026-10-07`, every file SHA256
+verified before C: removal. Original C: path remains a junction to the D: archive.
+All unique evidence preserved; main source/art/Git/import cache untouched.
+
+All **2,948 player files unchanged** and both current Windows/Mac 11-file checksum
+manifests pass. No game/benchmark run. Affected old `C:/bs-*/runtime` folders have
+cleanup markers; restore their physical binaries before rerunning old commands:
+`D:/bs-storage-cleanup-20261016/Restore-Duplicates.ps1 -Restore`.
+Full map/evidence/handoff: `D:/bs-storage-cleanup-20261016/`.
+[Cleanup record](STORAGE_CLEANUP_2026-10-16.md).
+
+Performance direction unchanged: attribute live-object growth and Save/loading
+costs; owner is running the preserved Mac ZIP, native results pending.
+
+## Two-hour Windows station soak complete; live-object growth needs attribution — October 16, 2026
+
+Frozen build **brinespace-b0b5d1b031c6ec29**, unchanged production code/art/crew.
+Actual Windows 12-room normal-process 4× soak: **7,200.011813 s / 431,863 frames /
+1,440 additional cycles / 34 checks pass**. Mean 16.672 ms, p95/p99 16.770/17.093,
+max **35.399 ms**, zero frames ≥50 ms. All retained frame flags zero; no engine
+errors/log warnings, normal Save/Return/Quit clean. Active Branforth/Margot/River
+keep moving/changing goals; only economy-advice stuck key. Startup before
+measurement captured 411 ms; this is separate from measured pacing.
+
+Textures warm then stay **1,564.588 MiB**, floor/contact meshes 9/6, Nodes settle
+1,166. **Live objects 32,143→41,740 continue rising**: allocation/lifetime cause
+unresolved. Five-minute→last measured Windows private memory 2,559.813→2,621.793
+MiB includes growing QA retention; no general leak acceptance. Engine-source
+clarification: release orphan counter zero is unavailable, so earlier release
+orphan-zero readings do not prove orphan-free state.
+
+All **2,948 owner files unchanged**; delivery/QA bytes and both 11-file checksum
+manifests verified. Game closed/editor preserved; C:27.971/D:142.746 GiB free.
+Same Mac ZIP remains ready. Owner will transfer and run it on their Mac using
+the separate-test-account checklist; native results are pending. Configured Apple
+tools expose no native macOS workflow. No native Mac acceptance yet.
+
+Next: attribute live-object growth; profile Save's repeated cargo-art bindings
+and cold startup's broad interface/grid stage. Existing large-station pacing,
+loading/Save and target-hardware gates stay open. No release promotion, rebuild,
+commit or publication. [QA report](WINDOWS_MAC_RELEASE_QA_2026-10-16.md).
+
+## Full-source Windows candidate and matching Mac twin; release gates remain open — October 16, 2026
+
+Frozen physical source and actual packages: **brinespace-b0b5d1b031c6ec29**, in
+`D:/bs-release-qa-20261016/`. Current normal source, no private performance
+overlays and no gameplay/art/crew changes. Windows asset audit: 35,942 / zero
+discrepancies; 431 selected and 421 extra script sources match the physical freeze.
+Mac Universal 2 structure passes; PCK, manifest and build metadata byte-identical
+to Windows. Native Mac gameplay/Gatekeeper/performance remain unverified.
+
+Actual Windows New Game/Resume: 54 checks each, async F8 Save/exact screenshot,
+57 rendering checks and 59 checks across ten title transitions pass. Normal-process
+4× 12-room soak: 600 s / 35,977 frames / 120 cycles, no engine/script errors,
+no measured frame ≥50 ms, max 33.314 ms. Startup before measurement captured
+416 ms; textures warm then
+plateau, object-count growth remains unproven. Actual normal Quit clean. External
+fixture carry/roster errors corrected with production controller/seeded ward;
+all failed evidence retained. Four variable-camera runs retained separately;
+final four large repeats have matching recovery origin, composition and camera.
+
+Controlled 12 runs / 34,560 frames: 40-room normal idle 43.83–45.82 FPS,
+4× 40.45–41.31; placement 40.15–40.78 FPS. Placement action frames 54.24–54.93 ms,
+following 60 each all <50 ms. Pacing: 183/288 phases pass (large 0/96);
+six synchronous Save frames >100 ms, max 117.739 ms. Cold loading: 5/6 miss 10 s;
+warm 6/6 pass 6 s. Texture-counter peaks fit existing 2 GiB/12-room and 3 GiB/large
+limits; large peak 2,609 MiB versus ending 1,942–1,949 MiB. No 60 FPS or public release
+acceptance. Two-hour certification soak and target hardware remain pending.
+
+Next: native Apple Silicon test using matching ZIP and its separate-account
+checklist; assess remaining pacing/loading/Save findings before certification.
+Final guards verify 61,620 inputs / 2,044 UID files with no unexpected source
+changes; all 2,948 player files equal the starting baseline. Delivery checksums
+and rights/licenses included; no overrides. Game closed, editor preserved.
+Prior rare 393 ms cause and real-profile incident caveat remain open.
+[QA report](WINDOWS_MAC_RELEASE_QA_2026-10-16.md).
+
+## Focused crew-stall pass closed without a production patch — October 16, 2026
+
+The original 393.261 ms frame did not recur. Native private scopes show repeated
+detour/reachability/passage work (crew max 58.247 ms across 24k frames; whole max
+106.765 ms), but the proposed fixed-endpoint shortcut is unproven. No gameplay,
+crew, art or registered-test changes; conditional oracle remains unrun in output.
+
+Two uninstrumented reference repeats: 960 frames/four exact captured-state/camera
+pairs. Normal idle 47.17–52.45 FPS; 4× idle 38.27–38.54; 4× placement 35.22–37.66.
+Placement frames 67.880/59.043 ms, following 60 each have two >50 ms and none >100.
+These are same-source variability measurements; no improvement or 60 FPS acceptance.
+
+Final uninstrumented 4× soak: 26,000 frames/582.5 s; mean
+22.290 ms, p95/p99 33.980/47.809, max
+88.411; 0 frames >100 ms, 0 reports.
+Full durations retained; detailed history bounded separately. All
+13 owner guards / 2,948 files and
+55 installed guards match; runtime/source/native
+identities unchanged. Game exited/editor preserved. Incident caveat persists.
+
+Next direction: release QA. Inventory accepted private changes, freeze full-current
+sources and validate actual Windows/Mac packages. Reused diagnostic runtime does
+not establish release readiness. Rare 393 ms cause remains open.
+[Results](CREW_STALL_PERFORMANCE_2026-10-16.md) · [Handoff](CREW_STALL_HANDOFF_2026-10-16.md).
+
+## Report worker validated; longer soak catches a 393 ms crew-update stall — October 16, 2026
+
+Lossless PNG and report packaging now use one bounded worker. Live scene/texture
+capture stays on main: manual request 367.708→65.093 ms; automatic trigger
+64.510 ms. Frames continue during writing and saved screenshot pixels match.
+Startup sync API, explicit Send, queued snapshots, pause/UI handling and shutdown
+joins remain covered. No gameplay, art, navigation or crew source changes.
+
+20 min 23 s / 63,327 clean frames measured: normal untraced 600 s, max 75.643 ms;
+normal Memory trace 120 s, max 70.178 ms; 4× pre-export 503 s, max 393.261 ms,
+five frames >100 ms. Ended 4× early to preserve circular history. Export suffix
+is explicit and raw results remain; clean 4× p95/p99 unavailable. No frame ≥400 ms,
+automatic report or logged error. Earlier unexplained pre-render stalls did not recur.
+
+The 393 ms frame has 370.994 ms inside the crew-update wall scope, with no report
+or overlapping texture upload. All 392 retained samples have exact stacks.
+Function cause and complete circular coverage remain unproven. Next: narrow
+crew/companion/path-work profiling. Live report capture still costs ~62–65 ms.
+
+Five final diagnostics tests and native F8/UI pass. All 26 owner guards pass;
+2,948 protected files match task baseline. Two report scripts changed; 24 frozen
+game sources and runtime/native binaries match prior unbatched reference.
+Structural candidate stays private. WPR stopped/helper exited; incident caveat
+persists. No new release, Mac or 60 FPS acceptance.
+[Results](REPORT_SOAK_PERFORMANCE_2026-10-16.md) · [Handoff](REPORT_SOAK_HANDOFF_2026-10-16.md).
+
+## Pre-render stacks and I/O traced; report encoding adds a secondary hitch — October 16, 2026
+
+No game/crew/visual changes. Four stack/IRQ captures: 4,800 frames/four exact pairs,
+93,323 target samples (87,223 measured, one measured stack missing), 1,037,209
+valid IRQ records, zero reported loss. Main scheduled residency 99.48–99.59%;
+recorded same-CPU IRQ overlap 0.277–0.300% of frame time. All 27 >50 ms frames
+overlap drone texture creation; prior primary 5.24 s/435 ms stalls did not recur.
+Module/RVA attribution only; CSwitch V5 auxiliary fields remain unverified.
+
+Separate 4,800 I/O frames/four pairs: monitor bodies ~0.04 ms mean, worst 6.909;
+error polling max 6.862 ms, breadcrumbs 0.921. Forced report calibration outside
+FPS samples takes 362.810 ms: PNG encoding 264.299, diagnostics 61.984,
+ZIP 28.931 (inclusive). This quantifies follow-up amplification, not primary cause.
+
+3,840 fresh untraced frames/16 pairs: normal idle 52.24→52.71 FPS, 4× idle
+45.54→45.21, 4× placement 43.15→42.61. Placement action 59.207→61.503 ms;
+following >50 ms 4→6, whole placement 8→14. 0/16 60 FPS gates; keep private.
+All rows retained; no runtime fix. Best measured follow-up is offloading lossless
+PNG/report packaging while preserving automatic diagnostics; primary stalls open.
+
+26 owner and 21+21 binary guards pass; 2,948 protected files equal initial/prior.
+Frozen sources/PCKs/native binaries unchanged; prior visual/cache evidence reused.
+Incident caveat persists. Bounded WPR helper exited and recording stopped.
+[Results](PRERENDER_PERFORMANCE_2026-10-16.md) · [Handoff](PRERENDER_HANDOFF_2026-10-16.md).
+
+## Scheduler capture works; new primary pre-render stalls remain open — October 15, 2026
+
+Bounded elevated WPR helper succeeds for four captures, then exits; WPR stopped.
+Game remains in unelevated host context; no policy/priority/affinity/power changes.
+4,800 diagnostic frames / four exact state-camera pairs, zero reported loss/overlap,
+known measured ownership. Main scheduled residency ~99.7%, lower CPU class <0.5%;
+ISR/DPC/spin time unseparated. Captured >50 ms hitches overlap texture creation.
+Original sustained upload-free burst absent. CSwitch V5 state/wait/priority fields
+unverified; timing-only joins, schema/TDH evidence preserved.
+
+3,840 new untraced frames / 16 exact pairs: normal idle 53.17→48.82 FPS,
+4× idle 45.84→28.93, placement 44.05→44.46. All rows retained, including primary
+5.24 s / 435 ms pre-render stalls and following 603 / 445 ms frames containing
+automatic reports. Primary cause unscoped; reports amplify following frames.
+Second comparison has no >100 ms sample. Action mean 58.426→58.037 ms, mixed
+orders; following >50 ms 5→3, whole placement 12→7. 0/16 fresh 60 FPS gates.
+
+Keep candidate private, no game fix. Normal source/UID/tests and both prior lanes
+unchanged; prior visual/cache evidence reused. All 13 owner / 12+12 binary guards
+pass; 2,948 protected files equal initial/prior; incident caveat persists.
+Next capture primary stalls with sampled stacks, ISR/DPC and narrow diagnostic-I/O
+timings; do not infer a cause or improve headline by deleting outliers.
+[Results](SCHEDULER_PERFORMANCE_2026-10-15.md) · [Handoff](SCHEDULER_HANDOFF_2026-10-15.md).
+
+## Structural idle regression varies across repeats; cause remains open — October 15, 2026
+
+No game-code fix applied. Fresh unchanged-lane normal idle 53.79→54.37 FPS;
+including original regression 54.27→54.18, p95 still worse. Fresh 4× idle
+47.30→47.64, placement 44.71→45.15. Action mean 58.109→57.618 ms but following
+>50 ms 3→5 / whole placement 7→10. 0/16 fresh 60 FPS gates; keep private.
+
+3,840 new release frames / 16 exact state-camera pairs, separate 3,840 diagnostic
+frames / 16 pairs. No idle structural invalidation or demonstrated persistent
+buffer growth. CPU-busy diagnostic candidate burst differs from a reference hitch;
+heavy first collector qualified, lighter repeat does not reproduce reverse idle
+burst. No original-burst causal attribution. Valid bounded WPR scheduler capture
+denied 0x80070005; no recording. Next discriminating step needs administrator
+scheduler/core trace access, not a speculative runtime patch.
+
+Normal source/UID/test and both prior 24-source/PCK lanes unchanged. Visual/cache
+evidence reused for identical bytes. All 17 owner / 16+16 binary guards pass;
+2,948 protected files equal initial/prior baseline; incident caveat persists.
+[Results](STATIC_IDLE_PERFORMANCE_2026-10-15.md) · [Handoff](STATIC_IDLE_HANDOFF_2026-10-15.md).
+
+## Structural packets reduce draws; pacing remains mixed — October 15, 2026
+
+Private north-return and border/shadow packets remove ~40 steady calls (1.9%)
+with exact geometry/order. Normal idle 55.25→53.81 FPS; 4× idle 48.97→49.50,
+placement 46.23→46.59. Action 55.606→55.907 / 56.498→56.719 ms; following
+pacing mixed. Reverse normal-idle burst has no structural rebuilds or sampled
+uploads; cause unresolved, every valid row retained. 0/8 60 FPS gates. Keep private;
+normal game source/UID/test unchanged. Prop inventory has no useful same-texture
+runs; no atlas/grouping implemented. Reference excludes neutral waveform trial.
+
+1,920 guarded release frames / eight exact phase-state/camera-path pairs. 1,148
+focused raster pairs and 38 cache checks pass. Seventeen station/first-placement
+pairs plus twelve repeats exact; image inspected. Review/source/native/owner audit
+passes: all 23 owner guards clean, 2,948 protected files equal initial/prior
+baseline; existing incident caveat persists. Existing native DLLs unchanged.
+20 GiB disk reserve preserved through hard links for immutable EXE/PCK inputs.
+Next resolve normal-idle pacing before integration; no Mac or long-soak claim.
+[Results](STATIC_BATCH_PERFORMANCE_2026-10-15.md) · [Handoff](STATIC_BATCH_HANDOFF_2026-10-15.md).
+
+## Draw-call trial is pixel-exact but too small for an FPS gain — October 15, 2026
+
+Private waveform packet removes ~8 steady calls (0.4%): normal idle 55.93→55.71 FPS,
+4× idle 49.11→48.98, placement 45.68→45.91. Action 56.857→55.660 /
+55.758→56.726 ms; following 4× p95 mixed 32.965→41.082 / 35.882→31.956 ms.
+0/8 60 FPS gates; no useful FPS/hitch gain established. Keep private; normal game
+source/UID/test unchanged. Reference already includes private water V2 / stable V3 / LOD.
+
+1,920 guarded release frames/eight exact phase-state/camera-path pairs. Native and
+script-fallback each 369 checks / 186 exact raster pairs, real 18→14 calls for two waveforms.
+Seventeen station/first-placement image pairs plus 12 repeats exact; image inspected.
+Actual loaded monitor source hash/packet counters verified; review/audit pass.
+All 19 owner / 11 stable / 11 water guards clean; final 2,948 files equal initial/prior
+protected baseline. Existing incident caveat persists. Raw RID probes restore 2,114
+calls; LiveContents 442, walls 200, terrain 156, floors 148 marginal calls. Visible
+live slots sum 47 marginal calls, no specimen effects; further effect packet not
+implemented. Next target compatible static prop/structural groups and texture /
+material transitions, preserving depth/sampling with bounded memory.
+[Results](SUBMIT_CALLS_PERFORMANCE_2026-10-15.md) · [Handoff](SUBMIT_CALLS_HANDOFF_2026-10-15.md).
+
+## Water geometry CPU trial improves averages; submission and hitches remain open — October 15, 2026
+
+Private Windows native V2 prepares Moonbay water ~0.29–0.40 ms faster/frame with
+identical geometry/order. Normal idle 51.98→52.86 FPS, 4× idle 45.47→47.09,
+4× placement phase 43.46→44.80. Action mixed: 58.738→57.009 / 57.024→57.903 ms;
+following 4× mean/p95 improve but >50 ms counts stay one per sixty-frame window.
+Normal pooled p95 worsens; 0/8 60 FPS gates. GPU draws remain ~2,117–2,196/frame:
+CPU preparation gain, no demonstrated submission reduction. Keep V2 private;
+reference already includes private stable-ID V3/LOD/one spare, not installed game.
+
+1,920 guarded release frames / eight exact phase-state/camera-path pairs. V2
+21,079 packet + 1,565 batch assertions pass; fallback 21,076; native water 494
+checks / 244 exact raster pairs. Seventeen station/first-placement image pairs
+plus twelve repeats exact; representative image inspected. Independent review
+found no blocker within finite generated-path domain; oversized/nonfinite batch
+parity unproven. Final source/runtime/native audit passes; normal source/UID/test
+unchanged, all 26 owner guards clean, final 2,948-file fingerprint equals initial /
+prior protected baseline. Existing incident caveat persists. Native transient/RSS,
+Mac/package and longer pacing acceptance remain open. Next trace actual surviving
+submission/draw calls; drone atlas bursts remain a large 4× cost.
+[Results](DRAW_SUBMIT_PERFORMANCE_2026-10-15.md) · [Handoff](DRAW_SUBMIT_HANDOFF_2026-10-15.md).
+
+## Stable-ID idle penalty unconfirmed after repeat comparisons — October 15, 2026
+
+No runtime fix applied. Byte-identical V3/reference comparisons reverse the prior
+idle result: new 4× idle repeats 44.62→46.48 and 45.52→46.34 FPS; all three studies
+including the old slowdown pool to 45.54→45.80. Diagnostics find zero idle rebuilds
+or detours, identical two route requests and 240 topology checks per phase.
+Changing costs chiefly sit in drawing/render submission; precise process-to-process
+variance cause remains unknown. Do not treat the new pooled gain as an optimization.
+
+Four new 4× action frames all improve, mean 68.916→60.534 ms (~12.2%). Whole-phase
+4× placement FPS/p95 worsen (43.21→42.81; 36.617→41.210 ms), including one worse
+following window. Keep V3 private. New normal idle 52.86→52.72 FPS; 0/16 60 FPS gates.
+3,840 new production-lane frames / sixteen exact phase-end-state/camera-path pairs;
+existing benchmark observers remain, new nav wrappers only in diagnostics.
+Separate 1,920 diagnostic frames / eight exact pairs. At 1×, two sparse detour
+fills add ~3.9–4.8 ms per phase; that branch is unused in sampled 4× idle.
+Prior route/image evidence reused for
+identical bytes, not freshly rerun; timing image inspected. All fifteen owner /
+twelve binary guards clean, final 2,948-file fingerprint equals initial/prior
+protected baseline; installed sources/UIDs/test unchanged. Next: actual live
+drawing/submission and upload bursts, with reproducibility controls, then broader
+pacing/memory/platform acceptance. Existing profile-incident caveat persists.
+[Results](STABLE_IDLE_PERFORMANCE_2026-10-15.md) · [Handoff](STABLE_IDLE_HANDOFF_2026-10-15.md).
+
+## Stable navigation IDs shorten placement hitches; prototype remains private — October 15, 2026
+
+Private per-cell stable IDs retain 14,075 existing nodes across 52 cells on the
+connected 4× placement, rebuilding only two cells. Isolated connected rebuild
+9.894→4.913 ms per actor; live action 68.418/68.161→58.479/57.549 ms in opposite
+orders (~15% shorter), crew phase ~26.3→15.1–15.4 ms. Steady FPS remains mixed:
+normal idle 51.86→52.37; 4× idle 46.52→44.63; 4× placement phase 42.91→43.68.
+Warm/simple rebuilds ~0.4–0.5 ms slower. Keep normal runtime unchanged while
+investigating idle behavior; no native/Mac/export integration yet.
+
+1,920 guarded release frames, eight exact state/camera/path pairs; 0/8 60 FPS
+gates. 3,157 native assertions, 2,530 graph/route checks and 2,216 extension-absent
+checks pass. Seventeen cross-process images plus twelve repeat pairs exact.
+All 24 owner guards preserve the initial/prior protected 2,948-file fingerprint;
+installed source/UID/test hashes unchanged. Existing profile-incident caveat below
+persists. Next: isolate sparse reachability cost and the mixed idle result, then
+memory/platform packaging acceptance before considering integration.
+[Results](STABLE_NAV_PERFORMANCE_2026-10-15.md) · [Handoff](STABLE_NAV_HANDOFF_2026-10-15.md).
+
+## Placement graph retention investigated; trials remain private — October 15, 2026
+
+The 4× fixture adds three doorway nodes to an existing Life Support room, shifting
+later canonical IDs. Each companion retains 8,580 old nodes and rebuilds a 5,802-node
+suffix despite 52 unchanged local room templates. Whole-graph and suffix-only
+native slot/ordered-link retention preserve graphs/routes but cost more CPU.
+Final suffix prototype: isolated connected rebuild 10.263→15.034 ms; idle
+53.33→53.04 FPS; 4× action 69.767/70.664→80.287/79.759 ms. Keep installed runtime.
+1,920 guarded release frames, eight exact state/camera/path pairs, 0/8 60 FPS gates;
+13,424 graph checks, 1,474 native assertions and 1,488 fallback checks pass.
+Seventeen cross-process images plus twelve repeat pairs exact. Source/UID/test
+hashes unchanged; all 26 owner guards clean, 2,948-file final fingerprint equals
+prior post-recovery baseline. No native integration/export/Mac build. Next graph
+work needs a deliberate design to avoid ID shifts while preserving route ties.
+[Results](NAV_RETENTION_PERFORMANCE_2026-10-15.md) · [Handoff](NAV_RETENTION_HANDOFF_2026-10-15.md).
+
+## Bulk navigation construction trials remain private — October 15, 2026
+
+No new runtime optimization admitted. Per-room and whole-suffix native AStar2D
+batch prototypes preserve ordered graphs/routes but save only ~0.95 ms / 7.1% on
+an isolated large suffix rebuild. Final whole-suffix comparison: normal idle
+51.35→48.24 FPS; 4× placement action 68.306/70.146→71.624/72.386 ms, with worse
+following-frame mean/p95 and >50 ms counts. Two guarded release series total
+3,840 frames, sixteen exact state/camera/path pairs, 0/16 60 FPS gates. Final
+9,425 navigation checks, 572 native primitive assertions and 1,488 fallback checks
+pass; seventeen station/first-placement image pairs and twelve repeats exact.
+Installed source/UIDs unchanged; Windows prototypes external, no export/Mac build.
+All 28 owner guards clean; 2,948-file final fingerprint equals the prior
+post-recovery baseline, retaining the incident caveat below. Next: understand large
+suffix invalidation and separate script preparation from native graph mutations.
+[Results](BULK_NAV_PERFORMANCE_2026-10-15.md) · [Handoff](BULK_NAV_HANDOFF_2026-10-15.md).
+
+## Crew CPU / 4× placement trials remain private — October 15, 2026
+
+No new runtime optimization admitted. Steady crew phase is about 0.9 ms; two
+companion graph rebuilds cost ~24–25 ms on the 4× placement frame. Packed-ID link
+assembly and flatter topology keys preserve graphs/state but do not establish
+better overall pacing. Clean 1,920-frame comparison: normal idle 50.69→51.36 FPS;
+4× action peaks 80.285→79.202 and 72.669→69.076 ms, but following-window >50 ms
+counts 1→2 in both orders and 4× placement-phase mean/p95 slightly worsen.
+Eight exact state/camera/path pairs; 0/8 60 FPS gates. Prior installed source and
+visual acceptance remain selected; private trials are not an export. Next target:
+bulk graph construction or proven retention, with native/script costs separated.
+All 23 owner guards pass; final 2,948-file fingerprint equals the prior
+post-recovery baseline, preserving the earlier incident caveat below.
+[Results](CREW_CPU_PERFORMANCE_2026-10-15.md) · [Handoff](CREW_CPU_HANDOFF_2026-10-15.md).
+
+## Placement and navigation CPU reductions installed — October 15, 2026
+
+Synergy evaluation skips impossible recipes using call-local ID presence;
+navigation retains proven canonical seams inside an unchanged prefix and lock
+policy. Actual-release local checks: synergy ~7→1 ms, navigation saves 0.57–0.73 ms
+per actor with exact graphs. Clean 1,920-frame comparison: normal placement
+52.852/54.871→46.237/51.717 ms; 4× mixed 79.374/76.126→71.810/78.696 ms. Idle
+49.57→49.96 FPS remains essentially flat; 0/8 60 FPS gates. Eight state/camera/path
+pairs and seventeen station/first-placement image pairs exact. Eleven installed
+regressions and four runner isolation checks pass; UIDs preserved. Private LOD
+remains private; no art/quality/renderer/export change.
+
+One unisolated runner invocation changed progression's introduction counter and
+test metadata. Progression restored from untouched protected backup; two legacy
+test-metadata files remain changed. Runner now defaults to scratch and refuses
+real-profile redirects. Corrected validation/final fingerprints preserve the
+post-recovery baseline; do not claim the whole folder was untouched.
+[Results](PLACEMENT_NAV_PERFORMANCE_2026-10-15.md) · [Handoff](PLACEMENT_NAV_HANDOFF_2026-10-15.md) · [Incident](TEST_PROFILE_INCIDENT_2026-10-15.md).
+
+## First-room capture setup tested privately — October 15, 2026
+
+The distant-room QA prototype now has a one-spare empty viewport variant, with
+unchanged capture/invalidation/live-actor paths. Normal placement action improves
+58.281/60.397→54.762/54.974 ms in both orders; 4× mixed improvement
+76.972/71.503→70.176/71.231 ms. Refill moves work to the next frame (25–27 ms);
+no subsequent sixty-frame window gains a >50 ms frame. Idle 50.08→50.26 FPS is
+essentially flat; 0/16 60 FPS gates. 3,840 guarded release frames, sixteen exact
+state/camera/path pairs; 83 native ownership/burst and thirty release LOD checks
+pass, twelve station plus five first-placement-frame image pairs exact. Twenty-one
+owner guards preserve 2,948 files. Peak texture counter +1.125 MiB, one spare.
+Normal runtime and delivery are untouched; private LOD still needs its own release
+acceptance. Next: remaining placement/navigation or atlas upload bursts.
+[Results](FIRST_ROOM_SETUP_PERFORMANCE_2026-10-15.md) · [Handoff](FIRST_ROOM_SETUP_HANDOFF_2026-10-15.md).
+
+## Animated water CPU reduction installed — October 15, 2026
+
+Water stroke width/feather preparation now reuses three exact scalar styles;
+geometry, colours, antialiasing, clocks and drawing order unchanged. Installed-source
+actual release sweep saves 0.099–0.128 ms / 9.7–15.6% water CPU, 720 exact image pairs.
+No dependable FPS/hitch gain: full-series idle 50.62→50.06 FPS; focused 50.91→51.14.
+Focused placement 56–58 ms normal, 77–85 ms at 4×; mixed. 5,760 guarded release frames,
+all 24 state/camera/path pairs exact; 0/24 60 FPS gates. Installed 21,076 geometry
+checks and four native render checks pass; 12 station image pairs exact. 33 owner
+guards preserve 2,948 files; UID unchanged. Segment-length trial stays private;
+no art/quality/export change. Next: first-room setup or atlas uploads.
+[Results](ANIMATED_WATER_PERFORMANCE_2026-10-15.md) · [Handoff](ANIMATED_WATER_HANDOFF_2026-10-15.md).
+
+## Live-room redraw reduction installed — October 15, 2026
+
+Moonbay now retains the unchanged floor/perimeter/shelf prefix, with live water
+before existing walls/gates and props. Ports, flooding, Studio layout, helmet,
+bounds and tint/material behavior preserved. Normal idle 49.83→50.17 FPS;
+Moonbay callback saves 0.179–0.198 ms, total live-room callbacks 0.120–0.171 ms.
+3,840 serial release frames, both orders, all 16 state/camera/path pairs exact.
+Normal placement action 57.835/58.391→54.323/57.587 ms; 4× worsens, so no consistent
+hitch fix or 60 FPS acceptance. Twelve station image pairs exact; installed
+597-pair native room oracle, large-room/water/mission/save checks pass. Owner
+guards preserve 2,948 files; UIDs unchanged. Private LOD remains private; no
+export/art/quality changes. Next: animated water or first-room canvas setup.
+[Results](LIVE_ROOM_REDRAW_2026-10-15.md) · [Handoff](LIVE_ROOM_REDRAW_HANDOFF_2026-10-15.md).
+
+## OpenGL placement lookup reuse installed — October 15, 2026
+
+Direct function/thread-accounting trace separates large zoom atlas uploads from
+placement navigation/drawing. WPR kernel capture is blocked by non-admin Windows
+policy; no GPU-scheduling trace claimed. Bill now preserves the unchanged lookup
+when most graph nodes are retained, with original clear/repopulate fallback for
+smaller prefixes and immediate staged clear. Final `ab2`: 3,840 release frames,
+both orders, all 16 state/camera/path pairs exact; placement crew CPU saves
+3.448–4.213 ms. Normal placement frames 59.560/59.803→54.883/56.863 ms. Overall
+mean/pacing mixed; no average FPS or 60 FPS acceptance. Seven relevant normal
+regressions pass; expanded prefix 217,077 ordered records/1,944 routes exact.
+Twelve native cross-process image pairs exact, plus repeat pairs. Twenty guards
+preserve all 2,948 owner files. Bill/test changed, UIDs preserved; art/settings/
+delivery unchanged. Remaining targets: live-room/surface redraw and atlas bursts.
+[Trace/results](OPENGL_STALL_TRACE_2026-10-15.md) · [Handoff](OPENGL_STALL_HANDOFF_2026-10-15.md).
+
+## Clean renderer/pacing comparison completed — October 15, 2026
+
+After owner pause confirmation, fresh `pacing3`: six serial native release runs /
+10,080 frames, both orders, normal/4×; no foreign Godot in 723 guard samples.
+Same frozen private LOD cohort/source hash. All 56 phase-state/camera-endpoint
+pairs match; four 4× wide-sweep intermediate paths differ and are interaction
+pacing only. Normal idle: OpenGL 49.7 FPS, ANGLE 38.8, Mobile 59.2; p95
+22.9/28.2/19.2 ms. Normal placement maxima 62.4/67.5/59.0 ms; fitted zoom
+90.4/120.8/81.4 ms. No backend passes a mean+p95 60 FPS gate. Mobile is faster
+here but retains image differences/hitches; keep OpenGL default. Six fresh owner
+guards preserve all 2,948 files. No game/art/settings/delivery changes. Tables,
+normal/4× plots and next trace recommendation in the [comparison](GODOT_RENDERER_COMPARISON_2026-10-15.md)
+and [handoff](GODOT_RENDERER_HANDOFF_2026-10-15.md). Windows QA result, not Mac or
+current normal-source release certification. No further timing series needed
+without a new change or unresolved concern.
+
+## Performance and visual-method research completed — October 15, 2026
+
+New source-grounded candidates: share unchanged topology/hazard preparation,
+retain the small atmosphere mask until its inputs change, and investigate local
+rock-mesh rebuilds if whole-field rebuilding contributes to hitches. No measured
+savings yet. Visual pilots: one restrained machine normal-map/task light and one
+local current linking silt/fronds. Existing light maps, contact shadows, GPU snow
+and compartment flooding retained as useful methods. Preserve accepted overhead/
+cutaway and v2 one-facing props; no camera or physics migration proposed for
+release. Research only: no game/art/settings changes or Godot/benchmark runs.
+Renderer pacing subsequently completed above. [Methods report](GODOT_PERFORMANCE_VISUAL_METHODS_2026-10-15.md) ·
+[Handoff](GODOT_METHODS_HANDOFF_2026-10-15.md).
+
+## Krusher Dom turn faces revised; angled seats disabled — October 15, 2026
+
+Owner correction supersedes the prior V11 no-defect visual assessment. V12 refines
+35 shared facial drawings across 54 states / 144 holds; all body, neck, helmet
+silhouettes, alpha, timings and pivots remain exact. Full candidate: 586 states /
+8,058 holds. Angled corner armchairs are decorative for all crew; ordinary seating
+remains. Targeted chair checks: 20 passed. Native V12: 72 carrying/swimming turn
+trials, all 552 turn holds, 11,103 checks / zero failures; every turn-slot detail
+inspected. Owner profile unchanged. [Current review](../character/krusher-turn-face-polish-v1/index.html)
+and [handoff](../character/krusher-turn-face-polish-v1/HANDOFF.md). Private gallery
+updated; normal roster integration and owner visual acceptance remain separate.
+
+## Krusher Dom in-game activity/turn pass — October 15, 2026
+
+V11 art retained after24 actual sitting/reading/workshop lifecycles,72 carrying/
+swimming turn trials (all552 authored turn holds),8 equipment-contact maintenance
+cases and2 ordinary paid-build cases. Both equipment variants; workshop/repair
+use all four work facings, lounge resolves north and observation reading south.
+50,998 checks / zero failures; 7,600 native captures, sampled chronological
+visual review and every turn-slot head/collar detail inspected. No new head/neck
+defect found. All2,947 fingerprinted owner files unchanged in each final runner.
+[Native replay review](../character/krusher-activity-motion-v1/index.html) and
+[handoff](../character/krusher-activity-motion-v1/HANDOFF.md). Normal roster
+integration and owner visual acceptance remain separate.
+
+## Follow-up Godot research completed — October 15, 2026
+
+Source audit finds pinned 4.7.2 GLES initial unmipped-texture memory overcount;
+dedicated runtime reproduction pending. Counter error does not establish physical
+VRAM use, a persistent leak or an FPS remedy. GL/ANGLE shader-compilation counters
+return zero unconditionally; Mobile CANVAS counts requests. Procedural shader math
+and private LOD sampling need image isolation. Private capture-event journal lacks
+a bound in inspected sources; no measured size/timing impact or production leak.
+Next attribution: short placement/zoom trace with game markers and Windows thread/
+GPU scheduling, accounting for official binaries' missing symbols. Research only:
+no Godot/test/trace during research, engine/runtime changes or timing acceptance in
+that research round. Renderer timing subsequently completed above. [Research](GODOT_FOLLOWUP_RESEARCH_2026-10-15.md) ·
+[Handoff](GODOT_RESEARCH2_HANDOFF_2026-10-15.md).
+
+## Renderer image comparison checked — October 15, 2026
+
+Frozen private LOD QA candidate runs all three actual release backends on RTX
+4070 Ti: OpenGL, ANGLE/D3D11 and Mobile/Vulkan. Six zoom/light cases have identical
+full state/camera/sidecar; 24 exact self-repeat pairs and six exact independent
+OpenGL pairs. ANGLE differs by at most 1/255; Mobile by 95/255 fitted, 18/255 closer.
+Neither passes strict appearance parity. Production settings/delivery unchanged.
+Earlier `pacing1` and incomplete `pacing2` are excluded for overlapping Godot
+processes; do not reuse their preliminary timing claims. Clean `pacing3` is now
+complete above. Prior 29 guards preserve 2,948 owner files. [Comparison report](GODOT_RENDERER_COMPARISON_2026-10-15.md) ·
+[Handoff](GODOT_RENDERER_HANDOFF_2026-10-15.md).
+
+## Krusher Dom station-scale handoffs checked — October 15, 2026
+
+V11 art retained after review of all 198 contextual handoff plans / 72 turns at
+the world actor ruler. Actual default-bunk entry, sleep, exit and idle advanced
+with production actor updates in both equipment variants: 852 native frames,
+32 pose/action changes, all authored bunk sources reached, 4,317 checks / zero
+failures. No further head/neck defect observed. All 2,947 fingerprinted owner
+files unchanged. Native replays reconstruct 30Hz simulation cadence; capture ran
+slower than real time. Normal roster integration remains separate.
+[Review](../character/krusher-station-motion-v1/index.html) and
+[handoff](../character/krusher-station-motion-v1/HANDOFF.md).
+
+## Godot research completed — October 15, 2026
+
+Owner requested performance/pacing, rendering/text and renderer/engine research.
+Pinned 4.7.2 source confirms individual polygon/mesh batch breaks in Compatibility
+and Mobile/Forward+; a renderer switch does not automatically remove this limit.
+Upload bursts, structural rebuilds and presentation stalls need separate attribution.
+Card fixes retained; Q-like zero remains unreproduced. Current stable is already
+4.7.2; no verified drop-in upgrade remedy. Pinned Mac ANGLE selects Metal, despite
+inconsistent setting documentation; binary support/fallback must be verified.
+Research recommends a frozen renderer/driver comparison with exact visual gates,
+plus real Mac validation. This is a proposal, not a renderer or engine change.
+No runtime tests, code/assets or delivery changes. Latest ~53 FPS QA baseline includes
+the private room-image prototype and does not certify normal delivery or Mac.
+[Research report](GODOT_RESEARCH_2026-10-15.md) ·
+[Concise handoff](GODOT_RESEARCH_HANDOFF_2026-10-15.md).
+
+## Environment frond geometry reuse installed — October 15, 2026
+
+Animated fronds reuse shared row edges and fixed UV/index topology, preserving
+original vertices, texture sampling, clocks and order. Fixed cache 336 packed
+bytes; caller buffers independent. Normal validation: 1,517 checks / 504 exact
+buffer cases, 576 exact native image pairs (frond and unchanged kelp controls),
+plus 240 continuous private pairs and 12 final complete-station pairs. Frozen
+release: 3,840 frames / 16 exact gameplay-camera pairs; seabed CPU saves
+0.15–0.17 ms in every phase. Overall frame mean improves 0.8–1.7%; normal idle
+52.2–52.7->52.8–53.5 FPS, with one paired idle result essentially flat. Pacing
+mixed; all 16 candidate 60 FPS gates still fail. Draw calls/texture use unchanged.
+21 guards preserve 2,948 owner files. Upright kelp, normal Grid/private LOD and
+Windows delivery unchanged. Remaining environment submissions: foundations,
+terrain, derelicts and exterior actors; broad foundation occlusion lacks proof.
+[Evidence and handoff](ENVIRONMENT_GEOMETRY_HANDOFF_2026-10-15.md).
+
+## Floor submission batching installed — October 15, 2026
+
+Doorway thresholds now share per-room textured packets; Windows floor-edge shadow
+outlines share a fixed native strip packet. Original geometry, UVs, float colors,
+order and conservative fallbacks retained. Normal native thresholds: 360 exact
+pairs / 1,082 checks; borders: 192 pairs / 676 checks. Local floor retention and
+128 equipment-shadow pairs pass; final complete-station 12 exact pairs pass.
+Frozen release: 3,840 frames / 16 exact gameplay-camera phase pairs, both orders.
+Mean 22.885->21.995 and 22.316->21.985 ms; normal idle 51.1–52.0->52.5–52.7 FPS.
+About 138 fewer calls/frame; render CPU saves 0.24–0.30 ms. Texture use unchanged;
+shared border buffers 1,344 bytes. All 16 candidate 60 FPS gates still fail.
+21 guards preserve 2,948 owner files; normal Grid/private LOD and Windows delivery
+unchanged. Next larger target: environment and remaining render submissions.
+[Evidence and handoff](FLOOR_SUBMISSION_HANDOFF_2026-10-15.md).
+
+## Live-room surface packets installed — October 15, 2026
+
+Owner requested unchanged-appearance live-room optimization. Moonbay now combines
+adjacent corner/window/beacon primitives, preserving rectangles, textures, AA
+boundaries, animation and live doors/warnings. Native matrix: 192 exact image pairs
+with 44–46 fewer calls each. Buffer 506 checks, retained-wall 580 pairs, large-room
+94 pairs and complete-station 12 pairs pass. Cache bounded to 32 offset layouts;
+no additional textures. Frozen release: 3,840 frames / 16 exact gameplay-camera
+pairs. Mean 22.748->22.213 and 22.726->22.123 ms; some broader reference slowdown
+limits attribution. Normal idle 50.5–51.4->51.7–52.0 FPS in paired controls;
+about 44 fewer calls/frame. All 16 candidate 60 FPS gates still fail. Texture use
+unchanged; 15 guards preserve 2,948 owner files. Private LOD and Windows delivery
+unchanged. Remaining larger submission groups: floors and environment.
+[Evidence and handoff](LIVE_ROOM_SURFACE_HANDOFF_2026-10-15.md).
+
+## Synergy circle submission batching installed — October 15, 2026
+
+Render census found eight working synergy segments. Their eight adjacent edge/mote
+circles now share one ordered Windows triangle packet, saving about 56 calls/frame
+(normal idle 2369->2313). Native fallback, geometry, colors and clocks retained.
+244 packet pixel comparisons, 1,152 original-native comparisons and 12 complete
+station comparisons pass. Frozen release comparison: 3,840 frames / 16 exact
+gameplay-camera pairs. First-order effects CPU saves 88–128 us; delayed render CPU
+saves 0.09–0.23 ms. Candidate normal idle repeats at about 52.5 FPS; all 16 phase
+gates still fail 60 FPS. Larger reverse-reference slowdown is not attributed to
+this change. Texture use unchanged; 15 guards preserve 2,948 owner files. Private
+LOD and Windows delivery unchanged. Larger remaining groups: live room surface,
+floors and environment.
+[Evidence and handoff](SYNERGY_SUBMISSION_HANDOFF_2026-10-15.md).
+
+## Water packet vertex assembly installed — October 15, 2026
+
+Continued drawing CPU work after local floor retention. Packet strokes now build
+one ordered vertex buffer per ribbon; original geometry, color, antialiasing and
+animation remain exact. 21,001 new geometry checks, three native regressions and
+720 continuous exact image pairs pass. Final water CPU saves 12–14% (0.14–0.19 ms);
+index storage and texture use unchanged. Frozen release comparison covers 6,720
+frames / 28 exact gameplay-camera pairs. Idle Moonbay base saves about 0.14–0.16 ms;
+normal-speed idle remains about 51 FPS. All 28 candidate 60 FPS phase gates fail;
+structural-change hitch reduction is not established. 16 guards preserve all
+2,948 owner files. Private LOD and Windows delivery unchanged. Rejected prefix
+caching after profiling its small cost. Next larger target: render submission.
+[Evidence and handoff](WATER_PACKET_ASSEMBLY_HANDOFF_2026-10-15.md).
+
+## Local floor retention installed — October 15, 2026
+
+Owner approved localized repaint after structural changes. Settled floors now
+retain room slots in the original two-pass order; active fades use original full
+passes, and special/wet/actor-bearing rooms keep conservative repaint rules.
+72 exact native image comparisons pass across placement/removal/rotation/fades
+and three zooms. Normal first-frame/lifecycle, lighting, wall, layout and metadata
+checks pass. Final 6,720-frame comparison preserves 28 gameplay/camera pairs.
+Placement/removal repaints 6–8 of 36–37 floors; floor CPU falls about 11–12->5 ms.
+Placement 71–79->67–68 ms; removal 75–79->67–72 ms. Average FPS remains essentially
+unchanged; all 28 candidate 60 FPS gates fail. Textures unchanged; 16 guards
+preserve 2,948 owner files. Private LOD and Windows delivery remain unchanged.
+[Evidence and handoff](LOCAL_FLOOR_RETENTION_HANDOFF_2026-10-15.md).
+
+## Placement pacing investigation and navigation reduction — October 15, 2026
+
+The previous128-ms placement outlier sits above a repeatable76–83-ms placement
+cost. Release profiling identifies about22 ms crew/navigation work, including7 ms
+boundary validation, alongside about34 ms drawing. Removed duplicate authored
+seam/endpoint validation while preserving exact graph/edge/route order and direct
+call fallbacks. Six targeted regressions pass; new24,054-check oracle passes.
+Final6,720-frame comparison preserves all28 gameplay/camera pairs. Placement crew
+CPU saves2.6–4.3 ms; frame74–80->71–76 ms. Whole-workload pacing remains mixed:
+p95 better7/14 and5/14; >50-ms frames25->14 and12->13. Drawing remains the larger
+structural-change cost; original128-ms extra slowdown unresolved. All28 60 FPS
+gates still fail. Textures unchanged;19 guards preserve2,948 owner files. Private
+LOD and Windows delivery unchanged. Next target: broad floor/content invalidation.
+[Evidence and handoff](PLACEMENT_PACING_HANDOFF_2026-10-15.md).
+
+## Live-room and door/light preparation reuse installed — October 15, 2026
+
+Installed a bounded structural plan in Grid for door validation and ordinary-room
+side/omission preparation. Dynamic crew, doors, lights, warnings and clocks remain
+live; previews/unprepared draws retain original behavior.7,294 structural checks,
+1,680 live-frame key/plan comparisons and12 frozen native image comparisons pass.
+Normal structural/connected-door/preview/live-surface regressions pass cleanly.
+Normal-speed idle preparation saves about1.1 ms: door/light1.19->0.64–0.65 ms,
+nursery0.88->0.30–0.31 ms. Idle46.7–47.0->49.4–49.9 FPS in both orders.
+Full6,720-frame/28 exact state-camera comparison is mixed overall:3.34% slower /
+4.70% faster, with one128-ms placement frame unresolved. All28 60 FPS gates fail;
+no general pacing gain claimed. Textures identical2784.653 MiB; no new textures.
+All24 owner guards preserve2,948 files. Private LOD and Windows delivery unchanged.
+[Evidence and handoff](LIVE_DOOR_TOPOLOGY_HANDOFF_2026-10-15.md).
+
+## Krusher Dom continuous animation pass — October 14, 2026
+
+V11 repairs 21 drawings across 19 states / 91 holds: bunk collar gaps and
+helmet visor overlap through swimming turns. Existing density, timings and
+pack geometry retained. All 586 states / 8,058 holds ran in continuous recorded
+playback; final-source coverage has zero missing holds, including 72 turn chains
+and 126 other transition contexts. Visual review used chronological motion
+witnesses for every state plus selected live playback. Native 63,664 checks pass;
+all 2,947 fingerprinted owner files unchanged. Private gallery updated with
+Previous/Revised and smooth turn cycles. Complete asset candidate; owner visual
+acceptance and normal roster integration remain separate.
+[Handoff](../character/krusher-continuous-playback-v1/HANDOFF.md) and
+[package](../character/krusher-animation-package-v11/README.md).
+
+## Marsh underwater mining implemented for review — October 15, 2026
+
+Owner requested four directional mining animations and full mineral trips.
+Dedicated draw/drill/stow:12new states/52holds,28whole authored body keys;
+selected library256states/1,326holds. Exact tread/tool/pickup joins; all244prior
+states/1,274holds unchanged. Saved expedition clock preserves5.48-second work;
+salvage, routes, work positions, rewards and save format retained. Four actual
+complete mining trips observe E/S/W/N work, all tool/cargo/drain/unload holds and
+exact two-metal deliveries:21,808native checks/zero,16disk restores,164crops.
+Mining clocks5,284, prior water clocks6,256, complete packs4,916checks/zero and
+two source-contract tests pass. Rebuild exact; baseline only12added Marsh clips.
+All2,948owner files unchanged. Owner visual acceptance pending; sampled native
+evidence on prescribed fixtures, not all-route/hazard/release certification.
+[Review](../character/marsh-underwater-mining-v1/review/index.html) and
+[evidence/handoff](MARSH_UNDERWATER_MINING_2026-10-15.md). No export/commit/upload.
+
+## Marsh water actions accepted — October 15, 2026
+
+Final integration follow-up completed: [native review](../character/marsh-final-sweep-2026-10-15/review/index.html)
+and [handoff](MARSH_FINAL_SWEEP_2026-10-15.md). Real north-facing salvage now covered;
+16 room lifecycles, water/dry damage and shutdown branches pass24,133native checks.
+Fixed exterior shutdown disappearing after expedition cleanup and stale bunk/berth
+contacts invalidating dead snapshots; corrected historical shutdown rebaker test.
+12focused regression checks,69rest joins,6,256water clocks and2Python tests pass.
+No artwork changes. All2,948owner files unchanged; sampled native evidence,
+controlled fixtures, no release/all-layout certification. No export/commit/upload.
+
+Owner authorized continuing after identifying standing→buoyancy, empty-handed
+airlock settling and underwater work gaps. Four facings now have complete-body
+lift/settle, braking and salvage sequences, driven by saved water/work clocks.
+16 new states / 76 holds; selected library244states /1,274holds. Four pickup entry
+holds now join tread exactly; all1,198prior source holds unchanged on disk.
+Existing loaded drain, economy, routes and work duration retained. Native8journeys
+across4airlock rotations:36,420checks/zero; lift/settle all4facings observed,
+salvage E/S/W observed, N source/clock coverage only. Pause, power loss and24actual
+disk restores pass. Clock6,256, complete-pack4,880 and meal8,665checks/zero.
+All2,948owner files unchanged. Package reproducible; baseline changes narrowly
+verified. Owner accepted the water-action review ("Those look good"). No known
+artwork correction remains in the reviewed families. Final combined normal-play
+transition/hazard coverage and a north-facing salvage route remain separate
+integration checks; no new tests for this acceptance-only update. No export/commit/upload.
+[Review](../character/marsh-water-actions-v1/review/index.html) and
+[evidence/handoff](MARSH_WATER_ACTIONS_2026-10-15.md).
+
+## Marsh whole-library size/density review — October 14, 2026
+
+Owner accepted the remaining animations and requested a size/pixel-density/
+polish pass. All228selected states/1,198holds/986source paths inventoried.
+Uniform148standing ruler, nearest sampling and complete registered bounds;
+all15representative state atlases inspected. No common-ruler resize or blanket
+palette change indicated; accepted art/timing retained. New all-state viewer
+offers same-scale idle comparisons, frame scrub and close/station-size views.
+Native4,071checks/zero: all1,198loaded frames/clocks/pivots/rulers exact and
+three room-scale comparisons. Maximum normal standing screen ruler81.76px
+already fits within148px-source detail. All2,948owner files unchanged.
+[Size/density review](../character/marsh-scale-density-review-2026-10-14/review/index.html)
+and [handoff](MARSH_SCALE_DENSITY_PASS_2026-10-14.md).
+
+## Marsh remaining cargo/water review accepted — October 14, 2026
+
+Owner accepted eating/drinking and requested remaining animations. Reviewed
+60clips/360holds across loaded swimming/return, carrying turns, water reactions
+and retained air/helmet sources. All64cargo/turn joins already match; drawings
+and timing retained. Native cargo player148source matches,76turn holds,
+108captures/zero failures. Historical water-turn test now resolves current
+ordered manifests instead of superseded installation source files.
+Actual rotation-zero cargo delivery/checkpoint regression passes all12phases;
+all2,948owner files unchanged. All228selected states are accounted for across
+the source review passes; native coverage remains bounded to recorded fixtures.
+[Remaining review](../character/marsh-remaining-review-2026-10-14/review/index.html)
+and [handoff](MARSH_REMAINING_REVIEW_2026-10-14.md).
+
+## Marsh eating/drinking polish accepted — October 14, 2026
+
+South bowl/spoon and mug drawings now match current ivory boots and suit;
+two states/12 selected holds change. Exact current idle endpoints, other
+directions and prior accepted art retained. Saved service timer now completes
+seven eating cycles in6s and three drinking cycles in3s, ending empty-handed.
+8,665 meal checks,4,832 complete-pack checks,69 rest checks and9,281 native
+checks pass. Four actual galley rotations all face north; South/East/West are
+source reviews. [Review](../character/marsh-meal-review-2026-10-14/review/index.html)
+and [handoff](MARSH_MEAL_POLISH_2026-10-14.md). Owner accepted this pass.
+
+## Moonbay water CPU preparation improved; quiet FPS comparison complete — October 14, 2026
+
+Installed whole-packet index reuse and exact hot-loop cleanup in Moonbay water.
+Paired native water CPU falls 17–20% (about0.21–0.34 ms); original clocks, geometry,
+colours, antialiasing and command order remain. Final49,250 buffer/ownership checks,
+720 continuous exact water pixel pairs and all three normal native regressions
+pass (7,960 stroke checks/180 pairs,493 water checks/244 pairs,135 composition
+checks/80 pairs). Cache capped64 layouts; observed pumping index storage975,000
+bytes, station95,400 bytes, no new textures. Source admitted for local CPU saving.
+After owner paused other runs, unchanged frozen quiet comparison completes3,840
+frames/16 exact state-camera pairs; process guard detects no foreign Godot workers.
+Means24.437->24.628 and27.677->24.358 ms remain mixed; broad reverse-reference
+slowdown exceeds this water scope, so no general FPS gain is established. Normal
+idle candidate46.76/46.83 FPS; all16 phase gates still fail. Texture peaks identical
+2784.653 MiB. Delivery unchanged; private LOD remains private. All31 owner guards
+preserve2,948 files. No additional water benchmark pending.
+[Evidence and handoff](WATER_CPU_PACKET_HANDOFF_2026-10-14.md).
+
+## Marsh corner lounge armchairs omitted — October 14, 2026
+
+Owner rejected Marsh's corner-chair facing and authorized omitting those seats.
+Marsh now excludes station-prop corner armchairs (including copies) from new
+activity contacts. Default lounge layouts have no remaining reachable seat;
+reading seats and current bunk rest remain available. Other crew keep their
+existing contacts. Existing seated contacts remain available only to finish
+saved rest/rise continuity. Review gallery removes the four rejected chair clips.
+[Evidence and handoff](MARSH_REST_POLISH_2026-10-14.md).
+
+## Krusher full-frame neck and turn continuity revision — October 14, 2026
+
+V10 supersedes the sampled V9 visual review. Exhaustive inspection of 3,458 distinct
+head/collar views across all 586 states / 8,058 holds and 72 chronological turns
+found old neck fragments, false rear helmet portraits and accent flashes. 149
+source drawings repaired consistently across aliases in
+`character/krusher-animation-package-v10`. 16,790 package checks and 72,998 native
+checks pass; 3,464 registered pose groups have zero conflicting replacements.
+All 3,486 lossless WebP exports match decoded RGBA. Isolated native runs preserve
+2,947 owner non-log files. Original clocks, pivots, canvas/ruler and tools retained.
+Full frame coverage and sampled playback are recorded; owner visual acceptance
+and normal roster integration remain pending. [Current handoff](../character/krusher-continuity-audit-v1/HANDOFF.md).
+
+## Smaller drone uploads preserve pixels but regress frame pacing - October 14, 2026
+
+Owner approved an exact-image, bounded-memory transfer experiment. Full-coordinate RG8
+IDs + palette expand once on GPU into a normal full RGBA target. Native raw feasibility
+76 checks passes; final North-only candidate ownership/rendering 54 checks pass, including
+all-byte equality, first-use, nearest/linear and retained consumer teardown. Original art,
+normal source and Windows delivery remain unchanged.
+
+Across 3,840 matched frames / 16 exact state-camera pairs, selected transfer halves
+138->69 MiB but both orders slow 3.92% / 4.89%; worst candidate149.733 ms vs reference
+72.061/77.032 ms. Creation calls rise 12–13->37–64 ms. Target backing adds91.875 MiB;
+sampled texture peak2876.529 MiB remains below3072, staging capped70 MiB. Reject this
+private candidate; do not expand unchanged. All19 owner guards preserve2948 files.
+The remaining storage remedy would need to avoid expensive extra target creation while
+retaining exact original-coordinate sampling; smaller transfer alone is insufficient.
+[Evidence and handoff](DRONE_GPU_REBUILD_TRIAL_2026-10-14.md).
+
+## Krusher head style and neck revision ready for review — October 14, 2026
+
+Owner rejected V8's head/body art-style and pixel-density mismatch and detached
+necks. V9 uses newly authored matte heads with preserved antialiased edges,
+short necks behind original collars and pose-specific prone overlap. Gold suit
+pixels are excluded from original-skin restoration. 3,112 drawings revised;
+586 states / 8,058 holds / 3,486 unique PNGs retained in
+`character/krusher-animation-package-v9`. Body outside local head/neck masks,
+helmet alpha, geometry, clocks and shared-drawing consistency remain exact.
+17,424 source checks; 16,790 package checks; 72,998 native checks; 352 captures;
+zero failures/errors/warnings/leaks. All 2,947 owner non-log files unchanged per
+isolated run. Private animation Site updated with Previous/Revised selection for
+all states and a comparison sheet. Generated sources, prompts, sampled visual
+review and handoff: `character/krusher-style-neck-v1/HANDOFF.md`.
+Owner visual acceptance remains pending; no normal roster integration or export.
+
+## Mining-drone uploads profiled; allocation reuse rejected - October 14, 2026
+
+Owner requested unchanged appearance while profiling uploads/exterior drawing. Final
+caller-separated diagnostic puts exterior work at 0.54–2.71 ms/frame; readiness/uploads
+dominate active transitions. A fresh 116 ms frame overlaps two 138 MiB mining-body
+uploads / 50.5 ms image-create API time. Docked callers measured separately.
+
+Private full-image allocation reuse engages 66 times/run but both matched orders slow
+5.54% / 17.45%, with more >50 ms frames and +14.94 MiB sampled texture peak. Reject it.
+3,840 comparison frames, 16 exact state/camera pairs, final native ownership/pixel/
+lifecycle contract 16 checks / zero failures. All 17 owner guards preserve 2,948 files.
+Normal source/art and Windows delivery unchanged. The remaining target is full-atlas
+transfer volume at visible transitions, preserving original-coordinate sampling and
+memory bounds; prior rejected cache/prewarm/storage/thread trials must not be repeated
+unchanged. [Profile and handoff](DRONE_UPLOAD_EXTERIOR_PROFILE_2026-10-14.md).
+
+## Krusher complete animation asset candidate delivered — October 14, 2026
+
+Current likeness/collar and muted cyan suit now cover all 586 states (338 bare /
+248 helmet), 8,058 holds / 3,486 unique PNGs in
+`character/krusher-animation-package-v8`. Four matching authored head sheets;
+87 shared-pose groups / 343 derivative slots consolidated, zero inconsistent
+registered aliases. Package 16,790 checks; final native loader + repair/bunk/water/
+West case fixtures 72,998 checks, zero failures/errors/warnings/leaks, 352 captures.
+Every isolated run preserved all 2,947 owner non-log files. Two proven exact
+floor-release cue hashes added; original James and altered-cue guards pass.
+Private full-set browser published on the existing Krusher preview Site; all
+3,486 WebPs decode exactly to final PNGs. Agent family/selected motion and station
+review is distinct from owner acceptance or every-clip continuous motion coverage.
+Asset source coverage complete; no normal roster/perk/save integration, game
+export or game-repository commit. Handoff: `character/krusher-head-fit-v7/HANDOFF.md`.
+
+## Room-image cache reuse tested; whole-frame gains remain mixed - October 14, 2026
+
+Owner approved reducing unnecessary recapture and visibility churn in the private
+expanded prototype. Cached ordinary rooms now retain images across camera/bookkeeping
+changes, with complete drawing-input invalidation and transition-only visibility.
+Crew, doors, warnings and original close drawing retained. Normal source and Windows
+delivery remain unchanged.
+
+30 native checks pass; close fallback pixels exact; distant captures reviewed. Both
+steady orders reduce cumulative captures 130->30; both zoom orders reduce captures
+284->86. Across 14,400 measured frames / 36 matched state-camera sets, whole-frame
+results remain mixed: steady 1.75% slower / 2.62% faster; zoom 2.27% slower / 9.76%
+faster. No candidate phase reaches the 60 FPS gate. Memory unchanged; hitches persist.
+All 12 owner guards preserve 2,948 files. Keep private. A 101 ms outlier overlaps
+276 MiB of mining body-sheet uploads and high exterior drawing time; these are the
+next proposed profiling target. [Evidence and handoff](ROOM_LOD_REUSE_2026-10-14.md).
+
+## Expanded distant-room prototype benchmarked; zoom hitches remain - October 14, 2026
+
+Owner approved eight additional ordinary room types, preserving live crew/doors/warnings.
+Eligible unoccupied ordinary contents use a raster; actor entry or hazards immediately
+restore original drawing/depth. One-room-per-frame capture budget keeps full drawing
+visible until ready. Normal source and Windows delivery remain unchanged.
+
+Three-lane tests (original, prior three-room prototype, expanded), both steady orders:
+idle ~41-42 ->44-46 FPS; calls ~2,881 ->2,385; end texture memory +41.25 MiB. Full means
+are mixed: expanded is 0.52% slower / 6.11% faster vs original and 0.63-3.17% faster vs
+prior. Still 0/24 expanded steady phases pass 60 FPS. Cold/repeated/interrupted zoom at
+1x/4x: p95 improves 5/6 vs original, but entry windows are mixed and worst expanded frame
+is 93 ms. No hitch-free claim. 15,120 valid frames, 30 exact three-way state/camera sets;
+18 native checks pass, including actual crew/fire fallback. Close pixels exact; final
+distant captures reviewed. All 21 owner guards preserve 2,948 files.
+
+Keep the prototype private. Next: profile cache-management/visibility churn and
+unnecessary zoom-time recapture before broadening or integration. Evidence and limits:
+[ROOM_LOD_EXPANSION_2026-10-14.md](ROOM_LOD_EXPANSION_2026-10-14.md).
+
+## Marsh seated/resting polish ready - October 14, 2026
+
+Owner accepted gestures and requested seated/resting next. Reviewed34states/
+120holds. Seven whole south seated/reading drawings now match current suit/boots;
+reversed sitting/rising and generic south rest standing joins reuse exact idle.
+Only six states/15holds differ; clocks,pivots,depth,offsets and other actors exact.
+Current bunk choreography retained. Actual lounge/reading4rotations each plus
+bunk:7,211checks/zero each before/after,739movement/pose-clock samples exact.
+Only256South reading source samples differ. Current bunk native117checks/seven
+disk restores, pause and interrupted rises pass. Rest joins64checks,crew/life/
+gesture regressions pass. All2,948owner files unchanged. Installed for owner
+review; no export or commit. [Gallery and evidence](MARSH_REST_POLISH_2026-10-14.md).
+
+## Marsh south conversation matched; reactions reviewed - October 14, 2026
+
+Owner accepted cargo/work and requested continuation. Reviewed40clips/208holds.
+South conversation now uses four matching whole gesture drawings and four exact
+current idle holds; original1.1s timing,pivot,ruler and social behavior preserved.
+Only that eight-hold state changes in the crew baseline. Actual four-facing social
+conversations/four disk restores and four impact/recovery sequences:4,376checks/
+zero per before/after run,496paired movement/pose-clock samples exact; only40South
+chat source samples differ. Current gesture/reaction joins28checks,crew/social/work/
+torch regressions pass; all2,948owner files unchanged. Historical shutdown-source
+rebaker comparison still fails on unchanged old inputs; disclosed in handoff.
+Owner accepted the result. [Gallery and evidence](MARSH_GESTURE_POLISH_2026-10-14.md).
+Seated/rest polish follows above; no release rebuild or commit.
+
+## Marsh cargo/work reviewed; torch joins and sparks corrected - October 14, 2026
+
+Owner accepted the east run and requested continuation. Reviewed44dry cargo/work
+clips/232holds. Cargo/tablet selections retained; South torch entry/exit now reuse
+current whole idle. Only two selected slots/derived alpha extents change; interiors,
+timing,pivots,stride and other actors exact. Native review exposed floating sparks:
+Marsh's24pose attachments now use the current source-density ruler and submitted
+texture. Existing construction-door spark policy preserved. Final native6,242checks/
+zero,816samples/four directions; paired South204movement/pose-clock samples exact.
+Attachment26checks,joins52,source/crew/walk/prior locomotion regressions pass.
+Paid construction's stale walk-only bound now recognizes existing run steps;
+historical-art control confirmed the same88old failures, corrected test passes
+all four directions. All2,948owner files unchanged. Owner accepted these changes;
+no release rebuild. [Gallery, evidence and handoff](MARSH_WORK_POLISH_2026-10-14.md).
+
+## Marsh east run registration corrected - October 14, 2026
+
+Owner accepted the transition improvements but found east running jumpy. Measured
+pose2's13px forward/back head lurch; its complete airborne drawing now registers
+10pixels left, reducing maximum adjacent excursion to6.5px and matching the other
+airborne half within0.5px. All foreground pixels/vertical placement and five other
+poses stay exact; six100ms holds,stride,pivot and controller unchanged. Generated
+studies remain unselected. Only run-east slot2/derived alpha extent changes in the
+baseline. Paired60Hz native1,520checks each/zero,216exact movement/pose-clock samples;
+actual eight disk/titleContinues226checks/zero. Registration, prior joins, crew and
+walk regressions pass; owner2,948files unchanged. Owner accepted the correction
+(“That looks better, keep going”); cargo/work polish follows.
+[Handoff and current comparison](MARSH_EAST_RUN_REGISTRATION_2026-10-14.md).
+Existing six-pose cadence remains; no release rebuild or new art acceptance claim.
+
+## Marsh locomotion transitions polished - October 14, 2026
+
+Owner approved the next pass on walking/running and starts/stops. Reviewed34selected
+states/170holds and twelve actual normal-controller walk/run/short-step routes.
+Seven transition states/nine holds now share exact selected idle/gait drawings:
+East/West standing entries/exits and short steps; North start's gait-slot1 join.
+Walk/run cycles, root curves, timing, canvases/pivots and accepted swimming retained.
+Boundary regression9failures ->zero; installed native5,946checks/zero and706paired
+samples preserve physical trajectories, pose clocks and arrival behavior. Crew,
+walk,battery and North-start regressions pass. Derived alpha extents update as
+expected; other metadata/unrelated selections exact. Owner2,948files unchanged.
+[Handoff and scrub-able native comparison gallery](MARSH_LOCOMOTION_POLISH_2026-10-14.md).
+Owner accepted the transition improvements; east run has the separate follow-up above.
+Source installed; release rebuild remains separate. Cargo/work is
+the next proposed family; no broad library regeneration or new gameplay change.
+
+## Distant-room raster prototype shows a measured gain - October 14, 2026
+
+Owner approved a private LOD prototype on Hydroponics Farm, Storage Depot and Tidal
+Power Plant, keeping crew, doors and warnings live. At distant zoom, two cached room
+images hold furnishing/machinery frames; wet rooms and filling/draining tidal chambers
+use full drawing. Close zoom returns to the original renderer. Normal runtime source
+and Windows delivery remain unchanged; this spike is not admitted for production.
+
+Two matched native pairs, 8,640 frames / 24 exact states+cameras: average frame time
+improves 4.43% and 8.30% (timing variation; no guaranteed scaling), idle ~40-41 ->43 FPS,
+draw calls ~2,866 ->2,670, end texture memory +12 MiB. P95 improves 21/24 phases;
+still 0/24 phases pass the 60 FPS gate. Native contract: 58 checks / zero failures,
+including visible live-door changes without recapture. Distant images were reviewed;
+close fallback at 0.30/0.50 is pixel-exact. All owner guards preserve 2,948 files.
+Cold-entry/threshold hitch costs, broader visual cases and ancestor material/tint
+behavior remain production work. Evidence and next scope:
+[ROOM_LOD_PROTOTYPE_2026-10-14.md](ROOM_LOD_PROTOTYPE_2026-10-14.md).
+
+## Live-room CPU profiled; companion duplicate checks removed - October 14, 2026
+
+Owner requested further performance work with identical appearance. Live-room callbacks
+cost ~6.39 ms, including large bases ~2.05 ms and ordinary retained content ~1.94 ms;
+door/light validation costs ~1.25 ms. These nested instrumented scopes overlap.
+Three drawing trials showed insufficient repeatable benefit and remain excluded.
+
+`scripts/companion_npc.gd` now reuses topology validation within one synchronous update,
+preserving direct-call checks and all lock/fire/water behavior. Companion CPU falls
+~633 -> 403 us (~36%). Two full workload pairs improve mean frames by 0.16-1.11%,
+but idle remains ~41 FPS, p95 is mixed and 0/42 candidate phases pass the 60 FPS gate.
+Focused lighting variability remains unresolved; this is not a pacing acceptance.
+
+All 42 full states/cameras match; 12 native frozen-image comparisons are byte-exact,
+with a capture reviewed. New topology test passes 25 checks; existing companions,
+water, personality and repair tests pass. All owner guards preserve 2,948 files.
+Source is updated; **the Windows candidate has not been rebuilt with this change**.
+No Mac or release acceptance claimed. Evidence and next targets:
+[LIVE_ROOM_CPU_PROFILE_2026-10-14.md](LIVE_ROOM_CPU_PROFILE_2026-10-14.md).
+
+## Marsh swimming arm strokes installed - October 14, 2026
+
+Owner rejected the static-arm glide after the endpoint repair. All four unloaded
+swim loops now use six poses with visible pull/recovery/extension, guided by Bill's
+stroke and Marsh's own directional identity/foreshortening. Twenty new whole-body
+interiors; four registered first poses stay exact, preserving the repaired turns.
+Total720ms/stride/pivot/H148 unchanged; new208-square canvases add transparent room
+for articulated arms. Only four swim clips change in the refreshed crew baseline.
+Native132checks/zero, handoff72cases/zero, crew complete/walk/swim regressions pass.
+All2,948 owner non-log files unchanged. [Handoff and animated comparison](MARSH_SWIM_STROKE_2026-10-14.md).
+Owner accepted the revised strokes after reviewing the comparison. Source installed;
+natural station travel and release export remain separate.
+
+## Marsh reported swim defects repaired in source - October 14, 2026
+
+Owner reopened the parked polish. North swim slot 0 reuses a coherent selected
+whole-body turn pose, removing its doubled head with identical alpha. All twelve
+swim turns now share exact loop-slot-0 entry/exit bodies. Timing, pivots, metadata,
+interiors and unrelated selections stay exact. Thirteen clips / nineteen slots
+change through a scoped catalog override; maintained rebuild and crew baseline updated.
+Carry-turn handoff: 12 failures -> zero across 72 cases. Native source review: 106
+checks / zero failures, complete chronology; crew complete/walk/swim regressions pass.
+All 2,948 non-log owner files unchanged under scratch APPDATA. Animated previews and
+limitations: [handoff](MARSH_SWIM_POLISH_2026-10-14.md). Source installation only;
+owner visual acceptance, natural station travel and rebuilt release remain separate.
+
+## Ordered wall polygons and rebuilt Windows candidate verified - October 14, 2026
+
+Owner requested wall/environment batching with identical appearance. Painted cap strips
+and corners now share ordered triangle packets within one `tops()` call, flushed before
+every native rectangle and closed-door draw. Crown corners combine their two triangles;
+textures, original triangulation/UV seams, transforms, shaders and drawing order remain.
+Derelict room architecture uses the same improvement; rock/wave rendering is unchanged.
+
+Large fixture: roughly 3,212 -> 2,877 calls (~10% fewer). Two clean-original-reference
+full-action pairs, 15,120 frames: means 27.264 -> 26.595 and 27.422 -> 26.640 ms
+(2.45-2.85% faster); render CPU ~7.23 -> 6.54 ms. All 42 states exact, unchanged settled
+textures; 34/42 p95 values improve, no phase regresses in both orders. Still 0/42 phases
+pass the 60 FPS gate. Idle 1x improves ~40.4-40.5 -> 41.2-41.4 FPS.
+
+Checks: 768/768 native pixel pairs plus 12 exact full-station comparisons; permanent
+native regression rejects old source and passes installed source. Paired UID/index kept;
+independent diff review clean. All owner guards preserve 2,948 files. New physical Windows
+candidate `brinespace-2fb8e8659a3be093` is in `C:/bs-release-wall-env-20261014/windows`;
+clean import/export, 35,790-file exact pack audit and actual New Game/F8 smoke pass.
+Native screenshot reviewed; prior delivery intact.
+Details: [WALL_ENV_BATCH_HANDOFF_2026-10-14.md](WALL_ENV_BATCH_HANDOFF_2026-10-14.md).
+
+## Large-station drawing profiled; small CPU improvement admitted - October 14, 2026
+
+Actual Windows candidate capture has 3,213 draw calls, including 2,594 single-instance
+draws. Paused submission census attributes roughly 517 calls to large rooms, 504 to walls,
+472 to environment, 461 to ordinary contents and 399 to floors; no single layer explains
+the whole gap. Keep art and animation quality. Walls/environment ordered geometry are
+the next substantial submission targets; prior rejected waveform/Tidal trials stay rejected.
+
+`scripts/grid_canvas.gd` now gathers actor display cells once per synchronous LIVE paint,
+keeps outside queries live, and drops a dead zero-valued drone-door branch. Three matched
+actual-release pairs: all 27 states exact, live-room callbacks save 0.19-0.48 ms; whole-frame
+means improve 0.13-1.48 ms with substantial timing variation. Still 0/27 frame phases pass.
+Twelve native frozen-image comparisons at three zooms are byte-exact after pending drone
+textures settle. Installed-source occupancy and workshop guards pass; all 2,948 owner
+files unchanged. This source change is **not in the existing Windows candidate**.
+Evidence, scope and next action: [LARGE_STATION_DRAW_PROFILE_2026-10-14.md](LARGE_STATION_DRAW_PROFILE_2026-10-14.md).
+
+## Windows candidate rebuilt; large-station frame gate still fails - October 14, 2026
+
+Owner accepted the room-card appearance, requested the Windows rebuild and large-station
+benchmark, and added a large-room open-door fix. Candidate `brinespace-2fe5a9922a7a63cf`
+is in `C:/bs-release-20261014/windows`, from frozen current inputs plus the checked door fix.
+The raised-door renderer now accepts a backing color; large rooms supply their threshold
+floor color instead of the near-black default. Ordinary doors keep their existing default.
+Four department door probes fail before/pass after; large-room art and door logic pass.
+
+Pack audit: 35,790 checked, zero missing/changed/unexpected. Actual release New Game + F8
+smoke: zero failures, debug=false; native capture reviewed. Three valid mixed-large runs,
+40 rooms including all four large rooms, 1920x1080 on RTX 4070 Ti, 1x/2x/4x:
+**0/63 phases pass**. Idle mean 24.90-26.29 ms (38.0-40.2 FPS), zoom p95 39.41-44.38 ms,
+lighting p95 36.53-42.95 ms; worst frame 103.13 ms (pan). Texture peak 2744.00 MiB,
+settled 1944.32-1946.08 MiB; texture gate passes, frame gate does not.
+
+One minimized-window attempt was invalid and excluded; two retry passes completed.
+Save workload omitted for the known mixed-fixture carry/checkpoint limitation. No soak,
+target-PC or Mac check in this task. Post-game-close QA stages preserve all 2,948 owner
+file fingerprints; initial freeze recorded live-game/quit save changes separately.
+Full scope and next action: [WINDOWS_LARGE_BENCHMARK_HANDOFF_2026-10-14.md](WINDOWS_LARGE_BENCHMARK_HANDOFF_2026-10-14.md).
+No publication. Marsh polish, object-count investigation and Clone Lab revival stay parked.
+
+## Room-card readability and tilted outlines - October 14, 2026
+
+Owner requested clearer text, the decorative metal frame above the colored outline,
+and steadier colored linework on angled cards. Card fonts now use a separate medium-weight,
+hinted face with 2x oversampling and mipmaps. Titles and rules are larger; rules fitting
+stops at 12 points. Card size and fan layout are retained. The colored backing extends
+beneath the authored metal rail, which composites last. Interior strokes are two pixels;
+rotated cards use mipmapped filtering, upright cards retain linear filtering.
+
+Checks: all 79 room cards fit at 200x284 with no clipped titles; native card-art checks
+34/0; native hand backdrop/layout/hover test passes. Straight and tilted captures reviewed
+at 1600x900. Evidence and remaining acceptance:
+[CARD_READABILITY_HANDOFF_2026-10-14.md](CARD_READABILITY_HANDOFF_2026-10-14.md).
+Not in a rebuilt release; owner visual acceptance remains separate.
+
+## Early Access performance review; Marsh polish parked - October 14, 2026
+
+Owner decision: park Marsh's animation polish for a separate session. No animation
+work started. Crew Hab's description now reads "Adds two berths for crew", matching
+the accepted rule that building housing does not add unnamed survivors.
+
+The release-readiness review and proposed next checks are in
+[EARLY_ACCESS_PERFORMANCE_HANDOFF_2026-10-14.md](EARLY_ACCESS_PERFORMANCE_HANDOFF_2026-10-14.md).
+No new build or runtime tests were run. Loading and zoom remain accepted; object-count
+investigation and Clone Lab revival remain parked. Large-station performance and native
+target-PC/Mac acceptance remain unproven.
+
 ## Owner changes on October 14, and the handoff back to Codex - October 14, 2026
 
 - Room Layout Studio (`d5386ab3`): the "Ocean background" switch is gone; the backdrop draws

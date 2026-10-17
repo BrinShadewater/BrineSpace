@@ -22,21 +22,33 @@ func run() -> void:
     var movement: String="swim-carry" if loaded_cargo else "swim"
     var output:="res://output/marsh-animation-audit/water-turn-native/"
     if loaded_cargo:output="res://output/marsh-animation-audit/loaded-water-native/"
+    for arg in OS.get_cmdline_user_args():
+        if arg.begins_with("--capture-output="):output=arg.trim_prefix("--capture-output=").trim_suffix("/")+"/"
     DirAccess.make_dir_recursive_absolute(output)
     var grid=load("res://scripts/grid_canvas.gd").new();grid._load_replacement_crew_animations()
     var loaded=grid.marsh_player
-    var contract: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://character/marsh-water-turn-match-v1/installation.json"))
-    if loaded_cargo:contract=JSON.parse_string(FileAccess.get_file_as_string("res://character/marsh-loaded-water-match-v1/installation.json"))
-    var references: Dictionary={}
+    # Validate the current ordered catalog, not the historical installation map:
+    # later material/registration overrides intentionally supersede those files.
+    var catalog_path:="res://character/marsh-v2/catalog.json"
+    var sources:Dictionary={}
+    for rel in JSON.parse_string(FileAccess.get_file_as_string(catalog_path)).body:
+        var manifest_path:String=catalog_path.get_base_dir().path_join(str(rel)).simplify_path()
+        var manifest:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(manifest_path))
+        for entry in manifest.states:
+            var key:String=entry.id
+            var relevant:bool=key.begins_with("swim-carry-") or key.begins_with("swim-pickup-") or key.begins_with("cargo-drain-") if loaded_cargo else key in ["swim-east","swim-west","swim-north","swim-south"] or key.begins_with("swim-turn-")
+            if relevant:sources[key]={"entry":entry,"parent":manifest_path.get_base_dir()}
     var failures:=0
-    for target in contract.frames:
-        var source: String="res://"+str(contract.frames[target].source)
-        var image:=Image.new();image.load_png_from_buffer(FileAccess.get_file_as_bytes(source))
-        var state: String=str(contract.frames[target].source).get_slice("/",3)
-        var slot: int=int(source.get_file().get_basename())
-        if not references.has(state):references[state]={}
-        references[state][slot]=image
-        if loaded.frames[state][slot].get_image().get_data()!=image.get_data():failures+=1;push_error("Loaded source mismatch: "+target)
+    var source_matches:=0
+    for key in sources:
+        var source:Dictionary=sources[key]
+        if loaded.timing[key].durations!=source.entry.frameDurationsMs or loaded.timing[key].loop!=source.entry.loop:failures+=1;push_error("Current timing mismatch: "+key)
+        for slot in range(source.entry.frameFiles.size()):
+            var file:String=source.entry.frameFiles[slot]
+            var path:String=file if file.begins_with("res://") else str(source.parent).path_join(file).simplify_path()
+            var image:=Image.new();image.load_png_from_buffer(FileAccess.get_file_as_bytes(path))
+            if loaded.frames[key][slot].get_image().get_data()!=image.get_data():failures+=1;push_error("Loaded current source mismatch: "+key+"/"+str(slot))
+            source_matches+=1
     var view:=Review.new();view.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;root.add_child(view)
     var directions: Array=["south","north","east","west"]
     var captures:=0
@@ -91,5 +103,5 @@ func run() -> void:
             view.queue_redraw();await process_frame;await RenderingServer.frame_post_draw
             root.get_texture().get_image().save_png(output+"frame-%03d.png"%captures);captures+=1
     grid.free()
-    print("MARSH WATER TURNS: %d source matches, %d selected poses, %d captures, %d failures"%[contract.frames.size(),selected.size(),captures,failures])
+    print("MARSH WATER TURNS: %d source matches, %d selected poses, %d captures, %d failures"%[source_matches,selected.size(),captures,failures])
     quit(1 if failures else 0)

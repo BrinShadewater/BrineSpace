@@ -212,14 +212,19 @@ func update(main, delta: float) -> void:
 		behavior="";pending_behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false
 		if water.mode=="dry":locomotion.advance(self,old_state,old_direction,delta)
 		return
-	_advance_companion(main,delta)
+	# Topology and locked cells were just refreshed; a false fire-safety
+	# result returns before mutations. This synchronous path can reuse it.
+	_advance_companion(main,delta,true)
 	if water.mode=="dry":locomotion.advance(self,old_state,old_direction,delta)
 	else:activity="swimming" if identity=="margot" else "floating nearby"
 
-func _advance_companion(main, delta: float) -> void:
+var reuse_update_topology:=not OS.get_cmdline_user_args().has("--reference-companion-topology")
+
+func _advance_companion(main, delta: float, topology_checked:=false) -> void:
 	if behavior.is_empty():personality_cooldown=maxf(0,personality_cooldown-delta)
 	pet_cooldown=maxf(0,pet_cooldown-delta)
-	if topology(main)!=signature: rebuild(main)
+	# Direct callers retain validation; only update() supplies the checked state.
+	if (not topology_checked or not reuse_update_topology) and topology(main)!=signature: rebuild(main)
 	if not can_stand(foot):
 		path.clear();pending_behavior="";behavior="";behavior_elapsed=0;behavior_duration=0;chirp_pending=false;wake_first=false;state="idle";activity="route obstructed";return
 	if path.is_empty() and water.mode=="dry" and behavior!="torch" and _make_way(main,delta):return

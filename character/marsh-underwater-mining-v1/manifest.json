@@ -1,0 +1,515 @@
+{
+  "revision": "marsh-underwater-mining-v1",
+  "pivot": [
+    112,
+    172
+  ],
+  "standingHeight": 148,
+  "textureFilter": "nearest",
+  "states": [
+    {
+      "id": "water-mine-draw-south",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/south-tread.png",
+        "res://character/marsh-underwater-mining-v1/south-body-01.png",
+        "res://character/marsh-underwater-mining-v1/south-body-02.png",
+        "res://character/marsh-underwater-mining-v1/south-body-03.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        150,
+        200
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-south",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/south-body-03.png",
+        "res://character/marsh-underwater-mining-v1/south-body-04.png",
+        "res://character/marsh-underwater-mining-v1/south-body-05.png",
+        "res://character/marsh-underwater-mining-v1/south-body-04.png",
+        "res://character/marsh-underwater-mining-v1/south-body-03.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": true,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-stow-south",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/south-body-03.png",
+        "res://character/marsh-underwater-mining-v1/south-body-06.png",
+        "res://character/marsh-underwater-mining-v1/south-body-07.png",
+        "res://character/marsh-underwater-mining-v1/south-tread.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "south",
+        "south",
+        "south",
+        "south"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-draw-north",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/north-tread.png",
+        "res://character/marsh-underwater-mining-v1/north-body-01.png",
+        "res://character/marsh-underwater-mining-v1/north-body-02.png",
+        "res://character/marsh-underwater-mining-v1/north-body-03.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        150,
+        200
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-north",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/north-body-03.png",
+        "res://character/marsh-underwater-mining-v1/north-body-04.png",
+        "res://character/marsh-underwater-mining-v1/north-body-05.png",
+        "res://character/marsh-underwater-mining-v1/north-body-04.png",
+        "res://character/marsh-underwater-mining-v1/north-body-03.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": true,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-stow-north",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/north-body-03.png",
+        "res://character/marsh-underwater-mining-v1/north-body-06.png",
+        "res://character/marsh-underwater-mining-v1/north-body-07.png",
+        "res://character/marsh-underwater-mining-v1/north-tread.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "north",
+        "north",
+        "north",
+        "north"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-draw-east",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/east-tread.png",
+        "res://character/marsh-underwater-mining-v1/east-body-01.png",
+        "res://character/marsh-underwater-mining-v1/east-body-02.png",
+        "res://character/marsh-underwater-mining-v1/east-body-03.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        150,
+        200
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-east",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/east-body-03.png",
+        "res://character/marsh-underwater-mining-v1/east-body-04.png",
+        "res://character/marsh-underwater-mining-v1/east-body-05.png",
+        "res://character/marsh-underwater-mining-v1/east-body-04.png",
+        "res://character/marsh-underwater-mining-v1/east-body-03.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": true,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-stow-east",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/east-body-03.png",
+        "res://character/marsh-underwater-mining-v1/east-body-06.png",
+        "res://character/marsh-underwater-mining-v1/east-body-07.png",
+        "res://character/marsh-underwater-mining-v1/east-tread.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "east",
+        "east",
+        "east",
+        "east"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-draw-west",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/west-tread.png",
+        "res://character/marsh-underwater-mining-v1/west-body-01.png",
+        "res://character/marsh-underwater-mining-v1/west-body-02.png",
+        "res://character/marsh-underwater-mining-v1/west-body-03.png"
+      ],
+      "frameDurationsMs": [
+        100,
+        150,
+        150,
+        200
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-west",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/west-body-03.png",
+        "res://character/marsh-underwater-mining-v1/west-body-04.png",
+        "res://character/marsh-underwater-mining-v1/west-body-05.png",
+        "res://character/marsh-underwater-mining-v1/west-body-04.png",
+        "res://character/marsh-underwater-mining-v1/west-body-03.png"
+      ],
+      "frameDurationsMs": [
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "loop": true,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "water-mine-stow-west",
+      "frameFiles": [
+        "res://character/marsh-underwater-mining-v1/west-body-03.png",
+        "res://character/marsh-underwater-mining-v1/west-body-06.png",
+        "res://character/marsh-underwater-mining-v1/west-body-07.png",
+        "res://character/marsh-underwater-mining-v1/west-tread.png"
+      ],
+      "frameDurationsMs": [
+        200,
+        150,
+        150,
+        100
+      ],
+      "loop": false,
+      "facings": [
+        "west",
+        "west",
+        "west",
+        "west"
+      ],
+      "waterKinds": [
+        "mining",
+        "mining",
+        "mining",
+        "mining"
+      ],
+      "waterPoses": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "depthOffsets": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

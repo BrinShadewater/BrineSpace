@@ -26,9 +26,30 @@ static func stamp(c: CanvasItem,id: String,at: Vector2,q:=0,opacity:=0.65,size_s
 		var p: Vector2=at+v.rotated(q*PI/2)*size_scale
 		points.append(center+(p-center)*mirror)
 	c.draw_polygon(points,PackedColorArray([Color(1,1,1,opacity)]),PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]),texture(id))
+const ThresholdPacket=preload("res://scripts/room_surface_packet.gd")
+static var batch_thresholds:=true
 static func draw_thresholds(c: CanvasItem,center: Vector2,edges: Array) -> void:
+	var eligible:=PackedVector2Array()
 	for edge in edges:
 		if not edge.get("port",false): continue
 		var delta: Vector2=edge.center-center
 		if delta.length()<170 or delta.length()>205: continue
-		stamp(c,"detail-threshold",center+delta-delta.normalized()*13,1 if absf(delta.x)>absf(delta.y) else 0,.55)
+		eligible.append(delta)
+	if eligible.is_empty():return
+	if not batch_thresholds or eligible.size()==1:
+		for delta in eligible:stamp(c,"detail-threshold",center+delta-delta.normalized()*13,1 if absf(delta.x)>absf(delta.y) else 0,.55)
+		return
+	# Keep each stamp's native triangulation, float tint and edge order. The
+	# packet ends here, before other floor textures, light pools and shadows.
+	var packet=ThresholdPacket.new()
+	var r:=bounds("detail-threshold")
+	var uv:=PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN])
+	for delta in eligible:
+		var at:Vector2=center+delta-delta.normalized()*13
+		var q:int=1 if absf(delta.x)>absf(delta.y) else 0
+		var points:=PackedVector2Array()
+		for v in [r.position,Vector2(r.end.x,r.position.y),r.end,Vector2(r.position.x,r.end.y)]:
+			var p:Vector2=at+v.rotated(q*PI/2)*1.0
+			points.append(at+(p-at)*Vector2.ONE)
+		packet.polygon(points,PackedColorArray([Color(1,1,1,.55)]),uv)
+	packet.draw(c,texture("detail-threshold"))

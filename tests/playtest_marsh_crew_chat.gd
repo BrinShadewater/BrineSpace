@@ -7,6 +7,17 @@ var failures:=0
 var captures:=0
 var checks:=0
 var native:=false
+func selected_chat_file(direction:String,slot:int)->String:
+	var path="res://character/marsh-v2/catalog.json"
+	var result:String=""
+	for rel in JSON.parse_string(FileAccess.get_file_as_string(path)).body:
+		var manifest_path:String=path.get_base_dir().path_join(str(rel)).simplify_path()
+		var manifest:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(manifest_path))
+		for state in manifest.states:
+			if state.id=="crew-chat-"+direction:
+				var frame:String=state.frameFiles[slot]
+				result=frame if frame.begins_with("res://") else manifest_path.get_base_dir().path_join(frame).simplify_path()
+	return result
 func _init():call_deferred("run")
 func check(ok:bool,label:String):
 	checks+=1
@@ -76,9 +87,9 @@ func run():
 			check(absf(m.action_elapsed()-target)<.0001,"Gesture driven by paired simulation clock")
 			check(game.grid_view._get_marsh_frame(game)==game.grid_view.marsh_player.frames[key][slot],"Actual renderer selects authored gesture pose")
 			var selected:Image=game.grid_view.marsh_player.frames[key][slot].get_image()
-			var corrected:Image=Image.load_from_file("res://character/marsh-crew-chat-v2/frames/"+key+"/%03d.png"%slot)
+			var corrected:Image=Image.load_from_file(selected_chat_file(direction,slot))
 			selected.convert(Image.FORMAT_RGBA8);corrected.convert(Image.FORMAT_RGBA8)
-			check(selected.get_data()==corrected.get_data(),"Actual player loads corrected v2 artwork")
+			check(selected.get_data()==corrected.get_data(),"Actual player loads current selected conversation artwork")
 			check(m.valid_snapshot(m.snapshot()) and b.valid_snapshot(b.snapshot()),"Paired snapshots valid")
 			await capture(direction+"-%02d"%slot)
 			if slot==3:

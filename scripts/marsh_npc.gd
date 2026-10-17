@@ -221,6 +221,16 @@ func rebuild(main, staged := false) -> void:
 func bunk_motion_active() -> bool:
 	return not bunk_motion.is_empty() and stage in ["life_lie","life_sleep","life_get_up"] and not dead and movement_medium=="dry"
 
+func meal_animation() -> Dictionary:
+	if dead or movement_medium!="dry" or helmet_equipped or stage not in ["life_eat","life_drink"]:return {}
+	var duration:float=Life.seconds(self,stage)
+	# Complete whole bowl/cup cycles inside the existing service interval, so
+	# switching to drinking or idle happens with empty hands. Derive presentation
+	# from the saved service timer; cosmetic time must not restart a restored bite.
+	var cycles:int=maxi(1,roundi(duration/.9))
+	var elapsed:float=clampf(duration-timer,0,duration)*float(cycles)*.9/duration
+	return {"pose":"eat" if stage=="life_eat" else "drink","elapsed":elapsed}
+
 
 func berth_motion_active() -> bool:
 	return not berth_motion.is_empty() and stage in ["life_lie","life_sleep","life_get_up"] and not dead
@@ -292,6 +302,9 @@ func battery_status() -> String:
 
 func die() -> void:
 	injury_phase="";injury_elapsed=0;injury_pending=false;running_motion=false
+	# These contacts are admitted only for live rest stages in saved snapshots.
+	# Base death clears the stage, so release its presentation contact as well.
+	bunk_motion.clear();berth_motion.clear()
 	returning_to_pod=false;recharge_docked=false;charge_elapsed=0
 	super.die()
 

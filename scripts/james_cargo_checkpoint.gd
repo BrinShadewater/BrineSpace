@@ -7,6 +7,13 @@ const PLANNER=preload("res://character/james-east-cargo-heads-v3/return_plan.gd"
 const FIELD="james_cargo_return"
 const BINDING="james-west-return9-rise6-floor7"
 const MARKER="unadmitted_james_cargo_return"
+const CpuFrame=preload("res://scripts/crew_storage/frame.gd")
+static func rgba_binding(texture:Texture2D)->String:
+	var source:Texture2D=texture
+	while source is CanvasTexture:source=source.diffuse_texture
+	if source is CpuFrame:return source.checkpoint_rgba_sha256()
+	# Mutable textures and cropped/other wrappers keep the original fresh path.
+	return texture.get_image().get_data().hex_encode().sha256_text()
 static func probe(player,plan:Dictionary):
 	var copy=PLAYER.new()
 	for key in ["frames","timing","equipment_frames","equipment_timing"]:copy.set(key,player.get(key))
@@ -18,7 +25,7 @@ static func source_bindings(player,plan:Dictionary)->Array:
 	var bank:Dictionary=player.bank_for(plan.gear)
 	for row in plan.rows:
 		var texture:Texture2D=bank[row.key][row.index]
-		result.append({"rgba":texture.get_image().get_data().hex_encode().sha256_text(),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height")})
+		result.append({"rgba":rgba_binding(texture),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height")})
 	return result
 static func floor_binding(player)->Dictionary:
 	if player.has_method("floor_texture"):
@@ -38,7 +45,7 @@ static func bank_bindings(player)->Dictionary:
 			var rows:Array=[]
 			for index in range(bank[key].size()):
 				var texture:Texture2D=bank[key][index]
-				rows.append({"rgba":texture.get_image().get_data().hex_encode().sha256_text(),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height"),"seconds":float(clocks[key].durations[index])/1000.0})
+				rows.append({"rgba":rgba_binding(texture),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height"),"seconds":float(clocks[key].durations[index])/1000.0})
 			bound[key]=rows
 		result[gear]=bound
 	return result

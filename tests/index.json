@@ -32,6 +32,7 @@
       "test_large_room_paid"
     ],
     "performance-diagnostics": [
+      "test_painted_cap_batch",
       "test_crew_pose_cache",
       "test_moonbay_retained_walls",
       "test_render_known_port_connections",
@@ -44,6 +45,7 @@
       "test_profile_floor_loading",
       "test_session_art_cache",
       "test_veld_reading_pose_cache",
+      "test_companion_topology",
       "test_frozen_prop_effects",
       "test_light_map_scheduling",
       "test_terrain_cell_retention",
@@ -80,6 +82,7 @@
       "test_performance_monitor",
       "test_stall_watch_loading",
       "test_performance_reporting",
+      "test_async_bug_report",
       "test_diagnostics",
       "test_soak_budget"
     ],
@@ -95,9 +98,20 @@
       "test_decorative_cable_removal"
     ],
     "crew": [
+      "test_marsh_water_actions",
+      "test_marsh_mining_clock",
+      "test_marsh_exterior_shutdown_visibility",
+      "test_marsh_meal_polish",
+      "test_marsh_rest_polish",
+      "test_marsh_gesture_polish",
+      "test_marsh_torch_attachment",
+      "test_marsh_work_joins",
+      "test_marsh_east_run_registration",
+      "test_marsh_locomotion_joins",
       "test_crew_topology_signature",
       "test_navigation_room_owner",
       "test_navigation_prefix",
+      "test_navigation_boundary_reuse",
       "test_atmosphere_mask_invalidation",
       "test_robot_polish",
       "test_margot_polish",
@@ -230,6 +244,7 @@
       "test_station_systems",
       "test_suno_audio",
       "test_synergy_manager",
+      "test_synergy_evaluation_parity",
       "test_parts_passage",
       "test_ui_workspace",
       "test_workshop_economy",
@@ -312,6 +327,10 @@
       "test_door_style_lookup",
       "test_port_membership",
       "test_moonbay_water_commands",
+      "test_room_surface_packet",
+      "test_moonbay_surface_packets",
+      "test_floor_threshold_packets",
+      "test_floor_border_packets",
       "test_large_room_retention",
       "test_library_base_triangles",
       "test_library_triangle_cache",
@@ -322,12 +341,19 @@
       "test_ordinary_prop_triangle_cache",
       "test_static_large_base_retention",
       "test_seabed_strip_triangles",
+      "test_frond_geometry",
       "test_water_stroke_triangles",
+      "test_water_packet_assembly",
+      "test_synergy_circle_packets",
+      "test_painted_cap_batch",
       "test_moonbay_water_batch",
       "test_water_wave_commands",
       "test_water_wave_culling",
       "test_workshop_retention",
-      "test_world_gait_input"
+      "test_world_gait_input",
+      "test_structural_render_plan",
+      "test_local_floor_context",
+      "test_local_floor_retention"
     ],
     "ui": [
       "test_brine_comms_bubbles",
@@ -354,12 +380,14 @@
       "test_menu_recovery",
       "test_camera_scene_lifetime",
       "test_meta_isolation",
-      "test_run_save"
+      "test_run_save",
+      "test_cargo_binding_cache"
     ],
     "companions": [
       "test_robot_rescue_art",
       "test_companion_personality",
       "test_companion_repair",
+      "test_companion_topology",
       "test_companions",
       "test_companion_art_reuse",
       "test_marsh_battery",
@@ -485,6 +513,18 @@
     ]
   },
   "lanes": {
+    "test_marsh_swim_stroke": {
+      "lane": "native",
+      "reason": "Complete installed swim strokes and adjoining turn source-hold captures at two scales; explicit scratch APPDATA required."
+    },
+    "test_marsh_swim_join_polish": {
+      "lane": "native",
+      "reason": "Captures installed swim pose chronology with actual rendered textures at two scales; explicit scratch APPDATA required."
+    },
+    "test_painted_cap_batch": {
+      "lane": "native",
+      "reason": "Requires real canvas pixels and draw-call counts; exits 2 headless. Capture guard otherwise fools the lane heuristic."
+    },
     "test_crew_pose_cache": {
       "lane": "native",
       "reason": "Reads actual GPU pose textures and awaits frame_post_draw to verify immutable cache leases, eviction and pixel bytes; isolated profile required."
@@ -912,6 +952,10 @@
     "test_research_rotation_cache": {
       "lane": "native",
       "reason": "Exact Research Lab pixels and geometry across rotations, layout edits, zoom/filter changes and Studio bypass."
+    },
+    "test_local_floor_retention": {
+      "lane": "native",
+      "reason": "Exact original/retained floor pixels, local placement, split migration, active fades, removal and first-frame lifecycle require a native viewport."
     },
     "test_wall_slot_retention": {
       "lane": "native",
@@ -1418,6 +1462,26 @@
     "test_water_depth_preparation": {
       "lane": "native",
       "reason": "Exits 2 under the headless renderer by its own check, so the headless lane only ever skipped it; it runs in the native lane."
+    },
+    "test_synergy_circle_packets": {
+      "lane": "native",
+      "reason": "Requires native pixels and measured draw counts; the headless capture-guard heuristic misclassifies it."
+    },
+    "test_frond_geometry": {
+      "lane": "headless",
+      "reason": "Pure frond buffer parity, settings and mutation ownership; native pixels remain covered by test_seabed_strip_triangles."
+    },
+    "test_floor_threshold_packets": {
+      "lane": "native",
+      "reason": "Requires exact native threshold pixels and draw counts; its capture guard is misclassified as headless-safe."
+    },
+    "test_floor_border_packets": {
+      "lane": "native",
+      "reason": "Requires exact native border pixels and draw counts, including inherited materials and oversampling."
+    },
+    "test_moonbay_surface_packets": {
+      "lane": "native",
+      "reason": "Requires exact native pixels and draw counts; its capture guard is misclassified as headless-safe."
     },
     "test_water_stroke_triangles": {
       "lane": "native",

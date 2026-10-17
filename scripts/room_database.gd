@@ -342,7 +342,7 @@ static func all_rooms() -> Dictionary:
 			"consumption": {},
 			"tags": ["crew", "hab"],
 			"layout": "layout_01_tee",
-			"description": "Adds two berths. One survivor moves in on construction if supplies are stable.",
+			"description": "Adds two berths for crew.",
 			"unlocked": true
 		},
 		"research_lab": {

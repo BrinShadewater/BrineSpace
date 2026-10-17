@@ -325,6 +325,28 @@ def main():
     install_controller_tone(backup=False)
     from prepare_marsh_full_polish import install as install_full_polish
     install_full_polish()
+    from polish_marsh_swim_joins import build as build_swim_joins
+    build_swim_joins(install=True)
+    from build_marsh_swim_stroke import build as build_swim_stroke
+    build_swim_stroke(install=True)
+    from polish_marsh_locomotion_joins import build as build_locomotion_joins
+    build_locomotion_joins(install=True)
+    from register_marsh_east_run import build as register_east_run
+    register_east_run(install=True)
+    from polish_marsh_work_joins import build as build_work_joins
+    build_work_joins(install=True)
+    from build_marsh_torch_tips import build as build_torch_tips
+    build_torch_tips()
+    from build_marsh_south_chat_polish import build as build_south_chat
+    build_south_chat(install=True)
+    from build_marsh_rest_polish import build as build_rest_polish
+    build_rest_polish(install=True)
+    from build_marsh_meal_polish import build as build_meal_polish
+    build_meal_polish(install=True)
+    from build_marsh_water_actions import build as build_water_actions
+    build_water_actions(install=True)
+    from build_marsh_underwater_mining import build as build_underwater_mining
+    build_underwater_mining(install=True)
     (QA/'body-build.json').write_text(json.dumps({'states':states,'sourceHashes':{**shared.SOURCE_HASHES,**PROVENANCE},'operations':shared.OPS,'frames':records,'padding':padding,'legacyFramesReproduced':len(contract['sourceFrames'])},indent=2)+'\n')
     print(json.dumps({'bodyStates':len(states),'bodyReferences':sum(e['frames'] for e in states),'sourceFramesReproduced':len(contract['sourceFrames']),'paletteColors':color_count}))
 

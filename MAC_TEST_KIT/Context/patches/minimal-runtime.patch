@@ -1,0 +1,72 @@
+--- a/scripts/crew_storage/frame.gd
++++ b/scripts/crew_storage/frame.gd
+@@ -6,6 +6,9 @@
+ var pixel_format:=Image.FORMAT_RGBA8
+ var mipmaps:=false
+ var mipmap_count:=0
++var _checkpoint_packed:=PackedByteArray()
++var _checkpoint_layout:Array=[]
++var _checkpoint_digest:=""
+ var source:Image:
+ 	get:
+ 		var pixels:=packed.decompress(raw_bytes,FileAccess.COMPRESSION_ZSTD)
+@@ -23,3 +26,15 @@
+ func _has_mipmaps()->bool:return mipmaps
+ func _get_mipmap_count()->int:return mipmap_count
+ func _get_image()->Image:return source
++
++func checkpoint_rgba_sha256()->String:
++	# Keep the existing checkpoint hash of hex-encoded image bytes. Never retain a
++	# decoded Image. Exact compressed-byte and layout checks also catch tool edits.
++	var layout:Array=[raw_bytes,dimensions,pixel_format,mipmaps]
++	if not _checkpoint_digest.is_empty() and layout==_checkpoint_layout and packed==_checkpoint_packed:
++		return _checkpoint_digest
++	_checkpoint_digest=get_image().get_data().hex_encode().sha256_text()
++	_checkpoint_layout=layout
++	# Packed arrays can alias in-place writes: the validity key must own its copy.
++	_checkpoint_packed=packed.duplicate()
++	return _checkpoint_digest
+--- a/scripts/james_cargo_checkpoint.gd
++++ b/scripts/james_cargo_checkpoint.gd
+@@ -7,6 +7,13 @@
+ const FIELD="james_cargo_return"
+ const BINDING="james-west-return9-rise6-floor7"
+ const MARKER="unadmitted_james_cargo_return"
++const CpuFrame=preload("res://scripts/crew_storage/frame.gd")
++static func rgba_binding(texture:Texture2D)->String:
++	var source:Texture2D=texture
++	while source is CanvasTexture:source=source.diffuse_texture
++	if source is CpuFrame:return source.checkpoint_rgba_sha256()
++	# Mutable textures and cropped/other wrappers keep the original fresh path.
++	return texture.get_image().get_data().hex_encode().sha256_text()
+ static func probe(player,plan:Dictionary):
+ 	var copy=PLAYER.new()
+ 	for key in ["frames","timing","equipment_frames","equipment_timing"]:copy.set(key,player.get(key))
+@@ -18,7 +25,7 @@
+ 	var bank:Dictionary=player.bank_for(plan.gear)
+ 	for row in plan.rows:
+ 		var texture:Texture2D=bank[row.key][row.index]
+-		result.append({"rgba":texture.get_image().get_data().hex_encode().sha256_text(),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height")})
++		result.append({"rgba":rgba_binding(texture),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height")})
+ 	return result
+ static func floor_binding(player)->Dictionary:
+ 	if player.has_method("floor_texture"):
+@@ -38,7 +45,7 @@
+ 			var rows:Array=[]
+ 			for index in range(bank[key].size()):
+ 				var texture:Texture2D=bank[key][index]
+-				rows.append({"rgba":texture.get_image().get_data().hex_encode().sha256_text(),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height"),"seconds":float(clocks[key].durations[index])/1000.0})
++				rows.append({"rgba":rgba_binding(texture),"pivot":texture.get_meta("crew_pivot"),"height":texture.get_meta("crew_standing_height"),"seconds":float(clocks[key].durations[index])/1000.0})
+ 			bound[key]=rows
+ 		result[gear]=bound
+ 	return result
+--- a/scripts/grid_canvas.gd
++++ b/scripts/grid_canvas.gd
+@@ -859,6 +859,7 @@
+ 		player.finish_texture_batch()
+ 		set(actor+"_player",player)
+ 		bank.adopt(player)
++		if actor=="branforth":preload("res://scripts/james_cargo_checkpoint.gd").bank_bindings(player)
+ 	if detached==null:Router.start(get_tree(),self,bank)
+ 
+ func _load_major_bill_animations() -> void:

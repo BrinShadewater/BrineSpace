@@ -3,6 +3,8 @@ extends RefCounted
 const Store=preload("res://scripts/room_layout_store.gd")
 const Geometry=preload("res://tools/modular_room_geometry.gd")
 const Doors=preload("res://rooms/doors/painted_door.gd")
+# Merge only consecutive polygon commands. Native rectangle sampling stays unchanged.
+static var batch_cap_polygons:=not OS.get_cmdline_user_args().has("--reference-painted-caps")
 static var records:Dictionary={}
 static var textures:Dictionary={}
 var room_id:String
@@ -98,6 +100,7 @@ func door_style() -> String:
 	var style=Store.surface_positions(room).get("door/style","") if room!=null else ""
 	return str(style) if style is String and not str(style).is_empty() else room_id
 func tops(canvas:CanvasItem) -> void:
+	var packet:Dictionary=new_cap_packet() if batch_cap_polygons else {}
 	var raised:bool=room.get_meta("raised_north_visible",false)
 	var present:Array=[]
 	for edge in room.edges:present.append(0 if edge.horizontal and edge.center.y<0 else 2 if edge.horizontal else 1 if edge.center.x>0 else 3)
@@ -113,20 +116,23 @@ func tops(canvas:CanvasItem) -> void:
 		for span in spans:
 			var rect:=Rect2(span[0],top if side==0 else 181,span[1]-span[0],16)
 			if vertical:rect=Rect2(184 if side==1 else -200,span[0],16,span[1]-span[0])
-			draw_cap_strip(canvas,rect,vertical,side in [1,2])
+			draw_cap_strip(canvas,rect,vertical,side in [1,2],packet)
 	for edge in room.edges:
 		var side:int=0 if edge.horizontal and edge.center.y<0 else 2 if edge.horizontal else 1 if edge.center.x>0 else 3
 		if not ports.has(side) or (raised and side==0):continue
 		var copy:Dictionary=edge.duplicate();copy.open=true
 		for jamb in Geometry.jamb_rects(copy):
 			var rect:Rect2=jamb;rect.position.y-=3
-			draw_cap_strip(canvas,rect,not edge.horizontal,side in [1,2])
+			draw_cap_strip(canvas,rect,not edge.horizontal,side in [1,2],packet)
 		# A closed outer station port still shows its registered leaf and fixed frame.
-		if not edge.open:Doors.for_variant(door_style()).low_closed(canvas,edge.center+Vector2(0,-3),not edge.horizontal,room_id)
+		if not edge.open:
+			flush_cap_packet(canvas,packet)
+			Doors.for_variant(door_style()).low_closed(canvas,edge.center+Vector2(0,-3),not edge.horizontal,room_id)
 	for x in [-200,184]:
 		for y in [top,181]:
-			if (1 if x>0 else 3) in present and (2 if y==181 else 0) in present:draw_cap_corner(canvas,Vector2(x,y),x>0,y==181)
-func draw_cap_strip(target: CanvasItem, rect: Rect2, vertical := false, flip_depth := false) -> void:
+			if (1 if x>0 else 3) in present and (2 if y==181 else 0) in present:draw_cap_corner(canvas,Vector2(x,y),x>0,y==181,packet)
+	flush_cap_packet(canvas,packet)
+func draw_cap_strip(target: CanvasItem, rect: Rect2, vertical := false, flip_depth := false, packet:Dictionary={}) -> void:
 	var cap: Array=registrations[room_id].cap
 	var source:=Rect2(cap[0],cap[1],cap[2],cap[3])
 	var length:=rect.size.y if vertical else rect.size.x
@@ -143,11 +149,15 @@ func draw_cap_strip(target: CanvasItem, rect: Rect2, vertical := false, flip_dep
 		var far_y:=source.position.y if flip_depth else source.end.y
 		var uv:=PackedVector2Array([Vector2(source.position.x,near_y),Vector2(source.end.x,near_y),Vector2(source.end.x,far_y),Vector2(source.position.x,far_y)])
 		for i in range(4): uv[i]/=Vector2(wall.get_size())
-		target.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,wall)
+		if packet.is_empty():target.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,wall)
+		else:append_cap_polygon(packet,points,uv)
 	else:
+		flush_cap_packet(target,packet)
 		target.draw_texture_rect_region(wall,rect,source)
 
-func draw_cap_corner(target: CanvasItem, at: Vector2, east: bool, south: bool) -> void:
+func draw_cap_corner(target: CanvasItem, at: Vector2, east: bool, south: bool, packet:Dictionary={}) -> void:
+	if batch_cap_polygons:
+		draw_corner_packet(target,[[at,east,south]],packet);return
 	var cap: Array=registrations[room_id].cap
 	var depth: float=cap[3]
 	# Quiet metal between structural fasteners, at exactly the straight cap scale.
@@ -163,6 +173,42 @@ func draw_cap_corner(target: CanvasItem, at: Vector2, east: bool, south: bool) -
 	target.draw_polygon(PackedVector2Array([points[0],points[1],points[2]]),PackedColorArray([Color.WHITE]),PackedVector2Array([uv[0],uv[1],uv[2]]),wall)
 	target.draw_polygon(PackedVector2Array([points[0],points[2],points[3]]),PackedColorArray([Color.WHITE]),PackedVector2Array([uv[0],uv[2],uv[1]]),wall)
 
+
+func draw_corner_packet(target:CanvasItem,corners:Array,packet:Dictionary={})->void:
+	if corners.is_empty():return
+	var vertices:=PackedVector2Array();var texture_uv:=PackedVector2Array();var indices:=PackedInt32Array()
+	var cap:Array=registrations[room_id].cap
+	var depth:float=cap[3]
+	var source:=Rect2(cap[0]+cap[2]*0.2,cap[1],depth,depth)
+	var local:=PackedVector2Array([Vector2(0,0),Vector2(16,0),Vector2(16,16),Vector2(0,16)])
+	var uv:=PackedVector2Array([source.position,Vector2(source.end.x,source.position.y),source.end,Vector2(source.position.x,source.end.y)])
+	for i in range(4):uv[i]/=Vector2(wall.get_size())
+	for corner in corners:
+		var points:=PackedVector2Array();var at:Vector2=corner[0];var east:bool=corner[1];var south:bool=corner[2]
+		for p in local:points.append(at+Vector2(16-p.x if east else p.x,16-p.y if south else p.y))
+		for order in [[0,1,2],[0,2,3]]:
+			var triangle:=PackedVector2Array([points[order[0]],points[order[1]],points[order[2]]])
+			var offset:=vertices.size()
+			for index in Geometry2D.triangulate_polygon(triangle):indices.append(index+offset)
+			vertices.append_array(triangle)
+			texture_uv.append_array(PackedVector2Array([uv[0],uv[1],uv[2]]) if order[1]==1 else PackedVector2Array([uv[0],uv[2],uv[1]]))
+	if not packet.is_empty():
+		var base:int=packet.points.size()
+		for index in indices:packet.indices.append(index+base)
+		packet.points.append_array(vertices);packet.uv.append_array(texture_uv);return
+	RenderingServer.canvas_item_add_triangle_array(target.get_canvas_item(),indices,vertices,PackedColorArray([Color.WHITE]),texture_uv,PackedInt32Array(),PackedFloat32Array(),wall.get_rid())
+
+# Packets live only inside one tops() call and never cross a rectangle or door draw.
+func new_cap_packet()->Dictionary:
+	return {"points":PackedVector2Array(),"uv":PackedVector2Array(),"indices":PackedInt32Array()}
+func append_cap_polygon(packet:Dictionary,points:PackedVector2Array,uv:PackedVector2Array)->void:
+	var base:int=packet.points.size()
+	for index in Geometry2D.triangulate_polygon(points):packet.indices.append(index+base)
+	packet.points.append_array(points);packet.uv.append_array(uv)
+func flush_cap_packet(target:CanvasItem,packet:Dictionary)->void:
+	if packet.is_empty() or packet.indices.is_empty():return
+	RenderingServer.canvas_item_add_triangle_array(target.get_canvas_item(),packet.indices,packet.points,PackedColorArray([Color.WHITE]),packet.uv,PackedInt32Array(),PackedFloat32Array(),wall.get_rid())
+	packet.points=PackedVector2Array();packet.uv=PackedVector2Array();packet.indices=PackedInt32Array()
 
 static func surface_base(id:String,chosen:String) -> Dictionary:
 	if not catalog().has(id):return {}

@@ -75,8 +75,19 @@ const TORCH_TIPS := {
 
 static var _bill_torch_tips: Dictionary = {}
 static var _james_torch_tips: Dictionary = {}
+static var _marsh_torch_tips: Dictionary = {}
 
 static func torch_tip_offset(game, actor) -> Vector2:
+	if actor == game.marsh_npc:
+		if _marsh_torch_tips.is_empty():
+			_marsh_torch_tips = JSON.parse_string(FileAccess.get_file_as_string("res://character/marsh-work-joins-v1/torch-tip-offsets.json"))
+		# Follow the submitted whole pose, including its lowered working reach.
+		var texture: Texture2D = game.grid_view._get_marsh_frame(game)
+		var frames: Array = game.grid_view.marsh_player.frames.get("weld-" + str(actor.direction), [])
+		var slot: int = frames.find(texture)
+		if slot >= 0:
+			var point: Array = _marsh_torch_tips[str(actor.direction)][slot]
+			return Vector2(point[0], point[1])
 	if actor == game.bill_npc:
 		if _bill_torch_tips.is_empty():
 			_bill_torch_tips = JSON.parse_string(FileAccess.get_file_as_string("res://character/bill-torch-actions-v1/torch-tip-offsets.json"))

@@ -1,0 +1,1009 @@
+{
+  "build": {
+    "build_id": "brinespace-d3cfa1890bafefe7",
+    "file_count": 36430.0,
+    "git_commit": "67e7db969f7c5d952a3c80830369715d703199c5",
+    "source_bytes": 3596743090.0,
+    "source_sha256": "d3cfa1890bafefe7e5b1a8c4e3f4f01f52e19d1e250701c27832d52b675e7514",
+    "working_tree_modified": true
+  },
+  "checks": 39,
+  "census_samples": 13,
+  "maximum_observation_gap_s": 5.00814,
+  "measurement": {
+    "aggregate_flag_counts": {
+      "0": 3598
+    },
+    "duration_completed": true,
+    "fps": 59.9517486732052,
+    "frame_arrays_retained": false,
+    "frames": 3598,
+    "frames_at_least100ms": 0,
+    "frames_at_least400ms": 0,
+    "frames_at_least50ms": 0,
+    "max_ms": 38.045,
+    "mean_ms": 16.6800806003335,
+    "p95_ms": 16.781,
+    "p99_ms": 17.142,
+    "stop_reason": "duration_completed",
+    "sum_frame_usec": 60014930,
+    "wall_seconds": 60.01493
+  },
+  "stream": {
+    "max_write_usec": 277,
+    "path": "D:/bs-save-hitch-20261016/normal-canary-v1.json.periodic.jsonl",
+    "retained_periodic_rows": 0,
+    "retained_raw_frames": 3598,
+    "rows": 11
+  },
+  "initial": {
+    "actors": {
+      "bill": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 1,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "branforth": {
+        "active": true,
+        "activity": "taking a meal break",
+        "dead": false,
+        "foot": [
+          7792.0,
+          8272.0
+        ],
+        "goal": "hunger",
+        "goal_cell": [
+          20,
+          21
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 8.46991258666667,
+          "fatigue": 100.0,
+          "hunger": 8.27696021333331,
+          "maintenance": 5.76788297904761
+        },
+        "observations": 1,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "josh": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 1,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "margot": {
+        "active": true,
+        "activity": "having a long yawn",
+        "dead": false,
+        "foot": [
+          8416.0,
+          8032.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          21,
+          20
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 1,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "marsh": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 65.0,
+          "fatigue": 20.0,
+          "hunger": 20.0,
+          "maintenance": 65.0
+        },
+        "observations": 1,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "river": {
+        "active": true,
+        "activity": "keeping company",
+        "dead": false,
+        "foot": [
+          7927.7314453125,
+          7976.2685546875
+        ],
+        "goal": "curiosity",
+        "goal_cell": [
+          20,
+          20
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 1,
+        "path_points": 1,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "walk",
+        "state_changes": 0
+      },
+      "veld": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 45.0,
+          "fatigue": 28.0,
+          "hunger": 12.0,
+          "maintenance": 72.0
+        },
+        "observations": 1,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      }
+    },
+    "census": {
+      "crew_router": {
+        "active": true,
+        "canvas_entries": 1106,
+        "diagnostics": {
+          "active": true,
+          "draw_epochs": 1,
+          "generated_readbacks": 0,
+          "missing": 0,
+          "presenter": {
+            "acquire_calls": 4,
+            "cache_byte_limit": 67108864,
+            "cache_bytes": 270848,
+            "cache_hits": 2,
+            "capacity": 128,
+            "decode_max_usec": 157,
+            "decode_total_usec": 231,
+            "decoded_bytes": 270848,
+            "decoded_count": 2,
+            "evictions": 0,
+            "owner_count": 1,
+            "slot_count": 2,
+            "spill_allocations": 0,
+            "spill_count": 0,
+            "spill_peak_source_bytes": 0,
+            "submit_max_usec": 44,
+            "submit_total_usec": 77,
+            "uploads": 2
+          },
+          "registered_canvases": 1106,
+          "resolved": 4,
+          "shown_pose_count": 2,
+          "source_compressed_bytes": 140535542,
+          "source_decoded_bytes": 1624022112,
+          "source_reference_count": 16432,
+          "tracked_owners": 1
+        },
+        "epochs": 1,
+        "expired_canvas_refs": 0,
+        "expired_tracked_owners": 0,
+        "live_canvas_classes": {
+          "AudioListener2D": 1,
+          "AudioStreamPlayer2D": 8,
+          "Button": 69,
+          "CenterContainer": 3,
+          "ColorRect": 10,
+          "Control": 19,
+          "GridContainer": 2,
+          "HBoxContainer": 70,
+          "HFlowContainer": 6,
+          "HScrollBar": 14,
+          "HSeparator": 1,
+          "HSlider": 1,
+          "Label": 134,
+          "LineEdit": 11,
+          "MultiMeshInstance2D": 1,
+          "Node2D": 449,
+          "OptionButton": 10,
+          "PanelContainer": 69,
+          "PopupMenuItems": 10,
+          "ProgressBar": 19,
+          "RichTextLabel": 20,
+          "ScrollContainer": 15,
+          "Sprite2D": 4,
+          "TabBar": 1,
+          "TextureRect": 67,
+          "VBoxContainer": 58,
+          "VScrollBar": 34
+        },
+        "tracked_owners": 1
+      },
+      "nodes": 1182,
+      "objects": 32059,
+      "process_frame": 709,
+      "processed_tweens": 0,
+      "resources": 467,
+      "rooms": 12,
+      "stage": "initial",
+      "texture_bytes": 1489400653,
+      "ticks_usec": 24957499,
+      "tree_node_classes": {
+        "AudioListener2D": 1,
+        "AudioStreamPlayer": 3,
+        "AudioStreamPlayer2D": 8,
+        "Button": 69,
+        "CanvasLayer": 5,
+        "CenterContainer": 3,
+        "ColorRect": 10,
+        "Control": 19,
+        "GridContainer": 2,
+        "HBoxContainer": 70,
+        "HFlowContainer": 6,
+        "HSeparator": 1,
+        "HSlider": 1,
+        "Label": 134,
+        "LineEdit": 1,
+        "MultiMeshInstance2D": 1,
+        "Node": 5,
+        "Node2D": 449,
+        "OptionButton": 10,
+        "PanelContainer": 45,
+        "ProgressBar": 19,
+        "RichTextLabel": 20,
+        "ScrollContainer": 5,
+        "Sprite2D": 4,
+        "SubViewport": 5,
+        "TabBar": 1,
+        "TextureRect": 39,
+        "Timer": 1,
+        "VBoxContainer": 48,
+        "Window": 1
+      },
+      "visible_rooms": 8
+    },
+    "cycle": 323,
+    "errors": {
+      "distinct": 0,
+      "groups": [],
+      "log": "user://logs/godot.log",
+      "total": 0
+    },
+    "label": "initial",
+    "memory": {
+      "contact_meshes": 6,
+      "contact_meshes_retired": 0,
+      "floor_meshes": 9,
+      "floor_meshes_retired": 0,
+      "nodes": 1182.0,
+      "objects": 32059.0,
+      "orphans": 0.0,
+      "static_mem_mb": 0.0,
+      "texture_mem_mb": 1420.4031496048
+    },
+    "normal_state": {
+      "paused": false,
+      "process_enabled": true,
+      "running": true,
+      "speed_index": 2,
+      "testing_disable_failures": false,
+      "testing_free_build": false,
+      "timer_paused": false,
+      "timer_stopped": false,
+      "tree_paused": false
+    },
+    "reports": {
+      "attempts": 1,
+      "last_path": "user://bug_reports/brinespace-report-20261016-170319-65928-1803373.zip",
+      "queued": 0,
+      "worker_active": false
+    },
+    "run_id": "1790844572.289-89701014",
+    "stuck_reported": {},
+    "ticks_usec": 24957494,
+    "visual_time_seconds": 6475.78416370289
+  },
+  "final": {
+    "actors": {
+      "bill": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 14,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "branforth": {
+        "active": true,
+        "activity": "looking for equipment to service",
+        "dead": false,
+        "foot": [
+          8243.9208984375,
+          7955.134765625
+        ],
+        "goal": "maintenance",
+        "goal_cell": [
+          21,
+          20
+        ],
+        "goal_changes": 9,
+        "moved_observations": 12,
+        "needs": {
+          "curiosity": 13.9911176533335,
+          "fatigue": 100.0,
+          "hunger": 1.96,
+          "maintenance": 9.50398826666675
+        },
+        "observations": 14,
+        "path_points": 3,
+        "sampled_displacement": 5140.08903264999,
+        "stage": "",
+        "state": "walk",
+        "state_changes": 8
+      },
+      "josh": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 14,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "margot": {
+        "active": true,
+        "activity": "sniffing the air",
+        "dead": false,
+        "foot": [
+          7984.0,
+          8208.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          20,
+          21
+        ],
+        "goal_changes": 8,
+        "moved_observations": 12,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 14,
+        "path_points": 0,
+        "sampled_displacement": 3159.62561798096,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 6
+      },
+      "marsh": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 65.0,
+          "fatigue": 20.0,
+          "hunger": 20.0,
+          "maintenance": 65.0
+        },
+        "observations": 14,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      },
+      "river": {
+        "active": true,
+        "activity": "keeping company",
+        "dead": false,
+        "foot": [
+          7890.9267578125,
+          7980.65478515625
+        ],
+        "goal": "curiosity",
+        "goal_cell": [
+          20,
+          21
+        ],
+        "goal_changes": 4,
+        "moved_observations": 12,
+        "needs": {
+          "curiosity": 60.0,
+          "fatigue": 15.0,
+          "hunger": 25.0,
+          "maintenance": 35.0
+        },
+        "observations": 14,
+        "path_points": 5,
+        "sampled_displacement": 4561.10800933838,
+        "stage": "",
+        "state": "walk",
+        "state_changes": 4
+      },
+      "veld": {
+        "active": false,
+        "activity": "looking around",
+        "dead": false,
+        "foot": [
+          0.0,
+          0.0
+        ],
+        "goal": "",
+        "goal_cell": [
+          -1,
+          -1
+        ],
+        "goal_changes": 0,
+        "moved_observations": 0,
+        "needs": {
+          "curiosity": 45.0,
+          "fatigue": 28.0,
+          "hunger": 12.0,
+          "maintenance": 72.0
+        },
+        "observations": 14,
+        "path_points": 0,
+        "sampled_displacement": 0.0,
+        "stage": "",
+        "state": "idle",
+        "state_changes": 0
+      }
+    },
+    "census": {
+      "crew_router": {
+        "active": true,
+        "canvas_entries": 1081,
+        "diagnostics": {
+          "active": true,
+          "draw_epochs": 26,
+          "generated_readbacks": 0,
+          "missing": 0,
+          "presenter": {
+            "acquire_calls": 3603,
+            "cache_byte_limit": 67108864,
+            "cache_bytes": 17334272,
+            "cache_hits": 2356,
+            "capacity": 128,
+            "decode_max_usec": 306,
+            "decode_total_usec": 186574,
+            "decoded_bytes": 168873728,
+            "decoded_count": 1247,
+            "evictions": 1119,
+            "owner_count": 26,
+            "slot_count": 128,
+            "spill_allocations": 0,
+            "spill_count": 0,
+            "spill_peak_source_bytes": 0,
+            "submit_max_usec": 191,
+            "submit_total_usec": 53718,
+            "uploads": 1247
+          },
+          "registered_canvases": 1081,
+          "resolved": 3603,
+          "shown_pose_count": 570,
+          "source_compressed_bytes": 140535542,
+          "source_decoded_bytes": 1624022112,
+          "source_reference_count": 16432,
+          "tracked_owners": 26
+        },
+        "epochs": 26,
+        "expired_canvas_refs": 0,
+        "expired_tracked_owners": 0,
+        "live_canvas_classes": {
+          "AudioListener2D": 1,
+          "AudioStreamPlayer2D": 9,
+          "Button": 67,
+          "CenterContainer": 3,
+          "ColorRect": 10,
+          "Control": 19,
+          "GridContainer": 2,
+          "HBoxContainer": 60,
+          "HFlowContainer": 6,
+          "HScrollBar": 14,
+          "HSeparator": 1,
+          "HSlider": 1,
+          "Label": 126,
+          "LineEdit": 11,
+          "MultiMeshInstance2D": 1,
+          "Node2D": 455,
+          "OptionButton": 10,
+          "PanelContainer": 69,
+          "PopupMenuItems": 10,
+          "ProgressBar": 11,
+          "RichTextLabel": 20,
+          "ScrollContainer": 15,
+          "Sprite2D": 4,
+          "TabBar": 1,
+          "TextureRect": 65,
+          "VBoxContainer": 56,
+          "VScrollBar": 34
+        },
+        "tracked_owners": 26
+      },
+      "nodes": 1157,
+      "objects": 32306,
+      "process_frame": 4308,
+      "processed_tweens": 0,
+      "resources": 467,
+      "rooms": 12,
+      "stage": "final",
+      "texture_bytes": 1640589549,
+      "ticks_usec": 84990181,
+      "tree_node_classes": {
+        "AudioListener2D": 1,
+        "AudioStreamPlayer": 3,
+        "AudioStreamPlayer2D": 9,
+        "Button": 67,
+        "CanvasLayer": 5,
+        "CenterContainer": 3,
+        "ColorRect": 10,
+        "Control": 19,
+        "GridContainer": 2,
+        "HBoxContainer": 60,
+        "HFlowContainer": 6,
+        "HSeparator": 1,
+        "HSlider": 1,
+        "Label": 126,
+        "LineEdit": 1,
+        "MultiMeshInstance2D": 1,
+        "Node": 5,
+        "Node2D": 455,
+        "OptionButton": 10,
+        "PanelContainer": 45,
+        "ProgressBar": 11,
+        "RichTextLabel": 20,
+        "ScrollContainer": 5,
+        "Sprite2D": 4,
+        "SubViewport": 5,
+        "TabBar": 1,
+        "TextureRect": 37,
+        "Timer": 1,
+        "VBoxContainer": 46,
+        "Window": 1
+      },
+      "visible_rooms": 8
+    },
+    "cycle": 335,
+    "errors": {
+      "distinct": 0,
+      "groups": [],
+      "log": "user://logs/godot.log",
+      "total": 0
+    },
+    "label": "final",
+    "memory": {
+      "contact_meshes": 6,
+      "contact_meshes_retired": 0,
+      "floor_meshes": 9,
+      "floor_meshes_retired": 0,
+      "nodes": 1157.0,
+      "objects": 32306.0,
+      "orphans": 0.0,
+      "static_mem_mb": 0.0,
+      "texture_mem_mb": 1564.58811664581
+    },
+    "normal_state": {
+      "paused": false,
+      "process_enabled": true,
+      "running": true,
+      "speed_index": 2,
+      "testing_disable_failures": false,
+      "testing_free_build": false,
+      "timer_paused": false,
+      "timer_stopped": false,
+      "tree_paused": false
+    },
+    "reports": {
+      "attempts": 1,
+      "last_path": "user://bug_reports/brinespace-report-20261016-170319-65928-1803373.zip",
+      "queued": 0,
+      "worker_active": false
+    },
+    "run_id": "1790844572.289-89701014",
+    "stuck_reported": {},
+    "ticks_usec": 84990177,
+    "visual_time_seconds": 6716.37215570267
+  },
+  "title": {
+    "end": {
+      "crew_router": {
+        "active": false
+      },
+      "nodes": 49,
+      "objects": 2355,
+      "process_frame": 4939,
+      "processed_tweens": 0,
+      "resources": 444,
+      "rooms": 0,
+      "stage": "return_0_after10s",
+      "texture_bytes": 163169257,
+      "ticks_usec": 95678207,
+      "tree_node_classes": {
+        "AudioStreamPlayer": 2,
+        "Button": 10,
+        "CanvasLayer": 1,
+        "ColorRect": 1,
+        "Control": 7,
+        "HBoxContainer": 1,
+        "Label": 11,
+        "Node": 4,
+        "Node2D": 2,
+        "PanelContainer": 2,
+        "Polygon2D": 1,
+        "TextureRect": 1,
+        "VBoxContainer": 5,
+        "Window": 1
+      },
+      "visible_rooms": 0
+    },
+    "start": {
+      "crew_router": {
+        "active": false
+      },
+      "nodes": 49,
+      "objects": 2357,
+      "process_frame": 4339,
+      "processed_tweens": 0,
+      "resources": 444,
+      "rooms": 0,
+      "stage": "return_0_settled",
+      "texture_bytes": 163169257,
+      "ticks_usec": 85673852,
+      "tree_node_classes": {
+        "AudioStreamPlayer": 2,
+        "Button": 10,
+        "CanvasLayer": 1,
+        "ColorRect": 1,
+        "Control": 7,
+        "HBoxContainer": 1,
+        "Label": 11,
+        "Node": 4,
+        "Node2D": 2,
+        "PanelContainer": 2,
+        "Polygon2D": 1,
+        "TextureRect": 1,
+        "VBoxContainer": 5,
+        "Window": 1
+      },
+      "visible_rooms": 0
+    }
+  },
+  "actors_final": {
+    "bill": {
+      "active": false,
+      "activity": "looking around",
+      "dead": false,
+      "foot": [
+        0.0,
+        0.0
+      ],
+      "goal": "",
+      "goal_cell": [
+        -1,
+        -1
+      ],
+      "goal_changes": 0,
+      "moved_observations": 0,
+      "needs": {
+        "curiosity": 60.0,
+        "fatigue": 15.0,
+        "hunger": 25.0,
+        "maintenance": 35.0
+      },
+      "observations": 15,
+      "path_points": 0,
+      "sampled_displacement": 0.0,
+      "stage": "",
+      "state": "idle",
+      "state_changes": 0
+    },
+    "branforth": {
+      "active": true,
+      "activity": "looking for equipment to service",
+      "dead": false,
+      "foot": [
+        8243.9208984375,
+        7955.134765625
+      ],
+      "goal": "maintenance",
+      "goal_cell": [
+        21,
+        20
+      ],
+      "goal_changes": 9,
+      "moved_observations": 12,
+      "needs": {
+        "curiosity": 13.9911176533335,
+        "fatigue": 100.0,
+        "hunger": 1.96,
+        "maintenance": 9.50398826666675
+      },
+      "observations": 15,
+      "path_points": 3,
+      "sampled_displacement": 5140.08903264999,
+      "stage": "",
+      "state": "walk",
+      "state_changes": 8
+    },
+    "josh": {
+      "active": false,
+      "activity": "looking around",
+      "dead": false,
+      "foot": [
+        0.0,
+        0.0
+      ],
+      "goal": "",
+      "goal_cell": [
+        -1,
+        -1
+      ],
+      "goal_changes": 0,
+      "moved_observations": 0,
+      "needs": {
+        "curiosity": 60.0,
+        "fatigue": 15.0,
+        "hunger": 25.0,
+        "maintenance": 35.0
+      },
+      "observations": 15,
+      "path_points": 0,
+      "sampled_displacement": 0.0,
+      "stage": "",
+      "state": "idle",
+      "state_changes": 0
+    },
+    "margot": {
+      "active": true,
+      "activity": "sniffing the air",
+      "dead": false,
+      "foot": [
+        7984.0,
+        8208.0
+      ],
+      "goal": "",
+      "goal_cell": [
+        20,
+        21
+      ],
+      "goal_changes": 8,
+      "moved_observations": 12,
+      "needs": {
+        "curiosity": 60.0,
+        "fatigue": 15.0,
+        "hunger": 25.0,
+        "maintenance": 35.0
+      },
+      "observations": 15,
+      "path_points": 0,
+      "sampled_displacement": 3159.62561798096,
+      "stage": "",
+      "state": "idle",
+      "state_changes": 6
+    },
+    "marsh": {
+      "active": false,
+      "activity": "looking around",
+      "dead": false,
+      "foot": [
+        0.0,
+        0.0
+      ],
+      "goal": "",
+      "goal_cell": [
+        -1,
+        -1
+      ],
+      "goal_changes": 0,
+      "moved_observations": 0,
+      "needs": {
+        "curiosity": 65.0,
+        "fatigue": 20.0,
+        "hunger": 20.0,
+        "maintenance": 65.0
+      },
+      "observations": 15,
+      "path_points": 0,
+      "sampled_displacement": 0.0,
+      "stage": "",
+      "state": "idle",
+      "state_changes": 0
+    },
+    "river": {
+      "active": true,
+      "activity": "keeping company",
+      "dead": false,
+      "foot": [
+        7890.9267578125,
+        7980.65478515625
+      ],
+      "goal": "curiosity",
+      "goal_cell": [
+        20,
+        21
+      ],
+      "goal_changes": 4,
+      "moved_observations": 12,
+      "needs": {
+        "curiosity": 60.0,
+        "fatigue": 15.0,
+        "hunger": 25.0,
+        "maintenance": 35.0
+      },
+      "observations": 15,
+      "path_points": 5,
+      "sampled_displacement": 4561.10800933838,
+      "stage": "",
+      "state": "walk",
+      "state_changes": 4
+    },
+    "veld": {
+      "active": false,
+      "activity": "looking around",
+      "dead": false,
+      "foot": [
+        0.0,
+        0.0
+      ],
+      "goal": "",
+      "goal_cell": [
+        -1,
+        -1
+      ],
+      "goal_changes": 0,
+      "moved_observations": 0,
+      "needs": {
+        "curiosity": 45.0,
+        "fatigue": 28.0,
+        "hunger": 12.0,
+        "maintenance": 72.0
+      },
+      "observations": 15,
+      "path_points": 0,
+      "sampled_displacement": 0.0,
+      "stage": "",
+      "state": "idle",
+      "state_changes": 0
+    }
+  }
+}

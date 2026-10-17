@@ -1271,9 +1271,13 @@ const SYNERGIES := [
 static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 	var links := passage_links(occupied)
 	var seen_links := {}
+	# Evaluation-local presence avoids scanning geometry for impossible recipes.
+	var present:Dictionary={}
+	for cell in occupied:present[str(occupied[cell].get("id",""))]=true
 	for synergy in SYNERGIES:
 		if synergy.get("via_passage", false) or is_pattern(synergy):
 			continue
+		if not _required_rooms_present(synergy["rooms"],present):continue
 		var pairs := _find_adjacent_pairs(synergy["rooms"], occupied)
 		for pair in pairs:
 			if not within_passage_link(links, pair):
@@ -1287,6 +1291,7 @@ static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 				_add_link(links, seen_links, synergy, cells, true)
 	for synergy in SYNERGIES:
 		if not is_pattern(synergy): continue
+		if not _required_rooms_present(synergy["rooms"],present):continue
 		for cells in _find_pattern_chains(synergy["rooms"], occupied):
 			_add_link(links, seen_links, synergy, cells)
 	for room in placed_rooms:
@@ -1296,6 +1301,11 @@ static func evaluate(placed_rooms: Array, occupied: Dictionary) -> Dictionary:
 		for neighbor_pos in _adjacent_tagged_cells(room["pos"], occupied, "medical"):
 			_add_link(links, seen_links, safe_wake, [room["pos"], neighbor_pos])
 	return {"links": links}
+
+static func _required_rooms_present(room_ids:Array,present:Dictionary)->bool:
+	for id in room_ids:
+		if not present.has(str(id)):return false
+	return true
 
 # Stabilized patterns pay double their authored bonus (owner playtest, Sept 17).
 static func cycle_bonus(active_links, stabilized_ids: Dictionary = {}) -> Dictionary:

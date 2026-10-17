@@ -160,11 +160,17 @@ func _watch_for_stalls(ms: float,held: bool,unfocused: bool,uptime_ms: float) ->
 	# The automatic report carries a screenshot too, as F8 does.
 	if is_inside_tree() and get_viewport()!=null and get_viewport().get_texture()!=null and "pending_screenshot" in reporter:
 		reporter.pending_screenshot=get_viewport().get_texture().get_image()
-	var path: String=reporter.save_report("automatic capture // %s" % reason)
+	var path: String
+	if reporter.has_method("save_report_async"):
+		path=await reporter.save_report_async("automatic capture // %s" % reason)
+	else: path=reporter.save_report("automatic capture // %s" % reason)
+	if not is_inside_tree() or reporter.get("_report_shutting_down")==true: return
 	auto_notes.append({"uptime_ms":uptime_ms,"reason":reason,"path":path})
-	note("stall","Automatic report saved: %s" % reason)
+	var saved := not path.is_empty()
+	note("stall",("Automatic report saved: %s" if saved else "Automatic report could not be saved: %s") % reason)
 	var scene:=get_tree().current_scene
-	if scene!=null and scene.has_method("_log"): scene._log("DIAGNOSTICS // %s. Report saved in the bug_reports folder." % reason,true)
+	if scene!=null and scene.has_method("_log"):
+		scene._log(("DIAGNOSTICS // %s. Report saved in the bug_reports folder." if saved else "DIAGNOSTICS // %s. Report could not be saved.") % reason,true)
 
 # What the game is holding on to: nodes, orphaned nodes, texture memory and the retained mesh
 # caches. A steady climb here is a leak, and the first crossing is logged once.

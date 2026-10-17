@@ -1,0 +1,93 @@
+[
+  {
+    "actual_save_usec": 63058,
+    "cargo": {
+      "bank_bindings": 52176,
+      "floor_binding": 2360,
+      "source_bindings": 4
+    },
+    "diagnostic_only": true,
+    "diagnostic_write_usec": 60003,
+    "floor_class": "ImageTexture",
+    "packet_bytes": 127524,
+    "packet_equal": true,
+    "plan_rows": 0,
+    "production_readback_usec": 10168,
+    "speed": 1.0,
+    "stages": {
+      "capture": 54595,
+      "capture_base": 1058,
+      "capture_cargo": 53527,
+      "checksum": 860,
+      "close": 44,
+      "flush": 4,
+      "open": 229,
+      "rename": 335,
+      "serialization": 715,
+      "store_buffer": 107,
+      "validation": 2810
+    }
+  },
+  {
+    "actual_save_usec": 65122,
+    "cargo": {
+      "bank_bindings": 51926,
+      "floor_binding": 2208,
+      "source_bindings": 4
+    },
+    "diagnostic_only": true,
+    "diagnostic_write_usec": 63164,
+    "floor_class": "ImageTexture",
+    "packet_bytes": 128344,
+    "packet_equal": true,
+    "plan_rows": 0,
+    "production_readback_usec": 8364,
+    "speed": 2.0,
+    "stages": {
+      "backup_copy": 455,
+      "capture": 56733,
+      "capture_base": 1196,
+      "capture_cargo": 55526,
+      "checksum": 921,
+      "close": 41,
+      "flush": 4,
+      "open": 198,
+      "remove_old": 335,
+      "rename": 273,
+      "serialization": 765,
+      "store_buffer": 102,
+      "validation": 2944
+    }
+  },
+  {
+    "actual_save_usec": 62331,
+    "cargo": {
+      "bank_bindings": 50310,
+      "floor_binding": 2191,
+      "source_bindings": 4
+    },
+    "diagnostic_only": true,
+    "diagnostic_write_usec": 60575,
+    "floor_class": "ImageTexture",
+    "packet_bytes": 129132,
+    "packet_equal": true,
+    "plan_rows": 0,
+    "production_readback_usec": 9533,
+    "speed": 4.0,
+    "stages": {
+      "backup_copy": 395,
+      "capture": 54512,
+      "capture_base": 1112,
+      "capture_cargo": 53391,
+      "checksum": 862,
+      "close": 46,
+      "flush": 4,
+      "open": 213,
+      "remove_old": 341,
+      "rename": 260,
+      "serialization": 699,
+      "store_buffer": 98,
+      "validation": 2847
+    }
+  }
+]
