@@ -64,6 +64,8 @@ var boundary_prepare_usec:=0
 var reuse_navigation_links:=not OS.get_cmdline_user_args().has("--reference-nav-link-assembly")
 # Diagnostic reference retains the original point insertion path.
 var reuse_navigation_points:=not OS.get_cmdline_user_args().has("--reference-nav-point-assembly")
+var reuse_prefix_boundaries:=not OS.get_cmdline_user_args().has("--reference-prefix-boundaries")
+var reuse_reciprocal_boundaries:=not OS.get_cmdline_user_args().has("--reference-reciprocal-boundaries")
 var points := {}
 var room_nodes := {}
 var geometry := {}
@@ -840,7 +842,9 @@ func rebuild(main, staged := false) -> void:
 	swim_region_cache.clear()
 	segment_geometry_cache.clear()
 	squeeze_point = Vector2.INF
-	points.clear()
+	# A synchronous rebuild keeps the unchanged lookup prefix with its graph.
+	# Staged loads still expose an empty lookup immediately.
+	if staged:points.clear()
 	room_nodes.clear()
 	geometry.clear()
 	path.clear()
@@ -915,14 +919,29 @@ func rebuild(main, staged := false) -> void:
 		retained[cell]=ids
 		prefix_count+=ids.size()
 		index+=1
+	# Keep the lookup only when erasing the suffix is less work than restoring
+	# the prefix; an early structural change keeps the original clear/repopulate.
+	var retain_lookup:bool=prefix_count>graph.get_point_count()-prefix_count
+	# Unchanged prefix geometry proves canonical seams again only when lock policy changes.
+	var keep_boundaries:bool=reuse_prefix_boundaries and reuse_reciprocal_boundaries and not sample_all_segments and eligible and prefix_boundary_policy==[hardware_doors_locked,locked_room_cells]
+	var retained_boundary_records:=0
+	if not retain_lookup:points.clear()
 	if prefix_count==0:
+		points.clear()
 		graph.clear()
 	else:
 		for pair in prefix_boundaries:
+			if keep_boundaries and pair[0]<prefix_count and pair[1]<prefix_count and prefix_canonical_boundaries.has(Vector2i(pair[0],pair[1])):
+				retained_boundary_records+=1
+				continue
 			if graph.has_point(pair[0]) and graph.has_point(pair[1]) and graph.are_points_connected(pair[0],pair[1]):graph.disconnect_points(pair[0],pair[1])
-		for id in range(graph.get_point_count()-1,prefix_count-1,-1):graph.remove_point(id)
+		for id in range(graph.get_point_count()-1,prefix_count-1,-1):
+			if retain_lookup:points.erase(Vector2i(graph.get_point_position(id)))
+			graph.remove_point(id)
 		for id in prefix_count:graph.set_point_disabled(id,false)
 	prefix_boundaries=[]
+	prefix_canonical_boundaries={}
+	set_meta("retained_boundary_records",retained_boundary_records)
 	set_meta("retained_nodes",prefix_count)
 	for cell in geometry:
 		if staged and Time.get_ticks_usec()-slice_started>=4000:
@@ -964,7 +983,8 @@ func rebuild(main, staged := false) -> void:
 
 		if retained.has(cell):
 			room_nodes[cell]=retained[cell]
-			for id in retained[cell]:points[Vector2i(graph.get_point_position(id))]=id
+			if not retain_lookup:
+				for id in retained[cell]:points[Vector2i(graph.get_point_position(id))]=id
 			continue
 		if reuse_navigation_points:
 			append_cached_room_points(cell,center,key)
@@ -999,15 +1019,20 @@ func rebuild(main, staged := false) -> void:
 			for offset in offsets:
 				var a := Vector2i(center + Vector2(direction) * 176) + Vector2i(-direction.y,direction.x)*int(offset)
 				var b: Vector2i = a + direction * 32
-				if points.has(a) and points.has(b) and (_graph_boundary_clear(cell,neighbor,Vector2(a),Vector2(b),boundary_cache) if not boundary_cache.is_empty() else segment_clear(Vector2(a), Vector2(b))):
+				# Connected canonical seams were proven here or in the unchanged prefix.
+				# Other prefix seams were disconnected above; local links never cross cells.
+				var reciprocal:bool=reuse_reciprocal_boundaries and boundary_cache.has(cell) and boundary_cache.has(neighbor) and points.has(a) and points.has(b) and graph.are_points_connected(points[a],points[b])
+				if points.has(a) and points.has(b) and (reciprocal or (_graph_boundary_clear(cell,neighbor,Vector2(a),Vector2(b),boundary_cache) if not boundary_cache.is_empty() else segment_clear(Vector2(a), Vector2(b)))):
 					graph.connect_points(points[a], points[b])
 					prefix_boundaries.append([points[a],points[b]])
+					if boundary_cache.has(cell) and boundary_cache.has(neighbor):prefix_canonical_boundaries[Vector2i(points[a],points[b])]=true
 	signature = topology(main)
 	fire_building_navigation=false
 
 	prefix_keys={}
 	for cell in geometry:prefix_keys[cell]=room_keys[cell]
 	prefix_revision=revision if not staged else -1
+	prefix_boundary_policy=[hardware_doors_locked,locked_room_cells.duplicate()]
 
 func nearest_in_room(point: Vector2, cell: Vector2i, require_clear := true) -> int:
 	var best := -1
@@ -2060,7 +2085,11 @@ func _graph_boundary_clear(cell:Vector2i,neighbor:Vector2i,a:Vector2,b:Vector2,c
 	if not geometry[cell].open.has(side) or not geometry[neighbor].open.has((side+2)%4):return false
 	# Each authored floor/closed-socket domain is convex. Reciprocal open sockets
 	# cover the intervening cell margins; exact owner-clipped sweeps cover props.
-	if not can_stand(a) or not can_stand(b):return false
+	# Authored seam endpoints lie inside their owner cells, at the reciprocal
+	# open sockets. The grown blocker sweep below also proves both endpoints
+	# stand clear; repeating can_stand would walk the same blockers again.
+	# Direct diagnostic calls can lie outside the generated +/-176 lattice.
+	if absf((a-center).dot(Vector2(-direction.y,direction.x)))>176 and (not can_stand(a) or not can_stand(b)):return false
 	for owner in [cell,neighbor]:
 		for rect in cache[owner]:
 			if segment_hits_rect(a,b,rect):return false
@@ -2070,6 +2099,8 @@ func _graph_boundary_clear(cell:Vector2i,neighbor:Vector2i,a:Vector2,b:Vector2,c
 var prefix_keys:Dictionary={}
 var prefix_revision:=-1
 var prefix_boundaries:Array=[]
+var prefix_canonical_boundaries:Dictionary={}
+var prefix_boundary_policy:Array=[]
 
 func _detour_reach_reference(target: int, padding: Variant = null) -> Variant:
 	if movement_medium != "dry" or not graph.has_point(target): return null

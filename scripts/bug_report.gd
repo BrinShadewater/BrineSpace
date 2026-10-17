@@ -56,6 +56,135 @@ var note_field: LineEdit = null
 var button_row: HBoxContainer = null
 var performance_monitor: Node
 
+# The worker owns only detached bytes and an Image, never live scene/GPU state.
+# Keep the synchronous API below for startup crash recovery and explicit tools.
+class ReportWriteJob extends RefCounted:
+	signal completed
+	var files: Array = []
+	var screenshot: Image
+	var screenshot_index := 0
+	var header := ""
+	var base := ""
+	var absolute_base := ""
+	var result := ""
+	var finished := false
+	func write() -> Dictionary:
+		var started := Time.get_ticks_usec()
+		var png_usec := 0
+		if screenshot != null and not screenshot.is_empty():
+			var png_started := Time.get_ticks_usec()
+			files.insert(screenshot_index, {"name":"screenshot.png", "data":screenshot.save_png_to_buffer()})
+			png_usec = Time.get_ticks_usec()-png_started
+		var summary := header
+		for entry in files:
+			summary += "  %8d  %s\n" % [PackedByteArray(entry.data).size(), entry.name]
+		files.push_front({"name":"report.txt", "data":summary.to_utf8_buffer()})
+		var package_started := Time.get_ticks_usec()
+		var path := ""
+		if DirAccess.make_dir_recursive_absolute(absolute_base.get_base_dir()) == OK:
+			if write_zip(absolute_base+".zip", files): path=base+".zip"
+			elif write_folder(absolute_base, files): path=base
+		else: push_warning("BugReport: could not create "+absolute_base.get_base_dir())
+		return {"path":path, "worker_usec":Time.get_ticks_usec()-started, "png_usec":png_usec,
+			"package_usec":Time.get_ticks_usec()-package_started, "worker_thread_id":OS.get_thread_caller_id()}
+	static func write_zip(path: String, contents: Array) -> bool:
+		var packer := ZIPPacker.new()
+		if packer.open(path) != OK:
+			push_warning("BugReport: ZIPPacker could not open "+path);return false
+		var ok := true
+		for entry in contents:
+			if packer.start_file(entry.name) != OK: ok=false;continue
+			if packer.write_file(entry.data) != OK: ok=false
+			if packer.close_file() != OK: ok=false
+		if packer.close() != OK: ok=false
+		if not ok: DirAccess.remove_absolute(path)
+		return ok
+	static func write_folder(path: String, contents: Array) -> bool:
+		if DirAccess.make_dir_recursive_absolute(path) != OK: return false
+		var written := 0
+		for entry in contents:
+			var target: String=path+"/"+entry.name
+			DirAccess.make_dir_recursive_absolute(target.get_base_dir())
+			var file := FileAccess.open(target, FileAccess.WRITE)
+			if file == null: continue
+			file.store_buffer(entry.data);file.flush()
+			if file.get_error() == OK: written+=1
+		return written==contents.size() and written>0
+
+const MAX_REPORT_JOBS := 2
+var _report_jobs: Array[ReportWriteJob] = []
+var _report_job: ReportWriteJob
+var _report_thread: Thread
+var _report_shutting_down := false
+var _ui_report_pending := false
+var _overlay_generation := 0
+var last_report_timings: Dictionary = {}
+
+func save_report_async(note: String, after_crash: bool = false) -> String:
+	if _report_shutting_down: return ""
+	if _report_jobs.size()+(1 if _report_job!=null else 0)>=MAX_REPORT_JOBS:
+		push_warning("BugReport: report queue is full");return ""
+	var capture_started := Time.get_ticks_usec()
+	var job := _prepare_report_job(note,after_crash)
+	var capture_usec := Time.get_ticks_usec()-capture_started
+	_report_jobs.append(job)
+	_start_report_job()
+	if not job.finished: await job.completed
+	last_report_timings["capture_usec"]=capture_usec
+	return job.result
+
+func _prepare_report_job(note: String, after_crash: bool) -> ReportWriteJob:
+	last_report_path="";skipped_dumps.clear()
+	var job := ReportWriteJob.new()
+	_add_logs(job.files);_add_saves(job.files)
+	if not after_crash:
+		if pending_captured_at.is_empty(): _capture_diagnostics()
+		job.files.append_array(pending_files)
+	if after_crash and FileAccess.file_exists("user://last_session.json"):
+		job.files.append({"name":"diagnostics/previous_session.json","data":FileAccess.get_file_as_bytes("user://last_session.json")})
+	var artwork: Dictionary=preload("res://scripts/safe_image.gd").failures
+	if not artwork.is_empty(): job.files.append({"name":"diagnostics/artwork.json","data":JSON.stringify(artwork,"\t").to_utf8_buffer()})
+	job.screenshot=pending_screenshot.duplicate() if pending_screenshot!=null else null
+	job.screenshot_index=job.files.size()
+	var dumps_found := _add_crash_dumps(job.files) if after_crash else 0
+	job.header=_report_text(note,after_crash,[],dumps_found)
+	job.files=job.files.duplicate(true)
+	# Consume the request before yielding; a later F8 owns a different pending capture.
+	_clear_pending()
+	var stamp := Time.get_datetime_string_from_system(false,true).replace("-","").replace(":","").replace(" ","-")
+	var base := report_dir+"/brinespace-report-"+stamp+"-%d-%d" % [OS.get_process_id(),Time.get_ticks_usec()]
+	var candidate := base
+	var suffix := 0
+	while FileAccess.file_exists(candidate+".zip") or DirAccess.dir_exists_absolute(candidate):
+		suffix+=1;candidate=base+"-%d" % suffix
+	job.base=candidate;job.absolute_base=ProjectSettings.globalize_path(candidate)
+	return job
+
+func _start_report_job() -> void:
+	if _report_thread!=null or _report_jobs.is_empty(): return
+	_report_job=_report_jobs.pop_front()
+	_report_thread=Thread.new()
+	if _report_thread.start(_report_job.write)!=OK:
+		push_warning("BugReport: worker unavailable; saving report synchronously")
+		_report_thread=null
+		_finish_report_job(_report_job.write())
+
+func _poll_report_job() -> void:
+	if _report_thread!=null and not _report_thread.is_alive():
+		_finish_report_job(_report_thread.wait_to_finish())
+
+func _finish_report_job(value: Variant) -> void:
+	var job := _report_job
+	_report_thread=null;_report_job=null
+	var details: Dictionary=value if value is Dictionary else {"path":""}
+	job.result=str(details.get("path",""));job.finished=true
+	last_report_path=job.result;last_report_timings=details.duplicate()
+	job.completed.emit()
+	_start_report_job()
+
+func _report_ui_current(generation: int) -> bool:
+	return not _report_shutting_down and is_inside_tree() and generation==_overlay_generation
+
 func _ready() -> void:
 	performance_monitor=preload("res://scripts/performance_monitor.gd").new()
 	add_child(performance_monitor)
@@ -73,6 +202,11 @@ func _enter_tree() -> void:
 	_write_lock()
 
 func _exit_tree() -> void:
+	_report_shutting_down=true
+	# On shutdown only, finish accepted requests before releasing threads/session lock.
+	while _report_thread!=null or not _report_jobs.is_empty():
+		if _report_thread!=null: _finish_report_job(_report_thread.wait_to_finish())
+		else: _start_report_job()
 	if owns_session_lock:
 		_remove_lock()
 
@@ -147,40 +281,10 @@ func save_report(note: String, after_crash: bool = false) -> String:
 	return last_report_path
 
 func _write_zip(path: String, files: Array) -> bool:
-	var packer := ZIPPacker.new()
-	if packer.open(path) != OK:
-		push_warning("BugReport: ZIPPacker could not open " + path)
-		return false
-	var ok := true
-	for entry in files:
-		if packer.start_file(entry.name) != OK:
-			ok = false
-			continue
-		if packer.write_file(entry.data) != OK:
-			ok = false
-		if packer.close_file() != OK:
-			ok = false
-	if packer.close() != OK:
-		ok = false
-	if not ok:
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
-	return ok
+	return ReportWriteJob.write_zip(ProjectSettings.globalize_path(path),files)
 
 func _write_folder(path: String, files: Array) -> bool:
-	if DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(path)) != OK:
-		return false
-	var written := 0
-	for entry in files:
-		var target: String = path + "/" + entry.name
-		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(target.get_base_dir()))
-		var file := FileAccess.open(target, FileAccess.WRITE)
-		if file == null:
-			continue
-		file.store_buffer(entry.data)
-		file.flush()
-		if file.get_error() == OK:
-			written += 1
-	return written == files.size() and written > 0
+	return ReportWriteJob.write_folder(ProjectSettings.globalize_path(path),files)
 
 func _add_logs(files: Array) -> void:
 	files.append({"name": "logs/current.log", "data": _tail(LOG_DIR + "/godot.log")})
@@ -340,13 +444,21 @@ func _report_contains_dump(path: String) -> bool:
 	return found
 
 func _on_send_pressed() -> void:
+	if _ui_report_pending: return
+	_ui_report_pending=true
+	var generation := _overlay_generation
 	var note := note_field.text if note_field != null else ""
-	var path := save_report(note)
+	var path := await save_report_async(note)
+	if not _report_ui_current(generation): return
+	_ui_report_pending=false
 	if path.is_empty():
+		_ui_report_pending=false
 		_show_overlay("REPORT NOT SAVED", "The report could not be written, so nothing was sent. Check that the game can write to its user data folder.", false, [["Close", _hide_overlay]])
 		return
 	_show_overlay("SENDING REPORT", "Uploading %s..." % path.get_file(), false, [])
+	generation=_overlay_generation
 	var result := await upload_report(path)
+	if not _report_ui_current(generation): return
 	if result == OK:
 		_show_overlay("REPORT SENT", "Thank you. %s was uploaded, and a copy is saved in the bug_reports folder." % path.get_file(), false, [["Close", _hide_overlay]])
 	else:
@@ -424,6 +536,8 @@ func _build_overlay() -> void:
 	add_child(overlay)
 
 func _show_overlay(title: String, body: String, with_note: bool, buttons: Array) -> void:
+	_ui_report_pending=false
+	_overlay_generation+=1
 	if overlay == null:
 		_build_overlay()
 	if not overlay.visible:
@@ -444,6 +558,8 @@ func _show_overlay(title: String, body: String, with_note: bool, buttons: Array)
 	overlay.visible = true
 
 func _hide_overlay() -> void:
+	_ui_report_pending=false
+	_overlay_generation+=1
 	if overlay != null and overlay.visible:
 		overlay.visible = false
 		get_tree().paused = studio_open()
@@ -460,6 +576,7 @@ func _open_report_folder() -> void:
 # the tree is paused and neither of those is on screen, the pause is a leak: take it back, and
 # leave a warning the next report will carry.
 func _process(_delta: float) -> void:
+	_poll_report_job()
 	if not is_inside_tree() or not get_tree().paused: return
 	var scene: Node = get_tree().current_scene
 	if scene == null or not str(scene.scene_file_path).ends_with("title_screen.tscn"): return
@@ -510,8 +627,13 @@ func open_report() -> void:
 		note_field.grab_focus()
 
 func _on_save_pressed() -> void:
+	if _ui_report_pending: return
+	_ui_report_pending=true
+	var generation := _overlay_generation
 	var note := note_field.text if note_field != null else ""
-	var path := save_report(note)
+	var path := await save_report_async(note)
+	if not _report_ui_current(generation): return
+	_ui_report_pending=false
 	if path.is_empty():
 		_show_overlay("REPORT NOT SAVED", "The report could not be written. Check that the game can write to its user data folder.", false, [["Close", _hide_overlay]])
 		return

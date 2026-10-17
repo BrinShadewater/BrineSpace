@@ -1,4 +1,14 @@
 extends RefCounted
+const SurfacePacket=preload("res://scripts/room_surface_packet.gd")
+static var batch_surface_primitives:=OS.get_name()=="Windows" and not OS.get_cmdline_user_args().has("--reference-moon-surface-packets")
+static func new_surface_packet():
+	return SurfacePacket.new() if batch_surface_primitives else null
+static func _surface_polygon(canvas:CanvasItem,packet,vertices:PackedVector2Array,color:Color):
+	if packet!=null:packet.polygon(vertices,PackedColorArray([color]))
+	else:canvas.draw_colored_polygon(vertices,color)
+static func _surface_circle(canvas:CanvasItem,packet,center:Vector2,radius:float,color:Color):
+	if packet!=null:packet.circle(center,radius,color)
+	else:canvas.draw_circle(center,radius,color)
 
 const Common = preload("res://rooms/large-rooms/common.gd")
 const WallMaterial = preload("res://rooms/whole-room/department_wall_material.gd")
@@ -213,7 +223,20 @@ static func navigation_bounds_for_rotation(room: Dictionary) -> Array[Rect2]:
 	return result
 
 static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
-	var state := visual_state(room)
+	draw_base_prefix(canvas,room,rect)
+	draw_live_water(canvas,room,rect)
+	# Retained internal walls follow water/sub drawing; their live gates follow
+	# the walls. Other callers retain the complete immediate drawing path.
+	if canvas.has_method("owns_moonbay_tail") and canvas.owns_moonbay_tail():
+		Common.finish(canvas)
+		return
+	draw_static_walls(canvas,room,rect)
+	draw_live_gates(canvas,room,rect)
+	Common.finish(canvas)
+
+# Contiguous commands before the animated water. External port doors, peripheral
+# flood tint and the helmet shelf belong to this prefix and invalidate it.
+static func draw_base_prefix(canvas:CanvasItem,room:Dictionary,rect:Rect2)->void:
 	var shell := room.duplicate()
 	shell["custom_ocean_gate"] = true
 	Common.begin(canvas,shell,rect,Color("#263842"),WALL_STYLE,"res://assets/department-floors-v2/robotics-service.png",0.40)
@@ -229,6 +252,14 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 	var lock_floor := airlock_bounds(room)
 	canvas.draw_rect(lock_floor,Color("#152129"))
 	Common.floor_tiles(canvas,Common.GRATING_ART,lock_floor,96.0,Color("#829394"))
+	Common.finish(canvas)
+
+# Threshold grating stays between the original water layers. Each retained child
+# establishes its own draw transform; canvas command transforms are not inherited.
+static func draw_live_water(canvas:CanvasItem,room:Dictionary,rect:Rect2)->void:
+	Common.south_transform(canvas,rect)
+	var state:=visual_state(room)
+	var center:=bay_center(room)
 	var water_clock := float(room.get("moonbay_mission",{}).get("cycle_clock",0.0))
 	if preload("res://scripts/title_settings.gd").reduced_motion: water_clock=0.0
 	_draw_water(canvas,airlock_water_bounds(room),state.airlock_water,water_clock,state.phase in ["flood","disembark","drain","outbound"])
@@ -244,13 +275,6 @@ static func draw(canvas: CanvasItem, room: Dictionary, rect: Rect2) -> void:
 		Common.south_transform(canvas,rect,angle)
 		Common.sprite(canvas,"res://rooms/large-rooms/art/mini_sub.png",Rect2(center.rotated(-angle)+SUB_BOUNDS.position,SUB_BOUNDS.size),Color("#b0a8a5") if state.damage>0 else Color.WHITE,float(state.chamber_water),angle,SUB_WET_MODULATE)
 		Common.south_transform(canvas,rect)
-	# Retained internal walls follow water/sub drawing; their live gates follow
-	# the walls. Other callers retain the complete immediate drawing path.
-	if canvas.has_method("owns_moonbay_tail") and canvas.owns_moonbay_tail():
-		Common.finish(canvas)
-		return
-	draw_static_walls(canvas,room,rect)
-	draw_live_gates(canvas,room,rect)
 	Common.finish(canvas)
 
 static func draw_static_walls(canvas:CanvasItem,room:Dictionary,rect:Rect2)->void:
@@ -297,7 +321,7 @@ class WaterCommands extends RefCounted:
 	func draw_rect(rect:Rect2,color:Color):commands.append(["rect",rect,color])
 	func draw_polygon(points:PackedVector2Array,colors:PackedColorArray):commands.append(["polygon",points,colors])
 	func draw_polyline(points:PackedVector2Array,color:Color,width:float,aa:bool):
-		var geometry:Dictionary=commands.back()[1] if not commands.is_empty() and commands.back()[0]=="strokes" else WaterStrokes.empty(topology)
+		var geometry:Dictionary=commands.back()[1] if not commands.is_empty() and commands.back()[0]=="strokes" else WaterStrokes.empty(topology,true)
 		if combine and aa and WaterStrokes.add(geometry,points,color,width):
 			if commands.is_empty() or commands.back()[0]!="strokes":commands.append(["strokes",geometry])
 		else:commands.append(["polyline",points,color,width,aa])
@@ -459,6 +483,7 @@ static func _draw_wall_corner(canvas: CanvasItem, bounds: Rect2, inward: Vector2
 	var origin := top+Vector2(bounds.size.x if inward.x<0 else 0.0,bounds.size.y if inward.y<0 else 0.0)
 	canvas.draw_rect(Rect2(top+Vector2(0,4),bounds.size),Color("#22292c"))
 	var texture := WallMaterial.texture("engineering")
+	var packet=new_surface_packet()
 	var inner := origin+bounds.size*inward
 	for horizontal in [true,false]:
 		var end := origin+(Vector2(bounds.size.x,0) if horizontal else Vector2(0,bounds.size.y))*inward
@@ -468,7 +493,9 @@ static func _draw_wall_corner(canvas: CanvasItem, bounds: Rect2, inward: Vector2
 		else: source.size.y*=bounds.size.y/48.0
 		var uv := PackedVector2Array()
 		for point in points: uv.append((source.position+(point-top)/bounds.size*source.size)/Vector2(texture.get_size()))
-		canvas.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)
+		if packet!=null:packet.polygon(points,PackedColorArray([Color.WHITE]),uv)
+		else:canvas.draw_polygon(points,PackedColorArray([Color.WHITE]),uv,texture)
+	if packet!=null:packet.draw(canvas,texture)
 
 static func _draw_bay_door(canvas: CanvasItem, center: Vector2, vertical: bool, amount: float, width: float, depth := 32.0) -> void:
 	var half := width*0.5
@@ -508,30 +535,38 @@ static func _draw_interlock(canvas: CanvasItem, center: Vector2, vertical: bool,
 static func _draw_beacon(canvas: CanvasItem, point: Vector2, color: Color, active: bool, angle: float) -> void:
 	var lens := point-Vector2(0,4)
 	var direction := Vector2.RIGHT.rotated(angle if active else 0.0)*Vector2(1,0.65)
+	var beam=new_surface_packet() if active else null
 	if active:
-		canvas.draw_colored_polygon(PackedVector2Array([lens,lens+Vector2.RIGHT.rotated(angle-0.25)*56,lens+Vector2.RIGHT.rotated(angle+0.25)*56]),Color(color,0.16))
-		canvas.draw_colored_polygon(_beacon_oval(lens,Vector2(25,17)),Color(color,0.06))
+		_surface_polygon(canvas,beam,PackedVector2Array([lens,lens+Vector2.RIGHT.rotated(angle-0.25)*56,lens+Vector2.RIGHT.rotated(angle+0.25)*56]),Color(color,0.16))
+		_surface_polygon(canvas,beam,_beacon_oval(lens,Vector2(25,17)),Color(color,0.06))
+	if beam!=null:beam.draw(canvas)
 	# Wall backplate, short bracket and cast cylindrical base; fixed as the
 	# reflector turns inside the coloured glass, rather than rotating the fitting.
 	canvas.draw_rect(Rect2(point-Vector2(11,10),Vector2(22,21)),Color("#1c292e"))
 	canvas.draw_rect(Rect2(point-Vector2(9,8),Vector2(18,17)),Color("#556368"))
+	var bolts=new_surface_packet()
 	for offset in [Vector2(-7,-6),Vector2(7,-6),Vector2(-7,7),Vector2(7,7)]:
-		canvas.draw_circle(point+offset,1.1,Color("#26343a"))
+		_surface_circle(canvas,bolts,point+offset,1.1,Color("#26343a"))
+	if bolts!=null:bolts.draw(canvas)
 	canvas.draw_rect(Rect2(point+Vector2(-4,0),Vector2(8,8)),Color("#2e3c41"))
 	canvas.draw_colored_polygon(_beacon_oval(point+Vector2(0,5),Vector2(10,4)),Color("#1a272d"))
 	canvas.draw_rect(Rect2(point+Vector2(-9,0),Vector2(18,5)),Color("#425257"))
-	canvas.draw_colored_polygon(_beacon_oval(point,Vector2(9,4)),Color("#778185"))
+	var glass_packet=new_surface_packet()
+	_surface_polygon(canvas,glass_packet,_beacon_oval(point,Vector2(9,4)),Color("#778185"))
 	var glass := color*Color(0.52,0.52,0.52,1) if not active else color*Color(0.80,0.80,0.80,1)
-	canvas.draw_colored_polygon(_beacon_oval(lens,Vector2(7,8)),glass)
+	_surface_polygon(canvas,glass_packet,_beacon_oval(lens,Vector2(7,8)),glass)
 	var reflector := PackedVector2Array([lens-direction*5,lens+direction.orthogonal()*3,lens+direction*5,lens-direction.orthogonal()*3])
-	canvas.draw_colored_polygon(reflector,Color("#eadba3") if active else Color("#777e75"))
-	canvas.draw_circle(lens,1.5,Color("#39474a"))
+	_surface_polygon(canvas,glass_packet,reflector,Color("#eadba3") if active else Color("#777e75"))
+	_surface_circle(canvas,glass_packet,lens,1.5,Color("#39474a"))
+	if glass_packet!=null:glass_packet.draw(canvas)
 	var rim := _beacon_oval(lens,Vector2(7,8))
 	rim.append(rim[0])
 	canvas.draw_polyline(rim,Color(color,0.65),1.2,true)
 	canvas.draw_line(lens+Vector2(-4,-5),lens+Vector2(-5,0),Color(0.84,0.90,0.86,0.4),1.0,true)
-	canvas.draw_colored_polygon(_beacon_oval(point+Vector2(0,1),Vector2(8,3)),Color(0.16,0.22,0.24,0.72))
-	if active: canvas.draw_circle(lens+direction*4,2,Color("#fff0bd"))
+	var tail=new_surface_packet() if active else null
+	_surface_polygon(canvas,tail,_beacon_oval(point+Vector2(0,1),Vector2(8,3)),Color(0.16,0.22,0.24,0.72))
+	if active: _surface_circle(canvas,tail,lens+direction*4,2,Color("#fff0bd"))
+	if tail!=null:tail.draw(canvas)
 
 static func _beacon_oval(center: Vector2, radius: Vector2) -> PackedVector2Array:
 	var points := PackedVector2Array()
@@ -558,5 +593,7 @@ static func _draw_observation_window(canvas: CanvasItem, bounds: Rect2) -> void:
 		var a := Vector2(-3,along-7) if vertical else Vector2(along-7,-3)
 		var b := Vector2(3,along+7) if vertical else Vector2(along+7,3)
 		canvas.draw_line(center+a,center+b,Color(0.60,0.77,0.78,0.20),1.2,true)
+	var bolts=new_surface_packet()
 	for x in [frame.position.x+3,frame.end.x-3]:
-		for y in [frame.position.y+3,frame.end.y-3]: canvas.draw_circle(Vector2(x,y),0.9,Color("#23343a"))
+		for y in [frame.position.y+3,frame.end.y-3]: _surface_circle(canvas,bolts,Vector2(x,y),0.9,Color("#23343a"))
+	if bolts!=null:bolts.draw(canvas)

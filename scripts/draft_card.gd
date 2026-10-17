@@ -12,8 +12,8 @@ const CARD_SIZE := Vector2(200, 284)
 # Every card is CARD_SIZE (owner, October 13). A card whose rules need more height first gives
 # up some of its art window, down to ART_MIN_HEIGHT; after that, or when a line is too wide,
 # the rules text steps down a point at a time, at most FIT_STEPS times.
-const RULES_FONT_SIZE := 14
-const FIT_STEPS := 4
+const RULES_FONT_SIZE := 15
+const FIT_STEPS := 3 # Never squeeze rules below 12 points.
 const ART_HEIGHT := 100.0
 const ART_MIN_HEIGHT := 76.0
 const ROW_SLOT := Vector2(212, 330)
@@ -164,9 +164,8 @@ static func build(game, id: String, preview := false) -> PanelContainer:
 	card.custom_minimum_size = CARD_SIZE
 	card.mouse_filter = Control.MOUSE_FILTER_STOP
 	# The game draws with nearest filtering for pixel art; turned (fan) or scaled (hover) text and
-	# frames sampled that way look jagged (owner playtest), so cards filter smoothly. Mipmaps made
-	# the same frames soft at rest, so this is plain linear; the room art keeps nearest until the
-	# fan turns it.
+	# frames sampled that way look jagged. Upright cards use linear filtering;
+	# the fan uses mipmaps to keep thin coloured rails from shimmering.
 	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	card.pivot_offset = Vector2(CARD_SIZE.x * 0.5, CARD_SIZE.y)
 	# Cards sit outside containers, and before the text has a width it wraps very tall; a
@@ -189,7 +188,7 @@ static func build(game, id: String, preview := false) -> PanelContainer:
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title.custom_minimum_size = Vector2(0, 28)
 	title.clip_text = true
-	title.add_theme_font_size_override("font_size", 16 if title.text.length() <= 14 else (14 if title.text.length() <= 18 else 13))
+	title.add_theme_font_size_override("font_size", 17 if title.text.length() <= 14 else (16 if title.text.length() <= 18 else 15))
 	title.add_theme_color_override("font_color", Color("#e2ecee"))
 	title.add_theme_stylebox_override("normal", _box(Color("#16222a"), muted(category_color).darkened(0.25), 1, 6))
 	body.add_child(_ignore(title))
@@ -303,7 +302,7 @@ static func _cost_gem(game, resource: String, amount: int, enough: bool) -> Cont
 	gem.autowrap_mode = TextServer.AUTOWRAP_OFF
 	gem.scroll_active = false
 	gem.text = "%s%d" % [game._resource_icon_bbcode(resource, 14), amount]
-	gem.add_theme_font_size_override("normal_font_size", 14)
+	gem.add_theme_font_size_override("normal_font_size", RULES_FONT_SIZE)
 	gem.add_theme_color_override("default_color", Color("#e6eeee") if enough else Color("#ff8a90"))
 	# No ring round the cost (owner playtest, Sept 29); a short resource still shows red.
 	gem.add_theme_stylebox_override("normal", _box(Color(0, 0, 0, 0), Color(0, 0, 0, 0), 0, 0, 3))
@@ -472,6 +471,7 @@ static func layout_fan(fan: Control) -> void:
 		stack[rank].set_meta("rest_index", rank)
 
 static func set_art_filter(card: Control, turned: bool) -> void:
+	card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS if turned else CanvasItem.TEXTURE_FILTER_LINEAR
 	if not card.has_meta("art_node"): return
 	var art = card.get_meta("art_node", null)
 	if art == null or not is_instance_valid(art): return
@@ -481,7 +481,8 @@ static func _box(fill: Color, border: Color, border_width: int, radius: int, mar
 	var box := StyleBoxFlat.new()
 	box.bg_color = fill
 	box.border_color = border
-	box.set_border_width_all(border_width)
+	# A one-pixel coloured stroke loses its solid centre when tilted and downsampled.
+	box.set_border_width_all(2 if border_width == 1 else border_width)
 	box.set_corner_radius_all(radius)
 	box.set_content_margin_all(margin)
 	return box

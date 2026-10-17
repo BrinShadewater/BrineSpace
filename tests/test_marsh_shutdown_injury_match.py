@@ -12,7 +12,16 @@ class Shutdown(unittest.TestCase):
         for d in ('south','north','east','west'):
             idle=open_selected(ROOT/f'character/marsh-v2/frames/bare/idle-{d}/000.png').convert('RGBA').tobytes()
             frames=[open_selected(BASE/f'frames/death-ground-{d}/{i:03}.png').convert('RGBA') for i in range(6)]
-            self.assertEqual(frames[0].tobytes(),idle);self.assertEqual([f.tobytes() for f in frames],[f.tobytes() for f in MarshRebaker({}).state_override('death-ground-'+d)])
+            self.assertEqual(frames[0].tobytes(),idle)
+            # The maintained rebaker now resolves the later master-repair
+            # stage. Historical installation/provenance remains checked above;
+            # compare rebuild output against its own declared stage, not the
+            # historical shutdown interiors. Later catalog overrides
+            # are exercised separately by the native final sweep.
+            repair=json.loads((ROOT/'character/marsh-master-repair-v1/selection.json').read_text())
+            self.assertIn('death-ground-'+d,repair['changedStates'])
+            expected=[Image.open(ROOT/p).convert('RGBA').tobytes() for p in repair['states']['death-ground-'+d]]
+            self.assertEqual(expected,[f.tobytes() for f in MarshRebaker({}).state_override('death-ground-'+d)])
             self.assertEqual(open_selected(BASE/f'frames/injury-ground-{d}/000.png').convert('RGBA').tobytes(),idle)
             for a in ('death-ground','injury-ground'):
                 for i in range(6):

@@ -85,6 +85,10 @@ static func stations(data: Dictionary) -> Array:
 			# One authored quarter replaces the games table with a sofa; rest there instead.
 			for prop in data.get("props",[]):
 				if prop.id!="lounge_sofa" and _role(prop)!="lounge_seat": continue
+				# Cardinal seated poses do not fit the angled corner armchair.
+				# Keep it decorative for every crew member, including copied variants.
+				var source_id: String=preload("res://scripts/room_asset_library.gd").base_id(str(prop.get("variant_source",prop.get("copy_source",prop.id))))
+				if source_id=="library/sp-crew_lounge-4":continue
 				var rect: Rect2=prop.rect
 				var rest:Vector2=Vector2(rect.get_center().x,rect.end.y-8)
 				var front_found:=false

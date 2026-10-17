@@ -3,7 +3,7 @@ extends SceneTree
 const Marsh=preload("res://scripts/marsh_npc.gd")
 const Loading=preload("res://scripts/loading_transition.gd")
 const Save=preload("res://scripts/run_save.gd")
-const OUTPUT="res://output/marsh-animation-audit/east-run-normal-native-v1-2026-10-02/"
+const OUTPUT="res://output/marsh-east-run-smooth-2026-10-14/production-continue/"
 var game
 var checks:=0
 var failures:=0
@@ -63,6 +63,8 @@ func clear_loading(required:=false) -> bool:
 	return not is_instance_valid(overlay)
 
 func run():
+	if not OS.get_environment("APPDATA").contains("marsh-east-run-smooth-2026-10-14"):
+		push_error("Explicit scratch APPDATA required");quit(1);return
 	if DisplayServer.get_name()=="headless":quit(2);return
 	DirAccess.make_dir_recursive_absolute(OUTPUT)
 	preload("res://scripts/title_settings.gd").reduced_motion=true
@@ -109,8 +111,8 @@ func run():
 	check(player.frames["run-east"].size()==6 and player.timing["run-east"].loop,"normal selected six-frame loop")
 	check(is_equal_approx(player.strides["run-east"],.11027027027027027),"normal selected run distance cadence")
 	for slot in range(6):
-		var expected=Image.load_from_file(["res://character/marsh-east-run-material-v1/candidate-03/000.png","res://character/marsh-east-run-material-v1/candidate-03/001.png","res://character/marsh-east-run-material-v1/candidate-03/002.png","res://character/marsh-east-run-material-v1/candidate-03/003.png","res://character/marsh-east-run-material-v1/candidate-03/004.png","res://character/marsh-east-run-material-v1/candidate-03/005.png"][slot])
-		check(player.frames["run-east"][slot].get_image().get_data()==expected.get_data(),"normal factory loaded exact03 source "+str(slot))
+		var expected=Image.load_from_file(["res://character/marsh-east-run-material-v1/candidate-03/000.png","res://character/marsh-east-run-material-v1/candidate-03/001.png","res://character/marsh-east-run-smooth-v1/run-east-002-registered.png","res://character/marsh-east-run-material-v1/candidate-03/003.png","res://character/marsh-east-run-material-v1/candidate-03/004.png","res://character/marsh-east-run-material-v1/candidate-03/005.png"][slot])
+		check(player.frames["run-east"][slot].get_image().get_data()==expected.get_data(),"normal factory loaded selected east run source "+str(slot))
 	var route_start := Vector2.INF
 	var route_probes:Array=[]
 	for dx in [-80.0,-60.0,-40.0,-20.0,0.0,20.0,40.0,60.0,80.0,100.0,120.0]:

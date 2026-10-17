@@ -46,12 +46,12 @@ static func apply(theme: Theme, size := 17) -> Theme:
 	theme.set_font("font", "Button", interface_medium())
 	return theme
 
-# Cards rotate and grow on hover. Keep a separate cached distance-field face so
-# their transforms do not resample small bitmap glyphs or alter the rest of the UI.
+# Small card text needs hinting and a stronger weight. Rasterize a separate face
+# at twice the resolution so the fan can turn it without stair-stepping strokes.
 static func card_theme() -> Theme:
 	if _card_theme != null: return _card_theme
 	_card_theme = apply(Theme.new())
-	var regular := _card_font(interface_font())
+	var regular := _card_font(interface_medium())
 	_card_theme.default_font = regular
 	_card_theme.set_font("normal_font", "RichTextLabel", regular)
 	_card_theme.set_font("bold_font", "RichTextLabel", _card_font(interface_bold()))
@@ -61,6 +61,7 @@ static func card_theme() -> Theme:
 static func _card_font(source: Font) -> Font:
 	if not source is FontFile: return source
 	var font: FontFile = source.duplicate()
-	font.multichannel_signed_distance_field = true
-	font.msdf_size = 48
+	font.multichannel_signed_distance_field = false
+	font.oversampling = 2.0
+	font.generate_mipmaps = true
 	return font

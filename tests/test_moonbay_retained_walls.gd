@@ -55,6 +55,51 @@ func run():
 		reference.self_modulate=tint;candidate.self_modulate=tint
 		reference.queue_redraw();candidate.submit(reference.state,reference.bounds)
 		await compare("self tint "+str(tint))
+	# Mission animation must redraw water/sub/gates without rebuilding the
+	# unchanged floor, hull, shelf and grating commands beneath them.
+	Settings.reduced_motion=false
+	reference.queue_redraw();candidate.submit(reference.state,reference.bounds)
+	await compare("live mission baseline")
+	var prefix_before:int=candidate.redraws
+	for spec in [[1.125,"launch"],[1.875,"work"],[2.375,"return"],[2.75,"outbound"],[3.0,"boarding"],[3.25,"idle"]]:
+		var clock:float=spec[0]
+		var changed:Dictionary=reference.state.duplicate(true)
+		changed.moonbay_mission.phase=spec[1]
+		changed.moonbay_mission.cycle_clock=clock
+		changed.moonbay_mission.progress=clock*.2
+		changed.moonbay_mission.chamber_water=.2+clock*.2
+		changed.moonbay_mission.damage=1
+		changed.machine_clock=clock
+		reference.state=changed;reference.queue_redraw();candidate.submit(changed,reference.bounds)
+		await compare("live mission "+str(clock))
+		if candidate.redraws!=prefix_before:failures+=1;push_error("Mission-only changes rebuilt static Moonbay prefix")
+	# Each of these inputs is read by the retained prefix, including external
+	# doors and water around the room. They must invalidate it immediately.
+	for mutation in ["port","flood","helmet","locker","bounds"]:
+		var changed:Dictionary=reference.state.duplicate(true)
+		var bounds:Rect2=reference.bounds
+		match mutation:
+			"port":changed.port_open[0]=.625
+			"flood":changed.water_level=.75
+			"helmet":changed.shelf_helmet_visible=false
+			"locker":changed.studio_props=[{"id":"library/sp-airlock-4","rect":Rect2(274,-112,76,88)}]
+			"bounds":bounds.position+=Vector2(.375,.1875)
+		var before:int=candidate.redraws
+		reference.state=changed;reference.bounds=bounds;reference.queue_redraw();candidate.submit(changed,bounds)
+		await compare("prefix invalidation "+mutation)
+		if candidate.redraws<=before:failures+=1;push_error("Static Moonbay prefix missed "+mutation)
+	if "retain_base_commands" in candidate:
+		for enabled in [false,true]:
+			candidate.retain_base_commands=enabled
+			reference.queue_redraw();candidate.submit(reference.state,reference.bounds)
+			await compare("base retention toggle "+str(enabled))
+	var flood:=ShaderMaterial.new();flood.shader=load("res://scripts/flood_submersion.gdshader")
+	flood.set_shader_parameter("waterline_y",350.0);flood.set_shader_parameter("world_scale",.73)
+	flood.set_shader_parameter("depth",.65);flood.set_shader_parameter("clock",1.375)
+	for material in [flood,null,mat]:
+		for host in hosts:host.material=material
+		reference.queue_redraw();candidate.submit(reference.state,reference.bounds)
+		await compare("inherited material "+str(material))
 
 	Settings.reduced_motion=saved_motion
 	reference.queue_redraw();candidate.submit(reference.state,reference.bounds)
@@ -69,6 +114,7 @@ func run():
 	Store.revision=saved_revision
 	var result:Dictionary={"pairs":pairs,"walls_redraws":candidate.wall_tail.redraws,"walls_hits":candidate.wall_tail.hits,"gates_draws":candidate.wall_tail.gates.draws}
 	var release_refs:Array=[weakref(candidate),weakref(candidate.wall_tail),weakref(candidate.wall_tail.gates)]
+	if "water_body" in candidate and candidate.water_body!=null:release_refs.append(weakref(candidate.water_body))
 	for vp in views:vp.queue_free()
 	# Observe destruction rather than assuming a fixed scene-swap delay.
 	for attempt in range(8):

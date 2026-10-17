@@ -36,6 +36,7 @@ func parity(actor,game,label:String,Script)->void:
 	check(exact,label+" ordered graph records")
 	check(actor.points==fresh.points and actor.room_nodes==fresh.room_nodes,label+" room maps")
 	check(actor.points.keys()==fresh.points.keys() and actor.points.values()==fresh.points.values(),label+" ordered point lookup")
+	check(actor.prefix_boundaries==fresh.prefix_boundaries,label+" ordered boundary bookkeeping")
 	var paths_equal:=true
 	var count:int=actor.graph.get_point_count()
 	for cell in actor.room_nodes:
@@ -56,11 +57,13 @@ func run():
 		actor.rebuild(game)
 		actor.rebuild(game)
 		check(int(actor.get_meta("retained_nodes",0))>0,"Warm graph actually reuses points")
+		check(int(actor.get_meta("retained_boundary_records",0))>0,"Warm graph reuses proven unchanged boundary records")
 		parity(actor,game,"warm",Script)
 		actor.graph.set_point_disabled(0,true)
 		actor.rebuild(game);parity(actor,game,"disabled reset",Script)
 		actor.hardware_doors_locked=true
 		actor.rebuild(game);parity(actor,game,"hardware locked",Script)
+		check(int(actor.get_meta("retained_boundary_records",-1))==0,"Hardware-lock policy invalidates boundary reuse")
 		actor.hardware_doors_locked=false
 		var room:Dictionary=game.placed_rooms[0]
 		room.doors_locked=true
@@ -73,6 +76,7 @@ func run():
 		Store.geometry_revision+=1
 		actor.rebuild(game)
 		check(int(actor.get_meta("retained_nodes",-1))==0,"Layout geometry revision clears reuse")
+		check(int(actor.get_meta("retained_boundary_records",-1))==0,"Layout revision clears boundary reuse")
 		parity(actor,game,"layout revision",Script)
 		var added:=add_room(game,Vector2i(30,20),2)
 		actor.rebuild(game);parity(actor,game,"detached addition",Script)
@@ -80,6 +84,27 @@ func run():
 			for x in range(2):game.occupied.erase(added.pos+Vector2i(x,y))
 		game.placed_rooms.erase(added)
 		actor.rebuild(game);parity(actor,game,"suffix removal",Script)
+		# A middle edit must discard only the changed lookup suffix, preserving
+		# the exact key/ID order of the retained prefix and the rebuilt graph.
+		var middle:Dictionary=game.placed_rooms[2]
+		middle.rotation=(int(middle.rotation)+1)%4
+		actor.rebuild(game)
+		check(int(actor.get_meta("retained_nodes",0))>0,"Middle rotation retains an unchanged prefix")
+		parity(actor,game,"middle rotation",Script)
+		for y in range(2):
+			for x in range(2):game.occupied.erase(middle.pos+Vector2i(x,y))
+		game.placed_rooms.erase(middle)
+		actor.rebuild(game);parity(actor,game,"middle removal",Script)
+		game.placed_rooms.append(middle)
+		for y in range(2):
+			for x in range(2):game.occupied[middle.pos+Vector2i(x,y)]=middle
+		actor.rebuild(game);parity(actor,game,"middle reappend",Script)
+		var negative:Dictionary=add_room(game,Vector2i(-6,-4),3)
+		actor.rebuild(game);parity(actor,game,"negative suffix",Script)
+		for y in range(2):
+			for x in range(2):game.occupied.erase(negative.pos+Vector2i(x,y))
+		game.placed_rooms.erase(negative)
+		actor.rebuild(game);parity(actor,game,"negative suffix removal",Script)
 		var observed:Array=[0,true]
 		var monitor:Callable=func():
 			if actor.fire_building_navigation:
@@ -91,8 +116,11 @@ func run():
 		check(int(observed[0])>0,"Staged rebuild actually yields frames")
 		check(bool(observed[1]),"Staged point lookup never exceeds partial graph")
 		check(int(actor.get_meta("retained_nodes",-1))==0,"Staged rebuild never reuses prefix")
+		check(int(actor.get_meta("retained_boundary_records",-1))==0,"Staged rebuild never reuses boundary records")
 		parity(actor,game,"staged rebuild",Script)
 
+	lookup_prefix_fraction_parity()
+	connected_prefix_parity()
 	station_target_sort_parity()
 	grid.free();game.free()
 	var result:={"checks":checks,"failures":failures,"point_records":point_records,"routes":routes,"sorted_targets":sorted_targets}
@@ -125,3 +153,44 @@ func station_target_sort_parity()->void:
 					started=Time.get_ticks_usec();actor._sort_station_targets(b,center);candidate_usec+=Time.get_ticks_usec()-started
 					check(a==b and rng.state==state,"Station target sort/order/RNG parity")
 					sorted_targets+=count
+
+func connected_prefix_parity()->void:
+	# Retained and rebuilt seams can meet at the same node. Exercise both cell
+	# insertion orders against a full fresh graph, including connection order.
+	var game:=TreeMain.new();game.process_mode=Node.PROCESS_MODE_DISABLED;root.add_child(game)
+	var grid:=Grid.new();game.grid_view=grid
+	for Script in [NPC,Marsh]:
+		for column_major in [false,true]:
+			game.occupied.clear();game.placed_rooms.clear()
+			for at in [Vector2i(4,10),Vector2i(6,10),Vector2i(4,12),Vector2i(6,12)]:add_room(game,at,0)
+			var cells:Array=game.occupied.keys()
+			cells.sort_custom(func(a,b):return (a.x<b.x or a.x==b.x and a.y<b.y) if column_major else (a.y<b.y or a.y==b.y and a.x<b.x))
+			var ordered:Dictionary={}
+			for cell in cells:ordered[cell]=game.occupied[cell]
+			game.occupied=ordered
+			var actor=Script.new();actor.active=true;actor.rebuild(game);actor.rebuild(game)
+			check(int(actor.get_meta("retained_boundary_records",0))>0,"Connected fixture reuses proven seams")
+			var label:String="connected "+("column" if column_major else "row")
+			parity(actor,game,label+" warm",Script)
+			game.placed_rooms[-1].rotation=1
+			actor.rebuild(game)
+			var retained:int=actor.get_meta("retained_nodes",0)
+			check(retained>0 and retained<actor.graph.get_point_count(),"Connected rotation retains a partial prefix")
+			parity(actor,game,label+" partial",Script)
+	grid.free();game.free()
+
+func lookup_prefix_fraction_parity()->void:
+	var game:=TreeMain.new();game.process_mode=Node.PROCESS_MODE_DISABLED;root.add_child(game)
+	var grid:=Grid.new();game.grid_view=grid
+	for Script in [NPC,Marsh]:
+		for unchanged_rooms in range(5):
+			game.occupied.clear();game.placed_rooms.clear()
+			for index in range(4):add_room(game,Vector2i(4+index*5,30),0)
+			var actor=Script.new();actor.active=true;actor.rebuild(game)
+			var original_count:int=actor.graph.get_point_count()
+			check(original_count>0 and original_count%4==0,"Equal-room lookup fraction fixture")
+			if unchanged_rooms<4:game.placed_rooms[unchanged_rooms].rotation=1
+			actor.rebuild(game)
+			check(int(actor.get_meta("retained_nodes",-1))==original_count*unchanged_rooms/4,"Exact lookup fraction "+str(unchanged_rooms)+"/4")
+			parity(actor,game,"lookup prefix "+str(unchanged_rooms)+"/4",Script)
+	grid.free();game.free()

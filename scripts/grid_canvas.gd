@@ -859,6 +859,7 @@ func _load_replacement_crew_animations() -> void:
 		player.finish_texture_batch()
 		set(actor+"_player",player)
 		bank.adopt(player)
+		if actor=="branforth":preload("res://scripts/james_cargo_checkpoint.gd").bank_bindings(player)
 	if detached==null:Router.start(get_tree(),self,bank)
 
 func _load_major_bill_animations() -> void:
@@ -1386,6 +1387,78 @@ class FadeSlot extends Node2D:
 			preload("res://rooms/whole-room/room_lighting.gd").draw_pools(self,1.0,state[0],state[1],state[2])
 
 # Room shells and north crowns retain the original two-pass compositing order.
+# Settled floors keep the original room order. All slots belong to an identity
+# container before the pass's fade children; active fades use the original pass.
+class FloorSlot extends Node2D:
+	var host
+	var room:Dictionary
+	var state:Array=[]
+	var rebuilds:=0
+	func _draw()->void:
+		var started:=Time.get_ticks_usec()
+		var previous=host.draw_target
+		host.draw_target=self
+		host._draw_nursery(room,Rect2(Vector2(room.pos)*host._cell_size(),Vector2.ONE*host._cell_size()),false,true)
+		host.draw_target=previous
+		rebuilds+=1;host.floor_slot_rebuilds+=1
+		var elapsed:=Time.get_ticks_usec()-started
+		host.draw_usec_since_read+=elapsed;host.draws_since_read+=1
+		if host.profile_draw:host.draw_profile_usec["floor_slots"]=int(host.draw_profile_usec.get("floor_slots",0))+elapsed
+
+var retain_floor_slots:=not OS.get_cmdline_user_args().has("--combined-floor-slots")
+var floor_slots:Dictionary={}
+var floor_slot_rebuilds:=0
+var floor_context=preload("res://scripts/retained_floor_context.gd").new()
+
+func _local_floor_reusable(main,room:Dictionary)->bool:
+	if preload("res://scripts/room_flooding.gd").level(room)>0.001:return false
+	if _is_narrow_corridor(room):return true
+	return _room_setup_skippable(main,room,_bill_room_view(room))
+
+func _floor_slots_allowed(group:Array)->bool:
+	if not retain_floor_slots or not retain_static_surfaces or not draw_target is SurfacePass:return false
+	# Pools and hallway fade hulls must remain after ALL floors in this pass.
+	# Preserve that existing path throughout a fade, including its cleanup rules.
+	for room in group:
+		if not _room_floor_baked(room):return false
+	return true
+
+func _hide_floor_slots(pass_id:int)->void:
+	var layer:Node=surface_passes[pass_id]
+	if layer.has_meta("floor_slots_root"):layer.get_meta("floor_slots_root").hide()
+
+func _sync_floor_slots(layer:SurfacePass,group:Array,layered:Array)->void:
+	var main=_get_main()
+	var active:Dictionary={}
+	for room in layered:active[room.pos]=true
+	for cell in floor_slots.keys():
+		if not active.has(cell):
+			floor_slots[cell].hide();floor_slots[cell].queue_free();floor_slots.erase(cell)
+	var container:Node2D
+	if not layer.has_meta("floor_slots_root"):
+		container=Node2D.new();container.name="RetainedFloors"
+		layer.add_child(container);layer.set_meta("floor_slots_root",container)
+	else:container=layer.get_meta("floor_slots_root")
+	layer.move_child(container,0);container.show()
+	floor_context.prepare(_surface_state(),main.occupied,main.powered_room_cells,static_draw_rooms)
+	var selected:Dictionary={}
+	for index in group.size():
+		var room:Dictionary=group[index];selected[room.pos]=true
+		if not floor_slots.has(room.pos):
+			var created:=FloorSlot.new();created.host=self;floor_slots[room.pos]=created
+		var slot:FloorSlot=floor_slots[room.pos]
+		var moved:bool=slot.get_parent()!=container
+		if moved:
+			if slot.get_parent()!=null:slot.reparent(container,false)
+			else:container.add_child(slot)
+		slot.room=room;container.move_child(slot,index);slot.show()
+		var next:Array=floor_context.key(room,0.0)
+		if moved or slot.state!=next or not _local_floor_reusable(main,room):
+			slot.state=next;slot.queue_redraw()
+	# A split change can move a room to the other pass later in this same flush.
+	for slot in container.get_children():
+		if not selected.has(slot.room.pos):slot.hide()
+
 class WallSlot extends Node2D:
 	var host
 	var room: Dictionary
@@ -1596,7 +1669,7 @@ var light_surface_key: Array = []
 var door_rebuilds := 0
 var light_rebuilds := 0
 
-func _door_light_state() -> void:
+func _door_light_state_original() -> void:
 	if not retain_doors_lights:
 		for id in [Surface.REAR_DOORS,Surface.FRONT_DOORS,Surface.LIGHTS]: surface_passes[id].queue_redraw()
 		return
@@ -1638,6 +1711,62 @@ func _door_light_state() -> void:
 			var foot_y: float = _nearest_crew_foot(main,center).y
 			var variant := DepartmentDoor.pair_variant(room,other)
 			var narrow := _is_narrow_corridor(room) or _is_narrow_corridor(other)
+			var depth_mask := 0
+			var parts := _department_parts(frame,side in ["east","west"],variant,narrow,side_open_door_prototype and side=="east")
+			for i in range(parts.size()):
+				if parts[i].floor or foot_y>center.y+float(parts[i].depth)*size/384.0: depth_mask |= 1<<i
+			if not light_levels.has(other.pos): light_levels[other.pos] = _room_light_level(other)
+			doors.append([room.pos,side,frame,variant,narrow,minf(light_level,float(light_levels[other.pos])),depth_mask])
+	var enabled := retain_doors_lights and not department_door_materials.is_empty()
+	if not enabled:
+		door_surface_key = doors.duplicate(true)
+		surface_passes[Surface.REAR_DOORS].queue_redraw()
+		surface_passes[Surface.FRONT_DOORS].queue_redraw()
+	elif _retained_key_stale(doors,door_surface_key,0):
+		if not _repaint_changed_doors(doors):
+			pending_layers[surface_passes[Surface.REAR_DOORS]] = true
+			pending_layers[surface_passes[Surface.FRONT_DOORS]] = true
+		door_surface_key = doors.duplicate(true)
+	if _retained_key_stale(lights,light_surface_key,0):
+		light_surface_key = lights.duplicate(true)
+		pending_layers[surface_passes[Surface.LIGHTS]] = true
+
+
+func _door_light_state() -> void:
+	if not reuse_structural_topology:_door_light_state_original();return
+	if not retain_doors_lights:
+		for id in [Surface.REAR_DOORS,Surface.FRONT_DOORS,Surface.LIGHTS]: surface_passes[id].queue_redraw()
+		return
+	var main = _get_main()
+	var size := _cell_size()
+	var doors: Array = [size,side_open_door_prototype,department_door_materials]
+	var lights: Array = [size,preload("res://scripts/room_layout_store.gd").revision,preload("res://scripts/title_settings.gd").raised_walls,main.hardware.walls]
+	# Light state is stable during this call; do not retain it across frames.
+	var light_levels: Dictionary = {}
+	# Connectivity is symmetric and stable during this call. Share each edge's
+	# result across its two room visits, then discard it before the next call.
+	var topology:=_structural_render_plan(main)
+	for room_index in range(static_draw_rooms.size()):
+		var room:Dictionary=static_draw_rooms[room_index]
+		# Key on the drawn light: flicker only changes rooms that draw layered lighting and are lit.
+		if not light_levels.has(room.pos): light_levels[room.pos] = _room_light_level(room)
+		var light_level: float = light_levels[room.pos]
+		var drawn_level := light_level*(_power_flicker(room) if light_level>0.0 and _uses_layered_art(room) and not _is_narrow_corridor(room) else 1.0)
+		lights.append([room.pos,room.id,light_level,drawn_level])
+		if room.id=="airlock":
+			doors.append([room.pos,"exterior-hatch",room.rotation,preload("res://scripts/airlock_cycle.gd").pose(room),main.hardware.walls,preload("res://scripts/title_settings.gd").raised_walls])
+		for port in topology.doors[room_index]:
+			var pos:Vector2i=port[0];var side:String=port[1];var neighbor:Vector2i=port[2];var connected:bool=port[3]
+			var outside_frame:=_drone_door_frame(main,pos,neighbor)
+			if not connected and outside_frame==0:continue
+			var other: Dictionary = main.occupied.get(neighbor,room)
+			if not _uses_layered_art(room) and not _uses_layered_art(other): continue
+			# This connected edge was validated above without yielding.
+			var frame := _door_frame_for_pair(main,pos,neighbor,true) if connected else outside_frame
+			var center := _door_edge_center(pos,side,size)
+			var foot_y: float = _nearest_crew_foot(main,center).y
+			var variant:String=port[4]
+			var narrow:bool=port[5]
 			var depth_mask := 0
 			var parts := _department_parts(frame,side in ["east","west"],variant,narrow,side_open_door_prototype and side=="east")
 			for i in range(parts.size()):
@@ -1769,6 +1898,7 @@ func _draw() -> void:
 	draws_since_read += 1
 
 func _draw_grid() -> void:
+	structural_plan_tick=-1;structural_draw_tick=-1
 	render_door_cache.clear()
 	render_door_cache_active = reuse_frame_doors
 	draw_target = self
@@ -1878,7 +2008,9 @@ func _draw_grid() -> void:
 			pending_layers[surface_passes[Surface.WALL]] = true
 	if profile_draw: _profile_draw_stage("surface_validation",checked)
 	checked = Time.get_ticks_usec() if profile_draw else 0
-	if not hold_layers: _door_light_state()
+	if not hold_layers:
+		_door_light_state()
+		if structural_plan_tick==Engine.get_process_frames():structural_draw_tick=structural_plan_tick
 	if profile_draw: _profile_draw_stage("door_light_validation",checked)
 	_flush_retained_layers(cell_size)
 	surface_passes[Surface.LIVE].queue_redraw()
@@ -2570,9 +2702,14 @@ func _paint_surface(pass_id: int) -> void:
 				# keeping them here rebuilt every floor and wall every frame (owner playtest, Sept 29).
 				if not _uses_layered_art(room) and not LARGE_ROOM_VIEWS.has(str(room.id)):
 					_draw_room(room)
-		for i in (range(split) if pass_id == Surface.FLOOR else range(split,layered.size())):
-			var room: Dictionary = layered[i]
-			_draw_nursery(room, Rect2(Vector2(room.pos) * cell_size, Vector2.ONE * cell_size), false, true)
+		var group:Array=layered.slice(0,split) if pass_id==Surface.FLOOR else layered.slice(split)
+		if _floor_slots_allowed(group):
+			_sync_floor_slots(draw_target,group,layered)
+		else:
+			_hide_floor_slots(pass_id)
+			for i in (range(split) if pass_id == Surface.FLOOR else range(split,layered.size())):
+				var room: Dictionary = layered[i]
+				_draw_nursery(room, Rect2(Vector2(room.pos) * cell_size, Vector2.ONE * cell_size), false, true)
 		_drop_stale_fade_slots(draw_target if _fade_slots_active() and draw_target is SurfacePass else null)
 		if profile_draw: _profile_draw_stage("floors" if pass_id == Surface.FLOOR else "floors_rest",stage_time)
 		if pass_id == Surface.FLOOR: floor_rebuilds += 1
@@ -2624,6 +2761,11 @@ func _paint_surface(pass_id: int) -> void:
 				content_canvases[cell].queue_free()
 				content_canvases.erase(cell)
 		if not retain_static_surfaces: _draw_layered_doors(true)
+		# This paint does not yield or move actors. Share their exact display-cell
+		# queries across rooms, then release the snapshot before child canvases draw.
+		live_actor_cells = _gather_live_actor_cells(main)
+		live_actor_cells_owner = main.get_instance_id()
+		live_actor_cells_active = true
 		for room in visible_draw_rooms:
 			if _uses_layered_art(room):
 				_draw_room(room)
@@ -2633,6 +2775,7 @@ func _paint_surface(pass_id: int) -> void:
 					draw_target.draw_set_transform(Vector2.ZERO)
 			elif LARGE_ROOM_VIEWS.has(str(room.id)):
 				_draw_room(room)
+		live_actor_cells_active = false
 		if profile_draw: _profile_draw_stage("live_rooms",stage_time)
 		if retain_static_surfaces: return
 	if pass_id==Surface.FOREGROUND or not retain_static_surfaces:
@@ -3034,7 +3177,25 @@ func _plain_retained_view(view) -> bool:
 		plain_view_scripts[script] = plain
 	return plain_view_scripts[script]
 
+var live_actor_cells := {}
+var live_actor_cells_active := false
+var live_actor_cells_owner := 0
+
+func _gather_live_actor_cells(main) -> Dictionary:
+	var cells := {}
+	var size := _cell_size()
+	var cell_of := func(at: Vector2) -> Vector2i: return Vector2i(floori(at.x / size), floori(at.y / size))
+	if main.has_test_walker(): cells[cell_of.call(main.get_test_walker_position())] = true
+	if main.has_dr_veld(): cells[cell_of.call(main.get_dr_veld_position())] = true
+	if main.has_chief_branforth(): cells[cell_of.call(main.get_chief_branforth_position())] = true
+	if main.has_marsh(): cells[cell_of.call(main.get_marsh_position())] = true
+	for actor in main.companion_actors.values():
+		if actor.active: cells[actor.cell_at(actor.foot)] = true
+	return cells
+
 func _room_has_actor(main, pos: Vector2i) -> bool:
+	if live_actor_cells_active and live_actor_cells_owner == main.get_instance_id(): return live_actor_cells.has(pos)
+	# Callers outside the synchronous paint must see same-frame actor changes.
 	var size := _cell_size()
 	var cell_of := func(at: Vector2) -> Vector2i: return Vector2i(floori(at.x / size), floori(at.y / size))
 	if main.has_test_walker() and cell_of.call(main.get_test_walker_position()) == pos: return true
@@ -3054,25 +3215,33 @@ func _draw_nursery(room: Dictionary, rect: Rect2, preview := false, floor_only :
 	if room_view == null:
 		return
 	var main = _get_main()
-	var sides: Array = []
-	var omitted: Array = []
-	var names := ["north", "east", "south", "west"]
-	var pos: Vector2i = room.pos
-	for side in range(4):
-		var offset := _offset_from_side(names[side])
-		if preview and side in preview_open_sides(room):
-			sides.append(side)
-		if not preview and not main.occupied.has(pos+offset) and names[side] in main.get_room_doors(room) and _drone_door_frame(main,pos,pos+offset)>0:
-			sides.append(side)
-		if _door_has_connected_neighbor(main, room, pos + offset, offset):
-			if not sides.has(side): sides.append(side)
-			if floor_only and not _uses_layered_art(main.occupied[pos + offset]):
-				# Bridge only the canonical 72/384-cell clear aperture.
-				var size := Vector2(0.12, 0.1875) * _cell_size() if side % 2 == 1 else Vector2(0.1875, 0.12) * _cell_size()
-				var center := rect.get_center() + Vector2(offset) * _cell_size() * 0.5
-				draw_target.draw_rect(Rect2(center - size * 0.5, size), Color("303740"))
-		if not preview and main.occupied.has(pos + offset) and _uses_layered_art(main.occupied[pos + offset]) and not _is_narrow_corridor(main.occupied[pos+offset]) and side in [0, 3]:
-			omitted.append(side)
+	var sides:Array=[];var omitted:Array=[]
+	var cached:Array=structural_plan.get("nursery",{}).get(room.pos,[]) if reuse_structural_topology and not preview and structural_draw_tick==Engine.get_process_frames() and structural_plan_owner==main.get_instance_id() and is_same(main.occupied.get(room.pos),room) else []
+	var pos:Vector2i=room.pos
+	if not cached.is_empty():
+		sides=cached[0].duplicate();omitted=cached[1].duplicate()
+		if floor_only:
+			for side in range(4):
+				var offset:=_offset_from_side(["north","east","south","west"][side])
+				if cached[2][side] and not _uses_layered_art(main.occupied[pos+offset]):
+					var size:=Vector2(0.12,0.1875)*_cell_size() if side%2==1 else Vector2(0.1875,0.12)*_cell_size()
+					var center:=rect.get_center()+Vector2(offset)*_cell_size()*0.5
+					draw_target.draw_rect(Rect2(center-size*0.5,size),Color("303740"))
+	else:
+		var names := ["north", "east", "south", "west"]
+		for side in range(4):
+			var offset := _offset_from_side(names[side])
+			if preview and side in preview_open_sides(room):
+				sides.append(side)
+			if _door_has_connected_neighbor(main, room, pos + offset, offset):
+				if not sides.has(side): sides.append(side)
+				if floor_only and not _uses_layered_art(main.occupied[pos + offset]):
+					# Bridge only the canonical 72/384-cell clear aperture.
+					var size := Vector2(0.12, 0.1875) * _cell_size() if side % 2 == 1 else Vector2(0.1875, 0.12) * _cell_size()
+					var center := rect.get_center() + Vector2(offset) * _cell_size() * 0.5
+					draw_target.draw_rect(Rect2(center - size * 0.5, size), Color("303740"))
+			if not preview and main.occupied.has(pos + offset) and _uses_layered_art(main.occupied[pos + offset]) and not _is_narrow_corridor(main.occupied[pos+offset]) and side in [0, 3]:
+				omitted.append(side)
 	if profile_draw: _profile_detail("doors_"+str(room.id),setup_started)
 	var retained_live := retain_room_contents and retain_static_surfaces and not preview and not floor_only and not shell_only
 	var frame_key: Array = []
@@ -3779,15 +3948,18 @@ func _draw_functioning_synergy(link: Dictionary, center_a: Vector2, center_b: Ve
 		edge_alpha_b *= 1.64 - alternate
 	draw_target.draw_line(edge_a - segment_half, edge_a + segment_half, Color(color.r, color.g, color.b, edge_alpha_a), line_width, true)
 	draw_target.draw_line(edge_b - segment_half, edge_b + segment_half, Color(color.r, color.g, color.b, edge_alpha_b), line_width, true)
-	_draw_synergy_circle(edge_a, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_a * 0.38))
-	_draw_synergy_circle(edge_b, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_b * 0.38))
+	var circle_packet:Dictionary={"points":PackedVector2Array(),"colors":PackedColorArray()} if batch_synergy_circles and synergy_geometry_supported else {}
+	_draw_synergy_circle(edge_a, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_a * 0.38),circle_packet)
+	_draw_synergy_circle(edge_b, mote_radius * 0.74, Color(color.r, color.g, color.b, edge_alpha_b * 0.38),circle_packet)
 	for mote_index in range(2):
 		var phase := _synergy_mote_phase(profile, time_seconds * 0.4, mote_index)
 		var mote_t := lerpf(0.16, 0.84, phase)
 		var mote_position := center_a.lerp(center_b, mote_t)
-		_draw_synergy_circle(mote_position, mote_radius * 1.8, Color(color.r, color.g, color.b, 0.08))
-		_draw_synergy_circle(mote_position, mote_radius, Color(color.r, color.g, color.b, 0.24))
-		_draw_synergy_circle(mote_position, mote_radius * 0.34, Color(0.75, 0.83, 0.81, 0.26))
+		_draw_synergy_circle(mote_position, mote_radius * 1.8, Color(color.r, color.g, color.b, 0.08),circle_packet)
+		_draw_synergy_circle(mote_position, mote_radius, Color(color.r, color.g, color.b, 0.24),circle_packet)
+		_draw_synergy_circle(mote_position, mote_radius * 0.34, Color(0.75, 0.83, 0.81, 0.26),circle_packet)
+
+	_flush_synergy_circle_packet(circle_packet)
 
 func _synergy_mote_phase(profile: String, time_seconds: float, mote_index: int) -> float:
 	var speed := 0.28
@@ -4101,6 +4273,8 @@ func _get_marsh_frame(main) -> Texture2D:
 	main.marsh_npc.prepare_stop_pose(marsh_player,main.get_visual_time_seconds(),main.get_marsh_position()/_cell_size())
 	main.marsh_npc.prepare_south_gait(marsh_player,main.get_visual_time_seconds(),main.get_marsh_position()/_cell_size())
 	main.marsh_npc.prepare_cardinal_north_gait(marsh_player,main.get_visual_time_seconds(),main.get_marsh_position()/_cell_size())
+	var water_action:Texture2D=preload("res://scripts/marsh_water_actions.gd").frame(main,marsh_player)
+	if water_action!=null:return water_action
 	var draining_texture := _get_marsh_cargo_drain_frame(main)
 	if draining_texture != null:return draining_texture
 	var arrival:Dictionary=main.marsh_npc.workshop_arrival_presentation(marsh_player)
@@ -4602,9 +4776,87 @@ var retained_wall_context=preload("res://scripts/retained_wall_context.gd").new(
 var SYNERGY_UNIT_CIRCLE=PackedVector2Array([Vector2(1.0,0.0),Vector2(0.9951847195625305,0.0980171412229538),Vector2(0.9807852506637573,0.19509032368659973),Vector2(0.9569403529167175,0.290284663438797),Vector2(0.9238795042037964,0.3826834559440613),Vector2(0.8819212317466736,0.4713967442512512),Vector2(0.8314695954322815,0.5555702447891235),Vector2(0.7730104327201843,0.6343933343887329),Vector2(0.7071067690849304,0.7071067690849304),Vector2(0.6343932747840881,0.7730104327201843),Vector2(0.5555701851844788,0.8314696550369263),Vector2(0.47139665484428406,0.8819212913513184),Vector2(0.3826834261417389,0.9238795042037964),Vector2(0.2902846336364746,0.9569403529167175),Vector2(0.19509023427963257,0.9807853102684021),Vector2(0.0980171337723732,0.9951847195625305),Vector2(-4.371138828673793e-08,1.0),Vector2(-0.09801722317934036,0.9951847195625305),Vector2(-0.19509032368659973,0.9807852506637573),Vector2(-0.2902847230434418,0.9569402933120728),Vector2(-0.38268351554870605,0.9238795042037964),Vector2(-0.4713968336582184,0.8819212317466736),Vector2(-0.5555703639984131,0.8314695358276367),Vector2(-0.6343932747840881,0.7730104923248291),Vector2(-0.7071067690849304,0.7071067690849304),Vector2(-0.7730104923248291,0.6343932747840881),Vector2(-0.8314696550369263,0.5555701851844788),Vector2(-0.8819213509559631,0.47139662504196167),Vector2(-0.9238796234130859,0.38268327713012695),Vector2(-0.9569403529167175,0.2902847230434418),Vector2(-0.9807853102684021,0.19509030878543854),Vector2(-0.9951847195625305,0.09801709651947021),Vector2(-1.0,-8.742277657347586e-08),Vector2(-0.9951847195625305,-0.09801726788282394),Vector2(-0.9807852506637573,-0.19509048759937286),Vector2(-0.9569402933120728,-0.2902848720550537),Vector2(-0.9238795042037964,-0.3826834261417389),Vector2(-0.8819212317466736,-0.4713967740535736),Vector2(-0.8314695358276367,-0.5555703043937683),Vector2(-0.7730103731155396,-0.6343933939933777),Vector2(-0.7071066498756409,-0.70710688829422),Vector2(-0.6343933343887329,-0.7730104327201843),Vector2(-0.5555700063705444,-0.8314697742462158),Vector2(-0.47139668464660645,-0.8819212913513184),Vector2(-0.382683128118515,-0.9238796830177307),Vector2(-0.29028454422950745,-0.9569403529167175),Vector2(-0.1950903832912445,-0.9807852506637573),Vector2(-0.09801693260669708,-0.9951847195625305),Vector2(1.1924880638503055e-08,-1.0),Vector2(0.09801743179559708,-0.9951847195625305),Vector2(0.1950904130935669,-0.9807852506637573),Vector2(0.29028502106666565,-0.956940233707428),Vector2(0.3826836049556732,-0.9238794445991516),Vector2(0.47139671444892883,-0.8819212913513184),Vector2(0.5555704236030579,-0.8314694762229919),Vector2(0.6343933343887329,-0.7730104327201843),Vector2(0.7071070075035095,-0.7071065306663513),Vector2(0.7730105519294739,-0.6343931555747986),Vector2(0.8314695954322815,-0.5555703043937683),Vector2(0.8819213509559631,-0.4713965356349945),Vector2(0.9238795638084412,-0.3826834261417389),Vector2(0.9569404125213623,-0.2902843952178955),Vector2(0.9807853102684021,-0.19509023427963257),Vector2(0.9951847791671753,-0.09801676869392395),Vector2(1.0,1.7484555314695172e-07),Vector2(0,0)])
 var SYNERGY_CIRCLE_INDICES=PackedInt32Array([65,0,1,65,1,2,65,2,3,65,3,4,65,4,5,65,5,6,65,6,7,65,7,8,65,8,9,65,9,10,65,10,11,65,11,12,65,12,13,65,13,14,65,14,15,65,15,16,65,16,17,65,17,18,65,18,19,65,19,20,65,20,21,65,21,22,65,22,23,65,23,24,65,24,25,65,25,26,65,26,27,65,27,28,65,28,29,65,29,30,65,30,31,65,31,32,65,32,33,65,33,34,65,34,35,65,35,36,65,36,37,65,37,38,65,38,39,65,39,40,65,40,41,65,41,42,65,42,43,65,43,44,65,44,45,65,45,46,65,46,47,65,47,48,65,48,49,65,49,50,65,50,51,65,51,52,65,52,53,65,53,54,65,54,55,65,55,56,65,56,57,65,57,58,65,58,59,65,59,60,65,60,61,65,61,62,65,62,63,65,63,64])
 var synergy_geometry_supported:bool=OS.get_name()=="Windows"
-func _draw_synergy_circle(center:Vector2,radius:float,color:Color)->void:
+func _draw_synergy_circle(center:Vector2,radius:float,color:Color,packet:Dictionary={})->void:
 	if not synergy_geometry_supported:
 		draw_target.draw_circle(center,radius,color)
 		return
 	var transform:=Transform2D(Vector2(radius,0),Vector2(0,radius),center)
-	RenderingServer.canvas_item_add_triangle_array(draw_target.get_canvas_item(),SYNERGY_CIRCLE_INDICES,transform*SYNERGY_UNIT_CIRCLE,PackedColorArray([color]))
+	var points:PackedVector2Array=transform*SYNERGY_UNIT_CIRCLE
+	if not packet.is_empty():
+		packet.points.append_array(points)
+		var colors:=PackedColorArray();colors.resize(points.size());colors.fill(color);packet.colors.append_array(colors)
+	else:RenderingServer.canvas_item_add_triangle_array(draw_target.get_canvas_item(),SYNERGY_CIRCLE_INDICES,points,PackedColorArray([color]))
+
+# Only the eight adjacent edge/mote circles share a packet. Lines/arcs and the
+# earlier shared-door circle keep their original submission boundaries.
+var batch_synergy_circles:=not OS.get_cmdline_user_args().has("--reference-synergy-packets")
+var synergy_circle_packet_indices:=PackedInt32Array()
+func _flush_synergy_circle_packet(packet:Dictionary)->void:
+	if packet.is_empty():return
+	if synergy_circle_packet_indices.is_empty():
+		for circle in range(8):
+			var offset:int=circle*SYNERGY_UNIT_CIRCLE.size()
+			for index in SYNERGY_CIRCLE_INDICES:synergy_circle_packet_indices.append(index+offset)
+	RenderingServer.canvas_item_add_triangle_array(draw_target.get_canvas_item(),synergy_circle_packet_indices,packet.points,packet.colors)
+
+
+var reuse_structural_topology:=not OS.get_cmdline_user_args().has("--reference-render-topology")
+var structural_key:Array=[]
+var structural_plan:Dictionary={}
+var structural_draw_tick:=-1
+var structural_plan_tick:=-1
+var structural_plan_owner:=0
+var structural_builds:=0
+var structural_dependency_cells:Array=[]
+var structural_store_data=null
+
+func _render_structure(room:Dictionary)->Array:
+	return [room.get("pos",Vector2i.ZERO),room.get("id",""),room.get("rotation",0),room.get("size",Vector2i.ONE),room.has("ports"),room.get("ports",[]),room.get("layout",null),room.get("branch_owner",Vector2i(-1,-1))]
+
+# Internal borrowed plan; callers never edit it or pass its arrays to room views.
+# Only topology/style inputs are retained. Actors, clocks, light and door poses stay live.
+func _structural_render_plan(main)->Dictionary:
+	var store=preload("res://scripts/room_layout_store.gd")
+	store.prime()
+	var drawn:Array=[];var occupied:Array=[]
+	for room in static_draw_rooms:drawn.append(_render_structure(room))
+	# An unrelated off-screen room must not make visible topology expensive.
+	# The deep drawn snapshot also detects in-place edits to authored port arrays.
+	if structural_key.is_empty() or drawn!=structural_key[0]:
+		var cells:Dictionary={}
+		for room in static_draw_rooms:
+			if room.get("size",Vector2i.ONE)==Vector2i.ONE:
+				for offset in [Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT]:cells[room.pos+offset]=true
+			for port in _render_ports(room,main):cells[port.cell+_offset_from_side(port.side)]=true
+		structural_dependency_cells=cells.keys()
+	for cell in structural_dependency_cells:occupied.append([cell,main.occupied.has(cell),_render_structure(main.occupied.get(cell,{}))])
+	var key:Array=[drawn,occupied,preload("res://scripts/room_layout_store.gd").revision,reuse_known_port_connections]
+	structural_plan_tick=Engine.get_process_frames();structural_plan_owner=main.get_instance_id()
+	if key==structural_key and store.reuse_layout_store and is_same(structural_store_data,store.data):return structural_plan
+	structural_store_data=store.data
+	structural_key=key.duplicate(true);structural_builds+=1
+	var rows:Array=[];var nursery:Dictionary={};var connections:Dictionary={}
+	for room in static_draw_rooms:
+		if room.get("size",Vector2i.ONE)==Vector2i.ONE:
+			var sides:Array=[];var omitted:Array=[];var linked_sides:Array=[]
+			for side in range(4):
+				var offset:Vector2i=[Vector2i.UP,Vector2i.RIGHT,Vector2i.DOWN,Vector2i.LEFT][side]
+				var linked:=_door_has_connected_neighbor(main,room,room.pos+offset,offset)
+				linked_sides.append(linked)
+				if linked:sides.append(side)
+				if main.occupied.has(room.pos+offset) and _uses_layered_art(main.occupied[room.pos+offset]) and not _is_narrow_corridor(main.occupied[room.pos+offset]) and side in [0,3]:omitted.append(side)
+			nursery[room.pos]=[sides,omitted,linked_sides]
+		var entries:Array=[]
+		for port in _render_ports(room,main):
+			var pos:Vector2i=port.cell;var side:String=port.side;var offset:=_offset_from_side(side);var neighbor:=pos+offset
+			var edge:=Vector3i(mini(pos.x,neighbor.x),mini(pos.y,neighbor.y),0 if offset.x!=0 else 1)
+			if not connections.has(edge):connections[edge]=_neighbor_connected_from_known_port(main,room,neighbor,offset) if reuse_known_port_connections else _door_has_connected_neighbor(main,room,neighbor,offset)
+			var linked:bool=connections[edge]
+			if linked and side in ["north","west"]:continue
+			if not linked and (main.occupied.has(neighbor) or side not in main.get_room_doors(room)):continue
+			var other:Dictionary=main.occupied.get(neighbor,room)
+			if not _uses_layered_art(room) and not _uses_layered_art(other):continue
+			entries.append([pos,side,neighbor,linked,DepartmentDoor.pair_variant(room,other),_is_narrow_corridor(room) or _is_narrow_corridor(other)])
+		rows.append(entries)
+	structural_plan={"doors":rows,"nursery":nursery}
+	return structural_plan

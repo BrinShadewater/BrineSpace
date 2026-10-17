@@ -4919,7 +4919,7 @@ func _branforth_status() -> String:
 	return "%s | hunger %d / fatigue %d" % [branforth_npc.activity, roundi(branforth_npc.needs.hunger), roundi(branforth_npc.needs.fatigue)]
 
 func has_marsh() -> bool:
-	return marsh_npc.active and (not marsh_npc.recharge_docked or marsh_npc.dead) and (not marsh_npc.expedition.is_empty() or occupied.has(marsh_npc.cell_at(marsh_npc.foot)))
+	return marsh_npc.active and (not marsh_npc.recharge_docked or marsh_npc.dead) and (not marsh_npc.expedition.is_empty() or occupied.has(marsh_npc.cell_at(marsh_npc.foot)) or (marsh_npc.dead and marsh_npc.movement_medium=="exterior"))
 
 func get_marsh_position() -> Vector2:
 	return ((marsh_npc.foot + marsh_npc.north_step_draw_offset() + marsh_npc.south_draw_offset() + marsh_npc.south_step_draw_offset()) / 384.0 - Vector2(0, 0.038)) * get_cell_size()

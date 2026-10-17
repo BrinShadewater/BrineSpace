@@ -257,7 +257,8 @@ static func _draw_station_port(canvas: CanvasItem, center: Vector2, side: String
 		canvas.draw_rect(Rect2(center-passage_size*0.5,passage_size),floor_color)
 	var skin = PaintedDoor.for_variant(style)
 	if raised:
-		skin.raised_at(canvas, open_amount, center.x, -390, 76)
+		# Keep the large room's threshold visible between the retracting leaves.
+		skin.raised_at(canvas, open_amount, center.x, -390, 76, floor_color)
 		return
 	for left in [true,false]:
 		var width := 36.0 * (1.0 - open_amount)
